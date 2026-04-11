@@ -19,6 +19,11 @@ android {
         versionName = "1.0"
     }
 
+    dependenciesInfo {
+        includeInApk = false
+        includeInBundle = false
+    }
+
     signingConfigs {
         create("debugKey") {
             storeFile     = file("${System.getProperty("user.home")}/.android/debug.keystore")
