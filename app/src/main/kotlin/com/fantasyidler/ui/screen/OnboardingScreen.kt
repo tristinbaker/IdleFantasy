@@ -44,6 +44,11 @@ private val PAGES = listOf(
         body  = "Tap any skill and start a training session. Sessions run in the background, even with the app closed. Come back to collect your loot and XP.",
     ),
     OnboardingPage(
+        emoji = "⚒️",
+        title = "Work Your Way Up",
+        body  = "Mine ore to smelt bars, then forge better weapons and armour. Equip stronger gear to tackle harder dungeons and bosses. Better tools speed up gathering, and higher-tier equipment unlocks content that weaker gear can't survive.",
+    ),
+    OnboardingPage(
         emoji = "🏆",
         title = "Quests & Pets",
         body  = "Complete quests to earn XP rewards. Rare pets can drop while training skills and provide permanent XP boosts.",

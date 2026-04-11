@@ -144,7 +144,14 @@ class HomeViewModel @Inject constructor(
                     if (added) petMessage = "You found a pet: ${petData.displayName}!"
                 }
 
-                message = petMessage ?: "Collected +${totalXp.formatXp()} XP"
+                val itemSummary = regularItems.entries
+                    .sortedByDescending { it.value }
+                    .joinToString(", ") { (key, qty) -> "$qty ${gameData.itemDisplayName(key)}" }
+
+                message = petMessage ?: buildString {
+                    append("Collected +${totalXp.formatXp()} XP")
+                    if (itemSummary.isNotEmpty()) append(" • $itemSummary")
+                }
             }
 
             sessionRepo.deleteSession(session.sessionId)

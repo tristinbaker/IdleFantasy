@@ -184,4 +184,21 @@ class GameDataRepository @Inject constructor(
         val raw: Map<String, SpellData> = asset("data/spells.json")
         raw.mapValues { (key, spell) -> spell.copy(name = key) }
     }
+
+    // ------------------------------------------------------------------ helpers
+
+    /**
+     * Resolves an item key (e.g. "iron_ore", "oak_log") to a human-readable display name.
+     * Checks all known item tables in order and falls back to title-casing the key.
+     */
+    fun itemDisplayName(key: String): String {
+        ores[key]?.let { return it.displayName }
+        gems[key]?.let { return it.displayName }
+        logs[key]?.let { return it.displayName }
+        smithingRecipes[key]?.let { return it.displayName }
+        cookingRecipes.values.find { it.cookedItem == key }?.let { return it.displayName }
+        fletchingRecipes[key]?.let { return it.displayName }
+        craftingRecipes[key]?.let { return it.displayName }
+        return key.split('_').joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
+    }
 }

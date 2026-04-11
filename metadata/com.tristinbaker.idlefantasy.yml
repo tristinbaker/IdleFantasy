@@ -1,0 +1,27 @@
+Categories:
+  - Games
+License: GPL-3.0-only
+SourceCode: https://github.com/tristinbaker/IdleFantasy
+IssueTracker: https://github.com/tristinbaker/IdleFantasy/issues
+
+AutoName: Idle Fantasy
+Donate: https://liberapay.com/tristinbaker_/
+
+RepoType: git
+Repo: https://github.com/tristinbaker/IdleFantasy
+Binaries: https://github.com/tristinbaker/IdleFantasy/releases/download/v%v/app-release.apk
+
+Builds:
+  - versionName: 1.0
+    versionCode: 1
+    commit: v1.0
+    subdir: app
+    gradle:
+      - release
+
+AllowedAPKSigningKeys: 99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010
+
+AutoUpdateMode: Version
+UpdateCheckMode: Tags
+CurrentVersion: 1.0
+CurrentVersionCode: 1
