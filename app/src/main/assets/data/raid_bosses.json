@@ -1,0 +1,309 @@
+{
+  "king_black_dragon": {
+    "id": "king_black_dragon",
+    "display_name": "King Black Dragon",
+    "emoji": "🐉",
+    "description": "The legendary three-headed dragon, feared across the realm.",
+    "combat_level_required": 50,
+    "min_players": 2,
+    "max_players": 5,
+    "duration_minutes": 45,
+    "hp": 15000,
+    "combat_stats": {
+      "attack_level": 80,
+      "strength_level": 80,
+      "defense_level": 70,
+      "magic_level": 60,
+      "ranged_level": 50,
+      "attack_bonus": 120,
+      "strength_bonus": 200,
+      "magic_bonus": 100,
+      "ranged_bonus": 80
+    },
+    "defensive_stats": {
+      "attack_defense": 150,
+      "strength_defense": 150,
+      "ranged_defense": 120,
+      "magic_defense": 140
+    },
+    "xp_rewards": {
+      "attack": 1000,
+      "strength": 1000,
+      "defense": 1000,
+      "hp": 800,
+      "magic": 500,
+      "ranged": 500
+    },
+    "common_loot": {
+      "coins_min": 10000,
+      "coins_max": 20000,
+      "items": {
+        "dragon_bone": {"min": 30, "max": 50},
+        "coal": {"min": 100, "max": 200},
+        "mithril_ore": {"min": 50, "max": 100},
+        "adamantite_ore": {"min": 20, "max": 40}
+      }
+    },
+    "rare_drops": [
+      {
+        "item": "dragon_longsword",
+        "chance": 0.005,
+        "comment": "1/200"
+      },
+      {
+        "item": "dragon_scimitar",
+        "chance": 0.005,
+        "comment": "1/200"
+      },
+      {
+        "item": "dragon_amulet",
+        "chance": 0.005,
+        "comment": "1/200"
+      },
+      {
+        "item": "ring_of_dragons_might",
+        "chance": 0.005,
+        "comment": "1/200"
+      }
+    ],
+    "pet": {
+      "id": "dragon_whelp",
+      "display_name": "Dragon Whelp",
+      "emoji": "🐉",
+      "chance": 0.01,
+      "comment": "1/100 per player"
+    }
+  },
+  "demon_lord": {
+    "id": "demon_lord",
+    "display_name": "Demon Lord",
+    "emoji": "😈",
+    "description": "An ancient demon from the abyss, master of dark magic.",
+    "combat_level_required": 70,
+    "min_players": 2,
+    "max_players": 7,
+    "duration_minutes": 60,
+    "hp": 22000,
+    "combat_stats": {
+      "attack_level": 85,
+      "strength_level": 85,
+      "defense_level": 75,
+      "magic_level": 95,
+      "ranged_level": 65,
+      "attack_bonus": 140,
+      "strength_bonus": 220,
+      "magic_bonus": 190,
+      "ranged_bonus": 90
+    },
+    "defensive_stats": {
+      "attack_defense": 160,
+      "strength_defense": 160,
+      "ranged_defense": 135,
+      "magic_defense": 125
+    },
+    "xp_rewards": {
+      "attack": 2000,
+      "strength": 2000,
+      "defense": 2000,
+      "hp": 1500,
+      "magic": 2500,
+      "ranged": 1000,
+      "prayer": 1500
+    },
+    "common_loot": {
+      "coins_min": 20000,
+      "coins_max": 40000,
+      "items": {
+        "giant_bones": {"min": 20, "max": 40},
+        "coal": {"min": 150, "max": 300},
+        "adamantite_ore": {"min": 80, "max": 150},
+        "runite_ore": {"min": 30, "max": 60},
+        "fire_rune": {"min": 100, "max": 200}
+      }
+    },
+    "rare_drops": [
+      {
+        "item": "abyssal_whip",
+        "chance": 0.005,
+        "comment": "1/200"
+      },
+      {
+        "item": "hellfire_staff",
+        "chance": 0.005,
+        "comment": "1/200"
+      },
+      {
+        "item": "amulet_of_fury",
+        "chance": 0.005,
+        "comment": "1/200"
+      },
+      {
+        "item": "berserker_ring",
+        "chance": 0.005,
+        "comment": "1/200"
+      }
+    ],
+    "pet": {
+      "id": "imp_pet",
+      "display_name": "Imp Pet",
+      "emoji": "😈",
+      "chance": 0.01,
+      "comment": "1/100 per player"
+    }
+  },
+  "kraken": {
+    "id": "kraken",
+    "display_name": "Kraken",
+    "emoji": "🦑",
+    "description": "The terror of the deep seas, a colossal sea monster.",
+    "combat_level_required": 90,
+    "min_players": 2,
+    "max_players": 10,
+    "duration_minutes": 90,
+    "hp": 26250,
+    "combat_stats": {
+      "attack_level": 71,
+      "strength_level": 69,
+      "defense_level": 66,
+      "magic_level": 83,
+      "ranged_level": 56,
+      "attack_bonus": 128,
+      "strength_bonus": 195,
+      "magic_bonus": 173,
+      "ranged_bonus": 90
+    },
+    "defensive_stats": {
+      "attack_defense": 143,
+      "strength_defense": 143,
+      "ranged_defense": 120,
+      "magic_defense": 109
+    },
+    "xp_rewards": {
+      "attack": 4000,
+      "strength": 4000,
+      "defense": 4000,
+      "hp": 3000,
+      "magic": 5000,
+      "ranged": 2000
+    },
+    "common_loot": {
+      "coins_min": 50000,
+      "coins_max": 100000,
+      "items": {
+        "raw_shark": {"min": 100, "max": 200},
+        "dragon_bone": {"min": 50, "max": 100},
+        "coal": {"min": 200, "max": 400},
+        "runite_ore": {"min": 100, "max": 200},
+        "platinum_ore": {"min": 50, "max": 100},
+        "water_rune": {"min": 200, "max": 400}
+      }
+    },
+    "rare_drops": [
+      {
+        "item": "trident_of_the_seas",
+        "chance": 0.005,
+        "comment": "1/200"
+      },
+      {
+        "item": "kraken_tentacle",
+        "chance": 0.005,
+        "comment": "1/200"
+      },
+      {
+        "item": "amulet_of_the_kraken",
+        "chance": 0.005,
+        "comment": "1/200"
+      },
+      {
+        "item": "ring_of_the_seas",
+        "chance": 0.005,
+        "comment": "1/200"
+      }
+    ],
+    "pet": {
+      "id": "baby_kraken",
+      "display_name": "Baby Kraken",
+      "emoji": "🦑",
+      "chance": 0.01,
+      "comment": "1/100 per player"
+    }
+  },
+  "balrog": {
+    "id": "balrog",
+    "display_name": "Balrog, Ancient Flame of Udûn",
+    "emoji": "🔥",
+    "description": "An ancient demon of flame and shadow, awakened from its slumber deep beneath the earth.",
+    "combat_level_required": 100,
+    "min_players": 3,
+    "max_players": 10,
+    "duration_minutes": 120,
+    "hp": 70000,
+    "combat_stats": {
+      "attack_level": 105,
+      "strength_level": 110,
+      "defense_level": 100,
+      "magic_level": 115,
+      "ranged_level": 90,
+      "attack_bonus": 200,
+      "strength_bonus": 300,
+      "magic_bonus": 260,
+      "ranged_bonus": 140
+    },
+    "defensive_stats": {
+      "attack_defense": 280,
+      "strength_defense": 280,
+      "ranged_defense": 240,
+      "magic_defense": 200
+    },
+    "xp_rewards": {
+      "attack": 10000,
+      "strength": 10000,
+      "defense": 10000,
+      "hp": 8000,
+      "magic": 12000,
+      "ranged": 5000,
+      "prayer": 5000
+    },
+    "common_loot": {
+      "coins_min": 100000,
+      "coins_max": 250000,
+      "items": {
+        "dragon_bone": {"min": 100, "max": 200},
+        "coal": {"min": 500, "max": 1000},
+        "runite_ore": {"min": 200, "max": 400},
+        "platinum_ore": {"min": 100, "max": 200},
+        "fire_rune": {"min": 500, "max": 1000},
+        "ancient_treasure": {"min": 5, "max": 10}
+      }
+    },
+    "rare_drops": [
+      {
+        "item": "balrog_whip",
+        "chance": 0.003,
+        "comment": "1/333"
+      },
+      {
+        "item": "flame_heart_amulet",
+        "chance": 0.003,
+        "comment": "1/333"
+      },
+      {
+        "item": "ring_of_flame",
+        "chance": 0.003,
+        "comment": "1/333"
+      },
+      {
+        "item": "balrog_wings",
+        "chance": 0.002,
+        "comment": "1/500"
+      }
+    ],
+    "pet": {
+      "id": "baby_balrog",
+      "display_name": "Baby Balrog",
+      "emoji": "🔥",
+      "chance": 0.005,
+      "comment": "1/200 per player"
+    }
+  }
+}

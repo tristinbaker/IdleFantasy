@@ -1,0 +1,116 @@
+{
+  "name": "woodcutting",
+  "display_name": "Woodcutting",
+  "description": "Chop trees and gather various types of wood",
+  "max_level": 99,
+  "xp_ranges": {
+    "1": {"min": 5, "max": 10},
+    "5": {"min": 8, "max": 15},
+    "10": {"min": 12, "max": 20},
+    "15": {"min": 18, "max": 28},
+    "20": {"min": 25, "max": 38},
+    "25": {"min": 33, "max": 50},
+    "30": {"min": 43, "max": 65},
+    "35": {"min": 55, "max": 82},
+    "40": {"min": 70, "max": 105},
+    "45": {"min": 88, "max": 130},
+    "50": {"min": 108, "max": 160},
+    "55": {"min": 130, "max": 195},
+    "60": {"min": 155, "max": 230},
+    "65": {"min": 185, "max": 275},
+    "70": {"min": 220, "max": 325},
+    "75": {"min": 260, "max": 385},
+    "80": {"min": 305, "max": 455},
+    "85": {"min": 360, "max": 535},
+    "90": {"min": 420, "max": 625},
+    "95": {"min": 490, "max": 730}
+  },
+  "drop_tables": {
+    "1": [
+      {"item": "log", "chance": 0.85},
+      {"item": "oak_log", "chance": 0.10},
+      {"item": "bird_nest", "chance": 0.05}
+    ],
+    "5": [
+      {"item": "log", "chance": 0.70},
+      {"item": "oak_log", "chance": 0.22},
+      {"item": "willow_log", "chance": 0.05},
+      {"item": "bird_nest", "chance": 0.03}
+    ],
+    "10": [
+      {"item": "log", "chance": 0.55},
+      {"item": "oak_log", "chance": 0.30},
+      {"item": "willow_log", "chance": 0.12},
+      {"item": "bird_nest", "chance": 0.03}
+    ],
+    "15": [
+      {"item": "oak_log", "chance": 0.45},
+      {"item": "willow_log", "chance": 0.30},
+      {"item": "maple_log", "chance": 0.15},
+      {"item": "bird_nest", "chance": 0.08},
+      {"item": "tree_seed", "chance": 0.02}
+    ],
+    "20": [
+      {"item": "oak_log", "chance": 0.35},
+      {"item": "willow_log", "chance": 0.35},
+      {"item": "maple_log", "chance": 0.20},
+      {"item": "bird_nest", "chance": 0.08},
+      {"item": "tree_seed", "chance": 0.02}
+    ],
+    "30": [
+      {"item": "willow_log", "chance": 0.35},
+      {"item": "maple_log", "chance": 0.30},
+      {"item": "yew_log", "chance": 0.15},
+      {"item": "bird_nest", "chance": 0.12},
+      {"item": "tree_seed", "chance": 0.05},
+      {"item": "golden_leaf", "chance": 0.03}
+    ],
+    "40": [
+      {"item": "maple_log", "chance": 0.35},
+      {"item": "yew_log", "chance": 0.30},
+      {"item": "teak_log", "chance": 0.18},
+      {"item": "bird_nest", "chance": 0.10},
+      {"item": "tree_seed", "chance": 0.05},
+      {"item": "golden_leaf", "chance": 0.02}
+    ],
+    "50": [
+      {"item": "yew_log", "chance": 0.35},
+      {"item": "teak_log", "chance": 0.25},
+      {"item": "mahogany_log", "chance": 0.18},
+      {"item": "bird_nest", "chance": 0.12},
+      {"item": "tree_seed", "chance": 0.07},
+      {"item": "golden_leaf", "chance": 0.03}
+    ],
+    "60": [
+      {"item": "teak_log", "chance": 0.30},
+      {"item": "mahogany_log", "chance": 0.30},
+      {"item": "magic_log", "chance": 0.18},
+      {"item": "bird_nest", "chance": 0.12},
+      {"item": "golden_leaf", "chance": 0.07},
+      {"item": "enchanted_bark", "chance": 0.03}
+    ],
+    "70": [
+      {"item": "mahogany_log", "chance": 0.30},
+      {"item": "magic_log", "chance": 0.30},
+      {"item": "redwood_log", "chance": 0.18},
+      {"item": "golden_leaf", "chance": 0.12},
+      {"item": "enchanted_bark", "chance": 0.08},
+      {"item": "ancient_branch", "chance": 0.02}
+    ],
+    "85": [
+      {"item": "magic_log", "chance": 0.35},
+      {"item": "redwood_log", "chance": 0.30},
+      {"item": "elder_log", "chance": 0.18},
+      {"item": "golden_leaf", "chance": 0.10},
+      {"item": "enchanted_bark", "chance": 0.05},
+      {"item": "ancient_branch", "chance": 0.02}
+    ],
+    "95": [
+      {"item": "redwood_log", "chance": 0.35},
+      {"item": "elder_log", "chance": 0.30},
+      {"item": "ancient_branch", "chance": 0.20},
+      {"item": "golden_leaf", "chance": 0.09},
+      {"item": "enchanted_bark", "chance": 0.06}
+    ]
+  }
+}

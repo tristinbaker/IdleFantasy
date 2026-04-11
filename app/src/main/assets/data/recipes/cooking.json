@@ -1,0 +1,155 @@
+{
+  "rat_meat": {
+    "raw_item": "raw_rat_meat",
+    "cooked_item": "cooked_rat_meat",
+    "display_name": "Cooked Rat Meat",
+    "level_required": 1,
+    "xp_per_item": 5,
+    "healing_value": 1,
+    "time_per_item": 60
+  },
+  "chicken": {
+    "raw_item": "raw_chicken",
+    "cooked_item": "cooked_chicken",
+    "display_name": "Cooked Chicken",
+    "level_required": 1,
+    "xp_per_item": 10,
+    "healing_value": 3,
+    "time_per_item": 60
+  },
+  "mutton": {
+    "raw_item": "raw_mutton",
+    "cooked_item": "cooked_mutton",
+    "display_name": "Cooked Mutton",
+    "level_required": 1,
+    "xp_per_item": 15,
+    "healing_value": 6,
+    "time_per_item": 60
+  },
+  "beef": {
+    "raw_item": "raw_beef",
+    "cooked_item": "cooked_beef",
+    "display_name": "Cooked Beef",
+    "level_required": 5,
+    "xp_per_item": 25,
+    "healing_value": 8,
+    "time_per_item": 60
+  },
+  "shrimp": {
+    "raw_item": "raw_shrimp",
+    "cooked_item": "shrimp",
+    "display_name": "Shrimp",
+    "level_required": 1,
+    "xp_per_item": 30,
+    "healing_value": 3,
+    "time_per_item": 60
+  },
+  "sardine": {
+    "raw_item": "raw_sardine",
+    "cooked_item": "sardine",
+    "display_name": "Sardine",
+    "level_required": 1,
+    "xp_per_item": 40,
+    "healing_value": 3,
+    "time_per_item": 60
+  },
+  "herring": {
+    "raw_item": "raw_herring",
+    "cooked_item": "herring",
+    "display_name": "Herring",
+    "level_required": 5,
+    "xp_per_item": 50,
+    "healing_value": 5,
+    "time_per_item": 60
+  },
+  "mackerel": {
+    "raw_item": "raw_mackerel",
+    "cooked_item": "mackerel",
+    "display_name": "Mackerel",
+    "level_required": 10,
+    "xp_per_item": 60,
+    "healing_value": 6,
+    "time_per_item": 60
+  },
+  "trout": {
+    "raw_item": "raw_trout",
+    "cooked_item": "trout",
+    "display_name": "Trout",
+    "level_required": 15,
+    "xp_per_item": 70,
+    "healing_value": 7,
+    "time_per_item": 60
+  },
+  "salmon": {
+    "raw_item": "raw_salmon",
+    "cooked_item": "salmon",
+    "display_name": "Salmon",
+    "level_required": 25,
+    "xp_per_item": 90,
+    "healing_value": 9,
+    "time_per_item": 60
+  },
+  "tuna": {
+    "raw_item": "raw_tuna",
+    "cooked_item": "tuna",
+    "display_name": "Tuna",
+    "level_required": 30,
+    "xp_per_item": 100,
+    "healing_value": 10,
+    "time_per_item": 60
+  },
+  "lobster": {
+    "raw_item": "raw_lobster",
+    "cooked_item": "lobster",
+    "display_name": "Lobster",
+    "level_required": 40,
+    "xp_per_item": 120,
+    "healing_value": 12,
+    "time_per_item": 60
+  },
+  "swordfish": {
+    "raw_item": "raw_swordfish",
+    "cooked_item": "swordfish",
+    "display_name": "Swordfish",
+    "level_required": 50,
+    "xp_per_item": 140,
+    "healing_value": 14,
+    "time_per_item": 60
+  },
+  "monkfish": {
+    "raw_item": "raw_monkfish",
+    "cooked_item": "monkfish",
+    "display_name": "Monkfish",
+    "level_required": 62,
+    "xp_per_item": 150,
+    "healing_value": 16,
+    "time_per_item": 60
+  },
+  "shark": {
+    "raw_item": "raw_shark",
+    "cooked_item": "shark",
+    "display_name": "Shark",
+    "level_required": 80,
+    "xp_per_item": 210,
+    "healing_value": 20,
+    "time_per_item": 60
+  },
+  "sea_turtle": {
+    "raw_item": "raw_sea_turtle",
+    "cooked_item": "sea_turtle",
+    "display_name": "Sea Turtle",
+    "level_required": 82,
+    "xp_per_item": 212,
+    "healing_value": 21,
+    "time_per_item": 60
+  },
+  "manta_ray": {
+    "raw_item": "raw_manta_ray",
+    "cooked_item": "manta_ray",
+    "display_name": "Manta Ray",
+    "level_required": 91,
+    "xp_per_item": 216,
+    "healing_value": 22,
+    "time_per_item": 60
+  }
+}

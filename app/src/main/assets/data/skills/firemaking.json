@@ -1,0 +1,28 @@
+{
+  "name": "firemaking",
+  "display_name": "Firemaking",
+  "description": "Burn logs to train your Firemaking skill",
+  "max_level": 99,
+  "xp_ranges": {
+    "1": {"min": 5, "max": 10},
+    "5": {"min": 8, "max": 15},
+    "10": {"min": 12, "max": 20},
+    "15": {"min": 18, "max": 28},
+    "20": {"min": 25, "max": 38},
+    "25": {"min": 33, "max": 50},
+    "30": {"min": 43, "max": 65},
+    "35": {"min": 55, "max": 82},
+    "40": {"min": 70, "max": 105},
+    "45": {"min": 88, "max": 130},
+    "50": {"min": 108, "max": 160},
+    "55": {"min": 130, "max": 195},
+    "60": {"min": 155, "max": 230},
+    "65": {"min": 185, "max": 275},
+    "70": {"min": 220, "max": 325},
+    "75": {"min": 260, "max": 385},
+    "80": {"min": 305, "max": 455},
+    "85": {"min": 360, "max": 535},
+    "90": {"min": 420, "max": 625},
+    "95": {"min": 490, "max": 730}
+  }
+}

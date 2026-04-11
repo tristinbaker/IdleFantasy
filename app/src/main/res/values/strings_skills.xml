@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Skill names and descriptions ===== -->
+
+    <!-- Gathering skills -->
+    <string name="skill_mining_name">Mining</string>
+    <string name="skill_mining_desc">Extract valuable ores and gems from the earth.</string>
+    <string name="skill_fishing_name">Fishing</string>
+    <string name="skill_fishing_desc">Catch fish and aquatic treasures from the waters.</string>
+    <string name="skill_woodcutting_name">Woodcutting</string>
+    <string name="skill_woodcutting_desc">Chop trees and gather various types of wood.</string>
+    <string name="skill_farming_name">Farming</string>
+    <string name="skill_farming_desc">Plant and harvest crops from your farming patches.</string>
+    <string name="skill_firemaking_name">Firemaking</string>
+    <string name="skill_firemaking_desc">Burn logs to gain Firemaking experience.</string>
+    <string name="skill_agility_name">Agility</string>
+    <string name="skill_agility_desc">Train your agility to reduce session times. Every 10 levels grants 5% faster sessions.</string>
+
+    <!-- Crafting skills -->
+    <string name="skill_smithing_name">Smithing</string>
+    <string name="skill_smithing_desc">Smelt ores into bars and forge powerful metal equipment.</string>
+    <string name="skill_cooking_name">Cooking</string>
+    <string name="skill_cooking_desc">Cook raw ingredients into food that restores HP in combat.</string>
+    <string name="skill_fletching_name">Fletching</string>
+    <string name="skill_fletching_desc">Craft bows and arrows from logs and metal components.</string>
+    <string name="skill_crafting_name">Crafting</string>
+    <string name="skill_crafting_desc">Create jewellery and other crafted items from precious materials.</string>
+    <string name="skill_runecrafting_name">Runecrafting</string>
+    <string name="skill_runecrafting_desc">Craft magical runes from rune essence for use in spellcasting.</string>
+
+    <!-- Combat skills -->
+    <string name="skill_attack_name">Attack</string>
+    <string name="skill_attack_desc">Improves your melee accuracy, increasing your chance to hit.</string>
+    <string name="skill_strength_name">Strength</string>
+    <string name="skill_strength_desc">Increases your maximum melee damage per hit.</string>
+    <string name="skill_defense_name">Defense</string>
+    <string name="skill_defense_desc">Reduces the damage you take from enemy attacks.</string>
+    <string name="skill_ranged_name">Ranged</string>
+    <string name="skill_ranged_desc">Attack enemies from a safe distance using a bow and arrows.</string>
+    <string name="skill_magic_name">Magic</string>
+    <string name="skill_magic_desc">Cast powerful spells using runes. Higher levels unlock stronger spells.</string>
+    <string name="skill_hitpoints_name">Hitpoints</string>
+    <string name="skill_hitpoints_desc">Your total health. Higher levels let you survive longer in combat.</string>
+    <string name="skill_prayer_name">Prayer</string>
+    <string name="skill_prayer_desc">Bury bones to earn Prayer XP and unlock powerful combat prayers.</string>
+
+    <!-- ===== Agility course names and descriptions ===== -->
+    <string name="agility_beginner_course_name">Beginner Course</string>
+    <string name="agility_beginner_course_desc">A simple obstacle course for those just starting their agility training.</string>
+    <string name="agility_novice_course_name">Novice Course</string>
+    <string name="agility_novice_course_desc">A slightly more challenging course with basic obstacles.</string>
+    <string name="agility_apprentice_course_name">Apprentice Course</string>
+    <string name="agility_apprentice_course_desc">An intermediate course requiring some skill to navigate.</string>
+    <string name="agility_intermediate_course_name">Intermediate Course</string>
+    <string name="agility_intermediate_course_desc">A moderately difficult course with tricky obstacles.</string>
+    <string name="agility_advanced_course_name">Advanced Course</string>
+    <string name="agility_advanced_course_desc">A challenging course that tests your agility prowess.</string>
+    <string name="agility_expert_course_name">Expert Course</string>
+    <string name="agility_expert_course_desc">An expert-level course with dangerous obstacles.</string>
+    <string name="agility_elite_course_name">Elite Course</string>
+    <string name="agility_elite_course_desc">Only the most agile can master this elite course.</string>
+    <string name="agility_master_course_name">Master Course</string>
+    <string name="agility_master_course_desc">A master-tier course with extreme obstacles.</string>
+    <string name="agility_veteran_course_name">Veteran Course</string>
+    <string name="agility_veteran_course_desc">A veteran\'s training ground with punishing challenges.</string>
+    <string name="agility_champion_course_name">Champion Course</string>
+    <string name="agility_champion_course_desc">A champion-level course that pushes you to your limits.</string>
+    <string name="agility_heroic_course_name">Heroic Course</string>
+    <string name="agility_heroic_course_desc">A heroic course where only the best dare to tread.</string>
+    <string name="agility_legendary_course_name">Legendary Course</string>
+    <string name="agility_legendary_course_desc">A legendary course spoken of in whispers among the agile elite.</string>
+    <string name="agility_mythic_course_name">Mythic Course</string>
+    <string name="agility_mythic_course_desc">A mythical course that defies the laws of physics.</string>
+    <string name="agility_divine_course_name">Divine Course</string>
+    <string name="agility_divine_course_desc">A divine course blessed by the gods of agility.</string>
+    <string name="agility_transcendent_course_name">Transcendent Course</string>
+    <string name="agility_transcendent_course_desc">The ultimate test of agility, transcending mortal limits.</string>
+</resources>

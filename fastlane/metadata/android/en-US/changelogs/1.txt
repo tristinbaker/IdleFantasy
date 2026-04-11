@@ -1,0 +1,11 @@
+Initial release.
+
+• 14 trainable skills with session-based XP
+• 12 dungeons with equipment and combat system
+• Crafting: Smithing, Cooking, Fletching, Jewellery
+• Prayer: bury bones for XP
+• 100+ quests with XP rewards
+• Pet drops with XP boosts
+• Achievements system
+• NPC shop (buy and sell)
+• Offline — no internet, no accounts, no ads

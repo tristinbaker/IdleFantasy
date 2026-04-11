@@ -1,0 +1,129 @@
+{
+  "name": "farming",
+  "display_name": "Farming",
+  "description": "Plant and harvest crops, gathering seeds and produce",
+  "max_level": 99,
+  "xp_ranges": {
+    "1": {"min": 6, "max": 11},
+    "5": {"min": 10, "max": 17},
+    "10": {"min": 14, "max": 23},
+    "15": {"min": 20, "max": 32},
+    "20": {"min": 28, "max": 43},
+    "25": {"min": 37, "max": 56},
+    "30": {"min": 48, "max": 72},
+    "35": {"min": 62, "max": 92},
+    "40": {"min": 78, "max": 117},
+    "45": {"min": 98, "max": 145},
+    "50": {"min": 120, "max": 178},
+    "55": {"min": 145, "max": 215},
+    "60": {"min": 172, "max": 258},
+    "65": {"min": 205, "max": 305},
+    "70": {"min": 245, "max": 365},
+    "75": {"min": 290, "max": 430},
+    "80": {"min": 340, "max": 505},
+    "85": {"min": 400, "max": 595},
+    "90": {"min": 470, "max": 695},
+    "95": {"min": 545, "max": 815}
+  },
+  "drop_tables": {
+    "1": [
+      {"item": "potato", "chance": 0.70},
+      {"item": "wheat", "chance": 0.20},
+      {"item": "cabbage_seed", "chance": 0.08},
+      {"item": "potato_seed", "chance": 0.02}
+    ],
+    "5": [
+      {"item": "potato", "chance": 0.55},
+      {"item": "wheat", "chance": 0.25},
+      {"item": "cabbage", "chance": 0.10},
+      {"item": "cabbage_seed", "chance": 0.07},
+      {"item": "potato_seed", "chance": 0.03}
+    ],
+    "10": [
+      {"item": "wheat", "chance": 0.40},
+      {"item": "cabbage", "chance": 0.25},
+      {"item": "tomato", "chance": 0.18},
+      {"item": "cabbage_seed", "chance": 0.10},
+      {"item": "tomato_seed", "chance": 0.07}
+    ],
+    "15": [
+      {"item": "cabbage", "chance": 0.30},
+      {"item": "tomato", "chance": 0.28},
+      {"item": "corn", "chance": 0.20},
+      {"item": "tomato_seed", "chance": 0.12},
+      {"item": "corn_seed", "chance": 0.08},
+      {"item": "herb_seed", "chance": 0.02}
+    ],
+    "20": [
+      {"item": "tomato", "chance": 0.28},
+      {"item": "corn", "chance": 0.25},
+      {"item": "strawberry", "chance": 0.20},
+      {"item": "corn_seed", "chance": 0.12},
+      {"item": "strawberry_seed", "chance": 0.10},
+      {"item": "herb_seed", "chance": 0.05}
+    ],
+    "30": [
+      {"item": "corn", "chance": 0.25},
+      {"item": "strawberry", "chance": 0.25},
+      {"item": "sweetcorn", "chance": 0.20},
+      {"item": "strawberry_seed", "chance": 0.12},
+      {"item": "sweetcorn_seed", "chance": 0.10},
+      {"item": "herb_seed", "chance": 0.05},
+      {"item": "watermelon_seed", "chance": 0.03}
+    ],
+    "40": [
+      {"item": "strawberry", "chance": 0.25},
+      {"item": "sweetcorn", "chance": 0.23},
+      {"item": "watermelon", "chance": 0.18},
+      {"item": "sweetcorn_seed", "chance": 0.12},
+      {"item": "watermelon_seed", "chance": 0.10},
+      {"item": "herb_seed", "chance": 0.08},
+      {"item": "rare_herb", "chance": 0.04}
+    ],
+    "50": [
+      {"item": "sweetcorn", "chance": 0.25},
+      {"item": "watermelon", "chance": 0.22},
+      {"item": "pumpkin", "chance": 0.18},
+      {"item": "watermelon_seed", "chance": 0.12},
+      {"item": "pumpkin_seed", "chance": 0.10},
+      {"item": "rare_herb", "chance": 0.08},
+      {"item": "magic_bean", "chance": 0.05}
+    ],
+    "60": [
+      {"item": "watermelon", "chance": 0.25},
+      {"item": "pumpkin", "chance": 0.25},
+      {"item": "golden_wheat", "chance": 0.18},
+      {"item": "pumpkin_seed", "chance": 0.12},
+      {"item": "rare_herb", "chance": 0.10},
+      {"item": "magic_bean", "chance": 0.07},
+      {"item": "dragon_fruit_seed", "chance": 0.03}
+    ],
+    "70": [
+      {"item": "pumpkin", "chance": 0.25},
+      {"item": "golden_wheat", "chance": 0.25},
+      {"item": "dragon_fruit", "chance": 0.18},
+      {"item": "rare_herb", "chance": 0.12},
+      {"item": "magic_bean", "chance": 0.10},
+      {"item": "dragon_fruit_seed", "chance": 0.07},
+      {"item": "spirit_seed", "chance": 0.03}
+    ],
+    "85": [
+      {"item": "golden_wheat", "chance": 0.25},
+      {"item": "dragon_fruit", "chance": 0.22},
+      {"item": "spirit_herb", "chance": 0.18},
+      {"item": "celestial_bloom", "chance": 0.12},
+      {"item": "spirit_seed", "chance": 0.10},
+      {"item": "celestial_bloom_seed", "chance": 0.08},
+      {"item": "starfruit_seed", "chance": 0.05}
+    ],
+    "95": [
+      {"item": "spirit_herb", "chance": 0.22},
+      {"item": "celestial_bloom", "chance": 0.20},
+      {"item": "starfruit", "chance": 0.18},
+      {"item": "celestial_bloom_seed", "chance": 0.12},
+      {"item": "starfruit_seed", "chance": 0.12},
+      {"item": "void_lotus_seed", "chance": 0.10},
+      {"item": "golden_wheat_seed", "chance": 0.06}
+    ]
+  }
+}

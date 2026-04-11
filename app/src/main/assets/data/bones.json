@@ -1,0 +1,30 @@
+{
+  "bones": {
+    "name": "bones",
+    "display_name": "Bones",
+    "description": "Regular bones from small creatures.",
+    "xp_per_bone": 10,
+    "time_per_bone": 60
+  },
+  "big_bones": {
+    "name": "big_bones",
+    "display_name": "Big Bones",
+    "description": "Larger bones from stronger enemies. Grant more Prayer XP.",
+    "xp_per_bone": 20,
+    "time_per_bone": 60
+  },
+  "giant_bones": {
+    "name": "giant_bones",
+    "display_name": "Giant Bones",
+    "description": "Massive bones from powerful foes. Grant significant Prayer XP.",
+    "xp_per_bone": 40,
+    "time_per_bone": 60
+  },
+  "dragon_bone": {
+    "name": "dragon_bone",
+    "display_name": "Dragon Bone",
+    "description": "Ancient dragon bones. Grant the most Prayer XP.",
+    "xp_per_bone": 80,
+    "time_per_bone": 60
+  }
+}

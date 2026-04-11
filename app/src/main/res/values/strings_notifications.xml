@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Notification channel metadata ===== -->
+    <string name="notif_channel_sessions_name">Session Alerts</string>
+    <string name="notif_channel_sessions_desc">Notifications when your skill sessions complete</string>
+    <string name="notif_channel_farming_name">Farming Alerts</string>
+    <string name="notif_channel_farming_desc">Notifications when your crops are ready to harvest</string>
+
+    <!-- ===== Session complete ===== -->
+    <string name="notif_session_complete_title">Session Complete!</string>
+    <!-- Translator note: %1$s = localised skill name (e.g. "Mining") -->
+    <string name="notif_session_complete_body">Your %1$s session has finished. Tap to collect your rewards.</string>
+
+    <!-- ===== Farming ready ===== -->
+    <string name="notif_farming_ready_title">Crops Ready!</string>
+    <!-- Translator note: %1$s = localised crop name (e.g. "Wheat"). Adjust grammar as needed for your language. -->
+    <string name="notif_farming_ready_body">Your %1$s is ready to harvest.</string>
+    <!-- Plural variant used when multiple patches are ready -->
+    <!-- Translator note: %1$d = number of patches ready -->
+    <string name="notif_farming_ready_body_multi">%1$d patches are ready to harvest.</string>
+</resources>

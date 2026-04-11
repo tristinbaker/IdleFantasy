@@ -1,0 +1,1360 @@
+{
+  "bronze_bar": {
+    "type": "bar",
+    "display_name": "Bronze Bar",
+    "level_required": 1,
+    "materials": {
+      "copper_ore": 1,
+      "tin_ore": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 6.2,
+    "time_per_item": 60
+  },
+  "iron_bar": {
+    "type": "bar",
+    "display_name": "Iron Bar",
+    "level_required": 15,
+    "materials": {
+      "iron_ore": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 12.5,
+    "time_per_item": 60
+  },
+  "silver_bar": {
+    "type": "bar",
+    "display_name": "Silver Bar",
+    "level_required": 20,
+    "materials": {
+      "silver_ore": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 13.5,
+    "time_per_item": 60
+  },
+  "steel_bar": {
+    "type": "bar",
+    "display_name": "Steel Bar",
+    "level_required": 30,
+    "materials": {
+      "iron_ore": 1,
+      "coal": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 17.5,
+    "time_per_item": 60
+  },
+  "gold_bar": {
+    "type": "bar",
+    "display_name": "Gold Bar",
+    "level_required": 40,
+    "materials": {
+      "gold_ore": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 22.5,
+    "time_per_item": 60
+  },
+  "mithril_bar": {
+    "type": "bar",
+    "display_name": "Mithril Bar",
+    "level_required": 50,
+    "materials": {
+      "mithril_ore": 1,
+      "coal": 4
+    },
+    "output_quantity": 1,
+    "xp_per_item": 30.0,
+    "time_per_item": 60
+  },
+  "adamantite_bar": {
+    "type": "bar",
+    "display_name": "Adamantite Bar",
+    "level_required": 70,
+    "materials": {
+      "adamantite_ore": 1,
+      "coal": 6
+    },
+    "output_quantity": 1,
+    "xp_per_item": 37.5,
+    "time_per_item": 60
+  },
+  "platinum_bar": {
+    "type": "bar",
+    "display_name": "Platinum Bar",
+    "level_required": 80,
+    "materials": {
+      "platinum_ore": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 40,
+    "time_per_item": 60
+  },
+  "runite_bar": {
+    "type": "bar",
+    "display_name": "Runite Bar",
+    "level_required": 85,
+    "materials": {
+      "runite_ore": 1,
+      "coal": 8
+    },
+    "output_quantity": 1,
+    "xp_per_item": 50.0,
+    "time_per_item": 60
+  },
+  "bronze_arrow_tip": {
+    "type": "component",
+    "display_name": "Bronze Arrow Tips",
+    "level_required": 1,
+    "materials": {
+      "bronze_bar": 1
+    },
+    "output_quantity": 15,
+    "xp_per_item": 6,
+    "time_per_item": 60
+  },
+  "iron_arrow_tip": {
+    "type": "component",
+    "display_name": "Iron Arrow Tips",
+    "level_required": 20,
+    "materials": {
+      "iron_bar": 1
+    },
+    "output_quantity": 15,
+    "xp_per_item": 13,
+    "time_per_item": 60
+  },
+  "steel_arrow_tip": {
+    "type": "component",
+    "display_name": "Steel Arrow Tips",
+    "level_required": 35,
+    "materials": {
+      "steel_bar": 1
+    },
+    "output_quantity": 15,
+    "xp_per_item": 20,
+    "time_per_item": 60
+  },
+  "mithril_arrow_tip": {
+    "type": "component",
+    "display_name": "Mithril Arrow Tips",
+    "level_required": 55,
+    "materials": {
+      "mithril_bar": 1
+    },
+    "output_quantity": 15,
+    "xp_per_item": 28.0,
+    "time_per_item": 60
+  },
+  "adamantite_arrow_tip": {
+    "type": "component",
+    "display_name": "Adamantite Arrow Tips",
+    "level_required": 75,
+    "materials": {
+      "adamantite_bar": 1
+    },
+    "output_quantity": 15,
+    "xp_per_item": 36.0,
+    "time_per_item": 60
+  },
+  "runite_arrow_tip": {
+    "type": "component",
+    "display_name": "Runite Arrow Tips",
+    "level_required": 90,
+    "materials": {
+      "runite_bar": 1
+    },
+    "output_quantity": 15,
+    "xp_per_item": 45.0,
+    "time_per_item": 60
+  },
+  "bronze_dagger": {
+    "type": "equipment",
+    "display_name": "Bronze Dagger",
+    "level_required": 1,
+    "materials": {
+      "bronze_bar": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 12.5,
+    "time_per_item": 60
+  },
+  "iron_dagger": {
+    "type": "equipment",
+    "display_name": "Iron Dagger",
+    "level_required": 15,
+    "materials": {
+      "iron_bar": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 25,
+    "time_per_item": 60
+  },
+  "steel_dagger": {
+    "type": "equipment",
+    "display_name": "Steel Dagger",
+    "level_required": 30,
+    "materials": {
+      "steel_bar": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 37.5,
+    "time_per_item": 60
+  },
+  "mithril_dagger": {
+    "type": "equipment",
+    "display_name": "Mithril Dagger",
+    "level_required": 50,
+    "materials": {
+      "mithril_bar": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 50.0,
+    "time_per_item": 60
+  },
+  "adamantite_dagger": {
+    "type": "equipment",
+    "display_name": "Adamantite Dagger",
+    "level_required": 70,
+    "materials": {
+      "adamantite_bar": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 62.5,
+    "time_per_item": 60
+  },
+  "runite_dagger": {
+    "type": "equipment",
+    "display_name": "Runite Dagger",
+    "level_required": 85,
+    "materials": {
+      "runite_bar": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 75.0,
+    "time_per_item": 60
+  },
+  "bronze_sword": {
+    "type": "equipment",
+    "display_name": "Bronze Sword",
+    "level_required": 4,
+    "materials": {
+      "bronze_bar": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 12.5,
+    "time_per_item": 60
+  },
+  "iron_sword": {
+    "type": "equipment",
+    "display_name": "Iron Sword",
+    "level_required": 19,
+    "materials": {
+      "iron_bar": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 25,
+    "time_per_item": 60
+  },
+  "steel_sword": {
+    "type": "equipment",
+    "display_name": "Steel Sword",
+    "level_required": 34,
+    "materials": {
+      "steel_bar": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 37.5,
+    "time_per_item": 60
+  },
+  "mithril_sword": {
+    "type": "equipment",
+    "display_name": "Mithril Sword",
+    "level_required": 54,
+    "materials": {
+      "mithril_bar": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 50.0,
+    "time_per_item": 60
+  },
+  "adamantite_sword": {
+    "type": "equipment",
+    "display_name": "Adamantite Sword",
+    "level_required": 74,
+    "materials": {
+      "adamantite_bar": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 62.5,
+    "time_per_item": 60
+  },
+  "runite_sword": {
+    "type": "equipment",
+    "display_name": "Runite Sword",
+    "level_required": 89,
+    "materials": {
+      "runite_bar": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 75.0,
+    "time_per_item": 60
+  },
+  "bronze_scimitar": {
+    "type": "equipment",
+    "display_name": "Bronze Scimitar",
+    "level_required": 5,
+    "materials": {
+      "bronze_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 25,
+    "time_per_item": 60
+  },
+  "iron_scimitar": {
+    "type": "equipment",
+    "display_name": "Iron Scimitar",
+    "level_required": 20,
+    "materials": {
+      "iron_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 50,
+    "time_per_item": 60
+  },
+  "steel_scimitar": {
+    "type": "equipment",
+    "display_name": "Steel Scimitar",
+    "level_required": 35,
+    "materials": {
+      "steel_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 75,
+    "time_per_item": 60
+  },
+  "mithril_scimitar": {
+    "type": "equipment",
+    "display_name": "Mithril Scimitar",
+    "level_required": 55,
+    "materials": {
+      "mithril_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 115.0,
+    "time_per_item": 60
+  },
+  "adamantite_scimitar": {
+    "type": "equipment",
+    "display_name": "Adamantite Scimitar",
+    "level_required": 75,
+    "materials": {
+      "adamantite_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 143.8,
+    "time_per_item": 60
+  },
+  "runite_scimitar": {
+    "type": "equipment",
+    "display_name": "Runite Scimitar",
+    "level_required": 90,
+    "materials": {
+      "runite_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 172.5,
+    "time_per_item": 60
+  },
+  "bronze_longsword": {
+    "type": "equipment",
+    "display_name": "Bronze Longsword",
+    "level_required": 6,
+    "materials": {
+      "bronze_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 25,
+    "time_per_item": 60
+  },
+  "iron_longsword": {
+    "type": "equipment",
+    "display_name": "Iron Longsword",
+    "level_required": 21,
+    "materials": {
+      "iron_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 50,
+    "time_per_item": 60
+  },
+  "steel_longsword": {
+    "type": "equipment",
+    "display_name": "Steel Longsword",
+    "level_required": 36,
+    "materials": {
+      "steel_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 75,
+    "time_per_item": 60
+  },
+  "mithril_longsword": {
+    "type": "equipment",
+    "display_name": "Mithril Longsword",
+    "level_required": 56,
+    "materials": {
+      "mithril_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 115.0,
+    "time_per_item": 60
+  },
+  "adamantite_longsword": {
+    "type": "equipment",
+    "display_name": "Adamantite Longsword",
+    "level_required": 76,
+    "materials": {
+      "adamantite_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 143.8,
+    "time_per_item": 60
+  },
+  "runite_longsword": {
+    "type": "equipment",
+    "display_name": "Runite Longsword",
+    "level_required": 91,
+    "materials": {
+      "runite_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 172.5,
+    "time_per_item": 60
+  },
+  "bronze_2h_sword": {
+    "type": "equipment",
+    "display_name": "Bronze 2H Sword",
+    "level_required": 14,
+    "materials": {
+      "bronze_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 37.5,
+    "time_per_item": 60
+  },
+  "iron_2h_sword": {
+    "type": "equipment",
+    "display_name": "Iron 2H Sword",
+    "level_required": 29,
+    "materials": {
+      "iron_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 75,
+    "time_per_item": 60
+  },
+  "steel_2h_sword": {
+    "type": "equipment",
+    "display_name": "Steel 2H Sword",
+    "level_required": 44,
+    "materials": {
+      "steel_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 112.5,
+    "time_per_item": 60
+  },
+  "mithril_2h_sword": {
+    "type": "equipment",
+    "display_name": "Mithril 2H Sword",
+    "level_required": 64,
+    "materials": {
+      "mithril_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 232.5,
+    "time_per_item": 60
+  },
+  "adamantite_2h_sword": {
+    "type": "equipment",
+    "display_name": "Adamantite 2H Sword",
+    "level_required": 84,
+    "materials": {
+      "adamantite_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 290.6,
+    "time_per_item": 60
+  },
+  "runite_2h_sword": {
+    "type": "equipment",
+    "display_name": "Runite 2H Sword",
+    "level_required": 99,
+    "materials": {
+      "runite_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 348.8,
+    "time_per_item": 60
+  },
+  "bronze_warhammer": {
+    "type": "equipment",
+    "display_name": "Bronze Warhammer",
+    "level_required": 9,
+    "materials": {
+      "bronze_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 37.5,
+    "time_per_item": 60
+  },
+  "iron_warhammer": {
+    "type": "equipment",
+    "display_name": "Iron Warhammer",
+    "level_required": 24,
+    "materials": {
+      "iron_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 75,
+    "time_per_item": 60
+  },
+  "steel_warhammer": {
+    "type": "equipment",
+    "display_name": "Steel Warhammer",
+    "level_required": 39,
+    "materials": {
+      "steel_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 112.5,
+    "time_per_item": 60
+  },
+  "mithril_warhammer": {
+    "type": "equipment",
+    "display_name": "Mithril Warhammer",
+    "level_required": 59,
+    "materials": {
+      "mithril_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 232.5,
+    "time_per_item": 60
+  },
+  "adamantite_warhammer": {
+    "type": "equipment",
+    "display_name": "Adamantite Warhammer",
+    "level_required": 79,
+    "materials": {
+      "adamantite_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 290.6,
+    "time_per_item": 60
+  },
+  "runite_warhammer": {
+    "type": "equipment",
+    "display_name": "Runite Warhammer",
+    "level_required": 94,
+    "materials": {
+      "runite_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 348.8,
+    "time_per_item": 60
+  },
+  "bronze_battleaxe": {
+    "type": "equipment",
+    "display_name": "Bronze Battleaxe",
+    "level_required": 10,
+    "materials": {
+      "bronze_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 37.5,
+    "time_per_item": 60
+  },
+  "iron_battleaxe": {
+    "type": "equipment",
+    "display_name": "Iron Battleaxe",
+    "level_required": 25,
+    "materials": {
+      "iron_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 75,
+    "time_per_item": 60
+  },
+  "steel_battleaxe": {
+    "type": "equipment",
+    "display_name": "Steel Battleaxe",
+    "level_required": 40,
+    "materials": {
+      "steel_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 112.5,
+    "time_per_item": 60
+  },
+  "mithril_battleaxe": {
+    "type": "equipment",
+    "display_name": "Mithril Battleaxe",
+    "level_required": 60,
+    "materials": {
+      "mithril_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 232.5,
+    "time_per_item": 60
+  },
+  "adamantite_battleaxe": {
+    "type": "equipment",
+    "display_name": "Adamantite Battleaxe",
+    "level_required": 80,
+    "materials": {
+      "adamantite_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 290.6,
+    "time_per_item": 60
+  },
+  "runite_battleaxe": {
+    "type": "equipment",
+    "display_name": "Runite Battleaxe",
+    "level_required": 95,
+    "materials": {
+      "runite_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 348.8,
+    "time_per_item": 60
+  },
+  "bronze_med_helmet": {
+    "type": "equipment",
+    "display_name": "Bronze Med Helmet",
+    "level_required": 3,
+    "materials": {
+      "bronze_bar": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 12.5,
+    "time_per_item": 60
+  },
+  "iron_med_helmet": {
+    "type": "equipment",
+    "display_name": "Iron Med Helmet",
+    "level_required": 18,
+    "materials": {
+      "iron_bar": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 25,
+    "time_per_item": 60
+  },
+  "steel_med_helmet": {
+    "type": "equipment",
+    "display_name": "Steel Med Helmet",
+    "level_required": 33,
+    "materials": {
+      "steel_bar": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 37.5,
+    "time_per_item": 60
+  },
+  "mithril_med_helmet": {
+    "type": "equipment",
+    "display_name": "Mithril Med Helmet",
+    "level_required": 53,
+    "materials": {
+      "mithril_bar": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 50.0,
+    "time_per_item": 60
+  },
+  "adamantite_med_helmet": {
+    "type": "equipment",
+    "display_name": "Adamantite Med Helmet",
+    "level_required": 73,
+    "materials": {
+      "adamantite_bar": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 62.5,
+    "time_per_item": 60
+  },
+  "runite_med_helmet": {
+    "type": "equipment",
+    "display_name": "Runite Med Helmet",
+    "level_required": 88,
+    "materials": {
+      "runite_bar": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 75.0,
+    "time_per_item": 60
+  },
+  "bronze_full_helmet": {
+    "type": "equipment",
+    "display_name": "Bronze Full Helmet",
+    "level_required": 7,
+    "materials": {
+      "bronze_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 25,
+    "time_per_item": 60
+  },
+  "iron_full_helmet": {
+    "type": "equipment",
+    "display_name": "Iron Full Helmet",
+    "level_required": 22,
+    "materials": {
+      "iron_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 50,
+    "time_per_item": 60
+  },
+  "steel_full_helmet": {
+    "type": "equipment",
+    "display_name": "Steel Full Helmet",
+    "level_required": 37,
+    "materials": {
+      "steel_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 75,
+    "time_per_item": 60
+  },
+  "mithril_full_helmet": {
+    "type": "equipment",
+    "display_name": "Mithril Full Helmet",
+    "level_required": 57,
+    "materials": {
+      "mithril_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 115.0,
+    "time_per_item": 60
+  },
+  "adamantite_full_helmet": {
+    "type": "equipment",
+    "display_name": "Adamantite Full Helmet",
+    "level_required": 77,
+    "materials": {
+      "adamantite_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 143.8,
+    "time_per_item": 60
+  },
+  "runite_full_helmet": {
+    "type": "equipment",
+    "display_name": "Runite Full Helmet",
+    "level_required": 92,
+    "materials": {
+      "runite_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 172.5,
+    "time_per_item": 60
+  },
+  "bronze_chainbody": {
+    "type": "equipment",
+    "display_name": "Bronze Chainbody",
+    "level_required": 11,
+    "materials": {
+      "bronze_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 37.5,
+    "time_per_item": 60
+  },
+  "iron_chainbody": {
+    "type": "equipment",
+    "display_name": "Iron Chainbody",
+    "level_required": 26,
+    "materials": {
+      "iron_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 75,
+    "time_per_item": 60
+  },
+  "steel_chainbody": {
+    "type": "equipment",
+    "display_name": "Steel Chainbody",
+    "level_required": 41,
+    "materials": {
+      "steel_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 112.5,
+    "time_per_item": 60
+  },
+  "mithril_chainbody": {
+    "type": "equipment",
+    "display_name": "Mithril Chainbody",
+    "level_required": 61,
+    "materials": {
+      "mithril_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 232.5,
+    "time_per_item": 60
+  },
+  "adamantite_chainbody": {
+    "type": "equipment",
+    "display_name": "Adamantite Chainbody",
+    "level_required": 81,
+    "materials": {
+      "adamantite_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 290.6,
+    "time_per_item": 60
+  },
+  "runite_chainbody": {
+    "type": "equipment",
+    "display_name": "Runite Chainbody",
+    "level_required": 96,
+    "materials": {
+      "runite_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 348.8,
+    "time_per_item": 60
+  },
+  "bronze_platelegs": {
+    "type": "equipment",
+    "display_name": "Bronze Platelegs",
+    "level_required": 16,
+    "materials": {
+      "bronze_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 37.5,
+    "time_per_item": 60
+  },
+  "iron_platelegs": {
+    "type": "equipment",
+    "display_name": "Iron Platelegs",
+    "level_required": 31,
+    "materials": {
+      "iron_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 75,
+    "time_per_item": 60
+  },
+  "steel_platelegs": {
+    "type": "equipment",
+    "display_name": "Steel Platelegs",
+    "level_required": 46,
+    "materials": {
+      "steel_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 112.5,
+    "time_per_item": 60
+  },
+  "mithril_platelegs": {
+    "type": "equipment",
+    "display_name": "Mithril Platelegs",
+    "level_required": 66,
+    "materials": {
+      "mithril_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 232.5,
+    "time_per_item": 60
+  },
+  "adamantite_platelegs": {
+    "type": "equipment",
+    "display_name": "Adamantite Platelegs",
+    "level_required": 86,
+    "materials": {
+      "adamantite_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 290.6,
+    "time_per_item": 60
+  },
+  "runite_platelegs": {
+    "type": "equipment",
+    "display_name": "Runite Platelegs",
+    "level_required": 99,
+    "materials": {
+      "runite_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 348.8,
+    "time_per_item": 60
+  },
+  "bronze_plateskirt": {
+    "type": "equipment",
+    "display_name": "Bronze Plateskirt",
+    "level_required": 16,
+    "materials": {
+      "bronze_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 37.5,
+    "time_per_item": 60
+  },
+  "iron_plateskirt": {
+    "type": "equipment",
+    "display_name": "Iron Plateskirt",
+    "level_required": 31,
+    "materials": {
+      "iron_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 75,
+    "time_per_item": 60
+  },
+  "steel_plateskirt": {
+    "type": "equipment",
+    "display_name": "Steel Plateskirt",
+    "level_required": 46,
+    "materials": {
+      "steel_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 112.5,
+    "time_per_item": 60
+  },
+  "mithril_plateskirt": {
+    "type": "equipment",
+    "display_name": "Mithril Plateskirt",
+    "level_required": 66,
+    "materials": {
+      "mithril_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 232.5,
+    "time_per_item": 60
+  },
+  "adamantite_plateskirt": {
+    "type": "equipment",
+    "display_name": "Adamantite Plateskirt",
+    "level_required": 86,
+    "materials": {
+      "adamantite_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 290.6,
+    "time_per_item": 60
+  },
+  "runite_plateskirt": {
+    "type": "equipment",
+    "display_name": "Runite Plateskirt",
+    "level_required": 99,
+    "materials": {
+      "runite_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 348.8,
+    "time_per_item": 60
+  },
+  "bronze_platebody": {
+    "type": "equipment",
+    "display_name": "Bronze Platebody",
+    "level_required": 18,
+    "materials": {
+      "bronze_bar": 5
+    },
+    "output_quantity": 1,
+    "xp_per_item": 62.5,
+    "time_per_item": 60
+  },
+  "iron_platebody": {
+    "type": "equipment",
+    "display_name": "Iron Platebody",
+    "level_required": 33,
+    "materials": {
+      "iron_bar": 5
+    },
+    "output_quantity": 1,
+    "xp_per_item": 125,
+    "time_per_item": 60
+  },
+  "steel_platebody": {
+    "type": "equipment",
+    "display_name": "Steel Platebody",
+    "level_required": 48,
+    "materials": {
+      "steel_bar": 5
+    },
+    "output_quantity": 1,
+    "xp_per_item": 187.5,
+    "time_per_item": 60
+  },
+  "mithril_platebody": {
+    "type": "equipment",
+    "display_name": "Mithril Platebody",
+    "level_required": 68,
+    "materials": {
+      "mithril_bar": 5
+    },
+    "output_quantity": 1,
+    "xp_per_item": 462.5,
+    "time_per_item": 60
+  },
+  "adamantite_platebody": {
+    "type": "equipment",
+    "display_name": "Adamantite Platebody",
+    "level_required": 88,
+    "materials": {
+      "adamantite_bar": 5
+    },
+    "output_quantity": 1,
+    "xp_per_item": 578.1,
+    "time_per_item": 60
+  },
+  "runite_platebody": {
+    "type": "equipment",
+    "display_name": "Runite Platebody",
+    "level_required": 99,
+    "materials": {
+      "runite_bar": 5
+    },
+    "output_quantity": 1,
+    "xp_per_item": 693.8,
+    "time_per_item": 60
+  },
+  "bronze_square_shield": {
+    "type": "equipment",
+    "display_name": "Bronze Square Shield",
+    "level_required": 8,
+    "materials": {
+      "bronze_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 25,
+    "time_per_item": 60
+  },
+  "iron_square_shield": {
+    "type": "equipment",
+    "display_name": "Iron Square Shield",
+    "level_required": 23,
+    "materials": {
+      "iron_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 50,
+    "time_per_item": 60
+  },
+  "steel_square_shield": {
+    "type": "equipment",
+    "display_name": "Steel Square Shield",
+    "level_required": 38,
+    "materials": {
+      "steel_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 75,
+    "time_per_item": 60
+  },
+  "mithril_square_shield": {
+    "type": "equipment",
+    "display_name": "Mithril Square Shield",
+    "level_required": 58,
+    "materials": {
+      "mithril_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 115.0,
+    "time_per_item": 60
+  },
+  "adamantite_square_shield": {
+    "type": "equipment",
+    "display_name": "Adamantite Square Shield",
+    "level_required": 78,
+    "materials": {
+      "adamantite_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 143.8,
+    "time_per_item": 60
+  },
+  "runite_square_shield": {
+    "type": "equipment",
+    "display_name": "Runite Square Shield",
+    "level_required": 93,
+    "materials": {
+      "runite_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 172.5,
+    "time_per_item": 60
+  },
+  "bronze_kiteshield": {
+    "type": "equipment",
+    "display_name": "Bronze Kiteshield",
+    "level_required": 12,
+    "materials": {
+      "bronze_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 37.5,
+    "time_per_item": 60
+  },
+  "iron_kiteshield": {
+    "type": "equipment",
+    "display_name": "Iron Kiteshield",
+    "level_required": 27,
+    "materials": {
+      "iron_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 75,
+    "time_per_item": 60
+  },
+  "steel_kiteshield": {
+    "type": "equipment",
+    "display_name": "Steel Kiteshield",
+    "level_required": 42,
+    "materials": {
+      "steel_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 112.5,
+    "time_per_item": 60
+  },
+  "mithril_kiteshield": {
+    "type": "equipment",
+    "display_name": "Mithril Kiteshield",
+    "level_required": 62,
+    "materials": {
+      "mithril_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 232.5,
+    "time_per_item": 60
+  },
+  "adamantite_kiteshield": {
+    "type": "equipment",
+    "display_name": "Adamantite Kiteshield",
+    "level_required": 82,
+    "materials": {
+      "adamantite_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 290.6,
+    "time_per_item": 60
+  },
+  "runite_kiteshield": {
+    "type": "equipment",
+    "display_name": "Runite Kiteshield",
+    "level_required": 97,
+    "materials": {
+      "runite_bar": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 348.8,
+    "time_per_item": 60
+  },
+  "bronze_pickaxe": {
+    "type": "tool",
+    "display_name": "Bronze Pickaxe",
+    "level_required": 1,
+    "materials": {
+      "bronze_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 25,
+    "time_per_item": 60
+  },
+  "iron_pickaxe": {
+    "type": "tool",
+    "display_name": "Iron Pickaxe",
+    "level_required": 15,
+    "materials": {
+      "iron_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 50,
+    "time_per_item": 60
+  },
+  "steel_pickaxe": {
+    "type": "tool",
+    "display_name": "Steel Pickaxe",
+    "level_required": 30,
+    "materials": {
+      "steel_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 75,
+    "time_per_item": 60
+  },
+  "mithril_pickaxe": {
+    "type": "tool",
+    "display_name": "Mithril Pickaxe",
+    "level_required": 55,
+    "materials": {
+      "mithril_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 129.4,
+    "time_per_item": 60
+  },
+  "adamantite_pickaxe": {
+    "type": "tool",
+    "display_name": "Adamantite Pickaxe",
+    "level_required": 70,
+    "materials": {
+      "adamantite_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 172.5,
+    "time_per_item": 60
+  },
+  "runite_pickaxe": {
+    "type": "tool",
+    "display_name": "Runite Pickaxe",
+    "level_required": 85,
+    "materials": {
+      "runite_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 215.6,
+    "time_per_item": 60
+  },
+  "bronze_axe": {
+    "type": "tool",
+    "display_name": "Bronze Axe",
+    "level_required": 1,
+    "materials": {
+      "bronze_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 25,
+    "time_per_item": 60
+  },
+  "iron_axe": {
+    "type": "tool",
+    "display_name": "Iron Axe",
+    "level_required": 15,
+    "materials": {
+      "iron_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 50,
+    "time_per_item": 60
+  },
+  "steel_axe": {
+    "type": "tool",
+    "display_name": "Steel Axe",
+    "level_required": 30,
+    "materials": {
+      "steel_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 75,
+    "time_per_item": 60
+  },
+  "mithril_axe": {
+    "type": "tool",
+    "display_name": "Mithril Axe",
+    "level_required": 55,
+    "materials": {
+      "mithril_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 115.0,
+    "time_per_item": 60
+  },
+  "adamantite_axe": {
+    "type": "tool",
+    "display_name": "Adamantite Axe",
+    "level_required": 70,
+    "materials": {
+      "adamantite_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 143.8,
+    "time_per_item": 60
+  },
+  "runite_axe": {
+    "type": "tool",
+    "display_name": "Runite Axe",
+    "level_required": 85,
+    "materials": {
+      "runite_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 215.6,
+    "time_per_item": 60
+  },
+  "bronze_fishing_rod": {
+    "type": "tool",
+    "display_name": "Bronze Fishing Rod",
+    "level_required": 1,
+    "materials": {
+      "bronze_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 25,
+    "time_per_item": 60
+  },
+  "iron_fishing_rod": {
+    "type": "tool",
+    "display_name": "Iron Fishing Rod",
+    "level_required": 15,
+    "materials": {
+      "iron_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 50,
+    "time_per_item": 60
+  },
+  "steel_fishing_rod": {
+    "type": "tool",
+    "display_name": "Steel Fishing Rod",
+    "level_required": 30,
+    "materials": {
+      "steel_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 75,
+    "time_per_item": 60
+  },
+  "mithril_fishing_rod": {
+    "type": "tool",
+    "display_name": "Mithril Fishing Rod",
+    "level_required": 55,
+    "materials": {
+      "mithril_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 115.0,
+    "time_per_item": 60
+  },
+  "adamantite_fishing_rod": {
+    "type": "tool",
+    "display_name": "Adamantite Fishing Rod",
+    "level_required": 70,
+    "materials": {
+      "adamantite_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 143.8,
+    "time_per_item": 60
+  },
+  "runite_fishing_rod": {
+    "type": "tool",
+    "display_name": "Runite Fishing Rod",
+    "level_required": 85,
+    "materials": {
+      "runite_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 215.6,
+    "time_per_item": 60
+  }
+}

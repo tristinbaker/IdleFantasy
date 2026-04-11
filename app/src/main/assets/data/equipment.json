@@ -1,0 +1,2215 @@
+{
+  "bronze_sword": {
+    "name": "bronze_sword",
+    "display_name": "Bronze Sword",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A bronze sword.",
+    "attack_bonus": 6,
+    "strength_bonus": 5,
+    "defense_bonus": 0,
+    "requirements": {}
+  },
+  "bronze_scimitar": {
+    "name": "bronze_scimitar",
+    "display_name": "Bronze Scimitar",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A bronze scimitar.",
+    "attack_bonus": 5,
+    "strength_bonus": 7,
+    "defense_bonus": 0,
+    "requirements": {}
+  },
+  "wooden_bow": {
+    "name": "wooden_bow",
+    "display_name": "Wooden Bow",
+    "slot": "weapon",
+    "combat_style": "ranged",
+    "description": "A simple wooden bow. Good for training ranged.",
+    "attack_bonus": 4,
+    "strength_bonus": 5,
+    "defense_bonus": 0,
+    "requirements": {}
+  },
+  "basic_staff": {
+    "name": "basic_staff",
+    "display_name": "Basic Staff",
+    "slot": "weapon",
+    "combat_style": "magic",
+    "description": "A simple wooden staff. Good for training magic.",
+    "attack_bonus": 3,
+    "strength_bonus": 4,
+    "defense_bonus": 1,
+    "requirements": {}
+  },
+  "iron_sword": {
+    "name": "iron_sword",
+    "display_name": "Iron Sword",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A iron sword.",
+    "attack_bonus": 10,
+    "strength_bonus": 9,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 10
+    }
+  },
+  "iron_scimitar": {
+    "name": "iron_scimitar",
+    "display_name": "Iron Scimitar",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A iron scimitar.",
+    "attack_bonus": 9,
+    "strength_bonus": 12,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 10
+    }
+  },
+  "oak_bow": {
+    "name": "oak_bow",
+    "display_name": "Oak Bow",
+    "slot": "weapon",
+    "combat_style": "ranged",
+    "description": "A sturdy oak bow. Better range weapon.",
+    "attack_bonus": 9,
+    "strength_bonus": 10,
+    "defense_bonus": 0,
+    "requirements": {
+      "ranged": 5
+    }
+  },
+  "apprentice_staff": {
+    "name": "apprentice_staff",
+    "display_name": "Apprentice Staff",
+    "slot": "weapon",
+    "combat_style": "magic",
+    "description": "A magical staff for apprentices.",
+    "attack_bonus": 8,
+    "strength_bonus": 9,
+    "defense_bonus": 2,
+    "requirements": {
+      "magic": 5
+    }
+  },
+  "steel_sword": {
+    "name": "steel_sword",
+    "display_name": "Steel Sword",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A steel sword.",
+    "attack_bonus": 16,
+    "strength_bonus": 14,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 20
+    }
+  },
+  "steel_scimitar": {
+    "name": "steel_scimitar",
+    "display_name": "Steel Scimitar",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A steel scimitar.",
+    "attack_bonus": 14,
+    "strength_bonus": 19,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 20
+    }
+  },
+  "bronze_dagger": {
+    "name": "bronze_dagger",
+    "display_name": "Bronze Dagger",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A bronze dagger.",
+    "attack_bonus": 5,
+    "strength_bonus": 4,
+    "defense_bonus": 0,
+    "requirements": {}
+  },
+  "bronze_longsword": {
+    "name": "bronze_longsword",
+    "display_name": "Bronze Longsword",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A bronze longsword.",
+    "attack_bonus": 8,
+    "strength_bonus": 6,
+    "defense_bonus": 0,
+    "requirements": {}
+  },
+  "bronze_2h_sword": {
+    "name": "bronze_2h_sword",
+    "display_name": "Bronze 2H Sword",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A bronze 2h sword.",
+    "attack_bonus": 10,
+    "strength_bonus": 10,
+    "defense_bonus": 0,
+    "requirements": {}
+  },
+  "bronze_warhammer": {
+    "name": "bronze_warhammer",
+    "display_name": "Bronze Warhammer",
+    "slot": "weapon",
+    "combat_style": "strength",
+    "description": "A bronze warhammer.",
+    "attack_bonus": 7,
+    "strength_bonus": 9,
+    "defense_bonus": 0,
+    "requirements": {}
+  },
+  "bronze_battleaxe": {
+    "name": "bronze_battleaxe",
+    "display_name": "Bronze Battleaxe",
+    "slot": "weapon",
+    "combat_style": "strength",
+    "description": "A bronze battleaxe.",
+    "attack_bonus": 8,
+    "strength_bonus": 8,
+    "defense_bonus": 0,
+    "requirements": {}
+  },
+  "iron_dagger": {
+    "name": "iron_dagger",
+    "display_name": "Iron Dagger",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A iron dagger.",
+    "attack_bonus": 9,
+    "strength_bonus": 7,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 10
+    }
+  },
+  "iron_longsword": {
+    "name": "iron_longsword",
+    "display_name": "Iron Longsword",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A iron longsword.",
+    "attack_bonus": 14,
+    "strength_bonus": 10,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 10
+    }
+  },
+  "iron_2h_sword": {
+    "name": "iron_2h_sword",
+    "display_name": "Iron 2H Sword",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A iron 2h sword.",
+    "attack_bonus": 18,
+    "strength_bonus": 18,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 10
+    }
+  },
+  "iron_warhammer": {
+    "name": "iron_warhammer",
+    "display_name": "Iron Warhammer",
+    "slot": "weapon",
+    "combat_style": "strength",
+    "description": "A iron warhammer.",
+    "attack_bonus": 12,
+    "strength_bonus": 16,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 10
+    }
+  },
+  "iron_battleaxe": {
+    "name": "iron_battleaxe",
+    "display_name": "Iron Battleaxe",
+    "slot": "weapon",
+    "combat_style": "strength",
+    "description": "A iron battleaxe.",
+    "attack_bonus": 14,
+    "strength_bonus": 14,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 10
+    }
+  },
+  "steel_dagger": {
+    "name": "steel_dagger",
+    "display_name": "Steel Dagger",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A steel dagger.",
+    "attack_bonus": 14,
+    "strength_bonus": 11,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 20
+    }
+  },
+  "steel_longsword": {
+    "name": "steel_longsword",
+    "display_name": "Steel Longsword",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A steel longsword.",
+    "attack_bonus": 22,
+    "strength_bonus": 16,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 20
+    }
+  },
+  "steel_2h_sword": {
+    "name": "steel_2h_sword",
+    "display_name": "Steel 2H Sword",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A steel 2h sword.",
+    "attack_bonus": 28,
+    "strength_bonus": 28,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 20
+    }
+  },
+  "steel_warhammer": {
+    "name": "steel_warhammer",
+    "display_name": "Steel Warhammer",
+    "slot": "weapon",
+    "combat_style": "strength",
+    "description": "A steel warhammer.",
+    "attack_bonus": 19,
+    "strength_bonus": 25,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 20
+    }
+  },
+  "steel_battleaxe": {
+    "name": "steel_battleaxe",
+    "display_name": "Steel Battleaxe",
+    "slot": "weapon",
+    "combat_style": "strength",
+    "description": "A steel battleaxe.",
+    "attack_bonus": 22,
+    "strength_bonus": 22,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 20
+    }
+  },
+  "mithril_dagger": {
+    "name": "mithril_dagger",
+    "display_name": "Mithril Dagger",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A mithril dagger.",
+    "attack_bonus": 20,
+    "strength_bonus": 16,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 30
+    }
+  },
+  "mithril_sword": {
+    "name": "mithril_sword",
+    "display_name": "Mithril Sword",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A mithril sword.",
+    "attack_bonus": 24,
+    "strength_bonus": 20,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 30
+    }
+  },
+  "mithril_scimitar": {
+    "name": "mithril_scimitar",
+    "display_name": "Mithril Scimitar",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A mithril scimitar.",
+    "attack_bonus": 20,
+    "strength_bonus": 28,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 30
+    }
+  },
+  "mithril_longsword": {
+    "name": "mithril_longsword",
+    "display_name": "Mithril Longsword",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A mithril longsword.",
+    "attack_bonus": 32,
+    "strength_bonus": 24,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 30
+    }
+  },
+  "mithril_2h_sword": {
+    "name": "mithril_2h_sword",
+    "display_name": "Mithril 2H Sword",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A mithril 2h sword.",
+    "attack_bonus": 40,
+    "strength_bonus": 40,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 30
+    }
+  },
+  "mithril_warhammer": {
+    "name": "mithril_warhammer",
+    "display_name": "Mithril Warhammer",
+    "slot": "weapon",
+    "combat_style": "strength",
+    "description": "A mithril warhammer.",
+    "attack_bonus": 28,
+    "strength_bonus": 36,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 30
+    }
+  },
+  "mithril_battleaxe": {
+    "name": "mithril_battleaxe",
+    "display_name": "Mithril Battleaxe",
+    "slot": "weapon",
+    "combat_style": "strength",
+    "description": "A mithril battleaxe.",
+    "attack_bonus": 32,
+    "strength_bonus": 32,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 30
+    }
+  },
+  "adamantite_dagger": {
+    "name": "adamantite_dagger",
+    "display_name": "Adamantite Dagger",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A adamantite dagger.",
+    "attack_bonus": 27,
+    "strength_bonus": 22,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 40
+    }
+  },
+  "adamantite_sword": {
+    "name": "adamantite_sword",
+    "display_name": "Adamantite Sword",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A adamantite sword.",
+    "attack_bonus": 33,
+    "strength_bonus": 27,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 40
+    }
+  },
+  "adamantite_scimitar": {
+    "name": "adamantite_scimitar",
+    "display_name": "Adamantite Scimitar",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A adamantite scimitar.",
+    "attack_bonus": 27,
+    "strength_bonus": 38,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 40
+    }
+  },
+  "adamantite_longsword": {
+    "name": "adamantite_longsword",
+    "display_name": "Adamantite Longsword",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A adamantite longsword.",
+    "attack_bonus": 44,
+    "strength_bonus": 33,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 40
+    }
+  },
+  "adamantite_2h_sword": {
+    "name": "adamantite_2h_sword",
+    "display_name": "Adamantite 2H Sword",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A adamantite 2h sword.",
+    "attack_bonus": 55,
+    "strength_bonus": 55,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 40
+    }
+  },
+  "adamantite_warhammer": {
+    "name": "adamantite_warhammer",
+    "display_name": "Adamantite Warhammer",
+    "slot": "weapon",
+    "combat_style": "strength",
+    "description": "A adamantite warhammer.",
+    "attack_bonus": 38,
+    "strength_bonus": 49,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 40
+    }
+  },
+  "adamantite_battleaxe": {
+    "name": "adamantite_battleaxe",
+    "display_name": "Adamantite Battleaxe",
+    "slot": "weapon",
+    "combat_style": "strength",
+    "description": "A adamantite battleaxe.",
+    "attack_bonus": 44,
+    "strength_bonus": 44,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 40
+    }
+  },
+  "runite_dagger": {
+    "name": "runite_dagger",
+    "display_name": "Runite Dagger",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A runite dagger.",
+    "attack_bonus": 37,
+    "strength_bonus": 30,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 50
+    }
+  },
+  "runite_sword": {
+    "name": "runite_sword",
+    "display_name": "Runite Sword",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A runite sword.",
+    "attack_bonus": 45,
+    "strength_bonus": 37,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 50
+    }
+  },
+  "runite_scimitar": {
+    "name": "runite_scimitar",
+    "display_name": "Runite Scimitar",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A runite scimitar.",
+    "attack_bonus": 37,
+    "strength_bonus": 52,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 50
+    }
+  },
+  "runite_longsword": {
+    "name": "runite_longsword",
+    "display_name": "Runite Longsword",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A runite longsword.",
+    "attack_bonus": 60,
+    "strength_bonus": 45,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 50
+    }
+  },
+  "runite_2h_sword": {
+    "name": "runite_2h_sword",
+    "display_name": "Runite 2H Sword",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A runite 2h sword.",
+    "attack_bonus": 75,
+    "strength_bonus": 75,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 50
+    }
+  },
+  "runite_warhammer": {
+    "name": "runite_warhammer",
+    "display_name": "Runite Warhammer",
+    "slot": "weapon",
+    "combat_style": "strength",
+    "description": "A runite warhammer.",
+    "attack_bonus": 52,
+    "strength_bonus": 67,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 50
+    }
+  },
+  "runite_battleaxe": {
+    "name": "runite_battleaxe",
+    "display_name": "Runite Battleaxe",
+    "slot": "weapon",
+    "combat_style": "strength",
+    "description": "A runite battleaxe.",
+    "attack_bonus": 60,
+    "strength_bonus": 60,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 50
+    }
+  },
+  "shortbow": {
+    "name": "shortbow",
+    "display_name": "Shortbow",
+    "slot": "weapon",
+    "combat_style": "ranged",
+    "description": "A shortbow crafted from regular logs.",
+    "attack_bonus": 8,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "requirements": {}
+  },
+  "oak_shortbow": {
+    "name": "oak_shortbow",
+    "display_name": "Oak Shortbow",
+    "slot": "weapon",
+    "combat_style": "ranged",
+    "description": "A shortbow crafted from oak logs.",
+    "attack_bonus": 14,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "requirements": {
+      "ranged": 5
+    }
+  },
+  "willow_shortbow": {
+    "name": "willow_shortbow",
+    "display_name": "Willow Shortbow",
+    "slot": "weapon",
+    "combat_style": "ranged",
+    "description": "A shortbow crafted from willow logs.",
+    "attack_bonus": 20,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "requirements": {
+      "ranged": 20
+    }
+  },
+  "maple_shortbow": {
+    "name": "maple_shortbow",
+    "display_name": "Maple Shortbow",
+    "slot": "weapon",
+    "combat_style": "ranged",
+    "description": "A shortbow crafted from maple logs.",
+    "attack_bonus": 29,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "requirements": {
+      "ranged": 30
+    }
+  },
+  "yew_shortbow": {
+    "name": "yew_shortbow",
+    "display_name": "Yew Shortbow",
+    "slot": "weapon",
+    "combat_style": "ranged",
+    "description": "A shortbow crafted from yew logs.",
+    "attack_bonus": 47,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "requirements": {
+      "ranged": 40
+    }
+  },
+  "magic_shortbow": {
+    "name": "magic_shortbow",
+    "display_name": "Magic Shortbow",
+    "slot": "weapon",
+    "combat_style": "ranged",
+    "description": "A shortbow crafted from magic logs.",
+    "attack_bonus": 69,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "requirements": {
+      "ranged": 50
+    }
+  },
+  "bronze_med_helmet": {
+    "name": "bronze_med_helmet",
+    "display_name": "Bronze Med Helmet",
+    "slot": "head",
+    "combat_style": null,
+    "description": "A bronze med helmet.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 4,
+    "requirements": {}
+  },
+  "bronze_full_helmet": {
+    "name": "bronze_full_helmet",
+    "display_name": "Bronze Full Helmet",
+    "slot": "head",
+    "combat_style": null,
+    "description": "A bronze full helmet.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 6,
+    "requirements": {}
+  },
+  "bronze_chainbody": {
+    "name": "bronze_chainbody",
+    "display_name": "Bronze Chainbody",
+    "slot": "body",
+    "combat_style": null,
+    "description": "A bronze chainbody.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 8,
+    "requirements": {}
+  },
+  "bronze_platebody": {
+    "name": "bronze_platebody",
+    "display_name": "Bronze Platebody",
+    "slot": "body",
+    "combat_style": null,
+    "description": "A bronze platebody.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 12,
+    "requirements": {}
+  },
+  "bronze_platelegs": {
+    "name": "bronze_platelegs",
+    "display_name": "Bronze Platelegs",
+    "slot": "legs",
+    "combat_style": null,
+    "description": "A bronze platelegs.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 10,
+    "requirements": {}
+  },
+  "bronze_plateskirt": {
+    "name": "bronze_plateskirt",
+    "display_name": "Bronze Plateskirt",
+    "slot": "legs",
+    "combat_style": null,
+    "description": "A bronze plateskirt.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 10,
+    "requirements": {}
+  },
+  "bronze_square_shield": {
+    "name": "bronze_square_shield",
+    "display_name": "Bronze Square Shield",
+    "slot": "shield",
+    "combat_style": null,
+    "description": "A bronze square shield.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 7,
+    "requirements": {}
+  },
+  "bronze_kiteshield": {
+    "name": "bronze_kiteshield",
+    "display_name": "Bronze Kiteshield",
+    "slot": "shield",
+    "combat_style": null,
+    "description": "A bronze kiteshield.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 9,
+    "requirements": {}
+  },
+  "iron_med_helmet": {
+    "name": "iron_med_helmet",
+    "display_name": "Iron Med Helmet",
+    "slot": "head",
+    "combat_style": null,
+    "description": "A iron med helmet.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 7,
+    "requirements": {
+      "defense": 10
+    }
+  },
+  "iron_full_helmet": {
+    "name": "iron_full_helmet",
+    "display_name": "Iron Full Helmet",
+    "slot": "head",
+    "combat_style": null,
+    "description": "A iron full helmet.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 10,
+    "requirements": {
+      "defense": 10
+    }
+  },
+  "iron_chainbody": {
+    "name": "iron_chainbody",
+    "display_name": "Iron Chainbody",
+    "slot": "body",
+    "combat_style": null,
+    "description": "A iron chainbody.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 14,
+    "requirements": {
+      "defense": 10
+    }
+  },
+  "iron_platebody": {
+    "name": "iron_platebody",
+    "display_name": "Iron Platebody",
+    "slot": "body",
+    "combat_style": null,
+    "description": "A iron platebody.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 21,
+    "requirements": {
+      "defense": 10
+    }
+  },
+  "iron_platelegs": {
+    "name": "iron_platelegs",
+    "display_name": "Iron Platelegs",
+    "slot": "legs",
+    "combat_style": null,
+    "description": "A iron platelegs.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 18,
+    "requirements": {
+      "defense": 10
+    }
+  },
+  "iron_plateskirt": {
+    "name": "iron_plateskirt",
+    "display_name": "Iron Plateskirt",
+    "slot": "legs",
+    "combat_style": null,
+    "description": "A iron plateskirt.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 18,
+    "requirements": {
+      "defense": 10
+    }
+  },
+  "iron_square_shield": {
+    "name": "iron_square_shield",
+    "display_name": "Iron Square Shield",
+    "slot": "shield",
+    "combat_style": null,
+    "description": "A iron square shield.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 12,
+    "requirements": {
+      "defense": 10
+    }
+  },
+  "iron_kiteshield": {
+    "name": "iron_kiteshield",
+    "display_name": "Iron Kiteshield",
+    "slot": "shield",
+    "combat_style": null,
+    "description": "A iron kiteshield.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 16,
+    "requirements": {
+      "defense": 10
+    }
+  },
+  "steel_med_helmet": {
+    "name": "steel_med_helmet",
+    "display_name": "Steel Med Helmet",
+    "slot": "head",
+    "combat_style": null,
+    "description": "A steel med helmet.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 11,
+    "requirements": {
+      "defense": 20
+    }
+  },
+  "steel_full_helmet": {
+    "name": "steel_full_helmet",
+    "display_name": "Steel Full Helmet",
+    "slot": "head",
+    "combat_style": null,
+    "description": "A steel full helmet.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 16,
+    "requirements": {
+      "defense": 20
+    }
+  },
+  "steel_chainbody": {
+    "name": "steel_chainbody",
+    "display_name": "Steel Chainbody",
+    "slot": "body",
+    "combat_style": null,
+    "description": "A steel chainbody.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 22,
+    "requirements": {
+      "defense": 20
+    }
+  },
+  "steel_platebody": {
+    "name": "steel_platebody",
+    "display_name": "Steel Platebody",
+    "slot": "body",
+    "combat_style": null,
+    "description": "A steel platebody.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 33,
+    "requirements": {
+      "defense": 20
+    }
+  },
+  "steel_platelegs": {
+    "name": "steel_platelegs",
+    "display_name": "Steel Platelegs",
+    "slot": "legs",
+    "combat_style": null,
+    "description": "A steel platelegs.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 28,
+    "requirements": {
+      "defense": 20
+    }
+  },
+  "steel_plateskirt": {
+    "name": "steel_plateskirt",
+    "display_name": "Steel Plateskirt",
+    "slot": "legs",
+    "combat_style": null,
+    "description": "A steel plateskirt.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 28,
+    "requirements": {
+      "defense": 20
+    }
+  },
+  "steel_square_shield": {
+    "name": "steel_square_shield",
+    "display_name": "Steel Square Shield",
+    "slot": "shield",
+    "combat_style": null,
+    "description": "A steel square shield.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 19,
+    "requirements": {
+      "defense": 20
+    }
+  },
+  "steel_kiteshield": {
+    "name": "steel_kiteshield",
+    "display_name": "Steel Kiteshield",
+    "slot": "shield",
+    "combat_style": null,
+    "description": "A steel kiteshield.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 25,
+    "requirements": {
+      "defense": 20
+    }
+  },
+  "mithril_med_helmet": {
+    "name": "mithril_med_helmet",
+    "display_name": "Mithril Med Helmet",
+    "slot": "head",
+    "combat_style": null,
+    "description": "A mithril med helmet.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 16,
+    "requirements": {
+      "defense": 30
+    }
+  },
+  "mithril_full_helmet": {
+    "name": "mithril_full_helmet",
+    "display_name": "Mithril Full Helmet",
+    "slot": "head",
+    "combat_style": null,
+    "description": "A mithril full helmet.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 24,
+    "requirements": {
+      "defense": 30
+    }
+  },
+  "mithril_chainbody": {
+    "name": "mithril_chainbody",
+    "display_name": "Mithril Chainbody",
+    "slot": "body",
+    "combat_style": null,
+    "description": "A mithril chainbody.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 32,
+    "requirements": {
+      "defense": 30
+    }
+  },
+  "mithril_platebody": {
+    "name": "mithril_platebody",
+    "display_name": "Mithril Platebody",
+    "slot": "body",
+    "combat_style": null,
+    "description": "A mithril platebody.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 48,
+    "requirements": {
+      "defense": 30
+    }
+  },
+  "mithril_platelegs": {
+    "name": "mithril_platelegs",
+    "display_name": "Mithril Platelegs",
+    "slot": "legs",
+    "combat_style": null,
+    "description": "A mithril platelegs.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 40,
+    "requirements": {
+      "defense": 30
+    }
+  },
+  "mithril_plateskirt": {
+    "name": "mithril_plateskirt",
+    "display_name": "Mithril Plateskirt",
+    "slot": "legs",
+    "combat_style": null,
+    "description": "A mithril plateskirt.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 40,
+    "requirements": {
+      "defense": 30
+    }
+  },
+  "mithril_square_shield": {
+    "name": "mithril_square_shield",
+    "display_name": "Mithril Square Shield",
+    "slot": "shield",
+    "combat_style": null,
+    "description": "A mithril square shield.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 28,
+    "requirements": {
+      "defense": 30
+    }
+  },
+  "mithril_kiteshield": {
+    "name": "mithril_kiteshield",
+    "display_name": "Mithril Kiteshield",
+    "slot": "shield",
+    "combat_style": null,
+    "description": "A mithril kiteshield.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 36,
+    "requirements": {
+      "defense": 30
+    }
+  },
+  "adamantite_med_helmet": {
+    "name": "adamantite_med_helmet",
+    "display_name": "Adamantite Med Helmet",
+    "slot": "head",
+    "combat_style": null,
+    "description": "A adamantite med helmet.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 22,
+    "requirements": {
+      "defense": 40
+    }
+  },
+  "adamantite_full_helmet": {
+    "name": "adamantite_full_helmet",
+    "display_name": "Adamantite Full Helmet",
+    "slot": "head",
+    "combat_style": null,
+    "description": "A adamantite full helmet.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 33,
+    "requirements": {
+      "defense": 40
+    }
+  },
+  "adamantite_chainbody": {
+    "name": "adamantite_chainbody",
+    "display_name": "Adamantite Chainbody",
+    "slot": "body",
+    "combat_style": null,
+    "description": "A adamantite chainbody.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 44,
+    "requirements": {
+      "defense": 40
+    }
+  },
+  "adamantite_platebody": {
+    "name": "adamantite_platebody",
+    "display_name": "Adamantite Platebody",
+    "slot": "body",
+    "combat_style": null,
+    "description": "A adamantite platebody.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 66,
+    "requirements": {
+      "defense": 40
+    }
+  },
+  "adamantite_platelegs": {
+    "name": "adamantite_platelegs",
+    "display_name": "Adamantite Platelegs",
+    "slot": "legs",
+    "combat_style": null,
+    "description": "A adamantite platelegs.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 55,
+    "requirements": {
+      "defense": 40
+    }
+  },
+  "adamantite_plateskirt": {
+    "name": "adamantite_plateskirt",
+    "display_name": "Adamantite Plateskirt",
+    "slot": "legs",
+    "combat_style": null,
+    "description": "A adamantite plateskirt.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 55,
+    "requirements": {
+      "defense": 40
+    }
+  },
+  "adamantite_square_shield": {
+    "name": "adamantite_square_shield",
+    "display_name": "Adamantite Square Shield",
+    "slot": "shield",
+    "combat_style": null,
+    "description": "A adamantite square shield.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 38,
+    "requirements": {
+      "defense": 40
+    }
+  },
+  "adamantite_kiteshield": {
+    "name": "adamantite_kiteshield",
+    "display_name": "Adamantite Kiteshield",
+    "slot": "shield",
+    "combat_style": null,
+    "description": "A adamantite kiteshield.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 49,
+    "requirements": {
+      "defense": 40
+    }
+  },
+  "runite_med_helmet": {
+    "name": "runite_med_helmet",
+    "display_name": "Runite Med Helmet",
+    "slot": "head",
+    "combat_style": null,
+    "description": "A runite med helmet.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 30,
+    "requirements": {
+      "defense": 50
+    }
+  },
+  "runite_full_helmet": {
+    "name": "runite_full_helmet",
+    "display_name": "Runite Full Helmet",
+    "slot": "head",
+    "combat_style": null,
+    "description": "A runite full helmet.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 45,
+    "requirements": {
+      "defense": 50
+    }
+  },
+  "runite_chainbody": {
+    "name": "runite_chainbody",
+    "display_name": "Runite Chainbody",
+    "slot": "body",
+    "combat_style": null,
+    "description": "A runite chainbody.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 60,
+    "requirements": {
+      "defense": 50
+    }
+  },
+  "runite_platebody": {
+    "name": "runite_platebody",
+    "display_name": "Runite Platebody",
+    "slot": "body",
+    "combat_style": null,
+    "description": "A runite platebody.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 90,
+    "requirements": {
+      "defense": 50
+    }
+  },
+  "runite_platelegs": {
+    "name": "runite_platelegs",
+    "display_name": "Runite Platelegs",
+    "slot": "legs",
+    "combat_style": null,
+    "description": "A runite platelegs.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 75,
+    "requirements": {
+      "defense": 50
+    }
+  },
+  "runite_plateskirt": {
+    "name": "runite_plateskirt",
+    "display_name": "Runite Plateskirt",
+    "slot": "legs",
+    "combat_style": null,
+    "description": "A runite plateskirt.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 75,
+    "requirements": {
+      "defense": 50
+    }
+  },
+  "runite_square_shield": {
+    "name": "runite_square_shield",
+    "display_name": "Runite Square Shield",
+    "slot": "shield",
+    "combat_style": null,
+    "description": "A runite square shield.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 52,
+    "requirements": {
+      "defense": 50
+    }
+  },
+  "runite_kiteshield": {
+    "name": "runite_kiteshield",
+    "display_name": "Runite Kiteshield",
+    "slot": "shield",
+    "combat_style": null,
+    "description": "A runite kiteshield.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 67,
+    "requirements": {
+      "defense": 50
+    }
+  },
+  "bronze_pickaxe": {
+    "name": "bronze_pickaxe",
+    "display_name": "Bronze Pickaxe",
+    "slot": "pickaxe",
+    "combat_style": null,
+    "description": "A bronze pickaxe for mining.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "mining_efficiency": 1.0,
+    "requirements": {
+      "mining": 1
+    }
+  },
+  "iron_pickaxe": {
+    "name": "iron_pickaxe",
+    "display_name": "Iron Pickaxe",
+    "slot": "pickaxe",
+    "combat_style": null,
+    "description": "An iron pickaxe for mining.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "mining_efficiency": 1.25,
+    "requirements": {
+      "mining": 15
+    }
+  },
+  "steel_pickaxe": {
+    "name": "steel_pickaxe",
+    "display_name": "Steel Pickaxe",
+    "slot": "pickaxe",
+    "combat_style": null,
+    "description": "A steel pickaxe for mining.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "mining_efficiency": 1.5,
+    "requirements": {
+      "mining": 30
+    }
+  },
+  "mithril_pickaxe": {
+    "name": "mithril_pickaxe",
+    "display_name": "Mithril Pickaxe",
+    "slot": "pickaxe",
+    "combat_style": null,
+    "description": "A mithril pickaxe for mining.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "mining_efficiency": 1.75,
+    "requirements": {
+      "mining": 55
+    }
+  },
+  "adamantite_pickaxe": {
+    "name": "adamantite_pickaxe",
+    "display_name": "Adamantite Pickaxe",
+    "slot": "pickaxe",
+    "combat_style": null,
+    "description": "An adamantite pickaxe for mining.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "mining_efficiency": 2.0,
+    "requirements": {
+      "mining": 70
+    }
+  },
+  "runite_pickaxe": {
+    "name": "runite_pickaxe",
+    "display_name": "Runite Pickaxe",
+    "slot": "pickaxe",
+    "combat_style": null,
+    "description": "A runite pickaxe for mining.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "mining_efficiency": 2.25,
+    "requirements": {
+      "mining": 85
+    }
+  },
+  "bronze_axe": {
+    "name": "bronze_axe",
+    "display_name": "Bronze Axe",
+    "slot": "axe",
+    "combat_style": null,
+    "description": "A bronze axe for woodcutting.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "woodcutting_efficiency": 1.0,
+    "requirements": {
+      "woodcutting": 1
+    }
+  },
+  "iron_axe": {
+    "name": "iron_axe",
+    "display_name": "Iron Axe",
+    "slot": "axe",
+    "combat_style": null,
+    "description": "An iron axe for woodcutting.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "woodcutting_efficiency": 1.25,
+    "requirements": {
+      "woodcutting": 15
+    }
+  },
+  "steel_axe": {
+    "name": "steel_axe",
+    "display_name": "Steel Axe",
+    "slot": "axe",
+    "combat_style": null,
+    "description": "A steel axe for woodcutting.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "woodcutting_efficiency": 1.5,
+    "requirements": {
+      "woodcutting": 30
+    }
+  },
+  "mithril_axe": {
+    "name": "mithril_axe",
+    "display_name": "Mithril Axe",
+    "slot": "axe",
+    "combat_style": null,
+    "description": "A mithril axe for woodcutting.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "woodcutting_efficiency": 1.75,
+    "requirements": {
+      "woodcutting": 45
+    }
+  },
+  "adamantite_axe": {
+    "name": "adamantite_axe",
+    "display_name": "Adamantite Axe",
+    "slot": "axe",
+    "combat_style": null,
+    "description": "An adamantite axe for woodcutting.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "woodcutting_efficiency": 2.0,
+    "requirements": {
+      "woodcutting": 60
+    }
+  },
+  "runite_axe": {
+    "name": "runite_axe",
+    "display_name": "Runite Axe",
+    "slot": "axe",
+    "combat_style": null,
+    "description": "A runite axe for woodcutting.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "woodcutting_efficiency": 2.25,
+    "requirements": {
+      "woodcutting": 75
+    }
+  },
+  "bronze_fishing_rod": {
+    "name": "bronze_fishing_rod",
+    "display_name": "Bronze Fishing Rod",
+    "slot": "fishing_rod",
+    "combat_style": null,
+    "description": "A bronze fishing rod for fishing.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "fishing_efficiency": 1.0,
+    "requirements": {
+      "fishing": 1
+    }
+  },
+  "iron_fishing_rod": {
+    "name": "iron_fishing_rod",
+    "display_name": "Iron Fishing Rod",
+    "slot": "fishing_rod",
+    "combat_style": null,
+    "description": "An iron fishing rod for fishing.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "fishing_efficiency": 1.25,
+    "requirements": {
+      "fishing": 15
+    }
+  },
+  "steel_fishing_rod": {
+    "name": "steel_fishing_rod",
+    "display_name": "Steel Fishing Rod",
+    "slot": "fishing_rod",
+    "combat_style": null,
+    "description": "A steel fishing rod for fishing.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "fishing_efficiency": 1.5,
+    "requirements": {
+      "fishing": 30
+    }
+  },
+  "mithril_fishing_rod": {
+    "name": "mithril_fishing_rod",
+    "display_name": "Mithril Fishing Rod",
+    "slot": "fishing_rod",
+    "combat_style": null,
+    "description": "A mithril fishing rod for fishing.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "fishing_efficiency": 1.75,
+    "requirements": {
+      "fishing": 45
+    }
+  },
+  "adamantite_fishing_rod": {
+    "name": "adamantite_fishing_rod",
+    "display_name": "Adamantite Fishing Rod",
+    "slot": "fishing_rod",
+    "combat_style": null,
+    "description": "An adamantite fishing rod for fishing.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "fishing_efficiency": 2.0,
+    "requirements": {
+      "fishing": 60
+    }
+  },
+  "runite_fishing_rod": {
+    "name": "runite_fishing_rod",
+    "display_name": "Runite Fishing Rod",
+    "slot": "fishing_rod",
+    "combat_style": null,
+    "description": "A runite fishing rod for fishing.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "fishing_efficiency": 2.25,
+    "requirements": {
+      "fishing": 75
+    }
+  },
+  "silver_ring": {
+    "name": "silver_ring",
+    "display_name": "Silver Ring",
+    "slot": "ring",
+    "combat_style": null,
+    "description": "A simple silver ring.",
+    "attack_bonus": 1,
+    "strength_bonus": 1,
+    "defense_bonus": 1,
+    "requirements": {}
+  },
+  "silver_necklace": {
+    "name": "silver_necklace",
+    "display_name": "Silver Necklace",
+    "slot": "necklace",
+    "combat_style": null,
+    "description": "A simple silver necklace.",
+    "attack_bonus": 2,
+    "strength_bonus": 1,
+    "defense_bonus": 1,
+    "requirements": {}
+  },
+  "gold_ring": {
+    "name": "gold_ring",
+    "display_name": "Gold Ring",
+    "slot": "ring",
+    "combat_style": null,
+    "description": "A gold ring.",
+    "attack_bonus": 2,
+    "strength_bonus": 2,
+    "defense_bonus": 2,
+    "requirements": {}
+  },
+  "gold_necklace": {
+    "name": "gold_necklace",
+    "display_name": "Gold Necklace",
+    "slot": "necklace",
+    "combat_style": null,
+    "description": "A gold necklace.",
+    "attack_bonus": 3,
+    "strength_bonus": 2,
+    "defense_bonus": 2,
+    "requirements": {}
+  },
+  "platinum_ring": {
+    "name": "platinum_ring",
+    "display_name": "Platinum Ring",
+    "slot": "ring",
+    "combat_style": null,
+    "description": "A platinum ring.",
+    "attack_bonus": 3,
+    "strength_bonus": 3,
+    "defense_bonus": 3,
+    "requirements": {}
+  },
+  "platinum_necklace": {
+    "name": "platinum_necklace",
+    "display_name": "Platinum Necklace",
+    "slot": "necklace",
+    "combat_style": null,
+    "description": "A platinum necklace.",
+    "attack_bonus": 4,
+    "strength_bonus": 3,
+    "defense_bonus": 3,
+    "requirements": {}
+  },
+  "silver_sapphire_ring": {
+    "name": "silver_sapphire_ring",
+    "display_name": "Silver Sapphire Ring",
+    "slot": "ring",
+    "combat_style": "magic",
+    "description": "A silver ring with a sapphire. Enhances magic.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 2,
+    "magic_attack_bonus": 4,
+    "magic_damage_bonus": 2,
+    "requirements": {}
+  },
+  "silver_sapphire_necklace": {
+    "name": "silver_sapphire_necklace",
+    "display_name": "Silver Sapphire Necklace",
+    "slot": "necklace",
+    "combat_style": "magic",
+    "description": "A silver necklace with a sapphire. Enhances magic.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 3,
+    "magic_attack_bonus": 6,
+    "magic_damage_bonus": 3,
+    "requirements": {}
+  },
+  "gold_sapphire_ring": {
+    "name": "gold_sapphire_ring",
+    "display_name": "Gold Sapphire Ring",
+    "slot": "ring",
+    "combat_style": "magic",
+    "description": "A gold ring with a sapphire. Enhances magic.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 3,
+    "magic_attack_bonus": 6,
+    "magic_damage_bonus": 3,
+    "requirements": {}
+  },
+  "gold_sapphire_necklace": {
+    "name": "gold_sapphire_necklace",
+    "display_name": "Gold Sapphire Necklace",
+    "slot": "necklace",
+    "combat_style": "magic",
+    "description": "A gold necklace with a sapphire. Enhances magic.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 4,
+    "magic_attack_bonus": 9,
+    "magic_damage_bonus": 4,
+    "requirements": {}
+  },
+  "platinum_sapphire_ring": {
+    "name": "platinum_sapphire_ring",
+    "display_name": "Platinum Sapphire Ring",
+    "slot": "ring",
+    "combat_style": "magic",
+    "description": "A platinum ring with a sapphire. Enhances magic.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 4,
+    "magic_attack_bonus": 8,
+    "magic_damage_bonus": 4,
+    "requirements": {}
+  },
+  "platinum_sapphire_necklace": {
+    "name": "platinum_sapphire_necklace",
+    "display_name": "Platinum Sapphire Necklace",
+    "slot": "necklace",
+    "combat_style": "magic",
+    "description": "A platinum necklace with a sapphire. Enhances magic.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "magic_attack_bonus": 12,
+    "magic_damage_bonus": 5,
+    "requirements": {}
+  },
+  "gold_emerald_ring": {
+    "name": "gold_emerald_ring",
+    "display_name": "Gold Emerald Ring",
+    "slot": "ring",
+    "combat_style": "ranged",
+    "description": "A gold ring with an emerald. Enhances ranged.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 3,
+    "ranged_attack_bonus": 7,
+    "ranged_strength_bonus": 3,
+    "requirements": {}
+  },
+  "gold_emerald_necklace": {
+    "name": "gold_emerald_necklace",
+    "display_name": "Gold Emerald Necklace",
+    "slot": "necklace",
+    "combat_style": "ranged",
+    "description": "A gold necklace with an emerald. Enhances ranged.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 4,
+    "ranged_attack_bonus": 10,
+    "ranged_strength_bonus": 4,
+    "requirements": {}
+  },
+  "platinum_emerald_ring": {
+    "name": "platinum_emerald_ring",
+    "display_name": "Platinum Emerald Ring",
+    "slot": "ring",
+    "combat_style": "ranged",
+    "description": "A platinum ring with an emerald. Enhances ranged.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 4,
+    "ranged_attack_bonus": 9,
+    "ranged_strength_bonus": 4,
+    "requirements": {}
+  },
+  "platinum_emerald_necklace": {
+    "name": "platinum_emerald_necklace",
+    "display_name": "Platinum Emerald Necklace",
+    "slot": "necklace",
+    "combat_style": "ranged",
+    "description": "A platinum necklace with an emerald. Enhances ranged.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "ranged_attack_bonus": 13,
+    "ranged_strength_bonus": 5,
+    "requirements": {}
+  },
+  "gold_ruby_ring": {
+    "name": "gold_ruby_ring",
+    "display_name": "Gold Ruby Ring",
+    "slot": "ring",
+    "combat_style": "attack",
+    "description": "A gold ring with a ruby. Enhances melee.",
+    "attack_bonus": 8,
+    "strength_bonus": 4,
+    "defense_bonus": 3,
+    "requirements": {}
+  },
+  "gold_ruby_necklace": {
+    "name": "gold_ruby_necklace",
+    "display_name": "Gold Ruby Necklace",
+    "slot": "necklace",
+    "combat_style": "attack",
+    "description": "A gold necklace with a ruby. Enhances melee.",
+    "attack_bonus": 11,
+    "strength_bonus": 5,
+    "defense_bonus": 4,
+    "requirements": {}
+  },
+  "platinum_ruby_ring": {
+    "name": "platinum_ruby_ring",
+    "display_name": "Platinum Ruby Ring",
+    "slot": "ring",
+    "combat_style": "attack",
+    "description": "A platinum ring with a ruby. Enhances melee.",
+    "attack_bonus": 10,
+    "strength_bonus": 5,
+    "defense_bonus": 4,
+    "requirements": {}
+  },
+  "platinum_ruby_necklace": {
+    "name": "platinum_ruby_necklace",
+    "display_name": "Platinum Ruby Necklace",
+    "slot": "necklace",
+    "combat_style": "attack",
+    "description": "A platinum necklace with a ruby. Enhances melee.",
+    "attack_bonus": 14,
+    "strength_bonus": 6,
+    "defense_bonus": 5,
+    "requirements": {}
+  },
+  "gold_diamond_ring": {
+    "name": "gold_diamond_ring",
+    "display_name": "Gold Diamond Ring",
+    "slot": "ring",
+    "combat_style": null,
+    "description": "A gold ring with a diamond. Provides balanced bonuses.",
+    "attack_bonus": 5,
+    "strength_bonus": 4,
+    "defense_bonus": 6,
+    "requirements": {}
+  },
+  "gold_diamond_necklace": {
+    "name": "gold_diamond_necklace",
+    "display_name": "Gold Diamond Necklace",
+    "slot": "necklace",
+    "combat_style": null,
+    "description": "A gold necklace with a diamond. Provides balanced bonuses.",
+    "attack_bonus": 6,
+    "strength_bonus": 5,
+    "defense_bonus": 8,
+    "requirements": {}
+  },
+  "platinum_diamond_ring": {
+    "name": "platinum_diamond_ring",
+    "display_name": "Platinum Diamond Ring",
+    "slot": "ring",
+    "combat_style": null,
+    "description": "A platinum ring with a diamond. Provides excellent balanced bonuses.",
+    "attack_bonus": 6,
+    "strength_bonus": 5,
+    "defense_bonus": 7,
+    "requirements": {}
+  },
+  "platinum_diamond_necklace": {
+    "name": "platinum_diamond_necklace",
+    "display_name": "Platinum Diamond Necklace",
+    "slot": "necklace",
+    "combat_style": null,
+    "description": "A platinum necklace with a diamond. Provides excellent balanced bonuses.",
+    "attack_bonus": 8,
+    "strength_bonus": 6,
+    "defense_bonus": 10,
+    "requirements": {}
+  },
+  "staff_of_air": {
+    "name": "staff_of_air",
+    "display_name": "Staff of Air",
+    "slot": "weapon",
+    "combat_style": "magic",
+    "description": "A staff infused with air runes. Provides infinite air runes.",
+    "attack_bonus": 5,
+    "strength_bonus": 6,
+    "defense_bonus": 2,
+    "magic_attack_bonus": 5,
+    "magic_damage_bonus": 2,
+    "infinite_runes": "air_rune",
+    "requirements": {
+      "magic": 1
+    }
+  },
+  "staff_of_water": {
+    "name": "staff_of_water",
+    "display_name": "Staff of Water",
+    "slot": "weapon",
+    "combat_style": "magic",
+    "description": "A staff infused with water runes. Provides infinite water runes.",
+    "attack_bonus": 7,
+    "strength_bonus": 8,
+    "defense_bonus": 3,
+    "magic_attack_bonus": 8,
+    "magic_damage_bonus": 3,
+    "infinite_runes": "water_rune",
+    "requirements": {
+      "magic": 5
+    }
+  },
+  "staff_of_earth": {
+    "name": "staff_of_earth",
+    "display_name": "Staff of Earth",
+    "slot": "weapon",
+    "combat_style": "magic",
+    "description": "A staff infused with earth runes. Provides infinite earth runes.",
+    "attack_bonus": 10,
+    "strength_bonus": 11,
+    "defense_bonus": 4,
+    "magic_attack_bonus": 12,
+    "magic_damage_bonus": 4,
+    "infinite_runes": "earth_rune",
+    "requirements": {
+      "magic": 10
+    }
+  },
+  "staff_of_fire": {
+    "name": "staff_of_fire",
+    "display_name": "Staff of Fire",
+    "slot": "weapon",
+    "combat_style": "magic",
+    "description": "A staff infused with fire runes. Provides infinite fire runes.",
+    "attack_bonus": 14,
+    "strength_bonus": 15,
+    "defense_bonus": 5,
+    "magic_attack_bonus": 17,
+    "magic_damage_bonus": 5,
+    "infinite_runes": "fire_rune",
+    "requirements": {
+      "magic": 15
+    }
+  },
+  "staff_of_mind": {
+    "name": "staff_of_mind",
+    "display_name": "Staff of Mind",
+    "slot": "weapon",
+    "combat_style": "magic",
+    "description": "A staff infused with mind runes. Provides infinite mind runes.",
+    "attack_bonus": 19,
+    "strength_bonus": 20,
+    "defense_bonus": 6,
+    "magic_attack_bonus": 24,
+    "magic_damage_bonus": 7,
+    "infinite_runes": "mind_rune",
+    "requirements": {
+      "magic": 25
+    }
+  },
+  "staff_of_chaos": {
+    "name": "staff_of_chaos",
+    "display_name": "Staff of Chaos",
+    "slot": "weapon",
+    "combat_style": "magic",
+    "description": "A staff infused with chaos runes. Provides infinite chaos runes.",
+    "attack_bonus": 25,
+    "strength_bonus": 26,
+    "defense_bonus": 8,
+    "magic_attack_bonus": 33,
+    "magic_damage_bonus": 9,
+    "infinite_runes": "chaos_rune",
+    "requirements": {
+      "magic": 35
+    }
+  },
+  "staff_of_death": {
+    "name": "staff_of_death",
+    "display_name": "Staff of Death",
+    "slot": "weapon",
+    "combat_style": "magic",
+    "description": "A staff infused with death runes. Provides infinite death runes.",
+    "attack_bonus": 32,
+    "strength_bonus": 33,
+    "defense_bonus": 10,
+    "magic_attack_bonus": 44,
+    "magic_damage_bonus": 12,
+    "infinite_runes": "death_rune",
+    "requirements": {
+      "magic": 50
+    }
+  },
+  "staff_of_blood": {
+    "name": "staff_of_blood",
+    "display_name": "Staff of Blood",
+    "slot": "weapon",
+    "combat_style": "magic",
+    "description": "A staff infused with blood runes. Provides infinite blood runes.",
+    "attack_bonus": 40,
+    "strength_bonus": 41,
+    "defense_bonus": 12,
+    "magic_attack_bonus": 58,
+    "magic_damage_bonus": 15,
+    "infinite_runes": "blood_rune",
+    "requirements": {
+      "magic": 65
+    }
+  },
+  "dwarven_sword": {
+    "name": "dwarven_sword",
+    "display_name": "Dwarven Sword",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "An ancient dwarven blade, forged in the depths of the earth.",
+    "attack_bonus": 65,
+    "strength_bonus": 52,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 60
+    }
+  },
+  "dwarven_scimitar": {
+    "name": "dwarven_scimitar",
+    "display_name": "Dwarven Scimitar",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A curved dwarven blade, perfect for rapid strikes.",
+    "attack_bonus": 60,
+    "strength_bonus": 58,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 60
+    }
+  },
+  "dwarven_warhammer": {
+    "name": "dwarven_warhammer",
+    "display_name": "Dwarven Warhammer",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A massive dwarven hammer that crushes all in its path.",
+    "attack_bonus": 55,
+    "strength_bonus": 70,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 60,
+      "strength": 60
+    }
+  },
+  "dwarven_pickaxe": {
+    "name": "dwarven_pickaxe",
+    "display_name": "Dwarven Pickaxe",
+    "slot": "pickaxe",
+    "combat_style": null,
+    "description": "A masterwork dwarven pickaxe. The finest mining tool ever crafted.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "mining_efficiency": 2.75,
+    "requirements": {
+      "mining": 60
+    }
+  },
+  "dwarven_axe": {
+    "name": "dwarven_axe",
+    "display_name": "Dwarven Axe",
+    "slot": "axe",
+    "combat_style": null,
+    "description": "A legendary dwarven axe. Cuts through any tree with ease.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "woodcutting_efficiency": 2.75,
+    "requirements": {
+      "woodcutting": 60
+    }
+  },
+  "dwarven_helm": {
+    "name": "dwarven_helm",
+    "display_name": "Dwarven Helm",
+    "slot": "head",
+    "combat_style": null,
+    "description": "A sturdy dwarven helmet, forged from ancient metals.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 58,
+    "requirements": {
+      "defense": 60
+    }
+  },
+  "dwarven_platebody": {
+    "name": "dwarven_platebody",
+    "display_name": "Dwarven Platebody",
+    "slot": "body",
+    "combat_style": null,
+    "description": "Ancient dwarven armor, nearly impenetrable.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 120,
+    "requirements": {
+      "defense": 60
+    }
+  },
+  "dwarven_platelegs": {
+    "name": "dwarven_platelegs",
+    "display_name": "Dwarven Platelegs",
+    "slot": "legs",
+    "combat_style": null,
+    "description": "Dwarven leg armor, perfectly balanced for combat.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 110,
+    "requirements": {
+      "defense": 60
+    }
+  },
+  "dwarven_shield": {
+    "name": "dwarven_shield",
+    "display_name": "Dwarven Shield",
+    "slot": "shield",
+    "combat_style": null,
+    "description": "A dwarven shield that has withstood countless battles.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 68,
+    "requirements": {
+      "defense": 60
+    }
+  },
+  "balrog_whip": {
+    "name": "balrog_whip",
+    "display_name": "Balrog's Flaming Whip",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A whip of pure flame, torn from the Balrog itself. Burns with an eternal fire.",
+    "attack_bonus": 85,
+    "strength_bonus": 95,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 80,
+      "strength": 80
+    }
+  },
+  "flame_heart_amulet": {
+    "name": "flame_heart_amulet",
+    "display_name": "Flame Heart Amulet",
+    "slot": "necklace",
+    "combat_style": null,
+    "description": "The crystallized heart of an ancient flame demon. Radiates immense power.",
+    "attack_bonus": 20,
+    "strength_bonus": 25,
+    "defense_bonus": 15,
+    "magic_attack_bonus": 30,
+    "requirements": {
+      "attack": 75,
+      "magic": 75
+    }
+  },
+  "ring_of_flame": {
+    "name": "ring_of_flame",
+    "display_name": "Ring of Eternal Flame",
+    "slot": "ring",
+    "combat_style": null,
+    "description": "Forged in the fires of the deep earth. Those who wear it feel the Balrog's strength.",
+    "attack_bonus": 15,
+    "strength_bonus": 18,
+    "defense_bonus": 12,
+    "requirements": {
+      "attack": 75,
+      "defense": 70
+    }
+  },
+  "balrog_wings": {
+    "name": "balrog_wings",
+    "display_name": "Balrog Wings",
+    "slot": "body",
+    "combat_style": null,
+    "description": "The mighty wings of a Balrog, imbued with dark power. The ultimate armor.",
+    "attack_bonus": 10,
+    "strength_bonus": 15,
+    "defense_bonus": 150,
+    "requirements": {
+      "defense": 80,
+      "strength": 75
+    }
+  },
+  "mining_cape": {
+    "name": "mining_cape", "display_name": "Mining Cape", "slot": "cape", "combat_style": null,
+    "description": "Awarded for reaching level 99 Mining. Doubles ore yield.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "mining",
+    "requirements": { "mining": 99 }
+  },
+  "woodcutting_cape": {
+    "name": "woodcutting_cape", "display_name": "Woodcutting Cape", "slot": "cape", "combat_style": null,
+    "description": "Awarded for reaching level 99 Woodcutting. Doubles log yield.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "woodcutting",
+    "requirements": { "woodcutting": 99 }
+  },
+  "fishing_cape": {
+    "name": "fishing_cape", "display_name": "Fishing Cape", "slot": "cape", "combat_style": null,
+    "description": "Awarded for reaching level 99 Fishing. Doubles fish yield.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "fishing",
+    "requirements": { "fishing": 99 }
+  },
+  "farming_cape": {
+    "name": "farming_cape", "display_name": "Farming Cape", "slot": "cape", "combat_style": null,
+    "description": "Awarded for reaching level 99 Farming. Doubles harvest yield.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "farming",
+    "requirements": { "farming": 99 }
+  },
+  "smithing_cape": {
+    "name": "smithing_cape", "display_name": "Smithing Cape", "slot": "cape", "combat_style": null,
+    "description": "Awarded for reaching level 99 Smithing. Doubles items produced.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "smithing",
+    "requirements": { "smithing": 99 }
+  },
+  "cooking_cape": {
+    "name": "cooking_cape", "display_name": "Cooking Cape", "slot": "cape", "combat_style": null,
+    "description": "Awarded for reaching level 99 Cooking. Doubles food produced.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "cooking",
+    "requirements": { "cooking": 99 }
+  },
+  "fletching_cape": {
+    "name": "fletching_cape", "display_name": "Fletching Cape", "slot": "cape", "combat_style": null,
+    "description": "Awarded for reaching level 99 Fletching. Doubles arrows produced.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "fletching",
+    "requirements": { "fletching": 99 }
+  },
+  "crafting_cape": {
+    "name": "crafting_cape", "display_name": "Crafting Cape", "slot": "cape", "combat_style": null,
+    "description": "Awarded for reaching level 99 Crafting. Doubles items crafted.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "crafting",
+    "requirements": { "crafting": 99 }
+  },
+  "runecrafting_cape": {
+    "name": "runecrafting_cape", "display_name": "Runecrafting Cape", "slot": "cape", "combat_style": null,
+    "description": "Awarded for reaching level 99 Runecrafting. Doubles runes crafted.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "runecrafting",
+    "requirements": { "runecrafting": 99 }
+  },
+  "firemaking_cape": {
+    "name": "firemaking_cape", "display_name": "Firemaking Cape", "slot": "cape", "combat_style": null,
+    "description": "Awarded for reaching level 99 Firemaking. Doubles XP gained.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "firemaking",
+    "requirements": { "firemaking": 99 }
+  },
+  "agility_cape": {
+    "name": "agility_cape", "display_name": "Agility Cape", "slot": "cape", "combat_style": null,
+    "description": "Awarded for reaching level 99 Agility. Doubles XP gained.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "agility",
+    "requirements": { "agility": 99 }
+  },
+  "prayer_cape": {
+    "name": "prayer_cape", "display_name": "Prayer Cape", "slot": "cape", "combat_style": null,
+    "description": "Awarded for reaching level 99 Prayer. Doubles Prayer XP from burying.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "prayer",
+    "requirements": { "prayer": 99 }
+  },
+  "attack_cape": {
+    "name": "attack_cape", "display_name": "Attack Cape", "slot": "cape", "combat_style": null,
+    "description": "Awarded for reaching level 99 Attack. Doubles Attack XP in combat.",
+    "attack_bonus": 5, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "attack",
+    "requirements": { "attack": 99 }
+  },
+  "strength_cape": {
+    "name": "strength_cape", "display_name": "Strength Cape", "slot": "cape", "combat_style": null,
+    "description": "Awarded for reaching level 99 Strength. Doubles Strength XP in combat.",
+    "attack_bonus": 0, "strength_bonus": 5, "defense_bonus": 5, "cape_skill": "strength",
+    "requirements": { "strength": 99 }
+  },
+  "defense_cape": {
+    "name": "defense_cape", "display_name": "Defense Cape", "slot": "cape", "combat_style": null,
+    "description": "Awarded for reaching level 99 Defense. Doubles Defense XP in combat.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 15, "cape_skill": "defense",
+    "requirements": { "defense": 99 }
+  },
+  "magic_cape": {
+    "name": "magic_cape", "display_name": "Magic Cape", "slot": "cape", "combat_style": null,
+    "description": "Awarded for reaching level 99 Magic. Doubles Magic XP in combat.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "magic_damage_bonus": 5, "cape_skill": "magic",
+    "requirements": { "magic": 99 }
+  },
+  "ranged_cape": {
+    "name": "ranged_cape", "display_name": "Ranged Cape", "slot": "cape", "combat_style": null,
+    "description": "Awarded for reaching level 99 Ranged. Doubles Ranged XP in combat.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "ranged",
+    "requirements": { "ranged": 99 }
+  },
+  "hp_cape": {
+    "name": "hp_cape", "display_name": "HP Cape", "slot": "cape", "combat_style": null,
+    "description": "Awarded for reaching level 99 HP. Doubles HP XP in combat.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "hp",
+    "requirements": { "hp": 99 }
+  }
+}

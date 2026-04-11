@@ -1,0 +1,21 @@
+{
+  "name": "infernal_stronghold",
+  "display_name": "Infernal Stronghold",
+  "description": "A fortress of fire and brimstone, ruled by demons and hellhounds. The heat alone can kill the unprepared.",
+  "recommended_level": 50,
+  "encounter_rate": 0.42,
+  "enemy_spawns": [
+    {
+      "enemy": "demon",
+      "weight": 5
+    },
+    {
+      "enemy": "hellhound",
+      "weight": 4
+    },
+    {
+      "enemy": "dragon",
+      "weight": 1
+    }
+  ]
+}

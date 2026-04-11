@@ -1,0 +1,17 @@
+{
+  "name": "spider_den",
+  "display_name": "Spider Den",
+  "description": "A web-filled cavern crawling with venomous spiders. Bring antivenom!",
+  "recommended_level": 6,
+  "encounter_rate": 0.24,
+  "enemy_spawns": [
+    {
+      "enemy": "spider",
+      "weight": 8
+    },
+    {
+      "enemy": "wild_dog",
+      "weight": 2
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "beginner_course": {
+    "name": "beginner_course",
+    "display_name": "Beginner Course",
+    "level_required": 1,
+    "xp_per_success": 15,
+    "description": "A simple obstacle course for those just starting their agility training."
+  },
+  "novice_course": {
+    "name": "novice_course",
+    "display_name": "Novice Course",
+    "level_required": 5,
+    "xp_per_success": 25,
+    "description": "A slightly more challenging course with basic obstacles."
+  },
+  "apprentice_course": {
+    "name": "apprentice_course",
+    "display_name": "Apprentice Course",
+    "level_required": 10,
+    "xp_per_success": 40,
+    "description": "An intermediate course requiring some skill to navigate."
+  },
+  "intermediate_course": {
+    "name": "intermediate_course",
+    "display_name": "Intermediate Course",
+    "level_required": 15,
+    "xp_per_success": 60,
+    "description": "A moderately difficult course with tricky obstacles."
+  },
+  "advanced_course": {
+    "name": "advanced_course",
+    "display_name": "Advanced Course",
+    "level_required": 20,
+    "xp_per_success": 85,
+    "description": "A challenging course that tests your agility prowess."
+  },
+  "expert_course": {
+    "name": "expert_course",
+    "display_name": "Expert Course",
+    "level_required": 25,
+    "xp_per_success": 115,
+    "description": "An expert-level course with dangerous obstacles."
+  },
+  "elite_course": {
+    "name": "elite_course",
+    "display_name": "Elite Course",
+    "level_required": 30,
+    "xp_per_success": 150,
+    "description": "Only the most agile can master this elite course."
+  },
+  "master_course": {
+    "name": "master_course",
+    "display_name": "Master Course",
+    "level_required": 35,
+    "xp_per_success": 190,
+    "description": "A master-tier course with extreme obstacles."
+  },
+  "veteran_course": {
+    "name": "veteran_course",
+    "display_name": "Veteran Course",
+    "level_required": 40,
+    "xp_per_success": 235,
+    "description": "A veteran's training ground with punishing challenges."
+  },
+  "champion_course": {
+    "name": "champion_course",
+    "display_name": "Champion Course",
+    "level_required": 45,
+    "xp_per_success": 285,
+    "description": "A champion-level course that pushes you to your limits."
+  },
+  "heroic_course": {
+    "name": "heroic_course",
+    "display_name": "Heroic Course",
+    "level_required": 50,
+    "xp_per_success": 340,
+    "description": "A heroic course where only the best dare to tread."
+  },
+  "legendary_course": {
+    "name": "legendary_course",
+    "display_name": "Legendary Course",
+    "level_required": 60,
+    "xp_per_success": 465,
+    "description": "A legendary course spoken of in whispers among the agile elite."
+  },
+  "mythic_course": {
+    "name": "mythic_course",
+    "display_name": "Mythic Course",
+    "level_required": 70,
+    "xp_per_success": 615,
+    "description": "A mythical course that defies the laws of physics."
+  },
+  "divine_course": {
+    "name": "divine_course",
+    "display_name": "Divine Course",
+    "level_required": 80,
+    "xp_per_success": 790,
+    "description": "A divine course blessed by the gods of agility."
+  },
+  "transcendent_course": {
+    "name": "transcendent_course",
+    "display_name": "Transcendent Course",
+    "level_required": 90,
+    "xp_per_success": 1000,
+    "description": "The ultimate test of agility, transcending mortal limits."
+  }
+}

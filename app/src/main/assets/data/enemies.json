@@ -1,0 +1,585 @@
+{
+  "giant_rat": {
+    "name": "giant_rat",
+    "display_name": "Giant Rat",
+    "hp": 10,
+    "combat_stats": {
+      "attack_level": 1,
+      "strength_level": 1,
+      "defense_level": 1,
+      "attack_bonus": 0,
+      "strength_bonus": 0
+    },
+    "defensive_stats": {
+      "attack_defense": 0,
+      "strength_defense": 0,
+      "ranged_defense": 0,
+      "magic_defense": 0
+    },
+    "xp_drops": {
+      "combat": 30
+    },
+    "drop_table": [
+      {"item": "raw_rat_meat", "chance": 0.30, "quantity_min": 1, "quantity_max": 1}
+    ],
+    "always_drops": [
+      {"item": "bones", "quantity": 1}
+    ]
+  },
+  "goblin": {
+    "name": "goblin",
+    "display_name": "Goblin",
+    "hp": 20,
+    "combat_stats": {
+      "attack_level": 2,
+      "strength_level": 2,
+      "defense_level": 1,
+      "attack_bonus": 2,
+      "strength_bonus": 2
+    },
+    "defensive_stats": {
+      "attack_defense": 5,
+      "strength_defense": 5,
+      "ranged_defense": 3,
+      "magic_defense": 2
+    },
+    "xp_drops": {
+      "combat": 60
+    },
+    "drop_table": [
+      {"item": "coins", "chance": 0.50, "quantity_min": 5, "quantity_max": 15},
+      {"item": "goblin_mail", "chance": 0.10, "quantity_min": 1, "quantity_max": 1}
+    ],
+    "always_drops": [
+      {"item": "bones", "quantity": 1}
+    ]
+  },
+  "skeleton": {
+    "name": "skeleton",
+    "display_name": "Skeleton",
+    "hp": 30,
+    "combat_stats": {
+      "attack_level": 4,
+      "strength_level": 3,
+      "defense_level": 3,
+      "attack_bonus": 5,
+      "strength_bonus": 4
+    },
+    "defensive_stats": {
+      "attack_defense": 8,
+      "strength_defense": 8,
+      "ranged_defense": 6,
+      "magic_defense": 4
+    },
+    "xp_drops": {
+      "combat": 105
+    },
+    "drop_table": [
+      {"item": "coins", "chance": 0.60, "quantity_min": 10, "quantity_max": 30},
+      {"item": "iron_sword", "chance": 0.05, "quantity_min": 1, "quantity_max": 1}
+    ],
+    "always_drops": [
+      {"item": "big_bones", "quantity": 1}
+    ]
+  },
+  "zombie": {
+    "name": "zombie",
+    "display_name": "Zombie",
+    "hp": 35,
+    "combat_stats": {
+      "attack_level": 5,
+      "strength_level": 5,
+      "defense_level": 2,
+      "attack_bonus": 6,
+      "strength_bonus": 7
+    },
+    "defensive_stats": {
+      "attack_defense": 6,
+      "strength_defense": 6,
+      "ranged_defense": 5,
+      "magic_defense": 3
+    },
+    "xp_drops": {
+      "combat": 120
+    },
+    "drop_table": [
+      {"item": "coins", "chance": 0.55, "quantity_min": 15, "quantity_max": 40},
+      {"item": "iron_scimitar", "chance": 0.08, "quantity_min": 1, "quantity_max": 1},
+      {"item": "rotten_flesh", "chance": 0.40, "quantity_min": 1, "quantity_max": 2}
+    ],
+    "always_drops": [
+      {"item": "big_bones", "quantity": 1}
+    ]
+  },
+  "bandit": {
+    "name": "bandit",
+    "display_name": "Bandit",
+    "hp": 45,
+    "combat_stats": {
+      "attack_level": 7,
+      "strength_level": 6,
+      "defense_level": 5,
+      "attack_bonus": 10,
+      "strength_bonus": 9
+    },
+    "defensive_stats": {
+      "attack_defense": 12,
+      "strength_defense": 12,
+      "ranged_defense": 10,
+      "magic_defense": 8
+    },
+    "xp_drops": {
+      "combat": 165
+    },
+    "drop_table": [
+      {"item": "coins", "chance": 0.70, "quantity_min": 25, "quantity_max": 60},
+      {"item": "steel_sword", "chance": 0.10, "quantity_min": 1, "quantity_max": 1},
+      {"item": "wooden_bow", "chance": 0.12, "quantity_min": 1, "quantity_max": 1}
+    ],
+    "always_drops": [
+      {"item": "big_bones", "quantity": 1}
+    ]
+  },
+  "guard": {
+    "name": "guard",
+    "display_name": "Guard",
+    "hp": 55,
+    "combat_stats": {
+      "attack_level": 9,
+      "strength_level": 8,
+      "defense_level": 8,
+      "attack_bonus": 15,
+      "strength_bonus": 14
+    },
+    "defensive_stats": {
+      "attack_defense": 18,
+      "strength_defense": 18,
+      "ranged_defense": 15,
+      "magic_defense": 12
+    },
+    "xp_drops": {
+      "combat": 210
+    },
+    "drop_table": [
+      {"item": "coins", "chance": 0.75, "quantity_min": 40, "quantity_max": 80},
+      {"item": "steel_scimitar", "chance": 0.15, "quantity_min": 1, "quantity_max": 1},
+      {"item": "iron_ore", "chance": 0.20, "quantity_min": 2, "quantity_max": 5}
+    ],
+    "always_drops": [
+      {"item": "big_bones", "quantity": 1}
+    ]
+  },
+  "dark_wizard": {
+    "name": "dark_wizard",
+    "display_name": "Dark Wizard",
+    "hp": 40,
+    "combat_stats": {
+      "attack_level": 8,
+      "strength_level": 7,
+      "defense_level": 4,
+      "attack_bonus": 12,
+      "strength_bonus": 11
+    },
+    "defensive_stats": {
+      "attack_defense": 8,
+      "strength_defense": 8,
+      "ranged_defense": 10,
+      "magic_defense": 20
+    },
+    "xp_drops": {
+      "combat": 195
+    },
+    "drop_table": [
+      {"item": "coins", "chance": 0.60, "quantity_min": 30, "quantity_max": 70},
+      {"item": "basic_staff", "chance": 0.15, "quantity_min": 1, "quantity_max": 1},
+      {"item": "apprentice_staff", "chance": 0.08, "quantity_min": 1, "quantity_max": 1},
+      {"item": "magic_bean", "chance": 0.25, "quantity_min": 1, "quantity_max": 3}
+    ],
+    "always_drops": [
+      {"item": "big_bones", "quantity": 1}
+    ]
+  },
+  "orc_warrior": {
+    "name": "orc_warrior",
+    "display_name": "Orc Warrior",
+    "hp": 65,
+    "combat_stats": {
+      "attack_level": 12,
+      "strength_level": 12,
+      "defense_level": 10,
+      "attack_bonus": 20,
+      "strength_bonus": 22
+    },
+    "defensive_stats": {
+      "attack_defense": 25,
+      "strength_defense": 25,
+      "ranged_defense": 18,
+      "magic_defense": 15
+    },
+    "xp_drops": {
+      "combat": 270
+    },
+    "drop_table": [
+      {"item": "coins", "chance": 0.80, "quantity_min": 60, "quantity_max": 120},
+      {"item": "steel_scimitar", "chance": 0.20, "quantity_min": 1, "quantity_max": 1},
+      {"item": "oak_bow", "chance": 0.18, "quantity_min": 1, "quantity_max": 1},
+      {"item": "coal", "chance": 0.30, "quantity_min": 3, "quantity_max": 8}
+    ],
+    "always_drops": [
+      {"item": "giant_bones", "quantity": 1}
+    ]
+  },
+  "spider": {
+    "name": "spider",
+    "display_name": "Giant Spider",
+    "hp": 25,
+    "combat_stats": {
+      "attack_level": 3,
+      "strength_level": 4,
+      "defense_level": 2,
+      "attack_bonus": 4,
+      "strength_bonus": 5
+    },
+    "defensive_stats": {
+      "attack_defense": 6,
+      "strength_defense": 6,
+      "ranged_defense": 8,
+      "magic_defense": 4
+    },
+    "xp_drops": {
+      "combat": 90
+    },
+    "drop_table": [
+      {"item": "coins", "chance": 0.45, "quantity_min": 8, "quantity_max": 20},
+      {"item": "spider_silk", "chance": 0.60, "quantity_min": 1, "quantity_max": 3},
+      {"item": "spider_fang", "chance": 0.25, "quantity_min": 1, "quantity_max": 1}
+    ],
+    "always_drops": [
+      {"item": "bones", "quantity": 1}
+    ]
+  },
+  "wild_dog": {
+    "name": "wild_dog",
+    "display_name": "Wild Dog",
+    "hp": 18,
+    "combat_stats": {
+      "attack_level": 3,
+      "strength_level": 2,
+      "defense_level": 2,
+      "attack_bonus": 3,
+      "strength_bonus": 2
+    },
+    "defensive_stats": {
+      "attack_defense": 4,
+      "strength_defense": 4,
+      "ranged_defense": 6,
+      "magic_defense": 2
+    },
+    "xp_drops": {
+      "combat": 54
+    },
+    "drop_table": [
+      {"item": "coins", "chance": 0.30, "quantity_min": 3, "quantity_max": 12},
+      {"item": "raw_meat", "chance": 0.50, "quantity_min": 1, "quantity_max": 2}
+    ],
+    "always_drops": [
+      {"item": "bones", "quantity": 1}
+    ]
+  },
+  "rogue": {
+    "name": "rogue",
+    "display_name": "Rogue",
+    "hp": 38,
+    "combat_stats": {
+      "attack_level": 6,
+      "strength_level": 5,
+      "defense_level": 4,
+      "attack_bonus": 8,
+      "strength_bonus": 7
+    },
+    "defensive_stats": {
+      "attack_defense": 10,
+      "strength_defense": 10,
+      "ranged_defense": 12,
+      "magic_defense": 6
+    },
+    "xp_drops": {
+      "combat": 144
+    },
+    "drop_table": [
+      {"item": "coins", "chance": 0.85, "quantity_min": 20, "quantity_max": 50},
+      {"item": "bronze_dagger", "chance": 0.30, "quantity_min": 1, "quantity_max": 1},
+      {"item": "iron_dagger", "chance": 0.15, "quantity_min": 1, "quantity_max": 1},
+      {"item": "lockpick", "chance": 0.20, "quantity_min": 1, "quantity_max": 2}
+    ],
+    "always_drops": [
+      {"item": "big_bones", "quantity": 1}
+    ]
+  },
+  "knight": {
+    "name": "knight",
+    "display_name": "Knight",
+    "hp": 70,
+    "combat_stats": {
+      "attack_level": 15,
+      "strength_level": 14,
+      "defense_level": 15,
+      "attack_bonus": 28,
+      "strength_bonus": 26
+    },
+    "defensive_stats": {
+      "attack_defense": 35,
+      "strength_defense": 35,
+      "ranged_defense": 30,
+      "magic_defense": 20
+    },
+    "xp_drops": {
+      "combat": 360
+    },
+    "drop_table": [
+      {"item": "coins", "chance": 0.90, "quantity_min": 80, "quantity_max": 150},
+      {"item": "mithril_sword", "chance": 0.12, "quantity_min": 1, "quantity_max": 1},
+      {"item": "steel_platebody", "chance": 0.08, "quantity_min": 1, "quantity_max": 1},
+      {"item": "mithril_ore", "chance": 0.25, "quantity_min": 2, "quantity_max": 5}
+    ],
+    "always_drops": [
+      {"item": "giant_bones", "quantity": 1}
+    ]
+  },
+  "hellhound": {
+    "name": "hellhound",
+    "display_name": "Hellhound",
+    "hp": 80,
+    "combat_stats": {
+      "attack_level": 18,
+      "strength_level": 20,
+      "defense_level": 12,
+      "attack_bonus": 32,
+      "strength_bonus": 38
+    },
+    "defensive_stats": {
+      "attack_defense": 28,
+      "strength_defense": 28,
+      "ranged_defense": 25,
+      "magic_defense": 35
+    },
+    "xp_drops": {
+      "combat": 420
+    },
+    "drop_table": [
+      {"item": "coins", "chance": 0.70, "quantity_min": 100, "quantity_max": 200},
+      {"item": "fire_rune", "chance": 0.50, "quantity_min": 5, "quantity_max": 15},
+      {"item": "hellhound_fang", "chance": 0.35, "quantity_min": 1, "quantity_max": 1},
+      {"item": "adamantite_ore", "chance": 0.15, "quantity_min": 1, "quantity_max": 3}
+    ],
+    "always_drops": [
+      {"item": "giant_bones", "quantity": 1}
+    ]
+  },
+  "troll": {
+    "name": "troll",
+    "display_name": "Mountain Troll",
+    "hp": 95,
+    "combat_stats": {
+      "attack_level": 16,
+      "strength_level": 18,
+      "defense_level": 14,
+      "attack_bonus": 30,
+      "strength_bonus": 35
+    },
+    "defensive_stats": {
+      "attack_defense": 32,
+      "strength_defense": 32,
+      "ranged_defense": 20,
+      "magic_defense": 15
+    },
+    "xp_drops": {
+      "combat": 390
+    },
+    "drop_table": [
+      {"item": "coins", "chance": 0.75, "quantity_min": 90, "quantity_max": 180},
+      {"item": "mithril_scimitar", "chance": 0.18, "quantity_min": 1, "quantity_max": 1},
+      {"item": "troll_bone", "chance": 0.40, "quantity_min": 1, "quantity_max": 2},
+      {"item": "coal", "chance": 0.35, "quantity_min": 5, "quantity_max": 12}
+    ],
+    "always_drops": [
+      {"item": "giant_bones", "quantity": 1}
+    ]
+  },
+  "demon": {
+    "name": "demon",
+    "display_name": "Lesser Demon",
+    "hp": 110,
+    "combat_stats": {
+      "attack_level": 22,
+      "strength_level": 24,
+      "defense_level": 18,
+      "attack_bonus": 42,
+      "strength_bonus": 48
+    },
+    "defensive_stats": {
+      "attack_defense": 40,
+      "strength_defense": 40,
+      "ranged_defense": 35,
+      "magic_defense": 45
+    },
+    "xp_drops": {
+      "combat": 540
+    },
+    "drop_table": [
+      {"item": "coins", "chance": 0.85, "quantity_min": 150, "quantity_max": 300},
+      {"item": "adamantite_sword", "chance": 0.10, "quantity_min": 1, "quantity_max": 1},
+      {"item": "demon_horn", "chance": 0.30, "quantity_min": 1, "quantity_max": 1},
+      {"item": "adamantite_ore", "chance": 0.40, "quantity_min": 3, "quantity_max": 8},
+      {"item": "fire_rune", "chance": 0.60, "quantity_min": 10, "quantity_max": 25}
+    ],
+    "always_drops": [
+      {"item": "dragon_bone", "quantity": 1}
+    ]
+  },
+  "dragon": {
+    "name": "dragon",
+    "display_name": "Green Dragon",
+    "hp": 150,
+    "combat_stats": {
+      "attack_level": 28,
+      "strength_level": 30,
+      "defense_level": 25,
+      "attack_bonus": 55,
+      "strength_bonus": 62
+    },
+    "defensive_stats": {
+      "attack_defense": 55,
+      "strength_defense": 55,
+      "ranged_defense": 50,
+      "magic_defense": 60
+    },
+    "xp_drops": {
+      "combat": 750
+    },
+    "drop_table": [
+      {"item": "coins", "chance": 0.95, "quantity_min": 300, "quantity_max": 600},
+      {"item": "runite_sword", "chance": 0.05, "quantity_min": 1, "quantity_max": 1},
+      {"item": "dragon_scale", "chance": 0.50, "quantity_min": 1, "quantity_max": 3},
+      {"item": "dragon_bone", "chance": 0.80, "quantity_min": 1, "quantity_max": 1},
+      {"item": "runite_ore", "chance": 0.35, "quantity_min": 2, "quantity_max": 6},
+      {"item": "adamantite_platebody", "chance": 0.08, "quantity_min": 1, "quantity_max": 1}
+    ],
+    "always_drops": [
+      {"item": "dragon_bone", "quantity": 1}
+    ]
+  },
+  "imp": {
+    "name": "imp",
+    "display_name": "Imp",
+    "hp": 12,
+    "combat_stats": {
+      "attack_level": 2,
+      "strength_level": 1,
+      "defense_level": 2,
+      "attack_bonus": 1,
+      "strength_bonus": 1
+    },
+    "defensive_stats": {
+      "attack_defense": 3,
+      "strength_defense": 3,
+      "ranged_defense": 4,
+      "magic_defense": 5
+    },
+    "xp_drops": {
+      "combat": 45
+    },
+    "drop_table": [
+      {"item": "coins", "chance": 0.40, "quantity_min": 2, "quantity_max": 8},
+      {"item": "imp_hide", "chance": 0.35, "quantity_min": 1, "quantity_max": 1},
+      {"item": "fire_rune", "chance": 0.25, "quantity_min": 1, "quantity_max": 3}
+    ],
+    "always_drops": [
+      {"item": "bones", "quantity": 1}
+    ]
+  },
+  "chicken": {
+    "name": "chicken",
+    "display_name": "Chicken",
+    "hp": 5,
+    "combat_stats": {
+      "attack_level": 1,
+      "strength_level": 1,
+      "defense_level": 1,
+      "attack_bonus": 0,
+      "strength_bonus": 0
+    },
+    "defensive_stats": {
+      "attack_defense": 0,
+      "strength_defense": 0,
+      "ranged_defense": 0,
+      "magic_defense": 0
+    },
+    "xp_drops": {
+      "combat": 15
+    },
+    "drop_table": [
+      {"item": "raw_chicken", "chance": 1.0, "quantity_min": 1, "quantity_max": 1},
+      {"item": "feather", "chance": 0.50, "quantity_min": 1, "quantity_max": 3}
+    ],
+    "always_drops": [
+      {"item": "bones", "quantity": 1}
+    ]
+  },
+  "sheep": {
+    "name": "sheep",
+    "display_name": "Sheep",
+    "hp": 8,
+    "combat_stats": {
+      "attack_level": 1,
+      "strength_level": 1,
+      "defense_level": 2,
+      "attack_bonus": 0,
+      "strength_bonus": 1
+    },
+    "defensive_stats": {
+      "attack_defense": 2,
+      "strength_defense": 2,
+      "ranged_defense": 1,
+      "magic_defense": 1
+    },
+    "xp_drops": {
+      "combat": 24
+    },
+    "drop_table": [
+      {"item": "raw_mutton", "chance": 1.0, "quantity_min": 1, "quantity_max": 1},
+      {"item": "wool", "chance": 0.75, "quantity_min": 1, "quantity_max": 1}
+    ],
+    "always_drops": [
+      {"item": "bones", "quantity": 1}
+    ]
+  },
+  "cow": {
+    "name": "cow",
+    "display_name": "Cow",
+    "hp": 15,
+    "combat_stats": {
+      "attack_level": 1,
+      "strength_level": 1,
+      "defense_level": 3,
+      "attack_bonus": 0,
+      "strength_bonus": 1
+    },
+    "defensive_stats": {
+      "attack_defense": 4,
+      "strength_defense": 4,
+      "ranged_defense": 2,
+      "magic_defense": 2
+    },
+    "xp_drops": {
+      "combat": 36
+    },
+    "drop_table": [
+      {"item": "raw_beef", "chance": 1.0, "quantity_min": 1, "quantity_max": 1},
+      {"item": "cowhide", "chance": 0.60, "quantity_min": 1, "quantity_max": 1}
+    ],
+    "always_drops": [
+      {"item": "bones", "quantity": 1}
+    ]
+  }
+}

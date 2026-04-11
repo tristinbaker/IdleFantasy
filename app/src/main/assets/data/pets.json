@@ -1,0 +1,72 @@
+{
+  "dragon_whelp": {
+    "id": "dragon_whelp",
+    "display_name": "Dragon Whelp",
+    "emoji": "🐉",
+    "description": "A young dragon that boosts your combat prowess.",
+    "source": "King Black Dragon raid (1/100 per player)",
+    "effect_type": "xp_boost",
+    "boosted_skill": "combat",
+    "boost_percent": 5
+  },
+  "imp_pet": {
+    "id": "imp_pet",
+    "display_name": "Imp Pet",
+    "emoji": "😈",
+    "description": "A mischievous imp that enhances your prayer training.",
+    "source": "Demon Lord raid (1/100 per player)",
+    "effect_type": "xp_boost",
+    "boosted_skill": "prayer",
+    "boost_percent": 5
+  },
+  "baby_kraken": {
+    "id": "baby_kraken",
+    "display_name": "Baby Kraken",
+    "emoji": "🦑",
+    "description": "A tiny kraken that improves your cooking abilities.",
+    "source": "Kraken raid (1/100 per player)",
+    "effect_type": "xp_boost",
+    "boosted_skill": "cooking",
+    "boost_percent": 5
+  },
+  "rock_golem": {
+    "id": "rock_golem",
+    "display_name": "Rock Golem",
+    "emoji": "🗿",
+    "description": "A living rock formation that enhances your mining prowess.",
+    "source": "Mining (1/1000 per session)",
+    "effect_type": "xp_boost",
+    "boosted_skill": "mining",
+    "boost_percent": 10
+  },
+  "ent": {
+    "id": "ent",
+    "display_name": "Ent",
+    "emoji": "🌳",
+    "description": "An ancient tree spirit that aids your woodcutting.",
+    "source": "Woodcutting (1/1000 per session)",
+    "effect_type": "xp_boost",
+    "boosted_skill": "woodcutting",
+    "boost_percent": 10
+  },
+  "tiny_templar": {
+    "id": "tiny_templar",
+    "display_name": "Tiny Templar",
+    "emoji": "🐟",
+    "description": "A small fish that boosts your fishing expertise.",
+    "source": "Fishing (1/1000 per session)",
+    "effect_type": "xp_boost",
+    "boosted_skill": "fishing",
+    "boost_percent": 10
+  },
+  "tangleroot": {
+    "id": "tangleroot",
+    "display_name": "Tangleroot",
+    "emoji": "🌿",
+    "description": "A magical plant creature that enhances your farming.",
+    "source": "Farming harvest (1/1000 per harvest)",
+    "effect_type": "xp_boost",
+    "boosted_skill": "farming",
+    "boost_percent": 10
+  }
+}

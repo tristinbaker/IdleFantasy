@@ -1,0 +1,27 @@
+Idle Fantasy is a free and open source offline idle RPG inspired by classic MMORPGs. Train skills, fight in dungeons, craft gear, and complete quests. No internet connection, account, or ads required.
+
+<b>Features</b>
+
+• <b>14 trainable skills</b>: Mining, Fishing, Woodcutting, Firemaking, Agility, Runecrafting, Smithing, Cooking, Fletching, Crafting, Prayer, Attack, Strength, Defence, Ranged, Magic, Hitpoints
+
+• <b>Session-based training</b>: Start a session and close the app. Come back up to an hour later to collect your loot and XP. Agility reduces session time.
+
+• <b>12 dungeons</b>: Fight solo bosses and enemies to earn combat XP, coins, and rare drops. Equip weapons and armour to deal more damage.
+
+• <b>Crafting system</b>: Smelt bars, cook fish, fletch bows and arrows, craft jewellery. Consume gathered materials and earn XP and items.
+
+• <b>Prayer</b>: Bury bones collected from combat to earn Prayer XP.
+
+• <b>Equipment system</b>: Equip weapons, armour, tools, and jewellery to boost stats and skill efficiency.
+
+• <b>Quest system</b>: 100+ quests spanning all skills. Earn XP rewards on completion.
+
+• <b>Pet system</b>: Rare pets can drop while training skills. Each pet provides a permanent XP boost to their linked skill.
+
+• <b>Achievements</b>: Track milestones across levelling, combat, quests, and collections.
+
+• <b>NPC Shop</b>: Buy supplies and sell your gathered resources for coins.
+
+• <b>No ads. No accounts. No internet required.</b> Your save data stays on your device.
+
+Idle Fantasy is free software released under the GPL-3.0 licence. Source code is available on the project repository.

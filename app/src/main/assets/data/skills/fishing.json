@@ -1,0 +1,122 @@
+{
+  "name": "fishing",
+  "display_name": "Fishing",
+  "description": "Catch fish and aquatic treasures from the waters",
+  "max_level": 99,
+  "xp_ranges": {
+    "1": {"min": 4, "max": 8},
+    "5": {"min": 7, "max": 13},
+    "10": {"min": 10, "max": 18},
+    "15": {"min": 15, "max": 25},
+    "20": {"min": 22, "max": 35},
+    "25": {"min": 30, "max": 45},
+    "30": {"min": 40, "max": 58},
+    "35": {"min": 52, "max": 75},
+    "40": {"min": 65, "max": 95},
+    "45": {"min": 80, "max": 115},
+    "50": {"min": 95, "max": 140},
+    "55": {"min": 115, "max": 165},
+    "60": {"min": 135, "max": 195},
+    "65": {"min": 160, "max": 230},
+    "70": {"min": 190, "max": 270},
+    "75": {"min": 220, "max": 315},
+    "80": {"min": 260, "max": 370},
+    "85": {"min": 300, "max": 430},
+    "90": {"min": 350, "max": 495},
+    "95": {"min": 400, "max": 570}
+  },
+  "drop_tables": {
+    "1": [
+      {"item": "raw_shrimp", "chance": 0.75},
+      {"item": "seaweed", "chance": 0.15},
+      {"item": "old_boot", "chance": 0.10}
+    ],
+    "5": [
+      {"item": "raw_shrimp", "chance": 0.60},
+      {"item": "raw_sardine", "chance": 0.25},
+      {"item": "seaweed", "chance": 0.10},
+      {"item": "old_boot", "chance": 0.05}
+    ],
+    "10": [
+      {"item": "raw_shrimp", "chance": 0.45},
+      {"item": "raw_sardine", "chance": 0.30},
+      {"item": "raw_herring", "chance": 0.15},
+      {"item": "seaweed", "chance": 0.08},
+      {"item": "old_boot", "chance": 0.02}
+    ],
+    "15": [
+      {"item": "raw_sardine", "chance": 0.35},
+      {"item": "raw_herring", "chance": 0.30},
+      {"item": "raw_mackerel", "chance": 0.20},
+      {"item": "oyster", "chance": 0.10},
+      {"item": "seaweed", "chance": 0.05}
+    ],
+    "20": [
+      {"item": "raw_herring", "chance": 0.30},
+      {"item": "raw_mackerel", "chance": 0.30},
+      {"item": "raw_trout", "chance": 0.20},
+      {"item": "oyster", "chance": 0.15},
+      {"item": "pearl", "chance": 0.05}
+    ],
+    "30": [
+      {"item": "raw_mackerel", "chance": 0.25},
+      {"item": "raw_trout", "chance": 0.30},
+      {"item": "raw_salmon", "chance": 0.20},
+      {"item": "oyster", "chance": 0.15},
+      {"item": "pearl", "chance": 0.08},
+      {"item": "crab", "chance": 0.02}
+    ],
+    "40": [
+      {"item": "raw_trout", "chance": 0.25},
+      {"item": "raw_salmon", "chance": 0.30},
+      {"item": "raw_tuna", "chance": 0.20},
+      {"item": "crab", "chance": 0.12},
+      {"item": "pearl", "chance": 0.10},
+      {"item": "raw_lobster", "chance": 0.03}
+    ],
+    "50": [
+      {"item": "raw_salmon", "chance": 0.25},
+      {"item": "raw_tuna", "chance": 0.30},
+      {"item": "raw_swordfish", "chance": 0.20},
+      {"item": "raw_lobster", "chance": 0.15},
+      {"item": "pearl", "chance": 0.08},
+      {"item": "black_pearl", "chance": 0.02}
+    ],
+    "60": [
+      {"item": "raw_tuna", "chance": 0.23},
+      {"item": "raw_swordfish", "chance": 0.28},
+      {"item": "raw_monkfish", "chance": 0.12},
+      {"item": "raw_lobster", "chance": 0.15},
+      {"item": "black_pearl", "chance": 0.08},
+      {"item": "raw_shark", "chance": 0.12},
+      {"item": "raw_sea_turtle", "chance": 0.02}
+    ],
+    "70": [
+      {"item": "raw_swordfish", "chance": 0.23},
+      {"item": "raw_monkfish", "chance": 0.15},
+      {"item": "raw_shark", "chance": 0.22},
+      {"item": "raw_manta_ray", "chance": 0.12},
+      {"item": "black_pearl", "chance": 0.15},
+      {"item": "raw_sea_turtle", "chance": 0.08},
+      {"item": "kraken_tentacle", "chance": 0.02},
+      {"item": "raw_lobster", "chance": 0.03}
+    ],
+    "85": [
+      {"item": "raw_shark", "chance": 0.28},
+      {"item": "raw_manta_ray", "chance": 0.28},
+      {"item": "raw_sea_turtle", "chance": 0.18},
+      {"item": "raw_monkfish", "chance": 0.08},
+      {"item": "black_pearl", "chance": 0.10},
+      {"item": "kraken_tentacle", "chance": 0.06},
+      {"item": "ancient_treasure", "chance": 0.02}
+    ],
+    "95": [
+      {"item": "raw_manta_ray", "chance": 0.35},
+      {"item": "raw_sea_turtle", "chance": 0.23},
+      {"item": "raw_shark", "chance": 0.12},
+      {"item": "kraken_tentacle", "chance": 0.18},
+      {"item": "black_pearl", "chance": 0.10},
+      {"item": "ancient_treasure", "chance": 0.02}
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "fortress_ruins",
+  "display_name": "Fortress Ruins",
+  "description": "The crumbling remains of an ancient castle, now guarded by knights and soldiers.",
+  "recommended_level": 18,
+  "encounter_rate": 0.3,
+  "enemy_spawns": [
+    {
+      "enemy": "guard",
+      "weight": 5
+    },
+    {
+      "enemy": "knight",
+      "weight": 3
+    },
+    {
+      "enemy": "dark_wizard",
+      "weight": 2
+    }
+  ]
+}

@@ -1,0 +1,284 @@
+{
+  "silver_ring": {
+    "type": "jewelry",
+    "display_name": "Silver Ring",
+    "level_required": 1,
+    "materials": {
+      "silver_bar": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 10,
+    "time_per_item": 60
+  },
+  "silver_necklace": {
+    "type": "jewelry",
+    "display_name": "Silver Necklace",
+    "level_required": 5,
+    "materials": {
+      "silver_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 20,
+    "time_per_item": 60
+  },
+  "gold_ring": {
+    "type": "jewelry",
+    "display_name": "Gold Ring",
+    "level_required": 10,
+    "materials": {
+      "gold_bar": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 25,
+    "time_per_item": 60
+  },
+  "gold_necklace": {
+    "type": "jewelry",
+    "display_name": "Gold Necklace",
+    "level_required": 15,
+    "materials": {
+      "gold_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 40,
+    "time_per_item": 60
+  },
+  "platinum_ring": {
+    "type": "jewelry",
+    "display_name": "Platinum Ring",
+    "level_required": 20,
+    "materials": {
+      "platinum_bar": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 50,
+    "time_per_item": 60
+  },
+  "platinum_necklace": {
+    "type": "jewelry",
+    "display_name": "Platinum Necklace",
+    "level_required": 25,
+    "materials": {
+      "platinum_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 75,
+    "time_per_item": 60
+  },
+  "silver_sapphire_ring": {
+    "type": "jewelry",
+    "display_name": "Silver Sapphire Ring",
+    "level_required": 30,
+    "materials": {
+      "silver_bar": 1,
+      "sapphire": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 60,
+    "time_per_item": 60
+  },
+  "silver_sapphire_necklace": {
+    "type": "jewelry",
+    "display_name": "Silver Sapphire Necklace",
+    "level_required": 35,
+    "materials": {
+      "silver_bar": 2,
+      "sapphire": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 85,
+    "time_per_item": 60
+  },
+  "gold_sapphire_ring": {
+    "type": "jewelry",
+    "display_name": "Gold Sapphire Ring",
+    "level_required": 40,
+    "materials": {
+      "gold_bar": 1,
+      "sapphire": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 100,
+    "time_per_item": 60
+  },
+  "gold_sapphire_necklace": {
+    "type": "jewelry",
+    "display_name": "Gold Sapphire Necklace",
+    "level_required": 45,
+    "materials": {
+      "gold_bar": 2,
+      "sapphire": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 125,
+    "time_per_item": 60
+  },
+  "platinum_sapphire_ring": {
+    "type": "jewelry",
+    "display_name": "Platinum Sapphire Ring",
+    "level_required": 50,
+    "materials": {
+      "platinum_bar": 1,
+      "sapphire": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 150,
+    "time_per_item": 60
+  },
+  "platinum_sapphire_necklace": {
+    "type": "jewelry",
+    "display_name": "Platinum Sapphire Necklace",
+    "level_required": 55,
+    "materials": {
+      "platinum_bar": 2,
+      "sapphire": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 180,
+    "time_per_item": 60
+  },
+  "gold_emerald_ring": {
+    "type": "jewelry",
+    "display_name": "Gold Emerald Ring",
+    "level_required": 42,
+    "materials": {
+      "gold_bar": 1,
+      "emerald": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 110,
+    "time_per_item": 60
+  },
+  "gold_emerald_necklace": {
+    "type": "jewelry",
+    "display_name": "Gold Emerald Necklace",
+    "level_required": 47,
+    "materials": {
+      "gold_bar": 2,
+      "emerald": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 140,
+    "time_per_item": 60
+  },
+  "platinum_emerald_ring": {
+    "type": "jewelry",
+    "display_name": "Platinum Emerald Ring",
+    "level_required": 52,
+    "materials": {
+      "platinum_bar": 1,
+      "emerald": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 165,
+    "time_per_item": 60
+  },
+  "platinum_emerald_necklace": {
+    "type": "jewelry",
+    "display_name": "Platinum Emerald Necklace",
+    "level_required": 57,
+    "materials": {
+      "platinum_bar": 2,
+      "emerald": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 200,
+    "time_per_item": 60
+  },
+  "gold_ruby_ring": {
+    "type": "jewelry",
+    "display_name": "Gold Ruby Ring",
+    "level_required": 54,
+    "materials": {
+      "gold_bar": 1,
+      "ruby": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 170,
+    "time_per_item": 60
+  },
+  "gold_ruby_necklace": {
+    "type": "jewelry",
+    "display_name": "Gold Ruby Necklace",
+    "level_required": 59,
+    "materials": {
+      "gold_bar": 2,
+      "ruby": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 210,
+    "time_per_item": 60
+  },
+  "platinum_ruby_ring": {
+    "type": "jewelry",
+    "display_name": "Platinum Ruby Ring",
+    "level_required": 64,
+    "materials": {
+      "platinum_bar": 1,
+      "ruby": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 240,
+    "time_per_item": 60
+  },
+  "platinum_ruby_necklace": {
+    "type": "jewelry",
+    "display_name": "Platinum Ruby Necklace",
+    "level_required": 69,
+    "materials": {
+      "platinum_bar": 2,
+      "ruby": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 280,
+    "time_per_item": 60
+  },
+  "gold_diamond_ring": {
+    "type": "jewelry",
+    "display_name": "Gold Diamond Ring",
+    "level_required": 66,
+    "materials": {
+      "gold_bar": 1,
+      "diamond": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 250,
+    "time_per_item": 60
+  },
+  "gold_diamond_necklace": {
+    "type": "jewelry",
+    "display_name": "Gold Diamond Necklace",
+    "level_required": 71,
+    "materials": {
+      "gold_bar": 2,
+      "diamond": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 300,
+    "time_per_item": 60
+  },
+  "platinum_diamond_ring": {
+    "type": "jewelry",
+    "display_name": "Platinum Diamond Ring",
+    "level_required": 76,
+    "materials": {
+      "platinum_bar": 1,
+      "diamond": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 330,
+    "time_per_item": 60
+  },
+  "platinum_diamond_necklace": {
+    "type": "jewelry",
+    "display_name": "Platinum Diamond Necklace",
+    "level_required": 81,
+    "materials": {
+      "platinum_bar": 2,
+      "diamond": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 400,
+    "time_per_item": 60
+  }
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Placeholder launcher icon — replace with final art before release -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Sword blade -->
+    <path
+        android:fillColor="#C9A94D"
+        android:pathData="M54,18 L58,52 L54,90 L50,52 Z" />
+    <!-- Cross-guard -->
+    <path
+        android:fillColor="#C9A94D"
+        android:pathData="M32,48 L76,48 L76,56 L32,56 Z" />
+    <!-- Pommel -->
+    <path
+        android:fillColor="#FAD77B"
+        android:pathData="M50,88 A4,4 0 0 0 58,88 A4,4 0 0 0 50,88 Z" />
+</vector>

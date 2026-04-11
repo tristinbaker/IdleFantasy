@@ -1,0 +1,17 @@
+{
+  "name": "volcanic_depths",
+  "display_name": "Volcanic Depths",
+  "description": "A scorching cavern inhabited by hellhounds and lesser demons. The heat is unbearable!",
+  "recommended_level": 28,
+  "encounter_rate": 0.35,
+  "enemy_spawns": [
+    {
+      "enemy": "hellhound",
+      "weight": 6
+    },
+    {
+      "enemy": "demon",
+      "weight": 4
+    }
+  ]
+}

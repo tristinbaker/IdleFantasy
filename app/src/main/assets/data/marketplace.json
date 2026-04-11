@@ -1,0 +1,200 @@
+{
+  "ores": {
+    "category_name": "Ores & Materials",
+    "description": "Raw materials for smithing and crafting",
+    "items": {
+      "copper_ore": {
+        "display_name": "Copper Ore",
+        "description": "A common copper ore used for bronze bars.",
+        "price": 5,
+        "stock": "unlimited"
+      },
+      "tin_ore": {
+        "display_name": "Tin Ore",
+        "description": "A common tin ore used for bronze bars.",
+        "price": 5,
+        "stock": "unlimited"
+      },
+      "iron_ore": {
+        "display_name": "Iron Ore",
+        "description": "An iron ore used for iron and steel bars.",
+        "price": 15,
+        "stock": "unlimited"
+      },
+      "coal": {
+        "display_name": "Coal",
+        "description": "Essential fuel for smelting higher-tier bars.",
+        "price": 25,
+        "stock": "unlimited"
+      },
+      "mithril_ore": {
+        "display_name": "Mithril Ore",
+        "description": "A rare blue ore used for mithril bars.",
+        "price": 100,
+        "stock": "unlimited"
+      },
+      "adamantite_ore": {
+        "display_name": "Adamantite Ore",
+        "description": "A valuable green ore used for adamantite bars.",
+        "price": 250,
+        "stock": "unlimited"
+      },
+      "runite_ore": {
+        "display_name": "Runite Ore",
+        "description": "The rarest ore, used for runite bars.",
+        "price": 500,
+        "stock": "unlimited"
+      }
+    }
+  },
+  "logs": {
+    "category_name": "Logs & Wood",
+    "description": "Logs for fletching and crafting",
+    "items": {
+      "log": {
+        "display_name": "Log",
+        "description": "Basic logs from normal trees. Used for fletching.",
+        "price": 10,
+        "stock": "unlimited"
+      },
+      "oak_log": {
+        "display_name": "Oak Log",
+        "description": "Sturdy oak logs. Used for fletching.",
+        "price": 20,
+        "stock": "unlimited"
+      },
+      "willow_log": {
+        "display_name": "Willow Log",
+        "description": "Flexible willow logs. Used for fletching.",
+        "price": 40,
+        "stock": "unlimited"
+      },
+      "maple_log": {
+        "display_name": "Maple Log",
+        "description": "Strong maple logs. Used for fletching.",
+        "price": 75,
+        "stock": "unlimited"
+      },
+      "yew_log": {
+        "display_name": "Yew Log",
+        "description": "High-quality yew logs. Used for fletching.",
+        "price": 150,
+        "stock": "unlimited"
+      },
+      "magic_log": {
+        "display_name": "Magic Log",
+        "description": "Rare magical logs. Used for fletching.",
+        "price": 300,
+        "stock": "unlimited"
+      },
+      "redwood_log": {
+        "display_name": "Redwood Log",
+        "description": "Ancient redwood logs. Used for fletching.",
+        "price": 500,
+        "stock": "unlimited"
+      }
+    }
+  },
+  "seeds": {
+    "category_name": "Seeds & Farming",
+    "description": "Seeds for growing crops on your farm",
+    "items": {
+      "potato_seed": {
+        "display_name": "Potato Seed",
+        "description": "Plant these to grow potatoes. Growth time: 8 hours. Requires farming level 1.",
+        "price": 20,
+        "stock": "unlimited"
+      },
+      "onion_seed": {
+        "display_name": "Onion Seed",
+        "description": "Plant these to grow onions. Growth time: 8 hours. Requires farming level 5.",
+        "price": 25,
+        "stock": "unlimited"
+      },
+      "cabbage_seed": {
+        "display_name": "Cabbage Seed",
+        "description": "Plant these to grow cabbage. Growth time: 8 hours. Requires farming level 10.",
+        "price": 30,
+        "stock": "unlimited"
+      },
+      "carrot_seed": {
+        "display_name": "Carrot Seed",
+        "description": "Plant these to grow carrots. Growth time: 16 hours. Requires farming level 15.",
+        "price": 50,
+        "stock": "unlimited"
+      },
+      "tomato_seed": {
+        "display_name": "Tomato Seed",
+        "description": "Plant these to grow tomatoes. Growth time: 16 hours. Requires farming level 20.",
+        "price": 60,
+        "stock": "unlimited"
+      },
+      "corn_seed": {
+        "display_name": "Corn Seed",
+        "description": "Plant these to grow corn. Growth time: 16 hours. Requires farming level 25.",
+        "price": 75,
+        "stock": "unlimited"
+      },
+      "pumpkin_seed": {
+        "display_name": "Pumpkin Seed",
+        "description": "Plant these to grow pumpkins. Growth time: 24 hours. Requires farming level 30.",
+        "price": 100,
+        "stock": "unlimited"
+      },
+      "watermelon_seed": {
+        "display_name": "Watermelon Seed",
+        "description": "Plant these to grow watermelons. Growth time: 24 hours. Requires farming level 35.",
+        "price": 125,
+        "stock": "unlimited"
+      },
+      "strawberry_seed": {
+        "display_name": "Strawberry Seed",
+        "description": "Plant these to grow strawberries. Growth time: 48 hours. Requires farming level 40.",
+        "price": 200,
+        "stock": "unlimited"
+      },
+      "magic_herb_seed": {
+        "display_name": "Magic Herb Seed",
+        "description": "Plant these to grow magic herbs. Growth time: 48 hours. Requires farming level 50.",
+        "price": 300,
+        "stock": "unlimited"
+      },
+      "dragon_fruit_seed": {
+        "display_name": "Dragon Fruit Seed",
+        "description": "Plant these to grow dragon fruit. Growth time: 60 hours. Requires farming level 55.",
+        "price": 500,
+        "stock": "unlimited"
+      },
+      "golden_wheat_seed": {
+        "display_name": "Golden Wheat Seed",
+        "description": "Plant these to grow golden wheat. Growth time: 72 hours. Requires farming level 65.",
+        "price": 700,
+        "stock": "unlimited"
+      },
+      "spirit_seed": {
+        "display_name": "Spirit Seed",
+        "description": "Plant these to grow spirit herbs. Growth time: 80 hours. Requires farming level 75.",
+        "price": 1000,
+        "stock": "unlimited"
+      },
+      "celestial_bloom_seed": {
+        "display_name": "Celestial Bloom Seed",
+        "description": "Plant these to grow celestial blooms. Growth time: 96 hours. Requires farming level 85.",
+        "price": 1500,
+        "stock": "unlimited"
+      },
+      "starfruit_seed": {
+        "display_name": "Starfruit Seed",
+        "description": "Plant these to grow starfruit. Growth time: 108 hours. Requires farming level 95.",
+        "price": 2500,
+        "stock": "unlimited"
+      },
+      "void_lotus_seed": {
+        "display_name": "Void Lotus Seed",
+        "description": "Plant these to grow void lotus. Growth time: 120 hours. Requires farming level 99.",
+        "price": 4000,
+        "stock": "unlimited"
+      }
+    }
+  }
+}

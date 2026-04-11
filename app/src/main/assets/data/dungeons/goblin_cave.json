@@ -1,0 +1,17 @@
+{
+  "name": "goblin_cave",
+  "display_name": "Goblin Cave",
+  "description": "A dark cave infested with goblins and giant rats. A good place for new adventurers to train.",
+  "recommended_level": 3,
+  "encounter_rate": 0.22,
+  "enemy_spawns": [
+    {
+      "enemy": "giant_rat",
+      "weight": 3
+    },
+    {
+      "enemy": "goblin",
+      "weight": 7
+    }
+  ]
+}

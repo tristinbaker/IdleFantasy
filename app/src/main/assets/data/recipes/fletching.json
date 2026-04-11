@@ -1,0 +1,362 @@
+{
+  "arrow_shaft": {
+    "item_name": "arrow_shaft",
+    "display_name": "Arrow Shaft",
+    "type": "component",
+    "level_required": 1,
+    "xp_per_item": 5,
+    "materials": {
+      "log": 1
+    },
+    "output_quantity": 15,
+    "time_per_batch": 1
+  },
+  "bronze_arrow": {
+    "item_name": "bronze_arrow",
+    "display_name": "Bronze Arrow",
+    "type": "ammunition",
+    "level_required": 1,
+    "xp_per_item": 2,
+    "materials": {
+      "arrow_shaft": 15,
+      "bronze_arrow_tip": 15
+    },
+    "output_quantity": 15,
+    "time_per_batch": 1,
+    "damage": 7,
+    "requirements": {}
+  },
+  "iron_arrow": {
+    "item_name": "iron_arrow",
+    "display_name": "Iron Arrow",
+    "type": "ammunition",
+    "level_required": 15,
+    "xp_per_item": 4,
+    "materials": {
+      "arrow_shaft": 15,
+      "iron_arrow_tip": 15
+    },
+    "output_quantity": 15,
+    "time_per_batch": 1,
+    "damage": 10,
+    "requirements": {}
+  },
+  "steel_arrow": {
+    "item_name": "steel_arrow",
+    "display_name": "Steel Arrow",
+    "type": "ammunition",
+    "level_required": 30,
+    "xp_per_item": 6,
+    "materials": {
+      "arrow_shaft": 15,
+      "steel_arrow_tip": 15
+    },
+    "output_quantity": 15,
+    "time_per_batch": 1,
+    "damage": 16,
+    "requirements": {}
+  },
+  "mithril_arrow": {
+    "item_name": "mithril_arrow",
+    "display_name": "Mithril Arrow",
+    "type": "ammunition",
+    "level_required": 45,
+    "xp_per_item": 8,
+    "materials": {
+      "arrow_shaft": 15,
+      "mithril_arrow_tip": 15
+    },
+    "output_quantity": 15,
+    "time_per_batch": 1,
+    "damage": 22,
+    "requirements": {}
+  },
+  "adamantite_arrow": {
+    "item_name": "adamantite_arrow",
+    "display_name": "Adamantite Arrow",
+    "type": "ammunition",
+    "level_required": 60,
+    "xp_per_item": 10,
+    "materials": {
+      "arrow_shaft": 15,
+      "adamantite_arrow_tip": 15
+    },
+    "output_quantity": 15,
+    "time_per_batch": 1,
+    "damage": 31,
+    "requirements": {}
+  },
+  "runite_arrow": {
+    "item_name": "runite_arrow",
+    "display_name": "Runite Arrow",
+    "type": "ammunition",
+    "level_required": 75,
+    "xp_per_item": 12,
+    "materials": {
+      "arrow_shaft": 15,
+      "runite_arrow_tip": 15
+    },
+    "output_quantity": 15,
+    "time_per_batch": 1,
+    "damage": 49,
+    "requirements": {}
+  },
+  "shortbow": {
+    "item_name": "shortbow",
+    "display_name": "Shortbow",
+    "type": "weapon",
+    "level_required": 5,
+    "xp_per_item": 10,
+    "materials": {
+      "log": 1
+    },
+    "output_quantity": 1,
+    "time_per_batch": 1,
+    "combat_style": "ranged",
+    "attack_bonus": 8,
+    "strength_bonus": 0,
+    "requirements": {}
+  },
+  "oak_shortbow": {
+    "item_name": "oak_shortbow",
+    "display_name": "Oak Shortbow",
+    "type": "weapon",
+    "level_required": 20,
+    "xp_per_item": 17,
+    "materials": {
+      "oak_log": 1
+    },
+    "output_quantity": 1,
+    "time_per_batch": 1,
+    "combat_style": "ranged",
+    "attack_bonus": 14,
+    "strength_bonus": 0,
+    "requirements": {
+      "ranged": 5
+    }
+  },
+  "willow_shortbow": {
+    "item_name": "willow_shortbow",
+    "display_name": "Willow Shortbow",
+    "type": "weapon",
+    "level_required": 35,
+    "xp_per_item": 34,
+    "materials": {
+      "willow_log": 1
+    },
+    "output_quantity": 1,
+    "time_per_batch": 1,
+    "combat_style": "ranged",
+    "attack_bonus": 20,
+    "strength_bonus": 0,
+    "requirements": {
+      "ranged": 20
+    }
+  },
+  "maple_shortbow": {
+    "item_name": "maple_shortbow",
+    "display_name": "Maple Shortbow",
+    "type": "weapon",
+    "level_required": 50,
+    "xp_per_item": 50,
+    "materials": {
+      "maple_log": 1
+    },
+    "output_quantity": 1,
+    "time_per_batch": 1,
+    "combat_style": "ranged",
+    "attack_bonus": 29,
+    "strength_bonus": 0,
+    "requirements": {
+      "ranged": 30
+    }
+  },
+  "yew_shortbow": {
+    "item_name": "yew_shortbow",
+    "display_name": "Yew Shortbow",
+    "type": "weapon",
+    "level_required": 65,
+    "xp_per_item": 67,
+    "materials": {
+      "yew_log": 1
+    },
+    "output_quantity": 1,
+    "time_per_batch": 1,
+    "combat_style": "ranged",
+    "attack_bonus": 47,
+    "strength_bonus": 0,
+    "requirements": {
+      "ranged": 40
+    }
+  },
+  "magic_shortbow": {
+    "item_name": "magic_shortbow",
+    "display_name": "Magic Shortbow",
+    "type": "weapon",
+    "level_required": 80,
+    "xp_per_item": 84,
+    "materials": {
+      "magic_log": 1
+    },
+    "output_quantity": 1,
+    "time_per_batch": 1,
+    "combat_style": "ranged",
+    "attack_bonus": 69,
+    "strength_bonus": 0,
+    "requirements": {
+      "ranged": 50
+    }
+  },
+  "staff_of_air": {
+    "item_name": "staff_of_air",
+    "display_name": "Staff of Air",
+    "type": "weapon",
+    "level_required": 1,
+    "xp_per_item": 50,
+    "materials": {
+      "log": 1,
+      "air_rune": 1000
+    },
+    "output_quantity": 1,
+    "time_per_batch": 1,
+    "combat_style": "magic",
+    "attack_bonus": 5,
+    "strength_bonus": 6,
+    "requirements": {
+      "magic": 1
+    }
+  },
+  "staff_of_water": {
+    "item_name": "staff_of_water",
+    "display_name": "Staff of Water",
+    "type": "weapon",
+    "level_required": 5,
+    "xp_per_item": 60,
+    "materials": {
+      "oak_log": 1,
+      "water_rune": 1000
+    },
+    "output_quantity": 1,
+    "time_per_batch": 1,
+    "combat_style": "magic",
+    "attack_bonus": 7,
+    "strength_bonus": 8,
+    "requirements": {
+      "magic": 5
+    }
+  },
+  "staff_of_earth": {
+    "item_name": "staff_of_earth",
+    "display_name": "Staff of Earth",
+    "type": "weapon",
+    "level_required": 10,
+    "xp_per_item": 75,
+    "materials": {
+      "willow_log": 1,
+      "earth_rune": 1500
+    },
+    "output_quantity": 1,
+    "time_per_batch": 1,
+    "combat_style": "magic",
+    "attack_bonus": 10,
+    "strength_bonus": 11,
+    "requirements": {
+      "magic": 10
+    }
+  },
+  "staff_of_fire": {
+    "item_name": "staff_of_fire",
+    "display_name": "Staff of Fire",
+    "type": "weapon",
+    "level_required": 15,
+    "xp_per_item": 90,
+    "materials": {
+      "maple_log": 1,
+      "fire_rune": 1500
+    },
+    "output_quantity": 1,
+    "time_per_batch": 1,
+    "combat_style": "magic",
+    "attack_bonus": 14,
+    "strength_bonus": 15,
+    "requirements": {
+      "magic": 15
+    }
+  },
+  "staff_of_mind": {
+    "item_name": "staff_of_mind",
+    "display_name": "Staff of Mind",
+    "type": "weapon",
+    "level_required": 25,
+    "xp_per_item": 110,
+    "materials": {
+      "yew_log": 1,
+      "mind_rune": 1500
+    },
+    "output_quantity": 1,
+    "time_per_batch": 1,
+    "combat_style": "magic",
+    "attack_bonus": 19,
+    "strength_bonus": 20,
+    "requirements": {
+      "magic": 25
+    }
+  },
+  "staff_of_chaos": {
+    "item_name": "staff_of_chaos",
+    "display_name": "Staff of Chaos",
+    "type": "weapon",
+    "level_required": 35,
+    "xp_per_item": 135,
+    "materials": {
+      "magic_log": 1,
+      "chaos_rune": 2000
+    },
+    "output_quantity": 1,
+    "time_per_batch": 1,
+    "combat_style": "magic",
+    "attack_bonus": 25,
+    "strength_bonus": 26,
+    "requirements": {
+      "magic": 35
+    }
+  },
+  "staff_of_death": {
+    "item_name": "staff_of_death",
+    "display_name": "Staff of Death",
+    "type": "weapon",
+    "level_required": 50,
+    "xp_per_item": 170,
+    "materials": {
+      "redwood_log": 1,
+      "death_rune": 2000
+    },
+    "output_quantity": 1,
+    "time_per_batch": 1,
+    "combat_style": "magic",
+    "attack_bonus": 32,
+    "strength_bonus": 33,
+    "requirements": {
+      "magic": 50
+    }
+  },
+  "staff_of_blood": {
+    "item_name": "staff_of_blood",
+    "display_name": "Staff of Blood",
+    "type": "weapon",
+    "level_required": 65,
+    "xp_per_item": 210,
+    "materials": {
+      "redwood_log": 1,
+      "blood_rune": 2000
+    },
+    "output_quantity": 1,
+    "time_per_batch": 1,
+    "combat_style": "magic",
+    "attack_bonus": 40,
+    "strength_bonus": 41,
+    "requirements": {
+      "magic": 65
+    }
+  }
+}

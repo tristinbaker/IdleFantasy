@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Idle Fantasy</string>
+
+    <!-- ===== Bottom navigation ===== -->
+    <string name="nav_skills">Skills</string>
+    <string name="nav_combat">Combat</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_crafting">Crafting</string>
+    <string name="nav_quests">Quests</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- ===== Common buttons ===== -->
+    <string name="btn_start">Start</string>
+    <string name="btn_start_session">Start Session</string>
+    <string name="btn_abandon_session">Abandon Session</string>
+    <string name="btn_collect_results">Collect Results</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_craft">Craft</string>
+    <string name="btn_confirm">Confirm</string>
+    <string name="btn_abandon">Abandon</string>
+    <string name="btn_collect">Collect Rewards</string>
+    <string name="btn_equip">Equip</string>
+    <string name="btn_unequip">Unequip</string>
+    <string name="btn_buy">Buy</string>
+    <string name="btn_sell">Sell</string>
+    <string name="btn_plant">Plant</string>
+    <string name="btn_harvest">Harvest</string>
+    <string name="btn_harvest_all">Harvest All</string>
+    <string name="btn_clear">Clear</string>
+    <string name="btn_clear_all">Clear All</string>
+    <string name="btn_inspect">Inspect</string>
+    <string name="btn_view_drops">View Drops</string>
+    <string name="btn_start_quest">Start Quest</string>
+    <string name="btn_abandon_quest">Abandon Quest</string>
+    <string name="btn_enter_dungeon">Enter Dungeon</string>
+    <string name="btn_enter_arena">Enter Arena</string>
+    <string name="btn_activate">Activate</string>
+    <string name="btn_deactivate">Deactivate</string>
+    <string name="btn_close">Close</string>
+    <string name="btn_back">Back</string>
+
+    <!-- ===== Common labels ===== -->
+    <string name="label_level">Level</string>
+    <string name="label_xp">XP</string>
+    <string name="label_coins">Coins</string>
+    <string name="label_hp">HP</string>
+    <string name="label_attack">Attack</string>
+    <string name="label_strength">Strength</string>
+    <string name="label_defense">Defense</string>
+    <string name="label_ranged">Ranged</string>
+    <string name="label_magic">Magic</string>
+    <string name="label_prayer">Prayer</string>
+    <string name="label_hitpoints">Hitpoints</string>
+    <string name="label_inventory">Inventory</string>
+    <string name="label_equipment">Gear</string>
+    <string name="label_pets">Pets</string>
+    <string name="label_achievements">Achievements</string>
+    <string name="label_session_in_progress">Session in Progress</string>
+    <string name="label_session_active">Session Active</string>
+    <string name="label_no_active_session">No Active Session</string>
+    <string name="label_session_complete">Session Complete!</string>
+    <string name="label_training">Training</string>
+    <string name="label_gathering_skills">Gathering</string>
+    <string name="label_crafting_skills">Crafting</string>
+    <string name="label_choose_activity">Choose Activity</string>
+    <string name="label_coming_soon">Coming soon</string>
+    <string name="label_time_remaining">Time remaining</string>
+    <string name="label_session_results">Session Results</string>
+    <string name="label_xp_gained">XP gained</string>
+    <string name="label_items_collected">Items collected</string>
+    <string name="label_level_ups">Level ups</string>
+    <string name="label_requirements">Requirements</string>
+    <string name="label_rewards">Rewards</string>
+    <string name="label_your_level">Your Level</string>
+    <string name="label_xp_to_next">XP to next level</string>
+    <string name="label_total_xp">Total XP</string>
+    <string name="label_quantity">Quantity</string>
+    <string name="label_price">Price</string>
+    <string name="label_available">Available</string>
+    <string name="label_patch">Patch</string>
+    <string name="label_growth_time">Growth time</string>
+    <string name="label_ready_to_harvest">Ready to harvest</string>
+    <string name="label_empty">Empty</string>
+    <string name="label_combat_style">Combat Style</string>
+    <string name="label_active_spell">Active Spell</string>
+    <string name="label_drops">Drops</string>
+    <string name="label_boss">Boss</string>
+    <string name="label_dungeon">Dungeon</string>
+    <string name="label_difficulty">Difficulty</string>
+    <string name="label_completed">Completed</string>
+    <string name="label_in_progress">In Progress</string>
+    <string name="label_available_quests">Available</string>
+    <string name="label_stats">Stats</string>
+    <string name="label_skills">Skills</string>
+    <string name="label_shop">Shop</string>
+    <string name="label_sell_items">Sell Items</string>
+    <string name="label_total_level">Total Level</string>
+    <string name="label_wins">Wins</string>
+    <string name="label_losses">Losses</string>
+    <string name="label_active">Active</string>
+    <string name="label_inactive">Inactive</string>
+    <string name="label_boost">Boost</string>
+    <string name="label_xp_boost">XP Boost</string>
+    <string name="label_weapon">Weapon</string>
+    <string name="label_armour">Armour</string>
+    <string name="label_food">Food</string>
+    <string name="label_arrows">Arrows</string>
+    <string name="label_runes">Runes</string>
+    <string name="label_spell">Spell</string>
+    <string name="label_none">None</string>
+    <string name="label_melee">Melee</string>
+    <string name="label_ranged_style">Ranged</string>
+    <string name="label_magic_style">Magic</string>
+    <string name="label_gathering">Gathering</string>
+    <string name="label_crafting">Crafting</string>
+    <string name="label_jewellery">Jewelry</string>
+    <string name="label_combat">Combat</string>
+    <string name="label_recipe">Recipe</string>
+    <string name="label_recipes">Recipes</string>
+    <string name="label_ingredients">Ingredients</string>
+    <string name="label_output">Output</string>
+    <string name="label_xp_per_action">XP per action</string>
+    <string name="label_unlocked_at">Unlocked at level</string>
+    <string name="label_kills">Kills</string>
+    <string name="label_personal_best">Personal Best</string>
+    <string name="label_daily_dig">Daily Dig</string>
+    <string name="label_dig_depth">Hole Depth</string>
+    <string name="label_version">Version</string>
+    <string name="label_open_source">Open Source</string>
+
+    <!-- ===== Format strings — all use positional args for Weblate ===== -->
+    <!-- Translator note: %1$d = level number, %2$s = formatted XP string -->
+    <string name="format_level_xp">Level %1$d — %2$s XP</string>
+    <!-- Translator note: %1$s = formatted XP amount, %2$d = target level number -->
+    <string name="format_xp_to_next">%1$s XP to level %2$d</string>
+    <!-- Translator note: %1$s = time string (e.g. "42m 10s") -->
+    <string name="format_time_remaining">%1$s remaining</string>
+    <!-- Translator note: %1$s = relative time (e.g. "5m ago") -->
+    <string name="format_started_ago">Started %1$s ago</string>
+    <!-- Translator note: %1$s = item display name, %2$d = quantity -->
+    <string name="format_item_quantity">%1$s ×%2$d</string>
+    <!-- Translator note: %1$d = coin amount -->
+    <string name="format_price_coins">%1$d coins</string>
+    <!-- Translator note: %1$d = required level, %2$s = skill display name -->
+    <string name="format_level_requirement">Requires level %1$d %2$s</string>
+    <!-- Translator note: %1$s = formatted XP amount -->
+    <string name="format_xp_per_action">%1$s XP per action</string>
+    <!-- Translator note: %1$d = patch number -->
+    <string name="format_patch_number">Patch %1$d</string>
+    <!-- Translator note: %1$d = wins, %2$d = losses -->
+    <string name="format_arena_record">%1$d wins / %2$d losses</string>
+    <!-- Translator note: %1$s = skill display name, %2$d = level number -->
+    <string name="format_skill_level">%1$s: Level %2$d</string>
+    <!-- Translator note: %1$d = boost percentage -->
+    <string name="format_xp_boost_percent">+%1$d%% XP</string>
+    <!-- Translator note: %1$s = item/resource name, %2$d = quantity drop amount -->
+    <string name="format_drop_chance">%1$s: %2$d</string>
+    <!-- Translator note: %1$d = minutes remaining -->
+    <string name="format_minutes_remaining">%1$d min remaining</string>
+    <!-- Translator note: %1$s = version string (e.g. "0.1.0") -->
+    <string name="format_version">Version %1$s</string>
+
+    <!-- ===== Plurals ===== -->
+    <plurals name="plural_level_ups">
+        <item quantity="one">%1$d level up</item>
+        <item quantity="other">%1$d level ups</item>
+    </plurals>
+    <plurals name="plural_items">
+        <item quantity="one">%1$d item</item>
+        <item quantity="other">%1$d items</item>
+    </plurals>
+    <plurals name="plural_minutes">
+        <item quantity="one">%1$d minute</item>
+        <item quantity="other">%1$d minutes</item>
+    </plurals>
+    <plurals name="plural_hours">
+        <item quantity="one">%1$d hour</item>
+        <item quantity="other">%1$d hours</item>
+    </plurals>
+    <plurals name="plural_patches">
+        <item quantity="one">%1$d patch</item>
+        <item quantity="other">%1$d patches</item>
+    </plurals>
+    <plurals name="plural_kills">
+        <item quantity="one">%1$d kill</item>
+        <item quantity="other">%1$d kills</item>
+    </plurals>
+    <plurals name="plural_quests_completed">
+        <item quantity="one">%1$d quest completed</item>
+        <item quantity="other">%1$d quests completed</item>
+    </plurals>
+
+    <!-- ===== Error messages ===== -->
+    <string name="error_no_player">Could not load player data. Please restart the app.</string>
+    <string name="error_session_already_active">You already have an active session. Complete or abandon it first.</string>
+    <string name="error_not_enough_coins">Not enough coins.</string>
+    <!-- Translator note: %1$s = item display name -->
+    <string name="error_not_enough_items">Not enough %1$s.</string>
+    <!-- Translator note: %1$s = skill display name -->
+    <string name="error_level_too_low">Your %1$s level is too low.</string>
+    <!-- Translator note: %1$s = item display name -->
+    <string name="error_inventory_required">You need %1$s to do this.</string>
+    <string name="error_patch_occupied">This patch is already planted.</string>
+    <string name="error_patch_empty">This patch is empty.</string>
+    <string name="error_crop_not_ready">This crop is not ready yet.</string>
+    <string name="error_quest_active">You already have an active quest.</string>
+    <string name="error_quest_requirements_not_met">You don\'t meet the requirements for this quest.</string>
+    <string name="error_dungeon_level_too_low">Your combat level is too low for this dungeon.</string>
+    <string name="error_unknown">Something went wrong. Please try again.</string>
+
+    <!-- ===== Session dialogs ===== -->
+    <string name="session_abandon_title">Abandon Session?</string>
+    <string name="session_abandon_body">All progress from this session will be lost.</string>
+
+    <!-- ===== Onboarding ===== -->
+    <string name="onboarding_welcome_title">Welcome to Idle Fantasy</string>
+    <string name="onboarding_welcome_body">Start a skill session and watch your character grow. Sessions run for one hour, even when the app is closed.</string>
+    <string name="onboarding_first_session_hint">Tap any skill to get started.</string>
+
+    <!-- ===== Settings ===== -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_notifications">Session Notifications</string>
+    <string name="settings_notifications_desc">Show an alert when your session completes</string>
+    <string name="settings_battery_optimization">Battery Optimization</string>
+    <string name="settings_battery_optimization_desc">Disable battery optimization for Idle Fantasy to receive timely session alerts</string>
+    <string name="settings_battery_optimization_btn">Adjust Setting</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_about">About</string>
+    <string name="settings_open_source_licenses">Open Source Licenses</string>
+
+    <!-- ===== HomeScreen ===== -->
+    <string name="label_player_stats">Player Stats</string>
+    <string name="label_combat_level">Combat Level</string>
+    <string name="label_shop_desc">Buy and sell items</string>
+    <string name="label_no_session_hint">Head to Skills or Combat to start training.</string>
+
+    <!-- ===== CombatScreen ===== -->
+    <string name="label_dungeons_tab">Dungeons</string>
+    <string name="btn_fight">Fight!</string>
+
+    <!-- ===== SkillsScreen ===== -->
+    <string name="btn_back_arrow">← Back</string>
+    <string name="btn_start_burying">Start Burying</string>
+    <string name="btn_select">Select</string>
+    <string name="label_special">Special</string>
+
+    <!-- ===== QuestsScreen ===== -->
+    <string name="label_claim_reward">Claim Reward</string>
+
+    <!-- ===== OnboardingScreen ===== -->
+    <string name="onboarding_lets_go">Let\'s go!</string>
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_next">Next</string>
+
+    <!-- ===== Settings ===== -->
+    <string name="settings_notifications_header">Notifications</string>
+    <string name="settings_performance_header">Performance</string>
+    <string name="settings_general_header">General</string>
+    <string name="settings_tutorial_title">Tutorial</string>
+    <string name="settings_tutorial_desc">Show the introduction again</string>
+    <string name="settings_reopen">Reopen</string>
+    <string name="settings_foss_desc">Idle Fantasy is free and open source software.</string>
+
+    <!-- ===== Battery prompt dialog ===== -->
+    <string name="battery_prompt_title">Keep sessions running</string>
+    <string name="battery_prompt_body">For the best experience, allow Idle Fantasy to run in the background so you receive timely session notifications.</string>
+    <string name="battery_prompt_open_settings">Open Settings</string>
+    <string name="battery_prompt_dismiss">Not now</string>
+
+    <!-- ===== Easter egg ===== -->
+    <string name="dig_action">Dig</string>
+    <string name="dig_result">You dig deeper into the earth…</string>
+    <!-- Translator note: %1$d = total hole depth in metres -->
+    <string name="dig_depth_format">The hole is %1$d metres deep.</string>
+</resources>

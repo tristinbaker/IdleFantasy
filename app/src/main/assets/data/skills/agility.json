@@ -1,0 +1,6 @@
+{
+  "name": "agility",
+  "display_name": "Agility",
+  "description": "Train your agility to reduce session completion times across all skills. Every 10 levels grants 5% faster sessions.",
+  "max_level": 99
+}

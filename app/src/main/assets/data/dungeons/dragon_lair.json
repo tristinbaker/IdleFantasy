@@ -1,0 +1,21 @@
+{
+  "name": "dragon_lair",
+  "display_name": "Dragon's Lair",
+  "description": "The legendary home of green dragons. Only master warriors survive this challenge.",
+  "recommended_level": 40,
+  "encounter_rate": 0.38,
+  "enemy_spawns": [
+    {
+      "enemy": "dragon",
+      "weight": 5
+    },
+    {
+      "enemy": "demon",
+      "weight": 3
+    },
+    {
+      "enemy": "knight",
+      "weight": 2
+    }
+  ]
+}

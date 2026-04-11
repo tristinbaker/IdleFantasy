@@ -1,0 +1,21 @@
+{
+  "name": "undead_crypt",
+  "display_name": "Undead Crypt",
+  "description": "An ancient burial ground where the dead refuse to rest. Beware the dark magic!",
+  "recommended_level": 12,
+  "encounter_rate": 0.28,
+  "enemy_spawns": [
+    {
+      "enemy": "skeleton",
+      "weight": 5
+    },
+    {
+      "enemy": "zombie",
+      "weight": 4
+    },
+    {
+      "enemy": "dark_wizard",
+      "weight": 1
+    }
+  ]
+}

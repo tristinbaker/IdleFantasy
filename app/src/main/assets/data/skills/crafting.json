@@ -1,0 +1,28 @@
+{
+  "name": "crafting",
+  "display_name": "Crafting",
+  "description": "Create jewelry and other crafted items",
+  "max_level": 99,
+  "xp_ranges": {
+    "1": {"min": 5, "max": 10},
+    "5": {"min": 8, "max": 15},
+    "10": {"min": 12, "max": 20},
+    "15": {"min": 18, "max": 28},
+    "20": {"min": 25, "max": 38},
+    "25": {"min": 35, "max": 50},
+    "30": {"min": 45, "max": 65},
+    "35": {"min": 58, "max": 82},
+    "40": {"min": 72, "max": 102},
+    "45": {"min": 88, "max": 125},
+    "50": {"min": 105, "max": 150},
+    "55": {"min": 125, "max": 178},
+    "60": {"min": 148, "max": 210},
+    "65": {"min": 175, "max": 248},
+    "70": {"min": 205, "max": 290},
+    "75": {"min": 240, "max": 340},
+    "80": {"min": 280, "max": 395},
+    "85": {"min": 325, "max": 460},
+    "90": {"min": 375, "max": 530},
+    "95": {"min": 430, "max": 610}
+  }
+}

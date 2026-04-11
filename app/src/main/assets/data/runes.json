@@ -1,0 +1,66 @@
+{
+  "air_rune": {
+    "display_name": "Air Rune",
+    "level_required": 1,
+    "essence_cost": 1,
+    "xp_per_rune": 5,
+    "time_per_rune": 1,
+    "description": "A rune used to cast air spells."
+  },
+  "water_rune": {
+    "display_name": "Water Rune",
+    "level_required": 5,
+    "essence_cost": 1,
+    "xp_per_rune": 6,
+    "time_per_rune": 1,
+    "description": "A rune used to cast water spells."
+  },
+  "earth_rune": {
+    "display_name": "Earth Rune",
+    "level_required": 10,
+    "essence_cost": 1,
+    "xp_per_rune": 7,
+    "time_per_rune": 1,
+    "description": "A rune used to cast earth spells."
+  },
+  "fire_rune": {
+    "display_name": "Fire Rune",
+    "level_required": 15,
+    "essence_cost": 1,
+    "xp_per_rune": 8,
+    "time_per_rune": 1,
+    "description": "A rune used to cast fire spells."
+  },
+  "mind_rune": {
+    "display_name": "Mind Rune",
+    "level_required": 25,
+    "essence_cost": 1,
+    "xp_per_rune": 10,
+    "time_per_rune": 1,
+    "description": "A rune used to cast mind spells."
+  },
+  "chaos_rune": {
+    "display_name": "Chaos Rune",
+    "level_required": 35,
+    "essence_cost": 1,
+    "xp_per_rune": 12,
+    "time_per_rune": 1,
+    "description": "A rune used to cast chaos spells."
+  },
+  "death_rune": {
+    "display_name": "Death Rune",
+    "level_required": 50,
+    "essence_cost": 1,
+    "xp_per_rune": 15,
+    "time_per_rune": 1,
+    "description": "A rune used to cast death spells."
+  },
+  "blood_rune": {
+    "display_name": "Blood Rune",
+    "level_required": 65,
+    "essence_cost": 1,
+    "xp_per_rune": 20,
+    "time_per_rune": 1,
+    "description": "A rune used to cast blood spells."
+  }
+}

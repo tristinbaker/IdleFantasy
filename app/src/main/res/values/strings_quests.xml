@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Quest names and objectives ===== -->
+    <!-- Translator note: quest names are short titles; objectives are action sentences. -->
+
+    <!-- Mining -->
+    <string name="quest_mining_1_name">Mining I</string>
+    <string name="quest_mining_1_objective">Mine 500 Copper Ore</string>
+    <string name="quest_mining_2_name">Mining II</string>
+    <string name="quest_mining_2_objective">Mine 750 Iron Ore</string>
+    <string name="quest_mining_3_name">Mining III</string>
+    <string name="quest_mining_3_objective">Mine 1100 Coal</string>
+    <string name="quest_mining_4_name">Mining IV</string>
+    <string name="quest_mining_4_objective">Mine 1650 Mithril Ore</string>
+    <string name="quest_mining_5_name">Mining V</string>
+    <string name="quest_mining_5_objective">Mine 2450 Adamantite Ore</string>
+    <string name="quest_mining_6_name">Mining VI</string>
+    <string name="quest_mining_6_objective">Mine 3650 Runite Ore</string>
+
+    <!-- Woodcutting -->
+    <string name="quest_woodcutting_1_name">Woodcutting I</string>
+    <string name="quest_woodcutting_1_objective">Cut 500 Logs</string>
+    <string name="quest_woodcutting_2_name">Woodcutting II</string>
+    <string name="quest_woodcutting_2_objective">Cut 750 Oak Logs</string>
+    <string name="quest_woodcutting_3_name">Woodcutting III</string>
+    <string name="quest_woodcutting_3_objective">Cut 1100 Willow Logs</string>
+    <string name="quest_woodcutting_4_name">Woodcutting IV</string>
+    <string name="quest_woodcutting_4_objective">Cut 1650 Maple Logs</string>
+    <string name="quest_woodcutting_5_name">Woodcutting V</string>
+    <string name="quest_woodcutting_5_objective">Cut 2450 Yew Logs</string>
+    <string name="quest_woodcutting_6_name">Woodcutting VI</string>
+    <string name="quest_woodcutting_6_objective">Cut 3650 Magic Logs</string>
+
+    <!-- Fishing -->
+    <string name="quest_fishing_1_name">Fishing I</string>
+    <string name="quest_fishing_1_objective">Catch 500 fish</string>
+    <string name="quest_fishing_2_name">Fishing II</string>
+    <string name="quest_fishing_2_objective">Catch 750 fish</string>
+    <string name="quest_fishing_3_name">Fishing III</string>
+    <string name="quest_fishing_3_objective">Catch 1100 fish</string>
+    <string name="quest_fishing_4_name">Fishing IV</string>
+    <string name="quest_fishing_4_objective">Catch 1650 fish</string>
+    <string name="quest_fishing_5_name">Fishing V</string>
+    <string name="quest_fishing_5_objective">Catch 2450 fish</string>
+    <string name="quest_fishing_6_name">Fishing VI</string>
+    <string name="quest_fishing_6_objective">Catch 3650 fish</string>
+
+    <!-- Smithing -->
+    <string name="quest_smithing_1_name">Smithing I</string>
+    <string name="quest_smithing_1_objective">Smelt 500 Bronze Bars</string>
+    <string name="quest_smithing_2_name">Smithing II</string>
+    <string name="quest_smithing_2_objective">Smelt 750 Iron Bars</string>
+    <string name="quest_smithing_3_name">Smithing III</string>
+    <string name="quest_smithing_3_objective">Smelt 1100 Steel Bars</string>
+    <string name="quest_smithing_4_name">Smithing IV</string>
+    <string name="quest_smithing_4_objective">Smelt 1650 Mithril Bars</string>
+    <string name="quest_smithing_5_name">Smithing V</string>
+    <string name="quest_smithing_5_objective">Smelt 2450 Adamantite Bars</string>
+    <string name="quest_smithing_6_name">Smithing VI</string>
+    <string name="quest_smithing_6_objective">Smelt 3650 Runite Bars</string>
+
+    <!-- Cooking - Fish -->
+    <string name="quest_cooking_fish_1_name">Cooking — Fish I</string>
+    <string name="quest_cooking_fish_1_objective">Cook 500 fish</string>
+    <string name="quest_cooking_fish_2_name">Cooking — Fish II</string>
+    <string name="quest_cooking_fish_2_objective">Cook 750 fish</string>
+    <string name="quest_cooking_fish_3_name">Cooking — Fish III</string>
+    <string name="quest_cooking_fish_3_objective">Cook 1100 fish</string>
+    <string name="quest_cooking_fish_4_name">Cooking — Fish IV</string>
+    <string name="quest_cooking_fish_4_objective">Cook 1650 fish</string>
+    <string name="quest_cooking_fish_5_name">Cooking — Fish V</string>
+    <string name="quest_cooking_fish_5_objective">Cook 2450 fish</string>
+    <string name="quest_cooking_fish_6_name">Cooking — Fish VI</string>
+    <string name="quest_cooking_fish_6_objective">Cook 3650 fish</string>
+
+    <!-- Cooking - Beef -->
+    <string name="quest_cooking_beef_1_name">Cooking — Beef I</string>
+    <string name="quest_cooking_beef_1_objective">Cook 100 Beef</string>
+    <string name="quest_cooking_beef_2_name">Cooking — Beef II</string>
+    <string name="quest_cooking_beef_2_objective">Cook 250 Beef</string>
+    <string name="quest_cooking_beef_3_name">Cooking — Beef III</string>
+    <string name="quest_cooking_beef_3_objective">Cook 500 Beef</string>
+
+    <!-- Cooking - Chicken -->
+    <string name="quest_cooking_chicken_1_name">Cooking — Chicken I</string>
+    <string name="quest_cooking_chicken_1_objective">Cook 100 Chicken</string>
+    <string name="quest_cooking_chicken_2_name">Cooking — Chicken II</string>
+    <string name="quest_cooking_chicken_2_objective">Cook 250 Chicken</string>
+    <string name="quest_cooking_chicken_3_name">Cooking — Chicken III</string>
+    <string name="quest_cooking_chicken_3_objective">Cook 500 Chicken</string>
+
+    <!-- Cooking - Mutton -->
+    <string name="quest_cooking_mutton_1_name">Cooking — Mutton I</string>
+    <string name="quest_cooking_mutton_1_objective">Cook 100 Mutton</string>
+    <string name="quest_cooking_mutton_2_name">Cooking — Mutton II</string>
+    <string name="quest_cooking_mutton_2_objective">Cook 250 Mutton</string>
+    <string name="quest_cooking_mutton_3_name">Cooking — Mutton III</string>
+    <string name="quest_cooking_mutton_3_objective">Cook 500 Mutton</string>
+
+    <!-- Fletching -->
+    <string name="quest_fletching_1_name">Fletching I</string>
+    <string name="quest_fletching_1_objective">Fletch 500 Bronze Arrows</string>
+    <string name="quest_fletching_2_name">Fletching II</string>
+    <string name="quest_fletching_2_objective">Fletch 750 Iron Arrows</string>
+    <string name="quest_fletching_3_name">Fletching III</string>
+    <string name="quest_fletching_3_objective">Fletch 1100 Steel Arrows</string>
+    <string name="quest_fletching_4_name">Fletching IV</string>
+    <string name="quest_fletching_4_objective">Fletch 1650 Mithril Arrows</string>
+    <string name="quest_fletching_5_name">Fletching V</string>
+    <string name="quest_fletching_5_objective">Fletch 2450 Adamantite Arrows</string>
+    <string name="quest_fletching_6_name">Fletching VI</string>
+    <string name="quest_fletching_6_objective">Fletch 3650 Runite Arrows</string>
+
+    <!-- Prayer -->
+    <string name="quest_prayer_1_name">Prayer I</string>
+    <string name="quest_prayer_1_objective">Bury 500 bones</string>
+    <string name="quest_prayer_2_name">Prayer II</string>
+    <string name="quest_prayer_2_objective">Bury 750 bones</string>
+    <string name="quest_prayer_3_name">Prayer III</string>
+    <string name="quest_prayer_3_objective">Bury 1100 bones</string>
+    <string name="quest_prayer_4_name">Prayer IV</string>
+    <string name="quest_prayer_4_objective">Bury 1650 bones</string>
+    <string name="quest_prayer_5_name">Prayer V</string>
+    <string name="quest_prayer_5_objective">Bury 2450 bones</string>
+    <string name="quest_prayer_6_name">Prayer VI</string>
+    <string name="quest_prayer_6_objective">Bury 3650 bones</string>
+
+    <!-- Slayer -->
+    <string name="quest_combat_kills_1_name">Slayer I</string>
+    <string name="quest_combat_kills_1_objective">Defeat 100 enemies</string>
+    <string name="quest_combat_kills_2_name">Slayer II</string>
+    <string name="quest_combat_kills_2_objective">Defeat 150 enemies</string>
+    <string name="quest_combat_kills_3_name">Slayer III</string>
+    <string name="quest_combat_kills_3_objective">Defeat 200 enemies</string>
+    <string name="quest_combat_kills_4_name">Slayer IV</string>
+    <string name="quest_combat_kills_4_objective">Defeat 300 enemies</string>
+    <string name="quest_combat_kills_5_name">Slayer V</string>
+    <string name="quest_combat_kills_5_objective">Defeat 450 enemies</string>
+    <string name="quest_combat_kills_6_name">Slayer VI</string>
+    <string name="quest_combat_kills_6_objective">Defeat 650 enemies</string>
+
+    <!-- Dungeon exploration -->
+    <string name="quest_dungeon_farm_1_name">Dungeon Explorer I</string>
+    <string name="quest_dungeon_farm_1_objective">Complete the Farm dungeon 5 times</string>
+    <string name="quest_dungeon_goblin_1_name">Dungeon Explorer II</string>
+    <string name="quest_dungeon_goblin_1_objective">Complete the Goblin Cave 5 times</string>
+    <string name="quest_dungeon_spider_1_name">Dungeon Explorer III</string>
+    <string name="quest_dungeon_spider_1_objective">Complete the Spider Den 5 times</string>
+    <string name="quest_dungeon_bandit_1_name">Dungeon Explorer IV</string>
+    <string name="quest_dungeon_bandit_1_objective">Complete the Bandit Camp 5 times</string>
+    <string name="quest_dungeon_undead_1_name">Dungeon Explorer V</string>
+    <string name="quest_dungeon_undead_1_objective">Complete the Undead Crypt 5 times</string>
+    <string name="quest_dungeon_fortress_1_name">Dungeon Explorer VI</string>
+    <string name="quest_dungeon_fortress_1_objective">Complete the Fortress Ruins 5 times</string>
+    <string name="quest_dungeon_orc_1_name">Dungeon Master I</string>
+    <string name="quest_dungeon_orc_1_objective">Complete the Orc Stronghold 5 times</string>
+    <string name="quest_dungeon_volcanic_1_name">Dungeon Master II</string>
+    <string name="quest_dungeon_volcanic_1_objective">Complete the Volcanic Depths 5 times</string>
+    <string name="quest_dungeon_dragon_1_name">Dungeon Master III</string>
+    <string name="quest_dungeon_dragon_1_objective">Complete the Dragon\'s Lair 5 times</string>
+
+    <!-- Crafting -->
+    <string name="quest_crafting_1_name">Crafting I</string>
+    <string name="quest_crafting_1_objective">Craft 100 Silver Rings</string>
+    <string name="quest_crafting_2_name">Crafting II</string>
+    <string name="quest_crafting_2_objective">Craft 250 Gold Rings</string>
+    <string name="quest_crafting_3_name">Crafting III</string>
+    <string name="quest_crafting_3_objective">Craft 500 Platinum Rings</string>
+    <string name="quest_crafting_4_name">Crafting IV</string>
+    <string name="quest_crafting_4_objective">Craft 750 Silver Sapphire Rings</string>
+    <string name="quest_crafting_5_name">Crafting V</string>
+    <string name="quest_crafting_5_objective">Craft 1000 Gold Sapphire Rings</string>
+    <string name="quest_crafting_6_name">Crafting VI</string>
+    <string name="quest_crafting_6_objective">Craft 1500 Platinum Diamond Rings</string>
+
+    <!-- Monster slayer chains -->
+    <string name="quest_goblin_slayer_1_name">Goblin Slayer I</string>
+    <string name="quest_goblin_slayer_1_objective">Defeat 50 Goblins</string>
+    <string name="quest_goblin_slayer_2_name">Goblin Slayer II</string>
+    <string name="quest_goblin_slayer_2_objective">Defeat 100 Goblins</string>
+    <string name="quest_spider_slayer_1_name">Spider Slayer I</string>
+    <string name="quest_spider_slayer_1_objective">Defeat 40 Giant Spiders</string>
+    <string name="quest_spider_slayer_2_name">Spider Slayer II</string>
+    <string name="quest_spider_slayer_2_objective">Defeat 80 Giant Spiders</string>
+    <string name="quest_skeleton_slayer_1_name">Skeleton Slayer I</string>
+    <string name="quest_skeleton_slayer_1_objective">Defeat 35 Skeletons</string>
+    <string name="quest_skeleton_slayer_2_name">Skeleton Slayer II</string>
+    <string name="quest_skeleton_slayer_2_objective">Defeat 70 Skeletons</string>
+    <string name="quest_bandit_hunter_1_name">Bandit Hunter I</string>
+    <string name="quest_bandit_hunter_1_objective">Defeat 30 Bandits</string>
+    <string name="quest_bandit_hunter_2_name">Bandit Hunter II</string>
+    <string name="quest_bandit_hunter_2_objective">Defeat 60 Bandits</string>
+    <string name="quest_orc_slayer_1_name">Orc Slayer I</string>
+    <string name="quest_orc_slayer_1_objective">Defeat 25 Orc Warriors</string>
+    <string name="quest_orc_slayer_2_name">Orc Slayer II</string>
+    <string name="quest_orc_slayer_2_objective">Defeat 50 Orc Warriors</string>
+    <string name="quest_demon_slayer_1_name">Demon Slayer I</string>
+    <string name="quest_demon_slayer_1_objective">Defeat 20 Lesser Demons</string>
+    <string name="quest_demon_slayer_2_name">Demon Slayer II</string>
+    <string name="quest_demon_slayer_2_objective">Defeat 40 Lesser Demons</string>
+    <string name="quest_dragon_slayer_1_name">Dragon Slayer I</string>
+    <string name="quest_dragon_slayer_1_objective">Defeat 10 Green Dragons</string>
+    <string name="quest_dragon_slayer_2_name">Dragon Slayer II</string>
+    <string name="quest_dragon_slayer_2_objective">Defeat 25 Green Dragons</string>
+
+    <!-- Combat style challenges -->
+    <string name="quest_melee_warrior_1_name">Melee Warrior I</string>
+    <string name="quest_melee_warrior_1_objective">Complete the Goblin Cave using only melee</string>
+    <string name="quest_melee_warrior_2_name">Melee Warrior II</string>
+    <string name="quest_melee_warrior_2_objective">Complete the Bandit Camp using only melee</string>
+    <string name="quest_melee_warrior_3_name">Melee Warrior III</string>
+    <string name="quest_melee_warrior_3_objective">Complete the Fortress Ruins using only melee</string>
+    <string name="quest_ranger_elite_1_name">Ranger Elite I</string>
+    <string name="quest_ranger_elite_1_objective">Complete the Goblin Cave using only ranged</string>
+    <string name="quest_ranger_elite_2_name">Ranger Elite II</string>
+    <string name="quest_ranger_elite_2_objective">Complete the Bandit Camp using only ranged</string>
+    <string name="quest_ranger_elite_3_name">Ranger Elite III</string>
+    <string name="quest_ranger_elite_3_objective">Complete the Fortress Ruins using only ranged</string>
+    <string name="quest_mage_master_1_name">Mage Master I</string>
+    <string name="quest_mage_master_1_objective">Complete the Goblin Cave using only magic</string>
+    <string name="quest_mage_master_2_name">Mage Master II</string>
+    <string name="quest_mage_master_2_objective">Complete the Bandit Camp using only magic</string>
+    <string name="quest_mage_master_3_name">Mage Master III</string>
+    <string name="quest_mage_master_3_objective">Complete the Fortress Ruins using only magic</string>
+
+    <!-- Iron Stomach (no food) challenges -->
+    <string name="quest_iron_stomach_1_name">Iron Stomach I</string>
+    <string name="quest_iron_stomach_1_objective">Complete the Spider Den without using food</string>
+    <string name="quest_iron_stomach_2_name">Iron Stomach II</string>
+    <string name="quest_iron_stomach_2_objective">Complete the Undead Crypt without using food</string>
+    <string name="quest_iron_stomach_3_name">Iron Stomach III</string>
+    <string name="quest_iron_stomach_3_objective">Complete the Orc Stronghold without using food</string>
+    <string name="quest_iron_stomach_4_name">Iron Stomach IV</string>
+    <string name="quest_iron_stomach_4_objective">Complete the Dragon\'s Lair without using food</string>
+
+    <!-- Treasure Hunter -->
+    <string name="quest_treasure_hunter_1_name">Treasure Hunter I</string>
+    <string name="quest_treasure_hunter_1_objective">Collect 20 Spider Silk from combat</string>
+    <string name="quest_treasure_hunter_2_name">Treasure Hunter II</string>
+    <string name="quest_treasure_hunter_2_objective">Collect 10 Goblin Mail from combat</string>
+    <string name="quest_treasure_hunter_3_name">Treasure Hunter III</string>
+    <string name="quest_treasure_hunter_3_objective">Collect 5 Demon Horns from combat</string>
+    <string name="quest_treasure_hunter_4_name">Treasure Hunter IV</string>
+    <string name="quest_treasure_hunter_4_objective">Collect 3 Dragon Scales from combat</string>
+</resources>

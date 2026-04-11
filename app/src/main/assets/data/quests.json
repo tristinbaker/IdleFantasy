@@ -1,0 +1,1650 @@
+{
+  "mining_1": {
+    "id": "mining_1",
+    "name": "Mining I",
+    "skill": "mining",
+    "tier": 1,
+    "requires_previous": null,
+    "type": "gather",
+    "target": "copper_ore",
+    "amount": 500,
+    "description": "Mine 500 Copper Ore",
+    "rewards": {
+      "coins": 1000,
+      "xp": 2000,
+      "items": {"iron_ore": 100}
+    }
+  },
+  "mining_2": {
+    "id": "mining_2",
+    "name": "Mining II",
+    "skill": "mining",
+    "tier": 2,
+    "requires_previous": "mining_1",
+    "type": "gather",
+    "target": "iron_ore",
+    "amount": 750,
+    "description": "Mine 750 Iron Ore",
+    "rewards": {
+      "coins": 2000,
+      "xp": 5000,
+      "items": {"coal": 100}
+    }
+  },
+  "mining_3": {
+    "id": "mining_3",
+    "name": "Mining III",
+    "skill": "mining",
+    "tier": 3,
+    "requires_previous": "mining_2",
+    "type": "gather",
+    "target": "coal",
+    "amount": 1100,
+    "description": "Mine 1100 Coal",
+    "rewards": {
+      "coins": 4000,
+      "xp": 10000,
+      "items": {"mithril_ore": 100}
+    }
+  },
+  "mining_4": {
+    "id": "mining_4",
+    "name": "Mining IV",
+    "skill": "mining",
+    "tier": 4,
+    "requires_previous": "mining_3",
+    "type": "gather",
+    "target": "mithril_ore",
+    "amount": 1650,
+    "description": "Mine 1650 Mithril Ore",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "items": {"adamantite_ore": 100}
+    }
+  },
+  "mining_5": {
+    "id": "mining_5",
+    "name": "Mining V",
+    "skill": "mining",
+    "tier": 5,
+    "requires_previous": "mining_4",
+    "type": "gather",
+    "target": "adamantite_ore",
+    "amount": 2450,
+    "description": "Mine 2450 Adamantite Ore",
+    "rewards": {
+      "coins": 16000,
+      "xp": 40000,
+      "items": {"runite_ore": 100}
+    }
+  },
+  "mining_6": {
+    "id": "mining_6",
+    "name": "Mining VI",
+    "skill": "mining",
+    "tier": 6,
+    "requires_previous": "mining_5",
+    "type": "gather",
+    "target": "runite_ore",
+    "amount": 3650,
+    "description": "Mine 3650 Runite Ore",
+    "rewards": {
+      "coins": 32000,
+      "xp": 80000,
+      "items": {}
+    }
+  },
+  "woodcutting_1": {
+    "id": "woodcutting_1",
+    "name": "Woodcutting I",
+    "skill": "woodcutting",
+    "tier": 1,
+    "requires_previous": null,
+    "type": "gather",
+    "target": "log",
+    "amount": 500,
+    "description": "Cut 500 Logs",
+    "rewards": {
+      "coins": 1000,
+      "xp": 2000,
+      "items": {"oak_log": 100}
+    }
+  },
+  "woodcutting_2": {
+    "id": "woodcutting_2",
+    "name": "Woodcutting II",
+    "skill": "woodcutting",
+    "tier": 2,
+    "requires_previous": "woodcutting_1",
+    "type": "gather",
+    "target": "oak_log",
+    "amount": 750,
+    "description": "Cut 750 Oak Logs",
+    "rewards": {
+      "coins": 2000,
+      "xp": 5000,
+      "items": {"willow_log": 100}
+    }
+  },
+  "woodcutting_3": {
+    "id": "woodcutting_3",
+    "name": "Woodcutting III",
+    "skill": "woodcutting",
+    "tier": 3,
+    "requires_previous": "woodcutting_2",
+    "type": "gather",
+    "target": "willow_log",
+    "amount": 1100,
+    "description": "Cut 1100 Willow Logs",
+    "rewards": {
+      "coins": 4000,
+      "xp": 10000,
+      "items": {"maple_log": 100}
+    }
+  },
+  "woodcutting_4": {
+    "id": "woodcutting_4",
+    "name": "Woodcutting IV",
+    "skill": "woodcutting",
+    "tier": 4,
+    "requires_previous": "woodcutting_3",
+    "type": "gather",
+    "target": "maple_log",
+    "amount": 1650,
+    "description": "Cut 1650 Maple Logs",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "items": {"yew_log": 100}
+    }
+  },
+  "woodcutting_5": {
+    "id": "woodcutting_5",
+    "name": "Woodcutting V",
+    "skill": "woodcutting",
+    "tier": 5,
+    "requires_previous": "woodcutting_4",
+    "type": "gather",
+    "target": "yew_log",
+    "amount": 2450,
+    "description": "Cut 2450 Yew Logs",
+    "rewards": {
+      "coins": 16000,
+      "xp": 40000,
+      "items": {"magic_log": 100}
+    }
+  },
+  "woodcutting_6": {
+    "id": "woodcutting_6",
+    "name": "Woodcutting VI",
+    "skill": "woodcutting",
+    "tier": 6,
+    "requires_previous": "woodcutting_5",
+    "type": "gather",
+    "target": "magic_log",
+    "amount": 3650,
+    "description": "Cut 3650 Magic Logs",
+    "rewards": {
+      "coins": 32000,
+      "xp": 80000,
+      "items": {}
+    }
+  },
+  "fishing_1": {
+    "id": "fishing_1",
+    "name": "Fishing I",
+    "skill": "fishing",
+    "tier": 1,
+    "requires_previous": null,
+    "type": "gather_any",
+    "target": "any_fish",
+    "amount": 500,
+    "description": "Catch 500 fish (any type)",
+    "rewards": {
+      "coins": 1000,
+      "xp": 2000,
+      "items": {}
+    }
+  },
+  "fishing_2": {
+    "id": "fishing_2",
+    "name": "Fishing II",
+    "skill": "fishing",
+    "tier": 2,
+    "requires_previous": "fishing_1",
+    "type": "gather_any",
+    "target": "any_fish",
+    "amount": 750,
+    "description": "Catch 750 fish (any type)",
+    "rewards": {
+      "coins": 2000,
+      "xp": 5000,
+      "items": {}
+    }
+  },
+  "fishing_3": {
+    "id": "fishing_3",
+    "name": "Fishing III",
+    "skill": "fishing",
+    "tier": 3,
+    "requires_previous": "fishing_2",
+    "type": "gather_any",
+    "target": "any_fish",
+    "amount": 1100,
+    "description": "Catch 1100 fish (any type)",
+    "rewards": {
+      "coins": 4000,
+      "xp": 10000,
+      "items": {}
+    }
+  },
+  "fishing_4": {
+    "id": "fishing_4",
+    "name": "Fishing IV",
+    "skill": "fishing",
+    "tier": 4,
+    "requires_previous": "fishing_3",
+    "type": "gather_any",
+    "target": "any_fish",
+    "amount": 1650,
+    "description": "Catch 1650 fish (any type)",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "items": {}
+    }
+  },
+  "fishing_5": {
+    "id": "fishing_5",
+    "name": "Fishing V",
+    "skill": "fishing",
+    "tier": 5,
+    "requires_previous": "fishing_4",
+    "type": "gather_any",
+    "target": "any_fish",
+    "amount": 2450,
+    "description": "Catch 2450 fish (any type)",
+    "rewards": {
+      "coins": 16000,
+      "xp": 40000,
+      "items": {}
+    }
+  },
+  "fishing_6": {
+    "id": "fishing_6",
+    "name": "Fishing VI",
+    "skill": "fishing",
+    "tier": 6,
+    "requires_previous": "fishing_5",
+    "type": "gather_any",
+    "target": "any_fish",
+    "amount": 3650,
+    "description": "Catch 3650 fish (any type)",
+    "rewards": {
+      "coins": 32000,
+      "xp": 80000,
+      "items": {}
+    }
+  },
+  "smithing_1": {
+    "id": "smithing_1",
+    "name": "Smithing I",
+    "skill": "smithing",
+    "tier": 1,
+    "requires_previous": null,
+    "type": "craft",
+    "target": "bronze_bar",
+    "amount": 500,
+    "description": "Smith 500 Bronze Bars",
+    "rewards": {
+      "coins": 1000,
+      "xp": 2000,
+      "items": {"iron_bar": 100}
+    }
+  },
+  "smithing_2": {
+    "id": "smithing_2",
+    "name": "Smithing II",
+    "skill": "smithing",
+    "tier": 2,
+    "requires_previous": "smithing_1",
+    "type": "craft",
+    "target": "iron_bar",
+    "amount": 750,
+    "description": "Smith 750 Iron Bars",
+    "rewards": {
+      "coins": 2000,
+      "xp": 5000,
+      "items": {"steel_bar": 100}
+    }
+  },
+  "smithing_3": {
+    "id": "smithing_3",
+    "name": "Smithing III",
+    "skill": "smithing",
+    "tier": 3,
+    "requires_previous": "smithing_2",
+    "type": "craft",
+    "target": "steel_bar",
+    "amount": 1100,
+    "description": "Smith 1100 Steel Bars",
+    "rewards": {
+      "coins": 4000,
+      "xp": 10000,
+      "items": {"mithril_bar": 100}
+    }
+  },
+  "smithing_4": {
+    "id": "smithing_4",
+    "name": "Smithing IV",
+    "skill": "smithing",
+    "tier": 4,
+    "requires_previous": "smithing_3",
+    "type": "craft",
+    "target": "mithril_bar",
+    "amount": 1650,
+    "description": "Smith 1650 Mithril Bars",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "items": {"adamantite_bar": 100}
+    }
+  },
+  "smithing_5": {
+    "id": "smithing_5",
+    "name": "Smithing V",
+    "skill": "smithing",
+    "tier": 5,
+    "requires_previous": "smithing_4",
+    "type": "craft",
+    "target": "adamantite_bar",
+    "amount": 2450,
+    "description": "Smith 2450 Adamantite Bars",
+    "rewards": {
+      "coins": 16000,
+      "xp": 40000,
+      "items": {"runite_bar": 100}
+    }
+  },
+  "smithing_6": {
+    "id": "smithing_6",
+    "name": "Smithing VI",
+    "skill": "smithing",
+    "tier": 6,
+    "requires_previous": "smithing_5",
+    "type": "craft",
+    "target": "runite_bar",
+    "amount": 3650,
+    "description": "Smith 3650 Runite Bars",
+    "rewards": {
+      "coins": 32000,
+      "xp": 80000,
+      "items": {}
+    }
+  },
+  "cooking_fish_1": {
+    "id": "cooking_fish_1",
+    "name": "Cooking - Fish I",
+    "skill": "cooking",
+    "tier": 1,
+    "requires_previous": null,
+    "type": "craft_any",
+    "target": "any_fish",
+    "amount": 500,
+    "description": "Cook 500 fish (any type)",
+    "rewards": {
+      "coins": 1000,
+      "xp": 2000,
+      "items": {}
+    }
+  },
+  "cooking_fish_2": {
+    "id": "cooking_fish_2",
+    "name": "Cooking - Fish II",
+    "skill": "cooking",
+    "tier": 2,
+    "requires_previous": "cooking_fish_1",
+    "type": "craft_any",
+    "target": "any_fish",
+    "amount": 750,
+    "description": "Cook 750 fish (any type)",
+    "rewards": {
+      "coins": 2000,
+      "xp": 5000,
+      "items": {}
+    }
+  },
+  "cooking_fish_3": {
+    "id": "cooking_fish_3",
+    "name": "Cooking - Fish III",
+    "skill": "cooking",
+    "tier": 3,
+    "requires_previous": "cooking_fish_2",
+    "type": "craft_any",
+    "target": "any_fish",
+    "amount": 1100,
+    "description": "Cook 1100 fish (any type)",
+    "rewards": {
+      "coins": 4000,
+      "xp": 10000,
+      "items": {}
+    }
+  },
+  "cooking_fish_4": {
+    "id": "cooking_fish_4",
+    "name": "Cooking - Fish IV",
+    "skill": "cooking",
+    "tier": 4,
+    "requires_previous": "cooking_fish_3",
+    "type": "craft_any",
+    "target": "any_fish",
+    "amount": 1650,
+    "description": "Cook 1650 fish (any type)",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "items": {}
+    }
+  },
+  "cooking_fish_5": {
+    "id": "cooking_fish_5",
+    "name": "Cooking - Fish V",
+    "skill": "cooking",
+    "tier": 5,
+    "requires_previous": "cooking_fish_4",
+    "type": "craft_any",
+    "target": "any_fish",
+    "amount": 2450,
+    "description": "Cook 2450 fish (any type)",
+    "rewards": {
+      "coins": 16000,
+      "xp": 40000,
+      "items": {}
+    }
+  },
+  "cooking_fish_6": {
+    "id": "cooking_fish_6",
+    "name": "Cooking - Fish VI",
+    "skill": "cooking",
+    "tier": 6,
+    "requires_previous": "cooking_fish_5",
+    "type": "craft_any",
+    "target": "any_fish",
+    "amount": 3650,
+    "description": "Cook 3650 fish (any type)",
+    "rewards": {
+      "coins": 32000,
+      "xp": 80000,
+      "items": {}
+    }
+  },
+  "cooking_beef_1": {
+    "id": "cooking_beef_1",
+    "name": "Cooking - Beef I",
+    "skill": "cooking",
+    "tier": 1,
+    "requires_previous": null,
+    "type": "craft",
+    "target": "beef",
+    "amount": 100,
+    "description": "Cook 100 Beef",
+    "rewards": {
+      "coins": 500,
+      "xp": 1000,
+      "items": {}
+    }
+  },
+  "cooking_beef_2": {
+    "id": "cooking_beef_2",
+    "name": "Cooking - Beef II",
+    "skill": "cooking",
+    "tier": 2,
+    "requires_previous": "cooking_beef_1",
+    "type": "craft",
+    "target": "beef",
+    "amount": 250,
+    "description": "Cook 250 Beef",
+    "rewards": {
+      "coins": 1000,
+      "xp": 3000,
+      "items": {}
+    }
+  },
+  "cooking_beef_3": {
+    "id": "cooking_beef_3",
+    "name": "Cooking - Beef III",
+    "skill": "cooking",
+    "tier": 3,
+    "requires_previous": "cooking_beef_2",
+    "type": "craft",
+    "target": "beef",
+    "amount": 500,
+    "description": "Cook 500 Beef",
+    "rewards": {
+      "coins": 2000,
+      "xp": 6000,
+      "items": {}
+    }
+  },
+  "cooking_chicken_1": {
+    "id": "cooking_chicken_1",
+    "name": "Cooking - Chicken I",
+    "skill": "cooking",
+    "tier": 1,
+    "requires_previous": null,
+    "type": "craft",
+    "target": "chicken",
+    "amount": 100,
+    "description": "Cook 100 Chicken",
+    "rewards": {
+      "coins": 500,
+      "xp": 1000,
+      "items": {}
+    }
+  },
+  "cooking_chicken_2": {
+    "id": "cooking_chicken_2",
+    "name": "Cooking - Chicken II",
+    "skill": "cooking",
+    "tier": 2,
+    "requires_previous": "cooking_chicken_1",
+    "type": "craft",
+    "target": "chicken",
+    "amount": 250,
+    "description": "Cook 250 Chicken",
+    "rewards": {
+      "coins": 1000,
+      "xp": 3000,
+      "items": {}
+    }
+  },
+  "cooking_chicken_3": {
+    "id": "cooking_chicken_3",
+    "name": "Cooking - Chicken III",
+    "skill": "cooking",
+    "tier": 3,
+    "requires_previous": "cooking_chicken_2",
+    "type": "craft",
+    "target": "chicken",
+    "amount": 500,
+    "description": "Cook 500 Chicken",
+    "rewards": {
+      "coins": 2000,
+      "xp": 6000,
+      "items": {}
+    }
+  },
+  "cooking_mutton_1": {
+    "id": "cooking_mutton_1",
+    "name": "Cooking - Mutton I",
+    "skill": "cooking",
+    "tier": 1,
+    "requires_previous": null,
+    "type": "craft",
+    "target": "mutton",
+    "amount": 100,
+    "description": "Cook 100 Mutton",
+    "rewards": {
+      "coins": 500,
+      "xp": 1000,
+      "items": {}
+    }
+  },
+  "cooking_mutton_2": {
+    "id": "cooking_mutton_2",
+    "name": "Cooking - Mutton II",
+    "skill": "cooking",
+    "tier": 2,
+    "requires_previous": "cooking_mutton_1",
+    "type": "craft",
+    "target": "mutton",
+    "amount": 250,
+    "description": "Cook 250 Mutton",
+    "rewards": {
+      "coins": 1000,
+      "xp": 3000,
+      "items": {}
+    }
+  },
+  "cooking_mutton_3": {
+    "id": "cooking_mutton_3",
+    "name": "Cooking - Mutton III",
+    "skill": "cooking",
+    "tier": 3,
+    "requires_previous": "cooking_mutton_2",
+    "type": "craft",
+    "target": "mutton",
+    "amount": 500,
+    "description": "Cook 500 Mutton",
+    "rewards": {
+      "coins": 2000,
+      "xp": 6000,
+      "items": {}
+    }
+  },
+  "fletching_1": {
+    "id": "fletching_1",
+    "name": "Fletching I",
+    "skill": "fletching",
+    "tier": 1,
+    "requires_previous": null,
+    "type": "craft",
+    "target": "bronze_arrow",
+    "amount": 500,
+    "description": "Fletch 500 Bronze Arrows",
+    "rewards": {
+      "coins": 1000,
+      "xp": 2000,
+      "items": {"iron_arrow": 100}
+    }
+  },
+  "fletching_2": {
+    "id": "fletching_2",
+    "name": "Fletching II",
+    "skill": "fletching",
+    "tier": 2,
+    "requires_previous": "fletching_1",
+    "type": "craft",
+    "target": "iron_arrow",
+    "amount": 750,
+    "description": "Fletch 750 Iron Arrows",
+    "rewards": {
+      "coins": 2000,
+      "xp": 5000,
+      "items": {"steel_arrow": 100}
+    }
+  },
+  "fletching_3": {
+    "id": "fletching_3",
+    "name": "Fletching III",
+    "skill": "fletching",
+    "tier": 3,
+    "requires_previous": "fletching_2",
+    "type": "craft",
+    "target": "steel_arrow",
+    "amount": 1100,
+    "description": "Fletch 1100 Steel Arrows",
+    "rewards": {
+      "coins": 4000,
+      "xp": 10000,
+      "items": {"mithril_arrow": 100}
+    }
+  },
+  "fletching_4": {
+    "id": "fletching_4",
+    "name": "Fletching IV",
+    "skill": "fletching",
+    "tier": 4,
+    "requires_previous": "fletching_3",
+    "type": "craft",
+    "target": "mithril_arrow",
+    "amount": 1650,
+    "description": "Fletch 1650 Mithril Arrows",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "items": {"adamantite_arrow": 100}
+    }
+  },
+  "fletching_5": {
+    "id": "fletching_5",
+    "name": "Fletching V",
+    "skill": "fletching",
+    "tier": 5,
+    "requires_previous": "fletching_4",
+    "type": "craft",
+    "target": "adamantite_arrow",
+    "amount": 2450,
+    "description": "Fletch 2450 Adamantite Arrows",
+    "rewards": {
+      "coins": 16000,
+      "xp": 40000,
+      "items": {"runite_arrow": 100}
+    }
+  },
+  "fletching_6": {
+    "id": "fletching_6",
+    "name": "Fletching VI",
+    "skill": "fletching",
+    "tier": 6,
+    "requires_previous": "fletching_5",
+    "type": "craft",
+    "target": "runite_arrow",
+    "amount": 3650,
+    "description": "Fletch 3650 Runite Arrows",
+    "rewards": {
+      "coins": 32000,
+      "xp": 80000,
+      "items": {}
+    }
+  },
+  "prayer_1": {
+    "id": "prayer_1",
+    "name": "Prayer I",
+    "skill": "prayer",
+    "tier": 1,
+    "requires_previous": null,
+    "type": "prayer",
+    "target": "bones",
+    "amount": 500,
+    "description": "Bury 500 Bones",
+    "rewards": {
+      "coins": 1000,
+      "xp": 2000,
+      "items": {}
+    }
+  },
+  "prayer_2": {
+    "id": "prayer_2",
+    "name": "Prayer II",
+    "skill": "prayer",
+    "tier": 2,
+    "requires_previous": "prayer_1",
+    "type": "prayer",
+    "target": "bones",
+    "amount": 750,
+    "description": "Bury 750 Bones",
+    "rewards": {
+      "coins": 2000,
+      "xp": 5000,
+      "items": {}
+    }
+  },
+  "prayer_3": {
+    "id": "prayer_3",
+    "name": "Prayer III",
+    "skill": "prayer",
+    "tier": 3,
+    "requires_previous": "prayer_2",
+    "type": "prayer",
+    "target": "bones",
+    "amount": 1100,
+    "description": "Bury 1100 Bones",
+    "rewards": {
+      "coins": 4000,
+      "xp": 10000,
+      "items": {}
+    }
+  },
+  "prayer_4": {
+    "id": "prayer_4",
+    "name": "Prayer IV",
+    "skill": "prayer",
+    "tier": 4,
+    "requires_previous": "prayer_3",
+    "type": "prayer",
+    "target": "bones",
+    "amount": 1650,
+    "description": "Bury 1650 Bones",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "items": {}
+    }
+  },
+  "prayer_5": {
+    "id": "prayer_5",
+    "name": "Prayer V",
+    "skill": "prayer",
+    "tier": 5,
+    "requires_previous": "prayer_4",
+    "type": "prayer",
+    "target": "bones",
+    "amount": 2450,
+    "description": "Bury 2450 Bones",
+    "rewards": {
+      "coins": 16000,
+      "xp": 40000,
+      "items": {}
+    }
+  },
+  "prayer_6": {
+    "id": "prayer_6",
+    "name": "Prayer VI",
+    "skill": "prayer",
+    "tier": 6,
+    "requires_previous": "prayer_5",
+    "type": "prayer",
+    "target": "bones",
+    "amount": 3650,
+    "description": "Bury 3650 Bones",
+    "rewards": {
+      "coins": 32000,
+      "xp": 80000,
+      "items": {}
+    }
+  },
+  "combat_kills_1": {
+    "id": "combat_kills_1",
+    "name": "Slayer I",
+    "skill": "combat",
+    "tier": 1,
+    "requires_previous": null,
+    "type": "kill",
+    "target": "any",
+    "amount": 100,
+    "description": "Defeat 100 enemies",
+    "rewards": {
+      "coins": 1000,
+      "xp": 2000,
+      "items": {}
+    }
+  },
+  "combat_kills_2": {
+    "id": "combat_kills_2",
+    "name": "Slayer II",
+    "skill": "combat",
+    "tier": 2,
+    "requires_previous": "combat_kills_1",
+    "type": "kill",
+    "target": "any",
+    "amount": 150,
+    "description": "Defeat 150 enemies",
+    "rewards": {
+      "coins": 2000,
+      "xp": 5000,
+      "items": {}
+    }
+  },
+  "combat_kills_3": {
+    "id": "combat_kills_3",
+    "name": "Slayer III",
+    "skill": "combat",
+    "tier": 3,
+    "requires_previous": "combat_kills_2",
+    "type": "kill",
+    "target": "any",
+    "amount": 200,
+    "description": "Defeat 200 enemies",
+    "rewards": {
+      "coins": 4000,
+      "xp": 10000,
+      "items": {}
+    }
+  },
+  "combat_kills_4": {
+    "id": "combat_kills_4",
+    "name": "Slayer IV",
+    "skill": "combat",
+    "tier": 4,
+    "requires_previous": "combat_kills_3",
+    "type": "kill",
+    "target": "any",
+    "amount": 300,
+    "description": "Defeat 300 enemies",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "items": {}
+    }
+  },
+  "combat_kills_5": {
+    "id": "combat_kills_5",
+    "name": "Slayer V",
+    "skill": "combat",
+    "tier": 5,
+    "requires_previous": "combat_kills_4",
+    "type": "kill",
+    "target": "any",
+    "amount": 450,
+    "description": "Defeat 450 enemies",
+    "rewards": {
+      "coins": 16000,
+      "xp": 40000,
+      "items": {}
+    }
+  },
+  "combat_kills_6": {
+    "id": "combat_kills_6",
+    "name": "Slayer VI",
+    "skill": "combat",
+    "tier": 6,
+    "requires_previous": "combat_kills_5",
+    "type": "kill",
+    "target": "any",
+    "amount": 650,
+    "description": "Defeat 650 enemies",
+    "rewards": {
+      "coins": 32000,
+      "xp": 80000,
+      "items": {}
+    }
+  },
+  "dungeon_farm_1": {
+    "id": "dungeon_farm_1",
+    "name": "Dungeon Explorer I",
+    "skill": "combat",
+    "tier": 1,
+    "requires_previous": null,
+    "type": "dungeon",
+    "target": "farm",
+    "amount": 5,
+    "description": "Complete the Farm dungeon 5 times",
+    "rewards": {
+      "coins": 1000,
+      "xp": 2000,
+      "items": {}
+    }
+  },
+  "dungeon_goblin_1": {
+    "id": "dungeon_goblin_1",
+    "name": "Dungeon Explorer II",
+    "skill": "combat",
+    "tier": 2,
+    "requires_previous": "dungeon_farm_1",
+    "type": "dungeon",
+    "target": "goblin_cave",
+    "amount": 5,
+    "description": "Complete the Goblin Cave dungeon 5 times",
+    "rewards": {
+      "coins": 2000,
+      "xp": 4000,
+      "items": {}
+    }
+  },
+  "dungeon_spider_1": {
+    "id": "dungeon_spider_1",
+    "name": "Dungeon Explorer III",
+    "skill": "combat",
+    "tier": 3,
+    "requires_previous": "dungeon_goblin_1",
+    "type": "dungeon",
+    "target": "spider_den",
+    "amount": 5,
+    "description": "Complete the Spider Den dungeon 5 times",
+    "rewards": {
+      "coins": 4000,
+      "xp": 8000,
+      "items": {}
+    }
+  },
+  "dungeon_bandit_1": {
+    "id": "dungeon_bandit_1",
+    "name": "Dungeon Explorer IV",
+    "skill": "combat",
+    "tier": 4,
+    "requires_previous": "dungeon_spider_1",
+    "type": "dungeon",
+    "target": "bandit_camp",
+    "amount": 5,
+    "description": "Complete the Bandit Camp dungeon 5 times",
+    "rewards": {
+      "coins": 8000,
+      "xp": 15000,
+      "items": {}
+    }
+  },
+  "dungeon_undead_1": {
+    "id": "dungeon_undead_1",
+    "name": "Dungeon Explorer V",
+    "skill": "combat",
+    "tier": 5,
+    "requires_previous": "dungeon_bandit_1",
+    "type": "dungeon",
+    "target": "undead_crypt",
+    "amount": 5,
+    "description": "Complete the Undead Crypt dungeon 5 times",
+    "rewards": {
+      "coins": 16000,
+      "xp": 25000,
+      "items": {}
+    }
+  },
+  "dungeon_fortress_1": {
+    "id": "dungeon_fortress_1",
+    "name": "Dungeon Explorer VI",
+    "skill": "combat",
+    "tier": 6,
+    "requires_previous": "dungeon_undead_1",
+    "type": "dungeon",
+    "target": "fortress_ruins",
+    "amount": 5,
+    "description": "Complete the Fortress Ruins dungeon 5 times",
+    "rewards": {
+      "coins": 32000,
+      "xp": 40000,
+      "items": {}
+    }
+  },
+  "dungeon_orc_1": {
+    "id": "dungeon_orc_1",
+    "name": "Dungeon Master I",
+    "skill": "combat",
+    "tier": 7,
+    "requires_previous": "dungeon_fortress_1",
+    "type": "dungeon",
+    "target": "orc_stronghold",
+    "amount": 5,
+    "description": "Complete the Orc Stronghold dungeon 5 times",
+    "rewards": {
+      "coins": 50000,
+      "xp": 60000,
+      "items": {}
+    }
+  },
+  "dungeon_volcanic_1": {
+    "id": "dungeon_volcanic_1",
+    "name": "Dungeon Master II",
+    "skill": "combat",
+    "tier": 8,
+    "requires_previous": "dungeon_orc_1",
+    "type": "dungeon",
+    "target": "volcanic_depths",
+    "amount": 5,
+    "description": "Complete the Volcanic Depths dungeon 5 times",
+    "rewards": {
+      "coins": 75000,
+      "xp": 80000,
+      "items": {}
+    }
+  },
+  "dungeon_dragon_1": {
+    "id": "dungeon_dragon_1",
+    "name": "Dungeon Master III",
+    "skill": "combat",
+    "tier": 9,
+    "requires_previous": "dungeon_volcanic_1",
+    "type": "dungeon",
+    "target": "dragon_lair",
+    "amount": 5,
+    "description": "Complete the Dragon Lair dungeon 5 times",
+    "rewards": {
+      "coins": 100000,
+      "xp": 100000,
+      "items": {}
+    }
+  },
+  "crafting_1": {
+    "id": "crafting_1",
+    "name": "Crafting I",
+    "skill": "crafting",
+    "tier": 1,
+    "requires_previous": null,
+    "type": "craft",
+    "target": "silver_ring",
+    "amount": 100,
+    "description": "Craft 100 Silver Rings",
+    "rewards": {
+      "coins": 500,
+      "xp": 1000,
+      "items": {}
+    }
+  },
+  "crafting_2": {
+    "id": "crafting_2",
+    "name": "Crafting II",
+    "skill": "crafting",
+    "tier": 2,
+    "requires_previous": "crafting_1",
+    "type": "craft",
+    "target": "gold_ring",
+    "amount": 250,
+    "description": "Craft 250 Gold Rings",
+    "rewards": {
+      "coins": 1000,
+      "xp": 3000,
+      "items": {}
+    }
+  },
+  "crafting_3": {
+    "id": "crafting_3",
+    "name": "Crafting III",
+    "skill": "crafting",
+    "tier": 3,
+    "requires_previous": "crafting_2",
+    "type": "craft",
+    "target": "platinum_ring",
+    "amount": 500,
+    "description": "Craft 500 Platinum Rings",
+    "rewards": {
+      "coins": 2000,
+      "xp": 6000,
+      "items": {}
+    }
+  },
+  "crafting_4": {
+    "id": "crafting_4",
+    "name": "Crafting IV",
+    "skill": "crafting",
+    "tier": 4,
+    "requires_previous": "crafting_3",
+    "type": "craft",
+    "target": "silver_sapphire_ring",
+    "amount": 750,
+    "description": "Craft 750 Silver Sapphire Rings",
+    "rewards": {
+      "coins": 4000,
+      "xp": 12000,
+      "items": {}
+    }
+  },
+  "crafting_5": {
+    "id": "crafting_5",
+    "name": "Crafting V",
+    "skill": "crafting",
+    "tier": 5,
+    "requires_previous": "crafting_4",
+    "type": "craft",
+    "target": "gold_sapphire_ring",
+    "amount": 1000,
+    "description": "Craft 1000 Gold Sapphire Rings",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "items": {}
+    }
+  },
+  "crafting_6": {
+    "id": "crafting_6",
+    "name": "Crafting VI",
+    "skill": "crafting",
+    "tier": 6,
+    "requires_previous": "crafting_5",
+    "type": "craft",
+    "target": "platinum_diamond_ring",
+    "amount": 1500,
+    "description": "Craft 1500 Platinum Diamond Rings",
+    "rewards": {
+      "coins": 16000,
+      "xp": 40000,
+      "items": {}
+    }
+  },
+  "goblin_slayer_1": {
+    "id": "goblin_slayer_1",
+    "name": "Goblin Slayer I",
+    "skill": "combat",
+    "tier": 1,
+    "requires_previous": null,
+    "type": "kill_enemy",
+    "target": "goblin",
+    "amount": 50,
+    "description": "Defeat 50 Goblins",
+    "rewards": {
+      "coins": 1500,
+      "xp": 2500,
+      "items": {}
+    }
+  },
+  "goblin_slayer_2": {
+    "id": "goblin_slayer_2",
+    "name": "Goblin Slayer II",
+    "skill": "combat",
+    "tier": 2,
+    "requires_previous": "goblin_slayer_1",
+    "type": "kill_enemy",
+    "target": "goblin",
+    "amount": 100,
+    "description": "Defeat 100 Goblins",
+    "rewards": {
+      "coins": 3000,
+      "xp": 5000,
+      "items": {"steel_sword": 1}
+    }
+  },
+  "spider_slayer_1": {
+    "id": "spider_slayer_1",
+    "name": "Spider Slayer I",
+    "skill": "combat",
+    "tier": 1,
+    "requires_previous": null,
+    "type": "kill_enemy",
+    "target": "spider",
+    "amount": 40,
+    "description": "Defeat 40 Giant Spiders",
+    "rewards": {
+      "coins": 1200,
+      "xp": 2000,
+      "items": {}
+    }
+  },
+  "spider_slayer_2": {
+    "id": "spider_slayer_2",
+    "name": "Spider Slayer II",
+    "skill": "combat",
+    "tier": 2,
+    "requires_previous": "spider_slayer_1",
+    "type": "kill_enemy",
+    "target": "spider",
+    "amount": 80,
+    "description": "Defeat 80 Giant Spiders",
+    "rewards": {
+      "coins": 2500,
+      "xp": 4000,
+      "items": {"iron_scimitar": 1}
+    }
+  },
+  "skeleton_slayer_1": {
+    "id": "skeleton_slayer_1",
+    "name": "Skeleton Slayer I",
+    "skill": "combat",
+    "tier": 2,
+    "requires_previous": null,
+    "type": "kill_enemy",
+    "target": "skeleton",
+    "amount": 35,
+    "description": "Defeat 35 Skeletons",
+    "rewards": {
+      "coins": 2000,
+      "xp": 3500,
+      "items": {}
+    }
+  },
+  "skeleton_slayer_2": {
+    "id": "skeleton_slayer_2",
+    "name": "Skeleton Slayer II",
+    "skill": "combat",
+    "tier": 3,
+    "requires_previous": "skeleton_slayer_1",
+    "type": "kill_enemy",
+    "target": "skeleton",
+    "amount": 70,
+    "description": "Defeat 70 Skeletons",
+    "rewards": {
+      "coins": 4000,
+      "xp": 7000,
+      "items": {"steel_scimitar": 1}
+    }
+  },
+  "bandit_hunter_1": {
+    "id": "bandit_hunter_1",
+    "name": "Bandit Hunter I",
+    "skill": "combat",
+    "tier": 3,
+    "requires_previous": null,
+    "type": "kill_enemy",
+    "target": "bandit",
+    "amount": 30,
+    "description": "Defeat 30 Bandits",
+    "rewards": {
+      "coins": 3000,
+      "xp": 5000,
+      "items": {}
+    }
+  },
+  "bandit_hunter_2": {
+    "id": "bandit_hunter_2",
+    "name": "Bandit Hunter II",
+    "skill": "combat",
+    "tier": 4,
+    "requires_previous": "bandit_hunter_1",
+    "type": "kill_enemy",
+    "target": "bandit",
+    "amount": 60,
+    "description": "Defeat 60 Bandits",
+    "rewards": {
+      "coins": 6000,
+      "xp": 10000,
+      "items": {"mithril_sword": 1}
+    }
+  },
+  "orc_slayer_1": {
+    "id": "orc_slayer_1",
+    "name": "Orc Slayer I",
+    "skill": "combat",
+    "tier": 5,
+    "requires_previous": null,
+    "type": "kill_enemy",
+    "target": "orc_warrior",
+    "amount": 25,
+    "description": "Defeat 25 Orc Warriors",
+    "rewards": {
+      "coins": 5000,
+      "xp": 8000,
+      "items": {}
+    }
+  },
+  "orc_slayer_2": {
+    "id": "orc_slayer_2",
+    "name": "Orc Slayer II",
+    "skill": "combat",
+    "tier": 6,
+    "requires_previous": "orc_slayer_1",
+    "type": "kill_enemy",
+    "target": "orc_warrior",
+    "amount": 50,
+    "description": "Defeat 50 Orc Warriors",
+    "rewards": {
+      "coins": 10000,
+      "xp": 15000,
+      "items": {"adamantite_sword": 1}
+    }
+  },
+  "demon_slayer_1": {
+    "id": "demon_slayer_1",
+    "name": "Demon Slayer I",
+    "skill": "combat",
+    "tier": 7,
+    "requires_previous": null,
+    "type": "kill_enemy",
+    "target": "demon",
+    "amount": 20,
+    "description": "Defeat 20 Lesser Demons",
+    "rewards": {
+      "coins": 8000,
+      "xp": 12000,
+      "items": {}
+    }
+  },
+  "demon_slayer_2": {
+    "id": "demon_slayer_2",
+    "name": "Demon Slayer II",
+    "skill": "combat",
+    "tier": 8,
+    "requires_previous": "demon_slayer_1",
+    "type": "kill_enemy",
+    "target": "demon",
+    "amount": 40,
+    "description": "Defeat 40 Lesser Demons",
+    "rewards": {
+      "coins": 16000,
+      "xp": 24000,
+      "items": {"runite_sword": 1}
+    }
+  },
+  "dragon_slayer_1": {
+    "id": "dragon_slayer_1",
+    "name": "Dragon Slayer I",
+    "skill": "combat",
+    "tier": 9,
+    "requires_previous": null,
+    "type": "kill_enemy",
+    "target": "dragon",
+    "amount": 10,
+    "description": "Defeat 10 Green Dragons",
+    "rewards": {
+      "coins": 15000,
+      "xp": 20000,
+      "items": {}
+    }
+  },
+  "dragon_slayer_2": {
+    "id": "dragon_slayer_2",
+    "name": "Dragon Slayer II",
+    "skill": "combat",
+    "tier": 10,
+    "requires_previous": "dragon_slayer_1",
+    "type": "kill_enemy",
+    "target": "dragon",
+    "amount": 25,
+    "description": "Defeat 25 Green Dragons",
+    "rewards": {
+      "coins": 30000,
+      "xp": 40000,
+      "items": {"dragon_scale": 5}
+    }
+  },
+  "melee_warrior_1": {
+    "id": "melee_warrior_1",
+    "name": "Melee Warrior I",
+    "skill": "combat",
+    "tier": 2,
+    "requires_previous": null,
+    "type": "dungeon_melee_only",
+    "target": "goblin_cave",
+    "amount": 1,
+    "description": "Complete Goblin Cave using only melee combat",
+    "rewards": {
+      "coins": 3000,
+      "xp": 5000,
+      "items": {}
+    }
+  },
+  "melee_warrior_2": {
+    "id": "melee_warrior_2",
+    "name": "Melee Warrior II",
+    "skill": "combat",
+    "tier": 4,
+    "requires_previous": "melee_warrior_1",
+    "type": "dungeon_melee_only",
+    "target": "bandit_camp",
+    "amount": 1,
+    "description": "Complete Bandit Camp using only melee combat",
+    "rewards": {
+      "coins": 8000,
+      "xp": 12000,
+      "items": {}
+    }
+  },
+  "melee_warrior_3": {
+    "id": "melee_warrior_3",
+    "name": "Melee Warrior III",
+    "skill": "combat",
+    "tier": 6,
+    "requires_previous": "melee_warrior_2",
+    "type": "dungeon_melee_only",
+    "target": "fortress_ruins",
+    "amount": 1,
+    "description": "Complete Fortress Ruins using only melee combat",
+    "rewards": {
+      "coins": 18000,
+      "xp": 25000,
+      "items": {}
+    }
+  },
+  "ranger_elite_1": {
+    "id": "ranger_elite_1",
+    "name": "Ranger Elite I",
+    "skill": "combat",
+    "tier": 2,
+    "requires_previous": null,
+    "type": "dungeon_ranged_only",
+    "target": "goblin_cave",
+    "amount": 1,
+    "description": "Complete Goblin Cave using only ranged combat",
+    "rewards": {
+      "coins": 3000,
+      "xp": 5000,
+      "items": {}
+    }
+  },
+  "ranger_elite_2": {
+    "id": "ranger_elite_2",
+    "name": "Ranger Elite II",
+    "skill": "combat",
+    "tier": 4,
+    "requires_previous": "ranger_elite_1",
+    "type": "dungeon_ranged_only",
+    "target": "bandit_camp",
+    "amount": 1,
+    "description": "Complete Bandit Camp using only ranged combat",
+    "rewards": {
+      "coins": 8000,
+      "xp": 12000,
+      "items": {}
+    }
+  },
+  "ranger_elite_3": {
+    "id": "ranger_elite_3",
+    "name": "Ranger Elite III",
+    "skill": "combat",
+    "tier": 6,
+    "requires_previous": "ranger_elite_2",
+    "type": "dungeon_ranged_only",
+    "target": "fortress_ruins",
+    "amount": 1,
+    "description": "Complete Fortress Ruins using only ranged combat",
+    "rewards": {
+      "coins": 18000,
+      "xp": 25000,
+      "items": {}
+    }
+  },
+  "mage_master_1": {
+    "id": "mage_master_1",
+    "name": "Mage Master I",
+    "skill": "combat",
+    "tier": 2,
+    "requires_previous": null,
+    "type": "dungeon_magic_only",
+    "target": "goblin_cave",
+    "amount": 1,
+    "description": "Complete Goblin Cave using only magic combat",
+    "rewards": {
+      "coins": 3000,
+      "xp": 5000,
+      "items": {}
+    }
+  },
+  "mage_master_2": {
+    "id": "mage_master_2",
+    "name": "Mage Master II",
+    "skill": "combat",
+    "tier": 4,
+    "requires_previous": "mage_master_1",
+    "type": "dungeon_magic_only",
+    "target": "bandit_camp",
+    "amount": 1,
+    "description": "Complete Bandit Camp using only magic combat",
+    "rewards": {
+      "coins": 8000,
+      "xp": 12000,
+      "items": {}
+    }
+  },
+  "mage_master_3": {
+    "id": "mage_master_3",
+    "name": "Mage Master III",
+    "skill": "combat",
+    "tier": 6,
+    "requires_previous": "mage_master_2",
+    "type": "dungeon_magic_only",
+    "target": "fortress_ruins",
+    "amount": 1,
+    "description": "Complete Fortress Ruins using only magic combat",
+    "rewards": {
+      "coins": 18000,
+      "xp": 25000,
+      "items": {}
+    }
+  },
+  "iron_stomach_1": {
+    "id": "iron_stomach_1",
+    "name": "Iron Stomach I",
+    "skill": "combat",
+    "tier": 3,
+    "requires_previous": null,
+    "type": "dungeon_no_food",
+    "target": "spider_den",
+    "amount": 1,
+    "description": "Complete Spider Den without using any food",
+    "rewards": {
+      "coins": 5000,
+      "xp": 8000,
+      "items": {}
+    }
+  },
+  "iron_stomach_2": {
+    "id": "iron_stomach_2",
+    "name": "Iron Stomach II",
+    "skill": "combat",
+    "tier": 5,
+    "requires_previous": "iron_stomach_1",
+    "type": "dungeon_no_food",
+    "target": "undead_crypt",
+    "amount": 1,
+    "description": "Complete Undead Crypt without using any food",
+    "rewards": {
+      "coins": 12000,
+      "xp": 18000,
+      "items": {}
+    }
+  },
+  "iron_stomach_3": {
+    "id": "iron_stomach_3",
+    "name": "Iron Stomach III",
+    "skill": "combat",
+    "tier": 7,
+    "requires_previous": "iron_stomach_2",
+    "type": "dungeon_no_food",
+    "target": "orc_stronghold",
+    "amount": 1,
+    "description": "Complete Orc Stronghold without using any food",
+    "rewards": {
+      "coins": 25000,
+      "xp": 35000,
+      "items": {}
+    }
+  },
+  "iron_stomach_4": {
+    "id": "iron_stomach_4",
+    "name": "Iron Stomach IV",
+    "skill": "combat",
+    "tier": 9,
+    "requires_previous": "iron_stomach_3",
+    "type": "dungeon_no_food",
+    "target": "dragon_lair",
+    "amount": 1,
+    "description": "Complete Dragon Lair without using any food",
+    "rewards": {
+      "coins": 50000,
+      "xp": 75000,
+      "items": {"dragon_bone": 5}
+    }
+  },
+  "treasure_hunter_1": {
+    "id": "treasure_hunter_1",
+    "name": "Treasure Hunter I",
+    "skill": "combat",
+    "tier": 2,
+    "requires_previous": null,
+    "type": "collect",
+    "target": "spider_silk",
+    "amount": 20,
+    "description": "Collect 20 Spider Silk from combat",
+    "rewards": {
+      "coins": 2000,
+      "xp": 3000,
+      "items": {}
+    }
+  },
+  "treasure_hunter_2": {
+    "id": "treasure_hunter_2",
+    "name": "Treasure Hunter II",
+    "skill": "combat",
+    "tier": 3,
+    "requires_previous": "treasure_hunter_1",
+    "type": "collect",
+    "target": "goblin_mail",
+    "amount": 10,
+    "description": "Collect 10 Goblin Mail from combat",
+    "rewards": {
+      "coins": 3000,
+      "xp": 5000,
+      "items": {}
+    }
+  },
+  "treasure_hunter_3": {
+    "id": "treasure_hunter_3",
+    "name": "Treasure Hunter III",
+    "skill": "combat",
+    "tier": 5,
+    "requires_previous": "treasure_hunter_2",
+    "type": "collect",
+    "target": "demon_horn",
+    "amount": 5,
+    "description": "Collect 5 Demon Horns from combat",
+    "rewards": {
+      "coins": 5000,
+      "xp": 8000,
+      "items": {}
+    }
+  },
+  "treasure_hunter_4": {
+    "id": "treasure_hunter_4",
+    "name": "Treasure Hunter IV",
+    "skill": "combat",
+    "tier": 7,
+    "requires_previous": "treasure_hunter_3",
+    "type": "collect",
+    "target": "dragon_scale",
+    "amount": 3,
+    "description": "Collect 3 Dragon Scales from combat",
+    "rewards": {
+      "coins": 10000,
+      "xp": 15000,
+      "items": {}
+    }
+  }
+}

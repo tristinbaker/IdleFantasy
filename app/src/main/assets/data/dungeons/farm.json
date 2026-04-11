@@ -1,0 +1,21 @@
+{
+  "name": "farm",
+  "display_name": "Farm",
+  "description": "A peaceful farm with livestock. Great for beginners looking to gather food!",
+  "recommended_level": 1,
+  "encounter_rate": 0.75,
+  "enemy_spawns": [
+    {
+      "enemy": "chicken",
+      "weight": 4
+    },
+    {
+      "enemy": "sheep",
+      "weight": 4
+    },
+    {
+      "enemy": "cow",
+      "weight": 2
+    }
+  ]
+}
