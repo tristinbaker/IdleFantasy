@@ -14,7 +14,7 @@ Binaries: https://github.com/tristinbaker/IdleFantasy/releases/download/v%v/app-
 Builds:
   - versionName: 1.0
     versionCode: 1
-    commit: v1.0
+    commit: 49fdc5b73331abd82ead2f8b81481e95ebfba41d
     subdir: app
     gradle:
       - release
