@@ -154,11 +154,11 @@ class CombatViewModel @Inject constructor(
 
                 val weaponKey  = equipped[EquipSlot.WEAPON]
                 val weapon     = weaponKey?.let { gameData.equipment[it] }
-                val rawStyle   = weapon?.combatStyle ?: "attack"
-                val combatStyle = when (rawStyle) {
-                    "ranged" -> "ranged"
-                    "magic"  -> "magic"
-                    else     -> "melee"
+                val combatStyle = when (weapon?.combatStyle) {
+                    "ranged"   -> "ranged"
+                    "magic"    -> "magic"
+                    "strength" -> "strength"
+                    else       -> "attack"
                 }
 
                 // Ranged: find best arrow in inventory

@@ -20,4 +20,7 @@ interface QuestProgressDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsert(progress: QuestProgress)
+
+    @Query("DELETE FROM quest_progress")
+    suspend fun deleteAll()
 }

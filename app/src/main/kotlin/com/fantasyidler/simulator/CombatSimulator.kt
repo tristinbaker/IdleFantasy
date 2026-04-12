@@ -188,26 +188,29 @@ object CombatSimulator {
     /**
      * Distributes total XP across skills based on combat style.
      *
-     * Melee:  40% attack · 40% strength · 20% hitpoints
-     * Ranged: 70% ranged · 30% hitpoints
-     * Magic:  70% magic  · 30% hitpoints
+     * Attack:   70% attack   · 15% hitpoints · 15% defense
+     * Strength: 70% strength · 15% hitpoints · 15% defense
+     * Ranged:   70% ranged   · 15% hitpoints · 15% defense
+     * Magic:    70% magic    · 15% hitpoints · 15% defense
+     *
+     * Defense and HP always gain at the same passive rate regardless of style.
      */
-    private fun distributeXp(totalXp: Long, style: String): Map<String, Long> =
-        when (style) {
-            "ranged" -> mapOf(
-                Skills.RANGED    to (totalXp * 0.70).toLong(),
-                Skills.HITPOINTS to (totalXp * 0.30).toLong(),
-            )
-            "magic" -> mapOf(
-                Skills.MAGIC     to (totalXp * 0.70).toLong(),
-                Skills.HITPOINTS to (totalXp * 0.30).toLong(),
-            )
-            else -> mapOf(    // melee
-                Skills.ATTACK    to (totalXp * 0.40).toLong(),
-                Skills.STRENGTH  to (totalXp * 0.40).toLong(),
-                Skills.HITPOINTS to (totalXp * 0.20).toLong(),
-            )
+    private fun distributeXp(totalXp: Long, style: String): Map<String, Long> {
+        val hp  = (totalXp * 0.15).toLong()
+        val def = (totalXp * 0.15).toLong()
+        val main = totalXp - hp - def
+        val mainSkill = when (style) {
+            "strength" -> Skills.STRENGTH
+            "ranged"   -> Skills.RANGED
+            "magic"    -> Skills.MAGIC
+            else       -> Skills.ATTACK
         }
+        return mapOf(
+            mainSkill        to main,
+            Skills.HITPOINTS to hp,
+            Skills.DEFENSE   to def,
+        )
+    }
 
     /** Weapon attack speed in seconds (standard 4-tick OSRS weapon). */
     private const val ATTACK_SPEED_SEC = 2.4

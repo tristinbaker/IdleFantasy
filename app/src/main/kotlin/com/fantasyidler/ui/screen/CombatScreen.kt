@@ -283,6 +283,7 @@ private fun CombatSkillRow(
 ) {
     val context  = LocalContext.current
     val name     = GameStrings.skillName(context, skillKey)
+    val emoji    = GameStrings.skillEmoji(skillKey)
     val progress = xpProgressFraction(xp)
 
     Row(
@@ -291,18 +292,31 @@ private fun CombatSkillRow(
             .padding(horizontal = 16.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Box(
-            modifier = Modifier
-                .size(44.dp)
-                .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.surfaceVariant),
-            contentAlignment = Alignment.Center,
-        ) {
+        Box(modifier = Modifier.size(44.dp)) {
+            Box(
+                modifier = Modifier
+                    .size(44.dp)
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                contentAlignment = Alignment.Center,
+            ) {
+                Text(
+                    text  = emoji,
+                    style = MaterialTheme.typography.titleMedium,
+                )
+            }
             Text(
                 text       = level.toString(),
-                style      = MaterialTheme.typography.labelLarge,
+                style      = MaterialTheme.typography.labelSmall,
                 fontWeight = FontWeight.Bold,
-                color      = MaterialTheme.colorScheme.onSurfaceVariant,
+                color      = MaterialTheme.colorScheme.onSurface,
+                modifier   = Modifier
+                    .align(Alignment.BottomEnd)
+                    .background(
+                        color = MaterialTheme.colorScheme.surface,
+                        shape = CircleShape,
+                    )
+                    .padding(horizontal = 3.dp, vertical = 1.dp),
             )
         }
         Spacer(Modifier.width(12.dp))
@@ -542,11 +556,11 @@ private fun DungeonInfoSheet(
     val context    = LocalContext.current
     val combatLvl  = combatLevel(skillLevels)
     val canEnter   = combatLvl >= dungeon.recommendedLevel - UNLOCK_TOLERANCE
-    val rawStyle   = equippedWeapon?.combatStyle ?: "attack"
-    val combatStyle = when (rawStyle) {
-        "ranged" -> "ranged"
-        "magic"  -> "magic"
-        else     -> "melee"
+    val combatStyle = when (equippedWeapon?.combatStyle) {
+        "ranged"   -> "ranged"
+        "magic"    -> "magic"
+        "strength" -> "strength"
+        else       -> "attack"
     }
     val styleLabel = combatStyle.replaceFirstChar { it.titlecase() }
     val canStart   = canEnter && !isStarting &&

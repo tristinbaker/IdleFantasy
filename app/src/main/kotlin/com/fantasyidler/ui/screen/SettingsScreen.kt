@@ -16,6 +16,9 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -25,6 +28,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -32,6 +36,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.fantasyidler.ui.viewmodel.SettingsViewModel
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -44,16 +50,68 @@ import com.fantasyidler.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SettingsScreen(onBack: () -> Unit, onReopenTutorial: () -> Unit = {}) {
+fun SettingsScreen(
+    onBack: () -> Unit,
+    onReopenTutorial: () -> Unit = {},
+    viewModel: SettingsViewModel = hiltViewModel(),
+) {
     val context = LocalContext.current
 
     var notificationsEnabled by remember { mutableStateOf(false) }
     var isIgnoringBattery by remember { mutableStateOf(false) }
+    var showResetConfirm1 by remember { mutableStateOf(false) }
+    var showResetConfirm2 by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
         notificationsEnabled = NotificationManagerCompat.from(context).areNotificationsEnabled()
         isIgnoringBattery = (context.getSystemService(Context.POWER_SERVICE) as PowerManager)
             .isIgnoringBatteryOptimizations(context.packageName)
+    }
+
+    if (showResetConfirm1) {
+        AlertDialog(
+            onDismissRequest = { showResetConfirm1 = false },
+            title   = { Text(stringResource(R.string.reset_confirm1_title)) },
+            text    = { Text(stringResource(R.string.reset_confirm1_body)) },
+            confirmButton = {
+                Button(
+                    onClick = { showResetConfirm1 = false; showResetConfirm2 = true },
+                    colors  = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error),
+                ) {
+                    Text(stringResource(R.string.settings_reset_btn))
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showResetConfirm1 = false }) {
+                    Text(stringResource(R.string.btn_cancel))
+                }
+            }
+        )
+    }
+
+    if (showResetConfirm2) {
+        AlertDialog(
+            onDismissRequest = { showResetConfirm2 = false },
+            title   = { Text(stringResource(R.string.reset_confirm2_title)) },
+            text    = { Text(stringResource(R.string.reset_confirm2_body)) },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        showResetConfirm2 = false
+                        viewModel.resetProgression()
+                        onBack()
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error),
+                ) {
+                    Text(stringResource(R.string.reset_confirm2_btn))
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showResetConfirm2 = false }) {
+                    Text(stringResource(R.string.btn_cancel))
+                }
+            }
+        )
     }
 
     Scaffold(
@@ -139,6 +197,25 @@ fun SettingsScreen(onBack: () -> Unit, onReopenTutorial: () -> Unit = {}) {
                 trailing = {
                     OutlinedButton(onClick = { onReopenTutorial(); onBack() }) {
                         Text(stringResource(R.string.settings_reopen))
+                    }
+                }
+            )
+
+            SettingsRow(
+                title    = stringResource(R.string.settings_reset_title),
+                subtitle = stringResource(R.string.settings_reset_desc),
+                trailing = {
+                    OutlinedButton(
+                        onClick = { showResetConfirm1 = true },
+                        colors  = ButtonDefaults.outlinedButtonColors(
+                            contentColor = MaterialTheme.colorScheme.error,
+                        ),
+                        border  = androidx.compose.foundation.BorderStroke(
+                            1.dp,
+                            MaterialTheme.colorScheme.error,
+                        ),
+                    ) {
+                        Text(stringResource(R.string.settings_reset_btn))
                     }
                 }
             )

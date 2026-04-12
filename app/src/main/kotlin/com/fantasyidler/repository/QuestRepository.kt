@@ -142,6 +142,8 @@ class QuestRepository @Inject constructor(
      * Adds [delta] to the stored progress for [questId], creating a row if absent.
      * Skips already-completed quests. Does not cap progress at [requiredAmount].
      */
+    suspend fun resetAllProgress() = questProgressDao.deleteAll()
+
     private suspend fun addProgress(questId: String, requiredAmount: Int, delta: Int) {
         val current = questProgressDao.getQuestProgress(questId)
             ?: QuestProgress(questId)

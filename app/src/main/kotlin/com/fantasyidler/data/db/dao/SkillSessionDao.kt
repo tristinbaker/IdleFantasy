@@ -29,6 +29,9 @@ interface SkillSessionDao {
     @Query("DELETE FROM skill_sessions WHERE session_id = :sessionId")
     suspend fun delete(sessionId: String)
 
+    @Query("DELETE FROM skill_sessions")
+    suspend fun deleteAll()
+
     @Query("SELECT * FROM skill_sessions WHERE completed = 1 AND user_id = 1 ORDER BY started_at DESC LIMIT :limit")
     suspend fun getRecentCompleted(limit: Int = 20): List<SkillSession>
 }

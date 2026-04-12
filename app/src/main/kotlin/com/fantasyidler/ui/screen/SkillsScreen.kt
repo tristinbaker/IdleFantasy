@@ -347,6 +347,7 @@ private fun SkillRow(
 ) {
     val context  = LocalContext.current
     val name     = GameStrings.skillName(context, skillKey)
+    val emoji    = GameStrings.skillEmoji(skillKey)
     val progress = xpProgressFraction(xp)
 
     Row(
@@ -356,23 +357,35 @@ private fun SkillRow(
             .padding(horizontal = 16.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        // Level badge
-        Box(
-            modifier = Modifier
-                .size(44.dp)
-                .clip(CircleShape)
-                .background(
-                    if (isActive) GoldPrimary
-                    else MaterialTheme.colorScheme.surfaceVariant
-                ),
-            contentAlignment = Alignment.Center,
-        ) {
+        // Emoji badge with level overlay
+        Box(modifier = Modifier.size(44.dp)) {
+            Box(
+                modifier = Modifier
+                    .size(44.dp)
+                    .clip(CircleShape)
+                    .background(
+                        if (isActive) GoldPrimary
+                        else MaterialTheme.colorScheme.surfaceVariant
+                    ),
+                contentAlignment = Alignment.Center,
+            ) {
+                Text(
+                    text  = emoji,
+                    style = MaterialTheme.typography.titleMedium,
+                )
+            }
             Text(
                 text       = level.toString(),
-                style      = MaterialTheme.typography.labelLarge,
+                style      = MaterialTheme.typography.labelSmall,
                 fontWeight = FontWeight.Bold,
-                color      = if (isActive) MaterialTheme.colorScheme.surface
-                             else MaterialTheme.colorScheme.onSurfaceVariant,
+                color      = MaterialTheme.colorScheme.onSurface,
+                modifier   = Modifier
+                    .align(Alignment.BottomEnd)
+                    .background(
+                        color = MaterialTheme.colorScheme.surface,
+                        shape = CircleShape,
+                    )
+                    .padding(horizontal = 3.dp, vertical = 1.dp),
             )
         }
 

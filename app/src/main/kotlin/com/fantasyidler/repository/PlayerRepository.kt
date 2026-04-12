@@ -289,6 +289,10 @@ class PlayerRepository @Inject constructor(
         return true
     }
 
+    suspend fun resetProgression() {
+        playerDao.upsert(createDefaultPlayer())
+    }
+
     // ------------------------------------------------------------------
     // Helpers
     // ------------------------------------------------------------------

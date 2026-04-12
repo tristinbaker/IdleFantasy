@@ -67,6 +67,29 @@ object GameStrings {
 
     fun agilityCourse(context: Context, key: String): String =
         context.stringByName("agility_${key}_name") ?: key.toTitleCase()
+
+    fun skillEmoji(key: String): String = when (key) {
+        "mining"      -> "⛏️"
+        "fishing"     -> "🎣"
+        "woodcutting" -> "🪓"
+        "farming"     -> "🌱"
+        "firemaking"  -> "🔥"
+        "agility"     -> "🏃"
+        "smithing"    -> "🔨"
+        "cooking"     -> "🍳"
+        "fletching"   -> "🪶"
+        "crafting"    -> "💍"
+        "runecrafting"-> "🔮"
+        "attack"      -> "⚔️"
+        "strength"    -> "💪"
+        "defense"     -> "🛡️"
+        "ranged"      -> "🎯"
+        "magic"       -> "🪄"
+        "hitpoints"   -> "❤️"
+        "prayer"      -> "🙏"
+        "combat"      -> "⚔️"
+        else          -> "🎮"
+    }
 }
 
 // ---------------------------------------------------------------------------

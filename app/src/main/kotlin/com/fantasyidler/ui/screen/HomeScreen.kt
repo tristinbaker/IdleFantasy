@@ -289,6 +289,7 @@ private fun HomeSessionCard(
         "combat" -> context.getString(R.string.label_combat)
         else     -> GameStrings.skillName(context, session.skillName)
     }
+    val skillEmoji = GameStrings.skillEmoji(session.skillName)
     val activityLabel = session.activityKey
         .replace('_', ' ')
         .replaceFirstChar { it.uppercase() }
@@ -311,7 +312,7 @@ private fun HomeSessionCard(
             Spacer(Modifier.height(4.dp))
             Text(
                 text = buildString {
-                    append(skillLabel)
+                    append("$skillEmoji $skillLabel")
                     if (activityLabel != null) append(" — $activityLabel")
                 },
                 style      = MaterialTheme.typography.titleMedium,

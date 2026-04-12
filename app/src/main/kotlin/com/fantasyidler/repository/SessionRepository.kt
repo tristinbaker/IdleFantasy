@@ -66,6 +66,8 @@ class SessionRepository @Inject constructor(
     /** Delete a completed session after rewards have been applied. */
     suspend fun deleteSession(sessionId: String) = sessionDao.delete(sessionId)
 
+    suspend fun deleteAllSessions() = sessionDao.deleteAll()
+
     suspend fun getRecentCompleted(limit: Int = 20): List<SkillSession> =
         sessionDao.getRecentCompleted(limit)
 

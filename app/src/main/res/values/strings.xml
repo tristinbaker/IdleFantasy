@@ -261,6 +261,14 @@
     <string name="settings_tutorial_desc">Show the introduction again</string>
     <string name="settings_reopen">Reopen</string>
     <string name="settings_foss_desc">Idle Fantasy is free and open source software.</string>
+    <string name="settings_reset_title">Reset Progression</string>
+    <string name="settings_reset_desc">Erase all skills, items, quests, and coins</string>
+    <string name="settings_reset_btn">Reset</string>
+    <string name="reset_confirm1_title">Reset all progression?</string>
+    <string name="reset_confirm1_body">This will erase all skill XP, items, coins, and quest progress. This cannot be undone.</string>
+    <string name="reset_confirm2_title">Are you sure?</string>
+    <string name="reset_confirm2_body">Everything will be lost. You will start over from scratch.</string>
+    <string name="reset_confirm2_btn">Yes, reset everything</string>
 
     <!-- ===== Battery prompt dialog ===== -->
     <string name="battery_prompt_title">Keep sessions running</string>
