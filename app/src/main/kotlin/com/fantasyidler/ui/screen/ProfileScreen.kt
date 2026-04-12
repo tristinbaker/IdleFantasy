@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material3.Button
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -137,9 +138,10 @@ fun ProfileScreen(
                 0 -> SkillsTab(state.skillLevels, state.skillXp, context)
                 1 -> InventoryTab(state.inventory, context)
                 2 -> EquipmentTab(
-                    equipped  = state.equipped,
-                    onSlotTap = viewModel::openSlotPicker,
-                    onUnequip = viewModel::unequip,
+                    equipped     = state.equipped,
+                    onSlotTap    = viewModel::openSlotPicker,
+                    onUnequip    = viewModel::unequip,
+                    onEquipBest  = viewModel::equipBestGear,
                 )
                 3 -> PetsTab(
                     allPets     = viewModel.allPets,
@@ -492,8 +494,19 @@ private fun EquipmentTab(
     equipped: Map<String, String?>,
     onSlotTap: (String) -> Unit,
     onUnequip: (String) -> Unit,
+    onEquipBest: () -> Unit,
 ) {
     LazyColumn(modifier = Modifier.fillMaxSize()) {
+        item {
+            Button(
+                onClick  = onEquipBest,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
+            ) {
+                Text("Equip Best Gear")
+            }
+        }
         item {
             SlotSectionHeader("Combat Gear")
         }

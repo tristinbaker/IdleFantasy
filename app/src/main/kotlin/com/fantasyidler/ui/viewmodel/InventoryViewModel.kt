@@ -94,6 +94,32 @@ class InventoryViewModel @Inject constructor(
         }
     }
 
+    fun equipBestGear() {
+        viewModelScope.launch {
+            val state = uiState.value
+            val equipment = allEquipment
+            val newEquipped = playerRepo.getEquipped().toMutableMap()
+
+            for (slot in EquipSlot.ALL) {
+                val best = state.inventory.keys
+                    .mapNotNull { equipment[it] }
+                    .filter { it.slot == slot }
+                    .maxByOrNull { item ->
+                        when (slot) {
+                            EquipSlot.PICKAXE     -> item.miningEfficiency ?: 0f
+                            EquipSlot.AXE         -> item.woodcuttingEfficiency ?: 0f
+                            EquipSlot.FISHING_ROD -> item.fishingEfficiency ?: 0f
+                            else -> (item.attackBonus + item.strengthBonus + item.defenseBonus).toFloat()
+                        }
+                    }
+
+                if (best != null) newEquipped[slot] = best.name
+            }
+
+            playerRepo.updateEquipped(newEquipped)
+        }
+    }
+
     val allEquipment: Map<String, EquipmentData> get() = gameData.equipment
     val allPets: Map<String, PetData> get() = gameData.pets
 }

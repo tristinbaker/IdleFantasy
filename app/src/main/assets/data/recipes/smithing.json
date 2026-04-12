@@ -1167,7 +1167,7 @@
       "bronze_bar": 2
     },
     "output_quantity": 1,
-    "xp_per_item": 25,
+    "xp_per_item": 10,
     "time_per_item": 60
   },
   "iron_pickaxe": {
@@ -1178,7 +1178,7 @@
       "iron_bar": 2
     },
     "output_quantity": 1,
-    "xp_per_item": 50,
+    "xp_per_item": 20,
     "time_per_item": 60
   },
   "steel_pickaxe": {
@@ -1189,7 +1189,7 @@
       "steel_bar": 2
     },
     "output_quantity": 1,
-    "xp_per_item": 75,
+    "xp_per_item": 30,
     "time_per_item": 60
   },
   "mithril_pickaxe": {
@@ -1200,7 +1200,7 @@
       "mithril_bar": 2
     },
     "output_quantity": 1,
-    "xp_per_item": 129.4,
+    "xp_per_item": 40,
     "time_per_item": 60
   },
   "adamantite_pickaxe": {
@@ -1211,7 +1211,7 @@
       "adamantite_bar": 2
     },
     "output_quantity": 1,
-    "xp_per_item": 172.5,
+    "xp_per_item": 50,
     "time_per_item": 60
   },
   "runite_pickaxe": {
@@ -1222,7 +1222,7 @@
       "runite_bar": 2
     },
     "output_quantity": 1,
-    "xp_per_item": 215.6,
+    "xp_per_item": 60,
     "time_per_item": 60
   },
   "bronze_axe": {
@@ -1233,7 +1233,7 @@
       "bronze_bar": 2
     },
     "output_quantity": 1,
-    "xp_per_item": 25,
+    "xp_per_item": 10,
     "time_per_item": 60
   },
   "iron_axe": {
@@ -1244,7 +1244,7 @@
       "iron_bar": 2
     },
     "output_quantity": 1,
-    "xp_per_item": 50,
+    "xp_per_item": 20,
     "time_per_item": 60
   },
   "steel_axe": {
@@ -1255,7 +1255,7 @@
       "steel_bar": 2
     },
     "output_quantity": 1,
-    "xp_per_item": 75,
+    "xp_per_item": 30,
     "time_per_item": 60
   },
   "mithril_axe": {
@@ -1266,7 +1266,7 @@
       "mithril_bar": 2
     },
     "output_quantity": 1,
-    "xp_per_item": 115.0,
+    "xp_per_item": 40,
     "time_per_item": 60
   },
   "adamantite_axe": {
@@ -1277,7 +1277,7 @@
       "adamantite_bar": 2
     },
     "output_quantity": 1,
-    "xp_per_item": 143.8,
+    "xp_per_item": 50,
     "time_per_item": 60
   },
   "runite_axe": {
@@ -1288,7 +1288,7 @@
       "runite_bar": 2
     },
     "output_quantity": 1,
-    "xp_per_item": 215.6,
+    "xp_per_item": 60,
     "time_per_item": 60
   },
   "bronze_fishing_rod": {
@@ -1299,7 +1299,7 @@
       "bronze_bar": 2
     },
     "output_quantity": 1,
-    "xp_per_item": 25,
+    "xp_per_item": 10,
     "time_per_item": 60
   },
   "iron_fishing_rod": {
@@ -1310,7 +1310,7 @@
       "iron_bar": 2
     },
     "output_quantity": 1,
-    "xp_per_item": 50,
+    "xp_per_item": 20,
     "time_per_item": 60
   },
   "steel_fishing_rod": {
@@ -1321,7 +1321,7 @@
       "steel_bar": 2
     },
     "output_quantity": 1,
-    "xp_per_item": 75,
+    "xp_per_item": 30,
     "time_per_item": 60
   },
   "mithril_fishing_rod": {
@@ -1332,7 +1332,7 @@
       "mithril_bar": 2
     },
     "output_quantity": 1,
-    "xp_per_item": 115.0,
+    "xp_per_item": 40,
     "time_per_item": 60
   },
   "adamantite_fishing_rod": {
@@ -1343,7 +1343,7 @@
       "adamantite_bar": 2
     },
     "output_quantity": 1,
-    "xp_per_item": 143.8,
+    "xp_per_item": 50,
     "time_per_item": 60
   },
   "runite_fishing_rod": {
@@ -1354,7 +1354,7 @@
       "runite_bar": 2
     },
     "output_quantity": 1,
-    "xp_per_item": 215.6,
+    "xp_per_item": 60,
     "time_per_item": 60
   }
 }
