@@ -25,18 +25,18 @@ android {
     }
 
     signingConfigs {
-        create("debugKey") {
-            storeFile     = file("${System.getProperty("user.home")}/.android/debug.keystore")
-            storePassword = "android"
-            keyAlias      = "androiddebugkey"
-            keyPassword   = "android"
+        create("release") {
+            storeFile     = file("${System.getProperty("user.home")}/.android/defide-release.jks")
+            storePassword = System.getenv("DEFIDE_STORE_PASSWORD") ?: ""
+            keyAlias      = "defide"
+            keyPassword   = System.getenv("DEFIDE_KEY_PASSWORD") ?: ""
         }
     }
 
     buildTypes {
         release {
             isMinifyEnabled = true
-            signingConfig   = signingConfigs.getByName("debugKey")
+            signingConfig   = signingConfigs.getByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
