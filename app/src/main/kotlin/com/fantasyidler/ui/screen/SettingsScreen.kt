@@ -16,9 +16,13 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -35,6 +39,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.ui.viewmodel.SettingsViewModel
@@ -47,6 +52,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.app.NotificationManagerCompat
 import com.fantasyidler.BuildConfig
 import com.fantasyidler.R
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -56,11 +62,38 @@ fun SettingsScreen(
     viewModel: SettingsViewModel = hiltViewModel(),
 ) {
     val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    val snackbarHostState = remember { SnackbarHostState() }
 
     var notificationsEnabled by remember { mutableStateOf(false) }
     var isIgnoringBattery by remember { mutableStateOf(false) }
     var showResetConfirm1 by remember { mutableStateOf(false) }
     var showResetConfirm2 by remember { mutableStateOf(false) }
+
+    val exportLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.CreateDocument("application/json")
+    ) { uri ->
+        uri ?: return@rememberLauncherForActivityResult
+        viewModel.exportSave { jsonString ->
+            context.contentResolver.openOutputStream(uri)?.use { it.write(jsonString.toByteArray()) }
+            scope.launch { snackbarHostState.showSnackbar("Save exported") }
+        }
+    }
+
+    val importLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri ->
+        uri ?: return@rememberLauncherForActivityResult
+        val jsonString = context.contentResolver.openInputStream(uri)?.bufferedReader()?.readText()
+            ?: return@rememberLauncherForActivityResult
+        viewModel.importSave(jsonString) { success ->
+            scope.launch {
+                snackbarHostState.showSnackbar(
+                    if (success) "Save imported successfully" else "Failed to import — invalid file"
+                )
+            }
+        }
+    }
 
     LaunchedEffect(Unit) {
         notificationsEnabled = NotificationManagerCompat.from(context).areNotificationsEnabled()
@@ -127,7 +160,8 @@ fun SettingsScreen(
                     }
                 }
             )
-        }
+        },
+        snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -216,6 +250,31 @@ fun SettingsScreen(
                         ),
                     ) {
                         Text(stringResource(R.string.settings_reset_btn))
+                    }
+                }
+            )
+
+            // Save data section
+            HorizontalDivider()
+
+            SectionHeader(title = "Save Data")
+
+            SettingsRow(
+                title    = "Export Save",
+                subtitle = "Save your progress to a file",
+                trailing = {
+                    OutlinedButton(onClick = { exportLauncher.launch("fantasyidler_save.json") }) {
+                        Text("Export")
+                    }
+                }
+            )
+
+            SettingsRow(
+                title    = "Import Save",
+                subtitle = "Restore progress from a file",
+                trailing = {
+                    OutlinedButton(onClick = { importLauncher.launch("*/*") }) {
+                        Text("Import")
                     }
                 }
             )

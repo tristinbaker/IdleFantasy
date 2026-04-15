@@ -19,6 +19,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material3.Button
 import androidx.compose.material3.BottomSheetDefaults
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -53,6 +54,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.R
+import com.fantasyidler.data.json.CookingRecipe
 import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.Achievement
@@ -138,10 +140,18 @@ fun ProfileScreen(
                 0 -> SkillsTab(state.skillLevels, state.skillXp, context)
                 1 -> InventoryTab(state.inventory, context)
                 2 -> EquipmentTab(
-                    equipped     = state.equipped,
-                    onSlotTap    = viewModel::openSlotPicker,
-                    onUnequip    = viewModel::unequip,
-                    onEquipBest  = viewModel::equipBestGear,
+                    equipped       = state.equipped,
+                    inventory      = state.inventory,
+                    equippedFood   = state.equippedFood,
+                    foodHealValues = viewModel.foodHealValues,
+                    cookingRecipes = viewModel.cookingRecipes,
+                    allEquipment   = viewModel.allEquipment,
+                    context        = context,
+                    onSlotTap      = viewModel::openSlotPicker,
+                    onUnequip      = viewModel::unequip,
+                    onEquipBest    = viewModel::equipBestGear,
+                    onEquipFood    = viewModel::equipFood,
+                    onUnequipFood  = viewModel::unequipFood,
                 )
                 3 -> PetsTab(
                     allPets     = viewModel.allPets,
@@ -492,10 +502,25 @@ private fun PetRow(pet: com.fantasyidler.data.json.PetData, owned: Boolean) {
 @Composable
 private fun EquipmentTab(
     equipped: Map<String, String?>,
+    inventory: Map<String, Int>,
+    equippedFood: Map<String, Int>,
+    foodHealValues: Map<String, Int>,
+    cookingRecipes: Map<String, CookingRecipe>,
+    allEquipment: Map<String, com.fantasyidler.data.json.EquipmentData>,
+    context: android.content.Context,
     onSlotTap: (String) -> Unit,
     onUnequip: (String) -> Unit,
     onEquipBest: () -> Unit,
+    onEquipFood: (String) -> Unit,
+    onUnequipFood: (String) -> Unit,
 ) {
+    val cookedItemKeys = remember(cookingRecipes) {
+        cookingRecipes.values.map { it.cookedItem }.toSet()
+    }
+    val foodInInventory = remember(inventory, cookedItemKeys) {
+        inventory.filterKeys { it in cookedItemKeys }.entries.toList()
+    }
+
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         item {
             Button(
@@ -507,20 +532,20 @@ private fun EquipmentTab(
                 Text("Equip Best Gear")
             }
         }
-        item {
-            SlotSectionHeader("Combat Gear")
-        }
+        item { SlotSectionHeader("Combat Gear") }
         items(EquipSlot.COMBAT_SLOTS) { slot ->
+            val xpLabel = if (slot == EquipSlot.WEAPON)
+                weaponXpLabel(allEquipment[equipped[slot]]?.combatStyle)
+            else null
             EquipSlotRow(
                 slotName   = slotDisplayName(slot),
                 itemKey    = equipped[slot],
+                xpLabel    = xpLabel,
                 onTap      = { onSlotTap(slot) },
                 onUnequip  = { onUnequip(slot) },
             )
         }
-        item {
-            SlotSectionHeader("Gathering Tools")
-        }
+        item { SlotSectionHeader("Gathering Tools") }
         items(EquipSlot.TOOL_SLOTS) { slot ->
             EquipSlotRow(
                 slotName   = slotDisplayName(slot),
@@ -529,8 +554,72 @@ private fun EquipmentTab(
                 onUnequip  = { onUnequip(slot) },
             )
         }
+        item { SlotSectionHeader("Food (Dungeon)") }
+        if (foodInInventory.isEmpty()) {
+            item {
+                Text(
+                    text     = "No cooked food in inventory",
+                    style    = MaterialTheme.typography.bodySmall,
+                    color    = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                )
+            }
+        } else {
+            items(foodInInventory, key = { "food_${it.key}" }) { (key, qty) ->
+                FoodRow(
+                    itemKey    = key,
+                    qty        = qty,
+                    healValue  = foodHealValues[key] ?: 0,
+                    isEquipped = key in equippedFood,
+                    context    = context,
+                    onEquip    = { onEquipFood(key) },
+                    onUnequip  = { onUnequipFood(key) },
+                )
+            }
+        }
         item { Spacer(Modifier.height(16.dp)) }
     }
+}
+
+@Composable
+private fun FoodRow(
+    itemKey: String,
+    qty: Int,
+    healValue: Int,
+    isEquipped: Boolean,
+    context: android.content.Context,
+    onEquip: () -> Unit,
+    onUnequip: () -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 16.dp, end = 4.dp, top = 4.dp, bottom = 4.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Column(Modifier.weight(1f)) {
+            Text(
+                text       = GameStrings.itemName(context, itemKey),
+                style      = MaterialTheme.typography.bodyMedium,
+                fontWeight = FontWeight.Medium,
+            )
+            Text(
+                text  = "×$qty  •  heals $healValue HP",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+        if (isEquipped) {
+            TextButton(onClick = onUnequip) {
+                Text("Unequip", color = MaterialTheme.colorScheme.error)
+            }
+        } else {
+            TextButton(onClick = onEquip) {
+                Text("Equip", color = GoldPrimary)
+            }
+        }
+    }
+    HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
 }
 
 @Composable
@@ -550,6 +639,7 @@ private fun SlotSectionHeader(title: String) {
 private fun EquipSlotRow(
     slotName: String,
     itemKey: String?,
+    xpLabel: String? = null,
     onTap: () -> Unit,
     onUnequip: () -> Unit,
 ) {
@@ -567,14 +657,16 @@ private fun EquipSlotRow(
             modifier = Modifier.width(100.dp),
         )
         if (itemKey != null) {
+            val baseName = itemKey.replace('_', ' ').split(' ')
+                .joinToString(" ") { it.replaceFirstChar(Char::uppercase) }
+            val displayName = if (xpLabel != null) "$baseName ($xpLabel)" else baseName
             Text(
-                text     = itemKey.replace('_', ' ').split(' ')
-                    .joinToString(" ") { it.replaceFirstChar(Char::uppercase) },
-                style    = MaterialTheme.typography.bodyMedium,
+                text       = displayName,
+                style      = MaterialTheme.typography.bodyMedium,
                 fontWeight = FontWeight.Medium,
-                modifier = Modifier.weight(1f),
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
+                modifier   = Modifier.weight(1f),
+                maxLines   = 1,
+                overflow   = TextOverflow.Ellipsis,
             )
             IconButton(onClick = onUnequip) {
                 Icon(
@@ -637,6 +729,11 @@ private fun EquipPickerSheet(
             candidates.sortedWith(
                 compareBy({ it.requirements.values.maxOrNull() ?: 0 }, { it.name })
             ).forEach { item ->
+                val xpLabel = weaponXpLabel(item.combatStyle).takeIf { item.slot == EquipSlot.WEAPON }
+                val displayName = buildString {
+                    append(GameStrings.itemName(context, item.name))
+                    if (xpLabel != null) append(" ($xpLabel)")
+                }
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -647,7 +744,7 @@ private fun EquipPickerSheet(
                 ) {
                     Column {
                         Text(
-                            GameStrings.itemName(context, item.name),
+                            displayName,
                             style = MaterialTheme.typography.bodyLarge,
                         )
                         val detail = buildEquipDetail(item)
@@ -669,6 +766,14 @@ private fun EquipPickerSheet(
             }
         }
     }
+}
+
+private fun weaponXpLabel(combatStyle: String?): String? = when (combatStyle) {
+    "attack"   -> "Atk"
+    "strength" -> "Str"
+    "ranged"   -> "Ranged"
+    "magic"    -> "Magic"
+    else       -> null
 }
 
 private fun buildEquipDetail(item: com.fantasyidler.data.json.EquipmentData): String {

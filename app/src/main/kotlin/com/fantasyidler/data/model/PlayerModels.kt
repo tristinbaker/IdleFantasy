@@ -15,12 +15,27 @@ data class PlayerFlags(
     @SerialName("equipped_runes") val equippedRunes: String? = null,
     @SerialName("active_spell") val activeSpell: String? = null,
     @SerialName("battery_prompt_shown") val batteryPromptShown: Boolean = false,
+    /** Epoch ms when the 2× XP boost expires; 0 = not active. */
+    @SerialName("xp_boost_expires_at") val xpBoostExpiresAt: Long = 0L,
 )
 
 @Serializable
 data class OwnedPet(
     val id: String,
     @SerialName("boost_percent") val boostPercent: Int = 0,
+)
+
+/** Portable save file written by export and read by import. */
+@Serializable
+data class PlayerExport(
+    val skillLevels: String,
+    val skillXp: String,
+    val inventory: String,
+    val equipped: String,
+    val flags: String,
+    val pets: String,
+    val coins: Long,
+    val questProgress: List<QuestProgress> = emptyList(),
 )
 
 // ---------------------------------------------------------------------------

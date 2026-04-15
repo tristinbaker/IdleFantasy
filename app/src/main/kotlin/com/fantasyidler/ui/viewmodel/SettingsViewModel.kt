@@ -23,4 +23,21 @@ class SettingsViewModel @Inject constructor(
             playerRepo.resetProgression()
         }
     }
+
+    fun exportSave(onReady: (String) -> Unit) {
+        viewModelScope.launch {
+            onReady(playerRepo.exportSave())
+        }
+    }
+
+    fun importSave(jsonString: String, onDone: (success: Boolean) -> Unit) {
+        viewModelScope.launch {
+            try {
+                playerRepo.importSave(jsonString)
+                onDone(true)
+            } catch (_: Exception) {
+                onDone(false)
+            }
+        }
+    }
 }

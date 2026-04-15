@@ -1,6 +1,7 @@
 package com.fantasyidler.repository
 
 import com.fantasyidler.data.db.dao.PlayerDao
+import com.fantasyidler.data.db.dao.QuestProgressDao
 import com.fantasyidler.data.model.*
 import com.fantasyidler.simulator.XpTable
 import kotlinx.coroutines.flow.Flow
@@ -22,6 +23,7 @@ private inline fun <reified T> Json.encode(value: T): String =
 @Singleton
 class PlayerRepository @Inject constructor(
     private val playerDao: PlayerDao,
+    private val questProgressDao: QuestProgressDao,
     private val json: Json,
 ) {
     /**
@@ -60,20 +62,24 @@ class PlayerRepository @Inject constructor(
     // ------------------------------------------------------------------
 
     /**
-     * Apply completed session results to the player: add XP, recalculate level,
-     * and merge loot into inventory.
+     * Apply completed session results to the player: add XP (doubled if boost active),
+     * recalculate level, and merge loot into inventory.
      */
     suspend fun applySessionResults(
         skillName: String,
         xpGained: Long,
         itemsGained: Map<String, Int>,
     ) {
-        val player = getOrCreatePlayer()
+        val player    = getOrCreatePlayer()
+        val flags: PlayerFlags = json.decodeFromString(player.flags)
+        val boostActive = flags.xpBoostExpiresAt > System.currentTimeMillis()
+        val boostedXp = if (boostActive) xpGained * 2 else xpGained
+
         val levels: MutableMap<String, Int>  = json.decodeFromString(player.skillLevels)
         val xpMap: MutableMap<String, Long>  = json.decodeFromString(player.skillXp)
         val inventory: MutableMap<String, Int> = json.decodeFromString(player.inventory)
 
-        val newXp = (xpMap[skillName] ?: 0L) + xpGained
+        val newXp = (xpMap[skillName] ?: 0L) + boostedXp
         xpMap[skillName] = newXp
         levels[skillName] = XpTable.levelForXp(newXp)
 
@@ -170,8 +176,8 @@ class PlayerRepository @Inject constructor(
     }
 
     /**
-     * Apply combat session results: XP distributed across multiple skills,
-     * loot added to inventory, coins added to the coins field.
+     * Apply combat session results: XP distributed across multiple skills (doubled if
+     * boost active), loot added to inventory, coins added to the coins field.
      */
     suspend fun applyMultiSkillResults(
         xpPerSkill: Map<String, Long>,
@@ -179,12 +185,16 @@ class PlayerRepository @Inject constructor(
         coinsGained: Long = 0L,
     ) {
         val player    = getOrCreatePlayer()
+        val flags: PlayerFlags = json.decodeFromString(player.flags)
+        val boostActive = flags.xpBoostExpiresAt > System.currentTimeMillis()
+        val boostMult = if (boostActive) 2L else 1L
+
         val levels:    MutableMap<String, Int>  = json.decodeFromString(player.skillLevels)
         val xpMap:     MutableMap<String, Long> = json.decodeFromString(player.skillXp)
         val inventory: MutableMap<String, Int>  = json.decodeFromString(player.inventory)
 
         for ((skill, xp) in xpPerSkill) {
-            val newXp = (xpMap[skill] ?: 0L) + xp
+            val newXp = (xpMap[skill] ?: 0L) + xp * boostMult
             xpMap[skill]   = newXp
             levels[skill]  = XpTable.levelForXp(newXp)
         }
@@ -200,6 +210,34 @@ class PlayerRepository @Inject constructor(
                 coins       = player.coins + coinsGained,
             )
         )
+    }
+
+    /**
+     * Activates or extends the 2× XP boost for [durationMs] × [qty] milliseconds.
+     * Deducts [XP_BOOST_COST] × [qty] coins. Returns false if not enough coins.
+     */
+    suspend fun activateXpBoost(durationMs: Long, qty: Int = 1): Boolean {
+        val totalCost = XP_BOOST_COST * qty
+        val player    = getOrCreatePlayer()
+        if (player.coins < totalCost) return false
+
+        val flags: PlayerFlags = json.decodeFromString(player.flags)
+        val now        = System.currentTimeMillis()
+        val currentEnd = if (flags.xpBoostExpiresAt > now) flags.xpBoostExpiresAt else now
+        val newExpiry  = currentEnd + durationMs * qty
+
+        playerDao.upsert(
+            player.copy(
+                coins = player.coins - totalCost,
+                flags = json.encode<PlayerFlags>(flags.copy(xpBoostExpiresAt = newExpiry)),
+            )
+        )
+        return true
+    }
+
+    companion object {
+        const val XP_BOOST_COST = 250_000L
+        const val XP_BOOST_DURATION_MS = 48 * 3_600_000L   // 48 hours
     }
 
     /**
@@ -287,6 +325,42 @@ class PlayerRepository @Inject constructor(
         }
         playerDao.upsert(player.copy(inventory = json.encode<Map<String, Int>>(inventory)))
         return true
+    }
+
+    /** Returns a JSON string capturing the full player save including quest progress. */
+    suspend fun exportSave(): String {
+        val player = getOrCreatePlayer()
+        return json.encode<PlayerExport>(
+            PlayerExport(
+                skillLevels   = player.skillLevels,
+                skillXp       = player.skillXp,
+                inventory     = player.inventory,
+                equipped      = player.equipped,
+                flags         = player.flags,
+                pets          = player.pets,
+                coins         = player.coins,
+                questProgress = questProgressDao.getAllProgress(),
+            )
+        )
+    }
+
+    /** Overwrites the current save with data from a previously exported JSON string. */
+    suspend fun importSave(jsonString: String) {
+        val export = json.decodeFromString<PlayerExport>(jsonString)
+        val player = getOrCreatePlayer()
+        playerDao.upsert(
+            player.copy(
+                skillLevels = export.skillLevels,
+                skillXp     = export.skillXp,
+                inventory   = export.inventory,
+                equipped    = export.equipped,
+                flags       = export.flags,
+                pets        = export.pets,
+                coins       = export.coins,
+            )
+        )
+        questProgressDao.deleteAll()
+        export.questProgress.forEach { questProgressDao.upsert(it) }
     }
 
     suspend fun resetProgression() {

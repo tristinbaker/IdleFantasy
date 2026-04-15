@@ -2,9 +2,11 @@ package com.fantasyidler.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fantasyidler.data.json.CookingRecipe
 import com.fantasyidler.data.json.EquipmentData
 import com.fantasyidler.data.json.PetData
 import com.fantasyidler.data.model.EquipSlot
+import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
@@ -39,6 +41,8 @@ class InventoryViewModel @Inject constructor(
         /** Non-null while the equip-picker sheet is open. */
         val pickingSlot: String? = null,
         val isLoading: Boolean = true,
+        /** Food items marked for dungeon use (key = item key, value = ignored). */
+        val equippedFood: Map<String, Int> = emptyMap(),
     ) {
         val totalLevel: Int get() = skillLevels.values.sum()
 
@@ -58,6 +62,7 @@ class InventoryViewModel @Inject constructor(
         } else {
             val inventory: Map<String, Int> = json.decodeFromString(player.inventory)
             val pets: List<com.fantasyidler.data.model.OwnedPet> = json.decodeFromString(player.pets)
+            val flags: PlayerFlags = json.decodeFromString(player.flags)
             extra.copy(
                 coins       = player.coins,
                 inventory   = inventory.entries
@@ -67,6 +72,7 @@ class InventoryViewModel @Inject constructor(
                 skillXp     = json.decodeFromString(player.skillXp),
                 equipped    = json.decodeFromString(player.equipped),
                 ownedPetIds = pets.map { it.id }.toSet(),
+                equippedFood = flags.equippedFood,
                 isLoading   = false,
             )
         }
@@ -120,8 +126,24 @@ class InventoryViewModel @Inject constructor(
         }
     }
 
+    fun equipFood(itemKey: String) {
+        viewModelScope.launch {
+            val flags = playerRepo.getFlags()
+            playerRepo.updateFlags(flags.copy(equippedFood = flags.equippedFood + (itemKey to 1)))
+        }
+    }
+
+    fun unequipFood(itemKey: String) {
+        viewModelScope.launch {
+            val flags = playerRepo.getFlags()
+            playerRepo.updateFlags(flags.copy(equippedFood = flags.equippedFood - itemKey))
+        }
+    }
+
     val allEquipment: Map<String, EquipmentData> get() = gameData.equipment
     val allPets: Map<String, PetData> get() = gameData.pets
+    val cookingRecipes: Map<String, CookingRecipe> get() = gameData.cookingRecipes
+    val foodHealValues: Map<String, Int> get() = gameData.foodHealValues
 }
 
 /** Ordered list of all skills for display (gathering → crafting → combat). */

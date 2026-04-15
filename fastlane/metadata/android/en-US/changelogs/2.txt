@@ -1,0 +1,5 @@
+• Save data export and import in Settings — back up your progress to a file and restore it at any time
+• Equip Best Gear button automatically equips the strongest items in your inventory
+• Skill emojis throughout the UI
+• Combat improvements and rebalancing
+• Reset Progression option in Settings
