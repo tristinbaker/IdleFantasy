@@ -8,6 +8,7 @@ import com.fantasyidler.data.json.EquipmentData
 import com.fantasyidler.data.json.SpellData
 import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.OwnedPet
+import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.data.model.SessionFrame
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.Skills
@@ -186,6 +187,12 @@ class CombatViewModel @Inject constructor(
                     }
                 }
 
+                // Food: use whatever equipped food items exist in inventory
+                val flags: PlayerFlags = json.decodeFromString(player.flags)
+                val equippedFoodKeys   = flags.equippedFood.keys
+                val availableFood      = inventory.filterKeys { it in equippedFoodKeys }
+                val foodHealValues     = gameData.foodHealValues
+
                 val result = CombatSimulator.simulateDungeon(
                     dungeon             = dungeon,
                     enemies             = gameData.enemies,
@@ -202,6 +209,8 @@ class CombatViewModel @Inject constructor(
                     spellMaxHit         = selectedSpell?.maxHit    ?: 0,
                     agilityLevel        = levels[Skills.AGILITY]   ?: 1,
                     petBoostPct         = petBoostFor(player.pets),
+                    equippedFood        = availableFood,
+                    foodHealValues      = foodHealValues,
                 )
 
                 val totalKills = result.frames.sumOf { it.kills }
@@ -227,16 +236,9 @@ class CombatViewModel @Inject constructor(
                     }
                 }
 
-                // Mark death if player is below recommended level (within entry tolerance)
-                val playerCombatLevel = combatLevelFrom(levels)
-                val playerDied = playerCombatLevel < dungeon.recommendedLevel
-                val finalFrames = if (playerDied) {
-                    result.frames.mapIndexed { i, f -> if (i == 0) f.copy(died = true) else f }
-                } else result.frames
-
                 val framesJson = json.encodeToString(
                     json.serializersModule.serializer<List<SessionFrame>>(),
-                    finalFrames,
+                    result.frames,
                 )
                 sessionRepo.startSession(
                     skillName        = "combat",
@@ -366,21 +368,17 @@ class CombatViewModel @Inject constructor(
 
     private suspend fun collectDungeonSession(session: com.fantasyidler.data.model.SkillSession) {
         val frames: List<SessionFrame> = json.decodeFromString(session.frames)
-        val playerDied = frames.firstOrNull()?.died == true
+        val playerDied = frames.any { it.died }
 
         val totalXpPerSkill = mutableMapOf<String, Long>()
         val allItems        = mutableMapOf<String, Int>()
         val allKillsByEnemy = mutableMapOf<String, Int>()
+        val allFoodConsumed = mutableMapOf<String, Int>()
         for (frame in frames) {
-            for ((skill, xp) in frame.xpBySkill) {
-                totalXpPerSkill[skill] = (totalXpPerSkill[skill] ?: 0L) + xp
-            }
-            for ((item, qty) in frame.items) {
-                allItems[item] = (allItems[item] ?: 0) + qty
-            }
-            for ((enemy, kills) in frame.killsByEnemy) {
-                allKillsByEnemy[enemy] = (allKillsByEnemy[enemy] ?: 0) + kills
-            }
+            for ((skill, xp) in frame.xpBySkill)  totalXpPerSkill[skill] = (totalXpPerSkill[skill] ?: 0L) + xp
+            for ((item, qty) in frame.items)       allItems[item]         = (allItems[item] ?: 0) + qty
+            for ((enemy, kills) in frame.killsByEnemy) allKillsByEnemy[enemy] = (allKillsByEnemy[enemy] ?: 0) + kills
+            for ((food, qty) in frame.foodConsumed) allFoodConsumed[food] = (allFoodConsumed[food] ?: 0) + qty
         }
 
         // On death, scale everything down to 10%
@@ -396,7 +394,12 @@ class CombatViewModel @Inject constructor(
         val dungeon = gameData.dungeons[session.activityKey]
 
         playerRepo.applyMultiSkillResults(totalXpPerSkill, allItems, coinsGained)
-        if (!playerDied) questRepo.recordCombat(session.activityKey, allKillsByEnemy, allItems)
+        // Consume food from inventory (best effort)
+        if (allFoodConsumed.isNotEmpty()) playerRepo.consumeItems(allFoodConsumed)
+        if (!playerDied) {
+            val combatStyle = detectCombatStyle(totalXpPerSkill)
+            questRepo.recordCombat(session.activityKey, allKillsByEnemy, allItems, combatStyle)
+        }
         sessionRepo.deleteSession(session.sessionId)
 
         _extra.update {

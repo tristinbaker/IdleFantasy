@@ -33,4 +33,6 @@ data class SessionFrame(
     @SerialName("kills_by_enemy") val killsByEnemy: Map<String, Int> = emptyMap(),
     /** Combat only — true when the player died (underleveled dungeon or boss loss). */
     val died: Boolean = false,
+    /** Combat only — food items consumed this minute (item key → quantity eaten). */
+    @SerialName("food_consumed") val foodConsumed: Map<String, Int> = emptyMap(),
 )

@@ -68,14 +68,16 @@ class QuestRepository @Inject constructor(
     /**
      * Called when a combat session is collected.
      *
-     * [dungeonKey] = e.g. "goblin_cave"
+     * [dungeonKey]  = e.g. "goblin_cave"
      * [killsByEnemy] = map of enemyKey -> count killed
-     * [loot] = all items received
+     * [loot]        = all items received
+     * [combatStyle] = "melee" | "ranged" | "magic" (derived from XP distribution)
      */
     suspend fun recordCombat(
         dungeonKey: String,
         killsByEnemy: Map<String, Int>,
         loot: Map<String, Int>,
+        combatStyle: String = "",
     ) {
         val totalKills = killsByEnemy.values.sum()
 
@@ -91,8 +93,22 @@ class QuestRepository @Inject constructor(
                 "dungeon" -> {
                     if (quest.target == dungeonKey) addProgress(questId, quest.amount, 1)
                 }
-                // collect, dungeon_melee_only, dungeon_ranged_only, dungeon_magic_only,
-                // dungeon_no_food — not yet tracked; progress stays at 0
+                "dungeon_melee_only" -> {
+                    if (quest.target == dungeonKey && combatStyle == "melee")
+                        addProgress(questId, quest.amount, 1)
+                }
+                "dungeon_ranged_only" -> {
+                    if (quest.target == dungeonKey && combatStyle == "ranged")
+                        addProgress(questId, quest.amount, 1)
+                }
+                "dungeon_magic_only" -> {
+                    if (quest.target == dungeonKey && combatStyle == "magic")
+                        addProgress(questId, quest.amount, 1)
+                }
+                "collect" -> {
+                    val count = loot[quest.target] ?: continue
+                    if (count > 0) addProgress(questId, quest.amount, count)
+                }
             }
         }
     }

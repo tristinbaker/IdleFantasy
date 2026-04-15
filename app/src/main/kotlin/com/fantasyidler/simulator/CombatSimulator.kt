@@ -10,24 +10,28 @@ import kotlin.random.Random
 /**
  * Pre-simulates all 60 frames of a dungeon combat session.
  *
- * The player is assumed to survive the full session (idle-game simplification).
- * XP is distributed per-skill and stored in each [SessionFrame.xpBySkill], so
- * the collect step can apply rewards to multiple combat skills at once.
+ * Tracks player HP throughout the session. If the player runs out of HP they die.
+ * Food items (keyed in [equippedFood]) are consumed from inventory when HP drops
+ * below 50 % of max HP. XP is distributed per-skill and stored in each
+ * [SessionFrame.xpBySkill] so the collect step can apply rewards to multiple
+ * combat skills at once.
  */
 object CombatSimulator {
 
     /**
-     * @param dungeon           the dungeon definition (spawn table, etc.)
-     * @param enemies           full enemy map from GameDataRepository
-     * @param playerAttack      player's attack level
-     * @param playerStrength    player's strength level
-     * @param playerDefence     player's defence level
-     * @param playerHp          player's hitpoints level (unused in simulation for now)
-     * @param weaponAttackBonus equipment attack bonus from equipped weapon
+     * @param dungeon             the dungeon definition (spawn table, etc.)
+     * @param enemies             full enemy map from GameDataRepository
+     * @param playerAttack        player's attack level
+     * @param playerStrength      player's strength level
+     * @param playerDefence       player's defence level
+     * @param playerHp            player's hitpoints level (×10 = max HP)
+     * @param weaponAttackBonus   equipment attack bonus from equipped weapon
      * @param weaponStrengthBonus equipment strength bonus from equipped weapon
-     * @param combatStyle       "melee" | "ranged" | "magic"
-     * @param agilityLevel      for session duration reduction (same as gathering)
-     * @param petBoostPct       XP boost % from an equipped combat pet (0 = none)
+     * @param combatStyle         "melee" | "ranged" | "magic"
+     * @param agilityLevel        for session duration reduction (same as gathering)
+     * @param petBoostPct         XP boost % from an equipped combat pet (0 = none)
+     * @param equippedFood        food key → available quantity the player has brought
+     * @param foodHealValues      food key → HP healed per eat
      */
     fun simulateDungeon(
         dungeon: DungeonData,
@@ -45,6 +49,8 @@ object CombatSimulator {
         spellMaxHit: Int = 0,
         agilityLevel: Int = 1,
         petBoostPct: Int = 0,
+        equippedFood: Map<String, Int> = emptyMap(),
+        foodHealValues: Map<String, Int> = emptyMap(),
     ): SkillSimulator.Result {
         val frames = mutableListOf<SessionFrame>()
 
@@ -53,12 +59,24 @@ object CombatSimulator {
             List(spawn.weight) { spawn.enemy }
         }.ifEmpty { return SkillSimulator.Result(emptyList(), SkillSimulator.sessionDurationMs(agilityLevel)) }
 
+        // HP tracking
+        val maxHp = playerHp * 10
+        var currentHp = maxHp
+
+        // Mutable food supply sorted best-heal-first
+        val foodSupply = equippedFood.toMutableMap()
+        val foodOrder: List<String> = foodHealValues.entries
+            .filter { (k, _) -> k in foodSupply }
+            .sortedByDescending { it.value }
+            .map { it.key }
+
         var runningTotal = 0L
 
         for (minute in 1..60) {
             val frameItems      = mutableMapOf<String, Int>()
             val frameXpBySkill  = mutableMapOf<String, Long>()
             var frameXp         = 0L
+            val frameFood       = mutableMapOf<String, Int>()
 
             // Pick a random enemy for this minute's encounters
             val enemyKey = spawnPool[Random.nextInt(spawnPool.size)]
@@ -100,6 +118,23 @@ object CombatSimulator {
                 frameXp += xp
             }
 
+            // ------------------------------------------------------------------
+            // HP simulation: player takes damage this minute and eats food
+            // ------------------------------------------------------------------
+            val damageTaken = calculateDamageTaken(enemy, playerDefence)
+            currentHp -= damageTaken
+
+            // Eat food while below 50 % of max HP (and food remains)
+            while (currentHp < maxHp / 2) {
+                val foodKey = foodOrder.firstOrNull { (foodSupply[it] ?: 0) > 0 } ?: break
+                val heal    = foodHealValues[foodKey] ?: break
+                currentHp  = (currentHp + heal).coerceAtMost(maxHp)
+                foodSupply[foodKey] = (foodSupply[foodKey] ?: 0) - 1
+                frameFood[foodKey]  = (frameFood[foodKey] ?: 0) + 1
+            }
+
+            val diedThisMinute = currentHp <= 0
+
             frames.add(
                 SessionFrame(
                     minute        = minute,
@@ -112,9 +147,13 @@ object CombatSimulator {
                     xpBySkill     = frameXpBySkill,
                     kills         = kills,
                     killsByEnemy  = if (kills > 0) mapOf(enemyKey to kills) else emptyMap(),
+                    died          = diedThisMinute,
+                    foodConsumed  = frameFood,
                 )
             )
             runningTotal += frameXp
+
+            if (diedThisMinute) break   // stop simulation on death
         }
 
         return SkillSimulator.Result(frames, SkillSimulator.sessionDurationMs(agilityLevel))
@@ -183,6 +222,29 @@ object CombatSimulator {
         // Stochastic rounding: floor + fractional probability of +1
         val base = kpm.toInt().coerceAtLeast(0)
         return base + if (Random.nextDouble() < (kpm - base)) 1 else 0
+    }
+
+    /**
+     * Calculates the expected HP damage the player takes per minute from [enemy].
+     *
+     * Enemy DPS is computed using OSRS-inspired formula; the player's defence level
+     * reduces the enemy's hit chance.
+     */
+    private fun calculateDamageTaken(enemy: EnemyData, playerDefence: Int): Int {
+        val enemyEffStr    = enemy.combatStats.strengthLevel + enemy.combatStats.strengthBonus
+        val enemyMaxHit    = max(1, 1 + enemyEffStr * (enemy.combatStats.strengthBonus + 64) / 640)
+        val enemyEffAtk    = enemy.combatStats.attackLevel + enemy.combatStats.attackBonus
+        val enemyHitChance = when {
+            enemyEffAtk > playerDefence ->
+                1.0 - playerDefence / (2.0 * enemyEffAtk.coerceAtLeast(1))
+            else ->
+                enemyEffAtk / (2.0 * playerDefence.coerceAtLeast(1))
+        }.coerceIn(0.10, 0.95)
+
+        val enemyAvgDamage = (enemyMaxHit / 2.0) * enemyHitChance
+        val expectedDmg    = enemyAvgDamage / ATTACK_SPEED_SEC * 60.0
+        val base           = expectedDmg.toInt()
+        return base + if (Random.nextDouble() < (expectedDmg - base)) 1 else 0
     }
 
     /**

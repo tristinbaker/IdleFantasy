@@ -185,6 +185,38 @@ class GameDataRepository @Inject constructor(
         raw.mapValues { (key, spell) -> spell.copy(name = key) }
     }
 
+    // ------------------------------------------------------------------ food
+
+    /** Maps cooked-item key → HP healed per eat (from cooking recipes). */
+    val foodHealValues: Map<String, Int> by lazy {
+        cookingRecipes.values.associate { it.cookedItem to it.healingValue }
+    }
+
+    // ------------------------------------------------------------------ sell helpers
+
+    /**
+     * Set of all item keys that have a gameplay use (equipment, food, raw materials,
+     * recipe inputs/outputs, bones, currencies, quest-collect targets).
+     * Items NOT in this set are considered junk and can be sold in bulk.
+     */
+    val usefulItemKeys: Set<String> by lazy {
+        buildSet {
+            addAll(equipment.keys)
+            cookingRecipes.values.forEach { r -> add(r.rawItem); add(r.cookedItem) }
+            smithingRecipes.forEach { (k, r) -> add(k); addAll(r.materials.keys) }
+            fletchingRecipes.forEach { (k, r) -> add(k); addAll(r.materials.keys) }
+            craftingRecipes.forEach { (k, r) -> add(k); addAll(r.materials.keys) }
+            addAll(ores.keys)
+            addAll(gems.keys)
+            addAll(logs.keys)
+            addAll(bones.keys)
+            add("coins")
+            add("rune_essence")
+            // Quest collect targets should not be auto-sold
+            quests.values.filter { it.type == "collect" }.forEach { add(it.target) }
+        }
+    }
+
     // ------------------------------------------------------------------ helpers
 
     /**

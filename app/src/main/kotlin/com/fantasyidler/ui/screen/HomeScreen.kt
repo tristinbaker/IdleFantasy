@@ -58,6 +58,7 @@ import com.fantasyidler.R
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.HomeViewModel
+import com.fantasyidler.ui.viewmodel.SessionSummary
 import com.fantasyidler.ui.viewmodel.combatLevelFrom
 import com.fantasyidler.ui.viewmodel.totalLevelFrom
 import com.fantasyidler.util.GameStrings
@@ -92,6 +93,70 @@ fun HomeScreen(
                 showBatteryDialog = true
             }
         }
+    }
+
+    // Session summary dialog
+    state.sessionSummary?.let { summary ->
+        AlertDialog(
+            onDismissRequest = viewModel::summaryConsumed,
+            title = {
+                Text(
+                    text       = summary.title,
+                    fontWeight = FontWeight.Bold,
+                )
+            },
+            text = {
+                Column(
+                    modifier            = Modifier.verticalScroll(rememberScrollState()),
+                    verticalArrangement = Arrangement.spacedBy(4.dp),
+                ) {
+                    if (summary.died) {
+                        Text(
+                            text  = "You died and lost most of your gains.",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.error,
+                        )
+                        Spacer(Modifier.height(4.dp))
+                    }
+                    if (summary.boostWasActive) {
+                        Text(
+                            text  = "2× XP Boost was active",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.primary,
+                            fontWeight = FontWeight.Bold,
+                        )
+                        Spacer(Modifier.height(4.dp))
+                    }
+                    if (summary.xpLines.isNotEmpty()) {
+                        SummarySection("XP Gained")
+                        summary.xpLines.forEach { (skill, label) -> SummaryRow(skill, label) }
+                    } else if (summary.totalXpLabel.isNotEmpty()) {
+                        SummaryRow("XP Gained", summary.totalXpLabel)
+                    }
+                    if (summary.killLines.isNotEmpty()) {
+                        Spacer(Modifier.height(4.dp))
+                        SummarySection("Kills")
+                        summary.killLines.forEach { (enemy, kills) -> SummaryRow(enemy, kills) }
+                    }
+                    if (summary.itemLines.isNotEmpty()) {
+                        Spacer(Modifier.height(4.dp))
+                        SummarySection("Loot")
+                        summary.itemLines.forEach { (item, qty) -> SummaryRow(item, qty) }
+                    }
+                    if (summary.coinsGained > 0) {
+                        SummaryRow("Coins", "+${summary.coinsGained.formatCoins()}")
+                    }
+                    if (summary.boneBuriedLabel.isNotEmpty()) {
+                        SummaryRow("Bones buried", summary.boneBuriedLabel)
+                    }
+                }
+            },
+            confirmButton = {
+                Button(onClick = viewModel::summaryConsumed) {
+                    Text("Close")
+                }
+            },
+        )
     }
 
     if (showBatteryDialog) {
@@ -360,6 +425,30 @@ private fun HomeSessionCard(
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
+
+@Composable
+private fun SummarySection(title: String) {
+    Text(
+        text  = title,
+        style = MaterialTheme.typography.labelMedium,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+    )
+}
+
+@Composable
+private fun SummaryRow(label: String, value: String) {
+    Row(
+        modifier              = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+    ) {
+        Text(label, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.weight(1f))
+        Text(
+            text       = value,
+            style      = MaterialTheme.typography.bodyMedium,
+            fontWeight = FontWeight.SemiBold,
+        )
+    }
+}
 
 @Composable
 private fun StatItem(

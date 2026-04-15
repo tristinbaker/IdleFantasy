@@ -109,15 +109,18 @@ fun ShopScreen(
 
             when (subTab) {
                 0 -> BuyList(
-                    entries = viewModel.buyEntries,
-                    coins   = state.coins,
-                    onBuy   = viewModel::openBuy,
+                    entries       = viewModel.buyEntries,
+                    coins         = state.coins,
+                    xpBoostActive = state.xpBoostActive,
+                    onBuy         = viewModel::openBuy,
                 )
                 else -> SellList(
-                    inventory = state.inventory,
-                    context   = context,
-                    priceFor  = viewModel::sellPriceFor,
-                    onSell    = { key -> viewModel.openSell(key, GameStrings.itemName(context, key)) },
+                    inventory          = state.inventory,
+                    context            = context,
+                    priceFor           = viewModel::sellPriceFor,
+                    onSell             = { key -> viewModel.openSell(key, GameStrings.itemName(context, key)) },
+                    onSellJunk         = viewModel::sellJunk,
+                    onSellOldEquipment = viewModel::sellOldEquipment,
                 )
             }
         }
@@ -150,6 +153,7 @@ fun ShopScreen(
 private fun BuyList(
     entries: List<ShopEntry>,
     coins: Long,
+    xpBoostActive: Boolean,
     onBuy: (ShopEntry) -> Unit,
 ) {
     val grouped = remember(entries) { entries.groupBy { it.categoryName } }
@@ -158,7 +162,8 @@ private fun BuyList(
         grouped.forEach { (category, categoryEntries) ->
             item(key = "hdr_$category") { ShopSectionHeader(category) }
             items(categoryEntries, key = { it.key }) { entry ->
-                val canAfford = coins >= entry.price
+                val canAfford  = coins >= entry.price
+                val isXpBoost  = entry.key == ShopViewModel.XP_BOOST_KEY
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -167,13 +172,24 @@ private fun BuyList(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Column(Modifier.weight(1f)) {
-                        Text(
-                            text       = entry.displayName,
-                            style      = MaterialTheme.typography.bodyLarge,
-                            fontWeight = FontWeight.Medium,
-                            color      = if (canAfford) MaterialTheme.colorScheme.onSurface
-                                         else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f),
-                        )
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Text(
+                                text       = entry.displayName,
+                                style      = MaterialTheme.typography.bodyLarge,
+                                fontWeight = FontWeight.Medium,
+                                color      = if (canAfford) MaterialTheme.colorScheme.onSurface
+                                             else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f),
+                            )
+                            if (isXpBoost && xpBoostActive) {
+                                Spacer(Modifier.width(6.dp))
+                                Text(
+                                    text       = "ACTIVE",
+                                    style      = MaterialTheme.typography.labelSmall,
+                                    fontWeight = FontWeight.Bold,
+                                    color      = MaterialTheme.colorScheme.primary,
+                                )
+                            }
+                        }
                         if (entry.description.isNotBlank()) {
                             Text(
                                 text     = entry.description,
@@ -210,50 +226,74 @@ private fun SellList(
     context: android.content.Context,
     priceFor: (String) -> Int,
     onSell: (String) -> Unit,
+    onSellJunk: () -> Unit,
+    onSellOldEquipment: () -> Unit,
 ) {
-    if (inventory.isEmpty()) {
-        Box(
-            modifier         = Modifier.fillMaxSize().padding(32.dp),
-            contentAlignment = Alignment.Center,
-        ) {
-            Text(
-                text  = stringResource(R.string.label_empty),
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-        }
-        return
-    }
     LazyColumn(Modifier.fillMaxSize()) {
-        items(inventory.entries.toList(), key = { it.key }) { (key, qty) ->
-            val sellPrice = priceFor(key)
+        item {
             Row(
-                modifier = Modifier
+                modifier              = Modifier
                     .fillMaxWidth()
-                    .clickable { onSell(key) }
-                    .padding(horizontal = 16.dp, vertical = 10.dp),
-                verticalAlignment = Alignment.CenterVertically,
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                Column(Modifier.weight(1f)) {
+                OutlinedButton(
+                    onClick  = onSellJunk,
+                    modifier = Modifier.weight(1f),
+                ) { Text("Sell Junk") }
+                OutlinedButton(
+                    onClick  = onSellOldEquipment,
+                    modifier = Modifier.weight(1f),
+                ) { Text("Sell Old Gear") }
+            }
+            HorizontalDivider()
+        }
+        if (inventory.isEmpty()) {
+            item {
+                Box(
+                    modifier         = Modifier
+                        .fillMaxWidth()
+                        .padding(32.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
                     Text(
-                        text       = GameStrings.itemName(context, key),
-                        style      = MaterialTheme.typography.bodyLarge,
-                        fontWeight = FontWeight.Medium,
-                    )
-                    Text(
-                        text  = "×$qty in inventory",
-                        style = MaterialTheme.typography.bodySmall,
+                        text  = stringResource(R.string.label_empty),
+                        style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
-                Text(
-                    text       = "$sellPrice coins ea.",
-                    style      = MaterialTheme.typography.bodyMedium,
-                    fontWeight = FontWeight.SemiBold,
-                    color      = GoldPrimary,
-                )
             }
-            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+        } else {
+            items(inventory.entries.toList(), key = { it.key }) { (key, qty) ->
+                val sellPrice = priceFor(key)
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onSell(key) }
+                        .padding(horizontal = 16.dp, vertical = 10.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Column(Modifier.weight(1f)) {
+                        Text(
+                            text       = GameStrings.itemName(context, key),
+                            style      = MaterialTheme.typography.bodyLarge,
+                            fontWeight = FontWeight.Medium,
+                        )
+                        Text(
+                            text  = "×$qty in inventory",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                    Text(
+                        text       = "$sellPrice coins ea.",
+                        style      = MaterialTheme.typography.bodyMedium,
+                        fontWeight = FontWeight.SemiBold,
+                        color      = GoldPrimary,
+                    )
+                }
+                HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+            }
         }
         item { Spacer(Modifier.height(16.dp)) }
     }

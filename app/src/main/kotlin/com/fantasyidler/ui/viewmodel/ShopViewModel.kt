@@ -3,6 +3,8 @@ package com.fantasyidler.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fantasyidler.data.json.MarketplaceItem
+import com.fantasyidler.data.model.EquipSlot
+import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -45,10 +47,14 @@ data class ShopTransaction(
 data class ShopUiState(
     val coins: Long = 0L,
     val inventory: Map<String, Int> = emptyMap(),
+    val equipped: Map<String, String?> = emptyMap(),
+    val xpBoostExpiresAt: Long = 0L,
     val transaction: ShopTransaction? = null,
     val snackbarMessage: String? = null,
     val isLoading: Boolean = true,
-)
+) {
+    val xpBoostActive: Boolean get() = xpBoostExpiresAt > System.currentTimeMillis()
+}
 
 // ---------------------------------------------------------------------------
 // ViewModel
@@ -68,20 +74,25 @@ class ShopViewModel @Inject constructor(
         _extra,
     ) { player, extra ->
         if (player == null) extra
-        else extra.copy(
-            coins     = player.coins,
-            inventory = json.decodeFromString(player.inventory),
-            isLoading = false,
-        )
+        else {
+            val flags: PlayerFlags = json.decodeFromString(player.flags)
+            extra.copy(
+                coins            = player.coins,
+                inventory        = json.decodeFromString(player.inventory),
+                equipped         = json.decodeFromString(player.equipped),
+                xpBoostExpiresAt = flags.xpBoostExpiresAt,
+                isLoading        = false,
+            )
+        }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ShopUiState())
 
     // ------------------------------------------------------------------
-    // Buy catalogue (all marketplace items except seeds)
+    // Buy catalogue (all marketplace items except seeds + XP boost)
     // ------------------------------------------------------------------
 
     val buyEntries: List<ShopEntry> by lazy {
-        gameData.marketplace
-            .filterKeys { it != "seeds" }     // skip farming for now
+        val regular = gameData.marketplace
+            .filterKeys { it != "seeds" }
             .flatMap { (_, cat) ->
                 cat.items.map { (key, item) ->
                     ShopEntry(
@@ -94,6 +105,15 @@ class ShopViewModel @Inject constructor(
                 }
             }
             .sortedWith(compareBy({ it.categoryName }, { it.price }))
+
+        val boost = ShopEntry(
+            key          = XP_BOOST_KEY,
+            displayName  = "2× XP Boost (48h)",
+            description  = "Double all XP gained for 48 hours",
+            price        = PlayerRepository.XP_BOOST_COST.toInt(),
+            categoryName = "Special",
+        )
+        listOf(boost) + regular
     }
 
     // ------------------------------------------------------------------
@@ -117,6 +137,72 @@ class ShopViewModel @Inject constructor(
             "raw_"    in itemKey -> 4
             itemKey in FISH_KEYS -> 8
             else                 -> 2
+        }
+    }
+
+    // ------------------------------------------------------------------
+    // Bulk sell helpers
+    // ------------------------------------------------------------------
+
+    /** Sell all items that have no gameplay use (not equipment, food, materials, etc.). */
+    fun sellJunk() {
+        viewModelScope.launch {
+            val inventory = uiState.value.inventory
+            val useful    = gameData.usefulItemKeys
+            val junk      = inventory.filterKeys { it != "coins" && it !in useful }
+            if (junk.isEmpty()) {
+                _extra.update { it.copy(snackbarMessage = "No junk to sell") }
+                return@launch
+            }
+            var total = 0L
+            for ((key, qty) in junk) {
+                val price = sellPriceFor(key)
+                playerRepo.sellItem(key, qty, price)
+                total += price.toLong() * qty
+            }
+            _extra.update { it.copy(snackbarMessage = "Sold junk for ${total.toCoinsString()} coins") }
+        }
+    }
+
+    /**
+     * Sell equipment in inventory that is strictly weaker than what's currently
+     * equipped in the same slot. Weapons are excluded per user request.
+     */
+    fun sellOldEquipment() {
+        viewModelScope.launch {
+            val state     = uiState.value
+            val equipped  = state.equipped
+            val inventory = state.inventory
+            val allEquip  = gameData.equipment
+
+            val toSell = mutableMapOf<String, Int>()
+            for (slot in EquipSlot.ALL) {
+                if (slot == EquipSlot.WEAPON) continue    // user: don't include weapons
+                val equippedKey  = equipped[slot] ?: continue
+                val equippedItem = allEquip[equippedKey] ?: continue
+                val equippedScore = scoreFor(equippedItem, slot)
+
+                for ((itemKey, qty) in inventory) {
+                    if (itemKey == equippedKey) continue  // keep the currently equipped copy
+                    val item = allEquip[itemKey] ?: continue
+                    if (item.slot != slot) continue
+                    if (scoreFor(item, slot) < equippedScore) {
+                        toSell[itemKey] = (toSell[itemKey] ?: 0) + qty
+                    }
+                }
+            }
+
+            if (toSell.isEmpty()) {
+                _extra.update { it.copy(snackbarMessage = "No old equipment to sell") }
+                return@launch
+            }
+            var total = 0L
+            for ((key, qty) in toSell) {
+                val price = sellPriceFor(key)
+                playerRepo.sellItem(key, qty, price)
+                total += price.toLong() * qty
+            }
+            _extra.update { it.copy(snackbarMessage = "Sold old equipment for ${total.toCoinsString()} coins") }
         }
     }
 
@@ -167,6 +253,19 @@ class ShopViewModel @Inject constructor(
     fun confirmTransaction() {
         val t = _extra.value.transaction ?: return
         viewModelScope.launch {
+            // Special handling for XP boost
+            if (t.key == XP_BOOST_KEY) {
+                val activated = playerRepo.activateXpBoost(PlayerRepository.XP_BOOST_DURATION_MS, t.qty)
+                _extra.update {
+                    it.copy(
+                        transaction     = null,
+                        snackbarMessage = if (activated) "2× XP boost activated for ${t.qty * 48}h!"
+                                          else           "Not enough coins",
+                    )
+                }
+                return@launch
+            }
+
             val success = if (t.isBuy) {
                 playerRepo.buyItem(t.key, t.qty, t.priceEach)
             } else {
@@ -188,7 +287,25 @@ class ShopViewModel @Inject constructor(
 
     fun snackbarConsumed() = _extra.update { it.copy(snackbarMessage = null) }
 
+    // ------------------------------------------------------------------
+    // Private helpers
+    // ------------------------------------------------------------------
+
+    private fun scoreFor(item: com.fantasyidler.data.json.EquipmentData, slot: String): Float = when (slot) {
+        EquipSlot.PICKAXE     -> item.miningEfficiency ?: 0f
+        EquipSlot.AXE         -> item.woodcuttingEfficiency ?: 0f
+        EquipSlot.FISHING_ROD -> item.fishingEfficiency ?: 0f
+        else                  -> (item.attackBonus + item.strengthBonus + item.defenseBonus).toFloat()
+    }
+
+    private fun Long.toCoinsString(): String =
+        if (this >= 1_000_000) "${"%.1f".format(this / 1_000_000.0)}M"
+        else if (this >= 1_000) "${"%.1f".format(this / 1_000.0)}k"
+        else this.toString()
+
     companion object {
+        const val XP_BOOST_KEY = "xp_boost_48h"
+
         private val FISH_KEYS = setOf(
             "shrimp", "sardine", "herring", "trout", "salmon",
             "tuna", "lobster", "swordfish", "shark", "raw_shrimp",
