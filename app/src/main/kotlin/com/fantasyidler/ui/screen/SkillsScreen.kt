@@ -29,6 +29,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
@@ -967,12 +968,18 @@ private fun CraftSkillSheet(
     context: android.content.Context,
     onDismiss: () -> Unit,
 ) {
-    val recipes: List<CraftableRecipe> = when (skillName) {
+    val allRecipes: List<CraftableRecipe> = when (skillName) {
         Skills.SMITHING  -> craftingViewModel.smithingRecipes
         Skills.COOKING   -> craftingViewModel.cookingRecipes
         Skills.FLETCHING -> craftingViewModel.fletchingRecipes
         else             -> craftingViewModel.jewelleryRecipes
     }
+
+    var onlyCraftable by remember { mutableStateOf(false) }
+    val recipes = if (onlyCraftable)
+        allRecipes.filter { craftState.meetsLevel(it) && craftState.maxCraftable(it) > 0 }
+    else
+        allRecipes
 
     val selected = craftState.selectedRecipe
 
@@ -991,11 +998,28 @@ private fun CraftSkillSheet(
                 .fillMaxWidth()
                 .padding(bottom = 32.dp),
         ) {
-            Text(
-                text     = GameStrings.skillName(context, skillName),
-                style    = MaterialTheme.typography.titleMedium,
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
-            )
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(
+                    text     = GameStrings.skillName(context, skillName),
+                    style    = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier.weight(1f),
+                )
+                Text(
+                    text  = "Only craftable",
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                Spacer(Modifier.width(8.dp))
+                Switch(
+                    checked         = onlyCraftable,
+                    onCheckedChange = { onlyCraftable = it },
+                )
+            }
             HorizontalDivider()
             LazyColumn(Modifier.fillMaxWidth()) {
                 items(recipes) { recipe ->

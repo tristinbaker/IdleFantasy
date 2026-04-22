@@ -188,7 +188,8 @@ object SkillSimulator {
             val levelAfter = XpTable.levelForXp(currentXp)
 
             // Roll drops from level-appropriate table, using level BEFORE xp gain
-            val dropTable = getTierData(skillData.dropTables, levelBefore)
+            val dropTable = if (skillData.dropTables.isEmpty()) emptyList()
+                            else getTierData(skillData.dropTables, levelBefore)
             val items = mutableMapOf<String, Int>()
             for (entry in dropTable) {
                 if (Random.nextDouble() < entry.chance) {

@@ -196,7 +196,7 @@ class SkillsViewModel @Inject constructor(
             startXp          = xpMap[Skills.MINING] ?: 0L,
             agilityLevel     = levels[Skills.AGILITY] ?: 1,
             petBoostPct      = petBoostFor(player.pets, Skills.MINING),
-            toolEfficiency   = toolEfficiency(equipped[EquipSlot.PICKAXE], EquipSlot.PICKAXE),
+            toolEfficiency   = toolEfficiency(equipped[EquipSlot.PICKAXE], EquipSlot.PICKAXE, oreData.levelRequired),
             petDropKey       = petKey,
             petDropChance    = petChance,
         )
@@ -216,7 +216,7 @@ class SkillsViewModel @Inject constructor(
             startXp          = xpMap[Skills.WOODCUTTING] ?: 0L,
             agilityLevel     = levels[Skills.AGILITY] ?: 1,
             petBoostPct      = petBoostFor(player.pets, Skills.WOODCUTTING),
-            toolEfficiency   = toolEfficiency(equipped[EquipSlot.AXE], EquipSlot.AXE),
+            toolEfficiency   = toolEfficiency(equipped[EquipSlot.AXE], EquipSlot.AXE, treeData.levelRequired),
             petDropKey       = petKey,
             petDropChance    = petChance,
         )
@@ -334,7 +334,7 @@ class SkillsViewModel @Inject constructor(
             startXp          = xpMap[Skills.FISHING] ?: 0L,
             agilityLevel     = levels[Skills.AGILITY] ?: 1,
             petBoostPct      = petBoostFor(player.pets, Skills.FISHING),
-            toolEfficiency   = toolEfficiency(equipped[EquipSlot.FISHING_ROD], EquipSlot.FISHING_ROD),
+            toolEfficiency   = toolEfficiency(equipped[EquipSlot.FISHING_ROD], EquipSlot.FISHING_ROD, levels[Skills.FISHING] ?: 1),
             petDropKey       = petKey,
             petDropChance    = petChance,
         )
@@ -465,19 +465,37 @@ class SkillsViewModel @Inject constructor(
     // Helpers
     // ------------------------------------------------------------------
 
+    private val TOOL_TIERS = listOf(1, 15, 30, 55, 70, 85)
+
+    private fun tierIndex(level: Int): Int =
+        TOOL_TIERS.indexOfLast { it <= level }.coerceAtLeast(0)
+
     /**
      * Returns the efficiency multiplier for the equipped tool in [slot].
      * Falls back to 1.0 (no tool equipped or unknown item).
+     *
+     * If [resourceLevelRequired] > 0, applies a per-tier bonus of +0.25x for each
+     * tier the tool is above the resource: base × (1.0 + 0.25 × tierDiff).
      */
-    private fun toolEfficiency(itemKey: String?, slot: String): Float {
+    private fun toolEfficiency(itemKey: String?, slot: String, resourceLevelRequired: Int = 0): Float {
         if (itemKey == null) return 1.0f
         val eq = gameData.equipment[itemKey] ?: return 1.0f
-        return when (slot) {
+        val base = when (slot) {
             EquipSlot.PICKAXE     -> eq.miningEfficiency      ?: 1.0f
             EquipSlot.AXE         -> eq.woodcuttingEfficiency ?: 1.0f
             EquipSlot.FISHING_ROD -> eq.fishingEfficiency     ?: 1.0f
             else                  -> 1.0f
         }
+        if (resourceLevelRequired <= 0) return base
+        val skillKey = when (slot) {
+            EquipSlot.PICKAXE     -> Skills.MINING
+            EquipSlot.AXE         -> Skills.WOODCUTTING
+            EquipSlot.FISHING_ROD -> Skills.FISHING
+            else                  -> return base
+        }
+        val toolReqLevel = eq.requirements[skillKey] ?: 1
+        val tierDiff = tierIndex(toolReqLevel) - tierIndex(resourceLevelRequired)
+        return if (tierDiff > 0) base * (1.0f + 0.25f * tierDiff) else base
     }
 
     /** Returns (petId, dropChancePerFrame) for gathering skill pets (1/1000 per frame). */

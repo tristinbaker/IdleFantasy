@@ -132,7 +132,7 @@ class QuestRepository @Inject constructor(
      * Marks a quest as reward-claimed. Returns the [QuestRewards] if it was claimable;
      * null otherwise.
      *
-     * Claimable = progress >= quest.amount && !completed
+     * Claimable = progress >= quest.amount && !completed && prerequisite completed
      */
     suspend fun claimReward(questId: String): QuestRewards? {
         val quest = gameData.quests[questId] ?: return null
@@ -140,6 +140,7 @@ class QuestRepository @Inject constructor(
 
         if (current.completed) return null
         if (current.progress < quest.amount) return null
+        if (!isPrerequisiteDone(quest.requiresPrevious)) return null
 
         questProgressDao.upsert(
             current.copy(
@@ -156,16 +157,24 @@ class QuestRepository @Inject constructor(
 
     /**
      * Adds [delta] to the stored progress for [questId], creating a row if absent.
-     * Skips already-completed quests. Does not cap progress at [requiredAmount].
+     * Skips already-completed quests and quests whose prerequisite isn't done yet.
      */
     suspend fun resetAllProgress() = questProgressDao.deleteAll()
 
     private suspend fun addProgress(questId: String, requiredAmount: Int, delta: Int) {
+        val quest = gameData.quests[questId] ?: return
+        if (!isPrerequisiteDone(quest.requiresPrevious)) return
+
         val current = questProgressDao.getQuestProgress(questId)
             ?: QuestProgress(questId)
 
         if (current.completed) return
 
         questProgressDao.upsert(current.copy(progress = current.progress + delta))
+    }
+
+    private suspend fun isPrerequisiteDone(prerequisiteId: String?): Boolean {
+        if (prerequisiteId == null) return true
+        return questProgressDao.getQuestProgress(prerequisiteId)?.completed == true
     }
 }
