@@ -242,6 +242,7 @@
     <!-- ===== SkillsScreen ===== -->
     <string name="btn_back_arrow">← Back</string>
     <string name="btn_start_burying">Start Burying</string>
+    <string name="btn_start_crafting">Start Crafting</string>
     <string name="btn_select">Select</string>
     <string name="label_special">Special</string>
 

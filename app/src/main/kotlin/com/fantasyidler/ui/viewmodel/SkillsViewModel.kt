@@ -6,6 +6,7 @@ import com.fantasyidler.data.json.AgilityCourseData
 import com.fantasyidler.data.json.BoneData
 import com.fantasyidler.data.json.LogData
 import com.fantasyidler.data.json.OreData
+import com.fantasyidler.data.json.RuneData
 import com.fantasyidler.data.json.TreeData
 import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.SessionFrame
@@ -63,7 +64,10 @@ sealed class SheetState {
     data class Agility(val courses: Map<String, AgilityCourseData>) : SheetState()
     /** availableLogs = logs the player currently has in inventory */
     data class Firemaking(val availableLogs: Map<String, LogData>) : SheetState()
-    data object Runecrafting : SheetState()
+    data class Runecrafting(
+        val availableRunes: Map<String, RuneData>,
+        val essenceQty: Int,
+    ) : SheetState()
     /** Bones the player currently has in inventory, with their counts. */
     data class Prayer(
         val availableBones: Map<String, BoneData>,
@@ -154,7 +158,16 @@ class SkillsViewModel @Inject constructor(
                 }
                 return
             }
-            Skills.RUNECRAFTING -> SheetState.Runecrafting
+            Skills.RUNECRAFTING -> {
+                viewModelScope.launch {
+                    val inv: Map<String, Int> = json.decodeFromString(playerRepo.getOrCreatePlayer().inventory)
+                    val essenceQty = inv["rune_essence"] ?: 0
+                    val rcLevel = state.skillLevels[Skills.RUNECRAFTING] ?: 1
+                    val available = gameData.runes.filter { (_, rune) -> rune.levelRequired <= rcLevel }
+                    _uiState.update { it.copy(sheetSkill = SheetState.Runecrafting(available, essenceQty)) }
+                }
+                return
+            }
             Skills.PRAYER -> {
                 viewModelScope.launch {
                     val inv: Map<String, Int> = json.decodeFromString(playerRepo.getOrCreatePlayer().inventory)
@@ -249,17 +262,70 @@ class SkillsViewModel @Inject constructor(
         )
     }
 
-    fun startRunecraftingSession() = startSession(Skills.RUNECRAFTING, activityKey = "") {
-        val player  = playerRepo.getOrCreatePlayer()
-        val levels: Map<String, Int>  = json.decodeFromString(player.skillLevels)
-        val xpMap:  Map<String, Long> = json.decodeFromString(player.skillXp)
+    fun startRunecraftingSession(runeKey: String, qty: Int) {
+        viewModelScope.launch {
+            if (sessionRepo.getActiveSession() != null) {
+                _uiState.update { it.copy(snackbarMessage = "Finish your current session first.", sheetSkill = null) }
+                return@launch
+            }
 
-        SkillSimulator.simulateGathering(
-            skillData    = gameData.runecraftingSkillData,
-            startXp      = xpMap[Skills.RUNECRAFTING] ?: 0L,
-            agilityLevel = levels[Skills.AGILITY] ?: 1,
-            petBoostPct  = petBoostFor(player.pets, Skills.RUNECRAFTING),
-        )
+            val runeData = gameData.runes[runeKey] ?: return@launch
+            val consumed = playerRepo.consumeMaterials(mapOf("rune_essence" to runeData.essenceCost), qty)
+            if (!consumed) {
+                _uiState.update { it.copy(snackbarMessage = "Not enough Rune Essence") }
+                return@launch
+            }
+
+            _uiState.update { it.copy(startingSession = true, sheetSkill = null) }
+            try {
+                val player   = playerRepo.getOrCreatePlayer()
+                val xpMap:   Map<String, Long> = json.decodeFromString(player.skillXp)
+                val levels:  Map<String, Int>  = json.decodeFromString(player.skillLevels)
+                val agilityLevel = levels[Skills.AGILITY] ?: 1
+
+                var currentXp = xpMap[Skills.RUNECRAFTING] ?: 0L
+                val frames = mutableListOf<SessionFrame>()
+                for (i in 1..qty) {
+                    val levelBefore = XpTable.levelForXp(currentXp)
+                    val multiplier = when {
+                        levelBefore >= 75 -> 3
+                        levelBefore >= 50 -> 2
+                        else              -> 1
+                    }
+                    val runesProduced = multiplier
+                    val xpGain = (runeData.xpPerRune * runesProduced).toInt()
+                    currentXp += xpGain
+                    val levelAfter = XpTable.levelForXp(currentXp)
+                    frames += SessionFrame(
+                        minute      = i,
+                        xpGain      = xpGain,
+                        xpBefore    = currentXp - xpGain,
+                        xpAfter     = currentXp,
+                        levelBefore = levelBefore,
+                        levelAfter  = levelAfter,
+                        items       = mapOf(runeKey to runesProduced),
+                        leveledUp   = levelAfter > levelBefore,
+                    )
+                }
+
+                val perEssenceMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
+                val framesJson   = json.encodeToString(
+                    json.serializersModule.serializer<List<SessionFrame>>(),
+                    frames,
+                )
+                sessionRepo.startSession(
+                    skillName        = Skills.RUNECRAFTING,
+                    activityKey      = runeKey,
+                    frames           = framesJson,
+                    durationMs       = qty.toLong() * perEssenceMs,
+                    skillDisplayName = "Runecrafting",
+                )
+            } catch (e: Exception) {
+                _uiState.update { it.copy(snackbarMessage = "Failed to start session: ${e.message}") }
+            } finally {
+                _uiState.update { it.copy(startingSession = false) }
+            }
+        }
     }
 
     fun startPrayerSession(boneKey: String, qty: Int) {

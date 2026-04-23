@@ -226,8 +226,8 @@ fun SkillsScreen(
                     onSelect      = { logKey -> viewModel.startFiremakingSession(logKey) },
                     context       = context,
                 )
-                SheetState.Runecrafting -> RunecraftingSheet(
-                    state      = state,
+                is SheetState.Runecrafting -> RunecraftingSheet(
+                    sheet      = sheet,
                     isStarting = state.startingSession,
                     onStart    = viewModel::startRunecraftingSession,
                 )
@@ -829,37 +829,161 @@ private fun PrayerSheet(
 
 @Composable
 private fun RunecraftingSheet(
-    state: SkillsUiState,
+    sheet: SheetState.Runecrafting,
     isStarting: Boolean,
-    onStart: () -> Unit,
+    onStart: (String, Int) -> Unit,
 ) {
-    val rcLevel = state.skillLevels[com.fantasyidler.data.model.Skills.RUNECRAFTING] ?: 1
+    var selectedKey by remember { mutableStateOf<String?>(null) }
+    val selectedRune = selectedKey?.let { sheet.availableRunes[it] }
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp)
-            .padding(bottom = 24.dp),
+            .padding(bottom = 32.dp),
     ) {
-        Text(
-            text  = stringResource(R.string.skill_runecrafting_name),
-            style = MaterialTheme.typography.titleMedium,
-        )
-        Spacer(Modifier.height(4.dp))
-        Text(
-            text  = "Level $rcLevel  •  Level-appropriate runes",
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-        )
-        Spacer(Modifier.height(16.dp))
-        Button(
-            onClick  = onStart,
-            enabled  = !isStarting,
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            if (isStarting) {
-                CircularProgressIndicator(Modifier.size(20.dp))
+        if (selectedRune == null) {
+            // ── Rune type selection ──────────────────────────────────────
+            Text(
+                text     = stringResource(R.string.skill_runecrafting_name),
+                style    = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+            )
+            Text(
+                text     = "${sheet.essenceQty} Rune Essence in inventory",
+                style    = MaterialTheme.typography.bodySmall,
+                color    = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
+            )
+            HorizontalDivider()
+            if (sheet.availableRunes.isEmpty()) {
+                Box(
+                    modifier         = Modifier.fillMaxWidth().padding(32.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(
+                        text  = "No rune types unlocked yet",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            } else if (sheet.essenceQty == 0) {
+                Box(
+                    modifier         = Modifier.fillMaxWidth().padding(32.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(
+                        text  = "No Rune Essence in inventory — mine some first",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
             } else {
-                Text(stringResource(R.string.btn_start_session))
+                sheet.availableRunes.forEach { (key, rune) ->
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable { selectedKey = key }
+                            .padding(horizontal = 16.dp, vertical = 12.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Column(Modifier.weight(1f)) {
+                            Text(rune.displayName, style = MaterialTheme.typography.bodyLarge)
+                            Text(
+                                text  = "${rune.xpPerRune.toInt()} XP/rune  •  Lv. ${rune.levelRequired}",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
+                        Text(
+                            text  = stringResource(R.string.btn_select),
+                            style = MaterialTheme.typography.labelMedium,
+                            color = GoldPrimary,
+                        )
+                    }
+                    HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+                }
+            }
+        } else {
+            // ── Quantity picker ──────────────────────────────────────────
+            val maxQty = sheet.essenceQty
+            var qty by remember(selectedKey) { androidx.compose.runtime.mutableIntStateOf(maxQty.coerceAtLeast(1)) }
+            var textValue by remember(selectedKey) { mutableStateOf(maxQty.coerceAtLeast(1).toString()) }
+
+            TextButton(
+                onClick  = { selectedKey = null },
+                modifier = Modifier.padding(start = 4.dp),
+            ) { Text(stringResource(R.string.btn_back_arrow)) }
+
+            Text(
+                text     = selectedRune.displayName,
+                style    = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.padding(horizontal = 16.dp),
+            )
+            Text(
+                text     = "${selectedRune.xpPerRune.toInt()} XP/rune  •  $maxQty essence available",
+                style    = MaterialTheme.typography.bodySmall,
+                color    = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
+            )
+            Spacer(Modifier.height(12.dp))
+
+            Row(
+                modifier              = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment     = Alignment.CenterVertically,
+            ) {
+                IconButton(
+                    onClick  = { qty = (qty - 1).coerceAtLeast(1); textValue = qty.toString() },
+                    enabled  = qty > 1,
+                ) { Icon(Icons.Filled.Remove, contentDescription = "Decrease") }
+
+                OutlinedTextField(
+                    value         = textValue,
+                    onValueChange = { new ->
+                        val filtered = new.filter { it.isDigit() }
+                        textValue = filtered
+                        filtered.toIntOrNull()?.let { qty = it.coerceIn(1, maxQty.coerceAtLeast(1)) }
+                    },
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Number,
+                        imeAction    = ImeAction.Done,
+                    ),
+                    keyboardActions = KeyboardActions(onDone = {
+                        val parsed = textValue.toIntOrNull()?.coerceIn(1, maxQty.coerceAtLeast(1)) ?: 1
+                        qty = parsed; textValue = parsed.toString()
+                    }),
+                    textStyle  = MaterialTheme.typography.headlineSmall.copy(
+                        fontWeight = FontWeight.Bold,
+                        textAlign  = TextAlign.Center,
+                    ),
+                    singleLine = true,
+                    modifier   = Modifier.width(90.dp),
+                )
+
+                IconButton(
+                    onClick  = { qty = (qty + 1).coerceAtMost(maxQty.coerceAtLeast(1)); textValue = qty.toString() },
+                    enabled  = qty < maxQty,
+                ) { Icon(Icons.Filled.Add, contentDescription = "Increase") }
+            }
+
+            Text(
+                text       = "+${(qty * selectedRune.xpPerRune).toInt()} XP total",
+                style      = MaterialTheme.typography.bodyMedium,
+                color      = GoldPrimary,
+                fontWeight = FontWeight.SemiBold,
+                modifier   = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+            )
+
+            Button(
+                onClick  = { onStart(selectedKey!!, qty) },
+                enabled  = !isStarting && qty > 0 && maxQty > 0,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
+            ) {
+                if (isStarting) CircularProgressIndicator(Modifier.size(20.dp))
+                else Text(stringResource(R.string.btn_start_crafting))
             }
         }
     }

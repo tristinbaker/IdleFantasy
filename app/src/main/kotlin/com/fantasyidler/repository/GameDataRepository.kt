@@ -17,6 +17,7 @@ import com.fantasyidler.data.json.MarketplaceJson
 import com.fantasyidler.data.json.OreData
 import com.fantasyidler.data.json.PetData
 import com.fantasyidler.data.json.QuestData
+import com.fantasyidler.data.json.RuneData
 import com.fantasyidler.data.json.SkillData
 import com.fantasyidler.data.json.SmithingRecipe
 import com.fantasyidler.data.json.SpellData
@@ -105,6 +106,10 @@ class GameDataRepository @Inject constructor(
 
     val bones: Map<String, BoneData> by lazy {
         asset("data/bones.json")
+    }
+
+    val runes: Map<String, RuneData> by lazy {
+        asset("data/runes.json")
     }
 
     // ------------------------------------------------------------------ equipment
@@ -212,6 +217,7 @@ class GameDataRepository @Inject constructor(
             addAll(bones.keys)
             add("coins")
             add("rune_essence")
+            addAll(runes.keys)
             // Quest collect targets should not be auto-sold
             quests.values.filter { it.type == "collect" }.forEach { add(it.target) }
         }
@@ -227,6 +233,7 @@ class GameDataRepository @Inject constructor(
         ores[key]?.let { return it.displayName }
         gems[key]?.let { return it.displayName }
         logs[key]?.let { return it.displayName }
+        runes[key]?.let { return it.displayName }
         smithingRecipes[key]?.let { return it.displayName }
         cookingRecipes.values.find { it.cookedItem == key }?.let { return it.displayName }
         fletchingRecipes[key]?.let { return it.displayName }
