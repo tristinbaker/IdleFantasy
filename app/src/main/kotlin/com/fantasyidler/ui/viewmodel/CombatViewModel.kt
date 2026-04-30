@@ -221,18 +221,21 @@ class CombatViewModel @Inject constructor(
                     if (toConsume > 0) playerRepo.consumeItems(mapOf(bestArrow to toConsume))
                 }
 
-                // Consume magic runes (blocks if insufficient)
+                // Consume magic runes (blocks if insufficient; skip if staff provides infinite runes)
                 if (combatStyle == "magic" && selectedSpell != null && totalKills > 0) {
-                    val runesNeeded = totalKills * selectedSpell.runeCost
-                    val ok = playerRepo.consumeItems(mapOf(selectedSpell.runeType to runesNeeded))
-                    if (!ok) {
-                        _extra.update {
-                            it.copy(
-                                snackbarMessage = "Not enough ${selectedSpell.displayName.substringBefore(" ")} runes (need $runesNeeded).",
-                                startingSession = false,
-                            )
+                    val staffCoversRune = weapon?.infiniteRunes == selectedSpell.runeType
+                    if (!staffCoversRune) {
+                        val runesNeeded = totalKills * selectedSpell.runeCost
+                        val ok = playerRepo.consumeItems(mapOf(selectedSpell.runeType to runesNeeded))
+                        if (!ok) {
+                            _extra.update {
+                                it.copy(
+                                    snackbarMessage = "Not enough ${selectedSpell.displayName.substringBefore(" ")} runes (need $runesNeeded).",
+                                    startingSession = false,
+                                )
+                            }
+                            return@launch
                         }
-                        return@launch
                     }
                 }
 
