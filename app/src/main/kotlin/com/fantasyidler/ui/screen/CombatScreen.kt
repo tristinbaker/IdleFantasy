@@ -15,7 +15,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.Button
@@ -575,6 +577,9 @@ private fun DungeonInfoSheet(
             .padding(horizontal = 24.dp)
             .padding(bottom = 40.dp),
     ) {
+        Column(modifier = Modifier
+            .weight(1f, fill = false)
+            .verticalScroll(rememberScrollState())) {
         Text(
             text       = dungeon.displayName,
             style      = MaterialTheme.typography.titleLarge,
@@ -671,6 +676,7 @@ private fun DungeonInfoSheet(
             }
             Spacer(Modifier.height(12.dp))
         }
+        } // end scrollable content
 
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             OutlinedButton(onClick = onDismiss, modifier = Modifier.weight(1f)) {
