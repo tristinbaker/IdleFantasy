@@ -29,14 +29,14 @@ Builds:
 
   - versionName: 1.0.2
     versionCode: 3
-    commit: 58d93e97be8135bd85f31c89afbc92b2f5c4a0f1
+    commit: f2da6b0fa752ea9c22ed5770adc98890eadfac11
     subdir: app
     gradle:
       - yes
 
   - versionName: 1.0.3
     versionCode: 4
-    commit: aca98613be81805548226d9db15cf73b7f497b52
+    commit: a747f95e21b8f0e7c0697787a9c5e23f2aea55f8
     subdir: app
     gradle:
       - yes
