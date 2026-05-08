@@ -191,6 +191,14 @@ fun HomeScreen(
         )
     }
 
+    if (!state.isLoading && !state.characterSetupDone) {
+        CharacterSetupSheet(
+            isFirstTime = true,
+            onSave      = { name, gender, race -> viewModel.saveCharacterProfile(name, gender, race) },
+            onDismiss   = viewModel::dismissCharacterSetup,
+        )
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -221,6 +229,13 @@ fun HomeScreen(
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
+            // ── Greeting ────────────────────────────────────────────────
+            Text(
+                text       = "Welcome back, ${state.characterName.ifBlank { "Adventurer" }}!",
+                style      = MaterialTheme.typography.headlineSmall,
+                fontWeight = FontWeight.Bold,
+            )
+
             // ── Stats card ──────────────────────────────────────────────
             Surface(
                 shape  = RoundedCornerShape(16.dp),

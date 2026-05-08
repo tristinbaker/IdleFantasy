@@ -43,6 +43,9 @@ class InventoryViewModel @Inject constructor(
         val isLoading: Boolean = true,
         /** Food items marked for dungeon use (key = item key, value = ignored). */
         val equippedFood: Map<String, Int> = emptyMap(),
+        val characterName: String = "",
+        val characterGender: String = "",
+        val characterRace: String = "",
     ) {
         val totalLevel: Int get() = skillLevels.values.sum()
 
@@ -72,7 +75,10 @@ class InventoryViewModel @Inject constructor(
                 skillXp     = json.decodeFromString(player.skillXp),
                 equipped    = json.decodeFromString(player.equipped),
                 ownedPetIds = pets.map { it.id }.toSet(),
-                equippedFood = flags.equippedFood,
+                equippedFood    = flags.equippedFood,
+                characterName   = flags.characterName,
+                characterGender = flags.characterGender,
+                characterRace   = flags.characterRace,
                 isLoading   = false,
             )
         }
@@ -138,6 +144,10 @@ class InventoryViewModel @Inject constructor(
             val flags = playerRepo.getFlags()
             playerRepo.updateFlags(flags.copy(equippedFood = flags.equippedFood - itemKey))
         }
+    }
+
+    fun saveCharacterProfile(name: String, gender: String, race: String) {
+        viewModelScope.launch { playerRepo.updateCharacterProfile(name, gender, race) }
     }
 
     val allEquipment: Map<String, EquipmentData> get() = gameData.equipment

@@ -17,6 +17,11 @@ data class PlayerFlags(
     @SerialName("battery_prompt_shown") val batteryPromptShown: Boolean = false,
     /** Epoch ms when the 2× XP boost expires; 0 = not active. */
     @SerialName("xp_boost_expires_at") val xpBoostExpiresAt: Long = 0L,
+    @SerialName("character_name") val characterName: String = "",
+    @SerialName("character_gender") val characterGender: String = "",
+    @SerialName("character_race") val characterRace: String = "",
+    /** False until the player completes or skips the character setup prompt. */
+    @SerialName("character_setup_done") val characterSetupDone: Boolean = false,
 )
 
 @Serializable

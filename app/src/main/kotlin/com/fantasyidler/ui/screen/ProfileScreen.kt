@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Button
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.TextButton
@@ -42,6 +43,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -77,7 +79,8 @@ fun ProfileScreen(
     val achState by achievementsVm.uiState.collectAsState()
     val context   = LocalContext.current
     val snackbarHostState = remember { SnackbarHostState() }
-    var selectedTab by remember { mutableIntStateOf(0) }
+    var selectedTab  by remember { mutableIntStateOf(0) }
+    var showEditSheet by remember { mutableStateOf(false) }
     val tabs = listOf(
         stringResource(R.string.label_skills),
         stringResource(R.string.label_inventory),
@@ -103,6 +106,44 @@ fun ProfileScreen(
                 .padding(padding),
         ) {
             CoinsBanner(state.coins)
+
+            // ── Character identity header ────────────────────────────────
+            Surface(
+                color    = MaterialTheme.colorScheme.surfaceVariant,
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Row(
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Column(Modifier.weight(1f)) {
+                        Text(
+                            text       = state.characterName.ifBlank { "Unnamed Adventurer" },
+                            style      = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.Bold,
+                        )
+                        val subtitle = buildString {
+                            if (state.characterRace.isNotBlank()) append(state.characterRace)
+                            if (state.characterRace.isNotBlank() && state.characterGender.isNotBlank()) append(" • ")
+                            if (state.characterGender.isNotBlank()) append(state.characterGender)
+                        }
+                        if (subtitle.isNotBlank()) {
+                            Text(
+                                text  = subtitle,
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
+                    }
+                    IconButton(onClick = { showEditSheet = true }) {
+                        Icon(
+                            imageVector        = Icons.Filled.Edit,
+                            contentDescription = "Edit character",
+                            tint               = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                }
+            }
 
             Surface(
                 color    = MaterialTheme.colorScheme.surfaceVariant,
@@ -178,6 +219,21 @@ fun ProfileScreen(
                 onDismiss = viewModel::dismissSlotPicker,
             )
         }
+    }
+
+    // Character edit sheet
+    if (showEditSheet) {
+        CharacterSetupSheet(
+            isFirstTime   = false,
+            initialName   = state.characterName,
+            initialGender = state.characterGender,
+            initialRace   = state.characterRace,
+            onSave        = { name, gender, race ->
+                viewModel.saveCharacterProfile(name, gender, race)
+                showEditSheet = false
+            },
+            onDismiss     = { showEditSheet = false },
+        )
     }
 
 }

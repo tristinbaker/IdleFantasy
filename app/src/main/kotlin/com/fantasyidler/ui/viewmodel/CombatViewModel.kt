@@ -307,7 +307,7 @@ class CombatViewModel @Inject constructor(
     fun collectSession() {
         viewModelScope.launch {
             val session = sessionRepo.getActiveSession() ?: return@launch
-            if (!session.completed) return@launch
+            if (!session.completed && System.currentTimeMillis() < session.endsAt) return@launch
 
             when (session.skillName) {
                 "boss" -> collectBossSession(session)

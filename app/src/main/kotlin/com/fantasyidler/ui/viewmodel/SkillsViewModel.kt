@@ -450,7 +450,7 @@ class SkillsViewModel @Inject constructor(
     fun collectSession() {
         viewModelScope.launch {
             val session = sessionRepo.getActiveSession() ?: return@launch
-            if (!session.completed) return@launch
+            if (!session.completed && System.currentTimeMillis() < session.endsAt) return@launch
 
             val frames: List<com.fantasyidler.data.model.SessionFrame> =
                 json.decodeFromString(session.frames)

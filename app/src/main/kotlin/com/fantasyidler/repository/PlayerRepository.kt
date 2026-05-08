@@ -133,6 +133,24 @@ class PlayerRepository @Inject constructor(
         playerDao.upsert(player.copy(flags = json.encode<PlayerFlags>(flags)))
     }
 
+    suspend fun updateCharacterProfile(name: String, gender: String, race: String) {
+        val player = getOrCreatePlayer()
+        val flags: PlayerFlags = json.decodeFromString(player.flags)
+        val updated = flags.copy(
+            characterName = name,
+            characterGender = gender,
+            characterRace = race,
+            characterSetupDone = true,
+        )
+        playerDao.upsert(player.copy(flags = json.encode<PlayerFlags>(updated)))
+    }
+
+    suspend fun dismissCharacterSetup() {
+        val player = getOrCreatePlayer()
+        val flags: PlayerFlags = json.decodeFromString(player.flags)
+        playerDao.upsert(player.copy(flags = json.encode<PlayerFlags>(flags.copy(characterSetupDone = true))))
+    }
+
     suspend fun updateEquipped(equipped: Map<String, String?>) {
         val player = getOrCreatePlayer()
         playerDao.upsert(player.copy(equipped = json.encode<Map<String, String?>>(equipped)))

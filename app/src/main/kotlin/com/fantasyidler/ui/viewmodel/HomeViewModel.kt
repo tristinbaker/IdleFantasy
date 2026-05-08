@@ -54,6 +54,8 @@ data class HomeUiState(
     val snackbarMessage: String? = null,
     val batteryPromptShown: Boolean = false,
     val sessionSummary: SessionSummary? = null,
+    val characterSetupDone: Boolean = false,
+    val characterName: String = "",
 )
 
 @HiltViewModel
@@ -82,6 +84,8 @@ class HomeViewModel @Inject constructor(
                 skillXp             = json.decodeFromString(player.skillXp),
                 activeSession       = session,
                 batteryPromptShown  = flags.batteryPromptShown,
+                characterSetupDone  = flags.characterSetupDone,
+                characterName       = flags.characterName,
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), HomeUiState())
@@ -93,7 +97,7 @@ class HomeViewModel @Inject constructor(
     fun collectSession() {
         viewModelScope.launch {
             val session = sessionRepo.getActiveSession() ?: return@launch
-            if (!session.completed) return@launch
+            if (!session.completed && System.currentTimeMillis() < session.endsAt) return@launch
 
             val frames: List<SessionFrame> = json.decodeFromString(session.frames)
             val petIds    = gameData.pets.keys
@@ -265,6 +269,14 @@ class HomeViewModel @Inject constructor(
             val flags = playerRepo.getFlags()
             playerRepo.updateFlags(flags.copy(batteryPromptShown = true))
         }
+    }
+
+    fun saveCharacterProfile(name: String, gender: String, race: String) {
+        viewModelScope.launch { playerRepo.updateCharacterProfile(name, gender, race) }
+    }
+
+    fun dismissCharacterSetup() {
+        viewModelScope.launch { playerRepo.dismissCharacterSetup() }
     }
 
     fun summaryConsumed() = _extra.update { it.copy(sessionSummary = null) }
