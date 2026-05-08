@@ -1,0 +1,3 @@
+• Sessions can now be collected after the app is killed by the OS — no more stuck uncollectable sessions
+• New character customization: set your character's Name, Gender, and Race from a one-time setup prompt or the Profile screen at any time
+• Home screen now greets you by your character's name
