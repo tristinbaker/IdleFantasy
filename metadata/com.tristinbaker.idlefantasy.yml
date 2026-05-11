@@ -55,9 +55,16 @@ Builds:
     gradle:
       - yes
 
+  - versionName: 1.1.0
+    versionCode: 7
+    commit: 2b4582a2dbad332879c4e328b7feb91a45927340
+    subdir: app
+    gradle:
+      - yes
+
 AllowedAPKSigningKeys: 99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
-CurrentVersion: 1.0.5
-CurrentVersionCode: 6
+CurrentVersion: 1.1.0
+CurrentVersionCode: 7
