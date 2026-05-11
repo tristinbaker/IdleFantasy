@@ -1,10 +1,5 @@
 package com.fantasyidler.ui.screen
 
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
-import android.os.PowerManager
-import android.provider.Settings
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Icon
@@ -43,7 +39,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableLongStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -55,6 +50,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.BuildConfig
 import com.fantasyidler.R
+import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.HomeViewModel
@@ -77,21 +73,10 @@ fun HomeScreen(
     val snackbarHostState = remember { SnackbarHostState() }
     val context           = LocalContext.current
 
-    var showBatteryDialog by remember { mutableStateOf(false) }
-
     LaunchedEffect(state.snackbarMessage) {
         state.snackbarMessage?.let {
             snackbarHostState.showSnackbar(it)
             viewModel.snackbarConsumed()
-        }
-    }
-
-    LaunchedEffect(state.activeSession, state.batteryPromptShown) {
-        if (state.activeSession != null && !state.batteryPromptShown) {
-            val pm = context.getSystemService(Context.POWER_SERVICE) as PowerManager
-            if (!pm.isIgnoringBatteryOptimizations(context.packageName)) {
-                showBatteryDialog = true
-            }
         }
     }
 
@@ -146,6 +131,11 @@ fun HomeScreen(
                     if (summary.coinsGained > 0) {
                         SummaryRow("Coins", "+${summary.coinsGained.formatCoins()}")
                     }
+                    if (summary.foodConsumedLines.isNotEmpty()) {
+                        Spacer(Modifier.height(4.dp))
+                        SummarySection("Food Consumed")
+                        summary.foodConsumedLines.forEach { (food, qty) -> SummaryRow(food, qty) }
+                    }
                     if (summary.boneBuriedLabel.isNotEmpty()) {
                         SummaryRow("Bones buried", summary.boneBuriedLabel)
                     }
@@ -156,38 +146,6 @@ fun HomeScreen(
                     Text("Close")
                 }
             },
-        )
-    }
-
-    if (showBatteryDialog) {
-        AlertDialog(
-            onDismissRequest = {
-                showBatteryDialog = false
-                viewModel.markBatteryPromptShown()
-            },
-            title   = { Text(stringResource(R.string.battery_prompt_title)) },
-            text    = { Text(stringResource(R.string.battery_prompt_body)) },
-            confirmButton = {
-                Button(onClick = {
-                    showBatteryDialog = false
-                    viewModel.markBatteryPromptShown()
-                    context.startActivity(
-                        Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS).apply {
-                            data = Uri.parse("package:${context.packageName}")
-                        }
-                    )
-                }) {
-                    Text(stringResource(R.string.battery_prompt_open_settings))
-                }
-            },
-            dismissButton = {
-                TextButton(onClick = {
-                    showBatteryDialog = false
-                    viewModel.markBatteryPromptShown()
-                }) {
-                    Text(stringResource(R.string.battery_prompt_dismiss))
-                }
-            }
         )
     }
 
@@ -337,6 +295,15 @@ fun HomeScreen(
                     }
                 }
             }
+
+            // ── Queue card ───────────────────────────────────────────────
+            if (state.sessionQueue.isNotEmpty()) {
+                QueueCard(
+                    queue    = state.sessionQueue,
+                    context  = context,
+                    onRemove = viewModel::removeFromQueue,
+                )
+            }
         }
     }
 }
@@ -430,6 +397,66 @@ private fun HomeSessionCard(
                     Spacer(Modifier.width(8.dp))
                     TextButton(onClick = onDebugFinish) {
                         Text("[Debug] Finish Now")
+                    }
+                }
+            }
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Queue card
+// ---------------------------------------------------------------------------
+
+@Composable
+private fun QueueCard(
+    queue: List<QueuedAction>,
+    context: android.content.Context,
+    onRemove: (Int) -> Unit,
+) {
+    Surface(
+        shape    = RoundedCornerShape(16.dp),
+        color    = MaterialTheme.colorScheme.surfaceVariant,
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        Column(Modifier.padding(16.dp)) {
+            Text(
+                text  = "Up Next (${queue.size}/3)",
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Spacer(Modifier.height(8.dp))
+            queue.forEachIndexed { index, action ->
+                if (index > 0) HorizontalDivider(
+                    modifier = Modifier.padding(vertical = 4.dp),
+                    color    = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f),
+                )
+                Row(
+                    modifier          = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    val emoji = GameStrings.skillEmoji(action.skillName)
+                    val activityLabel = action.activityKey
+                        .replace('_', ' ')
+                        .replaceFirstChar { it.uppercase() }
+                        .takeIf { action.activityKey.isNotEmpty() }
+                    Column(Modifier.weight(1f)) {
+                        Text(
+                            text  = "$emoji ${action.skillDisplayName}${if (activityLabel != null) " — $activityLabel" else ""}",
+                            style = MaterialTheme.typography.bodyMedium,
+                            fontWeight = FontWeight.Medium,
+                        )
+                    }
+                    IconButton(
+                        onClick  = { onRemove(index) },
+                        modifier = Modifier.size(32.dp),
+                    ) {
+                        Icon(
+                            imageVector        = Icons.Filled.Close,
+                            contentDescription = "Remove from queue",
+                            modifier           = Modifier.size(16.dp),
+                            tint               = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
                     }
                 }
             }

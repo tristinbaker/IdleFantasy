@@ -22,6 +22,18 @@ data class PlayerFlags(
     @SerialName("character_race") val characterRace: String = "",
     /** False until the player completes or skips the character setup prompt. */
     @SerialName("character_setup_done") val characterSetupDone: Boolean = false,
+    /** Up to 3 queued sessions to auto-start after the current one completes. */
+    @SerialName("session_queue") val sessionQueue: List<QueuedAction> = emptyList(),
+)
+
+/** A session to be started when the current one completes. */
+@Serializable
+data class QueuedAction(
+    @SerialName("skill_name") val skillName: String,
+    @SerialName("activity_key") val activityKey: String,
+    @SerialName("skill_display_name") val skillDisplayName: String,
+    /** Quantity — used for prayer (bones) and runecrafting (essence). 0 = not applicable. */
+    val qty: Int = 0,
 )
 
 @Serializable
@@ -53,6 +65,7 @@ object EquipSlot {
     const val HEAD     = "head"
     const val BODY     = "body"
     const val LEGS     = "legs"
+    const val BOOTS    = "boots"
     const val CAPE     = "cape"
     const val RING     = "ring"
     const val NECKLACE = "necklace"
@@ -63,7 +76,7 @@ object EquipSlot {
     const val AXE         = "axe"
     const val FISHING_ROD = "fishing_rod"
 
-    val COMBAT_SLOTS = listOf(WEAPON, HEAD, BODY, LEGS, CAPE, RING, NECKLACE, SHIELD)
+    val COMBAT_SLOTS = listOf(WEAPON, HEAD, BODY, LEGS, BOOTS, CAPE, RING, NECKLACE, SHIELD)
     val TOOL_SLOTS   = listOf(PICKAXE, AXE, FISHING_ROD)
     val ALL          = COMBAT_SLOTS + TOOL_SLOTS
 }

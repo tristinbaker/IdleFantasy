@@ -9,12 +9,14 @@ import com.fantasyidler.data.json.SpellData
 import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.OwnedPet
 import com.fantasyidler.data.model.PlayerFlags
+import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.SessionFrame
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.QuestRepository
+import com.fantasyidler.repository.QueuedSessionStarter
 import com.fantasyidler.repository.SessionRepository
 import com.fantasyidler.simulator.CombatSimulator
 import com.fantasyidler.simulator.SkillSimulator
@@ -70,6 +72,7 @@ class CombatViewModel @Inject constructor(
     private val sessionRepo: SessionRepository,
     private val gameData: GameDataRepository,
     private val questRepo: QuestRepository,
+    private val queuedSessionStarter: QueuedSessionStarter,
     private val json: Json,
 ) : ViewModel() {
 
@@ -138,9 +141,13 @@ class CombatViewModel @Inject constructor(
     fun startDungeonSession(dungeonKey: String) {
         viewModelScope.launch {
             if (sessionRepo.getActiveSession() != null) {
-                // Close the sheet so the snackbar is visible on the main screen
+                val dungeonName = gameData.dungeons[dungeonKey]?.displayName ?: dungeonKey
+                val enqueued = playerRepo.enqueueAction(QueuedAction("combat", dungeonKey, dungeonName))
                 _extra.update {
-                    it.copy(snackbarMessage = "Finish your current session first.", selectedDungeon = null)
+                    it.copy(
+                        snackbarMessage = if (enqueued) "Added to queue: $dungeonName." else "Queue is full (3/3).",
+                        selectedDungeon = null,
+                    )
                 }
                 return@launch
             }
@@ -261,7 +268,14 @@ class CombatViewModel @Inject constructor(
     fun startBossSession(bossKey: String) {
         viewModelScope.launch {
             if (sessionRepo.getActiveSession() != null) {
-                _extra.update { it.copy(snackbarMessage = "Finish your current session first.", selectedBoss = null) }
+                val bossName = gameData.bosses[bossKey]?.displayName ?: bossKey
+                val enqueued = playerRepo.enqueueAction(QueuedAction("boss", bossKey, bossName))
+                _extra.update {
+                    it.copy(
+                        snackbarMessage = if (enqueued) "Added to queue: $bossName." else "Queue is full (3/3).",
+                        selectedBoss = null,
+                    )
+                }
                 return@launch
             }
             _extra.update { it.copy(startingSession = true, selectedBoss = null) }
@@ -313,6 +327,9 @@ class CombatViewModel @Inject constructor(
                 "boss" -> collectBossSession(session)
                 "combat" -> collectDungeonSession(session)
             }
+
+            // Auto-start next queued session, if any
+            queuedSessionStarter.startNextQueued()
         }
     }
 

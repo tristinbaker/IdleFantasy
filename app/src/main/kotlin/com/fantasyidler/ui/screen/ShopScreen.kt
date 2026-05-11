@@ -38,9 +38,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -138,6 +145,7 @@ fun ShopScreen(
                 coins       = state.coins,
                 onMinus     = { viewModel.setTransactionQty(t.qty - 1) },
                 onPlus      = { viewModel.setTransactionQty(t.qty + 1) },
+                onSetQty    = viewModel::setTransactionQty,
                 onConfirm   = viewModel::confirmTransaction,
                 onDismiss   = viewModel::dismissTransaction,
             )
@@ -309,11 +317,14 @@ private fun TransactionSheet(
     coins: Long,
     onMinus: () -> Unit,
     onPlus: () -> Unit,
+    onSetQty: (Int) -> Unit,
     onConfirm: () -> Unit,
     onDismiss: () -> Unit,
 ) {
     val qty   = transaction.qty
     val total = transaction.priceEach.toLong() * qty
+    var textValue by remember { mutableStateOf(qty.toString()) }
+    LaunchedEffect(qty) { if (textValue.toIntOrNull() != qty) textValue = qty.toString() }
 
     Column(
         modifier = Modifier
@@ -344,12 +355,27 @@ private fun TransactionSheet(
                 IconButton(onClick = onMinus, enabled = qty > 1) {
                     Icon(Icons.Filled.Remove, contentDescription = "Decrease")
                 }
-                Text(
-                    text       = qty.toString(),
-                    style      = MaterialTheme.typography.headlineSmall,
-                    fontWeight = FontWeight.Bold,
-                    modifier   = Modifier.width(64.dp),
-                    textAlign  = TextAlign.Center,
+                OutlinedTextField(
+                    value         = textValue,
+                    onValueChange = { new ->
+                        val filtered = new.filter { it.isDigit() }
+                        textValue = filtered
+                        filtered.toIntOrNull()?.let { onSetQty(it) }
+                    },
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Number,
+                        imeAction    = ImeAction.Done,
+                    ),
+                    keyboardActions = KeyboardActions(onDone = {
+                        val parsed = textValue.toIntOrNull()?.coerceIn(1, transaction.maxQty.coerceAtLeast(1)) ?: 1
+                        onSetQty(parsed); textValue = parsed.toString()
+                    }),
+                    textStyle  = MaterialTheme.typography.headlineSmall.copy(
+                        fontWeight = FontWeight.Bold,
+                        textAlign  = TextAlign.Center,
+                    ),
+                    singleLine = true,
+                    modifier   = Modifier.width(90.dp),
                 )
                 IconButton(onClick = onPlus, enabled = qty < transaction.maxQty) {
                     Icon(Icons.Filled.Add, contentDescription = "Increase")

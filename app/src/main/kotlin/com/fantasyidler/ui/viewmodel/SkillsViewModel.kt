@@ -9,12 +9,15 @@ import com.fantasyidler.data.json.OreData
 import com.fantasyidler.data.json.RuneData
 import com.fantasyidler.data.json.TreeData
 import com.fantasyidler.data.model.EquipSlot
+import com.fantasyidler.data.model.PlayerFlags
+import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.SessionFrame
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.QuestRepository
+import com.fantasyidler.repository.QueuedSessionStarter
 import com.fantasyidler.repository.SessionRepository
 import com.fantasyidler.simulator.SkillSimulator
 import com.fantasyidler.simulator.XpTable
@@ -55,6 +58,8 @@ data class SkillsUiState(
     val snackbarMessage: String? = null,
     /** Non-null after a session is collected — drives the result sheet. Consumed by the UI. */
     val sessionResult: SessionResult? = null,
+    val anySessionActive: Boolean = false,
+    val queueSize: Int = 0,
 )
 
 sealed class SheetState {
@@ -88,6 +93,7 @@ class SkillsViewModel @Inject constructor(
     private val sessionRepo: SessionRepository,
     private val gameData: GameDataRepository,
     private val questRepo: QuestRepository,
+    private val queuedSessionStarter: QueuedSessionStarter,
     private val json: Json,
 ) : ViewModel() {
 
@@ -101,15 +107,18 @@ class SkillsViewModel @Inject constructor(
         // Combat sessions are managed by CombatViewModel; hide them here.
         val nonCombatSession = session?.takeIf { it.skillName != "combat" }
         if (player == null) {
-            extra.copy(isLoading = true, activeSession = nonCombatSession)
+            extra.copy(isLoading = true, activeSession = nonCombatSession, anySessionActive = session != null)
         } else {
             val levels: Map<String, Int> = json.decodeFromString(player.skillLevels)
             val xp: Map<String, Long>    = json.decodeFromString(player.skillXp)
+            val flags = try { json.decodeFromString<PlayerFlags>(player.flags) } catch (_: Exception) { PlayerFlags() }
             extra.copy(
-                isLoading    = false,
-                skillLevels  = levels,
-                skillXp      = xp,
-                activeSession = nonCombatSession,
+                isLoading        = false,
+                skillLevels      = levels,
+                skillXp          = xp,
+                activeSession    = nonCombatSession,
+                anySessionActive = session != null,
+                queueSize        = flags.sessionQueue.size,
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), SkillsUiState())
@@ -119,14 +128,9 @@ class SkillsViewModel @Inject constructor(
     // ------------------------------------------------------------------
 
     fun onSkillTapped(skillKey: String) {
-        // activeSession is filtered to non-combat; use a suspend check in startSession for
-        // combat sessions.  For immediate UX, we only block here if a non-combat session is
-        // already running (the authoritative check is always inside startSession).
+        // Allow the sheet to open even with an active session — the user can queue from the sheet.
+        // The authoritative queue/block check happens inside startSession.
         val session = _uiState.value.activeSession
-        if (session != null && !session.completed) {
-            _uiState.update { it.copy(snackbarMessage = "Finish your current session first.") }
-            return
-        }
 
         val state = uiState.value
         val miningLevel  = state.skillLevels[Skills.MINING]      ?: 1
@@ -265,7 +269,16 @@ class SkillsViewModel @Inject constructor(
     fun startRunecraftingSession(runeKey: String, qty: Int) {
         viewModelScope.launch {
             if (sessionRepo.getActiveSession() != null) {
-                _uiState.update { it.copy(snackbarMessage = "Finish your current session first.", sheetSkill = null) }
+                val actDisplay = runeKey.replace('_', ' ').replaceFirstChar { it.uppercase() }
+                val enqueued = playerRepo.enqueueAction(
+                    QueuedAction(Skills.RUNECRAFTING, runeKey, "Runecrafting", qty = qty)
+                )
+                _uiState.update {
+                    it.copy(
+                        snackbarMessage = if (enqueued) "Added to queue: Runecrafting — $actDisplay." else "Queue is full (3/3).",
+                        sheetSkill = null,
+                    )
+                }
                 return@launch
             }
 
@@ -331,7 +344,16 @@ class SkillsViewModel @Inject constructor(
     fun startPrayerSession(boneKey: String, qty: Int) {
         viewModelScope.launch {
             if (sessionRepo.getActiveSession() != null) {
-                _uiState.update { it.copy(snackbarMessage = "Finish your current session first.", sheetSkill = null) }
+                val bone = gameData.bones[boneKey]
+                val enqueued = playerRepo.enqueueAction(
+                    QueuedAction(Skills.PRAYER, boneKey, "Prayer", qty = qty)
+                )
+                _uiState.update {
+                    it.copy(
+                        snackbarMessage = if (enqueued) "Added to queue: Prayer — ${bone?.displayName ?: boneKey}." else "Queue is full (3/3).",
+                        sheetSkill = null,
+                    )
+                }
                 return@launch
             }
 
@@ -412,10 +434,20 @@ class SkillsViewModel @Inject constructor(
         simulate: suspend () -> SkillSimulator.Result,
     ) {
         viewModelScope.launch {
-            // Block if ANY session is active (including combat sessions)
             if (sessionRepo.getActiveSession() != null) {
+                val displayName = skillName.replaceFirstChar { it.uppercase() }
+                val actDisplay  = activityKey.replace('_', ' ').replaceFirstChar { it.uppercase() }
+                val enqueued = playerRepo.enqueueAction(
+                    QueuedAction(skillName, activityKey, displayName)
+                )
                 _uiState.update {
-                    it.copy(snackbarMessage = "Finish your current session first.", sheetSkill = null)
+                    it.copy(
+                        snackbarMessage = if (enqueued)
+                            "Added to queue: $displayName${if (activityKey.isNotEmpty()) " — $actDisplay" else ""}."
+                        else
+                            "Queue is full (3/3).",
+                        sheetSkill = null,
+                    )
                 }
                 return@launch
             }
@@ -431,7 +463,7 @@ class SkillsViewModel @Inject constructor(
                     activityKey      = activityKey,
                     frames           = framesJson,
                     durationMs       = result.durationMs,
-                    skillDisplayName = skillName, // TODO replace with GameStrings lookup in UI layer
+                    skillDisplayName = skillName.replaceFirstChar { it.uppercase() },
                 )
             } catch (e: Exception) {
                 _uiState.update {
@@ -506,6 +538,9 @@ class SkillsViewModel @Inject constructor(
                     snackbarMessage = petMessage,
                 )
             }
+
+            // Auto-start next queued session, if any
+            queuedSessionStarter.startNextQueued()
         }
     }
 

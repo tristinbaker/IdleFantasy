@@ -165,6 +165,7 @@ fun slotDisplayName(slot: String): String = when (slot) {
     EquipSlot.HEAD        -> "Head"
     EquipSlot.BODY        -> "Body"
     EquipSlot.LEGS        -> "Legs"
+    EquipSlot.BOOTS       -> "Boots"
     EquipSlot.CAPE        -> "Cape"
     EquipSlot.RING        -> "Ring"
     EquipSlot.NECKLACE    -> "Necklace"

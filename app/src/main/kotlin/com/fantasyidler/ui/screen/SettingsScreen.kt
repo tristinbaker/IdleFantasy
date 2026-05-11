@@ -3,7 +3,6 @@ package com.fantasyidler.ui.screen
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.os.PowerManager
 import android.provider.Settings
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -15,7 +14,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.CheckCircle
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.material3.AlertDialog
@@ -66,7 +64,6 @@ fun SettingsScreen(
     val snackbarHostState = remember { SnackbarHostState() }
 
     var notificationsEnabled by remember { mutableStateOf(false) }
-    var isIgnoringBattery by remember { mutableStateOf(false) }
     var showResetConfirm1 by remember { mutableStateOf(false) }
     var showResetConfirm2 by remember { mutableStateOf(false) }
 
@@ -97,8 +94,6 @@ fun SettingsScreen(
 
     LaunchedEffect(Unit) {
         notificationsEnabled = NotificationManagerCompat.from(context).areNotificationsEnabled()
-        isIgnoringBattery = (context.getSystemService(Context.POWER_SERVICE) as PowerManager)
-            .isIgnoringBatteryOptimizations(context.packageName)
     }
 
     if (showResetConfirm1) {
@@ -191,35 +186,6 @@ fun SettingsScreen(
                 }
             )
 
-            // Battery section
-            SectionHeader(title = stringResource(R.string.settings_performance_header))
-
-            SettingsRow(
-                title = stringResource(R.string.settings_battery_optimization),
-                subtitle = stringResource(R.string.settings_battery_optimization_desc),
-                trailing = {
-                    if (isIgnoringBattery) {
-                        Icon(
-                            imageVector = Icons.Filled.CheckCircle,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.primary
-                        )
-                    } else {
-                        OutlinedButton(
-                            onClick = {
-                                context.startActivity(
-                                    Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS).apply {
-                                        data = Uri.parse("package:${context.packageName}")
-                                    }
-                                )
-                            }
-                        ) {
-                            Text(stringResource(R.string.settings_battery_optimization_btn))
-                        }
-                    }
-                }
-            )
-
             // General section
             HorizontalDivider()
 
@@ -287,6 +253,22 @@ fun SettingsScreen(
             SettingsRow(
                 title = stringResource(R.string.app_name),
                 subtitle = stringResource(R.string.format_version, BuildConfig.VERSION_NAME)
+            )
+
+            SettingsRow(
+                title    = "Source Code",
+                subtitle = "github.com/tristinbaker/IdleFantasy",
+                trailing = {
+                    OutlinedButton(
+                        onClick = {
+                            context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/tristinbaker/IdleFantasy"))
+                            )
+                        }
+                    ) {
+                        Text("Open")
+                    }
+                }
             )
 
             Text(

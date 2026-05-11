@@ -133,6 +133,33 @@ class PlayerRepository @Inject constructor(
         playerDao.upsert(player.copy(flags = json.encode<PlayerFlags>(flags)))
     }
 
+    suspend fun getQueue(): List<QueuedAction> = getFlags().sessionQueue
+
+    /** Appends an action to the queue. Returns false (no change) if the queue is already full (3 items). */
+    suspend fun enqueueAction(action: QueuedAction): Boolean {
+        val flags = getFlags()
+        if (flags.sessionQueue.size >= 3) return false
+        updateFlags(flags.copy(sessionQueue = flags.sessionQueue + action))
+        return true
+    }
+
+    /** Removes and returns the first item in the queue, or null if empty. */
+    suspend fun dequeueNextAction(): QueuedAction? {
+        val flags = getFlags()
+        val queue = flags.sessionQueue
+        if (queue.isEmpty()) return null
+        updateFlags(flags.copy(sessionQueue = queue.drop(1)))
+        return queue.first()
+    }
+
+    /** Removes the queued item at [index]. No-op if out of range. */
+    suspend fun removeFromQueue(index: Int) {
+        val flags = getFlags()
+        val queue = flags.sessionQueue
+        if (index < 0 || index >= queue.size) return
+        updateFlags(flags.copy(sessionQueue = queue.toMutableList().apply { removeAt(index) }))
+    }
+
     suspend fun updateCharacterProfile(name: String, gender: String, race: String) {
         val player = getOrCreatePlayer()
         val flags: PlayerFlags = json.decodeFromString(player.flags)
@@ -395,6 +422,7 @@ class PlayerRepository @Inject constructor(
                 EquipSlot.PICKAXE     to "bronze_pickaxe",
                 EquipSlot.AXE         to "bronze_axe",
                 EquipSlot.FISHING_ROD to "bronze_fishing_rod",
+                EquipSlot.BOOTS       to "bronze_boots",
             )
         val defaultInventory: Map<String, Int> = mapOf(
             "bronze_pickaxe"     to 1,

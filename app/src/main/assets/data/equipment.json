@@ -2211,5 +2211,47 @@
     "description": "Awarded for reaching level 99 HP. Doubles HP XP in combat.",
     "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "hp",
     "requirements": { "hp": 99 }
+  },
+  "bronze_boots": {
+    "name": "bronze_boots", "display_name": "Bronze Boots", "slot": "boots", "combat_style": null,
+    "description": "A pair of bronze boots.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5,
+    "requirements": {}
+  },
+  "iron_boots": {
+    "name": "iron_boots", "display_name": "Iron Boots", "slot": "boots", "combat_style": null,
+    "description": "A pair of iron boots.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 9,
+    "requirements": { "defense": 10 }
+  },
+  "steel_boots": {
+    "name": "steel_boots", "display_name": "Steel Boots", "slot": "boots", "combat_style": null,
+    "description": "A pair of steel boots.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 14,
+    "requirements": { "defense": 20 }
+  },
+  "mithril_boots": {
+    "name": "mithril_boots", "display_name": "Mithril Boots", "slot": "boots", "combat_style": null,
+    "description": "A pair of mithril boots.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 20,
+    "requirements": { "defense": 30 }
+  },
+  "adamantite_boots": {
+    "name": "adamantite_boots", "display_name": "Adamantite Boots", "slot": "boots", "combat_style": null,
+    "description": "A pair of adamantite boots.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 27,
+    "requirements": { "defense": 40 }
+  },
+  "runite_boots": {
+    "name": "runite_boots", "display_name": "Runite Boots", "slot": "boots", "combat_style": null,
+    "description": "A pair of runite boots.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 37,
+    "requirements": { "defense": 50 }
+  },
+  "dragon_boots": {
+    "name": "dragon_boots", "display_name": "Dragon Boots", "slot": "boots", "combat_style": null,
+    "description": "A pair of dragon boots.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 55,
+    "requirements": { "defense": 60 }
   }
 }

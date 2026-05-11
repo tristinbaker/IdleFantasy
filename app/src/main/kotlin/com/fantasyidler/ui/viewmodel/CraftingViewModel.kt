@@ -2,6 +2,7 @@ package com.fantasyidler.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.SessionFrame
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.repository.GameDataRepository
@@ -194,11 +195,18 @@ class CraftingViewModel @Inject constructor(
         val qty    = state.craftQuantity.coerceIn(1, max)
 
         viewModelScope.launch {
-            // Block if any session is already running
+            // Enqueue if a session is already running
             if (sessionRepo.getActiveSession() != null) {
+                val action = QueuedAction(
+                    skillName        = recipe.skillName,
+                    activityKey      = recipe.key,
+                    skillDisplayName = recipe.skillName.replaceFirstChar { it.uppercase() },
+                    qty              = qty,
+                )
+                val enqueued = playerRepo.enqueueAction(action)
                 _extra.update {
                     it.copy(
-                        snackbarMessage = "Finish your current session first.",
+                        snackbarMessage = if (enqueued) "Added to queue: ${recipe.displayName}." else "Queue is full (3/3).",
                         selectedRecipe  = null,
                     )
                 }

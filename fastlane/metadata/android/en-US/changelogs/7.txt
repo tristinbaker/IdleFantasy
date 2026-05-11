@@ -1,0 +1,9 @@
+• Session queue: queue up to 3 sessions to run automatically while away
+• Batch collect: all completed queued sessions collected in one tap
+• Notification only fires when the full queue finishes, not between each session
+• Boots equipment slot with 7 tiers (bronze through dragon)
+• Activity sheets now scroll when many options are available (e.g. Agility courses)
+• Shop: type a quantity directly instead of tapping +/− repeatedly
+• Settings → About: link to the GitHub repository
+• Food consumed shown in combat session summary
+• Bug fix: abandoning a session no longer crashes the app
