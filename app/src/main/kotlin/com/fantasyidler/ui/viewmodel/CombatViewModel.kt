@@ -110,10 +110,10 @@ class CombatViewModel @Inject constructor(
             }
             val survivalRatings = gameData.dungeons.mapValues { (_, dungeon) ->
                 CombatSimulator.estimateSurvival(
-                    dungeon      = dungeon,
-                    enemies      = gameData.enemies,
-                    playerDefence = defenceLevel,
-                    playerHp     = hpLevel,
+                    dungeon       = dungeon,
+                    enemies       = gameData.enemies,
+                    playerDefence = defenceLevel + totalDef,
+                    playerHp      = hpLevel,
                     totalFoodHeal = totalFoodHeal,
                 )
             }
@@ -207,6 +207,10 @@ class CombatViewModel @Inject constructor(
                     else       -> "attack"
                 }
 
+                val totalAttackBonus   = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.attackBonus  ?: 0 }
+                val totalStrengthBonus = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.strengthBonus ?: 0 }
+                val totalDefenseBonus  = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.defenseBonus  ?: 0 }
+
                 // Ranged: find best arrow in inventory
                 val bestArrow = ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
                 val arrowStrengthBonus = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
@@ -243,10 +247,10 @@ class CombatViewModel @Inject constructor(
                     enemies             = gameData.enemies,
                     playerAttack        = levels[Skills.ATTACK]    ?: 1,
                     playerStrength      = levels[Skills.STRENGTH]  ?: 1,
-                    playerDefence       = levels[Skills.DEFENSE]   ?: 1,
+                    playerDefence       = (levels[Skills.DEFENSE]  ?: 1) + totalDefenseBonus,
                     playerHp            = levels[Skills.HITPOINTS] ?: 1,
-                    weaponAttackBonus   = weapon?.attackBonus      ?: 0,
-                    weaponStrengthBonus = weapon?.strengthBonus    ?: 0,
+                    weaponAttackBonus   = totalAttackBonus,
+                    weaponStrengthBonus = totalStrengthBonus,
                     combatStyle         = combatStyle,
                     playerRanged        = levels[Skills.RANGED]    ?: 1,
                     playerMagic         = levels[Skills.MAGIC]     ?: 1,
