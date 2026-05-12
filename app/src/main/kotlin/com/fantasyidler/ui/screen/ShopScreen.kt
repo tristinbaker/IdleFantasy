@@ -123,6 +123,7 @@ fun ShopScreen(
                 )
                 else -> SellList(
                     inventory          = state.inventory,
+                    equipped           = state.equipped,
                     context            = context,
                     priceFor           = viewModel::sellPriceFor,
                     categoryFor        = viewModel::sellCategoryFor,
@@ -234,6 +235,7 @@ private val SELL_CATEGORY_ORDER = listOf("Weapons", "Armor", "Tools", "Food", "M
 @Composable
 private fun SellList(
     inventory: Map<String, Int>,
+    equipped: Map<String, String?>,
     context: android.content.Context,
     priceFor: (String) -> Int,
     categoryFor: (String) -> String,
@@ -286,7 +288,8 @@ private fun SellList(
             grouped.forEach { (category, entries) ->
                 item(key = "sell_hdr_$category") { ShopSectionHeader(category) }
                 items(entries, key = { it.key }) { (key, qty) ->
-                    val sellPrice = priceFor(key)
+                    val sellPrice  = priceFor(key)
+                    val isEquipped = equipped.values.any { it == key }
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -295,11 +298,21 @@ private fun SellList(
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Column(Modifier.weight(1f)) {
-                            Text(
-                                text       = GameStrings.itemName(context, key),
-                                style      = MaterialTheme.typography.bodyLarge,
-                                fontWeight = FontWeight.Medium,
-                            )
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Text(
+                                    text       = GameStrings.itemName(context, key),
+                                    style      = MaterialTheme.typography.bodyLarge,
+                                    fontWeight = FontWeight.Medium,
+                                )
+                                if (isEquipped) {
+                                    Spacer(Modifier.width(6.dp))
+                                    Text(
+                                        text  = "(equipped)",
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    )
+                                }
+                            }
                             Text(
                                 text  = "×$qty in inventory",
                                 style = MaterialTheme.typography.bodySmall,

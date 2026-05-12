@@ -227,7 +227,14 @@ class ShopViewModel @Inject constructor(
     }
 
     fun openSell(itemKey: String, displayName: String) {
-        val have      = uiState.value.inventory[itemKey] ?: 0
+        val state        = uiState.value
+        val have         = state.inventory[itemKey] ?: 0
+        val equippedCount = state.equipped.values.count { it == itemKey }
+        val sellable     = (have - equippedCount).coerceAtLeast(0)
+        if (sellable == 0) {
+            _extra.update { it.copy(snackbarMessage = "$displayName is equipped — unequip it first to sell.") }
+            return
+        }
         val sellPrice = sellPriceFor(itemKey)
         _extra.update {
             it.copy(
@@ -235,8 +242,8 @@ class ShopViewModel @Inject constructor(
                     key         = itemKey,
                     displayName = displayName,
                     priceEach   = sellPrice,
-                    maxQty      = have,
-                    qty         = have,
+                    maxQty      = sellable,
+                    qty         = sellable,
                     isBuy       = false,
                 )
             )

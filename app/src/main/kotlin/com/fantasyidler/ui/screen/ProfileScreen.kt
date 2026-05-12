@@ -79,6 +79,12 @@ fun ProfileScreen(
     val achState by achievementsVm.uiState.collectAsState()
     val context   = LocalContext.current
     val snackbarHostState = remember { SnackbarHostState() }
+    LaunchedEffect(state.snackbarMessage) {
+        state.snackbarMessage?.let {
+            snackbarHostState.showSnackbar(it)
+            viewModel.snackbarConsumed()
+        }
+    }
     var selectedTab  by remember { mutableIntStateOf(0) }
     var showEditSheet by remember { mutableStateOf(false) }
     val tabs = listOf(

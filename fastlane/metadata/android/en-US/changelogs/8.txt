@@ -1,4 +1,6 @@
-- Bug fix: selling an equipped item now unequips it from its slot
+- Bug fix: selling an equipped item is now blocked with a warning rather than silently unequipping it
+- Bug fix: equipping gear now enforces level requirements and shows an error if you don't meet them
+- Crafting/Smithing/Fletching/Cooking recipe rows now show output stats (attack/defense/strength bonuses, healing, or damage) and level requirements with your current level
 - Bug fix: cancelling a prayer, runecrafting, or crafting session no longer loses your materials - bones, rune essence, and ingredients are only consumed when you collect the completed session
 - Bug fix: quest progress now accumulates correctly even if the prerequisite quest hasn't been claimed yet
 - Bug fix: armor bonuses now correctly apply in combat for all session types (direct, queued, and boss fights)

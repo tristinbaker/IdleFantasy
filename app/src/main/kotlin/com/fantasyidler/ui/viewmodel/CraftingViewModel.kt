@@ -38,6 +38,12 @@ data class CraftableRecipe(
     val outputQty: Int,
     val xpPerItem: Double,
     val skillName: String,
+    val outputAttackBonus: Int = 0,
+    val outputStrengthBonus: Int = 0,
+    val outputDefenseBonus: Int = 0,
+    val outputHealingValue: Int = 0,
+    val outputDamage: Int = 0,
+    val outputRequirements: Map<String, Int> = emptyMap(),
 )
 
 // ---------------------------------------------------------------------------
@@ -49,6 +55,7 @@ data class CraftingUiState(
     val cookingLevel:   Int = 1,
     val fletchingLevel: Int = 1,
     val craftingLevel:  Int = 1,
+    val skillLevels:    Map<String, Int> = emptyMap(),
     val inventory:      Map<String, Int> = emptyMap(),
     /** Non-null while the craft-quantity sheet is open. */
     val selectedRecipe: CraftableRecipe? = null,
@@ -103,6 +110,7 @@ class CraftingViewModel @Inject constructor(
                 cookingLevel   = levels[Skills.COOKING]   ?: 1,
                 fletchingLevel = levels[Skills.FLETCHING] ?: 1,
                 craftingLevel  = levels[Skills.CRAFTING]  ?: 1,
+                skillLevels    = levels,
                 inventory      = inventory,
                 isLoading      = false,
             )
@@ -115,15 +123,20 @@ class CraftingViewModel @Inject constructor(
 
     val smithingRecipes: List<CraftableRecipe> by lazy {
         gameData.smithingRecipes.map { (key, r) ->
+            val equip = gameData.equipment[key]
             CraftableRecipe(
-                key          = key,
-                displayName  = r.displayName,
-                levelRequired = r.levelRequired,
-                materials    = r.materials,
-                outputKey    = key,
-                outputQty    = r.outputQuantity,
-                xpPerItem    = r.xpPerItem,
-                skillName    = Skills.SMITHING,
+                key                 = key,
+                displayName         = r.displayName,
+                levelRequired       = r.levelRequired,
+                materials           = r.materials,
+                outputKey           = key,
+                outputQty           = r.outputQuantity,
+                xpPerItem           = r.xpPerItem,
+                skillName           = Skills.SMITHING,
+                outputAttackBonus   = equip?.attackBonus    ?: 0,
+                outputStrengthBonus = equip?.strengthBonus  ?: 0,
+                outputDefenseBonus  = equip?.defenseBonus   ?: 0,
+                outputRequirements  = equip?.requirements   ?: emptyMap(),
             )
         }.sortedBy { it.levelRequired }
     }
@@ -131,14 +144,15 @@ class CraftingViewModel @Inject constructor(
     val cookingRecipes: List<CraftableRecipe> by lazy {
         gameData.cookingRecipes.map { (key, r) ->
             CraftableRecipe(
-                key           = key,
-                displayName   = r.displayName,
-                levelRequired = r.levelRequired,
-                materials     = mapOf(r.rawItem to 1),
-                outputKey     = r.cookedItem,
-                outputQty     = 1,
-                xpPerItem     = r.xpPerItem,
-                skillName     = Skills.COOKING,
+                key                = key,
+                displayName        = r.displayName,
+                levelRequired      = r.levelRequired,
+                materials          = mapOf(r.rawItem to 1),
+                outputKey          = r.cookedItem,
+                outputQty          = 1,
+                xpPerItem          = r.xpPerItem,
+                skillName          = Skills.COOKING,
+                outputHealingValue = r.healingValue,
             )
         }.sortedBy { it.levelRequired }
     }
@@ -154,21 +168,27 @@ class CraftingViewModel @Inject constructor(
                 outputQty     = r.outputQuantity,
                 xpPerItem     = r.xpPerItem,
                 skillName     = Skills.FLETCHING,
+                outputDamage  = r.damage ?: 0,
             )
         }.sortedBy { it.levelRequired }
     }
 
     val jewelleryRecipes: List<CraftableRecipe> by lazy {
         gameData.craftingRecipes.map { (key, r) ->
+            val equip = gameData.equipment[key]
             CraftableRecipe(
-                key           = key,
-                displayName   = r.displayName,
-                levelRequired = r.levelRequired,
-                materials     = r.materials,
-                outputKey     = key,
-                outputQty     = r.outputQuantity,
-                xpPerItem     = r.xpPerItem,
-                skillName     = Skills.CRAFTING,
+                key                 = key,
+                displayName         = r.displayName,
+                levelRequired       = r.levelRequired,
+                materials           = r.materials,
+                outputKey           = key,
+                outputQty           = r.outputQuantity,
+                xpPerItem           = r.xpPerItem,
+                skillName           = Skills.CRAFTING,
+                outputAttackBonus   = equip?.attackBonus    ?: 0,
+                outputStrengthBonus = equip?.strengthBonus  ?: 0,
+                outputDefenseBonus  = equip?.defenseBonus   ?: 0,
+                outputRequirements  = equip?.requirements   ?: emptyMap(),
             )
         }.sortedBy { it.levelRequired }
     }

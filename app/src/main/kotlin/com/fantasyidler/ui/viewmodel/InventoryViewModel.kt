@@ -46,6 +46,7 @@ class InventoryViewModel @Inject constructor(
         val characterName: String = "",
         val characterGender: String = "",
         val characterRace: String = "",
+        val snackbarMessage: String? = null,
     ) {
         val totalLevel: Int get() = skillLevels.values.sum()
 
@@ -91,6 +92,16 @@ class InventoryViewModel @Inject constructor(
 
     fun equip(itemKey: String, slot: String) {
         viewModelScope.launch {
+            val requirements = gameData.equipment[itemKey]?.requirements ?: emptyMap()
+            val skillLevels  = uiState.value.skillLevels
+            val unmet = requirements.entries.firstOrNull { (skill, lvl) -> (skillLevels[skill] ?: 1) < lvl }
+            if (unmet != null) {
+                val (skill, lvl) = unmet
+                _extra.update {
+                    it.copy(snackbarMessage = "Requires ${skill.replaceFirstChar { c -> c.uppercase() }} $lvl to equip.")
+                }
+                return@launch
+            }
             val current = playerRepo.getEquipped().toMutableMap()
             current[slot] = itemKey
             playerRepo.updateEquipped(current)
@@ -149,6 +160,8 @@ class InventoryViewModel @Inject constructor(
     fun saveCharacterProfile(name: String, gender: String, race: String) {
         viewModelScope.launch { playerRepo.updateCharacterProfile(name, gender, race) }
     }
+
+    fun snackbarConsumed() = _extra.update { it.copy(snackbarMessage = null) }
 
     val allEquipment: Map<String, EquipmentData> get() = gameData.equipment
     val allPets: Map<String, PetData> get() = gameData.pets

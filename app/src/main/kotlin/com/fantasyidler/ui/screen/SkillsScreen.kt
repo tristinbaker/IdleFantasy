@@ -1273,6 +1273,31 @@ private fun CraftRecipeRow(
                 style = MaterialTheme.typography.bodySmall,
                 color = if (enabled) MaterialTheme.colorScheme.onSurfaceVariant else dim,
             )
+            val statParts = buildList {
+                if (recipe.outputAttackBonus   > 0) add("+${recipe.outputAttackBonus} Atk")
+                if (recipe.outputStrengthBonus > 0) add("+${recipe.outputStrengthBonus} Str")
+                if (recipe.outputDefenseBonus  > 0) add("+${recipe.outputDefenseBonus} Def")
+                if (recipe.outputHealingValue  > 0) add("Heals ${recipe.outputHealingValue} HP")
+                if (recipe.outputDamage        > 0) add("+${recipe.outputDamage} dmg")
+            }
+            if (statParts.isNotEmpty()) {
+                Text(
+                    text  = statParts.joinToString("  "),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = if (enabled) MaterialTheme.colorScheme.onSurfaceVariant else dim,
+                )
+            }
+            if (recipe.outputRequirements.isNotEmpty()) {
+                recipe.outputRequirements.forEach { (skill, lvl) ->
+                    val have       = craftState.skillLevels[skill] ?: 1
+                    val skillLabel = GameStrings.skillName(context, skill)
+                    Text(
+                        text  = "Requires $lvl $skillLabel (You have $have $skillLabel)",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = if (have >= lvl) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.error,
+                    )
+                }
+            }
         }
         Column(horizontalAlignment = Alignment.End) {
             when {

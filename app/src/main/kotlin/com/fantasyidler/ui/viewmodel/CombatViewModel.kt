@@ -324,18 +324,20 @@ class CombatViewModel @Inject constructor(
             try {
                 val boss    = gameData.bosses[bossKey] ?: error("Unknown boss: $bossKey")
                 val player  = playerRepo.getOrCreatePlayer()
-                val levels: Map<String, Int>    = json.decodeFromString(player.skillLevels)
+                val levels: Map<String, Int>       = json.decodeFromString(player.skillLevels)
                 val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
-                val weapon  = equipped[EquipSlot.WEAPON]?.let { gameData.equipment[it] }
+                val totalAtkBonus = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.attackBonus  ?: 0 }
+                val totalStrBonus = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.strengthBonus ?: 0 }
+                val totalDefBonus = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.defenseBonus  ?: 0 }
 
                 val frame = simulateBoss(
                     boss              = boss,
                     playerAttack      = levels[Skills.ATTACK]    ?: 1,
                     playerStrength    = levels[Skills.STRENGTH]  ?: 1,
-                    playerDefence     = levels[Skills.DEFENSE]   ?: 1,
+                    playerDefence     = (levels[Skills.DEFENSE]  ?: 1) + totalDefBonus,
                     playerHp          = levels[Skills.HITPOINTS] ?: 1,
-                    weaponAttackBonus = weapon?.attackBonus      ?: 0,
-                    weaponStrBonus    = weapon?.strengthBonus    ?: 0,
+                    weaponAttackBonus = totalAtkBonus,
+                    weaponStrBonus    = totalStrBonus,
                 )
                 val framesJson = json.encodeToString(
                     json.serializersModule.serializer<List<SessionFrame>>(),

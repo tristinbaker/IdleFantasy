@@ -219,16 +219,17 @@ class QueuedSessionStarter @Inject constructor(
             "boss" -> {
                 val bossKey = action.activityKey
                 val boss    = gameData.bosses[bossKey] ?: return
-                val weaponKey = equipped[EquipSlot.WEAPON]
-                val weapon    = weaponKey?.let { gameData.equipment[it] }
+                val totalAtkBonus = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.attackBonus  ?: 0 }
+                val totalStrBonus = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.strengthBonus ?: 0 }
+                val totalDefBonus = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.defenseBonus  ?: 0 }
                 val frame = simulateBoss(
                     boss              = boss,
                     playerAttack      = levels[Skills.ATTACK]    ?: 1,
                     playerStrength    = levels[Skills.STRENGTH]  ?: 1,
-                    playerDefence     = levels[Skills.DEFENSE]   ?: 1,
+                    playerDefence     = (levels[Skills.DEFENSE]  ?: 1) + totalDefBonus,
                     playerHp          = levels[Skills.HITPOINTS] ?: 1,
-                    weaponAttackBonus = weapon?.attackBonus      ?: 0,
-                    weaponStrBonus    = weapon?.strengthBonus    ?: 0,
+                    weaponAttackBonus = totalAtkBonus,
+                    weaponStrBonus    = totalStrBonus,
                 )
                 val framesJson = encodeFrames(listOf(frame))
                 sessionRepo.startSession(
@@ -255,15 +256,18 @@ class QueuedSessionStarter @Inject constructor(
                 val equippedFoodKeys = flags.equippedFood.keys
                 val availableFood    = inventory.filterKeys { it in equippedFoodKeys }
                 val spell = gameData.spells[flags.activeSpell]
+                val totalAtkBonus = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.attackBonus  ?: 0 }
+                val totalStrBonus = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.strengthBonus ?: 0 }
+                val totalDefBonus = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.defenseBonus  ?: 0 }
                 val result = CombatSimulator.simulateDungeon(
                     dungeon             = dungeon,
                     enemies             = gameData.enemies,
                     playerAttack        = levels[Skills.ATTACK]    ?: 1,
                     playerStrength      = levels[Skills.STRENGTH]  ?: 1,
-                    playerDefence       = levels[Skills.DEFENSE]   ?: 1,
+                    playerDefence       = (levels[Skills.DEFENSE]  ?: 1) + totalDefBonus,
                     playerHp            = levels[Skills.HITPOINTS] ?: 1,
-                    weaponAttackBonus   = weapon?.attackBonus      ?: 0,
-                    weaponStrengthBonus = weapon?.strengthBonus    ?: 0,
+                    weaponAttackBonus   = totalAtkBonus,
+                    weaponStrengthBonus = totalStrBonus,
                     combatStyle         = combatStyle,
                     playerRanged        = levels[Skills.RANGED]    ?: 1,
                     playerMagic         = levels[Skills.MAGIC]     ?: 1,
