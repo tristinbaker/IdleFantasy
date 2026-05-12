@@ -60,6 +60,12 @@ data class CombatUiState(
     val startingSession: Boolean = false,
     val snackbarMessage: String? = null,
     val combatResult: CombatSessionResult? = null,
+    val totalAttackBonus: Int = 0,
+    val totalStrengthBonus: Int = 0,
+    val totalDefenseBonus: Int = 0,
+    val dungeonSurvivalRatings: Map<String, CombatSimulator.SurvivalRating> = emptyMap(),
+    val noFoodWarningPending: Boolean = false,
+    val pendingDungeonKey: String? = null,
 )
 
 // ---------------------------------------------------------------------------
@@ -93,14 +99,36 @@ class CombatViewModel @Inject constructor(
             val inventory: Map<String, Int>    = json.decodeFromString(player.inventory)
             val weaponKey     = equipped[EquipSlot.WEAPON]
             val equippedWeapon = weaponKey?.let { gameData.equipment[it] }
+            val flags: PlayerFlags         = try { json.decodeFromString(player.flags) } catch (_: Exception) { PlayerFlags() }
+            val totalAtk = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.attackBonus  ?: 0 }
+            val totalStr = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.strengthBonus ?: 0 }
+            val totalDef = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.defenseBonus  ?: 0 }
+            val defenceLevel  = levels[Skills.DEFENSE]   ?: 1
+            val hpLevel       = levels[Skills.HITPOINTS] ?: 1
+            val totalFoodHeal = flags.equippedFood.keys.sumOf { key ->
+                (inventory[key] ?: 0) * (gameData.foodHealValues[key] ?: 0)
+            }
+            val survivalRatings = gameData.dungeons.mapValues { (_, dungeon) ->
+                CombatSimulator.estimateSurvival(
+                    dungeon      = dungeon,
+                    enemies      = gameData.enemies,
+                    playerDefence = defenceLevel,
+                    playerHp     = hpLevel,
+                    totalFoodHeal = totalFoodHeal,
+                )
+            }
             extra.copy(
-                isLoading      = false,
-                skillLevels    = levels,
-                skillXp        = xpMap,
-                equipped       = equipped,
-                inventory      = inventory,
-                equippedWeapon = equippedWeapon,
-                combatSession  = combatSession,
+                isLoading               = false,
+                skillLevels             = levels,
+                skillXp                 = xpMap,
+                equipped                = equipped,
+                inventory               = inventory,
+                equippedWeapon          = equippedWeapon,
+                combatSession           = combatSession,
+                totalAttackBonus        = totalAtk,
+                totalStrengthBonus      = totalStr,
+                totalDefenseBonus       = totalDef,
+                dungeonSurvivalRatings  = survivalRatings,
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), CombatUiState())
@@ -138,7 +166,7 @@ class CombatViewModel @Inject constructor(
     // Session start
     // ------------------------------------------------------------------
 
-    fun startDungeonSession(dungeonKey: String) {
+    fun startDungeonSession(dungeonKey: String, bypassFoodWarning: Boolean = false) {
         viewModelScope.launch {
             if (sessionRepo.getActiveSession() != null) {
                 val dungeonName = gameData.dungeons[dungeonKey]?.displayName ?: dungeonKey
@@ -150,6 +178,16 @@ class CombatViewModel @Inject constructor(
                     )
                 }
                 return@launch
+            }
+
+            if (!bypassFoodWarning) {
+                val p   = playerRepo.getOrCreatePlayer()
+                val f: PlayerFlags      = try { json.decodeFromString(p.flags) } catch (_: Exception) { PlayerFlags() }
+                val inv: Map<String, Int> = json.decodeFromString(p.inventory)
+                if (f.equippedFood.keys.none { (inv[it] ?: 0) > 0 }) {
+                    _extra.update { it.copy(noFoodWarningPending = true, pendingDungeonKey = dungeonKey) }
+                    return@launch
+                }
             }
 
             _extra.update { it.copy(startingSession = true, selectedDungeon = null) }
@@ -451,6 +489,16 @@ class CombatViewModel @Inject constructor(
 
     fun resultConsumed()   = _extra.update { it.copy(combatResult = null) }
     fun snackbarConsumed() = _extra.update { it.copy(snackbarMessage = null) }
+
+    fun confirmStartWithoutFood() {
+        val key = _extra.value.pendingDungeonKey ?: return
+        _extra.update { it.copy(noFoodWarningPending = false, pendingDungeonKey = null) }
+        startDungeonSession(key, bypassFoodWarning = true)
+    }
+
+    fun dismissNoFoodWarning() {
+        _extra.update { it.copy(noFoodWarningPending = false, pendingDungeonKey = null) }
+    }
 
     // ------------------------------------------------------------------
     // Helpers

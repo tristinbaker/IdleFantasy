@@ -213,15 +213,13 @@ class CraftingViewModel @Inject constructor(
                 return@launch
             }
 
-            // Consume materials immediately (locks them in for this session)
-            val consumed = playerRepo.consumeMaterials(recipe.materials, qty)
-            if (!consumed) {
+            // Build frames — 1 item crafted per minute
+            val player = playerRepo.getOrCreatePlayer()
+            val freshInv: Map<String, Int> = json.decodeFromString(player.inventory)
+            if (!recipe.materials.all { (item, needed) -> (freshInv[item] ?: 0) >= needed * qty }) {
                 _extra.update { it.copy(snackbarMessage = "Not enough materials") }
                 return@launch
             }
-
-            // Build frames — 1 item crafted per minute
-            val player = playerRepo.getOrCreatePlayer()
             val xpMap: Map<String, Long> = json.decodeFromString(player.skillXp)
             var currentXp = xpMap[recipe.skillName] ?: 0L
             val frames = mutableListOf<SessionFrame>()

@@ -201,6 +201,24 @@ class HomeViewModel @Inject constructor(
                             in craftingSkills  -> questRepo.recordCrafting(session.skillName, regular)
                             Skills.PRAYER      -> questRepo.recordBuried(frames.sumOf { it.kills })
                         }
+                        // Consume input materials at collect time (best-effort, like food)
+                        when (session.skillName) {
+                            Skills.PRAYER -> playerRepo.consumeItems(mapOf(session.activityKey to frames.size))
+                            Skills.RUNECRAFTING -> {
+                                val rune = gameData.runes[session.activityKey]
+                                if (rune != null) playerRepo.consumeItems(mapOf("rune_essence" to rune.essenceCost * frames.size))
+                            }
+                            in craftingSkills -> {
+                                val mats = when (session.skillName) {
+                                    Skills.SMITHING  -> gameData.smithingRecipes[session.activityKey]?.materials
+                                    Skills.COOKING   -> gameData.cookingRecipes[session.activityKey]?.let { mapOf(it.rawItem to 1) }
+                                    Skills.FLETCHING -> gameData.fletchingRecipes[session.activityKey]?.materials
+                                    Skills.CRAFTING  -> gameData.craftingRecipes[session.activityKey]?.materials
+                                    else             -> null
+                                }
+                                if (mats != null) playerRepo.consumeItems(mats.mapValues { (_, needed) -> needed * frames.size })
+                            }
+                        }
                         for ((id, _) in pets) {
                             val pd = gameData.pets[id] ?: continue
                             if (playerRepo.addPetIfNew(id, pd.boostPercent))

@@ -276,4 +276,45 @@ object CombatSimulator {
 
     /** Weapon attack speed in seconds (standard 4-tick OSRS weapon). */
     private const val ATTACK_SPEED_SEC = 2.4
+
+    enum class SurvivalRating { LIKELY, RISKY, UNLIKELY }
+
+    /**
+     * Deterministic survival estimate (no RNG). Returns a rating based on whether the
+     * player's total HP pool (base HP + all food heal) can outlast the expected dungeon
+     * damage over 60 minutes.
+     */
+    fun estimateSurvival(
+        dungeon: DungeonData,
+        enemies: Map<String, EnemyData>,
+        playerDefence: Int,
+        playerHp: Int,
+        totalFoodHeal: Int,
+    ): SurvivalRating {
+        if (dungeon.enemySpawns.isEmpty()) return SurvivalRating.LIKELY
+        val playerHpPool = (playerHp * 10) + totalFoodHeal
+        val totalWeight  = dungeon.enemySpawns.sumOf { it.weight }.coerceAtLeast(1)
+        var weightedDPM  = 0.0
+
+        for (spawn in dungeon.enemySpawns) {
+            val enemy = enemies[spawn.enemy] ?: continue
+            val weight       = spawn.weight.toDouble() / totalWeight
+            val enemyEffStr  = enemy.combatStats.strengthLevel + enemy.combatStats.strengthBonus
+            val enemyMaxHit  = max(1, 1 + enemyEffStr * (enemy.combatStats.strengthBonus + 64) / 640)
+            val enemyEffAtk  = enemy.combatStats.attackLevel + enemy.combatStats.attackBonus
+            val enemyHit     = when {
+                enemyEffAtk > playerDefence -> 1.0 - playerDefence / (2.0 * enemyEffAtk.coerceAtLeast(1))
+                else                        -> enemyEffAtk / (2.0 * playerDefence.coerceAtLeast(1))
+            }.coerceIn(0.10, 0.95)
+            weightedDPM += weight * ((enemyMaxHit / 2.0) * enemyHit / ATTACK_SPEED_SEC * 60.0)
+        }
+
+        val totalDamage    = weightedDPM * 60.0
+        val survivalRatio  = playerHpPool.toDouble() / totalDamage.coerceAtLeast(1.0)
+        return when {
+            survivalRatio >= 1.2 -> SurvivalRating.LIKELY
+            survivalRatio >= 0.6 -> SurvivalRating.RISKY
+            else                  -> SurvivalRating.UNLIKELY
+        }
+    }
 }

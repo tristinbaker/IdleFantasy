@@ -60,6 +60,9 @@ data class SkillsUiState(
     val sessionResult: SessionResult? = null,
     val anySessionActive: Boolean = false,
     val queueSize: Int = 0,
+    val miningEfficiency: Float = 1.0f,
+    val woodcuttingEfficiency: Float = 1.0f,
+    val fishingEfficiency: Float = 1.0f,
 )
 
 sealed class SheetState {
@@ -109,16 +112,20 @@ class SkillsViewModel @Inject constructor(
         if (player == null) {
             extra.copy(isLoading = true, activeSession = nonCombatSession, anySessionActive = session != null)
         } else {
-            val levels: Map<String, Int> = json.decodeFromString(player.skillLevels)
-            val xp: Map<String, Long>    = json.decodeFromString(player.skillXp)
+            val levels:   Map<String, Int>     = json.decodeFromString(player.skillLevels)
+            val xp:       Map<String, Long>    = json.decodeFromString(player.skillXp)
+            val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
             val flags = try { json.decodeFromString<PlayerFlags>(player.flags) } catch (_: Exception) { PlayerFlags() }
             extra.copy(
-                isLoading        = false,
-                skillLevels      = levels,
-                skillXp          = xp,
-                activeSession    = nonCombatSession,
-                anySessionActive = session != null,
-                queueSize        = flags.sessionQueue.size,
+                isLoading             = false,
+                skillLevels           = levels,
+                skillXp               = xp,
+                activeSession         = nonCombatSession,
+                anySessionActive      = session != null,
+                queueSize             = flags.sessionQueue.size,
+                miningEfficiency      = toolEfficiency(equipped[EquipSlot.PICKAXE],     EquipSlot.PICKAXE,     0),
+                woodcuttingEfficiency = toolEfficiency(equipped[EquipSlot.AXE],         EquipSlot.AXE,         0),
+                fishingEfficiency     = toolEfficiency(equipped[EquipSlot.FISHING_ROD], EquipSlot.FISHING_ROD, 0),
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), SkillsUiState())
@@ -283,15 +290,15 @@ class SkillsViewModel @Inject constructor(
             }
 
             val runeData = gameData.runes[runeKey] ?: return@launch
-            val consumed = playerRepo.consumeMaterials(mapOf("rune_essence" to runeData.essenceCost), qty)
-            if (!consumed) {
+            val player   = playerRepo.getOrCreatePlayer()
+            val inv: Map<String, Int> = json.decodeFromString(player.inventory)
+            if ((inv["rune_essence"] ?: 0) < runeData.essenceCost * qty) {
                 _uiState.update { it.copy(snackbarMessage = "Not enough Rune Essence") }
                 return@launch
             }
 
             _uiState.update { it.copy(startingSession = true, sheetSkill = null) }
             try {
-                val player   = playerRepo.getOrCreatePlayer()
                 val xpMap:   Map<String, Long> = json.decodeFromString(player.skillXp)
                 val levels:  Map<String, Int>  = json.decodeFromString(player.skillLevels)
                 val agilityLevel = levels[Skills.AGILITY] ?: 1
@@ -357,16 +364,16 @@ class SkillsViewModel @Inject constructor(
                 return@launch
             }
 
-            val bone = gameData.bones[boneKey] ?: return@launch
-            val consumed = playerRepo.consumeMaterials(mapOf(boneKey to 1), qty)
-            if (!consumed) {
+            val bone   = gameData.bones[boneKey] ?: return@launch
+            val player = playerRepo.getOrCreatePlayer()
+            val inv: Map<String, Int> = json.decodeFromString(player.inventory)
+            if ((inv[boneKey] ?: 0) < qty) {
                 _uiState.update { it.copy(snackbarMessage = "Not enough ${bone.displayName}") }
                 return@launch
             }
 
             _uiState.update { it.copy(startingSession = true, sheetSkill = null) }
             try {
-                val player   = playerRepo.getOrCreatePlayer()
                 val xpMap:   Map<String, Long> = json.decodeFromString(player.skillXp)
                 val levels:  Map<String, Int>  = json.decodeFromString(player.skillLevels)
                 var currentXp = xpMap[Skills.PRAYER] ?: 0L

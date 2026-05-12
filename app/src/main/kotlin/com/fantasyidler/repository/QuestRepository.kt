@@ -155,21 +155,12 @@ class QuestRepository @Inject constructor(
     // Private helpers
     // ---------------------------------------------------------------------------
 
-    /**
-     * Adds [delta] to the stored progress for [questId], creating a row if absent.
-     * Skips already-completed quests and quests whose prerequisite isn't done yet.
-     */
+    /** Adds [delta] to the stored progress for [questId], creating a row if absent. Skips already-completed quests. */
     suspend fun resetAllProgress() = questProgressDao.deleteAll()
 
     private suspend fun addProgress(questId: String, requiredAmount: Int, delta: Int) {
-        val quest = gameData.quests[questId] ?: return
-        if (!isPrerequisiteDone(quest.requiresPrevious)) return
-
-        val current = questProgressDao.getQuestProgress(questId)
-            ?: QuestProgress(questId)
-
+        val current = questProgressDao.getQuestProgress(questId) ?: QuestProgress(questId)
         if (current.completed) return
-
         questProgressDao.upsert(current.copy(progress = current.progress + delta))
     }
 

@@ -204,17 +204,24 @@ class PlayerRepository @Inject constructor(
         return true
     }
 
-    /** Sell [qty] of [itemKey] for [priceEach] coins each. Returns false if not enough in inventory. */
+    /** Sell [qty] of [itemKey] for [priceEach] coins each. Returns false if not enough in inventory. Unequips the item if no copies remain. */
     suspend fun sellItem(itemKey: String, qty: Int, priceEach: Int): Boolean {
         val player = getOrCreatePlayer()
         val inventory: MutableMap<String, Int> = json.decodeFromString(player.inventory)
         if ((inventory[itemKey] ?: 0) < qty) return false
         val remaining = (inventory[itemKey] ?: 0) - qty
         if (remaining <= 0) inventory.remove(itemKey) else inventory[itemKey] = remaining
+
+        val equipped: MutableMap<String, String?> = json.decodeFromString(player.equipped)
+        if (!inventory.containsKey(itemKey)) {
+            equipped.entries.forEach { if (it.value == itemKey) it.setValue(null) }
+        }
+
         playerDao.upsert(
             player.copy(
                 coins     = player.coins + priceEach.toLong() * qty,
                 inventory = json.encode<Map<String, Int>>(inventory),
+                equipped  = json.encode<Map<String, String?>>(equipped),
             )
         )
         return true

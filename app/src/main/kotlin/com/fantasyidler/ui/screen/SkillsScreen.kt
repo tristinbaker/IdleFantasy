@@ -147,12 +147,19 @@ fun SkillsScreen(
             // Gathering skills
             item { SectionHeader(stringResource(R.string.label_gathering_skills)) }
             items(Skills.GATHERING) { key ->
+                val efficiency = when (key) {
+                    Skills.MINING     -> state.miningEfficiency
+                    Skills.WOODCUTTING -> state.woodcuttingEfficiency
+                    Skills.FISHING    -> state.fishingEfficiency
+                    else              -> 1.0f
+                }
                 SkillRow(
-                    skillKey = key,
-                    level    = state.skillLevels[key] ?: 1,
-                    xp       = state.skillXp[key] ?: 0L,
-                    isActive = state.activeSession?.skillName == key && state.activeSession?.completed == false,
-                    onClick  = { viewModel.onSkillTapped(key) },
+                    skillKey       = key,
+                    level          = state.skillLevels[key] ?: 1,
+                    xp             = state.skillXp[key] ?: 0L,
+                    isActive       = state.activeSession?.skillName == key && state.activeSession?.completed == false,
+                    onClick        = { viewModel.onSkillTapped(key) },
+                    toolEfficiency = efficiency,
                 )
             }
 
@@ -371,6 +378,7 @@ private fun SkillRow(
     xp: Long,
     isActive: Boolean,
     onClick: () -> Unit,
+    toolEfficiency: Float = 1.0f,
 ) {
     val context  = LocalContext.current
     val name     = GameStrings.skillName(context, skillKey)
@@ -451,6 +459,14 @@ private fun SkillRow(
                     .clip(RoundedCornerShape(2.dp)),
                 color    = GoldPrimary,
             )
+            if (toolEfficiency > 1.0f) {
+                Spacer(Modifier.height(2.dp))
+                Text(
+                    text  = "×${"%.2f".format(toolEfficiency)} tool bonus",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.primary,
+                )
+            }
         }
     }
 }

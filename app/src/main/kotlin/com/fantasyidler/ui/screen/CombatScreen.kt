@@ -19,6 +19,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
@@ -57,6 +58,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.BuildConfig
 import com.fantasyidler.R
+import com.fantasyidler.simulator.CombatSimulator
 import com.fantasyidler.data.json.BossData
 import com.fantasyidler.data.json.DungeonData
 import com.fantasyidler.data.json.EquipmentData
@@ -143,15 +145,19 @@ fun CombatScreen(
                 }
                 when (selectedTab) {
                     0 -> CombatSelectionList(
-                        dungeons    = viewModel.dungeonList,
-                        bosses      = viewModel.bossList,
-                        skillLevels = state.skillLevels,
-                        onDungeon   = viewModel::selectDungeon,
-                        onBoss      = viewModel::selectBoss,
+                        dungeons         = viewModel.dungeonList,
+                        bosses           = viewModel.bossList,
+                        skillLevels      = state.skillLevels,
+                        survivalRatings  = state.dungeonSurvivalRatings,
+                        onDungeon        = viewModel::selectDungeon,
+                        onBoss           = viewModel::selectBoss,
                     )
                     1 -> CombatSkillsTab(
-                        skillLevels = state.skillLevels,
-                        skillXp     = state.skillXp,
+                        skillLevels        = state.skillLevels,
+                        skillXp            = state.skillXp,
+                        totalAttackBonus   = state.totalAttackBonus,
+                        totalStrengthBonus = state.totalStrengthBonus,
+                        totalDefenseBonus  = state.totalDefenseBonus,
                     )
                 }
             }
@@ -213,6 +219,25 @@ fun CombatScreen(
             )
         }
     }
+
+    // No-food warning dialog
+    if (state.noFoodWarningPending) {
+        AlertDialog(
+            onDismissRequest = viewModel::dismissNoFoodWarning,
+            title = { Text("No food equipped") },
+            text  = { Text("You have no food equipped. Without food you may die quickly and lose most of your rewards. Start anyway?") },
+            confirmButton = {
+                TextButton(onClick = viewModel::confirmStartWithoutFood) {
+                    Text("Start anyway")
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = viewModel::dismissNoFoodWarning) {
+                    Text("Cancel")
+                }
+            },
+        )
+    }
 }
 
 // ---------------------------------------------------------------------------
@@ -224,6 +249,7 @@ private fun CombatSelectionList(
     dungeons: List<DungeonData>,
     bosses: List<BossData>,
     skillLevels: Map<String, Int>,
+    survivalRatings: Map<String, CombatSimulator.SurvivalRating> = emptyMap(),
     modifier: Modifier = Modifier,
     onDungeon: (DungeonData) -> Unit,
     onBoss: (BossData) -> Unit,
@@ -234,9 +260,10 @@ private fun CombatSelectionList(
         item { CombatSectionHeader("Dungeons") }
         items(dungeons) { dungeon ->
             DungeonRow(
-                dungeon  = dungeon,
-                unlocked = combatLvl >= dungeon.recommendedLevel - UNLOCK_TOLERANCE,
-                onTap    = { onDungeon(dungeon) },
+                dungeon        = dungeon,
+                unlocked       = combatLvl >= dungeon.recommendedLevel - UNLOCK_TOLERANCE,
+                survivalRating = survivalRatings[dungeon.name],
+                onTap          = { onDungeon(dungeon) },
             )
         }
         item { CombatSectionHeader("Solo Bosses") }
@@ -264,13 +291,23 @@ private val COMBAT_SKILLS = listOf(
 private fun CombatSkillsTab(
     skillLevels: Map<String, Int>,
     skillXp: Map<String, Long>,
+    totalAttackBonus: Int,
+    totalStrengthBonus: Int,
+    totalDefenseBonus: Int,
 ) {
     LazyColumn(Modifier.fillMaxSize()) {
         items(COMBAT_SKILLS) { key ->
+            val gearBonus = when (key) {
+                Skills.ATTACK  -> totalAttackBonus
+                Skills.STRENGTH -> totalStrengthBonus
+                Skills.DEFENSE -> totalDefenseBonus
+                else           -> 0
+            }
             CombatSkillRow(
-                skillKey = key,
-                level    = skillLevels[key] ?: 1,
-                xp       = skillXp[key]     ?: 0L,
+                skillKey  = key,
+                level     = skillLevels[key] ?: 1,
+                xp        = skillXp[key]     ?: 0L,
+                gearBonus = gearBonus,
             )
         }
         item { Spacer(Modifier.height(16.dp)) }
@@ -282,6 +319,7 @@ private fun CombatSkillRow(
     skillKey: String,
     level: Int,
     xp: Long,
+    gearBonus: Int = 0,
 ) {
     val context  = LocalContext.current
     val name     = GameStrings.skillName(context, skillKey)
@@ -327,7 +365,17 @@ private fun CombatSkillRow(
                 modifier              = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-                Text(name, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium)
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(name, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium)
+                    if (gearBonus > 0) {
+                        Spacer(Modifier.width(6.dp))
+                        Text(
+                            text  = "+$gearBonus gear",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.primary,
+                        )
+                    }
+                }
                 Text(
                     text  = "${xp.formatXp()} XP",
                     style = MaterialTheme.typography.bodySmall,
@@ -410,6 +458,7 @@ private fun BossRow(
 private fun DungeonRow(
     dungeon: DungeonData,
     unlocked: Boolean,
+    survivalRating: CombatSimulator.SurvivalRating? = null,
     onTap: () -> Unit,
 ) {
     val dimColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
@@ -436,6 +485,18 @@ private fun DungeonRow(
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
+            if (unlocked && survivalRating != null) {
+                val (ratingText, ratingColor) = when (survivalRating) {
+                    CombatSimulator.SurvivalRating.LIKELY   -> "Looks manageable" to MaterialTheme.colorScheme.primary
+                    CombatSimulator.SurvivalRating.RISKY    -> "Risky with current setup" to MaterialTheme.colorScheme.tertiary
+                    CombatSimulator.SurvivalRating.UNLIKELY -> "Likely to die" to MaterialTheme.colorScheme.error
+                }
+                Text(
+                    text  = ratingText,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = ratingColor,
+                )
+            }
         }
         Spacer(Modifier.width(12.dp))
         Text(

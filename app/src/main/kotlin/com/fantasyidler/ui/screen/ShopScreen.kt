@@ -125,6 +125,7 @@ fun ShopScreen(
                     inventory          = state.inventory,
                     context            = context,
                     priceFor           = viewModel::sellPriceFor,
+                    categoryFor        = viewModel::sellCategoryFor,
                     onSell             = { key -> viewModel.openSell(key, GameStrings.itemName(context, key)) },
                     onSellJunk         = viewModel::sellJunk,
                     onSellOldEquipment = viewModel::sellOldEquipment,
@@ -228,15 +229,25 @@ private fun BuyList(
 // Sell list
 // ---------------------------------------------------------------------------
 
+private val SELL_CATEGORY_ORDER = listOf("Weapons", "Armor", "Tools", "Food", "Materials", "Misc")
+
 @Composable
 private fun SellList(
     inventory: Map<String, Int>,
     context: android.content.Context,
     priceFor: (String) -> Int,
+    categoryFor: (String) -> String,
     onSell: (String) -> Unit,
     onSellJunk: () -> Unit,
     onSellOldEquipment: () -> Unit,
 ) {
+    val grouped = remember(inventory) {
+        inventory.entries
+            .groupBy { categoryFor(it.key) }
+            .entries
+            .sortedBy { SELL_CATEGORY_ORDER.indexOf(it.key).let { i -> if (i < 0) Int.MAX_VALUE else i } }
+    }
+
     LazyColumn(Modifier.fillMaxSize()) {
         item {
             Row(
@@ -272,35 +283,38 @@ private fun SellList(
                 }
             }
         } else {
-            items(inventory.entries.toList(), key = { it.key }) { (key, qty) ->
-                val sellPrice = priceFor(key)
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable { onSell(key) }
-                        .padding(horizontal = 16.dp, vertical = 10.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Column(Modifier.weight(1f)) {
+            grouped.forEach { (category, entries) ->
+                item(key = "sell_hdr_$category") { ShopSectionHeader(category) }
+                items(entries, key = { it.key }) { (key, qty) ->
+                    val sellPrice = priceFor(key)
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable { onSell(key) }
+                            .padding(horizontal = 16.dp, vertical = 10.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Column(Modifier.weight(1f)) {
+                            Text(
+                                text       = GameStrings.itemName(context, key),
+                                style      = MaterialTheme.typography.bodyLarge,
+                                fontWeight = FontWeight.Medium,
+                            )
+                            Text(
+                                text  = "×$qty in inventory",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
                         Text(
-                            text       = GameStrings.itemName(context, key),
-                            style      = MaterialTheme.typography.bodyLarge,
-                            fontWeight = FontWeight.Medium,
-                        )
-                        Text(
-                            text  = "×$qty in inventory",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            text       = "$sellPrice coins ea.",
+                            style      = MaterialTheme.typography.bodyMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            color      = GoldPrimary,
                         )
                     }
-                    Text(
-                        text       = "$sellPrice coins ea.",
-                        style      = MaterialTheme.typography.bodyMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        color      = GoldPrimary,
-                    )
+                    HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
                 }
-                HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
             }
         }
         item { Spacer(Modifier.height(16.dp)) }

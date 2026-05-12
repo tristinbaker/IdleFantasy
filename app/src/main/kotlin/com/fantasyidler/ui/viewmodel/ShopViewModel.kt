@@ -291,6 +291,26 @@ class ShopViewModel @Inject constructor(
     // Private helpers
     // ------------------------------------------------------------------
 
+    fun sellCategoryFor(itemKey: String): String {
+        val equip = gameData.equipment[itemKey]
+        if (equip != null) {
+            return when (equip.slot) {
+                EquipSlot.WEAPON                                      -> "Weapons"
+                EquipSlot.PICKAXE, EquipSlot.AXE, EquipSlot.FISHING_ROD -> "Tools"
+                else                                                  -> "Armor"
+            }
+        }
+        if (itemKey in gameData.foodHealValues) return "Food"
+        return when {
+            "ore"     in itemKey || "bar"     in itemKey ||
+            "gem"     in itemKey || "log"     in itemKey ||
+            "bone"    in itemKey || "essence" in itemKey ||
+            "arrow"   in itemKey || "raw_"    in itemKey ||
+            "cooked"  in itemKey              -> "Materials"
+            else                              -> "Misc"
+        }
+    }
+
     private fun scoreFor(item: com.fantasyidler.data.json.EquipmentData, slot: String): Float = when (slot) {
         EquipSlot.PICKAXE     -> item.miningEfficiency ?: 0f
         EquipSlot.AXE         -> item.woodcuttingEfficiency ?: 0f

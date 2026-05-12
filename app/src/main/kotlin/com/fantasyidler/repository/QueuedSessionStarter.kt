@@ -120,11 +120,43 @@ class QueuedSessionStarter @Inject constructor(
                 )
                 startSession(action, result)
             }
+            Skills.RUNECRAFTING -> {
+                val runeKey  = action.activityKey
+                val runeData = gameData.runes[runeKey] ?: return
+                val qty      = action.qty.takeIf { it > 0 } ?: return
+                if ((inventory["rune_essence"] ?: 0) < runeData.essenceCost * qty) return
+                val currentXp = xpMap[Skills.RUNECRAFTING] ?: 0L
+                val frames = buildList {
+                    var xp = currentXp
+                    for (i in 1..qty) {
+                        val before = XpTable.levelForXp(xp)
+                        val multiplier = when {
+                            before >= 75 -> 3
+                            before >= 50 -> 2
+                            else         -> 1
+                        }
+                        val runesProduced = multiplier
+                        val gain = (runeData.xpPerRune * runesProduced).toInt()
+                        xp += gain
+                        add(SessionFrame(
+                            minute      = i,
+                            xpGain      = gain,
+                            xpBefore    = xp - gain,
+                            xpAfter     = xp,
+                            levelBefore = before,
+                            levelAfter  = XpTable.levelForXp(xp),
+                            items       = mapOf(runeKey to runesProduced),
+                        ))
+                    }
+                }
+                val perEssenceMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
+                sessionRepo.startSession(Skills.RUNECRAFTING, runeKey, encodeFrames(frames), qty.toLong() * perEssenceMs, action.skillDisplayName)
+            }
             Skills.PRAYER -> {
                 val boneKey = action.activityKey
                 val bone    = gameData.bones[boneKey] ?: return
                 val qty     = action.qty.takeIf { it > 0 } ?: return
-                if (!playerRepo.consumeMaterials(mapOf(boneKey to 1), qty)) return
+                if ((inventory[boneKey] ?: 0) < qty) return
                 val currentXp = xpMap[Skills.PRAYER] ?: 0L
                 val frames = buildList {
                     var xp = currentXp
@@ -155,7 +187,7 @@ class QueuedSessionStarter @Inject constructor(
             Skills.SMITHING -> {
                 val r   = gameData.smithingRecipes[action.activityKey] ?: return
                 val qty = action.qty.takeIf { it > 0 } ?: return
-                if (!playerRepo.consumeMaterials(r.materials, qty)) return
+                if (!r.materials.all { (item, needed) -> (inventory[item] ?: 0) >= needed * qty }) return
                 val frames = buildCraftFrames(xpMap[Skills.SMITHING] ?: 0L, qty, r.xpPerItem, r.outputQuantity, action.activityKey)
                 val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
                 sessionRepo.startSession(Skills.SMITHING, action.activityKey, encodeFrames(frames), qty * perItemMs, action.skillDisplayName)
@@ -163,7 +195,7 @@ class QueuedSessionStarter @Inject constructor(
             Skills.COOKING -> {
                 val r: CookingRecipe = gameData.cookingRecipes[action.activityKey] ?: return
                 val qty = action.qty.takeIf { it > 0 } ?: return
-                if (!playerRepo.consumeMaterials(mapOf(r.rawItem to 1), qty)) return
+                if ((inventory[r.rawItem] ?: 0) < qty) return
                 val frames = buildCraftFrames(xpMap[Skills.COOKING] ?: 0L, qty, r.xpPerItem, 1, r.cookedItem)
                 val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
                 sessionRepo.startSession(Skills.COOKING, action.activityKey, encodeFrames(frames), qty * perItemMs, action.skillDisplayName)
@@ -171,7 +203,7 @@ class QueuedSessionStarter @Inject constructor(
             Skills.FLETCHING -> {
                 val r   = gameData.fletchingRecipes[action.activityKey] ?: return
                 val qty = action.qty.takeIf { it > 0 } ?: return
-                if (!playerRepo.consumeMaterials(r.materials, qty)) return
+                if (!r.materials.all { (item, needed) -> (inventory[item] ?: 0) >= needed * qty }) return
                 val frames = buildCraftFrames(xpMap[Skills.FLETCHING] ?: 0L, qty, r.xpPerItem, r.outputQuantity, r.itemName)
                 val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
                 sessionRepo.startSession(Skills.FLETCHING, action.activityKey, encodeFrames(frames), qty * perItemMs, action.skillDisplayName)
@@ -179,7 +211,7 @@ class QueuedSessionStarter @Inject constructor(
             Skills.CRAFTING -> {
                 val r   = gameData.craftingRecipes[action.activityKey] ?: return
                 val qty = action.qty.takeIf { it > 0 } ?: return
-                if (!playerRepo.consumeMaterials(r.materials, qty)) return
+                if (!r.materials.all { (item, needed) -> (inventory[item] ?: 0) >= needed * qty }) return
                 val frames = buildCraftFrames(xpMap[Skills.CRAFTING] ?: 0L, qty, r.xpPerItem, r.outputQuantity, action.activityKey)
                 val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
                 sessionRepo.startSession(Skills.CRAFTING, action.activityKey, encodeFrames(frames), qty * perItemMs, action.skillDisplayName)
