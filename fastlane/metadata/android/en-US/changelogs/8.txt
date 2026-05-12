@@ -1,8 +1,10 @@
 - Bug fix: selling an equipped item now unequips it from its slot
 - Bug fix: cancelling a prayer, runecrafting, or crafting session no longer loses your materials - bones, rune essence, and ingredients are only consumed when you collect the completed session
 - Bug fix: quest progress now accumulates correctly even if the prerequisite quest hasn't been claimed yet
+- Bug fix: armor bonuses now correctly apply in combat for all session types (direct, queued, and boss fights)
 - Combat screen: Attack, Strength, and Defence rows show your total gear bonus (+N from gear)
 - Skills screen: Mining, Woodcutting, and Fishing rows show your equipped tool efficiency
 - Dungeon list: each dungeon shows a survival estimate (Looks manageable / Risky / Likely to die) based on your current gear and food
 - Warning dialog appears before entering a dungeon if you have no food equipped
 - Shop sell tab: items are now grouped by category (Weapons, Armor, Tools, Food, Materials, Misc)
+- Combat sessions now end as soon as the player dies rather than running the full timer
