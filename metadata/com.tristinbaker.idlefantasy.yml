@@ -64,7 +64,7 @@ Builds:
 
   - versionName: 1.1.1
     versionCode: 8
-    commit: 513fcbe2d12ab2592884168af5366acbe00088ba
+    commit: 8a14a190c464a5f6b80efc539c8e1c35801aa20a
     subdir: app
     gradle:
       - yes
