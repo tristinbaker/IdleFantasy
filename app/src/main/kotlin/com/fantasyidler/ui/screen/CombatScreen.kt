@@ -542,14 +542,15 @@ private fun CombatSessionBanner(
     }
 
     val isDone = session.completed || now >= endsAt
-    val fullCombatEndsAt = remember(session.sessionId, session.skillName, session.frames, session.startedAt, session.endsAt) {
+    val actualCombatEndsAt = remember(session.sessionId, session.skillName, session.frames, session.startedAt, session.endsAt) {
         if (session.skillName != "combat") return@remember null
         val frames = runCatching { Json.decodeFromString<List<SessionFrame>>(session.frames) }
             .getOrElse { emptyList() }
-        if (frames.size !in 1..59) return@remember endsAt
-        val actualDurationMs = (session.endsAt - session.startedAt).coerceAtLeast(1L)
-        val perFrameMs = (actualDurationMs / frames.size).coerceAtLeast(1L)
-        session.startedAt + (perFrameMs * 60L)
+        if (frames.isEmpty()) return@remember null
+        val fullDurationMs = (session.endsAt - session.startedAt).coerceAtLeast(1L)
+        val perFrameMs = (fullDurationMs / 60L).coerceAtLeast(1L)
+        val actualFrames = frames.size.coerceAtMost(60)
+        session.startedAt + perFrameMs * actualFrames
     }
 
     Column(
@@ -575,18 +576,17 @@ private fun CombatSessionBanner(
         Spacer(Modifier.height(16.dp))
 
         if (!isDone) {
-            val primaryEndsAt = fullCombatEndsAt ?: endsAt
-            val remaining = remember(now, primaryEndsAt) { primaryEndsAt.toCountdown() }
+            val remaining = remember(now) { endsAt.toCountdown() }
             Text(
                 text  = remaining,
                 style = MaterialTheme.typography.displaySmall,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.primary,
             )
-            if (BuildConfig.DEBUG && session.skillName == "combat") {
+            if (BuildConfig.DEBUG && actualCombatEndsAt != null) {
                 Spacer(Modifier.height(4.dp))
                 Text(
-                    text  = remember(now, endsAt) { "Actual remaining: ${endsAt.toCountdown()}" },
+                    text  = remember(now, actualCombatEndsAt) { "Actual remaining: ${actualCombatEndsAt.toCountdown()}" },
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )

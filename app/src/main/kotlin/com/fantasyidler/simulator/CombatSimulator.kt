@@ -156,12 +156,7 @@ object CombatSimulator {
             if (diedThisMinute) break   // stop simulation on death
         }
 
-        val fullDurationMs = SkillSimulator.sessionDurationMs(agilityLevel)
-        val perFrameMs = (fullDurationMs / 60L).coerceAtLeast(1L)
-        val simulatedFrames = frames.size.coerceAtLeast(1)
-        val actualDurationMs = perFrameMs * simulatedFrames
-
-        return SkillSimulator.Result(frames, actualDurationMs)
+        return SkillSimulator.Result(frames, SkillSimulator.sessionDurationMs(agilityLevel))
     }
 
     // ------------------------------------------------------------------
