@@ -51,7 +51,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.BuildConfig
 import com.fantasyidler.R
 import com.fantasyidler.data.model.QueuedAction
-import com.fantasyidler.data.model.SessionFrame
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.HomeViewModel
@@ -63,7 +62,6 @@ import com.fantasyidler.util.formatCoins
 import com.fantasyidler.util.toCountdown
 import kotlinx.coroutines.delay
 import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -334,16 +332,6 @@ private fun HomeSessionCard(
     }
 
     val isDone = session.completed || now >= endsAt
-    val actualCombatEndsAt = remember(session.sessionId, session.skillName, session.frames, session.startedAt, session.endsAt) {
-        if (session.skillName != "combat") return@remember null
-        val frames = runCatching { Json.decodeFromString<List<SessionFrame>>(session.frames) }
-            .getOrElse { emptyList() }
-        if (frames.isEmpty()) return@remember null
-        val fullDurationMs = (session.endsAt - session.startedAt).coerceAtLeast(1L)
-        val perFrameMs = (fullDurationMs / 60L).coerceAtLeast(1L)
-        val actualFrames = frames.size.coerceAtMost(60)
-        session.startedAt + perFrameMs * actualFrames
-    }
 
     val skillLabel = when (session.skillName) {
         "combat" -> context.getString(R.string.label_combat)
@@ -389,14 +377,6 @@ private fun HomeSessionCard(
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onSecondaryContainer,
                 )
-                if (BuildConfig.DEBUG && actualCombatEndsAt != null) {
-                    Spacer(Modifier.height(2.dp))
-                    Text(
-                        text  = remember(now, actualCombatEndsAt) { "Actual remaining: ${actualCombatEndsAt.toCountdown()}" },
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.8f),
-                    )
-                }
             }
 
             Spacer(Modifier.height(12.dp))

@@ -63,6 +63,7 @@ data class SkillsUiState(
     val miningEfficiency: Float = 1.0f,
     val woodcuttingEfficiency: Float = 1.0f,
     val fishingEfficiency: Float = 1.0f,
+    val sessionDurationMs: Long = 0L,
 )
 
 sealed class SheetState {
@@ -126,6 +127,7 @@ class SkillsViewModel @Inject constructor(
                 miningEfficiency      = toolEfficiency(equipped[EquipSlot.PICKAXE],     EquipSlot.PICKAXE,     0),
                 woodcuttingEfficiency = toolEfficiency(equipped[EquipSlot.AXE],         EquipSlot.AXE,         0),
                 fishingEfficiency     = toolEfficiency(equipped[EquipSlot.FISHING_ROD], EquipSlot.FISHING_ROD, 0),
+                sessionDurationMs     = SkillSimulator.sessionDurationMs(levels[Skills.AGILITY] ?: 1),
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), SkillsUiState())

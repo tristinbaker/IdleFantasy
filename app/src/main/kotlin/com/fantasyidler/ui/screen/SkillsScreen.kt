@@ -83,6 +83,7 @@ import com.fantasyidler.ui.viewmodel.SkillsUiState
 import com.fantasyidler.ui.viewmodel.SkillsViewModel
 import com.fantasyidler.ui.viewmodel.xpProgressFraction
 import com.fantasyidler.util.GameStrings
+import com.fantasyidler.util.formatDurationMs
 import com.fantasyidler.util.formatXp
 import com.fantasyidler.util.toCountdown
 import java.util.Locale
@@ -218,18 +219,20 @@ fun SkillsScreen(
         ) {
             when (sheet) {
                 is SheetState.Mining -> MiningSheet(
-                    ores             = sheet.ores,
-                    isStarting       = state.startingSession,
-                    hasActiveSession = state.anySessionActive,
-                    isQueueFull      = state.queueSize >= 3,
-                    onSelect         = { oreKey -> viewModel.startMiningSession(oreKey) },
+                    ores              = sheet.ores,
+                    isStarting        = state.startingSession,
+                    hasActiveSession  = state.anySessionActive,
+                    isQueueFull       = state.queueSize >= 3,
+                    sessionDurationMs = state.sessionDurationMs,
+                    onSelect          = { oreKey -> viewModel.startMiningSession(oreKey) },
                 )
                 is SheetState.Woodcutting -> WoodcuttingSheet(
-                    trees            = sheet.trees,
-                    isStarting       = state.startingSession,
-                    hasActiveSession = state.anySessionActive,
-                    isQueueFull      = state.queueSize >= 3,
-                    onSelect         = { treeKey -> viewModel.startWoodcuttingSession(treeKey) },
+                    trees             = sheet.trees,
+                    isStarting        = state.startingSession,
+                    hasActiveSession  = state.anySessionActive,
+                    isQueueFull       = state.queueSize >= 3,
+                    sessionDurationMs = state.sessionDurationMs,
+                    onSelect          = { treeKey -> viewModel.startWoodcuttingSession(treeKey) },
                 )
                 SheetState.Fishing -> FishingSheet(
                     state            = state,
@@ -239,35 +242,39 @@ fun SkillsScreen(
                     onStart          = viewModel::startFishingSession,
                 )
                 is SheetState.Agility -> AgilitySheet(
-                    courses          = sheet.courses,
-                    isStarting       = state.startingSession,
-                    hasActiveSession = state.anySessionActive,
-                    isQueueFull      = state.queueSize >= 3,
-                    onSelect         = { courseKey -> viewModel.startAgilitySession(courseKey) },
+                    courses           = sheet.courses,
+                    isStarting        = state.startingSession,
+                    hasActiveSession  = state.anySessionActive,
+                    isQueueFull       = state.queueSize >= 3,
+                    sessionDurationMs = state.sessionDurationMs,
+                    onSelect          = { courseKey -> viewModel.startAgilitySession(courseKey) },
                 )
                 is SheetState.Firemaking -> FiremakingSheet(
-                    availableLogs    = sheet.availableLogs,
-                    isStarting       = state.startingSession,
-                    hasActiveSession = state.anySessionActive,
-                    isQueueFull      = state.queueSize >= 3,
-                    onSelect         = { logKey -> viewModel.startFiremakingSession(logKey) },
-                    context          = context,
+                    availableLogs     = sheet.availableLogs,
+                    isStarting        = state.startingSession,
+                    hasActiveSession  = state.anySessionActive,
+                    isQueueFull       = state.queueSize >= 3,
+                    sessionDurationMs = state.sessionDurationMs,
+                    onSelect          = { logKey -> viewModel.startFiremakingSession(logKey) },
+                    context           = context,
                 )
                 is SheetState.Runecrafting -> RunecraftingSheet(
-                    sheet            = sheet,
-                    isStarting       = state.startingSession,
-                    hasActiveSession = state.anySessionActive,
-                    isQueueFull      = state.queueSize >= 3,
-                    onStart          = viewModel::startRunecraftingSession,
+                    sheet             = sheet,
+                    isStarting        = state.startingSession,
+                    hasActiveSession  = state.anySessionActive,
+                    isQueueFull       = state.queueSize >= 3,
+                    sessionDurationMs = state.sessionDurationMs,
+                    onStart           = viewModel::startRunecraftingSession,
                 )
                 is SheetState.Prayer -> PrayerSheet(
-                    availableBones   = sheet.availableBones,
-                    inventory        = sheet.inventory,
-                    prayerLevel      = state.skillLevels[Skills.PRAYER] ?: 1,
-                    isStarting       = state.startingSession,
-                    hasActiveSession = state.anySessionActive,
-                    isQueueFull      = state.queueSize >= 3,
-                    onStart          = viewModel::startPrayerSession,
+                    availableBones    = sheet.availableBones,
+                    inventory         = sheet.inventory,
+                    prayerLevel       = state.skillLevels[Skills.PRAYER] ?: 1,
+                    isStarting        = state.startingSession,
+                    hasActiveSession  = state.anySessionActive,
+                    isQueueFull       = state.queueSize >= 3,
+                    sessionDurationMs = state.sessionDurationMs,
+                    onStart           = viewModel::startPrayerSession,
                 )
                 is SheetState.Crafting -> {
                     val craftState by craftingViewModel.uiState.collectAsState()
@@ -277,6 +284,7 @@ fun SkillsScreen(
                         craftingViewModel = craftingViewModel,
                         hasActiveSession  = state.anySessionActive,
                         isQueueFull       = state.queueSize >= 3,
+                        sessionDurationMs = state.sessionDurationMs,
                         context           = context,
                         onDismiss         = {
                             viewModel.dismissSheet()
@@ -498,6 +506,7 @@ private fun MiningSheet(
     isStarting: Boolean,
     hasActiveSession: Boolean,
     isQueueFull: Boolean,
+    sessionDurationMs: Long,
     onSelect: (String) -> Unit,
 ) {
     val context = LocalContext.current
@@ -507,6 +516,14 @@ private fun MiningSheet(
             style    = MaterialTheme.typography.titleMedium,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
         )
+        if (sessionDurationMs > 0) {
+            Text(
+                text     = "Session: ${sessionDurationMs / 60_000}m",
+                style    = MaterialTheme.typography.bodySmall,
+                color    = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
+            )
+        }
         HorizontalDivider()
         Column(Modifier.verticalScroll(rememberScrollState())) {
             ores.entries
@@ -531,6 +548,7 @@ private fun WoodcuttingSheet(
     isStarting: Boolean,
     hasActiveSession: Boolean,
     isQueueFull: Boolean,
+    sessionDurationMs: Long,
     onSelect: (String) -> Unit,
 ) {
     val context = LocalContext.current
@@ -540,6 +558,14 @@ private fun WoodcuttingSheet(
             style    = MaterialTheme.typography.titleMedium,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
         )
+        if (sessionDurationMs > 0) {
+            Text(
+                text     = "Session: ${sessionDurationMs / 60_000}m",
+                style    = MaterialTheme.typography.bodySmall,
+                color    = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
+            )
+        }
         HorizontalDivider()
         Column(Modifier.verticalScroll(rememberScrollState())) {
             trees.entries
@@ -583,6 +609,14 @@ private fun FishingSheet(
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
+        if (state.sessionDurationMs > 0) {
+            Spacer(Modifier.height(2.dp))
+            Text(
+                text  = "Session: ${state.sessionDurationMs / 60_000}m",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
         Spacer(Modifier.height(16.dp))
         Button(
             onClick  = onStart,
@@ -663,6 +697,7 @@ private fun AgilitySheet(
     isStarting: Boolean,
     hasActiveSession: Boolean,
     isQueueFull: Boolean,
+    sessionDurationMs: Long,
     onSelect: (String) -> Unit,
 ) {
     Column(Modifier.padding(bottom = 24.dp)) {
@@ -671,6 +706,14 @@ private fun AgilitySheet(
             style    = MaterialTheme.typography.titleMedium,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
         )
+        if (sessionDurationMs > 0) {
+            Text(
+                text     = "Session: ${sessionDurationMs / 60_000}m",
+                style    = MaterialTheme.typography.bodySmall,
+                color    = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
+            )
+        }
         HorizontalDivider()
         Column(Modifier.verticalScroll(rememberScrollState())) {
             courses.entries
@@ -699,6 +742,7 @@ private fun FiremakingSheet(
     isStarting: Boolean,
     hasActiveSession: Boolean,
     isQueueFull: Boolean,
+    sessionDurationMs: Long,
     onSelect: (String) -> Unit,
     context: android.content.Context,
 ) {
@@ -708,6 +752,14 @@ private fun FiremakingSheet(
             style    = MaterialTheme.typography.titleMedium,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
         )
+        if (sessionDurationMs > 0) {
+            Text(
+                text     = "Session: ${sessionDurationMs / 60_000}m",
+                style    = MaterialTheme.typography.bodySmall,
+                color    = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
+            )
+        }
         HorizontalDivider()
         if (availableLogs.isEmpty()) {
             Box(
@@ -751,6 +803,7 @@ private fun PrayerSheet(
     isStarting: Boolean,
     hasActiveSession: Boolean,
     isQueueFull: Boolean,
+    sessionDurationMs: Long,
     onStart: (boneKey: String, qty: Int) -> Unit,
 ) {
     var selectedKey by remember { mutableStateOf<String?>(null) }
@@ -881,6 +934,14 @@ private fun PrayerSheet(
                 fontWeight = FontWeight.SemiBold,
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
             )
+            if (sessionDurationMs > 0) {
+                Text(
+                    text     = "~${(qty.toLong() * (sessionDurationMs / 60)).formatDurationMs()}",
+                    style    = MaterialTheme.typography.bodySmall,
+                    color    = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
+                )
+            }
 
             Button(
                 onClick  = { onStart(selectedKey!!, qty) },
@@ -906,6 +967,7 @@ private fun RunecraftingSheet(
     isStarting: Boolean,
     hasActiveSession: Boolean,
     isQueueFull: Boolean,
+    sessionDurationMs: Long,
     onStart: (String, Int) -> Unit,
 ) {
     var selectedKey by remember { mutableStateOf<String?>(null) }
@@ -1049,6 +1111,14 @@ private fun RunecraftingSheet(
                 fontWeight = FontWeight.SemiBold,
                 modifier   = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
             )
+            if (sessionDurationMs > 0) {
+                Text(
+                    text     = "~${(qty.toLong() * (sessionDurationMs / 60)).formatDurationMs()}",
+                    style    = MaterialTheme.typography.bodySmall,
+                    color    = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
+                )
+            }
 
             Button(
                 onClick  = { onStart(selectedKey!!, qty) },
@@ -1166,6 +1236,7 @@ private fun CraftSkillSheet(
     craftingViewModel: CraftingViewModel,
     hasActiveSession: Boolean,
     isQueueFull: Boolean,
+    sessionDurationMs: Long,
     context: android.content.Context,
     onDismiss: () -> Unit,
 ) {
@@ -1186,14 +1257,15 @@ private fun CraftSkillSheet(
 
     if (selected != null) {
         CraftQuantityContent(
-            recipe           = selected,
-            state            = craftState,
-            hasActiveSession = hasActiveSession,
-            isQueueFull      = isQueueFull,
-            context          = context,
-            onSetQuantity    = { craftingViewModel.setQuantity(it, craftState.maxCraftable(selected)) },
-            onCraft          = craftingViewModel::craft,
-            onBack           = craftingViewModel::dismissRecipe,
+            recipe            = selected,
+            state             = craftState,
+            hasActiveSession  = hasActiveSession,
+            isQueueFull       = isQueueFull,
+            sessionDurationMs = sessionDurationMs,
+            context           = context,
+            onSetQuantity     = { craftingViewModel.setQuantity(it, craftState.maxCraftable(selected)) },
+            onCraft           = craftingViewModel::craft,
+            onBack            = craftingViewModel::dismissRecipe,
         )
     } else {
         Column(
@@ -1336,6 +1408,7 @@ private fun CraftQuantityContent(
     state: CraftingUiState,
     hasActiveSession: Boolean,
     isQueueFull: Boolean,
+    sessionDurationMs: Long,
     context: android.content.Context,
     onSetQuantity: (Int) -> Unit,
     onCraft: () -> Unit,
@@ -1426,6 +1499,14 @@ private fun CraftQuantityContent(
             color    = GoldPrimary,
             modifier = Modifier.align(Alignment.CenterHorizontally),
         )
+        if (sessionDurationMs > 0) {
+            Text(
+                text     = "~${(qty.toLong() * (sessionDurationMs / 60)).formatDurationMs()}",
+                style    = MaterialTheme.typography.bodySmall,
+                color    = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+            )
+        }
         Spacer(Modifier.height(20.dp))
         Button(
             onClick  = onCraft,

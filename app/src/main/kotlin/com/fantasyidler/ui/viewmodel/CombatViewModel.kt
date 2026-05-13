@@ -292,12 +292,18 @@ class CombatViewModel @Inject constructor(
                     json.serializersModule.serializer<List<SessionFrame>>(),
                     result.frames,
                 )
+                val deathFrameIdx = result.frames.indexOfFirst { it.died }
+                val alarmOffsetMs = if (deathFrameIdx >= 0) {
+                    val perFrameMs = result.durationMs / 60L
+                    perFrameMs * (deathFrameIdx + 1)
+                } else null
                 sessionRepo.startSession(
                     skillName        = "combat",
                     activityKey      = dungeonKey,
                     frames           = framesJson,
                     durationMs       = result.durationMs,
                     skillDisplayName = dungeon.displayName,
+                    alarmOffsetMs    = alarmOffsetMs,
                 )
             } catch (e: Exception) {
                 _extra.update { it.copy(snackbarMessage = "Failed to start session: ${e.message}") }

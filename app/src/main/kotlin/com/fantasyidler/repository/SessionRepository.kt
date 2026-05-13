@@ -37,6 +37,7 @@ class SessionRepository @Inject constructor(
         frames: String,
         durationMs: Long = SESSION_DURATION_MS,
         skillDisplayName: String,
+        alarmOffsetMs: Long? = null,
     ): SkillSession {
         val now = System.currentTimeMillis()
         val session = SkillSession(
@@ -48,7 +49,8 @@ class SessionRepository @Inject constructor(
             activityKey = activityKey,
         )
         sessionDao.insert(session)
-        scheduleAlarm(session.sessionId, session.endsAt, skillDisplayName)
+        val alarmAt = if (alarmOffsetMs != null) now + alarmOffsetMs else session.endsAt
+        scheduleAlarm(session.sessionId, alarmAt, skillDisplayName)
         return session
     }
 

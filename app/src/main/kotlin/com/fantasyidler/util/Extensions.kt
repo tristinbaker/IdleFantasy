@@ -22,9 +22,14 @@ fun Long.toCountdown(): String {
     val remaining = this - System.currentTimeMillis()
     if (remaining <= 0) return "Complete"
     val totalSeconds = remaining / 1_000
-    val minutes = totalSeconds / 60
+    val hours   = totalSeconds / 3600
+    val minutes = (totalSeconds % 3600) / 60
     val seconds = totalSeconds % 60
-    return if (minutes > 0) "${minutes}m ${seconds}s" else "${seconds}s"
+    return when {
+        hours > 0   -> "${hours}h ${minutes}m ${seconds}s"
+        minutes > 0 -> "${minutes}m ${seconds}s"
+        else        -> "${seconds}s"
+    }
 }
 
 /**
@@ -41,6 +46,19 @@ fun Long.toRelativeTime(): String {
         val h = minutes / 60
         val m = minutes % 60
         if (m == 0L) "${h}h ago" else "${h}h ${m}m ago"
+    }
+}
+
+/** Format a raw millisecond duration (not an epoch) as a human-readable string, e.g. "2h 30m" or "45m". */
+fun Long.formatDurationMs(): String {
+    val totalSeconds = this / 1_000
+    val hours   = totalSeconds / 3600
+    val minutes = (totalSeconds % 3600) / 60
+    return when {
+        hours > 0 && minutes > 0 -> "${hours}h ${minutes}m"
+        hours > 0                -> "${hours}h"
+        minutes > 0              -> "${minutes}m"
+        else                     -> "${totalSeconds}s"
     }
 }
 
