@@ -1,0 +1,4 @@
+• Fixed: gear equip menu now scrolls when you have many items
+• Fixed: cooking beef, chicken, and mutton now correctly progresses cooking quests
+• Fixed: quests with multiple tiers (cook 60, cook 150, etc.) now advance one tier at a time instead of all at once
+• Fixed: the same activity can no longer be queued more than once

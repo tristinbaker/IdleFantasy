@@ -486,7 +486,7 @@
     "tier": 1,
     "requires_previous": null,
     "type": "craft",
-    "target": "beef",
+    "target": "cooked_beef",
     "amount": 100,
     "description": "Cook 100 Beef",
     "rewards": {
@@ -502,7 +502,7 @@
     "tier": 2,
     "requires_previous": "cooking_beef_1",
     "type": "craft",
-    "target": "beef",
+    "target": "cooked_beef",
     "amount": 250,
     "description": "Cook 250 Beef",
     "rewards": {
@@ -518,7 +518,7 @@
     "tier": 3,
     "requires_previous": "cooking_beef_2",
     "type": "craft",
-    "target": "beef",
+    "target": "cooked_beef",
     "amount": 500,
     "description": "Cook 500 Beef",
     "rewards": {
@@ -534,7 +534,7 @@
     "tier": 1,
     "requires_previous": null,
     "type": "craft",
-    "target": "chicken",
+    "target": "cooked_chicken",
     "amount": 100,
     "description": "Cook 100 Chicken",
     "rewards": {
@@ -550,7 +550,7 @@
     "tier": 2,
     "requires_previous": "cooking_chicken_1",
     "type": "craft",
-    "target": "chicken",
+    "target": "cooked_chicken",
     "amount": 250,
     "description": "Cook 250 Chicken",
     "rewards": {
@@ -566,7 +566,7 @@
     "tier": 3,
     "requires_previous": "cooking_chicken_2",
     "type": "craft",
-    "target": "chicken",
+    "target": "cooked_chicken",
     "amount": 500,
     "description": "Cook 500 Chicken",
     "rewards": {
@@ -582,7 +582,7 @@
     "tier": 1,
     "requires_previous": null,
     "type": "craft",
-    "target": "mutton",
+    "target": "cooked_mutton",
     "amount": 100,
     "description": "Cook 100 Mutton",
     "rewards": {
@@ -598,7 +598,7 @@
     "tier": 2,
     "requires_previous": "cooking_mutton_1",
     "type": "craft",
-    "target": "mutton",
+    "target": "cooked_mutton",
     "amount": 250,
     "description": "Cook 250 Mutton",
     "rewards": {
@@ -614,7 +614,7 @@
     "tier": 3,
     "requires_previous": "cooking_mutton_2",
     "type": "craft",
-    "target": "mutton",
+    "target": "cooked_mutton",
     "amount": 500,
     "description": "Cook 500 Mutton",
     "rewards": {
