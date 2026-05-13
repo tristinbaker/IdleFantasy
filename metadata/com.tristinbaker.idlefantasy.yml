@@ -83,16 +83,9 @@ Builds:
     gradle:
       - yes
 
-  - versionName: 1.1.4
-    versionCode: 11
-    commit: 909efaede9bbf951e565a2ed2748d2714cf8173e
-    subdir: app
-    gradle:
-      - yes
-
 AllowedAPKSigningKeys: 99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
-CurrentVersion: 1.1.4
-CurrentVersionCode: 11
+CurrentVersion: 1.1.3
+CurrentVersionCode: 10
