@@ -1,0 +1,4 @@
+• Fixed: gear equip sheet now scrolls when you have many items for a slot
+• Fixed: quest chains no longer advance higher tiers before lower tiers are completed
+• Fixed: cooking beef, chicken, and mutton now correctly counts toward cooking quests
+• Fixed: crafting queue now reserves materials — you can no longer queue more sessions than you have ingredients for

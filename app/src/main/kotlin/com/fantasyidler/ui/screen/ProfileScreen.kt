@@ -762,35 +762,41 @@ private fun EquipPickerSheet(
     onEquip: (String) -> Unit,
     onDismiss: () -> Unit,
 ) {
-    Column(
+    LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
             .padding(bottom = 32.dp),
     ) {
-        Text(
-            text     = "Choose ${slotDisplayName(slot)}",
-            style    = MaterialTheme.typography.titleMedium,
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
-        )
-        HorizontalDivider()
+        item {
+            Text(
+                text     = "Choose ${slotDisplayName(slot)}",
+                style    = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+            )
+            HorizontalDivider()
+        }
 
         if (candidates.isEmpty()) {
-            Box(
-                modifier         = Modifier
-                    .fillMaxWidth()
-                    .padding(32.dp),
-                contentAlignment = Alignment.Center,
-            ) {
-                Text(
-                    text  = "No eligible items in inventory",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
+            item {
+                Box(
+                    modifier         = Modifier
+                        .fillMaxWidth()
+                        .padding(32.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(
+                        text  = "No eligible items in inventory",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
             }
         } else {
-            candidates.sortedWith(
-                compareBy({ it.requirements.values.maxOrNull() ?: 0 }, { it.name })
-            ).forEach { item ->
+            items(
+                candidates.sortedWith(
+                    compareBy({ it.requirements.values.maxOrNull() ?: 0 }, { it.name })
+                )
+            ) { item ->
                 val xpLabel = weaponXpLabel(item.combatStyle).takeIf { item.slot == EquipSlot.WEAPON }
                 val displayName = buildString {
                     append(GameStrings.itemName(context, item.name))

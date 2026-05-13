@@ -2,8 +2,10 @@ package com.fantasyidler.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.SessionFrame
+import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
@@ -57,17 +59,19 @@ data class CraftingUiState(
     val craftingLevel:  Int = 1,
     val skillLevels:    Map<String, Int> = emptyMap(),
     val inventory:      Map<String, Int> = emptyMap(),
+    /** Inventory minus materials already reserved by active session + queue. */
+    val effectiveInventory: Map<String, Int> = emptyMap(),
     /** Non-null while the craft-quantity sheet is open. */
     val selectedRecipe: CraftableRecipe? = null,
     val craftQuantity:  Int = 1,
     val snackbarMessage: String? = null,
     val isLoading: Boolean = true,
 ) {
-    /** Returns how many times [recipe] can be crafted given [inventory]. */
+    /** Returns how many times [recipe] can be crafted given [effectiveInventory]. */
     fun maxCraftable(recipe: CraftableRecipe): Int {
         if (recipe.materials.isEmpty()) return 0
         return recipe.materials.minOf { (item, needed) ->
-            (inventory[item] ?: 0) / needed
+            (effectiveInventory[item] ?: 0) / needed
         }
     }
 
@@ -98,21 +102,25 @@ class CraftingViewModel @Inject constructor(
 
     val uiState: StateFlow<CraftingUiState> = combine(
         playerRepo.playerFlow,
+        sessionRepo.activeSessionFlow,
         _extra,
-    ) { player, extra ->
+    ) { player, activeSession, extra ->
         if (player == null) {
             extra
         } else {
             val levels: Map<String, Int> = json.decodeFromString(player.skillLevels)
             val inventory: Map<String, Int> = json.decodeFromString(player.inventory)
+            val flags: PlayerFlags = json.decodeFromString(player.flags)
+            val allRecipes = smithingRecipes + cookingRecipes + fletchingRecipes + jewelleryRecipes
             extra.copy(
-                smithingLevel  = levels[Skills.SMITHING]  ?: 1,
-                cookingLevel   = levels[Skills.COOKING]   ?: 1,
-                fletchingLevel = levels[Skills.FLETCHING] ?: 1,
-                craftingLevel  = levels[Skills.CRAFTING]  ?: 1,
-                skillLevels    = levels,
-                inventory      = inventory,
-                isLoading      = false,
+                smithingLevel      = levels[Skills.SMITHING]  ?: 1,
+                cookingLevel       = levels[Skills.COOKING]   ?: 1,
+                fletchingLevel     = levels[Skills.FLETCHING] ?: 1,
+                craftingLevel      = levels[Skills.CRAFTING]  ?: 1,
+                skillLevels        = levels,
+                inventory          = inventory,
+                effectiveInventory = computeEffectiveInventory(inventory, activeSession, flags.sessionQueue, allRecipes),
+                isLoading          = false,
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), CraftingUiState())
@@ -282,4 +290,33 @@ class CraftingViewModel @Inject constructor(
     }
 
     fun snackbarConsumed() = _extra.update { it.copy(snackbarMessage = null) }
+
+    private val craftingSkills = setOf(Skills.SMITHING, Skills.COOKING, Skills.FLETCHING, Skills.CRAFTING)
+
+    private fun computeEffectiveInventory(
+        inventory: Map<String, Int>,
+        activeSession: SkillSession?,
+        queue: List<QueuedAction>,
+        allRecipes: List<CraftableRecipe>,
+    ): Map<String, Int> {
+        val eff = inventory.toMutableMap()
+        val activityKeys = buildList {
+            activeSession?.let { if (it.skillName in craftingSkills) add(it.activityKey) }
+            for (action in queue) {
+                if (action.skillName in craftingSkills) add(action.activityKey)
+            }
+        }
+        for (key in activityKeys) {
+            val recipe = allRecipes.find { it.key == key } ?: continue
+            if (recipe.materials.isEmpty()) continue
+            val qty = recipe.materials.minOf { (item, needed) ->
+                (eff[item] ?: 0) / needed.coerceAtLeast(1)
+            }
+            if (qty <= 0) continue
+            for ((item, needed) in recipe.materials) {
+                eff[item] = (eff[item] ?: 0) - qty * needed
+            }
+        }
+        return eff
+    }
 }

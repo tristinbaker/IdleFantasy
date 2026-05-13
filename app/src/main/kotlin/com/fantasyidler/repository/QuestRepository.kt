@@ -32,10 +32,10 @@ class QuestRepository @Inject constructor(
             when (quest.type) {
                 "gather" -> {
                     val count = items[quest.target] ?: continue
-                    if (count > 0) addProgress(questId, quest.amount, count)
+                    if (count > 0) addProgress(questId, quest.amount, count, quest.requiresPrevious)
                 }
                 "gather_any" -> {
-                    if (totalGathered > 0) addProgress(questId, quest.amount, totalGathered)
+                    if (totalGathered > 0) addProgress(questId, quest.amount, totalGathered, quest.requiresPrevious)
                 }
             }
         }
@@ -56,10 +56,10 @@ class QuestRepository @Inject constructor(
             when (quest.type) {
                 "craft" -> {
                     val count = items[quest.target] ?: continue
-                    if (count > 0) addProgress(questId, quest.amount, count)
+                    if (count > 0) addProgress(questId, quest.amount, count, quest.requiresPrevious)
                 }
                 "craft_any" -> {
-                    if (totalCrafted > 0) addProgress(questId, quest.amount, totalCrafted)
+                    if (totalCrafted > 0) addProgress(questId, quest.amount, totalCrafted, quest.requiresPrevious)
                 }
             }
         }
@@ -84,30 +84,30 @@ class QuestRepository @Inject constructor(
         for ((questId, quest) in gameData.quests) {
             when (quest.type) {
                 "kill" -> {
-                    if (totalKills > 0) addProgress(questId, quest.amount, totalKills)
+                    if (totalKills > 0) addProgress(questId, quest.amount, totalKills, quest.requiresPrevious)
                 }
                 "kill_enemy" -> {
                     val count = killsByEnemy[quest.target] ?: continue
-                    if (count > 0) addProgress(questId, quest.amount, count)
+                    if (count > 0) addProgress(questId, quest.amount, count, quest.requiresPrevious)
                 }
                 "dungeon" -> {
-                    if (quest.target == dungeonKey) addProgress(questId, quest.amount, 1)
+                    if (quest.target == dungeonKey) addProgress(questId, quest.amount, 1, quest.requiresPrevious)
                 }
                 "dungeon_melee_only" -> {
                     if (quest.target == dungeonKey && combatStyle == "melee")
-                        addProgress(questId, quest.amount, 1)
+                        addProgress(questId, quest.amount, 1, quest.requiresPrevious)
                 }
                 "dungeon_ranged_only" -> {
                     if (quest.target == dungeonKey && combatStyle == "ranged")
-                        addProgress(questId, quest.amount, 1)
+                        addProgress(questId, quest.amount, 1, quest.requiresPrevious)
                 }
                 "dungeon_magic_only" -> {
                     if (quest.target == dungeonKey && combatStyle == "magic")
-                        addProgress(questId, quest.amount, 1)
+                        addProgress(questId, quest.amount, 1, quest.requiresPrevious)
                 }
                 "collect" -> {
                     val count = loot[quest.target] ?: continue
-                    if (count > 0) addProgress(questId, quest.amount, count)
+                    if (count > 0) addProgress(questId, quest.amount, count, quest.requiresPrevious)
                 }
             }
         }
@@ -123,7 +123,7 @@ class QuestRepository @Inject constructor(
 
         for ((questId, quest) in gameData.quests) {
             if (quest.type == "prayer") {
-                addProgress(questId, quest.amount, amount)
+                addProgress(questId, quest.amount, amount, quest.requiresPrevious)
             }
         }
     }
@@ -158,7 +158,8 @@ class QuestRepository @Inject constructor(
     /** Adds [delta] to the stored progress for [questId], creating a row if absent. Skips already-completed quests. */
     suspend fun resetAllProgress() = questProgressDao.deleteAll()
 
-    private suspend fun addProgress(questId: String, requiredAmount: Int, delta: Int) {
+    private suspend fun addProgress(questId: String, requiredAmount: Int, delta: Int, requiresPrevious: String?) {
+        if (!isPrerequisiteDone(requiresPrevious)) return
         val current = questProgressDao.getQuestProgress(questId) ?: QuestProgress(questId)
         if (current.completed) return
         questProgressDao.upsert(current.copy(progress = current.progress + delta))
