@@ -135,11 +135,10 @@ class PlayerRepository @Inject constructor(
 
     suspend fun getQueue(): List<QueuedAction> = getFlags().sessionQueue
 
-    /** Appends an action to the queue. Returns false if the queue is full or an identical action is already queued. */
+    /** Appends an action to the queue. Returns false (no change) if the queue is already full (3 items). */
     suspend fun enqueueAction(action: QueuedAction): Boolean {
         val flags = getFlags()
         if (flags.sessionQueue.size >= 3) return false
-        if (flags.sessionQueue.any { it.skillName == action.skillName && it.activityKey == action.activityKey }) return false
         updateFlags(flags.copy(sessionQueue = flags.sessionQueue + action))
         return true
     }

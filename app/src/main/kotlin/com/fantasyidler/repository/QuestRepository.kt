@@ -159,8 +159,6 @@ class QuestRepository @Inject constructor(
     suspend fun resetAllProgress() = questProgressDao.deleteAll()
 
     private suspend fun addProgress(questId: String, requiredAmount: Int, delta: Int) {
-        val quest = gameData.quests[questId] ?: return
-        if (!isPrerequisiteDone(quest.requiresPrevious)) return
         val current = questProgressDao.getQuestProgress(questId) ?: QuestProgress(questId)
         if (current.completed) return
         questProgressDao.upsert(current.copy(progress = current.progress + delta))

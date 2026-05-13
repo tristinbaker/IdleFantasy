@@ -788,46 +788,43 @@ private fun EquipPickerSheet(
                 )
             }
         } else {
-            val sorted = candidates.sortedWith(
+            candidates.sortedWith(
                 compareBy({ it.requirements.values.maxOrNull() ?: 0 }, { it.name })
-            )
-            LazyColumn(Modifier.padding(bottom = 32.dp)) {
-                items(sorted) { item ->
-                    val xpLabel = weaponXpLabel(item.combatStyle).takeIf { item.slot == EquipSlot.WEAPON }
-                    val displayName = buildString {
-                        append(GameStrings.itemName(context, item.name))
-                        if (xpLabel != null) append(" ($xpLabel)")
-                    }
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable { onEquip(item.name) }
-                            .padding(horizontal = 16.dp, vertical = 12.dp),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment     = Alignment.CenterVertically,
-                    ) {
-                        Column {
-                            Text(
-                                displayName,
-                                style = MaterialTheme.typography.bodyLarge,
-                            )
-                            val detail = buildEquipDetail(item)
-                            if (detail.isNotEmpty()) {
-                                Text(
-                                    text  = detail,
-                                    style = MaterialTheme.typography.bodySmall,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                )
-                            }
-                        }
-                        Text(
-                            text  = "Equip",
-                            style = MaterialTheme.typography.labelMedium,
-                            color = GoldPrimary,
-                        )
-                    }
-                    HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+            ).forEach { item ->
+                val xpLabel = weaponXpLabel(item.combatStyle).takeIf { item.slot == EquipSlot.WEAPON }
+                val displayName = buildString {
+                    append(GameStrings.itemName(context, item.name))
+                    if (xpLabel != null) append(" ($xpLabel)")
                 }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onEquip(item.name) }
+                        .padding(horizontal = 16.dp, vertical = 12.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment     = Alignment.CenterVertically,
+                ) {
+                    Column {
+                        Text(
+                            displayName,
+                            style = MaterialTheme.typography.bodyLarge,
+                        )
+                        val detail = buildEquipDetail(item)
+                        if (detail.isNotEmpty()) {
+                            Text(
+                                text  = detail,
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
+                    }
+                    Text(
+                        text  = "Equip",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = GoldPrimary,
+                    )
+                }
+                HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
             }
         }
     }
