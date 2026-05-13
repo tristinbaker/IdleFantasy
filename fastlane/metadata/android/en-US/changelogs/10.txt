@@ -1,0 +1,6 @@
+• Live combat stats panel: watch HP change hit-by-hit as you fight
+• Enemy HP bar drains in real time and resets on each kill
+• Your HP bar updates as enemy attacks land, colour-coded by health level
+• Combat log shows the last 8 hits — what you hit, what hit you, and misses
+• Equipped food now shows remaining quantity and heal amount during a session
+• Drops and XP earned so far update each minute while in a dungeon

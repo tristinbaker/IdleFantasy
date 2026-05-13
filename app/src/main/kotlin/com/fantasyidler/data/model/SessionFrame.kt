@@ -35,4 +35,12 @@ data class SessionFrame(
     val died: Boolean = false,
     /** Combat only — food items consumed this minute (item key → quantity eaten). */
     @SerialName("food_consumed") val foodConsumed: Map<String, Int> = emptyMap(),
+    /** Combat only — the enemy key fought this minute (empty for non-combat frames). */
+    @SerialName("enemy_key") val enemyKey: String = "",
+    /** Combat only — player HP at the end of this frame (0 = not recorded / non-combat). */
+    @SerialName("hp_after") val hpAfter: Int = 0,
+    /** Combat only — player's damage dealt each tick (0 = miss), in tick order. */
+    @SerialName("player_hits") val playerHits: List<Int> = emptyList(),
+    /** Combat only — enemy's damage dealt each tick (0 = miss), in tick order. */
+    @SerialName("enemy_hits") val enemyHits: List<Int> = emptyList(),
 )

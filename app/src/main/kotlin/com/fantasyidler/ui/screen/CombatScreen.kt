@@ -30,6 +30,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Tab
@@ -61,6 +62,7 @@ import com.fantasyidler.R
 import com.fantasyidler.simulator.CombatSimulator
 import com.fantasyidler.data.json.BossData
 import com.fantasyidler.data.json.DungeonData
+import com.fantasyidler.data.json.EnemyData
 import com.fantasyidler.data.json.EquipmentData
 import com.fantasyidler.data.json.SpellData
 import com.fantasyidler.data.model.SessionFrame
@@ -123,13 +125,20 @@ fun CombatScreen(
         val combatSession = state.combatSession
         if (combatSession != null) {
             CombatSessionBanner(
-                session       = combatSession,
-                dungeons      = viewModel.dungeonList,
-                bosses        = viewModel.bossList,
-                modifier      = Modifier.padding(padding),
-                onCollect     = viewModel::collectSession,
-                onAbandon     = viewModel::abandonSession,
-                onDebugFinish = viewModel::debugFinishSession,
+                session        = combatSession,
+                dungeons       = viewModel.dungeonList,
+                bosses         = viewModel.bossList,
+                enemies        = viewModel.enemyMap,
+                skillLevels    = state.skillLevels,
+                attackBonus    = state.totalAttackBonus,
+                strengthBonus  = state.totalStrengthBonus,
+                defenseBonus   = state.totalDefenseBonus,
+                equippedFood   = state.equippedFood,
+                foodHealValues = viewModel.foodHealValues,
+                modifier       = Modifier.padding(padding),
+                onCollect      = viewModel::collectSession,
+                onAbandon      = viewModel::abandonSession,
+                onDebugFinish  = viewModel::debugFinishSession,
             )
         } else {
             var selectedTab by remember { mutableIntStateOf(0) }
@@ -516,11 +525,20 @@ private fun DungeonRow(
 // Active session banner
 // ---------------------------------------------------------------------------
 
+private data class CombatLogEntry(val isPlayer: Boolean, val damage: Int, val enemyName: String)
+
 @Composable
 private fun CombatSessionBanner(
     session: SkillSession,
     dungeons: List<DungeonData>,
     bosses: List<BossData>,
+    enemies: Map<String, EnemyData>,
+    skillLevels: Map<String, Int>,
+    attackBonus: Int,
+    strengthBonus: Int,
+    defenseBonus: Int,
+    equippedFood: Map<String, Int>,
+    foodHealValues: Map<String, Int>,
     modifier: Modifier = Modifier,
     onCollect: () -> Unit,
     onAbandon: () -> Unit,
@@ -530,36 +548,59 @@ private fun CombatSessionBanner(
         ?: bosses.firstOrNull { it.id == session.activityKey }?.let { "${it.emoji} ${it.displayName}" }
         ?: session.activityKey
 
-    // Live countdown ticker
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
     val endsAt = session.endsAt
     LaunchedEffect(endsAt) {
         while (System.currentTimeMillis() < endsAt) {
             now = System.currentTimeMillis()
-            delay(1_000L)
+            delay(500L)
         }
         now = System.currentTimeMillis()
     }
 
     val isDone = session.completed || now >= endsAt
-    val actualCombatEndsAt = remember(session.sessionId, session.skillName, session.frames, session.startedAt, session.endsAt) {
-        if (session.skillName != "combat") return@remember null
-        val frames = runCatching { Json.decodeFromString<List<SessionFrame>>(session.frames) }
-            .getOrElse { emptyList() }
-        if (frames.isEmpty()) return@remember null
-        val fullDurationMs = (session.endsAt - session.startedAt).coerceAtLeast(1L)
-        val perFrameMs = (fullDurationMs / 60L).coerceAtLeast(1L)
-        val actualFrames = frames.size.coerceAtMost(60)
-        session.startedAt + perFrameMs * actualFrames
+
+    // Decode frames once per session
+    val frames = remember(session.sessionId) {
+        runCatching { Json.decodeFromString<List<SessionFrame>>(session.frames) }.getOrElse { emptyList() }
+    }
+    val perFrameMs = ((session.endsAt - session.startedAt) / 60L).coerceAtLeast(1L)
+    val currentFrameIdx = remember(now) {
+        ((now - session.startedAt) / perFrameMs).toInt()
+            .coerceIn(0, (frames.size - 1).coerceAtLeast(0))
+    }
+    val currentFrame = frames.getOrNull(currentFrameIdx)
+
+    val currentEnemyKey: String? = remember(currentFrameIdx) {
+        currentFrame?.enemyKey?.takeIf { it.isNotEmpty() }
+            ?: frames.take(currentFrameIdx + 1)
+                .lastOrNull { it.killsByEnemy.isNotEmpty() }
+                ?.killsByEnemy?.keys?.firstOrNull()
+    }
+    val currentEnemy = currentEnemyKey?.let { enemies[it] }
+
+    val killsSoFar: Map<String, Int> = remember(currentFrameIdx) {
+        frames.take(currentFrameIdx).fold(mutableMapOf()) { acc, f ->
+            f.killsByEnemy.forEach { (k, v) -> acc[k] = (acc[k] ?: 0) + v }
+            acc
+        }
+    }
+
+    val foodConsumedSoFar: Map<String, Int> = remember(currentFrameIdx) {
+        frames.take(currentFrameIdx).fold(mutableMapOf()) { acc, f ->
+            f.foodConsumed.forEach { (k, v) -> acc[k] = (acc[k] ?: 0) + v }
+            acc
+        }
     }
 
     Column(
         modifier = modifier
             .fillMaxSize()
+            .verticalScroll(rememberScrollState())
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
     ) {
+        Spacer(Modifier.height(16.dp))
         Text(
             text  = if (isDone) stringResource(R.string.label_session_complete)
                     else stringResource(R.string.label_session_in_progress),
@@ -576,21 +617,283 @@ private fun CombatSessionBanner(
         Spacer(Modifier.height(16.dp))
 
         if (!isDone) {
-            val remaining = remember(now) { endsAt.toCountdown() }
             Text(
-                text  = remaining,
-                style = MaterialTheme.typography.displaySmall,
+                text       = remember(now) { endsAt.toCountdown() },
+                style      = MaterialTheme.typography.displaySmall,
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.primary,
+                color      = MaterialTheme.colorScheme.primary,
             )
-            if (BuildConfig.DEBUG && actualCombatEndsAt != null) {
-                Spacer(Modifier.height(4.dp))
-                Text(
-                    text  = remember(now, actualCombatEndsAt) { "Actual remaining: ${actualCombatEndsAt.toCountdown()}" },
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
+
+            if (session.skillName == "combat") {
+                val context = LocalContext.current
+                val divColor = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.2f)
+
+                // Per-tick state
+                val attackSpeedMs = 2_400L
+                val frameStartMs  = session.startedAt + currentFrameIdx.toLong() * perFrameMs
+                val maxTick = (currentFrame?.playerHits?.size?.minus(1) ?: 0).coerceAtLeast(0)
+                val tickInFrame = ((now - frameStartMs) / attackSpeedMs)
+                    .toInt().coerceIn(0, maxTick)
+
+                // Live player HP (per-tick if hit data exists, else per-frame fallback)
+                val maxHp = (skillLevels[Skills.HITPOINTS] ?: 1) * 10
+                val currentPlayerHp = if (currentFrame?.enemyHits?.isNotEmpty() == true) {
+                    val base = frames.getOrNull(currentFrameIdx - 1)?.hpAfter ?: maxHp
+                    (base - currentFrame.enemyHits.take(tickInFrame + 1).sum()).coerceAtLeast(0)
+                } else {
+                    frames.getOrNull(currentFrameIdx - 1)?.hpAfter ?: maxHp
+                }
+
+                // Live enemy HP (replay player hits to track kills within frame)
+                val currentEnemyHp = if (currentEnemy != null && currentFrame?.playerHits?.isNotEmpty() == true) {
+                    var hp = currentEnemy.hp
+                    for (dmg in currentFrame.playerHits.take(tickInFrame + 1)) {
+                        hp -= dmg
+                        if (hp <= 0) hp = currentEnemy.hp
+                    }
+                    hp.coerceAtLeast(0)
+                } else currentEnemy?.hp ?: 0
+
+                // Combat log: last 8 entries (interleaved per tick)
+                val combatLog = remember(currentFrameIdx, tickInFrame) {
+                    buildList<CombatLogEntry> {
+                        for (i in 0 until currentFrameIdx) {
+                            val f = frames.getOrNull(i) ?: break
+                            val eName = enemies[f.enemyKey]?.displayName ?: f.enemyKey
+                            for (t in 0 until maxOf(f.playerHits.size, f.enemyHits.size)) {
+                                f.playerHits.getOrNull(t)?.let { add(CombatLogEntry(true, it, eName)) }
+                                f.enemyHits.getOrNull(t)?.let { add(CombatLogEntry(false, it, eName)) }
+                            }
+                        }
+                        val f = frames.getOrNull(currentFrameIdx) ?: return@buildList
+                        val eName = enemies[f.enemyKey]?.displayName ?: f.enemyKey
+                        for (t in 0..tickInFrame) {
+                            f.playerHits.getOrNull(t)?.let { add(CombatLogEntry(true, it, eName)) }
+                            f.enemyHits.getOrNull(t)?.let { add(CombatLogEntry(false, it, eName)) }
+                        }
+                    }.takeLast(8)
+                }
+
+                // Drops and XP from completed frames
+                val dropsSoFar = remember(currentFrameIdx) {
+                    frames.take(currentFrameIdx).fold(mutableMapOf<String, Int>()) { acc, f ->
+                        f.items.forEach { (k, v) -> acc[k] = (acc[k] ?: 0) + v }
+                        acc
+                    }
+                }
+                val xpSoFar = remember(currentFrameIdx) {
+                    frames.take(currentFrameIdx).fold(mutableMapOf<String, Long>()) { acc, f ->
+                        f.xpBySkill.forEach { (k, v) -> acc[k] = (acc[k] ?: 0L) + v }
+                        acc
+                    }
+                }
+
+                // Food remaining (equipped qty minus consumed so far in session)
+                val foodRemaining = equippedFood.mapValues { (key, qty) ->
+                    (qty - (foodConsumedSoFar[key] ?: 0)).coerceAtLeast(0)
+                }.filter { (_, qty) -> qty > 0 }
+
+                Spacer(Modifier.height(16.dp))
+                Surface(
+                    shape    = RoundedCornerShape(12.dp),
+                    color    = MaterialTheme.colorScheme.secondaryContainer,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Column(Modifier.padding(12.dp)) {
+
+                        // ── Enemy ──────────────────────────────────────────
+                        if (currentEnemy != null) {
+                            Text(
+                                text       = currentEnemy.displayName,
+                                style      = MaterialTheme.typography.titleSmall,
+                                fontWeight = FontWeight.Bold,
+                                color      = MaterialTheme.colorScheme.onSecondaryContainer,
+                            )
+                            Spacer(Modifier.height(4.dp))
+                            LinearProgressIndicator(
+                                progress  = { if (currentEnemy.hp > 0) currentEnemyHp / currentEnemy.hp.toFloat() else 0f },
+                                modifier  = Modifier.fillMaxWidth().height(6.dp).clip(RoundedCornerShape(3.dp)),
+                                color     = MaterialTheme.colorScheme.error,
+                                trackColor = MaterialTheme.colorScheme.errorContainer,
+                            )
+                            Spacer(Modifier.height(4.dp))
+                            Text(
+                                text  = "HP $currentEnemyHp/${currentEnemy.hp}  ATK ${currentEnemy.combatStats.attackLevel}  STR ${currentEnemy.combatStats.strengthLevel}  DEF ${currentEnemy.combatStats.defenseLevel}",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSecondaryContainer,
+                            )
+                        } else {
+                            Text(
+                                text  = "Fighting…",
+                                style = MaterialTheme.typography.titleSmall,
+                                color = MaterialTheme.colorScheme.onSecondaryContainer,
+                            )
+                        }
+
+                        // ── Player HP + gear ───────────────────────────────
+                        HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp), color = divColor)
+                        val hpPct   = currentPlayerHp * 100 / maxHp
+                        val hpColor = when {
+                            hpPct >= 50 -> Color(0xFF4CAF50)
+                            hpPct >= 20 -> Color(0xFFFFC107)
+                            else        -> MaterialTheme.colorScheme.error
+                        }
+                        Row(
+                            modifier              = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment     = Alignment.CenterVertically,
+                        ) {
+                            Text(
+                                text       = "HP: $currentPlayerHp / $maxHp",
+                                style      = MaterialTheme.typography.bodySmall,
+                                fontWeight = FontWeight.SemiBold,
+                                color      = hpColor,
+                            )
+                        }
+                        Spacer(Modifier.height(4.dp))
+                        LinearProgressIndicator(
+                            progress  = { if (maxHp > 0) currentPlayerHp / maxHp.toFloat() else 0f },
+                            modifier  = Modifier.fillMaxWidth().height(6.dp).clip(RoundedCornerShape(3.dp)),
+                            color     = hpColor,
+                            trackColor = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.15f),
+                        )
+                        val bonusParts = buildList {
+                            if (attackBonus   != 0) add("+$attackBonus ATK")
+                            if (strengthBonus != 0) add("+$strengthBonus STR")
+                            if (defenseBonus  != 0) add("+$defenseBonus DEF")
+                        }
+                        if (bonusParts.isNotEmpty()) {
+                            Spacer(Modifier.height(4.dp))
+                            Text(
+                                text  = bonusParts.joinToString("  "),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSecondaryContainer,
+                            )
+                        }
+
+                        // ── Equipped food ──────────────────────────────────
+                        if (equippedFood.isNotEmpty()) {
+                            HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp), color = divColor)
+                            Text(
+                                text  = "Food",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.7f),
+                            )
+                            Spacer(Modifier.height(2.dp))
+                            for ((key, startQty) in equippedFood) {
+                                val remaining = (startQty - (foodConsumedSoFar[key] ?: 0)).coerceAtLeast(0)
+                                val heal      = foodHealValues[key] ?: 0
+                                val name      = key.replace('_', ' ').replaceFirstChar { it.uppercase() }
+                                Text(
+                                    text  = "$name ×$remaining (heals $heal HP)",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = if (remaining > 0)
+                                        MaterialTheme.colorScheme.onSecondaryContainer
+                                    else
+                                        MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.4f),
+                                )
+                            }
+                        }
+
+                        // ── Kills ──────────────────────────────────────────
+                        if (killsSoFar.isNotEmpty()) {
+                            HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp), color = divColor)
+                            Text(
+                                text  = killsSoFar.entries
+                                    .sortedByDescending { it.value }
+                                    .joinToString(", ") { (k, v) -> "$v ${enemies[k]?.displayName ?: k}" }
+                                    + " defeated so far.",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSecondaryContainer,
+                            )
+                        }
+
+                        // ── Drops so far ───────────────────────────────────
+                        if (dropsSoFar.isNotEmpty()) {
+                            HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp), color = divColor)
+                            Text(
+                                text  = "Drops",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.7f),
+                            )
+                            Spacer(Modifier.height(2.dp))
+                            Text(
+                                text  = dropsSoFar.entries
+                                    .sortedByDescending { it.value }
+                                    .joinToString("  ") { (k, v) ->
+                                        "${GameStrings.itemName(context, k)} ×$v"
+                                    },
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSecondaryContainer,
+                            )
+                        }
+
+                        // ── XP so far ──────────────────────────────────────
+                        if (xpSoFar.isNotEmpty()) {
+                            HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp), color = divColor)
+                            Text(
+                                text  = "XP",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.7f),
+                            )
+                            Spacer(Modifier.height(2.dp))
+                            val xpSkillOrder = listOf(
+                                Skills.ATTACK, Skills.STRENGTH, Skills.DEFENSE,
+                                Skills.RANGED, Skills.MAGIC, Skills.HITPOINTS,
+                            )
+                            Text(
+                                text  = xpSkillOrder
+                                    .mapNotNull { skill -> xpSoFar[skill]?.let { skill to it } }
+                                    .joinToString("  ") { (skill, xp) ->
+                                        "${GameStrings.skillName(context, skill).take(3).uppercase()} +${xp.formatXp()}"
+                                    },
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSecondaryContainer,
+                            )
+                        }
+
+                        // ── Combat log ─────────────────────────────────────
+                        if (combatLog.isNotEmpty()) {
+                            HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp), color = divColor)
+                            Text(
+                                text  = "Combat log",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.7f),
+                            )
+                            Spacer(Modifier.height(2.dp))
+                            Column {
+                                for (entry in combatLog) {
+                                    val (arrow, dmgText, color) = if (entry.isPlayer) {
+                                        val c = if (entry.damage > 0) Color(0xFF4CAF50)
+                                                else MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.45f)
+                                        Triple(
+                                            "→",
+                                            if (entry.damage > 0) "You hit ${entry.enemyName}: ${entry.damage} dmg"
+                                            else "You missed ${entry.enemyName}",
+                                            c,
+                                        )
+                                    } else {
+                                        val c = if (entry.damage > 0) MaterialTheme.colorScheme.error
+                                                else MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.45f)
+                                        Triple(
+                                            "←",
+                                            if (entry.damage > 0) "${entry.enemyName} hit you: ${entry.damage} dmg"
+                                            else "${entry.enemyName} missed",
+                                            c,
+                                        )
+                                    }
+                                    Text(
+                                        text  = "$arrow $dmgText",
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = color,
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
             }
+
             Spacer(Modifier.height(24.dp))
         }
 

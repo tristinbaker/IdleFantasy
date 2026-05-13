@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fantasyidler.data.json.BossData
 import com.fantasyidler.data.json.DungeonData
+import com.fantasyidler.data.json.EnemyData
 import com.fantasyidler.data.json.EquipmentData
 import com.fantasyidler.data.json.SpellData
 import com.fantasyidler.data.model.EquipSlot
@@ -66,6 +67,7 @@ data class CombatUiState(
     val dungeonSurvivalRatings: Map<String, CombatSimulator.SurvivalRating> = emptyMap(),
     val noFoodWarningPending: Boolean = false,
     val pendingDungeonKey: String? = null,
+    val equippedFood: Map<String, Int> = emptyMap(),
 )
 
 // ---------------------------------------------------------------------------
@@ -129,6 +131,9 @@ class CombatViewModel @Inject constructor(
                 totalStrengthBonus      = totalStr,
                 totalDefenseBonus       = totalDef,
                 dungeonSurvivalRatings  = survivalRatings,
+                equippedFood            = flags.equippedFood.keys
+                    .associateWith { inventory[it] ?: 0 }
+                    .filter { (_, qty) -> qty > 0 },
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), CombatUiState())
@@ -140,6 +145,10 @@ class CombatViewModel @Inject constructor(
     val bossList: List<BossData> by lazy {
         gameData.bosses.values.sortedBy { it.combatLevelRequired }
     }
+
+    val enemyMap: Map<String, EnemyData> by lazy { gameData.enemies }
+
+    val foodHealValues: Map<String, Int> by lazy { gameData.foodHealValues }
 
     // ------------------------------------------------------------------
     // Dungeon selection
