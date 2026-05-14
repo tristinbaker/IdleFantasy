@@ -76,9 +76,10 @@ class QuestsViewModel @Inject constructor(
             )
         }
 
-        val questsByGroup = buildGroupedMap(questsWithProgress)
-        val claimable = questsWithProgress.count { it.isClaimable }
-        val completed = questsWithProgress.count { it.completed }
+        val visibleQuests = questsWithProgress.filter { it.prereqCompleted || it.completed }
+        val questsByGroup = buildGroupedMap(visibleQuests)
+        val claimable = visibleQuests.count { it.isClaimable }
+        val completed = visibleQuests.count { it.completed }
 
         extra.copy(
             isLoading      = false,
