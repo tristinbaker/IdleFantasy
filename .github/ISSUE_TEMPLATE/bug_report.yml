@@ -1,0 +1,108 @@
+name: Bug Report
+description: Something in IdleFantasy isn't working correctly
+labels: ["bug"]
+body:
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues and this hasn't been reported
+          required: true
+        - label: I am on the latest available version
+          required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: App Version
+      placeholder: "e.g. 1.1.5 (shown in Settings → About)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: android
+    attributes:
+      label: Android Version
+      options: ["16", "15", "14", "13", "12", "11", "10", "9 or below"]
+    validations:
+      required: true
+
+  - type: input
+    id: device
+    attributes:
+      label: Device
+      placeholder: "e.g. Pixel 8, Samsung Galaxy S23"
+    validations:
+      required: true
+
+  - type: textarea
+    id: what_happened
+    attributes:
+      label: What happened?
+      description: A clear description of the bug.
+      placeholder: "e.g. Tapping the sell button in the inventory crashes the app"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Exact steps to trigger the bug, starting from app launch.
+      placeholder: |
+        1. Open the app
+        2. Go to ...
+        3. Tap ...
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should have happened instead?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: How often does this happen?
+      options:
+        - Every time
+        - Most of the time
+        - Sometimes
+        - Only happened once
+    validations:
+      required: true
+
+  - type: textarea
+    id: affected_area
+    attributes:
+      label: Where in the game does this occur?
+      description: Which screen, system, or game mechanic is involved? (e.g. crafting, inventory, combat, quests, skills)
+      placeholder: "e.g. The crafting screen when trying to craft a weapon with a specific material type selected"
+    validations:
+      required: true
+
+  - type: textarea
+    id: game_state
+    attributes:
+      label: Relevant game state
+      description: Anything about your save that might matter - character level, what you had equipped, how far into the game you are, etc.
+      placeholder: "e.g. Level 24, had a sword equipped, was mid-quest"
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or crash trace
+      description: If you have logcat output or a crash report, paste it here.
+      render: shell
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Anything else?
+      description: Screenshots or screen recordings are very helpful.
