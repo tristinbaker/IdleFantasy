@@ -20,6 +20,7 @@ REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GRADLE_FILE="$REPO_DIR/app/build.gradle.kts"
 METADATA_FILE="$REPO_DIR/metadata/com.tristinbaker.idlefantasy.yml"
 FDROID_DIR="$REPO_DIR/docs/fdroid"
+CHANGELOG_ASSET="$REPO_DIR/app/src/main/assets/changelog.txt"
 CLONE_DIR="/tmp/FantasyIdler-release"
 
 # ---------------------------------------------------------------------------
@@ -67,6 +68,15 @@ fi
 # ---------------------------------------------------------------------------
 # Commit pending changes
 # ---------------------------------------------------------------------------
+
+# Copy fastlane changelog into the app asset so the in-app "What's New" dialog shows it
+FASTLANE_CHANGELOG="$REPO_DIR/fastlane/metadata/android/en-US/changelogs/${VERSION_CODE}.txt"
+if [[ -f "$FASTLANE_CHANGELOG" ]]; then
+    cp "$FASTLANE_CHANGELOG" "$CHANGELOG_ASSET"
+    echo "==> Copied changelog ${VERSION_CODE}.txt to assets"
+else
+    echo "WARNING: No fastlane changelog found at $FASTLANE_CHANGELOG"
+fi
 
 git add -A
 if ! git diff --cached --quiet; then

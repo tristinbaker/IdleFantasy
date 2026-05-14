@@ -2,6 +2,7 @@ package com.fantasyidler.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fantasyidler.BuildConfig
 import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.SessionFrame
@@ -60,6 +61,7 @@ data class HomeUiState(
     val characterSetupDone: Boolean = false,
     val characterName: String = "",
     val sessionQueue: List<QueuedAction> = emptyList(),
+    val showWhatsNew: Boolean = false,
 )
 
 @HiltViewModel
@@ -91,6 +93,7 @@ class HomeViewModel @Inject constructor(
                 characterSetupDone = flags.characterSetupDone,
                 characterName      = flags.characterName,
                 sessionQueue       = flags.sessionQueue,
+                showWhatsNew       = flags.lastSeenVersionCode < BuildConfig.VERSION_CODE,
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), HomeUiState())
@@ -318,6 +321,12 @@ class HomeViewModel @Inject constructor(
 
     fun summaryConsumed() = _extra.update { it.copy(sessionSummary = null) }
     fun snackbarConsumed() = _extra.update { it.copy(snackbarMessage = null) }
+
+    fun dismissWhatsNew() {
+        viewModelScope.launch {
+            playerRepo.markWhatsNewSeen(BuildConfig.VERSION_CODE)
+        }
+    }
 }
 
 // ---------------------------------------------------------------------------

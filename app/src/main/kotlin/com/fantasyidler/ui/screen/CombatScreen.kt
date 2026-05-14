@@ -24,6 +24,7 @@ import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -44,6 +45,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -1049,7 +1051,22 @@ private fun DungeonInfoSheet(
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             } else {
-                availableSpells.forEach { spell ->
+                var onlyCastable by remember { mutableStateOf(false) }
+                val displaySpells = if (onlyCastable)
+                    availableSpells.filter { spell ->
+                        equippedWeapon?.infiniteRunes == spell.runeType ||
+                        (inventory[spell.runeType] ?: 0) >= spell.runeCost
+                    }
+                else
+                    availableSpells
+                Row(modifier = Modifier.padding(bottom = 4.dp)) {
+                    FilterChip(
+                        selected = onlyCastable,
+                        onClick  = { onlyCastable = !onlyCastable },
+                        label    = { Text("Only Castable") },
+                    )
+                }
+                displaySpells.forEach { spell ->
                     val isSelected = selectedSpell?.name == spell.name
                     Row(
                         modifier = Modifier

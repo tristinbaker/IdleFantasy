@@ -160,6 +160,10 @@ class PlayerRepository @Inject constructor(
         updateFlags(flags.copy(sessionQueue = queue.toMutableList().apply { removeAt(index) }))
     }
 
+    suspend fun markWhatsNewSeen(versionCode: Int) {
+        updateFlags(getFlags().copy(lastSeenVersionCode = versionCode))
+    }
+
     suspend fun updateCharacterProfile(name: String, gender: String, race: String) {
         val player = getOrCreatePlayer()
         val flags: PlayerFlags = json.decodeFromString(player.flags)

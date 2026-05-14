@@ -1,0 +1,4 @@
+• Fixed: sapphire and emerald jewelry now correctly show attack and strength stats
+• New: silver jewelry now has emerald, ruby, and diamond variants
+• New: spell selection now has an "Only Castable" filter to show only spells you have runes for
+• New: a "What's New" dialog now appears once after each update

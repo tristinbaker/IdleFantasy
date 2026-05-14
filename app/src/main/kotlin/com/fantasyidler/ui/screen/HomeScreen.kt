@@ -150,6 +150,28 @@ fun HomeScreen(
         )
     }
 
+    if (!state.isLoading && state.showWhatsNew) {
+        val context = LocalContext.current
+        val changelogText = remember {
+            runCatching { context.assets.open("changelog.txt").bufferedReader().readText().trim() }.getOrElse { "" }
+        }
+        if (changelogText.isNotEmpty()) {
+            AlertDialog(
+                onDismissRequest = viewModel::dismissWhatsNew,
+                title = { Text("What's New") },
+                text  = {
+                    Text(
+                        text  = changelogText,
+                        style = MaterialTheme.typography.bodyMedium,
+                    )
+                },
+                confirmButton = {
+                    TextButton(onClick = viewModel::dismissWhatsNew) { Text("Got it") }
+                },
+            )
+        }
+    }
+
     if (!state.isLoading && !state.characterSetupDone) {
         CharacterSetupSheet(
             isFirstTime = true,

@@ -24,6 +24,7 @@ data class PlayerFlags(
     @SerialName("character_setup_done") val characterSetupDone: Boolean = false,
     /** Up to 3 queued sessions to auto-start after the current one completes. */
     @SerialName("session_queue") val sessionQueue: List<QueuedAction> = emptyList(),
+    @SerialName("last_seen_version_code") val lastSeenVersionCode: Int = 0,
 )
 
 /** A session to be started when the current one completes. */

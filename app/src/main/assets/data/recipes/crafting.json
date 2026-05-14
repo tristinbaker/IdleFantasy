@@ -137,6 +137,30 @@
     "xp_per_item": 180,
     "time_per_item": 60
   },
+  "silver_emerald_ring": {
+    "type": "jewelry",
+    "display_name": "Silver Emerald Ring",
+    "level_required": 32,
+    "materials": {
+      "silver_bar": 1,
+      "emerald": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 65,
+    "time_per_item": 60
+  },
+  "silver_emerald_necklace": {
+    "type": "jewelry",
+    "display_name": "Silver Emerald Necklace",
+    "level_required": 37,
+    "materials": {
+      "silver_bar": 2,
+      "emerald": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 90,
+    "time_per_item": 60
+  },
   "gold_emerald_ring": {
     "type": "jewelry",
     "display_name": "Gold Emerald Ring",
@@ -183,6 +207,54 @@
     },
     "output_quantity": 1,
     "xp_per_item": 200,
+    "time_per_item": 60
+  },
+  "silver_ruby_ring": {
+    "type": "jewelry",
+    "display_name": "Silver Ruby Ring",
+    "level_required": 44,
+    "materials": {
+      "silver_bar": 1,
+      "ruby": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 130,
+    "time_per_item": 60
+  },
+  "silver_ruby_necklace": {
+    "type": "jewelry",
+    "display_name": "Silver Ruby Necklace",
+    "level_required": 49,
+    "materials": {
+      "silver_bar": 2,
+      "ruby": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 160,
+    "time_per_item": 60
+  },
+  "silver_diamond_ring": {
+    "type": "jewelry",
+    "display_name": "Silver Diamond Ring",
+    "level_required": 56,
+    "materials": {
+      "silver_bar": 1,
+      "diamond": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 195,
+    "time_per_item": 60
+  },
+  "silver_diamond_necklace": {
+    "type": "jewelry",
+    "display_name": "Silver Diamond Necklace",
+    "level_required": 61,
+    "materials": {
+      "silver_bar": 2,
+      "diamond": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 240,
     "time_per_item": 60
   },
   "gold_ruby_ring": {
