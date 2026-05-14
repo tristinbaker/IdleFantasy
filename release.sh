@@ -11,13 +11,15 @@
 #   5. Updates metadata/com.tristinbaker.idlefantasy.yml (F-Droid build entry)
 #   6. Commits + pushes the metadata update
 #   7. Does a fresh clone from GitHub, checks out the tag, and builds the release APK
-#   8. Prints the APK path and GitHub release URL
+#   8. Copies APK into docs/fdroid/repo/, runs fdroid update, commits + pushes
+#   9. Prints the APK path and GitHub release URL
 
 set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GRADLE_FILE="$REPO_DIR/app/build.gradle.kts"
 METADATA_FILE="$REPO_DIR/metadata/com.tristinbaker.idlefantasy.yml"
+FDROID_DIR="$REPO_DIR/docs/fdroid"
 CLONE_DIR="/tmp/FantasyIdler-release"
 
 # ---------------------------------------------------------------------------
@@ -137,9 +139,30 @@ git checkout "$TAG"
 
 APK="$CLONE_DIR/app/build/outputs/apk/release/app-release.apk"
 
+# ---------------------------------------------------------------------------
+# Update custom F-Droid repo (docs/fdroid)
+# ---------------------------------------------------------------------------
+
+echo "==> Updating custom F-Droid repo..."
+cd "$REPO_DIR"
+
+# Copy APK named by versionCode so old versions remain available
+cp "$APK" "$FDROID_DIR/repo/com.tristinbaker.idlefantasy_${VERSION_CODE}.apk"
+
+# Regenerate signed index
+cd "$FDROID_DIR"
+fdroid update
+
+cd "$REPO_DIR"
+git add docs/fdroid/repo/
+git commit -m "Update F-Droid repo for $TAG"
+git push
+echo "==> Custom F-Droid repo updated and pushed"
+
 echo ""
 echo "======================================================"
 echo "  Release $TAG complete"
 echo "  APK:     $APK"
+echo "  F-Droid: https://tristinbaker.github.io/IdleFantasy/fdroid/repo"
 echo "  Upload:  https://github.com/tristinbaker/IdleFantasy/releases/tag/$TAG"
 echo "======================================================"
