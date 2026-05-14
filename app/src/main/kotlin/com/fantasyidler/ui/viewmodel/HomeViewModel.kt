@@ -293,6 +293,7 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             val session = sessionRepo.getActiveSession() ?: return@launch
             sessionRepo.abandonSession(session.sessionId)
+            queuedSessionStarter.startNextQueued()
         }
     }
 

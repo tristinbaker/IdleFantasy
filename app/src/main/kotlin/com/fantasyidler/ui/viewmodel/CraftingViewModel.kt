@@ -201,17 +201,19 @@ class CraftingViewModel @Inject constructor(
                 else         -> ""
             }
             CraftableRecipe(
-                key           = r.itemName,
-                displayName   = r.displayName,
-                levelRequired = r.levelRequired,
-                materials     = r.materials,
-                outputKey     = r.itemName,
-                outputQty     = r.outputQuantity,
-                xpPerItem     = r.xpPerItem,
-                skillName     = Skills.FLETCHING,
-                outputDamage  = r.damage ?: 0,
-                category      = category,
-                tier          = tierFromKey(r.itemName),
+                key                 = r.itemName,
+                displayName         = r.displayName,
+                levelRequired       = r.levelRequired,
+                materials           = r.materials,
+                outputKey           = r.itemName,
+                outputQty           = r.outputQuantity,
+                xpPerItem           = r.xpPerItem,
+                skillName           = Skills.FLETCHING,
+                outputDamage        = r.damage        ?: 0,
+                outputAttackBonus   = r.attackBonus   ?: 0,
+                outputStrengthBonus = r.strengthBonus ?: 0,
+                category            = category,
+                tier                = tierFromKey(r.itemName),
             )
         }.sortedBy { it.levelRequired }
     }

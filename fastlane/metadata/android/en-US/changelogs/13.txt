@@ -1,0 +1,3 @@
+• Fixed: cancelling an active session now correctly starts the next queued session
+• Fixed: bows and staves now show their attack and strength stats in the Fletching crafting list
+• New: while a combat session is active, a Dungeons tab appears so you can queue more dungeons without leaving the combat screen

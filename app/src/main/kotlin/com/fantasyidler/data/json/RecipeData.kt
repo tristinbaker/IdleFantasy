@@ -39,6 +39,8 @@ data class FletchingRecipe(
     @SerialName("output_quantity") val outputQuantity: Int,
     @SerialName("time_per_batch") val timePerBatch: Int,
     val damage: Int? = null,
+    @SerialName("attack_bonus")   val attackBonus:   Int? = null,
+    @SerialName("strength_bonus") val strengthBonus: Int? = null,
     val requirements: Map<String, Int> = emptyMap(),
 )
 

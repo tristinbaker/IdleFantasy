@@ -503,6 +503,7 @@ class CombatViewModel @Inject constructor(
             val session = sessionRepo.getActiveSession() ?: return@launch
             if (session.skillName == "combat" || session.skillName == "boss") {
                 sessionRepo.abandonSession(session.sessionId)
+                queuedSessionStarter.startNextQueued()
             }
         }
     }

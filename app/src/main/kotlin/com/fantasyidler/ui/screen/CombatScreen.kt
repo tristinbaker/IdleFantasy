@@ -124,22 +124,46 @@ fun CombatScreen(
 
         val combatSession = state.combatSession
         if (combatSession != null) {
-            CombatSessionBanner(
-                session        = combatSession,
-                dungeons       = viewModel.dungeonList,
-                bosses         = viewModel.bossList,
-                enemies        = viewModel.enemyMap,
-                skillLevels    = state.skillLevels,
-                attackBonus    = state.totalAttackBonus,
-                strengthBonus  = state.totalStrengthBonus,
-                defenseBonus   = state.totalDefenseBonus,
-                equippedFood   = state.equippedFood,
-                foodHealValues = viewModel.foodHealValues,
-                modifier       = Modifier.padding(padding),
-                onCollect      = viewModel::collectSession,
-                onAbandon      = viewModel::abandonSession,
-                onDebugFinish  = viewModel::debugFinishSession,
-            )
+            var activeTab by remember { mutableIntStateOf(0) }
+            Column(Modifier.padding(padding).fillMaxSize()) {
+                TabRow(selectedTabIndex = activeTab) {
+                    Tab(
+                        selected = activeTab == 0,
+                        onClick  = { activeTab = 0 },
+                        text     = { Text("Combat Log") },
+                    )
+                    Tab(
+                        selected = activeTab == 1,
+                        onClick  = { activeTab = 1 },
+                        text     = { Text(stringResource(R.string.label_dungeons_tab)) },
+                    )
+                }
+                when (activeTab) {
+                    0 -> CombatSessionBanner(
+                        session        = combatSession,
+                        dungeons       = viewModel.dungeonList,
+                        bosses         = viewModel.bossList,
+                        enemies        = viewModel.enemyMap,
+                        skillLevels    = state.skillLevels,
+                        attackBonus    = state.totalAttackBonus,
+                        strengthBonus  = state.totalStrengthBonus,
+                        defenseBonus   = state.totalDefenseBonus,
+                        equippedFood   = state.equippedFood,
+                        foodHealValues = viewModel.foodHealValues,
+                        onCollect      = viewModel::collectSession,
+                        onAbandon      = viewModel::abandonSession,
+                        onDebugFinish  = viewModel::debugFinishSession,
+                    )
+                    1 -> CombatSelectionList(
+                        dungeons        = viewModel.dungeonList,
+                        bosses          = viewModel.bossList,
+                        skillLevels     = state.skillLevels,
+                        survivalRatings = state.dungeonSurvivalRatings,
+                        onDungeon       = viewModel::selectDungeon,
+                        onBoss          = viewModel::selectBoss,
+                    )
+                }
+            }
         } else {
             var selectedTab by remember { mutableIntStateOf(0) }
             Column(Modifier.padding(padding)) {
