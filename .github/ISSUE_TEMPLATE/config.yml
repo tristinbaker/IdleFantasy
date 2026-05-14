@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💡 Feature Request / Idea
+    url: https://github.com/tristinbaker/IdleFantasy/discussions/new?category=ideas
+    about: Have an idea for IdleFantasy? Share it in the Ideas discussion board! Feature requests opened as issues will be closed.
