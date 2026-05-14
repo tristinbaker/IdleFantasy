@@ -172,6 +172,7 @@ object SkillSimulator {
         toolEfficiency: Float = 1.0f,
         petDropKey: String? = null,
         petDropChance: Double = 0.0,
+        forcedDropPerFrame: String? = null,
     ): Result {
         var currentXp = startXp
         val frames = mutableListOf<SessionFrame>()
@@ -195,6 +196,9 @@ object SkillSimulator {
                 if (Random.nextDouble() < entry.chance) {
                     items[entry.item] = (items[entry.item] ?: 0) + 1
                 }
+            }
+            if (forcedDropPerFrame != null) {
+                items[forcedDropPerFrame] = (items[forcedDropPerFrame] ?: 0) + 1
             }
             if (petDropKey != null && petDropChance > 0.0 && Random.nextDouble() < petDropChance) {
                 items[petDropKey] = 1

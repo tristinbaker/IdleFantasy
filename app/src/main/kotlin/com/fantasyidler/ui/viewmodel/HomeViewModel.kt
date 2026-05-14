@@ -180,7 +180,13 @@ class HomeViewModel @Inject constructor(
                                 petMessage = "You found a pet: ${pd.displayName}!"
                         }
                         if (!died) {
-                            questRepo.recordCombat(session.activityKey, kills, loot, detectCombatStyle(xpPerSkill))
+                            questRepo.recordCombat(
+                                dungeonKey         = session.activityKey,
+                                killsByEnemy       = kills,
+                                loot               = loot,
+                                combatStyle        = detectCombatStyle(xpPerSkill),
+                                foodConsumedTotal  = food.values.sum(),
+                            )
                         }
                         if (food.isNotEmpty()) playerRepo.consumeItems(food)
                         for ((skill, xp) in xpPerSkill) combinedXpBySkill[skill] = (combinedXpBySkill[skill] ?: 0L) + xp

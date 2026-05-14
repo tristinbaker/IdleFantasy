@@ -1,4 +1,53 @@
 {
+  "ashes": {
+    "name": "ashes",
+    "display_name": "Ashes",
+    "description": "Burnt remnants of regular logs. Scatter for Prayer XP.",
+    "xp_per_bone": 3,
+    "time_per_bone": 60
+  },
+  "oak_ashes": {
+    "name": "oak_ashes",
+    "display_name": "Oak Ashes",
+    "description": "Burnt remnants of oak logs. Scatter for more Prayer XP.",
+    "xp_per_bone": 5,
+    "time_per_bone": 60
+  },
+  "willow_ashes": {
+    "name": "willow_ashes",
+    "display_name": "Willow Ashes",
+    "description": "Burnt remnants of willow logs. Scatter for Prayer XP.",
+    "xp_per_bone": 8,
+    "time_per_bone": 60
+  },
+  "maple_ashes": {
+    "name": "maple_ashes",
+    "display_name": "Maple Ashes",
+    "description": "Burnt remnants of maple logs. Scatter for Prayer XP.",
+    "xp_per_bone": 12,
+    "time_per_bone": 60
+  },
+  "yew_ashes": {
+    "name": "yew_ashes",
+    "display_name": "Yew Ashes",
+    "description": "Burnt remnants of yew logs. Scatter for significant Prayer XP.",
+    "xp_per_bone": 18,
+    "time_per_bone": 60
+  },
+  "magic_ashes": {
+    "name": "magic_ashes",
+    "display_name": "Magic Ashes",
+    "description": "Burnt remnants of magic logs. Scatter for substantial Prayer XP.",
+    "xp_per_bone": 27,
+    "time_per_bone": 60
+  },
+  "redwood_ashes": {
+    "name": "redwood_ashes",
+    "display_name": "Redwood Ashes",
+    "description": "Burnt remnants of redwood logs. Scatter for the most Prayer XP.",
+    "xp_per_bone": 40,
+    "time_per_bone": 60
+  },
   "bones": {
     "name": "bones",
     "display_name": "Bones",

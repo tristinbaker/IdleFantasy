@@ -68,6 +68,9 @@ object GameStrings {
     fun agilityCourse(context: Context, key: String): String =
         context.stringByName("agility_${key}_name") ?: key.toTitleCase()
 
+    fun agilityCourseDesc(context: Context, key: String): String =
+        context.stringByName("agility_${key}_desc") ?: ""
+
     fun skillEmoji(key: String): String = when (key) {
         "mining"      -> "⛏️"
         "fishing"     -> "🎣"

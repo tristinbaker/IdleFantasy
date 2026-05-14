@@ -12,9 +12,9 @@
     <string name="skill_farming_name">Farming</string>
     <string name="skill_farming_desc">Plant and harvest crops from your farming patches.</string>
     <string name="skill_firemaking_name">Firemaking</string>
-    <string name="skill_firemaking_desc">Burn logs to gain Firemaking experience.</string>
+    <string name="skill_firemaking_desc">Burn logs from your inventory to gain Firemaking XP. Each log burned also produces ashes, which can be scattered in the Prayer skill for bonus Prayer XP.</string>
     <string name="skill_agility_name">Agility</string>
-    <string name="skill_agility_desc">Train your agility to reduce session times. Every 10 levels grants 5% faster sessions.</string>
+    <string name="skill_agility_desc">Train Agility to reduce session times across all skills. Every 10 levels cuts session time by 5 percent, up to a 45 percent reduction at level 90 (60 min → 33 min).</string>
 
     <!-- Crafting skills -->
     <string name="skill_smithing_name">Smithing</string>

@@ -78,6 +78,7 @@ class QuestRepository @Inject constructor(
         killsByEnemy: Map<String, Int>,
         loot: Map<String, Int>,
         combatStyle: String = "",
+        foodConsumedTotal: Int = 0,
     ) {
         val totalKills = killsByEnemy.values.sum()
 
@@ -105,6 +106,10 @@ class QuestRepository @Inject constructor(
                     if (quest.target == dungeonKey && combatStyle == "magic")
                         addProgress(questId, quest.amount, 1, quest.requiresPrevious)
                 }
+                "dungeon_no_food" -> {
+                    if (quest.target == dungeonKey && foodConsumedTotal == 0)
+                        addProgress(questId, quest.amount, 1, quest.requiresPrevious)
+                }
                 "collect" -> {
                     val count = loot[quest.target] ?: continue
                     if (count > 0) addProgress(questId, quest.amount, count, quest.requiresPrevious)
@@ -129,18 +134,27 @@ class QuestRepository @Inject constructor(
     }
 
     /**
-     * Marks a quest as reward-claimed. Returns the [QuestRewards] if it was claimable;
-     * null otherwise.
-     *
-     * Claimable = progress >= quest.amount && !completed && prerequisite completed
+     * Result of an attempted reward claim. [Success] carries the rewards;
+     * [BlockedByPrerequisite] tells the caller which quest still needs to be claimed first
+     * so the UI can name it in a snackbar; [NotReady] covers progress-too-low,
+     * already-completed, and unknown-quest cases.
      */
-    suspend fun claimReward(questId: String): QuestRewards? {
-        val quest = gameData.quests[questId] ?: return null
-        val current = questProgressDao.getQuestProgress(questId) ?: return null
+    sealed class ClaimResult {
+        data class Success(val rewards: QuestRewards) : ClaimResult()
+        data class BlockedByPrerequisite(val prerequisiteId: String) : ClaimResult()
+        object NotReady : ClaimResult()
+    }
 
-        if (current.completed) return null
-        if (current.progress < quest.amount) return null
-        if (!isPrerequisiteDone(quest.requiresPrevious)) return null
+    suspend fun claimReward(questId: String): ClaimResult {
+        val quest = gameData.quests[questId] ?: return ClaimResult.NotReady
+        val current = questProgressDao.getQuestProgress(questId) ?: return ClaimResult.NotReady
+
+        if (current.completed) return ClaimResult.NotReady
+        if (current.progress < quest.amount) return ClaimResult.NotReady
+        val prereq = quest.requiresPrevious
+        if (prereq != null && !isPrerequisiteDone(prereq)) {
+            return ClaimResult.BlockedByPrerequisite(prereq)
+        }
 
         questProgressDao.upsert(
             current.copy(
@@ -148,7 +162,7 @@ class QuestRepository @Inject constructor(
                 completedAt = System.currentTimeMillis(),
             )
         )
-        return quest.rewards
+        return ClaimResult.Success(quest.rewards)
     }
 
     // ---------------------------------------------------------------------------

@@ -268,11 +268,23 @@ class SkillsViewModel @Inject constructor(
         val xpMap:  Map<String, Long> = json.decodeFromString(player.skillXp)
 
         SkillSimulator.simulateGathering(
-            skillData    = gameData.firemakingSkillData,
-            startXp      = xpMap[Skills.FIREMAKING] ?: 0L,
-            agilityLevel = levels[Skills.AGILITY] ?: 1,
-            petBoostPct  = petBoostFor(player.pets, Skills.FIREMAKING),
+            skillData          = gameData.firemakingSkillData,
+            startXp            = xpMap[Skills.FIREMAKING] ?: 0L,
+            agilityLevel       = levels[Skills.AGILITY] ?: 1,
+            petBoostPct        = petBoostFor(player.pets, Skills.FIREMAKING),
+            forcedDropPerFrame = ashForLog(logKey),
         )
+    }
+
+    /** Maps a log key to the ash variant produced by burning it. Falls back to base ashes. */
+    private fun ashForLog(logKey: String): String = when (logKey) {
+        "oak_log"     -> "oak_ashes"
+        "willow_log"  -> "willow_ashes"
+        "maple_log"   -> "maple_ashes"
+        "yew_log"     -> "yew_ashes"
+        "magic_log"   -> "magic_ashes"
+        "redwood_log" -> "redwood_ashes"
+        else          -> "ashes"
     }
 
     fun startRunecraftingSession(runeKey: String, qty: Int) {

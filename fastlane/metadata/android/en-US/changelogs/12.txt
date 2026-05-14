@@ -1,0 +1,7 @@
+• Fixed: combat quest rewards (dungeons, Treasure Hunter, Iron Stomach, etc.) now actually grant XP — split evenly across all 7 combat-related skills
+• Fixed: Iron Stomach quests now progress when you clear the target dungeon without consuming any food
+• Fixed: quest claim button is now disabled until the previous tier is claimed; tapping a blocked claim now tells you which tier to claim first
+• New: boots are now craftable in Smithing — bronze through runite
+• New: Firemaking now drops tiered ashes (Ashes, Oak, Willow, Maple, Yew, Magic, Redwood) that scatter in the Prayer skill for scaling Prayer XP
+• New: tap any activity in a skill menu to see its description before starting a session
+• Improved: skill sheets now show what each skill actually does — Agility's session-time bonus and Firemaking's new ashes mechanic are now explained inline

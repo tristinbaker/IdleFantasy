@@ -3,6 +3,7 @@ package com.fantasyidler.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fantasyidler.data.json.QuestData
+import com.fantasyidler.data.json.QuestRewards
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
@@ -28,8 +29,9 @@ data class QuestWithProgress(
     val quest: QuestData,
     val progress: Int,
     val completed: Boolean,
+    val prereqCompleted: Boolean,
 ) {
-    val isClaimable: Boolean get() = progress >= quest.amount && !completed
+    val isClaimable: Boolean get() = progress >= quest.amount && !completed && prereqCompleted
     val progressFraction: Float get() = (progress.toFloat() / quest.amount.toFloat()).coerceIn(0f, 1f)
 }
 
@@ -64,10 +66,13 @@ class QuestsViewModel @Inject constructor(
 
         val questsWithProgress = gameData.quests.values.map { quest ->
             val prog = progressMap[quest.id]
+            val prereq = quest.requiresPrevious
+            val prereqCompleted = prereq == null || progressMap[prereq]?.completed == true
             QuestWithProgress(
-                quest     = quest,
-                progress  = prog?.progress ?: 0,
-                completed = prog?.completed ?: false,
+                quest           = quest,
+                progress        = prog?.progress ?: 0,
+                completed       = prog?.completed ?: false,
+                prereqCompleted = prereqCompleted,
             )
         }
 
@@ -89,25 +94,58 @@ class QuestsViewModel @Inject constructor(
 
     fun claimReward(questId: String) {
         viewModelScope.launch {
-            val rewards = questRepo.claimReward(questId) ?: return@launch
-            val quest = gameData.quests[questId] ?: return@launch
-
-            // Apply XP + items + coins via applyMultiSkillResults so coins are handled properly
-            playerRepo.applyMultiSkillResults(
-                xpPerSkill  = mapOf(quest.skill to rewards.xp.toLong()),
-                itemsGained = rewards.items,
-                coinsGained = rewards.coins.toLong(),
-            )
-
-            // Build snackbar message
-            val parts = buildList {
-                if (rewards.xp > 0) add("+${rewards.xp.toLong().formatXp()} XP")
-                if (rewards.coins > 0) add("+${rewards.coins.toLong().formatCoins()} coins")
-                rewards.items.forEach { (_, qty) -> add("×$qty item${if (qty != 1) "s" else ""}") }
+            when (val result = questRepo.claimReward(questId)) {
+                is QuestRepository.ClaimResult.Success -> applyClaimSuccess(questId, result.rewards)
+                is QuestRepository.ClaimResult.BlockedByPrerequisite -> {
+                    val blocker = gameData.quests[result.prerequisiteId]
+                    val message = if (blocker != null) {
+                        "Claim tier ${blocker.tier}: ${blocker.name} first"
+                    } else {
+                        "Claim the previous tier first"
+                    }
+                    _extra.update { it.copy(snackbarMessage = message) }
+                }
+                QuestRepository.ClaimResult.NotReady -> Unit
             }
-            val claimedText = if (parts.isNotEmpty()) " Claimed: ${parts.joinToString(", ")}" else ""
-            _extra.update { it.copy(snackbarMessage = "Quest complete: ${quest.name}!$claimedText") }
         }
+    }
+
+    private suspend fun applyClaimSuccess(questId: String, rewards: QuestRewards) {
+        val quest = gameData.quests[questId] ?: return
+
+        // Combat quests carry skill="combat", which isn't a real Skills.* key. Fan the XP
+        // out across all 7 combat-related skills (attack/strength/defense/ranged/magic/hp/prayer)
+        // so it actually lands somewhere visible to the player.
+        val xpPerSkill: Map<String, Long> = if (quest.skill == "combat") {
+            val total = rewards.xp.toLong()
+            val per = total / Skills.COMBAT.size
+            val remainder = total - per * Skills.COMBAT.size
+            Skills.COMBAT.withIndex().associate { (i, skill) ->
+                skill to (per + if (i == 0) remainder else 0L)
+            }
+        } else {
+            mapOf(quest.skill to rewards.xp.toLong())
+        }
+
+        playerRepo.applyMultiSkillResults(
+            xpPerSkill  = xpPerSkill,
+            itemsGained = rewards.items,
+            coinsGained = rewards.coins.toLong(),
+        )
+
+        val parts = buildList {
+            if (rewards.xp > 0) {
+                if (quest.skill == "combat") {
+                    add("+${rewards.xp.toLong().formatXp()} combat XP (split across 7 skills)")
+                } else {
+                    add("+${rewards.xp.toLong().formatXp()} XP")
+                }
+            }
+            if (rewards.coins > 0) add("+${rewards.coins.toLong().formatCoins()} coins")
+            rewards.items.forEach { (_, qty) -> add("×$qty item${if (qty != 1) "s" else ""}") }
+        }
+        val claimedText = if (parts.isNotEmpty()) " Claimed: ${parts.joinToString(", ")}" else ""
+        _extra.update { it.copy(snackbarMessage = "Quest complete: ${quest.name}!$claimedText") }
     }
 
     fun snackbarConsumed() = _extra.update { it.copy(snackbarMessage = null) }

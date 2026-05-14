@@ -477,7 +477,13 @@ class CombatViewModel @Inject constructor(
         if (allFoodConsumed.isNotEmpty()) playerRepo.consumeItems(allFoodConsumed)
         if (!playerDied) {
             val combatStyle = detectCombatStyle(totalXpPerSkill)
-            questRepo.recordCombat(session.activityKey, allKillsByEnemy, allItems, combatStyle)
+            questRepo.recordCombat(
+                dungeonKey         = session.activityKey,
+                killsByEnemy       = allKillsByEnemy,
+                loot               = allItems,
+                combatStyle        = combatStyle,
+                foodConsumedTotal  = allFoodConsumed.values.sum(),
+            )
         }
         sessionRepo.deleteSession(session.sessionId)
 

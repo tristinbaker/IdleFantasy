@@ -112,11 +112,21 @@ class QueuedSessionStarter @Inject constructor(
                 val logKey  = action.activityKey
                 val logData = gameData.logs[logKey] ?: return
                 if ((inventory[logKey] ?: 0) <= 0) return
+                val ashKey = when (logKey) {
+                    "oak_log"     -> "oak_ashes"
+                    "willow_log"  -> "willow_ashes"
+                    "maple_log"   -> "maple_ashes"
+                    "yew_log"     -> "yew_ashes"
+                    "magic_log"   -> "magic_ashes"
+                    "redwood_log" -> "redwood_ashes"
+                    else          -> "ashes"
+                }
                 val result  = SkillSimulator.simulateGathering(
-                    skillData    = gameData.firemakingSkillData,
-                    startXp      = xpMap[Skills.FIREMAKING] ?: 0L,
-                    agilityLevel = agilityLevel,
-                    petBoostPct  = gatheringPetBoost(player.pets, Skills.FIREMAKING),
+                    skillData          = gameData.firemakingSkillData,
+                    startXp            = xpMap[Skills.FIREMAKING] ?: 0L,
+                    agilityLevel       = agilityLevel,
+                    petBoostPct        = gatheringPetBoost(player.pets, Skills.FIREMAKING),
+                    forcedDropPerFrame = ashKey,
                 )
                 startSession(action, result)
             }

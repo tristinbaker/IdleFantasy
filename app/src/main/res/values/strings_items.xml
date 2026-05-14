@@ -441,6 +441,20 @@
     <string name="item_platinum_diamond_necklace_desc">A platinum necklace set with a diamond.</string>
 
     <!-- ===== Miscellaneous drops ===== -->
+    <string name="item_ashes_name">Ashes</string>
+    <string name="item_ashes_desc">Burnt remnants of regular logs. Scatter in the Prayer skill for bonus Prayer XP.</string>
+    <string name="item_oak_ashes_name">Oak Ashes</string>
+    <string name="item_oak_ashes_desc">Burnt remnants of oak logs. Scatter for more Prayer XP than regular ashes.</string>
+    <string name="item_willow_ashes_name">Willow Ashes</string>
+    <string name="item_willow_ashes_desc">Burnt remnants of willow logs. Scatter for Prayer XP.</string>
+    <string name="item_maple_ashes_name">Maple Ashes</string>
+    <string name="item_maple_ashes_desc">Burnt remnants of maple logs. Scatter for Prayer XP.</string>
+    <string name="item_yew_ashes_name">Yew Ashes</string>
+    <string name="item_yew_ashes_desc">Burnt remnants of yew logs. Scatter for significant Prayer XP.</string>
+    <string name="item_magic_ashes_name">Magic Ashes</string>
+    <string name="item_magic_ashes_desc">Burnt remnants of magic logs. Scatter for substantial Prayer XP.</string>
+    <string name="item_redwood_ashes_name">Redwood Ashes</string>
+    <string name="item_redwood_ashes_desc">Burnt remnants of redwood logs. Scatter for the most Prayer XP of any ash.</string>
     <string name="item_bones_name">Bones</string>
     <string name="item_bones_desc">Bones from a small creature. Bury for Prayer XP.</string>
     <string name="item_big_bones_name">Big Bones</string>

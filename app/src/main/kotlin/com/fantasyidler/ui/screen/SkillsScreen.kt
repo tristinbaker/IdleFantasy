@@ -19,6 +19,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
@@ -510,11 +511,18 @@ private fun MiningSheet(
     onSelect: (String) -> Unit,
 ) {
     val context = LocalContext.current
+    var selectedKey by remember { mutableStateOf<String?>(null) }
     Column(Modifier.padding(bottom = 24.dp)) {
         Text(
             text     = stringResource(R.string.label_choose_activity),
             style    = MaterialTheme.typography.titleMedium,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+        )
+        Text(
+            text     = stringResource(R.string.skill_mining_desc),
+            style    = MaterialTheme.typography.bodySmall,
+            color    = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 4.dp),
         )
         if (sessionDurationMs > 0) {
             Text(
@@ -535,10 +543,22 @@ private fun MiningSheet(
                         isStarting       = isStarting,
                         hasActiveSession = hasActiveSession,
                         isQueueFull      = isQueueFull,
-                        onClick          = { onSelect(key) },
+                        onClick          = { selectedKey = key },
                     )
                 }
         }
+    }
+    selectedKey?.let { key ->
+        val ore = ores[key] ?: return@let
+        ActivityDetailDialog(
+            name             = GameStrings.itemName(context, key),
+            detail           = "Lv. ${ore.levelRequired}  •  ${ore.xpPerOre} XP/ore",
+            description      = GameStrings.itemDesc(context, key),
+            hasActiveSession = hasActiveSession,
+            isQueueFull      = isQueueFull,
+            onConfirm        = { onSelect(key) },
+            onDismiss        = { selectedKey = null },
+        )
     }
 }
 
@@ -552,11 +572,18 @@ private fun WoodcuttingSheet(
     onSelect: (String) -> Unit,
 ) {
     val context = LocalContext.current
+    var selectedKey by remember { mutableStateOf<String?>(null) }
     Column(Modifier.padding(bottom = 24.dp)) {
         Text(
             text     = stringResource(R.string.label_choose_activity),
             style    = MaterialTheme.typography.titleMedium,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+        )
+        Text(
+            text     = stringResource(R.string.skill_woodcutting_desc),
+            style    = MaterialTheme.typography.bodySmall,
+            color    = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 4.dp),
         )
         if (sessionDurationMs > 0) {
             Text(
@@ -577,10 +604,22 @@ private fun WoodcuttingSheet(
                         isStarting       = isStarting,
                         hasActiveSession = hasActiveSession,
                         isQueueFull      = isQueueFull,
-                        onClick          = { onSelect(key) },
+                        onClick          = { selectedKey = key },
                     )
                 }
         }
+    }
+    selectedKey?.let { key ->
+        val tree = trees[key] ?: return@let
+        ActivityDetailDialog(
+            name             = GameStrings.itemName(context, tree.logName),
+            detail           = "Lv. ${tree.levelRequired}  •  ${tree.xpPerLog} XP/log",
+            description      = GameStrings.itemDesc(context, tree.logName),
+            hasActiveSession = hasActiveSession,
+            isQueueFull      = isQueueFull,
+            onConfirm        = { onSelect(key) },
+            onDismiss        = { selectedKey = null },
+        )
     }
 }
 
@@ -602,6 +641,12 @@ private fun FishingSheet(
         Text(
             text  = stringResource(R.string.skill_fishing_name),
             style = MaterialTheme.typography.titleMedium,
+        )
+        Spacer(Modifier.height(4.dp))
+        Text(
+            text  = stringResource(R.string.skill_fishing_desc),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
         Spacer(Modifier.height(4.dp))
         Text(
@@ -687,6 +732,43 @@ private fun ActivityRow(
     HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
 }
 
+@Composable
+private fun ActivityDetailDialog(
+    name: String,
+    detail: String,
+    description: String,
+    hasActiveSession: Boolean,
+    isQueueFull: Boolean,
+    onConfirm: () -> Unit,
+    onDismiss: () -> Unit,
+) {
+    val queueBlocked = hasActiveSession && isQueueFull
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(name) },
+        text = {
+            Column {
+                Text(detail, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                if (description.isNotBlank()) {
+                    Spacer(Modifier.height(12.dp))
+                    Text(description, style = MaterialTheme.typography.bodyMedium)
+                }
+            }
+        },
+        confirmButton = {
+            Button(
+                onClick = { onConfirm(); onDismiss() },
+                enabled = !queueBlocked,
+            ) {
+                Text(if (hasActiveSession) "Add to Queue" else stringResource(R.string.btn_start_session))
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.btn_cancel)) }
+        },
+    )
+}
+
 // ---------------------------------------------------------------------------
 // Agility sheet
 // ---------------------------------------------------------------------------
@@ -700,11 +782,19 @@ private fun AgilitySheet(
     sessionDurationMs: Long,
     onSelect: (String) -> Unit,
 ) {
+    val context = LocalContext.current
+    var selectedKey by remember { mutableStateOf<String?>(null) }
     Column(Modifier.padding(bottom = 24.dp)) {
         Text(
             text     = stringResource(R.string.label_choose_activity),
             style    = MaterialTheme.typography.titleMedium,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+        )
+        Text(
+            text     = stringResource(R.string.skill_agility_desc),
+            style    = MaterialTheme.typography.bodySmall,
+            color    = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 4.dp),
         )
         if (sessionDurationMs > 0) {
             Text(
@@ -725,10 +815,22 @@ private fun AgilitySheet(
                         isStarting       = isStarting,
                         hasActiveSession = hasActiveSession,
                         isQueueFull      = isQueueFull,
-                        onClick          = { onSelect(key) },
+                        onClick          = { selectedKey = key },
                     )
                 }
         }
+    }
+    selectedKey?.let { key ->
+        val course = courses[key] ?: return@let
+        ActivityDetailDialog(
+            name             = course.displayName,
+            detail           = "Lv. ${course.levelRequired}  •  ${course.xpPerSuccess} XP/lap",
+            description      = GameStrings.agilityCourseDesc(context, key),
+            hasActiveSession = hasActiveSession,
+            isQueueFull      = isQueueFull,
+            onConfirm        = { onSelect(key) },
+            onDismiss        = { selectedKey = null },
+        )
     }
 }
 
@@ -746,11 +848,18 @@ private fun FiremakingSheet(
     onSelect: (String) -> Unit,
     context: android.content.Context,
 ) {
+    var selectedKey by remember { mutableStateOf<String?>(null) }
     Column(Modifier.padding(bottom = 24.dp)) {
         Text(
             text     = stringResource(R.string.label_choose_activity),
             style    = MaterialTheme.typography.titleMedium,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+        )
+        Text(
+            text     = stringResource(R.string.skill_firemaking_desc),
+            style    = MaterialTheme.typography.bodySmall,
+            color    = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 4.dp),
         )
         if (sessionDurationMs > 0) {
             Text(
@@ -783,11 +892,23 @@ private fun FiremakingSheet(
                             isStarting       = isStarting,
                             hasActiveSession = hasActiveSession,
                             isQueueFull      = isQueueFull,
-                            onClick          = { onSelect(key) },
+                            onClick          = { selectedKey = key },
                         )
                     }
             }
         }
+    }
+    selectedKey?.let { key ->
+        val log = availableLogs[key] ?: return@let
+        ActivityDetailDialog(
+            name             = GameStrings.itemName(context, key),
+            detail           = "Lv. ${log.levelRequired}  •  ${log.xpPerLog} XP/log",
+            description      = GameStrings.itemDesc(context, key),
+            hasActiveSession = hasActiveSession,
+            isQueueFull      = isQueueFull,
+            onConfirm        = { onSelect(key) },
+            onDismiss        = { selectedKey = null },
+        )
     }
 }
 
@@ -824,7 +945,7 @@ private fun PrayerSheet(
         if (selectedBone == null) {
             // ── Bone selection ───────────────────────────────────────────
             Text(
-                text     = "Level $prayerLevel  •  Select bones to bury",
+                text     = "Level $prayerLevel  •  Bury bones or scatter ashes for Prayer XP",
                 style    = MaterialTheme.typography.bodySmall,
                 color    = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
@@ -835,7 +956,7 @@ private fun PrayerSheet(
                     contentAlignment = Alignment.Center,
                 ) {
                     Text(
-                        text  = "No bones in inventory",
+                        text  = "No bones or ashes in inventory",
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
