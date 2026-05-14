@@ -2,6 +2,7 @@ package com.fantasyidler.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.SessionFrame
@@ -46,6 +47,18 @@ data class CraftableRecipe(
     val outputHealingValue: Int = 0,
     val outputDamage: Int = 0,
     val outputRequirements: Map<String, Int> = emptyMap(),
+    /** Broad category for filter chips (e.g. "Weapon", "Armour", "Bar", "Food"). */
+    val category: String = "",
+    /** Material tier for filter chips (e.g. "Bronze", "Iron", "Rune"). */
+    val tier: String = "",
+)
+
+private fun tierFromKey(key: String) =
+    key.substringBefore('_').replaceFirstChar { it.uppercase() }
+
+private val ARMOUR_SLOTS = setOf(
+    EquipSlot.HEAD, EquipSlot.BODY, EquipSlot.LEGS,
+    EquipSlot.BOOTS, EquipSlot.CAPE, EquipSlot.SHIELD,
 )
 
 // ---------------------------------------------------------------------------
@@ -132,6 +145,17 @@ class CraftingViewModel @Inject constructor(
     val smithingRecipes: List<CraftableRecipe> by lazy {
         gameData.smithingRecipes.map { (key, r) ->
             val equip = gameData.equipment[key]
+            val category = when (r.type) {
+                "bar"       -> "Bar"
+                "component" -> "Component"
+                "tool"      -> "Tool"
+                "equipment" -> when (equip?.slot) {
+                    EquipSlot.WEAPON -> "Weapon"
+                    in ARMOUR_SLOTS  -> "Armour"
+                    else             -> "Equipment"
+                }
+                else -> ""
+            }
             CraftableRecipe(
                 key                 = key,
                 displayName         = r.displayName,
@@ -145,6 +169,8 @@ class CraftingViewModel @Inject constructor(
                 outputStrengthBonus = equip?.strengthBonus  ?: 0,
                 outputDefenseBonus  = equip?.defenseBonus   ?: 0,
                 outputRequirements  = equip?.requirements   ?: emptyMap(),
+                category            = category,
+                tier                = tierFromKey(key),
             )
         }.sortedBy { it.levelRequired }
     }
@@ -161,12 +187,19 @@ class CraftingViewModel @Inject constructor(
                 xpPerItem          = r.xpPerItem,
                 skillName          = Skills.COOKING,
                 outputHealingValue = r.healingValue,
+                category           = "Food",
             )
         }.sortedBy { it.levelRequired }
     }
 
     val fletchingRecipes: List<CraftableRecipe> by lazy {
         gameData.fletchingRecipes.map { (_, r) ->
+            val category = when (r.type) {
+                "component"  -> "Component"
+                "ammunition" -> "Ammunition"
+                "weapon"     -> "Weapon"
+                else         -> ""
+            }
             CraftableRecipe(
                 key           = r.itemName,
                 displayName   = r.displayName,
@@ -177,6 +210,8 @@ class CraftingViewModel @Inject constructor(
                 xpPerItem     = r.xpPerItem,
                 skillName     = Skills.FLETCHING,
                 outputDamage  = r.damage ?: 0,
+                category      = category,
+                tier          = tierFromKey(r.itemName),
             )
         }.sortedBy { it.levelRequired }
     }
@@ -197,6 +232,8 @@ class CraftingViewModel @Inject constructor(
                 outputStrengthBonus = equip?.strengthBonus  ?: 0,
                 outputDefenseBonus  = equip?.defenseBonus   ?: 0,
                 outputRequirements  = equip?.requirements   ?: emptyMap(),
+                category            = "Jewellery",
+                tier                = tierFromKey(key),
             )
         }.sortedBy { it.levelRequired }
     }

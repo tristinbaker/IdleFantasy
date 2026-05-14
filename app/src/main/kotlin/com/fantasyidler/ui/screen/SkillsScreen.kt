@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.CircleShape
@@ -22,6 +23,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.Button
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -940,6 +942,12 @@ private fun PrayerSheet(
             style    = MaterialTheme.typography.titleMedium,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
         )
+        Text(
+            text     = stringResource(R.string.skill_prayer_desc),
+            style    = MaterialTheme.typography.bodySmall,
+            color    = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 4.dp),
+        )
         HorizontalDivider()
 
         if (selectedBone == null) {
@@ -1105,6 +1113,12 @@ private fun RunecraftingSheet(
                 text     = stringResource(R.string.skill_runecrafting_name),
                 style    = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+            )
+            Text(
+                text     = stringResource(R.string.skill_runecrafting_desc),
+                style    = MaterialTheme.typography.bodySmall,
+                color    = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 4.dp),
             )
             Text(
                 text     = "${sheet.essenceQty} Rune Essence in inventory",
@@ -1368,11 +1382,24 @@ private fun CraftSkillSheet(
         else             -> craftingViewModel.jewelleryRecipes
     }
 
-    var onlyCraftable by remember { mutableStateOf(false) }
-    val recipes = if (onlyCraftable)
-        allRecipes.filter { craftState.meetsLevel(it) && craftState.maxCraftable(it) > 0 }
-    else
-        allRecipes
+    var onlyCraftable    by remember { mutableStateOf(false) }
+    var selectedCategory by remember { mutableStateOf<String?>(null) }
+    var selectedTier     by remember { mutableStateOf<String?>(null) }
+
+    val categories = remember(allRecipes) {
+        allRecipes.map { it.category }.filter { it.isNotEmpty() }.distinct().sorted()
+    }
+    val categoryFiltered = if (selectedCategory == null) allRecipes
+                           else allRecipes.filter { it.category == selectedCategory }
+    val tiers = remember(categoryFiltered) {
+        categoryFiltered.map { it.tier }.filter { it.isNotEmpty() }.distinct().sorted()
+    }
+    val recipes = categoryFiltered
+        .filter { selectedTier == null || it.tier == selectedTier }
+        .let { list ->
+            if (onlyCraftable) list.filter { craftState.meetsLevel(it) && craftState.maxCraftable(it) > 0 }
+            else list
+        }
 
     val selected = craftState.selectedRecipe
 
@@ -1417,13 +1444,66 @@ private fun CraftSkillSheet(
                 )
             }
             HorizontalDivider()
+            Text(
+                text     = GameStrings.skillDesc(context, skillName),
+                style    = MaterialTheme.typography.bodySmall,
+                color    = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 4.dp),
+            )
+            if (categories.size > 1) {
+                Row(
+                    modifier            = Modifier
+                        .fillMaxWidth()
+                        .horizontalScroll(rememberScrollState())
+                        .padding(horizontal = 12.dp, vertical = 2.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    FilterChip(
+                        selected  = selectedCategory == null,
+                        onClick   = { selectedCategory = null; selectedTier = null },
+                        label     = { Text("All") },
+                    )
+                    categories.forEach { cat ->
+                        FilterChip(
+                            selected  = selectedCategory == cat,
+                            onClick   = {
+                                selectedCategory = if (selectedCategory == cat) null else cat
+                                selectedTier = null
+                            },
+                            label     = { Text(cat) },
+                        )
+                    }
+                }
+            }
+            if (tiers.size > 1) {
+                Row(
+                    modifier            = Modifier
+                        .fillMaxWidth()
+                        .horizontalScroll(rememberScrollState())
+                        .padding(horizontal = 12.dp, vertical = 2.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    FilterChip(
+                        selected  = selectedTier == null,
+                        onClick   = { selectedTier = null },
+                        label     = { Text("All") },
+                    )
+                    tiers.forEach { tier ->
+                        FilterChip(
+                            selected  = selectedTier == tier,
+                            onClick   = { selectedTier = if (selectedTier == tier) null else tier },
+                            label     = { Text(tier) },
+                        )
+                    }
+                }
+            }
             LazyColumn(Modifier.fillMaxWidth()) {
                 items(recipes) { recipe ->
                     CraftRecipeRow(
-                        recipe    = recipe,
+                        recipe     = recipe,
                         craftState = craftState,
-                        context   = context,
-                        onTap     = { craftingViewModel.openRecipe(recipe) },
+                        context    = context,
+                        onTap      = { craftingViewModel.openRecipe(recipe) },
                     )
                 }
                 item { Spacer(Modifier.height(8.dp)) }
