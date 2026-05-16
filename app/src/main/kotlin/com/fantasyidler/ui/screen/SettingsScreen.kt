@@ -19,6 +19,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -34,6 +35,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -63,6 +65,7 @@ fun SettingsScreen(
     val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
 
+    val themePreference by viewModel.themePreference.collectAsState()
     var notificationsEnabled by remember { mutableStateOf(false) }
     var showResetConfirm1 by remember { mutableStateOf(false) }
     var showResetConfirm2 by remember { mutableStateOf(false) }
@@ -166,7 +169,31 @@ fun SettingsScreen(
                 .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
+            // Appearance section
+            SectionHeader(title = "Appearance")
+
+            SettingsRow(
+                title    = "Theme",
+                subtitle = "Choose your preferred colour scheme",
+                trailing = {
+                    Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                        listOf(
+                            "dark"   to "Dark",
+                            "light"  to "Light",
+                            "system" to "System",
+                        ).forEach { (key, label) ->
+                            FilterChip(
+                                selected = themePreference == key,
+                                onClick  = { viewModel.setTheme(key) },
+                                label    = { Text(label, style = MaterialTheme.typography.labelSmall) },
+                            )
+                        }
+                    }
+                }
+            )
+
             // Notifications section
+            HorizontalDivider()
             SectionHeader(title = stringResource(R.string.settings_notifications_header))
 
             SettingsRow(

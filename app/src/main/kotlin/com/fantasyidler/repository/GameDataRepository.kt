@@ -239,6 +239,8 @@ class GameDataRepository @Inject constructor(
             quests.values.filter { it.type == "collect" }.forEach { add(it.target) }
             // Herblore: protect both ingredients (including junk secondaries) and potions
             herbloreRecipes.forEach { (key, r) -> add(key); addAll(r.materials.keys) }
+            // Farming: protect seeds so they aren't sold as junk
+            addAll(crops.values.map { it.seedName })
         }
     }
 

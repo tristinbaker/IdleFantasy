@@ -27,6 +27,21 @@ val ErrorRed    = Color(0xFFCF6679)
 val SuccessGreen = Color(0xFF4CAF50)
 val WarningAmber = Color(0xFFFFB300)
 
+// Light theme backgrounds & surfaces — warm parchment
+val LightBackground      = Color(0xFFF5EDD8)
+val LightSurface         = Color(0xFFFAF4E6)
+val LightSurfaceVariant  = Color(0xFFE5D5B0)
+
+// Light theme text — dark charcoal/brown
+val DarkText             = Color(0xFF1C1408)
+val DarkTextMuted        = Color(0xFF4A3820)
+
+// Light theme containers
+val GoldContainerLight      = Color(0xFFFFEFB0)
+val GoldOnContainerLight    = Color(0xFF2A1A00)
+val BrownContainerLight     = Color(0xFFF5DEC4)
+val BrownOnContainerLight   = Color(0xFF2A1208)
+
 // Equipment tier colours (used for level badges and item rarity)
 val TierBronze  = Color(0xFFCD7F32)
 val TierIron    = Color(0xFF808080)

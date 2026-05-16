@@ -173,8 +173,13 @@ class SkillsViewModel @Inject constructor(
             }
             Skills.RUNECRAFTING -> {
                 viewModelScope.launch {
-                    val inv: Map<String, Int> = json.decodeFromString(playerRepo.getOrCreatePlayer().inventory)
-                    val essenceQty = inv["rune_essence"] ?: 0
+                    val player = playerRepo.getOrCreatePlayer()
+                    val inv: Map<String, Int> = json.decodeFromString(player.inventory)
+                    val flags = try { json.decodeFromString<PlayerFlags>(player.flags) } catch (_: Exception) { PlayerFlags() }
+                    val reservedEssence = flags.sessionQueue
+                        .filter { it.skillName == Skills.RUNECRAFTING }
+                        .sumOf { action -> (gameData.runes[action.activityKey]?.essenceCost ?: 0) * action.qty }
+                    val essenceQty = ((inv["rune_essence"] ?: 0) - reservedEssence).coerceAtLeast(0)
                     val rcLevel = state.skillLevels[Skills.RUNECRAFTING] ?: 1
                     val available = gameData.runes.filter { (_, rune) -> rune.levelRequired <= rcLevel }
                     _uiState.update { it.copy(sheetSkill = SheetState.Runecrafting(available, essenceQty)) }
@@ -183,10 +188,14 @@ class SkillsViewModel @Inject constructor(
             }
             Skills.PRAYER -> {
                 viewModelScope.launch {
-                    val inv: Map<String, Int> = json.decodeFromString(playerRepo.getOrCreatePlayer().inventory)
-                    val available = gameData.bones.filter { (key, _) -> inv.containsKey(key) }
+                    val player = playerRepo.getOrCreatePlayer()
+                    val inv: Map<String, Int> = json.decodeFromString(player.inventory)
+                    val flags = try { json.decodeFromString<PlayerFlags>(player.flags) } catch (_: Exception) { PlayerFlags() }
+                    val reserved = reservedQty(flags.sessionQueue, Skills.PRAYER)
+                    val effectiveCounts = inv.mapValues { (k, v) -> v - (reserved[k] ?: 0) }
+                    val available = gameData.bones.filter { (key, _) -> (effectiveCounts[key] ?: 0) > 0 }
                     _uiState.update {
-                        it.copy(sheetSkill = SheetState.Prayer(available, inv.filterKeys { k -> k in gameData.bones }))
+                        it.copy(sheetSkill = SheetState.Prayer(available, effectiveCounts.filterKeys { k -> k in gameData.bones }))
                     }
                 }
                 return
@@ -290,6 +299,19 @@ class SkillsViewModel @Inject constructor(
 
     fun startRunecraftingSession(runeKey: String, qty: Int) {
         viewModelScope.launch {
+            val runeData = gameData.runes[runeKey] ?: return@launch
+            val player   = playerRepo.getOrCreatePlayer()
+            val inv: Map<String, Int> = json.decodeFromString(player.inventory)
+            val flags    = try { json.decodeFromString<PlayerFlags>(player.flags) } catch (_: Exception) { PlayerFlags() }
+            val reservedEssence = flags.sessionQueue
+                .filter { it.skillName == Skills.RUNECRAFTING }
+                .sumOf { action -> (gameData.runes[action.activityKey]?.essenceCost ?: 0) * action.qty }
+            val availableEssence = (inv["rune_essence"] ?: 0) - reservedEssence
+            if (availableEssence < runeData.essenceCost * qty) {
+                _uiState.update { it.copy(snackbarMessage = "Not enough Rune Essence") }
+                return@launch
+            }
+
             if (sessionRepo.getActiveSession() != null) {
                 val actDisplay = runeKey.replace('_', ' ').replaceFirstChar { it.uppercase() }
                 val enqueued = playerRepo.enqueueAction(
@@ -301,14 +323,6 @@ class SkillsViewModel @Inject constructor(
                         sheetSkill = null,
                     )
                 }
-                return@launch
-            }
-
-            val runeData = gameData.runes[runeKey] ?: return@launch
-            val player   = playerRepo.getOrCreatePlayer()
-            val inv: Map<String, Int> = json.decodeFromString(player.inventory)
-            if ((inv["rune_essence"] ?: 0) < runeData.essenceCost * qty) {
-                _uiState.update { it.copy(snackbarMessage = "Not enough Rune Essence") }
                 return@launch
             }
 
@@ -365,25 +379,27 @@ class SkillsViewModel @Inject constructor(
 
     fun startPrayerSession(boneKey: String, qty: Int) {
         viewModelScope.launch {
+            val bone   = gameData.bones[boneKey] ?: return@launch
+            val player = playerRepo.getOrCreatePlayer()
+            val inv: Map<String, Int> = json.decodeFromString(player.inventory)
+            val flags  = try { json.decodeFromString<PlayerFlags>(player.flags) } catch (_: Exception) { PlayerFlags() }
+            val alreadyQueued = reservedQty(flags.sessionQueue, Skills.PRAYER)[boneKey] ?: 0
+            val available = (inv[boneKey] ?: 0) - alreadyQueued
+            if (available < qty) {
+                _uiState.update { it.copy(snackbarMessage = "Not enough ${bone.displayName}") }
+                return@launch
+            }
+
             if (sessionRepo.getActiveSession() != null) {
-                val bone = gameData.bones[boneKey]
                 val enqueued = playerRepo.enqueueAction(
                     QueuedAction(Skills.PRAYER, boneKey, "Prayer", qty = qty)
                 )
                 _uiState.update {
                     it.copy(
-                        snackbarMessage = if (enqueued) "Added to queue: Prayer — ${bone?.displayName ?: boneKey}." else "Queue is full (3/3).",
+                        snackbarMessage = if (enqueued) "Added to queue: Prayer — ${bone.displayName}." else "Queue is full (3/3).",
                         sheetSkill = null,
                     )
                 }
-                return@launch
-            }
-
-            val bone   = gameData.bones[boneKey] ?: return@launch
-            val player = playerRepo.getOrCreatePlayer()
-            val inv: Map<String, Int> = json.decodeFromString(player.inventory)
-            if ((inv[boneKey] ?: 0) < qty) {
-                _uiState.update { it.copy(snackbarMessage = "Not enough ${bone.displayName}") }
                 return@launch
             }
 
@@ -607,6 +623,12 @@ class SkillsViewModel @Inject constructor(
     // ------------------------------------------------------------------
     // Helpers
     // ------------------------------------------------------------------
+
+    /** Sums qty already committed to the queue for each activityKey under [skillName]. */
+    private fun reservedQty(queue: List<QueuedAction>, skillName: String): Map<String, Int> =
+        queue.filter { it.skillName == skillName }
+             .groupingBy { it.activityKey }
+             .fold(0) { acc, a -> acc + a.qty }
 
     private val TOOL_TIERS = listOf(1, 15, 30, 55, 70, 85)
 

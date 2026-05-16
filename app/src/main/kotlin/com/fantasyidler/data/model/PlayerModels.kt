@@ -25,6 +25,8 @@ data class PlayerFlags(
     /** Up to 3 queued sessions to auto-start after the current one completes. */
     @SerialName("session_queue") val sessionQueue: List<QueuedAction> = emptyList(),
     @SerialName("last_seen_version_code") val lastSeenVersionCode: Int = 0,
+    /** "dark" | "light" | "system". Defaults to "dark" to preserve existing behaviour. */
+    @SerialName("theme_preference") val themePreference: String = "dark",
 )
 
 /** A session to be started when the current one completes. */

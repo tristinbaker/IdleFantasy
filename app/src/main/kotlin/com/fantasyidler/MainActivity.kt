@@ -8,9 +8,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.runtime.getValue
 import androidx.core.content.ContextCompat
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.fantasyidler.ui.navigation.AppNavigation
 import com.fantasyidler.ui.theme.FantasyIdlerTheme
+import com.fantasyidler.ui.viewmodel.SettingsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,7 +29,9 @@ class MainActivity : ComponentActivity() {
         requestNotificationPermissionIfNeeded()
         enableEdgeToEdge()
         setContent {
-            FantasyIdlerTheme {
+            val settingsViewModel: SettingsViewModel = hiltViewModel()
+            val themePreference by settingsViewModel.themePreference.collectAsStateWithLifecycle()
+            FantasyIdlerTheme(themePreference = themePreference) {
                 AppNavigation()
             }
         }
