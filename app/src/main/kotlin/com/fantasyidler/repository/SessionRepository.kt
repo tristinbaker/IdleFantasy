@@ -19,6 +19,7 @@ class SessionRepository @Inject constructor(
     @ApplicationContext private val context: Context,
 ) {
     val activeSessionFlow: Flow<SkillSession?> = sessionDao.observeActiveSession()
+    val completedCountFlow: Flow<Int> = sessionDao.observeCompletedCount()
 
     suspend fun getActiveSession(): SkillSession? = sessionDao.getActiveSession()
 
@@ -73,6 +74,9 @@ class SessionRepository @Inject constructor(
 
     suspend fun getAllCompletedSessions(): List<SkillSession> =
         sessionDao.getAllCompletedSessions()
+
+    suspend fun getOldestCompletedSession(): SkillSession? =
+        sessionDao.getOldestCompletedSession()
 
     // ------------------------------------------------------------------
 

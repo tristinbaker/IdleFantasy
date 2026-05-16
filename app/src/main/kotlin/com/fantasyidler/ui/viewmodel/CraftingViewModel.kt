@@ -339,23 +339,31 @@ class CraftingViewModel @Inject constructor(
         allRecipes: List<CraftableRecipe>,
     ): Map<String, Int> {
         val eff = inventory.toMutableMap()
-        val activityKeys = buildList {
-            activeSession?.let { if (it.skillName in craftingSkills) add(it.activityKey) }
-            for (action in queue) {
-                if (action.skillName in craftingSkills) add(action.activityKey)
-            }
-        }
-        for (key in activityKeys) {
-            val recipe = allRecipes.find { it.key == key } ?: continue
-            if (recipe.materials.isEmpty()) continue
-            val qty = recipe.materials.minOf { (item, needed) ->
-                (eff[item] ?: 0) / needed.coerceAtLeast(1)
-            }
-            if (qty <= 0) continue
+
+        // Active session: count crafts from pre-computed frame output so we reserve
+        // exactly what the running session will consume, not the max possible.
+        activeSession?.let { session ->
+            if (session.skillName !in craftingSkills) return@let
+            val recipe = allRecipes.find { it.key == session.activityKey } ?: return@let
+            if (recipe.materials.isEmpty()) return@let
+            val frames = json.decodeFromString<List<SessionFrame>>(session.frames)
+            val totalOutput = frames.sumOf { it.items[recipe.outputKey] ?: 0 }
+            val qty = if (recipe.outputQty > 0) totalOutput / recipe.outputQty else 0
             for ((item, needed) in recipe.materials) {
                 eff[item] = (eff[item] ?: 0) - qty * needed
             }
         }
+
+        // Queued actions: use the exact quantity the user queued.
+        for (action in queue) {
+            if (action.skillName !in craftingSkills) continue
+            val recipe = allRecipes.find { it.key == action.activityKey } ?: continue
+            if (recipe.materials.isEmpty()) continue
+            for ((item, needed) in recipe.materials) {
+                eff[item] = (eff[item] ?: 0) - action.qty * needed
+            }
+        }
+
         return eff
     }
 }

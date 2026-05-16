@@ -292,7 +292,6 @@ fun HomeScreen(
                 HomeSessionCard(
                     session       = session,
                     context       = context,
-                    onCollect     = viewModel::collectSession,
                     onAbandon     = viewModel::abandonSession,
                     onDebugFinish = viewModel::debugFinishSession,
                 )
@@ -319,6 +318,17 @@ fun HomeScreen(
                 }
             }
 
+            // ── Collect button ───────────────────────────────────────────
+            if (state.pendingCollectCount > 0) {
+                val n = state.pendingCollectCount
+                Button(
+                    onClick  = viewModel::collectSession,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Text("Collect $n ${if (n == 1) "Session's" else "Sessions'"} Rewards")
+                }
+            }
+
             // ── Queue card ───────────────────────────────────────────────
             if (state.sessionQueue.isNotEmpty()) {
                 QueueCard(
@@ -339,7 +349,6 @@ fun HomeScreen(
 private fun HomeSessionCard(
     session: SkillSession,
     context: android.content.Context,
-    onCollect: () -> Unit,
     onAbandon: () -> Unit,
     onDebugFinish: () -> Unit,
 ) {
@@ -404,13 +413,6 @@ private fun HomeSessionCard(
             Spacer(Modifier.height(12.dp))
             HorizontalDivider(color = MaterialTheme.colorScheme.outline.copy(alpha = 0.3f))
             Spacer(Modifier.height(8.dp))
-
-            if (isDone) {
-                Button(onClick = onCollect, modifier = Modifier.fillMaxWidth()) {
-                    Text(stringResource(R.string.btn_collect_results))
-                }
-                Spacer(Modifier.height(4.dp))
-            }
 
             Row {
                 OutlinedButton(onClick = onAbandon) {

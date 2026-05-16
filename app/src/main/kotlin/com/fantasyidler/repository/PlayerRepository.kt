@@ -152,6 +152,11 @@ class PlayerRepository @Inject constructor(
         return queue.first()
     }
 
+    suspend fun requeueActionAtFront(action: QueuedAction) {
+        val flags = getFlags()
+        updateFlags(flags.copy(sessionQueue = listOf(action) + flags.sessionQueue))
+    }
+
     /** Removes the queued item at [index]. No-op if out of range. */
     suspend fun removeFromQueue(index: Int) {
         val flags = getFlags()

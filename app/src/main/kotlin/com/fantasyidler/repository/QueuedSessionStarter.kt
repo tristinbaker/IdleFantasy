@@ -41,6 +41,7 @@ class QueuedSessionStarter @Inject constructor(
             startQueuedAction(next)
             true
         } catch (_: Exception) {
+            playerRepo.requeueActionAtFront(next)
             false
         }
     }

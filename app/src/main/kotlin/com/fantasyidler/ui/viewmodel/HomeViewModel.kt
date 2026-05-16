@@ -56,6 +56,7 @@ data class HomeUiState(
     val skillLevels: Map<String, Int> = emptyMap(),
     val skillXp: Map<String, Long> = emptyMap(),
     val activeSession: SkillSession? = null,
+    val pendingCollectCount: Int = 0,
     val snackbarMessage: String? = null,
     val sessionSummary: SessionSummary? = null,
     val characterSetupDone: Boolean = false,
@@ -79,21 +80,23 @@ class HomeViewModel @Inject constructor(
     val uiState: StateFlow<HomeUiState> = combine(
         playerRepo.playerFlow,
         sessionRepo.activeSessionFlow,
+        sessionRepo.completedCountFlow,
         _extra,
-    ) { player, session, extra ->
-        if (player == null) extra.copy(isLoading = true, activeSession = session)
+    ) { player, session, completedCount, extra ->
+        if (player == null) extra.copy(isLoading = true, activeSession = session, pendingCollectCount = completedCount)
         else {
             val flags: PlayerFlags = json.decodeFromString(player.flags)
             extra.copy(
-                isLoading          = false,
-                coins              = player.coins,
-                skillLevels        = json.decodeFromString(player.skillLevels),
-                skillXp            = json.decodeFromString(player.skillXp),
-                activeSession      = session,
-                characterSetupDone = flags.characterSetupDone,
-                characterName      = flags.characterName,
-                sessionQueue       = flags.sessionQueue,
-                showWhatsNew       = flags.lastSeenVersionCode < BuildConfig.VERSION_CODE,
+                isLoading           = false,
+                coins               = player.coins,
+                skillLevels         = json.decodeFromString(player.skillLevels),
+                skillXp             = json.decodeFromString(player.skillXp),
+                activeSession       = session,
+                pendingCollectCount = completedCount,
+                characterSetupDone  = flags.characterSetupDone,
+                characterName       = flags.characterName,
+                sessionQueue        = flags.sessionQueue,
+                showWhatsNew        = flags.lastSeenVersionCode < BuildConfig.VERSION_CODE,
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), HomeUiState())
@@ -104,10 +107,11 @@ class HomeViewModel @Inject constructor(
 
     fun collectSession() {
         viewModelScope.launch {
-            val latest = sessionRepo.getActiveSession() ?: return@launch
-            if (!latest.completed && System.currentTimeMillis() < latest.endsAt) return@launch
-            // If timed out but alarm hasn't fired yet, mark completed so it shows up in the query
-            if (!latest.completed) sessionRepo.markCompleted(latest.sessionId)
+            // If the latest session timed out but its alarm hasn't fired yet, mark it completed now.
+            val latest = sessionRepo.getActiveSession()
+            if (latest != null && !latest.completed && System.currentTimeMillis() >= latest.endsAt) {
+                sessionRepo.markCompleted(latest.sessionId)
+            }
 
             val sessions = sessionRepo.getAllCompletedSessions()
             if (sessions.isEmpty()) return@launch
@@ -247,7 +251,7 @@ class HomeViewModel @Inject constructor(
             for (session in sessions) sessionRepo.deleteSession(session.sessionId)
 
             // ── Build summary ─────────────────────────────────────────────
-            val n = sessions.size
+            val n    = sessions.size
             val last = sessions.last()
 
             val title = when {
