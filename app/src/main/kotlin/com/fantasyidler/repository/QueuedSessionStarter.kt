@@ -36,6 +36,10 @@ class QueuedSessionStarter @Inject constructor(
      * session couldn't be started (e.g. missing materials).
      */
     suspend fun startNextQueued(): Boolean {
+        // Don't start a new session if one is already running.
+        val current = sessionRepo.getActiveSession()
+        if (current != null && !current.completed) return false
+
         val next = playerRepo.dequeueNextAction() ?: return false
         return try {
             startQueuedAction(next)

@@ -289,6 +289,13 @@ fun HomeScreen(
             // ── Active session card ──────────────────────────────────────
             val session = state.activeSession
             if (session != null) {
+                if (!session.completed) {
+                    LaunchedEffect(session.sessionId) {
+                        val remaining = session.endsAt - System.currentTimeMillis()
+                        if (remaining > 0) delay(remaining)
+                        viewModel.onSessionExpiredLocally(session.sessionId)
+                    }
+                }
                 HomeSessionCard(
                     session       = session,
                     context       = context,

@@ -28,7 +28,10 @@ class SessionAlarmReceiver : BroadcastReceiver() {
             try {
                 sessionRepository.markCompleted(sessionId)
                 val started = queuedSessionStarter.startNextQueued()
-                if (!started) notificationManager.showSessionComplete(skillDisplayName)
+                if (!started) {
+                    val hasRunning = sessionRepository.getActiveSession()?.completed == false
+                    if (!hasRunning) notificationManager.showSessionComplete(skillDisplayName)
+                }
             } finally {
                 pending.finish()
             }

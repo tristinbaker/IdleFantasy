@@ -296,6 +296,16 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    fun onSessionExpiredLocally(sessionId: String) {
+        viewModelScope.launch {
+            val session = sessionRepo.getSession(sessionId) ?: return@launch
+            if (!session.completed) {
+                sessionRepo.markCompleted(sessionId)
+                queuedSessionStarter.startNextQueued()
+            }
+        }
+    }
+
     fun abandonSession() {
         viewModelScope.launch {
             val session = sessionRepo.getActiveSession() ?: return@launch
