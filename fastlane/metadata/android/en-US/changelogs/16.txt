@@ -1,0 +1,4 @@
+• Fix session stuck on "Session Complete" with only Abandon button showing after timer hits zero
+• Fix queued sessions not auto-starting when alarm was delayed (battery saver / Doze mode)
+• Fix collect button not appearing until navigating away and back
+• Fix queued sessions occasionally starting out of order when collecting rewards
