@@ -1,3 +1,9 @@
-• Fixed: crafting queue no longer locks out materials when items are queued or in session
-• Fixed: queued sessions no longer silently drop if auto-start fails after a session completes
-• New: session results are now shown individually per slot rather than batched together
+• New: Farming skill — plant seeds in up to 5 patches, harvest crops for XP and materials after they grow (2–120 hours)
+• New: Seeds now available to buy in the Shop under Seeds & Farming
+• New: Hoe equipment slot (bronze through runite) — increases harvest yield
+• New: Herblore skill — brew 14 potions from farming herbs and dungeon drops to boost combat stats
+• New: Potion picker in dungeon and boss sheets — select a potion before entering for a flat stat boost
+• Fix: seed shop descriptions now show the required farming level on its own line
+• Fix: crafting queue no longer locks out materials when items are queued or in session
+• Fix: queued sessions no longer silently drop if auto-start fails after a session completes
+• Nerf: Agility sessions now scale 60 → 40 min at level 99 (was 60 → 33 min), XP per course halved

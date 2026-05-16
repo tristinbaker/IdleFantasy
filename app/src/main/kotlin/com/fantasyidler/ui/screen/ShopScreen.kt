@@ -202,13 +202,11 @@ private fun BuyList(
                         }
                         if (entry.description.isNotBlank()) {
                             Text(
-                                text     = entry.description,
-                                style    = MaterialTheme.typography.bodySmall,
-                                color    = MaterialTheme.colorScheme.onSurfaceVariant.copy(
+                                text  = entry.description,
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(
                                     alpha = if (canAfford) 1f else 0.38f,
                                 ),
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis,
                             )
                         }
                     }

@@ -35,7 +35,14 @@ object CombatSimulator {
         petBoostPct: Int = 0,
         equippedFood: Map<String, Int> = emptyMap(),
         foodHealValues: Map<String, Int> = emptyMap(),
+        potionBonuses: Map<String, Int> = emptyMap(),
     ): SkillSimulator.Result {
+        val effAttack   = playerAttack   + (potionBonuses["attack"]   ?: 0)
+        val effStrength = playerStrength + (potionBonuses["strength"] ?: 0)
+        val effDefence  = playerDefence  + (potionBonuses["defense"]  ?: 0)
+        val effRanged   = playerRanged   + (potionBonuses["ranged"]   ?: 0)
+        val effMagic    = playerMagic    + (potionBonuses["magic"]    ?: 0)
+
         val frames = mutableListOf<SessionFrame>()
 
         val spawnPool = dungeon.enemySpawns.flatMap { spawn ->
@@ -69,20 +76,20 @@ object CombatSimulator {
 
             when (combatStyle) {
                 "ranged" -> {
-                    val effStr   = playerRanged + arrowStrengthBonus
+                    val effStr   = effRanged + arrowStrengthBonus
                     playerMaxHit = max(1, 1 + effStr * (arrowStrengthBonus + 64) / 640)
-                    playerEffAtk = playerRanged + weaponAttackBonus
+                    playerEffAtk = effRanged + weaponAttackBonus
                     enemyDefStat = enemy.defensiveStats.rangedDefense
                 }
                 "magic" -> {
                     playerMaxHit = spellMaxHit.coerceAtLeast(1)
-                    playerEffAtk = playerMagic + weaponAttackBonus
+                    playerEffAtk = effMagic + weaponAttackBonus
                     enemyDefStat = enemy.defensiveStats.magicDefense
                 }
                 else -> {
-                    val effStr   = playerStrength + weaponStrengthBonus
+                    val effStr   = effStrength + weaponStrengthBonus
                     playerMaxHit = max(1, 1 + effStr * (weaponStrengthBonus + 64) / 640)
-                    playerEffAtk = playerAttack + weaponAttackBonus
+                    playerEffAtk = effAttack + weaponAttackBonus
                     enemyDefStat = enemy.defensiveStats.attackDefense
                 }
             }
@@ -99,10 +106,10 @@ object CombatSimulator {
             val enemyMaxHit    = max(1, 1 + enemyEffStr * (enemy.combatStats.strengthBonus + 64) / 640)
             val enemyEffAtk    = enemy.combatStats.attackLevel + enemy.combatStats.attackBonus
             val enemyHitChance = when {
-                enemyEffAtk > playerDefence ->
-                    1.0 - playerDefence / (2.0 * enemyEffAtk.coerceAtLeast(1))
+                enemyEffAtk > effDefence ->
+                    1.0 - effDefence / (2.0 * enemyEffAtk.coerceAtLeast(1))
                 else ->
-                    enemyEffAtk / (2.0 * playerDefence.coerceAtLeast(1))
+                    enemyEffAtk / (2.0 * effDefence.coerceAtLeast(1))
             }.coerceIn(0.10, 0.95)
 
             // --- Tick-by-tick combat loop ---

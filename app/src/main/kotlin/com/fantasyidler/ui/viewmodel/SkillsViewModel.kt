@@ -194,7 +194,8 @@ class SkillsViewModel @Inject constructor(
             Skills.SMITHING,
             Skills.COOKING,
             Skills.FLETCHING,
-            Skills.CRAFTING  -> SheetState.Crafting(skillKey)
+            Skills.CRAFTING,
+            Skills.HERBLORE  -> SheetState.Crafting(skillKey)
             else             -> SheetState.ComingSoon
         }
         _uiState.update { it.copy(sheetSkill = sheet) }

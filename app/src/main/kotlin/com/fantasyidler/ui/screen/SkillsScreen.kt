@@ -94,6 +94,7 @@ import java.util.Locale
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SkillsScreen(
+    onNavigateToFarming: () -> Unit = {},
     viewModel: SkillsViewModel  = hiltViewModel(),
     craftingViewModel: CraftingViewModel = hiltViewModel(),
 ) {
@@ -152,17 +153,20 @@ fun SkillsScreen(
             item { SectionHeader(stringResource(R.string.label_gathering_skills)) }
             items(Skills.GATHERING) { key ->
                 val efficiency = when (key) {
-                    Skills.MINING     -> state.miningEfficiency
+                    Skills.MINING      -> state.miningEfficiency
                     Skills.WOODCUTTING -> state.woodcuttingEfficiency
-                    Skills.FISHING    -> state.fishingEfficiency
-                    else              -> 1.0f
+                    Skills.FISHING     -> state.fishingEfficiency
+                    else               -> 1.0f
                 }
                 SkillRow(
                     skillKey       = key,
                     level          = state.skillLevels[key] ?: 1,
                     xp             = state.skillXp[key] ?: 0L,
                     isActive       = state.activeSession?.skillName == key && state.activeSession?.completed == false,
-                    onClick        = { viewModel.onSkillTapped(key) },
+                    onClick        = {
+                        if (key == Skills.FARMING) onNavigateToFarming()
+                        else viewModel.onSkillTapped(key)
+                    },
                     toolEfficiency = efficiency,
                 )
             }
@@ -1379,6 +1383,7 @@ private fun CraftSkillSheet(
         Skills.SMITHING  -> craftingViewModel.smithingRecipes
         Skills.COOKING   -> craftingViewModel.cookingRecipes
         Skills.FLETCHING -> craftingViewModel.fletchingRecipes
+        Skills.HERBLORE  -> craftingViewModel.herbloreRecipes
         else             -> craftingViewModel.jewelleryRecipes
     }
 

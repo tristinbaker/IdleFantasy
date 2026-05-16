@@ -211,11 +211,14 @@ fun CombatScreen(
             dragHandle       = { BottomSheetDefaults.DragHandle() },
         ) {
             BossInfoSheet(
-                boss        = boss,
-                skillLevels = state.skillLevels,
-                isStarting  = state.startingSession,
-                onStart     = { viewModel.startBossSession(boss.id) },
-                onDismiss   = { viewModel.selectBoss(null) },
+                boss              = boss,
+                skillLevels       = state.skillLevels,
+                availablePotions  = state.availablePotions,
+                selectedPotionKey = state.selectedPotionKey,
+                isStarting        = state.startingSession,
+                onPotionSelected  = viewModel::selectPotion,
+                onStart           = { viewModel.startBossSession(boss.id) },
+                onDismiss         = { viewModel.selectBoss(null) },
             )
         }
     }
@@ -229,16 +232,19 @@ fun CombatScreen(
             dragHandle       = { BottomSheetDefaults.DragHandle() },
         ) {
             DungeonInfoSheet(
-                dungeon         = dungeon,
-                skillLevels     = state.skillLevels,
-                equippedWeapon  = state.equippedWeapon,
-                inventory       = state.inventory,
-                availableSpells = viewModel.availableSpells(state.skillLevels),
-                selectedSpell   = state.selectedSpell,
-                isStarting      = state.startingSession,
-                onSpellSelected = viewModel::selectSpell,
-                onStart         = { viewModel.startDungeonSession(dungeon.name) },
-                onDismiss       = { viewModel.selectDungeon(null) },
+                dungeon           = dungeon,
+                skillLevels       = state.skillLevels,
+                equippedWeapon    = state.equippedWeapon,
+                inventory         = state.inventory,
+                availableSpells   = viewModel.availableSpells(state.skillLevels),
+                selectedSpell     = state.selectedSpell,
+                availablePotions  = state.availablePotions,
+                selectedPotionKey = state.selectedPotionKey,
+                isStarting        = state.startingSession,
+                onSpellSelected   = viewModel::selectSpell,
+                onPotionSelected  = viewModel::selectPotion,
+                onStart           = { viewModel.startDungeonSession(dungeon.name) },
+                onDismiss         = { viewModel.selectDungeon(null) },
             )
         }
     }
@@ -961,8 +967,11 @@ private fun DungeonInfoSheet(
     inventory: Map<String, Int>,
     availableSpells: List<SpellData>,
     selectedSpell: SpellData?,
+    availablePotions: Map<String, Int>,
+    selectedPotionKey: String?,
     isStarting: Boolean,
     onSpellSelected: (SpellData) -> Unit,
+    onPotionSelected: (String?) -> Unit,
     onStart: () -> Unit,
     onDismiss: () -> Unit,
 ) {
@@ -1102,6 +1111,47 @@ private fun DungeonInfoSheet(
             }
             Spacer(Modifier.height(12.dp))
         }
+        // Potion picker
+        if (availablePotions.isNotEmpty()) {
+            Spacer(Modifier.height(12.dp))
+            Text(
+                text  = "Potion",
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Spacer(Modifier.height(4.dp))
+            val potionOptions = listOf(null) + availablePotions.keys.toList()
+            potionOptions.forEach { key ->
+                val isSelected = selectedPotionKey == key
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onPotionSelected(key) }
+                        .padding(vertical = 5.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(
+                        text       = if (key == null) "No Potion"
+                                     else GameStrings.itemName(context, key),
+                        style      = MaterialTheme.typography.bodyMedium,
+                        fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
+                        color      = if (isSelected) GoldPrimary else MaterialTheme.colorScheme.onSurface,
+                    )
+                    if (key != null) {
+                        Text(
+                            text  = "×${availablePotions[key]}",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                    if (isSelected) {
+                        Text("✓", style = MaterialTheme.typography.bodyMedium,
+                            color = GoldPrimary, fontWeight = FontWeight.Bold)
+                    }
+                }
+            }
+        }
         } // end scrollable content
 
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -1150,7 +1200,10 @@ private fun StatRow(
 private fun BossInfoSheet(
     boss: BossData,
     skillLevels: Map<String, Int>,
+    availablePotions: Map<String, Int>,
+    selectedPotionKey: String?,
     isStarting: Boolean,
+    onPotionSelected: (String?) -> Unit,
     onStart: () -> Unit,
     onDismiss: () -> Unit,
 ) {
@@ -1221,6 +1274,49 @@ private fun BossInfoSheet(
                         style = MaterialTheme.typography.bodySmall)
                     Text("+$xp XP", style = MaterialTheme.typography.bodySmall,
                         color = GoldPrimary, fontWeight = FontWeight.SemiBold)
+                }
+            }
+        }
+
+        // Potion picker
+        if (availablePotions.isNotEmpty()) {
+            val context = LocalContext.current
+            Spacer(Modifier.height(12.dp))
+            Text(
+                text  = "Potion",
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Spacer(Modifier.height(4.dp))
+            val potionOptions = listOf(null) + availablePotions.keys.toList()
+            potionOptions.forEach { key ->
+                val isSelected = selectedPotionKey == key
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onPotionSelected(key) }
+                        .padding(vertical = 5.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(
+                        text       = if (key == null) "No Potion"
+                                     else GameStrings.itemName(context, key),
+                        style      = MaterialTheme.typography.bodyMedium,
+                        fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
+                        color      = if (isSelected) GoldPrimary else MaterialTheme.colorScheme.onSurface,
+                    )
+                    if (key != null) {
+                        Text(
+                            text  = "×${availablePotions[key]}",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                    if (isSelected) {
+                        Text("✓", style = MaterialTheme.typography.bodyMedium,
+                            color = GoldPrimary, fontWeight = FontWeight.Bold)
+                    }
                 }
             }
         }

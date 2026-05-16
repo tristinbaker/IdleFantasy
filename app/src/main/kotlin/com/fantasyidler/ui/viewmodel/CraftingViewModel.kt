@@ -8,6 +8,7 @@ import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.SessionFrame
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.Skills
+import com.fantasyidler.data.json.HerbloreRecipe
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.QuestRepository
@@ -70,6 +71,7 @@ data class CraftingUiState(
     val cookingLevel:   Int = 1,
     val fletchingLevel: Int = 1,
     val craftingLevel:  Int = 1,
+    val herbloreLevel:  Int = 1,
     val skillLevels:    Map<String, Int> = emptyMap(),
     val inventory:      Map<String, Int> = emptyMap(),
     /** Inventory minus materials already reserved by active session + queue. */
@@ -94,6 +96,7 @@ data class CraftingUiState(
         Skills.COOKING   -> cookingLevel   >= recipe.levelRequired
         Skills.FLETCHING -> fletchingLevel >= recipe.levelRequired
         Skills.CRAFTING  -> craftingLevel  >= recipe.levelRequired
+        Skills.HERBLORE  -> herbloreLevel  >= recipe.levelRequired
         else             -> false
     }
 }
@@ -124,12 +127,13 @@ class CraftingViewModel @Inject constructor(
             val levels: Map<String, Int> = json.decodeFromString(player.skillLevels)
             val inventory: Map<String, Int> = json.decodeFromString(player.inventory)
             val flags: PlayerFlags = json.decodeFromString(player.flags)
-            val allRecipes = smithingRecipes + cookingRecipes + fletchingRecipes + jewelleryRecipes
+            val allRecipes = smithingRecipes + cookingRecipes + fletchingRecipes + jewelleryRecipes + herbloreRecipes
             extra.copy(
                 smithingLevel      = levels[Skills.SMITHING]  ?: 1,
                 cookingLevel       = levels[Skills.COOKING]   ?: 1,
                 fletchingLevel     = levels[Skills.FLETCHING] ?: 1,
                 craftingLevel      = levels[Skills.CRAFTING]  ?: 1,
+                herbloreLevel      = levels[Skills.HERBLORE]  ?: 1,
                 skillLevels        = levels,
                 inventory          = inventory,
                 effectiveInventory = computeEffectiveInventory(inventory, activeSession, flags.sessionQueue, allRecipes),
@@ -240,6 +244,22 @@ class CraftingViewModel @Inject constructor(
         }.sortedBy { it.levelRequired }
     }
 
+    val herbloreRecipes: List<CraftableRecipe> by lazy {
+        gameData.herbloreRecipes.map { (key, r) ->
+            CraftableRecipe(
+                key           = key,
+                displayName   = r.displayName,
+                levelRequired = r.levelRequired,
+                materials     = r.materials,
+                outputKey     = key,
+                outputQty     = r.outputQuantity,
+                xpPerItem     = r.xpPerItem,
+                skillName     = Skills.HERBLORE,
+                category      = "Potion",
+            )
+        }.sortedBy { it.levelRequired }
+    }
+
     // ------------------------------------------------------------------
     // Craft sheet
     // ------------------------------------------------------------------
@@ -330,7 +350,7 @@ class CraftingViewModel @Inject constructor(
 
     fun snackbarConsumed() = _extra.update { it.copy(snackbarMessage = null) }
 
-    private val craftingSkills = setOf(Skills.SMITHING, Skills.COOKING, Skills.FLETCHING, Skills.CRAFTING)
+    private val craftingSkills = setOf(Skills.SMITHING, Skills.COOKING, Skills.FLETCHING, Skills.CRAFTING, Skills.HERBLORE)
 
     private fun computeEffectiveInventory(
         inventory: Map<String, Int>,

@@ -19,4 +19,5 @@ data class EquipmentData(
     @SerialName("mining_efficiency")      val miningEfficiency: Float? = null,
     @SerialName("woodcutting_efficiency") val woodcuttingEfficiency: Float? = null,
     @SerialName("fishing_efficiency")     val fishingEfficiency: Float? = null,
+    @SerialName("farming_efficiency")     val farmingEfficiency: Float? = null,
 )

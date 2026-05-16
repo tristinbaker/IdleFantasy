@@ -563,4 +563,28 @@
     <string name="spell_blood_bolt_name">Blood Bolt</string>
     <string name="spell_blood_blast_name">Blood Blast</string>
     <string name="spell_blood_wave_name">Blood Wave</string>
+
+    <!-- ===== Hoes ===== -->
+    <string name="item_bronze_hoe_name">Bronze Hoe</string>
+    <string name="item_iron_hoe_name">Iron Hoe</string>
+    <string name="item_steel_hoe_name">Steel Hoe</string>
+    <string name="item_mithril_hoe_name">Mithril Hoe</string>
+    <string name="item_adamantite_hoe_name">Adamantite Hoe</string>
+    <string name="item_runite_hoe_name">Runite Hoe</string>
+
+    <!-- Herblore potions -->
+    <string name="item_attack_brew_name">Attack Brew</string>
+    <string name="item_defense_brew_name">Defense Brew</string>
+    <string name="item_attack_potion_name">Attack Potion</string>
+    <string name="item_defense_potion_name">Defense Potion</string>
+    <string name="item_strength_brew_name">Strength Brew</string>
+    <string name="item_strength_potion_name">Strength Potion</string>
+    <string name="item_ranging_potion_name">Ranging Potion</string>
+    <string name="item_magic_potion_name">Magic Potion</string>
+    <string name="item_super_strength_potion_name">Super Strength Potion</string>
+    <string name="item_super_attack_potion_name">Super Attack Potion</string>
+    <string name="item_super_defense_potion_name">Super Defense Potion</string>
+    <string name="item_super_ranging_potion_name">Super Ranging Potion</string>
+    <string name="item_super_magic_potion_name">Super Magic Potion</string>
+    <string name="item_overload_potion_name">Overload Potion</string>
 </resources>

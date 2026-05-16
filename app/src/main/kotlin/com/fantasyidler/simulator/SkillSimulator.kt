@@ -278,22 +278,22 @@ object SkillSimulator {
     // Shared helpers
     // ------------------------------------------------------------------
 
-    private const val LAPS_PER_MINUTE = 4
+    private const val LAPS_PER_MINUTE = 2
 
     /**
      * Returns the duration of a session in milliseconds, applying the agility
-     * speed bonus: 5% reduction per 10 agility levels, capped at 45% (level 90+).
+     * speed bonus. Sessions scale linearly from 60 min at level 1 to 40 min at level 99.
      *
      * Examples:
-     *   level  1 → 60 min (0% reduction)
-     *   level 10 → 57 min (5%)
-     *   level 50 → 45 min (25%)
-     *   level 99 → 33 min (45%)
+     *   level  1 → 60 min
+     *   level 25 → 55 min
+     *   level 50 → 50 min
+     *   level 75 → 45 min
+     *   level 99 → 40 min
      */
     fun sessionDurationMs(agilityLevel: Int): Long {
-        val reductionPercent = ((agilityLevel / 10) * 5).coerceAtMost(45)
-        val multiplier = (100 - reductionPercent) / 100.0
-        val minutes = (60 * multiplier).toInt().coerceAtLeast(1)
+        val fraction = (agilityLevel - 1).coerceIn(0, 98) / 98.0
+        val minutes = (60.0 - 20.0 * fraction).roundToInt()
         return minutes * 60_000L
     }
 

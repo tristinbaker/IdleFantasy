@@ -96,6 +96,20 @@ class PlayerRepository @Inject constructor(
         )
     }
 
+    /** Subtract XP from a skill, flooring at 0. Recalculates level. */
+    suspend fun deductSkillXp(skillName: String, amount: Long) {
+        val player = getOrCreatePlayer()
+        val levels: MutableMap<String, Int> = json.decodeFromString(player.skillLevels)
+        val xpMap:  MutableMap<String, Long> = json.decodeFromString(player.skillXp)
+        val newXp = ((xpMap[skillName] ?: 0L) - amount).coerceAtLeast(0L)
+        xpMap[skillName]    = newXp
+        levels[skillName]   = XpTable.levelForXp(newXp)
+        playerDao.upsert(player.copy(
+            skillLevels = json.encode<Map<String, Int>>(levels),
+            skillXp     = json.encode<Map<String, Long>>(xpMap),
+        ))
+    }
+
     /**
      * Remove items from the player's inventory.
      * Returns false (and makes no change) if any item is in insufficient quantity.

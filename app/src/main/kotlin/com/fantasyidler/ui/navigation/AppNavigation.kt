@@ -28,6 +28,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.ui.screen.CombatScreen
+import com.fantasyidler.ui.screen.FarmingScreen
 import com.fantasyidler.ui.screen.HomeScreen
 import com.fantasyidler.ui.screen.OnboardingScreen
 import com.fantasyidler.ui.screen.ProfileScreen
@@ -111,7 +112,12 @@ fun AppNavigation() {
             startDestination = Screen.Home.route,
             modifier         = Modifier.padding(innerPadding),
         ) {
-            composable(Screen.Skills.route)   { SkillsScreen() }
+            composable(Screen.Skills.route)   {
+                SkillsScreen(onNavigateToFarming = { navController.navigate(Screen.Farming.route) })
+            }
+            composable(Screen.Farming.route) {
+                FarmingScreen(onBack = { navController.popBackStack() })
+            }
             composable(Screen.Combat.route)   { CombatScreen() }
             composable(Screen.Home.route)     {
                 HomeScreen(

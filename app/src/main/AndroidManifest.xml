@@ -35,6 +35,10 @@
             android:name=".receiver.SessionAlarmReceiver"
             android:exported="false" />
 
+        <receiver
+            android:name=".receiver.FarmPatchAlarmReceiver"
+            android:exported="false" />
+
     </application>
 
 </manifest>

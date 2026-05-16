@@ -68,6 +68,12 @@ sealed class Screen(
         icon     = Icons.Filled.ShoppingCart,
     )
 
+    object Farming : Screen(
+        route    = "farming",
+        labelRes = R.string.skill_farming_name,
+        icon     = Icons.Filled.ShoppingCart,
+    )
+
     companion object {
         val bottomNavItems = listOf(Skills, Combat, Home, Quests, Profile)
     }

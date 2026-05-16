@@ -2323,5 +2323,41 @@
     "description": "A pair of dragon boots.",
     "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 55,
     "requirements": { "defense": 60 }
+  },
+  "bronze_hoe": {
+    "name": "bronze_hoe", "display_name": "Bronze Hoe", "slot": "hoe", "combat_style": null,
+    "description": "A basic bronze hoe. Slightly increases harvest yield.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 0,
+    "farming_efficiency": 0.10, "requirements": {}
+  },
+  "iron_hoe": {
+    "name": "iron_hoe", "display_name": "Iron Hoe", "slot": "hoe", "combat_style": null,
+    "description": "An iron hoe. Increases harvest yield.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 0,
+    "farming_efficiency": 0.15, "requirements": { "farming": 10 }
+  },
+  "steel_hoe": {
+    "name": "steel_hoe", "display_name": "Steel Hoe", "slot": "hoe", "combat_style": null,
+    "description": "A steel hoe. Noticeably increases harvest yield.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 0,
+    "farming_efficiency": 0.20, "requirements": { "farming": 20 }
+  },
+  "mithril_hoe": {
+    "name": "mithril_hoe", "display_name": "Mithril Hoe", "slot": "hoe", "combat_style": null,
+    "description": "A mithril hoe. Greatly increases harvest yield.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 0,
+    "farming_efficiency": 0.25, "requirements": { "farming": 35 }
+  },
+  "adamantite_hoe": {
+    "name": "adamantite_hoe", "display_name": "Adamantite Hoe", "slot": "hoe", "combat_style": null,
+    "description": "An adamantite hoe. Substantially increases harvest yield.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 0,
+    "farming_efficiency": 0.30, "requirements": { "farming": 50 }
+  },
+  "runite_hoe": {
+    "name": "runite_hoe", "display_name": "Runite Hoe", "slot": "hoe", "combat_style": null,
+    "description": "A runite hoe. The finest farming tool available.",
+    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 0,
+    "farming_efficiency": 0.40, "requirements": { "farming": 65 }
   }
 }

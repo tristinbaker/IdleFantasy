@@ -2,6 +2,7 @@ package com.fantasyidler.repository
 
 import android.content.Context
 import com.fantasyidler.data.json.BoneData
+import com.fantasyidler.data.json.CropData
 import com.fantasyidler.data.json.BossData
 import com.fantasyidler.data.json.CookingRecipe
 import com.fantasyidler.data.json.CraftingRecipe
@@ -12,6 +13,7 @@ import com.fantasyidler.data.json.FletchingRecipe
 import com.fantasyidler.data.json.AgilityCourseData
 import com.fantasyidler.data.json.GatheringSkillData
 import com.fantasyidler.data.json.GemData
+import com.fantasyidler.data.json.HerbloreRecipe
 import com.fantasyidler.data.json.LogData
 import com.fantasyidler.data.json.MarketplaceJson
 import com.fantasyidler.data.json.OreData
@@ -136,6 +138,15 @@ class GameDataRepository @Inject constructor(
         asset("data/recipes/crafting.json")
     }
 
+    val herbloreRecipes: Map<String, HerbloreRecipe> by lazy {
+        asset("data/recipes/herblore.json")
+    }
+
+    /** Potion key → map of stat name → flat bonus value. */
+    val potionEffects: Map<String, Map<String, Int>> by lazy {
+        herbloreRecipes.mapValues { (_, recipe) -> recipe.effects }
+    }
+
     // ------------------------------------------------------------------ marketplace
 
     val marketplace: MarketplaceJson by lazy {
@@ -190,6 +201,12 @@ class GameDataRepository @Inject constructor(
         raw.mapValues { (key, spell) -> spell.copy(name = key) }
     }
 
+    // ------------------------------------------------------------------ farming
+
+    val crops: Map<String, CropData> by lazy {
+        asset("data/crops.json")
+    }
+
     // ------------------------------------------------------------------ food
 
     /** Maps cooked-item key → HP healed per eat (from cooking recipes). */
@@ -220,6 +237,8 @@ class GameDataRepository @Inject constructor(
             addAll(runes.keys)
             // Quest collect targets should not be auto-sold
             quests.values.filter { it.type == "collect" }.forEach { add(it.target) }
+            // Herblore: protect both ingredients (including junk secondaries) and potions
+            herbloreRecipes.forEach { (key, r) -> add(key); addAll(r.materials.keys) }
         }
     }
 

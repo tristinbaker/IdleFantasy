@@ -87,12 +87,11 @@ class ShopViewModel @Inject constructor(
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ShopUiState())
 
     // ------------------------------------------------------------------
-    // Buy catalogue (all marketplace items except seeds + XP boost)
+    // Buy catalogue (all marketplace items except XP boost)
     // ------------------------------------------------------------------
 
     val buyEntries: List<ShopEntry> by lazy {
         val regular = gameData.marketplace
-            .filterKeys { it != "seeds" }
             .flatMap { (_, cat) ->
                 cat.items.map { (key, item) ->
                     ShopEntry(

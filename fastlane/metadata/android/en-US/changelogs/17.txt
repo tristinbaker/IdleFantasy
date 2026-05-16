@@ -1,5 +1,9 @@
-• New skill: Herblore — brew 14 potions from farming herbs and dungeon drops to boost combat stats
-• Select a potion before entering a dungeon or boss fight for a flat stat bonus (attack, strength, defense, ranged, or magic)
-• Herblore ingredients and potions are protected from Sell Junk
-• Nerf: Agility sessions now scale from 60→40 min at level 99 (was 60→33 min), XP per course halved
-• Fix: seed descriptions in the shop now show the required farming level on its own line
+• New: Farming skill — plant seeds in up to 5 patches, harvest crops for XP and materials after they grow (2–120 hours)
+• New: Seeds now available to buy in the Shop under Seeds & Farming
+• New: Hoe equipment slot (bronze through runite) — increases harvest yield
+• New: Herblore skill — brew 14 potions from farming herbs and dungeon drops to boost combat stats
+• New: Potion picker in dungeon and boss sheets — select a potion before entering for a flat stat boost (attack, strength, defense, ranged, or magic)
+• Fix: seed shop descriptions now show the required farming level on its own line
+• Fix: crafting queue no longer locks out materials when items are queued or in session
+• Fix: queued sessions no longer silently drop if auto-start fails after a session completes
+• Nerf: Agility sessions now scale 60 → 40 min at level 99 (was 60 → 33 min), XP per course halved

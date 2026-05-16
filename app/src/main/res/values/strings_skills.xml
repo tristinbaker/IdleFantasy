@@ -14,7 +14,7 @@
     <string name="skill_firemaking_name">Firemaking</string>
     <string name="skill_firemaking_desc">Burn logs from your inventory to gain Firemaking XP. Each log burned also produces ashes, which can be scattered in the Prayer skill for bonus Prayer XP.</string>
     <string name="skill_agility_name">Agility</string>
-    <string name="skill_agility_desc">Train Agility to reduce session times across all skills. Every 10 levels cuts session time by 5 percent, up to a 45 percent reduction at level 90 (60 min → 33 min).</string>
+    <string name="skill_agility_desc">Train Agility to reduce session times across all skills. Level 99 cuts 20 minutes off the hour (60 min → 40 min), with a smooth linear reduction as you level up.</string>
 
     <!-- Crafting skills -->
     <string name="skill_smithing_name">Smithing</string>
@@ -27,6 +27,8 @@
     <string name="skill_crafting_desc">Create jewellery and other crafted items from precious materials.</string>
     <string name="skill_runecrafting_name">Runecrafting</string>
     <string name="skill_runecrafting_desc">Craft magical runes from rune essence for use in spellcasting.</string>
+    <string name="skill_herblore_name">Herblore</string>
+    <string name="skill_herblore_desc">Brew potions from farming herbs and dungeon reagents to boost your combat stats.</string>
 
     <!-- Combat skills -->
     <string name="skill_attack_name">Attack</string>

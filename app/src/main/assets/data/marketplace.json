@@ -101,97 +101,97 @@
     "items": {
       "potato_seed": {
         "display_name": "Potato Seed",
-        "description": "Plant these to grow potatoes. Growth time: 8 hours. Requires farming level 1.",
+        "description": "Plant to grow potatoes. Grows in 2h.\nRequires farming level 1.",
         "price": 20,
         "stock": "unlimited"
       },
       "onion_seed": {
         "display_name": "Onion Seed",
-        "description": "Plant these to grow onions. Growth time: 8 hours. Requires farming level 5.",
+        "description": "Plant to grow onions. Grows in 3h.\nRequires farming level 5.",
         "price": 25,
         "stock": "unlimited"
       },
       "cabbage_seed": {
         "display_name": "Cabbage Seed",
-        "description": "Plant these to grow cabbage. Growth time: 8 hours. Requires farming level 10.",
+        "description": "Plant to grow cabbage. Grows in 4h.\nRequires farming level 10.",
         "price": 30,
         "stock": "unlimited"
       },
       "carrot_seed": {
         "display_name": "Carrot Seed",
-        "description": "Plant these to grow carrots. Growth time: 16 hours. Requires farming level 15.",
+        "description": "Plant to grow carrots. Grows in 5h.\nRequires farming level 15.",
         "price": 50,
         "stock": "unlimited"
       },
       "tomato_seed": {
         "display_name": "Tomato Seed",
-        "description": "Plant these to grow tomatoes. Growth time: 16 hours. Requires farming level 20.",
+        "description": "Plant to grow tomatoes. Grows in 6h.\nRequires farming level 20.",
         "price": 60,
         "stock": "unlimited"
       },
       "corn_seed": {
         "display_name": "Corn Seed",
-        "description": "Plant these to grow corn. Growth time: 16 hours. Requires farming level 25.",
+        "description": "Plant to grow corn. Grows in 7h.\nRequires farming level 25.",
         "price": 75,
         "stock": "unlimited"
       },
       "pumpkin_seed": {
         "display_name": "Pumpkin Seed",
-        "description": "Plant these to grow pumpkins. Growth time: 24 hours. Requires farming level 30.",
+        "description": "Plant to grow pumpkins. Grows in 9h.\nRequires farming level 30.",
         "price": 100,
         "stock": "unlimited"
       },
       "watermelon_seed": {
         "display_name": "Watermelon Seed",
-        "description": "Plant these to grow watermelons. Growth time: 24 hours. Requires farming level 35.",
+        "description": "Plant to grow watermelons. Grows in 10h.\nRequires farming level 35.",
         "price": 125,
         "stock": "unlimited"
       },
       "strawberry_seed": {
         "display_name": "Strawberry Seed",
-        "description": "Plant these to grow strawberries. Growth time: 48 hours. Requires farming level 40.",
+        "description": "Plant to grow strawberries. Grows in 11h.\nRequires farming level 40.",
         "price": 200,
         "stock": "unlimited"
       },
       "magic_herb_seed": {
         "display_name": "Magic Herb Seed",
-        "description": "Plant these to grow magic herbs. Growth time: 48 hours. Requires farming level 50.",
+        "description": "Plant to grow magic herbs. Grows in 13h.\nRequires farming level 50.",
         "price": 300,
         "stock": "unlimited"
       },
       "dragon_fruit_seed": {
         "display_name": "Dragon Fruit Seed",
-        "description": "Plant these to grow dragon fruit. Growth time: 60 hours. Requires farming level 55.",
+        "description": "Plant to grow dragon fruit. Grows in 14h.\nRequires farming level 55.",
         "price": 500,
         "stock": "unlimited"
       },
       "golden_wheat_seed": {
         "display_name": "Golden Wheat Seed",
-        "description": "Plant these to grow golden wheat. Growth time: 72 hours. Requires farming level 65.",
+        "description": "Plant to grow golden wheat. Grows in 16h.\nRequires farming level 65.",
         "price": 700,
         "stock": "unlimited"
       },
       "spirit_seed": {
         "display_name": "Spirit Seed",
-        "description": "Plant these to grow spirit herbs. Growth time: 80 hours. Requires farming level 75.",
+        "description": "Plant to grow spirit herbs. Grows in 19h.\nRequires farming level 75.",
         "price": 1000,
         "stock": "unlimited"
       },
       "celestial_bloom_seed": {
         "display_name": "Celestial Bloom Seed",
-        "description": "Plant these to grow celestial blooms. Growth time: 96 hours. Requires farming level 85.",
+        "description": "Plant to grow celestial blooms. Grows in 21h.\nRequires farming level 85.",
         "price": 1500,
         "stock": "unlimited"
       },
       "starfruit_seed": {
         "display_name": "Starfruit Seed",
-        "description": "Plant these to grow starfruit. Growth time: 108 hours. Requires farming level 95.",
+        "description": "Plant to grow starfruit. Grows in 23h.\nRequires farming level 95.",
         "price": 2500,
         "stock": "unlimited"
       },
       "void_lotus_seed": {
         "display_name": "Void Lotus Seed",
-        "description": "Plant these to grow void lotus. Growth time: 120 hours. Requires farming level 99.",
+        "description": "Plant to grow void lotus. Grows in 24h.\nRequires farming level 99.",
         "price": 4000,
         "stock": "unlimited"
       }

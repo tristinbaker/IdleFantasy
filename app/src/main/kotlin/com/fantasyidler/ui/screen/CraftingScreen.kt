@@ -98,6 +98,7 @@ fun CraftingScreen(
                     stringResource(R.string.skill_cooking_name),
                     stringResource(R.string.skill_fletching_name),
                     stringResource(R.string.label_jewellery),
+                    stringResource(R.string.skill_herblore_name),
                 ).forEachIndexed { index, title ->
                     Tab(
                         selected = selectedTab == index,
@@ -111,7 +112,8 @@ fun CraftingScreen(
                 0 -> viewModel.smithingRecipes
                 1 -> viewModel.cookingRecipes
                 2 -> viewModel.fletchingRecipes
-                else -> viewModel.jewelleryRecipes
+                3 -> viewModel.jewelleryRecipes
+                else -> viewModel.herbloreRecipes
             }
 
             RecipeList(
