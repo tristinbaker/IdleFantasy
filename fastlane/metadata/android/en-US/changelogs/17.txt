@@ -1,0 +1,5 @@
+• New skill: Herblore — brew 14 potions from farming herbs and dungeon drops to boost combat stats
+• Select a potion before entering a dungeon or boss fight for a flat stat bonus (attack, strength, defense, ranged, or magic)
+• Herblore ingredients and potions are protected from Sell Junk
+• Nerf: Agility sessions now scale from 60→40 min at level 99 (was 60→33 min), XP per course halved
+• Fix: seed descriptions in the shop now show the required farming level on its own line
