@@ -2,21 +2,21 @@
 <resources>
     <!-- ===== Level-up messages ===== -->
     <!-- Translator note: %1$d = new level number, %2$s = skill display name -->
-    <string name="game_level_up">Level up! %1$s is now level %2$d!</string>
+    <string name="game_level_up">Tu as gagné un niveau ! %1$s est désormais au niveau %2$d !</string>
     <!-- Translator note: %1$s = skill display name, %2$d = new level number -->
     <string name="game_level_up_short">%1$s → %2$d</string>
-    <string name="game_max_level">Maximum level reached!</string>
+    <string name="game_max_level">Niveau maximum atteint !</string>
 
     <!-- ===== Session result summaries ===== -->
-    <string name="game_session_results_title">Session Results</string>
+    <string name="game_session_results_title">Résultats de la session</string>
     <!-- Translator note: %1$s = skill display name -->
-    <string name="game_session_summary_header">%1$s session complete</string>
+    <string name="game_session_summary_header">La session %1$s est terminée</string>
     <!-- Translator note: %1$s = formatted XP amount (e.g. "1,234") -->
-    <string name="game_session_xp_total">+%1$s XP earned</string>
-    <string name="game_session_no_items">No items collected</string>
-    <string name="game_session_no_level_ups">No level ups this session</string>
+    <string name="game_session_xp_total">+%1$s XP gagnés</string>
+    <string name="game_session_no_items">Aucun article n'a été récupéré</string>
+    <string name="game_session_no_level_ups">Pas de passage au niveau supérieur pour cette session</string>
     <!-- Translator note: %1$d = number of level ups -->
-    <string name="game_session_level_up_count">%1$d level up!</string>
+    <string name="game_session_level_up_count">%1$d niveau supérieur!</string>
 
     <!-- ===== Combat messages ===== -->
     <!-- Translator note: %1$s = player or enemy name, %2$d = damage amount -->
