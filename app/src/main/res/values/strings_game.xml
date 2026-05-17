@@ -36,9 +36,9 @@
     <string name="game_farming_planted">%1$s planted.</string>
     <!-- Translator note: %1$s = crop display name, %2$d = yield quantity -->
     <string name="game_farming_harvested">Harvested %2$d %1$s.</string>
-    <string name="game_farming_all_harvested">All ready patches harvested.</string>
+    <string name="game_farming_all_harvested">Toutes les récoltes sont terminées.</string>
     <string name="game_farming_patch_cleared">Patch cleared.</string>
-    <string name="game_farming_not_ready">This crop is not ready yet.</string>
+    <string name="game_farming_not_ready">Cette récolte n'est pas encore prête.</string>
     <!-- Translator note: %1$s = crop display name, %2$s = time remaining -->
     <string name="game_farming_ready_in">%1$s ready in %2$s.</string>
 
@@ -75,14 +75,14 @@
     <!-- ===== Arena messages ===== -->
     <!-- Translator note: %1$s = opponent display name -->
     <string name="game_arena_challenged">Challenged by %1$s!</string>
-    <string name="game_arena_victory">Victory!</string>
-    <string name="game_arena_defeat">Defeated.</string>
+    <string name="game_arena_victory">Victoire!</string>
+    <string name="game_arena_defeat">Défaite.</string>
     <!-- Translator note: %1$d = coins won -->
-    <string name="game_arena_coins_won">Won %1$d coins.</string>
+    <string name="game_arena_coins_won">%1$d or gagné.</string>
 
     <!-- ===== Easter egg / dig ===== -->
-    <string name="game_dig_you_dig">You dig into the earth…</string>
-    <string name="game_dig_nothing">You find nothing but dirt.</string>
+    <string name="game_dig_you_dig">Tu creuses la terre…</string>
+    <string name="game_dig_nothing">Tu ne trouves rien d'autre que de la saleté.</string>
     <!-- Translator note: %1$s = item display name -->
     <string name="game_dig_found">You uncover a %1$s!</string>
     <!-- Translator note: %1$d = current hole depth in metres -->
