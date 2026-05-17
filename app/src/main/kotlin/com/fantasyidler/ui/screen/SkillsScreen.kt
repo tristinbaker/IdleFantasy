@@ -477,7 +477,7 @@ private fun SkillRow(
             if (toolEfficiency > 1.0f) {
                 Spacer(Modifier.height(2.dp))
                 Text(
-                    text  = "×${"%.2f".format(toolEfficiency)} tool bonus",
+                    text  = stringResource(R.string.skills_tool_bonus, "%.2f".format(toolEfficiency)),
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.primary,
                 )
@@ -532,7 +532,7 @@ private fun MiningSheet(
         )
         if (sessionDurationMs > 0) {
             Text(
-                text     = "Session: ${sessionDurationMs / 60_000}m",
+                text     = stringResource(R.string.skills_session_duration, sessionDurationMs / 60_000),
                 style    = MaterialTheme.typography.bodySmall,
                 color    = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
@@ -545,7 +545,7 @@ private fun MiningSheet(
                 .forEach { (key, ore) ->
                     ActivityRow(
                         name             = GameStrings.itemName(context, key),
-                        detail           = "Lv. ${ore.levelRequired}  •  ${ore.xpPerOre} XP/ore",
+                        detail           = stringResource(R.string.skills_level_req_xp, ore.levelRequired, ore.xpPerOre),
                         isStarting       = isStarting,
                         hasActiveSession = hasActiveSession,
                         isQueueFull      = isQueueFull,
@@ -558,7 +558,7 @@ private fun MiningSheet(
         val ore = ores[key] ?: return@let
         ActivityDetailDialog(
             name             = GameStrings.itemName(context, key),
-            detail           = "Lv. ${ore.levelRequired}  •  ${ore.xpPerOre} XP/ore",
+            detail           = stringResource(R.string.skills_level_req_xp, ore.levelRequired, ore.xpPerOre),
             description      = GameStrings.itemDesc(context, key),
             hasActiveSession = hasActiveSession,
             isQueueFull      = isQueueFull,
@@ -593,7 +593,7 @@ private fun WoodcuttingSheet(
         )
         if (sessionDurationMs > 0) {
             Text(
-                text     = "Session: ${sessionDurationMs / 60_000}m",
+                text     = stringResource(R.string.skills_session_duration, sessionDurationMs / 60_000),
                 style    = MaterialTheme.typography.bodySmall,
                 color    = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
@@ -606,7 +606,7 @@ private fun WoodcuttingSheet(
                 .forEach { (key, tree) ->
                     ActivityRow(
                         name             = GameStrings.itemName(context, tree.logName),
-                        detail           = "Lv. ${tree.levelRequired}  •  ${tree.xpPerLog} XP/log",
+                        detail           = stringResource(R.string.skills_log_desc, tree.levelRequired, tree.xpPerLog),
                         isStarting       = isStarting,
                         hasActiveSession = hasActiveSession,
                         isQueueFull      = isQueueFull,
@@ -619,7 +619,7 @@ private fun WoodcuttingSheet(
         val tree = trees[key] ?: return@let
         ActivityDetailDialog(
             name             = GameStrings.itemName(context, tree.logName),
-            detail           = "Lv. ${tree.levelRequired}  •  ${tree.xpPerLog} XP/log",
+            detail           = stringResource(R.string.skills_log_desc, tree.levelRequired, tree.xpPerLog),
             description      = GameStrings.itemDesc(context, tree.logName),
             hasActiveSession = hasActiveSession,
             isQueueFull      = isQueueFull,
@@ -656,14 +656,14 @@ private fun FishingSheet(
         )
         Spacer(Modifier.height(4.dp))
         Text(
-            text  = "Level $fishLevel  •  Level-appropriate catches",
+            text  = stringResource(R.string.skills_fishing_desc, fishLevel),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
         if (state.sessionDurationMs > 0) {
             Spacer(Modifier.height(2.dp))
             Text(
-                text  = "Session: ${state.sessionDurationMs / 60_000}m",
+                text  = stringResource(R.string.skills_session_duration, state.sessionDurationMs / 60_000),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
@@ -677,7 +677,7 @@ private fun FishingSheet(
             if (isStarting) {
                 CircularProgressIndicator(Modifier.size(20.dp))
             } else {
-                Text(if (hasActiveSession) "Add to Session Queue" else stringResource(R.string.btn_start_session))
+                Text(if (hasActiveSession) stringResource(R.string.skills_add_to_queue) else stringResource(R.string.btn_start_session))
             }
         }
     }
@@ -729,7 +729,7 @@ private fun ActivityRow(
             CircularProgressIndicator(modifier = Modifier.size(20.dp))
         } else {
             Text(
-                text  = if (hasActiveSession) "Add to Session Queue" else stringResource(R.string.btn_start_session),
+                text  = if (hasActiveSession) stringResource(R.string.skills_add_to_queue) else stringResource(R.string.btn_start_session),
                 style = MaterialTheme.typography.labelMedium,
                 color = if (queueBlocked) MaterialTheme.colorScheme.onSurfaceVariant else GoldPrimary,
             )
@@ -766,7 +766,7 @@ private fun ActivityDetailDialog(
                 onClick = { onConfirm(); onDismiss() },
                 enabled = !queueBlocked,
             ) {
-                Text(if (hasActiveSession) "Add to Queue" else stringResource(R.string.btn_start_session))
+                Text(if (hasActiveSession) stringResource(R.string.skills_add_queue_short) else stringResource(R.string.btn_start_session))
             }
         },
         dismissButton = {
@@ -804,7 +804,7 @@ private fun AgilitySheet(
         )
         if (sessionDurationMs > 0) {
             Text(
-                text     = "Session: ${sessionDurationMs / 60_000}m",
+                text     = stringResource(R.string.skills_session_duration, sessionDurationMs / 60_000),
                 style    = MaterialTheme.typography.bodySmall,
                 color    = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
@@ -869,7 +869,7 @@ private fun FiremakingSheet(
         )
         if (sessionDurationMs > 0) {
             Text(
-                text     = "Session: ${sessionDurationMs / 60_000}m",
+                text     = stringResource(R.string.skills_session_duration, sessionDurationMs / 60_000),
                 style    = MaterialTheme.typography.bodySmall,
                 color    = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
@@ -882,7 +882,7 @@ private fun FiremakingSheet(
                 contentAlignment = Alignment.Center,
             ) {
                 Text(
-                    text  = "No logs in inventory",
+                    text  = stringResource(R.string.skills_no_logs),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
@@ -894,7 +894,7 @@ private fun FiremakingSheet(
                     .forEach { (key, log) ->
                         ActivityRow(
                             name             = GameStrings.itemName(context, key),
-                            detail           = "Lv. ${log.levelRequired}  •  ${log.xpPerLog} XP/log",
+                            detail           = stringResource(R.string.skills_log_desc, log.levelRequired, log.xpPerLog),
                             isStarting       = isStarting,
                             hasActiveSession = hasActiveSession,
                             isQueueFull      = isQueueFull,
@@ -908,7 +908,7 @@ private fun FiremakingSheet(
         val log = availableLogs[key] ?: return@let
         ActivityDetailDialog(
             name             = GameStrings.itemName(context, key),
-            detail           = "Lv. ${log.levelRequired}  •  ${log.xpPerLog} XP/log",
+            detail           = stringResource(R.string.skills_log_desc, log.levelRequired, log.xpPerLog),
             description      = GameStrings.itemDesc(context, key),
             hasActiveSession = hasActiveSession,
             isQueueFull      = isQueueFull,
@@ -957,7 +957,7 @@ private fun PrayerSheet(
         if (selectedBone == null) {
             // ── Bone selection ───────────────────────────────────────────
             Text(
-                text     = "Level $prayerLevel  •  Bury bones or scatter ashes for Prayer XP",
+                text     = stringResource(R.string.skills_prayer_desc, prayerLevel),
                 style    = MaterialTheme.typography.bodySmall,
                 color    = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
@@ -968,7 +968,7 @@ private fun PrayerSheet(
                     contentAlignment = Alignment.Center,
                 ) {
                     Text(
-                        text  = "No bones or ashes in inventory",
+                        text  = stringResource(R.string.skills_no_bones),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
@@ -987,7 +987,7 @@ private fun PrayerSheet(
                         Column(Modifier.weight(1f)) {
                             Text(bone.displayName, style = MaterialTheme.typography.bodyLarge)
                             Text(
-                                text  = "${bone.xpPerBone.toInt()} XP each  •  $qty in inventory",
+                                text  = stringResource(R.string.skills_bone_qty, bone.xpPerBone.toInt(), qty),
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                             )
@@ -1014,7 +1014,7 @@ private fun PrayerSheet(
                 modifier = Modifier.padding(horizontal = 16.dp),
             )
             Text(
-                text     = "${selectedBone.xpPerBone.toInt()} XP each  •  $maxQty available",
+                text     = stringResource(R.string.skills_bone_selected, selectedBone.xpPerBone.toInt(), maxQty),
                 style    = MaterialTheme.typography.bodySmall,
                 color    = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
@@ -1061,7 +1061,7 @@ private fun PrayerSheet(
             }
 
             Text(
-                text     = "+${(qty * selectedBone.xpPerBone).toInt()} XP total",
+                text     = stringResource(R.string.skills_xp_total, (qty * selectedBone.xpPerBone).toInt()),
                 style    = MaterialTheme.typography.bodyMedium,
                 color    = GoldPrimary,
                 fontWeight = FontWeight.SemiBold,
@@ -1084,7 +1084,7 @@ private fun PrayerSheet(
                     .padding(horizontal = 16.dp),
             ) {
                 if (isStarting) CircularProgressIndicator(Modifier.size(20.dp))
-                else Text(if (hasActiveSession) "Add to Session Queue" else stringResource(R.string.btn_start_burying))
+                else Text(if (hasActiveSession) stringResource(R.string.skills_add_to_queue) else stringResource(R.string.btn_start_burying))
             }
         }
     }
@@ -1125,7 +1125,7 @@ private fun RunecraftingSheet(
                 modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 4.dp),
             )
             Text(
-                text     = "${sheet.essenceQty} Rune Essence in inventory",
+                text     = stringResource(R.string.skills_essence_qty, sheet.essenceQty),
                 style    = MaterialTheme.typography.bodySmall,
                 color    = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
@@ -1137,7 +1137,7 @@ private fun RunecraftingSheet(
                     contentAlignment = Alignment.Center,
                 ) {
                     Text(
-                        text  = "No rune types unlocked yet",
+                        text  = stringResource(R.string.skills_no_runes),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
@@ -1148,7 +1148,7 @@ private fun RunecraftingSheet(
                     contentAlignment = Alignment.Center,
                 ) {
                     Text(
-                        text  = "No Rune Essence in inventory — mine some first",
+                        text  = stringResource(R.string.skills_no_essence),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
@@ -1166,7 +1166,7 @@ private fun RunecraftingSheet(
                         Column(Modifier.weight(1f)) {
                             Text(rune.displayName, style = MaterialTheme.typography.bodyLarge)
                             Text(
-                                text  = "${rune.xpPerRune.toInt()} XP/rune  •  Lv. ${rune.levelRequired}",
+                                text  = stringResource(R.string.skills_rune_desc, rune.xpPerRune.toInt(), rune.levelRequired),
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                             )
@@ -1197,7 +1197,7 @@ private fun RunecraftingSheet(
                 modifier = Modifier.padding(horizontal = 16.dp),
             )
             Text(
-                text     = "${selectedRune.xpPerRune.toInt()} XP/rune  •  $maxQty essence available",
+                text     = stringResource(R.string.skills_rune_selected, selectedRune.xpPerRune.toInt(), maxQty),
                 style    = MaterialTheme.typography.bodySmall,
                 color    = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
@@ -1244,7 +1244,7 @@ private fun RunecraftingSheet(
             }
 
             Text(
-                text       = "+${(qty * selectedRune.xpPerRune).toInt()} XP total",
+                text       = stringResource(R.string.skills_xp_total, (qty * selectedRune.xpPerRune).toInt()),
                 style      = MaterialTheme.typography.bodyMedium,
                 color      = GoldPrimary,
                 fontWeight = FontWeight.SemiBold,
@@ -1267,7 +1267,7 @@ private fun RunecraftingSheet(
                     .padding(horizontal = 16.dp),
             ) {
                 if (isStarting) CircularProgressIndicator(Modifier.size(20.dp))
-                else Text(if (hasActiveSession) "Add to Session Queue" else stringResource(R.string.btn_start_crafting))
+                else Text(if (hasActiveSession) stringResource(R.string.skills_add_to_queue) else stringResource(R.string.btn_start_crafting))
             }
         }
     }
@@ -1318,7 +1318,7 @@ private fun SessionResultSheet(
             )
             result.levelUps.forEach { lvl ->
                 Text(
-                    text  = "  Level $lvl reached!",
+                    text  = "  " + stringResource(R.string.skills_level_reached, lvl),
                     style = MaterialTheme.typography.bodyMedium,
                     color = GoldPrimary,
                     fontWeight = FontWeight.SemiBold,
@@ -1438,7 +1438,7 @@ private fun CraftSkillSheet(
                     modifier = Modifier.weight(1f),
                 )
                 Text(
-                    text  = "Only craftable",
+                    text  = stringResource(R.string.skills_only_craftable),
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
@@ -1466,7 +1466,7 @@ private fun CraftSkillSheet(
                     FilterChip(
                         selected  = selectedCategory == null,
                         onClick   = { selectedCategory = null; selectedTier = null },
-                        label     = { Text("All") },
+                        label     = { Text(stringResource(R.string.skills_filter_all)) },
                     )
                     categories.forEach { cat ->
                         FilterChip(
@@ -1491,7 +1491,7 @@ private fun CraftSkillSheet(
                     FilterChip(
                         selected  = selectedTier == null,
                         onClick   = { selectedTier = null },
-                        label     = { Text("All") },
+                        label     = { Text(stringResource(R.string.skills_filter_all)) },
                     )
                     tiers.forEach { tier ->
                         FilterChip(
@@ -1565,12 +1565,21 @@ private fun CraftRecipeRow(
                     color = if (enabled) MaterialTheme.colorScheme.onSurfaceVariant else dim,
                 )
             }
+            if (recipe.effects.isNotEmpty()) {
+                Text(
+                    text  = recipe.effects.entries.joinToString("  ") { (stat, bonus) ->
+                        "+$bonus ${stat.replaceFirstChar { it.uppercase() }}"
+                    },
+                    style = MaterialTheme.typography.labelSmall,
+                    color = if (enabled) MaterialTheme.colorScheme.primary else dim,
+                )
+            }
             if (recipe.outputRequirements.isNotEmpty()) {
                 recipe.outputRequirements.forEach { (skill, lvl) ->
                     val have       = craftState.skillLevels[skill] ?: 1
                     val skillLabel = GameStrings.skillName(context, skill)
                     Text(
-                        text  = "Requires $lvl $skillLabel (You have $have $skillLabel)",
+                        text  = stringResource(R.string.skills_req_with_have, lvl, skillLabel, have, skillLabel),
                         style = MaterialTheme.typography.labelSmall,
                         color = if (have >= lvl) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.error,
                     )
@@ -1631,7 +1640,7 @@ private fun CraftQuantityContent(
             .padding(horizontal = 24.dp)
             .padding(bottom = 40.dp),
     ) {
-        TextButton(onClick = onBack) { Text("← Back") }
+        TextButton(onClick = onBack) { Text(stringResource(R.string.btn_back_arrow)) }
         Text(
             text       = recipe.displayName,
             style      = MaterialTheme.typography.titleLarge,
@@ -1700,7 +1709,7 @@ private fun CraftQuantityContent(
             }
         }
         Text(
-            text     = "+${totalXp.toInt()} XP total",
+            text     = stringResource(R.string.skills_xp_total, totalXp.toInt()),
             style    = MaterialTheme.typography.bodySmall,
             color    = GoldPrimary,
             modifier = Modifier.align(Alignment.CenterHorizontally),
@@ -1719,7 +1728,7 @@ private fun CraftQuantityContent(
             enabled  = !(hasActiveSession && isQueueFull),
             modifier = Modifier.fillMaxWidth(),
         ) {
-            Text(if (hasActiveSession) "Add to Session Queue" else stringResource(R.string.btn_craft))
+            Text(if (hasActiveSession) stringResource(R.string.skills_add_to_queue) else stringResource(R.string.btn_craft))
         }
     }
 }

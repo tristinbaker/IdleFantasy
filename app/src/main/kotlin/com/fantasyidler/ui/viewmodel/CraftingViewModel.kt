@@ -52,6 +52,8 @@ data class CraftableRecipe(
     val category: String = "",
     /** Material tier for filter chips (e.g. "Bronze", "Iron", "Rune"). */
     val tier: String = "",
+    /** Combat stat bonuses granted by this consumable (herblore only). */
+    val effects: Map<String, Int> = emptyMap(),
 )
 
 private fun tierFromKey(key: String) =
@@ -256,6 +258,7 @@ class CraftingViewModel @Inject constructor(
                 xpPerItem     = r.xpPerItem,
                 skillName     = Skills.HERBLORE,
                 category      = "Potion",
+                effects       = r.effects,
             )
         }.sortedBy { it.levelRequired }
     }

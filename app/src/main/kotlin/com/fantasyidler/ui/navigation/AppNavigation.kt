@@ -55,8 +55,8 @@ fun AppNavigation() {
     val currentDestination = backStackEntry?.destination
 
     val tabSubScreens: Map<String, Set<String>> = mapOf(
-        Screen.Home.route   to setOf(Screen.Shop.route, Screen.Settings.route),
-        Screen.Skills.route to setOf(Screen.Farming.route),
+        "home"   to setOf("shop", "settings"),
+        "skills" to setOf("farming"),
     )
 
     Scaffold(
@@ -82,7 +82,7 @@ fun AppNavigation() {
                                         saveState = true
                                     }
                                     launchSingleTop = true
-                                    restoreState = true
+                                    restoreState = !isHome
                                 }
                             }
                         },
@@ -126,8 +126,8 @@ fun AppNavigation() {
             composable(Screen.Skills.route)   {
                 SkillsScreen(onNavigateToFarming = { navController.navigate(Screen.Farming.route) })
             }
-            composable(Screen.Farming.route) {
-                FarmingScreen(onBack = { navController.popBackStack() })
+            composable(Screen.Farming.route) { entry ->
+                FarmingScreen(onBack = { if (navController.currentBackStackEntry == entry) navController.popBackStack() })
             }
             composable(Screen.Combat.route)   { CombatScreen() }
             composable(Screen.Home.route)     {
@@ -138,14 +138,14 @@ fun AppNavigation() {
             }
             composable(Screen.Quests.route)   { QuestsScreen() }
             composable(Screen.Profile.route)  { ProfileScreen() }
-            composable(Screen.Settings.route) {
+            composable(Screen.Settings.route) { entry ->
                 SettingsScreen(
-                    onBack           = { navController.popBackStack() },
+                    onBack           = { if (navController.currentBackStackEntry == entry) navController.popBackStack() },
                     onReopenTutorial = { onboardingVm.reopen() },
                 )
             }
-            composable(Screen.Shop.route)     {
-                ShopScreen(onBack = { navController.popBackStack() })
+            composable(Screen.Shop.route) { entry ->
+                ShopScreen(onBack = { if (navController.currentBackStackEntry == entry) navController.popBackStack() })
             }
         }
     }

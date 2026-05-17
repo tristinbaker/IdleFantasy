@@ -32,32 +32,34 @@ import kotlinx.coroutines.launch
 
 private data class OnboardingPage(val emoji: String, val title: String, val body: String)
 
-private val PAGES = listOf(
+@Composable
+private fun rememberPages() = listOf(
     OnboardingPage(
         emoji = "⚔️",
-        title = "Welcome to Idle Fantasy",
-        body  = "An idle RPG inspired by classic MMORPGs. Train skills, fight dungeons, and craft gear. All offline, no accounts, no ads.",
+        title = stringResource(R.string.onboarding_welcome_title),
+        body  = stringResource(R.string.onboarding_welcome_desc),
     ),
     OnboardingPage(
         emoji = "⏱️",
-        title = "Sessions",
-        body  = "Tap any skill and start a training session. Sessions run in the background, even with the app closed. Come back to collect your loot and XP.",
+        title = stringResource(R.string.onboarding_sessions_title),
+        body  = stringResource(R.string.onboarding_sessions_desc),
     ),
     OnboardingPage(
         emoji = "⚒️",
-        title = "Work Your Way Up",
-        body  = "Mine ore to smelt bars, then forge better weapons and armour. Equip stronger gear to tackle harder dungeons and bosses. Better tools speed up gathering, and higher-tier equipment unlocks content that weaker gear can't survive.",
+        title = stringResource(R.string.onboarding_progress_title),
+        body  = stringResource(R.string.onboarding_progress_desc),
     ),
     OnboardingPage(
         emoji = "🏆",
-        title = "Quests & Pets",
-        body  = "Complete quests to earn XP rewards. Rare pets can drop while training skills and provide permanent XP boosts.",
+        title = stringResource(R.string.onboarding_quests_title),
+        body  = stringResource(R.string.onboarding_quests_desc),
     ),
 )
 
 @Composable
 fun OnboardingScreen(onComplete: () -> Unit) {
-    val pagerState = rememberPagerState(pageCount = { PAGES.size })
+    val pages      = rememberPages()
+    val pagerState = rememberPagerState(pageCount = { pages.size })
     val scope      = rememberCoroutineScope()
 
     Surface(
@@ -69,7 +71,7 @@ fun OnboardingScreen(onComplete: () -> Unit) {
                 state    = pagerState,
                 modifier = Modifier.fillMaxSize(),
             ) { index ->
-                PageContent(PAGES[index])
+                PageContent(pages[index])
             }
 
             // Bottom controls
@@ -84,7 +86,7 @@ fun OnboardingScreen(onComplete: () -> Unit) {
             ) {
                 // Page dots
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    repeat(PAGES.size) { i ->
+                    repeat(pages.size) { i ->
                         val selected = pagerState.currentPage == i
                         Surface(
                             shape    = CircleShape,
@@ -95,7 +97,7 @@ fun OnboardingScreen(onComplete: () -> Unit) {
                     }
                 }
 
-                if (pagerState.currentPage == PAGES.lastIndex) {
+                if (pagerState.currentPage == pages.lastIndex) {
                     Button(
                         onClick  = onComplete,
                         modifier = Modifier.fillMaxWidth(),

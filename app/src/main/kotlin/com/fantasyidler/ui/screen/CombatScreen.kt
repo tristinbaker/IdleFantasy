@@ -105,7 +105,7 @@ fun CombatScreen(
                 actions = {
                     if (!state.isLoading) {
                         Text(
-                            text       = "Combat Lvl ${combatLevelFrom(state.skillLevels)}",
+                            text       = "${stringResource(R.string.combat_level_label)} ${combatLevelFrom(state.skillLevels)}",
                             style      = MaterialTheme.typography.labelLarge,
                             fontWeight = FontWeight.Bold,
                             color      = GoldPrimary,
@@ -132,7 +132,7 @@ fun CombatScreen(
                     Tab(
                         selected = activeTab == 0,
                         onClick  = { activeTab = 0 },
-                        text     = { Text("Combat Log") },
+                        text     = { Text(stringResource(R.string.combat_log_label)) },
                     )
                     Tab(
                         selected = activeTab == 1,
@@ -301,7 +301,7 @@ private fun CombatSelectionList(
     val combatLvl = combatLevel(skillLevels)
 
     LazyColumn(modifier.fillMaxSize()) {
-        item { CombatSectionHeader("Dungeons") }
+        item { CombatSectionHeader(stringResource(R.string.label_dungeons_tab)) }
         items(dungeons) { dungeon ->
             DungeonRow(
                 dungeon        = dungeon,
@@ -310,7 +310,7 @@ private fun CombatSelectionList(
                 onTap          = { onDungeon(dungeon) },
             )
         }
-        item { CombatSectionHeader("Solo Bosses") }
+        item { CombatSectionHeader(stringResource(R.string.combat_solo_bosses)) }
         items(bosses) { boss ->
             BossRow(
                 boss     = boss,
@@ -414,14 +414,14 @@ private fun CombatSkillRow(
                     if (gearBonus > 0) {
                         Spacer(Modifier.width(6.dp))
                         Text(
-                            text  = "+$gearBonus gear",
+                            text  = stringResource(R.string.combat_gear_bonus, gearBonus),
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.primary,
                         )
                     }
                 }
                 Text(
-                    text  = "${xp.formatXp()} XP",
+                    text  = "${xp.formatXp()} ${stringResource(R.string.label_xp)}",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
@@ -750,13 +750,13 @@ private fun CombatSessionBanner(
                             )
                             Spacer(Modifier.height(4.dp))
                             Text(
-                                text  = "HP $currentEnemyHp/${currentEnemy.hp}  ATK ${currentEnemy.combatStats.attackLevel}  STR ${currentEnemy.combatStats.strengthLevel}  DEF ${currentEnemy.combatStats.defenseLevel}",
+                                text  = "${stringResource(R.string.label_hp)} $currentEnemyHp/${currentEnemy.hp}  ${stringResource(R.string.combat_atk)} ${currentEnemy.combatStats.attackLevel}  ${stringResource(R.string.combat_str)} ${currentEnemy.combatStats.strengthLevel}  ${stringResource(R.string.combat_def)} ${currentEnemy.combatStats.defenseLevel}",
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSecondaryContainer,
                             )
                         } else {
                             Text(
-                                text  = "Fighting…",
+                                text  = stringResource(R.string.combat_fighting),
                                 style = MaterialTheme.typography.titleSmall,
                                 color = MaterialTheme.colorScheme.onSecondaryContainer,
                             )
@@ -776,7 +776,7 @@ private fun CombatSessionBanner(
                             verticalAlignment     = Alignment.CenterVertically,
                         ) {
                             Text(
-                                text       = "HP: $currentPlayerHp / $maxHp",
+                                text       = "${stringResource(R.string.label_hp)}: $currentPlayerHp / $maxHp",
                                 style      = MaterialTheme.typography.bodySmall,
                                 fontWeight = FontWeight.SemiBold,
                                 color      = hpColor,
@@ -789,10 +789,13 @@ private fun CombatSessionBanner(
                             color     = hpColor,
                             trackColor = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.15f),
                         )
+                        val atkLabel = stringResource(R.string.combat_atk)
+                        val strLabel = stringResource(R.string.combat_str)
+                        val defLabel = stringResource(R.string.combat_def)
                         val bonusParts = buildList {
-                            if (attackBonus   != 0) add("+$attackBonus ATK")
-                            if (strengthBonus != 0) add("+$strengthBonus STR")
-                            if (defenseBonus  != 0) add("+$defenseBonus DEF")
+                            if (attackBonus   != 0) add("+$attackBonus $atkLabel")
+                            if (strengthBonus != 0) add("+$strengthBonus $strLabel")
+                            if (defenseBonus  != 0) add("+$defenseBonus $defLabel")
                         }
                         if (bonusParts.isNotEmpty()) {
                             Spacer(Modifier.height(4.dp))
@@ -807,7 +810,7 @@ private fun CombatSessionBanner(
                         if (equippedFood.isNotEmpty()) {
                             HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp), color = divColor)
                             Text(
-                                text  = "Food",
+                                text  = stringResource(R.string.label_food),
                                 style = MaterialTheme.typography.labelSmall,
                                 color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.7f),
                             )
@@ -817,7 +820,7 @@ private fun CombatSessionBanner(
                                 val heal      = foodHealValues[key] ?: 0
                                 val name      = key.replace('_', ' ').replaceFirstChar { it.uppercase() }
                                 Text(
-                                    text  = "$name ×$remaining (heals $heal HP)",
+                                    text  = "$name ×$remaining (${stringResource(R.string.combat_heals_hp, heal)})",
                                     style = MaterialTheme.typography.bodySmall,
                                     color = if (remaining > 0)
                                         MaterialTheme.colorScheme.onSecondaryContainer
@@ -829,12 +832,13 @@ private fun CombatSessionBanner(
 
                         // ── Kills ──────────────────────────────────────────
                         if (killsSoFar.isNotEmpty()) {
+                            val defeatedSoFar = stringResource(R.string.combat_defeated_so_far)
                             HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp), color = divColor)
                             Text(
                                 text  = killsSoFar.entries
                                     .sortedByDescending { it.value }
                                     .joinToString(", ") { (k, v) -> "$v ${enemies[k]?.displayName ?: k}" }
-                                    + " defeated so far.",
+                                    + " $defeatedSoFar",
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSecondaryContainer,
                             )
@@ -844,7 +848,7 @@ private fun CombatSessionBanner(
                         if (dropsSoFar.isNotEmpty()) {
                             HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp), color = divColor)
                             Text(
-                                text  = "Drops",
+                                text  = stringResource(R.string.label_drops),
                                 style = MaterialTheme.typography.labelSmall,
                                 color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.7f),
                             )
@@ -864,7 +868,7 @@ private fun CombatSessionBanner(
                         if (xpSoFar.isNotEmpty()) {
                             HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp), color = divColor)
                             Text(
-                                text  = "XP",
+                                text  = stringResource(R.string.label_xp),
                                 style = MaterialTheme.typography.labelSmall,
                                 color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.7f),
                             )
@@ -888,20 +892,25 @@ private fun CombatSessionBanner(
                         if (combatLog.isNotEmpty()) {
                             HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp), color = divColor)
                             Text(
-                                text  = "Combat log",
+                                text  = stringResource(R.string.combat_log_label),
                                 style = MaterialTheme.typography.labelSmall,
                                 color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.7f),
                             )
                             Spacer(Modifier.height(2.dp))
                             Column {
+                                val youHit    = stringResource(R.string.combat_log_you_hit)
+                                val dmgLabel  = stringResource(R.string.combat_log_dmg)
+                                val youMissed = stringResource(R.string.combat_log_you_missed)
+                                val hitYou    = stringResource(R.string.combat_log_hit_you)
+                                val missed    = stringResource(R.string.combat_log_missed)
                                 for (entry in combatLog) {
                                     val (arrow, dmgText, color) = if (entry.isPlayer) {
                                         val c = if (entry.damage > 0) Color(0xFF4CAF50)
                                                 else MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.45f)
                                         Triple(
                                             "→",
-                                            if (entry.damage > 0) "You hit ${entry.enemyName}: ${entry.damage} dmg"
-                                            else "You missed ${entry.enemyName}",
+                                            if (entry.damage > 0) "$youHit ${entry.enemyName}: ${entry.damage} $dmgLabel"
+                                            else "$youMissed ${entry.enemyName}",
                                             c,
                                         )
                                     } else {
@@ -909,8 +918,8 @@ private fun CombatSessionBanner(
                                                 else MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.45f)
                                         Triple(
                                             "←",
-                                            if (entry.damage > 0) "${entry.enemyName} hit you: ${entry.damage} dmg"
-                                            else "${entry.enemyName} missed",
+                                            if (entry.damage > 0) "${entry.enemyName} $hitYou: ${entry.damage} $dmgLabel"
+                                            else "${entry.enemyName} $missed",
                                             c,
                                         )
                                     }
@@ -1013,18 +1022,18 @@ private fun DungeonInfoSheet(
         Spacer(Modifier.height(16.dp))
 
         // Level and combat style rows
-        StatRow(label = "Recommended combat level",
+        StatRow(label = stringResource(R.string.combat_rec_level),
             value = dungeon.recommendedLevel.toString(),
             valueColor = if (canEnter) GoldPrimary else MaterialTheme.colorScheme.error)
-        StatRow(label = "Your combat level", value = combatLvl.toString())
-        StatRow(label = "Combat style", value = styleLabel, valueColor = GoldPrimary)
+        StatRow(label = stringResource(R.string.combat_your_level), value = combatLvl.toString())
+        StatRow(label = stringResource(R.string.label_combat_style), value = styleLabel, valueColor = GoldPrimary)
 
         // Ranged: arrow info
         if (combatStyle == "ranged") {
             val arrowText = if (bestArrow != null)
                 "${GameStrings.itemName(context, bestArrow)} \u00d7${inventory[bestArrow]}"
-            else "None (no strength bonus)"
-            StatRow(label = "Best arrow", value = arrowText)
+            else stringResource(R.string.combat_no_strength_bonus)
+            StatRow(label = stringResource(R.string.combat_best_arrow), value = arrowText)
         }
 
         Spacer(Modifier.height(12.dp))
@@ -1032,7 +1041,7 @@ private fun DungeonInfoSheet(
         // Enemy spawn list
         if (dungeon.enemySpawns.isNotEmpty()) {
             Text(
-                text  = "Enemies",
+                text  = stringResource(R.string.combat_enemies),
                 style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
@@ -1048,14 +1057,14 @@ private fun DungeonInfoSheet(
         // Magic: spell picker
         if (combatStyle == "magic") {
             Text(
-                text  = "Spell",
+                text  = stringResource(R.string.label_spell),
                 style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
             Spacer(Modifier.height(4.dp))
             if (availableSpells.isEmpty()) {
                 Text(
-                    text  = "No spells available at your magic level.",
+                    text  = stringResource(R.string.combat_no_spells),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
@@ -1072,7 +1081,7 @@ private fun DungeonInfoSheet(
                     FilterChip(
                         selected = onlyCastable,
                         onClick  = { onlyCastable = !onlyCastable },
-                        label    = { Text("Only Castable") },
+                        label    = { Text(stringResource(R.string.combat_only_castable)) },
                     )
                 }
                 displaySpells.forEach { spell ->
@@ -1093,7 +1102,7 @@ private fun DungeonInfoSheet(
                                 color      = if (isSelected) GoldPrimary else MaterialTheme.colorScheme.onSurface,
                             )
                             Text(
-                                text  = "${spell.runeCost}\u00d7 ${GameStrings.itemName(context, spell.runeType)}  \u2022  max hit ${spell.maxHit}",
+                                text  = "${spell.runeCost}\u00d7 ${GameStrings.itemName(context, spell.runeType)}  \u2022  ${stringResource(R.string.combat_max_hit)} ${spell.maxHit}",
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                             )
@@ -1132,7 +1141,7 @@ private fun DungeonInfoSheet(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(
-                        text       = if (key == null) "No Potion"
+                        text       = if (key == null) stringResource(R.string.combat_no_potion)
                                      else GameStrings.itemName(context, key),
                         style      = MaterialTheme.typography.bodyMedium,
                         fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
@@ -1232,7 +1241,7 @@ private fun BossInfoSheet(
             modifier              = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
-            Text("Required combat level", style = MaterialTheme.typography.bodySmall,
+            Text(stringResource(R.string.combat_req_level), style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant)
             Text(
                 text       = boss.combatLevelRequired.toString(),
@@ -1245,7 +1254,7 @@ private fun BossInfoSheet(
             modifier              = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
-            Text("Your combat level", style = MaterialTheme.typography.bodySmall,
+            Text(stringResource(R.string.combat_your_level), style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant)
             Text(combatLvl.toString(), style = MaterialTheme.typography.bodySmall,
                 fontWeight = FontWeight.SemiBold)
@@ -1254,15 +1263,15 @@ private fun BossInfoSheet(
             modifier              = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
-            Text("Duration", style = MaterialTheme.typography.bodySmall,
+            Text(stringResource(R.string.combat_duration), style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant)
-            Text("${boss.durationMinutes} min", style = MaterialTheme.typography.bodySmall,
+            Text(stringResource(R.string.combat_duration_min, boss.durationMinutes), style = MaterialTheme.typography.bodySmall,
                 fontWeight = FontWeight.SemiBold)
         }
 
         if (boss.xpRewards.isNotEmpty()) {
             Spacer(Modifier.height(12.dp))
-            Text("XP on victory", style = MaterialTheme.typography.labelMedium,
+            Text(stringResource(R.string.combat_xp_on_victory), style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant)
             val context = LocalContext.current
             for ((skill, xp) in boss.xpRewards) {
@@ -1272,7 +1281,7 @@ private fun BossInfoSheet(
                 ) {
                     Text(GameStrings.skillName(context, skill),
                         style = MaterialTheme.typography.bodySmall)
-                    Text("+$xp XP", style = MaterialTheme.typography.bodySmall,
+                    Text("+$xp ${stringResource(R.string.label_xp)}", style = MaterialTheme.typography.bodySmall,
                         color = GoldPrimary, fontWeight = FontWeight.SemiBold)
                 }
             }
@@ -1300,7 +1309,7 @@ private fun BossInfoSheet(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(
-                        text       = if (key == null) "No Potion"
+                        text       = if (key == null) stringResource(R.string.combat_no_potion)
                                      else GameStrings.itemName(context, key),
                         style      = MaterialTheme.typography.bodyMedium,
                         fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
@@ -1359,7 +1368,7 @@ private fun CombatResultSheet(
     ) {
         if (!result.won) {
             Text(
-                text       = "You Died!",
+                text       = stringResource(R.string.combat_you_died),
                 style      = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.Bold,
                 color      = MaterialTheme.colorScheme.error,
@@ -1373,7 +1382,7 @@ private fun CombatResultSheet(
         )
         Text(
             text  = if (result.won) stringResource(R.string.label_session_results)
-                    else "You received 10% of the rewards.",
+                    else stringResource(R.string.combat_died_reward),
             style = MaterialTheme.typography.bodySmall,
             color = if (result.won) MaterialTheme.colorScheme.onSurfaceVariant
                     else MaterialTheme.colorScheme.error,
@@ -1403,7 +1412,7 @@ private fun CombatResultSheet(
                         style = MaterialTheme.typography.bodyMedium,
                     )
                     Text(
-                        text       = "+${xp.formatXp()} XP",
+                        text       = "+${xp.formatXp()} ${stringResource(R.string.label_xp)}",
                         style      = MaterialTheme.typography.bodyMedium,
                         fontWeight = FontWeight.SemiBold,
                         color      = GoldPrimary,

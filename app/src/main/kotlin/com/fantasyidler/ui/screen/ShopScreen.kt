@@ -193,7 +193,7 @@ private fun BuyList(
                             if (isXpBoost && xpBoostActive) {
                                 Spacer(Modifier.width(6.dp))
                                 Text(
-                                    text       = "ACTIVE",
+                                    text       = stringResource(R.string.shop_active),
                                     style      = MaterialTheme.typography.labelSmall,
                                     fontWeight = FontWeight.Bold,
                                     color      = MaterialTheme.colorScheme.primary,
@@ -211,7 +211,7 @@ private fun BuyList(
                         }
                     }
                     Text(
-                        text       = "${entry.price} coins",
+                        text       = stringResource(R.string.shop_total_amount, entry.price.toString()),
                         style      = MaterialTheme.typography.bodyMedium,
                         fontWeight = FontWeight.SemiBold,
                         color      = if (canAfford) GoldPrimary else GoldPrimary.copy(alpha = 0.38f),
@@ -259,11 +259,11 @@ private fun SellList(
                 OutlinedButton(
                     onClick  = onSellJunk,
                     modifier = Modifier.weight(1f),
-                ) { Text("Sell Junk") }
+                ) { Text(stringResource(R.string.shop_sell_junk)) }
                 OutlinedButton(
                     onClick  = onSellOldEquipment,
                     modifier = Modifier.weight(1f),
-                ) { Text("Sell Old Gear") }
+                ) { Text(stringResource(R.string.shop_sell_old_gear)) }
             }
             HorizontalDivider()
         }
@@ -305,20 +305,20 @@ private fun SellList(
                                 if (isEquipped) {
                                     Spacer(Modifier.width(6.dp))
                                     Text(
-                                        text  = "(equipped)",
+                                        text  = stringResource(R.string.shop_equipped_label),
                                         style = MaterialTheme.typography.labelSmall,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                                     )
                                 }
                             }
                             Text(
-                                text  = "×$qty in inventory",
+                                text  = stringResource(R.string.shop_qty_in_inv, qty),
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                             )
                         }
                         Text(
-                            text       = "$sellPrice coins ea.",
+                            text       = stringResource(R.string.shop_price_each, sellPrice.toString()),
                             style      = MaterialTheme.typography.bodyMedium,
                             fontWeight = FontWeight.SemiBold,
                             color      = GoldPrimary,
@@ -358,14 +358,14 @@ private fun TransactionSheet(
             .padding(bottom = 40.dp),
     ) {
         Text(
-            text       = if (transaction.isBuy) "Buy: ${transaction.displayName}"
-                         else "Sell: ${transaction.displayName}",
+            text       = if (transaction.isBuy) stringResource(R.string.shop_buy_prefix, transaction.displayName)
+                         else stringResource(R.string.shop_sell_prefix, transaction.displayName),
             style      = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold,
         )
         Spacer(Modifier.height(4.dp))
         Text(
-            text  = "${transaction.priceEach} coins each",
+            text  = stringResource(R.string.shop_price_each_long, transaction.priceEach.toString()),
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
@@ -378,7 +378,7 @@ private fun TransactionSheet(
                 verticalAlignment     = Alignment.CenterVertically,
             ) {
                 IconButton(onClick = onMinus, enabled = qty > 1) {
-                    Icon(Icons.Filled.Remove, contentDescription = "Decrease")
+                    Icon(Icons.Filled.Remove, contentDescription = stringResource(R.string.crafting_decrease))
                 }
                 OutlinedTextField(
                     value         = textValue,
@@ -403,7 +403,7 @@ private fun TransactionSheet(
                     modifier   = Modifier.width(90.dp),
                 )
                 IconButton(onClick = onPlus, enabled = qty < transaction.maxQty) {
-                    Icon(Icons.Filled.Add, contentDescription = "Increase")
+                    Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.crafting_increase))
                 }
             }
             Spacer(Modifier.height(8.dp))
@@ -415,12 +415,12 @@ private fun TransactionSheet(
             verticalAlignment     = Alignment.CenterVertically,
         ) {
             Text(
-                text  = if (transaction.isBuy) "Total cost" else "You'll receive",
+                text  = if (transaction.isBuy) stringResource(R.string.shop_total_cost) else stringResource(R.string.shop_youll_receive),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
             Text(
-                text       = "$total coins",
+                text       = stringResource(R.string.shop_total_amount, total.toString()),
                 style      = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold,
                 color      = GoldPrimary,

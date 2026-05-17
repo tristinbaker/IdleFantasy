@@ -26,7 +26,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.fantasyidler.R
 
 internal val CHARACTER_GENDERS = listOf("Male", "Female", "Other")
 internal val CHARACTER_RACES   = listOf("Human", "Elf", "Dwarf", "Orc", "Halfling", "Gnome")
@@ -59,41 +61,57 @@ fun CharacterSetupSheet(
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             Text(
-                text  = if (isFirstTime) "Create Your Character" else "Edit Character",
+                text  = if (isFirstTime) stringResource(R.string.character_create_title)
+                        else stringResource(R.string.character_edit_title),
                 style = MaterialTheme.typography.titleLarge,
             )
 
             OutlinedTextField(
                 value         = draftName,
                 onValueChange = { draftName = it },
-                label         = { Text("Character Name") },
+                label         = { Text(stringResource(R.string.character_name_label)) },
                 singleLine    = true,
                 modifier      = Modifier.fillMaxWidth(),
             )
 
             Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                Text("Gender", style = MaterialTheme.typography.labelMedium,
+                Text(stringResource(R.string.character_gender),
+                    style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant)
+                val genderLabels = mapOf(
+                    "Male"   to stringResource(R.string.character_gender_male),
+                    "Female" to stringResource(R.string.character_gender_female),
+                    "Other"  to stringResource(R.string.character_gender_other),
+                )
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     CHARACTER_GENDERS.forEach { gender ->
                         FilterChip(
                             selected = draftGender == gender,
                             onClick  = { draftGender = if (draftGender == gender) "" else gender },
-                            label    = { Text(gender) },
+                            label    = { Text(genderLabels[gender] ?: gender) },
                         )
                     }
                 }
             }
 
             Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                Text("Race", style = MaterialTheme.typography.labelMedium,
+                Text(stringResource(R.string.character_race),
+                    style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant)
+                val raceLabels = mapOf(
+                    "Human"    to stringResource(R.string.character_race_human),
+                    "Elf"      to stringResource(R.string.character_race_elf),
+                    "Dwarf"    to stringResource(R.string.character_race_dwarf),
+                    "Orc"      to stringResource(R.string.character_race_orc),
+                    "Halfling" to stringResource(R.string.character_race_halfling),
+                    "Gnome"    to stringResource(R.string.character_race_gnome),
+                )
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     CHARACTER_RACES.forEach { race ->
                         FilterChip(
                             selected = draftRace == race,
                             onClick  = { draftRace = if (draftRace == race) "" else race },
-                            label    = { Text(race) },
+                            label    = { Text(raceLabels[race] ?: race) },
                         )
                     }
                 }
@@ -106,14 +124,15 @@ fun CharacterSetupSheet(
                 horizontalArrangement = Arrangement.End,
             ) {
                 TextButton(onClick = onDismiss) {
-                    Text(if (isFirstTime) "Skip" else "Cancel")
+                    Text(if (isFirstTime) stringResource(R.string.onboarding_skip)
+                         else stringResource(R.string.btn_cancel))
                 }
                 Spacer(Modifier.width(8.dp))
                 Button(
                     onClick  = { onSave(draftName.trim(), draftGender, draftRace) },
                     enabled  = draftName.isNotBlank(),
                 ) {
-                    Text("Save")
+                    Text(stringResource(R.string.btn_confirm))
                 }
             }
         }

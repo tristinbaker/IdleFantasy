@@ -135,7 +135,7 @@ fun QuestsScreen(
                     contentAlignment = Alignment.Center,
                 ) {
                     Text(
-                        text  = "No quests in this category.",
+                        text  = stringResource(R.string.quests_none_in_category),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
@@ -221,7 +221,7 @@ private fun QuestRow(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
                     imageVector      = Icons.Filled.CheckCircle,
-                    contentDescription = "Completed",
+                    contentDescription = stringResource(R.string.label_completed),
                     tint             = Color(0xFF4CAF50),
                     modifier         = Modifier
                         .height(18.dp)
@@ -229,7 +229,7 @@ private fun QuestRow(
                 )
                 Spacer(Modifier.width(6.dp))
                 Text(
-                    text  = "Completed",
+                    text  = stringResource(R.string.label_completed),
                     style = MaterialTheme.typography.labelMedium,
                     color = Color(0xFF4CAF50),
                     fontWeight = FontWeight.SemiBold,

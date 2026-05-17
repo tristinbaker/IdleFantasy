@@ -125,7 +125,7 @@ fun ProfileScreen(
                 ) {
                     Column(Modifier.weight(1f)) {
                         Text(
-                            text       = state.characterName.ifBlank { "Unnamed Adventurer" },
+                            text       = state.characterName.ifBlank { stringResource(R.string.profile_unnamed) },
                             style      = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Bold,
                         )
@@ -410,7 +410,7 @@ private fun AchievementsTab(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(
-                        text  = "Achievements",
+                        text  = stringResource(R.string.label_achievements),
                         style = MaterialTheme.typography.labelMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
@@ -489,7 +489,7 @@ private fun PetsTab(
             contentAlignment = Alignment.Center,
         ) {
             Text(
-                text  = "No pets available",
+                text  = stringResource(R.string.profile_no_pets),
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
@@ -501,13 +501,13 @@ private fun PetsTab(
         val locked = allPets.values.filter { it.id !in ownedPetIds }
 
         if (owned.isNotEmpty()) {
-            item { SlotSectionHeader("Collected") }
+            item { SlotSectionHeader(stringResource(R.string.profile_pet_collected)) }
             items(owned, key = { it.id }) { pet ->
                 PetRow(pet = pet, owned = true)
             }
         }
         if (locked.isNotEmpty()) {
-            item { SlotSectionHeader("Not Yet Found") }
+            item { SlotSectionHeader(stringResource(R.string.profile_pet_not_found)) }
             items(locked, key = { it.id }) { pet ->
                 PetRow(pet = pet, owned = false)
             }
@@ -549,7 +549,7 @@ private fun PetRow(pet: com.fantasyidler.data.json.PetData, owned: Boolean) {
             )
         }
         Text(
-            text  = "+${pet.boostPercent}% XP",
+            text  = stringResource(R.string.format_xp_boost_percent, pet.boostPercent),
             style = MaterialTheme.typography.labelMedium,
             color = (if (owned) GoldPrimary else MaterialTheme.colorScheme.onSurfaceVariant)
                 .copy(alpha = alpha),
@@ -592,13 +592,13 @@ private fun EquipmentTab(
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp, vertical = 12.dp),
             ) {
-                Text("Equip Best Gear")
+                Text(stringResource(R.string.profile_equip_best))
             }
         }
-        item { SlotSectionHeader("Combat Gear") }
+        item { SlotSectionHeader(stringResource(R.string.profile_combat_gear)) }
         items(EquipSlot.COMBAT_SLOTS) { slot ->
             val xpLabel = if (slot == EquipSlot.WEAPON)
-                weaponXpLabel(allEquipment[equipped[slot]]?.combatStyle)
+                weaponXpLabel(allEquipment[equipped[slot]]?.combatStyle, context)
             else null
             EquipSlotRow(
                 slotName   = slotDisplayName(slot),
@@ -608,7 +608,7 @@ private fun EquipmentTab(
                 onUnequip  = { onUnequip(slot) },
             )
         }
-        item { SlotSectionHeader("Gathering Tools") }
+        item { SlotSectionHeader(stringResource(R.string.profile_gathering_tools)) }
         items(EquipSlot.TOOL_SLOTS) { slot ->
             EquipSlotRow(
                 slotName   = slotDisplayName(slot),
@@ -617,11 +617,11 @@ private fun EquipmentTab(
                 onUnequip  = { onUnequip(slot) },
             )
         }
-        item { SlotSectionHeader("Food (Dungeon)") }
+        item { SlotSectionHeader(stringResource(R.string.profile_food_dungeon)) }
         if (foodInInventory.isEmpty()) {
             item {
                 Text(
-                    text     = "No cooked food in inventory",
+                    text     = stringResource(R.string.profile_no_food),
                     style    = MaterialTheme.typography.bodySmall,
                     color    = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
@@ -667,18 +667,18 @@ private fun FoodRow(
                 fontWeight = FontWeight.Medium,
             )
             Text(
-                text  = "×$qty  •  heals $healValue HP",
+                text  = stringResource(R.string.profile_food_desc, qty, healValue),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         }
         if (isEquipped) {
             TextButton(onClick = onUnequip) {
-                Text("Unequip", color = MaterialTheme.colorScheme.error)
+                Text(stringResource(R.string.btn_unequip), color = MaterialTheme.colorScheme.error)
             }
         } else {
             TextButton(onClick = onEquip) {
-                Text("Equip", color = GoldPrimary)
+                Text(stringResource(R.string.btn_equip), color = GoldPrimary)
             }
         }
     }
@@ -770,7 +770,7 @@ private fun EquipPickerSheet(
     ) {
         item {
             Text(
-                text     = "Choose ${slotDisplayName(slot)}",
+                text     = stringResource(R.string.profile_choose_slot, slotDisplayName(slot)),
                 style    = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
             )
@@ -786,7 +786,7 @@ private fun EquipPickerSheet(
                     contentAlignment = Alignment.Center,
                 ) {
                     Text(
-                        text  = "No eligible items in inventory",
+                        text  = stringResource(R.string.profile_no_items),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
@@ -798,7 +798,7 @@ private fun EquipPickerSheet(
                     compareBy({ it.requirements.values.maxOrNull() ?: 0 }, { it.name })
                 )
             ) { item ->
-                val xpLabel = weaponXpLabel(item.combatStyle).takeIf { item.slot == EquipSlot.WEAPON }
+                val xpLabel = weaponXpLabel(item.combatStyle, context).takeIf { item.slot == EquipSlot.WEAPON }
                 val displayName = buildString {
                     append(GameStrings.itemName(context, item.name))
                     if (xpLabel != null) append(" ($xpLabel)")
@@ -816,7 +816,7 @@ private fun EquipPickerSheet(
                             displayName,
                             style = MaterialTheme.typography.bodyLarge,
                         )
-                        val detail = buildEquipDetail(item)
+                        val detail = buildEquipDetail(item, context)
                         if (detail.isNotEmpty()) {
                             Text(
                                 text  = detail,
@@ -826,7 +826,7 @@ private fun EquipPickerSheet(
                         }
                     }
                     Text(
-                        text  = "Equip",
+                        text  = stringResource(R.string.btn_equip),
                         style = MaterialTheme.typography.labelMedium,
                         color = GoldPrimary,
                     )
@@ -837,27 +837,27 @@ private fun EquipPickerSheet(
     }
 }
 
-private fun weaponXpLabel(combatStyle: String?): String? = when (combatStyle) {
-    "attack"   -> "Atk"
-    "strength" -> "Str"
-    "ranged"   -> "Ranged"
-    "magic"    -> "Magic"
+private fun weaponXpLabel(combatStyle: String?, context: android.content.Context): String? = when (combatStyle) {
+    "attack"   -> context.getString(R.string.profile_stat_atk)
+    "strength" -> context.getString(R.string.profile_stat_str)
+    "ranged"   -> context.getString(R.string.profile_stat_ranged)
+    "magic"    -> context.getString(R.string.profile_stat_magic)
     else       -> null
 }
 
-private fun buildEquipDetail(item: com.fantasyidler.data.json.EquipmentData): String {
+private fun buildEquipDetail(item: com.fantasyidler.data.json.EquipmentData, context: android.content.Context): String {
     val parts = mutableListOf<String>()
-    item.miningEfficiency?.let      { parts.add("Mining ×${"%.2f".format(it)}") }
-    item.woodcuttingEfficiency?.let { parts.add("WC ×${"%.2f".format(it)}") }
-    item.fishingEfficiency?.let     { parts.add("Fishing ×${"%.2f".format(it)}") }
-    item.farmingEfficiency?.let     { parts.add("Farming +${(it * 100).roundToInt()}%") }
+    item.miningEfficiency?.let      { parts.add("${context.getString(R.string.profile_stat_mining)} ×${"%.2f".format(it)}") }
+    item.woodcuttingEfficiency?.let { parts.add("${context.getString(R.string.profile_stat_wc)} ×${"%.2f".format(it)}") }
+    item.fishingEfficiency?.let     { parts.add("${context.getString(R.string.profile_stat_fishing)} ×${"%.2f".format(it)}") }
+    item.farmingEfficiency?.let     { parts.add("${context.getString(R.string.profile_stat_farming)} +${(it * 100).roundToInt()}%") }
     if (parts.isEmpty()) {
-        if (item.attackBonus   != 0) parts.add("Atk +${item.attackBonus}")
-        if (item.strengthBonus != 0) parts.add("Str +${item.strengthBonus}")
-        if (item.defenseBonus  != 0) parts.add("Def +${item.defenseBonus}")
+        if (item.attackBonus   != 0) parts.add("${context.getString(R.string.profile_stat_atk)} +${item.attackBonus}")
+        if (item.strengthBonus != 0) parts.add("${context.getString(R.string.profile_stat_str)} +${item.strengthBonus}")
+        if (item.defenseBonus  != 0) parts.add("${context.getString(R.string.profile_stat_def)} +${item.defenseBonus}")
     }
     val req = item.requirements.entries.firstOrNull()
-    if (req != null) parts.add("Req lv.${req.value} ${req.key}")
+    if (req != null) parts.add("${context.getString(R.string.profile_req_lv)}${req.value} ${req.key}")
     return parts.joinToString("  •  ")
 }
 

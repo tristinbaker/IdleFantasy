@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -23,7 +24,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.FilterChip
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -80,7 +85,7 @@ fun SettingsScreen(
         uri ?: return@rememberLauncherForActivityResult
         viewModel.exportSave { jsonString ->
             context.contentResolver.openOutputStream(uri)?.use { it.write(jsonString.toByteArray()) }
-            scope.launch { snackbarHostState.showSnackbar("Save exported") }
+            scope.launch { snackbarHostState.showSnackbar(context.getString(R.string.settings_exported_ok)) }
         }
     }
 
@@ -93,7 +98,7 @@ fun SettingsScreen(
         viewModel.importSave(jsonString) { success ->
             scope.launch {
                 snackbarHostState.showSnackbar(
-                    if (success) "Save imported successfully" else "Failed to import — invalid file"
+                    if (success) context.getString(R.string.settings_imported_ok) else context.getString(R.string.settings_imported_fail)
                 )
             }
         }
@@ -174,17 +179,17 @@ fun SettingsScreen(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             // Appearance section
-            SectionHeader(title = "Appearance")
+            SectionHeader(title = stringResource(R.string.settings_appearance))
 
             SettingsRow(
-                title    = "Theme",
-                subtitle = "Choose your preferred colour scheme",
+                title    = stringResource(R.string.settings_theme),
+                subtitle = stringResource(R.string.settings_theme_desc),
                 trailing = {
                     Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                         listOf(
-                            "dark"   to "Dark",
-                            "light"  to "Light",
-                            "system" to "System",
+                            "dark"   to stringResource(R.string.settings_theme_dark),
+                            "light"  to stringResource(R.string.settings_theme_light),
+                            "system" to stringResource(R.string.settings_theme_system),
                         ).forEach { (key, label) ->
                             FilterChip(
                                 selected = themePreference == key,
@@ -260,24 +265,24 @@ fun SettingsScreen(
             // Save data section
             HorizontalDivider()
 
-            SectionHeader(title = "Save Data")
+            SectionHeader(title = stringResource(R.string.settings_save_data))
 
             SettingsRow(
-                title    = "Export Save",
-                subtitle = "Save your progress to a file",
+                title    = stringResource(R.string.settings_export),
+                subtitle = stringResource(R.string.settings_export_desc),
                 trailing = {
                     OutlinedButton(onClick = { exportLauncher.launch("fantasyidler_save.json") }) {
-                        Text("Export")
+                        Text(stringResource(R.string.settings_export_btn))
                     }
                 }
             )
 
             SettingsRow(
-                title    = "Import Save",
-                subtitle = "Restore progress from a file",
+                title    = stringResource(R.string.settings_import),
+                subtitle = stringResource(R.string.settings_import_desc),
                 trailing = {
                     OutlinedButton(onClick = { importLauncher.launch("*/*") }) {
-                        Text("Import")
+                        Text(stringResource(R.string.settings_import_btn))
                     }
                 }
             )
@@ -293,8 +298,8 @@ fun SettingsScreen(
             )
 
             SettingsRow(
-                title    = "Source Code",
-                subtitle = "github.com/tristinbaker/IdleFantasy",
+                title    = stringResource(R.string.settings_source_code),
+                subtitle = stringResource(R.string.settings_source_url),
                 trailing = {
                     OutlinedButton(
                         onClick = {
@@ -303,7 +308,7 @@ fun SettingsScreen(
                             )
                         }
                     ) {
-                        Text("Open")
+                        Text(stringResource(R.string.settings_source_open))
                     }
                 }
             )
@@ -318,6 +323,7 @@ fun SettingsScreen(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
 private fun LanguageSection(context: Context) {
@@ -326,27 +332,50 @@ private fun LanguageSection(context: Context) {
         val locales = localeManager.applicationLocales
         if (locales.isEmpty) "system" else locales[0]?.language ?: "system"
     }
+    val options = listOf(
+        "en"     to stringResource(R.string.settings_lang_english),
+        "de"     to stringResource(R.string.settings_lang_deutsch),
+        "system" to stringResource(R.string.settings_lang_system),
+    )
+    val selectedLabel = options.find { it.first == currentTag }?.second ?: options.last().second
+    var expanded by remember { mutableStateOf(false) }
 
-    SectionHeader(title = "Language")
+    SectionHeader(title = stringResource(R.string.settings_language))
     SettingsRow(
-        title    = "Language",
-        subtitle = "Override the app display language",
+        title    = stringResource(R.string.settings_language),
+        subtitle = stringResource(R.string.settings_language_desc),
         trailing = {
-            Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                listOf(
-                    "en"     to "English",
-                    "de"     to "Deutsch",
-                    "system" to "System",
-                ).forEach { (key, label) ->
-                    FilterChip(
-                        selected = currentTag == key,
-                        onClick  = {
-                            localeManager.applicationLocales =
-                                if (key == "system") LocaleList.getEmptyLocaleList()
-                                else LocaleList.forLanguageTags(key)
-                        },
-                        label = { Text(label, style = MaterialTheme.typography.labelSmall) },
-                    )
+            ExposedDropdownMenuBox(
+                expanded         = expanded,
+                onExpandedChange = { expanded = it },
+            ) {
+                OutlinedTextField(
+                    value         = selectedLabel,
+                    onValueChange = {},
+                    readOnly      = true,
+                    trailingIcon  = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+                    colors        = ExposedDropdownMenuDefaults.outlinedTextFieldColors(),
+                    singleLine    = true,
+                    modifier      = Modifier
+                        .menuAnchor()
+                        .width(140.dp),
+                    textStyle     = MaterialTheme.typography.bodySmall,
+                )
+                ExposedDropdownMenu(
+                    expanded         = expanded,
+                    onDismissRequest = { expanded = false },
+                ) {
+                    options.forEach { (key, label) ->
+                        DropdownMenuItem(
+                            text    = { Text(label) },
+                            onClick = {
+                                localeManager.applicationLocales =
+                                    if (key == "system") LocaleList.getEmptyLocaleList()
+                                    else LocaleList.forLanguageTags(key)
+                                expanded = false
+                            },
+                        )
+                    }
                 }
             }
         }

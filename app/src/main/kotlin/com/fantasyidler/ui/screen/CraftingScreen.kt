@@ -214,6 +214,17 @@ private fun RecipeRow(
                 style = MaterialTheme.typography.bodySmall,
                 color = if (enabled) MaterialTheme.colorScheme.onSurfaceVariant else dimColor,
             )
+            // Effects row (herblore only)
+            if (recipe.effects.isNotEmpty()) {
+                val effectsText = recipe.effects.entries.joinToString("  ") { (stat, bonus) ->
+                    "+$bonus ${stat.replaceFirstChar { it.uppercase() }}"
+                }
+                Text(
+                    text  = effectsText,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = if (enabled) MaterialTheme.colorScheme.primary else dimColor,
+                )
+            }
         }
 
         Column(horizontalAlignment = Alignment.End) {
@@ -237,7 +248,7 @@ private fun RecipeRow(
                     )
                 }
                 else -> Text(
-                    text  = "No mats",
+                    text  = stringResource(R.string.crafting_no_mats),
                     style = MaterialTheme.typography.labelSmall,
                     color = dimColor,
                 )
@@ -278,7 +289,7 @@ private fun CraftSheet(
         )
         if (recipe.outputQty > 1) {
             Text(
-                text  = "Produces ${recipe.outputQty * qty}× per craft",
+                text  = stringResource(R.string.crafting_produces, recipe.outputQty * qty),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
@@ -300,11 +311,35 @@ private fun CraftSheet(
             ) {
                 Text(GameStrings.itemName(context, item), style = MaterialTheme.typography.bodyMedium)
                 Text(
-                    text  = "$needed (have $have)",
+                    text  = stringResource(R.string.crafting_needed_have, needed, have),
                     style = MaterialTheme.typography.bodyMedium,
                     color = if (have >= needed) MaterialTheme.colorScheme.onSurface
                             else MaterialTheme.colorScheme.error,
                 )
+            }
+        }
+
+        // Effects (herblore only)
+        if (recipe.effects.isNotEmpty()) {
+            Spacer(Modifier.height(12.dp))
+            Text(
+                text  = stringResource(R.string.crafting_effects),
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            recipe.effects.forEach { (stat, bonus) ->
+                Row(
+                    modifier              = Modifier.fillMaxWidth().padding(vertical = 2.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    Text(stat.replaceFirstChar { it.uppercase() }, style = MaterialTheme.typography.bodyMedium)
+                    Text(
+                        text  = "+$bonus",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.primary,
+                        fontWeight = FontWeight.Bold,
+                    )
+                }
             }
         }
 
@@ -317,7 +352,7 @@ private fun CraftSheet(
             verticalAlignment     = Alignment.CenterVertically,
         ) {
             IconButton(onClick = { onSetQuantity(qty - 1) }, enabled = qty > 1) {
-                Icon(Icons.Filled.Remove, contentDescription = "Decrease")
+                Icon(Icons.Filled.Remove, contentDescription = stringResource(R.string.crafting_decrease))
             }
             OutlinedTextField(
                 value         = textValue,
@@ -345,12 +380,12 @@ private fun CraftSheet(
                 modifier   = Modifier.width(90.dp),
             )
             IconButton(onClick = { onSetQuantity(qty + 1) }, enabled = qty < max) {
-                Icon(Icons.Filled.Add, contentDescription = "Increase")
+                Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.crafting_increase))
             }
         }
 
         Text(
-            text     = "+${totalXp.toInt()} XP total",
+            text     = stringResource(R.string.crafting_xp_total, totalXp.toInt()),
             style    = MaterialTheme.typography.bodySmall,
             color    = GoldPrimary,
             modifier = Modifier.align(Alignment.CenterHorizontally),

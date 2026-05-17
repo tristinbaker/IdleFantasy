@@ -155,7 +155,7 @@ fun FarmingScreen(
     state.harvestResult?.let { result ->
         AlertDialog(
             onDismissRequest = viewModel::harvestResultConsumed,
-            title = { Text("Harvested ${result.cropName}") },
+            title = { Text(stringResource(R.string.farming_harvested, result.cropName)) },
             text = {
                 Column {
                     Text(
@@ -205,7 +205,7 @@ private fun FarmingXpBar(state: FarmingUiState) {
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 Text(
-                    text       = "🌱 Farming — Level $level",
+                    text       = "🌱 " + stringResource(R.string.farming_title, level),
                     style      = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                 )
@@ -223,7 +223,7 @@ private fun FarmingXpBar(state: FarmingUiState) {
             )
             Spacer(Modifier.height(4.dp))
             Text(
-                text  = "${state.patchCount} patches unlocked",
+                text  = stringResource(R.string.farming_patches, state.patchCount),
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.onPrimaryContainer,
             )
@@ -351,8 +351,8 @@ private fun PatchCard(
     if (showClearConfirm) {
         AlertDialog(
             onDismissRequest = { showClearConfirm = false },
-            title = { Text("Clear Patch") },
-            text  = { Text("Remove the crop without any reward?") },
+            title = { Text(stringResource(R.string.farming_clear_patch)) },
+            text  = { Text(stringResource(R.string.farming_clear_desc)) },
             confirmButton = {
                 Button(
                     onClick = { showClearConfirm = false; onClear() },
