@@ -7,22 +7,22 @@
     <string name="nav_combat">Combat</string>
     <string name="nav_home">Home</string>
     <string name="nav_crafting">Crafting</string>
-    <string name="nav_quests">Quests</string>
+    <string name="nav_quests">Quête</string>
     <string name="nav_profile">Profile</string>
 
     <!-- ===== Common buttons ===== -->
-    <string name="btn_start">Start</string>
-    <string name="btn_start_session">Start Session</string>
-    <string name="btn_abandon_session">Abandon Session</string>
+    <string name="btn_start">Démarrer</string>
+    <string name="btn_start_session">Démarrer une Session</string>
+    <string name="btn_abandon_session">Abandonner une Session</string>
     <string name="btn_collect_results">Collect Results</string>
-    <string name="btn_cancel">Cancel</string>
+    <string name="btn_cancel">Annuler</string>
     <string name="btn_craft">Craft</string>
     <string name="btn_confirm">Confirm</string>
-    <string name="btn_abandon">Abandon</string>
+    <string name="btn_abandon">Abandonner</string>
     <string name="btn_collect">Collect Rewards</string>
     <string name="btn_equip">Equip</string>
     <string name="btn_unequip">Unequip</string>
-    <string name="btn_buy">Buy</string>
+    <string name="btn_buy">Acheter</string>
     <string name="btn_sell">Sell</string>
     <string name="btn_plant">Plant</string>
     <string name="btn_harvest">Harvest</string>
