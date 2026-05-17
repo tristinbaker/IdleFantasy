@@ -3,12 +3,12 @@
     <string name="app_name">Idle Fantasy</string>
 
     <!-- ===== Bottom navigation ===== -->
-    <string name="nav_skills">Skills</string>
-    <string name="nav_combat">Combat</string>
-    <string name="nav_home">Home</string>
-    <string name="nav_crafting">Crafting</string>
-    <string name="nav_quests">Quests</string>
-    <string name="nav_profile">Profile</string>
+    <string name="nav_skills">Fähigkeiten</string>
+    <string name="nav_combat">Kampf</string>
+    <string name="nav_home">Startseite</string>
+    <string name="nav_crafting">Herstellen</string>
+    <string name="nav_quests">Aufgaben</string>
+    <string name="nav_profile">Profil</string>
 
     <!-- ===== Common buttons ===== -->
     <string name="btn_start">Start</string>
