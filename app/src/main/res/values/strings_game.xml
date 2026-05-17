@@ -2,21 +2,21 @@
 <resources>
     <!-- ===== Level-up messages ===== -->
     <!-- Translator note: %1$d = new level number, %2$s = skill display name -->
-    <string name="game_level_up">Level up! %1$s is now level %2$d!</string>
+    <string name="game_level_up">Tu as gagné un niveau ! %1$s est désormais au niveau %2$d !</string>
     <!-- Translator note: %1$s = skill display name, %2$d = new level number -->
     <string name="game_level_up_short">%1$s → %2$d</string>
-    <string name="game_max_level">Maximum level reached!</string>
+    <string name="game_max_level">Niveau maximum atteint !</string>
 
     <!-- ===== Session result summaries ===== -->
-    <string name="game_session_results_title">Session Results</string>
+    <string name="game_session_results_title">Résultats de la session</string>
     <!-- Translator note: %1$s = skill display name -->
-    <string name="game_session_summary_header">%1$s session complete</string>
+    <string name="game_session_summary_header">La session %1$s est terminée</string>
     <!-- Translator note: %1$s = formatted XP amount (e.g. "1,234") -->
-    <string name="game_session_xp_total">+%1$s XP earned</string>
-    <string name="game_session_no_items">No items collected</string>
-    <string name="game_session_no_level_ups">No level ups this session</string>
+    <string name="game_session_xp_total">+%1$s XP gagnés</string>
+    <string name="game_session_no_items">Aucun article n'a été récupéré</string>
+    <string name="game_session_no_level_ups">Pas de passage au niveau supérieur pour cette session</string>
     <!-- Translator note: %1$d = number of level ups -->
-    <string name="game_session_level_up_count">%1$d level up!</string>
+    <string name="game_session_level_up_count">%1$d niveau supérieur!</string>
 
     <!-- ===== Combat messages ===== -->
     <!-- Translator note: %1$s = player or enemy name, %2$d = damage amount -->
@@ -36,9 +36,9 @@
     <string name="game_farming_planted">%1$s planted.</string>
     <!-- Translator note: %1$s = crop display name, %2$d = yield quantity -->
     <string name="game_farming_harvested">Harvested %2$d %1$s.</string>
-    <string name="game_farming_all_harvested">All ready patches harvested.</string>
+    <string name="game_farming_all_harvested">Toutes les récoltes sont terminées.</string>
     <string name="game_farming_patch_cleared">Patch cleared.</string>
-    <string name="game_farming_not_ready">This crop is not ready yet.</string>
+    <string name="game_farming_not_ready">Cette récolte n'est pas encore prête.</string>
     <!-- Translator note: %1$s = crop display name, %2$s = time remaining -->
     <string name="game_farming_ready_in">%1$s ready in %2$s.</string>
 
@@ -75,14 +75,14 @@
     <!-- ===== Arena messages ===== -->
     <!-- Translator note: %1$s = opponent display name -->
     <string name="game_arena_challenged">Challenged by %1$s!</string>
-    <string name="game_arena_victory">Victory!</string>
-    <string name="game_arena_defeat">Defeated.</string>
+    <string name="game_arena_victory">Victoire!</string>
+    <string name="game_arena_defeat">Défaite.</string>
     <!-- Translator note: %1$d = coins won -->
-    <string name="game_arena_coins_won">Won %1$d coins.</string>
+    <string name="game_arena_coins_won">%1$d or gagné.</string>
 
     <!-- ===== Easter egg / dig ===== -->
-    <string name="game_dig_you_dig">You dig into the earth…</string>
-    <string name="game_dig_nothing">You find nothing but dirt.</string>
+    <string name="game_dig_you_dig">Tu creuses la terre…</string>
+    <string name="game_dig_nothing">Tu ne trouves rien d'autre que de la saleté.</string>
     <!-- Translator note: %1$s = item display name -->
     <string name="game_dig_found">You uncover a %1$s!</string>
     <!-- Translator note: %1$d = current hole depth in metres -->
