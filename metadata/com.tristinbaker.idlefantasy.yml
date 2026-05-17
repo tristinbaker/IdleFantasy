@@ -139,9 +139,16 @@ Builds:
     gradle:
       - yes
 
+  - versionName: '1.2.2'
+    versionCode: 19
+    commit: 94de4d21b6a01bbf65ee86c6bc101830bad761e1
+    subdir: app
+    gradle:
+      - yes
+
 AllowedAPKSigningKeys: 99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
-CurrentVersion: 1.2.1
-CurrentVersionCode: 18
+CurrentVersion: 1.2.2
+CurrentVersionCode: 19
