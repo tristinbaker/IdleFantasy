@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Level-up messages ===== -->
+    <!-- Translator note: %1$d = new level number, %2$s = skill display name -->
+    <string name="game_level_up">Neues Level erreicht! %1$s ist jetzt Level %2$d!</string>
+    <!-- Translator note: %1$s = skill display name, %2$d = new level number -->
+    <string name="game_level_up_short">%1$s → %2$d</string>
+    <string name="game_max_level">Maximales Level erreicht!</string>
+
+    <!-- ===== Session result summaries ===== -->
+    <string name="game_session_results_title">Sitzungsergebnisse</string>
+    <!-- Translator note: %1$s = skill display name -->
+    <string name="game_session_summary_header">%1$s Sitzung beendet</string>
+    <!-- Translator note: %1$s = formatted XP amount (e.g. "1,234") -->
+    <string name="game_session_xp_total">+%1$s XP verdient</string>
+    <string name="game_session_no_items">Es wurden keine Gegenstände gesammelt</string>
+    <string name="game_session_no_level_ups">In dieser Sitzung gab es keine Levelaufstiege</string>
+    <!-- Translator note: %1$d = number of level ups -->
+    <string name="game_session_level_up_count">%1$d Level aufgestiegen!</string>
+
+    <!-- ===== Combat messages ===== -->
+    <!-- Translator note: %1$s = player or enemy name, %2$d = damage amount -->
+    <string name="game_combat_hit">%1$s hat %2$d Schaden erhalten.</string>
+    <string name="game_combat_miss">%1$s verfehlt!</string>
+    <!-- Translator note: %1$s = enemy display name -->
+    <string name="game_combat_enemy_defeated">%1$s besiegt!</string>
+    <!-- Translator note: %1$d = HP restored -->
+    <string name="game_combat_food_eaten">Gegessen —  %1$d HP wiederhergestellt.</string>
+    <string name="game_combat_player_died">Du wurdest besiegt.</string>
+    <string name="game_dungeon_cleared">Dungeon abgeschlossen!</string>
+    <!-- Translator note: %1$s = dungeon display name -->
+    <string name="game_dungeon_summary">%1$s vollständig.</string>
+
+    <!-- ===== Farming messages ===== -->
+    <!-- Translator note: %1$s = crop display name -->
+    <string name="game_farming_planted">%1$s gepflanzt.</string>
+    <!-- Translator note: %1$s = crop display name, %2$d = yield quantity -->
+    <string name="game_farming_harvested">%2$d %1$s geerntet .</string>
+    <string name="game_farming_all_harvested">Alle reifen Pflanzen sind geerntet.</string>
+    <string name="game_farming_patch_cleared">Beet freigegeben.</string>
+    <string name="game_farming_not_ready">Diese Ernte ist noch nicht reif.</string>
+    <!-- Translator note: %1$s = crop display name, %2$s = time remaining -->
+    <string name="game_farming_ready_in">%1$s ist fertig in %2$s.</string>
+
+    <!-- ===== Crafting messages ===== -->
+    <!-- Translator note: %1$d = quantity crafted, %2$s = item display name -->
+    <string name="game_crafted">%1$d %2$s hergestellt.</string>
+    <!-- Translator note: %1$s = item display name -->
+    <string name="game_missing_ingredient">Fehlende Zutat: %1$s.</string>
+
+    <!-- ===== Shop messages ===== -->
+    <!-- Translator note: %1$d = quantity, %2$s = item display name, %3$d = total cost -->
+    <string name="game_shop_purchased">%1$d %2$s für %3$d Münzen gekauft.</string>
+    <!-- Translator note: %1$d = quantity, %2$s = item display name, %3$d = coins received -->
+    <string name="game_shop_sold">%1$d %2$s für %3$d Münzen verkauft.</string>
+
+    <!-- ===== Prayer / burying ===== -->
+    <!-- Translator note: %1$s = bone display name, %2$s = formatted XP gained -->
+    <string name="game_bones_buried">%1$s begraben — +%2$s Gebets-XP.</string>
+
+    <!-- ===== Quest messages ===== -->
+    <!-- Translator note: %1$s = quest display name -->
+    <string name="game_quest_started">Mission gestartet: %1$s</string>
+    <string name="game_quest_completed">Mission abgeschlossen: %1$s</string>
+    <string name="game_quest_abandoned">Mission abgebrochen.</string>
+    <!-- Translator note: %1$d = current progress, %2$d = target amount -->
+    <string name="game_quest_progress">Fortschritt: %1$d / %2$d</string>
+
+    <!-- ===== XP gain messages (shown in session frame log) ===== -->
+    <!-- Translator note: %1$s = formatted XP gained this minute -->
+    <string name="game_xp_gained">+%1$s XP</string>
+    <!-- Translator note: %1$s = item display name, %2$d = quantity -->
+    <string name="game_item_received">+%2$d %1$s</string>
+
+    <!-- ===== Arena messages ===== -->
+    <!-- Translator note: %1$s = opponent display name -->
+    <string name="game_arena_challenged">Herausgefordert durch %1$s!</string>
+    <string name="game_arena_victory">Sieg!</string>
+    <string name="game_arena_defeat">Verloren.</string>
+    <!-- Translator note: %1$d = coins won -->
+    <string name="game_arena_coins_won">%1$d Münzen gewonnen.</string>
+
+    <!-- ===== Easter egg / dig ===== -->
+    <string name="game_dig_you_dig">Du gräbst in der Erde…</string>
+    <string name="game_dig_nothing">Du findest nichts als Dreck.</string>
+    <!-- Translator note: %1$s = item display name -->
+    <string name="game_dig_found">Du entdeckst ein %1$s!</string>
+    <!-- Translator note: %1$d = current hole depth in metres -->
+    <string name="game_dig_depth">Das Loch ist %1$d Meter tief.</string>
+    <string name="game_dig_cooldown">Du hast heute schon gegraben. Komm morgen wieder.</string>
+</resources>

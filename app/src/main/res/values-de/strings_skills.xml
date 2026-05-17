@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Skill names and descriptions ===== -->
+
+    <!-- Gathering skills -->
+    <string name="skill_mining_name">Bergbau</string>
+    <string name="skill_mining_desc">Gewinne wertvolle Erze und Edelsteine aus der Erde.</string>
+    <string name="skill_fishing_name">Angeln</string>
+    <string name="skill_fishing_desc">Fange Fische und andere Schätze aus dem Wasser.</string>
+    <string name="skill_woodcutting_name">Holzbearbeitung</string>
+    <string name="skill_woodcutting_desc">Fäll Bäume und sammle verschiedene Holzarten.</string>
+    <string name="skill_farming_name">Landwirtschaft</string>
+    <string name="skill_farming_desc">Pflanze und ernte die Pflanzen auf deinen Feldern.</string>
+    <string name="skill_firemaking_name">Feuer machen</string>
+    <string name="skill_firemaking_desc">Verbrenne Holzscheite aus deinem Inventar, um Feuermachen-XP zu erhalten. Jedes verbrannte Holzscheit erzeugt außerdem Asche, die du im Rahmen der Fertigkeit „Gebet“ verstreuen kannst, um zusätzliche Gebets-XP zu erhalten.</string>
+    <string name="skill_agility_name">Beweglichkeit</string>
+    <string name="skill_agility_desc">Trainiere „Beweglichkeit“, um die Dauer aller Fertigkeiten zu verkürzen. Auf Stufe 99 verkürzt sich die Dauer um 20 Minuten (60 Min. → 40 Min.), wobei die Verkürzung mit steigender Stufe linear verläuft.</string>
+
+    <!-- Crafting skills -->
+    <string name="skill_smithing_name">Schmieden</string>
+    <string name="skill_smithing_desc">Schmelze Erze zu Barren und schmiede mächtige Metallausrüstung.</string>
+    <string name="skill_cooking_name">Kochen</string>
+    <string name="skill_cooking_desc">Verarbeite rohe Zutaten zu Speisen, die im Kampf die HP wiederherstellen.</string>
+    <string name="skill_fletching_name">Herstellen</string>
+    <string name="skill_fletching_desc">Stelle Pfeil und Bogen aus Holzstämmen und Metallteilen her.</string>
+    <string name="skill_crafting_name">Fertigen</string>
+    <string name="skill_crafting_desc">Stelle Schmuck und andere handgefertigte Gegenstände aus edlen Materialien her.</string>
+    <string name="skill_runecrafting_name">Runenherstellung</string>
+    <string name="skill_runecrafting_desc">Stelle aus Runenessenz magische Runen her, die du beim Zaubern verwenden kannst.</string>
+    <string name="skill_herblore_name">Kräuterkunde</string>
+    <string name="skill_herblore_desc">Braue Tränke aus Kräutern, die du gesammelt hast, und Reagenzien aus Dungeons, um deine Kampfwerte zu verbessern.</string>
+
+    <!-- Combat skills -->
+    <string name="skill_attack_name">Angriff</string>
+    <string name="skill_attack_desc">Verbessert deine Nahkampfgenauigkeit und erhöht deine Trefferchance.</string>
+    <string name="skill_strength_name">Stärke</string>
+    <string name="skill_strength_desc">Erhöht deinen maximalen Nahkampfschaden pro Treffer.</string>
+    <string name="skill_defense_name">Verteidigung</string>
+    <string name="skill_defense_desc">Verringert den Schaden, den du durch gegnerische Angriffe erleidest.</string>
+    <string name="skill_ranged_name">Fernkampf</string>
+    <string name="skill_ranged_desc">Greife deine Gegner aus sicherer Entfernung mit Pfeil und Bogen an.</string>
+    <string name="skill_magic_name">Magie</string>
+    <string name="skill_magic_desc">Wirke mächtige Zaubersprüche mit Runen. Mit steigender Stufe schaltest du stärkere Zaubersprüche frei.</string>
+    <string name="skill_hitpoints_name">Trefferpunkte</string>
+    <string name="skill_hitpoints_desc">Deine Gesamtgesundheit. Je höher der Wert, desto länger hältst du im Kampf durch.</string>
+    <string name="skill_prayer_name">Gebete</string>
+    <string name="skill_prayer_desc">Vergrabe Knochen, um Gebets-EP zu sammeln und mächtige Kampfgebete freizuschalten.</string>
+
+    <!-- ===== Agility course names and descriptions ===== -->
+    <string name="agility_beginner_course_name">Einsteigerkurs</string>
+    <string name="agility_beginner_course_desc">Ein einfacher Hindernisparcours für alle, die gerade erst mit dem Beweglichkeitstraining beginnen.</string>
+    <string name="agility_novice_course_name">Anfängerkurs</string>
+    <string name="agility_novice_course_desc">Ein etwas anspruchsvollerer Parcours mit einfachen Hindernissen.</string>
+    <string name="agility_apprentice_course_name">Aufbaukurs</string>
+    <string name="agility_apprentice_course_desc">Ein Parcours für Fortgeschrittene, der etwas Geschick bei der Navigation erfordert.</string>
+    <string name="agility_intermediate_course_name">Fortgeschrittenenkurs</string>
+    <string name="agility_intermediate_course_desc">Ein mittelschwerer Parcours mit kniffligen Hindernissen.</string>
+    <string name="agility_advanced_course_name">Erweiterungskurs</string>
+    <string name="agility_advanced_course_desc">Ein anspruchsvoller Parcours, der deine Beweglichkeit auf die Probe stellt.</string>
+    <string name="agility_expert_course_name">Expertenkurs</string>
+    <string name="agility_expert_course_desc">Ein Parcours für Experten mit gefährlichen Hindernissen.</string>
+    <string name="agility_elite_course_name">Elite-Kurs</string>
+    <string name="agility_elite_course_desc">Nur die Geschicktesten können diesen Elite-Parcours meistern.</string>
+    <string name="agility_master_course_name">Meisterkurs</string>
+    <string name="agility_master_course_desc">Ein Parcours der Meisterklasse mit extremen Hindernissen.</string>
+    <string name="agility_veteran_course_name">Veteranenkurs</string>
+    <string name="agility_veteran_course_desc">Ein Trainingsgelände für Veteranen mit knallharten Herausforderungen.</string>
+    <string name="agility_champion_course_name">Meisterkurs</string>
+    <string name="agility_champion_course_desc">Ein Kurs auf Meisterschaftsniveau, der dich an deine Grenzen bringt.</string>
+    <string name="agility_heroic_course_name">Heldenkurs</string>
+    <string name="agility_heroic_course_desc">Ein heldenhafter Weg, den nur die Besten zu beschreiten wagen.</string>
+    <string name="agility_legendary_course_name">Legendärer Kurs</string>
+    <string name="agility_legendary_course_desc">Ein legendärer Platz, von dem unter der Elite der Beweglichen nur hinter vorgehaltener Hand gesprochen wird.</string>
+    <string name="agility_mythic_course_name">Mythischer Kurs</string>
+    <string name="agility_mythic_course_desc">Ein legendärer Ort, der den Gesetzen der Physik trotzt.</string>
+    <string name="agility_divine_course_name">Göttlicher Kurs</string>
+    <string name="agility_divine_course_desc">Ein göttlicher Parcours, gesegnet von den Göttern der Beweglichkeit.</string>
+    <string name="agility_transcendent_course_name">Überschreitender Kurs</string>
+    <string name="agility_transcendent_course_desc">Die ultimative Prüfung der Beweglichkeit, die die Grenzen des Menschlichen überschreitet.</string>
+</resources>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Enemy names ===== -->
+    <string name="enemy_giant_rat_name">Giant Rat</string>
+    <string name="enemy_goblin_name">Goblin</string>
+    <string name="enemy_skeleton_name">Skeleton</string>
+    <string name="enemy_zombie_name">Zombie</string>
+    <string name="enemy_bandit_name">Bandit</string>
+    <string name="enemy_guard_name">Guard</string>
+    <string name="enemy_dark_wizard_name">Dark Wizard</string>
+    <string name="enemy_orc_warrior_name">Orc Warrior</string>
+    <string name="enemy_spider_name">Giant Spider</string>
+    <string name="enemy_wild_dog_name">Wild Dog</string>
+    <string name="enemy_rogue_name">Rogue</string>
+    <string name="enemy_knight_name">Knight</string>
+    <string name="enemy_hellhound_name">Hellhound</string>
+    <string name="enemy_troll_name">Mountain Troll</string>
+    <string name="enemy_demon_name">Lesser Demon</string>
+    <string name="enemy_dragon_name">Green Dragon</string>
+    <string name="enemy_imp_name">Imp</string>
+    <string name="enemy_chicken_name">Chicken</string>
+    <string name="enemy_sheep_name">Sheep</string>
+    <string name="enemy_cow_name">Cow</string>
+
+    <!-- ===== Dungeon names and descriptions ===== -->
+    <string name="dungeon_imp_cavern_name">Imp Cavern</string>
+    <string name="dungeon_imp_cavern_desc">A shallow cave filled with mischievous imps. Perfect for absolute beginners!</string>
+    <string name="dungeon_goblin_cave_name">Goblin Cave</string>
+    <string name="dungeon_goblin_cave_desc">A dark cave infested with goblins and giant rats. A good place for new adventurers to train.</string>
+    <string name="dungeon_spider_den_name">Spider Den</string>
+    <string name="dungeon_spider_den_desc">A web-filled cavern crawling with venomous spiders. Bring antivenom!</string>
+    <string name="dungeon_bandit_camp_name">Bandit Camp</string>
+    <string name="dungeon_bandit_camp_desc">A hideout of thieves and rogues in the wilderness. Watch your coin purse!</string>
+    <string name="dungeon_undead_crypt_name">Undead Crypt</string>
+    <string name="dungeon_undead_crypt_desc">An ancient burial ground where the dead refuse to rest. Beware the dark magic!</string>
+    <string name="dungeon_fortress_ruins_name">Fortress Ruins</string>
+    <string name="dungeon_fortress_ruins_desc">The crumbling remains of an ancient castle, now guarded by knights and soldiers.</string>
+    <string name="dungeon_orc_stronghold_name">Orc Stronghold</string>
+    <string name="dungeon_orc_stronghold_desc">A fortified orc settlement deep in the mountains. Only the brave dare enter.</string>
+    <string name="dungeon_volcanic_depths_name">Volcanic Depths</string>
+    <string name="dungeon_volcanic_depths_desc">A scorching cavern inhabited by hellhounds and lesser demons. The heat is unbearable!</string>
+    <string name="dungeon_dragon_lair_name">Dragon\'s Lair</string>
+    <string name="dungeon_dragon_lair_desc">The legendary home of green dragons. Only master warriors survive this challenge.</string>
+    <string name="dungeon_farm_name">Farm</string>
+    <string name="dungeon_farm_desc">A peaceful farm with livestock. Great for beginners looking to gather food!</string>
+    <string name="dungeon_infernal_stronghold_name">Infernal Stronghold</string>
+    <string name="dungeon_infernal_stronghold_desc">A fortress of fire and brimstone, ruled by demons and hellhounds. The heat alone can kill the unprepared.</string>
+    <string name="dungeon_ancient_temple_name">Ancient Temple</string>
+    <string name="dungeon_ancient_temple_desc">An ancient temple guarded by the most powerful creatures in the realm. Only the strongest warriors dare enter.</string>
+
+    <!-- ===== Solo boss names (raid bosses retargeted for solo play) ===== -->
+    <string name="boss_king_black_dragon_name">King Black Dragon</string>
+    <string name="boss_demon_lord_name">Demon Lord</string>
+    <string name="boss_kraken_name">Kraken</string>
+    <string name="boss_balrog_name">Balrog</string>
+
+    <!-- ===== Pet names and descriptions ===== -->
+    <string name="pet_dragon_whelp_name">Dragon Whelp</string>
+    <string name="pet_dragon_whelp_desc">A young dragon that boosts your combat XP.</string>
+    <string name="pet_imp_pet_name">Imp Pet</string>
+    <string name="pet_imp_pet_desc">A mischievous imp that enhances your Prayer training.</string>
+    <string name="pet_baby_kraken_name">Baby Kraken</string>
+    <string name="pet_baby_kraken_desc">A tiny kraken that improves your Cooking XP.</string>
+    <string name="pet_rock_golem_name">Rock Golem</string>
+    <string name="pet_rock_golem_desc">A living rock formation that enhances your Mining XP.</string>
+    <string name="pet_ent_name">Ent</string>
+    <string name="pet_ent_desc">An ancient tree spirit that boosts your Woodcutting XP.</string>
+    <string name="pet_tiny_templar_name">Tiny Templar</string>
+    <string name="pet_tiny_templar_desc">A small fish companion that boosts your Fishing XP.</string>
+    <string name="pet_tangleroot_name">Tangleroot</string>
+    <string name="pet_tangleroot_desc">A magical plant creature that enhances your Farming XP.</string>
+</resources>
