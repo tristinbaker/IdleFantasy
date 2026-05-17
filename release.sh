@@ -169,10 +169,20 @@ git commit -m "Update F-Droid repo for $TAG"
 git push
 echo "==> Custom F-Droid repo updated and pushed"
 
+# ---------------------------------------------------------------------------
+# Regenerate wiki
+# ---------------------------------------------------------------------------
+
+echo "==> Regenerating wiki..."
+cd "$REPO_DIR"
+python3 scripts/generate_wiki.py
+echo "==> Wiki updated"
+
 echo ""
 echo "======================================================"
 echo "  Release $TAG complete"
 echo "  APK:     $APK"
 echo "  F-Droid: https://tristinbaker.github.io/IdleFantasy/fdroid/repo"
 echo "  Upload:  https://github.com/tristinbaker/IdleFantasy/releases/tag/$TAG"
+echo "  Wiki:    https://github.com/tristinbaker/IdleFantasy/wiki"
 echo "======================================================"

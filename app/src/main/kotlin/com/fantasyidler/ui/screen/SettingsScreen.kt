@@ -1,9 +1,13 @@
 package com.fantasyidler.ui.screen
 
+import android.app.LocaleManager
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
+import android.os.LocaleList
 import android.provider.Settings
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -192,6 +196,12 @@ fun SettingsScreen(
                 }
             )
 
+            // Language section (API 33+ per-app locale override)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                HorizontalDivider()
+                LanguageSection(context)
+            }
+
             // Notifications section
             HorizontalDivider()
             SectionHeader(title = stringResource(R.string.settings_notifications_header))
@@ -306,6 +316,41 @@ fun SettingsScreen(
             )
         }
     }
+}
+
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+@Composable
+private fun LanguageSection(context: Context) {
+    val localeManager = context.getSystemService(LocaleManager::class.java)
+    val currentTag = remember {
+        val locales = localeManager.applicationLocales
+        if (locales.isEmpty) "system" else locales[0]?.language ?: "system"
+    }
+
+    SectionHeader(title = "Language")
+    SettingsRow(
+        title    = "Language",
+        subtitle = "Override the app display language",
+        trailing = {
+            Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                listOf(
+                    "en"     to "English",
+                    "de"     to "Deutsch",
+                    "system" to "System",
+                ).forEach { (key, label) ->
+                    FilterChip(
+                        selected = currentTag == key,
+                        onClick  = {
+                            localeManager.applicationLocales =
+                                if (key == "system") LocaleList.getEmptyLocaleList()
+                                else LocaleList.forLanguageTags(key)
+                        },
+                        label = { Text(label, style = MaterialTheme.typography.labelSmall) },
+                    )
+                }
+            }
+        }
+    )
 }
 
 @Composable
