@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Ores ===== -->
+    <string name="item_copper_ore_name">Copper Ore</string>
+    <string name="item_copper_ore_desc">Common ore. Combine with tin ore to smelt bronze bars.</string>
+    <string name="item_tin_ore_name">Tin Ore</string>
+    <string name="item_tin_ore_desc">Common ore. Combine with copper ore to smelt bronze bars.</string>
+    <string name="item_iron_ore_name">Iron Ore</string>
+    <string name="item_iron_ore_desc">Versatile ore used to smelt iron and steel bars.</string>
+    <string name="item_coal_name">Coal</string>
+    <string name="item_coal_desc">Used as a fuel component when smelting steel and higher-tier bars.</string>
+    <string name="item_silver_ore_name">Silver Ore</string>
+    <string name="item_silver_ore_desc">Precious ore used to craft silver bars and jewellery.</string>
+    <string name="item_gold_ore_name">Gold Ore</string>
+    <string name="item_gold_ore_desc">Precious ore used to craft gold bars and jewellery.</string>
+    <string name="item_mithril_ore_name">Mithril Ore</string>
+    <string name="item_mithril_ore_desc">A rare ore with magical properties.</string>
+    <string name="item_adamantite_ore_name">Adamantite Ore</string>
+    <string name="item_adamantite_ore_desc">Extremely hard and very rare ore.</string>
+    <string name="item_runite_ore_name">Runite Ore</string>
+    <string name="item_runite_ore_desc">The rarest mineable ore, used for the strongest equipment.</string>
+    <string name="item_rune_essence_name">Rune Essence</string>
+    <string name="item_rune_essence_desc">Raw magical stone used to craft all types of runes.</string>
+
+    <!-- ===== Metal bars ===== -->
+    <string name="item_bronze_bar_name">Bronze Bar</string>
+    <string name="item_bronze_bar_desc">Smelted from copper ore and tin ore. The most basic metal bar.</string>
+    <string name="item_iron_bar_name">Iron Bar</string>
+    <string name="item_iron_bar_desc">A sturdy iron bar used for crafting iron equipment.</string>
+    <string name="item_silver_bar_name">Silver Bar</string>
+    <string name="item_silver_bar_desc">Refined silver bar used for crafting jewellery.</string>
+    <string name="item_steel_bar_name">Steel Bar</string>
+    <string name="item_steel_bar_desc">Stronger than iron. Used for crafting steel equipment.</string>
+    <string name="item_gold_bar_name">Gold Bar</string>
+    <string name="item_gold_bar_desc">Refined gold bar used for crafting jewellery and gold equipment.</string>
+    <string name="item_mithril_bar_name">Mithril Bar</string>
+    <string name="item_mithril_bar_desc">A lightweight magical metal bar.</string>
+    <string name="item_adamantite_bar_name">Adamantite Bar</string>
+    <string name="item_adamantite_bar_desc">An extraordinarily hard metal bar.</string>
+    <string name="item_platinum_bar_name">Platinum Bar</string>
+    <string name="item_platinum_bar_desc">A rare and lustrous platinum bar for high-tier jewellery.</string>
+    <string name="item_runite_bar_name">Runite Bar</string>
+    <string name="item_runite_bar_desc">The strongest smeltable metal bar.</string>
+
+    <!-- ===== Gems ===== -->
+    <string name="item_sapphire_name">Sapphire</string>
+    <string name="item_sapphire_desc">A blue gemstone used in jewellery crafting.</string>
+    <string name="item_emerald_name">Emerald</string>
+    <string name="item_emerald_desc">A green gemstone of moderate rarity.</string>
+    <string name="item_ruby_name">Ruby</string>
+    <string name="item_ruby_desc">A red gemstone. Rare and valuable.</string>
+    <string name="item_diamond_name">Diamond</string>
+    <string name="item_diamond_desc">The rarest and most valuable gemstone.</string>
+
+    <!-- ===== Logs ===== -->
+    <string name="item_log_name">Logs</string>
+    <string name="item_log_desc">Basic logs from normal trees. Used in Firemaking and Fletching.</string>
+    <string name="item_oak_log_name">Oak Logs</string>
+    <string name="item_oak_log_desc">Logs from oak trees.</string>
+    <string name="item_willow_log_name">Willow Logs</string>
+    <string name="item_willow_log_desc">Lightweight logs from willow trees.</string>
+    <string name="item_maple_log_name">Maple Logs</string>
+    <string name="item_maple_log_desc">Dense logs from maple trees.</string>
+    <string name="item_yew_log_name">Yew Logs</string>
+    <string name="item_yew_log_desc">Logs from ancient yew trees.</string>
+    <string name="item_magic_log_name">Magic Logs</string>
+    <string name="item_magic_log_desc">Imbued logs from rare magic trees.</string>
+    <string name="item_redwood_log_name">Redwood Logs</string>
+    <string name="item_redwood_log_desc">Massive logs from the tallest redwood trees.</string>
+
+    <!-- ===== Raw fish ===== -->
+    <string name="item_raw_shrimp_name">Raw Shrimp</string>
+    <string name="item_raw_shrimp_desc">Raw shrimp. Cook before eating.</string>
+    <string name="item_raw_sardine_name">Raw Sardine</string>
+    <string name="item_raw_sardine_desc">Raw sardine. Cook before eating.</string>
+    <string name="item_raw_herring_name">Raw Herring</string>
+    <string name="item_raw_herring_desc">Raw herring. Cook before eating.</string>
+    <string name="item_raw_mackerel_name">Raw Mackerel</string>
+    <string name="item_raw_mackerel_desc">Raw mackerel. Cook before eating.</string>
+    <string name="item_raw_trout_name">Raw Trout</string>
+    <string name="item_raw_trout_desc">Raw trout. Cook before eating.</string>
+    <string name="item_raw_salmon_name">Raw Salmon</string>
+    <string name="item_raw_salmon_desc">Raw salmon. Cook before eating.</string>
+    <string name="item_raw_tuna_name">Raw Tuna</string>
+    <string name="item_raw_tuna_desc">Raw tuna. Cook before eating.</string>
+    <string name="item_raw_lobster_name">Raw Lobster</string>
+    <string name="item_raw_lobster_desc">Raw lobster. Cook before eating.</string>
+    <string name="item_raw_swordfish_name">Raw Swordfish</string>
+    <string name="item_raw_swordfish_desc">Raw swordfish. Cook before eating.</string>
+    <string name="item_raw_monkfish_name">Raw Monkfish</string>
+    <string name="item_raw_monkfish_desc">Raw monkfish. Cook before eating.</string>
+    <string name="item_raw_shark_name">Raw Shark</string>
+    <string name="item_raw_shark_desc">Raw shark. Cook before eating.</string>
+    <string name="item_raw_sea_turtle_name">Raw Sea Turtle</string>
+    <string name="item_raw_sea_turtle_desc">Raw sea turtle. Cook before eating.</string>
+    <string name="item_raw_manta_ray_name">Raw Manta Ray</string>
+    <string name="item_raw_manta_ray_desc">Raw manta ray. Cook before eating.</string>
+
+    <!-- ===== Cooked fish ===== -->
+    <string name="item_shrimp_name">Shrimp</string>
+    <string name="item_shrimp_desc">Cooked shrimp. Restores a small amount of HP.</string>
+    <string name="item_sardine_name">Sardine</string>
+    <string name="item_sardine_desc">Cooked sardine. Restores HP when eaten.</string>
+    <string name="item_herring_name">Herring</string>
+    <string name="item_herring_desc">Cooked herring. Restores HP when eaten.</string>
+    <string name="item_mackerel_name">Mackerel</string>
+    <string name="item_mackerel_desc">Cooked mackerel. Restores HP when eaten.</string>
+    <string name="item_trout_name">Trout</string>
+    <string name="item_trout_desc">Cooked trout. Restores HP when eaten.</string>
+    <string name="item_salmon_name">Salmon</string>
+    <string name="item_salmon_desc">Cooked salmon. Restores HP when eaten.</string>
+    <string name="item_tuna_name">Tuna</string>
+    <string name="item_tuna_desc">Cooked tuna. Restores HP when eaten.</string>
+    <string name="item_lobster_name">Lobster</string>
+    <string name="item_lobster_desc">Cooked lobster. Restores a good amount of HP.</string>
+    <string name="item_swordfish_name">Swordfish</string>
+    <string name="item_swordfish_desc">Cooked swordfish. Restores a significant amount of HP.</string>
+    <string name="item_monkfish_name">Monkfish</string>
+    <string name="item_monkfish_desc">Cooked monkfish. Restores a solid amount of HP.</string>
+    <string name="item_shark_name">Shark</string>
+    <string name="item_shark_desc">Cooked shark. Restores a large amount of HP.</string>
+    <string name="item_sea_turtle_name">Sea Turtle</string>
+    <string name="item_sea_turtle_desc">Cooked sea turtle. Restores a very large amount of HP.</string>
+    <string name="item_manta_ray_name">Manta Ray</string>
+    <string name="item_manta_ray_desc">Cooked manta ray. One of the best food items available.</string>
+
+    <!-- ===== Raw meat ===== -->
+    <string name="item_raw_rat_meat_name">Raw Rat Meat</string>
+    <string name="item_raw_rat_meat_desc">Raw rat meat. Cook before eating.</string>
+    <string name="item_raw_chicken_name">Raw Chicken</string>
+    <string name="item_raw_chicken_desc">Raw chicken. Cook before eating.</string>
+    <string name="item_raw_mutton_name">Raw Mutton</string>
+    <string name="item_raw_mutton_desc">Raw mutton. Cook before eating.</string>
+    <string name="item_raw_beef_name">Raw Beef</string>
+    <string name="item_raw_beef_desc">Raw beef. Cook before eating.</string>
+    <string name="item_raw_meat_name">Raw Meat</string>
+    <string name="item_raw_meat_desc">Unidentified raw meat. Cook before eating.</string>
+
+    <!-- ===== Cooked meat ===== -->
+    <string name="item_cooked_rat_meat_name">Rat Meat</string>
+    <string name="item_cooked_rat_meat_desc">Cooked rat meat. Barely edible, but restores a tiny amount of HP.</string>
+    <string name="item_cooked_chicken_name">Cooked Chicken</string>
+    <string name="item_cooked_chicken_desc">Cooked chicken. Restores HP when eaten.</string>
+    <string name="item_cooked_mutton_name">Cooked Mutton</string>
+    <string name="item_cooked_mutton_desc">Cooked mutton. Restores HP when eaten.</string>
+    <string name="item_cooked_beef_name">Cooked Beef</string>
+    <string name="item_cooked_beef_desc">Cooked beef. Restores HP when eaten.</string>
+
+    <!-- ===== Melee weapons — bronze ===== -->
+    <string name="item_bronze_sword_name">Bronze Sword</string>
+    <string name="item_bronze_sword_desc">A basic one-handed bronze blade.</string>
+    <string name="item_bronze_scimitar_name">Bronze Scimitar</string>
+    <string name="item_bronze_scimitar_desc">A curved one-handed bronze blade with good strength bonus.</string>
+    <string name="item_bronze_2h_sword_name">Bronze 2H Sword</string>
+    <string name="item_bronze_2h_sword_desc">A two-handed bronze sword. High damage, slow speed.</string>
+    <string name="item_bronze_warhammer_name">Bronze Warhammer</string>
+    <string name="item_bronze_warhammer_desc">A heavy one-handed bronze hammer.</string>
+    <string name="item_bronze_battleaxe_name">Bronze Battleaxe</string>
+    <string name="item_bronze_battleaxe_desc">A fearsome one-handed bronze axe.</string>
+    <string name="item_bronze_dagger_name">Bronze Dagger</string>
+    <string name="item_bronze_dagger_desc">A quick and lightweight bronze dagger.</string>
+
+    <!-- Melee weapons — iron -->
+    <string name="item_iron_sword_name">Iron Sword</string>
+    <string name="item_iron_sword_desc">A one-handed iron blade.</string>
+    <string name="item_iron_scimitar_name">Iron Scimitar</string>
+    <string name="item_iron_scimitar_desc">A curved one-handed iron blade with good strength bonus.</string>
+    <string name="item_iron_2h_sword_name">Iron 2H Sword</string>
+    <string name="item_iron_2h_sword_desc">A two-handed iron sword.</string>
+    <string name="item_iron_warhammer_name">Iron Warhammer</string>
+    <string name="item_iron_warhammer_desc">A heavy one-handed iron hammer.</string>
+    <string name="item_iron_battleaxe_name">Iron Battleaxe</string>
+    <string name="item_iron_battleaxe_desc">A fearsome one-handed iron axe.</string>
+    <string name="item_iron_dagger_name">Iron Dagger</string>
+    <string name="item_iron_dagger_desc">A quick and lightweight iron dagger.</string>
+
+    <!-- Melee weapons — steel -->
+    <string name="item_steel_sword_name">Steel Sword</string>
+    <string name="item_steel_sword_desc">A one-handed steel blade.</string>
+    <string name="item_steel_scimitar_name">Steel Scimitar</string>
+    <string name="item_steel_scimitar_desc">A curved one-handed steel blade with good strength bonus.</string>
+    <string name="item_steel_2h_sword_name">Steel 2H Sword</string>
+    <string name="item_steel_2h_sword_desc">A two-handed steel sword.</string>
+    <string name="item_steel_warhammer_name">Steel Warhammer</string>
+    <string name="item_steel_warhammer_desc">A heavy one-handed steel hammer.</string>
+    <string name="item_steel_battleaxe_name">Steel Battleaxe</string>
+    <string name="item_steel_battleaxe_desc">A fearsome one-handed steel axe.</string>
+
+    <!-- Melee weapons — mithril -->
+    <string name="item_mithril_sword_name">Mithril Sword</string>
+    <string name="item_mithril_sword_desc">A lightweight magical one-handed sword.</string>
+    <string name="item_mithril_scimitar_name">Mithril Scimitar</string>
+    <string name="item_mithril_scimitar_desc">A curved mithril blade, supernaturally sharp.</string>
+    <string name="item_mithril_2h_sword_name">Mithril 2H Sword</string>
+    <string name="item_mithril_2h_sword_desc">A two-handed mithril sword.</string>
+    <string name="item_mithril_warhammer_name">Mithril Warhammer</string>
+    <string name="item_mithril_warhammer_desc">A lightweight magical warhammer.</string>
+    <string name="item_mithril_battleaxe_name">Mithril Battleaxe</string>
+    <string name="item_mithril_battleaxe_desc">A mithril battleaxe of exceptional quality.</string>
+
+    <!-- Melee weapons — adamantite -->
+    <string name="item_adamantite_sword_name">Adamantite Sword</string>
+    <string name="item_adamantite_sword_desc">An extraordinarily hard one-handed sword.</string>
+    <string name="item_adamantite_scimitar_name">Adamantite Scimitar</string>
+    <string name="item_adamantite_scimitar_desc">An incredibly hard curved blade with excellent strength bonus.</string>
+    <string name="item_adamantite_2h_sword_name">Adamantite 2H Sword</string>
+    <string name="item_adamantite_2h_sword_desc">A two-handed sword forged from adamantite.</string>
+    <string name="item_adamantite_warhammer_name">Adamantite Warhammer</string>
+    <string name="item_adamantite_warhammer_desc">An extraordinarily heavy and hard warhammer.</string>
+    <string name="item_adamantite_battleaxe_name">Adamantite Battleaxe</string>
+    <string name="item_adamantite_battleaxe_desc">A devastating adamantite battleaxe.</string>
+
+    <!-- Melee weapons — runite -->
+    <string name="item_runite_sword_name">Runite Sword</string>
+    <string name="item_runite_sword_desc">The finest one-handed sword available.</string>
+    <string name="item_runite_scimitar_name">Runite Scimitar</string>
+    <string name="item_runite_scimitar_desc">The finest scimitar available, with exceptional strength bonus.</string>
+    <string name="item_runite_2h_sword_name">Runite 2H Sword</string>
+    <string name="item_runite_2h_sword_desc">The finest two-handed sword available.</string>
+    <string name="item_runite_warhammer_name">Runite Warhammer</string>
+    <string name="item_runite_warhammer_desc">The finest warhammer available.</string>
+    <string name="item_runite_battleaxe_name">Runite Battleaxe</string>
+    <string name="item_runite_battleaxe_desc">The finest battleaxe available.</string>
+
+    <!-- ===== Ranged weapons ===== -->
+    <string name="item_wooden_bow_name">Wooden Bow</string>
+    <string name="item_wooden_bow_desc">A simple wooden bow. Good for training Ranged.</string>
+    <string name="item_oak_bow_name">Oak Bow</string>
+    <string name="item_oak_bow_desc">A reliable bow crafted from oak wood.</string>
+
+    <!-- ===== Magic weapons ===== -->
+    <string name="item_basic_staff_name">Basic Staff</string>
+    <string name="item_basic_staff_desc">A simple magical staff for apprentice mages.</string>
+    <string name="item_apprentice_staff_name">Apprentice Staff</string>
+    <string name="item_apprentice_staff_desc">An improved staff for developing mages.</string>
+    <string name="item_staff_of_air_name">Staff of Air</string>
+    <string name="item_staff_of_air_desc">An elemental staff imbued with the power of air.</string>
+    <string name="item_staff_of_water_name">Staff of Water</string>
+    <string name="item_staff_of_water_desc">An elemental staff imbued with the power of water.</string>
+    <string name="item_staff_of_earth_name">Staff of Earth</string>
+    <string name="item_staff_of_earth_desc">An elemental staff imbued with the power of earth.</string>
+    <string name="item_staff_of_fire_name">Staff of Fire</string>
+    <string name="item_staff_of_fire_desc">An elemental staff imbued with the power of fire.</string>
+    <string name="item_staff_of_mind_name">Staff of Mind</string>
+    <string name="item_staff_of_mind_desc">A staff imbued with psychic energy.</string>
+    <string name="item_staff_of_chaos_name">Staff of Chaos</string>
+    <string name="item_staff_of_chaos_desc">A chaotic staff pulsing with wild magical energy.</string>
+    <string name="item_staff_of_death_name">Staff of Death</string>
+    <string name="item_staff_of_death_desc">A dark staff wreathed in the power of death.</string>
+    <string name="item_staff_of_blood_name">Staff of Blood</string>
+    <string name="item_staff_of_blood_desc">A powerful staff fuelled by blood magic.</string>
+
+    <!-- ===== Armour — bronze ===== -->
+    <string name="item_bronze_helmet_name">Bronze Helmet</string>
+    <string name="item_bronze_helmet_desc">Basic bronze head protection.</string>
+    <string name="item_bronze_platebody_name">Bronze Platebody</string>
+    <string name="item_bronze_platebody_desc">Basic bronze body armour.</string>
+    <string name="item_bronze_platelegs_name">Bronze Platelegs</string>
+    <string name="item_bronze_platelegs_desc">Basic bronze leg protection.</string>
+    <string name="item_bronze_shield_name">Bronze Shield</string>
+    <string name="item_bronze_shield_desc">A basic bronze shield.</string>
+
+    <!-- Armour — iron -->
+    <string name="item_iron_helmet_name">Iron Helmet</string>
+    <string name="item_iron_helmet_desc">Iron head protection.</string>
+    <string name="item_iron_platebody_name">Iron Platebody</string>
+    <string name="item_iron_platebody_desc">Iron body armour.</string>
+    <string name="item_iron_platelegs_name">Iron Platelegs</string>
+    <string name="item_iron_platelegs_desc">Iron leg protection.</string>
+    <string name="item_iron_shield_name">Iron Shield</string>
+    <string name="item_iron_shield_desc">An iron shield.</string>
+
+    <!-- Armour — steel -->
+    <string name="item_steel_helmet_name">Steel Helmet</string>
+    <string name="item_steel_helmet_desc">Sturdy steel head protection.</string>
+    <string name="item_steel_platebody_name">Steel Platebody</string>
+    <string name="item_steel_platebody_desc">Sturdy steel body armour.</string>
+    <string name="item_steel_platelegs_name">Steel Platelegs</string>
+    <string name="item_steel_platelegs_desc">Sturdy steel leg protection.</string>
+    <string name="item_steel_shield_name">Steel Shield</string>
+    <string name="item_steel_shield_desc">A sturdy steel shield.</string>
+
+    <!-- Armour — mithril -->
+    <string name="item_mithril_helmet_name">Mithril Helmet</string>
+    <string name="item_mithril_helmet_desc">Lightweight magical head protection.</string>
+    <string name="item_mithril_platebody_name">Mithril Platebody</string>
+    <string name="item_mithril_platebody_desc">Lightweight magical body armour.</string>
+    <string name="item_mithril_platelegs_name">Mithril Platelegs</string>
+    <string name="item_mithril_platelegs_desc">Lightweight magical leg protection.</string>
+    <string name="item_mithril_shield_name">Mithril Shield</string>
+    <string name="item_mithril_shield_desc">A lightweight magical shield.</string>
+
+    <!-- Armour — adamantite -->
+    <string name="item_adamantite_helmet_name">Adamantite Helmet</string>
+    <string name="item_adamantite_helmet_desc">Extremely hard head protection.</string>
+    <string name="item_adamantite_platebody_name">Adamantite Platebody</string>
+    <string name="item_adamantite_platebody_desc">Extremely hard body armour.</string>
+    <string name="item_adamantite_platelegs_name">Adamantite Platelegs</string>
+    <string name="item_adamantite_platelegs_desc">Extremely hard leg protection.</string>
+    <string name="item_adamantite_shield_name">Adamantite Shield</string>
+    <string name="item_adamantite_shield_desc">An extremely hard shield.</string>
+
+    <!-- Armour — runite -->
+    <string name="item_runite_helmet_name">Runite Helmet</string>
+    <string name="item_runite_helmet_desc">The finest head protection available.</string>
+    <string name="item_runite_platebody_name">Runite Platebody</string>
+    <string name="item_runite_platebody_desc">The finest body armour available.</string>
+    <string name="item_runite_platelegs_name">Runite Platelegs</string>
+    <string name="item_runite_platelegs_desc">The finest leg protection available.</string>
+    <string name="item_runite_shield_name">Runite Shield</string>
+    <string name="item_runite_shield_desc">The finest shield available.</string>
+
+    <!-- ===== Tools — pickaxes ===== -->
+    <string name="item_bronze_pickaxe_name">Bronze Pickaxe</string>
+    <string name="item_bronze_pickaxe_desc">A basic pickaxe for Mining.</string>
+    <string name="item_iron_pickaxe_name">Iron Pickaxe</string>
+    <string name="item_iron_pickaxe_desc">A reliable pickaxe for Mining.</string>
+    <string name="item_steel_pickaxe_name">Steel Pickaxe</string>
+    <string name="item_steel_pickaxe_desc">A sturdy pickaxe for Mining.</string>
+    <string name="item_mithril_pickaxe_name">Mithril Pickaxe</string>
+    <string name="item_mithril_pickaxe_desc">A lightweight magical pickaxe for Mining.</string>
+    <string name="item_adamantite_pickaxe_name">Adamantite Pickaxe</string>
+    <string name="item_adamantite_pickaxe_desc">An extremely hard pickaxe for Mining.</string>
+    <string name="item_runite_pickaxe_name">Runite Pickaxe</string>
+    <string name="item_runite_pickaxe_desc">The finest pickaxe available for Mining.</string>
+
+    <!-- Tools — axes -->
+    <string name="item_bronze_axe_name">Bronze Axe</string>
+    <string name="item_bronze_axe_desc">A basic axe for Woodcutting.</string>
+    <string name="item_iron_axe_name">Iron Axe</string>
+    <string name="item_iron_axe_desc">A reliable axe for Woodcutting.</string>
+    <string name="item_steel_axe_name">Steel Axe</string>
+    <string name="item_steel_axe_desc">A sturdy axe for Woodcutting.</string>
+    <string name="item_mithril_axe_name">Mithril Axe</string>
+    <string name="item_mithril_axe_desc">A lightweight magical axe for Woodcutting.</string>
+    <string name="item_adamantite_axe_name">Adamantite Axe</string>
+    <string name="item_adamantite_axe_desc">An extremely hard axe for Woodcutting.</string>
+    <string name="item_runite_axe_name">Runite Axe</string>
+    <string name="item_runite_axe_desc">The finest axe available for Woodcutting.</string>
+
+    <!-- Tools — fishing rods -->
+    <string name="item_bronze_fishing_rod_name">Bronze Fishing Rod</string>
+    <string name="item_bronze_fishing_rod_desc">A basic fishing rod.</string>
+    <string name="item_iron_fishing_rod_name">Iron Fishing Rod</string>
+    <string name="item_iron_fishing_rod_desc">A reliable fishing rod.</string>
+    <string name="item_steel_fishing_rod_name">Steel Fishing Rod</string>
+    <string name="item_steel_fishing_rod_desc">A sturdy fishing rod.</string>
+    <string name="item_mithril_fishing_rod_name">Mithril Fishing Rod</string>
+    <string name="item_mithril_fishing_rod_desc">A lightweight magical fishing rod.</string>
+    <string name="item_adamantite_fishing_rod_name">Adamantite Fishing Rod</string>
+    <string name="item_adamantite_fishing_rod_desc">An extremely durable fishing rod.</string>
+    <string name="item_runite_fishing_rod_name">Runite Fishing Rod</string>
+    <string name="item_runite_fishing_rod_desc">The finest fishing rod available.</string>
+
+    <!-- ===== Arrows ===== -->
+    <string name="item_bronze_arrow_name">Bronze Arrows</string>
+    <string name="item_bronze_arrow_desc">Basic arrows for ranged combat.</string>
+    <string name="item_iron_arrow_name">Iron Arrows</string>
+    <string name="item_iron_arrow_desc">Iron arrows for ranged combat.</string>
+    <string name="item_steel_arrow_name">Steel Arrows</string>
+    <string name="item_steel_arrow_desc">Steel arrows for ranged combat.</string>
+    <string name="item_mithril_arrow_name">Mithril Arrows</string>
+    <string name="item_mithril_arrow_desc">Mithril arrows for ranged combat.</string>
+    <string name="item_adamantite_arrow_name">Adamantite Arrows</string>
+    <string name="item_adamantite_arrow_desc">Adamantite arrows for ranged combat.</string>
+    <string name="item_runite_arrow_name">Runite Arrows</string>
+    <string name="item_runite_arrow_desc">The finest arrows available.</string>
+
+    <!-- Arrow components -->
+    <string name="item_arrow_shaft_name">Arrow Shafts</string>
+    <string name="item_arrow_shaft_desc">Wooden shafts used to fletch arrows.</string>
+    <string name="item_bronze_arrow_tips_name">Bronze Arrow Tips</string>
+    <string name="item_bronze_arrow_tips_desc">Bronze tips for fletching bronze arrows.</string>
+    <string name="item_iron_arrow_tips_name">Iron Arrow Tips</string>
+    <string name="item_iron_arrow_tips_desc">Iron tips for fletching iron arrows.</string>
+    <string name="item_steel_arrow_tips_name">Steel Arrow Tips</string>
+    <string name="item_steel_arrow_tips_desc">Steel tips for fletching steel arrows.</string>
+    <string name="item_mithril_arrow_tips_name">Mithril Arrow Tips</string>
+    <string name="item_mithril_arrow_tips_desc">Mithril tips for fletching mithril arrows.</string>
+    <string name="item_adamantite_arrow_tips_name">Adamantite Arrow Tips</string>
+    <string name="item_adamantite_arrow_tips_desc">Adamantite tips for fletching adamantite arrows.</string>
+    <string name="item_runite_arrow_tips_name">Runite Arrow Tips</string>
+    <string name="item_runite_arrow_tips_desc">Runite tips for fletching runite arrows.</string>
+
+    <!-- ===== Jewellery — plain ===== -->
+    <string name="item_silver_ring_name">Silver Ring</string>
+    <string name="item_silver_ring_desc">A plain silver ring.</string>
+    <string name="item_silver_necklace_name">Silver Necklace</string>
+    <string name="item_silver_necklace_desc">A plain silver necklace.</string>
+    <string name="item_gold_ring_name">Gold Ring</string>
+    <string name="item_gold_ring_desc">A plain gold ring.</string>
+    <string name="item_gold_necklace_name">Gold Necklace</string>
+    <string name="item_gold_necklace_desc">A plain gold necklace.</string>
+    <string name="item_platinum_ring_name">Platinum Ring</string>
+    <string name="item_platinum_ring_desc">A plain platinum ring.</string>
+    <string name="item_platinum_necklace_name">Platinum Necklace</string>
+    <string name="item_platinum_necklace_desc">A plain platinum necklace.</string>
+
+    <!-- Jewellery — sapphire -->
+    <string name="item_silver_sapphire_ring_name">Silver Sapphire Ring</string>
+    <string name="item_silver_sapphire_ring_desc">A silver ring set with a sapphire.</string>
+    <string name="item_silver_sapphire_necklace_name">Silver Sapphire Necklace</string>
+    <string name="item_silver_sapphire_necklace_desc">A silver necklace set with a sapphire.</string>
+    <string name="item_gold_sapphire_ring_name">Gold Sapphire Ring</string>
+    <string name="item_gold_sapphire_ring_desc">A gold ring set with a sapphire.</string>
+    <string name="item_gold_sapphire_necklace_name">Gold Sapphire Necklace</string>
+    <string name="item_gold_sapphire_necklace_desc">A gold necklace set with a sapphire.</string>
+    <string name="item_platinum_sapphire_ring_name">Platinum Sapphire Ring</string>
+    <string name="item_platinum_sapphire_ring_desc">A platinum ring set with a sapphire.</string>
+    <string name="item_platinum_sapphire_necklace_name">Platinum Sapphire Necklace</string>
+    <string name="item_platinum_sapphire_necklace_desc">A platinum necklace set with a sapphire.</string>
+
+    <!-- Jewellery — emerald -->
+    <string name="item_gold_emerald_ring_name">Gold Emerald Ring</string>
+    <string name="item_gold_emerald_ring_desc">A gold ring set with an emerald.</string>
+    <string name="item_gold_emerald_necklace_name">Gold Emerald Necklace</string>
+    <string name="item_gold_emerald_necklace_desc">A gold necklace set with an emerald.</string>
+    <string name="item_platinum_emerald_ring_name">Platinum Emerald Ring</string>
+    <string name="item_platinum_emerald_ring_desc">A platinum ring set with an emerald.</string>
+    <string name="item_platinum_emerald_necklace_name">Platinum Emerald Necklace</string>
+    <string name="item_platinum_emerald_necklace_desc">A platinum necklace set with an emerald.</string>
+
+    <!-- Jewellery — ruby -->
+    <string name="item_gold_ruby_ring_name">Gold Ruby Ring</string>
+    <string name="item_gold_ruby_ring_desc">A gold ring set with a ruby.</string>
+    <string name="item_gold_ruby_necklace_name">Gold Ruby Necklace</string>
+    <string name="item_gold_ruby_necklace_desc">A gold necklace set with a ruby.</string>
+    <string name="item_platinum_ruby_ring_name">Platinum Ruby Ring</string>
+    <string name="item_platinum_ruby_ring_desc">A platinum ring set with a ruby.</string>
+    <string name="item_platinum_ruby_necklace_name">Platinum Ruby Necklace</string>
+    <string name="item_platinum_ruby_necklace_desc">A platinum necklace set with a ruby.</string>
+
+    <!-- Jewellery — diamond -->
+    <string name="item_gold_diamond_ring_name">Gold Diamond Ring</string>
+    <string name="item_gold_diamond_ring_desc">A gold ring set with a diamond.</string>
+    <string name="item_gold_diamond_necklace_name">Gold Diamond Necklace</string>
+    <string name="item_gold_diamond_necklace_desc">A gold necklace set with a diamond.</string>
+    <string name="item_platinum_diamond_ring_name">Platinum Diamond Ring</string>
+    <string name="item_platinum_diamond_ring_desc">A platinum ring set with a diamond.</string>
+    <string name="item_platinum_diamond_necklace_name">Platinum Diamond Necklace</string>
+    <string name="item_platinum_diamond_necklace_desc">A platinum necklace set with a diamond.</string>
+
+    <!-- ===== Miscellaneous drops ===== -->
+    <string name="item_ashes_name">Ashes</string>
+    <string name="item_ashes_desc">Burnt remnants of regular logs. Scatter in the Prayer skill for bonus Prayer XP.</string>
+    <string name="item_oak_ashes_name">Oak Ashes</string>
+    <string name="item_oak_ashes_desc">Burnt remnants of oak logs. Scatter for more Prayer XP than regular ashes.</string>
+    <string name="item_willow_ashes_name">Willow Ashes</string>
+    <string name="item_willow_ashes_desc">Burnt remnants of willow logs. Scatter for Prayer XP.</string>
+    <string name="item_maple_ashes_name">Maple Ashes</string>
+    <string name="item_maple_ashes_desc">Burnt remnants of maple logs. Scatter for Prayer XP.</string>
+    <string name="item_yew_ashes_name">Yew Ashes</string>
+    <string name="item_yew_ashes_desc">Burnt remnants of yew logs. Scatter for significant Prayer XP.</string>
+    <string name="item_magic_ashes_name">Magic Ashes</string>
+    <string name="item_magic_ashes_desc">Burnt remnants of magic logs. Scatter for substantial Prayer XP.</string>
+    <string name="item_redwood_ashes_name">Redwood Ashes</string>
+    <string name="item_redwood_ashes_desc">Burnt remnants of redwood logs. Scatter for the most Prayer XP of any ash.</string>
+    <string name="item_bones_name">Bones</string>
+    <string name="item_bones_desc">Bones from a small creature. Bury for Prayer XP.</string>
+    <string name="item_big_bones_name">Big Bones</string>
+    <string name="item_big_bones_desc">Larger bones. Grant more Prayer XP when buried.</string>
+    <string name="item_giant_bones_name">Giant Bones</string>
+    <string name="item_giant_bones_desc">Massive bones from powerful foes. Grant significant Prayer XP.</string>
+    <string name="item_dragon_bone_name">Dragon Bone</string>
+    <string name="item_dragon_bone_desc">Ancient dragon bones. Grant the most Prayer XP when buried.</string>
+    <string name="item_dragon_scale_name">Dragon Scale</string>
+    <string name="item_dragon_scale_desc">A tough scale from a green dragon. Rare and valuable.</string>
+    <string name="item_coins_name">Coins</string>
+    <string name="item_coins_desc">The currency of the realm. Spend at the shop.</string>
+    <string name="item_goblin_mail_name">Goblin Mail</string>
+    <string name="item_goblin_mail_desc">Battered armour dropped by goblins. Sells well.</string>
+    <string name="item_imp_hide_name">Imp Hide</string>
+    <string name="item_imp_hide_desc">Leathery skin from an imp.</string>
+    <string name="item_spider_silk_name">Spider Silk</string>
+    <string name="item_spider_silk_desc">Fine silk spun by giant spiders. Valuable to crafters.</string>
+    <string name="item_spider_fang_name">Spider Fang</string>
+    <string name="item_spider_fang_desc">A venomous fang from a giant spider.</string>
+    <string name="item_cowhide_name">Cowhide</string>
+    <string name="item_cowhide_desc">Rough hide from a cow. Used in leather crafting.</string>
+    <string name="item_wool_name">Wool</string>
+    <string name="item_wool_desc">Soft wool from a sheep.</string>
+    <string name="item_feather_name">Feather</string>
+    <string name="item_feather_desc">A feather used in fletching arrows.</string>
+    <string name="item_rotten_flesh_name">Rotten Flesh</string>
+    <string name="item_rotten_flesh_desc">Decaying flesh from an undead creature. Smells terrible.</string>
+    <string name="item_lockpick_name">Lockpick</string>
+    <string name="item_lockpick_desc">A lockpick dropped by rogues.</string>
+    <string name="item_magic_bean_name">Magic Bean</string>
+    <string name="item_magic_bean_desc">A magical bean with mysterious properties.</string>
+    <string name="item_hellhound_fang_name">Hellhound Fang</string>
+    <string name="item_hellhound_fang_desc">A scorched fang from a hellhound.</string>
+    <string name="item_demon_horn_name">Demon Horn</string>
+    <string name="item_demon_horn_desc">A jagged horn torn from a lesser demon.</string>
+    <string name="item_troll_bone_name">Troll Bone</string>
+    <string name="item_troll_bone_desc">A huge, gnarled bone from a mountain troll.</string>
+
+    <!-- ===== Runes ===== -->
+    <string name="item_air_rune_name">Air Rune</string>
+    <string name="item_air_rune_desc">A rune imbued with the power of air. Used in air spells.</string>
+    <string name="item_water_rune_name">Water Rune</string>
+    <string name="item_water_rune_desc">A rune imbued with the power of water.</string>
+    <string name="item_earth_rune_name">Earth Rune</string>
+    <string name="item_earth_rune_desc">A rune imbued with the power of earth.</string>
+    <string name="item_fire_rune_name">Fire Rune</string>
+    <string name="item_fire_rune_desc">A rune imbued with the power of fire.</string>
+    <string name="item_mind_rune_name">Mind Rune</string>
+    <string name="item_mind_rune_desc">A rune channelling psychic energy.</string>
+    <string name="item_chaos_rune_name">Chaos Rune</string>
+    <string name="item_chaos_rune_desc">A rune of wild, chaotic magic.</string>
+    <string name="item_death_rune_name">Death Rune</string>
+    <string name="item_death_rune_desc">A rune infused with the power of death.</string>
+    <string name="item_blood_rune_name">Blood Rune</string>
+    <string name="item_blood_rune_desc">A rare rune fuelled by blood magic.</string>
+
+    <!-- ===== Crops ===== -->
+    <string name="crop_potato_name">Potato</string>
+    <string name="crop_onion_name">Onion</string>
+    <string name="crop_cabbage_name">Cabbage</string>
+    <string name="crop_carrot_name">Carrot</string>
+    <string name="crop_tomato_name">Tomato</string>
+    <string name="crop_corn_name">Corn</string>
+    <string name="crop_pumpkin_name">Pumpkin</string>
+    <string name="crop_watermelon_name">Watermelon</string>
+    <string name="crop_strawberry_name">Strawberry</string>
+    <string name="crop_magic_herb_name">Magic Herb</string>
+    <string name="crop_dragon_fruit_name">Dragon Fruit</string>
+    <string name="crop_golden_wheat_name">Golden Wheat</string>
+    <string name="crop_spirit_herb_name">Spirit Herb</string>
+    <string name="crop_celestial_bloom_name">Celestial Bloom</string>
+    <string name="crop_starfruit_name">Starfruit</string>
+    <string name="crop_void_lotus_name">Void Lotus</string>
+
+    <!-- ===== Spells ===== -->
+    <string name="spell_wind_strike_name">Wind Strike</string>
+    <string name="spell_wind_bolt_name">Wind Bolt</string>
+    <string name="spell_wind_blast_name">Wind Blast</string>
+    <string name="spell_wind_wave_name">Wind Wave</string>
+    <string name="spell_water_strike_name">Water Strike</string>
+    <string name="spell_water_bolt_name">Water Bolt</string>
+    <string name="spell_water_blast_name">Water Blast</string>
+    <string name="spell_water_wave_name">Water Wave</string>
+    <string name="spell_earth_strike_name">Earth Strike</string>
+    <string name="spell_earth_bolt_name">Earth Bolt</string>
+    <string name="spell_earth_blast_name">Earth Blast</string>
+    <string name="spell_earth_wave_name">Earth Wave</string>
+    <string name="spell_fire_strike_name">Fire Strike</string>
+    <string name="spell_fire_bolt_name">Fire Bolt</string>
+    <string name="spell_fire_blast_name">Fire Blast</string>
+    <string name="spell_fire_wave_name">Fire Wave</string>
+    <string name="spell_mind_strike_name">Mind Strike</string>
+    <string name="spell_mind_bolt_name">Mind Bolt</string>
+    <string name="spell_mind_blast_name">Mind Blast</string>
+    <string name="spell_mind_wave_name">Mind Wave</string>
+    <string name="spell_chaos_strike_name">Chaos Strike</string>
+    <string name="spell_chaos_bolt_name">Chaos Bolt</string>
+    <string name="spell_chaos_blast_name">Chaos Blast</string>
+    <string name="spell_chaos_wave_name">Chaos Wave</string>
+    <string name="spell_death_strike_name">Death Strike</string>
+    <string name="spell_death_bolt_name">Death Bolt</string>
+    <string name="spell_death_blast_name">Death Blast</string>
+    <string name="spell_death_wave_name">Death Wave</string>
+    <string name="spell_blood_strike_name">Blood Strike</string>
+    <string name="spell_blood_bolt_name">Blood Bolt</string>
+    <string name="spell_blood_blast_name">Blood Blast</string>
+    <string name="spell_blood_wave_name">Blood Wave</string>
+
+    <!-- ===== Hoes ===== -->
+    <string name="item_bronze_hoe_name">Bronze Hoe</string>
+    <string name="item_iron_hoe_name">Iron Hoe</string>
+    <string name="item_steel_hoe_name">Steel Hoe</string>
+    <string name="item_mithril_hoe_name">Mithril Hoe</string>
+    <string name="item_adamantite_hoe_name">Adamantite Hoe</string>
+    <string name="item_runite_hoe_name">Runite Hoe</string>
+
+    <!-- Herblore potions -->
+    <string name="item_attack_brew_name">Attack Brew</string>
+    <string name="item_defense_brew_name">Defense Brew</string>
+    <string name="item_attack_potion_name">Attack Potion</string>
+    <string name="item_defense_potion_name">Defense Potion</string>
+    <string name="item_strength_brew_name">Strength Brew</string>
+    <string name="item_strength_potion_name">Strength Potion</string>
+    <string name="item_ranging_potion_name">Ranging Potion</string>
+    <string name="item_magic_potion_name">Magic Potion</string>
+    <string name="item_super_strength_potion_name">Super Strength Potion</string>
+    <string name="item_super_attack_potion_name">Super Attack Potion</string>
+    <string name="item_super_defense_potion_name">Super Defense Potion</string>
+    <string name="item_super_ranging_potion_name">Super Ranging Potion</string>
+    <string name="item_super_magic_potion_name">Super Magic Potion</string>
+    <string name="item_overload_potion_name">Overload Potion</string>
+</resources>

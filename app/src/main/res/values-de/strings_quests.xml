@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Quest names and objectives ===== -->
+    <!-- Translator note: quest names are short titles; objectives are action sentences. -->
+
+    <!-- Mining -->
+    <string name="quest_mining_1_name">Bergbau I</string>
+    <string name="quest_mining_1_objective">Baue 500 Kupfererze ab</string>
+    <string name="quest_mining_2_name">Bergbau II</string>
+    <string name="quest_mining_2_objective">Baue 750 Eisenerze ab</string>
+    <string name="quest_mining_3_name">Bergbau III</string>
+    <string name="quest_mining_3_objective">Baue 1100 Kohlenerze ab</string>
+    <string name="quest_mining_4_name">MBergbau IV</string>
+    <string name="quest_mining_4_objective">Baue 1650 Mithrilerze ab</string>
+    <string name="quest_mining_5_name">Bergbau V</string>
+    <string name="quest_mining_5_objective">Baue 2450 Adamantiterze ab</string>
+    <string name="quest_mining_6_name">Bergbau VI</string>
+    <string name="quest_mining_6_objective">Baue 3650 Runiterze ab</string>
+
+    <!-- Woodcutting -->
+    <string name="quest_woodcutting_1_name">Holzbearbeitung I</string>
+    <string name="quest_woodcutting_1_objective">Fälle 500 Baumstämme</string>
+    <string name="quest_woodcutting_2_name">Holzbearbeitung II</string>
+    <string name="quest_woodcutting_2_objective">Fälle 750 Eichenstämme</string>
+    <string name="quest_woodcutting_3_name">Holzbearbeitung III</string>
+    <string name="quest_woodcutting_3_objective">Fälle 1100 Weidenstämme</string>
+    <string name="quest_woodcutting_4_name">Holzbearbeitung IV</string>
+    <string name="quest_woodcutting_4_objective">Fälle 1650 Ahornstämme</string>
+    <string name="quest_woodcutting_5_name">Holzbearbeitung V</string>
+    <string name="quest_woodcutting_5_objective">Fälle 2450 Eibenstämme</string>
+    <string name="quest_woodcutting_6_name">Holzbearbeitung VI</string>
+    <string name="quest_woodcutting_6_objective">Fälle 3650 magische Baumstämme</string>
+
+    <!-- Fishing -->
+    <string name="quest_fishing_1_name">Angeln I</string>
+    <string name="quest_fishing_1_objective">Fange 500 Fische</string>
+    <string name="quest_fishing_2_name">Angeln II</string>
+    <string name="quest_fishing_2_objective">Fange 750 Fische</string>
+    <string name="quest_fishing_3_name">Angeln III</string>
+    <string name="quest_fishing_3_objective">Fange 1100 Fische</string>
+    <string name="quest_fishing_4_name">Angeln IV</string>
+    <string name="quest_fishing_4_objective">Fange 1650 Fische</string>
+    <string name="quest_fishing_5_name">Angeln V</string>
+    <string name="quest_fishing_5_objective">Fange 2450 Fische</string>
+    <string name="quest_fishing_6_name">Angeln VI</string>
+    <string name="quest_fishing_6_objective">Fange 3650 Fische</string>
+
+    <!-- Smithing -->
+    <string name="quest_smithing_1_name">Schmieden I</string>
+    <string name="quest_smithing_1_objective">Schmelze 500 Bronzebarren</string>
+    <string name="quest_smithing_2_name">Schmieden II</string>
+    <string name="quest_smithing_2_objective">Schmelze 750 Eisenbarren</string>
+    <string name="quest_smithing_3_name">Schmieden III</string>
+    <string name="quest_smithing_3_objective">Schmelze 1100 Stahlbarren</string>
+    <string name="quest_smithing_4_name">Schmieden IV</string>
+    <string name="quest_smithing_4_objective">Schmelze 1650 Mithrilbarren</string>
+    <string name="quest_smithing_5_name">Schmieden V</string>
+    <string name="quest_smithing_5_objective">Schmelze 2450 Adamantitbarren</string>
+    <string name="quest_smithing_6_name">Schmieden VI</string>
+    <string name="quest_smithing_6_objective">Schmelze 3650 Runitbarren</string>
+
+    <!-- Cooking - Fish -->
+    <string name="quest_cooking_fish_1_name">Kochen – Fisch I</string>
+    <string name="quest_cooking_fish_1_objective">Koche 500 Fische</string>
+    <string name="quest_cooking_fish_2_name">Kochen - Fisch II</string>
+    <string name="quest_cooking_fish_2_objective">Koche 750 Fische</string>
+    <string name="quest_cooking_fish_3_name">Kochen - Fisch III</string>
+    <string name="quest_cooking_fish_3_objective">Koche 1100 Fische</string>
+    <string name="quest_cooking_fish_4_name">Kochen - Fisch IV</string>
+    <string name="quest_cooking_fish_4_objective">Koche 1650 Fische</string>
+    <string name="quest_cooking_fish_5_name">Kochen - Fisch V</string>
+    <string name="quest_cooking_fish_5_objective">Koche 2450 Fische</string>
+    <string name="quest_cooking_fish_6_name">Kochen - Fisch VI</string>
+    <string name="quest_cooking_fish_6_objective">Koche 3650 Fische</string>
+
+    <!-- Cooking - Beef -->
+    <string name="quest_cooking_beef_1_name">Kochen - Rindfleisch I</string>
+    <string name="quest_cooking_beef_1_objective">Koche 100x Rindfleisch</string>
+    <string name="quest_cooking_beef_2_name">Kochen - Rindfleisch II</string>
+    <string name="quest_cooking_beef_2_objective">Koche 250x Rindfleisch</string>
+    <string name="quest_cooking_beef_3_name">Kochen - Rindfleisch III</string>
+    <string name="quest_cooking_beef_3_objective">Koche 500x Rindfleisch</string>
+
+    <!-- Cooking - Chicken -->
+    <string name="quest_cooking_chicken_1_name">Kochen — Hähnchen I</string>
+    <string name="quest_cooking_chicken_1_objective">Koche 100x Hähnchen</string>
+    <string name="quest_cooking_chicken_2_name">Kochen — Hähnchen II</string>
+    <string name="quest_cooking_chicken_2_objective">Koche 250x Hähnchen</string>
+    <string name="quest_cooking_chicken_3_name">Kochen — Hähnchen III</string>
+    <string name="quest_cooking_chicken_3_objective">Koche 500x Hähnchen</string>
+
+    <!-- Cooking - Mutton -->
+    <string name="quest_cooking_mutton_1_name">Kochen – Lammfleisch I</string>
+    <string name="quest_cooking_mutton_1_objective">Koche 100x Lammfleisch</string>
+    <string name="quest_cooking_mutton_2_name">Kochen – Lammfleisch II</string>
+    <string name="quest_cooking_mutton_2_objective">Koche 250x Lammfleisch</string>
+    <string name="quest_cooking_mutton_3_name">Kochen – Lammfleisch III</string>
+    <string name="quest_cooking_mutton_3_objective">Koche 500x Lammfleisch</string>
+
+    <!-- Fletching -->
+    <string name="quest_fletching_1_name">Herstellung I</string>
+    <string name="quest_fletching_1_objective">Erstelle 500 Bronzepfeile</string>
+    <string name="quest_fletching_2_name">Herstellung II</string>
+    <string name="quest_fletching_2_objective">Erstelle 750 Eisenpfeile</string>
+    <string name="quest_fletching_3_name">Herstellung III</string>
+    <string name="quest_fletching_3_objective">Erstelle 1100 Stahlpfeile</string>
+    <string name="quest_fletching_4_name">Herstellung IV</string>
+    <string name="quest_fletching_4_objective">Erstelle 1650 Mithrilpfeile</string>
+    <string name="quest_fletching_5_name">Herstellung V</string>
+    <string name="quest_fletching_5_objective">Erstelle 2450 Adamantitpfeile</string>
+    <string name="quest_fletching_6_name">Herstellung VI</string>
+    <string name="quest_fletching_6_objective">Erstelle 3650 Runitenpfeile</string>
+
+    <!-- Prayer -->
+    <string name="quest_prayer_1_name">Gebete I</string>
+    <string name="quest_prayer_1_objective">Begrabe 500 Knochen</string>
+    <string name="quest_prayer_2_name">Gebete II</string>
+    <string name="quest_prayer_2_objective">Begrabe 750 Knochen</string>
+    <string name="quest_prayer_3_name">Gebete III</string>
+    <string name="quest_prayer_3_objective">Begrabe 1100 Knochen</string>
+    <string name="quest_prayer_4_name">Gebete IV</string>
+    <string name="quest_prayer_4_objective">Begrabe 1650 Knochen</string>
+    <string name="quest_prayer_5_name">Gebete V</string>
+    <string name="quest_prayer_5_objective">Begrabe 2450 Knochen</string>
+    <string name="quest_prayer_6_name">Gebete VI</string>
+    <string name="quest_prayer_6_objective">Begrabe 3650 Knochen</string>
+
+    <!-- Slayer -->
+    <string name="quest_combat_kills_1_name">Bluträcher I</string>
+    <string name="quest_combat_kills_1_objective">Besiege 100 Gegner</string>
+    <string name="quest_combat_kills_2_name">Bluträcher II</string>
+    <string name="quest_combat_kills_2_objective">Besiege 150 Gegner</string>
+    <string name="quest_combat_kills_3_name">Bluträcher III</string>
+    <string name="quest_combat_kills_3_objective">Besiege 200 Gegner</string>
+    <string name="quest_combat_kills_4_name">Bluträcher IV</string>
+    <string name="quest_combat_kills_4_objective">Besiege 300 Gegner</string>
+    <string name="quest_combat_kills_5_name">Bluträcher V</string>
+    <string name="quest_combat_kills_5_objective">Besiege 450 Gegner</string>
+    <string name="quest_combat_kills_6_name">Bluträcher VI</string>
+    <string name="quest_combat_kills_6_objective">Besiege 650 Gegner</string>
+
+    <!-- Dungeon exploration -->
+    <string name="quest_dungeon_farm_1_name">Dungeon-Erforscher I</string>
+    <string name="quest_dungeon_farm_1_objective">Schließe den Farm-Dungeon fünfmal ab</string>
+    <string name="quest_dungeon_goblin_1_name">Dungeon-Erforscher II</string>
+    <string name="quest_dungeon_goblin_1_objective">Schließe die Koboldhöhle fünfmal ab</string>
+    <string name="quest_dungeon_spider_1_name">Dungeon-Erforscher III</string>
+    <string name="quest_dungeon_spider_1_objective">Schließe die Spinnenhöhle fünfmal ab</string>
+    <string name="quest_dungeon_bandit_1_name">Dungeon-Erforscher IV</string>
+    <string name="quest_dungeon_bandit_1_objective">Schließe das Räuberlager fünfmal ab</string>
+    <string name="quest_dungeon_undead_1_name">Dungeon-Erforscher V</string>
+    <string name="quest_dungeon_undead_1_objective">Schließe die Gruft der Untoten fünfmal ab</string>
+    <string name="quest_dungeon_fortress_1_name">Dungeon-Erforscher VI</string>
+    <string name="quest_dungeon_fortress_1_objective">Schließe die Festungsruinen fünfmal ab</string>
+    <string name="quest_dungeon_orc_1_name">Dungeon-Meister I</string>
+    <string name="quest_dungeon_orc_1_objective">Schließe die Orkfestung fünfmal ab</string>
+    <string name="quest_dungeon_volcanic_1_name">Dungeon-Meister II</string>
+    <string name="quest_dungeon_volcanic_1_objective">Schließe die vulkanischen Tiefen fünfmal ab</string>
+    <string name="quest_dungeon_dragon_1_name">Dungeon-Meister III</string>
+    <string name="quest_dungeon_dragon_1_objective">Schließe die Drachenhöhle fünfmal ab</string>
+
+    <!-- Crafting -->
+    <string name="quest_crafting_1_name">Fertigen I</string>
+    <string name="quest_crafting_1_objective">Fertige 100 Silberringe an</string>
+    <string name="quest_crafting_2_name">Fertigen II</string>
+    <string name="quest_crafting_2_objective">Fertige 250 Goldringe an</string>
+    <string name="quest_crafting_3_name">Fertigen III</string>
+    <string name="quest_crafting_3_objective">Fertige 500 Platinringe an</string>
+    <string name="quest_crafting_4_name">Fertigen IV</string>
+    <string name="quest_crafting_4_objective">Fertige 750 Silber-Saphirringe an</string>
+    <string name="quest_crafting_5_name">Fertigen V</string>
+    <string name="quest_crafting_5_objective">Fertige 1000 Gold-Saphirringe an</string>
+    <string name="quest_crafting_6_name">Fertigen VI</string>
+    <string name="quest_crafting_6_objective">Fertige 1500 Platin-Diamantringe an</string>
+
+    <!-- Monster slayer chains -->
+    <string name="quest_goblin_slayer_1_name">Kobold-Jäger I</string>
+    <string name="quest_goblin_slayer_1_objective">Besiege 50 Kobolde</string>
+    <string name="quest_goblin_slayer_2_name">Kobold-Jäger II</string>
+    <string name="quest_goblin_slayer_2_objective">Besiege 100 Kobolde</string>
+    <string name="quest_spider_slayer_1_name">Spinnen-Jäger I</string>
+    <string name="quest_spider_slayer_1_objective">Besiege 40 Riesenspinnen</string>
+    <string name="quest_spider_slayer_2_name">Spinnen-Jäger II</string>
+    <string name="quest_spider_slayer_2_objective">Besiege 80 Riesenspinnen</string>
+    <string name="quest_skeleton_slayer_1_name">Skelett-Jäger I</string>
+    <string name="quest_skeleton_slayer_1_objective">Besiege 35 Skelette</string>
+    <string name="quest_skeleton_slayer_2_name">Skelett-Jäger II</string>
+    <string name="quest_skeleton_slayer_2_objective">Besiege 70 Skelette</string>
+    <string name="quest_bandit_hunter_1_name">Räuber-Jäger I</string>
+    <string name="quest_bandit_hunter_1_objective">Besiege 30 Räuber</string>
+    <string name="quest_bandit_hunter_2_name">Räuber-Jäger II</string>
+    <string name="quest_bandit_hunter_2_objective">Besiege 60 Räuber/string>
+    <string name="quest_orc_slayer_1_name">Ork-Jäger I</string>
+    <string name="quest_orc_slayer_1_objective">Besiege 25 Ork-Krieger</string>
+    <string name="quest_orc_slayer_2_name">Ork-Jäger II</string>
+    <string name="quest_orc_slayer_2_objective">Besiege 50 Ork-Krieger</string>
+    <string name="quest_demon_slayer_1_name">Dämonen-Jäger I</string>
+    <string name="quest_demon_slayer_1_objective">Besiege 20 Kleine Dämonen</string>
+    <string name="quest_demon_slayer_2_name">Dämonen-Jäger II</string>
+    <string name="quest_demon_slayer_2_objective">Besiege 40 Kleine Dämonen</string>
+    <string name="quest_dragon_slayer_1_name">Drachen-Jäger I</string>
+    <string name="quest_dragon_slayer_1_objective">Besiege 10 Grüne Drachen</string>
+    <string name="quest_dragon_slayer_2_name">Drachen-Jäger II</string>
+    <string name="quest_dragon_slayer_2_objective">Besiege 25 Grüne Drachen</string>
+
+    <!-- Combat style challenges -->
+    <string name="quest_melee_warrior_1_name">Nahkampfkrieger I</string>
+    <string name="quest_melee_warrior_1_objective">Schließe die Koboldhöhle ausschließlich mit Nahkampfwaffen ab</string>
+    <string name="quest_melee_warrior_2_name">Nahkampfkrieger II</string>
+    <string name="quest_melee_warrior_2_objective">Schließe das Räuberlager ausschließlich mit Nahkampfwaffen ab</string>
+    <string name="quest_melee_warrior_3_name">Nahkampfkrieger III</string>
+    <string name="quest_melee_warrior_3_objective">Schließe die Festungsruinen ausschließlich mit Nahkampfwaffen ab</string>
+    <string name="quest_ranger_elite_1_name">Waldhüter I</string>
+    <string name="quest_ranger_elite_1_objective">Schließe die Koboldhöhle ausschließlich mit Fernkampfwaffen ab</string>
+    <string name="quest_ranger_elite_2_name">Waldhüter II</string>
+    <string name="quest_ranger_elite_2_objective">Schließe das Räuberlager ausschließlich mit Fernkampfwaffen ab</string>
+    <string name="quest_ranger_elite_3_name">Waldhüter III</string>
+    <string name="quest_ranger_elite_3_objective">Schließe die Festungsruinen ausschließlich mit Fernkampfwaffen ab</string>
+    <string name="quest_mage_master_1_name">Magiermeister I</string>
+    <string name="quest_mage_master_1_objective">Schließe die Koboldhöhle ausschließlich mit Magie ab</string>
+    <string name="quest_mage_master_2_name">Magiermeister II</string>
+    <string name="quest_mage_master_2_objective">Schließe das Räuberlager ausschließlich mit Magie ab</string>
+    <string name="quest_mage_master_3_name">Magiermeister III</string>
+    <string name="quest_mage_master_3_objective">Schließe die Festungsruinen ausschließlich mit Magie ab</string>
+
+    <!-- Iron Stomach (no food) challenges -->
+    <string name="quest_iron_stomach_1_name">eiserner Magen I</string>
+    <string name="quest_iron_stomach_1_objective">Schließe die Spinnenhöhle ab, ohne Nahrung zu verbrauchen</string>
+    <string name="quest_iron_stomach_2_name">eiserner Magen II</string>
+    <string name="quest_iron_stomach_2_objective">Schließe die Gruft der Untoten ab, ohne Nahrung zu verbrauchen</string>
+    <string name="quest_iron_stomach_3_name">eiserner Magen III</string>
+    <string name="quest_iron_stomach_3_objective">Schließe die Orkfestung ab, ohne Nahrung zu verbrauchen</string>
+    <string name="quest_iron_stomach_4_name">eiserner Magen IV</string>
+    <string name="quest_iron_stomach_4_objective">Schließe die vulkanischen Tiefen ab, ohne Nahrung zu verbrauchen</string>
+
+    <!-- Treasure Hunter -->
+    <string name="quest_treasure_hunter_1_name">Schatzsucher I</string>
+    <string name="quest_treasure_hunter_1_objective">Sammle 20 Spinnenseiden im Kampf</string>
+    <string name="quest_treasure_hunter_2_name">Schatzsucher II</string>
+    <string name="quest_treasure_hunter_2_objective">Sammle 10 Kobold-Rüstungen im Kampf</string>
+    <string name="quest_treasure_hunter_3_name">Schatzsucher III</string>
+    <string name="quest_treasure_hunter_3_objective">Sammle 5 Dämonenhörner im Kampf</string>
+    <string name="quest_treasure_hunter_4_name">Schatzsucher IV</string>
+    <string name="quest_treasure_hunter_4_objective">Sammle 3 Drachenschuppen im Kampf</string>
+</resources>

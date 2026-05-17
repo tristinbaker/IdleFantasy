@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Notification channel metadata ===== -->
+    <string name="notif_channel_sessions_name">Sitzungsbenachrichtigungen</string>
+    <string name="notif_channel_sessions_desc">Benachrichtigungen, wenn Ihre Skill-Sitzungen abgeschlossen sind</string>
+    <string name="notif_channel_farming_name">Landwirtschaftliche Meldungen</string>
+    <string name="notif_channel_farming_desc">Benachrichtigungen, wenn Ihre Pflanzen erntereif sind</string>
+
+    <!-- ===== Session complete ===== -->
+    <string name="notif_session_complete_title">Sitzung abgeschlossen!</string>
+    <!-- Translator note: %1$s = localised skill name (e.g. "Mining") -->
+    <string name="notif_session_complete_body">Deine %1$s Sitzung ist beendet. Tippe hier, um deine Belohnungen abzuholen.</string>
+
+    <!-- ===== Farming ready ===== -->
+    <string name="notif_farming_ready_title">Die Ernte ist reif!</string>
+    <!-- Translator note: %1$s = localised crop name (e.g. "Wheat"). Adjust grammar as needed for your language. -->
+    <string name="notif_farming_ready_body">Dein %1$s ist erntereif.</string>
+    <!-- Plural variant used when multiple patches are ready -->
+    <!-- Translator note: %1$d = number of patches ready -->
+    <string name="notif_farming_ready_body_multi">%1$d Beete sind erntereif.</string>
+</resources>
