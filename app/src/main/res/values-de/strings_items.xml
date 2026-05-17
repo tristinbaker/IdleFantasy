@@ -577,6 +577,8 @@
     <string name="item_defense_brew_name">Defense Brew</string>
     <string name="item_attack_potion_name">Attack Potion</string>
     <string name="item_defense_potion_name">Defense Potion</string>
+    <string name="item_onion_brew_name">Zwiebel-Gebräu</string>
+    <string name="item_carrot_brew_name">Möhren-Gebräu</string>
     <string name="item_strength_brew_name">Strength Brew</string>
     <string name="item_strength_potion_name">Strength Potion</string>
     <string name="item_ranging_potion_name">Ranging Potion</string>

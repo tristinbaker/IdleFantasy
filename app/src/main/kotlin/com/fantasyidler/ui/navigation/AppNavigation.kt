@@ -54,6 +54,11 @@ fun AppNavigation() {
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = backStackEntry?.destination
 
+    val tabSubScreens: Map<String, Set<String>> = mapOf(
+        Screen.Home.route   to setOf(Screen.Shop.route, Screen.Settings.route),
+        Screen.Skills.route to setOf(Screen.Farming.route),
+    )
+
     Scaffold(
         bottomBar = {
             NavigationBar {
@@ -67,12 +72,18 @@ fun AppNavigation() {
                     NavigationBarItem(
                         selected = selected,
                         onClick = {
-                            navController.navigate(screen.route) {
-                                popUpTo(navController.graph.findStartDestination().id) {
-                                    saveState = true
+                            val currentRoute = currentDestination?.route
+                            val isInSubScreen = tabSubScreens[screen.route]?.contains(currentRoute) == true
+                            if (isInSubScreen) {
+                                navController.popBackStack(screen.route, inclusive = false)
+                            } else {
+                                navController.navigate(screen.route) {
+                                    popUpTo(navController.graph.findStartDestination().id) {
+                                        saveState = true
+                                    }
+                                    launchSingleTop = true
+                                    restoreState = true
                                 }
-                                launchSingleTop = true
-                                restoreState = true
                             }
                         },
                         icon = {

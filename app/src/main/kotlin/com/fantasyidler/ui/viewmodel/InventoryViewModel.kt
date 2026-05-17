@@ -132,6 +132,7 @@ class InventoryViewModel @Inject constructor(
                             EquipSlot.PICKAXE     -> item.miningEfficiency ?: 0f
                             EquipSlot.AXE         -> item.woodcuttingEfficiency ?: 0f
                             EquipSlot.FISHING_ROD -> item.fishingEfficiency ?: 0f
+                            EquipSlot.HOE         -> item.farmingEfficiency ?: 0f
                             else -> (item.attackBonus + item.strengthBonus + item.defenseBonus).toFloat()
                         }
                     }

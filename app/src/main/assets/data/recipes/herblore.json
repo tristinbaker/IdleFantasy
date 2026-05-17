@@ -35,6 +35,24 @@
     "time_per_item": 120,
     "effects": { "defense": 5 }
   },
+  "onion_brew": {
+    "display_name": "Onion Brew",
+    "level_required": 10,
+    "materials": { "onion": 2 },
+    "output_quantity": 1,
+    "xp_per_item": 20.0,
+    "time_per_item": 120,
+    "effects": { "attack": 2, "strength": 1 }
+  },
+  "carrot_brew": {
+    "display_name": "Carrot Brew",
+    "level_required": 17,
+    "materials": { "carrot": 2 },
+    "output_quantity": 1,
+    "xp_per_item": 30.0,
+    "time_per_item": 120,
+    "effects": { "ranged": 2 }
+  },
   "strength_brew": {
     "display_name": "Strength Brew",
     "level_required": 20,

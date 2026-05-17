@@ -231,6 +231,14 @@ class QueuedSessionStarter @Inject constructor(
                 val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
                 sessionRepo.startSession(Skills.CRAFTING, action.activityKey, encodeFrames(frames), qty * perItemMs, action.skillDisplayName)
             }
+            Skills.HERBLORE -> {
+                val r   = gameData.herbloreRecipes[action.activityKey] ?: return
+                val qty = action.qty.takeIf { it > 0 } ?: return
+                if (!r.materials.all { (item, needed) -> (inventory[item] ?: 0) >= needed * qty }) return
+                val frames    = buildCraftFrames(xpMap[Skills.HERBLORE] ?: 0L, qty, r.xpPerItem, r.outputQuantity, action.activityKey)
+                val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
+                sessionRepo.startSession(Skills.HERBLORE, action.activityKey, encodeFrames(frames), qty * perItemMs, action.skillDisplayName)
+            }
             "boss" -> {
                 val bossKey = action.activityKey
                 val boss    = gameData.bosses[bossKey] ?: return

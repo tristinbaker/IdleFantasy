@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.screen
 
+import kotlin.math.roundToInt
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -849,6 +850,7 @@ private fun buildEquipDetail(item: com.fantasyidler.data.json.EquipmentData): St
     item.miningEfficiency?.let      { parts.add("Mining ×${"%.2f".format(it)}") }
     item.woodcuttingEfficiency?.let { parts.add("WC ×${"%.2f".format(it)}") }
     item.fishingEfficiency?.let     { parts.add("Fishing ×${"%.2f".format(it)}") }
+    item.farmingEfficiency?.let     { parts.add("Farming +${(it * 100).roundToInt()}%") }
     if (parts.isEmpty()) {
         if (item.attackBonus   != 0) parts.add("Atk +${item.attackBonus}")
         if (item.strengthBonus != 0) parts.add("Str +${item.strengthBonus}")

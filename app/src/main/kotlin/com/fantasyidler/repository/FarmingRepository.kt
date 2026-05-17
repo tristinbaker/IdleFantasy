@@ -70,10 +70,9 @@ class FarmingRepository @Inject constructor(
         yield = (yield * (1f + hoeBonus)).roundToInt()
         if (capedDouble) yield *= 2
 
-        val seedReturned = Random.nextDouble() < 0.20
         val items = buildMap<String, Int> {
             put(crop.id, yield)
-            if (seedReturned) put(crop.seedName, 1)
+            put(crop.seedName, 1)
         }
 
         playerRepo.applySessionResults(
