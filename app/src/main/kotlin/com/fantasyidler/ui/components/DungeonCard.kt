@@ -1,6 +1,8 @@
 package com.fantasyidler.ui.components
 
+import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -11,6 +13,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -18,6 +21,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.fantasyidler.data.json.DungeonData
 import com.fantasyidler.simulator.CombatSimulator
+import com.fantasyidler.ui.motion.pressScale
 import com.fantasyidler.ui.theme.GoldPrimary
 
 @Composable
@@ -29,11 +33,18 @@ fun DungeonCard(
     survivalRating: CombatSimulator.SurvivalRating? = null,
 ) {
     val dimColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
+    val interactionSource = remember { MutableInteractionSource() }
 
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .clickable(enabled = unlocked, onClick = onTap)
+            .pressScale(interactionSource)
+            .clickable(
+                interactionSource = interactionSource,
+                indication = LocalIndication.current,
+                enabled = unlocked,
+                onClick = onTap,
+            )
             .padding(horizontal = 16.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {

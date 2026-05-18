@@ -37,8 +37,9 @@ fun CoinsBadge(
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
             Spacer(Modifier.width(8.dp))
-            Text(
-                text = coins.formatCoins(),
+            AnimatedCounter(
+                value = coins,
+                format = { it.formatCoins() },
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold,
                 color = GoldPrimary,

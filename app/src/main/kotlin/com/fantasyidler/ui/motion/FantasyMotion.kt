@@ -32,6 +32,10 @@ object FantasyMotion {
 
     val Smooth = tween<Float>(durationMillis = SMOOTH_MS, easing = FastOutSlowInEasing)
 
+    /** Same easing/duration as [Smooth] but generic — for IntOffset, Dp, etc. */
+    fun <T> snappy() = tween<T>(durationMillis = SNAPPY_MS, easing = FastOutSlowInEasing)
+    fun <T> smooth() = tween<T>(durationMillis = SMOOTH_MS, easing = FastOutSlowInEasing)
+
     val Bouncy = spring<Float>(
         dampingRatio = Spring.DampingRatioMediumBouncy,
         stiffness    = Spring.StiffnessMediumLow,

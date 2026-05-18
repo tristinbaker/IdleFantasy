@@ -1,6 +1,8 @@
 package com.fantasyidler.ui.components
 
+import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,11 +12,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.fantasyidler.ui.motion.pressScale
 
 @Composable
 fun ItemTile(
@@ -24,7 +28,18 @@ fun ItemTile(
     subLabel: String? = null,
     onClick: (() -> Unit)? = null,
 ) {
-    val clickable = if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier
+    val interactionSource = remember { MutableInteractionSource() }
+    val clickable = if (onClick != null) {
+        Modifier
+            .pressScale(interactionSource)
+            .clickable(
+                interactionSource = interactionSource,
+                indication = LocalIndication.current,
+                onClick = onClick,
+            )
+    } else {
+        Modifier
+    }
     Surface(
         shape = RoundedCornerShape(12.dp),
         color = MaterialTheme.colorScheme.surfaceVariant,
