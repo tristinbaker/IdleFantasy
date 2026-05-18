@@ -1,0 +1,87 @@
+# Mining pickaxes — 7 tier pickaxes + the end-game dwarven pickaxe.
+# Run:  python3 -m art.pipeline.ai.run --jobs art/pipeline/jobs/mining_pickaxes.yaml
+#
+# The tier colours follow art/pipeline/core/palette.py (mirrored from Color.kt):
+#   bronze   = warm orange-brown
+#   iron     = neutral grey
+#   steel    = blue-grey
+#   mithril  = deep purple
+#   adamant  = forest green   (note: equipment.json id is adamantite_*)
+#   rune(ite) = cyan blue
+#   dragon   = crimson red    (not present in the pickaxe ladder)
+#
+# Each pickaxe shares a base silhouette via the prompt; tier-templated
+# palette swapping is a planned follow-up.
+
+defaults:
+  width: 1024
+  height: 1024
+  steps: 25
+  cfg: 7.0
+  lora_scale: 1.0
+  sampler: dpmpp_2m_karras
+  negative: >-
+    blurry, photo, smooth, anti-aliased, gradient, 3d render, low quality,
+    signature, watermark, text, painted, oil painting, realistic, two pickaxes,
+    multiple tools
+  pixelize:
+    target_size: 64
+    palette_size: 16
+  bg_model: birefnet-general
+
+jobs:
+  - entity_id: bronze_pickaxe
+    seed: 2001
+    prompt: >-
+      pixel art, 16-bit RPG item sprite of a single pickaxe with a warm
+      orange-brown bronze metal head and a brown wooden handle, diagonal
+      orientation, simple chunky silhouette, plain white background,
+      crisp pixels, no shadows
+
+  - entity_id: iron_pickaxe
+    seed: 2002
+    prompt: >-
+      pixel art, 16-bit RPG item sprite of a single pickaxe with a neutral
+      grey iron metal head and a brown wooden handle, diagonal orientation,
+      simple chunky silhouette, plain white background, crisp pixels,
+      no shadows
+
+  - entity_id: steel_pickaxe
+    seed: 2003
+    prompt: >-
+      pixel art, 16-bit RPG item sprite of a single pickaxe with a blue-grey
+      steel metal head and a brown wooden handle, diagonal orientation,
+      simple chunky silhouette, plain white background, crisp pixels,
+      no shadows
+
+  - entity_id: mithril_pickaxe
+    seed: 2004
+    prompt: >-
+      pixel art, 16-bit RPG item sprite of a single pickaxe with a deep
+      purple mithril metal head and a brown wooden handle, diagonal
+      orientation, simple chunky silhouette, plain white background, crisp
+      pixels, no shadows
+
+  - entity_id: adamantite_pickaxe
+    seed: 2005
+    prompt: >-
+      pixel art, 16-bit RPG item sprite of a single pickaxe with a forest
+      green adamantite metal head and a brown wooden handle, diagonal
+      orientation, simple chunky silhouette, plain white background, crisp
+      pixels, no shadows
+
+  - entity_id: runite_pickaxe
+    seed: 2006
+    prompt: >-
+      pixel art, 16-bit RPG item sprite of a single pickaxe with a glowing
+      cyan blue runite metal head and a brown wooden handle, diagonal
+      orientation, simple chunky silhouette, plain white background, crisp
+      pixels, no shadows
+
+  - entity_id: dwarven_pickaxe
+    seed: 2007
+    prompt: >-
+      pixel art, 16-bit RPG item sprite of an ornate masterwork dwarven
+      pickaxe, intricate engraved silver-gold head with rune inscriptions,
+      dark oak handle wrapped in leather, diagonal orientation, chunky
+      silhouette, plain white background, crisp pixels, no shadows

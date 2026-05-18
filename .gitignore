@@ -13,3 +13,9 @@ local.properties
 *.keystore
 docs/fdroid/config.yml
 docs/fdroid/tmp/
+
+# AI sprite pipeline intermediates (raw SDXL output, bg-removed, pixelized).
+# Final density PNGs land in app/src/main/res/drawable-*dpi/ — those are
+# tracked. Staging is gitignored so AI raws never accidentally enter the repo.
+art/pipeline/staging/**
+

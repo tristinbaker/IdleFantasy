@@ -1,0 +1,21 @@
+# AI sprite-generation pipeline dependencies.
+# Install torch FIRST from the matching CUDA index (see README.md), then this file.
+#
+#   pip install --index-url https://download.pytorch.org/whl/cu121 \
+#       "torch>=2.2,<2.5" "torchvision>=0.17,<0.20"
+#   pip install -r art/pipeline/ai/requirements.txt
+#
+# Tested target: RTX 3080 12GB, CUDA 12.1, Python 3.10+.
+
+diffusers>=0.27,<0.32
+transformers>=4.40,<5
+accelerate>=0.30
+safetensors>=0.4
+peft>=0.10
+huggingface_hub>=0.23
+
+rembg[gpu]>=2.0.57
+onnxruntime-gpu>=1.17
+
+Pillow>=10.0
+pyyaml>=6.0
