@@ -77,6 +77,13 @@ class HomeViewModel @Inject constructor(
 
     private val _extra = MutableStateFlow(HomeUiState())
 
+    init {
+        // On every app open, ensure we didn't miss an alarm while the app was closed.
+        // If the active session has already passed its end time, complete it and advance
+        // the queue — mirrors what SessionAlarmReceiver would have done.
+        viewModelScope.launch { sessionRepo.recoverActiveSession(queuedSessionStarter) }
+    }
+
     val uiState: StateFlow<HomeUiState> = combine(
         playerRepo.playerFlow,
         sessionRepo.activeSessionFlow,

@@ -119,6 +119,7 @@ fun ShopScreen(
                     entries       = viewModel.buyEntries,
                     coins         = state.coins,
                     xpBoostActive = state.xpBoostActive,
+                    inventory     = state.inventory,
                     onBuy         = viewModel::openBuy,
                 )
                 else -> SellList(
@@ -164,6 +165,7 @@ private fun BuyList(
     entries: List<ShopEntry>,
     coins: Long,
     xpBoostActive: Boolean,
+    inventory: Map<String, Int>,
     onBuy: (ShopEntry) -> Unit,
 ) {
     val grouped = remember(entries) { entries.groupBy { it.categoryName } }
@@ -174,6 +176,7 @@ private fun BuyList(
             items(categoryEntries, key = { it.key }) { entry ->
                 val canAfford  = coins >= entry.price
                 val isXpBoost  = entry.key == ShopViewModel.XP_BOOST_KEY
+                val owned      = inventory[entry.key] ?: 0
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -209,6 +212,11 @@ private fun BuyList(
                                 ),
                             )
                         }
+                        Text(
+                            text  = stringResource(R.string.shop_qty_in_inv, owned),
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
+                        )
                     }
                     Text(
                         text       = stringResource(R.string.shop_total_amount, entry.price.toString()),
@@ -406,6 +414,8 @@ private fun TransactionSheet(
                     Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.crafting_increase))
                 }
             }
+            Spacer(Modifier.height(8.dp))
+            QtyQuickButtons(qty, transaction.maxQty) { onSetQty(it) }
             Spacer(Modifier.height(8.dp))
         }
 

@@ -10,7 +10,7 @@ navigationCompose   = "2.8.0"
 hilt                = "2.51.1"
 hiltExt             = "1.2.0"
 room                = "2.6.1"
-workmanager         = "2.9.0"
+appcompat           = "1.7.0"
 serialization       = "1.7.1"
 
 [libraries]
@@ -43,8 +43,8 @@ androidx-room-runtime               = { group = "androidx.room", name = "room-ru
 androidx-room-ktx                   = { group = "androidx.room", name = "room-ktx",      version.ref = "room" }
 androidx-room-compiler              = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 
-# WorkManager
-androidx-work-runtime-ktx           = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "workmanager" }
+# AppCompat (per-app locale on API 21+)
+androidx-appcompat                   = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 
 # kotlinx.serialization
 kotlinx-serialization-json          = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization" }

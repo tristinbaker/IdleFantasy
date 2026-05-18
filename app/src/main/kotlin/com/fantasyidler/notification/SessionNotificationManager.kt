@@ -81,6 +81,7 @@ class SessionNotificationManager @Inject constructor(
                 context.getString(R.string.notif_farming_ready_body, cropDisplayName)
             )
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setContentIntent(launchIntent())
             .setAutoCancel(true)
             .build()
 

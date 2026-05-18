@@ -1059,6 +1059,9 @@ private fun PrayerSheet(
                     enabled  = qty < maxQty,
                 ) { Icon(Icons.Filled.Add, contentDescription = "Increase") }
             }
+            Spacer(Modifier.height(8.dp))
+            QtyQuickButtons(qty, maxQty) { v -> qty = v; textValue = v.toString() }
+            Spacer(Modifier.height(8.dp))
 
             Text(
                 text     = stringResource(R.string.skills_xp_total, (qty * selectedBone.xpPerBone).toInt()),
@@ -1242,6 +1245,9 @@ private fun RunecraftingSheet(
                     enabled  = qty < maxQty,
                 ) { Icon(Icons.Filled.Add, contentDescription = "Increase") }
             }
+            Spacer(Modifier.height(8.dp))
+            QtyQuickButtons(qty, maxQty) { v -> qty = v; textValue = v.toString() }
+            Spacer(Modifier.height(8.dp))
 
             Text(
                 text       = stringResource(R.string.skills_xp_total, (qty * selectedRune.xpPerRune).toInt()),
@@ -1708,6 +1714,9 @@ private fun CraftQuantityContent(
                 Icon(Icons.Filled.Add, contentDescription = "Increase")
             }
         }
+        Spacer(Modifier.height(8.dp))
+        QtyQuickButtons(qty, max) { onSetQuantity(it) }
+        Spacer(Modifier.height(8.dp))
         Text(
             text     = stringResource(R.string.skills_xp_total, totalXp.toInt()),
             style    = MaterialTheme.typography.bodySmall,

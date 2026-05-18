@@ -17,7 +17,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
@@ -112,7 +114,7 @@ fun AppNavigation() {
                                 )
                             }
                         },
-                        label = { Text(stringResource(screen.labelRes)) },
+                        label = { Text(stringResource(screen.labelRes), maxLines = 1, overflow = TextOverflow.Ellipsis, fontSize = 10.sp) },
                     )
                 }
             }

@@ -55,7 +55,27 @@ class SessionRepository @Inject constructor(
         return session
     }
 
-    suspend fun markCompleted(sessionId: String) = sessionDao.markCompleted(sessionId)
+    suspend fun markCompleted(sessionId: String) {
+        sessionDao.markCompleted(sessionId)
+    }
+
+    /**
+     * Called on boot or app open to recover from a lost alarm.
+     * - If the active session has already passed its end time, marks it complete and
+     *   advances the queue via [starter].
+     * - If it's still running, reschedules the alarm so it fires at the correct time.
+     */
+    suspend fun recoverActiveSession(starter: QueuedSessionStarter) {
+        val session = getActiveSession() ?: return
+        if (session.completed) return
+        val now = System.currentTimeMillis()
+        if (now >= session.endsAt) {
+            markCompleted(session.sessionId)
+            starter.startNextQueued()
+        } else {
+            scheduleAlarm(session.sessionId, session.endsAt, session.skillName)
+        }
+    }
 
     suspend fun getSession(sessionId: String): SkillSession? = sessionDao.getSession(sessionId)
 
@@ -65,7 +85,9 @@ class SessionRepository @Inject constructor(
     }
 
     /** Delete a completed session after rewards have been applied. */
-    suspend fun deleteSession(sessionId: String) = sessionDao.delete(sessionId)
+    suspend fun deleteSession(sessionId: String) {
+        sessionDao.delete(sessionId)
+    }
 
     suspend fun deleteAllSessions() = sessionDao.deleteAll()
 

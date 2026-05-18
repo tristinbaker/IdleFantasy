@@ -15,8 +15,8 @@ android {
         applicationId = "com.tristinbaker.idlefantasy"
         minSdk = 26
         targetSdk = 35
-        versionCode = 19
-        versionName = "1.2.2"
+        versionCode = 21
+        versionName = "1.2.4"
     }
 
     dependenciesInfo {
@@ -96,6 +96,9 @@ dependencies {
     ksp(libs.androidx.room.compiler)
 
     ksp(libs.androidx.hilt.compiler)
+
+    // AppCompat (per-app locale on API 21+)
+    implementation(libs.androidx.appcompat)
 
     // kotlinx.serialization
     implementation(libs.kotlinx.serialization.json)

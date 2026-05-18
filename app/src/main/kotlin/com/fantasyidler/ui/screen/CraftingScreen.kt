@@ -383,6 +383,9 @@ private fun CraftSheet(
                 Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.crafting_increase))
             }
         }
+        Spacer(Modifier.height(8.dp))
+        QtyQuickButtons(qty, max) { onSetQuantity(it) }
+        Spacer(Modifier.height(8.dp))
 
         Text(
             text     = stringResource(R.string.crafting_xp_total, totalXp.toInt()),

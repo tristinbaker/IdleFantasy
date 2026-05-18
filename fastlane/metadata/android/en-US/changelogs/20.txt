@@ -1,0 +1,3 @@
+• New: Quick-select buttons (1, 60, 180, Max, +/-10, +/-100) added to all quantity pickers in shop and crafting
+• Fix: Equip Best Gear now respects stat requirements and will not equip items you cannot use
+• Fix: Session queue getting stuck when the app is closed or the device is rebooted (#57)
