@@ -5,17 +5,17 @@
 
     <!-- Mining -->
     <string name="quest_mining_1_name">Minage I</string>
-    <string name="quest_mining_1_objective">Minez 500 Minerais de Cuivre</string>
+    <string name="quest_mining_1_objective">Miner 500 Minerais de Cuivre</string>
     <string name="quest_mining_2_name">Minage II</string>
-    <string name="quest_mining_2_objective">Minez 750 Minerais de Fer</string>
+    <string name="quest_mining_2_objective">Miner 750 Minerais de Fer</string>
     <string name="quest_mining_3_name">Minage III</string>
-    <string name="quest_mining_3_objective">Minez 1100 Charbon</string>
+    <string name="quest_mining_3_objective">Miner 1100 Charbon</string>
     <string name="quest_mining_4_name">Minage IV</string>
-    <string name="quest_mining_4_objective">Minez 1650 Minerais de Mithril</string>
+    <string name="quest_mining_4_objective">Miner 1650 Minerais de Mithril</string>
     <string name="quest_mining_5_name">Minage V</string>
-    <string name="quest_mining_5_objective">Minez 2450 Minerais d'Adamantite</string>
+    <string name="quest_mining_5_objective">Miner 2450 Minerais d'Adamantite</string>
     <string name="quest_mining_6_name">Minage VI</string>
-    <string name="quest_mining_6_objective">Minez 3650 Minerais de Runite</string>
+    <string name="quest_mining_6_objective">Miner 3650 Minerais de Runite</string>
 
     <!-- Woodcutting -->
     <string name="quest_woodcutting_1_name">Coupe de bois I</string>
