@@ -170,17 +170,8 @@ fun SkillsScreen(
                 )
             }
 
-            // Crafting skills
-            item { SectionHeader(stringResource(R.string.label_crafting_skills)) }
-            items(Skills.CRAFTING_SKILLS) { key ->
-                SkillRow(
-                    skillKey = key,
-                    level    = state.skillLevels[key] ?: 1,
-                    xp       = state.skillXp[key] ?: 0L,
-                    isActive = state.activeSession?.skillName == key && state.activeSession?.completed == false,
-                    onClick  = { viewModel.onSkillTapped(key) },
-                )
-            }
+            // Crafting skills now live in their own bottom-nav tab — see
+            // CraftingScreen.kt. Promoted out of Skills in PR 9.
 
             // Prayer
             item { SectionHeader(stringResource(R.string.label_prayer)) }
