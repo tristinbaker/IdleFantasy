@@ -48,6 +48,12 @@ fun DungeonCard(
             .padding(horizontal = 16.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
+        EntityIcon(
+            entityId = dungeon.name,
+            label = dungeon.displayName,
+            size = 40.dp,
+        )
+        Spacer(Modifier.width(12.dp))
         Column(Modifier.weight(1f)) {
             Text(
                 text = dungeon.displayName,
