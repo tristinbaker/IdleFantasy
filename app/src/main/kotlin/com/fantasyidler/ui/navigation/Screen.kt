@@ -3,6 +3,8 @@ package com.fantasyidler.ui.navigation
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Build
+import androidx.compose.material.icons.filled.Explore
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.icons.filled.Settings
@@ -10,6 +12,8 @@ import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material.icons.filled.ShowChart
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.outlined.AccountCircle
+import androidx.compose.material.icons.outlined.Build
+import androidx.compose.material.icons.outlined.Explore
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.MenuBook
 import androidx.compose.material.icons.outlined.Settings
@@ -37,12 +41,27 @@ sealed class Screen(
         selectedIcon = Icons.Filled.Shield,
     )
     object Home : Screen(
+        // Retained as a routable sub-screen during the PR #9 transition;
+        // not in bottomNavItems anymore (Adventure replaced it).
         route        = "home",
         labelRes     = R.string.nav_home,
         icon         = Icons.Outlined.Home,
         selectedIcon = Icons.Filled.Home,
     )
+    object Adventure : Screen(
+        route        = "adventure",
+        labelRes     = R.string.nav_adventure,
+        icon         = Icons.Outlined.Explore,
+        selectedIcon = Icons.Filled.Explore,
+    )
+    object Crafting : Screen(
+        route        = "crafting",
+        labelRes     = R.string.nav_crafting,
+        icon         = Icons.Outlined.Build,
+        selectedIcon = Icons.Filled.Build,
+    )
     object Quests : Screen(
+        // Kept as a routable sub-screen reached from Adventure. Not a tab.
         route        = "quests",
         labelRes     = R.string.nav_quests,
         icon         = Icons.Outlined.MenuBook,
@@ -75,6 +94,6 @@ sealed class Screen(
     )
 
     companion object {
-        val bottomNavItems = listOf(Skills, Combat, Home, Quests, Profile)
+        val bottomNavItems = listOf(Skills, Combat, Adventure, Crafting, Profile)
     }
 }

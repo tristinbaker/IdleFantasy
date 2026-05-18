@@ -30,9 +30,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.ui.components.FantasyTopHud
 import com.fantasyidler.ui.components.GlobalGameOverlay
 import com.fantasyidler.ui.motion.FantasyMotion
+import com.fantasyidler.ui.screen.AdventureScreen
 import com.fantasyidler.ui.screen.CombatScreen
+import com.fantasyidler.ui.screen.CraftingScreen
 import com.fantasyidler.ui.screen.FarmingScreen
-import com.fantasyidler.ui.screen.HomeScreen
 import com.fantasyidler.ui.screen.OnboardingScreen
 import com.fantasyidler.ui.screen.ProfileScreen
 import com.fantasyidler.ui.screen.QuestsScreen
@@ -60,8 +61,8 @@ fun AppNavigation() {
     val currentDestination = backStackEntry?.destination
 
     val tabSubScreens: Map<String, Set<String>> = mapOf(
-        "home"   to setOf("shop", "settings"),
-        "skills" to setOf("farming"),
+        "adventure" to setOf("shop", "settings", "quests"),
+        "skills"    to setOf("farming"),
     )
 
     val tabRoutes = Screen.bottomNavItems.map { it.route }.toSet()
@@ -121,7 +122,8 @@ fun AppNavigation() {
                         ?.hierarchy
                         ?.any { it.route == screen.route } == true
 
-                    val isHome = screen is Screen.Home
+                    // The centre tab gets the bigger pill treatment. Was Home; now Adventure.
+                    val isHub = screen is Screen.Adventure
 
                     NavigationBarItem(
                         selected = selected,
@@ -136,13 +138,13 @@ fun AppNavigation() {
                                         saveState = true
                                     }
                                     launchSingleTop = true
-                                    restoreState = !isHome
+                                    restoreState = !isHub
                                 }
                             }
                         },
                         icon = {
-                            if (isHome) {
-                                // Larger filled circle for the centre Home button
+                            if (isHub) {
+                                // Larger filled circle for the centre hub button (Adventure)
                                 Surface(
                                     shape  = CircleShape,
                                     color  = if (selected) MaterialTheme.colorScheme.primary
@@ -174,7 +176,7 @@ fun AppNavigation() {
     ) { innerPadding ->
         NavHost(
             navController    = navController,
-            startDestination = Screen.Home.route,
+            startDestination = Screen.Adventure.route,
             modifier         = Modifier.padding(innerPadding),
             enterTransition    = FantasyMotion.NavEnter,
             exitTransition     = FantasyMotion.NavExit,
@@ -194,12 +196,28 @@ fun AppNavigation() {
                 FarmingScreen(onBack = { if (navController.currentBackStackEntry == entry) navController.popBackStack() })
             }
             composable(Screen.Combat.route)   { CombatScreen() }
-            composable(Screen.Home.route)     {
-                HomeScreen(
-                    onNavigateToSettings = { navController.navigate(Screen.Settings.route) },
-                    onNavigateToShop     = { navController.navigate(Screen.Shop.route) },
+            composable(Screen.Adventure.route) {
+                AdventureScreen(
+                    onOpenQuests       = { navController.navigate(Screen.Quests.route) },
+                    onOpenAchievements = {
+                        navController.navigate(Screen.Profile.route) {
+                            popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+                            launchSingleTop = true
+                            restoreState    = true
+                        }
+                    },
+                    onEnterDungeon     = {
+                        // Deep-link the chosen dungeon: drop to Combat. The
+                        // CombatScreen will display the dungeon list — full
+                        // pre-selection wiring is left for a follow-up.
+                        navController.navigate(Screen.Combat.route) {
+                            popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+                            launchSingleTop = true
+                        }
+                    },
                 )
             }
+            composable(Screen.Crafting.route) { CraftingScreen() }
             composable(Screen.Quests.route)   { QuestsScreen() }
             composable(Screen.Profile.route)  { ProfileScreen() }
             composable(
