@@ -4,8 +4,10 @@
 
     <!-- Session completion notifications -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <!-- Required for AlarmManager.setAndAllowWhileIdle to wake the device -->
+    <!-- Reschedule session alarms after device reboot -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- Keep CPU awake while the alarm receiver coroutine processes session completion -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:name=".FantasyIdlerApp"
@@ -39,6 +41,14 @@
         <receiver
             android:name=".receiver.FarmPatchAlarmReceiver"
             android:exported="false" />
+
+        <receiver
+            android:name=".receiver.BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
 
     </application>
 

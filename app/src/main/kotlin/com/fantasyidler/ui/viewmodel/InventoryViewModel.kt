@@ -123,10 +123,12 @@ class InventoryViewModel @Inject constructor(
             val equipment = allEquipment
             val newEquipped = playerRepo.getEquipped().toMutableMap()
 
+            val skillLevels = state.skillLevels
             for (slot in EquipSlot.ALL) {
                 val best = state.inventory.keys
                     .mapNotNull { equipment[it] }
                     .filter { it.slot == slot }
+                    .filter { item -> item.requirements.all { (skill, lvl) -> (skillLevels[skill] ?: 1) >= lvl } }
                     .maxByOrNull { item ->
                         when (slot) {
                             EquipSlot.PICKAXE     -> item.miningEfficiency ?: 0f

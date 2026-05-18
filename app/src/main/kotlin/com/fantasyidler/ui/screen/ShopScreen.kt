@@ -407,6 +407,8 @@ private fun TransactionSheet(
                 }
             }
             Spacer(Modifier.height(8.dp))
+            QtyQuickButtons(qty, transaction.maxQty) { onSetQty(it) }
+            Spacer(Modifier.height(8.dp))
         }
 
         Row(

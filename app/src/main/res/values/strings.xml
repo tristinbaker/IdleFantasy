@@ -494,4 +494,7 @@
     <string name="onboarding_quests_title">Quests &amp; Pets</string>
     <string name="onboarding_quests_desc">Complete quests to earn XP rewards. Rare pets can drop while training skills and provide permanent XP boosts.</string>
     <string name="onboarding_welcome_desc">An idle RPG inspired by classic MMORPGs. Train skills, fight dungeons, and craft gear. All offline, no accounts, no ads.</string>
+
+    <!-- Quantity picker quick buttons -->
+    <string name="qty_max">Max</string>
 </resources>
