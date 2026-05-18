@@ -19,3 +19,7 @@ docs/fdroid/tmp/
 # tracked. Staging is gitignored so AI raws never accidentally enter the repo.
 art/pipeline/staging/**
 
+# Python bytecode caches.
+__pycache__/
+*.pyc
+
