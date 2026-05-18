@@ -4,7 +4,7 @@ A free and open source offline idle RPG for Android. Train skills, fight in dung
 
 ## Features
 
-- **18 trainable skills**: Mining, Fishing, Woodcutting, Firemaking, Agility, Runecrafting, Smithing, Cooking, Fletching, Crafting, Prayer, Attack, Strength, Defence, Ranged, Magic, Hitpoints
+- **20 trainable skills**: Mining, Fishing, Farming, Woodcutting, Firemaking, Agility, Runecrafting, Smithing, Cooking, Fletching, Herblore, Crafting, Prayer, Attack, Strength, Defence, Ranged, Magic, Hitpoints
 - **Session-based training**: Start a session and close the app. Come back up to an hour later to collect your loot and XP
 - **12 dungeons**: Fight solo bosses and enemies to earn combat XP, coins, and rare drops. Melee, Ranged, and Magic combat styles supported
 - **Crafting system**: Smelt bars, cook fish, fletch bows and arrows, craft jewellery
