@@ -4,90 +4,91 @@
     <!-- Translator note: quest names are short titles; objectives are action sentences. -->
 
     <!-- Mining -->
-    <string name="quest_mining_1_name">Mining I</string>
-    <string name="quest_mining_1_objective">Mine 500 Copper Ore</string>
-    <string name="quest_mining_2_name">Mining II</string>
-    <string name="quest_mining_2_objective">Mine 750 Iron Ore</string>
-    <string name="quest_mining_3_name">Mining III</string>
-    <string name="quest_mining_3_objective">Mine 1100 Coal</string>
-    <string name="quest_mining_4_name">Mining IV</string>
-    <string name="quest_mining_4_objective">Mine 1650 Mithril Ore</string>
-    <string name="quest_mining_5_name">Mining V</string>
-    <string name="quest_mining_5_objective">Mine 2450 Adamantite Ore</string>
-    <string name="quest_mining_6_name">Mining VI</string>
-    <string name="quest_mining_6_objective">Mine 3650 Runite Ore</string>
+    <string name="quest_mining_1_name">Minage I</string>
+    <string name="quest_mining_1_objective">Minez 500 Minerais de Cuivre</string>
+    <string name="quest_mining_2_name">Minage II</string>
+    <string name="quest_mining_2_objective">Minez 750 Minerais de Fer</string>
+    <string name="quest_mining_3_name">Minage III</string>
+    <string name="quest_mining_3_objective">Minez 1100 Charbon</string>
+    <string name="quest_mining_4_name">Minage IV</string>
+    <string name="quest_mining_4_objective">Minez 1650 Minerais de Mithril</string>
+    <string name="quest_mining_5_name">Minage V</string>
+    <string name="quest_mining_5_objective">Minez 2450 Minerais d'Adamantite</string>
+    <string name="quest_mining_6_name">Minage VI</string>
+    <string name="quest_mining_6_objective">Minez 3650 Minerais de Runite</string>
 
     <!-- Woodcutting -->
-    <string name="quest_woodcutting_1_name">Woodcutting I</string>
-    <string name="quest_woodcutting_1_objective">Cut 500 Logs</string>
-    <string name="quest_woodcutting_2_name">Woodcutting II</string>
-    <string name="quest_woodcutting_2_objective">Cut 750 Oak Logs</string>
-    <string name="quest_woodcutting_3_name">Woodcutting III</string>
-    <string name="quest_woodcutting_3_objective">Cut 1100 Willow Logs</string>
-    <string name="quest_woodcutting_4_name">Woodcutting IV</string>
-    <string name="quest_woodcutting_4_objective">Cut 1650 Maple Logs</string>
-    <string name="quest_woodcutting_5_name">Woodcutting V</string>
-    <string name="quest_woodcutting_5_objective">Cut 2450 Yew Logs</string>
-    <string name="quest_woodcutting_6_name">Woodcutting VI</string>
-    <string name="quest_woodcutting_6_objective">Cut 3650 Magic Logs</string>
+    <string name="quest_woodcutting_1_name">Coupe de bois I</string>
+    <string name="quest_woodcutting_1_objective">Couper 500 bûches</string>
+    <string name="quest_woodcutting_2_name">Coupe de bois II</string>
+    <string name="quest_woodcutting_2_objective">Couper 750 bûches de chêne</string>
+    <string name="quest_woodcutting_3_name">Coupe de bois III</string>
+    <string name="quest_woodcutting_3_objective">Couper 1100 bûches de saule</string>
+    <string name="quest_woodcutting_4_name">Coupe de bois IV</string>
+    <string name="quest_woodcutting_4_objective">Couper 1650 bûches d'érable</string>
+    <string name="quest_woodcutting_5_name">Coupe de bois V</string>
+    <string name="quest_woodcutting_5_objective">Couper 2450 de bûches de if</string>
+    <string name="quest_woodcutting_6_name">Coupe de bois VI</string>
+    <string name="quest_woodcutting_6_objective">Couper 3650 de bûches magiques</string>
 
     <!-- Fishing -->
-    <string name="quest_fishing_1_name">Fishing I</string>
-    <string name="quest_fishing_1_objective">Catch 500 fish</string>
-    <string name="quest_fishing_2_name">Fishing II</string>
-    <string name="quest_fishing_2_objective">Catch 750 fish</string>
-    <string name="quest_fishing_3_name">Fishing III</string>
-    <string name="quest_fishing_3_objective">Catch 1100 fish</string>
-    <string name="quest_fishing_4_name">Fishing IV</string>
-    <string name="quest_fishing_4_objective">Catch 1650 fish</string>
-    <string name="quest_fishing_5_name">Fishing V</string>
-    <string name="quest_fishing_5_objective">Catch 2450 fish</string>
-    <string name="quest_fishing_6_name">Fishing VI</string>
-    <string name="quest_fishing_6_objective">Catch 3650 fish</string>
+    <string name="quest_fishing_1_name">Pêche I</string>
+    <string name="quest_fishing_1_objective">Attraper 500 poissons</string>
+    <string name="quest_fishing_2_name">Pêche II</string>
+    <string name="quest_fishing_2_objective">Attraper 750 poissons</string>
+    <string name="quest_fishing_3_name">Pêche III</string>
+    <string name="quest_fishing_3_objective">Attraper 1100 poissons</string>
+    <string name="quest_fishing_4_name">Pêche IV</string>
+    <string name="quest_fishing_4_objective">Attraper 1650 poissons</string>
+    <string name="quest_fishing_5_name">Pêche V</string>
+    <string name="quest_fishing_5_objective">Attraper 2450 poissons</string>
+    <string name="quest_fishing_6_name">Pêche VI</string>
+    <string name="quest_fishing_6_objective">Attraper 3650 poissons</string>
+
 
     <!-- Smithing -->
-    <string name="quest_smithing_1_name">Smithing I</string>
-    <string name="quest_smithing_1_objective">Smelt 500 Bronze Bars</string>
-    <string name="quest_smithing_2_name">Smithing II</string>
-    <string name="quest_smithing_2_objective">Smelt 750 Iron Bars</string>
-    <string name="quest_smithing_3_name">Smithing III</string>
-    <string name="quest_smithing_3_objective">Smelt 1100 Steel Bars</string>
-    <string name="quest_smithing_4_name">Smithing IV</string>
-    <string name="quest_smithing_4_objective">Smelt 1650 Mithril Bars</string>
-    <string name="quest_smithing_5_name">Smithing V</string>
-    <string name="quest_smithing_5_objective">Smelt 2450 Adamantite Bars</string>
-    <string name="quest_smithing_6_name">Smithing VI</string>
-    <string name="quest_smithing_6_objective">Smelt 3650 Runite Bars</string>
+    <string name="quest_smithing_1_name">Forge I</string>
+    <string name="quest_smithing_1_objective">Fondez 500 lingots de bronze</string>
+    <string name="quest_smithing_2_name">Forge II</string>
+    <string name="quest_smithing_2_objective">Fondez 750 lingots de fer</string>
+    <string name="quest_smithing_3_name">Forge III</string>
+    <string name="quest_smithing_3_objective">Fondez 1100 lingots d'acier</string>
+    <string name="quest_smithing_4_name">Forge IV</string>
+    <string name="quest_smithing_4_objective">Fondez 1650 lingots de mithril</string>
+    <string name="quest_smithing_5_name">Forge V</string>
+    <string name="quest_smithing_5_objective">Fondez 2450 lingots d'adamantite</string>
+    <string name="quest_smithing_6_name">Forge VI</string>
+    <string name="quest_smithing_6_objective">Fondez 3650 lingots de runite</string>
 
     <!-- Cooking - Fish -->
-    <string name="quest_cooking_fish_1_name">Cooking — Fish I</string>
-    <string name="quest_cooking_fish_1_objective">Cook 500 fish</string>
-    <string name="quest_cooking_fish_2_name">Cooking — Fish II</string>
-    <string name="quest_cooking_fish_2_objective">Cook 750 fish</string>
-    <string name="quest_cooking_fish_3_name">Cooking — Fish III</string>
-    <string name="quest_cooking_fish_3_objective">Cook 1100 fish</string>
-    <string name="quest_cooking_fish_4_name">Cooking — Fish IV</string>
-    <string name="quest_cooking_fish_4_objective">Cook 1650 fish</string>
-    <string name="quest_cooking_fish_5_name">Cooking — Fish V</string>
-    <string name="quest_cooking_fish_5_objective">Cook 2450 fish</string>
-    <string name="quest_cooking_fish_6_name">Cooking — Fish VI</string>
-    <string name="quest_cooking_fish_6_objective">Cook 3650 fish</string>
+    <string name="quest_cooking_fish_1_name">Cuisinez — Poisson I</string>
+    <string name="quest_cooking_fish_1_objective">Cuisinez 500 poissons</string>
+    <string name="quest_cooking_fish_2_name">Cuisinez — Poisson II</string>
+    <string name="quest_cooking_fish_2_objective">Cuisinez 750 poissons</string>
+    <string name="quest_cooking_fish_3_name">Cuisinez — Poisson III</string>
+    <string name="quest_cooking_fish_3_objective">Cuisinez 1100 poissons</string>
+    <string name="quest_cooking_fish_4_name">Cuisinez — Poisson IV</string>
+    <string name="quest_cooking_fish_4_objective">Cuisinez 1650 poissons</string>
+    <string name="quest_cooking_fish_5_name">Cuisinez — Poisson V</string>
+    <string name="quest_cooking_fish_5_objective">Cuisinez 2450 poissons</string>
+    <string name="quest_cooking_fish_6_name">Cuisinez — Poisson VI</string>
+    <string name="quest_cooking_fish_6_objective">Cuisinez 3650 poissons</string>
 
     <!-- Cooking - Beef -->
-    <string name="quest_cooking_beef_1_name">Cooking — Beef I</string>
-    <string name="quest_cooking_beef_1_objective">Cook 100 Beef</string>
-    <string name="quest_cooking_beef_2_name">Cooking — Beef II</string>
-    <string name="quest_cooking_beef_2_objective">Cook 250 Beef</string>
-    <string name="quest_cooking_beef_3_name">Cooking — Beef III</string>
-    <string name="quest_cooking_beef_3_objective">Cook 500 Beef</string>
+    <string name="quest_cooking_beef_1_name">Cuisinez — Bœuf I</string>
+    <string name="quest_cooking_beef_1_objective">Cuisinez 100 morceaux de bœuf</string>
+    <string name="quest_cooking_beef_2_name">Cuisinez — Bœuf II</string>
+    <string name="quest_cooking_beef_2_objective">Cuisinez 250 morceaux de bœuf</string>
+    <string name="quest_cooking_beef_3_name">Cuisinez — Bœuf III</string>
+    <string name="quest_cooking_beef_3_objective">Cuisinez 500 morceaux de bœuf</string>
 
     <!-- Cooking - Chicken -->
-    <string name="quest_cooking_chicken_1_name">Cooking — Chicken I</string>
-    <string name="quest_cooking_chicken_1_objective">Cook 100 Chicken</string>
-    <string name="quest_cooking_chicken_2_name">Cooking — Chicken II</string>
-    <string name="quest_cooking_chicken_2_objective">Cook 250 Chicken</string>
-    <string name="quest_cooking_chicken_3_name">Cooking — Chicken III</string>
-    <string name="quest_cooking_chicken_3_objective">Cook 500 Chicken</string>
+    <string name="quest_cooking_chicken_1_name">Cuisinez — Poulet I</string>
+    <string name="quest_cooking_chicken_1_objective">Cuisinez 100 morceaux de poulet</string>
+    <string name="quest_cooking_chicken_2_name">Cuisinez — Poulet II</string>
+    <string name="quest_cooking_chicken_2_objective">Cuisinez 250 morceaux de poulet</string>
+    <string name="quest_cooking_chicken_3_name">Cuisinez — Poulet III</string>
+    <string name="quest_cooking_chicken_3_objective">Cuisinez 500 morceaux de poulet</string>
 
     <!-- Cooking - Mutton -->
     <string name="quest_cooking_mutton_1_name">Cooking — Mutton I</string>
