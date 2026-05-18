@@ -15,8 +15,8 @@ android {
         applicationId = "com.tristinbaker.idlefantasy"
         minSdk = 26
         targetSdk = 35
-        versionCode = 19
-        versionName = "1.2.2"
+        versionCode = 20
+        versionName = "1.2.3-alpha"
     }
 
     dependenciesInfo {
@@ -24,19 +24,28 @@ android {
         includeInBundle = false
     }
 
+    val defideKeystore = file(
+        System.getenv("DEFIDE_KEYSTORE_PATH")
+            ?: "${System.getProperty("user.home")}/.android/defide-release.jks",
+    )
+
     signingConfigs {
         create("release") {
-            storeFile     = file("${System.getProperty("user.home")}/.android/defide-release.jks")
-            storePassword = System.getenv("DEFIDE_STORE_PASSWORD") ?: ""
-            keyAlias      = "defide"
-            keyPassword   = System.getenv("DEFIDE_KEY_PASSWORD") ?: ""
+            if (defideKeystore.exists()) {
+                storeFile     = defideKeystore
+                storePassword = System.getenv("DEFIDE_STORE_PASSWORD") ?: ""
+                keyAlias      = "defide"
+                keyPassword   = System.getenv("DEFIDE_KEY_PASSWORD") ?: ""
+            }
         }
     }
 
     buildTypes {
         release {
             isMinifyEnabled = true
-            signingConfig   = signingConfigs.getByName("release")
+            if (defideKeystore.exists()) {
+                signingConfig = signingConfigs.getByName("release")
+            }
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
