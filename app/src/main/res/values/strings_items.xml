@@ -588,5 +588,5 @@
     <string name="item_super_defense_potion_name">Super Potion de Défense</string>
     <string name="item_super_ranging_potion_name">Super Potion de Tir</string>
     <string name="item_super_magic_potion_name">Super Potion Magique</string>
-<string name="item_overload_potion_name">Potion de Surchage</string>
+    <string name="item_overload_potion_name">Potion de Surchage</string>
 </resources>
