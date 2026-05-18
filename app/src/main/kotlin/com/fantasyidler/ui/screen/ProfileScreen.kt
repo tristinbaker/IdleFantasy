@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.TextButton
@@ -59,7 +60,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.R
 import com.fantasyidler.data.json.CookingRecipe
 import com.fantasyidler.data.model.EquipSlot
+import com.fantasyidler.ui.components.ChunkyCard
 import com.fantasyidler.ui.components.CoinsBadge
+import com.fantasyidler.ui.components.HeroBlock
+import com.fantasyidler.ui.components.IconDisk
 import com.fantasyidler.ui.components.SectionHeader
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.Achievement
@@ -114,64 +118,52 @@ fun ProfileScreen(
         ) {
             CoinsBadge(state.coins)
 
-            // ── Character identity header ────────────────────────────────
-            Surface(
-                color    = MaterialTheme.colorScheme.surfaceVariant,
-                modifier = Modifier.fillMaxWidth(),
-            ) {
-                Row(
-                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Column(Modifier.weight(1f)) {
-                        Text(
-                            text       = state.characterName.ifBlank { stringResource(R.string.profile_unnamed) },
-                            style      = MaterialTheme.typography.titleMedium,
-                            fontWeight = FontWeight.Bold,
+            // Character hero — name, race/gender, total level, edit shortcut.
+            Box(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
+                HeroBlock(
+                    title    = state.characterName.ifBlank { stringResource(R.string.profile_unnamed) },
+                    subtitle = buildString {
+                        if (state.characterRace.isNotBlank()) append(state.characterRace)
+                        if (state.characterRace.isNotBlank() && state.characterGender.isNotBlank()) append(" • ")
+                        if (state.characterGender.isNotBlank()) append(state.characterGender)
+                    }.ifBlank { null },
+                    leading  = {
+                        IconDisk(
+                            imageVector        = Icons.Filled.Person,
+                            contentDescription = null,
+                            size               = 56.dp,
+                            background         = GoldPrimary.copy(alpha = 0.24f),
                         )
-                        val subtitle = buildString {
-                            if (state.characterRace.isNotBlank()) append(state.characterRace)
-                            if (state.characterRace.isNotBlank() && state.characterGender.isNotBlank()) append(" • ")
-                            if (state.characterGender.isNotBlank()) append(state.characterGender)
-                        }
-                        if (subtitle.isNotBlank()) {
-                            Text(
-                                text  = subtitle,
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    },
+                    trailing = {
+                        IconButton(onClick = { showEditSheet = true }) {
+                            Icon(
+                                imageVector        = Icons.Filled.Edit,
+                                contentDescription = "Edit character",
+                                tint               = MaterialTheme.colorScheme.onSurfaceVariant,
                             )
                         }
-                    }
-                    IconButton(onClick = { showEditSheet = true }) {
-                        Icon(
-                            imageVector        = Icons.Filled.Edit,
-                            contentDescription = "Edit character",
-                            tint               = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
-                    }
-                }
-            }
-
-            Surface(
-                color    = MaterialTheme.colorScheme.surfaceVariant,
-                modifier = Modifier.fillMaxWidth(),
-            ) {
-                Row(
-                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Text(
-                        text  = stringResource(R.string.label_total_level),
-                        style = MaterialTheme.typography.labelMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                    Text(
-                        text       = state.totalLevel.toString(),
-                        style      = MaterialTheme.typography.labelLarge,
-                        fontWeight = FontWeight.Bold,
-                    )
-                }
+                    },
+                    content = {
+                        Row(
+                            modifier              = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment     = Alignment.CenterVertically,
+                        ) {
+                            Text(
+                                text  = stringResource(R.string.label_total_level),
+                                style = MaterialTheme.typography.labelLarge,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                            Text(
+                                text       = state.totalLevel.toString(),
+                                style      = MaterialTheme.typography.headlineSmall,
+                                fontWeight = FontWeight.Bold,
+                                color      = GoldPrimary,
+                            )
+                        }
+                    },
+                )
             }
 
             ScrollableTabRow(selectedTabIndex = selectedTab) {
@@ -270,42 +262,47 @@ private fun SkillsTab(
 @Composable
 private fun ProfileSkillRow(name: String, level: Int, xp: Long) {
     val progress = xpProgressFraction(xp)
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Text(
-            text       = level.toString(),
-            style      = MaterialTheme.typography.labelLarge,
-            fontWeight = FontWeight.Bold,
-            modifier   = Modifier.width(32.dp),
-        )
-        Column(Modifier.weight(1f)) {
-            Row(
-                modifier              = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
+    ChunkyCard(modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Surface(
+                shape = CircleShape,
+                color = GoldPrimary.copy(alpha = 0.18f),
+                modifier = Modifier.size(40.dp),
             ) {
-                Text(name, style = MaterialTheme.typography.bodyMedium)
-                Text(
-                    text  = "${xp.formatXp()} XP",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
+                    Text(
+                        text       = level.toString(),
+                        style      = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold,
+                        color      = GoldPrimary,
+                    )
+                }
+            }
+            Spacer(Modifier.width(14.dp))
+            Column(Modifier.weight(1f)) {
+                Row(
+                    modifier              = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    Text(name, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+                    Text(
+                        text  = "${xp.formatXp()} XP",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+                Spacer(Modifier.height(6.dp))
+                LinearProgressIndicator(
+                    progress = { progress },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(6.dp)
+                        .clip(RoundedCornerShape(3.dp)),
+                    color    = GoldPrimary,
                 )
             }
-            Spacer(Modifier.height(3.dp))
-            LinearProgressIndicator(
-                progress = { progress },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(3.dp)
-                    .clip(RoundedCornerShape(2.dp)),
-                color    = GoldPrimary,
-            )
         }
     }
-    HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
 }
 
 // ---------------------------------------------------------------------------
