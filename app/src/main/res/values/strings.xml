@@ -36,7 +36,7 @@
     <string name="btn_enter_dungeon">Entrer dans le Donjon</string>
     <string name="btn_enter_arena">Entrer dans Arène</string>
     <string name="btn_activate">Activer</string>
-    <string name="btn_deactivate">Deactiver</string>
+    <string name="btn_deactivate">Désactiver</string>
     <string name="btn_close">Fermer</string>
     <string name="btn_back">Retour</string>
 
@@ -47,7 +47,7 @@
     <string name="label_hp">HP</string>
     <string name="label_attack">Attaque</string>
     <string name="label_strength">Force</string>
-    <string name="label_defense">Defense</string>
+    <string name="label_defense">Défense</string>
     <string name="label_ranged">À distance</string>
     <string name="label_magic">Magie</string>
     <string name="label_prayer">Prière</string>
@@ -109,7 +109,7 @@
     <string name="label_runes">Runes</string>
     <string name="label_spell">Spell</string>
     <string name="label_none">None</string>
-    <string name="label_melee">Melee</string>
+    <string name="label_melee">Mêlée</string>
     <string name="label_ranged_style">Ranged</string>
     <string name="label_magic_style">Magic</string>
     <string name="label_gathering">Gathering</string>
