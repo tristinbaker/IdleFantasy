@@ -16,7 +16,12 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -36,6 +41,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.R
 import com.fantasyidler.data.json.DungeonData
+import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.simulator.CombatSimulator
 import com.fantasyidler.ui.components.DungeonCard
 import com.fantasyidler.ui.components.EntityIcon
@@ -44,9 +50,11 @@ import com.fantasyidler.ui.components.SectionHeader
 import com.fantasyidler.ui.motion.pressScale
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.CombatViewModel
+import com.fantasyidler.ui.viewmodel.HomeViewModel
 import com.fantasyidler.ui.viewmodel.QuestWithProgress
 import com.fantasyidler.ui.viewmodel.QuestsViewModel
 import com.fantasyidler.ui.viewmodel.combatLevelFrom
+import com.fantasyidler.util.GameStrings
 
 /**
  * The Adventure hub. Single-column scrolling layout per
@@ -60,9 +68,11 @@ fun AdventureScreen(
     onEnterDungeon: (DungeonData) -> Unit = {},
     questsVm: QuestsViewModel = hiltViewModel(),
     combatVm: CombatViewModel = hiltViewModel(),
+    globalVm: HomeViewModel = hiltViewModel(),
 ) {
     val questsState by questsVm.uiState.collectAsState()
     val combatState by combatVm.uiState.collectAsState()
+    val globalState by globalVm.uiState.collectAsState()
     val snackbarHostState = remember { SnackbarHostState() }
 
     Scaffold(
@@ -129,6 +139,58 @@ fun AdventureScreen(
                 onTap   = {},
                 enabled = false,
             )
+
+            if (globalState.sessionQueue.isNotEmpty()) {
+                SectionHeader(stringResource(R.string.home_up_next, globalState.sessionQueue.size))
+                QueueCard(
+                    queue    = globalState.sessionQueue,
+                    onRemove = globalVm::removeFromQueue,
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun QueueCard(
+    queue: List<QueuedAction>,
+    onRemove: (Int) -> Unit,
+) {
+    Surface(
+        shape    = RoundedCornerShape(16.dp),
+        color    = MaterialTheme.colorScheme.surfaceVariant,
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        Column(Modifier.padding(16.dp)) {
+            queue.forEachIndexed { index, action ->
+                if (index > 0) HorizontalDivider(
+                    modifier = Modifier.padding(vertical = 4.dp),
+                    color    = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f),
+                )
+                Row(
+                    modifier          = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    val emoji = GameStrings.skillEmoji(action.skillName)
+                    val activityLabel = action.activityKey
+                        .replace('_', ' ')
+                        .replaceFirstChar { it.uppercase() }
+                        .takeIf { action.activityKey.isNotEmpty() }
+                    Text(
+                        text       = "$emoji ${action.skillDisplayName}${if (activityLabel != null) " — $activityLabel" else ""}",
+                        style      = MaterialTheme.typography.bodyMedium,
+                        fontWeight = FontWeight.Medium,
+                        modifier   = Modifier.weight(1f),
+                    )
+                    IconButton(onClick = { onRemove(index) }) {
+                        Icon(
+                            imageVector        = Icons.Filled.Close,
+                            contentDescription = "Remove from queue",
+                            tint               = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                }
+            }
         }
     }
 }

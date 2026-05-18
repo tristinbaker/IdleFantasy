@@ -5,7 +5,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Explore
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Shield
@@ -14,7 +13,6 @@ import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material.icons.outlined.Build
 import androidx.compose.material.icons.outlined.Explore
-import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.MenuBook
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Shield
@@ -39,14 +37,6 @@ sealed class Screen(
         labelRes     = R.string.nav_combat,
         icon         = Icons.Outlined.Shield,
         selectedIcon = Icons.Filled.Shield,
-    )
-    object Home : Screen(
-        // Retained as a routable sub-screen during the PR #9 transition;
-        // not in bottomNavItems anymore (Adventure replaced it).
-        route        = "home",
-        labelRes     = R.string.nav_home,
-        icon         = Icons.Outlined.Home,
-        selectedIcon = Icons.Filled.Home,
     )
     object Adventure : Screen(
         route        = "adventure",
