@@ -108,4 +108,7 @@ dependencies {
 
     // kotlinx.serialization
     implementation(libs.kotlinx.serialization.json)
+
+    // Coil — sprite image loading
+    implementation(libs.coil.compose)
 }

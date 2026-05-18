@@ -12,6 +12,7 @@ hiltExt             = "1.2.0"
 room                = "2.6.1"
 workmanager         = "2.9.0"
 serialization       = "1.7.1"
+coil                = "2.7.0"
 
 [libraries]
 # Core
@@ -48,6 +49,9 @@ androidx-work-runtime-ktx           = { group = "androidx.work", name = "work-ru
 
 # kotlinx.serialization
 kotlinx-serialization-json          = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization" }
+
+# Coil — image loading (sprites)
+coil-compose                        = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 
 [plugins]
 android-application  = { id = "com.android.application",                    version.ref = "agp" }

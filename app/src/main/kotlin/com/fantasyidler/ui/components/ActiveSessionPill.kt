@@ -90,8 +90,10 @@ fun ActiveSessionPill(
 
             if (!isDone) {
                 Spacer(Modifier.height(8.dp))
-                Text(
-                    text = remember(now) { endsAt.toCountdown() },
+                val secondsRemaining = ((endsAt - now) / 1_000L).coerceAtLeast(0L)
+                AnimatedCounter(
+                    value = secondsRemaining,
+                    format = { endsAt.toCountdown() },
                     style = MaterialTheme.typography.headlineSmall,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onSecondaryContainer,
