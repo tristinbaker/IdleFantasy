@@ -1,8 +1,9 @@
 # Idle Fantasy — GUI Redesign Proposal
 
-> **Status:** Designer proposal, not yet implemented. No Kotlin code has been changed.
+> **Status:** Approved execution roadmap. PRs 1–2 have landed (see §5 status table); PRs 3–10 are pending the §6 open questions.
 > **Audience:** Tristin (game author) reviewing on mobile.
-> **Branch:** `claude/redesign-casual-ui-IMf9a`
+> **Working branch:** `claude/revise-implementation-plan-eKQ1T`
+> **Original proposal branch:** `claude/redesign-casual-ui-IMf9a` (merged in PR #1)
 > **Scope decision:** "Full redesign" — restructure the nav, add a persistent HUD, decompose monolithic screens, introduce a shared component layer.
 
 ---
@@ -217,18 +218,20 @@ Three sentences total. Helps lapsed players too if you give them a "Show again" 
 
 Each row = one PR. Each PR is small enough to ship in a session.
 
-| # | PR | Risk | What it touches |
-|---|---|---|---|
-| 1 | Extract `ui/components/` (no behaviour change) | Low | Pure refactor of inlined widgets into shared files |
-| 2 | Add `Shape.kt` + wire into theme | Low | `ui/theme/` only |
-| 3 | Build persistent top HUD in root Scaffold | Medium | `MainActivity`, `FantasyIdlerApp`, new `FantasyTopHud` |
-| 4 | Move Settings to Profile gear icon, dismantle Settings sub-route | Low | `Screen.kt`, `AppNavigation.kt` |
-| 5 | Open Shop as a bottom sheet from the HUD coin tap | Medium | `Screen.kt`, new `ShopSheet` from existing `ShopScreen` content |
-| 6 | Build `AdventureScreen` + delete `HomeScreen` | Medium | New file, nav graph re-pointed, Home dashboard pieces moved to HUD |
-| 7 | Bottom nav re-cast (Crafting promoted, Adventure replaces Home) | Medium | `Screen.kt` items list + label strings |
-| 8 | Split `SkillsScreen.kt` (gathering vs crafting handlers in different tabs) | High | Largest single file in the repo |
-| 9 | Split `CombatScreen.kt` and `ProfileScreen.kt` | Medium | Per-file refactor, no behaviour change |
-| 10 | Onboarding nudge page | Low | One new pager page |
+Status reflects what has merged into the working branch; see git log for commits.
+
+| # | PR | Status | Risk | What it touches |
+|---|---|---|---|---|
+| 1 | Extract `ui/components/` (no behaviour change) | ✅ Done | Low | Pure refactor of inlined widgets into shared files |
+| 2 | Add `Shape.kt` + wire into theme | ✅ Done | Low | `ui/theme/` only |
+| 3 | Build persistent top HUD in root Scaffold | ⬜ Pending | Medium | `MainActivity`, `FantasyIdlerApp`, new `FantasyTopHud` |
+| 4 | Move Settings to Profile gear icon, dismantle Settings sub-route | ⬜ Pending | Low | `Screen.kt`, `AppNavigation.kt` |
+| 5 | Open Shop as a bottom sheet from the HUD coin tap | ⬜ Pending | Medium | `Screen.kt`, new `ShopSheet` from existing `ShopScreen` content |
+| 6 | Build `AdventureScreen` + delete `HomeScreen` | ⬜ Pending | Medium | New file, nav graph re-pointed, Home dashboard pieces moved to HUD |
+| 7 | Bottom nav re-cast (Crafting promoted, Adventure replaces Home) | ⬜ Pending | Medium | `Screen.kt` items list + label strings |
+| 8 | Split `SkillsScreen.kt` (gathering vs crafting handlers in different tabs) | ⬜ Pending | High | Largest single file in the repo |
+| 9 | Split `CombatScreen.kt` and `ProfileScreen.kt` | ⬜ Pending | Medium | Per-file refactor, no behaviour change |
+| 10 | Onboarding nudge page | ⬜ Pending | Low | One new pager page |
 
 Ship 1–7 first — that's where the "I get lost" feeling lives. 8–10 are quality-of-life refactors.
 
@@ -236,7 +239,7 @@ Ship 1–7 first — that's where the "I get lost" feeling lives. 8–10 are qua
 
 ## 6. Open questions for you
 
-Things to decide before implementation. Not blockers for the PR-1 refactor, but they shape PRs 3–7.
+Things to decide before implementation. These remain open — resolution required before PRs 3, 5, 6, 7.
 
 1. **Gems.** Does the game intend to have a premium-ish second currency (gems / cores / shards) or is it gold-only? The HUD has room for one slot today and could hold two — easier to design it for two and hide the second if unused.
 2. **"Adventure" naming.** Tonally OK? Alternatives I considered: *Journey*, *Quests*, *Hub*, *World*, *Map*. "Adventure" reads broadest.
