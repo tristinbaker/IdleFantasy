@@ -20,72 +20,73 @@
 
     <!-- ===== Combat messages ===== -->
     <!-- Translator note: %1$s = player or enemy name, %2$d = damage amount -->
-    <string name="game_combat_hit">%1$s hits for %2$d damage.</string>
-    <string name="game_combat_miss">%1$s misses!</string>
-    <!-- Translator note: %1$s = enemy display name -->
-    <string name="game_combat_enemy_defeated">%1$s defeated!</string>
-    <!-- Translator note: %1$d = HP restored -->
-    <string name="game_combat_food_eaten">Ate food — restored %1$d HP.</string>
-    <string name="game_combat_player_died">You were defeated.</string>
-    <string name="game_dungeon_cleared">Dungeon cleared!</string>
-    <!-- Translator note: %1$s = dungeon display name -->
-    <string name="game_dungeon_summary">%1$s complete.</string>
+    <!-- Combat -->
+    <string name="game_combat_hit">%1$s inflige %2$d dégâts.</string>
+    <string name="game_combat_miss">%1$s manque sa cible !</string>
+    <!-- Note : %1$s = nom de l'ennemi -->
+    <string name="game_combat_enemy_defeated">%1$s vaincu !</string>
+    <!-- Note : %1$d = PV restaurés -->
+    <string name="game_combat_food_eaten">Nourriture mangée — +%1$d PV.</string>
+    <string name="game_combat_player_died">Vous avez été vaincu.</string>
+    <string name="game_dungeon_cleared">Donjon terminé !</string>
+    <!-- Note : %1$s = nom du donjon -->
+    <string name="game_dungeon_summary">%1$s terminé.</string>
 
-    <!-- ===== Farming messages ===== -->
-    <!-- Translator note: %1$s = crop display name -->
-    <string name="game_farming_planted">%1$s planted.</string>
-    <!-- Translator note: %1$s = crop display name, %2$d = yield quantity -->
-    <string name="game_farming_harvested">Harvested %2$d %1$s.</string>
+    <!-- Agriculture -->
+    <!-- Note : %1$s = nom de la récolte -->
+    <string name="game_farming_planted">%1$s plantée.</string>
+    <!-- Note : %1$s = nom de la récolte, %2$d = quantité -->
+    <string name="game_farming_harvested">Récolté %2$d %1$s.</string>
     <string name="game_farming_all_harvested">Toutes les récoltes sont terminées.</string>
-    <string name="game_farming_patch_cleared">Patch cleared.</string>
+    <string name="game_farming_patch_cleared">Parcelle nettoyée.</string>
     <string name="game_farming_not_ready">Cette récolte n'est pas encore prête.</string>
-    <!-- Translator note: %1$s = crop display name, %2$s = time remaining -->
-    <string name="game_farming_ready_in">%1$s ready in %2$s.</string>
+    <!-- Note : %1$s = nom de la récolte, %2$s = temps restant -->
+    <string name="game_farming_ready_in">%1$s prêt dans %2$s.</string>
 
-    <!-- ===== Crafting messages ===== -->
-    <!-- Translator note: %1$d = quantity crafted, %2$s = item display name -->
-    <string name="game_crafted">Crafted %1$d %2$s.</string>
-    <!-- Translator note: %1$s = item display name -->
-    <string name="game_missing_ingredient">Missing ingredient: %1$s.</string>
+    <!-- Fabrication -->
+    <!-- Note : %1$d = quantité fabriquée, %2$s = nom de l'objet -->
+    <string name="game_crafted">Crafté %1$d %2$s.</string>
+    <!-- Note : %1$s = nom de l'objet -->
+    <string name="game_missing_ingredient">Ingrédient manquant : %1$s.</string>
 
-    <!-- ===== Shop messages ===== -->
-    <!-- Translator note: %1$d = quantity, %2$s = item display name, %3$d = total cost -->
-    <string name="game_shop_purchased">Bought %1$d %2$s for %3$d coins.</string>
-    <!-- Translator note: %1$d = quantity, %2$s = item display name, %3$d = coins received -->
-    <string name="game_shop_sold">Sold %1$d %2$s for %3$d coins.</string>
+    <!-- Boutique -->
+    <!-- Note : %1$d = quantité, %2$s = nom de l'objet, %3$d = coût total -->
+    <string name="game_shop_purchased">Acheté %1$d %2$s pour %3$d pièces.</string>
+    <!-- Note : %1$d = quantité, %2$s = nom de l'objet, %3$d = pièces reçues -->
+    <string name="game_shop_sold">Vendu %1$d %2$s pour %3$d pièces.</string>
 
-    <!-- ===== Prayer / burying ===== -->
-    <!-- Translator note: %1$s = bone display name, %2$s = formatted XP gained -->
-    <string name="game_bones_buried">Buried %1$s — +%2$s Prayer XP.</string>
+    <!-- Prières / enterrement -->
+    <!-- Note : %1$s = nom des os, %2$s = XP formaté -->
+    <string name="game_bones_buried">Os enterré : %1$s — +%2$s XP de Prières.</string>
 
-    <!-- ===== Quest messages ===== -->
-    <!-- Translator note: %1$s = quest display name -->
-    <string name="game_quest_started">Quest started: %1$s</string>
-    <string name="game_quest_completed">Quest complete: %1$s</string>
-    <string name="game_quest_abandoned">Quest abandoned.</string>
-    <!-- Translator note: %1$d = current progress, %2$d = target amount -->
-    <string name="game_quest_progress">Progress: %1$d / %2$d</string>
+    <!-- Quêtes -->
+    <!-- Note : %1$s = nom de la quête -->
+    <string name="game_quest_started">Quête commencée : %1$s</string>
+    <string name="game_quest_completed">Quête terminée : %1$s</string>
+    <string name="game_quest_abandoned">Quête abandonnée.</string>
+    <!-- Note : %1$d = progression actuelle, %2$d = objectif -->
+    <string name="game_quest_progress">Progression : %1$d / %2$d</string>
 
-    <!-- ===== XP gain messages (shown in session frame log) ===== -->
-    <!-- Translator note: %1$s = formatted XP gained this minute -->
+    <!-- XP et objets -->
+    <!-- Note : %1$s = XP gagné ce minute, %2$d = quantité -->
     <string name="game_xp_gained">+%1$s XP</string>
-    <!-- Translator note: %1$s = item display name, %2$d = quantity -->
+    <!-- Note : %1$s = nom de l'objet, %2$d = quantité -->
     <string name="game_item_received">+%2$d %1$s</string>
 
-    <!-- ===== Arena messages ===== -->
-    <!-- Translator note: %1$s = opponent display name -->
-    <string name="game_arena_challenged">Challenged by %1$s!</string>
-    <string name="game_arena_victory">Victoire!</string>
+    <!-- Arène -->
+    <!-- Note : %1$s = nom de l'adversaire -->
+    <string name="game_arena_challenged">Défi par %1$s !</string>
+    <string name="game_arena_victory">Victoire !</string>
     <string name="game_arena_defeat">Défaite.</string>
-    <!-- Translator note: %1$d = coins won -->
-    <string name="game_arena_coins_won">%1$d or gagné.</string>
+    <!-- Note : %1$d = pièces gagnées -->
+    <string name="game_arena_coins_won">%1$d pièces gagnées.</string>
 
-    <!-- ===== Easter egg / dig ===== -->
+    <!-- Pioches / fouilles -->
     <string name="game_dig_you_dig">Tu creuses la terre…</string>
     <string name="game_dig_nothing">Tu ne trouves rien d'autre que de la saleté.</string>
-    <!-- Translator note: %1$s = item display name -->
-    <string name="game_dig_found">You uncover a %1$s!</string>
-    <!-- Translator note: %1$d = current hole depth in metres -->
-    <string name="game_dig_depth">The hole is %1$d metres deep.</string>
-    <string name="game_dig_cooldown">You already dug today. Come back tomorrow.</string>
+    <!-- Note : %1$s = nom de l'objet -->
+    <string name="game_dig_found">Tu découvres un(e) %1$s !</string>
+    <!-- Note : %1$d = profondeur du trou en mètres -->
+    <string name="game_dig_depth">Le trou fait %1$d mètres de profondeur.</string>
+    <string name="game_dig_cooldown">Tu as déjà fouillé aujourd'hui. Reviens demain.</string>
 </resources>
