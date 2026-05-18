@@ -27,6 +27,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.fantasyidler.ui.motion.FantasyMotion
 import com.fantasyidler.ui.screen.CombatScreen
 import com.fantasyidler.ui.screen.FarmingScreen
 import com.fantasyidler.ui.screen.HomeScreen
@@ -122,11 +123,21 @@ fun AppNavigation() {
             navController    = navController,
             startDestination = Screen.Home.route,
             modifier         = Modifier.padding(innerPadding),
+            enterTransition    = FantasyMotion.NavEnter,
+            exitTransition     = FantasyMotion.NavExit,
+            popEnterTransition = FantasyMotion.NavPopEnter,
+            popExitTransition  = FantasyMotion.NavPopExit,
         ) {
             composable(Screen.Skills.route)   {
                 SkillsScreen(onNavigateToFarming = { navController.navigate(Screen.Farming.route) })
             }
-            composable(Screen.Farming.route) { entry ->
+            composable(
+                route = Screen.Farming.route,
+                enterTransition    = FantasyMotion.SubEnter,
+                exitTransition     = FantasyMotion.SubExit,
+                popEnterTransition = FantasyMotion.SubEnter,
+                popExitTransition  = FantasyMotion.SubExit,
+            ) { entry ->
                 FarmingScreen(onBack = { if (navController.currentBackStackEntry == entry) navController.popBackStack() })
             }
             composable(Screen.Combat.route)   { CombatScreen() }
@@ -138,13 +149,25 @@ fun AppNavigation() {
             }
             composable(Screen.Quests.route)   { QuestsScreen() }
             composable(Screen.Profile.route)  { ProfileScreen() }
-            composable(Screen.Settings.route) { entry ->
+            composable(
+                route = Screen.Settings.route,
+                enterTransition    = FantasyMotion.SubEnter,
+                exitTransition     = FantasyMotion.SubExit,
+                popEnterTransition = FantasyMotion.SubEnter,
+                popExitTransition  = FantasyMotion.SubExit,
+            ) { entry ->
                 SettingsScreen(
                     onBack           = { if (navController.currentBackStackEntry == entry) navController.popBackStack() },
                     onReopenTutorial = { onboardingVm.reopen() },
                 )
             }
-            composable(Screen.Shop.route) { entry ->
+            composable(
+                route = Screen.Shop.route,
+                enterTransition    = FantasyMotion.SubEnter,
+                exitTransition     = FantasyMotion.SubExit,
+                popEnterTransition = FantasyMotion.SubEnter,
+                popExitTransition  = FantasyMotion.SubExit,
+            ) { entry ->
                 ShopScreen(onBack = { if (navController.currentBackStackEntry == entry) navController.popBackStack() })
             }
         }
