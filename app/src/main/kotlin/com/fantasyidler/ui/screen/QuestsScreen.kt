@@ -1,7 +1,9 @@
 package com.fantasyidler.ui.screen
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,13 +13,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -26,7 +24,6 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -36,13 +33,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.R
+import com.fantasyidler.ui.components.ChunkyCard
+import com.fantasyidler.ui.components.ClaimBadge
+import com.fantasyidler.ui.components.ClaimStamp
+import com.fantasyidler.ui.components.IconDisk
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.QuestWithProgress
 import com.fantasyidler.ui.viewmodel.QuestsViewModel
@@ -59,6 +59,14 @@ private fun tabGroupLabel(group: String): String = when (group) {
     "Combat"    -> stringResource(R.string.label_combat)
     "Special"   -> stringResource(R.string.label_special)
     else        -> group
+}
+
+private fun groupEmoji(group: String): String = when (group) {
+    "Gathering" -> "⛏"
+    "Crafting"  -> "🔨"
+    "Combat"    -> "⚔"
+    "Special"   -> "⭐"
+    else        -> "📜"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -98,9 +106,6 @@ fun QuestsScreen(
                 .fillMaxSize()
                 .padding(padding),
         ) {
-            // ------------------------------------------------------------------
-            // Tab row with optional claimable badge
-            // ------------------------------------------------------------------
             TabRow(selectedTabIndex = selectedTab) {
                 TAB_GROUPS.forEachIndexed { index, group ->
                     val groupQuests = state.questsByGroup[group] ?: emptyList()
@@ -110,7 +115,7 @@ fun QuestsScreen(
                         onClick  = { selectedTab = index },
                         text = {
                             val baseLabel = tabGroupLabel(group)
-                        val label = if (claimableInGroup > 0) "$baseLabel ($claimableInGroup)" else baseLabel
+                            val label = if (claimableInGroup > 0) "$baseLabel ($claimableInGroup)" else baseLabel
                             Text(
                                 text  = label,
                                 style = MaterialTheme.typography.labelMedium,
@@ -120,9 +125,6 @@ fun QuestsScreen(
                 }
             }
 
-            // ------------------------------------------------------------------
-            // Quest list for the selected tab
-            // ------------------------------------------------------------------
             val currentGroup = TAB_GROUPS[selectedTab]
             val quests = state.questsByGroup[currentGroup] ?: emptyList()
 
@@ -140,70 +142,74 @@ fun QuestsScreen(
                     )
                 }
             } else {
-                LazyColumn(Modifier.fillMaxSize()) {
-                    items(quests, key = { it.quest.id }) { questWithProgress ->
-                        QuestRow(
-                            questWithProgress = questWithProgress,
-                            onClaimReward     = { viewModel.claimReward(questWithProgress.quest.id) },
+                LazyColumn(
+                    modifier            = Modifier.fillMaxSize(),
+                    contentPadding      = PaddingValues(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                ) {
+                    items(quests, key = { it.quest.id }) { q ->
+                        QuestCard(
+                            questWithProgress = q,
+                            groupEmoji        = groupEmoji(currentGroup),
+                            onClaimReward     = { viewModel.claimReward(q.quest.id) },
                         )
-                        HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
                     }
-                    item { Spacer(Modifier.height(16.dp)) }
                 }
             }
         }
     }
 }
 
-// ---------------------------------------------------------------------------
-// Quest row
-// ---------------------------------------------------------------------------
-
 @Composable
-private fun QuestRow(
+private fun QuestCard(
     questWithProgress: QuestWithProgress,
+    groupEmoji: String,
     onClaimReward: () -> Unit,
 ) {
     val context = LocalContext.current
     val quest   = questWithProgress.quest
-    val dimColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
-
     val notStarted = questWithProgress.progress == 0 && !questWithProgress.completed
-    val titleColor = if (notStarted) dimColor else MaterialTheme.colorScheme.onSurface
-    val descColor  = if (notStarted) dimColor else MaterialTheme.colorScheme.onSurfaceVariant
 
-    Column(
-        Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 12.dp),
-    ) {
-        // Title
-        val displayName = GameStrings.questName(context, quest.id).takeIf { it.isNotBlank() }
-            ?: quest.name
-        Text(
-            text       = displayName,
-            style      = MaterialTheme.typography.bodyLarge,
-            fontWeight = FontWeight.Bold,
-            color      = titleColor,
-        )
-
-        // Description / objective
-        if (quest.description.isNotBlank()) {
-            Spacer(Modifier.height(2.dp))
-            Text(
-                text  = quest.description,
-                style = MaterialTheme.typography.bodySmall,
-                color = descColor,
-            )
+    ChunkyCard(highlight = questWithProgress.isClaimable) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            IconDisk(emoji = groupEmoji, size = 40.dp)
+            Spacer(Modifier.width(12.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                val displayName = GameStrings.questName(context, quest.id)
+                    .takeIf { it.isNotBlank() } ?: quest.name
+                Text(
+                    text       = displayName,
+                    style      = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold,
+                    color      = if (notStarted) MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+                                 else MaterialTheme.colorScheme.onSurface,
+                )
+                if (quest.description.isNotBlank()) {
+                    Spacer(Modifier.height(2.dp))
+                    Text(
+                        text  = quest.description,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            }
+            Spacer(Modifier.width(8.dp))
+            when {
+                questWithProgress.isClaimable -> ClaimBadge(text = "Claim")
+                questWithProgress.completed   -> ClaimStamp(text = stringResource(R.string.label_completed))
+                else -> {}
+            }
         }
 
-        // Progress bar + text (only when in-progress or claimable)
+        // In-progress meter
         if (!questWithProgress.completed && questWithProgress.progress > 0) {
-            Spacer(Modifier.height(8.dp))
+            Spacer(Modifier.height(12.dp))
             LinearProgressIndicator(
-                progress  = { questWithProgress.progressFraction },
-                modifier  = Modifier.fillMaxWidth(),
-                color     = GoldPrimary,
+                progress = { questWithProgress.progressFraction },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(8.dp),
+                color = GoldPrimary,
             )
             Spacer(Modifier.height(4.dp))
             val displayProgress = questWithProgress.progress.coerceAtMost(quest.amount)
@@ -214,31 +220,8 @@ private fun QuestRow(
             )
         }
 
-        // Completed state
-        if (questWithProgress.completed) {
-            Spacer(Modifier.height(8.dp))
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(
-                    imageVector      = Icons.Filled.CheckCircle,
-                    contentDescription = stringResource(R.string.label_completed),
-                    tint             = Color(0xFF4CAF50),
-                    modifier         = Modifier
-                        .height(18.dp)
-                        .width(18.dp),
-                )
-                Spacer(Modifier.width(6.dp))
-                Text(
-                    text  = stringResource(R.string.label_completed),
-                    style = MaterialTheme.typography.labelMedium,
-                    color = Color(0xFF4CAF50),
-                    fontWeight = FontWeight.SemiBold,
-                )
-            }
-        }
-
-        // Claimable state
+        // Reward summary + claim CTA
         if (questWithProgress.isClaimable) {
-            Spacer(Modifier.height(10.dp))
             val rewards = quest.rewards
             val rewardParts = buildList {
                 if (rewards.xp > 0) add("+${rewards.xp.toLong().formatXp()} XP")
@@ -248,13 +231,15 @@ private fun QuestRow(
                 }
             }
             if (rewardParts.isNotEmpty()) {
+                Spacer(Modifier.height(10.dp))
                 Text(
                     text  = rewardParts.joinToString(" · "),
-                    style = MaterialTheme.typography.labelSmall,
+                    style = MaterialTheme.typography.labelMedium,
+                    fontWeight = FontWeight.SemiBold,
                     color = GoldPrimary,
                 )
-                Spacer(Modifier.height(6.dp))
             }
+            Spacer(Modifier.height(10.dp))
             Button(
                 onClick  = onClaimReward,
                 modifier = Modifier.fillMaxWidth(),

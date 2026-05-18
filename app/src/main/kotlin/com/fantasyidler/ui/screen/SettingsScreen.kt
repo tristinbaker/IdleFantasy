@@ -11,6 +11,7 @@ import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -18,7 +19,13 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Language
+import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.Palette
+import androidx.compose.material.icons.filled.Save
+import androidx.compose.material.icons.filled.Tune
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.material3.AlertDialog
@@ -32,7 +39,6 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -42,6 +48,9 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.fantasyidler.ui.components.DangerZone
+import com.fantasyidler.ui.components.IconDisk
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -161,7 +170,7 @@ fun SettingsScreen(
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(
-                            imageVector = Icons.Filled.ArrowBack,
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = null
                         )
                     }
@@ -176,11 +185,13 @@ fun SettingsScreen(
                 .padding(innerPadding)
                 .padding(16.dp)
                 .verticalScroll(rememberScrollState()),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+            verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            // Appearance section
-            SectionHeader(title = stringResource(R.string.settings_appearance))
-
+            // Appearance
+            SettingsSectionHeader(
+                icon  = Icons.Filled.Palette,
+                title = stringResource(R.string.settings_appearance),
+            )
             SettingsRow(
                 title    = stringResource(R.string.settings_theme),
                 subtitle = stringResource(R.string.settings_theme_desc),
@@ -201,16 +212,16 @@ fun SettingsScreen(
                 }
             )
 
-            // Language section (API 33+ per-app locale override)
+            // Language (API 33+ per-app locale override)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                HorizontalDivider()
                 LanguageSection(context)
             }
 
-            // Notifications section
-            HorizontalDivider()
-            SectionHeader(title = stringResource(R.string.settings_notifications_header))
-
+            // Notifications
+            SettingsSectionHeader(
+                icon  = Icons.Filled.Notifications,
+                title = stringResource(R.string.settings_notifications_header),
+            )
             SettingsRow(
                 title = stringResource(R.string.settings_notifications),
                 subtitle = stringResource(R.string.settings_notifications_desc),
@@ -228,11 +239,11 @@ fun SettingsScreen(
                 }
             )
 
-            // General section
-            HorizontalDivider()
-
-            SectionHeader(title = stringResource(R.string.settings_general_header))
-
+            // General
+            SettingsSectionHeader(
+                icon  = Icons.Filled.Tune,
+                title = stringResource(R.string.settings_general_header),
+            )
             SettingsRow(
                 title    = stringResource(R.string.settings_tutorial_title),
                 subtitle = stringResource(R.string.settings_tutorial_desc),
@@ -243,30 +254,11 @@ fun SettingsScreen(
                 }
             )
 
-            SettingsRow(
-                title    = stringResource(R.string.settings_reset_title),
-                subtitle = stringResource(R.string.settings_reset_desc),
-                trailing = {
-                    OutlinedButton(
-                        onClick = { showResetConfirm1 = true },
-                        colors  = ButtonDefaults.outlinedButtonColors(
-                            contentColor = MaterialTheme.colorScheme.error,
-                        ),
-                        border  = androidx.compose.foundation.BorderStroke(
-                            1.dp,
-                            MaterialTheme.colorScheme.error,
-                        ),
-                    ) {
-                        Text(stringResource(R.string.settings_reset_btn))
-                    }
-                }
+            // Save data
+            SettingsSectionHeader(
+                icon  = Icons.Filled.Save,
+                title = stringResource(R.string.settings_save_data),
             )
-
-            // Save data section
-            HorizontalDivider()
-
-            SectionHeader(title = stringResource(R.string.settings_save_data))
-
             SettingsRow(
                 title    = stringResource(R.string.settings_export),
                 subtitle = stringResource(R.string.settings_export_desc),
@@ -276,7 +268,6 @@ fun SettingsScreen(
                     }
                 }
             )
-
             SettingsRow(
                 title    = stringResource(R.string.settings_import),
                 subtitle = stringResource(R.string.settings_import_desc),
@@ -287,16 +278,15 @@ fun SettingsScreen(
                 }
             )
 
-            // About section
-            HorizontalDivider()
-
-            SectionHeader(title = stringResource(R.string.settings_about))
-
+            // About
+            SettingsSectionHeader(
+                icon  = Icons.Filled.Info,
+                title = stringResource(R.string.settings_about),
+            )
             SettingsRow(
                 title = stringResource(R.string.app_name),
                 subtitle = stringResource(R.string.format_version, BuildConfig.VERSION_NAME)
             )
-
             SettingsRow(
                 title    = stringResource(R.string.settings_source_code),
                 subtitle = stringResource(R.string.settings_source_url),
@@ -312,13 +302,30 @@ fun SettingsScreen(
                     }
                 }
             )
-
             Text(
                 text = stringResource(R.string.settings_foss_desc),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(horizontal = 4.dp)
             )
+
+            // Danger zone — reset progression sits in its own red-tinted block so
+            // it's visually impossible to confuse with a normal settings row.
+            DangerZone(
+                title    = stringResource(R.string.settings_reset_title),
+                subtitle = stringResource(R.string.settings_reset_desc),
+            ) {
+                Button(
+                    onClick = { showResetConfirm1 = true },
+                    colors  = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.error,
+                        contentColor   = MaterialTheme.colorScheme.onError,
+                    ),
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Text(stringResource(R.string.settings_reset_btn))
+                }
+            }
         }
     }
 }
@@ -340,7 +347,10 @@ private fun LanguageSection(context: Context) {
     val selectedLabel = options.find { it.first == currentTag }?.second ?: options.last().second
     var expanded by remember { mutableStateOf(false) }
 
-    SectionHeader(title = stringResource(R.string.settings_language))
+    SettingsSectionHeader(
+        icon  = Icons.Filled.Language,
+        title = stringResource(R.string.settings_language),
+    )
     SettingsRow(
         title    = stringResource(R.string.settings_language),
         subtitle = stringResource(R.string.settings_language_desc),
@@ -383,13 +393,23 @@ private fun LanguageSection(context: Context) {
 }
 
 @Composable
-private fun SectionHeader(title: String) {
-    Text(
-        text = title,
-        style = MaterialTheme.typography.labelMedium,
-        color = MaterialTheme.colorScheme.primary,
-        modifier = Modifier.padding(top = 8.dp, bottom = 4.dp)
-    )
+private fun SettingsSectionHeader(
+    icon: ImageVector,
+    title: String,
+) {
+    Row(
+        modifier = Modifier.padding(top = 12.dp, bottom = 4.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        IconDisk(imageVector = icon, contentDescription = null, size = 32.dp)
+        Spacer(Modifier.width(12.dp))
+        Text(
+            text       = title,
+            style      = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            color      = MaterialTheme.colorScheme.onSurface,
+        )
+    }
 }
 
 @Composable

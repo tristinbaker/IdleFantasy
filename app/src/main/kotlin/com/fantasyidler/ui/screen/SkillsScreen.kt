@@ -78,6 +78,10 @@ import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.ui.text.style.TextAlign
+import com.fantasyidler.ui.components.ChunkyCard
+import com.fantasyidler.ui.components.ClaimBadge
+import com.fantasyidler.ui.components.HeroBlock
+import com.fantasyidler.ui.components.IconDisk
 import com.fantasyidler.ui.viewmodel.CraftableRecipe
 import com.fantasyidler.ui.viewmodel.CraftingUiState
 import com.fantasyidler.ui.viewmodel.CraftingViewModel
@@ -138,6 +142,7 @@ fun SkillsScreen(
                 item {
                     ActiveSessionBanner(
                         skillName      = GameStrings.skillName(context, session.skillName),
+                        skillEmoji     = GameStrings.skillEmoji(session.skillName),
                         activityKey    = session.activityKey,
                         endsAt         = session.endsAt,
                         completed      = session.completed,
@@ -302,6 +307,7 @@ fun SkillsScreen(
 @Composable
 private fun ActiveSessionBanner(
     skillName: String,
+    skillEmoji: String,
     activityKey: String,
     endsAt: Long,
     completed: Boolean,
@@ -318,57 +324,48 @@ private fun ActiveSessionBanner(
         }
     }
 
-    Surface(
-        color    = MaterialTheme.colorScheme.primaryContainer,
-        shape    = RoundedCornerShape(12.dp),
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 12.dp, vertical = 8.dp),
-    ) {
-        Column(Modifier.padding(16.dp)) {
-            Text(
-                text  = if (completed) stringResource(R.string.label_session_complete)
-                        else stringResource(R.string.label_session_active),
-                style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.onPrimaryContainer,
-            )
-            Spacer(Modifier.height(4.dp))
-            Text(
-                text = buildString {
-                    append(skillName)
-                    if (activityKey.isNotEmpty()) {
-                        append(" — ")
-                        append(activityKey.replace('_', ' ').replaceFirstChar { it.uppercase() })
-                    }
-                },
-                style      = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
-                color      = MaterialTheme.colorScheme.onPrimaryContainer,
-            )
-            Spacer(Modifier.height(8.dp))
-            if (!completed) {
-                Text(
-                    text  = remember(now) { endsAt.toCountdown() },
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onPrimaryContainer,
+    val activitySuffix = if (activityKey.isNotEmpty())
+        activityKey.replace('_', ' ').replaceFirstChar { it.uppercase() }
+    else ""
+    val title = buildString {
+        append(skillName)
+        if (activitySuffix.isNotEmpty()) append(" — ").append(activitySuffix)
+    }
+
+    Box(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
+        HeroBlock(
+            title    = title,
+            subtitle = if (completed) stringResource(R.string.label_session_complete)
+                       else remember(now) { endsAt.toCountdown() },
+            leading  = {
+                IconDisk(
+                    emoji      = skillEmoji.ifEmpty { "✨" },
+                    size       = 56.dp,
+                    background = GoldPrimary.copy(alpha = 0.30f),
                 )
-                Spacer(Modifier.height(8.dp))
-                Row {
-                    TextButton(onClick = onAbandon) {
-                        Text(stringResource(R.string.btn_abandon_session))
-                    }
-                    if (BuildConfig.DEBUG) {
-                        TextButton(onClick = onDebugFinish) {
-                            Text("[Debug] Finish Now")
+            },
+            trailing = if (completed) {
+                { ClaimBadge(text = stringResource(R.string.btn_collect_results)) }
+            } else null,
+            content = {
+                if (!completed) {
+                    Row {
+                        TextButton(onClick = onAbandon) {
+                            Text(stringResource(R.string.btn_abandon_session))
+                        }
+                        if (BuildConfig.DEBUG) {
+                            TextButton(onClick = onDebugFinish) {
+                                Text("[Debug] Finish Now")
+                            }
                         }
                     }
+                } else {
+                    Button(onClick = onCollect, modifier = Modifier.fillMaxWidth()) {
+                        Text(stringResource(R.string.btn_collect_results))
+                    }
                 }
-            } else {
-                Button(onClick = onCollect, modifier = Modifier.fillMaxWidth()) {
-                    Text(stringResource(R.string.btn_collect_results))
-                }
-            }
-        }
+            },
+        )
     }
 }
 
@@ -390,87 +387,75 @@ private fun SkillRow(
     val emoji    = GameStrings.skillEmoji(skillKey)
     val progress = xpProgressFraction(xp)
 
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(onClick = onClick)
-            .padding(horizontal = 16.dp, vertical = 10.dp),
-        verticalAlignment = Alignment.CenterVertically,
+    ChunkyCard(
+        onClick   = onClick,
+        highlight = isActive,
+        modifier  = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
     ) {
-        // Emoji badge with level overlay
-        Box(modifier = Modifier.size(44.dp)) {
-            Box(
-                modifier = Modifier
-                    .size(44.dp)
-                    .clip(CircleShape)
-                    .background(
-                        if (isActive) GoldPrimary
-                        else MaterialTheme.colorScheme.surfaceVariant
-                    ),
-                contentAlignment = Alignment.Center,
-            ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            // Skill emoji-disk with a level overlay badge
+            Box(modifier = Modifier.size(48.dp)) {
+                IconDisk(
+                    emoji      = emoji,
+                    size       = 48.dp,
+                    background = if (isActive) GoldPrimary.copy(alpha = 0.30f)
+                                 else GoldPrimary.copy(alpha = 0.14f),
+                )
                 Text(
-                    text  = emoji,
-                    style = MaterialTheme.typography.titleMedium,
+                    text       = level.toString(),
+                    style      = MaterialTheme.typography.labelSmall,
+                    fontWeight = FontWeight.Bold,
+                    color      = MaterialTheme.colorScheme.onSurface,
+                    modifier   = Modifier
+                        .align(Alignment.BottomEnd)
+                        .background(
+                            color = MaterialTheme.colorScheme.surface,
+                            shape = CircleShape,
+                        )
+                        .padding(horizontal = 4.dp, vertical = 1.dp),
                 )
             }
-            Text(
-                text       = level.toString(),
-                style      = MaterialTheme.typography.labelSmall,
-                fontWeight = FontWeight.Bold,
-                color      = MaterialTheme.colorScheme.onSurface,
-                modifier   = Modifier
-                    .align(Alignment.BottomEnd)
-                    .background(
-                        color = MaterialTheme.colorScheme.surface,
-                        shape = CircleShape,
+
+            Spacer(Modifier.width(14.dp))
+
+            Column(Modifier.weight(1f)) {
+                Row(
+                    modifier              = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment     = Alignment.CenterVertically,
+                ) {
+                    Text(
+                        text       = name,
+                        style      = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold,
                     )
-                    .padding(horizontal = 3.dp, vertical = 1.dp),
-            )
-        }
-
-        Spacer(Modifier.width(12.dp))
-
-        Column(Modifier.weight(1f)) {
-            Row(
-                modifier             = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-            ) {
-                Text(
-                    text       = name,
-                    style      = MaterialTheme.typography.bodyLarge,
-                    fontWeight = FontWeight.Medium,
+                    if (isActive) {
+                        ClaimBadge(text = stringResource(R.string.label_training))
+                    } else {
+                        Text(
+                            text  = "${xp.formatXp()} XP",
+                            style = MaterialTheme.typography.labelMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                }
+                Spacer(Modifier.height(6.dp))
+                LinearProgressIndicator(
+                    progress = { progress },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(8.dp)
+                        .clip(RoundedCornerShape(4.dp)),
+                    color    = GoldPrimary,
                 )
-                if (isActive) {
+                if (toolEfficiency > 1.0f) {
+                    Spacer(Modifier.height(4.dp))
                     Text(
-                        text  = stringResource(R.string.label_training),
+                        text  = stringResource(R.string.skills_tool_bonus, "%.2f".format(toolEfficiency)),
                         style = MaterialTheme.typography.labelSmall,
-                        color = GoldPrimary,
-                    )
-                } else {
-                    Text(
-                        text  = "${xp.formatXp()} XP",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        color = MaterialTheme.colorScheme.primary,
                     )
                 }
-            }
-            Spacer(Modifier.height(4.dp))
-            LinearProgressIndicator(
-                progress = { progress },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(4.dp)
-                    .clip(RoundedCornerShape(2.dp)),
-                color    = GoldPrimary,
-            )
-            if (toolEfficiency > 1.0f) {
-                Spacer(Modifier.height(2.dp))
-                Text(
-                    text  = stringResource(R.string.skills_tool_bonus, "%.2f".format(toolEfficiency)),
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.primary,
-                )
             }
         }
     }
@@ -682,33 +667,42 @@ private fun ActivityRow(
     onClick: () -> Unit,
 ) {
     val queueBlocked = hasActiveSession && isQueueFull
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(enabled = !isStarting && !queueBlocked, onClick = onClick)
-            .padding(horizontal = 16.dp, vertical = 12.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment     = Alignment.CenterVertically,
+    ChunkyCard(
+        onClick  = onClick,
+        enabled  = !isStarting && !queueBlocked,
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
     ) {
-        Column {
-            Text(name, style = MaterialTheme.typography.bodyLarge)
-            Text(
-                text  = detail,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-        }
-        if (isStarting) {
-            CircularProgressIndicator(modifier = Modifier.size(20.dp))
-        } else {
-            Text(
-                text  = if (hasActiveSession) stringResource(R.string.skills_add_to_queue) else stringResource(R.string.btn_start_session),
-                style = MaterialTheme.typography.labelMedium,
-                color = if (queueBlocked) MaterialTheme.colorScheme.onSurfaceVariant else GoldPrimary,
-            )
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment     = Alignment.CenterVertically,
+            modifier              = Modifier.fillMaxWidth(),
+        ) {
+            Column(Modifier.weight(1f)) {
+                Text(
+                    text       = name,
+                    style      = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold,
+                )
+                Text(
+                    text  = detail,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+            Spacer(Modifier.width(8.dp))
+            if (isStarting) {
+                CircularProgressIndicator(modifier = Modifier.size(20.dp))
+            } else {
+                ClaimBadge(
+                    text  = if (hasActiveSession) stringResource(R.string.skills_add_to_queue)
+                            else stringResource(R.string.btn_start_session),
+                    pulse = !hasActiveSession,
+                    color = if (queueBlocked) MaterialTheme.colorScheme.surfaceVariant
+                            else GoldPrimary,
+                )
+            }
         }
     }
-    HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
 }
 
 @Composable

@@ -70,7 +70,9 @@ import com.fantasyidler.data.json.SpellData
 import com.fantasyidler.data.model.SessionFrame
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.Skills
+import com.fantasyidler.ui.components.ChunkyCard
 import com.fantasyidler.ui.components.DungeonCard
+import com.fantasyidler.ui.components.IconDisk
 import com.fantasyidler.ui.components.SectionHeader
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.CombatSessionResult
@@ -356,75 +358,65 @@ private fun CombatSkillRow(
     val emoji    = GameStrings.skillEmoji(skillKey)
     val progress = xpProgressFraction(xp)
 
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 10.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Box(modifier = Modifier.size(44.dp)) {
-            Box(
-                modifier = Modifier
-                    .size(44.dp)
-                    .clip(CircleShape)
-                    .background(MaterialTheme.colorScheme.surfaceVariant),
-                contentAlignment = Alignment.Center,
-            ) {
-                Text(
-                    text  = emoji,
-                    style = MaterialTheme.typography.titleMedium,
+    ChunkyCard(modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Box(modifier = Modifier.size(48.dp)) {
+                IconDisk(
+                    emoji      = emoji,
+                    size       = 48.dp,
+                    background = GoldPrimary.copy(alpha = 0.14f),
                 )
-            }
-            Text(
-                text       = level.toString(),
-                style      = MaterialTheme.typography.labelSmall,
-                fontWeight = FontWeight.Bold,
-                color      = MaterialTheme.colorScheme.onSurface,
-                modifier   = Modifier
-                    .align(Alignment.BottomEnd)
-                    .background(
-                        color = MaterialTheme.colorScheme.surface,
-                        shape = CircleShape,
-                    )
-                    .padding(horizontal = 3.dp, vertical = 1.dp),
-            )
-        }
-        Spacer(Modifier.width(12.dp))
-        Column(Modifier.weight(1f)) {
-            Row(
-                modifier              = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-            ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(name, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium)
-                    if (gearBonus > 0) {
-                        Spacer(Modifier.width(6.dp))
-                        Text(
-                            text  = stringResource(R.string.combat_gear_bonus, gearBonus),
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.primary,
+                Text(
+                    text       = level.toString(),
+                    style      = MaterialTheme.typography.labelSmall,
+                    fontWeight = FontWeight.Bold,
+                    color      = MaterialTheme.colorScheme.onSurface,
+                    modifier   = Modifier
+                        .align(Alignment.BottomEnd)
+                        .background(
+                            color = MaterialTheme.colorScheme.surface,
+                            shape = CircleShape,
                         )
-                    }
-                }
-                Text(
-                    text  = "${xp.formatXp()} ${stringResource(R.string.label_xp)}",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        .padding(horizontal = 4.dp, vertical = 1.dp),
                 )
             }
-            Spacer(Modifier.height(4.dp))
-            LinearProgressIndicator(
-                progress = { progress },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(4.dp)
-                    .clip(RoundedCornerShape(2.dp)),
-                color            = GoldPrimary,
-                trackColor       = MaterialTheme.colorScheme.surfaceVariant,
-            )
+            Spacer(Modifier.width(14.dp))
+            Column(Modifier.weight(1f)) {
+                Row(
+                    modifier              = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment     = Alignment.CenterVertically,
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(name, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+                        if (gearBonus > 0) {
+                            Spacer(Modifier.width(6.dp))
+                            Text(
+                                text  = stringResource(R.string.combat_gear_bonus, gearBonus),
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.primary,
+                            )
+                        }
+                    }
+                    Text(
+                        text  = "${xp.formatXp()} ${stringResource(R.string.label_xp)}",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+                Spacer(Modifier.height(6.dp))
+                LinearProgressIndicator(
+                    progress = { progress },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(8.dp)
+                        .clip(RoundedCornerShape(4.dp)),
+                    color      = GoldPrimary,
+                    trackColor = MaterialTheme.colorScheme.surfaceVariant,
+                )
+            }
         }
     }
-    HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
 }
 
 @Composable
@@ -434,44 +426,43 @@ private fun BossRow(
     onTap: () -> Unit,
 ) {
     val dimColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(enabled = unlocked, onClick = onTap)
-            .padding(horizontal = 16.dp, vertical = 12.dp),
-        verticalAlignment = Alignment.CenterVertically,
+    ChunkyCard(
+        onClick  = onTap,
+        enabled  = unlocked,
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
     ) {
-        Text(
-            text     = boss.emoji,
-            style    = MaterialTheme.typography.titleLarge,
-            modifier = Modifier.width(36.dp),
-            color    = if (unlocked) MaterialTheme.colorScheme.onSurface else dimColor,
-        )
-        Spacer(Modifier.width(8.dp))
-        Column(Modifier.weight(1f)) {
-            Text(
-                text       = boss.displayName,
-                style      = MaterialTheme.typography.bodyLarge,
-                fontWeight = FontWeight.Medium,
-                color      = if (unlocked) MaterialTheme.colorScheme.onSurface else dimColor,
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            IconDisk(
+                emoji = boss.emoji,
+                size  = 48.dp,
+                background = if (unlocked) GoldPrimary.copy(alpha = 0.18f)
+                             else MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
             )
+            Spacer(Modifier.width(12.dp))
+            Column(Modifier.weight(1f)) {
+                Text(
+                    text       = boss.displayName,
+                    style      = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold,
+                    color      = if (unlocked) MaterialTheme.colorScheme.onSurface else dimColor,
+                )
+                Text(
+                    text     = boss.description,
+                    style    = MaterialTheme.typography.bodySmall,
+                    color    = if (unlocked) MaterialTheme.colorScheme.onSurfaceVariant else dimColor,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
+            Spacer(Modifier.width(12.dp))
             Text(
-                text     = boss.description,
-                style    = MaterialTheme.typography.bodySmall,
-                color    = if (unlocked) MaterialTheme.colorScheme.onSurfaceVariant else dimColor,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
+                text       = "Lv. ${boss.combatLevelRequired}",
+                style      = MaterialTheme.typography.labelMedium,
+                fontWeight = FontWeight.Bold,
+                color      = if (unlocked) GoldPrimary else dimColor,
             )
         }
-        Spacer(Modifier.width(12.dp))
-        Text(
-            text       = "Lv. ${boss.combatLevelRequired}",
-            style      = MaterialTheme.typography.labelMedium,
-            fontWeight = FontWeight.SemiBold,
-            color      = if (unlocked) GoldPrimary else dimColor,
-        )
     }
-    HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
 }
 
 // ---------------------------------------------------------------------------
