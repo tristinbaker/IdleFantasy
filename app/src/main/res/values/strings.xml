@@ -243,124 +243,125 @@
 
     <!-- ===== SkillsScreen ===== -->
     <string name="btn_back_arrow">← Retour</string>
-    <string name="btn_start_burying">Commencer à enterrer</string>
+    <string name="btn_start_burying">Commencer à creuser</string>
     <string name="btn_start_crafting">Commencer la fabrication</string>
     <string name="btn_select">Sélectionner</string>
     <string name="label_special">Spécial</string>
 
     <!-- ===== QuestsScreen ===== -->
-    <string name="label_claim_reward">Claim Reward</string>
+    <string name="label_claim_reward">Réclamer une récompense</string>
 
     <!-- ===== OnboardingScreen ===== -->
-    <string name="onboarding_lets_go">Let\'s go!</string>
-    <string name="onboarding_skip">Skip</string>
-    <string name="onboarding_next">Next</string>
+    <string name="onboarding_lets_go">C'est parti !</string>
+    <string name="onboarding_skip">Passer</string>
+    <string name="onboarding_next">Suivant</string>
 
     <!-- ===== Settings ===== -->
     <string name="settings_notifications_header">Notifications</string>
     <string name="settings_performance_header">Performance</string>
-    <string name="settings_general_header">General</string>
-    <string name="settings_tutorial_title">Tutorial</string>
-    <string name="settings_tutorial_desc">Show the introduction again</string>
-    <string name="settings_reopen">Reopen</string>
-    <string name="settings_foss_desc">Idle Fantasy is free and open source software.</string>
-    <string name="settings_reset_title">Reset Progression</string>
-    <string name="settings_reset_desc">Erase all skills, items, quests, and coins</string>
-    <string name="settings_reset_btn">Reset</string>
-    <string name="reset_confirm1_title">Reset all progression?</string>
-    <string name="reset_confirm1_body">This will erase all skill XP, items, coins, and quest progress. This cannot be undone.</string>
-    <string name="reset_confirm2_title">Are you sure?</string>
-    <string name="reset_confirm2_body">Everything will be lost. You will start over from scratch.</string>
-    <string name="reset_confirm2_btn">Yes, reset everything</string>
+    <string name="settings_general_header">Général</string>
+    <string name="settings_tutorial_title">Tutoriel</string>
+    <string name="settings_tutorial_desc">Afficher à nouveau l'introduction</string>
+    <string name="settings_reopen">Réouvrir</string>
+    <string name="settings_foss_desc">Idle Fantasy est un logiciel libre et open source.</string>
+    <string name="settings_reset_title">Réinitialiser la progression</string>
+    <string name="settings_reset_desc">Effacer toutes les compétences, objets, quêtes et pièces</string>
+    <string name="settings_reset_btn">Réinitialiser</string>
+    <string name="reset_confirm1_title">Réinitialiser toute la progression ?</string>
+    <string name="reset_confirm1_body">Cela effacera toute l'XP de compétences, objets, pièces et progression des quêtes. Cette action est irreversible.</string>
+    <string name="reset_confirm2_title">Êtes-vous sûr ?</string>
+    <string name="reset_confirm2_body">Tout sera perdu. Vous recommencerez depuis le début.</string>
+    <string name="reset_confirm2_btn">Oui, tout réinitialiser</string>
 
     <!-- ===== Battery prompt dialog ===== -->
-    <string name="battery_prompt_title">Keep sessions running</string>
-    <string name="battery_prompt_body">For the best experience, allow Idle Fantasy to run in the background so you receive timely session notifications.</string>
-    <string name="battery_prompt_open_settings">Open Settings</string>
-    <string name="battery_prompt_dismiss">Not now</string>
+    <string name="battery_prompt_title">Maintenir les sessions actives</string>
+    <string name="battery_prompt_body">Pour une meilleure expérience, autorisez Idle Fantasy à fonctionner en arrière-plan afin de recevoir les notifications de session à temps.</string>
+    <string name="battery_prompt_open_settings">Ouvrir les paramètres</string>
+    <string name="battery_prompt_dismiss">Plus tard</string>
 
     <!-- ===== Easter egg ===== -->
-    <string name="dig_action">Dig</string>
-    <string name="dig_result">You dig deeper into the earth…</string>
-    <!-- Translator note: %1$d = total hole depth in metres -->
-    <string name="dig_depth_format">The hole is %1$d metres deep.</string>
+    <string name="dig_action">Creuser</string>
+    <string name="dig_result">Vous creusez plus profondément dans la terre…</string>
+    <!-- Translator note: %1$d = total hole depth in metres -->  
+    <string name="dig_depth_format">Le trou fait %1$d mètres de profondeur.</string>
 
     <!-- ===== Settings — appearance / language / save data ===== -->
-    <string name="settings_appearance">Appearance</string>
-    <string name="settings_theme">Theme</string>
-    <string name="settings_theme_desc">Choose your preferred colour scheme</string>
-    <string name="settings_theme_dark">Dark</string>
-    <string name="settings_theme_light">Light</string>
-    <string name="settings_theme_system">System</string>
-    <string name="settings_language_desc">Override the app display language</string>
-    <string name="settings_lang_english">English</string>
-    <string name="settings_lang_deutsch">Deutsch</string>
-    <string name="settings_lang_system">System</string>
-    <string name="settings_save_data">Save Data</string>
-    <string name="settings_export">Export Save</string>
-    <string name="settings_export_desc">Save your progress to a file</string>
-    <string name="settings_export_btn">Export</string>
-    <string name="settings_import">Import Save</string>
-    <string name="settings_import_desc">Restore progress from a file</string>
-    <string name="settings_import_btn">Import</string>
-    <string name="settings_source_code">Source Code</string>
+    <string name="settings_appearance">Apparence</string>
+    <string name="settings_theme">Thème</string>
+    <string name="settings_theme_desc">Choisissez votre schéma de couleurs préféré</string>
+    <string name="settings_theme_dark">Sombre</string>
+    <string name="settings_theme_light">Clair</string>
+    <string name="settings_theme_system">Système</string>
+    <string name="settings_language_desc">Remplacer la langue d'affichage de l'application</string>
+    <string name="settings_lang_english">Anglais</string>
+    <string name="settings_lang_deutsch">Allemand</string>
+    <string name="settings_lang_system">Système</string>
+    <string name="settings_save_data">Sauvegarder les données</string>
+    <string name="settings_export">Exporter la sauvegarde</string>
+    <string name="settings_export_desc">Enregistrer votre progression dans un fichier</string>
+    <string name="settings_export_btn">Exporter</string>
+    <string name="settings_import">Importer une sauvegarde</string>
+    <string name="settings_import_desc">Restaurer la progression à partir d'un fichier</string>
+    <string name="settings_import_btn">Importer</string>
+    <string name="settings_source_code">Code source</string>
     <string name="settings_source_url">github.com/tristinbaker/IdleFantasy</string>
-    <string name="settings_source_open">Open</string>
-    <string name="settings_exported_ok">Save exported</string>
-    <string name="settings_imported_ok">Save imported successfully</string>
-    <string name="settings_imported_fail">Failed to import — invalid file</string>
-
+    <string name="settings_source_open">Ouvrir</string>
+    <string name="settings_exported_ok">Sauvegarde exportée</string>
+    <string name="settings_imported_ok">Sauvegarde importée avec succès</string>
+    <string name="settings_imported_fail">Échec de l'importation — fichier invalide</string>
+        
     <!-- ===== HomeScreen ===== -->
-    <string name="home_died_message">You died and lost most of your gains.</string>
-    <string name="home_xp_boost_was_active">2× XP Boost was active</string>
-    <string name="home_loot">Loot</string>
-    <string name="home_food_consumed">Food Consumed</string>
-    <string name="home_bones_buried">Bones buried</string>
-    <string name="home_whats_new">What\'s New</string>
-    <string name="home_got_it">Got it</string>
+    <string name="home_died_message">Vous êtes mort et avez perdu la majorité de vos gains.</string>
+    <string name="home_xp_boost_was_active">Le bonus d'XP x2 était actif</string>
+    <string name="home_loot">Butin</string>
+    <string name="home_food_consumed">Nourriture consommée</string>
+    <string name="home_bones_buried">Os enterrés</string>
+    <string name="home_whats_new">Les nouveautés</string>
+    <string name="home_got_it">Compris</string>
+
     <!-- Translator note: %1$s = player name or "Adventurer" -->
-    <string name="home_welcome">Welcome back, %1$s!</string>
-    <string name="home_adventurer">Adventurer</string>
+    <string name="home_welcome">Bon retour, %1$s !</string>
+    <string name="home_adventurer">Aventurier</string>
     <!-- Translator note: %1$d = queue size (always 3 max) -->
-    <string name="home_up_next">Up Next (%1$d/3)</string>
+    <string name="home_up_next">Prochainement (%1$d/3)</string>
     <!-- Translator note: %1$d = number of sessions to collect -->
     <plurals name="plural_collect_sessions">
-        <item quantity="one">Collect %1$d Session\'s Rewards</item>
-        <item quantity="other">Collect %1$d Sessions\' Rewards</item>
+    <item quantity="one">Collecter les récompenses de la session %1$d</item>
+    <item quantity="other">Collecter les récompenses des %1$d sessions</item>
     </plurals>
 
     <!-- ===== CombatScreen ===== -->
-    <string name="combat_level_label">Combat Lvl</string>
-    <string name="combat_log_label">Combat Log</string>
-    <string name="combat_solo_bosses">Solo Bosses</string>
-    <string name="combat_atk">ATK</string>
-    <string name="combat_str">STR</string>
+    <string name="combat_level_label">Niveau de combat</string>
+    <string name="combat_log_label">Journal de combat</string>
+    <string name="combat_solo_bosses">Boss en solo</string>
+    <string name="combat_atk">ATQ</string>
+    <string name="combat_str">FOR</string>
     <string name="combat_def">DEF</string>
     <!-- Translator note: %1$d = HP healed -->
-    <string name="combat_heals_hp">heals %1$d HP</string>
-    <string name="combat_defeated_so_far">defeated so far.</string>
-    <string name="combat_fighting">Fighting…</string>
-    <string name="combat_log_you_hit">You hit</string>
-    <string name="combat_log_hit_you">hit you</string>
-    <string name="combat_log_dmg">dmg</string>
-    <string name="combat_log_missed">missed</string>
-    <string name="combat_log_you_missed">You missed</string>
-    <string name="combat_rec_level">Recommended combat level</string>
-    <string name="combat_your_level">Your combat level</string>
-    <string name="combat_no_strength_bonus">None (no strength bonus)</string>
-    <string name="combat_best_arrow">Best arrow</string>
-    <string name="combat_enemies">Enemies</string>
-    <string name="combat_no_spells">No spells available at your magic level.</string>
-    <string name="combat_only_castable">Only Castable</string>
-    <string name="combat_max_hit">max hit</string>
-    <string name="combat_no_potion">No Potion</string>
-    <string name="combat_req_level">Required combat level</string>
-    <string name="combat_duration">Duration</string>
+    <string name="combat_heals_hp">soigne %1$d PV</string>
+    <string name="combat_defeated_so_far">vaincu jusqu'à présent.</string>
+    <string name="combat_fighting">Combat en cours…</string>
+    <string name="combat_log_you_hit">Vous touchez</string>
+    <string name="combat_log_hit_you">vous touche</string>
+    <string name="combat_log_dmg">dégâts</string>
+    <string name="combat_log_missed">a raté</string>
+    <string name="combat_log_you_missed">Vous avez raté</string>
+    <string name="combat_rec_level">Niveau de combat recommandé</string>
+    <string name="combat_your_level">Votre niveau de combat</string>
+    <string name="combat_no_strength_bonus">Aucun (pas de bonus de force)</string>
+    <string name="combat_best_arrow">Meilleure flèche</string>
+    <string name="combat_enemies">Ennemis</string>
+    <string name="combat_no_spells">Aucun sort disponible à votre niveau de magie.</string>
+    <string name="combat_only_castable">Seulement lançables</string>
+    <string name="combat_max_hit">dégâts max</string>
+    <string name="combat_no_potion">Pas de potion</string>
+    <string name="combat_req_level">Niveau de combat requis</string>
+    <string name="combat_duration">Durée</string>
     <!-- Translator note: %1$d = minutes -->
     <string name="combat_duration_min">%1$d min</string>
-    <string name="combat_xp_on_victory">XP on victory</string>
-    <string name="combat_you_died">You Died!</string>
-    <string name="combat_died_reward">You received 10% of the rewards.</string>
+    <string name="combat_xp_on_victory">XP à la victoire</string>
+    <string name="combat_you_died">Vous êtes mort !</string>
+    <string name="combat_died_reward">Vous avez reçu 10 % des récompenses.</string>
     <!-- Translator note: %1$d = gear bonus value -->
     <string name="combat_gear_bonus">+%1$d gear</string>
 
