@@ -11,6 +11,5 @@ app/build
 local.properties
 *.jks
 *.keystore
-CLAUDE.md
 docs/fdroid/config.yml
 docs/fdroid/tmp/
