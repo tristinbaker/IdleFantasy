@@ -1,16 +1,14 @@
-# NOTE: move this file to .github/workflows/release.yml to activate it.
-# It lives here only because the GitHub token used to author this PR
-# lacks the `workflow` OAuth scope and so cannot write inside
-# .github/workflows/. The file's contents are unchanged from the
-# intended final location.
+# Builds the Android APK and publishes a GitHub Release.
 #
-# Builds the Android APK and publishes a GitHub Release when a v* tag is pushed.
-#
-# Triggered by tags like:
-#   v1.2.3-alpha   -> published as pre-release
-#   v1.2.3-beta.2  -> published as pre-release
-#   v1.2.3-rc.1    -> published as pre-release
-#   v1.2.3         -> published as a regular release
+# Triggered by:
+#   - push to main             → auto-builds with tag "v<versionName>.<run_number>"
+#                                (e.g. v1.2.3-alpha.42), published as pre-release.
+#                                Fires every time a PR is merged into main.
+#   - push of a v* tag         → uses that tag verbatim
+#     v1.2.3-alpha   → pre-release
+#     v1.2.3-beta.2  → pre-release
+#     v1.2.3-rc.1    → pre-release
+#     v1.2.3         → regular release
 #
 # Signing
 # -------
@@ -27,6 +25,8 @@ name: Release
 
 on:
   push:
+    branches:
+      - main
     tags:
       - 'v*'
 
@@ -52,6 +52,26 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
+      - name: Compute release tag
+        id: tag
+        run: |
+          set -euo pipefail
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            tag="${GITHUB_REF_NAME}"
+            echo "Using pushed tag: $tag"
+          else
+            version=$(grep -E '^\s*versionName\s*=' app/build.gradle.kts \
+                      | head -n1 \
+                      | sed -E 's/.*versionName\s*=\s*"([^"]+)".*/\1/')
+            if [[ -z "$version" ]]; then
+              echo "Could not parse versionName from app/build.gradle.kts" >&2
+              exit 1
+            fi
+            tag="v${version}.${GITHUB_RUN_NUMBER}"
+            echo "Computed tag for main push: $tag"
+          fi
+          echo "value=$tag" >> "$GITHUB_OUTPUT"
+
       - name: Decode release keystore
         if: ${{ env.ANDROID_KEYSTORE_BASE64 != '' }}
         env:
@@ -75,7 +95,7 @@ jobs:
             echo "No APK produced under app/build/outputs/apk/release/" >&2
             exit 1
           fi
-          tag="${GITHUB_REF_NAME}"
+          tag="${{ steps.tag.outputs.value }}"
           renamed="idlefantasy-${tag}.apk"
           cp "$apk" "$renamed"
           echo "path=$renamed" >> "$GITHUB_OUTPUT"
@@ -84,8 +104,12 @@ jobs:
       - name: Determine pre-release flag
         id: prerelease
         run: |
-          tag="${GITHUB_REF_NAME}"
-          if [[ "$tag" =~ -(alpha|beta|rc) ]]; then
+          tag="${{ steps.tag.outputs.value }}"
+          # Auto-builds from main always count as pre-release. Tag pushes are
+          # pre-release iff the tag carries an -alpha / -beta / -rc suffix.
+          if [[ "${GITHUB_REF}" != refs/tags/* ]]; then
+            echo "value=true" >> "$GITHUB_OUTPUT"
+          elif [[ "$tag" =~ -(alpha|beta|rc) ]]; then
             echo "value=true" >> "$GITHUB_OUTPUT"
           else
             echo "value=false" >> "$GITHUB_OUTPUT"
@@ -94,8 +118,8 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.ref_name }}
-          name: ${{ github.ref_name }}
+          tag_name: ${{ steps.tag.outputs.value }}
+          name: ${{ steps.tag.outputs.value }}
           generate_release_notes: true
           prerelease: ${{ steps.prerelease.outputs.value }}
           files: ${{ steps.apk.outputs.path }}
