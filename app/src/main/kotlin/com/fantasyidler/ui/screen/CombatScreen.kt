@@ -948,11 +948,13 @@ private fun CombatSessionBanner(
             Spacer(Modifier.height(8.dp))
         }
 
-        OutlinedButton(
-            onClick  = onAbandon,
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            Text(stringResource(R.string.btn_abandon_session))
+        if (!isDone) {
+            OutlinedButton(
+                onClick  = onAbandon,
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Text(stringResource(R.string.btn_abandon_session))
+            }
         }
 
         if (BuildConfig.DEBUG && !isDone) {

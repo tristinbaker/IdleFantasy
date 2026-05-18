@@ -16,6 +16,9 @@
 
 set -euo pipefail
 
+# Ensure user-local binaries (e.g. fdroid at ~/.local/bin) are always on PATH
+export PATH="$HOME/.local/bin:$PATH"
+
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GRADLE_FILE="$REPO_DIR/app/build.gradle.kts"
 METADATA_FILE="$REPO_DIR/metadata/com.tristinbaker.idlefantasy.yml"
@@ -62,6 +65,11 @@ fi
 
 if [[ -z "${DEFIDE_STORE_PASSWORD:-}" || -z "${DEFIDE_KEY_PASSWORD:-}" ]]; then
     echo "ERROR: DEFIDE_STORE_PASSWORD and DEFIDE_KEY_PASSWORD must be set in the environment"
+    exit 1
+fi
+
+if ! command -v fdroid &>/dev/null; then
+    echo "ERROR: fdroid not found on PATH (looked in $PATH)"
     exit 1
 fi
 

@@ -464,4 +464,5 @@
 
     <!-- Quantity picker quick buttons -->
     <string name="qty_max">Max</string>
+
 </resources>

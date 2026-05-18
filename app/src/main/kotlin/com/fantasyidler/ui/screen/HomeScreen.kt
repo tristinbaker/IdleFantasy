@@ -422,14 +422,16 @@ private fun HomeSessionCard(
             HorizontalDivider(color = MaterialTheme.colorScheme.outline.copy(alpha = 0.3f))
             Spacer(Modifier.height(8.dp))
 
-            Row {
-                OutlinedButton(onClick = onAbandon) {
-                    Text(stringResource(R.string.btn_abandon))
-                }
-                if (BuildConfig.DEBUG && !isDone) {
-                    Spacer(Modifier.width(8.dp))
-                    TextButton(onClick = onDebugFinish) {
-                        Text("[Debug] Finish Now")
+            if (!isDone) {
+                Row {
+                    OutlinedButton(onClick = onAbandon) {
+                        Text(stringResource(R.string.btn_abandon))
+                    }
+                    if (BuildConfig.DEBUG) {
+                        Spacer(Modifier.width(8.dp))
+                        TextButton(onClick = onDebugFinish) {
+                            Text("[Debug] Finish Now")
+                        }
                     }
                 }
             }

@@ -55,7 +55,9 @@ class SessionRepository @Inject constructor(
         return session
     }
 
-    suspend fun markCompleted(sessionId: String) = sessionDao.markCompleted(sessionId)
+    suspend fun markCompleted(sessionId: String) {
+        sessionDao.markCompleted(sessionId)
+    }
 
     /**
      * Called on boot or app open to recover from a lost alarm.
@@ -83,7 +85,9 @@ class SessionRepository @Inject constructor(
     }
 
     /** Delete a completed session after rewards have been applied. */
-    suspend fun deleteSession(sessionId: String) = sessionDao.delete(sessionId)
+    suspend fun deleteSession(sessionId: String) {
+        sessionDao.delete(sessionId)
+    }
 
     suspend fun deleteAllSessions() = sessionDao.deleteAll()
 

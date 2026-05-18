@@ -97,6 +97,9 @@ dependencies {
 
     ksp(libs.androidx.hilt.compiler)
 
+    // AppCompat (per-app locale on API 21+)
+    implementation(libs.androidx.appcompat)
+
     // kotlinx.serialization
     implementation(libs.kotlinx.serialization.json)
 }

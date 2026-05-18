@@ -302,7 +302,7 @@ class ShopViewModel @Inject constructor(
         if (equip != null) {
             return when (equip.slot) {
                 EquipSlot.WEAPON                                      -> "Weapons"
-                EquipSlot.PICKAXE, EquipSlot.AXE, EquipSlot.FISHING_ROD -> "Tools"
+                EquipSlot.PICKAXE, EquipSlot.AXE, EquipSlot.FISHING_ROD, EquipSlot.HOE -> "Tools"
                 else                                                  -> "Armor"
             }
         }

@@ -1,13 +1,11 @@
 package com.fantasyidler.ui.screen
 
-import android.app.LocaleManager
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
-import android.os.LocaleList
 import android.provider.Settings
-import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -201,11 +199,8 @@ fun SettingsScreen(
                 }
             )
 
-            // Language section (API 33+ per-app locale override)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                HorizontalDivider()
-                LanguageSection(context)
-            }
+            HorizontalDivider()
+            LanguageSection()
 
             // Notifications section
             HorizontalDivider()
@@ -324,12 +319,10 @@ fun SettingsScreen(
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
-private fun LanguageSection(context: Context) {
-    val localeManager = context.getSystemService(LocaleManager::class.java)
+private fun LanguageSection() {
     val currentTag = remember {
-        val locales = localeManager.applicationLocales
+        val locales = AppCompatDelegate.getApplicationLocales()
         if (locales.isEmpty) "system" else locales[0]?.language ?: "system"
     }
     val options = listOf(
@@ -369,9 +362,9 @@ private fun LanguageSection(context: Context) {
                         DropdownMenuItem(
                             text    = { Text(label) },
                             onClick = {
-                                localeManager.applicationLocales =
-                                    if (key == "system") LocaleList.getEmptyLocaleList()
-                                    else LocaleList.forLanguageTags(key)
+                                val localeList = if (key == "system") LocaleListCompat.getEmptyLocaleList()
+                                                 else LocaleListCompat.forLanguageTags(key)
+                                AppCompatDelegate.setApplicationLocales(localeList)
                                 expanded = false
                             },
                         )
