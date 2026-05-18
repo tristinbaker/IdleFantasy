@@ -15,9 +15,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.FilterQuality
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -60,7 +61,7 @@ fun EntityIcon(
 
     if (drawableId != 0) {
         Image(
-            painter = painterResource(id = drawableId),
+            bitmap = ImageBitmap.imageResource(id = drawableId),
             contentDescription = label,
             filterQuality = FilterQuality.None,
             modifier = modifier.size(size),
@@ -85,7 +86,7 @@ fun EntityIcon(
     size: Dp = 32.dp,
 ) {
     Image(
-        painter = painterResource(id = drawableId),
+        bitmap = ImageBitmap.imageResource(id = drawableId),
         contentDescription = contentDescription,
         filterQuality = FilterQuality.None,
         modifier = modifier.size(size),
