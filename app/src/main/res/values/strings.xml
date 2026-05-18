@@ -6,9 +6,20 @@
     <string name="nav_skills">Skills</string>
     <string name="nav_combat">Combat</string>
     <string name="nav_home">Home</string>
+    <string name="nav_adventure">Adventure</string>
     <string name="nav_crafting">Crafting</string>
     <string name="nav_quests">Quests</string>
     <string name="nav_profile">Profile</string>
+
+    <!-- ===== Adventure hub ===== -->
+    <string name="adv_continue_quest">Continue your quest</string>
+    <string name="adv_recommended_dungeon">Recommended dungeon</string>
+    <string name="adv_more">More</string>
+    <string name="adv_no_active_quest">No active quest. Open Quests to pick one.</string>
+    <string name="adv_daily_quests">Daily quests</string>
+    <string name="adv_achievements">Achievements</string>
+    <string name="adv_marketplace_soon">Marketplace · coming soon</string>
+    <string name="adv_enter_dungeon">Enter dungeon ▸</string>
 
     <!-- ===== Common buttons ===== -->
     <string name="btn_start">Start</string>
