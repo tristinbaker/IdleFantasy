@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.screen
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -12,12 +13,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.EmojiEvents
+import androidx.compose.material.icons.filled.MenuBook
+import androidx.compose.material.icons.filled.Storefront
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -35,6 +41,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -121,19 +128,19 @@ fun AdventureScreen(
 
             SectionHeader(stringResource(R.string.adv_more))
             AdventureRow(
-                emoji   = "📜",
-                title   = stringResource(R.string.adv_daily_quests),
-                badge   = questsState.claimableCount.takeIf { it > 0 }?.toString(),
-                onTap   = onOpenQuests,
+                icon  = Icons.Filled.MenuBook,
+                title = stringResource(R.string.adv_daily_quests),
+                badge = questsState.claimableCount.takeIf { it > 0 }?.toString(),
+                onTap = onOpenQuests,
             )
             AdventureRow(
-                emoji   = "🏆",
-                title   = stringResource(R.string.adv_achievements),
-                badge   = null,
-                onTap   = onOpenAchievements,
+                icon  = Icons.Filled.EmojiEvents,
+                title = stringResource(R.string.adv_achievements),
+                badge = null,
+                onTap = onOpenAchievements,
             )
             AdventureRow(
-                emoji   = "🛒",
+                icon    = Icons.Filled.Storefront,
                 title   = stringResource(R.string.adv_marketplace_soon),
                 badge   = null,
                 onTap   = {},
@@ -208,6 +215,7 @@ private fun ContinueQuestCard(
     Surface(
         shape    = RoundedCornerShape(16.dp),
         color    = MaterialTheme.colorScheme.surfaceVariant,
+        border   = BorderStroke(1.dp, GoldPrimary.copy(alpha = 0.22f)),
         modifier = Modifier
             .fillMaxWidth()
             .pressScale(interactionSource)
@@ -261,6 +269,7 @@ private fun RecommendedDungeonCard(
     Surface(
         shape    = RoundedCornerShape(16.dp),
         color    = MaterialTheme.colorScheme.surfaceVariant,
+        border   = BorderStroke(1.dp, GoldPrimary.copy(alpha = 0.28f)),
         modifier = Modifier.fillMaxWidth(),
     ) {
         Column(Modifier.padding(16.dp)) {
@@ -283,7 +292,7 @@ private fun RecommendedDungeonCard(
 
 @Composable
 private fun AdventureRow(
-    emoji: String,
+    icon: ImageVector,
     title: String,
     badge: String?,
     onTap: () -> Unit,
@@ -292,7 +301,7 @@ private fun AdventureRow(
     val interactionSource = remember { MutableInteractionSource() }
     val dim = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
     Surface(
-        shape    = RoundedCornerShape(12.dp),
+        shape    = RoundedCornerShape(14.dp),
         color    = MaterialTheme.colorScheme.surfaceVariant,
         modifier = Modifier
             .fillMaxWidth()
@@ -308,10 +317,23 @@ private fun AdventureRow(
             modifier          = Modifier.padding(horizontal = 16.dp, vertical = 14.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Text(
-                text  = emoji,
-                style = MaterialTheme.typography.titleMedium,
-            )
+            // Gold-tinted icon disk — matches the GoldPrimary accent used by
+            // section headers and badges. Reads as "leather-bound game UI"
+            // rather than the previous flat-emoji look.
+            Surface(
+                shape = RoundedCornerShape(10.dp),
+                color = GoldPrimary.copy(alpha = if (enabled) 0.18f else 0.08f),
+                modifier = Modifier.size(36.dp),
+            ) {
+                Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
+                    Icon(
+                        imageVector        = icon,
+                        contentDescription = null,
+                        tint               = if (enabled) GoldPrimary else dim,
+                        modifier           = Modifier.size(20.dp),
+                    )
+                }
+            }
             Spacer(Modifier.width(12.dp))
             Text(
                 text       = title,
@@ -335,10 +357,11 @@ private fun AdventureRow(
                 }
                 Spacer(Modifier.width(8.dp))
             }
-            Text(
-                text  = "▸",
-                style = MaterialTheme.typography.titleMedium,
-                color = if (enabled) MaterialTheme.colorScheme.onSurfaceVariant else dim,
+            Icon(
+                imageVector        = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                contentDescription = null,
+                tint               = if (enabled) MaterialTheme.colorScheme.onSurfaceVariant else dim,
+                modifier           = Modifier.size(20.dp),
             )
         }
     }

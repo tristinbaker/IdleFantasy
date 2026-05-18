@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.navigation
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -30,6 +31,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.ui.components.FantasyTopHud
 import com.fantasyidler.ui.components.GlobalGameOverlay
 import com.fantasyidler.ui.motion.FantasyMotion
+import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.screen.AdventureScreen
 import com.fantasyidler.ui.screen.CombatScreen
 import com.fantasyidler.ui.screen.CraftingScreen
@@ -144,12 +146,16 @@ fun AppNavigation() {
                         },
                         icon = {
                             if (isHub) {
-                                // Larger filled circle for the centre hub button (Adventure)
+                                // Larger gold disk with a thin gold ring reads as the player's
+                                // compass anchored in the centre of the nav bar — the brown
+                                // NavigationBarItem indicator pill behind it forms the halo.
                                 Surface(
-                                    shape  = CircleShape,
-                                    color  = if (selected) MaterialTheme.colorScheme.primary
-                                             else MaterialTheme.colorScheme.surfaceVariant,
-                                    modifier = Modifier.size(48.dp),
+                                    shape   = CircleShape,
+                                    color   = if (selected) MaterialTheme.colorScheme.primary
+                                              else MaterialTheme.colorScheme.surfaceVariant,
+                                    border  = if (selected) BorderStroke(1.5.dp, GoldPrimary)
+                                              else null,
+                                    modifier = Modifier.size(52.dp),
                                 ) {
                                     Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
                                         Icon(
@@ -157,7 +163,7 @@ fun AppNavigation() {
                                             contentDescription = stringResource(screen.labelRes),
                                             tint               = if (selected) MaterialTheme.colorScheme.onPrimary
                                                                  else MaterialTheme.colorScheme.onSurfaceVariant,
-                                            modifier           = Modifier.size(24.dp),
+                                            modifier           = Modifier.size(26.dp),
                                         )
                                     }
                                 }

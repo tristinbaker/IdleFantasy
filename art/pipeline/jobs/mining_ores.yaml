@@ -1,0 +1,107 @@
+# Mining ores — 11 entries (all of category "Ores" in art_manifest.json).
+# Run:  python3 -m art.pipeline.ai.run --jobs art/pipeline/jobs/mining_ores.yaml
+#
+# Prompts target a chunky pixel-art look. Each ore leans on the canonical
+# OSRS-ish colour: copper = orange/brown, tin = pale grey, iron = red-brown,
+# silver = bright silver, coal = black, gold = bright yellow,
+# mithril = blue-purple, adamantite = green, runite = cyan, platinum = white-blue,
+# rune essence = pale white-purple (magical).
+
+defaults:
+  width: 1024
+  height: 1024
+  steps: 25
+  cfg: 7.0
+  lora_scale: 1.0
+  sampler: dpmpp_2m_karras
+  negative: >-
+    blurry, photo, smooth, anti-aliased, gradient, 3d render, low quality,
+    signature, watermark, text, painted, oil painting, realistic
+  pixelize:
+    target_size: 64
+    palette_size: 16
+  bg_model: birefnet-general
+
+jobs:
+  - entity_id: copper_ore
+    seed: 1001
+    prompt: >-
+      pixel art, 16-bit RPG item sprite of a chunk of copper ore, glossy
+      orange-brown metallic flecks embedded in dark grey rock, simple chunky
+      silhouette, plain white background, top-down 3/4 view, crisp pixels,
+      no shadows
+
+  - entity_id: tin_ore
+    seed: 1002
+    prompt: >-
+      pixel art, 16-bit RPG item sprite of a chunk of tin ore, pale silvery
+      grey metallic flecks in grey rock, chunky silhouette, plain white
+      background, top-down 3/4 view, crisp pixels, no shadows
+
+  - entity_id: iron_ore
+    seed: 1003
+    prompt: >-
+      pixel art, 16-bit RPG item sprite of a chunk of iron ore, dark
+      red-brown rusty flecks in grey rock, chunky silhouette, plain white
+      background, top-down 3/4 view, crisp pixels, no shadows
+
+  - entity_id: silver_ore
+    seed: 1004
+    prompt: >-
+      pixel art, 16-bit RPG item sprite of a chunk of silver ore, bright
+      shiny silver metallic veins in grey rock, chunky silhouette, plain
+      white background, top-down 3/4 view, crisp pixels, no shadows
+
+  - entity_id: coal
+    seed: 1005
+    prompt: >-
+      pixel art, 16-bit RPG item sprite of a chunk of coal, deep black
+      shiny rock with hints of dark blue highlight, chunky silhouette, plain
+      white background, top-down 3/4 view, crisp pixels, no shadows
+
+  - entity_id: gold_ore
+    seed: 1006
+    prompt: >-
+      pixel art, 16-bit RPG item sprite of a chunk of gold ore, bright
+      yellow gold veins in grey rock, chunky silhouette, plain white
+      background, top-down 3/4 view, crisp pixels, no shadows
+
+  - entity_id: mithril_ore
+    seed: 1007
+    prompt: >-
+      pixel art, 16-bit RPG item sprite of a chunk of mithril ore, deep
+      blue-purple magical metallic flecks in dark grey rock, chunky
+      silhouette, plain white background, top-down 3/4 view, crisp pixels,
+      no shadows
+
+  - entity_id: adamantite_ore
+    seed: 1008
+    prompt: >-
+      pixel art, 16-bit RPG item sprite of a chunk of adamantite ore,
+      vibrant emerald green metallic flecks in dark grey rock, chunky
+      silhouette, plain white background, top-down 3/4 view, crisp pixels,
+      no shadows
+
+  - entity_id: runite_ore
+    seed: 1009
+    prompt: >-
+      pixel art, 16-bit RPG item sprite of a chunk of runite ore, glowing
+      cyan blue magical metallic veins in dark grey rock, chunky
+      silhouette, plain white background, top-down 3/4 view, crisp pixels,
+      no shadows
+
+  - entity_id: platinum_ore
+    seed: 1010
+    prompt: >-
+      pixel art, 16-bit RPG item sprite of a chunk of platinum ore, pale
+      white-blue shimmering metallic veins in light grey rock, chunky
+      silhouette, plain white background, top-down 3/4 view, crisp pixels,
+      no shadows
+
+  - entity_id: rune_essence
+    seed: 1011
+    prompt: >-
+      pixel art, 16-bit RPG item sprite of a small pale runestone, soft
+      white-violet magical glow, smooth round pebble shape with runic
+      etching, plain white background, top-down 3/4 view, crisp pixels,
+      no shadows
