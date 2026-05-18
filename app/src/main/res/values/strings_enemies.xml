@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- ===== Enemy names ===== -->
-    <string name="enemy_giant_rat_name">Giant Rat</string>
+    <string name="enemy_giant_rat_name">Rata Gigante</string>
     <string name="enemy_goblin_name">Goblin</string>
-    <string name="enemy_skeleton_name">Skeleton</string>
+    <string name="enemy_skeleton_name">Esqueleto</string>
     <string name="enemy_zombie_name">Zombie</string>
-    <string name="enemy_bandit_name">Bandit</string>
-    <string name="enemy_guard_name">Guard</string>
-    <string name="enemy_dark_wizard_name">Dark Wizard</string>
-    <string name="enemy_orc_warrior_name">Orc Warrior</string>
-    <string name="enemy_spider_name">Giant Spider</string>
-    <string name="enemy_wild_dog_name">Wild Dog</string>
-    <string name="enemy_rogue_name">Rogue</string>
-    <string name="enemy_knight_name">Knight</string>
-    <string name="enemy_hellhound_name">Hellhound</string>
-    <string name="enemy_troll_name">Mountain Troll</string>
-    <string name="enemy_demon_name">Lesser Demon</string>
-    <string name="enemy_dragon_name">Green Dragon</string>
+    <string name="enemy_bandit_name">Bandido</string>
+    <string name="enemy_guard_name">Guardia</string>
+    <string name="enemy_dark_wizard_name">Mago Oscuro</string>
+    <string name="enemy_orc_warrior_name">Guerrero Orco</string>
+    <string name="enemy_spider_name">Araña Gigante</string>
+    <string name="enemy_wild_dog_name">Perro Salvaje</string>
+    <string name="enemy_rogue_name">Pícaro</string>
+    <string name="enemy_knight_name">Caballero</string>
+    <string name="enemy_hellhound_name">Perro del Infierno</string>
+    <string name="enemy_troll_name">Troll de Montaña</string>
+    <string name="enemy_demon_name">Demonio Menor</string>
+    <string name="enemy_dragon_name">Dragón Verde</string>
     <string name="enemy_imp_name">Imp</string>
-    <string name="enemy_chicken_name">Chicken</string>
-    <string name="enemy_sheep_name">Sheep</string>
-    <string name="enemy_cow_name">Cow</string>
+    <string name="enemy_chicken_name">Gallina</string>
+    <string name="enemy_sheep_name">Oveja</string>
+    <string name="enemy_cow_name">Vaca</string>
 
     <!-- ===== Dungeon names and descriptions ===== -->
-    <string name="dungeon_imp_cavern_name">Imp Cavern</string>
-    <string name="dungeon_imp_cavern_desc">A shallow cave filled with mischievous imps. Perfect for absolute beginners!</string>
-    <string name="dungeon_goblin_cave_name">Goblin Cave</string>
-    <string name="dungeon_goblin_cave_desc">A dark cave infested with goblins and giant rats. A good place for new adventurers to train.</string>
-    <string name="dungeon_spider_den_name">Spider Den</string>
-    <string name="dungeon_spider_den_desc">A web-filled cavern crawling with venomous spiders. Bring antivenom!</string>
+    <string name="dungeon_imp_cavern_name">Caverna de Imps</string>
+    <string name="dungeon_imp_cavern_desc">Una cueva poco profunda llena de imps traviesos. ¡Perfecta para principiantes absolutos!</string>
+    <string name="dungeon_goblin_cave_name">Caverna de duendes</string>
+    <string name="dungeon_goblin_cave_desc">Una cueva oscura infestada de goblins y ratas gigantes. Un buen lugar para que los nuevos aventureros entrenen.</string>
+    <string name="dungeon_spider_den_name">Guarida de Arañas</string>
+    <string name="dungeon_spider_den_desc">Una caverna llena de telarañas, repleta de arañas venenosas. ¡Trae antídoto!</string>
     <string name="dungeon_bandit_camp_name">Bandit Camp</string>
     <string name="dungeon_bandit_camp_desc">A hideout of thieves and rogues in the wilderness. Watch your coin purse!</string>
     <string name="dungeon_undead_crypt_name">Undead Crypt</string>
