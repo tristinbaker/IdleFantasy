@@ -336,6 +336,8 @@
     <string name="combat_level_label">Niveau de combat</string>
     <string name="combat_log_label">Journal de combat</string>
     <string name="combat_solo_bosses">Boss en solo</string>
+    <!-- Translator note: %1$d = number of completed dungeon runs -->
+    <string name="combat_dungeon_runs">%1$d parties</string>        
     <string name="combat_atk">ATQ</string>
     <string name="combat_str">FOR</string>
     <string name="combat_def">DEF</string>
