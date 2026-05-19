@@ -1,6 +1,6 @@
-# CLAUDE.md — Idle Fantasy Art Pipeline
+# CLAUDE.md — Idle Fantasy GUI & Game Overhaul
 
-> Context for Claude Code working on the art side of [Idle Fantasy](https://github.com/tristinbaker/IdleFantasy). Read this first.
+> Context for Claude Code working on [Idle Fantasy](https://github.com/tristinbaker/IdleFantasy). Read this first.
 
 ---
 
@@ -8,11 +8,14 @@
 
 **Idle Fantasy** is a FOSS (GPL-3.0) Android idle RPG by Tristin Baker, built in Kotlin + Jetpack Compose. Game data and mechanics are OSRS-inspired: tier ladder runs bronze → iron → steel → mithril → adamant → rune → dragon; skills include Mining, Fishing, Woodcutting, Smithing, Firemaking, Cooking, Fletching, Crafting, Runecrafting, Agility, Farming, Prayer, Herblore, plus the combat skills.
 
-**This work** (the `art/` subtree) is the art pipeline that produces sprites and animations for the game. Built as a side project alongside the main repo. The pipeline is **Python-first** (project author's language of preference; also precedent in the existing `scripts/generate_wiki.py`). Sprites are hand-drawn by the author; AI is used only to extend static keyframes into animation in-between frames, with human cleanup.
+**This repo** is the active overhaul of the game — Kotlin systems (combat, UI, motion, data), the Python art pipeline under `art/`, and the JSON data under `app/src/main/assets/data/` are all in scope. The art pipeline is still **Python-first** and follows its own conventions (see below), but Kotlin gameplay code, balance, and data are no longer off-limits.
 
 ## Mission
 
-Produce **345 static sprites** and **92 animated entities (221 animation clips total)** as enumerated in `ART_MANIFEST.md`. Outputs land in `app/src/main/res/drawable-{mdpi,hdpi,xhdpi,xxhdpi,xxxhdpi}/` so existing Kotlin code can reference them via `R.drawable.<name>` with zero code changes.
+Two parallel workstreams:
+
+1. **Gameplay & systems.** Fix bugs, rebalance, redesign combat / progression / UI as needed. The game's mechanics are being actively overhauled, not preserved.
+2. **Art pipeline.** Produce **345 static sprites** and **92 animated entities (221 animation clips total)** as enumerated in `ART_MANIFEST.md`. Outputs land in `app/src/main/res/drawable-{mdpi,hdpi,xhdpi,xxhdpi,xxxhdpi}/` so Kotlin code can reference them via `R.drawable.<name>`.
 
 ## Intended repository layout
 
@@ -72,7 +75,7 @@ Produce **345 static sprites** and **92 animated entities (221 animation clips t
 
 ## What NOT to do
 
-- **Don't modify Kotlin code** unless explicitly asked. The Kotlin app reads drawables by ID; new art just needs to land in the right folder with the right name. The Kotlin side is the game author's domain, not the art pipeline's.
+- **Treat Kotlin and art as one codebase.** Both are in scope. For Kotlin changes, mind the cross-cutting impact: `EntityIcon` consumers, the data files under `assets/data/`, and the `FantasyMotion` vocabulary in `ui/motion/`. For art changes, the rules below (palette, naming, density outputs) still apply.
 - **Don't invent entity names.** Every sprite must correspond to an entry in `ART_MANIFEST.md` / `art_manifest.json`. If a sprite is needed for something not in the manifest, update the manifest first, then create the sprite.
 - **Don't hand-edit anything in `app/src/main/res/drawable-*dpi/`.** Those are pipeline outputs. Source lives in `art/pipeline/sprites/`.
 - **Don't fork the palette.** `palette.py` mirrors `Color.kt`. Single source of truth.
@@ -150,3 +153,5 @@ pytest art/tests/
 - `app/src/main/res/drawable/ic_launcher_foreground.xml` (generic gold sword launcher icon). The only pre-existing art asset; the placeholder fallback covers everything else for now.
 
 **Next sensible step:** pick the drawing app (Aseprite / Pixly / Pixel Studio / Resprite) and ship the first vertical slice — Mining's 10 ores + 7 tier pickaxes — into `drawable-xhdpi/` (or just `drawable-xxhdpi/` if you want to start with the most common density). The audit script will track progress.
+
+**Gameplay overhaul (now in scope):** combat balance, progression curves, UI feedback, and data tuning under `app/src/main/assets/data/` are all live work. The combat simulator lives at `app/src/main/kotlin/com/fantasyidler/simulator/CombatSimulator.kt`; the per-swing damage formula is `private fun maxHit(skillLevel, strengthBonus)` and is the canonical place to retune attacker output. Equipment bonus is intentionally weighted higher than skill level so gear progression feels meaningful from level 1.
