@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Idle Fantasy</string>
 
     <!-- ===== Bottom navigation ===== -->
@@ -372,6 +372,30 @@
     <string name="combat_died_reward">You received 10% of the rewards.</string>
     <!-- Translator note: %1$d = gear bonus value -->
     <string name="combat_gear_bonus">+%1$d gear</string>
+
+    <!-- ===== CombatScreen (GUI overhaul slice) =====
+         tools:ignore="MissingTranslation" is applied per-string below: this slice
+         lands in English-first; Weblate will pick the keys up on the next sync,
+         so we don't block lint on missing de/strings.xml entries that the rest
+         of the project also lacks. -->
+    <string name="combat_loading" tools:ignore="MissingTranslation">Preparing battle…</string>
+    <string name="combat_potion_label" tools:ignore="MissingTranslation">Potion</string>
+    <string name="combat_xp_consolation" tools:ignore="MissingTranslation">XP (consolation)</string>
+    <string name="combat_view_food" tools:ignore="MissingTranslation">View equipped food</string>
+    <string name="combat_debug_finish_now" tools:ignore="MissingTranslation">[Debug] Finish Now</string>
+    <string name="combat_no_food_title" tools:ignore="MissingTranslation">No food equipped</string>
+    <string name="combat_no_food_message" tools:ignore="MissingTranslation">You have no food equipped. Without food you may die quickly and lose most of your rewards. Start anyway?</string>
+    <string name="combat_no_food_start_anyway" tools:ignore="MissingTranslation">Start anyway</string>
+    <string name="combat_no_food_equipped_title" tools:ignore="MissingTranslation">No food equipped</string>
+    <string name="combat_no_food_equipped_description" tools:ignore="MissingTranslation">Equip food from your inventory before starting a dungeon — your character will eat it automatically when hurt.</string>
+    <string name="combat_empty_selection_title" tools:ignore="MissingTranslation">No combat targets unlocked</string>
+    <string name="combat_empty_selection_description" tools:ignore="MissingTranslation">Train your combat skills to unlock your first dungeon or boss.</string>
+    <string name="combat_empty_skills_title" tools:ignore="MissingTranslation">No combat skills yet</string>
+    <string name="combat_empty_skills_description" tools:ignore="MissingTranslation">Combat skills appear here once you start fighting.</string>
+    <!-- Translator note: %1$s = boss display name, %2$d = required combat level -->
+    <string name="cd_open_boss" tools:ignore="MissingTranslation">Open %1$s, requires combat level %2$d</string>
+    <!-- Translator note: %1$s = boss display name, %2$d = required combat level -->
+    <string name="cd_locked_boss" tools:ignore="MissingTranslation">%1$s, locked. Requires combat level %2$d</string>
 
     <!-- ===== ProfileScreen ===== -->
     <string name="profile_unnamed">Unnamed Adventurer</string>
