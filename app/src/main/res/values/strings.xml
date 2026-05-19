@@ -51,7 +51,7 @@
     <string name="label_ranged">Distancia</string>
     <string name="label_magic">Magia</string>
     <string name="label_prayer">Oración</string>
-    <string name="label_hitpoints">Hitpointa</string>
+    <string name="label_hitpoints">Puntos de vida</string>
     <string name="label_inventory">Inventario</string>
     <string name="label_equipment">Equipamiento</string>
     <string name="label_pets">Pets</string>
@@ -65,9 +65,9 @@
     <string name="label_crafting_skills">Crafting</string>
     <string name="label_choose_activity">Elegir actividad</string>
     <string name="label_coming_soon">Coming soon</string>
-    <string name="label_time_remaining">Time remaining</string>
+    <string name="label_time_remaining">Tiempo restante</string>
     <string name="label_session_results">Session Results</string>
-    <string name="label_xp_gained">XP gained</string>
+    <string name="label_xp_gained">XP obtenida</string>
     <string name="label_items_collected">Items collected</string>
     <string name="label_level_ups">Level ups</string>
     <string name="label_requirements">Requirements</string>
