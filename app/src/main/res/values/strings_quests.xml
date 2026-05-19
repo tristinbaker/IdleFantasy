@@ -15,7 +15,7 @@
     <string name="quest_mining_5_name">Minería V</string>
     <string name="quest_mining_5_objective">Mina 2450 Mineral de Adamantita</string>
     <string name="quest_mining_6_name">Minería VI</string>
-    <string name="quest_mining_6_objective">Mina 3650 Mineral de Runita</string>
+    <string name="quest_mining_6_objective">Mina 3650 Mineral de Runite</string>
 
     <!-- Woodcutting -->
     <string name="quest_woodcutting_1_name">Tala de árboles I</string>
@@ -57,7 +57,7 @@
     <string name="quest_smithing_5_name">Herrería V</string>
     <string name="quest_smithing_5_objective">Funde 2450 Barras de Adamantita</string>
     <string name="quest_smithing_6_name">Herrería VI</string>
-    <string name="quest_smithing_6_objective">Funde 3650 Barras de Runita</string>
+    <string name="quest_smithing_6_objective">Funde 3650 Barras de Runite</string>
 
     <!-- Cooking - Fish -->
     <string name="quest_cooking_fish_1_name">Cocina — Fish I</string>
