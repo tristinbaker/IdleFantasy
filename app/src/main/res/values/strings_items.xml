@@ -302,13 +302,13 @@
 
     <!-- Armour — runite -->
     <string name="item_runite_helmet_name">Runite Helmet</string>
-    <string name="item_runite_helmet_desc">Un legendario casco de runita forjado para los guerreros más poderosos.</string>
+    <string name="item_runite_helmet_desc">Un legendario casco de runite forjado para los guerreros más poderosos.</string>
     <string name="item_runite_platebody_name">Runite Platebody</string>
-    <string name="item_runite_platebody_desc">La mejor armadura de runita, creada para resistir los combates más mortales.</string>
+    <string name="item_runite_platebody_desc">La mejor armadura de runite, creada para resistir los combates más mortales.</string>
     <string name="item_runite_platelegs_name">Runite Platelegs</string>
-    <string name="item_runite_platelegs_desc">Grebas de runita de calidad excepcional que ofrecen una protección incomparable.</string>
+    <string name="item_runite_platelegs_desc">Grebas de runite de calidad excepcional que ofrecen una protección incomparable.</string>
     <string name="item_runite_shield_name">Runite Shield</string>
-    <string name="item_runite_shield_desc">Un imponente escudo de runita capaz de detener ataques devastadores.</string>
+    <string name="item_runite_shield_desc">Un imponente escudo de runite capaz de detener ataques devastadores.</string>
 
     <!-- ===== Tools — pickaxes ===== -->
     <string name="item_bronze_pickaxe_name">Bronze Pickaxe</string>
