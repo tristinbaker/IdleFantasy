@@ -25,10 +25,10 @@
     <!-- ===== Dungeon names and descriptions ===== -->
     <string name="dungeon_imp_cavern_name">Caverna de Imps</string>
     <string name="dungeon_imp_cavern_desc">Una cueva poco profunda llena de imps traviesos. ¡Perfecta para principiantes absolutos!</string>
-    <string name="dungeon_goblin_cave_name">Caverna de duendes</string>
+    <string name="dungeon_goblin_cave_name">Cueva de Goblins</string>
     <string name="dungeon_goblin_cave_desc">Una cueva oscura infestada de goblins y ratas gigantes. Un buen lugar para que los nuevos aventureros entrenen.</string>
     <string name="dungeon_spider_den_name">Guarida de Arañas</string>
-    <string name="dungeon_spider_den_desc">Una caverna llena de telarañas, repleta de arañas venenosas. ¡Trae antídoto!</string>
+    <string name="dungeon_spider_den_desc">Una guarida llena de telarañas, repleta de arañas venenosas. ¡Trae antídoto!</string>
     <string name="dungeon_bandit_camp_name">Campamento de Bandidos</string>
     <string name="dungeon_bandit_camp_desc">Un escondite de ladrones y pícaros en la naturaleza. ¡Cuidado con tu bolsa de monedas!</string>
     <string name="dungeon_undead_crypt_name">Cripta de no muertos</string>
