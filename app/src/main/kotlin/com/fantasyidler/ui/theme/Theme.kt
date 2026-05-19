@@ -5,6 +5,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import com.fantasyidler.ui.theme.fantasy.FantasyTheme
 
 private val DarkColorScheme = darkColorScheme(
     primary              = GoldPrimary,
@@ -44,6 +45,12 @@ private val LightColorScheme = lightColorScheme(
     onError              = ParchmentText,
 )
 
+/**
+ * Existing top-level app theme. Delegates to [FantasyTheme] so screens get
+ * `LocalFantasyTokens.current` for free, then layers the legacy MaterialTheme
+ * mappings on top — keeping every existing `MaterialTheme.typography.*` and
+ * `MaterialTheme.colorScheme.*` lookup intact during the migration.
+ */
 @Composable
 fun FantasyIdlerTheme(
     themePreference: String = "dark",
@@ -54,10 +61,12 @@ fun FantasyIdlerTheme(
         "dark"   -> true
         else     -> isSystemInDarkTheme()
     }
-    MaterialTheme(
-        colorScheme = if (useDark) DarkColorScheme else LightColorScheme,
-        typography  = AppTypography,
-        shapes      = AppShapes,
-        content     = content,
-    )
+    FantasyTheme(darkTheme = useDark) {
+        MaterialTheme(
+            colorScheme = if (useDark) DarkColorScheme else LightColorScheme,
+            typography  = AppTypography,
+            shapes      = AppShapes,
+            content     = content,
+        )
+    }
 }
