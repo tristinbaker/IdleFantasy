@@ -69,81 +69,81 @@
     <string name="item_redwood_log_desc">Enormes troncos procedentes de las secuoyas más altas.</string>
 
     <!-- ===== Raw fish ===== -->
-    <string name="item_raw_shrimp_name">Raw Shrimp</string>
+    <string name="item_raw_shrimp_name">Camarones crudos</string>
     <string name="item_raw_shrimp_desc">Camarones crudos. Cocinar antes de comer.</string>
-    <string name="item_raw_sardine_name">Raw Sardine</string>
+    <string name="item_raw_sardine_name">Sardina cruda</string>
     <string name="item_raw_sardine_desc">Sardina cruda. Cocinar antes de consumir.</string>
-    <string name="item_raw_herring_name">Raw Herring</string>
+    <string name="item_raw_herring_name">Arenque crudo</string>
     <string name="item_raw_herring_desc">Arenque crudo. Cocinar antes de consumir.</string>
-    <string name="item_raw_mackerel_name">Raw Mackerel</string>
+    <string name="item_raw_mackerel_name">Caballa cruda</string>
     <string name="item_raw_mackerel_desc">Caballa cruda. Cocinar antes de consumir.</string>
-    <string name="item_raw_trout_name">Raw Trout</string>
+    <string name="item_raw_trout_name">Trucha cruda</string>
     <string name="item_raw_trout_desc">Trucha cruda. Cocinar antes de consumir.</string>
-    <string name="item_raw_salmon_name">Raw Salmon</string>
+    <string name="item_raw_salmon_name">Salmón crudo</string>
     <string name="item_raw_salmon_desc">Salmón crudo. Cocinar antes de consumir.</string>
-    <string name="item_raw_tuna_name">Raw Tuna</string>
+    <string name="item_raw_tuna_name">Atún crudo</string>
     <string name="item_raw_tuna_desc">Atún crudo. Cocinar antes de consumir..</string>
-    <string name="item_raw_lobster_name">Raw Lobster</string>
+    <string name="item_raw_lobster_name">Langosta cruda</string>
     <string name="item_raw_lobster_desc">Langosta cruda. Cocinar antes de consumir.</string>
-    <string name="item_raw_swordfish_name">Raw Swordfish</string>
+    <string name="item_raw_swordfish_name">Pez espada crudo</string>
     <string name="item_raw_swordfish_desc">Pez espada crudo. Cocinar antes de comer.</string>
-    <string name="item_raw_monkfish_name">Raw Monkfish</string>
+    <string name="item_raw_monkfish_name">Rape crudo</string>
     <string name="item_raw_monkfish_desc">Rape crudo. Cocinar antes de consumir.</string>
-    <string name="item_raw_shark_name">Raw Shark</string>
+    <string name="item_raw_shark_name">Tiburón crudo</string>
     <string name="item_raw_shark_desc">Tiburón crudo. Cocinar antes de comer.</string>
-    <string name="item_raw_sea_turtle_name">Raw Sea Turtle</string>
+    <string name="item_raw_sea_turtle_name">Tortuga marina cruda</string>
     <string name="item_raw_sea_turtle_desc">Tortuga marina cruda. Cocinar antes de comer.</string>
-    <string name="item_raw_manta_ray_name">Raw Manta Ray</string>
+    <string name="item_raw_manta_ray_name">Manta raya cruda</string>
     <string name="item_raw_manta_ray_desc">Manta raya cruda. Cocinar antes de consumir.</string>
 
     <!-- ===== Cooked fish ===== -->
-    <string name="item_shrimp_name">Shrimp</string>
+    <string name="item_shrimp_name">Camarón</string>
     <string name="item_shrimp_desc">Camarones cocidos. Restaura una pequeña cantidad de HP.</string>
-    <string name="item_sardine_name">Sardine</string>
+    <string name="item_sardine_name">Sardina</string>
     <string name="item_sardine_desc">Sardina cocida. Restaura los puntos de vida al consumirla.</string>
-    <string name="item_herring_name">Herring</string>
+    <string name="item_herring_name">Arenque</string>
     <string name="item_herring_desc">Arenque cocido. Restaura los puntos de vida al consumirlo.</string>
-    <string name="item_mackerel_name">Mackerel</string>
+    <string name="item_mackerel_name">Caballa</string>
     <string name="item_mackerel_desc">Caballa cocida. Restaura los puntos de vida al consumirla.</string>
-    <string name="item_trout_name">Trout</string>
+    <string name="item_trout_name">Trucha</string>
     <string name="item_trout_desc">Trucha cocida. Restaura los puntos de vida al consumirla.</string>
     <string name="item_salmon_name">Salmon</string>
     <string name="item_salmon_desc">Salmón cocido. Restaura los puntos de vida al consumirlo.</string>
-    <string name="item_tuna_name">Tuna</string>
+    <string name="item_tuna_name">Atún</string>
     <string name="item_tuna_desc">Atún cocido. Restaura los puntos de vida al comerlo.</string>
-    <string name="item_lobster_name">Lobster</string>
+    <string name="item_lobster_name">Langosta</string>
     <string name="item_lobster_desc">Langosta cocida. Restaura una buena cantidad de puntos de vida.</string>
-    <string name="item_swordfish_name">Swordfish</string>
+    <string name="item_swordfish_name">Pez espada</string>
     <string name="item_swordfish_desc">Pez espada cocido. Restaura una cantidad significativa de puntos de vida.</string>
-    <string name="item_monkfish_name">Monkfish</string>
+    <string name="item_monkfish_name">Rape</string>
     <string name="item_monkfish_desc">Rape cocido. Restaura una buena cantidad de puntos de vida.</string>
-    <string name="item_shark_name">Shark</string>
+    <string name="item_shark_name">Tiburón</string>
     <string name="item_shark_desc">Tiburón cocinado. Restaura una gran cantidad de puntos de vida.</string>
-    <string name="item_sea_turtle_name">Sea Turtle</string>
+    <string name="item_sea_turtle_name">Tortuga marina</string>
     <string name="item_sea_turtle_desc">Tortuga marina cocinada. Restaura una gran cantidad de puntos de vida.</string>
-    <string name="item_manta_ray_name">Manta Ray</string>
+    <string name="item_manta_ray_name">Manta raya</string>
     <string name="item_manta_ray_desc">Manta raya cocinada. Uno de los mejores platos que existen.</string>
 
     <!-- ===== Raw meat ===== -->
-    <string name="item_raw_rat_meat_name">Raw Rat Meat</string>
+    <string name="item_raw_rat_meat_name">Carne cruda de rata</string>
     <string name="item_raw_rat_meat_desc">Carne cruda de rata. Cocinar antes de consumir.</string>
-    <string name="item_raw_chicken_name">Raw Chicken</string>
+    <string name="item_raw_chicken_name">Pollo crudo</string>
     <string name="item_raw_chicken_desc">Pollo crudo. Cocinar antes de consumir.</string>
-    <string name="item_raw_mutton_name">Raw Mutton</string>
+    <string name="item_raw_mutton_name">Cordero crudo</string>
     <string name="item_raw_mutton_desc">Cordero crudo. Cocinar antes de consumir.</string>
-    <string name="item_raw_beef_name">Raw Beef</string>
+    <string name="item_raw_beef_name">Carne cruda</string>
     <string name="item_raw_beef_desc">Carne cruda. Cocinar antes de consumir.</string>
-    <string name="item_raw_meat_name">Raw Meat</string>
+    <string name="item_raw_meat_name">Carne cruda</string>
     <string name="item_raw_meat_desc">Carne cruda no identificada. Cocinar antes de consumir.</string>
 
     <!-- ===== Cooked meat ===== -->
-    <string name="item_cooked_rat_meat_name">Rat Meat</string>
+    <string name="item_cooked_rat_meat_name">Carne de rata</string>
     <string name="item_cooked_rat_meat_desc">Carne de rata cocida. Apenas comestible, pero restaura una pequeña cantidad de puntos de vida.</string>
-    <string name="item_cooked_chicken_name">Cooked Chicken</string>
+    <string name="item_cooked_chicken_name">Pollo cocido</string>
     <string name="item_cooked_chicken_desc">Pollo cocido. Restaura los puntos de vida al consumirlo.</string>
-    <string name="item_cooked_mutton_name">Cooked Mutton</string>
+    <string name="item_cooked_mutton_name">Cordero cocido</string>
     <string name="item_cooked_mutton_desc">Cordero cocido. Restaura los puntos de vida al consumirlo.</string>
-    <string name="item_cooked_beef_name">Cooked Beef</string>
+    <string name="item_cooked_beef_name">Carne de res cocida</string>
     <string name="item_cooked_beef_desc">Carne de res cocida. Restaura los puntos de vida al consumirla.</string>
 
     <!-- ===== Melee weapons — bronze ===== -->
@@ -281,33 +281,33 @@
     <string name="item_steel_shield_desc">Un escudo de acero</string>
 
     <!-- Armour — mithril -->
-    <string name="item_mithril_helmet_name">Mithril Helmet</string>
+    <string name="item_mithril_helmet_name">Casco de Mithril</string>
     <string name="item_mithril_helmet_desc">Un casco ligero de mithril imbuido con energía mágica.</string>
-    <string name="item_mithril_platebody_name">Mithril Platebody</string>
+    <string name="item_mithril_platebody_name">Armadura de Mithril</string>
     <string name="item_mithril_platebody_desc">Una armadura de mithril ligera y reforzada con propiedades mágicas.</string>
-    <string name="item_mithril_platelegs_name">Mithril Platelegs</string>
+    <string name="item_mithril_platelegs_name">Grebas de Mithril</string>
     <string name="item_mithril_platelegs_desc">Grebas de mithril ligeras que ofrecen gran protección sin sacrificar movilidad.</string>
-    <string name="item_mithril_shield_name">Mithril Shield</string>
+    <string name="item_mithril_shield_name">Escudo de Mithril</string>
     <string name="item_mithril_shield_desc">Un escudo mágico ligero de mithril.</string>
 
     <!-- Armour — adamantite -->
-    <string name="item_adamantite_helmet_name">Adamantite Helmet</string>
+    <string name="item_adamantite_helmet_name">Casco de Adamantita</string>
     <string name="item_adamantite_helmet_desc">Un casco de adamantita increíblemente resistente a los impactos.</string>
-    <string name="item_adamantite_platebody_name">Adamantite Platebody</string>
+    <string name="item_adamantite_platebody_name">Armadura de Adamantita</string>
     <string name="item_adamantite_platebody_desc">Una pesada armadura de adamantita forjada para soportar ataques devastadores.</string>
-    <string name="item_adamantite_platelegs_name">Adamantite Platelegs</string>
+    <string name="item_adamantite_platelegs_name">Grebas de Adamantita</string>
     <string name="item_adamantite_platelegs_desc">Grebas de adamantita extremadamente duraderas que protegen las piernas en combate.</string>
-    <string name="item_adamantite_shield_name">Adamantite Shield</string>
+    <string name="item_adamantite_shield_name">Escudo de Adamantite</string>
     <string name="item_adamantite_shield_desc">Un escudo de adamantita capaz de resistir incluso los golpes más brutales.</string>
 
     <!-- Armour — runite -->
-    <string name="item_runite_helmet_name">Runite Helmet</string>
+    <string name="item_runite_helmet_name">Casco de Runite</string>
     <string name="item_runite_helmet_desc">Un legendario casco de runite forjado para los guerreros más poderosos.</string>
-    <string name="item_runite_platebody_name">Runite Platebody</string>
+    <string name="item_runite_platebody_name">Armadura de Runite</string>
     <string name="item_runite_platebody_desc">La mejor armadura de runite, creada para resistir los combates más mortales.</string>
-    <string name="item_runite_platelegs_name">Runite Platelegs</string>
+    <string name="item_runite_platelegs_name">Grebas de Runite</string>
     <string name="item_runite_platelegs_desc">Grebas de runite de calidad excepcional que ofrecen una protección incomparable.</string>
-    <string name="item_runite_shield_name">Runite Shield</string>
+    <string name="item_runite_shield_name">Escudo de Runite</string>
     <string name="item_runite_shield_desc">Un imponente escudo de runite capaz de detener ataques devastadores.</string>
 
     <!-- ===== Tools — pickaxes ===== -->
@@ -415,9 +415,9 @@
     <string name="item_gold_emerald_ring_desc">Un anillo de oro engastado con una esmeralda.</string>
     <string name="item_gold_emerald_necklace_name">Gold Emerald Necklace</string>
     <string name="item_gold_emerald_necklace_desc">Un collar de oro engastado con una esmeralda.</string>
-    <string name="item_platinum_emerald_ring_name">Platinum Emerald Ring</string>
+    <string name="item_platinum_emerald_ring_name">Anillo de platino con esmeralda</string>
     <string name="item_platinum_emerald_ring_desc">Un anillo de platino engastado con una esmeralda.</string>
-    <string name="item_platinum_emerald_necklace_name">Platinum Emerald Necklace</string>
+    <string name="item_platinum_emerald_necklace_name">Collar de esmeraldas de platino</string>
     <string name="item_platinum_emerald_necklace_desc">Un collar de platino engastado con una esmeralda.</string>
 
     <!-- Jewellery — ruby -->
@@ -475,12 +475,12 @@
     <string name="item_spider_silk_desc">Seda fina hilada por arañas gigantes. Valiosa para los artesanos.</string>
     <string name="item_spider_fang_name">Spider Fang</string>
     <string name="item_spider_fang_desc">Un colmillo venenoso de una araña gigante.</string>
-    <string name="item_cowhide_name">Cowhide</string>
+    <string name="item_cowhide_name">Cuero de vaca</string>
     <string name="item_cowhide_desc">Piel áspera de vaca. Se utiliza en la elaboración de artículos de cuero.</string>
-    <string name="item_wool_name">Wool</string>
+    <string name="item_wool_name">Lana</string>
     <string name="item_wool_desc">Lana suave de una oveja.</string>
-    <string name="item_feather_name">Feather</string>
-    <string name="item_feather_desc">A feather used in fletching arrows.</string>
+    <string name="item_feather_name">Pluma</string>
+    <string name="item_feather_desc">Una pluma utilizada para emplumar flechas.</string>
     <string name="item_rotten_flesh_name">Rotten Flesh</string>
     <string name="item_rotten_flesh_desc">Carne en descomposición de una criatura no muerta. Huele fatal.</string>
     <string name="item_lockpick_name">Lockpick</string>
