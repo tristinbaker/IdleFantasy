@@ -276,39 +276,39 @@
     <string name="item_steel_platebody_name">Steel Platebody</string>
     <string name="item_steel_platebody_desc">Una sólida armadura de acero diseñada para soportar fuertes golpes.</string>
     <string name="item_steel_platelegs_name">Steel Platelegs.</string>
-    <string name="item_steel_platelegs_desc">Protección robusta de acero para las piernas.</string>
+    <string name="item_steel_platelegs_desc">Protección de acero reforzada para las piernas.</string>
     <string name="item_steel_shield_name">Steel Shield</string>
-    <string name="item_steel_shield_desc">Un escudo de acero resistente.</string>
+    <string name="item_steel_shield_desc">Un escudo de acero</string>
 
     <!-- Armour — mithril -->
     <string name="item_mithril_helmet_name">Mithril Helmet</string>
-    <string name="item_mithril_helmet_desc">Lightweight magical head protection.</string>
+    <string name="item_mithril_helmet_desc">Un casco ligero de mithril imbuido con energía mágica.</string>
     <string name="item_mithril_platebody_name">Mithril Platebody</string>
-    <string name="item_mithril_platebody_desc">Lightweight magical body armour.</string>
+    <string name="item_mithril_platebody_desc">Una armadura de mithril ligera y reforzada con propiedades mágicas.</string>
     <string name="item_mithril_platelegs_name">Mithril Platelegs</string>
-    <string name="item_mithril_platelegs_desc">Lightweight magical leg protection.</string>
+    <string name="item_mithril_platelegs_desc">Grebas de mithril ligeras que ofrecen gran protección sin sacrificar movilidad.</string>
     <string name="item_mithril_shield_name">Mithril Shield</string>
-    <string name="item_mithril_shield_desc">A lightweight magical shield.</string>
+    <string name="item_mithril_shield_desc">Un escudo mágico ligero de mithril.</string>
 
     <!-- Armour — adamantite -->
     <string name="item_adamantite_helmet_name">Adamantite Helmet</string>
-    <string name="item_adamantite_helmet_desc">Extremely hard head protection.</string>
+    <string name="item_adamantite_helmet_desc">Un casco de adamantita increíblemente resistente a los impactos.</string>
     <string name="item_adamantite_platebody_name">Adamantite Platebody</string>
-    <string name="item_adamantite_platebody_desc">Extremely hard body armour.</string>
+    <string name="item_adamantite_platebody_desc">Una pesada armadura de adamantita forjada para soportar ataques devastadores.</string>
     <string name="item_adamantite_platelegs_name">Adamantite Platelegs</string>
-    <string name="item_adamantite_platelegs_desc">Extremely hard leg protection.</string>
+    <string name="item_adamantite_platelegs_desc">Grebas de adamantita extremadamente duraderas que protegen las piernas en combate.</string>
     <string name="item_adamantite_shield_name">Adamantite Shield</string>
-    <string name="item_adamantite_shield_desc">An extremely hard shield.</string>
+    <string name="item_adamantite_shield_desc">Un escudo de adamantita capaz de resistir incluso los golpes más brutales.</string>
 
     <!-- Armour — runite -->
     <string name="item_runite_helmet_name">Runite Helmet</string>
-    <string name="item_runite_helmet_desc">The finest head protection available.</string>
+    <string name="item_runite_helmet_desc">Un legendario casco de runita forjado para los guerreros más poderosos.</string>
     <string name="item_runite_platebody_name">Runite Platebody</string>
-    <string name="item_runite_platebody_desc">The finest body armour available.</string>
+    <string name="item_runite_platebody_desc">La mejor armadura de runita, creada para resistir los combates más mortales.</string>
     <string name="item_runite_platelegs_name">Runite Platelegs</string>
-    <string name="item_runite_platelegs_desc">The finest leg protection available.</string>
+    <string name="item_runite_platelegs_desc">Grebas de runita de calidad excepcional que ofrecen una protección incomparable.</string>
     <string name="item_runite_shield_name">Runite Shield</string>
-    <string name="item_runite_shield_desc">The finest shield available.</string>
+    <string name="item_runite_shield_desc">Un imponente escudo de runita capaz de detener ataques devastadores.</string>
 
     <!-- ===== Tools — pickaxes ===== -->
     <string name="item_bronze_pickaxe_name">Bronze Pickaxe</string>
@@ -398,27 +398,27 @@
 
     <!-- Jewellery — sapphire -->
     <string name="item_silver_sapphire_ring_name">Silver Sapphire Ring</string>
-    <string name="item_silver_sapphire_ring_desc">A silver ring set with a sapphire.</string>
+    <string name="item_silver_sapphire_ring_desc">Un anillo de plata engastado con un zafiro.</string>
     <string name="item_silver_sapphire_necklace_name">Silver Sapphire Necklace</string>
-    <string name="item_silver_sapphire_necklace_desc">A silver necklace set with a sapphire.</string>
+    <string name="item_silver_sapphire_necklace_desc">Un collar de plata engastado con un zafiro.</string>
     <string name="item_gold_sapphire_ring_name">Gold Sapphire Ring</string>
-    <string name="item_gold_sapphire_ring_desc">A gold ring set with a sapphire.</string>
+    <string name="item_gold_sapphire_ring_desc">Un anillo de oro engastado con un zafiro.</string>
     <string name="item_gold_sapphire_necklace_name">Gold Sapphire Necklace</string>
-    <string name="item_gold_sapphire_necklace_desc">A gold necklace set with a sapphire.</string>
+    <string name="item_gold_sapphire_necklace_desc">Un collar de oro engastado con un zafiro.</string>
     <string name="item_platinum_sapphire_ring_name">Platinum Sapphire Ring</string>
-    <string name="item_platinum_sapphire_ring_desc">A platinum ring set with a sapphire.</string>
+    <string name="item_platinum_sapphire_ring_desc">Un anillo de platino engastado con un zafiro.</string>
     <string name="item_platinum_sapphire_necklace_name">Platinum Sapphire Necklace</string>
-    <string name="item_platinum_sapphire_necklace_desc">A platinum necklace set with a sapphire.</string>
+    <string name="item_platinum_sapphire_necklace_desc">Un collar de platino engastado con un zafiro.</string>
 
     <!-- Jewellery — emerald -->
     <string name="item_gold_emerald_ring_name">Gold Emerald Ring</string>
-    <string name="item_gold_emerald_ring_desc">A gold ring set with an emerald.</string>
+    <string name="item_gold_emerald_ring_desc">Un anillo de oro engastado con una esmeralda.</string>
     <string name="item_gold_emerald_necklace_name">Gold Emerald Necklace</string>
-    <string name="item_gold_emerald_necklace_desc">A gold necklace set with an emerald.</string>
+    <string name="item_gold_emerald_necklace_desc">Un collar de oro engastado con una esmeralda.</string>
     <string name="item_platinum_emerald_ring_name">Platinum Emerald Ring</string>
-    <string name="item_platinum_emerald_ring_desc">A platinum ring set with an emerald.</string>
+    <string name="item_platinum_emerald_ring_desc">Un anillo de platino engastado con una esmeralda.</string>
     <string name="item_platinum_emerald_necklace_name">Platinum Emerald Necklace</string>
-    <string name="item_platinum_emerald_necklace_desc">A platinum necklace set with an emerald.</string>
+    <string name="item_platinum_emerald_necklace_desc">Un collar de platino engastado con una esmeralda.</string>
 
     <!-- Jewellery — ruby -->
     <string name="item_gold_ruby_ring_name">Anillo de oro con rubí</string>
