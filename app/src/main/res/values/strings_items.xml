@@ -98,167 +98,167 @@
 
     <!-- ===== Cooked fish ===== -->
     <string name="item_shrimp_name">Shrimp</string>
-    <string name="item_shrimp_desc">Cooked shrimp. Restores a small amount of HP.</string>
+    <string name="item_shrimp_desc">Camarones cocidos. Restaura una pequeña cantidad de HP.</string>
     <string name="item_sardine_name">Sardine</string>
-    <string name="item_sardine_desc">Cooked sardine. Restores HP when eaten.</string>
+    <string name="item_sardine_desc">Sardina cocida. Restaura los puntos de vida al consumirla.</string>
     <string name="item_herring_name">Herring</string>
-    <string name="item_herring_desc">Cooked herring. Restores HP when eaten.</string>
+    <string name="item_herring_desc">Arenque cocido. Restaura los puntos de vida al consumirlo.</string>
     <string name="item_mackerel_name">Mackerel</string>
-    <string name="item_mackerel_desc">Cooked mackerel. Restores HP when eaten.</string>
+    <string name="item_mackerel_desc">Caballa cocida. Restaura los puntos de vida al consumirla.</string>
     <string name="item_trout_name">Trout</string>
-    <string name="item_trout_desc">Cooked trout. Restores HP when eaten.</string>
+    <string name="item_trout_desc">Trucha cocida. Restaura los puntos de vida al consumirla.</string>
     <string name="item_salmon_name">Salmon</string>
-    <string name="item_salmon_desc">Cooked salmon. Restores HP when eaten.</string>
+    <string name="item_salmon_desc">Salmón cocido. Restaura los puntos de vida al consumirlo.</string>
     <string name="item_tuna_name">Tuna</string>
-    <string name="item_tuna_desc">Cooked tuna. Restores HP when eaten.</string>
+    <string name="item_tuna_desc">Atún cocido. Restaura los puntos de vida al comerlo.</string>
     <string name="item_lobster_name">Lobster</string>
-    <string name="item_lobster_desc">Cooked lobster. Restores a good amount of HP.</string>
+    <string name="item_lobster_desc">Langosta cocida. Restaura una buena cantidad de puntos de vida.</string>
     <string name="item_swordfish_name">Swordfish</string>
-    <string name="item_swordfish_desc">Cooked swordfish. Restores a significant amount of HP.</string>
+    <string name="item_swordfish_desc">Pez espada cocido. Restaura una cantidad significativa de puntos de vida.</string>
     <string name="item_monkfish_name">Monkfish</string>
-    <string name="item_monkfish_desc">Cooked monkfish. Restores a solid amount of HP.</string>
+    <string name="item_monkfish_desc">Rape cocido. Restaura una buena cantidad de puntos de vida.</string>
     <string name="item_shark_name">Shark</string>
-    <string name="item_shark_desc">Cooked shark. Restores a large amount of HP.</string>
+    <string name="item_shark_desc">Tiburón cocinado. Restaura una gran cantidad de puntos de vida.</string>
     <string name="item_sea_turtle_name">Sea Turtle</string>
-    <string name="item_sea_turtle_desc">Cooked sea turtle. Restores a very large amount of HP.</string>
+    <string name="item_sea_turtle_desc">Tortuga marina cocinada. Restaura una gran cantidad de puntos de vida.</string>
     <string name="item_manta_ray_name">Manta Ray</string>
-    <string name="item_manta_ray_desc">Cooked manta ray. One of the best food items available.</string>
+    <string name="item_manta_ray_desc">Manta raya cocinada. Uno de los mejores platos que existen.</string>
 
     <!-- ===== Raw meat ===== -->
     <string name="item_raw_rat_meat_name">Raw Rat Meat</string>
-    <string name="item_raw_rat_meat_desc">Raw rat meat. Cook before eating.</string>
+    <string name="item_raw_rat_meat_desc">Carne cruda de rata. Cocinar antes de consumir.</string>
     <string name="item_raw_chicken_name">Raw Chicken</string>
-    <string name="item_raw_chicken_desc">Raw chicken. Cook before eating.</string>
+    <string name="item_raw_chicken_desc">Pollo crudo. Cocinar antes de consumir.</string>
     <string name="item_raw_mutton_name">Raw Mutton</string>
-    <string name="item_raw_mutton_desc">Raw mutton. Cook before eating.</string>
+    <string name="item_raw_mutton_desc">Cordero crudo. Cocinar antes de consumir.</string>
     <string name="item_raw_beef_name">Raw Beef</string>
-    <string name="item_raw_beef_desc">Raw beef. Cook before eating.</string>
+    <string name="item_raw_beef_desc">Carne cruda. Cocinar antes de consumir.</string>
     <string name="item_raw_meat_name">Raw Meat</string>
-    <string name="item_raw_meat_desc">Unidentified raw meat. Cook before eating.</string>
+    <string name="item_raw_meat_desc">Carne cruda no identificada. Cocinar antes de consumir.</string>
 
     <!-- ===== Cooked meat ===== -->
     <string name="item_cooked_rat_meat_name">Rat Meat</string>
-    <string name="item_cooked_rat_meat_desc">Cooked rat meat. Barely edible, but restores a tiny amount of HP.</string>
+    <string name="item_cooked_rat_meat_desc">Carne de rata cocida. Apenas comestible, pero restaura una pequeña cantidad de puntos de vida.</string>
     <string name="item_cooked_chicken_name">Cooked Chicken</string>
-    <string name="item_cooked_chicken_desc">Cooked chicken. Restores HP when eaten.</string>
+    <string name="item_cooked_chicken_desc">Pollo cocido. Restaura los puntos de vida al consumirlo.</string>
     <string name="item_cooked_mutton_name">Cooked Mutton</string>
-    <string name="item_cooked_mutton_desc">Cooked mutton. Restores HP when eaten.</string>
+    <string name="item_cooked_mutton_desc">Cordero cocido. Restaura los puntos de vida al consumirlo.</string>
     <string name="item_cooked_beef_name">Cooked Beef</string>
-    <string name="item_cooked_beef_desc">Cooked beef. Restores HP when eaten.</string>
+    <string name="item_cooked_beef_desc">Carne de res cocida. Restaura los puntos de vida al consumirla.</string>
 
     <!-- ===== Melee weapons — bronze ===== -->
     <string name="item_bronze_sword_name">Bronze Sword</string>
-    <string name="item_bronze_sword_desc">A basic one-handed bronze blade.</string>
+    <string name="item_bronze_sword_desc">Una hoja básica de bronce para usar con una sola mano.</string>
     <string name="item_bronze_scimitar_name">Bronze Scimitar</string>
-    <string name="item_bronze_scimitar_desc">A curved one-handed bronze blade with good strength bonus.</string>
+    <string name="item_bronze_scimitar_desc">Una hoja curva de bronce para una sola mano con una buena bonificación de resistencia.</string>
     <string name="item_bronze_2h_sword_name">Bronze 2H Sword</string>
-    <string name="item_bronze_2h_sword_desc">A two-handed bronze sword. High damage, slow speed.</string>
+    <string name="item_bronze_2h_sword_desc">Una espada de bronce a dos manos. Gran daño, velocidad lenta.</string>
     <string name="item_bronze_warhammer_name">Bronze Warhammer</string>
-    <string name="item_bronze_warhammer_desc">A heavy one-handed bronze hammer.</string>
+    <string name="item_bronze_warhammer_desc">Un pesado martillo de bronce que se usa con una sola mano.</string>
     <string name="item_bronze_battleaxe_name">Bronze Battleaxe</string>
-    <string name="item_bronze_battleaxe_desc">A fearsome one-handed bronze axe.</string>
+    <string name="item_bronze_battleaxe_desc">Un temible hacha de bronce que se puede usar con una sola mano.</string>
     <string name="item_bronze_dagger_name">Bronze Dagger</string>
-    <string name="item_bronze_dagger_desc">A quick and lightweight bronze dagger.</string>
+    <string name="item_bronze_dagger_desc">Una daga de bronce rápida y ligera.</string>
 
     <!-- Melee weapons — iron -->
     <string name="item_iron_sword_name">Iron Sword</string>
-    <string name="item_iron_sword_desc">A one-handed iron blade.</string>
+    <string name="item_iron_sword_desc">Una hoja de hierro que se puede usar con una sola mano.</string>
     <string name="item_iron_scimitar_name">Iron Scimitar</string>
-    <string name="item_iron_scimitar_desc">A curved one-handed iron blade with good strength bonus.</string>
+    <string name="item_iron_scimitar_desc">Una hoja de hierro curva de una sola mano con una buena bonificación de resistencia.</string>
     <string name="item_iron_2h_sword_name">Iron 2H Sword</string>
-    <string name="item_iron_2h_sword_desc">A two-handed iron sword.</string>
+    <string name="item_iron_2h_sword_desc">Una espada de hierro de dos manos.</string>
     <string name="item_iron_warhammer_name">Iron Warhammer</string>
-    <string name="item_iron_warhammer_desc">A heavy one-handed iron hammer.</string>
+    <string name="item_iron_warhammer_desc">Un pesado martillo de hierro que se usa con una sola mano.</string>
     <string name="item_iron_battleaxe_name">Iron Battleaxe</string>
-    <string name="item_iron_battleaxe_desc">A fearsome one-handed iron axe.</string>
+    <string name="item_iron_battleaxe_desc">Un temible hacha de hierro de una sola mano.</string>
     <string name="item_iron_dagger_name">Iron Dagger</string>
-    <string name="item_iron_dagger_desc">A quick and lightweight iron dagger.</string>
+    <string name="item_iron_dagger_desc">Una daga de hierro rápida y ligera.</string>
 
     <!-- Melee weapons — steel -->
     <string name="item_steel_sword_name">Steel Sword</string>
-    <string name="item_steel_sword_desc">A one-handed steel blade.</string>
+    <string name="item_steel_sword_desc">Una hoja de acero que se puede usar con una sola mano.</string>
     <string name="item_steel_scimitar_name">Steel Scimitar</string>
-    <string name="item_steel_scimitar_desc">A curved one-handed steel blade with good strength bonus.</string>
+    <string name="item_steel_scimitar_desc">Una hoja de acero curva para usar con una sola mano, con una buena bonificación de resistencia.</string>
     <string name="item_steel_2h_sword_name">Steel 2H Sword</string>
-    <string name="item_steel_2h_sword_desc">A two-handed steel sword.</string>
+    <string name="item_steel_2h_sword_desc">Una espada de acero de dos manos.</string>
     <string name="item_steel_warhammer_name">Steel Warhammer</string>
-    <string name="item_steel_warhammer_desc">A heavy one-handed steel hammer.</string>
+    <string name="item_steel_warhammer_desc">Un martillo de acero pesado que se usa con una sola mano.</string>
     <string name="item_steel_battleaxe_name">Steel Battleaxe</string>
-    <string name="item_steel_battleaxe_desc">A fearsome one-handed steel axe.</string>
+    <string name="item_steel_battleaxe_desc">Un temible hacha de acero que se maneja con una sola mano.</string>
 
     <!-- Melee weapons — mithril -->
     <string name="item_mithril_sword_name">Mithril Sword</string>
-    <string name="item_mithril_sword_desc">A lightweight magical one-handed sword.</string>
+    <string name="item_mithril_sword_desc">Una espada mágica ligera que se puede usar con una sola mano.</string>
     <string name="item_mithril_scimitar_name">Mithril Scimitar</string>
-    <string name="item_mithril_scimitar_desc">A curved mithril blade, supernaturally sharp.</string>
+    <string name="item_mithril_scimitar_desc">Una hoja curva de mithril, de un filo sobrenatural.</string>
     <string name="item_mithril_2h_sword_name">Mithril 2H Sword</string>
-    <string name="item_mithril_2h_sword_desc">A two-handed mithril sword.</string>
+    <string name="item_mithril_2h_sword_desc">Una espada de mithril a dos manos.</string>
     <string name="item_mithril_warhammer_name">Mithril Warhammer</string>
-    <string name="item_mithril_warhammer_desc">A lightweight magical warhammer.</string>
+    <string name="item_mithril_warhammer_desc">Un martillo de guerra mágico y ligero.</string>
     <string name="item_mithril_battleaxe_name">Mithril Battleaxe</string>
-    <string name="item_mithril_battleaxe_desc">A mithril battleaxe of exceptional quality.</string>
+    <string name="item_mithril_battleaxe_desc">Un hacha de batalla de mithril de calidad excepcional.</string>
 
     <!-- Melee weapons — adamantite -->
     <string name="item_adamantite_sword_name">Adamantite Sword</string>
-    <string name="item_adamantite_sword_desc">An extraordinarily hard one-handed sword.</string>
+    <string name="item_adamantite_sword_desc">Una espada de una mano extraordinariamente dura.</string>
     <string name="item_adamantite_scimitar_name">Adamantite Scimitar</string>
-    <string name="item_adamantite_scimitar_desc">An incredibly hard curved blade with excellent strength bonus.</string>
+    <string name="item_adamantite_scimitar_desc">Una hoja curva increíblemente dura con una excelente bonificación de resistencia.</string>
     <string name="item_adamantite_2h_sword_name">Adamantite 2H Sword</string>
-    <string name="item_adamantite_2h_sword_desc">A two-handed sword forged from adamantite.</string>
+    <string name="item_adamantite_2h_sword_desc">Una espada a dos manos forjada en adamantita.</string>
     <string name="item_adamantite_warhammer_name">Adamantite Warhammer</string>
-    <string name="item_adamantite_warhammer_desc">An extraordinarily heavy and hard warhammer.</string>
+    <string name="item_adamantite_warhammer_desc">Un martillo de guerra extraordinariamente pesado y duro.</string>
     <string name="item_adamantite_battleaxe_name">Adamantite Battleaxe</string>
-    <string name="item_adamantite_battleaxe_desc">A devastating adamantite battleaxe.</string>
+    <string name="item_adamantite_battleaxe_desc">Un hacha de batalla de adamantita devastadora.</string>
 
     <!-- Melee weapons — runite -->
     <string name="item_runite_sword_name">Runite Sword</string>
-    <string name="item_runite_sword_desc">The finest one-handed sword available.</string>
+    <string name="item_runite_sword_desc">La mejor espada de una mano disponible.</string>
     <string name="item_runite_scimitar_name">Runite Scimitar</string>
-    <string name="item_runite_scimitar_desc">The finest scimitar available, with exceptional strength bonus.</string>
+    <string name="item_runite_scimitar_desc">La mejor cimitarra disponible, con una bonificación de fuerza excepcional.</string>
     <string name="item_runite_2h_sword_name">Runite 2H Sword</string>
-    <string name="item_runite_2h_sword_desc">The finest two-handed sword available.</string>
+    <string name="item_runite_2h_sword_desc">La mejor espada a dos manos disponible.</string>
     <string name="item_runite_warhammer_name">Runite Warhammer</string>
-    <string name="item_runite_warhammer_desc">The finest warhammer available.</string>
+    <string name="item_runite_warhammer_desc">El mejor martillo de guerra disponible.</string>
     <string name="item_runite_battleaxe_name">Runite Battleaxe</string>
-    <string name="item_runite_battleaxe_desc">The finest battleaxe available.</string>
+    <string name="item_runite_battleaxe_desc">La mejor hacha de batalla disponible.</string>
 
     <!-- ===== Ranged weapons ===== -->
     <string name="item_wooden_bow_name">Wooden Bow</string>
-    <string name="item_wooden_bow_desc">A simple wooden bow. Good for training Ranged.</string>
+    <string name="item_wooden_bow_desc">Un sencillo arco de madera. Bueno para entrenar el tiro con arco.</string>
     <string name="item_oak_bow_name">Oak Bow</string>
-    <string name="item_oak_bow_desc">A reliable bow crafted from oak wood.</string>
+    <string name="item_oak_bow_desc">Un arco fiable fabricado en madera de roble.</string>
 
     <!-- ===== Magic weapons ===== -->
     <string name="item_basic_staff_name">Basic Staff</string>
-    <string name="item_basic_staff_desc">A simple magical staff for apprentice mages.</string>
+    <string name="item_basic_staff_desc">Un sencillo bastón mágico para aprendices de mago.</string>
     <string name="item_apprentice_staff_name">Apprentice Staff</string>
-    <string name="item_apprentice_staff_desc">An improved staff for developing mages.</string>
+    <string name="item_apprentice_staff_desc">Un equipo mejorado para el desarrollo de magos.</string>
     <string name="item_staff_of_air_name">Staff of Air</string>
-    <string name="item_staff_of_air_desc">An elemental staff imbued with the power of air.</string>
+    <string name="item_staff_of_air_desc">Un bastón elemental imbuido con el poder del aire.</string>
     <string name="item_staff_of_water_name">Staff of Water</string>
-    <string name="item_staff_of_water_desc">An elemental staff imbued with the power of water.</string>
+    <string name="item_staff_of_water_desc">Un bastón elemental imbuido con el poder del agua.</string>
     <string name="item_staff_of_earth_name">Staff of Earth</string>
-    <string name="item_staff_of_earth_desc">An elemental staff imbued with the power of earth.</string>
+    <string name="item_staff_of_earth_desc">Un bastón elemental imbuido con el poder de la tierra.</string>
     <string name="item_staff_of_fire_name">Staff of Fire</string>
-    <string name="item_staff_of_fire_desc">An elemental staff imbued with the power of fire.</string>
+    <string name="item_staff_of_fire_desc">Un bastón elemental imbuido con el poder del fuego.</string>
     <string name="item_staff_of_mind_name">Staff of Mind</string>
-    <string name="item_staff_of_mind_desc">A staff imbued with psychic energy.</string>
+    <string name="item_staff_of_mind_desc">Un bastón imbuido de energía psíquica.</string>
     <string name="item_staff_of_chaos_name">Staff of Chaos</string>
-    <string name="item_staff_of_chaos_desc">A chaotic staff pulsing with wild magical energy.</string>
+    <string name="item_staff_of_chaos_desc">Un bastón caótico que palpita con una energía mágica salvaje.</string>
     <string name="item_staff_of_death_name">Staff of Death</string>
-    <string name="item_staff_of_death_desc">A dark staff wreathed in the power of death.</string>
+    <string name="item_staff_of_death_desc">Un bastón oscuro envuelto en el poder de la muerte.</string>
     <string name="item_staff_of_blood_name">Staff of Blood</string>
-    <string name="item_staff_of_blood_desc">A powerful staff fuelled by blood magic.</string>
+    <string name="item_staff_of_blood_desc">Un poderoso bastón alimentado por magia de sangre.</string>
 
     <!-- ===== Armour — bronze ===== -->
     <string name="item_bronze_helmet_name">Bronze Helmet</string>
-    <string name="item_bronze_helmet_desc">Basic bronze head protection.</string>
+    <string name="item_bronze_helmet_desc">Protección básica de bronce para la cabeza.</string>
     <string name="item_bronze_platebody_name">Bronze Platebody</string>
-    <string name="item_bronze_platebody_desc">Basic bronze body armour.</string>
+    <string name="item_bronze_platebody_desc">Armadura básica de bronce.</string>
     <string name="item_bronze_platelegs_name">Bronze Platelegs</string>
-    <string name="item_bronze_platelegs_desc">Basic bronze leg protection.</string>
+    <string name="item_bronze_platelegs_desc">Protección básica de bronce para las piernas.</string>
     <string name="item_bronze_shield_name">Bronze Shield</string>
-    <string name="item_bronze_shield_desc">A basic bronze shield.</string>
+    <string name="item_bronze_shield_desc">Un escudo básico de bronce.</string>
 
     <!-- Armour — iron -->
     <string name="item_iron_helmet_name">Iron Helmet</string>
