@@ -480,6 +480,41 @@
 
     <!-- ===== QuestsScreen ===== -->
     <string name="quests_none_in_category">No quests in this category.</string>
+    <!-- Tab category ordering — must match groupKeyAt() in QuestsScreen.kt -->
+    <string-array name="quest_category_titles" translatable="false">
+        <item>Gathering</item>
+        <item>Crafting</item>
+        <item>Combat</item>
+        <item>Special</item>
+    </string-array>
+    <!-- Translator note: %1$s = category label, %2$d = claimable count -->
+    <string name="quests_tab_with_count">%1$s (%2$d)</string>
+    <!-- Translator note: %1$d = current progress, %2$d = required total -->
+    <string name="quests_progress_count">%1$d / %2$d</string>
+    <string name="quests_loading">Loading quests…</string>
+    <string name="quests_error">Couldn\'t load quests. Pull to retry.</string>
+    <string name="cd_quest_category">%1$s category</string>
+
+    <!-- ===== Generic loading/error/empty states ===== -->
+    <string name="state_loading">Loading…</string>
+    <string name="state_error_generic">Something went wrong.</string>
+    <string name="state_retry">Retry</string>
+
+    <!-- ===== AdventureScreen extras ===== -->
+    <string name="adv_loading">Preparing your adventure…</string>
+    <string name="adv_no_recommended_dungeon">No dungeons unlocked yet — keep training combat.</string>
+    <string name="adv_error">Couldn\'t load adventure. Tap to retry.</string>
+    <!-- Translator note: %1$s = activity label like "Mining — Copper ore" -->
+    <string name="cd_queue_remove">Remove %1$s from queue</string>
+    <string name="cd_queue_card">Up next queue</string>
+
+    <!-- ===== ProfileScreen extras ===== -->
+    <string name="cd_edit_character">Edit character</string>
+    <!-- Translator note: %1$s = slot name like "Weapon" -->
+    <string name="cd_unequip_slot">Unequip %1$s</string>
+    <string name="profile_loading">Loading profile…</string>
+    <string name="profile_inventory_empty">Your bag is empty. Train a skill to gather items.</string>
+    <string name="profile_achievements_empty">No achievements available yet.</string>
 
     <!-- ===== CharacterSetupSheet ===== -->
     <string name="character_create_title">Create Your Character</string>
