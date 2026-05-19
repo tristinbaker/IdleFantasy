@@ -1,5 +1,7 @@
 # Translating Fantasy Idler
 
+## Please note: Weblate is not live yet. Weblate requires projects to be 3 months old before they consider you for libre hosting. It will be available around August.
+
 Thank you for helping translate Fantasy Idler! Translations are managed through
 [Weblate](https://weblate.org) — no Git knowledge required.
 

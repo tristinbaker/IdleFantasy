@@ -13,6 +13,7 @@ import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.QuestRepository
 import com.fantasyidler.repository.QueuedSessionStarter
 import com.fantasyidler.repository.SessionRepository
+import com.fantasyidler.simulator.SkillSimulator
 import com.fantasyidler.util.formatXp
 import com.fantasyidler.util.toTitleCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -63,6 +64,8 @@ data class HomeUiState(
     val characterName: String = "",
     val sessionQueue: List<QueuedAction> = emptyList(),
     val showWhatsNew: Boolean = false,
+    /** Epoch ms when the last queued task will finish; 0 if queue is empty. */
+    val queueEndsAt: Long = 0L,
 )
 
 @HiltViewModel
@@ -93,10 +96,16 @@ class HomeViewModel @Inject constructor(
         if (player == null) extra.copy(isLoading = true, activeSession = session, pendingCollectCount = completedCount)
         else {
             val flags: PlayerFlags = json.decodeFromString(player.flags)
+            val levels: Map<String, Int> = json.decodeFromString(player.skillLevels)
+            val agilityLevel = levels[Skills.AGILITY] ?: 1
+            val perTaskMs    = SkillSimulator.sessionDurationMs(agilityLevel)
+            val queueStart   = session?.endsAt ?: System.currentTimeMillis()
+            val queueEndsAt  = if (flags.sessionQueue.isEmpty()) 0L
+                               else queueStart + flags.sessionQueue.size * perTaskMs
             extra.copy(
                 isLoading           = false,
                 coins               = player.coins,
-                skillLevels         = json.decodeFromString(player.skillLevels),
+                skillLevels         = levels,
                 skillXp             = json.decodeFromString(player.skillXp),
                 activeSession       = session,
                 pendingCollectCount = completedCount,
@@ -104,6 +113,7 @@ class HomeViewModel @Inject constructor(
                 characterName       = flags.characterName,
                 sessionQueue        = flags.sessionQueue,
                 showWhatsNew        = flags.lastSeenVersionCode < BuildConfig.VERSION_CODE,
+                queueEndsAt         = queueEndsAt,
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), HomeUiState())
@@ -138,6 +148,7 @@ class HomeViewModel @Inject constructor(
             val combinedBones     = mutableMapOf<String, Int>() // boneName → count
             var petMessage: String? = null
             var bossWon: Boolean? = null  // set when session is a boss fight
+            val awardedCapes = mutableListOf<String>()
 
             val gatheringSkills = setOf(Skills.MINING, Skills.WOODCUTTING, Skills.FISHING,
                 Skills.AGILITY, Skills.FIREMAKING, Skills.RUNECRAFTING)
@@ -155,7 +166,7 @@ class HomeViewModel @Inject constructor(
                             val coins = its.remove("coins")?.toLong() ?: 0L
                             val pets  = its.filterKeys { it in petIds }
                             val loot  = its.filterKeys { it !in petIds }
-                            playerRepo.applyMultiSkillResults(frame.xpBySkill, loot, coins)
+                            awardedCapes += playerRepo.applyMultiSkillResults(frame.xpBySkill, loot, coins)
                             for ((id, _) in pets) {
                                 val pd = gameData.pets[id] ?: continue
                                 if (playerRepo.addPetIfNew(id, pd.boostPercent))
@@ -187,7 +198,7 @@ class HomeViewModel @Inject constructor(
                         val coins = (its.remove("coins")?.toLong() ?: 0L).let { if (died) maxOf(0L, (it * 0.1).toLong()) else it }
                         val pets  = its.filterKeys { it in petIds }
                         val loot  = its.filterKeys { it !in petIds }
-                        playerRepo.applyMultiSkillResults(xpPerSkill, loot, coins)
+                        awardedCapes += playerRepo.applyMultiSkillResults(xpPerSkill, loot, coins)
                         for ((id, _) in pets) {
                             val pd = gameData.pets[id] ?: continue
                             if (playerRepo.addPetIfNew(id, pd.boostPercent))
@@ -201,6 +212,7 @@ class HomeViewModel @Inject constructor(
                                 combatStyle        = detectCombatStyle(xpPerSkill),
                                 foodConsumedTotal  = food.values.sum(),
                             )
+                            playerRepo.incrementDungeonRun(session.activityKey)
                         }
                         if (food.isNotEmpty()) playerRepo.consumeItems(food)
                         for ((skill, xp) in xpPerSkill) combinedXpBySkill[skill] = (combinedXpBySkill[skill] ?: 0L) + xp
@@ -215,7 +227,7 @@ class HomeViewModel @Inject constructor(
                         for (frame in frames) for ((item, qty) in frame.items) its[item] = (its[item] ?: 0) + qty
                         val pets    = its.filterKeys { it in petIds }
                         val regular = its.filterKeys { it !in petIds }
-                        playerRepo.applySessionResults(session.skillName, totalXp, regular)
+                        awardedCapes += playerRepo.applySessionResults(session.skillName, totalXp, regular)
                         when (session.skillName) {
                             in gatheringSkills -> questRepo.recordGathering(session.skillName, regular)
                             in craftingSkills  -> questRepo.recordCrafting(session.skillName, regular)
@@ -298,7 +310,12 @@ class HomeViewModel @Inject constructor(
                 boostWasActive  = boostActive,
             )
 
-            _extra.update { it.copy(sessionSummary = summary, snackbarMessage = petMessage) }
+            val capeMessage = if (awardedCapes.isNotEmpty()) {
+                val names = awardedCapes.joinToString(", ") { gameData.itemDisplayName(it) }
+                "Congratulations! You received: $names"
+            } else null
+            val snackbar = listOfNotNull(petMessage, capeMessage).joinToString(" • ").ifEmpty { null }
+            _extra.update { it.copy(sessionSummary = summary, snackbarMessage = snackbar) }
             queuedSessionStarter.startNextQueued()
         }
     }

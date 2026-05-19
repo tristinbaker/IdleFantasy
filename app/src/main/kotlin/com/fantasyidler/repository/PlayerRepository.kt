@@ -20,6 +20,11 @@ import javax.inject.Singleton
 private inline fun <reified T> Json.encode(value: T): String =
     encodeToString(serializersModule.serializer<T>(), value)
 
+private fun capeKeyForSkill(skill: String): String? = when (skill) {
+    Skills.HITPOINTS -> "hp_cape"
+    else             -> "${skill}_cape"
+}
+
 @Singleton
 class PlayerRepository @Inject constructor(
     private val playerDao: PlayerDao,
@@ -64,12 +69,13 @@ class PlayerRepository @Inject constructor(
     /**
      * Apply completed session results to the player: add XP (doubled if boost active),
      * recalculate level, and merge loot into inventory.
+     * Returns the keys of any skill capes awarded (level 99 reached for the first time).
      */
     suspend fun applySessionResults(
         skillName: String,
         xpGained: Long,
         itemsGained: Map<String, Int>,
-    ) {
+    ): List<String> {
         val player    = getOrCreatePlayer()
         val flags: PlayerFlags = json.decodeFromString(player.flags)
         val boostActive = flags.xpBoostExpiresAt > System.currentTimeMillis()
@@ -79,9 +85,19 @@ class PlayerRepository @Inject constructor(
         val xpMap: MutableMap<String, Long>  = json.decodeFromString(player.skillXp)
         val inventory: MutableMap<String, Int> = json.decodeFromString(player.inventory)
 
+        val oldLevel = XpTable.levelForXp(xpMap[skillName] ?: 0L)
         val newXp = (xpMap[skillName] ?: 0L) + boostedXp
         xpMap[skillName] = newXp
         levels[skillName] = XpTable.levelForXp(newXp)
+
+        val awardedCapes = mutableListOf<String>()
+        if (oldLevel < 99 && levels[skillName]!! >= 99) {
+            val capeKey = capeKeyForSkill(skillName)
+            if (capeKey != null && !inventory.containsKey(capeKey)) {
+                inventory[capeKey] = 1
+                awardedCapes += capeKey
+            }
+        }
 
         for ((item, qty) in itemsGained) {
             inventory[item] = (inventory[item] ?: 0) + qty
@@ -94,6 +110,7 @@ class PlayerRepository @Inject constructor(
                 inventory   = json.encode<Map<String, Int>>(inventory),
             )
         )
+        return awardedCapes
     }
 
     /** Subtract XP from a skill, flooring at 0. Recalculates level. */
@@ -179,6 +196,13 @@ class PlayerRepository @Inject constructor(
         updateFlags(flags.copy(sessionQueue = queue.toMutableList().apply { removeAt(index) }))
     }
 
+    suspend fun incrementDungeonRun(activityKey: String) {
+        val flags = getFlags()
+        val updated = flags.dungeonRuns.toMutableMap()
+        updated[activityKey] = (updated[activityKey] ?: 0) + 1
+        updateFlags(flags.copy(dungeonRuns = updated))
+    }
+
     suspend fun markWhatsNewSeen(versionCode: Int) {
         updateFlags(getFlags().copy(lastSeenVersionCode = versionCode))
     }
@@ -253,12 +277,13 @@ class PlayerRepository @Inject constructor(
     /**
      * Apply combat session results: XP distributed across multiple skills (doubled if
      * boost active), loot added to inventory, coins added to the coins field.
+     * Returns the keys of any skill capes awarded (level 99 reached for the first time).
      */
     suspend fun applyMultiSkillResults(
         xpPerSkill: Map<String, Long>,
         itemsGained: Map<String, Int>,
         coinsGained: Long = 0L,
-    ) {
+    ): List<String> {
         val player    = getOrCreatePlayer()
         val flags: PlayerFlags = json.decodeFromString(player.flags)
         val boostActive = flags.xpBoostExpiresAt > System.currentTimeMillis()
@@ -268,10 +293,19 @@ class PlayerRepository @Inject constructor(
         val xpMap:     MutableMap<String, Long> = json.decodeFromString(player.skillXp)
         val inventory: MutableMap<String, Int>  = json.decodeFromString(player.inventory)
 
+        val awardedCapes = mutableListOf<String>()
         for ((skill, xp) in xpPerSkill) {
+            val oldLevel = XpTable.levelForXp(xpMap[skill] ?: 0L)
             val newXp = (xpMap[skill] ?: 0L) + xp * boostMult
-            xpMap[skill]   = newXp
-            levels[skill]  = XpTable.levelForXp(newXp)
+            xpMap[skill]  = newXp
+            levels[skill] = XpTable.levelForXp(newXp)
+            if (oldLevel < 99 && levels[skill]!! >= 99) {
+                val capeKey = capeKeyForSkill(skill)
+                if (capeKey != null && !inventory.containsKey(capeKey)) {
+                    inventory[capeKey] = 1
+                    awardedCapes += capeKey
+                }
+            }
         }
         for ((item, qty) in itemsGained) {
             inventory[item] = (inventory[item] ?: 0) + qty
@@ -285,6 +319,7 @@ class PlayerRepository @Inject constructor(
                 coins       = player.coins + coinsGained,
             )
         )
+        return awardedCapes
     }
 
     /**

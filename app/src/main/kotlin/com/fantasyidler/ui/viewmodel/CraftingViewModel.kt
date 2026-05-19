@@ -118,6 +118,10 @@ class CraftingViewModel @Inject constructor(
 
     private val _extra = MutableStateFlow(CraftingUiState())
 
+    private val scrollIndices = mutableMapOf<Int, Int>()
+    fun getScrollIndex(tab: Int): Int = scrollIndices[tab] ?: 0
+    fun saveScrollIndex(tab: Int, index: Int) { scrollIndices[tab] = index }
+
     val uiState: StateFlow<CraftingUiState> = combine(
         playerRepo.playerFlow,
         sessionRepo.activeSessionFlow,

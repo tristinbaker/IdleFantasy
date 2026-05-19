@@ -161,6 +161,7 @@ fun CombatScreen(
                         bosses          = viewModel.bossList,
                         skillLevels     = state.skillLevels,
                         survivalRatings = state.dungeonSurvivalRatings,
+                        dungeonRuns     = state.dungeonRuns,
                         onDungeon       = viewModel::selectDungeon,
                         onBoss          = viewModel::selectBoss,
                     )
@@ -187,6 +188,7 @@ fun CombatScreen(
                         bosses           = viewModel.bossList,
                         skillLevels      = state.skillLevels,
                         survivalRatings  = state.dungeonSurvivalRatings,
+                        dungeonRuns      = state.dungeonRuns,
                         onDungeon        = viewModel::selectDungeon,
                         onBoss           = viewModel::selectBoss,
                     )
@@ -294,6 +296,7 @@ private fun CombatSelectionList(
     bosses: List<BossData>,
     skillLevels: Map<String, Int>,
     survivalRatings: Map<String, CombatSimulator.SurvivalRating> = emptyMap(),
+    dungeonRuns: Map<String, Int> = emptyMap(),
     modifier: Modifier = Modifier,
     onDungeon: (DungeonData) -> Unit,
     onBoss: (BossData) -> Unit,
@@ -307,6 +310,7 @@ private fun CombatSelectionList(
                 dungeon        = dungeon,
                 unlocked       = combatLvl >= dungeon.recommendedLevel - UNLOCK_TOLERANCE,
                 survivalRating = survivalRatings[dungeon.name],
+                runCount       = dungeonRuns[dungeon.name] ?: 0,
                 onTap          = { onDungeon(dungeon) },
             )
         }
@@ -503,6 +507,7 @@ private fun DungeonRow(
     dungeon: DungeonData,
     unlocked: Boolean,
     survivalRating: CombatSimulator.SurvivalRating? = null,
+    runCount: Int = 0,
     onTap: () -> Unit,
 ) {
     val dimColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
@@ -539,6 +544,13 @@ private fun DungeonRow(
                     text  = ratingText,
                     style = MaterialTheme.typography.labelSmall,
                     color = ratingColor,
+                )
+            }
+            if (runCount > 0) {
+                Text(
+                    text  = stringResource(R.string.combat_dungeon_runs, runCount),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = if (unlocked) MaterialTheme.colorScheme.onSurfaceVariant else dimColor,
                 )
             }
         }

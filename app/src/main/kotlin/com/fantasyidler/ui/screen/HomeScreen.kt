@@ -60,6 +60,7 @@ import com.fantasyidler.ui.viewmodel.combatLevelFrom
 import com.fantasyidler.ui.viewmodel.totalLevelFrom
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatCoins
+import com.fantasyidler.util.formatDurationMs
 import com.fantasyidler.util.toCountdown
 import kotlinx.coroutines.delay
 import kotlinx.serialization.decodeFromString
@@ -340,9 +341,10 @@ fun HomeScreen(
             // ── Queue card ───────────────────────────────────────────────
             if (state.sessionQueue.isNotEmpty()) {
                 QueueCard(
-                    queue    = state.sessionQueue,
-                    context  = context,
-                    onRemove = viewModel::removeFromQueue,
+                    queue       = state.sessionQueue,
+                    queueEndsAt = state.queueEndsAt,
+                    context     = context,
+                    onRemove    = viewModel::removeFromQueue,
                 )
             }
         }
@@ -446,6 +448,7 @@ private fun HomeSessionCard(
 @Composable
 private fun QueueCard(
     queue: List<QueuedAction>,
+    queueEndsAt: Long,
     context: android.content.Context,
     onRemove: (Int) -> Unit,
 ) {
@@ -494,6 +497,18 @@ private fun QueueCard(
                         )
                     }
                 }
+            }
+            if (queueEndsAt > 0L) {
+                HorizontalDivider(
+                    modifier = Modifier.padding(top = 8.dp, bottom = 4.dp),
+                    color    = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f),
+                )
+                val remaining = (queueEndsAt - System.currentTimeMillis()).coerceAtLeast(0L)
+                Text(
+                    text  = stringResource(R.string.home_queue_ends_in, remaining.formatDurationMs()),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
             }
         }
     }

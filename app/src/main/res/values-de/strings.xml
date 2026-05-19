@@ -319,6 +319,7 @@
     <string name="home_welcome">Willkommen zurück, %1$s!</string>
     <string name="home_adventurer">Abenteurer</string>
     <string name="home_up_next">Als Nächstes (%1$d/3)</string>
+    <string name="home_queue_ends_in">Queue ends in %1$s</string>
     <plurals name="plural_collect_sessions">
         <item quantity="one">%1$d Belohnung der Sitzung sammeln</item>
         <item quantity="other">%1$d Belohnungen der Sitzung sammeln</item>
@@ -328,6 +329,7 @@
     <string name="combat_level_label">Kampflevel</string>
     <string name="combat_log_label">Kampfprotokoll</string>
     <string name="combat_solo_bosses">Einzelbosse</string>
+    <string name="combat_dungeon_runs">%1$d runs</string>
     <string name="combat_atk">ATK</string>
     <string name="combat_str">STR</string>
     <string name="combat_def">DEF</string>
@@ -426,6 +428,7 @@
     <string name="crafting_decrease">Decrease</string>
     <string name="crafting_increase">Increase</string>
     <string name="crafting_needed_have">%1$d (have %2$d)</string>
+    <string name="crafting_in_inventory">In inventory: ×%1$d</string>
 
     <!-- ===== TODO: translate — FarmingScreen ===== -->
     <string name="farming_harvested">Harvested %1$s</string>

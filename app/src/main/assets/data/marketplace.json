@@ -27,6 +27,18 @@
         "price": 25,
         "stock": "unlimited"
       },
+      "silver_ore": {
+        "display_name": "Silver Ore",
+        "description": "A shiny silver ore used for crafting jewellery.",
+        "price": 40,
+        "stock": "unlimited"
+      },
+      "gold_ore": {
+        "display_name": "Gold Ore",
+        "description": "A valuable gold ore used for gold bars and jewellery.",
+        "price": 80,
+        "stock": "unlimited"
+      },
       "mithril_ore": {
         "display_name": "Mithril Ore",
         "description": "A rare blue ore used for mithril bars.",
@@ -37,6 +49,12 @@
         "display_name": "Adamantite Ore",
         "description": "A valuable green ore used for adamantite bars.",
         "price": 250,
+        "stock": "unlimited"
+      },
+      "platinum_ore": {
+        "display_name": "Platinum Ore",
+        "description": "A rare platinum ore used for platinum bars.",
+        "price": 350,
         "stock": "unlimited"
       },
       "runite_ore": {

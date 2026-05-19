@@ -70,6 +70,7 @@ data class CombatUiState(
     val equippedFood: Map<String, Int> = emptyMap(),
     val selectedPotionKey: String? = null,
     val availablePotions: Map<String, Int> = emptyMap(),
+    val dungeonRuns: Map<String, Int> = emptyMap(),
 )
 
 // ---------------------------------------------------------------------------
@@ -138,6 +139,7 @@ class CombatViewModel @Inject constructor(
                     .filter { (_, qty) -> qty > 0 },
                 availablePotions        = inventory.filterKeys { it in gameData.potionEffects }
                     .filter { (_, qty) -> qty > 0 },
+                dungeonRuns             = flags.dungeonRuns,
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), CombatUiState())
@@ -426,7 +428,7 @@ class CombatViewModel @Inject constructor(
             val petIds      = gameData.pets.keys
             val petDrops    = allItems.filterKeys { it in petIds }
             val loot        = allItems.filterKeys { it !in petIds }
-            playerRepo.applyMultiSkillResults(frame.xpBySkill, loot, coinsGained)
+            val capes = playerRepo.applyMultiSkillResults(frame.xpBySkill, loot, coinsGained)
             for ((petId, _) in petDrops) {
                 val petData = gameData.pets[petId] ?: continue
                 playerRepo.addPetIfNew(petId, petData.boostPercent)
@@ -434,14 +436,18 @@ class CombatViewModel @Inject constructor(
             val allItemsDisplay = frame.items.toMutableMap()
             val coinsDisplay    = allItemsDisplay.remove("coins")?.toLong() ?: 0L
             sessionRepo.deleteSession(session.sessionId)
+            val capeMsg = buildCapeMessage(capes)
             _extra.update {
-                it.copy(combatResult = CombatSessionResult(
-                    dungeonDisplayName = boss?.let { b -> "${b.emoji} ${b.displayName}" } ?: session.activityKey,
-                    xpPerSkill  = frame.xpBySkill,
-                    itemsGained = allItemsDisplay,
-                    coinsGained = coinsDisplay,
-                    won         = true,
-                ))
+                it.copy(
+                    combatResult = CombatSessionResult(
+                        dungeonDisplayName = boss?.let { b -> "${b.emoji} ${b.displayName}" } ?: session.activityKey,
+                        xpPerSkill  = frame.xpBySkill,
+                        itemsGained = allItemsDisplay,
+                        coinsGained = coinsDisplay,
+                        won         = true,
+                    ),
+                    snackbarMessage = capeMsg,
+                )
             }
         } else {
             // Consolation: 10% of base XP rewards, 10% of average coin drop
@@ -451,18 +457,22 @@ class CombatViewModel @Inject constructor(
             val consolationCoins = boss?.commonLoot?.let {
                 maxOf(1L, ((it.coinsMin + it.coinsMax) / 2 * 0.1).toLong())
             } ?: 0L
-            if (consolationXp.isNotEmpty() || consolationCoins > 0) {
+            val capes = if (consolationXp.isNotEmpty() || consolationCoins > 0) {
                 playerRepo.applyMultiSkillResults(consolationXp, emptyMap(), consolationCoins)
-            }
+            } else emptyList()
             sessionRepo.deleteSession(session.sessionId)
+            val capeMsg = buildCapeMessage(capes)
             _extra.update {
-                it.copy(combatResult = CombatSessionResult(
-                    dungeonDisplayName = boss?.let { b -> "${b.emoji} ${b.displayName}" } ?: session.activityKey,
-                    xpPerSkill  = consolationXp,
-                    itemsGained = emptyMap(),
-                    coinsGained = consolationCoins,
-                    won         = false,
-                ))
+                it.copy(
+                    combatResult = CombatSessionResult(
+                        dungeonDisplayName = boss?.let { b -> "${b.emoji} ${b.displayName}" } ?: session.activityKey,
+                        xpPerSkill  = consolationXp,
+                        itemsGained = emptyMap(),
+                        coinsGained = consolationCoins,
+                        won         = false,
+                    ),
+                    snackbarMessage = capeMsg,
+                )
             }
         }
     }
@@ -494,7 +504,7 @@ class CombatViewModel @Inject constructor(
         }
         val dungeon = gameData.dungeons[session.activityKey]
 
-        playerRepo.applyMultiSkillResults(totalXpPerSkill, allItems, coinsGained)
+        val capes = playerRepo.applyMultiSkillResults(totalXpPerSkill, allItems, coinsGained)
         // Consume food from inventory (best effort)
         if (allFoodConsumed.isNotEmpty()) playerRepo.consumeItems(allFoodConsumed)
         if (!playerDied) {
@@ -506,17 +516,21 @@ class CombatViewModel @Inject constructor(
                 combatStyle        = combatStyle,
                 foodConsumedTotal  = allFoodConsumed.values.sum(),
             )
+            playerRepo.incrementDungeonRun(session.activityKey)
         }
         sessionRepo.deleteSession(session.sessionId)
 
         _extra.update {
-            it.copy(combatResult = CombatSessionResult(
-                dungeonDisplayName = dungeon?.displayName ?: session.activityKey,
-                xpPerSkill         = totalXpPerSkill,
-                itemsGained        = allItems,
-                coinsGained        = coinsGained,
-                won                = !playerDied,
-            ))
+            it.copy(
+                combatResult = CombatSessionResult(
+                    dungeonDisplayName = dungeon?.displayName ?: session.activityKey,
+                    xpPerSkill         = totalXpPerSkill,
+                    itemsGained        = allItems,
+                    coinsGained        = coinsGained,
+                    won                = !playerDied,
+                ),
+                snackbarMessage = buildCapeMessage(capes),
+            )
         }
     }
 
@@ -553,6 +567,12 @@ class CombatViewModel @Inject constructor(
     // ------------------------------------------------------------------
     // Helpers
     // ------------------------------------------------------------------
+
+    private fun buildCapeMessage(capes: List<String>): String? {
+        if (capes.isEmpty()) return null
+        val names = capes.joinToString(", ") { gameData.itemDisplayName(it) }
+        return "Congratulations! You received: $names"
+    }
 
     // ------------------------------------------------------------------
     // Boss simulation

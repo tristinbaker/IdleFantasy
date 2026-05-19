@@ -5,6 +5,8 @@ import androidx.lifecycle.viewModelScope
 import com.fantasyidler.data.json.MarketplaceItem
 import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.PlayerFlags
+import com.fantasyidler.data.model.QueuedAction
+import com.fantasyidler.data.model.Skills
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -52,6 +54,8 @@ data class ShopUiState(
     val transaction: ShopTransaction? = null,
     val snackbarMessage: String? = null,
     val isLoading: Boolean = true,
+    /** Items reserved by queued actions — cannot be sold. */
+    val reservedItems: Map<String, Int> = emptyMap(),
 ) {
     val xpBoostActive: Boolean get() = xpBoostExpiresAt > System.currentTimeMillis()
 }
@@ -82,6 +86,7 @@ class ShopViewModel @Inject constructor(
                 equipped         = json.decodeFromString(player.equipped),
                 xpBoostExpiresAt = flags.xpBoostExpiresAt,
                 isLoading        = false,
+                reservedItems    = computeReserved(flags.sessionQueue),
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ShopUiState())
@@ -116,6 +121,48 @@ class ShopViewModel @Inject constructor(
     }
 
     // ------------------------------------------------------------------
+    // Queue reservation helpers
+    // ------------------------------------------------------------------
+
+    private fun computeReserved(queue: List<QueuedAction>): Map<String, Int> {
+        val reserved = mutableMapOf<String, Int>()
+        for (action in queue) {
+            when (action.skillName) {
+                Skills.SMITHING, Skills.FLETCHING, Skills.CRAFTING -> {
+                    val mats = when (action.skillName) {
+                        Skills.SMITHING  -> gameData.smithingRecipes[action.activityKey]?.materials
+                        Skills.FLETCHING -> gameData.fletchingRecipes[action.activityKey]?.materials
+                        Skills.CRAFTING  -> gameData.craftingRecipes[action.activityKey]?.materials
+                        else             -> null
+                    } ?: continue
+                    for ((item, needed) in mats) {
+                        reserved[item] = (reserved[item] ?: 0) + needed * action.qty
+                    }
+                }
+                Skills.COOKING -> {
+                    val rawItem = gameData.cookingRecipes[action.activityKey]?.rawItem ?: continue
+                    reserved[rawItem] = (reserved[rawItem] ?: 0) + action.qty
+                }
+                Skills.HERBLORE -> {
+                    val mats = gameData.herbloreRecipes[action.activityKey]?.materials ?: continue
+                    for ((item, needed) in mats) {
+                        reserved[item] = (reserved[item] ?: 0) + needed * action.qty
+                    }
+                }
+                Skills.PRAYER -> {
+                    val key = action.activityKey
+                    reserved[key] = (reserved[key] ?: 0) + action.qty
+                }
+                Skills.RUNECRAFTING -> {
+                    val cost = gameData.runes[action.activityKey]?.essenceCost ?: continue
+                    reserved["rune_essence"] = (reserved["rune_essence"] ?: 0) + cost * action.qty
+                }
+            }
+        }
+        return reserved
+    }
+
+    // ------------------------------------------------------------------
     // Sell price lookup
     // ------------------------------------------------------------------
 
@@ -126,14 +173,61 @@ class ShopViewModel @Inject constructor(
             .firstOrNull()
         if (marketPrice != null) return maxOf(1, marketPrice / 3)
 
+        val equipData = gameData.equipment[itemKey]
+        if (equipData != null) {
+            // Skill capes (awarded at 99): use req-based price
+            if (itemKey.endsWith("_cape")) {
+                val maxReq = equipData.requirements.values.maxOrNull() ?: 1
+                return maxOf(5, maxReq * 3)
+            }
+            val slotMult = SLOT_MULTIPLIER[equipData.slot] ?: 2.0f
+            // Metal-tier weapons/armour
+            val metalBase = METAL_BASE[itemKey.substringBefore("_")]
+            if (metalBase != null) return maxOf(5, (metalBase * slotMult).toInt())
+            // Bow tiers
+            val bowBase = BOW_BASE.entries.firstOrNull { itemKey.startsWith(it.key) }?.value
+            if (bowBase != null) return maxOf(5, (bowBase * slotMult).toInt())
+            // Jewellery crafted from silver/gold/platinum (optionally with a gem)
+            if (equipData.slot == EquipSlot.RING || equipData.slot == EquipSlot.NECKLACE) {
+                val jewelBase = JEWEL_BASE.entries.firstOrNull { itemKey.startsWith(it.key) }?.value
+                if (jewelBase != null) {
+                    val gemBonus = GEM_BONUS.entries.firstOrNull { it.key in itemKey }?.value ?: 0
+                    return maxOf(5, (jewelBase * slotMult + gemBonus).toInt())
+                }
+            }
+            // Staves, special items — fall back to level-requirement scaling
+            val maxReq = equipData.requirements.values.maxOrNull() ?: 1
+            return maxOf(5, maxReq * 4)
+        }
+
         // Category-based fallback for gathered/crafted items not in the shop
         return when {
-            "gem"     in itemKey -> 80
-            "bar"     in itemKey -> 30
-            "log"     in itemKey -> 5
-            "ore"     in itemKey -> 5
-            "cooked"  in itemKey -> 10
-            "raw_"    in itemKey -> 4
+            "_arrow" in itemKey -> when {
+                "runite"     in itemKey -> 15
+                "adamantite" in itemKey -> 10
+                "mithril"    in itemKey -> 6
+                "steel"      in itemKey -> 4
+                "iron"       in itemKey -> 3
+                else                   -> 2
+            }
+            "bar"    in itemKey -> when {
+                "runite"     in itemKey -> 230
+                "adamantite" in itemKey -> 130
+                "platinum"   in itemKey -> 115
+                "mithril"    in itemKey -> 65
+                "gold"       in itemKey -> 27
+                "steel"      in itemKey -> 22
+                "silver"     in itemKey -> 13
+                "iron"       in itemKey -> 5
+                else                   -> 3
+            }
+            "gem"    in itemKey -> 80
+            "potion" in itemKey -> 25
+            "pearl"  in itemKey -> 15
+            "log"    in itemKey -> 5
+            "ore"    in itemKey -> 5
+            "cooked" in itemKey -> 10
+            "raw_"   in itemKey -> 4
             itemKey in FISH_KEYS -> 8
             else                 -> 2
         }
@@ -226,12 +320,18 @@ class ShopViewModel @Inject constructor(
     }
 
     fun openSell(itemKey: String, displayName: String) {
-        val state        = uiState.value
-        val have         = state.inventory[itemKey] ?: 0
+        val state         = uiState.value
+        val have          = state.inventory[itemKey] ?: 0
         val equippedCount = state.equipped.values.count { it == itemKey }
-        val sellable     = (have - equippedCount).coerceAtLeast(0)
+        val reserved      = state.reservedItems[itemKey] ?: 0
+        val sellable      = (have - equippedCount - reserved).coerceAtLeast(0)
         if (sellable == 0) {
-            _extra.update { it.copy(snackbarMessage = "$displayName is equipped — unequip it first to sell.") }
+            val reason = when {
+                equippedCount > 0 -> "$displayName is equipped — unequip it first to sell."
+                reserved > 0      -> "$displayName is reserved for a queued task."
+                else              -> "Nothing to sell."
+            }
+            _extra.update { it.copy(snackbarMessage = reason) }
             return
         }
         val sellPrice = sellPriceFor(itemKey)
@@ -338,6 +438,58 @@ class ShopViewModel @Inject constructor(
             "tuna", "lobster", "swordfish", "shark", "raw_shrimp",
             "raw_sardine", "raw_herring", "raw_trout", "raw_salmon",
             "raw_tuna", "raw_lobster", "raw_swordfish", "raw_shark",
+        )
+
+        // Base sell value by material tier; multiply by SLOT_MULTIPLIER to get final price.
+        // Calibrated so runite_platebody (200 × 5.0) = 1000 coins.
+        private val METAL_BASE = mapOf(
+            "bronze"     to 8,
+            "iron"       to 20,
+            "steel"      to 50,
+            "mithril"    to 100,
+            "adamantite" to 150,
+            "runite"     to 200,
+            "dwarven"    to 250,
+            "dragon"     to 200,
+            "balrog"     to 350,
+        )
+
+        private val BOW_BASE = mapOf(
+            "wooden"  to 8,
+            "oak"     to 20,
+            "willow"  to 40,
+            "maple"   to 80,
+            "yew"     to 150,
+            "magic"   to 250,
+        )
+
+        private val JEWEL_BASE = mapOf(
+            "silver"   to 15,
+            "gold"     to 30,
+            "platinum" to 80,
+        )
+
+        private val GEM_BONUS = mapOf(
+            "sapphire" to 30,
+            "emerald"  to 60,
+            "ruby"     to 110,
+            "diamond"  to 190,
+        )
+
+        private val SLOT_MULTIPLIER = mapOf(
+            EquipSlot.WEAPON      to 2.5f,
+            EquipSlot.BODY        to 5.0f,
+            EquipSlot.HEAD        to 3.5f,
+            EquipSlot.LEGS        to 3.5f,
+            EquipSlot.SHIELD      to 3.5f,
+            EquipSlot.BOOTS       to 1.0f,
+            EquipSlot.CAPE        to 2.0f,
+            EquipSlot.RING        to 1.5f,
+            EquipSlot.NECKLACE    to 1.5f,
+            EquipSlot.PICKAXE     to 2.5f,
+            EquipSlot.AXE         to 2.5f,
+            EquipSlot.FISHING_ROD to 2.0f,
+            EquipSlot.HOE         to 2.0f,
         )
     }
 }

@@ -323,9 +323,15 @@
     <string name="home_welcome">Bon retour, %1$s !</string>
     <string name="home_adventurer">Aventurier</string>
     <!-- Translator note: %1$d = queue size (always 3 max) -->
+<<<<<<< main
     <string name="home_up_next">Prochainement (%1$d/3)</string>
     <!-- Translator note: %1$s = formatted duration string (e.g. "2h 15m") -->
     <string name="home_queue_ends_in">La file d'attente se termine dans %1$s</string>      
+=======
+    <string name="home_up_next">Up Next (%1$d/3)</string>
+    <!-- Translator note: %1$s = formatted duration string (e.g. "2h 15m") -->
+    <string name="home_queue_ends_in">Queue ends in %1$s</string>
+>>>>>>> main
     <!-- Translator note: %1$d = number of sessions to collect -->
     <plurals name="plural_collect_sessions">
     <item quantity="one">Collecter les récompenses de la session %1$d</item>
@@ -333,6 +339,7 @@
     </plurals>
 
     <!-- ===== CombatScreen ===== -->
+<<<<<<< main
     <string name="combat_level_label">Niveau de combat</string>
     <string name="combat_log_label">Journal de combat</string>
     <string name="combat_solo_bosses">Boss en solo</string>
@@ -340,6 +347,15 @@
     <string name="combat_dungeon_runs">%1$d parties</string>        
     <string name="combat_atk">ATQ</string>
     <string name="combat_str">FOR</string>
+=======
+    <string name="combat_level_label">Combat Lvl</string>
+    <string name="combat_log_label">Combat Log</string>
+    <string name="combat_solo_bosses">Solo Bosses</string>
+    <!-- Translator note: %1$d = number of completed dungeon runs -->
+    <string name="combat_dungeon_runs">%1$d runs</string>
+    <string name="combat_atk">ATK</string>
+    <string name="combat_str">STR</string>
+>>>>>>> main
     <string name="combat_def">DEF</string>
     <!-- Translator note: %1$d = HP healed -->
     <string name="combat_heals_hp">soigne %1$d PV</string>
@@ -452,6 +468,7 @@
     <!-- Note : %1$s = montant en pièces -->
     <string name="shop_total_amount">%1$s pièces</string>
 
+<<<<<<< main
     <!-- Écran de craft -->
     <!-- Note : %1$d = quantité produite -->
     <string name="crafting_no_mats">Pas de matériaux</string>
@@ -463,6 +480,21 @@
     <string name="crafting_increase">Augmenter</string>
     <!-- Note : %1$d = nécessaire, %2$d = en possession -->
     <string name="crafting_needed_have">%1$d (en possession : %2$d)</string>
+=======
+    <!-- ===== CraftingScreen ===== -->
+    <string name="crafting_no_mats">No mats</string>
+    <!-- Translator note: %1$d = quantity produced -->
+    <string name="crafting_produces">Produces %1$d× per craft</string>
+    <string name="crafting_effects">Effects</string>
+    <!-- Translator note: %1$d = total XP -->
+    <string name="crafting_xp_total">+%1$d XP total</string>
+    <string name="crafting_decrease">Decrease</string>
+    <string name="crafting_increase">Increase</string>
+    <!-- Translator note: %1$d = needed, %2$d = have -->
+    <string name="crafting_needed_have">%1$d (have %2$d)</string>
+    <!-- Translator note: %1$d = quantity in inventory -->
+    <string name="crafting_in_inventory">In inventory: ×%1$d</string>
+>>>>>>> main
 
     <!-- Écran de farming -->
     <!-- Note : %1$s = nom de la culture -->

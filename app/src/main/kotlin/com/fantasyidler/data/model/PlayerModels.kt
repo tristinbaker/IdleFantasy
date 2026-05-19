@@ -27,6 +27,8 @@ data class PlayerFlags(
     @SerialName("last_seen_version_code") val lastSeenVersionCode: Int = 0,
     /** "dark" | "light" | "system". Defaults to "dark" to preserve existing behaviour. */
     @SerialName("theme_preference") val themePreference: String = "dark",
+    /** Number of completed runs per dungeon/boss key. */
+    @SerialName("dungeon_runs") val dungeonRuns: Map<String, Int> = emptyMap(),
 )
 
 /** A session to be started when the current one completes. */

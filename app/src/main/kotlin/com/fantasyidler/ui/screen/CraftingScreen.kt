@@ -13,7 +13,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Remove
@@ -116,11 +118,20 @@ fun CraftingScreen(
                 else -> viewModel.herbloreRecipes
             }
 
+            val scrollState = rememberLazyListState()
+            LaunchedEffect(selectedTab) {
+                scrollState.scrollToItem(viewModel.getScrollIndex(selectedTab))
+            }
+            LaunchedEffect(scrollState.firstVisibleItemIndex) {
+                viewModel.saveScrollIndex(selectedTab, scrollState.firstVisibleItemIndex)
+            }
+
             RecipeList(
-                recipes   = recipes,
-                state     = state,
-                context   = context,
-                onTap     = viewModel::openRecipe,
+                recipes    = recipes,
+                state      = state,
+                context    = context,
+                onTap      = viewModel::openRecipe,
+                listState  = scrollState,
             )
         }
     }
@@ -155,8 +166,9 @@ private fun RecipeList(
     state: CraftingUiState,
     context: android.content.Context,
     onTap: (CraftableRecipe) -> Unit,
+    listState: LazyListState = rememberLazyListState(),
 ) {
-    LazyColumn(Modifier.fillMaxSize()) {
+    LazyColumn(state = listState, modifier = Modifier.fillMaxSize()) {
         items(recipes) { recipe ->
             RecipeRow(
                 recipe  = recipe,
@@ -290,6 +302,14 @@ private fun CraftSheet(
         if (recipe.outputQty > 1) {
             Text(
                 text  = stringResource(R.string.crafting_produces, recipe.outputQty * qty),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+        val inInventory = state.inventory[recipe.outputKey] ?: 0
+        if (inInventory > 0) {
+            Text(
+                text  = stringResource(R.string.crafting_in_inventory, inInventory),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )

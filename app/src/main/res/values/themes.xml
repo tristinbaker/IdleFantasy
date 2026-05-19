@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Minimal XML theme — all visual styling is done in Compose/Material3 -->
-    <style name="Theme.FantasyIdler" parent="Theme.AppCompat.DayNight.NoActionBar" />
+    <style name="Theme.FantasyIdler" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowSplashScreenBackground">@color/ic_launcher_background</item>
+    </style>
 </resources>
