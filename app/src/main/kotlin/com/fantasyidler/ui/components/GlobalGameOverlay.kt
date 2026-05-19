@@ -20,11 +20,14 @@ import com.fantasyidler.R
 import com.fantasyidler.ui.components.foundation.ChunkyButton
 import com.fantasyidler.ui.components.foundation.ChunkyButtonVariant
 import com.fantasyidler.ui.components.foundation.ChunkyDialog
+import com.fantasyidler.data.model.QueuedAction
+import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.ui.screen.CharacterSetupSheet
 import com.fantasyidler.ui.theme.fantasy.FantasyPreviewSurface
 import com.fantasyidler.ui.theme.fantasy.LocalFantasyTokens
 import com.fantasyidler.ui.viewmodel.SessionSummary
 import com.fantasyidler.util.formatCoins
+import kotlinx.serialization.json.Json
 
 /**
  * The four global flows that used to live inside HomeScreen.kt and only fired
@@ -46,13 +49,31 @@ fun GlobalGameOverlay(
     showWhatsNew: Boolean,
     characterSetupDone: Boolean,
     characterName: String,
+    showSessionDetails: Boolean,
+    activeSession: SkillSession?,
+    completedSessions: List<SkillSession>,
+    sessionQueue: List<QueuedAction>,
+    json: Json,
     onSummaryConsumed: () -> Unit,
     onDismissWhatsNew: () -> Unit,
     onSaveCharacter: (name: String, gender: String, race: String) -> Unit,
     onDismissCharacterSetup: () -> Unit,
+    onDismissSessionDetails: () -> Unit,
+    onClaimSession: (sessionId: String?) -> Unit,
 ) {
     sessionSummary?.let { summary ->
         SessionSummaryDialog(summary, onSummaryConsumed)
+    }
+
+    if (showSessionDetails) {
+        SessionDetailsSheet(
+            activeSession     = activeSession,
+            completedSessions = completedSessions,
+            sessionQueue      = sessionQueue,
+            json              = json,
+            onDismiss         = onDismissSessionDetails,
+            onClaim           = onClaimSession,
+        )
     }
 
     if (showWhatsNew) {

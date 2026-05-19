@@ -2,8 +2,13 @@ package com.fantasyidler.ui.screen
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Surface
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
@@ -44,6 +49,8 @@ import com.fantasyidler.ui.theme.fantasy.LocalFantasyTokens
 import com.fantasyidler.ui.viewmodel.CombatSessionResult
 import com.fantasyidler.ui.viewmodel.CombatUiState
 import com.fantasyidler.ui.viewmodel.CombatViewModel
+import com.fantasyidler.ui.viewmodel.combatLevelFrom
+import androidx.compose.ui.text.font.FontWeight
 
 /**
  * Combat screen — thin orchestrator over the [com.fantasyidler.ui.screen.combat]
@@ -119,29 +126,32 @@ private fun CombatScreenContent(
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { padding ->
-        when {
-            state.isLoading -> LoadingState(modifier = Modifier.padding(padding))
-            state.combatSession != null -> ActiveSessionTabs(
-                state          = state,
-                dungeons       = dungeons,
-                bosses         = bosses,
-                enemies        = enemies,
-                foodHealValues = foodHealValues,
-                onSelectDungeon = onSelectDungeon,
-                onSelectBoss    = onSelectBoss,
-                onCollect       = onCollect,
-                onAbandon       = onAbandon,
-                onDebugFinish   = onDebugFinish,
-                modifier        = Modifier.padding(padding),
-            )
-            else -> NoSessionTabs(
-                state           = state,
-                dungeons        = dungeons,
-                bosses          = bosses,
-                onSelectDungeon = onSelectDungeon,
-                onSelectBoss    = onSelectBoss,
-                modifier        = Modifier.padding(padding),
-            )
+        Column(modifier = Modifier.fillMaxSize().padding(padding)) {
+            if (!state.isLoading && state.skillLevels.isNotEmpty()) {
+                CombatLevelChip(combatLevel = combatLevelFrom(state.skillLevels))
+            }
+            when {
+                state.isLoading -> LoadingState()
+                state.combatSession != null -> ActiveSessionTabs(
+                    state          = state,
+                    dungeons       = dungeons,
+                    bosses         = bosses,
+                    enemies        = enemies,
+                    foodHealValues = foodHealValues,
+                    onSelectDungeon = onSelectDungeon,
+                    onSelectBoss    = onSelectBoss,
+                    onCollect       = onCollect,
+                    onAbandon       = onAbandon,
+                    onDebugFinish   = onDebugFinish,
+                )
+                else -> NoSessionTabs(
+                    state           = state,
+                    dungeons        = dungeons,
+                    bosses          = bosses,
+                    onSelectDungeon = onSelectDungeon,
+                    onSelectBoss    = onSelectBoss,
+                )
+            }
         }
     }
 
@@ -198,6 +208,44 @@ private fun CombatScreenContent(
                 )
             },
         )
+    }
+}
+
+@Composable
+private fun CombatLevelChip(combatLevel: Int) {
+    val tokens = LocalFantasyTokens.current
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = tokens.spacing.l, vertical = tokens.spacing.s),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Surface(
+            shape = tokens.shapes.chip,
+            color = tokens.colors.primary.copy(alpha = 0.18f),
+        ) {
+            Row(
+                modifier = Modifier.padding(
+                    horizontal = tokens.spacing.m,
+                    vertical   = tokens.spacing.xs,
+                ),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(
+                    text       = stringResource(R.string.combat_level_chip_label),
+                    style      = tokens.typography.labelSmall,
+                    color      = tokens.colors.primary,
+                    fontWeight = FontWeight.SemiBold,
+                )
+                Spacer(Modifier.width(tokens.spacing.xs))
+                Text(
+                    text       = combatLevel.toString(),
+                    style      = tokens.typography.titleLarge,
+                    color      = tokens.colors.primary,
+                    fontWeight = FontWeight.Bold,
+                )
+            }
+        }
     }
 }
 

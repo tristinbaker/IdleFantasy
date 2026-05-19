@@ -26,7 +26,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.ui.components.FantasyTopHud
 import com.fantasyidler.ui.components.GlobalGameOverlay
@@ -36,7 +35,9 @@ import com.fantasyidler.ui.screen.AdventureScreen
 import com.fantasyidler.ui.screen.CombatScreen
 import com.fantasyidler.ui.screen.CraftingScreen
 import com.fantasyidler.ui.screen.FarmingScreen
+import com.fantasyidler.ui.screen.MinigameHubScreen
 import com.fantasyidler.ui.screen.OnboardingScreen
+import com.fantasyidler.ui.screen.PerksScreen
 import com.fantasyidler.ui.screen.ProfileScreen
 import com.fantasyidler.ui.screen.QuestsScreen
 import com.fantasyidler.ui.screen.SettingsScreen
@@ -63,7 +64,7 @@ fun AppNavigation() {
     val currentDestination = backStackEntry?.destination
 
     val tabSubScreens: Map<String, Set<String>> = mapOf(
-        "adventure" to setOf("shop", "settings", "quests"),
+        "adventure" to setOf("shop", "settings", "quests", "minigame_hub", "perks"),
         "skills"    to setOf("farming"),
     )
 
@@ -85,7 +86,7 @@ fun AppNavigation() {
             if (showHud) {
                 FantasyTopHud(
                     coins         = hudState.coins,
-                    combatLevel   = hudState.combatLevel,
+                    totalLevel    = hudState.totalLevel,
                     activeSession = hudState.activeSession,
                     onProfile  = {
                         navController.navigate(Screen.Profile.route) {
@@ -95,24 +96,7 @@ fun AppNavigation() {
                         }
                     },
                     onShop     = { navController.navigate(Screen.Shop.route) },
-                    onSession  = {
-                        // If there's anything to claim, claim from any tab.
-                        // Otherwise navigate to Skills so the player can start
-                        // a session.
-                        val session = hudState.activeSession
-                        val canClaim = globalState.pendingCollectCount > 0 ||
-                                       (session != null && (session.completed ||
-                                        System.currentTimeMillis() >= session.endsAt))
-                        if (canClaim) {
-                            globalVm.collectSession()
-                        } else {
-                            navController.navigate(Screen.Skills.route) {
-                                popUpTo(navController.graph.findStartDestination().id) { saveState = true }
-                                launchSingleTop = true
-                                restoreState    = true
-                            }
-                        }
-                    },
+                    onSession  = { globalVm.showSessionDetails() },
                     onSettings = { navController.navigate(Screen.Settings.route) },
                 )
             }
@@ -237,6 +221,15 @@ fun AppNavigation() {
                             launchSingleTop = true
                         }
                     },
+                    onOpenMinigameHub  = { navController.navigate(Screen.MinigameHub.route) },
+                    onOpenPerks        = { navController.navigate(Screen.Perks.route) },
+                    onOpenProfile      = {
+                        navController.navigate(Screen.Profile.route) {
+                            popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+                            launchSingleTop = true
+                            restoreState    = true
+                        }
+                    },
                 )
             }
             composable(Screen.Crafting.route) { CraftingScreen() }
@@ -263,6 +256,24 @@ fun AppNavigation() {
             ) { entry ->
                 ShopScreen(onBack = { if (navController.currentBackStackEntry == entry) navController.popBackStack() })
             }
+            composable(
+                route = Screen.MinigameHub.route,
+                enterTransition    = FantasyMotion.SubEnter,
+                exitTransition     = FantasyMotion.SubExit,
+                popEnterTransition = FantasyMotion.SubEnter,
+                popExitTransition  = FantasyMotion.SubExit,
+            ) { entry ->
+                MinigameHubScreen(onBack = { if (navController.currentBackStackEntry == entry) navController.popBackStack() })
+            }
+            composable(
+                route = Screen.Perks.route,
+                enterTransition    = FantasyMotion.SubEnter,
+                exitTransition     = FantasyMotion.SubExit,
+                popEnterTransition = FantasyMotion.SubEnter,
+                popExitTransition  = FantasyMotion.SubExit,
+            ) { entry ->
+                PerksScreen(onBack = { if (navController.currentBackStackEntry == entry) navController.popBackStack() })
+            }
         }
 
         // Root-level overlay: dialogs/sheets that fire from any tab.
@@ -271,12 +282,19 @@ fun AppNavigation() {
             showWhatsNew            = globalState.showWhatsNew,
             characterSetupDone      = globalState.characterSetupDone,
             characterName           = globalState.characterName,
+            showSessionDetails      = globalState.showSessionDetails,
+            activeSession           = hudState.activeSession,
+            completedSessions       = globalState.completedSessions,
+            sessionQueue            = globalState.sessionQueue,
+            json                    = globalVm.json,
             onSummaryConsumed       = globalVm::summaryConsumed,
             onDismissWhatsNew       = globalVm::dismissWhatsNew,
             onSaveCharacter         = { name, gender, race ->
                 globalVm.saveCharacterProfile(name, gender, race)
             },
             onDismissCharacterSetup = globalVm::dismissCharacterSetup,
+            onDismissSessionDetails = globalVm::dismissSessionDetails,
+            onClaimSession          = { sessionId -> globalVm.collectSession(sessionId) },
         )
     }
 }

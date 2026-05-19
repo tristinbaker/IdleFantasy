@@ -24,6 +24,7 @@ data class RootHudUiState(
     val isLoading: Boolean = true,
     val coins: Long = 0L,
     val combatLevel: Int = 1,
+    val totalLevel: Int = 1,
     val activeSession: SkillSession? = null,
 )
 
@@ -46,6 +47,7 @@ class RootHudViewModel @Inject constructor(
                 isLoading     = false,
                 coins         = player.coins,
                 combatLevel   = combatLevelFrom(levels),
+                totalLevel    = totalLevelFrom(levels),
                 activeSession = session,
             )
         }

@@ -19,7 +19,51 @@
     <string name="adv_daily_quests">Daily quests</string>
     <string name="adv_achievements">Achievements</string>
     <string name="adv_marketplace_soon">Marketplace · coming soon</string>
+    <string name="adv_minigame_hub">Minigame Hub</string>
+    <string name="adv_minigame_hub_soon">Minigame Hub · coming soon</string>
+    <string name="adv_activities">Activities</string>
     <string name="adv_enter_dungeon">Enter dungeon ▸</string>
+
+    <!-- ===== Hero hub card (Adventure) ===== -->
+    <string name="hero_total_level">Total Lv %1$d</string>
+    <string name="hero_advantage_points">%1$d AP</string>
+    <string name="hero_top_skills">Top skills</string>
+
+    <!-- ===== Combat header ===== -->
+    <string name="combat_level_chip_label">Combat Lv</string>
+
+    <!-- ===== Active-session sheet (popup that opens when tapping the HUD pill) ===== -->
+    <string name="session_sheet_title">Active session</string>
+    <string name="session_sheet_no_session">Nothing running right now. Pick a skill to start a session.</string>
+    <string name="session_sheet_remaining">%1$s remaining</string>
+    <string name="session_sheet_section_current">In progress</string>
+    <string name="session_sheet_section_completed">Ready to claim</string>
+    <string name="session_sheet_section_queue">Up next</string>
+    <string name="session_sheet_btn_claim">Claim</string>
+    <string name="session_sheet_btn_claim_all">Claim all</string>
+    <string name="session_sheet_completed_count">%1$d session(s) ready</string>
+
+    <!-- ===== Minigame hub (placeholder) ===== -->
+    <string name="minigame_hub_title">Minigame Hub</string>
+    <string name="minigame_hub_subtitle">Coming soon — the city hall of side jobs.</string>
+    <string name="minigame_hub_body">Work the bar, run the kitchen, or fix a roof to earn Time Points. Spend them on Time Vouchers to fast-forward your idle jobs. Take a job that matches your current skill for a 1.5× bonus.</string>
+    <string name="minigame_hub_back">Back</string>
+
+    <!-- ===== Perks (Advantage Points) ===== -->
+    <string name="perks_title">Perks</string>
+    <string name="perks_subtitle">Spend points earned from leveling on permanent buffs.</string>
+    <string name="perks_tab_advantage">Advantage</string>
+    <string name="perks_tab_gathering">Gathering</string>
+    <string name="perks_tab_crafting">Crafting</string>
+    <string name="perks_tab_combat">Combat</string>
+    <string name="perks_points_available">%1$d / %2$d points</string>
+    <string name="perks_tier_label">Tier %1$d</string>
+    <string name="perks_max_tier">Maxed</string>
+    <string name="perks_buy_button">Buy · %1$d pts</string>
+    <string name="perks_cant_afford">Not enough points</string>
+    <string name="perks_buy_confirm_title">Buy %1$s?</string>
+    <string name="perks_buy_confirm_body">This will cost %1$d points and upgrade the perk to tier %2$d.</string>
+    <string name="perks_purchased_snack">Perk purchased.</string>
 
     <!-- ===== Common buttons ===== -->
     <string name="btn_start">Start</string>

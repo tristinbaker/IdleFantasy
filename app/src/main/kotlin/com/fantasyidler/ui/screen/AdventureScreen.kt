@@ -21,8 +21,17 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.EmojiEvents
+import androidx.compose.material.icons.filled.Explore
+import androidx.compose.material.icons.filled.LocationCity
 import androidx.compose.material.icons.filled.MenuBook
-import androidx.compose.material.icons.filled.Storefront
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -62,6 +71,7 @@ import com.fantasyidler.ui.theme.fantasy.FantasyPreviewSurface
 import com.fantasyidler.ui.theme.fantasy.LocalFantasyTokens
 import com.fantasyidler.ui.viewmodel.CombatViewModel
 import com.fantasyidler.ui.viewmodel.HomeViewModel
+import com.fantasyidler.ui.viewmodel.InventoryViewModel
 import com.fantasyidler.ui.viewmodel.QuestWithProgress
 import com.fantasyidler.ui.viewmodel.QuestsViewModel
 import com.fantasyidler.ui.viewmodel.combatLevelFrom
@@ -78,13 +88,18 @@ fun AdventureScreen(
     onOpenQuests: () -> Unit = {},
     onOpenAchievements: () -> Unit = {},
     onEnterDungeon: (DungeonData) -> Unit = {},
+    onOpenMinigameHub: () -> Unit = {},
+    onOpenPerks: () -> Unit = {},
+    onOpenProfile: () -> Unit = {},
     questsVm: QuestsViewModel = hiltViewModel(),
     combatVm: CombatViewModel = hiltViewModel(),
     globalVm: HomeViewModel = hiltViewModel(),
+    inventoryVm: InventoryViewModel = hiltViewModel(),
 ) {
     val questsState by questsVm.uiState.collectAsState()
     val combatState by combatVm.uiState.collectAsState()
     val globalState by globalVm.uiState.collectAsState()
+    val inventoryState by inventoryVm.uiState.collectAsState()
     val snackbarHostState = remember { SnackbarHostState() }
     val tokens = LocalFantasyTokens.current
 
@@ -122,9 +137,17 @@ fun AdventureScreen(
             survivalRating      = recommendedDungeon?.let { combatState.dungeonSurvivalRatings[it.name] },
             claimableQuestCount = questsState.claimableCount,
             sessionQueue        = globalState.sessionQueue,
+            characterName       = inventoryState.characterName,
+            characterRace       = inventoryState.characterRace,
+            characterGender     = inventoryState.characterGender,
+            totalLevel          = inventoryState.totalLevel,
+            skillLevels         = inventoryState.skillLevels,
             onOpenQuests        = onOpenQuests,
             onOpenAchievements  = onOpenAchievements,
             onEnterDungeon      = onEnterDungeon,
+            onOpenMinigameHub   = onOpenMinigameHub,
+            onOpenPerks         = onOpenPerks,
+            onOpenProfile       = onOpenProfile,
             onRemoveFromQueue   = globalVm::removeFromQueue,
         )
     }
@@ -138,12 +161,22 @@ private fun AdventureBody(
     survivalRating: CombatSimulator.SurvivalRating?,
     claimableQuestCount: Int,
     sessionQueue: List<QueuedAction>,
+    characterName: String,
+    characterRace: String,
+    characterGender: String,
+    totalLevel: Int,
+    skillLevels: Map<String, Int>,
     onOpenQuests: () -> Unit,
     onOpenAchievements: () -> Unit,
     onEnterDungeon: (DungeonData) -> Unit,
+    onOpenMinigameHub: () -> Unit,
+    onOpenPerks: () -> Unit,
+    onOpenProfile: () -> Unit,
     onRemoveFromQueue: (Int) -> Unit,
 ) {
     val tokens = LocalFantasyTokens.current
+    var activitiesExpanded by remember { mutableStateOf(false) }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -159,19 +192,18 @@ private fun AdventureBody(
             color      = tokens.colors.onSurface,
         )
 
+        HeroHubCard(
+            characterName   = characterName,
+            characterRace   = characterRace,
+            characterGender = characterGender,
+            totalLevel      = totalLevel,
+            skillLevels     = skillLevels,
+            onOpenProfile   = onOpenProfile,
+            onOpenPerks     = onOpenPerks,
+        )
+
         SectionHeader(stringResource(R.string.adv_continue_quest))
         ContinueQuestCard(quest = topQuest, onTap = onOpenQuests)
-
-        SectionHeader(stringResource(R.string.adv_recommended_dungeon))
-        if (recommendedDungeon != null) {
-            RecommendedDungeonCard(
-                dungeon        = recommendedDungeon,
-                survivalRating = survivalRating,
-                onEnter        = { onEnterDungeon(recommendedDungeon) },
-            )
-        } else {
-            EmptyRecommendedDungeonCard()
-        }
 
         SectionHeader(stringResource(R.string.adv_more))
         AdventureRow(
@@ -187,16 +219,153 @@ private fun AdventureBody(
             onTap = onOpenAchievements,
         )
         AdventureRow(
-            icon    = Icons.Filled.Storefront,
-            title   = stringResource(R.string.adv_marketplace_soon),
-            badge   = null,
-            onTap   = {},
-            enabled = false,
+            icon       = Icons.Filled.Explore,
+            title      = stringResource(R.string.adv_activities),
+            badge      = null,
+            onTap      = { activitiesExpanded = !activitiesExpanded },
+            isExpanded = activitiesExpanded,
+        )
+        AnimatedVisibility(
+            visible = activitiesExpanded,
+            enter   = expandVertically(),
+            exit    = shrinkVertically(),
+        ) {
+            Column(verticalArrangement = Arrangement.spacedBy(tokens.spacing.m)) {
+                SectionHeader(stringResource(R.string.adv_recommended_dungeon))
+                if (recommendedDungeon != null) {
+                    RecommendedDungeonCard(
+                        dungeon        = recommendedDungeon,
+                        survivalRating = survivalRating,
+                        onEnter        = { onEnterDungeon(recommendedDungeon) },
+                    )
+                } else {
+                    EmptyRecommendedDungeonCard()
+                }
+            }
+        }
+        AdventureRow(
+            icon  = Icons.Filled.LocationCity,
+            title = stringResource(R.string.adv_minigame_hub_soon),
+            badge = null,
+            onTap = onOpenMinigameHub,
         )
 
         if (sessionQueue.isNotEmpty()) {
             SectionHeader(stringResource(R.string.home_up_next, sessionQueue.size))
             QueueCard(queue = sessionQueue, onRemove = onRemoveFromQueue)
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Hero hub card — top of Adventure tab. Shows the player avatar, name,
+// race/class, total level, top-three skills, and a chip linking into Perks.
+// ---------------------------------------------------------------------------
+
+@Composable
+private fun HeroHubCard(
+    characterName: String,
+    characterRace: String,
+    characterGender: String,
+    totalLevel: Int,
+    skillLevels: Map<String, Int>,
+    onOpenProfile: () -> Unit,
+    onOpenPerks: () -> Unit,
+) {
+    val tokens = LocalFantasyTokens.current
+    val topSkills = remember(skillLevels) {
+        skillLevels.entries.sortedByDescending { it.value }.take(3)
+    }
+    val displayName = characterName.takeIf { it.isNotBlank() } ?: "Adventurer"
+    val raceLabel = listOfNotNull(
+        characterRace.takeIf { it.isNotBlank() },
+        characterGender.takeIf { it.isNotBlank() },
+    ).joinToString(" · ")
+
+    ChunkyCard(onClick = onOpenProfile, highlight = true) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Surface(
+                shape    = CircleShape,
+                color    = tokens.colors.primary.copy(alpha = 0.18f),
+                modifier = Modifier.size(tokens.spacing.xxl + tokens.spacing.xl),
+            ) {
+                Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
+                    Icon(
+                        imageVector        = Icons.Filled.Person,
+                        contentDescription = null,
+                        tint               = tokens.colors.primary,
+                        modifier           = Modifier.size(tokens.spacing.xl + tokens.spacing.s),
+                    )
+                }
+            }
+            Spacer(Modifier.width(tokens.spacing.l))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text       = displayName,
+                    style      = tokens.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                    color      = tokens.colors.onSurface,
+                )
+                if (raceLabel.isNotBlank()) {
+                    Text(
+                        text  = raceLabel,
+                        style = tokens.typography.bodyMedium,
+                        color = tokens.colors.onSurfaceMuted,
+                    )
+                }
+                Spacer(Modifier.height(tokens.spacing.xs))
+                Text(
+                    text       = stringResource(R.string.hero_total_level, totalLevel),
+                    style      = tokens.typography.bodyMedium,
+                    fontWeight = FontWeight.SemiBold,
+                    color      = tokens.colors.primary,
+                )
+            }
+            Surface(
+                shape    = tokens.shapes.chip,
+                color    = tokens.colors.primary.copy(alpha = 0.22f),
+                modifier = Modifier.clickable(onClick = onOpenPerks),
+            ) {
+                Text(
+                    text       = stringResource(R.string.hero_advantage_points, totalLevel),
+                    modifier   = Modifier.padding(
+                        horizontal = tokens.spacing.m,
+                        vertical   = tokens.spacing.s,
+                    ),
+                    style      = tokens.typography.labelSmall,
+                    fontWeight = FontWeight.Bold,
+                    color      = tokens.colors.primary,
+                )
+            }
+        }
+        if (topSkills.isNotEmpty()) {
+            Spacer(Modifier.height(tokens.spacing.m))
+            Text(
+                text       = stringResource(R.string.hero_top_skills),
+                style      = tokens.typography.labelSmall,
+                fontWeight = FontWeight.SemiBold,
+                color      = tokens.colors.onSurfaceMuted,
+            )
+            Spacer(Modifier.height(tokens.spacing.xs))
+            Row(horizontalArrangement = Arrangement.spacedBy(tokens.spacing.s)) {
+                topSkills.forEach { (skillKey, level) ->
+                    val emoji = GameStrings.skillEmoji(skillKey)
+                    Surface(
+                        shape = tokens.shapes.chip,
+                        color = tokens.colors.surfaceVariant,
+                    ) {
+                        Text(
+                            text     = "$emoji Lv $level",
+                            modifier = Modifier.padding(
+                                horizontal = tokens.spacing.m,
+                                vertical   = tokens.spacing.xs,
+                            ),
+                            style    = tokens.typography.labelSmall,
+                            color    = tokens.colors.onSurface,
+                        )
+                    }
+                }
+            }
         }
     }
 }
@@ -353,6 +522,7 @@ private fun AdventureRow(
     badge: String?,
     onTap: () -> Unit,
     enabled: Boolean = true,
+    isExpanded: Boolean? = null,
 ) {
     val tokens = LocalFantasyTokens.current
     val interactionSource = remember { MutableInteractionSource() }
@@ -411,8 +581,13 @@ private fun AdventureRow(
                 }
                 Spacer(Modifier.width(tokens.spacing.m))
             }
+            val chevron = when (isExpanded) {
+                true  -> Icons.AutoMirrored.Filled.KeyboardArrowLeft
+                false -> Icons.AutoMirrored.Filled.KeyboardArrowRight
+                null  -> Icons.AutoMirrored.Filled.KeyboardArrowRight
+            }
             Icon(
-                imageVector        = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                imageVector        = chevron,
                 contentDescription = null,
                 tint               = if (enabled) tokens.colors.onSurfaceMuted else dim,
                 modifier           = Modifier.size(tokens.spacing.l + tokens.spacing.s),
@@ -483,9 +658,17 @@ private fun PreviewAdventureBody() {
             survivalRating      = CombatSimulator.SurvivalRating.LIKELY,
             claimableQuestCount = 2,
             sessionQueue        = emptyList(),
+            characterName       = "Blelson",
+            characterRace       = "Dwarf",
+            characterGender     = "Other",
+            totalLevel          = 164,
+            skillLevels         = mapOf("agility" to 42, "cooking" to 15, "farming" to 12),
             onOpenQuests        = {},
             onOpenAchievements  = {},
             onEnterDungeon      = {},
+            onOpenMinigameHub   = {},
+            onOpenPerks         = {},
+            onOpenProfile       = {},
             onRemoveFromQueue   = {},
         )
     }
@@ -502,9 +685,17 @@ private fun PreviewAdventureBodyEmpty() {
             survivalRating      = null,
             claimableQuestCount = 0,
             sessionQueue        = emptyList(),
+            characterName       = "Blelson",
+            characterRace       = "Dwarf",
+            characterGender     = "Other",
+            totalLevel          = 164,
+            skillLevels         = mapOf("agility" to 42, "cooking" to 15, "farming" to 12),
             onOpenQuests        = {},
             onOpenAchievements  = {},
             onEnterDungeon      = {},
+            onOpenMinigameHub   = {},
+            onOpenPerks         = {},
+            onOpenProfile       = {},
             onRemoveFromQueue   = {},
         )
     }

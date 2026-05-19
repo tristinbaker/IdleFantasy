@@ -15,6 +15,7 @@ import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.SessionFrame
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.Skills
+import com.fantasyidler.data.perks.PerkRepository
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.QuestRepository
@@ -100,6 +101,7 @@ class SkillsViewModel @Inject constructor(
     private val gameData: GameDataRepository,
     private val questRepo: QuestRepository,
     private val queuedSessionStarter: QueuedSessionStarter,
+    private val perkRepo: PerkRepository,
     private val json: Json,
 ) : ViewModel() {
 
@@ -359,7 +361,8 @@ class SkillsViewModel @Inject constructor(
                     )
                 }
 
-                val perEssenceMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
+                val cut = perkRepo.timeCutForSkill(Skills.RUNECRAFTING)
+                val perEssenceMs = SkillSimulator.sessionDurationMs(agilityLevel, cut) / 60
                 val framesJson   = json.encodeToString(
                     json.serializersModule.serializer<List<SessionFrame>>(),
                     frames,
@@ -430,7 +433,8 @@ class SkillsViewModel @Inject constructor(
                 }
 
                 val agilityLevel = levels[Skills.AGILITY] ?: 1
-                val perBoneMs    = SkillSimulator.sessionDurationMs(agilityLevel) / 60
+                val cut          = perkRepo.timeCutForSkill(Skills.PRAYER)
+                val perBoneMs    = SkillSimulator.sessionDurationMs(agilityLevel, cut) / 60
                 val framesJson   = json.encodeToString(
                     json.serializersModule.serializer<List<SessionFrame>>(),
                     frames,
@@ -498,11 +502,13 @@ class SkillsViewModel @Inject constructor(
                     json.serializersModule.serializer<List<com.fantasyidler.data.model.SessionFrame>>(),
                     result.frames,
                 )
+                val cut = perkRepo.timeCutForSkill(skillName)
+                val adjustedDuration = (result.durationMs * (1.0 - cut)).toLong().coerceAtLeast(60_000L)
                 sessionRepo.startSession(
                     skillName        = skillName,
                     activityKey      = activityKey,
                     frames           = framesJson,
-                    durationMs       = result.durationMs,
+                    durationMs       = adjustedDuration,
                     skillDisplayName = skillName.replaceFirstChar { it.uppercase() },
                 )
             } catch (e: Exception) {

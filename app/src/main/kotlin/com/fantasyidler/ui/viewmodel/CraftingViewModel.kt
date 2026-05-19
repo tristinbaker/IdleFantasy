@@ -10,6 +10,7 @@ import com.fantasyidler.data.model.SessionFrame
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.data.json.HerbloreRecipe
+import com.fantasyidler.data.perks.PerkRepository
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.QuestRepository
@@ -115,6 +116,7 @@ class CraftingViewModel @Inject constructor(
     private val sessionRepo: SessionRepository,
     private val gameData: GameDataRepository,
     private val questRepo: QuestRepository,
+    private val perkRepo: PerkRepository,
     private val json: Json,
 ) : ViewModel() {
 
@@ -335,8 +337,10 @@ class CraftingViewModel @Inject constructor(
 
             val levels: Map<String, Int> = json.decodeFromString(player.skillLevels)
             val agilityLevel = levels[Skills.AGILITY] ?: 1
+            val cut          = perkRepo.timeCutForSkill(recipe.skillName)
             // 1 item per minute, reduced by agility (same formula as gathering skills)
-            val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
+            // plus any crafting-time-cut perk the player has bought.
+            val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel, cut) / 60
 
             val framesJson = json.encodeToString(
                 json.serializersModule.serializer<List<SessionFrame>>(),

@@ -291,10 +291,12 @@ object SkillSimulator {
      *   level 75 → 45 min
      *   level 99 → 40 min
      */
-    fun sessionDurationMs(agilityLevel: Int): Long {
+    fun sessionDurationMs(agilityLevel: Int, categoryTimeCut: Double = 0.0): Long {
         val fraction = (agilityLevel - 1).coerceIn(0, 98) / 98.0
         val minutes = (60.0 - 20.0 * fraction).roundToInt()
-        return minutes * 60_000L
+        val baseMs = minutes * 60_000L
+        val cut = categoryTimeCut.coerceIn(0.0, 0.5)
+        return (baseMs * (1.0 - cut)).toLong().coerceAtLeast(60_000L)
     }
 
     /**

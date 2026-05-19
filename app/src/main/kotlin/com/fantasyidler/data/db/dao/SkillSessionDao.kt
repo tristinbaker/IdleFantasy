@@ -43,4 +43,7 @@ interface SkillSessionDao {
 
     @Query("SELECT COUNT(*) FROM skill_sessions WHERE completed = 1 AND user_id = 1")
     fun observeCompletedCount(): Flow<Int>
+
+    @Query("SELECT * FROM skill_sessions WHERE completed = 1 AND user_id = 1 ORDER BY started_at ASC")
+    fun observeCompletedSessions(): Flow<List<SkillSession>>
 }

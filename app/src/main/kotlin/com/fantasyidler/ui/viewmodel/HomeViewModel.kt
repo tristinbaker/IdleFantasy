@@ -58,6 +58,7 @@ data class HomeUiState(
     val skillLevels: Map<String, Int> = emptyMap(),
     val skillXp: Map<String, Long> = emptyMap(),
     val activeSession: SkillSession? = null,
+    val completedSessions: List<SkillSession> = emptyList(),
     val pendingCollectCount: Int = 0,
     val snackbarMessage: String? = null,
     val sessionSummary: SessionSummary? = null,
@@ -65,6 +66,7 @@ data class HomeUiState(
     val characterName: String = "",
     val sessionQueue: List<QueuedAction> = emptyList(),
     val showWhatsNew: Boolean = false,
+    val showSessionDetails: Boolean = false,
 )
 
 @HiltViewModel
@@ -74,7 +76,7 @@ class HomeViewModel @Inject constructor(
     private val gameData: GameDataRepository,
     private val questRepo: QuestRepository,
     private val queuedSessionStarter: QueuedSessionStarter,
-    private val json: Json,
+    val json: Json,
 ) : ViewModel() {
 
     private val _extra = MutableStateFlow(HomeUiState())
@@ -82,10 +84,15 @@ class HomeViewModel @Inject constructor(
     val uiState: StateFlow<HomeUiState> = combine(
         playerRepo.playerFlow,
         sessionRepo.activeSessionFlow,
-        sessionRepo.completedCountFlow,
+        sessionRepo.completedSessionsFlow,
         _extra,
-    ) { player, session, completedCount, extra ->
-        if (player == null) extra.copy(isLoading = true, activeSession = session, pendingCollectCount = completedCount)
+    ) { player, session, completedSessions, extra ->
+        if (player == null) extra.copy(
+            isLoading           = true,
+            activeSession       = session,
+            completedSessions   = completedSessions,
+            pendingCollectCount = completedSessions.size,
+        )
         else {
             val flags: PlayerFlags = json.decodeFromString(player.flags)
             extra.copy(
@@ -94,7 +101,8 @@ class HomeViewModel @Inject constructor(
                 skillLevels         = json.decodeFromString(player.skillLevels),
                 skillXp             = json.decodeFromString(player.skillXp),
                 activeSession       = session,
-                pendingCollectCount = completedCount,
+                completedSessions   = completedSessions,
+                pendingCollectCount = completedSessions.size,
                 characterSetupDone  = flags.characterSetupDone,
                 characterName       = flags.characterName,
                 sessionQueue        = flags.sessionQueue,
@@ -107,7 +115,13 @@ class HomeViewModel @Inject constructor(
     // Session actions
     // ------------------------------------------------------------------
 
-    fun collectSession() {
+    /**
+     * Claim rewards from completed sessions. With [sessionId] = null (default),
+     * claims every completed session at once ("Claim all"). With a specific id,
+     * only that session is claimed — used by the per-row Claim buttons in the
+     * active-session details sheet.
+     */
+    fun collectSession(sessionId: String? = null) {
         viewModelScope.launch {
             // If the latest session timed out but its alarm hasn't fired yet, mark it completed now.
             val latest = sessionRepo.getActiveSession()
@@ -115,7 +129,8 @@ class HomeViewModel @Inject constructor(
                 sessionRepo.markCompleted(latest.sessionId)
             }
 
-            val sessions = sessionRepo.getAllCompletedSessions()
+            val all = sessionRepo.getAllCompletedSessions()
+            val sessions = if (sessionId == null) all else all.filter { it.sessionId == sessionId }
             if (sessions.isEmpty()) return@launch
 
             val petIds = gameData.pets.keys
@@ -337,6 +352,9 @@ class HomeViewModel @Inject constructor(
 
     fun summaryConsumed() = _extra.update { it.copy(sessionSummary = null) }
     fun snackbarConsumed() = _extra.update { it.copy(snackbarMessage = null) }
+
+    fun showSessionDetails() = _extra.update { it.copy(showSessionDetails = true) }
+    fun dismissSessionDetails() = _extra.update { it.copy(showSessionDetails = false) }
 
     fun dismissWhatsNew() {
         viewModelScope.launch {

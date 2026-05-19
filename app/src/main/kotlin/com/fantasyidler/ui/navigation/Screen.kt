@@ -3,8 +3,10 @@ package com.fantasyidler.ui.navigation
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Explore
+import androidx.compose.material.icons.filled.LocationCity
 import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Shield
@@ -81,6 +83,18 @@ sealed class Screen(
         route    = "farming",
         labelRes = R.string.skill_farming_name,
         icon     = Icons.Filled.ShoppingCart,
+    )
+
+    object MinigameHub : Screen(
+        route    = "minigame_hub",
+        labelRes = R.string.adv_minigame_hub,
+        icon     = Icons.Filled.LocationCity,
+    )
+
+    object Perks : Screen(
+        route    = "perks",
+        labelRes = R.string.perks_title,
+        icon     = Icons.Filled.AutoAwesome,
     )
 
     companion object {

@@ -3,6 +3,7 @@ package com.fantasyidler.repository
 import com.fantasyidler.data.json.BossData
 import com.fantasyidler.data.json.CookingRecipe
 import com.fantasyidler.data.model.EquipSlot
+import com.fantasyidler.data.perks.PerkRepository
 import com.fantasyidler.data.model.OwnedPet
 import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.data.model.QueuedAction
@@ -28,6 +29,7 @@ class QueuedSessionStarter @Inject constructor(
     private val playerRepo: PlayerRepository,
     private val sessionRepo: SessionRepository,
     private val gameData: GameDataRepository,
+    private val perkRepo: PerkRepository,
     private val json: Json,
 ) {
     /**
@@ -164,7 +166,8 @@ class QueuedSessionStarter @Inject constructor(
                         ))
                     }
                 }
-                val perEssenceMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
+                val rcCut = perkRepo.timeCutForSkill(Skills.RUNECRAFTING)
+                val perEssenceMs = SkillSimulator.sessionDurationMs(agilityLevel, rcCut) / 60
                 sessionRepo.startSession(Skills.RUNECRAFTING, runeKey, encodeFrames(frames), qty.toLong() * perEssenceMs, action.skillDisplayName)
             }
             Skills.PRAYER -> {
@@ -190,7 +193,8 @@ class QueuedSessionStarter @Inject constructor(
                         ))
                     }
                 }
-                val perBoneMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
+                val prayerCut = perkRepo.timeCutForSkill(Skills.PRAYER)
+                val perBoneMs = SkillSimulator.sessionDurationMs(agilityLevel, prayerCut) / 60
                 sessionRepo.startSession(
                     skillName        = Skills.PRAYER,
                     activityKey      = boneKey,
@@ -204,7 +208,8 @@ class QueuedSessionStarter @Inject constructor(
                 val qty = action.qty.takeIf { it > 0 } ?: return
                 if (!r.materials.all { (item, needed) -> (inventory[item] ?: 0) >= needed * qty }) return
                 val frames = buildCraftFrames(xpMap[Skills.SMITHING] ?: 0L, qty, r.xpPerItem, r.outputQuantity, action.activityKey)
-                val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
+                val smithCut  = perkRepo.timeCutForSkill(Skills.SMITHING)
+                val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel, smithCut) / 60
                 sessionRepo.startSession(Skills.SMITHING, action.activityKey, encodeFrames(frames), qty * perItemMs, action.skillDisplayName)
             }
             Skills.COOKING -> {
@@ -212,7 +217,8 @@ class QueuedSessionStarter @Inject constructor(
                 val qty = action.qty.takeIf { it > 0 } ?: return
                 if ((inventory[r.rawItem] ?: 0) < qty) return
                 val frames = buildCraftFrames(xpMap[Skills.COOKING] ?: 0L, qty, r.xpPerItem, 1, r.cookedItem)
-                val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
+                val cookCut   = perkRepo.timeCutForSkill(Skills.COOKING)
+                val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel, cookCut) / 60
                 sessionRepo.startSession(Skills.COOKING, action.activityKey, encodeFrames(frames), qty * perItemMs, action.skillDisplayName)
             }
             Skills.FLETCHING -> {
@@ -220,7 +226,8 @@ class QueuedSessionStarter @Inject constructor(
                 val qty = action.qty.takeIf { it > 0 } ?: return
                 if (!r.materials.all { (item, needed) -> (inventory[item] ?: 0) >= needed * qty }) return
                 val frames = buildCraftFrames(xpMap[Skills.FLETCHING] ?: 0L, qty, r.xpPerItem, r.outputQuantity, r.itemName)
-                val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
+                val fletchCut = perkRepo.timeCutForSkill(Skills.FLETCHING)
+                val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel, fletchCut) / 60
                 sessionRepo.startSession(Skills.FLETCHING, action.activityKey, encodeFrames(frames), qty * perItemMs, action.skillDisplayName)
             }
             Skills.CRAFTING -> {
@@ -228,7 +235,8 @@ class QueuedSessionStarter @Inject constructor(
                 val qty = action.qty.takeIf { it > 0 } ?: return
                 if (!r.materials.all { (item, needed) -> (inventory[item] ?: 0) >= needed * qty }) return
                 val frames = buildCraftFrames(xpMap[Skills.CRAFTING] ?: 0L, qty, r.xpPerItem, r.outputQuantity, action.activityKey)
-                val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
+                val craftCut  = perkRepo.timeCutForSkill(Skills.CRAFTING)
+                val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel, craftCut) / 60
                 sessionRepo.startSession(Skills.CRAFTING, action.activityKey, encodeFrames(frames), qty * perItemMs, action.skillDisplayName)
             }
             Skills.HERBLORE -> {
@@ -236,7 +244,8 @@ class QueuedSessionStarter @Inject constructor(
                 val qty = action.qty.takeIf { it > 0 } ?: return
                 if (!r.materials.all { (item, needed) -> (inventory[item] ?: 0) >= needed * qty }) return
                 val frames    = buildCraftFrames(xpMap[Skills.HERBLORE] ?: 0L, qty, r.xpPerItem, r.outputQuantity, action.activityKey)
-                val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
+                val herbCut   = perkRepo.timeCutForSkill(Skills.HERBLORE)
+                val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel, herbCut) / 60
                 sessionRepo.startSession(Skills.HERBLORE, action.activityKey, encodeFrames(frames), qty * perItemMs, action.skillDisplayName)
             }
             "boss" -> {
@@ -362,11 +371,13 @@ class QueuedSessionStarter @Inject constructor(
     }
 
     private suspend fun startSession(action: QueuedAction, result: SkillSimulator.Result) {
+        val cut = perkRepo.timeCutForSkill(action.skillName)
+        val adjustedDuration = (result.durationMs * (1.0 - cut)).toLong().coerceAtLeast(60_000L)
         sessionRepo.startSession(
             skillName        = action.skillName,
             activityKey      = action.activityKey,
             frames           = encodeFrames(result.frames),
-            durationMs       = result.durationMs,
+            durationMs       = adjustedDuration,
             skillDisplayName = action.skillDisplayName,
         )
     }

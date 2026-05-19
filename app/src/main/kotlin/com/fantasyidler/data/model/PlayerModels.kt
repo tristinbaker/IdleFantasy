@@ -27,6 +27,23 @@ data class PlayerFlags(
     @SerialName("last_seen_version_code") val lastSeenVersionCode: Int = 0,
     /** "dark" | "light" | "system". Defaults to "dark" to preserve existing behaviour. */
     @SerialName("theme_preference") val themePreference: String = "dark",
+    /** Spent points + purchased perk tiers. Earned points are derived from skill levels. */
+    @SerialName("perks") val perks: PerkState = PerkState(),
+)
+
+/**
+ * Persistent perk state. Earned points are not stored — they're recomputed from
+ * skill levels every time the UI reads. `spent*` tracks how much of each
+ * category has already been spent, and [purchased] keys are perk ids mapped to
+ * their current tier (1-based; perk not present = tier 0 = unowned).
+ */
+@Serializable
+data class PerkState(
+    @SerialName("spent_ap") val spentAp: Long = 0,
+    @SerialName("spent_gathering") val spentGathering: Long = 0,
+    @SerialName("spent_crafting") val spentCrafting: Long = 0,
+    @SerialName("spent_combat") val spentCombat: Long = 0,
+    val purchased: Map<String, Int> = emptyMap(),
 )
 
 /** A session to be started when the current one completes. */

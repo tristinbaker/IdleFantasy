@@ -49,21 +49,18 @@ import kotlinx.coroutines.delay
  * The persistent top heads-up display. Survives every tab switch (only the body
  * fades between destinations). Three regions:
  *
- *  - Left:   Level chip (combat level) → tap navigates to Profile.
+ *  - Left:   Level chip (total level — sum of every skill) → tap navigates to Profile.
+ *            Combat level lives on the Combat tab now.
  *  - Middle: Coins, with [AnimatedCounter] so gains/losses tick rather than jump.
  *  - Right:  Active-session pill — skill emoji + smoothly-animated countdown.
- *            Tap navigates to Skills so the player can interact with the session.
- *            Collapses to a faint "Start a session" prompt when nothing's running.
- *
- * @param onShop temp navigation target for the coin tap. PR #10 replaces this
- *               with a bottom-sheet that opens in place.
- * @param onSettings temp settings entry point. PR #11 removes this in favour
- *                   of a gear icon on the Profile screen.
+ *            Tap opens the active-session details popup so the player can claim
+ *            or inspect what's running. Collapses to a faint "Start a session"
+ *            prompt when nothing's running.
  */
 @Composable
 fun FantasyTopHud(
     coins: Long,
-    combatLevel: Int,
+    totalLevel: Int,
     activeSession: SkillSession?,
     onProfile: () -> Unit,
     onShop: () -> Unit,
@@ -90,7 +87,7 @@ fun FantasyTopHud(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             LevelChip(
-                level = combatLevel,
+                level = totalLevel,
                 label = "Lv",
                 onClick = onProfile,
             )
@@ -302,7 +299,7 @@ private fun PreviewFantasyTopHudIdle() {
     FantasyPreviewSurface {
         FantasyTopHud(
             coins         = 12_345L,
-            combatLevel   = 27,
+            totalLevel    = 27,
             activeSession = null,
             onProfile     = {},
             onShop        = {},
@@ -318,7 +315,7 @@ private fun PreviewFantasyTopHudActiveSession() {
     FantasyPreviewSurface {
         FantasyTopHud(
             coins         = 1_204_567L,
-            combatLevel   = 80,
+            totalLevel    = 80,
             activeSession = SkillSession(
                 sessionId = "preview",
                 skillName = "mining",
@@ -340,7 +337,7 @@ private fun PreviewFantasyTopHudClaimable() {
     FantasyPreviewSurface {
         FantasyTopHud(
             coins         = 999_999_999L,
-            combatLevel   = 126,
+            totalLevel    = 126,
             activeSession = SkillSession(
                 sessionId = "preview",
                 skillName = "fishing",

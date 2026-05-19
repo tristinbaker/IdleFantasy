@@ -20,6 +20,7 @@ class SessionRepository @Inject constructor(
 ) {
     val activeSessionFlow: Flow<SkillSession?> = sessionDao.observeActiveSession()
     val completedCountFlow: Flow<Int> = sessionDao.observeCompletedCount()
+    val completedSessionsFlow: Flow<List<SkillSession>> = sessionDao.observeCompletedSessions()
 
     suspend fun getActiveSession(): SkillSession? = sessionDao.getActiveSession()
 
