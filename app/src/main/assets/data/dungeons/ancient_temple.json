@@ -1,7 +1,7 @@
 {
   "name": "ancient_temple",
-  "display_name": "Ancient Temple",
-  "description": "An ancient temple guarded by the most powerful creatures in the realm. Only the strongest warriors dare enter.",
+  "display_name": "Templo Antiguo",
+  "description": "Un antiguo templo custodiado por las criaturas más poderosas del reino. Solo los guerreros más fuertes se atreven a entrar.",
   "recommended_level": 65,
   "encounter_rate": 0.48,
   "enemy_spawns": [
