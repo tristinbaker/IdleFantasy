@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- ===== Ores ===== -->
-    <string name="item_copper_ore_name">Copper Ore</string>
-    <string name="item_copper_ore_desc">Common ore. Combine with tin ore to smelt bronze bars.</string>
-    <string name="item_tin_ore_name">Tin Ore</string>
-    <string name="item_tin_ore_desc">Common ore. Combine with copper ore to smelt bronze bars.</string>
-    <string name="item_iron_ore_name">Iron Ore</string>
-    <string name="item_iron_ore_desc">Versatile ore used to smelt iron and steel bars.</string>
-    <string name="item_coal_name">Coal</string>
-    <string name="item_coal_desc">Used as a fuel component when smelting steel and higher-tier bars.</string>
-    <string name="item_silver_ore_name">Silver Ore</string>
-    <string name="item_silver_ore_desc">Precious ore used to craft silver bars and jewellery.</string>
-    <string name="item_gold_ore_name">Gold Ore</string>
-    <string name="item_gold_ore_desc">Precious ore used to craft gold bars and jewellery.</string>
-    <string name="item_mithril_ore_name">Mithril Ore</string>
-    <string name="item_mithril_ore_desc">A rare ore with magical properties.</string>
-    <string name="item_adamantite_ore_name">Adamantite Ore</string>
-    <string name="item_adamantite_ore_desc">Extremely hard and very rare ore.</string>
-    <string name="item_runite_ore_name">Runite Ore</string>
-    <string name="item_runite_ore_desc">The rarest mineable ore, used for the strongest equipment.</string>
-    <string name="item_rune_essence_name">Rune Essence</string>
-    <string name="item_rune_essence_desc">Raw magical stone used to craft all types of runes.</string>
+    <string name="item_copper_ore_name">Mineral de cobre</string>
+    <string name="item_copper_ore_desc">Mineral común. Se combina con mineral de estaño para fundir lingotes de bronce.</string>
+    <string name="item_tin_ore_name">Mineral de estaño</string>
+    <string name="item_tin_ore_desc">Mineral común. Se combina con mineral de cobre para fundir lingotes de bronce.</string>
+    <string name="item_iron_ore_name">Mineral de hierro</string>
+    <string name="item_iron_ore_desc">Mineral versátil utilizado para fundir barras de hierro y acero..</string>
+    <string name="item_coal_name">Carbón</string>
+    <string name="item_coal_desc">Se utiliza como componente combustible al fundir acero y barras de mayor calidad.</string>
+    <string name="item_silver_ore_name">Mineral de plata</string>
+    <string name="item_silver_ore_desc">Mineral precioso utilizado para elaborar lingotes de plata y joyas.</string>
+    <string name="item_gold_ore_name">Mineral de oro</string>
+    <string name="item_gold_ore_desc">Mineral precioso utilizado para fabricar lingotes de oro y joyas.</string>
+    <string name="item_mithril_ore_name">Mineral de mithril</string>
+    <string name="item_mithril_ore_desc">Un mineral raro con propiedades mágicas.</string>
+    <string name="item_adamantite_ore_name">Mineral de adamantita</string>
+    <string name="item_adamantite_ore_desc">Mineral extremadamente duro y muy raro.</string>
+    <string name="item_runite_ore_name">Mineral de runita</string>
+    <string name="item_runite_ore_desc">El mineral más raro que se puede extraer, utilizado para los equipos más resistentes.</string>
+    <string name="item_rune_essence_name">Esencia rúnica</string>
+    <string name="item_rune_essence_desc">Piedra mágica en bruto utilizada para crear todo tipo de runas.</string>
 
     <!-- ===== Metal bars ===== -->
-    <string name="item_bronze_bar_name">Bronze Bar</string>
-    <string name="item_bronze_bar_desc">Smelted from copper ore and tin ore. The most basic metal bar.</string>
-    <string name="item_iron_bar_name">Iron Bar</string>
-    <string name="item_iron_bar_desc">A sturdy iron bar used for crafting iron equipment.</string>
-    <string name="item_silver_bar_name">Silver Bar</string>
-    <string name="item_silver_bar_desc">Refined silver bar used for crafting jewellery.</string>
-    <string name="item_steel_bar_name">Steel Bar</string>
-    <string name="item_steel_bar_desc">Stronger than iron. Used for crafting steel equipment.</string>
-    <string name="item_gold_bar_name">Gold Bar</string>
-    <string name="item_gold_bar_desc">Refined gold bar used for crafting jewellery and gold equipment.</string>
-    <string name="item_mithril_bar_name">Mithril Bar</string>
-    <string name="item_mithril_bar_desc">A lightweight magical metal bar.</string>
-    <string name="item_adamantite_bar_name">Adamantite Bar</string>
-    <string name="item_adamantite_bar_desc">An extraordinarily hard metal bar.</string>
-    <string name="item_platinum_bar_name">Platinum Bar</string>
-    <string name="item_platinum_bar_desc">A rare and lustrous platinum bar for high-tier jewellery.</string>
-    <string name="item_runite_bar_name">Runite Bar</string>
-    <string name="item_runite_bar_desc">The strongest smeltable metal bar.</string>
+    <string name="item_bronze_bar_name">Barra de bronce</string>
+    <string name="item_bronze_bar_desc">Fundido a partir de mineral de cobre y mineral de estaño. La barra de metal más básica.</string>
+    <string name="item_iron_bar_name">Barra de hierro</string>
+    <string name="item_iron_bar_desc">Una robusta barra de hierro utilizada para fabricar herramientas de hierro.</string>
+    <string name="item_silver_bar_name">Barra de plata</string>
+    <string name="item_silver_bar_desc">Barra de plata refinada utilizada para la elaboración de joyas.</string>
+    <string name="item_steel_bar_name">Barra de acero</string>
+    <string name="item_steel_bar_desc">Más resistente que el hierro. Se utiliza para fabricar equipos de acero.</string>
+    <string name="item_gold_bar_name">Barra de oro</string>
+    <string name="item_gold_bar_desc">Lingote de oro refinado utilizado para la fabricación de joyas y equipos de oro.</string>
+    <string name="item_mithril_bar_name">Barra de mithril</string>
+    <string name="item_mithril_bar_desc">Una barra de metal mágica y ligera.</string>
+    <string name="item_adamantite_bar_name">Barra de adamantita</string>
+    <string name="item_adamantite_bar_desc">Una barra de metal extraordinariamente dura.</string>
+    <string name="item_platinum_bar_name">Barra de platino</string>
+    <string name="item_platinum_bar_desc">Una barra de platino rara y brillante para joyería de alta gama.</string>
+    <string name="item_runite_bar_name">Barra de runita</string>
+    <string name="item_runite_bar_desc">La barra de metal fundible más resistente.</string>
 
     <!-- ===== Gems ===== -->
     <string name="item_sapphire_name">Sapphire</string>
