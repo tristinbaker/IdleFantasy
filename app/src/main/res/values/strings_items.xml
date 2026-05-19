@@ -262,23 +262,23 @@
 
     <!-- Armour — iron -->
     <string name="item_iron_helmet_name">Iron Helmet</string>
-    <string name="item_iron_helmet_desc">Iron head protection.</string>
+    <string name="item_iron_helmet_desc">Protección de hierro para la cabeza.</string>
     <string name="item_iron_platebody_name">Iron Platebody</string>
-    <string name="item_iron_platebody_desc">Iron body armour.</string>
+    <string name="item_iron_platebody_desc">Armadura de hierro.</string>
     <string name="item_iron_platelegs_name">Iron Platelegs</string>
-    <string name="item_iron_platelegs_desc">Iron leg protection.</string>
+    <string name="item_iron_platelegs_desc">Protección de hierro para las piernas.</string>
     <string name="item_iron_shield_name">Iron Shield</string>
-    <string name="item_iron_shield_desc">An iron shield.</string>
+    <string name="item_iron_shield_desc">Un escudo de hierro.</string>
 
     <!-- Armour — steel -->
     <string name="item_steel_helmet_name">Steel Helmet</string>
-    <string name="item_steel_helmet_desc">Sturdy steel head protection.</string>
+    <string name="item_steel_helmet_desc">Un resistente casco de acero que protege la cabeza en combate.</string>
     <string name="item_steel_platebody_name">Steel Platebody</string>
-    <string name="item_steel_platebody_desc">Sturdy steel body armour.</string>
-    <string name="item_steel_platelegs_name">Steel Platelegs</string>
-    <string name="item_steel_platelegs_desc">Sturdy steel leg protection.</string>
+    <string name="item_steel_platebody_desc">Una sólida armadura de acero diseñada para soportar fuertes golpes.</string>
+    <string name="item_steel_platelegs_name">Steel Platelegs.</string>
+    <string name="item_steel_platelegs_desc">Protección robusta de acero para las piernas.</string>
     <string name="item_steel_shield_name">Steel Shield</string>
-    <string name="item_steel_shield_desc">A sturdy steel shield.</string>
+    <string name="item_steel_shield_desc">Un escudo de acero resistente.</string>
 
     <!-- Armour — mithril -->
     <string name="item_mithril_helmet_name">Mithril Helmet</string>
