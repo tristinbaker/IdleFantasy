@@ -107,25 +107,25 @@
     <string name="label_food">Comida</string>
     <string name="label_arrows">Flechas</string>
     <string name="label_runes">Runas</string>
-    <string name="label_spell">Spell</string>
+    <string name="label_spell">Hechizo</string>
     <string name="label_none">None</string>
     <string name="label_melee">Melee</string>
-    <string name="label_ranged_style">Ranged</string>
-    <string name="label_magic_style">Magic</string>
-    <string name="label_gathering">Gathering</string>
+    <string name="label_ranged_style">A distancia</string>
+    <string name="label_magic_style">Magia</string>
+    <string name="label_gathering">Reunión</string>
     <string name="label_crafting">Crafting</string>
     <string name="label_jewellery">Jewelry</string>
     <string name="label_combat">Combat</string>
-    <string name="label_recipe">Recipe</string>
-    <string name="label_recipes">Recipes</string>
+    <string name="label_recipe">Receta</string>
+    <string name="label_recipes">Recetas</string>
     <string name="label_ingredients">Ingredientes</string>
     <string name="label_output">Output</string>
     <string name="label_xp_per_action">XP por acción</string>
     <string name="label_unlocked_at">Desbloqueado en el nivel</string>
     <string name="label_kills">Kills</string>
     <string name="label_personal_best">Personal Best</string>
-    <string name="label_daily_dig">Daily Dig</string>
-    <string name="label_dig_depth">Hole Depth</string>
+    <string name="label_daily_dig">Excavación diaria</string>
+    <string name="label_dig_depth">Profundidad del agujero</string>
     <string name="label_version">Version</string>
     <string name="label_open_source">Open Source</string>
 
@@ -285,7 +285,7 @@
     <!-- ===== Settings — appearance / language / save data ===== -->
     <string name="settings_appearance">Apariencia</string>
     <string name="settings_theme">Theme</string>
-    <string name="settings_theme_desc">Choose your preferred colour scheme</string>
+    <string name="settings_theme_desc">Elige tu combinación de colores preferida</string>
     <string name="settings_theme_dark">Dark</string>
     <string name="settings_theme_light">Light</string>
     <string name="settings_theme_system">System</string>
@@ -356,57 +356,57 @@
     <!-- Translator note: %1$d = minutes -->
     <string name="combat_duration_min">%1$d min</string>
     <string name="combat_xp_on_victory">XP on victory</string>
-    <string name="combat_you_died">You Died!</string>
-    <string name="combat_died_reward">You received 10% of the rewards.</string>
+    <string name="combat_you_died">Has muerto!</string>
+    <string name="combat_died_reward">Recibiste el 10% de las recompensas.</string>
     <!-- Translator note: %1$d = gear bonus value -->
     <string name="combat_gear_bonus">+%1$d gear</string>
 
     <!-- ===== ProfileScreen ===== -->
-    <string name="profile_unnamed">Unnamed Adventurer</string>
+    <string name="profile_unnamed">Aventurero sin nombre</string>
     <string name="profile_no_pets">No pets available</string>
     <string name="profile_pet_collected">Collected</string>
-    <string name="profile_pet_not_found">Not Yet Found</string>
-    <string name="profile_equip_best">Equip Best Gear</string>
-    <string name="profile_combat_gear">Combat Gear</string>
-    <string name="profile_gathering_tools">Gathering Tools</string>
-    <string name="profile_food_dungeon">Food (Dungeon)</string>
-    <string name="profile_no_food">No cooked food in inventory</string>
+    <string name="profile_pet_not_found">Aún no encontrado</string>
+    <string name="profile_equip_best">Equipa el mejor equipo</string>
+    <string name="profile_combat_gear">Equipo de combate</string>
+    <string name="profile_gathering_tools">Herramientas de recolección</string>
+    <string name="profile_food_dungeon">Alimento (Dungeon)</string>
+    <string name="profile_no_food">No hay alimentos cocinados en el inventario.</string>
     <!-- Translator note: %1$d = quantity, %2$d = heal value -->
     <string name="profile_food_desc">×%1$d  •  heals %2$d HP</string>
     <!-- Translator note: %1$s = slot display name (e.g. "Weapon") -->
-    <string name="profile_choose_slot">Choose %1$s</string>
-    <string name="profile_no_items">No eligible items in inventory</string>
+    <string name="profile_choose_slot">Elegir %1$s</string>
+    <string name="profile_no_items">No hay artículos elegibles en el inventario.</string>
     <string name="profile_stat_atk">Atk</string>
     <string name="profile_stat_str">Str</string>
-    <string name="profile_stat_ranged">Ranged</string>
-    <string name="profile_stat_magic">Magic</string>
-    <string name="profile_stat_mining">Mining</string>
+    <string name="profile_stat_ranged">A distancia</string>
+    <string name="profile_stat_magic">Magia</string>
+    <string name="profile_stat_mining">Minería</string>
     <string name="profile_stat_wc">WC</string>
-    <string name="profile_stat_fishing">Fishing</string>
-    <string name="profile_stat_farming">Farming</string>
+    <string name="profile_stat_fishing">Pesca</string>
+    <string name="profile_stat_farming">Agricultura</string>
     <string name="profile_stat_def">Def</string>
     <string name="profile_req_lv">Req lv.</string>
 
     <!-- ===== SkillsScreen ===== -->
     <!-- Translator note: %1$d = session duration in minutes -->
     <string name="skills_session_duration">Sesion: %1$dm</string>
-    <string name="skills_only_craftable">Only craftable</string>
+    <string name="skills_only_craftable">Solo se puede fabricar</string>
     <string name="skills_filter_all">All</string>
-    <string name="skills_add_to_queue">Add to Session Queue</string>
-    <string name="skills_add_queue_short">Add to Queue</string>
+    <string name="skills_add_to_queue">Agregar a la fila de sesiones</string>
+    <string name="skills_add_queue_short">Agregar a la fila</string>
     <!-- Translator note: %1$d = level required, %2$s = XP per action -->
-    <string name="skills_level_req_xp">Lv. %1$d  •  %2$s XP/ore</string>
+    <string name="skills_level_req_xp">Lv. %1$d  •  %2$s XP/mineral</string>
     <!-- Translator note: %1$s = formatted multiplier (e.g. "1.15") -->
     <string name="skills_tool_bonus">×%1$s tool bonus</string>
     <!-- Translator note: %1$d = fishing level -->
     <string name="skills_fishing_desc">Level %1$d  •  Level-appropriate catches</string>
     <!-- Translator note: %1$d = prayer level -->
-    <string name="skills_prayer_desc">Level %1$d  •  Bury bones or scatter ashes for Prayer XP</string>
-    <string name="skills_no_bones">No bones or ashes in inventory</string>
+    <string name="skills_prayer_desc">Level %1$d  •  Entierra huesos o esparce cenizas para la oración. XP</string>
+    <string name="skills_no_bones">No hay huesos ni cenizas en el inventario.</string>
     <!-- Translator note: %1$d = XP per bone, %2$d = quantity in inventory -->
-    <string name="skills_bone_qty">%1$d XP each  •  %2$d in inventory</string>
+    <string name="skills_bone_qty">%1$d XP cada  •  %2$d en inventario</string>
     <!-- Translator note: %1$d = XP per bone, %2$d = quantity available -->
-    <string name="skills_bone_selected">%1$d XP each  •  %2$d available</string>
+    <string name="skills_bone_selected">%1$d XP cada  •  %2$d disponible</string>
     <!-- Translator note: %1$d = total XP -->
     <string name="skills_xp_total">+%1$d XP total</string>
     <string name="skills_no_essence">No hay esencia rúnica en el inventario - primero extrae un poco.</string>
@@ -447,12 +447,12 @@
     <!-- ===== CraftingScreen ===== -->
     <string name="crafting_no_mats">No mats</string>
     <!-- Translator note: %1$d = quantity produced -->
-    <string name="crafting_produces">Produces %1$d× per craft</string>
-    <string name="crafting_effects">Effects</string>
+    <string name="crafting_produces">Produce %1$d× por craft</string>
+    <string name="crafting_effects">Efectos</string>
     <!-- Translator note: %1$d = total XP -->
     <string name="crafting_xp_total">+%1$d XP total</string>
-    <string name="crafting_decrease">Decrease</string>
-    <string name="crafting_increase">Increase</string>
+    <string name="crafting_decrease">Disminuir</string>
+    <string name="crafting_increase">Aumentar</string>
     <!-- Translator note: %1$d = needed, %2$d = have -->
     <string name="crafting_needed_have">%1$d (have %2$d)</string>
 
