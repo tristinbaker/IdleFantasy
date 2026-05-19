@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.viewmodel
 
+import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fantasyidler.data.json.BossData
@@ -47,6 +48,7 @@ data class CombatSessionResult(
     val won: Boolean = true,
 )
 
+@Immutable
 data class CombatUiState(
     val isLoading: Boolean = true,
     val skillLevels: Map<String, Int> = emptyMap(),

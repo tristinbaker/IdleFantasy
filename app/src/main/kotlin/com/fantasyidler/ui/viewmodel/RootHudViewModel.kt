@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.viewmodel
 
+import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fantasyidler.data.model.SkillSession
@@ -18,6 +19,7 @@ import javax.inject.Inject
  * root scaffold and survives tab switches, so it's intentionally kept thin — only
  * what the three HUD regions need.
  */
+@Immutable
 data class RootHudUiState(
     val isLoading: Boolean = true,
     val coins: Long = 0L,

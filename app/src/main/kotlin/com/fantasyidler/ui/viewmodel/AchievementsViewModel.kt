@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.viewmodel
 
+import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fantasyidler.data.model.OwnedPet
@@ -22,6 +23,7 @@ data class Achievement(
     val isUnlocked: Boolean,
 )
 
+@Immutable
 data class AchievementsUiState(
     val isLoading: Boolean = true,
     val byGroup: Map<String, List<Achievement>> = emptyMap(),

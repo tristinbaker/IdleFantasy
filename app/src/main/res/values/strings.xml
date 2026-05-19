@@ -497,6 +497,36 @@
     <string name="character_race_halfling">Halfling</string>
     <string name="character_race_gnome">Gnome</string>
 
+    <!--
+        Stable identifiers driving CharacterSetupSheet's chip lists. Persisted
+        verbatim into the player save, so order + spellings must never change.
+        Display labels come from the per-key character_gender_*/character_race_*
+        strings above (which ARE translated).
+    -->
+    <string-array name="character_genders" translatable="false">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="character_races" translatable="false">
+        <item>Human</item>
+        <item>Elf</item>
+        <item>Dwarf</item>
+        <item>Orc</item>
+        <item>Halfling</item>
+        <item>Gnome</item>
+    </string-array>
+
+    <!-- ===== FantasyTopHud ===== -->
+    <string name="hud_coins_cd">Coins. Tap to open shop.</string>
+    <string name="hud_level_cd">Combat level. Tap to view profile.</string>
+    <string name="hud_session_idle_cd">No active session. Tap to start one.</string>
+    <string name="hud_session_active_cd">Active session: %1$s. Tap to view.</string>
+    <string name="hud_session_claim_cd">Session ready to claim: %1$s. Tap to collect.</string>
+    <string name="hud_settings_cd">Open settings</string>
+    <string name="hud_session_idle">Start a session</string>
+    <string name="hud_session_claim">Claim</string>
+
     <!-- ===== OnboardingScreen ===== -->
     <string name="onboarding_sessions_title">Sessions</string>
     <string name="onboarding_sessions_desc">Tap any skill and start a training session. Sessions run in the background, even with the app closed. Come back to collect your loot and XP.</string>

@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.viewmodel
 
+import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fantasyidler.data.json.AgilityCourseData
@@ -45,6 +46,7 @@ data class SessionResult(
     val levelUps: List<Int>,
 )
 
+@Immutable
 data class SkillsUiState(
     val skillLevels: Map<String, Int> = emptyMap(),
     val skillXp: Map<String, Long> = emptyMap(),

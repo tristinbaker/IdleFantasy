@@ -8,20 +8,21 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.fantasyidler.R
+import com.fantasyidler.ui.components.foundation.ChunkyButton
+import com.fantasyidler.ui.components.foundation.ChunkyButtonVariant
+import com.fantasyidler.ui.components.foundation.ChunkyDialog
 import com.fantasyidler.ui.screen.CharacterSetupSheet
+import com.fantasyidler.ui.theme.fantasy.FantasyPreviewSurface
+import com.fantasyidler.ui.theme.fantasy.LocalFantasyTokens
 import com.fantasyidler.ui.viewmodel.SessionSummary
 import com.fantasyidler.util.formatCoins
 
@@ -73,32 +74,31 @@ private fun SessionSummaryDialog(
     summary: SessionSummary,
     onDismiss: () -> Unit,
 ) {
-    AlertDialog(
+    val tokens = LocalFantasyTokens.current
+    ChunkyDialog(
+        title            = summary.title,
         onDismissRequest = onDismiss,
-        title = {
-            Text(text = summary.title, fontWeight = FontWeight.Bold)
-        },
-        text = {
+        body = {
             Column(
                 modifier            = Modifier.verticalScroll(rememberScrollState()),
-                verticalArrangement = Arrangement.spacedBy(4.dp),
+                verticalArrangement = Arrangement.spacedBy(tokens.spacing.s),
             ) {
                 if (summary.died) {
                     Text(
                         text  = stringResource(R.string.home_died_message),
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.error,
+                        style = tokens.typography.bodyMedium,
+                        color = tokens.colors.error,
                     )
-                    Spacer(Modifier.height(4.dp))
+                    Spacer(Modifier.height(tokens.spacing.s))
                 }
                 if (summary.boostWasActive) {
                     Text(
-                        text  = stringResource(R.string.home_xp_boost_was_active),
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.primary,
+                        text       = stringResource(R.string.home_xp_boost_was_active),
+                        style      = tokens.typography.labelSmall,
+                        color      = tokens.colors.primary,
                         fontWeight = FontWeight.Bold,
                     )
-                    Spacer(Modifier.height(4.dp))
+                    Spacer(Modifier.height(tokens.spacing.s))
                 }
                 if (summary.xpLines.isNotEmpty()) {
                     SummarySection(stringResource(R.string.label_xp_gained))
@@ -107,20 +107,20 @@ private fun SessionSummaryDialog(
                     SummaryRow(stringResource(R.string.label_xp_gained), summary.totalXpLabel)
                 }
                 if (summary.killLines.isNotEmpty()) {
-                    Spacer(Modifier.height(4.dp))
+                    Spacer(Modifier.height(tokens.spacing.s))
                     SummarySection(stringResource(R.string.label_kills))
                     summary.killLines.forEach { (enemy, kills) -> SummaryRow(enemy, kills) }
                 }
                 if (summary.itemLines.isNotEmpty()) {
-                    Spacer(Modifier.height(4.dp))
+                    Spacer(Modifier.height(tokens.spacing.s))
                     SummarySection(stringResource(R.string.home_loot))
                     summary.itemLines.forEach { (item, qty) -> SummaryRow(item, qty) }
                 }
                 if (summary.coinsGained > 0) {
-                    SummaryRow("Coins", "+${summary.coinsGained.formatCoins()}")
+                    SummaryRow(stringResource(R.string.label_coins), "+${summary.coinsGained.formatCoins()}")
                 }
                 if (summary.foodConsumedLines.isNotEmpty()) {
-                    Spacer(Modifier.height(4.dp))
+                    Spacer(Modifier.height(tokens.spacing.s))
                     SummarySection(stringResource(R.string.home_food_consumed))
                     summary.foodConsumedLines.forEach { (food, qty) -> SummaryRow(food, qty) }
                 }
@@ -129,10 +129,12 @@ private fun SessionSummaryDialog(
                 }
             }
         },
-        confirmButton = {
-            Button(onClick = onDismiss) {
-                Text(stringResource(R.string.btn_close))
-            }
+        actions = {
+            ChunkyButton(
+                text    = stringResource(R.string.btn_close),
+                onClick = onDismiss,
+                variant = ChunkyButtonVariant.Primary,
+            )
         },
     )
 }
@@ -140,43 +142,72 @@ private fun SessionSummaryDialog(
 @Composable
 private fun WhatsNewDialog(onDismiss: () -> Unit) {
     val context = LocalContext.current
+    val tokens = LocalFantasyTokens.current
     val changelogText = remember {
         runCatching { context.assets.open("changelog.txt").bufferedReader().readText().trim() }
             .getOrElse { "" }
     }
     if (changelogText.isEmpty()) return
-    AlertDialog(
+    ChunkyDialog(
+        title            = stringResource(R.string.home_whats_new),
         onDismissRequest = onDismiss,
-        title = { Text(stringResource(R.string.home_whats_new)) },
-        text  = {
-            Text(text = changelogText, style = MaterialTheme.typography.bodyMedium)
+        body = {
+            Text(
+                text  = changelogText,
+                style = tokens.typography.bodyMedium,
+                color = tokens.colors.onSurface,
+            )
         },
-        confirmButton = {
-            TextButton(onClick = onDismiss) { Text(stringResource(R.string.home_got_it)) }
+        actions = {
+            ChunkyButton(
+                text    = stringResource(R.string.home_got_it),
+                onClick = onDismiss,
+                variant = ChunkyButtonVariant.Primary,
+            )
         },
     )
 }
 
 @Composable
 private fun SummarySection(title: String) {
+    val tokens = LocalFantasyTokens.current
     Text(
         text  = title,
-        style = MaterialTheme.typography.labelMedium,
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        style = tokens.typography.labelSmall,
+        color = tokens.colors.onSurfaceMuted,
     )
 }
 
 @Composable
 private fun SummaryRow(label: String, value: String) {
+    val tokens = LocalFantasyTokens.current
     Row(
         modifier              = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
-        Text(label, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.weight(1f))
+        Text(
+            text     = label,
+            style    = tokens.typography.bodyMedium,
+            color    = tokens.colors.onSurface,
+            modifier = Modifier.weight(1f),
+        )
         Text(
             text       = value,
-            style      = MaterialTheme.typography.bodyMedium,
+            style      = tokens.typography.bodyMedium,
             fontWeight = FontWeight.SemiBold,
+            color      = tokens.colors.onSurface,
         )
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun PreviewSummaryRow() {
+    FantasyPreviewSurface {
+        Column {
+            SummarySection("XP Gained")
+            SummaryRow("Mining", "+12,400")
+            SummaryRow("Smithing", "+3,250")
+        }
     }
 }

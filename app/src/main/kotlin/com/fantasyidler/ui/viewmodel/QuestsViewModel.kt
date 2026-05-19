@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.viewmodel
 
+import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fantasyidler.data.json.QuestData
@@ -35,6 +36,7 @@ data class QuestWithProgress(
     val progressFraction: Float get() = (progress.toFloat() / quest.amount.toFloat()).coerceIn(0f, 1f)
 }
 
+@Immutable
 data class QuestsUiState(
     val isLoading: Boolean = true,
     /** Groups in display order: "Gathering", "Crafting", "Combat", "Special". */

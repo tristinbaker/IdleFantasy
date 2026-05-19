@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.viewmodel
 
+import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fantasyidler.BuildConfig
@@ -50,6 +51,7 @@ data class SessionSummary(
     val boostWasActive: Boolean = false,
 )
 
+@Immutable
 data class HomeUiState(
     val isLoading: Boolean = true,
     val coins: Long = 0L,

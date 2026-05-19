@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.viewmodel
 
+import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fantasyidler.data.json.MarketplaceItem
@@ -44,6 +45,7 @@ data class ShopTransaction(
 // UI state
 // ---------------------------------------------------------------------------
 
+@Immutable
 data class ShopUiState(
     val coins: Long = 0L,
     val inventory: Map<String, Int> = emptyMap(),

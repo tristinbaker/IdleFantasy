@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.viewmodel
 
+import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fantasyidler.data.json.CookingRecipe
@@ -28,6 +29,7 @@ class InventoryViewModel @Inject constructor(
     private val json: Json,
 ) : ViewModel() {
 
+    @Immutable
     data class UiState(
         val coins: Long = 0L,
         /** item key → quantity, sorted by qty descending */

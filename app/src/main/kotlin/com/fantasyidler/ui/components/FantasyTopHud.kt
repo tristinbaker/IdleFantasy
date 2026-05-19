@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -14,12 +15,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,11 +30,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.PreviewLightDark
+import com.fantasyidler.R
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.ui.motion.pressScale
-import com.fantasyidler.ui.theme.GoldPrimary
+import com.fantasyidler.ui.theme.fantasy.FantasyPreviewSurface
+import com.fantasyidler.ui.theme.fantasy.LocalFantasyTokens
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatCoins
 import com.fantasyidler.util.toCountdown
@@ -67,21 +71,22 @@ fun FantasyTopHud(
     onSettings: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val tokens = LocalFantasyTokens.current
     // The Surface fills to the very top of the screen so its background colour
     // sits beneath the system status bar (clock/signal/battery) — visually a
     // single continuous bar. The inner Row's windowInsetsPadding(statusBars)
     // pushes the actual HUD content down past the system icons.
     Surface(
-        color = MaterialTheme.colorScheme.surface,
-        tonalElevation = 4.dp,
-        modifier = modifier.fillMaxWidth(),
+        color          = tokens.colors.surface,
+        tonalElevation = tokens.elevation.card,
+        modifier       = modifier.fillMaxWidth(),
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .windowInsetsPadding(WindowInsets.statusBars)
-                .height(56.dp)
-                .padding(horizontal = 12.dp),
+                .height(tokens.spacing.xxl + tokens.spacing.xl)
+                .padding(horizontal = tokens.spacing.m + tokens.spacing.s),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             LevelChip(
@@ -90,7 +95,7 @@ fun FantasyTopHud(
                 onClick = onProfile,
             )
 
-            Spacer(Modifier.width(8.dp))
+            Spacer(Modifier.width(tokens.spacing.m))
 
             CoinTap(coins = coins, onTap = onShop)
 
@@ -98,7 +103,7 @@ fun FantasyTopHud(
 
             HudSessionPill(session = activeSession, onTap = onSession)
 
-            Spacer(Modifier.width(8.dp))
+            Spacer(Modifier.width(tokens.spacing.m))
 
             HudGear(onTap = onSettings)
         }
@@ -110,33 +115,37 @@ private fun CoinTap(
     coins: Long,
     onTap: () -> Unit,
 ) {
+    val tokens = LocalFantasyTokens.current
     val interactionSource = remember { MutableInteractionSource() }
+    val cd = stringResource(R.string.hud_coins_cd)
     Surface(
-        shape = RoundedCornerShape(12.dp),
-        color = GoldPrimary.copy(alpha = 0.18f),
+        shape = tokens.shapes.button,
+        color = tokens.colors.primary.copy(alpha = 0.18f),
         modifier = Modifier
             .pressScale(interactionSource)
+            .defaultMinSize(minHeight = tokens.spacing.xxl + tokens.spacing.l)
+            .semantics { contentDescription = cd }
             .clickable(
                 interactionSource = interactionSource,
-                indication = LocalIndication.current,
-                onClick = onTap,
+                indication        = LocalIndication.current,
+                onClick           = onTap,
             ),
     ) {
         Row(
-            modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
+            modifier = Modifier.padding(horizontal = tokens.spacing.m + tokens.spacing.xs, vertical = tokens.spacing.s + tokens.spacing.xs),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
-                text = "🪙",
-                style = MaterialTheme.typography.labelLarge,
+                text  = "🪙",
+                style = tokens.typography.titleLarge,
             )
-            Spacer(Modifier.width(6.dp))
+            Spacer(Modifier.width(tokens.spacing.s + tokens.spacing.xs))
             AnimatedCounter(
-                value = coins,
-                format = { it.formatCoins() },
-                style = MaterialTheme.typography.labelLarge,
+                value      = coins,
+                format     = { it.formatCoins() },
+                style      = tokens.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
-                color = GoldPrimary,
+                color      = tokens.colors.primary,
             )
         }
     }
@@ -148,35 +157,39 @@ private fun HudSessionPill(
     onTap: () -> Unit,
 ) {
     val context = LocalContext.current
+    val tokens = LocalFantasyTokens.current
     val interactionSource = remember { MutableInteractionSource() }
 
     if (session == null) {
+        val idleCd = stringResource(R.string.hud_session_idle_cd)
         Surface(
-            shape = RoundedCornerShape(12.dp),
-            color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
+            shape = tokens.shapes.button,
+            color = tokens.colors.surfaceVariant.copy(alpha = 0.5f),
             modifier = Modifier
                 .pressScale(interactionSource)
+                .defaultMinSize(minHeight = tokens.spacing.xxl + tokens.spacing.l)
+                .semantics { contentDescription = idleCd }
                 .clickable(
                     interactionSource = interactionSource,
-                    indication = LocalIndication.current,
-                    onClick = onTap,
+                    indication        = LocalIndication.current,
+                    onClick           = onTap,
                 ),
         ) {
             Row(
-                modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
+                modifier = Modifier.padding(horizontal = tokens.spacing.m + tokens.spacing.xs, vertical = tokens.spacing.s + tokens.spacing.xs),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
-                    text = "Start a session",
-                    style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    text  = stringResource(R.string.hud_session_idle),
+                    style = tokens.typography.labelSmall,
+                    color = tokens.colors.onSurfaceMuted,
                 )
-                Spacer(Modifier.width(2.dp))
+                Spacer(Modifier.width(tokens.spacing.xs))
                 Icon(
-                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                    imageVector        = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                     contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.size(16.dp),
+                    tint               = tokens.colors.onSurfaceMuted,
+                    modifier           = Modifier.size(tokens.spacing.l),
                 )
             }
         }
@@ -197,52 +210,55 @@ private fun HudSessionPill(
     val skillLabel = if (session.skillName == "combat") "Combat"
                      else GameStrings.skillName(context, session.skillName)
     val secondsRemaining = ((endsAt - now) / 1_000L).coerceAtLeast(0L)
+    val activeCd = if (isDone) stringResource(R.string.hud_session_claim_cd, skillLabel)
+                   else stringResource(R.string.hud_session_active_cd, skillLabel)
 
     Surface(
-        shape = RoundedCornerShape(12.dp),
-        color = if (isDone) MaterialTheme.colorScheme.primaryContainer
-                else MaterialTheme.colorScheme.secondaryContainer,
+        shape = tokens.shapes.button,
+        color = if (isDone) tokens.colors.primary.copy(alpha = 0.22f)
+                else tokens.colors.secondaryContainer,
         modifier = Modifier
             .pressScale(interactionSource)
+            .defaultMinSize(minHeight = tokens.spacing.xxl + tokens.spacing.l)
+            .semantics { contentDescription = activeCd }
             .clickable(
                 interactionSource = interactionSource,
-                indication = LocalIndication.current,
-                onClick = onTap,
+                indication        = LocalIndication.current,
+                onClick           = onTap,
             ),
     ) {
         Row(
-            modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
+            modifier = Modifier.padding(horizontal = tokens.spacing.m + tokens.spacing.xs, vertical = tokens.spacing.s + tokens.spacing.xs),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
-                text = "$skillEmoji $skillLabel",
-                style = MaterialTheme.typography.labelMedium,
+                text       = "$skillEmoji $skillLabel",
+                style      = tokens.typography.labelSmall,
                 fontWeight = FontWeight.SemiBold,
-                color = if (isDone) MaterialTheme.colorScheme.onPrimaryContainer
-                        else MaterialTheme.colorScheme.onSecondaryContainer,
+                color      = tokens.colors.onSurface,
             )
-            Spacer(Modifier.width(8.dp))
+            Spacer(Modifier.width(tokens.spacing.m))
             if (isDone) {
                 Text(
-                    text = "Claim",
-                    style = MaterialTheme.typography.labelMedium,
+                    text       = stringResource(R.string.hud_session_claim),
+                    style      = tokens.typography.labelSmall,
                     fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onPrimaryContainer,
+                    color      = tokens.colors.primary,
                 )
-                Spacer(Modifier.width(2.dp))
+                Spacer(Modifier.width(tokens.spacing.xs))
                 Icon(
-                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                    imageVector        = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                     contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onPrimaryContainer,
-                    modifier = Modifier.size(16.dp),
+                    tint               = tokens.colors.primary,
+                    modifier           = Modifier.size(tokens.spacing.l),
                 )
             } else {
                 AnimatedCounter(
-                    value = secondsRemaining,
-                    format = { endsAt.toCountdown() },
-                    style = MaterialTheme.typography.labelMedium,
+                    value      = secondsRemaining,
+                    format     = { endsAt.toCountdown() },
+                    style      = tokens.typography.labelSmall,
                     fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onSecondaryContainer,
+                    color      = tokens.colors.onSurface,
                 )
             }
         }
@@ -251,28 +267,91 @@ private fun HudSessionPill(
 
 @Composable
 private fun HudGear(onTap: () -> Unit) {
+    val tokens = LocalFantasyTokens.current
     val interactionSource = remember { MutableInteractionSource() }
+    val cd = stringResource(R.string.hud_settings_cd)
     Surface(
-        shape = RoundedCornerShape(12.dp),
-        color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.4f),
+        shape = tokens.shapes.button,
+        color = tokens.colors.surfaceVariant.copy(alpha = 0.4f),
         modifier = Modifier
             .pressScale(interactionSource)
+            .defaultMinSize(minWidth = tokens.spacing.xxl + tokens.spacing.l, minHeight = tokens.spacing.xxl + tokens.spacing.l)
             .clickable(
                 interactionSource = interactionSource,
-                indication = LocalIndication.current,
-                onClick = onTap,
+                indication        = LocalIndication.current,
+                onClick           = onTap,
             ),
     ) {
         Box(
-            modifier = Modifier.padding(8.dp),
+            modifier         = Modifier.padding(tokens.spacing.m),
             contentAlignment = Alignment.Center,
         ) {
             Icon(
-                imageVector = Icons.Filled.Settings,
-                contentDescription = "Settings",
-                tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.size(20.dp),
+                imageVector        = Icons.Filled.Settings,
+                contentDescription = cd,
+                tint               = tokens.colors.onSurfaceMuted,
+                modifier           = Modifier.size(tokens.spacing.xl - tokens.spacing.xs),
             )
         }
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun PreviewFantasyTopHudIdle() {
+    FantasyPreviewSurface {
+        FantasyTopHud(
+            coins         = 12_345L,
+            combatLevel   = 27,
+            activeSession = null,
+            onProfile     = {},
+            onShop        = {},
+            onSession     = {},
+            onSettings    = {},
+        )
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun PreviewFantasyTopHudActiveSession() {
+    FantasyPreviewSurface {
+        FantasyTopHud(
+            coins         = 1_204_567L,
+            combatLevel   = 80,
+            activeSession = SkillSession(
+                sessionId = "preview",
+                skillName = "mining",
+                startedAt = 0L,
+                endsAt    = 600_000L,
+                completed = false,
+            ),
+            onProfile     = {},
+            onShop        = {},
+            onSession     = {},
+            onSettings    = {},
+        )
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun PreviewFantasyTopHudClaimable() {
+    FantasyPreviewSurface {
+        FantasyTopHud(
+            coins         = 999_999_999L,
+            combatLevel   = 126,
+            activeSession = SkillSession(
+                sessionId = "preview",
+                skillName = "fishing",
+                startedAt = 0L,
+                endsAt    = 1L,
+                completed = true,
+            ),
+            onProfile     = {},
+            onShop        = {},
+            onSession     = {},
+            onSettings    = {},
+        )
     }
 }

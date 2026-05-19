@@ -7,11 +7,13 @@ import android.net.Uri
 import android.os.Build
 import android.os.LocaleList
 import android.provider.Settings
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -26,31 +28,20 @@ import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Palette
 import androidx.compose.material.icons.filled.Save
 import androidx.compose.material.icons.filled.Tune
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.FilterChip
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
-import androidx.compose.ui.graphics.vector.ImageVector
-import com.fantasyidler.ui.components.DangerZone
-import com.fantasyidler.ui.components.IconDisk
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -59,17 +50,25 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.fantasyidler.ui.viewmodel.SettingsViewModel
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.compose.ui.unit.Dp
 import androidx.core.app.NotificationManagerCompat
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.BuildConfig
 import com.fantasyidler.R
+import com.fantasyidler.ui.components.foundation.ChunkyButton
+import com.fantasyidler.ui.components.foundation.ChunkyButtonVariant
+import com.fantasyidler.ui.components.foundation.ChunkyDialog
+import com.fantasyidler.ui.components.foundation.DangerZone
+import com.fantasyidler.ui.components.foundation.SettingsSectionHeader
+import com.fantasyidler.ui.theme.fantasy.FantasyPreviewSurface
+import com.fantasyidler.ui.theme.fantasy.LocalFantasyTokens
+import com.fantasyidler.ui.viewmodel.SettingsViewModel
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -82,6 +81,7 @@ fun SettingsScreen(
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
+    val tokens = LocalFantasyTokens.current
 
     val themePreference by viewModel.themePreference.collectAsState()
     var notificationsEnabled by remember { mutableStateOf(false) }
@@ -107,7 +107,8 @@ fun SettingsScreen(
         viewModel.importSave(jsonString) { success ->
             scope.launch {
                 snackbarHostState.showSnackbar(
-                    if (success) context.getString(R.string.settings_imported_ok) else context.getString(R.string.settings_imported_fail)
+                    if (success) context.getString(R.string.settings_imported_ok)
+                    else context.getString(R.string.settings_imported_fail)
                 )
             }
         }
@@ -118,48 +119,46 @@ fun SettingsScreen(
     }
 
     if (showResetConfirm1) {
-        AlertDialog(
+        ChunkyDialog(
+            title            = stringResource(R.string.reset_confirm1_title),
             onDismissRequest = { showResetConfirm1 = false },
-            title   = { Text(stringResource(R.string.reset_confirm1_title)) },
-            text    = { Text(stringResource(R.string.reset_confirm1_body)) },
-            confirmButton = {
-                Button(
+            body             = { Text(stringResource(R.string.reset_confirm1_body)) },
+            actions          = {
+                ChunkyButton(
+                    text    = stringResource(R.string.btn_cancel),
+                    onClick = { showResetConfirm1 = false },
+                    variant = ChunkyButtonVariant.Secondary,
+                )
+                ChunkyButton(
+                    text    = stringResource(R.string.settings_reset_btn),
                     onClick = { showResetConfirm1 = false; showResetConfirm2 = true },
-                    colors  = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error),
-                ) {
-                    Text(stringResource(R.string.settings_reset_btn))
-                }
+                    variant = ChunkyButtonVariant.Destructive,
+                )
             },
-            dismissButton = {
-                TextButton(onClick = { showResetConfirm1 = false }) {
-                    Text(stringResource(R.string.btn_cancel))
-                }
-            }
         )
     }
 
     if (showResetConfirm2) {
-        AlertDialog(
+        ChunkyDialog(
+            title            = stringResource(R.string.reset_confirm2_title),
             onDismissRequest = { showResetConfirm2 = false },
-            title   = { Text(stringResource(R.string.reset_confirm2_title)) },
-            text    = { Text(stringResource(R.string.reset_confirm2_body)) },
-            confirmButton = {
-                Button(
+            body             = { Text(stringResource(R.string.reset_confirm2_body)) },
+            actions          = {
+                ChunkyButton(
+                    text    = stringResource(R.string.btn_cancel),
+                    onClick = { showResetConfirm2 = false },
+                    variant = ChunkyButtonVariant.Secondary,
+                )
+                ChunkyButton(
+                    text    = stringResource(R.string.reset_confirm2_btn),
                     onClick = {
                         showResetConfirm2 = false
                         viewModel.resetProgression()
                         onBack()
                     },
-                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error),
-                ) {
-                    Text(stringResource(R.string.reset_confirm2_btn))
-                }
+                    variant = ChunkyButtonVariant.Destructive,
+                )
             },
-            dismissButton = {
-                TextButton(onClick = { showResetConfirm2 = false }) {
-                    Text(stringResource(R.string.btn_cancel))
-                }
-            }
         )
     }
 
@@ -168,13 +167,19 @@ fun SettingsScreen(
             TopAppBar(
                 title = { Text(stringResource(R.string.settings_title)) },
                 navigationIcon = {
-                    IconButton(onClick = onBack) {
+                    IconButton(
+                        onClick  = onBack,
+                        modifier = Modifier.defaultMinSize(
+                            minWidth  = tokens.touchTargetSize(),
+                            minHeight = tokens.touchTargetSize(),
+                        ),
+                    ) {
                         Icon(
-                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = null
+                            imageVector        = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.btn_back),
                         )
                     }
-                }
+                },
             )
         },
         snackbarHost = { SnackbarHost(snackbarHostState) },
@@ -183,11 +188,10 @@ fun SettingsScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .padding(16.dp)
+                .padding(tokens.spacing.l)
                 .verticalScroll(rememberScrollState()),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
+            verticalArrangement = Arrangement.spacedBy(tokens.spacing.m + tokens.spacing.s),
         ) {
-            // Appearance
             SettingsSectionHeader(
                 icon  = Icons.Filled.Palette,
                 title = stringResource(R.string.settings_appearance),
@@ -196,7 +200,7 @@ fun SettingsScreen(
                 title    = stringResource(R.string.settings_theme),
                 subtitle = stringResource(R.string.settings_theme_desc),
                 trailing = {
-                    Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                    Row(horizontalArrangement = Arrangement.spacedBy(tokens.spacing.s)) {
                         listOf(
                             "dark"   to stringResource(R.string.settings_theme_dark),
                             "light"  to stringResource(R.string.settings_theme_light),
@@ -205,25 +209,23 @@ fun SettingsScreen(
                             FilterChip(
                                 selected = themePreference == key,
                                 onClick  = { viewModel.setTheme(key) },
-                                label    = { Text(label, style = MaterialTheme.typography.labelSmall) },
+                                label    = { Text(label, style = tokens.typography.labelSmall) },
                             )
                         }
                     }
-                }
+                },
             )
 
-            // Language (API 33+ per-app locale override)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 LanguageSection(context)
             }
 
-            // Notifications
             SettingsSectionHeader(
                 icon  = Icons.Filled.Notifications,
                 title = stringResource(R.string.settings_notifications_header),
             )
             SettingsRow(
-                title = stringResource(R.string.settings_notifications),
+                title    = stringResource(R.string.settings_notifications),
                 subtitle = stringResource(R.string.settings_notifications_desc),
                 trailing = {
                     Switch(
@@ -232,14 +234,13 @@ fun SettingsScreen(
                             context.startActivity(
                                 Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
                                     putExtra(Settings.EXTRA_APP_PACKAGE, context.packageName)
-                                }
+                                },
                             )
-                        }
+                        },
                     )
-                }
+                },
             )
 
-            // General
             SettingsSectionHeader(
                 icon  = Icons.Filled.Tune,
                 title = stringResource(R.string.settings_general_header),
@@ -248,13 +249,14 @@ fun SettingsScreen(
                 title    = stringResource(R.string.settings_tutorial_title),
                 subtitle = stringResource(R.string.settings_tutorial_desc),
                 trailing = {
-                    OutlinedButton(onClick = { onReopenTutorial(); onBack() }) {
-                        Text(stringResource(R.string.settings_reopen))
-                    }
-                }
+                    ChunkyButton(
+                        text    = stringResource(R.string.settings_reopen),
+                        onClick = { onReopenTutorial(); onBack() },
+                        variant = ChunkyButtonVariant.Secondary,
+                    )
+                },
             )
 
-            // Save data
             SettingsSectionHeader(
                 icon  = Icons.Filled.Save,
                 title = stringResource(R.string.settings_save_data),
@@ -263,68 +265,65 @@ fun SettingsScreen(
                 title    = stringResource(R.string.settings_export),
                 subtitle = stringResource(R.string.settings_export_desc),
                 trailing = {
-                    OutlinedButton(onClick = { exportLauncher.launch("fantasyidler_save.json") }) {
-                        Text(stringResource(R.string.settings_export_btn))
-                    }
-                }
+                    ChunkyButton(
+                        text    = stringResource(R.string.settings_export_btn),
+                        onClick = { exportLauncher.launch("fantasyidler_save.json") },
+                        variant = ChunkyButtonVariant.Secondary,
+                    )
+                },
             )
             SettingsRow(
                 title    = stringResource(R.string.settings_import),
                 subtitle = stringResource(R.string.settings_import_desc),
                 trailing = {
-                    OutlinedButton(onClick = { importLauncher.launch("*/*") }) {
-                        Text(stringResource(R.string.settings_import_btn))
-                    }
-                }
+                    ChunkyButton(
+                        text    = stringResource(R.string.settings_import_btn),
+                        onClick = { importLauncher.launch("*/*") },
+                        variant = ChunkyButtonVariant.Secondary,
+                    )
+                },
             )
 
-            // About
             SettingsSectionHeader(
                 icon  = Icons.Filled.Info,
                 title = stringResource(R.string.settings_about),
             )
             SettingsRow(
-                title = stringResource(R.string.app_name),
-                subtitle = stringResource(R.string.format_version, BuildConfig.VERSION_NAME)
+                title    = stringResource(R.string.app_name),
+                subtitle = stringResource(R.string.format_version, BuildConfig.VERSION_NAME),
             )
             SettingsRow(
                 title    = stringResource(R.string.settings_source_code),
                 subtitle = stringResource(R.string.settings_source_url),
                 trailing = {
-                    OutlinedButton(
+                    ChunkyButton(
+                        text    = stringResource(R.string.settings_source_open),
                         onClick = {
                             context.startActivity(
-                                Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/tristinbaker/IdleFantasy"))
+                                Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/tristinbaker/IdleFantasy")),
                             )
-                        }
-                    ) {
-                        Text(stringResource(R.string.settings_source_open))
-                    }
-                }
+                        },
+                        variant = ChunkyButtonVariant.Secondary,
+                    )
+                },
             )
             Text(
-                text = stringResource(R.string.settings_foss_desc),
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(horizontal = 4.dp)
+                text     = stringResource(R.string.settings_foss_desc),
+                style    = tokens.typography.bodyMedium,
+                color    = tokens.colors.onSurfaceMuted,
+                modifier = Modifier.padding(horizontal = tokens.spacing.s),
             )
 
-            // Danger zone — reset progression sits in its own red-tinted block so
-            // it's visually impossible to confuse with a normal settings row.
             DangerZone(
                 title    = stringResource(R.string.settings_reset_title),
                 subtitle = stringResource(R.string.settings_reset_desc),
             ) {
-                Button(
-                    onClick = { showResetConfirm1 = true },
-                    colors  = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.error,
-                        contentColor   = MaterialTheme.colorScheme.onError,
-                    ),
+                ChunkyButton(
+                    text     = stringResource(R.string.settings_reset_btn),
+                    onClick  = { showResetConfirm1 = true },
                     modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Text(stringResource(R.string.settings_reset_btn))
-                }
+                    variant  = ChunkyButtonVariant.Destructive,
+                )
             }
         }
     }
@@ -334,6 +333,7 @@ fun SettingsScreen(
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
 private fun LanguageSection(context: Context) {
+    val tokens = LocalFantasyTokens.current
     val localeManager = context.getSystemService(LocaleManager::class.java)
     val currentTag = remember {
         val locales = localeManager.applicationLocales
@@ -368,8 +368,8 @@ private fun LanguageSection(context: Context) {
                     singleLine    = true,
                     modifier      = Modifier
                         .menuAnchor()
-                        .width(140.dp),
-                    textStyle     = MaterialTheme.typography.bodySmall,
+                        .width(tokens.spacing.xxl * 4 + tokens.spacing.l),
+                    textStyle     = tokens.typography.bodyMedium,
                 )
                 ExposedDropdownMenu(
                     expanded         = expanded,
@@ -388,59 +388,74 @@ private fun LanguageSection(context: Context) {
                     }
                 }
             }
-        }
+        },
     )
-}
-
-@Composable
-private fun SettingsSectionHeader(
-    icon: ImageVector,
-    title: String,
-) {
-    Row(
-        modifier = Modifier.padding(top = 12.dp, bottom = 4.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        IconDisk(imageVector = icon, contentDescription = null, size = 32.dp)
-        Spacer(Modifier.width(12.dp))
-        Text(
-            text       = title,
-            style      = MaterialTheme.typography.titleMedium,
-            fontWeight = FontWeight.Bold,
-            color      = MaterialTheme.colorScheme.onSurface,
-        )
-    }
 }
 
 @Composable
 private fun SettingsRow(
     title: String,
     subtitle: String,
-    trailing: @Composable (() -> Unit)? = null
+    trailing: @Composable (() -> Unit)? = null,
 ) {
+    val tokens = LocalFantasyTokens.current
     Row(
-        modifier = Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
+        modifier              = Modifier
+            .fillMaxWidth()
+            .defaultMinSize(minHeight = tokens.touchTargetSize()),
+        verticalAlignment     = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         Column(
             modifier = Modifier
                 .weight(1f)
-                .padding(end = if (trailing != null) 16.dp else 0.dp)
+                .padding(end = if (trailing != null) tokens.spacing.l else tokens.spacing.s),
         ) {
             Text(
-                text = title,
-                style = MaterialTheme.typography.bodyMedium,
-                fontWeight = FontWeight.Bold
+                text       = title,
+                style      = tokens.typography.bodyLarge,
+                fontWeight = FontWeight.Bold,
+                color      = tokens.colors.onSurface,
             )
             Text(
-                text = subtitle,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                text  = subtitle,
+                style = tokens.typography.bodyMedium,
+                color = tokens.colors.onSurfaceMuted,
             )
         }
-        if (trailing != null) {
-            trailing()
+        if (trailing != null) trailing()
+    }
+}
+
+// 48dp Material tap-target minimum, expressed through tokens (xxl + l = 32 + 16).
+private fun com.fantasyidler.ui.theme.fantasy.FantasyTokens.touchTargetSize(): Dp =
+    spacing.xxl + spacing.l
+
+@PreviewLightDark
+@Composable
+private fun PreviewSettingsRow() {
+    FantasyPreviewSurface {
+        SettingsRow(
+            title    = "Theme",
+            subtitle = "Choose your preferred colour scheme",
+        )
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun PreviewSettingsDangerZone() {
+    FantasyPreviewSurface {
+        DangerZone(
+            title    = "Reset Progression",
+            subtitle = "Erase all skills, items, quests, and coins",
+        ) {
+            ChunkyButton(
+                text     = "Reset",
+                onClick  = {},
+                modifier = Modifier.fillMaxWidth(),
+                variant  = ChunkyButtonVariant.Destructive,
+            )
         }
     }
 }

@@ -453,6 +453,16 @@
     <string name="character_race_halfling">Halfling</string>
     <string name="character_race_gnome">Gnome</string>
 
+    <!-- ===== TODO: translate — FantasyTopHud ===== -->
+    <string name="hud_coins_cd">Münzen. Tippen, um den Laden zu öffnen.</string>
+    <string name="hud_level_cd">Kampfstufe. Tippen, um Profil zu öffnen.</string>
+    <string name="hud_session_idle_cd">Keine aktive Sitzung. Tippen, um eine zu starten.</string>
+    <string name="hud_session_active_cd">Aktive Sitzung: %1$s. Tippen, um anzusehen.</string>
+    <string name="hud_session_claim_cd">Sitzung bereit zum Abholen: %1$s. Tippen, um einzusammeln.</string>
+    <string name="hud_settings_cd">Einstellungen öffnen</string>
+    <string name="hud_session_idle">Sitzung starten</string>
+    <string name="hud_session_claim">Abholen</string>
+
     <!-- ===== TODO: translate — OnboardingScreen ===== -->
     <string name="onboarding_sessions_title">Sessions</string>
     <string name="onboarding_sessions_desc">Tap any skill and start a training session. Sessions run in the background, even with the app closed. Come back to collect your loot and XP.</string>
