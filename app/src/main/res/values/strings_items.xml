@@ -223,9 +223,9 @@
     <string name="item_runite_battleaxe_desc">La mejor hacha de batalla disponible.</string>
 
     <!-- ===== Ranged weapons ===== -->
-    <string name="item_wooden_bow_name">Wooden Bow</string>
+    <string name="item_wooden_bow_name">Arco de madera</string>
     <string name="item_wooden_bow_desc">Un sencillo arco de madera. Bueno para entrenar el tiro con arco.</string>
-    <string name="item_oak_bow_name">Oak Bow</string>
+    <string name="item_oak_bow_name">Arco de roble</string>
     <string name="item_oak_bow_desc">Un arco fiable fabricado en madera de roble.</string>
 
     <!-- ===== Magic weapons ===== -->
@@ -251,33 +251,33 @@
     <string name="item_staff_of_blood_desc">Un poderoso bastón alimentado por magia de sangre.</string>
 
     <!-- ===== Armour — bronze ===== -->
-    <string name="item_bronze_helmet_name">Bronze Helmet</string>
+    <string name="item_bronze_helmet_name">Casco de Bronce</string>
     <string name="item_bronze_helmet_desc">Protección básica de bronce para la cabeza.</string>
-    <string name="item_bronze_platebody_name">Bronze Platebody</string>
+    <string name="item_bronze_platebody_name">Armadura de Bronce</string>
     <string name="item_bronze_platebody_desc">Armadura básica de bronce.</string>
-    <string name="item_bronze_platelegs_name">Bronze Platelegs</string>
+    <string name="item_bronze_platelegs_name">Grebas de Bronce</string>
     <string name="item_bronze_platelegs_desc">Protección básica de bronce para las piernas.</string>
-    <string name="item_bronze_shield_name">Bronze Shield</string>
+    <string name="item_bronze_shield_name">Escudo de Bronce</string>
     <string name="item_bronze_shield_desc">Un escudo básico de bronce.</string>
 
     <!-- Armour — iron -->
-    <string name="item_iron_helmet_name">Iron Helmet</string>
+    <string name="item_iron_helmet_name">Casco de Hierro</string>
     <string name="item_iron_helmet_desc">Protección de hierro para la cabeza.</string>
-    <string name="item_iron_platebody_name">Iron Platebody</string>
+    <string name="item_iron_platebody_name">Armadura de Hierro</string>
     <string name="item_iron_platebody_desc">Armadura de hierro.</string>
-    <string name="item_iron_platelegs_name">Iron Platelegs</string>
+    <string name="item_iron_platelegs_name">Grebas de Hierro</string>
     <string name="item_iron_platelegs_desc">Protección de hierro para las piernas.</string>
-    <string name="item_iron_shield_name">Iron Shield</string>
+    <string name="item_iron_shield_name">Escudo de Hierro</string>
     <string name="item_iron_shield_desc">Un escudo de hierro.</string>
 
     <!-- Armour — steel -->
-    <string name="item_steel_helmet_name">Steel Helmet</string>
+    <string name="item_steel_helmet_name">Casco de Acero</string>
     <string name="item_steel_helmet_desc">Un resistente casco de acero que protege la cabeza en combate.</string>
-    <string name="item_steel_platebody_name">Steel Platebody</string>
+    <string name="item_steel_platebody_name">Armadura de Acero</string>
     <string name="item_steel_platebody_desc">Una sólida armadura de acero diseñada para soportar fuertes golpes.</string>
-    <string name="item_steel_platelegs_name">Steel Platelegs.</string>
+    <string name="item_steel_platelegs_name">Grebas de Acero.</string>
     <string name="item_steel_platelegs_desc">Protección de acero reforzada para las piernas.</string>
-    <string name="item_steel_shield_name">Steel Shield</string>
+    <string name="item_steel_shield_name">Escudo de Acero</string>
     <string name="item_steel_shield_desc">Un escudo de acero</string>
 
     <!-- Armour — mithril -->
@@ -311,32 +311,32 @@
     <string name="item_runite_shield_desc">Un imponente escudo de runite capaz de detener ataques devastadores.</string>
 
     <!-- ===== Tools — pickaxes ===== -->
-    <string name="item_bronze_pickaxe_name">Bronze Pickaxe</string>
-    <string name="item_bronze_pickaxe_desc">A basic pickaxe for Mining.</string>
-    <string name="item_iron_pickaxe_name">Iron Pickaxe</string>
-    <string name="item_iron_pickaxe_desc">A reliable pickaxe for Mining.</string>
-    <string name="item_steel_pickaxe_name">Steel Pickaxe</string>
-    <string name="item_steel_pickaxe_desc">A sturdy pickaxe for Mining.</string>
-    <string name="item_mithril_pickaxe_name">Mithril Pickaxe</string>
-    <string name="item_mithril_pickaxe_desc">A lightweight magical pickaxe for Mining.</string>
-    <string name="item_adamantite_pickaxe_name">Adamantite Pickaxe</string>
-    <string name="item_adamantite_pickaxe_desc">An extremely hard pickaxe for Mining.</string>
-    <string name="item_runite_pickaxe_name">Runite Pickaxe</string>
-    <string name="item_runite_pickaxe_desc">The finest pickaxe available for Mining.</string>
+    <string name="item_bronze_pickaxe_name">Pico de Bronce</string>
+    <string name="item_bronze_pickaxe_desc">Un pico básico para minería.</string>
+    <string name="item_iron_pickaxe_name">Pico de Hierro</string>
+    <string name="item_iron_pickaxe_desc">Un pico confiable para minería.</string>
+    <string name="item_steel_pickaxe_name">Pico de Acero</string>
+    <string name="item_steel_pickaxe_desc">Un resistente pico de acero para minería.</string>
+    <string name="item_mithril_pickaxe_name">Pico de Mithril</string>
+    <string name="item_mithril_pickaxe_desc">Un ligero pico de Mithril imbuido con energía mágica.</string>
+    <string name="item_adamantite_pickaxe_name">Pico de Adamantita</string>
+    <string name="item_adamantite_pickaxe_desc">Un pico de adamantita extremadamente resistente.</string>
+    <string name="item_runite_pickaxe_name">Pico de Runite</string>
+    <string name="item_runite_pickaxe_desc">El mejor pico disponible, utilizado por los mineros más experimentados.</string>
 
     <!-- Tools — axes -->
-    <string name="item_bronze_axe_name">Bronze Axe</string>
-    <string name="item_bronze_axe_desc">A basic axe for Woodcutting.</string>
-    <string name="item_iron_axe_name">Iron Axe</string>
-    <string name="item_iron_axe_desc">A reliable axe for Woodcutting.</string>
-    <string name="item_steel_axe_name">Steel Axe</string>
-    <string name="item_steel_axe_desc">A sturdy axe for Woodcutting.</string>
-    <string name="item_mithril_axe_name">Mithril Axe</string>
-    <string name="item_mithril_axe_desc">A lightweight magical axe for Woodcutting.</string>
-    <string name="item_adamantite_axe_name">Adamantite Axe</string>
-    <string name="item_adamantite_axe_desc">An extremely hard axe for Woodcutting.</string>
-    <string name="item_runite_axe_name">Runite Axe</string>
-    <string name="item_runite_axe_desc">The finest axe available for Woodcutting.</string>
+    <string name="item_bronze_axe_name">Hacha de Bronce</string>
+    <string name="item_bronze_axe_desc">Un hacha básica para tala.</string>
+    <string name="item_iron_axe_name">Hacha de Hierro</string>
+    <string name="item_iron_axe_desc">Un hacha confiable para tala.</string>
+    <string name="item_steel_axe_name">Hacha de Acero</string>
+    <string name="item_steel_axe_desc">Una resistente hacha de acero para tala.</string>
+    <string name="item_mithril_axe_name">Hacha de Mithril</string>
+    <string name="item_mithril_axe_desc">Una ligera hacha de Mithril imbuida con energía mágica.</string>
+    <string name="item_adamantite_axe_name">Hacha de Adamantita</string>
+    <string name="item_adamantite_axe_desc">Un hacha de adamantita extremadamente resistente.</string>
+    <string name="item_runite_axe_name">Hacha de Runite</string>
+    <string name="item_runite_axe_desc">La mejor hacha disponible, utilizada por los leñadores más experimentados.</string>
 
     <!-- Tools — fishing rods -->
     <string name="item_bronze_fishing_rod_name">Bronze Fishing Rod</string>
@@ -353,33 +353,33 @@
     <string name="item_runite_fishing_rod_desc">The finest fishing rod available.</string>
 
     <!-- ===== Arrows ===== -->
-    <string name="item_bronze_arrow_name">Bronze Arrows</string>
-    <string name="item_bronze_arrow_desc">Basic arrows for ranged combat.</string>
-    <string name="item_iron_arrow_name">Iron Arrows</string>
-    <string name="item_iron_arrow_desc">Iron arrows for ranged combat.</string>
-    <string name="item_steel_arrow_name">Steel Arrows</string>
-    <string name="item_steel_arrow_desc">Steel arrows for ranged combat.</string>
-    <string name="item_mithril_arrow_name">Mithril Arrows</string>
-    <string name="item_mithril_arrow_desc">Mithril arrows for ranged combat.</string>
-    <string name="item_adamantite_arrow_name">Adamantite Arrows</string>
-    <string name="item_adamantite_arrow_desc">Adamantite arrows for ranged combat.</string>
+    <string name="item_bronze_arrow_name">Flechas de bronce</string>
+    <string name="item_bronze_arrow_desc">Flechas básicas para combate a distancia.</string>
+    <string name="item_iron_arrow_name">Flechas de hierro</string>
+    <string name="item_iron_arrow_desc">Flechas de hierro para combate a distancia.</string>
+    <string name="item_steel_arrow_name">Flechas de acero</string>
+    <string name="item_steel_arrow_desc">Flechas de acero para combate a distancia.</string>
+    <string name="item_mithril_arrow_name">Flechas de mithril</string>
+    <string name="item_mithril_arrow_desc">Flechas de Mithril imbuidas con energía mágica.</string>
+    <string name="item_adamantite_arrow_name">Flechas de adamantita</string>
+    <string name="item_adamantite_arrow_desc">Flechas de adamantita capaces de atravesar armaduras resistentes.</string>
     <string name="item_runite_arrow_name">Runite Arrows</string>
-    <string name="item_runite_arrow_desc">The finest arrows available.</string>
+    <string name="item_runite_arrow_desc">Las mejores flechas disponibles, utilizadas por arqueros legendarios.</string>
 
     <!-- Arrow components -->
-    <string name="item_arrow_shaft_name">Arrow Shafts</string>
-    <string name="item_arrow_shaft_desc">Wooden shafts used to fletch arrows.</string>
-    <string name="item_bronze_arrow_tips_name">Bronze Arrow Tips</string>
+    <string name="item_arrow_shaft_name">Astiles de flecha</string>
+    <string name="item_arrow_shaft_desc">Astiles de madera utilizados para fabricar flechas.</string>
+    <string name="item_bronze_arrow_tips_name">Puntas de flecha de bronce</string>
     <string name="item_bronze_arrow_tips_desc">Puntas de bronce utilizadas para fabricar flechas de bronce.</string>
-    <string name="item_iron_arrow_tips_name">Iron Arrow Tips</string>
+    <string name="item_iron_arrow_tips_name">Puntas de flecha de hierro</string>
     <string name="item_iron_arrow_tips_desc">Puntas de hierro utilizadas para fabricar flechas de hierro.</string>
-    <string name="item_steel_arrow_tips_name">Steel Arrow Tips</string>
+    <string name="item_steel_arrow_tips_name">Puntas de flecha de acero</string>
     <string name="item_steel_arrow_tips_desc">Puntas de acero utilizadas para fabricar flechas de acero.</string>
-    <string name="item_mithril_arrow_tips_name">Mithril Arrow Tips</string>
+    <string name="item_mithril_arrow_tips_name">Puntas de flecha de mithril</string>
     <string name="item_mithril_arrow_tips_desc">Puntas de Mithril utilizadas para fabricar flechas de Mithril.</string>
-    <string name="item_adamantite_arrow_tips_name">Adamantite Arrow Tips</string>
+    <string name="item_adamantite_arrow_tips_name">Puntas de flecha de adamantita</string>
     <string name="item_adamantite_arrow_tips_desc">Puntas de adamantita utilizadas para fabricar flechas de adamantita.</string>
-    <string name="item_runite_arrow_tips_name">Runite Arrow Tips</string>
+    <string name="item_runite_arrow_tips_name">Puntas de flecha de runite</string>
     <string name="item_runite_arrow_tips_desc">Puntas de Runite utilizadas para fabricar flechas de Runite.</string>
 
     <!-- ===== Jewellery — plain ===== -->
