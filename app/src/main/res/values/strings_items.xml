@@ -370,17 +370,17 @@
     <string name="item_arrow_shaft_name">Arrow Shafts</string>
     <string name="item_arrow_shaft_desc">Wooden shafts used to fletch arrows.</string>
     <string name="item_bronze_arrow_tips_name">Bronze Arrow Tips</string>
-    <string name="item_bronze_arrow_tips_desc">Bronze tips for fletching bronze arrows.</string>
+    <string name="item_bronze_arrow_tips_desc">Puntas de bronce utilizadas para fabricar flechas de bronce.</string>
     <string name="item_iron_arrow_tips_name">Iron Arrow Tips</string>
-    <string name="item_iron_arrow_tips_desc">Iron tips for fletching iron arrows.</string>
+    <string name="item_iron_arrow_tips_desc">Puntas de hierro utilizadas para fabricar flechas de hierro.</string>
     <string name="item_steel_arrow_tips_name">Steel Arrow Tips</string>
-    <string name="item_steel_arrow_tips_desc">Steel tips for fletching steel arrows.</string>
+    <string name="item_steel_arrow_tips_desc">Puntas de acero utilizadas para fabricar flechas de acero.</string>
     <string name="item_mithril_arrow_tips_name">Mithril Arrow Tips</string>
-    <string name="item_mithril_arrow_tips_desc">Mithril tips for fletching mithril arrows.</string>
+    <string name="item_mithril_arrow_tips_desc">Puntas de Mithril utilizadas para fabricar flechas de Mithril.</string>
     <string name="item_adamantite_arrow_tips_name">Adamantite Arrow Tips</string>
-    <string name="item_adamantite_arrow_tips_desc">Adamantite tips for fletching adamantite arrows.</string>
+    <string name="item_adamantite_arrow_tips_desc">Puntas de adamantita utilizadas para fabricar flechas de adamantita.</string>
     <string name="item_runite_arrow_tips_name">Runite Arrow Tips</string>
-    <string name="item_runite_arrow_tips_desc">Runite tips for fletching runite arrows.</string>
+    <string name="item_runite_arrow_tips_desc">Puntas de Runite utilizadas para fabricar flechas de Runite.</string>
 
     <!-- ===== Jewellery — plain ===== -->
     <string name="item_silver_ring_name">Silver Ring</string>
@@ -570,7 +570,7 @@
     <string name="item_steel_hoe_name">Azada de Acero</string>
     <string name="item_mithril_hoe_name">Azada de Mithril</string>
     <string name="item_adamantite_hoe_name">Azada de Adamantita</string>
-    <string name="item_runite_hoe_name">Azada de Runita</string>
+    <string name="item_runite_hoe_name">Azada de Runite</string>
 
     <!-- Herblore potions -->
     <string name="item_attack_brew_name">Brebaje de Ataque</string>
