@@ -27,7 +27,7 @@
     <!-- Translator note: %1$d = HP restored -->
     <string name="game_combat_food_eaten">Comiste comida — recuperaste %1$d HP.</string>
     <string name="game_combat_player_died">Has sido derrotado.</string>
-    <string name="game_dungeon_cleared">Mazmorra completada!</string>
+    <string name="game_dungeon_cleared">Dungeon completada!</string>
     <!-- Translator note: %1$s = dungeon display name -->
     <string name="game_dungeon_summary">%1$s completado.</string>
 
