@@ -441,19 +441,19 @@
     <string name="item_platinum_diamond_necklace_desc">Un collar de platino engastado con un diamante.</string>
 
     <!-- ===== Miscellaneous drops ===== -->
-    <string name="item_ashes_name">Ashes</string>
+    <string name="item_ashes_name">Cenizas</string>
     <string name="item_ashes_desc">Restos quemados de troncos comunes. Dispersa en la habilidad Oración para obtener experiencia adicional en Oración.</string>
-    <string name="item_oak_ashes_name">Oak Ashes</string>
+    <string name="item_oak_ashes_name">Cenizas de roble</string>
     <string name="item_oak_ashes_desc">Restos quemados de troncos de roble. Dispersarlos proporciona más puntos de experiencia de Oración que las cenizas normales.</string>
-    <string name="item_willow_ashes_name">Willow Ashes</string>
+    <string name="item_willow_ashes_name">Cenizas de sauce</string>
     <string name="item_willow_ashes_desc">Restos quemados de troncos de sauce. Dispersa para obtener puntos de experiencia en Oración.</string>
-    <string name="item_maple_ashes_name">Maple Ashes</string>
+    <string name="item_maple_ashes_name">Cenizas de arce</string>
     <string name="item_maple_ashes_desc">Restos quemados de troncos de arce. Dispersar para obtener XP de oración.</string>
-    <string name="item_yew_ashes_name">Yew Ashes</string>
+    <string name="item_yew_ashes_name">Cenizas de tejo</string>
     <string name="item_yew_ashes_desc">Restos quemados de troncos de tejo. Dispersarlos proporciona una cantidad significativa de XP de Oración.</string>
-    <string name="item_magic_ashes_name">Magic Ashes</string>
+    <string name="item_magic_ashes_name">Cenizas mágicas</string>
     <string name="item_magic_ashes_desc">Restos quemados de troncos mágicos. Dispersa para obtener una cantidad considerable de XP de Oración.</string>
-    <string name="item_redwood_ashes_name">Redwood Ashes</string>
+    <string name="item_redwood_ashes_name">Cenizas de secuoya</string>
     <string name="item_redwood_ashes_desc">Restos quemados de troncos de secuoya. Dispersarlos proporciona la mayor cantidad de XP de Oración que cualquier otra ceniza.</string>
     <string name="item_bones_name">Bones</string>
     <string name="item_bones_desc">Huesos de una criatura pequeña. Enterrar para obtener XP de Oración.</string>
