@@ -76,8 +76,7 @@ object CombatSimulator {
 
             when (combatStyle) {
                 "ranged" -> {
-                    val effStr   = effRanged + arrowStrengthBonus
-                    playerMaxHit = max(1, 1 + effStr * (arrowStrengthBonus + 64) / 640)
+                    playerMaxHit = maxHit(effRanged, arrowStrengthBonus)
                     playerEffAtk = effRanged + weaponAttackBonus
                     enemyDefStat = enemy.defensiveStats.rangedDefense
                 }
@@ -87,8 +86,7 @@ object CombatSimulator {
                     enemyDefStat = enemy.defensiveStats.magicDefense
                 }
                 else -> {
-                    val effStr   = effStrength + weaponStrengthBonus
-                    playerMaxHit = max(1, 1 + effStr * (weaponStrengthBonus + 64) / 640)
+                    playerMaxHit = maxHit(effStrength, weaponStrengthBonus)
                     playerEffAtk = effAttack + weaponAttackBonus
                     enemyDefStat = enemy.defensiveStats.attackDefense
                 }
@@ -102,8 +100,7 @@ object CombatSimulator {
             }.coerceIn(0.15, 0.95)
 
             // --- Enemy combat stats ---
-            val enemyEffStr    = enemy.combatStats.strengthLevel + enemy.combatStats.strengthBonus
-            val enemyMaxHit    = max(1, 1 + enemyEffStr * (enemy.combatStats.strengthBonus + 64) / 640)
+            val enemyMaxHit    = maxHit(enemy.combatStats.strengthLevel, enemy.combatStats.strengthBonus)
             val enemyEffAtk    = enemy.combatStats.attackLevel + enemy.combatStats.attackBonus
             val enemyHitChance = when {
                 enemyEffAtk > effDefence ->
@@ -119,8 +116,8 @@ object CombatSimulator {
             val frameEnemyHits  = mutableListOf<Int>()
 
             repeat(TICKS_PER_FRAME) {
-                // Player attacks
-                val pDmg = if (Random.nextDouble() < playerHitChance) Random.nextInt(0, playerMaxHit + 1) else 0
+                // Player attacks (successful accuracy roll always deals ≥1)
+                val pDmg = if (Random.nextDouble() < playerHitChance) Random.nextInt(1, playerMaxHit + 1) else 0
                 framePlayerHits += pDmg
                 enemyHp -= pDmg
                 if (enemyHp <= 0) {
@@ -144,8 +141,8 @@ object CombatSimulator {
                     enemyHp  = enemy.hp
                 }
 
-                // Enemy attacks
-                val eDmg = if (Random.nextDouble() < enemyHitChance) Random.nextInt(0, enemyMaxHit + 1) else 0
+                // Enemy attacks (successful accuracy roll always deals ≥1)
+                val eDmg = if (Random.nextDouble() < enemyHitChance) Random.nextInt(1, enemyMaxHit + 1) else 0
                 frameEnemyHits += eDmg
                 currentHp      -= eDmg
 
@@ -203,6 +200,20 @@ object CombatSimulator {
     // Private helpers
     // ------------------------------------------------------------------
 
+    /**
+     * Max hit per swing. Equipment bonus is the dominant lever at low levels —
+     * a +8 strength weapon at level 1 should be visibly meaningful, not a wash.
+     *
+     *     level  bonus  maxHit
+     *       1      0      1
+     *       1      8      5
+     *      20     25     18
+     *      50     50     38
+     *      99    100     75
+     */
+    private fun maxHit(skillLevel: Int, strengthBonus: Int): Int =
+        max(1, 1 + (skillLevel + strengthBonus * 2) / 4)
+
     private fun distributeXp(totalXp: Long, style: String): Map<String, Long> {
         val hp   = (totalXp * 0.15).toLong()
         val def  = (totalXp * 0.15).toLong()
@@ -243,8 +254,7 @@ object CombatSimulator {
         for (spawn in dungeon.enemySpawns) {
             val enemy = enemies[spawn.enemy] ?: continue
             val weight      = spawn.weight.toDouble() / totalWeight
-            val enemyEffStr = enemy.combatStats.strengthLevel + enemy.combatStats.strengthBonus
-            val enemyMaxHit = max(1, 1 + enemyEffStr * (enemy.combatStats.strengthBonus + 64) / 640)
+            val enemyMaxHit = maxHit(enemy.combatStats.strengthLevel, enemy.combatStats.strengthBonus)
             val enemyEffAtk = enemy.combatStats.attackLevel + enemy.combatStats.attackBonus
             val enemyHit    = when {
                 enemyEffAtk > playerDefence -> 1.0 - playerDefence / (2.0 * enemyEffAtk.coerceAtLeast(1))
