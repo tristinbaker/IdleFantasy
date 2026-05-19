@@ -17,7 +17,7 @@
     <string name="item_mithril_ore_desc">Un mineral raro con propiedades mágicas.</string>
     <string name="item_adamantite_ore_name">Mineral de adamantita</string>
     <string name="item_adamantite_ore_desc">Mineral extremadamente duro y muy raro.</string>
-    <string name="item_runite_ore_name">Mineral de runita</string>
+    <string name="item_runite_ore_name">Mineral de runite</string>
     <string name="item_runite_ore_desc">El mineral más raro que se puede extraer, utilizado para los equipos más resistentes.</string>
     <string name="item_rune_essence_name">Esencia rúnica</string>
     <string name="item_rune_essence_desc">Piedra mágica en bruto utilizada para crear todo tipo de runas.</string>
@@ -39,7 +39,7 @@
     <string name="item_adamantite_bar_desc">Una barra de metal extraordinariamente dura.</string>
     <string name="item_platinum_bar_name">Barra de platino</string>
     <string name="item_platinum_bar_desc">Una barra de platino rara y brillante para joyería de alta gama.</string>
-    <string name="item_runite_bar_name">Barra de runita</string>
+    <string name="item_runite_bar_name">Barra de runite</string>
     <string name="item_runite_bar_desc">La barra de metal fundible más resistente.</string>
 
     <!-- ===== Gems ===== -->
@@ -384,17 +384,17 @@
 
     <!-- ===== Jewellery — plain ===== -->
     <string name="item_silver_ring_name">Silver Ring</string>
-    <string name="item_silver_ring_desc">A plain silver ring.</string>
+    <string name="item_silver_ring_desc">Un sencillo anillo de plata.</string>
     <string name="item_silver_necklace_name">Silver Necklace</string>
-    <string name="item_silver_necklace_desc">A plain silver necklace.</string>
+    <string name="item_silver_necklace_desc">Un sencillo collar de plata.</string>
     <string name="item_gold_ring_name">Gold Ring</string>
-    <string name="item_gold_ring_desc">A plain gold ring.</string>
+    <string name="item_gold_ring_desc">Un sencillo anillo de oro.</string>
     <string name="item_gold_necklace_name">Gold Necklace</string>
-    <string name="item_gold_necklace_desc">A plain gold necklace.</string>
+    <string name="item_gold_necklace_desc">Un sencillo collar de oro.</string>
     <string name="item_platinum_ring_name">Platinum Ring</string>
-    <string name="item_platinum_ring_desc">A plain platinum ring.</string>
+    <string name="item_platinum_ring_desc">Un elegante anillo de platino.</string>
     <string name="item_platinum_necklace_name">Platinum Necklace</string>
-    <string name="item_platinum_necklace_desc">A plain platinum necklace.</string>
+    <string name="item_platinum_necklace_desc">Un elegante collar de platino.</string>
 
     <!-- Jewellery — sapphire -->
     <string name="item_silver_sapphire_ring_name">Silver Sapphire Ring</string>
