@@ -4,46 +4,46 @@
     <!-- Translator note: quest names are short titles; objectives are action sentences. -->
 
     <!-- Mining -->
-    <string name="quest_mining_1_name">Mining I</string>
-    <string name="quest_mining_1_objective">Mine 500 Copper Ore</string>
-    <string name="quest_mining_2_name">Mining II</string>
-    <string name="quest_mining_2_objective">Mine 750 Iron Ore</string>
-    <string name="quest_mining_3_name">Mining III</string>
-    <string name="quest_mining_3_objective">Mine 1100 Coal</string>
-    <string name="quest_mining_4_name">Mining IV</string>
-    <string name="quest_mining_4_objective">Mine 1650 Mithril Ore</string>
-    <string name="quest_mining_5_name">Mining V</string>
-    <string name="quest_mining_5_objective">Mine 2450 Adamantite Ore</string>
-    <string name="quest_mining_6_name">Mining VI</string>
-    <string name="quest_mining_6_objective">Mine 3650 Runite Ore</string>
+    <string name="quest_mining_1_name">Minería I</string>
+    <string name="quest_mining_1_objective">Mina 500 Copper Ore</string>
+    <string name="quest_mining_2_name">Minería II</string>
+    <string name="quest_mining_2_objective">Mina 750 Iron Ore</string>
+    <string name="quest_mining_3_name">Minería III</string>
+    <string name="quest_mining_3_objective">Mina 1100 Carbon</string>
+    <string name="quest_mining_4_name">Minería IV</string>
+    <string name="quest_mining_4_objective">Mina 1650 Mithril Ore</string>
+    <string name="quest_mining_5_name">Minería V</string>
+    <string name="quest_mining_5_objective">Mina 2450 Adamantite Ore</string>
+    <string name="quest_mining_6_name">Minería VI</string>
+    <string name="quest_mining_6_objective">Mina 3650 Runite Ore</string>
 
     <!-- Woodcutting -->
-    <string name="quest_woodcutting_1_name">Woodcutting I</string>
-    <string name="quest_woodcutting_1_objective">Cut 500 Logs</string>
-    <string name="quest_woodcutting_2_name">Woodcutting II</string>
-    <string name="quest_woodcutting_2_objective">Cut 750 Oak Logs</string>
-    <string name="quest_woodcutting_3_name">Woodcutting III</string>
-    <string name="quest_woodcutting_3_objective">Cut 1100 Willow Logs</string>
-    <string name="quest_woodcutting_4_name">Woodcutting IV</string>
-    <string name="quest_woodcutting_4_objective">Cut 1650 Maple Logs</string>
-    <string name="quest_woodcutting_5_name">Woodcutting V</string>
-    <string name="quest_woodcutting_5_objective">Cut 2450 Yew Logs</string>
-    <string name="quest_woodcutting_6_name">Woodcutting VI</string>
-    <string name="quest_woodcutting_6_objective">Cut 3650 Magic Logs</string>
+    <string name="quest_woodcutting_1_name">Tala de árboles I</string>
+    <string name="quest_woodcutting_1_objective">Corta 500 Logs</string>
+    <string name="quest_woodcutting_2_name">Tala de árboles II</string>
+    <string name="quest_woodcutting_2_objective">Corta 750 Oak Logs</string>
+    <string name="quest_woodcutting_3_name">Tala de árboles III</string>
+    <string name="quest_woodcutting_3_objective">Corta 1100 Willow Logs</string>
+    <string name="quest_woodcutting_4_name">Tala de árboles IV</string>
+    <string name="quest_woodcutting_4_objective">Corta 1650 Maple Logs</string>
+    <string name="quest_woodcutting_5_name">Tala de árboles V</string>
+    <string name="quest_woodcutting_5_objective">Corta 2450 Yew Logs</string>
+    <string name="quest_woodcutting_6_name">Tala de árboles VI</string>
+    <string name="quest_woodcutting_6_objective">Corta 3650 Magic Logs</string>
 
     <!-- Fishing -->
-    <string name="quest_fishing_1_name">Fishing I</string>
-    <string name="quest_fishing_1_objective">Catch 500 fish</string>
-    <string name="quest_fishing_2_name">Fishing II</string>
-    <string name="quest_fishing_2_objective">Catch 750 fish</string>
-    <string name="quest_fishing_3_name">Fishing III</string>
-    <string name="quest_fishing_3_objective">Catch 1100 fish</string>
-    <string name="quest_fishing_4_name">Fishing IV</string>
-    <string name="quest_fishing_4_objective">Catch 1650 fish</string>
-    <string name="quest_fishing_5_name">Fishing V</string>
-    <string name="quest_fishing_5_objective">Catch 2450 fish</string>
-    <string name="quest_fishing_6_name">Fishing VI</string>
-    <string name="quest_fishing_6_objective">Catch 3650 fish</string>
+    <string name="quest_fishing_1_name">Pesca I</string>
+    <string name="quest_fishing_1_objective">Atrapa 500 peces</string>
+    <string name="quest_fishing_2_name">Pesca II</string>
+    <string name="quest_fishing_2_objective">Atrapa 750 peces</string>
+    <string name="quest_fishing_3_name">Pesca III</string>
+    <string name="quest_fishing_3_objective">Atrapa 1100 peces</string>
+    <string name="quest_fishing_4_name">Pesca IV</string>
+    <string name="quest_fishing_4_objective">Atrapa 1650 peces</string>
+    <string name="quest_fishing_5_name">Pesca V</string>
+    <string name="quest_fishing_5_objective">Atrapa 2450 peces</string>
+    <string name="quest_fishing_6_name">Pesca VI</string>
+    <string name="quest_fishing_6_objective">Atrapa 3650 peces</string>
 
     <!-- Smithing -->
     <string name="quest_smithing_1_name">Smithing I</string>
