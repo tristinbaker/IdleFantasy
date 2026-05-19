@@ -389,7 +389,7 @@
 
     <!-- ===== SkillsScreen ===== -->
     <!-- Translator note: %1$d = session duration in minutes -->
-    <string name="skills_session_duration">Session: %1$dm</string>
+    <string name="skills_session_duration">Sesion: %1$dm</string>
     <string name="skills_only_craftable">Only craftable</string>
     <string name="skills_filter_all">All</string>
     <string name="skills_add_to_queue">Add to Session Queue</string>
@@ -409,40 +409,40 @@
     <string name="skills_bone_selected">%1$d XP each  •  %2$d available</string>
     <!-- Translator note: %1$d = total XP -->
     <string name="skills_xp_total">+%1$d XP total</string>
-    <string name="skills_no_essence">No Rune Essence in inventory — mine some first</string>
-    <string name="skills_no_runes">No rune types unlocked yet</string>
+    <string name="skills_no_essence">No hay esencia rúnica en el inventario - primero extrae un poco.</string>
+    <string name="skills_no_runes">Aún no se han desbloqueado tipos de runas.</string>
     <!-- Translator note: %1$d = essence quantity -->
-    <string name="skills_essence_qty">%1$d Rune Essence in inventory</string>
+    <string name="skills_essence_qty">%1$d Esencia rúnica en el inventario</string>
     <!-- Translator note: %1$d = XP per rune, %2$d = level required -->
-    <string name="skills_rune_desc">%1$d XP/rune  •  Lv. %2$d</string>
+    <string name="skills_rune_desc">%1$d XP/runa  •  Lv. %2$d</string>
     <!-- Translator note: %1$d = XP per rune, %2$d = essence available -->
-    <string name="skills_rune_selected">%1$d XP/rune  •  %2$d essence available</string>
+    <string name="skills_rune_selected">%1$d XP/runa  •  %2$d esencia disponible</string>
     <!-- Translator note: %1$d = level reached -->
     <string name="skills_level_reached">Level %1$d reached!</string>
     <string name="skills_no_logs">No logs in inventory</string>
     <!-- Translator note: %1$d = level required, %2$s = XP per log -->
     <string name="skills_log_desc">Lv. %1$d  •  %2$s XP/log</string>
     <!-- Translator note: %1$d = required level, %2$s = skill name, %3$d = player level, %4$s = skill name again -->
-    <string name="skills_req_with_have">Requires %1$d %2$s (You have %3$d %4$s)</string>
+    <string name="skills_req_with_have">Requiere %1$d %2$s (Tienes %3$d %4$s)</string>
 
     <!-- ===== ShopScreen ===== -->
-    <string name="shop_active">ACTIVE</string>
-    <string name="shop_sell_junk">Sell Junk</string>
-    <string name="shop_sell_old_gear">Sell Old Gear</string>
-    <string name="shop_equipped_label">(equipped)</string>
+    <string name="shop_active">ACTIVO</string>
+    <string name="shop_sell_junk">Vender chatarra</string>
+    <string name="shop_sell_old_gear">Vende equipo viejo</string>
+    <string name="shop_equipped_label">(equipado)</string>
     <!-- Translator note: %1$d = quantity -->
-    <string name="shop_qty_in_inv">×%1$d in inventory</string>
+    <string name="shop_qty_in_inv">×%1$d en inventario</string>
     <!-- Translator note: %1$s = formatted coin amount -->
-    <string name="shop_price_each">%1$s coins ea.</string>
+    <string name="shop_price_each">%1$s monedas cada una.</string>
     <!-- Translator note: %1$s = item name -->
-    <string name="shop_buy_prefix">Buy: %1$s</string>
-    <string name="shop_sell_prefix">Sell: %1$s</string>
+    <string name="shop_buy_prefix">Comprar: %1$s</string>
+    <string name="shop_sell_prefix">Vender: %1$s</string>
     <!-- Translator note: %1$s = formatted coin amount -->
-    <string name="shop_price_each_long">%1$s coins each</string>
-    <string name="shop_total_cost">Total cost</string>
-    <string name="shop_youll_receive">You\'ll receive</string>
+    <string name="shop_price_each_long">%1$s monedas cada una</string>
+    <string name="shop_total_cost">Costo total</string>
+    <string name="shop_youll_receive">Recibirás</string>
     <!-- Translator note: %1$s = formatted coin amount -->
-    <string name="shop_total_amount">%1$s coins</string>
+    <string name="shop_total_amount">%1$s monedas</string>
 
     <!-- ===== CraftingScreen ===== -->
     <string name="crafting_no_mats">No mats</string>
@@ -458,26 +458,26 @@
 
     <!-- ===== FarmingScreen ===== -->
     <!-- Translator note: %1$s = crop name -->
-    <string name="farming_harvested">Harvested %1$s</string>
+    <string name="farming_harvested">Cosechado %1$s</string>
     <!-- Translator note: %1$d = farming level -->
     <string name="farming_title">Farming — Level %1$d</string>
     <!-- Translator note: %1$d = patch count -->
     <string name="farming_patches">%1$d patches unlocked</string>
     <string name="farming_clear_patch">Clear Patch</string>
-    <string name="farming_clear_desc">Remove the crop without any reward?</string>
+    <string name="farming_clear_desc">Retirar la cosecha sin obtener ninguna recompensa?</string>
 
     <!-- ===== QuestsScreen ===== -->
-    <string name="quests_none_in_category">No quests in this category.</string>
+    <string name="quests_none_in_category">No hay misiones en esta categoría..</string>
 
     <!-- ===== CharacterSetupSheet ===== -->
-    <string name="character_create_title">Create Your Character</string>
-    <string name="character_edit_title">Edit Character</string>
-    <string name="character_name_label">Character Name</string>
+    <string name="character_create_title">Crea tu personaje</string>
+    <string name="character_edit_title">Editar personaje</string>
+    <string name="character_name_label">Nombre del personaje</string>
     <string name="character_gender">Gender</string>
     <string name="character_gender_male">Male</string>
     <string name="character_gender_female">Female</string>
-    <string name="character_gender_other">Other</string>
-    <string name="character_race">Race</string>
+    <string name="character_gender_other">Otro</string>
+    <string name="character_race">Raza</string>
     <string name="character_race_human">Human</string>
     <string name="character_race_elf">Elf</string>
     <string name="character_race_dwarf">Dwarf</string>
@@ -486,13 +486,13 @@
     <string name="character_race_gnome">Gnome</string>
 
     <!-- ===== OnboardingScreen ===== -->
-    <string name="onboarding_sessions_title">Sessions</string>
-    <string name="onboarding_sessions_desc">Tap any skill and start a training session. Sessions run in the background, even with the app closed. Come back to collect your loot and XP.</string>
-    <string name="onboarding_progress_title">Work Your Way Up</string>
-    <string name="onboarding_progress_desc">Mine ore to smelt bars, then forge better weapons and armour. Equip stronger gear to tackle harder dungeons and bosses. Better tools speed up gathering, and higher-tier equipment unlocks content that weaker gear can\'t survive.</string>
+    <string name="onboarding_sessions_title">Sesiones</string>
+    <string name="onboarding_sessions_desc">Toca cualquier habilidad e inicia una sesión de entrenamiento. Las sesiones continúan en segundo plano, incluso con la app cerrada. Vuelve para recoger tu botín y XP</string>
+    <string name="onboarding_progress_title">Progresa paso a paso</string>
+    <string name="onboarding_progress_desc">Mina mineral para fundir barras y forjar mejores armas y armaduras. Equipa mejor equipo para enfrentarte a mazmorras y jefes más difíciles. Las mejores herramientas aceleran la recolección y el equipo de alto nivel desbloquea contenido que el equipo débil no puede sobrevivir.</string>
     <string name="onboarding_quests_title">Quests &amp; Pets</string>
-    <string name="onboarding_quests_desc">Complete quests to earn XP rewards. Rare pets can drop while training skills and provide permanent XP boosts.</string>
-    <string name="onboarding_welcome_desc">An idle RPG inspired by classic MMORPGs. Train skills, fight dungeons, and craft gear. All offline, no accounts, no ads.</string>
+    <string name="onboarding_quests_desc">Completa quests para ganar XP. Las mascotas raras pueden aparecer mientras entrenas habilidades y proporcionan aumentos permanentes de XP.</string>
+    <string name="onboarding_welcome_desc">Un RPG idle inspirado en MMORPGs clásicos. Entrena habilidades, enfréntate a mazmorras y crea equipo. Todo offline, sin cuentas ni anuncios.</string>
 
     <!-- Quantity picker quick buttons -->
     <string name="qty_max">Max</string>
