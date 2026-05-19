@@ -5,17 +5,17 @@
 
     <!-- Mining -->
     <string name="quest_mining_1_name">Minería I</string>
-    <string name="quest_mining_1_objective">Mina 500 Copper Ore</string>
+    <string name="quest_mining_1_objective">Mina 500 Mineral de Cobre</string>
     <string name="quest_mining_2_name">Minería II</string>
-    <string name="quest_mining_2_objective">Mina 750 Iron Ore</string>
+    <string name="quest_mining_2_objective">Mina 750 Mineral de Hierro</string>
     <string name="quest_mining_3_name">Minería III</string>
     <string name="quest_mining_3_objective">Mina 1100 Carbon</string>
     <string name="quest_mining_4_name">Minería IV</string>
-    <string name="quest_mining_4_objective">Mina 1650 Mithril Ore</string>
+    <string name="quest_mining_4_objective">Mina 1650 Mineral de Mithril</string>
     <string name="quest_mining_5_name">Minería V</string>
-    <string name="quest_mining_5_objective">Mina 2450 Adamantite Ore</string>
+    <string name="quest_mining_5_objective">Mina 2450 Mineral de Adamantita</string>
     <string name="quest_mining_6_name">Minería VI</string>
-    <string name="quest_mining_6_objective">Mina 3650 Runite Ore</string>
+    <string name="quest_mining_6_objective">Mina 3650 Mineral de Runita</string>
 
     <!-- Woodcutting -->
     <string name="quest_woodcutting_1_name">Tala de árboles I</string>
@@ -47,17 +47,17 @@
 
     <!-- Smithing -->
     <string name="quest_smithing_1_name">Herrería I</string>
-    <string name="quest_smithing_1_objective">Funde 500 Bronze Bars</string>
+    <string name="quest_smithing_1_objective">Funde 500 Barras de bronce</string>
     <string name="quest_smithing_2_name">Herrería II</string>
-    <string name="quest_smithing_2_objective">Funde 750 Iron Bars</string>
+    <string name="quest_smithing_2_objective">Funde 750 Barras de hierro</string>
     <string name="quest_smithing_3_name">Herrería III</string>
-    <string name="quest_smithing_3_objective">Funde 1100 Steel Bars</string>
+    <string name="quest_smithing_3_objective">Funde 1100 barras de acero</string>
     <string name="quest_smithing_4_name">Herrería IV</string>
-    <string name="quest_smithing_4_objective">Funde 1650 Mithril Bars</string>
+    <string name="quest_smithing_4_objective">Funde 1650 Barras de mithril</string>
     <string name="quest_smithing_5_name">Herrería V</string>
-    <string name="quest_smithing_5_objective">Funde 2450 Adamantite Bars</string>
+    <string name="quest_smithing_5_objective">Funde 2450 Barras de adamantita</string>
     <string name="quest_smithing_6_name">Herrería VI</string>
-    <string name="quest_smithing_6_objective">Funde 3650 Runite Bars</string>
+    <string name="quest_smithing_6_objective">Funde 3650 Barras de runita</string>
 
     <!-- Cooking - Fish -->
     <string name="quest_cooking_fish_1_name">Cocina — Fish I</string>
@@ -141,37 +141,37 @@
 
     <!-- Dungeon exploration -->
     <string name="quest_dungeon_farm_1_name">Dungeon Explorer I</string>
-    <string name="quest_dungeon_farm_1_objective">Completa la mazmorra de la Granja 5 times</string>
+    <string name="quest_dungeon_farm_1_objective">Completa la dungeon de la Granja 5 veces</string>
     <string name="quest_dungeon_goblin_1_name">Dungeon Explorer II</string>
-    <string name="quest_dungeon_goblin_1_objective">Complete the Goblin Cave 5 times</string>
+    <string name="quest_dungeon_goblin_1_objective">Completa la carverna de Goblins 5 veces</string>
     <string name="quest_dungeon_spider_1_name">Dungeon Explorer III</string>
-    <string name="quest_dungeon_spider_1_objective">Complete the Spider Den 5 times</string>
+    <string name="quest_dungeon_spider_1_objective">Completa la guarida de Arañas 5 veces</string>
     <string name="quest_dungeon_bandit_1_name">Dungeon Explorer IV</string>
-    <string name="quest_dungeon_bandit_1_objective">Complete the Bandit Camp 5 times</string>
+    <string name="quest_dungeon_bandit_1_objective">Completa el Campamento de Bandidos 5 veces</string>
     <string name="quest_dungeon_undead_1_name">Dungeon Explorer V</string>
-    <string name="quest_dungeon_undead_1_objective">Complete the Undead Crypt 5 times</string>
+    <string name="quest_dungeon_undead_1_objective">Completa la Cripta de no muertos 5 veces</string>
     <string name="quest_dungeon_fortress_1_name">Dungeon Explorer VI</string>
-    <string name="quest_dungeon_fortress_1_objective">Complete the Fortress Ruins 5 times</string>
+    <string name="quest_dungeon_fortress_1_objective">Completa las Ruinas de la Fortaleza 5 veces</string>
     <string name="quest_dungeon_orc_1_name">Dungeon Master I</string>
-    <string name="quest_dungeon_orc_1_objective">Complete the Orc Stronghold 5 times</string>
+    <string name="quest_dungeon_orc_1_objective">Completa la Fortaleza de los Orcos 5 veces</string>
     <string name="quest_dungeon_volcanic_1_name">Dungeon Master II</string>
-    <string name="quest_dungeon_volcanic_1_objective">Complete the Volcanic Depths 5 times</string>
+    <string name="quest_dungeon_volcanic_1_objective">Completa las Profundidades Volcánicas 5 veces</string>
     <string name="quest_dungeon_dragon_1_name">Dungeon Master III</string>
-    <string name="quest_dungeon_dragon_1_objective">Complete the Dragon\'s Lair 5 times</string>
+    <string name="quest_dungeon_dragon_1_objective">Completa la Guarida del Dragon 5 veces</string>
 
     <!-- Crafting -->
     <string name="quest_crafting_1_name">Crafting I</string>
-    <string name="quest_crafting_1_objective">Craft 100 Silver Rings</string>
+    <string name="quest_crafting_1_objective">Craft 100 Anillos de Plata</string>
     <string name="quest_crafting_2_name">Crafting II</string>
-    <string name="quest_crafting_2_objective">Craft 250 Gold Rings</string>
+    <string name="quest_crafting_2_objective">Craft 250 Anillos de Oro</string>
     <string name="quest_crafting_3_name">Crafting III</string>
-    <string name="quest_crafting_3_objective">Craft 500 Platinum Rings</string>
+    <string name="quest_crafting_3_objective">Craft 500 Anillos de Platino</string>
     <string name="quest_crafting_4_name">Crafting IV</string>
-    <string name="quest_crafting_4_objective">Craft 750 Silver Sapphire Rings</string>
+    <string name="quest_crafting_4_objective">Craft 750 Anillos de Plata con Zafiro</string>
     <string name="quest_crafting_5_name">Crafting V</string>
-    <string name="quest_crafting_5_objective">Craft 1000 Gold Sapphire Rings</string>
+    <string name="quest_crafting_5_objective">Craft 1000 Anillos de Oro con Zafiro</string>
     <string name="quest_crafting_6_name">Crafting VI</string>
-    <string name="quest_crafting_6_objective">Craft 1500 Platinum Diamond Rings</string>
+    <string name="quest_crafting_6_objective">Craft 1500 Anillos de Platino con Diamante</string>
 
     <!-- Monster slayer chains -->
     <string name="quest_goblin_slayer_1_name">Cazador de Goblins I</string>
@@ -205,33 +205,33 @@
 
     <!-- Combat style challenges -->
     <string name="quest_melee_warrior_1_name">Melee Warrior I</string>
-    <string name="quest_melee_warrior_1_objective">Complete the Goblin Cave using only melee</string>
+    <string name="quest_melee_warrior_1_objective">Completa la Cueva de los Goblins usando solo cuerpo a cuerpo</string>
     <string name="quest_melee_warrior_2_name">Melee Warrior II</string>
-    <string name="quest_melee_warrior_2_objective">Complete the Bandit Camp using only melee</string>
+    <string name="quest_melee_warrior_2_objective">Completa el Campamento de Bandidos usando solo cuerpo a cuerpo</string>
     <string name="quest_melee_warrior_3_name">Melee Warrior III</string>
-    <string name="quest_melee_warrior_3_objective">Complete the Fortress Ruins using only melee</string>
+    <string name="quest_melee_warrior_3_objective">Completa las Ruinas de la Fortaleza usando solo cuerpo a cuerpo</string>
     <string name="quest_ranger_elite_1_name">Ranger Elite I</string>
-    <string name="quest_ranger_elite_1_objective">Complete the Goblin Cave using only ranged</string>
+    <string name="quest_ranger_elite_1_objective">Completa la Cueva de los Goblins solo a distancia</string>
     <string name="quest_ranger_elite_2_name">Ranger Elite II</string>
-    <string name="quest_ranger_elite_2_objective">Complete the Bandit Camp using only ranged</string>
+    <string name="quest_ranger_elite_2_objective">Completa el Campamento de Bandidos solo a distancia</string>
     <string name="quest_ranger_elite_3_name">Ranger Elite III</string>
-    <string name="quest_ranger_elite_3_objective">Complete the Fortress Ruins using only ranged</string>
+    <string name="quest_ranger_elite_3_objective">Completa las Ruinas de la Fortaleza solo a distancia</string>
     <string name="quest_mage_master_1_name">Mage Master I</string>
-    <string name="quest_mage_master_1_objective">Complete the Goblin Cave using only magic</string>
+    <string name="quest_mage_master_1_objective">Completa la Cueva de los Goblins usando solo magia</string>
     <string name="quest_mage_master_2_name">Mage Master II</string>
-    <string name="quest_mage_master_2_objective">Complete the Bandit Camp using only magic</string>
+    <string name="quest_mage_master_2_objective">Completa el Campamento de Bandidos usando solo magia</string>
     <string name="quest_mage_master_3_name">Mage Master III</string>
-    <string name="quest_mage_master_3_objective">Complete the Fortress Ruins using only magic</string>
+    <string name="quest_mage_master_3_objective">Completa las Ruinas de la Fortaleza usando solo magia</string>
 
     <!-- Iron Stomach (no food) challenges -->
-    <string name="quest_iron_stomach_1_name">Iron Stomach I</string>
-    <string name="quest_iron_stomach_1_objective">Complete the Spider Den without using food</string>
-    <string name="quest_iron_stomach_2_name">Iron Stomach II</string>
-    <string name="quest_iron_stomach_2_objective">Complete the Undead Crypt without using food</string>
-    <string name="quest_iron_stomach_3_name">Iron Stomach III</string>
-    <string name="quest_iron_stomach_3_objective">Complete the Orc Stronghold without using food</string>
-    <string name="quest_iron_stomach_4_name">Iron Stomach IV</string>
-    <string name="quest_iron_stomach_4_objective">Complete the Dragon\'s Lair without using food</string>
+    <string name="quest_iron_stomach_1_name">Estómago de Hierro I</string>
+    <string name="quest_iron_stomach_1_objective">Completa la Guarida de las Arañas sin usar comida</string>
+    <string name="quest_iron_stomach_2_name">Estómago de Hierro II</string>
+    <string name="quest_iron_stomach_2_objective">Completa la Cripta de los no muertos sin usar comida</string>
+    <string name="quest_iron_stomach_3_name">Estómago de Hierro III</string>
+    <string name="quest_iron_stomach_3_objective">Completa la Fortaleza de los Orcos sin usar comida</string>
+    <string name="quest_iron_stomach_4_name">Estómago de Hierro IV</string>
+    <string name="quest_iron_stomach_4_objective">Completa La Guarida del Dragon sin usar comida</string>
 
     <!-- Treasure Hunter -->
     <string name="quest_treasure_hunter_1_name">Cazador de tesoros I</string>
