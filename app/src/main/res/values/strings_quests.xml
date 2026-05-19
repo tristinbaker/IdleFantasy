@@ -47,17 +47,17 @@
 
     <!-- Smithing -->
     <string name="quest_smithing_1_name">Herrería I</string>
-    <string name="quest_smithing_1_objective">Funde 500 Barras de bronce</string>
+    <string name="quest_smithing_1_objective">Funde 500 Barras de Bronce</string>
     <string name="quest_smithing_2_name">Herrería II</string>
-    <string name="quest_smithing_2_objective">Funde 750 Barras de hierro</string>
+    <string name="quest_smithing_2_objective">Funde 750 Barras de Hierro</string>
     <string name="quest_smithing_3_name">Herrería III</string>
-    <string name="quest_smithing_3_objective">Funde 1100 barras de acero</string>
+    <string name="quest_smithing_3_objective">Funde 1100 Barras de Acero</string>
     <string name="quest_smithing_4_name">Herrería IV</string>
-    <string name="quest_smithing_4_objective">Funde 1650 Barras de mithril</string>
+    <string name="quest_smithing_4_objective">Funde 1650 Barras de Mithril</string>
     <string name="quest_smithing_5_name">Herrería V</string>
-    <string name="quest_smithing_5_objective">Funde 2450 Barras de adamantita</string>
+    <string name="quest_smithing_5_objective">Funde 2450 Barras de Adamantita</string>
     <string name="quest_smithing_6_name">Herrería VI</string>
-    <string name="quest_smithing_6_objective">Funde 3650 Barras de runita</string>
+    <string name="quest_smithing_6_objective">Funde 3650 Barras de Runita</string>
 
     <!-- Cooking - Fish -->
     <string name="quest_cooking_fish_1_name">Cocina — Fish I</string>
@@ -99,17 +99,17 @@
 
     <!-- Fletching -->
     <string name="quest_fletching_1_name">Fletching I</string>
-    <string name="quest_fletching_1_objective">Crea 500 Flechas de Bronze</string>
+    <string name="quest_fletching_1_objective">Crea 500 Flechas de Bronce</string>
     <string name="quest_fletching_2_name">Fletching II</string>
-    <string name="quest_fletching_2_objective">Crea 750 Flechas de Iron</string>
+    <string name="quest_fletching_2_objective">Crea 750 Flechas de Hierro</string>
     <string name="quest_fletching_3_name">Fletching III</string>
-    <string name="quest_fletching_3_objective">Crea 1100 Flechas de Steel</string>
+    <string name="quest_fletching_3_objective">Crea 1100 Flechas de Acero</string>
     <string name="quest_fletching_4_name">Fletching IV</string>
     <string name="quest_fletching_4_objective">Crea 1650 Flechas de Mithril</string>
     <string name="quest_fletching_5_name">Fletching V</string>
-    <string name="quest_fletching_5_objective">Crea 2450 Flechas de Adamantite</string>
+    <string name="quest_fletching_5_objective">Crea 2450 Flechas de Adamantita</string>
     <string name="quest_fletching_6_name">Fletching VI</string>
-    <string name="quest_fletching_6_objective">Crea 3650 Flechas de Runite</string>
+    <string name="quest_fletching_6_objective">Crea 3650 Flechas de Runita</string>
 
     <!-- Prayer -->
     <string name="quest_prayer_1_name">Oración I</string>
