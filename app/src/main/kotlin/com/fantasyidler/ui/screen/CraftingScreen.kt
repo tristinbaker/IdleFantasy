@@ -365,6 +365,7 @@ private fun RecipeDetailSheet(
             minValue      = 1,
             maxValue      = max,
             onMax         = { onSetQuantity(max) },
+            onMin         = { onSetQuantity(1) },
         )
 
         Spacer(Modifier.height(tokens.spacing.m + tokens.spacing.s))

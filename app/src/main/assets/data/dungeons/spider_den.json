@@ -13,5 +13,7 @@
       "enemy": "wild_dog",
       "weight": 2
     }
-  ]
+  ],
+  "advantage_vs": ["Arachnids", "Vermin"],
+  "disadvantage_vs": []
 }

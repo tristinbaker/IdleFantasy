@@ -13,7 +13,9 @@ fun BigStepper(
     minValue: Int = 1,
     maxValue: Int = Int.MAX_VALUE,
     step: Int = 1,
+    bigStep: Int = 10,
     onMax: (() -> Unit)? = null,
+    onMin: (() -> Unit)? = null,
 ) = FoundationBigStepper(
     value = value,
     onValueChange = onValueChange,
@@ -21,5 +23,7 @@ fun BigStepper(
     minValue = minValue,
     maxValue = maxValue,
     step = step,
+    bigStep = bigStep,
     onMax = onMax,
+    onMin = onMin,
 )

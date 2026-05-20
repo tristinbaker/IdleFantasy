@@ -11,6 +11,8 @@ data class DungeonData(
     @SerialName("recommended_level") val recommendedLevel: Int,
     @SerialName("encounter_rate") val encounterRate: Double,
     @SerialName("enemy_spawns") val enemySpawns: List<EnemySpawn>,
+    @SerialName("advantage_vs")    val advantageVs:    List<String> = emptyList(),
+    @SerialName("disadvantage_vs") val disadvantageVs: List<String> = emptyList(),
 )
 
 @Serializable

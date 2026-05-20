@@ -139,6 +139,7 @@ private fun CombatScreenContent(
                     enemies        = enemies,
                     foodHealValues = foodHealValues,
                     onSelectDungeon = onSelectDungeon,
+                    onStartDungeon  = onStartDungeon,
                     onSelectBoss    = onSelectBoss,
                     onCollect       = onCollect,
                     onAbandon       = onAbandon,
@@ -149,6 +150,7 @@ private fun CombatScreenContent(
                     dungeons        = dungeons,
                     bosses          = bosses,
                     onSelectDungeon = onSelectDungeon,
+                    onStartDungeon  = onStartDungeon,
                     onSelectBoss    = onSelectBoss,
                 )
             }
@@ -273,6 +275,7 @@ private fun ActiveSessionTabs(
     enemies: Map<String, EnemyData>,
     foodHealValues: Map<String, Int>,
     onSelectDungeon: (DungeonData?) -> Unit,
+    onStartDungeon: (String) -> Unit,
     onSelectBoss: (BossData?) -> Unit,
     onCollect: () -> Unit,
     onAbandon: () -> Unit,
@@ -317,6 +320,7 @@ private fun ActiveSessionTabs(
                 skillLevels     = state.skillLevels,
                 survivalRatings = state.dungeonSurvivalRatings,
                 onDungeon       = onSelectDungeon,
+                onAttackDungeon = { onStartDungeon(it.name) },
                 onBoss          = onSelectBoss,
             )
         }
@@ -329,6 +333,7 @@ private fun NoSessionTabs(
     dungeons: List<DungeonData>,
     bosses: List<BossData>,
     onSelectDungeon: (DungeonData?) -> Unit,
+    onStartDungeon: (String) -> Unit,
     onSelectBoss: (BossData?) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -360,6 +365,7 @@ private fun NoSessionTabs(
                         skillLevels     = state.skillLevels,
                         survivalRatings = state.dungeonSurvivalRatings,
                         onDungeon       = onSelectDungeon,
+                        onAttackDungeon = { onStartDungeon(it.name) },
                         onBoss          = onSelectBoss,
                     )
                 }

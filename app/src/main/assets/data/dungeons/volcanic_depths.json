@@ -13,5 +13,7 @@
       "enemy": "demon",
       "weight": 4
     }
-  ]
+  ],
+  "advantage_vs": [],
+  "disadvantage_vs": ["Demons"]
 }

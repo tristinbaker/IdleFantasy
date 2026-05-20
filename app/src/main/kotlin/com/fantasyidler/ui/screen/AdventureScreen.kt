@@ -234,9 +234,10 @@ private fun AdventureBody(
                 SectionHeader(stringResource(R.string.adv_recommended_dungeon))
                 if (recommendedDungeon != null) {
                     RecommendedDungeonCard(
-                        dungeon        = recommendedDungeon,
-                        survivalRating = survivalRating,
-                        onEnter        = { onEnterDungeon(recommendedDungeon) },
+                        dungeon           = recommendedDungeon,
+                        playerCombatLevel = combatLevelFrom(skillLevels),
+                        survivalRating    = survivalRating,
+                        onEnter           = { onEnterDungeon(recommendedDungeon) },
                     )
                 } else {
                     EmptyRecommendedDungeonCard()
@@ -476,30 +477,28 @@ private fun ContinueQuestCard(
 @Composable
 private fun RecommendedDungeonCard(
     dungeon: DungeonData,
+    playerCombatLevel: Int,
     survivalRating: CombatSimulator.SurvivalRating?,
     onEnter: () -> Unit,
 ) {
     val tokens = LocalFantasyTokens.current
-    ChunkyCard(
-        highlight      = true,
-        contentPadding = androidx.compose.foundation.layout.PaddingValues(tokens.spacing.l),
-    ) {
-        Column {
-            DungeonCard(
-                dungeon        = dungeon,
-                unlocked       = true,
-                onTap          = onEnter,
-                survivalRating = survivalRating,
-                modifier       = Modifier.fillMaxWidth(),
-            )
-            Spacer(Modifier.height(tokens.spacing.m))
-            ChunkyButton(
-                text     = stringResource(R.string.adv_enter_dungeon),
-                onClick  = onEnter,
-                variant  = ChunkyButtonVariant.Primary,
-                modifier = Modifier.fillMaxWidth(),
-            )
-        }
+    Column {
+        DungeonCard(
+            dungeon           = dungeon,
+            unlocked          = true,
+            playerCombatLevel = playerCombatLevel,
+            onSchedule        = onEnter,
+            onAttack          = onEnter,
+            survivalRating    = survivalRating,
+            modifier          = Modifier.fillMaxWidth(),
+        )
+        Spacer(Modifier.height(tokens.spacing.m))
+        ChunkyButton(
+            text     = stringResource(R.string.adv_enter_dungeon),
+            onClick  = onEnter,
+            variant  = ChunkyButtonVariant.Primary,
+            modifier = Modifier.fillMaxWidth().padding(horizontal = tokens.spacing.l),
+        )
     }
 }
 

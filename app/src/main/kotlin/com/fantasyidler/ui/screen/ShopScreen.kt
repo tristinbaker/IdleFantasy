@@ -418,6 +418,7 @@ private fun TransactionSheet(
                 minValue      = 1,
                 maxValue      = maxQty,
                 onMax         = { onSetQty(maxQty) },
+                onMin         = { onSetQty(1) },
             )
             Spacer(Modifier.height(tokens.spacing.l))
         }

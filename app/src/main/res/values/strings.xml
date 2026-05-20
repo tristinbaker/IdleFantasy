@@ -440,6 +440,12 @@
     <string name="cd_open_boss" tools:ignore="MissingTranslation">Open %1$s, requires combat level %2$d</string>
     <!-- Translator note: %1$s = boss display name, %2$d = required combat level -->
     <string name="cd_locked_boss" tools:ignore="MissingTranslation">%1$s, locked. Requires combat level %2$d</string>
+    <string name="dungeon_my_lvl" tools:ignore="MissingTranslation">My Lvl</string>
+    <string name="dungeon_rec_lvl" tools:ignore="MissingTranslation">Rec. Lvl</string>
+    <string name="dungeon_advantage" tools:ignore="MissingTranslation">Advantage</string>
+    <string name="dungeon_disadvantage" tools:ignore="MissingTranslation">Disadvantage</string>
+    <string name="dungeon_schedule" tools:ignore="MissingTranslation">Schedule</string>
+    <string name="dungeon_attack" tools:ignore="MissingTranslation">Attack!</string>
 
     <!-- ===== ProfileScreen ===== -->
     <string name="profile_unnamed">Unnamed Adventurer</string>

@@ -17,5 +17,7 @@
       "enemy": "dark_wizard",
       "weight": 2
     }
-  ]
+  ],
+  "advantage_vs": ["Humans"],
+  "disadvantage_vs": ["Mages"]
 }

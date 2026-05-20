@@ -13,5 +13,7 @@
       "enemy": "bandit",
       "weight": 4
     }
-  ]
+  ],
+  "advantage_vs": ["Humans"],
+  "disadvantage_vs": []
 }

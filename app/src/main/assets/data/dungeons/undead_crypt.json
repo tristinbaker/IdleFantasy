@@ -17,5 +17,7 @@
       "enemy": "dark_wizard",
       "weight": 1
     }
-  ]
+  ],
+  "advantage_vs": ["Undead"],
+  "disadvantage_vs": ["Mages"]
 }

@@ -53,6 +53,7 @@ fun CombatSelectionList(
     skillLevels: Map<String, Int>,
     survivalRatings: Map<String, CombatSimulator.SurvivalRating>,
     onDungeon: (DungeonData) -> Unit,
+    onAttackDungeon: (DungeonData) -> Unit,
     onBoss: (BossData) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -78,10 +79,12 @@ fun CombatSelectionList(
             }
             items(dungeons, key = { it.name }) { dungeon ->
                 DungeonCard(
-                    dungeon        = dungeon,
-                    unlocked       = combatLv >= dungeon.recommendedLevel - UNLOCK_TOLERANCE,
-                    survivalRating = survivalRatings[dungeon.name],
-                    onTap          = { onDungeon(dungeon) },
+                    dungeon           = dungeon,
+                    unlocked          = combatLv >= dungeon.recommendedLevel - UNLOCK_TOLERANCE,
+                    playerCombatLevel = combatLv,
+                    survivalRating    = survivalRatings[dungeon.name],
+                    onSchedule        = { onDungeon(dungeon) },
+                    onAttack          = { onAttackDungeon(dungeon) },
                 )
             }
         }
@@ -196,6 +199,7 @@ private fun PreviewCombatSelectionListPopulated() {
                 skillLevels     = mapOf("attack" to 15, "strength" to 15, "defense" to 12, "hitpoints" to 15),
                 survivalRatings = emptyMap(),
                 onDungeon       = {},
+                onAttackDungeon = {},
                 onBoss          = {},
             )
         }
@@ -212,6 +216,7 @@ private fun PreviewCombatSelectionListEmpty() {
             skillLevels     = emptyMap(),
             survivalRatings = emptyMap(),
             onDungeon       = {},
+            onAttackDungeon = {},
             onBoss          = {},
         )
     }

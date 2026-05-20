@@ -13,5 +13,7 @@
       "enemy": "goblin",
       "weight": 7
     }
-  ]
+  ],
+  "advantage_vs": ["Goblinoids", "Vermin"],
+  "disadvantage_vs": []
 }

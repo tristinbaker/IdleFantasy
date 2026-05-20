@@ -272,8 +272,7 @@ class CraftingViewModel @Inject constructor(
     // ------------------------------------------------------------------
 
     fun openRecipe(recipe: CraftableRecipe) {
-        val max = uiState.value.maxCraftable(recipe).coerceAtLeast(1)
-        _extra.update { it.copy(selectedRecipe = recipe, craftQuantity = max) }
+        _extra.update { it.copy(selectedRecipe = recipe, craftQuantity = 1) }
     }
 
     fun dismissRecipe() = _extra.update { it.copy(selectedRecipe = null) }

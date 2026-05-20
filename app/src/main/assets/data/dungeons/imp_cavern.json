@@ -13,5 +13,7 @@
       "enemy": "giant_rat",
       "weight": 3
     }
-  ]
+  ],
+  "advantage_vs": ["Vermin"],
+  "disadvantage_vs": ["Demons"]
 }

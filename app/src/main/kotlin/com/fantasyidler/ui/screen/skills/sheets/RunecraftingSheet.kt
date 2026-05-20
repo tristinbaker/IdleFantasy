@@ -205,7 +205,7 @@ private fun RuneQuantityStep(
 ) {
     val tokens = LocalFantasyTokens.current
     val cap = maxQty.coerceAtLeast(1)
-    var qty by remember(selectedKey) { mutableIntStateOf(cap) }
+    var qty by remember(selectedKey) { mutableIntStateOf(1) }
 
     ChunkyButton(
         text     = stringResource(R.string.btn_back_arrow),
@@ -238,6 +238,7 @@ private fun RuneQuantityStep(
             minValue      = 1,
             maxValue      = cap,
             onMax         = { qty = cap },
+            onMin         = { qty = 1 },
         )
     }
 

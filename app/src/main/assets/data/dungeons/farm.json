@@ -17,5 +17,7 @@
       "enemy": "cow",
       "weight": 2
     }
-  ]
+  ],
+  "advantage_vs": ["Livestock"],
+  "disadvantage_vs": []
 }

@@ -17,5 +17,7 @@
       "enemy": "knight",
       "weight": 2
     }
-  ]
+  ],
+  "advantage_vs": [],
+  "disadvantage_vs": ["Dragons", "Demons"]
 }
