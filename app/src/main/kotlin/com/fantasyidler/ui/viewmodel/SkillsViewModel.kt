@@ -316,8 +316,16 @@ class SkillsViewModel @Inject constructor(
 
             if (sessionRepo.getActiveSession() != null) {
                 val actDisplay = runeKey.replace('_', ' ').replaceFirstChar { it.uppercase() }
+                val agility    = (json.decodeFromString<Map<String, Int>>(player.skillLevels))[Skills.AGILITY] ?: 1
+                val perItemMs  = SkillSimulator.sessionDurationMs(agility) / 60
                 val enqueued = playerRepo.enqueueAction(
-                    QueuedAction(Skills.RUNECRAFTING, runeKey, "Runecrafting", qty = qty)
+                    QueuedAction(
+                        skillName           = Skills.RUNECRAFTING,
+                        activityKey         = runeKey,
+                        skillDisplayName    = "Runecrafting",
+                        qty                 = qty,
+                        estimatedDurationMs = qty.toLong() * perItemMs,
+                    )
                 )
                 _uiState.update {
                     it.copy(
@@ -393,8 +401,16 @@ class SkillsViewModel @Inject constructor(
             }
 
             if (sessionRepo.getActiveSession() != null) {
+                val agility   = (json.decodeFromString<Map<String, Int>>(player.skillLevels))[Skills.AGILITY] ?: 1
+                val perBoneMs = SkillSimulator.sessionDurationMs(agility) / 60
                 val enqueued = playerRepo.enqueueAction(
-                    QueuedAction(Skills.PRAYER, boneKey, "Prayer", qty = qty)
+                    QueuedAction(
+                        skillName           = Skills.PRAYER,
+                        activityKey         = boneKey,
+                        skillDisplayName    = "Prayer",
+                        qty                 = qty,
+                        estimatedDurationMs = qty.toLong() * perBoneMs,
+                    )
                 )
                 _uiState.update {
                     it.copy(
@@ -475,10 +491,17 @@ class SkillsViewModel @Inject constructor(
     ) {
         viewModelScope.launch {
             if (sessionRepo.getActiveSession() != null) {
-                val displayName = skillName.replaceFirstChar { it.uppercase() }
-                val actDisplay  = activityKey.replace('_', ' ').replaceFirstChar { it.uppercase() }
+                val displayName  = skillName.replaceFirstChar { it.uppercase() }
+                val actDisplay   = activityKey.replace('_', ' ').replaceFirstChar { it.uppercase() }
+                val player       = playerRepo.getOrCreatePlayer()
+                val agility      = (json.decodeFromString<Map<String, Int>>(player.skillLevels))[Skills.AGILITY] ?: 1
                 val enqueued = playerRepo.enqueueAction(
-                    QueuedAction(skillName, activityKey, displayName)
+                    QueuedAction(
+                        skillName           = skillName,
+                        activityKey         = activityKey,
+                        skillDisplayName    = displayName,
+                        estimatedDurationMs = SkillSimulator.sessionDurationMs(agility),
+                    )
                 )
                 _uiState.update {
                     it.copy(
@@ -651,7 +674,7 @@ class SkillsViewModel @Inject constructor(
             EquipSlot.PICKAXE     -> eq.miningEfficiency      ?: 1.0f
             EquipSlot.AXE         -> eq.woodcuttingEfficiency ?: 1.0f
             EquipSlot.FISHING_ROD -> eq.fishingEfficiency     ?: 1.0f
-            EquipSlot.HOE         -> eq.farmingEfficiency     ?: 1.0f
+            EquipSlot.HOE         -> 1f + (eq.farmingEfficiency ?: 0f)
             else                  -> 1.0f
         }
         if (resourceLevelRequired <= 0) return base

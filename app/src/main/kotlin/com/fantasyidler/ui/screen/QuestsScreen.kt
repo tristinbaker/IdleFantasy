@@ -189,10 +189,12 @@ private fun QuestRow(
         )
 
         // Description / objective
-        if (quest.description.isNotBlank()) {
+        val objective = GameStrings.questObjective(context, quest.id).takeIf { it.isNotBlank() }
+            ?: quest.description
+        if (objective.isNotBlank()) {
             Spacer(Modifier.height(2.dp))
             Text(
-                text  = quest.description,
+                text  = objective,
                 style = MaterialTheme.typography.bodySmall,
                 color = descColor,
             )

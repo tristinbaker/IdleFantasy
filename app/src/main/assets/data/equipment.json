@@ -28,7 +28,7 @@
     "combat_style": "ranged",
     "description": "A simple wooden bow. Good for training ranged.",
     "attack_bonus": 4,
-    "strength_bonus": 5,
+    "strength_bonus": 0,
     "defense_bonus": 0,
     "requirements": {}
   },
@@ -39,7 +39,7 @@
     "combat_style": "magic",
     "description": "A simple wooden staff. Good for training magic.",
     "attack_bonus": 3,
-    "strength_bonus": 4,
+    "strength_bonus": 0,
     "defense_bonus": 1,
     "requirements": {}
   },
@@ -76,7 +76,7 @@
     "combat_style": "ranged",
     "description": "A sturdy oak bow. Better range weapon.",
     "attack_bonus": 9,
-    "strength_bonus": 10,
+    "strength_bonus": 0,
     "defense_bonus": 0,
     "requirements": {
       "ranged": 5
@@ -89,7 +89,7 @@
     "combat_style": "magic",
     "description": "A magical staff for apprentices.",
     "attack_bonus": 8,
-    "strength_bonus": 9,
+    "strength_bonus": 0,
     "defense_bonus": 2,
     "requirements": {
       "magic": 5
@@ -225,7 +225,7 @@
     "strength_bonus": 16,
     "defense_bonus": 0,
     "requirements": {
-      "attack": 10
+      "strength": 10
     }
   },
   "iron_battleaxe": {
@@ -238,7 +238,7 @@
     "strength_bonus": 14,
     "defense_bonus": 0,
     "requirements": {
-      "attack": 10
+      "strength": 10
     }
   },
   "steel_dagger": {
@@ -290,7 +290,7 @@
     "strength_bonus": 25,
     "defense_bonus": 0,
     "requirements": {
-      "attack": 20
+      "strength": 20
     }
   },
   "steel_battleaxe": {
@@ -303,7 +303,7 @@
     "strength_bonus": 22,
     "defense_bonus": 0,
     "requirements": {
-      "attack": 20
+      "strength": 20
     }
   },
   "mithril_dagger": {
@@ -381,7 +381,7 @@
     "strength_bonus": 36,
     "defense_bonus": 0,
     "requirements": {
-      "attack": 30
+      "strength": 30
     }
   },
   "mithril_battleaxe": {
@@ -394,7 +394,7 @@
     "strength_bonus": 32,
     "defense_bonus": 0,
     "requirements": {
-      "attack": 30
+      "strength": 30
     }
   },
   "adamantite_dagger": {
@@ -472,7 +472,7 @@
     "strength_bonus": 49,
     "defense_bonus": 0,
     "requirements": {
-      "attack": 40
+      "strength": 40
     }
   },
   "adamantite_battleaxe": {
@@ -485,7 +485,7 @@
     "strength_bonus": 44,
     "defense_bonus": 0,
     "requirements": {
-      "attack": 40
+      "strength": 40
     }
   },
   "runite_dagger": {
@@ -563,7 +563,7 @@
     "strength_bonus": 67,
     "defense_bonus": 0,
     "requirements": {
-      "attack": 50
+      "strength": 50
     }
   },
   "runite_battleaxe": {
@@ -576,7 +576,7 @@
     "strength_bonus": 60,
     "defense_bonus": 0,
     "requirements": {
-      "attack": 50
+      "strength": 50
     }
   },
   "shortbow": {
@@ -1588,7 +1588,7 @@
     "combat_style": "magic",
     "description": "A silver ring with a sapphire. Enhances magic.",
     "attack_bonus": 1,
-    "strength_bonus": 1,
+    "strength_bonus": 0,
     "defense_bonus": 2,
     "magic_attack_bonus": 4,
     "magic_damage_bonus": 2,
@@ -1601,7 +1601,7 @@
     "combat_style": "magic",
     "description": "A silver necklace with a sapphire. Enhances magic.",
     "attack_bonus": 2,
-    "strength_bonus": 1,
+    "strength_bonus": 0,
     "defense_bonus": 3,
     "magic_attack_bonus": 6,
     "magic_damage_bonus": 3,
@@ -1614,7 +1614,7 @@
     "combat_style": "ranged",
     "description": "A silver ring with an emerald. Enhances ranged.",
     "attack_bonus": 2,
-    "strength_bonus": 1,
+    "strength_bonus": 0,
     "defense_bonus": 2,
     "ranged_attack_bonus": 5,
     "ranged_strength_bonus": 2,
@@ -1627,7 +1627,7 @@
     "combat_style": "ranged",
     "description": "A silver necklace with an emerald. Enhances ranged.",
     "attack_bonus": 3,
-    "strength_bonus": 2,
+    "strength_bonus": 0,
     "defense_bonus": 3,
     "ranged_attack_bonus": 7,
     "ranged_strength_bonus": 3,
@@ -1640,7 +1640,7 @@
     "combat_style": "magic",
     "description": "A gold ring with a sapphire. Enhances magic.",
     "attack_bonus": 2,
-    "strength_bonus": 2,
+    "strength_bonus": 0,
     "defense_bonus": 3,
     "magic_attack_bonus": 6,
     "magic_damage_bonus": 3,
@@ -1653,7 +1653,7 @@
     "combat_style": "magic",
     "description": "A gold necklace with a sapphire. Enhances magic.",
     "attack_bonus": 3,
-    "strength_bonus": 2,
+    "strength_bonus": 0,
     "defense_bonus": 4,
     "magic_attack_bonus": 9,
     "magic_damage_bonus": 4,
@@ -1666,7 +1666,7 @@
     "combat_style": "magic",
     "description": "A platinum ring with a sapphire. Enhances magic.",
     "attack_bonus": 3,
-    "strength_bonus": 3,
+    "strength_bonus": 0,
     "defense_bonus": 4,
     "magic_attack_bonus": 8,
     "magic_damage_bonus": 4,
@@ -1679,7 +1679,7 @@
     "combat_style": "magic",
     "description": "A platinum necklace with a sapphire. Enhances magic.",
     "attack_bonus": 4,
-    "strength_bonus": 3,
+    "strength_bonus": 0,
     "defense_bonus": 5,
     "magic_attack_bonus": 12,
     "magic_damage_bonus": 5,
@@ -1692,7 +1692,7 @@
     "combat_style": "ranged",
     "description": "A gold ring with an emerald. Enhances ranged.",
     "attack_bonus": 3,
-    "strength_bonus": 2,
+    "strength_bonus": 0,
     "defense_bonus": 3,
     "ranged_attack_bonus": 7,
     "ranged_strength_bonus": 3,
@@ -1705,7 +1705,7 @@
     "combat_style": "ranged",
     "description": "A gold necklace with an emerald. Enhances ranged.",
     "attack_bonus": 4,
-    "strength_bonus": 3,
+    "strength_bonus": 0,
     "defense_bonus": 4,
     "ranged_attack_bonus": 10,
     "ranged_strength_bonus": 4,
@@ -1718,7 +1718,7 @@
     "combat_style": "ranged",
     "description": "A platinum ring with an emerald. Enhances ranged.",
     "attack_bonus": 4,
-    "strength_bonus": 3,
+    "strength_bonus": 0,
     "defense_bonus": 4,
     "ranged_attack_bonus": 9,
     "ranged_strength_bonus": 4,
@@ -1731,7 +1731,7 @@
     "combat_style": "ranged",
     "description": "A platinum necklace with an emerald. Enhances ranged.",
     "attack_bonus": 5,
-    "strength_bonus": 4,
+    "strength_bonus": 0,
     "defense_bonus": 5,
     "ranged_attack_bonus": 13,
     "ranged_strength_bonus": 5,
@@ -1876,7 +1876,7 @@
     "combat_style": "magic",
     "description": "A staff infused with air runes. Provides infinite air runes.",
     "attack_bonus": 5,
-    "strength_bonus": 6,
+    "strength_bonus": 0,
     "defense_bonus": 2,
     "magic_attack_bonus": 5,
     "magic_damage_bonus": 2,
@@ -1892,7 +1892,7 @@
     "combat_style": "magic",
     "description": "A staff infused with water runes. Provides infinite water runes.",
     "attack_bonus": 7,
-    "strength_bonus": 8,
+    "strength_bonus": 0,
     "defense_bonus": 3,
     "magic_attack_bonus": 8,
     "magic_damage_bonus": 3,
@@ -1908,7 +1908,7 @@
     "combat_style": "magic",
     "description": "A staff infused with earth runes. Provides infinite earth runes.",
     "attack_bonus": 10,
-    "strength_bonus": 11,
+    "strength_bonus": 0,
     "defense_bonus": 4,
     "magic_attack_bonus": 12,
     "magic_damage_bonus": 4,
@@ -1924,7 +1924,7 @@
     "combat_style": "magic",
     "description": "A staff infused with fire runes. Provides infinite fire runes.",
     "attack_bonus": 14,
-    "strength_bonus": 15,
+    "strength_bonus": 0,
     "defense_bonus": 5,
     "magic_attack_bonus": 17,
     "magic_damage_bonus": 5,
@@ -1940,7 +1940,7 @@
     "combat_style": "magic",
     "description": "A staff infused with mind runes. Provides infinite mind runes.",
     "attack_bonus": 19,
-    "strength_bonus": 20,
+    "strength_bonus": 0,
     "defense_bonus": 6,
     "magic_attack_bonus": 24,
     "magic_damage_bonus": 7,
@@ -1956,7 +1956,7 @@
     "combat_style": "magic",
     "description": "A staff infused with chaos runes. Provides infinite chaos runes.",
     "attack_bonus": 25,
-    "strength_bonus": 26,
+    "strength_bonus": 0,
     "defense_bonus": 8,
     "magic_attack_bonus": 33,
     "magic_damage_bonus": 9,
@@ -1972,7 +1972,7 @@
     "combat_style": "magic",
     "description": "A staff infused with death runes. Provides infinite death runes.",
     "attack_bonus": 32,
-    "strength_bonus": 33,
+    "strength_bonus": 0,
     "defense_bonus": 10,
     "magic_attack_bonus": 44,
     "magic_damage_bonus": 12,
@@ -1988,7 +1988,7 @@
     "combat_style": "magic",
     "description": "A staff infused with blood runes. Provides infinite blood runes.",
     "attack_bonus": 40,
-    "strength_bonus": 41,
+    "strength_bonus": 0,
     "defense_bonus": 12,
     "magic_attack_bonus": 58,
     "magic_damage_bonus": 15,
@@ -2175,189 +2175,427 @@
     }
   },
   "mining_cape": {
-    "name": "mining_cape", "display_name": "Mining Cape", "slot": "cape", "combat_style": null,
+    "name": "mining_cape",
+    "display_name": "Mining Cape",
+    "slot": "cape",
+    "combat_style": null,
     "description": "Awarded for reaching level 99 Mining. Doubles ore yield.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "mining",
-    "requirements": { "mining": 99 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "mining",
+    "requirements": {
+      "mining": 99
+    }
   },
   "woodcutting_cape": {
-    "name": "woodcutting_cape", "display_name": "Woodcutting Cape", "slot": "cape", "combat_style": null,
+    "name": "woodcutting_cape",
+    "display_name": "Woodcutting Cape",
+    "slot": "cape",
+    "combat_style": null,
     "description": "Awarded for reaching level 99 Woodcutting. Doubles log yield.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "woodcutting",
-    "requirements": { "woodcutting": 99 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "woodcutting",
+    "requirements": {
+      "woodcutting": 99
+    }
   },
   "fishing_cape": {
-    "name": "fishing_cape", "display_name": "Fishing Cape", "slot": "cape", "combat_style": null,
+    "name": "fishing_cape",
+    "display_name": "Fishing Cape",
+    "slot": "cape",
+    "combat_style": null,
     "description": "Awarded for reaching level 99 Fishing. Doubles fish yield.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "fishing",
-    "requirements": { "fishing": 99 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "fishing",
+    "requirements": {
+      "fishing": 99
+    }
   },
   "farming_cape": {
-    "name": "farming_cape", "display_name": "Farming Cape", "slot": "cape", "combat_style": null,
+    "name": "farming_cape",
+    "display_name": "Farming Cape",
+    "slot": "cape",
+    "combat_style": null,
     "description": "Awarded for reaching level 99 Farming. Doubles harvest yield.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "farming",
-    "requirements": { "farming": 99 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "farming",
+    "requirements": {
+      "farming": 99
+    }
   },
   "smithing_cape": {
-    "name": "smithing_cape", "display_name": "Smithing Cape", "slot": "cape", "combat_style": null,
+    "name": "smithing_cape",
+    "display_name": "Smithing Cape",
+    "slot": "cape",
+    "combat_style": null,
     "description": "Awarded for reaching level 99 Smithing. Doubles items produced.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "smithing",
-    "requirements": { "smithing": 99 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "smithing",
+    "requirements": {
+      "smithing": 99
+    }
   },
   "cooking_cape": {
-    "name": "cooking_cape", "display_name": "Cooking Cape", "slot": "cape", "combat_style": null,
+    "name": "cooking_cape",
+    "display_name": "Cooking Cape",
+    "slot": "cape",
+    "combat_style": null,
     "description": "Awarded for reaching level 99 Cooking. Doubles food produced.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "cooking",
-    "requirements": { "cooking": 99 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "cooking",
+    "requirements": {
+      "cooking": 99
+    }
   },
   "fletching_cape": {
-    "name": "fletching_cape", "display_name": "Fletching Cape", "slot": "cape", "combat_style": null,
+    "name": "fletching_cape",
+    "display_name": "Fletching Cape",
+    "slot": "cape",
+    "combat_style": null,
     "description": "Awarded for reaching level 99 Fletching. Doubles arrows produced.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "fletching",
-    "requirements": { "fletching": 99 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "fletching",
+    "requirements": {
+      "fletching": 99
+    }
   },
   "crafting_cape": {
-    "name": "crafting_cape", "display_name": "Crafting Cape", "slot": "cape", "combat_style": null,
+    "name": "crafting_cape",
+    "display_name": "Crafting Cape",
+    "slot": "cape",
+    "combat_style": null,
     "description": "Awarded for reaching level 99 Crafting. Doubles items crafted.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "crafting",
-    "requirements": { "crafting": 99 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "crafting",
+    "requirements": {
+      "crafting": 99
+    }
   },
   "runecrafting_cape": {
-    "name": "runecrafting_cape", "display_name": "Runecrafting Cape", "slot": "cape", "combat_style": null,
+    "name": "runecrafting_cape",
+    "display_name": "Runecrafting Cape",
+    "slot": "cape",
+    "combat_style": null,
     "description": "Awarded for reaching level 99 Runecrafting. Doubles runes crafted.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "runecrafting",
-    "requirements": { "runecrafting": 99 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "runecrafting",
+    "requirements": {
+      "runecrafting": 99
+    }
   },
   "firemaking_cape": {
-    "name": "firemaking_cape", "display_name": "Firemaking Cape", "slot": "cape", "combat_style": null,
+    "name": "firemaking_cape",
+    "display_name": "Firemaking Cape",
+    "slot": "cape",
+    "combat_style": null,
     "description": "Awarded for reaching level 99 Firemaking. Doubles XP gained.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "firemaking",
-    "requirements": { "firemaking": 99 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "firemaking",
+    "requirements": {
+      "firemaking": 99
+    }
   },
   "agility_cape": {
-    "name": "agility_cape", "display_name": "Agility Cape", "slot": "cape", "combat_style": null,
+    "name": "agility_cape",
+    "display_name": "Agility Cape",
+    "slot": "cape",
+    "combat_style": null,
     "description": "Awarded for reaching level 99 Agility. Doubles XP gained.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "agility",
-    "requirements": { "agility": 99 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "agility",
+    "requirements": {
+      "agility": 99
+    }
   },
   "prayer_cape": {
-    "name": "prayer_cape", "display_name": "Prayer Cape", "slot": "cape", "combat_style": null,
+    "name": "prayer_cape",
+    "display_name": "Prayer Cape",
+    "slot": "cape",
+    "combat_style": null,
     "description": "Awarded for reaching level 99 Prayer. Doubles Prayer XP from burying.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "prayer",
-    "requirements": { "prayer": 99 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "prayer",
+    "requirements": {
+      "prayer": 99
+    }
   },
   "attack_cape": {
-    "name": "attack_cape", "display_name": "Attack Cape", "slot": "cape", "combat_style": null,
+    "name": "attack_cape",
+    "display_name": "Attack Cape",
+    "slot": "cape",
+    "combat_style": null,
     "description": "Awarded for reaching level 99 Attack. Doubles Attack XP in combat.",
-    "attack_bonus": 5, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "attack",
-    "requirements": { "attack": 99 }
+    "attack_bonus": 5,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "attack",
+    "requirements": {
+      "attack": 99
+    }
   },
   "strength_cape": {
-    "name": "strength_cape", "display_name": "Strength Cape", "slot": "cape", "combat_style": null,
+    "name": "strength_cape",
+    "display_name": "Strength Cape",
+    "slot": "cape",
+    "combat_style": null,
     "description": "Awarded for reaching level 99 Strength. Doubles Strength XP in combat.",
-    "attack_bonus": 0, "strength_bonus": 5, "defense_bonus": 5, "cape_skill": "strength",
-    "requirements": { "strength": 99 }
+    "attack_bonus": 0,
+    "strength_bonus": 5,
+    "defense_bonus": 5,
+    "cape_skill": "strength",
+    "requirements": {
+      "strength": 99
+    }
   },
   "defense_cape": {
-    "name": "defense_cape", "display_name": "Defense Cape", "slot": "cape", "combat_style": null,
+    "name": "defense_cape",
+    "display_name": "Defense Cape",
+    "slot": "cape",
+    "combat_style": null,
     "description": "Awarded for reaching level 99 Defense. Doubles Defense XP in combat.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 15, "cape_skill": "defense",
-    "requirements": { "defense": 99 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 15,
+    "cape_skill": "defense",
+    "requirements": {
+      "defense": 99
+    }
   },
   "magic_cape": {
-    "name": "magic_cape", "display_name": "Magic Cape", "slot": "cape", "combat_style": null,
+    "name": "magic_cape",
+    "display_name": "Magic Cape",
+    "slot": "cape",
+    "combat_style": null,
     "description": "Awarded for reaching level 99 Magic. Doubles Magic XP in combat.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "magic_damage_bonus": 5, "cape_skill": "magic",
-    "requirements": { "magic": 99 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "magic_damage_bonus": 5,
+    "cape_skill": "magic",
+    "requirements": {
+      "magic": 99
+    }
   },
   "ranged_cape": {
-    "name": "ranged_cape", "display_name": "Ranged Cape", "slot": "cape", "combat_style": null,
+    "name": "ranged_cape",
+    "display_name": "Ranged Cape",
+    "slot": "cape",
+    "combat_style": null,
     "description": "Awarded for reaching level 99 Ranged. Doubles Ranged XP in combat.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "ranged",
-    "requirements": { "ranged": 99 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "ranged",
+    "requirements": {
+      "ranged": 99
+    }
   },
   "hp_cape": {
-    "name": "hp_cape", "display_name": "HP Cape", "slot": "cape", "combat_style": null,
+    "name": "hp_cape",
+    "display_name": "HP Cape",
+    "slot": "cape",
+    "combat_style": null,
     "description": "Awarded for reaching level 99 HP. Doubles HP XP in combat.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5, "cape_skill": "hp",
-    "requirements": { "hp": 99 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "hp",
+    "requirements": {
+      "hp": 99
+    }
   },
   "bronze_boots": {
-    "name": "bronze_boots", "display_name": "Bronze Boots", "slot": "boots", "combat_style": null,
+    "name": "bronze_boots",
+    "display_name": "Bronze Boots",
+    "slot": "boots",
+    "combat_style": null,
     "description": "A pair of bronze boots.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 5,
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
     "requirements": {}
   },
   "iron_boots": {
-    "name": "iron_boots", "display_name": "Iron Boots", "slot": "boots", "combat_style": null,
+    "name": "iron_boots",
+    "display_name": "Iron Boots",
+    "slot": "boots",
+    "combat_style": null,
     "description": "A pair of iron boots.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 9,
-    "requirements": { "defense": 10 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 9,
+    "requirements": {
+      "defense": 10
+    }
   },
   "steel_boots": {
-    "name": "steel_boots", "display_name": "Steel Boots", "slot": "boots", "combat_style": null,
+    "name": "steel_boots",
+    "display_name": "Steel Boots",
+    "slot": "boots",
+    "combat_style": null,
     "description": "A pair of steel boots.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 14,
-    "requirements": { "defense": 20 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 14,
+    "requirements": {
+      "defense": 20
+    }
   },
   "mithril_boots": {
-    "name": "mithril_boots", "display_name": "Mithril Boots", "slot": "boots", "combat_style": null,
+    "name": "mithril_boots",
+    "display_name": "Mithril Boots",
+    "slot": "boots",
+    "combat_style": null,
     "description": "A pair of mithril boots.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 20,
-    "requirements": { "defense": 30 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 20,
+    "requirements": {
+      "defense": 30
+    }
   },
   "adamantite_boots": {
-    "name": "adamantite_boots", "display_name": "Adamantite Boots", "slot": "boots", "combat_style": null,
+    "name": "adamantite_boots",
+    "display_name": "Adamantite Boots",
+    "slot": "boots",
+    "combat_style": null,
     "description": "A pair of adamantite boots.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 27,
-    "requirements": { "defense": 40 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 27,
+    "requirements": {
+      "defense": 40
+    }
   },
   "runite_boots": {
-    "name": "runite_boots", "display_name": "Runite Boots", "slot": "boots", "combat_style": null,
+    "name": "runite_boots",
+    "display_name": "Runite Boots",
+    "slot": "boots",
+    "combat_style": null,
     "description": "A pair of runite boots.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 37,
-    "requirements": { "defense": 50 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 37,
+    "requirements": {
+      "defense": 50
+    }
   },
   "dragon_boots": {
-    "name": "dragon_boots", "display_name": "Dragon Boots", "slot": "boots", "combat_style": null,
+    "name": "dragon_boots",
+    "display_name": "Dragon Boots",
+    "slot": "boots",
+    "combat_style": null,
     "description": "A pair of dragon boots.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 55,
-    "requirements": { "defense": 60 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 55,
+    "requirements": {
+      "defense": 60
+    }
   },
   "bronze_hoe": {
-    "name": "bronze_hoe", "display_name": "Bronze Hoe", "slot": "hoe", "combat_style": null,
+    "name": "bronze_hoe",
+    "display_name": "Bronze Hoe",
+    "slot": "hoe",
+    "combat_style": null,
     "description": "A basic bronze hoe. Slightly increases harvest yield.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 0,
-    "farming_efficiency": 0.10, "requirements": {}
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "farming_efficiency": 0.1,
+    "requirements": {}
   },
   "iron_hoe": {
-    "name": "iron_hoe", "display_name": "Iron Hoe", "slot": "hoe", "combat_style": null,
+    "name": "iron_hoe",
+    "display_name": "Iron Hoe",
+    "slot": "hoe",
+    "combat_style": null,
     "description": "An iron hoe. Increases harvest yield.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 0,
-    "farming_efficiency": 0.15, "requirements": { "farming": 10 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "farming_efficiency": 0.15,
+    "requirements": {
+      "farming": 10
+    }
   },
   "steel_hoe": {
-    "name": "steel_hoe", "display_name": "Steel Hoe", "slot": "hoe", "combat_style": null,
+    "name": "steel_hoe",
+    "display_name": "Steel Hoe",
+    "slot": "hoe",
+    "combat_style": null,
     "description": "A steel hoe. Noticeably increases harvest yield.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 0,
-    "farming_efficiency": 0.20, "requirements": { "farming": 20 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "farming_efficiency": 0.2,
+    "requirements": {
+      "farming": 20
+    }
   },
   "mithril_hoe": {
-    "name": "mithril_hoe", "display_name": "Mithril Hoe", "slot": "hoe", "combat_style": null,
+    "name": "mithril_hoe",
+    "display_name": "Mithril Hoe",
+    "slot": "hoe",
+    "combat_style": null,
     "description": "A mithril hoe. Greatly increases harvest yield.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 0,
-    "farming_efficiency": 0.25, "requirements": { "farming": 35 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "farming_efficiency": 0.25,
+    "requirements": {
+      "farming": 35
+    }
   },
   "adamantite_hoe": {
-    "name": "adamantite_hoe", "display_name": "Adamantite Hoe", "slot": "hoe", "combat_style": null,
+    "name": "adamantite_hoe",
+    "display_name": "Adamantite Hoe",
+    "slot": "hoe",
+    "combat_style": null,
     "description": "An adamantite hoe. Substantially increases harvest yield.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 0,
-    "farming_efficiency": 0.30, "requirements": { "farming": 50 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "farming_efficiency": 0.3,
+    "requirements": {
+      "farming": 50
+    }
   },
   "runite_hoe": {
-    "name": "runite_hoe", "display_name": "Runite Hoe", "slot": "hoe", "combat_style": null,
+    "name": "runite_hoe",
+    "display_name": "Runite Hoe",
+    "slot": "hoe",
+    "combat_style": null,
     "description": "A runite hoe. The finest farming tool available.",
-    "attack_bonus": 0, "strength_bonus": 0, "defense_bonus": 0,
-    "farming_efficiency": 0.40, "requirements": { "farming": 65 }
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "farming_efficiency": 0.4,
+    "requirements": {
+      "farming": 65
+    }
   }
 }

@@ -98,10 +98,17 @@ class HomeViewModel @Inject constructor(
             val flags: PlayerFlags = json.decodeFromString(player.flags)
             val levels: Map<String, Int> = json.decodeFromString(player.skillLevels)
             val agilityLevel = levels[Skills.AGILITY] ?: 1
-            val perTaskMs    = SkillSimulator.sessionDurationMs(agilityLevel)
+            val sessionMs    = SkillSimulator.sessionDurationMs(agilityLevel)
+            val perItemMs    = sessionMs / 60
             val queueStart   = session?.endsAt ?: System.currentTimeMillis()
             val queueEndsAt  = if (flags.sessionQueue.isEmpty()) 0L
-                               else queueStart + flags.sessionQueue.size * perTaskMs
+                               else queueStart + flags.sessionQueue.sumOf {
+                                   when {
+                                       it.estimatedDurationMs > 0 -> it.estimatedDurationMs
+                                       it.qty > 0                 -> it.qty.toLong() * perItemMs
+                                       else                       -> sessionMs
+                                   }
+                               }
             extra.copy(
                 isLoading           = false,
                 coins               = player.coins,

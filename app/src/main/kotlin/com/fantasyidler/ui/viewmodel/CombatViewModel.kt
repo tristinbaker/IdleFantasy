@@ -188,7 +188,15 @@ class CombatViewModel @Inject constructor(
         viewModelScope.launch {
             if (sessionRepo.getActiveSession() != null) {
                 val dungeonName = gameData.dungeons[dungeonKey]?.displayName ?: dungeonKey
-                val enqueued = playerRepo.enqueueAction(QueuedAction("combat", dungeonKey, dungeonName))
+                val agility     = (json.decodeFromString<Map<String, Int>>(playerRepo.getOrCreatePlayer().skillLevels))[Skills.AGILITY] ?: 1
+                val enqueued = playerRepo.enqueueAction(
+                    QueuedAction(
+                        skillName           = "combat",
+                        activityKey         = dungeonKey,
+                        skillDisplayName    = dungeonName,
+                        estimatedDurationMs = SkillSimulator.sessionDurationMs(agility),
+                    )
+                )
                 _extra.update {
                     it.copy(
                         snackbarMessage = if (enqueued) "Added to queue: $dungeonName." else "Queue is full (3/3).",
@@ -343,7 +351,15 @@ class CombatViewModel @Inject constructor(
         viewModelScope.launch {
             if (sessionRepo.getActiveSession() != null) {
                 val bossName = gameData.bosses[bossKey]?.displayName ?: bossKey
-                val enqueued = playerRepo.enqueueAction(QueuedAction("boss", bossKey, bossName))
+                val bossMs   = (gameData.bosses[bossKey]?.durationMinutes ?: 1) * 60_000L
+                val enqueued = playerRepo.enqueueAction(
+                    QueuedAction(
+                        skillName           = "boss",
+                        activityKey         = bossKey,
+                        skillDisplayName    = bossName,
+                        estimatedDurationMs = bossMs,
+                    )
+                )
                 _extra.update {
                     it.copy(
                         snackbarMessage = if (enqueued) "Added to queue: $bossName." else "Queue is full (3/3).",

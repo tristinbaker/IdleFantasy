@@ -343,19 +343,36 @@ private fun CombatSkillsTab(
     totalStrengthBonus: Int,
     totalDefenseBonus: Int,
 ) {
+    val context = LocalContext.current
+    var tappedSkill by remember { mutableStateOf<String?>(null) }
+
+    tappedSkill?.let { key ->
+        AlertDialog(
+            onDismissRequest = { tappedSkill = null },
+            title = { Text(GameStrings.skillName(context, key)) },
+            text  = { Text(GameStrings.skillDesc(context, key)) },
+            confirmButton = {
+                TextButton(onClick = { tappedSkill = null }) {
+                    Text(stringResource(R.string.btn_close))
+                }
+            },
+        )
+    }
+
     LazyColumn(Modifier.fillMaxSize()) {
         items(COMBAT_SKILLS) { key ->
             val gearBonus = when (key) {
-                Skills.ATTACK  -> totalAttackBonus
+                Skills.ATTACK   -> totalAttackBonus
                 Skills.STRENGTH -> totalStrengthBonus
-                Skills.DEFENSE -> totalDefenseBonus
-                else           -> 0
+                Skills.DEFENSE  -> totalDefenseBonus
+                else            -> 0
             }
             CombatSkillRow(
                 skillKey  = key,
                 level     = skillLevels[key] ?: 1,
                 xp        = skillXp[key]     ?: 0L,
                 gearBonus = gearBonus,
+                onClick   = { tappedSkill = key },
             )
         }
         item { Spacer(Modifier.height(16.dp)) }
@@ -368,6 +385,7 @@ private fun CombatSkillRow(
     level: Int,
     xp: Long,
     gearBonus: Int = 0,
+    onClick: () -> Unit = {},
 ) {
     val context  = LocalContext.current
     val name     = GameStrings.skillName(context, skillKey)
@@ -377,6 +395,7 @@ private fun CombatSkillRow(
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .clickable(onClick = onClick)
             .padding(horizontal = 16.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -510,6 +529,7 @@ private fun DungeonRow(
     runCount: Int = 0,
     onTap: () -> Unit,
 ) {
+    val context  = LocalContext.current
     val dimColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
 
     Row(
@@ -521,13 +541,13 @@ private fun DungeonRow(
     ) {
         Column(Modifier.weight(1f)) {
             Text(
-                text       = dungeon.displayName,
+                text       = GameStrings.dungeonName(context, dungeon.name),
                 style      = MaterialTheme.typography.bodyLarge,
                 fontWeight = FontWeight.Medium,
                 color      = if (unlocked) MaterialTheme.colorScheme.onSurface else dimColor,
             )
             Text(
-                text     = dungeon.description,
+                text     = GameStrings.dungeonDesc(context, dungeon.name).takeIf { it.isNotBlank() } ?: dungeon.description,
                 style    = MaterialTheme.typography.bodySmall,
                 color    = if (unlocked) MaterialTheme.colorScheme.onSurfaceVariant
                            else dimColor,
@@ -588,7 +608,9 @@ private fun CombatSessionBanner(
     onAbandon: () -> Unit,
     onDebugFinish: () -> Unit,
 ) {
-    val dungeonName = dungeons.firstOrNull { it.name == session.activityKey }?.displayName
+    val context = LocalContext.current
+    val dungeonName = dungeons.firstOrNull { it.name == session.activityKey }
+        ?.let { GameStrings.dungeonName(context, it.name) }
         ?: bosses.firstOrNull { it.id == session.activityKey }?.let { "${it.emoji} ${it.displayName}" }
         ?: session.activityKey
 
@@ -1024,12 +1046,12 @@ private fun DungeonInfoSheet(
             .weight(1f, fill = false)
             .verticalScroll(rememberScrollState())) {
         Text(
-            text       = dungeon.displayName,
+            text       = GameStrings.dungeonName(context, dungeon.name),
             style      = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold,
         )
         Text(
-            text  = dungeon.description,
+            text  = GameStrings.dungeonDesc(context, dungeon.name).takeIf { it.isNotBlank() } ?: dungeon.description,
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )

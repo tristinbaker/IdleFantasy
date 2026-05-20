@@ -1564,6 +1564,13 @@ private fun CraftRecipeRow(
                 style = MaterialTheme.typography.bodySmall,
                 color = if (enabled) MaterialTheme.colorScheme.onSurfaceVariant else dim,
             )
+            recipe.outputCombatStyle?.let { style ->
+                Text(
+                    text  = "${context.getString(R.string.label_combat_style)}: ${style.replaceFirstChar { it.uppercase() }}",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = if (enabled) MaterialTheme.colorScheme.onSurfaceVariant else dim,
+                )
+            }
             val statParts = buildList {
                 if (recipe.outputAttackBonus   > 0) add("+${recipe.outputAttackBonus} Atk")
                 if (recipe.outputStrengthBonus > 0) add("+${recipe.outputStrengthBonus} Str")

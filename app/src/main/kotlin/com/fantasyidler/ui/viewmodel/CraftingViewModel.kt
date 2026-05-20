@@ -54,6 +54,8 @@ data class CraftableRecipe(
     val tier: String = "",
     /** Combat stat bonuses granted by this consumable (herblore only). */
     val effects: Map<String, Int> = emptyMap(),
+    /** Combat style of the output weapon, if applicable (e.g. "attack", "ranged", "magic"). */
+    val outputCombatStyle: String? = null,
 )
 
 private fun tierFromKey(key: String) =
@@ -179,6 +181,7 @@ class CraftingViewModel @Inject constructor(
                 outputStrengthBonus = equip?.strengthBonus  ?: 0,
                 outputDefenseBonus  = equip?.defenseBonus   ?: 0,
                 outputRequirements  = equip?.requirements   ?: emptyMap(),
+                outputCombatStyle   = equip?.combatStyle,
                 category            = category,
                 tier                = tierFromKey(key),
             )
@@ -222,6 +225,7 @@ class CraftingViewModel @Inject constructor(
                 outputDamage        = r.damage        ?: 0,
                 outputAttackBonus   = r.attackBonus   ?: 0,
                 outputStrengthBonus = r.strengthBonus ?: 0,
+                outputCombatStyle   = gameData.equipment[r.itemName]?.combatStyle,
                 category            = category,
                 tier                = tierFromKey(r.itemName),
             )
@@ -244,6 +248,7 @@ class CraftingViewModel @Inject constructor(
                 outputStrengthBonus = equip?.strengthBonus  ?: 0,
                 outputDefenseBonus  = equip?.defenseBonus   ?: 0,
                 outputRequirements  = equip?.requirements   ?: emptyMap(),
+                outputCombatStyle   = equip?.combatStyle,
                 category            = "Jewellery",
                 tier                = tierFromKey(key),
             )
@@ -291,11 +296,14 @@ class CraftingViewModel @Inject constructor(
         viewModelScope.launch {
             // Enqueue if a session is already running
             if (sessionRepo.getActiveSession() != null) {
+                val agility   = state.skillLevels[Skills.AGILITY] ?: 1
+                val perItemMs = SkillSimulator.sessionDurationMs(agility) / 60
                 val action = QueuedAction(
-                    skillName        = recipe.skillName,
-                    activityKey      = recipe.key,
-                    skillDisplayName = recipe.skillName.replaceFirstChar { it.uppercase() },
-                    qty              = qty,
+                    skillName           = recipe.skillName,
+                    activityKey         = recipe.key,
+                    skillDisplayName    = recipe.skillName.replaceFirstChar { it.uppercase() },
+                    qty                 = qty,
+                    estimatedDurationMs = qty.toLong() * perItemMs,
                 )
                 val enqueued = playerRepo.enqueueAction(action)
                 _extra.update {

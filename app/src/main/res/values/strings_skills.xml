@@ -44,7 +44,7 @@
     <string name="skill_hitpoints_name">Hitpoints</string>
     <string name="skill_hitpoints_desc">Your total health. Higher levels let you survive longer in combat.</string>
     <string name="skill_prayer_name">Prayer</string>
-    <string name="skill_prayer_desc">Bury bones to earn Prayer XP and unlock powerful combat prayers.</string>
+    <string name="skill_prayer_desc">Bury bones dropped from combat to earn Prayer XP. Higher levels increase your combat level.</string>
 
     <!-- ===== Agility course names and descriptions ===== -->
     <string name="agility_beginner_course_name">Beginner Course</string>

@@ -493,6 +493,7 @@ class PlayerRepository @Inject constructor(
             "bronze_pickaxe"     to 1,
             "bronze_axe"         to 1,
             "bronze_fishing_rod" to 1,
+            "bronze_boots"       to 1,
         )
         return Player(
             skillLevels = json.encode<Map<String, Int>>(Skills.DEFAULT_LEVELS),

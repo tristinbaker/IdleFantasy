@@ -39,6 +39,8 @@ data class QueuedAction(
     @SerialName("skill_display_name") val skillDisplayName: String,
     /** Quantity — used for prayer (bones) and runecrafting (essence). 0 = not applicable. */
     val qty: Int = 0,
+    /** Pre-computed session duration in ms, used to display accurate queue end time. */
+    @SerialName("estimated_duration_ms") val estimatedDurationMs: Long = 0L,
 )
 
 @Serializable

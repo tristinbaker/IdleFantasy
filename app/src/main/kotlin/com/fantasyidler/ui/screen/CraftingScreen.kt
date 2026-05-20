@@ -226,6 +226,14 @@ private fun RecipeRow(
                 style = MaterialTheme.typography.bodySmall,
                 color = if (enabled) MaterialTheme.colorScheme.onSurfaceVariant else dimColor,
             )
+            // Combat style (weapons only)
+            recipe.outputCombatStyle?.let { style ->
+                Text(
+                    text  = "${context.getString(R.string.label_combat_style)}: ${style.replaceFirstChar { it.uppercase() }}",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = if (enabled) MaterialTheme.colorScheme.onSurfaceVariant else dimColor,
+                )
+            }
             // Effects row (herblore only)
             if (recipe.effects.isNotEmpty()) {
                 val effectsText = recipe.effects.entries.joinToString("  ") { (stat, bonus) ->
