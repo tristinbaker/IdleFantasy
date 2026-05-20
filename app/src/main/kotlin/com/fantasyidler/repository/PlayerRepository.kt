@@ -151,6 +151,24 @@ class PlayerRepository @Inject constructor(
         playerDao.upsert(player.copy(coins = player.coins + amount))
     }
 
+    /** Awards capes for any skill already at 99 that doesn't have one yet (retroactive fix). */
+    suspend fun awardMissingCapes() {
+        val player    = getOrCreatePlayer()
+        val levels:    MutableMap<String, Int> = json.decodeFromString(player.skillLevels)
+        val inventory: MutableMap<String, Int> = json.decodeFromString(player.inventory)
+        var changed = false
+        for ((skill, level) in levels) {
+            if (level >= 99) {
+                val capeKey = capeKeyForSkill(skill) ?: continue
+                if (!inventory.containsKey(capeKey)) {
+                    inventory[capeKey] = 1
+                    changed = true
+                }
+            }
+        }
+        if (changed) playerDao.upsert(player.copy(inventory = json.encode<Map<String, Int>>(inventory)))
+    }
+
     /** Returns false if the player has insufficient coins. */
     suspend fun spendCoins(amount: Long): Boolean {
         val player = getOrCreatePlayer()

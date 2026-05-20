@@ -290,6 +290,10 @@
     <string name="settings_theme_dark">Dunkel</string>
     <string name="settings_theme_light">Hell</string>
     <string name="settings_theme_system">System</string>
+    <string name="settings_font_size">Schriftgröße</string>
+    <string name="settings_font_normal">Normal</string>
+    <string name="settings_font_large">Groß</string>
+    <string name="settings_font_huge">Sehr groß</string>
     <string name="settings_language_desc">Die Anzeigesprache der App überschreiben</string>
     <string name="settings_lang_english">English</string>
     <string name="settings_lang_deutsch">Deutsch</string>

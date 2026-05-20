@@ -31,10 +31,25 @@ class SettingsViewModel @Inject constructor(
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), "dark")
 
+    val fontScale: StateFlow<Float> = playerRepo.playerFlow
+        .map { player ->
+            if (player == null) return@map 1.0f
+            try { json.decodeFromString<PlayerFlags>(player.flags).fontScale }
+            catch (_: Exception) { 1.0f }
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 1.0f)
+
     fun setTheme(preference: String) {
         viewModelScope.launch {
             val flags = playerRepo.getFlags()
             playerRepo.updateFlags(flags.copy(themePreference = preference))
+        }
+    }
+
+    fun setFontScale(scale: Float) {
+        viewModelScope.launch {
+            val flags = playerRepo.getFlags()
+            playerRepo.updateFlags(flags.copy(fontScale = scale))
         }
     }
 

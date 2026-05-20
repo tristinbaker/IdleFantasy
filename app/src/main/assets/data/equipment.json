@@ -2525,7 +2525,6 @@
     "attack_bonus": 0,
     "strength_bonus": 0,
     "defense_bonus": 0,
-    "farming_efficiency": 0.1,
     "requirements": {}
   },
   "iron_hoe": {
@@ -2537,7 +2536,7 @@
     "attack_bonus": 0,
     "strength_bonus": 0,
     "defense_bonus": 0,
-    "farming_efficiency": 0.15,
+    "farming_efficiency": 0.25,
     "requirements": {
       "farming": 10
     }
@@ -2551,7 +2550,7 @@
     "attack_bonus": 0,
     "strength_bonus": 0,
     "defense_bonus": 0,
-    "farming_efficiency": 0.2,
+    "farming_efficiency": 0.5,
     "requirements": {
       "farming": 20
     }
@@ -2565,7 +2564,7 @@
     "attack_bonus": 0,
     "strength_bonus": 0,
     "defense_bonus": 0,
-    "farming_efficiency": 0.25,
+    "farming_efficiency": 0.75,
     "requirements": {
       "farming": 35
     }
@@ -2579,7 +2578,7 @@
     "attack_bonus": 0,
     "strength_bonus": 0,
     "defense_bonus": 0,
-    "farming_efficiency": 0.3,
+    "farming_efficiency": 1.0,
     "requirements": {
       "farming": 50
     }
@@ -2593,7 +2592,7 @@
     "attack_bonus": 0,
     "strength_bonus": 0,
     "defense_bonus": 0,
-    "farming_efficiency": 0.4,
+    "farming_efficiency": 1.25,
     "requirements": {
       "farming": 65
     }

@@ -1556,6 +1556,13 @@ private fun CraftRecipeRow(
                 fontWeight = FontWeight.Medium,
                 color      = if (enabled) MaterialTheme.colorScheme.onSurface else dim,
             )
+            if (recipe.outputQty > 1) {
+                Text(
+                    text  = "×${recipe.outputQty} per craft",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = if (enabled) MaterialTheme.colorScheme.primary else dim,
+                )
+            }
             val matText = recipe.materials.entries.joinToString("  ") { (item, qty) ->
                 "${GameStrings.itemName(context, item)} ${craftState.inventory[item] ?: 0}/$qty"
             }

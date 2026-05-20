@@ -29,6 +29,8 @@ data class PlayerFlags(
     @SerialName("theme_preference") val themePreference: String = "dark",
     /** Number of completed runs per dungeon/boss key. */
     @SerialName("dungeon_runs") val dungeonRuns: Map<String, Int> = emptyMap(),
+    /** App-wide font scale multiplier: 1.0 = Normal, 1.25 = Large, 1.5 = Huge. */
+    @SerialName("font_scale") val fontScale: Float = 1.0f,
 )
 
 /** A session to be started when the current one completes. */
