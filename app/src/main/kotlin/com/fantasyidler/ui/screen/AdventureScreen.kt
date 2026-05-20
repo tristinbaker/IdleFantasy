@@ -70,7 +70,7 @@ import com.fantasyidler.ui.components.foundation.ChunkyCard
 import com.fantasyidler.ui.theme.fantasy.FantasyPreviewSurface
 import com.fantasyidler.ui.theme.fantasy.LocalFantasyTokens
 import com.fantasyidler.ui.viewmodel.CombatViewModel
-import com.fantasyidler.ui.viewmodel.HomeViewModel
+import com.fantasyidler.ui.viewmodel.GlobalGameViewModel
 import com.fantasyidler.ui.viewmodel.InventoryViewModel
 import com.fantasyidler.ui.viewmodel.QuestWithProgress
 import com.fantasyidler.ui.viewmodel.QuestsViewModel
@@ -93,7 +93,7 @@ fun AdventureScreen(
     onOpenProfile: () -> Unit = {},
     questsVm: QuestsViewModel = hiltViewModel(),
     combatVm: CombatViewModel = hiltViewModel(),
-    globalVm: HomeViewModel = hiltViewModel(),
+    globalVm: GlobalGameViewModel = hiltViewModel(),
     inventoryVm: InventoryViewModel = hiltViewModel(),
 ) {
     val questsState by questsVm.uiState.collectAsState()

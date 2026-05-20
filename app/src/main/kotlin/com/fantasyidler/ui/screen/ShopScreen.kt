@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.CircularProgressIndicator
@@ -46,14 +45,14 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.R
 import com.fantasyidler.ui.components.EmptyState
-import com.fantasyidler.ui.components.SectionHeader
 import com.fantasyidler.ui.components.foundation.BigStepper
 import com.fantasyidler.ui.components.foundation.ChunkyButton
 import com.fantasyidler.ui.components.foundation.ChunkyButtonVariant
-import com.fantasyidler.ui.components.foundation.ChunkyCard
 import com.fantasyidler.ui.components.foundation.ChunkySheet
-import com.fantasyidler.ui.components.foundation.ClaimBadge
 import com.fantasyidler.ui.components.foundation.EntityIconDisk
+import com.fantasyidler.ui.screen.shop.components.AisleItem
+import com.fantasyidler.ui.screen.shop.components.AisleSection
+import com.fantasyidler.ui.screen.shop.shopEmojiFor
 import com.fantasyidler.ui.theme.fantasy.FantasyPreviewSurface
 import com.fantasyidler.ui.theme.fantasy.LocalFantasyTokens
 import com.fantasyidler.ui.viewmodel.ShopEntry
@@ -115,13 +114,13 @@ fun ShopScreen(
             ShopTabRow(subTab) { subTab = it }
             when {
                 state.isLoading -> ShopLoading()
-                subTab == 0 -> BuyList(
+                subTab == 0 -> BuyAisles(
                     entries       = viewModel.buyEntries,
                     coins         = state.coins,
                     xpBoostActive = state.xpBoostActive,
                     onBuy         = viewModel::openBuy,
                 )
-                else -> SellList(
+                else -> SellAisles(
                     inventory          = state.inventory,
                     equipped           = state.equipped,
                     context            = context,
@@ -178,11 +177,11 @@ private fun ShopTabRow(selected: Int, onSelect: (Int) -> Unit) {
 }
 
 // ---------------------------------------------------------------------------
-// Buy list
+// Buy aisles
 // ---------------------------------------------------------------------------
 
 @Composable
-private fun BuyList(
+private fun BuyAisles(
     entries: List<ShopEntry>,
     coins: Long,
     xpBoostActive: Boolean,
@@ -202,81 +201,48 @@ private fun BuyList(
     LazyColumn(
         modifier            = Modifier.fillMaxSize(),
         contentPadding      = PaddingValues(horizontal = tokens.spacing.l, vertical = tokens.spacing.m + tokens.spacing.s),
-        verticalArrangement = Arrangement.spacedBy(tokens.spacing.m + tokens.spacing.xs),
+        verticalArrangement = Arrangement.spacedBy(tokens.spacing.l),
     ) {
         grouped.forEach { (category, categoryEntries) ->
-            item(key = "hdr_$category") {
-                Box(modifier = Modifier.padding(top = tokens.spacing.s, bottom = tokens.spacing.xs)) {
-                    SectionHeader(category)
+            val saleCount = categoryEntries.count { it.isOnSale }
+            item(key = "aisle_$category") {
+                AisleSection(
+                    title          = category,
+                    headerTrailing = if (saleCount > 0) {
+                        { SaleCountChip(saleCount) }
+                    } else null,
+                ) {
+                    AisleGrid(items = categoryEntries) { entry ->
+                        val canAfford = coins >= entry.price
+                        val isActiveBoost = entry.key == ShopViewModel.XP_BOOST_KEY && xpBoostActive
+                        AisleItem(
+                            entityId      = entry.key,
+                            displayName   = entry.displayName,
+                            price         = entry.price,
+                            originalPrice = entry.originalPrice,
+                            isOnSale      = entry.isOnSale,
+                            percentOff    = entry.percentOff,
+                            dim           = !canAfford && !isActiveBoost,
+                            badge         = if (isActiveBoost) stringResource(R.string.shop_active) else null,
+                            emojiFallback = shopEmojiFor(entry.categoryName, entry.key),
+                            onClick       = { onBuy(entry) },
+                        )
+                    }
                 }
-            }
-            items(categoryEntries, key = { it.key }) { entry ->
-                BuyRow(entry = entry, coins = coins, xpBoostActive = xpBoostActive, onBuy = onBuy)
             }
         }
         item { Spacer(Modifier.height(tokens.spacing.l)) }
     }
 }
 
-@Composable
-private fun BuyRow(
-    entry: ShopEntry,
-    coins: Long,
-    xpBoostActive: Boolean,
-    onBuy: (ShopEntry) -> Unit,
-) {
-    val tokens        = LocalFantasyTokens.current
-    val canAfford     = coins >= entry.price
-    val isXpBoost     = entry.key == ShopViewModel.XP_BOOST_KEY
-    val isActiveBoost = isXpBoost && xpBoostActive
-    val dimColor      = tokens.colors.onSurface.copy(alpha = 0.38f)
-
-    ChunkyCard(
-        onClick   = { onBuy(entry) },
-        highlight = isActiveBoost,
-    ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            EntityIconDisk(
-                entityId           = entry.key,
-                contentDescription = entry.displayName,
-                size               = tokens.spacing.xxl + tokens.spacing.m + tokens.spacing.xs,
-            )
-            Spacer(Modifier.width(tokens.spacing.m + tokens.spacing.s))
-            Column(modifier = Modifier.weight(1f)) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(
-                        text       = entry.displayName,
-                        style      = tokens.typography.titleLarge,
-                        fontWeight = FontWeight.Bold,
-                        color      = if (canAfford) tokens.colors.onSurface else dimColor,
-                    )
-                    if (isActiveBoost) {
-                        Spacer(Modifier.width(tokens.spacing.s + tokens.spacing.xs))
-                        ClaimBadge(text = stringResource(R.string.shop_active), pulse = true)
-                    }
-                }
-                if (entry.description.isNotBlank()) {
-                    Text(
-                        text  = entry.description,
-                        style = tokens.typography.bodyMedium,
-                        color = tokens.colors.onSurfaceMuted.copy(alpha = if (canAfford) 1f else 0.5f),
-                    )
-                }
-            }
-            Spacer(Modifier.width(tokens.spacing.m))
-            PricePill(price = entry.price.toLong(), enabled = canAfford)
-        }
-    }
-}
-
 // ---------------------------------------------------------------------------
-// Sell list
+// Sell aisles
 // ---------------------------------------------------------------------------
 
 private val SELL_CATEGORY_ORDER = listOf("Weapons", "Armor", "Tools", "Food", "Materials", "Misc")
 
 @Composable
-private fun SellList(
+private fun SellAisles(
     inventory: Map<String, Int>,
     equipped: Map<String, String?>,
     context: android.content.Context,
@@ -297,7 +263,7 @@ private fun SellList(
     LazyColumn(
         modifier            = Modifier.fillMaxSize(),
         contentPadding      = PaddingValues(horizontal = tokens.spacing.l, vertical = tokens.spacing.m + tokens.spacing.s),
-        verticalArrangement = Arrangement.spacedBy(tokens.spacing.m + tokens.spacing.xs),
+        verticalArrangement = Arrangement.spacedBy(tokens.spacing.l),
     ) {
         item {
             Row(
@@ -327,49 +293,25 @@ private fun SellList(
             }
         } else {
             grouped.forEach { (category, entries) ->
-                item(key = "sell_hdr_$category") {
-                    Box(modifier = Modifier.padding(top = tokens.spacing.s, bottom = tokens.spacing.xs)) {
-                        SectionHeader(category)
-                    }
-                }
-                items(entries, key = { it.key }) { (key, qty) ->
-                    val sellPrice   = priceFor(key)
-                    val isEquipped  = equipped.values.any { it == key }
-                    val displayName = GameStrings.itemName(context, key)
-
-                    ChunkyCard(onClick = { onSell(key) }) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            EntityIconDisk(
-                                entityId           = key,
-                                contentDescription = displayName,
-                                size               = tokens.spacing.xxl + tokens.spacing.m + tokens.spacing.xs,
+                item(key = "sell_aisle_$category") {
+                    AisleSection(title = category) {
+                        AisleGrid(items = entries.toList()) { entry ->
+                            val key         = entry.key
+                            val qty         = entry.value
+                            val isEquipped  = equipped.values.any { it == key }
+                            val displayName = GameStrings.itemName(context, key)
+                            AisleItem(
+                                entityId      = key,
+                                displayName   = displayName,
+                                price         = priceFor(key),
+                                badge         = when {
+                                    isEquipped -> stringResource(R.string.shop_equipped_label)
+                                    qty > 1    -> "×$qty"
+                                    else       -> null
+                                },
+                                emojiFallback = shopEmojiFor(category, key),
+                                onClick       = { onSell(key) },
                             )
-                            Spacer(Modifier.width(tokens.spacing.m + tokens.spacing.s))
-                            Column(modifier = Modifier.weight(1f)) {
-                                Row(verticalAlignment = Alignment.CenterVertically) {
-                                    Text(
-                                        text       = displayName,
-                                        style      = tokens.typography.titleLarge,
-                                        fontWeight = FontWeight.Bold,
-                                        color      = tokens.colors.onSurface,
-                                    )
-                                    if (isEquipped) {
-                                        Spacer(Modifier.width(tokens.spacing.s + tokens.spacing.xs))
-                                        Text(
-                                            text  = stringResource(R.string.shop_equipped_label),
-                                            style = tokens.typography.labelSmall,
-                                            color = tokens.colors.onSurfaceMuted,
-                                        )
-                                    }
-                                }
-                                Text(
-                                    text  = stringResource(R.string.shop_qty_in_inv, qty),
-                                    style = tokens.typography.bodyMedium,
-                                    color = tokens.colors.onSurfaceMuted,
-                                )
-                            }
-                            Spacer(Modifier.width(tokens.spacing.m))
-                            PricePill(price = sellPrice.toLong(), enabled = true)
                         }
                     }
                 }
@@ -380,22 +322,46 @@ private fun SellList(
 }
 
 // ---------------------------------------------------------------------------
-// Price pill
+// Grid wrapper — two columns per row, fills shorter rows with a Spacer.
 // ---------------------------------------------------------------------------
 
 @Composable
-private fun PricePill(price: Long, enabled: Boolean) {
+private fun <T> AisleGrid(items: List<T>, item: @Composable (T) -> Unit) {
+    val tokens = LocalFantasyTokens.current
+    Column(verticalArrangement = Arrangement.spacedBy(tokens.spacing.s)) {
+        items.chunked(2).forEach { pair ->
+            Row(
+                modifier              = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(tokens.spacing.s),
+            ) {
+                Box(modifier = Modifier.weight(1f)) { item(pair[0]) }
+                if (pair.size == 2) {
+                    Box(modifier = Modifier.weight(1f)) { item(pair[1]) }
+                } else {
+                    Spacer(modifier = Modifier.weight(1f))
+                }
+            }
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Sale count chip — shown in an aisle header when items are discounted today.
+// ---------------------------------------------------------------------------
+
+@Composable
+private fun SaleCountChip(count: Int) {
     val tokens = LocalFantasyTokens.current
     Surface(
         shape = tokens.shapes.chip,
-        color = tokens.colors.primary.copy(alpha = if (enabled) 0.20f else 0.08f),
+        color = tokens.colors.warning.copy(alpha = 0.20f),
     ) {
         Text(
-            text       = "$price",
-            modifier   = Modifier.padding(horizontal = tokens.spacing.m + tokens.spacing.xs, vertical = tokens.spacing.s),
+            text       = "$count on sale",
+            modifier   = Modifier.padding(horizontal = tokens.spacing.s, vertical = tokens.spacing.xs),
             style      = tokens.typography.labelSmall,
             fontWeight = FontWeight.Bold,
-            color      = if (enabled) tokens.colors.primary else tokens.colors.primary.copy(alpha = 0.5f),
+            color      = tokens.colors.warning,
         )
     }
 }
@@ -427,6 +393,7 @@ private fun TransactionSheet(
             entityId           = transaction.key,
             contentDescription = transaction.displayName,
             size               = tokens.spacing.xxl + tokens.spacing.xxl + tokens.spacing.m,
+            emojiFallback      = shopEmojiFor("", transaction.key),
         )
         Spacer(Modifier.height(tokens.spacing.m + tokens.spacing.s))
         Text(
@@ -502,6 +469,23 @@ private fun TransactionSheet(
     }
 }
 
+@Composable
+private fun PricePill(price: Long, enabled: Boolean) {
+    val tokens = LocalFantasyTokens.current
+    Surface(
+        shape = tokens.shapes.chip,
+        color = tokens.colors.primary.copy(alpha = if (enabled) 0.20f else 0.08f),
+    ) {
+        Text(
+            text       = "$price",
+            modifier   = Modifier.padding(horizontal = tokens.spacing.m + tokens.spacing.xs, vertical = tokens.spacing.s),
+            style      = tokens.typography.labelSmall,
+            fontWeight = FontWeight.Bold,
+            color      = if (enabled) tokens.colors.primary else tokens.colors.primary.copy(alpha = 0.5f),
+        )
+    }
+}
+
 // ---------------------------------------------------------------------------
 // State containers
 // ---------------------------------------------------------------------------
@@ -520,35 +504,6 @@ private fun ShopLoading() {
 @Composable
 private fun ShopEmpty(title: String, desc: String) {
     EmptyState(title = title, description = desc)
-}
-
-@Composable
-private fun ShopError(message: String) {
-    val tokens = LocalFantasyTokens.current
-    Surface(
-        color    = tokens.colors.error.copy(alpha = 0.12f),
-        shape    = tokens.shapes.card,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(tokens.spacing.l),
-    ) {
-        Column(
-            modifier            = Modifier.padding(tokens.spacing.l),
-            verticalArrangement = Arrangement.spacedBy(tokens.spacing.s),
-        ) {
-            Text(
-                text       = stringResource(R.string.shop_error_title),
-                style      = tokens.typography.titleLarge,
-                fontWeight = FontWeight.Bold,
-                color      = tokens.colors.error,
-            )
-            Text(
-                text  = message,
-                style = tokens.typography.bodyMedium,
-                color = tokens.colors.onSurface,
-            )
-        }
-    }
 }
 
 // ---------------------------------------------------------------------------
@@ -571,12 +526,6 @@ private fun PreviewShopEmpty() {
     FantasyPreviewSurface {
         ShopEmpty(title = "Inventory empty", desc = "Train to fill it.")
     }
-}
-
-@PreviewLightDark
-@Composable
-private fun PreviewShopError() {
-    FantasyPreviewSurface { ShopError("Network unreachable.") }
 }
 
 @PreviewLightDark

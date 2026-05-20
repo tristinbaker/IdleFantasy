@@ -3,11 +3,11 @@ package com.fantasyidler.ui.viewmodel
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fantasyidler.data.json.MarketplaceItem
 import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
+import com.fantasyidler.ui.screen.shop.DailySaleRoller
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -23,14 +23,24 @@ import javax.inject.Inject
 // Models
 // ---------------------------------------------------------------------------
 
-/** A flat, display-ready buy entry derived from MarketplaceJson. */
+/**
+ * A flat, display-ready buy entry derived from MarketplaceJson.
+ *
+ * [price] is the *effective* price the player pays (with daily sale applied if
+ * any). When [isOnSale] is true, [originalPrice] holds the pre-discount value
+ * for the strikethrough UI on the aisle tag.
+ */
 data class ShopEntry(
     val key: String,
     val displayName: String,
     val description: String,
     val price: Int,
     val categoryName: String,
-)
+    val originalPrice: Int = price,
+    val percentOff: Int = 0,
+) {
+    val isOnSale: Boolean get() = percentOff > 0 && originalPrice > price
+}
 
 data class ShopTransaction(
     val key: String,
@@ -107,6 +117,21 @@ class ShopViewModel @Inject constructor(
             }
             .sortedWith(compareBy({ it.categoryName }, { it.price }))
 
+        // Roll today's sales — same picks for every player on the same day.
+        val sales = DailySaleRoller.roll(
+            itemKeys     = regular.map { it.key },
+            priceLookup  = { key -> regular.first { it.key == key }.price },
+        )
+        val regularDiscounted = regular.map { entry ->
+            sales[entry.key]?.let { s ->
+                entry.copy(
+                    price         = s.salePrice,
+                    originalPrice = s.originalPrice,
+                    percentOff    = s.percentOff,
+                )
+            } ?: entry
+        }
+
         val boost = ShopEntry(
             key          = XP_BOOST_KEY,
             displayName  = "2× XP Boost (48h)",
@@ -114,7 +139,7 @@ class ShopViewModel @Inject constructor(
             price        = PlayerRepository.XP_BOOST_COST.toInt(),
             categoryName = "Special",
         )
-        listOf(boost) + regular
+        listOf(boost) + regularDiscounted
     }
 
     // ------------------------------------------------------------------

@@ -43,7 +43,7 @@ import com.fantasyidler.ui.screen.QuestsScreen
 import com.fantasyidler.ui.screen.SettingsScreen
 import com.fantasyidler.ui.screen.ShopScreen
 import com.fantasyidler.ui.screen.SkillsScreen
-import com.fantasyidler.ui.viewmodel.HomeViewModel
+import com.fantasyidler.ui.viewmodel.GlobalGameViewModel
 import com.fantasyidler.ui.viewmodel.OnboardingViewModel
 import com.fantasyidler.ui.viewmodel.RootHudViewModel
 
@@ -74,11 +74,10 @@ fun AppNavigation() {
     val hudVm: RootHudViewModel = hiltViewModel()
     val hudState by hudVm.uiState.collectAsState()
 
-    // HomeViewModel is hoisted to the root scope so the four global flows it
-    // owns (sessionSummary dialog, what's-new dialog, character-setup sheet,
-    // session-collect trigger) fire from any tab. PR #9.5 renames this to
-    // GlobalGameViewModel and drops the now-unused dashboard fields.
-    val globalVm: HomeViewModel = hiltViewModel()
+    // Hoisted to the root scope so the four global flows it owns
+    // (sessionSummary dialog, what's-new dialog, character-setup sheet,
+    // session-collect trigger) fire from any tab.
+    val globalVm: GlobalGameViewModel = hiltViewModel()
     val globalState by globalVm.uiState.collectAsState()
 
     Scaffold(
