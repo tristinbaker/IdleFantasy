@@ -283,7 +283,7 @@
     <!-- Translator note: %1$d = total hole depth in metres -->
     <string name="dig_depth_format">Das Loch ist %1$d Meter tief.</string>
 
-    <!-- ===== TODO: translate — Settings ===== -->
+    <!-- ===== translate — Settings ===== -->
     <string name="settings_appearance">Aussehen</string>
     <string name="settings_theme">Design</string>
     <string name="settings_theme_desc">Wähle dein bevorzugtes Farbschema</string>
@@ -310,7 +310,7 @@
     <string name="settings_imported_ok">Import erfolgreich gespeichert</string>
     <string name="settings_imported_fail">Import fehlgeschlagen – ungültige Datei</string>
 
-    <!-- ===== TODO: translate — HomeScreen ===== -->
+    <!-- ===== translate — HomeScreen ===== -->
     <string name="home_died_message">Du bist gestorben und hast den Großteil deiner Gewinne verloren.</string>
     <string name="home_xp_boost_was_active">2× XP Boost war aktiv</string>
     <string name="home_loot">Beute</string>
@@ -327,7 +327,7 @@
         <item quantity="other">%1$d Belohnungen der Sitzung sammeln</item>
     </plurals>
 
-    <!-- ===== TODO: translate — CombatScreen ===== -->
+    <!-- ===== translate — CombatScreen ===== -->
     <string name="combat_level_label">Kampflevel</string>
     <string name="combat_log_label">Kampfprotokoll</string>
     <string name="combat_solo_bosses">Einzelbosse</string>
@@ -360,112 +360,112 @@
     <string name="combat_died_reward">Du hast 10 % der Prämien erhalten.</string>
     <string name="combat_gear_bonus">+%1$d Ausrüstung</string>
 
-    <!-- ===== TODO: translate — ProfileScreen ===== -->
-    <string name="profile_unnamed">Unnamed Adventurer</string>
-    <string name="profile_no_pets">No pets available</string>
-    <string name="profile_pet_collected">Collected</string>
-    <string name="profile_pet_not_found">Not Yet Found</string>
-    <string name="profile_equip_best">Equip Best Gear</string>
-    <string name="profile_combat_gear">Combat Gear</string>
-    <string name="profile_gathering_tools">Gathering Tools</string>
-    <string name="profile_food_dungeon">Food (Dungeon)</string>
-    <string name="profile_no_food">No cooked food in inventory</string>
-    <string name="profile_food_desc">×%1$d  •  heals %2$d HP</string>
-    <string name="profile_choose_slot">Choose %1$s</string>
-    <string name="profile_no_items">No eligible items in inventory</string>
+    <!-- ===== translate — ProfileScreen ===== -->
+    <string name="profile_unnamed">Unbekannter Abenteurer</string>
+    <string name="profile_no_pets">Haustiere sind nicht verfügbar</string>
+    <string name="profile_pet_collected">Gesammelt</string>
+    <string name="profile_pet_not_found">Noch nicht gefunden</string>
+    <string name="profile_equip_best">Mit der besten Ausrüstung ausstatten</string>
+    <string name="profile_combat_gear">Kampfausrüstung</string>
+    <string name="profile_gathering_tools">Werkzeuge</string>
+    <string name="profile_food_dungeon">Essen (Dungeon)</string>
+    <string name="profile_no_food">Keine gekochten Lebensmittel im Inventar</string>
+    <string name="profile_food_desc">×%1$d  •  heilt %2$d HP</string>
+    <string name="profile_choose_slot">%1$s auswählen</string>
+    <string name="profile_no_items">Keine passenden Artikel im Inventar</string>
     <string name="profile_stat_atk">Atk</string>
     <string name="profile_stat_str">Str</string>
-    <string name="profile_stat_ranged">Ranged</string>
-    <string name="profile_stat_magic">Magic</string>
-    <string name="profile_stat_mining">Mining</string>
+    <string name="profile_stat_ranged">Fernkampf</string>
+    <string name="profile_stat_magic">Magie</string>
+    <string name="profile_stat_mining">Bergbau</string>
     <string name="profile_stat_wc">WC</string>
-    <string name="profile_stat_fishing">Fishing</string>
-    <string name="profile_stat_farming">Farming</string>
+    <string name="profile_stat_fishing">Angeln</string>
+    <string name="profile_stat_farming">Landwirtschaft</string>
     <string name="profile_stat_def">Def</string>
-    <string name="profile_req_lv">Req lv.</string>
+    <string name="profile_req_lv">Benötigtes Level</string>
 
-    <!-- ===== TODO: translate — SkillsScreen ===== -->
-    <string name="skills_session_duration">Session: %1$dm</string>
-    <string name="skills_only_craftable">Only craftable</string>
-    <string name="skills_filter_all">All</string>
-    <string name="skills_add_to_queue">Add to Session Queue</string>
-    <string name="skills_add_queue_short">Add to Queue</string>
-    <string name="skills_level_req_xp">Lv. %1$d  •  %2$s XP/ore</string>
-    <string name="skills_tool_bonus">×%1$s tool bonus</string>
-    <string name="skills_fishing_desc">Level %1$d  •  Level-appropriate catches</string>
-    <string name="skills_prayer_desc">Level %1$d  •  Bury bones or scatter ashes for Prayer XP</string>
-    <string name="skills_no_bones">No bones or ashes in inventory</string>
-    <string name="skills_bone_qty">%1$d XP each  •  %2$d in inventory</string>
-    <string name="skills_bone_selected">%1$d XP each  •  %2$d available</string>
-    <string name="skills_xp_total">+%1$d XP total</string>
-    <string name="skills_no_essence">No Rune Essence in inventory — mine some first</string>
-    <string name="skills_no_runes">No rune types unlocked yet</string>
-    <string name="skills_essence_qty">%1$d Rune Essence in inventory</string>
-    <string name="skills_rune_desc">%1$d XP/rune  •  Lv. %2$d</string>
-    <string name="skills_rune_selected">%1$d XP/rune  •  %2$d essence available</string>
-    <string name="skills_level_reached">Level %1$d reached!</string>
-    <string name="skills_no_logs">No logs in inventory</string>
-    <string name="skills_log_desc">Lv. %1$d  •  %2$s XP/log</string>
-    <string name="skills_req_with_have">Requires %1$d %2$s (You have %3$d %4$s)</string>
+    <!-- ===== translate — SkillsScreen ===== -->
+    <string name="skills_session_duration">Dauer: %1$dm</string>
+    <string name="skills_only_craftable">Nur herstellbare</string>
+    <string name="skills_filter_all">Alle</string>
+    <string name="skills_add_to_queue">Zur Sitzungswarteschlange hinzufügen</string>
+    <string name="skills_add_queue_short">Zur Warteschlange hinzufügen</string>
+    <string name="skills_level_req_xp">Lv. %1$d  •  %2$s XP/Erz</string>
+    <string name="skills_tool_bonus">×%1$s Werkzeugbonus</string>
+    <string name="skills_fishing_desc">Level %1$d  •  Dem Level entsprechende Beute</string>
+    <string name="skills_prayer_desc">Level %1$d  •  Knochen begraben oder Asche verstreuen für Gebet-XP</string>
+    <string name="skills_no_bones">Keine Knochen oder Asche im Inventar</string>
+    <string name="skills_bone_qty">%1$d XP je  •  %2$d im Inventar</string>
+    <string name="skills_bone_selected">%1$d XP je  •  %2$d verfügbar</string>
+    <string name="skills_xp_total">+%1$d XP gesamt</string>
+    <string name="skills_no_essence">Keine Runenessenz im Inventar – schürfe erst welche</string>
+    <string name="skills_no_runes">Es sind noch keine Runentypen freigeschaltet</string>
+    <string name="skills_essence_qty">%1$d Runenessenz im Inventar</string>
+    <string name="skills_rune_desc">%1$d XP/Rune  •  Lv. %2$d</string>
+    <string name="skills_rune_selected">%1$d XP/Rune  •  %2$d Essenz verfügbar</string>
+    <string name="skills_level_reached">Level %1$d erreicht!</string>
+    <string name="skills_no_logs">Keine Holzstämme im Inventar</string>
+    <string name="skills_log_desc">Lv. %1$d  •  %2$s XP/Stamm</string>
+    <string name="skills_req_with_have">Erfordert %1$d %2$s (Du hast %3$d %4$s)</string>
 
-    <!-- ===== TODO: translate — ShopScreen ===== -->
-    <string name="shop_active">ACTIVE</string>
-    <string name="shop_sell_junk">Sell Junk</string>
-    <string name="shop_sell_old_gear">Sell Old Gear</string>
-    <string name="shop_equipped_label">(equipped)</string>
-    <string name="shop_qty_in_inv">×%1$d in inventory</string>
-    <string name="shop_price_each">%1$s coins ea.</string>
-    <string name="shop_buy_prefix">Buy: %1$s</string>
-    <string name="shop_sell_prefix">Sell: %1$s</string>
-    <string name="shop_price_each_long">%1$s coins each</string>
-    <string name="shop_total_cost">Total cost</string>
-    <string name="shop_youll_receive">You\'ll receive</string>
-    <string name="shop_total_amount">%1$s coins</string>
+    <!-- ===== translate — ShopScreen ===== -->
+    <string name="shop_active">AKTIV</string>
+    <string name="shop_sell_junk">Trödel verkaufen</string>
+    <string name="shop_sell_old_gear">Alte Ausrüstung verkaufen</string>
+    <string name="shop_equipped_label">(ausgestattet)</string>
+    <string name="shop_qty_in_inv">×%1$d im Inventar</string>
+    <string name="shop_price_each">%1$s Münzen pro Stück</string>
+    <string name="shop_buy_prefix">Kaufen: %1$s</string>
+    <string name="shop_sell_prefix">Verkaufen: %1$s</string>
+    <string name="shop_price_each_long">%1$s Münzen pro Stück</string>
+    <string name="shop_total_cost">Gesammtkosten</string>
+    <string name="shop_youll_receive">Du erhälst</string>
+    <string name="shop_total_amount">%1$s Münzen</string>
 
-    <!-- ===== TODO: translate — CraftingScreen ===== -->
-    <string name="crafting_no_mats">No mats</string>
-    <string name="crafting_produces">Produces %1$d× per craft</string>
-    <string name="crafting_effects">Effects</string>
-    <string name="crafting_xp_total">+%1$d XP total</string>
-    <string name="crafting_decrease">Decrease</string>
-    <string name="crafting_increase">Increase</string>
-    <string name="crafting_needed_have">%1$d (have %2$d)</string>
-    <string name="crafting_in_inventory">In inventory: ×%1$d</string>
+    <!-- ===== translate — CraftingScreen ===== -->
+    <string name="crafting_no_mats">Keine Zutaten</string>
+    <string name="crafting_produces">Stellt %1$d× her</string>
+    <string name="crafting_effects">Wirkung</string>
+    <string name="crafting_xp_total">+%1$d XP gesamt</string>
+    <string name="crafting_decrease">Verringern</string>
+    <string name="crafting_increase">Vergrößern</string>
+    <string name="crafting_needed_have">%1$d (hast %2$d)</string>
+    <string name="crafting_in_inventory">Im Inventar: ×%1$d</string>
 
-    <!-- ===== TODO: translate — FarmingScreen ===== -->
-    <string name="farming_harvested">Harvested %1$s</string>
-    <string name="farming_title">Farming — Level %1$d</string>
-    <string name="farming_patches">%1$d patches unlocked</string>
-    <string name="farming_clear_patch">Clear Patch</string>
-    <string name="farming_clear_desc">Remove the crop without any reward?</string>
+    <!-- ===== translate — FarmingScreen ===== -->
+    <string name="farming_harvested">%1$s geerntet</string>
+    <string name="farming_title">Landwirtschaft — Level %1$d</string>
+    <string name="farming_patches">%1$d Felder freigeschaltet</string>
+    <string name="farming_clear_patch">Feld leeren</string>
+    <string name="farming_clear_desc">Das Feld leeren, ohne dafür belohnt zu werden?</string>
 
-    <!-- ===== TODO: translate — QuestsScreen ===== -->
-    <string name="quests_none_in_category">No quests in this category.</string>
+    <!-- ===== translate — QuestsScreen ===== -->
+    <string name="quests_none_in_category">In dieser Kategorie gibt es keine Missionen.</string>
 
-    <!-- ===== TODO: translate — CharacterSetupSheet ===== -->
-    <string name="character_create_title">Create Your Character</string>
-    <string name="character_edit_title">Edit Character</string>
-    <string name="character_name_label">Character Name</string>
-    <string name="character_gender">Gender</string>
-    <string name="character_gender_male">Male</string>
-    <string name="character_gender_female">Female</string>
-    <string name="character_gender_other">Other</string>
-    <string name="character_race">Race</string>
-    <string name="character_race_human">Human</string>
+    <!-- ===== translate — CharacterSetupSheet ===== -->
+    <string name="character_create_title">Erstelle deinen Charakter</string>
+    <string name="character_edit_title">Charakter bearbeiten</string>
+    <string name="character_name_label">Charaktername</string>
+    <string name="character_gender">Geschlecht</string>
+    <string name="character_gender_male">Männlich</string>
+    <string name="character_gender_female">Weiblich</string>
+    <string name="character_gender_other">Diverse</string>
+    <string name="character_race">Art</string>
+    <string name="character_race_human">Mensch</string>
     <string name="character_race_elf">Elf</string>
-    <string name="character_race_dwarf">Dwarf</string>
-    <string name="character_race_orc">Orc</string>
-    <string name="character_race_halfling">Halfling</string>
-    <string name="character_race_gnome">Gnome</string>
+    <string name="character_race_dwarf">Zwerg</string>
+    <string name="character_race_orc">Ork</string>
+    <string name="character_race_halfling">Halbling</string>
+    <string name="character_race_gnome">Kobold</string>
 
-    <!-- ===== TODO: translate — OnboardingScreen ===== -->
-    <string name="onboarding_sessions_title">Sessions</string>
-    <string name="onboarding_sessions_desc">Tap any skill and start a training session. Sessions run in the background, even with the app closed. Come back to collect your loot and XP.</string>
-    <string name="onboarding_progress_title">Work Your Way Up</string>
-    <string name="onboarding_progress_desc">Mine ore to smelt bars, then forge better weapons and armour. Equip stronger gear to tackle harder dungeons and bosses. Better tools speed up gathering, and higher-tier equipment unlocks content that weaker gear can\'t survive.</string>
-    <string name="onboarding_quests_title">Quests &amp; Pets</string>
-    <string name="onboarding_quests_desc">Complete quests to earn XP rewards. Rare pets can drop while training skills and provide permanent XP boosts.</string>
-    <string name="onboarding_welcome_desc">An idle RPG inspired by classic MMORPGs. Train skills, fight dungeons, and craft gear. All offline, no accounts, no ads.</string>
+    <!-- ===== translate — OnboardingScreen ===== -->
+    <string name="onboarding_sessions_title">Sitzungen</string>
+    <string name="onboarding_sessions_desc">Tippe auf eine beliebige Fertigkeit und starte eine Trainingseinheit. Die Einheiten laufen im Hintergrund weiter, auch wenn die App geschlossen ist. Komm später zurück, um deine Beute und deine EP einzusammeln.</string>
+    <string name="onboarding_progress_title">Arbeite dich hoch</string>
+    <string name="onboarding_progress_desc">Schürfe Erz, um Barren zu schmieden, und stelle dann bessere Waffen und Rüstungen her. Rüste dich mit stärkerer Ausrüstung aus, um schwierigere Dungeons und Bosse zu bewältigen. Bessere Werkzeuge beschleunigen das Sammeln, und Ausrüstung höherer Stufen schaltet Inhalte frei, die mit schwächerer Ausrüstung nicht zu bewältigen sind.</string>
+    <string name="onboarding_quests_title">Missionen &amp; Haustiere</string>
+    <string name="onboarding_quests_desc">Erfülle Quests, um XP-Belohnungen zu erhalten. Beim Trainieren von Fertigkeiten können seltene Begleiter erscheinen, die dir dauerhafte XP-Boni gewähren.</string>
+    <string name="onboarding_welcome_desc">Ein Idle-RPG, inspiriert von klassischen MMORPGs. Trainiere Fähigkeiten, erkunde Dungeons und stelle Ausrüstung her. Alles offline, keine Konten, keine Werbung.</string>
 
     <!-- Quantity picker quick buttons -->
     <string name="qty_max">Max</string>
