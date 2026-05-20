@@ -1,15 +1,17 @@
 package com.fantasyidler.repository
 
-import android.app.AlarmManager
-import android.app.PendingIntent
 import android.content.Context
-import android.content.Intent
+import androidx.work.Data
+import androidx.work.ExistingWorkPolicy
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import com.fantasyidler.data.db.dao.SkillSessionDao
 import com.fantasyidler.data.model.SkillSession
-import com.fantasyidler.receiver.SessionAlarmReceiver
+import com.fantasyidler.worker.SessionCompletionWorker
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import java.util.UUID
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -25,7 +27,9 @@ class SessionRepository @Inject constructor(
     suspend fun getActiveSession(): SkillSession? = sessionDao.getActiveSession()
 
     /**
-     * Persist a new session and schedule an AlarmManager alarm for completion.
+     * Persist a new session and enqueue a [SessionCompletionWorker] to fire when
+     * it ends. The worker survives reboot and Doze; replaces the legacy
+     * AlarmManager + BroadcastReceiver path.
      *
      * @param skillName        canonical skill key, e.g. "mining"
      * @param activityKey      sub-activity key, e.g. "iron_ore" or "dark_cave"
@@ -51,8 +55,8 @@ class SessionRepository @Inject constructor(
             activityKey = activityKey,
         )
         sessionDao.insert(session)
-        val alarmAt = if (alarmOffsetMs != null) now + alarmOffsetMs else session.endsAt
-        scheduleAlarm(session.sessionId, alarmAt, skillDisplayName)
+        val fireAt = if (alarmOffsetMs != null) now + alarmOffsetMs else session.endsAt
+        enqueueCompletionWork(session.sessionId, fireAt, skillDisplayName)
         return session
     }
 
@@ -61,7 +65,7 @@ class SessionRepository @Inject constructor(
     suspend fun getSession(sessionId: String): SkillSession? = sessionDao.getSession(sessionId)
 
     suspend fun abandonSession(sessionId: String) {
-        cancelAlarm(sessionId)
+        cancelCompletionWork(sessionId)
         sessionDao.delete(sessionId)
     }
 
@@ -79,47 +83,46 @@ class SessionRepository @Inject constructor(
     suspend fun getOldestCompletedSession(): SkillSession? =
         sessionDao.getOldestCompletedSession()
 
+    /**
+     * Re-enqueue completion work for an active, not-yet-completed session.
+     * Called once on app startup so a session scheduled before the
+     * AlarmManager → WorkManager migration doesn't lose its completion.
+     * The session's display name is unknown at this point — the notification
+     * falls back to an empty string, which is acceptable for the upgrade case.
+     */
+    suspend fun rescheduleActiveSessionIfAny() {
+        val active = sessionDao.getActiveSession() ?: return
+        if (active.completed) return
+        enqueueCompletionWork(active.sessionId, active.endsAt, skillDisplayName = "")
+    }
+
     // ------------------------------------------------------------------
 
-    private fun alarmIntent(sessionId: String, skillDisplayName: String): PendingIntent {
-        val intent = Intent(context, SessionAlarmReceiver::class.java).apply {
-            putExtra(SessionAlarmReceiver.KEY_SESSION_ID, sessionId)
-            putExtra(SessionAlarmReceiver.KEY_SKILL_DISPLAY_NAME, skillDisplayName)
-        }
-        return PendingIntent.getBroadcast(
-            context,
-            sessionId.hashCode(),
-            intent,
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
+    private fun enqueueCompletionWork(sessionId: String, fireAt: Long, skillDisplayName: String) {
+        val delayMs = (fireAt - System.currentTimeMillis()).coerceAtLeast(0L)
+        val data = Data.Builder()
+            .putString(SessionCompletionWorker.KEY_SESSION_ID, sessionId)
+            .putString(SessionCompletionWorker.KEY_SKILL_DISPLAY_NAME, skillDisplayName)
+            .build()
+        val request = OneTimeWorkRequestBuilder<SessionCompletionWorker>()
+            .setInitialDelay(delayMs, TimeUnit.MILLISECONDS)
+            .setInputData(data)
+            .addTag(WORK_TAG_SESSION)
+            .build()
+        WorkManager.getInstance(context).enqueueUniqueWork(
+            SessionCompletionWorker.uniqueWorkName(sessionId),
+            ExistingWorkPolicy.REPLACE,
+            request,
         )
     }
 
-    private fun cancelIntent(sessionId: String): PendingIntent {
-        val intent = Intent(context, SessionAlarmReceiver::class.java)
-        return PendingIntent.getBroadcast(
-            context,
-            sessionId.hashCode(),
-            intent,
-            PendingIntent.FLAG_IMMUTABLE,
-        )
-    }
-
-    private fun scheduleAlarm(sessionId: String, endsAt: Long, skillDisplayName: String) {
-        val am = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        am.setAndAllowWhileIdle(
-            AlarmManager.RTC_WAKEUP,
-            endsAt,
-            alarmIntent(sessionId, skillDisplayName),
-        )
-    }
-
-    private fun cancelAlarm(sessionId: String) {
-        val am      = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val pending = cancelIntent(sessionId)
-        am.cancel(pending)
+    private fun cancelCompletionWork(sessionId: String) {
+        WorkManager.getInstance(context)
+            .cancelUniqueWork(SessionCompletionWorker.uniqueWorkName(sessionId))
     }
 
     companion object {
         const val SESSION_DURATION_MS = 60L * 60L * 1_000L  // 1 hour
+        private const val WORK_TAG_SESSION = "session_completion"
     }
 }

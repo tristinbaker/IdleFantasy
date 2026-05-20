@@ -21,7 +21,7 @@ import javax.inject.Singleton
 
 /**
  * Starts the next queued session using current player state.
- * Shared between ViewModels (on collect) and [com.fantasyidler.receiver.SessionAlarmReceiver]
+ * Shared between ViewModels (on collect) and [com.fantasyidler.worker.SessionCompletionWorker]
  * (background auto-advance).
  */
 @Singleton

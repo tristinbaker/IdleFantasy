@@ -1,9 +1,7 @@
-# Idle Fantasy — GUI Redesign Proposal
+# Idle Fantasy — GUI Overhaul
 
-> **Status:** Approved execution roadmap. PRs 1–2 have landed (see §5 status table); PRs 3–10 are pending the §6 open questions.
+> **Status:** Living tracker for the in-flight GUI/gameplay overhaul. The original 10-PR roadmap is mostly delivered (see §5); §9 captures additions made after the proposal landed; §6 has been converted to a TODO checklist of deferred items.
 > **Audience:** Tristin (game author) reviewing on mobile.
-> **Working branch:** `claude/revise-implementation-plan-eKQ1T`
-> **Original proposal branch:** `claude/redesign-casual-ui-IMf9a` (merged in PR #1)
 > **Scope decision:** "Full redesign" — restructure the nav, add a persistent HUD, decompose monolithic screens, introduce a shared component layer.
 
 ---
@@ -224,29 +222,29 @@ Status reflects what has merged into the working branch; see git log for commits
 |---|---|---|---|---|
 | 1 | Extract `ui/components/` (no behaviour change) | ✅ Done | Low | Pure refactor of inlined widgets into shared files |
 | 2 | Add `Shape.kt` + wire into theme | ✅ Done | Low | `ui/theme/` only |
-| 3 | Build persistent top HUD in root Scaffold | ⬜ Pending | Medium | `MainActivity`, `FantasyIdlerApp`, new `FantasyTopHud` |
-| 4 | Move Settings to Profile gear icon, dismantle Settings sub-route | ⬜ Pending | Low | `Screen.kt`, `AppNavigation.kt` |
-| 5 | Open Shop as a bottom sheet from the HUD coin tap | ⬜ Pending | Medium | `Screen.kt`, new `ShopSheet` from existing `ShopScreen` content |
-| 6 | Build `AdventureScreen` + delete `HomeScreen` | ⬜ Pending | Medium | New file, nav graph re-pointed, Home dashboard pieces moved to HUD |
-| 7 | Bottom nav re-cast (Crafting promoted, Adventure replaces Home) | ⬜ Pending | Medium | `Screen.kt` items list + label strings |
-| 8 | Split `SkillsScreen.kt` (gathering vs crafting handlers in different tabs) | ⬜ Pending | High | Largest single file in the repo |
-| 9 | Split `CombatScreen.kt` and `ProfileScreen.kt` | ⬜ Pending | Medium | Per-file refactor, no behaviour change |
-| 10 | Onboarding nudge page | ⬜ Pending | Low | One new pager page |
+| 3 | Build persistent top HUD in root Scaffold | ✅ Done | Medium | `FantasyTopHud`, root `Scaffold` in `AppNavigation` |
+| 4 | Move Settings to Profile gear icon, dismantle Settings sub-route | ⬜ Deferred | Low | Settings still its own screen; tracked in §6 TODOs |
+| 5 | Shop UI redesign | 🔄 In progress | Medium | Recast from a list to a wood-grain *aisle* layout with daily-rotation sale tags; emoji placeholders until art lands |
+| 6 | Build `AdventureScreen` + delete `HomeScreen` | ✅ Done | Medium | `AdventureScreen.kt` is live; old `HomeScreen` deleted |
+| 7 | Bottom nav re-cast (Crafting promoted, Adventure replaces Home) | ✅ Done | Medium | `Screen.kt` items, route map, label strings |
+| 8 | Split `SkillsScreen.kt` | ✅ Done | High | `ui/screen/skills/` package |
+| 9 | Split `CombatScreen.kt` and `ProfileScreen.kt` | ✅ Done | Medium | `ui/screen/combat/` and `ui/screen/profile/` packages |
+| 10 | Onboarding nudge page | ⬜ Deferred | Low | Tracked in §6 TODOs |
 
-Ship 1–7 first — that's where the "I get lost" feeling lives. 8–10 are quality-of-life refactors.
+§9 covers everything that landed *after* the original proposal (perks, hero hub, minigame hub stub, active-session popup).
 
 ---
 
-## 6. Open questions for you
+## 6. Deferred TODOs
 
-Things to decide before implementation. These remain open — resolution required before PRs 3, 5, 6, 7.
+Open questions from the original proposal that haven't been actioned yet — tracked here so they don't get lost.
 
-1. **Gems.** Does the game intend to have a premium-ish second currency (gems / cores / shards) or is it gold-only? The HUD has room for one slot today and could hold two — easier to design it for two and hide the second if unused.
-2. **"Adventure" naming.** Tonally OK? Alternatives I considered: *Journey*, *Quests*, *Hub*, *World*, *Map*. "Adventure" reads broadest.
-3. **Shop as sheet vs full screen.** I lean *sheet* (faster, doesn't break flow), but if you want to add more merchants later (one per town) a full screen with sub-tabs scales better.
-4. **Settings on Profile.** Gear icon top-right is the universal pattern. Some players hunt for Settings as its own bottom tab — would you want a "More" tab instead, or trust the gear-icon convention?
-5. **Combat bottom bar.** When the player is mid-dungeon, the bottom nav still shows — should we hide it during an active fight to focus attention, or leave it visible so they can pop out?
-6. **Art pipeline alignment.** Once the art pipeline (see `CLAUDE.md`) starts producing drawables, do you want me to retrofit `ItemTile` / `DungeonCard` to consume `R.drawable.*` IDs from day one, or hold off until at least one sprite set lands?
+- [ ] **Second currency.** Decide whether to add a premium-ish second currency (gems / cores / shards). HUD has room for one extra slot.
+- [ ] **"Adventure" naming.** Confirm "Adventure" is the right label for the centre hub tab. Alternatives: *Journey*, *Quests*, *Hub*, *World*, *Map*.
+- [x] **Shop as sheet vs full screen.** Resolved → full screen with wood-grain aisle layout (see §5 PR 5 and §9 below).
+- [ ] **Settings on Profile gear icon.** Move Settings out of its own routed screen and behind a gear icon on Profile.
+- [ ] **Hide bottom nav during combat?** When the player is mid-dungeon, should the bottom nav disappear to focus attention?
+- [x] **Art pipeline alignment.** Resolved → `EntityIcon` already retrofits `R.drawable.*` lookups with a tier-colored fallback. PNGs drop into `drawable-*dpi/` and replace placeholders without callsite changes.
 
 ---
 
@@ -270,3 +268,45 @@ Things to decide before implementation. These remain open — resolution require
 - [Melvor Idle — main site](https://melvoridle.com/) (reference for the genre)
 - [Clean UI mod for Melvor Idle — mod.io](https://mod.io/g/melvoridle/m/clean-ui) (evidence even the genre leader needs UI cleanup)
 - [Best Practices for Game UI/UX Design — Genieee](https://genieee.com/best-practices-for-game-ui-ux-design/)
+
+---
+
+## 9. Post-proposal additions
+
+Features that landed *after* the original 10-PR roadmap (PR #13 + follow-ups). They aren't in §5 because they weren't in the proposal, but they're now part of the live GUI surface.
+
+### 9.1 Perks system
+
+- `app/src/main/kotlin/com/fantasyidler/ui/screen/PerksScreen.kt`
+- `app/src/main/kotlin/com/fantasyidler/ui/viewmodel/PerksViewModel.kt`
+- `app/src/main/kotlin/com/fantasyidler/data/perks/PerkRepository.kt`
+
+Four point pools — **Advantage**, **Gathering**, **Crafting**, **Combat** — spent on per-skill upgrades. Routed from the Adventure hub.
+
+### 9.2 Minigame Hub stub
+
+- `app/src/main/kotlin/com/fantasyidler/ui/screen/MinigameHubScreen.kt`
+
+Placeholder hub for the future minigame surface. Reachable from Adventure, currently shows a "coming soon" state.
+
+### 9.3 Hero hub card on Adventure
+
+The Adventure screen surfaces a hero card with total level + top skills, anchoring "what am I doing here?" before the player even scrolls.
+
+### 9.4 Active-session popup
+
+The top HUD's active-session pill now expands into a live-countdown popup with per-session Claim buttons. Wired through `GlobalGameViewModel.showSessionDetails()` and `GlobalGameOverlay`.
+
+### 9.5 Background completion via WorkManager
+
+The session-completion path migrated from `AlarmManager` to a Hilt-injected `OneTimeWorkRequest` (`SessionCompletionWorker`). Survives reboot, handles Doze cleanly. The old `SessionAlarmReceiver` is gone.
+
+### 9.6 HomeViewModel → GlobalGameViewModel
+
+Pure rename: the ViewModel hoisted in `AppNavigation` is no longer a Home-screen leftover. It owns the four root-scope flows (session-summary, what's-new, character-setup, collectSession).
+
+---
+
+## 10. Living scope
+
+This file is the source of truth for ongoing GUI/gameplay overhaul work. The repository-root `IMPLEMENTATION_PLAN.md` is the **original author's port plan** retained for reference only — it predates the fork and does not track current work.

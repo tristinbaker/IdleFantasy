@@ -1,5 +1,7 @@
 # Fantasy Idler — Implementation Plan
 
+> _Heritage doc — the original author's port plan from before this repo was forked. Live GUI/gameplay overhaul work is tracked in `docs/GUI_OVERHAUL.md`._
+
 > Working title: **Fantasy Idler**
 > Source project: `../Python/IdleApes` (Python/Discord bot)
 > Target: FOSS Android app, single-player, F-Droid compatible

@@ -4,7 +4,7 @@
 
     <!-- Session completion notifications -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <!-- Required for AlarmManager.setAndAllowWhileIdle to wake the device -->
+    <!-- Farm-patch reminders still use AlarmManager; WorkManager handles sessions. -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
@@ -33,12 +33,20 @@
         </activity>
 
         <receiver
-            android:name=".receiver.SessionAlarmReceiver"
-            android:exported="false" />
-
-        <receiver
             android:name=".receiver.FarmPatchAlarmReceiver"
             android:exported="false" />
+
+        <!-- Disable WorkManager's default initializer so our Hilt-backed
+             Configuration.Provider in FantasyIdlerApp is the sole source. -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            tools:node="merge">
+            <meta-data
+                android:name="androidx.work.WorkManagerInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+        </provider>
 
     </application>
 

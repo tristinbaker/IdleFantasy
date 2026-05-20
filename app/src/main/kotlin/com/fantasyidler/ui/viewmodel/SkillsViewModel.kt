@@ -563,7 +563,7 @@ class SkillsViewModel @Inject constructor(
                 Skills.PRAYER      -> questRepo.recordBuried(frames.sumOf { it.kills })
             }
 
-            // Consume input materials at collect time (mirrors HomeViewModel)
+            // Consume input materials at collect time (mirrors GlobalGameViewModel)
             when (session.skillName) {
                 Skills.PRAYER -> playerRepo.consumeItems(mapOf(session.activityKey to frames.size))
                 Skills.RUNECRAFTING -> {

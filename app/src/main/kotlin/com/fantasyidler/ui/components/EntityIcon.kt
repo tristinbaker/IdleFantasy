@@ -33,16 +33,19 @@ import androidx.compose.ui.unit.dp
  *   stays sharp at every density.
  * - If no drawable exists yet, falls back per [fallback]. Default `TierColored`
  *   renders a rounded color-block in the tier color from [tier] (auto-detected from
- *   the id if not passed) with the first letter of [label]. This means every list in
- *   the app gets a colored placeholder *today*, and the day a PNG drops into
- *   `app/src/main/res/drawable-xxhdpi/<entityId>.png` the placeholder is replaced
- *   without any callsite change.
+ *   the id if not passed) with the first letter of [label] — unless [emojiFallback]
+ *   is provided, in which case the emoji is centered on the tier block instead. This
+ *   means every list in the app gets a colored placeholder *today*, and the day a
+ *   PNG drops into `app/src/main/res/drawable-xxhdpi/<entityId>.png` the placeholder
+ *   is replaced without any callsite change.
  *
  * @param entityId snake_case id from the JSON data files, e.g. "copper_ore",
  *                 "iron_sword", "goblin_cave".
  * @param size the side length of the icon (the visual is always square).
  * @param tier overrides automatic tier detection from the id.
  * @param label used for the fallback's initial letter; defaults to [entityId].
+ * @param emojiFallback when set and no drawable resolves, the emoji is centered on
+ *                     the tier block instead of the first-letter glyph.
  */
 @Composable
 fun EntityIcon(
@@ -52,6 +55,7 @@ fun EntityIcon(
     tier: Tier? = null,
     label: String = entityId,
     fallback: EntityFallback = EntityFallback.TierColored,
+    emojiFallback: String? = null,
 ) {
     val context = LocalContext.current
     val drawableId = remember(entityId) {
@@ -73,6 +77,7 @@ fun EntityIcon(
             fallback = fallback,
             size = size,
             modifier = modifier,
+            emojiFallback = emojiFallback,
         )
     }
 }
@@ -111,6 +116,7 @@ private fun EntityIconFallback(
     fallback: EntityFallback,
     size: Dp,
     modifier: Modifier = Modifier,
+    emojiFallback: String? = null,
 ) {
     when (fallback) {
         is EntityFallback.TierColored -> {
@@ -121,12 +127,19 @@ private fun EntityIconFallback(
                 modifier = modifier.size(size),
             ) {
                 Box(contentAlignment = Alignment.Center) {
-                    Text(
-                        text = label.firstOrNull()?.uppercase() ?: "?",
-                        style = MaterialTheme.typography.labelMedium,
-                        fontWeight = FontWeight.Bold,
-                        color = if (tier != null) tint else LocalContentColor.current,
-                    )
+                    if (emojiFallback != null) {
+                        Text(
+                            text = emojiFallback,
+                            style = MaterialTheme.typography.titleLarge,
+                        )
+                    } else {
+                        Text(
+                            text = label.firstOrNull()?.uppercase() ?: "?",
+                            style = MaterialTheme.typography.labelMedium,
+                            fontWeight = FontWeight.Bold,
+                            color = if (tier != null) tint else LocalContentColor.current,
+                        )
+                    }
                 }
             }
         }

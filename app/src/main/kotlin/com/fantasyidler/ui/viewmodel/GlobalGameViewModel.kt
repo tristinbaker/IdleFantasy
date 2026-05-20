@@ -52,7 +52,7 @@ data class SessionSummary(
 )
 
 @Immutable
-data class HomeUiState(
+data class GlobalGameUiState(
     val isLoading: Boolean = true,
     val coins: Long = 0L,
     val skillLevels: Map<String, Int> = emptyMap(),
@@ -69,8 +69,13 @@ data class HomeUiState(
     val showSessionDetails: Boolean = false,
 )
 
+/**
+ * Root-scope game state. Owns the four global flows that fire from any tab:
+ * session-summary dialog, what's-new dialog, character-setup sheet, and the
+ * `collectSession` trigger. Hoisted in [com.fantasyidler.ui.navigation.AppNavigation].
+ */
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class GlobalGameViewModel @Inject constructor(
     private val playerRepo: PlayerRepository,
     private val sessionRepo: SessionRepository,
     private val gameData: GameDataRepository,
@@ -79,9 +84,9 @@ class HomeViewModel @Inject constructor(
     val json: Json,
 ) : ViewModel() {
 
-    private val _extra = MutableStateFlow(HomeUiState())
+    private val _extra = MutableStateFlow(GlobalGameUiState())
 
-    val uiState: StateFlow<HomeUiState> = combine(
+    val uiState: StateFlow<GlobalGameUiState> = combine(
         playerRepo.playerFlow,
         sessionRepo.activeSessionFlow,
         sessionRepo.completedSessionsFlow,
@@ -109,7 +114,7 @@ class HomeViewModel @Inject constructor(
                 showWhatsNew        = flags.lastSeenVersionCode < BuildConfig.VERSION_CODE,
             )
         }
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), HomeUiState())
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), GlobalGameUiState())
 
     // ------------------------------------------------------------------
     // Session actions
@@ -364,7 +369,7 @@ class HomeViewModel @Inject constructor(
 }
 
 // ---------------------------------------------------------------------------
-// Derived helpers (pure, used by HomeScreen + HomeViewModel)
+// Derived helpers (pure)
 // ---------------------------------------------------------------------------
 
 fun combatLevelFrom(levels: Map<String, Int>): Int {

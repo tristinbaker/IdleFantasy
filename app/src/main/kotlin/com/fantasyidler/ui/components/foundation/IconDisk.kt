@@ -66,12 +66,14 @@ fun EntityIconDisk(
     size: Dp = LocalFantasyTokens.current.spacing.xxl + LocalFantasyTokens.current.spacing.m,
     background: Color = LocalFantasyTokens.current.colors.primary.copy(alpha = 0.18f),
     ringColor: Color? = null,
+    emojiFallback: String? = null,
 ) {
     DiskFrame(modifier = modifier, size = size, background = background, ringColor = ringColor) {
         EntityIcon(
             entityId = entityId,
             label = contentDescription,
             size = size * 0.7f,
+            emojiFallback = emojiFallback,
         )
     }
 }
