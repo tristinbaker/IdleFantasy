@@ -32,7 +32,7 @@
     <string name="dungeon_bandit_camp_name">Campamento de Bandidos</string>
     <string name="dungeon_bandit_camp_desc">Un escondite de ladrones y pícaros en la naturaleza. ¡Cuidado con tu bolsa de monedas!</string>
     <string name="dungeon_undead_crypt_name">Cripta de no muertos</string>
-    <string name="dungeon_undead_crypt_desc">Un antiguo lugar de enterramiento donde los muertos se niegan a descansar. ¡Cuidado con la magia oscura!</string>
+    <string name="dungeon_undead_crypt_desc">Una antigua cripta donde los muertos se niegan a descansar. ¡Cuidado con la magia oscura!</string>
     <string name="dungeon_fortress_ruins_name">Ruinas de la Fortaleza</string>
     <string name="dungeon_fortress_ruins_desc">Las ruinas de un antiguo castillo, ahora custodiado por caballeros y soldados.</string>
     <string name="dungeon_orc_stronghold_name">Fortaleza de Orcos</string>
