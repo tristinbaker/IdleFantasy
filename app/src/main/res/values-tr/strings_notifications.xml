@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Notification channel metadata ===== -->
+    <string name="notif_channel_sessions_name">Oturum Uyarıları</string>
+    <string name="notif_channel_sessions_desc">Yetenek oturumlarınız tamamlandığında gelen bildirimler</string>
+    <string name="notif_channel_farming_name">Tarım Uyarıları</string>
+    <string name="notif_channel_farming_desc">Ekinleriniz hasada hazır olduğunda gelen bildirimler</string>
+
+    <!-- ===== Session complete ===== -->
+    <string name="notif_session_complete_title">Oturum Tamamlandı!</string>
+    <!-- Translator note: %1$s = localised skill name (e.g. "Mining") -->
+    <string name="notif_session_complete_body">%1$s oturumunuz tamamlandı. Ödüllerinizi toplamak için dokunun.</string>
+
+    <!-- ===== Farming ready ===== -->
+    <string name="notif_farming_ready_title">Ekinler Hazır!</string>
+    <!-- Translator note: %1$s = localised crop name (e.g. "Wheat"). Adjust grammar as needed for your language. -->
+    <string name="notif_farming_ready_body">%1$s hasada hazır.</string>
+    <!-- Plural variant used when multiple patches are ready -->
+    <!-- Translator note: %1$d = number of patches ready -->
+    <string name="notif_farming_ready_body_multi">%1$d tarla hasada hazır.</string>
+</resources>

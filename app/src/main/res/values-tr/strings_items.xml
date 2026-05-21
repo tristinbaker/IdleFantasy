@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Ores ===== -->
+    <string name="item_copper_ore_name">Bakır Cevheri</string>
+    <string name="item_copper_ore_desc">Yaygın cevher. Bronz külçe eritmek için kalay cevheri ile birleştirin.</string>
+    <string name="item_tin_ore_name">Kalay Cevheri</string>
+    <string name="item_tin_ore_desc">Yaygın cevher. Bronz külçe eritmek için bakır cevheri ile birleştirin.</string>
+    <string name="item_iron_ore_name">Demir Cevheri</string>
+    <string name="item_iron_ore_desc">Demir ve çelik külçe eritmek için kullanılan çok yönlü cevher.</string>
+    <string name="item_coal_name">Kömür</string>
+    <string name="item_coal_desc">Çelik ve daha üst seviye külçeleri eritirken yakıt olarak kullanılır.</string>
+    <string name="item_silver_ore_name">Gümüş Cevheri</string>
+    <string name="item_silver_ore_desc">Gümüş külçe ve mücevher yapmak için kullanılan değerli cevher.</string>
+    <string name="item_gold_ore_name">Altın Cevheri</string>
+    <string name="item_gold_ore_desc">Altın külçe ve mücevher yapmak için kullanılan değerli cevher.</string>
+    <string name="item_mithril_ore_name">Mithril Cevheri</string>
+    <string name="item_mithril_ore_desc">Büyülü özelliklere sahip nadir bir cevher.</string>
+    <string name="item_adamantite_ore_name">Adamantite Cevheri</string>
+    <string name="item_adamantite_ore_desc">Son derece sert ve çok nadir bir cevher.</string>
+    <string name="item_runite_ore_name">Runit Cevheri</string>
+    <string name="item_runite_ore_desc">En güçlü ekipmanlar için kullanılan en nadir çıkarılabilir cevher.</string>
+    <string name="item_rune_essence_name">Rün Özü</string>
+    <string name="item_rune_essence_desc">Tüm rün türlerini üretmek için kullanılan ham büyülü taş.</string>
+
+    <!-- ===== Metal bars ===== -->
+    <string name="item_bronze_bar_name">Bronz Külçe</string>
+    <string name="item_bronze_bar_desc">Bakır ve kalay cevherinden eritildi. En temel metal külçe.</string>
+    <string name="item_iron_bar_name">Demir Külçe</string>
+    <string name="item_iron_bar_desc">Demir ekipman üretmek için kullanılan sağlam bir demir külçe.</string>
+    <string name="item_silver_bar_name">Gümüş Külçe</string>
+    <string name="item_silver_bar_desc">Mücevher üretmek için kullanılan rafine gümüş külçe.</string>
+    <string name="item_steel_bar_name">Çelik Külçe</string>
+    <string name="item_steel_bar_desc">Demirden daha güçlü. Çelik ekipman üretmek için kullanılır.</string>
+    <string name="item_gold_bar_name">Altın Külçe</string>
+    <string name="item_gold_bar_desc">Mücevher ve altın ekipman üretmek için kullanılan rafine altın külçe.</string>
+    <string name="item_mithril_bar_name">Mithril Külçesi</string>
+    <string name="item_mithril_bar_desc">Hafif, büyülü bir metal külçe.</string>
+    <string name="item_adamantite_bar_name">Adamantite Külçe</string>
+    <string name="item_adamantite_bar_desc">Olağanüstü derecede sert bir metal külçe.</string>
+    <string name="item_platinum_bar_name">Platin Külçe</string>
+    <string name="item_platinum_bar_desc">Yüksek seviye mücevherler için nadir ve parlak platin külçe.</string>
+    <string name="item_runite_bar_name">Runit Külçe</string>
+    <string name="item_runite_bar_desc">Eritilebilen en güçlü metal külçe.</string>
+
+    <!-- ===== Gems ===== -->
+    <string name="item_sapphire_name">Safir</string>
+    <string name="item_sapphire_desc">Mücevher yapımında kullanılan mavi bir değerli taş.</string>
+    <string name="item_emerald_name">Zümrüt</string>
+    <string name="item_emerald_desc">Orta nadirlikte yeşil bir değerli taş.</string>
+    <string name="item_ruby_name">Yakut</string>
+    <string name="item_ruby_desc">Kırmızı bir değerli taş. Nadir ve değerli.</string>
+    <string name="item_diamond_name">Elmas</string>
+    <string name="item_diamond_desc">En nadir ve en değerli değerli taş.</string>
+
+    <!-- ===== Logs ===== -->
+    <string name="item_log_name">Kütük</string>
+    <string name="item_log_desc">Normal ağaçlardan temel kütükler. Ateş Yakma ve Ok/Yay Zanaatında kullanılır.</string>
+    <string name="item_oak_log_name">Meşe Kütüğü</string>
+    <string name="item_oak_log_desc">Meşe ağaçlarından düşen kütükler.</string>
+    <string name="item_willow_log_name">Söğüt Kütüğü</string>
+    <string name="item_willow_log_desc">Söğüt ağaçlarından düşen hafif kütükler.</string>
+    <string name="item_maple_log_name">Akçaağaç Kütüğü</string>
+    <string name="item_maple_log_desc">Akçaağaç ağaçlarından düşen yoğun kütükler.</string>
+    <string name="item_yew_log_name">Porsuk Kütüğü</string>
+    <string name="item_yew_log_desc">Kadim porsuk ağaçlarından düşen kütükler.</string>
+    <string name="item_magic_log_name">Büyülü Kütük</string>
+    <string name="item_magic_log_desc">Nadir sihirli ağaçlardan düşen büyülü kütükler.</string>
+    <string name="item_redwood_log_name">Kızılçam Kütüğü</string>
+    <string name="item_redwood_log_desc">En uzun kızılçam ağaçlarından devasa kütükler.</string>
+
+    <!-- ===== Raw fish ===== -->
+    <string name="item_raw_shrimp_name">Çiğ Karides</string>
+    <string name="item_raw_shrimp_desc">Çiğ karides. Yemeden önce pişirin.</string>
+    <string name="item_raw_sardine_name">Çiğ Sardalya</string>
+    <string name="item_raw_sardine_desc">Çiğ sardalya. Yemeden önce pişirin.</string>
+    <string name="item_raw_herring_name">Çiğ Ringa Balığı</string>
+    <string name="item_raw_herring_desc">Çiğ ringa balığı. Yemeden önce pişirin.</string>
+    <string name="item_raw_mackerel_name">Çiğ Uskumru</string>
+    <string name="item_raw_mackerel_desc">Çiğ uskumru. Yemeden önce pişirin.</string>
+    <string name="item_raw_trout_name">Çiğ Alabalık</string>
+    <string name="item_raw_trout_desc">Çiğ alabalık. Yemeden önce pişirin.</string>
+    <string name="item_raw_salmon_name">Çiğ Somon</string>
+    <string name="item_raw_salmon_desc">Çiğ somon. Yemeden önce pişirin.</string>
+    <string name="item_raw_tuna_name">Çiğ Ton Balığı</string>
+    <string name="item_raw_tuna_desc">Çiğ ton balığı. Yemeden önce pişirin.</string>
+    <string name="item_raw_lobster_name">Çiğ Istakoz</string>
+    <string name="item_raw_lobster_desc">Çiğ ıstakoz. Yemeden önce pişirin.</string>
+    <string name="item_raw_swordfish_name">Çiğ Kılıçbalığı</string>
+    <string name="item_raw_swordfish_desc">Çiğ kılıçbalığı. Yemeden önce pişirin.</string>
+    <string name="item_raw_monkfish_name">Çiğ Fener Balığı</string>
+    <string name="item_raw_monkfish_desc">Çiğ fener balığı. Yemeden önce pişirin.</string>
+    <string name="item_raw_shark_name">Çiğ Köpekbalığı</string>
+    <string name="item_raw_shark_desc">Çiğ köpekbalığı. Yemeden önce pişirin.</string>
+    <string name="item_raw_sea_turtle_name">Çiğ Deniz Kaplumbağası</string>
+    <string name="item_raw_sea_turtle_desc">Çiğ deniz kaplumbağası. Yemeden önce pişirin.</string>
+    <string name="item_raw_manta_ray_name">Çiğ Manta vatozu</string>
+    <string name="item_raw_manta_ray_desc">Çiğ manta vatozu. Yemeden önce pişirin.</string>
+
+    <!-- ===== Cooked fish ===== -->
+    <string name="item_shrimp_name">Karides</string>
+    <string name="item_shrimp_desc">Pişmiş karides. Az miktarda HP yeniler.</string>
+    <string name="item_sardine_name">Sardalya</string>
+    <string name="item_sardine_desc">Pişmiş sardalya. Yendiğinde HP yeniler.</string>
+    <string name="item_herring_name">Ringa Balığı</string>
+    <string name="item_herring_desc">Pişmiş ringa balığı. Yendiğinde HP yeniler.</string>
+    <string name="item_mackerel_name">Uskumru</string>
+    <string name="item_mackerel_desc">Pişmiş uskumru. Yendiğinde HP yeniler.</string>
+    <string name="item_trout_name">Alabalık</string>
+    <string name="item_trout_desc">Pişmiş alabalık. Yendiğinde HP yeniler.</string>
+    <string name="item_salmon_name">Somon</string>
+    <string name="item_salmon_desc">Pişmiş somon. Yendiğinde HP yeniler.</string>
+    <string name="item_tuna_name">Ton Balığı</string>
+    <string name="item_tuna_desc">Pişmiş ton balığı. Yendiğinde HP yeniler.</string>
+    <string name="item_lobster_name">Istakoz</string>
+    <string name="item_lobster_desc">Pişmiş ıstakoz. İyi miktarda HP yeniler.</string>
+    <string name="item_swordfish_name">Kılıçbalığı</string>
+    <string name="item_swordfish_desc">Pişmiş kılıçbalığı. Önemli ölçüde HP yeniler.</string>
+    <string name="item_monkfish_name">Fener Balığı</string>
+    <string name="item_monkfish_desc">Pişmiş fener balığı. Sağlam miktarda HP yeniler.</string>
+    <string name="item_shark_name">Köpekbalığı</string>
+    <string name="item_shark_desc">Pişmiş köpekbalığı. Yüksek miktarda HP yeniler.</string>
+    <string name="item_sea_turtle_name">Deniz Kaplumbağası</string>
+    <string name="item_sea_turtle_desc">Pişmiş deniz kaplumbağası. Çok yüksek miktarda HP yeniler.</string>
+    <string name="item_manta_ray_name">Manta Vatozu</string>
+    <string name="item_manta_ray_desc">Pişmiş manta vatozu. En iyi yiyeceklerden biri.</string>
+
+    <!-- ===== Raw meat ===== -->
+    <string name="item_raw_rat_meat_name">Çiğ Sıçan Eti</string>
+    <string name="item_raw_rat_meat_desc">Çiğ sıçan eti. Yemeden önce pişirin.</string>
+    <string name="item_raw_chicken_name">Çiğ Tavuk</string>
+    <string name="item_raw_chicken_desc">Çiğ tavuk. Yemeden önce pişirin.</string>
+    <string name="item_raw_mutton_name">Çiğ Koyun Eti</string>
+    <string name="item_raw_mutton_desc">Çiğ koyun eti. Yemeden önce pişirin.</string>
+    <string name="item_raw_beef_name">Çiğ Sığır Eti</string>
+    <string name="item_raw_beef_desc">Çiğ sığır eti. Yemeden önce pişirin.</string>
+    <string name="item_raw_meat_name">Çiğ Et</string>
+    <string name="item_raw_meat_desc">Tanımlanamayan çiğ et. Yemeden önce pişirin.</string>
+
+    <!-- ===== Cooked meat ===== -->
+    <string name="item_cooked_rat_meat_name">Sıçan Eti</string>
+    <string name="item_cooked_rat_meat_desc">Pişmiş sıçan eti. Yenilebilir ama çok az HP yeniler.</string>
+    <string name="item_cooked_chicken_name">Pişmiş Tavuk</string>
+    <string name="item_cooked_chicken_desc">Pişmiş tavuk. Yendiğinde HP yeniler.</string>
+    <string name="item_cooked_mutton_name">Pişmiş Koyun Eti</string>
+    <string name="item_cooked_mutton_desc">Pişmiş koyun eti. Yendiğinde HP yeniler.</string>
+    <string name="item_cooked_beef_name">Pişmiş Sığır Eti</string>
+    <string name="item_cooked_beef_desc">Pişmiş sığır eti. Yendiğinde HP yeniler.</string>
+
+    <!-- ===== Melee weapons — bronze ===== -->
+    <string name="item_bronze_sword_name">Bronz Kılıç</string>
+    <string name="item_bronze_sword_desc">Temel tek elli bronz kılıç.</string>
+    <string name="item_bronze_scimitar_name">Bronz Pala</string>
+    <string name="item_bronze_scimitar_desc">İyi güç bonusu olan kavisli tek elli bronz kılıç.</string>
+    <string name="item_bronze_2h_sword_name">Bronz Çift Elli Kılıç</string>
+    <string name="item_bronze_2h_sword_desc">Çift elli bronz kılıç. Yüksek hasar, düşük hız.</string>
+    <string name="item_bronze_warhammer_name">Bronz Savaş Çekici</string>
+    <string name="item_bronze_warhammer_desc">Ağır tek elli bronz çekiç.</string>
+    <string name="item_bronze_battleaxe_name">Bronz Savaş Baltası</string>
+    <string name="item_bronze_battleaxe_desc">Korkunç tek elli bronz balta.</string>
+    <string name="item_bronze_dagger_name">Bronz Hançer</string>
+    <string name="item_bronze_dagger_desc">Hızlı ve hafif bronz hançer.</string>
+
+    <!-- Melee weapons — iron -->
+    <string name="item_iron_sword_name">Demir Kılıç</string>
+    <string name="item_iron_sword_desc">Tek elli demir kılıç.</string>
+    <string name="item_iron_scimitar_name">Demir Pala</string>
+    <string name="item_iron_scimitar_desc">İyi güç bonusu olan kavisli tek elli demir kılıç.</string>
+    <string name="item_iron_2h_sword_name">Demir Çift Elli Kılıç</string>
+    <string name="item_iron_2h_sword_desc">Çift elli demir kılıç.</string>
+    <string name="item_iron_warhammer_name">Demir Savaş Çekici</string>
+    <string name="item_iron_warhammer_desc">Ağır tek elli demir çekiç.</string>
+    <string name="item_iron_battleaxe_name">Demir Savaş Baltası</string>
+    <string name="item_iron_battleaxe_desc">Korkunç tek elli demir balta.</string>
+    <string name="item_iron_dagger_name">Demir Hançer</string>
+    <string name="item_iron_dagger_desc">Hızlı ve hafif demir hançer.</string>
+
+    <!-- Melee weapons — steel -->
+    <string name="item_steel_sword_name">Çelik Kılıç</string>
+    <string name="item_steel_sword_desc">Tek elli çelik kılıç.</string>
+    <string name="item_steel_scimitar_name">Çelik Pala</string>
+    <string name="item_steel_scimitar_desc">İyi güç bonusu olan kavisli tek elli çelik kılıç.</string>
+    <string name="item_steel_2h_sword_name">Çelik Çift Elli Kılıç</string>
+    <string name="item_steel_2h_sword_desc">Çift elli çelik kılıç.</string>
+    <string name="item_steel_warhammer_name">Çelik Savaş Çekici</string>
+    <string name="item_steel_warhammer_desc">Ağır tek elli çelik çekiç.</string>
+    <string name="item_steel_battleaxe_name">Çelik Savaş Baltası</string>
+    <string name="item_steel_battleaxe_desc">Korkunç tek elli çelik balta.</string>
+
+    <!-- Melee weapons — mithril -->
+    <string name="item_mithril_sword_name">Mithril Kılıcı</string>
+    <string name="item_mithril_sword_desc">Hafif büyülü tek elli kılıç.</string>
+    <string name="item_mithril_scimitar_name">Mithril Palası</string>
+    <string name="item_mithril_scimitar_desc">Doğaüstü keskinliğe sahip kavisli mithril kılıcı.</string>
+    <string name="item_mithril_2h_sword_name">Mithril Çift Elli Kılıç</string>
+    <string name="item_mithril_2h_sword_desc">Çift elli mithril kılıcı.</string>
+    <string name="item_mithril_warhammer_name">Mithril Savaş Çekici</string>
+    <string name="item_mithril_warhammer_desc">Hafif büyülü savaş çekici.</string>
+    <string name="item_mithril_battleaxe_name">Mithril Savaş Baltası</string>
+    <string name="item_mithril_battleaxe_desc">Olağanüstü kalitede mithril savaş baltası.</string>
+
+    <!-- Melee weapons — adamantite -->
+    <string name="item_adamantite_sword_name">Adamantite Kılıcı</string>
+    <string name="item_adamantite_sword_desc">Olağanüstü derecede sert tek elli kılıç.</string>
+    <string name="item_adamantite_scimitar_name">Adamantite Palası</string>
+    <string name="item_adamantite_scimitar_desc">Mükemmel güç bonusu olan inanılmaz derecede sert kavisli kılıç.</string>
+    <string name="item_adamantite_2h_sword_name">Adamantite Çift Elli Kılıç</string>
+    <string name="item_adamantite_2h_sword_desc">Adamantitten yapılmış çift elli kılıç.</string>
+    <string name="item_adamantite_warhammer_name">Adamantite Savaş Çekici</string>
+    <string name="item_adamantite_warhammer_desc">Olağanüstü derecede ağır ve sert savaş çekici.</string>
+    <string name="item_adamantite_battleaxe_name">Adamantite Savaş Baltası</string>
+    <string name="item_adamantite_battleaxe_desc">Yıkıcı adamantite savaş baltası.</string>
+
+    <!-- Melee weapons — runite -->
+    <string name="item_runite_sword_name">Runit Kılıcı</string>
+    <string name="item_runite_sword_desc">Mevcut en iyi tek elli kılıç.</string>
+    <string name="item_runite_scimitar_name">Runit Palası</string>
+    <string name="item_runite_scimitar_desc">Olağanüstü güç bonusu ile mevcut en iyi pala.</string>
+    <string name="item_runite_2h_sword_name">Runit Çift Elli Kılıcı</string>
+    <string name="item_runite_2h_sword_desc">Mevcut en iyi çift elli kılıç.</string>
+    <string name="item_runite_warhammer_name">Runit Savaş Çekici</string>
+    <string name="item_runite_warhammer_desc">Mevcut en iyi savaş çekici.</string>
+    <string name="item_runite_battleaxe_name">Runit Savaş Baltası</string>
+    <string name="item_runite_battleaxe_desc">Mevcut en iyi savaş baltası.</string>
+
+    <!-- ===== Ranged weapons ===== -->
+    <string name="item_wooden_bow_name">Ahşap Yay</string>
+    <string name="item_wooden_bow_desc">Basit bir ahşap yay. Menzilli eğitimi için iyi.</string>
+    <string name="item_oak_bow_name">Meşe Yayı</string>
+    <string name="item_oak_bow_desc">Meşeden yapılmış güvenilir bir yay.</string>
+
+    <!-- ===== Magic weapons ===== -->
+    <string name="item_basic_staff_name">Basit Asa</string>
+    <string name="item_basic_staff_desc">Çırak büyücüler için basit büyülü bir asa.</string>
+    <string name="item_apprentice_staff_name">Çırak Asası</string>
+    <string name="item_apprentice_staff_desc">Gelişmekte olan büyücüler için geliştirilmiş bir asa.</string>
+    <string name="item_staff_of_air_name">Hava Asası</string>
+    <string name="item_staff_of_air_desc">Hava gücüyle donatılmış elementsel bir asa.</string>
+    <string name="item_staff_of_water_name">Su Asası</string>
+    <string name="item_staff_of_water_desc">Su gücüyle donatılmış elementsel bir asa.</string>
+    <string name="item_staff_of_earth_name">Toprak Asası</string>
+    <string name="item_staff_of_earth_desc">Toprak gücüyle donatılmış elementsel bir asa.</string>
+    <string name="item_staff_of_fire_name">Ateş Asası</string>
+    <string name="item_staff_of_fire_desc">Ateş gücüyle donatılmış elementsel bir asa.</string>
+    <string name="item_staff_of_mind_name">Zihin Asası</string>
+    <string name="item_staff_of_mind_desc">Psişik enerjiyle donatılmış bir asa.</string>
+    <string name="item_staff_of_chaos_name">Kaos Asası</string>
+    <string name="item_staff_of_chaos_desc">Vahşi büyü enerjisiyle atan kaotik bir asa.</string>
+    <string name="item_staff_of_death_name">Ölüm Asası</string>
+    <string name="item_staff_of_death_desc">Ölüm gücüyle sarılmış karanlık bir asa.</string>
+    <string name="item_staff_of_blood_name">Kan Asası</string>
+    <string name="item_staff_of_blood_desc">Kan büyüsünden beslenen güçlü bir asa.</string>
+
+    <!-- ===== Armour — bronze ===== -->
+    <string name="item_bronze_helmet_name">Bronz Kask</string>
+    <string name="item_bronze_helmet_desc">Basit bronz baş koruması.</string>
+    <string name="item_bronze_platebody_name">Bronz Göğüslük</string>
+    <string name="item_bronze_platebody_desc">Basit bronz gövde zırhı.</string>
+    <string name="item_bronze_platelegs_name">Bronz Zırhlı Pantolon</string>
+    <string name="item_bronze_platelegs_desc">Basit bronz bacak koruması.</string>
+    <string name="item_bronze_shield_name">Bronz Kalkan</string>
+    <string name="item_bronze_shield_desc">Basit bir bronz kalkan.</string>
+
+    <!-- Armour — iron -->
+    <string name="item_iron_helmet_name">Demir Kask</string>
+    <string name="item_iron_helmet_desc">Demir baş koruması.</string>
+    <string name="item_iron_platebody_name">Demir Göğüslük</string>
+    <string name="item_iron_platebody_desc">Demir gövde zırhı.</string>
+    <string name="item_iron_platelegs_name">Demir Zırhlı Pantolon</string>
+    <string name="item_iron_platelegs_desc">Demir bacak koruması.</string>
+    <string name="item_iron_shield_name">Demir Kalkan</string>
+    <string name="item_iron_shield_desc">Demir bir kalkan.</string>
+
+    <!-- Armour — steel -->
+    <string name="item_steel_helmet_name">Çelik Kask</string>
+    <string name="item_steel_helmet_desc">Sağlam çelik baş koruması.</string>
+    <string name="item_steel_platebody_name">Çelik Göğüslük</string>
+    <string name="item_steel_platebody_desc">Sağlam çelik gövde zırhı.</string>
+    <string name="item_steel_platelegs_name">Çelik Zırhlı Pantolon</string>
+    <string name="item_steel_platelegs_desc">Sağlam çelik bacak koruması.</string>
+    <string name="item_steel_shield_name">Çelik Kalkan</string>
+    <string name="item_steel_shield_desc">Sağlam bir çelik kalkan.</string>
+
+    <!-- Armour — mithril -->
+    <string name="item_mithril_helmet_name">Mithril Kaskı</string>
+    <string name="item_mithril_helmet_desc">Hafif büyülü baş koruması.</string>
+    <string name="item_mithril_platebody_name">Mithril Göğüslüğü</string>
+    <string name="item_mithril_platebody_desc">Hafif büyülü gövde zırhı.</string>
+    <string name="item_mithril_platelegs_name">Mithril Zırhlı Pantolonu</string>
+    <string name="item_mithril_platelegs_desc">Hafif büyülü bacak koruması.</string>
+    <string name="item_mithril_shield_name">Mithril Kalkanı</string>
+    <string name="item_mithril_shield_desc">Hafif büyülü kalkan.</string>
+
+    <!-- Armour — adamantite -->
+    <string name="item_adamantite_helmet_name">Adamantite Kaskı</string>
+    <string name="item_adamantite_helmet_desc">Son derece sert baş koruması.</string>
+    <string name="item_adamantite_platebody_name">Adamantite Göğüslüğü</string>
+    <string name="item_adamantite_platebody_desc">Son derece sert gövde zırhı.</string>
+    <string name="item_adamantite_platelegs_name">Adamantite Zırhlı Pantolonu</string>
+    <string name="item_adamantite_platelegs_desc">Son derece sert bacak koruması.</string>
+    <string name="item_adamantite_shield_name">Adamantite Kalkanı</string>
+    <string name="item_adamantite_shield_desc">Son derece sert bir kalkan.</string>
+
+    <!-- Armour — runite -->
+    <string name="item_runite_helmet_name">Runit Kaskı</string>
+    <string name="item_runite_helmet_desc">Mevcut en iyi baş koruması.</string>
+    <string name="item_runite_platebody_name">Runit Göğüslüğü</string>
+    <string name="item_runite_platebody_desc">Mevcut en iyi gövde zırhı.</string>
+    <string name="item_runite_platelegs_name">Runit Zırhlı Pantolonu</string>
+    <string name="item_runite_platelegs_desc">Mevcut en iyi bacak koruması.</string>
+    <string name="item_runite_shield_name">Runit Kalkanı</string>
+    <string name="item_runite_shield_desc">Mevcut en iyi kalkan.</string>
+
+    <!-- ===== Tools — pickaxes ===== -->
+    <string name="item_bronze_pickaxe_name">Bronz Kazma</string>
+    <string name="item_bronze_pickaxe_desc">Madencilik için temel bir kazma.</string>
+    <string name="item_iron_pickaxe_name">Demir Kazma</string>
+    <string name="item_iron_pickaxe_desc">Madencilik için güvenilir bir kazma.</string>
+    <string name="item_steel_pickaxe_name">Çelik Kazma</string>
+    <string name="item_steel_pickaxe_desc">Madencilik için sağlam bir kazma.</string>
+    <string name="item_mithril_pickaxe_name">Mithril Kazması</string>
+    <string name="item_mithril_pickaxe_desc">Madencilik için hafif büyülü bir kazma.</string>
+    <string name="item_adamantite_pickaxe_name">Adamantite Kazması</string>
+    <string name="item_adamantite_pickaxe_desc">Madencilik için son derece sert bir kazma.</string>
+    <string name="item_runite_pickaxe_name">Runit Kazması</string>
+    <string name="item_runite_pickaxe_desc">Madencilik için mevcut en iyi kazma.</string>
+
+    <!-- Tools — axes -->
+    <string name="item_bronze_axe_name">Bronz Balta</string>
+    <string name="item_bronze_axe_desc">Odunculuk için temel bir balta.</string>
+    <string name="item_iron_axe_name">Demir Balta</string>
+    <string name="item_iron_axe_desc">Odunculuk için güvenilir bir balta.</string>
+    <string name="item_steel_axe_name">Çelik Balta</string>
+    <string name="item_steel_axe_desc">Odunculuk için sağlam bir balta.</string>
+    <string name="item_mithril_axe_name">Mithril Baltası</string>
+    <string name="item_mithril_axe_desc">Odunculuk için hafif büyülü bir balta.</string>
+    <string name="item_adamantite_axe_name">Adamantite Baltası</string>
+    <string name="item_adamantite_axe_desc">Odunculuk için son derece sert bir balta.</string>
+    <string name="item_runite_axe_name">Runit Baltası</string>
+    <string name="item_runite_axe_desc">Odunculuk için mevcut en iyi balta.</string>
+
+    <!-- Tools — fishing rods -->
+    <string name="item_bronze_fishing_rod_name">Bronz Olta</string>
+    <string name="item_bronze_fishing_rod_desc">Temel bir olta.</string>
+    <string name="item_iron_fishing_rod_name">Demir Olta</string>
+    <string name="item_iron_fishing_rod_desc">Güvenilir bir olta.</string>
+    <string name="item_steel_fishing_rod_name">Çelik Olta</string>
+    <string name="item_steel_fishing_rod_desc">Sağlam bir olta.</string>
+    <string name="item_mithril_fishing_rod_name">Mithril Oltası</string>
+    <string name="item_mithril_fishing_rod_desc">Hafif büyülü bir olta.</string>
+    <string name="item_adamantite_fishing_rod_name">Adamantite Oltası</string>
+    <string name="item_adamantite_fishing_rod_desc">Son derece dayanıklı bir olta.</string>
+    <string name="item_runite_fishing_rod_name">Runit Oltası</string>
+    <string name="item_runite_fishing_rod_desc">Mevcut en iyi olta.</string>
+
+    <!-- ===== Arrows ===== -->
+    <string name="item_bronze_arrow_name">Bronz Oklar</string>
+    <string name="item_bronze_arrow_desc">Menzilli savaş için temel oklar.</string>
+    <string name="item_iron_arrow_name">Demir Oklar</string>
+    <string name="item_iron_arrow_desc">Menzilli savaş için demir oklar.</string>
+    <string name="item_steel_arrow_name">Çelik Oklar</string>
+    <string name="item_steel_arrow_desc">Menzilli savaş için çelik oklar.</string>
+    <string name="item_mithril_arrow_name">Mithril Okları</string>
+    <string name="item_mithril_arrow_desc">Menzilli savaş için mithril okları.</string>
+    <string name="item_adamantite_arrow_name">Adamantite Okları</string>
+    <string name="item_adamantite_arrow_desc">Menzilli savaş için adamantite okları.</string>
+    <string name="item_runite_arrow_name">Runit Okları</string>
+    <string name="item_runite_arrow_desc">Mevcut en iyi oklar.</string>
+
+    <!-- Arrow components -->
+    <string name="item_arrow_shaft_name">Ok Gövdesi</string>
+    <string name="item_arrow_shaft_desc">Ok yapmak için kullanılan ahşap gövdeler.</string>
+    <string name="item_bronze_arrow_tips_name">Bronz Ok Uçları</string>
+    <string name="item_bronze_arrow_tips_desc">Bronz oklar yapmak için bronz ok uçları.</string>
+    <string name="item_iron_arrow_tips_name">Demir Ok Uçları</string>
+    <string name="item_iron_arrow_tips_desc">Demir oklar yapmak için demir ok uçları.</string>
+    <string name="item_steel_arrow_tips_name">Çelik Ok Uçları</string>
+    <string name="item_steel_arrow_tips_desc">Çelik oklar yapmak için çelik ok uçları.</string>
+    <string name="item_mithril_arrow_tips_name">Mithril Ok Uçları</string>
+    <string name="item_mithril_arrow_tips_desc">Mithril oklar yapmak için mithril ok uçları.</string>
+    <string name="item_adamantite_arrow_tips_name">Adamantite Ok Uçları</string>
+    <string name="item_adamantite_arrow_tips_desc">Adamantite oklar yapmak için adamantite ok uçları.</string>
+    <string name="item_runite_arrow_tips_name">Runit Ok Uçları</string>
+    <string name="item_runite_arrow_tips_desc">Runit oklar yapmak için runit ok uçları.</string>
+
+    <!-- ===== Jewellery — plain ===== -->
+    <string name="item_silver_ring_name">Gümüş Yüzük</string>
+    <string name="item_silver_ring_desc">Sade bir gümüş yüzük.</string>
+    <string name="item_silver_necklace_name">Gümüş Kolye</string>
+    <string name="item_silver_necklace_desc">Sade bir gümüş kolye.</string>
+    <string name="item_gold_ring_name">Altın Yüzük</string>
+    <string name="item_gold_ring_desc">Sade bir altın yüzük.</string>
+    <string name="item_gold_necklace_name">Altın Kolye</string>
+    <string name="item_gold_necklace_desc">Sade bir altın kolye.</string>
+    <string name="item_platinum_ring_name">Platin Yüzük</string>
+    <string name="item_platinum_ring_desc">Sade bir platin yüzük.</string>
+    <string name="item_platinum_necklace_name">Platin Kolye</string>
+    <string name="item_platinum_necklace_desc">Sade bir platin kolye.</string>
+
+    <!-- Jewellery — sapphire -->
+    <string name="item_silver_sapphire_ring_name">Gümüş Safir Yüzük</string>
+    <string name="item_silver_sapphire_ring_desc">Safir taşıyla süslenmiş bir gümüş yüzük.</string>
+    <string name="item_silver_sapphire_necklace_name">Gümüş Safir Kolye</string>
+    <string name="item_silver_sapphire_necklace_desc">Safir taşıyla süslenmiş bir gümüş kolye.</string>
+    <string name="item_gold_sapphire_ring_name">Altın Safir Yüzük</string>
+    <string name="item_gold_sapphire_ring_desc">Safir taşıyla süslenmiş bir altın yüzük.</string>
+    <string name="item_gold_sapphire_necklace_name">Altın Safir Kolye</string>
+    <string name="item_gold_sapphire_necklace_desc">Safir taşıyla süslenmiş bir altın kolye.</string>
+    <string name="item_platinum_sapphire_ring_name">Platin Safir Yüzük</string>
+    <string name="item_platinum_sapphire_ring_desc">Safir taşıyla süslenmiş bir platin yüzük.</string>
+    <string name="item_platinum_sapphire_necklace_name">Platin Safir Kolye</string>
+    <string name="item_platinum_sapphire_necklace_desc">Safir taşıyla süslenmiş bir platin kolye.</string>
+
+    <!-- Jewellery — emerald -->
+    <string name="item_gold_emerald_ring_name">Altın Zümrüt Yüzük</string>
+    <string name="item_gold_emerald_ring_desc">Zümrüt taşıyla süslenmiş bir altın yüzük.</string>
+    <string name="item_gold_emerald_necklace_name">Altın Zümrüt Kolye</string>
+    <string name="item_gold_emerald_necklace_desc">Zümrüt taşıyla süslenmiş bir altın kolye.</string>
+    <string name="item_platinum_emerald_ring_name">Platin Zümrüt Yüzük</string>
+    <string name="item_platinum_emerald_ring_desc">Zümrüt taşıyla süslenmiş bir platin yüzük.</string>
+    <string name="item_platinum_emerald_necklace_name">Platin Zümrüt Kolye</string>
+    <string name="item_platinum_emerald_necklace_desc">Zümrüt taşıyla süslenmiş bir platin kolye.</string>
+
+    <!-- Jewellery — ruby -->
+    <string name="item_gold_ruby_ring_name">Altın Yakut Yüzük</string>
+    <string name="item_gold_ruby_ring_desc">Yakut taşıyla süslenmiş bir altın yüzük.</string>
+    <string name="item_gold_ruby_necklace_name">Altın Yakut Kolye</string>
+    <string name="item_gold_ruby_necklace_desc">Yakut taşıyla süslenmiş bir altın kolye.</string>
+    <string name="item_platinum_ruby_ring_name">Platin Yakut Yüzük</string>
+    <string name="item_platinum_ruby_ring_desc">Yakut taşıyla süslenmiş bir platin yüzük.</string>
+    <string name="item_platinum_ruby_necklace_name">Platin Yakut Kolye</string>
+    <string name="item_platinum_ruby_necklace_desc">Yakut taşıyla süslenmiş bir platin kolye.</string>
+
+    <!-- Jewellery — diamond -->
+    <string name="item_gold_diamond_ring_name">Altın Elmas Yüzük</string>
+    <string name="item_gold_diamond_ring_desc">Elmas taşıyla süslenmiş bir altın yüzük.</string>
+    <string name="item_gold_diamond_necklace_name">Altın Elmas Kolye</string>
+    <string name="item_gold_diamond_necklace_desc">Elmas taşıyla süslenmiş bir altın kolye.</string>
+    <string name="item_platinum_diamond_ring_name">Platin Elmas Yüzük</string>
+    <string name="item_platinum_diamond_ring_desc">Elmas taşıyla süslenmiş bir platin yüzük.</string>
+    <string name="item_platinum_diamond_necklace_name">Platin Elmas Kolye</string>
+    <string name="item_platinum_diamond_necklace_desc">Elmas taşıyla süslenmiş bir platin kolye.</string>
+
+    <!-- ===== Miscellaneous drops ===== -->
+    <string name="item_ashes_name">Küller</string>
+    <string name="item_ashes_desc">Normal kütüklerin yanmış kalıntıları. Bonus Dua XP\'si için Dua yeteneğinde saçın.</string>
+    <string name="item_oak_ashes_name">Meşe Külleri</string>
+    <string name="item_oak_ashes_desc">Meşe kütüklerinin yanmış kalıntıları. Normal küllerden daha fazla Dua XP\'si verir.</string>
+    <string name="item_willow_ashes_name">Söğüt Külleri</string>
+    <string name="item_willow_ashes_desc">Söğüt kütüklerinin yanmış kalıntıları. Dua XP\'si için saçın.</string>
+    <string name="item_maple_ashes_name">Akçaağaç Külleri</string>
+    <string name="item_maple_ashes_desc">Akçaağaç kütüklerinin yanmış kalıntıları. Dua XP\'si için saçın.</string>
+    <string name="item_yew_ashes_name">Porsuk Külleri</string>
+    <string name="item_yew_ashes_desc">Porsuk kütüklerinin yanmış kalıntıları. Önemli miktarda Dua XP\'si için saçın.</string>
+    <string name="item_magic_ashes_name">Büyülü Küller</string>
+    <string name="item_magic_ashes_desc">Büyülü kütüklerin yanmış kalıntıları. Büyük miktarda Dua XP\'si için saçın.</string>
+    <string name="item_redwood_ashes_name">Kızılçam Külleri</string>
+    <string name="item_redwood_ashes_desc">Kızılçam kütüklerinin yanmış kalıntıları. Tüm küller arasında en yüksek Dua XP\'sini verir.</string>
+    <string name="item_bones_name">Kemikler</string>
+    <string name="item_bones_desc">Küçük bir yaratıktan düşen kemikler. Dua XP\'si için gömün.</string>
+    <string name="item_big_bones_name">Büyük Kemikler</string>
+    <string name="item_big_bones_desc">Daha büyük kemikler. Gömüldüğünde daha fazla Dua XP\'si verir.</string>
+    <string name="item_giant_bones_name">Dev Kemikler</string>
+    <string name="item_giant_bones_desc">Güçlü düşmanlardan düşen devasa kemikler. Önemli miktarda Dua XP\'si verir.</string>
+    <string name="item_dragon_bone_name">Ejderha Kemiği</string>
+    <string name="item_dragon_bone_desc">Kadim ejderha kemikleri. Gömüldüğünde en fazla Dua XP\'sini verir.</string>
+    <string name="item_dragon_scale_name">Ejderha Pulu</string>
+    <string name="item_dragon_scale_desc">Yeşil bir ejderhadan sert bir pul. Nadir ve değerli.</string>
+    <string name="item_coins_name">Altın</string>
+    <string name="item_coins_desc">Diyarın para birimi. Mağazada harcayın.</string>
+    <string name="item_goblin_mail_name">Goblin Zırhı</string>
+    <string name="item_goblin_mail_desc">Goblinler tarafından düşürülen hırpalanmış zırh. İyi fiyata satılır.</string>
+    <string name="item_imp_hide_name">İmp Derisi</string>
+    <string name="item_imp_hide_desc">Bir impin meşinimsi derisi.</string>
+    <string name="item_spider_silk_name">Örümcek İpeği</string>
+    <string name="item_spider_silk_desc">Dev örümcekler tarafından dokunan ince ipek. Zanaatkarlar için değerli.</string>
+    <string name="item_spider_fang_name">Örümcek Dişi</string>
+    <string name="item_spider_fang_desc">Dev bir örümcekten düşen zehirli diş.</string>
+    <string name="item_cowhide_name">İnek Derisi</string>
+    <string name="item_cowhide_desc">İnekten düşen kaba deri. Deri zanaatında kullanılır.</string>
+    <string name="item_wool_name">Yün</string>
+    <string name="item_wool_desc">Bir koyundan elde edilen yumuşak yün.</string>
+    <string name="item_feather_name">Tüy</string>
+    <string name="item_feather_desc">Ok zanaatında kullanılan bir tüy.</string>
+    <string name="item_rotten_flesh_name">Çürük Et</string>
+    <string name="item_rotten_flesh_desc">Ölümsüz bir yaratıktan düşen çürüyen et. Kokusu berbat.</string>
+    <string name="item_lockpick_name">Maymuncuk</string>
+    <string name="item_lockpick_desc">Düzenbazlar tarafından düşürülen bir maymuncuk.</string>
+    <string name="item_magic_bean_name">Sihirli Fasulye</string>
+    <string name="item_magic_bean_desc">Gizemli özelliklere sahip sihirli bir fasulye.</string>
+    <string name="item_hellhound_fang_name">Cehennem Tazısı Dişi</string>
+    <string name="item_hellhound_fang_desc">Bir cehennem tazısından düşen yanık diş.</string>
+    <string name="item_demon_horn_name">Şeytan Boynuzu</string>
+    <string name="item_demon_horn_desc">Küçük bir şeytandan koparılmış sivri uçlu boynuz.</string>
+    <string name="item_troll_bone_name">Trol Kemiği</string>
+    <string name="item_troll_bone_desc">Bir dağ trolünden düşen kocaman, boğumlu kemik.</string>
+
+    <!-- ===== Runes ===== -->
+    <string name="item_air_rune_name">Hava Rünü</string>
+    <string name="item_air_rune_desc">Hava gücüyle donatılmış bir rün. Hava büyülerinde kullanılır.</string>
+    <string name="item_water_rune_name">Su Rünü</string>
+    <string name="item_water_rune_desc">Su gücüyle donatılmış bir rün.</string>
+    <string name="item_earth_rune_name">Toprak Rünü</string>
+    <string name="item_earth_rune_desc">Toprak gücüyle donatılmış bir rün.</string>
+    <string name="item_fire_rune_name">Ateş Rünü</string>
+    <string name="item_fire_rune_desc">Ateş gücüyle donatılmış bir rün.</string>
+    <string name="item_mind_rune_name">Zihin Rünü</string>
+    <string name="item_mind_rune_desc">Psişik enerji taşıyan bir rün.</string>
+    <string name="item_chaos_rune_name">Kaos Rünü</string>
+    <string name="item_chaos_rune_desc">Vahşi ve kaotik büyüler barındıran bir rün.</string>
+    <string name="item_death_rune_name">Ölüm Rünü</string>
+    <string name="item_death_rune_desc">Ölüm gücüyle donatılmış bir rün.</string>
+    <string name="item_blood_rune_name">Kan Rünü</string>
+    <string name="item_blood_rune_desc">Kan büyüsünden beslenen nadir bir rün.</string>
+
+    <!-- ===== Crops ===== -->
+    <string name="crop_potato_name">Patates</string>
+    <string name="crop_onion_name">Soğan</string>
+    <string name="crop_cabbage_name">Lahana</string>
+    <string name="crop_carrot_name">Havuç</string>
+    <string name="crop_tomato_name">Domates</string>
+    <string name="crop_corn_name">Mısır</string>
+    <string name="crop_pumpkin_name">Balkabağı</string>
+    <string name="crop_watermelon_name">Karpuz</string>
+    <string name="crop_strawberry_name">Çilek</string>
+    <string name="crop_magic_herb_name">Sihirli Ot</string>
+    <string name="crop_dragon_fruit_name">Ejder Meyvesi</string>
+    <string name="crop_golden_wheat_name">Altın Buğday</string>
+    <string name="crop_spirit_herb_name">Ruh Otu</string>
+    <string name="crop_celestial_bloom_name">Göksel Çiçek</string>
+    <string name="crop_starfruit_name">Yıldız Meyvesi</string>
+    <string name="crop_void_lotus_name">Hiçlik Lotusu</string>
+
+    <!-- ===== Spells ===== -->
+    <string name="spell_wind_strike_name">Rüzgar Vuruşu</string>
+    <string name="spell_wind_bolt_name">Rüzgar Oku</string>
+    <string name="spell_wind_blast_name">Rüzgar Patlaması</string>
+    <string name="spell_wind_wave_name">Rüzgar Dalgası</string>
+    <string name="spell_water_strike_name">Su Vuruşu</string>
+    <string name="spell_water_bolt_name">Su Oku</string>
+    <string name="spell_water_blast_name">Su Patlaması</string>
+    <string name="spell_water_wave_name">Su Dalgası</string>
+    <string name="spell_earth_strike_name">Toprak Vuruşu</string>
+    <string name="spell_earth_bolt_name">Toprak Oku</string>
+    <string name="spell_earth_blast_name">Toprak Patlaması</string>
+    <string name="spell_earth_wave_name">Toprak Dalgası</string>
+    <string name="spell_fire_strike_name">Ateş Vuruşu</string>
+    <string name="spell_fire_bolt_name">Ateş Oku</string>
+    <string name="spell_fire_blast_name">Ateş Patlaması</string>
+    <string name="spell_fire_wave_name">Ateş Dalgası</string>
+    <string name="spell_mind_strike_name">Zihin Vuruşu</string>
+    <string name="spell_mind_bolt_name">Zihin Oku</string>
+    <string name="spell_mind_blast_name">Zihin Patlaması</string>
+    <string name="spell_mind_wave_name">Zihin Dalgası</string>
+    <string name="spell_chaos_strike_name">Kaos Vuruşu</string>
+    <string name="spell_chaos_bolt_name">Kaos Oku</string>
+    <string name="spell_chaos_blast_name">Kaos Patlaması</string>
+    <string name="spell_chaos_wave_name">Kaos Dalgası</string>
+    <string name="spell_death_strike_name">Ölüm Vuruşu</string>
+    <string name="spell_death_bolt_name">Ölüm Oku</string>
+    <string name="spell_death_blast_name">Ölüm Patlaması</string>
+    <string name="spell_death_wave_name">Ölüm Dalgası</string>
+    <string name="spell_blood_strike_name">Kan Vuruşu</string>
+    <string name="spell_blood_bolt_name">Kan Oku</string>
+    <string name="spell_blood_blast_name">Kan Patlaması</string>
+    <string name="spell_blood_wave_name">Kan Dalgası</string>
+
+    <!-- ===== Hoes ===== -->
+    <string name="item_bronze_hoe_name">Bronz Çapa</string>
+    <string name="item_iron_hoe_name">Demir Çapa</string>
+    <string name="item_steel_hoe_name">Çelik Çapa</string>
+    <string name="item_mithril_hoe_name">Mithril Çapası</string>
+    <string name="item_adamantite_hoe_name">Adamantite Çapası</string>
+    <string name="item_runite_hoe_name">Runit Çapası</string>
+
+    <!-- Herblore potions -->
+    <string name="item_attack_brew_name">Saldırı Karışımı</string>
+    <string name="item_defense_brew_name">Savunma Karışımı</string>
+    <string name="item_attack_potion_name">Saldırı İksiri</string>
+    <string name="item_defense_potion_name">Savunma İksiri</string>
+    <string name="item_onion_brew_name">Soğan Karışımı</string>
+    <string name="item_carrot_brew_name">Havuç Karışımı</string>
+    <string name="item_strength_brew_name">Güç Karışımı</string>
+    <string name="item_strength_potion_name">Güç İksiri</string>
+    <string name="item_ranging_potion_name">Menzilli İksiri</string>
+    <string name="item_magic_potion_name">Büyü İksiri</string>
+    <string name="item_super_strength_potion_name">Süper Güç İksiri</string>
+    <string name="item_super_attack_potion_name">Süper Saldırı İksiri</string>
+    <string name="item_super_defense_potion_name">Süper Savunma İksiri</string>
+    <string name="item_super_ranging_potion_name">Süper Menzilli İksiri</string>
+    <string name="item_super_magic_potion_name">Süper Büyü İksiri</string>
+    <string name="item_overload_potion_name">Aşırı Yük İksiri</string>
+</resources>

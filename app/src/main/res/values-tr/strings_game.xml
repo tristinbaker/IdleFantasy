@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Level-up messages ===== -->
+    <!-- Translator note: %1$d = new level number, %2$s = skill display name -->
+    <string name="game_level_up">Seviye atladın! %1$s artık %2$d. seviye!</string>
+    <!-- Translator note: %1$s = skill display name, %2$d = new level number -->
+    <string name="game_level_up_short">%1$s → %2$d</string>
+    <string name="game_max_level">Maksimum seviyeye ulaşıldı!</string>
+
+    <!-- ===== Session result summaries ===== -->
+    <string name="game_session_results_title">Oturum Sonuçları</string>
+    <!-- Translator note: %1$s = skill display name -->
+    <string name="game_session_summary_header">%1$s oturumu tamamlandı</string>
+    <!-- Translator note: %1$s = formatted XP amount (e.g. "1,234") -->
+    <string name="game_session_xp_total">+%1$s XP kazanıldı</string>
+    <string name="game_session_no_items">Hiç eşya toplanmadı</string>
+    <string name="game_session_no_level_ups">Bu oturumda seviye atlanmadı</string>
+    <!-- Translator note: %1$d = number of level ups -->
+    <string name="game_session_level_up_count">%1$d seviye atlandı!</string>
+
+    <!-- ===== Combat messages ===== -->
+    <!-- Translator note: %1$s = player or enemy name, %2$d = damage amount -->
+    <string name="game_combat_hit">%1$s %2$d hasar vurdu.</string>
+    <string name="game_combat_miss">%1$s ıskaladı!</string>
+    <!-- Translator note: %1$s = enemy display name -->
+    <string name="game_combat_enemy_defeated">%1$s yenildi!</string>
+    <!-- Translator note: %1$d = HP restored -->
+    <string name="game_combat_food_eaten">Yemek yendi — %1$d HP yenilendi.</string>
+    <string name="game_combat_player_died">Yenildin.</string>
+    <string name="game_dungeon_cleared">Zindan temizlendi!</string>
+    <!-- Translator note: %1$s = dungeon display name -->
+    <string name="game_dungeon_summary">%1$s tamamlandı.</string>
+
+    <!-- ===== Farming messages ===== -->
+    <!-- Translator note: %1$s = crop display name -->
+    <string name="game_farming_planted">%1$s ekildi.</string>
+    <!-- Translator note: %1$s = crop display name, %2$d = yield quantity -->
+    <string name="game_farming_harvested">%2$d %1$s hasat edildi.</string>
+    <string name="game_farming_all_harvested">Hazır olan tüm tarlalar hasat edildi.</string>
+    <string name="game_farming_patch_cleared">Tarla temizlendi.</string>
+    <string name="game_farming_not_ready">Bu ekin henüz hazır değil.</string>
+    <!-- Translator note: %1$s = crop display name, %2$s = time remaining -->
+    <string name="game_farming_ready_in">%1$s %2$s içinde hazır.</string>
+
+    <!-- ===== Crafting messages ===== -->
+    <!-- Translator note: %1$d = quantity crafted, %2$s = item display name -->
+    <string name="game_crafted">%1$d %2$s üretildi.</string>
+    <!-- Translator note: %1$s = item display name -->
+    <string name="game_missing_ingredient">Eksik malzeme: %1$s.</string>
+
+    <!-- ===== Shop messages ===== -->
+    <!-- Translator note: %1$d = quantity, %2$s = item display name, %3$d = total cost -->
+    <string name="game_shop_purchased">%3$d altına %1$d %2$s satın alındı.</string>
+    <!-- Translator note: %1$d = quantity, %2$s = item display name, %3$d = coins received -->
+    <string name="game_shop_sold">%3$d altına %1$d %2$s satıldı.</string>
+
+    <!-- ===== Prayer / burying ===== -->
+    <!-- Translator note: %1$s = bone display name, %2$s = formatted XP gained -->
+    <string name="game_bones_buried">%1$s gömüldü — +%2$s Dua XP.</string>
+
+    <!-- ===== Quest messages ===== -->
+    <!-- Translator note: %1$s = quest display name -->
+    <string name="game_quest_started">Görev başladı: %1$s</string>
+    <string name="game_quest_completed">Görev tamamlandı: %1$s</string>
+    <string name="game_quest_abandoned">Görev terk edildi.</string>
+    <!-- Translator note: %1$d = current progress, %2$d = target amount -->
+    <string name="game_quest_progress">İlerleme: %1$d / %2$d</string>
+
+    <!-- ===== XP gain messages (shown in session frame log) ===== -->
+    <!-- Translator note: %1$s = formatted XP gained this minute -->
+    <string name="game_xp_gained">+%1$s XP</string>
+    <!-- Translator note: %1$s = item display name, %2$d = quantity -->
+    <string name="game_item_received">+%2$d %1$s</string>
+
+    <!-- ===== Arena messages ===== -->
+    <!-- Translator note: %1$s = opponent display name -->
+    <string name="game_arena_challenged">%1$s tarafından meydan okundu!</string>
+    <string name="game_arena_victory">Zafer!</string>
+    <string name="game_arena_defeat">Bozgun.</string>
+    <!-- Translator note: %1$d = coins won -->
+    <string name="game_arena_coins_won">%1$d altın kazanıldı.</string>
+
+    <!-- ===== Easter egg / dig ===== -->
+    <string name="game_dig_you_dig">Toprağı kazıyorsun…</string>
+    <string name="game_dig_nothing">Toptaktan başka bir şey bulamadın.</string>
+    <!-- Translator note: %1$s = item display name -->
+    <string name="game_dig_found">Bir %1$s buldun!</string>
+    <!-- Translator note: %1$d = current hole depth in metres -->
+    <string name="game_dig_depth">Çukur %1$d metre derinlikte.</string>
+    <string name="game_dig_cooldown">Bugün zaten kazdın. Yarın tekrar gel.</string>
+</resources>

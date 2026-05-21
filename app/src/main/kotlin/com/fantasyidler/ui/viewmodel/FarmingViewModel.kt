@@ -1,7 +1,9 @@
 package com.fantasyidler.ui.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fantasyidler.R
 import com.fantasyidler.data.json.CropData
 import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.FarmingPatch
@@ -11,6 +13,7 @@ import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.simulator.XpTable
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -56,6 +59,7 @@ data class HarvestResult(
 
 @HiltViewModel
 class FarmingViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val farmingRepo: FarmingRepository,
     private val playerRepo: PlayerRepository,
     private val gameData: GameDataRepository,
@@ -109,11 +113,63 @@ class FarmingViewModel @Inject constructor(
     fun openPlantSheet(patchNumber: Int) = _extra.update { it.copy(plantingPatchNumber = patchNumber) }
     fun closePlantSheet()               = _extra.update { it.copy(plantingPatchNumber = null) }
 
+    fun harvestAndPlantAll() {
+        viewModelScope.launch {
+            val now = System.currentTimeMillis()
+            val finishedPatches = uiState.value.patches.filter { it.remainingMs(gameData.crops, now) <= 0 }
+
+            if (finishedPatches.isNotEmpty()) {
+                val playerBefore = playerRepo.getOrCreatePlayer()
+                val invBefore = json.decodeFromString<Map<String, Int>>(playerBefore.inventory)
+                val xpBefore = json.decodeFromString<Map<String, Long>>(playerBefore.skillXp)[Skills.FARMING] ?: 0L
+
+                finishedPatches.forEach { farmingRepo.harvestPatch(it.patchNumber) }
+
+                val playerAfter = playerRepo.getOrCreatePlayer()
+                val invAfter = json.decodeFromString<Map<String, Int>>(playerAfter.inventory)
+                val xpAfter = json.decodeFromString<Map<String, Long>>(playerAfter.skillXp)[Skills.FARMING] ?: 0L
+
+                val gained = invAfter.mapValues { (k, v) -> v - (invBefore[k] ?: 0) }.filter { it.value > 0 }
+                _extra.update { it.copy(harvestResult = HarvestResult(context.getString(R.string.farming_harvest_and_plant), gained, xpAfter - xpBefore)) }
+                delay(300)
+            }
+
+            val emptyPatches = farmingRepo.getEmptyPatches(uiState.value.patchCount)
+            if (emptyPatches.isNotEmpty()) {
+                _extra.update { it.copy(plantingPatchNumber = -1) }
+            } else if (finishedPatches.isEmpty()) {
+                _extra.update { it.copy(snackbarMessage = context.getString(R.string.farming_no_crops_ready)) }
+            }
+        }
+    }
+
     fun plantCrop(patchNumber: Int, crop: CropData) {
         viewModelScope.launch {
             closePlantSheet()
-            val ok = farmingRepo.plantCrop(patchNumber, crop)
-            if (!ok) _extra.update { it.copy(snackbarMessage = "No ${crop.seedName.replace('_', ' ')} in inventory") }
+            val seedName = crop.seedName.replace('_', ' ')
+
+            if (patchNumber == -1) {
+                delay(300)
+                val emptyPatches = farmingRepo.getEmptyPatches(uiState.value.patchCount)
+                var plantedCount = 0
+                
+                for (patchNum in emptyPatches) {
+                    if (farmingRepo.plantCrop(patchNum, crop)) plantedCount++ else break
+                }
+
+                val msg = if (plantedCount == 0) {
+                    if (emptyPatches.isEmpty()) context.getString(R.string.farming_no_empty_patches)
+                    else context.getString(R.string.farming_no_seeds_inventory, seedName)
+                } else {
+                    val base = context.getString(R.string.farming_planted, plantedCount, seedName)
+                    if (plantedCount < emptyPatches.size) "$base - ${context.getString(R.string.farming_no_seeds_inventory, seedName)}" else base
+                }
+                _extra.update { it.copy(snackbarMessage = msg) }
+            } else {
+                if (!farmingRepo.plantCrop(patchNumber, crop)) {
+                    _extra.update { it.copy(snackbarMessage = context.getString(R.string.farming_no_seeds_inventory, seedName)) }
+                }
+            }
         }
     }
 

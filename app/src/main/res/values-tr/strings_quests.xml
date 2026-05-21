@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Quest names and objectives ===== -->
+    <!-- Translator note: quest names are short titles; objectives are action sentences. -->
+
+    <!-- Mining -->
+    <string name="quest_mining_1_name">Madencilik I</string>
+    <string name="quest_mining_1_objective">500 Bakır Cevheri Çıkar</string>
+    <string name="quest_mining_2_name">Madencilik II</string>
+    <string name="quest_mining_2_objective">750 Demir Cevheri Çıkar</string>
+    <string name="quest_mining_3_name">Madencilik III</string>
+    <string name="quest_mining_3_objective">1100 Kömür Çıkar</string>
+    <string name="quest_mining_4_name">Madencilik IV</string>
+    <string name="quest_mining_4_objective">1650 Mithril Cevheri Çıkar</string>
+    <string name="quest_mining_5_name">Madencilik V</string>
+    <string name="quest_mining_5_objective">2450 Adamantite Cevheri Çıkar</string>
+    <string name="quest_mining_6_name">Madencilik VI</string>
+    <string name="quest_mining_6_objective">3650 Runit Cevheri Çıkar</string>
+
+    <!-- Woodcutting -->
+    <string name="quest_woodcutting_1_name">Odunculuk I</string>
+    <string name="quest_woodcutting_1_objective">500 Kütük Kes</string>
+    <string name="quest_woodcutting_2_name">Odunculuk II</string>
+    <string name="quest_woodcutting_2_objective">750 Meşe Kütüğü Kes</string>
+    <string name="quest_woodcutting_3_name">Odunculuk III</string>
+    <string name="quest_woodcutting_3_objective">1100 Söğüt Kütüğü Kes</string>
+    <string name="quest_woodcutting_4_name">Odunculuk IV</string>
+    <string name="quest_woodcutting_4_objective">1650 Akçaağaç Kütüğü Kes</string>
+    <string name="quest_woodcutting_5_name">Odunculuk V</string>
+    <string name="quest_woodcutting_5_objective">2450 Porsuk Kütüğü Kes</string>
+    <string name="quest_woodcutting_6_name">Odunculuk VI</string>
+    <string name="quest_woodcutting_6_objective">3650 Büyülü Kütük Kes</string>
+
+    <!-- Fishing -->
+    <string name="quest_fishing_1_name">Balıkçılık I</string>
+    <string name="quest_fishing_1_objective">500 Balık Yakala</string>
+    <string name="quest_fishing_2_name">Balıkçılık II</string>
+    <string name="quest_fishing_2_objective">750 Balık Yakala</string>
+    <string name="quest_fishing_3_name">Balıkçılık III</string>
+    <string name="quest_fishing_3_objective">1100 Balık Yakala</string>
+    <string name="quest_fishing_4_name">Balıkçılık IV</string>
+    <string name="quest_fishing_4_objective">1650 Balık Yakala</string>
+    <string name="quest_fishing_5_name">Balıkçılık V</string>
+    <string name="quest_fishing_5_objective">2450 Balık Yakala</string>
+    <string name="quest_fishing_6_name">Balıkçılık VI</string>
+    <string name="quest_fishing_6_objective">3650 Balık Yakala</string>
+
+    <!-- Smithing -->
+    <string name="quest_smithing_1_name">Demircilik I</string>
+    <string name="quest_smithing_1_objective">500 Bronz Külçe Erit</string>
+    <string name="quest_smithing_2_name">Demircilik II</string>
+    <string name="quest_smithing_2_objective">750 Demir Külçe Erit</string>
+    <string name="quest_smithing_3_name">Demircilik III</string>
+    <string name="quest_smithing_3_objective">1100 Çelik Külçe Erit</string>
+    <string name="quest_smithing_4_name">Demircilik IV</string>
+    <string name="quest_smithing_4_objective">1650 Mithril Külçe Erit</string>
+    <string name="quest_smithing_5_name">Demircilik V</string>
+    <string name="quest_smithing_5_objective">2450 Adamantite Külçe Erit</string>
+    <string name="quest_smithing_6_name">Demircilik VI</string>
+    <string name="quest_smithing_6_objective">3650 Runit Külçe Erit</string>
+
+    <!-- Cooking - Fish -->
+    <string name="quest_cooking_fish_1_name">Aşçılık — Balık I</string>
+    <string name="quest_cooking_fish_1_objective">500 Balık Pişir</string>
+    <string name="quest_cooking_fish_2_name">Aşçılık — Balık II</string>
+    <string name="quest_cooking_fish_2_objective">750 Balık Pişir</string>
+    <string name="quest_cooking_fish_3_name">Aşçılık — Balık III</string>
+    <string name="quest_cooking_fish_3_objective">1100 Balık Pişir</string>
+    <string name="quest_cooking_fish_4_name">Aşçılık — Balık IV</string>
+    <string name="quest_cooking_fish_4_objective">1650 Balık Pişir</string>
+    <string name="quest_cooking_fish_5_name">Aşçılık — Balık V</string>
+    <string name="quest_cooking_fish_5_objective">2450 Balık Pişir</string>
+    <string name="quest_cooking_fish_6_name">Aşçılık — Balık VI</string>
+    <string name="quest_cooking_fish_6_objective">3650 Balık Pişir</string>
+
+    <!-- Cooking - Beef -->
+    <string name="quest_cooking_beef_1_name">Aşçılık — Sığır Eti I</string>
+    <string name="quest_cooking_beef_1_objective">100 Sığır Eti Pişir</string>
+    <string name="quest_cooking_beef_2_name">Aşçılık — Sığır Eti II</string>
+    <string name="quest_cooking_beef_2_objective">250 Sığır Eti Pişir</string>
+    <string name="quest_cooking_beef_3_name">Aşçılık — Sığır Eti III</string>
+    <string name="quest_cooking_beef_3_objective">500 Sığır Eti Pişir</string>
+
+    <!-- Cooking - Chicken -->
+    <string name="quest_cooking_chicken_1_name">Aşçılık — Tavuk I</string>
+    <string name="quest_cooking_chicken_1_objective">100 Tavuk Pişir</string>
+    <string name="quest_cooking_chicken_2_name">Aşçılık — Tavuk II</string>
+    <string name="quest_cooking_chicken_2_objective">250 Tavuk Pişir</string>
+    <string name="quest_cooking_chicken_3_name">Aşçılık — Tavuk III</string>
+    <string name="quest_cooking_chicken_3_objective">500 Tavuk Pişir</string>
+
+    <!-- Cooking - Mutton -->
+    <string name="quest_cooking_mutton_1_name">Aşçılık — Koyun Eti I</string>
+    <string name="quest_cooking_mutton_1_objective">100 Koyun Eti Pişir</string>
+    <string name="quest_cooking_mutton_2_name">Aşçılık — Koyun Eti II</string>
+    <string name="quest_cooking_mutton_2_objective">250 Koyun Eti Pişir</string>
+    <string name="quest_cooking_mutton_3_name">Aşçılık — Koyun Eti III</string>
+    <string name="quest_cooking_mutton_3_objective">500 Koyun Eti Pişir</string>
+
+    <!-- Fletching -->
+    <string name="quest_fletching_1_name">Ok ve Yay Zanaatı I</string>
+    <string name="quest_fletching_1_objective">500 Bronz Ok Yap</string>
+    <string name="quest_fletching_2_name">Ok ve Yay Zanaatı II</string>
+    <string name="quest_fletching_2_objective">750 Demir Ok Yap</string>
+    <string name="quest_fletching_3_name">Ok ve Yay Zanaatı III</string>
+    <string name="quest_fletching_3_objective">1100 Çelik Ok Yap</string>
+    <string name="quest_fletching_4_name">Ok ve Yay Zanaatı IV</string>
+    <string name="quest_fletching_4_objective">1650 Mithril Ok Yap</string>
+    <string name="quest_fletching_5_name">Ok ve Yay Zanaatı V</string>
+    <string name="quest_fletching_5_objective">2450 Adamantite Ok Yap</string>
+    <string name="quest_fletching_6_name">Ok ve Yay Zanaatı VI</string>
+    <string name="quest_fletching_6_objective">3650 Runit Ok Yap</string>
+
+    <!-- Prayer -->
+    <string name="quest_prayer_1_name">Dua I</string>
+    <string name="quest_prayer_1_objective">500 Kemik Göm</string>
+    <string name="quest_prayer_2_name">Dua II</string>
+    <string name="quest_prayer_2_objective">750 Kemik Göm</string>
+    <string name="quest_prayer_3_name">Dua III</string>
+    <string name="quest_prayer_3_objective">1100 Kemik Göm</string>
+    <string name="quest_prayer_4_name">Dua IV</string>
+    <string name="quest_prayer_4_objective">1650 Kemik Göm</string>
+    <string name="quest_prayer_5_name">Dua V</string>
+    <string name="quest_prayer_5_objective">2450 Kemik Göm</string>
+    <string name="quest_prayer_6_name">Dua VI</string>
+    <string name="quest_prayer_6_objective">3650 Kemik Göm</string>
+
+    <!-- Slayer -->
+    <string name="quest_combat_kills_1_name">Katliam I</string>
+    <string name="quest_combat_kills_1_objective">100 Düşman Yen</string>
+    <string name="quest_combat_kills_2_name">Katliam II</string>
+    <string name="quest_combat_kills_2_objective">150 Düşman Yen</string>
+    <string name="quest_combat_kills_3_name">Katliam III</string>
+    <string name="quest_combat_kills_3_objective">200 Düşman Yen</string>
+    <string name="quest_combat_kills_4_name">Katliam IV</string>
+    <string name="quest_combat_kills_4_objective">300 Düşman Yen</string>
+    <string name="quest_combat_kills_5_name">Katliam V</string>
+    <string name="quest_combat_kills_5_objective">450 Düşman Yen</string>
+    <string name="quest_combat_kills_6_name">Katliam VI</string>
+    <string name="quest_combat_kills_6_objective">650 Düşman Yen</string>
+
+    <!-- Dungeon exploration -->
+    <string name="quest_dungeon_farm_1_name">Zindan Kâşifi I</string>
+    <string name="quest_dungeon_farm_1_objective">Çiftlik Zindanını 5 kez tamamla</string>
+    <string name="quest_dungeon_goblin_1_name">Zindan Kâşifi II</string>
+    <string name="quest_dungeon_goblin_1_objective">Goblin Mağarasını 5 kez tamamla</string>
+    <string name="quest_dungeon_spider_1_name">Zindan Kâşifi III</string>
+    <string name="quest_dungeon_spider_1_objective">Örümcek İnini 5 kez tamamla</string>
+    <string name="quest_dungeon_bandit_1_name">Zindan Kâşifi IV</string>
+    <string name="quest_dungeon_bandit_1_objective">Haydut Kampını 5 kez tamamla</string>
+    <string name="quest_dungeon_undead_1_name">Zindan Kâşifi V</string>
+    <string name="quest_dungeon_undead_1_objective">Ölümsüz Mahzenini 5 kez tamamla</string>
+    <string name="quest_dungeon_fortress_1_name">Zindan Kâşifi VI</string>
+    <string name="quest_dungeon_fortress_1_objective">Kale Harabelerini 5 kez tamamla</string>
+    <string name="quest_dungeon_orc_1_name">Zindan Ustası I</string>
+    <string name="quest_dungeon_orc_1_objective">Ork Kalesini 5 kez tamamla</string>
+    <string name="quest_dungeon_volcanic_1_name">Zindan Ustası II</string>
+    <string name="quest_dungeon_volcanic_1_objective">Volkanik Derinlikleri 5 kez tamamla</string>
+    <string name="quest_dungeon_dragon_1_name">Zindan Ustası III</string>
+    <string name="quest_dungeon_dragon_1_objective">Ejderha İnini 5 kez tamamla</string>
+
+    <!-- Crafting -->
+    <string name="quest_crafting_1_name">Zanaatkârlık I</string>
+    <string name="quest_crafting_1_objective">100 Gümüş Yüzük Üret</string>
+    <string name="quest_crafting_2_name">Zanaatkârlık II</string>
+    <string name="quest_crafting_2_objective">250 Altın Yüzük Üret</string>
+    <string name="quest_crafting_3_name">Zanaatkârlık III</string>
+    <string name="quest_crafting_3_objective">500 Platin Yüzük Üret</string>
+    <string name="quest_crafting_4_name">Zanaatkârlık IV</string>
+    <string name="quest_crafting_4_objective">750 Gümüş Safir Yüzük Üret</string>
+    <string name="quest_crafting_5_name">Zanaatkârlık V</string>
+    <string name="quest_crafting_5_objective">1000 Altın Safir Yüzük Üret</string>
+    <string name="quest_crafting_6_name">Zanaatkârlık VI</string>
+    <string name="quest_crafting_6_objective">1500 Platin Elmas Yüzük Üret</string>
+
+    <!-- Monster slayer chains -->
+    <string name="quest_goblin_slayer_1_name">Goblin Avcısı I</string>
+    <string name="quest_goblin_slayer_1_objective">50 Goblin Yen</string>
+    <string name="quest_goblin_slayer_2_name">Goblin Avcısı II</string>
+    <string name="quest_goblin_slayer_2_objective">100 Goblin Yen</string>
+    <string name="quest_spider_slayer_1_name">Örümcek Avcısı I</string>
+    <string name="quest_spider_slayer_1_objective">40 Dev Örümcek Yen</string>
+    <string name="quest_spider_slayer_2_name">Örümcek Avcısı II</string>
+    <string name="quest_spider_slayer_2_objective">80 Dev Örümcek Yen</string>
+    <string name="quest_skeleton_slayer_1_name">İskelet Avcısı I</string>
+    <string name="quest_skeleton_slayer_1_objective">35 İskelet Yen</string>
+    <string name="quest_skeleton_slayer_2_name">İskelet Avcısı II</string>
+    <string name="quest_skeleton_slayer_2_objective">70 İskelet Yen</string>
+    <string name="quest_bandit_hunter_1_name">Haydut Avcısı I</string>
+    <string name="quest_bandit_hunter_1_objective">30 Haydut Yen</string>
+    <string name="quest_bandit_hunter_2_name">Haydut Avcısı II</string>
+    <string name="quest_bandit_hunter_2_objective">60 Haydut Yen</string>
+    <string name="quest_orc_slayer_1_name">Ork Avcısı I</string>
+    <string name="quest_orc_slayer_1_objective">25 Ork Savaşçısı Yen</string>
+    <string name="quest_orc_slayer_2_name">Ork Avcısı II</string>
+    <string name="quest_orc_slayer_2_objective">50 Ork Savaşçısı Yen</string>
+    <string name="quest_demon_slayer_1_name">Şeytan Avcısı I</string>
+    <string name="quest_demon_slayer_1_objective">20 Küçük Şeytan Yen</string>
+    <string name="quest_demon_slayer_2_name">Şeytan Avcısı II</string>
+    <string name="quest_demon_slayer_2_objective">40 Küçük Şeytan Yen</string>
+    <string name="quest_dragon_slayer_1_name">Ejderha Avcısı I</string>
+    <string name="quest_dragon_slayer_1_objective">10 Yeşil Ejderha Yen</string>
+    <string name="quest_dragon_slayer_2_name">Ejderha Avcısı II</string>
+    <string name="quest_dragon_slayer_2_objective">25 Yeşil Ejderha Yen</string>
+
+    <!-- Combat style challenges -->
+    <string name="quest_melee_warrior_1_name">Yakın Dövüş Savaşçısı I</string>
+    <string name="quest_melee_warrior_1_objective">Goblin Mağarasını sadece yakın dövüş kullanarak tamamla</string>
+    <string name="quest_melee_warrior_2_name">Yakın Dövüş Savaşçısı II</string>
+    <string name="quest_melee_warrior_2_objective">Haydut Kampını sadece yakın dövüş kullanarak tamamla</string>
+    <string name="quest_melee_warrior_3_name">Yakın Dövüş Savaşçısı III</string>
+    <string name="quest_melee_warrior_3_objective">Kale Harabelerini sadece yakın dövüş kullanarak tamamla</string>
+    <string name="quest_ranger_elite_1_name">Menzilli Eliti I</string>
+    <string name="quest_ranger_elite_1_objective">Goblin Mağarasını sadece menzilli kullanarak tamamla</string>
+    <string name="quest_ranger_elite_2_name">Menzilli Eliti II</string>
+    <string name="quest_ranger_elite_2_objective">Haydut Kampını sadece menzilli kullanarak tamamla</string>
+    <string name="quest_ranger_elite_3_name">Menzilli Eliti III</string>
+    <string name="quest_ranger_elite_3_objective">Kale Harabelerini sadece menzilli kullanarak tamamla</string>
+    <string name="quest_mage_master_1_name">Büyü Ustası I</string>
+    <string name="quest_mage_master_1_objective">Goblin Mağarasını sadece büyü kullanarak tamamla</string>
+    <string name="quest_mage_master_2_name">Büyü Ustası II</string>
+    <string name="quest_mage_master_2_objective">Haydut Kampını sadece büyü kullanarak tamamla</string>
+    <string name="quest_mage_master_3_name">Büyü Ustası III</string>
+    <string name="quest_mage_master_3_objective">Kale Harabelerini sadece büyü kullanarak tamamla</string>
+
+    <!-- Iron Stomach (no food) challenges -->
+    <string name="quest_iron_stomach_1_name">Demir Mide I</string>
+    <string name="quest_iron_stomach_1_objective">Örümcek İnini yemek kullanmadan tamamla</string>
+    <string name="quest_iron_stomach_2_name">Demir Mide II</string>
+    <string name="quest_iron_stomach_2_objective">Ölümsüz Mahzenini yemek kullanmadan tamamla</string>
+    <string name="quest_iron_stomach_3_name">Demir Mide III</string>
+    <string name="quest_iron_stomach_3_objective">Ork Kalesini yemek kullanmadan tamamla</string>
+    <string name="quest_iron_stomach_4_name">Demir Mide IV</string>
+    <string name="quest_iron_stomach_4_objective">Ejderha İnini yemek kullanmadan tamamla</string>
+
+    <!-- Treasure Hunter -->
+    <string name="quest_treasure_hunter_1_name">Hazine Avcısı I</string>
+    <string name="quest_treasure_hunter_1_objective">Çatışmalardan 20 Örümcek İpeği topla</string>
+    <string name="quest_treasure_hunter_2_name">Hazine Avcısı II</string>
+    <string name="quest_treasure_hunter_2_objective">Çatışmalardan 10 Goblin Zırhı topla</string>
+    <string name="quest_treasure_hunter_3_name">Hazine Avcısı III</string>
+    <string name="quest_treasure_hunter_3_objective">Çatışmalardan 5 Şeytan Boynuzu topla</string>
+    <string name="quest_treasure_hunter_4_name">Hazine Avcısı IV</string>
+    <string name="quest_treasure_hunter_4_objective">Çatışmalardan 3 Ejderha Pulu topla</string>
+</resources>

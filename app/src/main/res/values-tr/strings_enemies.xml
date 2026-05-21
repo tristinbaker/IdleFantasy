@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Enemy names ===== -->
+    <string name="enemy_giant_rat_name">Dev Sıçan</string>
+    <string name="enemy_goblin_name">Goblin</string>
+    <string name="enemy_skeleton_name">İskelet</string>
+    <string name="enemy_zombie_name">Zombi</string>
+    <string name="enemy_bandit_name">Haydut</string>
+    <string name="enemy_guard_name">Muhafız</string>
+    <string name="enemy_dark_wizard_name">Kara Büyücü</string>
+    <string name="enemy_orc_warrior_name">Ork Savaşçısı</string>
+    <string name="enemy_spider_name">Dev Örümcek</string>
+    <string name="enemy_wild_dog_name">Vahşi Köpek</string>
+    <string name="enemy_rogue_name">Düzenbaz</string>
+    <string name="enemy_knight_name">Şövalye</string>
+    <string name="enemy_hellhound_name">Cehennem Tazısı</string>
+    <string name="enemy_troll_name">Dağ Trolü</string>
+    <string name="enemy_demon_name">Küçük Şeytan</string>
+    <string name="enemy_dragon_name">Yeşil Ejderha</string>
+    <string name="enemy_imp_name">İmp</string>
+    <string name="enemy_chicken_name">Tavuk</string>
+    <string name="enemy_sheep_name">Koyun</string>
+    <string name="enemy_cow_name">İnek</string>
+
+    <!-- ===== Dungeon names and descriptions ===== -->
+    <string name="dungeon_imp_cavern_name">İmp Mağarası</string>
+    <string name="dungeon_imp_cavern_desc">Yaramaz implerle dolu sığ bir mağara. Yeni başlayanlar için mükemmel!</string>
+    <string name="dungeon_goblin_cave_name">Goblin Mağarası</string>
+    <string name="dungeon_goblin_cave_desc">Goblinler ve dev sıçanlarla dolu karanlık bir mağara. Yeni maceracıların antrenman yapması için iyi bir yer.</string>
+    <string name="dungeon_spider_den_name">Örümcek İni</string>
+    <string name="dungeon_spider_den_desc">Zehirli örümceklerin kaynadığı ağlarla dolu bir mağara. Panzehir getirin!</string>
+    <string name="dungeon_bandit_camp_name">Haydut Kampı</string>
+    <string name="dungeon_bandit_camp_desc">Vahşi doğada hırsızlar ve düzenbazların saklandığı bir sığınak. Kesene dikkat et!</string>
+    <string name="dungeon_undead_crypt_name">Ölümsüz Mahzeni</string>
+    <string name="dungeon_undead_crypt_desc">Ölülerin dinlenmeyi reddettiği kadim bir mezarlık. Kara büyüye dikkat!</string>
+    <string name="dungeon_fortress_ruins_name">Kale Harabeleri</string>
+    <string name="dungeon_fortress_ruins_desc">Şövalyeler ve askerler tarafından korunan kadim bir kalenin dökülen kalıntıları.</string>
+    <string name="dungeon_orc_stronghold_name">Ork Kalesi</string>
+    <string name="dungeon_orc_stronghold_desc">Dağların derinliklerinde tahkim edilmiş bir ork yerleşimi. Sadece cesurlar girmeye cüret edebilir.</string>
+    <string name="dungeon_volcanic_depths_name">Volkanik Derinlikler</string>
+    <string name="dungeon_volcanic_depths_desc">Cehennem tazıları ve küçük şeytanların yaşadığı kavurucu bir mağara. Sıcaklık dayanılmaz!</string>
+    <string name="dungeon_dragon_lair_name">Ejderha İni</string>
+    <string name="dungeon_dragon_lair_desc">Yeşil ejderhaların efsanevi yuvası. Bu zorluktan sadece usta savaşçılar sağ çıkabilir.</string>
+    <string name="dungeon_farm_name">Çiftlik</string>
+    <string name="dungeon_farm_desc">Çiftlik hayvanlarının bulunduğu huzurlu bir çiftlik. Yiyecek toplamak isteyen yeni başlayanlar için harika!</string>
+    <string name="dungeon_infernal_stronghold_name">Cehennem Kalesi</string>
+    <string name="dungeon_infernal_stronghold_desc">Şeytanlar ve cehennem tazıları tarafından yönetilen ateş ve kükürt kalesi. Sadece sıcaklık bile hazırlıksız olanları öldürebilir.</string>
+    <string name="dungeon_ancient_temple_name">Kadim Tapınak</string>
+    <string name="dungeon_ancient_temple_desc">Diyardaki en güçlü yaratıklar tarafından korunan kadim bir tapınak. Sadece en güçlü savaşçılar girmeye cüret edebilir.</string>
+
+    <!-- ===== Solo boss names (raid bosses retargeted for solo play) ===== -->
+    <string name="boss_king_black_dragon_name">Siyah Ejder Kralı</string>
+    <string name="boss_demon_lord_name">Şeytan Lordu</string>
+    <string name="boss_kraken_name">Kraken</string>
+    <string name="boss_balrog_name">Balrog</string>
+
+    <!-- ===== Pet names and descriptions ===== -->
+    <string name="pet_dragon_whelp_name">Yavru Ejderha</string>
+    <string name="pet_dragon_whelp_desc">Dövüş XP\'nizi artıran genç bir ejderha.</string>
+    <string name="pet_imp_pet_name">Evcil İmp</string>
+    <string name="pet_imp_pet_desc">Dua eğitiminize yardımcı olan yaramaz bir imp.</string>
+    <string name="pet_baby_kraken_name">Yavru Kraken</string>
+    <string name="pet_baby_kraken_desc">Aşçılık XP\'nizi geliştiren minik bir kraken.</string>
+    <string name="pet_rock_golem_name">Kaya Golemi</string>
+    <string name="pet_rock_golem_desc">Madencilik XP\'nizi geliştiren canlı bir kaya oluşumu.</string>
+    <string name="pet_ent_name">Ent</string>
+    <string name="pet_ent_desc">Odunculuk XP\'nizi artıran kadim bir ağaç ruhu.</string>
+    <string name="pet_tiny_templar_name">Minik Tapınakçı</string>
+    <string name="pet_tiny_templar_desc">Balıkçılık XP\'nizi artıran küçük bir balık yoldaşı.</string>
+    <string name="pet_tangleroot_name">Düğümlü Kök</string>
+    <string name="pet_tangleroot_desc">Tarım XP\'nizi geliştiren büyülü bir bitki yaratığı.</string>
+</resources>

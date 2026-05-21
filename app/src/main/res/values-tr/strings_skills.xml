@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Skill names and descriptions ===== -->
+
+    <!-- Gathering skills -->
+    <string name="skill_mining_name">Madencilik</string>
+    <string name="skill_mining_desc">Topraktan değerli cevherler ve mücevherler çıkarın.</string>
+    <string name="skill_fishing_name">Balıkçılık</string>
+    <string name="skill_fishing_desc">Sulardan balıklar ve su hazineleri yakalayın.</string>
+    <string name="skill_woodcutting_name">Odunculuk</string>
+    <string name="skill_woodcutting_desc">Ağaçları kesin ve çeşitli odun türleri toplayın.</string>
+    <string name="skill_farming_name">Tarım</string>
+    <string name="skill_farming_desc">Tarım alanlarınızda ekin ekin ve hasat edin.</string>
+    <string name="skill_firemaking_name">Ateş Yakma</string>
+    <string name="skill_firemaking_desc">Envanterinizdeki kütükleri yakarak Ateş Yakma XP\'si kazanın. Yakılan her kütük aynı zamanda Dua yeteneğinde bonus XP için saçılabilecek küller üretir.</string>
+    <string name="skill_agility_name">Çeviklik</string>
+    <string name="skill_agility_desc">Tüm yeteneklerde oturum sürelerini kısaltmak için Çeviklik eğitin. Seviye 99, bir saatten 20 dakika keser (60 dk → 40 dk), seviye atladıkça pürüzsüz doğrusal bir azalma olur.</string>
+
+    <!-- Crafting skills -->
+    <string name="skill_smithing_name">Demircilik</string>
+    <string name="skill_smithing_desc">Cevherleri eriterek külçelere dönüştürün ve güçlü metal ekipmanlar dövün.</string>
+    <string name="skill_cooking_name">Aşçılık</string>
+    <string name="skill_cooking_desc">Çiğ malzemeleri çatışmada HP yenileyen yiyeceklere dönüştürün.</string>
+    <string name="skill_fletching_name">Ok ve Yay Zanaatı</string>
+    <string name="skill_fletching_desc">Kütüklerden ve metal parçalardan yaylar ve oklar üretin.</string>
+    <string name="skill_crafting_name">Zanaatkarlık</string>
+    <string name="skill_crafting_desc">Değerli malzemelerden mücevherler ve diğer zanaat eşyaları üretin.</string>
+    <string name="skill_runecrafting_name">Rün Zanaatı</string>
+    <string name="skill_runecrafting_desc">Büyü yapmak için rün özünden büyülü rünler üretin.</string>
+    <string name="skill_herblore_name">Bitkibilim</string>
+    <string name="skill_herblore_desc">Savaş istatistiklerinizi artırmak için tarım bitkileri ve zindan malzemelerinden iksirler demleyin.</string>
+
+    <!-- Combat skills -->
+    <string name="skill_attack_name">Saldırı</string>
+    <string name="skill_attack_desc">Yakın dövüş isabetliliğinizi geliştirerek vurma şansınızı artırır.</string>
+    <string name="skill_strength_name">Güç</string>
+    <string name="skill_strength_desc">Vuruş başına maksimum yakın dövüş hasarınızı artırır.</string>
+    <string name="skill_defense_name">Savunma</string>
+    <string name="skill_defense_desc">Düşman saldırılarından aldığınız hasarı azaltır.</string>
+    <string name="skill_ranged_name">Menzilli</string>
+    <string name="skill_ranged_desc">Bir yay ve oklar kullanarak düşmanlara güvenli mesafeden saldırın.</string>
+    <string name="skill_magic_name">Büyü</string>
+    <string name="skill_magic_desc">Rünler kullanarak güçlü büyüler yapın. Yüksek seviyeler daha güçlü büyülerin kilidini açar.</string>
+    <string name="skill_hitpoints_name">Sağlık</string>
+    <string name="skill_hitpoints_desc">Toplam sağlığınız. Yüksek seviyeler savaşta daha uzun süre hayatta kalmanızı sağlar.</string>
+    <string name="skill_prayer_name">Dua</string>
+    <string name="skill_prayer_desc">Dua XP\'si kazanmak için savaşlardan düşen kemikleri gömün. Yüksek seviyeler savaş seviyenizi artırır.</string>
+
+    <!-- ===== Agility course names and descriptions ===== -->
+    <string name="agility_beginner_course_name">Başlangıç Parkuru</string>
+    <string name="agility_beginner_course_desc">Çeviklik eğitimlerine yeni başlayanlar için basit bir engel parkuru.</string>
+    <string name="agility_novice_course_name">Acemi Parkuru</string>
+    <string name="agility_novice_course_desc">Temel engellere sahip biraz daha zorlu bir parkur.</string>
+    <string name="agility_apprentice_course_name">Çırak Parkuru</string>
+    <string name="agility_apprentice_course_desc">Birtakım yetenekler gerektiren orta seviye bir parkur.</string>
+    <string name="agility_intermediate_course_name">Orta Seviye Parkur</string>
+    <string name="agility_intermediate_course_desc">Zorlu engellere sahip, orta derecede zor bir parkur.</string>
+    <string name="agility_advanced_course_name">İleri Seviye Parkur</string>
+    <string name="agility_advanced_course_desc">Çeviklik hünerinizi test eden zorlu bir parkur.</string>
+    <string name="agility_expert_course_name">Uzman Parkuru</string>
+    <string name="agility_expert_course_desc">Tehlikeli engellere sahip uzman seviyesinde bir parkur.</string>
+    <string name="agility_elite_course_name">Elit Parkur</string>
+    <string name="agility_elite_course_desc">Bu elit parkurda sadece en çevik olanlar ustalaşabilir.</string>
+    <string name="agility_master_course_name">Usta Parkuru</string>
+    <string name="agility_master_course_desc">Aşırı engellere sahip usta seviyesi bir parkur.</string>
+    <string name="agility_veteran_course_name">Kıdemli Parkuru</string>
+    <string name="agility_veteran_course_desc">Cezalandırıcı zorluklara sahip bir kıdemli eğitim alanı.</string>
+    <string name="agility_champion_course_name">Şampiyon Parkuru</string>
+    <string name="agility_champion_course_desc">Sizi sınırlarınıza kadar zorlayan şampiyon seviyesi bir parkur.</string>
+    <string name="agility_heroic_course_name">Kahraman Parkuru</string>
+    <string name="agility_heroic_course_desc">Sadece en iyilerin ayak basmaya cüret edebileceği kahramansı bir parkur.</string>
+    <string name="agility_legendary_course_name">Efsanevi Parkur</string>
+    <string name="agility_legendary_course_desc">Çevik elitler arasında fısıltıyla konuşulan efsanevi bir parkur.</string>
+    <string name="agility_mythic_course_name">Mistik Parkur</string>
+    <string name="agility_mythic_course_desc">Fizik kurallarına meydan okuyan mistik bir parkur.</string>
+    <string name="agility_divine_course_name">İlahi Parkur</string>
+    <string name="agility_divine_course_desc">Çeviklik tanrıları tarafından kutsanmış ilahi bir parkur.</string>
+    <string name="agility_transcendent_course_name">Aşkın Parkur</string>
+    <string name="agility_transcendent_course_desc">Çeviklikte nihai test, ölümlü sınırlarını aşıyor.</string>
+</resources>
