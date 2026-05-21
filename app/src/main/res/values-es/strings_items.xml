@@ -6,7 +6,7 @@
     <string name="item_tin_ore_name">Mineral de estaño</string>
     <string name="item_tin_ore_desc">Mineral común. Se combina con mineral de cobre para fundir lingotes de bronce.</string>
     <string name="item_iron_ore_name">Mineral de hierro</string>
-    <string name="item_iron_ore_desc">Mineral versátil utilizado para fundir barras de hierro y acero..</string>
+    <string name="item_iron_ore_desc">Mineral versátil utilizado para fundir barras de hierro y acero.</string>
     <string name="item_coal_name">Carbón</string>
     <string name="item_coal_desc">Se utiliza como componente combustible al fundir acero y barras de mayor calidad.</string>
     <string name="item_silver_ore_name">Mineral de plata</string>
@@ -340,17 +340,17 @@
 
     <!-- Tools — fishing rods -->
     <string name="item_bronze_fishing_rod_name">Bronze Fishing Rod</string>
-    <string name="item_bronze_fishing_rod_desc">A basic fishing rod.</string>
+    <string name="item_bronze_fishing_rod_desc">Una caña de pescar básica.</string>
     <string name="item_iron_fishing_rod_name">Iron Fishing Rod</string>
-    <string name="item_iron_fishing_rod_desc">A reliable fishing rod.</string>
+    <string name="item_iron_fishing_rod_desc">Una caña de pescar fiable.</string>
     <string name="item_steel_fishing_rod_name">Steel Fishing Rod</string>
-    <string name="item_steel_fishing_rod_desc">A sturdy fishing rod.</string>
+    <string name="item_steel_fishing_rod_desc">Una caña de pescar resistente.</string>
     <string name="item_mithril_fishing_rod_name">Mithril Fishing Rod</string>
-    <string name="item_mithril_fishing_rod_desc">A lightweight magical fishing rod.</string>
+    <string name="item_mithril_fishing_rod_desc">Una caña de pescar mágica y ligera.</string>
     <string name="item_adamantite_fishing_rod_name">Adamantite Fishing Rod</string>
-    <string name="item_adamantite_fishing_rod_desc">An extremely durable fishing rod.</string>
+    <string name="item_adamantite_fishing_rod_desc">Una caña de pescar extremadamente duradera.</string>
     <string name="item_runite_fishing_rod_name">Runite Fishing Rod</string>
-    <string name="item_runite_fishing_rod_desc">The finest fishing rod available.</string>
+    <string name="item_runite_fishing_rod_desc">La mejor caña de pescar disponible.</string>
 
     <!-- ===== Arrows ===== -->
     <string name="item_bronze_arrow_name">Flechas de bronce</string>

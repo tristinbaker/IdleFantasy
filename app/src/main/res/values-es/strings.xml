@@ -12,8 +12,8 @@
 
     <!-- ===== Common buttons ===== -->
     <string name="btn_start">Iniciar</string>
-    <string name="btn_start_session">Iniciar sesión</string>
-    <string name="btn_abandon_session">Abandonar sesion</string>
+    <string name="btn_start_session">Comenzar</string>
+    <string name="btn_abandon_session">Abandonar actividad</string>
     <string name="btn_collect_results">Recoger resultados</string>
     <string name="btn_cancel">Cancelar</string>
     <string name="btn_craft">Craftear</string>
@@ -33,7 +33,7 @@
     <string name="btn_view_drops">Ver Drops</string>
     <string name="btn_start_quest">Iniciar Quest</string>
     <string name="btn_abandon_quest">Abandonar Quest</string>
-    <string name="btn_enter_dungeon">Entrar a la mazmorra</string>
+    <string name="btn_enter_dungeon">Entrar</string>
     <string name="btn_enter_arena">Entrar a la arena</string>
     <string name="btn_activate">Activar</string>
     <string name="btn_deactivate">Desactivar</string>
@@ -48,10 +48,10 @@
     <string name="label_attack">Ataque</string>
     <string name="label_strength">Fuerza</string>
     <string name="label_defense">Defensa</string>
-    <string name="label_ranged">Distancia</string>
+    <string name="label_ranged">Arquería</string>
     <string name="label_magic">Magia</string>
-    <string name="label_prayer">Oración</string>
-    <string name="label_hitpoints">Puntos de vida</string>
+    <string name="label_prayer">Plegarias</string>
+    <string name="label_hitpoints">Vida</string>
     <string name="label_inventory">Inventario</string>
     <string name="label_equipment">Equipamiento</string>
     <string name="label_pets">Pets</string>
@@ -78,7 +78,7 @@
     <string name="label_quantity">Cantidad</string>
     <string name="label_price">Precio</string>
     <string name="label_available">Disponible</string>
-    <string name="label_patch">Patch</string>
+    <string name="label_patch">Parcela</string>
     <string name="label_growth_time">Tiempo de crecimiento</string>
     <string name="label_ready_to_harvest">Listo para cosechar</string>
     <string name="label_empty">Vacío</string>
@@ -93,7 +93,7 @@
     <string name="label_available_quests">Disponible</string>
     <string name="label_stats">Stats</string>
     <string name="label_skills">Habilidades</string>
-    <string name="label_shop">Shop</string>
+    <string name="label_shop">Tienda</string>
     <string name="label_sell_items">Vender artículos</string>
     <string name="label_total_level">Total Level</string>
     <string name="label_wins">Victorias</string>
@@ -108,9 +108,9 @@
     <string name="label_arrows">Flechas</string>
     <string name="label_runes">Runas</string>
     <string name="label_spell">Hechizo</string>
-    <string name="label_none">None</string>
+    <string name="label_none">Ninguno</string>
     <string name="label_melee">Melee</string>
-    <string name="label_ranged_style">A distancia</string>
+    <string name="label_ranged_style">Arquería</string>
     <string name="label_magic_style">Magia</string>
     <string name="label_gathering">Reunión</string>
     <string name="label_crafting">Crafting</string>
@@ -179,8 +179,8 @@
         <item quantity="other">%1$d horas</item>
     </plurals>
     <plurals name="plural_patches">
-        <item quantity="one">%1$d patch</item>
-        <item quantity="other">%1$d patches</item>
+        <item quantity="one">%1$d parcela</item>
+        <item quantity="other">%1$d parcelas</item>
     </plurals>
     <plurals name="plural_kills">
         <item quantity="one">%1$d kill</item>
@@ -210,16 +210,16 @@
 
     <!-- ===== Session dialogs ===== -->
     <string name="session_abandon_title">Abandonar sesión?</string>
-    <string name="session_abandon_body">Todo el progreso de esta sesión se perderá..</string>
+    <string name="session_abandon_body">Todo el progreso de esta sesión se perderá.</string>
 
     <!-- ===== Onboarding ===== -->
-    <string name="onboarding_welcome_title">Welcome to Idle Fantasy</string>
+    <string name="onboarding_welcome_title">Bienvenido a Idle Fantasy</string>
     <string name="onboarding_welcome_body">Inicia una sesión de entrenamiento y observa cómo crece tu personaje. Las sesiones duran una hora, incluso cuando la aplicación está cerrada.</string>
     <string name="onboarding_first_session_hint">Toca cualquier habilidad para empezar.</string>
 
     <!-- ===== Settings ===== -->
     <string name="settings_title">Settings</string>
-    <string name="settings_notifications">Notificaciones de sesión</string>
+    <string name="settings_notifications">Alerta de Progreso</string>
     <string name="settings_notifications_desc">Mostrar una alerta cuando finalice tu sesión.</string>
     <string name="settings_battery_optimization">Optimización de la batería</string>
     <string name="settings_battery_optimization_desc">Desactive la optimización de batería para Idle Fantasy para recibir alertas de sesión oportunas.</string>
@@ -271,7 +271,7 @@
     <string name="reset_confirm2_btn">Sí, reinicia todo</string>
 
     <!-- ===== Battery prompt dialog ===== -->
-    <string name="battery_prompt_title">Mantener las sesiones en marcha</string>
+    <string name="battery_prompt_title">Mantener las actividades en marcha</string>
     <string name="battery_prompt_body">Para disfrutar de la mejor experiencia, permite que Idle Fantasy se ejecute en segundo plano para que recibas notificaciones de sesión puntuales..</string>
     <string name="battery_prompt_open_settings">Abrir configuración</string>
     <string name="battery_prompt_dismiss">Ahora no</string>
@@ -363,8 +363,8 @@
 
     <!-- ===== ProfileScreen ===== -->
     <string name="profile_unnamed">Aventurero sin nombre</string>
-    <string name="profile_no_pets">No pets available</string>
-    <string name="profile_pet_collected">Collected</string>
+    <string name="profile_no_pets">No hay mascotas disponibles</string>
+    <string name="profile_pet_collected">Obtenidas</string>
     <string name="profile_pet_not_found">Aún no encontrado</string>
     <string name="profile_equip_best">Equipa el mejor equipo</string>
     <string name="profile_combat_gear">Equipo de combate</string>
@@ -392,7 +392,7 @@
     <string name="skills_session_duration">Sesion: %1$dm</string>
     <string name="skills_only_craftable">Solo se puede fabricar</string>
     <string name="skills_filter_all">All</string>
-    <string name="skills_add_to_queue">Agregar a la fila de sesiones</string>
+    <string name="skills_add_to_queue">Agregar a la fila de actividades</string>
     <string name="skills_add_queue_short">Agregar a la fila</string>
     <!-- Translator note: %1$d = level required, %2$s = XP per action -->
     <string name="skills_level_req_xp">Lv. %1$d  •  %2$s XP/mineral</string>
@@ -428,7 +428,7 @@
     <!-- ===== ShopScreen ===== -->
     <string name="shop_active">ACTIVO</string>
     <string name="shop_sell_junk">Vender chatarra</string>
-    <string name="shop_sell_old_gear">Vende equipo viejo</string>
+    <string name="shop_sell_old_gear">Vende equipo</string>
     <string name="shop_equipped_label">(equipado)</string>
     <!-- Translator note: %1$d = quantity -->
     <string name="shop_qty_in_inv">×%1$d en inventario</string>
@@ -445,7 +445,7 @@
     <string name="shop_total_amount">%1$s monedas</string>
 
     <!-- ===== CraftingScreen ===== -->
-    <string name="crafting_no_mats">No mats</string>
+    <string name="crafting_no_mats">No hay materiales</string>
     <!-- Translator note: %1$d = quantity produced -->
     <string name="crafting_produces">Produce %1$d× por craft</string>
     <string name="crafting_effects">Efectos</string>
@@ -462,8 +462,8 @@
     <!-- Translator note: %1$d = farming level -->
     <string name="farming_title">Farming — Level %1$d</string>
     <!-- Translator note: %1$d = patch count -->
-    <string name="farming_patches">%1$d patches unlocked</string>
-    <string name="farming_clear_patch">Clear Patch</string>
+    <string name="farming_patches">%1$d Parcelas desbloqueadas</string>
+    <string name="farming_clear_patch">Limpiar parcela</string>
     <string name="farming_clear_desc">Retirar la cosecha sin obtener ninguna recompensa?</string>
 
     <!-- ===== QuestsScreen ===== -->
@@ -486,7 +486,7 @@
     <string name="character_race_gnome">Gnome</string>
 
     <!-- ===== OnboardingScreen ===== -->
-    <string name="onboarding_sessions_title">Sesiones</string>
+    <string name="onboarding_sessions_title">Actividades</string>
     <string name="onboarding_sessions_desc">Toca cualquier habilidad e inicia una sesión de entrenamiento. Las sesiones continúan en segundo plano, incluso con la app cerrada. Vuelve para recoger tu botín y XP</string>
     <string name="onboarding_progress_title">Progresa paso a paso</string>
     <string name="onboarding_progress_desc">Mina mineral para fundir barras y forjar mejores armas y armaduras. Equipa mejor equipo para enfrentarte a mazmorras y jefes más difíciles. Las mejores herramientas aceleran la recolección y el equipo de alto nivel desbloquea contenido que el equipo débil no puede sobrevivir.</string>

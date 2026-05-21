@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- ===== Notification channel metadata ===== -->
-    <string name="notif_channel_sessions_name">Alerta de Sesión</string>
-    <string name="notif_channel_sessions_desc">Notificaciones cuando finalizan tus sesiones de habilidades</string>
-    <string name="notif_channel_farming_name">Alerta de Farming</string>
-    <string name="notif_channel_farming_desc">Notificaciones cuando tus cultivos están listos para cosechar</string>
+    <string name="notif_channel_sessions_name">Alerta de Progreso</string>
+    <string name="notif_channel_sessions_desc">Recibe notificaciones cuando las actividades terminen.</string>
+    <string name="notif_channel_farming_name">Alerta de Cultivos</string>
+    <string name="notif_channel_farming_desc">Recibe notificaciones cuando tus cultivos estén listos para cosechar.</string>
 
     <!-- ===== Session complete ===== -->
-    <string name="notif_session_complete_title">Sesión Completa!</string>
+    <string name="notif_session_complete_title">Actividad Completa!</string>
     <!-- Translator note: %1$s = localised skill name (e.g. "Mining") -->
-    <string name="notif_session_complete_body">Tu sesión de %1$s ha finalizado. Toca para recoger tus recompensas.”</string>
+    <string name="notif_session_complete_body">La actividad de %1$s ha finalizado. Reclama las recompensas.”</string>
 
     <!-- ===== Farming ready ===== -->
     <string name="notif_farming_ready_title">Cultivos Listos!</string>

@@ -56,7 +56,7 @@
 
     <!-- ===== Prayer / burying ===== -->
     <!-- Translator note: %1$s = bone display name, %2$s = formatted XP gained -->
-    <string name="game_bones_buried">Has enterrado %1$s — +%2$s XP de Oración.</string>
+    <string name="game_bones_buried">Has enterrado %1$s — +%2$s XP de Plegarias.</string>
 
     <!-- ===== Quest messages ===== -->
     <!-- Translator note: %1$s = quest display name -->

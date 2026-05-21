@@ -141,11 +141,11 @@
 
     <!-- Dungeon exploration -->
     <string name="quest_dungeon_farm_1_name">Dungeon Explorer I</string>
-    <string name="quest_dungeon_farm_1_objective">Completa la dungeon de la Granja 5 veces</string>
+    <string name="quest_dungeon_farm_1_objective">Completa la Granja 5 veces</string>
     <string name="quest_dungeon_goblin_1_name">Dungeon Explorer II</string>
-    <string name="quest_dungeon_goblin_1_objective">Completa la carverna de Goblins 5 veces</string>
+    <string name="quest_dungeon_goblin_1_objective">Completa la Cueva de los Goblins 5 veces</string>
     <string name="quest_dungeon_spider_1_name">Dungeon Explorer III</string>
-    <string name="quest_dungeon_spider_1_objective">Completa la guarida de Arañas 5 veces</string>
+    <string name="quest_dungeon_spider_1_objective">Completa la Guarida de Arañas 5 veces</string>
     <string name="quest_dungeon_bandit_1_name">Dungeon Explorer IV</string>
     <string name="quest_dungeon_bandit_1_objective">Completa el Campamento de Bandidos 5 veces</string>
     <string name="quest_dungeon_undead_1_name">Dungeon Explorer V</string>
