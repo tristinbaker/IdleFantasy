@@ -486,6 +486,13 @@
     <string name="farming_patches">%1$d patches unlocked</string>
     <string name="farming_clear_patch">Clear Patch</string>
     <string name="farming_clear_desc">Remove the crop without any reward?</string>
+    <string name="farming_harvest_and_plant">Harvest and Plant All</string>
+    <string name="farming_no_crops_ready">No crops ready to harvest</string>
+    <string name="farming_no_empty_patches">No empty patches available</string>
+    <!-- Translator note: %1$s = seed name -->
+    <string name="farming_no_seeds_inventory">Not enough %1$s in inventory</string>
+    <!-- Translator note: %1$d = count, %2$s = seed name -->
+    <string name="farming_planted">Planted %1$d %2$s</string>
 
     <!-- ===== QuestsScreen ===== -->
     <string name="quests_none_in_category">No quests in this category.</string>

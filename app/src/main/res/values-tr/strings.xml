@@ -479,6 +479,13 @@
     <string name="farming_patches">%1$d tarla açık</string>
     <string name="farming_clear_patch">Tarlayı Temizle</string>
     <string name="farming_clear_desc">Hiçbir ödül almadan ürünü sök?</string>
+    <string name="farming_harvest_and_plant">Tümünü Hasat Et ve Ek</string>
+    <string name="farming_no_crops_ready">Hasat etmeye hazır ürün yok</string>
+    <string name="farming_no_empty_patches">Boş tarla yok</string>
+    <!-- Translator note: %1$s = seed name -->
+    <string name="farming_no_seeds_inventory">Envanterinde yeterli %1$s yok</string>
+    <!-- Translator note: %1$d = count, %2$s = seed name -->
+    <string name="farming_planted">%1$d %2$s ekildi</string>
 
     <!-- ===== QuestsScreen ===== -->
     <string name="quests_none_in_category">Bu kategoride görev yok.</string>

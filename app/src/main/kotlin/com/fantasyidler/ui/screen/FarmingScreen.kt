@@ -114,6 +114,15 @@ fun FarmingScreen(
             // XP bar
             item { FarmingXpBar(state) }
 
+            item {
+                Button(
+                    onClick = viewModel::harvestAndPlantAll,
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 4.dp)
+                ) {
+                    Text(stringResource(R.string.farming_harvest_and_plant))
+                }
+            }
+
             // Patch cards
             val patches = state.patches.associateBy { it.patchNumber }
             items(state.patchCount) { index ->

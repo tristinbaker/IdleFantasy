@@ -34,6 +34,13 @@ class FarmingRepository @Inject constructor(
         else               -> 3
     }
 
+    /** Get list of empty (unoccupied) patch numbers. Empty = no crop planted. */
+    suspend fun getEmptyPatches(patchCount: Int): List<Int> {
+        val allPatches = patchDao.getAllPatches()
+        val occupiedNumbers = allPatches.filter { it.cropType != null }.map { it.patchNumber }.toSet()
+        return (1..patchCount).filter { it !in occupiedNumbers }
+    }
+
     /** Consume seed from inventory and plant it. Returns false if seed is missing. */
     suspend fun plantCrop(patchNumber: Int, crop: CropData): Boolean {
         val consumed = playerRepo.consumeItems(mapOf(crop.seedName to 1))
