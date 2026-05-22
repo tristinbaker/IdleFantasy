@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "total": 687,
+  "total": 698,
   "categories": [
     {
       "name": "Skills",
@@ -806,6 +806,24 @@
         "woodcutting_4",
         "woodcutting_5",
         "woodcutting_6"
+      ]
+    },
+    {
+      "name": "Scene targets",
+      "description": "Resource-node sprites struck during skill-action animations.",
+      "count": 11,
+      "ids": [
+        "adamantite_ore_node",
+        "coal_node",
+        "copper_ore_node",
+        "gold_ore_node",
+        "iron_ore_node",
+        "mithril_ore_node",
+        "platinum_ore_node",
+        "rune_essence_node",
+        "runite_ore_node",
+        "silver_ore_node",
+        "tin_ore_node"
       ]
     }
   ]

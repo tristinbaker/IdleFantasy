@@ -98,6 +98,23 @@ CATEGORIES: list[tuple[str, str, callable]] = [
     ("Dungeons",      "Dungeon banner art (one per dungeon file).",       lambda: dungeon_ids()),
     ("Agility courses","Agility course banners.",                         lambda: keys_of("agility_courses.json")),
     ("Quests",        "Quest icons.",                                     lambda: keys_of("quests.json")),
+    # Animation-only entities: these are not backed by a JSON data file.
+    # They represent the in-world resource nodes that the skill-action Stage
+    # targets during Mining animations (the "rock with embedded ore" sprites,
+    # distinct from the loose-chunk item sprites in the Ores category).
+    ("Scene targets", "Resource-node sprites struck during skill-action animations.", lambda: [
+        "copper_ore_node",
+        "tin_ore_node",
+        "iron_ore_node",
+        "coal_node",
+        "silver_ore_node",
+        "gold_ore_node",
+        "mithril_ore_node",
+        "adamantite_ore_node",
+        "runite_ore_node",
+        "platinum_ore_node",
+        "rune_essence_node",
+    ]),
 ]
 
 

@@ -4,7 +4,7 @@ Auto-generated from `app/src/main/assets/data/`. Run `python3 scripts/generate_a
 
 Each id below corresponds to the `R.drawable.<id>` the app's `EntityIcon` composable will resolve at runtime. Drop a PNG at `app/src/main/res/drawable-xxhdpi/<id>.png` (and lower densities for crisper rendering) to fill it in.
 
-**Total entities:** 687
+**Total entities:** 698
 
 ---
 
@@ -813,3 +813,21 @@ Count: **103**
 - `woodcutting_4`
 - `woodcutting_5`
 - `woodcutting_6`
+
+## Scene targets
+
+_Resource-node sprites struck during skill-action animations._
+
+Count: **11**
+
+- `adamantite_ore_node`
+- `coal_node`
+- `copper_ore_node`
+- `gold_ore_node`
+- `iron_ore_node`
+- `mithril_ore_node`
+- `platinum_ore_node`
+- `rune_essence_node`
+- `runite_ore_node`
+- `silver_ore_node`
+- `tin_ore_node`
