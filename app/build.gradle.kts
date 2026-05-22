@@ -115,4 +115,8 @@ dependencies {
 
     // Coil — sprite image loading
     implementation(libs.coil.compose)
+
+    // Testing (Slice 1: unit tests for scene engine pure-Kotlin pieces)
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
 }
