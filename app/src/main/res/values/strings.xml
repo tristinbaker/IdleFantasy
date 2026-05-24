@@ -43,11 +43,22 @@
     <string name="session_sheet_btn_claim_all">Claim all</string>
     <string name="session_sheet_completed_count">%1$d session(s) ready</string>
 
-    <!-- ===== Minigame hub (placeholder) ===== -->
+    <!-- ===== Minigame hub (placeholder strings — superseded by the walk-around plaza, kept for now) ===== -->
     <string name="minigame_hub_title">Minigame Hub</string>
     <string name="minigame_hub_subtitle">Coming soon — the city hall of side jobs.</string>
     <string name="minigame_hub_body">Work the bar, run the kitchen, or fix a roof to earn Time Points. Spend them on Time Vouchers to fast-forward your idle jobs. Take a job that matches your current skill for a 1.5× bonus.</string>
     <string name="minigame_hub_back">Back</string>
+
+    <!-- ===== Market plaza (Phase 1) ===== -->
+    <string name="mh_back">Back</string>
+    <string name="mh_enter_prompt">Tap to enter</string>
+    <string name="mh_station_smithy">Smithy</string>
+    <string name="mh_station_runic_outcrop">Runic Outcrop</string>
+    <string name="mh_station_herbalist_cart">Herbalist Cart</string>
+    <string name="mh_station_cook_fire">Cook Fire</string>
+    <string name="mh_station_vendor_stall">Vendor Stall</string>
+    <string name="mh_coming_soon_body">This minigame opens in a later phase. The plaza, the joystick, and the entry prompt are live — the crafting loop is next.</string>
+    <string name="mh_coming_soon_dismiss">Got it</string>
 
     <!-- ===== Perks (Advantage Points) ===== -->
     <string name="perks_title">Perks</string>

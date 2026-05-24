@@ -262,7 +262,10 @@ fun AppNavigation() {
                 popEnterTransition = FantasyMotion.SubEnter,
                 popExitTransition  = FantasyMotion.SubExit,
             ) { entry ->
-                MinigameHubScreen(onBack = { if (navController.currentBackStackEntry == entry) navController.popBackStack() })
+                MinigameHubScreen(
+                    onBack     = { if (navController.currentBackStackEntry == entry) navController.popBackStack() },
+                    onOpenShop = { navController.navigate(Screen.Shop.route) },
+                )
             }
             composable(
                 route = Screen.Perks.route,
