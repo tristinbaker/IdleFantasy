@@ -74,6 +74,12 @@ def run(jobs: Iterable[Job], staging_root: Path, *, force: bool = False) -> list
     )
     pipe.load_lora_weights(PIXEL_ART_LORA, weight_name=PIXEL_ART_LORA_WEIGHT)
     pipe = pipe.to("cuda")
+    # VAE tiling decodes the output in tiles instead of one tensor —
+    # peak decode VRAM drops from ~1 GB to ~150 MB. Required for stable
+    # 1024² SDXL on 12 GB cards across long batch runs (fragmentation
+    # eats headroom and the VAE upsampler is the first thing to OOM).
+    pipe.enable_vae_tiling()
+    pipe.enable_vae_slicing()
     pipe.set_progress_bar_config(disable=False)
     print(
         f"[generate] loaded in {time.time() - t0:.1f}s; VRAM {torch.cuda.memory_allocated() / 1e9:.2f} GB"
