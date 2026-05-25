@@ -212,11 +212,11 @@ class PlayerRepository @Inject constructor(
         updateFlags(flags.copy(sessionQueue = listOf(action) + flags.sessionQueue))
     }
 
-    /** Appends an action to the worker's queue. Returns false if already full (3 items) or no worker hired. */
+    /** Appends an action to the worker's queue. Returns false if already full (1 item) or no worker hired. */
     suspend fun enqueueWorkerAction(action: QueuedAction): Boolean {
         val flags = getFlags()
         val worker = flags.hiredWorker ?: return false
-        if (worker.sessionQueue.size >= 3) return false
+        if (worker.sessionQueue.size >= 1) return false
         updateFlags(flags.copy(hiredWorker = worker.copy(sessionQueue = worker.sessionQueue + action)))
         return true
     }
@@ -514,7 +514,7 @@ class PlayerRepository @Inject constructor(
 
     /** Overwrites the current save with data from a previously exported JSON string. */
     suspend fun importSave(jsonString: String) {
-        val export = json.decodeFromString<PlayerExport>(jsonString)
+        val export = json.decodeFromString<PlayerExport>(stripJsonGarbage(jsonString))
         val player = getOrCreatePlayer()
         playerDao.upsert(
             player.copy(
@@ -529,6 +529,26 @@ class PlayerRepository @Inject constructor(
         )
         questProgressDao.deleteAll()
         export.questProgress.forEach { questProgressDao.upsert(it) }
+    }
+
+    // Finds the end of the root JSON object and drops any trailing garbage.
+    // Guards against files that were written twice without truncation.
+    private fun stripJsonGarbage(s: String): String {
+        var depth = 0
+        var inString = false
+        var escape = false
+        for (i in s.indices) {
+            val c = s[i]
+            if (escape) { escape = false; continue }
+            if (c == '\\' && inString) { escape = true; continue }
+            if (c == '"') { inString = !inString; continue }
+            if (inString) continue
+            when (c) {
+                '{' -> depth++
+                '}' -> { depth--; if (depth == 0) return s.substring(0, i + 1) }
+            }
+        }
+        return s
     }
 
     suspend fun resetProgression() {

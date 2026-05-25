@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.screen
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -492,13 +493,13 @@ private fun TransactionSheet(
 
 @Composable
 private fun ShopSectionHeader(title: String) {
-    Column {
-        HorizontalDivider()
-        Text(
-            text     = title.uppercase(),
-            style    = MaterialTheme.typography.labelSmall,
-            color    = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-        )
-    }
+    Text(
+        text     = title.uppercase(),
+        style    = MaterialTheme.typography.labelSmall,
+        color    = MaterialTheme.colorScheme.onSurfaceVariant,
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(MaterialTheme.colorScheme.surfaceVariant)
+            .padding(horizontal = 16.dp, vertical = 6.dp),
+    )
 }

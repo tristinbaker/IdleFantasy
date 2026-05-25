@@ -577,7 +577,7 @@
     <string name="worker_apprentice">Apprentice</string>
     <string name="worker_journeyman">Journeyman</string>
     <string name="worker_master">Master</string>
-    <string name="inn_long_laborer_desc">8h gathering, 1x efficiency. No cap on crafting, prayer, or runecrafting — queue as many items as you like.</string>
+    <string name="inn_long_laborer_desc">8h gathering, 0.5x efficiency. No crafting, prayer, or runecrafting cap. Queue up as much as you like. He\'s slow, but he\'ll do anything.</string>
     <string name="inn_apprentice_desc">8h gathering, 1x efficiency. Crafting, prayer, and runecrafting capped at 480 items per session.</string>
     <string name="inn_journeyman_desc">6h gathering, 1.25x efficiency. Crafting, prayer, and runecrafting capped at 360 items per session.</string>
     <string name="inn_master_desc">4h gathering, 2x efficiency. Crafting, prayer, and runecrafting capped at 240 items per session.</string>
@@ -593,7 +593,7 @@
     <string name="worker_collect_btn">Collect Worker Session</string>
     <string name="worker_dismiss_btn">Dismiss Worker</string>
     <string name="worker_dismiss_confirm_title">Dismiss Worker?</string>
-    <string name="worker_dismiss_confirm_body">The active session and queue will be cancelled. Materials already consumed will not be returned.</string>
+    <string name="worker_dismiss_confirm_body">The active session and queue will be cancelled. Your hire fee and any queued materials will be returned.</string>
     <string name="inn_daily_menu">Daily Menu</string>
     <string name="inn_laborers_header">Laborers</string>
 

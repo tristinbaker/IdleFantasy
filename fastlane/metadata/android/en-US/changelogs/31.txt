@@ -1,0 +1,17 @@
+• Translation: Spanish (Spain) (mdtrooper)
+• Translation: French completed + typo fixes (papjul)
+• Fix: Importing a save file that was exported more than once no longer fails
+• Rework: Worker hire costs reduced across all tiers (Long Laborer 5k, Apprentice 10k, Journeyman 20k, Master 50k)
+• Rework: Long Laborer now gathers at 0.5x efficiency and crafts at 2x the player's rate
+• Fix: Worker queue is now limited to one action at a time
+• Fix: Dismissing a worker now refunds the hire cost and returns queued materials
+• Fix: Worker crafting and prayer time estimates now display correctly
+• Fix: Arrows are now tracked per shot; abandoning a dungeon deducts only what was fired before you left, and completing one deducts only what was actually used
+• Fix: Ranged attacks now stop dealing damage once arrows run out mid-session
+• Fix: Repeat action now checks for available materials and deducts them when queuing; tapping it without enough resources shows an error instead of queuing for free
+• Fix: Collecting a session early no longer causes the next queued session to start twice
+• Fix: What's New dialog is now scrollable and no longer cuts off long changelogs
+• Fix: Updating across multiple versions now shows all missed changelogs, not just the latest
+• Fix: Repeat action queue label now shows the skill name correctly (e.g. Smithing — Iron Bar) instead of duplicating the item name
+• Improvement: Shop category headers now use the same styled background as the inventory screen
+• Fix: Daily quests tab is now the first tab on the Quests screen

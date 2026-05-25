@@ -210,13 +210,15 @@ class HomeViewModel @Inject constructor(
                         val its        = mutableMapOf<String, Int>()
                         val kills      = mutableMapOf<String, Int>()
                         val food       = mutableMapOf<String, Int>()
+                        val arrows     = mutableMapOf<String, Int>()
                         val died       = frames.any { it.died }
                         if (died) anyDied = true
                         for (frame in frames) {
-                            for ((skill, xp) in frame.xpBySkill) xpPerSkill[skill] = (xpPerSkill[skill] ?: 0L) + xp
-                            for ((item, qty) in frame.items)      its[item]         = (its[item] ?: 0) + qty
-                            for ((e, k) in frame.killsByEnemy)    kills[e]          = (kills[e] ?: 0) + k
-                            for ((f, q) in frame.foodConsumed)    food[f]           = (food[f] ?: 0) + q
+                            for ((skill, xp) in frame.xpBySkill)      xpPerSkill[skill] = (xpPerSkill[skill] ?: 0L) + xp
+                            for ((item, qty) in frame.items)           its[item]         = (its[item] ?: 0) + qty
+                            for ((e, k) in frame.killsByEnemy)         kills[e]          = (kills[e] ?: 0) + k
+                            for ((f, q) in frame.foodConsumed)         food[f]           = (food[f] ?: 0) + q
+                            for ((a, q) in frame.arrowsConsumed)       arrows[a]         = (arrows[a] ?: 0) + q
                         }
                         if (died) {
                             xpPerSkill.replaceAll { _, xp -> maxOf(1L, (xp * 0.1).toLong()) }
@@ -243,7 +245,8 @@ class HomeViewModel @Inject constructor(
                             playerRepo.incrementDungeonRun(session.activityKey)
                             if (kills.isNotEmpty()) playerRepo.recordDailyKills(kills)
                         }
-                        if (food.isNotEmpty()) playerRepo.consumeItems(food)
+                        if (food.isNotEmpty())   playerRepo.consumeItems(food)
+                        if (arrows.isNotEmpty()) playerRepo.consumeItems(arrows)
                         for ((skill, xp) in xpPerSkill) combinedXpBySkill[skill] = (combinedXpBySkill[skill] ?: 0L) + xp
                         for ((item, qty) in loot)        combinedItems[item]      = (combinedItems[item] ?: 0) + qty
                         for ((e, k) in kills)            combinedKills[e]         = (combinedKills[e] ?: 0) + k
@@ -360,12 +363,21 @@ class HomeViewModel @Inject constructor(
             val session = sessionRepo.getActiveSession() ?: return@launch
             val craftingSkills = setOf(Skills.SMITHING, Skills.COOKING, Skills.FLETCHING,
                 Skills.CRAFTING, Skills.HERBLORE, Skills.RUNECRAFTING, Skills.PRAYER)
+            val frames = json.decodeFromString<List<SessionFrame>>(session.frames)
             val qty = if (session.skillName in craftingSkills)
-                json.decodeFromString<List<SessionFrame>>(session.frames).size else 0
+                frames.firstOrNull()?.kills ?: 0 else 0
             val displayName = when (session.skillName) {
                 "combat" -> gameData.dungeons[session.activityKey]?.displayName ?: session.activityKey
                 "boss"   -> gameData.bosses[session.activityKey]?.displayName ?: session.activityKey
-                else     -> session.activityKey.replace('_', ' ').replaceFirstChar { it.uppercase() }
+                else     -> session.skillName.toTitleCase()
+            }
+            val materials = playerSessionMaterials(session.skillName, session.activityKey, qty, gameData)
+            if (materials != null) {
+                val ok = playerRepo.consumeItems(materials)
+                if (!ok) {
+                    _extra.update { it.copy(snackbarMessage = "Not enough materials to repeat $displayName.") }
+                    return@launch
+                }
             }
             val enqueued = playerRepo.enqueueAction(QueuedAction(
                 skillName           = session.skillName,
@@ -374,6 +386,7 @@ class HomeViewModel @Inject constructor(
                 qty                 = qty,
                 estimatedDurationMs = session.endsAt - session.startedAt,
             ))
+            if (!enqueued && materials != null) playerRepo.addItems(materials)
             _extra.update {
                 it.copy(snackbarMessage = if (enqueued) "Added to queue: $displayName." else "Queue is full (3/3).")
             }
@@ -596,6 +609,7 @@ class HomeViewModel @Inject constructor(
                     ?.let { playerRepo.addItems(it) }
             }
 
+            flags.hiredWorker?.tier?.hireCost?.let { playerRepo.addCoins(it) }
             playerRepo.clearHiredWorker()
         }
     }

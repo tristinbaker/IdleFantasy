@@ -80,8 +80,9 @@ fi
 # Copy fastlane changelog into the app asset so the in-app "What's New" dialog shows it
 FASTLANE_CHANGELOG="$REPO_DIR/fastlane/metadata/android/en-US/changelogs/${VERSION_CODE}.txt"
 if [[ -f "$FASTLANE_CHANGELOG" ]]; then
-    cp "$FASTLANE_CHANGELOG" "$CHANGELOG_ASSET"
-    echo "==> Copied changelog ${VERSION_CODE}.txt to assets"
+    { echo "v$VERSION_NAME"; cat "$FASTLANE_CHANGELOG"; echo; cat "$CHANGELOG_ASSET" 2>/dev/null; } > /tmp/changelog_merged.txt
+    mv /tmp/changelog_merged.txt "$CHANGELOG_ASSET"
+    echo "==> Prepended changelog ${VERSION_CODE}.txt to assets/changelog.txt"
 else
     echo "WARNING: No fastlane changelog found at $FASTLANE_CHANGELOG"
 fi

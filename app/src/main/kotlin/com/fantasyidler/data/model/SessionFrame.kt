@@ -35,6 +35,8 @@ data class SessionFrame(
     val died: Boolean = false,
     /** Combat only — food items consumed this minute (item key → quantity eaten). */
     @SerialName("food_consumed") val foodConsumed: Map<String, Int> = emptyMap(),
+    /** Combat only — arrows consumed this minute (arrow key → quantity fired). */
+    @SerialName("arrows_consumed") val arrowsConsumed: Map<String, Int> = emptyMap(),
     /** Combat only — the enemy key fought this minute (empty for non-combat frames). */
     @SerialName("enemy_key") val enemyKey: String = "",
     /** Combat only — player HP at the end of this frame (0 = not recorded / non-combat). */

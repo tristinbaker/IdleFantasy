@@ -268,6 +268,9 @@ class CombatViewModel @Inject constructor(
                 val availableFood      = inventory.filterKeys { it in equippedFoodKeys }
                 val foodHealValues     = gameData.foodHealValues
 
+                // Arrows: pass current supply to simulator; consumed at collect time from frames
+                val availableArrows = if (bestArrow != null) mapOf(bestArrow to (inventory[bestArrow] ?: 0)) else emptyMap()
+
                 // Potion: consume immediately on dungeon start, pass bonuses to simulator
                 val potionKey     = _extra.value.selectedPotionKey
                 val potionBonuses = if (potionKey != null && (inventory[potionKey] ?: 0) > 0) {
@@ -294,16 +297,10 @@ class CombatViewModel @Inject constructor(
                     equippedFood        = availableFood,
                     foodHealValues      = foodHealValues,
                     potionBonuses       = potionBonuses,
+                    availableArrows     = availableArrows,
                 )
 
-                val totalKills = result.frames.sumOf { it.kills }
                 val totalAttacks = result.frames.size * CombatSimulator.TICKS_PER_FRAME
-
-                // Consume ranged ammo: 1 arrow per attack attempt (hit or miss)
-                if (combatStyle == "ranged" && bestArrow != null && totalAttacks > 0) {
-                    val toConsume = minOf(totalAttacks, inventory[bestArrow] ?: 0)
-                    if (toConsume > 0) playerRepo.consumeItems(mapOf(bestArrow to toConsume))
-                }
 
                 // Consume magic runes: 1 cast per attack attempt (hit or miss)
                 if (combatStyle == "magic" && selectedSpell != null && totalAttacks > 0) {
@@ -499,12 +496,14 @@ class CombatViewModel @Inject constructor(
         val totalXpPerSkill = mutableMapOf<String, Long>()
         val allItems        = mutableMapOf<String, Int>()
         val allKillsByEnemy = mutableMapOf<String, Int>()
-        val allFoodConsumed = mutableMapOf<String, Int>()
+        val allFoodConsumed   = mutableMapOf<String, Int>()
+        val allArrowsConsumed = mutableMapOf<String, Int>()
         for (frame in frames) {
-            for ((skill, xp) in frame.xpBySkill)  totalXpPerSkill[skill] = (totalXpPerSkill[skill] ?: 0L) + xp
-            for ((item, qty) in frame.items)       allItems[item]         = (allItems[item] ?: 0) + qty
+            for ((skill, xp) in frame.xpBySkill)      totalXpPerSkill[skill] = (totalXpPerSkill[skill] ?: 0L) + xp
+            for ((item, qty) in frame.items)           allItems[item]         = (allItems[item] ?: 0) + qty
             for ((enemy, kills) in frame.killsByEnemy) allKillsByEnemy[enemy] = (allKillsByEnemy[enemy] ?: 0) + kills
-            for ((food, qty) in frame.foodConsumed) allFoodConsumed[food] = (allFoodConsumed[food] ?: 0) + qty
+            for ((food, qty) in frame.foodConsumed)    allFoodConsumed[food]  = (allFoodConsumed[food] ?: 0) + qty
+            for ((arrow, qty) in frame.arrowsConsumed) allArrowsConsumed[arrow] = (allArrowsConsumed[arrow] ?: 0) + qty
         }
 
         // On death, scale everything down to 10%
@@ -520,8 +519,8 @@ class CombatViewModel @Inject constructor(
         val dungeon = gameData.dungeons[session.activityKey]
 
         val capes = playerRepo.applyMultiSkillResults(totalXpPerSkill, allItems, coinsGained)
-        // Consume food from inventory (best effort)
-        if (allFoodConsumed.isNotEmpty()) playerRepo.consumeItems(allFoodConsumed)
+        if (allFoodConsumed.isNotEmpty())   playerRepo.consumeItems(allFoodConsumed)
+        if (allArrowsConsumed.isNotEmpty()) playerRepo.consumeItems(allArrowsConsumed)
         if (!playerDied) {
             val combatStyle = detectCombatStyle(totalXpPerSkill)
             questRepo.recordCombat(
@@ -556,6 +555,16 @@ class CombatViewModel @Inject constructor(
         viewModelScope.launch {
             val session = sessionRepo.getActiveSession() ?: return@launch
             if (session.skillName == "combat" || session.skillName == "boss") {
+                val frames: List<SessionFrame> = json.decodeFromString(session.frames)
+                val totalMs = (session.endsAt - session.startedAt).coerceAtLeast(1L)
+                val perFrameMs = totalMs / frames.size.coerceAtLeast(1)
+                val elapsed = System.currentTimeMillis() - session.startedAt
+                val framesElapsed = (elapsed / perFrameMs).toInt().coerceIn(0, frames.size)
+                val arrowsUsed = mutableMapOf<String, Int>()
+                for (frame in frames.take(framesElapsed)) {
+                    for ((arrow, qty) in frame.arrowsConsumed) arrowsUsed[arrow] = (arrowsUsed[arrow] ?: 0) + qty
+                }
+                if (arrowsUsed.isNotEmpty()) playerRepo.consumeItems(arrowsUsed)
                 sessionRepo.abandonSession(session.sessionId)
                 queuedSessionStarter.startNextQueued()
             }

@@ -71,18 +71,28 @@ enum class WorkerTier {
     }
 
     val efficiencyMultiplier: Float get() = when (this) {
-        LONG_LABORER -> 1.0f
+        LONG_LABORER -> 0.5f
         APPRENTICE   -> 1.0f
         JOURNEYMAN   -> 1.25f
         MASTER       -> 2.0f
     }
 
     val hireCost: Long get() = when (this) {
-        LONG_LABORER -> 10_000L
-        APPRENTICE   -> 20_000L
-        JOURNEYMAN   -> 50_000L
-        MASTER       -> 200_000L
+        LONG_LABORER -> 5_000L
+        APPRENTICE   -> 10_000L
+        JOURNEYMAN   -> 20_000L
+        MASTER       -> 50_000L
     }
+
+    /** Per-item time for crafting/prayer/runecrafting sessions.
+     *  Long Laborer is 2x the player's base rate; all others match the player (1 min/item). */
+    val craftingPerItemMs: Long get() = when (this) {
+        LONG_LABORER -> 2L * 60_000L
+        else         -> 60_000L
+    }
+
+    /** Effective session duration for the crafting estimate display formula (perItemMs * 60). */
+    val craftingSessionMs: Long get() = craftingPerItemMs * 60L
 
     /** Maximum qty for crafting/prayer/runecrafting sessions; LONG_LABORER is uncapped. */
     val maxCraftQty: Int get() = when (this) {

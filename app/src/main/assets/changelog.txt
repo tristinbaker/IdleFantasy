@@ -1,3 +1,23 @@
+v1.4.1
+• Translation: Spanish (Spain) (mdtrooper)
+• Translation: French completed + typo fixes (papjul)
+• Fix: Importing a save file that was exported more than once no longer fails
+• Rework: Worker hire costs reduced across all tiers (Long Laborer 5k, Apprentice 10k, Journeyman 20k, Master 50k)
+• Rework: Long Laborer now gathers at 0.5x efficiency and crafts at 2x the player's rate
+• Fix: Worker queue is now limited to one action at a time
+• Fix: Dismissing a worker now refunds the hire cost and returns queued materials
+• Fix: Worker crafting and prayer time estimates now display correctly
+• Fix: Arrows are now tracked per shot; abandoning a dungeon deducts only what was fired before you left, and completing one deducts only what was actually used
+• Fix: Ranged attacks now stop dealing damage once arrows run out mid-session
+• Fix: Repeat action now checks for available materials and deducts them when queuing; tapping it without enough resources shows an error instead of queuing for free
+• Fix: Collecting a session early no longer causes the next queued session to start twice
+• Fix: What's New dialog is now scrollable and no longer cuts off long changelogs
+• Fix: Updating across multiple versions now shows all missed changelogs, not just the latest
+• Fix: Repeat action queue label now shows the skill name correctly (e.g. Smithing — Iron Bar) instead of duplicating the item name
+• Improvement: Shop category headers now use the same styled background as the inventory screen
+• Fix: Daily quests tab is now the first tab on the Quests screen
+
+v1.4.0
 • New: Inn daily food menu; three cooked foods (small, medium, large heal) rotate each day at 6am
 • Fix: Sell prices corrected; gems, bars, crops, and monster drops now use fair category prices; marketplace buy price no longer undercuts the category floor
 • Rework: Worker tiers updated; Apprentice and Long Laborer are 1x efficiency, Journeyman 1.25x, Master 2x; crafting/prayer/runecrafting capped per tier; new Long Laborer tier has no crafting cap for very long sessions
@@ -10,3 +30,218 @@
 • Fix: Crafting, prayer, and runecrafting now consume materials when the session starts; abandoning a session returns them
 • Fix: Crafting and runecrafting sessions now correctly consume input materials on collect
 • Fix: Dungeons now cycle through all enemy types instead of repeating one enemy for the entire session
+
+v1.3.2
+• Fix: Boss fight timer now ends as soon as the fight concludes (win or loss)
+• Fix: French translation corrections (scimitars, arrow shaft, woodcutting)
+• Fix: French and Spanish added to system-level per-app language settings
+
+v1.3.1
+• Fix: Daily quests now filter to activities achievable at your current skill level
+• Fix: Daily cooking quests now correctly track progress (lobster, swordfish, etc.)
+• Fix: Daily coal mining quest now tracks correctly
+• Fix: Bandits and other dungeon enemies now spawn correctly in all dungeons
+• Fix: Fish sell prices corrected for mackerel, monkfish, sea turtle, and manta ray
+• Fix: German "add to session queue" button now right-aligned correctly
+• Translation: Turkish (ItsAzazelMorningstar)
+
+v1.3.0
+• New: Boss fights now show a live combat log and HP bar, just like dungeons
+• New: Food heals you during boss fights (uses the same food equipped for dungeons)
+• New: 12 boss quests — Dragon Slayer, Demon Slayer, Kraken Killer, Balrog Bane (1/5/25 kills each)
+• New: Daily quest system — 3 rotating quests each day, rewards 2,000 coins (rare: dwarven gear)
+• New: Dwarven Fishing Rod, Dwarven Hoe, and Dwarven Boots added
+• New: 3 new dungeon enemies — Fire Giant (Infernal Stronghold), Ancient Guardian and Lich (Ancient Temple)
+• New: Confirm dialog before abandoning a session
+• Fix: Boss stats rebalanced so they can be defeated solo at the required combat level
+• Fix: Arrows and runes are now consumed per attack attempt, not per kill
+• Translation: Spanish improvements (whyhuron)
+• Translation: French — corrected Undead Crypt name (Tathar)
+• Translation: German — ProfileScreen and SkillsScreen fully translated (selki-latah)
+
+v1.2.9
+• Fix: Combat sessions now carry enemy HP across minutes so kills always register regardless of player DPS
+• Fix: Large crafting/prayer sessions (fletching, smithing, cooking, crafting, herblore, runecrafting, prayer) no longer crash the app on next launch
+• Fix: Auto-trash gear now uses per-stat comparison so a ring with high defense is not sold when a ring with high attack is equipped
+• Fix: Fish cooking quests now only count cooked fish, not all cooked items
+• New: Fishing now works like mining — choose exactly which fish to catch regardless of fishing level
+
+v1.2.8
+• Fix: Herblore ingredients are now correctly consumed after a brewing session completes
+• Fix: Firemaking logs are now correctly consumed after a session completes
+• Fix: Skill capes are now retroactively awarded on app launch for skills already at level 99
+• Fix: Hoe efficiency values corrected to match other tool tiers (mithril hoe now 1.75x)
+• New: Crafting screens now show output quantity for bulk recipes (e.g. arrow tips)
+• New: Font size setting added to Settings — choose Normal, Large, or Huge
+
+v1.2.7
+• Fix: Farming tool bonus now displays correctly in the Skills screen
+• Fix: Queue estimated end time is now accurate for crafting, runecrafting, and prayer sessions
+• Fix: Ranged and magic weapons no longer show an irrelevant Strength bonus in item stats
+• Fix: Strength-style weapons (warhammmers, battleaxes) now correctly require Strength level instead of Attack
+• Fix: Bronze boots no longer disappear when unequipped on a new character
+• Fix: Prayer skill description corrected to reflect how the skill actually works
+• New: Quest objectives now display in your device language where translations are available
+• New: Dungeon names now display in your device language where translations are available
+• New: Combat skill rows are now tappable to view a short description of each skill
+• New: Crafting and Skills screens now show the combat style for weapon recipes
+
+v1.2.6
+• Farming tool bonus (hoe efficiency) now shown on the Skills screen
+• Coin balance now visible at the top of the Shop screen
+• Skills screen shows current XP / next level threshold inline
+• French translation added (thanks widowild1)
+• Spanish translation added (thanks whyhuron)
+
+v1.2.5
+• New: Level 99 skill capes awarded automatically with a notification when you reach max level
+• New: Dungeon run count displayed on the combat screen for each dungeon
+• New: Queue estimated end time shown at the bottom of the active queue card
+• New: Crafting bottom sheet shows how many of the output item you already own
+• Fix: Splash screen no longer flashes bright white when app is set to dark mode
+• Fix: Crafting list scroll position is now preserved when switching tabs or navigating away
+• Fix: Items reserved for queued tasks can no longer be sold in the shop
+• Improved item sell prices across all skills, scaling by material tier and equipment slot
+
+v1.2.4
+• Fix: Tapping the crop-ready notification now opens the app
+• Fix: Abandon button no longer shown after a session completes
+• Fix: Hoe correctly categorised as a tool (not armor) in the shop
+• New: Shop buy tab shows how many of each item you already own
+• New: Language selector now works on Android 11 and 12
+• New: Monochrome adaptive icon for themed launchers on Android 13+
+• Improved German translation
+
+v1.2.3
+• New: Quick-select buttons (1, 60, 180, Max, +/-10, +/-100) added to all quantity pickers in shop and crafting
+• Fix: Equip Best Gear now respects stat requirements and will not equip items you cannot use
+• Fix: Session queue getting stuck when the app is closed or the device is rebooted (#57)
+
+v1.2.2
+• New: German (Deutsch) translation added
+• New: Herblore potions now show their stat effects in the craft list
+• New: Onion Brew (+2 Attack, +1 Strength) and Carrot Brew (+2 Ranged) added to Herblore
+• New: Language selector is now a dropdown instead of chips
+• Fix: Farming hoes now correctly apply efficiency bonus to crop yield (#67)
+• Fix: Herblore no longer silently drops when queued after another craft (#71)
+• Fix: Harvesting crops now returns seeds (#72)
+• Fix: Bottom nav always returns to the root of a tab, not a saved sub-screen (#69)
+• Fix: Rapidly tapping the back button no longer causes a blank screen (#76)
+
+v1.2.1
+• New: Light theme and system theme option — choose in Settings → Appearance
+• Fix: Hoes (bronze through runite) are now craftable in the Smithing tab
+• Fix: Seeds are no longer sold by Sell Junk
+• Fix: Prayer and Runecrafting now correctly reserve queued materials — you can no longer queue more than you have
+
+v1.2.0
+• New: Farming skill — plant seeds in up to 5 patches, harvest crops for XP and materials after they grow (2–120 hours)
+• New: Seeds now available to buy in the Shop under Seeds & Farming
+• New: Hoe equipment slot (bronze through runite) — increases harvest yield
+• New: Herblore skill — brew 14 potions from farming herbs and dungeon drops to boost combat stats
+• New: Potion picker in dungeon and boss sheets — select a potion before entering for a flat stat boost (attack, strength, defense, ranged, or magic)
+• Fix: seed shop descriptions now show the required farming level on its own line
+• Fix: crafting queue no longer locks out materials when items are queued or in session
+• Fix: queued sessions no longer silently drop if auto-start fails after a session completes
+• Nerf: Agility sessions now scale 60 → 40 min at level 99 (was 60 → 33 min), XP per course halved
+
+v1.1.9
+• Fix session stuck on "Session Complete" with only Abandon button showing after timer hits zero
+• Fix queued sessions not auto-starting when alarm was delayed (battery saver / Doze mode)
+• Fix collect button not appearing until navigating away and back
+• Fix queued sessions occasionally starting out of order when collecting rewards
+
+v1.1.8
+• Fixed: crafting queue no longer locks out materials when items are queued or in session
+• Fixed: queued sessions no longer silently drop if auto-start fails after a session completes
+• New: session results are now shown individually per slot rather than batched together
+
+v1.1.7
+• Fixed: sapphire and emerald jewelry now correctly show attack and strength stats
+• New: silver jewelry now has emerald, ruby, and diamond variants
+• New: spell selection now has an "Only Castable" filter to show only spells you have runes for
+• New: a "What's New" dialog now appears once after each update
+
+v1.1.6
+• Fixed: cancelling an active session now correctly starts the next queued session
+• Fixed: bows and staves now show their attack and strength stats in the Fletching crafting list
+• New: while a combat session is active, a Dungeons tab appears so you can queue more dungeons without leaving the combat screen
+
+v1.1.5
+• Fixed: combat quest rewards (dungeons, Treasure Hunter, Iron Stomach, etc.) now actually grant XP — split evenly across all 7 combat-related skills
+• Fixed: Iron Stomach quests now progress when you clear the target dungeon without consuming any food
+• Fixed: quest claim button is now disabled until the previous tier is claimed; tapping a blocked claim now tells you which tier to claim first
+• Fixed: rune essence is now correctly consumed when collecting a runecrafting session from the Skills screen
+• New: boots are now craftable in Smithing — bronze through runite
+• New: Firemaking now drops tiered ashes (Ashes, Oak, Willow, Maple, Yew, Magic, Redwood) that scatter in the Prayer skill for scaling Prayer XP
+• New: crafting skill sheets (Smithing, Fletching, Crafting) now have filter chips — filter by category (Weapon, Armour, Bar, etc.) and material tier (Bronze, Iron, Steel, etc.)
+• Improved: all skill sheets now show a description of what the skill does
+
+v1.1.4
+• Fixed: gear equip sheet now scrolls when you have many items for a slot
+• Fixed: quest chains no longer advance higher tiers before lower tiers are completed
+• Fixed: cooking beef, chicken, and mutton now correctly counts toward cooking quests
+• Fixed: crafting queue now reserves materials — you can no longer queue more sessions than you have ingredients for
+
+v1.1.3
+• Live combat stats panel: watch HP change hit-by-hit as you fight
+• Enemy HP bar drains in real time and resets on each kill
+• Your HP bar updates as enemy attacks land, colour-coded by health level
+• Combat log shows the last 8 hits — what you hit, what hit you, and misses
+• Equipped food now shows remaining quantity and heal amount during a session
+• Drops and XP earned so far update each minute while in a dungeon
+
+v1.1.2
+• Fixed: combat session timer now shows the full session duration instead of the time until death
+• Activity selection sheets now show the session duration before you start
+• Time displays now use hours format for durations over 60 minutes (e.g. 1h 15m 30s)
+
+v1.1.1
+- Bug fix: selling an equipped item is now blocked with a warning rather than silently unequipping it
+- Bug fix: equipping gear now enforces level requirements and shows an error if you don't meet them
+- Crafting/Smithing/Fletching/Cooking recipe rows now show output stats (attack/defense/strength bonuses, healing, or damage) and level requirements with your current level
+- Bug fix: cancelling a prayer, runecrafting, or crafting session no longer loses your materials - bones, rune essence, and ingredients are only consumed when you collect the completed session
+- Bug fix: quest progress now accumulates correctly even if the prerequisite quest hasn't been claimed yet
+- Bug fix: armor bonuses now correctly apply in combat for all session types (direct, queued, and boss fights)
+- Combat screen: Attack, Strength, and Defence rows show your total gear bonus (+N from gear)
+- Skills screen: Mining, Woodcutting, and Fishing rows show your equipped tool efficiency
+- Dungeon list: each dungeon shows a survival estimate (Looks manageable / Risky / Likely to die) based on your current gear and food
+- Warning dialog appears before entering a dungeon if you have no food equipped
+- Shop sell tab: items are now grouped by category (Weapons, Armor, Tools, Food, Materials, Misc)
+- Combat sessions now end as soon as the player dies rather than running the full timer
+
+v1.1.0
+• Session queue: queue up to 3 sessions to run automatically while away
+• Batch collect: all completed queued sessions collected in one tap
+• Notification only fires when the full queue finishes, not between each session
+• Boots equipment slot with 7 tiers (bronze through dragon)
+• Activity sheets now scroll when many options are available (e.g. Agility courses)
+• Shop: type a quantity directly instead of tapping +/− repeatedly
+• Settings → About: link to the GitHub repository
+• Food consumed shown in combat session summary
+• Bug fix: abandoning a session no longer crashes the app
+
+v1.0.5
+• Sessions can now be collected after the app is killed by the OS — no more stuck uncollectable sessions
+• New character customization: set your character's Name, Gender, and Race from a one-time setup prompt or the Profile screen at any time
+• Home screen now greets you by your character's name
+
+v1.0.1
+• Save data export and import in Settings — back up your progress to a file and restore it at any time
+• Equip Best Gear button automatically equips the strongest items in your inventory
+• Skill emojis throughout the UI
+• Combat improvements and rebalancing
+• Reset Progression option in Settings
+
+v1.0
+Initial release.
+
+• 14 trainable skills with session-based XP
+• 12 dungeons with equipment and combat system
+• Crafting: Smithing, Cooking, Fletching, Jewellery
+• Prayer: bury bones for XP
+• 100+ quests with XP rewards
+• Pet drops with XP boosts
+• Achievements system
+• NPC shop (buy and sell)
+• Offline — no internet, no accounts, no ads

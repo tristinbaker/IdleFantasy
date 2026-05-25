@@ -9,6 +9,8 @@ import com.fantasyidler.data.model.Skills
 import com.fantasyidler.simulator.CombatSimulator
 import com.fantasyidler.simulator.SkillSimulator
 import com.fantasyidler.simulator.XpTable
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
 import javax.inject.Inject
@@ -31,11 +33,15 @@ class WorkerQueuedSessionStarter @Inject constructor(
     private val gameData: GameDataRepository,
     private val json: Json,
 ) {
-    suspend fun startNextQueued(): Boolean {
-        val current = sessionRepo.getActiveWorkerSession()
-        if (current != null && !current.completed) return false
+    private val mutex = Mutex()
 
-        val next = playerRepo.dequeueNextWorkerAction() ?: return false
+    suspend fun startNextQueued(): Boolean {
+        val next = mutex.withLock {
+            val current = sessionRepo.getActiveWorkerSession()
+            if (current != null && !current.completed) return false
+            playerRepo.dequeueNextWorkerAction()
+        } ?: return false
+
         return try {
             startQueuedAction(next)
             true

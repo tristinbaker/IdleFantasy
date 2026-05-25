@@ -96,7 +96,7 @@ class WorkerSkillsViewModel @Inject constructor(
                 miningEfficiency      = toolEfficiency(equipped[EquipSlot.PICKAXE],     EquipSlot.PICKAXE),
                 woodcuttingEfficiency = toolEfficiency(equipped[EquipSlot.AXE],         EquipSlot.AXE),
                 fishingEfficiency     = toolEfficiency(equipped[EquipSlot.FISHING_ROD], EquipSlot.FISHING_ROD),
-                sessionDurationMs     = tierDurationMs / 60,
+                sessionDurationMs     = flags.hiredWorker?.tier?.craftingSessionMs ?: agilityMs,
                 gatheringDurationMs   = tierDurationMs,
                 maxCraftQty           = flags.hiredWorker?.tier?.maxCraftQty ?: Int.MAX_VALUE,
                 inventory             = inv,
@@ -295,7 +295,7 @@ class WorkerSkillsViewModel @Inject constructor(
                 workerStarter.startNextQueued()
                 _uiState.update { it.copy(sheetSkill = null) }
             } else {
-                _uiState.update { it.copy(snackbarMessage = "Queue is full (3/3).", sheetSkill = null) }
+                _uiState.update { it.copy(snackbarMessage = "Worker is already busy.", sheetSkill = null) }
             }
         }
     }
@@ -325,7 +325,7 @@ class WorkerSkillsViewModel @Inject constructor(
                 _uiState.update { it.copy(sheetSkill = null) }
             } else {
                 playerRepo.addItem(logKey, 1)
-                _uiState.update { it.copy(snackbarMessage = "Queue is full (3/3).", sheetSkill = null) }
+                _uiState.update { it.copy(snackbarMessage = "Worker is already busy.", sheetSkill = null) }
             }
         }
     }
@@ -339,7 +339,7 @@ class WorkerSkillsViewModel @Inject constructor(
             val runeData = gameData.runes[runeKey] ?: return@launch
             val flags = playerRepo.getFlags()
             val tier  = flags.hiredWorker?.tier ?: return@launch
-            val perItemMs = tier.durationMs / 60
+            val perItemMs = tier.craftingPerItemMs
             val qty = qty.coerceAtMost(tier.maxCraftQty)
 
             val totalEssence = runeData.essenceCost * qty
@@ -361,7 +361,7 @@ class WorkerSkillsViewModel @Inject constructor(
                 _uiState.update { it.copy(sheetSkill = null) }
             } else {
                 playerRepo.addItem("rune_essence", totalEssence)
-                _uiState.update { it.copy(snackbarMessage = "Queue is full (3/3).", sheetSkill = null) }
+                _uiState.update { it.copy(snackbarMessage = "Worker is already busy.", sheetSkill = null) }
             }
         }
     }
@@ -375,7 +375,7 @@ class WorkerSkillsViewModel @Inject constructor(
             val bone  = gameData.bones[boneKey] ?: return@launch
             val flags = playerRepo.getFlags()
             val tier  = flags.hiredWorker?.tier ?: return@launch
-            val perBoneMs = tier.durationMs / 60
+            val perBoneMs = tier.craftingPerItemMs
             val qty = qty.coerceAtMost(tier.maxCraftQty)
 
             if (!playerRepo.consumeItems(mapOf(boneKey to qty))) {
@@ -396,7 +396,7 @@ class WorkerSkillsViewModel @Inject constructor(
                 _uiState.update { it.copy(sheetSkill = null) }
             } else {
                 playerRepo.addItem(boneKey, qty)
-                _uiState.update { it.copy(snackbarMessage = "Queue is full (3/3).", sheetSkill = null) }
+                _uiState.update { it.copy(snackbarMessage = "Worker is already busy.", sheetSkill = null) }
             }
         }
     }
@@ -425,7 +425,7 @@ class WorkerSkillsViewModel @Inject constructor(
         viewModelScope.launch {
             val flags     = playerRepo.getFlags()
             val tier      = flags.hiredWorker?.tier ?: return@launch
-            val perItemMs = tier.durationMs / 60
+            val perItemMs = tier.craftingPerItemMs
             val qty       = qty.coerceAtMost(tier.maxCraftQty)
 
             val totalMaterials = recipe.materials.mapValues { (_, v) -> v * qty }
@@ -447,7 +447,7 @@ class WorkerSkillsViewModel @Inject constructor(
                 _uiState.update { it.copy(selectedRecipe = null, sheetSkill = null) }
             } else {
                 for ((item, needed) in totalMaterials) playerRepo.addItem(item, needed)
-                _uiState.update { it.copy(snackbarMessage = "Queue is full (3/3).", selectedRecipe = null, sheetSkill = null) }
+                _uiState.update { it.copy(snackbarMessage = "Worker is already busy.", selectedRecipe = null, sheetSkill = null) }
             }
         }
     }

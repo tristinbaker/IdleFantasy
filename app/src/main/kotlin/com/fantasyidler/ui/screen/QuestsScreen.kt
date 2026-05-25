@@ -51,7 +51,7 @@ import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatCoins
 import com.fantasyidler.util.formatXp
 
-private val TAB_GROUPS = listOf("Gathering", "Crafting", "Combat", "Special", "Daily")
+private val TAB_GROUPS = listOf("Daily", "Gathering", "Crafting", "Combat", "Special")
 
 @Composable
 private fun tabGroupLabel(group: String): String = when (group) {

@@ -10,6 +10,8 @@ import com.fantasyidler.data.model.Skills
 import com.fantasyidler.simulator.CombatSimulator
 import com.fantasyidler.simulator.SkillSimulator
 import com.fantasyidler.simulator.XpTable
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
 import javax.inject.Inject
@@ -27,17 +29,22 @@ class QueuedSessionStarter @Inject constructor(
     private val gameData: GameDataRepository,
     private val json: Json,
 ) {
+    private val mutex = Mutex()
+
     /**
      * Pops the first item from the queue and starts it as a new session.
      * Returns true if a session was started, false if the queue was empty or the
      * session couldn't be started (e.g. missing materials).
      */
     suspend fun startNextQueued(): Boolean {
-        // Don't start a new session if one is already running.
-        val current = sessionRepo.getActiveSession()
-        if (current != null && !current.completed) return false
+        // Mutex ensures concurrent callers (alarm receiver + UI) don't both dequeue the
+        // same item and start duplicate sessions.
+        val next = mutex.withLock {
+            val current = sessionRepo.getActiveSession()
+            if (current != null && !current.completed) return false
+            playerRepo.dequeueNextAction()
+        } ?: return false
 
-        val next = playerRepo.dequeueNextAction() ?: return false
         return try {
             startQueuedAction(next)
             true
@@ -302,8 +309,6 @@ class QueuedSessionStarter @Inject constructor(
                     foodHealValues      = gameData.foodHealValues,
                 )
                 val totalKills = result.frames.sumOf { it.kills }
-                if (combatStyle == "ranged" && bestArrow != null && totalKills > 0)
-                    playerRepo.consumeItems(mapOf(bestArrow to minOf(totalKills, inventory[bestArrow] ?: 0)))
                 if (combatStyle == "magic" && spell != null && totalKills > 0) {
                     val staffCoversRune = weapon?.infiniteRunes == spell.runeType
                     if (!staffCoversRune)

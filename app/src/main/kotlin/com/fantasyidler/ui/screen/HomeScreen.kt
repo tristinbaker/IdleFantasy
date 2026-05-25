@@ -216,14 +216,40 @@ fun HomeScreen(
             runCatching { context.assets.open("changelog.txt").bufferedReader().readText().trim() }.getOrElse { "" }
         }
         if (changelogText.isNotEmpty()) {
+            val sections = remember(changelogText) {
+                val versionRegex = Regex("^v\\d+\\..*")
+                val result = mutableListOf<Pair<String, String>>() // version → body
+                var currentVersion = ""
+                val bodyLines = mutableListOf<String>()
+                for (line in changelogText.lines()) {
+                    if (line.matches(versionRegex)) {
+                        if (currentVersion.isNotEmpty()) result += currentVersion to bodyLines.joinToString("\n").trim()
+                        currentVersion = line
+                        bodyLines.clear()
+                    } else {
+                        bodyLines += line
+                    }
+                }
+                if (currentVersion.isNotEmpty()) result += currentVersion to bodyLines.joinToString("\n").trim()
+                result
+            }
             AlertDialog(
                 onDismissRequest = viewModel::dismissWhatsNew,
                 title = { Text(stringResource(R.string.home_whats_new)) },
                 text  = {
-                    Text(
-                        text  = changelogText,
-                        style = MaterialTheme.typography.bodyMedium,
-                    )
+                    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                        sections.forEachIndexed { i, (version, body) ->
+                            if (i > 0) Spacer(Modifier.height(12.dp))
+                            val isCurrent = version == "v${BuildConfig.VERSION_NAME}"
+                            Text(
+                                text = if (isCurrent) "$version (current)" else version,
+                                style = MaterialTheme.typography.bodyMedium,
+                                fontWeight = FontWeight.Bold,
+                            )
+                            HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
+                            Text(body, style = MaterialTheme.typography.bodyMedium)
+                        }
+                    }
                 },
                 confirmButton = {
                     TextButton(onClick = viewModel::dismissWhatsNew) { Text(stringResource(R.string.home_got_it)) }

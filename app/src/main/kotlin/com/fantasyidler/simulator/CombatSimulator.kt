@@ -37,6 +37,7 @@ object CombatSimulator {
         equippedFood: Map<String, Int> = emptyMap(),
         foodHealValues: Map<String, Int> = emptyMap(),
         potionBonuses: Map<String, Int> = emptyMap(),
+        availableArrows: Map<String, Int> = emptyMap(),
     ): SkillSimulator.Result {
         val effAttack   = playerAttack   + (potionBonuses["attack"]   ?: 0)
         val effStrength = playerStrength + (potionBonuses["strength"] ?: 0)
@@ -59,6 +60,9 @@ object CombatSimulator {
             .sortedByDescending { it.value }
             .map { it.key }
 
+        val arrowKey   = availableArrows.keys.firstOrNull()
+        var arrowsLeft = if (arrowKey != null) availableArrows[arrowKey] ?: 0 else Int.MAX_VALUE
+
         var runningTotal = 0L
         var carryoverEnemyKey: String? = null
         var carryoverEnemyHp = 0
@@ -70,6 +74,7 @@ object CombatSimulator {
             val frameXpBySkill = mutableMapOf<String, Long>()
             var frameXp        = 0L
             val frameFood      = mutableMapOf<String, Int>()
+            var frameArrowsUsed = 0
 
             val enemyKey = carryoverEnemyKey ?: spawnPool[rnd.nextInt(spawnPool.size)]
             carryoverEnemyKey = null
@@ -126,8 +131,16 @@ object CombatSimulator {
             val frameEnemyHits  = mutableListOf<Int>()
 
             repeat(TICKS_PER_FRAME) {
-                // Player attacks
-                val pDmg = if (rnd.nextDouble() < playerHitChance) rnd.nextInt(0, playerMaxHit + 1) else 0
+                // Player attacks (ranged is capped by arrow supply)
+                val pDmg = when {
+                    combatStyle == "ranged" && arrowsLeft > 0 -> {
+                        arrowsLeft--
+                        frameArrowsUsed++
+                        if (rnd.nextDouble() < playerHitChance) rnd.nextInt(0, playerMaxHit + 1) else 0
+                    }
+                    combatStyle == "ranged" -> 0
+                    else -> if (rnd.nextDouble() < playerHitChance) rnd.nextInt(0, playerMaxHit + 1) else 0
+                }
                 framePlayerHits += pDmg
                 enemyHp -= pDmg
                 if (enemyHp <= 0) {
@@ -197,9 +210,10 @@ object CombatSimulator {
                     xpBySkill    = frameXpBySkill,
                     kills        = kills,
                     killsByEnemy = if (kills > 0) mapOf(enemyKey to kills) else emptyMap(),
-                    died         = diedThisMinute,
-                    foodConsumed = frameFood,
-                    enemyKey     = enemyKey,
+                    died           = diedThisMinute,
+                    foodConsumed   = frameFood,
+                    arrowsConsumed = if (arrowKey != null && frameArrowsUsed > 0) mapOf(arrowKey to frameArrowsUsed) else emptyMap(),
+                    enemyKey       = enemyKey,
                     hpAfter      = currentHp.coerceAtLeast(0),
                     playerHits   = framePlayerHits,
                     enemyHits    = frameEnemyHits,

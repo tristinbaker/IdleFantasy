@@ -83,7 +83,7 @@ fun SettingsScreen(
     ) { uri ->
         uri ?: return@rememberLauncherForActivityResult
         viewModel.exportSave { jsonString ->
-            context.contentResolver.openOutputStream(uri)?.use { it.write(jsonString.toByteArray()) }
+            context.contentResolver.openOutputStream(uri, "wt")?.use { it.write(jsonString.toByteArray()) }
             scope.launch { snackbarHostState.showSnackbar(context.getString(R.string.settings_exported_ok)) }
         }
     }
