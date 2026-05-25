@@ -29,6 +29,7 @@ import com.fantasyidler.ui.viewmodel.MarketNavEvent
 fun MinigameHubScreen(
     onBack: () -> Unit = {},
     onOpenShop: () -> Unit = {},
+    onOpenSmithing: () -> Unit = {},
     viewModel: MarketCenterViewModel = hiltViewModel(),
 ) {
     val tokens = LocalFantasyTokens.current
@@ -39,6 +40,10 @@ fun MinigameHubScreen(
             MarketNavEvent.OpenShop -> {
                 viewModel.consumeNavEvent()
                 onOpenShop()
+            }
+            MarketNavEvent.OpenSmithingMinigame -> {
+                viewModel.consumeNavEvent()
+                onOpenSmithing()
             }
             else -> Unit   // ComingSoon shown as a dialog below; null = no-op
         }

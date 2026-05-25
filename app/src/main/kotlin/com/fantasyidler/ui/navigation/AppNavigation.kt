@@ -43,6 +43,7 @@ import com.fantasyidler.ui.screen.QuestsScreen
 import com.fantasyidler.ui.screen.SettingsScreen
 import com.fantasyidler.ui.screen.ShopScreen
 import com.fantasyidler.ui.screen.SkillsScreen
+import com.fantasyidler.ui.screen.minigame.smithing.SmithingMinigameScreen
 import com.fantasyidler.ui.viewmodel.GlobalGameViewModel
 import com.fantasyidler.ui.viewmodel.OnboardingViewModel
 import com.fantasyidler.ui.viewmodel.RootHudViewModel
@@ -64,7 +65,7 @@ fun AppNavigation() {
     val currentDestination = backStackEntry?.destination
 
     val tabSubScreens: Map<String, Set<String>> = mapOf(
-        "adventure" to setOf("shop", "settings", "quests", "minigame_hub", "perks"),
+        "adventure" to setOf("shop", "settings", "quests", "minigame_hub", "smithing_minigame", "perks"),
         "skills"    to setOf("farming"),
     )
 
@@ -263,8 +264,20 @@ fun AppNavigation() {
                 popExitTransition  = FantasyMotion.SubExit,
             ) { entry ->
                 MinigameHubScreen(
-                    onBack     = { if (navController.currentBackStackEntry == entry) navController.popBackStack() },
-                    onOpenShop = { navController.navigate(Screen.Shop.route) },
+                    onBack         = { if (navController.currentBackStackEntry == entry) navController.popBackStack() },
+                    onOpenShop     = { navController.navigate(Screen.Shop.route) },
+                    onOpenSmithing = { navController.navigate(Screen.SmithingMinigame.route) },
+                )
+            }
+            composable(
+                route = Screen.SmithingMinigame.route,
+                enterTransition    = FantasyMotion.SubEnter,
+                exitTransition     = FantasyMotion.SubExit,
+                popEnterTransition = FantasyMotion.SubEnter,
+                popExitTransition  = FantasyMotion.SubExit,
+            ) { entry ->
+                SmithingMinigameScreen(
+                    onBack = { if (navController.currentBackStackEntry == entry) navController.popBackStack() },
                 )
             }
             composable(

@@ -91,6 +91,12 @@ sealed class Screen(
         icon     = Icons.Filled.LocationCity,
     )
 
+    object SmithingMinigame : Screen(
+        route    = "smithing_minigame",
+        labelRes = R.string.sm_title,
+        icon     = Icons.Filled.Build,
+    )
+
     object Perks : Screen(
         route    = "perks",
         labelRes = R.string.perks_title,

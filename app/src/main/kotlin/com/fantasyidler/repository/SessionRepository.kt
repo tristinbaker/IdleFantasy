@@ -62,6 +62,32 @@ class SessionRepository @Inject constructor(
 
     suspend fun markCompleted(sessionId: String) = sessionDao.markCompleted(sessionId)
 
+    /**
+     * Subtract [ms] from the active session's `endsAt` if its skill matches
+     * [skill]. Clamped so the new end time never falls before now (the
+     * minigame can complete the session but never "owe" time). No-ops when
+     * there is no active session or its skill doesn't match. Returns the
+     * actually applied delta in milliseconds, for UI display.
+     *
+     * The active-session Flow updates automatically — every observer (top-bar
+     * pill, sessions sheet) ticks down without extra wiring. The
+     * SessionCompletionWorker is rescheduled to fire at the new end time so a
+     * shortened session still completes on schedule under Doze.
+     */
+    suspend fun fastForward(skill: String, ms: Long): Long {
+        if (ms <= 0L) return 0L
+        val session = sessionDao.getActiveSession() ?: return 0L
+        if (session.completed) return 0L
+        if (session.skillName != skill) return 0L
+        val now       = System.currentTimeMillis()
+        val newEndsAt = (session.endsAt - ms).coerceAtLeast(now)
+        val applied   = session.endsAt - newEndsAt
+        if (applied <= 0L) return 0L
+        sessionDao.update(session.copy(endsAt = newEndsAt))
+        enqueueCompletionWork(session.sessionId, newEndsAt, skillDisplayName = "")
+        return applied
+    }
+
     suspend fun getSession(sessionId: String): SkillSession? = sessionDao.getSession(sessionId)
 
     suspend fun abandonSession(sessionId: String) {

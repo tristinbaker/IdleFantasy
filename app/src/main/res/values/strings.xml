@@ -60,6 +60,31 @@
     <string name="mh_coming_soon_body">This minigame opens in a later phase. The plaza, the joystick, and the entry prompt are live — the crafting loop is next.</string>
     <string name="mh_coming_soon_dismiss">Got it</string>
 
+    <!-- ===== Smithing minigame (Phase 3) ===== -->
+    <string name="sm_title">Smithy</string>
+    <string name="sm_phase_hammer">Hammer the bar</string>
+    <string name="sm_phase_heat">Heat the blade</string>
+    <string name="sm_phase_quench">Quench it true</string>
+    <string name="sm_phase_hint_hammer">Tap on the beat — four strikes</string>
+    <string name="sm_phase_hint_heat">Hold to heat, release in the band</string>
+    <string name="sm_phase_hint_quench">Tap when the marker is in the green</string>
+    <string name="sm_btn_hammer">Strike</string>
+    <string name="sm_btn_hold_heat">Hold to heat</string>
+    <string name="sm_btn_quench">Quench</string>
+    <string name="sm_result_title">Forging complete</string>
+    <string name="sm_result_score_hammer">Hammer</string>
+    <string name="sm_result_score_heat">Heat</string>
+    <string name="sm_result_score_quench">Quench</string>
+    <string name="sm_result_perfect">Perfect</string>
+    <string name="sm_result_good">Good</string>
+    <string name="sm_result_miss">Miss</string>
+    <string name="sm_result_relevant_skip">Cut %1$ds off your smithing session — relevance ×2 applied.</string>
+    <string name="sm_result_simple_skip">Cut %1$ds off your smithing session.</string>
+    <string name="sm_result_fallback_reward">No active smithing session — minted +%1$d xp and 1 bronze sword.</string>
+    <string name="sm_result_no_reward">No rewards earned — try again.</string>
+    <string name="sm_result_continue">Continue</string>
+    <string name="sm_close">Close</string>
+
     <!-- ===== Perks (Advantage Points) ===== -->
     <string name="perks_title">Perks</string>
     <string name="perks_subtitle">Spend points earned from leveling on permanent buffs.</string>

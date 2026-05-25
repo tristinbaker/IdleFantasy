@@ -86,4 +86,100 @@ object SceneCatalog {
             },
         )
     }
+
+    /**
+     * Smithing-minigame scene. Forge on the left (breath idle reads as a
+     * flickering fire), anvil + sword in the centre, hammer on the right
+     * (no idle — the minigame's HAMMER phase animates it), water bucket on
+     * the right ground.
+     *
+     * Effects wired by [SmithingMinigameViewModel]:
+     *  - `Hit("anvil", _, _)`  → anvil shake + sparks  (HAMMER tap)
+     *  - `Produce("sword", _)` → sword glow + steam arc (QUENCH success)
+     *  - `Attempt(_)`          → muted shake             (HAMMER miss)
+     *  - `LevelUp(_)`          → big burst              (perfect run)
+     */
+    val SMITHY: SceneConfig = SceneConfig(
+        id = "smithy",
+        backgroundEntityId = null,
+        layers = listOf(
+            Layer(
+                tag = "forge",
+                entityId = "smithy_forge_fire",
+                position = LayerPosition.LEFT_GROUND,
+                idleBehavior = IdleBehavior.Breath,
+            ),
+            Layer(
+                tag = "anvil",
+                entityId = "smithy_anvil",
+                position = LayerPosition.CENTER_GROUND,
+                idleBehavior = IdleBehavior.None,
+            ),
+            Layer(
+                tag = "sword",
+                entityId = "smithy_sword_cold",  // swapped per phase by smithy(...)
+                position = LayerPosition.CENTER_HOLD,
+                idleBehavior = IdleBehavior.None,
+            ),
+            Layer(
+                tag = "hammer",
+                entityId = "smithy_hammer",
+                position = LayerPosition.RIGHT_ACTOR,
+                idleBehavior = IdleBehavior.None,
+            ),
+            Layer(
+                tag = "water_bucket",
+                entityId = "smithy_water_bucket",
+                position = LayerPosition.RIGHT_GROUND,
+                idleBehavior = IdleBehavior.None,
+            ),
+        ),
+        eventMap = mapOf(
+            SceneEvent.Hit::class to { event ->
+                val hit = event as SceneEvent.Hit
+                val mag = when {
+                    hit.amount >= 2 -> ShakeMagnitude.Medium
+                    hit.amount >= 1 -> ShakeMagnitude.Small
+                    else            -> ShakeMagnitude.Small
+                }
+                val burstCount = if (hit.amount >= 2) 6 else 3
+                listOf(
+                    Effect.Shake(tag = hit.target, magnitude = mag),
+                    Effect.Burst(tag = hit.target, count = burstCount),
+                )
+            },
+            SceneEvent.Produce::class to { _ ->
+                // The quench "steam puff" is a Burst on the sword + a HitFlash
+                // ripple. No ArcOut yet — Stage renders ArcOut as a real
+                // EntityIcon and we don't have a `steam` sprite to fly.
+                listOf(
+                    Effect.Burst(tag = "sword", count = 10),
+                    Effect.HitFlash(tag = "sword"),
+                    Effect.Shake(tag = "water_bucket", magnitude = ShakeMagnitude.Small),
+                )
+            },
+            SceneEvent.Attempt::class to { _ ->
+                listOf(Effect.Shake(tag = "anvil", magnitude = ShakeMagnitude.Small))
+            },
+            SceneEvent.LevelUp::class to { _ ->
+                listOf(
+                    Effect.Burst(tag = "sword", count = 12),
+                    Effect.HitFlash(tag = "sword"),
+                )
+            },
+        ),
+    )
+
+    /**
+     * Returns a copy of [SMITHY] with the sword layer's entityId swapped to
+     * reflect the current minigame phase (`smithy_sword_cold` during HAMMER,
+     * `smithy_sword_hot` after HEAT, `smithy_sword_finished` after QUENCH).
+     */
+    fun smithy(swordEntityId: String): SceneConfig {
+        return SMITHY.copy(
+            layers = SMITHY.layers.map { layer ->
+                if (layer.tag == "sword") layer.copy(entityId = swordEntityId) else layer
+            },
+        )
+    }
 }

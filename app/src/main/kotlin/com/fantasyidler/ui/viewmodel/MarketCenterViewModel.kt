@@ -28,6 +28,7 @@ data class MarketCenterUiState(
 
 sealed interface MarketNavEvent {
     data object OpenShop : MarketNavEvent
+    data object OpenSmithingMinigame : MarketNavEvent
     data class ComingSoon(val displayNameRes: Int) : MarketNavEvent
 }
 
@@ -95,8 +96,9 @@ class MarketCenterViewModel @Inject constructor() : ViewModel() {
     fun onEnterTapped() {
         val station = _uiState.value.nearestStation ?: return
         val event = when {
-            station.opensShop -> MarketNavEvent.OpenShop
-            else              -> MarketNavEvent.ComingSoon(station.displayNameRes)
+            station.opensShop          -> MarketNavEvent.OpenShop
+            station.skill == "smithing" -> MarketNavEvent.OpenSmithingMinigame
+            else                        -> MarketNavEvent.ComingSoon(station.displayNameRes)
         }
         _uiState.update { it.copy(navEvent = event) }
     }
