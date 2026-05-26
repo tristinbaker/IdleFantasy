@@ -19,9 +19,9 @@ Pick a skill or dungeon, start a session, then put your phone down. Your hero ke
 
 Train **20 skills** at your own pace:
 
-- **Gathering** — Mine ores, catch fish, chop logs, tend crops, run agility courses
-- **Crafting** — Smelt bars, cook food, fletch bows and arrows, craft jewellery, burn logs for Prayer XP
-- **Combat** — Fight in 12 dungeons with Melee, Ranged, or Magic. Each style levels its own skill tree
+- **Gathering**: Mine ores, catch fish, chop logs, tend crops, run agility courses
+- **Crafting**: Smelt bars, cook food, fletch bows and arrows, craft jewellery, burn logs for Prayer XP
+- **Combat**: Fight in 12 dungeons with Melee, Ranged, or Magic. Each style levels its own skill tree
 
 Better equipment means faster gathering and surviving tougher dungeons. Craft your own gear or buy it from the Shop.
 
