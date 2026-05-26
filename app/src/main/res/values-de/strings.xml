@@ -31,7 +31,7 @@
     <string name="btn_clear">Löschen</string>
     <string name="btn_clear_all">Alles löschen</string>
     <string name="btn_inspect">Überprüfen</string>
-    <string name="btn_view_drops">Drops anzeigen</string>
+    <string name="btn_view_drops">Beute anzeigen</string>
     <string name="btn_start_quest">Mission starten</string>
     <string name="btn_abandon_quest">Mission abbrechen</string>
     <string name="btn_enter_dungeon">Dungeon betreten</string>
@@ -42,7 +42,7 @@
     <string name="btn_back">Zurück</string>
 
     <!-- ===== Common labels ===== -->
-    <string name="label_level">Level</string>
+    <string name="label_level">Stufe</string>
     <string name="label_xp">XP</string>
     <string name="label_coins">Münzen</string>
     <string name="label_hp">HP</string>
@@ -63,7 +63,7 @@
     <string name="label_session_complete">Sitzung abgeschlossen!</string>
     <string name="label_training">Ausbildung</string>
     <string name="label_gathering_skills">Sammeln</string>
-    <string name="label_crafting_skills">Erstellen</string>
+    <string name="label_crafting_skills">Herstellen</string>
     <string name="label_choose_activity">Aktivität auswählen</string>
     <string name="label_coming_soon">Bald verfügbar</string>
     <string name="label_time_remaining">Verbleibende Zeit</string>
@@ -73,8 +73,8 @@
     <string name="label_level_ups">Levelaufstiege</string>
     <string name="label_requirements">Anforderungen</string>
     <string name="label_rewards">Belohnungen</string>
-    <string name="label_your_level">Dein Level</string>
-    <string name="label_xp_to_next">XP bis zum nächsten Level</string>
+    <string name="label_your_level">Deine Stufe</string>
+    <string name="label_xp_to_next">XP bis zur nächsten Stufe</string>
     <string name="label_total_xp">Insgesamt XP</string>
     <string name="label_quantity">Anzahl</string>
     <string name="label_price">Preis</string>
@@ -94,7 +94,7 @@
     <string name="inventory_cat_other">Sonstiges</string>
     <string name="label_combat_style">Kampfstil</string>
     <string name="label_active_spell">Aktiver Zauber</string>
-    <string name="label_drops">Drops</string>
+    <string name="label_drops">Beute</string>
     <string name="label_boss">Boss</string>
     <string name="label_dungeon">Dungeon</string>
     <string name="label_difficulty">Schwierigkeitsgrad</string>
@@ -103,9 +103,9 @@
     <string name="label_available_quests">Verfügbar</string>
     <string name="label_stats">Statistiken</string>
     <string name="label_skills">Fähigkeiten</string>
-    <string name="label_shop">Shop</string>
-    <string name="label_sell_items">Artikel verkaufen</string>
-    <string name="label_total_level">Gesamtlevel</string>
+    <string name="label_shop">Händler</string>
+    <string name="label_sell_items">Gegenstände verkaufen</string>
+    <string name="label_total_level">Gesamtstufe</string>
     <string name="label_wins">Siege</string>
     <string name="label_losses">Niederlagen</string>
     <string name="label_active">Aktiv</string>
@@ -124,7 +124,7 @@
     <string name="label_magic_style">Magie</string>
     <string name="label_gathering">Sammeln</string>
     <string name="label_crafting">Herstellung</string>
-    <string name="label_jewellery">Juwelen</string>
+    <string name="label_jewellery">Juwelierarbeit</string>
     <string name="label_combat">Kampf</string>
     <string name="label_recipe">Rezept</string>
     <string name="label_recipes">Rezepte</string>
@@ -134,8 +134,8 @@
     <string name="label_unlocked_at">Freigeschaltet ab Level</string>
     <string name="label_kills">Getötet</string>
     <string name="label_personal_best">Persönliche Bestleistung</string>
-    <string name="label_daily_dig">Täglicher Tipp</string>
-    <string name="label_dig_depth">Loch-Tiefe</string>
+    <string name="label_daily_dig">Tägliche Grabung</string>
+    <string name="label_dig_depth">Grabungs-Tiefe</string>
     <string name="label_version">Version</string>
     <string name="label_open_source">Open Source</string>
 
