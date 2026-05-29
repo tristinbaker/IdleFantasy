@@ -1,0 +1,3 @@
+• Fix: Guild daily requests now unlock as soon as you earn any reputation in a guild, removing a softlock where completing all tier-0 quests left no way to earn the remaining rep needed to advance
+• New: Crafting, smithing, cooking, fletching, herblore, prayer, and runecrafting quantity pickers now show a level-up preview (e.g. +2,400 XP → Level 42) when the selected amount would push you to the next level
+• Balance: Mercantile XP per trade route reduced by ~4x; two Local Market sessions should now reach around level 10-15 rather than level 37

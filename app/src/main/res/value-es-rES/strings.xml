@@ -660,7 +660,7 @@
     <string name="guild_tab_dailies">Daily Requests</string>
     <string name="guild_daily_resets_in">Resets daily at 6am</string>
     <string name="guild_locked_hint">Requires Guild Level %1$d</string>
-    <string name="guild_no_dailies">Reach Guild Level 1 to unlock daily requests.</string>
+    <string name="guild_no_dailies">Complete guild quests to earn reputation and unlock daily requests.</string>
     <string name="guild_rep_label">%1$d / %2$d rep</string>
     <string name="guild_quest_complete">Quest complete: %1$s</string>
     <string name="guild_daily_complete">Daily reward claimed!</string>

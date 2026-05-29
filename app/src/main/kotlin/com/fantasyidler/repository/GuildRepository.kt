@@ -268,10 +268,12 @@ class GuildRepository @Inject constructor(
         val selectedIds = mutableListOf<String>()
 
         for (guild in ALL_GUILDS) {
-            val guildLevel = guildLevel(guild, flags.guildReputation[guild] ?: 0L, completedQuestIds)
-            if (guildLevel == 0) continue
+            val guildRep = flags.guildReputation[guild] ?: 0L
+            if (guildRep == 0L) continue
+            val guildLevel = guildLevel(guild, guildRep, completedQuestIds)
+            val effectiveLevel = maxOf(guildLevel, 1)
             val eligible = gameData.guildDailyPool
-                .filter { it.guild == guild && guildLevel >= it.guildLevelMin && guildLevel <= it.guildLevelMax }
+                .filter { it.guild == guild && effectiveLevel >= it.guildLevelMin && effectiveLevel <= it.guildLevelMax }
                 .shuffled(rng)
             selectedIds.addAll(eligible.take(2).map { it.id })
         }
@@ -309,7 +311,7 @@ class GuildRepository @Inject constructor(
     private fun hasNewlyUnlockedGuild(flags: PlayerFlags, completedQuestIds: Set<String>): Boolean {
         val pool = gameData.guildDailyPool.associateBy { it.id }
         return ALL_GUILDS.any { guild ->
-            guildLevel(guild, flags.guildReputation[guild] ?: 0L, completedQuestIds) >= 1 &&
+            (flags.guildReputation[guild] ?: 0L) > 0L &&
                 flags.guildDailyIds.none { pool[it]?.guild == guild }
         }
     }

@@ -59,11 +59,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.R
+import com.fantasyidler.simulator.XpTable
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.CraftableRecipe
 import com.fantasyidler.ui.viewmodel.CraftingUiState
 import com.fantasyidler.ui.viewmodel.CraftingViewModel
 import com.fantasyidler.util.GameStrings
+import com.fantasyidler.util.formatXp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -282,6 +284,15 @@ private fun RecipeRow(
 // Craft quantity sheet
 // ---------------------------------------------------------------------------
 
+private fun projectedXpLabel(currentXp: Long, xpGain: Long): String {
+    val currentLevel   = XpTable.levelForXp(currentXp)
+    val projectedLevel = XpTable.levelForXp(currentXp + xpGain)
+    return if (projectedLevel > currentLevel)
+        "+${xpGain.formatXp()} XP → Level $projectedLevel"
+    else
+        "+${xpGain.formatXp()} XP"
+}
+
 @Composable
 private fun CraftSheet(
     recipe: CraftableRecipe,
@@ -291,9 +302,10 @@ private fun CraftSheet(
     onCraft: () -> Unit,
     onDismiss: () -> Unit,
 ) {
-    val qty     = state.craftQuantity
-    val max     = state.maxCraftable(recipe)
-    val totalXp = recipe.xpPerItem * qty
+    val qty       = state.craftQuantity
+    val max       = state.maxCraftable(recipe)
+    val totalXp   = recipe.xpPerItem * qty
+    val currentXp = state.skillXp[recipe.skillName] ?: 0L
     var textValue by remember(qty) { mutableStateOf(qty.toString()) }
 
     Column(
@@ -416,7 +428,7 @@ private fun CraftSheet(
         Spacer(Modifier.height(8.dp))
 
         Text(
-            text     = stringResource(R.string.crafting_xp_total, totalXp.toInt()),
+            text     = projectedXpLabel(currentXp, totalXp.toLong()),
             style    = MaterialTheme.typography.bodySmall,
             color    = GoldPrimary,
             modifier = Modifier.align(Alignment.CenterHorizontally),

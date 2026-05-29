@@ -1,3 +1,8 @@
+v1.6.2
+• Fix: Guild daily requests now unlock as soon as you earn any reputation in a guild, removing a softlock where completing all tier-0 quests left no way to earn the remaining rep needed to advance
+• New: Crafting, smithing, cooking, fletching, herblore, prayer, and runecrafting quantity pickers now show a level-up preview (e.g. +2,400 XP → Level 42) when the selected amount would push you to the next level
+• Balance: Mercantile XP per trade route reduced by ~4x; two Local Market sessions should now reach around level 10-15 rather than level 37
+
 v1.6.1
 • New: Church building added to the home screen; visit to activate a 24-hour blessing based on your Prayer level
 • New: Blessings come in three types: XP multiplier, Defense bonus, or Coin bonus; higher Prayer levels unlock stronger tiers up to level 99

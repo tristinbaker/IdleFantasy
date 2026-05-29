@@ -258,11 +258,13 @@ fun SkillsScreen(
                     isQueueFull       = state.queueSize >= 3,
                     sessionDurationMs = state.sessionDurationMs,
                     onStart           = viewModel::startRunecraftingSession,
+                    currentXp         = state.skillXp[Skills.RUNECRAFTING] ?: 0L,
                 )
                 is SheetState.Prayer -> PrayerSheet(
                     availableBones    = sheet.availableBones,
                     inventory         = sheet.inventory,
                     prayerLevel       = state.skillLevels[Skills.PRAYER] ?: 1,
+                    currentXp         = state.skillXp[Skills.PRAYER] ?: 0L,
                     isStarting        = state.startingSession,
                     hasActiveSession  = state.anySessionActive,
                     isQueueFull       = state.queueSize >= 3,
@@ -1056,6 +1058,7 @@ internal fun PrayerSheet(
     availableBones: Map<String, BoneData>,
     inventory: Map<String, Int>,
     prayerLevel: Int,
+    currentXp: Long = 0L,
     isStarting: Boolean,
     hasActiveSession: Boolean,
     isQueueFull: Boolean,
@@ -1200,7 +1203,7 @@ internal fun PrayerSheet(
             Spacer(Modifier.height(8.dp))
 
             Text(
-                text     = stringResource(R.string.skills_xp_total, (qty * selectedBone.xpPerBone).toInt()),
+                text     = projectedXpLabel(currentXp, (qty * selectedBone.xpPerBone).toLong()),
                 style    = MaterialTheme.typography.bodyMedium,
                 color    = GoldPrimary,
                 fontWeight = FontWeight.SemiBold,
@@ -1241,6 +1244,7 @@ internal fun RunecraftingSheet(
     isQueueFull: Boolean,
     sessionDurationMs: Long,
     onStart: (String, Int) -> Unit,
+    currentXp: Long = 0L,
     tierMaxQty: Int = Int.MAX_VALUE,
 ) {
     var selectedKey by remember { mutableStateOf<String?>(null) }
@@ -1393,7 +1397,7 @@ internal fun RunecraftingSheet(
             Spacer(Modifier.height(8.dp))
 
             Text(
-                text       = stringResource(R.string.skills_xp_total, (qty * selectedRune.xpPerRune).toInt()),
+                text       = projectedXpLabel(currentXp, (qty * selectedRune.xpPerRune).toLong()),
                 style      = MaterialTheme.typography.bodyMedium,
                 color      = GoldPrimary,
                 fontWeight = FontWeight.SemiBold,

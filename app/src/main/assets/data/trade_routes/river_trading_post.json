@@ -5,9 +5,9 @@
   "level_required": 20,
   "coin_cost": 10000,
   "xp_ranges": {
-    "20": {"min": 200, "max": 320},
-    "30": {"min": 240, "max": 380},
-    "40": {"min": 280, "max": 430}
+    "20": {"min": 50, "max": 80},
+    "30": {"min": 60, "max": 95},
+    "40": {"min": 70, "max": 110}
   },
   "coin_ranges": {
     "20": {"min": 120, "max": 210},

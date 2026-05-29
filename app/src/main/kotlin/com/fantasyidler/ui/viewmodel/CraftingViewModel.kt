@@ -75,6 +75,7 @@ data class CraftingUiState(
     val craftingLevel:  Int = 1,
     val herbloreLevel:  Int = 1,
     val skillLevels:    Map<String, Int> = emptyMap(),
+    val skillXp:        Map<String, Long> = emptyMap(),
     val inventory:      Map<String, Int> = emptyMap(),
     /** Inventory minus materials already reserved by active session + queue. */
     val effectiveInventory: Map<String, Int> = emptyMap(),
@@ -131,6 +132,7 @@ class CraftingViewModel @Inject constructor(
             extra
         } else {
             val levels: Map<String, Int> = json.decodeFromString(player.skillLevels)
+            val xp: Map<String, Long> = json.decodeFromString(player.skillXp)
             val inventory: Map<String, Int> = json.decodeFromString(player.inventory)
             extra.copy(
                 smithingLevel      = levels[Skills.SMITHING]  ?: 1,
@@ -139,6 +141,7 @@ class CraftingViewModel @Inject constructor(
                 craftingLevel      = levels[Skills.CRAFTING]  ?: 1,
                 herbloreLevel      = levels[Skills.HERBLORE]  ?: 1,
                 skillLevels        = levels,
+                skillXp            = xp,
                 inventory          = inventory,
                 effectiveInventory = computeEffectiveInventory(inventory),
                 isLoading          = false,
