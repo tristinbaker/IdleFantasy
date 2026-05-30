@@ -252,6 +252,15 @@ class PlayerRepository @Inject constructor(
         updateFlags(flags.copy(sessionQueue = queue.toMutableList().apply { removeAt(index) }))
     }
 
+    suspend fun moveQueueItem(fromIndex: Int, toIndex: Int) {
+        val flags = getFlags()
+        val queue = flags.sessionQueue.toMutableList()
+        if (fromIndex < 0 || toIndex < 0 || fromIndex >= queue.size || toIndex >= queue.size) return
+        val item = queue.removeAt(fromIndex)
+        queue.add(toIndex, item)
+        updateFlags(flags.copy(sessionQueue = queue))
+    }
+
     suspend fun incrementDungeonRun(activityKey: String) {
         val flags = getFlags()
         val updated = flags.dungeonRuns.toMutableMap()

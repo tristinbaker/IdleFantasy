@@ -1879,10 +1879,10 @@ private fun CraftQuantityContent(
         QtyQuickButtons(qty, max) { onSetQuantity(it) }
         Spacer(Modifier.height(8.dp))
         Text(
-            text     = stringResource(R.string.skills_xp_total, totalXp.toInt()),
-            style    = MaterialTheme.typography.bodySmall,
-            color    = GoldPrimary,
-            modifier = Modifier.align(Alignment.CenterHorizontally),
+            text       = projectedXpLabel(state.skillXp[recipe.skillName] ?: 0L, totalXp.toLong()),
+            style      = MaterialTheme.typography.bodyMedium,
+            color      = GoldPrimary,
+            fontWeight = FontWeight.SemiBold,
         )
         if (sessionDurationMs > 0) {
             Text(

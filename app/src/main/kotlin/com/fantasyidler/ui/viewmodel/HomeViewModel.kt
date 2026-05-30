@@ -362,7 +362,7 @@ class HomeViewModel @Inject constructor(
                         val coinReturnBoosted = (coinReturn * blessingCoinMult * mercantileCapeMult).toLong()
                         awardedCapes += playerRepo.applySessionResults(Skills.MERCANTILE, totalXp, emptyMap())
                         playerRepo.addCoins(coinReturnBoosted)
-                        guildRepo.recordGuildTrade()
+                        guildRepo.recordGuildTrade(coinReturnBoosted)
                         combinedXpBySkill[Skills.MERCANTILE] = (combinedXpBySkill[Skills.MERCANTILE] ?: 0L) + totalXp
                         combinedCoins += coinReturnBoosted
                     }
@@ -825,9 +825,14 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             val action = playerRepo.getQueue().getOrNull(index) ?: return@launch
             playerRepo.removeFromQueue(index)
+            if (action.coinRefund > 0) playerRepo.addCoins(action.coinRefund)
             playerSessionMaterials(action.skillName, action.activityKey, action.qty, gameData)
                 ?.let { playerRepo.addItems(it) }
         }
+    }
+
+    fun moveQueueItem(fromIndex: Int, toIndex: Int) {
+        viewModelScope.launch { playerRepo.moveQueueItem(fromIndex, toIndex) }
     }
 
     fun saveCharacterProfile(name: String, gender: String, race: String) {

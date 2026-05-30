@@ -49,6 +49,7 @@ import com.fantasyidler.repository.GuildDailyWithProgress
 import com.fantasyidler.repository.GuildQuestWithProgress
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.GuildDetailViewModel
+import com.fantasyidler.util.formatCoins
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -380,7 +381,11 @@ private fun GuildDailyCard(
             )
             Spacer(Modifier.height(4.dp))
             Text(
-                text  = "${dwp.progress.coerceAtMost(dwp.template.amount)} / ${dwp.template.amount}",
+                text  = if (dwp.template.type == "earn_coins") {
+                    "${dwp.progress.coerceAtMost(dwp.template.amount).toLong().formatCoins()} / ${dwp.template.amount.toLong().formatCoins()}"
+                } else {
+                    "${dwp.progress.coerceAtMost(dwp.template.amount)} / ${dwp.template.amount}"
+                },
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )

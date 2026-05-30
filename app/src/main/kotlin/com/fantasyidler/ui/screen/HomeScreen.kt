@@ -652,6 +652,7 @@ fun HomeScreen(
                     queueEndsAt = state.queueEndsAt,
                     context     = context,
                     onRemove    = viewModel::removeFromQueue,
+                    onMove      = viewModel::moveQueueItem,
                 )
             }
         }
@@ -780,6 +781,7 @@ private fun QueueCard(
     queueEndsAt: Long,
     context: android.content.Context,
     onRemove: (Int) -> Unit,
+    onMove: (Int, Int) -> Unit,
 ) {
     Surface(
         shape    = RoundedCornerShape(16.dp),
@@ -822,6 +824,34 @@ private fun QueueCard(
                             style = MaterialTheme.typography.bodyMedium,
                             fontWeight = FontWeight.Medium,
                         )
+                    }
+                    if (queue.size > 1) {
+                        IconButton(
+                            onClick  = { onMove(index, index - 1) },
+                            enabled  = index > 0,
+                            modifier = Modifier.size(32.dp),
+                        ) {
+                            Icon(
+                                imageVector        = Icons.Filled.KeyboardArrowUp,
+                                contentDescription = "Move up",
+                                modifier           = Modifier.size(16.dp),
+                                tint               = if (index > 0) MaterialTheme.colorScheme.onSurfaceVariant
+                                                     else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.3f),
+                            )
+                        }
+                        IconButton(
+                            onClick  = { onMove(index, index + 1) },
+                            enabled  = index < queue.size - 1,
+                            modifier = Modifier.size(32.dp),
+                        ) {
+                            Icon(
+                                imageVector        = Icons.Filled.KeyboardArrowDown,
+                                contentDescription = "Move down",
+                                modifier           = Modifier.size(16.dp),
+                                tint               = if (index < queue.size - 1) MaterialTheme.colorScheme.onSurfaceVariant
+                                                     else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.3f),
+                            )
+                        }
                     }
                     IconButton(
                         onClick  = { onRemove(index) },

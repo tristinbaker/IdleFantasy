@@ -261,6 +261,9 @@ class ShopViewModel @Inject constructor(
         return (base * mercantileSellBonus(uiState.value.mercantileLevel)).toInt().coerceAtLeast(1)
     }
 
+    fun discountedPrice(entry: ShopEntry): Int =
+        (entry.price * mercantileBuyDiscount()).toInt().coerceAtLeast(1)
+
     fun mercantileBuyDiscount(mercantileLevel: Int = uiState.value.mercantileLevel): Float {
         val base = when {
             mercantileLevel >= 99 -> 0.75f

@@ -139,13 +139,14 @@ class GuildRepository @Inject constructor(
     }
 
     /** Called when a mercantile trade route session is collected. */
-    suspend fun recordGuildTrade() {
+    suspend fun recordGuildTrade(coinsEarned: Long = 0L) {
         for ((questId, quest) in gameData.guildQuests) {
             if (quest.guild != "mercantile" || quest.type != "trade") continue
             addQuestProgress(questId, 1)
         }
         var flags = getRefreshedGuildDailyFlags()
         flags = applyDailyTrade(flags)
+        flags = applyDailyEarnCoins(flags, coinsEarned)
         playerRepo.updateFlags(flags)
     }
 
@@ -408,6 +409,24 @@ class GuildRepository @Inject constructor(
             val cur = updated[id] ?: 0
             if (cur >= t.amount) continue
             updated[id] = minOf(cur + 1, t.amount)
+            changed = true
+        }
+        return if (changed) flags.copy(guildDailyProgress = updated) else flags
+    }
+
+    private fun applyDailyEarnCoins(flags: PlayerFlags, coinsEarned: Long): PlayerFlags {
+        if (coinsEarned <= 0) return flags
+        val unclaimed = flags.guildDailyIds.filter { it !in flags.guildDailyClaimed }
+        if (unclaimed.isEmpty()) return flags
+        val pool = gameData.guildDailyPool.associateBy { it.id }
+        val updated = flags.guildDailyProgress.toMutableMap()
+        var changed = false
+        for (id in unclaimed) {
+            val t = pool[id] ?: continue
+            if (t.guild != "mercantile" || t.type != "earn_coins") continue
+            val cur = updated[id] ?: 0
+            if (cur >= t.amount) continue
+            updated[id] = minOf(cur + coinsEarned.toInt(), t.amount)
             changed = true
         }
         return if (changed) flags.copy(guildDailyProgress = updated) else flags

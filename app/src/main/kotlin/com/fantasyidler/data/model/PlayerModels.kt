@@ -80,6 +80,8 @@ data class QueuedAction(
     val qty: Int = 0,
     /** Pre-computed session duration in ms, used to display accurate queue end time. */
     @SerialName("estimated_duration_ms") val estimatedDurationMs: Long = 0L,
+    /** Coins to refund if this action is cancelled (mercantile trade route cost). */
+    @SerialName("coin_refund") val coinRefund: Long = 0L,
 )
 
 // ---------------------------------------------------------------------------
