@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Skill names and descriptions ===== -->
+
+    <!-- Gathering skills -->
+    <string name="skill_mining_name">Miniera</string>
+    <string name="skill_mining_desc">Estrai minerali preziosi e gemme dalla terra.</string>
+    <string name="skill_fishing_name">Pesca</string>
+    <string name="skill_fishing_desc">Cattura pesci e tesori marini.</string>
+    <string name="skill_woodcutting_name">Taglialegna</string>
+    <string name="skill_woodcutting_desc">Taglia alberi e raccogli vari tipi di legno.</string>
+    <string name="skill_farming_name">Agricoltura</string>
+    <string name="skill_farming_desc">Semina e raccogli dalle tue Patch agricole.</string>
+    <string name="skill_firemaking_name">Fuochista</string>
+    <string name="skill_firemaking_desc">Brucia legno dal tuo inventario per guadagnare XP in Fuochista. Ciascun legno produce anche cenere, che può essere dispersa durante la Preghiera per guadagnare un bonus di XP in Preghiera.</string>
+    <string name="skill_agility_name">Agilità</string>
+    <string name="skill_agility_desc">Addestra la tua Agilità per ridurre la durata delle sessioni di addestramento in tutti i campi. Il livello 99 riduce di 20 minuti la durata (60 min → 40 min), con una riduzione lineare in base al livello.</string>
+
+    <!-- Crafting skills -->
+    <string name="skill_smithing_name">Fabbro</string>
+    <string name="skill_smithing_desc">Fondi lingotti di metallo dai minerali grezzi e forgia potenti equipaggiamenti di metallo.</string>
+    <string name="skill_cooking_name">Cucina</string>
+    <string name="skill_cooking_desc">Prepara dagli ingredienti grezzi cibo per recuperare HP in combattimento.</string>
+    <string name="skill_fletching_name">Fletching</string>
+    <string name="skill_fletching_desc">Costruisci archi e frecce da legno e componenti di metallo.</string>
+    <string name="skill_crafting_name">Crafting</string>
+    <string name="skill_crafting_desc">Crea gioielli e altri oggetti di artigianato da metalli preziosi.</string>
+    <string name="skill_runecrafting_name">Incisione di Rune</string>
+    <string name="skill_runecrafting_desc">Dall\'essenza di rune, incidi rune per lanciare incantesimi.</string>
+    <string name="skill_herblore_name">Erboristeria</string>
+    <string name="skill_herblore_desc">Crea pozioni da erbe e reagenti raccolti dalle tue Patch o nei dungeon, per potenziare le tue abilità.</string>
+
+    <!-- Combat skills -->
+    <string name="skill_attack_name">Attacco da Mischia</string>
+    <string name="skill_attack_desc">Migliora la tua precisione in attacchi corpo a corpo, aumentando la tua probabilità di colpire.</string>
+    <string name="skill_strength_name">Forza</string>
+    <string name="skill_strength_desc">Aumenta il tuo danno massimo per colpo.</string>
+    <string name="skill_defense_name">Difesa</string>
+    <string name="skill_defense_desc">Riduce il danno ricevuto dagli attacchi dei nemici.</string>
+    <string name="skill_ranged_name">Attacco a Distanza</string>
+    <string name="skill_ranged_desc">Attacca nemici da una distanza sicura usando arco e frecce.</string>
+    <string name="skill_magic_name">Magia</string>
+    <string name="skill_magic_desc">Lancia potenti incantesimi usando rune. Livelli più alti sbloccano incantesimi più forti.</string>
+    <string name="skill_hitpoints_name">Salute</string>
+    <string name="skill_hitpoints_desc">La tua energia massima. Livelli più alti ti permettono di sopravvivere più a lungo in combattimento.</string>
+    <string name="skill_prayer_name">Preghiera</string>
+    <string name="skill_prayer_desc">Seppellisci le ossa raccolte in combattimento per guadagnare XP Preghiera. Livelli più alti aumentano il tuo livello di combattimento.</string>
+
+    <!-- ===== Agility course names and descriptions ===== -->
+    <string name="agility_beginner_course_name">Percorso per Principianti</string>
+    <string name="agility_beginner_course_desc">Un percorso a ostacoli semplice per chi vuole iniziare ad addestrare la propria agilità.</string>
+    <string name="agility_novice_course_name">Percorso per Novizi</string>
+    <string name="agility_novice_course_desc">Un percorso leggermente più impegnativo con ostacoli semplici.</string>
+    <string name="agility_apprentice_course_name">Percorso per Apprendisti</string>
+    <string name="agility_apprentice_course_desc">Un percorso intermedio che richiede una certa destrezza.</string>
+    <string name="agility_intermediate_course_name">Percorso Intermedio</string>
+    <string name="agility_intermediate_course_desc">Un percorso moderatamente difficile con ostacoli insidiosi.</string>
+    <string name="agility_advanced_course_name">Percorso Avanzato</string>
+    <string name="agility_advanced_course_desc">Un percorso stimolante che mete alla prova la tua agilità.</string>
+    <string name="agility_expert_course_name">Percorso per Esperti</string>
+    <string name="agility_expert_course_desc">Un percorso per esperti con ostacoli pericolosi.</string>
+    <string name="agility_elite_course_name">Percorso per Elite</string>
+    <string name="agility_elite_course_desc">Solo i più agili sono in grado di padroneggiare questo percorso per elite.</string>
+    <string name="agility_master_course_name">Percorso per Maestri</string>
+    <string name="agility_master_course_desc">Un percorso per maestri con ostacoli estremi.</string>
+    <string name="agility_veteran_course_name">Percorso per Veterani</string>
+    <string name="agility_veteran_course_desc">Il campo di addestramento di un veterano, con sfide punitive.</string>
+    <string name="agility_champion_course_name">Percorso per Campioni</string>
+    <string name="agility_champion_course_desc">Un percorso per campioni che ti spingerà oltre i tuoi limiti.</string>
+    <string name="agility_heroic_course_name">Percorso per Eroi</string>
+    <string name="agility_heroic_course_desc">Un percorso per eroi dove solo i migliori osano avventurarsi.</string>
+    <string name="agility_legendary_course_name">Percorso Leggendario</string>
+    <string name="agility_legendary_course_desc">Un percorso leggendario del quale la migliore elite parla sotto voce.</string>
+    <string name="agility_mythic_course_name">Percorso Mitico</string>
+    <string name="agility_mythic_course_desc">Un percorso mitico che sfida le leggi della fisica.</string>
+    <string name="agility_divine_course_name">Percorso Divino</string>
+    <string name="agility_divine_course_desc">Un percorso divino graziato dagli dei dell\'agilità.</string>
+    <string name="agility_transcendent_course_name">Percorso Trascendentale</string>
+    <string name="agility_transcendent_course_desc">La prova finale dell\'agilità, trascende i limiti dei mortali.</string>
+</resources>

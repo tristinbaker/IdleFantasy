@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Enemy names ===== -->
+    <string name="enemy_giant_rat_name">Ratto Gigante</string>
+    <string name="enemy_goblin_name">Goblin</string>
+    <string name="enemy_skeleton_name">Scheletro</string>
+    <string name="enemy_zombie_name">Zombie</string>
+    <string name="enemy_bandit_name">Bandito</string>
+    <string name="enemy_guard_name">Guardia</string>
+    <string name="enemy_dark_wizard_name">Mago Oscuro</string>
+    <string name="enemy_orc_warrior_name">Guerriero Orco</string>
+    <string name="enemy_spider_name">Ragno Gigante</string>
+    <string name="enemy_wild_dog_name">Cane Selvaggio</string>
+    <string name="enemy_rogue_name">Delinquente</string>
+    <string name="enemy_knight_name">Cavaliere</string>
+    <string name="enemy_hellhound_name">Segugio Infernale</string>
+    <string name="enemy_troll_name">Troll di Montagna</string>
+    <string name="enemy_demon_name">Demone Minore</string>
+    <string name="enemy_dragon_name">Drago Verde</string>
+    <string name="enemy_imp_name">Imp</string>
+    <string name="enemy_chicken_name">Gallina</string>
+    <string name="enemy_sheep_name">Pecora</string>
+    <string name="enemy_cow_name">Mucca</string>
+
+    <!-- ===== Dungeon names and descriptions ===== -->
+    <string name="dungeon_imp_cavern_name">Caverna di Imp</string>
+    <string name="dungeon_imp_cavern_desc">Una caverna poco profonda piena di imp dispettosi. Perfetta per assoluti principianti!</string>
+    <string name="dungeon_goblin_cave_name">Caverna di Goblin</string>
+    <string name="dungeon_goblin_cave_desc">Una caverna oscura infestata da goblin e ratti giganti. On buon posto per l\'addestramento per nuovi avventurieri.</string>
+    <string name="dungeon_spider_den_name">Tana di Ragni</string>
+    <string name="dungeon_spider_den_desc">Una caverna piena di ragnatele, abitata da ragni velenosi. Porta con te un antidoto!</string>
+    <string name="dungeon_bandit_camp_name">Accampamento di Banditi</string>
+    <string name="dungeon_bandit_camp_desc">Un nascondiglio di ladri e delinquenti nella natura. Tieni una mano sul tuo portamonete!</string>
+    <string name="dungeon_undead_crypt_name">Cripta di Non Morti</string>
+    <string name="dungeon_undead_crypt_desc">Un antico cimitero dove i morti si rifiutano di stare a riposo. Fai attenzione alla magia oscura!</string>
+    <string name="dungeon_fortress_ruins_name">Fortezza in Rovina</string>
+    <string name="dungeon_fortress_ruins_desc">I resti fatiscenti di un antico castello, ora custoditi da cavalieri e soldati.</string>
+    <string name="dungeon_orc_stronghold_name">Fortificazione degli Orchi</string>
+    <string name="dungeon_orc_stronghold_desc">Un accampamento fortificato di orchi nelle profondità delle montagne. Solo i coraggiosi osano entrare.</string>
+    <string name="dungeon_volcanic_depths_name">Profondità Vulcaniche</string>
+    <string name="dungeon_volcanic_depths_desc">Una caverna rovente abitata da segugi infernali e demoni minori. Il calore è insopportabile!</string>
+    <string name="dungeon_dragon_lair_name">Covo di Draghi</string>
+    <string name="dungeon_dragon_lair_desc">La leggendaria casa dei draghi verdi. Solo i maestri guerrieri sopravvivono a questa sfida.</string>
+    <string name="dungeon_farm_name">Fattoria</string>
+    <string name="dungeon_farm_desc">Una tranquilla fattoria con animali da allevamento. Ottima per principianti alla ricerca di cibo!</string>
+    <string name="dungeon_infernal_stronghold_name">Forte Infernale</string>
+    <string name="dungeon_infernal_stronghold_desc">Una fortezza di fuoco e zolfo, governata da demoni e segugi infernali. Il solo calore è sufficiente per uccidere gli impreparati.</string>
+    <string name="dungeon_ancient_temple_name">Antico Tempio</string>
+    <string name="dungeon_ancient_temple_desc">Un antico tempio custodito dalle più potenti creature del regno. Solo i più forti guerrieri osano entrare.</string>
+
+    <!-- ===== Solo boss names (raid bosses retargeted for solo play) ===== -->
+    <string name="boss_king_black_dragon_name">Drago Nero Regale</string>
+    <string name="boss_demon_lord_name">Signore dei Demoni</string>
+    <string name="boss_kraken_name">Kraken</string>
+    <string name="boss_balrog_name">Balrog</string>
+
+    <!-- ===== Pet names and descriptions ===== -->
+    <string name="pet_dragon_whelp_name">Cucciolo di Drago</string>
+    <string name="pet_dragon_whelp_desc">Un giovane drago che potenzia i tuoi XP in Combattimento.</string>
+    <string name="pet_imp_pet_name">Imp da Compagnia</string>
+    <string name="pet_imp_pet_desc">Un imp dispettoso che potenzia il tuo addestramento in Preghiera.</string>
+    <string name="pet_baby_kraken_name">Piccolo Kraken</string>
+    <string name="pet_baby_kraken_desc">Un minuscolo kraken che migliora i tuoi XP in Cucina.</string>
+    <string name="pet_rock_golem_name">Golem di Pietra</string>
+    <string name="pet_rock_golem_desc">Una formazione rocciosa viva che migliora i tuoi XP in Miniera.</string>
+    <string name="pet_ent_name">Ent</string>
+    <string name="pet_ent_desc">Lo spirito di un albero antico che potenzia i tuoi XP in Taglialegna.</string>
+    <string name="pet_tiny_templar_name">Piccolo Templare</string>
+    <string name="pet_tiny_templar_desc">Un piccolo pesce da compagnia che potenzia i tuoi XP in Pesca.</string>
+    <string name="pet_tangleroot_name">Radice Annodata</string>
+    <string name="pet_tangleroot_desc">Una creatura magica vegetale che migliora i tuoi XP in Agricoltura.</string>
+</resources>

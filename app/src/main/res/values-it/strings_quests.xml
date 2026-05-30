@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Quest names and objectives ===== -->
+    <!-- Translator note: quest names are short titles; objectives are action sentences. -->
+
+    <!-- Mining -->
+    <string name="quest_mining_1_name">Miniera I</string>
+    <string name="quest_mining_1_objective">Raccogli 500 Minerali di Rame</string>
+    <string name="quest_mining_2_name">Miniera II</string>
+    <string name="quest_mining_2_objective">Raccogli 750 Minerali Ferrosi</string>
+    <string name="quest_mining_3_name">Miniera III</string>
+    <string name="quest_mining_3_objective">Raccogli 1100 Carboni</string>
+    <string name="quest_mining_4_name">Miniera IV</string>
+    <string name="quest_mining_4_objective">Raccogli 1650 Minerali di Mithril</string>
+    <string name="quest_mining_5_name">Miniera V</string>
+    <string name="quest_mining_5_objective">Raccogli 2450 Minerali di Adamantite</string>
+    <string name="quest_mining_6_name">Miniera VI</string>
+    <string name="quest_mining_6_objective">Raccogli 3650 Minerali di Runite</string>
+
+    <!-- Woodcutting -->
+    <string name="quest_woodcutting_1_name">Taglialegna I</string>
+    <string name="quest_woodcutting_1_objective">Taglia 500 Legni</string>
+    <string name="quest_woodcutting_2_name">Taglialegna II</string>
+    <string name="quest_woodcutting_2_objective">Taglia 750 Querce</string>
+    <string name="quest_woodcutting_3_name">Taglialegna III</string>
+    <string name="quest_woodcutting_3_objective">Taglia 1100 Salici</string>
+    <string name="quest_woodcutting_4_name">Taglialegna IV</string>
+    <string name="quest_woodcutting_4_objective">Taglia 1650 Aceri</string>
+    <string name="quest_woodcutting_5_name">Taglialegna V</string>
+    <string name="quest_woodcutting_5_objective">Taglia 2450 Tassi</string>
+    <string name="quest_woodcutting_6_name">Taglialegna VI</string>
+    <string name="quest_woodcutting_6_objective">Taglia 3650 Alberi Magici</string>
+
+    <!-- Fishing -->
+    <string name="quest_fishing_1_name">Pesca I</string>
+    <string name="quest_fishing_1_objective">Pesca 500 pesci</string>
+    <string name="quest_fishing_2_name">Pesca II</string>
+    <string name="quest_fishing_2_objective">Pesca 750 pesci</string>
+    <string name="quest_fishing_3_name">Pesca III</string>
+    <string name="quest_fishing_3_objective">Pesca 1100 pesci</string>
+    <string name="quest_fishing_4_name">Pesca IV</string>
+    <string name="quest_fishing_4_objective">Pesca 1650 pesci</string>
+    <string name="quest_fishing_5_name">Pesca V</string>
+    <string name="quest_fishing_5_objective">Pesca 2450 pesci</string>
+    <string name="quest_fishing_6_name">Pesca VI</string>
+    <string name="quest_fishing_6_objective">Pesca 3650 pesci</string>
+
+    <!-- Smithing -->
+    <string name="quest_smithing_1_name">Fabbro I</string>
+    <string name="quest_smithing_1_objective">Forgia 500 Lingotti di Bronzo</string>
+    <string name="quest_smithing_2_name">Fabbro II</string>
+    <string name="quest_smithing_2_objective">Forgia 750 Lingotti di Ferro</string>
+    <string name="quest_smithing_3_name">Fabbro III</string>
+    <string name="quest_smithing_3_objective">Forgia 1100 Lingotti d\'Acciaio</string>
+    <string name="quest_smithing_4_name">Fabbro IV</string>
+    <string name="quest_smithing_4_objective">Forgia 1650 Lingotti di Mithril</string>
+    <string name="quest_smithing_5_name">Fabbro V</string>
+    <string name="quest_smithing_5_objective">Forgia 2450 Lingotti di Adamantite</string>
+    <string name="quest_smithing_6_name">Fabbro VI</string>
+    <string name="quest_smithing_6_objective">Forgia 3650 Lingotti di Runite</string>
+
+    <!-- Cooking - Fish -->
+    <string name="quest_cooking_fish_1_name">Cucina — Pesce I</string>
+    <string name="quest_cooking_fish_1_objective">Cucina 500 pesci</string>
+    <string name="quest_cooking_fish_2_name">Cucina — Pesce II</string>
+    <string name="quest_cooking_fish_2_objective">Cucina 750 pesci</string>
+    <string name="quest_cooking_fish_3_name">Cucina — Pesce III</string>
+    <string name="quest_cooking_fish_3_objective">Cucina 1100 pesci</string>
+    <string name="quest_cooking_fish_4_name">Cucina — Pesce IV</string>
+    <string name="quest_cooking_fish_4_objective">Cucina 1650 pesci</string>
+    <string name="quest_cooking_fish_5_name">Cucina — Pesce V</string>
+    <string name="quest_cooking_fish_5_objective">Cucina 2450 pesci</string>
+    <string name="quest_cooking_fish_6_name">Cucina — Pesce VI</string>
+    <string name="quest_cooking_fish_6_objective">Cucina 3650 pesci</string>
+
+    <!-- Cooking - Beef -->
+    <string name="quest_cooking_beef_1_name">Cucina — Bistecca I</string>
+    <string name="quest_cooking_beef_1_objective">Cucina 100 Bistecche</string>
+    <string name="quest_cooking_beef_2_name">Cucina — Bistecca II</string>
+    <string name="quest_cooking_beef_2_objective">Cucina 250 Bistecche</string>
+    <string name="quest_cooking_beef_3_name">Cucina — Bistecca III</string>
+    <string name="quest_cooking_beef_3_objective">Cucina 500 Bistecche</string>
+
+    <!-- Cooking - Chicken -->
+    <string name="quest_cooking_chicken_1_name">Cucina — Pollo I</string>
+    <string name="quest_cooking_chicken_1_objective">Cucina 100 Polli</string>
+    <string name="quest_cooking_chicken_2_name">Cucina — Pollo II</string>
+    <string name="quest_cooking_chicken_2_objective">Cucina 250 Polli</string>
+    <string name="quest_cooking_chicken_3_name">Cucina — Pollo III</string>
+    <string name="quest_cooking_chicken_3_objective">Cucina 500 Polli</string>
+
+    <!-- Cooking - Mutton -->
+    <string name="quest_cooking_mutton_1_name">Cucina — Pecora I</string>
+    <string name="quest_cooking_mutton_1_objective">Cucina 100 Pecore</string>
+    <string name="quest_cooking_mutton_2_name">Cucina — Pecora II</string>
+    <string name="quest_cooking_mutton_2_objective">Cucina 250 Pecore</string>
+    <string name="quest_cooking_mutton_3_name">Cucina — Pecora III</string>
+    <string name="quest_cooking_mutton_3_objective">Cucina 500 Pecore</string>
+
+    <!-- Fletching -->
+    <string name="quest_fletching_1_name">Fletching I</string>
+    <string name="quest_fletching_1_objective">Costruisci 500 Frecce di Bronzo</string>
+    <string name="quest_fletching_2_name">Fletching II</string>
+    <string name="quest_fletching_2_objective">Costruisci 750 Frecce di Ferro</string>
+    <string name="quest_fletching_3_name">Fletching III</string>
+    <string name="quest_fletching_3_objective">Costruisci 1100 Frecce d\'Acciaio</string>
+    <string name="quest_fletching_4_name">Fletching IV</string>
+    <string name="quest_fletching_4_objective">Costruisci 1650 Frecce di Mithril</string>
+    <string name="quest_fletching_5_name">Fletching V</string>
+    <string name="quest_fletching_5_objective">Costruisci 2450 Frecce di Adamantite</string>
+    <string name="quest_fletching_6_name">Fletching VI</string>
+    <string name="quest_fletching_6_objective">Costruisci 3650 Frecce di Runite</string>
+
+    <!-- Prayer -->
+    <string name="quest_prayer_1_name">Preghiera I</string>
+    <string name="quest_prayer_1_objective">Seppellisci 500 ossa</string>
+    <string name="quest_prayer_2_name">Preghiera II</string>
+    <string name="quest_prayer_2_objective">Seppellisci 750 ossa</string>
+    <string name="quest_prayer_3_name">Preghiera III</string>
+    <string name="quest_prayer_3_objective">Seppellisci 1100 ossa</string>
+    <string name="quest_prayer_4_name">Preghiera IV</string>
+    <string name="quest_prayer_4_objective">Seppellisci 1650 ossa</string>
+    <string name="quest_prayer_5_name">Preghiera V</string>
+    <string name="quest_prayer_5_objective">Seppellisci 2450 ossa</string>
+    <string name="quest_prayer_6_name">Preghiera VI</string>
+    <string name="quest_prayer_6_objective">Seppellisci 3650 ossa</string>
+
+    <!-- Slayer -->
+    <string name="quest_combat_kills_1_name">Cacciatore I</string>
+    <string name="quest_combat_kills_1_objective">Sconfiggi 100 nemici</string>
+    <string name="quest_combat_kills_2_name">Cacciatore II</string>
+    <string name="quest_combat_kills_2_objective">Sconfiggi 150 nemici</string>
+    <string name="quest_combat_kills_3_name">Cacciatore III</string>
+    <string name="quest_combat_kills_3_objective">Sconfiggi 200 nemici</string>
+    <string name="quest_combat_kills_4_name">Cacciatore IV</string>
+    <string name="quest_combat_kills_4_objective">Sconfiggi 300 nemici</string>
+    <string name="quest_combat_kills_5_name">Cacciatore V</string>
+    <string name="quest_combat_kills_5_objective">Sconfiggi 450 nemici</string>
+    <string name="quest_combat_kills_6_name">Cacciatore VI</string>
+    <string name="quest_combat_kills_6_objective">Sconfiggi 650 nemici</string>
+
+    <!-- Dungeon exploration -->
+    <string name="quest_dungeon_farm_1_name">Esploratore di Dungeon I</string>
+    <string name="quest_dungeon_farm_1_objective">Completa il dungeon Fattoria 5 volte</string>
+    <string name="quest_dungeon_goblin_1_name">Esploratore di Dungeon II</string>
+    <string name="quest_dungeon_goblin_1_objective">Completa il dungeon Caverna di Goblin 5 volte</string>
+    <string name="quest_dungeon_spider_1_name">Esploratore di Dungeon III</string>
+    <string name="quest_dungeon_spider_1_objective">Completa il dungeon Tana di Ragni 5 volte</string>
+    <string name="quest_dungeon_bandit_1_name">Esploratore di Dungeon IV</string>
+    <string name="quest_dungeon_bandit_1_objective">Completa il dungeon Accampamento di Banditi 5 volte</string>
+    <string name="quest_dungeon_undead_1_name">Esploratore di Dungeon V</string>
+    <string name="quest_dungeon_undead_1_objective">Completa il dungeon Cripta di Non Morti 5 volte</string>
+    <string name="quest_dungeon_fortress_1_name">Esploratore di Dungeon VI</string>
+    <string name="quest_dungeon_fortress_1_objective">Completa il dungeon Fortezza in Rovina 5 volte</string>
+    <string name="quest_dungeon_orc_1_name">Dungeon Master I</string>
+    <string name="quest_dungeon_orc_1_objective">Completa il dungeon Fortificazione degli Orchi 5 volte</string>
+    <string name="quest_dungeon_volcanic_1_name">Dungeon Master II</string>
+    <string name="quest_dungeon_volcanic_1_objective">Completa il dungeon Profondità Vulcaniche 5 volte</string>
+    <string name="quest_dungeon_dragon_1_name">Dungeon Master III</string>
+    <string name="quest_dungeon_dragon_1_objective">Completa il dungeon Covo di Draghi 5 volte</string>
+
+    <!-- Crafting -->
+    <string name="quest_crafting_1_name">Crafting I</string>
+    <string name="quest_crafting_1_objective">Costruisci 100 Anelli d\'Argento</string>
+    <string name="quest_crafting_2_name">Crafting II</string>
+    <string name="quest_crafting_2_objective">Costruisci 250 Anelli d\'Oro</string>
+    <string name="quest_crafting_3_name">Crafting III</string>
+    <string name="quest_crafting_3_objective">Costruisci 500 Anelli di Platino</string>
+    <string name="quest_crafting_4_name">Crafting IV</string>
+    <string name="quest_crafting_4_objective">Costruisci 750 Anelli d\'Argento con Zaffiro</string>
+    <string name="quest_crafting_5_name">Crafting V</string>
+    <string name="quest_crafting_5_objective">Costruisci 1000 Anelli d\'Oro con Zaffiro</string>
+    <string name="quest_crafting_6_name">Crafting VI</string>
+    <string name="quest_crafting_6_objective">Costruisci 1500 Anelli di Platino con Diamante</string>
+
+    <!-- Monster slayer chains -->
+    <string name="quest_goblin_slayer_1_name">Cacciatore di Goblin I</string>
+    <string name="quest_goblin_slayer_1_objective">Sconfiggi 50 Goblin</string>
+    <string name="quest_goblin_slayer_2_name">Cacciatore di Goblin II</string>
+    <string name="quest_goblin_slayer_2_objective">Sconfiggi 100 Goblin</string>
+    <string name="quest_spider_slayer_1_name">Cacciatore di Ragni I</string>
+    <string name="quest_spider_slayer_1_objective">Sconfiggi 40 Ragni Giganti</string>
+    <string name="quest_spider_slayer_2_name">Cacciatore di Ragni II</string>
+    <string name="quest_spider_slayer_2_objective">Sconfiggi 80 Ragni Giganti</string>
+    <string name="quest_skeleton_slayer_1_name">Cacciatore di Scheletri I</string>
+    <string name="quest_skeleton_slayer_1_objective">Sconfiggi 35 Scheletri</string>
+    <string name="quest_skeleton_slayer_2_name">Cacciatore di Scheletri II</string>
+    <string name="quest_skeleton_slayer_2_objective">Sconfiggi 70 Scheletri</string>
+    <string name="quest_bandit_hunter_1_name">Cacciatore di Banditi I</string>
+    <string name="quest_bandit_hunter_1_objective">Sconfiggi 30 Banditi</string>
+    <string name="quest_bandit_hunter_2_name">Cacciatore di Banditi II</string>
+    <string name="quest_bandit_hunter_2_objective">Sconfiggi 60 Banditi</string>
+    <string name="quest_orc_slayer_1_name">Cacciatore di Orchi I</string>
+    <string name="quest_orc_slayer_1_objective">Sconfiggi 25 Guerrieri Orchi</string>
+    <string name="quest_orc_slayer_2_name">Cacciatore di Orchi II</string>
+    <string name="quest_orc_slayer_2_objective">Sconfiggi 50 Guerrieri Orchi</string>
+    <string name="quest_demon_slayer_1_name">Cacciatore di Demoni Minori I</string>
+    <string name="quest_demon_slayer_1_objective">Sconfiggi 20 Demoni Minori</string>
+    <string name="quest_demon_slayer_2_name">Cacciatore di Demoni Minori II</string>
+    <string name="quest_demon_slayer_2_objective">Sconfiggi 40 Demoni Minori</string>
+    <string name="quest_dragon_slayer_1_name">Cacciatore di Draghi I</string>
+    <string name="quest_dragon_slayer_1_objective">Sconfiggi 10 Draghi Verdi</string>
+    <string name="quest_dragon_slayer_2_name">Cacciatore di Draghi II</string>
+    <string name="quest_dragon_slayer_2_objective">Sconfiggi 25 Draghi Verdi</string>
+
+    <!-- Combat style challenges -->
+    <string name="quest_melee_warrior_1_name">Guerriero da Mischia I</string>
+    <string name="quest_melee_warrior_1_objective">Completa la Caverna di Goblin usando solo armi da mischia</string>
+    <string name="quest_melee_warrior_2_name">Guerriero da Mischia II</string>
+    <string name="quest_melee_warrior_2_objective">Completa l\'Accampamento di Banditi usando solo armi da mischia</string>
+    <string name="quest_melee_warrior_3_name">Guerriero da Mischia III</string>
+    <string name="quest_melee_warrior_3_objective">Completa la Fortezza in Rovina usando solo armi da mischia</string>
+    <string name="quest_ranger_elite_1_name">Arciere Elite I</string>
+    <string name="quest_ranger_elite_1_objective">Completa la Caverna di Goblin usando solo armi a distanza</string>
+    <string name="quest_ranger_elite_2_name">Arciere Elite II</string>
+    <string name="quest_ranger_elite_2_objective">Completa l\'Accampamento di Banditi usando solo armi a distanza</string>
+    <string name="quest_ranger_elite_3_name">Arciere Elite III</string>
+    <string name="quest_ranger_elite_3_objective">Completa la Fortezza in Rovina usando solo armi a distanza</string>
+    <string name="quest_mage_master_1_name">Maestro di Magia I</string>
+    <string name="quest_mage_master_1_objective">Completa la Caverna di Goblin usando solo magia</string>
+    <string name="quest_mage_master_2_name">Maestro di Magia II</string>
+    <string name="quest_mage_master_2_objective">Completa l\'Accampamento di Banditi usando solo magia</string>
+    <string name="quest_mage_master_3_name">Maestro di Magia III</string>
+    <string name="quest_mage_master_3_objective">Completa la Fortezza in Rovina usando solo magia</string>
+
+    <!-- Iron Stomach (no food) challenges -->
+    <string name="quest_iron_stomach_1_name">Stomaco di Ferro I</string>
+    <string name="quest_iron_stomach_1_objective">Completa la Tana di Ragni senza ingerire cibo</string>
+    <string name="quest_iron_stomach_2_name">Stomaco di Ferro II</string>
+    <string name="quest_iron_stomach_2_objective">Completa la Cripta di Non Morti senza ingerire cibo</string>
+    <string name="quest_iron_stomach_3_name">Stomaco di Ferro III</string>
+    <string name="quest_iron_stomach_3_objective">Completa la Fortificazione degli Orchi senza ingerire cibo</string>
+    <string name="quest_iron_stomach_4_name">Stomaco di Ferro IV</string>
+    <string name="quest_iron_stomach_4_objective">Completa il Covo di Draghi senza ingerire cibo</string>
+
+    <!-- Treasure Hunter -->
+    <string name="quest_treasure_hunter_1_name">Cacciatore di Tesori I</string>
+    <string name="quest_treasure_hunter_1_objective">Raccogli 20 Seta di Ragno dai tuoi combattimenti</string>
+    <string name="quest_treasure_hunter_2_name">Cacciatore di Tesori II</string>
+    <string name="quest_treasure_hunter_2_objective">Raccogli 10 Lettere Goblin dai tuoi combattimenti</string>
+    <string name="quest_treasure_hunter_3_name">Cacciatore di Tesori III</string>
+    <string name="quest_treasure_hunter_3_objective">Raccogli 5 Corna di Demone dai tuoi combattimenti</string>
+    <string name="quest_treasure_hunter_4_name">Cacciatore di Tesori IV</string>
+    <string name="quest_treasure_hunter_4_objective">Raccogli 3 Scaglie di Drago dai tuoi combattimenti</string>
+
+    <!-- Firemaking -->
+    <string name="quest_firemaking_1_name">Fuochista I</string>
+    <string name="quest_firemaking_1_objective">Brucia 500 Legni</string>
+    <string name="quest_firemaking_2_name">Fuochista II</string>
+    <string name="quest_firemaking_2_objective">Brucia 750 Legni di Quercia</string>
+    <string name="quest_firemaking_3_name">Fuochista III</string>
+    <string name="quest_firemaking_3_objective">Brucia 1100 Legni di Salice</string>
+    <string name="quest_firemaking_4_name">Fuochista IV</string>
+    <string name="quest_firemaking_4_objective">Brucia 1650 Legni d\'Acero</string>
+    <string name="quest_firemaking_5_name">Fuochista V</string>
+    <string name="quest_firemaking_5_objective">Brucia 2450 Legni di Tasso</string>
+    <string name="quest_firemaking_6_name">Fuochista VI</string>
+    <string name="quest_firemaking_6_objective">Brucia 3650 Legni Magici</string>
+
+    <!-- Runecrafting -->
+    <string name="quest_runecrafting_1_name">Incisione di Rune I</string>
+    <string name="quest_runecrafting_1_objective">Incidi 500 Rune dell\'Aria</string>
+    <string name="quest_runecrafting_2_name">Incisione di Rune II</string>
+    <string name="quest_runecrafting_2_objective">Incidi 750 Rune dell\'Acqua</string>
+    <string name="quest_runecrafting_3_name">Incisione di Rune III</string>
+    <string name="quest_runecrafting_3_objective">Incidi 1100 Rune della Terra</string>
+    <string name="quest_runecrafting_4_name">Incisione di Rune IV</string>
+    <string name="quest_runecrafting_4_objective">Incidi 1650 Rune del Fuoco</string>
+    <string name="quest_runecrafting_5_name">Incisione di Rune V</string>
+    <string name="quest_runecrafting_5_objective">Incidi 2450 Rune della Psiche</string>
+    <string name="quest_runecrafting_6_name">Incisione di Rune VI</string>
+    <string name="quest_runecrafting_6_objective">Incidi 3650 Rune del Caos</string>
+
+    <!-- Herblore -->
+    <string name="quest_herblore_1_name">Erboristeria I</string>
+    <string name="quest_herblore_1_objective">Brew 100 Miscele Attacco</string>
+    <string name="quest_herblore_2_name">Erboristeria II</string>
+    <string name="quest_herblore_2_objective">Mix 250 Pozioni Difesa</string>
+    <string name="quest_herblore_3_name">Erboristeria III</string>
+    <string name="quest_herblore_3_objective">Mix 500 Pozioni Forza</string>
+    <string name="quest_herblore_4_name">Erboristeria IV</string>
+    <string name="quest_herblore_4_objective">Mix 750 Pozioni Attacco a Distanza</string>
+    <string name="quest_herblore_5_name">Erboristeria V</string>
+    <string name="quest_herblore_5_objective">Mix 1000 Pozioni Magia</string>
+    <string name="quest_herblore_6_name">Erboristeria VI</string>
+    <string name="quest_herblore_6_objective">Mix 1500 Pozioni Super Forza</string>
+
+    <!-- Slayer extended -->
+    <string name="quest_combat_kills_7_name">Cacciatore VII</string>
+    <string name="quest_combat_kills_7_objective">Sconfiggi 1000 nemici</string>
+    <string name="quest_combat_kills_8_name">Cacciatore VIII</string>
+    <string name="quest_combat_kills_8_objective">Sconfiggi 1500 nemici</string>
+    <string name="quest_combat_kills_9_name">Cacciatore IX</string>
+    <string name="quest_combat_kills_9_objective">Sconfiggi 2250 nemici</string>
+    <string name="quest_combat_kills_10_name">Cacciatore X</string>
+    <string name="quest_combat_kills_10_objective">Sconfiggi 3400 nemici</string>
+    <string name="quest_combat_kills_11_name">Cacciatore XI</string>
+    <string name="quest_combat_kills_11_objective">Sconfiggi 5100 nemici</string>
+    <string name="quest_combat_kills_12_name">Cacciatore XII</string>
+    <string name="quest_combat_kills_12_objective">Sconfiggi 7650 nemici</string>
+
+    <!-- New monster slayer chains -->
+    <string name="quest_zombie_slayer_1_name">Cacciatore di Zombie I</string>
+    <string name="quest_zombie_slayer_1_objective">Sconfiggi 35 Zombie</string>
+    <string name="quest_zombie_slayer_2_name">Cacciatore di Zombie II</string>
+    <string name="quest_zombie_slayer_2_objective">Sconfiggi 70 Zombie</string>
+    <string name="quest_hellhound_slayer_1_name">Cacciatore di Segugi Infernali I</string>
+    <string name="quest_hellhound_slayer_1_objective">Sconfiggi 25 Segugi Infernali</string>
+    <string name="quest_hellhound_slayer_2_name">Cacciatore di Segugi Infernali II</string>
+    <string name="quest_hellhound_slayer_2_objective">Sconfiggi 50 Segugi Infernali</string>
+    <string name="quest_troll_slayer_1_name">Cacciatore di Troll I</string>
+    <string name="quest_troll_slayer_1_objective">Sconfiggi 20 Troll di Montagna</string>
+    <string name="quest_troll_slayer_2_name">Cacciatore di Troll II</string>
+    <string name="quest_troll_slayer_2_objective">Sconfiggi 40 Troll di Montagna</string>
+    <string name="quest_fire_giant_slayer_1_name">Cacciatore di Giganti di Fuoco I</string>
+    <string name="quest_fire_giant_slayer_1_objective">Sconfiggi 15 Giganti di Fuoco</string>
+    <string name="quest_fire_giant_slayer_2_name">Cacciatore di Giganti di Fuoco II</string>
+    <string name="quest_fire_giant_slayer_2_objective">Sconfiggi 30 Giganti di Fuoco</string>
+    <string name="quest_ancient_guardian_slayer_1_name">Cacciatore di Antichi Guardiani I</string>
+    <string name="quest_ancient_guardian_slayer_1_objective">Sconfiggi 10 Antichi Guardiani</string>
+    <string name="quest_ancient_guardian_slayer_2_name">Cacciatore di Antichi Guardiani II</string>
+    <string name="quest_ancient_guardian_slayer_2_objective">Sconfiggi 20 Antichi Guardiani</string>
+    <string name="quest_lich_slayer_1_name">Cacciatore di Lich I</string>
+    <string name="quest_lich_slayer_1_objective">Sconfiggi 10 Lich</string>
+    <string name="quest_lich_slayer_2_name">Cacciatore di Lich II</string>
+    <string name="quest_lich_slayer_2_objective">Sconfiggi 20 Lich</string>
+
+    <!-- Dungeon exploration extended -->
+    <string name="quest_dungeon_imp_1_name">Esploratore di Dungeon: Caverna di Imp</string>
+    <string name="quest_dungeon_imp_1_objective">Completa la Caverna di Imp 5 volte</string>
+    <string name="quest_dungeon_infernal_1_name">Dungeon Master IV</string>
+    <string name="quest_dungeon_infernal_1_objective">Completa il Forte Infernale 5 volte</string>
+    <string name="quest_dungeon_ancient_1_name">Dungeon Master V</string>
+    <string name="quest_dungeon_ancient_1_objective">Completa l\'Antico Tempio 5 volte</string>
+
+    <!-- Boss extended -->
+    <string name="quest_kbd_slayer_4_name">Cacciatore di Draghi Neri Regali IV</string>
+    <string name="quest_kbd_slayer_4_objective">Sconfiggi il Drago Nero Regale 50 volte</string>
+    <string name="quest_demon_slayer_4_name">Cacciatore di Demoni IV</string>
+    <string name="quest_demon_slayer_4_objective">Sconfiggi il Signore dei Demoni 50 volte</string>
+    <string name="quest_kraken_killer_4_name">Cacciatore di Kraken IV</string>
+    <string name="quest_kraken_killer_4_objective">Sconfiggi il Kraken 50 volte</string>
+    <string name="quest_balrog_bane_4_name">Cacciatore di Balrog IV</string>
+    <string name="quest_balrog_bane_4_objective">Sconfiggi il Balrog 50 volte</string>
+
+    <!-- Combat style challenges extended -->
+    <string name="quest_melee_warrior_4_name">Guerriero da Mischia IV</string>
+    <string name="quest_melee_warrior_4_objective">Completa la Fortificazione degli Orchi usando solo armi da mischia</string>
+    <string name="quest_melee_warrior_5_name">Guerriero da Mischia V</string>
+    <string name="quest_melee_warrior_5_objective">Completa il Covo di Draghi usando solo armi da mischia</string>
+    <string name="quest_ranger_elite_4_name">Arciere Elite IV</string>
+    <string name="quest_ranger_elite_4_objective">Completa la Fortificazione degli Orchi usando solo armi a distanza</string>
+    <string name="quest_ranger_elite_5_name">Arciere Elite V</string>
+    <string name="quest_ranger_elite_5_objective">Completa il Covo di Draghi usando solo armi a distanza</string>
+    <string name="quest_mage_master_4_name">Maestro di Magia IV</string>
+    <string name="quest_mage_master_4_objective">Completa la Fortificazione degli Orchi usando solo magia</string>
+    <string name="quest_mage_master_5_name">Maestro di Magia V</string>
+    <string name="quest_mage_master_5_objective">Completa il Covo di Draghi usando solo magia</string>
+
+    <!-- Iron Stomach extended -->
+    <string name="quest_iron_stomach_5_name">Stomaco di Ferro V</string>
+    <string name="quest_iron_stomach_5_objective">Completa il Forte Infernale senza ingerire cibo</string>
+    <string name="quest_iron_stomach_6_name">Stomaco di Ferro VI</string>
+    <string name="quest_iron_stomach_6_objective">Completa l\'Antico Tempio senza ingerire cibo</string>
+
+    <!-- Treasure Hunter extended -->
+    <string name="quest_treasure_hunter_5_name">Cacciatore di Tesori V</string>
+    <string name="quest_treasure_hunter_5_objective">Raccogli 10 Zanne di Segugio Infernale dai tuoi combattimenti</string>
+    <string name="quest_treasure_hunter_6_name">Cacciatore di Tesori VI</string>
+    <string name="quest_treasure_hunter_6_objective">Raccogli 15 Ossa di Troll dai tuoi combattimenti</string>
+</resources>
