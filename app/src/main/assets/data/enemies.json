@@ -1176,5 +1176,61 @@
     "always_drops": [
       {"item": "bones", "quantity": 1}
     ]
+  },
+  "cutpurse": {
+    "name": "cutpurse",
+    "display_name": "Cutpurse",
+    "hp": 48,
+    "combat_stats": {
+      "attack_level": 9,
+      "strength_level": 12,
+      "defense_level": 6,
+      "attack_bonus": 14,
+      "strength_bonus": 18
+    },
+    "defensive_stats": {
+      "attack_defense": 12,
+      "strength_defense": 12,
+      "ranged_defense": 10,
+      "magic_defense": 5
+    },
+    "xp_drops": {
+      "combat": 200
+    },
+    "drop_table": [
+      {"item": "coins", "chance": 0.80, "quantity_min": 25, "quantity_max": 60},
+      {"item": "iron_dagger", "chance": 0.18, "quantity_min": 1, "quantity_max": 1},
+      {"item": "lockpick", "chance": 0.28, "quantity_min": 1, "quantity_max": 2}
+    ],
+    "always_drops": [
+      {"item": "bones", "quantity": 1}
+    ]
+  },
+  "arcane_construct": {
+    "name": "arcane_construct",
+    "display_name": "Arcane Construct",
+    "hp": 115,
+    "combat_stats": {
+      "attack_level": 25,
+      "strength_level": 20,
+      "defense_level": 30,
+      "attack_bonus": 52,
+      "strength_bonus": 44
+    },
+    "defensive_stats": {
+      "attack_defense": 60,
+      "strength_defense": 55,
+      "ranged_defense": 50,
+      "magic_defense": 45
+    },
+    "xp_drops": {
+      "combat": 500
+    },
+    "drop_table": [
+      {"item": "coins", "chance": 0.55, "quantity_min": 80, "quantity_max": 250},
+      {"item": "chaos_rune", "chance": 0.40, "quantity_min": 4, "quantity_max": 10},
+      {"item": "death_rune", "chance": 0.25, "quantity_min": 2, "quantity_max": 5}
+    ],
+    "always_drops": []
   }
 }

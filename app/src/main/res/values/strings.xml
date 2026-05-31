@@ -278,6 +278,9 @@
     <string name="settings_tutorial_title">Tutorial</string>
     <string name="settings_tutorial_desc">Show the introduction again</string>
     <string name="settings_reopen">Reopen</string>
+    <string name="settings_changelog_title">What\'s New</string>
+    <string name="settings_changelog_desc">View the latest update changes</string>
+    <string name="settings_changelog_btn">View</string>
     <string name="settings_foss_desc">Idle Fantasy is free and open source software.</string>
     <string name="settings_reset_title">Reset Progression</string>
     <string name="settings_reset_desc">Erase all skills, items, quests, and coins</string>

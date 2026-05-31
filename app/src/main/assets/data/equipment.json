@@ -2995,5 +2995,33 @@
     "requirements": {
       "defense": 45
     }
+  },
+  "shadow_dagger": {
+    "name": "shadow_dagger",
+    "display_name": "Shadow Dagger",
+    "slot": "weapon",
+    "combat_style": "strength",
+    "description": "A black-bladed dagger recovered from the Shadow Den. Wickedly sharp and perfectly balanced for close work.",
+    "attack_bonus": 16,
+    "strength_bonus": 24,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 15
+    }
+  },
+  "arcane_staff": {
+    "name": "arcane_staff",
+    "display_name": "Arcane Staff",
+    "slot": "weapon",
+    "combat_style": "magic",
+    "description": "A staff recovered from the Arcane Ruins, still humming with contained magical energy from the catastrophe that destroyed the spire above.",
+    "attack_bonus": 38,
+    "strength_bonus": 0,
+    "defense_bonus": 12,
+    "magic_attack_bonus": 52,
+    "magic_damage_bonus": 15,
+    "requirements": {
+      "magic": 55
+    }
   }
 }

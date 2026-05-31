@@ -71,7 +71,7 @@ class ExpeditionsViewModel @Inject constructor(
 
         val agilityLevel = levels[Skills.AGILITY] ?: 1
 
-        val SKILL_ORDER = listOf(Skills.MINING, Skills.WOODCUTTING, Skills.FISHING)
+        val SKILL_ORDER = listOf(Skills.MINING, Skills.WOODCUTTING, Skills.FISHING, Skills.AGILITY)
         val dungeonsBySkill = SKILL_ORDER.associateWith { skill ->
             gameData.skillingDungeons.entries
                 .filter { (_, d) -> d.skill == skill }

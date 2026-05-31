@@ -277,6 +277,9 @@
     <string name="settings_tutorial_title">Einleitung</string>
     <string name="settings_tutorial_desc">Die Einleitung erneut anzeigen</string>
     <string name="settings_reopen">Erneut öffnen</string>
+    <string name="settings_changelog_title">What\'s New</string>
+    <string name="settings_changelog_desc">View the latest update changes</string>
+    <string name="settings_changelog_btn">View</string>
     <string name="settings_foss_desc">Idle Fantasy ist freie und quelloffene Software.</string>
     <string name="settings_reset_title">Fortschritt zurücksetzen</string>
     <string name="settings_reset_desc">Alle Fähigkeiten, Gegenstände, Missionen und Münzen löschen</string>

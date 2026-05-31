@@ -197,7 +197,7 @@
     "target": "swordfish",
     "amount": 20,
     "description": "Cook 20 swordfish.",
-    "level_required": 45
+    "level_required": 50
   },
   {
     "id": "daily_kill_goblin",

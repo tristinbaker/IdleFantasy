@@ -16,6 +16,7 @@ import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.QuestRepository
 import com.fantasyidler.repository.QueuedSessionStarter
 import com.fantasyidler.repository.SessionRepository
+import com.fantasyidler.repository.SlayerRepository
 import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.repository.WorkerQueuedSessionStarter
 import com.fantasyidler.simulator.SkillSimulator
@@ -100,6 +101,7 @@ class HomeViewModel @Inject constructor(
     private val guildRepo: GuildRepository,
     private val queuedSessionStarter: QueuedSessionStarter,
     private val workerStarter: WorkerQueuedSessionStarter,
+    private val slayerRepo: SlayerRepository,
     private val json: Json,
 ) : ViewModel() {
 
@@ -256,6 +258,11 @@ class HomeViewModel @Inject constructor(
                         val coins = (its.remove("coins")?.toLong() ?: 0L).let { if (died) maxOf(0L, (it * 0.1).toLong()) else it }
                         val pets  = its.filterKeys { it in petIds }
                         val loot  = its.filterKeys { it !in petIds }
+                        if (!died) {
+                            var slayerXp = 0L
+                            for ((enemy, k) in kills) slayerXp += slayerRepo.recordKills(enemy, k)
+                            if (slayerXp > 0L) xpPerSkill[Skills.SLAYER] = (xpPerSkill[Skills.SLAYER] ?: 0L) + slayerXp
+                        }
                         awardedCapes += playerRepo.applyMultiSkillResults(xpPerSkill, loot, coins)
                         for ((id, _) in pets) {
                             val pd = gameData.pets[id] ?: continue
@@ -314,7 +321,7 @@ class HomeViewModel @Inject constructor(
                         }
                         if (notesFound > 0 && dungeonData != null) {
                             val oldCount = currentFlags.skillingDungeonNotes[session.activityKey] ?: 0
-                            val newCount = oldCount + notesFound
+                            val newCount = minOf(oldCount + notesFound, dungeonData.noteThreshold)
                             val newNotes = currentFlags.skillingDungeonNotes.toMutableMap()
                             newNotes[session.activityKey] = newCount
                             val newUnlocked = currentFlags.unlockedDungeons.toMutableList()

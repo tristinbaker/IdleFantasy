@@ -76,7 +76,7 @@ fun ExpeditionsScreen(
             modifier = Modifier.weight(1f).padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            val skillOrder = listOf("mining", "woodcutting", "fishing")
+            val skillOrder = listOf("mining", "woodcutting", "fishing", "agility")
             skillOrder.forEach { skill ->
                 val dungeons = state.dungeonsBySkill[skill]
                 if (!dungeons.isNullOrEmpty()) {

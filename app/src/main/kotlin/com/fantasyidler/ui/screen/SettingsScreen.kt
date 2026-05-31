@@ -10,8 +10,10 @@ import androidx.core.os.LocaleListCompat
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
@@ -78,8 +80,9 @@ fun SettingsScreen(
     val backupFolderUri  by viewModel.backupFolderUri.collectAsState()
     val backupFrequency  by viewModel.backupFrequency.collectAsState()
     var notificationsEnabled by remember { mutableStateOf(false) }
-    var showResetConfirm1 by remember { mutableStateOf(false) }
-    var showResetConfirm2 by remember { mutableStateOf(false) }
+    var showResetConfirm1    by remember { mutableStateOf(false) }
+    var showResetConfirm2    by remember { mutableStateOf(false) }
+    var showChangelogDialog  by remember { mutableStateOf(false) }
 
     val folderLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.OpenDocumentTree()
@@ -118,6 +121,55 @@ fun SettingsScreen(
 
     LaunchedEffect(Unit) {
         notificationsEnabled = NotificationManagerCompat.from(context).areNotificationsEnabled()
+    }
+
+    if (showChangelogDialog) {
+        val changelogText = remember {
+            runCatching { context.assets.open("changelog.txt").bufferedReader().readText().trim() }.getOrElse { "" }
+        }
+        if (changelogText.isNotEmpty()) {
+            val sections = remember(changelogText) {
+                val versionRegex = Regex("^v\\d+\\..*")
+                val result = mutableListOf<Pair<String, String>>()
+                var currentVersion = ""
+                val bodyLines = mutableListOf<String>()
+                for (line in changelogText.lines()) {
+                    if (line.matches(versionRegex)) {
+                        if (currentVersion.isNotEmpty()) result += currentVersion to bodyLines.joinToString("\n").trim()
+                        currentVersion = line
+                        bodyLines.clear()
+                    } else {
+                        bodyLines += line
+                    }
+                }
+                if (currentVersion.isNotEmpty()) result += currentVersion to bodyLines.joinToString("\n").trim()
+                result
+            }
+            AlertDialog(
+                onDismissRequest = { showChangelogDialog = false },
+                title = { Text(stringResource(R.string.home_whats_new)) },
+                text = {
+                    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                        sections.forEachIndexed { i, (version, body) ->
+                            if (i > 0) Spacer(Modifier.height(12.dp))
+                            val isCurrent = version == "v${BuildConfig.VERSION_NAME}"
+                            Text(
+                                text = if (isCurrent) "$version (current)" else version,
+                                style = MaterialTheme.typography.bodyMedium,
+                                fontWeight = FontWeight.Bold,
+                            )
+                            HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
+                            Text(body, style = MaterialTheme.typography.bodyMedium)
+                        }
+                    }
+                },
+                confirmButton = {
+                    TextButton(onClick = { showChangelogDialog = false }) {
+                        Text(stringResource(R.string.home_got_it))
+                    }
+                },
+            )
+        }
     }
 
     if (showResetConfirm1) {
@@ -295,6 +347,16 @@ fun SettingsScreen(
                 trailing = {
                     OutlinedButton(onClick = { onReopenTutorial(); onBack() }) {
                         Text(stringResource(R.string.settings_reopen))
+                    }
+                }
+            )
+
+            SettingsRow(
+                title    = stringResource(R.string.settings_changelog_title),
+                subtitle = stringResource(R.string.settings_changelog_desc),
+                trailing = {
+                    OutlinedButton(onClick = { showChangelogDialog = true }) {
+                        Text(stringResource(R.string.settings_changelog_btn))
                     }
                 }
             )

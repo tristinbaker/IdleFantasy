@@ -1,0 +1,60 @@
+{
+  "name": "shattered_spire",
+  "display_name": "Shattered Spire",
+  "description": "The remains of a wizard's tower reduced to a field of rubble and warped stone. Magical energy still crackles through the debris. Only the most agile can navigate the unstable wreckage without being buried.",
+  "skill": "agility",
+  "level_required": 40,
+  "requires_previous_unlock": "shadow_den",
+  "xp_ranges": {
+    "40": {"min": 68, "max": 98},
+    "45": {"min": 82, "max": 119},
+    "50": {"min": 99, "max": 143},
+    "55": {"min": 118, "max": 170},
+    "60": {"min": 140, "max": 200},
+    "65": {"min": 165, "max": 238},
+    "70": {"min": 196, "max": 280},
+    "75": {"min": 228, "max": 327},
+    "80": {"min": 268, "max": 385},
+    "85": {"min": 312, "max": 447},
+    "90": {"min": 362, "max": 517},
+    "95": {"min": 415, "max": 595}
+  },
+  "drop_tables": {
+    "40": [
+      {"item": "chaos_rune", "chance": 0.55},
+      {"item": "ruby", "chance": 0.30},
+      {"item": "diamond", "chance": 0.15}
+    ],
+    "50": [
+      {"item": "chaos_rune", "chance": 0.45},
+      {"item": "ruby", "chance": 0.35},
+      {"item": "diamond", "chance": 0.20}
+    ],
+    "60": [
+      {"item": "chaos_rune", "chance": 0.30},
+      {"item": "ruby", "chance": 0.40},
+      {"item": "diamond", "chance": 0.30}
+    ],
+    "70": [
+      {"item": "death_rune", "chance": 0.30},
+      {"item": "ruby", "chance": 0.35},
+      {"item": "diamond", "chance": 0.35}
+    ],
+    "85": [
+      {"item": "death_rune", "chance": 0.25},
+      {"item": "ruby", "chance": 0.25},
+      {"item": "diamond", "chance": 0.50}
+    ]
+  },
+  "note_chance_per_frame": 0.003,
+  "note_threshold": 5,
+  "note_texts": [
+    "Charred stone and melted glass for a hundred metres in every direction. Whatever happened here was catastrophic.",
+    "A torn page from a research journal: 'The convergence experiment exceeds all projections. We must press on.'",
+    "Arcane matrices etched into the surviving wall sections — a containment circle, poorly designed, clearly overstressed.",
+    "A passage has been blasted open downward. Constructs still move in the dark below, following old instructions.",
+    "The passage descends into intact chambers beneath the rubble. The Arcane Ruins still function, after a fashion."
+  ],
+  "unlock_dungeon": "arcane_ruins",
+  "unlock_message": "The Arcane Ruins lie intact beneath the rubble — enter and face the constructs within."
+}

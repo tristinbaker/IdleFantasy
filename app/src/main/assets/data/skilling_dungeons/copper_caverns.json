@@ -1,7 +1,7 @@
 {
   "name": "copper_caverns",
   "display_name": "Copper Caverns",
-  "description": "A network of copper-rich tunnels beneath the foothills. The miners who worked here left suddenly, and the lower shafts were sealed for reasons no one will speak of.",
+  "description": "A long-abandoned mine beneath the foothills. Its copper veins were all but exhausted before the miners departed, though iron, coal, and stranger ores were left behind in the deeper shafts.",
   "skill": "mining",
   "level_required": 1,
   "xp_ranges": {
@@ -35,17 +35,20 @@
       {"item": "coal", "chance": 0.10}
     ],
     "20": [
-      {"item": "iron_ore", "chance": 0.45},
-      {"item": "coal", "chance": 0.55}
+      {"item": "copper_ore", "chance": 0.10},
+      {"item": "iron_ore", "chance": 0.40},
+      {"item": "coal", "chance": 0.50}
     ],
     "30": [
+      {"item": "copper_ore", "chance": 0.05},
       {"item": "iron_ore", "chance": 0.25},
-      {"item": "coal", "chance": 0.60},
+      {"item": "coal", "chance": 0.55},
       {"item": "mithril_ore", "chance": 0.15}
     ],
     "40": [
+      {"item": "copper_ore", "chance": 0.05},
       {"item": "iron_ore", "chance": 0.15},
-      {"item": "coal", "chance": 0.55},
+      {"item": "coal", "chance": 0.50},
       {"item": "mithril_ore", "chance": 0.30}
     ]
   },

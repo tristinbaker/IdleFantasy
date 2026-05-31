@@ -1779,6 +1779,14 @@ private fun CombatResultSheet(
                     }
                 }
             }
+            if (result.boostWasActive) {
+                Text(
+                    text  = stringResource(R.string.home_xp_boost_was_active),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = GoldPrimary,
+                    modifier = Modifier.padding(top = 2.dp),
+                )
+            }
             Spacer(Modifier.height(12.dp))
         }
 

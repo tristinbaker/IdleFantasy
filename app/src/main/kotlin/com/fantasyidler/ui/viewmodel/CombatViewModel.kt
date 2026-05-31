@@ -50,6 +50,7 @@ data class CombatSessionResult(
     val foodConsumed: Map<String, Int> = emptyMap(),
     val xpBlessingBonusBySkill: Map<String, Long> = emptyMap(),
     val coinBlessingBonus: Long = 0L,
+    val boostWasActive: Boolean = false,
 )
 
 data class CombatUiState(
@@ -533,6 +534,8 @@ class CombatViewModel @Inject constructor(
         val bossFlags         = playerRepo.getFlags()
         val blessingXpMult    = ChurchRepository.xpMultiplier(bossFlags)
         val blessingCoinMult  = ChurchRepository.coinMultiplier(bossFlags)
+        val boostActive       = bossFlags.xpBoostExpiresAt > System.currentTimeMillis()
+        val boostMult         = if (boostActive) 2L else 1L
         val capes = playerRepo.applyMultiSkillResults(last.xpBySkill, loot, coinsGained)
         if (allFoodConsumed.isNotEmpty()) playerRepo.consumeItems(allFoodConsumed)
         for ((petId, _) in petDrops) {
@@ -548,7 +551,8 @@ class CombatViewModel @Inject constructor(
             playerRepo.recordDailyKills(mapOf(session.activityKey to 1))
             guildRepo.recordGuildCombat(mapOf(session.activityKey to 1), detectCombatStyle(last.xpBySkill))
         }
-        val xpBlessingBonusBySkill = last.xpBySkill
+        val xpDisplayBySkill = last.xpBySkill.mapValues { (_, xp) -> xp * boostMult }
+        val xpBlessingBonusBySkill = xpDisplayBySkill
             .mapValues { (_, xp) -> (xp.toDouble() * (blessingXpMult - 1)).toLong() }
             .filter { (_, bonus) -> bonus > 0 }
         val coinBlessingBonus = (coinsGained.toDouble() * (blessingCoinMult - 1)).toLong()
@@ -558,13 +562,14 @@ class CombatViewModel @Inject constructor(
             it.copy(
                 combatResult = CombatSessionResult(
                     dungeonDisplayName     = boss?.let { b -> "${b.emoji} ${b.displayName}" } ?: session.activityKey,
-                    xpPerSkill             = last.xpBySkill,
+                    xpPerSkill             = xpDisplayBySkill,
                     itemsGained            = itemsDisplay,
                     coinsGained            = coinsGained,
                     won                    = won,
                     killsByEnemy           = if (won) mapOf(session.activityKey to 1) else emptyMap(),
                     xpBlessingBonusBySkill = xpBlessingBonusBySkill,
                     coinBlessingBonus      = coinBlessingBonus,
+                    boostWasActive         = boostActive,
                 ),
                 snackbarMessage = buildCapeMessage(capes),
             )
@@ -612,6 +617,8 @@ class CombatViewModel @Inject constructor(
         val dungeonFlags      = playerRepo.getFlags()
         val blessingXpMult    = ChurchRepository.xpMultiplier(dungeonFlags)
         val blessingCoinMult  = ChurchRepository.coinMultiplier(dungeonFlags)
+        val boostActive       = dungeonFlags.xpBoostExpiresAt > System.currentTimeMillis()
+        val boostMult         = if (boostActive) 2L else 1L
         val capes = playerRepo.applyMultiSkillResults(totalXpPerSkill, allItems, coinsGained)
         if (allFoodConsumed.isNotEmpty())   playerRepo.consumeItems(allFoodConsumed)
         if (allArrowsConsumed.isNotEmpty()) playerRepo.consumeItems(allArrowsConsumed)
@@ -630,7 +637,8 @@ class CombatViewModel @Inject constructor(
             }
             playerRepo.incrementDungeonRun(session.activityKey)
         }
-        val xpBlessingBonusBySkill = totalXpPerSkill
+        val xpDisplayBySkill = totalXpPerSkill.mapValues { (_, xp) -> xp * boostMult }
+        val xpBlessingBonusBySkill = xpDisplayBySkill
             .mapValues { (_, xp) -> (xp.toDouble() * (blessingXpMult - 1)).toLong() }
             .filter { (_, bonus) -> bonus > 0 }
         val coinBlessingBonus = (coinsGained.toDouble() * (blessingCoinMult - 1)).toLong()
@@ -640,7 +648,7 @@ class CombatViewModel @Inject constructor(
             it.copy(
                 combatResult = CombatSessionResult(
                     dungeonDisplayName     = dungeon?.displayName ?: session.activityKey,
-                    xpPerSkill             = totalXpPerSkill,
+                    xpPerSkill             = xpDisplayBySkill,
                     itemsGained            = allItems,
                     coinsGained            = coinsGained,
                     won                    = !playerDied,
@@ -648,6 +656,7 @@ class CombatViewModel @Inject constructor(
                     foodConsumed           = allFoodConsumed,
                     xpBlessingBonusBySkill = xpBlessingBonusBySkill,
                     coinBlessingBonus      = coinBlessingBonus,
+                    boostWasActive         = boostActive,
                 ),
                 snackbarMessage = buildCapeMessage(capes),
             )

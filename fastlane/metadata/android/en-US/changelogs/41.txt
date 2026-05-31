@@ -1,0 +1,5 @@
+• New: Agility expeditions added -- explore the Crumbling Watchtower (level 1) and Shattered Spire (level 40) to uncover lore and unlock two new combat dungeons: the Shadow Den and the Arcane Ruins
+• Fix: Slayer task kill progress now correctly counts when collecting a dungeon session from the Home screen
+• Fix: Daily quest "Cook 20 Swordfish" now requires cooking level 50, matching the actual recipe requirement
+• Fix: Copper Caverns expedition now always has a chance to yield copper ore regardless of mining level; updated description to reflect the mine's depleted state
+• Fix: Expedition lore note progress could exceed the maximum (e.g. 6/5) if two notes dropped in the same session
