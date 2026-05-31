@@ -353,62 +353,62 @@
     <string name="item_runite_fishing_rod_desc">Die beste Angelrute, die es gibt.</string>
 
     <!-- ===== Arrows ===== -->
-    <string name="item_bronze_arrow_name">Bronze Arrows</string>
-    <string name="item_bronze_arrow_desc">Basic arrows for ranged combat.</string>
-    <string name="item_iron_arrow_name">Iron Arrows</string>
-    <string name="item_iron_arrow_desc">Iron arrows for ranged combat.</string>
-    <string name="item_steel_arrow_name">Steel Arrows</string>
-    <string name="item_steel_arrow_desc">Steel arrows for ranged combat.</string>
-    <string name="item_mithril_arrow_name">Mithril Arrows</string>
-    <string name="item_mithril_arrow_desc">Mithril arrows for ranged combat.</string>
-    <string name="item_adamantite_arrow_name">Adamantite Arrows</string>
-    <string name="item_adamantite_arrow_desc">Adamantite arrows for ranged combat.</string>
-    <string name="item_runite_arrow_name">Runite Arrows</string>
-    <string name="item_runite_arrow_desc">The finest arrows available.</string>
+    <string name="item_bronze_arrow_name">Bronzepfeile</string>
+    <string name="item_bronze_arrow_desc">Grundlegende Pfeile für den Fernkampf.</string>
+    <string name="item_iron_arrow_name">Eisenpfeile</string>
+    <string name="item_iron_arrow_desc">Eisenpfeile für den Fernkampf.</string>
+    <string name="item_steel_arrow_name">Stahlpfeile</string>
+    <string name="item_steel_arrow_desc">Stahlpfeile für den Fernkampf.</string>
+    <string name="item_mithril_arrow_name">Mithrilpfeile</string>
+    <string name="item_mithril_arrow_desc">Mithrilpfeile für den Fernkampf.</string>
+    <string name="item_adamantite_arrow_name">Adamantitpfeile</string>
+    <string name="item_adamantite_arrow_desc">Adamantitpfeile für den Fernkampf.</string>
+    <string name="item_runite_arrow_name">Runitenpfeile</string>
+    <string name="item_runite_arrow_desc">Die besten Pfeile, die es gibt.</string>
 
     <!-- Arrow components -->
-    <string name="item_arrow_shaft_name">Arrow Shafts</string>
-    <string name="item_arrow_shaft_desc">Wooden shafts used to fletch arrows.</string>
-    <string name="item_bronze_arrow_tips_name">Bronze Arrow Tips</string>
-    <string name="item_bronze_arrow_tips_desc">Bronze tips for fletching bronze arrows.</string>
-    <string name="item_iron_arrow_tips_name">Iron Arrow Tips</string>
-    <string name="item_iron_arrow_tips_desc">Iron tips for fletching iron arrows.</string>
-    <string name="item_steel_arrow_tips_name">Steel Arrow Tips</string>
-    <string name="item_steel_arrow_tips_desc">Steel tips for fletching steel arrows.</string>
-    <string name="item_mithril_arrow_tips_name">Mithril Arrow Tips</string>
-    <string name="item_mithril_arrow_tips_desc">Mithril tips for fletching mithril arrows.</string>
-    <string name="item_adamantite_arrow_tips_name">Adamantite Arrow Tips</string>
-    <string name="item_adamantite_arrow_tips_desc">Adamantite tips for fletching adamantite arrows.</string>
-    <string name="item_runite_arrow_tips_name">Runite Arrow Tips</string>
-    <string name="item_runite_arrow_tips_desc">Runite tips for fletching runite arrows.</string>
+    <string name="item_arrow_shaft_name">Pfeilschäfte</string>
+    <string name="item_arrow_shaft_desc">Holzschäfte, die zum Bespannen von Pfeilen verwendet werden.</string>
+    <string name="item_bronze_arrow_tips_name">Pfeilspitzen aus Bronze</string>
+    <string name="item_bronze_arrow_tips_desc">Bronzespitzen zum Bestücken von Bronzepfeilen.</string>
+    <string name="item_iron_arrow_tips_name">Eisenpfeilspitzen</string>
+    <string name="item_iron_arrow_tips_desc">Eisenspitzen zum Bestücken von Eisenpfeilen.</string>
+    <string name="item_steel_arrow_tips_name">Stahlpfeilspitzen</string>
+    <string name="item_steel_arrow_tips_desc">Stahlspitzen zum Bestücken von Stahlpfeilen.</string>
+    <string name="item_mithril_arrow_tips_name">Mithrilpfeilspitzen</string>
+    <string name="item_mithril_arrow_tips_desc">Mithrilspitzen zum Bestücken von Mithrilpfeilen</string>
+    <string name="item_adamantite_arrow_tips_name">Adamantitpfeilspitzen</string>
+    <string name="item_adamantite_arrow_tips_desc">Adamantitspitzen zum Bestücken von Adamantitpfeilen</string>
+    <string name="item_runite_arrow_tips_name">Runitepfeilspitzen</string>
+    <string name="item_runite_arrow_tips_desc">Runitespitzen zum Bestücken von Runitepfeilen</string>
 
     <!-- ===== Jewellery — plain ===== -->
-    <string name="item_silver_ring_name">Silver Ring</string>
-    <string name="item_silver_ring_desc">A plain silver ring.</string>
-    <string name="item_silver_necklace_name">Silver Necklace</string>
-    <string name="item_silver_necklace_desc">A plain silver necklace.</string>
-    <string name="item_gold_ring_name">Gold Ring</string>
-    <string name="item_gold_ring_desc">A plain gold ring.</string>
-    <string name="item_gold_necklace_name">Gold Necklace</string>
-    <string name="item_gold_necklace_desc">A plain gold necklace.</string>
-    <string name="item_platinum_ring_name">Platinum Ring</string>
-    <string name="item_platinum_ring_desc">A plain platinum ring.</string>
-    <string name="item_platinum_necklace_name">Platinum Necklace</string>
-    <string name="item_platinum_necklace_desc">A plain platinum necklace.</string>
+    <string name="item_silver_ring_name">Silberring</string>
+    <string name="item_silver_ring_desc">Ein schlichter Silberring.</string>
+    <string name="item_silver_necklace_name">Silberkette</string>
+    <string name="item_silver_necklace_desc">Eine schlichte Silberkette.</string>
+    <string name="item_gold_ring_name">Goldring</string>
+    <string name="item_gold_ring_desc">Ein schlichter Goldring.</string>
+    <string name="item_gold_necklace_name">Goldkette</string>
+    <string name="item_gold_necklace_desc">Eine schlichte Goldkette.</string>
+    <string name="item_platinum_ring_name">Platinring</string>
+    <string name="item_platinum_ring_desc">Ein schlichter Platinring.</string>
+    <string name="item_platinum_necklace_name">Platinhalskette</string>
+    <string name="item_platinum_necklace_desc">Eine schlichte Platinhalskette.</string>
 
     <!-- Jewellery — sapphire -->
-    <string name="item_silver_sapphire_ring_name">Silver Sapphire Ring</string>
-    <string name="item_silver_sapphire_ring_desc">A silver ring set with a sapphire.</string>
-    <string name="item_silver_sapphire_necklace_name">Silver Sapphire Necklace</string>
-    <string name="item_silver_sapphire_necklace_desc">A silver necklace set with a sapphire.</string>
-    <string name="item_gold_sapphire_ring_name">Gold Sapphire Ring</string>
-    <string name="item_gold_sapphire_ring_desc">A gold ring set with a sapphire.</string>
-    <string name="item_gold_sapphire_necklace_name">Gold Sapphire Necklace</string>
-    <string name="item_gold_sapphire_necklace_desc">A gold necklace set with a sapphire.</string>
-    <string name="item_platinum_sapphire_ring_name">Platinum Sapphire Ring</string>
-    <string name="item_platinum_sapphire_ring_desc">A platinum ring set with a sapphire.</string>
-    <string name="item_platinum_sapphire_necklace_name">Platinum Sapphire Necklace</string>
-    <string name="item_platinum_sapphire_necklace_desc">A platinum necklace set with a sapphire.</string>
+    <string name="item_silver_sapphire_ring_name">Silber-Saphir-Ring</string>
+    <string name="item_silver_sapphire_ring_desc">Ein Silberring mit einem Saphir.</string>
+    <string name="item_silver_sapphire_necklace_name">Silber-Saphir-Halskette</string>
+    <string name="item_silver_sapphire_necklace_desc">Eine silberne Halskette mit einem Saphir.</string>
+    <string name="item_gold_sapphire_ring_name">Gold-Saphir-Ring</string>
+    <string name="item_gold_sapphire_ring_desc">Ein mit einem Saphir besetzter Goldring.</string>
+    <string name="item_gold_sapphire_necklace_name">Gold-Saphir-Halskette</string>
+    <string name="item_gold_sapphire_necklace_desc">Eine goldene Halskette mit einem Saphir.</string>
+    <string name="item_platinum_sapphire_ring_name">Platin-Saphir-Ring</string>
+    <string name="item_platinum_sapphire_ring_desc">Ein Platinring mit einem Saphir.</string>
+    <string name="item_platinum_sapphire_necklace_name">Platin-Saphir-Halskette</string>
+    <string name="item_platinum_sapphire_necklace_desc">Eine Platin-Halskette mit einem Saphir.</string>
 
     <!-- Jewellery — emerald -->
     <string name="item_gold_emerald_ring_name">Gold Emerald Ring</string>
