@@ -9,13 +9,18 @@ import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.SessionFrame
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.Skills
+import com.fantasyidler.repository.ChurchRepository
 import com.fantasyidler.repository.GameDataRepository
+import com.fantasyidler.repository.GuildRepository
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.QuestRepository
 import com.fantasyidler.repository.QueuedSessionStarter
 import com.fantasyidler.repository.SessionRepository
+import com.fantasyidler.repository.SlayerRepository
+import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.repository.WorkerQueuedSessionStarter
 import com.fantasyidler.simulator.SkillSimulator
+import kotlin.math.roundToInt
 import com.fantasyidler.util.formatXp
 import com.fantasyidler.util.toTitleCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -47,10 +52,20 @@ data class SessionSummary(
     val killLines: List<Pair<String, String>> = emptyList(),
     /** Food display name → "×qty" label — combat only */
     val foodConsumedLines: List<Pair<String, String>> = emptyList(),
-    /** Bone type display name + count — prayer only */
-    val boneBuriedLabel: String = "",
+    /** Bone type display name + count per type — prayer only */
+    val boneBuriedLines: List<Pair<String, String>> = emptyList(),
     /** Whether the 2× XP boost was active during this session. */
     val boostWasActive: Boolean = false,
+    /** Per-row XP bonus from active prayer blessing — parallel to xpLines, 0 if no blessing. */
+    val xpLineBonuses: List<Long> = emptyList(),
+    /** XP bonus for the single-skill totalXpLabel case — 0 if no blessing. */
+    val totalXpLabelBonus: Long = 0L,
+    /** Extra coins granted by active prayer blessing — 0 if no blessing. */
+    val coinBlessingBonus: Long = 0L,
+    /** Expedition: highlighted lore note lines found during the session. */
+    val noteLines: List<String> = emptyList(),
+    /** Expedition: set when this collect triggered a new combat dungeon unlock. */
+    val unlockMessage: String? = null,
 )
 
 data class HomeUiState(
@@ -69,10 +84,16 @@ data class HomeUiState(
     /** Epoch ms when the last queued task will finish; 0 if queue is empty. */
     val queueEndsAt: Long = 0L,
     val workerSession: SkillSession? = null,
+    val workerSession2: SkillSession? = null,
     val workerPendingCollect: Boolean = false,
     val hiredWorker: HiredWorker? = null,
+    val hiredWorker2: HiredWorker? = null,
     val workerQueue: List<QueuedAction> = emptyList(),
+    val workerQueue2: List<QueuedAction> = emptyList(),
     val workerSummary: SessionSummary? = null,
+    val activeBlessingKey: String = "",
+    val activeBlessingRemainingMs: Long = 0L,
+    val xpBoostRemainingMs: Long = 0L,
 )
 
 @HiltViewModel
@@ -81,8 +102,10 @@ class HomeViewModel @Inject constructor(
     private val sessionRepo: SessionRepository,
     private val gameData: GameDataRepository,
     private val questRepo: QuestRepository,
+    private val guildRepo: GuildRepository,
     private val queuedSessionStarter: QueuedSessionStarter,
     private val workerStarter: WorkerQueuedSessionStarter,
+    private val slayerRepo: SlayerRepository,
     private val json: Json,
 ) : ViewModel() {
 
@@ -90,17 +113,35 @@ class HomeViewModel @Inject constructor(
 
     init {
         viewModelScope.launch { sessionRepo.recoverActiveSession(queuedSessionStarter) }
-        viewModelScope.launch { sessionRepo.recoverActiveWorkerSession(workerStarter) }
+        viewModelScope.launch { sessionRepo.recoverActiveWorkerSession(1, workerStarter) }
+        viewModelScope.launch { sessionRepo.recoverActiveWorkerSession(2, workerStarter) }
         viewModelScope.launch { playerRepo.awardMissingCapes() }
     }
 
+    private data class WorkerFlowData(
+        val session1: SkillSession?,
+        val session2: SkillSession?,
+        val completedCount: Int,
+        val extra: HomeUiState,
+    )
+
     val uiState: StateFlow<HomeUiState> = combine(
         combine(playerRepo.playerFlow, sessionRepo.activeSessionFlow, sessionRepo.completedCountFlow) { a, b, c -> Triple(a, b, c) },
-        combine(sessionRepo.activeWorkerSessionFlow, sessionRepo.workerCompletedCountFlow, _extra) { a, b, c -> Triple(a, b, c) },
-    ) { (player, session, completedCount), (workerSession, workerCompleted, extra) ->
+        combine(
+            sessionRepo.activeWorkerSessionFlow(1),
+            sessionRepo.activeWorkerSessionFlow(2),
+            sessionRepo.workerCompletedCountFlow,
+            _extra,
+        ) { w1, w2, count, extra -> WorkerFlowData(w1, w2, count, extra) },
+    ) { (player, session, completedCount), workerData ->
+        val workerSession  = workerData.session1
+        val workerSession2 = workerData.session2
+        val workerCompleted = workerData.completedCount
+        val extra = workerData.extra
         if (player == null) extra.copy(
             isLoading = true, activeSession = session, pendingCollectCount = completedCount,
-            workerSession = workerSession, workerPendingCollect = workerCompleted > 0,
+            workerSession = workerSession, workerSession2 = workerSession2,
+            workerPendingCollect = workerCompleted > 0,
         )
         else {
             val flags: PlayerFlags = json.decodeFromString(player.flags)
@@ -130,9 +171,15 @@ class HomeViewModel @Inject constructor(
                 showWhatsNew        = flags.lastSeenVersionCode < BuildConfig.VERSION_CODE,
                 queueEndsAt         = queueEndsAt,
                 workerSession       = workerSession,
+                workerSession2      = workerSession2,
                 workerPendingCollect = workerCompleted > 0,
                 hiredWorker         = flags.hiredWorker,
+                hiredWorker2        = flags.hiredWorker2,
                 workerQueue         = flags.hiredWorker?.sessionQueue ?: emptyList(),
+                workerQueue2        = flags.hiredWorker2?.sessionQueue ?: emptyList(),
+                activeBlessingKey          = flags.activeBlessingKey,
+                activeBlessingRemainingMs  = (flags.activeBlessingExpiresAt - System.currentTimeMillis()).coerceAtLeast(0L),
+                xpBoostRemainingMs         = (flags.xpBoostExpiresAt - System.currentTimeMillis()).coerceAtLeast(0L),
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), HomeUiState())
@@ -153,9 +200,17 @@ class HomeViewModel @Inject constructor(
             if (sessions.isEmpty()) return@launch
 
             val petIds = gameData.pets.keys
-            val flags: PlayerFlags = json.decodeFromString(playerRepo.getOrCreatePlayer().flags)
-            val boostActive = flags.xpBoostExpiresAt > System.currentTimeMillis()
-            val xpMult = if (boostActive) 2L else 1L
+            val player = playerRepo.getOrCreatePlayer()
+            val flags: PlayerFlags = json.decodeFromString(player.flags)
+            val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
+            val equippedCape = equipped[EquipSlot.CAPE]?.let { gameData.equipment[it] }
+            val capeSkill    = equippedCape?.capeSkill
+            val capeBonus    = equippedCape?.capeBonus ?: 0f
+            val boostActive      = flags.xpBoostExpiresAt > System.currentTimeMillis()
+            val xpMult           = if (boostActive) 2L else 1L
+            val prayerCapeMult   = if (capeSkill == "prayer") 1f + capeBonus else 1f
+            val blessingXpMult   = ChurchRepository.xpMultiplier(flags) * prayerCapeMult
+            val blessingCoinMult = ChurchRepository.coinMultiplier(flags) * prayerCapeMult
 
             // ── Accumulators ──────────────────────────────────────────────
             val combinedXpBySkill = mutableMapOf<String, Long>()
@@ -200,6 +255,7 @@ class HomeViewModel @Inject constructor(
                                 loot         = loot,
                             )
                             playerRepo.recordDailyKills(mapOf(session.activityKey to 1))
+                            guildRepo.recordGuildCombat(mapOf(session.activityKey to 1), detectCombatStyle(frame.xpBySkill))
                             for ((item, qty) in loot) combinedItems[item] = (combinedItems[item] ?: 0) + qty
                             combinedCoins += coins
                         }
@@ -228,6 +284,11 @@ class HomeViewModel @Inject constructor(
                         val coins = (its.remove("coins")?.toLong() ?: 0L).let { if (died) maxOf(0L, (it * 0.1).toLong()) else it }
                         val pets  = its.filterKeys { it in petIds }
                         val loot  = its.filterKeys { it !in petIds }
+                        if (!died) {
+                            var slayerXp = 0L
+                            for ((enemy, k) in kills) slayerXp += slayerRepo.recordKills(enemy, k)
+                            if (slayerXp > 0L) xpPerSkill[Skills.SLAYER] = (xpPerSkill[Skills.SLAYER] ?: 0L) + slayerXp
+                        }
                         awardedCapes += playerRepo.applyMultiSkillResults(xpPerSkill, loot, coins)
                         for ((id, _) in pets) {
                             val pd = gameData.pets[id] ?: continue
@@ -235,15 +296,19 @@ class HomeViewModel @Inject constructor(
                                 petMessage = "You found a pet: ${pd.displayName}!"
                         }
                         if (!died) {
+                            val style = detectCombatStyle(xpPerSkill)
                             questRepo.recordCombat(
                                 dungeonKey         = session.activityKey,
                                 killsByEnemy       = kills,
                                 loot               = loot,
-                                combatStyle        = detectCombatStyle(xpPerSkill),
+                                combatStyle        = style,
                                 foodConsumedTotal  = food.values.sum(),
                             )
                             playerRepo.incrementDungeonRun(session.activityKey)
-                            if (kills.isNotEmpty()) playerRepo.recordDailyKills(kills)
+                            if (kills.isNotEmpty()) {
+                                playerRepo.recordDailyKills(kills)
+                                guildRepo.recordGuildCombat(kills, style)
+                            }
                         }
                         if (food.isNotEmpty())   playerRepo.consumeItems(food)
                         if (arrows.isNotEmpty()) playerRepo.consumeItems(arrows)
@@ -253,27 +318,119 @@ class HomeViewModel @Inject constructor(
                         for ((f, q) in food)             combinedFood[f]          = (combinedFood[f] ?: 0) + q
                         combinedCoins += coins
                     }
+                    "expedition" -> {
+                        val dungeonData = gameData.skillingDungeons[session.activityKey]
+                        val totalXp = frames.sumOf { it.xpGain.toLong() }
+                        val its     = mutableMapOf<String, Int>()
+                        for (frame in frames) for ((item, qty) in frame.items) its[item] = (its[item] ?: 0) + qty
+                        val rawNotesFound = its.entries.filter { it.key.startsWith("note_") }.sumOf { it.value }
+                        val regular    = its.filterKeys { !it.startsWith("note_") && it !in petIds }
+                        val pets       = its.filterKeys { it in petIds }
+                        val skillName  = dungeonData?.skill ?: Skills.MINING
+                        awardedCapes += playerRepo.applySessionResults(skillName, totalXp, regular)
+                        questRepo.recordGathering(skillName, regular)
+                        playerRepo.recordDailyGathering(regular)
+                        guildRepo.recordGuildGathering(skillName, regular)
+                        for ((id, _) in pets) {
+                            val pd = gameData.pets[id] ?: continue
+                            if (playerRepo.addPetIfNew(id, pd.boostPercent))
+                                petMessage = "You found a pet: ${pd.displayName}!"
+                        }
+                        combinedXpBySkill[skillName] = (combinedXpBySkill[skillName] ?: 0L) + totalXp
+                        for ((item, qty) in regular) combinedItems[item] = (combinedItems[item] ?: 0) + qty
+                        val currentFlags = playerRepo.getFlags()
+                        val pityCount    = currentFlags.expeditionPityRuns[session.activityKey] ?: 0
+                        val notesFound   = if (rawNotesFound == 0 && pityCount >= 9) 1 else rawNotesFound
+                        val newPityCount = if (notesFound > 0) 0 else pityCount + 1
+                        val newPityRuns  = currentFlags.expeditionPityRuns.toMutableMap().apply {
+                            if (newPityCount == 0) remove(session.activityKey) else put(session.activityKey, newPityCount)
+                        }
+                        if (notesFound > 0 && dungeonData != null) {
+                            val oldCount = currentFlags.skillingDungeonNotes[session.activityKey] ?: 0
+                            val newCount = minOf(oldCount + notesFound, dungeonData.noteThreshold)
+                            val newNotes = currentFlags.skillingDungeonNotes.toMutableMap()
+                            newNotes[session.activityKey] = newCount
+                            val newUnlocked = currentFlags.unlockedDungeons.toMutableList()
+                            val unlockMsg: String?
+                            if (newCount >= dungeonData.noteThreshold && !currentFlags.unlockedDungeons.contains(dungeonData.unlockDungeon)) {
+                                newUnlocked += dungeonData.unlockDungeon
+                                unlockMsg = dungeonData.unlockMessage
+                            } else {
+                                unlockMsg = null
+                            }
+                            playerRepo.updateFlags(currentFlags.copy(
+                                skillingDungeonNotes = newNotes,
+                                unlockedDungeons = newUnlocked,
+                                expeditionPityRuns = newPityRuns,
+                            ))
+                            val revealed = dungeonData.noteTexts.take(newCount.coerceAtMost(dungeonData.noteTexts.size))
+                            val newlyRevealedTexts = revealed.drop(oldCount.coerceAtMost(revealed.size))
+                            val noteLabels = newlyRevealedTexts.map { it }
+                            for (session2 in sessions) sessionRepo.deleteSession(session2.sessionId)
+                            val expDisplayXp  = ((totalXp * xpMult).toDouble() * blessingXpMult).toLong()
+                            val expXpBonus    = (expDisplayXp - totalXp * xpMult).coerceAtLeast(0L)
+                            val expeditionSummary = SessionSummary(
+                                title = "${dungeonData.displayName} Expedition Complete",
+                                totalXpLabel      = "+${expDisplayXp.formatXp()} XP",
+                                totalXpLabelBonus = expXpBonus,
+                                itemLines      = regular.entries.sortedByDescending { it.value }
+                                    .map { (key, qty) -> Pair(gameData.itemDisplayName(key), "×$qty") },
+                                noteLines      = noteLabels,
+                                unlockMessage  = unlockMsg,
+                                boostWasActive = boostActive,
+                            )
+                            _extra.update { it.copy(sessionSummary = expeditionSummary) }
+                            val snackbar2 = listOfNotNull(petMessage).joinToString(" • ").ifEmpty { null }
+                            if (snackbar2 != null) _extra.update { it.copy(snackbarMessage = snackbar2) }
+                            queuedSessionStarter.startNextQueued()
+                            return@launch
+                        }
+                        // No note this run — persist the incremented pity counter.
+                        playerRepo.updateFlags(currentFlags.copy(expeditionPityRuns = newPityRuns))
+                    }
+                    Skills.MERCANTILE -> {
+                        val totalXp    = frames.sumOf { it.xpGain.toLong() }
+                        val coinReturn = frames.sumOf { (it.items["_coins"] ?: 0).toLong() }
+                        val mercantileCapeMult = if (capeSkill == "mercantile") 1f + capeBonus else 1f
+                        val coinReturnBoosted = (coinReturn * blessingCoinMult * mercantileCapeMult).toLong()
+                        awardedCapes += playerRepo.applySessionResults(Skills.MERCANTILE, totalXp, emptyMap())
+                        playerRepo.addCoins(coinReturnBoosted)
+                        guildRepo.recordGuildTrade(coinReturnBoosted)
+                        combinedXpBySkill[Skills.MERCANTILE] = (combinedXpBySkill[Skills.MERCANTILE] ?: 0L) + totalXp
+                        combinedCoins += coinReturnBoosted
+                    }
                     else -> {
                         val totalXp = frames.sumOf { it.xpGain.toLong() }
                         val its     = mutableMapOf<String, Int>()
                         for (frame in frames) for ((item, qty) in frame.items) its[item] = (its[item] ?: 0) + qty
-                        val pets    = its.filterKeys { it in petIds }
-                        val regular = its.filterKeys { it !in petIds }
-                        awardedCapes += playerRepo.applySessionResults(session.skillName, totalXp, regular)
+                        val pets       = its.filterKeys { it in petIds }
+                        val rawRegular = its.filterKeys { it !in petIds }
+                        val capeMult   = if (capeSkill == session.skillName) 1f + capeBonus else 1f
+                        val effectiveXp = if (capeMult > 1f && rawRegular.isEmpty()) (totalXp * capeMult).toLong() else totalXp
+                        val regular     = if (capeMult > 1f && rawRegular.isNotEmpty()) rawRegular.mapValues { (_, qty) -> (qty * capeMult).roundToInt() } else rawRegular
+                        awardedCapes += playerRepo.applySessionResults(session.skillName, effectiveXp, regular)
                         when (session.skillName) {
                             in gatheringSkills -> {
                                 questRepo.recordGathering(session.skillName, regular)
                                 playerRepo.recordDailyGathering(regular)
+                                when (session.skillName) {
+                                    Skills.AGILITY      -> guildRepo.recordGuildSessions()
+                                    Skills.RUNECRAFTING -> guildRepo.recordGuildCrafting(session.skillName, regular)
+                                    else                -> guildRepo.recordGuildGathering(session.skillName, regular)
+                                }
                             }
                             in craftingSkills  -> {
                                 questRepo.recordCrafting(session.skillName, regular)
                                 playerRepo.recordDailyCrafting(regular)
+                                guildRepo.recordGuildCrafting(session.skillName, regular)
                             }
                             Skills.PRAYER      -> {
                                 val buried = frames.sumOf { it.kills }
                                 questRepo.recordBuried(buried)
                                 playerRepo.recordDailyPrayer(buried)
+                                guildRepo.recordGuildPrayer(buried)
                             }
+                            Skills.FARMING     -> guildRepo.recordGuildGathering(Skills.FARMING, regular)
                         }
                         // Firemaking logs consumed at collect time; all other input materials consumed at session start.
                         if (session.skillName == Skills.FIREMAKING) {
@@ -311,31 +468,51 @@ class HomeViewModel @Inject constructor(
                     val dungeonName = gameData.dungeons[last.activityKey]?.displayName ?: last.activityKey
                     if (anyDied) "$dungeonName — You Died" else "$dungeonName Complete!"
                 }
+                last.skillName == "expedition" -> {
+                    val expName = gameData.skillingDungeons[last.activityKey]?.displayName ?: last.activityKey
+                    "$expName Expedition Complete"
+                }
                 last.skillName == Skills.PRAYER -> "Prayer Session Complete"
                 else -> "${last.skillName.toTitleCase()} Session Complete"
             }
 
             // For single-skill non-combat sessions use the compact totalXpLabel
             val useTotalLabel = n == 1 && combinedXpBySkill.size == 1 && combinedKills.isEmpty()
-            val singleXp = combinedXpBySkill.values.firstOrNull() ?: 0L
-            val boneBuriedLabel = combinedBones.entries.joinToString(", ") { (name, count) -> "$count $name buried" }
+            val singleXp      = combinedXpBySkill.values.firstOrNull() ?: 0L
+            val totalRawXp    = combinedXpBySkill.values.sum()
+            val boneBuriedLines = combinedBones.entries.map { (name, count) -> Pair("$name buried", "×$count") }
+
+            val displayedCoins    = (combinedCoins.toDouble() * blessingCoinMult).toLong()
+            val coinBlessingBonus = displayedCoins - combinedCoins
+            val sortedXpEntries   = combinedXpBySkill.entries.sortedByDescending { it.value }
+            val xpLineBonuses     = sortedXpEntries.map { (_, xp) ->
+                val base = xp * xpMult
+                ((base.toDouble() * blessingXpMult).toLong() - base).coerceAtLeast(0L)
+            }
+            val singleXpBonus = run {
+                val base = singleXp * xpMult
+                ((base.toDouble() * blessingXpMult).toLong() - base).coerceAtLeast(0L)
+            }
 
             val summary = SessionSummary(
                 title          = title,
                 died           = anyDied,
                 xpLines        = if (useTotalLabel) emptyList()
-                                 else combinedXpBySkill.entries.sortedByDescending { it.value }
-                                     .map { (skill, xp) -> Pair(skill.toTitleCase(), "+${(xp * xpMult).formatXp()} XP") },
-                totalXpLabel   = if (useTotalLabel) "+${(singleXp * xpMult).formatXp()} XP" else "",
+                                 else sortedXpEntries
+                                     .map { (skill, xp) -> Pair(skill.toTitleCase(), "+${((xp * xpMult).toDouble() * blessingXpMult).toLong().formatXp()} XP") },
+                totalXpLabel      = if (useTotalLabel) "+${((singleXp * xpMult).toDouble() * blessingXpMult).toLong().formatXp()} XP" else "",
+                totalXpLabelBonus = if (useTotalLabel) singleXpBonus else 0L,
                 itemLines      = combinedItems.entries.sortedByDescending { it.value }
                                      .map { (key, qty) -> Pair(gameData.itemDisplayName(key), "×$qty") },
-                coinsGained    = combinedCoins,
+                coinsGained    = displayedCoins,
                 killLines      = combinedKills.entries.sortedByDescending { it.value }
                                      .map { (enemy, kills) -> Pair(gameData.enemies[enemy]?.displayName ?: enemy.toTitleCase(), "×$kills") },
                 foodConsumedLines = combinedFood.entries.sortedByDescending { it.value }
                                      .map { (food, qty) -> Pair(gameData.itemDisplayName(food), "×$qty") },
-                boneBuriedLabel = boneBuriedLabel,
-                boostWasActive  = boostActive,
+                boneBuriedLines  = boneBuriedLines,
+                boostWasActive   = boostActive,
+                xpLineBonuses    = xpLineBonuses,
+                coinBlessingBonus = coinBlessingBonus,
             )
 
             val capeMessage = if (awardedCapes.isNotEmpty()) {
@@ -367,14 +544,26 @@ class HomeViewModel @Inject constructor(
             val qty = if (session.skillName in craftingSkills)
                 frames.firstOrNull()?.kills ?: 0 else 0
             val displayName = when (session.skillName) {
-                "combat" -> gameData.dungeons[session.activityKey]?.displayName ?: session.activityKey
-                "boss"   -> gameData.bosses[session.activityKey]?.displayName ?: session.activityKey
-                else     -> session.skillName.toTitleCase()
+                "combat"     -> gameData.dungeons[session.activityKey]?.displayName ?: session.activityKey
+                "boss"       -> gameData.bosses[session.activityKey]?.displayName ?: session.activityKey
+                "expedition" -> gameData.skillingDungeons[session.activityKey]?.displayName ?: session.activityKey
+                else         -> session.skillName.toTitleCase()
+            }
+            val coinCostForRepeat = if (session.skillName == Skills.MERCANTILE) {
+                gameData.tradeRoutes.firstOrNull { it.id == session.activityKey }?.coinCost?.toLong() ?: 0L
+            } else 0L
+            if (coinCostForRepeat > 0) {
+                val ok = playerRepo.spendCoins(coinCostForRepeat)
+                if (!ok) {
+                    _extra.update { it.copy(snackbarMessage = "Not enough coins to repeat $displayName.") }
+                    return@launch
+                }
             }
             val materials = playerSessionMaterials(session.skillName, session.activityKey, qty, gameData)
             if (materials != null) {
                 val ok = playerRepo.consumeItems(materials)
                 if (!ok) {
+                    if (coinCostForRepeat > 0) playerRepo.addCoins(coinCostForRepeat)
                     _extra.update { it.copy(snackbarMessage = "Not enough materials to repeat $displayName.") }
                     return@launch
                 }
@@ -386,7 +575,10 @@ class HomeViewModel @Inject constructor(
                 qty                 = qty,
                 estimatedDurationMs = session.endsAt - session.startedAt,
             ))
-            if (!enqueued && materials != null) playerRepo.addItems(materials)
+            if (!enqueued) {
+                if (coinCostForRepeat > 0) playerRepo.addCoins(coinCostForRepeat)
+                if (materials != null) playerRepo.addItems(materials)
+            }
             _extra.update {
                 it.copy(snackbarMessage = if (enqueued) "Added to queue: $displayName." else "Queue is full (3/3).")
             }
@@ -397,8 +589,13 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             val session = sessionRepo.getActiveSession() ?: return@launch
             val frames: List<SessionFrame> = json.decodeFromString(session.frames)
-            playerSessionMaterials(session.skillName, session.activityKey, frames.sumOf { it.kills }, gameData)
-                ?.let { playerRepo.addItems(it) }
+            if (session.skillName == Skills.MERCANTILE) {
+                val coinCost = gameData.tradeRoutes.firstOrNull { it.id == session.activityKey }?.coinCost?.toLong() ?: 0L
+                if (coinCost > 0) playerRepo.addCoins(coinCost)
+            } else {
+                playerSessionMaterials(session.skillName, session.activityKey, frames.sumOf { it.kills }, gameData)
+                    ?.let { playerRepo.addItems(it) }
+            }
             sessionRepo.abandonSession(session.sessionId)
             queuedSessionStarter.startNextQueued()
         }
@@ -411,9 +608,9 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun debugFinishWorkerSession() {
+    fun debugFinishWorkerSession(slot: Int = 1) {
         viewModelScope.launch {
-            val session = sessionRepo.getActiveWorkerSession() ?: return@launch
+            val session = sessionRepo.getActiveWorkerSession(slot) ?: return@launch
             sessionRepo.markCompleted(session.sessionId)
         }
     }
@@ -423,25 +620,31 @@ class HomeViewModel @Inject constructor(
             val session = sessionRepo.getSession(sessionId) ?: return@launch
             if (!session.completed) {
                 sessionRepo.markCompleted(sessionId)
-                workerStarter.startNextQueued()
+                workerStarter.startNextQueued(session.workerSlot.coerceAtLeast(1))
             }
         }
     }
 
     fun collectWorkerSession() {
         viewModelScope.launch {
-            val latest = sessionRepo.getActiveWorkerSession()
-            if (latest != null && !latest.completed && System.currentTimeMillis() >= latest.endsAt) {
-                sessionRepo.markCompleted(latest.sessionId)
+            for (slot in 1..2) {
+                val latest = sessionRepo.getActiveWorkerSession(slot)
+                if (latest != null && !latest.completed && System.currentTimeMillis() >= latest.endsAt) {
+                    sessionRepo.markCompleted(latest.sessionId)
+                }
             }
 
-            val sessions = sessionRepo.getAllCompletedWorkerSessions()
+            val slot1Sessions = sessionRepo.getAllCompletedWorkerSessions(1)
+            val slot2Sessions = sessionRepo.getAllCompletedWorkerSessions(2)
+            val sessions = slot1Sessions + slot2Sessions
             if (sessions.isEmpty()) return@launch
 
             val petIds = gameData.pets.keys
             val flags: PlayerFlags = json.decodeFromString(playerRepo.getOrCreatePlayer().flags)
-            val boostActive = flags.xpBoostExpiresAt > System.currentTimeMillis()
-            val xpMult = if (boostActive) 2L else 1L
+            val boostActive      = flags.xpBoostExpiresAt > System.currentTimeMillis()
+            val xpMult           = if (boostActive) 2L else 1L
+            val blessingXpMult   = ChurchRepository.xpMultiplier(flags)
+            val blessingCoinMult = ChurchRepository.coinMultiplier(flags)
 
             val combinedXpBySkill = mutableMapOf<String, Long>()
             val combinedItems     = mutableMapOf<String, Int>()
@@ -519,6 +722,27 @@ class HomeViewModel @Inject constructor(
                         for ((e, k) in kills)            combinedKills[e]         = (combinedKills[e] ?: 0) + k
                         combinedCoins += coins
                     }
+                    "expedition" -> {
+                        val dungeonData = gameData.skillingDungeons[session.activityKey]
+                        val totalXp = frames.sumOf { it.xpGain.toLong() }
+                        val its     = mutableMapOf<String, Int>()
+                        for (frame in frames) for ((item, qty) in frame.items) its[item] = (its[item] ?: 0) + qty
+                        val pets    = its.filterKeys { it in petIds }
+                        val regular = its.filterKeys { !it.startsWith("note_") && it !in petIds }
+                        val skillName = dungeonData?.skill ?: Skills.MINING
+                        awardedCapes += playerRepo.applySessionResults(skillName, totalXp, regular, mult)
+                        questRepo.recordGathering(skillName, regular)
+                        for ((id, _) in pets) {
+                            val pd = gameData.pets[id] ?: continue
+                            if (playerRepo.addPetIfNew(id, pd.boostPercent))
+                                petMessage = "You found a pet: ${pd.displayName}!"
+                        }
+                        val scaledXp      = if (mult == 1.0f) totalXp else (totalXp * mult).toLong()
+                        val scaledRegular = if (mult == 1.0f) regular
+                            else regular.mapValues { (_, v) -> (v * mult).toInt().coerceAtLeast(1) }
+                        combinedXpBySkill[skillName] = (combinedXpBySkill[skillName] ?: 0L) + scaledXp
+                        for ((item, qty) in scaledRegular) combinedItems[item] = (combinedItems[item] ?: 0) + qty
+                    }
                     else -> {
                         val totalXp = frames.sumOf { it.xpGain.toLong() }
                         val its     = mutableMapOf<String, Int>()
@@ -546,7 +770,8 @@ class HomeViewModel @Inject constructor(
             }
 
             for (session in sessions) sessionRepo.deleteSession(session.sessionId)
-            playerRepo.clearHiredWorker()
+            if (slot1Sessions.isNotEmpty()) playerRepo.clearHiredWorker(1)
+            if (slot2Sessions.isNotEmpty()) playerRepo.clearHiredWorker(2)
 
             val n    = sessions.size
             val last = sessions.last()
@@ -563,23 +788,37 @@ class HomeViewModel @Inject constructor(
                 else -> "Worker: ${last.skillName.toTitleCase()} Complete"
             }
 
-            val useTotalLabel = n == 1 && combinedXpBySkill.size == 1 && combinedKills.isEmpty()
-            val singleXp = combinedXpBySkill.values.firstOrNull() ?: 0L
+            val useTotalLabel    = n == 1 && combinedXpBySkill.size == 1 && combinedKills.isEmpty()
+            val singleXp         = combinedXpBySkill.values.firstOrNull() ?: 0L
+            val displayedCoins   = (combinedCoins.toDouble() * blessingCoinMult).toLong()
+            val coinBlessingBonus = displayedCoins - combinedCoins
+            val sortedXpEntries   = combinedXpBySkill.entries.sortedByDescending { it.value }
+            val xpLineBonuses     = sortedXpEntries.map { (_, xp) ->
+                val base = xp * xpMult
+                ((base.toDouble() * blessingXpMult).toLong() - base).coerceAtLeast(0L)
+            }
+            val singleXpBonus = run {
+                val base = singleXp * xpMult
+                ((base.toDouble() * blessingXpMult).toLong() - base).coerceAtLeast(0L)
+            }
 
             val summary = SessionSummary(
                 title          = title,
                 died           = anyDied,
                 xpLines        = if (useTotalLabel) emptyList()
-                                 else combinedXpBySkill.entries.sortedByDescending { it.value }
-                                     .map { (skill, xp) -> Pair(skill.toTitleCase(), "+${(xp * xpMult).formatXp()} XP") },
-                totalXpLabel   = if (useTotalLabel) "+${(singleXp * xpMult).formatXp()} XP" else "",
+                                 else sortedXpEntries
+                                     .map { (skill, xp) -> Pair(skill.toTitleCase(), "+${((xp * xpMult).toDouble() * blessingXpMult).toLong().formatXp()} XP") },
+                totalXpLabel      = if (useTotalLabel) "+${((singleXp * xpMult).toDouble() * blessingXpMult).toLong().formatXp()} XP" else "",
+                totalXpLabelBonus = if (useTotalLabel) singleXpBonus else 0L,
                 itemLines      = combinedItems.entries.sortedByDescending { it.value }
                                      .map { (key, qty) -> Pair(gameData.itemDisplayName(key), "×$qty") },
-                coinsGained    = combinedCoins,
+                coinsGained    = displayedCoins,
                 killLines      = combinedKills.entries.sortedByDescending { it.value }
                                      .map { (enemy, kills) -> Pair(gameData.enemies[enemy]?.displayName ?: enemy.toTitleCase(), "×$kills") },
                 foodConsumedLines = emptyList(),
-                boostWasActive  = boostActive,
+                boostWasActive   = boostActive,
+                xpLineBonuses    = xpLineBonuses,
+                coinBlessingBonus = coinBlessingBonus,
             )
 
             val capeMessage = if (awardedCapes.isNotEmpty()) {
@@ -591,11 +830,12 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun dismissWorker() {
+    fun dismissWorker(slot: Int = 1) {
         viewModelScope.launch {
             val flags: PlayerFlags = json.decodeFromString(playerRepo.getOrCreatePlayer().flags)
+            val worker = if (slot == 2) flags.hiredWorker2 else flags.hiredWorker
 
-            val session = sessionRepo.getActiveWorkerSession()
+            val session = sessionRepo.getActiveWorkerSession(slot)
             if (session != null) {
                 val frames: List<SessionFrame> = json.decodeFromString(session.frames)
                 val qty = frames.sumOf { it.kills }
@@ -604,13 +844,13 @@ class HomeViewModel @Inject constructor(
                 sessionRepo.abandonSession(session.sessionId)
             }
 
-            for (action in flags.hiredWorker?.sessionQueue ?: emptyList()) {
+            for (action in worker?.sessionQueue ?: emptyList()) {
                 workerMaterialsFor(action.skillName, action.activityKey, action.qty)
                     ?.let { playerRepo.addItems(it) }
             }
 
-            flags.hiredWorker?.tier?.hireCost?.let { playerRepo.addCoins(it) }
-            playerRepo.clearHiredWorker()
+            worker?.tier?.hireCost?.let { playerRepo.addCoins(it) }
+            playerRepo.clearHiredWorker(slot)
         }
     }
 
@@ -624,9 +864,14 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             val action = playerRepo.getQueue().getOrNull(index) ?: return@launch
             playerRepo.removeFromQueue(index)
+            if (action.coinRefund > 0) playerRepo.addCoins(action.coinRefund)
             playerSessionMaterials(action.skillName, action.activityKey, action.qty, gameData)
                 ?.let { playerRepo.addItems(it) }
         }
+    }
+
+    fun moveQueueItem(fromIndex: Int, toIndex: Int) {
+        viewModelScope.launch { playerRepo.moveQueueItem(fromIndex, toIndex) }
     }
 
     fun saveCharacterProfile(name: String, gender: String, race: String) {

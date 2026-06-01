@@ -1,0 +1,72 @@
+{
+  "name": "whispering_grove",
+  "display_name": "Whispering Grove",
+  "description": "A primeval forest where the trees have grown for thousands of years. The wood whispers in a language older than words, and stone ruins hide beneath the roots.",
+  "skill": "woodcutting",
+  "level_required": 1,
+  "xp_ranges": {
+    "1": {"min": 6, "max": 11},
+    "5": {"min": 9, "max": 17},
+    "10": {"min": 13, "max": 22},
+    "15": {"min": 20, "max": 31},
+    "20": {"min": 28, "max": 42},
+    "25": {"min": 36, "max": 55},
+    "30": {"min": 48, "max": 72},
+    "35": {"min": 61, "max": 90},
+    "40": {"min": 77, "max": 116}
+  },
+  "drop_tables": {
+    "1": [
+      {"item": "log", "chance": 0.90},
+      {"item": "bird_nest", "chance": 0.10}
+    ],
+    "5": [
+      {"item": "log", "chance": 0.70},
+      {"item": "oak_log", "chance": 0.25},
+      {"item": "bird_nest", "chance": 0.05}
+    ],
+    "10": [
+      {"item": "log", "chance": 0.50},
+      {"item": "oak_log", "chance": 0.35},
+      {"item": "willow_log", "chance": 0.12},
+      {"item": "bird_nest", "chance": 0.03}
+    ],
+    "15": [
+      {"item": "oak_log", "chance": 0.45},
+      {"item": "willow_log", "chance": 0.35},
+      {"item": "maple_log", "chance": 0.15},
+      {"item": "bird_nest", "chance": 0.05}
+    ],
+    "20": [
+      {"item": "oak_log", "chance": 0.30},
+      {"item": "willow_log", "chance": 0.40},
+      {"item": "maple_log", "chance": 0.25},
+      {"item": "bird_nest", "chance": 0.05}
+    ],
+    "30": [
+      {"item": "willow_log", "chance": 0.35},
+      {"item": "maple_log", "chance": 0.35},
+      {"item": "yew_log", "chance": 0.20},
+      {"item": "bird_nest", "chance": 0.08},
+      {"item": "tree_seed", "chance": 0.02}
+    ],
+    "40": [
+      {"item": "maple_log", "chance": 0.35},
+      {"item": "yew_log", "chance": 0.35},
+      {"item": "teak_log", "chance": 0.20},
+      {"item": "bird_nest", "chance": 0.08},
+      {"item": "tree_seed", "chance": 0.02}
+    ]
+  },
+  "note_chance_per_frame": 0.003,
+  "note_threshold": 5,
+  "note_texts": [
+    "The trees here whisper in a language older than any known tongue.",
+    "Stone foundations visible beneath the roots — the remains of something built long before the forest.",
+    "A druid's warning carved in bark: 'The clearing at the grove's heart is not what it was. Stay away.'",
+    "Corrupted vines reach toward you as you chop. The grove resists your presence.",
+    "A gap in the canopy reveals ruins at the grove's heart. The Ancient Forest Ruins call to be explored."
+  ],
+  "unlock_dungeon": "ancient_forest_ruins",
+  "unlock_message": "The Ancient Forest Ruins are revealed — enter and face the spirits within."
+}

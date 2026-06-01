@@ -1,0 +1,7 @@
+• Fix: Guild daily quests can no longer push reputation past the tier threshold while gate quests are incomplete
+• Fix: Quest progress for higher-tier guild quests no longer pre-accumulates before you reach that tier; progress resets to 0 when you advance to a new rank
+• New: Guild detail screen shows a warning and turns the rep bar red when gate quests must be completed before advancing
+• New: Guild Hall screen shows "Quest required to advance" on cards where progression is blocked
+• New: Inn food purchase dialog now lets you type or use +/- buttons to buy multiple of the same food at once
+• Update: Town description on the home screen now mentions the Slayer Master
+• New: Active 2× XP Boost now shows on the home screen with time remaining, similar to the church blessing indicator

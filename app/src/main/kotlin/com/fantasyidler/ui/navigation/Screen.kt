@@ -3,13 +3,17 @@ package com.fantasyidler.ui.navigation
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Explore
+import androidx.compose.material.icons.filled.Group
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material.icons.filled.ShowChart
 import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.AccountCircle
+import androidx.compose.material.icons.outlined.Explore
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.MenuBook
 import androidx.compose.material.icons.outlined.Settings
@@ -35,7 +39,9 @@ sealed class Screen(
         labelRes     = R.string.nav_combat,
         icon         = Icons.Outlined.Shield,
         selectedIcon = Icons.Filled.Shield,
-    )
+    ) {
+        const val gearRoute = "combat/gear"
+    }
     object Home : Screen(
         route        = "home",
         labelRes     = R.string.nav_home,
@@ -81,9 +87,50 @@ sealed class Screen(
     )
 
     object WorkerSkills : Screen(
-        route    = "worker_skills",
+        route    = "worker_skills?initialSlot={initialSlot}",
         labelRes = R.string.worker_skills_title_nav,
         icon     = Icons.Filled.ShowChart,
+    ) {
+        fun routeWithSlot(slot: Int) = "worker_skills?initialSlot=$slot"
+    }
+
+    object GuildHall : Screen(
+        route    = "guild_hall",
+        labelRes = R.string.guild_hall_title,
+        icon     = Icons.Filled.Group,
+    )
+
+    object Church : Screen(
+        route    = "church",
+        labelRes = R.string.church_title,
+        icon     = Icons.Filled.Star,
+    )
+
+    object GuildDetail : Screen(
+        route    = "guild_detail/{guild}",
+        labelRes = R.string.guild_hall_title,
+        icon     = Icons.Filled.Group,
+    ) {
+        fun createRoute(guild: String) = "guild_detail/$guild"
+    }
+
+    object Mercantile : Screen(
+        route    = "mercantile",
+        labelRes = R.string.skill_mercantile,
+        icon     = Icons.Filled.ShoppingCart,
+    )
+
+    object Expeditions : Screen(
+        route        = "expeditions",
+        labelRes     = R.string.nav_expeditions,
+        icon         = Icons.Outlined.Explore,
+        selectedIcon = Icons.Filled.Explore,
+    )
+
+    object Slayer : Screen(
+        route    = "slayer",
+        labelRes = R.string.slayer_title,
+        icon     = Icons.Filled.Shield,
     )
 
     companion object {

@@ -13,8 +13,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Group
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -30,11 +35,11 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -57,6 +62,8 @@ import com.fantasyidler.data.model.HiredWorker
 import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.WorkerTier
+import com.fantasyidler.data.json.BlessingType
+import com.fantasyidler.repository.ChurchRepository
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.HomeViewModel
 import com.fantasyidler.ui.viewmodel.SessionSummary
@@ -64,8 +71,10 @@ import com.fantasyidler.ui.viewmodel.combatLevelFrom
 import com.fantasyidler.ui.viewmodel.totalLevelFrom
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatCoins
+import com.fantasyidler.util.formatXp
 import com.fantasyidler.util.formatDurationMs
 import com.fantasyidler.util.toCountdown
+import androidx.compose.ui.text.style.TextOverflow
 import kotlinx.coroutines.delay
 import kotlinx.serialization.decodeFromString
 
@@ -76,6 +85,9 @@ fun HomeScreen(
     onNavigateToShop: () -> Unit = {},
     onNavigateToInn: () -> Unit = {},
     onNavigateToWorkerSkills: () -> Unit = {},
+    onNavigateToGuildHall: () -> Unit = {},
+    onNavigateToChurch: () -> Unit = {},
+    onNavigateToSlayer: () -> Unit = {},
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
     val state            by viewModel.uiState.collectAsState()
@@ -123,9 +135,48 @@ fun HomeScreen(
                     }
                     if (summary.xpLines.isNotEmpty()) {
                         SummarySection(stringResource(R.string.label_xp_gained))
-                        summary.xpLines.forEach { (skill, label) -> SummaryRow(skill, label) }
+                        summary.xpLines.forEachIndexed { i, (skill, label) ->
+                            val bonus = summary.xpLineBonuses.getOrNull(i) ?: 0L
+                            Row(
+                                modifier              = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                            ) {
+                                Text(skill, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.weight(1f))
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Text(label, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold)
+                                    if (bonus > 0L) {
+                                        Spacer(Modifier.width(4.dp))
+                                        Text(
+                                            text  = "(+${bonus.formatXp()})",
+                                            style = MaterialTheme.typography.labelSmall,
+                                            color = GoldPrimary,
+                                        )
+                                    }
+                                }
+                            }
+                        }
                     } else if (summary.totalXpLabel.isNotEmpty()) {
-                        SummaryRow(stringResource(R.string.label_xp_gained), summary.totalXpLabel)
+                        Row(
+                            modifier              = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                        ) {
+                            Text(
+                                text     = stringResource(R.string.label_xp_gained),
+                                style    = MaterialTheme.typography.bodyMedium,
+                                modifier = Modifier.weight(1f),
+                            )
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Text(summary.totalXpLabel, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold)
+                                if (summary.totalXpLabelBonus > 0L) {
+                                    Spacer(Modifier.width(4.dp))
+                                    Text(
+                                        text  = "(+${summary.totalXpLabelBonus.formatXp()})",
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = GoldPrimary,
+                                    )
+                                }
+                            }
+                        }
                     }
                     if (summary.killLines.isNotEmpty()) {
                         Spacer(Modifier.height(4.dp))
@@ -140,13 +191,40 @@ fun HomeScreen(
                     if (summary.coinsGained > 0) {
                         SummaryRow("Coins", "+${summary.coinsGained.formatCoins()}")
                     }
+                    if (summary.coinBlessingBonus > 0) {
+                        Text(
+                            text  = stringResource(R.string.church_blessing_bonus, summary.coinBlessingBonus.formatCoins()),
+                            style = MaterialTheme.typography.labelSmall,
+                            color = GoldPrimary,
+                        )
+                    }
                     if (summary.foodConsumedLines.isNotEmpty()) {
                         Spacer(Modifier.height(4.dp))
                         SummarySection(stringResource(R.string.home_food_consumed))
                         summary.foodConsumedLines.forEach { (food, qty) -> SummaryRow(food, qty) }
                     }
-                    if (summary.boneBuriedLabel.isNotEmpty()) {
-                        SummaryRow(stringResource(R.string.home_bones_buried), summary.boneBuriedLabel)
+                    if (summary.boneBuriedLines.isNotEmpty()) {
+                        summary.boneBuriedLines.forEach { (label, qty) -> SummaryRow(label, qty) }
+                    }
+                    if (summary.noteLines.isNotEmpty()) {
+                        Spacer(Modifier.height(4.dp))
+                        summary.noteLines.forEach { note ->
+                            Text(
+                                text = note,
+                                style = MaterialTheme.typography.bodySmall.copy(fontStyle = androidx.compose.ui.text.font.FontStyle.Italic),
+                                color = GoldPrimary,
+                                modifier = Modifier.padding(vertical = 2.dp),
+                            )
+                        }
+                    }
+                    summary.unlockMessage?.let { msg ->
+                        Spacer(Modifier.height(8.dp))
+                        Text(
+                            text = msg,
+                            style = MaterialTheme.typography.bodyMedium,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.primary,
+                        )
                     }
                 }
             },
@@ -183,9 +261,48 @@ fun HomeScreen(
                     }
                     if (summary.xpLines.isNotEmpty()) {
                         SummarySection(stringResource(R.string.label_xp_gained))
-                        summary.xpLines.forEach { (skill, label) -> SummaryRow(skill, label) }
+                        summary.xpLines.forEachIndexed { i, (skill, label) ->
+                            val bonus = summary.xpLineBonuses.getOrNull(i) ?: 0L
+                            Row(
+                                modifier              = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                            ) {
+                                Text(skill, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.weight(1f))
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Text(label, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold)
+                                    if (bonus > 0L) {
+                                        Spacer(Modifier.width(4.dp))
+                                        Text(
+                                            text  = "(+${bonus.formatXp()})",
+                                            style = MaterialTheme.typography.labelSmall,
+                                            color = GoldPrimary,
+                                        )
+                                    }
+                                }
+                            }
+                        }
                     } else if (summary.totalXpLabel.isNotEmpty()) {
-                        SummaryRow(stringResource(R.string.label_xp_gained), summary.totalXpLabel)
+                        Row(
+                            modifier              = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                        ) {
+                            Text(
+                                text     = stringResource(R.string.label_xp_gained),
+                                style    = MaterialTheme.typography.bodyMedium,
+                                modifier = Modifier.weight(1f),
+                            )
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Text(summary.totalXpLabel, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold)
+                                if (summary.totalXpLabelBonus > 0L) {
+                                    Spacer(Modifier.width(4.dp))
+                                    Text(
+                                        text  = "(+${summary.totalXpLabelBonus.formatXp()})",
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = GoldPrimary,
+                                    )
+                                }
+                            }
+                        }
                     }
                     if (summary.killLines.isNotEmpty()) {
                         Spacer(Modifier.height(4.dp))
@@ -199,6 +316,13 @@ fun HomeScreen(
                     }
                     if (summary.coinsGained > 0) {
                         SummaryRow("Coins", "+${summary.coinsGained.formatCoins()}")
+                    }
+                    if (summary.coinBlessingBonus > 0) {
+                        Text(
+                            text  = stringResource(R.string.church_blessing_bonus, summary.coinBlessingBonus.formatCoins()),
+                            style = MaterialTheme.typography.labelSmall,
+                            color = GoldPrimary,
+                        )
                     }
                 }
             },
@@ -335,106 +459,138 @@ fun HomeScreen(
                             valueColor = GoldPrimary,
                         )
                     }
+
+                    val blessingActive = state.activeBlessingKey.isNotEmpty() && state.activeBlessingRemainingMs > 0
+                    if (blessingActive) {
+                        val context = LocalContext.current
+                        val nameResId = context.resources.getIdentifier(
+                            "blessing_${state.activeBlessingKey}_name", "string", context.packageName,
+                        )
+                        val blessingName = if (nameResId != 0) stringResource(nameResId) else state.activeBlessingKey
+                        val blessingData = ChurchRepository.ALL_BLESSINGS.firstOrNull { it.key == state.activeBlessingKey }
+                        val boostDesc = blessingData?.let { b ->
+                            when (b.type) {
+                                BlessingType.XP      -> "${b.magnitude}x XP"
+                                BlessingType.DEFENSE -> "+${b.magnitude.toInt()} DEF"
+                                BlessingType.COINS   -> "+${(b.magnitude * 100).toInt()}% coins"
+                            }
+                        }
+                        val timeLeft = state.activeBlessingRemainingMs.formatDurationMs()
+                        val blessingText = if (boostDesc != null) "$blessingName ($boostDesc) - $timeLeft"
+                                          else "$blessingName - $timeLeft"
+                        Spacer(Modifier.height(8.dp))
+                        HorizontalDivider()
+                        Spacer(Modifier.height(8.dp))
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                imageVector        = Icons.Filled.Star,
+                                contentDescription = null,
+                                tint               = GoldPrimary,
+                                modifier           = Modifier.size(14.dp),
+                            )
+                            Spacer(Modifier.width(4.dp))
+                            Text(
+                                text  = blessingText,
+                                style = MaterialTheme.typography.labelSmall,
+                                color = GoldPrimary,
+                            )
+                        }
+                    }
+
+                    if (state.xpBoostRemainingMs > 0) {
+                        Spacer(Modifier.height(8.dp))
+                        HorizontalDivider()
+                        Spacer(Modifier.height(8.dp))
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                imageVector        = Icons.Filled.Star,
+                                contentDescription = null,
+                                tint               = MaterialTheme.colorScheme.tertiary,
+                                modifier           = Modifier.size(14.dp),
+                            )
+                            Spacer(Modifier.width(4.dp))
+                            Text(
+                                text  = stringResource(R.string.home_xp_boost_active, state.xpBoostRemainingMs.formatDurationMs()),
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.tertiary,
+                            )
+                        }
+                    }
                 }
             }
 
-            // ── Shop + Inn row ──────────────────────────────────────────
-            val workerSession = state.workerSession
-            val hiredWorker   = state.hiredWorker
-            Row(
-                modifier              = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
+            // ── Town card ───────────────────────────────────────────────
+            var townExpanded by remember { mutableStateOf(false) }
+            Surface(
+                shape    = RoundedCornerShape(16.dp),
+                color    = MaterialTheme.colorScheme.surfaceVariant,
+                modifier = Modifier.fillMaxWidth().clickable { townExpanded = !townExpanded },
             ) {
-                Surface(
-                    shape    = RoundedCornerShape(16.dp),
-                    color    = MaterialTheme.colorScheme.surfaceVariant,
-                    modifier = Modifier.weight(1f).clickable { onNavigateToShop() },
+                Row(
+                    modifier          = Modifier.padding(16.dp),
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Row(
-                        modifier          = Modifier.padding(16.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        Icon(
-                            imageVector        = Icons.Filled.ShoppingCart,
-                            contentDescription = null,
-                            tint               = MaterialTheme.colorScheme.onSurfaceVariant,
-                            modifier           = Modifier.size(24.dp),
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text       = stringResource(R.string.home_town_title),
+                            style      = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.Medium,
                         )
-                        Spacer(Modifier.width(12.dp))
-                        Column {
-                            Text(
-                                text       = stringResource(R.string.label_shop),
-                                style      = MaterialTheme.typography.titleMedium,
-                                fontWeight = FontWeight.Medium,
-                            )
-                            Text(
-                                text  = stringResource(R.string.label_shop_desc),
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            )
-                        }
-                    }
-                }
-
-                Surface(
-                    shape    = RoundedCornerShape(16.dp),
-                    color    = MaterialTheme.colorScheme.surfaceVariant,
-                    modifier = Modifier.weight(1f).clickable { onNavigateToInn() },
-                ) {
-                    Row(
-                        modifier          = Modifier.padding(16.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        Icon(
-                            imageVector        = Icons.Filled.Person,
-                            contentDescription = null,
-                            tint               = MaterialTheme.colorScheme.onSurfaceVariant,
-                            modifier           = Modifier.size(24.dp),
+                        Text(
+                            text  = stringResource(R.string.home_town_desc),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
                         )
-                        Spacer(Modifier.width(12.dp))
-                        Column {
-                            Text(
-                                text       = stringResource(R.string.inn_title),
-                                style      = MaterialTheme.typography.titleMedium,
-                                fontWeight = FontWeight.Medium,
-                            )
-                            Text(
-                                text  = if (hiredWorker != null)
-                                    stringResource(R.string.inn_worker_active)
-                                else
-                                    stringResource(R.string.inn_card_desc),
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            )
-                        }
                     }
+                    Icon(
+                        imageVector        = if (townExpanded) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,
+                        contentDescription = null,
+                        tint               = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
                 }
             }
-
-            // ── Worker session card ──────────────────────────────────────
-            if (hiredWorker != null) {
-                if (workerSession != null && !workerSession.completed) {
-                    LaunchedEffect(workerSession.sessionId) {
-                        val remaining = workerSession.endsAt - System.currentTimeMillis()
-                        if (remaining > 0) delay(remaining)
-                        viewModel.onWorkerSessionExpiredLocally(workerSession.sessionId)
+            if (townExpanded) {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    listOf(
+                        Triple(Icons.Filled.ShoppingCart, stringResource(R.string.label_shop), stringResource(R.string.label_shop_desc)) to onNavigateToShop,
+                        Triple(Icons.Filled.Person, stringResource(R.string.inn_title), stringResource(R.string.inn_card_desc)) to onNavigateToInn,
+                        Triple(Icons.Filled.Group, stringResource(R.string.guild_hall_title), stringResource(R.string.guild_hall_desc)) to onNavigateToGuildHall,
+                        Triple(Icons.Filled.Star, stringResource(R.string.church_title), stringResource(R.string.church_desc)) to onNavigateToChurch,
+                        Triple(Icons.Filled.Shield, stringResource(R.string.slayer_title), stringResource(R.string.slayer_card_desc)) to onNavigateToSlayer,
+                    ).forEachIndexed { i, (info, action) ->
+                        val (icon, title, desc) = info
+                        val iconTint = if (i == 3 && state.activeBlessingKey.isNotEmpty() && state.activeBlessingRemainingMs > 0)
+                            GoldPrimary else MaterialTheme.colorScheme.onSurfaceVariant
+                        Surface(
+                            shape    = RoundedCornerShape(12.dp),
+                            color    = MaterialTheme.colorScheme.surfaceVariant,
+                            modifier = Modifier.fillMaxWidth().clickable { action() },
+                        ) {
+                            Row(
+                                modifier          = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+                                verticalAlignment = Alignment.CenterVertically,
+                            ) {
+                                Icon(
+                                    imageVector        = icon,
+                                    contentDescription = null,
+                                    tint               = iconTint,
+                                    modifier           = Modifier.size(20.dp),
+                                )
+                                Spacer(Modifier.width(12.dp))
+                                Text(
+                                    text       = title,
+                                    style      = MaterialTheme.typography.bodyMedium,
+                                    fontWeight = FontWeight.Medium,
+                                    modifier   = Modifier.weight(1f),
+                                )
+                                Text(
+                                    text  = desc,
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                )
+                            }
+                        }
                     }
-                }
-                WorkerSessionCard(
-                    hiredWorker              = hiredWorker,
-                    session                  = workerSession,
-                    pendingCollect           = state.workerPendingCollect,
-                    context                  = context,
-                    onCollect                = viewModel::collectWorkerSession,
-                    onDismiss                = viewModel::dismissWorker,
-                    onDebugFinish            = viewModel::debugFinishWorkerSession,
-                    onNavigateToWorkerSkills = onNavigateToWorkerSkills,
-                )
-                if (state.workerQueue.isNotEmpty()) {
-                    WorkerQueueCard(
-                        queue   = state.workerQueue,
-                        context = context,
-                    )
                 }
             }
 
@@ -496,6 +652,53 @@ fun HomeScreen(
                     queueEndsAt = state.queueEndsAt,
                     context     = context,
                     onRemove    = viewModel::removeFromQueue,
+                    onMove      = viewModel::moveQueueItem,
+                )
+            }
+
+            // ── Worker session cards ─────────────────────────────────────
+            val workerSession = state.workerSession
+            val hiredWorker   = state.hiredWorker
+            if (hiredWorker != null) {
+                if (workerSession != null && !workerSession.completed) {
+                    LaunchedEffect(workerSession.sessionId) {
+                        val remaining = workerSession.endsAt - System.currentTimeMillis()
+                        if (remaining > 0) delay(remaining)
+                        viewModel.onWorkerSessionExpiredLocally(workerSession.sessionId)
+                    }
+                }
+                WorkerSessionCard(
+                    slot                     = 1,
+                    hiredWorker              = hiredWorker,
+                    session                  = workerSession,
+                    pendingCollect           = state.workerPendingCollect,
+                    context                  = context,
+                    onCollect                = viewModel::collectWorkerSession,
+                    onDismiss                = { viewModel.dismissWorker(1) },
+                    onDebugFinish            = { viewModel.debugFinishWorkerSession(1) },
+                    onNavigateToWorkerSkills = onNavigateToWorkerSkills,
+                )
+            }
+            val hiredWorker2   = state.hiredWorker2
+            val workerSession2 = state.workerSession2
+            if (hiredWorker2 != null) {
+                if (workerSession2 != null && !workerSession2.completed) {
+                    LaunchedEffect(workerSession2.sessionId) {
+                        val remaining = workerSession2.endsAt - System.currentTimeMillis()
+                        if (remaining > 0) delay(remaining)
+                        viewModel.onWorkerSessionExpiredLocally(workerSession2.sessionId)
+                    }
+                }
+                WorkerSessionCard(
+                    slot                     = 2,
+                    hiredWorker              = hiredWorker2,
+                    session                  = workerSession2,
+                    pendingCollect           = state.workerPendingCollect,
+                    context                  = context,
+                    onCollect                = viewModel::collectWorkerSession,
+                    onDismiss                = { viewModel.dismissWorker(2) },
+                    onDebugFinish            = { viewModel.debugFinishWorkerSession(2) },
+                    onNavigateToWorkerSkills = onNavigateToWorkerSkills,
                 )
             }
         }
@@ -624,6 +827,7 @@ private fun QueueCard(
     queueEndsAt: Long,
     context: android.content.Context,
     onRemove: (Int) -> Unit,
+    onMove: (Int, Int) -> Unit,
 ) {
     Surface(
         shape    = RoundedCornerShape(16.dp),
@@ -647,16 +851,53 @@ private fun QueueCard(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     val emoji = GameStrings.skillEmoji(action.skillName)
-                    val activityLabel = action.activityKey
-                        .replace('_', ' ')
-                        .replaceFirstChar { it.uppercase() }
-                        .takeIf { action.activityKey.isNotEmpty() }
+                    val labelExpedition = stringResource(R.string.nav_expeditions)
+                    val labelDungeon    = stringResource(R.string.label_dungeon)
+                    val labelBoss       = stringResource(R.string.label_boss)
+                    val (prefix, suffix) = when (action.skillName) {
+                        "expedition" -> labelExpedition to action.skillDisplayName
+                        "combat"     -> labelDungeon    to action.skillDisplayName
+                        "boss"       -> labelBoss       to action.skillDisplayName
+                        "farming"    -> action.skillDisplayName to null
+                        else         -> action.skillDisplayName to action.activityKey
+                            .replace('_', ' ')
+                            .replaceFirstChar { it.uppercase() }
+                            .takeIf { action.activityKey.isNotEmpty() }
+                    }
                     Column(Modifier.weight(1f)) {
                         Text(
-                            text  = "$emoji ${action.skillDisplayName}${if (activityLabel != null) " — $activityLabel" else ""}",
+                            text  = "$emoji $prefix${if (suffix != null) " — $suffix" else ""}",
                             style = MaterialTheme.typography.bodyMedium,
                             fontWeight = FontWeight.Medium,
                         )
+                    }
+                    if (queue.size > 1) {
+                        IconButton(
+                            onClick  = { onMove(index, index - 1) },
+                            enabled  = index > 0,
+                            modifier = Modifier.size(32.dp),
+                        ) {
+                            Icon(
+                                imageVector        = Icons.Filled.KeyboardArrowUp,
+                                contentDescription = "Move up",
+                                modifier           = Modifier.size(16.dp),
+                                tint               = if (index > 0) MaterialTheme.colorScheme.onSurfaceVariant
+                                                     else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.3f),
+                            )
+                        }
+                        IconButton(
+                            onClick  = { onMove(index, index + 1) },
+                            enabled  = index < queue.size - 1,
+                            modifier = Modifier.size(32.dp),
+                        ) {
+                            Icon(
+                                imageVector        = Icons.Filled.KeyboardArrowDown,
+                                contentDescription = "Move down",
+                                modifier           = Modifier.size(16.dp),
+                                tint               = if (index < queue.size - 1) MaterialTheme.colorScheme.onSurfaceVariant
+                                                     else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.3f),
+                            )
+                        }
                     }
                     IconButton(
                         onClick  = { onRemove(index) },
@@ -693,6 +934,7 @@ private fun QueueCard(
 
 @Composable
 private fun WorkerSessionCard(
+    slot: Int,
     hiredWorker: HiredWorker,
     session: SkillSession?,
     pendingCollect: Boolean,
@@ -833,43 +1075,6 @@ private fun WorkerSessionCard(
                         Text("[Debug] Finish Worker")
                     }
                 }
-            }
-        }
-    }
-}
-
-@Composable
-private fun WorkerQueueCard(
-    queue: List<QueuedAction>,
-    context: android.content.Context,
-) {
-    Surface(
-        shape    = RoundedCornerShape(16.dp),
-        color    = MaterialTheme.colorScheme.surfaceVariant,
-        modifier = Modifier.fillMaxWidth(),
-    ) {
-        Column(Modifier.padding(16.dp)) {
-            Text(
-                text  = stringResource(R.string.worker_queue_label, queue.size),
-                style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-            Spacer(Modifier.height(8.dp))
-            queue.forEachIndexed { index, action ->
-                if (index > 0) HorizontalDivider(
-                    modifier = Modifier.padding(vertical = 4.dp),
-                    color    = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f),
-                )
-                val emoji         = GameStrings.skillEmoji(action.skillName)
-                val activityLabel = action.activityKey
-                    .replace('_', ' ')
-                    .replaceFirstChar { it.uppercase() }
-                    .takeIf { action.activityKey.isNotEmpty() }
-                Text(
-                    text  = "$emoji ${action.skillDisplayName}${if (activityLabel != null) " — $activityLabel" else ""}",
-                    style = MaterialTheme.typography.bodyMedium,
-                    fontWeight = FontWeight.Medium,
-                )
             }
         }
     }

@@ -1,0 +1,3465 @@
+{
+  "mining_guild_1": {
+    "id": "mining_guild_1",
+    "guild": "mining",
+    "guild_level_required": 0,
+    "name": "Copper Run",
+    "type": "gather",
+    "target": "copper_ore",
+    "amount": 300,
+    "description": "Mine 300 copper ore for the Mining Guild.",
+    "rewards": {
+      "coins": 1000,
+      "xp": 3000,
+      "xp_skill": "mining",
+      "items": {
+        "raw_trout": 50,
+        "log": 30
+      },
+      "reputation": 250
+    }
+  },
+  "mining_guild_2": {
+    "id": "mining_guild_2",
+    "guild": "mining",
+    "guild_level_required": 1,
+    "name": "Iron Quota",
+    "type": "gather",
+    "target": "iron_ore",
+    "amount": 700,
+    "description": "Mine 700 iron ore for the Mining Guild.",
+    "rewards": {
+      "coins": 2500,
+      "xp": 6000,
+      "xp_skill": "mining",
+      "items": {
+        "raw_salmon": 80,
+        "oak_log": 40
+      },
+      "reputation": 500
+    }
+  },
+  "mining_guild_3": {
+    "id": "mining_guild_3",
+    "guild": "mining",
+    "guild_level_required": 2,
+    "name": "Coal Haul",
+    "type": "gather",
+    "target": "coal",
+    "amount": 1200,
+    "description": "Mine 1,200 coal for the Mining Guild.",
+    "rewards": {
+      "coins": 5000,
+      "xp": 12000,
+      "xp_skill": "mining",
+      "items": {
+        "raw_tuna": 100,
+        "willow_log": 50
+      },
+      "reputation": 1250
+    }
+  },
+  "mining_guild_4": {
+    "id": "mining_guild_4",
+    "guild": "mining",
+    "guild_level_required": 3,
+    "name": "Silver Delivery",
+    "type": "gather",
+    "target": "silver_ore",
+    "amount": 600,
+    "description": "Mine 600 silver ore for the Mining Guild.",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "xp_skill": "mining",
+      "items": {
+        "iron_bar": 50,
+        "ruby": 2
+      },
+      "reputation": 2500
+    }
+  },
+  "mining_guild_5": {
+    "id": "mining_guild_5",
+    "guild": "mining",
+    "guild_level_required": 4,
+    "name": "Mithril Mandate",
+    "type": "gather",
+    "target": "mithril_ore",
+    "amount": 1500,
+    "description": "Mine 1,500 mithril ore for the Mining Guild.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 35000,
+      "xp_skill": "mining",
+      "items": {
+        "raw_lobster": 80,
+        "maple_log": 50
+      },
+      "reputation": 5500
+    }
+  },
+  "mining_guild_6": {
+    "id": "mining_guild_6",
+    "guild": "mining",
+    "guild_level_required": 5,
+    "name": "Gold Standard",
+    "type": "gather",
+    "target": "gold_ore",
+    "amount": 1000,
+    "description": "Mine 1,000 gold ore for the Mining Guild.",
+    "rewards": {
+      "coins": 25000,
+      "xp": 55000,
+      "xp_skill": "mining",
+      "items": {
+        "steel_bar": 40,
+        "raw_swordfish": 60
+      },
+      "reputation": 10000
+    }
+  },
+  "mining_guild_7": {
+    "id": "mining_guild_7",
+    "guild": "mining",
+    "guild_level_required": 6,
+    "name": "Adamantite Order",
+    "type": "gather",
+    "target": "adamantite_ore",
+    "amount": 2500,
+    "description": "Mine 2,500 adamantite ore for the Mining Guild.",
+    "rewards": {
+      "coins": 40000,
+      "xp": 90000,
+      "xp_skill": "mining",
+      "items": {
+        "mithril_bar": 40,
+        "raw_monkfish": 80,
+        "yew_log": 30
+      },
+      "reputation": 17500
+    }
+  },
+  "mining_guild_8": {
+    "id": "mining_guild_8",
+    "guild": "mining",
+    "guild_level_required": 7,
+    "name": "Platinum Haul",
+    "type": "gather",
+    "target": "platinum_ore",
+    "amount": 2000,
+    "description": "Mine 2,000 platinum ore for the Mining Guild.",
+    "rewards": {
+      "coins": 60000,
+      "xp": 140000,
+      "xp_skill": "mining",
+      "items": {
+        "adamantite_bar": 30,
+        "raw_shark": 60,
+        "magic_log": 20
+      },
+      "reputation": 32500
+    }
+  },
+  "mining_guild_9": {
+    "id": "mining_guild_9",
+    "guild": "mining",
+    "guild_level_required": 8,
+    "name": "Runite Reserve",
+    "type": "gather",
+    "target": "runite_ore",
+    "amount": 3500,
+    "description": "Mine 3,500 runite ore for the Mining Guild.",
+    "rewards": {
+      "coins": 80000,
+      "xp": 200000,
+      "xp_skill": "mining",
+      "items": {
+        "runite_bar": 20,
+        "raw_manta_ray": 40,
+        "redwood_log": 15
+      },
+      "reputation": 55000
+    }
+  },
+  "mining_guild_10": {
+    "id": "mining_guild_10",
+    "guild": "mining",
+    "guild_level_required": 9,
+    "name": "Master Miner",
+    "type": "gather",
+    "target": "platinum_ore",
+    "amount": 5000,
+    "description": "Prove your mastery \u2014 mine 5,000 platinum ore for the Mining Guild.",
+    "rewards": {
+      "coins": 100000,
+      "xp": 350000,
+      "xp_skill": "mining",
+      "items": {
+        "runite_bar": 40,
+        "raw_sea_turtle": 20,
+        "diamond": 3,
+        "mining_guild_cape": 1
+      },
+      "reputation": 100000
+    }
+  },
+  "fishing_guild_1": {
+    "id": "fishing_guild_1",
+    "guild": "fishing",
+    "guild_level_required": 0,
+    "name": "Shrimp Haul",
+    "type": "gather",
+    "target": "raw_shrimp",
+    "amount": 300,
+    "description": "Catch 300 raw shrimp for the Fishing Guild.",
+    "rewards": {
+      "coins": 1000,
+      "xp": 3000,
+      "xp_skill": "fishing",
+      "items": {
+        "copper_ore": 60,
+        "log": 40
+      },
+      "reputation": 250
+    }
+  },
+  "fishing_guild_2": {
+    "id": "fishing_guild_2",
+    "guild": "fishing",
+    "guild_level_required": 1,
+    "name": "Trout Run",
+    "type": "gather",
+    "target": "raw_trout",
+    "amount": 600,
+    "description": "Catch 600 raw trout for the Fishing Guild.",
+    "rewards": {
+      "coins": 2500,
+      "xp": 6000,
+      "xp_skill": "fishing",
+      "items": {
+        "iron_ore": 80,
+        "oak_log": 30
+      },
+      "reputation": 500
+    }
+  },
+  "fishing_guild_3": {
+    "id": "fishing_guild_3",
+    "guild": "fishing",
+    "guild_level_required": 2,
+    "name": "Salmon Haul",
+    "type": "gather",
+    "target": "raw_salmon",
+    "amount": 1000,
+    "description": "Catch 1,000 raw salmon for the Fishing Guild.",
+    "rewards": {
+      "coins": 5000,
+      "xp": 12000,
+      "xp_skill": "fishing",
+      "items": {
+        "coal": 100,
+        "willow_log": 40
+      },
+      "reputation": 1250
+    }
+  },
+  "fishing_guild_4": {
+    "id": "fishing_guild_4",
+    "guild": "fishing",
+    "guild_level_required": 3,
+    "name": "Tuna Delivery",
+    "type": "gather",
+    "target": "raw_tuna",
+    "amount": 800,
+    "description": "Catch 800 raw tuna for the Fishing Guild.",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "xp_skill": "fishing",
+      "items": {
+        "silver_ore": 60,
+        "emerald": 2
+      },
+      "reputation": 2500
+    }
+  },
+  "fishing_guild_5": {
+    "id": "fishing_guild_5",
+    "guild": "fishing",
+    "guild_level_required": 4,
+    "name": "Lobster Catch",
+    "type": "gather",
+    "target": "raw_lobster",
+    "amount": 1500,
+    "description": "Catch 1,500 raw lobster for the Fishing Guild.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 35000,
+      "xp_skill": "fishing",
+      "items": {
+        "mithril_ore": 80,
+        "maple_log": 40
+      },
+      "reputation": 5500
+    }
+  },
+  "fishing_guild_6": {
+    "id": "fishing_guild_6",
+    "guild": "fishing",
+    "guild_level_required": 5,
+    "name": "Swordfish Quota",
+    "type": "gather",
+    "target": "raw_swordfish",
+    "amount": 1200,
+    "description": "Catch 1,200 raw swordfish for the Fishing Guild.",
+    "rewards": {
+      "coins": 25000,
+      "xp": 55000,
+      "xp_skill": "fishing",
+      "items": {
+        "gold_ore": 50,
+        "sapphire": 5
+      },
+      "reputation": 10000
+    }
+  },
+  "fishing_guild_7": {
+    "id": "fishing_guild_7",
+    "guild": "fishing",
+    "guild_level_required": 6,
+    "name": "Monkfish Order",
+    "type": "gather",
+    "target": "raw_monkfish",
+    "amount": 2000,
+    "description": "Catch 2,000 raw monkfish for the Fishing Guild.",
+    "rewards": {
+      "coins": 40000,
+      "xp": 90000,
+      "xp_skill": "fishing",
+      "items": {
+        "adamantite_ore": 60,
+        "yew_log": 30
+      },
+      "reputation": 17500
+    }
+  },
+  "fishing_guild_8": {
+    "id": "fishing_guild_8",
+    "guild": "fishing",
+    "guild_level_required": 7,
+    "name": "Shark Hunt",
+    "type": "gather",
+    "target": "raw_shark",
+    "amount": 2000,
+    "description": "Catch 2,000 raw shark for the Fishing Guild.",
+    "rewards": {
+      "coins": 60000,
+      "xp": 140000,
+      "xp_skill": "fishing",
+      "items": {
+        "platinum_ore": 50,
+        "magic_log": 20,
+        "ruby": 3
+      },
+      "reputation": 32500
+    }
+  },
+  "fishing_guild_9": {
+    "id": "fishing_guild_9",
+    "guild": "fishing",
+    "guild_level_required": 8,
+    "name": "Manta Ray Reserve",
+    "type": "gather",
+    "target": "raw_manta_ray",
+    "amount": 3000,
+    "description": "Catch 3,000 raw manta ray for the Fishing Guild.",
+    "rewards": {
+      "coins": 80000,
+      "xp": 200000,
+      "xp_skill": "fishing",
+      "items": {
+        "runite_ore": 40,
+        "redwood_log": 15,
+        "diamond": 2
+      },
+      "reputation": 55000
+    }
+  },
+  "fishing_guild_10": {
+    "id": "fishing_guild_10",
+    "guild": "fishing",
+    "guild_level_required": 9,
+    "name": "Master Fisher",
+    "type": "gather",
+    "target": "raw_sea_turtle",
+    "amount": 1500,
+    "description": "Prove your mastery \u2014 catch 1,500 raw sea turtle for the Fishing Guild.",
+    "rewards": {
+      "coins": 100000,
+      "xp": 350000,
+      "xp_skill": "fishing",
+      "items": {
+        "runite_ore": 60,
+        "diamond": 4,
+        "redwood_log": 25,
+        "fishing_guild_cape": 1
+      },
+      "reputation": 100000
+    }
+  },
+  "woodcutting_guild_1": {
+    "id": "woodcutting_guild_1",
+    "guild": "woodcutting",
+    "guild_level_required": 0,
+    "name": "Normal Logs",
+    "type": "gather",
+    "target": "log",
+    "amount": 400,
+    "description": "Chop 400 logs for the Woodcutting Guild.",
+    "rewards": {
+      "coins": 1000,
+      "xp": 3000,
+      "xp_skill": "woodcutting",
+      "items": {
+        "raw_trout": 50,
+        "copper_ore": 40
+      },
+      "reputation": 250
+    }
+  },
+  "woodcutting_guild_2": {
+    "id": "woodcutting_guild_2",
+    "guild": "woodcutting",
+    "guild_level_required": 1,
+    "name": "Oak Delivery",
+    "type": "gather",
+    "target": "oak_log",
+    "amount": 700,
+    "description": "Chop 700 oak logs for the Woodcutting Guild.",
+    "rewards": {
+      "coins": 2500,
+      "xp": 6000,
+      "xp_skill": "woodcutting",
+      "items": {
+        "raw_salmon": 60,
+        "iron_ore": 50
+      },
+      "reputation": 500
+    }
+  },
+  "woodcutting_guild_3": {
+    "id": "woodcutting_guild_3",
+    "guild": "woodcutting",
+    "guild_level_required": 2,
+    "name": "Willow Run",
+    "type": "gather",
+    "target": "willow_log",
+    "amount": 1200,
+    "description": "Chop 1,200 willow logs for the Woodcutting Guild.",
+    "rewards": {
+      "coins": 5000,
+      "xp": 12000,
+      "xp_skill": "woodcutting",
+      "items": {
+        "raw_tuna": 80,
+        "coal": 80
+      },
+      "reputation": 1250
+    }
+  },
+  "woodcutting_guild_4": {
+    "id": "woodcutting_guild_4",
+    "guild": "woodcutting",
+    "guild_level_required": 3,
+    "name": "Maple Order",
+    "type": "gather",
+    "target": "maple_log",
+    "amount": 1500,
+    "description": "Chop 1,500 maple logs for the Woodcutting Guild.",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "xp_skill": "woodcutting",
+      "items": {
+        "raw_lobster": 60,
+        "mithril_ore": 50
+      },
+      "reputation": 2500
+    }
+  },
+  "woodcutting_guild_5": {
+    "id": "woodcutting_guild_5",
+    "guild": "woodcutting",
+    "guild_level_required": 4,
+    "name": "Yew Haul",
+    "type": "gather",
+    "target": "yew_log",
+    "amount": 1000,
+    "description": "Chop 1,000 yew logs for the Woodcutting Guild.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 35000,
+      "xp_skill": "woodcutting",
+      "items": {
+        "raw_swordfish": 60,
+        "gold_ore": 40
+      },
+      "reputation": 5500
+    }
+  },
+  "woodcutting_guild_6": {
+    "id": "woodcutting_guild_6",
+    "guild": "woodcutting",
+    "guild_level_required": 5,
+    "name": "Magic Timber",
+    "type": "gather",
+    "target": "magic_log",
+    "amount": 700,
+    "description": "Chop 700 magic logs for the Woodcutting Guild.",
+    "rewards": {
+      "coins": 25000,
+      "xp": 55000,
+      "xp_skill": "woodcutting",
+      "items": {
+        "raw_monkfish": 60,
+        "adamantite_ore": 40
+      },
+      "reputation": 10000
+    }
+  },
+  "woodcutting_guild_7": {
+    "id": "woodcutting_guild_7",
+    "guild": "woodcutting",
+    "guild_level_required": 6,
+    "name": "Redwood Stockpile",
+    "type": "gather",
+    "target": "redwood_log",
+    "amount": 1200,
+    "description": "Chop 1,200 redwood logs for the Woodcutting Guild.",
+    "rewards": {
+      "coins": 40000,
+      "xp": 90000,
+      "xp_skill": "woodcutting",
+      "items": {
+        "raw_shark": 50,
+        "platinum_ore": 30
+      },
+      "reputation": 17500
+    }
+  },
+  "woodcutting_guild_8": {
+    "id": "woodcutting_guild_8",
+    "guild": "woodcutting",
+    "guild_level_required": 7,
+    "name": "Ancient Timber",
+    "type": "gather",
+    "target": "magic_log",
+    "amount": 2500,
+    "description": "Chop 2,500 magic logs for the Woodcutting Guild.",
+    "rewards": {
+      "coins": 60000,
+      "xp": 140000,
+      "xp_skill": "woodcutting",
+      "items": {
+        "raw_manta_ray": 40,
+        "runite_ore": 30
+      },
+      "reputation": 32500
+    }
+  },
+  "woodcutting_guild_9": {
+    "id": "woodcutting_guild_9",
+    "guild": "woodcutting",
+    "guild_level_required": 8,
+    "name": "Redwood Legacy",
+    "type": "gather",
+    "target": "redwood_log",
+    "amount": 3500,
+    "description": "Chop 3,500 redwood logs for the Woodcutting Guild.",
+    "rewards": {
+      "coins": 80000,
+      "xp": 200000,
+      "xp_skill": "woodcutting",
+      "items": {
+        "raw_sea_turtle": 20,
+        "diamond": 2
+      },
+      "reputation": 55000
+    }
+  },
+  "woodcutting_guild_10": {
+    "id": "woodcutting_guild_10",
+    "guild": "woodcutting",
+    "guild_level_required": 9,
+    "name": "Master Woodcutter",
+    "type": "gather",
+    "target": "redwood_log",
+    "amount": 5000,
+    "description": "Prove your mastery \u2014 chop 5,000 magic logs for the Woodcutting Guild.",
+    "rewards": {
+      "coins": 100000,
+      "xp": 350000,
+      "xp_skill": "woodcutting",
+      "items": {
+        "runite_ore": 50,
+        "diamond": 4,
+        "raw_sea_turtle": 30,
+        "woodcutting_guild_cape": 1
+      },
+      "reputation": 100000
+    }
+  },
+  "farming_guild_1": {
+    "id": "farming_guild_1",
+    "guild": "farming",
+    "guild_level_required": 0,
+    "name": "Potato Harvest",
+    "type": "gather",
+    "target": "potato",
+    "amount": 300,
+    "description": "Harvest 300 potatoes for the Farming Guild.",
+    "rewards": {
+      "coins": 1000,
+      "xp": 3000,
+      "xp_skill": "farming",
+      "items": {
+        "raw_trout": 60,
+        "copper_ore": 50
+      },
+      "reputation": 250
+    }
+  },
+  "farming_guild_2": {
+    "id": "farming_guild_2",
+    "guild": "farming",
+    "guild_level_required": 1,
+    "name": "Carrot Delivery",
+    "type": "gather",
+    "target": "carrot",
+    "amount": 500,
+    "description": "Harvest 500 carrots for the Farming Guild.",
+    "rewards": {
+      "coins": 2500,
+      "xp": 6000,
+      "xp_skill": "farming",
+      "items": {
+        "raw_salmon": 60,
+        "iron_ore": 60
+      },
+      "reputation": 500
+    }
+  },
+  "farming_guild_3": {
+    "id": "farming_guild_3",
+    "guild": "farming",
+    "guild_level_required": 2,
+    "name": "Corn Stockpile",
+    "type": "gather",
+    "target": "corn",
+    "amount": 700,
+    "description": "Harvest 700 corn for the Farming Guild.",
+    "rewards": {
+      "coins": 5000,
+      "xp": 12000,
+      "xp_skill": "farming",
+      "items": {
+        "raw_tuna": 80,
+        "coal": 80,
+        "oak_log": 40
+      },
+      "reputation": 1250
+    }
+  },
+  "farming_guild_4": {
+    "id": "farming_guild_4",
+    "guild": "farming",
+    "guild_level_required": 3,
+    "name": "Pumpkin Patch",
+    "type": "gather",
+    "target": "pumpkin",
+    "amount": 300,
+    "description": "Harvest 300 pumpkins for the Farming Guild.",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "xp_skill": "farming",
+      "items": {
+        "raw_lobster": 60,
+        "mithril_ore": 60
+      },
+      "reputation": 2500
+    }
+  },
+  "farming_guild_5": {
+    "id": "farming_guild_5",
+    "guild": "farming",
+    "guild_level_required": 4,
+    "name": "Strawberry Season",
+    "type": "gather",
+    "target": "strawberry",
+    "amount": 500,
+    "description": "Harvest 500 strawberries for the Farming Guild.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 35000,
+      "xp_skill": "farming",
+      "items": {
+        "raw_swordfish": 60,
+        "adamantite_ore": 40
+      },
+      "reputation": 5500
+    }
+  },
+  "farming_guild_6": {
+    "id": "farming_guild_6",
+    "guild": "farming",
+    "guild_level_required": 5,
+    "name": "Magic Herbs",
+    "type": "gather",
+    "target": "magic_herb",
+    "amount": 200,
+    "description": "Harvest 200 magic herbs for the Farming Guild.",
+    "rewards": {
+      "coins": 25000,
+      "xp": 55000,
+      "xp_skill": "farming",
+      "items": {
+        "raw_monkfish": 60,
+        "yew_log": 30
+      },
+      "reputation": 10000
+    }
+  },
+  "farming_guild_7": {
+    "id": "farming_guild_7",
+    "guild": "farming",
+    "guild_level_required": 6,
+    "name": "Dragon Fruit Yield",
+    "type": "gather",
+    "target": "dragon_fruit",
+    "amount": 150,
+    "description": "Harvest 150 dragon fruits for the Farming Guild.",
+    "rewards": {
+      "coins": 40000,
+      "xp": 90000,
+      "xp_skill": "farming",
+      "items": {
+        "raw_shark": 50,
+        "magic_log": 20
+      },
+      "reputation": 17500
+    }
+  },
+  "farming_guild_8": {
+    "id": "farming_guild_8",
+    "guild": "farming",
+    "guild_level_required": 7,
+    "name": "Golden Wheat",
+    "type": "gather",
+    "target": "golden_wheat",
+    "amount": 350,
+    "description": "Harvest 350 golden wheat for the Farming Guild.",
+    "rewards": {
+      "coins": 60000,
+      "xp": 140000,
+      "xp_skill": "farming",
+      "items": {
+        "raw_manta_ray": 40,
+        "runite_ore": 30,
+        "redwood_log": 15
+      },
+      "reputation": 32500
+    }
+  },
+  "farming_guild_9": {
+    "id": "farming_guild_9",
+    "guild": "farming",
+    "guild_level_required": 8,
+    "name": "Spirit Herbs",
+    "type": "gather",
+    "target": "spirit_herb",
+    "amount": 200,
+    "description": "Harvest 200 spirit herbs for the Farming Guild.",
+    "rewards": {
+      "coins": 80000,
+      "xp": 200000,
+      "xp_skill": "farming",
+      "items": {
+        "raw_sea_turtle": 20,
+        "diamond": 2,
+        "runite_ore": 40
+      },
+      "reputation": 55000
+    }
+  },
+  "farming_guild_10": {
+    "id": "farming_guild_10",
+    "guild": "farming",
+    "guild_level_required": 9,
+    "name": "Master Farmer",
+    "type": "gather",
+    "target": "void_lotus",
+    "amount": 100,
+    "description": "Prove your mastery \u2014 harvest 100 void lotus for the Farming Guild.",
+    "rewards": {
+      "coins": 100000,
+      "xp": 350000,
+      "xp_skill": "farming",
+      "items": {
+        "runite_ore": 50,
+        "redwood_log": 25,
+        "diamond": 4,
+        "farming_guild_cape": 1
+      },
+      "reputation": 100000
+    }
+  },
+  "firemaking_guild_1": {
+    "id": "firemaking_guild_1",
+    "guild": "firemaking",
+    "guild_level_required": 0,
+    "name": "First Flames",
+    "type": "gather",
+    "target": "ashes",
+    "amount": 400,
+    "description": "Burn 400 logs for the Firemakers Guild.",
+    "rewards": {
+      "coins": 1000,
+      "xp": 3000,
+      "xp_skill": "firemaking",
+      "items": {
+        "log": 80,
+        "raw_trout": 40
+      },
+      "reputation": 250
+    }
+  },
+  "firemaking_guild_2": {
+    "id": "firemaking_guild_2",
+    "guild": "firemaking",
+    "guild_level_required": 1,
+    "name": "Oak Pyre",
+    "type": "gather",
+    "target": "oak_ashes",
+    "amount": 700,
+    "description": "Burn 700 oak logs for the Firemakers Guild.",
+    "rewards": {
+      "coins": 2500,
+      "xp": 6000,
+      "xp_skill": "firemaking",
+      "items": {
+        "oak_log": 100,
+        "raw_salmon": 40
+      },
+      "reputation": 500
+    }
+  },
+  "firemaking_guild_3": {
+    "id": "firemaking_guild_3",
+    "guild": "firemaking",
+    "guild_level_required": 2,
+    "name": "Willow Ember",
+    "type": "gather",
+    "target": "willow_ashes",
+    "amount": 1200,
+    "description": "Burn 1,200 willow logs for the Firemakers Guild.",
+    "rewards": {
+      "coins": 5000,
+      "xp": 12000,
+      "xp_skill": "firemaking",
+      "items": {
+        "willow_log": 120,
+        "raw_tuna": 60
+      },
+      "reputation": 1250
+    }
+  },
+  "firemaking_guild_4": {
+    "id": "firemaking_guild_4",
+    "guild": "firemaking",
+    "guild_level_required": 3,
+    "name": "Maple Blaze",
+    "type": "gather",
+    "target": "maple_ashes",
+    "amount": 1800,
+    "description": "Burn 1,800 maple logs for the Firemakers Guild.",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "xp_skill": "firemaking",
+      "items": {
+        "maple_log": 100,
+        "raw_lobster": 50
+      },
+      "reputation": 2500
+    }
+  },
+  "firemaking_guild_5": {
+    "id": "firemaking_guild_5",
+    "guild": "firemaking",
+    "guild_level_required": 4,
+    "name": "Yew Inferno",
+    "type": "gather",
+    "target": "yew_ashes",
+    "amount": 1200,
+    "description": "Burn 1,200 yew logs for the Firemakers Guild.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 35000,
+      "xp_skill": "firemaking",
+      "items": {
+        "yew_log": 80,
+        "raw_swordfish": 50
+      },
+      "reputation": 5500
+    }
+  },
+  "firemaking_guild_6": {
+    "id": "firemaking_guild_6",
+    "guild": "firemaking",
+    "guild_level_required": 5,
+    "name": "Magic Pyre",
+    "type": "gather",
+    "target": "magic_ashes",
+    "amount": 800,
+    "description": "Burn 800 magic logs for the Firemakers Guild.",
+    "rewards": {
+      "coins": 25000,
+      "xp": 55000,
+      "xp_skill": "firemaking",
+      "items": {
+        "magic_log": 60,
+        "raw_monkfish": 50
+      },
+      "reputation": 10000
+    }
+  },
+  "firemaking_guild_7": {
+    "id": "firemaking_guild_7",
+    "guild": "firemaking",
+    "guild_level_required": 6,
+    "name": "Redwood Bonfire",
+    "type": "gather",
+    "target": "redwood_ashes",
+    "amount": 600,
+    "description": "Burn 600 redwood logs for the Firemakers Guild.",
+    "rewards": {
+      "coins": 40000,
+      "xp": 90000,
+      "xp_skill": "firemaking",
+      "items": {
+        "redwood_log": 60,
+        "raw_shark": 40
+      },
+      "reputation": 17500
+    }
+  },
+  "firemaking_guild_8": {
+    "id": "firemaking_guild_8",
+    "guild": "firemaking",
+    "guild_level_required": 7,
+    "name": "Ancient Flame",
+    "type": "gather",
+    "target": "magic_ashes",
+    "amount": 2000,
+    "description": "Burn 2,000 magic logs for the Firemakers Guild.",
+    "rewards": {
+      "coins": 60000,
+      "xp": 140000,
+      "xp_skill": "firemaking",
+      "items": {
+        "runite_ore": 30,
+        "raw_manta_ray": 30
+      },
+      "reputation": 32500
+    }
+  },
+  "firemaking_guild_9": {
+    "id": "firemaking_guild_9",
+    "guild": "firemaking",
+    "guild_level_required": 8,
+    "name": "Redwood Legacy",
+    "type": "gather",
+    "target": "redwood_ashes",
+    "amount": 3000,
+    "description": "Burn 3,000 redwood logs for the Firemakers Guild.",
+    "rewards": {
+      "coins": 80000,
+      "xp": 200000,
+      "xp_skill": "firemaking",
+      "items": {
+        "diamond": 3,
+        "raw_sea_turtle": 20
+      },
+      "reputation": 55000
+    }
+  },
+  "firemaking_guild_10": {
+    "id": "firemaking_guild_10",
+    "guild": "firemaking",
+    "guild_level_required": 9,
+    "name": "Master Firemaker",
+    "type": "gather",
+    "target": "redwood_ashes",
+    "amount": 5000,
+    "description": "Prove your mastery \u2014 burn 5,000 magic logs for the Firemakers Guild.",
+    "rewards": {
+      "coins": 100000,
+      "xp": 350000,
+      "xp_skill": "firemaking",
+      "items": {
+        "redwood_log": 150,
+        "diamond": 5,
+        "runite_ore": 40,
+        "firemaking_guild_cape": 1
+      },
+      "reputation": 100000
+    }
+  },
+  "agility_guild_1": {
+    "id": "agility_guild_1",
+    "guild": "agility",
+    "guild_level_required": 0,
+    "name": "First Laps",
+    "type": "sessions",
+    "target": "agility",
+    "amount": 3,
+    "description": "Complete 3 agility sessions for the Agility Guild.",
+    "rewards": {
+      "coins": 1000,
+      "xp": 3000,
+      "xp_skill": "agility",
+      "items": {
+        "raw_trout": 60,
+        "copper_ore": 50
+      },
+      "reputation": 250
+    }
+  },
+  "agility_guild_2": {
+    "id": "agility_guild_2",
+    "guild": "agility",
+    "guild_level_required": 1,
+    "name": "Dedicated Runner",
+    "type": "sessions",
+    "target": "agility",
+    "amount": 6,
+    "description": "Complete 6 agility sessions for the Agility Guild.",
+    "rewards": {
+      "coins": 2500,
+      "xp": 6000,
+      "xp_skill": "agility",
+      "items": {
+        "raw_salmon": 60,
+        "iron_ore": 60
+      },
+      "reputation": 500
+    }
+  },
+  "agility_guild_3": {
+    "id": "agility_guild_3",
+    "guild": "agility",
+    "guild_level_required": 2,
+    "name": "Endurance Run",
+    "type": "sessions",
+    "target": "agility",
+    "amount": 12,
+    "description": "Complete 12 agility sessions for the Agility Guild.",
+    "rewards": {
+      "coins": 5000,
+      "xp": 12000,
+      "xp_skill": "agility",
+      "items": {
+        "raw_tuna": 80,
+        "coal": 80,
+        "oak_log": 40
+      },
+      "reputation": 1250
+    }
+  },
+  "agility_guild_4": {
+    "id": "agility_guild_4",
+    "guild": "agility",
+    "guild_level_required": 3,
+    "name": "Obstacle Expert",
+    "type": "sessions",
+    "target": "agility",
+    "amount": 20,
+    "description": "Complete 20 agility sessions for the Agility Guild.",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "xp_skill": "agility",
+      "items": {
+        "raw_lobster": 60,
+        "mithril_ore": 50
+      },
+      "reputation": 2500
+    }
+  },
+  "agility_guild_5": {
+    "id": "agility_guild_5",
+    "guild": "agility",
+    "guild_level_required": 4,
+    "name": "Swift Feet",
+    "type": "sessions",
+    "target": "agility",
+    "amount": 35,
+    "description": "Complete 35 agility sessions for the Agility Guild.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 35000,
+      "xp_skill": "agility",
+      "items": {
+        "raw_swordfish": 60,
+        "adamantite_ore": 40
+      },
+      "reputation": 5500
+    }
+  },
+  "agility_guild_6": {
+    "id": "agility_guild_6",
+    "guild": "agility",
+    "guild_level_required": 5,
+    "name": "Course Master",
+    "type": "sessions",
+    "target": "agility",
+    "amount": 55,
+    "description": "Complete 55 agility sessions for the Agility Guild.",
+    "rewards": {
+      "coins": 25000,
+      "xp": 55000,
+      "xp_skill": "agility",
+      "items": {
+        "raw_monkfish": 60,
+        "yew_log": 30,
+        "gold_ore": 30
+      },
+      "reputation": 10000
+    }
+  },
+  "agility_guild_7": {
+    "id": "agility_guild_7",
+    "guild": "agility",
+    "guild_level_required": 6,
+    "name": "Elite Runner",
+    "type": "sessions",
+    "target": "agility",
+    "amount": 80,
+    "description": "Complete 80 agility sessions for the Agility Guild.",
+    "rewards": {
+      "coins": 40000,
+      "xp": 90000,
+      "xp_skill": "agility",
+      "items": {
+        "raw_shark": 50,
+        "platinum_ore": 30,
+        "magic_log": 20
+      },
+      "reputation": 17500
+    }
+  },
+  "agility_guild_8": {
+    "id": "agility_guild_8",
+    "guild": "agility",
+    "guild_level_required": 7,
+    "name": "Relentless",
+    "type": "sessions",
+    "target": "agility",
+    "amount": 120,
+    "description": "Complete 120 agility sessions for the Agility Guild.",
+    "rewards": {
+      "coins": 60000,
+      "xp": 140000,
+      "xp_skill": "agility",
+      "items": {
+        "raw_manta_ray": 40,
+        "runite_ore": 30
+      },
+      "reputation": 32500
+    }
+  },
+  "agility_guild_9": {
+    "id": "agility_guild_9",
+    "guild": "agility",
+    "guild_level_required": 8,
+    "name": "Indomitable",
+    "type": "sessions",
+    "target": "agility",
+    "amount": 170,
+    "description": "Complete 170 agility sessions for the Agility Guild.",
+    "rewards": {
+      "coins": 80000,
+      "xp": 200000,
+      "xp_skill": "agility",
+      "items": {
+        "raw_sea_turtle": 20,
+        "diamond": 2,
+        "redwood_log": 20
+      },
+      "reputation": 55000
+    }
+  },
+  "agility_guild_10": {
+    "id": "agility_guild_10",
+    "guild": "agility",
+    "guild_level_required": 9,
+    "name": "Master of Movement",
+    "type": "sessions",
+    "target": "agility",
+    "amount": 250,
+    "description": "Prove your mastery \u2014 complete 250 agility sessions for the Agility Guild.",
+    "rewards": {
+      "coins": 100000,
+      "xp": 350000,
+      "xp_skill": "agility",
+      "items": {
+        "diamond": 5,
+        "runite_ore": 50,
+        "raw_sea_turtle": 30,
+        "agility_guild_cape": 1
+      },
+      "reputation": 100000
+    }
+  },
+  "smithing_guild_1": {
+    "id": "smithing_guild_1",
+    "guild": "smithing",
+    "guild_level_required": 0,
+    "name": "Bronze Basics",
+    "type": "craft",
+    "target": "bronze_bar",
+    "amount": 200,
+    "description": "Smelt 200 bronze bars for the Smithing Guild.",
+    "rewards": {
+      "coins": 1000,
+      "xp": 3000,
+      "xp_skill": "smithing",
+      "items": {
+        "copper_ore": 100,
+        "tin_ore": 100
+      },
+      "reputation": 250
+    }
+  },
+  "smithing_guild_2": {
+    "id": "smithing_guild_2",
+    "guild": "smithing",
+    "guild_level_required": 1,
+    "name": "Iron Works",
+    "type": "craft",
+    "target": "iron_bar",
+    "amount": 400,
+    "description": "Smelt 400 iron bars for the Smithing Guild.",
+    "rewards": {
+      "coins": 2500,
+      "xp": 6000,
+      "xp_skill": "smithing",
+      "items": {
+        "iron_ore": 250,
+        "coal": 100
+      },
+      "reputation": 500
+    }
+  },
+  "smithing_guild_3": {
+    "id": "smithing_guild_3",
+    "guild": "smithing",
+    "guild_level_required": 2,
+    "name": "Steel Production",
+    "type": "craft",
+    "target": "steel_bar",
+    "amount": 600,
+    "description": "Smelt 600 steel bars for the Smithing Guild.",
+    "rewards": {
+      "coins": 5000,
+      "xp": 12000,
+      "xp_skill": "smithing",
+      "items": {
+        "iron_ore": 300,
+        "coal": 200
+      },
+      "reputation": 1250
+    }
+  },
+  "smithing_guild_4": {
+    "id": "smithing_guild_4",
+    "guild": "smithing",
+    "guild_level_required": 3,
+    "name": "Mithril Foundry",
+    "type": "craft",
+    "target": "mithril_bar",
+    "amount": 400,
+    "description": "Smelt 400 mithril bars for the Smithing Guild.",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "xp_skill": "smithing",
+      "items": {
+        "mithril_ore": 200,
+        "coal": 300
+      },
+      "reputation": 2500
+    }
+  },
+  "smithing_guild_5": {
+    "id": "smithing_guild_5",
+    "guild": "smithing",
+    "guild_level_required": 4,
+    "name": "Adamantite Forge",
+    "type": "craft",
+    "target": "adamantite_bar",
+    "amount": 300,
+    "description": "Smelt 300 adamantite bars for the Smithing Guild.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 35000,
+      "xp_skill": "smithing",
+      "items": {
+        "adamantite_ore": 180,
+        "coal": 400
+      },
+      "reputation": 5500
+    }
+  },
+  "smithing_guild_6": {
+    "id": "smithing_guild_6",
+    "guild": "smithing",
+    "guild_level_required": 5,
+    "name": "Platinum Smelter",
+    "type": "craft",
+    "target": "platinum_bar",
+    "amount": 200,
+    "description": "Smelt 200 platinum bars for the Smithing Guild.",
+    "rewards": {
+      "coins": 25000,
+      "xp": 55000,
+      "xp_skill": "smithing",
+      "items": {
+        "platinum_ore": 150,
+        "coal": 400
+      },
+      "reputation": 10000
+    }
+  },
+  "smithing_guild_7": {
+    "id": "smithing_guild_7",
+    "guild": "smithing",
+    "guild_level_required": 6,
+    "name": "Runite Smelter",
+    "type": "craft",
+    "target": "runite_bar",
+    "amount": 150,
+    "description": "Smelt 150 runite bars for the Smithing Guild.",
+    "rewards": {
+      "coins": 40000,
+      "xp": 90000,
+      "xp_skill": "smithing",
+      "items": {
+        "runite_ore": 120,
+        "coal": 400
+      },
+      "reputation": 17500
+    }
+  },
+  "smithing_guild_8": {
+    "id": "smithing_guild_8",
+    "guild": "smithing",
+    "guild_level_required": 7,
+    "name": "Weapons Cache",
+    "type": "craft",
+    "target": "mithril_bar",
+    "amount": 700,
+    "description": "Smelt 700 mithril bars for the Smithing Guild.",
+    "rewards": {
+      "coins": 60000,
+      "xp": 140000,
+      "xp_skill": "smithing",
+      "items": {
+        "mithril_ore": 400,
+        "coal": 600,
+        "raw_shark": 30
+      },
+      "reputation": 32500
+    }
+  },
+  "smithing_guild_9": {
+    "id": "smithing_guild_9",
+    "guild": "smithing",
+    "guild_level_required": 8,
+    "name": "Armour Vault",
+    "type": "craft",
+    "target": "adamantite_bar",
+    "amount": 500,
+    "description": "Smelt 500 adamantite bars for the Smithing Guild.",
+    "rewards": {
+      "coins": 80000,
+      "xp": 200000,
+      "xp_skill": "smithing",
+      "items": {
+        "adamantite_ore": 400,
+        "runite_ore": 50,
+        "diamond": 3
+      },
+      "reputation": 55000
+    }
+  },
+  "smithing_guild_10": {
+    "id": "smithing_guild_10",
+    "guild": "smithing",
+    "guild_level_required": 9,
+    "name": "Master Smith",
+    "type": "craft",
+    "target": "runite_bar",
+    "amount": 350,
+    "description": "Prove your mastery \u2014 smelt 350 runite bars for the Smithing Guild.",
+    "rewards": {
+      "coins": 100000,
+      "xp": 350000,
+      "xp_skill": "smithing",
+      "items": {
+        "runite_ore": 250,
+        "diamond": 5,
+        "raw_manta_ray": 30,
+        "smithing_guild_cape": 1
+      },
+      "reputation": 100000
+    }
+  },
+  "cooking_guild_1": {
+    "id": "cooking_guild_1",
+    "guild": "cooking",
+    "guild_level_required": 0,
+    "name": "Chicken Run",
+    "type": "craft",
+    "target": "cooked_chicken",
+    "amount": 300,
+    "description": "Cook 300 chicken for the Cooks Guild.",
+    "rewards": {
+      "coins": 1000,
+      "xp": 3000,
+      "xp_skill": "cooking",
+      "items": {
+        "raw_chicken": 350,
+        "copper_ore": 40
+      },
+      "reputation": 250
+    }
+  },
+  "cooking_guild_2": {
+    "id": "cooking_guild_2",
+    "guild": "cooking",
+    "guild_level_required": 1,
+    "name": "Trout Feast",
+    "type": "craft",
+    "target": "trout",
+    "amount": 600,
+    "description": "Cook 600 trout for the Cooks Guild.",
+    "rewards": {
+      "coins": 2500,
+      "xp": 6000,
+      "xp_skill": "cooking",
+      "items": {
+        "raw_trout": 350,
+        "iron_ore": 50
+      },
+      "reputation": 500
+    }
+  },
+  "cooking_guild_3": {
+    "id": "cooking_guild_3",
+    "guild": "cooking",
+    "guild_level_required": 2,
+    "name": "Beef Order",
+    "type": "craft",
+    "target": "cooked_beef",
+    "amount": 800,
+    "description": "Cook 800 beef for the Cooks Guild.",
+    "rewards": {
+      "coins": 5000,
+      "xp": 12000,
+      "xp_skill": "cooking",
+      "items": {
+        "raw_beef": 900,
+        "coal": 60
+      },
+      "reputation": 1250
+    }
+  },
+  "cooking_guild_4": {
+    "id": "cooking_guild_4",
+    "guild": "cooking",
+    "guild_level_required": 3,
+    "name": "Lobster Spread",
+    "type": "craft",
+    "target": "lobster",
+    "amount": 1000,
+    "description": "Cook 1,000 lobster for the Cooks Guild.",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "xp_skill": "cooking",
+      "items": {
+        "raw_lobster": 300,
+        "mithril_ore": 40
+      },
+      "reputation": 2500
+    }
+  },
+  "cooking_guild_5": {
+    "id": "cooking_guild_5",
+    "guild": "cooking",
+    "guild_level_required": 4,
+    "name": "Swordfish Gala",
+    "type": "craft",
+    "target": "swordfish",
+    "amount": 800,
+    "description": "Cook 800 swordfish for the Cooks Guild.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 35000,
+      "xp_skill": "cooking",
+      "items": {
+        "raw_swordfish": 250,
+        "adamantite_ore": 30
+      },
+      "reputation": 5500
+    }
+  },
+  "cooking_guild_6": {
+    "id": "cooking_guild_6",
+    "guild": "cooking",
+    "guild_level_required": 5,
+    "name": "Monkfish Mastery",
+    "type": "craft",
+    "target": "monkfish",
+    "amount": 1500,
+    "description": "Cook 1,500 monkfish for the Cooks Guild.",
+    "rewards": {
+      "coins": 25000,
+      "xp": 55000,
+      "xp_skill": "cooking",
+      "items": {
+        "raw_monkfish": 250,
+        "gold_ore": 40
+      },
+      "reputation": 10000
+    }
+  },
+  "cooking_guild_7": {
+    "id": "cooking_guild_7",
+    "guild": "cooking",
+    "guild_level_required": 6,
+    "name": "Shark Special",
+    "type": "craft",
+    "target": "shark",
+    "amount": 1000,
+    "description": "Cook 1,000 shark for the Cooks Guild.",
+    "rewards": {
+      "coins": 40000,
+      "xp": 90000,
+      "xp_skill": "cooking",
+      "items": {
+        "raw_shark": 200,
+        "platinum_ore": 25
+      },
+      "reputation": 17500
+    }
+  },
+  "cooking_guild_8": {
+    "id": "cooking_guild_8",
+    "guild": "cooking",
+    "guild_level_required": 7,
+    "name": "Mutton Marathon",
+    "type": "craft",
+    "target": "cooked_mutton",
+    "amount": 2500,
+    "description": "Cook 2,500 portions of mutton for the Cooks Guild.",
+    "rewards": {
+      "coins": 60000,
+      "xp": 140000,
+      "xp_skill": "cooking",
+      "items": {
+        "raw_mutton": 2800,
+        "runite_ore": 25
+      },
+      "reputation": 32500
+    }
+  },
+  "cooking_guild_9": {
+    "id": "cooking_guild_9",
+    "guild": "cooking",
+    "guild_level_required": 8,
+    "name": "Sea Turtle Feast",
+    "type": "craft",
+    "target": "sea_turtle",
+    "amount": 2000,
+    "description": "Cook 2,000 manta ray for the Cooks Guild.",
+    "rewards": {
+      "coins": 80000,
+      "xp": 200000,
+      "xp_skill": "cooking",
+      "items": {
+        "raw_sea_turtle": 100,
+        "diamond": 2
+      },
+      "reputation": 55000
+    }
+  },
+  "cooking_guild_10": {
+    "id": "cooking_guild_10",
+    "guild": "cooking",
+    "guild_level_required": 9,
+    "name": "Master Chef",
+    "type": "craft",
+    "target": "sea_turtle",
+    "amount": 1000,
+    "description": "Prove your mastery \u2014 cook 1,000 sea turtle for the Cooks Guild.",
+    "rewards": {
+      "coins": 100000,
+      "xp": 350000,
+      "xp_skill": "cooking",
+      "items": {
+        "raw_sea_turtle": 250,
+        "diamond": 5,
+        "runite_ore": 40,
+        "cooking_guild_cape": 1
+      },
+      "reputation": 100000
+    }
+  },
+  "fletching_guild_1": {
+    "id": "fletching_guild_1",
+    "guild": "fletching",
+    "guild_level_required": 0,
+    "name": "Arrow Shafts",
+    "type": "craft",
+    "target": "arrow_shaft",
+    "amount": 500,
+    "description": "Fletch 500 arrow shafts for the Fletchers Guild.",
+    "rewards": {
+      "coins": 1000,
+      "xp": 3000,
+      "xp_skill": "fletching",
+      "items": {
+        "log": 100,
+        "copper_ore": 40
+      },
+      "reputation": 250
+    }
+  },
+  "fletching_guild_2": {
+    "id": "fletching_guild_2",
+    "guild": "fletching",
+    "guild_level_required": 1,
+    "name": "Bronze Arrows",
+    "type": "craft",
+    "target": "bronze_arrow",
+    "amount": 800,
+    "description": "Fletch 800 bronze arrows for the Fletchers Guild.",
+    "rewards": {
+      "coins": 2500,
+      "xp": 6000,
+      "xp_skill": "fletching",
+      "items": {
+        "log": 120,
+        "iron_ore": 60
+      },
+      "reputation": 500
+    }
+  },
+  "fletching_guild_3": {
+    "id": "fletching_guild_3",
+    "guild": "fletching",
+    "guild_level_required": 2,
+    "name": "Iron Flight",
+    "type": "craft",
+    "target": "iron_arrow",
+    "amount": 1200,
+    "description": "Fletch 1,200 iron arrows for the Fletchers Guild.",
+    "rewards": {
+      "coins": 5000,
+      "xp": 12000,
+      "xp_skill": "fletching",
+      "items": {
+        "oak_log": 100,
+        "coal": 80
+      },
+      "reputation": 1250
+    }
+  },
+  "fletching_guild_4": {
+    "id": "fletching_guild_4",
+    "guild": "fletching",
+    "guild_level_required": 3,
+    "name": "Steel Volley",
+    "type": "craft",
+    "target": "steel_arrow",
+    "amount": 1500,
+    "description": "Fletch 1,500 steel arrows for the Fletchers Guild.",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "xp_skill": "fletching",
+      "items": {
+        "willow_log": 100,
+        "mithril_ore": 50
+      },
+      "reputation": 2500
+    }
+  },
+  "fletching_guild_5": {
+    "id": "fletching_guild_5",
+    "guild": "fletching",
+    "guild_level_required": 4,
+    "name": "Mithril Rain",
+    "type": "craft",
+    "target": "mithril_arrow",
+    "amount": 2000,
+    "description": "Fletch 2,000 mithril arrows for the Fletchers Guild.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 35000,
+      "xp_skill": "fletching",
+      "items": {
+        "maple_log": 80,
+        "adamantite_ore": 40
+      },
+      "reputation": 5500
+    }
+  },
+  "fletching_guild_6": {
+    "id": "fletching_guild_6",
+    "guild": "fletching",
+    "guild_level_required": 5,
+    "name": "Adamantite Arsenal",
+    "type": "craft",
+    "target": "adamantite_arrow",
+    "amount": 2500,
+    "description": "Fletch 2,500 adamantite arrows for the Fletchers Guild.",
+    "rewards": {
+      "coins": 25000,
+      "xp": 55000,
+      "xp_skill": "fletching",
+      "items": {
+        "yew_log": 60,
+        "platinum_ore": 30
+      },
+      "reputation": 10000
+    }
+  },
+  "fletching_guild_7": {
+    "id": "fletching_guild_7",
+    "guild": "fletching",
+    "guild_level_required": 6,
+    "name": "Runite Quiver",
+    "type": "craft",
+    "target": "runite_arrow",
+    "amount": 3000,
+    "description": "Fletch 3,000 runite arrows for the Fletchers Guild.",
+    "rewards": {
+      "coins": 40000,
+      "xp": 90000,
+      "xp_skill": "fletching",
+      "items": {
+        "magic_log": 50,
+        "runite_ore": 30
+      },
+      "reputation": 17500
+    }
+  },
+  "fletching_guild_8": {
+    "id": "fletching_guild_8",
+    "guild": "fletching",
+    "guild_level_required": 7,
+    "name": "Yew Longbows",
+    "type": "craft",
+    "target": "yew_longbow",
+    "amount": 150,
+    "description": "Fletch 150 yew longbows for the Fletchers Guild.",
+    "rewards": {
+      "coins": 60000,
+      "xp": 140000,
+      "xp_skill": "fletching",
+      "items": {
+        "yew_log": 120,
+        "raw_shark": 30
+      },
+      "reputation": 32500
+    }
+  },
+  "fletching_guild_9": {
+    "id": "fletching_guild_9",
+    "guild": "fletching",
+    "guild_level_required": 8,
+    "name": "Magic Longbows",
+    "type": "craft",
+    "target": "magic_longbow",
+    "amount": 120,
+    "description": "Fletch 120 magic longbows for the Fletchers Guild.",
+    "rewards": {
+      "coins": 80000,
+      "xp": 200000,
+      "xp_skill": "fletching",
+      "items": {
+        "magic_log": 100,
+        "diamond": 2
+      },
+      "reputation": 55000
+    }
+  },
+  "fletching_guild_10": {
+    "id": "fletching_guild_10",
+    "guild": "fletching",
+    "guild_level_required": 9,
+    "name": "Master Fletcher",
+    "type": "craft",
+    "target": "runite_arrow",
+    "amount": 5000,
+    "description": "Prove your mastery \u2014 fletch 5,000 runite arrows for the Fletchers Guild.",
+    "rewards": {
+      "coins": 100000,
+      "xp": 350000,
+      "xp_skill": "fletching",
+      "items": {
+        "runite_ore": 50,
+        "magic_log": 80,
+        "diamond": 4,
+        "fletching_guild_cape": 1
+      },
+      "reputation": 100000
+    }
+  },
+  "crafting_guild_1": {
+    "id": "crafting_guild_1",
+    "guild": "crafting",
+    "guild_level_required": 0,
+    "name": "Silver Jewels",
+    "type": "craft",
+    "target": "silver_ring",
+    "amount": 150,
+    "description": "Craft 150 silver rings for the Crafting Guild.",
+    "rewards": {
+      "coins": 1000,
+      "xp": 3000,
+      "xp_skill": "crafting",
+      "items": {
+        "silver_ore": 120,
+        "raw_trout": 40
+      },
+      "reputation": 250
+    }
+  },
+  "crafting_guild_2": {
+    "id": "crafting_guild_2",
+    "guild": "crafting",
+    "guild_level_required": 1,
+    "name": "Gold Trinkets",
+    "type": "craft",
+    "target": "gold_ring",
+    "amount": 200,
+    "description": "Craft 200 gold rings for the Crafting Guild.",
+    "rewards": {
+      "coins": 2500,
+      "xp": 6000,
+      "xp_skill": "crafting",
+      "items": {
+        "gold_ore": 120,
+        "raw_salmon": 50
+      },
+      "reputation": 500
+    }
+  },
+  "crafting_guild_3": {
+    "id": "crafting_guild_3",
+    "guild": "crafting",
+    "guild_level_required": 2,
+    "name": "Sapphire Set",
+    "type": "craft",
+    "target": "gold_sapphire_ring",
+    "amount": 150,
+    "description": "Craft 150 gold sapphire rings for the Crafting Guild.",
+    "rewards": {
+      "coins": 5000,
+      "xp": 12000,
+      "xp_skill": "crafting",
+      "items": {
+        "gold_ore": 100,
+        "sapphire": 100,
+        "raw_tuna": 60
+      },
+      "reputation": 1250
+    }
+  },
+  "crafting_guild_4": {
+    "id": "crafting_guild_4",
+    "guild": "crafting",
+    "guild_level_required": 3,
+    "name": "Emerald Collection",
+    "type": "craft",
+    "target": "gold_emerald_ring",
+    "amount": 150,
+    "description": "Craft 150 gold emerald rings for the Crafting Guild.",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "xp_skill": "crafting",
+      "items": {
+        "gold_ore": 100,
+        "emerald": 100,
+        "raw_lobster": 40
+      },
+      "reputation": 2500
+    }
+  },
+  "crafting_guild_5": {
+    "id": "crafting_guild_5",
+    "guild": "crafting",
+    "guild_level_required": 4,
+    "name": "Ruby Rings",
+    "type": "craft",
+    "target": "gold_ruby_ring",
+    "amount": 120,
+    "description": "Craft 120 gold ruby rings for the Crafting Guild.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 35000,
+      "xp_skill": "crafting",
+      "items": {
+        "gold_ore": 100,
+        "ruby": 100,
+        "raw_swordfish": 40
+      },
+      "reputation": 5500
+    }
+  },
+  "crafting_guild_6": {
+    "id": "crafting_guild_6",
+    "guild": "crafting",
+    "guild_level_required": 5,
+    "name": "Diamond Crafting",
+    "type": "craft",
+    "target": "gold_diamond_ring",
+    "amount": 100,
+    "description": "Craft 100 gold diamond rings for the Crafting Guild.",
+    "rewards": {
+      "coins": 25000,
+      "xp": 55000,
+      "xp_skill": "crafting",
+      "items": {
+        "gold_ore": 80,
+        "diamond": 80,
+        "raw_monkfish": 40
+      },
+      "reputation": 10000
+    }
+  },
+  "crafting_guild_7": {
+    "id": "crafting_guild_7",
+    "guild": "crafting",
+    "guild_level_required": 6,
+    "name": "Platinum Jewels",
+    "type": "craft",
+    "target": "platinum_ring",
+    "amount": 200,
+    "description": "Craft 200 platinum rings for the Crafting Guild.",
+    "rewards": {
+      "coins": 40000,
+      "xp": 90000,
+      "xp_skill": "crafting",
+      "items": {
+        "platinum_ore": 120,
+        "raw_shark": 40
+      },
+      "reputation": 17500
+    }
+  },
+  "crafting_guild_8": {
+    "id": "crafting_guild_8",
+    "guild": "crafting",
+    "guild_level_required": 7,
+    "name": "Platinum Necklaces",
+    "type": "craft",
+    "target": "platinum_necklace",
+    "amount": 300,
+    "description": "Craft 300 platinum necklaces for the Crafting Guild.",
+    "rewards": {
+      "coins": 60000,
+      "xp": 140000,
+      "xp_skill": "crafting",
+      "items": {
+        "platinum_ore": 150,
+        "raw_manta_ray": 30
+      },
+      "reputation": 32500
+    }
+  },
+  "crafting_guild_9": {
+    "id": "crafting_guild_9",
+    "guild": "crafting",
+    "guild_level_required": 8,
+    "name": "Gem Hoard",
+    "type": "craft",
+    "target": "platinum_diamond_ring",
+    "amount": 200,
+    "description": "Craft 200 platinum diamond rings for the Crafting Guild.",
+    "rewards": {
+      "coins": 80000,
+      "xp": 200000,
+      "xp_skill": "crafting",
+      "items": {
+        "platinum_ore": 100,
+        "diamond": 100,
+        "raw_sea_turtle": 20
+      },
+      "reputation": 55000
+    }
+  },
+  "crafting_guild_10": {
+    "id": "crafting_guild_10",
+    "guild": "crafting",
+    "guild_level_required": 9,
+    "name": "Master Crafter",
+    "type": "craft",
+    "target": "platinum_diamond_necklace",
+    "amount": 400,
+    "description": "Prove your mastery \u2014 craft 400 platinum diamond necklaces for the Crafting Guild.",
+    "rewards": {
+      "coins": 100000,
+      "xp": 350000,
+      "xp_skill": "crafting",
+      "items": {
+        "diamond": 150,
+        "runite_ore": 40,
+        "raw_sea_turtle": 30,
+        "crafting_guild_cape": 1
+      },
+      "reputation": 100000
+    }
+  },
+  "runecrafting_guild_1": {
+    "id": "runecrafting_guild_1",
+    "guild": "runecrafting",
+    "guild_level_required": 0,
+    "name": "Air Supply",
+    "type": "craft",
+    "target": "air_rune",
+    "amount": 800,
+    "description": "Craft 800 air runes for the Runecrafters Guild.",
+    "rewards": {
+      "coins": 1000,
+      "xp": 3000,
+      "xp_skill": "runecrafting",
+      "items": {
+        "rune_essence": 600,
+        "raw_trout": 40
+      },
+      "reputation": 250
+    }
+  },
+  "runecrafting_guild_2": {
+    "id": "runecrafting_guild_2",
+    "guild": "runecrafting",
+    "guild_level_required": 1,
+    "name": "Earth Batch",
+    "type": "craft",
+    "target": "earth_rune",
+    "amount": 1500,
+    "description": "Craft 1,500 earth runes for the Runecrafters Guild.",
+    "rewards": {
+      "coins": 2500,
+      "xp": 6000,
+      "xp_skill": "runecrafting",
+      "items": {
+        "rune_essence": 600,
+        "raw_salmon": 40
+      },
+      "reputation": 500
+    }
+  },
+  "runecrafting_guild_3": {
+    "id": "runecrafting_guild_3",
+    "guild": "runecrafting",
+    "guild_level_required": 2,
+    "name": "Fire Stockpile",
+    "type": "craft",
+    "target": "fire_rune",
+    "amount": 2500,
+    "description": "Craft 2,500 fire runes for the Runecrafters Guild.",
+    "rewards": {
+      "coins": 5000,
+      "xp": 12000,
+      "xp_skill": "runecrafting",
+      "items": {
+        "rune_essence": 700,
+        "raw_tuna": 60
+      },
+      "reputation": 1250
+    }
+  },
+  "runecrafting_guild_4": {
+    "id": "runecrafting_guild_4",
+    "guild": "runecrafting",
+    "guild_level_required": 3,
+    "name": "Mind Craft",
+    "type": "craft",
+    "target": "mind_rune",
+    "amount": 2000,
+    "description": "Craft 2,000 mind runes for the Runecrafters Guild.",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "xp_skill": "runecrafting",
+      "items": {
+        "rune_essence": 700,
+        "raw_lobster": 50
+      },
+      "reputation": 2500
+    }
+  },
+  "runecrafting_guild_5": {
+    "id": "runecrafting_guild_5",
+    "guild": "runecrafting",
+    "guild_level_required": 4,
+    "name": "Chaos Order",
+    "type": "craft",
+    "target": "chaos_rune",
+    "amount": 3000,
+    "description": "Craft 3,000 chaos runes for the Runecrafters Guild.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 35000,
+      "xp_skill": "runecrafting",
+      "items": {
+        "rune_essence": 600,
+        "raw_swordfish": 50
+      },
+      "reputation": 5500
+    }
+  },
+  "runecrafting_guild_6": {
+    "id": "runecrafting_guild_6",
+    "guild": "runecrafting",
+    "guild_level_required": 5,
+    "name": "Death Batch",
+    "type": "craft",
+    "target": "death_rune",
+    "amount": 2500,
+    "description": "Craft 2,500 death runes for the Runecrafters Guild.",
+    "rewards": {
+      "coins": 25000,
+      "xp": 55000,
+      "xp_skill": "runecrafting",
+      "items": {
+        "rune_essence": 600,
+        "raw_monkfish": 50
+      },
+      "reputation": 10000
+    }
+  },
+  "runecrafting_guild_7": {
+    "id": "runecrafting_guild_7",
+    "guild": "runecrafting",
+    "guild_level_required": 6,
+    "name": "Blood Reserve",
+    "type": "craft",
+    "target": "blood_rune",
+    "amount": 2000,
+    "description": "Craft 2,000 blood runes for the Runecrafters Guild.",
+    "rewards": {
+      "coins": 40000,
+      "xp": 90000,
+      "xp_skill": "runecrafting",
+      "items": {
+        "rune_essence": 600,
+        "raw_shark": 40
+      },
+      "reputation": 17500
+    }
+  },
+  "runecrafting_guild_8": {
+    "id": "runecrafting_guild_8",
+    "guild": "runecrafting",
+    "guild_level_required": 7,
+    "name": "Rune Vault",
+    "type": "craft",
+    "target": "blood_rune",
+    "amount": 5000,
+    "description": "Craft 5,000 blood runes for the Runecrafters Guild.",
+    "rewards": {
+      "coins": 60000,
+      "xp": 140000,
+      "xp_skill": "runecrafting",
+      "items": {
+        "rune_essence": 1200,
+        "raw_manta_ray": 30
+      },
+      "reputation": 32500
+    }
+  },
+  "runecrafting_guild_9": {
+    "id": "runecrafting_guild_9",
+    "guild": "runecrafting",
+    "guild_level_required": 8,
+    "name": "Arcane Stockpile",
+    "type": "craft",
+    "target": "blood_rune",
+    "amount": 8000,
+    "description": "Craft 8,000 blood runes for the Runecrafters Guild.",
+    "rewards": {
+      "coins": 80000,
+      "xp": 200000,
+      "xp_skill": "runecrafting",
+      "items": {
+        "rune_essence": 2400,
+        "diamond": 2,
+        "raw_sea_turtle": 20
+      },
+      "reputation": 55000
+    }
+  },
+  "runecrafting_guild_10": {
+    "id": "runecrafting_guild_10",
+    "guild": "runecrafting",
+    "guild_level_required": 9,
+    "name": "Master Runecraftsman",
+    "type": "craft",
+    "target": "blood_rune",
+    "amount": 12000,
+    "description": "Prove your mastery \u2014 craft 12,000 blood runes for the Runecrafters Guild.",
+    "rewards": {
+      "coins": 100000,
+      "xp": 350000,
+      "xp_skill": "runecrafting",
+      "items": {
+        "rune_essence": 5000,
+        "diamond": 5,
+        "runite_ore": 40,
+        "runecrafting_guild_cape": 1
+      },
+      "reputation": 100000
+    }
+  },
+  "herblore_guild_1": {
+    "id": "herblore_guild_1",
+    "guild": "herblore",
+    "guild_level_required": 0,
+    "name": "Attack Brews",
+    "type": "craft",
+    "target": "attack_brew",
+    "amount": 80,
+    "description": "Brew 80 attack brews for the Herblorists Guild.",
+    "rewards": {
+      "coins": 1000,
+      "xp": 3000,
+      "xp_skill": "herblore",
+      "items": {
+        "potato": 120,
+        "raw_trout": 40
+      },
+      "reputation": 250
+    }
+  },
+  "herblore_guild_2": {
+    "id": "herblore_guild_2",
+    "guild": "herblore",
+    "guild_level_required": 1,
+    "name": "Attack Potions",
+    "type": "craft",
+    "target": "attack_potion",
+    "amount": 120,
+    "description": "Brew 120 attack potions for the Herblorists Guild.",
+    "rewards": {
+      "coins": 2500,
+      "xp": 6000,
+      "xp_skill": "herblore",
+      "items": {
+        "potato": 60,
+        "raw_salmon": 50,
+        "iron_ore": 50
+      },
+      "reputation": 500
+    }
+  },
+  "herblore_guild_3": {
+    "id": "herblore_guild_3",
+    "guild": "herblore",
+    "guild_level_required": 2,
+    "name": "Strength Potions",
+    "type": "craft",
+    "target": "strength_potion",
+    "amount": 180,
+    "description": "Brew 180 strength potions for the Herblorists Guild.",
+    "rewards": {
+      "coins": 5000,
+      "xp": 12000,
+      "xp_skill": "herblore",
+      "items": {
+        "carrot": 60,
+        "raw_tuna": 60,
+        "coal": 60
+      },
+      "reputation": 1250
+    }
+  },
+  "herblore_guild_4": {
+    "id": "herblore_guild_4",
+    "guild": "herblore",
+    "guild_level_required": 3,
+    "name": "Ranging Potions",
+    "type": "craft",
+    "target": "ranging_potion",
+    "amount": 250,
+    "description": "Brew 250 ranging potions for the Herblorists Guild.",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "xp_skill": "herblore",
+      "items": {
+        "raw_lobster": 50,
+        "mithril_ore": 40
+      },
+      "reputation": 2500
+    }
+  },
+  "herblore_guild_5": {
+    "id": "herblore_guild_5",
+    "guild": "herblore",
+    "guild_level_required": 4,
+    "name": "Magic Potions",
+    "type": "craft",
+    "target": "magic_potion",
+    "amount": 250,
+    "description": "Brew 250 magic potions for the Herblorists Guild.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 35000,
+      "xp_skill": "herblore",
+      "items": {
+        "raw_swordfish": 50,
+        "adamantite_ore": 30
+      },
+      "reputation": 5500
+    }
+  },
+  "herblore_guild_6": {
+    "id": "herblore_guild_6",
+    "guild": "herblore",
+    "guild_level_required": 5,
+    "name": "Super Brews",
+    "type": "craft",
+    "target": "super_strength_potion",
+    "amount": 300,
+    "description": "Brew 300 super strength potions for the Herblorists Guild.",
+    "rewards": {
+      "coins": 25000,
+      "xp": 55000,
+      "xp_skill": "herblore",
+      "items": {
+        "raw_monkfish": 50,
+        "gold_ore": 40
+      },
+      "reputation": 10000
+    }
+  },
+  "herblore_guild_7": {
+    "id": "herblore_guild_7",
+    "guild": "herblore",
+    "guild_level_required": 6,
+    "name": "Super Ranging",
+    "type": "craft",
+    "target": "super_ranging_potion",
+    "amount": 300,
+    "description": "Brew 300 super ranging potions for the Herblorists Guild.",
+    "rewards": {
+      "coins": 40000,
+      "xp": 90000,
+      "xp_skill": "herblore",
+      "items": {
+        "raw_shark": 40,
+        "platinum_ore": 25
+      },
+      "reputation": 17500
+    }
+  },
+  "herblore_guild_8": {
+    "id": "herblore_guild_8",
+    "guild": "herblore",
+    "guild_level_required": 7,
+    "name": "Super Magic",
+    "type": "craft",
+    "target": "super_magic_potion",
+    "amount": 350,
+    "description": "Brew 350 super magic potions for the Herblorists Guild.",
+    "rewards": {
+      "coins": 60000,
+      "xp": 140000,
+      "xp_skill": "herblore",
+      "items": {
+        "raw_manta_ray": 30,
+        "runite_ore": 25
+      },
+      "reputation": 32500
+    }
+  },
+  "herblore_guild_9": {
+    "id": "herblore_guild_9",
+    "guild": "herblore",
+    "guild_level_required": 8,
+    "name": "Overload Stockpile",
+    "type": "craft",
+    "target": "overload_potion",
+    "amount": 200,
+    "description": "Brew 200 overload potions for the Herblorists Guild.",
+    "rewards": {
+      "coins": 80000,
+      "xp": 200000,
+      "xp_skill": "herblore",
+      "items": {
+        "raw_sea_turtle": 20,
+        "diamond": 2,
+        "runite_ore": 30
+      },
+      "reputation": 55000
+    }
+  },
+  "herblore_guild_10": {
+    "id": "herblore_guild_10",
+    "guild": "herblore",
+    "guild_level_required": 9,
+    "name": "Master Herbalist",
+    "type": "craft",
+    "target": "overload_potion",
+    "amount": 500,
+    "description": "Prove your mastery \u2014 brew 500 overload potions for the Herblorists Guild.",
+    "rewards": {
+      "coins": 100000,
+      "xp": 350000,
+      "xp_skill": "herblore",
+      "items": {
+        "diamond": 5,
+        "runite_ore": 50,
+        "raw_sea_turtle": 30,
+        "herblore_guild_cape": 1
+      },
+      "reputation": 100000
+    }
+  },
+  "warriors_guild_1": {
+    "id": "warriors_guild_1",
+    "guild": "warriors",
+    "guild_level_required": 0,
+    "name": "First Blood",
+    "type": "kill",
+    "target": "any",
+    "amount": 200,
+    "description": "Defeat 200 enemies using melee combat.",
+    "rewards": {
+      "coins": 1000,
+      "xp": 3000,
+      "xp_skill": "attack",
+      "items": {
+        "copper_ore": 60,
+        "raw_trout": 50,
+        "log": 40
+      },
+      "reputation": 250
+    }
+  },
+  "warriors_guild_2": {
+    "id": "warriors_guild_2",
+    "guild": "warriors",
+    "guild_level_required": 1,
+    "name": "Skirmisher",
+    "type": "kill",
+    "target": "any",
+    "amount": 500,
+    "description": "Defeat 500 enemies using melee combat.",
+    "rewards": {
+      "coins": 2500,
+      "xp": 6000,
+      "xp_skill": "strength",
+      "items": {
+        "iron_ore": 80,
+        "raw_salmon": 60,
+        "oak_log": 30
+      },
+      "reputation": 500
+    }
+  },
+  "warriors_guild_3": {
+    "id": "warriors_guild_3",
+    "guild": "warriors",
+    "guild_level_required": 2,
+    "name": "Battle-Hardened",
+    "type": "kill",
+    "target": "any",
+    "amount": 1000,
+    "description": "Defeat 1,000 enemies using melee combat.",
+    "rewards": {
+      "coins": 5000,
+      "xp": 12000,
+      "xp_skill": "defense",
+      "items": {
+        "coal": 100,
+        "raw_tuna": 80,
+        "willow_log": 40
+      },
+      "reputation": 1250
+    }
+  },
+  "warriors_guild_4": {
+    "id": "warriors_guild_4",
+    "guild": "warriors",
+    "guild_level_required": 3,
+    "name": "Veteran Soldier",
+    "type": "kill",
+    "target": "any",
+    "amount": 2000,
+    "description": "Defeat 2,000 enemies using melee combat.",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "xp_skill": "attack",
+      "items": {
+        "mithril_ore": 60,
+        "raw_lobster": 60,
+        "maple_log": 40
+      },
+      "reputation": 2500
+    }
+  },
+  "warriors_guild_5": {
+    "id": "warriors_guild_5",
+    "guild": "warriors",
+    "guild_level_required": 4,
+    "name": "Elite Warrior",
+    "type": "kill",
+    "target": "any",
+    "amount": 4000,
+    "description": "Defeat 4,000 enemies using melee combat.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 35000,
+      "xp_skill": "strength",
+      "items": {
+        "adamantite_ore": 50,
+        "raw_swordfish": 60,
+        "yew_log": 25
+      },
+      "reputation": 5500
+    }
+  },
+  "warriors_guild_6": {
+    "id": "warriors_guild_6",
+    "guild": "warriors",
+    "guild_level_required": 5,
+    "name": "Battlefield Legend",
+    "type": "kill",
+    "target": "any",
+    "amount": 7000,
+    "description": "Defeat 7,000 enemies using melee combat.",
+    "rewards": {
+      "coins": 25000,
+      "xp": 55000,
+      "xp_skill": "defense",
+      "items": {
+        "gold_ore": 50,
+        "raw_monkfish": 60,
+        "magic_log": 20
+      },
+      "reputation": 10000
+    }
+  },
+  "warriors_guild_7": {
+    "id": "warriors_guild_7",
+    "guild": "warriors",
+    "guild_level_required": 6,
+    "name": "Champion",
+    "type": "kill",
+    "target": "any",
+    "amount": 12000,
+    "description": "Defeat 12,000 enemies using melee combat.",
+    "rewards": {
+      "coins": 40000,
+      "xp": 90000,
+      "xp_skill": "attack",
+      "items": {
+        "platinum_ore": 40,
+        "raw_shark": 50,
+        "redwood_log": 15
+      },
+      "reputation": 17500
+    }
+  },
+  "warriors_guild_8": {
+    "id": "warriors_guild_8",
+    "guild": "warriors",
+    "guild_level_required": 7,
+    "name": "Warlord",
+    "type": "kill",
+    "target": "any",
+    "amount": 18000,
+    "description": "Defeat 18,000 enemies using melee combat.",
+    "rewards": {
+      "coins": 60000,
+      "xp": 140000,
+      "xp_skill": "strength",
+      "items": {
+        "runite_ore": 35,
+        "raw_manta_ray": 40,
+        "emerald": 5
+      },
+      "reputation": 32500
+    }
+  },
+  "warriors_guild_9": {
+    "id": "warriors_guild_9",
+    "guild": "warriors",
+    "guild_level_required": 8,
+    "name": "Conqueror",
+    "type": "kill",
+    "target": "any",
+    "amount": 25000,
+    "description": "Defeat 25,000 enemies using melee combat.",
+    "rewards": {
+      "coins": 80000,
+      "xp": 200000,
+      "xp_skill": "defense",
+      "items": {
+        "runite_ore": 50,
+        "raw_sea_turtle": 20,
+        "ruby": 5
+      },
+      "reputation": 55000
+    }
+  },
+  "warriors_guild_10": {
+    "id": "warriors_guild_10",
+    "guild": "warriors",
+    "guild_level_required": 9,
+    "name": "Master Warrior",
+    "type": "kill",
+    "target": "any",
+    "amount": 35000,
+    "description": "Prove your mastery -- defeat 35,000 enemies using melee combat.",
+    "rewards": {
+      "coins": 100000,
+      "xp": 350000,
+      "xp_skill": "attack",
+      "items": {
+        "runite_ore": 80,
+        "diamond": 5,
+        "raw_sea_turtle": 30,
+        "warriors_guild_cape": 1
+      },
+      "reputation": 100000
+    }
+  },
+  "archers_guild_1": {
+    "id": "archers_guild_1",
+    "guild": "archers",
+    "guild_level_required": 0,
+    "name": "First Arrow",
+    "type": "kill",
+    "target": "any",
+    "amount": 200,
+    "description": "Defeat 200 enemies using ranged combat.",
+    "rewards": {
+      "coins": 1000,
+      "xp": 3000,
+      "xp_skill": "ranged",
+      "items": {
+        "log": 80,
+        "raw_trout": 50,
+        "copper_ore": 40
+      },
+      "reputation": 250
+    }
+  },
+  "archers_guild_2": {
+    "id": "archers_guild_2",
+    "guild": "archers",
+    "guild_level_required": 1,
+    "name": "Keen Eye",
+    "type": "kill",
+    "target": "any",
+    "amount": 500,
+    "description": "Defeat 500 enemies using ranged combat.",
+    "rewards": {
+      "coins": 2500,
+      "xp": 6000,
+      "xp_skill": "ranged",
+      "items": {
+        "oak_log": 60,
+        "raw_salmon": 60,
+        "iron_ore": 50
+      },
+      "reputation": 500
+    }
+  },
+  "archers_guild_3": {
+    "id": "archers_guild_3",
+    "guild": "archers",
+    "guild_level_required": 2,
+    "name": "Marksman",
+    "type": "kill",
+    "target": "any",
+    "amount": 1000,
+    "description": "Defeat 1,000 enemies using ranged combat.",
+    "rewards": {
+      "coins": 5000,
+      "xp": 12000,
+      "xp_skill": "ranged",
+      "items": {
+        "willow_log": 80,
+        "raw_tuna": 80,
+        "coal": 80
+      },
+      "reputation": 1250
+    }
+  },
+  "archers_guild_4": {
+    "id": "archers_guild_4",
+    "guild": "archers",
+    "guild_level_required": 3,
+    "name": "Sharpshooter",
+    "type": "kill",
+    "target": "any",
+    "amount": 2000,
+    "description": "Defeat 2,000 enemies using ranged combat.",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "xp_skill": "ranged",
+      "items": {
+        "maple_log": 60,
+        "raw_lobster": 60,
+        "mithril_ore": 40
+      },
+      "reputation": 2500
+    }
+  },
+  "archers_guild_5": {
+    "id": "archers_guild_5",
+    "guild": "archers",
+    "guild_level_required": 4,
+    "name": "Eagle Eye",
+    "type": "kill",
+    "target": "any",
+    "amount": 4000,
+    "description": "Defeat 4,000 enemies using ranged combat.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 35000,
+      "xp_skill": "ranged",
+      "items": {
+        "yew_log": 50,
+        "raw_swordfish": 60,
+        "adamantite_ore": 30
+      },
+      "reputation": 5500
+    }
+  },
+  "archers_guild_6": {
+    "id": "archers_guild_6",
+    "guild": "archers",
+    "guild_level_required": 5,
+    "name": "Deadshot",
+    "type": "kill",
+    "target": "any",
+    "amount": 7000,
+    "description": "Defeat 7,000 enemies using ranged combat.",
+    "rewards": {
+      "coins": 25000,
+      "xp": 55000,
+      "xp_skill": "ranged",
+      "items": {
+        "magic_log": 35,
+        "raw_monkfish": 60,
+        "platinum_ore": 25
+      },
+      "reputation": 10000
+    }
+  },
+  "archers_guild_7": {
+    "id": "archers_guild_7",
+    "guild": "archers",
+    "guild_level_required": 6,
+    "name": "Sniper",
+    "type": "kill",
+    "target": "any",
+    "amount": 12000,
+    "description": "Defeat 12,000 enemies using ranged combat.",
+    "rewards": {
+      "coins": 40000,
+      "xp": 90000,
+      "xp_skill": "ranged",
+      "items": {
+        "redwood_log": 25,
+        "raw_shark": 50,
+        "sapphire": 10
+      },
+      "reputation": 17500
+    }
+  },
+  "archers_guild_8": {
+    "id": "archers_guild_8",
+    "guild": "archers",
+    "guild_level_required": 7,
+    "name": "Hawkeye",
+    "type": "kill",
+    "target": "any",
+    "amount": 18000,
+    "description": "Defeat 18,000 enemies using ranged combat.",
+    "rewards": {
+      "coins": 60000,
+      "xp": 140000,
+      "xp_skill": "ranged",
+      "items": {
+        "runite_ore": 35,
+        "raw_manta_ray": 40,
+        "emerald": 5
+      },
+      "reputation": 32500
+    }
+  },
+  "archers_guild_9": {
+    "id": "archers_guild_9",
+    "guild": "archers",
+    "guild_level_required": 8,
+    "name": "Phantom",
+    "type": "kill",
+    "target": "any",
+    "amount": 25000,
+    "description": "Defeat 25,000 enemies using ranged combat.",
+    "rewards": {
+      "coins": 80000,
+      "xp": 200000,
+      "xp_skill": "ranged",
+      "items": {
+        "runite_ore": 50,
+        "raw_sea_turtle": 20,
+        "ruby": 5
+      },
+      "reputation": 55000
+    }
+  },
+  "archers_guild_10": {
+    "id": "archers_guild_10",
+    "guild": "archers",
+    "guild_level_required": 9,
+    "name": "Master Archer",
+    "type": "kill",
+    "target": "any",
+    "amount": 35000,
+    "description": "Prove your mastery -- defeat 35,000 enemies using ranged combat.",
+    "rewards": {
+      "coins": 100000,
+      "xp": 350000,
+      "xp_skill": "ranged",
+      "items": {
+        "magic_log": 60,
+        "diamond": 5,
+        "raw_sea_turtle": 30,
+        "archers_guild_cape": 1
+      },
+      "reputation": 100000
+    }
+  },
+  "mages_guild_1": {
+    "id": "mages_guild_1",
+    "guild": "mages",
+    "guild_level_required": 0,
+    "name": "Apprentice Spellcaster",
+    "type": "kill",
+    "target": "any",
+    "amount": 200,
+    "description": "Defeat 200 enemies using magic combat.",
+    "rewards": {
+      "coins": 1000,
+      "xp": 3000,
+      "xp_skill": "magic",
+      "items": {
+        "air_rune": 100,
+        "raw_trout": 50,
+        "copper_ore": 40
+      },
+      "reputation": 250
+    }
+  },
+  "mages_guild_2": {
+    "id": "mages_guild_2",
+    "guild": "mages",
+    "guild_level_required": 1,
+    "name": "Arcane Student",
+    "type": "kill",
+    "target": "any",
+    "amount": 500,
+    "description": "Defeat 500 enemies using magic combat.",
+    "rewards": {
+      "coins": 2500,
+      "xp": 6000,
+      "xp_skill": "magic",
+      "items": {
+        "earth_rune": 150,
+        "raw_salmon": 60,
+        "iron_ore": 40
+      },
+      "reputation": 500
+    }
+  },
+  "mages_guild_3": {
+    "id": "mages_guild_3",
+    "guild": "mages",
+    "guild_level_required": 2,
+    "name": "Journeyman Mage",
+    "type": "kill",
+    "target": "any",
+    "amount": 1000,
+    "description": "Defeat 1,000 enemies using magic combat.",
+    "rewards": {
+      "coins": 5000,
+      "xp": 12000,
+      "xp_skill": "magic",
+      "items": {
+        "fire_rune": 200,
+        "raw_tuna": 80,
+        "coal": 60
+      },
+      "reputation": 1250
+    }
+  },
+  "mages_guild_4": {
+    "id": "mages_guild_4",
+    "guild": "mages",
+    "guild_level_required": 3,
+    "name": "Chaos Wielder",
+    "type": "kill",
+    "target": "any",
+    "amount": 2000,
+    "description": "Defeat 2,000 enemies using magic combat.",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "xp_skill": "magic",
+      "items": {
+        "chaos_rune": 200,
+        "raw_lobster": 60,
+        "mithril_ore": 40
+      },
+      "reputation": 2500
+    }
+  },
+  "mages_guild_5": {
+    "id": "mages_guild_5",
+    "guild": "mages",
+    "guild_level_required": 4,
+    "name": "Sorcerer",
+    "type": "kill",
+    "target": "any",
+    "amount": 4000,
+    "description": "Defeat 4,000 enemies using magic combat.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 35000,
+      "xp_skill": "magic",
+      "items": {
+        "death_rune": 200,
+        "raw_swordfish": 60,
+        "gold_ore": 30
+      },
+      "reputation": 5500
+    }
+  },
+  "mages_guild_6": {
+    "id": "mages_guild_6",
+    "guild": "mages",
+    "guild_level_required": 5,
+    "name": "Warlock",
+    "type": "kill",
+    "target": "any",
+    "amount": 7000,
+    "description": "Defeat 7,000 enemies using magic combat.",
+    "rewards": {
+      "coins": 25000,
+      "xp": 55000,
+      "xp_skill": "magic",
+      "items": {
+        "blood_rune": 200,
+        "raw_monkfish": 60,
+        "adamantite_ore": 30
+      },
+      "reputation": 10000
+    }
+  },
+  "mages_guild_7": {
+    "id": "mages_guild_7",
+    "guild": "mages",
+    "guild_level_required": 6,
+    "name": "Archmage",
+    "type": "kill",
+    "target": "any",
+    "amount": 12000,
+    "description": "Defeat 12,000 enemies using magic combat.",
+    "rewards": {
+      "coins": 40000,
+      "xp": 90000,
+      "xp_skill": "magic",
+      "items": {
+        "blood_rune": 400,
+        "raw_shark": 50,
+        "platinum_ore": 25
+      },
+      "reputation": 17500
+    }
+  },
+  "mages_guild_8": {
+    "id": "mages_guild_8",
+    "guild": "mages",
+    "guild_level_required": 7,
+    "name": "Lich",
+    "type": "kill",
+    "target": "any",
+    "amount": 18000,
+    "description": "Defeat 18,000 enemies using magic combat.",
+    "rewards": {
+      "coins": 60000,
+      "xp": 140000,
+      "xp_skill": "magic",
+      "items": {
+        "blood_rune": 600,
+        "raw_manta_ray": 40,
+        "runite_ore": 25
+      },
+      "reputation": 32500
+    }
+  },
+  "mages_guild_9": {
+    "id": "mages_guild_9",
+    "guild": "mages",
+    "guild_level_required": 8,
+    "name": "Spellweaver",
+    "type": "kill",
+    "target": "any",
+    "amount": 25000,
+    "description": "Defeat 25,000 enemies using magic combat.",
+    "rewards": {
+      "coins": 80000,
+      "xp": 200000,
+      "xp_skill": "magic",
+      "items": {
+        "blood_rune": 1000,
+        "raw_sea_turtle": 20,
+        "diamond": 2
+      },
+      "reputation": 55000
+    }
+  },
+  "mages_guild_10": {
+    "id": "mages_guild_10",
+    "guild": "mages",
+    "guild_level_required": 9,
+    "name": "Grand Magus",
+    "type": "kill",
+    "target": "any",
+    "amount": 35000,
+    "description": "Prove your mastery -- defeat 35,000 enemies using magic combat.",
+    "rewards": {
+      "coins": 100000,
+      "xp": 350000,
+      "xp_skill": "magic",
+      "items": {
+        "blood_rune": 2000,
+        "diamond": 5,
+        "raw_sea_turtle": 30,
+        "mages_guild_cape": 1
+      },
+      "reputation": 100000
+    }
+  },
+  "prayer_guild_1": {
+    "id": "prayer_guild_1",
+    "guild": "prayer",
+    "guild_level_required": 0,
+    "name": "First Offering",
+    "type": "prayer",
+    "target": "any",
+    "amount": 200,
+    "description": "Bury 200 bones of any type for the Prayer Guild.",
+    "rewards": {
+      "coins": 1000,
+      "xp": 3000,
+      "xp_skill": "prayer",
+      "items": {
+        "raw_trout": 60,
+        "copper_ore": 50,
+        "log": 40
+      },
+      "reputation": 250
+    }
+  },
+  "prayer_guild_2": {
+    "id": "prayer_guild_2",
+    "guild": "prayer",
+    "guild_level_required": 1,
+    "name": "Devoted",
+    "type": "prayer",
+    "target": "any",
+    "amount": 400,
+    "description": "Bury 400 bones of any type for the Prayer Guild.",
+    "rewards": {
+      "coins": 2500,
+      "xp": 6000,
+      "xp_skill": "prayer",
+      "items": {
+        "raw_salmon": 60,
+        "iron_ore": 60,
+        "oak_log": 30
+      },
+      "reputation": 500
+    }
+  },
+  "prayer_guild_3": {
+    "id": "prayer_guild_3",
+    "guild": "prayer",
+    "guild_level_required": 2,
+    "name": "Pious",
+    "type": "prayer",
+    "target": "any",
+    "amount": 800,
+    "description": "Bury 800 bones of any type for the Prayer Guild.",
+    "rewards": {
+      "coins": 5000,
+      "xp": 12000,
+      "xp_skill": "prayer",
+      "items": {
+        "raw_tuna": 80,
+        "coal": 80,
+        "willow_log": 40
+      },
+      "reputation": 1250
+    }
+  },
+  "prayer_guild_4": {
+    "id": "prayer_guild_4",
+    "guild": "prayer",
+    "guild_level_required": 3,
+    "name": "Righteous",
+    "type": "prayer",
+    "target": "any",
+    "amount": 1500,
+    "description": "Bury 1,500 bones of any type for the Prayer Guild.",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "xp_skill": "prayer",
+      "items": {
+        "raw_lobster": 60,
+        "mithril_ore": 50,
+        "maple_log": 30
+      },
+      "reputation": 2500
+    }
+  },
+  "prayer_guild_5": {
+    "id": "prayer_guild_5",
+    "guild": "prayer",
+    "guild_level_required": 4,
+    "name": "Holy",
+    "type": "prayer",
+    "target": "any",
+    "amount": 3000,
+    "description": "Bury 3,000 bones of any type for the Prayer Guild.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 35000,
+      "xp_skill": "prayer",
+      "items": {
+        "raw_swordfish": 60,
+        "adamantite_ore": 40,
+        "yew_log": 25
+      },
+      "reputation": 5500
+    }
+  },
+  "prayer_guild_6": {
+    "id": "prayer_guild_6",
+    "guild": "prayer",
+    "guild_level_required": 5,
+    "name": "Sacred",
+    "type": "prayer",
+    "target": "any",
+    "amount": 5000,
+    "description": "Bury 5,000 bones of any type for the Prayer Guild.",
+    "rewards": {
+      "coins": 25000,
+      "xp": 55000,
+      "xp_skill": "prayer",
+      "items": {
+        "raw_monkfish": 60,
+        "gold_ore": 40,
+        "magic_log": 20
+      },
+      "reputation": 10000
+    }
+  },
+  "prayer_guild_7": {
+    "id": "prayer_guild_7",
+    "guild": "prayer",
+    "guild_level_required": 6,
+    "name": "Blessed",
+    "type": "prayer",
+    "target": "any",
+    "amount": 8000,
+    "description": "Bury 8,000 bones of any type for the Prayer Guild.",
+    "rewards": {
+      "coins": 40000,
+      "xp": 90000,
+      "xp_skill": "prayer",
+      "items": {
+        "raw_shark": 50,
+        "platinum_ore": 30,
+        "redwood_log": 15
+      },
+      "reputation": 17500
+    }
+  },
+  "prayer_guild_8": {
+    "id": "prayer_guild_8",
+    "guild": "prayer",
+    "guild_level_required": 7,
+    "name": "Divine",
+    "type": "prayer",
+    "target": "any",
+    "amount": 12000,
+    "description": "Bury 12,000 bones of any type for the Prayer Guild.",
+    "rewards": {
+      "coins": 60000,
+      "xp": 140000,
+      "xp_skill": "prayer",
+      "items": {
+        "raw_manta_ray": 40,
+        "runite_ore": 30,
+        "emerald": 5
+      },
+      "reputation": 32500
+    }
+  },
+  "prayer_guild_9": {
+    "id": "prayer_guild_9",
+    "guild": "prayer",
+    "guild_level_required": 8,
+    "name": "Transcendent",
+    "type": "prayer",
+    "target": "any",
+    "amount": 18000,
+    "description": "Bury 18,000 bones of any type for the Prayer Guild.",
+    "rewards": {
+      "coins": 80000,
+      "xp": 200000,
+      "xp_skill": "prayer",
+      "items": {
+        "raw_sea_turtle": 20,
+        "diamond": 2,
+        "runite_ore": 40
+      },
+      "reputation": 55000
+    }
+  },
+  "prayer_guild_10": {
+    "id": "prayer_guild_10",
+    "guild": "prayer",
+    "guild_level_required": 9,
+    "name": "High Priest",
+    "type": "prayer",
+    "target": "any",
+    "amount": 25000,
+    "description": "Prove your mastery \u2014 bury 25,000 bones for the Prayer Guild.",
+    "rewards": {
+      "coins": 100000,
+      "xp": 350000,
+      "xp_skill": "prayer",
+      "items": {
+        "diamond": 5,
+        "runite_ore": 60,
+        "raw_sea_turtle": 30,
+        "prayer_guild_cape": 1
+      },
+      "reputation": 100000
+    }
+  },
+  "mercantile_guild_1": {
+    "id": "mercantile_guild_1",
+    "guild": "mercantile",
+    "guild_level_required": 0,
+    "name": "First Trade",
+    "type": "trade",
+    "target": "",
+    "amount": 1,
+    "description": "Complete 1 trade route for the Merchants Guild.",
+    "rewards": {
+      "coins": 3000,
+      "xp": 5000,
+      "xp_skill": "mercantile",
+      "items": {},
+      "reputation": 250
+    }
+  },
+  "mercantile_guild_2": {
+    "id": "mercantile_guild_2",
+    "guild": "mercantile",
+    "guild_level_required": 1,
+    "name": "Budding Merchant",
+    "type": "trade",
+    "target": "",
+    "amount": 5,
+    "description": "Complete 5 trade routes for the Merchants Guild.",
+    "rewards": {
+      "coins": 10000,
+      "xp": 15000,
+      "xp_skill": "mercantile",
+      "items": {},
+      "reputation": 500
+    }
+  },
+  "mercantile_guild_3": {
+    "id": "mercantile_guild_3",
+    "guild": "mercantile",
+    "guild_level_required": 2,
+    "name": "River Trader",
+    "type": "trade",
+    "target": "",
+    "amount": 10,
+    "description": "Complete 10 trade routes for the Merchants Guild.",
+    "rewards": {
+      "coins": 25000,
+      "xp": 40000,
+      "xp_skill": "mercantile",
+      "items": {},
+      "reputation": 1250
+    }
+  },
+  "mercantile_guild_4": {
+    "id": "mercantile_guild_4",
+    "guild": "mercantile",
+    "guild_level_required": 3,
+    "name": "Caravan Master",
+    "type": "trade",
+    "target": "",
+    "amount": 20,
+    "description": "Complete 20 trade routes for the Merchants Guild.",
+    "rewards": {
+      "coins": 60000,
+      "xp": 90000,
+      "xp_skill": "mercantile",
+      "items": {},
+      "reputation": 2500
+    }
+  },
+  "mercantile_guild_5": {
+    "id": "mercantile_guild_5",
+    "guild": "mercantile",
+    "guild_level_required": 4,
+    "name": "Port Authority",
+    "type": "trade",
+    "target": "",
+    "amount": 40,
+    "description": "Complete 40 trade routes for the Merchants Guild.",
+    "rewards": {
+      "coins": 150000,
+      "xp": 200000,
+      "xp_skill": "mercantile",
+      "items": {},
+      "reputation": 5500
+    }
+  },
+  "mercantile_guild_6": {
+    "id": "mercantile_guild_6",
+    "guild": "mercantile",
+    "guild_level_required": 5,
+    "name": "Merchant Prince",
+    "type": "trade",
+    "target": "",
+    "amount": 75,
+    "description": "Complete 75 trade routes for the Merchants Guild.",
+    "rewards": {
+      "coins": 400000,
+      "xp": 500000,
+      "xp_skill": "mercantile",
+      "items": {},
+      "reputation": 10000
+    }
+  },
+  "mercantile_guild_7": {
+    "id": "mercantile_guild_7",
+    "guild": "mercantile",
+    "guild_level_required": 6,
+    "name": "Trade Baron",
+    "type": "trade",
+    "target": "",
+    "amount": 120,
+    "description": "Complete 120 trade routes for the Merchants Guild.",
+    "rewards": {
+      "coins": 800000,
+      "xp": 1000000,
+      "xp_skill": "mercantile",
+      "items": {},
+      "reputation": 17500
+    }
+  },
+  "mercantile_guild_8": {
+    "id": "mercantile_guild_8",
+    "guild": "mercantile",
+    "guild_level_required": 7,
+    "name": "Grand Merchant",
+    "type": "trade",
+    "target": "",
+    "amount": 200,
+    "description": "Complete 200 trade routes for the Merchants Guild.",
+    "rewards": {
+      "coins": 2000000,
+      "xp": 2500000,
+      "xp_skill": "mercantile",
+      "items": {},
+      "reputation": 32500
+    }
+  },
+  "mercantile_guild_9": {
+    "id": "mercantile_guild_9",
+    "guild": "mercantile",
+    "guild_level_required": 8,
+    "name": "Legendary Trader",
+    "type": "trade",
+    "target": "",
+    "amount": 350,
+    "description": "Complete 350 trade routes for the Merchants Guild.",
+    "rewards": {
+      "coins": 5000000,
+      "xp": 6000000,
+      "xp_skill": "mercantile",
+      "items": {},
+      "reputation": 55000
+    }
+  },
+  "mercantile_guild_10": {
+    "id": "mercantile_guild_10",
+    "guild": "mercantile",
+    "guild_level_required": 9,
+    "name": "Exchange Master",
+    "type": "trade",
+    "target": "",
+    "amount": 500,
+    "description": "Prove your mastery \u2014 complete 500 trade routes for the Merchants Guild.",
+    "rewards": {
+      "coins": 10000000,
+      "xp": 12000000,
+      "xp_skill": "mercantile",
+      "items": {
+        "mercantile_guild_cape": 1
+      },
+      "reputation": 100000
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "name": "copper_caverns",
+  "display_name": "Copper Caverns",
+  "description": "A long-abandoned mine beneath the foothills. Its copper veins were all but exhausted before the miners departed, though iron, coal, and stranger ores were left behind in the deeper shafts.",
+  "skill": "mining",
+  "level_required": 1,
+  "xp_ranges": {
+    "1": {"min": 6, "max": 12},
+    "5": {"min": 9, "max": 17},
+    "10": {"min": 13, "max": 22},
+    "15": {"min": 20, "max": 30},
+    "20": {"min": 28, "max": 42},
+    "25": {"min": 38, "max": 55},
+    "30": {"min": 50, "max": 72},
+    "35": {"min": 63, "max": 90},
+    "40": {"min": 78, "max": 112}
+  },
+  "drop_tables": {
+    "1": [
+      {"item": "copper_ore", "chance": 1.0}
+    ],
+    "5": [
+      {"item": "copper_ore", "chance": 0.65},
+      {"item": "tin_ore", "chance": 0.35}
+    ],
+    "10": [
+      {"item": "copper_ore", "chance": 0.45},
+      {"item": "tin_ore", "chance": 0.40},
+      {"item": "iron_ore", "chance": 0.15}
+    ],
+    "15": [
+      {"item": "copper_ore", "chance": 0.25},
+      {"item": "tin_ore", "chance": 0.30},
+      {"item": "iron_ore", "chance": 0.35},
+      {"item": "coal", "chance": 0.10}
+    ],
+    "20": [
+      {"item": "copper_ore", "chance": 0.10},
+      {"item": "iron_ore", "chance": 0.40},
+      {"item": "coal", "chance": 0.50}
+    ],
+    "30": [
+      {"item": "copper_ore", "chance": 0.05},
+      {"item": "iron_ore", "chance": 0.25},
+      {"item": "coal", "chance": 0.55},
+      {"item": "mithril_ore", "chance": 0.15}
+    ],
+    "40": [
+      {"item": "copper_ore", "chance": 0.05},
+      {"item": "iron_ore", "chance": 0.15},
+      {"item": "coal", "chance": 0.50},
+      {"item": "mithril_ore", "chance": 0.30}
+    ]
+  },
+  "note_chance_per_frame": 0.003,
+  "note_threshold": 5,
+  "note_texts": [
+    "Scratches mark the tunnel walls, too deep and wide for any pickaxe.",
+    "Old mining equipment, twisted and bent. Whatever was here left in a hurry.",
+    "A miner's torn note: 'We broke through to something below. The foreman sealed the lower shaft. He won't say why.'",
+    "Tremors from below. Dust falls from the ceiling in slow waves. Something stirs.",
+    "The sealed shaft gives way. A vast cavern opens beneath — the Collapsed Mine lies ahead."
+  ],
+  "unlock_dungeon": "collapsed_mine",
+  "unlock_message": "You have uncovered the Collapsed Mine — face what lurks in the deep."
+}

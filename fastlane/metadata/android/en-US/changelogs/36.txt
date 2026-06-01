@@ -1,0 +1,11 @@
+• New: Expeditions, a new tab in the Skills screen with 6 skilling dungeons for Mining, Woodcutting, and Fishing
+• New: Lore notes system; rare notes drop during expeditions, collect enough to uncover what lies beyond
+• New: Notes tab on the Profile screen, discovered lore texts revealed in order as notes are found
+• New: Expedition sessions can be queued like any other skill session
+• New: Swipe left and right to switch tabs on the Skills, Combat, Quests, and Profile screens
+• Fix: Guild daily quests now appear immediately when unlocking Guild Level 1, instead of waiting until the next 6am reset
+• Fix: Font size setting is now a dropdown instead of overflowing buttons
+• Fix: Hide completed quests toggle now also hides claimed daily quests
+• Fix: Hide completed quests toggle is now saved and restored across app restarts
+• Fix: Restoring a save now auto-starts any queued sessions
+• Fix: Farming patch state is now included in save exports and restored on import

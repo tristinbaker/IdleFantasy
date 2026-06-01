@@ -15,6 +15,8 @@ data class QuestData(
     val amount: Int,
     val description: String,
     val rewards: QuestRewards,
+    /** If set, this quest is hidden until the named combat dungeon key is in unlockedDungeons. */
+    @SerialName("requires_dungeon_unlock") val requiresDungeonUnlock: String? = null,
 )
 
 @Serializable

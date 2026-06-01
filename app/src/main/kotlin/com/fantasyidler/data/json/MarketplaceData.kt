@@ -24,6 +24,7 @@ data class MarketplaceItem(
      * Stored as [JsonPrimitive] so callers can check [isUnlimited].
      */
     val stock: JsonPrimitive,
+    @SerialName("mercantile_level_required") val mercantileLevelRequired: Int = 0,
 ) {
     val isUnlimited: Boolean get() = stock.isString && stock.content == "unlimited"
     val stockCount: Int? get() = if (isUnlimited) null else stock.content.toIntOrNull()

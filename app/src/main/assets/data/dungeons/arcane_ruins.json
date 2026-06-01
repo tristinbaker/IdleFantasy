@@ -1,0 +1,16 @@
+{
+  "name": "arcane_ruins",
+  "display_name": "Arcane Ruins",
+  "description": "The functional underground chambers of a destroyed wizard's tower. Arcane constructs follow their last orders with no master left to countermand them. Corrupted mages drawn to the residual magic make the ruins doubly dangerous.",
+  "recommended_level": 55,
+  "encounter_rate": 0.30,
+  "lore_unlock_only": true,
+  "enemy_spawns": [
+    {"enemy": "arcane_construct", "weight": 4},
+    {"enemy": "corrupted_mage", "weight": 3},
+    {"enemy": "void_guardian", "weight": 3}
+  ],
+  "rare_drops": [
+    {"item": "arcane_staff", "chance": 0.002}
+  ]
+}

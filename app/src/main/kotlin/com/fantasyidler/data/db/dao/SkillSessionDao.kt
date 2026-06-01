@@ -6,39 +6,45 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface SkillSessionDao {
-    // ── Player sessions (is_worker_session = 0) ──────────────────────────────
+    // ── Player sessions (worker_slot = 0) ───────────────────────────────────
 
-    @Query("SELECT * FROM skill_sessions WHERE user_id = 1 AND is_worker_session = 0 ORDER BY started_at DESC LIMIT 1")
+    @Query("SELECT * FROM skill_sessions WHERE user_id = 1 AND worker_slot = 0 ORDER BY started_at DESC LIMIT 1")
     suspend fun getActiveSession(): SkillSession?
 
-    @Query("SELECT * FROM skill_sessions WHERE user_id = 1 AND is_worker_session = 0 ORDER BY started_at DESC LIMIT 1")
+    @Query("SELECT * FROM skill_sessions WHERE user_id = 1 AND worker_slot = 0 ORDER BY started_at DESC LIMIT 1")
     fun observeActiveSession(): Flow<SkillSession?>
 
-    @Query("SELECT * FROM skill_sessions WHERE completed = 1 AND user_id = 1 AND is_worker_session = 0 ORDER BY started_at DESC LIMIT :limit")
+    @Query("SELECT * FROM skill_sessions WHERE completed = 1 AND user_id = 1 AND worker_slot = 0 ORDER BY started_at DESC LIMIT :limit")
     suspend fun getRecentCompleted(limit: Int = 20): List<SkillSession>
 
-    @Query("SELECT * FROM skill_sessions WHERE completed = 1 AND user_id = 1 AND is_worker_session = 0 ORDER BY started_at ASC")
+    @Query("SELECT * FROM skill_sessions WHERE completed = 1 AND user_id = 1 AND worker_slot = 0 ORDER BY started_at ASC")
     suspend fun getAllCompletedSessions(): List<SkillSession>
 
-    @Query("SELECT * FROM skill_sessions WHERE completed = 1 AND user_id = 1 AND is_worker_session = 0 ORDER BY started_at ASC LIMIT 1")
+    @Query("SELECT * FROM skill_sessions WHERE completed = 1 AND user_id = 1 AND worker_slot = 0 ORDER BY started_at ASC LIMIT 1")
     suspend fun getOldestCompletedSession(): SkillSession?
 
-    @Query("SELECT COUNT(*) FROM skill_sessions WHERE completed = 1 AND user_id = 1 AND is_worker_session = 0")
+    @Query("SELECT COUNT(*) FROM skill_sessions WHERE completed = 1 AND user_id = 1 AND worker_slot = 0")
     fun observeCompletedCount(): Flow<Int>
 
-    // ── Worker sessions (is_worker_session = 1) ──────────────────────────────
+    // ── Worker sessions — slot-parameterized ────────────────────────────────
 
-    @Query("SELECT * FROM skill_sessions WHERE user_id = 1 AND is_worker_session = 1 ORDER BY started_at DESC LIMIT 1")
-    suspend fun getActiveWorkerSession(): SkillSession?
+    @Query("SELECT * FROM skill_sessions WHERE user_id = 1 AND worker_slot = :slot ORDER BY started_at DESC LIMIT 1")
+    suspend fun getActiveWorkerSession(slot: Int): SkillSession?
 
-    @Query("SELECT * FROM skill_sessions WHERE user_id = 1 AND is_worker_session = 1 ORDER BY started_at DESC LIMIT 1")
-    fun observeActiveWorkerSession(): Flow<SkillSession?>
+    @Query("SELECT * FROM skill_sessions WHERE user_id = 1 AND worker_slot = :slot ORDER BY started_at DESC LIMIT 1")
+    fun observeActiveWorkerSession(slot: Int): Flow<SkillSession?>
 
-    @Query("SELECT * FROM skill_sessions WHERE completed = 1 AND user_id = 1 AND is_worker_session = 1 ORDER BY started_at ASC")
-    suspend fun getAllCompletedWorkerSessions(): List<SkillSession>
+    @Query("SELECT * FROM skill_sessions WHERE completed = 1 AND user_id = 1 AND worker_slot = :slot ORDER BY started_at ASC")
+    suspend fun getAllCompletedWorkerSessions(slot: Int): List<SkillSession>
 
-    @Query("SELECT COUNT(*) FROM skill_sessions WHERE completed = 1 AND user_id = 1 AND is_worker_session = 1")
+    @Query("SELECT COUNT(*) FROM skill_sessions WHERE completed = 1 AND user_id = 1 AND worker_slot > 0")
     fun observeWorkerCompletedCount(): Flow<Int>
+
+    @Query("DELETE FROM skill_sessions WHERE user_id = 1 AND worker_slot = :slot")
+    suspend fun deleteAllWorkerSessions(slot: Int)
+
+    @Query("DELETE FROM skill_sessions WHERE user_id = 1 AND worker_slot > 0")
+    suspend fun deleteAllWorkerSessions()
 
     // ── Shared ───────────────────────────────────────────────────────────────
 

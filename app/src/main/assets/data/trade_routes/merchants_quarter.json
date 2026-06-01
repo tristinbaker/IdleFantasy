@@ -1,0 +1,17 @@
+{
+  "id": "merchants_quarter",
+  "display_name": "Merchant's Quarter",
+  "description": "Trade rare commodities in the prestigious merchant district. Only experienced traders are welcome.",
+  "level_required": 80,
+  "coin_cost": 500000,
+  "xp_ranges": {
+    "80": {"min": 750, "max": 1050},
+    "90": {"min": 875, "max": 1250},
+    "99": {"min": 1000, "max": 1450}
+  },
+  "coin_ranges": {
+    "80": {"min": 5800, "max": 10000},
+    "90": {"min": 6500, "max": 11000},
+    "99": {"min": 7200, "max": 12500}
+  }
+}

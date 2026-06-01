@@ -24,6 +24,7 @@ object CombatSimulator {
         playerAttack: Int,
         playerStrength: Int,
         playerDefence: Int,
+        blessingDefBonus: Int = 0,
         playerHp: Int = 10,
         weaponAttackBonus: Int = 0,
         weaponStrengthBonus: Int = 0,
@@ -41,7 +42,7 @@ object CombatSimulator {
     ): SkillSimulator.Result {
         val effAttack   = playerAttack   + (potionBonuses["attack"]   ?: 0)
         val effStrength = playerStrength + (potionBonuses["strength"] ?: 0)
-        val effDefence  = playerDefence  + (potionBonuses["defense"]  ?: 0)
+        val effDefence  = playerDefence  + (potionBonuses["defense"]  ?: 0) + blessingDefBonus
         val effRanged   = playerRanged   + (potionBonuses["ranged"]   ?: 0)
         val effMagic    = playerMagic    + (potionBonuses["magic"]    ?: 0)
 
@@ -196,6 +197,7 @@ object CombatSimulator {
             carryoverEnemyKey = if (enemyHp > 0 && !freshlyKilled) enemyKey else null
             carryoverEnemyHp  = if (enemyHp > 0 && !freshlyKilled) enemyHp  else 0
 
+            if (dungeon.safeZone) currentHp = currentHp.coerceAtLeast(1)
             val diedThisMinute = currentHp <= 0
 
             frames.add(
@@ -222,6 +224,20 @@ object CombatSimulator {
             runningTotal += frameXp
 
             if (diedThisMinute) break
+        }
+
+        // Roll dungeon rare drops once per completed run (not per kill).
+        if (frames.isNotEmpty() && !frames.last().died && dungeon.rareDrops.isNotEmpty()) {
+            val lastFrame = frames.last()
+            val rareItems = lastFrame.items.toMutableMap()
+            for (rare in dungeon.rareDrops) {
+                if (rnd.nextDouble() < rare.chance) {
+                    rareItems[rare.item] = (rareItems[rare.item] ?: 0) + 1
+                }
+            }
+            if (rareItems != lastFrame.items) {
+                frames[frames.lastIndex] = lastFrame.copy(items = rareItems)
+            }
         }
 
         val fullDurationMs = SkillSimulator.sessionDurationMs(agilityLevel)
@@ -266,6 +282,7 @@ object CombatSimulator {
         weaponStrBonus: Int,
         equippedFood: Map<String, Int> = emptyMap(),
         foodHealValues: Map<String, Int> = emptyMap(),
+        blessingDefBonus: Int = 0,
     ): List<SessionFrame> {
         val effStr      = playerStrength + weaponStrBonus
         val playerMax   = max(1, 1 + effStr * (weaponStrBonus + 64) / 640)
@@ -279,9 +296,10 @@ object CombatSimulator {
         val bossEffStr = boss.combatStats.strengthLevel + boss.combatStats.strengthBonus
         val bossMax    = max(1, 1 + bossEffStr * (boss.combatStats.strengthBonus + 64) / 640)
         val bossEffAtk = boss.combatStats.attackLevel + boss.combatStats.attackBonus
+        val effPlayerDefence = playerDefence + blessingDefBonus
         val bossHitChance = when {
-            bossEffAtk > playerDefence -> 1.0 - playerDefence / (2.0 * bossEffAtk.coerceAtLeast(1))
-            else                       -> bossEffAtk / (2.0 * playerDefence.coerceAtLeast(1))
+            bossEffAtk > effPlayerDefence -> 1.0 - effPlayerDefence / (2.0 * bossEffAtk.coerceAtLeast(1))
+            else                          -> bossEffAtk / (2.0 * effPlayerDefence.coerceAtLeast(1))
         }.coerceIn(0.10, 0.95)
 
         val maxHp         = playerHp * 10

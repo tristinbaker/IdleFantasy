@@ -1,0 +1,62 @@
+{
+  "name": "abyssal_lagoon",
+  "display_name": "Abyssal Lagoon",
+  "description": "A still black lagoon with no visible bottom. The fish here glow faintly and dissolve within minutes of being caught. Experienced anglers speak of this place in whispers.",
+  "skill": "fishing",
+  "level_required": 40,
+  "requires_previous_unlock": "drowned_temple",
+  "xp_ranges": {
+    "40": {"min": 72, "max": 105},
+    "45": {"min": 88, "max": 127},
+    "50": {"min": 105, "max": 154},
+    "55": {"min": 126, "max": 181},
+    "60": {"min": 148, "max": 215},
+    "65": {"min": 176, "max": 253},
+    "70": {"min": 209, "max": 297},
+    "75": {"min": 242, "max": 347},
+    "80": {"min": 286, "max": 407},
+    "85": {"min": 330, "max": 473},
+    "90": {"min": 385, "max": 544},
+    "95": {"min": 440, "max": 627}
+  },
+  "drop_tables": {
+    "40": [
+      {"item": "raw_tuna", "chance": 0.45},
+      {"item": "raw_lobster", "chance": 0.35},
+      {"item": "raw_swordfish", "chance": 0.20}
+    ],
+    "50": [
+      {"item": "raw_lobster", "chance": 0.40},
+      {"item": "raw_swordfish", "chance": 0.35},
+      {"item": "raw_shark", "chance": 0.15},
+      {"item": "crab", "chance": 0.10}
+    ],
+    "60": [
+      {"item": "raw_swordfish", "chance": 0.35},
+      {"item": "raw_shark", "chance": 0.35},
+      {"item": "raw_lobster", "chance": 0.20},
+      {"item": "crab", "chance": 0.10}
+    ],
+    "70": [
+      {"item": "raw_swordfish", "chance": 0.30},
+      {"item": "raw_shark", "chance": 0.50},
+      {"item": "crab", "chance": 0.20}
+    ],
+    "85": [
+      {"item": "raw_shark", "chance": 0.60},
+      {"item": "raw_swordfish", "chance": 0.25},
+      {"item": "crab", "chance": 0.15}
+    ]
+  },
+  "note_chance_per_frame": 0.003,
+  "note_threshold": 5,
+  "note_texts": [
+    "The water here has no bottom. Strange lights pulse from impossible depths.",
+    "Fish pulled from the deep glow faintly and dissolve within minutes. What fed on them?",
+    "A torn map marks this lagoon with a single word: 'DO NOT FISH.' No explanation is given.",
+    "Something rises to the surface and sinks again. Massive. Ancient. Curious.",
+    "The dark water parts. The Abyssal Ruins loom below — vast, alien, and ancient beyond reckoning."
+  ],
+  "unlock_dungeon": "abyssal_ruins",
+  "unlock_message": "The Abyssal Ruins have surfaced — dive in and confront what dwells in the deep."
+}

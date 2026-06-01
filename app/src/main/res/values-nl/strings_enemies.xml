@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Enemy names ===== -->
+    <string name="enemy_giant_rat_name">Megarat</string>
+    <string name="enemy_goblin_name">Kobold</string>
+    <string name="enemy_skeleton_name">Skelet</string>
+    <string name="enemy_zombie_name">Zombie</string>
+    <string name="enemy_bandit_name">Bandiet</string>
+    <string name="enemy_guard_name">Wachter</string>
+    <string name="enemy_dark_wizard_name">Zwartmagïer</string>
+    <string name="enemy_orc_warrior_name">Ork Krijger</string>
+    <string name="enemy_spider_name">Reuzespin</string>
+    <string name="enemy_wild_dog_name">Wilde Hond</string>
+    <string name="enemy_rogue_name">Schurk</string>
+    <string name="enemy_knight_name">Ridder</string>
+    <string name="enemy_hellhound_name">Helhond</string>
+    <string name="enemy_troll_name">Bergtrol</string>
+    <string name="enemy_demon_name">Mindere Demon</string>
+    <string name="enemy_dragon_name">Groene Draak</string>
+    <string name="enemy_imp_name">Imp</string>
+    <string name="enemy_chicken_name">Kip</string>
+    <string name="enemy_sheep_name">Schaap</string>
+    <string name="enemy_cow_name">Koe</string>
+
+    <!-- ===== Dungeon names and descriptions ===== -->
+    <string name="dungeon_imp_cavern_name">Imp Grot</string>
+    <string name="dungeon_imp_cavern_desc">Een ondiepe grot vol ondeugende Imps. Perfect voor beginners!</string>
+    <string name="dungeon_goblin_cave_name">Kobold Grot</string>
+    <string name="dungeon_goblin_cave_desc">Een donkere grot vol Kobolden en Megaratten. Een goede plek voor nieuwe avonturiers om te trainen.</string>
+    <string name="dungeon_spider_den_name">Spinnenhol</string>
+    <string name="dungeon_spider_den_desc">Een met webben gevulde grot vol giftige spinnen. Neem tegengif mee!</string>
+    <string name="dungeon_bandit_camp_name">Bandietenkamp</string>
+    <string name="dungeon_bandit_camp_desc">Een schuilplaats van dieven en schurken in de wildernis. Pas op je geldbuidel!</string>
+    <string name="dungeon_undead_crypt_name">Zombie Crypt</string>
+    <string name="dungeon_undead_crypt_desc">Een oude begraafplaats waar de doden weigeren te rusten. Pas op voor de zwarte magie!</string>
+    <string name="dungeon_fortress_ruins_name">Kasteel Ruïne</string>
+    <string name="dungeon_fortress_ruins_desc">De vervallen resten van een oud kasteel, nu bewaakt door ridders en soldaten.</string>
+    <string name="dungeon_orc_stronghold_name">Ork Vesting</string>
+    <string name="dungeon_orc_stronghold_desc">Een versterkte nederzetting van Orks, diep in de bergen. Alleen de dappersten wagen zich naar binnen.</string>
+    <string name="dungeon_volcanic_depths_name">Vulkanische Diepten</string>
+    <string name="dungeon_volcanic_depths_desc">Een vurige grot waar helhonden en mindere demonen huishouden. De hitte is ondraaglijk!</string>
+    <string name="dungeon_dragon_lair_name">Drakennest</string>
+    <string name="dungeon_dragon_lair_desc">Het legendarische nest van groene draken. Alleen krijgsmeesters overleven deze uitdaging.</string>
+    <string name="dungeon_farm_name">Boerderij</string>
+    <string name="dungeon_farm_desc">Een rustige boerderij met vee. Geweldig voor beginners die voedsel willen verzamelen!</string>
+    <string name="dungeon_infernal_stronghold_name">Helse Vesting</string>
+    <string name="dungeon_infernal_stronghold_desc">Een fort van vuur en zwavel. Demonen en Helhonden voeren hier het bevel. De hitte alleen al kan hen die niet voorbereid zijn doden.</string>
+    <string name="dungeon_ancient_temple_name">Eeuwenoude Tempel</string>
+    <string name="dungeon_ancient_temple_desc">Een eeuwenoude tempel, bewaakt door de machtigste wezens van het Domein. Alleen de sterksten wagen zich naar binnen.</string>
+
+    <!-- ===== Solo boss names (raid bosses retargeted for solo play) ===== -->
+    <string name="boss_king_black_dragon_name">Koning der Zwarte Draken</string>
+    <string name="boss_demon_lord_name">Demonenheer</string>
+    <string name="boss_kraken_name">Kraken</string>
+    <string name="boss_balrog_name">Balrog</string>
+
+    <!-- ===== Pet names and descriptions ===== -->
+    <string name="pet_dragon_whelp_name">Drakenjong</string>
+    <string name="pet_dragon_whelp_desc">Een jonge draak die je Gevechts XP verbetert.</string>
+    <string name="pet_imp_pet_name">Getemde Imp</string>
+    <string name="pet_imp_pet_desc">Een ondeugende imp die je Gebeds XP verbetert.</string>
+    <string name="pet_baby_kraken_name">Krakenjong</string>
+    <string name="pet_baby_kraken_desc">Een jonge kraken die je Koks XP verbetert.</string>
+    <string name="pet_rock_golem_name">Rots Golem</string>
+    <string name="pet_rock_golem_desc">Een levende rotsformatie die je Mijners XP verbetert.</string>
+    <string name="pet_ent_name">Ent</string>
+    <string name="pet_ent_desc">Een eeuwenoude Boomherder die je Houthakkers XP verbetert.</string>
+    <string name="pet_tiny_templar_name">Vinneling</string>
+    <string name="pet_tiny_templar_desc">Een kleine visvriend die je Vissers XP verbetert.</string>
+    <string name="pet_tangleroot_name">Tangleroot</string>
+    <string name="pet_tangleroot_desc">Een magisch plantwezen dat je Landbouw XP verbetert.</string>
+</resources>

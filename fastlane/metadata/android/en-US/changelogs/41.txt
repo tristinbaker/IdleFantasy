@@ -1,0 +1,15 @@
+• New: Agility expeditions added -- explore the Crumbling Watchtower (level 1) and Shattered Spire (level 40) to uncover lore and unlock two new combat dungeons: the Shadow Den and the Arcane Ruins
+• Fix: Slayer task kill progress now correctly counts when collecting a dungeon session from the Home screen
+• Fix: Daily quest "Cook 20 Swordfish" now requires cooking level 50, matching the actual recipe requirement
+• Fix: Copper Caverns expedition now always has a chance to yield copper ore regardless of mining level; updated description to reflect the mine's depleted state
+• Fix: Expedition lore note progress could exceed the maximum (e.g. 6/5) if two notes dropped in the same session
+• Fix: Dwarven gear daily reward description now correctly shows 1/100 drop chance (thanks @OlMon)
+• Fix: Importing a save now restores active sessions and queues as they were at export time, rather than losing or mis-timing them
+• Fix: Dragon Scimitar, Dragon Longsword, Hellfire Staff, and Trident of the Seas now correctly appear as equippable weapons instead of showing under Others
+• New: Potion effects are now shown in the dungeon and boss start screens
+• New: Quick link from the Profile Equipment tab to the Combat Gear screen
+• Fix: All bone types (Big Bones, Giant Bones, Dragon Bone) now count toward Prayer Guild quests; quest descriptions updated to say "of any type" to make this clear
+• New: Prayer sheet now lists bones from lowest to highest XP, so weaker bones are offered first
+• New: Two workers can now be hired simultaneously -- a Long Laborer fills the first slot (gathering only, no queue limit) and any tier of Skilled Worker fills the second slot independently
+• New: Hiring a worker now takes you straight to that worker's skill screen to start queuing sessions
+• New: Worker cards moved to the bottom of the Home screen, below your active session and queue

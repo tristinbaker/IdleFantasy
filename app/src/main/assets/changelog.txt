@@ -1,3 +1,166 @@
+v1.7.3
+• Fix: Guild daily quests can no longer push reputation past the tier threshold while gate quests are incomplete
+• Fix: Quest progress for higher-tier guild quests no longer pre-accumulates before you reach that tier; progress resets to 0 when you advance to a new rank
+• New: Guild detail screen shows a warning and turns the rep bar red when gate quests must be completed before advancing
+• New: Guild Hall screen shows "Quest required to advance" on cards where progression is blocked
+• New: Inn food purchase dialog now lets you type or use +/- buttons to buy multiple of the same food at once
+• Update: Town description on the home screen now mentions the Slayer Master
+• New: Active 2× XP Boost now shows on the home screen with time remaining, similar to the church blessing indicator
+
+v1.7.2
+• Fix: Mercantile shop items (Ring of Recoil, Amulet of Strength) can now be equipped
+• Fix: Boss fights now show a weapon selector, matching the dungeon start screen
+• Fix: Collecting a session from the Skills screen now counts quest progress, daily quests, and guild progress correctly; firemaking logs are also consumed at collect time
+• Fix: Collecting one worker's completed session no longer cancels the other worker's active session
+• Update: German item translations (contributed by @selki-latah)
+• Update: French Slayer translations (contributed by @widowild1)
+
+v1.7.1
+• New: Agility expeditions added -- explore the Crumbling Watchtower (level 1) and Shattered Spire (level 40) to uncover lore and unlock two new combat dungeons: the Shadow Den and the Arcane Ruins
+• Fix: Slayer task kill progress now correctly counts when collecting a dungeon session from the Home screen
+• Fix: Daily quest "Cook 20 Swordfish" now requires cooking level 50, matching the actual recipe requirement
+• Fix: Copper Caverns expedition now always has a chance to yield copper ore regardless of mining level; updated description to reflect the mine's depleted state
+• Fix: Expedition lore note progress could exceed the maximum (e.g. 6/5) if two notes dropped in the same session
+• Fix: Dwarven gear daily reward description now correctly shows 1/100 drop chance (thanks @OlMon)
+• Fix: Importing a save now restores active sessions and queues as they were at export time, rather than losing or mis-timing them
+• Fix: Dragon Scimitar, Dragon Longsword, Hellfire Staff, and Trident of the Seas now correctly appear as equippable weapons instead of showing under Others
+• New: Potion effects are now shown in the dungeon and boss start screens
+• New: Quick link from the Profile Equipment tab to the Combat Gear screen
+• Fix: All bone types (Big Bones, Giant Bones, Dragon Bone) now count toward Prayer Guild quests; quest descriptions updated to say "of any type" to make this clear
+• New: Prayer sheet now lists bones from lowest to highest XP, so weaker bones are offered first
+• New: Two workers can now be hired simultaneously -- a Long Laborer fills the first slot (gathering only, no queue limit) and any tier of Skilled Worker fills the second slot independently
+• New: Hiring a worker now takes you straight to that worker's skill screen to start queuing sessions
+• New: Worker cards moved to the bottom of the Home screen, below your active session and queue
+
+v1.7.0
+• New: Slayer skill -- visit the Slayer Master in Town to receive tasks to kill specific enemies in dungeons
+• New: Completing Slayer tasks earns Slayer points; higher-level tasks award more points
+• New: Slayer shop sells XP lamps usable on any skill, plus exclusive Slayer gear (Slayer Helm, Abyssal Whip, Slayer Platebody, Slayer Platelegs)
+• New: Active task card shows which dungeons contain the target enemy
+• New: Six-tier Slayer quest chain added to the Combat quests tab
+• Fix: Crafting quantity sheet now shows total items produced (e.g. 30 Arrow Shafts) alongside the XP preview when output quantity is greater than 1
+• Fix: "Monster Hunter" quest chain was incorrectly named "Slayer" -- renamed to avoid conflict with the new Slayer task quests
+• Fix: Quest names now display correctly instead of falling back to the title-cased ID (e.g. "Balrog Bane I" instead of "Balrog Bane 1")
+• Fix: Dungeon Explorer VII (Imp Cavern) is now part of the Dungeon Explorer quest chain instead of appearing independently
+• Fix: Expedition dungeons are now hidden from the dungeon list until explicitly unlocked
+• New: Italian translation (contributed by @bruce965)
+• New: Dutch translation (contributed by @Fimlore)
+• Update: French translation improvements (contributed by @widowild1)
+
+v1.6.3
+• Fix: Guild daily and progression quest reward notifications now list the actual items awarded (e.g. "Raw Trout x30, Log x20") instead of a generic item count
+• New: Up/down arrows on queued sessions let you reorder them before they start
+• Fix: Cancelling a queued mercantile trade route now refunds the coin cost
+• Fix: XP level-up preview now appears in quantity pickers for smithing, cooking, fletching, crafting, and herblore (was only showing for prayer and runecrafting)
+• Fix: Shop now shows your mercantile buy discount on listed prices; discounted items display the original price struck through
+• New: Mercantile guild daily quests now include "earn X coins from trade routes" objectives alongside the existing "complete N routes" quests
+
+v1.6.2
+• Fix: Guild daily requests now unlock as soon as you earn any reputation in a guild, removing a softlock where completing all tier-0 quests left no way to earn the remaining rep needed to advance
+• New: Crafting, smithing, cooking, fletching, herblore, prayer, and runecrafting quantity pickers now show a level-up preview (e.g. +2,400 XP → Level 42) when the selected amount would push you to the next level
+• Balance: Mercantile XP per trade route reduced by ~4x; two Local Market sessions should now reach around level 10-15 rather than level 37
+
+v1.6.1
+• New: Church building added to the home screen; visit to activate a 24-hour blessing based on your Prayer level
+• New: Blessings come in three types: XP multiplier, Defense bonus, or Coin bonus; higher Prayer levels unlock stronger tiers up to level 99
+• New: Active blessing is shown in the Player Stats card on the home screen
+• New: Session results show per-skill XP blessing bonus inline (e.g. Attack +12,450 XP (+1,245))
+• New: Automatic backup in Settings; choose a folder and a schedule (hourly, daily at 5:00 AM, or weekly)
+• New: Shop, Inn, Guild Hall, and Church are now grouped under a single expandable Town button on the home screen
+• New: Guild level now requires both enough reputation AND completing the current tier's quests to advance
+• New: Guild Hall shows a gold "Dailies available" label on guilds with unclaimed daily tasks
+• New: Guild detail screen hints "Do dailies to increase your reputation" when quests are done but rep is short
+• New: The Farm dungeon is now a safe zone; you cannot die while farming
+• New: Mercantile skill added under a new Support category on the Skills screen; dispatch trade routes to earn variable coin returns and XP
+• New: Six trade routes available from level 1 to 99; each costs coins upfront with unpredictable returns ranging from a small loss to a solid windfall
+• New: Merchants Guild with 10 progression quests and daily tasks; complete trade routes to earn reputation
+• New: Higher Mercantile levels unlock exclusive shop items (rings, necklaces, rare herbs) and grant buy discounts and sell price bonuses up to 25% at level 99
+• New: Guild capes added; claim one from the level 9 quest in any guild for a 5% bonus to that guild's skill
+• New: Combat capes boost all combat stats by 5% (guild) or 10% (level 99); Prayer capes strengthen your active blessing; Mercantile cape improves shop prices and trade returns
+• Fix: Level 99 skill capes now actually grant their bonus (10% yield, XP, or stats depending on the skill)
+• Fix: Expedition lore notes now have a pity system; a drop is guaranteed after 10 consecutive runs with no note
+• Fix: Lore note drop rate reduced; notes are now a rare find during expeditions
+• Fix: Higher level agility courses now always give more XP per session than lower ones
+• Fix: Queued expeditions, dungeons, and bosses now show correctly in the queue (e.g. "Expedition — Copper Caverns" instead of "Copper Caverns — Copper Caverns")
+
+v1.6.1
+• New: Church building added to the home screen; visit to activate a 24-hour blessing based on your Prayer level
+• New: Blessings come in three types: XP multiplier, Defense bonus, or Coin bonus; higher Prayer levels unlock stronger tiers up to level 99
+• New: Active blessing is shown in the Player Stats card on the home screen
+• New: Session results show per-skill XP blessing bonus inline (e.g. Attack +12,450 XP (+1,245))
+• New: Automatic backup in Settings; choose a folder and a schedule (hourly, daily at 5:00 AM, or weekly)
+• New: Shop, Inn, Guild Hall, and Church are now grouped under a single expandable Town button on the home screen
+• New: Guild level now requires both enough reputation AND completing the current tier's quests to advance
+• New: Guild Hall shows a gold "Dailies available" label on guilds with unclaimed daily tasks
+• New: Guild detail screen hints "Do dailies to increase your reputation" when quests are done but rep is short
+• New: The Farm dungeon is now a safe zone; you cannot die while farming
+• New: Mercantile skill added under a new Support category on the Skills screen; dispatch trade routes to earn variable coin returns and XP
+• New: Six trade routes available from level 1 to 99; each costs coins upfront with unpredictable returns ranging from a small loss to a solid windfall
+• New: Merchants Guild with 10 progression quests and daily tasks; complete trade routes to earn reputation
+• New: Higher Mercantile levels unlock exclusive shop items (rings, necklaces, rare herbs) and grant buy discounts and sell price bonuses up to 25% at level 99
+• New: Guild capes added; claim one from the level 9 quest in any guild for a 5% bonus to that guild's skill
+• New: Combat capes boost all combat stats by 5% (guild) or 10% (level 99); Prayer capes strengthen your active blessing; Mercantile cape improves shop prices and trade returns
+• Fix: Level 99 skill capes now actually grant their bonus (10% yield, XP, or stats depending on the skill)
+• Fix: Expedition lore notes now have a pity system; a drop is guaranteed after 10 consecutive runs with no note
+• Fix: Lore note drop rate reduced; notes are now a rare find during expeditions
+• Fix: Higher level agility courses now always give more XP per session than lower ones
+• Fix: Queued expeditions, dungeons, and bosses now show correctly in the queue (e.g. "Expedition — Copper Caverns" instead of "Copper Caverns — Copper Caverns")
+
+v1.6.0
+• New: Expeditions, a new tab in the Skills screen with 6 skilling dungeons for Mining, Woodcutting, and Fishing
+• New: Lore notes system; rare notes drop during expeditions, collect enough to uncover what lies beyond
+• New: Notes tab on the Profile screen, discovered lore texts revealed in order as notes are found
+• New: Expedition sessions can be queued like any other skill session
+• New: Swipe left and right to switch tabs on the Skills, Combat, Quests, and Profile screens
+• Fix: Guild daily quests now appear immediately when unlocking Guild Level 1, instead of waiting until the next 6am reset
+• Fix: Font size setting is now a dropdown instead of overflowing buttons
+• Fix: Hide completed quests toggle now also hides claimed daily quests
+• Fix: Hide completed quests toggle is now saved and restored across app restarts
+• Fix: Restoring a save now auto-starts any queued sessions
+• Fix: Farming patch state is now included in save exports and restored on import
+
+v1.5.1
+• New: 77 new quests added — Firemaking, Runecrafting, Herblore, extended Slayer and boss chains, new enemy slayer chains, new dungeon and style challenge quests, and extended Iron Stomach and Treasure Hunter chains
+• New: Hide completed quests toggle in the Quests screen header
+• Fix: Quest display names now correctly show Roman numerals
+• Fix: Herblore quest progress now properly tracked from the Skills screen
+• Fix: Guild Hall claimable badge now appears on the correct guild
+• Fix: Farming harvests now count toward Farming Guild quest progress
+• New: Tapping a farming crop-ready notification now opens the Farming screen directly
+• Fix: Queued sessions no longer get stuck when the alarm and app-open advance the queue at the same time
+
+v1.5.1
+• New: 77 new quests added — Firemaking, Runecrafting, Herblore, extended Slayer and boss chains, new enemy slayer chains, new dungeon and style challenge quests, and extended Iron Stomach and Treasure Hunter chains
+• New: Hide completed quests toggle in the Quests screen header
+• Fix: Quest display names now correctly show Roman numerals
+• Fix: Herblore quest progress now properly tracked from the Skills screen
+• Fix: Guild Hall claimable badge now appears on the correct guild
+• Fix: Farming harvests now count toward Farming Guild quest progress
+• New: Tapping a farming crop-ready notification now opens the Farming screen directly
+• Fix: Queued sessions no longer get stuck when the alarm and app-open advance the queue at the same time
+
+v1.5.0
+• New: Guild Hall -- 16 guilds, one for each skill and combat style
+• New: Each guild has 10 progression quests and daily requests that reset at 6am
+• New: Guilds reward cross-skill materials, coins, and XP, so single-skill characters can access resources they would otherwise need other skills for
+• New: Warriors, Archers, and Mages guilds each track kills made with the matching combat style (melee, ranged, or magic)
+• Fix: Hiring a new Long Worker no longer shows a stale job from a previous hire
+• Fix: Removed incorrect queue indicator from the Worker screen
+• Fix: Long Worker crafting sessions now return the correct number of items instead of halving the output
+• Fix: Kill counter in the dungeon view now updates tick by tick as enemies die instead of once per minute
+• Fix: Combat log now shows a kill entry when an enemy is defeated, making kills distinguishable from hits
+• Fix: Arrows are now correctly consumed when completing combat sessions with a ranged weapon
+
+v1.4.3
+• New: Equip one weapon per combat style (Attack, Strength, Ranged, Magic) and choose which to use before entering a dungeon
+• Fix: Queued magic dungeons now deal correct damage (previously dealt 1 damage per hit)
+• Fix: Existing weapon is now automatically migrated to the correct new weapon slot on first launch
+• Fix: Arrow sell prices corrected -- finished arrows are now worth more than their components (shaft + tip)
+• Fix: Multi-session prayer summary now shows each bone type on its own row instead of one long squished line
+• Translation: French translation updated
+• New: Session start sheets now show estimated XP gain and projected level for each activity
+• Tweak: Dwarven gear drop chance increased from 1/500 to 1/100, and only missing pieces can drop (no duplicates)
+
 v1.4.2
 • New: App launcher icon
 • Fix: Combat difficulty ratings and achievement names/descriptions are now translatable

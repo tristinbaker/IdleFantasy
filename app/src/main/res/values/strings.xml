@@ -242,7 +242,7 @@
     <!-- ===== HomeScreen ===== -->
     <string name="label_player_stats">Player Stats</string>
     <string name="label_combat_level">Combat Level</string>
-    <string name="label_shop_desc">Buy and sell items</string>
+    <string name="label_shop_desc">Buy equipment and sell loot</string>
     <string name="label_no_session_hint">Head to Skills or Combat to start training.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -261,9 +261,10 @@
     <string name="label_daily">Daily</string>
     <string name="label_daily_quests">Daily Quests</string>
     <string name="label_daily_reset">Resets at 6:00 AM</string>
-    <string name="label_daily_reward">2,000 coins (1/500: Dwarven gear)</string>
+    <string name="label_daily_reward">2,000 coins (1/100: Dwarven gear)</string>
     <string name="msg_daily_claimed_coins">Daily quest complete! +2,000 coins.</string>
     <string name="msg_daily_claimed_dwarven">Daily quest complete! You found %1$s!</string>
+    <string name="label_hide_completed">Hide completed</string>
 
     <!-- ===== OnboardingScreen ===== -->
     <string name="onboarding_lets_go">Let\'s go!</string>
@@ -277,6 +278,9 @@
     <string name="settings_tutorial_title">Tutorial</string>
     <string name="settings_tutorial_desc">Show the introduction again</string>
     <string name="settings_reopen">Reopen</string>
+    <string name="settings_changelog_title">What\'s New</string>
+    <string name="settings_changelog_desc">View the latest update changes</string>
+    <string name="settings_changelog_btn">View</string>
     <string name="settings_foss_desc">Idle Fantasy is free and open source software.</string>
     <string name="settings_reset_title">Reset Progression</string>
     <string name="settings_reset_desc">Erase all skills, items, quests, and coins</string>
@@ -316,9 +320,11 @@
     <string name="settings_lang_english">English</string>
     <string name="settings_lang_deutsch">Deutsch</string>
     <string name="settings_lang_français">Français</string>
+    <string name="settings_lang_dutch">Nederlands</string>
     <string name="settings_lang_español">Español</string>
     <string name="settings_lang_español_españa">Español (España)</string>
     <string name="settings_lang_turkish">Türkçe</string>
+    <string name="settings_lang_italiano">Italiano</string>
     <string name="settings_lang_system">System</string>
     <string name="settings_save_data">Save Data</string>
     <string name="settings_export">Export Save</string>
@@ -333,10 +339,31 @@
     <string name="settings_exported_ok">Save exported</string>
     <string name="settings_imported_ok">Save imported successfully</string>
     <string name="settings_imported_fail">Failed to import — invalid file</string>
+    <string name="settings_backup_title">Automatic Backup</string>
+    <string name="settings_backup_folder">Backup Folder</string>
+    <string name="settings_backup_no_folder">No folder selected</string>
+    <string name="settings_backup_choose">Choose</string>
+    <string name="settings_backup_frequency">Frequency</string>
+    <string name="settings_backup_off">Off</string>
+    <string name="settings_backup_hourly">Hourly</string>
+    <string name="settings_backup_daily">Daily</string>
+    <string name="settings_backup_weekly">Weekly</string>
+    <string name="settings_backup_at_5am">at 5:00 AM</string>
+    <string name="settings_backup_now">Back Up Now</string>
+    <string name="settings_backup_success">Backup saved.</string>
+    <string name="settings_backup_failed">Backup failed.</string>
+    <string name="settings_backup_folder_set">Backup folder set.</string>
 
     <!-- ===== HomeScreen ===== -->
+    <string name="home_town_title">Town</string>
+    <string name="home_town_desc">Visit the shop, inn, guild, church, and slayer master</string>
+    <string name="guild_dailies_available">Dailies available</string>
+    <string name="guild_do_dailies_hint">Do dailies to increase your reputation</string>
+    <string name="guild_quest_gate_blocked">Complete quests to advance your rank</string>
+    <string name="guild_quest_required">Quest required to advance</string>
     <string name="home_died_message">You died and lost most of your gains.</string>
     <string name="home_xp_boost_was_active">2× XP Boost was active</string>
+    <string name="home_xp_boost_active">2× XP Boost active — %1$s remaining</string>
     <string name="home_loot">Loot</string>
     <string name="home_food_consumed">Food Consumed</string>
     <string name="home_bones_buried">Bones buried</string>
@@ -398,7 +425,9 @@
     <string name="profile_pet_collected">Collected</string>
     <string name="profile_pet_not_found">Not Yet Found</string>
     <string name="profile_equip_best">Equip Best Gear</string>
+    <string name="profile_weapons">Weapons</string>
     <string name="profile_combat_gear">Combat Gear</string>
+    <string name="profile_view_combat_gear">View Combat Gear</string>
     <string name="profile_gathering_tools">Gathering Tools</string>
     <string name="profile_food_dungeon">Food (Dungeon)</string>
     <string name="profile_no_food">No cooked food in inventory</string>
@@ -479,8 +508,8 @@
 
     <!-- ===== CraftingScreen ===== -->
     <string name="crafting_no_mats">No mats</string>
-    <!-- Translator note: %1$d = quantity produced -->
-    <string name="crafting_produces">Produces %1$d× per craft</string>
+    <!-- Translator note: %1$d = total quantity, %2$s = item name -->
+    <string name="crafting_produces">= %1$d %2$s</string>
     <string name="crafting_effects">Effects</string>
     <!-- Translator note: %1$d = total XP -->
     <string name="crafting_xp_total">+%1$d XP total</string>
@@ -572,7 +601,7 @@
     <string name="inn_worker_already_hired">A worker is already hired.</string>
     <string name="inn_not_enough_coins">Not enough coins.</string>
     <string name="inn_hire">Hire</string>
-    <string name="inn_worker_active">Worker hired</string>
+    <string name="inn_worker_active">Worker hired and training</string>
     <string name="inn_hire_cost">%1$s coins</string>
     <string name="worker_long_laborer">Long Laborer</string>
     <string name="worker_apprentice">Apprentice</string>
@@ -588,7 +617,6 @@
     <string name="worker_session_active">Worker Session Active</string>
     <string name="worker_session_complete">Worker Session Complete</string>
     <string name="worker_manage_from_home">Collect from the Home screen</string>
-    <string name="worker_queue_label">Worker Queue (%1$d/3)</string>
     <string name="worker_card_title">Worker</string>
     <string name="worker_idle">Worker is idle — queued sessions start automatically</string>
     <string name="worker_collect_btn">Collect Worker Session</string>
@@ -597,6 +625,8 @@
     <string name="worker_dismiss_confirm_body">The active session and queue will be cancelled. Your hire fee and any queued materials will be returned.</string>
     <string name="inn_daily_menu">Daily Menu</string>
     <string name="inn_laborers_header">Laborers</string>
+    <string name="inn_slot1_header">Long Laborer</string>
+    <string name="inn_slot2_header">Skilled Worker</string>
 
     <!-- ===== Combat difficulty ratings ===== -->
     <string name="combat_difficulty_likely">Looks manageable</string>
@@ -662,11 +692,163 @@
     <string name="inn_daily_resets">Refreshes daily at 6am</string>
     <string name="inn_food_heal">+%1$d HP</string>
     <string name="inn_food_purchased">Food purchased.</string>
-    <string name="inn_card_desc">Workers and daily food</string>
+    <string name="inn_buy_qty">Quantity</string>
+    <string name="inn_buy_total">Total: %1$s</string>
+    <string name="inn_card_desc">Hire workers and stock food</string>
     <string name="worker_no_active_session">Worker is idle — no sessions queued</string>
     <string name="worker_add_sessions">Add Sessions</string>
     <string name="inn_worker_tier">%1$s worker</string>
     <string name="worker_skills_title_nav">Worker Skills</string>
 
+    <!-- Guild Hall -->
+    <string name="guild_hall_title">Guild Hall</string>
+    <string name="guild_hall_desc">Join guilds and earn rep rewards</string>
+    <string name="guild_hall_intro">Guilds reward you for activities you already do. Complete quests and daily requests to earn cross-skill materials, coins, and XP, so specialists can still access resources from skills they don\'t train.</string>
+    <string name="guild_level_label">Level %1$d</string>
+    <string name="guild_level_max">Level 10 (Max)</string>
+    <string name="guild_tab_quests">Quests</string>
+    <string name="guild_tab_dailies">Daily Requests</string>
+    <string name="guild_daily_resets_in">Resets daily at 6am</string>
+    <string name="guild_locked_hint">Requires Guild Level %1$d</string>
+    <string name="guild_no_dailies">Complete guild quests to earn reputation and unlock daily requests.</string>
+    <string name="guild_rep_label">%1$d / %2$d rep</string>
+    <string name="guild_quest_complete">Quest complete: %1$s</string>
+    <string name="guild_daily_complete">Daily reward claimed!</string>
+    <string name="guild_name_mining">Mining Guild</string>
+    <string name="guild_name_fishing">Fishing Guild</string>
+    <string name="guild_name_woodcutting">Woodcutting Guild</string>
+    <string name="guild_name_farming">Farming Guild</string>
+    <string name="guild_name_firemaking">Firemakers Guild</string>
+    <string name="guild_name_agility">Agility Guild</string>
+    <string name="guild_name_smithing">Smithing Guild</string>
+    <string name="guild_name_cooking">Cooks Guild</string>
+    <string name="guild_name_fletching">Fletchers Guild</string>
+    <string name="guild_name_crafting">Crafting Guild</string>
+    <string name="guild_name_runecrafting">Runecrafters Guild</string>
+    <string name="guild_name_herblore">Herblorists Guild</string>
+    <string name="guild_name_warriors">Warriors Guild</string>
+    <string name="guild_name_archers">Archers Guild</string>
+    <string name="guild_name_mages">Mages Guild</string>
+    <string name="guild_name_prayer">Prayer Guild</string>
+    <string name="guild_name_mercantile">Merchants Guild</string>
+
+    <!-- Mercantile skill -->
+    <string name="skill_mercantile">Mercantile</string>
+    <string name="label_support_skills">Support</string>
+    <string name="mercantile_routes_label">Trade Routes</string>
+    <string name="mercantile_level_label">Level %1$d Mercantile</string>
+    <string name="mercantile_xp_label">XP: %1$s</string>
+    <string name="mercantile_coins_label">Coins: %1$s</string>
+    <string name="mercantile_cost_label">Cost: %1$s</string>
+    <string name="mercantile_return_range">Returns: %1$s – %2$s</string>
+    <string name="mercantile_dispatch_label">Dispatch</string>
+    <string name="mercantile_queue_label">Add to Queue</string>
+
+    <!-- Church -->
+    <string name="church_title">Church</string>
+    <string name="church_desc">Blessings for XP, defense, and coins</string>
+    <string name="church_no_active_blessing">No active blessing — visit the Church to pray.</string>
+    <string name="church_active_label">Active Blessing</string>
+    <string name="church_expires_in">Expires in %1$s</string>
+    <string name="church_blessing_active_fmt">%1$s • %2$s left</string>
+    <string name="church_section_xp">XP Blessings</string>
+    <string name="church_section_defense">Defense Blessings</string>
+    <string name="church_section_coins">Coin Blessings</string>
+    <string name="church_locked_level">Requires Prayer level %1$d</string>
+    <string name="church_active_chip">Active</string>
+    <string name="church_activate">Activate</string>
+    <string name="church_blessing_bonus">+%1$s from blessing</string>
+    <string name="church_blessing_suffix">from blessing</string>
+    <string name="church_effect_xp">×%1$.2f XP for 24 hours</string>
+    <string name="church_effect_def">+%1$d Defense for 24 hours</string>
+    <string name="church_effect_coins">+%1$d%% coin drops for 24 hours</string>
+    <string name="church_cost_bones">Costs %1$d bones</string>
+    <string name="church_confirm_title">Activate Blessing?</string>
+    <string name="church_bones_available">You have %1$d bones</string>
+    <string name="church_not_enough_bones">Not enough bones (need %1$d)</string>
+    <string name="church_already_active">A blessing is already active</string>
+
+    <!-- Blessing names -->
+    <string name="blessing_blessed_focus_name">Blessed Focus</string>
+    <string name="blessing_stone_skin_name">Stone Skin</string>
+    <string name="blessing_blessed_focus_ii_name">Blessed Focus II</string>
+    <string name="blessing_stone_skin_ii_name">Stone Skin II</string>
+    <string name="blessing_blessed_focus_iii_name">Blessed Focus III</string>
+    <string name="blessing_stone_skin_iii_name">Stone Skin III</string>
+    <string name="blessing_tithe_blessing_name">Tithe Blessing</string>
+    <string name="blessing_stone_skin_iv_name">Stone Skin IV</string>
+    <string name="blessing_fortune_i_name">Fortune I</string>
+    <string name="blessing_tithe_blessing_ii_name">Tithe Blessing II</string>
+    <string name="blessing_iron_ward_name">Iron Ward</string>
+    <string name="blessing_fortune_ii_name">Fortune II</string>
+    <string name="blessing_tithe_blessing_iii_name">Tithe Blessing III</string>
+    <string name="blessing_iron_ward_ii_name">Iron Ward II</string>
+    <string name="blessing_fortune_iii_name">Fortune III</string>
+    <string name="blessing_divine_focus_name">Divine Focus</string>
+    <string name="blessing_diamond_skin_name">Diamond Skin</string>
+    <string name="blessing_fortune_iv_name">Fortune IV</string>
+    <string name="blessing_divine_focus_ii_name">Divine Focus II</string>
+    <string name="blessing_diamond_skin_ii_name">Diamond Skin II</string>
+    <string name="blessing_fortune_v_name">Fortune V</string>
+    <string name="blessing_divine_grace_name">Divine Grace</string>
+    <string name="blessing_holy_shield_name">Holy Shield</string>
+    <string name="blessing_abundance_name">Abundance</string>
+    <string name="blessing_divine_grace_ii_name">Divine Grace II</string>
+    <string name="blessing_holy_shield_ii_name">Holy Shield II</string>
+    <string name="blessing_abundance_ii_name">Abundance II</string>
+    <string name="blessing_sacred_grace_name">Sacred Grace</string>
+    <string name="blessing_aegis_name">Aegis</string>
+    <string name="blessing_abundance_iii_name">Abundance III</string>
+
+    <!-- Expeditions -->
+    <string name="nav_expeditions">Expeditions</string>
+    <string name="expeditions_title">Expeditions</string>
+    <string name="expedition_explore_button">Explore</string>
+    <string name="expedition_dungeon_unlocked">Combat dungeon unlocked!</string>
+    <string name="expedition_discover_hint">Discover via Expeditions</string>
+    <string name="label_notes">Notes</string>
+
+    <!-- Slayer -->
+    <string name="skill_slayer_name">Slayer</string>
+    <string name="skill_slayer_desc">Receive tasks from the Slayer Master in Town.</string>
+    <string name="slayer_title">Slayer Master</string>
+    <string name="slayer_card_desc">Tasks and rewards for slayers</string>
+    <string name="slayer_desc">Complete tasks to earn Slayer XP and points. Spend points in the shop for exclusive gear.</string>
+    <string name="slayer_level_label">Level %1$d</string>
+    <string name="slayer_xp_label">%1$s XP</string>
+    <string name="slayer_points">%1$d pts</string>
+    <string name="slayer_active_task">Active Task</string>
+    <string name="slayer_kills_remaining">%1$d / %2$d kills</string>
+    <string name="slayer_get_task">Get New Task</string>
+    <string name="slayer_skip_task">Skip (30 pts)</string>
+    <string name="slayer_no_task">No active task. Tap Get New Task.</string>
+    <string name="slayer_no_eligible_tasks">No eligible tasks at your Slayer level.</string>
+    <string name="slayer_task_complete">Task complete! Visit the Slayer Master for a new one.</string>
+    <string name="slayer_xp_per_kill">%1$d XP/kill</string>
+    <string name="slayer_points_on_complete">+%1$d pts on completion</string>
+    <string name="slayer_shop_title">Slayer Shop</string>
+    <string name="slayer_shop_cost">%1$d pts</string>
+    <string name="slayer_not_enough_points">Not enough Slayer points.</string>
+    <string name="slayer_already_owned">Already owned.</string>
+    <string name="slayer_purchased">Added to inventory.</string>
+    <string name="slayer_owned">Owned</string>
+    <string name="slayer_lamp_purchased">XP added to %1$s!</string>
+    <string name="slayer_lamp_pick_skill">Choose a skill</string>
+    <string name="slayer_lamp_small">XP Lamp (Small)</string>
+    <string name="slayer_lamp_large">XP Lamp (Large)</string>
+    <string name="slayer_lamp_small_desc">+10,000 XP to any skill</string>
+    <string name="slayer_lamp_large_desc">+50,000 XP to any skill</string>
+    <string name="slayer_found_in">Found in: %1$s</string>
+    <string name="slayer_requires">Requires: %1$s</string>
+
+    <!-- Slayer gear item names/descs (used by Shop + Slayer screen) -->
+    <string name="item_slayer_helm_name">Slayer Helm</string>
+    <string name="item_slayer_helm_desc">A sturdy helm worn by veteran slayers.</string>
+    <string name="item_abyssal_whip_name">Abyssal Whip</string>
+    <string name="item_abyssal_whip_desc">A whip forged from abyssal energy. Excellent for strength training.</string>
+    <string name="item_slayer_platebody_name">Slayer Platebody</string>
+    <string name="item_slayer_platebody_desc">Heavy armour etched with slayer runes.</string>
+    <string name="item_slayer_platelegs_name">Slayer Platelegs</string>
+    <string name="item_slayer_platelegs_desc">Protective legs crafted for extended dungeon runs.</string>
 
 </resources>

@@ -1,0 +1,17 @@
+{
+  "id": "northern_ports",
+  "display_name": "Northern Ports",
+  "description": "Sail precious cargo to the northern port cities. High risk, high variance.",
+  "level_required": 60,
+  "coin_cost": 150000,
+  "xp_ranges": {
+    "60": {"min": 300, "max": 450},
+    "70": {"min": 360, "max": 525},
+    "80": {"min": 425, "max": 625}
+  },
+  "coin_ranges": {
+    "60": {"min": 1700, "max": 3200},
+    "70": {"min": 1950, "max": 3500},
+    "80": {"min": 2200, "max": 3800}
+  }
+}

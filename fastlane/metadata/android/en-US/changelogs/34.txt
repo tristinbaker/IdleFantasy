@@ -1,0 +1,10 @@
+• New: Guild Hall -- 16 guilds, one for each skill and combat style
+• New: Each guild has 10 progression quests and daily requests that reset at 6am
+• New: Guilds reward cross-skill materials, coins, and XP, so single-skill characters can access resources they would otherwise need other skills for
+• New: Warriors, Archers, and Mages guilds each track kills made with the matching combat style (melee, ranged, or magic)
+• Fix: Hiring a new Long Worker no longer shows a stale job from a previous hire
+• Fix: Removed incorrect queue indicator from the Worker screen
+• Fix: Long Worker crafting sessions now return the correct number of items instead of halving the output
+• Fix: Kill counter in the dungeon view now updates tick by tick as enemies die instead of once per minute
+• Fix: Combat log now shows a kill entry when an enemy is defeated, making kills distinguishable from hits
+• Fix: Arrows are now correctly consumed when completing combat sessions with a ranged weapon

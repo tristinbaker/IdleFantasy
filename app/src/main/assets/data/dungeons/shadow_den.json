@@ -1,0 +1,16 @@
+{
+  "name": "shadow_den",
+  "display_name": "Shadow Den",
+  "description": "A network of underground chambers used by the region's thieves and cutpurses as a base of operations. The rogues here are well-armed and very hostile to uninvited guests.",
+  "recommended_level": 15,
+  "encounter_rate": 0.26,
+  "lore_unlock_only": true,
+  "enemy_spawns": [
+    {"enemy": "rogue", "weight": 4},
+    {"enemy": "cutpurse", "weight": 3},
+    {"enemy": "dark_wizard", "weight": 3}
+  ],
+  "rare_drops": [
+    {"item": "shadow_dagger", "chance": 0.02}
+  ]
+}

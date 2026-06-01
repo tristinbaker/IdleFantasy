@@ -3,14 +3,17 @@ package com.fantasyidler.ui.screen
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.provider.DocumentsContract
 import android.provider.Settings
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
@@ -72,11 +75,24 @@ fun SettingsScreen(
     val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
 
-    val themePreference by viewModel.themePreference.collectAsState()
-    val fontScale       by viewModel.fontScale.collectAsState()
+    val themePreference  by viewModel.themePreference.collectAsState()
+    val fontScale        by viewModel.fontScale.collectAsState()
+    val backupFolderUri  by viewModel.backupFolderUri.collectAsState()
+    val backupFrequency  by viewModel.backupFrequency.collectAsState()
     var notificationsEnabled by remember { mutableStateOf(false) }
-    var showResetConfirm1 by remember { mutableStateOf(false) }
-    var showResetConfirm2 by remember { mutableStateOf(false) }
+    var showResetConfirm1    by remember { mutableStateOf(false) }
+    var showResetConfirm2    by remember { mutableStateOf(false) }
+    var showChangelogDialog  by remember { mutableStateOf(false) }
+
+    val folderLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.OpenDocumentTree()
+    ) { uri ->
+        uri ?: return@rememberLauncherForActivityResult
+        val permFlags = Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+        context.contentResolver.takePersistableUriPermission(uri, permFlags)
+        viewModel.setBackupFolder(uri.toString())
+        scope.launch { snackbarHostState.showSnackbar(context.getString(R.string.settings_backup_folder_set)) }
+    }
 
     val exportLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.CreateDocument("application/json")
@@ -105,6 +121,55 @@ fun SettingsScreen(
 
     LaunchedEffect(Unit) {
         notificationsEnabled = NotificationManagerCompat.from(context).areNotificationsEnabled()
+    }
+
+    if (showChangelogDialog) {
+        val changelogText = remember {
+            runCatching { context.assets.open("changelog.txt").bufferedReader().readText().trim() }.getOrElse { "" }
+        }
+        if (changelogText.isNotEmpty()) {
+            val sections = remember(changelogText) {
+                val versionRegex = Regex("^v\\d+\\..*")
+                val result = mutableListOf<Pair<String, String>>()
+                var currentVersion = ""
+                val bodyLines = mutableListOf<String>()
+                for (line in changelogText.lines()) {
+                    if (line.matches(versionRegex)) {
+                        if (currentVersion.isNotEmpty()) result += currentVersion to bodyLines.joinToString("\n").trim()
+                        currentVersion = line
+                        bodyLines.clear()
+                    } else {
+                        bodyLines += line
+                    }
+                }
+                if (currentVersion.isNotEmpty()) result += currentVersion to bodyLines.joinToString("\n").trim()
+                result
+            }
+            AlertDialog(
+                onDismissRequest = { showChangelogDialog = false },
+                title = { Text(stringResource(R.string.home_whats_new)) },
+                text = {
+                    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                        sections.forEachIndexed { i, (version, body) ->
+                            if (i > 0) Spacer(Modifier.height(12.dp))
+                            val isCurrent = version == "v${BuildConfig.VERSION_NAME}"
+                            Text(
+                                text = if (isCurrent) "$version (current)" else version,
+                                style = MaterialTheme.typography.bodyMedium,
+                                fontWeight = FontWeight.Bold,
+                            )
+                            HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
+                            Text(body, style = MaterialTheme.typography.bodyMedium)
+                        }
+                    }
+                },
+                confirmButton = {
+                    TextButton(onClick = { showChangelogDialog = false }) {
+                        Text(stringResource(R.string.home_got_it))
+                    }
+                },
+            )
+        }
     }
 
     if (showResetConfirm1) {
@@ -204,19 +269,44 @@ fun SettingsScreen(
                 title    = stringResource(R.string.settings_font_size),
                 subtitle = null,
                 trailing = {
-                    Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                        listOf(
-                            0.7f  to stringResource(R.string.settings_font_tiny),
-                            0.85f to stringResource(R.string.settings_font_small),
-                            1.0f  to stringResource(R.string.settings_font_normal),
-                            1.25f to stringResource(R.string.settings_font_large),
-                            1.5f  to stringResource(R.string.settings_font_huge),
-                        ).forEach { (scale, label) ->
-                            FilterChip(
-                                selected = fontScale == scale,
-                                onClick  = { viewModel.setFontScale(scale) },
-                                label    = { Text(label, style = MaterialTheme.typography.labelSmall) },
-                            )
+                    val fontOptions = listOf(
+                        0.7f  to stringResource(R.string.settings_font_tiny),
+                        0.85f to stringResource(R.string.settings_font_small),
+                        1.0f  to stringResource(R.string.settings_font_normal),
+                        1.25f to stringResource(R.string.settings_font_large),
+                        1.5f  to stringResource(R.string.settings_font_huge),
+                    )
+                    val fontLabel = fontOptions.firstOrNull { it.first == fontScale }?.second
+                        ?: stringResource(R.string.settings_font_normal)
+                    var fontExpanded by remember { mutableStateOf(false) }
+                    ExposedDropdownMenuBox(
+                        expanded = fontExpanded,
+                        onExpandedChange = { fontExpanded = it },
+                    ) {
+                        OutlinedTextField(
+                            value = fontLabel,
+                            onValueChange = {},
+                            readOnly = true,
+                            trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = fontExpanded) },
+                            modifier = Modifier
+                                .menuAnchor()
+                                .width(130.dp),
+                            textStyle = MaterialTheme.typography.bodySmall,
+                            singleLine = true,
+                        )
+                        ExposedDropdownMenu(
+                            expanded = fontExpanded,
+                            onDismissRequest = { fontExpanded = false },
+                        ) {
+                            fontOptions.forEach { (scale, label) ->
+                                DropdownMenuItem(
+                                    text = { Text(label) },
+                                    onClick = {
+                                        viewModel.setFontScale(scale)
+                                        fontExpanded = false
+                                    },
+                                )
+                            }
                         }
                     }
                 }
@@ -257,6 +347,16 @@ fun SettingsScreen(
                 trailing = {
                     OutlinedButton(onClick = { onReopenTutorial(); onBack() }) {
                         Text(stringResource(R.string.settings_reopen))
+                    }
+                }
+            )
+
+            SettingsRow(
+                title    = stringResource(R.string.settings_changelog_title),
+                subtitle = stringResource(R.string.settings_changelog_desc),
+                trailing = {
+                    OutlinedButton(onClick = { showChangelogDialog = true }) {
+                        Text(stringResource(R.string.settings_changelog_btn))
                     }
                 }
             )
@@ -304,6 +404,74 @@ fun SettingsScreen(
                     }
                 }
             )
+
+            // Automatic Backup section
+            HorizontalDivider()
+
+            SectionHeader(title = stringResource(R.string.settings_backup_title))
+
+            val noFolderStr = stringResource(R.string.settings_backup_no_folder)
+            val folderLabel = if (backupFolderUri.isEmpty()) {
+                noFolderStr
+            } else {
+                try {
+                    val docId = DocumentsContract.getTreeDocumentId(Uri.parse(backupFolderUri))
+                    docId.substringAfterLast(':').substringAfterLast('/').ifEmpty { noFolderStr }
+                } catch (_: Exception) {
+                    noFolderStr
+                }
+            }
+
+            SettingsRow(
+                title    = stringResource(R.string.settings_backup_folder),
+                subtitle = folderLabel,
+                trailing = {
+                    OutlinedButton(onClick = { folderLauncher.launch(null) }) {
+                        Text(stringResource(R.string.settings_backup_choose))
+                    }
+                }
+            )
+
+            val freqTitle = stringResource(R.string.settings_backup_frequency) +
+                if (backupFrequency == "daily" || backupFrequency == "weekly")
+                    " (${stringResource(R.string.settings_backup_at_5am)})" else ""
+            SettingsRow(
+                title    = freqTitle,
+                subtitle = null,
+                trailing = {
+                    Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                        listOf(
+                            ""       to stringResource(R.string.settings_backup_off),
+                            "hourly" to stringResource(R.string.settings_backup_hourly),
+                            "daily"  to stringResource(R.string.settings_backup_daily),
+                            "weekly" to stringResource(R.string.settings_backup_weekly),
+                        ).forEach { (key, label) ->
+                            FilterChip(
+                                selected = backupFrequency == key,
+                                onClick  = { viewModel.setBackupFrequency(key) },
+                                label    = { Text(label, style = MaterialTheme.typography.labelSmall) },
+                            )
+                        }
+                    }
+                }
+            )
+
+            OutlinedButton(
+                onClick = {
+                    viewModel.backupNow { success ->
+                        scope.launch {
+                            snackbarHostState.showSnackbar(
+                                if (success) context.getString(R.string.settings_backup_success)
+                                else context.getString(R.string.settings_backup_failed)
+                            )
+                        }
+                    }
+                },
+                enabled  = backupFolderUri.isNotEmpty(),
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Text(stringResource(R.string.settings_backup_now))
+            }
 
             // About section
             HorizontalDivider()
@@ -360,7 +528,9 @@ private fun LanguageSection() {
         "fr"     to stringResource(R.string.settings_lang_français),
         "es"     to stringResource(R.string.settings_lang_español),
         "es-ES"  to stringResource(R.string.settings_lang_español_españa),
+        "nl"     to stringResource(R.string.settings_lang_dutch),
         "tr"     to stringResource(R.string.settings_lang_turkish),
+        "it"     to stringResource(R.string.settings_lang_italiano),
         "system" to stringResource(R.string.settings_lang_system),
     )
     val selectedLabel =

@@ -74,6 +74,55 @@ if ! command -v fdroid &>/dev/null; then
 fi
 
 # ---------------------------------------------------------------------------
+# Sync missing English placeholder strings into all language resource files
+# ---------------------------------------------------------------------------
+
+echo "==> Syncing translation stubs..."
+python3 - "$REPO_DIR/app/src/main/res" <<'PYEOF'
+import re, os, sys
+
+RES_DIR = sys.argv[1]
+LANGS = ['values-de', 'values-es', 'values-fr', 'values-tr', 'value-es-rES']
+FILES = [
+    'strings.xml', 'strings_game.xml', 'strings_items.xml',
+    'strings_skills.xml', 'strings_enemies.xml',
+    'strings_notifications.xml', 'strings_quests.xml',
+]
+
+entry_re = re.compile(r'( {4}<(string(?:-array)?) [^>]*name="([^"]+)".*?</\2>)', re.DOTALL)
+name_re  = re.compile(r'<(?:string|string-array)\s[^>]*name="([^"]+)"')
+
+for filename in FILES:
+    en_path = os.path.join(RES_DIR, 'values', filename)
+    if not os.path.exists(en_path):
+        continue
+    en_content = open(en_path).read()
+
+    en_entries, en_seen = [], set()
+    for m in entry_re.finditer(en_content):
+        full, name = m.group(1), m.group(3)
+        if name not in en_seen and 'translatable="false"' not in full:
+            en_entries.append((name, full))
+            en_seen.add(name)
+
+    for lang in LANGS:
+        lang_path = os.path.join(RES_DIR, lang, filename)
+        if not os.path.exists(lang_path):
+            continue
+        lang_content = open(lang_path).read()
+        lang_names   = set(name_re.findall(lang_content))
+
+        stubs = [entry for name, entry in en_entries if name not in lang_names]
+        if not stubs:
+            continue
+
+        new_content = lang_content.replace('</resources>', '\n'.join(stubs) + '\n</resources>')
+        open(lang_path, 'w').write(new_content)
+        print(f'  {lang}/{filename}: +{len(stubs)} keys')
+PYEOF
+echo "==> Translation stubs synced"
+
+# ---------------------------------------------------------------------------
 # Commit pending changes
 # ---------------------------------------------------------------------------
 
@@ -193,7 +242,7 @@ RELEASE_FLAGS=(
     --latest
     --verify-tag
 )
-[[ -n "$PREV_TAG" ]] && RELEASE_FLAGS+=(--previous-tag "$PREV_TAG")
+[[ -n "$PREV_TAG" ]] && RELEASE_FLAGS+=(--notes-start-tag "$PREV_TAG")
 
 gh release create "$TAG" "$APK#app-release.apk" "${RELEASE_FLAGS[@]}"
 echo "==> GitHub release created (previous: ${PREV_TAG:-none})"

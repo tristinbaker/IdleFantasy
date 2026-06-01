@@ -168,6 +168,7 @@ object SkillSimulator {
         rodEfficiency: Float = 1.0f,
         petDropKey: String? = null,
         petDropChance: Double = 0.0,
+        fishingSkillData: GatheringSkillData? = null,
     ): Result {
         var currentXp = startXp
         val frames = mutableListOf<SessionFrame>()
@@ -183,7 +184,18 @@ object SkillSimulator {
             val levelAfter = XpTable.levelForXp(currentXp)
 
             val fishQty = max(1, rodEfficiency.roundToInt())
-            val items = mutableMapOf(fishKey to fishQty)
+            val items = mutableMapOf<String, Int>()
+            if (fishingSkillData != null && Random.nextDouble() > 0.8) {
+                val dropTable = getTierData(fishingSkillData.dropTables, levelBefore)
+                for (entry in dropTable) {
+                    if (Random.nextDouble() < entry.chance) {
+                        items[entry.item] = (items[entry.item] ?: 0) + 1
+                    }
+                }
+                if (items.isEmpty()) items[fishKey] = fishQty
+            } else {
+                items[fishKey] = fishQty
+            }
             if (petDropKey != null && petDropChance > 0.0 && Random.nextDouble() < petDropChance) {
                 items[petDropKey] = 1
             }
@@ -293,8 +305,8 @@ object SkillSimulator {
         var currentXp = startXp
         val frames = mutableListOf<SessionFrame>()
 
-        val successRate = (0.60 + (agilityLevel - courseData.levelRequired) * 0.02)
-            .coerceIn(0.40, 0.95)
+        val successRate = (0.80 + (agilityLevel - courseData.levelRequired) * 0.02)
+            .coerceIn(0.70, 0.95)
 
         for (minute in 1..60) {
             val xpBefore    = currentXp
@@ -322,6 +334,20 @@ object SkillSimulator {
         }
 
         return Result(frames, sessionDurationMs(agilityLevel))
+    }
+
+    // ------------------------------------------------------------------
+    // Session XP estimation — used for pre-session preview in the UI
+    // ------------------------------------------------------------------
+
+    /** Estimated total XP for a 60-frame gathering session (mining/woodcutting/fishing). */
+    fun estimateGatheringXp(xpPerAction: Int, efficiency: Float = 1f): Long =
+        (xpPerAction * efficiency).toLong() * 60L
+
+    /** Estimated total XP for a 60-frame agility session. */
+    fun estimateAgilityXp(xpPerSuccess: Int, levelRequired: Int, currentAgilityLevel: Int): Long {
+        val successRate = (0.80 + (currentAgilityLevel - levelRequired) * 0.02).coerceIn(0.70, 0.95)
+        return (2.0 * successRate * xpPerSuccess).toLong() * 60L
     }
 
     // ------------------------------------------------------------------

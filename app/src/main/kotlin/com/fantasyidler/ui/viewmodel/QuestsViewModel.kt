@@ -48,6 +48,7 @@ data class QuestsUiState(
     val dailyQuests: List<DailyQuestWithProgress> = emptyList(),
     val nextDailyReset: Long = 0L,
     val snackbarMessage: String? = null,
+    val hideCompleted: Boolean = false,
 )
 
 // ---------------------------------------------------------------------------
@@ -66,8 +67,10 @@ class QuestsViewModel @Inject constructor(
     private val _extra = MutableStateFlow(QuestsUiState())
 
     init {
-        // Trigger a DB refresh if daily quests have rolled over, and seed nextDailyReset.
         viewModelScope.launch {
+            val flags = playerRepo.getFlags()
+            _extra.update { it.copy(hideCompleted = flags.hideCompletedQuests) }
+            // Trigger a DB refresh if daily quests have rolled over, and seed nextDailyReset.
             playerRepo.getRefreshedDailyFlags()
             _extra.update { it.copy(nextDailyReset = dailyQuestRepo.nextResetMs()) }
         }
@@ -80,6 +83,9 @@ class QuestsViewModel @Inject constructor(
     ) { progressList, player, extra ->
         val progressMap = progressList.associateBy { it.questId }
 
+        val flags: PlayerFlags = if (player != null)
+            json.decodeFromString(player.flags) else PlayerFlags()
+
         val questsWithProgress = gameData.quests.values.map { quest ->
             val prog = progressMap[quest.id]
             val prereq = quest.requiresPrevious
@@ -90,15 +96,18 @@ class QuestsViewModel @Inject constructor(
                 completed       = prog?.completed ?: false,
                 prereqCompleted = prereqCompleted,
             )
+        }.filter { qwp ->
+            val requiredDungeon = qwp.quest.requiresDungeonUnlock
+            requiredDungeon == null || flags.unlockedDungeons.contains(requiredDungeon)
         }
 
         val visibleQuests = questsWithProgress.filter { it.prereqCompleted || it.completed }
+            .let { if (extra.hideCompleted) it.filter { qwp -> !qwp.completed } else it }
         val questsByGroup = buildGroupedMap(visibleQuests)
         val claimable = visibleQuests.count { it.isClaimable }
         val completed = visibleQuests.count { it.completed }
 
         val dailyQuests = if (player != null) {
-            val flags: PlayerFlags = json.decodeFromString(player.flags)
             dailyQuestRepo.getActiveDailyQuests(flags)
         } else {
             extra.dailyQuests
@@ -175,10 +184,21 @@ class QuestsViewModel @Inject constructor(
 
     fun snackbarConsumed() = _extra.update { it.copy(snackbarMessage = null) }
 
+    fun toggleHideCompleted() {
+        val newValue = !_extra.value.hideCompleted
+        _extra.update { it.copy(hideCompleted = newValue) }
+        viewModelScope.launch {
+            val flags = playerRepo.getFlags()
+            playerRepo.updateFlags(flags.copy(hideCompletedQuests = newValue))
+        }
+    }
+
     fun claimDailyQuest(templateId: String) {
         viewModelScope.launch {
             val flags = playerRepo.getFlags()
-            val (newFlags, reward) = dailyQuestRepo.claimQuest(flags, templateId)
+            val ownedItems = playerRepo.getInventory().keys +
+                playerRepo.getEquipped().values.filterNotNull()
+            val (newFlags, reward) = dailyQuestRepo.claimQuest(flags, templateId, ownedItems.toSet())
             playerRepo.updateFlags(newFlags)
 
             val message = when (reward) {
@@ -204,7 +224,7 @@ class QuestsViewModel @Inject constructor(
         Skills.AGILITY, Skills.FIREMAKING, Skills.RUNECRAFTING,
     )
     private val craftingSkills = setOf(
-        Skills.SMITHING, Skills.COOKING, Skills.FLETCHING, Skills.CRAFTING, Skills.PRAYER,
+        Skills.SMITHING, Skills.COOKING, Skills.FLETCHING, Skills.CRAFTING, Skills.HERBLORE, Skills.PRAYER,
     )
     private val combatTypes = setOf("kill", "kill_enemy", "dungeon", "boss")
     private val specialTypes = setOf(
@@ -216,6 +236,7 @@ class QuestsViewModel @Inject constructor(
         quest.skill in gatheringSkills                          -> "Gathering"
         quest.skill in craftingSkills                          -> "Crafting"
         quest.skill == "combat" && quest.type in combatTypes   -> "Combat"
+        quest.skill == "slayer"                                -> "Combat"
         quest.type in specialTypes                             -> "Special"
         else                                                   -> "Special"
     }

@@ -1,0 +1,21 @@
+• New: Church building added to the home screen; visit to activate a 24-hour blessing based on your Prayer level
+• New: Blessings come in three types: XP multiplier, Defense bonus, or Coin bonus; higher Prayer levels unlock stronger tiers up to level 99
+• New: Active blessing is shown in the Player Stats card on the home screen
+• New: Session results show per-skill XP blessing bonus inline (e.g. Attack +12,450 XP (+1,245))
+• New: Automatic backup in Settings; choose a folder and a schedule (hourly, daily at 5:00 AM, or weekly)
+• New: Shop, Inn, Guild Hall, and Church are now grouped under a single expandable Town button on the home screen
+• New: Guild level now requires both enough reputation AND completing the current tier's quests to advance
+• New: Guild Hall shows a gold "Dailies available" label on guilds with unclaimed daily tasks
+• New: Guild detail screen hints "Do dailies to increase your reputation" when quests are done but rep is short
+• New: The Farm dungeon is now a safe zone; you cannot die while farming
+• New: Mercantile skill added under a new Support category on the Skills screen; dispatch trade routes to earn variable coin returns and XP
+• New: Six trade routes available from level 1 to 99; each costs coins upfront with unpredictable returns ranging from a small loss to a solid windfall
+• New: Merchants Guild with 10 progression quests and daily tasks; complete trade routes to earn reputation
+• New: Higher Mercantile levels unlock exclusive shop items (rings, necklaces, rare herbs) and grant buy discounts and sell price bonuses up to 25% at level 99
+• New: Guild capes added; claim one from the level 9 quest in any guild for a 5% bonus to that guild's skill
+• New: Combat capes boost all combat stats by 5% (guild) or 10% (level 99); Prayer capes strengthen your active blessing; Mercantile cape improves shop prices and trade returns
+• Fix: Level 99 skill capes now actually grant their bonus (10% yield, XP, or stats depending on the skill)
+• Fix: Expedition lore notes now have a pity system; a drop is guaranteed after 10 consecutive runs with no note
+• Fix: Lore note drop rate reduced; notes are now a rare find during expeditions
+• Fix: Higher level agility courses now always give more XP per session than lower ones
+• Fix: Queued expeditions, dungeons, and bosses now show correctly in the queue (e.g. "Expedition — Copper Caverns" instead of "Copper Caverns — Copper Caverns")

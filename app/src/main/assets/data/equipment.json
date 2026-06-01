@@ -527,6 +527,32 @@
       "attack": 50
     }
   },
+  "dragon_scimitar": {
+    "name": "dragon_scimitar",
+    "display_name": "Dragon Scimitar",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A razor-sharp scimitar forged from dragon metal.",
+    "attack_bonus": 47,
+    "strength_bonus": 65,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 60
+    }
+  },
+  "dragon_longsword": {
+    "name": "dragon_longsword",
+    "display_name": "Dragon Longsword",
+    "slot": "weapon",
+    "combat_style": "attack",
+    "description": "A powerful longsword forged from dragon metal.",
+    "attack_bonus": 68,
+    "strength_bonus": 50,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 60
+    }
+  },
   "runite_longsword": {
     "name": "runite_longsword",
     "display_name": "Runite Longsword",
@@ -2220,217 +2246,232 @@
     "display_name": "Mining Cape",
     "slot": "cape",
     "combat_style": null,
-    "description": "Awarded for reaching level 99 Mining. Doubles ore yield.",
+    "description": "Awarded for reaching level 99 Mining. Grants 10% more ore per session.",
     "attack_bonus": 0,
     "strength_bonus": 0,
     "defense_bonus": 5,
     "cape_skill": "mining",
     "requirements": {
       "mining": 99
-    }
+    },
+    "cape_bonus": 0.1
   },
   "woodcutting_cape": {
     "name": "woodcutting_cape",
     "display_name": "Woodcutting Cape",
     "slot": "cape",
     "combat_style": null,
-    "description": "Awarded for reaching level 99 Woodcutting. Doubles log yield.",
+    "description": "Awarded for reaching level 99 Woodcutting. Grants 10% more logs per session.",
     "attack_bonus": 0,
     "strength_bonus": 0,
     "defense_bonus": 5,
     "cape_skill": "woodcutting",
     "requirements": {
       "woodcutting": 99
-    }
+    },
+    "cape_bonus": 0.1
   },
   "fishing_cape": {
     "name": "fishing_cape",
     "display_name": "Fishing Cape",
     "slot": "cape",
     "combat_style": null,
-    "description": "Awarded for reaching level 99 Fishing. Doubles fish yield.",
+    "description": "Awarded for reaching level 99 Fishing. Grants 10% more fish per session.",
     "attack_bonus": 0,
     "strength_bonus": 0,
     "defense_bonus": 5,
     "cape_skill": "fishing",
     "requirements": {
       "fishing": 99
-    }
+    },
+    "cape_bonus": 0.1
   },
   "farming_cape": {
     "name": "farming_cape",
     "display_name": "Farming Cape",
     "slot": "cape",
     "combat_style": null,
-    "description": "Awarded for reaching level 99 Farming. Doubles harvest yield.",
+    "description": "Awarded for reaching level 99 Farming. Grants 10% more harvest per session.",
     "attack_bonus": 0,
     "strength_bonus": 0,
     "defense_bonus": 5,
     "cape_skill": "farming",
     "requirements": {
       "farming": 99
-    }
+    },
+    "cape_bonus": 0.1
   },
   "smithing_cape": {
     "name": "smithing_cape",
     "display_name": "Smithing Cape",
     "slot": "cape",
     "combat_style": null,
-    "description": "Awarded for reaching level 99 Smithing. Doubles items produced.",
+    "description": "Awarded for reaching level 99 Smithing. Grants 10% more items per session.",
     "attack_bonus": 0,
     "strength_bonus": 0,
     "defense_bonus": 5,
     "cape_skill": "smithing",
     "requirements": {
       "smithing": 99
-    }
+    },
+    "cape_bonus": 0.1
   },
   "cooking_cape": {
     "name": "cooking_cape",
     "display_name": "Cooking Cape",
     "slot": "cape",
     "combat_style": null,
-    "description": "Awarded for reaching level 99 Cooking. Doubles food produced.",
+    "description": "Awarded for reaching level 99 Cooking. Grants 10% more food per session.",
     "attack_bonus": 0,
     "strength_bonus": 0,
     "defense_bonus": 5,
     "cape_skill": "cooking",
     "requirements": {
       "cooking": 99
-    }
+    },
+    "cape_bonus": 0.1
   },
   "fletching_cape": {
     "name": "fletching_cape",
     "display_name": "Fletching Cape",
     "slot": "cape",
     "combat_style": null,
-    "description": "Awarded for reaching level 99 Fletching. Doubles arrows produced.",
+    "description": "Awarded for reaching level 99 Fletching. Grants 10% more arrows per session.",
     "attack_bonus": 0,
     "strength_bonus": 0,
     "defense_bonus": 5,
     "cape_skill": "fletching",
     "requirements": {
       "fletching": 99
-    }
+    },
+    "cape_bonus": 0.1
   },
   "crafting_cape": {
     "name": "crafting_cape",
     "display_name": "Crafting Cape",
     "slot": "cape",
     "combat_style": null,
-    "description": "Awarded for reaching level 99 Crafting. Doubles items crafted.",
+    "description": "Awarded for reaching level 99 Crafting. Grants 10% more items per session.",
     "attack_bonus": 0,
     "strength_bonus": 0,
     "defense_bonus": 5,
     "cape_skill": "crafting",
     "requirements": {
       "crafting": 99
-    }
+    },
+    "cape_bonus": 0.1
   },
   "runecrafting_cape": {
     "name": "runecrafting_cape",
     "display_name": "Runecrafting Cape",
     "slot": "cape",
     "combat_style": null,
-    "description": "Awarded for reaching level 99 Runecrafting. Doubles runes crafted.",
+    "description": "Awarded for reaching level 99 Runecrafting. Grants 10% more runes per session.",
     "attack_bonus": 0,
     "strength_bonus": 0,
     "defense_bonus": 5,
     "cape_skill": "runecrafting",
     "requirements": {
       "runecrafting": 99
-    }
+    },
+    "cape_bonus": 0.1
   },
   "firemaking_cape": {
     "name": "firemaking_cape",
     "display_name": "Firemaking Cape",
     "slot": "cape",
     "combat_style": null,
-    "description": "Awarded for reaching level 99 Firemaking. Doubles XP gained.",
+    "description": "Awarded for reaching level 99 Firemaking. Grants 10% more ashes per session.",
     "attack_bonus": 0,
     "strength_bonus": 0,
     "defense_bonus": 5,
     "cape_skill": "firemaking",
     "requirements": {
       "firemaking": 99
-    }
+    },
+    "cape_bonus": 0.1
   },
   "agility_cape": {
     "name": "agility_cape",
     "display_name": "Agility Cape",
     "slot": "cape",
     "combat_style": null,
-    "description": "Awarded for reaching level 99 Agility. Doubles XP gained.",
+    "description": "Awarded for reaching level 99 Agility. Grants 10% more XP per session.",
     "attack_bonus": 0,
     "strength_bonus": 0,
     "defense_bonus": 5,
     "cape_skill": "agility",
     "requirements": {
       "agility": 99
-    }
+    },
+    "cape_bonus": 0.1
   },
   "prayer_cape": {
     "name": "prayer_cape",
     "display_name": "Prayer Cape",
     "slot": "cape",
     "combat_style": null,
-    "description": "Awarded for reaching level 99 Prayer. Doubles Prayer XP from burying.",
+    "description": "Awarded for reaching level 99 Prayer. Strengthens your active blessing by 10%.",
     "attack_bonus": 0,
     "strength_bonus": 0,
     "defense_bonus": 5,
     "cape_skill": "prayer",
     "requirements": {
       "prayer": 99
-    }
+    },
+    "cape_bonus": 0.1
   },
   "attack_cape": {
     "name": "attack_cape",
     "display_name": "Attack Cape",
     "slot": "cape",
     "combat_style": null,
-    "description": "Awarded for reaching level 99 Attack. Doubles Attack XP in combat.",
+    "description": "Awarded for reaching level 99 Attack. Grants 10% boost to all combat stats.",
     "attack_bonus": 5,
     "strength_bonus": 0,
     "defense_bonus": 5,
     "cape_skill": "attack",
     "requirements": {
       "attack": 99
-    }
+    },
+    "cape_bonus": 0.1
   },
   "strength_cape": {
     "name": "strength_cape",
     "display_name": "Strength Cape",
     "slot": "cape",
     "combat_style": null,
-    "description": "Awarded for reaching level 99 Strength. Doubles Strength XP in combat.",
+    "description": "Awarded for reaching level 99 Strength. Grants 10% boost to all combat stats.",
     "attack_bonus": 0,
     "strength_bonus": 5,
     "defense_bonus": 5,
     "cape_skill": "strength",
     "requirements": {
       "strength": 99
-    }
+    },
+    "cape_bonus": 0.1
   },
   "defense_cape": {
     "name": "defense_cape",
     "display_name": "Defense Cape",
     "slot": "cape",
     "combat_style": null,
-    "description": "Awarded for reaching level 99 Defense. Doubles Defense XP in combat.",
+    "description": "Awarded for reaching level 99 Defense. Grants 10% boost to all combat stats.",
     "attack_bonus": 0,
     "strength_bonus": 0,
     "defense_bonus": 15,
     "cape_skill": "defense",
     "requirements": {
       "defense": 99
-    }
+    },
+    "cape_bonus": 0.1
   },
   "magic_cape": {
     "name": "magic_cape",
     "display_name": "Magic Cape",
     "slot": "cape",
     "combat_style": null,
-    "description": "Awarded for reaching level 99 Magic. Doubles Magic XP in combat.",
+    "description": "Awarded for reaching level 99 Magic. Grants 10% boost to all combat stats.",
     "attack_bonus": 0,
     "strength_bonus": 0,
     "defense_bonus": 5,
@@ -2438,35 +2479,38 @@
     "cape_skill": "magic",
     "requirements": {
       "magic": 99
-    }
+    },
+    "cape_bonus": 0.1
   },
   "ranged_cape": {
     "name": "ranged_cape",
     "display_name": "Ranged Cape",
     "slot": "cape",
     "combat_style": null,
-    "description": "Awarded for reaching level 99 Ranged. Doubles Ranged XP in combat.",
+    "description": "Awarded for reaching level 99 Ranged. Grants 10% boost to all combat stats.",
     "attack_bonus": 0,
     "strength_bonus": 0,
     "defense_bonus": 5,
     "cape_skill": "ranged",
     "requirements": {
       "ranged": 99
-    }
+    },
+    "cape_bonus": 0.1
   },
   "hp_cape": {
     "name": "hp_cape",
     "display_name": "HP Cape",
     "slot": "cape",
     "combat_style": null,
-    "description": "Awarded for reaching level 99 HP. Doubles HP XP in combat.",
+    "description": "Awarded for reaching level 99 HP. Grants 10% boost to all combat stats.",
     "attack_bonus": 0,
     "strength_bonus": 0,
     "defense_bonus": 5,
     "cape_skill": "hp",
     "requirements": {
       "hp": 99
-    }
+    },
+    "cape_bonus": 0.1
   },
   "bronze_boots": {
     "name": "bronze_boots",
@@ -2637,5 +2681,425 @@
     "requirements": {
       "farming": 65
     }
+  },
+  "deep_iron_pickaxe": {
+    "name": "deep_iron_pickaxe",
+    "display_name": "Deep Iron Pickaxe",
+    "slot": "pickaxe",
+    "combat_style": null,
+    "description": "Forged from ore found in the Collapsed Mine's deepest shafts. Strikes with uncanny precision.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "mining_efficiency": 2.5,
+    "requirements": {
+      "mining": 40
+    }
+  },
+  "forge_pickaxe": {
+    "name": "forge_pickaxe",
+    "display_name": "Forge Pickaxe",
+    "slot": "pickaxe",
+    "combat_style": null,
+    "description": "Tempered in the flames of the Ancient Forge itself. The rarest and most powerful pickaxe in existence.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "mining_efficiency": 3.25,
+    "requirements": {
+      "mining": 70
+    }
+  },
+  "blessed_fishing_rod": {
+    "name": "blessed_fishing_rod",
+    "display_name": "Blessed Fishing Rod",
+    "slot": "fishing_rod",
+    "combat_style": null,
+    "description": "Crafted from driftwood recovered from the Drowned Temple, blessed by ancient sea rites.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "fishing_efficiency": 2.6,
+    "requirements": {
+      "fishing": 40
+    }
+  },
+  "abyssal_rod": {
+    "name": "abyssal_rod",
+    "display_name": "Abyssal Rod",
+    "slot": "fishing_rod",
+    "combat_style": null,
+    "description": "Woven from void-touched filament recovered from the Abyssal Ruins. Fish practically leap onto it.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "fishing_efficiency": 3.5,
+    "requirements": {
+      "fishing": 70
+    }
+  },
+  "ironwood_axe": {
+    "name": "ironwood_axe",
+    "display_name": "Ironwood Axe",
+    "slot": "axe",
+    "combat_style": null,
+    "description": "Hewn from the ironwood trees that once stood in the Ancient Forest Ruins. Exceptionally durable.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "woodcutting_efficiency": 2.5,
+    "requirements": {
+      "woodcutting": 40
+    }
+  },
+  "sanctum_axe": {
+    "name": "sanctum_axe",
+    "display_name": "Sanctum Axe",
+    "slot": "axe",
+    "combat_style": null,
+    "description": "Forged in the shadow of the Corrupted Sanctum. Its blade cuts through even magic logs with ease.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "woodcutting_efficiency": 3.25,
+    "requirements": {
+      "woodcutting": 70
+    }
+  },
+  "mining_guild_cape": {
+    "name": "mining_guild_cape",
+    "display_name": "Mining Guild Cape",
+    "slot": "cape",
+    "description": "Awarded for reaching Mining Guild level 10. Grants 5% more ore per session.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "mining",
+    "cape_bonus": 0.05,
+    "requirements": {}
+  },
+  "fishing_guild_cape": {
+    "name": "fishing_guild_cape",
+    "display_name": "Fishing Guild Cape",
+    "slot": "cape",
+    "description": "Awarded for reaching Fishing Guild level 10. Grants 5% more fish per session.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "fishing",
+    "cape_bonus": 0.05,
+    "requirements": {}
+  },
+  "woodcutting_guild_cape": {
+    "name": "woodcutting_guild_cape",
+    "display_name": "Woodcutting Guild Cape",
+    "slot": "cape",
+    "description": "Awarded for reaching Woodcutting Guild level 10. Grants 5% more logs per session.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "woodcutting",
+    "cape_bonus": 0.05,
+    "requirements": {}
+  },
+  "farming_guild_cape": {
+    "name": "farming_guild_cape",
+    "display_name": "Farming Guild Cape",
+    "slot": "cape",
+    "description": "Awarded for reaching Farming Guild level 10. Grants 5% more harvest per session.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "farming",
+    "cape_bonus": 0.05,
+    "requirements": {}
+  },
+  "firemaking_guild_cape": {
+    "name": "firemaking_guild_cape",
+    "display_name": "Firemaking Guild Cape",
+    "slot": "cape",
+    "description": "Awarded for reaching Firemaking Guild level 10. Grants 5% more ashes per session.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "firemaking",
+    "cape_bonus": 0.05,
+    "requirements": {}
+  },
+  "agility_guild_cape": {
+    "name": "agility_guild_cape",
+    "display_name": "Agility Guild Cape",
+    "slot": "cape",
+    "description": "Awarded for reaching Agility Guild level 10. Grants 5% more XP per session.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "agility",
+    "cape_bonus": 0.05,
+    "requirements": {}
+  },
+  "smithing_guild_cape": {
+    "name": "smithing_guild_cape",
+    "display_name": "Smithing Guild Cape",
+    "slot": "cape",
+    "description": "Awarded for reaching Smithing Guild level 10. Grants 5% more items per session.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "smithing",
+    "cape_bonus": 0.05,
+    "requirements": {}
+  },
+  "cooking_guild_cape": {
+    "name": "cooking_guild_cape",
+    "display_name": "Cooking Guild Cape",
+    "slot": "cape",
+    "description": "Awarded for reaching Cooking Guild level 10. Grants 5% more food per session.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "cooking",
+    "cape_bonus": 0.05,
+    "requirements": {}
+  },
+  "fletching_guild_cape": {
+    "name": "fletching_guild_cape",
+    "display_name": "Fletching Guild Cape",
+    "slot": "cape",
+    "description": "Awarded for reaching Fletching Guild level 10. Grants 5% more arrows per session.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "fletching",
+    "cape_bonus": 0.05,
+    "requirements": {}
+  },
+  "crafting_guild_cape": {
+    "name": "crafting_guild_cape",
+    "display_name": "Crafting Guild Cape",
+    "slot": "cape",
+    "description": "Awarded for reaching Crafting Guild level 10. Grants 5% more items per session.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "crafting",
+    "cape_bonus": 0.05,
+    "requirements": {}
+  },
+  "runecrafting_guild_cape": {
+    "name": "runecrafting_guild_cape",
+    "display_name": "Runecrafting Guild Cape",
+    "slot": "cape",
+    "description": "Awarded for reaching Runecrafting Guild level 10. Grants 5% more runes per session.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "runecrafting",
+    "cape_bonus": 0.05,
+    "requirements": {}
+  },
+  "herblore_guild_cape": {
+    "name": "herblore_guild_cape",
+    "display_name": "Herblore Guild Cape",
+    "slot": "cape",
+    "description": "Awarded for reaching Herblore Guild level 10. Grants 5% more potions per session.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "herblore",
+    "cape_bonus": 0.05,
+    "requirements": {}
+  },
+  "warriors_guild_cape": {
+    "name": "warriors_guild_cape",
+    "display_name": "Warriors Guild Cape",
+    "slot": "cape",
+    "description": "Awarded for reaching Warriors Guild level 10. Grants 5% boost to all combat stats.",
+    "attack_bonus": 5,
+    "strength_bonus": 5,
+    "defense_bonus": 5,
+    "cape_skill": "warriors",
+    "cape_bonus": 0.05,
+    "requirements": {}
+  },
+  "archers_guild_cape": {
+    "name": "archers_guild_cape",
+    "display_name": "Archers Guild Cape",
+    "slot": "cape",
+    "description": "Awarded for reaching Archers Guild level 10. Grants 5% boost to all combat stats.",
+    "attack_bonus": 5,
+    "strength_bonus": 5,
+    "defense_bonus": 5,
+    "cape_skill": "archers",
+    "cape_bonus": 0.05,
+    "requirements": {}
+  },
+  "mages_guild_cape": {
+    "name": "mages_guild_cape",
+    "display_name": "Mages Guild Cape",
+    "slot": "cape",
+    "description": "Awarded for reaching Mages Guild level 10. Grants 5% boost to all combat stats.",
+    "attack_bonus": 5,
+    "strength_bonus": 5,
+    "defense_bonus": 5,
+    "cape_skill": "mages",
+    "cape_bonus": 0.05,
+    "requirements": {}
+  },
+  "prayer_guild_cape": {
+    "name": "prayer_guild_cape",
+    "display_name": "Prayer Guild Cape",
+    "slot": "cape",
+    "description": "Awarded for reaching Prayer Guild level 10. Strengthens your active blessing by 5%.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "prayer",
+    "cape_bonus": 0.05,
+    "requirements": {}
+  },
+  "mercantile_guild_cape": {
+    "name": "mercantile_guild_cape",
+    "display_name": "Merchants Guild Cape",
+    "slot": "cape",
+    "description": "Awarded for reaching Merchants Guild level 10. Grants 5% better shop prices and trade returns.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "mercantile",
+    "cape_bonus": 0.05,
+    "requirements": {}
+  },
+  "slayer_helm": {
+    "name": "slayer_helm",
+    "display_name": "Slayer Helm",
+    "slot": "head",
+    "combat_style": null,
+    "description": "A sturdy helm worn by veteran slayers.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 40,
+    "requirements": {
+      "defense": 45
+    }
+  },
+  "abyssal_whip": {
+    "name": "abyssal_whip",
+    "display_name": "Abyssal Whip",
+    "slot": "weapon",
+    "combat_style": "strength",
+    "description": "A whip forged from abyssal energy.",
+    "attack_bonus": 60,
+    "strength_bonus": 80,
+    "defense_bonus": 0,
+    "requirements": {
+      "strength": 50
+    }
+  },
+  "slayer_platebody": {
+    "name": "slayer_platebody",
+    "display_name": "Slayer Platebody",
+    "slot": "body",
+    "combat_style": null,
+    "description": "Heavy armour etched with slayer runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 80,
+    "requirements": {
+      "defense": 45
+    }
+  },
+  "slayer_platelegs": {
+    "name": "slayer_platelegs",
+    "display_name": "Slayer Platelegs",
+    "slot": "legs",
+    "combat_style": null,
+    "description": "Protective legs crafted for extended dungeon runs.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 65,
+    "requirements": {
+      "defense": 45
+    }
+  },
+  "shadow_dagger": {
+    "name": "shadow_dagger",
+    "display_name": "Shadow Dagger",
+    "slot": "weapon",
+    "combat_style": "strength",
+    "description": "A black-bladed dagger recovered from the Shadow Den. Wickedly sharp and perfectly balanced for close work.",
+    "attack_bonus": 16,
+    "strength_bonus": 24,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 15
+    }
+  },
+  "arcane_staff": {
+    "name": "arcane_staff",
+    "display_name": "Arcane Staff",
+    "slot": "weapon",
+    "combat_style": "magic",
+    "description": "A staff recovered from the Arcane Ruins, still humming with contained magical energy from the catastrophe that destroyed the spire above.",
+    "attack_bonus": 38,
+    "strength_bonus": 0,
+    "defense_bonus": 12,
+    "magic_attack_bonus": 52,
+    "magic_damage_bonus": 15,
+    "requirements": {
+      "magic": 55
+    }
+  },
+  "hellfire_staff": {
+    "name": "hellfire_staff",
+    "display_name": "Hellfire Staff",
+    "slot": "weapon",
+    "combat_style": "magic",
+    "description": "A staff wreathed in demonic flame, torn from the Demon Lord's grasp.",
+    "attack_bonus": 48,
+    "strength_bonus": 0,
+    "defense_bonus": 12,
+    "magic_attack_bonus": 72,
+    "magic_damage_bonus": 20,
+    "requirements": {
+      "magic": 70
+    }
+  },
+  "trident_of_the_seas": {
+    "name": "trident_of_the_seas",
+    "display_name": "Trident of the Seas",
+    "slot": "weapon",
+    "combat_style": "magic",
+    "description": "A fearsome trident imbued with the power of the deep, taken from the Kraken's lair.",
+    "attack_bonus": 55,
+    "strength_bonus": 0,
+    "defense_bonus": 15,
+    "magic_attack_bonus": 88,
+    "magic_damage_bonus": 25,
+    "requirements": {
+      "magic": 85
+    }
+  },
+  "ring_of_recoil": {
+    "name": "ring_of_recoil",
+    "display_name": "Ring of Recoil",
+    "slot": "ring",
+    "combat_style": null,
+    "description": "Returns a portion of damage taken to attackers.",
+    "attack_bonus": 2,
+    "strength_bonus": 2,
+    "defense_bonus": 4,
+    "requirements": {}
+  },
+  "amulet_of_strength": {
+    "name": "amulet_of_strength",
+    "display_name": "Amulet of Strength",
+    "slot": "necklace",
+    "combat_style": null,
+    "description": "Increases melee strength bonus.",
+    "attack_bonus": 6,
+    "strength_bonus": 10,
+    "defense_bonus": 2,
+    "requirements": {}
   }
 }

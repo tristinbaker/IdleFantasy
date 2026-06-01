@@ -2,6 +2,7 @@ package com.fantasyidler.ui.screen
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Switch
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -31,9 +33,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import kotlinx.coroutines.launch
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -79,7 +85,29 @@ fun QuestsScreen(
     }
 
     Scaffold(
-        topBar       = { TopAppBar(title = { Text(stringResource(R.string.nav_quests)) }) },
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(R.string.nav_quests)) },
+                actions = {
+                    Row(
+                        modifier = Modifier
+                            .clickable { viewModel.toggleHideCompleted() }
+                            .padding(end = 8.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Text(
+                            text  = stringResource(R.string.label_hide_completed),
+                            style = MaterialTheme.typography.labelSmall,
+                        )
+                        Spacer(Modifier.width(4.dp))
+                        Switch(
+                            checked = state.hideCompleted,
+                            onCheckedChange = { viewModel.toggleHideCompleted() },
+                        )
+                    }
+                },
+            )
+        },
         snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { padding ->
         if (state.isLoading) {
@@ -94,17 +122,15 @@ fun QuestsScreen(
             return@Scaffold
         }
 
-        var selectedTab by remember { mutableIntStateOf(0) }
+        val pagerState = rememberPagerState(pageCount = { TAB_GROUPS.size })
+        val scope = rememberCoroutineScope()
 
         Column(
             Modifier
                 .fillMaxSize()
                 .padding(padding),
         ) {
-            // ------------------------------------------------------------------
-            // Tab row with optional claimable badge
-            // ------------------------------------------------------------------
-            TabRow(selectedTabIndex = selectedTab) {
+            TabRow(selectedTabIndex = pagerState.currentPage) {
                 TAB_GROUPS.forEachIndexed { index, group ->
                     val claimableInGroup = if (group == "Daily") {
                         state.dailyQuests.count { it.progress >= it.template.amount && !it.claimed }
@@ -112,8 +138,8 @@ fun QuestsScreen(
                         (state.questsByGroup[group] ?: emptyList()).count { it.isClaimable }
                     }
                     Tab(
-                        selected = selectedTab == index,
-                        onClick  = { selectedTab = index },
+                        selected = pagerState.currentPage == index,
+                        onClick  = { scope.launch { pagerState.animateScrollToPage(index) } },
                         text = {
                             val baseLabel = tabGroupLabel(group)
                             val label = if (claimableInGroup > 0) "$baseLabel ($claimableInGroup)" else baseLabel
@@ -126,42 +152,41 @@ fun QuestsScreen(
                 }
             }
 
-            // ------------------------------------------------------------------
-            // Content for the selected tab
-            // ------------------------------------------------------------------
-            val currentGroup = TAB_GROUPS[selectedTab]
-
-            if (currentGroup == "Daily") {
-                DailyQuestsContent(
-                    quests      = state.dailyQuests,
-                    nextReset   = state.nextDailyReset,
-                    onClaimQuest = { viewModel.claimDailyQuest(it) },
-                )
-            } else {
-                val quests = state.questsByGroup[currentGroup] ?: emptyList()
-                if (quests.isEmpty()) {
-                    Box(
-                        Modifier
-                            .fillMaxSize()
-                            .padding(32.dp),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Text(
-                            text  = stringResource(R.string.quests_none_in_category),
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
-                    }
+            HorizontalPager(state = pagerState, modifier = Modifier.weight(1f)) { page ->
+                val currentGroup = TAB_GROUPS[page]
+                if (currentGroup == "Daily") {
+                    DailyQuestsContent(
+                        quests        = state.dailyQuests,
+                        nextReset     = state.nextDailyReset,
+                        hideCompleted = state.hideCompleted,
+                        onClaimQuest  = { viewModel.claimDailyQuest(it) },
+                    )
                 } else {
-                    LazyColumn(Modifier.fillMaxSize()) {
-                        items(quests, key = { it.quest.id }) { questWithProgress ->
-                            QuestRow(
-                                questWithProgress = questWithProgress,
-                                onClaimReward     = { viewModel.claimReward(questWithProgress.quest.id) },
+                    val quests = state.questsByGroup[currentGroup] ?: emptyList()
+                    if (quests.isEmpty()) {
+                        Box(
+                            Modifier
+                                .fillMaxSize()
+                                .padding(32.dp),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            Text(
+                                text  = stringResource(R.string.quests_none_in_category),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
                             )
-                            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
                         }
-                        item { Spacer(Modifier.height(16.dp)) }
+                    } else {
+                        LazyColumn(Modifier.fillMaxSize()) {
+                            items(quests, key = { it.quest.id }) { questWithProgress ->
+                                QuestRow(
+                                    questWithProgress = questWithProgress,
+                                    onClaimReward     = { viewModel.claimReward(questWithProgress.quest.id) },
+                                )
+                                HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+                            }
+                            item { Spacer(Modifier.height(16.dp)) }
+                        }
                     }
                 }
             }
@@ -177,10 +202,12 @@ fun QuestsScreen(
 private fun DailyQuestsContent(
     quests: List<DailyQuestWithProgress>,
     nextReset: Long,
+    hideCompleted: Boolean = false,
     onClaimQuest: (String) -> Unit,
 ) {
+    val visibleQuests = if (hideCompleted) quests.filter { !it.claimed } else quests
     LazyColumn(Modifier.fillMaxSize()) {
-        if (quests.isEmpty()) {
+        if (visibleQuests.isEmpty()) {
             item {
                 Box(
                     Modifier
@@ -196,7 +223,7 @@ private fun DailyQuestsContent(
                 }
             }
         } else {
-            items(quests, key = { it.template.id }) { q ->
+            items(visibleQuests, key = { it.template.id }) { q ->
                 DailyQuestCard(quest = q, onClaim = { onClaimQuest(q.template.id) })
                 HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
             }
@@ -316,8 +343,7 @@ private fun QuestRow(
             .padding(horizontal = 16.dp, vertical = 12.dp),
     ) {
         // Title
-        val displayName = GameStrings.questName(context, quest.id).takeIf { it.isNotBlank() }
-            ?: quest.name
+        val displayName = GameStrings.questName(context, quest.id, quest.name)
         Text(
             text       = displayName,
             style      = MaterialTheme.typography.bodyLarge,

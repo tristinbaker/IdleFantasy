@@ -1,0 +1,13 @@
+• New: Slayer skill -- visit the Slayer Master in Town to receive tasks to kill specific enemies in dungeons
+• New: Completing Slayer tasks earns Slayer points; higher-level tasks award more points
+• New: Slayer shop sells XP lamps usable on any skill, plus exclusive Slayer gear (Slayer Helm, Abyssal Whip, Slayer Platebody, Slayer Platelegs)
+• New: Active task card shows which dungeons contain the target enemy
+• New: Six-tier Slayer quest chain added to the Combat quests tab
+• Fix: Crafting quantity sheet now shows total items produced (e.g. 30 Arrow Shafts) alongside the XP preview when output quantity is greater than 1
+• Fix: "Monster Hunter" quest chain was incorrectly named "Slayer" -- renamed to avoid conflict with the new Slayer task quests
+• Fix: Quest names now display correctly instead of falling back to the title-cased ID (e.g. "Balrog Bane I" instead of "Balrog Bane 1")
+• Fix: Dungeon Explorer VII (Imp Cavern) is now part of the Dungeon Explorer quest chain instead of appearing independently
+• Fix: Expedition dungeons are now hidden from the dungeon list until explicitly unlocked
+• New: Italian translation (contributed by @bruce965)
+• New: Dutch translation (contributed by @Fimlore)
+• Update: French translation improvements (contributed by @widowild1)

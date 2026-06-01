@@ -1,0 +1,13 @@
+{
+  "id": "grand_exchange",
+  "display_name": "Grand Exchange",
+  "description": "Trade at the legendary Grand Exchange where fortunes are made and lost. Only the most skilled merchants dare attempt this.",
+  "level_required": 99,
+  "coin_cost": 2000000,
+  "xp_ranges": {
+    "99": {"min": 2000, "max": 2750}
+  },
+  "coin_ranges": {
+    "99": {"min": 23000, "max": 40000}
+  }
+}

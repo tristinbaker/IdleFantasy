@@ -63,6 +63,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.R
 import com.fantasyidler.data.model.Skills
+import com.fantasyidler.simulator.XpTable
 import com.fantasyidler.data.model.WorkerTier
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.CraftableRecipe
@@ -83,12 +84,15 @@ import java.util.Locale
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WorkerSkillsScreen(
+    initialSlot: Int = 1,
     onBack: () -> Unit = {},
     viewModel: WorkerSkillsViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
     val snackbarHostState = remember { SnackbarHostState() }
     val context = LocalContext.current
+
+    LaunchedEffect(Unit) { viewModel.setSelectedSlot(initialSlot) }
 
     LaunchedEffect(state.snackbarMessage) {
         state.snackbarMessage?.let {
@@ -97,14 +101,14 @@ fun WorkerSkillsScreen(
         }
     }
 
-    val tierLabel = when (state.hiredWorker?.tier) {
+    val tierLabel = when (state.currentWorker?.tier) {
         WorkerTier.LONG_LABORER -> stringResource(R.string.worker_long_laborer)
         WorkerTier.APPRENTICE   -> stringResource(R.string.worker_apprentice)
         WorkerTier.JOURNEYMAN   -> stringResource(R.string.worker_journeyman)
         WorkerTier.MASTER       -> stringResource(R.string.worker_master)
         null                    -> ""
     }
-    val workerName = state.hiredWorker?.dailyName ?: ""
+    val workerName = state.currentWorker?.dailyName ?: ""
     val screenTitle = if (workerName.isNotEmpty())
         stringResource(R.string.worker_skills_title, workerName)
     else
@@ -134,6 +138,39 @@ fun WorkerSkillsScreen(
             contentPadding = padding,
             modifier = Modifier.fillMaxSize(),
         ) {
+            // Slot selector (only shown when both workers are hired)
+            val w1 = state.hiredWorker
+            val w2 = state.hiredWorker2
+            if (w1 != null && w2 != null) {
+                item {
+                    Row(
+                        modifier              = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 4.dp),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        FilterChip(
+                            selected = state.selectedSlot == 1,
+                            onClick  = { viewModel.setSelectedSlot(1) },
+                            label    = {
+                                Text(w1.dailyName.ifEmpty {
+                                    stringResource(R.string.worker_long_laborer)
+                                })
+                            },
+                        )
+                        FilterChip(
+                            selected = state.selectedSlot == 2,
+                            onClick  = { viewModel.setSelectedSlot(2) },
+                            label    = {
+                                Text(w2.dailyName.ifEmpty {
+                                    stringResource(R.string.inn_slot2_header)
+                                })
+                            },
+                        )
+                    }
+                }
+            }
+
             // Tier badge
             if (tierLabel.isNotEmpty()) {
                 item {
@@ -148,19 +185,9 @@ fun WorkerSkillsScreen(
             }
 
             // Active worker session banner
-            state.activeSession?.let { session ->
+            state.currentSession?.let { session ->
                 item {
                     WorkerActiveSessionBanner(session = session)
-                }
-            }
-
-            // Worker queue
-            if (state.workerQueue.isNotEmpty()) {
-                item {
-                    WorkerQueueBanner(
-                        queue   = state.workerQueue,
-                        context = context,
-                    )
                 }
             }
 
@@ -177,7 +204,7 @@ fun WorkerSkillsScreen(
                     skillKey       = key,
                     level          = state.skillLevels[key] ?: 1,
                     xp             = state.skillXp[key] ?: 0L,
-                    isActive       = state.activeSession?.skillName == key && state.activeSession?.completed == false,
+                    isActive       = state.currentSession?.skillName == key && state.currentSession?.completed == false,
                     onClick        = { viewModel.onSkillTapped(key) },
                     toolEfficiency = efficiency,
                 )
@@ -190,7 +217,7 @@ fun WorkerSkillsScreen(
                     skillKey = key,
                     level    = state.skillLevels[key] ?: 1,
                     xp       = state.skillXp[key] ?: 0L,
-                    isActive = state.activeSession?.skillName == key && state.activeSession?.completed == false,
+                    isActive = state.currentSession?.skillName == key && state.currentSession?.completed == false,
                     onClick  = { viewModel.onSkillTapped(key) },
                 )
             }
@@ -202,7 +229,7 @@ fun WorkerSkillsScreen(
                     skillKey = Skills.PRAYER,
                     level    = state.skillLevels[Skills.PRAYER] ?: 1,
                     xp       = state.skillXp[Skills.PRAYER] ?: 0L,
-                    isActive = state.activeSession?.skillName == Skills.PRAYER && state.activeSession?.completed == false,
+                    isActive = state.currentSession?.skillName == Skills.PRAYER && state.currentSession?.completed == false,
                     onClick  = { viewModel.onSkillTapped(Skills.PRAYER) },
                 )
             }
@@ -227,6 +254,8 @@ fun WorkerSkillsScreen(
                     hasActiveSession  = true,
                     isQueueFull       = isQueueFull,
                     sessionDurationMs = state.gatheringDurationMs,
+                    currentXp         = state.skillXp[Skills.MINING] ?: 0L,
+                    efficiency        = state.miningEfficiency,
                     onSelect          = { viewModel.startMiningSession(it) },
                 )
                 is SheetState.Woodcutting -> WoodcuttingSheet(
@@ -235,15 +264,19 @@ fun WorkerSkillsScreen(
                     hasActiveSession  = true,
                     isQueueFull       = isQueueFull,
                     sessionDurationMs = state.gatheringDurationMs,
+                    currentXp         = state.skillXp[Skills.WOODCUTTING] ?: 0L,
+                    efficiency        = state.woodcuttingEfficiency,
                     onSelect          = { viewModel.startWoodcuttingSession(it) },
                 )
                 is SheetState.Fishing -> FishingSheet(
-                    fish             = sheet.fish,
-                    isStarting       = false,
-                    hasActiveSession = true,
-                    isQueueFull      = isQueueFull,
+                    fish              = sheet.fish,
+                    isStarting        = false,
+                    hasActiveSession  = true,
+                    isQueueFull       = isQueueFull,
                     sessionDurationMs = state.gatheringDurationMs,
-                    onSelect         = { viewModel.startFishingSession(it) },
+                    currentXp         = state.skillXp[Skills.FISHING] ?: 0L,
+                    efficiency        = state.fishingEfficiency,
+                    onSelect          = { viewModel.startFishingSession(it) },
                 )
                 is SheetState.Agility -> AgilitySheet(
                     courses           = sheet.courses,
@@ -251,6 +284,7 @@ fun WorkerSkillsScreen(
                     hasActiveSession  = true,
                     isQueueFull       = isQueueFull,
                     sessionDurationMs = state.gatheringDurationMs,
+                    currentXp         = state.skillXp[Skills.AGILITY] ?: 0L,
                     onSelect          = { viewModel.startAgilitySession(it) },
                 )
                 is SheetState.Firemaking -> FiremakingSheet(
@@ -292,6 +326,7 @@ fun WorkerSkillsScreen(
                         onDismiss  = viewModel::dismissSheet,
                     )
                 }
+                SheetState.Mercantile -> {}
                 SheetState.ComingSoon -> ComingSoonSheet()
             }
         }
@@ -371,44 +406,6 @@ private fun WorkerActiveSessionBanner(
 // ---------------------------------------------------------------------------
 // Worker queue banner
 // ---------------------------------------------------------------------------
-
-@Composable
-private fun WorkerQueueBanner(
-    queue: List<com.fantasyidler.data.model.QueuedAction>,
-    context: android.content.Context,
-) {
-    Surface(
-        color    = MaterialTheme.colorScheme.surfaceVariant,
-        shape    = RoundedCornerShape(12.dp),
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 12.dp, vertical = 8.dp),
-    ) {
-        Column(Modifier.padding(16.dp)) {
-            Text(
-                text  = stringResource(R.string.worker_queue_label, queue.size),
-                style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-            Spacer(Modifier.height(8.dp))
-            queue.forEachIndexed { index, action ->
-                if (index > 0) HorizontalDivider(
-                    modifier = Modifier.padding(vertical = 4.dp),
-                    color    = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f),
-                )
-                val emoji = GameStrings.skillEmoji(action.skillName)
-                val activityLabel = action.activityKey
-                    .replace('_', ' ')
-                    .replaceFirstChar { it.uppercase() }
-                    .takeIf { action.activityKey.isNotEmpty() }
-                Text(
-                    text  = "$emoji ${action.skillDisplayName}${if (activityLabel != null) " — $activityLabel" else ""}${if (action.qty > 0) " ×${action.qty}" else ""}",
-                    style = MaterialTheme.typography.bodyMedium,
-                )
-            }
-        }
-    }
-}
 
 // ---------------------------------------------------------------------------
 // Worker craft skill sheet
@@ -557,6 +554,15 @@ private fun WorkerCraftSkillSheet(
             }
         }
     }
+}
+
+private fun projectedXpLabel(currentXp: Long, xpGain: Long): String {
+    val currentLevel   = XpTable.levelForXp(currentXp)
+    val projectedLevel = XpTable.levelForXp(currentXp + xpGain)
+    return if (projectedLevel > currentLevel)
+        "+${xpGain.formatXp()} XP → Level $projectedLevel"
+    else
+        "+${xpGain.formatXp()} XP"
 }
 
 private fun workerMeetsLevel(state: WorkerSkillsUiState, recipe: CraftableRecipe): Boolean =
@@ -775,7 +781,7 @@ private fun WorkerCraftQuantityContent(
         QtyQuickButtons(qty, max) { onSetQuantity(it) }
         Spacer(Modifier.height(8.dp))
         Text(
-            text     = stringResource(R.string.skills_xp_total, totalXp.toInt()),
+            text     = projectedXpLabel(state.skillXp[recipe.skillName] ?: 0L, totalXp.toLong()),
             style    = MaterialTheme.typography.bodySmall,
             color    = GoldPrimary,
             modifier = Modifier.align(Alignment.CenterHorizontally),

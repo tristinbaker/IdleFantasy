@@ -81,6 +81,7 @@ def gen_skills() -> str:
         ("Farming",      "gathering", "Plant seeds and harvest crops."),
         ("Firemaking",   "gathering", "Burn logs for XP. Produces ashes for Prayer."),
         ("Agility",      "gathering", "Reduces session time across all skills (60→40 min at level 99)."),
+        ("Mercantile",   "gathering", "Send trade caravans and explore skilling expeditions for lore and dungeon unlocks."),
         ("Smithing",     "crafting",  "Smelt ores into bars and forge equipment."),
         ("Cooking",      "crafting",  "Cook raw food to restore HP in combat."),
         ("Fletching",    "crafting",  "Craft bows and arrows."),
@@ -94,12 +95,13 @@ def gen_skills() -> str:
         ("Magic",        "combat",    "Cast spells using runes."),
         ("Hitpoints",    "combat",    "Total health. Increases with combat."),
         ("Prayer",       "combat",    "Bury bones to unlock combat prayers."),
+        ("Slayer",       "combat",    "Receive tasks from the Slayer Master to kill specific enemies for bonus XP and points."),
     ]
-    rows = [[f"[[{s}]]" if s in {"Mining","Fishing","Woodcutting","Farming","Firemaking","Agility",
-                                   "Smithing","Cooking","Fletching","Crafting","Runecrafting","Herblore",
-                                   "Enemies","Prayer"} else s,
-             c.title(), d] for s, c, d in skill_list]
-    return f"# Skills\n\nIdle Fantasy has 19 skills split across three categories.\n\n{table(['Skill','Category','Description'], rows)}\n\nAll skills cap at **level 99**.\n"
+    linked = {"Mining","Fishing","Woodcutting","Farming","Firemaking","Agility","Mercantile",
+              "Smithing","Cooking","Fletching","Crafting","Runecrafting","Herblore",
+              "Prayer","Slayer","Enemies"}
+    rows = [[f"[[{s}]]" if s in linked else s, c.title(), d] for s, c, d in skill_list]
+    return f"# Skills\n\nIdle Fantasy has 21 skills split across three categories.\n\n{table(['Skill','Category','Description'], rows)}\n\nAll skills cap at **level 99**.\n"
 
 
 def gen_agility() -> str:
@@ -444,6 +446,195 @@ def gen_bosses() -> str:
     return "# Bosses\n\nRaid bosses are high-difficulty encounters with unique loot.\n\n" + "\n\n".join(sections) + "\n"
 
 
+def gen_mercantile() -> str:
+    # Trade routes
+    route_rows = []
+    for f in sorted((ASSETS / "trade_routes").glob("*.json")):
+        routes = json.loads(f.read_text())
+        if isinstance(routes, dict):
+            routes = [routes]
+        for r in routes:
+            low_xp  = list(r["xp_ranges"].values())[0]
+            high_xp = list(r["xp_ranges"].values())[-1]
+            low_c   = list(r["coin_ranges"].values())[0]
+            high_c  = list(r["coin_ranges"].values())[-1]
+            route_rows.append([
+                r["display_name"],
+                r["level_required"],
+                f"{r['coin_cost']:,}",
+                f"{low_xp['min']}–{high_xp['max']}",
+                f"{low_c['min']:,}–{high_c['max']:,}",
+            ])
+    route_rows.sort(key=lambda r: r[1])
+
+    # Skilling expeditions
+    exp_rows = []
+    for f in sorted((ASSETS / "skilling_dungeons").glob("*.json")):
+        d = json.loads(f.read_text())
+        xp_vals = list(d["xp_ranges"].values())
+        xp_str  = f"{xp_vals[0]['min']}–{xp_vals[-1]['max']}"
+        exp_rows.append([
+            d["display_name"],
+            title(d["skill"]),
+            d["level_required"],
+            xp_str,
+            title(d.get("unlock_dungeon", "—")),
+        ])
+    exp_rows.sort(key=lambda r: (r[1], r[2]))
+
+    return f"""# Mercantile
+
+The Mercantile skill covers two activities: **Trade Routes** and **Expeditions**.
+
+## Trade Routes
+
+Dispatch a merchant caravan along a trade route. Each route costs coins upfront and returns coins and XP. Returns are variable — higher-level routes are more profitable.
+
+{table(['Route', 'Level', 'Cost', 'XP / Min (range)', 'Coin Return (range)'], route_rows)}
+
+> Coin returns shown are per-minute ranges across all level tiers for that route.
+
+## Expeditions
+
+Explore skilling dungeons to uncover lore notes and unlock hidden combat dungeons. You need your gathering skill (Mining, Woodcutting, Fishing, or Agility) to meet the level requirement, not Mercantile level.
+
+{table(['Expedition', 'Skill', 'Level Required', 'XP / Min (range)', 'Unlocks Dungeon'], exp_rows)}
+
+Collect enough **lore notes** (found at a random chance each minute) to reach the note threshold and permanently unlock the associated combat dungeon.
+
+## Merchants Guild Shop
+
+The Merchants Guild (accessible from the Shop) sells exclusive items for players who have reached the required Mercantile level.
+"""
+
+
+def gen_quests() -> str:
+    quests = json.loads((ASSETS / "quests.json").read_text())
+    by_skill: dict[str, list] = {}
+    for q in quests.values():
+        by_skill.setdefault(q["skill"], []).append(q)
+
+    sections = []
+    for skill in sorted(by_skill.keys()):
+        qs = sorted(by_skill[skill], key=lambda q: (q.get("tier", 0), q["name"]))
+        rows = []
+        for q in qs:
+            rewards = q.get("rewards", {})
+            reward_parts = []
+            if rewards.get("coins"):
+                reward_parts.append(f"{rewards['coins']:,} coins")
+            if rewards.get("xp"):
+                reward_parts.append(f"{rewards['xp']:,} XP")
+            for item, qty in rewards.get("items", {}).items():
+                reward_parts.append(f"{qty}× {title(item)}")
+            rows.append([
+                q["name"],
+                q.get("description", "—"),
+                ", ".join(reward_parts) or "—",
+            ])
+        sections.append(f"## {title(skill)}\n\n{table(['Quest', 'Objective', 'Rewards'], rows)}")
+
+    return "# Quests\n\nQuests are permanent objectives grouped by skill. Each chain must be completed in order. Claim rewards from the Quests tab.\n\n" + "\n\n".join(sections) + "\n"
+
+
+def gen_slayer() -> str:
+    tasks = json.loads((ASSETS / "slayer_tasks.json").read_text())
+    rows = sorted(
+        [
+            [title(enemy), t["slayer_level"], f"{t['min_kills']}–{t['max_kills']}", t["xp_per_kill"]]
+            for enemy, t in tasks.items()
+        ],
+        key=lambda r: r[1],
+    )
+    return f"""# Slayer
+
+Visit the **Slayer Master** in Town to receive a task. Complete it by killing the assigned enemy in any dungeon that contains them. Each kill awards Slayer XP and counts toward your task total.
+
+## Tasks
+
+{table(['Enemy', 'Slayer Level', 'Kill Range', 'XP / Kill'], rows)}
+
+## Points
+
+Completing a task awards **Slayer points** (more for higher-level tasks). Points can be spent in the **Slayer Shop** on:
+
+- XP Lamp (Small) — +10,000 XP to any skill
+- XP Lamp (Large) — +50,000 XP to any skill
+- Slayer Helm, Abyssal Whip, Slayer Platebody, Slayer Platelegs (exclusive gear)
+
+Use **Skip (30 pts)** to discard a task you don't want.
+"""
+
+
+def gen_spells() -> str:
+    spells = json.loads((ASSETS / "spells.json").read_text())
+    rows = sorted(
+        [
+            [
+                s["display_name"],
+                s["magic_level_required"],
+                title(s["rune_type"]),
+                s["rune_cost"],
+                s["max_hit"],
+            ]
+            for s in spells.values()
+        ],
+        key=lambda r: r[1],
+    )
+    return f"""# Spells
+
+Equip a magic weapon and select a spell before entering a dungeon or boss fight. Runes are consumed from your inventory at collect time.
+
+{table(['Spell', 'Magic Level', 'Rune', 'Runes / Cast', 'Max Hit'], rows)}
+
+> Some staves provide **infinite runes** of a specific type, removing the rune cost for that spell.
+"""
+
+
+def gen_pets() -> str:
+    pets = json.loads((ASSETS / "pets.json").read_text())
+    rows = []
+    for p in sorted(pets.values(), key=lambda x: x["display_name"]):
+        boost = f"+{p['boost_percent']}% {title(p.get('boosted_skill', p.get('effect_type', '')))} XP" \
+                if p.get("boost_percent") else p.get("effect_type", "—")
+        rows.append([
+            f"{p.get('emoji','')} {p['display_name']}",
+            p.get("source", "—"),
+            boost,
+            p.get("description", "—"),
+        ])
+    return f"""# Pets
+
+Pets are rare drops from dungeons and bosses. Each pet provides a permanent passive bonus once collected. Duplicates are automatically converted to coins.
+
+{table(['Pet', 'Source', 'Bonus', 'Description'], rows)}
+
+Pets are displayed on your **Profile** screen.
+"""
+
+
+def gen_shop() -> str:
+    mp = json.loads((ASSETS / "marketplace.json").read_text())
+    sections = []
+    for cat_data in mp.values():
+        cat_name = cat_data["category_name"]
+        cat_desc = cat_data.get("description", "")
+        items = cat_data.get("items", {})
+        rows = []
+        for item in items.values():
+            stock = item.get("stock", "unlimited")
+            lvl_req = item.get("mercantile_level_required")
+            req_str = f"Mercantile {lvl_req}" if lvl_req else "—"
+            rows.append([
+                item["display_name"],
+                f"{item['price']:,}",
+                stock.title() if isinstance(stock, str) else str(stock),
+                req_str,
+            ])
+        sections.append(f"## {cat_name}\n\n{cat_desc}\n\n{table(['Item', 'Price', 'Stock', 'Requirement'], rows)}")
+    return "# Shop\n\nThe Shop lets you buy materials and equipment directly with coins.\n\n" + "\n\n".join(sections) + "\n"
+
+
 # ---------------------------------------------------------------------------
 # Wiki repo management
 # ---------------------------------------------------------------------------
@@ -487,6 +678,7 @@ def main():
         "Farming.md":     gen_farming(),
         "Runecrafting.md":gen_runecrafting(),
         "Prayer.md":      gen_prayer(),
+        "Mercantile.md":  gen_mercantile(),
         "Smithing.md":    gen_smithing(),
         "Cooking.md":     gen_cooking(),
         "Fletching.md":   gen_fletching(),
@@ -496,6 +688,11 @@ def main():
         "Enemies.md":     gen_enemies(),
         "Dungeons.md":    gen_dungeons(),
         "Bosses.md":      gen_bosses(),
+        "Quests.md":      gen_quests(),
+        "Slayer.md":      gen_slayer(),
+        "Spells.md":      gen_spells(),
+        "Pets.md":        gen_pets(),
+        "Shop.md":        gen_shop(),
     }
     pages["Home.md"] = gen_home(list(pages.keys()))
 

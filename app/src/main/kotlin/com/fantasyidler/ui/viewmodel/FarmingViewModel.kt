@@ -10,6 +10,7 @@ import com.fantasyidler.data.model.FarmingPatch
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.repository.FarmingRepository
 import com.fantasyidler.repository.GameDataRepository
+import com.fantasyidler.repository.GuildRepository
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.simulator.XpTable
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -62,6 +63,7 @@ class FarmingViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val farmingRepo: FarmingRepository,
     private val playerRepo: PlayerRepository,
+    private val guildRepo: GuildRepository,
     private val gameData: GameDataRepository,
     private val json: Json,
 ) : ViewModel() {
@@ -130,6 +132,7 @@ class FarmingViewModel @Inject constructor(
                 val xpAfter = json.decodeFromString<Map<String, Long>>(playerAfter.skillXp)[Skills.FARMING] ?: 0L
 
                 val gained = invAfter.mapValues { (k, v) -> v - (invBefore[k] ?: 0) }.filter { it.value > 0 }
+                guildRepo.recordGuildGathering(Skills.FARMING, gained)
                 _extra.update { it.copy(harvestResult = HarvestResult(context.getString(R.string.farming_harvest_and_plant), gained, xpAfter - xpBefore)) }
                 delay(300)
             }
@@ -189,6 +192,7 @@ class FarmingViewModel @Inject constructor(
             val xpAfter  = (json.decodeFromString<Map<String, Long>>(player.skillXp))[Skills.FARMING] ?: 0L
 
             val gained = invAfter.mapValues { (k, v) -> v - (invBefore[k] ?: 0) }.filter { it.value > 0 }
+            guildRepo.recordGuildGathering(Skills.FARMING, gained)
             _extra.update {
                 it.copy(harvestResult = HarvestResult(crop.displayName, gained, xpAfter - xpBefore))
             }

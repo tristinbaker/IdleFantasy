@@ -1,0 +1,20 @@
+{
+  "goblin":        { "min_kills": 25, "max_kills": 60,  "slayer_level": 1,  "xp_per_kill": 15 },
+  "skeleton":      { "min_kills": 20, "max_kills": 50,  "slayer_level": 1,  "xp_per_kill": 18 },
+  "zombie":        { "min_kills": 20, "max_kills": 50,  "slayer_level": 5,  "xp_per_kill": 20 },
+  "spider":        { "min_kills": 20, "max_kills": 45,  "slayer_level": 10, "xp_per_kill": 25 },
+  "imp":           { "min_kills": 20, "max_kills": 45,  "slayer_level": 10, "xp_per_kill": 22 },
+  "bandit":        { "min_kills": 20, "max_kills": 45,  "slayer_level": 15, "xp_per_kill": 28 },
+  "dark_wizard":   { "min_kills": 15, "max_kills": 40,  "slayer_level": 20, "xp_per_kill": 32 },
+  "orc_warrior":   { "min_kills": 15, "max_kills": 40,  "slayer_level": 25, "xp_per_kill": 38 },
+  "troll":         { "min_kills": 15, "max_kills": 35,  "slayer_level": 25, "xp_per_kill": 42 },
+  "cave_troll":    { "min_kills": 15, "max_kills": 35,  "slayer_level": 30, "xp_per_kill": 48 },
+  "rock_golem":    { "min_kills": 12, "max_kills": 30,  "slayer_level": 35, "xp_per_kill": 55 },
+  "iron_golem":    { "min_kills": 12, "max_kills": 28,  "slayer_level": 40, "xp_per_kill": 62 },
+  "fire_giant":    { "min_kills": 12, "max_kills": 28,  "slayer_level": 45, "xp_per_kill": 70 },
+  "hellhound":     { "min_kills": 10, "max_kills": 25,  "slayer_level": 45, "xp_per_kill": 78 },
+  "abyssal_leech": { "min_kills": 10, "max_kills": 25,  "slayer_level": 55, "xp_per_kill": 95 },
+  "demon":         { "min_kills": 10, "max_kills": 25,  "slayer_level": 60, "xp_per_kill": 110 },
+  "dragon":        { "min_kills": 8,  "max_kills": 20,  "slayer_level": 70, "xp_per_kill": 140 },
+  "lich":          { "min_kills": 8,  "max_kills": 18,  "slayer_level": 80, "xp_per_kill": 180 }
+}

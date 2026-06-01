@@ -1,0 +1,17 @@
+{
+  "id": "local_market",
+  "display_name": "Local Market",
+  "description": "Trade common goods at the local market. Returns are modest but variable.",
+  "level_required": 1,
+  "coin_cost": 2000,
+  "xp_ranges": {
+    "1":  {"min": 15, "max": 25},
+    "10": {"min": 20, "max": 35},
+    "20": {"min": 25, "max": 40}
+  },
+  "coin_ranges": {
+    "1":  {"min": 24, "max": 52},
+    "10": {"min": 28, "max": 58},
+    "20": {"min": 30, "max": 62}
+  }
+}

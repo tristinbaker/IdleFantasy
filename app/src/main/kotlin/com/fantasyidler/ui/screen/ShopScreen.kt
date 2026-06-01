@@ -55,6 +55,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -140,11 +141,12 @@ fun ShopScreen(
 
             when (subTab) {
                 0 -> BuyList(
-                    entries       = viewModel.buyEntries,
-                    coins         = state.coins,
-                    xpBoostActive = state.xpBoostActive,
-                    inventory     = state.inventory,
-                    onBuy         = viewModel::openBuy,
+                    entries            = viewModel.buyEntries.filter { it.mercantileLevelRequired <= state.mercantileLevel },
+                    coins              = state.coins,
+                    xpBoostActive      = state.xpBoostActive,
+                    inventory          = state.inventory,
+                    discountedPriceFor = viewModel::discountedPrice,
+                    onBuy              = viewModel::openBuy,
                 )
                 else -> SellList(
                     inventory          = state.inventory,
@@ -190,6 +192,7 @@ private fun BuyList(
     coins: Long,
     xpBoostActive: Boolean,
     inventory: Map<String, Int>,
+    discountedPriceFor: (ShopEntry) -> Int,
     onBuy: (ShopEntry) -> Unit,
 ) {
     val grouped = remember(entries) { entries.groupBy { it.categoryName } }
@@ -198,7 +201,9 @@ private fun BuyList(
         grouped.forEach { (category, categoryEntries) ->
             item(key = "hdr_$category") { ShopSectionHeader(category) }
             items(categoryEntries, key = { it.key }) { entry ->
-                val canAfford  = coins >= entry.price
+                val discounted = discountedPriceFor(entry)
+                val hasDiscount = discounted < entry.price
+                val canAfford  = coins >= discounted
                 val isXpBoost  = entry.key == ShopViewModel.XP_BOOST_KEY
                 val owned      = inventory[entry.key] ?: 0
                 Row(
@@ -242,12 +247,22 @@ private fun BuyList(
                             color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
                         )
                     }
-                    Text(
-                        text       = stringResource(R.string.shop_total_amount, entry.price.toString()),
-                        style      = MaterialTheme.typography.bodyMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        color      = if (canAfford) GoldPrimary else GoldPrimary.copy(alpha = 0.38f),
-                    )
+                    Column(horizontalAlignment = Alignment.End) {
+                        Text(
+                            text       = stringResource(R.string.shop_total_amount, discounted.toString()),
+                            style      = MaterialTheme.typography.bodyMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            color      = if (canAfford) GoldPrimary else GoldPrimary.copy(alpha = 0.38f),
+                        )
+                        if (hasDiscount) {
+                            Text(
+                                text           = stringResource(R.string.shop_total_amount, entry.price.toString()),
+                                style          = MaterialTheme.typography.bodySmall,
+                                textDecoration = TextDecoration.LineThrough,
+                                color          = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
+                            )
+                        }
+                    }
                 }
                 HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
             }

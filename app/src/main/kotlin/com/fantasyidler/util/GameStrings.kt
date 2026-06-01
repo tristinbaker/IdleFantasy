@@ -41,8 +41,8 @@ object GameStrings {
     fun bossName(context: Context, key: String): String =
         context.stringByName("boss_${key}_name") ?: key.toTitleCase()
 
-    fun questName(context: Context, key: String): String =
-        context.stringByName("quest_${key}_name") ?: key.toTitleCase()
+    fun questName(context: Context, key: String, fallback: String = key.toTitleCase()): String =
+        context.stringByName("quest_${key}_name") ?: fallback
 
     fun questDesc(context: Context, key: String): String =
         context.stringByName("quest_${key}_desc") ?: ""
@@ -90,6 +90,8 @@ object GameStrings {
         "magic"       -> "🪄"
         "hitpoints"   -> "❤️"
         "prayer"      -> "🙏"
+        "mercantile"  -> "💰"
+        "slayer"      -> "💀"
         "combat"      -> "⚔️"
         else          -> "🎮"
     }

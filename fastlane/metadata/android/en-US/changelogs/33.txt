@@ -1,0 +1,8 @@
+• New: Equip one weapon per combat style (Attack, Strength, Ranged, Magic) and choose which to use before entering a dungeon
+• Fix: Queued magic dungeons now deal correct damage (previously dealt 1 damage per hit)
+• Fix: Existing weapon is now automatically migrated to the correct new weapon slot on first launch
+• Fix: Arrow sell prices corrected -- finished arrows are now worth more than their components (shaft + tip)
+• Fix: Multi-session prayer summary now shows each bone type on its own row instead of one long squished line
+• Translation: French translation updated
+• New: Session start sheets now show estimated XP gain and projected level for each activity
+• Tweak: Dwarven gear drop chance increased from 1/500 to 1/100, and only missing pieces can drop (no duplicates)

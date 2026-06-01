@@ -16,12 +16,16 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomSheetDefaults
+import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRow
 import androidx.compose.material3.Button
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.CircularProgressIndicator
@@ -49,7 +53,9 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import kotlinx.coroutines.launch
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import kotlinx.coroutines.delay
@@ -63,6 +69,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.BuildConfig
 import com.fantasyidler.R
+import com.fantasyidler.ui.viewmodel.ExpeditionsViewModel
 import com.fantasyidler.data.json.AgilityCourseData
 import com.fantasyidler.data.json.BoneData
 import com.fantasyidler.data.json.FishData
@@ -88,6 +95,8 @@ import com.fantasyidler.ui.viewmodel.SkillsViewModel
 import com.fantasyidler.ui.viewmodel.xpProgressFraction
 import com.fantasyidler.ui.viewmodel.nextLevelThreshold
 import com.fantasyidler.ui.viewmodel.xpToNextLevel
+import com.fantasyidler.simulator.SkillSimulator
+import com.fantasyidler.simulator.XpTable
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatDurationMs
 import com.fantasyidler.util.formatXp
@@ -98,8 +107,11 @@ import java.util.Locale
 @Composable
 fun SkillsScreen(
     onNavigateToFarming: () -> Unit = {},
-    viewModel: SkillsViewModel  = hiltViewModel(),
+    onNavigateToMercantile: () -> Unit = {},
+    onNavigateToSlayer: () -> Unit = {},
+    viewModel: SkillsViewModel       = hiltViewModel(),
     craftingViewModel: CraftingViewModel = hiltViewModel(),
+    expeditionsViewModel: ExpeditionsViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
     val craftSnackState by craftingViewModel.uiState.collectAsState()
@@ -133,70 +145,34 @@ fun SkillsScreen(
             return@Scaffold
         }
 
-        LazyColumn(
-            contentPadding = padding,
-            modifier = Modifier.fillMaxSize(),
-        ) {
-            // Active session banner
-            state.activeSession?.let { session ->
-                item {
-                    ActiveSessionBanner(
-                        skillName      = GameStrings.skillName(context, session.skillName),
-                        activityKey    = session.activityKey,
-                        endsAt         = session.endsAt,
-                        completed      = session.completed,
-                        onCollect      = viewModel::collectSession,
-                        onAbandon      = viewModel::abandonSession,
-                        onDebugFinish  = viewModel::debugFinishSession,
+        val pagerState = rememberPagerState(pageCount = { 2 })
+        val scope = rememberCoroutineScope()
+        Column(modifier = Modifier.fillMaxSize().padding(padding)) {
+            TabRow(selectedTabIndex = pagerState.currentPage) {
+                Tab(
+                    selected = pagerState.currentPage == 0,
+                    onClick  = { scope.launch { pagerState.animateScrollToPage(0) } },
+                    text     = { Text(stringResource(R.string.nav_skills)) },
+                )
+                Tab(
+                    selected = pagerState.currentPage == 1,
+                    onClick  = { scope.launch { pagerState.animateScrollToPage(1) } },
+                    text     = { Text(stringResource(R.string.nav_expeditions)) },
+                )
+            }
+            HorizontalPager(state = pagerState, modifier = Modifier.weight(1f)) { page ->
+                if (page == 1) {
+                    ExpeditionsScreen(viewModel = expeditionsViewModel, showTitle = false)
+                } else {
+                    SkillsTabContent(
+                        state                  = state,
+                        viewModel              = viewModel,
+                        context                = context,
+                        onNavigateToFarming    = onNavigateToFarming,
+                        onNavigateToMercantile = onNavigateToMercantile,
+                        onNavigateToSlayer     = onNavigateToSlayer,
                     )
                 }
-            }
-
-            // Gathering skills
-            item { SectionHeader(stringResource(R.string.label_gathering_skills)) }
-            items(Skills.GATHERING) { key ->
-                val efficiency = when (key) {
-                    Skills.MINING      -> state.miningEfficiency
-                    Skills.WOODCUTTING -> state.woodcuttingEfficiency
-                    Skills.FISHING     -> state.fishingEfficiency
-                    Skills.FARMING     -> state.farmingEfficiency
-                    else               -> 1.0f
-                }
-                SkillRow(
-                    skillKey       = key,
-                    level          = state.skillLevels[key] ?: 1,
-                    xp             = state.skillXp[key] ?: 0L,
-                    isActive       = state.activeSession?.skillName == key && state.activeSession?.completed == false,
-                    onClick        = {
-                        if (key == Skills.FARMING) onNavigateToFarming()
-                        else viewModel.onSkillTapped(key)
-                    },
-                    toolEfficiency = efficiency,
-                )
-            }
-
-            // Crafting skills
-            item { SectionHeader(stringResource(R.string.label_crafting_skills)) }
-            items(Skills.CRAFTING_SKILLS) { key ->
-                SkillRow(
-                    skillKey = key,
-                    level    = state.skillLevels[key] ?: 1,
-                    xp       = state.skillXp[key] ?: 0L,
-                    isActive = state.activeSession?.skillName == key && state.activeSession?.completed == false,
-                    onClick  = { viewModel.onSkillTapped(key) },
-                )
-            }
-
-            // Prayer
-            item { SectionHeader(stringResource(R.string.label_prayer)) }
-            item {
-                SkillRow(
-                    skillKey = Skills.PRAYER,
-                    level    = state.skillLevels[Skills.PRAYER] ?: 1,
-                    xp       = state.skillXp[Skills.PRAYER] ?: 0L,
-                    isActive = state.activeSession?.skillName == Skills.PRAYER && state.activeSession?.completed == false,
-                    onClick  = { viewModel.onSkillTapped(Skills.PRAYER) },
-                )
             }
         }
     }
@@ -235,6 +211,8 @@ fun SkillsScreen(
                     hasActiveSession  = state.anySessionActive,
                     isQueueFull       = state.queueSize >= 3,
                     sessionDurationMs = state.sessionDurationMs,
+                    currentXp         = state.skillXp[Skills.MINING] ?: 0L,
+                    efficiency        = state.miningEfficiency,
                     onSelect          = { oreKey -> viewModel.startMiningSession(oreKey) },
                 )
                 is SheetState.Woodcutting -> WoodcuttingSheet(
@@ -243,15 +221,19 @@ fun SkillsScreen(
                     hasActiveSession  = state.anySessionActive,
                     isQueueFull       = state.queueSize >= 3,
                     sessionDurationMs = state.sessionDurationMs,
+                    currentXp         = state.skillXp[Skills.WOODCUTTING] ?: 0L,
+                    efficiency        = state.woodcuttingEfficiency,
                     onSelect          = { treeKey -> viewModel.startWoodcuttingSession(treeKey) },
                 )
                 is SheetState.Fishing -> FishingSheet(
-                    fish             = sheet.fish,
-                    isStarting       = state.startingSession,
-                    hasActiveSession = state.anySessionActive,
-                    isQueueFull      = state.queueSize >= 3,
+                    fish              = sheet.fish,
+                    isStarting        = state.startingSession,
+                    hasActiveSession  = state.anySessionActive,
+                    isQueueFull       = state.queueSize >= 3,
                     sessionDurationMs = state.sessionDurationMs,
-                    onSelect         = { fishKey -> viewModel.startFishingSession(fishKey) },
+                    currentXp         = state.skillXp[Skills.FISHING] ?: 0L,
+                    efficiency        = state.fishingEfficiency,
+                    onSelect          = { fishKey -> viewModel.startFishingSession(fishKey) },
                 )
                 is SheetState.Agility -> AgilitySheet(
                     courses           = sheet.courses,
@@ -259,6 +241,7 @@ fun SkillsScreen(
                     hasActiveSession  = state.anySessionActive,
                     isQueueFull       = state.queueSize >= 3,
                     sessionDurationMs = state.sessionDurationMs,
+                    currentXp         = state.skillXp[Skills.AGILITY] ?: 0L,
                     onSelect          = { courseKey -> viewModel.startAgilitySession(courseKey) },
                 )
                 is SheetState.Firemaking -> FiremakingSheet(
@@ -277,11 +260,13 @@ fun SkillsScreen(
                     isQueueFull       = state.queueSize >= 3,
                     sessionDurationMs = state.sessionDurationMs,
                     onStart           = viewModel::startRunecraftingSession,
+                    currentXp         = state.skillXp[Skills.RUNECRAFTING] ?: 0L,
                 )
                 is SheetState.Prayer -> PrayerSheet(
                     availableBones    = sheet.availableBones,
                     inventory         = sheet.inventory,
                     prayerLevel       = state.skillLevels[Skills.PRAYER] ?: 1,
+                    currentXp         = state.skillXp[Skills.PRAYER] ?: 0L,
                     isStarting        = state.startingSession,
                     hasActiveSession  = state.anySessionActive,
                     isQueueFull       = state.queueSize >= 3,
@@ -304,8 +289,100 @@ fun SkillsScreen(
                         },
                     )
                 }
+                SheetState.Mercantile -> {
+                    viewModel.dismissSheet()
+                    onNavigateToMercantile()
+                }
                 SheetState.ComingSoon -> ComingSoonSheet()
             }
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Skills tab content (page 0 of the Skills/Expeditions pager)
+// ---------------------------------------------------------------------------
+
+@Composable
+private fun SkillsTabContent(
+    state: SkillsUiState,
+    viewModel: SkillsViewModel,
+    context: android.content.Context,
+    onNavigateToFarming: () -> Unit,
+    onNavigateToMercantile: () -> Unit = {},
+    onNavigateToSlayer: () -> Unit = {},
+) {
+    LazyColumn(modifier = Modifier.fillMaxSize()) {
+        state.activeSession?.let { session ->
+            item {
+                ActiveSessionBanner(
+                    skillName      = GameStrings.skillName(context, session.skillName),
+                    activityKey    = session.activityKey,
+                    endsAt         = session.endsAt,
+                    completed      = session.completed,
+                    onCollect      = viewModel::collectSession,
+                    onAbandon      = viewModel::abandonSession,
+                    onDebugFinish  = viewModel::debugFinishSession,
+                )
+            }
+        }
+
+        item { SectionHeader(stringResource(R.string.label_gathering_skills)) }
+        items(Skills.GATHERING) { key ->
+            val efficiency = when (key) {
+                Skills.MINING      -> state.miningEfficiency
+                Skills.WOODCUTTING -> state.woodcuttingEfficiency
+                Skills.FISHING     -> state.fishingEfficiency
+                Skills.FARMING     -> state.farmingEfficiency
+                else               -> 1.0f
+            }
+            SkillRow(
+                skillKey       = key,
+                level          = state.skillLevels[key] ?: 1,
+                xp             = state.skillXp[key] ?: 0L,
+                isActive       = state.activeSession?.skillName == key && state.activeSession?.completed == false,
+                onClick        = {
+                    if (key == Skills.FARMING) onNavigateToFarming()
+                    else viewModel.onSkillTapped(key)
+                },
+                toolEfficiency = efficiency,
+            )
+        }
+
+        item { SectionHeader(stringResource(R.string.label_crafting_skills)) }
+        items(Skills.CRAFTING_SKILLS) { key ->
+            SkillRow(
+                skillKey = key,
+                level    = state.skillLevels[key] ?: 1,
+                xp       = state.skillXp[key] ?: 0L,
+                isActive = state.activeSession?.skillName == key && state.activeSession?.completed == false,
+                onClick  = { viewModel.onSkillTapped(key) },
+            )
+        }
+
+        item { SectionHeader(stringResource(R.string.label_support_skills)) }
+        items(Skills.SUPPORT) { key ->
+            SkillRow(
+                skillKey = key,
+                level    = state.skillLevels[key] ?: 1,
+                xp       = state.skillXp[key] ?: 0L,
+                isActive = state.activeSession?.skillName == key && state.activeSession?.completed == false,
+                onClick  = {
+                    if (key == Skills.MERCANTILE) onNavigateToMercantile()
+                    else viewModel.onSkillTapped(key)
+                },
+            )
+        }
+
+        item { SectionHeader(stringResource(R.string.label_combat)) }
+        item {
+            SkillRow(
+                skillKey = Skills.SLAYER,
+                level    = state.skillLevels[Skills.SLAYER] ?: 1,
+                xp       = state.skillXp[Skills.SLAYER] ?: 0L,
+                isActive = false,
+                onClick  = onNavigateToSlayer,
+            )
         }
     }
 }
@@ -542,6 +619,8 @@ internal fun MiningSheet(
     hasActiveSession: Boolean,
     isQueueFull: Boolean,
     sessionDurationMs: Long,
+    currentXp: Long = 0L,
+    efficiency: Float = 1f,
     onSelect: (String) -> Unit,
 ) {
     val context = LocalContext.current
@@ -571,9 +650,11 @@ internal fun MiningSheet(
             ores.entries
                 .sortedBy { it.value.levelRequired }
                 .forEach { (key, ore) ->
+                    val xpGain = SkillSimulator.estimateGatheringXp(ore.xpPerOre, efficiency)
                     ActivityRow(
                         name             = GameStrings.itemName(context, key),
                         detail           = stringResource(R.string.skills_level_req_xp, ore.levelRequired, ore.xpPerOre),
+                        projectedLabel   = projectedXpLabel(currentXp, xpGain),
                         isStarting       = isStarting,
                         hasActiveSession = hasActiveSession,
                         isQueueFull      = isQueueFull,
@@ -603,6 +684,8 @@ internal fun WoodcuttingSheet(
     hasActiveSession: Boolean,
     isQueueFull: Boolean,
     sessionDurationMs: Long,
+    currentXp: Long = 0L,
+    efficiency: Float = 1f,
     onSelect: (String) -> Unit,
 ) {
     val context = LocalContext.current
@@ -632,9 +715,11 @@ internal fun WoodcuttingSheet(
             trees.entries
                 .sortedBy { it.value.levelRequired }
                 .forEach { (key, tree) ->
+                    val xpGain = SkillSimulator.estimateGatheringXp(tree.xpPerLog, efficiency)
                     ActivityRow(
                         name             = GameStrings.itemName(context, tree.logName),
                         detail           = stringResource(R.string.skills_log_desc, tree.levelRequired, tree.xpPerLog),
+                        projectedLabel   = projectedXpLabel(currentXp, xpGain),
                         isStarting       = isStarting,
                         hasActiveSession = hasActiveSession,
                         isQueueFull      = isQueueFull,
@@ -664,6 +749,8 @@ internal fun FishingSheet(
     hasActiveSession: Boolean,
     isQueueFull: Boolean,
     sessionDurationMs: Long,
+    currentXp: Long = 0L,
+    efficiency: Float = 1f,
     onSelect: (String) -> Unit,
 ) {
     val context = LocalContext.current
@@ -693,9 +780,11 @@ internal fun FishingSheet(
             fish.entries
                 .sortedBy { it.value.levelRequired }
                 .forEach { (key, f) ->
+                    val xpGain = SkillSimulator.estimateGatheringXp(f.xpPerCatch, efficiency)
                     ActivityRow(
                         name             = GameStrings.itemName(context, key),
                         detail           = stringResource(R.string.skills_fish_desc, f.levelRequired, f.xpPerCatch),
+                        projectedLabel   = projectedXpLabel(currentXp, xpGain),
                         isStarting       = isStarting,
                         hasActiveSession = hasActiveSession,
                         isQueueFull      = isQueueFull,
@@ -734,10 +823,20 @@ internal fun ComingSoonSheet() {
     }
 }
 
+private fun projectedXpLabel(currentXp: Long, xpGain: Long): String {
+    val currentLevel  = XpTable.levelForXp(currentXp)
+    val projectedLevel = XpTable.levelForXp(currentXp + xpGain)
+    return if (projectedLevel > currentLevel)
+        "+${xpGain.formatXp()} XP → Level $projectedLevel"
+    else
+        "+${xpGain.formatXp()} XP"
+}
+
 @Composable
 internal fun ActivityRow(
     name: String,
     detail: String,
+    projectedLabel: String? = null,
     isStarting: Boolean,
     hasActiveSession: Boolean,
     isQueueFull: Boolean,
@@ -759,6 +858,13 @@ internal fun ActivityRow(
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
+            if (projectedLabel != null) {
+                Text(
+                    text  = projectedLabel,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.primary,
+                )
+            }
         }
         if (isStarting) {
             CircularProgressIndicator(modifier = Modifier.size(20.dp))
@@ -821,10 +927,12 @@ internal fun AgilitySheet(
     hasActiveSession: Boolean,
     isQueueFull: Boolean,
     sessionDurationMs: Long,
+    currentXp: Long = 0L,
     onSelect: (String) -> Unit,
 ) {
     val context = LocalContext.current
     var selectedKey by remember { mutableStateOf<String?>(null) }
+    val currentAgilityLevel = XpTable.levelForXp(currentXp)
     Column(Modifier.padding(bottom = 24.dp)) {
         Text(
             text     = stringResource(R.string.label_choose_activity),
@@ -850,9 +958,11 @@ internal fun AgilitySheet(
             courses.entries
                 .sortedBy { it.value.levelRequired }
                 .forEach { (key, course) ->
+                    val xpGain = SkillSimulator.estimateAgilityXp(course.xpPerSuccess, course.levelRequired, currentAgilityLevel)
                     ActivityRow(
                         name             = course.displayName,
                         detail           = "Lv. ${course.levelRequired}  •  ${course.xpPerSuccess} XP/lap",
+                        projectedLabel   = projectedXpLabel(currentXp, xpGain),
                         isStarting       = isStarting,
                         hasActiveSession = hasActiveSession,
                         isQueueFull      = isQueueFull,
@@ -962,6 +1072,7 @@ internal fun PrayerSheet(
     availableBones: Map<String, BoneData>,
     inventory: Map<String, Int>,
     prayerLevel: Int,
+    currentXp: Long = 0L,
     isStarting: Boolean,
     hasActiveSession: Boolean,
     isQueueFull: Boolean,
@@ -1106,7 +1217,7 @@ internal fun PrayerSheet(
             Spacer(Modifier.height(8.dp))
 
             Text(
-                text     = stringResource(R.string.skills_xp_total, (qty * selectedBone.xpPerBone).toInt()),
+                text     = projectedXpLabel(currentXp, (qty * selectedBone.xpPerBone).toLong()),
                 style    = MaterialTheme.typography.bodyMedium,
                 color    = GoldPrimary,
                 fontWeight = FontWeight.SemiBold,
@@ -1147,6 +1258,7 @@ internal fun RunecraftingSheet(
     isQueueFull: Boolean,
     sessionDurationMs: Long,
     onStart: (String, Int) -> Unit,
+    currentXp: Long = 0L,
     tierMaxQty: Int = Int.MAX_VALUE,
 ) {
     var selectedKey by remember { mutableStateOf<String?>(null) }
@@ -1299,7 +1411,7 @@ internal fun RunecraftingSheet(
             Spacer(Modifier.height(8.dp))
 
             Text(
-                text       = stringResource(R.string.skills_xp_total, (qty * selectedRune.xpPerRune).toInt()),
+                text       = projectedXpLabel(currentXp, (qty * selectedRune.xpPerRune).toLong()),
                 style      = MaterialTheme.typography.bodyMedium,
                 color      = GoldPrimary,
                 fontWeight = FontWeight.SemiBold,
@@ -1781,10 +1893,10 @@ private fun CraftQuantityContent(
         QtyQuickButtons(qty, max) { onSetQuantity(it) }
         Spacer(Modifier.height(8.dp))
         Text(
-            text     = stringResource(R.string.skills_xp_total, totalXp.toInt()),
-            style    = MaterialTheme.typography.bodySmall,
-            color    = GoldPrimary,
-            modifier = Modifier.align(Alignment.CenterHorizontally),
+            text       = projectedXpLabel(state.skillXp[recipe.skillName] ?: 0L, totalXp.toLong()),
+            style      = MaterialTheme.typography.bodyMedium,
+            color      = GoldPrimary,
+            fontWeight = FontWeight.SemiBold,
         )
         if (sessionDurationMs > 0) {
             Text(

@@ -1,0 +1,72 @@
+{
+  "name": "sunken_grotto",
+  "display_name": "Sunken Grotto",
+  "description": "A sea cave carved by centuries of tides. Strange stone pillars rise from the water — older than any known civilization — and something ancient lurks in the depths.",
+  "skill": "fishing",
+  "level_required": 1,
+  "xp_ranges": {
+    "1": {"min": 5, "max": 9},
+    "5": {"min": 8, "max": 14},
+    "10": {"min": 11, "max": 20},
+    "15": {"min": 16, "max": 27},
+    "20": {"min": 24, "max": 38},
+    "25": {"min": 33, "max": 50},
+    "30": {"min": 44, "max": 64},
+    "35": {"min": 57, "max": 83},
+    "40": {"min": 72, "max": 105}
+  },
+  "drop_tables": {
+    "1": [
+      {"item": "raw_shrimp", "chance": 0.80},
+      {"item": "seaweed", "chance": 0.20}
+    ],
+    "5": [
+      {"item": "raw_shrimp", "chance": 0.60},
+      {"item": "raw_sardine", "chance": 0.30},
+      {"item": "seaweed", "chance": 0.10}
+    ],
+    "10": [
+      {"item": "raw_shrimp", "chance": 0.40},
+      {"item": "raw_sardine", "chance": 0.35},
+      {"item": "raw_herring", "chance": 0.20},
+      {"item": "seaweed", "chance": 0.05}
+    ],
+    "15": [
+      {"item": "raw_sardine", "chance": 0.35},
+      {"item": "raw_herring", "chance": 0.35},
+      {"item": "raw_mackerel", "chance": 0.20},
+      {"item": "oyster", "chance": 0.10}
+    ],
+    "20": [
+      {"item": "raw_herring", "chance": 0.30},
+      {"item": "raw_mackerel", "chance": 0.30},
+      {"item": "raw_trout", "chance": 0.25},
+      {"item": "oyster", "chance": 0.15}
+    ],
+    "30": [
+      {"item": "raw_mackerel", "chance": 0.25},
+      {"item": "raw_trout", "chance": 0.35},
+      {"item": "raw_salmon", "chance": 0.25},
+      {"item": "oyster", "chance": 0.10},
+      {"item": "pearl", "chance": 0.05}
+    ],
+    "40": [
+      {"item": "raw_trout", "chance": 0.25},
+      {"item": "raw_salmon", "chance": 0.35},
+      {"item": "raw_tuna", "chance": 0.25},
+      {"item": "pearl", "chance": 0.10},
+      {"item": "raw_lobster", "chance": 0.05}
+    ]
+  },
+  "note_chance_per_frame": 0.003,
+  "note_threshold": 5,
+  "note_texts": [
+    "Strange stone pillars rise from the grotto floor, carved with script no living scholar can read.",
+    "The fish scatter without warning — something large passes below.",
+    "A waterlogged journal drifts by: 'The temple they found beneath the water was not abandoned. It was waiting.'",
+    "A submerged archway pulses with faint ancient light. The current pulls toward it.",
+    "The archway is clear. The Drowned Temple lies beyond — something old watches from within."
+  ],
+  "unlock_dungeon": "drowned_temple",
+  "unlock_message": "The Drowned Temple surfaces — venture in and face what has waited beneath."
+}

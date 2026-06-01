@@ -35,11 +35,16 @@ data class WorkerSkillsUiState(
     val skillLevels: Map<String, Int> = emptyMap(),
     val skillXp: Map<String, Long> = emptyMap(),
     val activeSession: SkillSession? = null,
+    val activeSession2: SkillSession? = null,
     val isLoading: Boolean = true,
     val sheetSkill: SheetState? = null,
     val snackbarMessage: String? = null,
     val workerQueue: List<QueuedAction> = emptyList(),
+    val workerQueue2: List<QueuedAction> = emptyList(),
     val hiredWorker: HiredWorker? = null,
+    val hiredWorker2: HiredWorker? = null,
+    /** Currently selected worker slot (1 = long laborer, 2 = other worker). */
+    val selectedSlot: Int = 1,
     val miningEfficiency: Float = 1.0f,
     val woodcuttingEfficiency: Float = 1.0f,
     val fishingEfficiency: Float = 1.0f,
@@ -52,7 +57,10 @@ data class WorkerSkillsUiState(
     val selectedRecipe: CraftableRecipe? = null,
     val craftQuantity: Int = 1,
 ) {
-    val workerQueueFull: Boolean get() = workerQueue.size >= 3
+    val currentSession: SkillSession? get() = if (selectedSlot == 2) activeSession2 else activeSession
+    val currentWorker: HiredWorker? get() = if (selectedSlot == 2) hiredWorker2 else hiredWorker
+    val currentQueue: List<QueuedAction> get() = if (selectedSlot == 2) workerQueue2 else workerQueue
+    val workerQueueFull: Boolean get() = currentSession != null && !currentSession!!.completed
 
     fun maxCraftable(recipe: CraftableRecipe): Int {
         if (recipe.materials.isEmpty()) return 0
@@ -71,13 +79,19 @@ class WorkerSkillsViewModel @Inject constructor(
 
     private val _uiState = MutableStateFlow(WorkerSkillsUiState())
 
+    private data class WorkerSessionData(val s1: SkillSession?, val s2: SkillSession?, val extra: WorkerSkillsUiState)
+
     val uiState: StateFlow<WorkerSkillsUiState> = combine(
         playerRepo.playerFlow,
-        sessionRepo.activeWorkerSessionFlow,
-        _uiState,
-    ) { player, workerSession, extra ->
+        combine(
+            sessionRepo.activeWorkerSessionFlow(1),
+            sessionRepo.activeWorkerSessionFlow(2),
+            _uiState,
+        ) { s1, s2, extra -> WorkerSessionData(s1, s2, extra) },
+    ) { player, workerData ->
+        val extra = workerData.extra
         if (player == null) {
-            extra.copy(isLoading = true, activeSession = workerSession)
+            extra.copy(isLoading = true, activeSession = workerData.s1, activeSession2 = workerData.s2)
         } else {
             val levels: Map<String, Int>     = json.decodeFromString(player.skillLevels)
             val xp: Map<String, Long>        = json.decodeFromString(player.skillXp)
@@ -85,32 +99,59 @@ class WorkerSkillsViewModel @Inject constructor(
             val flags = try { json.decodeFromString<PlayerFlags>(player.flags) } catch (_: Exception) { PlayerFlags() }
             val inv: Map<String, Int>        = json.decodeFromString(player.inventory)
             val agilityMs   = SkillSimulator.sessionDurationMs(levels[Skills.AGILITY] ?: 1)
-            val tierDurationMs = flags.hiredWorker?.tier?.durationMs ?: agilityMs
+            val currentWorker = if (extra.selectedSlot == 2) flags.hiredWorker2 else flags.hiredWorker
+            val tierDurationMs = currentWorker?.tier?.durationMs ?: agilityMs
             extra.copy(
                 isLoading             = false,
                 skillLevels           = levels,
                 skillXp               = xp,
-                activeSession         = workerSession,
+                activeSession         = workerData.s1,
+                activeSession2        = workerData.s2,
                 workerQueue           = flags.hiredWorker?.sessionQueue ?: emptyList(),
+                workerQueue2          = flags.hiredWorker2?.sessionQueue ?: emptyList(),
                 hiredWorker           = flags.hiredWorker,
+                hiredWorker2          = flags.hiredWorker2,
                 miningEfficiency      = toolEfficiency(equipped[EquipSlot.PICKAXE],     EquipSlot.PICKAXE),
                 woodcuttingEfficiency = toolEfficiency(equipped[EquipSlot.AXE],         EquipSlot.AXE),
                 fishingEfficiency     = toolEfficiency(equipped[EquipSlot.FISHING_ROD], EquipSlot.FISHING_ROD),
-                sessionDurationMs     = flags.hiredWorker?.tier?.craftingSessionMs ?: agilityMs,
+                sessionDurationMs     = currentWorker?.tier?.craftingSessionMs ?: agilityMs,
                 gatheringDurationMs   = tierDurationMs,
-                maxCraftQty           = flags.hiredWorker?.tier?.maxCraftQty ?: Int.MAX_VALUE,
+                maxCraftQty           = currentWorker?.tier?.maxCraftQty ?: Int.MAX_VALUE,
                 inventory             = inv,
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), WorkerSkillsUiState())
 
+    fun setSelectedSlot(slot: Int) {
+        _uiState.update { it.copy(selectedSlot = slot) }
+    }
+
     // ------------------------------------------------------------------
     // Recipe lists (mirrors CraftingViewModel, lazy)
     // ------------------------------------------------------------------
 
+    private fun tierFromKey(key: String) =
+        key.substringBefore('_').replaceFirstChar { it.uppercase() }
+
+    private val ARMOUR_SLOTS = setOf(
+        EquipSlot.HEAD, EquipSlot.BODY, EquipSlot.LEGS,
+        EquipSlot.BOOTS, EquipSlot.CAPE, EquipSlot.SHIELD,
+    )
+
     val smithingRecipes: List<CraftableRecipe> by lazy {
         gameData.smithingRecipes.map { (key, r) ->
             val equip = gameData.equipment[key]
+            val category = when (r.type) {
+                "bar"       -> "Bar"
+                "component" -> "Component"
+                "tool"      -> "Tool"
+                "equipment" -> when (equip?.slot) {
+                    EquipSlot.WEAPON -> "Weapon"
+                    in ARMOUR_SLOTS  -> "Armour"
+                    else             -> "Equipment"
+                }
+                else -> ""
+            }
             CraftableRecipe(
                 key                 = key,
                 displayName         = r.displayName,
@@ -125,6 +166,8 @@ class WorkerSkillsViewModel @Inject constructor(
                 outputDefenseBonus  = equip?.defenseBonus  ?: 0,
                 outputRequirements  = equip?.requirements  ?: emptyMap(),
                 outputCombatStyle   = equip?.combatStyle,
+                category            = category,
+                tier                = tierFromKey(key),
             )
         }.sortedBy { it.levelRequired }
     }
@@ -148,6 +191,12 @@ class WorkerSkillsViewModel @Inject constructor(
 
     val fletchingRecipes: List<CraftableRecipe> by lazy {
         gameData.fletchingRecipes.map { (_, r) ->
+            val category = when (r.type) {
+                "component"  -> "Component"
+                "ammunition" -> "Ammunition"
+                "weapon"     -> "Weapon"
+                else         -> ""
+            }
             CraftableRecipe(
                 key                 = r.itemName,
                 displayName         = r.displayName,
@@ -161,6 +210,8 @@ class WorkerSkillsViewModel @Inject constructor(
                 outputAttackBonus   = r.attackBonus   ?: 0,
                 outputStrengthBonus = r.strengthBonus ?: 0,
                 outputCombatStyle   = gameData.equipment[r.itemName]?.combatStyle,
+                category            = category,
+                tier                = tierFromKey(r.itemName),
             )
         }.sortedBy { it.levelRequired }
     }
@@ -182,6 +233,8 @@ class WorkerSkillsViewModel @Inject constructor(
                 outputDefenseBonus  = equip?.defenseBonus  ?: 0,
                 outputRequirements  = equip?.requirements  ?: emptyMap(),
                 outputCombatStyle   = equip?.combatStyle,
+                category            = "Jewellery",
+                tier                = tierFromKey(key),
             )
         }.sortedBy { it.levelRequired }
     }
@@ -281,9 +334,10 @@ class WorkerSkillsViewModel @Inject constructor(
 
     private fun enqueueGathering(skillName: String, displayName: String, activityKey: String) {
         viewModelScope.launch {
-            val flags = playerRepo.getFlags()
-            val tier = flags.hiredWorker?.tier ?: return@launch
+            val slot = _uiState.value.selectedSlot
+            val tier = uiState.value.currentWorker?.tier ?: return@launch
             val enqueued = playerRepo.enqueueWorkerAction(
+                slot,
                 QueuedAction(
                     skillName           = skillName,
                     activityKey         = activityKey,
@@ -292,7 +346,7 @@ class WorkerSkillsViewModel @Inject constructor(
                 )
             )
             if (enqueued) {
-                workerStarter.startNextQueued()
+                workerStarter.startNextQueued(slot)
                 _uiState.update { it.copy(sheetSkill = null) }
             } else {
                 _uiState.update { it.copy(snackbarMessage = "Worker is already busy.", sheetSkill = null) }
@@ -306,13 +360,14 @@ class WorkerSkillsViewModel @Inject constructor(
 
     fun startFiremakingSession(logKey: String) {
         viewModelScope.launch {
-            val flags = playerRepo.getFlags()
-            val tier  = flags.hiredWorker?.tier ?: return@launch
+            val slot = _uiState.value.selectedSlot
+            val tier = uiState.value.currentWorker?.tier ?: return@launch
             if (!playerRepo.consumeItems(mapOf(logKey to 1))) {
                 _uiState.update { it.copy(snackbarMessage = "Not enough logs.", sheetSkill = null) }
                 return@launch
             }
             val enqueued = playerRepo.enqueueWorkerAction(
+                slot,
                 QueuedAction(
                     skillName           = Skills.FIREMAKING,
                     activityKey         = logKey,
@@ -321,7 +376,7 @@ class WorkerSkillsViewModel @Inject constructor(
                 )
             )
             if (enqueued) {
-                workerStarter.startNextQueued()
+                workerStarter.startNextQueued(slot)
                 _uiState.update { it.copy(sheetSkill = null) }
             } else {
                 playerRepo.addItem(logKey, 1)
@@ -336,9 +391,9 @@ class WorkerSkillsViewModel @Inject constructor(
 
     fun startRunecraftingSession(runeKey: String, qty: Int) {
         viewModelScope.launch {
+            val slot     = _uiState.value.selectedSlot
             val runeData = gameData.runes[runeKey] ?: return@launch
-            val flags = playerRepo.getFlags()
-            val tier  = flags.hiredWorker?.tier ?: return@launch
+            val tier     = uiState.value.currentWorker?.tier ?: return@launch
             val perItemMs = tier.craftingPerItemMs
             val qty = qty.coerceAtMost(tier.maxCraftQty)
 
@@ -348,6 +403,7 @@ class WorkerSkillsViewModel @Inject constructor(
                 return@launch
             }
             val enqueued = playerRepo.enqueueWorkerAction(
+                slot,
                 QueuedAction(
                     skillName           = Skills.RUNECRAFTING,
                     activityKey         = runeKey,
@@ -357,7 +413,7 @@ class WorkerSkillsViewModel @Inject constructor(
                 )
             )
             if (enqueued) {
-                workerStarter.startNextQueued()
+                workerStarter.startNextQueued(slot)
                 _uiState.update { it.copy(sheetSkill = null) }
             } else {
                 playerRepo.addItem("rune_essence", totalEssence)
@@ -372,9 +428,9 @@ class WorkerSkillsViewModel @Inject constructor(
 
     fun startPrayerSession(boneKey: String, qty: Int) {
         viewModelScope.launch {
+            val slot  = _uiState.value.selectedSlot
             val bone  = gameData.bones[boneKey] ?: return@launch
-            val flags = playerRepo.getFlags()
-            val tier  = flags.hiredWorker?.tier ?: return@launch
+            val tier  = uiState.value.currentWorker?.tier ?: return@launch
             val perBoneMs = tier.craftingPerItemMs
             val qty = qty.coerceAtMost(tier.maxCraftQty)
 
@@ -383,6 +439,7 @@ class WorkerSkillsViewModel @Inject constructor(
                 return@launch
             }
             val enqueued = playerRepo.enqueueWorkerAction(
+                slot,
                 QueuedAction(
                     skillName           = Skills.PRAYER,
                     activityKey         = boneKey,
@@ -392,7 +449,7 @@ class WorkerSkillsViewModel @Inject constructor(
                 )
             )
             if (enqueued) {
-                workerStarter.startNextQueued()
+                workerStarter.startNextQueued(slot)
                 _uiState.update { it.copy(sheetSkill = null) }
             } else {
                 playerRepo.addItem(boneKey, qty)
@@ -423,8 +480,8 @@ class WorkerSkillsViewModel @Inject constructor(
         val qty    = state.craftQuantity.coerceIn(1, max)
 
         viewModelScope.launch {
-            val flags     = playerRepo.getFlags()
-            val tier      = flags.hiredWorker?.tier ?: return@launch
+            val slot      = _uiState.value.selectedSlot
+            val tier      = uiState.value.currentWorker?.tier ?: return@launch
             val perItemMs = tier.craftingPerItemMs
             val qty       = qty.coerceAtMost(tier.maxCraftQty)
 
@@ -434,6 +491,7 @@ class WorkerSkillsViewModel @Inject constructor(
                 return@launch
             }
             val enqueued = playerRepo.enqueueWorkerAction(
+                slot,
                 QueuedAction(
                     skillName           = recipe.skillName,
                     activityKey         = recipe.key,
@@ -443,7 +501,7 @@ class WorkerSkillsViewModel @Inject constructor(
                 )
             )
             if (enqueued) {
-                workerStarter.startNextQueued()
+                workerStarter.startNextQueued(slot)
                 _uiState.update { it.copy(selectedRecipe = null, sheetSkill = null) }
             } else {
                 for ((item, needed) in totalMaterials) playerRepo.addItem(item, needed)

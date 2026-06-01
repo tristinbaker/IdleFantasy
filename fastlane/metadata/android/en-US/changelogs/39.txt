@@ -1,0 +1,6 @@
+• Fix: Guild daily and progression quest reward notifications now list the actual items awarded (e.g. "Raw Trout x30, Log x20") instead of a generic item count
+• New: Up/down arrows on queued sessions let you reorder them before they start
+• Fix: Cancelling a queued mercantile trade route now refunds the coin cost
+• Fix: XP level-up preview now appears in quantity pickers for smithing, cooking, fletching, crafting, and herblore (was only showing for prayer and runecrafting)
+• Fix: Shop now shows your mercantile buy discount on listed prices; discounted items display the original price struck through
+• New: Mercantile guild daily quests now include "earn X coins from trade routes" objectives alongside the existing "complete N routes" quests

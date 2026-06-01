@@ -48,4 +48,11 @@ data class SkillSession(
     /** Multiplier applied to XP and items at collect time (>1.0 for worker sessions). */
     @ColumnInfo(name = "efficiency_multiplier", defaultValue = "1.0")
     val efficiencyMultiplier: Float = 1.0f,
+
+    /**
+     * Which worker slot owns this session: 0 = player, 1 = long laborer slot, 2 = other worker slot.
+     * Added in DB v3; replaces [isWorkerSession] for multi-slot routing.
+     */
+    @ColumnInfo(name = "worker_slot", defaultValue = "0")
+    val workerSlot: Int = 0,
 )

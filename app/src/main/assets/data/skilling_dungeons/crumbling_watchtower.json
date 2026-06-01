@@ -1,0 +1,64 @@
+{
+  "name": "crumbling_watchtower",
+  "display_name": "Crumbling Watchtower",
+  "description": "A decrepit stone tower perched at the edge of the foothills. The stairways are treacherous, the floors unstable. Agile explorers have found more than crumbling masonry within its walls.",
+  "skill": "agility",
+  "level_required": 1,
+  "xp_ranges": {
+    "1": {"min": 5, "max": 9},
+    "5": {"min": 8, "max": 13},
+    "10": {"min": 11, "max": 18},
+    "15": {"min": 16, "max": 25},
+    "20": {"min": 22, "max": 34},
+    "30": {"min": 32, "max": 49},
+    "40": {"min": 44, "max": 67}
+  },
+  "drop_tables": {
+    "1": [
+      {"item": "sapphire", "chance": 0.80},
+      {"item": "emerald", "chance": 0.20}
+    ],
+    "5": [
+      {"item": "sapphire", "chance": 0.70},
+      {"item": "emerald", "chance": 0.25},
+      {"item": "ruby", "chance": 0.05}
+    ],
+    "10": [
+      {"item": "sapphire", "chance": 0.55},
+      {"item": "emerald", "chance": 0.35},
+      {"item": "ruby", "chance": 0.10}
+    ],
+    "15": [
+      {"item": "sapphire", "chance": 0.40},
+      {"item": "emerald", "chance": 0.40},
+      {"item": "ruby", "chance": 0.17},
+      {"item": "diamond", "chance": 0.03}
+    ],
+    "20": [
+      {"item": "emerald", "chance": 0.50},
+      {"item": "ruby", "chance": 0.38},
+      {"item": "diamond", "chance": 0.12}
+    ],
+    "30": [
+      {"item": "emerald", "chance": 0.40},
+      {"item": "ruby", "chance": 0.42},
+      {"item": "diamond", "chance": 0.18}
+    ],
+    "40": [
+      {"item": "ruby", "chance": 0.50},
+      {"item": "diamond", "chance": 0.30},
+      {"item": "emerald", "chance": 0.20}
+    ]
+  },
+  "note_chance_per_frame": 0.003,
+  "note_threshold": 5,
+  "note_texts": [
+    "Fresh rope marks on the windowsills. Someone uses this tower regularly.",
+    "A hidden cache inside a cracked wall: lockpicks, a short blade, and a coded ledger.",
+    "The ledger is a tally of stolen goods and split payments. The rogues operate out of somewhere beneath the hill.",
+    "A trapdoor in the floor, recently oiled, its hinges silent. Worn boot prints surround it.",
+    "The trapdoor opens onto a carved stairway going deep into the earth. The Shadow Den waits below."
+  ],
+  "unlock_dungeon": "shadow_den",
+  "unlock_message": "The Shadow Den is revealed beneath the tower — enter and face the rogues within."
+}

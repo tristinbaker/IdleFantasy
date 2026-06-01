@@ -31,6 +31,7 @@ data class ShopEntry(
     val description: String,
     val price: Int,
     val categoryName: String,
+    val mercantileLevelRequired: Int = 0,
 )
 
 data class ShopTransaction(
@@ -56,6 +57,7 @@ data class ShopUiState(
     val isLoading: Boolean = true,
     /** Items reserved by queued actions — cannot be sold. */
     val reservedItems: Map<String, Int> = emptyMap(),
+    val mercantileLevel: Int = 0,
 ) {
     val xpBoostActive: Boolean get() = xpBoostExpiresAt > System.currentTimeMillis()
 }
@@ -80,6 +82,7 @@ class ShopViewModel @Inject constructor(
         if (player == null) extra
         else {
             val flags: PlayerFlags = json.decodeFromString(player.flags)
+            val levels: Map<String, Int> = json.decodeFromString(player.skillLevels)
             extra.copy(
                 coins            = player.coins,
                 inventory        = json.decodeFromString(player.inventory),
@@ -87,6 +90,7 @@ class ShopViewModel @Inject constructor(
                 xpBoostExpiresAt = flags.xpBoostExpiresAt,
                 isLoading        = false,
                 reservedItems    = computeReserved(flags.sessionQueue),
+                mercantileLevel  = levels[Skills.MERCANTILE] ?: 0,
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ShopUiState())
@@ -100,11 +104,12 @@ class ShopViewModel @Inject constructor(
             .flatMap { (_, cat) ->
                 cat.items.map { (key, item) ->
                     ShopEntry(
-                        key          = key,
-                        displayName  = item.displayName,
-                        description  = item.description,
-                        price        = item.price,
-                        categoryName = cat.categoryName,
+                        key                    = key,
+                        displayName            = item.displayName,
+                        description            = item.description,
+                        price                  = item.price,
+                        categoryName           = cat.categoryName,
+                        mercantileLevelRequired = item.mercantileLevelRequired,
                     )
                 }
             }
@@ -199,13 +204,21 @@ class ShopViewModel @Inject constructor(
             val gem  = gameData.gems[itemKey]
             val crop = gameData.crops[itemKey]
             when {
+                "arrow_shaft" in itemKey -> 1
+                "_arrow_tip" in itemKey -> when {
+                    "runite"     in itemKey -> 8
+                    "adamantite" in itemKey -> 5
+                    "mithril"    in itemKey -> 3
+                    "steel"      in itemKey -> 2
+                    else                   -> 1
+                }
                 "_arrow" in itemKey -> when {
-                    "runite"     in itemKey -> 15
-                    "adamantite" in itemKey -> 10
-                    "mithril"    in itemKey -> 6
-                    "steel"      in itemKey -> 4
-                    "iron"       in itemKey -> 3
-                    else                   -> 2
+                    "runite"     in itemKey -> 20
+                    "adamantite" in itemKey -> 14
+                    "mithril"    in itemKey -> 9
+                    "steel"      in itemKey -> 6
+                    "iron"       in itemKey -> 4
+                    else                   -> 3
                 }
                 "bar" in itemKey -> when {
                     "runite"     in itemKey -> 230
@@ -244,8 +257,44 @@ class ShopViewModel @Inject constructor(
             }
         }
 
-        return if (marketPrice != null) maxOf(basePrice, maxOf(1, marketPrice / 3)) else basePrice
+        val base = if (marketPrice != null) maxOf(basePrice, maxOf(1, marketPrice / 3)) else basePrice
+        val result = (base * mercantileSellBonus(uiState.value.mercantileLevel)).toInt().coerceAtLeast(1)
+        return if (marketPrice != null) minOf(result, marketPrice - 1).coerceAtLeast(1) else result
     }
+
+    fun discountedPrice(entry: ShopEntry): Int =
+        (entry.price * mercantileBuyDiscount()).toInt().coerceAtLeast(1)
+
+    fun mercantileBuyDiscount(mercantileLevel: Int = uiState.value.mercantileLevel): Float {
+        val base = when {
+            mercantileLevel >= 99 -> 0.75f
+            mercantileLevel >= 80 -> 0.80f
+            mercantileLevel >= 60 -> 0.85f
+            mercantileLevel >= 40 -> 0.90f
+            mercantileLevel >= 20 -> 0.95f
+            else                  -> 1.00f
+        }
+        val capeBonus = mercantileCapeBonusFromState()
+        return (base - capeBonus).coerceAtLeast(0.50f)
+    }
+
+    private fun mercantileSellBonus(level: Int): Float {
+        val base = when {
+            level >= 99 -> 1.25f
+            level >= 80 -> 1.20f
+            level >= 60 -> 1.15f
+            level >= 40 -> 1.10f
+            level >= 20 -> 1.05f
+            else        -> 1.00f
+        }
+        return base + mercantileCapeBonusFromState()
+    }
+
+    private fun mercantileCapeBonusFromState(): Float =
+        uiState.value.equipped[EquipSlot.CAPE]
+            ?.let { gameData.equipment[it] }
+            ?.takeIf { it.capeSkill == "mercantile" }
+            ?.capeBonus ?: 0f
 
     // ------------------------------------------------------------------
     // Bulk sell helpers
@@ -331,13 +380,15 @@ class ShopViewModel @Inject constructor(
     // ------------------------------------------------------------------
 
     fun openBuy(entry: ShopEntry) {
-        val maxAffordable = (uiState.value.coins / entry.price).toInt().coerceAtLeast(1)
+        val discount  = mercantileBuyDiscount()
+        val discPrice = (entry.price * discount).toInt().coerceAtLeast(1)
+        val maxAffordable = (uiState.value.coins / discPrice).toInt().coerceAtLeast(1)
         _extra.update {
             it.copy(
                 transaction = ShopTransaction(
                     key         = entry.key,
                     displayName = entry.displayName,
-                    priceEach   = entry.price,
+                    priceEach   = discPrice,
                     maxQty      = maxAffordable,
                     qty         = 1,
                     isBuy       = true,

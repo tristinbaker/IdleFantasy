@@ -1,0 +1,8 @@
+• New: 77 new quests added — Firemaking, Runecrafting, Herblore, extended Slayer and boss chains, new enemy slayer chains, new dungeon and style challenge quests, and extended Iron Stomach and Treasure Hunter chains
+• New: Hide completed quests toggle in the Quests screen header
+• Fix: Quest display names now correctly show Roman numerals
+• Fix: Herblore quest progress now properly tracked from the Skills screen
+• Fix: Guild Hall claimable badge now appears on the correct guild
+• Fix: Farming harvests now count toward Farming Guild quest progress
+• New: Tapping a farming crop-ready notification now opens the Farming screen directly
+• Fix: Queued sessions no longer get stuck when the alarm and app-open advance the queue at the same time

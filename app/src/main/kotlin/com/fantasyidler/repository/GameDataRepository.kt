@@ -2,12 +2,14 @@ package com.fantasyidler.repository
 
 import android.content.Context
 import com.fantasyidler.data.json.BoneData
+import com.fantasyidler.data.json.SlayerTaskData
 import com.fantasyidler.data.json.CropData
 import com.fantasyidler.data.json.BossData
 import com.fantasyidler.data.json.CookingRecipe
 import com.fantasyidler.data.json.CraftingRecipe
 import com.fantasyidler.data.json.DungeonData
 import com.fantasyidler.data.json.EnemyData
+import com.fantasyidler.data.json.SkillingDungeonData
 import com.fantasyidler.data.json.EquipmentData
 import com.fantasyidler.data.json.FletchingRecipe
 import com.fantasyidler.data.json.AgilityCourseData
@@ -20,11 +22,14 @@ import com.fantasyidler.data.json.MarketplaceJson
 import com.fantasyidler.data.json.OreData
 import com.fantasyidler.data.json.PetData
 import com.fantasyidler.data.json.DailyQuestTemplate
+import com.fantasyidler.data.json.GuildDailyTemplate
+import com.fantasyidler.data.json.GuildQuestData
 import com.fantasyidler.data.json.QuestData
 import com.fantasyidler.data.json.RuneData
 import com.fantasyidler.data.json.SkillData
 import com.fantasyidler.data.json.SmithingRecipe
 import com.fantasyidler.data.json.SpellData
+import com.fantasyidler.data.json.TradeRouteData
 import com.fantasyidler.data.json.TreeData
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.serialization.json.Json
@@ -56,6 +61,12 @@ class GameDataRepository @Inject constructor(
     private inline fun <reified T> asset(path: String): T =
         json.decodeFromString<T>(loadAsset(path))
 
+    // ------------------------------------------------------------------ slayer
+
+    val slayerTasks: Map<String, SlayerTaskData> by lazy {
+        asset("data/slayer_tasks.json")
+    }
+
     // ------------------------------------------------------------------ enemies
 
     val enemies: Map<String, EnemyData> by lazy {
@@ -75,6 +86,17 @@ class GameDataRepository @Inject constructor(
             }
     }
 
+    /** All skilling dungeon files in assets/data/skilling_dungeons/, keyed by dungeon name. */
+    val skillingDungeons: Map<String, SkillingDungeonData> by lazy {
+        context.assets.list("data/skilling_dungeons")
+            .orEmpty()
+            .filter { it.endsWith(".json") }
+            .associate { filename ->
+                val data = asset<SkillingDungeonData>("data/skilling_dungeons/$filename")
+                data.name to data
+            }
+    }
+
     // ------------------------------------------------------------------ quests
 
     val quests: Map<String, QuestData> by lazy {
@@ -83,6 +105,14 @@ class GameDataRepository @Inject constructor(
 
     val dailyQuestPool: List<DailyQuestTemplate> by lazy {
         asset("data/daily_quests.json")
+    }
+
+    val guildQuests: Map<String, GuildQuestData> by lazy {
+        asset("data/guild_quests.json")
+    }
+
+    val guildDailyPool: List<GuildDailyTemplate> by lazy {
+        asset("data/guild_daily_quests.json")
     }
 
     // ------------------------------------------------------------------ skills
@@ -223,6 +253,16 @@ class GameDataRepository @Inject constructor(
     /** Maps cooked-item key → HP healed per eat (from cooking recipes). */
     val foodHealValues: Map<String, Int> by lazy {
         cookingRecipes.values.associate { it.cookedItem to it.healingValue }
+    }
+
+    // ------------------------------------------------------------------ trade routes (mercantile)
+
+    val tradeRoutes: List<TradeRouteData> by lazy {
+        context.assets.list("data/trade_routes")
+            .orEmpty()
+            .filter { it.endsWith(".json") }
+            .map { filename -> asset<TradeRouteData>("data/trade_routes/$filename") }
+            .sortedBy { it.levelRequired }
     }
 
     // ------------------------------------------------------------------ sell helpers

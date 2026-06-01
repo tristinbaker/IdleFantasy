@@ -17,29 +17,42 @@ Pick a skill or dungeon, start a session, then put your phone down. Your hero ke
 
 ## Skills
 
-Train **20 skills** at your own pace:
+Train **21 skills** at your own pace:
 
-- **Gathering**: Mine ores, catch fish, chop logs, tend crops, run agility courses
-- **Crafting**: Smelt bars, cook food, fletch bows and arrows, craft jewellery, burn logs for Prayer XP
-- **Combat**: Fight in 12 dungeons with Melee, Ranged, or Magic. Each style levels its own skill tree
+- **Gathering** (6): Mining, Fishing, Woodcutting, Farming, Firemaking, Agility
+- **Crafting** (6): Smithing, Cooking, Fletching, Crafting, Runecrafting, Herblore
+- **Combat** (7): Attack, Strength, Defense, Ranged, Magic, Hitpoints, Prayer
+- **Support** (2): Mercantile, Slayer
 
-Better equipment means faster gathering and surviving tougher dungeons. Craft your own gear or buy it from the Shop.
+Better equipment means faster gathering and surviving tougher dungeons. Craft your own gear or buy it from the Shop. The **Mercantile** skill levels through trade routes and unlocks better prices. **Slayer** tasks are assigned by the Slayer Master in town and are completed by fighting specific enemies in dungeons.
 
 ## Combat and dungeons
 
-Explore 12 dungeons from the starter Farm all the way to late-game Fortress Ruins and beyond. Each dungeon has its own enemy roster, difficulty rating, and potential drops. Before you go in, the game tells you how your current gear stacks up.
+Explore **20 dungeons** from the starter Farm all the way to late-game Fortress Ruins and beyond. Each dungeon has its own enemy roster, difficulty rating, and potential drops. Before you go in, the game tells you how your current gear stacks up. Choose from Melee, Ranged, or Magic; each style levels its own combat skills.
 
 ## Quests
 
-Over **100 quests** span all skills. Daily quests reset every morning for a quick goal to aim at. Long-term Combat and Gathering quests track cumulative progress over many sessions. Completing quests earns XP rewards.
+Over **170 quests** span all skills. Daily quests reset every morning for a quick goal to aim at. Long-term quests track cumulative progress over many sessions. Completing quests earns XP, coins, and item rewards.
+
+## Guild System
+
+**17 guilds** cover every skill and combat style (Warriors, Archers, and Mages guilds for combat). Each guild has up to 10 rank levels. Advance by completing progression quests and earning reputation through daily requests. Higher ranks unlock harder dailies and better cross-skill rewards, letting specialists access resources from skills they don't personally train.
+
+## Church
+
+The **Church** offers timed blessings powered by Prayer levels and bones. Blessings come in three types (XP boosts up to 1.5×, Defense bonuses, and Coin multipliers), with stronger tiers unlocking at higher Prayer levels. One blessing can be active at a time and its status and remaining duration are shown on the home screen.
+
+## Slayer
+
+Visit the **Slayer Master** in town to receive a task: kill a set number of a specific enemy type in the dungeons. Each kill earns Slayer XP on top of regular combat XP. Complete tasks to level the Slayer skill and unlock assignments against tougher creatures.
 
 ## Pets and the Inn
 
-Rare enemies drop **collectible pets** that grant permanent passive XP bonuses. The **Inn** lets you hire workers who can queue up sessions on your behalf, and buy food to keep your fighter alive longer in tougher dungeons.
+Rare enemies drop **collectible pets** that grant permanent passive XP bonuses. The **Inn** lets you hire workers who can queue up sessions on your behalf, and buy food in bulk to keep your fighter alive longer in tougher dungeons.
 
 ## Getting the app
 
-[Download on F-Droid](https://f-droid.org/packages/com.fantasyidler/)
+[Download F-Droid](https://f-droid.org/), and set up the official [Idle Fantasy Repository](https://github.com/tristinbaker/IdleFantasy/discussions/47)
 
 Or grab the latest APK from the [Releases page](https://github.com/tristinbaker/IdleFantasy/releases).
 

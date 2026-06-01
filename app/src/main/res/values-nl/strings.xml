@@ -1,0 +1,800 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Idle Fantasy</string>
+
+    <!-- ===== Bottom navigation ===== -->
+    <string name="nav_skills">Vaardigheden</string>
+    <string name="nav_combat">Vecht</string>
+    <string name="nav_home">Kamp</string>
+    <string name="nav_crafting">Juwelier</string>
+    <string name="nav_quests">Quests</string>
+    <string name="nav_profile">Profiel</string>
+
+    <!-- ===== Common buttons ===== -->
+    <string name="btn_start">Start</string>
+    <string name="btn_start_session">Start Sessie</string>
+    <string name="btn_abandon_session">Sessie Afbreken</string>
+    <string name="btn_collect_results">Resultaat Verzamelen</string>
+    <string name="btn_cancel">Annuleren</string>
+    <string name="btn_craft">Maken</string>
+    <string name="btn_confirm">Bevestigen</string>
+    <string name="btn_abandon">Afbreken</string>
+    <string name="btn_repeat_action">Actie Herhalen</string>
+    <string name="btn_collect">Beloning Verzamelen</string>
+    <string name="btn_equip">Uitrusting</string>
+    <string name="btn_unequip">Uitrusting Verwijderen</string>
+    <string name="btn_buy">Kopen</string>
+    <string name="btn_sell">Verkopen</string>
+    <string name="btn_plant">Planten</string>
+    <string name="btn_harvest">Oogsten</string>
+    <string name="btn_harvest_all">Alles Oogsten</string>
+    <string name="btn_clear">Wissen</string>
+    <string name="btn_clear_all">Alles Wissen</string>
+    <string name="btn_inspect">Inspecteren</string>
+    <string name="btn_view_drops">Bekijk Drops</string>
+    <string name="btn_start_quest">Start Quest</string>
+    <string name="btn_abandon_quest">Quest Afbreken</string>
+    <string name="btn_enter_dungeon">Dungeon Betreden</string>
+    <string name="btn_enter_arena">Arena Betreden</string>
+    <string name="btn_activate">Activeren</string>
+    <string name="btn_deactivate">Deactiveren</string>
+    <string name="btn_close">Sluiten</string>
+    <string name="btn_back">Terug</string>
+
+    <!-- ===== Common labels ===== -->
+    <string name="label_level">Level</string>
+    <string name="label_xp">XP</string>
+    <string name="label_coins">Ducaten</string>
+    <string name="label_hp">HP</string>
+    <string name="label_attack">Aanval</string>
+    <string name="label_strength">Kracht</string>
+    <string name="label_defense">Verdediging</string>
+    <string name="label_ranged">Afstand</string>
+    <string name="label_magic">Magie</string>
+    <string name="label_prayer">Gebed</string>
+    <string name="label_hitpoints">Hitpoints</string>
+    <string name="label_inventory">Inventaris</string>
+    <string name="label_equipment">Uitrusting</string>
+    <string name="label_pets">Huisdieren</string>
+    <string name="label_achievements">Prestaties</string>
+    <string name="label_session_in_progress">Sessie bezig</string>
+    <string name="label_session_active">Sessie actief</string>
+    <string name="label_no_active_session">Geen actieve sessie</string>
+    <string name="label_session_complete">Sessie voltooid</string>
+    <string name="label_training">Training</string>
+    <string name="label_gathering_skills">Doe</string>
+    <string name="label_crafting_skills">Maak</string>
+    <string name="label_choose_activity">Kies Activiteit</string>
+    <string name="label_coming_soon">Binnenkort Beschikbaar</string>
+    <string name="label_time_remaining">Resterende Tijd</string>
+    <string name="label_session_results">Sessie Resultaten</string>
+    <string name="label_xp_gained">Verworven XP</string>
+    <string name="label_items_collected">Verzamelde Items</string>
+    <string name="label_level_ups">Level ups</string>
+    <string name="label_requirements">Vereisten</string>
+    <string name="label_rewards">Beloningen</string>
+    <string name="label_your_level">Jouw Level</string>
+    <string name="label_xp_to_next">XP naar volgend level</string>
+    <string name="label_total_xp">Totale XP</string>
+    <string name="label_quantity">Hoeveelheid</string>
+    <string name="label_price">Prijs</string>
+    <string name="label_available">Beschikbaar</string>
+    <string name="label_patch">Perceel</string>
+    <string name="label_growth_time">Groeitijd</string>
+    <string name="label_ready_to_harvest">Klaar om te oogsten</string>
+    <string name="label_empty">Leeg</string>
+    <string name="inventory_sort_quantity">Hoeveelheid</string>
+    <string name="inventory_sort_az">A-Z</string>
+    <string name="inventory_cat_weapons">Wapens</string>
+    <string name="inventory_cat_armour">Uitrusting</string>
+    <string name="inventory_cat_tools">Gereedschap</string>
+    <string name="inventory_cat_food">Voedsel</string>
+    <string name="inventory_cat_potions">Dranken</string>
+    <string name="inventory_cat_materials">Materialen</string>
+    <string name="inventory_cat_other">Overig</string>
+    <string name="label_combat_style">Vechtstijl</string>
+    <string name="label_active_spell">Actieve Spreuk</string>
+    <string name="label_drops">Drops</string>
+    <string name="label_boss">Baas</string>
+    <string name="label_dungeon">Dungeon</string>
+    <string name="label_difficulty">Moeilijkheid</string>
+    <string name="label_completed">Voltooid</string>
+    <string name="label_in_progress">Bezig</string>
+    <string name="label_available_quests">Beschikbaar</string>
+    <string name="label_stats">Statistieken</string>
+    <string name="label_skills">Vaardigheden</string>
+    <string name="label_shop">Winkel</string>
+    <string name="label_sell_items">Items Verkopen</string>
+    <string name="label_total_level">Totaal Level</string>
+    <string name="label_wins">Overwinningen</string>
+    <string name="label_losses">Verliezen</string>
+    <string name="label_active">Actief</string>
+    <string name="label_inactive">Inactief</string>
+    <string name="label_boost">Boost</string>
+    <string name="label_xp_boost">XP Boost</string>
+    <string name="label_weapon">Wapen</string>
+    <string name="label_armour">Uitrusting</string>
+    <string name="label_food">Voedsel</string>
+    <string name="label_arrows">Pijlen</string>
+    <string name="label_runes">Runen</string>
+    <string name="label_spell">Spreuk</string>
+    <string name="label_none">Geen</string>
+    <string name="label_melee">Melee</string>
+    <string name="label_ranged_style">Afstand</string>
+    <string name="label_magic_style">Magie</string>
+    <string name="label_gathering">Verzamelen</string>
+    <string name="label_crafting">Juwelier</string>
+    <string name="label_jewellery">Sieraden</string>
+    <string name="label_combat">Vecht</string>
+    <string name="label_recipe">Recept</string>
+    <string name="label_recipes">Recepten</string>
+    <string name="label_ingredients">Ingrediënten</string>
+    <string name="label_output">Uitvoer</string>
+    <string name="label_xp_per_action">XP per actie</string>
+    <string name="label_unlocked_at">Ontgrendeld op level</string>
+    <string name="label_kills">Kills</string>
+    <string name="label_personal_best">Persoonlijk Beste</string>
+    <string name="label_daily_dig">Dagelijkse Graafopdracht</string>
+    <string name="label_dig_depth">Graaftdiepte</string>
+    <string name="label_version">Versie</string>
+    <string name="label_open_source">Open Source</string>
+
+    <!-- ===== Format strings — all use positional args for Weblate ===== -->
+    <!-- Translator note: %1$d = level number, %2$s = formatted XP string -->
+    <string name="format_level_xp">Level %1$d — %2$s XP</string>
+    <!-- Translator note: %1$s = formatted XP amount, %2$d = target level number -->
+    <string name="format_xp_to_next">%1$s XP naar level %2$d</string>
+    <!-- Translator note: %1$s = time string (e.g. "42m 10s") -->
+    <string name="format_time_remaining">%1$s te gaan</string>
+    <!-- Translator note: %1$s = relative time (e.g. "5m ago") -->
+    <string name="format_started_ago">Gestart %1$s geleden</string>
+    <!-- Translator note: %1$s = item display name, %2$d = quantity -->
+    <string name="format_item_quantity">%1$s ×%2$d</string>
+    <!-- Translator note: %1$d = coin amount -->
+    <string name="format_price_coins">%1$d ducaten</string>
+    <!-- Translator note: %1$d = required level, %2$s = skill display name -->
+    <string name="format_level_requirement">Vereist level %1$d %2$s</string>
+    <!-- Translator note: %1$s = formatted XP amount -->
+    <string name="format_xp_per_action">%1$s XP per actie</string>
+    <!-- Translator note: %1$d = patch number -->
+    <string name="format_patch_number">Perceel %1$d</string>
+    <!-- Translator note: %1$d = wins, %2$d = losses -->
+    <string name="format_arena_record">%1$d gewonnen / %2$d verloren</string>
+    <!-- Translator note: %1$s = skill display name, %2$d = level number -->
+    <string name="format_skill_level">%1$s: Level %2$d</string>
+    <!-- Translator note: %1$d = boost percentage -->
+    <string name="format_xp_boost_percent">+%1$d%% XP</string>
+    <!-- Translator note: %1$s = item/resource name, %2$d = quantity drop amount -->
+    <string name="format_drop_chance">%1$s: %2$d</string>
+    <!-- Translator note: %1$d = minutes remaining -->
+    <string name="format_minutes_remaining">%1$d min te gaan</string>
+    <!-- Translator note: %1$s = version string (e.g. "0.1.0") -->
+    <string name="format_version">Versie %1$s</string>
+
+    <!-- ===== Plurals ===== -->
+    <plurals name="plural_level_ups">
+        <item quantity="one">%1$d level up</item>
+        <item quantity="other">%1$d level ups</item>
+    </plurals>
+    <plurals name="plural_items">
+        <item quantity="one">%1$d item</item>
+        <item quantity="other">%1$d items</item>
+    </plurals>
+    <plurals name="plural_minutes">
+        <item quantity="one">%1$d minuut</item>
+        <item quantity="other">%1$d minuten</item>
+    </plurals>
+    <plurals name="plural_hours">
+        <item quantity="one">%1$d uur</item>
+        <item quantity="other">%1$d uren</item>
+    </plurals>
+    <plurals name="plural_patches">
+        <item quantity="one">%1$d perceel</item>
+        <item quantity="other">%1$d percelen</item>
+    </plurals>
+    <plurals name="plural_kills">
+        <item quantity="one">%1$d gedood</item>
+        <item quantity="other">%1$d gedood</item>
+    </plurals>
+    <plurals name="plural_quests_completed">
+        <item quantity="one">%1$d quest voltooid</item>
+        <item quantity="other">%1$d quests voltooid</item>
+    </plurals>
+
+    <!-- ===== Error messages ===== -->
+    <string name="error_no_player">Kan spelerdata niet laden. Start de app opnieuw.</string>
+    <string name="error_session_already_active">Je hebt al een actieve sessie. Voltooi of beëindig deze eerst.</string>
+    <string name="error_not_enough_coins">Niet genoeg ducaten.</string>
+    <!-- Translator note: %1$s = item display name -->
+    <string name="error_not_enough_items">Niet genoeg %1$s.</string>
+    <!-- Translator note: %1$s = skill display name -->
+    <string name="error_level_too_low">Je %1$s level is te laag.</string>
+    <!-- Translator note: %1$s = item display name -->
+    <string name="error_inventory_required">Je hebt %1$s nodig om dit te doen.</string>
+    <string name="error_patch_occupied">Dit perceel is al beplant.</string>
+    <string name="error_patch_empty">Dit perceel is leeg.</string>
+    <string name="error_crop_not_ready">Deze oogst is nog niet klaar.</string>
+    <string name="error_quest_active">Je hebt al een actieve quest.</string>
+    <string name="error_quest_requirements_not_met">Je voldoet niet aan de vereisten voor deze quest.</string>
+    <string name="error_dungeon_level_too_low">Je gevechtslevel is te laag voor deze dungeon.</string>
+    <string name="error_unknown">Er is iets misgegaan. Probeer het opnieuw.</string>
+
+    <!-- ===== Session dialogs ===== -->
+    <string name="session_abandon_title">Sessie verlaten?</string>
+    <string name="session_abandon_body">Alle voortgang van deze sessie gaat verloren.</string>
+
+    <!-- ===== Onboarding ===== -->
+    <string name="onboarding_welcome_title">Welkom bij Idle Fantasy</string>
+    <string name="onboarding_welcome_body">Start een vaardigheidssessie en zie je personage groeien. Sessies duren een uur, zelfs wanneer de app gesloten is.</string>
+    <string name="onboarding_first_session_hint">Tik op een vaardigheid om te beginnen.</string>
+
+    <!-- ===== Settings ===== -->
+    <string name="settings_title">Instellingen</string>
+    <string name="settings_notifications">Sessie Meldingen</string>
+    <string name="settings_notifications_desc">Toon een melding wanneer je sessie is voltooid</string>
+    <string name="settings_battery_optimization">Batterijoptimalisatie</string>
+    <string name="settings_battery_optimization_desc">Schakel batterijoptimalisatie uit voor Idle Fantasy om tijdige sessiemeldingen te ontvangen</string>
+    <string name="settings_battery_optimization_btn">Instelling aanpassen</string>
+    <string name="settings_language">Taal</string>
+    <string name="settings_about">Over</string>
+    <string name="settings_open_source_licenses">Open Source Licenties</string>
+
+    <!-- ===== HomeScreen ===== -->
+    <string name="label_player_stats">Spelerstatistieken</string>
+    <string name="label_combat_level">Gevechtslevel</string>
+    <string name="label_shop_desc">Koop uitrusting en verkoop buit</string>
+    <string name="label_no_session_hint">Ga naar Vaardigheden of Gevecht om te beginnen met trainen.</string>
+
+    <!-- ===== CombatScreen ===== -->
+    <string name="label_dungeons_tab">Dungeons</string>
+    <string name="btn_fight">Vecht!</string>
+
+    <!-- ===== SkillsScreen ===== -->
+    <string name="btn_back_arrow">← Terug</string>
+    <string name="btn_start_burying">Begin met Begraven</string>
+    <string name="btn_start_crafting">Begin met Maken</string>
+    <string name="btn_select">Selecteer</string>
+    <string name="label_special">Speciaal</string>
+
+    <!-- ===== QuestsScreen ===== -->
+    <string name="label_claim_reward">Beloning claimen</string>
+    <string name="label_daily">Per Dag</string>
+    <string name="label_daily_quests">Dagelijkse Quests</string>
+    <string name="label_daily_reset">Reset om 06:00</string>
+    <string name="label_daily_reward">2000 ducaten (1/100: Dwergenuitrusting)</string>
+    <string name="msg_daily_claimed_coins">Dagelijkse quest voltooid! +2000 ducaten.</string>
+    <string name="msg_daily_claimed_dwarven">Dagelijkse quest voltooid! Je hebt %1$s gevonden!</string>
+    <string name="label_hide_completed">Verberg Voltooid</string>
+
+    <!-- ===== OnboardingScreen ===== -->
+    <string name="onboarding_lets_go">Daar gaan we!</string>
+    <string name="onboarding_skip">Overslaan</string>
+    <string name="onboarding_next">Volgende</string>
+
+    <!-- ===== Settings ===== -->
+    <string name="settings_notifications_header">Meldingen</string>
+    <string name="settings_performance_header">Prestaties</string>
+    <string name="settings_general_header">Algemeen</string>
+    <string name="settings_tutorial_title">Tutorial</string>
+    <string name="settings_tutorial_desc">Toon de introductie opnieuw</string>
+    <string name="settings_reopen">Opnieuw openen</string>
+    <string name="settings_foss_desc">Idle Fantasy is gratis en open source software.</string>
+    <string name="settings_reset_title">Voortgang resetten</string>
+    <string name="settings_reset_desc">Wis alle vaardigheden, items, quests en ducaten</string>
+    <string name="settings_reset_btn">Reset</string>
+    <string name="reset_confirm1_title">Alle voortgang resetten?</string>
+    <string name="reset_confirm1_body">Dit zal alle vaardigheidservaring, items, ducaten en quest-voortgang wissen. Dit kan niet ongedaan worden gemaakt.</string>
+    <string name="reset_confirm2_title">Weet je het zeker?</string>
+    <string name="reset_confirm2_body">Alles zal verloren gaan. Je begint helemaal opnieuw.</string>
+    <string name="reset_confirm2_btn">Ja, alles resetten</string>
+
+    <!-- ===== Battery prompt dialog ===== -->
+    <string name="battery_prompt_title">Laat sessies doorgaan</string>
+    <string name="battery_prompt_body">Voor de beste ervaring, sta Idle Fantasy toe om op de achtergrond te draaien zodat je tijdige sessiemeldingen ontvangt.</string>
+    <string name="battery_prompt_open_settings">Open Instellingen</string>
+    <string name="battery_prompt_dismiss">Niet nu</string>
+
+    <!-- ===== Easter egg ===== -->
+    <string name="dig_action">Graven</string>
+    <string name="dig_result">Je graaft dieper in de aarde…</string>
+    <!-- Translator note: %1$d = total hole depth in metres -->
+    <string name="dig_depth_format">Het gat is %1$d meter diep.</string>
+
+    <!-- ===== Settings — appearance / language / save data ===== -->
+    <string name="settings_appearance">Uiterlijk</string>
+    <string name="settings_theme">Thema</string>
+    <string name="settings_theme_desc">Kies je kleurenschema</string>
+    <string name="settings_theme_dark">Donker</string>
+    <string name="settings_theme_light">Licht</string>
+    <string name="settings_theme_system">Systeem</string>
+    <string name="settings_font_size">Lettergrootte</string>
+    <string name="settings_font_tiny">Klein</string>
+    <string name="settings_font_small">Klein</string>
+    <string name="settings_font_normal">Normaal</string>
+    <string name="settings_font_large">Groot</string>
+    <string name="settings_font_huge">Enorm</string>
+    <string name="settings_language_desc">Kies de taal van de app</string>
+    <string name="settings_lang_english">Engels</string>
+    <string name="settings_lang_deutsch">Duits</string>
+    <string name="settings_lang_français">Frans</string>
+    <string name="settings_lang_dutch">Nederlands</string>
+    <string name="settings_lang_español">Spaans</string>
+    <string name="settings_lang_español_españa">Spaans</string>
+    <string name="settings_lang_turkish">Turks</string>
+    <string name="settings_lang_italiano">Italiano</string>
+    <string name="settings_lang_system">Systeem</string>
+    <string name="settings_save_data">Data opslaan</string>
+    <string name="settings_export">Exporteer opslag</string>
+    <string name="settings_export_desc">Sla je voortgang op in een bestand</string>
+    <string name="settings_export_btn">Exporteer</string>
+    <string name="settings_import">Importeer opslag</string>
+    <string name="settings_import_desc">Herstel voortgang vanuit een bestand</string>
+    <string name="settings_import_btn">Importeer</string>
+    <string name="settings_source_code">Broncode</string>
+    <string name="settings_source_url" translatable="false">github.com/tristinbaker/IdleFantasy</string>
+    <string name="settings_source_open">Open</string>
+    <string name="settings_exported_ok">Opslag geëxporteerd</string>
+    <string name="settings_imported_ok">Opslag succesvol geïmporteerd</string>
+    <string name="settings_imported_fail">Importeren mislukt — ongeldig bestand</string>
+    <string name="settings_backup_title">Automatische Back-up</string>
+    <string name="settings_backup_folder">Back-upmap</string>
+    <string name="settings_backup_no_folder">Geen map geselecteerd</string>
+    <string name="settings_backup_choose">Kies</string>
+    <string name="settings_backup_frequency">Frequentie</string>
+    <string name="settings_backup_off">Uit</string>
+    <string name="settings_backup_hourly">Uurlijks</string>
+    <string name="settings_backup_daily">Dagelijks</string>
+    <string name="settings_backup_weekly">Wekelijks</string>
+    <string name="settings_backup_at_5am">om 05:00</string>
+    <string name="settings_backup_now">Maak nu een back-up</string>
+    <string name="settings_backup_success">Back-up opgeslagen.</string>
+    <string name="settings_backup_failed">Back-up mislukt.</string>
+    <string name="settings_backup_folder_set">Back-upmap ingesteld.</string>
+
+    <!-- ===== HomeScreen ===== -->
+    <string name="home_town_title">Dorp</string>
+    <string name="home_town_desc">Bezoek de winkel, herberg, gilde en kerk</string>
+    <string name="guild_dailies_available">Dagelijkse opdrachten beschikbaar</string>
+    <string name="guild_do_dailies_hint">Doe dagelijkse opdrachten om je reputatie te verhogen</string>
+    <string name="home_died_message">Je bent dood en hebt het grootste deel van je voortgang verloren.</string>
+    <string name="home_xp_boost_was_active">2× XP Boost was actief</string>
+    <string name="home_loot">Buit</string>
+    <string name="home_food_consumed">Gegeten voedsel</string>
+    <string name="home_bones_buried">Begraven botten</string>
+    <string name="home_whats_new">Wat is er nieuw</string>
+    <string name="home_got_it">Begrepen</string>
+    <!-- Translator note: %1$s = player name or "Adventurer" -->
+    <string name="home_welcome">Welkom terug, %1$s!</string>
+    <string name="home_adventurer">Avonturier</string>
+    <!-- Translator note: %1$d = queue size (always 3 max) -->
+    <string name="home_up_next">Volgende (%1$d/3)</string>
+    <!-- Translator note: %1$s = formatted duration string (e.g. "2h 15m") -->
+    <string name="home_queue_ends_in">Wachtrij eindigt over %1$s</string>
+    <!-- Translator note: %1$d = number of sessions to collect -->
+    <plurals name="plural_collect_sessions">
+        <item quantity="one">Verzamel de beloningen van %1$d sessie</item>
+        <item quantity="other">Verzamel de beloningen van %1$d sessies</item>
+    </plurals>
+
+    <!-- ===== CombatScreen ===== -->
+    <string name="combat_level_label">Gevecht lvl</string>
+    <string name="combat_log_label">Gevechtslog</string>
+    <string name="combat_solo_bosses">Solo Bazen</string>
+    <!-- Translator note: %1$d = number of completed dungeon runs -->
+    <string name="combat_dungeon_runs">%1$d runs</string>
+    <string name="combat_atk">ATK</string>
+    <string name="combat_str">STR</string>
+    <string name="combat_def">DEF</string>
+    <!-- Translator note: %1$d = HP healed -->
+    <string name="combat_heals_hp">heelt %1$d HP</string>
+    <string name="combat_defeated_so_far">tot nu toe verslagen.</string>
+    <string name="combat_fighting">Vechtend…</string>
+    <string name="combat_log_you_hit">Je raakt</string>
+    <string name="combat_log_hit_you">raakt jou</string>
+    <string name="combat_log_dmg">schade</string>
+    <string name="combat_log_missed">miste</string>
+    <string name="combat_log_you_missed">Je miste</string>
+    <string name="combat_rec_level">Aanbevolen gevechtslevel</string>
+    <string name="combat_your_level">Jouw gevechtslevel</string>
+    <string name="combat_no_strength_bonus">Geen (geen krachtbonus)</string>
+    <string name="combat_best_arrow">Beste pijlen</string>
+    <string name="combat_enemies">Vijanden</string>
+    <string name="combat_no_spells">Geen spreuken beschikbaar op jouw magielevel.</string>
+    <string name="combat_only_castable">Alleen bruikbare spreuken</string>
+    <string name="combat_max_hit">maximale hit</string>
+    <string name="combat_no_potion">Geen drank</string>
+    <string name="combat_req_level">Vereist gevechtslevel</string>
+    <string name="combat_duration">Duur</string>
+    <!-- Translator note: %1$d = minutes -->
+    <string name="combat_duration_min">%1$d min</string>
+    <string name="combat_xp_on_victory">XP bij overwinning</string>
+    <string name="combat_you_died">Je bent dood!</string>
+    <string name="combat_died_reward">Je ontvangt 10% van de beloningen.</string>
+    <!-- Translator note: %1$d = gear bonus value -->
+    <string name="combat_gear_bonus">+%1$d uitrusting</string>
+
+    <!-- ===== ProfileScreen ===== -->
+    <string name="profile_unnamed">Naamloze Avonturier</string>
+    <string name="profile_no_pets">Geen huisdieren beschikbaar</string>
+    <string name="profile_pet_collected">Verzameld</string>
+    <string name="profile_pet_not_found">Nog niet gevonden</string>
+    <string name="profile_equip_best">Beste uitrusting aantrekken</string>
+    <string name="profile_weapons">Wapens</string>
+    <string name="profile_combat_gear">Gevechtsuitrusting</string>
+    <string name="profile_gathering_tools">Gereedschap</string>
+    <string name="profile_food_dungeon">Eten (Dungeons)</string>
+    <string name="profile_no_food">Geen gekookt voedsel in inventaris</string>
+    <!-- Translator note: %1$d = quantity, %2$d = heal value -->
+    <string name="profile_food_desc">×%1$d  •  heelt %2$d HP</string>
+    <!-- Translator note: %1$s = slot display name (e.g. "Weapon") -->
+    <string name="profile_choose_slot">Kies %1$s</string>
+    <string name="profile_no_items">Geen geschikte items in inventaris</string>
+    <string name="profile_stat_atk">Aanval</string>
+    <string name="profile_stat_str">Kracht</string>
+    <string name="profile_stat_ranged">Afstand</string>
+    <string name="profile_stat_magic">Magie</string>
+    <string name="profile_stat_mining">Mijnbouw</string>
+    <string name="profile_stat_wc">Houtbewerking</string>
+    <string name="profile_stat_fishing">Vissen</string>
+    <string name="profile_stat_farming">Landbouw</string>
+    <string name="profile_stat_def">Def</string>
+    <string name="profile_req_lv">Lvl nodig</string>
+
+    <!-- ===== SkillsScreen ===== -->
+    <!-- Translator note: %1$d = session duration in minutes -->
+    <string name="skills_session_duration">Sessie: %1$dm</string>
+    <string name="skills_only_craftable">Alleen maakbaar</string>
+    <string name="skills_filter_all">Alles</string>
+    <string name="skills_add_to_queue">Toevoegen aan wachtrij</string>
+    <string name="skills_add_queue_short">Toevoegen aan wachtrij</string>
+    <!-- Translator note: %1$d = level required, %2$s = XP per action -->
+    <string name="skills_level_req_xp">Lvl %1$d  •  %2$s XP/erts</string>
+    <!-- Translator note: %1$s = formatted multiplier (e.g. "1.15") -->
+    <string name="skills_tool_bonus">×%1$s Gereedschapsbonus</string>
+    <!-- Translator note: %1$d = fishing level -->
+    <string name="skills_fishing_desc">Lvl %1$d  •  Level-geschikte vangsten</string>
+    <!-- Translator note: %1$d = prayer level -->
+    <string name="skills_prayer_desc">Lvl %1$d  •  Begraaf botten of verstrooi as voor Gebeds XP</string>
+    <string name="skills_no_bones">Geen botten of as in inventaris</string>
+    <!-- Translator note: %1$d = XP per bone, %2$d = quantity in inventory -->
+    <string name="skills_bone_qty">%1$d XP per stuk  •  %2$d in inventaris</string>
+    <!-- Translator note: %1$d = XP per bone, %2$d = quantity available -->
+    <string name="skills_bone_selected">%1$d XP per stuk  •  %2$d beschikbaar</string>
+    <!-- Translator note: %1$d = total XP -->
+    <string name="skills_xp_total">+%1$d XP totaal</string>
+    <string name="skills_no_essence">Geen Runen essentie in inventaris — mijn eerst wat</string>
+    <string name="skills_no_runes">Nog geen runesoorten ontgrendeld</string>
+    <!-- Translator note: %1$d = essence quantity -->
+    <string name="skills_essence_qty">%1$d Runen essentie in inventaris</string>
+    <!-- Translator note: %1$d = XP per rune, %2$d = level required -->
+    <string name="skills_rune_desc">%1$d XP/runen  •  Lv. %2$d</string>
+    <!-- Translator note: %1$d = XP per rune, %2$d = essence available -->
+    <string name="skills_rune_selected">%1$d XP/runen  •  %2$d essentie beschikbaar</string>
+    <!-- Translator note: %1$d = level reached -->
+    <string name="skills_level_reached">Level %1$d bereikt!</string>
+    <string name="skills_no_logs">Geen houtblokken in inventaris</string>
+    <!-- Translator note: %1$d = level required, %2$s = XP per log -->
+    <string name="skills_log_desc">Lv. %1$d  •  %2$s XP/houtblok</string>
+    <!-- Translator note: %1$d = level required, %2$s = XP per catch -->
+    <string name="skills_fish_desc">Lv. %1$d  •  %2$s XP/vangst</string>
+    <!-- Translator note: %1$d = required level, %2$s = skill name, %3$d = player level, %4$s = skill name again -->
+    <string name="skills_req_with_have">%1$d %2$s benodigd (Je hebt %3$d %4$s)</string>
+
+    <!-- ===== ShopScreen ===== -->
+    <string name="shop_active">ACTIEF</string>
+    <string name="shop_sell_junk">Verkoop rommel</string>
+    <string name="shop_sell_old_gear">Verkoop oude uitrusting</string>
+    <string name="shop_equipped_label">(gedragen)</string>
+    <!-- Translator note: %1$d = quantity -->
+    <string name="shop_qty_in_inv">×%1$d in inventaris</string>
+    <!-- Translator note: %1$s = formatted coin amount -->
+    <string name="shop_price_each">%1$s ducaten p/s.</string>
+    <!-- Translator note: %1$s = item name -->
+    <string name="shop_buy_prefix">Koop: %1$s</string>
+    <string name="shop_sell_prefix">Verkoop: %1$s</string>
+    <!-- Translator note: %1$s = formatted coin amount -->
+    <string name="shop_price_each_long">%1$s ducaten per stuk.</string>
+    <string name="shop_total_cost">Totale kosten</string>
+    <string name="shop_youll_receive">Je ontvangt</string>
+    <!-- Translator note: %1$s = formatted coin amount -->
+    <string name="shop_total_amount">%1$s ducaten</string>
+
+    <!-- ===== CraftingScreen ===== -->
+    <string name="crafting_no_mats">Geen materialen</string>
+    <!-- Translator note: %1$d = quantity produced -->
+    <string name="crafting_produces">Produceert %1$d× per craft</string>
+    <string name="crafting_effects">Effecten</string>
+    <!-- Translator note: %1$d = total XP -->
+    <string name="crafting_xp_total">+%1$d XP totaal</string>
+    <string name="crafting_decrease">Minder</string>
+    <string name="crafting_increase">Meer</string>
+    <!-- Translator note: %1$d = needed, %2$d = have -->
+    <string name="crafting_needed_have">%1$d (je hebt %2$d)</string>
+    <!-- Translator note: %1$d = quantity in inventory -->
+    <string name="crafting_in_inventory">In inventaris: ×%1$d</string>
+
+    <!-- ===== FarmingScreen ===== -->
+    <!-- Translator note: %1$s = crop name -->
+    <string name="farming_harvested">Geoogst %1$s</string>
+    <!-- Translator note: %1$d = farming level -->
+    <string name="farming_title">Landbouw — Level %1$d</string>
+    <!-- Translator note: %1$d = patch count -->
+    <string name="farming_patches">%1$d Percelen ontgrendeld</string>
+    <string name="farming_clear_patch">Verwijder Perceel</string>
+    <string name="farming_clear_desc">Verwijder het gewas zonder beloning?</string>
+    <string name="farming_harvest_and_plant">Oogst en Plant Alles</string>
+    <string name="farming_no_crops_ready">Geen gewassen klaar om te oogsten</string>
+    <string name="farming_no_empty_patches">Geen lege percelen beschikbaar</string>
+    <!-- Translator note: %1$s = seed name -->
+    <string name="farming_no_seeds_inventory">Niet genoeg %1$s in inventaris</string>
+    <!-- Translator note: %1$d = count, %2$s = seed name -->
+    <string name="farming_planted">Geplant %1$d %2$s</string>
+
+    <!-- ===== QuestsScreen ===== -->
+    <string name="quests_none_in_category">Geen quests in deze categorie.</string>
+
+    <!-- ===== CharacterSetupSheet ===== -->
+    <string name="character_create_title">Maak je personage</string>
+    <string name="character_edit_title">Bewerk personage</string>
+    <string name="character_name_label">Naam van het personage</string>
+    <string name="character_gender">Geslacht</string>
+    <string name="character_gender_male">Man</string>
+    <string name="character_gender_female">Vrouw</string>
+    <string name="character_gender_other">Anders</string>
+    <string name="character_race">Ras</string>
+    <string name="character_race_human">Mens</string>
+    <string name="character_race_elf">Elf</string>
+    <string name="character_race_dwarf">Dwerg</string>
+    <string name="character_race_orc">Ork</string>
+    <string name="character_race_halfling">Halfling</string>
+    <string name="character_race_gnome">Gnoom</string>
+
+    <!-- ===== OnboardingScreen ===== -->
+    <string name="onboarding_sessions_title">Sessies</string>
+    <string name="onboarding_sessions_desc">Tik op een vaardigheid en start een trainingssessie. Sessies lopen op de achtergrond, zelfs als de app gesloten is. Kom terug om je buit en XP te verzamelen.</string>
+    <string name="onboarding_progress_title">Werk je omhoog</string>
+    <string name="onboarding_progress_desc">Mijn ertsen om staven te smelten, en smeed vervolgens betere wapens en uitrusting. Rust jezelf uit met sterker materiaal om moeilijkere Dungeons en bazen aan te pakken. Betere gereedschappen versnellen het verzamelen, en uitrusting van een hoger level ontgrendelt inhoud die zwakkere uitrusting niet kan overleven.</string>
+    <string name="onboarding_quests_title">Quests &amp; Huisdieren</string>
+    <string name="onboarding_quests_desc">Voltooi quests om XP-beloningen te verdienen. Zeldzame huisdieren kunnen gevonden worden tijdens het trainen van vaardigheden en bieden permanente XP-boosts.</string>
+    <string name="onboarding_welcome_desc">Een idle RPG geïnspireerd door klassieke MMORPGs. Train vaardigheden, vecht in Dungeons en maak uitrusting. Alles offline, geen accounts, geen advertenties.</string>
+
+    <!-- Quantity picker quick buttons -->
+    <string name="qty_max">Max</string>
+
+    <!-- ===== Inn / Worker ===== -->
+    <string-array name="worker_names">
+        <item>Aldric</item>
+        <item>Brenna</item>
+        <item>Calder</item>
+        <item>Dwyn</item>
+        <item>Elara</item>
+        <item>Finn</item>
+        <item>Gwenna</item>
+        <item>Hadwin</item>
+        <item>Isla</item>
+        <item>Jorvik</item>
+        <item>Kira</item>
+        <item>Leofwin</item>
+        <item>Maren</item>
+        <item>Nessa</item>
+        <item>Oswin</item>
+        <item>Petra</item>
+        <item>Quill</item>
+        <item>Rowena</item>
+        <item>Sven</item>
+        <item>Tilda</item>
+        <item>Urick</item>
+        <item>Veda</item>
+        <item>Wren</item>
+        <item>Xander</item>
+        <item>Yara</item>
+    </string-array>
+    <string name="inn_title">Herberg</string>
+    <string name="inn_desc">Huur een werknemer om vaardigheden voor je te trainen, of koop voedsel van het dagelijkse menu.</string>
+    <string name="inn_worker_already_hired">Er is al een werknemer ingehuurd.</string>
+    <string name="inn_not_enough_coins">Niet genoeg Ducaten.</string>
+    <string name="inn_hire">Huur</string>
+    <string name="inn_worker_active">Werknemer ingehuurd en aan het trainen</string>
+    <string name="inn_hire_cost">%1$s Ducaten</string>
+    <string name="worker_long_laborer">Langdurige werknemer</string>
+    <string name="worker_apprentice">Leerling</string>
+    <string name="worker_journeyman">Vakman</string>
+    <string name="worker_master">Meester</string>
+    <string name="inn_long_laborer_desc">8u verzamelen, 0,5x efficiëntie. Geen limiet op Juwelier, Gebed of Runen limiet. Zet zoveel in de wachtrij als je wilt. Hij is traag, maar hij doet alles.</string>
+    <string name="inn_apprentice_desc">8u verzamelen, 1x efficiëntie. Juwelier, Gebed en Runen maken beperkt tot 480 items per sessie.</string>
+    <string name="inn_journeyman_desc">6u verzamelen, 1,25x efficiëntie. Juwelier, Gebed en Runen maken beperkt tot 360 items per sessie.</string>
+    <string name="inn_master_desc">4u verzamelen, 2x efficiëntie. Juwelier, Gebed en Runen maken beperkt tot 240 items per sessie.</string>
+    <string name="inn_gathering_note">Verzamelen: sessie-uren x efficiëntiemultiplicator toegepast op buit en XP</string>
+    <string name="inn_crafting_note">Juwelier/Gebed/Runen maken: hoeveelheid beperkt per level; Langdurige werknemer heeft geen limiet</string>
+    <string name="worker_skills_title">Werknemer: %1$s</string>
+    <string name="worker_session_active">Werknemersessie actief</string>
+    <string name="worker_session_complete">Werknemersessie voltooid</string>
+    <string name="worker_manage_from_home">Verzamel vanaf het startscherm</string>
+    <string name="worker_card_title">Werknemer</string>
+    <string name="worker_idle">Werknemer is inactief — geplande sessies starten automatisch</string>
+    <string name="worker_collect_btn">Verzamel werknemersessie</string>
+    <string name="worker_dismiss_btn">Ontsla werknemer</string>
+    <string name="worker_dismiss_confirm_title">Werknemer ontslaan?</string>
+    <string name="worker_dismiss_confirm_body">De actieve sessie en wachtrij worden geannuleerd. Je inhuurkosten en eventuele geplande materialen worden teruggegeven.</string>
+    <string name="inn_daily_menu">Dagelijks Menu</string>
+    <string name="inn_laborers_header">Werknemers</string>
+
+    <!-- ===== Combat difficulty ratings ===== -->
+    <string name="combat_difficulty_likely">Ziet er goed uit</string>
+    <string name="combat_difficulty_risky">Riskant met de huidige uitrusting</string>
+    <string name="combat_difficulty_unlikely">Waarschijnlijk dat je dood gaat</string>
+
+    <!-- ===== Achievements ===== -->
+    <string name="achievement_group_levelling">Levelen</string>
+    <string name="achievement_group_combat">Gevecht</string>
+    <string name="achievement_group_quests">Quests</string>
+    <string name="achievement_group_collection">Verzameling</string>
+
+    <string name="achievement_total_50_name">Avonturier</string>
+    <string name="achievement_total_50_desc">Bereik totaal level 50</string>
+    <string name="achievement_total_100_name">Vakman</string>
+    <string name="achievement_total_100_desc">Bereik totaal level 100</string>
+    <string name="achievement_total_250_name">Ervaren</string>
+    <string name="achievement_total_250_desc">Bereik totaal level 250</string>
+    <string name="achievement_total_500_name">Veteraan</string>
+    <string name="achievement_total_500_desc">Bereik totaal level 500</string>
+    <string name="achievement_total_750_name">Meester</string>
+    <string name="achievement_total_750_desc">Bereik totaal level 750</string>
+    <string name="achievement_total_1000_name">Legende</string>
+    <string name="achievement_total_1000_desc">Bereik totaal level 1000</string>
+    <string name="achievement_total_1500_name">Kampioen</string>
+    <string name="achievement_total_1500_desc">Bereik totaal level 1500</string>
+    <string name="achievement_skill_99_name">Eerste Meesterschap</string>
+    <string name="achievement_skill_99_desc">Maximaliseer een vaardigheid tot level 99</string>
+    <string name="achievement_all_99_name">Voltooier</string>
+    <string name="achievement_all_99_desc">Maximaliseer alle vaardigheden tot level 99</string>
+
+    <string name="achievement_combat_10_name">Strijder</string>
+    <string name="achievement_combat_10_desc">Bereik gevechtslevel 10</string>
+    <string name="achievement_combat_30_name">Krijger</string>
+    <string name="achievement_combat_30_desc">Bereik gevechtslevel 30</string>
+    <string name="achievement_combat_50_name">Kampioen</string>
+    <string name="achievement_combat_50_desc">Bereik gevechtslevel 50</string>
+    <string name="achievement_combat_75_name">Elite</string>
+    <string name="achievement_combat_75_desc">Bereik gevechtslevel 75</string>
+    <string name="achievement_combat_99_name">Oorlogsgod</string>
+    <string name="achievement_combat_99_desc">Bereik gevechtslevel 99</string>
+
+    <string name="achievement_quest_1_name">Quester</string>
+    <string name="achievement_quest_1_desc">Doe 1 quest</string>
+    <string name="achievement_quest_5_name">Beginnende avonturier</string>
+    <string name="achievement_quest_5_desc">Doe 5 quests</string>
+    <string name="achievement_quest_25_name">Quest Jager</string>
+    <string name="achievement_quest_25_desc">Doe 25 quests</string>
+    <string name="achievement_quest_50_name">Quest Meester</string>
+    <string name="achievement_quest_50_desc">Doe 50 quests</string>
+    <string name="achievement_quest_all_name">Quest Kampioen</string>
+    <string name="achievement_quest_all_desc">Doe alle quests</string>
+
+    <string name="achievement_pet_first_name">Dierenvriend</string>
+    <string name="achievement_pet_first_desc">Verzamel je eerste huisdier</string>
+    <string name="achievement_pet_all_name">Dierentuin</string>
+    <string name="achievement_pet_all_desc">Verzamel alle 7 huisdieren</string>
+
+    <!-- ===== Quest display names (override toTitleCase fallback) ===== -->
+    <string name="quest_kbd_slayer_1_name">Koning der Zwarte Draken Slachter I</string>
+    <string name="quest_kbd_slayer_2_name">Koning der Zwarte Draken Slachter II</string>
+    <string name="quest_kbd_slayer_3_name">Koning der Zwarte Draken Slachter III</string>
+    <string name="inn_daily_resets">Vernieuwt dagelijks om 06:00</string>
+    <string name="inn_food_heal">+%1$d HP</string>
+    <string name="inn_food_purchased">Voedsel gekocht.</string>
+    <string name="inn_card_desc">Huur werknemers en koop voedsel</string>
+    <string name="worker_no_active_session">Werknemer is inactief — geen sessies in wachtrij</string>
+    <string name="worker_add_sessions">Sessies toevoegen</string>
+    <string name="inn_worker_tier">%1$s werknemer</string>
+    <string name="worker_skills_title_nav">Werknemersvaardigheden</string>
+
+    <!-- Guild Hall -->
+    <string name="guild_hall_title">Gilde</string>
+    <string name="guild_hall_desc">Word lid van gilden en verdien beloningen</string>
+    <string name="guild_hall_intro">Gilden belonen je voor activiteiten die je al doet. Voltooi quests en dagelijkse verzoeken om cross-skill materialen, Ducaten en XP te verdienen, zodat specialisten nog steeds toegang hebben tot middelen van vaardigheden die ze niet trainen.</string>
+    <string name="guild_level_label">Level %1$d</string>
+    <string name="guild_level_max">Level 10 (Max)</string>
+    <string name="guild_tab_quests">Quests</string>
+    <string name="guild_tab_dailies">Dagelijkse Quests</string>
+    <string name="guild_daily_resets_in">Vernieuwt dagelijks om 06:00</string>
+    <string name="guild_locked_hint">Vereist Gilde Level %1$d</string>
+    <string name="guild_no_dailies">Voltooi gildequests om reputatie te verdienen en dagelijkse Quests te ontgrendelen.</string>
+    <string name="guild_rep_label">%1$d / %2$d reputatie</string>
+    <string name="guild_quest_complete">Quest voltooid: %1$s</string>
+    <string name="guild_daily_complete">Dagelijkse beloning opgeëist!</string>
+    <string name="guild_name_mining">Mijnbouw Gilde</string>
+    <string name="guild_name_fishing">Visserij Gilde</string>
+    <string name="guild_name_woodcutting">Houthakkers Gilde</string>
+    <string name="guild_name_farming">Landbouw Gilde</string>
+    <string name="guild_name_firemaking">Vuurmakers Gilde</string>
+    <string name="guild_name_agility">Behendigheid Gilde</string>
+    <string name="guild_name_smithing">Smeden Gilde</string>
+    <string name="guild_name_cooking">Koks Gilde</string>
+    <string name="guild_name_fletching">Pijlenmakers Gilde</string>
+    <string name="guild_name_crafting">Ambachtslieden Gilde</string>
+    <string name="guild_name_runecrafting">Runenmakers Gilde</string>
+    <string name="guild_name_herblore">Toverdranken Gilde</string>
+    <string name="guild_name_warriors">Krijgers Gilde</string>
+    <string name="guild_name_archers">Boogschutters Gilde</string>
+    <string name="guild_name_mages">Tovenaars Gilde</string>
+    <string name="guild_name_prayer">Gebed Gilde</string>
+    <string name="guild_name_mercantile">Kooplieden Gilde</string>
+
+    <!-- Mercantile skill -->
+    <string name="skill_mercantile">Handel</string>
+    <string name="label_support_skills">Buffs</string>
+    <string name="mercantile_routes_label">Handelsroutes</string>
+    <string name="mercantile_level_label">Level %1$d Handel</string>
+    <string name="mercantile_xp_label">XP: %1$s</string>
+    <string name="mercantile_coins_label">Ducaten: %1$s</string>
+    <string name="mercantile_cost_label">Kost: %1$s</string>
+    <string name="mercantile_return_range">Opbrengst: %1$s – %2$s</string>
+    <string name="mercantile_dispatch_label">Versturen</string>
+    <string name="mercantile_queue_label">Toevoegen aan wachtrij</string>
+
+    <!-- Church -->
+    <string name="church_title">Kerk</string>
+    <string name="church_desc">Zegeningen voor XP, verdediging en ducaten</string>
+    <string name="church_no_active_blessing">Geen actieve zegen — bezoek de Kerk om te bidden.</string>
+    <string name="church_active_label">Actieve Zegen</string>
+    <string name="church_expires_in">Verloopt over %1$s</string>
+    <string name="church_blessing_active_fmt">%1$s • %2$s resterend</string>
+    <string name="church_section_xp">XP Zegeningen</string>
+    <string name="church_section_defense">Verdedigingszegeningen</string>
+    <string name="church_section_coins">Ducaten Zegeningen</string>
+    <string name="church_locked_level">Vereist Gebedslevel %1$d</string>
+    <string name="church_active_chip">Actief</string>
+    <string name="church_activate">Activeren</string>
+    <string name="church_blessing_bonus">+%1$s van zegen</string>
+    <string name="church_blessing_suffix">van zegen</string>
+    <string name="church_effect_xp">×%1$.2f XP voor 24 uur</string>
+    <string name="church_effect_def">+%1$d Verdediging voor 24 uur</string>
+    <string name="church_effect_coins">+%1$d%% Ducatenopbrengst voor 24 uur</string>
+    <string name="church_cost_bones">Kost %1$d botten</string>
+    <string name="church_confirm_title">Zegen activeren?</string>
+    <string name="church_bones_available">Je hebt %1$d botten</string>
+    <string name="church_not_enough_bones">Niet genoeg botten (je hebt %1$d nodig)</string>
+    <string name="church_already_active">Er is al een zegen actief</string>
+
+    <!-- Blessing names -->
+    <string name="blessing_blessed_focus_name">Gezegende Focus</string>
+    <string name="blessing_stone_skin_name">Steenhuid</string>
+    <string name="blessing_blessed_focus_ii_name">Gezegende Focus II</string>
+    <string name="blessing_stone_skin_ii_name">Steenhuid II</string>
+    <string name="blessing_blessed_focus_iii_name">Gezegende Focus III</string>
+    <string name="blessing_stone_skin_iii_name">Steenhuid III</string>
+    <string name="blessing_tithe_blessing_name">Tiendezegen</string>
+    <string name="blessing_stone_skin_iv_name">Steenhuid IV</string>
+    <string name="blessing_fortune_i_name">Fortuin I</string>
+    <string name="blessing_tithe_blessing_ii_name">Tiendezegen II</string>
+    <string name="blessing_iron_ward_name">IJzeren Wacht</string>
+    <string name="blessing_fortune_ii_name">Fortuin II</string>
+    <string name="blessing_tithe_blessing_iii_name">Tiendezegen III</string>
+    <string name="blessing_iron_ward_ii_name">IJzeren Wacht II</string>
+    <string name="blessing_fortune_iii_name">Fortuin III</string>
+    <string name="blessing_divine_focus_name">Goddelijke Focus</string>
+    <string name="blessing_diamond_skin_name">Diamanten Huid</string>
+    <string name="blessing_fortune_iv_name">Fortuin IV</string>
+    <string name="blessing_divine_focus_ii_name">Goddelijke Focus II</string>
+    <string name="blessing_diamond_skin_ii_name">Diamanten Huid II</string>
+    <string name="blessing_fortune_v_name">Fortuin V</string>
+    <string name="blessing_divine_grace_name">Goddelijke Genade</string>
+    <string name="blessing_holy_shield_name">Heilig Schild</string>
+    <string name="blessing_abundance_name">Overvloed</string>
+    <string name="blessing_divine_grace_ii_name">Goddelijke Genade II</string>
+    <string name="blessing_holy_shield_ii_name">Heilig Schild II</string>
+    <string name="blessing_abundance_ii_name">Overvloed II</string>
+    <string name="blessing_sacred_grace_name">Heilige Genade</string>
+    <string name="blessing_aegis_name">Aegis</string>
+    <string name="blessing_abundance_iii_name">Overvloed III</string>
+
+    <!-- Expeditions -->
+    <string name="nav_expeditions">Expedities</string>
+    <string name="expeditions_title">Expedities</string>
+    <string name="expedition_explore_button">Verkennen</string>
+    <string name="expedition_dungeon_unlocked">Gevechtskerker ontgrendeld!</string>
+    <string name="expedition_discover_hint">Ontdek via Expedities</string>
+    <string name="label_notes">Notities</string>
+
+</resources>

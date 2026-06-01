@@ -1,5 +1,6 @@
 package com.fantasyidler.repository
 
+import com.fantasyidler.data.db.dao.FarmingPatchDao
 import com.fantasyidler.data.db.dao.PlayerDao
 import com.fantasyidler.data.db.dao.QuestProgressDao
 import com.fantasyidler.data.model.*
@@ -30,6 +31,7 @@ private fun capeKeyForSkill(skill: String): String? = when (skill) {
 class PlayerRepository @Inject constructor(
     private val playerDao: PlayerDao,
     private val questProgressDao: QuestProgressDao,
+    private val farmingPatchDao: FarmingPatchDao,
     private val json: Json,
     private val dailyQuestRepo: DailyQuestRepository,
 ) {
@@ -83,7 +85,7 @@ class PlayerRepository @Inject constructor(
         val flags: PlayerFlags = json.decodeFromString(player.flags)
         val boostActive = flags.xpBoostExpiresAt > System.currentTimeMillis()
         val scaledXp = if (efficiencyMultiplier == 1.0f) xpGained else (xpGained * efficiencyMultiplier).toLong()
-        val boostedXp = if (boostActive) scaledXp * 2 else scaledXp
+        val boostedXp = ((if (boostActive) scaledXp * 2 else scaledXp) * ChurchRepository.xpMultiplier(flags)).toLong()
         val scaledItems = if (efficiencyMultiplier == 1.0f) itemsGained
             else itemsGained.mapValues { (_, v) -> (v * efficiencyMultiplier).roundToInt().coerceAtLeast(1) }
 
@@ -212,34 +214,38 @@ class PlayerRepository @Inject constructor(
         updateFlags(flags.copy(sessionQueue = listOf(action) + flags.sessionQueue))
     }
 
-    /** Appends an action to the worker's queue. Returns false if already full (1 item) or no worker hired. */
-    suspend fun enqueueWorkerAction(action: QueuedAction): Boolean {
+    private fun PlayerFlags.workerForSlot(slot: Int) = if (slot == 2) hiredWorker2 else hiredWorker
+    private fun PlayerFlags.withWorkerForSlot(slot: Int, w: HiredWorker?) =
+        if (slot == 2) copy(hiredWorker2 = w) else copy(hiredWorker = w)
+
+    /** Appends an action to the given worker slot's queue. Returns false if full (1 item) or no worker hired. */
+    suspend fun enqueueWorkerAction(slot: Int, action: QueuedAction): Boolean {
         val flags = getFlags()
-        val worker = flags.hiredWorker ?: return false
+        val worker = flags.workerForSlot(slot) ?: return false
         if (worker.sessionQueue.size >= 1) return false
-        updateFlags(flags.copy(hiredWorker = worker.copy(sessionQueue = worker.sessionQueue + action)))
+        updateFlags(flags.withWorkerForSlot(slot, worker.copy(sessionQueue = worker.sessionQueue + action)))
         return true
     }
 
-    /** Removes and returns the first item in the worker's queue, or null if empty/no worker. */
-    suspend fun dequeueNextWorkerAction(): QueuedAction? {
+    /** Removes and returns the first item in the given slot's queue, or null if empty/no worker. */
+    suspend fun dequeueNextWorkerAction(slot: Int): QueuedAction? {
         val flags = getFlags()
-        val worker = flags.hiredWorker ?: return null
+        val worker = flags.workerForSlot(slot) ?: return null
         val queue = worker.sessionQueue
         if (queue.isEmpty()) return null
-        updateFlags(flags.copy(hiredWorker = worker.copy(sessionQueue = queue.drop(1))))
+        updateFlags(flags.withWorkerForSlot(slot, worker.copy(sessionQueue = queue.drop(1))))
         return queue.first()
     }
 
-    suspend fun requeueWorkerActionAtFront(action: QueuedAction) {
+    suspend fun requeueWorkerActionAtFront(slot: Int, action: QueuedAction) {
         val flags = getFlags()
-        val worker = flags.hiredWorker ?: return
-        updateFlags(flags.copy(hiredWorker = worker.copy(sessionQueue = listOf(action) + worker.sessionQueue)))
+        val worker = flags.workerForSlot(slot) ?: return
+        updateFlags(flags.withWorkerForSlot(slot, worker.copy(sessionQueue = listOf(action) + worker.sessionQueue)))
     }
 
-    suspend fun clearHiredWorker() {
+    suspend fun clearHiredWorker(slot: Int) {
         val flags = getFlags()
-        updateFlags(flags.copy(hiredWorker = null))
+        updateFlags(flags.withWorkerForSlot(slot, null))
     }
 
     /** Removes the queued item at [index]. No-op if out of range. */
@@ -248,6 +254,15 @@ class PlayerRepository @Inject constructor(
         val queue = flags.sessionQueue
         if (index < 0 || index >= queue.size) return
         updateFlags(flags.copy(sessionQueue = queue.toMutableList().apply { removeAt(index) }))
+    }
+
+    suspend fun moveQueueItem(fromIndex: Int, toIndex: Int) {
+        val flags = getFlags()
+        val queue = flags.sessionQueue.toMutableList()
+        if (fromIndex < 0 || toIndex < 0 || fromIndex >= queue.size || toIndex >= queue.size) return
+        val item = queue.removeAt(fromIndex)
+        queue.add(toIndex, item)
+        updateFlags(flags.copy(sessionQueue = queue))
     }
 
     suspend fun incrementDungeonRun(activityKey: String) {
@@ -343,6 +358,8 @@ class PlayerRepository @Inject constructor(
         val flags: PlayerFlags = json.decodeFromString(player.flags)
         val boostActive = flags.xpBoostExpiresAt > System.currentTimeMillis()
         val boostMult = if (boostActive) 2L else 1L
+        val xpBlessingMult = ChurchRepository.xpMultiplier(flags)
+        val coinBlessingMult = ChurchRepository.coinMultiplier(flags)
         val scaledItems = if (efficiencyMultiplier == 1.0f) itemsGained
             else itemsGained.mapValues { (_, v) -> (v * efficiencyMultiplier).roundToInt().coerceAtLeast(1) }
 
@@ -354,7 +371,7 @@ class PlayerRepository @Inject constructor(
         for ((skill, xp) in xpPerSkill) {
             val oldLevel = XpTable.levelForXp(xpMap[skill] ?: 0L)
             val scaledXp = if (efficiencyMultiplier == 1.0f) xp else (xp * efficiencyMultiplier).toLong()
-            val newXp = (xpMap[skill] ?: 0L) + scaledXp * boostMult
+            val newXp = (xpMap[skill] ?: 0L) + (scaledXp * boostMult * xpBlessingMult).toLong()
             xpMap[skill]  = newXp
             levels[skill] = XpTable.levelForXp(newXp)
             if (oldLevel < 99 && levels[skill]!! >= 99) {
@@ -374,7 +391,7 @@ class PlayerRepository @Inject constructor(
                 skillLevels = json.encode<Map<String, Int>>(levels),
                 skillXp     = json.encode<Map<String, Long>>(xpMap),
                 inventory   = json.encode<Map<String, Int>>(inventory),
-                coins       = player.coins + coinsGained,
+                coins       = player.coins + (coinsGained * coinBlessingMult).toLong(),
             )
         )
         return awardedCapes
@@ -495,25 +512,28 @@ class PlayerRepository @Inject constructor(
         return true
     }
 
-    /** Returns a JSON string capturing the full player save including quest progress. */
-    suspend fun exportSave(): String {
+    /** Returns a JSON string capturing the full player save including quest progress and sessions. */
+    suspend fun exportSave(sessions: List<com.fantasyidler.data.model.SkillSessionExport> = emptyList()): String {
         val player = getOrCreatePlayer()
         return json.encode<PlayerExport>(
             PlayerExport(
-                skillLevels   = player.skillLevels,
-                skillXp       = player.skillXp,
-                inventory     = player.inventory,
-                equipped      = player.equipped,
-                flags         = player.flags,
-                pets          = player.pets,
-                coins         = player.coins,
-                questProgress = questProgressDao.getAllProgress(),
+                skillLevels    = player.skillLevels,
+                skillXp        = player.skillXp,
+                inventory      = player.inventory,
+                equipped       = player.equipped,
+                flags          = player.flags,
+                pets           = player.pets,
+                coins          = player.coins,
+                questProgress  = questProgressDao.getAllProgress(),
+                farmingPatches = farmingPatchDao.getAllPatches(),
+                sessions       = sessions,
+                exportedAt     = System.currentTimeMillis(),
             )
         )
     }
 
-    /** Overwrites the current save with data from a previously exported JSON string. */
-    suspend fun importSave(jsonString: String) {
+    /** Overwrites the current save with data from a previously exported JSON string. Returns the parsed export. */
+    suspend fun importSave(jsonString: String): PlayerExport {
         val export = json.decodeFromString<PlayerExport>(stripJsonGarbage(jsonString))
         val player = getOrCreatePlayer()
         playerDao.upsert(
@@ -529,6 +549,9 @@ class PlayerRepository @Inject constructor(
         )
         questProgressDao.deleteAll()
         export.questProgress.forEach { questProgressDao.upsert(it) }
+        farmingPatchDao.clearAll()
+        export.farmingPatches.forEach { farmingPatchDao.upsert(it) }
+        return export
     }
 
     // Finds the end of the root JSON object and drops any trailing garbage.

@@ -64,3 +64,26 @@ fun Long.formatDurationMs(): String {
 
 /** Clamp an Int to the valid skill level range [1, 99]. */
 fun Int.clampLevel(): Int = coerceIn(1, 99)
+
+/** Short display label for a skill key, used in compact bonus rows. */
+fun String.toSkillAbbrev(): String = when (this) {
+    "attack"       -> "Atk"
+    "strength"     -> "Str"
+    "defense"      -> "Def"
+    "ranged"       -> "Rng"
+    "magic"        -> "Mag"
+    "hitpoints"    -> "HP"
+    "prayer"       -> "Pry"
+    "mining"       -> "Min"
+    "woodcutting"  -> "WC"
+    "fishing"      -> "Fish"
+    "firemaking"   -> "FM"
+    "cooking"      -> "Cook"
+    "smithing"     -> "Smith"
+    "crafting"     -> "Craft"
+    "fletching"    -> "Fletch"
+    "agility"      -> "Agil"
+    "runecrafting" -> "RC"
+    "farming"      -> "Farm"
+    else           -> take(4).replaceFirstChar { it.uppercase() }
+}

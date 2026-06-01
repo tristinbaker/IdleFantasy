@@ -12,7 +12,9 @@
     "rewards": {
       "coins": 1000,
       "xp": 2000,
-      "items": {"iron_ore": 100}
+      "items": {
+        "iron_ore": 100
+      }
     }
   },
   "mining_2": {
@@ -28,7 +30,9 @@
     "rewards": {
       "coins": 2000,
       "xp": 5000,
-      "items": {"coal": 100}
+      "items": {
+        "coal": 100
+      }
     }
   },
   "mining_3": {
@@ -44,7 +48,9 @@
     "rewards": {
       "coins": 4000,
       "xp": 10000,
-      "items": {"mithril_ore": 100}
+      "items": {
+        "mithril_ore": 100
+      }
     }
   },
   "mining_4": {
@@ -60,7 +66,9 @@
     "rewards": {
       "coins": 8000,
       "xp": 20000,
-      "items": {"adamantite_ore": 100}
+      "items": {
+        "adamantite_ore": 100
+      }
     }
   },
   "mining_5": {
@@ -76,7 +84,9 @@
     "rewards": {
       "coins": 16000,
       "xp": 40000,
-      "items": {"runite_ore": 100}
+      "items": {
+        "runite_ore": 100
+      }
     }
   },
   "mining_6": {
@@ -108,7 +118,9 @@
     "rewards": {
       "coins": 1000,
       "xp": 2000,
-      "items": {"oak_log": 100}
+      "items": {
+        "oak_log": 100
+      }
     }
   },
   "woodcutting_2": {
@@ -124,7 +136,9 @@
     "rewards": {
       "coins": 2000,
       "xp": 5000,
-      "items": {"willow_log": 100}
+      "items": {
+        "willow_log": 100
+      }
     }
   },
   "woodcutting_3": {
@@ -140,7 +154,9 @@
     "rewards": {
       "coins": 4000,
       "xp": 10000,
-      "items": {"maple_log": 100}
+      "items": {
+        "maple_log": 100
+      }
     }
   },
   "woodcutting_4": {
@@ -156,7 +172,9 @@
     "rewards": {
       "coins": 8000,
       "xp": 20000,
-      "items": {"yew_log": 100}
+      "items": {
+        "yew_log": 100
+      }
     }
   },
   "woodcutting_5": {
@@ -172,7 +190,9 @@
     "rewards": {
       "coins": 16000,
       "xp": 40000,
-      "items": {"magic_log": 100}
+      "items": {
+        "magic_log": 100
+      }
     }
   },
   "woodcutting_6": {
@@ -300,7 +320,9 @@
     "rewards": {
       "coins": 1000,
       "xp": 2000,
-      "items": {"iron_bar": 100}
+      "items": {
+        "iron_bar": 100
+      }
     }
   },
   "smithing_2": {
@@ -316,7 +338,9 @@
     "rewards": {
       "coins": 2000,
       "xp": 5000,
-      "items": {"steel_bar": 100}
+      "items": {
+        "steel_bar": 100
+      }
     }
   },
   "smithing_3": {
@@ -332,7 +356,9 @@
     "rewards": {
       "coins": 4000,
       "xp": 10000,
-      "items": {"mithril_bar": 100}
+      "items": {
+        "mithril_bar": 100
+      }
     }
   },
   "smithing_4": {
@@ -348,7 +374,9 @@
     "rewards": {
       "coins": 8000,
       "xp": 20000,
-      "items": {"adamantite_bar": 100}
+      "items": {
+        "adamantite_bar": 100
+      }
     }
   },
   "smithing_5": {
@@ -364,7 +392,9 @@
     "rewards": {
       "coins": 16000,
       "xp": 40000,
-      "items": {"runite_bar": 100}
+      "items": {
+        "runite_bar": 100
+      }
     }
   },
   "smithing_6": {
@@ -636,7 +666,9 @@
     "rewards": {
       "coins": 1000,
       "xp": 2000,
-      "items": {"iron_arrow": 100}
+      "items": {
+        "iron_arrow": 100
+      }
     }
   },
   "fletching_2": {
@@ -652,7 +684,9 @@
     "rewards": {
       "coins": 2000,
       "xp": 5000,
-      "items": {"steel_arrow": 100}
+      "items": {
+        "steel_arrow": 100
+      }
     }
   },
   "fletching_3": {
@@ -668,7 +702,9 @@
     "rewards": {
       "coins": 4000,
       "xp": 10000,
-      "items": {"mithril_arrow": 100}
+      "items": {
+        "mithril_arrow": 100
+      }
     }
   },
   "fletching_4": {
@@ -684,7 +720,9 @@
     "rewards": {
       "coins": 8000,
       "xp": 20000,
-      "items": {"adamantite_arrow": 100}
+      "items": {
+        "adamantite_arrow": 100
+      }
     }
   },
   "fletching_5": {
@@ -700,7 +738,9 @@
     "rewards": {
       "coins": 16000,
       "xp": 40000,
-      "items": {"runite_arrow": 100}
+      "items": {
+        "runite_arrow": 100
+      }
     }
   },
   "fletching_6": {
@@ -728,7 +768,7 @@
     "type": "prayer",
     "target": "bones",
     "amount": 500,
-    "description": "Bury 500 Bones",
+    "description": "Bury 500 Bones of any type",
     "rewards": {
       "coins": 1000,
       "xp": 2000,
@@ -744,7 +784,7 @@
     "type": "prayer",
     "target": "bones",
     "amount": 750,
-    "description": "Bury 750 Bones",
+    "description": "Bury 750 Bones of any type",
     "rewards": {
       "coins": 2000,
       "xp": 5000,
@@ -760,7 +800,7 @@
     "type": "prayer",
     "target": "bones",
     "amount": 1100,
-    "description": "Bury 1100 Bones",
+    "description": "Bury 1100 Bones of any type",
     "rewards": {
       "coins": 4000,
       "xp": 10000,
@@ -776,7 +816,7 @@
     "type": "prayer",
     "target": "bones",
     "amount": 1650,
-    "description": "Bury 1650 Bones",
+    "description": "Bury 1650 Bones of any type",
     "rewards": {
       "coins": 8000,
       "xp": 20000,
@@ -792,7 +832,7 @@
     "type": "prayer",
     "target": "bones",
     "amount": 2450,
-    "description": "Bury 2450 Bones",
+    "description": "Bury 2450 Bones of any type",
     "rewards": {
       "coins": 16000,
       "xp": 40000,
@@ -808,7 +848,7 @@
     "type": "prayer",
     "target": "bones",
     "amount": 3650,
-    "description": "Bury 3650 Bones",
+    "description": "Bury 3650 Bones of any type",
     "rewards": {
       "coins": 32000,
       "xp": 80000,
@@ -817,7 +857,7 @@
   },
   "combat_kills_1": {
     "id": "combat_kills_1",
-    "name": "Slayer I",
+    "name": "Monster Hunter I",
     "skill": "combat",
     "tier": 1,
     "requires_previous": null,
@@ -833,7 +873,7 @@
   },
   "combat_kills_2": {
     "id": "combat_kills_2",
-    "name": "Slayer II",
+    "name": "Monster Hunter II",
     "skill": "combat",
     "tier": 2,
     "requires_previous": "combat_kills_1",
@@ -849,7 +889,7 @@
   },
   "combat_kills_3": {
     "id": "combat_kills_3",
-    "name": "Slayer III",
+    "name": "Monster Hunter III",
     "skill": "combat",
     "tier": 3,
     "requires_previous": "combat_kills_2",
@@ -865,7 +905,7 @@
   },
   "combat_kills_4": {
     "id": "combat_kills_4",
-    "name": "Slayer IV",
+    "name": "Monster Hunter IV",
     "skill": "combat",
     "tier": 4,
     "requires_previous": "combat_kills_3",
@@ -881,7 +921,7 @@
   },
   "combat_kills_5": {
     "id": "combat_kills_5",
-    "name": "Slayer V",
+    "name": "Monster Hunter V",
     "skill": "combat",
     "tier": 5,
     "requires_previous": "combat_kills_4",
@@ -897,7 +937,7 @@
   },
   "combat_kills_6": {
     "id": "combat_kills_6",
-    "name": "Slayer VI",
+    "name": "Monster Hunter VI",
     "skill": "combat",
     "tier": 6,
     "requires_previous": "combat_kills_5",
@@ -1180,7 +1220,9 @@
     "rewards": {
       "coins": 3000,
       "xp": 5000,
-      "items": {"steel_sword": 1}
+      "items": {
+        "steel_sword": 1
+      }
     }
   },
   "spider_slayer_1": {
@@ -1212,7 +1254,9 @@
     "rewards": {
       "coins": 2500,
       "xp": 4000,
-      "items": {"iron_scimitar": 1}
+      "items": {
+        "iron_scimitar": 1
+      }
     }
   },
   "skeleton_slayer_1": {
@@ -1244,7 +1288,9 @@
     "rewards": {
       "coins": 4000,
       "xp": 7000,
-      "items": {"steel_scimitar": 1}
+      "items": {
+        "steel_scimitar": 1
+      }
     }
   },
   "bandit_hunter_1": {
@@ -1276,7 +1322,9 @@
     "rewards": {
       "coins": 6000,
       "xp": 10000,
-      "items": {"mithril_sword": 1}
+      "items": {
+        "mithril_sword": 1
+      }
     }
   },
   "orc_slayer_1": {
@@ -1308,7 +1356,9 @@
     "rewards": {
       "coins": 10000,
       "xp": 15000,
-      "items": {"adamantite_sword": 1}
+      "items": {
+        "adamantite_sword": 1
+      }
     }
   },
   "demon_slayer_1": {
@@ -1317,13 +1367,13 @@
     "skill": "combat",
     "tier": 7,
     "requires_previous": null,
-    "type": "kill_enemy",
-    "target": "demon",
-    "amount": 20,
-    "description": "Defeat 20 Lesser Demons",
+    "type": "boss",
+    "target": "demon_lord",
+    "amount": 1,
+    "description": "Defeat the Demon Lord",
     "rewards": {
-      "coins": 8000,
-      "xp": 12000,
+      "coins": 75000,
+      "xp": 75000,
       "items": {}
     }
   },
@@ -1333,14 +1383,14 @@
     "skill": "combat",
     "tier": 8,
     "requires_previous": "demon_slayer_1",
-    "type": "kill_enemy",
-    "target": "demon",
-    "amount": 40,
-    "description": "Defeat 40 Lesser Demons",
+    "type": "boss",
+    "target": "demon_lord",
+    "amount": 5,
+    "description": "Defeat the Demon Lord 5 times",
     "rewards": {
-      "coins": 16000,
-      "xp": 24000,
-      "items": {"runite_sword": 1}
+      "coins": 150000,
+      "xp": 150000,
+      "items": {}
     }
   },
   "dragon_slayer_1": {
@@ -1372,7 +1422,9 @@
     "rewards": {
       "coins": 30000,
       "xp": 40000,
-      "items": {"dragon_scale": 5}
+      "items": {
+        "dragon_scale": 5
+      }
     }
   },
   "melee_warrior_1": {
@@ -1580,7 +1632,9 @@
     "rewards": {
       "coins": 50000,
       "xp": 75000,
-      "items": {"dragon_bone": 5}
+      "items": {
+        "dragon_bone": 5
+      }
     }
   },
   "treasure_hunter_1": {
@@ -1692,39 +1746,9 @@
     "rewards": {
       "coins": 250000,
       "xp": 300000,
-      "items": {"dragon_bone": 25}
-    }
-  },
-  "demon_slayer_1": {
-    "id": "demon_slayer_1",
-    "name": "Demon Slayer I",
-    "skill": "combat",
-    "tier": 7,
-    "requires_previous": null,
-    "type": "boss",
-    "target": "demon_lord",
-    "amount": 1,
-    "description": "Defeat the Demon Lord",
-    "rewards": {
-      "coins": 75000,
-      "xp": 75000,
-      "items": {}
-    }
-  },
-  "demon_slayer_2": {
-    "id": "demon_slayer_2",
-    "name": "Demon Slayer II",
-    "skill": "combat",
-    "tier": 8,
-    "requires_previous": "demon_slayer_1",
-    "type": "boss",
-    "target": "demon_lord",
-    "amount": 5,
-    "description": "Defeat the Demon Lord 5 times",
-    "rewards": {
-      "coins": 150000,
-      "xp": 150000,
-      "items": {}
+      "items": {
+        "dragon_bone": 25
+      }
     }
   },
   "demon_slayer_3": {
@@ -1740,7 +1764,9 @@
     "rewards": {
       "coins": 400000,
       "xp": 500000,
-      "items": {"demon_horn": 10}
+      "items": {
+        "demon_horn": 10
+      }
     }
   },
   "kraken_killer_1": {
@@ -1837,6 +1863,984 @@
       "coins": 750000,
       "xp": 1000000,
       "items": {}
+    }
+  },
+  "firemaking_1": {
+    "id": "firemaking_1",
+    "name": "Firemaking I",
+    "skill": "firemaking",
+    "tier": 1,
+    "requires_previous": null,
+    "type": "gather",
+    "target": "ashes",
+    "amount": 500,
+    "description": "Burn 500 Logs",
+    "rewards": {
+      "coins": 1000,
+      "xp": 2000,
+      "items": {
+        "oak_log": 100
+      }
+    }
+  },
+  "firemaking_2": {
+    "id": "firemaking_2",
+    "name": "Firemaking II",
+    "skill": "firemaking",
+    "tier": 2,
+    "requires_previous": "firemaking_1",
+    "type": "gather",
+    "target": "oak_ashes",
+    "amount": 750,
+    "description": "Burn 750 Oak Logs",
+    "rewards": {
+      "coins": 2000,
+      "xp": 5000,
+      "items": {
+        "willow_log": 100
+      }
+    }
+  },
+  "firemaking_3": {
+    "id": "firemaking_3",
+    "name": "Firemaking III",
+    "skill": "firemaking",
+    "tier": 3,
+    "requires_previous": "firemaking_2",
+    "type": "gather",
+    "target": "willow_ashes",
+    "amount": 1100,
+    "description": "Burn 1100 Willow Logs",
+    "rewards": {
+      "coins": 4000,
+      "xp": 10000,
+      "items": {
+        "maple_log": 100
+      }
+    }
+  },
+  "firemaking_4": {
+    "id": "firemaking_4",
+    "name": "Firemaking IV",
+    "skill": "firemaking",
+    "tier": 4,
+    "requires_previous": "firemaking_3",
+    "type": "gather",
+    "target": "maple_ashes",
+    "amount": 1650,
+    "description": "Burn 1650 Maple Logs",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "items": {
+        "yew_log": 100
+      }
+    }
+  },
+  "firemaking_5": {
+    "id": "firemaking_5",
+    "name": "Firemaking V",
+    "skill": "firemaking",
+    "tier": 5,
+    "requires_previous": "firemaking_4",
+    "type": "gather",
+    "target": "yew_ashes",
+    "amount": 2450,
+    "description": "Burn 2450 Yew Logs",
+    "rewards": {
+      "coins": 16000,
+      "xp": 40000,
+      "items": {
+        "magic_log": 100
+      }
+    }
+  },
+  "firemaking_6": {
+    "id": "firemaking_6",
+    "name": "Firemaking VI",
+    "skill": "firemaking",
+    "tier": 6,
+    "requires_previous": "firemaking_5",
+    "type": "gather",
+    "target": "magic_ashes",
+    "amount": 3650,
+    "description": "Burn 3650 Magic Logs",
+    "rewards": {
+      "coins": 32000,
+      "xp": 80000,
+      "items": {}
+    }
+  },
+  "runecrafting_1": {
+    "id": "runecrafting_1",
+    "name": "Runecrafting I",
+    "skill": "runecrafting",
+    "tier": 1,
+    "requires_previous": null,
+    "type": "gather",
+    "target": "air_rune",
+    "amount": 500,
+    "description": "Craft 500 Air Runes",
+    "rewards": {
+      "coins": 1000,
+      "xp": 2000,
+      "items": {
+        "water_rune": 100
+      }
+    }
+  },
+  "runecrafting_2": {
+    "id": "runecrafting_2",
+    "name": "Runecrafting II",
+    "skill": "runecrafting",
+    "tier": 2,
+    "requires_previous": "runecrafting_1",
+    "type": "gather",
+    "target": "water_rune",
+    "amount": 750,
+    "description": "Craft 750 Water Runes",
+    "rewards": {
+      "coins": 2000,
+      "xp": 5000,
+      "items": {
+        "earth_rune": 100
+      }
+    }
+  },
+  "runecrafting_3": {
+    "id": "runecrafting_3",
+    "name": "Runecrafting III",
+    "skill": "runecrafting",
+    "tier": 3,
+    "requires_previous": "runecrafting_2",
+    "type": "gather",
+    "target": "earth_rune",
+    "amount": 1100,
+    "description": "Craft 1100 Earth Runes",
+    "rewards": {
+      "coins": 4000,
+      "xp": 10000,
+      "items": {
+        "fire_rune": 100
+      }
+    }
+  },
+  "runecrafting_4": {
+    "id": "runecrafting_4",
+    "name": "Runecrafting IV",
+    "skill": "runecrafting",
+    "tier": 4,
+    "requires_previous": "runecrafting_3",
+    "type": "gather",
+    "target": "fire_rune",
+    "amount": 1650,
+    "description": "Craft 1650 Fire Runes",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "items": {
+        "mind_rune": 100
+      }
+    }
+  },
+  "runecrafting_5": {
+    "id": "runecrafting_5",
+    "name": "Runecrafting V",
+    "skill": "runecrafting",
+    "tier": 5,
+    "requires_previous": "runecrafting_4",
+    "type": "gather",
+    "target": "mind_rune",
+    "amount": 2450,
+    "description": "Craft 2450 Mind Runes",
+    "rewards": {
+      "coins": 16000,
+      "xp": 40000,
+      "items": {
+        "chaos_rune": 100
+      }
+    }
+  },
+  "runecrafting_6": {
+    "id": "runecrafting_6",
+    "name": "Runecrafting VI",
+    "skill": "runecrafting",
+    "tier": 6,
+    "requires_previous": "runecrafting_5",
+    "type": "gather",
+    "target": "chaos_rune",
+    "amount": 3650,
+    "description": "Craft 3650 Chaos Runes",
+    "rewards": {
+      "coins": 32000,
+      "xp": 80000,
+      "items": {}
+    }
+  },
+  "herblore_1": {
+    "id": "herblore_1",
+    "name": "Herblore I",
+    "skill": "herblore",
+    "tier": 1,
+    "requires_previous": null,
+    "type": "craft",
+    "target": "attack_brew",
+    "amount": 100,
+    "description": "Brew 100 Attack Brews",
+    "rewards": {
+      "coins": 500,
+      "xp": 1000,
+      "items": {}
+    }
+  },
+  "herblore_2": {
+    "id": "herblore_2",
+    "name": "Herblore II",
+    "skill": "herblore",
+    "tier": 2,
+    "requires_previous": "herblore_1",
+    "type": "craft",
+    "target": "defense_potion",
+    "amount": 250,
+    "description": "Mix 250 Defense Potions",
+    "rewards": {
+      "coins": 1000,
+      "xp": 3000,
+      "items": {}
+    }
+  },
+  "herblore_3": {
+    "id": "herblore_3",
+    "name": "Herblore III",
+    "skill": "herblore",
+    "tier": 3,
+    "requires_previous": "herblore_2",
+    "type": "craft",
+    "target": "strength_potion",
+    "amount": 500,
+    "description": "Mix 500 Strength Potions",
+    "rewards": {
+      "coins": 2000,
+      "xp": 6000,
+      "items": {}
+    }
+  },
+  "herblore_4": {
+    "id": "herblore_4",
+    "name": "Herblore IV",
+    "skill": "herblore",
+    "tier": 4,
+    "requires_previous": "herblore_3",
+    "type": "craft",
+    "target": "ranging_potion",
+    "amount": 750,
+    "description": "Mix 750 Ranging Potions",
+    "rewards": {
+      "coins": 4000,
+      "xp": 12000,
+      "items": {}
+    }
+  },
+  "herblore_5": {
+    "id": "herblore_5",
+    "name": "Herblore V",
+    "skill": "herblore",
+    "tier": 5,
+    "requires_previous": "herblore_4",
+    "type": "craft",
+    "target": "magic_potion",
+    "amount": 1000,
+    "description": "Mix 1000 Magic Potions",
+    "rewards": {
+      "coins": 8000,
+      "xp": 20000,
+      "items": {}
+    }
+  },
+  "herblore_6": {
+    "id": "herblore_6",
+    "name": "Herblore VI",
+    "skill": "herblore",
+    "tier": 6,
+    "requires_previous": "herblore_5",
+    "type": "craft",
+    "target": "super_strength_potion",
+    "amount": 1500,
+    "description": "Mix 1500 Super Strength Potions",
+    "rewards": {
+      "coins": 16000,
+      "xp": 40000,
+      "items": {}
+    }
+  },
+  "combat_kills_7": {
+    "id": "combat_kills_7",
+    "name": "Monster Hunter VII",
+    "skill": "combat",
+    "tier": 7,
+    "requires_previous": "combat_kills_6",
+    "type": "kill",
+    "target": "any",
+    "amount": 1000,
+    "description": "Defeat 1000 enemies",
+    "rewards": {
+      "coins": 64000,
+      "xp": 160000,
+      "items": {}
+    }
+  },
+  "combat_kills_8": {
+    "id": "combat_kills_8",
+    "name": "Monster Hunter VIII",
+    "skill": "combat",
+    "tier": 8,
+    "requires_previous": "combat_kills_7",
+    "type": "kill",
+    "target": "any",
+    "amount": 1500,
+    "description": "Defeat 1500 enemies",
+    "rewards": {
+      "coins": 128000,
+      "xp": 320000,
+      "items": {}
+    }
+  },
+  "combat_kills_9": {
+    "id": "combat_kills_9",
+    "name": "Monster Hunter IX",
+    "skill": "combat",
+    "tier": 9,
+    "requires_previous": "combat_kills_8",
+    "type": "kill",
+    "target": "any",
+    "amount": 2250,
+    "description": "Defeat 2250 enemies",
+    "rewards": {
+      "coins": 256000,
+      "xp": 640000,
+      "items": {}
+    }
+  },
+  "combat_kills_10": {
+    "id": "combat_kills_10",
+    "name": "Monster Hunter X",
+    "skill": "combat",
+    "tier": 10,
+    "requires_previous": "combat_kills_9",
+    "type": "kill",
+    "target": "any",
+    "amount": 3400,
+    "description": "Defeat 3400 enemies",
+    "rewards": {
+      "coins": 512000,
+      "xp": 1280000,
+      "items": {}
+    }
+  },
+  "combat_kills_11": {
+    "id": "combat_kills_11",
+    "name": "Monster Hunter XI",
+    "skill": "combat",
+    "tier": 11,
+    "requires_previous": "combat_kills_10",
+    "type": "kill",
+    "target": "any",
+    "amount": 5100,
+    "description": "Defeat 5100 enemies",
+    "rewards": {
+      "coins": 1024000,
+      "xp": 2560000,
+      "items": {}
+    }
+  },
+  "combat_kills_12": {
+    "id": "combat_kills_12",
+    "name": "Monster Hunter XII",
+    "skill": "combat",
+    "tier": 12,
+    "requires_previous": "combat_kills_11",
+    "type": "kill",
+    "target": "any",
+    "amount": 7650,
+    "description": "Defeat 7650 enemies",
+    "rewards": {
+      "coins": 2048000,
+      "xp": 5120000,
+      "items": {}
+    }
+  },
+  "zombie_slayer_1": {
+    "id": "zombie_slayer_1",
+    "name": "Zombie Slayer I",
+    "skill": "combat",
+    "tier": 2,
+    "requires_previous": null,
+    "type": "kill_enemy",
+    "target": "zombie",
+    "amount": 35,
+    "description": "Defeat 35 Zombies",
+    "rewards": {
+      "coins": 2000,
+      "xp": 3500,
+      "items": {}
+    }
+  },
+  "zombie_slayer_2": {
+    "id": "zombie_slayer_2",
+    "name": "Zombie Slayer II",
+    "skill": "combat",
+    "tier": 3,
+    "requires_previous": "zombie_slayer_1",
+    "type": "kill_enemy",
+    "target": "zombie",
+    "amount": 70,
+    "description": "Defeat 70 Zombies",
+    "rewards": {
+      "coins": 4000,
+      "xp": 7000,
+      "items": {
+        "steel_battleaxe": 1
+      }
+    }
+  },
+  "hellhound_slayer_1": {
+    "id": "hellhound_slayer_1",
+    "name": "Hellhound Slayer I",
+    "skill": "combat",
+    "tier": 4,
+    "requires_previous": null,
+    "type": "kill_enemy",
+    "target": "hellhound",
+    "amount": 25,
+    "description": "Defeat 25 Hellhounds",
+    "rewards": {
+      "coins": 5000,
+      "xp": 8000,
+      "items": {}
+    }
+  },
+  "hellhound_slayer_2": {
+    "id": "hellhound_slayer_2",
+    "name": "Hellhound Slayer II",
+    "skill": "combat",
+    "tier": 5,
+    "requires_previous": "hellhound_slayer_1",
+    "type": "kill_enemy",
+    "target": "hellhound",
+    "amount": 50,
+    "description": "Defeat 50 Hellhounds",
+    "rewards": {
+      "coins": 10000,
+      "xp": 15000,
+      "items": {
+        "adamantite_scimitar": 1
+      }
+    }
+  },
+  "troll_slayer_1": {
+    "id": "troll_slayer_1",
+    "name": "Troll Slayer I",
+    "skill": "combat",
+    "tier": 5,
+    "requires_previous": null,
+    "type": "kill_enemy",
+    "target": "troll",
+    "amount": 20,
+    "description": "Defeat 20 Mountain Trolls",
+    "rewards": {
+      "coins": 6000,
+      "xp": 10000,
+      "items": {}
+    }
+  },
+  "troll_slayer_2": {
+    "id": "troll_slayer_2",
+    "name": "Troll Slayer II",
+    "skill": "combat",
+    "tier": 6,
+    "requires_previous": "troll_slayer_1",
+    "type": "kill_enemy",
+    "target": "troll",
+    "amount": 40,
+    "description": "Defeat 40 Mountain Trolls",
+    "rewards": {
+      "coins": 12000,
+      "xp": 20000,
+      "items": {
+        "adamantite_warhammer": 1
+      }
+    }
+  },
+  "fire_giant_slayer_1": {
+    "id": "fire_giant_slayer_1",
+    "name": "Fire Giant Slayer I",
+    "skill": "combat",
+    "tier": 7,
+    "requires_previous": null,
+    "type": "kill_enemy",
+    "target": "fire_giant",
+    "amount": 15,
+    "description": "Defeat 15 Fire Giants",
+    "rewards": {
+      "coins": 8000,
+      "xp": 12000,
+      "items": {}
+    }
+  },
+  "fire_giant_slayer_2": {
+    "id": "fire_giant_slayer_2",
+    "name": "Fire Giant Slayer II",
+    "skill": "combat",
+    "tier": 8,
+    "requires_previous": "fire_giant_slayer_1",
+    "type": "kill_enemy",
+    "target": "fire_giant",
+    "amount": 30,
+    "description": "Defeat 30 Fire Giants",
+    "rewards": {
+      "coins": 16000,
+      "xp": 24000,
+      "items": {
+        "runite_scimitar": 1
+      }
+    }
+  },
+  "ancient_guardian_slayer_1": {
+    "id": "ancient_guardian_slayer_1",
+    "name": "Ancient Guardian Slayer I",
+    "skill": "combat",
+    "tier": 9,
+    "requires_previous": null,
+    "type": "kill_enemy",
+    "target": "ancient_guardian",
+    "amount": 10,
+    "description": "Defeat 10 Ancient Guardians",
+    "rewards": {
+      "coins": 15000,
+      "xp": 20000,
+      "items": {}
+    }
+  },
+  "ancient_guardian_slayer_2": {
+    "id": "ancient_guardian_slayer_2",
+    "name": "Ancient Guardian Slayer II",
+    "skill": "combat",
+    "tier": 10,
+    "requires_previous": "ancient_guardian_slayer_1",
+    "type": "kill_enemy",
+    "target": "ancient_guardian",
+    "amount": 20,
+    "description": "Defeat 20 Ancient Guardians",
+    "rewards": {
+      "coins": 30000,
+      "xp": 40000,
+      "items": {
+        "dragon_scimitar": 1
+      }
+    }
+  },
+  "lich_slayer_1": {
+    "id": "lich_slayer_1",
+    "name": "Lich Slayer I",
+    "skill": "combat",
+    "tier": 9,
+    "requires_previous": null,
+    "type": "kill_enemy",
+    "target": "lich",
+    "amount": 10,
+    "description": "Defeat 10 Liches",
+    "rewards": {
+      "coins": 15000,
+      "xp": 20000,
+      "items": {}
+    }
+  },
+  "lich_slayer_2": {
+    "id": "lich_slayer_2",
+    "name": "Lich Slayer II",
+    "skill": "combat",
+    "tier": 10,
+    "requires_previous": "lich_slayer_1",
+    "type": "kill_enemy",
+    "target": "lich",
+    "amount": 20,
+    "description": "Defeat 20 Liches",
+    "rewards": {
+      "coins": 30000,
+      "xp": 40000,
+      "items": {
+        "death_rune": 500
+      }
+    }
+  },
+  "dungeon_imp_1": {
+    "id": "dungeon_imp_1",
+    "name": "Dungeon Explorer VII",
+    "skill": "combat",
+    "tier": 1,
+    "requires_previous": "dungeon_fortress_1",
+    "type": "dungeon",
+    "target": "imp_cavern",
+    "amount": 5,
+    "description": "Complete the Imp Cavern 5 times",
+    "rewards": {
+      "coins": 1000,
+      "xp": 2000,
+      "items": {}
+    }
+  },
+  "dungeon_infernal_1": {
+    "id": "dungeon_infernal_1",
+    "name": "Dungeon Master IV",
+    "skill": "combat",
+    "tier": 10,
+    "requires_previous": "dungeon_dragon_1",
+    "type": "dungeon",
+    "target": "infernal_stronghold",
+    "amount": 5,
+    "description": "Complete the Infernal Stronghold 5 times",
+    "rewards": {
+      "coins": 150000,
+      "xp": 150000,
+      "items": {}
+    }
+  },
+  "dungeon_ancient_1": {
+    "id": "dungeon_ancient_1",
+    "name": "Dungeon Master V",
+    "skill": "combat",
+    "tier": 11,
+    "requires_previous": "dungeon_infernal_1",
+    "type": "dungeon",
+    "target": "ancient_temple",
+    "amount": 5,
+    "description": "Complete the Ancient Temple 5 times",
+    "rewards": {
+      "coins": 200000,
+      "xp": 200000,
+      "items": {}
+    }
+  },
+  "kbd_slayer_4": {
+    "id": "kbd_slayer_4",
+    "name": "King Black Dragon Slayer IV",
+    "skill": "combat",
+    "tier": 9,
+    "requires_previous": "kbd_slayer_3",
+    "type": "boss",
+    "target": "king_black_dragon",
+    "amount": 50,
+    "description": "Defeat the King Black Dragon 50 times",
+    "rewards": {
+      "coins": 500000,
+      "xp": 500000,
+      "items": {
+        "dragon_bone": 50
+      }
+    }
+  },
+  "demon_slayer_4": {
+    "id": "demon_slayer_4",
+    "name": "Demon Slayer IV",
+    "skill": "combat",
+    "tier": 10,
+    "requires_previous": "demon_slayer_3",
+    "type": "boss",
+    "target": "demon_lord",
+    "amount": 50,
+    "description": "Defeat the Demon Lord 50 times",
+    "rewards": {
+      "coins": 750000,
+      "xp": 750000,
+      "items": {
+        "demon_horn": 25
+      }
+    }
+  },
+  "kraken_killer_4": {
+    "id": "kraken_killer_4",
+    "name": "Kraken Killer IV",
+    "skill": "combat",
+    "tier": 11,
+    "requires_previous": "kraken_killer_3",
+    "type": "boss",
+    "target": "kraken",
+    "amount": 50,
+    "description": "Defeat the Kraken 50 times",
+    "rewards": {
+      "coins": 1000000,
+      "xp": 1000000,
+      "items": {}
+    }
+  },
+  "balrog_bane_4": {
+    "id": "balrog_bane_4",
+    "name": "Balrog Bane IV",
+    "skill": "combat",
+    "tier": 12,
+    "requires_previous": "balrog_bane_3",
+    "type": "boss",
+    "target": "balrog",
+    "amount": 50,
+    "description": "Defeat the Balrog 50 times",
+    "rewards": {
+      "coins": 1500000,
+      "xp": 1500000,
+      "items": {}
+    }
+  },
+  "melee_warrior_4": {
+    "id": "melee_warrior_4",
+    "name": "Melee Warrior IV",
+    "skill": "combat",
+    "tier": 8,
+    "requires_previous": "melee_warrior_3",
+    "type": "dungeon_melee_only",
+    "target": "orc_stronghold",
+    "amount": 1,
+    "description": "Complete Orc Stronghold using only melee combat",
+    "rewards": {
+      "coins": 35000,
+      "xp": 50000,
+      "items": {}
+    }
+  },
+  "melee_warrior_5": {
+    "id": "melee_warrior_5",
+    "name": "Melee Warrior V",
+    "skill": "combat",
+    "tier": 10,
+    "requires_previous": "melee_warrior_4",
+    "type": "dungeon_melee_only",
+    "target": "dragon_lair",
+    "amount": 1,
+    "description": "Complete Dragon Lair using only melee combat",
+    "rewards": {
+      "coins": 75000,
+      "xp": 100000,
+      "items": {}
+    }
+  },
+  "ranger_elite_4": {
+    "id": "ranger_elite_4",
+    "name": "Ranger Elite IV",
+    "skill": "combat",
+    "tier": 8,
+    "requires_previous": "ranger_elite_3",
+    "type": "dungeon_ranged_only",
+    "target": "orc_stronghold",
+    "amount": 1,
+    "description": "Complete Orc Stronghold using only ranged combat",
+    "rewards": {
+      "coins": 35000,
+      "xp": 50000,
+      "items": {}
+    }
+  },
+  "ranger_elite_5": {
+    "id": "ranger_elite_5",
+    "name": "Ranger Elite V",
+    "skill": "combat",
+    "tier": 10,
+    "requires_previous": "ranger_elite_4",
+    "type": "dungeon_ranged_only",
+    "target": "dragon_lair",
+    "amount": 1,
+    "description": "Complete Dragon Lair using only ranged combat",
+    "rewards": {
+      "coins": 75000,
+      "xp": 100000,
+      "items": {}
+    }
+  },
+  "mage_master_4": {
+    "id": "mage_master_4",
+    "name": "Mage Master IV",
+    "skill": "combat",
+    "tier": 8,
+    "requires_previous": "mage_master_3",
+    "type": "dungeon_magic_only",
+    "target": "orc_stronghold",
+    "amount": 1,
+    "description": "Complete Orc Stronghold using only magic combat",
+    "rewards": {
+      "coins": 35000,
+      "xp": 50000,
+      "items": {}
+    }
+  },
+  "mage_master_5": {
+    "id": "mage_master_5",
+    "name": "Mage Master V",
+    "skill": "combat",
+    "tier": 10,
+    "requires_previous": "mage_master_4",
+    "type": "dungeon_magic_only",
+    "target": "dragon_lair",
+    "amount": 1,
+    "description": "Complete Dragon Lair using only magic combat",
+    "rewards": {
+      "coins": 75000,
+      "xp": 100000,
+      "items": {}
+    }
+  },
+  "iron_stomach_5": {
+    "id": "iron_stomach_5",
+    "name": "Iron Stomach V",
+    "skill": "combat",
+    "tier": 10,
+    "requires_previous": "iron_stomach_4",
+    "type": "dungeon_no_food",
+    "target": "infernal_stronghold",
+    "amount": 1,
+    "description": "Complete Infernal Stronghold without using any food",
+    "rewards": {
+      "coins": 100000,
+      "xp": 150000,
+      "items": {
+        "dragon_bone": 10
+      }
+    }
+  },
+  "iron_stomach_6": {
+    "id": "iron_stomach_6",
+    "name": "Iron Stomach VI",
+    "skill": "combat",
+    "tier": 11,
+    "requires_previous": "iron_stomach_5",
+    "type": "dungeon_no_food",
+    "target": "ancient_temple",
+    "amount": 1,
+    "description": "Complete Ancient Temple without using any food",
+    "rewards": {
+      "coins": 150000,
+      "xp": 200000,
+      "items": {
+        "death_rune": 250
+      }
+    }
+  },
+  "treasure_hunter_5": {
+    "id": "treasure_hunter_5",
+    "name": "Treasure Hunter V",
+    "skill": "combat",
+    "tier": 8,
+    "requires_previous": "treasure_hunter_4",
+    "type": "collect",
+    "target": "hellhound_fang",
+    "amount": 10,
+    "description": "Collect 10 Hellhound Fangs from combat",
+    "rewards": {
+      "coins": 15000,
+      "xp": 20000,
+      "items": {}
+    }
+  },
+  "treasure_hunter_6": {
+    "id": "treasure_hunter_6",
+    "name": "Treasure Hunter VI",
+    "skill": "combat",
+    "tier": 9,
+    "requires_previous": "treasure_hunter_5",
+    "type": "collect",
+    "target": "troll_bone",
+    "amount": 15,
+    "description": "Collect 15 Troll Bones from combat",
+    "rewards": {
+      "coins": 20000,
+      "xp": 30000,
+      "items": {}
+    }
+  },
+  "slayer_1": {
+    "id": "slayer_1",
+    "name": "Slayer I",
+    "skill": "slayer",
+    "tier": 1,
+    "requires_previous": null,
+    "type": "slayer_task",
+    "target": "any",
+    "amount": 5,
+    "description": "Complete 5 Slayer tasks",
+    "rewards": {
+      "coins": 1500,
+      "xp": 2500
+    }
+  },
+  "slayer_2": {
+    "id": "slayer_2",
+    "name": "Slayer II",
+    "skill": "slayer",
+    "tier": 2,
+    "requires_previous": "slayer_1",
+    "type": "slayer_task",
+    "target": "any",
+    "amount": 15,
+    "description": "Complete 15 Slayer tasks",
+    "rewards": {
+      "coins": 4000,
+      "xp": 6000
+    }
+  },
+  "slayer_3": {
+    "id": "slayer_3",
+    "name": "Slayer III",
+    "skill": "slayer",
+    "tier": 3,
+    "requires_previous": "slayer_2",
+    "type": "slayer_task",
+    "target": "any",
+    "amount": 40,
+    "description": "Complete 40 Slayer tasks",
+    "rewards": {
+      "coins": 10000,
+      "xp": 15000
+    }
+  },
+  "slayer_4": {
+    "id": "slayer_4",
+    "name": "Slayer IV",
+    "skill": "slayer",
+    "tier": 4,
+    "requires_previous": "slayer_3",
+    "type": "slayer_task",
+    "target": "any",
+    "amount": 100,
+    "description": "Complete 100 Slayer tasks",
+    "rewards": {
+      "coins": 25000,
+      "xp": 40000
+    }
+  },
+  "slayer_5": {
+    "id": "slayer_5",
+    "name": "Slayer V",
+    "skill": "slayer",
+    "tier": 5,
+    "requires_previous": "slayer_4",
+    "type": "slayer_task",
+    "target": "any",
+    "amount": 250,
+    "description": "Complete 250 Slayer tasks",
+    "rewards": {
+      "coins": 60000,
+      "xp": 100000
+    }
+  },
+  "slayer_6": {
+    "id": "slayer_6",
+    "name": "Slayer VI",
+    "skill": "slayer",
+    "tier": 6,
+    "requires_previous": "slayer_5",
+    "type": "slayer_task",
+    "target": "any",
+    "amount": 500,
+    "description": "Complete 500 Slayer tasks",
+    "rewards": {
+      "coins": 150000,
+      "xp": 250000
     }
   }
 }

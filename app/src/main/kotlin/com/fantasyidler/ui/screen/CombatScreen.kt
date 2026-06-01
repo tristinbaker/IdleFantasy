@@ -44,41 +44,54 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import kotlinx.coroutines.launch
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import kotlin.math.roundToInt
 import com.fantasyidler.BuildConfig
 import com.fantasyidler.R
 import com.fantasyidler.simulator.CombatSimulator
 import com.fantasyidler.data.json.BossData
+import com.fantasyidler.data.json.CookingRecipe
 import com.fantasyidler.data.json.DungeonData
 import com.fantasyidler.data.json.EnemyData
 import com.fantasyidler.data.json.EquipmentData
 import com.fantasyidler.data.json.SpellData
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
+import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.SessionFrame
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.CombatSessionResult
 import com.fantasyidler.ui.viewmodel.CombatViewModel
+import com.fantasyidler.ui.viewmodel.InventoryViewModel
 import com.fantasyidler.ui.viewmodel.combatLevelFrom
+import com.fantasyidler.ui.viewmodel.slotDisplayName
 import com.fantasyidler.ui.viewmodel.xpProgressFraction
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatCoins
 import com.fantasyidler.util.formatXp
 import com.fantasyidler.util.toCountdown
+import com.fantasyidler.util.toTitleCase
 import kotlinx.coroutines.delay
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -86,10 +99,17 @@ import kotlinx.serialization.json.Json
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CombatScreen(
-    viewModel: CombatViewModel = hiltViewModel(),
+    viewModel:    CombatViewModel    = hiltViewModel(),
+    inventoryVm:  InventoryViewModel = hiltViewModel(),
+    startOnGear:  Boolean            = false,
 ) {
     val state            by viewModel.uiState.collectAsState()
+    val invState         by inventoryVm.uiState.collectAsState()
+    val context           = LocalContext.current
     val snackbarHostState = remember { SnackbarHostState() }
+    val visibleDungeons   = remember(state.unlockedDungeons) {
+        viewModel.dungeonList.filter { !it.loreUnlockOnly || it.name in state.unlockedDungeons }
+    }
 
     LaunchedEffect(state.snackbarMessage) {
         state.snackbarMessage?.let {
@@ -126,81 +146,145 @@ fun CombatScreen(
 
         val combatSession = state.combatSession
         if (combatSession != null) {
-            var activeTab by remember { mutableIntStateOf(0) }
+            val pagerState = rememberPagerState(initialPage = if (startOnGear) 2 else 0, pageCount = { 3 })
+            val scope = rememberCoroutineScope()
             Column(Modifier.padding(padding).fillMaxSize()) {
-                TabRow(selectedTabIndex = activeTab) {
+                TabRow(selectedTabIndex = pagerState.currentPage) {
                     Tab(
-                        selected = activeTab == 0,
-                        onClick  = { activeTab = 0 },
+                        selected = pagerState.currentPage == 0,
+                        onClick  = { scope.launch { pagerState.animateScrollToPage(0) } },
                         text     = { Text(stringResource(R.string.combat_log_label)) },
                     )
                     Tab(
-                        selected = activeTab == 1,
-                        onClick  = { activeTab = 1 },
+                        selected = pagerState.currentPage == 1,
+                        onClick  = { scope.launch { pagerState.animateScrollToPage(1) } },
                         text     = { Text(stringResource(R.string.label_dungeons_tab)) },
                     )
+                    Tab(
+                        selected = pagerState.currentPage == 2,
+                        onClick  = { scope.launch { pagerState.animateScrollToPage(2) } },
+                        text     = { Text(stringResource(R.string.label_equipment)) },
+                    )
                 }
-                when (activeTab) {
-                    0 -> CombatSessionBanner(
-                        session        = combatSession,
-                        dungeons       = viewModel.dungeonList,
-                        bosses         = viewModel.bossList,
-                        enemies        = viewModel.enemyMap,
-                        skillLevels    = state.skillLevels,
-                        attackBonus    = state.totalAttackBonus,
-                        strengthBonus  = state.totalStrengthBonus,
-                        defenseBonus   = state.totalDefenseBonus,
-                        equippedFood   = state.equippedFood,
-                        foodHealValues = viewModel.foodHealValues,
-                        onCollect      = viewModel::collectSession,
-                        onAbandon      = viewModel::abandonSession,
-                        onDebugFinish  = viewModel::debugFinishSession,
-                    )
-                    1 -> CombatSelectionList(
-                        dungeons        = viewModel.dungeonList,
-                        bosses          = viewModel.bossList,
-                        skillLevels     = state.skillLevels,
-                        survivalRatings = state.dungeonSurvivalRatings,
-                        dungeonRuns     = state.dungeonRuns,
-                        onDungeon       = viewModel::selectDungeon,
-                        onBoss          = viewModel::selectBoss,
-                    )
+                HorizontalPager(state = pagerState, modifier = Modifier.weight(1f)) { page ->
+                    when (page) {
+                        0 -> CombatSessionBanner(
+                            session        = combatSession,
+                            dungeons       = visibleDungeons,
+                            bosses         = viewModel.bossList,
+                            enemies        = viewModel.enemyMap,
+                            skillLevels    = state.skillLevels,
+                            attackBonus    = state.totalAttackBonus,
+                            strengthBonus  = state.totalStrengthBonus,
+                            defenseBonus   = state.totalDefenseBonus,
+                            equippedFood   = state.equippedFood,
+                            foodHealValues = viewModel.foodHealValues,
+                            onCollect      = viewModel::collectSession,
+                            onAbandon      = viewModel::abandonSession,
+                            onDebugFinish  = viewModel::debugFinishSession,
+                        )
+                        1 -> CombatSelectionList(
+                            dungeons         = visibleDungeons,
+                            bosses           = viewModel.bossList,
+                            skillLevels      = state.skillLevels,
+                            survivalRatings  = state.dungeonSurvivalRatings,
+                            dungeonRuns      = state.dungeonRuns,
+                            unlockedDungeons = state.unlockedDungeons,
+                            onDungeon        = viewModel::selectDungeon,
+                            onBoss           = viewModel::selectBoss,
+                        )
+                        else -> CombatGearTab(
+                            equipped       = invState.equipped,
+                            inventory      = invState.inventory,
+                            equippedFood   = invState.equippedFood,
+                            foodHealValues = inventoryVm.foodHealValues,
+                            cookingRecipes = inventoryVm.cookingRecipes,
+                            allEquipment   = inventoryVm.allEquipment,
+                            context        = context,
+                            onSlotTap      = inventoryVm::openSlotPicker,
+                            onUnequip      = inventoryVm::unequip,
+                            onEquipBest    = inventoryVm::equipBestGear,
+                            onEquipFood    = inventoryVm::equipFood,
+                            onUnequipFood  = inventoryVm::unequipFood,
+                        )
+                    }
                 }
             }
         } else {
-            var selectedTab by remember { mutableIntStateOf(0) }
-            Column(Modifier.padding(padding)) {
-                TabRow(selectedTabIndex = selectedTab) {
+            val pagerState = rememberPagerState(initialPage = if (startOnGear) 1 else 0, pageCount = { 3 })
+            val scope = rememberCoroutineScope()
+            Column(Modifier.padding(padding).fillMaxSize()) {
+                TabRow(selectedTabIndex = pagerState.currentPage) {
                     Tab(
-                        selected = selectedTab == 0,
-                        onClick  = { selectedTab = 0 },
+                        selected = pagerState.currentPage == 0,
+                        onClick  = { scope.launch { pagerState.animateScrollToPage(0) } },
                         text     = { Text(stringResource(R.string.label_dungeons_tab)) },
                     )
                     Tab(
-                        selected = selectedTab == 1,
-                        onClick  = { selectedTab = 1 },
+                        selected = pagerState.currentPage == 1,
+                        onClick  = { scope.launch { pagerState.animateScrollToPage(1) } },
+                        text     = { Text(stringResource(R.string.label_equipment)) },
+                    )
+                    Tab(
+                        selected = pagerState.currentPage == 2,
+                        onClick  = { scope.launch { pagerState.animateScrollToPage(2) } },
                         text     = { Text(stringResource(R.string.label_skills)) },
                     )
                 }
-                when (selectedTab) {
-                    0 -> CombatSelectionList(
-                        dungeons         = viewModel.dungeonList,
-                        bosses           = viewModel.bossList,
-                        skillLevels      = state.skillLevels,
-                        survivalRatings  = state.dungeonSurvivalRatings,
-                        dungeonRuns      = state.dungeonRuns,
-                        onDungeon        = viewModel::selectDungeon,
-                        onBoss           = viewModel::selectBoss,
-                    )
-                    1 -> CombatSkillsTab(
-                        skillLevels        = state.skillLevels,
-                        skillXp            = state.skillXp,
-                        totalAttackBonus   = state.totalAttackBonus,
-                        totalStrengthBonus = state.totalStrengthBonus,
-                        totalDefenseBonus  = state.totalDefenseBonus,
-                    )
+                HorizontalPager(state = pagerState, modifier = Modifier.weight(1f)) { page ->
+                    when (page) {
+                        0 -> CombatSelectionList(
+                            dungeons         = visibleDungeons,
+                            bosses           = viewModel.bossList,
+                            skillLevels      = state.skillLevels,
+                            survivalRatings  = state.dungeonSurvivalRatings,
+                            dungeonRuns      = state.dungeonRuns,
+                            unlockedDungeons = state.unlockedDungeons,
+                            onDungeon        = viewModel::selectDungeon,
+                            onBoss           = viewModel::selectBoss,
+                        )
+                        1 -> CombatGearTab(
+                            equipped       = invState.equipped,
+                            inventory      = invState.inventory,
+                            equippedFood   = invState.equippedFood,
+                            foodHealValues = inventoryVm.foodHealValues,
+                            cookingRecipes = inventoryVm.cookingRecipes,
+                            allEquipment   = inventoryVm.allEquipment,
+                            context        = context,
+                            onSlotTap      = inventoryVm::openSlotPicker,
+                            onUnequip      = inventoryVm::unequip,
+                            onEquipBest    = inventoryVm::equipBestGear,
+                            onEquipFood    = inventoryVm::equipFood,
+                            onUnequipFood  = inventoryVm::unequipFood,
+                        )
+                        else -> CombatSkillsTab(
+                            skillLevels        = state.skillLevels,
+                            skillXp            = state.skillXp,
+                            totalAttackBonus   = state.totalAttackBonus,
+                            totalStrengthBonus = state.totalStrengthBonus,
+                            totalDefenseBonus  = state.totalDefenseBonus,
+                        )
+                    }
                 }
             }
+        }
+    }
+
+    // Gear equip-picker sheet
+    invState.pickingSlot?.let { slot ->
+        val gearSheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+        ModalBottomSheet(
+            onDismissRequest = inventoryVm::dismissSlotPicker,
+            sheetState       = gearSheetState,
+            dragHandle       = { BottomSheetDefaults.DragHandle() },
+        ) {
+            EquipPickerSheet(
+                slot       = slot,
+                candidates = invState.candidatesFor(slot, inventoryVm.allEquipment),
+                context    = context,
+                onEquip    = { itemKey -> inventoryVm.equip(itemKey, slot) },
+                onDismiss  = inventoryVm::dismissSlotPicker,
+            )
         }
     }
 
@@ -213,14 +297,20 @@ fun CombatScreen(
             dragHandle       = { BottomSheetDefaults.DragHandle() },
         ) {
             BossInfoSheet(
-                boss              = boss,
-                skillLevels       = state.skillLevels,
-                availablePotions  = state.availablePotions,
-                selectedPotionKey = state.selectedPotionKey,
-                isStarting        = state.startingSession,
-                onPotionSelected  = viewModel::selectPotion,
-                onStart           = { viewModel.startBossSession(boss.id) },
-                onDismiss         = { viewModel.selectBoss(null) },
+                boss                 = boss,
+                skillLevels          = state.skillLevels,
+                equippedWeapon       = state.equippedWeapon,
+                equippedWeapons      = state.equippedWeapons,
+                selectedWeaponSlot   = state.selectedWeaponSlot,
+                inventory            = state.inventory,
+                availablePotions     = state.availablePotions,
+                potionEffects        = viewModel.potionEffects,
+                selectedPotionKey    = state.selectedPotionKey,
+                isStarting           = state.startingSession,
+                onWeaponSlotSelected = viewModel::selectWeaponSlot,
+                onPotionSelected     = viewModel::selectPotion,
+                onStart              = { viewModel.startBossSession(boss.id) },
+                onDismiss            = { viewModel.selectBoss(null) },
             )
         }
     }
@@ -234,19 +324,23 @@ fun CombatScreen(
             dragHandle       = { BottomSheetDefaults.DragHandle() },
         ) {
             DungeonInfoSheet(
-                dungeon           = dungeon,
-                skillLevels       = state.skillLevels,
-                equippedWeapon    = state.equippedWeapon,
-                inventory         = state.inventory,
-                availableSpells   = viewModel.availableSpells(state.skillLevels),
-                selectedSpell     = state.selectedSpell,
-                availablePotions  = state.availablePotions,
-                selectedPotionKey = state.selectedPotionKey,
-                isStarting        = state.startingSession,
-                onSpellSelected   = viewModel::selectSpell,
-                onPotionSelected  = viewModel::selectPotion,
-                onStart           = { viewModel.startDungeonSession(dungeon.name) },
-                onDismiss         = { viewModel.selectDungeon(null) },
+                dungeon              = dungeon,
+                skillLevels          = state.skillLevels,
+                equippedWeapon       = state.equippedWeapon,
+                equippedWeapons      = state.equippedWeapons,
+                selectedWeaponSlot   = state.selectedWeaponSlot,
+                inventory            = state.inventory,
+                availableSpells      = viewModel.availableSpells(state.skillLevels),
+                selectedSpell        = state.selectedSpell,
+                availablePotions     = state.availablePotions,
+                potionEffects        = viewModel.potionEffects,
+                selectedPotionKey    = state.selectedPotionKey,
+                isStarting           = state.startingSession,
+                onWeaponSlotSelected = viewModel::selectWeaponSlot,
+                onSpellSelected      = viewModel::selectSpell,
+                onPotionSelected     = viewModel::selectPotion,
+                onStart              = { viewModel.startDungeonSession(dungeon.name) },
+                onDismiss            = { viewModel.selectDungeon(null) },
             )
         }
     }
@@ -297,6 +391,7 @@ private fun CombatSelectionList(
     skillLevels: Map<String, Int>,
     survivalRatings: Map<String, CombatSimulator.SurvivalRating> = emptyMap(),
     dungeonRuns: Map<String, Int> = emptyMap(),
+    unlockedDungeons: List<String> = emptyList(),
     modifier: Modifier = Modifier,
     onDungeon: (DungeonData) -> Unit,
     onBoss: (BossData) -> Unit,
@@ -306,12 +401,19 @@ private fun CombatSelectionList(
     LazyColumn(modifier.fillMaxSize()) {
         item { CombatSectionHeader(stringResource(R.string.label_dungeons_tab)) }
         items(dungeons) { dungeon ->
+            val unlocked = if (dungeon.loreUnlockOnly) {
+                unlockedDungeons.contains(dungeon.name)
+            } else {
+                combatLvl >= dungeon.recommendedLevel - UNLOCK_TOLERANCE
+            }
             DungeonRow(
                 dungeon        = dungeon,
-                unlocked       = combatLvl >= dungeon.recommendedLevel - UNLOCK_TOLERANCE,
+                unlocked       = unlocked,
                 survivalRating = survivalRatings[dungeon.name],
                 runCount       = dungeonRuns[dungeon.name] ?: 0,
                 onTap          = { onDungeon(dungeon) },
+                loreLockedHint = if (dungeon.loreUnlockOnly && !unlocked)
+                    stringResource(R.string.expedition_discover_hint) else null,
             )
         }
         item { CombatSectionHeader(stringResource(R.string.combat_solo_bosses)) }
@@ -320,6 +422,87 @@ private fun CombatSelectionList(
                 boss     = boss,
                 unlocked = combatLvl >= boss.combatLevelRequired,
                 onTap    = { onBoss(boss) },
+            )
+        }
+        item { Spacer(Modifier.height(16.dp)) }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Combat gear tab
+// ---------------------------------------------------------------------------
+
+@Composable
+private fun CombatGearTab(
+    equipped: Map<String, String?>,
+    inventory: Map<String, Int>,
+    equippedFood: Map<String, Int>,
+    foodHealValues: Map<String, Int>,
+    cookingRecipes: Map<String, CookingRecipe>,
+    allEquipment: Map<String, EquipmentData>,
+    context: android.content.Context,
+    onSlotTap: (String) -> Unit,
+    onUnequip: (String) -> Unit,
+    onEquipBest: () -> Unit,
+    onEquipFood: (String) -> Unit,
+    onUnequipFood: (String) -> Unit,
+) {
+    val cookedItemKeys = remember(cookingRecipes) {
+        cookingRecipes.values.map { it.cookedItem }.toSet()
+    }
+    val foodInInventory = remember(inventory, cookedItemKeys) {
+        inventory.filterKeys { it in cookedItemKeys }.entries.toList()
+    }
+
+    LazyColumn(modifier = Modifier.fillMaxSize()) {
+        item { SlotSectionHeader(stringResource(R.string.profile_food_dungeon)) }
+        if (foodInInventory.isEmpty()) {
+            item {
+                Text(
+                    text     = stringResource(R.string.profile_no_food),
+                    style    = MaterialTheme.typography.bodySmall,
+                    color    = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                )
+            }
+        } else {
+            items(foodInInventory, key = { "food_${it.key}" }) { (key, qty) ->
+                FoodRow(
+                    itemKey    = key,
+                    qty        = qty,
+                    healValue  = foodHealValues[key] ?: 0,
+                    isEquipped = key in equippedFood,
+                    context    = context,
+                    onEquip    = { onEquipFood(key) },
+                    onUnequip  = { onUnequipFood(key) },
+                )
+            }
+        }
+        item {
+            Button(
+                onClick  = onEquipBest,
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp),
+            ) {
+                Text(stringResource(R.string.profile_equip_best))
+            }
+        }
+        item { SlotSectionHeader(stringResource(R.string.profile_weapons)) }
+        items(EquipSlot.WEAPON_SLOTS) { slot ->
+            EquipSlotRow(
+                slotName  = slotDisplayName(slot),
+                itemKey   = equipped[slot],
+                xpLabel   = weaponXpLabel(allEquipment[equipped[slot]]?.combatStyle, context),
+                onTap     = { onSlotTap(slot) },
+                onUnequip = { onUnequip(slot) },
+            )
+        }
+        item { SlotSectionHeader(stringResource(R.string.profile_combat_gear)) }
+        items(EquipSlot.ARMOR_SLOTS) { slot ->
+            EquipSlotRow(
+                slotName  = slotDisplayName(slot),
+                itemKey   = equipped[slot],
+                onTap     = { onSlotTap(slot) },
+                onUnequip = { onUnequip(slot) },
             )
         }
         item { Spacer(Modifier.height(16.dp)) }
@@ -527,6 +710,7 @@ private fun DungeonRow(
     unlocked: Boolean,
     survivalRating: CombatSimulator.SurvivalRating? = null,
     runCount: Int = 0,
+    loreLockedHint: String? = null,
     onTap: () -> Unit,
 ) {
     val context  = LocalContext.current
@@ -573,6 +757,14 @@ private fun DungeonRow(
                     color = if (unlocked) MaterialTheme.colorScheme.onSurfaceVariant else dimColor,
                 )
             }
+            if (!unlocked && loreLockedHint != null) {
+                Text(
+                    text  = loreLockedHint,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = dimColor,
+                    fontStyle = FontStyle.Italic,
+                )
+            }
         }
         Spacer(Modifier.width(12.dp))
         Text(
@@ -589,7 +781,12 @@ private fun DungeonRow(
 // Active session banner
 // ---------------------------------------------------------------------------
 
-private data class CombatLogEntry(val isPlayer: Boolean, val damage: Int, val enemyName: String)
+private data class CombatLogEntry(
+    val isPlayer: Boolean,
+    val damage: Int,
+    val enemyName: String,
+    val isKill: Boolean = false,
+)
 
 @Composable
 private fun CombatSessionBanner(
@@ -646,11 +843,31 @@ private fun CombatSessionBanner(
     }
     val currentEnemy = currentEnemyKey?.let { enemies[it] }
 
-    val killsSoFar: Map<String, Int> = remember(currentFrameIdx) {
-        frames.take(currentFrameIdx).fold(mutableMapOf()) { acc, f ->
-            f.killsByEnemy.forEach { (k, v) -> acc[k] = (acc[k] ?: 0) + v }
-            acc
+    val isBoss = session.skillName == "boss"
+    val attackSpeedMs = 2_400L
+    val frameStartMs  = session.startedAt + currentFrameIdx.toLong() * perFrameMs
+    val maxTick = (currentFrame?.playerHits?.size?.minus(1) ?: 0).coerceAtLeast(0)
+    val tickInFrame = if (!isDone) ((now - frameStartMs) / attackSpeedMs).toInt().coerceIn(0, maxTick) else maxTick
+
+    val killsSoFar: Map<String, Int> = remember(currentFrameIdx, tickInFrame) {
+        val acc = frames.take(currentFrameIdx).fold(mutableMapOf<String, Int>()) { a, f ->
+            f.killsByEnemy.forEach { (k, v) -> a[k] = (a[k] ?: 0) + v }
+            a
         }
+        val f = frames.getOrNull(currentFrameIdx)
+        if (f != null && !isBoss) {
+            val enemy = enemies[f.enemyKey]
+            if (enemy != null && f.playerHits.isNotEmpty()) {
+                var hp = enemy.hp
+                var kills = 0
+                for (dmg in f.playerHits.take(tickInFrame + 1)) {
+                    hp -= dmg
+                    if (hp <= 0) { kills++; hp = enemy.hp }
+                }
+                if (kills > 0) acc[f.enemyKey] = (acc[f.enemyKey] ?: 0) + kills
+            }
+        }
+        acc
     }
 
     val foodConsumedSoFar: Map<String, Int> = remember(currentFrameIdx) {
@@ -693,16 +910,8 @@ private fun CombatSessionBanner(
 
             if (session.skillName == "combat" || session.skillName == "boss") {
                 val context = LocalContext.current
-                val isBoss = session.skillName == "boss"
                 val currentBoss = if (isBoss) bosses.firstOrNull { it.id == session.activityKey } else null
                 val divColor = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.2f)
-
-                // Per-tick state
-                val attackSpeedMs = 2_400L
-                val frameStartMs  = session.startedAt + currentFrameIdx.toLong() * perFrameMs
-                val maxTick = (currentFrame?.playerHits?.size?.minus(1) ?: 0).coerceAtLeast(0)
-                val tickInFrame = ((now - frameStartMs) / attackSpeedMs)
-                    .toInt().coerceIn(0, maxTick)
 
                 // Live player HP (per-tick if hit data exists, else per-frame fallback)
                 val maxHp = (skillLevels[Skills.HITPOINTS] ?: 1) * 10
@@ -738,16 +947,28 @@ private fun CombatSessionBanner(
                             val f = frames.getOrNull(i) ?: break
                             val eName = bosses.firstOrNull { it.id == f.enemyKey }?.displayName
                                 ?: enemies[f.enemyKey]?.displayName ?: f.enemyKey
+                            val enemyHp = if (!isBoss) enemies[f.enemyKey]?.hp ?: Int.MAX_VALUE else Int.MAX_VALUE
+                            var hp = enemyHp
                             for (t in 0 until maxOf(f.playerHits.size, f.enemyHits.size)) {
-                                f.playerHits.getOrNull(t)?.let { add(CombatLogEntry(true, it, eName)) }
+                                f.playerHits.getOrNull(t)?.let { dmg ->
+                                    add(CombatLogEntry(true, dmg, eName))
+                                    hp -= dmg
+                                    if (hp <= 0) { add(CombatLogEntry(false, 0, eName, isKill = true)); hp = enemyHp }
+                                }
                                 f.enemyHits.getOrNull(t)?.let { add(CombatLogEntry(false, it, eName)) }
                             }
                         }
                         val f = frames.getOrNull(currentFrameIdx) ?: return@buildList
                         val eName = bosses.firstOrNull { it.id == f.enemyKey }?.displayName
                             ?: enemies[f.enemyKey]?.displayName ?: f.enemyKey
+                        val enemyHp = if (!isBoss) enemies[f.enemyKey]?.hp ?: Int.MAX_VALUE else Int.MAX_VALUE
+                        var hp = enemyHp
                         for (t in 0..tickInFrame) {
-                            f.playerHits.getOrNull(t)?.let { add(CombatLogEntry(true, it, eName)) }
+                            f.playerHits.getOrNull(t)?.let { dmg ->
+                                add(CombatLogEntry(true, dmg, eName))
+                                hp -= dmg
+                                if (hp <= 0) { add(CombatLogEntry(false, 0, eName, isKill = true)); hp = enemyHp }
+                            }
                             f.enemyHits.getOrNull(t)?.let { add(CombatLogEntry(false, it, eName)) }
                         }
                     }.takeLast(8)
@@ -973,30 +1194,38 @@ private fun CombatSessionBanner(
                                 val hitYou    = stringResource(R.string.combat_log_hit_you)
                                 val missed    = stringResource(R.string.combat_log_missed)
                                 for (entry in combatLog) {
-                                    val (arrow, dmgText, color) = if (entry.isPlayer) {
-                                        val c = if (entry.damage > 0) Color(0xFF4CAF50)
-                                                else MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.45f)
-                                        Triple(
-                                            "→",
-                                            if (entry.damage > 0) "$youHit ${entry.enemyName}: ${entry.damage} $dmgLabel"
-                                            else "$youMissed ${entry.enemyName}",
-                                            c,
+                                    if (entry.isKill) {
+                                        Text(
+                                            text  = "☠ ${entry.enemyName} defeated",
+                                            style = MaterialTheme.typography.bodySmall,
+                                            color = GoldPrimary,
                                         )
                                     } else {
-                                        val c = if (entry.damage > 0) MaterialTheme.colorScheme.error
-                                                else MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.45f)
-                                        Triple(
-                                            "←",
-                                            if (entry.damage > 0) "${entry.enemyName} $hitYou: ${entry.damage} $dmgLabel"
-                                            else "${entry.enemyName} $missed",
-                                            c,
+                                        val (arrow, dmgText, color) = if (entry.isPlayer) {
+                                            val c = if (entry.damage > 0) Color(0xFF4CAF50)
+                                                    else MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.45f)
+                                            Triple(
+                                                "→",
+                                                if (entry.damage > 0) "$youHit ${entry.enemyName}: ${entry.damage} $dmgLabel"
+                                                else "$youMissed ${entry.enemyName}",
+                                                c,
+                                            )
+                                        } else {
+                                            val c = if (entry.damage > 0) MaterialTheme.colorScheme.error
+                                                    else MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.45f)
+                                            Triple(
+                                                "←",
+                                                if (entry.damage > 0) "${entry.enemyName} $hitYou: ${entry.damage} $dmgLabel"
+                                                else "${entry.enemyName} $missed",
+                                                c,
+                                            )
+                                        }
+                                        Text(
+                                            text  = "$arrow $dmgText",
+                                            style = MaterialTheme.typography.bodySmall,
+                                            color = color,
                                         )
                                     }
-                                    Text(
-                                        text  = "$arrow $dmgText",
-                                        style = MaterialTheme.typography.bodySmall,
-                                        color = color,
-                                    )
                                 }
                             }
                         }
@@ -1057,17 +1286,22 @@ private fun CombatSessionBanner(
 // Dungeon info / start sheet
 // ---------------------------------------------------------------------------
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun DungeonInfoSheet(
     dungeon: DungeonData,
     skillLevels: Map<String, Int>,
     equippedWeapon: EquipmentData?,
+    equippedWeapons: Map<String, EquipmentData>,
+    selectedWeaponSlot: String?,
     inventory: Map<String, Int>,
     availableSpells: List<SpellData>,
     selectedSpell: SpellData?,
     availablePotions: Map<String, Int>,
+    potionEffects: Map<String, Map<String, Int>>,
     selectedPotionKey: String?,
     isStarting: Boolean,
+    onWeaponSlotSelected: (String) -> Unit,
     onSpellSelected: (SpellData) -> Unit,
     onPotionSelected: (String?) -> Unit,
     onStart: () -> Unit,
@@ -1139,6 +1373,42 @@ private fun DungeonInfoSheet(
                     text  = "• ${GameStrings.itemName(context, spawn.enemy)}",
                     style = MaterialTheme.typography.bodySmall,
                 )
+            }
+            Spacer(Modifier.height(12.dp))
+        }
+
+        // Weapon picker (show when 2+ weapon slots are occupied, or always if any weapon is equipped)
+        if (equippedWeapons.isNotEmpty()) {
+            Text(
+                text  = "Weapon",
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Spacer(Modifier.height(4.dp))
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                equippedWeapons.forEach { (slot, weaponData) ->
+                    val isSelected = slot == (selectedWeaponSlot
+                        ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equippedWeapons.containsKey(it) })
+                    FilterChip(
+                        selected = isSelected,
+                        onClick  = { onWeaponSlotSelected(slot) },
+                        label    = {
+                            Column {
+                                Text(
+                                    text  = GameStrings.itemName(context, weaponData.name),
+                                    style = MaterialTheme.typography.bodySmall,
+                                )
+                                weaponData.combatStyle?.let { style ->
+                                    Text(
+                                        text  = style.replaceFirstChar { it.titlecase() },
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    )
+                                }
+                            }
+                        },
+                    )
+                }
             }
             Spacer(Modifier.height(12.dp))
         }
@@ -1229,13 +1499,26 @@ private fun DungeonInfoSheet(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Text(
-                        text       = if (key == null) stringResource(R.string.combat_no_potion)
-                                     else GameStrings.itemName(context, key),
-                        style      = MaterialTheme.typography.bodyMedium,
-                        fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
-                        color      = if (isSelected) GoldPrimary else MaterialTheme.colorScheme.onSurface,
-                    )
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text       = if (key == null) stringResource(R.string.combat_no_potion)
+                                         else GameStrings.itemName(context, key),
+                            style      = MaterialTheme.typography.bodyMedium,
+                            fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
+                            color      = if (isSelected) GoldPrimary else MaterialTheme.colorScheme.onSurface,
+                        )
+                        if (key != null) {
+                            val effectStr = potionEffects[key]?.entries
+                                ?.joinToString(", ") { (stat, bonus) -> "+$bonus ${stat.toTitleCase()}" }
+                            if (effectStr != null) {
+                                Text(
+                                    text  = "($effectStr)",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                )
+                            }
+                        }
+                    }
                     if (key != null) {
                         Text(
                             text  = "×${availablePotions[key]}",
@@ -1294,19 +1577,35 @@ private fun StatRow(
 // Boss info / start sheet
 // ---------------------------------------------------------------------------
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun BossInfoSheet(
     boss: BossData,
     skillLevels: Map<String, Int>,
+    equippedWeapon: EquipmentData?,
+    equippedWeapons: Map<String, EquipmentData>,
+    selectedWeaponSlot: String?,
+    inventory: Map<String, Int>,
     availablePotions: Map<String, Int>,
+    potionEffects: Map<String, Map<String, Int>>,
     selectedPotionKey: String?,
     isStarting: Boolean,
+    onWeaponSlotSelected: (String) -> Unit,
     onPotionSelected: (String?) -> Unit,
     onStart: () -> Unit,
     onDismiss: () -> Unit,
 ) {
+    val context   = LocalContext.current
     val combatLvl = combatLevel(skillLevels)
     val canFight  = combatLvl >= boss.combatLevelRequired
+    val combatStyle = when (equippedWeapon?.combatStyle) {
+        "ranged"   -> "ranged"
+        "magic"    -> "magic"
+        "strength" -> "strength"
+        else       -> "attack"
+    }
+    val styleLabel = combatStyle.replaceFirstChar { it.titlecase() }
+    val bestArrow = ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
 
     Column(
         modifier = Modifier
@@ -1357,12 +1656,54 @@ private fun BossInfoSheet(
             Text(stringResource(R.string.combat_duration_min, boss.durationMinutes), style = MaterialTheme.typography.bodySmall,
                 fontWeight = FontWeight.SemiBold)
         }
+        StatRow(label = stringResource(R.string.label_combat_style), value = styleLabel, valueColor = GoldPrimary)
+        if (combatStyle == "ranged") {
+            val arrowText = if (bestArrow != null)
+                "${GameStrings.itemName(context, bestArrow)} ×${inventory[bestArrow]}"
+            else stringResource(R.string.combat_no_strength_bonus)
+            StatRow(label = stringResource(R.string.combat_best_arrow), value = arrowText)
+        }
+
+        // Weapon picker
+        if (equippedWeapons.isNotEmpty()) {
+            Spacer(Modifier.height(12.dp))
+            Text(
+                text  = "Weapon",
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Spacer(Modifier.height(4.dp))
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                equippedWeapons.forEach { (slot, weaponData) ->
+                    val isSelected = slot == (selectedWeaponSlot
+                        ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equippedWeapons.containsKey(it) })
+                    FilterChip(
+                        selected = isSelected,
+                        onClick  = { onWeaponSlotSelected(slot) },
+                        label    = {
+                            Column {
+                                Text(
+                                    text  = GameStrings.itemName(context, weaponData.name),
+                                    style = MaterialTheme.typography.bodySmall,
+                                )
+                                weaponData.combatStyle?.let { style ->
+                                    Text(
+                                        text  = style.replaceFirstChar { it.titlecase() },
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    )
+                                }
+                            }
+                        },
+                    )
+                }
+            }
+        }
 
         if (boss.xpRewards.isNotEmpty()) {
             Spacer(Modifier.height(12.dp))
             Text(stringResource(R.string.combat_xp_on_victory), style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant)
-            val context = LocalContext.current
             for ((skill, xp) in boss.xpRewards) {
                 Row(
                     modifier              = Modifier.fillMaxWidth(),
@@ -1397,13 +1738,26 @@ private fun BossInfoSheet(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Text(
-                        text       = if (key == null) stringResource(R.string.combat_no_potion)
-                                     else GameStrings.itemName(context, key),
-                        style      = MaterialTheme.typography.bodyMedium,
-                        fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
-                        color      = if (isSelected) GoldPrimary else MaterialTheme.colorScheme.onSurface,
-                    )
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text       = if (key == null) stringResource(R.string.combat_no_potion)
+                                         else GameStrings.itemName(context, key),
+                            style      = MaterialTheme.typography.bodyMedium,
+                            fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
+                            color      = if (isSelected) GoldPrimary else MaterialTheme.colorScheme.onSurface,
+                        )
+                        if (key != null) {
+                            val effectStr = potionEffects[key]?.entries
+                                ?.joinToString(", ") { (stat, bonus) -> "+$bonus ${stat.toTitleCase()}" }
+                            if (effectStr != null) {
+                                Text(
+                                    text  = "($effectStr)",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                )
+                            }
+                        }
+                    }
                     if (key != null) {
                         Text(
                             text  = "×${availablePotions[key]}",
@@ -1492,6 +1846,7 @@ private fun CombatResultSheet(
             for (skill in orderedSkills) {
                 val xp = result.xpPerSkill[skill] ?: continue
                 if (xp <= 0L) continue
+                val bonus = result.xpBlessingBonusBySkill[skill] ?: 0L
                 Row(
                     modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -1500,13 +1855,31 @@ private fun CombatResultSheet(
                         text  = GameStrings.skillName(context, skill),
                         style = MaterialTheme.typography.bodyMedium,
                     )
-                    Text(
-                        text       = "+${xp.formatXp()} ${stringResource(R.string.label_xp)}",
-                        style      = MaterialTheme.typography.bodyMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        color      = GoldPrimary,
-                    )
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(
+                            text       = "+${xp.formatXp()} ${stringResource(R.string.label_xp)}",
+                            style      = MaterialTheme.typography.bodyMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            color      = GoldPrimary,
+                        )
+                        if (bonus > 0L) {
+                            Spacer(Modifier.width(4.dp))
+                            Text(
+                                text  = "(+${bonus.formatXp()})",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = GoldPrimary,
+                            )
+                        }
+                    }
                 }
+            }
+            if (result.boostWasActive) {
+                Text(
+                    text  = stringResource(R.string.home_xp_boost_was_active),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = GoldPrimary,
+                    modifier = Modifier.padding(top = 2.dp),
+                )
             }
             Spacer(Modifier.height(12.dp))
         }
@@ -1526,6 +1899,13 @@ private fun CombatResultSheet(
                     style      = MaterialTheme.typography.bodyMedium,
                     fontWeight = FontWeight.SemiBold,
                     color      = GoldPrimary,
+                )
+            }
+            if (result.coinBlessingBonus > 0L) {
+                Text(
+                    text  = stringResource(R.string.church_blessing_bonus, result.coinBlessingBonus.formatCoins()),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = GoldPrimary,
                 )
             }
             Spacer(Modifier.height(12.dp))

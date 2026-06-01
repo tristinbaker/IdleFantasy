@@ -1,0 +1,16 @@
+{
+  "name": "collapsed_mine",
+  "display_name": "Collapsed Mine",
+  "description": "A vast cavern beneath the copper mines. Cave trolls and rock golems haunt the rubble, and giant spiders spin webs across the collapsed shafts.",
+  "recommended_level": 20,
+  "encounter_rate": 0.30,
+  "lore_unlock_only": true,
+  "enemy_spawns": [
+    {"enemy": "mine_spider", "weight": 4},
+    {"enemy": "cave_troll", "weight": 3},
+    {"enemy": "rock_golem", "weight": 3}
+  ],
+  "rare_drops": [
+    {"item": "deep_iron_pickaxe", "chance": 0.02}
+  ]
+}

@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Quest names and objectives ===== -->
+    <!-- Translator note: quest names are short titles; objectives are action sentences. -->
+
+    <!-- Mining -->
+    <string name="quest_mining_1_name">Mijnen I</string>
+    <string name="quest_mining_1_objective">Mijn 500 Kopererts</string>
+    <string name="quest_mining_2_name">Mijnen II</string>
+    <string name="quest_mining_2_objective">Mijn 750 IJzererts</string>
+    <string name="quest_mining_3_name">Mijnen III</string>
+    <string name="quest_mining_3_objective">Mijn 1100 Kolen</string>
+    <string name="quest_mining_4_name">Mijnen IV</string>
+    <string name="quest_mining_4_objective">Mijn 1650 Mithrilerts</string>
+    <string name="quest_mining_5_name">Mijnen V</string>
+    <string name="quest_mining_5_objective">Mijn 2450 Adamantieterts</string>
+    <string name="quest_mining_6_name">Mijnen VI</string>
+    <string name="quest_mining_6_objective">Mijn 3650 Runiteerts</string>
+
+    <!-- Woodcutting -->
+    <string name="quest_woodcutting_1_name">Houthakken I</string>
+    <string name="quest_woodcutting_1_objective">Hak 500 Gewone Houtblokken</string>
+    <string name="quest_woodcutting_2_name">Houthakken II</string>
+    <string name="quest_woodcutting_2_objective">Hak 750 Eikenhoutblokken</string>
+    <string name="quest_woodcutting_3_name">Houthakken III</string>
+    <string name="quest_woodcutting_3_objective">Hak 1100 Wilgenhoutblokken</string>
+    <string name="quest_woodcutting_4_name">Houthakken IV</string>
+    <string name="quest_woodcutting_4_objective">Hak 1650 Esdoornhoutblokken</string>
+    <string name="quest_woodcutting_5_name">Houthakken V</string>
+    <string name="quest_woodcutting_5_objective">Hak 2450 Taxushoutblokken</string>
+    <string name="quest_woodcutting_6_name">Houthakken VI</string>
+    <string name="quest_woodcutting_6_objective">Hak 3650 Magisch Houtblokken</string>
+
+    <!-- Fishing -->
+    <string name="quest_fishing_1_name">Vissen I</string>
+    <string name="quest_fishing_1_objective">Vang 500 vissen</string>
+    <string name="quest_fishing_2_name">Vissen II</string>
+    <string name="quest_fishing_2_objective">Vang 750 vissen</string>
+    <string name="quest_fishing_3_name">Vissen III</string>
+    <string name="quest_fishing_3_objective">Vang 1100 vissen</string>
+    <string name="quest_fishing_4_name">Vissen IV</string>
+    <string name="quest_fishing_4_objective">Vang 1650 vissen</string>
+    <string name="quest_fishing_5_name">Vissen V</string>
+    <string name="quest_fishing_5_objective">Vang 2450 vissen</string>
+    <string name="quest_fishing_6_name">Vissen VI</string>
+    <string name="quest_fishing_6_objective">Vang 3650 vissen</string>
+
+    <!-- Smithing -->
+    <string name="quest_smithing_1_name">Smeden I</string>
+    <string name="quest_smithing_1_objective">Smelt 500 Bronzen Staven</string>
+    <string name="quest_smithing_2_name">Smeden II</string>
+    <string name="quest_smithing_2_objective">Smelt 750 IJzeren Staven</string>
+    <string name="quest_smithing_3_name">Smeden III</string>
+    <string name="quest_smithing_3_objective">Smelt 1100 Stalen Staven</string>
+    <string name="quest_smithing_4_name">Smeden IV</string>
+    <string name="quest_smithing_4_objective">Smelt 1650 Mithril Staven</string>
+    <string name="quest_smithing_5_name">Smeden V</string>
+    <string name="quest_smithing_5_objective">Smelt 2450 Adamantiet Staven</string>
+    <string name="quest_smithing_6_name">Smeden VI</string>
+    <string name="quest_smithing_6_objective">Smelt 3650 Runiet Staven</string>
+
+    <!-- Cooking - Fish -->
+    <string name="quest_cooking_fish_1_name">Koken — Vis I</string>
+    <string name="quest_cooking_fish_1_objective">Kook 500 vissen</string>
+    <string name="quest_cooking_fish_2_name">Koken — Vis II</string>
+    <string name="quest_cooking_fish_2_objective">Kook 750 vissen</string>
+    <string name="quest_cooking_fish_3_name">Koken — Vis III</string>
+    <string name="quest_cooking_fish_3_objective">Kook 1100 vissen</string>
+    <string name="quest_cooking_fish_4_name">Koken — Vis IV</string>
+    <string name="quest_cooking_fish_4_objective">Kook 1650 vissen</string>
+    <string name="quest_cooking_fish_5_name">Koken — Vis V</string>
+    <string name="quest_cooking_fish_5_objective">Kook 2450 vissen</string>
+    <string name="quest_cooking_fish_6_name">Koken — Vis VI</string>
+    <string name="quest_cooking_fish_6_objective">Kook 3650 vissen</string>
+
+    <!-- Cooking - Beef -->
+    <string name="quest_cooking_beef_1_name">Koken — Rundvlees I</string>
+    <string name="quest_cooking_beef_1_objective">Kook 100 Rundvlees</string>
+    <string name="quest_cooking_beef_2_name">Koken — Rundvlees II</string>
+    <string name="quest_cooking_beef_2_objective">Kook 250 Rundvlees</string>
+    <string name="quest_cooking_beef_3_name">Koken — Rundvlees III</string>
+    <string name="quest_cooking_beef_3_objective">Kook 500 Rundvlees</string>
+
+    <!-- Cooking - Chicken -->
+    <string name="quest_cooking_chicken_1_name">Koken — Kip I</string>
+    <string name="quest_cooking_chicken_1_objective">Kook 100 Kip</string>
+    <string name="quest_cooking_chicken_2_name">Koken — Kip II</string>
+    <string name="quest_cooking_chicken_2_objective">Kook 250 Kip</string>
+    <string name="quest_cooking_chicken_3_name">Koken — Kip III</string>
+    <string name="quest_cooking_chicken_3_objective">Kook 500 Kip</string>
+
+    <!-- Cooking - Mutton -->
+    <string name="quest_cooking_mutton_1_name">Koken — Schapenvlees I</string>
+    <string name="quest_cooking_mutton_1_objective">Kook 100 Schapenvlees</string>
+    <string name="quest_cooking_mutton_2_name">Koken — Schapenvlees II</string>
+    <string name="quest_cooking_mutton_2_objective">Kook 250 Schapenvlees</string>
+    <string name="quest_cooking_mutton_3_name">Koken — Schapenvlees III</string>
+    <string name="quest_cooking_mutton_3_objective">Kook 500 Schapenvlees</string>
+
+    <!-- Fletching -->
+    <string name="quest_fletching_1_name">Pijlenmaken I</string>
+    <string name="quest_fletching_1_objective">Maak 500 Bronzen Pijlen</string>
+    <string name="quest_fletching_2_name">Pijlenmaken II</string>
+    <string name="quest_fletching_2_objective">Maak 750 IJzeren Pijlen</string>
+    <string name="quest_fletching_3_name">Pijlenmaken III</string>
+    <string name="quest_fletching_3_objective">Maak 1100 Stalen Pijlen</string>
+    <string name="quest_fletching_4_name">Pijlenmaken IV</string>
+    <string name="quest_fletching_4_objective">Maak 1650 Mithril Pijlen</string>
+    <string name="quest_fletching_5_name">Pijlenmaken V</string>
+    <string name="quest_fletching_5_objective">Maak 2450 Adamantiet Pijlen</string>
+    <string name="quest_fletching_6_name">Pijlenmaken VI</string>
+    <string name="quest_fletching_6_objective">Maak 3650 Runiet Pijlen</string>
+
+    <!-- Prayer -->
+    <string name="quest_prayer_1_name">Gebed I</string>
+    <string name="quest_prayer_1_objective">Begraaf 500 botten</string>
+    <string name="quest_prayer_2_name">Gebed II</string>
+    <string name="quest_prayer_2_objective">Begraaf 750 botten</string>
+    <string name="quest_prayer_3_name">Gebed III</string>
+    <string name="quest_prayer_3_objective">Begraaf 1100 botten</string>
+    <string name="quest_prayer_4_name">Gebed IV</string>
+    <string name="quest_prayer_4_objective">Begraaf 1650 botten</string>
+    <string name="quest_prayer_5_name">Gebed V</string>
+    <string name="quest_prayer_5_objective">Begraaf 2450 botten</string>
+    <string name="quest_prayer_6_name">Gebed VI</string>
+    <string name="quest_prayer_6_objective">Begraaf 3650 botten</string>
+
+    <!-- Slayer -->
+    <string name="quest_combat_kills_1_name">Krijger I</string>
+    <string name="quest_combat_kills_1_objective">Versla 100 vijanden</string>
+    <string name="quest_combat_kills_2_name">Krijger II</string>
+    <string name="quest_combat_kills_2_objective">Versla 150 vijanden</string>
+    <string name="quest_combat_kills_3_name">Krijger III</string>
+    <string name="quest_combat_kills_3_objective">Versla 200 vijanden</string>
+    <string name="quest_combat_kills_4_name">Krijger IV</string>
+    <string name="quest_combat_kills_4_objective">Versla 300 vijanden</string>
+    <string name="quest_combat_kills_5_name">Krijger V</string>
+    <string name="quest_combat_kills_5_objective">Versla 450 vijanden</string>
+    <string name="quest_combat_kills_6_name">Krijger VI</string>
+    <string name="quest_combat_kills_6_objective">Versla 650 vijanden</string>
+    <!-- Slayer extended -->
+    <string name="quest_combat_kills_7_name">Krijger VII</string>
+    <string name="quest_combat_kills_7_objective">Versla 1000 vijanden</string>
+    <string name="quest_combat_kills_8_name">Krijger VIII</string>
+    <string name="quest_combat_kills_8_objective">Versla 1500 vijanden</string>
+    <string name="quest_combat_kills_9_name">Krijger IX</string>
+    <string name="quest_combat_kills_9_objective">Versla 2250 vijanden</string>
+    <string name="quest_combat_kills_10_name">Krijger X</string>
+    <string name="quest_combat_kills_10_objective">Versla 3400 vijanden</string>
+    <string name="quest_combat_kills_11_name">Krijger XI</string>
+    <string name="quest_combat_kills_11_objective">Versla 5100 vijanden</string>
+    <string name="quest_combat_kills_12_name">Krijger XII</string>
+    <string name="quest_combat_kills_12_objective">Versla 7650 vijanden</string>
+
+    <!-- Dungeon exploration -->
+    <string name="quest_dungeon_farm_1_name">Dungeon Verkenner I</string>
+    <string name="quest_dungeon_farm_1_objective">Voltooi de Boerderij dungeon 5 keer</string>
+    <string name="quest_dungeon_goblin_1_name">Dungeon Verkenner II</string>
+    <string name="quest_dungeon_goblin_1_objective">Voltooi de Kobold Grot 5 keer</string>
+    <string name="quest_dungeon_spider_1_name">Dungeon Verkenner III</string>
+    <string name="quest_dungeon_spider_1_objective">Voltooi het Spinnenhol 5 keer</string>
+    <string name="quest_dungeon_bandit_1_name">Dungeon Verkenner IV</string>
+    <string name="quest_dungeon_bandit_1_objective">Voltooi het Bandietenkamp 5 keer</string>
+    <string name="quest_dungeon_undead_1_name">Dungeon Verkenner V</string>
+    <string name="quest_dungeon_undead_1_objective">Voltooi de Zombie Crypt 5 keer</string>
+    <string name="quest_dungeon_fortress_1_name">Dungeon Verkenner VI</string>
+    <string name="quest_dungeon_fortress_1_objective">Voltooi de Kasteel Ruïnes 5 keer</string>
+    <string name="quest_dungeon_orc_1_name">Dungeon Meester I</string>
+    <string name="quest_dungeon_orc_1_objective">Voltooi de Ork Vesting 5 keer</string>
+    <string name="quest_dungeon_volcanic_1_name">Dungeon Meester II</string>
+    <string name="quest_dungeon_volcanic_1_objective">Voltooi de Vulkanische Diepten 5 keer</string>
+    <string name="quest_dungeon_dragon_1_name">Dungeon Meester III</string>
+    <string name="quest_dungeon_dragon_1_objective">Voltooi het Drakennest 5 keer</string>
+    <!-- Dungeon exploration extended -->
+    <string name="quest_dungeon_imp_1_name">Dungeon Verkenner VII</string>
+    <string name="quest_dungeon_imp_1_objective">Voltooi de Imp Grot 5 keer</string>
+    <string name="quest_dungeon_infernal_1_name">Dungeon Meester IV</string>
+    <string name="quest_dungeon_infernal_1_objective">Voltooi de Helse Vesting 5 keer</string>
+    <string name="quest_dungeon_ancient_1_name">Dungeon Meester V</string>
+    <string name="quest_dungeon_ancient_1_objective">Voltooi de Eeuwenoude Tempel 5 keer</string>
+
+    <!-- Crafting -->
+    <string name="quest_crafting_1_name">Juwelier I</string>
+    <string name="quest_crafting_1_objective">Maak 100 Zilveren Ringen</string>
+    <string name="quest_crafting_2_name">Juwelier II</string>
+    <string name="quest_crafting_2_objective">Maak 250 Gouden Ringen</string>
+    <string name="quest_crafting_3_name">Juwelier III</string>
+    <string name="quest_crafting_3_objective">Maak 500 Platina Ringen</string>
+    <string name="quest_crafting_4_name">Juwelier IV</string>
+    <string name="quest_crafting_4_objective">Maak 750 Zilveren Saffier Ringen</string>
+    <string name="quest_crafting_5_name">Juwelier V</string>
+    <string name="quest_crafting_5_objective">Maak 1000 Gouden Saffier Ringen</string>
+    <string name="quest_crafting_6_name">Juwelier VI</string>
+    <string name="quest_crafting_6_objective">Maak 1500 Platina Diamant Ringen</string>
+
+    <!-- Monster slayer chains -->
+    <string name="quest_goblin_slayer_1_name">Kobolden Slachter I</string>
+    <string name="quest_goblin_slayer_1_objective">Versla 50 Kobolden</string>
+    <string name="quest_goblin_slayer_2_name">Kobolden Slachter II</string>
+    <string name="quest_goblin_slayer_2_objective">Versla 100 Kobolden</string>
+    <string name="quest_spider_slayer_1_name">Spinnen Slachter I</string>
+    <string name="quest_spider_slayer_1_objective">Versla 40 Reuzen Spinnen</string>
+    <string name="quest_spider_slayer_2_name">Spinnen Slachter II</string>
+    <string name="quest_spider_slayer_2_objective">Versla 80 Reuzen Spinnen</string>
+    <string name="quest_skeleton_slayer_1_name">Skeletten Slachter I</string>
+    <string name="quest_skeleton_slayer_1_objective">Versla 35 Skeletten</string>
+    <string name="quest_skeleton_slayer_2_name">Skeletten Slachter II</string>
+    <string name="quest_skeleton_slayer_2_objective">Versla 70 Skeletten</string>
+    <string name="quest_bandit_hunter_1_name">Bandieten Jager I</string>
+    <string name="quest_bandit_hunter_1_objective">Versla 30 Bandieten</string>
+    <string name="quest_bandit_hunter_2_name">Bandieten Jager II</string>
+    <string name="quest_bandit_hunter_2_objective">Versla 60 Bandieten</string>
+    <string name="quest_orc_slayer_1_name">Orks Slachter I</string>
+    <string name="quest_orc_slayer_1_objective">Versla 25 Ork Krijgers</string>
+    <string name="quest_orc_slayer_2_name">Orks Slachter II</string>
+    <string name="quest_orc_slayer_2_objective">Versla 50 Ork Krijgers</string>
+    <string name="quest_demon_slayer_1_name">Demonen Slachter I</string>
+    <string name="quest_demon_slayer_1_objective">Versla 20 Mindere Demonen</string>
+    <string name="quest_demon_slayer_2_name">Demonen Slachter II</string>
+    <string name="quest_demon_slayer_2_objective">Versla 40 Mindere Demonen</string>
+    <string name="quest_dragon_slayer_1_name">Draken Slachter I</string>
+    <string name="quest_dragon_slayer_1_objective">Versla 10 Groene Draken</string>
+    <string name="quest_dragon_slayer_2_name">Draken Slachter II</string>
+    <string name="quest_dragon_slayer_2_objective">Versla 25 Groene Draken</string>
+    <!-- New monster slayer chains -->
+    <string name="quest_zombie_slayer_1_name">Zombie Slachter I</string>
+    <string name="quest_zombie_slayer_1_objective">Versla 35 Zombies</string>
+    <string name="quest_zombie_slayer_2_name">Zombie Slachter II</string>
+    <string name="quest_zombie_slayer_2_objective">Versla 70 Zombies</string>
+    <string name="quest_hellhound_slayer_1_name">Helhond Slachter I</string>
+    <string name="quest_hellhound_slayer_1_objective">Versla 25 Helhonden</string>
+    <string name="quest_hellhound_slayer_2_name">Helhond Slachter II</string>
+    <string name="quest_hellhound_slayer_2_objective">Versla 50 Helhonden</string>
+    <string name="quest_troll_slayer_1_name">Trollen Slachter I</string>
+    <string name="quest_troll_slayer_1_objective">Versla 20 Bergtrollen</string>
+    <string name="quest_troll_slayer_2_name">Trollen Slachter II</string>
+    <string name="quest_troll_slayer_2_objective">Versla 40 Bergtrollen</string>
+    <string name="quest_fire_giant_slayer_1_name">Vuurreus Slachter I</string>
+    <string name="quest_fire_giant_slayer_1_objective">Versla 15 Vuurreuzen</string>
+    <string name="quest_fire_giant_slayer_2_name">Vuurreus Slachter II</string>
+    <string name="quest_fire_giant_slayer_2_objective">Versla 30 Vuurreuzen</string>
+    <string name="quest_ancient_guardian_slayer_1_name">Oude Wachter Slachter I</string>
+    <string name="quest_ancient_guardian_slayer_1_objective">Versla 10 Oude Wachters</string>
+    <string name="quest_ancient_guardian_slayer_2_name">Oude Wachter Slachter II</string>
+    <string name="quest_ancient_guardian_slayer_2_objective">Versla 20 Oude Wachters</string>
+    <string name="quest_lich_slayer_1_name">Lich Slachter I</string>
+    <string name="quest_lich_slayer_1_objective">Versla 10 Liches</string>
+    <string name="quest_lich_slayer_2_name">Lich Slachter II</string>
+    <string name="quest_lich_slayer_2_objective">Versla 20 Liches</string>
+
+    <!-- Combat style challenges -->
+    <string name="quest_melee_warrior_1_name">Melee Strijder I</string>
+    <string name="quest_melee_warrior_1_objective">Voltooi de Kobold Grot met alleen melee wapens</string>
+    <string name="quest_melee_warrior_2_name">Melee Strijder II</string>
+    <string name="quest_melee_warrior_2_objective">Voltooi het Bandietenkamp met alleen melee wapens</string>
+    <string name="quest_melee_warrior_3_name">Melee Strijder III</string>
+    <string name="quest_melee_warrior_3_objective">Voltooi de Kasteel Ruïne met alleen melee wapens</string>
+    <string name="quest_ranger_elite_1_name">Boogschutter I</string>
+    <string name="quest_ranger_elite_1_objective">Voltooi de Kobold Grot met alleen pijl en boog</string>
+    <string name="quest_ranger_elite_2_name">Boogschutter II</string>
+    <string name="quest_ranger_elite_2_objective">Voltooi het Bandietenkamp met alleen pijl en boog</string>
+    <string name="quest_ranger_elite_3_name">Boogschutter III</string>
+    <string name="quest_ranger_elite_3_objective">Voltooi de Kasteel Ruïne met alleen pijl en boog</string>
+    <string name="quest_mage_master_1_name">Magie Meester I</string>
+    <string name="quest_mage_master_1_objective">Voltooi de Kobold Grot met alleen magie</string>
+    <string name="quest_mage_master_2_name">Magie Meester II</string>
+    <string name="quest_mage_master_2_objective">Voltooi het Bandietenkamp met alleen magie</string>
+    <string name="quest_mage_master_3_name">Magie Meester III</string>
+    <string name="quest_mage_master_3_objective">Voltooi de Kasteel Ruïne met alleen magie</string>
+    <!-- Combat style challenges extended -->
+    <string name="quest_melee_warrior_4_name">Melee Strijder IV</string>
+    <string name="quest_melee_warrior_4_objective">Voltooi de Ork Vesting alleen met melee</string>
+    <string name="quest_melee_warrior_5_name">Melee Strijder V</string>
+    <string name="quest_melee_warrior_5_objective">Voltooi het Drakennest alleen met melee</string>
+    <string name="quest_ranger_elite_4_name">Boogschutter IV</string>
+    <string name="quest_ranger_elite_4_objective">Voltooi de Ork Vesting alleen met pijl en boog</string>
+    <string name="quest_ranger_elite_5_name">Boogschutter V</string>
+    <string name="quest_ranger_elite_5_objective">Voltooi het Drakennest alleen met pijl en boog</string>
+    <string name="quest_mage_master_4_name">Magie Meester IV</string>
+    <string name="quest_mage_master_4_objective">Voltooi de Ork Vesting alleen met magie</string>
+    <string name="quest_mage_master_5_name">Magie Meester V</string>
+    <string name="quest_mage_master_5_objective">Voltooi het Drakennest alleen met magie</string>
+
+    <!-- Iron Stomach (no food) challenges -->
+    <string name="quest_iron_stomach_1_name">Stalen Maag I</string>
+    <string name="quest_iron_stomach_1_objective">Voltooi het Spinnenhol zonder te eten</string>
+    <string name="quest_iron_stomach_2_name">Stalen Maag II</string>
+    <string name="quest_iron_stomach_2_objective">Voltooi de Crypt van de Ondoden zonder te eten</string>
+    <string name="quest_iron_stomach_3_name">Stalen Maag III</string>
+    <string name="quest_iron_stomach_3_objective">Voltooi de Ork Vesting zonder te eten</string>
+    <string name="quest_iron_stomach_4_name">Stalen Maag IV</string>
+    <string name="quest_iron_stomach_4_objective">Voltooi het Drakennest zonder te eten</string>
+    <!-- Iron Stomach extended -->
+    <string name="quest_iron_stomach_5_name">Stalen Maag V</string>
+    <string name="quest_iron_stomach_5_objective">Voltooi de Helse Vesting zonder te eten</string>
+    <string name="quest_iron_stomach_6_name">Stalen Maag VI</string>
+    <string name="quest_iron_stomach_6_objective">Voltooi de Eeuwenoude Tempel zonder te eten</string>
+
+    <!-- Treasure Hunter -->
+    <string name="quest_treasure_hunter_1_name">Schattenjager I</string>
+    <string name="quest_treasure_hunter_1_objective">Verzamel 20 Spinnenzijde uit gevechten</string>
+    <string name="quest_treasure_hunter_2_name">Schattenjager II</string>
+    <string name="quest_treasure_hunter_2_objective">Verzamel 10 Kobold Harnassen uit gevechten</string>
+    <string name="quest_treasure_hunter_3_name">Schattenjager III</string>
+    <string name="quest_treasure_hunter_3_objective">Verzamel 5 Demon Hoorns uit gevechten</string>
+    <string name="quest_treasure_hunter_4_name">Schattenjager IV</string>
+    <string name="quest_treasure_hunter_4_objective">Verzamel 3 Drakenschubben uit gevechten</string>
+    <!-- Treasure Hunter extended -->
+    <string name="quest_treasure_hunter_5_name">Schattenjager V</string>
+    <string name="quest_treasure_hunter_5_objective">Verzamel 10 Hellehond Tanden uit gevechten</string>
+    <string name="quest_treasure_hunter_6_name">Schattenjager VI</string>
+    <string name="quest_treasure_hunter_6_objective">Verzamel 15 Trollenbotten uit gevechten</string>
+
+    <!-- Firemaking -->
+    <string name="quest_firemaking_1_name">Vuurmaken I</string>
+    <string name="quest_firemaking_1_objective">Verbrand 500 Gewone Houtblokken</string>
+    <string name="quest_firemaking_2_name">Vuurmaken II</string>
+    <string name="quest_firemaking_2_objective">Verbrand 750 Eikenhoutblokken</string>
+    <string name="quest_firemaking_3_name">Vuurmaken III</string>
+    <string name="quest_firemaking_3_objective">Verbrand 1100 Wilgenhoutblokken</string>
+    <string name="quest_firemaking_4_name">Vuurmaken IV</string>
+    <string name="quest_firemaking_4_objective">Verbrand 1650 Esdoornhoutblokken</string>
+    <string name="quest_firemaking_5_name">Vuurmaken V</string>
+    <string name="quest_firemaking_5_objective">Verbrand 2450 Taxushoutblokken</string>
+    <string name="quest_firemaking_6_name">Vuurmaken VI</string>
+    <string name="quest_firemaking_6_objective">Verbrand 3650 Magische Houtblokken</string>
+
+    <!-- Runecrafting -->
+    <string name="quest_runecrafting_1_name">Runenmaker I</string>
+    <string name="quest_runecrafting_1_objective">Maak 500 Lucht Runen</string>
+    <string name="quest_runecrafting_2_name">Runenmaker II</string>
+    <string name="quest_runecrafting_2_objective">Maak 750 Water Runen</string>
+    <string name="quest_runecrafting_3_name">Runenmaker III</string>
+    <string name="quest_runecrafting_3_objective">Maak 1100 Aarde Runen</string>
+    <string name="quest_runecrafting_4_name">Runenmaker IV</string>
+    <string name="quest_runecrafting_4_objective">Maak 1650 Vuur Runen</string>
+    <string name="quest_runecrafting_5_name">Runenmaker V</string>
+    <string name="quest_runecrafting_5_objective">Maak 2450 Geest Runen</string>
+    <string name="quest_runecrafting_6_name">Runenmaker VI</string>
+    <string name="quest_runecrafting_6_objective">Maak 3650 Chaos Runen</string>
+
+    <!-- Herblore -->
+    <string name="quest_herblore_1_name">Toverdranken I</string>
+    <string name="quest_herblore_1_objective">Mix 100 Aanvalsbrouwsels</string>
+    <string name="quest_herblore_2_name">Toverdranken II</string>
+    <string name="quest_herblore_2_objective">Mix 250 Verdedigingsdranken</string>
+    <string name="quest_herblore_3_name">Toverdranken III</string>
+    <string name="quest_herblore_3_objective">Mix 500 Krachtdranken</string>
+    <string name="quest_herblore_4_name">Toverdranken IV</string>
+    <string name="quest_herblore_4_objective">Mix 750 Boogschuttersdranken</string>
+    <string name="quest_herblore_5_name">Toverdranken V</string>
+    <string name="quest_herblore_5_objective">Mix 1000 Magiedranken</string>
+    <string name="quest_herblore_6_name">Toverdranken VI</string>
+    <string name="quest_herblore_6_objective">Mix 1500 Super Krachtdranken</string>
+
+    <!-- Boss extended -->
+    <string name="quest_kbd_slayer_4_name">Koning der Zwarte Draken Slachter IV</string>
+    <string name="quest_kbd_slayer_4_objective">Versla de Koning der Zwarte Draken 50 keer</string>
+    <string name="quest_demon_slayer_4_name">Demonenheer Slachter IV</string>
+    <string name="quest_demon_slayer_4_objective">Versla de Demonenheer 50 keer</string>
+    <string name="quest_kraken_killer_4_name">Kraken Slachter IV</string>
+    <string name="quest_kraken_killer_4_objective">Versla de Kraken 50 keer</string>
+    <string name="quest_balrog_bane_4_name">Balrog Slachter IV</string>
+    <string name="quest_balrog_bane_4_objective">Versla de Balrog 50 keer</string>
+
+
+</resources>

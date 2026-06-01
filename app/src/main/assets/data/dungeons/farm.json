@@ -4,6 +4,7 @@
   "description": "A peaceful farm with livestock. Great for beginners looking to gather food!",
   "recommended_level": 1,
   "encounter_rate": 0.75,
+  "safe_zone": true,
   "enemy_spawns": [
     {
       "enemy": "chicken",

@@ -1,0 +1,16 @@
+{
+  "name": "abyssal_ruins",
+  "display_name": "Abyssal Ruins",
+  "description": "Ancient ruins that exist simultaneously above and below the water's surface. Abyssal leeches, deep horrors, and void guardians protect whatever the ruins were built to contain.",
+  "recommended_level": 55,
+  "encounter_rate": 0.30,
+  "lore_unlock_only": true,
+  "enemy_spawns": [
+    {"enemy": "abyssal_leech", "weight": 4},
+    {"enemy": "void_guardian", "weight": 3},
+    {"enemy": "deep_horror", "weight": 3}
+  ],
+  "rare_drops": [
+    {"item": "abyssal_rod", "chance": 0.002}
+  ]
+}

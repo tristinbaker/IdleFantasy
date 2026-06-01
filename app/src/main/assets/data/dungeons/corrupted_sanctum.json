@@ -1,0 +1,16 @@
+{
+  "name": "corrupted_sanctum",
+  "display_name": "Corrupted Sanctum",
+  "description": "A shadow-drenched sanctum at the heart of the corrupted canopy. Shadow beasts stalk the halls, twisted treants block the passages, and corrupted mages channel the darkness.",
+  "recommended_level": 55,
+  "encounter_rate": 0.32,
+  "lore_unlock_only": true,
+  "enemy_spawns": [
+    {"enemy": "shadow_beast", "weight": 3},
+    {"enemy": "twisted_treant", "weight": 3},
+    {"enemy": "corrupted_mage", "weight": 4}
+  ],
+  "rare_drops": [
+    {"item": "sanctum_axe", "chance": 0.002}
+  ]
+}

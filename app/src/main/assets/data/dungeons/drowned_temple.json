@@ -1,0 +1,16 @@
+{
+  "name": "drowned_temple",
+  "display_name": "Drowned Temple",
+  "description": "A sunken temple beneath the sea grotto, its halls filled with brine and ancient sorrow. Drowned cultists drift through the corridors alongside sea spirits and cursed fishermen.",
+  "recommended_level": 20,
+  "encounter_rate": 0.28,
+  "lore_unlock_only": true,
+  "enemy_spawns": [
+    {"enemy": "drowned_cultist", "weight": 4},
+    {"enemy": "sea_spirit", "weight": 3},
+    {"enemy": "cursed_fisherman", "weight": 3}
+  ],
+  "rare_drops": [
+    {"item": "blessed_fishing_rod", "chance": 0.02}
+  ]
+}

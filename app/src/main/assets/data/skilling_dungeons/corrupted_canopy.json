@@ -1,0 +1,62 @@
+{
+  "name": "corrupted_canopy",
+  "display_name": "Corrupted Canopy",
+  "description": "A forest where shadow has replaced sunlight. The trees bleed darkness where cut, and the wood writhes in your hands. Only the most experienced woodcutters dare work here.",
+  "skill": "woodcutting",
+  "level_required": 40,
+  "requires_previous_unlock": "ancient_forest_ruins",
+  "xp_ranges": {
+    "40": {"min": 77, "max": 116},
+    "45": {"min": 97, "max": 143},
+    "50": {"min": 119, "max": 176},
+    "55": {"min": 143, "max": 215},
+    "60": {"min": 171, "max": 253},
+    "65": {"min": 204, "max": 303},
+    "70": {"min": 242, "max": 358},
+    "75": {"min": 286, "max": 424},
+    "80": {"min": 336, "max": 501},
+    "85": {"min": 396, "max": 589},
+    "90": {"min": 462, "max": 688},
+    "95": {"min": 539, "max": 803}
+  },
+  "drop_tables": {
+    "40": [
+      {"item": "maple_log", "chance": 0.40},
+      {"item": "yew_log", "chance": 0.35},
+      {"item": "teak_log", "chance": 0.25}
+    ],
+    "50": [
+      {"item": "yew_log", "chance": 0.40},
+      {"item": "teak_log", "chance": 0.30},
+      {"item": "mahogany_log", "chance": 0.20},
+      {"item": "bird_nest", "chance": 0.10}
+    ],
+    "60": [
+      {"item": "yew_log", "chance": 0.35},
+      {"item": "mahogany_log", "chance": 0.30},
+      {"item": "magic_log", "chance": 0.20},
+      {"item": "bird_nest", "chance": 0.15}
+    ],
+    "70": [
+      {"item": "mahogany_log", "chance": 0.35},
+      {"item": "magic_log", "chance": 0.45},
+      {"item": "bird_nest", "chance": 0.20}
+    ],
+    "85": [
+      {"item": "mahogany_log", "chance": 0.25},
+      {"item": "magic_log", "chance": 0.60},
+      {"item": "bird_nest", "chance": 0.15}
+    ]
+  },
+  "note_chance_per_frame": 0.003,
+  "note_threshold": 5,
+  "note_texts": [
+    "The trees here bleed shadow where cut. The wood writhes and resists the blade.",
+    "A shadow beast watches from the canopy. It does not attack — it only observes.",
+    "Old sanctum stones are visible through the twisted trunks. Something still lives there.",
+    "The corruption spreads as you work. The canopy hungers for something unnamed.",
+    "The canopy parts. The Corrupted Sanctum rises from the shadow-wood — its doors open, waiting."
+  ],
+  "unlock_dungeon": "corrupted_sanctum",
+  "unlock_message": "The Corrupted Sanctum has been revealed — enter and purge the shadow within."
+}

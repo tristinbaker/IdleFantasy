@@ -1,0 +1,61 @@
+{
+  "name": "dwarven_depths",
+  "display_name": "Dwarven Depths",
+  "description": "The deepest level of an ancient dwarven excavation. Rich veins of adamantite and runite ore line the walls, but something slumbers in the forge chamber below.",
+  "skill": "mining",
+  "level_required": 40,
+  "requires_previous_unlock": "collapsed_mine",
+  "xp_ranges": {
+    "40": {"min": 80, "max": 115},
+    "45": {"min": 95, "max": 138},
+    "50": {"min": 115, "max": 165},
+    "55": {"min": 138, "max": 195},
+    "60": {"min": 162, "max": 232},
+    "65": {"min": 192, "max": 272},
+    "70": {"min": 225, "max": 318},
+    "75": {"min": 264, "max": 374},
+    "80": {"min": 308, "max": 435},
+    "85": {"min": 358, "max": 506},
+    "90": {"min": 413, "max": 583},
+    "95": {"min": 473, "max": 671}
+  },
+  "drop_tables": {
+    "40": [
+      {"item": "coal", "chance": 0.55},
+      {"item": "mithril_ore", "chance": 0.35},
+      {"item": "adamantite_ore", "chance": 0.10}
+    ],
+    "50": [
+      {"item": "coal", "chance": 0.45},
+      {"item": "mithril_ore", "chance": 0.30},
+      {"item": "adamantite_ore", "chance": 0.25}
+    ],
+    "60": [
+      {"item": "coal", "chance": 0.40},
+      {"item": "mithril_ore", "chance": 0.20},
+      {"item": "adamantite_ore", "chance": 0.30},
+      {"item": "runite_ore", "chance": 0.10}
+    ],
+    "70": [
+      {"item": "coal", "chance": 0.35},
+      {"item": "adamantite_ore", "chance": 0.35},
+      {"item": "runite_ore", "chance": 0.30}
+    ],
+    "85": [
+      {"item": "coal", "chance": 0.30},
+      {"item": "adamantite_ore", "chance": 0.25},
+      {"item": "runite_ore", "chance": 0.45}
+    ]
+  },
+  "note_chance_per_frame": 0.003,
+  "note_threshold": 5,
+  "note_texts": [
+    "Ancient rune-carved walls pulse faintly. The dwarves who built this place are long gone.",
+    "A colossal forge stands at the passage end, its fires somehow still burning after centuries.",
+    "Iron golems stand dormant in the alcoves. Their eyes flicker as you mine nearby.",
+    "The forge runes are a warning — something was bound here, and it grows restless.",
+    "The golems rise fully to life. The Ancient Forge awakens — its guardians await those brave enough to enter."
+  ],
+  "unlock_dungeon": "ancient_forge",
+  "unlock_message": "The Ancient Forge stirs to life — enter and face its iron guardians."
+}

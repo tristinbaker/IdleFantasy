@@ -16,6 +16,7 @@ import com.fantasyidler.data.model.SessionFrame
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.repository.GameDataRepository
+import com.fantasyidler.repository.GuildRepository
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.QuestRepository
 import com.fantasyidler.repository.QueuedSessionStarter
@@ -86,6 +87,7 @@ sealed class SheetState {
     ) : SheetState()
     /** Opens the inline craft sheet for one of the instant-craft skills. */
     data class Crafting(val skillName: String) : SheetState()
+    data object Mercantile : SheetState()
     data object ComingSoon : SheetState()
 }
 
@@ -99,6 +101,7 @@ class SkillsViewModel @Inject constructor(
     private val sessionRepo: SessionRepository,
     private val gameData: GameDataRepository,
     private val questRepo: QuestRepository,
+    private val guildRepo: GuildRepository,
     private val queuedSessionStarter: QueuedSessionStarter,
     private val json: Json,
 ) : ViewModel() {
@@ -199,7 +202,10 @@ class SkillsViewModel @Inject constructor(
                     val flags = try { json.decodeFromString<PlayerFlags>(player.flags) } catch (_: Exception) { PlayerFlags() }
                     val reserved = reservedQty(flags.sessionQueue, Skills.PRAYER)
                     val effectiveCounts = inv.mapValues { (k, v) -> v - (reserved[k] ?: 0) }
-                    val available = gameData.bones.filter { (key, _) -> (effectiveCounts[key] ?: 0) > 0 }
+                    val available = gameData.bones
+                        .filter { (key, _) -> (effectiveCounts[key] ?: 0) > 0 }
+                        .entries.sortedBy { it.value.xpPerBone }
+                        .associate { it.key to it.value }
                     _uiState.update {
                         it.copy(sheetSkill = SheetState.Prayer(available, effectiveCounts.filterKeys { k -> k in gameData.bones }))
                     }
@@ -211,6 +217,7 @@ class SkillsViewModel @Inject constructor(
             Skills.FLETCHING,
             Skills.CRAFTING,
             Skills.HERBLORE  -> SheetState.Crafting(skillKey)
+            Skills.MERCANTILE -> SheetState.Mercantile
             else             -> SheetState.ComingSoon
         }
         _uiState.update { it.copy(sheetSkill = sheet) }
@@ -492,6 +499,7 @@ class SkillsViewModel @Inject constructor(
             rodEfficiency    = toolEfficiency(equipped[EquipSlot.FISHING_ROD], EquipSlot.FISHING_ROD, fishData.levelRequired),
             petDropKey       = petKey,
             petDropChance    = petChance,
+            fishingSkillData = gameData.fishingSkillData,
         )
     }
 
@@ -581,14 +589,34 @@ class SkillsViewModel @Inject constructor(
                 itemsGained = regularItems,
             )
 
-            // Record quest progress
+            // Record quest / daily / guild progress
             val gatheringSkills = setOf(Skills.MINING, Skills.WOODCUTTING, Skills.FISHING,
                 Skills.AGILITY, Skills.FIREMAKING, Skills.RUNECRAFTING)
-            val craftingSkills = setOf(Skills.SMITHING, Skills.COOKING, Skills.FLETCHING, Skills.CRAFTING)
+            val craftingSkills = setOf(Skills.SMITHING, Skills.COOKING, Skills.FLETCHING, Skills.CRAFTING, Skills.HERBLORE)
             when (session.skillName) {
-                in gatheringSkills -> questRepo.recordGathering(session.skillName, regularItems)
-                in craftingSkills  -> questRepo.recordCrafting(session.skillName, regularItems)
-                Skills.PRAYER      -> questRepo.recordBuried(frames.sumOf { it.kills })
+                in gatheringSkills -> {
+                    questRepo.recordGathering(session.skillName, regularItems)
+                    playerRepo.recordDailyGathering(regularItems)
+                    when (session.skillName) {
+                        Skills.AGILITY      -> guildRepo.recordGuildSessions()
+                        Skills.RUNECRAFTING -> guildRepo.recordGuildCrafting(session.skillName, regularItems)
+                        else                -> guildRepo.recordGuildGathering(session.skillName, regularItems)
+                    }
+                }
+                in craftingSkills -> {
+                    questRepo.recordCrafting(session.skillName, regularItems)
+                    playerRepo.recordDailyCrafting(regularItems)
+                    guildRepo.recordGuildCrafting(session.skillName, regularItems)
+                }
+                Skills.PRAYER -> {
+                    val buried = frames.sumOf { it.kills }
+                    questRepo.recordBuried(buried)
+                    playerRepo.recordDailyPrayer(buried)
+                    guildRepo.recordGuildPrayer(buried)
+                }
+            }
+            if (session.skillName == Skills.FIREMAKING) {
+                playerRepo.consumeItems(mapOf(session.activityKey to frames.size))
             }
 
             // Handle pet drops
@@ -624,8 +652,13 @@ class SkillsViewModel @Inject constructor(
         viewModelScope.launch {
             val session = sessionRepo.getActiveSession() ?: return@launch
             val frames: List<com.fantasyidler.data.model.SessionFrame> = json.decodeFromString(session.frames)
-            playerSessionMaterials(session.skillName, session.activityKey, frames.sumOf { it.kills }, gameData)
-                ?.let { playerRepo.addItems(it) }
+            if (session.skillName == Skills.MERCANTILE) {
+                val coinCost = gameData.tradeRoutes.firstOrNull { it.id == session.activityKey }?.coinCost?.toLong() ?: 0L
+                if (coinCost > 0) playerRepo.addCoins(coinCost)
+            } else {
+                playerSessionMaterials(session.skillName, session.activityKey, frames.sumOf { it.kills }, gameData)
+                    ?.let { playerRepo.addItems(it) }
+            }
             sessionRepo.abandonSession(session.sessionId)
             queuedSessionStarter.startNextQueued()
         }

@@ -1,0 +1,16 @@
+{
+  "name": "ancient_forest_ruins",
+  "display_name": "Ancient Forest Ruins",
+  "description": "Stone ruins swallowed by the primeval forest, now haunted by corrupted druids, vine beasts, and forest spirits who guard the grove's ancient secrets.",
+  "recommended_level": 20,
+  "encounter_rate": 0.28,
+  "lore_unlock_only": true,
+  "enemy_spawns": [
+    {"enemy": "corrupted_druid", "weight": 4},
+    {"enemy": "vine_beast", "weight": 3},
+    {"enemy": "forest_spirit", "weight": 3}
+  ],
+  "rare_drops": [
+    {"item": "ironwood_axe", "chance": 0.02}
+  ]
+}

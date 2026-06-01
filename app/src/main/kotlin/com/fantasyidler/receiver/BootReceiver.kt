@@ -3,6 +3,8 @@ package com.fantasyidler.receiver
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import com.fantasyidler.repository.BackupScheduler
+import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.QueuedSessionStarter
 import com.fantasyidler.repository.SessionRepository
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,6 +18,8 @@ class BootReceiver : BroadcastReceiver() {
 
     @Inject lateinit var sessionRepository: SessionRepository
     @Inject lateinit var queuedSessionStarter: QueuedSessionStarter
+    @Inject lateinit var playerRepository: PlayerRepository
+    @Inject lateinit var backupScheduler: BackupScheduler
 
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action != Intent.ACTION_BOOT_COMPLETED) return
@@ -23,6 +27,8 @@ class BootReceiver : BroadcastReceiver() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 sessionRepository.recoverActiveSession(queuedSessionStarter)
+                val flags = playerRepository.getFlags()
+                if (flags.backupFrequency.isNotEmpty()) backupScheduler.schedule(flags.backupFrequency)
             } finally {
                 pending.finish()
             }

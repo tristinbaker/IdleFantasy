@@ -14,11 +14,14 @@ import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.SessionFrame
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.Skills
+import com.fantasyidler.repository.ChurchRepository
 import com.fantasyidler.repository.GameDataRepository
+import com.fantasyidler.repository.GuildRepository
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.QuestRepository
 import com.fantasyidler.repository.QueuedSessionStarter
 import com.fantasyidler.repository.SessionRepository
+import com.fantasyidler.repository.SlayerRepository
 import com.fantasyidler.simulator.CombatSimulator
 import com.fantasyidler.simulator.SkillSimulator
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -45,6 +48,9 @@ data class CombatSessionResult(
     val won: Boolean = true,
     val killsByEnemy: Map<String, Int> = emptyMap(),
     val foodConsumed: Map<String, Int> = emptyMap(),
+    val xpBlessingBonusBySkill: Map<String, Long> = emptyMap(),
+    val coinBlessingBonus: Long = 0L,
+    val boostWasActive: Boolean = false,
 )
 
 data class CombatUiState(
@@ -54,6 +60,10 @@ data class CombatUiState(
     val equipped: Map<String, String?> = emptyMap(),
     val inventory: Map<String, Int> = emptyMap(),
     val equippedWeapon: EquipmentData? = null,
+    /** All four weapon slots that have something equipped: slot key -> EquipmentData. */
+    val equippedWeapons: Map<String, EquipmentData> = emptyMap(),
+    /** The weapon slot the player explicitly chose for the next dungeon; null = use default. */
+    val selectedWeaponSlot: String? = null,
     val selectedSpell: SpellData? = null,
     val combatSession: SkillSession? = null,
     val selectedDungeon: DungeonData? = null,
@@ -71,6 +81,7 @@ data class CombatUiState(
     val selectedPotionKey: String? = null,
     val availablePotions: Map<String, Int> = emptyMap(),
     val dungeonRuns: Map<String, Int> = emptyMap(),
+    val unlockedDungeons: List<String> = emptyList(),
 )
 
 // ---------------------------------------------------------------------------
@@ -83,9 +94,13 @@ class CombatViewModel @Inject constructor(
     private val sessionRepo: SessionRepository,
     private val gameData: GameDataRepository,
     private val questRepo: QuestRepository,
+    private val guildRepo: GuildRepository,
+    private val slayerRepo: SlayerRepository,
     private val queuedSessionStarter: QueuedSessionStarter,
     private val json: Json,
 ) : ViewModel() {
+
+    val potionEffects: Map<String, Map<String, Int>> = gameData.potionEffects
 
     private val _extra = MutableStateFlow(CombatUiState())
 
@@ -102,12 +117,22 @@ class CombatViewModel @Inject constructor(
             val xpMap:    Map<String, Long>   = json.decodeFromString(player.skillXp)
             val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
             val inventory: Map<String, Int>    = json.decodeFromString(player.inventory)
-            val weaponKey     = equipped[EquipSlot.WEAPON]
-            val equippedWeapon = weaponKey?.let { gameData.equipment[it] }
             val flags: PlayerFlags         = try { json.decodeFromString(player.flags) } catch (_: Exception) { PlayerFlags() }
-            val totalAtk = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.attackBonus  ?: 0 }
-            val totalStr = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.strengthBonus ?: 0 }
-            val totalDef = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.defenseBonus  ?: 0 }
+            val activeWeaponSlot = extra.selectedWeaponSlot
+                ?: flags.activeWeaponSlot
+                ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
+                ?: EquipSlot.WEAPON
+            val weaponKey      = equipped[activeWeaponSlot]
+            val equippedWeapon = weaponKey?.let { gameData.equipment[it] }
+            val equippedWeapons = EquipSlot.WEAPON_SLOTS
+                .mapNotNull { slot -> equipped[slot]?.let { key -> gameData.equipment[key]?.let { slot to it } } }
+                .toMap()
+            val armorAtk = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.attackBonus  ?: 0 }
+            val armorStr = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.strengthBonus ?: 0 }
+            val armorDef = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.defenseBonus  ?: 0 }
+            val totalAtk = armorAtk + (equippedWeapon?.attackBonus  ?: 0)
+            val totalStr = armorStr + (equippedWeapon?.strengthBonus ?: 0)
+            val totalDef = armorDef + (equippedWeapon?.defenseBonus  ?: 0)
             val defenceLevel  = levels[Skills.DEFENSE]   ?: 1
             val hpLevel       = levels[Skills.HITPOINTS] ?: 1
             val totalFoodHeal = flags.equippedFood.keys.sumOf { key ->
@@ -129,6 +154,7 @@ class CombatViewModel @Inject constructor(
                 equipped                = equipped,
                 inventory               = inventory,
                 equippedWeapon          = equippedWeapon,
+                equippedWeapons         = equippedWeapons,
                 combatSession           = combatSession,
                 totalAttackBonus        = totalAtk,
                 totalStrengthBonus      = totalStr,
@@ -140,6 +166,7 @@ class CombatViewModel @Inject constructor(
                 availablePotions        = inventory.filterKeys { it in gameData.potionEffects }
                     .filter { (_, qty) -> qty > 0 },
                 dungeonRuns             = flags.dungeonRuns,
+                unlockedDungeons        = flags.unlockedDungeons,
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), CombatUiState())
@@ -156,6 +183,26 @@ class CombatViewModel @Inject constructor(
 
     val foodHealValues: Map<String, Int> by lazy { gameData.foodHealValues }
 
+    init {
+        viewModelScope.launch { migrateWeaponSlots() }
+    }
+
+    private suspend fun migrateWeaponSlots() {
+        val equipped = playerRepo.getEquipped().toMutableMap()
+        val oldWeapon = equipped[EquipSlot.WEAPON] ?: return
+        if (EquipSlot.WEAPON_SLOTS.any { equipped[it] != null }) return
+        val style = gameData.equipment[oldWeapon]?.combatStyle
+        val targetSlot = when (style) {
+            "strength" -> EquipSlot.WEAPON_STR
+            "ranged"   -> EquipSlot.WEAPON_RANGED
+            "magic"    -> EquipSlot.WEAPON_MAGIC
+            else       -> EquipSlot.WEAPON_ATK
+        }
+        equipped[targetSlot] = oldWeapon
+        equipped.remove(EquipSlot.WEAPON)
+        playerRepo.updateEquipped(equipped)
+    }
+
     // ------------------------------------------------------------------
     // Dungeon selection
     // ------------------------------------------------------------------
@@ -165,6 +212,9 @@ class CombatViewModel @Inject constructor(
 
     fun selectBoss(boss: BossData?) =
         _extra.update { it.copy(selectedBoss = boss) }
+
+    fun selectWeaponSlot(slot: String) =
+        _extra.update { it.copy(selectedWeaponSlot = slot) }
 
     fun selectSpell(spell: SpellData?) =
         _extra.update { it.copy(selectedSpell = spell) }
@@ -188,7 +238,21 @@ class CombatViewModel @Inject constructor(
         viewModelScope.launch {
             if (sessionRepo.getActiveSession() != null) {
                 val dungeonName = gameData.dungeons[dungeonKey]?.displayName ?: dungeonKey
-                val agility     = (json.decodeFromString<Map<String, Int>>(playerRepo.getOrCreatePlayer().skillLevels))[Skills.AGILITY] ?: 1
+                val player      = playerRepo.getOrCreatePlayer()
+                val agility     = (json.decodeFromString<Map<String, Int>>(player.skillLevels))[Skills.AGILITY] ?: 1
+                val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
+                val queuedWeaponSlot = _extra.value.selectedWeaponSlot
+                    ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
+                    ?: EquipSlot.WEAPON
+                val queuedWeapon = equipped[queuedWeaponSlot]?.let { gameData.equipment[it] }
+                val queuedSpell = _extra.value.selectedSpell
+                if (queuedWeapon != null || queuedSpell != null) {
+                    val flags: PlayerFlags = json.decodeFromString(player.flags)
+                    playerRepo.updateFlags(flags.copy(
+                        activeWeaponSlot = queuedWeaponSlot,
+                        activeSpell = if (queuedWeapon?.combatStyle == "magic" && queuedSpell != null) queuedSpell.name else flags.activeSpell,
+                    ))
+                }
                 val enqueued = playerRepo.enqueueAction(
                     QueuedAction(
                         skillName           = "combat",
@@ -224,7 +288,10 @@ class CombatViewModel @Inject constructor(
                 val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
                 val inventory: Map<String, Int>    = json.decodeFromString(player.inventory)
 
-                val weaponKey  = equipped[EquipSlot.WEAPON]
+                val activeWeaponSlot = _extra.value.selectedWeaponSlot
+                    ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
+                    ?: EquipSlot.WEAPON
+                val weaponKey  = equipped[activeWeaponSlot]
                 val weapon     = weaponKey?.let { gameData.equipment[it] }
                 val combatStyle = when (weapon?.combatStyle) {
                     "ranged"   -> "ranged"
@@ -233,9 +300,9 @@ class CombatViewModel @Inject constructor(
                     else       -> "attack"
                 }
 
-                val totalAttackBonus   = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.attackBonus  ?: 0 }
-                val totalStrengthBonus = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.strengthBonus ?: 0 }
-                val totalDefenseBonus  = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.defenseBonus  ?: 0 }
+                val totalAttackBonus   = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.attackBonus  ?: 0 } + (weapon?.attackBonus  ?: 0)
+                val totalStrengthBonus = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.strengthBonus ?: 0 } + (weapon?.strengthBonus ?: 0)
+                val totalDefenseBonus  = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.defenseBonus  ?: 0 } + (weapon?.defenseBonus  ?: 0)
 
                 // Ranged: find best arrow in inventory
                 val bestArrow = ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
@@ -264,6 +331,10 @@ class CombatViewModel @Inject constructor(
 
                 // Food: use whatever equipped food items exist in inventory
                 val flags: PlayerFlags = json.decodeFromString(player.flags)
+                playerRepo.updateFlags(flags.copy(
+                    activeWeaponSlot = activeWeaponSlot,
+                    activeSpell = if (combatStyle == "magic" && selectedSpell != null) selectedSpell.name else flags.activeSpell,
+                ))
                 val equippedFoodKeys   = flags.equippedFood.keys
                 val availableFood      = inventory.filterKeys { it in equippedFoodKeys }
                 val foodHealValues     = gameData.foodHealValues
@@ -284,6 +355,7 @@ class CombatViewModel @Inject constructor(
                     playerAttack        = levels[Skills.ATTACK]    ?: 1,
                     playerStrength      = levels[Skills.STRENGTH]  ?: 1,
                     playerDefence       = (levels[Skills.DEFENSE]  ?: 1) + totalDefenseBonus,
+                    blessingDefBonus    = ChurchRepository.defBonus(flags),
                     playerHp            = levels[Skills.HITPOINTS] ?: 1,
                     weaponAttackBonus   = totalAttackBonus,
                     weaponStrengthBonus = totalStrengthBonus,
@@ -340,7 +412,7 @@ class CombatViewModel @Inject constructor(
             } catch (e: Exception) {
                 _extra.update { it.copy(snackbarMessage = "Failed to start session: ${e.message}") }
             } finally {
-                _extra.update { it.copy(startingSession = false, selectedPotionKey = null) }
+                _extra.update { it.copy(startingSession = false, selectedPotionKey = null, selectedWeaponSlot = null) }
             }
         }
     }
@@ -373,9 +445,13 @@ class CombatViewModel @Inject constructor(
                 val levels: Map<String, Int>       = json.decodeFromString(player.skillLevels)
                 val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
                 val inventory: Map<String, Int>    = json.decodeFromString(player.inventory)
-                val totalAtkBonus = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.attackBonus  ?: 0 }
-                val totalStrBonus = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.strengthBonus ?: 0 }
-                val totalDefBonus = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.defenseBonus  ?: 0 }
+                val activeWeaponSlot = _extra.value.selectedWeaponSlot
+                    ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
+                    ?: EquipSlot.WEAPON
+                val bossWeapon = equipped[activeWeaponSlot]?.let { gameData.equipment[it] }
+                val totalAtkBonus = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.attackBonus  ?: 0 } + (bossWeapon?.attackBonus  ?: 0)
+                val totalStrBonus = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.strengthBonus ?: 0 } + (bossWeapon?.strengthBonus ?: 0)
+                val totalDefBonus = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.defenseBonus  ?: 0 } + (bossWeapon?.defenseBonus  ?: 0)
 
                 val potionKey     = _extra.value.selectedPotionKey
                 val potionBonuses = if (potionKey != null && (inventory[potionKey] ?: 0) > 0) {
@@ -384,6 +460,7 @@ class CombatViewModel @Inject constructor(
                 } else emptyMap()
 
                 val flags: PlayerFlags = try { json.decodeFromString(player.flags) } catch (_: Exception) { PlayerFlags() }
+                playerRepo.updateFlags(flags.copy(activeWeaponSlot = activeWeaponSlot))
                 val equippedFoodKeys  = flags.equippedFood.keys
                 val availableFood     = inventory.filterKeys { it in equippedFoodKeys }
 
@@ -398,6 +475,7 @@ class CombatViewModel @Inject constructor(
                     weaponStrBonus    = totalStrBonus,
                     equippedFood      = availableFood,
                     foodHealValues    = gameData.foodHealValues,
+                    blessingDefBonus  = ChurchRepository.defBonus(flags),
                 )
                 val framesJson = json.encodeToString(
                     json.serializersModule.serializer<List<SessionFrame>>(),
@@ -458,6 +536,11 @@ class CombatViewModel @Inject constructor(
         val allFoodConsumed = mutableMapOf<String, Int>()
         for (frame in frames) frame.foodConsumed.forEach { (k, v) -> allFoodConsumed[k] = (allFoodConsumed[k] ?: 0) + v }
 
+        val bossFlags         = playerRepo.getFlags()
+        val blessingXpMult    = ChurchRepository.xpMultiplier(bossFlags)
+        val blessingCoinMult  = ChurchRepository.coinMultiplier(bossFlags)
+        val boostActive       = bossFlags.xpBoostExpiresAt > System.currentTimeMillis()
+        val boostMult         = if (boostActive) 2L else 1L
         val capes = playerRepo.applyMultiSkillResults(last.xpBySkill, loot, coinsGained)
         if (allFoodConsumed.isNotEmpty()) playerRepo.consumeItems(allFoodConsumed)
         for ((petId, _) in petDrops) {
@@ -471,18 +554,27 @@ class CombatViewModel @Inject constructor(
                 loot         = loot,
             )
             playerRepo.recordDailyKills(mapOf(session.activityKey to 1))
+            guildRepo.recordGuildCombat(mapOf(session.activityKey to 1), detectCombatStyle(last.xpBySkill))
         }
+        val xpDisplayBySkill = last.xpBySkill.mapValues { (_, xp) -> xp * boostMult }
+        val xpBlessingBonusBySkill = xpDisplayBySkill
+            .mapValues { (_, xp) -> (xp.toDouble() * (blessingXpMult - 1)).toLong() }
+            .filter { (_, bonus) -> bonus > 0 }
+        val coinBlessingBonus = (coinsGained.toDouble() * (blessingCoinMult - 1)).toLong()
         val itemsDisplay = last.items.toMutableMap().also { it.remove("coins") }
         sessionRepo.deleteSession(session.sessionId)
         _extra.update {
             it.copy(
                 combatResult = CombatSessionResult(
-                    dungeonDisplayName = boss?.let { b -> "${b.emoji} ${b.displayName}" } ?: session.activityKey,
-                    xpPerSkill   = last.xpBySkill,
-                    itemsGained  = itemsDisplay,
-                    coinsGained  = coinsGained,
-                    won          = won,
-                    killsByEnemy = if (won) mapOf(session.activityKey to 1) else emptyMap(),
+                    dungeonDisplayName     = boss?.let { b -> "${b.emoji} ${b.displayName}" } ?: session.activityKey,
+                    xpPerSkill             = xpDisplayBySkill,
+                    itemsGained            = itemsDisplay,
+                    coinsGained            = coinsGained,
+                    won                    = won,
+                    killsByEnemy           = if (won) mapOf(session.activityKey to 1) else emptyMap(),
+                    xpBlessingBonusBySkill = xpBlessingBonusBySkill,
+                    coinBlessingBonus      = coinBlessingBonus,
+                    boostWasActive         = boostActive,
                 ),
                 snackbarMessage = buildCapeMessage(capes),
             )
@@ -518,6 +610,20 @@ class CombatViewModel @Inject constructor(
         }
         val dungeon = gameData.dungeons[session.activityKey]
 
+        // Accumulate Slayer XP for kills that match the active task (skipped on death)
+        if (!playerDied) {
+            var slayerXp = 0L
+            for ((enemy, kills) in allKillsByEnemy) {
+                slayerXp += slayerRepo.recordKills(enemy, kills)
+            }
+            if (slayerXp > 0L) totalXpPerSkill[Skills.SLAYER] = (totalXpPerSkill[Skills.SLAYER] ?: 0L) + slayerXp
+        }
+
+        val dungeonFlags      = playerRepo.getFlags()
+        val blessingXpMult    = ChurchRepository.xpMultiplier(dungeonFlags)
+        val blessingCoinMult  = ChurchRepository.coinMultiplier(dungeonFlags)
+        val boostActive       = dungeonFlags.xpBoostExpiresAt > System.currentTimeMillis()
+        val boostMult         = if (boostActive) 2L else 1L
         val capes = playerRepo.applyMultiSkillResults(totalXpPerSkill, allItems, coinsGained)
         if (allFoodConsumed.isNotEmpty())   playerRepo.consumeItems(allFoodConsumed)
         if (allArrowsConsumed.isNotEmpty()) playerRepo.consumeItems(allArrowsConsumed)
@@ -530,21 +636,32 @@ class CombatViewModel @Inject constructor(
                 combatStyle        = combatStyle,
                 foodConsumedTotal  = allFoodConsumed.values.sum(),
             )
-            if (allKillsByEnemy.isNotEmpty()) playerRepo.recordDailyKills(allKillsByEnemy)
+            if (allKillsByEnemy.isNotEmpty()) {
+                playerRepo.recordDailyKills(allKillsByEnemy)
+                guildRepo.recordGuildCombat(allKillsByEnemy, combatStyle)
+            }
             playerRepo.incrementDungeonRun(session.activityKey)
         }
+        val xpDisplayBySkill = totalXpPerSkill.mapValues { (_, xp) -> xp * boostMult }
+        val xpBlessingBonusBySkill = xpDisplayBySkill
+            .mapValues { (_, xp) -> (xp.toDouble() * (blessingXpMult - 1)).toLong() }
+            .filter { (_, bonus) -> bonus > 0 }
+        val coinBlessingBonus = (coinsGained.toDouble() * (blessingCoinMult - 1)).toLong()
         sessionRepo.deleteSession(session.sessionId)
 
         _extra.update {
             it.copy(
                 combatResult = CombatSessionResult(
-                    dungeonDisplayName = dungeon?.displayName ?: session.activityKey,
-                    xpPerSkill         = totalXpPerSkill,
-                    itemsGained        = allItems,
-                    coinsGained        = coinsGained,
-                    won                = !playerDied,
-                    killsByEnemy       = allKillsByEnemy,
-                    foodConsumed       = allFoodConsumed,
+                    dungeonDisplayName     = dungeon?.displayName ?: session.activityKey,
+                    xpPerSkill             = xpDisplayBySkill,
+                    itemsGained            = allItems,
+                    coinsGained            = coinsGained,
+                    won                    = !playerDied,
+                    killsByEnemy           = allKillsByEnemy,
+                    foodConsumed           = allFoodConsumed,
+                    xpBlessingBonusBySkill = xpBlessingBonusBySkill,
+                    coinBlessingBonus      = coinBlessingBonus,
+                    boostWasActive         = boostActive,
                 ),
                 snackbarMessage = buildCapeMessage(capes),
             )
@@ -616,6 +733,7 @@ class CombatViewModel @Inject constructor(
         weaponStrBonus: Int,
         equippedFood: Map<String, Int> = emptyMap(),
         foodHealValues: Map<String, Int> = emptyMap(),
+        blessingDefBonus: Int = 0,
     ): List<SessionFrame> = CombatSimulator.simulateBoss(
         boss              = boss,
         bossKey           = bossKey,
@@ -627,6 +745,7 @@ class CombatViewModel @Inject constructor(
         weaponStrBonus    = weaponStrBonus,
         equippedFood      = equippedFood,
         foodHealValues    = foodHealValues,
+        blessingDefBonus  = blessingDefBonus,
     )
 
     // ------------------------------------------------------------------

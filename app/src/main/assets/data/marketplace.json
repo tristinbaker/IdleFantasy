@@ -214,5 +214,102 @@
         "stock": "unlimited"
       }
     }
+  },
+  "merchants_guild": {
+    "category_name": "Merchant's Guild",
+    "description": "Exclusive items unlocked by levelling your Mercantile skill.",
+    "items": {
+      "spirit_herb": {
+        "display_name": "Spirit Herb",
+        "description": "A rare herb used in high-level herblore. Requires Mercantile level 20 to purchase.",
+        "price": 5000,
+        "stock": "unlimited",
+        "mercantile_level_required": 20
+      },
+      "celestial_bloom": {
+        "display_name": "Celestial Bloom",
+        "description": "An ethereal flower used in master potions. Requires Mercantile level 40 to purchase.",
+        "price": 12000,
+        "stock": "unlimited",
+        "mercantile_level_required": 40
+      },
+      "void_lotus": {
+        "display_name": "Void Lotus",
+        "description": "A mysterious lotus used in the rarest concoctions. Requires Mercantile level 60 to purchase.",
+        "price": 30000,
+        "stock": "unlimited",
+        "mercantile_level_required": 60
+      },
+      "ring_of_wealth": {
+        "display_name": "Ring of Wealth",
+        "description": "Increases coin drops slightly. Requires Mercantile level 40 to purchase.",
+        "price": 50000,
+        "stock": "unlimited",
+        "mercantile_level_required": 40
+      },
+      "ring_of_recoil": {
+        "display_name": "Ring of Recoil",
+        "description": "Returns a portion of damage taken to attackers. Requires Mercantile level 20 to purchase.",
+        "price": 25000,
+        "stock": "unlimited",
+        "mercantile_level_required": 20
+      },
+      "ring_of_suffering": {
+        "display_name": "Ring of Suffering",
+        "description": "A powerful ring that grants significant defense. Requires Mercantile level 80 to purchase.",
+        "price": 500000,
+        "stock": "unlimited",
+        "mercantile_level_required": 80
+      },
+      "berserker_ring": {
+        "display_name": "Berserker Ring",
+        "description": "Increases melee strength. Requires Mercantile level 60 to purchase.",
+        "price": 200000,
+        "stock": "unlimited",
+        "mercantile_level_required": 60
+      },
+      "archers_ring": {
+        "display_name": "Archer's Ring",
+        "description": "Increases ranged accuracy. Requires Mercantile level 60 to purchase.",
+        "price": 200000,
+        "stock": "unlimited",
+        "mercantile_level_required": 60
+      },
+      "seers_ring": {
+        "display_name": "Seers' Ring",
+        "description": "Increases magic accuracy. Requires Mercantile level 60 to purchase.",
+        "price": 200000,
+        "stock": "unlimited",
+        "mercantile_level_required": 60
+      },
+      "amulet_of_strength": {
+        "display_name": "Amulet of Strength",
+        "description": "Increases melee strength bonus. Requires Mercantile level 20 to purchase.",
+        "price": 15000,
+        "stock": "unlimited",
+        "mercantile_level_required": 20
+      },
+      "amulet_of_fury": {
+        "display_name": "Amulet of Fury",
+        "description": "A powerful amulet granting bonuses to all combat styles. Requires Mercantile level 80 to purchase.",
+        "price": 800000,
+        "stock": "unlimited",
+        "mercantile_level_required": 80
+      },
+      "necklace_of_anguish": {
+        "display_name": "Necklace of Anguish",
+        "description": "Provides exceptional ranged attack bonuses. Requires Mercantile level 99 to purchase.",
+        "price": 3000000,
+        "stock": "unlimited",
+        "mercantile_level_required": 99
+      },
+      "tormented_bracelet": {
+        "display_name": "Tormented Bracelet",
+        "description": "Provides exceptional magic bonuses. Requires Mercantile level 99 to purchase.",
+        "price": 3000000,
+        "stock": "unlimited",
+        "mercantile_level_required": 99
+      }
+    }
   }
 }

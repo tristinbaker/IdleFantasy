@@ -150,15 +150,20 @@ class DailyQuestRepository @Inject constructor(
         return if (changed) flags.copy(dailyQuestProgress = updated) else flags
     }
 
-    fun claimQuest(flags: PlayerFlags, templateId: String): Pair<PlayerFlags, DailyReward> {
+    fun claimQuest(
+        flags: PlayerFlags,
+        templateId: String,
+        ownedItems: Set<String> = emptySet(),
+    ): Pair<PlayerFlags, DailyReward> {
         val pool = gameData.dailyQuestPool.associateBy { it.id }
         val template = pool[templateId] ?: return flags to DailyReward.CoinsReward()
         val progress = flags.dailyQuestProgress[templateId] ?: 0
         check(progress >= template.amount) { "Quest not complete yet" }
         check(templateId !in flags.dailyQuestClaimed) { "Quest already claimed" }
 
-        val reward: DailyReward = if (Random.nextInt(500) == 0) {
-            DailyReward.DwarvenItemReward(dwarvenDropPool.random())
+        val missingPieces = dwarvenDropPool.filter { it !in ownedItems }
+        val reward: DailyReward = if (missingPieces.isNotEmpty() && Random.nextInt(100) == 0) {
+            DailyReward.DwarvenItemReward(missingPieces.random())
         } else {
             DailyReward.CoinsReward()
         }

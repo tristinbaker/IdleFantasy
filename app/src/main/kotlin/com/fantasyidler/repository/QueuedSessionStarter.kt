@@ -8,6 +8,8 @@ import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.SessionFrame
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.simulator.CombatSimulator
+import com.fantasyidler.simulator.MercantileSimulator
+import com.fantasyidler.simulator.SkillingDungeonSimulator
 import com.fantasyidler.simulator.SkillSimulator
 import com.fantasyidler.simulator.XpTable
 import kotlinx.coroutines.sync.Mutex
@@ -37,21 +39,22 @@ class QueuedSessionStarter @Inject constructor(
      * session couldn't be started (e.g. missing materials).
      */
     suspend fun startNextQueued(): Boolean {
-        // Mutex ensures concurrent callers (alarm receiver + UI) don't both dequeue the
-        // same item and start duplicate sessions.
-        val next = mutex.withLock {
+        // Mutex covers the full dequeue + session-start so concurrent callers (alarm
+        // receiver, recoverActiveSession, collectSession) can't both pass the "no running
+        // session" check and dequeue separate actions before either inserts a DB row.
+        mutex.withLock {
             val current = sessionRepo.getActiveSession()
             if (current != null && !current.completed) return false
-            playerRepo.dequeueNextAction()
-        } ?: return false
-
-        return try {
-            startQueuedAction(next)
-            true
-        } catch (_: Exception) {
-            playerRepo.requeueActionAtFront(next)
-            false
+            val next = playerRepo.dequeueNextAction() ?: return false
+            return try {
+                startQueuedAction(next)
+                true
+            } catch (_: Exception) {
+                playerRepo.requeueActionAtFront(next)
+                false
+            }
         }
+        return false
     }
 
     private suspend fun startQueuedAction(action: QueuedAction) {
@@ -61,7 +64,10 @@ class QueuedSessionStarter @Inject constructor(
         val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
         val inventory: Map<String, Int>    = json.decodeFromString(player.inventory)
         val flags: PlayerFlags             = json.decodeFromString(player.flags)
-        val agilityLevel = levels[Skills.AGILITY] ?: 1
+        val agilityLevel     = levels[Skills.AGILITY] ?: 1
+        val equippedCapeData = equipped[EquipSlot.CAPE]?.let { gameData.equipment[it] }
+        val combatCapeMult   = if (equippedCapeData?.capeSkill in COMBAT_CAPE_SKILLS) 1f + (equippedCapeData?.capeBonus ?: 0f) else 1f
+        val prayerCapeMult   = if (equippedCapeData?.capeSkill == "prayer") 1f + (equippedCapeData?.capeBonus ?: 0f) else 1f
 
         when (action.skillName) {
             Skills.MINING -> {
@@ -95,14 +101,18 @@ class QueuedSessionStarter @Inject constructor(
                 startSession(action, result)
             }
             Skills.FISHING -> {
-                val result = SkillSimulator.simulateGathering(
-                    skillData       = gameData.fishingSkillData,
-                    startXp         = xpMap[Skills.FISHING] ?: 0L,
-                    agilityLevel    = agilityLevel,
-                    petBoostPct     = gatheringPetBoost(player.pets, Skills.FISHING),
-                    toolEfficiency  = toolEfficiency(equipped[EquipSlot.FISHING_ROD], EquipSlot.FISHING_ROD, levels[Skills.FISHING] ?: 1),
-                    petDropKey      = petDropKey(Skills.FISHING),
-                    petDropChance   = petDropChance(Skills.FISHING),
+                val fishKey  = action.activityKey
+                val fishData = gameData.fish[fishKey] ?: return
+                val result   = SkillSimulator.simulateFishing(
+                    fishKey          = fishKey,
+                    fishData         = fishData,
+                    startXp          = xpMap[Skills.FISHING] ?: 0L,
+                    agilityLevel     = agilityLevel,
+                    petBoostPct      = gatheringPetBoost(player.pets, Skills.FISHING),
+                    rodEfficiency    = toolEfficiency(equipped[EquipSlot.FISHING_ROD], EquipSlot.FISHING_ROD, fishData.levelRequired),
+                    petDropKey       = petDropKey(Skills.FISHING),
+                    petDropChance    = petDropChance(Skills.FISHING),
+                    fishingSkillData = gameData.fishingSkillData,
                 )
                 startSession(action, result)
             }
@@ -237,25 +247,44 @@ class QueuedSessionStarter @Inject constructor(
                 val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
                 sessionRepo.startSession(Skills.HERBLORE, action.activityKey, encodeFrames(frames), qty * perItemMs, action.skillDisplayName)
             }
+            Skills.MERCANTILE -> {
+                val route = gameData.tradeRoutes.firstOrNull { it.id == action.activityKey } ?: return
+                val result = MercantileSimulator.simulate(
+                    route        = route,
+                    startXp      = xpMap[Skills.MERCANTILE] ?: 0L,
+                    agilityLevel = agilityLevel,
+                )
+                sessionRepo.startSession(
+                    skillName        = action.skillName,
+                    activityKey      = action.activityKey,
+                    frames           = encodeFrames(result.frames),
+                    durationMs       = result.durationMs,
+                    skillDisplayName = action.skillDisplayName,
+                )
+            }
             "boss" -> {
                 val bossKey = action.activityKey
                 val boss    = gameData.bosses[bossKey] ?: return
-                val totalAtkBonus    = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.attackBonus  ?: 0 }
-                val totalStrBonus    = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.strengthBonus ?: 0 }
-                val totalDefBonus    = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.defenseBonus  ?: 0 }
+                val bossWeapon = (flags.activeWeaponSlot
+                    ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
+                    ?: EquipSlot.WEAPON).let { equipped[it] }.let { gameData.equipment[it] }
+                val totalAtkBonus    = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.attackBonus  ?: 0 } + (bossWeapon?.attackBonus  ?: 0)
+                val totalStrBonus    = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.strengthBonus ?: 0 } + (bossWeapon?.strengthBonus ?: 0)
+                val totalDefBonus    = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.defenseBonus  ?: 0 } + (bossWeapon?.defenseBonus  ?: 0)
                 val equippedFoodKeys = flags.equippedFood.keys
                 val availableFood    = inventory.filterKeys { it in equippedFoodKeys }
                 val bossFrames = CombatSimulator.simulateBoss(
                     boss              = boss,
                     bossKey           = bossKey,
-                    playerAttack      = levels[Skills.ATTACK]    ?: 1,
-                    playerStrength    = levels[Skills.STRENGTH]  ?: 1,
-                    playerDefence     = (levels[Skills.DEFENSE]  ?: 1) + totalDefBonus,
+                    playerAttack      = ((levels[Skills.ATTACK]   ?: 1) * combatCapeMult).toInt(),
+                    playerStrength    = ((levels[Skills.STRENGTH] ?: 1) * combatCapeMult).toInt(),
+                    playerDefence     = ((levels[Skills.DEFENSE]  ?: 1) * combatCapeMult).toInt() + totalDefBonus,
                     playerHp          = levels[Skills.HITPOINTS] ?: 1,
                     weaponAttackBonus = totalAtkBonus,
                     weaponStrBonus    = totalStrBonus,
                     equippedFood      = availableFood,
                     foodHealValues    = gameData.foodHealValues,
+                    blessingDefBonus  = (ChurchRepository.defBonus(flags) * prayerCapeMult).toInt(),
                 )
                 val frameMs        = SkillSimulator.sessionDurationMs(agilityLevel) / 60L
                 val bossDurationMs = boss.durationMinutes * frameMs
@@ -270,10 +299,31 @@ class QueuedSessionStarter @Inject constructor(
                         (bossFrames.size - 1) * animPerFrameMs + 5_000L else null,
                 )
             }
+            "expedition" -> {
+                val dungeonKey = action.activityKey
+                val dungeon    = gameData.skillingDungeons[dungeonKey] ?: return
+                val toolEfficiency: Float = when (dungeon.skill) {
+                    Skills.MINING      -> toolEfficiency(equipped[EquipSlot.PICKAXE],     EquipSlot.PICKAXE,     dungeon.levelRequired)
+                    Skills.WOODCUTTING -> toolEfficiency(equipped[EquipSlot.AXE],         EquipSlot.AXE,         dungeon.levelRequired)
+                    Skills.FISHING     -> toolEfficiency(equipped[EquipSlot.FISHING_ROD], EquipSlot.FISHING_ROD, dungeon.levelRequired)
+                    else               -> 1.0f
+                }
+                val result = SkillingDungeonSimulator.simulate(
+                    dungeonKey     = dungeonKey,
+                    dungeon        = dungeon,
+                    startXp        = xpMap[dungeon.skill] ?: 0L,
+                    agilityLevel   = agilityLevel,
+                    toolEfficiency = toolEfficiency,
+                )
+                startSession(action, result)
+            }
             "combat" -> {
                 val dungeonKey = action.activityKey
                 val dungeon    = gameData.dungeons[dungeonKey] ?: return
-                val weaponKey  = equipped[EquipSlot.WEAPON]
+                val activeWeaponSlot = flags.activeWeaponSlot
+                    ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
+                    ?: EquipSlot.WEAPON
+                val weaponKey  = equipped[activeWeaponSlot]
                 val weapon     = weaponKey?.let { gameData.equipment[it] }
                 val combatStyle = when (weapon?.combatStyle) {
                     "ranged"   -> "ranged"
@@ -283,30 +333,33 @@ class QueuedSessionStarter @Inject constructor(
                 }
                 val bestArrow = ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
                 val arrowBonus = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
+                val availableArrows = if (bestArrow != null) mapOf(bestArrow to (inventory[bestArrow] ?: 0)) else emptyMap()
                 val equippedFoodKeys = flags.equippedFood.keys
                 val availableFood    = inventory.filterKeys { it in equippedFoodKeys }
                 val spell = gameData.spells[flags.activeSpell]
-                val totalAtkBonus = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.attackBonus  ?: 0 }
-                val totalStrBonus = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.strengthBonus ?: 0 }
-                val totalDefBonus = EquipSlot.COMBAT_SLOTS.sumOf { gameData.equipment[equipped[it]]?.defenseBonus  ?: 0 }
+                val totalAtkBonus = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.attackBonus  ?: 0 } + (weapon?.attackBonus  ?: 0)
+                val totalStrBonus = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.strengthBonus ?: 0 } + (weapon?.strengthBonus ?: 0)
+                val totalDefBonus = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.defenseBonus  ?: 0 } + (weapon?.defenseBonus  ?: 0)
                 val result = CombatSimulator.simulateDungeon(
                     dungeon             = dungeon,
                     enemies             = gameData.enemies,
-                    playerAttack        = levels[Skills.ATTACK]    ?: 1,
-                    playerStrength      = levels[Skills.STRENGTH]  ?: 1,
-                    playerDefence       = (levels[Skills.DEFENSE]  ?: 1) + totalDefBonus,
+                    playerAttack        = ((levels[Skills.ATTACK]   ?: 1) * combatCapeMult).toInt(),
+                    playerStrength      = ((levels[Skills.STRENGTH] ?: 1) * combatCapeMult).toInt(),
+                    playerDefence       = ((levels[Skills.DEFENSE]  ?: 1) * combatCapeMult).toInt() + totalDefBonus,
                     playerHp            = levels[Skills.HITPOINTS] ?: 1,
+                    blessingDefBonus    = (ChurchRepository.defBonus(flags) * prayerCapeMult).toInt(),
                     weaponAttackBonus   = totalAtkBonus,
                     weaponStrengthBonus = totalStrBonus,
                     combatStyle         = combatStyle,
-                    playerRanged        = levels[Skills.RANGED]    ?: 1,
-                    playerMagic         = levels[Skills.MAGIC]     ?: 1,
+                    playerRanged        = ((levels[Skills.RANGED] ?: 1) * combatCapeMult).toInt(),
+                    playerMagic         = ((levels[Skills.MAGIC]  ?: 1) * combatCapeMult).toInt(),
                     arrowStrengthBonus  = arrowBonus,
                     spellMaxHit         = spell?.maxHit             ?: 0,
                     agilityLevel        = agilityLevel,
                     petBoostPct         = combatPetBoost(player.pets),
                     equippedFood        = availableFood,
                     foodHealValues      = gameData.foodHealValues,
+                    availableArrows     = availableArrows,
                 )
                 val totalKills = result.frames.sumOf { it.kills }
                 if (combatStyle == "magic" && spell != null && totalKills > 0) {
@@ -397,6 +450,11 @@ class QueuedSessionStarter @Inject constructor(
     private val ARROW_TIERS = listOf(
         "runite_arrow", "adamantite_arrow", "mithril_arrow",
         "steel_arrow", "iron_arrow", "bronze_arrow",
+    )
+
+    private val COMBAT_CAPE_SKILLS = setOf(
+        "attack", "strength", "defense", "ranged", "magic", "hp",
+        "warriors", "archers", "mages",
     )
 
     private val ARROW_STRENGTH_BONUS = mapOf(

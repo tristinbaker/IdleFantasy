@@ -134,6 +134,15 @@ class QuestRepository @Inject constructor(
         }
     }
 
+    /** Called when a Slayer task is fully completed. Advances any active slayer_task quests by 1. */
+    suspend fun recordSlayerTaskCompleted() {
+        for ((questId, quest) in gameData.quests) {
+            if (quest.type == "slayer_task") {
+                addProgress(questId, quest.amount, 1, quest.requiresPrevious)
+            }
+        }
+    }
+
     /**
      * Called when bones are buried (prayer XP).
      *

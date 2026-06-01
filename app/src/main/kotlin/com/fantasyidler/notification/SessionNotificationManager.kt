@@ -23,6 +23,9 @@ class SessionNotificationManager @Inject constructor(
         const val CHANNEL_ID_SESSIONS = "fantasy_idler_sessions"
         const val CHANNEL_ID_FARMING  = "fantasy_idler_farming"
 
+        const val EXTRA_NAVIGATE_TO  = "navigate_to"
+        const val NAVIGATE_FARMING   = "farming"
+
         private const val NOTIF_ID_SESSION_COMPLETE = 1001
         private const val NOTIF_ID_FARMING_READY    = 2001
     }
@@ -56,6 +59,17 @@ class SessionNotificationManager @Inject constructor(
         )
     }
 
+    private fun farmingLaunchIntent(): PendingIntent {
+        val intent = Intent(context, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            putExtra(EXTRA_NAVIGATE_TO, NAVIGATE_FARMING)
+        }
+        return PendingIntent.getActivity(
+            context, 1, intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
+        )
+    }
+
     /** Show "Your [skillName] session has finished" notification. */
     fun showSessionComplete(skillDisplayName: String) {
         val notification = NotificationCompat.Builder(context, CHANNEL_ID_SESSIONS)
@@ -81,7 +95,7 @@ class SessionNotificationManager @Inject constructor(
                 context.getString(R.string.notif_farming_ready_body, cropDisplayName)
             )
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setContentIntent(launchIntent())
+            .setContentIntent(farmingLaunchIntent())
             .setAutoCancel(true)
             .build()
 

@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Ores ===== -->
+    <string name="item_copper_ore_name">Koper erts</string>
+    <string name="item_copper_ore_desc">Veelvoorkomend erts. Combineer met tinerts om bronsstaven te smelten.</string>
+    <string name="item_tin_ore_name">Tin erts</string>
+    <string name="item_tin_ore_desc">Veelvoorkomend erts. Combineer met kopererts om bronsstaven te smelten.</string>
+    <string name="item_iron_ore_name">Ijzer erts</string>
+    <string name="item_iron_ore_desc">Veelzijdig erts om ijzer- en staalstaven te smelten.</string>
+    <string name="item_coal_name">Kolen</string>
+    <string name="item_coal_desc">Gebruikt als brandstof bij het smelten van staal en hogere kwaliteit staven.</string>
+    <string name="item_silver_ore_name">Zilver erts</string>
+    <string name="item_silver_ore_desc">Zeldzaam erts om zilverstaven en sieraden mee te maken.</string>
+    <string name="item_gold_ore_name">Goud erts</string>
+    <string name="item_gold_ore_desc">Zeldzaam erts om goudstaven en sieraden mee te maken.</string>
+    <string name="item_mithril_ore_name">Mithril erts</string>
+    <string name="item_mithril_ore_desc">Zeldzaam erts met magische eigenschappen.</string>
+    <string name="item_adamantite_ore_name">Adamantiet erts</string>
+    <string name="item_adamantite_ore_desc">Extreem hard en zeer zeldzaam erts.</string>
+    <string name="item_runite_ore_name">Runiet erts</string>
+    <string name="item_runite_ore_desc">Het zeldzaamste mijnbare erts, gebruikt voor de sterkste uitrusting.</string>
+    <string name="item_rune_essence_name">Runen essentie</string>
+    <string name="item_rune_essence_desc">Ruwe magische steen gebruikt om alle soorten runen te maken.</string>
+
+    <!-- ===== Metal bars ===== -->
+    <string name="item_bronze_bar_name">Brons staaf</string>
+    <string name="item_bronze_bar_desc">Gesmolten van kopererts en tinerts. De meest basale metalen staaf.</string>
+    <string name="item_iron_bar_name">Ijzer staaf</string>
+    <string name="item_iron_bar_desc">Een stevige ijzerstaaf gebruikt voor het maken van ijzeren uitrusting.</string>
+    <string name="item_silver_bar_name">Zilver staaf</string>
+    <string name="item_silver_bar_desc">Verfijnde zilverstaaf gebruikt voor het maken van sieraden.</string>
+    <string name="item_steel_bar_name">Staal staaf</string>
+    <string name="item_steel_bar_desc">Sterker dan ijzer. Gebruikt voor het maken van stalen uitrusting.</string>
+    <string name="item_gold_bar_name">Goud staaf</string>
+    <string name="item_gold_bar_desc">Verfijnde goudstaaf gebruikt voor het maken van sieraden en gouden uitrusting.</string>
+    <string name="item_mithril_bar_name">Mithril staaf</string>
+    <string name="item_mithril_bar_desc">Een lichtgewicht magische metalen staaf.</string>
+    <string name="item_adamantite_bar_name">Adamantiet staaf</string>
+    <string name="item_adamantite_bar_desc">Een buitengewoon harde metalen staaf.</string>
+    <string name="item_platinum_bar_name">Platina staaf</string>
+    <string name="item_platinum_bar_desc">Een zeldzame en glanzende platina staaf voor hoogwaardige sieraden.</string>
+    <string name="item_runite_bar_name">Runiet staaf</string>
+    <string name="item_runite_bar_desc">De sterkste smeltbare metalen staaf.</string>
+
+    <!-- ===== Gems ===== -->
+    <string name="item_sapphire_name">Saffier</string>
+    <string name="item_sapphire_desc">Een blauwe edelsteen gebruikt voor het maken van sieraden.</string>
+    <string name="item_emerald_name">Smaragd</string>
+    <string name="item_emerald_desc">Een groene edelsteen van gemiddelde zeldzaamheid.</string>
+    <string name="item_ruby_name">Robijn</string>
+    <string name="item_ruby_desc">Een rode edelsteen. Zeldzaam en waardevol.</string>
+    <string name="item_diamond_name">Diamant</string>
+    <string name="item_diamond_desc">De zeldzaamste en meest waardevolle edelsteen.</string>
+
+    <!-- ===== Logs ===== -->
+    <string name="item_log_name">Gewone Houtblokken</string>
+    <string name="item_log_desc">Houtblokken van simpele bomen. Gebruikt in Vuurmaken en Pijlenmaken.</string>
+    <string name="item_oak_log_name">Eikenhoutblokken</string>
+    <string name="item_oak_log_desc">Houtblokken van eikenbomen.</string>
+    <string name="item_willow_log_name">Wilgenhoutblokken</string>
+    <string name="item_willow_log_desc">Lichte houtblokken van wilgenbomen.</string>
+    <string name="item_maple_log_name">Esdoornhoutblokken</string>
+    <string name="item_maple_log_desc">Zware houtblokken van esdoornbomen.</string>
+    <string name="item_yew_log_name">Taxushoutblokken</string>
+    <string name="item_yew_log_desc">Houtblokken van oude taxusbomen.</string>
+    <string name="item_magic_log_name">Magische houtblokken</string>
+    <string name="item_magic_log_desc">Houtblokken van zeldzame magische bomen.</string>
+    <string name="item_redwood_log_name">Sequoia houtblokken</string>
+    <string name="item_redwood_log_desc">Massieve houtblokken van de hoogste Sequoiabomen.</string>
+
+    <!-- ===== Raw fish ===== -->
+    <string name="item_raw_shrimp_name">Rauwe Garnaal</string>
+    <string name="item_raw_shrimp_desc">Rauwe garnaal. Moet worden gekookt.</string>
+    <string name="item_raw_sardine_name">Rauwe Sardine</string>
+    <string name="item_raw_sardine_desc">Rauwe sardine. Moet worden gekookt.</string>
+    <string name="item_raw_herring_name">Rauwe Haring</string>
+    <string name="item_raw_herring_desc">Rauwe haring. Moet worden gekookt.</string>
+    <string name="item_raw_mackerel_name">Rauwe Makreel</string>
+    <string name="item_raw_mackerel_desc">Rauwe makreel. Moet worden gekookt.</string>
+    <string name="item_raw_trout_name">Rauwe Forel</string>
+    <string name="item_raw_trout_desc">Rauwe forel. Moet worden gekookt.</string>
+    <string name="item_raw_salmon_name">Rauwe Zalm</string>
+    <string name="item_raw_salmon_desc">Rauwe zalm. Moet worden gekookt.</string>
+    <string name="item_raw_tuna_name">Rauwe Tonijn</string>
+    <string name="item_raw_tuna_desc">Rauwe tonijn. Moet worden gekookt.</string>
+    <string name="item_raw_lobster_name">Rauwe Kreeft</string>
+    <string name="item_raw_lobster_desc">Rauwe kreeft. Moet worden gekookt.</string>
+    <string name="item_raw_swordfish_name">Rauwe Zwaardvis</string>
+    <string name="item_raw_swordfish_desc">Rauwe zwaardvis. Moet worden gekookt.</string>
+    <string name="item_raw_monkfish_name">Rauwe Zeeduivel</string>
+    <string name="item_raw_monkfish_desc">Rauwe zeeduivel. Moet worden gekookt.</string>
+    <string name="item_raw_shark_name">Rauwe Haai</string>
+    <string name="item_raw_shark_desc">Rauwe haai. Moet worden gekookt.</string>
+    <string name="item_raw_sea_turtle_name">Rauwe Zeeschildpad</string>
+    <string name="item_raw_sea_turtle_desc">Rauwe zeeschildpad. Moet worden gekookt.</string>
+    <string name="item_raw_manta_ray_name">Rauwe Manta</string>
+    <string name="item_raw_manta_ray_desc">Rauwe manta. Moet worden gekookt.</string>
+
+    <!-- ===== Cooked fish ===== -->
+    <string name="item_shrimp_name">Garnaal</string>
+    <string name="item_shrimp_desc">Gekookte garnaal. Herstelt een kleine hoeveelheid HP zodra je het eet.</string>
+    <string name="item_sardine_name">Sardine</string>
+    <string name="item_sardine_desc">Gekookte sardine. Herstelt HP zodra je het eet.</string>
+    <string name="item_herring_name">Haring</string>
+    <string name="item_herring_desc">Gekookte haring. Herstelt HP zodra je het eet.</string>
+    <string name="item_mackerel_name">Makreel</string>
+    <string name="item_mackerel_desc">Gekookte makreel. Herstelt HP zodra je het eet.</string>
+    <string name="item_trout_name">Forel</string>
+    <string name="item_trout_desc">Gekookte forel. Herstelt HP zodra je het eet.</string>
+    <string name="item_salmon_name">Zalm</string>
+    <string name="item_salmon_desc">Gekookte zalm. Herstelt HP zodra je het eet.</string>
+    <string name="item_tuna_name">Tonijn</string>
+    <string name="item_tuna_desc">Gekookte tonijn. Herstelt HP zodra je het eet.</string>
+    <string name="item_lobster_name">Kreeft</string>
+    <string name="item_lobster_desc">Gekookte kreeft. Herstelt een goede hoeveelheid HP zodra je het eet.</string>
+    <string name="item_swordfish_name">Zwaardvis</string>
+    <string name="item_swordfish_desc">Gekookte zwaardvis. Herstelt een aanzienlijke hoeveelheid HP zodra je het eet.</string>
+    <string name="item_monkfish_name">Zeeduivel</string>
+    <string name="item_monkfish_desc">Gekookte zeeduivel. Herstelt een behoorlijke hoeveelheid HP zodra je het eet.</string>
+    <string name="item_shark_name">Haai</string>
+    <string name="item_shark_desc">Gekookte haai. Herstelt een grote hoeveelheid HP zodra je het eet.</string>
+    <string name="item_sea_turtle_name">Zeeschildpad</string>
+    <string name="item_sea_turtle_desc">Gekookte zeeschildpad. Herstelt een zeer grote hoeveelheid HP zodra je het eet.</string>
+    <string name="item_manta_ray_name">Manta</string>
+    <string name="item_manta_ray_desc">Gekookte manta. Een van de beste etenswaren.</string>
+
+    <!-- ===== Raw meat ===== -->
+    <string name="item_raw_rat_meat_name">Rauw Rattenvlees</string>
+    <string name="item_raw_rat_meat_desc">Rauw rattenvlees. Moet worden gekookt.</string>
+    <string name="item_raw_chicken_name">Rauwe Kip</string>
+    <string name="item_raw_chicken_desc">Rauwe kip. Moet worden gekookt.</string>
+    <string name="item_raw_mutton_name">Rauw Schapenvlees</string>
+    <string name="item_raw_mutton_desc">Rauw schapenvlees. Moet worden gekookt.</string>
+    <string name="item_raw_beef_name">Rauw Rundvlees</string>
+    <string name="item_raw_beef_desc">Rauw rundvlees. Moet worden gekookt.</string>
+    <string name="item_raw_meat_name">Rauw Vlees</string>
+    <string name="item_raw_meat_desc">Ongeïdentificeerd rauw vlees. Moet worden gekookt.</string>
+
+    <!-- ===== Cooked meat ===== -->
+    <string name="item_cooked_rat_meat_name">Gekookt Rattenvlees</string>
+    <string name="item_cooked_rat_meat_desc">Gekookt rattenvlees. Nauwelijks eetbaar, maar herstelt een kleine hoeveelheid HP.</string>
+    <string name="item_cooked_chicken_name">Gekookte Kip</string>
+    <string name="item_cooked_chicken_desc">Gekookte kip. Herstelt HP zodra je het eet.</string>
+    <string name="item_cooked_mutton_name">Gekookt Schapenvlees</string>
+    <string name="item_cooked_mutton_desc">Gekookt schapenvlees. Herstelt HP zodra je het eet.</string>
+    <string name="item_cooked_beef_name">Gekookt Rundvlees</string>
+    <string name="item_cooked_beef_desc">Gekookt rundvlees. Herstelt HP zodra je het eet.</string>
+
+    <!-- ===== Melee weapons — bronze ===== -->
+    <string name="item_bronze_sword_name">Bronzen Zwaard</string>
+    <string name="item_bronze_sword_desc">Een standaard éénhandig bronzen zwaard.</string>
+    <string name="item_bronze_scimitar_name">Bronzen Kromzwaard</string>
+    <string name="item_bronze_scimitar_desc">Een gebogen éénhandig bronzen kromzwaard met een goede krachtbonus.</string>
+    <string name="item_bronze_2h_sword_name">Bronzen 2H Zwaard</string>
+    <string name="item_bronze_2h_sword_desc">Een tweehands bronzen zwaard. Hoge schade, lage snelheid.</string>
+    <string name="item_bronze_warhammer_name">Bronzen Piekhamer</string>
+    <string name="item_bronze_warhammer_desc">Een zware éénhandige bronzen piekhamer.</string>
+    <string name="item_bronze_battleaxe_name">Bronzen Strijdbijl</string>
+    <string name="item_bronze_battleaxe_desc">Een angstaanjagende éénhandige bronzen bijl.</string>
+    <string name="item_bronze_dagger_name">Bronzen Dolk</string>
+    <string name="item_bronze_dagger_desc">Een snelle en lichte bronzen dolk.</string>
+
+    <!-- Melee weapons — iron -->
+    <string name="item_iron_sword_name">Ijzeren Zwaard</string>
+    <string name="item_iron_sword_desc">Een éénhandig ijzeren zwaard.</string>
+    <string name="item_iron_scimitar_name">Ijzeren Kromzwaard</string>
+    <string name="item_iron_scimitar_desc">Een gebogen éénhandig ijzeren kromzwaard met een goede krachtbonus.</string>
+    <string name="item_iron_2h_sword_name">Ijzeren 2H Zwaard</string>
+    <string name="item_iron_2h_sword_desc">Een tweehands ijzeren zwaard. Hoge schade, lage snelheid.</string>
+    <string name="item_iron_warhammer_name">Ijzeren Piekhamer</string>
+    <string name="item_iron_warhammer_desc">Een zware éénhandige ijzeren piekhamer.</string>
+    <string name="item_iron_battleaxe_name">Ijzeren Strijdbijl</string>
+    <string name="item_iron_battleaxe_desc">Een angstaanjagende éénhandige ijzeren bijl.</string>
+    <string name="item_iron_dagger_name">Ijzeren Dolk</string>
+    <string name="item_iron_dagger_desc">Een snelle en lichte ijzeren dolk.</string>
+
+    <!-- Melee weapons — steel -->
+    <string name="item_steel_sword_name">Stalen Zwaard</string>
+    <string name="item_steel_sword_desc">Een éénhandig stalen zwaard.</string>
+    <string name="item_steel_scimitar_name">Stalen Kromzwaard</string>
+    <string name="item_steel_scimitar_desc">Een gebogen éénhandig stalen kromzwaard met een goede krachtbonus.</string>
+    <string name="item_steel_2h_sword_name">Stalen 2H Zwaard</string>
+    <string name="item_steel_2h_sword_desc">Een tweehands stalen zwaard. Hoge schade, lage snelheid.</string>
+    <string name="item_steel_warhammer_name">Stalen Piekhamer</string>
+    <string name="item_steel_warhammer_desc">Een zware éénhandige stalen piekhamer.</string>
+    <string name="item_steel_battleaxe_name">Stalen Strijdbijl</string>
+    <string name="item_steel_battleaxe_desc">Een angstaanjagende éénhandige stalen bijl.</string>
+
+    <!-- Melee weapons — mithril -->
+    <string name="item_mithril_sword_name">Mithril Zwaard</string>
+    <string name="item_mithril_sword_desc">Een lichtgewicht magisch éénhandig zwaard.</string>
+    <string name="item_mithril_scimitar_name">Mithril Kromzwaard</string>
+    <string name="item_mithril_scimitar_desc">Een gebogen mithril zwaard, bovennatuurlijk scherp.</string>
+    <string name="item_mithril_2h_sword_name">Mithril 2H Zwaard</string>
+    <string name="item_mithril_2h_sword_desc">Een tweehands mithril zwaard.</string>
+    <string name="item_mithril_warhammer_name">Mithril Piekhamer</string>
+    <string name="item_mithril_warhammer_desc">Een lichtgewicht magische piekhamer.</string>
+    <string name="item_mithril_battleaxe_name">Mithril Strijdbijl</string>
+    <string name="item_mithril_battleaxe_desc">Een uitzonderlijk hoogwaardige mithril strijdbijl.</string>
+
+    <!-- Melee weapons — adamantite -->
+    <string name="item_adamantite_sword_name">Adamantiet Zwaard</string>
+    <string name="item_adamantite_sword_desc">Een buitengewoon hard éénhandig zwaard.</string>
+    <string name="item_adamantite_scimitar_name">Adamantiet Kromzwaard</string>
+    <string name="item_adamantite_scimitar_desc">Een ongelooflijk hard gebogen zwaard met uitstekende krachtbonus.</string>
+    <string name="item_adamantite_2h_sword_name">Adamantiet 2H Zwaard</string>
+    <string name="item_adamantite_2h_sword_desc">Een tweehands zwaard gesmeed uit adamantiet.</string>
+    <string name="item_adamantite_warhammer_name">Adamantiet Piekhamer</string>
+    <string name="item_adamantite_warhammer_desc">Een buitengewoon zware en harde piekhamer.</string>
+    <string name="item_adamantite_battleaxe_name">Adamantiet Strijdbijl</string>
+    <string name="item_adamantite_battleaxe_desc">Een verwoestende adamantiet strijdbijl.</string>
+
+    <!-- Melee weapons — runite -->
+    <string name="item_runite_sword_name">Runiet Zwaard</string>
+    <string name="item_runite_sword_desc">Het beste éénhandige zwaard.</string>
+    <string name="item_runite_scimitar_name">Runiet Kromzwaard</string>
+    <string name="item_runite_scimitar_desc">Het beste kromzwaard, met uitzonderlijke krachtbonus.</string>
+    <string name="item_runite_2h_sword_name">Runiet 2H Zwaard</string>
+    <string name="item_runite_2h_sword_desc">Het beste tweehands zwaard.</string>
+    <string name="item_runite_warhammer_name">Runiet Piekhamer</string>
+    <string name="item_runite_warhammer_desc">De beste piekhamer.</string>
+    <string name="item_runite_battleaxe_name">Runiet Strijdbijl</string>
+    <string name="item_runite_battleaxe_desc">De beste strijdbijl.</string>
+
+    <!-- ===== Ranged weapons ===== -->
+    <string name="item_wooden_bow_name">Houten Boog</string>
+    <string name="item_wooden_bow_desc">Een eenvoudige houten boog. Goed voor het trainen van Boogschieten.</string>
+    <string name="item_oak_bow_name">Eiken Boog</string>
+    <string name="item_oak_bow_desc">Een betrouwbare boog gemaakt van eikenhout.</string>
+
+    <!-- ===== Magic weapons ===== -->
+    <string name="item_basic_staff_name">Basis Staf</string>
+    <string name="item_basic_staff_desc">Een eenvoudige magische staf voor beginnende tovenaars.</string>
+    <string name="item_apprentice_staff_name">Leerling Staf</string>
+    <string name="item_apprentice_staff_desc">Een verbeterde staf voor ontwikkelende tovenaars.</string>
+    <string name="item_staff_of_air_name">Lucht Staf</string>
+    <string name="item_staff_of_air_desc">Een elementaire staf doordrenkt met de kracht van lucht.</string>
+    <string name="item_staff_of_water_name">Water Staf</string>
+    <string name="item_staff_of_water_desc">Een elementaire staf doordrenkt met de kracht van water.</string>
+    <string name="item_staff_of_earth_name">Aarde Staf</string>
+    <string name="item_staff_of_earth_desc">Een elementaire staf doordrenkt met de kracht van aarde.</string>
+    <string name="item_staff_of_fire_name">Vuur Staf</string>
+    <string name="item_staff_of_fire_desc">Een elementaire staf doordrenkt met de kracht van vuur.</string>
+    <string name="item_staff_of_mind_name">Geest Staf</string>
+    <string name="item_staff_of_mind_desc">Een staf doordrenkt met psychische energie.</string>
+    <string name="item_staff_of_chaos_name">Chaos Staf</string>
+    <string name="item_staff_of_chaos_desc">Een staf pulserend met wilde magische energie.</string>
+    <string name="item_staff_of_death_name">Doods Staf</string>
+    <string name="item_staff_of_death_desc">Een donkere staf omhuld met de kracht van de dood.</string>
+    <string name="item_staff_of_blood_name">Bloed Staf</string>
+    <string name="item_staff_of_blood_desc">Een krachtige staf gevoed door bloedmagie.</string>
+
+    <!-- ===== Armour — bronze ===== -->
+    <string name="item_bronze_helmet_name">Bronzen Helm</string>
+    <string name="item_bronze_helmet_desc">Basis bronzen helm.</string>
+    <string name="item_bronze_platebody_name">Bronzen Harnas</string>
+    <string name="item_bronze_platebody_desc">Basis bronzen harnas.</string>
+    <string name="item_bronze_platelegs_name">Bronzen Beenbeschermers</string>
+    <string name="item_bronze_platelegs_desc">Basis bronzen beenbeschermers.</string>
+    <string name="item_bronze_shield_name">Bronzen Schild</string>
+    <string name="item_bronze_shield_desc">Een basis bronzen schild.</string>
+
+    <!-- Armour — iron -->
+    <string name="item_iron_helmet_name">IJzeren Helm</string>
+    <string name="item_iron_helmet_desc">IJzeren helm.</string>
+    <string name="item_iron_platebody_name">IJzeren Harnas</string>
+    <string name="item_iron_platebody_desc">IJzeren harnas.</string>
+    <string name="item_iron_platelegs_name">IJzeren Beenbeschermers</string>
+    <string name="item_iron_platelegs_desc">IJzeren beenbeschermers.</string>
+    <string name="item_iron_shield_name">IJzeren Schild</string>
+    <string name="item_iron_shield_desc">Een ijzeren schild.</string>
+
+    <!-- Armour — steel -->
+    <string name="item_steel_helmet_name">Stalen Helm</string>
+    <string name="item_steel_helmet_desc">Stevige stalen helm.</string>
+    <string name="item_steel_platebody_name">Stalen Harnas</string>
+    <string name="item_steel_platebody_desc">Stevige stalen harnas.</string>
+    <string name="item_steel_platelegs_name">Stalen Beenbeschermers</string>
+    <string name="item_steel_platelegs_desc">Stevige stalen beenbeschermers.</string>
+    <string name="item_steel_shield_name">Stalen Schild</string>
+    <string name="item_steel_shield_desc">Een stevige stalen schild.</string>
+
+    <!-- Armour — mithril -->
+    <string name="item_mithril_helmet_name">Mithril Helm</string>
+    <string name="item_mithril_helmet_desc">Lichtgewicht magische helm.</string>
+    <string name="item_mithril_platebody_name">Mithril Harnas</string>
+    <string name="item_mithril_platebody_desc">Lichtgewicht magische harnas.</string>
+    <string name="item_mithril_platelegs_name">Mithril Beenbeschermers</string>
+    <string name="item_mithril_platelegs_desc">Lichtgewicht magische beenbeschermers.</string>
+    <string name="item_mithril_shield_name">Mithril Schild</string>
+    <string name="item_mithril_shield_desc">Een lichtgewicht magische schild.</string>
+
+    <!-- Armour — adamantite -->
+    <string name="item_adamantite_helmet_name">Adamantiet Helm</string>
+    <string name="item_adamantite_helmet_desc">Extreem harde helm.</string>
+    <string name="item_adamantite_platebody_name">Adamantiet Harnas</string>
+    <string name="item_adamantite_platebody_desc">Extreem harde harnas.</string>
+    <string name="item_adamantite_platelegs_name">Adamantiet Beenbeschermers</string>
+    <string name="item_adamantite_platelegs_desc">Extreem harde beenbeschermers.</string>
+    <string name="item_adamantite_shield_name">Adamantiet Schild</string>
+    <string name="item_adamantite_shield_desc">Een extreem harde schild.</string>
+
+    <!-- Armour — runite -->
+    <string name="item_runite_helmet_name">Runiet Helm</string>
+    <string name="item_runite_helmet_desc">De beste helm beschikbaar.</string>
+    <string name="item_runite_platebody_name">Runiet Harnas</string>
+    <string name="item_runite_platebody_desc">Het beste harnas beschikbaar.</string>
+    <string name="item_runite_platelegs_name">Runiet Beenbeschermers</string>
+    <string name="item_runite_platelegs_desc">De beste beenbeschermers beschikbaar.</string>
+    <string name="item_runite_shield_name">Runiet Schild</string>
+    <string name="item_runite_shield_desc">Het beste schild beschikbaar.</string>
+
+    <!-- ===== Tools — pickaxes ===== -->
+    <string name="item_bronze_pickaxe_name">Bronzen Pikhouwel</string>
+    <string name="item_bronze_pickaxe_desc">Een basis pikhouwel voor mijnbouw.</string>
+    <string name="item_iron_pickaxe_name">IJzeren Pikhouwel</string>
+    <string name="item_iron_pickaxe_desc">Een betrouwbare pikhouwel voor mijnbouw.</string>
+    <string name="item_steel_pickaxe_name">Stalen Pikhouwel</string>
+    <string name="item_steel_pickaxe_desc">Een stevige pikhouwel voor mijnbouw.</string>
+    <string name="item_mithril_pickaxe_name">Mithril Pikhouwel</string>
+    <string name="item_mithril_pickaxe_desc">Een lichtgewicht magische pikhouwel voor mijnbouw.</string>
+    <string name="item_adamantite_pickaxe_name">Adamantiet Pikhouwel</string>
+    <string name="item_adamantite_pickaxe_desc">Een extreem harde pikhouwel voor mijnbouw.</string>
+    <string name="item_runite_pickaxe_name">Runiet Pikhouwel</string>
+    <string name="item_runite_pickaxe_desc">De beste pikhouwel beschikbaar voor mijnbouw.</string>
+
+    <!-- Tools — axes -->
+    <string name="item_bronze_axe_name">Bronzen Bijl</string>
+    <string name="item_bronze_axe_desc">Een basis bijl voor houtbewerking.</string>
+    <string name="item_iron_axe_name">IJzeren Bijl</string>
+    <string name="item_iron_axe_desc">Een betrouwbare bijl voor houtbewerking.</string>
+    <string name="item_steel_axe_name">Stalen Bijl</string>
+    <string name="item_steel_axe_desc">Een stevige bijl voor houtbewerking.</string>
+    <string name="item_mithril_axe_name">Mithril Bijl</string>
+    <string name="item_mithril_axe_desc">Een lichtgewicht magische bijl voor houtbewerking.</string>
+    <string name="item_adamantite_axe_name">Adamantiet Bijl</string>
+    <string name="item_adamantite_axe_desc">Een extreem harde bijl voor houtbewerking.</string>
+    <string name="item_runite_axe_name">Runiet Bijl</string>
+    <string name="item_runite_axe_desc">De beste bijl beschikbaar voor houtbewerking.</string>
+
+    <!-- Tools — fishing rods -->
+    <string name="item_bronze_fishing_rod_name">Bronzen Vishengel</string>
+    <string name="item_bronze_fishing_rod_desc">Een basis vishengel.</string>
+    <string name="item_iron_fishing_rod_name">IJzeren Vishengel</string>
+    <string name="item_iron_fishing_rod_desc">Een betrouwbare vishengel.</string>
+    <string name="item_steel_fishing_rod_name">Stalen Vishengel</string>
+    <string name="item_steel_fishing_rod_desc">Een stevige vishengel.</string>
+    <string name="item_mithril_fishing_rod_name">Mithril Vishengel</string>
+    <string name="item_mithril_fishing_rod_desc">Een lichtgewicht magische vishengel.</string>
+    <string name="item_adamantite_fishing_rod_name">Adamantiet Vishengel</string>
+    <string name="item_adamantite_fishing_rod_desc">Een extreem duurzame vishengel.</string>
+    <string name="item_runite_fishing_rod_name">Runiet Vishengel</string>
+    <string name="item_runite_fishing_rod_desc">De beste vishengel beschikbaar.</string>
+
+    <!-- ===== Arrows ===== -->
+    <string name="item_bronze_arrow_name">Bronzen Pijlen</string>
+    <string name="item_bronze_arrow_desc">Basis pijlen voor Boogschieten.</string>
+    <string name="item_iron_arrow_name">IJzeren Pijlen</string>
+    <string name="item_iron_arrow_desc">IJzeren pijlen voor Boogschieten.</string>
+    <string name="item_steel_arrow_name">Stalen Pijlen</string>
+    <string name="item_steel_arrow_desc">Stalen pijlen voor Boogschieten.</string>
+    <string name="item_mithril_arrow_name">Mithril Pijlen</string>
+    <string name="item_mithril_arrow_desc">Mithril pijlen voor Boogschieten.</string>
+    <string name="item_adamantite_arrow_name">Adamantiet Pijlen</string>
+    <string name="item_adamantite_arrow_desc">Adamantiet pijlen voor Boogschieten.</string>
+    <string name="item_runite_arrow_name">Runiet Pijlen</string>
+    <string name="item_runite_arrow_desc">De beste pijlen beschikbaar voor Boogschieten.</string>
+
+    <!-- Arrow components -->
+    <string name="item_arrow_shaft_name">Pijl Schachten</string>
+    <string name="item_arrow_shaft_desc">Houten schachten gebruikt om pijlen te maken.</string>
+    <string name="item_bronze_arrow_tips_name">Bronzen Pijlpunt</string>
+    <string name="item_bronze_arrow_tips_desc">Bronzen punten voor het maken van bronzen pijlen.</string>
+    <string name="item_iron_arrow_tips_name">IJzeren Pijlpunt</string>
+    <string name="item_iron_arrow_tips_desc">IJzeren punten voor het maken van ijzeren pijlen.</string>
+    <string name="item_steel_arrow_tips_name">Stalen Pijlpunt</string>
+    <string name="item_steel_arrow_tips_desc">Stalen punten voor het maken van stalen pijlen.</string>
+    <string name="item_mithril_arrow_tips_name">Mithril Pijlpunt</string>
+    <string name="item_mithril_arrow_tips_desc">Mithril punten voor het maken van mithril pijlen.</string>
+    <string name="item_adamantite_arrow_tips_name">Adamantiet Pijlpunt</string>
+    <string name="item_adamantite_arrow_tips_desc">Adamantiet punten voor het maken van adamantiet pijlen.</string>
+    <string name="item_runite_arrow_tips_name">Runiet Pijlpunt</string>
+    <string name="item_runite_arrow_tips_desc">Runiet punten voor het maken van runiet pijlen.</string>
+
+    <!-- ===== Jewellery — plain ===== -->
+    <string name="item_silver_ring_name">Zilveren ring</string>
+    <string name="item_silver_ring_desc">Een eenvoudige zilveren ring.</string>
+    <string name="item_silver_necklace_name">Zilveren ketting</string>
+    <string name="item_silver_necklace_desc">Een eenvoudige zilveren ketting.</string>
+    <string name="item_gold_ring_name">Gouden ring</string>
+    <string name="item_gold_ring_desc">Een eenvoudige gouden ring.</string>
+    <string name="item_gold_necklace_name">Gouden ketting</string>
+    <string name="item_gold_necklace_desc">Een eenvoudige gouden ketting.</string>
+    <string name="item_platinum_ring_name">Platina ring</string>
+    <string name="item_platinum_ring_desc">Een eenvoudige platina ring.</string>
+    <string name="item_platinum_necklace_name">Platina ketting</string>
+    <string name="item_platinum_necklace_desc">Een eenvoudige platina ketting.</string>
+
+    <!-- Jewellery — sapphire -->
+    <string name="item_silver_sapphire_ring_name">Zilveren Saffier Ring</string>
+    <string name="item_silver_sapphire_ring_desc">Een zilveren ring met een saffier.</string>
+    <string name="item_silver_sapphire_necklace_name">Zilveren Saffier Ketting</string>
+    <string name="item_silver_sapphire_necklace_desc">Een zilveren ketting met een saffier.</string>
+    <string name="item_gold_sapphire_ring_name">Gouden Saffier Ring</string>
+    <string name="item_gold_sapphire_ring_desc">Een gouden ring met een saffier.</string>
+    <string name="item_gold_sapphire_necklace_name">Gouden Saffier Ketting</string>
+    <string name="item_gold_sapphire_necklace_desc">Een gouden ketting met een saffier.</string>
+    <string name="item_platinum_sapphire_ring_name">Platina Saffier Ring</string>
+    <string name="item_platinum_sapphire_ring_desc">Een platina ring met een saffier.</string>
+    <string name="item_platinum_sapphire_necklace_name">Platina Saffier Ketting</string>
+    <string name="item_platinum_sapphire_necklace_desc">Een platina ketting met een saffier.</string>
+
+    <!-- Jewellery — emerald -->
+    <string name="item_gold_emerald_ring_name">Gouden Smaragd Ring</string>
+    <string name="item_gold_emerald_ring_desc">Een gouden ring met een smaragd.</string>
+    <string name="item_gold_emerald_necklace_name">Gouden Smaragd Ketting</string>
+    <string name="item_gold_emerald_necklace_desc">Een gouden ketting met een smaragd.</string>
+    <string name="item_platinum_emerald_ring_name">Platina Smaragd Ring</string>
+    <string name="item_platinum_emerald_ring_desc">Een platina ring met een smaragd.</string>
+    <string name="item_platinum_emerald_necklace_name">Platina Smaragd Ketting</string>
+    <string name="item_platinum_emerald_necklace_desc">Een platina ketting met een smaragd.</string>
+
+    <!-- Jewellery — ruby -->
+    <string name="item_gold_ruby_ring_name">Gouden Robijn Ring</string>
+    <string name="item_gold_ruby_ring_desc">Een gouden ring met een robijn.</string>
+    <string name="item_gold_ruby_necklace_name">Gouden Robijn Ketting</string>
+    <string name="item_gold_ruby_necklace_desc">Een gouden ketting met een robijn.</string>
+    <string name="item_platinum_ruby_ring_name">Platina Robijn Ring</string>
+    <string name="item_platinum_ruby_ring_desc">Een platina ring met een robijn.</string>
+    <string name="item_platinum_ruby_necklace_name">Platina Robijn Ketting</string>
+    <string name="item_platinum_ruby_necklace_desc">Een platina ketting met een robijn.</string>
+
+    <!-- Jewellery — diamond -->
+    <string name="item_gold_diamond_ring_name">Gouden Diamant Ring</string>
+    <string name="item_gold_diamond_ring_desc">Een gouden ring met een diamant.</string>
+    <string name="item_gold_diamond_necklace_name">Gouden Diamant Ketting</string>
+    <string name="item_gold_diamond_necklace_desc">Een gouden ketting met een diamant.</string>
+    <string name="item_platinum_diamond_ring_name">Platina Diamant Ring</string>
+    <string name="item_platinum_diamond_ring_desc">Een platina ring met een diamant.</string>
+    <string name="item_platinum_diamond_necklace_name">Platina Diamant Ketting</string>
+    <string name="item_platinum_diamond_necklace_desc">Een platina ketting met een diamant.</string>
+
+    <!-- ===== Miscellaneous drops ===== -->
+    <string name="item_ashes_name">As</string>
+    <string name="item_ashes_desc">Verbrande resten van gewone houtblokken. Verstrooi in de Gebedsvaardigheid voor bonus Gebed XP.</string>
+    <string name="item_oak_ashes_name">Eiken As</string>
+    <string name="item_oak_ashes_desc">Verbrande resten van eikenhout. Verstrooi voor meer Gebed XP dan gewone as.</string>
+    <string name="item_willow_ashes_name">Wilgen As</string>
+    <string name="item_willow_ashes_desc">Verbrande resten van wilgenhout. Verstrooi voor Gebed XP.</string>
+    <string name="item_maple_ashes_name">Esdoorn As</string>
+    <string name="item_maple_ashes_desc">Verbrande resten van esdoornhout. Verstrooi voor Gebed XP.</string>
+    <string name="item_yew_ashes_name">Taxus As</string>
+    <string name="item_yew_ashes_desc">Verbrande resten van taxushout. Verstrooi voor aanzienlijk meer Gebed XP.</string>
+    <string name="item_magic_ashes_name">Magische As</string>
+    <string name="item_magic_ashes_desc">Verbrande resten van magisch hout. Verstrooi voor substantieel meer Gebed XP.</string>
+    <string name="item_redwood_ashes_name">Sequoia As</string>
+    <string name="item_redwood_ashes_desc">Verbrande resten van sequoiahout. Verstrooi voor de meeste Gebed XP van alle as.</string>
+    <string name="item_bones_name">Botten</string>
+    <string name="item_bones_desc">Botjes van een klein wezen. Begraaf voor Gebed XP.</string>
+    <string name="item_big_bones_name">Grote Botten</string>
+    <string name="item_big_bones_desc">Grotere botten. Geeft meer Gebed XP bij het begraven.</string>
+    <string name="item_giant_bones_name">Reusachtige Botten</string>
+    <string name="item_giant_bones_desc">Enorme botten van krachtige vijanden. Geeft aanzienlijk meer Gebed XP.</string>
+    <string name="item_dragon_bone_name">Drakenbotten</string>
+    <string name="item_dragon_bone_desc">Oude drakenbotten. Geeft de meeste Gebed XP bij het begraven.</string>
+    <string name="item_dragon_scale_name">Drakenschub</string>
+    <string name="item_dragon_scale_desc">Een taaie schub van een groene draak. Zeldzaam en waardevol.</string>
+    <string name="item_coins_name">Goud</string>
+    <string name="item_coins_desc">De valuta van het rijk. Besteed in de winkel.</string>
+    <string name="item_goblin_mail_name">Kobold Harnas</string>
+    <string name="item_goblin_mail_desc">Versleten harnas gedropt door Kobolden. Verkoopt goed.</string>
+    <string name="item_imp_hide_name">Imp Huid</string>
+    <string name="item_imp_hide_desc">Lederachtige huid van een Imp.</string>
+    <string name="item_spider_silk_name">Spinnenzijde</string>
+    <string name="item_spider_silk_desc">Fijne zijde gesponnen door reuzenspinnen. Waardevol voor ambachtslieden.</string>
+    <string name="item_spider_fang_name">Spinnen Tanden</string>
+    <string name="item_spider_fang_desc">Een giftige tand van een reuzenspin.</string>
+    <string name="item_cowhide_name">Koeienhuid</string>
+    <string name="item_cowhide_desc">Ruwe huid van een koe. Gebruikt in leerbewerking.</string>
+    <string name="item_wool_name">Wol</string>
+    <string name="item_wool_desc">Zachte wol van een schaap.</string>
+    <string name="item_feather_name">Veer</string>
+    <string name="item_feather_desc">Een veer gebruikt bij het maken van pijlen.</string>
+    <string name="item_rotten_flesh_name">Rottend Vlees</string>
+    <string name="item_rotten_flesh_desc">Rottend vlees van een Ondood wezen. Ruikt echt verschrikkelijk.</string>
+    <string name="item_lockpick_name">Lockpick</string>
+    <string name="item_lockpick_desc">Een lockpick gedropt door schurken.</string>
+    <string name="item_magic_bean_name">Magische Boon</string>
+    <string name="item_magic_bean_desc">Een magische boon met mysterieuze eigenschappen.</string>
+    <string name="item_hellhound_fang_name">Helhonden Tand</string>
+    <string name="item_hellhound_fang_desc">Een verschroeide tand van een helhond.</string>
+    <string name="item_demon_horn_name">Demonen Hoorn</string>
+    <string name="item_demon_horn_desc">Een gekartelde hoorn van een kleinere demon.</string>
+    <string name="item_troll_bone_name">Trollen Bot</string>
+    <string name="item_troll_bone_desc">Een enorme, knoestige bot van een bergtrol.</string>
+
+    <!-- ===== Runes ===== -->
+    <string name="item_air_rune_name">Lucht Rune</string>
+    <string name="item_air_rune_desc">Een rune doordrenkt met de kracht van lucht. Gebruikt in luchtspreuken.</string>
+    <string name="item_water_rune_name">Water Rune</string>
+    <string name="item_water_rune_desc">Een rune doordrenkt met de kracht van water.</string>
+    <string name="item_earth_rune_name">Aarde Rune</string>
+    <string name="item_earth_rune_desc">Een rune doordrenkt met de kracht van aarde.</string>
+    <string name="item_fire_rune_name">Vuur Rune</string>
+    <string name="item_fire_rune_desc">Een rune doordrenkt met de kracht van vuur.</string>
+    <string name="item_mind_rune_name">Geest Rune</string>
+    <string name="item_mind_rune_desc">Een rune die psychische energie kanaliseert.</string>
+    <string name="item_chaos_rune_name">Chaos Rune</string>
+    <string name="item_chaos_rune_desc">Een rune van wilde, chaotische magie.</string>
+    <string name="item_death_rune_name">Doods Rune</string>
+    <string name="item_death_rune_desc">Een rune doordrenkt met de kracht van de dood.</string>
+    <string name="item_blood_rune_name">Bloed Rune</string>
+    <string name="item_blood_rune_desc">Een zeldzame rune gevoed door bloedmagie.</string>
+
+    <!-- ===== Crops ===== -->
+    <string name="crop_potato_name">Aardappel</string>
+    <string name="crop_onion_name">Ui</string>
+    <string name="crop_cabbage_name">Kool</string>
+    <string name="crop_carrot_name">Wortel</string>
+    <string name="crop_tomato_name">Tomaat</string>
+    <string name="crop_corn_name">Maïs</string>
+    <string name="crop_pumpkin_name">Pompoen</string>
+    <string name="crop_watermelon_name">Watermeloen</string>
+    <string name="crop_strawberry_name">Aardbei</string>
+    <string name="crop_magic_herb_name">Magische Kruiden</string>
+    <string name="crop_dragon_fruit_name">Drakenfruit</string>
+    <string name="crop_golden_wheat_name">Zonnetarwe</string>
+    <string name="crop_spirit_herb_name">Zielenkruid</string>
+    <string name="crop_celestial_bloom_name">Hemelsbloesem</string>
+    <string name="crop_starfruit_name">Stervrucht</string>
+    <string name="crop_void_lotus_name">Schaduwlotus</string>
+
+    <!-- ===== Spells ===== -->
+    <string name="spell_wind_strike_name">Windslag</string>
+    <string name="spell_wind_bolt_name">Windpijl</string>
+    <string name="spell_wind_blast_name">Windvlaag</string>
+    <string name="spell_wind_wave_name">Windgolf</string>
+    <string name="spell_water_strike_name">Waterslag</string>
+    <string name="spell_water_bolt_name">Waterpijl</string>
+    <string name="spell_water_blast_name">Watervlaag</string>
+    <string name="spell_water_wave_name">Watergolf</string>
+    <string name="spell_earth_strike_name">Aardeslag</string>
+    <string name="spell_earth_bolt_name">Aardepijl</string>
+    <string name="spell_earth_blast_name">Aardevlaag</string>
+    <string name="spell_earth_wave_name">Aardegolf</string>
+    <string name="spell_fire_strike_name">Vuurslag</string>
+    <string name="spell_fire_bolt_name">Vuurpijl</string>
+    <string name="spell_fire_blast_name">Vuurvlaag</string>
+    <string name="spell_fire_wave_name">Vuurgolf</string>
+    <string name="spell_mind_strike_name">Geestslag</string>
+    <string name="spell_mind_bolt_name">Geestpijl</string>
+    <string name="spell_mind_blast_name">Geestvlaag</string>
+    <string name="spell_mind_wave_name">Geestgolf</string>
+    <string name="spell_chaos_strike_name">Chaosslag</string>
+    <string name="spell_chaos_bolt_name">Chaospijl</string>
+    <string name="spell_chaos_blast_name">Chaosvlaag</string>
+    <string name="spell_chaos_wave_name">Chaosgolf</string>
+    <string name="spell_death_strike_name">Doodsalg</string>
+    <string name="spell_death_bolt_name">Doodspijl</string>
+    <string name="spell_death_blast_name">Doodsvlaag</string>
+    <string name="spell_death_wave_name">Doodsgolf</string>
+    <string name="spell_blood_strike_name">Bloedslag</string>
+    <string name="spell_blood_bolt_name">Bloedpijl</string>
+    <string name="spell_blood_blast_name">Bloedvlaag</string>
+    <string name="spell_blood_wave_name">Bloedgolf</string>
+
+    <!-- ===== Hoes ===== -->
+    <string name="item_bronze_hoe_name">Bronzen Hark</string>
+    <string name="item_iron_hoe_name">Ijzeren Hark</string>
+    <string name="item_steel_hoe_name">Stalen Hark</string>
+    <string name="item_mithril_hoe_name">Mithril Hark</string>
+    <string name="item_adamantite_hoe_name">Adamantiet Hark</string>
+    <string name="item_runite_hoe_name">Runiet Hark</string>
+
+    <!-- Herblore potions -->
+    <string name="item_attack_brew_name">Aanvalsbrouwsel</string>
+    <string name="item_defense_brew_name">Verdedigingsbrouwsel</string>
+    <string name="item_attack_potion_name">Aanvalsdrank</string>
+    <string name="item_defense_potion_name">Verdedigingsdrank</string>
+    <string name="item_onion_brew_name">Uienbrouwsel</string>
+    <string name="item_carrot_brew_name">Wortelbrouwsel</string>
+    <string name="item_strength_brew_name">Krachtbrouwsel</string>
+    <string name="item_strength_potion_name">Krachtsdrank</string>
+    <string name="item_ranging_potion_name">Boogschuttersdrank</string>
+    <string name="item_magic_potion_name">Magiedrank</string>
+    <string name="item_super_strength_potion_name">Super Krachtsdrank</string>
+    <string name="item_super_attack_potion_name">Super Aanvalsdrank</string>
+    <string name="item_super_defense_potion_name">Super Verdedigingsdrank</string>
+    <string name="item_super_ranging_potion_name">Super Boogschuttersdrank</string>
+    <string name="item_super_magic_potion_name">Super Magiedrank</string>
+    <string name="item_overload_potion_name">Overloaddrank</string>
+</resources>
