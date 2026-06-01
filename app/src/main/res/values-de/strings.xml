@@ -12,8 +12,8 @@
 
     <!-- ===== Common buttons ===== -->
     <string name="btn_start">Start</string>
-    <string name="btn_start_session">Sitzung starten</string>
-    <string name="btn_abandon_session">Sitzung beenden</string>
+    <string name="btn_start_session">Aktivität beginnen</string>
+    <string name="btn_abandon_session">Aktivität aufgeben</string>
     <string name="btn_collect_results">Resultate sammeln</string>
     <string name="btn_cancel">Abbrechen</string>
     <string name="btn_craft">Herstellen</string>
@@ -57,29 +57,29 @@
     <string name="label_equipment">Ausrüstung</string>
     <string name="label_pets">Haustiere</string>
     <string name="label_achievements">Erfolge</string>
-    <string name="label_session_in_progress">Sitzung in Bearbeitung</string>
-    <string name="label_session_active">Sitzung aktiv</string>
-    <string name="label_no_active_session">Keine aktive Sitzung</string>
-    <string name="label_session_complete">Sitzung abgeschlossen!</string>
+    <string name="label_session_in_progress">Laufende Aktivität</string>
+    <string name="label_session_active">Derzeitige Aktivität</string>
+    <string name="label_no_active_session">Keine Aktivitäten</string>
+    <string name="label_session_complete">Aktivität abgeschlossen!</string>
     <string name="label_training">Ausbildung</string>
     <string name="label_gathering_skills">Sammeln</string>
-    <string name="label_crafting_skills">Erstellen</string>
+    <string name="label_crafting_skills">Herstellung</string>
     <string name="label_choose_activity">Aktivität auswählen</string>
     <string name="label_coming_soon">Bald verfügbar</string>
     <string name="label_time_remaining">Verbleibende Zeit</string>
-    <string name="label_session_results">Sitzungsergebnisse</string>
+    <string name="label_session_results">Ergebnis der Aktivität</string>
     <string name="label_xp_gained">XP erworben</string>
     <string name="label_items_collected">Gesammelte Gegenstände</string>
     <string name="label_level_ups">Levelaufstiege</string>
     <string name="label_requirements">Anforderungen</string>
     <string name="label_rewards">Belohnungen</string>
-    <string name="label_your_level">Dein Level</string>
+    <string name="label_your_level">Euer Level</string>
     <string name="label_xp_to_next">XP bis zum nächsten Level</string>
-    <string name="label_total_xp">Insgesamt XP</string>
+    <string name="label_total_xp">Gesamte XP</string>
     <string name="label_quantity">Anzahl</string>
     <string name="label_price">Preis</string>
     <string name="label_available">Verfügbar</string>
-    <string name="label_patch">Feld</string>
+    <string name="label_patch">Acker</string>
     <string name="label_growth_time">Zeit zum Wachsen</string>
     <string name="label_ready_to_harvest">Bereit für die Ernte</string>
     <string name="label_empty">Leer</string>
@@ -103,7 +103,7 @@
     <string name="label_available_quests">Verfügbar</string>
     <string name="label_stats">Statistiken</string>
     <string name="label_skills">Fähigkeiten</string>
-    <string name="label_shop">Shop</string>
+    <string name="label_shop">Krämer</string>
     <string name="label_sell_items">Artikel verkaufen</string>
     <string name="label_total_level">Gesamtlevel</string>
     <string name="label_wins">Siege</string>
@@ -157,7 +157,7 @@
     <!-- Translator note: %1$s = formatted XP amount -->
     <string name="format_xp_per_action">%1$s XP pro Aktion</string>
     <!-- Translator note: %1$d = patch number -->
-    <string name="format_patch_number">Feld %1$d</string>
+    <string name="format_patch_number">Acker %1$d</string>
     <!-- Translator note: %1$d = wins, %2$d = losses -->
     <string name="format_arena_record">%1$d Gewonnen / %2$d Verloren</string>
     <!-- Translator note: %1$s = skill display name, %2$d = level number -->
@@ -177,8 +177,8 @@
         <item quantity="other">%1$d Level aufgestiegen</item>
     </plurals>
     <plurals name="plural_items">
-        <item quantity="one">%1$d Artikel</item>
-        <item quantity="other">%1$d Artikel</item>
+        <item quantity="one">%1$d Gegenstand</item>
+        <item quantity="other">%1$d Gegenstände</item>
     </plurals>
     <plurals name="plural_minutes">
         <item quantity="one">%1$d Minute</item>
@@ -189,8 +189,8 @@
         <item quantity="other">%1$d Stunden</item>
     </plurals>
     <plurals name="plural_patches">
-        <item quantity="one">%1$d Feld</item>
-        <item quantity="other">%1$d Felder</item>
+        <item quantity="one">%1$d Acker</item>
+        <item quantity="other">%1$d Äcker</item>
     </plurals>
     <plurals name="plural_kills">
         <item quantity="one">%1$d Getötet</item>
@@ -202,38 +202,38 @@
     </plurals>
 
     <!-- ===== Error messages ===== -->
-    <string name="error_no_player">Die Spielerdaten konnten nicht geladen werden. Bitte starte die App neu.</string>
-    <string name="error_session_already_active">Sie haben bereits eine aktive Sitzung. Schließen Sie diese bitte zuerst ab oder brechen Sie diese ab.</string>
+    <string name="error_no_player">Die Spielerdaten konnten nicht geladen werden. Bitte started die App erneut.</string>
+    <string name="error_session_already_active">Ihr führt bereits eine Aktivität aus. Beendet diese zuerst oder brecht sie ab.</string>
     <string name="error_not_enough_coins">Nicht genug Münzen.</string>
     <!-- Translator note: %1$s = item display name -->
     <string name="error_not_enough_items">Nicht genug %1$s.</string>
     <!-- Translator note: %1$s = skill display name -->
-    <string name="error_level_too_low">Dein  %1$s level ist zu niedrig.</string>
+    <string name="error_level_too_low">Euer Level in %1$s ist zu niedrig.</string>
     <!-- Translator note: %1$s = item display name -->
-    <string name="error_inventory_required">Du benötigst dafür %1$s.</string>
-    <string name="error_patch_occupied">Dieses Feld ist bereits bepflanzt.</string>
-    <string name="error_patch_empty">Dieses Feld ist leer.</string>
+    <string name="error_inventory_required">Ihr benötigt dafür %1$s.</string>
+    <string name="error_patch_occupied">Dieser Acker ist bereits bepflanzt.</string>
+    <string name="error_patch_empty">Dieser Acker ist leer.</string>
     <string name="error_crop_not_ready">Diese Ernte ist noch nicht reif.</string>
-    <string name="error_quest_active">Du hast bereits eine aktive Mission.</string>
-    <string name="error_quest_requirements_not_met">Du erfüllst die Voraussetzungen für diese Mission nicht.</string>
-    <string name="error_dungeon_level_too_low">Deine Kampfstufe ist für diesen Dungeon zu niedrig.</string>
-    <string name="error_unknown">Es ist ein Fehler aufgetreten. Bitte versuche es erneut.</string>
+    <string name="error_quest_active">Ihr habt bereits eine aktive Mission.</string>
+    <string name="error_quest_requirements_not_met">Ihr erfüllt die Voraussetzungen für diese Mission nicht.</string>
+    <string name="error_dungeon_level_too_low">Eure Kampffertigkeit ist für diesen Dungeon zu niedrig.</string>
+    <string name="error_unknown">Es ist ein Fehler aufgetreten. Bitte versucht es erneut.</string>
 
     <!-- ===== Session dialogs ===== -->
-    <string name="session_abandon_title">Sitzung beenden?</string>
-    <string name="session_abandon_body">Alle Fortschritte dieser Sitzung gehen verloren.</string>
+    <string name="session_abandon_title">Aktivität abbrechen?</string>
+    <string name="session_abandon_body">Alle Fortschritte dieser Aktivität gehen verloren.</string>
 
     <!-- ===== Onboarding ===== -->
     <string name="onboarding_welcome_title">Willkommen zu Idle Fantasy</string>
-    <string name="onboarding_welcome_body">Starte eine Trainingssitzung und beobachte, wie sich dein Charakter weiterentwickelt. Die Sitzungen dauern eine Stunde, auch wenn die App geschlossen ist.</string>
+    <string name="onboarding_welcome_body">Beende Aktivitäten und beobachte, wie sich dein Charakter weiterentwickelt. Die Aktivitäten dauern eine Stunde, selbst wenn die App geschlossen ist.</string>
     <string name="onboarding_first_session_hint">Tippe auf eine beliebige Fertigkeit, um loszulegen.</string>
 
     <!-- ===== Settings ===== -->
     <string name="settings_title">Einstellungen</string>
-    <string name="settings_notifications">Sitzungsbenachrichtigungen</string>
-    <string name="settings_notifications_desc">Zeige eine Benachrichtigung an, wenn deine Sitzung beendet wurde</string>
+    <string name="settings_notifications">Benachrichtigungen zu Aktivitäten</string>
+    <string name="settings_notifications_desc">Zeigt Euch eine Benachrichtigung an, wenn Eure Aktivität beendet wurde</string>
     <string name="settings_battery_optimization">Akkuoptimierung</string>
-    <string name="settings_battery_optimization_desc">Deaktivieren Sie die Akkuoptimierung für „Idle Fantasy“, um rechtzeitig Benachrichtigungen zu erhalten</string>
+    <string name="settings_battery_optimization_desc">Deaktiviert die Akkuoptimierung für „Idle Fantasy“, um rechtzeitig Benachrichtigungen zu erhalten</string>
     <string name="settings_battery_optimization_btn">Einstellungen anpassen</string>
     <string name="settings_language">Sprache</string>
     <string name="settings_about">Über</string>
@@ -243,27 +243,27 @@
     <string name="label_player_stats">Spielerstatistiken</string>
     <string name="label_combat_level">Kampflevel</string>
     <string name="label_shop_desc">Artikel kaufen und verkaufen</string>
-    <string name="label_no_session_hint">Geh zu „Fähigkeiten“ oder „Kampf“, um mit dem Training zu beginnen.</string>
+    <string name="label_no_session_hint">Begebt Euch zu Fähigkeiten oder Kampf, um mit dem Training zu beginnen.</string>
 
     <!-- ===== CombatScreen ===== -->
     <string name="label_dungeons_tab">Dungeons</string>
-    <string name="btn_fight">Kampf!</string>
+    <string name="btn_fight">Kämpft!</string>
 
     <!-- ===== SkillsScreen ===== -->
     <string name="btn_back_arrow">← Zurück</string>
     <string name="btn_start_burying">Mit dem Vergraben beginnen</string>
-    <string name="btn_start_crafting">Mit dem Erstellen beginnen</string>
+    <string name="btn_start_crafting">Mit der Herstellung beginnen</string>
     <string name="btn_select">Auswählen</string>
     <string name="label_special">Speziell</string>
 
     <!-- ===== QuestsScreen ===== -->
     <string name="label_claim_reward">Prämie einlösen</string>
-    <string name="label_daily">Daily</string>
+    <string name="label_daily">Täglich</string>
     <string name="label_daily_quests">Tagesaufgaben</string>
-    <string name="label_daily_reset">Reset um 6:00 Uhr</string>
-    <string name="label_daily_reward">2.000 Münzen (1/100: Zwergengear)</string>
+    <string name="label_daily_reset">Wird um 06:00 Uhr zurückgesetzt</string>
+    <string name="label_daily_reward">2.000 Münzen (1/100: Zwergenausrüstung)</string>
     <string name="msg_daily_claimed_coins">Tagesaufgabe abgeschlossen! +2.000 Münzen.</string>
-    <string name="msg_daily_claimed_dwarven">Tagesaufgabe abgeschlossen! Du hast %1$s gefunden!</string>
+    <string name="msg_daily_claimed_dwarven">Tagesaufgabe abgeschlossen! Ihr habt %1$s gefunden!</string>
 
     <!-- ===== OnboardingScreen ===== -->
     <string name="onboarding_lets_go">Los geht\'s!</string>
@@ -274,38 +274,38 @@
     <string name="settings_notifications_header">Benachrichtigungen</string>
     <string name="settings_performance_header">Leistung</string>
     <string name="settings_general_header">Allgemeines</string>
-    <string name="settings_tutorial_title">Einleitung</string>
-    <string name="settings_tutorial_desc">Die Einleitung erneut anzeigen</string>
+    <string name="settings_tutorial_title">Einführung</string>
+    <string name="settings_tutorial_desc">Einführung erneut anzeigen</string>
     <string name="settings_reopen">Erneut öffnen</string>
-    <string name="settings_changelog_title">What\'s New</string>
-    <string name="settings_changelog_desc">View the latest update changes</string>
-    <string name="settings_changelog_btn">View</string>
+    <string name="settings_changelog_title">Neuigkeiten</string>
+    <string name="settings_changelog_desc">Erkundet die neusten Änderungen</string>
+    <string name="settings_changelog_btn">Anzeigen</string>
     <string name="settings_foss_desc">Idle Fantasy ist freie und quelloffene Software.</string>
     <string name="settings_reset_title">Fortschritt zurücksetzen</string>
     <string name="settings_reset_desc">Alle Fähigkeiten, Gegenstände, Missionen und Münzen löschen</string>
     <string name="settings_reset_btn">Zurücksetzen</string>
     <string name="reset_confirm1_title">Den gesamten Spielfortschritt zurücksetzen?</string>
     <string name="reset_confirm1_body">Dadurch werden alle Fertigkeits-XP, Gegenstände, Münzen und der Missionsfortschritt gelöscht. Dieser Vorgang kann nicht rückgängig gemacht werden.</string>
-    <string name="reset_confirm2_title">Bist du dir sicher?</string>
-    <string name="reset_confirm2_body">Alles wird verloren sein. Du wirst ganz von vorne anfangen müssen.</string>
+    <string name="reset_confirm2_title">Seid Ihr Euch sicher?</string>
+    <string name="reset_confirm2_body">Alles wird verloren sein. Ihr werdet ganz von vorne anfangen müssen.</string>
     <string name="reset_confirm2_btn">Ja, alles zurücksetzen</string>
 
     <!-- ===== Battery prompt dialog ===== -->
     <string name="battery_prompt_title">Sitzungen aufrechterhalten</string>
-    <string name="battery_prompt_body">Um das beste Erlebnis zu genießen, lass Idle Fantasy im Hintergrund laufen, damit du rechtzeitig Benachrichtigungen erhältst.</string>
+    <string name="battery_prompt_body">Lasst Idle Fantasy im Hintergrund laufen, damit Ihr rechtzeitig Benachrichtigungen erhaltet.</string>
     <string name="battery_prompt_open_settings">Einstellungen öffnen</string>
     <string name="battery_prompt_dismiss">Nicht jetzt</string>
 
     <!-- ===== Easter egg ===== -->
     <string name="dig_action">Graben</string>
-    <string name="dig_result">Du gräbst tiefer in die Erde…</string>
+    <string name="dig_result">Ihr grabt tiefer in die Erde…</string>
     <!-- Translator note: %1$d = total hole depth in metres -->
     <string name="dig_depth_format">Das Loch ist %1$d Meter tief.</string>
 
     <!-- ===== translate — Settings ===== -->
     <string name="settings_appearance">Aussehen</string>
     <string name="settings_theme">Design</string>
-    <string name="settings_theme_desc">Wähle dein bevorzugtes Farbschema</string>
+    <string name="settings_theme_desc">Wählt Euer bevorzugtes Farbschema</string>
     <string name="settings_theme_dark">Dunkel</string>
     <string name="settings_theme_light">Hell</string>
     <string name="settings_theme_system">System</string>
@@ -315,7 +315,7 @@
     <string name="settings_font_normal">Normal</string>
     <string name="settings_font_large">Groß</string>
     <string name="settings_font_huge">Sehr groß</string>
-    <string name="settings_language_desc">Die Anzeigesprache der App überschreiben</string>
+    <string name="settings_language_desc">Anzeigesprache der App überschreiben</string>
     <string name="settings_lang_english">English</string>
     <string name="settings_lang_deutsch">Deutsch</string>
     <string name="settings_lang_français">Français</string>
@@ -325,39 +325,39 @@
     <string name="settings_lang_system">System</string>
     <string name="settings_save_data">Daten speichern</string>
     <string name="settings_export">Daten exportieren</string>
-    <string name="settings_export_desc">Speichere deinen Fortschritt in einer Datei</string>
+    <string name="settings_export_desc">Speichert Eueren Fortschritt in einer Datei</string>
     <string name="settings_export_btn">Exportieren</string>
     <string name="settings_import">Daten importieren</string>
     <string name="settings_import_desc">Fortschritt aus einer Datei wiederherstellen</string>
     <string name="settings_import_btn">Importieren</string>
-    <string name="settings_source_code">Source Code</string>
+    <string name="settings_source_code">Quellcode</string>
     <string name="settings_source_open">Öffnen</string>
-    <string name="settings_exported_ok">Export erfolgreich gespeichert</string>
-    <string name="settings_imported_ok">Import erfolgreich gespeichert</string>
+    <string name="settings_exported_ok">Erfolgreich exportiert</string>
+    <string name="settings_imported_ok">Erfolgreich importiert</string>
     <string name="settings_imported_fail">Import fehlgeschlagen – ungültige Datei</string>
-    <string name="settings_backup_title">Automatic Backup</string>
-    <string name="settings_backup_folder">Backup Folder</string>
-    <string name="settings_backup_no_folder">No folder selected</string>
-    <string name="settings_backup_choose">Choose</string>
-    <string name="settings_backup_frequency">Frequency</string>
-    <string name="settings_backup_off">Off</string>
-    <string name="settings_backup_hourly">Hourly</string>
-    <string name="settings_backup_daily">Daily</string>
-    <string name="settings_backup_weekly">Weekly</string>
-    <string name="settings_backup_at_5am">at 5:00 AM</string>
-    <string name="settings_backup_now">Back Up Now</string>
-    <string name="settings_backup_success">Backup saved.</string>
-    <string name="settings_backup_failed">Backup failed.</string>
-    <string name="settings_backup_folder_set">Backup folder set.</string>
+    <string name="settings_backup_title">Automatische Sicherung</string>
+    <string name="settings_backup_folder">Verzeichnis für Sicherung</string>
+    <string name="settings_backup_no_folder">Kein Verzeichnis ausgewählt</string>
+    <string name="settings_backup_choose">Auswählen</string>
+    <string name="settings_backup_frequency">Häufigkeit</string>
+    <string name="settings_backup_off">Aus</string>
+    <string name="settings_backup_hourly">Stündlich</string>
+    <string name="settings_backup_daily">Täglich</string>
+    <string name="settings_backup_weekly">Wöchentlich</string>
+    <string name="settings_backup_at_5am">immer 05:00 Uhr</string>
+    <string name="settings_backup_now">Jetzt sichern</string>
+    <string name="settings_backup_success">Sicherung durchgeführt.</string>
+    <string name="settings_backup_failed">Sicherung fehlgeschlagen.</string>
+    <string name="settings_backup_folder_set">Verzeichnis für Sicherung festgelegt.</string>
 
     <!-- ===== translate — HomeScreen ===== -->
-    <string name="home_town_title">Town</string>
-    <string name="home_town_desc">Visit the shop, inn, guild, church, and slayer master</string>
-    <string name="guild_dailies_available">Dailies available</string>
-    <string name="guild_do_dailies_hint">Do dailies to increase your reputation</string>
-    <string name="guild_quest_gate_blocked">Complete quests to advance your rank</string>
-    <string name="guild_quest_required">Quest required to advance</string>
-    <string name="home_died_message">Du bist gestorben und hast den Großteil deiner Gewinne verloren.</string>
+    <string name="home_town_title">Stadt</string>
+    <string name="home_town_desc">Besucht den Krämer, die Schänke, die Gilde, die Kirche und den Slayer Master</string>
+    <string name="guild_dailies_available">Tagesaufgaben verfügbar</string>
+    <string name="guild_do_dailies_hint">Erledigt Tagesaufgaben, um Euer Ansehen zu verbessern</string>
+    <string name="guild_quest_gate_blocked">Schließt Missionen ab, um im Rang aufzusteigen</string>
+    <string name="guild_quest_required">Mission benötigt, um voranzukommen</string>
+    <string name="home_died_message">Ihr seid verstorben und habt daher den Großteil Eurer Gewinne verloren.</string>
     <string name="home_xp_boost_was_active">2× XP Boost war aktiv</string>
     <string name="home_xp_boost_active">2× XP Boost aktiv — noch %1$s</string>
     <string name="home_loot">Beute</string>
@@ -368,10 +368,10 @@
     <string name="home_welcome">Willkommen zurück, %1$s!</string>
     <string name="home_adventurer">Abenteurer</string>
     <string name="home_up_next">Als Nächstes (%1$d/3)</string>
-    <string name="home_queue_ends_in">Queue ends in %1$s</string>
+    <string name="home_queue_ends_in">Alles erledigt in %1$s</string>
     <plurals name="plural_collect_sessions">
-        <item quantity="one">%1$d Belohnung der Sitzung sammeln</item>
-        <item quantity="other">%1$d Belohnungen der Sitzung sammeln</item>
+        <item quantity="one">Sammelt %1$d Belohnung für Eure Aktivität ein</item>
+        <item quantity="other">Sammelt %1$d Belohnungen für Eure Aktivitäten ein</item>
     </plurals>
 
     <!-- ===== translate — CombatScreen ===== -->
@@ -379,51 +379,51 @@
     <string name="combat_log_label">Kampfprotokoll</string>
     <string name="combat_solo_bosses">Einzelbosse</string>
     <string name="combat_dungeon_runs">%1$d runs</string>
-    <string name="combat_atk">ATK</string>
-    <string name="combat_str">STR</string>
-    <string name="combat_def">DEF</string>
+    <string name="combat_atk">ANG</string>
+    <string name="combat_str">STÄ</string>
+    <string name="combat_def">VER</string>
     <string name="combat_heals_hp">%1$d LP geheilt</string>
     <string name="combat_defeated_so_far">bisher besiegt.</string>
     <string name="combat_fighting">Kämpfen…</string>
-    <string name="combat_log_you_hit">Du hast getroffen</string>
-    <string name="combat_log_hit_you">Du wwurdest getroffen</string>
-    <string name="combat_log_dmg">dmg</string>
-    <string name="combat_log_missed">verpasst</string>
-    <string name="combat_log_you_missed">Du hast verpasst</string>
-    <string name="combat_rec_level">Empfohlene Kampflevel</string>
-    <string name="combat_your_level">Dein Kampflevel</string>
+    <string name="combat_log_you_hit">Ihr habt getroffen</string>
+    <string name="combat_log_hit_you">traf Euch</string>
+    <string name="combat_log_dmg">SCH</string>
+    <string name="combat_log_missed">daneben</string>
+    <string name="combat_log_you_missed">Daneben</string>
+    <string name="combat_rec_level">Empfohlenes Kampflevel</string>
+    <string name="combat_your_level">Euer Kampflevel</string>
     <string name="combat_no_strength_bonus">Keine (kein Stärkebonus)</string>
     <string name="combat_best_arrow">Bester Pfeil</string>
     <string name="combat_arrow_auto">Auto (bester verfügbar)</string>
     <string name="combat_label_arrow">Pfeil</string>
     <string name="combat_enemies">Feinde</string>
-    <string name="combat_no_spells">Auf deiner Magiestufe sind keine Zauber verfügbar.</string>
-    <string name="combat_only_castable">Nur genießbare</string>
+    <string name="combat_no_spells">Für Eure Magiestufe sind keine Zauber verfügbar.</string>
+    <string name="combat_only_castable">Nur zauberbare</string>
     <string name="combat_max_hit">maximaler Treffer</string>
     <string name="combat_no_potion">Kein Zaubertrank</string>
     <string name="combat_req_level">Erforderliches Kampflevel</string>
     <string name="combat_duration">Dauer</string>
     <string name="combat_duration_min">%1$d min</string>
     <string name="combat_xp_on_victory">XP zum Sieg</string>
-    <string name="combat_you_died">Du bist gestorben!</string>
-    <string name="combat_died_reward">Du hast 10 % der Prämien erhalten.</string>
+    <string name="combat_you_died">Ihr seid gestorben!</string>
+    <string name="combat_died_reward">Ihr habt 10 % der Belohnung erhalten.</string>
     <string name="combat_gear_bonus">+%1$d Ausrüstung</string>
 
     <!-- ===== translate — ProfileScreen ===== -->
-    <string name="profile_unnamed">Unbekannter Abenteurer</string>
+    <string name="profile_unnamed">Unbenannter Abenteurer</string>
     <string name="profile_no_pets">Haustiere sind nicht verfügbar</string>
     <string name="profile_pet_collected">Gesammelt</string>
     <string name="profile_pet_not_found">Noch nicht gefunden</string>
-    <string name="profile_equip_best">Mit der besten Ausrüstung ausstatten</string>
-    <string name="profile_weapons">Weapons</string>
+    <string name="profile_equip_best">Beste Ausrüstung ausstatten</string>
+    <string name="profile_weapons">Waffen</string>
     <string name="profile_combat_gear">Kampfausrüstung</string>
-    <string name="profile_view_combat_gear">View Combat Gear</string>
+    <string name="profile_view_combat_gear">Kampfausrüstung ansehen</string>
     <string name="profile_gathering_tools">Werkzeuge</string>
     <string name="profile_food_dungeon">Essen (Dungeon)</string>
     <string name="profile_no_food">Keine gekochten Lebensmittel im Inventar</string>
     <string name="profile_food_desc">×%1$d  •  heilt %2$d LP</string>
     <string name="profile_choose_slot">%1$s auswählen</string>
-    <string name="profile_no_items">Keine passenden Artikel im Inventar</string>
+    <string name="profile_no_items">Keine passenden Gegenstände im Inventar</string>
     <string name="profile_stat_atk">Atk</string>
     <string name="profile_stat_str">Str</string>
     <string name="profile_stat_ranged">Fernkampf</string>
@@ -439,18 +439,18 @@
     <string name="skills_session_duration">Dauer: %1$dm</string>
     <string name="skills_only_craftable">Nur herstellbare</string>
     <string name="skills_filter_all">Alle</string>
-    <string name="skills_add_to_queue">Zur Warteschlange</string>
+    <string name="skills_add_to_queue">Zur Aktivitäten-Warteschlange hinzufügen</string>
     <string name="skills_add_queue_short">Zur Warteschlange hinzufügen</string>
     <string name="skills_level_req_xp">Lv. %1$d  •  %2$s XP/Erz</string>
     <string name="skills_tool_bonus">×%1$s Werkzeugbonus</string>
     <string name="skills_fishing_desc">Level %1$d  •  Dem Level entsprechende Beute</string>
     <string name="skills_fish_desc">Lv. %1$d  •  %2$s XP/Fang</string>
-    <string name="skills_prayer_desc">Level %1$d  •  Knochen begraben oder Asche verstreuen für Gebet-XP</string>
+    <string name="skills_prayer_desc">Level %1$d  •  Knochen begraben oder Asche verstreuen für Gebets-XP</string>
     <string name="skills_no_bones">Keine Knochen oder Asche im Inventar</string>
     <string name="skills_bone_qty">%1$d XP je  •  %2$d im Inventar</string>
     <string name="skills_bone_selected">%1$d XP je  •  %2$d verfügbar</string>
     <string name="skills_xp_total">+%1$d XP gesamt</string>
-    <string name="skills_no_essence">Keine Runenessenz im Inventar – schürfe erst welche</string>
+    <string name="skills_no_essence">Keine Runenessenz im Inventar – Ihr müsst erst neue schürfen</string>
     <string name="skills_no_runes">Es sind noch keine Runentypen freigeschaltet</string>
     <string name="skills_essence_qty">%1$d Runenessenz im Inventar</string>
     <string name="skills_rune_desc">%1$d XP/Rune  •  Lv. %2$d</string>
@@ -460,58 +460,58 @@
     <string name="skills_log_desc">Lv. %1$d  •  %2$s XP/Holz</string>
     <string name="skills_req_with_have">Benötigt %1$d %2$s (Du hast %3$d %4$s)</string>
 
-    <!-- ===== TODO: translate — ShopScreen ===== -->
-    <string name="shop_active">ACTIVE</string>
-    <string name="shop_sell_junk">Sell Junk</string>
-    <string name="shop_sell_old_gear">Sell Old Gear</string>
-    <string name="shop_equipped_label">(equipped)</string>
-    <string name="shop_qty_in_inv">×%1$d in inventory</string>
-    <string name="shop_price_each">%1$s coins ea.</string>
-    <string name="shop_buy_prefix">Buy: %1$s</string>
-    <string name="shop_sell_prefix">Sell: %1$s</string>
-    <string name="shop_price_each_long">%1$s coins each</string>
-    <string name="shop_total_cost">Total cost</string>
-    <string name="shop_youll_receive">You\'ll receive</string>
-    <string name="shop_total_amount">%1$s coins</string>
+    <!-- ===== ShopScreen ===== -->
+    <string name="shop_active">AKTIV</string>
+    <string name="shop_sell_junk">Krimskrams verkaufen</string>
+    <string name="shop_sell_old_gear">Alte Ausrüstung verkaufen</string>
+    <string name="shop_equipped_label">(ausgerüstet)</string>
+    <string name="shop_qty_in_inv">×%1$d im Inventar</string>
+    <string name="shop_price_each">je %1$s Münzen</string>
+    <string name="shop_buy_prefix">Kaufen: %1$s</string>
+    <string name="shop_sell_prefix">Verkaufen: %1$s</string>
+    <string name="shop_price_each_long">jeweils %1$s Münzen</string>
+    <string name="shop_total_cost">Gesamtkosten</string>
+    <string name="shop_youll_receive">Ihr erhaltet</string>
+    <string name="shop_total_amount">%1$s Münzen</string>
 
-    <!-- ===== TODO: translate — CraftingScreen ===== -->
-    <string name="crafting_no_mats">No mats</string>
+    <!-- ===== CraftingScreen ===== -->
+    <string name="crafting_no_mats">Mat. fehlt</string>
     <string name="crafting_produces">= %1$d %2$s</string>
-    <string name="crafting_effects">Effects</string>
-    <string name="crafting_xp_total">+%1$d XP total</string>
-    <string name="crafting_decrease">Decrease</string>
-    <string name="crafting_increase">Increase</string>
-    <string name="crafting_needed_have">%1$d (have %2$d)</string>
-    <string name="crafting_in_inventory">In inventory: ×%1$d</string>
+    <string name="crafting_effects">Effekte</string>
+    <string name="crafting_xp_total">insgesamt +%1$d XP</string>
+    <string name="crafting_decrease">Weniger</string>
+    <string name="crafting_increase">Mehr</string>
+    <string name="crafting_needed_have">%1$d (%2$d vorhanden)</string>
+    <string name="crafting_in_inventory">In Besitz: ×%1$d</string>
 
-    <!-- ===== TODO: translate — FarmingScreen ===== -->
-    <string name="farming_harvested">Harvested %1$s</string>
-    <string name="farming_title">Farming — Level %1$d</string>
-    <string name="farming_patches">%1$d patches unlocked</string>
-    <string name="farming_clear_patch">Clear Patch</string>
-    <string name="farming_clear_desc">Remove the crop without any reward?</string>
+    <!-- ===== FarmingScreen ===== -->
+    <string name="farming_harvested">%1$s geerntet</string>
+    <string name="farming_title">Landwirtschaft — Level %1$d</string>
+    <string name="farming_patches">%1$d Äcker freigeschaltet</string>
+    <string name="farming_clear_patch">Acker pflügen</string>
+    <string name="farming_clear_desc">Wollt Ihr diese Saat wirklich vernichten?</string>
 
-    <!-- ===== TODO: translate — QuestsScreen ===== -->
-    <string name="quests_none_in_category">No quests in this category.</string>
+    <!-- ===== QuestsScreen ===== -->
+    <string name="quests_none_in_category">Keine Missionen in dieser Kategorie.</string>
 
-    <!-- ===== TODO: translate — CharacterSetupSheet ===== -->
-    <string name="character_create_title">Create Your Character</string>
-    <string name="character_edit_title">Edit Character</string>
-    <string name="character_name_label">Character Name</string>
-    <string name="character_gender">Gender</string>
-    <string name="character_gender_male">Male</string>
-    <string name="character_gender_female">Female</string>
-    <string name="character_gender_other">Other</string>
-    <string name="character_race">Race</string>
-    <string name="character_race_human">Human</string>
+    <!-- ===== CharacterSetupSheet ===== -->
+    <string name="character_create_title">Erstellt Euren Character</string>
+    <string name="character_edit_title">Character bearbeiten</string>
+    <string name="character_name_label">Name Eures Characters</string>
+    <string name="character_gender">Geschlecht</string>
+    <string name="character_gender_male">Herr</string>
+    <string name="character_gender_female">Dame</string>
+    <string name="character_gender_other">Andere</string>
+    <string name="character_race">Rasse</string>
+    <string name="character_race_human">Mensch</string>
     <string name="character_race_elf">Elf</string>
-    <string name="character_race_dwarf">Dwarf</string>
-    <string name="character_race_orc">Orc</string>
-    <string name="character_race_halfling">Halfling</string>
-    <string name="character_race_gnome">Gnome</string>
+    <string name="character_race_dwarf">Zwerg</string>
+    <string name="character_race_orc">Ork</string>
+    <string name="character_race_halfling">Halbling</string>
+    <string name="character_race_gnome">Gnom</string>
 
-    <!-- ===== TODO: translate — OnboardingScreen ===== -->
-    <string name="onboarding_sessions_title">Sessions</string>
+    <!-- ===== OnboardingScreen ===== -->
+    <string name="onboarding_sessions_title">Aktivitäten</string>
     <string name="onboarding_sessions_desc">Tap any skill and start a training session. Sessions run in the background, even with the app closed. Come back to collect your loot and XP.</string>
     <string name="onboarding_progress_title">Work Your Way Up</string>
     <string name="onboarding_progress_desc">Mine ore to smelt bars, then forge better weapons and armour. Equip stronger gear to tackle harder dungeons and bosses. Better tools speed up gathering, and higher-tier equipment unlocks content that weaker gear can\'t survive.</string>
