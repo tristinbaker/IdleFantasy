@@ -394,8 +394,6 @@
     <string name="combat_your_level">Euer Kampflevel</string>
     <string name="combat_no_strength_bonus">Keine (kein Stärkebonus)</string>
     <string name="combat_best_arrow">Bester Pfeil</string>
-    <string name="combat_arrow_auto">Auto (bester verfügbar)</string>
-    <string name="combat_label_arrow">Pfeil</string>
     <string name="combat_enemies">Feinde</string>
     <string name="combat_no_spells">Für Eure Magiestufe sind keine Zauber verfügbar.</string>
     <string name="combat_only_castable">Nur zauberbare</string>
@@ -693,28 +691,28 @@
     <string name="mercantile_queue_label">Add to Queue</string>
 
     <!-- Church -->
-    <string name="church_title">Church</string>
-    <string name="church_desc">Blessings for XP, defense, and coins</string>
-    <string name="church_no_active_blessing">No active blessing — visit the Church to pray.</string>
-    <string name="church_active_label">Active Blessing</string>
-    <string name="church_expires_in">Expires in %1$s</string>
-    <string name="church_blessing_active_fmt">%1$s • %2$s left</string>
-    <string name="church_section_xp">XP Blessings</string>
-    <string name="church_section_defense">Defense Blessings</string>
-    <string name="church_section_coins">Coin Blessings</string>
-    <string name="church_locked_level">Requires Prayer level %1$d</string>
-    <string name="church_active_chip">Active</string>
-    <string name="church_activate">Activate</string>
-    <string name="church_blessing_bonus">+%1$s from blessing</string>
-    <string name="church_blessing_suffix">from blessing</string>
-    <string name="church_effect_xp">×%1$.2f XP for 24 hours</string>
-    <string name="church_effect_def">+%1$d Defense for 24 hours</string>
-    <string name="church_effect_coins">+%1$d%% coin drops for 24 hours</string>
-    <string name="church_cost_bones">Costs %1$d bones</string>
-    <string name="church_confirm_title">Activate Blessing?</string>
-    <string name="church_bones_available">You have %1$d bones (all types)</string>
-    <string name="church_not_enough_bones">Not enough bones (need %1$d)</string>
-    <string name="church_already_active">A blessing is already active</string>
+    <string name="church_title">Kirche</string>
+    <string name="church_desc">Segen für mehr XP, Verteidigung und Münzen</string>
+    <string name="church_no_active_blessing">Kein aktiver Segen — besucht die Kirche, um zu beten.</string>
+    <string name="church_active_label">Aktiver Segen</string>
+    <string name="church_expires_in">Läuft in %1$s ab</string>
+    <string name="church_blessing_active_fmt">%1$s • %2$s verbleibend</string>
+    <string name="church_section_xp">Segen für XP</string>
+    <string name="church_section_defense">Segen für Verteidigung</string>
+    <string name="church_section_coins">Segen für Münzen</string>
+    <string name="church_locked_level">Erfordert Gebetslevel %1$d</string>
+    <string name="church_active_chip">Aktiv</string>
+    <string name="church_activate">Segen empfangen</string>
+    <string name="church_blessing_bonus">+%1$s durch Segen</string>
+    <string name="church_blessing_suffix">durch Segen</string>
+    <string name="church_effect_xp">×%1$.2f XP für 24 Stunden</string>
+    <string name="church_effect_def">+%1$d Verteidigung für 24 Stunden</string>
+    <string name="church_effect_coins">+%1$d%% mehr Münzen für 24 Stunden</string>
+    <string name="church_cost_bones">Kostet %1$d Knochen</string>
+    <string name="church_confirm_title">Segen empfangen?</string>
+    <string name="church_bones_available">Ihr habt %1$d Knochen</string>
+    <string name="church_not_enough_bones">Nicht genug Knochen (benötigt %1$d)</string>
+    <string name="church_already_active">Ihr seid bereits gesegnet</string>
 
     <!-- Blessing names -->
     <string name="blessing_blessed_focus_name">Blessed Focus</string>
@@ -748,36 +746,13 @@
     <string name="blessing_aegis_name">Aegis</string>
     <string name="blessing_abundance_iii_name">Abundance III</string>
 
-    <!-- Skilling dungeon names and descriptions -->
-    <string name="skilling_dungeon_copper_caverns_name">Kupferhöhlen</string>
-    <string name="skilling_dungeon_copper_caverns_desc">Eine längst verlassene Mine unter den Vorbergen. Ihre Kupferadern schimmern noch immer im Dunkeln.</string>
-    <string name="skilling_dungeon_dwarven_depths_name">Zwergenuntiefen</string>
-    <string name="skilling_dungeon_dwarven_depths_desc">Die tiefste Ebene einer alten Zwergenausschachtung. Reiche Adern seltener Metalle verstecken sich hinter den Knochen ihrer Erbauer.</string>
-    <string name="skilling_dungeon_whispering_grove_name">Flüsternder Hain</string>
-    <string name="skilling_dungeon_whispering_grove_desc">Ein uralter Wald, in dem die Bäume seit Jahrtausenden ungestört gewachsen sind. Zwischen den Ästen spricht etwas.</string>
-    <string name="skilling_dungeon_corrupted_canopy_name">Verdorbenes Kronendach</string>
-    <string name="skilling_dungeon_corrupted_canopy_desc">Ein Wald, in dem Schatten das Sonnenlicht ersetzt hat. Die Bäume bluten schwarzen Saft und die Luft schmeckt nach alter Magie.</string>
-    <string name="skilling_dungeon_sunken_grotto_name">Versunkene Grotte</string>
-    <string name="skilling_dungeon_sunken_grotto_desc">Eine Meereshöhle, die über Jahrhunderte von den Gezeiten geformt wurde. Seltsame Steinpfeiler erheben sich aus dem Wasser.</string>
-    <string name="skilling_dungeon_abyssal_lagoon_name">Abyssale Lagune</string>
-    <string name="skilling_dungeon_abyssal_lagoon_desc">Eine stille schwarze Lagune ohne sichtbaren Boden. Die Fische hier leuchten schwach und lösen sich innerhalb von Minuten nach dem Fang auf.</string>
-    <string name="skilling_dungeon_crumbling_watchtower_name">Bröckelnder Wachturm</string>
-    <string name="skilling_dungeon_crumbling_watchtower_desc">Ein baufälliger Steinturm am Rand der Vorberge. Etwas bewacht noch immer das, was einst darin gelagert war.</string>
-    <string name="skilling_dungeon_shattered_spire_name">Zersplitterter Turm</string>
-    <string name="skilling_dungeon_shattered_spire_desc">Die Überreste eines Zauberturms, der zu einem Trümmerfeld geworden ist. Die Luft knistert noch immer von Restmagie.</string>
-
     <!-- Expeditions -->
-    <string name="nav_expeditions">Expeditionen</string>
-    <string name="expeditions_title">Expeditionen</string>
-    <string name="expedition_explore_button">Erkunden</string>
-    <string name="expedition_dungeon_unlocked">Kampf-Dungeon freigeschaltet!</string>
-    <string name="expedition_discover_hint">Per Expeditionen entdecken</string>
-    <string name="expedition_loading">Lädt…</string>
-    <string name="expedition_lore_notes">%1$d / %2$d Notizen</string>
-    <string name="expedition_lock_level">Erfordert %1$s-Level %2$d</string>
-    <string name="expedition_lock_notes">Finde alle Notizen in %1$s</string>
-    <string name="expedition_lock_prerequisite">Erfülle eine Voraussetzung</string>
-    <string name="label_notes">Notizen</string>
+    <string name="nav_expeditions">Expeditions</string>
+    <string name="expeditions_title">Expeditions</string>
+    <string name="expedition_explore_button">Explore</string>
+    <string name="expedition_dungeon_unlocked">Combat dungeon unlocked!</string>
+    <string name="expedition_discover_hint">Discover via Expeditions</string>
+    <string name="label_notes">Notes</string>
     <string name="label_hide_completed">Hide completed</string>
     <string name="settings_lang_español_españa">Español (España)</string>
     <string name="farming_harvest_and_plant">Harvest and Plant All</string>
@@ -800,8 +775,6 @@
     <string name="slayer_get_task">Get New Task</string>
     <string name="slayer_skip_task">Skip (30 pts)</string>
     <string name="slayer_no_task">No active task. Tap Get New Task.</string>
-    <string name="slayer_task_stuck">This enemy is only found in an Expeditions dungeon you haven\'t discovered yet. Reroll for free.</string>
-    <string name="slayer_reroll_free">Reroll (free)</string>
     <string name="slayer_no_eligible_tasks">No eligible tasks at your Slayer level.</string>
     <string name="slayer_task_complete">Task complete! Visit the Slayer Master for a new one.</string>
     <string name="slayer_xp_per_kill">%1$d XP/kill</string>
@@ -832,92 +805,4 @@
     <string name="item_slayer_platelegs_desc">Protective legs crafted for extended dungeon runs.</string>
 
     <string name="settings_lang_dutch">Nederlands</string>
-
-    <!-- Prestige system -->
-    <string name="prestige">Prestige</string>
-    <string name="prestige_max">Max Prestige</string>
-    <string name="prestige_confirm_title">Prestige %s?</string>
-    <string name="prestige_confirm_message_xp">Your %1$s level will reset to 1, but you\'ll earn a permanent +%2$d%% XP bonus for this skill.</string>
-    <string name="prestige_confirm_message_stat">Your %1$s level will reset to 1, but you\'ll earn a permanent +%2$d bonus to your stats.</string>
-    <string name="achievement_prestige_first_name">First Reset</string>
-    <string name="achievement_prestige_first_desc">Prestige any skill for the first time</string>
-    <string name="achievement_prestige_any_3_name">Mastered</string>
-    <string name="achievement_prestige_any_3_desc">Reach Prestige 3 on any skill</string>
-    <string name="achievement_prestige_all_1_name">Clean Slate</string>
-    <string name="achievement_prestige_all_1_desc">Prestige all skills at least once</string>
-    <string name="achievement_prestige_all_3_name">True Prestige</string>
-    <string name="achievement_prestige_all_3_desc">Reach Prestige 3 on every skill</string>
-
-    <!-- Shop categories -->
-    <string name="shop_cat_ores_and_materials">Erze &amp; Materialien</string>
-    <string name="shop_cat_logs_and_wood">Holzscheite &amp; Holz</string>
-    <string name="shop_cat_seeds_and_farming">Samen &amp; Landwirtschaft</string>
-    <string name="shop_cat_merchants_guild">Händlergilde</string>
-    <string name="shop_cat_equipment">Ausrüstung</string>
-    <string name="shop_cat_special">Besonders</string>
-    <string name="shop_cat_weapons">Waffen</string>
-    <string name="shop_cat_armor">Rüstung</string>
-    <string name="shop_cat_tools">Werkzeug</string>
-    <string name="shop_cat_food">Nahrung</string>
-    <string name="shop_cat_materials">Materialien</string>
-    <string name="shop_cat_misc">Sonstiges</string>
-
-    <string name="crafting_per_craft">×%1$d pro Herstellung</string>
-
-    <!-- Skills screen localisation -->
-    <string name="farming_ready_in">Fertig in %1$s</string>
-    <string name="trade_route_local_market_name">Lokaler Markt</string>
-    <string name="trade_route_river_trading_post_name">Flusshandelsposten</string>
-    <string name="trade_route_eastern_caravan_name">Ostkarawane</string>
-    <string name="trade_route_grand_exchange_name">Große Börse</string>
-    <string name="trade_route_merchants_quarter_name">Händlerviertel</string>
-    <string name="trade_route_northern_ports_name">Nördliche Häfen</string>
-    <string name="trade_route_local_market_desc">Handelt mit gewöhnlichen Gütern auf dem lokalen Markt. Die Erträge sind bescheiden, aber variabel.</string>
-    <string name="trade_route_river_trading_post_desc">Befördert Waren entlang der Flusshandelsroute. Die Gewinne sind unvorhersehbar, aber oft lohnend.</string>
-    <string name="trade_route_eastern_caravan_desc">Schließt euch einer Kaufmannskarawane nach Osten an. Die lange Reise zahlt sich aus, wenn der Deal klappt.</string>
-    <string name="trade_route_grand_exchange_desc">Handelt an der legendären Großen Börse, wo Vermögen gemacht und verloren werden.</string>
-    <string name="trade_route_merchants_quarter_desc">Handelt mit seltenen Gütern im prestigeträchtigen Händlerviertel.</string>
-    <string name="trade_route_northern_ports_desc">Bringt wertvolle Fracht in die nördlichen Hafenstädte. Hohes Risiko, hohe Belohnung.</string>
-    <string name="crafting_cat_bar">Barren</string>
-    <string name="crafting_cat_component">Komponente</string>
-    <string name="crafting_cat_tool">Werkzeug</string>
-    <string name="crafting_cat_weapon">Waffe</string>
-    <string name="crafting_cat_armour">Rüstung</string>
-    <string name="crafting_cat_equipment">Ausrüstung</string>
-    <string name="crafting_cat_food">Nahrung</string>
-    <string name="crafting_cat_ammunition">Munition</string>
-    <string name="crafting_cat_jewellery">Schmuck</string>
-    <string name="crafting_cat_potion">Trank</string>
-
-    <!-- Crafting tier filter chips -->
-    <string name="crafting_tier_adamantite">Adamantit</string>
-    <string name="crafting_tier_arrow">Pfeil</string>
-    <string name="crafting_tier_bronze">Bronze</string>
-    <string name="crafting_tier_gold">Gold</string>
-    <string name="crafting_tier_iron">Eisen</string>
-    <string name="crafting_tier_magic">Magisch</string>
-    <string name="crafting_tier_maple">Ahorn</string>
-    <string name="crafting_tier_mithril">Mithril</string>
-    <string name="crafting_tier_oak">Eiche</string>
-    <string name="crafting_tier_platinum">Platin</string>
-    <string name="crafting_tier_runite">Runite</string>
-    <string name="crafting_tier_shortbow">Kurzbogen</string>
-    <string name="crafting_tier_silver">Silber</string>
-    <string name="crafting_tier_staff">Stab</string>
-    <string name="crafting_tier_steel">Stahl</string>
-    <string name="crafting_tier_willow">Weide</string>
-    <string name="crafting_tier_yew">Eibe</string>
-
-    <!-- Firemaking rework + ash catalyst + fertilizer -->
-    <string name="firemaking_logs_in_inventory">im Inventar</string>
-    <string name="firemaking_burns_to">Verbrennt zu %1$s</string>
-    <string name="firemaking_burn">Verbrennen</string>
-    <string name="farming_fertilizer">Dünger</string>
-    <string name="farming_fertilizer_optional">Dünger hinzufügen (opt.)</string>
-    <string name="farming_fertilizer_yield">+%1$d%% Ertrag</string>
-    <string name="farming_fertilized">Gedüngt</string>
-    <string name="catalyst_optional">Aschen-Katalysator (opt.)</string>
-    <string name="catalyst_enhanced_output">Produziert verbesserten Trank</string>
-    <string name="catalyst_rune_bonus">+%1$d Rune pro Essenz</string>
-    <string name="catalyst_none">Kein Katalysator</string>
 </resources>
