@@ -1662,6 +1662,9 @@ private fun BossInfoSheet(
             .padding(horizontal = 24.dp)
             .padding(bottom = 40.dp),
     ) {
+        Column(modifier = Modifier
+            .weight(1f, fill = false)
+            .verticalScroll(rememberScrollState())) {
         Text(
             text       = "${boss.emoji} ${boss.displayName}",
             style      = MaterialTheme.typography.titleLarge,
@@ -1922,6 +1925,8 @@ private fun BossInfoSheet(
                 }
             }
         }
+
+        } // end scrollable content
 
         Spacer(Modifier.height(20.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {

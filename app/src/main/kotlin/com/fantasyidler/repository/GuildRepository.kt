@@ -412,7 +412,7 @@ class GuildRepository @Inject constructor(
             if (level <= resetLevel) continue
             for ((questId, quest) in gameData.guildQuests) {
                 if (quest.guild != guild) continue
-                if (quest.guildLevelRequired <= resetLevel || quest.guildLevelRequired > level) continue
+                if (quest.guildLevelRequired <= resetLevel || quest.guildLevelRequired >= level) continue
                 val row = questProgressDao.getQuestProgress(questId) ?: continue
                 if (row.progress > 0 && !row.completed) {
                     questProgressDao.upsert(row.copy(progress = 0))
