@@ -495,9 +495,9 @@
     <string name="quests_none_in_category">Keine Missionen in dieser Kategorie.</string>
 
     <!-- ===== CharacterSetupSheet ===== -->
-    <string name="character_create_title">Erstellt Euren Character</string>
-    <string name="character_edit_title">Character bearbeiten</string>
-    <string name="character_name_label">Name Eures Characters</string>
+    <string name="character_create_title">Erstellt Euren Charakter</string>
+    <string name="character_edit_title">Charakter bearbeiten</string>
+    <string name="character_name_label">Name Eures Charakters</string>
     <string name="character_gender">Geschlecht</string>
     <string name="character_gender_male">Herr</string>
     <string name="character_gender_female">Dame</string>
@@ -512,17 +512,17 @@
 
     <!-- ===== OnboardingScreen ===== -->
     <string name="onboarding_sessions_title">Aktivitäten</string>
-    <string name="onboarding_sessions_desc">Tap any skill and start a training session. Sessions run in the background, even with the app closed. Come back to collect your loot and XP.</string>
-    <string name="onboarding_progress_title">Work Your Way Up</string>
-    <string name="onboarding_progress_desc">Mine ore to smelt bars, then forge better weapons and armour. Equip stronger gear to tackle harder dungeons and bosses. Better tools speed up gathering, and higher-tier equipment unlocks content that weaker gear can\'t survive.</string>
-    <string name="onboarding_quests_title">Quests &amp; Pets</string>
-    <string name="onboarding_quests_desc">Complete quests to earn XP rewards. Rare pets can drop while training skills and provide permanent XP boosts.</string>
-    <string name="onboarding_welcome_desc">An idle RPG inspired by classic MMORPGs. Train skills, fight dungeons, and craft gear. All offline, no accounts, no ads.</string>
+    <string name="onboarding_sessions_desc">Wählt eine Fähigkeit und beginnt eine Übungsrunde. Aktivitäten laufen im Hintergrund weiter, selbst wenn die App geschlossen ist. Kommt später wieder um Eure Beute und XP einzukassieren.</string>
+    <string name="onboarding_progress_title">Arbeitet Euch herauf</string>
+    <string name="onboarding_progress_desc">Schürft Erz, um es zu Barren zu schmelzen. Stellt daraus anschließend Waffen und Rüstungen her. Verwendet bessere Ausrüstung, um gefährlichere Dungeons und Bosse zu bezwingen. Verbesserte Werkzeuge beschleunigen das Sammeln. Hochwertige Ausrüstung erlaubt es Euch, eigentlich tödliche Abenteuer zu bestreiten.</string>
+    <string name="onboarding_quests_title">Missionen &amp; Haustiere</string>
+    <string name="onboarding_quests_desc">Beendet Missionen, um XP zu erhalten. Seltenere Haustiere finden manchmal während Eurer Aktivitäten Beute und gewähren außerdem einen dauerhaften XP-Boost.</string>
+    <string name="onboarding_welcome_desc">Ein von klassischen MMORPGs inspiriertes Idle-RPG. Trainiert Fähigkeiten, kämpft in Dungeons und stellt Ausrüstung her. Komplett offline, ohne Accounts und ohne Werbung.</string>
 
     <!-- Quantity picker quick buttons -->
     <string name="qty_max">Max</string>
 
-    <!-- ===== TODO: translate — Inn / Worker ===== -->
+    <!-- ===== TInn / Worker ===== -->
     <string-array name="worker_names">
         <item>Aldric</item>
         <item>Brenna</item>
@@ -550,50 +550,50 @@
         <item>Xander</item>
         <item>Yara</item>
     </string-array>
-    <string name="inn_title">Inn</string>
-    <string name="inn_desc">Hire a worker to train skills for you, or buy food from the daily menu.</string>
-    <string name="inn_worker_already_hired">A worker is already hired.</string>
-    <string name="inn_not_enough_coins">Not enough coins.</string>
-    <string name="inn_hire">Hire</string>
-    <string name="inn_worker_active">Worker hired and training</string>
-    <string name="inn_hire_cost">%1$s coins</string>
-    <string name="worker_long_laborer">Long Laborer</string>
-    <string name="worker_apprentice">Apprentice</string>
-    <string name="worker_journeyman">Journeyman</string>
-    <string name="worker_master">Master</string>
-    <string name="inn_long_laborer_desc">8h gathering, 0.5x efficiency. No crafting, prayer, or runecrafting cap. Queue up as much as you like. He\'s slow, but he\'ll do anything.</string>
-    <string name="inn_apprentice_desc">8h gathering, 1x efficiency. Crafting, prayer, and runecrafting capped at 480 items per session.</string>
-    <string name="inn_journeyman_desc">6h gathering, 1.25x efficiency. Crafting, prayer, and runecrafting capped at 360 items per session.</string>
-    <string name="inn_master_desc">4h gathering, 2x efficiency. Crafting, prayer, and runecrafting capped at 240 items per session.</string>
-    <string name="inn_gathering_note">Gathering: session hours x efficiency multiplier applied to loot and XP</string>
-    <string name="inn_crafting_note">Crafting/prayer/runecrafting: quantity capped per tier; Long Laborer has no cap</string>
-    <string name="worker_skills_title">Worker: %1$s</string>
-    <string name="worker_session_active">Worker Session Active</string>
-    <string name="worker_session_complete">Worker Session Complete</string>
-    <string name="worker_manage_from_home">Collect from the Home screen</string>
-    <string name="worker_card_title">Worker</string>
-    <string name="worker_idle">Worker is idle — queued sessions start automatically</string>
-    <string name="worker_collect_btn">Collect Worker Session</string>
-    <string name="worker_dismiss_btn">Dismiss Worker</string>
-    <string name="worker_dismiss_confirm_title">Dismiss Worker?</string>
-    <string name="worker_dismiss_confirm_body">The active session and queue will be cancelled. Your hire fee and any queued materials will be returned.</string>
-    <string name="inn_daily_menu">Daily Menu</string>
-    <string name="inn_laborers_header">Laborers</string>
-    <string name="inn_slot1_header">Long Laborer</string>
-    <string name="inn_slot2_header">Skilled Worker</string>
-    <string name="quest_kbd_slayer_1_name">King Black Dragon Slayer I</string>
-    <string name="quest_kbd_slayer_2_name">King Black Dragon Slayer II</string>
-    <string name="quest_kbd_slayer_3_name">King Black Dragon Slayer III</string>
-    <string name="inn_daily_resets">Refreshes daily at 6am</string>
-    <string name="inn_food_heal">+%1$d HP</string>
-    <string name="inn_food_purchased">Food purchased.</string>
-    <string name="inn_buy_qty">Quantity</string>
-    <string name="inn_buy_total">Total: %1$s</string>
-    <string name="inn_card_desc">Hire workers and stock food</string>
-    <string name="worker_no_active_session">Worker is idle — no sessions queued</string>
-    <string name="worker_add_sessions">Add Sessions</string>
-    <string name="inn_worker_tier">%1$s worker</string>
-    <string name="worker_skills_title_nav">Worker Skills</string>
+    <string name="inn_title">Schänke</string>
+    <string name="inn_desc">Heuert einen Arbeiter an, der an euer statt Fähigkeiten trainiert. Oder kauft Speisen vom Tagesmenü.</string>
+    <string name="inn_worker_already_hired">Ihr habt bereits einen Arbeiter angeheuert.</string>
+    <string name="inn_not_enough_coins">Nicht genug Münzen.</string>
+    <string name="inn_hire">Anheuern</string>
+    <string name="inn_worker_active">Arbeiter ist angeheuert und trainiert</string>
+    <string name="inn_hire_cost">%1$s Münzen</string>
+    <string name="worker_long_laborer">Erfahrener Arbeiter</string>
+    <string name="worker_apprentice">Lehrling</string>
+    <string name="worker_journeyman">Geselle</string>
+    <string name="worker_master">Meister</string>
+    <string name="inn_long_laborer_desc">8h Sammeln, 0.5-fache Effizienz. Keine Beschränkung für Herstellung, Gebet und Runenherstellung. Fügt zur Warteschlange soviel Ihr wollt hinzu. Er ist langsam, sich aber für nichts zu schade.</string>
+    <string name="inn_apprentice_desc">8h Sammeln, 1-fache Effizienz. Herstellung, Gebet und Runenherstellung ist auf 480 Gegenstände pro Aktivität begrenzt.</string>
+    <string name="inn_journeyman_desc">6h Sammeln, 1.25-fache Effizienz. Herstellung, Gebet und Runenherstellung ist auf 360 Gegenstände pro Aktivität begrenzt.</string>
+    <string name="inn_master_desc">4h Sammeln, 2-fache Effizienz. Herstellung, Gebet und Runenherstellung ist auf 240 Gegenstände pro Aktivität begrenzt.</string>
+    <string name="inn_gathering_note">Sammeln: Aktivitätszeit in Stunden x Effizienz wird auf Beute und XP angewendet</string>
+    <string name="inn_crafting_note">Herstellen/Gebet/Runenherstellung: Die Menge ist pro Rang begrenzt; Der Erfahrene Arbeiter hat keine Begrenzung</string>
+    <string name="worker_skills_title">Arbeiter: %1$s</string>
+    <string name="worker_session_active">Arbeiter führt Aktivität aus</string>
+    <string name="worker_session_complete">Arbeiter hat Aktivität abgeschlossen</string>
+    <string name="worker_manage_from_home">Vom Startbildschirm einsammeln</string>
+    <string name="worker_card_title">Arbeiter</string>
+    <string name="worker_idle">Arbeiter hat nichts zu tun — eingereihte Aktivitäten beginnen automatisch</string>
+    <string name="worker_collect_btn">Collect Worker Session</string><!--! TODO What does this button do? -->
+    <string name="worker_dismiss_btn">Arbeiter kündigen</string>
+    <string name="worker_dismiss_confirm_title">Arbeiter kündigen?</string>
+    <string name="worker_dismiss_confirm_body">Die derzeitige Aktivität und die gesamte Warteschlange werden abgebrochen. Ihr erhaltet des Arbeiters Lohn und eingeplante Materialien zurück.</string>
+    <string name="inn_daily_menu">Tagesmenü</string>
+    <string name="inn_laborers_header">Arbeiter</string>
+    <string name="inn_slot1_header">Erfahrener Arbeiter</string>
+    <string name="inn_slot2_header">Facharbeiter</string>
+    <string name="quest_kbd_slayer_1_name">King Black Dragon Slayer I</string><!--! TODO I think we need more context here -->
+    <string name="quest_kbd_slayer_2_name">King Black Dragon Slayer II</string><!--! TODO I think we need more context here -->
+    <string name="quest_kbd_slayer_3_name">King Black Dragon Slayer III</string><!--! TODO I think we need more context here -->
+    <string name="inn_daily_resets">Täglich neu um 06:00 Uhr morgens</string>
+    <string name="inn_food_heal">+%1$d LP</string>
+    <string name="inn_food_purchased">Speisen erworben.</string>
+    <string name="inn_buy_qty">Menge</string>
+    <string name="inn_buy_total">Gesamt: %1$s</string>
+    <string name="inn_card_desc">Heuert Arbeiter an und proviantiert Nahrung</string>
+    <string name="worker_no_active_session">Arbeiter hat nichts zu tun — Keine Aktivität eingereiht</string>
+    <string name="worker_add_sessions">Aktivität hinzufügen</string>
+    <string name="inn_worker_tier">%1$s Arbeiter</string>
+    <string name="worker_skills_title_nav">Arbeiterfähigkeiten</string>
 
     <!-- ===== Combat difficulty ratings ===== -->
     <string name="combat_difficulty_likely">Looks manageable</string>
