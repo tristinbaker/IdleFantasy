@@ -75,8 +75,9 @@ fun SettingsScreen(
     val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
 
-    val themePreference  by viewModel.themePreference.collectAsState()
-    val fontScale        by viewModel.fontScale.collectAsState()
+    val themePreference        by viewModel.themePreference.collectAsState()
+    val fontScale              by viewModel.fontScale.collectAsState()
+    val showRecentActivityLog  by viewModel.showRecentActivityLog.collectAsState()
     val backupFolderUri  by viewModel.backupFolderUri.collectAsState()
     val backupFrequency  by viewModel.backupFrequency.collectAsState()
     var notificationsEnabled by remember { mutableStateOf(false) }
@@ -309,6 +310,17 @@ fun SettingsScreen(
                             }
                         }
                     }
+                }
+            )
+
+            SettingsRow(
+                title    = "Recent Activity Log",
+                subtitle = "Show clipboard button on the home screen",
+                trailing = {
+                    Switch(
+                        checked         = showRecentActivityLog,
+                        onCheckedChange = { viewModel.setShowRecentActivityLog(it) },
+                    )
                 }
             )
 

@@ -207,6 +207,42 @@
       "ranged": 50
     }
   },
+  "yew_longbow": {
+    "item_name": "yew_longbow",
+    "display_name": "Yew Longbow",
+    "type": "weapon",
+    "level_required": 70,
+    "xp_per_item": 75,
+    "materials": {
+      "yew_log": 1
+    },
+    "output_quantity": 1,
+    "time_per_batch": 1,
+    "combat_style": "ranged",
+    "attack_bonus": 58,
+    "strength_bonus": 0,
+    "requirements": {
+      "ranged": 50
+    }
+  },
+  "magic_longbow": {
+    "item_name": "magic_longbow",
+    "display_name": "Magic Longbow",
+    "type": "weapon",
+    "level_required": 85,
+    "xp_per_item": 97,
+    "materials": {
+      "magic_log": 1
+    },
+    "output_quantity": 1,
+    "time_per_batch": 1,
+    "combat_style": "ranged",
+    "attack_bonus": 80,
+    "strength_bonus": 0,
+    "requirements": {
+      "ranged": 60
+    }
+  },
   "staff_of_air": {
     "item_name": "staff_of_air",
     "display_name": "Staff of Air",

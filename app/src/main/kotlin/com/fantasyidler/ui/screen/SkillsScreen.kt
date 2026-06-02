@@ -346,42 +346,50 @@ private fun SkillsTabContent(
                     else viewModel.onSkillTapped(key)
                 },
                 toolEfficiency = efficiency,
+                prestigeLevel  = state.skillPrestige[key] ?: 0,
+                onPrestige     = { viewModel.prestigeSkill(key) },
             )
         }
 
         item { SectionHeader(stringResource(R.string.label_crafting_skills)) }
         items(Skills.CRAFTING_SKILLS) { key ->
             SkillRow(
-                skillKey = key,
-                level    = state.skillLevels[key] ?: 1,
-                xp       = state.skillXp[key] ?: 0L,
-                isActive = state.activeSession?.skillName == key && state.activeSession?.completed == false,
-                onClick  = { viewModel.onSkillTapped(key) },
+                skillKey      = key,
+                level         = state.skillLevels[key] ?: 1,
+                xp            = state.skillXp[key] ?: 0L,
+                isActive      = state.activeSession?.skillName == key && state.activeSession?.completed == false,
+                onClick       = { viewModel.onSkillTapped(key) },
+                prestigeLevel = state.skillPrestige[key] ?: 0,
+                onPrestige    = { viewModel.prestigeSkill(key) },
             )
         }
 
         item { SectionHeader(stringResource(R.string.label_support_skills)) }
         items(Skills.SUPPORT) { key ->
             SkillRow(
-                skillKey = key,
-                level    = state.skillLevels[key] ?: 1,
-                xp       = state.skillXp[key] ?: 0L,
-                isActive = state.activeSession?.skillName == key && state.activeSession?.completed == false,
-                onClick  = {
+                skillKey      = key,
+                level         = state.skillLevels[key] ?: 1,
+                xp            = state.skillXp[key] ?: 0L,
+                isActive      = state.activeSession?.skillName == key && state.activeSession?.completed == false,
+                onClick       = {
                     if (key == Skills.MERCANTILE) onNavigateToMercantile()
                     else viewModel.onSkillTapped(key)
                 },
+                prestigeLevel = state.skillPrestige[key] ?: 0,
+                onPrestige    = { viewModel.prestigeSkill(key) },
             )
         }
 
         item { SectionHeader(stringResource(R.string.label_combat)) }
         item {
             SkillRow(
-                skillKey = Skills.SLAYER,
-                level    = state.skillLevels[Skills.SLAYER] ?: 1,
-                xp       = state.skillXp[Skills.SLAYER] ?: 0L,
-                isActive = false,
-                onClick  = onNavigateToSlayer,
+                skillKey      = Skills.SLAYER,
+                level         = state.skillLevels[Skills.SLAYER] ?: 1,
+                xp            = state.skillXp[Skills.SLAYER] ?: 0L,
+                isActive      = false,
+                onClick       = onNavigateToSlayer,
+                prestigeLevel = state.skillPrestige[Skills.SLAYER] ?: 0,
+                onPrestige    = { viewModel.prestigeSkill(Skills.SLAYER) },
             )
         }
     }
@@ -495,97 +503,157 @@ internal fun SkillRow(
     isActive: Boolean,
     onClick: () -> Unit,
     toolEfficiency: Float = 1.0f,
+    prestigeLevel: Int = 0,
+    onPrestige: (() -> Unit)? = null,
 ) {
     val context  = LocalContext.current
     val name     = GameStrings.skillName(context, skillKey)
     val emoji    = GameStrings.skillEmoji(skillKey)
     val progress = xpProgressFraction(xp)
+    var showPrestigeConfirm by remember { mutableStateOf(false) }
 
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(onClick = onClick)
-            .padding(horizontal = 16.dp, vertical = 10.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        // Emoji badge with level overlay
-        Box(modifier = Modifier.size(44.dp)) {
-            Box(
-                modifier = Modifier
-                    .size(44.dp)
-                    .clip(CircleShape)
-                    .background(
-                        if (isActive) GoldPrimary
-                        else MaterialTheme.colorScheme.surfaceVariant
-                    ),
-                contentAlignment = Alignment.Center,
-            ) {
+    if (showPrestigeConfirm) {
+        val nextPrestige = prestigeLevel + 1
+        AlertDialog(
+            onDismissRequest = { showPrestigeConfirm = false },
+            title = { Text(stringResource(R.string.prestige_confirm_title, name)) },
+            text  = { Text(stringResource(R.string.prestige_confirm_message_xp, name, nextPrestige * 10)) },
+            confirmButton = {
+                TextButton(onClick = {
+                    showPrestigeConfirm = false
+                    onPrestige?.invoke()
+                }) { Text(stringResource(R.string.prestige)) }
+            },
+            dismissButton = {
+                TextButton(onClick = { showPrestigeConfirm = false }) {
+                    Text(stringResource(R.string.btn_cancel))
+                }
+            },
+        )
+    }
+
+    Column(Modifier.fillMaxWidth()) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable(onClick = onClick)
+                .padding(horizontal = 16.dp, vertical = 10.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            // Emoji badge with level overlay
+            Box(modifier = Modifier.size(44.dp)) {
+                Box(
+                    modifier = Modifier
+                        .size(44.dp)
+                        .clip(CircleShape)
+                        .background(
+                            if (isActive) GoldPrimary
+                            else MaterialTheme.colorScheme.surfaceVariant
+                        ),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(
+                        text  = emoji,
+                        style = MaterialTheme.typography.titleMedium,
+                    )
+                }
                 Text(
-                    text  = emoji,
-                    style = MaterialTheme.typography.titleMedium,
+                    text       = level.toString(),
+                    style      = MaterialTheme.typography.labelSmall,
+                    fontWeight = FontWeight.Bold,
+                    color      = MaterialTheme.colorScheme.onSurface,
+                    modifier   = Modifier
+                        .align(Alignment.BottomEnd)
+                        .background(
+                            color = MaterialTheme.colorScheme.surface,
+                            shape = CircleShape,
+                        )
+                        .padding(horizontal = 3.dp, vertical = 1.dp),
                 )
             }
-            Text(
-                text       = level.toString(),
-                style      = MaterialTheme.typography.labelSmall,
-                fontWeight = FontWeight.Bold,
-                color      = MaterialTheme.colorScheme.onSurface,
-                modifier   = Modifier
-                    .align(Alignment.BottomEnd)
-                    .background(
-                        color = MaterialTheme.colorScheme.surface,
-                        shape = CircleShape,
+
+            Spacer(Modifier.width(12.dp))
+
+            Column(Modifier.weight(1f)) {
+                Row(
+                    modifier             = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    Text(
+                        text       = name,
+                        style      = MaterialTheme.typography.bodyLarge,
+                        fontWeight = FontWeight.Medium,
                     )
-                    .padding(horizontal = 3.dp, vertical = 1.dp),
-            )
-        }
-
-        Spacer(Modifier.width(12.dp))
-
-        Column(Modifier.weight(1f)) {
-            Row(
-                modifier             = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-            ) {
-                Text(
-                    text       = name,
-                    style      = MaterialTheme.typography.bodyLarge,
-                    fontWeight = FontWeight.Medium,
+                    if (isActive) {
+                        Text(
+                            text  = stringResource(R.string.label_training),
+                            style = MaterialTheme.typography.labelSmall,
+                            color = GoldPrimary,
+                        )
+                    } else {
+                        val xpText = if (xpToNextLevel(xp) > 0L)
+                            "${xp.formatXp()} / ${nextLevelThreshold(xp).formatXp()} XP"
+                        else
+                            "${xp.formatXp()} XP"
+                        Text(
+                            text  = xpText,
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                }
+                Spacer(Modifier.height(4.dp))
+                LinearProgressIndicator(
+                    progress = { progress },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(4.dp)
+                        .clip(RoundedCornerShape(2.dp)),
+                    color    = GoldPrimary,
                 )
-                if (isActive) {
+                if (toolEfficiency > 1.0f) {
+                    Spacer(Modifier.height(2.dp))
                     Text(
-                        text  = stringResource(R.string.label_training),
+                        text  = stringResource(R.string.skills_tool_bonus, "%.2f".format(toolEfficiency)),
                         style = MaterialTheme.typography.labelSmall,
-                        color = GoldPrimary,
-                    )
-                } else {
-                    val xpText = if (xpToNextLevel(xp) > 0L)
-                        "${xp.formatXp()} / ${nextLevelThreshold(xp).formatXp()} XP"
-                    else
-                        "${xp.formatXp()} XP"
-                    Text(
-                        text  = xpText,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        color = MaterialTheme.colorScheme.primary,
                     )
                 }
             }
-            Spacer(Modifier.height(4.dp))
-            LinearProgressIndicator(
-                progress = { progress },
-                modifier = Modifier
+        }
+
+        // Prestige section: stars and button, outside the clickable row
+        if (prestigeLevel > 0 || (onPrestige != null && level >= 99)) {
+            Row(
+                modifier              = Modifier
                     .fillMaxWidth()
-                    .height(4.dp)
-                    .clip(RoundedCornerShape(2.dp)),
-                color    = GoldPrimary,
-            )
-            if (toolEfficiency > 1.0f) {
-                Spacer(Modifier.height(2.dp))
+                    .padding(start = 72.dp, end = 16.dp, bottom = 6.dp),
+                verticalAlignment     = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+            ) {
                 Text(
-                    text  = stringResource(R.string.skills_tool_bonus, "%.2f".format(toolEfficiency)),
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.primary,
+                    text  = "★".repeat(prestigeLevel) + "☆".repeat((3 - prestigeLevel).coerceAtLeast(0)),
+                    style = MaterialTheme.typography.labelMedium,
+                    color = GoldPrimary,
                 )
+                when {
+                    onPrestige != null && level >= 99 && prestigeLevel < 3 -> {
+                        TextButton(onClick = { showPrestigeConfirm = true }) {
+                            Text(
+                                text  = stringResource(R.string.prestige),
+                                style = MaterialTheme.typography.labelSmall,
+                                color = GoldPrimary,
+                            )
+                        }
+                    }
+                    prestigeLevel >= 3 -> {
+                        Text(
+                            text  = stringResource(R.string.prestige_max),
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                }
             }
         }
     }
@@ -1564,7 +1632,8 @@ private fun CraftSkillSheet(
     val categoryFiltered = if (selectedCategory == null) allRecipes
                            else allRecipes.filter { it.category == selectedCategory }
     val tiers = remember(categoryFiltered) {
-        categoryFiltered.map { it.tier }.filter { it.isNotEmpty() }.distinct().sorted()
+        categoryFiltered.map { it.tier }.filter { it.isNotEmpty() }.distinct()
+            .sortedBy { tier -> categoryFiltered.filter { it.tier == tier }.minOf { it.levelRequired } }
     }
     val recipes = categoryFiltered
         .filter { selectedTier == null || it.tier == selectedTier }

@@ -16,7 +16,9 @@
     },
     "defensive_stats": {
       "attack_defense": 60,
-      "strength_defense": 60
+      "strength_defense": 60,
+      "ranged_defense": 30,
+      "magic_defense": 80
     },
     "xp_rewards": {
       "attack": 1000,
@@ -83,7 +85,9 @@
     },
     "defensive_stats": {
       "attack_defense": 70,
-      "strength_defense": 70
+      "strength_defense": 70,
+      "ranged_defense": 70,
+      "magic_defense": 50
     },
     "xp_rewards": {
       "attack": 2000,
@@ -152,7 +156,9 @@
     },
     "defensive_stats": {
       "attack_defense": 80,
-      "strength_defense": 80
+      "strength_defense": 80,
+      "ranged_defense": 100,
+      "magic_defense": 40
     },
     "xp_rewards": {
       "attack": 4000,
@@ -221,7 +227,9 @@
     },
     "defensive_stats": {
       "attack_defense": 90,
-      "strength_defense": 90
+      "strength_defense": 90,
+      "ranged_defense": 70,
+      "magic_defense": 60
     },
     "xp_rewards": {
       "attack": 10000,

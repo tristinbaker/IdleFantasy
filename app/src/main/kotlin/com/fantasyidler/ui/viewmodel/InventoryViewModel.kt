@@ -2,10 +2,24 @@ package com.fantasyidler.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fantasyidler.data.json.AgilityCourseData
+import com.fantasyidler.data.json.BoneData
 import com.fantasyidler.data.json.CookingRecipe
+import com.fantasyidler.data.json.CraftingRecipe
+import com.fantasyidler.data.json.CropData
 import com.fantasyidler.data.json.EquipmentData
+import com.fantasyidler.data.json.FishData
+import com.fantasyidler.data.json.FletchingRecipe
+import com.fantasyidler.data.json.HerbloreRecipe
+import com.fantasyidler.data.json.LogData
+import com.fantasyidler.data.json.OreData
 import com.fantasyidler.data.json.PetData
+import com.fantasyidler.data.json.RuneData
 import com.fantasyidler.data.json.SkillingDungeonData
+import com.fantasyidler.data.json.SlayerTaskData
+import com.fantasyidler.data.json.SmithingRecipe
+import com.fantasyidler.data.json.TradeRouteData
+import com.fantasyidler.data.json.TreeData
 import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.data.model.Skills
@@ -207,6 +221,20 @@ class InventoryViewModel @Inject constructor(
     val cookingRecipes: Map<String, CookingRecipe> get() = gameData.cookingRecipes
     val foodHealValues: Map<String, Int> get() = gameData.foodHealValues
     val allSkillingDungeons: Map<String, SkillingDungeonData> get() = gameData.skillingDungeons
+    val smithingRecipes: Map<String, SmithingRecipe> get() = gameData.smithingRecipes
+    val fletchingRecipes: Map<String, FletchingRecipe> get() = gameData.fletchingRecipes
+    val craftingRecipes: Map<String, CraftingRecipe> get() = gameData.craftingRecipes
+    val herbloreRecipes: Map<String, HerbloreRecipe> get() = gameData.herbloreRecipes
+    val ores: Map<String, OreData> get() = gameData.ores
+    val trees: Map<String, TreeData> get() = gameData.trees
+    val fish: Map<String, FishData> get() = gameData.fish
+    val logs: Map<String, LogData> get() = gameData.logs
+    val runes: Map<String, RuneData> get() = gameData.runes
+    val crops: Map<String, CropData> get() = gameData.crops
+    val tradeRoutes: List<TradeRouteData> get() = gameData.tradeRoutes
+    val slayerTaskData: Map<String, SlayerTaskData> get() = gameData.slayerTasks
+    val bones: Map<String, BoneData> get() = gameData.bones
+    val agilityCourses: Map<String, AgilityCourseData> get() = gameData.agilityCourses
 
     fun categoryFor(key: String): InventoryCategory {
         val equip = gameData.equipment[key]

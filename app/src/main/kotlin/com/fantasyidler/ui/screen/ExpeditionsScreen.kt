@@ -32,12 +32,13 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.compose.ui.platform.LocalContext
 import com.fantasyidler.R
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.ExpeditionsUiState
 import com.fantasyidler.ui.viewmodel.ExpeditionsViewModel
 import com.fantasyidler.ui.viewmodel.SkillingDungeonUiItem
-import com.fantasyidler.util.toTitleCase
+import com.fantasyidler.util.GameStrings
 
 @Composable
 fun ExpeditionsScreen(
@@ -65,13 +66,14 @@ fun ExpeditionsScreen(
 
         if (state.isLoading) {
             Text(
-                text = "Loading...",
+                text = stringResource(R.string.expedition_loading),
                 modifier = Modifier.padding(16.dp),
                 style = MaterialTheme.typography.bodyMedium,
             )
             return@Column
         }
 
+        val context = LocalContext.current
         LazyColumn(
             modifier = Modifier.weight(1f).padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
@@ -82,7 +84,7 @@ fun ExpeditionsScreen(
                 if (!dungeons.isNullOrEmpty()) {
                     item {
                         Text(
-                            text = skill.toTitleCase(),
+                            text = GameStrings.skillName(context, skill),
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier.padding(top = 8.dp, bottom = 4.dp),
@@ -112,6 +114,7 @@ private fun SkillingDungeonCard(
     anySessionActive: Boolean,
     onExplore: () -> Unit,
 ) {
+    val context = LocalContext.current
     val dimColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
     val textColor = if (item.isAccessible) MaterialTheme.colorScheme.onSurface else dimColor
     val subColor = if (item.isAccessible) MaterialTheme.colorScheme.onSurfaceVariant else dimColor
@@ -133,13 +136,13 @@ private fun SkillingDungeonCard(
             ) {
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        text = item.dungeon.displayName,
+                        text = GameStrings.skillingDungeonName(context, item.key, item.dungeon.displayName),
                         style = MaterialTheme.typography.titleSmall,
                         fontWeight = FontWeight.SemiBold,
                         color = textColor,
                     )
                     Text(
-                        text = item.dungeon.description,
+                        text = GameStrings.skillingDungeonDesc(context, item.key, item.dungeon.description),
                         style = MaterialTheme.typography.bodySmall,
                         color = subColor,
                         modifier = Modifier.padding(top = 2.dp),
@@ -158,9 +161,8 @@ private fun SkillingDungeonCard(
 
             if (item.isAccessible) {
                 val progress = item.notesFound.toFloat() / item.dungeon.noteThreshold.toFloat()
-                val progressLabel = "${item.notesFound}/${item.dungeon.noteThreshold} lore notes"
                 Text(
-                    text = progressLabel,
+                    text = stringResource(R.string.expedition_lore_notes, item.notesFound, item.dungeon.noteThreshold),
                     style = MaterialTheme.typography.labelSmall,
                     color = GoldPrimary,
                 )

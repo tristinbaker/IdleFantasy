@@ -681,6 +681,32 @@
       "ranged": 50
     }
   },
+  "yew_longbow": {
+    "name": "yew_longbow",
+    "display_name": "Yew Longbow",
+    "slot": "weapon",
+    "combat_style": "ranged",
+    "description": "A longbow crafted from yew logs.",
+    "attack_bonus": 58,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "requirements": {
+      "ranged": 50
+    }
+  },
+  "magic_longbow": {
+    "name": "magic_longbow",
+    "display_name": "Magic Longbow",
+    "slot": "weapon",
+    "combat_style": "ranged",
+    "description": "A longbow crafted from magic logs.",
+    "attack_bonus": 80,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "requirements": {
+      "ranged": 60
+    }
+  },
   "bronze_med_helmet": {
     "name": "bronze_med_helmet",
     "display_name": "Bronze Med Helmet",

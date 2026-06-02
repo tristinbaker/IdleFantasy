@@ -33,6 +33,9 @@ data class SlayerUiState(
     val activeTask: SlayerTask? = null,
     /** Dungeon display names that contain the active task's enemy. */
     val taskDungeons: List<String> = emptyList(),
+    /** True when the active task's enemy only exists in expedition dungeons the player hasn't unlocked. */
+    val taskIsStuck: Boolean = false,
+    val unlockedDungeons: Set<String> = emptySet(),
     val inventory: Map<String, Int> = emptyMap(),
     val skillLevels: Map<String, Int> = emptyMap(),
     /** Non-null when the player has tapped Buy on a lamp and needs to choose a skill. */
@@ -68,20 +71,30 @@ class SlayerViewModel @Inject constructor(
             val xpMap:     Map<String, Long> = json.decodeFromString(player.skillXp)
             val flags:     PlayerFlags       = json.decodeFromString(player.flags)
             val inventory: Map<String, Int>  = json.decodeFromString(player.inventory)
+            val unlockedDungeons = flags.unlockedDungeons.toSet()
             val taskDungeons = flags.activeSlayerTask?.enemyKey?.let { key ->
                 gameData.dungeons.values
                     .filter { d -> d.enemySpawns.any { it.enemy == key } }
                     .map { it.displayName }
             } ?: emptyList()
+            val taskIsStuck = flags.activeSlayerTask?.enemyKey?.let { key ->
+                val dungeonKeys = gameData.dungeons.values
+                    .filter { d -> d.enemySpawns.any { it.enemy == key } }
+                    .map { it.name }
+                dungeonKeys.isNotEmpty() &&
+                    dungeonKeys.all { it in gameData.expeditionLockedDungeons && it !in unlockedDungeons }
+            } ?: false
             extra.copy(
-                isLoading    = false,
-                slayerLevel  = levels[Skills.SLAYER] ?: 1,
-                slayerXp     = xpMap[Skills.SLAYER] ?: 0L,
-                slayerPoints = flags.slayerPoints,
-                activeTask   = flags.activeSlayerTask,
-                taskDungeons = taskDungeons,
-                inventory    = inventory,
-                skillLevels  = levels,
+                isLoading        = false,
+                slayerLevel      = levels[Skills.SLAYER] ?: 1,
+                slayerXp         = xpMap[Skills.SLAYER] ?: 0L,
+                slayerPoints     = flags.slayerPoints,
+                activeTask       = flags.activeSlayerTask,
+                taskDungeons     = taskDungeons,
+                taskIsStuck      = taskIsStuck,
+                unlockedDungeons = unlockedDungeons,
+                inventory        = inventory,
+                skillLevels      = levels,
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), SlayerUiState())
@@ -90,7 +103,7 @@ class SlayerViewModel @Inject constructor(
         viewModelScope.launch {
             val state = uiState.value
             if (state.activeTask != null) return@launch
-            val success = slayerRepo.assignTask(state.slayerLevel)
+            val success = slayerRepo.assignTask(state.slayerLevel, state.unlockedDungeons)
             if (!success) {
                 _extra.update { it.copy(snackbarMessage = context.getString(R.string.slayer_no_eligible_tasks)) }
             }
@@ -100,10 +113,21 @@ class SlayerViewModel @Inject constructor(
     fun skipTask() {
         viewModelScope.launch {
             val state = uiState.value
-            val success = slayerRepo.skipTask(state.slayerLevel)
+            val success = slayerRepo.skipTask(state.slayerLevel, state.unlockedDungeons)
             if (!success) {
                 _extra.update { it.copy(snackbarMessage = context.getString(R.string.slayer_not_enough_points)) }
             }
+        }
+    }
+
+    /** Free reroll when the active task is stuck behind an unvisited expedition dungeon. */
+    fun rerollStuckTask() {
+        viewModelScope.launch {
+            val state = uiState.value
+            if (!state.taskIsStuck) return@launch
+            val flags = playerRepo.getFlags()
+            playerRepo.updateFlags(flags.copy(activeSlayerTask = null))
+            slayerRepo.assignTask(state.slayerLevel, state.unlockedDungeons)
         }
     }
 

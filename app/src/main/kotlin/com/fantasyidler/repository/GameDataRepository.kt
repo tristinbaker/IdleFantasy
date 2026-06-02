@@ -97,6 +97,11 @@ class GameDataRepository @Inject constructor(
             }
     }
 
+    /** Combat dungeon keys that are only accessible after completing an expedition (unlocked via skillingDungeons). */
+    val expeditionLockedDungeons: Set<String> by lazy {
+        skillingDungeons.values.mapNotNull { it.unlockDungeon }.toSet()
+    }
+
     // ------------------------------------------------------------------ quests
 
     val quests: Map<String, QuestData> by lazy {

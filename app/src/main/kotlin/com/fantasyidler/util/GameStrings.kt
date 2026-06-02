@@ -35,6 +35,12 @@ object GameStrings {
     fun dungeonDesc(context: Context, key: String): String =
         context.stringByName("dungeon_${key}_desc") ?: ""
 
+    fun skillingDungeonName(context: Context, key: String, fallback: String): String =
+        context.stringByName("skilling_dungeon_${key}_name") ?: fallback
+
+    fun skillingDungeonDesc(context: Context, key: String, fallback: String): String =
+        context.stringByName("skilling_dungeon_${key}_desc") ?: fallback
+
     fun enemyName(context: Context, key: String): String =
         context.stringByName("enemy_${key}_name") ?: key.toTitleCase()
 
@@ -92,6 +98,7 @@ object GameStrings {
         "prayer"      -> "🙏"
         "mercantile"  -> "💰"
         "slayer"      -> "💀"
+        "herblore"    -> "🌿"
         "combat"      -> "⚔️"
         else          -> "🎮"
     }

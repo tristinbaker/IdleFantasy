@@ -22,6 +22,9 @@ class SessionRepository @Inject constructor(
     val completedCountFlow: Flow<Int> = sessionDao.observeCompletedCount()
     val workerCompletedCountFlow: Flow<Int> = sessionDao.observeWorkerCompletedCount()
 
+    fun workerCompletedCountFlow(slot: Int): Flow<Int> =
+        sessionDao.observeWorkerCompletedCount(slot)
+
     fun activeWorkerSessionFlow(slot: Int): Flow<SkillSession?> =
         sessionDao.observeActiveWorkerSession(slot)
 

@@ -789,12 +789,49 @@
     <string name="blessing_aegis_name">Aegis</string>
     <string name="blessing_abundance_iii_name">Overvloed III</string>
 
+    <!-- Skilling dungeon names and descriptions -->
+    <string name="skilling_dungeon_copper_caverns_name">Koperen Grotten</string>
+    <string name="skilling_dungeon_copper_caverns_desc">Een lang verlaten mijn onder de heuvels. De koperaders glinsteren nog steeds in het donker.</string>
+    <string name="skilling_dungeon_dwarven_depths_name">Dwergse Diepten</string>
+    <string name="skilling_dungeon_dwarven_depths_desc">Het diepste niveau van een oude dwergse opgraving. Rijke aderen zeldzame metalen verbergen zich achter de botten van zijn bouwers.</string>
+    <string name="skilling_dungeon_whispering_grove_name">Fluisterbos</string>
+    <string name="skilling_dungeon_whispering_grove_desc">Een oeroud bos waar de bomen duizenden jaren ongestoord hebben gegroeid. Iets spreekt tussen de takken.</string>
+    <string name="skilling_dungeon_corrupted_canopy_name">Verdorven Bladerdak</string>
+    <string name="skilling_dungeon_corrupted_canopy_desc">Een bos waar schaduw het zonlicht heeft vervangen. De bomen bloeden zwart sap en de lucht smaakt naar oude magie.</string>
+    <string name="skilling_dungeon_sunken_grotto_name">Verzonken Grot</string>
+    <string name="skilling_dungeon_sunken_grotto_desc">Een zeegrot gevormd door eeuwen van getijden. Vreemde stenen pilaren rijzen op uit het water.</string>
+    <string name="skilling_dungeon_abyssal_lagoon_name">Abyssale Lagune</string>
+    <string name="skilling_dungeon_abyssal_lagoon_desc">Een stille zwarte lagune zonder zichtbare bodem. De vissen hier gloeien zwak en lossen op binnen minuten na vangst.</string>
+    <string name="skilling_dungeon_crumbling_watchtower_name">Afbrokkelende Wachttoren</string>
+    <string name="skilling_dungeon_crumbling_watchtower_desc">Een vervallen stenen toren aan de rand van de heuvels. Iets bewaakt nog steeds wat ooit daarin was opgeslagen.</string>
+    <string name="skilling_dungeon_shattered_spire_name">Gebroken Toren</string>
+    <string name="skilling_dungeon_shattered_spire_desc">De overblijfselen van een tovenarstoren herleid tot een veld van puin. De lucht knetters nog van residuele magie.</string>
+
     <!-- Expeditions -->
     <string name="nav_expeditions">Expedities</string>
     <string name="expeditions_title">Expedities</string>
     <string name="expedition_explore_button">Verkennen</string>
     <string name="expedition_dungeon_unlocked">Gevechtskerker ontgrendeld!</string>
     <string name="expedition_discover_hint">Ontdek via Expedities</string>
+    <string name="expedition_loading">Laden…</string>
+    <string name="expedition_lore_notes">%1$d / %2$d lore-notities</string>
+    <string name="expedition_lock_level">Vereist %1$s-niveau %2$d</string>
+    <string name="expedition_lock_notes">Vind alle notities in %1$s</string>
+    <string name="expedition_lock_prerequisite">Vervul een vereiste</string>
     <string name="label_notes">Notities</string>
 
+    <!-- Prestige system -->
+    <string name="prestige">Prestige</string>
+    <string name="prestige_max">Max Prestige</string>
+    <string name="prestige_confirm_title">Prestige %s?</string>
+    <string name="prestige_confirm_message_xp">Your %1$s level will reset to 1, but you\'ll earn a permanent +%2$d%% XP bonus for this skill.</string>
+    <string name="prestige_confirm_message_stat">Your %1$s level will reset to 1, but you\'ll earn a permanent +%2$d bonus to your stats.</string>
+    <string name="achievement_prestige_first_name">First Reset</string>
+    <string name="achievement_prestige_first_desc">Prestige any skill for the first time</string>
+    <string name="achievement_prestige_any_3_name">Mastered</string>
+    <string name="achievement_prestige_any_3_desc">Reach Prestige 3 on any skill</string>
+    <string name="achievement_prestige_all_1_name">Clean Slate</string>
+    <string name="achievement_prestige_all_1_desc">Prestige all skills at least once</string>
+    <string name="achievement_prestige_all_3_name">True Prestige</string>
+    <string name="achievement_prestige_all_3_desc">Reach Prestige 3 on every skill</string>
 </resources>

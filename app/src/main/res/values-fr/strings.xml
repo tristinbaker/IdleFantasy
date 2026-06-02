@@ -696,11 +696,34 @@
     <string name="guild_name_archers">Guilde des Archers</string>
     <string name="guild_name_mages">Guilde des Mages</string>
     <string name="guild_name_prayer">Guilde des Prières</string>
+    <!-- Skilling dungeon names and descriptions -->
+    <string name="skilling_dungeon_copper_caverns_name">Cavernes de Cuivre</string>
+    <string name="skilling_dungeon_copper_caverns_desc">Une ancienne mine abandonnée sous les contreforts. Ses veines de cuivre brillent encore dans l\'obscurité.</string>
+    <string name="skilling_dungeon_dwarven_depths_name">Profondeurs Naines</string>
+    <string name="skilling_dungeon_dwarven_depths_desc">Le niveau le plus profond d\'une ancienne excavation naine. De riches veines de métal rare se cachent parmi les ossements de ses bâtisseurs.</string>
+    <string name="skilling_dungeon_whispering_grove_name">Bosquet des Chuchotements</string>
+    <string name="skilling_dungeon_whispering_grove_desc">Une forêt primitive où les arbres ont poussé pendant des milliers d\'années sans être dérangés. Quelque chose parle entre les branches.</string>
+    <string name="skilling_dungeon_corrupted_canopy_name">Canopée Corrompue</string>
+    <string name="skilling_dungeon_corrupted_canopy_desc">Une forêt où l\'ombre a remplacé la lumière du soleil. Les arbres saignent une sève noire et l\'air a le goût d\'une vieille magie.</string>
+    <string name="skilling_dungeon_sunken_grotto_name">Grotte Engloutie</string>
+    <string name="skilling_dungeon_sunken_grotto_desc">Une grotte marine taillée par des siècles de marées. D\'étranges piliers de pierre surgissent de l\'eau.</string>
+    <string name="skilling_dungeon_abyssal_lagoon_name">Lagon Abyssal</string>
+    <string name="skilling_dungeon_abyssal_lagoon_desc">Un lagon noir et immobile sans fond visible. Les poissons ici luisent faiblement et se dissolvent en quelques minutes après avoir été pris.</string>
+    <string name="skilling_dungeon_crumbling_watchtower_name">Tour de Guet en Ruines</string>
+    <string name="skilling_dungeon_crumbling_watchtower_desc">Une tour en pierre décrépite perchée au bord des contreforts. Quelque chose garde encore ce qui y était autrefois entreposé.</string>
+    <string name="skilling_dungeon_shattered_spire_name">Flèche Brisée</string>
+    <string name="skilling_dungeon_shattered_spire_desc">Les vestiges d\'une tour de mage réduite à un champ de décombres. L\'air crépite encore de magie résiduelle.</string>
+
     <string name="nav_expeditions">Expéditions</string>
     <string name="expeditions_title">Expéditions</string>
     <string name="expedition_explore_button">Explorer</string>
     <string name="expedition_dungeon_unlocked">Le donjon de combat est débloqué !</string>
     <string name="expedition_discover_hint">Découvrez-le grâce aux expéditions</string>
+    <string name="expedition_loading">Chargement…</string>
+    <string name="expedition_lore_notes">%1$d / %2$d notes de lore</string>
+    <string name="expedition_lock_level">Nécessite %1$s niveau %2$d</string>
+    <string name="expedition_lock_notes">Trouvez toutes les notes dans %1$s</string>
+    <string name="expedition_lock_prerequisite">Remplissez un prérequis</string>
 
     <!-- Church -->
     <string name="church_title">Église</string>
@@ -774,8 +797,8 @@
     <string name="home_town_desc">Visitez la boutique, l\'auberge, la guilde, l\'église et le maître tueur</string>
     <string name="guild_dailies_available">Quêtes quotidiennes disponibles</string>
     <string name="guild_do_dailies_hint">Faites des quêtes pour augmenter votre réputation</string>
-    <string name="guild_quest_gate_blocked">Complete quests to advance your rank</string>
-    <string name="guild_quest_required">Quest required to advance</string>
+    <string name="guild_quest_gate_blocked">Accomplir des quêtes pour monter en grade</string>
+    <string name="guild_quest_required">Quête nécessaire pour progresser</string>
     <string name="guild_name_mercantile">Guilde des Marchands</string>
     <string name="skill_mercantile">Marchandage</string>
     <string name="label_support_skills">Support</string>
@@ -801,6 +824,8 @@
     <string name="slayer_get_task">Obtenir une nouvelle mission</string>
     <string name="slayer_skip_task">Passer (30 pts)</string>
     <string name="slayer_no_task">Aucune mission en cours. Touchez pour obtenir une nouvelle mission.</string>
+    <string name="slayer_task_stuck">Cet ennemi se trouve uniquement dans un donjon d\'expédition que vous n\'avez pas encore découvert. Relancez gratuitement.</string>
+    <string name="slayer_reroll_free">Relancer (gratuit)</string>
     <string name="slayer_no_eligible_tasks">Aucune mission éligible à votre niveau de Tueur.</string>
     <string name="slayer_task_complete">Mission terminée ! Rendez-vous chez le Maître Tueur pour une nouvelle.</string>
     <string name="slayer_xp_per_kill">%1$d XP par élimination</string>
@@ -833,4 +858,21 @@
     <string name="profile_view_combat_gear">Voir l\'équipement de combat</string>
     <string name="inn_slot1_header">Long Travailleur</string>
     <string name="inn_slot2_header">Ouvrier Qualifié</string>
+    <string name="combat_arrow_auto">Auto (best available)</string>
+    <string name="combat_label_arrow">Arrow</string>
+
+    <!-- Prestige system -->
+    <string name="prestige">Prestige</string>
+    <string name="prestige_max">Max Prestige</string>
+    <string name="prestige_confirm_title">Prestige %s?</string>
+    <string name="prestige_confirm_message_xp">Your %1$s level will reset to 1, but you\'ll earn a permanent +%2$d%% XP bonus for this skill.</string>
+    <string name="prestige_confirm_message_stat">Your %1$s level will reset to 1, but you\'ll earn a permanent +%2$d bonus to your stats.</string>
+    <string name="achievement_prestige_first_name">First Reset</string>
+    <string name="achievement_prestige_first_desc">Prestige any skill for the first time</string>
+    <string name="achievement_prestige_any_3_name">Mastered</string>
+    <string name="achievement_prestige_any_3_desc">Reach Prestige 3 on any skill</string>
+    <string name="achievement_prestige_all_1_name">Clean Slate</string>
+    <string name="achievement_prestige_all_1_desc">Prestige all skills at least once</string>
+    <string name="achievement_prestige_all_3_name">True Prestige</string>
+    <string name="achievement_prestige_all_3_desc">Reach Prestige 3 on every skill</string>
 </resources>

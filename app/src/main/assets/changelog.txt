@@ -1,3 +1,28 @@
+v1.7.6
+• Fix: Guild progression quests now correctly track activity after claiming a progression quest while already above the reputation threshold; previously guildQuestResetLevels was not set at claim time, causing the retroactive-reset check to re-run on every guild screen visit
+• Fix: Expeditions screen is now fully translated — skill section headers, dungeon names, dungeon descriptions, lore note counter, and lock reasons are all localised in German, Spanish, French, Italian, Dutch, and Turkish
+• Fix: Slayer tasks can no longer assign enemies that only appear in expedition-locked dungeons the player hasn't discovered yet; existing stuck tasks show a free Reroll button with an explanation
+• Fix: Agility expedition notes now appear on the Profile Notes tab (the skill was missing from the list)
+• Fix: Quests screen tabs no longer wrap text on smaller screens; switched to a scrollable tab row
+• Fix: Removed the large left-side gap on the Quests and Profile scrollable tab rows
+• New: Skills tab on the Profile screen redesigned as a 3-column card grid grouped by category (Gathering, Crafting, Support, Combat); each card shows the skill emoji, name, and a circular level indicator with a gold progress arc; tap any skill to see what unlocks at each level
+• New: Prestige system -- once a skill reaches level 99 it can be reset up to 3 times; each reset earns a permanent +10% XP bonus for that skill (gathering, crafting, support) or a +5 flat stat bonus for combat skills (Attack, Strength, Defense, Ranged, Magic, Hitpoints); prestige level is shown as gold stars next to the skill row
+• New: Four Prestige achievements -- First Reset, Mastered (any skill Prestige 3), Clean Slate (all skills Prestige 1), and True Prestige (all skills Prestige 3)
+v1.7.5
+• Fix: Workers - only the finished worker now shows the Collect button; previously completing one worker marked both as collectable
+• Fix: Guild quest progress no longer gets wiped on first guild screen visit after levelling up; affected all guilds above level 0 (combat, gathering, crafting)
+• Fix: Boss setup sheet is now scrollable; the Fight button was hidden off-screen when using a magic staff, and mid-tier spells such as Mind Strike were not reachable
+
+v1.7.4
+• Translation: Guild quest strings translated to French (Contribution by @widowild1)
+• New: Clipboard button on the home screen shows your last 10 completed sessions (toggleable in Settings)
+• New: Arrow selection in the dungeon and boss info sheets; choose which arrow tier to use instead of always consuming your best
+• Fix: Boss fights now correctly use ranged and magic combat styles; previously bosses always simulated as melee regardless of your weapon
+• New: Each boss has distinct ranged and magic defense values, making some combat styles more effective than others against specific bosses
+• Fix: Fletcher's Guild quests for Yew Longbow and Magic Longbow now work; both bows are craftable in the Fletching skill
+• New: Farming Guild daily quests now have a Contribute button to submit crops directly from your inventory
+• Balance: Farming Guild quest and daily quest amounts significantly reduced to be achievable within a day or two
+
 v1.7.3
 • Fix: Guild daily quests can no longer push reputation past the tier threshold while gate quests are incomplete
 • Fix: Quest progress for higher-tier guild quests no longer pre-accumulates before you reach that tier; progress resets to 0 when you advance to a new rank

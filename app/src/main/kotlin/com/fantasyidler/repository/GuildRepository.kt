@@ -150,6 +150,30 @@ class GuildRepository @Inject constructor(
         playerRepo.updateFlags(flags)
     }
 
+    /**
+     * Lets the player submit crops from their inventory toward a farming gather daily.
+     * Returns the number of items actually consumed (0 if daily is already complete/claimed or
+     * the player has none of the target item).
+     */
+    suspend fun contributeFarmingDaily(templateId: String, inventory: Map<String, Int>): Int {
+        val flags = playerRepo.getFlags()
+        val pool  = gameData.guildDailyPool.associateBy { it.id }
+        val t     = pool[templateId] ?: return 0
+        if (t.guild != "farming" || t.type != "gather") return 0
+        if (templateId in flags.guildDailyClaimed) return 0
+        val current  = flags.guildDailyProgress[templateId] ?: 0
+        val needed   = (t.amount - current).coerceAtLeast(0)
+        if (needed == 0) return 0
+        val available = inventory[t.target] ?: 0
+        if (available == 0) return 0
+        val toConsume = minOf(needed, available)
+        playerRepo.consumeItems(mapOf(t.target to toConsume))
+        val newProgress = flags.guildDailyProgress.toMutableMap()
+        newProgress[templateId] = current + toConsume
+        playerRepo.updateFlags(flags.copy(guildDailyProgress = newProgress))
+        return toConsume
+    }
+
     /** Called when a mercantile trade route session is collected. */
     suspend fun recordGuildTrade(coinsEarned: Long = 0L) {
         var flags = getRefreshedGuildDailyFlags()
@@ -192,9 +216,11 @@ class GuildRepository @Inject constructor(
         questProgressDao.upsert(row.copy(completed = true, completedAt = System.currentTimeMillis()))
 
         val flags = playerRepo.getFlags()
-        // Read completedIds AFTER marking the quest complete so this quest counts toward the gate.
+        // completedIds includes the just-claimed quest (needed for newLevel gate).
         val completedIds = loadCompletedQuestIds()
-        val oldLevel = guildLevel(quest.guild, flags.guildReputation[quest.guild] ?: 0L, completedIds)
+        // oldLevel must reflect the state BEFORE this quest was counted, so exclude it.
+        val preCompleteIds = completedIds - questId
+        val oldLevel = guildLevel(quest.guild, flags.guildReputation[quest.guild] ?: 0L, preCompleteIds)
         val newRep = (flags.guildReputation[quest.guild] ?: 0L) + quest.rewards.reputation
         val newLevel = guildLevel(quest.guild, newRep, completedIds)
 
@@ -388,7 +414,7 @@ class GuildRepository @Inject constructor(
             if (level <= resetLevel) continue
             for ((questId, quest) in gameData.guildQuests) {
                 if (quest.guild != guild) continue
-                if (quest.guildLevelRequired <= resetLevel || quest.guildLevelRequired > level) continue
+                if (quest.guildLevelRequired <= resetLevel || quest.guildLevelRequired >= level) continue
                 val row = questProgressDao.getQuestProgress(questId) ?: continue
                 if (row.progress > 0 && !row.completed) {
                     questProgressDao.upsert(row.copy(progress = 0))

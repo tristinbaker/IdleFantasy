@@ -134,6 +134,28 @@ fun SlayerScreen(
             val currentTask = state.activeTask
             if (currentTask != null) {
                 TaskCard(task = currentTask, dungeons = state.taskDungeons)
+                if (state.taskIsStuck) {
+                    Surface(
+                        shape    = RoundedCornerShape(12.dp),
+                        color    = MaterialTheme.colorScheme.errorContainer,
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        Column(modifier = Modifier.padding(12.dp)) {
+                            Text(
+                                text  = stringResource(R.string.slayer_task_stuck),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onErrorContainer,
+                            )
+                            Spacer(Modifier.height(8.dp))
+                            OutlinedButton(
+                                onClick  = viewModel::rerollStuckTask,
+                                modifier = Modifier.fillMaxWidth(),
+                            ) {
+                                Text(stringResource(R.string.slayer_reroll_free))
+                            }
+                        }
+                    }
+                }
             } else {
                 Surface(
                     shape    = RoundedCornerShape(12.dp),

@@ -268,23 +268,41 @@ class QueuedSessionStarter @Inject constructor(
                 val bossWeapon = (flags.activeWeaponSlot
                     ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
                     ?: EquipSlot.WEAPON).let { equipped[it] }.let { gameData.equipment[it] }
+                val combatStyle = when (bossWeapon?.combatStyle) {
+                    "ranged"   -> "ranged"
+                    "magic"    -> "magic"
+                    "strength" -> "strength"
+                    else       -> "melee"
+                }
                 val totalAtkBonus    = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.attackBonus  ?: 0 } + (bossWeapon?.attackBonus  ?: 0)
                 val totalStrBonus    = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.strengthBonus ?: 0 } + (bossWeapon?.strengthBonus ?: 0)
                 val totalDefBonus    = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.defenseBonus  ?: 0 } + (bossWeapon?.defenseBonus  ?: 0)
                 val equippedFoodKeys = flags.equippedFood.keys
                 val availableFood    = inventory.filterKeys { it in equippedFoodKeys }
+                val spell = gameData.spells[flags.activeSpell]
+                val preferredArrow = flags.equippedArrows?.takeIf { (inventory[it] ?: 0) > 0 }
+                val bestArrow = preferredArrow ?: ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
+                val arrowBonus = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
+                val availableArrows = if (bestArrow != null) mapOf(bestArrow to (inventory[bestArrow] ?: 0)) else emptyMap()
+                val pmBoss = flags.skillPrestige
                 val bossFrames = CombatSimulator.simulateBoss(
-                    boss              = boss,
-                    bossKey           = bossKey,
-                    playerAttack      = ((levels[Skills.ATTACK]   ?: 1) * combatCapeMult).toInt(),
-                    playerStrength    = ((levels[Skills.STRENGTH] ?: 1) * combatCapeMult).toInt(),
-                    playerDefence     = ((levels[Skills.DEFENSE]  ?: 1) * combatCapeMult).toInt() + totalDefBonus,
-                    playerHp          = levels[Skills.HITPOINTS] ?: 1,
-                    weaponAttackBonus = totalAtkBonus,
-                    weaponStrBonus    = totalStrBonus,
-                    equippedFood      = availableFood,
-                    foodHealValues    = gameData.foodHealValues,
-                    blessingDefBonus  = (ChurchRepository.defBonus(flags) * prayerCapeMult).toInt(),
+                    boss               = boss,
+                    bossKey            = bossKey,
+                    playerAttack       = ((levels[Skills.ATTACK]   ?: 1) * combatCapeMult).toInt() + (pmBoss[Skills.ATTACK]    ?: 0) * 5,
+                    playerStrength     = ((levels[Skills.STRENGTH] ?: 1) * combatCapeMult).toInt() + (pmBoss[Skills.STRENGTH]  ?: 0) * 5,
+                    playerDefence      = ((levels[Skills.DEFENSE]  ?: 1) * combatCapeMult).toInt() + totalDefBonus + (pmBoss[Skills.DEFENSE] ?: 0) * 5,
+                    playerHp           = (levels[Skills.HITPOINTS] ?: 1) + (pmBoss[Skills.HITPOINTS] ?: 0) * 5,
+                    weaponAttackBonus  = totalAtkBonus,
+                    weaponStrBonus     = totalStrBonus,
+                    combatStyle        = combatStyle,
+                    playerRanged       = ((levels[Skills.RANGED] ?: 1) * combatCapeMult).toInt() + (pmBoss[Skills.RANGED] ?: 0) * 5,
+                    playerMagic        = ((levels[Skills.MAGIC]  ?: 1) * combatCapeMult).toInt() + (pmBoss[Skills.MAGIC]  ?: 0) * 5,
+                    arrowStrengthBonus = arrowBonus,
+                    spellMaxHit        = spell?.maxHit ?: 0,
+                    availableArrows    = availableArrows,
+                    equippedFood       = availableFood,
+                    foodHealValues     = gameData.foodHealValues,
+                    blessingDefBonus   = (ChurchRepository.defBonus(flags) * prayerCapeMult).toInt(),
                 )
                 val frameMs        = SkillSimulator.sessionDurationMs(agilityLevel) / 60L
                 val bossDurationMs = boss.durationMinutes * frameMs
@@ -331,7 +349,8 @@ class QueuedSessionStarter @Inject constructor(
                     "strength" -> "strength"
                     else       -> "attack"
                 }
-                val bestArrow = ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
+                val preferredArrow = flags.equippedArrows?.takeIf { (inventory[it] ?: 0) > 0 }
+                val bestArrow = preferredArrow ?: ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
                 val arrowBonus = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
                 val availableArrows = if (bestArrow != null) mapOf(bestArrow to (inventory[bestArrow] ?: 0)) else emptyMap()
                 val equippedFoodKeys = flags.equippedFood.keys
@@ -340,19 +359,20 @@ class QueuedSessionStarter @Inject constructor(
                 val totalAtkBonus = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.attackBonus  ?: 0 } + (weapon?.attackBonus  ?: 0)
                 val totalStrBonus = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.strengthBonus ?: 0 } + (weapon?.strengthBonus ?: 0)
                 val totalDefBonus = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.defenseBonus  ?: 0 } + (weapon?.defenseBonus  ?: 0)
+                val pm = flags.skillPrestige
                 val result = CombatSimulator.simulateDungeon(
                     dungeon             = dungeon,
                     enemies             = gameData.enemies,
-                    playerAttack        = ((levels[Skills.ATTACK]   ?: 1) * combatCapeMult).toInt(),
-                    playerStrength      = ((levels[Skills.STRENGTH] ?: 1) * combatCapeMult).toInt(),
-                    playerDefence       = ((levels[Skills.DEFENSE]  ?: 1) * combatCapeMult).toInt() + totalDefBonus,
-                    playerHp            = levels[Skills.HITPOINTS] ?: 1,
+                    playerAttack        = ((levels[Skills.ATTACK]   ?: 1) * combatCapeMult).toInt() + (pm[Skills.ATTACK]    ?: 0) * 5,
+                    playerStrength      = ((levels[Skills.STRENGTH] ?: 1) * combatCapeMult).toInt() + (pm[Skills.STRENGTH]  ?: 0) * 5,
+                    playerDefence       = ((levels[Skills.DEFENSE]  ?: 1) * combatCapeMult).toInt() + totalDefBonus + (pm[Skills.DEFENSE] ?: 0) * 5,
+                    playerHp            = (levels[Skills.HITPOINTS] ?: 1) + (pm[Skills.HITPOINTS] ?: 0) * 5,
                     blessingDefBonus    = (ChurchRepository.defBonus(flags) * prayerCapeMult).toInt(),
                     weaponAttackBonus   = totalAtkBonus,
                     weaponStrengthBonus = totalStrBonus,
                     combatStyle         = combatStyle,
-                    playerRanged        = ((levels[Skills.RANGED] ?: 1) * combatCapeMult).toInt(),
-                    playerMagic         = ((levels[Skills.MAGIC]  ?: 1) * combatCapeMult).toInt(),
+                    playerRanged        = ((levels[Skills.RANGED] ?: 1) * combatCapeMult).toInt() + (pm[Skills.RANGED] ?: 0) * 5,
+                    playerMagic         = ((levels[Skills.MAGIC]  ?: 1) * combatCapeMult).toInt() + (pm[Skills.MAGIC]  ?: 0) * 5,
                     arrowStrengthBonus  = arrowBonus,
                     spellMaxHit         = spell?.maxHit             ?: 0,
                     agilityLevel        = agilityLevel,

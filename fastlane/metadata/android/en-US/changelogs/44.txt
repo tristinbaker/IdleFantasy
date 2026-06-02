@@ -1,0 +1,8 @@
+• Translation: Guild quest strings translated to French (Contribution by @widowild1)
+• New: Clipboard button on the home screen shows your last 10 completed sessions (toggleable in Settings)
+• New: Arrow selection in the dungeon and boss info sheets; choose which arrow tier to use instead of always consuming your best
+• Fix: Boss fights now correctly use ranged and magic combat styles; previously bosses always simulated as melee regardless of your weapon
+• New: Each boss has distinct ranged and magic defense values, making some combat styles more effective than others against specific bosses
+• Fix: Fletcher's Guild quests for Yew Longbow and Magic Longbow now work; both bows are craftable in the Fletching skill
+• New: Farming Guild daily quests now have a Contribute button to submit crops directly from your inventory
+• Balance: Farming Guild quest and daily quest amounts significantly reduced to be achievable within a day or two

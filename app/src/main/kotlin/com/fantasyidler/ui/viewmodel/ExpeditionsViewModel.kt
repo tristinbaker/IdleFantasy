@@ -1,7 +1,9 @@
 package com.fantasyidler.ui.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fantasyidler.R
 import com.fantasyidler.data.json.SkillingDungeonData
 import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.PlayerFlags
@@ -13,8 +15,9 @@ import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.QueuedSessionStarter
 import com.fantasyidler.repository.SessionRepository
 import com.fantasyidler.simulator.SkillingDungeonSimulator
-import com.fantasyidler.util.toTitleCase
+import com.fantasyidler.util.GameStrings
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -44,6 +47,7 @@ data class ExpeditionsUiState(
 
 @HiltViewModel
 class ExpeditionsViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val playerRepo: PlayerRepository,
     private val sessionRepo: SessionRepository,
     private val gameData: GameDataRepository,
@@ -84,14 +88,18 @@ class ExpeditionsViewModel @Inject constructor(
                             flags.unlockedDungeons.contains(dungeon.requiresPreviousUnlock)
                     val isAccessible = levelOk && prevOk
                     val lockReason = when {
-                        !levelOk -> "Requires ${skill.toTitleCase()} level ${dungeon.levelRequired}"
+                        !levelOk -> context.getString(
+                            R.string.expedition_lock_level,
+                            GameStrings.skillName(context, skill),
+                            dungeon.levelRequired,
+                        )
                         !prevOk  -> {
                             val prereq = gameData.skillingDungeons.values
                                 .firstOrNull { it.unlockDungeon == dungeon.requiresPreviousUnlock }
                             if (prereq != null)
-                                "Find all notes in ${prereq.displayName} to unlock"
+                                context.getString(R.string.expedition_lock_notes, prereq.displayName)
                             else
-                                "Complete a prerequisite to unlock"
+                                context.getString(R.string.expedition_lock_prerequisite)
                         }
                         else -> null
                     }

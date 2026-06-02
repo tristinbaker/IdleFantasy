@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fantasyidler.R
 import com.fantasyidler.data.model.OwnedPet
+import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.QuestRepository
@@ -50,9 +51,11 @@ class AchievementsViewModel @Inject constructor(
         val pets: List<OwnedPet> = try {
             json.decodeFromString(player.pets)
         } catch (_: Exception) { emptyList() }
+        val flags: PlayerFlags = try { json.decodeFromString(player.flags) } catch (_: Exception) { PlayerFlags() }
         val completedQuests = questProgress.count { it.completed }
         val totalLevel  = levels.values.sum()
         val combatLevel = combatLevelFrom(levels)
+        val prestigeMap = flags.skillPrestige
 
         val groups = linkedMapOf<String, List<Achievement>>()
 
@@ -87,6 +90,13 @@ class AchievementsViewModel @Inject constructor(
         groups["Collection"] = listOf(
             ach("pet_first", R.string.achievement_pet_first_name, R.string.achievement_pet_first_desc, "🐾", pets.isNotEmpty()),
             ach("pet_all",   R.string.achievement_pet_all_name,   R.string.achievement_pet_all_desc,   "🦁", pets.size >= 7),
+        )
+
+        groups["Prestige"] = listOf(
+            ach("prestige_first",   R.string.achievement_prestige_first_name,   R.string.achievement_prestige_first_desc,   "⭐", prestigeMap.values.any { it >= 1 }),
+            ach("prestige_any_3",   R.string.achievement_prestige_any_3_name,   R.string.achievement_prestige_any_3_desc,   "🌟", prestigeMap.values.any { it >= 3 }),
+            ach("prestige_all_1",   R.string.achievement_prestige_all_1_name,   R.string.achievement_prestige_all_1_desc,   "⭐⭐", Skills.ALL.all { (prestigeMap[it] ?: 0) >= 1 }),
+            ach("prestige_all_3",   R.string.achievement_prestige_all_3_name,   R.string.achievement_prestige_all_3_desc,   "👑", Skills.ALL.all { (prestigeMap[it] ?: 0) >= 3 }),
         )
 
         val all = groups.values.flatten()

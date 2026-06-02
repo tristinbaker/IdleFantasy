@@ -1,6 +1,7 @@
 package com.fantasyidler.ui.screen
 
 import kotlin.math.roundToInt
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -10,12 +11,14 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Edit
@@ -24,13 +27,13 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.BottomSheetDefaults
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
@@ -57,6 +60,9 @@ import kotlinx.coroutines.launch
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -69,14 +75,22 @@ import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.Achievement
 import com.fantasyidler.ui.viewmodel.AchievementsViewModel
-import com.fantasyidler.ui.viewmodel.DISPLAY_SKILL_ORDER
 import com.fantasyidler.ui.viewmodel.InventoryCategory
 import com.fantasyidler.ui.viewmodel.InventoryViewModel
 import com.fantasyidler.ui.viewmodel.slotDisplayName
 import com.fantasyidler.ui.viewmodel.xpProgressFraction
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatCoins
-import com.fantasyidler.util.formatXp
+import com.fantasyidler.util.toTitleCase
+
+private val SKILL_CATEGORY_GROUPS: List<Pair<Int, List<String>>> = listOf(
+    R.string.label_gathering      to listOf("mining", "fishing", "woodcutting", "farming", "firemaking", "agility"),
+    R.string.label_crafting       to listOf("smithing", "cooking", "fletching", "crafting", "runecrafting", "herblore"),
+    R.string.label_support_skills to listOf("prayer", "mercantile", "slayer"),
+    R.string.label_combat         to listOf("attack", "strength", "defense", "ranged", "magic", "hitpoints"),
+)
+
+private data class UnlockMilestone(val level: Int, val description: String)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -185,7 +199,7 @@ fun ProfileScreen(
                 }
             }
 
-            ScrollableTabRow(selectedTabIndex = pagerState.currentPage) {
+            ScrollableTabRow(selectedTabIndex = pagerState.currentPage, edgePadding = 0.dp) {
                 tabs.forEachIndexed { index, title ->
                     Tab(
                         selected = pagerState.currentPage == index,
@@ -197,7 +211,7 @@ fun ProfileScreen(
 
             HorizontalPager(state = pagerState, modifier = Modifier.weight(1f)) { page ->
                 when (page) {
-                    0 -> SkillsTab(state.skillLevels, state.skillXp, context)
+                    0 -> SkillsTab(state.skillLevels, state.skillXp, context, viewModel)
                     1 -> InventoryTab(state.inventory, context, viewModel::categoryFor)
                     2 -> EquipmentTab(
                         equipped            = state.equipped,
@@ -290,64 +304,324 @@ fun CoinsBanner(coins: Long) {
 // Skills tab
 // ---------------------------------------------------------------------------
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun SkillsTab(
     skillLevels: Map<String, Int>,
     skillXp: Map<String, Long>,
     context: android.content.Context,
+    viewModel: InventoryViewModel,
 ) {
+    var selectedSkill by remember { mutableStateOf<String?>(null) }
+    val milestones = remember(selectedSkill) {
+        selectedSkill?.let { buildUnlockMilestones(it, viewModel) } ?: emptyList()
+    }
+
     LazyColumn(modifier = Modifier.fillMaxSize()) {
-        items(DISPLAY_SKILL_ORDER) { key ->
-            ProfileSkillRow(
-                name  = GameStrings.skillName(context, key),
-                level = skillLevels[key] ?: 1,
-                xp    = skillXp[key] ?: 0L,
-            )
+        for ((categoryRes, skills) in SKILL_CATEGORY_GROUPS) {
+            item(key = "hdr_$categoryRes") {
+                SlotSectionHeader(stringResource(categoryRes))
+            }
+            val rows = skills.chunked(3)
+            rows.forEachIndexed { rowIdx, rowSkills ->
+                item(key = "${categoryRes}_row_$rowIdx") {
+                    Row(
+                        modifier              = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 8.dp, vertical = 4.dp),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        rowSkills.forEach { key ->
+                            SkillGridCard(
+                                skillKey = key,
+                                level    = skillLevels[key] ?: 1,
+                                xp       = skillXp[key] ?: 0L,
+                                context  = context,
+                                onClick  = { selectedSkill = key },
+                                modifier = Modifier.weight(1f),
+                            )
+                        }
+                        repeat(3 - rowSkills.size) { Spacer(Modifier.weight(1f)) }
+                    }
+                }
+            }
         }
         item { Spacer(Modifier.height(16.dp)) }
+    }
+
+    selectedSkill?.let { key ->
+        val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+        ModalBottomSheet(
+            onDismissRequest = { selectedSkill = null },
+            sheetState       = sheetState,
+            dragHandle       = { BottomSheetDefaults.DragHandle() },
+        ) {
+            SkillUnlockSheet(
+                skillKey   = key,
+                level      = skillLevels[key] ?: 1,
+                context    = context,
+                milestones = milestones,
+            )
+        }
     }
 }
 
 @Composable
-private fun ProfileSkillRow(name: String, level: Int, xp: Long) {
-    val progress = xpProgressFraction(xp)
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Text(
-            text       = level.toString(),
-            style      = MaterialTheme.typography.labelLarge,
-            fontWeight = FontWeight.Bold,
-            modifier   = Modifier.width(32.dp),
-        )
-        Column(Modifier.weight(1f)) {
-            Row(
-                modifier              = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-            ) {
-                Text(name, style = MaterialTheme.typography.bodyMedium)
-                Text(
-                    text  = "${xp.formatXp()} XP",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+private fun CircularSkillProgress(level: Int, progressFraction: Float, modifier: Modifier = Modifier) {
+    val gold  = GoldPrimary
+    val track = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.15f)
+    Box(modifier = modifier.size(56.dp), contentAlignment = Alignment.Center) {
+        val strokeDp = 5.dp
+        Canvas(modifier = Modifier.fillMaxSize()) {
+            val stroke = strokeDp.toPx()
+            val inset  = stroke / 2f
+            val rect   = Rect(inset, inset, size.width - inset, size.height - inset)
+            drawArc(
+                color      = track,
+                startAngle = -90f,
+                sweepAngle = 360f,
+                useCenter  = false,
+                topLeft    = rect.topLeft,
+                size       = rect.size,
+                style      = Stroke(width = stroke, cap = StrokeCap.Round),
+            )
+            if (progressFraction > 0f) {
+                drawArc(
+                    color      = gold,
+                    startAngle = -90f,
+                    sweepAngle = progressFraction * 360f,
+                    useCenter  = false,
+                    topLeft    = rect.topLeft,
+                    size       = rect.size,
+                    style      = Stroke(width = stroke, cap = StrokeCap.Round),
                 )
             }
-            Spacer(Modifier.height(3.dp))
-            LinearProgressIndicator(
-                progress = { progress },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(3.dp)
-                    .clip(RoundedCornerShape(2.dp)),
-                color    = GoldPrimary,
+        }
+        Text(
+            text  = level.toString(),
+            style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
+        )
+    }
+}
+
+@Composable
+private fun SkillGridCard(
+    skillKey: String,
+    level: Int,
+    xp: Long,
+    context: android.content.Context,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val progress = xpProgressFraction(xp)
+    ElevatedCard(modifier = modifier.clickable { onClick() }) {
+        Column(
+            modifier            = Modifier.padding(8.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Text(
+                text  = GameStrings.skillEmoji(skillKey),
+                style = MaterialTheme.typography.headlineMedium,
             )
+            Spacer(Modifier.height(2.dp))
+            Text(
+                text     = GameStrings.skillName(context, skillKey),
+                style    = MaterialTheme.typography.labelSmall,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+            )
+            Spacer(Modifier.height(6.dp))
+            CircularSkillProgress(level = level, progressFraction = progress)
         }
     }
-    HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
 }
+
+@Composable
+private fun SkillUnlockSheet(
+    skillKey: String,
+    level: Int,
+    context: android.content.Context,
+    milestones: List<UnlockMilestone>,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .verticalScroll(rememberScrollState())
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .navigationBarsPadding()
+            .padding(bottom = 24.dp),
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                text  = GameStrings.skillEmoji(skillKey),
+                style = MaterialTheme.typography.headlineMedium,
+            )
+            Spacer(Modifier.width(8.dp))
+            Column {
+                Text(
+                    text       = GameStrings.skillName(context, skillKey),
+                    style      = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold,
+                )
+                Text(
+                    text  = "Level $level",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = GoldPrimary,
+                )
+            }
+        }
+        HorizontalDivider(Modifier.padding(vertical = 8.dp))
+        milestones.forEach { milestone ->
+            val unlocked = level >= milestone.level
+            Row(
+                modifier          = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 4.dp),
+                verticalAlignment = Alignment.Top,
+            ) {
+                Text(
+                    text     = "Lv ${milestone.level}",
+                    style    = MaterialTheme.typography.labelMedium,
+                    color    = if (unlocked) GoldPrimary
+                               else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f),
+                    modifier = Modifier.width(44.dp),
+                )
+                Text(
+                    text     = milestone.description,
+                    style    = MaterialTheme.typography.bodySmall,
+                    color    = if (unlocked) MaterialTheme.colorScheme.onSurface
+                               else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f),
+                    modifier = Modifier.weight(1f),
+                )
+                if (unlocked) {
+                    Text(
+                        text  = "✓",
+                        color = GoldPrimary,
+                        style = MaterialTheme.typography.labelSmall,
+                    )
+                }
+            }
+        }
+    }
+}
+
+private fun buildUnlockMilestones(skillKey: String, vm: InventoryViewModel): List<UnlockMilestone> =
+    when (skillKey) {
+        "mining" ->
+            vm.ores.values
+                .sortedBy { it.levelRequired }
+                .distinctBy { it.levelRequired }
+                .map { UnlockMilestone(it.levelRequired, it.displayName) }
+
+        "fishing" ->
+            vm.fish.values
+                .sortedBy { it.levelRequired }
+                .distinctBy { it.levelRequired }
+                .map { UnlockMilestone(it.levelRequired, it.displayName) }
+
+        "woodcutting" ->
+            vm.trees.values
+                .sortedBy { it.levelRequired }
+                .distinctBy { it.levelRequired }
+                .map { UnlockMilestone(it.levelRequired, it.displayName) }
+
+        "farming" ->
+            vm.crops.values
+                .sortedBy { it.levelRequired }
+                .distinctBy { it.levelRequired }
+                .map { UnlockMilestone(it.levelRequired, it.displayName) }
+
+        "firemaking" ->
+            vm.logs.values
+                .sortedBy { it.levelRequired }
+                .distinctBy { it.levelRequired }
+                .map { UnlockMilestone(it.levelRequired, it.displayName) }
+
+        "agility" ->
+            vm.agilityCourses.values
+                .sortedBy { it.levelRequired }
+                .map { UnlockMilestone(it.levelRequired, it.displayName) }
+
+        "smithing" ->
+            vm.smithingRecipes.values
+                .sortedBy { it.levelRequired }
+                .distinctBy { it.levelRequired }
+                .map { UnlockMilestone(it.levelRequired, it.displayName) }
+
+        "cooking" ->
+            vm.cookingRecipes.values
+                .sortedBy { it.levelRequired }
+                .distinctBy { it.levelRequired }
+                .map { UnlockMilestone(it.levelRequired, it.displayName) }
+
+        "fletching" ->
+            vm.fletchingRecipes.values
+                .sortedBy { it.levelRequired }
+                .distinctBy { it.levelRequired }
+                .map { UnlockMilestone(it.levelRequired, it.displayName) }
+
+        "crafting" ->
+            vm.craftingRecipes.values
+                .sortedBy { it.levelRequired }
+                .distinctBy { it.levelRequired }
+                .map { UnlockMilestone(it.levelRequired, it.displayName) }
+
+        "runecrafting" ->
+            vm.runes.values
+                .sortedBy { it.levelRequired }
+                .map { UnlockMilestone(it.levelRequired, it.displayName) }
+
+        "herblore" ->
+            vm.herbloreRecipes.values
+                .sortedBy { it.levelRequired }
+                .distinctBy { it.levelRequired }
+                .map { UnlockMilestone(it.levelRequired, it.displayName) }
+
+        "attack", "strength", "ranged", "magic" ->
+            vm.allEquipment.values
+                .filter { it.requirements.containsKey(skillKey) }
+                .sortedBy { it.requirements[skillKey] ?: 0 }
+                .distinctBy { it.requirements[skillKey] }
+                .map { UnlockMilestone(it.requirements[skillKey]!!, it.displayName) }
+
+        "defense" ->
+            vm.allEquipment.values
+                .filter { it.requirements.containsKey("defense") }
+                .sortedBy { it.requirements["defense"] ?: 0 }
+                .distinctBy { it.requirements["defense"] }
+                .map { UnlockMilestone(it.requirements["defense"]!!, it.displayName) }
+
+        "hitpoints" -> listOf(
+            UnlockMilestone(1,  "Passive — increases max HP"),
+            UnlockMilestone(10, "Max HP increases each level"),
+            UnlockMilestone(99, "Max HP: 99"),
+        )
+
+        "prayer" ->
+            vm.bones.values
+                .sortedBy { it.xpPerBone }
+                .mapIndexed { i, bone ->
+                    UnlockMilestone(
+                        level       = (i * 7 + 1).coerceAtMost(99),
+                        description = "${bone.displayName} (${bone.xpPerBone.toInt()} XP/bone)",
+                    )
+                }
+
+        "mercantile" ->
+            vm.tradeRoutes
+                .sortedBy { it.levelRequired }
+                .map { UnlockMilestone(it.levelRequired, it.displayName) }
+
+        "slayer" ->
+            vm.slayerTaskData.entries
+                .sortedBy { it.value.slayerLevel }
+                .distinctBy { it.value.slayerLevel }
+                .map { (key, task) ->
+                    UnlockMilestone(task.slayerLevel, "${key.toTitleCase()} (${task.xpPerKill} XP/kill)")
+                }
+
+        else -> emptyList()
+    }
 
 // ---------------------------------------------------------------------------
 // Inventory tab
@@ -898,7 +1172,7 @@ private fun NotesTab(
     skillingDungeonNotes: Map<String, Int>,
     unlockedDungeons: List<String>,
 ) {
-    val SKILL_ORDER = listOf("mining", "woodcutting", "fishing")
+    val SKILL_ORDER = listOf("mining", "woodcutting", "fishing", "agility")
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()

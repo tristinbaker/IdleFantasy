@@ -16,6 +16,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Button
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -133,7 +134,9 @@ fun GuildDetailScreen(
                 1 -> GuildDailiesTab(
                     dailies      = state.dailies,
                     nextResetMs  = state.nextResetMs,
+                    inventory    = state.inventory,
                     onClaim      = { viewModel.claimGuildDaily(it) },
+                    onContribute = { viewModel.contributeFarmingDaily(it) },
                 )
             }
         }
@@ -322,7 +325,9 @@ private fun GuildQuestRow(
 private fun GuildDailiesTab(
     dailies: List<GuildDailyWithProgress>,
     nextResetMs: Long,
+    inventory: Map<String, Int>,
     onClaim: (String) -> Unit,
+    onContribute: (String) -> Unit,
 ) {
     LazyColumn(Modifier.fillMaxSize()) {
         if (dailies.isEmpty()) {
@@ -340,7 +345,13 @@ private fun GuildDailiesTab(
             }
         } else {
             items(dailies, key = { it.template.id }) { dwp ->
-                GuildDailyCard(dwp = dwp, onClaim = { onClaim(dwp.template.id) })
+                GuildDailyCard(
+                    dwp          = dwp,
+                    inventoryQty = if (dwp.template.guild == "farming" && dwp.template.type == "gather")
+                        inventory[dwp.template.target] ?: 0 else 0,
+                    onClaim      = { onClaim(dwp.template.id) },
+                    onContribute = { onContribute(dwp.template.id) },
+                )
                 HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
             }
         }
@@ -361,7 +372,9 @@ private fun GuildDailiesTab(
 @Composable
 private fun GuildDailyCard(
     dwp: GuildDailyWithProgress,
+    inventoryQty: Int = 0,
     onClaim: () -> Unit,
+    onContribute: () -> Unit = {},
 ) {
     val isComplete = dwp.progress >= dwp.template.amount
     val isClaimed  = dwp.claimed
@@ -426,6 +439,14 @@ private fun GuildDailyCard(
                 Spacer(Modifier.height(8.dp))
                 Button(onClick = onClaim, modifier = Modifier.fillMaxWidth()) {
                     Text(stringResource(R.string.label_claim_reward))
+                }
+            }
+            else -> {
+                if (inventoryQty > 0) {
+                    Spacer(Modifier.height(8.dp))
+                    OutlinedButton(onClick = onContribute, modifier = Modifier.fillMaxWidth()) {
+                        Text("Contribute from inventory ($inventoryQty available)")
+                    }
                 }
             }
         }

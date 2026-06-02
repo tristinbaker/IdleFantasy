@@ -40,6 +40,9 @@ interface SkillSessionDao {
     @Query("SELECT COUNT(*) FROM skill_sessions WHERE completed = 1 AND user_id = 1 AND worker_slot > 0")
     fun observeWorkerCompletedCount(): Flow<Int>
 
+    @Query("SELECT COUNT(*) FROM skill_sessions WHERE completed = 1 AND user_id = 1 AND worker_slot = :slot")
+    fun observeWorkerCompletedCount(slot: Int): Flow<Int>
+
     @Query("DELETE FROM skill_sessions WHERE user_id = 1 AND worker_slot = :slot")
     suspend fun deleteAllWorkerSessions(slot: Int)
 

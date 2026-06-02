@@ -37,6 +37,7 @@ data class GuildDetailUiState(
     val allCurrentLevelQuestsDone: Boolean = false,
     val questGateBlocked: Boolean = false,
     val snackbarMessage: String? = null,
+    val inventory: Map<String, Int> = emptyMap(),
 )
 
 @HiltViewModel
@@ -67,6 +68,7 @@ class GuildDetailViewModel @Inject constructor(
         if (player == null) return@combine extra
 
         val flags: PlayerFlags = json.decodeFromString(player.flags)
+        val inventory: Map<String, Int> = json.decodeFromString(player.inventory)
         val rep   = flags.guildReputation[guild] ?: 0L
         val completedQuestIds = progressList.filter { it.completed }.map { it.questId }.toSet()
         val level = guildRepo.guildLevel(guild, rep, completedQuestIds)
@@ -102,6 +104,7 @@ class GuildDetailViewModel @Inject constructor(
             dailies                   = dailies,
             allCurrentLevelQuestsDone = allCurrentLevelQuestsDone,
             questGateBlocked          = questGateBlocked,
+            inventory                 = inventory,
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), GuildDetailUiState(guildKey = guild))
 
@@ -149,6 +152,16 @@ class GuildDetailViewModel @Inject constructor(
             }
             val suffix = if (parts.isNotEmpty()) " (${parts.joinToString(", ")})" else ""
             _extra.update { it.copy(snackbarMessage = "Daily reward claimed!$suffix") }
+        }
+    }
+
+    fun contributeFarmingDaily(templateId: String) {
+        viewModelScope.launch {
+            val inventory: Map<String, Int> = json.decodeFromString(playerRepo.getOrCreatePlayer().inventory)
+            val consumed = guildRepo.contributeFarmingDaily(templateId, inventory)
+            if (consumed > 0) {
+                _extra.update { it.copy(snackbarMessage = "Contributed $consumed items.") }
+            }
         }
     }
 

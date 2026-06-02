@@ -215,23 +215,40 @@ class WorkerQueuedSessionStarter @Inject constructor(
                 val bossWeapon = (flags.activeWeaponSlot
                     ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
                     ?: EquipSlot.WEAPON).let { equipped[it] }.let { gameData.equipment[it] }
+                val combatStyle = when (bossWeapon?.combatStyle) {
+                    "ranged"   -> "ranged"
+                    "magic"    -> "magic"
+                    "strength" -> "strength"
+                    else       -> "melee"
+                }
                 val totalAtkBonus = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.attackBonus  ?: 0 } + (bossWeapon?.attackBonus  ?: 0)
                 val totalStrBonus = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.strengthBonus ?: 0 } + (bossWeapon?.strengthBonus ?: 0)
                 val totalDefBonus = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.defenseBonus  ?: 0 } + (bossWeapon?.defenseBonus  ?: 0)
                 val equippedFoodKeys = flags.equippedFood.keys
                 val availableFood    = inventory.filterKeys { it in equippedFoodKeys }
+                val spell = gameData.spells[flags.activeSpell]
+                val preferredArrow = flags.equippedArrows?.takeIf { (inventory[it] ?: 0) > 0 }
+                val bestArrow = preferredArrow ?: ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
+                val arrowBonus = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
+                val availableArrows = if (bestArrow != null) mapOf(bestArrow to (inventory[bestArrow] ?: 0)) else emptyMap()
                 val bossFrames = CombatSimulator.simulateBoss(
-                    boss              = boss,
-                    bossKey           = bossKey,
-                    playerAttack      = levels[Skills.ATTACK]    ?: 1,
-                    playerStrength    = levels[Skills.STRENGTH]  ?: 1,
-                    playerDefence     = (levels[Skills.DEFENSE]  ?: 1) + totalDefBonus,
-                    playerHp          = levels[Skills.HITPOINTS] ?: 1,
-                    weaponAttackBonus = totalAtkBonus,
-                    weaponStrBonus    = totalStrBonus,
-                    equippedFood      = availableFood,
-                    foodHealValues    = gameData.foodHealValues,
-                    blessingDefBonus  = ChurchRepository.defBonus(flags),
+                    boss               = boss,
+                    bossKey            = bossKey,
+                    playerAttack       = levels[Skills.ATTACK]    ?: 1,
+                    playerStrength     = levels[Skills.STRENGTH]  ?: 1,
+                    playerDefence      = (levels[Skills.DEFENSE]  ?: 1) + totalDefBonus,
+                    playerHp           = levels[Skills.HITPOINTS] ?: 1,
+                    weaponAttackBonus  = totalAtkBonus,
+                    weaponStrBonus     = totalStrBonus,
+                    combatStyle        = combatStyle,
+                    playerRanged       = levels[Skills.RANGED] ?: 1,
+                    playerMagic        = levels[Skills.MAGIC]  ?: 1,
+                    arrowStrengthBonus = arrowBonus,
+                    spellMaxHit        = spell?.maxHit ?: 0,
+                    availableArrows    = availableArrows,
+                    equippedFood       = availableFood,
+                    foodHealValues     = gameData.foodHealValues,
+                    blessingDefBonus   = ChurchRepository.defBonus(flags),
                 )
                 startSession(slot, action, bossFrames, durationMs, efficiencyMultiplier)
             }
@@ -255,8 +272,10 @@ class WorkerQueuedSessionStarter @Inject constructor(
                 val equippedFoodKeys = flags.equippedFood.keys
                 val availableFood    = inventory.filterKeys { it in equippedFoodKeys }
                 val spell = gameData.spells[flags.activeSpell]
-                val bestArrow = ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
+                val preferredArrow = flags.equippedArrows?.takeIf { (inventory[it] ?: 0) > 0 }
+                val bestArrow = preferredArrow ?: ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
                 val arrowBonus = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
+                val availableArrows = if (bestArrow != null) mapOf(bestArrow to (inventory[bestArrow] ?: 0)) else emptyMap()
                 val result = CombatSimulator.simulateDungeon(
                     dungeon             = dungeon,
                     enemies             = gameData.enemies,
@@ -276,6 +295,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                     petBoostPct         = 0,
                     equippedFood        = availableFood,
                     foodHealValues      = gameData.foodHealValues,
+                    availableArrows     = availableArrows,
                 )
                 startSession(slot, action, result.frames, durationMs, efficiencyMultiplier)
             }

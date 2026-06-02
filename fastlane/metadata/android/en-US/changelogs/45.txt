@@ -1,0 +1,3 @@
+• Fix: Workers - only the finished worker now shows the Collect button; previously completing one worker marked both as collectable
+• Fix: Guild quest progress no longer gets wiped on first guild screen visit after levelling up; affected all guilds above level 0 (combat, gathering, crafting)
+• Fix: Boss setup sheet is now scrollable; the Fight button was hidden off-screen when using a magic staff, and mid-tier spells such as Mind Strike were not reachable

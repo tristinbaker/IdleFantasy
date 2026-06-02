@@ -31,8 +31,10 @@ data class BossCombatStats(
 
 @Serializable
 data class BossDefensiveStats(
-    @SerialName("attack_defense")  val attackDefense:  Int = 0,
+    @SerialName("attack_defense")   val attackDefense:   Int = 0,
     @SerialName("strength_defense") val strengthDefense: Int = 0,
+    @SerialName("ranged_defense")   val rangedDefense:   Int = 0,
+    @SerialName("magic_defense")    val magicDefense:    Int = 0,
 )
 
 @Serializable

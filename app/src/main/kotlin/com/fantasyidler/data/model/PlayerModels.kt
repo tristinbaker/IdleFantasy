@@ -76,6 +76,19 @@ data class PlayerFlags(
     @SerialName("active_slayer_task") val activeSlayerTask: SlayerTask? = null,
     /** Accumulated Slayer points, spent in the Slayer Master shop. */
     @SerialName("slayer_points") val slayerPoints: Int = 0,
+    /** Last 10 completed sessions, newest first. */
+    @SerialName("recent_sessions") val recentSessions: List<RecentSession> = emptyList(),
+    /** Whether to show the recent activity log FAB on the home screen. */
+    @SerialName("show_recent_activity_log") val showRecentActivityLog: Boolean = true,
+    /** Prestige level per skill: skill key → 0–3. */
+    @SerialName("skill_prestige") val skillPrestige: Map<String, Int> = emptyMap(),
+)
+
+/** A single entry in the recent sessions log. */
+@Serializable
+data class RecentSession(
+    @SerialName("skill_name") val skillName: String,
+    @SerialName("activity_display_name") val activityDisplayName: String,
 )
 
 /** An active Slayer task assigned by the Slayer Master. */

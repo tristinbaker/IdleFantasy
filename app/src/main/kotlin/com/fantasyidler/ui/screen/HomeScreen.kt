@@ -21,6 +21,13 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.filled.Assignment
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.BottomSheetDefaults
+import androidx.compose.material3.rememberModalBottomSheetState
+import com.fantasyidler.data.model.RecentSession
+import com.fantasyidler.util.toTitleCase
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.foundation.rememberScrollState
@@ -92,6 +99,7 @@ fun HomeScreen(
 ) {
     val state            by viewModel.uiState.collectAsState()
     val snackbarHostState = remember { SnackbarHostState() }
+    var showRecentLog by remember { mutableStateOf(false) }
     val context           = LocalContext.current
 
     LaunchedEffect(state.snackbarMessage) {
@@ -390,6 +398,20 @@ fun HomeScreen(
         )
     }
 
+    if (showRecentLog) {
+        val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+        ModalBottomSheet(
+            onDismissRequest = { showRecentLog = false },
+            sheetState       = sheetState,
+            dragHandle       = { BottomSheetDefaults.DragHandle() },
+        ) {
+            RecentSessionsSheet(
+                sessions  = state.recentSessions,
+                onDismiss = { showRecentLog = false },
+            )
+        }
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -400,6 +422,13 @@ fun HomeScreen(
                     }
                 },
             )
+        },
+        floatingActionButton = {
+            if (!state.isLoading && state.showRecentActivityLog) {
+                FloatingActionButton(onClick = { showRecentLog = true }) {
+                    Icon(Icons.Filled.Assignment, contentDescription = "Recent activity")
+                }
+            }
         },
         snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { padding ->
@@ -671,7 +700,7 @@ fun HomeScreen(
                     slot                     = 1,
                     hiredWorker              = hiredWorker,
                     session                  = workerSession,
-                    pendingCollect           = state.workerPendingCollect,
+                    pendingCollect           = state.workerPendingCollect1,
                     context                  = context,
                     onCollect                = viewModel::collectWorkerSession,
                     onDismiss                = { viewModel.dismissWorker(1) },
@@ -693,7 +722,7 @@ fun HomeScreen(
                     slot                     = 2,
                     hiredWorker              = hiredWorker2,
                     session                  = workerSession2,
-                    pendingCollect           = state.workerPendingCollect,
+                    pendingCollect           = state.workerPendingCollect2,
                     context                  = context,
                     onCollect                = viewModel::collectWorkerSession,
                     onDismiss                = { viewModel.dismissWorker(2) },
@@ -1126,5 +1155,64 @@ private fun StatItem(
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
+    }
+}
+
+@Composable
+private fun RecentSessionsSheet(
+    sessions: List<RecentSession>,
+    onDismiss: () -> Unit,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 24.dp)
+            .padding(bottom = 40.dp),
+    ) {
+        Text(
+            text       = "Recent Activity",
+            style      = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+        )
+        Spacer(Modifier.height(12.dp))
+        if (sessions.isEmpty()) {
+            Text(
+                text  = "No sessions completed yet.",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        } else {
+            sessions.forEachIndexed { index, entry ->
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 6.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(
+                        text  = "${index + 1}.",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.width(28.dp),
+                    )
+                    Text(
+                        text     = entry.skillName.toTitleCase(),
+                        style    = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.weight(1f),
+                    )
+                    Text(
+                        text  = entry.activityDisplayName,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+                if (index < sessions.lastIndex) HorizontalDivider()
+            }
+        }
+        Spacer(Modifier.height(16.dp))
+        OutlinedButton(onClick = onDismiss, modifier = Modifier.fillMaxWidth()) {
+            Text(stringResource(R.string.btn_cancel))
+        }
     }
 }

@@ -85,7 +85,8 @@ data class HomeUiState(
     val queueEndsAt: Long = 0L,
     val workerSession: SkillSession? = null,
     val workerSession2: SkillSession? = null,
-    val workerPendingCollect: Boolean = false,
+    val workerPendingCollect1: Boolean = false,
+    val workerPendingCollect2: Boolean = false,
     val hiredWorker: HiredWorker? = null,
     val hiredWorker2: HiredWorker? = null,
     val workerQueue: List<QueuedAction> = emptyList(),
@@ -94,6 +95,8 @@ data class HomeUiState(
     val activeBlessingKey: String = "",
     val activeBlessingRemainingMs: Long = 0L,
     val xpBoostRemainingMs: Long = 0L,
+    val recentSessions: List<com.fantasyidler.data.model.RecentSession> = emptyList(),
+    val showRecentActivityLog: Boolean = true,
 )
 
 @HiltViewModel
@@ -121,7 +124,8 @@ class HomeViewModel @Inject constructor(
     private data class WorkerFlowData(
         val session1: SkillSession?,
         val session2: SkillSession?,
-        val completedCount: Int,
+        val completedCount1: Int,
+        val completedCount2: Int,
         val extra: HomeUiState,
     )
 
@@ -130,18 +134,18 @@ class HomeViewModel @Inject constructor(
         combine(
             sessionRepo.activeWorkerSessionFlow(1),
             sessionRepo.activeWorkerSessionFlow(2),
-            sessionRepo.workerCompletedCountFlow,
+            combine(sessionRepo.workerCompletedCountFlow(1), sessionRepo.workerCompletedCountFlow(2)) { c1, c2 -> Pair(c1, c2) },
             _extra,
-        ) { w1, w2, count, extra -> WorkerFlowData(w1, w2, count, extra) },
+        ) { w1, w2, counts, extra -> WorkerFlowData(w1, w2, counts.first, counts.second, extra) },
     ) { (player, session, completedCount), workerData ->
         val workerSession  = workerData.session1
         val workerSession2 = workerData.session2
-        val workerCompleted = workerData.completedCount
         val extra = workerData.extra
         if (player == null) extra.copy(
             isLoading = true, activeSession = session, pendingCollectCount = completedCount,
             workerSession = workerSession, workerSession2 = workerSession2,
-            workerPendingCollect = workerCompleted > 0,
+            workerPendingCollect1 = workerData.completedCount1 > 0,
+            workerPendingCollect2 = workerData.completedCount2 > 0,
         )
         else {
             val flags: PlayerFlags = json.decodeFromString(player.flags)
@@ -170,9 +174,10 @@ class HomeViewModel @Inject constructor(
                 sessionQueue        = flags.sessionQueue,
                 showWhatsNew        = flags.lastSeenVersionCode < BuildConfig.VERSION_CODE,
                 queueEndsAt         = queueEndsAt,
-                workerSession       = workerSession,
-                workerSession2      = workerSession2,
-                workerPendingCollect = workerCompleted > 0,
+                workerSession        = workerSession,
+                workerSession2       = workerSession2,
+                workerPendingCollect1 = workerData.completedCount1 > 0,
+                workerPendingCollect2 = workerData.completedCount2 > 0,
                 hiredWorker         = flags.hiredWorker,
                 hiredWorker2        = flags.hiredWorker2,
                 workerQueue         = flags.hiredWorker?.sessionQueue ?: emptyList(),
@@ -180,6 +185,8 @@ class HomeViewModel @Inject constructor(
                 activeBlessingKey          = flags.activeBlessingKey,
                 activeBlessingRemainingMs  = (flags.activeBlessingExpiresAt - System.currentTimeMillis()).coerceAtLeast(0L),
                 xpBoostRemainingMs         = (flags.xpBoostExpiresAt - System.currentTimeMillis()).coerceAtLeast(0L),
+                recentSessions             = flags.recentSessions,
+                showRecentActivityLog      = flags.showRecentActivityLog,
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), HomeUiState())
@@ -453,6 +460,25 @@ class HomeViewModel @Inject constructor(
             }
 
             for (session in sessions) sessionRepo.deleteSession(session.sessionId)
+
+            // ── Recent sessions log ───────────────────────────────────────
+            val newEntries = sessions.map { s ->
+                val activityDisplay = when (s.skillName) {
+                    "boss"       -> gameData.bosses[s.activityKey]?.displayName
+                    "combat"     -> gameData.dungeons[s.activityKey]?.displayName
+                    "expedition" -> gameData.skillingDungeons[s.activityKey]?.displayName
+                    else         -> null
+                } ?: s.activityKey.replace("_", " ").split(" ")
+                    .joinToString(" ") { it.replaceFirstChar { c -> c.titlecase() } }
+                com.fantasyidler.data.model.RecentSession(
+                    skillName = s.skillName,
+                    activityDisplayName = activityDisplay,
+                )
+            }
+            val updatedFlags = playerRepo.getFlags()
+            playerRepo.updateFlags(updatedFlags.copy(
+                recentSessions = (newEntries + updatedFlags.recentSessions).take(10),
+            ))
 
             // ── Build summary ─────────────────────────────────────────────
             val n    = sessions.size

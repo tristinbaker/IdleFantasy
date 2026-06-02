@@ -85,7 +85,9 @@ class PlayerRepository @Inject constructor(
         val flags: PlayerFlags = json.decodeFromString(player.flags)
         val boostActive = flags.xpBoostExpiresAt > System.currentTimeMillis()
         val scaledXp = if (efficiencyMultiplier == 1.0f) xpGained else (xpGained * efficiencyMultiplier).toLong()
-        val boostedXp = ((if (boostActive) scaledXp * 2 else scaledXp) * ChurchRepository.xpMultiplier(flags)).toLong()
+        val baseXp = ((if (boostActive) scaledXp * 2 else scaledXp) * ChurchRepository.xpMultiplier(flags)).toLong()
+        val prestigeLevel = flags.skillPrestige[skillName] ?: 0
+        val boostedXp = if (prestigeLevel > 0) (baseXp * (1.0 + prestigeLevel * 0.10)).toLong() else baseXp
         val scaledItems = if (efficiencyMultiplier == 1.0f) itemsGained
             else itemsGained.mapValues { (_, v) -> (v * efficiencyMultiplier).roundToInt().coerceAtLeast(1) }
 
@@ -418,6 +420,33 @@ class PlayerRepository @Inject constructor(
             )
         )
         return true
+    }
+
+    /**
+     * Resets [skillName] back to level 1 and increments its prestige count (max 3).
+     * Guard: skill must be level 99 and prestige count must be < 3.
+     */
+    suspend fun prestigeSkill(skillName: String) {
+        val player = getOrCreatePlayer()
+        val levels: MutableMap<String, Int>  = json.decodeFromString(player.skillLevels)
+        val xpMap:  MutableMap<String, Long> = json.decodeFromString(player.skillXp)
+        val flags: PlayerFlags               = json.decodeFromString(player.flags)
+
+        val currentPrestige = flags.skillPrestige[skillName] ?: 0
+        if ((levels[skillName] ?: 1) < 99 || currentPrestige >= 3) return
+
+        levels[skillName] = 1
+        xpMap[skillName]  = 0L
+        val newPrestige = flags.skillPrestige.toMutableMap()
+        newPrestige[skillName] = currentPrestige + 1
+
+        playerDao.upsert(
+            player.copy(
+                skillLevels = json.encode<Map<String, Int>>(levels),
+                skillXp     = json.encode<Map<String, Long>>(xpMap),
+                flags       = json.encode<PlayerFlags>(flags.copy(skillPrestige = newPrestige)),
+            )
+        )
     }
 
     companion object {

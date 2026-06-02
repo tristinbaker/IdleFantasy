@@ -1,0 +1,9 @@
+• Fix: Guild progression quests now correctly track activity after claiming a progression quest while already above the reputation threshold; previously guildQuestResetLevels was not set at claim time, causing the retroactive-reset check to re-run on every guild screen visit
+• Fix: Expeditions screen is now fully translated — skill section headers, dungeon names, dungeon descriptions, lore note counter, and lock reasons are all localised in German, Spanish, French, Italian, Dutch, and Turkish
+• Fix: Slayer tasks can no longer assign enemies that only appear in expedition-locked dungeons the player hasn't discovered yet; existing stuck tasks show a free Reroll button with an explanation
+• Fix: Agility expedition notes now appear on the Profile Notes tab (the skill was missing from the list)
+• Fix: Quests screen tabs no longer wrap text on smaller screens; switched to a scrollable tab row
+• Fix: Removed the large left-side gap on the Quests and Profile scrollable tab rows
+• New: Skills tab on the Profile screen redesigned as a 3-column card grid grouped by category (Gathering, Crafting, Support, Combat); each card shows the skill emoji, name, and a circular level indicator with a gold progress arc; tap any skill to see what unlocks at each level
+• New: Prestige system -- once a skill reaches level 99 it can be reset up to 3 times; each reset earns a permanent +10% XP bonus for that skill (gathering, crafting, support) or a +5 flat stat bonus for combat skills (Attack, Strength, Defense, Ranged, Magic, Hitpoints); prestige level is shown as gold stars next to the skill row
+• New: Four Prestige achievements -- First Reset, Mastered (any skill Prestige 3), Clean Slate (all skills Prestige 1), and True Prestige (all skills Prestige 3)

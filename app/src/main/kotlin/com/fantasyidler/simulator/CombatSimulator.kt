@@ -280,14 +280,40 @@ object CombatSimulator {
         playerHp: Int,
         weaponAttackBonus: Int,
         weaponStrBonus: Int,
+        combatStyle: String = "melee",
+        playerRanged: Int = 1,
+        playerMagic: Int = 1,
+        arrowStrengthBonus: Int = 0,
+        spellMaxHit: Int = 0,
+        availableArrows: Map<String, Int> = emptyMap(),
         equippedFood: Map<String, Int> = emptyMap(),
         foodHealValues: Map<String, Int> = emptyMap(),
         blessingDefBonus: Int = 0,
     ): List<SessionFrame> {
-        val effStr      = playerStrength + weaponStrBonus
-        val playerMax   = max(1, 1 + effStr * (weaponStrBonus + 64) / 640)
-        val effAtk      = playerAttack + weaponAttackBonus
-        val bossDefence = boss.defensiveStats.attackDefense
+        val playerMax: Int
+        val effAtk: Int
+        val bossDefence: Int
+        when (combatStyle) {
+            "ranged" -> {
+                val effStr = playerRanged + arrowStrengthBonus
+                playerMax  = max(1, 1 + effStr * (arrowStrengthBonus + 64) / 640)
+                effAtk     = playerRanged + weaponAttackBonus
+                bossDefence = boss.defensiveStats.rangedDefense
+            }
+            "magic" -> {
+                playerMax  = spellMaxHit.coerceAtLeast(1)
+                effAtk     = playerMagic + weaponAttackBonus
+                bossDefence = boss.defensiveStats.magicDefense
+            }
+            else -> {
+                val effStr = playerStrength + weaponStrBonus
+                playerMax  = max(1, 1 + effStr * (weaponStrBonus + 64) / 640)
+                effAtk     = playerAttack + weaponAttackBonus
+                bossDefence = boss.defensiveStats.attackDefense
+            }
+        }
+        val arrowKey   = availableArrows.keys.firstOrNull()
+        var arrowsLeft = if (arrowKey != null) availableArrows[arrowKey] ?: 0 else Int.MAX_VALUE
         val playerHitChance = when {
             effAtk > bossDefence -> 1.0 - bossDefence / (2.0 * effAtk.coerceAtLeast(1))
             else                 -> effAtk / (2.0 * bossDefence.coerceAtLeast(1))
@@ -318,12 +344,21 @@ object CombatSimulator {
         val rnd = Random(System.nanoTime())
 
         outer@ while (frames.size < maxFrames) {
-            val pHits     = mutableListOf<Int>()
-            val eHits     = mutableListOf<Int>()
-            val frameFood = mutableMapOf<String, Int>()
+            val pHits          = mutableListOf<Int>()
+            val eHits          = mutableListOf<Int>()
+            val frameFood      = mutableMapOf<String, Int>()
+            var frameArrowsUsed = 0
 
             for (tick in 0 until TICKS_PER_FRAME) {
-                val pDmg = if (rnd.nextDouble() < playerHitChance) rnd.nextInt(0, playerMax + 1) else 0
+                val pDmg = when {
+                    combatStyle == "ranged" && arrowsLeft > 0 -> {
+                        arrowsLeft--
+                        frameArrowsUsed++
+                        if (rnd.nextDouble() < playerHitChance) rnd.nextInt(0, playerMax + 1) else 0
+                    }
+                    combatStyle == "ranged" -> 0
+                    else -> if (rnd.nextDouble() < playerHitChance) rnd.nextInt(0, playerMax + 1) else 0
+                }
                 currentBossHp -= pDmg
                 pHits.add(pDmg)
 
@@ -336,6 +371,7 @@ object CombatSimulator {
                         kills = 1, enemyKey = bossKey,
                         playerHits = pHits, enemyHits = eHits, hpAfter = currentHp,
                         foodConsumed = frameFood,
+                        arrowsConsumed = if (arrowKey != null && frameArrowsUsed > 0) mapOf(arrowKey to frameArrowsUsed) else emptyMap(),
                     ))
                     break@outer
                 }
@@ -370,6 +406,7 @@ object CombatSimulator {
                         kills = 0, enemyKey = bossKey,
                         playerHits = pHits, enemyHits = eHits, hpAfter = 0,
                         foodConsumed = frameFood,
+                        arrowsConsumed = if (arrowKey != null && frameArrowsUsed > 0) mapOf(arrowKey to frameArrowsUsed) else emptyMap(),
                     ))
                     break@outer
                 }
@@ -382,6 +419,7 @@ object CombatSimulator {
                     kills = 0, enemyKey = bossKey,
                     playerHits = pHits, enemyHits = eHits, hpAfter = currentHp,
                     foodConsumed = frameFood,
+                    arrowsConsumed = if (arrowKey != null && frameArrowsUsed > 0) mapOf(arrowKey to frameArrowsUsed) else emptyMap(),
                 ))
             }
         }

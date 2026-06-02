@@ -13,8 +13,16 @@ class SlayerRepository @Inject constructor(
 ) {
 
     /** Pick and assign a random eligible task for the given Slayer level. Returns false if no eligible tasks exist. */
-    suspend fun assignTask(slayerLevel: Int): Boolean {
-        val eligible = gameData.slayerTasks.filter { (_, cfg) -> cfg.slayerLevel <= slayerLevel }
+    suspend fun assignTask(slayerLevel: Int, unlockedDungeons: Set<String> = emptySet()): Boolean {
+        val eligible = gameData.slayerTasks.filter { (enemyKey, cfg) ->
+            if (cfg.slayerLevel > slayerLevel) return@filter false
+            // Skip enemies that exclusively appear in expedition-locked dungeons the player hasn't unlocked.
+            val dungeonKeys = gameData.dungeons.values
+                .filter { d -> d.enemySpawns.any { it.enemy == enemyKey } }
+                .map { it.name }
+            if (dungeonKeys.isEmpty()) return@filter true
+            dungeonKeys.any { it !in gameData.expeditionLockedDungeons || it in unlockedDungeons }
+        }
         if (eligible.isEmpty()) return false
 
         val (enemyKey, cfg) = eligible.entries.random()
@@ -78,11 +86,11 @@ class SlayerRepository @Inject constructor(
      * Spend 30 Slayer points to skip the current task and immediately assign a new one.
      * Returns false if the player doesn't have enough points or there are no eligible tasks.
      */
-    suspend fun skipTask(slayerLevel: Int): Boolean {
+    suspend fun skipTask(slayerLevel: Int, unlockedDungeons: Set<String> = emptySet()): Boolean {
         val flags = playerRepo.getFlags()
         if (flags.slayerPoints < 30) return false
         playerRepo.updateFlags(flags.copy(slayerPoints = flags.slayerPoints - 30, activeSlayerTask = null))
-        return assignTask(slayerLevel)
+        return assignTask(slayerLevel, unlockedDungeons)
     }
 
     /**
