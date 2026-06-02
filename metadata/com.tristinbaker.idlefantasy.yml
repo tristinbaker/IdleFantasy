@@ -328,9 +328,16 @@ Builds:
     gradle:
       - yes
 
+  - versionName: '1.7.6'
+    versionCode: 46
+    commit: 5fce9693e37f6097ba8ca62c56fd2e4d59bf9d4f
+    subdir: app
+    gradle:
+      - yes
+
 AllowedAPKSigningKeys: 99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
-CurrentVersion: 1.7.5
-CurrentVersionCode: 45
+CurrentVersion: 1.7.6
+CurrentVersionCode: 46
