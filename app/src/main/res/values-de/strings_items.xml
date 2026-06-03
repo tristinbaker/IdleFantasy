@@ -241,7 +241,7 @@
     <string name="item_staff_of_earth_desc">Ein Elementarstab, der mit der Kraft der Erde durchtränkt ist.</string>
     <string name="item_staff_of_fire_name">Stab des Feuers</string>
     <string name="item_staff_of_fire_desc">Ein Elementarstab, der mit der Kraft des Feuers durchtränkt ist.</string>
-    <string name="item_staff_of_mind_name">Stab des Geistes</string>
+    <string name="item_staff_of_mind_name">Stab des Verstandes</string>
     <string name="item_staff_of_mind_desc">Ein Stab, der mit der Energie der Psyche durchtränkt ist.</string>
     <string name="item_staff_of_chaos_name">Stab des Chaos</string>
     <string name="item_staff_of_chaos_desc">Ein chaotischer Stab, der voller wilder magischer Energie pulsiert.</string>
@@ -503,7 +503,7 @@
     <string name="item_earth_rune_desc">Eine Rune, die von der Kraft der Erde durchdrungen ist.</string>
     <string name="item_fire_rune_name">Feuerrune</string>
     <string name="item_fire_rune_desc">Eine Rune, die von der Kraft des Feuers durchdrungen ist.</string>
-    <string name="item_mind_rune_name">Geistes-Rune</string>
+    <string name="item_mind_rune_name">Rune des Verstandes</string>
     <string name="item_mind_rune_desc">Eine Rune, die psychische Energie kanalisiert.</string>
     <string name="item_chaos_rune_name">Chaos-Rune</string>
     <string name="item_chaos_rune_desc">Eine Rune der wilden, chaotischen Magie.</string>
