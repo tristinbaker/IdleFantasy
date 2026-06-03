@@ -55,6 +55,7 @@ class SessionRepository @Inject constructor(
         durationMs: Long = SESSION_DURATION_MS,
         skillDisplayName: String,
         alarmOffsetMs: Long? = null,
+        insertAsCompleted: Boolean = false,
     ): SkillSession {
         val now = System.currentTimeMillis()
         val session = SkillSession(
@@ -64,10 +65,13 @@ class SessionRepository @Inject constructor(
             endsAt      = now + durationMs,
             frames      = frames,
             activityKey = activityKey,
+            completed   = insertAsCompleted,
         )
         sessionDao.insert(session)
-        val alarmAt = if (alarmOffsetMs != null) now + alarmOffsetMs else session.endsAt
-        scheduleAlarm(session.sessionId, alarmAt, skillDisplayName)
+        if (!insertAsCompleted) {
+            val alarmAt = if (alarmOffsetMs != null) now + alarmOffsetMs else session.endsAt
+            scheduleAlarm(session.sessionId, alarmAt, skillDisplayName)
+        }
         return session
     }
 
@@ -122,6 +126,12 @@ class SessionRepository @Inject constructor(
         val now = System.currentTimeMillis()
         if (now >= session.endsAt) {
             markCompleted(session.sessionId)
+            var catchUpMs = now - session.endsAt
+            while (catchUpMs > 0) {
+                val used = starter.insertNextQueuedAsOffline(catchUpMs)
+                if (used == 0L) break
+                catchUpMs -= used
+            }
             starter.startNextQueued()
         } else {
             scheduleAlarm(session.sessionId, session.endsAt, session.skillName)

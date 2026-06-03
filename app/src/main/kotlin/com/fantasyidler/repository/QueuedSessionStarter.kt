@@ -57,7 +57,60 @@ class QueuedSessionStarter @Inject constructor(
         return false
     }
 
-    private suspend fun startQueuedAction(action: QueuedAction) {
+    /**
+     * Estimates how long [action] would take without running the full simulation.
+     * Used to decide whether a queued session fits within remaining catch-up time.
+     */
+    private fun estimateDuration(action: QueuedAction, agilityLevel: Int): Long {
+        val base = SkillSimulator.sessionDurationMs(agilityLevel)
+        val perItem = base / 60L
+        return when (action.skillName) {
+            Skills.MINING, Skills.WOODCUTTING, Skills.FISHING,
+            Skills.AGILITY, Skills.FIREMAKING, "expedition", "combat" -> base
+            Skills.SMITHING, Skills.COOKING, Skills.FLETCHING,
+            Skills.CRAFTING, Skills.HERBLORE,
+            Skills.RUNECRAFTING, Skills.PRAYER -> action.qty.toLong() * perItem
+            "boss" -> gameData.bosses[action.activityKey]
+                          ?.durationMinutes?.let { it * (base / 60L) } ?: base
+            Skills.MERCANTILE -> action.estimatedDurationMs.takeIf { it > 0 } ?: base
+            else -> base
+        }
+    }
+
+    /**
+     * Pops the next queued action and inserts it as an already-completed session,
+     * provided its estimated duration fits within [remainingMs].
+     *
+     * Returns the estimated duration of the inserted session, or 0L if:
+     * - the queue is empty
+     * - the next session wouldn't have finished within [remainingMs]
+     * - the session failed to start (re-queued at front)
+     *
+     * Called from [SessionRepository.recoverActiveSession] to reconstruct offline progress.
+     */
+    suspend fun insertNextQueuedAsOffline(remainingMs: Long): Long {
+        mutex.withLock {
+            val next = playerRepo.dequeueNextAction() ?: return 0L
+            val player = playerRepo.getOrCreatePlayer()
+            val levels: Map<String, Int> = json.decodeFromString(player.skillLevels)
+            val agilityLevel = levels[Skills.AGILITY] ?: 1
+            val duration = estimateDuration(next, agilityLevel)
+            if (duration > remainingMs) {
+                playerRepo.requeueActionAtFront(next)
+                return 0L
+            }
+            return try {
+                startQueuedAction(next, offline = true)
+                duration
+            } catch (_: Exception) {
+                playerRepo.requeueActionAtFront(next)
+                0L
+            }
+        }
+        return 0L
+    }
+
+    private suspend fun startQueuedAction(action: QueuedAction, offline: Boolean = false) {
         val player    = playerRepo.getOrCreatePlayer()
         val levels:   Map<String, Int>     = json.decodeFromString(player.skillLevels)
         val xpMap:    Map<String, Long>    = json.decodeFromString(player.skillXp)
@@ -84,7 +137,7 @@ class QueuedSessionStarter @Inject constructor(
                     petDropKey      = petDropKey(Skills.MINING),
                     petDropChance   = petDropChance(Skills.MINING),
                 )
-                startSession(action, result)
+                startSession(action, result, offline)
             }
             Skills.WOODCUTTING -> {
                 val treeKey  = action.activityKey
@@ -98,7 +151,7 @@ class QueuedSessionStarter @Inject constructor(
                     petDropKey      = petDropKey(Skills.WOODCUTTING),
                     petDropChance   = petDropChance(Skills.WOODCUTTING),
                 )
-                startSession(action, result)
+                startSession(action, result, offline)
             }
             Skills.FISHING -> {
                 val fishKey  = action.activityKey
@@ -114,7 +167,7 @@ class QueuedSessionStarter @Inject constructor(
                     petDropChance    = petDropChance(Skills.FISHING),
                     fishingSkillData = gameData.fishingSkillData,
                 )
-                startSession(action, result)
+                startSession(action, result, offline)
             }
             Skills.AGILITY -> {
                 val courseKey  = action.activityKey
@@ -125,7 +178,7 @@ class QueuedSessionStarter @Inject constructor(
                     agilityLevel = agilityLevel,
                     petBoostPct  = gatheringPetBoost(player.pets, Skills.AGILITY),
                 )
-                startSession(action, result)
+                startSession(action, result, offline)
             }
             Skills.FIREMAKING -> {
                 val logKey  = action.activityKey
@@ -147,7 +200,7 @@ class QueuedSessionStarter @Inject constructor(
                     petBoostPct        = gatheringPetBoost(player.pets, Skills.FIREMAKING),
                     forcedDropPerFrame = ashKey,
                 )
-                startSession(action, result)
+                startSession(action, result, offline)
             }
             Skills.RUNECRAFTING -> {
                 val runeKey  = action.activityKey
@@ -179,7 +232,7 @@ class QueuedSessionStarter @Inject constructor(
                     }
                 }
                 val perEssenceMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
-                sessionRepo.startSession(Skills.RUNECRAFTING, runeKey, encodeFrames(frames), qty.toLong() * perEssenceMs, action.skillDisplayName)
+                sessionRepo.startSession(Skills.RUNECRAFTING, runeKey, encodeFrames(frames), qty.toLong() * perEssenceMs, action.skillDisplayName, insertAsCompleted = offline)
             }
             Skills.PRAYER -> {
                 val boneKey = action.activityKey
@@ -205,11 +258,12 @@ class QueuedSessionStarter @Inject constructor(
                 }
                 val perBoneMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
                 sessionRepo.startSession(
-                    skillName        = Skills.PRAYER,
-                    activityKey      = boneKey,
-                    frames           = encodeFrames(frames),
-                    durationMs       = qty.toLong() * perBoneMs,
-                    skillDisplayName = action.skillDisplayName,
+                    skillName         = Skills.PRAYER,
+                    activityKey       = boneKey,
+                    frames            = encodeFrames(frames),
+                    durationMs        = qty.toLong() * perBoneMs,
+                    skillDisplayName  = action.skillDisplayName,
+                    insertAsCompleted = offline,
                 )
             }
             Skills.SMITHING -> {
@@ -217,35 +271,35 @@ class QueuedSessionStarter @Inject constructor(
                 val qty = action.qty.takeIf { it > 0 } ?: return
                 val frames = buildCraftFrames(xpMap[Skills.SMITHING] ?: 0L, qty, r.xpPerItem, r.outputQuantity, action.activityKey)
                 val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
-                sessionRepo.startSession(Skills.SMITHING, action.activityKey, encodeFrames(frames), qty * perItemMs, action.skillDisplayName)
+                sessionRepo.startSession(Skills.SMITHING, action.activityKey, encodeFrames(frames), qty * perItemMs, action.skillDisplayName, insertAsCompleted = offline)
             }
             Skills.COOKING -> {
                 val r: CookingRecipe = gameData.cookingRecipes[action.activityKey] ?: return
                 val qty = action.qty.takeIf { it > 0 } ?: return
                 val frames = buildCraftFrames(xpMap[Skills.COOKING] ?: 0L, qty, r.xpPerItem, 1, r.cookedItem)
                 val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
-                sessionRepo.startSession(Skills.COOKING, action.activityKey, encodeFrames(frames), qty * perItemMs, action.skillDisplayName)
+                sessionRepo.startSession(Skills.COOKING, action.activityKey, encodeFrames(frames), qty * perItemMs, action.skillDisplayName, insertAsCompleted = offline)
             }
             Skills.FLETCHING -> {
                 val r   = gameData.fletchingRecipes[action.activityKey] ?: return
                 val qty = action.qty.takeIf { it > 0 } ?: return
                 val frames = buildCraftFrames(xpMap[Skills.FLETCHING] ?: 0L, qty, r.xpPerItem, r.outputQuantity, r.itemName)
                 val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
-                sessionRepo.startSession(Skills.FLETCHING, action.activityKey, encodeFrames(frames), qty * perItemMs, action.skillDisplayName)
+                sessionRepo.startSession(Skills.FLETCHING, action.activityKey, encodeFrames(frames), qty * perItemMs, action.skillDisplayName, insertAsCompleted = offline)
             }
             Skills.CRAFTING -> {
                 val r   = gameData.craftingRecipes[action.activityKey] ?: return
                 val qty = action.qty.takeIf { it > 0 } ?: return
                 val frames = buildCraftFrames(xpMap[Skills.CRAFTING] ?: 0L, qty, r.xpPerItem, r.outputQuantity, action.activityKey)
                 val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
-                sessionRepo.startSession(Skills.CRAFTING, action.activityKey, encodeFrames(frames), qty * perItemMs, action.skillDisplayName)
+                sessionRepo.startSession(Skills.CRAFTING, action.activityKey, encodeFrames(frames), qty * perItemMs, action.skillDisplayName, insertAsCompleted = offline)
             }
             Skills.HERBLORE -> {
                 val r   = gameData.herbloreRecipes[action.activityKey] ?: return
                 val qty = action.qty.takeIf { it > 0 } ?: return
                 val frames    = buildCraftFrames(xpMap[Skills.HERBLORE] ?: 0L, qty, r.xpPerItem, r.outputQuantity, action.activityKey)
                 val perItemMs = SkillSimulator.sessionDurationMs(agilityLevel) / 60
-                sessionRepo.startSession(Skills.HERBLORE, action.activityKey, encodeFrames(frames), qty * perItemMs, action.skillDisplayName)
+                sessionRepo.startSession(Skills.HERBLORE, action.activityKey, encodeFrames(frames), qty * perItemMs, action.skillDisplayName, insertAsCompleted = offline)
             }
             Skills.MERCANTILE -> {
                 val route = gameData.tradeRoutes.firstOrNull { it.id == action.activityKey } ?: return
@@ -255,11 +309,12 @@ class QueuedSessionStarter @Inject constructor(
                     agilityLevel = agilityLevel,
                 )
                 sessionRepo.startSession(
-                    skillName        = action.skillName,
-                    activityKey      = action.activityKey,
-                    frames           = encodeFrames(result.frames),
-                    durationMs       = result.durationMs,
-                    skillDisplayName = action.skillDisplayName,
+                    skillName         = action.skillName,
+                    activityKey       = action.activityKey,
+                    frames            = encodeFrames(result.frames),
+                    durationMs        = result.durationMs,
+                    skillDisplayName  = action.skillDisplayName,
+                    insertAsCompleted = offline,
                 )
             }
             "boss" -> {
@@ -308,13 +363,14 @@ class QueuedSessionStarter @Inject constructor(
                 val bossDurationMs = boss.durationMinutes * frameMs
                 val animPerFrameMs = bossDurationMs / 60L
                 sessionRepo.startSession(
-                    skillName        = "boss",
-                    activityKey      = bossKey,
-                    frames           = encodeFrames(bossFrames),
-                    durationMs       = bossDurationMs,
-                    skillDisplayName = action.skillDisplayName,
-                    alarmOffsetMs    = if (bossFrames.size < boss.durationMinutes)
+                    skillName         = "boss",
+                    activityKey       = bossKey,
+                    frames            = encodeFrames(bossFrames),
+                    durationMs        = bossDurationMs,
+                    skillDisplayName  = action.skillDisplayName,
+                    alarmOffsetMs     = if (bossFrames.size < boss.durationMinutes)
                         (bossFrames.size - 1) * animPerFrameMs + 5_000L else null,
+                    insertAsCompleted = offline,
                 )
             }
             "expedition" -> {
@@ -333,7 +389,7 @@ class QueuedSessionStarter @Inject constructor(
                     agilityLevel   = agilityLevel,
                     toolEfficiency = toolEfficiency,
                 )
-                startSession(action, result)
+                startSession(action, result, offline)
             }
             "combat" -> {
                 val dungeonKey = action.activityKey
@@ -387,18 +443,19 @@ class QueuedSessionStarter @Inject constructor(
                     if (!staffCoversRune)
                         playerRepo.consumeItems(mapOf(spell.runeType to totalKills * spell.runeCost))
                 }
-                startSession(action, result)
+                startSession(action, result, offline)
             }
         }
     }
 
-    private suspend fun startSession(action: QueuedAction, result: SkillSimulator.Result) {
+    private suspend fun startSession(action: QueuedAction, result: SkillSimulator.Result, offline: Boolean = false) {
         sessionRepo.startSession(
-            skillName        = action.skillName,
-            activityKey      = action.activityKey,
-            frames           = encodeFrames(result.frames),
-            durationMs       = result.durationMs,
-            skillDisplayName = action.skillDisplayName,
+            skillName         = action.skillName,
+            activityKey       = action.activityKey,
+            frames            = encodeFrames(result.frames),
+            durationMs        = result.durationMs,
+            skillDisplayName  = action.skillDisplayName,
+            insertAsCompleted = offline,
         )
     }
 
