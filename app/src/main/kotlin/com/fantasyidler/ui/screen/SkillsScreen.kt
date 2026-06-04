@@ -1032,7 +1032,7 @@ internal fun AgilitySheet(
                     val xpGain = SkillSimulator.estimateAgilityXp(course.xpPerSuccess, course.levelRequired, currentAgilityLevel)
                     ActivityRow(
                         name             = course.displayName,
-                        detail           = "Lv. ${course.levelRequired}  •  ${course.xpPerSuccess} XP/lap",
+                        detail           = context.getString(R.string.skills_agility_course_detail, course.levelRequired, course.xpPerSuccess),
                         projectedLabel   = projectedXpLabel(currentXp, xpGain),
                         isStarting       = isStarting,
                         hasActiveSession = hasActiveSession,
@@ -1180,6 +1180,14 @@ internal fun FiremakingSheet(
                 fontWeight = FontWeight.SemiBold,
                 modifier   = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
             )
+            if (sessionDurationMs > 0) {
+                Text(
+                    text     = "~${(qty.toLong() * (sessionDurationMs / 60)).formatDurationMs()}",
+                    style    = MaterialTheme.typography.bodySmall,
+                    color    = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
+                )
+            }
             val enabled = !isStarting && !(!hasActiveSession && false) && (hasActiveSession || !isQueueFull.not()) && maxQty > 0
             Button(
                 onClick  = { onStart(key, qty) },
@@ -1933,7 +1941,7 @@ private fun CraftRecipeRow(
         Column(horizontalAlignment = Alignment.End) {
             when {
                 !meetsLvl  -> Text(
-                    text  = "Lv. ${recipe.levelRequired}",
+                    text  = stringResource(R.string.label_lv, recipe.levelRequired),
                     style = MaterialTheme.typography.labelSmall,
                     color = dim,
                 )

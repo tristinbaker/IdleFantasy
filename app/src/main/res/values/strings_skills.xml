@@ -46,6 +46,15 @@
     <string name="skill_prayer_name">Prayer</string>
     <string name="skill_prayer_desc">Bury bones dropped from combat to earn Prayer XP. Higher levels increase your combat level.</string>
 
+    <!-- ===== Skill unlock sheet labels ===== -->
+    <string name="label_lv">Lv %1$d</string>
+    <string name="skills_agility_course_detail">Lv. %1$d  •  %2$d XP/lap</string>
+    <string name="label_hp_passive">Passive — increases max HP</string>
+    <string name="label_hp_scales">Max HP increases each level</string>
+    <string name="label_hp_max">Max HP: %1$d</string>
+    <string name="label_xp_per_bone">%1$s (%2$d XP/bone)</string>
+    <string name="label_xp_per_kill">%1$s (%2$d XP/kill)</string>
+
     <!-- ===== Agility course names and descriptions ===== -->
     <string name="agility_beginner_course_name">Beginner Course</string>
     <string name="agility_beginner_course_desc">A simple obstacle course for those just starting their agility training.</string>

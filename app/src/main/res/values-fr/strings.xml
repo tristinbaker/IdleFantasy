@@ -235,6 +235,8 @@
     <string name="label_combat_level">Niveau de combat</string>
     <string name="label_shop_desc">Acheter et vendre des objets</string>
     <string name="label_no_session_hint">Allez dans Compétences ou Combat pour commencer l’entraînement.</string>
+    <string name="label_recent_activity">Activité Récente</string>
+    <string name="label_no_sessions_yet">Aucune session terminée pour l’instant.</string>
 
     <!-- ===== CombatScreen ===== -->
     <string name="label_dungeons_tab">Donjons</string>
@@ -676,7 +678,18 @@
     <string name="guild_tab_dailies">Demandes quotidiennes</string>
     <string name="guild_daily_resets_in">Réinitialisé chaque jour à 6h</string>
     <string name="guild_locked_hint">Nécessite le niveau de guilde %1$d</string>
-    <string name="guild_no_dailies">Complete guild quests to earn reputation and unlock daily requests.</string>
+    <string name="guild_no_dailies">Terminez des quêtes de guilde pour gagner de la réputation et débloquer les demandes quotidiennes.</string>
+    <string name="guild_contribute_inventory">Contribuer depuis l\'inventaire (%1$d disponible)</string>
+    <string name="guild_quest_desc_gather">Collectez %1$d %2$s pour la %3$s.</string>
+    <string name="guild_quest_desc_craft">Fabriquez %1$d %2$s pour la %3$s.</string>
+    <string name="guild_quest_desc_kill">Éliminez %1$d ennemis en combat %2$s.</string>
+    <string name="guild_quest_desc_prayer">Enterrez %1$d os pour la %2$s.</string>
+    <string name="guild_quest_desc_sessions">Terminez %1$d sessions d\'%2$s pour la %3$s.</string>
+    <string name="guild_quest_desc_trade">Effectuez %1$d route(s) commerciale(s) pour la %2$s.</string>
+    <string name="guild_quest_desc_earn_coins">Gagnez %1$s pièces via les routes commerciales pour la %2$s.</string>
+    <string name="guild_combat_melee">mêlée</string>
+    <string name="guild_combat_ranged">distance</string>
+    <string name="guild_combat_magic">magique</string>
     <string name="guild_rep_label">%1$d / %2$d de réputation</string>
     <string name="guild_quest_complete">Quête terminée : %1$s</string>
     <string name="guild_daily_complete">Récompense quotidienne réclamée !</string>

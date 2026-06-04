@@ -244,6 +244,8 @@
     <string name="label_combat_level">Gevechtslevel</string>
     <string name="label_shop_desc">Koop uitrusting en verkoop buit</string>
     <string name="label_no_session_hint">Ga naar Vaardigheden of Gevecht om te beginnen met trainen.</string>
+    <string name="label_recent_activity">Recente activiteit</string>
+    <string name="label_no_sessions_yet">Nog geen sessies voltooid.</string>
 
     <!-- ===== CombatScreen ===== -->
     <string name="label_dungeons_tab">Dungeons</string>
@@ -700,6 +702,17 @@
     <string name="guild_daily_resets_in">Vernieuwt dagelijks om 06:00</string>
     <string name="guild_locked_hint">Vereist Gilde Level %1$d</string>
     <string name="guild_no_dailies">Voltooi gildequests om reputatie te verdienen en dagelijkse Quests te ontgrendelen.</string>
+    <string name="guild_contribute_inventory">Bijdragen vanuit inventaris (%1$d beschikbaar)</string>
+    <string name="guild_quest_desc_gather">Verzamel %1$d %2$s voor het %3$s.</string>
+    <string name="guild_quest_desc_craft">Maak %1$d %2$s voor het %3$s.</string>
+    <string name="guild_quest_desc_kill">Versla %1$d vijanden met %2$s gevecht.</string>
+    <string name="guild_quest_desc_prayer">Begraaf %1$d botten voor het %2$s.</string>
+    <string name="guild_quest_desc_sessions">Voltooi %1$d %2$s sessies voor het %3$s.</string>
+    <string name="guild_quest_desc_trade">Voltooi %1$d handelsroute(s) voor het %2$s.</string>
+    <string name="guild_quest_desc_earn_coins">Verdien %1$s munten via handelsroutes voor het %2$s.</string>
+    <string name="guild_combat_melee">nabij</string>
+    <string name="guild_combat_ranged">afstand</string>
+    <string name="guild_combat_magic">magie</string>
     <string name="guild_rep_label">%1$d / %2$d reputatie</string>
     <string name="guild_quest_complete">Quest voltooid: %1$s</string>
     <string name="guild_daily_complete">Dagelijkse beloning opgeëist!</string>

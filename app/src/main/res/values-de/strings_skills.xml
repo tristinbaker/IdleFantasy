@@ -46,6 +46,15 @@
     <string name="skill_prayer_name">Gebete</string>
     <string name="skill_prayer_desc">Vergrabe Knochen, um Gebets-EP zu sammeln und mächtige Kampfgebete freizuschalten.</string>
 
+    <!-- ===== Skill unlock sheet labels ===== -->
+    <string name="label_lv">Lv. %1$d</string>
+    <string name="skills_agility_course_detail">Lv. %1$d  •  %2$d XP/Runde</string>
+    <string name="label_hp_passive">Passiv — erhöht maximale TP</string>
+    <string name="label_hp_scales">Max. TP steigt jedes Level</string>
+    <string name="label_hp_max">Max. TP: %1$d</string>
+    <string name="label_xp_per_bone">%1$s (%2$d XP/Knochen)</string>
+    <string name="label_xp_per_kill">%1$s (%2$d XP/Abschuss)</string>
+
     <!-- ===== Agility course names and descriptions ===== -->
     <string name="agility_beginner_course_name">Einsteigerkurs</string>
     <string name="agility_beginner_course_desc">Ein einfacher Hindernisparcours für alle, die gerade erst mit dem Beweglichkeitstraining beginnen.</string>

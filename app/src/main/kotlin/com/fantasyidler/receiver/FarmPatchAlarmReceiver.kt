@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import com.fantasyidler.notification.SessionNotificationManager
+import com.fantasyidler.util.GameStrings
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -18,7 +19,7 @@ class FarmPatchAlarmReceiver : BroadcastReceiver() {
     @Inject lateinit var notificationManager: SessionNotificationManager
 
     override fun onReceive(context: Context, intent: Intent) {
-        val cropName = intent.getStringExtra(EXTRA_CROP_NAME) ?: return
-        notificationManager.showFarmingReady(cropName)
+        val cropKey = intent.getStringExtra(EXTRA_CROP_NAME) ?: return
+        notificationManager.showFarmingReady(GameStrings.cropName(context, cropKey))
     }
 }

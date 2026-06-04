@@ -243,7 +243,9 @@
     <string name="label_player_stats">Spielerstatistiken</string>
     <string name="label_combat_level">Kampflevel</string>
     <string name="label_shop_desc">Artikel kaufen und verkaufen</string>
-    <string name="label_no_session_hint">Geh zu „Fähigkeiten“ oder „Kampf“, um mit dem Training zu beginnen.</string>
+    <string name="label_no_session_hint">Geh zu „Fähigkeiten” oder „Kampf”, um mit dem Training zu beginnen.</string>
+    <string name="label_recent_activity">Letzte Aktivität</string>
+    <string name="label_no_sessions_yet">Noch keine Sitzungen abgeschlossen.</string>
 
     <!-- ===== CombatScreen ===== -->
     <string name="label_dungeons_tab">Dungeons</string>
@@ -355,7 +357,7 @@
     <string name="home_town_desc">Visit the shop, inn, guild, church, and slayer master</string>
     <string name="guild_dailies_available">Dailies available</string>
     <string name="guild_do_dailies_hint">Do dailies to increase your reputation</string>
-    <string name="guild_quest_gate_blocked">Complete quests to advance your rank</string>
+    <string name="guild_quest_gate_blocked">Schließe Quests ab, um deinen Rang zu erhöhen.</string>
     <string name="guild_quest_required">Quest required to advance</string>
     <string name="home_died_message">Du bist gestorben und hast den Großteil deiner Gewinne verloren.</string>
     <string name="home_xp_boost_was_active">2× XP Boost war aktiv</string>
@@ -658,7 +660,18 @@
     <string name="guild_tab_dailies">Daily Requests</string>
     <string name="guild_daily_resets_in">Resets daily at 6am</string>
     <string name="guild_locked_hint">Requires Guild Level %1$d</string>
-    <string name="guild_no_dailies">Complete guild quests to earn reputation and unlock daily requests.</string>
+    <string name="guild_no_dailies">Schließe Gildenaufgaben ab, um Ruf zu verdienen und tägliche Anfragen freizuschalten.</string>
+    <string name="guild_contribute_inventory">Aus Inventar beisteuern (%1$d verfügbar)</string>
+    <string name="guild_quest_desc_gather">Sammle %1$d %2$s für die %3$s.</string>
+    <string name="guild_quest_desc_craft">Stelle %1$d %2$s für die %3$s her.</string>
+    <string name="guild_quest_desc_kill">Besiege %1$d Feinde im %2$s-Kampf.</string>
+    <string name="guild_quest_desc_prayer">Vergrabe %1$d Knochen für die %2$s.</string>
+    <string name="guild_quest_desc_sessions">Schließe %1$d %2$s-Sitzungen für die %3$s ab.</string>
+    <string name="guild_quest_desc_trade">Schließe %1$d Handelsroute(n) für die %2$s ab.</string>
+    <string name="guild_quest_desc_earn_coins">Verdiene %1$s Münzen über Handelsrouten für die %2$s.</string>
+    <string name="guild_combat_melee">Nahkampf</string>
+    <string name="guild_combat_ranged">Fernkampf</string>
+    <string name="guild_combat_magic">Magie</string>
     <string name="guild_rep_label">%1$d / %2$d rep</string>
     <string name="guild_quest_complete">Quest complete: %1$s</string>
     <string name="guild_daily_complete">Daily reward claimed!</string>

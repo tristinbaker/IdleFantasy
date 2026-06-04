@@ -468,6 +468,7 @@ class HomeViewModel @Inject constructor(
                 com.fantasyidler.data.model.RecentSession(
                     skillName = s.skillName,
                     activityDisplayName = activityDisplay,
+                    activityKey = s.activityKey,
                 )
             }
             val updatedFlags = playerRepo.getFlags()

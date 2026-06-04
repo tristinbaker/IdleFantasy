@@ -46,6 +46,15 @@
     <string name="skill_prayer_name">Gebed</string>
     <string name="skill_prayer_desc">Begraaf botten die vallen bij gevechten om Gebed XP te verdienen. Hogere levels verhogen je gevechtslevel.</string>
 
+    <!-- ===== Skill unlock sheet labels ===== -->
+    <string name="label_lv">Lv. %1$d</string>
+    <string name="skills_agility_course_detail">Lv. %1$d  •  %2$d XP/ronde</string>
+    <string name="label_hp_passive">Passief — verhoogt max. LP</string>
+    <string name="label_hp_scales">Max. LP stijgt elk level</string>
+    <string name="label_hp_max">Max. LP: %1$d</string>
+    <string name="label_xp_per_bone">%1$s (%2$d XP/bot)</string>
+    <string name="label_xp_per_kill">%1$s (%2$d XP/kill)</string>
+
     <!-- ===== Agility course names and descriptions ===== -->
     <string name="agility_beginner_course_name">Beginners Parcours</string>
     <string name="agility_beginner_course_desc">Een eenvoudige hindernisbaan voor degenen die net beginnen met hun behendigheidstraining.</string>

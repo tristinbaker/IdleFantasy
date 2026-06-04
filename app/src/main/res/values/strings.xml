@@ -244,6 +244,8 @@
     <string name="label_combat_level">Combat Level</string>
     <string name="label_shop_desc">Buy equipment and sell loot</string>
     <string name="label_no_session_hint">Head to Skills or Combat to start training.</string>
+    <string name="label_recent_activity">Recent Activity</string>
+    <string name="label_no_sessions_yet">No sessions completed yet.</string>
 
     <!-- ===== CombatScreen ===== -->
     <string name="label_dungeons_tab">Dungeons</string>
@@ -713,6 +715,17 @@
     <string name="guild_daily_resets_in">Resets daily at 6am</string>
     <string name="guild_locked_hint">Requires Guild Level %1$d</string>
     <string name="guild_no_dailies">Complete guild quests to earn reputation and unlock daily requests.</string>
+    <string name="guild_contribute_inventory">Contribute from inventory (%1$d available)</string>
+    <string name="guild_quest_desc_gather">Collect %1$d %2$s for the %3$s.</string>
+    <string name="guild_quest_desc_craft">Craft %1$d %2$s for the %3$s.</string>
+    <string name="guild_quest_desc_kill">Defeat %1$d enemies using %2$s combat.</string>
+    <string name="guild_quest_desc_prayer">Bury %1$d bones for the %2$s.</string>
+    <string name="guild_quest_desc_sessions">Complete %1$d %2$s sessions for the %3$s.</string>
+    <string name="guild_quest_desc_trade">Complete %1$d trade routes for the %2$s.</string>
+    <string name="guild_quest_desc_earn_coins">Earn %1$s coins via trade routes for the %2$s.</string>
+    <string name="guild_combat_melee">melee</string>
+    <string name="guild_combat_ranged">ranged</string>
+    <string name="guild_combat_magic">magic</string>
     <string name="guild_rep_label">%1$d / %2$d rep</string>
     <string name="guild_quest_complete">Quest complete: %1$s</string>
     <string name="guild_daily_complete">Daily reward claimed!</string>

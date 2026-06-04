@@ -233,6 +233,8 @@
     <string name="label_combat_level">Nivel de combate</string>
     <string name="label_shop_desc">Compra y vende artículos</string>
     <string name="label_no_session_hint">Dirígete a Habilidades o Combate para comenzar a entrenar.</string>
+    <string name="label_recent_activity">Actividad Reciente</string>
+    <string name="label_no_sessions_yet">Aún no se han completado sesiones.</string>
 
     <!-- ===== CombatScreen ===== -->
     <string name="label_dungeons_tab">Dungeons</string>
@@ -664,7 +666,18 @@
     <string name="guild_tab_dailies">Daily Requests</string>
     <string name="guild_daily_resets_in">Resets daily at 6am</string>
     <string name="guild_locked_hint">Requires Guild Level %1$d</string>
-    <string name="guild_no_dailies">Complete guild quests to earn reputation and unlock daily requests.</string>
+    <string name="guild_no_dailies">Completa misiones de gremio para ganar reputación y desbloquear solicitudes diarias.</string>
+    <string name="guild_contribute_inventory">Contribuir desde el inventario (%1$d disponible)</string>
+    <string name="guild_quest_desc_gather">Recolecta %1$d %2$s para el %3$s.</string>
+    <string name="guild_quest_desc_craft">Fabrica %1$d %2$s para el %3$s.</string>
+    <string name="guild_quest_desc_kill">Derrota %1$d enemigos usando combate %2$s.</string>
+    <string name="guild_quest_desc_prayer">Entierra %1$d huesos para el %2$s.</string>
+    <string name="guild_quest_desc_sessions">Completa %1$d sesiones de %2$s para el %3$s.</string>
+    <string name="guild_quest_desc_trade">Completa %1$d rutas comerciales para el %2$s.</string>
+    <string name="guild_quest_desc_earn_coins">Gana %1$s monedas a través de rutas comerciales para el %2$s.</string>
+    <string name="guild_combat_melee">cuerpo a cuerpo</string>
+    <string name="guild_combat_ranged">a distancia</string>
+    <string name="guild_combat_magic">mágico</string>
     <string name="guild_rep_label">%1$d / %2$d rep</string>
     <string name="guild_quest_complete">Quest complete: %1$s</string>
     <string name="guild_daily_complete">Daily reward claimed!</string>
@@ -846,7 +859,7 @@
     <string name="profile_view_combat_gear">View Combat Gear</string>
     <string name="inn_slot1_header">Long Laborer</string>
     <string name="inn_slot2_header">Skilled Worker</string>
-    <string name="guild_quest_gate_blocked">Complete quests to advance your rank</string>
+    <string name="guild_quest_gate_blocked">Completa misiones para avanzar de rango.</string>
     <string name="guild_quest_required">Quest required to advance</string>
     <string name="home_xp_boost_active">2× XP Boost active — %1$s remaining</string>
     <string name="inn_buy_qty">Quantity</string>

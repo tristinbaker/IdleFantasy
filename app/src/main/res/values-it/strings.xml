@@ -244,6 +244,8 @@
     <string name="label_combat_level">Livello di Combattimento</string>
     <string name="label_shop_desc">Acquista equipaggiamento e vendi il tuo bottino</string>
     <string name="label_no_session_hint">Tocca Abilità o Combattimento per iniziare l\'addestramento.</string>
+    <string name="label_recent_activity">Attività Recente</string>
+    <string name="label_no_sessions_yet">Nessuna sessione completata ancora.</string>
 
     <!-- ===== CombatScreen ===== -->
     <string name="label_dungeons_tab">Dungeon</string>
@@ -697,6 +699,17 @@
     <string name="guild_daily_resets_in">Si aggiornano quotidianamente alle 06:00</string>
     <string name="guild_locked_hint">Richiede Livello Gilda %1$d</string>
     <string name="guild_no_dailies">Completa quest della gilda per guadagnare reputazione e sbloccare le richieste del giorno.</string>
+    <string name="guild_contribute_inventory">Contribuisci dall\'inventario (%1$d disponibile)</string>
+    <string name="guild_quest_desc_gather">Raccogli %1$d %2$s per la %3$s.</string>
+    <string name="guild_quest_desc_craft">Crea %1$d %2$s per la %3$s.</string>
+    <string name="guild_quest_desc_kill">Sconfiggi %1$d nemici usando il combattimento %2$s.</string>
+    <string name="guild_quest_desc_prayer">Seppellisci %1$d ossa per la %2$s.</string>
+    <string name="guild_quest_desc_sessions">Completa %1$d sessioni di %2$s per la %3$s.</string>
+    <string name="guild_quest_desc_trade">Completa %1$d percorsi commerciali per la %2$s.</string>
+    <string name="guild_quest_desc_earn_coins">Guadagna %1$s monete tramite percorsi commerciali per la %2$s.</string>
+    <string name="guild_combat_melee">mischia</string>
+    <string name="guild_combat_ranged">distanza</string>
+    <string name="guild_combat_magic">magia</string>
     <string name="guild_rep_label">%1$d / %2$d rep</string>
     <string name="guild_quest_complete">Quest completata: %1$s</string>
     <string name="guild_daily_complete">Ottieni ricompensa giornaliera!</string>

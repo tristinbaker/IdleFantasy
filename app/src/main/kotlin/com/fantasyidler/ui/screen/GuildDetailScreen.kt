@@ -43,16 +43,43 @@ import kotlinx.coroutines.launch
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.R
+import com.fantasyidler.data.json.GuildDailyTemplate
+import com.fantasyidler.data.json.GuildQuestData
 import com.fantasyidler.repository.GuildDailyWithProgress
 import com.fantasyidler.repository.GuildQuestWithProgress
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.GuildDetailViewModel
+import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatCoins
+
+@Composable
+private fun localizedQuestDesc(type: String, target: String, amount: Int, guild: String): String {
+    val context = LocalContext.current
+    val guildName = guildDisplayName(guild)
+    val itemName  = if (target.isNotEmpty() && target != "any") GameStrings.itemName(context, target) else ""
+    val combatStyle = when (guild) {
+        "warriors" -> stringResource(R.string.guild_combat_melee)
+        "archers"  -> stringResource(R.string.guild_combat_ranged)
+        "mages"    -> stringResource(R.string.guild_combat_magic)
+        else       -> guild
+    }
+    return when (type) {
+        "gather"     -> stringResource(R.string.guild_quest_desc_gather, amount, itemName, guildName)
+        "craft"      -> stringResource(R.string.guild_quest_desc_craft, amount, itemName, guildName)
+        "kill"       -> stringResource(R.string.guild_quest_desc_kill, amount, combatStyle)
+        "prayer"     -> stringResource(R.string.guild_quest_desc_prayer, amount, guildName)
+        "sessions"   -> stringResource(R.string.guild_quest_desc_sessions, amount, GameStrings.skillName(context, target), guildName)
+        "trade"      -> stringResource(R.string.guild_quest_desc_trade, amount, guildName)
+        "earn_coins" -> stringResource(R.string.guild_quest_desc_earn_coins, amount.toLong().formatCoins(), guildName)
+        else         -> ""
+    }
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -262,7 +289,7 @@ private fun GuildQuestRow(
                 )
             }
             Text(
-                text       = qwp.quest.name,
+                text       = GameStrings.questName(LocalContext.current, qwp.quest.id, qwp.quest.name),
                 style      = MaterialTheme.typography.bodyLarge,
                 fontWeight = FontWeight.SemiBold,
                 color      = if (locked) dimColor else MaterialTheme.colorScheme.onSurface,
@@ -270,7 +297,7 @@ private fun GuildQuestRow(
         }
         Spacer(Modifier.height(2.dp))
         Text(
-            text  = qwp.quest.description,
+            text  = localizedQuestDesc(qwp.quest.type, qwp.quest.target, qwp.quest.amount, qwp.quest.guild),
             style = MaterialTheme.typography.bodySmall,
             color = if (locked) dimColor else MaterialTheme.colorScheme.onSurfaceVariant,
         )
@@ -390,13 +417,13 @@ private fun GuildDailyCard(
             .padding(horizontal = 16.dp, vertical = 12.dp),
     ) {
         Text(
-            text       = dwp.template.name,
+            text       = GameStrings.questName(LocalContext.current, dwp.template.id, dwp.template.name),
             style      = MaterialTheme.typography.bodyLarge,
             fontWeight = FontWeight.SemiBold,
         )
         Spacer(Modifier.height(2.dp))
         Text(
-            text  = dwp.template.description,
+            text  = localizedQuestDesc(dwp.template.type, dwp.template.target, dwp.template.amount, dwp.template.guild),
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
@@ -450,7 +477,7 @@ private fun GuildDailyCard(
                 if (inventoryQty > 0) {
                     Spacer(Modifier.height(8.dp))
                     OutlinedButton(onClick = onContribute, modifier = Modifier.fillMaxWidth()) {
-                        Text("Contribute from inventory ($inventoryQty available)")
+                        Text(stringResource(R.string.guild_contribute_inventory, inventoryQty))
                     }
                 }
             }
