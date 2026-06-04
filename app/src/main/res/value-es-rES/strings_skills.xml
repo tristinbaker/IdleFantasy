@@ -77,4 +77,11 @@
     <string name="agility_divine_course_desc">Un entrenamiento bendecido por los dioses de la agilidad.</string>
     <string name="agility_transcendent_course_name">Curso Transcendente</string>
     <string name="agility_transcendent_course_desc">El desafío definitivo de agilidad que trasciende los límites mortales.</string>
+    <string name="label_lv">Lv %1$d</string>
+    <string name="skills_agility_course_detail">Lv. %1$d  •  %2$d XP/lap</string>
+    <string name="label_hp_passive">Passive — increases max HP</string>
+    <string name="label_hp_scales">Max HP increases each level</string>
+    <string name="label_hp_max">Max HP: %1$d</string>
+    <string name="label_xp_per_bone">%1$s (%2$d XP/bone)</string>
+    <string name="label_xp_per_kill">%1$s (%2$d XP/kill)</string>
 </resources>

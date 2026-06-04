@@ -931,4 +931,17 @@
     <string name="catalyst_enhanced_output">Produce poción mejorada</string>
     <string name="catalyst_rune_bonus">+%1$d runa por esencia</string>
     <string name="catalyst_none">Sin catalizador</string>
+    <string name="label_recent_activity">Recent Activity</string>
+    <string name="label_no_sessions_yet">No sessions completed yet.</string>
+    <string name="guild_contribute_inventory">Contribute from inventory (%1$d available)</string>
+    <string name="guild_quest_desc_gather">Collect %1$d %2$s for the %3$s.</string>
+    <string name="guild_quest_desc_craft">Craft %1$d %2$s for the %3$s.</string>
+    <string name="guild_quest_desc_kill">Defeat %1$d enemies using %2$s combat.</string>
+    <string name="guild_quest_desc_prayer">Bury %1$d bones for the %2$s.</string>
+    <string name="guild_quest_desc_sessions">Complete %1$d %2$s sessions for the %3$s.</string>
+    <string name="guild_quest_desc_trade">Complete %1$d trade routes for the %2$s.</string>
+    <string name="guild_quest_desc_earn_coins">Earn %1$s coins via trade routes for the %2$s.</string>
+    <string name="guild_combat_melee">melee</string>
+    <string name="guild_combat_ranged">ranged</string>
+    <string name="guild_combat_magic">magic</string>
 </resources>

@@ -1,3 +1,15 @@
+v1.7.11
+• Fix: Guild quest and daily request names and descriptions are now localised; names use string resources with English placeholders ready for translators, descriptions are generated from localised templates
+• Fix: Agility course detail ("Lv. X • Y XP/lap") and crafting level requirement are now localised
+• Fix: Session summary "Coins" label is now localised
+• Fix: Cancelling a queued Firemaking session no longer duplicates logs; logs are now consumed from inventory when the session is queued, matching how Runecrafting and Prayer handle it
+• Fix: Firemaking quantity picker now shows the estimated session duration, matching other crafting skills
+• Fix: Recent Activity sheet title, empty-state text, and skill names are now localised; activity names are resolved from string resources at display time instead of being stored as English text
+• Fix: Skill unlock sheet (Profile > skill tap) now shows localised item, crop, course, and equipment names instead of English-only JSON display names; hitpoints milestones, bone XP, and slayer XP labels are also localised
+• Fix: Farming harvest notifications now show the crop name in the device language instead of always using English
+• Fix: Guild "Contribute from inventory" button is now localised
+• Fix: Several guild strings (no dailies hint, quest gate blocked) that were still showing in English in German, Spanish, French, and Turkish are now translated
+
 v1.7.10
 • Fix: Quest Champion achievement now requires completing all quests rather than a hardcoded count that had become stale as new quests were added
 • Fix: Firemaking and Runecrafting quests now appear under the Crafting tab instead of Gathering, matching their skill category
