@@ -106,8 +106,6 @@ import java.util.Locale
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SkillsScreen(
-    onNavigateToFarming: () -> Unit = {},
-    onNavigateToMercantile: () -> Unit = {},
     onNavigateToSlayer: () -> Unit = {},
     viewModel: SkillsViewModel       = hiltViewModel(),
     craftingViewModel: CraftingViewModel = hiltViewModel(),
@@ -165,12 +163,10 @@ fun SkillsScreen(
                     ExpeditionsScreen(viewModel = expeditionsViewModel, showTitle = false)
                 } else {
                     SkillsTabContent(
-                        state                  = state,
-                        viewModel              = viewModel,
-                        context                = context,
-                        onNavigateToFarming    = onNavigateToFarming,
-                        onNavigateToMercantile = onNavigateToMercantile,
-                        onNavigateToSlayer     = onNavigateToSlayer,
+                        state              = state,
+                        viewModel          = viewModel,
+                        context            = context,
+                        onNavigateToSlayer = onNavigateToSlayer,
                     )
                 }
             }
@@ -296,10 +292,8 @@ fun SkillsScreen(
                         },
                     )
                 }
-                SheetState.Mercantile -> {
-                    viewModel.dismissSheet()
-                    onNavigateToMercantile()
-                }
+                SheetState.Mercantile -> MercantileSheetContent(onDismiss = viewModel::dismissSheet)
+                SheetState.Farming   -> FarmingSheetContent(onDismiss = viewModel::dismissSheet)
                 SheetState.ComingSoon -> ComingSoonSheet()
             }
         }
@@ -315,8 +309,6 @@ private fun SkillsTabContent(
     state: SkillsUiState,
     viewModel: SkillsViewModel,
     context: android.content.Context,
-    onNavigateToFarming: () -> Unit,
-    onNavigateToMercantile: () -> Unit = {},
     onNavigateToSlayer: () -> Unit = {},
 ) {
     LazyColumn(modifier = Modifier.fillMaxSize()) {
@@ -348,10 +340,7 @@ private fun SkillsTabContent(
                 level          = state.skillLevels[key] ?: 1,
                 xp             = state.skillXp[key] ?: 0L,
                 isActive       = state.activeSession?.skillName == key && state.activeSession?.completed == false,
-                onClick        = {
-                    if (key == Skills.FARMING) onNavigateToFarming()
-                    else viewModel.onSkillTapped(key)
-                },
+                onClick        = { viewModel.onSkillTapped(key) },
                 toolEfficiency = efficiency,
                 prestigeLevel  = state.skillPrestige[key] ?: 0,
                 onPrestige     = { viewModel.prestigeSkill(key) },
@@ -378,10 +367,7 @@ private fun SkillsTabContent(
                 level         = state.skillLevels[key] ?: 1,
                 xp            = state.skillXp[key] ?: 0L,
                 isActive      = state.activeSession?.skillName == key && state.activeSession?.completed == false,
-                onClick       = {
-                    if (key == Skills.MERCANTILE) onNavigateToMercantile()
-                    else viewModel.onSkillTapped(key)
-                },
+                onClick       = { viewModel.onSkillTapped(key) },
                 prestigeLevel = state.skillPrestige[key] ?: 0,
                 onPrestige    = { viewModel.prestigeSkill(key) },
             )
@@ -1587,11 +1573,14 @@ internal fun RunecraftingSheet(
                 }
                 (listOf(null) + availableAshes).forEach { ashKey ->
                     val totalRunes = rcBase + when (ashKey) {
-                        "ashes","oak_ashes","willow_ashes" -> 1
-                        "maple_ashes","yew_ashes"         -> 2
-                        "magic_ashes"                     -> 3
-                        "redwood_ashes"                   -> 4
-                        else                              -> 0
+                        "ashes"         -> 1
+                        "oak_ashes"     -> 2
+                        "willow_ashes"  -> 3
+                        "maple_ashes"   -> 4
+                        "yew_ashes"     -> 5
+                        "magic_ashes"   -> 6
+                        "redwood_ashes" -> 7
+                        else            -> 0
                     }
                     Row(
                         modifier          = Modifier.fillMaxWidth().clickable { selectedAshKey = ashKey }.padding(horizontal = 16.dp, vertical = 4.dp),

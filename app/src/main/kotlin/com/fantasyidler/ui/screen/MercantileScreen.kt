@@ -112,6 +112,65 @@ fun MercantileScreen(
     }
 }
 
+// ---------------------------------------------------------------------------
+// Sheet-mode entry point (used when shown inside a ModalBottomSheet)
+// ---------------------------------------------------------------------------
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun MercantileSheetContent(
+    onDismiss: () -> Unit = {},
+    viewModel: MercantileViewModel = hiltViewModel(),
+) {
+    val state by viewModel.uiState.collectAsState()
+    val snackbarHostState = remember { SnackbarHostState() }
+
+    LaunchedEffect(state.snackbarMessage) {
+        state.snackbarMessage?.let {
+            snackbarHostState.showSnackbar(it)
+            viewModel.snackbarConsumed()
+        }
+    }
+
+    if (state.isLoading) {
+        Box(
+            Modifier.fillMaxWidth().height(200.dp),
+            contentAlignment = Alignment.Center,
+        ) { CircularProgressIndicator() }
+        return
+    }
+
+    Box(Modifier.fillMaxWidth()) {
+        LazyColumn(Modifier.fillMaxWidth()) {
+            item { MercantileStatsHeader(state) }
+            item {
+                Text(
+                    text       = stringResource(R.string.mercantile_routes_label),
+                    style      = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.SemiBold,
+                    modifier   = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+                )
+            }
+            items(state.tradeRoutes, key = { it.id }) { route ->
+                TradeRouteRow(
+                    route         = route,
+                    playerCoins   = state.coins,
+                    isStarting    = state.startingSession,
+                    sessionActive = state.anySessionActive,
+                    queueFull     = state.queueSize >= 3,
+                    onStart       = { viewModel.startTradeRoute(route.id) },
+                )
+                HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+            }
+            item { Spacer(Modifier.height(32.dp)) }
+        }
+        SnackbarHost(
+            hostState = snackbarHostState,
+            modifier  = Modifier.align(Alignment.BottomCenter),
+        )
+    }
+}
+
 @Composable
 private fun MercantileStatsHeader(state: MercantileUiState) {
     Surface(

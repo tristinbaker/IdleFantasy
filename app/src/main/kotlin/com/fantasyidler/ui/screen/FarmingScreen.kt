@@ -3,6 +3,7 @@ package com.fantasyidler.ui.screen
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -165,6 +166,117 @@ fun FarmingScreen(
     }
 
     // Harvest result dialog
+    state.harvestResult?.let { result ->
+        AlertDialog(
+            onDismissRequest = viewModel::harvestResultConsumed,
+            title = { Text(stringResource(R.string.farming_harvested, result.cropName)) },
+            text = {
+                Column {
+                    Text(
+                        text  = "+${result.xpGained.formatXp()} XP",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = GoldPrimary,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                    if (result.itemsGained.isNotEmpty()) {
+                        Spacer(Modifier.height(8.dp))
+                        result.itemsGained.forEach { (key, qty) ->
+                            Text(
+                                text  = "${GameStrings.cropName(context, key)}: ×$qty",
+                                style = MaterialTheme.typography.bodyMedium,
+                            )
+                        }
+                    }
+                }
+            },
+            confirmButton = {
+                Button(onClick = viewModel::harvestResultConsumed) {
+                    Text(stringResource(R.string.btn_close))
+                }
+            },
+        )
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Sheet-mode entry point (used when shown inside a ModalBottomSheet)
+// ---------------------------------------------------------------------------
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun FarmingSheetContent(
+    onDismiss: () -> Unit = {},
+    viewModel: FarmingViewModel = hiltViewModel(),
+) {
+    val state by viewModel.uiState.collectAsState()
+    val snackbarHostState = remember { SnackbarHostState() }
+    val context = LocalContext.current
+
+    LaunchedEffect(state.snackbarMessage) {
+        state.snackbarMessage?.let {
+            snackbarHostState.showSnackbar(it)
+            viewModel.snackbarConsumed()
+        }
+    }
+
+    if (state.isLoading) {
+        Box(
+            Modifier.fillMaxWidth().height(200.dp),
+            contentAlignment = Alignment.Center,
+        ) { CircularProgressIndicator() }
+        return
+    }
+
+    Box(Modifier.fillMaxWidth()) {
+        LazyColumn(
+            contentPadding = PaddingValues(bottom = 32.dp),
+            modifier        = Modifier.fillMaxWidth(),
+        ) {
+            item { FarmingXpBar(state) }
+            item {
+                Button(
+                    onClick  = viewModel::harvestAndPlantAll,
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 4.dp),
+                ) { Text(stringResource(R.string.farming_harvest_and_plant)) }
+            }
+            val patches = state.patches.associateBy { it.patchNumber }
+            items(state.patchCount) { index ->
+                val patchNumber = index + 1
+                PatchCard(
+                    patchNumber = patchNumber,
+                    patch       = patches[patchNumber],
+                    crops       = state.availableCrops.associateBy { it.id },
+                    now         = state.now,
+                    ashKey      = state.fertilizer[patchNumber.toString()],
+                    onPlant     = { viewModel.openPlantSheet(patchNumber) },
+                    onHarvest   = { viewModel.harvestPatch(patchNumber) },
+                    onClear     = { viewModel.clearPatch(patchNumber) },
+                )
+            }
+            item { Spacer(Modifier.height(24.dp)) }
+        }
+        SnackbarHost(
+            hostState = snackbarHostState,
+            modifier  = Modifier.align(Alignment.BottomCenter),
+        )
+    }
+
+    state.plantingPatchNumber?.let { patchNum ->
+        val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+        ModalBottomSheet(
+            onDismissRequest = viewModel::closePlantSheet,
+            sheetState       = sheetState,
+            dragHandle       = { BottomSheetDefaults.DragHandle() },
+        ) {
+            PlantSheet(
+                crops     = state.availableCrops,
+                inventory = state.inventory,
+                onPlant   = { crop, ashKey -> viewModel.plantCrop(patchNum, crop, ashKey) },
+                onDismiss = viewModel::closePlantSheet,
+            )
+        }
+    }
+
     state.harvestResult?.let { result ->
         AlertDialog(
             onDismissRequest = viewModel::harvestResultConsumed,

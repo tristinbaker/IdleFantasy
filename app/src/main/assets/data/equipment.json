@@ -2533,7 +2533,7 @@
     "defense_bonus": 5,
     "cape_skill": "hp",
     "requirements": {
-      "hp": 99
+      "hitpoints": 99
     },
     "cape_bonus": 0.1
   },

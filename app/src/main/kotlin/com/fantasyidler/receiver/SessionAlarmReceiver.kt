@@ -44,12 +44,10 @@ class SessionAlarmReceiver : BroadcastReceiver() {
                 if (session?.isWorkerSession == true) {
                     val slot = session.workerSlot.coerceAtLeast(1)
                     workerQueuedSessionStarter.startNextQueued(slot)
+                    notificationManager.showSessionComplete(skillDisplayName)
                 } else {
-                    val started = queuedSessionStarter.startNextQueued(backdateMs = backdateMs)
-                    if (!started) {
-                        val hasRunning = sessionRepository.getActiveSession()?.completed == false
-                        if (!hasRunning) notificationManager.showSessionComplete(skillDisplayName)
-                    }
+                    queuedSessionStarter.startNextQueued(backdateMs = backdateMs)
+                    notificationManager.showSessionComplete(skillDisplayName)
                 }
             } finally {
                 pending.finish()

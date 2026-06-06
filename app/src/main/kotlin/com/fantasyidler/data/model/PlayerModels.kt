@@ -131,6 +131,8 @@ data class QueuedAction(
     @SerialName("runes_key") val runesKey: String? = null,
     /** Spell name captured at queue time. */
     @SerialName("spell_name") val spellName: String? = null,
+    /** Weapon slot key captured at queue time for combat/boss sessions. */
+    @SerialName("weapon_slot") val weaponSlot: String? = null,
 )
 
 // ---------------------------------------------------------------------------

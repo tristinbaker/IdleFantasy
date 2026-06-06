@@ -373,7 +373,7 @@ class WorkerSkillsViewModel @Inject constructor(
                     activityKey         = logKey,
                     skillDisplayName    = "Firemaking",
                     qty                 = qty,
-                    estimatedDurationMs = tier.durationMs,
+                    estimatedDurationMs = qty.toLong() * tier.craftingPerItemMs,
                 )
             )
             if (enqueued) {

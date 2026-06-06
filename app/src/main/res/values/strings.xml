@@ -332,6 +332,7 @@
     <string name="settings_lang_español_españa">Español (España)</string>
     <string name="settings_lang_turkish">Türkçe</string>
     <string name="settings_lang_italiano">Italiano</string>
+    <string name="settings_lang_russian">Русский</string>
     <string name="settings_lang_system">System</string>
     <string name="settings_save_data">Save Data</string>
     <string name="settings_export">Export Save</string>

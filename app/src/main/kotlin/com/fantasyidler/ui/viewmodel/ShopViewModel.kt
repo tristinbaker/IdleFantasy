@@ -439,7 +439,7 @@ class ShopViewModel @Inject constructor(
         viewModelScope.launch {
             // Special handling for XP boost
             if (t.key == XP_BOOST_KEY) {
-                val activated = playerRepo.activateXpBoost(PlayerRepository.XP_BOOST_DURATION_MS, t.qty)
+                val activated = playerRepo.activateXpBoost(PlayerRepository.XP_BOOST_DURATION_MS, t.qty, t.priceEach.toLong())
                 _extra.update {
                     it.copy(
                         transaction     = null,

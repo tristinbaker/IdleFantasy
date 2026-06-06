@@ -56,6 +56,22 @@ class GuildRepository @Inject constructor(
             "magic"  -> "mages"
             else     -> "warriors"
         }
+
+        val POTION_SUBSTITUTES: Map<String, List<String>> = mapOf(
+            "strength_potion"       to listOf("super_strength_potion", "overload_potion"),
+            "attack_potion"         to listOf("super_attack_potion",   "overload_potion"),
+            "defense_potion"        to listOf("super_defense_potion",  "overload_potion"),
+            "ranging_potion"        to listOf("super_ranging_potion",  "overload_potion"),
+            "magic_potion"          to listOf("super_magic_potion",    "overload_potion"),
+            "super_strength_potion" to listOf("overload_potion"),
+            "super_attack_potion"   to listOf("overload_potion"),
+            "super_defense_potion"  to listOf("overload_potion"),
+            "super_ranging_potion"  to listOf("overload_potion"),
+            "super_magic_potion"    to listOf("overload_potion"),
+        )
+
+        fun countForTarget(items: Map<String, Int>, target: String): Int =
+            (items[target] ?: 0) + (POTION_SUBSTITUTES[target]?.sumOf { items[it] ?: 0 } ?: 0)
     }
 
     // -------------------------------------------------------------------------
@@ -109,7 +125,7 @@ class GuildRepository @Inject constructor(
         for ((questId, quest) in gameData.guildQuests) {
             if (quest.guild != skillName || quest.type != "craft") continue
             if (quest.guildLevelRequired > currentLevel) continue
-            val count = items[quest.target] ?: continue
+            val count = countForTarget(items, quest.target)
             if (count > 0) addQuestProgress(questId, count)
         }
         flags = applyDailyCrafting(flags, skillName, items)
@@ -461,7 +477,7 @@ class GuildRepository @Inject constructor(
         for (id in unclaimed) {
             val t = pool[id] ?: continue
             if (t.guild != guild || t.type != "craft") continue
-            val count = items[t.target] ?: continue
+            val count = countForTarget(items, t.target)
             if (count <= 0) continue
             val cur = updated[id] ?: 0
             if (cur >= t.amount) continue

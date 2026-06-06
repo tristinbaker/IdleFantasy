@@ -331,9 +331,10 @@ class QueuedSessionStarter @Inject constructor(
                     playerRepo.consumeItems(mapOf(action.potionKey to 1))
                     gameData.potionEffects[action.potionKey] ?: emptyMap()
                 } else emptyMap()
-                val bossWeapon = (flags.activeWeaponSlot
+                val bossWeaponSlot = action.weaponSlot
                     ?: EquipSlot.WEAPON_SLOTS.firstOrNull { bossEquipped[it] != null }
-                    ?: EquipSlot.WEAPON).let { bossEquipped[it] }.let { gameData.equipment[it] }
+                    ?: EquipSlot.WEAPON
+                val bossWeapon = bossEquipped[bossWeaponSlot]?.let { gameData.equipment[it] }
                 val combatStyle = when (bossWeapon?.combatStyle) {
                     "ranged"   -> "ranged"
                     "magic"    -> "magic"
@@ -414,7 +415,7 @@ class QueuedSessionStarter @Inject constructor(
                     playerRepo.consumeItems(mapOf(action.potionKey to 1))
                     gameData.potionEffects[action.potionKey] ?: emptyMap()
                 } else emptyMap()
-                val activeWeaponSlot = flags.activeWeaponSlot
+                val activeWeaponSlot = action.weaponSlot
                     ?: EquipSlot.WEAPON_SLOTS.firstOrNull { combatEquipped[it] != null }
                     ?: EquipSlot.WEAPON
                 val weaponKey  = combatEquipped[activeWeaponSlot]
@@ -556,11 +557,14 @@ class QueuedSessionStarter @Inject constructor(
     }
 
     private fun ashRuneBonus(ashKey: String): Int = when (ashKey) {
-        "ashes", "oak_ashes", "willow_ashes" -> 1
-        "maple_ashes", "yew_ashes"           -> 2
-        "magic_ashes"                        -> 3
-        "redwood_ashes"                      -> 4
-        else                                 -> 0
+        "ashes"         -> 1
+        "oak_ashes"     -> 2
+        "willow_ashes"  -> 3
+        "maple_ashes"   -> 4
+        "yew_ashes"     -> 5
+        "magic_ashes"   -> 6
+        "redwood_ashes" -> 7
+        else            -> 0
     }
 
     private val ARROW_TIERS = listOf(

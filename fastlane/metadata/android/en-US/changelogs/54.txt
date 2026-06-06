@@ -1,0 +1,15 @@
+• Fix: Queuing multiple combat or boss sessions with different weapons no longer causes later queued sessions to overwrite the weapon choice for earlier ones; each queued session now locks in its selected weapon slot at queue time
+• Fix: Melee boss sessions no longer instantly complete every time the app is restarted; the session now waits for the kill timer to elapse before becoming collectable
+• Fix: Ash catalysts selected for runecrafting are now consumed immediately when the session is queued, matching the behaviour of other crafting skills
+• Fix: Higher-tier ashes now grant progressively more bonus runes per essence (ashes +1, oak +2, willow +3, maple +4, yew +5, magic +6, redwood +7); previously oak through willow all gave the same bonus as basic ashes
+• Fix: Labourer firemaking sessions now run for the correct per-log duration instead of always taking the full 8-hour gathering window; Long Labourers take 2 minutes per log, all other tiers take 1 minute
+• Fix: Worker sessions no longer count toward quest progress of any kind; only the player's own sessions advance quests
+• Fix: Buying the 2x XP boost at a Mercantile-discounted price now correctly deducts the discounted amount instead of always requiring the full 250,000 coin base price
+• Fix: Hitpoints XP from raid bosses now correctly counts toward the Hitpoints skill level, prestige, and HP cape unlock; previously boss XP was written under a separate "hp" key that the skill system did not read
+• Fix: Completing multiple sessions at once (e.g. a dungeon followed by a boss fight) now correctly awards daily quest kill progress; kills from all sessions are now tallied together before updating the daily quests rather than being recorded one session at a time
+• Fix: Super potions (Super Strength, Super Attack, etc.) now count toward Herblore Guild daily tasks that request the base potion tier; the Overload Potion counts for any super or base potion guild daily
+• Fix: Collecting an expedition session that found a note alongside other completed sessions (e.g. a smithing session) no longer silently discards the other sessions; all rewards are now applied and the expedition note summary is shown
+• New: You now receive a notification every time a session completes, not only when the last queued session finishes; useful for knowing when a short queued task is done so you can add more before forgetting
+• New: Worker (Labourer) sessions now send a notification when they finish, matching the behaviour of regular sessions
+• New: Farming and Mercantile panels now open as swipe-down bottom sheets like all other skill panels, instead of requiring the back arrow to close
+• New: Adding an activity to the queue no longer closes the skill panel; the sheet stays open so multiple activities of the same type can be queued in one go

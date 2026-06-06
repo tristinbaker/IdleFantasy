@@ -585,6 +585,7 @@
     <string name="settings_lang_español_españa">Español (España)</string>
     <string name="settings_lang_turkish">Türkçe</string>
     <string name="settings_lang_italiano">Italiano</string>
+    <string name="settings_lang_russian">Русский</string>
     <string name="home_queue_ends_in">Queue ends in %1$s</string>
     <string name="combat_dungeon_runs">%1$d runs</string>
     <string name="profile_weapons">Weapons</string>

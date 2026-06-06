@@ -24,7 +24,7 @@
       "attack": 1000,
       "strength": 1000,
       "defense": 1000,
-      "hp": 800,
+      "hitpoints": 800,
       "magic": 500,
       "ranged": 500
     },
@@ -93,7 +93,7 @@
       "attack": 2000,
       "strength": 2000,
       "defense": 2000,
-      "hp": 1500,
+      "hitpoints": 1500,
       "magic": 2500,
       "ranged": 1000,
       "prayer": 1500
@@ -164,7 +164,7 @@
       "attack": 4000,
       "strength": 4000,
       "defense": 4000,
-      "hp": 3000,
+      "hitpoints": 3000,
       "magic": 5000,
       "ranged": 2000
     },
@@ -235,7 +235,7 @@
       "attack": 10000,
       "strength": 10000,
       "defense": 10000,
-      "hp": 8000,
+      "hitpoints": 8000,
       "magic": 12000,
       "ranged": 5000,
       "prayer": 5000

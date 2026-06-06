@@ -262,14 +262,7 @@ class CombatViewModel @Inject constructor(
                 val queuedWeaponSlot = _extra.value.selectedWeaponSlot
                     ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
                     ?: EquipSlot.WEAPON
-                val queuedWeapon = equipped[queuedWeaponSlot]?.let { gameData.equipment[it] }
                 val queuedSpell = _extra.value.selectedSpell
-                if (queuedWeapon != null || queuedSpell != null) {
-                    playerRepo.updateFlags(dungeonFlags.copy(
-                        activeWeaponSlot = queuedWeaponSlot,
-                        activeSpell = if (queuedWeapon?.combatStyle == "magic" && queuedSpell != null) queuedSpell.name else dungeonFlags.activeSpell,
-                    ))
-                }
                 val enqueued = playerRepo.enqueueAction(
                     QueuedAction(
                         skillName           = "combat",
@@ -280,6 +273,7 @@ class CombatViewModel @Inject constructor(
                         arrowsKey           = _extra.value.selectedArrowKey ?: dungeonFlags.equippedArrows,
                         spellName           = queuedSpell?.name ?: dungeonFlags.activeSpell,
                         potionKey           = _extra.value.selectedPotionKey,
+                        weaponSlot          = queuedWeaponSlot,
                     )
                 )
                 _extra.update {
@@ -480,6 +474,7 @@ class CombatViewModel @Inject constructor(
                         arrowsKey           = _extra.value.selectedArrowKey ?: queuedFlags.equippedArrows,
                         spellName           = if (bossQueuedWeapon?.combatStyle == "magic" && bossQueuedSpell != null) bossQueuedSpell.name else queuedFlags.activeSpell,
                         potionKey           = _extra.value.selectedPotionKey,
+                        weaponSlot          = bossWeaponSlot,
                     )
                 )
                 _extra.update {

@@ -949,4 +949,5 @@
     <string name="guild_combat_ranged">ranged</string>
     <string name="guild_combat_magic">magic</string>
     <string name="settings_recent_activity_desc">Show Recent Activity button in the home screen header</string>
+    <string name="settings_lang_russian">Русский</string>
 </resources>

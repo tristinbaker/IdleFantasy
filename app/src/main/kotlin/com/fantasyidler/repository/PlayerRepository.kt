@@ -45,8 +45,26 @@ class PlayerRepository @Inject constructor(
     }
 
     /** Returns the player, creating a default profile if none exists. */
-    suspend fun getOrCreatePlayer(): Player =
-        playerDao.getPlayer() ?: createDefaultPlayer().also { playerDao.upsert(it) }
+    suspend fun getOrCreatePlayer(): Player {
+        val player = playerDao.getPlayer() ?: createDefaultPlayer().also { playerDao.upsert(it) }
+        return if (player.skillXp.contains("\"hp\":")) migrateHpKey(player) else player
+    }
+
+    private suspend fun migrateHpKey(player: Player): Player {
+        val xpMap: MutableMap<String, Long> = json.decodeFromString(player.skillXp)
+        val hpXp = xpMap.remove("hp") ?: return player
+        val levels: MutableMap<String, Int> = json.decodeFromString(player.skillLevels)
+        levels.remove("hp")
+        val newHpXp = (xpMap[Skills.HITPOINTS] ?: 0L) + hpXp
+        xpMap[Skills.HITPOINTS] = newHpXp
+        levels[Skills.HITPOINTS] = XpTable.levelForXp(newHpXp)
+        val migrated = player.copy(
+            skillXp     = json.encode<Map<String, Long>>(xpMap),
+            skillLevels = json.encode<Map<String, Int>>(levels),
+        )
+        playerDao.upsert(migrated)
+        return migrated
+    }
 
     suspend fun getSkillLevels(): Map<String, Int> =
         json.decodeFromString(getOrCreatePlayer().skillLevels)
@@ -410,8 +428,8 @@ class PlayerRepository @Inject constructor(
      * Activates or extends the 2× XP boost for [durationMs] × [qty] milliseconds.
      * Deducts [XP_BOOST_COST] × [qty] coins. Returns false if not enough coins.
      */
-    suspend fun activateXpBoost(durationMs: Long, qty: Int = 1): Boolean {
-        val totalCost = XP_BOOST_COST * qty
+    suspend fun activateXpBoost(durationMs: Long, qty: Int = 1, costEach: Long = XP_BOOST_COST): Boolean {
+        val totalCost = costEach * qty
         val player    = getOrCreatePlayer()
         if (player.coins < totalCost) return false
 

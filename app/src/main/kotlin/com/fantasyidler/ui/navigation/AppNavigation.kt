@@ -40,7 +40,6 @@ import com.fantasyidler.ui.screen.GuildDetailScreen
 import com.fantasyidler.ui.screen.GuildHallScreen
 import com.fantasyidler.ui.screen.HomeScreen
 import com.fantasyidler.ui.screen.InnScreen
-import com.fantasyidler.ui.screen.MercantileScreen
 import com.fantasyidler.ui.screen.OnboardingScreen
 import com.fantasyidler.ui.screen.ProfileScreen
 import com.fantasyidler.ui.screen.QuestsScreen
@@ -154,16 +153,11 @@ fun AppNavigation(
         ) {
             composable(Screen.Skills.route)   {
                 SkillsScreen(
-                    onNavigateToFarming    = { navController.navigate(Screen.Farming.route) },
-                    onNavigateToMercantile = { navController.navigate(Screen.Mercantile.route) },
-                    onNavigateToSlayer     = { navController.navigate(Screen.Slayer.route) },
+                    onNavigateToSlayer = { navController.navigate(Screen.Slayer.route) },
                 )
             }
             composable(Screen.Farming.route) { entry ->
                 FarmingScreen(onBack = { if (navController.currentBackStackEntry == entry) navController.popBackStack() })
-            }
-            composable(Screen.Mercantile.route) { entry ->
-                MercantileScreen(onBack = { if (navController.currentBackStackEntry == entry) navController.popBackStack() })
             }
             composable(Screen.Combat.route)   { CombatScreen() }
             composable(Screen.Home.route)     {

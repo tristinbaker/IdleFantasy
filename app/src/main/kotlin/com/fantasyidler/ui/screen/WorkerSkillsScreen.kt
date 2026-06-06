@@ -330,6 +330,7 @@ fun WorkerSkillsScreen(
                     )
                 }
                 SheetState.Mercantile -> {}
+                SheetState.Farming   -> {}
                 SheetState.ComingSoon -> ComingSoonSheet()
             }
         }

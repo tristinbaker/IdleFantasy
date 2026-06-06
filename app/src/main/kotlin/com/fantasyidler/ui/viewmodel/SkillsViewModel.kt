@@ -92,6 +92,7 @@ sealed class SheetState {
     /** Opens the inline craft sheet for one of the instant-craft skills. */
     data class Crafting(val skillName: String) : SheetState()
     data object Mercantile : SheetState()
+    data object Farming : SheetState()
     data object ComingSoon : SheetState()
 }
 
@@ -226,6 +227,7 @@ class SkillsViewModel @Inject constructor(
             Skills.CRAFTING,
             Skills.HERBLORE  -> SheetState.Crafting(skillKey)
             Skills.MERCANTILE -> SheetState.Mercantile
+            Skills.FARMING    -> SheetState.Farming
             else             -> SheetState.ComingSoon
         }
         _uiState.update { it.copy(sheetSkill = sheet) }
@@ -320,7 +322,6 @@ class SkillsViewModel @Inject constructor(
                 _uiState.update {
                     it.copy(
                         snackbarMessage = if (enqueued) "Added to queue: Firemaking." else "Queue is full (3/3).",
-                        sheetSkill = null,
                     )
                 }
                 return@launch
@@ -363,11 +364,16 @@ class SkillsViewModel @Inject constructor(
                         catalystKey         = catalystKey,
                     )
                 )
-                if (enqueued) playerRepo.consumeItems(mapOf("rune_essence" to runeData.essenceCost * qty))
+                if (enqueued) {
+                    playerRepo.consumeItems(mapOf("rune_essence" to runeData.essenceCost * qty))
+                    if (catalystKey != null) {
+                        val ashCost = (qty + 9) / 10
+                        playerRepo.consumeItems(mapOf(catalystKey to ashCost))
+                    }
+                }
                 _uiState.update {
                     it.copy(
                         snackbarMessage = if (enqueued) "Added to queue: Runecrafting — $actDisplay." else "Queue is full (3/3).",
-                        sheetSkill = null,
                     )
                 }
                 return@launch
@@ -464,7 +470,6 @@ class SkillsViewModel @Inject constructor(
                 _uiState.update {
                     it.copy(
                         snackbarMessage = if (enqueued) "Added to queue: Prayer — ${bone.displayName}." else "Queue is full (3/3).",
-                        sheetSkill = null,
                     )
                 }
                 return@launch
@@ -562,7 +567,6 @@ class SkillsViewModel @Inject constructor(
                             "Added to queue: $displayName${if (activityKey.isNotEmpty()) " — $actDisplay" else ""}."
                         else
                             "Queue is full (3/3).",
-                        sheetSkill = null,
                     )
                 }
                 return@launch
@@ -830,11 +834,14 @@ class SkillsViewModel @Inject constructor(
      * Pets store their boosted_skill as a JSON string; we decode inline.
      */
     private fun ashRuneBonusForKey(ashKey: String): Int = when (ashKey) {
-        "ashes", "oak_ashes", "willow_ashes" -> 1
-        "maple_ashes", "yew_ashes"           -> 2
-        "magic_ashes"                        -> 3
-        "redwood_ashes"                      -> 4
-        else                                 -> 0
+        "ashes"         -> 1
+        "oak_ashes"     -> 2
+        "willow_ashes"  -> 3
+        "maple_ashes"   -> 4
+        "yew_ashes"     -> 5
+        "magic_ashes"   -> 6
+        "redwood_ashes" -> 7
+        else            -> 0
     }
 
     private fun petBoostFor(petsJson: String, skillKey: String): Int {

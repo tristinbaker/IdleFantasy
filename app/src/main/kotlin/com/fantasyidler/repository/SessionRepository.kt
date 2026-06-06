@@ -135,7 +135,7 @@ class SessionRepository @Inject constructor(
         if (session.skillName == "boss") {
             try {
                 val frames: List<SessionFrame> = json.decodeFromString(session.frames)
-                if ((frames.lastOrNull()?.kills ?: 0) > 0) {
+                if ((frames.lastOrNull()?.kills ?: 0) > 0 && System.currentTimeMillis() >= session.endsAt) {
                     markCompleted(session.sessionId)
                     starter.startNextQueued()
                     return
