@@ -17,6 +17,7 @@ object MercantileSimulator {
         route: TradeRouteData,
         startXp: Long,
         agilityLevel: Int = 1,
+        random: Random = Random.Default,
     ): Result {
         var currentXp = startXp
         val frames = mutableListOf<SessionFrame>()
@@ -27,11 +28,11 @@ object MercantileSimulator {
         for (minute in 1..60) {
             val xpBefore   = currentXp
             val levelBefore = XpTable.levelForXp(currentXp)
-            val xpGain     = Random.nextInt(xpRange.min, xpRange.max + 1)
+            val xpGain     = random.nextInt(xpRange.min, xpRange.max + 1)
             currentXp += xpGain
             val levelAfter = XpTable.levelForXp(currentXp)
 
-            val coinReturn = Random.nextInt(coinRange.min, coinRange.max + 1)
+            val coinReturn = random.nextInt(coinRange.min, coinRange.max + 1)
 
             frames += SessionFrame(
                 minute      = minute,

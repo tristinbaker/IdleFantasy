@@ -54,6 +54,7 @@ object SkillSimulator {
         toolEfficiency: Float = 1.0f,
         petDropKey: String? = null,
         petDropChance: Double = 0.0,
+        random: Random = Random.Default,
     ): Result {
         var currentXp = startXp
         val frames = mutableListOf<SessionFrame>()
@@ -75,12 +76,12 @@ object SkillSimulator {
             // Bonus gem rolls — one independent roll per ore mined per gem type
             for (i in 0 until oreQty) {
                 for ((gemKey, gemData) in gems) {
-                    if (Random.nextDouble() < gemData.dropRate) {
+                    if (random.nextDouble() < gemData.dropRate) {
                         items[gemKey] = (items[gemKey] ?: 0) + 1
                     }
                 }
             }
-            if (petDropKey != null && petDropChance > 0.0 && Random.nextDouble() < petDropChance) {
+            if (petDropKey != null && petDropChance > 0.0 && random.nextDouble() < petDropChance) {
                 items[petDropKey] = 1
             }
 
@@ -118,6 +119,7 @@ object SkillSimulator {
         toolEfficiency: Float = 1.0f,
         petDropKey: String? = null,
         petDropChance: Double = 0.0,
+        random: Random = Random.Default,
     ): Result {
         var currentXp = startXp
         val frames = mutableListOf<SessionFrame>()
@@ -134,7 +136,7 @@ object SkillSimulator {
 
             val logQty = max(1, toolEfficiency.roundToInt())
             val items = mutableMapOf(treeData.logName to logQty)
-            if (petDropKey != null && petDropChance > 0.0 && Random.nextDouble() < petDropChance) {
+            if (petDropKey != null && petDropChance > 0.0 && random.nextDouble() < petDropChance) {
                 items[petDropKey] = 1
             }
 
@@ -169,6 +171,7 @@ object SkillSimulator {
         petDropKey: String? = null,
         petDropChance: Double = 0.0,
         fishingSkillData: GatheringSkillData? = null,
+        random: Random = Random.Default,
     ): Result {
         var currentXp = startXp
         val frames = mutableListOf<SessionFrame>()
@@ -185,10 +188,10 @@ object SkillSimulator {
 
             val fishQty = max(1, rodEfficiency.roundToInt())
             val items = mutableMapOf<String, Int>()
-            if (fishingSkillData != null && Random.nextDouble() > 0.8) {
+            if (fishingSkillData != null && random.nextDouble() > 0.8) {
                 val dropTable = getTierData(fishingSkillData.dropTables, levelBefore)
                 for (entry in dropTable) {
-                    if (Random.nextDouble() < entry.chance) {
+                    if (random.nextDouble() < entry.chance) {
                         items[entry.item] = (items[entry.item] ?: 0) + 1
                     }
                 }
@@ -196,7 +199,7 @@ object SkillSimulator {
             } else {
                 items[fishKey] = fishQty
             }
-            if (petDropKey != null && petDropChance > 0.0 && Random.nextDouble() < petDropChance) {
+            if (petDropKey != null && petDropChance > 0.0 && random.nextDouble() < petDropChance) {
                 items[petDropKey] = 1
             }
 
@@ -235,6 +238,7 @@ object SkillSimulator {
         petDropKey: String? = null,
         petDropChance: Double = 0.0,
         forcedDropPerFrame: String? = null,
+        random: Random = Random.Default,
     ): Result {
         var currentXp = startXp
         val frames = mutableListOf<SessionFrame>()
@@ -244,7 +248,7 @@ object SkillSimulator {
             val levelBefore = XpTable.levelForXp(currentXp)
 
             val xpRange = getTierData(skillData.xpRanges, levelBefore)
-            val baseXp = (Random.nextInt(xpRange.min, xpRange.max + 1) * toolEfficiency).toInt()
+            val baseXp = (random.nextInt(xpRange.min, xpRange.max + 1) * toolEfficiency).toInt()
             val xpGain = applyPetBoost(baseXp, petBoostPct)
 
             currentXp += xpGain
@@ -255,14 +259,14 @@ object SkillSimulator {
                             else getTierData(skillData.dropTables, levelBefore)
             val items = mutableMapOf<String, Int>()
             for (entry in dropTable) {
-                if (Random.nextDouble() < entry.chance) {
+                if (random.nextDouble() < entry.chance) {
                     items[entry.item] = (items[entry.item] ?: 0) + 1
                 }
             }
             if (forcedDropPerFrame != null) {
                 items[forcedDropPerFrame] = (items[forcedDropPerFrame] ?: 0) + 1
             }
-            if (petDropKey != null && petDropChance > 0.0 && Random.nextDouble() < petDropChance) {
+            if (petDropKey != null && petDropChance > 0.0 && random.nextDouble() < petDropChance) {
                 items[petDropKey] = 1
             }
 
@@ -301,6 +305,7 @@ object SkillSimulator {
         startXp: Long,
         agilityLevel: Int = 1,
         petBoostPct: Int = 0,
+        random: Random = Random.Default,
     ): Result {
         var currentXp = startXp
         val frames = mutableListOf<SessionFrame>()
@@ -312,7 +317,7 @@ object SkillSimulator {
             val xpBefore    = currentXp
             val levelBefore = XpTable.levelForXp(currentXp)
 
-            val successfulLaps = (0 until LAPS_PER_MINUTE).count { Random.nextDouble() < successRate }
+            val successfulLaps = (0 until LAPS_PER_MINUTE).count { random.nextDouble() < successRate }
             val baseXp = successfulLaps * courseData.xpPerSuccess
             val xpGain = applyPetBoost(baseXp, petBoostPct)
 

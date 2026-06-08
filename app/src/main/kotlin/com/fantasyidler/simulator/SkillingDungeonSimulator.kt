@@ -23,6 +23,7 @@ object SkillingDungeonSimulator {
         agilityLevel: Int = 1,
         toolEfficiency: Float = 1.0f,
         petBoostPct: Int = 0,
+        random: Random = Random.Default,
     ): SkillSimulator.Result {
         var currentXp = startXp
         val frames = mutableListOf<SessionFrame>()
@@ -33,7 +34,7 @@ object SkillingDungeonSimulator {
             val levelBefore = XpTable.levelForXp(currentXp)
 
             val xpRange = getTierData(dungeon.xpRanges, levelBefore)
-            val baseXp = (Random.nextInt(xpRange.min, xpRange.max + 1) * toolEfficiency).toInt()
+            val baseXp = (random.nextInt(xpRange.min, xpRange.max + 1) * toolEfficiency).toInt()
             val xpGain = if (petBoostPct > 0) (baseXp * (1.0 + petBoostPct / 100.0)).toInt() else baseXp
 
             currentXp += xpGain
@@ -43,12 +44,12 @@ object SkillingDungeonSimulator {
                             else getTierData(dungeon.dropTables, levelBefore)
             val items = mutableMapOf<String, Int>()
             for (entry in dropTable) {
-                if (Random.nextDouble() < entry.chance) {
+                if (random.nextDouble() < entry.chance) {
                     items[entry.item] = (items[entry.item] ?: 0) + 1
                 }
             }
 
-            if (Random.nextDouble() < dungeon.noteChancePerFrame) {
+            if (random.nextDouble() < dungeon.noteChancePerFrame) {
                 items[noteKey] = (items[noteKey] ?: 0) + 1
             }
 
