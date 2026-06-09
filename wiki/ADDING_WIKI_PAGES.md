@@ -27,25 +27,33 @@ Special pages such as the sidebar use an underscore prefix and are not listed in
 
 ## 2. Add the page to `PAGE_HIERARCHY`
 
-`PAGE_HIERARCHY` controls navigation on the Home page and in `_Sidebar.md`. It is a nested tuple structure:
+`PAGE_HIERARCHY` controls navigation on the Home page and in `_Sidebar.md`. `_gen_page_listing()` walks this structure to build markdown links and headings.
 
-- A **leaf entry** is `(display_name, page_id)`.
-- A **section** is `(section_name, (child_entries...))`.
+- A **leaf entry** is a plain **page ID** string (e.g. `"mining"`) and must be a page listed in the `PAGE_DIRECTORY`
+- A **section** is a tuple `(section_name, children)`, where `section_name` is a display-only heading and `children` is a tuple of further entries. Sections can be nested to any depth.
 
 ```python
 PAGE_HIERARCHY = (
-    ("Home", "home"),
-    ("Gathering", (
-        ("Mining", "mining"),
-        ("Agility", "agility"),
-        # ...
+    "home",
+    ("Skills", (
+        "skills",
+        ("Gathering", (
+            "mining",
+            "fishing",
+        )),
+    )),
+    ("Combat", (
+        "bosses",
+        "dungeons",
     )),
 )
 ```
 
-Pages in the `PAGE_HIERARCHY` show up in the sidebar, FAQ, and any other places which list all the pages in the wiki.
+Section names are display-only headings — link text for pages comes from `PAGE_DIRECTORY`. The same section name can appear in more than one place (e.g. Combat under Skills and as a top-level section).
 
-Every normal page (non-underscore filename) in `PAGE_DIRECTORY` should appear somewhere in the hierarchy. Pages with underscore-prefixed filenames (e.g. `_Sidebar.md`) are excluded from this requirement.
+Pages in `PAGE_HIERARCHY` show up in the sidebar, home page, and any other place that lists wiki pages.
+
+Every normal page (non-underscore filename) in `PAGE_DIRECTORY` should appear at least once in the hierarchy. Pages with underscore-prefixed filenames (e.g. `_Sidebar.md`) are excluded from this requirement.
 
 ## 3. Wire up content in `_get_page_to_content()`
 
@@ -86,7 +94,7 @@ Example pattern (see `gen_agility()`):
 ## Checklist
 
 1. Add a `PageInfo` entry to `PAGE_DIRECTORY`.
-2. Add a `(Name, page_id)` entry (or nest it under a section) in `PAGE_HIERARCHY`.
+2. Add the page ID (or nest it under a section) in `PAGE_HIERARCHY`.
 3. Implement `gen_<page_id>()` and any template file.
 4. Add `"page_id": gen_<page_id>()` to `_get_page_to_content()`.
 5. Run `python -m src validity` and fix any reported errors or warnings.
