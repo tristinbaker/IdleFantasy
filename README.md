@@ -13,6 +13,8 @@ A free, open-source offline idle RPG for Android. No internet connection, no acc
 
 ## How it works
 
+Please see the [dedicated wiki](https://idlefantasy.tristinbaker.xyz/) for more detailed information.
+
 Pick a skill or dungeon, start a session, then put your phone down. Your hero keeps training for up to an hour while the app is closed. Come back whenever you want to collect your XP and loot, then send them back out. There is no stamina bar, no energy system, and nothing that pressures you to stay in the app.
 
 ## Skills
