@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mining — Idle Fantasy Wiki</title>
+  <title>Thieving — Idle Fantasy Wiki</title>
   <link rel="stylesheet" href="assets/style.css?v=3">
   <script data-goatcounter="https://idlefantasy.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
@@ -35,12 +35,12 @@
 <li class="nav-section"><span class="nav-label">Skills</span><ul>
 <li><a href="Skills.html">Skills</a></li>
 <li class="nav-section"><span class="nav-label">Gathering</span><ul>
-<li><a href="Mining.html" class="active">Mining</a></li>
+<li><a href="Mining.html">Mining</a></li>
 <li><a href="Fishing.html">Fishing</a></li>
 <li><a href="Woodcutting.html">Woodcutting</a></li>
 <li><a href="Farming.html">Farming</a></li>
 <li><a href="Agility.html">Agility</a></li>
-<li><a href="Thieving.html">Thieving</a></li>
+<li><a href="Thieving.html" class="active">Thieving</a></li>
 </ul></li>
 <li class="nav-section"><span class="nav-label">Crafting</span><ul>
 <li><a href="Smithing.html">Smithing</a></li>
@@ -83,134 +83,74 @@
     </nav>
 
     <main class="content">
-      <h1 id="mining">Mining</h1>
-<p>Mine ores from the earth. Gems have a small chance to drop alongside any ore.</p>
+      <h1 id="thieving">Thieving</h1>
+<p>Pickpocket NPCs found in the Town for coins and loot. Higher-level NPCs require a higher Thieving level but yield more XP and better rewards per steal.</p>
 <table>
 <thead>
 <tr>
-<th>Ore</th>
-<th>Level Required</th>
-<th>XP / Ore</th>
+<th>NPC</th>
+<th>Level</th>
+<th>XP / Steal</th>
+<th>Coins</th>
+<th>Possible Loot</th>
 </tr>
 </thead>
 <tbody>
-<tr id="rune_essence">
-<td>Rune Essence</td>
+<tr id="peasant">
+<td>Peasant</td>
 <td>1</td>
+<td>8</td>
+<td>5-15</td>
+<td>25% Bread, 20% <a href="Farming.html#cabbage">Cabbage</a>, 15% Flour</td>
+</tr>
+<tr id="merchant">
+<td>Merchant</td>
 <td>15</td>
-</tr>
-<tr id="copper_ore">
-<td>Copper Ore</td>
-<td>1</td>
-<td>18</td>
-</tr>
-<tr id="tin_ore">
-<td>Tin Ore</td>
-<td>1</td>
-<td>18</td>
-</tr>
-<tr id="stone">
-<td>Stone</td>
-<td>10</td>
-<td>12</td>
-</tr>
-<tr id="iron_ore">
-<td>Iron Ore</td>
-<td>15</td>
-<td>35</td>
-</tr>
-<tr id="silver_ore">
-<td>Silver Ore</td>
 <td>20</td>
-<td>40</td>
+<td>20-50</td>
+<td>20% Cooked Trout, 25% <a href="Runecrafting.html#air_rune">Air Rune</a> (3-8), 20% <a href="Runecrafting.html#water_rune">Water Rune</a> (3-8)</td>
 </tr>
-<tr id="coal">
-<td>Coal</td>
+<tr id="guardsman">
+<td>Guardsman</td>
 <td>30</td>
-<td>50</td>
-</tr>
-<tr id="gold_ore">
-<td>Gold Ore</td>
 <td>40</td>
-<td>65</td>
+<td>30-80</td>
+<td>30% <a href="Fletching.html#iron_arrow">Iron Arrow</a> (5-12), 20% <a href="Runecrafting.html#mind_rune">Mind Rune</a> (3-6), 15% <a href="Runecrafting.html#chaos_rune">Chaos Rune</a> (2-4)</td>
 </tr>
-<tr id="mithril_ore">
-<td>Mithril Ore</td>
-<td>55</td>
-<td>80</td>
-</tr>
-<tr id="adamantite_ore">
-<td>Adamantite Ore</td>
+<tr id="artisan">
+<td>Artisan</td>
+<td>45</td>
 <td>70</td>
-<td>95</td>
+<td>50-150</td>
+<td>15% Sapphire, 8% Emerald, 25% Leather (2-5), 20% Thread (3-8)</td>
 </tr>
-<tr id="platinum_ore">
-<td>Platinum Ore</td>
-<td>80</td>
-<td>100</td>
-</tr>
-<tr id="runite_ore">
-<td>Runite Ore</td>
-<td>85</td>
-<td>125</td>
-</tr>
-</tbody>
-</table>
-<h2 id="pickaxes">Pickaxes</h2>
-<p>Equip a pickaxe to multiply how many ores you gather per session. Higher-tier pickaxes require a higher Mining level.</p>
-<table>
-<thead>
-<tr>
-<th>Tool</th>
-<th>Level Required</th>
-<th>Efficiency</th>
-</tr>
-</thead>
-<tbody>
-<tr id="bronze_pickaxe">
-<td>Bronze Pickaxe</td>
-<td>1</td>
-<td>1.00×</td>
-</tr>
-<tr id="iron_pickaxe">
-<td>Iron Pickaxe</td>
-<td>15</td>
-<td>1.25×</td>
-</tr>
-<tr id="steel_pickaxe">
-<td>Steel Pickaxe</td>
-<td>30</td>
-<td>1.50×</td>
-</tr>
-<tr id="deep_iron_pickaxe">
-<td>Deep Iron Pickaxe</td>
-<td>40</td>
-<td>2.50×</td>
-</tr>
-<tr id="mithril_pickaxe">
-<td>Mithril Pickaxe</td>
-<td>55</td>
-<td>1.75×</td>
-</tr>
-<tr id="dwarven_pickaxe">
-<td>Dwarven Pickaxe</td>
+<tr id="noble">
+<td>Noble</td>
 <td>60</td>
-<td>2.75×</td>
+<td>110</td>
+<td>100-300</td>
+<td>25% <a href="Runecrafting.html#chaos_rune">Chaos Rune</a> (3-6), 15% <a href="Runecrafting.html#death_rune">Death Rune</a> (2-4), 10% Ruby, 5% <a href="Equipment.html#silver_necklace">Silver Necklace</a></td>
 </tr>
-<tr id="adamantite_pickaxe">
-<td>Adamantite Pickaxe</td>
+<tr id="city_guard">
+<td>City Guard</td>
 <td>70</td>
-<td>2.00×</td>
+<td>155</td>
+<td>150-400</td>
+<td>25% <a href="Runecrafting.html#death_rune">Death Rune</a> (3-6), 10% <a href="Runecrafting.html#blood_rune">Blood Rune</a> (1-3), 6% <a href="Equipment.html#gold_necklace">Gold Necklace</a>, 5% Ruby Ring</td>
 </tr>
-<tr id="forge_pickaxe">
-<td>Forge Pickaxe</td>
-<td>70</td>
-<td>3.25×</td>
+<tr id="knight">
+<td>Knight</td>
+<td>80</td>
+<td>210</td>
+<td>200-600</td>
+<td>25% <a href="Runecrafting.html#blood_rune">Blood Rune</a> (3-8), 8% Diamond, 6% <a href="Equipment.html#gold_ring">Gold Ring</a>, 6% <a href="Equipment.html#gold_necklace">Gold Necklace</a></td>
 </tr>
-<tr id="runite_pickaxe">
-<td>Runite Pickaxe</td>
-<td>85</td>
-<td>2.25×</td>
+<tr id="high_priest">
+<td>High Priest</td>
+<td>90</td>
+<td>280</td>
+<td>300-1000</td>
+<td>30% <a href="Runecrafting.html#blood_rune">Blood Rune</a> (5-10), 5% Diamond Ring, 5% Diamond Necklace, 1% <a href="Equipment.html#tormented_necklace">Tormented Necklace</a></td>
 </tr>
 </tbody>
 </table>
