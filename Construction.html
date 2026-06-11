@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Home — Idle Fantasy Wiki</title>
+  <title>Construction — Idle Fantasy Wiki</title>
   <link rel="stylesheet" href="assets/style.css?v=3">
   <script data-goatcounter="https://idlefantasy.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
@@ -31,7 +31,7 @@
   <div class="layout">
     <nav id="sidebar" class="sidebar" aria-label="Wiki navigation">
       <ul>
-<li><a href="Home.html" class="active">Home</a></li>
+<li><a href="Home.html">Home</a></li>
 <li class="nav-section"><span class="nav-label">Skills</span><ul>
 <li><a href="Skills.html">Skills</a></li>
 <li class="nav-section"><span class="nav-label">Gathering</span><ul>
@@ -49,7 +49,7 @@
 <li><a href="Firemaking.html">Firemaking</a></li>
 <li><a href="Runecrafting.html">Runecrafting</a></li>
 <li><a href="Herblore.html">Herblore</a></li>
-<li><a href="Construction.html">Construction</a></li>
+<li><a href="Construction.html" class="active">Construction</a></li>
 </ul></li>
 <li class="nav-section"><span class="nav-label">Support</span><ul>
 <li><a href="Prayer.html">Prayer</a></li>
@@ -82,71 +82,81 @@
     </nav>
 
     <main class="content">
-      <h1 id="idle-fantasy-wiki">Idle Fantasy Wiki</h1>
-<p>Welcome to the community wiki for <strong>Idle Fantasy</strong> — an idle RPG with skills, combat, and crafting.</p>
-<p>All data on these pages is auto-generated from the game's data files and is always up to date with the latest release.</p>
-<p>Visit the <a href="https://idlefantasy.tristinbaker.xyz">full-featured wiki site</a> for a styled, easy-to-navigate version.</p>
-<h2 id="pages">Pages</h2>
-<ul>
-<li><a href="Home.html">Home</a></li>
-</ul>
-<h3 id="skills">Skills</h3>
-<ul>
-<li><a href="Skills.html">Skills</a></li>
-</ul>
-<h4 id="gathering">Gathering</h4>
-<ul>
-<li><a href="Mining.html">Mining</a></li>
-<li><a href="Fishing.html">Fishing</a></li>
-<li><a href="Woodcutting.html">Woodcutting</a></li>
-<li><a href="Farming.html">Farming</a></li>
-<li><a href="Agility.html">Agility</a></li>
-</ul>
-<h4 id="crafting">Crafting</h4>
-<ul>
-<li><a href="Smithing.html">Smithing</a></li>
-<li><a href="Cooking.html">Cooking</a></li>
-<li><a href="Fletching.html">Fletching</a></li>
-<li><a href="Crafting.html">Crafting</a></li>
-<li><a href="Firemaking.html">Firemaking</a></li>
-<li><a href="Runecrafting.html">Runecrafting</a></li>
-<li><a href="Herblore.html">Herblore</a></li>
-<li><a href="Construction.html">Construction</a></li>
-</ul>
-<h4 id="support">Support</h4>
-<ul>
-<li><a href="Prayer.html">Prayer</a></li>
-<li><a href="Mercantile.html">Mercantile</a></li>
-</ul>
-<h4 id="combat">Combat</h4>
-<ul>
-<li><a href="Slayer.html">Slayer</a></li>
-</ul>
-<h3 id="inventory">Inventory</h3>
-<ul>
-<li><a href="Equipment.html">Equipment</a></li>
-</ul>
-<h3 id="combat_1">Combat</h3>
-<ul>
-<li><a href="Bosses.html">Bosses</a></li>
-<li><a href="Dungeons.html">Dungeons</a></li>
-<li><a href="Enemies.html">Enemies</a></li>
-<li><a href="Spells.html">Spells</a></li>
-</ul>
-<h3 id="town">Town</h3>
-<ul>
-<li><a href="Shop.html">Shop</a></li>
-<li><a href="Workers.html">Workers</a></li>
-<li><a href="Guilds.html">Guilds</a></li>
-<li><a href="Buildings.html">Buildings</a></li>
-</ul>
-<h3 id="miscellaneous">Miscellaneous</h3>
-<ul>
-<li><a href="Pets.html">Pets</a></li>
-<li><a href="Quests.html">Quests</a></li>
-</ul>
-<hr />
-<p><em>This wiki is auto-generated. To report errors, open an <a href="https://github.com/tristinbaker/IdleFantasy/issues">issue</a>.</em></p>
+      <h1 id="construction">Construction</h1>
+<p>Craft furniture and structural items used to upgrade the three town buildings: the <strong>Inn</strong>, the <strong>Guild Hall</strong>, and the <strong>Church</strong>. See the <a href="Buildings.html">Buildings</a> page for which items each building tier requires and what bonuses they provide.</p>
+<p>Construction is session-based — each item takes 60 seconds to craft per unit.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Level</th>
+<th>Materials</th>
+<th>XP / Item</th>
+</tr>
+</thead>
+<tbody>
+<tr id="wooden_rack">
+<td>Wooden Rack</td>
+<td>1</td>
+<td>2× <a href="Fletching.html#plank">Plank</a>, 5× <a href="Smithing.html#iron_nail">Iron Nail</a></td>
+<td>30</td>
+</tr>
+<tr id="wooden_shelf">
+<td>Wooden Shelf</td>
+<td>10</td>
+<td>3× <a href="Fletching.html#plank">Plank</a>, 8× <a href="Smithing.html#iron_nail">Iron Nail</a></td>
+<td>50</td>
+</tr>
+<tr id="carved_stone">
+<td>Carved Stone</td>
+<td>15</td>
+<td>1× <a href="Mining.html#stone">Stone</a></td>
+<td>25</td>
+</tr>
+<tr id="oak_table">
+<td>Oak Table</td>
+<td>20</td>
+<td>4× <a href="Fletching.html#oak_plank">Oak Plank</a>, 8× <a href="Smithing.html#iron_nail">Iron Nail</a></td>
+<td>80</td>
+</tr>
+<tr id="oak_bookshelf">
+<td>Oak Bookshelf</td>
+<td>30</td>
+<td>5× <a href="Fletching.html#oak_plank">Oak Plank</a>, 10× <a href="Smithing.html#steel_nail">Steel Nail</a></td>
+<td>120</td>
+</tr>
+<tr id="stone_block">
+<td>Stone Block</td>
+<td>40</td>
+<td>2× Carved Stone</td>
+<td>60</td>
+</tr>
+<tr id="willow_cabinet">
+<td>Willow Cabinet</td>
+<td>40</td>
+<td>5× <a href="Fletching.html#willow_plank">Willow Plank</a>, 10× <a href="Smithing.html#steel_nail">Steel Nail</a></td>
+<td>165</td>
+</tr>
+<tr id="maple_dresser">
+<td>Maple Dresser</td>
+<td>55</td>
+<td>6× <a href="Fletching.html#maple_plank">Maple Plank</a>, 12× <a href="Smithing.html#steel_nail">Steel Nail</a></td>
+<td>220</td>
+</tr>
+<tr id="yew_wardrobe">
+<td>Yew Wardrobe</td>
+<td>65</td>
+<td>6× <a href="Fletching.html#yew_plank">Yew Plank</a>, 12× <a href="Smithing.html#mithril_nail">Mithril Nail</a></td>
+<td>285</td>
+</tr>
+<tr id="magic_throne">
+<td>Magic Throne</td>
+<td>75</td>
+<td>8× <a href="Fletching.html#magic_plank">Magic Plank</a>, 15× <a href="Smithing.html#mithril_nail">Mithril Nail</a></td>
+<td>360</td>
+</tr>
+</tbody>
+</table>
     </main>
   </div>
 
