@@ -48,13 +48,17 @@
   --navy-dark:    #080c12;
 }
 
+[data-theme="dark"] body             { background: #0d1117; color: #c9d1d9; }
+[data-theme="dark"] .content        { background: #0d1117; }
 [data-theme="dark"] .content strong { color: #e0e6f0; }
 [data-theme="dark"] .content em     { color: #8b949e; }
 [data-theme="dark"] .content code   { background: #1f2937; border-color: #374151; color: #e5e7eb; }
 [data-theme="dark"] .content h1,
 [data-theme="dark"] .content h2     { color: #e0e6f0; }
 [data-theme="dark"] .content h3     { color: #b0bec5; }
-[data-theme="dark"] .content h4     { color: var(--text-muted); }
+[data-theme="dark"] .content h4     { color: #8b949e; }
+[data-theme="dark"] .content h2 + p strong,
+[data-theme="dark"] .content h3 + p strong { color: #b0bec5; }
 [data-theme="dark"] .content tbody tr:hover { background: #1c2333; }
 [data-theme="dark"] tr:target       { background-color: #2d2000 !important; outline-color: var(--gold); }
 
@@ -113,6 +117,29 @@ body {
   transition: border-color 0.15s, background 0.15s;
 }
 .theme-toggle:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.4); }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  flex-shrink: 0;
+}
+.nav-toggle:hover { color: var(--gold-light); }
+
+/* Backdrop behind open mobile nav */
+.nav-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 90;
+}
+.nav-backdrop.visible { display: block; }
 
 .site-tagline {
   color: rgba(200, 220, 240, 0.55);
@@ -326,22 +353,26 @@ tr:target {
 }
 .site-footer a:hover { color: #fff; }
 
-/* ---- Responsive: collapse sidebar on narrow screens ---- */
+/* ---- Responsive: hamburger nav on narrow screens ---- */
 @media (max-width: 768px) {
-  .layout { flex-direction: column; }
-
-  .sidebar {
-    width: 100%;
-    max-height: 220px;
-    border-right: none;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    overflow-y: auto;
-    padding: 0.5rem 0 1rem;
-  }
-
-  .content {
-    padding: 1.25rem 1rem 2rem;
-  }
-
+  .nav-toggle { display: block; }
   .site-tagline { display: none; }
+
+  /* Sidebar slides in from the left as a fixed overlay */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 270px;
+    height: 100%;
+    z-index: 95;
+    transform: translateX(-100%);
+    transition: transform 0.22s ease;
+    overflow-y: auto;
+    padding-top: calc(var(--header-height) + 0.5rem);
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .sidebar.open { transform: translateX(0); }
+
+  .content { padding: 1.25rem 1rem 2rem; }
 }

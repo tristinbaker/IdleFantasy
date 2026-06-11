@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Firemaking — Idle Fantasy Wiki</title>
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/style.css?v=3">
   <script data-goatcounter="https://idlefantasy.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
   <script>
@@ -17,16 +17,19 @@
 </head>
 <body>
   <header class="site-header">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Open navigation" aria-expanded="false">&#9776;</button>
     <a class="site-title" href="index.html">
-      <span class="site-icon">⚔️</span>
+      <span class="site-icon">&#9876;&#65039;</span>
       Idle Fantasy Wiki
     </a>
     <span class="site-tagline">Community reference for all skills, combat, and crafting</span>
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
   </header>
 
+  <div id="nav-backdrop" class="nav-backdrop"></div>
+
   <div class="layout">
-    <nav class="sidebar" aria-label="Wiki navigation">
+    <nav id="sidebar" class="sidebar" aria-label="Wiki navigation">
       <ul>
 <li><a href="Home.html">Home</a></li>
 <li class="nav-section"><span class="nav-label">Skills</span><ul>
@@ -137,16 +140,39 @@
 
   <script>
     (function() {
-      var btn = document.getElementById('theme-toggle');
-      function updateIcon() {
-        btn.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+      // ---- Dark mode ----
+      var themeBtn = document.getElementById('theme-toggle');
+      function updateThemeIcon() {
+        themeBtn.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
       }
-      updateIcon();
-      btn.addEventListener('click', function() {
+      updateThemeIcon();
+      themeBtn.addEventListener('click', function() {
         var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
-        updateIcon();
+        updateThemeIcon();
+      });
+
+      // ---- Hamburger nav ----
+      var navToggle = document.getElementById('nav-toggle');
+      var sidebar   = document.getElementById('sidebar');
+      var backdrop  = document.getElementById('nav-backdrop');
+      function openNav() {
+        sidebar.classList.add('open');
+        backdrop.classList.add('visible');
+        navToggle.setAttribute('aria-expanded', 'true');
+      }
+      function closeNav() {
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('visible');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+      navToggle.addEventListener('click', function() {
+        sidebar.classList.contains('open') ? closeNav() : openNav();
+      });
+      backdrop.addEventListener('click', closeNav);
+      sidebar.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') closeNav();
       });
     })();
   </script>
