@@ -45,6 +45,7 @@ PAGE_DIRECTORY: dict[str, PageInfo] = {
     "runecrafting": PageInfo("Runecrafting", "Runecrafting.md"),
     "herblore": PageInfo("Herblore", "Herblore.md"),
     "construction": PageInfo("Construction", "Construction.md"),
+    "thieving": PageInfo("Thieving", "Thieving.md"),
     "prayer": PageInfo("Prayer", "Prayer.md"),
     "mercantile": PageInfo("Mercantile", "Mercantile.md"),
     "slayer": PageInfo("Slayer", "Slayer.md"),
@@ -76,6 +77,7 @@ PAGE_HIERARCHY = (
             "woodcutting",
             "farming",
             "agility",
+            "thieving",
         )),
         ("Crafting", (
             "smithing",
@@ -137,6 +139,7 @@ def _get_page_to_content() -> dict[str, str]:
         "runecrafting": gen_runecrafting(),
         "herblore": gen_herblore(),
         "construction": gen_construction(),
+        "thieving": gen_thieving(),
         "prayer": gen_prayer(),
         "mercantile": gen_mercantile(),
         "slayer": gen_slayer(),
@@ -360,6 +363,7 @@ def gen_skills() -> str:
         ("Farming", "gathering", "Plant seeds and harvest crops."),
         ("Firemaking", "gathering", "Burn logs for XP. Produces ashes for Prayer."),
         ("Agility", "gathering", "Reduces session time across all skills (60→40 min at level 99)."),
+        ("Thieving", "gathering", "Pickpocket NPCs in the Town for coins and loot."),
         ("Mercantile", "gathering",
          "Send trade caravans and explore skilling expeditions for lore and dungeon unlocks."),
         ("Smithing", "crafting", "Smelt ores into bars and forge equipment."),
@@ -610,6 +614,29 @@ def gen_construction() -> str:
     )
     return get_template("skills/crafting/construction").format(
         item_table=table(["Item", "Level", "Materials", "XP / Item"], rows)
+    )
+
+
+def gen_thieving() -> str:
+    npcs = load("thieving_npcs.json")
+    assert isinstance(npcs, list)
+    rows = []
+    for npc in npcs:
+        loot_parts = []
+        for entry in npc.get("loot_table", []):
+            qty_str = ""
+            if entry.get("min_qty") and entry.get("max_qty"):
+                qty_str = f" ({entry['min_qty']}-{entry['max_qty']})"
+            loot_parts.append(f"{fmt_pct(entry['chance'])} {item_link(entry['item'])}{qty_str}")
+        rows.append([
+            npc["display_name"],
+            npc["level_required"],
+            npc["base_xp"],
+            f"{npc['coins_min']}-{npc['coins_max']}",
+            ", ".join(loot_parts),
+        ])
+    return get_template("skills/gathering/thieving").format(
+        npc_table=table(["NPC", "Level", "XP / Steal", "Coins", "Possible Loot"], rows)
     )
 
 
