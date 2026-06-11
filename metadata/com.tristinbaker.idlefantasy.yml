@@ -461,9 +461,16 @@ Builds:
     gradle:
       - yes
 
+  - versionName: '1.8.4'
+    versionCode: 65
+    commit: 487f021f83a984f6e45639ef6e713b7dd488aed3
+    subdir: app
+    gradle:
+      - yes
+
 AllowedAPKSigningKeys: 99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
-CurrentVersion: 1.8.3
-CurrentVersionCode: 64
+CurrentVersion: 1.8.4
+CurrentVersionCode: 65
