@@ -7,6 +7,13 @@
   <link rel="stylesheet" href="assets/style.css">
   <script data-goatcounter="https://idlefantasy.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
+  <script>
+    (function() {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', stored || (prefersDark ? 'dark' : 'light'));
+    })();
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -15,6 +22,7 @@
       Idle Fantasy Wiki
     </a>
     <span class="site-tagline">Community reference for all skills, combat, and crafting</span>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
   </header>
 
   <div class="layout">
@@ -140,5 +148,21 @@
     <span>·</span>
     <a href="https://github.com/tristinbaker/IdleFantasy" target="_blank" rel="noopener">GitHub</a>
   </footer>
+
+  <script>
+    (function() {
+      var btn = document.getElementById('theme-toggle');
+      function updateIcon() {
+        btn.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+      }
+      updateIcon();
+      btn.addEventListener('click', function() {
+        var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateIcon();
+      });
+    })();
+  </script>
 </body>
 </html>

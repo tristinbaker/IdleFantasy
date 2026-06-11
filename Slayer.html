@@ -7,6 +7,13 @@
   <link rel="stylesheet" href="assets/style.css">
   <script data-goatcounter="https://idlefantasy.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
+  <script>
+    (function() {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', stored || (prefersDark ? 'dark' : 'light'));
+    })();
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -15,6 +22,7 @@
       Idle Fantasy Wiki
     </a>
     <span class="site-tagline">Community reference for all skills, combat, and crafting</span>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
   </header>
 
   <div class="layout">
@@ -82,109 +90,109 @@
 </thead>
 <tbody>
 <tr id="goblin">
-<td>Goblin</td>
+<td><a href="Enemies.html#goblin">Goblin</a></td>
 <td>1</td>
 <td>25–60</td>
 <td>15</td>
 </tr>
 <tr id="skeleton">
-<td>Skeleton</td>
+<td><a href="Enemies.html#skeleton">Skeleton</a></td>
 <td>1</td>
 <td>20–50</td>
 <td>18</td>
 </tr>
 <tr id="zombie">
-<td>Zombie</td>
+<td><a href="Enemies.html#zombie">Zombie</a></td>
 <td>5</td>
 <td>20–50</td>
 <td>20</td>
 </tr>
 <tr id="spider">
-<td>Spider</td>
+<td><a href="Enemies.html#spider">Spider</a></td>
 <td>10</td>
 <td>20–45</td>
 <td>25</td>
 </tr>
 <tr id="imp">
-<td>Imp</td>
+<td><a href="Enemies.html#imp">Imp</a></td>
 <td>10</td>
 <td>20–45</td>
 <td>22</td>
 </tr>
 <tr id="bandit">
-<td>Bandit</td>
+<td><a href="Enemies.html#bandit">Bandit</a></td>
 <td>15</td>
 <td>20–45</td>
 <td>28</td>
 </tr>
 <tr id="dark_wizard">
-<td>Dark Wizard</td>
+<td><a href="Enemies.html#dark_wizard">Dark Wizard</a></td>
 <td>20</td>
 <td>15–40</td>
 <td>32</td>
 </tr>
 <tr id="orc_warrior">
-<td>Orc Warrior</td>
+<td><a href="Enemies.html#orc_warrior">Orc Warrior</a></td>
 <td>25</td>
 <td>15–40</td>
 <td>38</td>
 </tr>
 <tr id="troll">
-<td>Troll</td>
+<td><a href="Enemies.html#troll">Troll</a></td>
 <td>25</td>
 <td>15–35</td>
 <td>42</td>
 </tr>
 <tr id="cave_troll">
-<td>Cave Troll</td>
+<td><a href="Enemies.html#cave_troll">Cave Troll</a></td>
 <td>30</td>
 <td>15–35</td>
 <td>48</td>
 </tr>
 <tr id="rock_golem">
-<td>Rock Golem</td>
+<td><a href="Enemies.html#rock_golem">Rock Golem</a></td>
 <td>35</td>
 <td>12–30</td>
 <td>55</td>
 </tr>
 <tr id="iron_golem">
-<td>Iron Golem</td>
+<td><a href="Enemies.html#iron_golem">Iron Golem</a></td>
 <td>40</td>
 <td>12–28</td>
 <td>62</td>
 </tr>
 <tr id="fire_giant">
-<td>Fire Giant</td>
+<td><a href="Enemies.html#fire_giant">Fire Giant</a></td>
 <td>45</td>
 <td>12–28</td>
 <td>70</td>
 </tr>
 <tr id="hellhound">
-<td>Hellhound</td>
+<td><a href="Enemies.html#hellhound">Hellhound</a></td>
 <td>45</td>
 <td>10–25</td>
 <td>78</td>
 </tr>
 <tr id="abyssal_leech">
-<td>Abyssal Leech</td>
+<td><a href="Enemies.html#abyssal_leech">Abyssal Leech</a></td>
 <td>55</td>
 <td>10–25</td>
 <td>95</td>
 </tr>
 <tr id="demon">
-<td>Demon</td>
+<td><a href="Enemies.html#demon">Demon</a></td>
 <td>60</td>
 <td>10–25</td>
 <td>110</td>
 </tr>
 <tr id="dragon">
-<td>Dragon</td>
+<td><a href="Enemies.html#dragon">Dragon</a></td>
 <td>70</td>
 <td>8–20</td>
 <td>140</td>
 </tr>
 <tr id="lich">
-<td>Lich</td>
+<td><a href="Enemies.html#lich">Lich</a></td>
 <td>80</td>
 <td>8–18</td>
 <td>180</td>
@@ -209,5 +217,21 @@
     <span>·</span>
     <a href="https://github.com/tristinbaker/IdleFantasy" target="_blank" rel="noopener">GitHub</a>
   </footer>
+
+  <script>
+    (function() {
+      var btn = document.getElementById('theme-toggle');
+      function updateIcon() {
+        btn.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+      }
+      updateIcon();
+      btn.addEventListener('click', function() {
+        var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateIcon();
+      });
+    })();
+  </script>
 </body>
 </html>

@@ -7,6 +7,13 @@
   <link rel="stylesheet" href="assets/style.css">
   <script data-goatcounter="https://idlefantasy.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
+  <script>
+    (function() {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', stored || (prefersDark ? 'dark' : 'light'));
+    })();
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -15,6 +22,7 @@
       Idle Fantasy Wiki
     </a>
     <span class="site-tagline">Community reference for all skills, combat, and crafting</span>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
   </header>
 
   <div class="layout">
@@ -70,6 +78,30 @@
     <main class="content">
       <h1 id="dungeons">Dungeons</h1>
 <p>Each dungeon session lasts the standard session duration (reduced by Agility). Enemies spawn randomly according to the weights below.</p>
+<h2 id="imp-cavern">Imp Cavern</h2>
+<p><strong>Recommended Level:</strong> 1</p>
+<p>A shallow cave filled with mischievous imps. Perfect for absolute beginners!</p>
+<table>
+<thead>
+<tr>
+<th>Enemy</th>
+<th>Weight</th>
+<th>Spawn Chance</th>
+</tr>
+</thead>
+<tbody>
+<tr id="imp">
+<td>Imp</td>
+<td>7</td>
+<td>70%</td>
+</tr>
+<tr id="giant_rat">
+<td>Giant Rat</td>
+<td>3</td>
+<td>30%</td>
+</tr>
+</tbody>
+</table>
 <h2 id="farm">Farm</h2>
 <p><strong>Recommended Level:</strong> 1</p>
 <p>A peaceful farm with livestock. Great for beginners looking to gather food!</p>
@@ -96,30 +128,6 @@
 <td>Cow</td>
 <td>2</td>
 <td>20%</td>
-</tr>
-</tbody>
-</table>
-<h2 id="imp-cavern">Imp Cavern</h2>
-<p><strong>Recommended Level:</strong> 1</p>
-<p>A shallow cave filled with mischievous imps. Perfect for absolute beginners!</p>
-<table>
-<thead>
-<tr>
-<th>Enemy</th>
-<th>Weight</th>
-<th>Spawn Chance</th>
-</tr>
-</thead>
-<tbody>
-<tr id="imp">
-<td>Imp</td>
-<td>7</td>
-<td>70%</td>
-</tr>
-<tr id="giant_rat">
-<td>Giant Rat</td>
-<td>3</td>
-<td>30%</td>
 </tr>
 </tbody>
 </table>
@@ -282,9 +290,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="collapsed-mine">Collapsed Mine</h2>
+<h2 id="drowned-temple">Drowned Temple</h2>
 <p><strong>Recommended Level:</strong> 20</p>
-<p>A vast cavern beneath the copper mines. Cave trolls and rock golems haunt the rubble, and giant spiders spin webs across the collapsed shafts.</p>
+<p>A sunken temple beneath the sea grotto, its halls filled with brine and ancient sorrow. Drowned cultists drift through the corridors alongside sea spirits and cursed fishermen.</p>
 <table>
 <thead>
 <tr>
@@ -294,18 +302,18 @@
 </tr>
 </thead>
 <tbody>
-<tr id="mine_spider">
-<td>Mine Spider</td>
+<tr id="drowned_cultist">
+<td>Drowned Cultist</td>
 <td>4</td>
 <td>40%</td>
 </tr>
-<tr id="cave_troll">
-<td>Cave Troll</td>
+<tr id="sea_spirit">
+<td>Sea Spirit</td>
 <td>3</td>
 <td>30%</td>
 </tr>
-<tr id="rock_golem">
-<td>Rock Golem</td>
+<tr id="cursed_fisherman">
+<td>Cursed Fisherman</td>
 <td>3</td>
 <td>30%</td>
 </tr>
@@ -340,9 +348,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="drowned-temple">Drowned Temple</h2>
+<h2 id="collapsed-mine">Collapsed Mine</h2>
 <p><strong>Recommended Level:</strong> 20</p>
-<p>A sunken temple beneath the sea grotto, its halls filled with brine and ancient sorrow. Drowned cultists drift through the corridors alongside sea spirits and cursed fishermen.</p>
+<p>A vast cavern beneath the copper mines. Cave trolls and rock golems haunt the rubble, and giant spiders spin webs across the collapsed shafts.</p>
 <table>
 <thead>
 <tr>
@@ -352,18 +360,18 @@
 </tr>
 </thead>
 <tbody>
-<tr id="drowned_cultist">
-<td>Drowned Cultist</td>
+<tr id="mine_spider">
+<td>Mine Spider</td>
 <td>4</td>
 <td>40%</td>
 </tr>
-<tr id="sea_spirit">
-<td>Sea Spirit</td>
+<tr id="cave_troll">
+<td>Cave Troll</td>
 <td>3</td>
 <td>30%</td>
 </tr>
-<tr id="cursed_fisherman">
-<td>Cursed Fisherman</td>
+<tr id="rock_golem">
+<td>Rock Golem</td>
 <td>3</td>
 <td>30%</td>
 </tr>
@@ -504,9 +512,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="abyssal-ruins">Abyssal Ruins</h2>
+<h2 id="ancient-forge">Ancient Forge</h2>
 <p><strong>Recommended Level:</strong> 55</p>
-<p>Ancient ruins that exist simultaneously above and below the water's surface. Abyssal leeches, deep horrors, and void guardians protect whatever the ruins were built to contain.</p>
+<p>A vast dwarven forge that has burned for centuries without tending. Iron golems and forge demons guard its secrets, and dwarven guardians stand ready to repel any intruder.</p>
 <table>
 <thead>
 <tr>
@@ -516,18 +524,18 @@
 </tr>
 </thead>
 <tbody>
-<tr id="abyssal_leech">
-<td>Abyssal Leech</td>
+<tr id="dwarven_guardian">
+<td>Dwarven Guardian</td>
 <td>4</td>
 <td>40%</td>
 </tr>
-<tr id="void_guardian">
-<td>Void Guardian</td>
+<tr id="iron_golem">
+<td>Iron Golem</td>
 <td>3</td>
 <td>30%</td>
 </tr>
-<tr id="deep_horror">
-<td>Deep Horror</td>
+<tr id="forge_demon">
+<td>Forge Demon</td>
 <td>3</td>
 <td>30%</td>
 </tr>
@@ -562,9 +570,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="ancient-forge">Ancient Forge</h2>
+<h2 id="abyssal-ruins">Abyssal Ruins</h2>
 <p><strong>Recommended Level:</strong> 55</p>
-<p>A vast dwarven forge that has burned for centuries without tending. Iron golems and forge demons guard its secrets, and dwarven guardians stand ready to repel any intruder.</p>
+<p>Ancient ruins that exist simultaneously above and below the water's surface. Abyssal leeches, deep horrors, and void guardians protect whatever the ruins were built to contain.</p>
 <table>
 <thead>
 <tr>
@@ -574,18 +582,18 @@
 </tr>
 </thead>
 <tbody>
-<tr id="dwarven_guardian">
-<td>Dwarven Guardian</td>
+<tr id="abyssal_leech">
+<td>Abyssal Leech</td>
 <td>4</td>
 <td>40%</td>
 </tr>
-<tr id="iron_golem">
-<td>Iron Golem</td>
+<tr id="void_guardian">
+<td>Void Guardian</td>
 <td>3</td>
 <td>30%</td>
 </tr>
-<tr id="forge_demon">
-<td>Forge Demon</td>
+<tr id="deep_horror">
+<td>Deep Horror</td>
 <td>3</td>
 <td>30%</td>
 </tr>
@@ -630,5 +638,21 @@
     <span>·</span>
     <a href="https://github.com/tristinbaker/IdleFantasy" target="_blank" rel="noopener">GitHub</a>
   </footer>
+
+  <script>
+    (function() {
+      var btn = document.getElementById('theme-toggle');
+      function updateIcon() {
+        btn.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+      }
+      updateIcon();
+      btn.addEventListener('click', function() {
+        var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateIcon();
+      });
+    })();
+  </script>
 </body>
 </html>
