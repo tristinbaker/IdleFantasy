@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Game Corner — Idle Fantasy Wiki</title>
+  <link rel="stylesheet" href="assets/style.css?v=3">
+  <script data-goatcounter="https://idlefantasy.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+  <script>
+    (function() {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', stored || (prefersDark ? 'dark' : 'light'));
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Open navigation" aria-expanded="false">&#9776;</button>
+    <a class="site-title" href="index.html">
+      <span class="site-icon">&#9876;&#65039;</span>
+      Idle Fantasy Wiki
+    </a>
+    <span class="site-tagline">Community reference for all skills, combat, and crafting</span>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
+  </header>
+
+  <div id="nav-backdrop" class="nav-backdrop"></div>
+
+  <div class="layout">
+    <nav id="sidebar" class="sidebar" aria-label="Wiki navigation">
+      <ul>
+<li><a href="Home.html">Home</a></li>
+<li class="nav-section"><span class="nav-label">Skills</span><ul>
+<li><a href="Skills.html">Skills</a></li>
+<li class="nav-section"><span class="nav-label">Gathering</span><ul>
+<li><a href="Mining.html">Mining</a></li>
+<li><a href="Fishing.html">Fishing</a></li>
+<li><a href="Woodcutting.html">Woodcutting</a></li>
+<li><a href="Farming.html">Farming</a></li>
+<li><a href="Agility.html">Agility</a></li>
+<li><a href="Thieving.html">Thieving</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Crafting</span><ul>
+<li><a href="Smithing.html">Smithing</a></li>
+<li><a href="Cooking.html">Cooking</a></li>
+<li><a href="Fletching.html">Fletching</a></li>
+<li><a href="Crafting.html">Crafting</a></li>
+<li><a href="Firemaking.html">Firemaking</a></li>
+<li><a href="Runecrafting.html">Runecrafting</a></li>
+<li><a href="Herblore.html">Herblore</a></li>
+<li><a href="Construction.html">Construction</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Support</span><ul>
+<li><a href="Prayer.html">Prayer</a></li>
+<li><a href="Mercantile.html">Mercantile</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Combat</span><ul>
+<li><a href="Slayer.html">Slayer</a></li>
+</ul></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Inventory</span><ul>
+<li><a href="Equipment.html">Equipment</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Combat</span><ul>
+<li><a href="Bosses.html">Bosses</a></li>
+<li><a href="Dungeons.html">Dungeons</a></li>
+<li><a href="Enemies.html">Enemies</a></li>
+<li><a href="Spells.html">Spells</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Town</span><ul>
+<li><a href="Shop.html">Shop</a></li>
+<li><a href="Workers.html">Workers</a></li>
+<li><a href="Guilds.html">Guilds</a></li>
+<li><a href="Buildings.html">Buildings</a></li>
+<li><a href="Game-Corner.html" class="active">Game Corner</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Miscellaneous</span><ul>
+<li><a href="Pets.html">Pets</a></li>
+<li><a href="Quests.html">Quests</a></li>
+</ul></li>
+</ul>
+    </nav>
+
+    <main class="content">
+      <h1 id="game-corner">Game Corner</h1>
+<p>Visit the <strong>Game Corner</strong> in Town to try your luck at eight casino-style mini-games. All games cost coins to play and pay out coins on a win. Every win also has a <strong>1-in-1,000</strong> chance to drop a Game Corner exclusive item.</p>
+<hr />
+<h2 id="exclusive-drops">Exclusive Drops</h2>
+<p>These items can only be obtained from the Game Corner.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Slot</th>
+<th>Bonuses</th>
+<th>Requirements</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr id="ring_of_fortune">
+<td>Ring of Fortune</td>
+<td>Ring</td>
+<td>Atk +20, Str +24, Def +16</td>
+<td>None</td>
+<td>1-in-1,000 on any win</td>
+</tr>
+<tr id="amulet_of_fortune">
+<td>Amulet of Fortune</td>
+<td>Necklace</td>
+<td>Atk +25, Str +32, Def +20</td>
+<td>None</td>
+<td>1-in-1,000 on any win</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="slots">Slots</h2>
+<p>Spin three reels. Match all three symbols to win.</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Reel Weight</th>
+<th>3-Match Payout</th>
+</tr>
+</thead>
+<tbody>
+<tr id="cherry">
+<td>🍒 Cherry</td>
+<td>8</td>
+<td>2×</td>
+</tr>
+<tr id="lemon">
+<td>🍋 Lemon</td>
+<td>6</td>
+<td>3×</td>
+</tr>
+<tr id="orange">
+<td>🍊 Orange</td>
+<td>5</td>
+<td>4×</td>
+</tr>
+<tr id="bell">
+<td>🔔 Bell</td>
+<td>4</td>
+<td>8×</td>
+</tr>
+<tr id="bar">
+<td>BAR</td>
+<td>3</td>
+<td>10×</td>
+</tr>
+<tr id="7_seven">
+<td>7️⃣ Seven</td>
+<td>2</td>
+<td>20×</td>
+</tr>
+<tr id="diamond">
+<td>💎 Diamond</td>
+<td>1</td>
+<td>50×</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="high-low">High-Low</h2>
+<p>Spend a bet to roll a die (1–6). Guess whether the next roll will be <strong>Higher</strong> or <strong>Lower</strong>.</p>
+<ul>
+<li><strong>Win</strong> — pot grows to 1.8× its current value</li>
+<li><strong>Tie</strong> — push; pot is returned</li>
+<li><strong>Lose</strong> — pot is lost</li>
+</ul>
+<p>After a win you can <strong>Roll Again</strong> (the full pot rides on the next guess) or <strong>Cash Out</strong> to bank your winnings.</p>
+<hr />
+<h2 id="lottery">Lottery</h2>
+<p>Buy tickets for 1,000 coins each (up to 20 held). A draw becomes available every 24 hours.</p>
+<p>Each ticket is resolved independently:</p>
+<table>
+<thead>
+<tr>
+<th>Chance</th>
+<th>Prize</th>
+</tr>
+</thead>
+<tbody>
+<tr id="75">
+<td>75%</td>
+<td>No win</td>
+</tr>
+<tr id="15">
+<td>15%</td>
+<td>1,500 coins</td>
+</tr>
+<tr id="8">
+<td>8%</td>
+<td>5,000 coins</td>
+</tr>
+<tr id="2">
+<td>2%</td>
+<td>20,000 coins</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="card-flip">Card Flip</h2>
+<p>Three cards are placed face-down; one is the Ace. Pick a card — if it is the Ace you win <strong>2.5×</strong> your bet. The other two cards are revealed after your pick.</p>
+<hr />
+<h2 id="blackjack">Blackjack</h2>
+<p>Standard Blackjack rules. The dealer hits on 16 or lower and stands on 17 or higher.</p>
+<table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th>Payout</th>
+</tr>
+</thead>
+<tbody>
+<tr id="blackjack_a_10_value_on_deal">
+<td>Blackjack (A + 10-value on deal)</td>
+<td>2.5×</td>
+</tr>
+<tr id="win">
+<td>Win</td>
+<td>2×</td>
+</tr>
+<tr id="push">
+<td>Push</td>
+<td>Bet returned</td>
+</tr>
+<tr id="lose_bust">
+<td>Lose / Bust</td>
+<td>Bet lost</td>
+</tr>
+</tbody>
+</table>
+<p>Double Down is available on your opening two cards if you can afford to match your current bet.</p>
+<hr />
+<h2 id="roulette">Roulette</h2>
+<p>European Roulette (numbers 0–36). Choose a bet type and spin the wheel.</p>
+<table>
+<thead>
+<tr>
+<th>Bet Type</th>
+<th>Win Chance</th>
+<th>Payout</th>
+</tr>
+</thead>
+<tbody>
+<tr id="red_black">
+<td>Red / Black</td>
+<td>~48.6%</td>
+<td>2×</td>
+</tr>
+<tr id="odd_even">
+<td>Odd / Even</td>
+<td>~48.6%</td>
+<td>2×</td>
+</tr>
+<tr id="dozen_1_12_13_24_25_36">
+<td>Dozen (1-12 / 13-24 / 25-36)</td>
+<td>~32.4%</td>
+<td>3×</td>
+</tr>
+<tr id="single_number">
+<td>Single Number</td>
+<td>2.7%</td>
+<td>36×</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="scratch-card">Scratch Card</h2>
+<p>Buy a card for 500 coins. A 3×3 grid of hidden symbols is revealed. Any complete row of three matching symbols pays out.</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Cell Weight</th>
+<th>Row Payout</th>
+</tr>
+</thead>
+<tbody>
+<tr id="cherry">
+<td>🍒 Cherry</td>
+<td>30</td>
+<td>2×  price</td>
+</tr>
+<tr id="coin_bag">
+<td>💰 Coin Bag</td>
+<td>25</td>
+<td>5×  price</td>
+</tr>
+<tr id="star">
+<td>⭐ Star</td>
+<td>20</td>
+<td>10× price</td>
+</tr>
+<tr id="bell">
+<td>🔔 Bell</td>
+<td>15</td>
+<td>20× price</td>
+</tr>
+<tr id="diamond">
+<td>💎 Diamond</td>
+<td>10</td>
+<td>50× price</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="video-poker">Video Poker</h2>
+<p>Jacks or Better. You are dealt five cards and may hold any number before drawing replacements. Winning hands:</p>
+<table>
+<thead>
+<tr>
+<th>Hand</th>
+<th>Payout</th>
+</tr>
+</thead>
+<tbody>
+<tr id="royal_flush">
+<td>Royal Flush</td>
+<td>800×</td>
+</tr>
+<tr id="straight_flush">
+<td>Straight Flush</td>
+<td>50×</td>
+</tr>
+<tr id="four_of_a_kind">
+<td>Four of a Kind</td>
+<td>25×</td>
+</tr>
+<tr id="full_house">
+<td>Full House</td>
+<td>9×</td>
+</tr>
+<tr id="flush">
+<td>Flush</td>
+<td>6×</td>
+</tr>
+<tr id="straight">
+<td>Straight</td>
+<td>4×</td>
+</tr>
+<tr id="three_of_a_kind">
+<td>Three of a Kind</td>
+<td>3×</td>
+</tr>
+<tr id="two_pair">
+<td>Two Pair</td>
+<td>2×</td>
+</tr>
+<tr id="jacks_or_better">
+<td>Jacks or Better</td>
+<td>1×</td>
+</tr>
+</tbody>
+</table>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <span>All data is auto-generated from game files and stays up to date with the latest release.</span>
+    <span>·</span>
+    <a href="https://github.com/tristinbaker/IdleFantasy/issues" target="_blank" rel="noopener">Report an issue</a>
+    <span>·</span>
+    <a href="https://github.com/tristinbaker/IdleFantasy" target="_blank" rel="noopener">GitHub</a>
+  </footer>
+
+  <script>
+    (function() {
+      // ---- Dark mode ----
+      var themeBtn = document.getElementById('theme-toggle');
+      function updateThemeIcon() {
+        themeBtn.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+      }
+      updateThemeIcon();
+      themeBtn.addEventListener('click', function() {
+        var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateThemeIcon();
+      });
+
+      // ---- Hamburger nav ----
+      var navToggle = document.getElementById('nav-toggle');
+      var sidebar   = document.getElementById('sidebar');
+      var backdrop  = document.getElementById('nav-backdrop');
+      function openNav() {
+        sidebar.classList.add('open');
+        backdrop.classList.add('visible');
+        navToggle.setAttribute('aria-expanded', 'true');
+      }
+      function closeNav() {
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('visible');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+      navToggle.addEventListener('click', function() {
+        sidebar.classList.contains('open') ? closeNav() : openNav();
+      });
+      backdrop.addEventListener('click', closeNav);
+      sidebar.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') closeNav();
+      });
+    })();
+  </script>
+</body>
+</html>
