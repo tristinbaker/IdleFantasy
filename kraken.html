@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bosses — Idle Fantasy Wiki</title>
+  <title>Kraken — Idle Fantasy Wiki</title>
   <link rel="stylesheet" href="assets/style.css?v=3">
   <script data-goatcounter="https://idlefantasy.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
@@ -64,7 +64,7 @@
 <li><a href="Equipment.html">Equipment</a></li>
 </ul></li>
 <li class="nav-section"><span class="nav-label">Combat</span><ul>
-<li><a href="Bosses.html" class="active">Bosses</a></li>
+<li><a href="Bosses.html">Bosses</a></li>
 <li><a href="Dungeons.html">Dungeons</a></li>
 <li><a href="Enemies.html">Enemies</a></li>
 <li><a href="Spells.html">Spells</a></li>
@@ -83,39 +83,136 @@
     </nav>
 
     <main class="content">
-      <h1 id="bosses">Bosses</h1>
-<p>Raid bosses are high-difficulty encounters with unique loot.</p>
-<p>They often drop a fixed amount of XP as well as a mixture of guaranteed loot and rare drops which you can only get by fighting bosses.</p>
-<p>More information about specific bosses can be found on their particular pages</p>
-<h2 id="bosses_1">Bosses</h2>
+      <h1 id="kraken">Kraken</h1>
+<table class="summary">
+    <thead>
+        <tr>
+            <th colspan="2" style="text-align: center; vertical-align: middle; font-size: 8em;">🦑</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr id="lvl_90">
+            <th>Combat level</th>
+            <td>Lvl 90</td>
+        </tr>
+        <tr id="2_200">
+            <th>HP</th>
+            <td>2,200 ♥</td>
+        </tr>
+        <tr id="90_mins">
+            <th>Max duration</th>
+            <td>90 mins</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>The terror of the deep seas, a colossal sea monster.</p>
+<h2 id="boss-stats">Boss Stats</h2>
+<p>Effective attack: 202</p>
 <table>
 <thead>
 <tr>
-<th>Boss</th>
-<th>Combat Level</th>
-<th>Description</th>
+<th>Style</th>
+<th>Defence</th>
 </tr>
 </thead>
 <tbody>
-<tr id="king_black_dragon">
-<td><a href="king_black_dragon.html">King Black Dragon</a></td>
-<td>50</td>
-<td>The legendary three-headed dragon, feared across the realm.</td>
+<tr id="attack">
+<td>Attack</td>
+<td>80</td>
 </tr>
-<tr id="demon_lord">
-<td><a href="demon_lord.html">Demon Lord</a></td>
-<td>70</td>
-<td>An ancient demon from the abyss, master of dark magic.</td>
+<tr id="strength">
+<td>Strength</td>
+<td>80</td>
 </tr>
-<tr id="kraken">
-<td><a href="kraken.html">Kraken</a></td>
-<td>90</td>
-<td>The terror of the deep seas, a colossal sea monster.</td>
-</tr>
-<tr id="balrog_ancient_flame_of_ud_n">
-<td><a href="balrog.html">Balrog, Ancient Flame of Udûn</a></td>
+<tr id="ranged">
+<td>Ranged</td>
 <td>100</td>
-<td>An ancient demon of flame and shadow, awakened from its slumber deep beneath the earth.</td>
+</tr>
+<tr id="magic">
+<td>Magic</td>
+<td>40</td>
+</tr>
+</tbody>
+</table>
+<h2 id="loot">Loot</h2>
+<p>If you defeat the Kraken, you'll receive all xp rewards as described and a random quantity of additional loot described in the loot table below</p>
+<p><strong>XP Rewards</strong>: Attack 4,000, Strength 4,000, Defense 4,000, Hitpoints 3,000, Magic 5,000, Ranged 2,000</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Min</th>
+<th>Max</th>
+</tr>
+</thead>
+<tbody>
+<tr id="coins">
+<td>Coins</td>
+<td>50000</td>
+<td>100000</td>
+</tr>
+<tr id="raw_shark">
+<td><a href="Fishing.html#raw_shark">Raw Shark</a></td>
+<td>100</td>
+<td>200</td>
+</tr>
+<tr id="dragon_bone">
+<td><a href="Prayer.html#dragon_bone">Dragon Bone</a></td>
+<td>50</td>
+<td>100</td>
+</tr>
+<tr id="coal">
+<td><a href="Mining.html#coal">Coal</a></td>
+<td>200</td>
+<td>400</td>
+</tr>
+<tr id="runite_ore">
+<td><a href="Mining.html#runite_ore">Runite Ore</a></td>
+<td>100</td>
+<td>200</td>
+</tr>
+<tr id="platinum_ore">
+<td><a href="Mining.html#platinum_ore">Platinum Ore</a></td>
+<td>50</td>
+<td>100</td>
+</tr>
+<tr id="water_rune">
+<td><a href="Runecrafting.html#water_rune">Water Rune</a></td>
+<td>200</td>
+<td>400</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rare-drops">Rare drops</h3>
+<p>Rare drops give you an opportunity to get items only available by fighting the Kraken.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Chance</th>
+</tr>
+</thead>
+<tbody>
+<tr id="trident_of_the_seas">
+<td><a href="Equipment.html#trident_of_the_seas">Trident Of The Seas</a></td>
+<td>0.5%</td>
+</tr>
+<tr id="kraken_tentacle">
+<td><a href="Equipment.html#kraken_tentacle">Kraken Tentacle</a></td>
+<td>0.5%</td>
+</tr>
+<tr id="amulet_of_the_kraken">
+<td><a href="Equipment.html#amulet_of_the_kraken">Amulet Of The Kraken</a></td>
+<td>0.5%</td>
+</tr>
+<tr id="ring_of_the_seas">
+<td><a href="Equipment.html#ring_of_the_seas">Ring Of The Seas</a></td>
+<td>0.5%</td>
+</tr>
+<tr id="baby_kraken">
+<td><a href="Pets.html#baby_kraken">🦑 Baby Kraken</a></td>
+<td>1%</td>
 </tr>
 </tbody>
 </table>
