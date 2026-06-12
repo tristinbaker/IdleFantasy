@@ -230,11 +230,22 @@ cp "$APK" "$FDROID_DIR/repo/com.tristinbaker.idlefantasy_${VERSION_CODE}.apk"
 cd "$FDROID_DIR"
 fdroid update
 
+# Deploy generated index + APKs to gh-pages so GitHub Pages (custom domain) serves them
+GH_PAGES_WORK="/tmp/gh-pages-fdroid-deploy"
+rm -rf "$GH_PAGES_WORK"
 cd "$REPO_DIR"
-git add docs/fdroid/repo/
-git commit -m "Update F-Droid repo for $TAG"
-git push
-echo "==> Custom F-Droid repo updated and pushed"
+git worktree add "$GH_PAGES_WORK" gh-pages
+git -C "$GH_PAGES_WORK" pull --rebase origin gh-pages
+mkdir -p "$GH_PAGES_WORK/fdroid/repo" "$GH_PAGES_WORK/fdroid/archive"
+rsync -a "$FDROID_DIR/repo/" "$GH_PAGES_WORK/fdroid/repo/"
+rsync -a "$FDROID_DIR/archive/" "$GH_PAGES_WORK/fdroid/archive/" 2>/dev/null || true
+cd "$GH_PAGES_WORK"
+git add fdroid/
+git diff --cached --quiet || git commit -m "Update F-Droid repo for $TAG"
+git push origin gh-pages
+cd "$REPO_DIR"
+git worktree remove "$GH_PAGES_WORK"
+echo "==> Custom F-Droid repo updated and pushed (gh-pages)"
 
 # ---------------------------------------------------------------------------
 # Create GitHub release
