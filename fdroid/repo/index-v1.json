@@ -1,0 +1,2441 @@
+{
+  "repo": {
+    "timestamp": 1781379748448,
+    "version": 30000,
+    "name": "Idle Fantasy",
+    "icon": "icon.png",
+    "address": "https://idlefantasy.tristinbaker.xyz/fdroid/repo",
+    "description": "Official Idle Fantasy repository \u2014 get updates faster than the main F-Droid repo."
+  },
+  "requests": {
+    "install": [],
+    "uninstall": []
+  },
+  "apps": [
+    {
+      "allowedAPKSigningKeys": [
+        "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+      ],
+      "binaries": "https://github.com/tristinbaker/IdleFantasy/releases/download/v%v/app-release.apk",
+      "categories": [
+        "Games"
+      ],
+      "suggestedVersionName": "1.8.11",
+      "suggestedVersionCode": "73",
+      "issueTracker": "https://github.com/tristinbaker/IdleFantasy/issues",
+      "liberapay": "tristinbaker_",
+      "license": "GPL-3.0-only",
+      "sourceCode": "https://github.com/tristinbaker/IdleFantasy",
+      "added": 1781379729940,
+      "packageName": "com.tristinbaker.idlefantasy",
+      "lastUpdated": 1781379729940,
+      "localized": {
+        "en-US": {
+          "description": "Idle Fantasy is a free and open source offline idle RPG inspired by classic MMORPGs. Train skills, fight in dungeons, craft gear, and complete quests. No internet connection, account, or ads required.\n\n<b>Features</b>\n\n\u2022 <b>14 trainable skills</b>: Mining, Fishing, Woodcutting, Firemaking, Agility, Runecrafting, Smithing, Cooking, Fletching, Crafting, Prayer, Attack, Strength, Defence, Ranged, Magic, Hitpoints\n\n\u2022 <b>Session-based training</b>: Start a session and close the app. Come back up to an hour later to collect your loot and XP. Agility reduces session time.\n\n\u2022 <b>12 dungeons</b>: Fight solo bosses and enemies to earn combat XP, coins, and rare drops. Equip weapons and armour to deal more damage.\n\n\u2022 <b>Crafting system</b>: Smelt bars, cook fish, fletch bows and arrows, craft jewellery. Consume gathered materials and earn XP and items.\n\n\u2022 <b>Prayer</b>: Bury bones collected from combat to earn Prayer XP.\n\n\u2022 <b>Equipment system</b>: Equip weapons, armour, tools, and jewellery to boost stats and skill efficiency.\n\n\u2022 <b>Quest system</b>: 100+ quests spanning all skills. Earn XP rewards on completion.\n\n\u2022 <b>Pet system</b>: Rare pets can drop while training skills. Each pet provides a permanent XP boost to their linked skill.\n\n\u2022 <b>Achievements</b>: Track milestones across levelling, combat, quests, and collections.\n\n\u2022 <b>NPC Shop</b>: Buy supplies and sell your gathered resources for coins.\n\n\u2022 <b>No ads. No accounts. No internet required.</b> Your save data stays on your device.\n\nIdle Fantasy is free software released under the GPL-3.0 licence. Source code is available on the project repository.\n",
+          "icon": "icon_9h1hkNc21_zKDjvAQz13qne2EbIN25vw98yOSUsY0dE=.png",
+          "name": "Idle Fantasy",
+          "phoneScreenshots": [
+            "1.png",
+            "10.png",
+            "11.png",
+            "12.png",
+            "13.png",
+            "14.png",
+            "15.png",
+            "16.png",
+            "2.png",
+            "3.png",
+            "4.png",
+            "5.png",
+            "6.png",
+            "7.png",
+            "8.png",
+            "9.png"
+          ],
+          "summary": "Idle RPG: train skills, fight dungeons, craft gear. No ads, no accounts.",
+          "whatsNew": "\u2022 New: 6 high-level Slayer tasks added (levels 85-99): Void Stalker, Frost Wyvern, Abyssal Guardian, Shadow Thief, Spectral Knight, Elder Lich; fills the Slayer gap between level 80 and 99\n\u2022 New: Thieves Guild added to the Guild Hall (Gathering category): 10 progression quests chaining through all 8 NPC tiers from peasant to high priest, 15 rotating daily requests, and a Thieves Guild Cape capstone reward; Agility Guild moved to the Support Skills category\n\u2022 New: Agility skill moved to the Suppo"
+        }
+      }
+    }
+  ],
+  "packages": {
+    "com.tristinbaker.idlefantasy": [
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_73.apk",
+        "hash": "f10b68bdbf169d0fe4fd53cf30555d98795a72259d7841b9c05943fc03ec50a6",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4991683,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.USE_EXACT_ALARM",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 73,
+        "versionName": "1.8.11"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_72.apk",
+        "hash": "b33f77ce5e1fdc4af32d5b8c106e5a5937dca39d5ff6e7b4b3e21f5c4ed46ba7",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4954695,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.USE_EXACT_ALARM",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 72,
+        "versionName": "1.8.10"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_71.apk",
+        "hash": "396cdbd95406ef2c16968a5e083014a307b0b558717b41d4860e7409db4979d3",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 5005179,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.USE_EXACT_ALARM",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 71,
+        "versionName": "1.8.9"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_69.apk",
+        "hash": "2be5f9248f7e613f5d208ac51a985a5d7932afb093d3d8d586f54474bb60a8bc",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4966248,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.USE_EXACT_ALARM",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 69,
+        "versionName": "1.8.8"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_68.apk",
+        "hash": "d96a37ab5ad92a98f6f8b8b0b94385ef1b8cdf2aca65ac5ea042b18fb1887655",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4915392,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.USE_EXACT_ALARM",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 68,
+        "versionName": "1.8.7"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_67.apk",
+        "hash": "d5e361e5a9f2611d858954b9214c769eb8047fd0232b4c7fd3e045175170656f",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4914528,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.USE_EXACT_ALARM",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 67,
+        "versionName": "1.8.6"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_66.apk",
+        "hash": "e98567ab6a3d39ea5a3ece14c964c85124515780518f17cdba64d038b1530313",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4912276,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 66,
+        "versionName": "1.8.5"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_65.apk",
+        "hash": "edf5302f50916bf4d66cfceda8054aebb56b9ede1fae87c086a05f9e1af28b11",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4893088,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 65,
+        "versionName": "1.8.4"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_64.apk",
+        "hash": "effa8b0b11c681c57db6adcd49d229d4d4524597ec1264fc238527981d7f773b",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4892396,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 64,
+        "versionName": "1.8.3"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_63.apk",
+        "hash": "0798d9ee4eb903fb7c3d443c3466f84d9e96984dbbdc797e4f0d0f9b18531a26",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4891960,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 63,
+        "versionName": "1.8.2"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_62.apk",
+        "hash": "eac62f688cad30fac33c3a60b3da965b836d8d1e2dd3dbc723dff375ab0a3274",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4803056,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 62,
+        "versionName": "1.8.1"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_61.apk",
+        "hash": "98c3b367dd91c8597f7aff42953567e9506d4afddd54845106c18f21309cb698",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4802880,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 61,
+        "versionName": "1.8.0"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_60.apk",
+        "hash": "1a50dfbd55577d4303950ee97ba6909b1d367fc3dad54fdac86ac5ad400c1bff",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4736469,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 60,
+        "versionName": "1.7.20"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_59.apk",
+        "hash": "00e45ac00067ab7e4fddf603784e6a507f0a7fe184eb4825b8c7371b2a4e5b3b",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4732037,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 59,
+        "versionName": "1.7.19"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_58.apk",
+        "hash": "ed8aaa15ef2203d9266808029d087bc880c60503ba3c569592dab30a0e13b8d6",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4731957,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 58,
+        "versionName": "1.7.18"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_57.apk",
+        "hash": "142bb68b357b73cff6ff4e832d9b8fae1248140424d503d5134f7112927e6cc4",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4731881,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 57,
+        "versionName": "1.7.17"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_56.apk",
+        "hash": "53879c8954ffb468d6c4cb211d4c63060cdc0f4a9d7e7acd269d43c6217726f2",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4730505,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 56,
+        "versionName": "1.7.16"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_55.apk",
+        "hash": "63d68576e40e5a330331946c55adf6ae31d578d4b87ed6fc85e65a455edc491a",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4705033,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 55,
+        "versionName": "1.7.15"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_54.apk",
+        "hash": "a65cfb1e1b69d7b6a366ab8df3bc4876a8632af52a2eeb2ea335b44f4c255e61",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4661213,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 54,
+        "versionName": "1.7.14"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_53.apk",
+        "hash": "26238e7be01d65904050cf12da99df4117aec448c7c31f80ce6a8fe31f3c99e7",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4494781,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 53,
+        "versionName": "1.7.13"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_52.apk",
+        "hash": "efd3795c550003cee0e1358a17123dfddbf33900f2b55b955c4c3767f219f21f",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4493889,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 52,
+        "versionName": "1.7.12"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_51.apk",
+        "hash": "da4e6b7cae44f8d05f6d156c769e49465482596efb876a713ebf1840ce4b0bdb",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4473261,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 51,
+        "versionName": "1.7.11"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_50.apk",
+        "hash": "11847595f129c32adc3782c955f09470b31edb1a2ce10710958e51deca247776",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4244197,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 50,
+        "versionName": "1.7.10"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_49.apk",
+        "hash": "be489af45757e45b1675035ca87ad7c8d733ec687eafc82423345b0c85a353aa",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4243465,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 49,
+        "versionName": "1.7.9"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_48.apk",
+        "hash": "fb5bdf4186f6f254cf95fc2fb92197f363c1e695ab921142006ee77fd260ca7f",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4128993,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 48,
+        "versionName": "1.7.8"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_47.apk",
+        "hash": "5f36614c74d8df58f81a965e93fb52969e63995897d8af9e1ae16d257f4ae1a8",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4128817,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 47,
+        "versionName": "1.7.7"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_46.apk",
+        "hash": "7711997453ad7352bebcd1c398d724a7d9982f3ba6317a93f6308666b0aef656",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4128473,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 46,
+        "versionName": "1.7.6"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_45.apk",
+        "hash": "b065c84a792b8de8c21661512aec838449afad2a939a19c2ea18350011cf199c",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4083241,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 45,
+        "versionName": "1.7.5"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_44.apk",
+        "hash": "9dbeafa51e603d472cffb64253e472645bfdf1eb9f6f540228a998a270ec6c57",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4083073,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 44,
+        "versionName": "1.7.4"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_43.apk",
+        "hash": "f9c59af5f8dfbe8ec0e6097e7efd129368121597326cc66d9ec40056948199f4",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4064649,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 43,
+        "versionName": "1.7.3"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_42.apk",
+        "hash": "e46a8c21e83e134407e489cf16c9162d36285f7cefc5a78e93e11b9f0441111b",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4061817,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 42,
+        "versionName": "1.7.2"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_41.apk",
+        "hash": "899daa66c08417e1b30fed52f90adab3eac47972d462f0ed109abfe9fc8ca0b9",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4042477,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 41,
+        "versionName": "1.7.1"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_40.apk",
+        "hash": "30ad0d8670c1fac93838b35b6755346d9111f8ee704e367f6a1a3ab99d00f619",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 4018862,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 40,
+        "versionName": "1.7.0"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_39.apk",
+        "hash": "1eec0d15cc022a9c92a15d4aa78122818ddf954a2cdaa47cbfec1544c0008f1a",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 3824035,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 39,
+        "versionName": "1.6.3"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_38.apk",
+        "hash": "b93843002c9e9ead9e365b8a8a38047b14bd83f06d04327fa4ba7cedcdb7e01a",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 3823755,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 38,
+        "versionName": "1.6.2"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_37.apk",
+        "hash": "e32d5fce3287d2edb2001bb2a43ed9dd8a32b9ef734847370702c27b2ebdf029",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 3823611,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 37,
+        "versionName": "1.6.1"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_36.apk",
+        "hash": "b4ac9bb058740f0164619f180f2c96ae83bf4ab734855591efc25d8a016a9752",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 3730257,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 36,
+        "versionName": "1.6.0"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_35.apk",
+        "hash": "5bd45caf68a0b430541d376c612ab922361421f1f31e2d31f520587c7f2f5e85",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 3683925,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 35,
+        "versionName": "1.5.1"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_34.apk",
+        "hash": "3d97938042864824d6d5cae6f5b3a101ca45f65db57b2370e0c50e4f57024f36",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 3636049,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 34,
+        "versionName": "1.5.0"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_33.apk",
+        "hash": "ed5527c07f0fbefe8fc6b57fce066c885384c228c6b3d48e548aed1857610261",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 3591073,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 33,
+        "versionName": "1.4.3"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_32.apk",
+        "hash": "fa182cfa91fd3ebd68ff4e8134950495a5bc62d292ec1327e845dcbcd3fa78e8",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 3572765,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 32,
+        "versionName": "1.4.2"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_31.apk",
+        "hash": "d6646e901dfcbb1d556335be786f135e72bd176ac081a8d3a89de874f9c077e6",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 3436936,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 31,
+        "versionName": "1.4.1"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_30.apk",
+        "hash": "cae992dbe365bc3f0fcec8d36b53107f19a4a5f04897b3491d6c08c57ac8b82e",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 3431216,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 30,
+        "versionName": "1.4.0"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_29.apk",
+        "hash": "afafe584a75467cfd9b804f144a47bce200ae7d08a30f8f51163d4eac7cd12bb",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 3357060,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 29,
+        "versionName": "1.3.2"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_28.apk",
+        "hash": "22f5c95771a2f968af65e3064c144c5053bd032feabbf7bd996a582fe4f94024",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 3357156,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 28,
+        "versionName": "1.3.1"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_26.apk",
+        "hash": "bc13b49ad692605603ae2b427528257fd8c64baa063e79272e1becd305fbc0b0",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 3271065,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 26,
+        "versionName": "1.2.9"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_25.apk",
+        "hash": "df3b0c9eb11b23d1482215cd7c1b871ed129f54154659d0a2d5eab29697a6da3",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 3270178,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 25,
+        "versionName": "1.2.8"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_24.apk",
+        "hash": "dc87bfccd0837e1d3c61901d80429d13165172285348ecd61b612679845478db",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 3268586,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 24,
+        "versionName": "1.2.7"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_23.apk",
+        "hash": "5628b2d41f23131c68c501a67346b20e1c3ee2cbc30b0e29f7d89f901874afd2",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 3268314,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 23,
+        "versionName": "1.2.6"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_22.apk",
+        "hash": "e756c3de587b00c116c67e3e1d58c22084cd304c6d9aed1647fbb7f9ded7b161",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 3147058,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 22,
+        "versionName": "1.2.5"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_21.apk",
+        "hash": "59828c102a44d5c20b0cdb629b8b266d8148315b0f82a15439fafed3165eb80c",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 3144054,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 21,
+        "versionName": "1.2.4"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_20.apk",
+        "hash": "ec52e862dd93046b9d84cffe0ea50a3e9feaf1132bed212aacd3563c1fa9ada8",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 2603955,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 20,
+        "versionName": "1.2.3"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_19.apk",
+        "hash": "02ef2b2926d3b202cbc22c9e737f7fa263641b9121583086de0b59385ff2105d",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 2587247,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 19,
+        "versionName": "1.2.2"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_18.apk",
+        "hash": "21f462f06258b34f78573a791d2b19502977021a46e85509b6deb4aa39c54e11",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 2473971,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 18,
+        "versionName": "1.2.1"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_15.apk",
+        "hash": "8d17756d4b1f7d843fefd430aaf2115a8d6ef969df766a9f92c64c402e0bfef5",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 2447252,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 15,
+        "versionName": "1.1.8"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_14.apk",
+        "hash": "0d1fdfb67e053735268f3bda5ae1896002b88886c37adedc9c57980582cade2d",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 2447276,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 14,
+        "versionName": "1.1.7"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_13.apk",
+        "hash": "e3701f978b2309bb441c973c5ddd5ad56b85eaec9355b272ab3015c7dc80ad81",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 2446666,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 13,
+        "versionName": "1.1.6"
+      },
+      {
+        "added": 1781379729940,
+        "apkName": "com.tristinbaker.idlefantasy_12.apk",
+        "hash": "06675e942c4a8c6d71cc35b0296f182a6ebfcd436fd42c11a49b4375834db305",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 2446666,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 12,
+        "versionName": "1.1.5"
+      }
+    ]
+  }
+}
