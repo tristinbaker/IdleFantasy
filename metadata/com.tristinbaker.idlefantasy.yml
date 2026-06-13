@@ -1,3 +1,4 @@
+AuthorName: Tristin Baker
 Categories:
   - Games
 License: GPL-3.0-only
@@ -9,7 +10,7 @@ AutoName: Idle Fantasy
 
 RepoType: git
 Repo: https://github.com/tristinbaker/IdleFantasy
-Binaries: 
+Binaries:
   https://github.com/tristinbaker/IdleFantasy/releases/download/v%v/app-release.apk
 
 Builds:
