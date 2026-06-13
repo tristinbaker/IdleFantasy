@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Expeditions — Idle Fantasy Wiki</title>
+  <link rel="stylesheet" href="assets/style.css?v=3">
+  <script data-goatcounter="https://idlefantasy.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+  <script>
+    (function() {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', stored || (prefersDark ? 'dark' : 'light'));
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Open navigation" aria-expanded="false">&#9776;</button>
+    <a class="site-title" href="index.html">
+      <span class="site-icon">&#9876;&#65039;</span>
+      Idle Fantasy Wiki
+    </a>
+    <span class="site-tagline">Community reference for all skills, combat, and crafting</span>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
+  </header>
+
+  <div id="nav-backdrop" class="nav-backdrop"></div>
+
+  <div class="layout">
+    <nav id="sidebar" class="sidebar" aria-label="Wiki navigation">
+      <ul>
+<li><a href="Home.html">Home</a></li>
+<li class="nav-section"><span class="nav-label">Skills</span><ul>
+<li><a href="Skills.html">Skills</a></li>
+<li class="nav-section"><span class="nav-label">Gathering</span><ul>
+<li><a href="Mining.html">Mining</a></li>
+<li><a href="Fishing.html">Fishing</a></li>
+<li><a href="Woodcutting.html">Woodcutting</a></li>
+<li><a href="Farming.html">Farming</a></li>
+<li><a href="Agility.html">Agility</a></li>
+<li><a href="Thieving.html">Thieving</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Crafting</span><ul>
+<li><a href="Smithing.html">Smithing</a></li>
+<li><a href="Cooking.html">Cooking</a></li>
+<li><a href="Fletching.html">Fletching</a></li>
+<li><a href="Crafting.html">Crafting</a></li>
+<li><a href="Firemaking.html">Firemaking</a></li>
+<li><a href="Runecrafting.html">Runecrafting</a></li>
+<li><a href="Herblore.html">Herblore</a></li>
+<li><a href="Construction.html">Construction</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Support</span><ul>
+<li><a href="Prayer.html">Prayer</a></li>
+<li><a href="Mercantile.html">Mercantile</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Combat</span><ul>
+<li><a href="Slayer.html">Slayer</a></li>
+</ul></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Inventory</span><ul>
+<li><a href="Equipment.html">Equipment</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Combat</span><ul>
+<li><a href="Bosses.html">Bosses</a></li>
+<li><a href="Dungeons.html">Dungeons</a></li>
+<li><a href="Enemies.html">Enemies</a></li>
+<li><a href="Spells.html">Spells</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Town</span><ul>
+<li><a href="Shop.html">Shop</a></li>
+<li><a href="Workers.html">Workers</a></li>
+<li><a href="Guilds.html">Guilds</a></li>
+<li><a href="Buildings.html">Buildings</a></li>
+<li><a href="Game-Corner.html">Game Corner</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Miscellaneous</span><ul>
+<li><a href="Expeditions.html" class="active">Expeditions</a></li>
+<li><a href="Pets.html">Pets</a></li>
+<li><a href="Quests.html">Quests</a></li>
+</ul></li>
+</ul>
+    </nav>
+
+    <main class="content">
+      <h1 id="expeditions">Expeditions</h1>
+<p>Expeditions are skilling activities that combine resource gathering with lore discovery. Each expedition is tied to a gathering skill and rewards XP and items as you progress.</p>
+<p>As you complete expedition sessions, hidden lore notes are gradually uncovered. Collecting all five notes reveals a secret combat dungeon. Some advanced expeditions require an earlier dungeon to have been unlocked before they become available.</p>
+<p>Sessions follow the standard duration (reduced by Agility level). XP and drops scale with your skill level.</p>
+<table>
+<thead>
+<tr>
+<th>Expedition</th>
+<th>Skill</th>
+<th>Level Required</th>
+<th>Requires</th>
+<th>Unlocks</th>
+</tr>
+</thead>
+<tbody>
+<tr id="crumbling_watchtower">
+<td><a href="crumbling_watchtower.html">Crumbling Watchtower</a></td>
+<td>Agility</td>
+<td>1</td>
+<td>—</td>
+<td><a href="shadow_den.html">Shadow Den</a></td>
+</tr>
+<tr id="shattered_spire">
+<td><a href="shattered_spire.html">Shattered Spire</a></td>
+<td>Agility</td>
+<td>40</td>
+<td><a href="shadow_den.html">Shadow Den</a></td>
+<td><a href="arcane_ruins.html">Arcane Ruins</a></td>
+</tr>
+<tr id="sunken_grotto">
+<td><a href="sunken_grotto.html">Sunken Grotto</a></td>
+<td>Fishing</td>
+<td>1</td>
+<td>—</td>
+<td><a href="drowned_temple.html">Drowned Temple</a></td>
+</tr>
+<tr id="abyssal_lagoon">
+<td><a href="abyssal_lagoon.html">Abyssal Lagoon</a></td>
+<td>Fishing</td>
+<td>40</td>
+<td><a href="drowned_temple.html">Drowned Temple</a></td>
+<td><a href="abyssal_ruins.html">Abyssal Ruins</a></td>
+</tr>
+<tr id="copper_caverns">
+<td><a href="copper_caverns.html">Copper Caverns</a></td>
+<td>Mining</td>
+<td>1</td>
+<td>—</td>
+<td><a href="collapsed_mine.html">Collapsed Mine</a></td>
+</tr>
+<tr id="dwarven_depths">
+<td><a href="dwarven_depths.html">Dwarven Depths</a></td>
+<td>Mining</td>
+<td>40</td>
+<td><a href="collapsed_mine.html">Collapsed Mine</a></td>
+<td><a href="ancient_forge.html">Ancient Forge</a></td>
+</tr>
+<tr id="thieves_den">
+<td><a href="thieves_den.html">Thieves' Den</a></td>
+<td>Thieving</td>
+<td>1</td>
+<td>—</td>
+<td><a href="rogue_sanctum.html">Rogue Sanctum</a></td>
+</tr>
+<tr id="shadow_vault">
+<td><a href="shadow_vault.html">Shadow Vault</a></td>
+<td>Thieving</td>
+<td>40</td>
+<td><a href="rogue_sanctum.html">Rogue Sanctum</a></td>
+<td><a href="guild_of_shadows.html">Guild of Shadows</a></td>
+</tr>
+<tr id="whispering_grove">
+<td><a href="whispering_grove.html">Whispering Grove</a></td>
+<td>Woodcutting</td>
+<td>1</td>
+<td>—</td>
+<td><a href="ancient_forest_ruins.html">Ancient Forest Ruins</a></td>
+</tr>
+<tr id="corrupted_canopy">
+<td><a href="corrupted_canopy.html">Corrupted Canopy</a></td>
+<td>Woodcutting</td>
+<td>40</td>
+<td><a href="ancient_forest_ruins.html">Ancient Forest Ruins</a></td>
+<td><a href="corrupted_sanctum.html">Corrupted Sanctum</a></td>
+</tr>
+</tbody>
+</table>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <span>All data is auto-generated from game files and stays up to date with the latest release.</span>
+    <span>·</span>
+    <a href="https://github.com/tristinbaker/IdleFantasy/issues" target="_blank" rel="noopener">Report an issue</a>
+    <span>·</span>
+    <a href="https://github.com/tristinbaker/IdleFantasy" target="_blank" rel="noopener">GitHub</a>
+  </footer>
+
+  <script>
+    (function() {
+      // ---- Dark mode ----
+      var themeBtn = document.getElementById('theme-toggle');
+      function updateThemeIcon() {
+        themeBtn.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+      }
+      updateThemeIcon();
+      themeBtn.addEventListener('click', function() {
+        var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateThemeIcon();
+      });
+
+      // ---- Hamburger nav ----
+      var navToggle = document.getElementById('nav-toggle');
+      var sidebar   = document.getElementById('sidebar');
+      var backdrop  = document.getElementById('nav-backdrop');
+      function openNav() {
+        sidebar.classList.add('open');
+        backdrop.classList.add('visible');
+        navToggle.setAttribute('aria-expanded', 'true');
+      }
+      function closeNav() {
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('visible');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+      navToggle.addEventListener('click', function() {
+        sidebar.classList.contains('open') ? closeNav() : openNav();
+      });
+      backdrop.addEventListener('click', closeNav);
+      sidebar.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') closeNav();
+      });
+    })();
+  </script>
+</body>
+</html>
