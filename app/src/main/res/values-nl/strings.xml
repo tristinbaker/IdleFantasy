@@ -1070,4 +1070,41 @@
     <string name="game_no_tickets">No tickets to draw.</string>
     <string name="game_next_draw">Next draw in %s</string>
 
+    <string name="skilling_dungeon_thieves_den_name">Dievenhol</string>
+    <string name="skilling_dungeon_thieves_den_desc">Een doolhof van tunnels onder de stadsstraten, gebruikt door een georganiseerde dievenbende.</string>
+    <string name="skilling_dungeon_shadow_vault_name">Schaduwkluis</string>
+    <string name="skilling_dungeon_shadow_vault_desc">Een verborgen kluis onder het Schurkentoevluchtsoord waar de meest waardevolle gestolen goederen van het gilde worden bewaard.</string>
+    <string name="dungeon_rogue_sanctum_name">Schurkentoevluchtsoord</string>
+    <string name="dungeon_rogue_sanctum_desc">Het innerlijke toevluchtsoord van het gilde, alleen toegankelijk voor bewezen leden.</string>
+    <string name="dungeon_guild_of_shadows_name">Schaduwgilde</string>
+    <string name="dungeon_guild_of_shadows_desc">Het diepste heiligdom van het dievensgilde, bewaakt door zijn gevaarlijkste handhavers.</string>
+    <string name="enemy_assassin_name">Sluipmoordenaar</string>
+    <string name="enemy_shadow_assassin_name">Schaduwsluipmoordenaar</string>
+    <string name="enemy_vault_guardian_name">Kluiswachter</string>
+    <string name="enemy_guild_master_name">Gildemeester</string>
+    <string name="item_shadow_signet_name">Schaduwzegel</string>
+    <string name="item_shadow_signet_desc">Een ring met het zegel van het Schaduwgilde. Alleen de gevaarlijkste operatieve leden van het gilde droegen hem.</string>
+    <string name="dungeon_void_rift_name">Leegtekloof</string>
+    <string name="dungeon_void_rift_desc">Een scheur in de werkelijkheid waar leegtewezens de sterfelijke wereld binnendringen.</string>
+    <string name="dungeon_frozen_citadel_name">Bevroren Citadel</string>
+    <string name="dungeon_frozen_citadel_desc">Een eeuwenoude vesting opgesloten in een gletsjer, met verdedigers bevroren in eeuwige wacht.</string>
+    <string name="dungeon_abyssal_throne_name">Afgrondstroon</string>
+    <string name="dungeon_abyssal_throne_desc">Het diepste punt van de bekende wereld, geregeerd door leegteheren sinds het begin der tijden.</string>
+    <string name="enemy_void_stalker_name">Leegtesluiper</string>
+    <string name="enemy_rift_guardian_name">Spleetwachter</string>
+    <string name="enemy_chaos_elemental_name">Chaoselemental</string>
+    <string name="enemy_frost_giant_name">Vorstgigant</string>
+    <string name="enemy_ice_golem_name">IJsgolem</string>
+    <string name="enemy_glacial_mage_name">Gletsjermagiër</string>
+    <string name="enemy_abyssal_lord_name">Afgrondsheer</string>
+    <string name="enemy_eternal_sentinel_name">Eeuwige Schildwacht</string>
+    <string name="enemy_void_archon_name">Leegte-archon</string>
+
+    <string name="item_void_reaver_name">Leegte-vernietiger</string>
+    <string name="item_void_reaver_desc">Een kling gesmeed uit gekristalliseerde leegte-energie. De snede snijdt door pantsers als stof.</string>
+    <string name="item_sovereign_crown_name">Soevereine Kroon</string>
+    <string name="item_sovereign_crown_desc">De kroon van de Leegte-soeverein zelf, uitstralend donkere majesteit. Biedt ongeëvenaarde bescherming.</string>
+    <string name="item_amulet_of_the_void_name">Amulet van de Leegte</string>
+    <string name="item_amulet_of_the_void_desc">Een hanger van pure leegte-essentie. Verbetert alle gevechtsstatistieken van de drager.</string>
+
 </resources>

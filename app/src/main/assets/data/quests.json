@@ -2589,6 +2589,70 @@
       "items": {}
     }
   },
+  "sovereign_slayer_1": {
+    "id": "sovereign_slayer_1",
+    "name": "Sovereign Slayer I",
+    "skill": "combat",
+    "tier": 13,
+    "requires_previous": null,
+    "type": "boss",
+    "target": "void_sovereign",
+    "amount": 1,
+    "description": "Defeat the Void Sovereign",
+    "rewards": {
+      "coins": 250000,
+      "xp": 250000,
+      "items": {}
+    }
+  },
+  "sovereign_slayer_2": {
+    "id": "sovereign_slayer_2",
+    "name": "Sovereign Slayer II",
+    "skill": "combat",
+    "tier": 14,
+    "requires_previous": "sovereign_slayer_1",
+    "type": "boss",
+    "target": "void_sovereign",
+    "amount": 5,
+    "description": "Defeat the Void Sovereign 5 times",
+    "rewards": {
+      "coins": 600000,
+      "xp": 800000,
+      "items": {}
+    }
+  },
+  "sovereign_slayer_3": {
+    "id": "sovereign_slayer_3",
+    "name": "Sovereign Slayer III",
+    "skill": "combat",
+    "tier": 15,
+    "requires_previous": "sovereign_slayer_2",
+    "type": "boss",
+    "target": "void_sovereign",
+    "amount": 25,
+    "description": "Defeat the Void Sovereign 25 times",
+    "rewards": {
+      "coins": 1500000,
+      "xp": 2000000,
+      "items": {}
+    }
+  },
+  "sovereign_slayer_4": {
+    "id": "sovereign_slayer_4",
+    "name": "Sovereign Slayer IV",
+    "skill": "combat",
+    "tier": 16,
+    "requires_previous": "sovereign_slayer_3",
+    "type": "boss",
+    "target": "void_sovereign",
+    "amount": 50,
+    "description": "Defeat the Void Sovereign 50 times",
+    "rewards": {
+      "coins": 3000000,
+      "xp": 3000000,
+      "items": {}
+    }
+  },
   "melee_warrior_4": {
     "id": "melee_warrior_4",
     "name": "Melee Warrior IV",

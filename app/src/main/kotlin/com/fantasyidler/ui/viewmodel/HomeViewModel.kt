@@ -197,10 +197,13 @@ class HomeViewModel @Inject constructor(
                                        else                       -> sessionMs
                                    }
                                }
+            val innXpMult = townRepo.workerXpMultiplier(flags)
             val sessionXpGain: (SkillSession?) -> Long = { s ->
                 if (s == null || s.skillName in listOf("combat", "boss", "expedition", "farming")) 0L
                 else try {
-                    json.decodeFromString<List<SessionFrame>>(s.frames).sumOf { it.xpGain.toLong() }
+                    val base = json.decodeFromString<List<SessionFrame>>(s.frames).sumOf { it.xpGain.toLong() }
+                    if (s.isWorkerSession) (base * s.efficiencyMultiplier * innXpMult).toLong()
+                    else base
                 } catch (_: Exception) { 0L }
             }
             val activeSessionXpGain   = sessionXpGain(session)

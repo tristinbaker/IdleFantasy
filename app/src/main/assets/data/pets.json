@@ -4,7 +4,7 @@
     "display_name": "Dragon Whelp",
     "emoji": "🐉",
     "description": "A young dragon that boosts your combat prowess.",
-    "source": "King Black Dragon raid (1/100 per player)",
+    "source": "King Black Dragon raid (1/100 per kill)",
     "effect_type": "xp_boost",
     "boosted_skill": "combat",
     "boost_percent": 5
@@ -14,7 +14,7 @@
     "display_name": "Imp Pet",
     "emoji": "😈",
     "description": "A mischievous imp that enhances your prayer training.",
-    "source": "Demon Lord raid (1/100 per player)",
+    "source": "Demon Lord raid (1/100 per kill)",
     "effect_type": "xp_boost",
     "boosted_skill": "prayer",
     "boost_percent": 5
@@ -24,7 +24,7 @@
     "display_name": "Baby Kraken",
     "emoji": "🦑",
     "description": "A tiny kraken that improves your cooking abilities.",
-    "source": "Kraken raid (1/100 per player)",
+    "source": "Kraken raid (1/100 per kill)",
     "effect_type": "xp_boost",
     "boosted_skill": "cooking",
     "boost_percent": 5
@@ -74,9 +74,19 @@
     "display_name": "Baby Balrog",
     "emoji": "🔥",
     "description": "A tiny demon of fire and shadow that enhances your magic.",
-    "source": "Balrog raid (1/200 per player)",
+    "source": "Balrog raid (1/200 per kill)",
     "effect_type": "xp_boost",
     "boosted_skill": "magic",
+    "boost_percent": 5
+  },
+  "void_wisp": {
+    "id": "void_wisp",
+    "display_name": "Void Wisp",
+    "emoji": "💫",
+    "description": "A fragment of the Void Sovereign's essence, bound to those who bested its master. Amplifies combat experience.",
+    "source": "Void Sovereign raid (1/333 per kill)",
+    "effect_type": "xp_boost",
+    "boosted_skill": "combat",
     "boost_percent": 5
   }
 }

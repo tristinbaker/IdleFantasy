@@ -1,0 +1,65 @@
+{
+  "name": "shadow_vault",
+  "display_name": "Shadow Vault",
+  "description": "A hidden vault beneath the Rogue Sanctum where the guild's most valuable stolen goods are kept. The further you go, the more dangerous the secrets become.",
+  "skill": "thieving",
+  "level_required": 40,
+  "requires_previous_unlock": "rogue_sanctum",
+  "xp_ranges": {
+    "40": {"min": 80,  "max": 115},
+    "45": {"min": 95,  "max": 138},
+    "50": {"min": 115, "max": 165},
+    "55": {"min": 138, "max": 195},
+    "60": {"min": 162, "max": 232},
+    "65": {"min": 192, "max": 272},
+    "70": {"min": 225, "max": 318},
+    "75": {"min": 264, "max": 374},
+    "80": {"min": 308, "max": 435},
+    "85": {"min": 358, "max": 506},
+    "90": {"min": 413, "max": 583},
+    "95": {"min": 473, "max": 671}
+  },
+  "drop_tables": {
+    "40": [
+      {"item": "coins",      "chance": 0.85},
+      {"item": "death_rune", "chance": 0.35},
+      {"item": "ruby",       "chance": 0.10}
+    ],
+    "50": [
+      {"item": "coins",      "chance": 0.85},
+      {"item": "death_rune", "chance": 0.40},
+      {"item": "blood_rune", "chance": 0.20},
+      {"item": "ruby",       "chance": 0.12},
+      {"item": "diamond",    "chance": 0.04}
+    ],
+    "60": [
+      {"item": "coins",      "chance": 0.90},
+      {"item": "death_rune", "chance": 0.45},
+      {"item": "blood_rune", "chance": 0.30},
+      {"item": "diamond",    "chance": 0.06}
+    ],
+    "70": [
+      {"item": "coins",      "chance": 0.90},
+      {"item": "blood_rune", "chance": 0.40},
+      {"item": "death_rune", "chance": 0.45},
+      {"item": "diamond",    "chance": 0.08}
+    ],
+    "85": [
+      {"item": "coins",      "chance": 0.90},
+      {"item": "blood_rune", "chance": 0.50},
+      {"item": "death_rune", "chance": 0.45},
+      {"item": "diamond",    "chance": 0.10}
+    ]
+  },
+  "note_chance_per_frame": 0.003,
+  "note_threshold": 5,
+  "note_texts": [
+    "A dossier on every major merchant in the city. Someone has been compiling this for years.",
+    "A vault door, partially ajar. Inside — crates of stolen weapons, armour, and sealed scroll cases.",
+    "One scroll case is different from the others. It bears the seal of the royal treasury. It is empty.",
+    "A private journal: 'The Guild of Shadows is not just a guild. It is a government. They have always been watching.'",
+    "The deepest vault is not locked. It is guarded. What waits inside is the Guild's greatest secret — and its most dangerous protectors."
+  ],
+  "unlock_dungeon": "guild_of_shadows",
+  "unlock_message": "The Guild of Shadows stirs — its inner chamber is now open to you."
+}

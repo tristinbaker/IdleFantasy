@@ -1109,4 +1109,41 @@
     <string name="game_no_tickets">No tickets to draw.</string>
     <string name="game_next_draw">Next draw in %s</string>
 
+    <string name="skilling_dungeon_thieves_den_name">Hırsızlar Ini</string>
+    <string name="skilling_dungeon_thieves_den_desc">Şehrin sokaklarının altındaki bir tünel labirenti; örgütlü bir hırsız çetesi tarafından kullanılır.</string>
+    <string name="skilling_dungeon_shadow_vault_name">Gölge Kasası</string>
+    <string name="skilling_dungeon_shadow_vault_desc">Haydut Tapınağı\'nın altındaki gizli bir kasa; loncanın en değerli çalıntı malları burada saklanır.</string>
+    <string name="dungeon_rogue_sanctum_name">Haydut Tapınağı</string>
+    <string name="dungeon_rogue_sanctum_desc">Loncanın iç sığınağı; yalnızca kanıtlanmış üyeler tarafından erişilebilir.</string>
+    <string name="dungeon_guild_of_shadows_name">Gölgeler Loncası</string>
+    <string name="dungeon_guild_of_shadows_desc">Hırsızlar loncasının en derin kutsal alanı; en seçkin uygulayıcıları tarafından korunur.</string>
+    <string name="enemy_assassin_name">Suikastçı</string>
+    <string name="enemy_shadow_assassin_name">Gölge Suikastçısı</string>
+    <string name="enemy_vault_guardian_name">Kasa Bekçisi</string>
+    <string name="enemy_guild_master_name">Lonca Ustası</string>
+    <string name="item_shadow_signet_name">Gölge Mührü</string>
+    <string name="item_shadow_signet_desc">Gölgeler Loncası\'nın mührünü taşıyan bir yüzük. Yalnızca loncanın en tehlikeli operatifleri bunu takardı.</string>
+    <string name="dungeon_void_rift_name">Boşluk Yarığı</string>
+    <string name="dungeon_void_rift_desc">Gerçeklikte bir yırtık; boşluk yaratıkları buradan ölümlü dünyaya akar.</string>
+    <string name="dungeon_frozen_citadel_name">Donmuş Kale</string>
+    <string name="dungeon_frozen_citadel_desc">Bir buzulun içine hapsolmuş antik bir kale; savunucuları ebedi nöbette donmuş halde bekler.</string>
+    <string name="dungeon_abyssal_throne_name">Uçurum Tahtı</string>
+    <string name="dungeon_abyssal_throne_desc">Bilinen dünyanın en derin noktası; zamanın başından beri boşluk lordlarının egemenliğinde.</string>
+    <string name="enemy_void_stalker_name">Boşluk Avcısı</string>
+    <string name="enemy_rift_guardian_name">Yarık Bekçisi</string>
+    <string name="enemy_chaos_elemental_name">Kaos Elementali</string>
+    <string name="enemy_frost_giant_name">Don Devi</string>
+    <string name="enemy_ice_golem_name">Buz Golemi</string>
+    <string name="enemy_glacial_mage_name">Buzul Büyücüsü</string>
+    <string name="enemy_abyssal_lord_name">Uçurum Lordu</string>
+    <string name="enemy_eternal_sentinel_name">Ebedi Nöbetçi</string>
+    <string name="enemy_void_archon_name">Boşluk Arkontu</string>
+
+    <string name="item_void_reaver_name">Boşluk Tahrip Edici</string>
+    <string name="item_void_reaver_desc">Kristalleşmiş boşluk enerjisinden dövülmüş bir kılıç. Keskin kenarı zırhı kumaş gibi keser.</string>
+    <string name="item_sovereign_crown_name">Egemen Taç</string>
+    <string name="item_sovereign_crown_desc">Boşluk Egemeninin tacı, karanlık bir ihtişam yayar. Eşsiz koruma sağlar.</string>
+    <string name="item_amulet_of_the_void_name">Boşluk Muskası</string>
+    <string name="item_amulet_of_the_void_desc">Saf boşluk özünden yapılmış bir kolye. Taşıyanın tüm savaş istatistiklerini artırır.</string>
+
 </resources>

@@ -1102,4 +1102,41 @@
     <string name="game_no_tickets">No tickets to draw.</string>
     <string name="game_next_draw">Next draw in %s</string>
 
+    <string name="skilling_dungeon_thieves_den_name">Repaire des Voleurs</string>
+    <string name="skilling_dungeon_thieves_den_desc">Un labyrinthe de tunnels sous les rues de la ville, utilisé par un réseau organisé de voleurs.</string>
+    <string name="skilling_dungeon_shadow_vault_name">Coffre-fort de l\'Ombre</string>
+    <string name="skilling_dungeon_shadow_vault_desc">Une chambre forte cachée sous le Sanctuaire des Malfrats où les biens les plus précieux de la guilde sont gardés.</string>
+    <string name="dungeon_rogue_sanctum_name">Sanctuaire des Malfrats</string>
+    <string name="dungeon_rogue_sanctum_desc">Le refuge intérieur de la guilde, accessible uniquement aux membres éprouvés.</string>
+    <string name="dungeon_guild_of_shadows_name">Guilde des Ombres</string>
+    <string name="dungeon_guild_of_shadows_desc">Le sanctuaire le plus profond de la guilde des voleurs, gardé par ses exécuteurs les plus redoutables.</string>
+    <string name="enemy_assassin_name">Assassin</string>
+    <string name="enemy_shadow_assassin_name">Assassin de l\'Ombre</string>
+    <string name="enemy_vault_guardian_name">Gardien du Coffre</string>
+    <string name="enemy_guild_master_name">Grand Maître de la Guilde</string>
+    <string name="item_shadow_signet_name">Chevalière de l\'Ombre</string>
+    <string name="item_shadow_signet_desc">Une bague portant le sceau de la Guilde des Ombres. Seuls les agents les plus dangereux de la guilde en portaient une.</string>
+    <string name="dungeon_void_rift_name">Faille du Vide</string>
+    <string name="dungeon_void_rift_desc">Une déchirure dans la réalité d\'où des créatures du vide se déversent dans le monde mortel.</string>
+    <string name="dungeon_frozen_citadel_name">Citadelle Gelée</string>
+    <string name="dungeon_frozen_citadel_desc">Une forteresse ancestrale enfermée dans un glacier, ses défenseurs figés dans une veille éternelle.</string>
+    <string name="dungeon_abyssal_throne_name">Trône Abyssal</string>
+    <string name="dungeon_abyssal_throne_desc">Le point le plus profond du monde connu, gouverné par des seigneurs du vide depuis l\'aube des temps.</string>
+    <string name="enemy_void_stalker_name">Traqueur du Vide</string>
+    <string name="enemy_rift_guardian_name">Gardien de la Faille</string>
+    <string name="enemy_chaos_elemental_name">Élémentaire du Chaos</string>
+    <string name="enemy_frost_giant_name">Géant de Givre</string>
+    <string name="enemy_ice_golem_name">Golem de Glace</string>
+    <string name="enemy_glacial_mage_name">Mage Glacial</string>
+    <string name="enemy_abyssal_lord_name">Seigneur Abyssal</string>
+    <string name="enemy_eternal_sentinel_name">Sentinelle Éternelle</string>
+    <string name="enemy_void_archon_name">Archonte du Vide</string>
+
+    <string name="item_void_reaver_name">Ravageur du Vide</string>
+    <string name="item_void_reaver_desc">Une lame forgée d\'énergie du vide cristallisée. Son tranchant traverse l\'armure comme du tissu.</string>
+    <string name="item_sovereign_crown_name">Couronne Souveraine</string>
+    <string name="item_sovereign_crown_desc">La couronne du Souverain du Vide lui-même, rayonnant de sombre majesté. Offre une protection inégalée.</string>
+    <string name="item_amulet_of_the_void_name">Amulette du Vide</string>
+    <string name="item_amulet_of_the_void_desc">Un pendentif de pure essence du vide. Améliore toutes les statistiques de combat du porteur.</string>
+
 </resources>

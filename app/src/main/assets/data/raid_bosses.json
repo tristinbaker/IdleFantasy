@@ -65,7 +65,7 @@
       "display_name": "Dragon Whelp",
       "emoji": "🐉",
       "chance": 0.01,
-      "comment": "1/100 per player"
+      "comment": "1/100 per kill"
     }
   },
   "demon_lord": {
@@ -136,7 +136,7 @@
       "display_name": "Imp Pet",
       "emoji": "😈",
       "chance": 0.01,
-      "comment": "1/100 per player"
+      "comment": "1/100 per kill"
     }
   },
   "kraken": {
@@ -207,7 +207,7 @@
       "display_name": "Baby Kraken",
       "emoji": "🦑",
       "chance": 0.01,
-      "comment": "1/100 per player"
+      "comment": "1/100 per kill"
     }
   },
   "balrog": {
@@ -279,7 +279,74 @@
       "display_name": "Baby Balrog",
       "emoji": "🔥",
       "chance": 0.005,
-      "comment": "1/200 per player"
+      "comment": "1/200 per kill"
+    }
+  },
+  "void_sovereign": {
+    "id": "void_sovereign",
+    "display_name": "The Void Sovereign",
+    "emoji": "🌑",
+    "description": "The primordial entity behind the void rifts. Ancient beyond reckoning, it regards mortal challengers with contempt.",
+    "combat_level_required": 110,
+    "duration_minutes": 150,
+    "hp": 4000,
+    "combat_stats": {
+      "attack_level": 115,
+      "strength_level": 110,
+      "defense_level": 115,
+      "attack_bonus": 140,
+      "strength_bonus": 130
+    },
+    "defensive_stats": {
+      "attack_defense": 130,
+      "strength_defense": 120,
+      "ranged_defense": 110,
+      "magic_defense": 150
+    },
+    "xp_rewards": {
+      "attack": 15000,
+      "strength": 15000,
+      "defense": 15000,
+      "hitpoints": 12000,
+      "magic": 18000,
+      "ranged": 8000,
+      "prayer": 8000
+    },
+    "common_loot": {
+      "coins_min": 200000,
+      "coins_max": 500000,
+      "items": {
+        "dragon_bone": {"min": 150, "max": 300},
+        "platinum_ore": {"min": 200, "max": 400},
+        "runite_ore": {"min": 300, "max": 600},
+        "blood_rune": {"min": 500, "max": 1000},
+        "death_rune": {"min": 500, "max": 1000},
+        "ancient_treasure": {"min": 10, "max": 20}
+      }
+    },
+    "rare_drops": [
+      {
+        "item": "void_reaver",
+        "chance": 0.002,
+        "comment": "1/500"
+      },
+      {
+        "item": "sovereign_crown",
+        "chance": 0.002,
+        "comment": "1/500"
+      },
+      {
+        "item": "amulet_of_the_void",
+        "chance": 0.002,
+        "comment": "1/500"
+      }
+    ],
+    "pet": {
+      "id": "void_wisp",
+      "display_name": "Void Wisp",
+      "emoji": "💫",
+      "chance": 0.003,
+      "comment": "1/333 per kill"
     }
   }
 }

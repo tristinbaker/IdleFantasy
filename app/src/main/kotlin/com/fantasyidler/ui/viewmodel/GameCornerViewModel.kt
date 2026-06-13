@@ -626,6 +626,14 @@ class GameCornerViewModel @Inject constructor(
             val a = cells[row * 3]; val b = cells[row * 3 + 1]; val c = cells[row * 3 + 2]
             if (a.symbol == b.symbol && b.symbol == c.symbol) total += price * a.symbol.multiplier
         }
+        for (col in 0..2) {
+            val a = cells[col]; val b = cells[col + 3]; val c = cells[col + 6]
+            if (a.symbol == b.symbol && b.symbol == c.symbol) total += price * a.symbol.multiplier
+        }
+        val d1a = cells[0]; val d1b = cells[4]; val d1c = cells[8]
+        if (d1a.symbol == d1b.symbol && d1b.symbol == d1c.symbol) total += price * d1a.symbol.multiplier
+        val d2a = cells[2]; val d2b = cells[4]; val d2c = cells[6]
+        if (d2a.symbol == d2b.symbol && d2b.symbol == d2c.symbol) total += price * d2a.symbol.multiplier
         return total
     }
 

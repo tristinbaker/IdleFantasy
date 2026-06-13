@@ -90,6 +90,7 @@ def add_static_pages():
             ("game_corner", PageInfo("Game Corner", "Game-Corner.md", gen_game_corner)),
         ]],
         ["Miscellaneous", False, [
+            ("expeditions", PageInfo("Expeditions", "Expeditions.md", gen_expeditions)),
             ("pets", PageInfo("Pets", "Pets.md", gen_pets)),
             ("quests", PageInfo("Quests", "Quests.md", gen_quests)),
         ]],
@@ -174,6 +175,22 @@ def add_dungeon_pages():
     #         ["Dungeons", [dungeon["name"] for dungeon in dungeons]],
     #     ]]
     # ])
+
+
+def add_expedition_pages():
+    expeditions = sorted(
+        (load(f, False) for f in (ASSETS / "skilling_dungeons").glob("*.json")),
+        key=lambda d: (d["skill"], d["level_required"]),
+    )
+    expedition_pages = {
+        exp["name"]: PageInfo(
+            exp["display_name"],
+            f"{exp['name']}.md",
+            lambda entry=exp: gen_expedition(entry),
+        )
+        for exp in expeditions
+    }
+    PAGE_DIRECTORY.update(expedition_pages)
 
 # ---------------------------------------------------------------------------
 # Main functions
@@ -727,6 +744,61 @@ def gen_mercantile() -> str:
     return get_template("skills/support/mercantile").format(
         route_table=table(['Route', 'Level', 'Cost', 'XP / Min (range)', 'Coin Return (range)'], route_rows),
         expedition_table=table(['Expedition', 'Skill', 'Level Required', 'XP / Min (range)', 'Unlocks Dungeon'], exp_rows)
+    )
+
+
+def gen_expedition(entry: dict) -> str:
+    xp_rows = [
+        [f"Level {lv}+", f"{vals['min']}–{vals['max']}"]
+        for lv, vals in entry["xp_ranges"].items()
+    ]
+    drop_rows = [
+        [f"Level {lv}+", ", ".join(f"{fmt_pct(d['chance'])} {item_link(d['item'])}" for d in drops)]
+        for lv, drops in entry["drop_tables"].items()
+    ]
+    notes = "\n".join(
+        f"{i + 1}. _{note}_"
+        for i, note in enumerate(entry.get("note_texts", []))
+    )
+    req = entry.get("requires_previous_unlock")
+    requires_str = f"\n**Requires:** {link(req)} unlocked first" if req else ""
+    unlock = entry.get("unlock_dungeon")
+    unlock_str = f"\n**Unlocks:** {link(unlock)}" if unlock else ""
+    return get_template("miscellaneous/expedition").format(
+        name=entry["display_name"],
+        skill=title(entry["skill"]),
+        level_required=entry["level_required"],
+        requires_str=requires_str,
+        unlock_str=unlock_str,
+        description=entry.get("description", ""),
+        xp_table=table(["Level", "XP / Minute"], xp_rows),
+        drop_table=table(["Level", "Possible Drops"], drop_rows),
+        notes_list=notes,
+        note_threshold=entry.get("note_threshold", 5),
+    )
+
+
+def gen_expeditions() -> str:
+    expeditions = sorted(
+        (load(f, False) for f in (ASSETS / "skilling_dungeons").glob("*.json")),
+        key=lambda d: (d["skill"], d["level_required"]),
+    )
+    rows = []
+    for exp in expeditions:
+        req = exp.get("requires_previous_unlock")
+        unlock = exp.get("unlock_dungeon")
+        rows.append([
+            link(exp["name"]),
+            title(exp["skill"]),
+            exp["level_required"],
+            link(req) if req else "—",
+            link(unlock) if unlock else "—",
+        ])
+    return get_template("miscellaneous/expeditions").format(
+        expedition_table=table(
+            ["Expedition", "Skill", "Level Required", "Requires", "Unlocks"],
+            rows,
+        )
     )
 
 
@@ -1327,3 +1399,4 @@ add_static_pages()
 add_boss_pages()
 add_enemy_pages()
 add_dungeon_pages()
+add_expedition_pages()

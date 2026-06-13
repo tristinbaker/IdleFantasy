@@ -1078,4 +1078,41 @@
     <string name="game_no_tickets">No tickets to draw.</string>
     <string name="game_next_draw">Next draw in %s</string>
 
+    <string name="skilling_dungeon_thieves_den_name">Diebesversteck</string>
+    <string name="skilling_dungeon_thieves_den_desc">Ein Labyrinth aus Tunneln unter den Stadtstraßen, genutzt von einem organisierten Diebesring.</string>
+    <string name="skilling_dungeon_shadow_vault_name">Schattentresor</string>
+    <string name="skilling_dungeon_shadow_vault_desc">Ein verstecktes Gewölbe unter dem Gaunersanktum, in dem die wertvollsten gestohlenen Güter der Gilde aufbewahrt werden.</string>
+    <string name="dungeon_rogue_sanctum_name">Gaunersanktum</string>
+    <string name="dungeon_rogue_sanctum_desc">Das innere Refugium der Gilde, zugänglich nur für bewährte Mitglieder.</string>
+    <string name="dungeon_guild_of_shadows_name">Schattengilde</string>
+    <string name="dungeon_guild_of_shadows_desc">Das innerste Heiligtum der Diebsgilde, bewacht von ihren gefährlichsten Vollstreckern.</string>
+    <string name="enemy_assassin_name">Assassine</string>
+    <string name="enemy_shadow_assassin_name">Schattenassassine</string>
+    <string name="enemy_vault_guardian_name">Tresorwächter</string>
+    <string name="enemy_guild_master_name">Gildenmeister</string>
+    <string name="item_shadow_signet_name">Schattensiegel</string>
+    <string name="item_shadow_signet_desc">Ein Ring mit dem Siegel der Schattengilde. Nur die gefährlichsten Operativen der Gilde trugen ihn.</string>
+    <string name="dungeon_void_rift_name">Leerenriss</string>
+    <string name="dungeon_void_rift_desc">Ein Riss in der Realität, durch den Leerenwesen in die Sterblichenwelt eindringen.</string>
+    <string name="dungeon_frozen_citadel_name">Gefrorene Zitadelle</string>
+    <string name="dungeon_frozen_citadel_desc">Eine uralte Festung, die von einem Gletscher eingeschlossen ist und deren Verteidiger in ewiger Wacht eingefroren sind.</string>
+    <string name="dungeon_abyssal_throne_name">Abyssthron</string>
+    <string name="dungeon_abyssal_throne_desc">Der tiefste Punkt der bekannten Welt, regiert von Leerenlords seit Anbeginn der Zeit.</string>
+    <string name="enemy_void_stalker_name">Leerenjäger</string>
+    <string name="enemy_rift_guardian_name">Spaltwächter</string>
+    <string name="enemy_chaos_elemental_name">Chaoselementar</string>
+    <string name="enemy_frost_giant_name">Frostriese</string>
+    <string name="enemy_ice_golem_name">Eisgolem</string>
+    <string name="enemy_glacial_mage_name">Gletschermagier</string>
+    <string name="enemy_abyssal_lord_name">Abyssherrscher</string>
+    <string name="enemy_eternal_sentinel_name">Ewiger Wächter</string>
+    <string name="enemy_void_archon_name">Leerenarchon</string>
+
+    <string name="item_void_reaver_name">Leeren-Spalter</string>
+    <string name="item_void_reaver_desc">Eine aus kristallisierter Leerenenergie geschmiedete Klinge. Ihre Schneide durchdringt Rüstungen wie Stoff.</string>
+    <string name="item_sovereign_crown_name">Souveränskrone</string>
+    <string name="item_sovereign_crown_desc">Die Krone des Leerensouveräns selbst, die dunkle Majestät ausstrahlt. Bietet unübertroffenen Schutz.</string>
+    <string name="item_amulet_of_the_void_name">Amulett der Leere</string>
+    <string name="item_amulet_of_the_void_desc">Ein Anhänger aus reiner Leerenessenz. Verbessert alle Kampfwerte des Trägers.</string>
+
 </resources>

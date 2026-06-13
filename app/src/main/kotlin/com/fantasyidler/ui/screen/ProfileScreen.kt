@@ -1215,7 +1215,7 @@ private fun NotesTab(
     skillingDungeonNotes: Map<String, Int>,
     unlockedDungeons: List<String>,
 ) {
-    val SKILL_ORDER = listOf("mining", "woodcutting", "fishing", "agility")
+    val SKILL_ORDER = listOf("mining", "woodcutting", "fishing", "agility", "thieving")
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()

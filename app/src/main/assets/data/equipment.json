@@ -3125,7 +3125,9 @@
     "attack_bonus": 3,
     "strength_bonus": 10,
     "defense_bonus": 1,
-    "requirements": { "strength": 60 }
+    "requirements": {
+      "strength": 60
+    }
   },
   "archers_ring": {
     "name": "archers_ring",
@@ -3138,7 +3140,9 @@
     "defense_bonus": 2,
     "ranged_attack_bonus": 12,
     "ranged_strength_bonus": 3,
-    "requirements": { "ranged": 60 }
+    "requirements": {
+      "ranged": 60
+    }
   },
   "seers_ring": {
     "name": "seers_ring",
@@ -3151,7 +3155,9 @@
     "defense_bonus": 2,
     "magic_attack_bonus": 12,
     "magic_damage_bonus": 3,
-    "requirements": { "magic": 60 }
+    "requirements": {
+      "magic": 60
+    }
   },
   "ring_of_wealth": {
     "name": "ring_of_wealth",
@@ -3173,7 +3179,9 @@
     "attack_bonus": 5,
     "strength_bonus": 2,
     "defense_bonus": 18,
-    "requirements": { "defense": 70 }
+    "requirements": {
+      "defense": 70
+    }
   },
   "amulet_of_strength": {
     "name": "amulet_of_strength",
@@ -3199,7 +3207,10 @@
     "ranged_strength_bonus": 4,
     "magic_attack_bonus": 10,
     "magic_damage_bonus": 4,
-    "requirements": { "attack": 60, "defense": 50 }
+    "requirements": {
+      "attack": 60,
+      "defense": 50
+    }
   },
   "necklace_of_anguish": {
     "name": "necklace_of_anguish",
@@ -3212,7 +3223,9 @@
     "defense_bonus": 5,
     "ranged_attack_bonus": 22,
     "ranged_strength_bonus": 8,
-    "requirements": { "ranged": 75 }
+    "requirements": {
+      "ranged": 75
+    }
   },
   "tormented_necklace": {
     "name": "tormented_necklace",
@@ -3225,7 +3238,9 @@
     "defense_bonus": 5,
     "magic_attack_bonus": 20,
     "magic_damage_bonus": 8,
-    "requirements": { "magic": 75 }
+    "requirements": {
+      "magic": 75
+    }
   },
   "dragon_amulet": {
     "name": "dragon_amulet",
@@ -3240,7 +3255,9 @@
     "ranged_strength_bonus": 2,
     "magic_attack_bonus": 6,
     "magic_damage_bonus": 2,
-    "requirements": { "attack": 70 }
+    "requirements": {
+      "attack": 70
+    }
   },
   "ring_of_dragons_might": {
     "name": "ring_of_dragons_might",
@@ -3251,7 +3268,9 @@
     "attack_bonus": 4,
     "strength_bonus": 16,
     "defense_bonus": 3,
-    "requirements": { "strength": 70 }
+    "requirements": {
+      "strength": 70
+    }
   },
   "kraken_tentacle": {
     "name": "kraken_tentacle",
@@ -3264,7 +3283,9 @@
     "defense_bonus": 3,
     "magic_attack_bonus": 18,
     "magic_damage_bonus": 6,
-    "requirements": { "magic": 80 }
+    "requirements": {
+      "magic": 80
+    }
   },
   "amulet_of_the_kraken": {
     "name": "amulet_of_the_kraken",
@@ -3277,7 +3298,9 @@
     "defense_bonus": 7,
     "magic_attack_bonus": 24,
     "magic_damage_bonus": 10,
-    "requirements": { "magic": 80 }
+    "requirements": {
+      "magic": 80
+    }
   },
   "ring_of_the_seas": {
     "name": "ring_of_the_seas",
@@ -3290,7 +3313,9 @@
     "defense_bonus": 3,
     "ranged_attack_bonus": 18,
     "ranged_strength_bonus": 6,
-    "requirements": { "ranged": 80 }
+    "requirements": {
+      "ranged": 80
+    }
   },
   "ring_of_fortune": {
     "name": "ring_of_fortune",
@@ -3313,5 +3338,59 @@
     "strength_bonus": 32,
     "defense_bonus": 20,
     "requirements": {}
+  },
+  "shadow_signet": {
+    "name": "shadow_signet",
+    "display_name": "Shadow Signet",
+    "slot": "ring",
+    "combat_style": "attack",
+    "description": "A ring bearing the seal of the Guild of Shadows. Only the guild's most dangerous operatives ever wore one.",
+    "attack_bonus": 8,
+    "strength_bonus": 14,
+    "defense_bonus": 5,
+    "requirements": {
+      "attack": 50
+    }
+  },
+  "void_reaver": {
+    "name": "void_reaver",
+    "display_name": "Void Reaver",
+    "slot": "weapon",
+    "combat_style": "strength",
+    "description": "A blade forged from crystallised void energy. Its edge cuts through armour as if it were cloth.",
+    "attack_bonus": 120,
+    "strength_bonus": 130,
+    "defense_bonus": 0,
+    "requirements": {
+      "attack": 90,
+      "strength": 90
+    }
+  },
+  "sovereign_crown": {
+    "name": "sovereign_crown",
+    "display_name": "Sovereign Crown",
+    "slot": "head",
+    "combat_style": null,
+    "description": "The crown of the Void Sovereign itself, radiating dark majesty. Offers unparalleled protection.",
+    "attack_bonus": 8,
+    "strength_bonus": 5,
+    "defense_bonus": 80,
+    "requirements": {
+      "defense": 85
+    }
+  },
+  "amulet_of_the_void": {
+    "name": "amulet_of_the_void",
+    "display_name": "Amulet of the Void",
+    "slot": "necklace",
+    "combat_style": null,
+    "description": "A pendant of pure void essence. Enhances all combat stats of the wearer.",
+    "attack_bonus": 18,
+    "strength_bonus": 18,
+    "defense_bonus": 18,
+    "requirements": {
+      "attack": 80,
+      "defense": 80
+    }
   }
 }

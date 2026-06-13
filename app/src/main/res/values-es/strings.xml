@@ -1104,4 +1104,41 @@
     <string name="game_no_tickets">No tickets to draw.</string>
     <string name="game_next_draw">Next draw in %s</string>
 
+    <string name="skilling_dungeon_thieves_den_name">Guarida de Ladrones</string>
+    <string name="skilling_dungeon_thieves_den_desc">Un laberinto de túneles bajo las calles de la ciudad, usado por una banda organizada de ladrones.</string>
+    <string name="skilling_dungeon_shadow_vault_name">Bóveda Oscura</string>
+    <string name="skilling_dungeon_shadow_vault_desc">Una bóveda oculta bajo el Sancto Pícaro donde se guardan los bienes más valiosos de la gremio.</string>
+    <string name="dungeon_rogue_sanctum_name">Sancto Pícaro</string>
+    <string name="dungeon_rogue_sanctum_desc">El refugio interior del gremio, accesible solo para miembros probados.</string>
+    <string name="dungeon_guild_of_shadows_name">Gremio de las Sombras</string>
+    <string name="dungeon_guild_of_shadows_desc">El sancto más profundo del gremio de ladrones, guardado por sus ejecutores más peligrosos.</string>
+    <string name="enemy_assassin_name">Asesino</string>
+    <string name="enemy_shadow_assassin_name">Asesino de las Sombras</string>
+    <string name="enemy_vault_guardian_name">Guardián de la Bóveda</string>
+    <string name="enemy_guild_master_name">Maestro del Gremio</string>
+    <string name="item_shadow_signet_name">Sello de las Sombras</string>
+    <string name="item_shadow_signet_desc">Un anillo con el sello del Gremio de las Sombras. Solo los operativos más peligrosos del gremio lo llevaban.</string>
+    <string name="dungeon_void_rift_name">Grieta del Vacío</string>
+    <string name="dungeon_void_rift_desc">Una brecha en la realidad por donde criaturas del vacío se derraman en el mundo mortal.</string>
+    <string name="dungeon_frozen_citadel_name">Ciudadela Helada</string>
+    <string name="dungeon_frozen_citadel_desc">Una fortaleza ancestral encerrada en un glaciar, con sus defensores congelados en vigilia eterna.</string>
+    <string name="dungeon_abyssal_throne_name">Trono Abisal</string>
+    <string name="dungeon_abyssal_throne_desc">El punto más profundo del mundo conocido, gobernado por señores del vacío desde el amanecer de los tiempos.</string>
+    <string name="enemy_void_stalker_name">Acechador del Vacío</string>
+    <string name="enemy_rift_guardian_name">Guardián de la Grieta</string>
+    <string name="enemy_chaos_elemental_name">Elemental del Caos</string>
+    <string name="enemy_frost_giant_name">Gigante de Escarcha</string>
+    <string name="enemy_ice_golem_name">Gólem de Hielo</string>
+    <string name="enemy_glacial_mage_name">Mago Glacial</string>
+    <string name="enemy_abyssal_lord_name">Señor Abisal</string>
+    <string name="enemy_eternal_sentinel_name">Centinela Eterno</string>
+    <string name="enemy_void_archon_name">Arconte del Vacío</string>
+
+    <string name="item_void_reaver_name">Desgarrador del Vacío</string>
+    <string name="item_void_reaver_desc">Una hoja forjada de energía del vacío cristalizada. Su filo atraviesa la armadura como si fuera tela.</string>
+    <string name="item_sovereign_crown_name">Corona Soberana</string>
+    <string name="item_sovereign_crown_desc">La corona del Soberano del Vacío en persona, irradiando oscura majestad. Ofrece una protección sin igual.</string>
+    <string name="item_amulet_of_the_void_name">Amuleto del Vacío</string>
+    <string name="item_amulet_of_the_void_desc">Un colgante de pura esencia del vacío. Mejora todas las estadísticas de combate del portador.</string>
+
 </resources>

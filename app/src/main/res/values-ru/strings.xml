@@ -1134,4 +1134,41 @@
     <string name="game_no_tickets">No tickets to draw.</string>
     <string name="game_next_draw">Next draw in %s</string>
 
+    <string name="skilling_dungeon_thieves_den_name">Воровское Логово</string>
+    <string name="skilling_dungeon_thieves_den_desc">Лабиринт туннелей под городскими улицами, используемый организованной шайкой воров.</string>
+    <string name="skilling_dungeon_shadow_vault_name">Теневое Хранилище</string>
+    <string name="skilling_dungeon_shadow_vault_desc">Скрытое хранилище под Разбойничьим Святилищем, где хранятся самые ценные украденные товары гильдии.</string>
+    <string name="dungeon_rogue_sanctum_name">Разбойничье Святилище</string>
+    <string name="dungeon_rogue_sanctum_desc">Внутреннее убежище гильдии, доступное только проверенным членам.</string>
+    <string name="dungeon_guild_of_shadows_name">Гильдия Теней</string>
+    <string name="dungeon_guild_of_shadows_desc">Самое глубокое святилище гильдии воров, охраняемое её самыми опасными исполнителями.</string>
+    <string name="enemy_assassin_name">Убийца</string>
+    <string name="enemy_shadow_assassin_name">Теневой Убийца</string>
+    <string name="enemy_vault_guardian_name">Страж Хранилища</string>
+    <string name="enemy_guild_master_name">Гильдмейстер</string>
+    <string name="item_shadow_signet_name">Теневая Печать</string>
+    <string name="item_shadow_signet_desc">Кольцо с печатью Гильдии Теней. Только самые опасные оперативники гильдии носили его.</string>
+    <string name="dungeon_void_rift_name">Разлом Пустоты</string>
+    <string name="dungeon_void_rift_desc">Прореха в реальности, через которую существа пустоты проникают в смертный мир.</string>
+    <string name="dungeon_frozen_citadel_name">Замёрзшая Цитадель</string>
+    <string name="dungeon_frozen_citadel_desc">Древняя крепость, заточённая в леднике, с защитниками, замершими в вечном карауле.</string>
+    <string name="dungeon_abyssal_throne_name">Трон Бездны</string>
+    <string name="dungeon_abyssal_throne_desc">Самая глубокая точка известного мира, которой правят повелители пустоты с начала времён.</string>
+    <string name="enemy_void_stalker_name">Охотник Пустоты</string>
+    <string name="enemy_rift_guardian_name">Страж Разлома</string>
+    <string name="enemy_chaos_elemental_name">Хаотический Элементаль</string>
+    <string name="enemy_frost_giant_name">Морозный Великан</string>
+    <string name="enemy_ice_golem_name">Ледяной Голем</string>
+    <string name="enemy_glacial_mage_name">Ледниковый Маг</string>
+    <string name="enemy_abyssal_lord_name">Повелитель Бездны</string>
+    <string name="enemy_eternal_sentinel_name">Вечный Страж</string>
+    <string name="enemy_void_archon_name">Архонт Пустоты</string>
+
+    <string name="item_void_reaver_name">Опустошитель Пустоты</string>
+    <string name="item_void_reaver_desc">Клинок, выкованный из кристаллизованной энергии пустоты. Его лезвие прорезает броню, словно ткань.</string>
+    <string name="item_sovereign_crown_name">Суверенная Корона</string>
+    <string name="item_sovereign_crown_desc">Корона самого Повелителя Пустоты, излучающая мрачное величие. Обеспечивает непревзойдённую защиту.</string>
+    <string name="item_amulet_of_the_void_name">Амулет Пустоты</string>
+    <string name="item_amulet_of_the_void_desc">Подвеска из чистой сущности пустоты. Усиливает все боевые характеристики носителя.</string>
+
 </resources>

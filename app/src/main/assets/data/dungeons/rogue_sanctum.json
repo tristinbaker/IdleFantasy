@@ -1,0 +1,28 @@
+{
+  "name": "rogue_sanctum",
+  "display_name": "Rogue Sanctum",
+  "description": "The guild's inner refuge — a fortified hideout accessible only to proven members. Trespassers are dealt with swiftly and without mercy.",
+  "recommended_level": 25,
+  "encounter_rate": 0.32,
+  "lore_unlock_only": true,
+  "enemy_spawns": [
+    {
+      "enemy": "rogue",
+      "weight": 3
+    },
+    {
+      "enemy": "cutpurse",
+      "weight": 4
+    },
+    {
+      "enemy": "assassin",
+      "weight": 3
+    }
+  ],
+  "rare_drops": [
+    {
+      "item": "shadow_dagger",
+      "chance": 0.015
+    }
+  ]
+}

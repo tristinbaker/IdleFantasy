@@ -1,0 +1,21 @@
+{
+  "name": "void_rift",
+  "display_name": "Void Rift",
+  "description": "A tear in reality that bleeds void creatures into the mortal world. The air crackles with chaotic energy and the ground shimmers with otherworldly light.",
+  "recommended_level": 72,
+  "encounter_rate": 0.50,
+  "enemy_spawns": [
+    {
+      "enemy": "void_stalker",
+      "weight": 4
+    },
+    {
+      "enemy": "rift_guardian",
+      "weight": 3
+    },
+    {
+      "enemy": "chaos_elemental",
+      "weight": 3
+    }
+  ]
+}

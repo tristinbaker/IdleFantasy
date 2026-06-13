@@ -1,0 +1,1 @@
+Bug fix: queued sessions no longer stall overnight due to Android Doze Mode throttling exact alarms; overdue sessions are now processed in a fast-forward catch-up loop so all queued training completes correctly when you open the app after leaving it running in the background

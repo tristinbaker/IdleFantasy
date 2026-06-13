@@ -1148,4 +1148,47 @@
     <string name="game_no_tickets">No tickets to draw.</string>
     <string name="game_next_draw">Next draw in %s</string>
 
+    <!-- Thieving expedition and dungeon strings -->
+    <string name="skilling_dungeon_thieves_den_name">Thieves\' Den</string>
+    <string name="skilling_dungeon_thieves_den_desc">A labyrinth of tunnels beneath the city streets, used by an organised ring of thieves.</string>
+    <string name="skilling_dungeon_shadow_vault_name">Shadow Vault</string>
+    <string name="skilling_dungeon_shadow_vault_desc">A hidden vault beneath the Rogue Sanctum where the guild\'s most valuable stolen goods are kept.</string>
+    <string name="dungeon_rogue_sanctum_name">Rogue Sanctum</string>
+    <string name="dungeon_rogue_sanctum_desc">The guild\'s inner refuge, accessible only to proven members.</string>
+    <string name="dungeon_guild_of_shadows_name">Guild of Shadows</string>
+    <string name="dungeon_guild_of_shadows_desc">The innermost sanctum of the thieves\' guild, guarded by its most elite enforcers.</string>
+    <string name="enemy_assassin_name">Assassin</string>
+    <string name="enemy_shadow_assassin_name">Shadow Assassin</string>
+    <string name="enemy_vault_guardian_name">Vault Guardian</string>
+    <string name="enemy_guild_master_name">Guild Master</string>
+    <string name="item_shadow_signet_name">Shadow Signet</string>
+    <string name="item_shadow_signet_desc">A ring bearing the seal of the Guild of Shadows. Only the guild\'s most dangerous operatives ever wore one.</string>
+
+    <!-- High-level dungeon names and descriptions -->
+    <string name="dungeon_void_rift_name">Void Rift</string>
+    <string name="dungeon_void_rift_desc">A tear in reality where void creatures spill into the mortal world.</string>
+    <string name="dungeon_frozen_citadel_name">Frozen Citadel</string>
+    <string name="dungeon_frozen_citadel_desc">An ancient fortress encased in a glacier, its defenders frozen in eternal vigil.</string>
+    <string name="dungeon_abyssal_throne_name">Abyssal Throne</string>
+    <string name="dungeon_abyssal_throne_desc">The deepest point in the known world, ruled by void lords since the dawn of time.</string>
+
+    <!-- High-level enemy names -->
+    <string name="enemy_void_stalker_name">Void Stalker</string>
+    <string name="enemy_rift_guardian_name">Rift Guardian</string>
+    <string name="enemy_chaos_elemental_name">Chaos Elemental</string>
+    <string name="enemy_frost_giant_name">Frost Giant</string>
+    <string name="enemy_ice_golem_name">Ice Golem</string>
+    <string name="enemy_glacial_mage_name">Glacial Mage</string>
+    <string name="enemy_abyssal_lord_name">Abyssal Lord</string>
+    <string name="enemy_eternal_sentinel_name">Eternal Sentinel</string>
+    <string name="enemy_void_archon_name">Void Archon</string>
+
+    <!-- Void Sovereign boss drops -->
+    <string name="item_void_reaver_name">Void Reaver</string>
+    <string name="item_void_reaver_desc">A blade forged from crystallised void energy. Its edge cuts through armour as if it were cloth.</string>
+    <string name="item_sovereign_crown_name">Sovereign Crown</string>
+    <string name="item_sovereign_crown_desc">The crown of the Void Sovereign itself, radiating dark majesty. Offers unparalleled protection.</string>
+    <string name="item_amulet_of_the_void_name">Amulet of the Void</string>
+    <string name="item_amulet_of_the_void_desc">A pendant of pure void essence. Enhances all combat stats of the wearer.</string>
+
 </resources>

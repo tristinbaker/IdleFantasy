@@ -86,6 +86,7 @@ class SlayerViewModel @Inject constructor(
             val taskDungeonEntries = flags.activeSlayerTask?.enemyKey?.let { key ->
                 gameData.dungeons.entries
                     .filter { (_, d) -> d.enemySpawns.any { it.enemy == key } }
+                    .filter { (k, d) -> !d.loreUnlockOnly || k in unlockedDungeons }
             } ?: emptyList()
             val taskDungeons     = taskDungeonEntries.map { (key, _) -> GameStrings.dungeonName(context.withAppLocale(), key) }
             val taskDungeonKeys  = taskDungeonEntries.map { (k, _) -> k }

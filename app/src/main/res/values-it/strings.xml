@@ -1133,4 +1133,41 @@
     <string name="game_no_tickets">No tickets to draw.</string>
     <string name="game_next_draw">Next draw in %s</string>
 
+    <string name="skilling_dungeon_thieves_den_name">Covo dei Ladri</string>
+    <string name="skilling_dungeon_thieves_den_desc">Un labirinto di tunnel sotto le strade della città, usato da un\'organizzazione criminale di ladri.</string>
+    <string name="skilling_dungeon_shadow_vault_name">Caveau dell\'Ombra</string>
+    <string name="skilling_dungeon_shadow_vault_desc">Un caveau nascosto sotto il Santuario dei Furfanti dove si custodiscono i beni più preziosi della gilda.</string>
+    <string name="dungeon_rogue_sanctum_name">Santuario dei Furfanti</string>
+    <string name="dungeon_rogue_sanctum_desc">Il rifugio interno della gilda, accessibile solo ai membri collaudati.</string>
+    <string name="dungeon_guild_of_shadows_name">Gilda delle Ombre</string>
+    <string name="dungeon_guild_of_shadows_desc">Il santuario più profondo della gilda dei ladri, sorvegliato dai suoi esecutori più temibili.</string>
+    <string name="enemy_assassin_name">Assassino</string>
+    <string name="enemy_shadow_assassin_name">Assassino dell\'Ombra</string>
+    <string name="enemy_vault_guardian_name">Guardiano del Caveau</string>
+    <string name="enemy_guild_master_name">Gran Maestro della Gilda</string>
+    <string name="item_shadow_signet_name">Sigillo dell\'Ombra</string>
+    <string name="item_shadow_signet_desc">Un anello recante il sigillo della Gilda delle Ombre. Solo gli agenti più pericolosi della gilda lo indossavano.</string>
+    <string name="dungeon_void_rift_name">Faglia del Vuoto</string>
+    <string name="dungeon_void_rift_desc">Una spaccatura nella realtà da cui creature del vuoto si riversano nel mondo mortale.</string>
+    <string name="dungeon_frozen_citadel_name">Cittadella Ghiacciata</string>
+    <string name="dungeon_frozen_citadel_desc">Una fortezza ancestrale intrappolata in un ghiacciaio, con i suoi difensori congelati in eterna veglia.</string>
+    <string name="dungeon_abyssal_throne_name">Trono Abissale</string>
+    <string name="dungeon_abyssal_throne_desc">Il punto più profondo del mondo conosciuto, governato da signori del vuoto dall\'alba dei tempi.</string>
+    <string name="enemy_void_stalker_name">Predatore del Vuoto</string>
+    <string name="enemy_rift_guardian_name">Guardiano della Faglia</string>
+    <string name="enemy_chaos_elemental_name">Elementale del Caos</string>
+    <string name="enemy_frost_giant_name">Gigante di Gelo</string>
+    <string name="enemy_ice_golem_name">Golem di Ghiaccio</string>
+    <string name="enemy_glacial_mage_name">Mago Glaciale</string>
+    <string name="enemy_abyssal_lord_name">Signore Abissale</string>
+    <string name="enemy_eternal_sentinel_name">Sentinella Eterna</string>
+    <string name="enemy_void_archon_name">Arconte del Vuoto</string>
+
+    <string name="item_void_reaver_name">Devastatore del Vuoto</string>
+    <string name="item_void_reaver_desc">Una lama forgiata da energia del vuoto cristallizzata. Il suo filo taglia l\'armatura come se fosse tessuto.</string>
+    <string name="item_sovereign_crown_name">Corona Sovrana</string>
+    <string name="item_sovereign_crown_desc">La corona del Sovrano del Vuoto in persona, che irradia oscura maestà. Offre una protezione senza pari.</string>
+    <string name="item_amulet_of_the_void_name">Amuleto del Vuoto</string>
+    <string name="item_amulet_of_the_void_desc">Un ciondolo di pura essenza del vuoto. Potenzia tutte le statistiche di combattimento del portatore.</string>
+
 </resources>

@@ -1,0 +1,7 @@
+• Scratch Card: diagonal matches now pay out in addition to rows and columns
+• Slayer Master no longer hints at dungeon locations the player hasn't unlocked yet
+• Worker XP estimate now correctly accounts for the worker's efficiency multiplier and Inn bonus, so the displayed value matches the actual reward
+• Three new high-level combat dungeons: Void Rift (level 72), Frozen Citadel (level 82), and Abyssal Throne (level 92), each with new enemies, strong drops, and rare equipment rewards
+• Two new Thieving expeditions: Thieves' Den (level 1) and Shadow Vault (level 40), each revealing a hidden lore-locked dungeon — Rogue Sanctum and Guild of Shadows — complete with new enemies and the Shadow Signet ring as a rare drop
+• New endgame boss: The Void Sovereign (combat level 110 required, 150 min), dropping the Void Reaver weapon, Sovereign Crown, and Amulet of the Void, with a chance at the Void Wisp pet (+5% combat XP)
+• Four new Sovereign Slayer quests for the Void Sovereign boss (defeat 1, 5, 25, and 50 times)

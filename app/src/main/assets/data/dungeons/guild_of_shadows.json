@@ -1,0 +1,28 @@
+{
+  "name": "guild_of_shadows",
+  "display_name": "Guild of Shadows",
+  "description": "The innermost sanctum of the thieves' guild — a place few have found and fewer have left. The guild's most elite enforcers protect its deepest secrets.",
+  "recommended_level": 58,
+  "encounter_rate": 0.38,
+  "lore_unlock_only": true,
+  "enemy_spawns": [
+    {
+      "enemy": "shadow_assassin",
+      "weight": 4
+    },
+    {
+      "enemy": "vault_guardian",
+      "weight": 3
+    },
+    {
+      "enemy": "guild_master",
+      "weight": 3
+    }
+  ],
+  "rare_drops": [
+    {
+      "item": "shadow_signet",
+      "chance": 0.002
+    }
+  ]
+}
