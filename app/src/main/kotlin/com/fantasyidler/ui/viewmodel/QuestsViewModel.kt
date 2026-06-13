@@ -12,6 +12,7 @@ import com.fantasyidler.repository.DailyReward
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.QuestRepository
+import com.fantasyidler.repository.WeeklyQuestWithProgress
 import com.fantasyidler.util.formatCoins
 import com.fantasyidler.util.formatXp
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -47,6 +48,8 @@ data class QuestsUiState(
     val completedCount: Int = 0,
     val dailyQuests: List<DailyQuestWithProgress> = emptyList(),
     val nextDailyReset: Long = 0L,
+    val weeklyQuests: List<WeeklyQuestWithProgress> = emptyList(),
+    val nextWeeklyReset: Long = 0L,
     val snackbarMessage: String? = null,
     val hideCompleted: Boolean = false,
 )
@@ -61,6 +64,7 @@ class QuestsViewModel @Inject constructor(
     private val gameData: GameDataRepository,
     private val playerRepo: PlayerRepository,
     private val dailyQuestRepo: DailyQuestRepository,
+    private val weeklyQuestRepo: WeeklyQuestRepository,
     private val json: Json,
 ) : ViewModel() {
 
@@ -72,7 +76,12 @@ class QuestsViewModel @Inject constructor(
             _extra.update { it.copy(hideCompleted = flags.hideCompletedQuests) }
             // Trigger a DB refresh if daily quests have rolled over, and seed nextDailyReset.
             playerRepo.getRefreshedDailyFlags()
-            _extra.update { it.copy(nextDailyReset = dailyQuestRepo.nextResetMs()) }
+            _extra.update { 
+                it.copy(
+                    nextDailyReset = dailyQuestRepo.nextResetMs(),
+                    nextWeeklyReset = weeklyQuestRepo.nextResetMs()
+                )
+            }
         }
     }
 
@@ -113,12 +122,19 @@ class QuestsViewModel @Inject constructor(
             extra.dailyQuests
         }
 
+        val weeklyQuests = if (player != null) {
+            weeklyQuestRepo.getActiveWeeklyQuests(flags)
+        } else {
+            extra.weeklyQuests
+        }
+
         extra.copy(
             isLoading      = false,
             questsByGroup  = questsByGroup,
             claimableCount = claimable,
             completedCount = completed,
             dailyQuests    = dailyQuests,
+            weeklyQuests   = weeklyQuests,
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), QuestsUiState())
 
@@ -212,6 +228,31 @@ class QuestsViewModel @Inject constructor(
                 }
             }
             _extra.update { it.copy(snackbarMessage = message) }
+        }
+    }
+
+    fun claimWeeklyQuest(templateId: String) {
+        viewModelScope.launch {
+            val flags = playerRepo.getFlags()
+            val (newFlags, rewardCoins) = weeklyQuestRepo.claimQuest(flags, templateId)
+            playerRepo.updateFlags(newFlags)
+            playerRepo.addCoins(rewardCoins)
+            _extra.update { it.copy(snackbarMessage = "Weekly challenge complete! +${rewardCoins.formatCoins()} coins") }
+        }
+    }
+
+    fun claimWeeklyBonus() {
+        viewModelScope.launch {
+            val flags = playerRepo.getFlags()
+            if (flags.weeklyQuestClaimed.size < 5 || flags.weeklyBonusClaimed) return@launch
+            
+            val newFlags = weeklyQuestRepo.claimWeeklyBonus(flags)
+            playerRepo.updateFlags(newFlags)
+            
+            // Grand prize for completing all 5 weekly quests
+            val coins = 100_000L
+            playerRepo.addCoins(coins)
+            _extra.update { it.copy(snackbarMessage = "All weekly challenges complete! +${coins.formatCoins()} coins") }
         }
     }
 

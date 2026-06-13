@@ -40,6 +40,18 @@ data class PlayerFlags(
     @SerialName("daily_quest_claimed") val dailyQuestClaimed: List<String> = emptyList(),
     /** Epoch ms when today's daily quests were generated (used to detect 6am rollover). */
     @SerialName("daily_quest_generated_at") val dailyQuestGeneratedAt: Long = 0L,
+
+    /** IDs of the 5 active weekly challenge template IDs. */
+    @SerialName("weekly_quest_ids") val weeklyQuestIds: List<String> = emptyList(),
+    /** Progress map: templateId → count accumulated this week. */
+    @SerialName("weekly_quest_progress") val weeklyQuestProgress: Map<String, Int> = emptyMap(),
+    /** Template IDs whose individual reward has been claimed. */
+    @SerialName("weekly_quest_claimed") val weeklyQuestClaimed: List<String> = emptyList(),
+    /** Epoch ms when the current weekly set was generated (used to detect Monday 6am rollover). */
+    @SerialName("weekly_quest_generated_at") val weeklyQuestGeneratedAt: Long = 0L,
+    /** True if the full weekly bonus chest has been claimed this week. */
+    @SerialName("weekly_bonus_claimed") val weeklyBonusClaimed: Boolean = false,
+
     /** Currently hired worker, or null if none. */
     @SerialName("hired_worker") val hiredWorker: HiredWorker? = null,
     /** Second worker slot (Apprentice / Journeyman / Master), or null if none. */

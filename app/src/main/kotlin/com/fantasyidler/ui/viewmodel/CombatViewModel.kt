@@ -703,6 +703,7 @@ class CombatViewModel @Inject constructor(
                 loot         = loot,
             )
             playerRepo.recordDailyKills(mapOf(session.activityKey to 1))
+            playerRepo.recordWeeklyProgress("boss", session.activityKey, 1)
             guildRepo.recordGuildCombat(mapOf(session.activityKey to 1), detectCombatStyle(last.xpBySkill))
         }
         val xpDisplayBySkill = last.xpBySkill.mapValues { (_, xp) -> xp * boostMult }

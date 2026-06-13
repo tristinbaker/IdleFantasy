@@ -34,6 +34,7 @@ class PlayerRepository @Inject constructor(
     private val farmingPatchDao: FarmingPatchDao,
     private val json: Json,
     private val dailyQuestRepo: DailyQuestRepository,
+    private val weeklyQuestRepo: WeeklyQuestRepository,
     private val buffNotifScheduler: BuffNotificationScheduler,
 ) {
     /**
@@ -709,29 +710,32 @@ class PlayerRepository @Inject constructor(
     // Daily quest helpers
     // ------------------------------------------------------------------
 
-    /** Refresh daily quests if past 6am, then record progress for a gather session. */
+    /** Refresh daily and weekly quests if past 6am, then record progress for a gather session. */
     suspend fun recordDailyGathering(items: Map<String, Int>) {
         var flags = getRefreshedDailyFlags()
         for ((target, amount) in items) {
             flags = dailyQuestRepo.recordProgress(flags, "gather", target, amount)
+            flags = weeklyQuestRepo.recordProgress(flags, "gather", target, amount)
         }
         updateFlags(flags)
     }
 
-    /** Refresh daily quests if past 6am, then record progress for a crafting session. */
+    /** Refresh daily and weekly quests if past 6am, then record progress for a crafting session. */
     suspend fun recordDailyCrafting(items: Map<String, Int>) {
         var flags = getRefreshedDailyFlags()
         for ((target, amount) in items) {
             flags = dailyQuestRepo.recordProgress(flags, "craft", target, amount)
+            flags = weeklyQuestRepo.recordProgress(flags, "craft", target, amount)
         }
         updateFlags(flags)
     }
 
-    /** Refresh daily quests if past 6am, then record progress for combat kills. */
+    /** Refresh daily and weekly quests if past 6am, then record progress for combat kills. */
     suspend fun recordDailyKills(killsByEnemy: Map<String, Int>) {
         var flags = getRefreshedDailyFlags()
         for ((enemy, count) in killsByEnemy) {
             flags = dailyQuestRepo.recordProgress(flags, "kill_enemy", enemy, count)
+            flags = weeklyQuestRepo.recordProgress(flags, "kill_enemy", enemy, count)
         }
         updateFlags(flags)
     }
@@ -740,19 +744,38 @@ class PlayerRepository @Inject constructor(
     suspend fun recordDailyPrayer(amount: Int) {
         var flags = getRefreshedDailyFlags()
         flags = dailyQuestRepo.recordPrayerProgress(flags, amount)
+        flags = weeklyQuestRepo.recordPrayerProgress(flags, amount)
         updateFlags(flags)
     }
 
-    /** Returns current flags after refreshing daily quests if the 6am boundary has passed. */
+    /** Record arbitrary weekly progress (for new weekly quest types). */
+    suspend fun recordWeeklyProgress(type: String, target: String, amount: Int) {
+        var flags = getRefreshedDailyFlags()
+        flags = weeklyQuestRepo.recordProgress(flags, type, target, amount)
+        updateFlags(flags)
+    }
+
+    /** Returns current flags after refreshing daily and weekly quests if the boundary has passed. */
     suspend fun getRefreshedDailyFlags(): PlayerFlags {
         val player = getOrCreatePlayer()
-        val flags: PlayerFlags = json.decodeFromString(player.flags)
-        return if (dailyQuestRepo.shouldRefresh(flags.dailyQuestGeneratedAt)) {
-            val skillLevels: Map<String, Int> = json.decodeFromString(player.skillLevels)
-            val refreshed = dailyQuestRepo.refreshFlags(flags, skillLevels)
-            updateFlags(refreshed)
-            refreshed
-        } else flags
+        var flags: PlayerFlags = json.decodeFromString(player.flags)
+        var changed = false
+        val skillLevels: Map<String, Int> by lazy { json.decodeFromString(player.skillLevels) }
+
+        if (dailyQuestRepo.shouldRefresh(flags.dailyQuestGeneratedAt)) {
+            flags = dailyQuestRepo.refreshFlags(flags, skillLevels)
+            changed = true
+        }
+        
+        if (weeklyQuestRepo.shouldRefresh(flags.weeklyQuestGeneratedAt)) {
+            flags = weeklyQuestRepo.refreshFlags(flags, skillLevels)
+            changed = true
+        }
+
+        if (changed) {
+            updateFlags(flags)
+        }
+        return flags
     }
 
     /** Adds [qty] of [itemKey] to inventory. */

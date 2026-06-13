@@ -140,6 +140,7 @@ class GuildDetailViewModel @Inject constructor(
             val flags = playerRepo.getFlags()
             val (newFlags, rewards) = guildRepo.claimGuildDaily(flags, templateId) ?: return@launch
             playerRepo.updateFlags(newFlags)
+            playerRepo.recordWeeklyProgress("guild_daily", "any", 1)
             if (rewards.xp > 0 && rewards.xpSkill.isNotBlank()) {
                 playerRepo.applySessionResults(rewards.xpSkill, rewards.xp.toLong(), rewards.items)
             } else if (rewards.items.isNotEmpty()) {

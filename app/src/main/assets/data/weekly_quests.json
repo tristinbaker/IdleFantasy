@@ -1,0 +1,102 @@
+[
+  {
+    "id": "weekly_mine_runite",
+    "display_name": "Deep Core Miner",
+    "skill": "mining",
+    "type": "gather",
+    "target": "runite_ore",
+    "amount": 100,
+    "description": "Mine 100 runite ore this week.",
+    "level_required": 85
+  },
+  {
+    "id": "weekly_craft_addy_plate",
+    "display_name": "Armour Forger",
+    "skill": "smithing",
+    "type": "craft",
+    "target": "adamantite_platebody",
+    "amount": 30,
+    "description": "Smith 30 adamantite platebodies.",
+    "level_required": 88
+  },
+  {
+    "id": "weekly_boss_kills",
+    "display_name": "Monster Hunter",
+    "skill": "combat",
+    "type": "boss",
+    "target": "any",
+    "amount": 5,
+    "description": "Defeat any raid boss 5 times.",
+    "level_required": 50
+  },
+  {
+    "id": "weekly_farm_harvests",
+    "display_name": "Seasoned Farmer",
+    "skill": "farming",
+    "type": "farming",
+    "target": "any",
+    "amount": 10,
+    "description": "Harvest 10 farming patches.",
+    "level_required": 10
+  },
+  {
+    "id": "weekly_guild_dailies",
+    "display_name": "Guild Loyalist",
+    "skill": "combat",
+    "type": "guild_daily",
+    "target": "any",
+    "amount": 15,
+    "description": "Complete 15 guild daily requests.",
+    "level_required": 10
+  },
+  {
+    "id": "weekly_cook_sharks",
+    "display_name": "Master Chef",
+    "skill": "cooking",
+    "type": "craft",
+    "target": "cooked_shark",
+    "amount": 100,
+    "description": "Cook 100 sharks.",
+    "level_required": 80
+  },
+  {
+    "id": "weekly_agility_sessions",
+    "display_name": "Marathon Runner",
+    "skill": "agility",
+    "type": "agility",
+    "target": "any",
+    "amount": 5,
+    "description": "Complete 5 agility sessions.",
+    "level_required": 1
+  },
+  {
+    "id": "weekly_slayer_tasks",
+    "display_name": "Slayer Champion",
+    "skill": "slayer",
+    "type": "slayer_task",
+    "target": "any",
+    "amount": 5,
+    "description": "Complete 5 Slayer tasks.",
+    "level_required": 1
+  },
+  {
+    "id": "weekly_trade_routes",
+    "display_name": "Trade Baron",
+    "skill": "mercantile",
+    "type": "mercantile",
+    "target": "any",
+    "amount": 10,
+    "description": "Complete 10 trade route sessions.",
+    "level_required": 1
+  },
+  {
+    "id": "weekly_prayer_bones",
+    "display_name": "Pious Devotee",
+    "skill": "prayer",
+    "type": "prayer",
+    "target": "any",
+    "amount": 500,
+    "description": "Bury 500 bones at the bone altar.",
+    "level_required": 1
+  }
+]

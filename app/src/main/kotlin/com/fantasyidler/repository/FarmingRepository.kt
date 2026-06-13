@@ -99,6 +99,8 @@ class FarmingRepository @Inject constructor(
             xpGained    = crop.harvestXp.toLong() * yield,
             itemsGained = items,
         )
+        
+        playerRepo.recordWeeklyProgress("farming", "any", 1)
 
         val farmingPet = gameData.pets.values.firstOrNull { it.boostedSkill == Skills.FARMING }
         if (farmingPet != null && Random.nextDouble() < 1.0 / 1000.0) {
