@@ -1,0 +1,64 @@
+{
+  "repo": {
+    "timestamp": 1781443578411
+  },
+  "packages": {
+    "com.tristinbaker.idlefantasy": {
+      "metadata": {
+        "lastUpdated": 1781443561384
+      },
+      "versions": {
+        "8989ca609c869cdc78aa8dd633087aa27090b5f731465577008bf21eb810e5ca": {
+          "added": 1781443561384,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_76.apk",
+            "sha256": "8989ca609c869cdc78aa8dd633087aa27090b5f731465577008bf21eb810e5ca",
+            "size": 5089818
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.9.0",
+            "versionCode": 76,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• New: Carnival added to town; queue idle minigames (Archery Range, Strongman Competition, Wizard's Duel, Fishing Derby) to earn carnival tickets, or play active games (Ring Toss, Hammer Strike, Potion Sequence, Item Appraisal) directly; spend tickets in the Prize Shop for exclusive stat gear (Trickster's Amulet, Strongman's Sigil, Carnival Cape) and the Juggling Imp pet\n• New: Magic Bean, a rare farming drop -- plant it and see what happens\n• Fix: Ranged weapons now correctly contribute their a"
+          }
+        }
+      }
+    }
+  }
+}
