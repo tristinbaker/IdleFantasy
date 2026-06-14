@@ -3,6 +3,7 @@ package com.fantasyidler.ui.navigation
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Celebration
 import androidx.compose.material.icons.filled.Explore
 import androidx.compose.material.icons.filled.Group
 import androidx.compose.material.icons.filled.Home
@@ -143,6 +144,12 @@ sealed class Screen(
         route    = "bone_altar",
         labelRes = R.string.bone_altar_title,
         icon     = Icons.Filled.Star,
+    )
+
+    object Carnival : Screen(
+        route    = "carnival",
+        labelRes = R.string.carnival_title,
+        icon     = Icons.Filled.Celebration,
     )
 
     companion object {

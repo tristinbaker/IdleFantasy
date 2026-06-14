@@ -77,6 +77,7 @@ import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.Achievement
 import com.fantasyidler.ui.viewmodel.AchievementsViewModel
+import com.fantasyidler.ui.viewmodel.ArmoryViewModel
 import com.fantasyidler.ui.viewmodel.BestiaryViewModel
 import com.fantasyidler.ui.viewmodel.InventoryCategory
 import com.fantasyidler.ui.viewmodel.InventoryViewModel
@@ -103,6 +104,7 @@ fun ProfileScreen(
     viewModel:           InventoryViewModel    = hiltViewModel(),
     achievementsVm:      AchievementsViewModel = hiltViewModel(),
     bestiaryVm:          BestiaryViewModel     = hiltViewModel(),
+    armoryVm:            ArmoryViewModel       = hiltViewModel(),
     settingsVm:          SettingsViewModel     = hiltViewModel(),
     onNavigateToCombat:  () -> Unit            = {},
 ) {
@@ -125,6 +127,7 @@ fun ProfileScreen(
         stringResource(R.string.label_achievements),
         stringResource(R.string.label_notes),
         stringResource(R.string.label_bestiary),
+        stringResource(R.string.armory_tab),
     )
     var selectedTab  by remember { mutableIntStateOf(0) }
     var showEditSheet by remember { mutableStateOf(false) }
@@ -227,6 +230,7 @@ fun ProfileScreen(
                         skillingDungeonNotes = state.skillingDungeonNotes,
                         unlockedDungeons     = state.unlockedDungeons,
                     )
+                    7    -> ArmoryTab(viewModel = armoryVm)
                     else -> BestiaryTab(viewModel = bestiaryVm)
                 }
             }

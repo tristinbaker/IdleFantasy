@@ -106,6 +106,8 @@ data class PlayerFlags(
     @SerialName("last_fertilizer_key") val lastFertilizerKey: String? = null,
     /** Lifetime kill count per enemy/boss key; absent = never encountered. */
     @SerialName("enemy_kills") val enemyKills: Map<String, Int> = emptyMap(),
+    /** True once the magic bean has been planted; permanently hides it from the seed picker and stops the farming drop from occurring again. */
+    @SerialName("magic_bean_planted") val magicBeanPlanted: Boolean = false,
 )
 
 /** A single entry in the recent sessions log. */

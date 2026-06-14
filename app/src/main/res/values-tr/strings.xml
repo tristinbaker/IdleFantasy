@@ -859,7 +859,7 @@
     <string name="settings_backup_failed">Backup failed.</string>
     <string name="settings_backup_folder_set">Backup folder set.</string>
     <string name="home_town_title">Town</string>
-    <string name="home_town_desc">Dükkanı, hanı, loncayı, kiliseyi, usta atölyesini, avcı ustasını ve oyun köşesini ziyaret edin</string>
+    <string name="home_town_desc">Dükkanı, hanı, loncayı, kiliseyi, usta atölyesini, avcı ustasını ve panayırı ziyaret edin</string>
     <string name="guild_dailies_available">Dailies available</string>
     <string name="guild_do_dailies_hint">Do dailies to increase your reputation</string>
     <string name="guild_name_thieving">Hirsizlar Loncasi</string>
@@ -1142,4 +1142,85 @@
     <string name="item_amulet_of_the_void_name">Boşluk Muskası</string>
     <string name="item_amulet_of_the_void_desc">Saf boşluk özünden yapılmış bir kolye. Taşıyanın tüm savaş istatistiklerini artırır.</string>
 
+
+    <!-- ===== Carnival ===== -->
+    <string name="carnival_title">Panayır</string>
+    <string name="carnival_desc">Oyunlar, ödüller ve şenlik!</string>
+    <string name="carnival_ticket_balance">Biletler: %1$d</string>
+    <string name="carnival_idle_tab">Pasif Oyunlar</string>
+    <string name="carnival_active_tab">Aktif Oyunlar</string>
+    <string name="carnival_shop_tab">Ödül Dükkanı</string>
+    <string name="carnival_idle_hint">Bilet kazanmak için sıraya bir seans ekleyin. Daha yüksek beceri seviyesi daha fazla bilet demektir.</string>
+    <string name="carnival_archery_range">Okçuluk Sahası</string>
+    <string name="carnival_idle_desc_archery">Hareketli hedefleri vurun. Menzil seviyesi getiriyi artırır.</string>
+    <string name="carnival_strongman_competition">Güçlü Adam Yarışması</string>
+    <string name="carnival_idle_desc_strongman">Taşları kaldırın ve çekiçleri sallayın. Güç seviyesi getiriyi artırır.</string>
+    <string name="carnival_wizards_duel">Büyücü Düellosu</string>
+    <string name="carnival_idle_desc_wizard">Rakip büyücülere karşı illüzyon büyüleri yapın. Büyü seviyesi getiriyi artırır.</string>
+    <string name="carnival_fishing_derby">Balık Avı Yarışması</string>
+    <string name="carnival_idle_desc_fishing">Panayır havuzunda en büyük balığı yakalayın. Balık avı seviyesi getiriyi artırır.</string>
+    <string name="carnival_skill_level">%1$s Sv.%2$d</string>
+    <string name="carnival_ticket_yield">~%1$d bilet/seans</string>
+    <string name="carnival_queue">Sıraya Ekle</string>
+    <string name="carnival_ring_toss">Halka Fırlatma</string>
+    <string name="carnival_active_ring_desc">Gösterge altın hedef bölgesine ulaştığında fırlatın.</string>
+    <string name="carnival_ring_target_hint">Merkezi hedefleyin (45%%–55%%)</string>
+    <string name="carnival_throw">Fırlat!</string>
+    <string name="carnival_hammer_strike">Çekiç Darbesi</string>
+    <string name="carnival_active_hammer_desc">Güç göstergesi en yüksek seviyedeyken vurun.</string>
+    <string name="carnival_power_label">Güç Göstergesi</string>
+    <string name="carnival_hammer_miss_zone">Iskaladı</string>
+    <string name="carnival_hammer_good_zone">İyi</string>
+    <string name="carnival_hammer_perfect_zone">Mükemmel!</string>
+    <string name="carnival_strike">Vur!</string>
+    <string name="carnival_potion_sequence">İksir Dizisi</string>
+    <string name="carnival_active_sequence_desc">İksir renklerine dikkat edin ve aynı sırayla tekrarlayın.</string>
+    <string name="carnival_sequence_watch">Sırayı izleyin…</string>
+    <string name="carnival_sequence_input">Renk %1$d / %2$d\'ye dokunun</string>
+    <string name="carnival_item_appraisal">Eşya Değerlendirmesi</string>
+    <string name="carnival_active_appraisal_desc">Hangi eşya açık pazarda daha değerlidir?</string>
+    <string name="carnival_appraisal_which">Hangisi daha değerli?</string>
+    <string name="carnival_play">Oyna</string>
+    <string name="carnival_cooldown">%1$ds %2$dd içinde hazır</string>
+    <string name="carnival_ticket_cost">%1$d bilet</string>
+    <string name="carnival_redeem">Kullan</string>
+    <string name="carnival_queue_added">Sıraya eklendi: %1$s.</string>
+    <string name="carnival_queue_full">Sıra dolu (3/3).</string>
+    <string name="carnival_ring_won">On ikiden! +%1$d bilet</string>
+    <string name="carnival_ring_missed">Hedef ıskalandı!</string>
+    <string name="carnival_hammer_perfect">Mükemmel darbe! +%1$d bilet</string>
+    <string name="carnival_hammer_good">İyi darbe! +%1$d bilet</string>
+    <string name="carnival_hammer_miss">Iskalandı!</string>
+    <string name="carnival_sequence_correct">Sıra doğru! +%1$d bilet</string>
+    <string name="carnival_sequence_wrong">Yanlış sıra! Tekrar deneyin.</string>
+    <string name="carnival_appraisal_correct">Doğru! +%1$d bilet</string>
+    <string name="carnival_appraisal_wrong">Yanlış! Daha değerli eşya %1$s idi.</string>
+    <string name="carnival_redeemed">Kullanıldı: %1$s!</string>
+    <string name="carnival_not_enough_tickets">Yeterli bilet yok.</string>
+    <string name="carnival_lamp_redeemed">+%1$d XP %2$s\'de!</string>
+
+    <!-- ===== Magic Bean / Farming ===== -->
+    <string name="farming_bean_note_1">Küçük bir filiz toprağı deldi.</string>
+    <string name="farming_bean_note_2">Sap doğaüstü bir hızla büyüyor.</string>
+    <string name="farming_bean_note_3">Yapraklar devasa — daha önce hiç böyle bir şey görmediniz.</string>
+    <string name="farming_bean_note_4">Bulutlar üst sapın etrafında toplanmaya başladı...</string>
+    <string name="farming_bean_note_5">Yukarıdan garip sesler geliyor.</string>
+    <string name="farming_bean_note_6">Uzak bir gümbürtü. Yükseklerde bir şeyler kıpırdıyor.</string>
+    <string name="farming_bean_note_7">Fasulye sapı sarsılıyor. Zirvede bir şeyler bekliyor.</string>
+    <string name="farming_bean_note_8">Neredeyse orada. Hava seyreleşiyor. Zirveyi neredeyse görebilirsiniz.</string>
+    <string name="farming_bean_ready">Fasulye sapı bulutların ötesine uzanıyor. Tırmanmaya hazır mısınız?</string>
+    <string name="farming_bean_climb">Tırman</string>
+    <string name="farming_bean_climbed">Fasulye sapına tırmandınız. Bir şeyler sizi bekliyor...</string>
+    <string name="farming_bean_picker_stats">\?\?\?  •  \?\?\?  •  \?\?\?</string>
+
+    <!-- ===== Armory Tab ===== -->
+    <string name="armory_tab">Cephane</string>
+    <string name="armory_not_owned">Bu eşyaya sahip değilsiniz.</string>
+    <string name="armory_how_to_obtain">Nasıl edinilir</string>
+    <string name="armory_no_stats">İstatistik bonusu yok.</string>
+    <string name="armory_filter_all">Tümü</string>
+    <string name="armory_filter_weapons">Silahlar</string>
+    <string name="armory_filter_armor">Zırh</string>
+    <string name="armory_filter_accessories">Aksesuarlar</string>
+    <string name="armory_filter_tools">Aletler</string>
 </resources>

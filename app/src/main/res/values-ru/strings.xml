@@ -405,7 +405,7 @@
 
     <!-- ===== HomeScreen (continued) ===== -->
     <string name="home_town_title">Город</string>
-    <string name="home_town_desc">Посетите магазин, таверну, гильдию, церковь, мастерскую строителя, мастера охотника и игровой уголок</string>
+    <string name="home_town_desc">Посетите магазин, таверну, гильдию, церковь, мастерскую строителя, мастера охотника и ярмарку</string>
     <string name="guild_dailies_available">Ежедневные доступны</string>
     <string name="guild_do_dailies_hint">Выполняйте ежедневные квесты для роста репутации</string>
     <string name="guild_quest_gate_blocked">Завершите квесты для повышения ранга</string>
@@ -1167,4 +1167,85 @@
     <string name="item_amulet_of_the_void_name">Амулет Пустоты</string>
     <string name="item_amulet_of_the_void_desc">Подвеска из чистой сущности пустоты. Усиливает все боевые характеристики носителя.</string>
 
+
+    <!-- ===== Carnival ===== -->
+    <string name="carnival_title">Ярмарка</string>
+    <string name="carnival_desc">Игры, призы и веселье!</string>
+    <string name="carnival_ticket_balance">Билеты: %1$d</string>
+    <string name="carnival_idle_tab">Пассивные игры</string>
+    <string name="carnival_active_tab">Активные игры</string>
+    <string name="carnival_shop_tab">Магазин призов</string>
+    <string name="carnival_idle_hint">Поставьте сессию в очередь для получения билетов. Более высокий уровень навыка — больше билетов.</string>
+    <string name="carnival_archery_range">Стрельбище</string>
+    <string name="carnival_idle_desc_archery">Стреляйте по движущимся мишеням. Уровень дальнего боя увеличивает выход.</string>
+    <string name="carnival_strongman_competition">Соревнование силачей</string>
+    <string name="carnival_idle_desc_strongman">Поднимайте камни и размахивайте молотами. Уровень силы увеличивает выход.</string>
+    <string name="carnival_wizards_duel">Дуэль волшебников</string>
+    <string name="carnival_idle_desc_wizard">Применяйте иллюзионные заклинания против соперников. Уровень магии увеличивает выход.</string>
+    <string name="carnival_fishing_derby">Рыболовный турнир</string>
+    <string name="carnival_idle_desc_fishing">Поймайте самую большую рыбу в ярмарочном пруду. Уровень рыбалки увеличивает выход.</string>
+    <string name="carnival_skill_level">%1$s Ур.%2$d</string>
+    <string name="carnival_ticket_yield">~%1$d билетов/сессию</string>
+    <string name="carnival_queue">В очередь</string>
+    <string name="carnival_ring_toss">Набрасывание колец</string>
+    <string name="carnival_active_ring_desc">Бросайте кольцо, когда указатель достигает золотой целевой зоны.</string>
+    <string name="carnival_ring_target_hint">Целитесь в центр (45%%–55%%)</string>
+    <string name="carnival_throw">Бросить!</string>
+    <string name="carnival_hammer_strike">Удар молотом</string>
+    <string name="carnival_active_hammer_desc">Ударьте, когда измеритель мощности достигает своего пика.</string>
+    <string name="carnival_power_label">Измеритель мощности</string>
+    <string name="carnival_hammer_miss_zone">Мимо</string>
+    <string name="carnival_hammer_good_zone">Хорошо</string>
+    <string name="carnival_hammer_perfect_zone">Отлично!</string>
+    <string name="carnival_strike">Ударить!</string>
+    <string name="carnival_potion_sequence">Последовательность зелий</string>
+    <string name="carnival_active_sequence_desc">Наблюдайте за цветами зелий и повторите их в том же порядке.</string>
+    <string name="carnival_sequence_watch">Наблюдайте за последовательностью…</string>
+    <string name="carnival_sequence_input">Нажмите цвет %1$d из %2$d</string>
+    <string name="carnival_item_appraisal">Оценка предмета</string>
+    <string name="carnival_active_appraisal_desc">Какой предмет стоит дороже на открытом рынке?</string>
+    <string name="carnival_appraisal_which">Что дороже?</string>
+    <string name="carnival_play">Играть</string>
+    <string name="carnival_cooldown">Готово через %1$dч %2$dм</string>
+    <string name="carnival_ticket_cost">%1$d билетов</string>
+    <string name="carnival_redeem">Обменять</string>
+    <string name="carnival_queue_added">Добавлено в очередь: %1$s.</string>
+    <string name="carnival_queue_full">Очередь заполнена (3/3).</string>
+    <string name="carnival_ring_won">В яблочко! +%1$d билетов</string>
+    <string name="carnival_ring_missed">Мимо цели!</string>
+    <string name="carnival_hammer_perfect">Идеальный удар! +%1$d билетов</string>
+    <string name="carnival_hammer_good">Хороший удар! +%1$d билетов</string>
+    <string name="carnival_hammer_miss">Удар мимо!</string>
+    <string name="carnival_sequence_correct">Последовательность верна! +%1$d билетов</string>
+    <string name="carnival_sequence_wrong">Неверный порядок! Попробуйте снова.</string>
+    <string name="carnival_appraisal_correct">Верно! +%1$d билетов</string>
+    <string name="carnival_appraisal_wrong">Неверно! Более ценный предмет — %1$s.</string>
+    <string name="carnival_redeemed">Обменяно: %1$s!</string>
+    <string name="carnival_not_enough_tickets">Недостаточно билетов.</string>
+    <string name="carnival_lamp_redeemed">+%1$d ОП в %2$s!</string>
+
+    <!-- ===== Magic Bean / Farming ===== -->
+    <string name="farming_bean_note_1">Маленький росток пробился сквозь землю.</string>
+    <string name="farming_bean_note_2">Стебель растёт с неестественной скоростью.</string>
+    <string name="farming_bean_note_3">Листья огромны — таких вы никогда не видели.</string>
+    <string name="farming_bean_note_4">Облака начали собираться вокруг верхней части стебля...</string>
+    <string name="farming_bean_note_5">Странные звуки доносятся откуда-то сверху.</string>
+    <string name="farming_bean_note_6">Далёкий гул. Что-то шевелится на высоте.</string>
+    <string name="farming_bean_note_7">Бобовый стебель содрогается. Что-то ждёт на вершине.</string>
+    <string name="farming_bean_note_8">Почти там. Воздух становится разреженным. Вершина почти видна.</string>
+    <string name="farming_bean_ready">Бобовый стебель уходит за облака. Готовы взобраться?</string>
+    <string name="farming_bean_climb">Взобраться</string>
+    <string name="farming_bean_climbed">Вы взобрались по бобовому стеблю. Что-то ждёт вас...</string>
+    <string name="farming_bean_picker_stats">\?\?\?  •  \?\?\?  •  \?\?\?</string>
+
+    <!-- ===== Armory Tab ===== -->
+    <string name="armory_tab">Арсенал</string>
+    <string name="armory_not_owned">У вас нет этого предмета.</string>
+    <string name="armory_how_to_obtain">Как получить</string>
+    <string name="armory_no_stats">Нет бонусов характеристик.</string>
+    <string name="armory_filter_all">Все</string>
+    <string name="armory_filter_weapons">Оружие</string>
+    <string name="armory_filter_armor">Броня</string>
+    <string name="armory_filter_accessories">Аксессуары</string>
+    <string name="armory_filter_tools">Инструменты</string>
 </resources>

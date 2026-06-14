@@ -7,6 +7,7 @@ import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.SessionFrame
 import com.fantasyidler.data.model.Skills
+import com.fantasyidler.simulator.CarnivalSimulator
 import com.fantasyidler.simulator.CombatSimulator
 import com.fantasyidler.simulator.MercantileSimulator
 import com.fantasyidler.simulator.SkillingDungeonSimulator
@@ -396,7 +397,7 @@ class QueuedSessionStarter @Inject constructor(
                 val totalAtkBonus    = EquipSlot.ARMOR_SLOTS.sumOf { slot ->
                     val eq = gameData.equipment[bossEquipped[slot]]
                     when (combatStyle) { "ranged" -> eq?.rangedAttackBonus ?: 0; "magic" -> eq?.magicAttackBonus ?: 0; else -> eq?.attackBonus ?: 0 }
-                } + when (combatStyle) { "ranged" -> bossWeapon?.rangedAttackBonus ?: 0; "magic" -> bossWeapon?.magicAttackBonus ?: 0; else -> bossWeapon?.attackBonus ?: 0 }
+                } + when (combatStyle) { "ranged" -> bossWeapon?.rangedAttackBonus ?: bossWeapon?.attackBonus ?: 0; "magic" -> bossWeapon?.magicAttackBonus ?: 0; else -> bossWeapon?.attackBonus ?: 0 }
                 val totalStrBonus    = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[bossEquipped[it]]?.strengthBonus ?: 0 } + (bossWeapon?.strengthBonus ?: 0)
                 val totalDefBonus    = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[bossEquipped[it]]?.defenseBonus  ?: 0 } + (bossWeapon?.defenseBonus  ?: 0)
                 val totalMagicDmgBonus = if (combatStyle == "magic") EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[bossEquipped[it]]?.magicDamageBonus ?: 0 } + (bossWeapon?.magicDamageBonus ?: 0) else 0
@@ -496,7 +497,7 @@ class QueuedSessionStarter @Inject constructor(
                 val totalAtkBonus = EquipSlot.ARMOR_SLOTS.sumOf { slot ->
                     val eq = gameData.equipment[combatEquipped[slot]]
                     when (combatStyle) { "ranged" -> eq?.rangedAttackBonus ?: 0; "magic" -> eq?.magicAttackBonus ?: 0; else -> eq?.attackBonus ?: 0 }
-                } + when (combatStyle) { "ranged" -> weapon?.rangedAttackBonus ?: 0; "magic" -> weapon?.magicAttackBonus ?: 0; else -> weapon?.attackBonus ?: 0 }
+                } + when (combatStyle) { "ranged" -> weapon?.rangedAttackBonus ?: weapon?.attackBonus ?: 0; "magic" -> weapon?.magicAttackBonus ?: 0; else -> weapon?.attackBonus ?: 0 }
                 val totalStrBonus = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[combatEquipped[it]]?.strengthBonus ?: 0 } + (weapon?.strengthBonus ?: 0)
                 val totalDefBonus = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[combatEquipped[it]]?.defenseBonus  ?: 0 } + (weapon?.defenseBonus  ?: 0)
                 val totalMagicDmgBonus = if (combatStyle == "magic") EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[combatEquipped[it]]?.magicDamageBonus ?: 0 } + (weapon?.magicDamageBonus ?: 0) else 0
@@ -530,6 +531,22 @@ class QueuedSessionStarter @Inject constructor(
                 }
                 startSession(action, result, offline, backdateMs)
             }
+            "carnival" -> {
+                val relevantSkillLevel = when (action.activityKey) {
+                    "archery_range"         -> levels[Skills.RANGED]   ?: 1
+                    "strongman_competition" -> levels[Skills.STRENGTH] ?: 1
+                    "wizards_duel"          -> levels[Skills.MAGIC]    ?: 1
+                    "fishing_derby"         -> levels[Skills.FISHING]  ?: 1
+                    else                    -> 1
+                }
+                val result = CarnivalSimulator.simulate(
+                    activityKey        = action.activityKey,
+                    relevantSkillLevel = relevantSkillLevel,
+                    petBoostPct        = gatheringPetBoost(player.pets, CarnivalSimulator.relevantSkill(action.activityKey)),
+                    agilityLevel       = agilityLevel,
+                )
+                startSession(action, result, offline, backdateMs)
+            }
         }
     }
 
@@ -550,13 +567,13 @@ class QueuedSessionStarter @Inject constructor(
 
     private fun gatheringPetBoost(petsJson: String, skillKey: String): Int {
         val pets = try { json.decodeFromString<List<OwnedPet>>(petsJson) } catch (_: Exception) { return 0 }
-        val id   = pets.firstOrNull { gameData.pets[it.id]?.boostedSkill == skillKey } ?: return 0
+        val id   = pets.firstOrNull { gameData.pets[it.id]?.boostedSkill == skillKey || gameData.pets[it.id]?.boostedSkill == "all" } ?: return 0
         return gameData.pets[id.id]?.boostPercent ?: 0
     }
 
     private fun combatPetBoost(petsJson: String): Int {
         val pets = try { json.decodeFromString<List<OwnedPet>>(petsJson) } catch (_: Exception) { return 0 }
-        val id   = pets.firstOrNull { gameData.pets[it.id]?.boostedSkill in Skills.COMBAT } ?: return 0
+        val id   = pets.firstOrNull { gameData.pets[it.id]?.boostedSkill in Skills.COMBAT || gameData.pets[it.id]?.boostedSkill == "all" } ?: return 0
         return gameData.pets[id.id]?.boostPercent ?: 0
     }
 

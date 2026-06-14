@@ -188,5 +188,15 @@
     "effect_type": "xp_boost",
     "boosted_skill": "construction",
     "boost_percent": 10
+  },
+  "juggling_imp": {
+    "id": "juggling_imp",
+    "display_name": "Juggling Imp",
+    "emoji": "🤹",
+    "description": "A mischievous imp that juggles your worries away. Boosts all skill XP by 3%.",
+    "source": "Carnival prize shop (2,000 tickets)",
+    "effect_type": "xp_boost",
+    "boosted_skill": "all",
+    "boost_percent": 3
   }
 }

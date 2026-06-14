@@ -391,7 +391,7 @@
 
     <!-- ===== HomeScreen ===== -->
     <string name="home_town_title">Villaggio</string>
-    <string name="home_town_desc">Visita il negozio, la locanda, la gilda, la chiesa, l\'officina del costruttore, il maestro cacciatore e l\'angolo giochi</string>
+    <string name="home_town_desc">Visita il negozio, la locanda, la gilda, la chiesa, l\'officina del costruttore, il maestro cacciatore e il carnevale</string>
     <string name="guild_dailies_available">Giornaliere disponibili</string>
     <string name="guild_do_dailies_hint">Completa missioni del giorno per migliorare la tua reputazione</string>
     <string name="guild_quest_gate_blocked">Avanza di rango completando missioni</string>
@@ -1166,4 +1166,85 @@
     <string name="item_amulet_of_the_void_name">Amuleto del Vuoto</string>
     <string name="item_amulet_of_the_void_desc">Un ciondolo di pura essenza del vuoto. Potenzia tutte le statistiche di combattimento del portatore.</string>
 
+
+    <!-- ===== Carnival ===== -->
+    <string name="carnival_title">Carnevale</string>
+    <string name="carnival_desc">Giochi, premi e allegria!</string>
+    <string name="carnival_ticket_balance">Biglietti: %1$d</string>
+    <string name="carnival_idle_tab">Giochi in coda</string>
+    <string name="carnival_active_tab">Giochi attivi</string>
+    <string name="carnival_shop_tab">Negozio premi</string>
+    <string name="carnival_idle_hint">Metti in coda una sessione per guadagnare biglietti. Un livello abilità più alto significa più biglietti.</string>
+    <string name="carnival_archery_range">Campo di tiro con l\'arco</string>
+    <string name="carnival_idle_desc_archery">Spara a bersagli mobili. Il livello distanza aumenta il rendimento.</string>
+    <string name="carnival_strongman_competition">Gara di forza</string>
+    <string name="carnival_idle_desc_strongman">Solleva pietre e fai roteare martelli. La forza aumenta il rendimento.</string>
+    <string name="carnival_wizards_duel">Duello dei maghi</string>
+    <string name="carnival_idle_desc_wizard">Lancia incantesimi illusori contro maghi rivali. La magia aumenta il rendimento.</string>
+    <string name="carnival_fishing_derby">Gara di pesca</string>
+    <string name="carnival_idle_desc_fishing">Pesca il pesce più grande nell\'etang del carnevale. La pesca aumenta il rendimento.</string>
+    <string name="carnival_skill_level">%1$s Lv.%2$d</string>
+    <string name="carnival_ticket_yield">~%1$d biglietti/sessione</string>
+    <string name="carnival_queue">Metti in coda</string>
+    <string name="carnival_ring_toss">Lancio degli anelli</string>
+    <string name="carnival_active_ring_desc">Lancia quando l\'indicatore colpisce la zona dorata.</string>
+    <string name="carnival_ring_target_hint">Mira al centro (45%%–55%%)</string>
+    <string name="carnival_throw">Lancia!</string>
+    <string name="carnival_hammer_strike">Colpo di martello</string>
+    <string name="carnival_active_hammer_desc">Colpisci quando il misuratore di potenza è al massimo.</string>
+    <string name="carnival_power_label">Misuratore di potenza</string>
+    <string name="carnival_hammer_miss_zone">Mancato</string>
+    <string name="carnival_hammer_good_zone">Bene</string>
+    <string name="carnival_hammer_perfect_zone">Perfetto!</string>
+    <string name="carnival_strike">Colpisci!</string>
+    <string name="carnival_potion_sequence">Sequenza di pozioni</string>
+    <string name="carnival_active_sequence_desc">Osserva i colori delle pozioni e ripetili nello stesso ordine.</string>
+    <string name="carnival_sequence_watch">Osserva la sequenza…</string>
+    <string name="carnival_sequence_input">Tocca il colore %1$d di %2$d</string>
+    <string name="carnival_item_appraisal">Valutazione oggetti</string>
+    <string name="carnival_active_appraisal_desc">Quale oggetto vale di più sul mercato aperto?</string>
+    <string name="carnival_appraisal_which">Quale vale di più?</string>
+    <string name="carnival_play">Gioca</string>
+    <string name="carnival_cooldown">Pronto in %1$dh %2$dm</string>
+    <string name="carnival_ticket_cost">%1$d biglietti</string>
+    <string name="carnival_redeem">Riscatta</string>
+    <string name="carnival_queue_added">Aggiunto alla coda: %1$s.</string>
+    <string name="carnival_queue_full">La coda è piena (3/3).</string>
+    <string name="carnival_ring_won">Nel segno! +%1$d biglietti</string>
+    <string name="carnival_ring_missed">Obiettivo mancato!</string>
+    <string name="carnival_hammer_perfect">Colpo perfetto! +%1$d biglietti</string>
+    <string name="carnival_hammer_good">Buon colpo! +%1$d biglietti</string>
+    <string name="carnival_hammer_miss">Colpo mancato!</string>
+    <string name="carnival_sequence_correct">Sequenza corretta! +%1$d biglietti</string>
+    <string name="carnival_sequence_wrong">Ordine sbagliato! Riprova.</string>
+    <string name="carnival_appraisal_correct">Corretto! +%1$d biglietti</string>
+    <string name="carnival_appraisal_wrong">Sbagliato! L\'oggetto più prezioso era %1$s.</string>
+    <string name="carnival_redeemed">Riscattato: %1$s!</string>
+    <string name="carnival_not_enough_tickets">Biglietti insufficienti.</string>
+    <string name="carnival_lamp_redeemed">+%1$d XP in %2$s!</string>
+
+    <!-- ===== Magic Bean / Farming ===== -->
+    <string name="farming_bean_note_1">Un piccolo germoglio ha spinto attraverso il suolo.</string>
+    <string name="farming_bean_note_2">Il gambo cresce a un ritmo soprannaturale.</string>
+    <string name="farming_bean_note_3">Le foglie sono enormi — come niente che tu abbia mai visto.</string>
+    <string name="farming_bean_note_4">Le nuvole hanno iniziato a raccogliersi attorno al gambo superiore...</string>
+    <string name="farming_bean_note_5">Suoni strani scendono da qualche parte lassù.</string>
+    <string name="farming_bean_note_6">Un rombo lontano. Qualcosa si agita nelle altezze.</string>
+    <string name="farming_bean_note_7">Il fagiolo magico trema. Qualcosa aspetta in cima.</string>
+    <string name="farming_bean_note_8">Quasi lì. L\'aria si fa rarefatta. Puoi quasi vedere la cima.</string>
+    <string name="farming_bean_ready">Il fagiolo magico si estende oltre le nuvole. Pronto a scalare?</string>
+    <string name="farming_bean_climb">Salire</string>
+    <string name="farming_bean_climbed">Hai scalato il fagiolo magico. Qualcosa ti aspetta...</string>
+    <string name="farming_bean_picker_stats">\?\?\?  •  \?\?\?  •  \?\?\?</string>
+
+    <!-- ===== Armory Tab ===== -->
+    <string name="armory_tab">Armeria</string>
+    <string name="armory_not_owned">Non possiedi questo oggetto.</string>
+    <string name="armory_how_to_obtain">Come ottenere</string>
+    <string name="armory_no_stats">Nessun bonus alle statistiche.</string>
+    <string name="armory_filter_all">Tutto</string>
+    <string name="armory_filter_weapons">Armi</string>
+    <string name="armory_filter_armor">Armatura</string>
+    <string name="armory_filter_accessories">Accessori</string>
+    <string name="armory_filter_tools">Strumenti</string>
 </resources>

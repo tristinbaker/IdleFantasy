@@ -133,6 +133,7 @@ object GameStrings {
         "construction" -> "🏗️"
         "thieving"     -> "🥷"
         "combat"       -> "⚔️"
+        "carnival"     -> "🎪"
         else           -> "🎮"
     }
 }

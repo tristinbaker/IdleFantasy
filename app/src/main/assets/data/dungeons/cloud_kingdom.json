@@ -1,0 +1,18 @@
+{
+  "name": "cloud_kingdom",
+  "display_name": "Cloud Kingdom",
+  "description": "A realm above the clouds, reached by climbing a legendary beanstalk. Giants roam vast floating islands, sky serpents drift between the cloudbanks, and storm imps crackle with restless energy. Few have seen it. Fewer still have returned to speak of it.",
+  "recommended_level": 55,
+  "encounter_rate": 0.28,
+  "lore_unlock_only": true,
+  "lore_hint": "A rare seed is said to hold the way...",
+  "enemy_spawns": [
+    {"enemy": "storm_imp",   "weight": 4},
+    {"enemy": "sky_serpent", "weight": 3},
+    {"enemy": "cloud_giant", "weight": 3}
+  ],
+  "rare_drops": [
+    {"item": "golden_wheat", "chance": 0.06},
+    {"item": "gold_bar",     "chance": 0.10}
+  ]
+}

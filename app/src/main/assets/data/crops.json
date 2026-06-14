@@ -2,7 +2,7 @@
   "potato": {
     "id": "potato",
     "display_name": "Potato",
-    "emoji": "🥔",
+    "emoji": "\ud83e\udd54",
     "seed_name": "potato_seed",
     "growth_time_hours": 2,
     "farming_level_required": 1,
@@ -15,7 +15,7 @@
   "onion": {
     "id": "onion",
     "display_name": "Onion",
-    "emoji": "🧅",
+    "emoji": "\ud83e\uddc5",
     "seed_name": "onion_seed",
     "growth_time_hours": 3,
     "farming_level_required": 5,
@@ -28,7 +28,7 @@
   "cabbage": {
     "id": "cabbage",
     "display_name": "Cabbage",
-    "emoji": "🥬",
+    "emoji": "\ud83e\udd6c",
     "seed_name": "cabbage_seed",
     "growth_time_hours": 4,
     "farming_level_required": 10,
@@ -41,7 +41,7 @@
   "carrot": {
     "id": "carrot",
     "display_name": "Carrot",
-    "emoji": "🥕",
+    "emoji": "\ud83e\udd55",
     "seed_name": "carrot_seed",
     "growth_time_hours": 5,
     "farming_level_required": 15,
@@ -54,7 +54,7 @@
   "tomato": {
     "id": "tomato",
     "display_name": "Tomato",
-    "emoji": "🍅",
+    "emoji": "\ud83c\udf45",
     "seed_name": "tomato_seed",
     "growth_time_hours": 6,
     "farming_level_required": 20,
@@ -67,7 +67,7 @@
   "corn": {
     "id": "corn",
     "display_name": "Corn",
-    "emoji": "🌽",
+    "emoji": "\ud83c\udf3d",
     "seed_name": "corn_seed",
     "growth_time_hours": 7,
     "farming_level_required": 25,
@@ -80,7 +80,7 @@
   "pumpkin": {
     "id": "pumpkin",
     "display_name": "Pumpkin",
-    "emoji": "🎃",
+    "emoji": "\ud83c\udf83",
     "seed_name": "pumpkin_seed",
     "growth_time_hours": 9,
     "farming_level_required": 30,
@@ -93,7 +93,7 @@
   "watermelon": {
     "id": "watermelon",
     "display_name": "Watermelon",
-    "emoji": "🍉",
+    "emoji": "\ud83c\udf49",
     "seed_name": "watermelon_seed",
     "growth_time_hours": 10,
     "farming_level_required": 35,
@@ -106,7 +106,7 @@
   "strawberry": {
     "id": "strawberry",
     "display_name": "Strawberry",
-    "emoji": "🍓",
+    "emoji": "\ud83c\udf53",
     "seed_name": "strawberry_seed",
     "growth_time_hours": 11,
     "farming_level_required": 40,
@@ -119,7 +119,7 @@
   "magic_herb": {
     "id": "magic_herb",
     "display_name": "Magic Herb",
-    "emoji": "🌿",
+    "emoji": "\ud83c\udf3f",
     "seed_name": "magic_herb_seed",
     "growth_time_hours": 13,
     "farming_level_required": 50,
@@ -132,7 +132,7 @@
   "dragon_fruit": {
     "id": "dragon_fruit",
     "display_name": "Dragon Fruit",
-    "emoji": "🌺",
+    "emoji": "\ud83c\udf3a",
     "seed_name": "dragon_fruit_seed",
     "growth_time_hours": 14,
     "farming_level_required": 55,
@@ -145,7 +145,7 @@
   "golden_wheat": {
     "id": "golden_wheat",
     "display_name": "Golden Wheat",
-    "emoji": "🌾",
+    "emoji": "\ud83c\udf3e",
     "seed_name": "golden_wheat_seed",
     "growth_time_hours": 16,
     "farming_level_required": 65,
@@ -158,7 +158,7 @@
   "spirit_herb": {
     "id": "spirit_herb",
     "display_name": "Spirit Herb",
-    "emoji": "🍃",
+    "emoji": "\ud83c\udf43",
     "seed_name": "spirit_seed",
     "growth_time_hours": 19,
     "farming_level_required": 75,
@@ -171,7 +171,7 @@
   "celestial_bloom": {
     "id": "celestial_bloom",
     "display_name": "Celestial Bloom",
-    "emoji": "🌸",
+    "emoji": "\ud83c\udf38",
     "seed_name": "celestial_bloom_seed",
     "growth_time_hours": 21,
     "farming_level_required": 85,
@@ -184,7 +184,7 @@
   "starfruit": {
     "id": "starfruit",
     "display_name": "Starfruit",
-    "emoji": "🌟",
+    "emoji": "\ud83c\udf1f",
     "seed_name": "starfruit_seed",
     "growth_time_hours": 23,
     "farming_level_required": 95,
@@ -197,7 +197,7 @@
   "void_lotus": {
     "id": "void_lotus",
     "display_name": "Void Lotus",
-    "emoji": "🪷",
+    "emoji": "\ud83e\udeb7",
     "seed_name": "void_lotus_seed",
     "growth_time_hours": 24,
     "farming_level_required": 99,
@@ -206,5 +206,18 @@
     "yield_min": 1,
     "yield_max": 3,
     "seed_cost": 4000
+  },
+  "magic_bean": {
+    "id": "magic_bean",
+    "display_name": "Magic Bean",
+    "emoji": "\ud83e\uded8",
+    "seed_name": "magic_bean",
+    "growth_time_hours": 336,
+    "farming_level_required": 1,
+    "planting_xp": 0,
+    "harvest_xp": 0,
+    "yield_min": 0,
+    "yield_max": 0,
+    "seed_cost": 0
   }
 }

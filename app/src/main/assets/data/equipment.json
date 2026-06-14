@@ -3525,5 +3525,37 @@
     "cape_skill": "thieving",
     "cape_bonus": 0.05,
     "requirements": {}
+  },
+  "carnival_cape": {
+    "name": "carnival_cape",
+    "display_name": "Carnival Cape",
+    "slot": "cape",
+    "description": "A vibrant cape worn by carnival champions. Grants 5% more tickets from Carnival sessions.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 3,
+    "cape_skill": "carnival",
+    "cape_bonus": 0.05,
+    "requirements": {}
+  },
+  "strongmans_sigil": {
+    "name": "strongmans_sigil",
+    "display_name": "Strongman's Sigil",
+    "slot": "ring",
+    "description": "A heavy iron ring etched with the mark of the strongman champion. Boosts Strength.",
+    "attack_bonus": 0,
+    "strength_bonus": 8,
+    "defense_bonus": 0,
+    "requirements": { "strength": 30 }
+  },
+  "tricksters_amulet": {
+    "name": "tricksters_amulet",
+    "display_name": "Trickster's Amulet",
+    "slot": "necklace",
+    "description": "A lucky charm worn by carnival performers. Grants a small combat edge.",
+    "attack_bonus": 5,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "requirements": {}
   }
 }

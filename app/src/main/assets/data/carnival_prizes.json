@@ -1,0 +1,49 @@
+{
+  "xp_lamp_small": {
+    "key": "xp_lamp_small",
+    "display_name": "Small XP Lamp",
+    "description": "Grants 10,000 XP to a chosen skill.",
+    "ticket_cost": 200,
+    "type": "xp_lamp",
+    "xp_amount": 10000
+  },
+  "xp_lamp_large": {
+    "key": "xp_lamp_large",
+    "display_name": "Large XP Lamp",
+    "description": "Grants 50,000 XP to a chosen skill.",
+    "ticket_cost": 800,
+    "type": "xp_lamp",
+    "xp_amount": 50000
+  },
+  "tricksters_amulet": {
+    "key": "tricksters_amulet",
+    "display_name": "Trickster's Amulet",
+    "description": "A lucky charm worn by carnival performers. Grants a small combat edge.",
+    "ticket_cost": 1000,
+    "type": "equipment"
+  },
+  "strongmans_sigil": {
+    "key": "strongmans_sigil",
+    "display_name": "Strongman's Sigil",
+    "description": "A heavy iron ring etched with the mark of the strongman champion. Boosts Strength.",
+    "ticket_cost": 1600,
+    "type": "equipment",
+    "requirements": {
+      "strength": 30
+    }
+  },
+  "carnival_cape": {
+    "key": "carnival_cape",
+    "display_name": "Carnival Cape",
+    "description": "A vibrant cape worn by carnival champions. Grants 5% more tickets from Carnival sessions.",
+    "ticket_cost": 2000,
+    "type": "equipment"
+  },
+  "juggling_imp": {
+    "key": "juggling_imp",
+    "display_name": "Juggling Imp",
+    "description": "A mischievous imp that juggles your worries away. Boosts all skill XP by 3%.",
+    "ticket_cost": 4000,
+    "type": "pet"
+  }
+}

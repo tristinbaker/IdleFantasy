@@ -501,7 +501,7 @@ def gen_farming() -> str:
             c.get("planting_xp", "—"),
             c.get("harvest_xp", "—"),
             f"{c.get('yield_min',1)}–{c.get('yield_max',1)}",
-        ] for c in crops.values()],
+        ] for c in crops.values() if c["id"] != "magic_bean"],
         key=lambda r: r[1]
     )
     equipment = load("equipment.json")
@@ -511,9 +511,14 @@ def gen_farming() -> str:
         key=lambda v: list(v.get("requirements", {}).values() or [0])[0]
     )
     hoe_rows = [[h["display_name"], list(h.get("requirements", {}).values() or [1])[0], f"+{int(h['farming_efficiency']*100)}%"] for h in hoes]
+    magic_bean_note = (
+        "Obtaining one requires patience. A lucky harvest may be all it takes. "
+        "Plant it in any empty patch when you are ready. Do not expect a quick answer."
+    )
     return get_template("skills/gathering/farming").format(
         seed_table=table(['Crop','Level','Seed','Seed Cost','Growth Time','Planting XP','Harvest XP','Yield'], rows),
-        hoe_table=table(['Hoe','Level Required','Yield Bonus'], hoe_rows)
+        hoe_table=table(['Hoe','Level Required','Yield Bonus'], hoe_rows),
+        magic_bean_section=magic_bean_note,
     )
 
 

@@ -448,7 +448,7 @@ private fun CombatSelectionList(
                 runCount       = dungeonRuns[dungeon.name] ?: 0,
                 onTap          = { onDungeon(dungeon) },
                 loreLockedHint = if (dungeon.loreUnlockOnly && !unlocked)
-                    stringResource(R.string.expedition_discover_hint) else null,
+                    dungeon.loreHint ?: stringResource(R.string.expedition_discover_hint) else null,
             )
         }
         item { CombatSectionHeader(stringResource(R.string.combat_solo_bosses)) }

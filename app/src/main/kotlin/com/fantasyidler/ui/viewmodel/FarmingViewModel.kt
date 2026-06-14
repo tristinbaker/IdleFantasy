@@ -51,6 +51,8 @@ data class FarmingUiState(
     val lastFertilizerKey: String?             = null,
     /** Just-harvested result, shown briefly then cleared. */
     val harvestResult: HarvestResult?          = null,
+    /** True once the magic bean has been planted; used to hide it from the seed picker permanently. */
+    val magicBeanPlanted: Boolean              = false,
 )
 
 data class HarvestResult(
@@ -102,6 +104,7 @@ class FarmingViewModel @Inject constructor(
 
         val availableCrops = gameData.crops.values
             .filter { it.levelRequired <= farmingLevel }
+            .filter { it.id != "magic_bean" || (!flags.magicBeanPlanted && (inv["magic_bean"] ?: 0) > 0) }
             .sortedBy { it.levelRequired }
 
         extra.copy(
@@ -115,6 +118,7 @@ class FarmingViewModel @Inject constructor(
             allCrops         = gameData.crops,
             fertilizer       = flags.farmingFertilizer,
             lastFertilizerKey = flags.lastFertilizerKey,
+            magicBeanPlanted = flags.magicBeanPlanted,
             now              = now,
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), FarmingUiState())
@@ -127,7 +131,7 @@ class FarmingViewModel @Inject constructor(
     fun harvestAndPlantAll() {
         viewModelScope.launch {
             val now = System.currentTimeMillis()
-            val finishedPatches = uiState.value.patches.filter { it.remainingMs(gameData.crops, now) <= 0 }
+            val finishedPatches = uiState.value.patches.filter { it.cropType != "magic_bean" && it.remainingMs(gameData.crops, now) <= 0 }
 
             if (finishedPatches.isNotEmpty()) {
                 val playerBefore = playerRepo.getOrCreatePlayer()
@@ -189,9 +193,17 @@ class FarmingViewModel @Inject constructor(
         }
     }
 
+    fun climbBeanstalk(patchNumber: Int) {
+        viewModelScope.launch {
+            farmingRepo.climbBeanstalk(patchNumber)
+            _extra.update { it.copy(snackbarMessage = context.getString(R.string.farming_bean_climbed)) }
+        }
+    }
+
     fun harvestPatch(patchNumber: Int) {
         viewModelScope.launch {
             val patch = uiState.value.patches.firstOrNull { it.patchNumber == patchNumber } ?: return@launch
+            if (patch.cropType == "magic_bean") return@launch
             val crop  = gameData.crops[patch.cropType] ?: return@launch
 
             // Snapshot inventory before harvest to compute diff

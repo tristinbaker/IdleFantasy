@@ -17,6 +17,8 @@ data class DungeonData(
     @SerialName("rare_drops") val rareDrops: List<DungeonRareDrop> = emptyList(),
     /** When true the player cannot die here; HP is clamped to 1 minimum. */
     @SerialName("safe_zone") val safeZone: Boolean = false,
+    /** Hint shown in the dungeon list when lore-locked; overrides the generic expedition hint string. */
+    @SerialName("lore_hint") val loreHint: String? = null,
 )
 
 @Serializable

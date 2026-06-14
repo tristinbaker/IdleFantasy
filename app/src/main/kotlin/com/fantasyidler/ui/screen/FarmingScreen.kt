@@ -140,6 +140,7 @@ fun FarmingScreen(
                     ashKey      = state.fertilizer[patchNumber.toString()],
                     onPlant     = { viewModel.openPlantSheet(patchNumber) },
                     onHarvest   = { viewModel.harvestPatch(patchNumber) },
+                    onClimb     = { viewModel.climbBeanstalk(patchNumber) },
                     onClear     = { viewModel.clearPatch(patchNumber) },
                 )
             }
@@ -251,6 +252,7 @@ fun FarmingSheetContent(
                     ashKey      = state.fertilizer[patchNumber.toString()],
                     onPlant     = { viewModel.openPlantSheet(patchNumber) },
                     onHarvest   = { viewModel.harvestPatch(patchNumber) },
+                    onClimb     = { viewModel.climbBeanstalk(patchNumber) },
                     onClear     = { viewModel.clearPatch(patchNumber) },
                 )
             }
@@ -371,6 +373,7 @@ private fun PatchCard(
     ashKey: String? = null,
     onPlant: () -> Unit,
     onHarvest: () -> Unit,
+    onClimb: () -> Unit,
     onClear: () -> Unit,
 ) {
     val context = LocalContext.current
@@ -411,35 +414,61 @@ private fun PatchCard(
                 }
 
                 isGrowing -> {
-                    // Growing
                     val growthMs  = cropData?.growthTimeMs ?: 1L
                     val elapsed   = growthMs - remaining
                     val progress  = (elapsed.toFloat() / growthMs).coerceIn(0f, 1f)
-                    Text(
-                        text       = "${cropData?.emoji ?: "🌱"} ${GameStrings.cropName(context, patch.cropType)}",
-                        style      = MaterialTheme.typography.bodyLarge,
-                        fontWeight = FontWeight.SemiBold,
-                    )
-                    if (ashKey != null) {
-                        val pct = ((FarmingRepository.ashYieldMultiplier(ashKey) - 1f) * 100).toInt()
+
+                    if (patch?.cropType == "magic_bean") {
+                        // Magic bean — show cryptic progress note, no crop name or time
+                        val note = when {
+                            progress < 0.12f -> stringResource(R.string.farming_bean_note_1)
+                            progress < 0.25f -> stringResource(R.string.farming_bean_note_2)
+                            progress < 0.37f -> stringResource(R.string.farming_bean_note_3)
+                            progress < 0.50f -> stringResource(R.string.farming_bean_note_4)
+                            progress < 0.62f -> stringResource(R.string.farming_bean_note_5)
+                            progress < 0.75f -> stringResource(R.string.farming_bean_note_6)
+                            progress < 0.87f -> stringResource(R.string.farming_bean_note_7)
+                            else             -> stringResource(R.string.farming_bean_note_8)
+                        }
                         Text(
-                            text  = "🌿 ${context.getString(R.string.farming_fertilizer_yield, pct)}",
-                            style = MaterialTheme.typography.labelSmall,
-                            color = GoldPrimary,
+                            text  = note,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                        Spacer(Modifier.height(6.dp))
+                        LinearProgressIndicator(
+                            progress = { progress },
+                            modifier = Modifier.fillMaxWidth().height(6.dp).clip(RoundedCornerShape(3.dp)),
+                            color    = GoldPrimary,
+                        )
+                    } else {
+                        // Normal crop
+                        Text(
+                            text       = "${cropData?.emoji ?: "🌱"} ${GameStrings.cropName(context, patch?.cropType ?: "")}",
+                            style      = MaterialTheme.typography.bodyLarge,
+                            fontWeight = FontWeight.SemiBold,
+                        )
+                        if (ashKey != null) {
+                            val pct = ((FarmingRepository.ashYieldMultiplier(ashKey) - 1f) * 100).toInt()
+                            Text(
+                                text  = "🌿 ${context.getString(R.string.farming_fertilizer_yield, pct)}",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = GoldPrimary,
+                            )
+                        }
+                        Spacer(Modifier.height(4.dp))
+                        LinearProgressIndicator(
+                            progress = { progress },
+                            modifier = Modifier.fillMaxWidth().height(6.dp).clip(RoundedCornerShape(3.dp)),
+                            color    = GoldPrimary,
+                        )
+                        Spacer(Modifier.height(4.dp))
+                        Text(
+                            text  = context.getString(R.string.farming_ready_in, remaining.formatDurationMs()),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
                         )
                     }
-                    Spacer(Modifier.height(4.dp))
-                    LinearProgressIndicator(
-                        progress = { progress },
-                        modifier = Modifier.fillMaxWidth().height(6.dp).clip(RoundedCornerShape(3.dp)),
-                        color    = GoldPrimary,
-                    )
-                    Spacer(Modifier.height(4.dp))
-                    Text(
-                        text  = context.getString(R.string.farming_ready_in, remaining.formatDurationMs()),
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
                     Spacer(Modifier.height(8.dp))
                     OutlinedButton(
                         onClick  = { showClearConfirm = true },
@@ -451,33 +480,50 @@ private fun PatchCard(
                 }
 
                 isReady -> {
-                    // Ready
-                    Text(
-                        text       = "${cropData?.emoji ?: "🌾"} ${GameStrings.cropName(context, patch.cropType)}",
-                        style      = MaterialTheme.typography.bodyLarge,
-                        fontWeight = FontWeight.SemiBold,
-                    )
-                    Spacer(Modifier.height(4.dp))
-                    Text(
-                        text  = stringResource(R.string.label_ready_to_harvest),
-                        style = MaterialTheme.typography.bodySmall,
-                        color = GoldPrimary,
-                        fontWeight = FontWeight.SemiBold,
-                    )
-                    Spacer(Modifier.height(8.dp))
-                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    if (patch?.cropType == "magic_bean") {
+                        // Magic bean ready — show Climb button
+                        Text(
+                            text  = stringResource(R.string.farming_bean_ready),
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = GoldPrimary,
+                            fontWeight = FontWeight.SemiBold,
+                        )
+                        Spacer(Modifier.height(8.dp))
                         Button(
-                            onClick  = onHarvest,
-                            modifier = Modifier.weight(1f),
+                            onClick  = onClimb,
+                            modifier = Modifier.fillMaxWidth(),
                         ) {
-                            Text(stringResource(R.string.btn_harvest))
+                            Text(stringResource(R.string.farming_bean_climb))
                         }
-                        OutlinedButton(
-                            onClick  = { showClearConfirm = true },
-                            modifier = Modifier.weight(1f),
-                            colors   = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.error),
-                        ) {
-                            Text(stringResource(R.string.btn_clear))
+                    } else {
+                        // Normal crop ready
+                        Text(
+                            text       = "${cropData?.emoji ?: "🌾"} ${GameStrings.cropName(context, patch?.cropType ?: "")}",
+                            style      = MaterialTheme.typography.bodyLarge,
+                            fontWeight = FontWeight.SemiBold,
+                        )
+                        Spacer(Modifier.height(4.dp))
+                        Text(
+                            text  = stringResource(R.string.label_ready_to_harvest),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = GoldPrimary,
+                            fontWeight = FontWeight.SemiBold,
+                        )
+                        Spacer(Modifier.height(8.dp))
+                        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            Button(
+                                onClick  = onHarvest,
+                                modifier = Modifier.weight(1f),
+                            ) {
+                                Text(stringResource(R.string.btn_harvest))
+                            }
+                            OutlinedButton(
+                                onClick  = { showClearConfirm = true },
+                                modifier = Modifier.weight(1f),
+                                colors   = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.error),
+                            ) {
+                                Text(stringResource(R.string.btn_clear))
+                            }
                         }
                     }
                 }
@@ -582,7 +628,8 @@ private fun PlantSheet(
                                     else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f),
                         )
                         Text(
-                            text  = "Lv. ${crop.levelRequired}  •  ${crop.growthTimeHours}h  •  ${crop.harvestXp} XP/crop",
+                            text  = if (crop.id == "magic_bean") stringResource(R.string.farming_bean_picker_stats)
+                                    else "Lv. ${crop.levelRequired}  •  ${crop.growthTimeHours}h  •  ${crop.harvestXp} XP/crop",
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                         )

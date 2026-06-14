@@ -2685,5 +2685,164 @@
         "quantity_max": 1
       }
     ]
+  },
+  "storm_imp": {
+    "name": "storm_imp",
+    "display_name": "Storm Imp",
+    "hp": 72,
+    "combat_stats": {
+      "attack_level": 20,
+      "strength_level": 16,
+      "defense_level": 14,
+      "attack_bonus": 42,
+      "strength_bonus": 30
+    },
+    "defensive_stats": {
+      "attack_defense": 20,
+      "strength_defense": 18,
+      "ranged_defense": 22,
+      "magic_defense": 45
+    },
+    "xp_drops": {
+      "combat": 560
+    },
+    "drop_table": [
+      {
+        "item": "coins",
+        "chance": 0.7,
+        "quantity_min": 80,
+        "quantity_max": 200
+      },
+      {
+        "item": "chaos_rune",
+        "chance": 0.4,
+        "quantity_min": 8,
+        "quantity_max": 16
+      },
+      {
+        "item": "death_rune",
+        "chance": 0.2,
+        "quantity_min": 3,
+        "quantity_max": 6
+      },
+      {
+        "item": "air_rune",
+        "chance": 0.5,
+        "quantity_min": 20,
+        "quantity_max": 40
+      }
+    ]
+  },
+  "sky_serpent": {
+    "name": "sky_serpent",
+    "display_name": "Sky Serpent",
+    "hp": 95,
+    "combat_stats": {
+      "attack_level": 24,
+      "strength_level": 20,
+      "defense_level": 18,
+      "attack_bonus": 55,
+      "strength_bonus": 40
+    },
+    "defensive_stats": {
+      "attack_defense": 30,
+      "strength_defense": 28,
+      "ranged_defense": 15,
+      "magic_defense": 25
+    },
+    "xp_drops": {
+      "combat": 780
+    },
+    "always_drops": [
+      {
+        "item": "big_bones",
+        "quantity": 1
+      }
+    ],
+    "drop_table": [
+      {
+        "item": "coins",
+        "chance": 0.75,
+        "quantity_min": 120,
+        "quantity_max": 320
+      },
+      {
+        "item": "mithril_ore",
+        "chance": 0.3,
+        "quantity_min": 2,
+        "quantity_max": 5
+      },
+      {
+        "item": "air_rune",
+        "chance": 0.35,
+        "quantity_min": 15,
+        "quantity_max": 30
+      },
+      {
+        "item": "gold_bar",
+        "chance": 0.12,
+        "quantity_min": 1,
+        "quantity_max": 2
+      }
+    ]
+  },
+  "cloud_giant": {
+    "name": "cloud_giant",
+    "display_name": "Cloud Giant",
+    "hp": 190,
+    "combat_stats": {
+      "attack_level": 30,
+      "strength_level": 28,
+      "defense_level": 25,
+      "attack_bonus": 75,
+      "strength_bonus": 68
+    },
+    "defensive_stats": {
+      "attack_defense": 55,
+      "strength_defense": 60,
+      "ranged_defense": 40,
+      "magic_defense": 30
+    },
+    "xp_drops": {
+      "combat": 1200
+    },
+    "always_drops": [
+      {
+        "item": "giant_bones",
+        "quantity": 1
+      }
+    ],
+    "drop_table": [
+      {
+        "item": "coins",
+        "chance": 0.8,
+        "quantity_min": 300,
+        "quantity_max": 700
+      },
+      {
+        "item": "adamantite_ore",
+        "chance": 0.25,
+        "quantity_min": 1,
+        "quantity_max": 3
+      },
+      {
+        "item": "gold_bar",
+        "chance": 0.18,
+        "quantity_min": 1,
+        "quantity_max": 3
+      },
+      {
+        "item": "golden_wheat",
+        "chance": 0.08,
+        "quantity_min": 1,
+        "quantity_max": 2
+      },
+      {
+        "item": "rune_essence",
+        "chance": 0.2,
+        "quantity_min": 10,
+        "quantity_max": 25
+      }
+    ]
   }
 }

@@ -388,7 +388,7 @@
 
     <!-- ===== HomeScreen ===== -->
     <string name="home_town_title">Dorp</string>
-    <string name="home_town_desc">Bezoek de winkel, herberg, gilde, kerk, bouwersatelier, de slagersmeester en de speelhoek</string>
+    <string name="home_town_desc">Bezoek de winkel, herberg, gilde, kerk, bouwersatelier, de slagersmeester en de kermis</string>
     <string name="guild_dailies_available">Dagelijkse opdrachten beschikbaar</string>
     <string name="guild_do_dailies_hint">Doe dagelijkse opdrachten om je reputatie te verhogen</string>
     <string name="home_died_message">Je bent dood en hebt het grootste deel van je voortgang verloren.</string>
@@ -1103,4 +1103,85 @@
     <string name="item_amulet_of_the_void_name">Amulet van de Leegte</string>
     <string name="item_amulet_of_the_void_desc">Een hanger van pure leegte-essentie. Verbetert alle gevechtsstatistieken van de drager.</string>
 
+
+    <!-- ===== Carnival ===== -->
+    <string name="carnival_title">Kermis</string>
+    <string name="carnival_desc">Spelen, prijzen en feestpret!</string>
+    <string name="carnival_ticket_balance">Loten: %1$d</string>
+    <string name="carnival_idle_tab">Wachtrijspellen</string>
+    <string name="carnival_active_tab">Actieve spellen</string>
+    <string name="carnival_shop_tab">Prijzenwinkel</string>
+    <string name="carnival_idle_hint">Voeg een sessie toe aan de wachtrij om loten te verdienen. Een hoger vaardigheidsniveau betekent meer loten.</string>
+    <string name="carnival_archery_range">Boogschieten</string>
+    <string name="carnival_idle_desc_archery">Schiet op bewegende doelen. Afstand niveau verhoogt de opbrengst.</string>
+    <string name="carnival_strongman_competition">Sterkste man wedstrijd</string>
+    <string name="carnival_idle_desc_strongman">Til stenen op en zwaai hamers. Kracht niveau verhoogt de opbrengst.</string>
+    <string name="carnival_wizards_duel">Tovenaarsduel</string>
+    <string name="carnival_idle_desc_wizard">Werp illusie spreuken tegen rivaliserende magiërs. Magie niveau verhoogt de opbrengst.</string>
+    <string name="carnival_fishing_derby">Viswedstrijd</string>
+    <string name="carnival_idle_desc_fishing">Vang de grootste vis in de kermis vijver. Vissen niveau verhoogt de opbrengst.</string>
+    <string name="carnival_skill_level">%1$s Nv.%2$d</string>
+    <string name="carnival_ticket_yield">~%1$d loten/sessie</string>
+    <string name="carnival_queue">Sessie in wachtrij</string>
+    <string name="carnival_ring_toss">Ringwerpen</string>
+    <string name="carnival_active_ring_desc">Gooi wanneer de indicator de gouden doelzone bereikt.</string>
+    <string name="carnival_ring_target_hint">Mik op het midden (45%%–55%%)</string>
+    <string name="carnival_throw">Gooi!</string>
+    <string name="carnival_hammer_strike">Hamerstoot</string>
+    <string name="carnival_active_hammer_desc">Sla toe wanneer de krachtmeter op zijn hoogtepunt is.</string>
+    <string name="carnival_power_label">Krachtmeter</string>
+    <string name="carnival_hammer_miss_zone">Mis</string>
+    <string name="carnival_hammer_good_zone">Goed</string>
+    <string name="carnival_hammer_perfect_zone">Perfecte!</string>
+    <string name="carnival_strike">Sla!</string>
+    <string name="carnival_potion_sequence">Drankenvolgorde</string>
+    <string name="carnival_active_sequence_desc">Let op de drankenkleuren en tik ze in dezelfde volgorde.</string>
+    <string name="carnival_sequence_watch">Let op de volgorde…</string>
+    <string name="carnival_sequence_input">Tik kleur %1$d van %2$d</string>
+    <string name="carnival_item_appraisal">Waardebepaling</string>
+    <string name="carnival_active_appraisal_desc">Welk item is meer waard op de open markt?</string>
+    <string name="carnival_appraisal_which">Welke is meer waard?</string>
+    <string name="carnival_play">Spelen</string>
+    <string name="carnival_cooldown">Klaar in %1$dh %2$dm</string>
+    <string name="carnival_ticket_cost">%1$d loten</string>
+    <string name="carnival_redeem">Inwisselen</string>
+    <string name="carnival_queue_added">Toegevoegd aan wachtrij: %1$s.</string>
+    <string name="carnival_queue_full">Wachtrij is vol (3/3).</string>
+    <string name="carnival_ring_won">Raak! +%1$d loten</string>
+    <string name="carnival_ring_missed">Doel gemist!</string>
+    <string name="carnival_hammer_perfect">Perfecte slag! +%1$d loten</string>
+    <string name="carnival_hammer_good">Goede slag! +%1$d loten</string>
+    <string name="carnival_hammer_miss">Slag gemist!</string>
+    <string name="carnival_sequence_correct">Volgorde correct! +%1$d loten</string>
+    <string name="carnival_sequence_wrong">Verkeerde volgorde! Probeer opnieuw.</string>
+    <string name="carnival_appraisal_correct">Correct! +%1$d loten</string>
+    <string name="carnival_appraisal_wrong">Fout! Het meest waardevolle item was %1$s.</string>
+    <string name="carnival_redeemed">Ingewisseld: %1$s!</string>
+    <string name="carnival_not_enough_tickets">Niet genoeg loten.</string>
+    <string name="carnival_lamp_redeemed">+%1$d XP in %2$s!</string>
+
+    <!-- ===== Magic Bean / Farming ===== -->
+    <string name="farming_bean_note_1">Een klein spruitje heeft door de grond geduwd.</string>
+    <string name="farming_bean_note_2">De stengel groeit op een bovennatuurlijke manier.</string>
+    <string name="farming_bean_note_3">De bladeren zijn enorm — zoals je nog nooit hebt gezien.</string>
+    <string name="farming_bean_note_4">Wolken zijn begonnen zich rond de bovenste stengel te verzamelen...</string>
+    <string name="farming_bean_note_5">Vreemde geluiden driften neer van ergens ver boven.</string>
+    <string name="farming_bean_note_6">Ver gerommel. Iets roert in de hoogten.</string>
+    <string name="farming_bean_note_7">De bonenrank trilt. Iets wacht aan de top.</string>
+    <string name="farming_bean_note_8">Bijna daar. De lucht wordt dunner. Je kunt de top bijna zien.</string>
+    <string name="farming_bean_ready">De bonenrank reikt tot voorbij de wolken. Klaar om te klimmen?</string>
+    <string name="farming_bean_climb">Klimmen</string>
+    <string name="farming_bean_climbed">Je hebt de bonenrank beklommen. Iets wacht je...</string>
+    <string name="farming_bean_picker_stats">\?\?\?  •  \?\?\?  •  \?\?\?</string>
+
+    <!-- ===== Armory Tab ===== -->
+    <string name="armory_tab">Arsenaal</string>
+    <string name="armory_not_owned">Je bezit dit item niet.</string>
+    <string name="armory_how_to_obtain">Hoe te verkrijgen</string>
+    <string name="armory_no_stats">Geen statbonussen.</string>
+    <string name="armory_filter_all">Alles</string>
+    <string name="armory_filter_weapons">Wapens</string>
+    <string name="armory_filter_armor">Pantser</string>
+    <string name="armory_filter_accessories">Accessoires</string>
+    <string name="armory_filter_tools">Gereedschap</string>
 </resources>

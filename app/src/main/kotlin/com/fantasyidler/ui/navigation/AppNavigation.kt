@@ -34,6 +34,7 @@ import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.notification.SessionNotificationManager
 import com.fantasyidler.ui.screen.BoneAltarScreen
+import com.fantasyidler.ui.screen.CarnivalScreen
 import com.fantasyidler.ui.screen.ChurchScreen
 import com.fantasyidler.ui.screen.BuilderScreen
 import com.fantasyidler.ui.screen.CombatScreen
@@ -85,7 +86,7 @@ fun AppNavigation(
     val currentDestination = backStackEntry?.destination
 
     val tabSubScreens: Map<String, Set<String>> = mapOf(
-        "home"   to setOf("shop", "settings", "inn", Screen.WorkerSkills.route, "guild_hall", "guild_detail/{guild}", "church", "slayer"),
+        "home"   to setOf("shop", "settings", "inn", Screen.WorkerSkills.route, "guild_hall", "guild_detail/{guild}", "church", "slayer", "carnival"),
         "skills" to setOf("farming", "mercantile", Screen.Slayer.route, Screen.BoneAltar.route),
     )
 
@@ -173,6 +174,7 @@ fun AppNavigation(
                     onNavigateToChurch       = { navController.navigate(Screen.Church.route) },
                     onNavigateToSlayer       = { navController.navigate(Screen.Slayer.route) },
                     onNavigateToBuilder      = { navController.navigate(Screen.Builder.route) },
+                    onNavigateToCarnival     = { navController.navigate(Screen.Carnival.route) },
                 )
             }
             composable(Screen.Quests.route)   { QuestsScreen() }
@@ -234,6 +236,11 @@ fun AppNavigation(
             }
             composable(Screen.Builder.route) { entry ->
                 BuilderScreen(
+                    onBack = { if (navController.currentBackStackEntry == entry) navController.popBackStack() },
+                )
+            }
+            composable(Screen.Carnival.route) { entry ->
+                CarnivalScreen(
                     onBack = { if (navController.currentBackStackEntry == entry) navController.popBackStack() },
                 )
             }

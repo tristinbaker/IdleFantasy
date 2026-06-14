@@ -1002,7 +1002,7 @@ class CombatViewModel @Inject constructor(
             json.decodeFromString<List<OwnedPet>>(petsJson)
         } catch (_: Exception) { return 0 }
         val petId = pets.firstOrNull { pet ->
-            gameData.pets[pet.id]?.boostedSkill in Skills.COMBAT
+            gameData.pets[pet.id]?.boostedSkill in Skills.COMBAT || gameData.pets[pet.id]?.boostedSkill == "all"
         } ?: return 0
         return gameData.pets[petId.id]?.boostPercent ?: 0
     }

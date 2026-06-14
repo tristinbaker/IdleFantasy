@@ -983,9 +983,8 @@ class SkillsViewModel @Inject constructor(
         } catch (_: Exception) {
             return 0
         }
-        // A pet boosts one skill — find the first matching one
         val petId = pets.firstOrNull { pet ->
-            gameData.pets[pet.id]?.boostedSkill == skillKey
+            gameData.pets[pet.id]?.boostedSkill == skillKey || gameData.pets[pet.id]?.boostedSkill == "all"
         } ?: return 0
         return gameData.pets[petId.id]?.boostPercent ?: 0
     }

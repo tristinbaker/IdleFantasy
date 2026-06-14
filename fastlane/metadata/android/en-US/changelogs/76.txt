@@ -1,0 +1,6 @@
+• New: Carnival added to town; queue idle minigames (Archery Range, Strongman Competition, Wizard's Duel, Fishing Derby) to earn carnival tickets, or play active games (Ring Toss, Hammer Strike, Potion Sequence, Item Appraisal) directly; spend tickets in the Prize Shop for exclusive stat gear (Trickster's Amulet, Strongman's Sigil, Carnival Cape) and the Juggling Imp pet
+• New: Magic Bean, a rare farming drop -- plant it and see what happens
+• Fix: Ranged weapons now correctly contribute their accuracy to hit chance (bows were contributing 0, causing very low hit rates)
+• New: Armory tab in Profile -- browse every piece of equipment, see stats for owned items and how to obtain items you are missing, including drop chance for enemy/boss drops
+• New: Bestiary and Armory now show a progress bar (X / Y encountered/obtained, %)
+• Redesign: Bestiary and Armory detail sheets now use proper stat tables and a 3-column drop table (Item / Qty / Chance); drop chances shown as percentages

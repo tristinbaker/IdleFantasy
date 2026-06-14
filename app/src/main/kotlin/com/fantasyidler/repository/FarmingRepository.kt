@@ -57,6 +57,11 @@ class FarmingRepository @Inject constructor(
         val plantedAt = System.currentTimeMillis()
         patchDao.upsert(FarmingPatch(patchNumber = patchNumber, cropType = crop.id, plantedAt = plantedAt))
 
+        if (crop.id == "magic_bean") {
+            val f = playerRepo.getFlags()
+            if (!f.magicBeanPlanted) playerRepo.updateFlags(f.copy(magicBeanPlanted = true))
+        }
+
         if (crop.plantingXp > 0) {
             playerRepo.applySessionResults(
                 skillName   = Skills.FARMING,
@@ -69,10 +74,24 @@ class FarmingRepository @Inject constructor(
         return true
     }
 
+    /** Called when the player taps "Climb" on a ready magic bean patch. Unlocks the Cloud Kingdom dungeon. */
+    suspend fun climbBeanstalk(patchNumber: Int) {
+        val flags = playerRepo.getFlags()
+        if (!flags.unlockedDungeons.contains("cloud_kingdom")) {
+            playerRepo.updateFlags(flags.copy(
+                unlockedDungeons  = flags.unlockedDungeons + "cloud_kingdom",
+                magicBeanPlanted  = true,
+            ))
+        }
+        cancelAlarm(patchNumber)
+        patchDao.clear(patchNumber)
+    }
+
     /** Roll harvest yield, award items + XP, clear the patch. */
     suspend fun harvestPatch(patchNumber: Int) {
         val patch  = patchDao.getPatch(patchNumber) ?: return
         val cropId = patch.cropType ?: return
+        if (cropId == "magic_bean") return          // bean patches are collected via climbBeanstalk()
         val crop   = gameData.crops[cropId] ?: return
 
         val player   = playerRepo.getOrCreatePlayer()
@@ -111,6 +130,13 @@ class FarmingRepository @Inject constructor(
             playerRepo.updateFlags(flags.copy(
                 farmingFertilizer = flags.farmingFertilizer - patchNumber.toString()
             ))
+        }
+
+        // 1-in-100 chance per patch harvest to drop the magic bean, once ever
+        val freshFlags = playerRepo.getFlags()
+        val inv = playerRepo.getInventory()
+        if (!freshFlags.magicBeanPlanted && (inv["magic_bean"] ?: 0) == 0 && Random.nextInt(100) == 0) {
+            playerRepo.addItem("magic_bean", 1)
         }
 
         cancelAlarm(patchNumber)
