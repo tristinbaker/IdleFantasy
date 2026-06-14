@@ -1,0 +1,46 @@
+{
+  "antiFeatures": {},
+  "apksigner": "/usr/bin/apksigner",
+  "archivePolicy0": [],
+  "commandLine": [
+    "/home/tristinb/.local/bin/fdroid update",
+    "--clean",
+    "--pretty"
+  ],
+  "disabled": [],
+  "endTimestamp": 1781398490158,
+  "failedBuilds": {
+    "com.tristinbaker.idlefantasy": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      16,
+      17,
+      27
+    ]
+  },
+  "jarsigner": "/usr/lib/jvm/java-26-openjdk/bin/jarsigner",
+  "keytool": "/usr/lib/jvm/java-26-openjdk/bin/keytool",
+  "needsUpdate": [],
+  "noPackages": [],
+  "noUpdateCheck": [],
+  "stages": {
+    "delete_disabled_builds": 1781398471474,
+    "index.make repo": 1781398488410,
+    "prepare_apps repo": 1781398488406,
+    "process_apks": 1781398471474,
+    "read_added_date_from_all_apks": 1781398488406,
+    "remove_apks": 1781398488404,
+    "scan_repo_files": 1781398488403
+  },
+  "startTimestamp": 1781416471000,
+  "subcommand": "update"
+}

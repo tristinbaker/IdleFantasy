@@ -1,0 +1,64 @@
+{
+  "repo": {
+    "timestamp": 1781398488410
+  },
+  "packages": {
+    "com.tristinbaker.idlefantasy": {
+      "metadata": {
+        "lastUpdated": 1781398471473
+      },
+      "versions": {
+        "87160cfd6f41a75a6ef5b85a7e79b939b0c67c85132c93789b0feb73d489ee74": {
+          "added": 1781398471473,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_74.apk",
+            "sha256": "87160cfd6f41a75a6ef5b85a7e79b939b0c67c85132c93789b0feb73d489ee74",
+            "size": 4994131
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.8.12",
+            "versionCode": 74,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fix: Worker efficiency not applying to crafting skills — Journeyman and Master workers now produce more items per session than Apprentice, matching how efficiency already worked for gathering\n• New: Thieves Guild now appears in the Guild Hall\n• New: Added Royal Guard (lv 75) and Bishop (lv 85) as thieving NPCs\n"
+          }
+        }
+      }
+    }
+  }
+}
