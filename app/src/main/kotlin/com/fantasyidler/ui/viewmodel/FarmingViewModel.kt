@@ -8,6 +8,7 @@ import com.fantasyidler.data.json.CropData
 import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.FarmingPatch
 import com.fantasyidler.data.model.Skills
+import com.fantasyidler.data.model.SoilState
 import com.fantasyidler.repository.FarmingRepository
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.GuildRepository
@@ -51,6 +52,13 @@ data class FarmingUiState(
     val lastFertilizerKey: String?             = null,
     /** Just-harvested result, shown briefly then cleared. */
     val harvestResult: HarvestResult?          = null,
+    /** patchNumber.toString() → SoilState; drives rotation bonus badges on patch cards. */
+    val soilStates:     Map<String, SoilState> = emptyMap(),
+    /**
+     * patchNumber.toString() → soil health score for the 🟤🟡🟢 meter on empty patches.
+     * 0 = depleted (same crop 3+ times), 1 = neutral (no history or 1-2 same), 2 = fresh (cover crop restored).
+     */
+    val soilScores:     Map<String, Int>        = emptyMap(),
 )
 
 data class HarvestResult(
@@ -104,18 +112,49 @@ class FarmingViewModel @Inject constructor(
             .filter { it.levelRequired <= farmingLevel }
             .sortedBy { it.levelRequired }
 
+        // --- Compute per-patch soil state for UI badges and empty-patch health meter ---
+        // Compares the crop currently planted against the last-harvested crop so players
+        // get a preview of their rotation bonus/penalty while the crop is still growing.
+        // Empty patches show the soil state based purely on history (for the health meter).
+        val patchMap = patches.associateBy { it.patchNumber }
+        val soilStates = mutableMapOf<String, SoilState>()
+        val soilScores = mutableMapOf<String, Int>()
+        for (n in 1..patchCount) {
+            val key     = n.toString()
+            val last    = flags.lastCropPerPatch[key]
+            val count   = flags.consecutiveSameCrop[key] ?: 0
+            val current = patchMap[n]?.cropType
+            // soilScore: 0=depleted, 1=neutral, 2=fresh (restored by cover crop = no lastCrop entry)
+            val score = when {
+                last == null && count == 0 -> 1  // genuinely pristine / cover-crop restored
+                count >= 2                -> 0  // depleted streak
+                else                      -> 1  // normal
+            }
+            soilScores[key] = score
+            // soilState: for growing/ready patches compare current vs last; empty patches show history
+            val state = when {
+                current != null && last != null && last != current -> SoilState.FRESH    // rotating → +10%
+                current != null && last != null && count >= 2      -> SoilState.DEPLETED // 3rd+ in a row → -10%
+                current == null && count >= 2                      -> SoilState.DEPLETED // empty but soil is depleted
+                else                                               -> SoilState.NEUTRAL
+            }
+            soilStates[key] = state
+        }
+
         extra.copy(
-            isLoading        = false,
-            farmingLevel     = farmingLevel,
-            farmingXp        = farmingXp,
-            patchCount       = patchCount,
-            patches          = patches,
-            inventory        = inv,
-            availableCrops   = availableCrops,
-            allCrops         = gameData.crops,
-            fertilizer       = flags.farmingFertilizer,
+            isLoading         = false,
+            farmingLevel      = farmingLevel,
+            farmingXp         = farmingXp,
+            patchCount        = patchCount,
+            patches           = patches,
+            inventory         = inv,
+            availableCrops    = availableCrops,
+            allCrops          = gameData.crops,
+            fertilizer        = flags.farmingFertilizer,
             lastFertilizerKey = flags.lastFertilizerKey,
-            now              = now,
+            now               = now,
+            soilStates        = soilStates,
+            soilScores        = soilScores,
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), FarmingUiState())
 

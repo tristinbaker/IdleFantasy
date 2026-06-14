@@ -1,0 +1,19 @@
+feat(farming): implement crop rotation, multi-harvest bonus, and cover crops
+
+Added a new system for farming that encourages crop rotation and introduces cover crops to restore soil health.
+
+Crop Rotation:
+- Added a `lastCropPerPatch` map to track the last planted crop on each patch.
+- Added a `consecutiveSameCrop` map to track mono-cropping streaks.
+- Harvesting a different crop than the last grants a 10% "fresh soil" yield bonus.
+- Harvesting the same crop 3 times in a row incurs a 10% "depleted soil" yield penalty.
+- UI elements (SoilStateBadge) added to growing and empty patches to indicate soil state (Fresh, Depleted, Neutral).
+
+Cover Crops:
+- Introduced `isCoverCrop` and `soilRestoreXp` fields in `CropData`.
+- Added 3 new cover crops: Clover, Wildflower, and Moonblossom.
+- Harvesting a cover crop yields no produce but resets the `consecutiveSameCrop` streak and provides a large flat XP bonus.
+- A visual 🟤🟡🟢 soil health meter was added to empty patches, indicating the current state of the soil.
+- Added cover crop seeds to the marketplace so they can be bought and sold.
+
+@tristinbaker please review these changes carefully. In particular, the prices and growth times for cover crops (and their seeds) were added with placeholder values. Please adjust these to fit the actual game economy.

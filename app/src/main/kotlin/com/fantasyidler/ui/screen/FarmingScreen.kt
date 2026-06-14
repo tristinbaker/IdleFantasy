@@ -62,6 +62,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.R
 import com.fantasyidler.data.json.CropData
 import com.fantasyidler.data.model.FarmingPatch
+import com.fantasyidler.data.model.SoilState
 import com.fantasyidler.repository.FarmingRepository
 import com.fantasyidler.simulator.XpTable
 import com.fantasyidler.ui.theme.GoldPrimary
@@ -138,6 +139,8 @@ fun FarmingScreen(
                     crops       = state.allCrops,
                     now         = state.now,
                     ashKey      = state.fertilizer[patchNumber.toString()],
+                    soilState   = state.soilStates[patchNumber.toString()] ?: SoilState.NEUTRAL,
+                    soilScore   = state.soilScores[patchNumber.toString()] ?: 1,
                     onPlant     = { viewModel.openPlantSheet(patchNumber) },
                     onHarvest   = { viewModel.harvestPatch(patchNumber) },
                     onClear     = { viewModel.clearPatch(patchNumber) },
@@ -249,6 +252,8 @@ fun FarmingSheetContent(
                     crops       = state.allCrops,
                     now         = state.now,
                     ashKey      = state.fertilizer[patchNumber.toString()],
+                    soilState   = state.soilStates[patchNumber.toString()] ?: SoilState.NEUTRAL,
+                    soilScore   = state.soilScores[patchNumber.toString()] ?: 1,
                     onPlant     = { viewModel.openPlantSheet(patchNumber) },
                     onHarvest   = { viewModel.harvestPatch(patchNumber) },
                     onClear     = { viewModel.clearPatch(patchNumber) },
@@ -369,6 +374,9 @@ private fun PatchCard(
     crops: Map<String, CropData>,
     now: Long,
     ashKey: String? = null,
+    soilState: SoilState = SoilState.NEUTRAL,
+    /** 0 = depleted, 1 = neutral, 2 = fresh. Drives the 🟤🟡🟢 meter on empty patches. */
+    soilScore: Int = 1,
     onPlant: () -> Unit,
     onHarvest: () -> Unit,
     onClear: () -> Unit,
@@ -398,12 +406,26 @@ private fun PatchCard(
 
             when {
                 isEmpty -> {
-                    // Empty
-                    Text(
-                        text  = stringResource(R.string.label_empty),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
+                    // Empty — show soil health meter if there's a tracked history
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(6.dp),
+                    ) {
+                        Text(
+                            text  = stringResource(R.string.label_empty),
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                        SoilHealthMeter(soilScore)
+                    }
+                    // Show warning text if soil is depleted
+                    if (soilState == SoilState.DEPLETED) {
+                        Text(
+                            text  = stringResource(R.string.farming_soil_depleted_hint),
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.error,
+                        )
+                    }
                     Spacer(Modifier.height(8.dp))
                     Button(onClick = onPlant, modifier = Modifier.fillMaxWidth()) {
                         Text(stringResource(R.string.btn_plant))
@@ -428,6 +450,7 @@ private fun PatchCard(
                             color = GoldPrimary,
                         )
                     }
+                    SoilStateBadge(soilState)
                     Spacer(Modifier.height(4.dp))
                     LinearProgressIndicator(
                         progress = { progress },
@@ -464,6 +487,7 @@ private fun PatchCard(
                         color = GoldPrimary,
                         fontWeight = FontWeight.SemiBold,
                     )
+                    SoilStateBadge(soilState)
                     Spacer(Modifier.height(8.dp))
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         Button(
@@ -502,6 +526,59 @@ private fun PatchCard(
                 }
             },
         )
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Soil health meter (empty patches)
+// ---------------------------------------------------------------------------
+
+/**
+ * Renders a small 3-step soil health indicator: 🟤 (depleted) 🟡 (neutral) 🟢 (fresh).
+ * Only shown when [score] is not the default neutral (i.e. there’s tracked history).
+ * Score: 0 = depleted, 1 = neutral/no history, 2 = fresh (cover-crop restored).
+ */
+@Composable
+private fun SoilHealthMeter(score: Int) {
+    val icon = when (score) {
+        0    -> "🟤 ${stringResource(R.string.farming_soil_health_depleted)}"
+        2    -> "🟢 ${stringResource(R.string.farming_soil_health_fresh)}"
+        else -> return // neutral / no history — show nothing
+    }
+    Text(
+        text  = icon,
+        style = MaterialTheme.typography.labelSmall,
+        color = if (score == 0) MaterialTheme.colorScheme.error
+                else           androidx.compose.ui.graphics.Color(0xFF4CAF50),
+        fontWeight = FontWeight.SemiBold,
+    )
+}
+
+// ---------------------------------------------------------------------------
+// Soil state badge (growing / ready patch branches)
+// ---------------------------------------------------------------------------
+
+/**
+ * Renders a compact inline label communicating the crop-rotation bonus or penalty
+ * for patches that currently have a crop planted.
+ * Nothing is rendered for [SoilState.NEUTRAL] so cards remain uncluttered on first use.
+ */
+@Composable
+private fun SoilStateBadge(soilState: SoilState) {
+    when (soilState) {
+        SoilState.FRESH -> Text(
+            text       = stringResource(R.string.farming_soil_fresh),
+            style      = MaterialTheme.typography.labelSmall,
+            color      = androidx.compose.ui.graphics.Color(0xFF4CAF50),
+            fontWeight = FontWeight.SemiBold,
+        )
+        SoilState.DEPLETED -> Text(
+            text       = stringResource(R.string.farming_soil_depleted),
+            style      = MaterialTheme.typography.labelSmall,
+            color      = MaterialTheme.colorScheme.error,
+            fontWeight = FontWeight.SemiBold,
+        )
+        SoilState.NEUTRAL -> Unit // intentionally empty
     }
 }
 
@@ -581,11 +658,28 @@ private fun PlantSheet(
                             color = if (enabled) MaterialTheme.colorScheme.onSurface
                                     else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f),
                         )
-                        Text(
-                            text  = "Lv. ${crop.levelRequired}  •  ${crop.growthTimeHours}h  •  ${crop.harvestXp} XP/crop",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
+                        if (crop.isCoverCrop) {
+                            Text(
+                                text  = stringResource(
+                                    R.string.farming_cover_crop_info,
+                                    crop.growthTimeHours,
+                                    crop.soilRestoreXp,
+                                ),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = androidx.compose.ui.graphics.Color(0xFF4CAF50),
+                            )
+                            Text(
+                                text  = stringResource(R.string.farming_cover_crop_badge),
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        } else {
+                            Text(
+                                text  = "Lv. ${crop.levelRequired}  •  ${crop.growthTimeHours}h  •  ${crop.harvestXp} XP/crop",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
                         Text(
                             text  = "Seeds: $seedCount",
                             style = MaterialTheme.typography.labelSmall,

@@ -4,6 +4,18 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 // ---------------------------------------------------------------------------
+// Soil state for crop rotation system
+// ---------------------------------------------------------------------------
+
+/**
+ * The projected soil condition for a farming patch, derived from crop-rotation history.
+ * - [NEUTRAL]: first planting, or second consecutive same crop — no modifier.
+ * - [FRESH]: a different crop than the last harvest was planted — +10% yield.
+ * - [DEPLETED]: the same crop has been planted 3+ times in a row — -10% yield.
+ */
+enum class SoilState { NEUTRAL, FRESH, DEPLETED }
+
+// ---------------------------------------------------------------------------
 // Deserialised sub-models stored inside Player's JSON columns
 // ---------------------------------------------------------------------------
 
@@ -106,6 +118,12 @@ data class PlayerFlags(
     @SerialName("last_fertilizer_key") val lastFertilizerKey: String? = null,
     /** Lifetime kill count per enemy/boss key; absent = never encountered. */
     @SerialName("enemy_kills") val enemyKills: Map<String, Int> = emptyMap(),
+
+    // --- Crop Rotation ---
+    /** Last crop key harvested per patch: patchNumber.toString() → cropId. */
+    @SerialName("last_crop_per_patch") val lastCropPerPatch: Map<String, String> = emptyMap(),
+    /** Consecutive same-crop harvest count per patch: patchNumber.toString() → count (0-based streak). */
+    @SerialName("consecutive_same_crop") val consecutiveSameCrop: Map<String, Int> = emptyMap(),
 )
 
 /** A single entry in the recent sessions log. */

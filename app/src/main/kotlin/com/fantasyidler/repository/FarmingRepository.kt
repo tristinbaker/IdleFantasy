@@ -9,6 +9,7 @@ import com.fantasyidler.data.json.CropData
 import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.FarmingPatch
 import com.fantasyidler.data.model.Skills
+import com.fantasyidler.data.model.SoilState
 import com.fantasyidler.receiver.FarmPatchAlarmReceiver
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
@@ -75,18 +76,60 @@ class FarmingRepository @Inject constructor(
         val cropId = patch.cropType ?: return
         val crop   = gameData.crops[cropId] ?: return
 
+        val patchKey = patchNumber.toString()
+        val flags    = playerRepo.getFlags()
+        val ashKey   = flags.farmingFertilizer[patchKey]
+
+        // ----------------------------------------------------------------
+        // Cover crop branch: restore soil, award flat XP, yield no items
+        // ----------------------------------------------------------------
+        if (crop.isCoverCrop) {
+            if (crop.soilRestoreXp > 0) {
+                playerRepo.applySessionResults(
+                    skillName   = Skills.FARMING,
+                    xpGained    = crop.soilRestoreXp.toLong(),
+                    itemsGained = emptyMap(),
+                )
+            }
+            playerRepo.recordWeeklyProgress("farming", "any", 1)
+            // Reset streak; clear lastCropPerPatch so next planting is neutral
+            playerRepo.updateFlags(
+                flags.copy(
+                    consecutiveSameCrop = flags.consecutiveSameCrop + (patchKey to 0),
+                    lastCropPerPatch    = flags.lastCropPerPatch - patchKey,
+                    farmingFertilizer   = if (ashKey != null)
+                                              flags.farmingFertilizer - patchKey
+                                          else
+                                              flags.farmingFertilizer,
+                )
+            )
+            cancelAlarm(patchNumber)
+            patchDao.clear(patchNumber)
+            return
+        }
+
+        // ----------------------------------------------------------------
+        // Regular crop branch
+        // ----------------------------------------------------------------
         val player   = playerRepo.getOrCreatePlayer()
         val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
 
         val hoeBonus    = equipped[EquipSlot.HOE]?.let { gameData.equipment[it]?.farmingEfficiency } ?: 0f
         val capedDouble = equipped[EquipSlot.CAPE] == "farming_cape"
+        val ashMult     = ashYieldMultiplier(ashKey)
 
-        val flags = playerRepo.getFlags()
-        val ashKey = flags.farmingFertilizer[patchNumber.toString()]
-        val ashMult = ashYieldMultiplier(ashKey)
+        // --- Crop rotation bonus/penalty ---
+        val lastCrop  = flags.lastCropPerPatch[patchKey]
+        val sameCount = flags.consecutiveSameCrop[patchKey] ?: 0
+        val (rotationMult, _) = when {
+            lastCrop == null    -> Pair(1.0f, SoilState.NEUTRAL)  // first-ever harvest on this patch
+            lastCrop != cropId  -> Pair(1.10f, SoilState.FRESH)   // rotated crop → +10%
+            sameCount >= 2      -> Pair(0.90f, SoilState.DEPLETED) // 3rd+ consecutive same crop → -10%
+            else                -> Pair(1.0f, SoilState.NEUTRAL)
+        }
 
         var yield = Random.nextInt(crop.yieldMin, crop.yieldMax + 1)
-        yield = (yield * (1f + hoeBonus) * ashMult).roundToInt()
+        yield = (yield * (1f + hoeBonus) * ashMult * rotationMult).roundToInt()
         if (capedDouble) yield *= 2
 
         val items = buildMap<String, Int> {
@@ -99,7 +142,7 @@ class FarmingRepository @Inject constructor(
             xpGained    = crop.harvestXp.toLong() * yield,
             itemsGained = items,
         )
-        
+
         playerRepo.recordWeeklyProgress("farming", "any", 1)
 
         val farmingPet = gameData.pets.values.firstOrNull { it.boostedSkill == Skills.FARMING }
@@ -107,15 +150,23 @@ class FarmingRepository @Inject constructor(
             playerRepo.addPetIfNew(farmingPet.id, farmingPet.boostPercent)
         }
 
-        if (ashKey != null) {
-            playerRepo.updateFlags(flags.copy(
-                farmingFertilizer = flags.farmingFertilizer - patchNumber.toString()
-            ))
-        }
+        // Update rotation history + clear fertilizer in a single flags write
+        val newSameCount = if (lastCrop == cropId) sameCount + 1 else 0
+        playerRepo.updateFlags(
+            flags.copy(
+                lastCropPerPatch    = flags.lastCropPerPatch    + (patchKey to cropId),
+                consecutiveSameCrop = flags.consecutiveSameCrop + (patchKey to newSameCount),
+                farmingFertilizer   = if (ashKey != null)
+                                          flags.farmingFertilizer - patchKey
+                                      else
+                                          flags.farmingFertilizer,
+            )
+        )
 
         cancelAlarm(patchNumber)
         patchDao.clear(patchNumber)
     }
+
 
     companion object {
         fun ashYieldMultiplier(ashKey: String?): Float = when (ashKey) {

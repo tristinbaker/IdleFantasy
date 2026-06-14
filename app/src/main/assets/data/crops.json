@@ -206,5 +206,51 @@
     "yield_min": 1,
     "yield_max": 3,
     "seed_cost": 4000
+  },
+  "clover": {
+    "id": "clover",
+    "display_name": "Clover",
+    "emoji": "🍀",
+    "seed_name": "clover_seed",
+    "growth_time_hours": 3,
+    "farming_level_required": 1,
+    "planting_xp": 8,
+    "harvest_xp": 0,
+    "yield_min": 0,
+    "yield_max": 0,
+    "seed_cost": 30,
+    "is_cover_crop": true,
+    "soil_restore_xp": 120
+  },
+  "wildflower": {
+    "id": "wildflower",
+    "display_name": "Wildflower",
+    "emoji": "🌼",
+    "seed_name": "wildflower_seed",
+    "growth_time_hours": 6,
+    "farming_level_required": 30,
+    "planting_xp": 35,
+    "harvest_xp": 0,
+    "yield_min": 0,
+    "yield_max": 0,
+    "seed_cost": 120,
+    "is_cover_crop": true,
+    "soil_restore_xp": 450
+  },
+  "moonblossom": {
+    "id": "moonblossom",
+    "display_name": "Moonblossom",
+    "emoji": "🌙",
+    "seed_name": "moonblossom_seed",
+    "growth_time_hours": 10,
+    "farming_level_required": 70,
+    "planting_xp": 90,
+    "harvest_xp": 0,
+    "yield_min": 0,
+    "yield_max": 0,
+    "seed_cost": 400,
+    "is_cover_crop": true,
+    "soil_restore_xp": 1200
   }
 }
+

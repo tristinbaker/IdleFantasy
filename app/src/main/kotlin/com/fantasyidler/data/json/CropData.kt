@@ -16,6 +16,17 @@ data class CropData(
     @SerialName("yield_min")                 val yieldMin: Int,
     @SerialName("yield_max")                 val yieldMax: Int,
     @SerialName("seed_cost")                 val seedCost: Int = 0,
+    /**
+     * True for cover crops (clover, wildflower, moonblossom).
+     * When harvested, these reset the patch's consecutive-same-crop streak to 0
+     * and grant [soilRestoreXp] farming XP, but yield no harvestable produce.
+     */
+    @SerialName("is_cover_crop")             val isCoverCrop: Boolean = false,
+    /**
+     * Farming XP awarded when a cover crop is harvested (soil restored).
+     * Ignored for regular crops.
+     */
+    @SerialName("soil_restore_xp")          val soilRestoreXp: Int = 0,
 ) {
     val growthTimeMs: Long get() = growthTimeHours.toLong() * 3_600_000L
 }

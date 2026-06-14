@@ -212,6 +212,24 @@
         "description": "Plant to grow void lotus. Grows in 24h.\nRequires farming level 99.",
         "price": 4000,
         "stock": "unlimited"
+      },
+      "clover_seed": {
+        "display_name": "Clover Seed",
+        "description": "A cover crop seed. Grows in 3h with no produce, but restores soil health and resets depletion.\nRequires farming level 1.",
+        "price": 30,
+        "stock": "unlimited"
+      },
+      "wildflower_seed": {
+        "display_name": "Wildflower Seed",
+        "description": "A cover crop seed. Grows in 6h with no produce, but restores soil health and resets depletion.\nRequires farming level 30.",
+        "price": 120,
+        "stock": "unlimited"
+      },
+      "moonblossom_seed": {
+        "display_name": "Moonblossom Seed",
+        "description": "A cover crop seed. Grows in 10h with no produce, but restores soil health and resets depletion.\nRequires farming level 70.",
+        "price": 400,
+        "stock": "unlimited"
       }
     }
   },
