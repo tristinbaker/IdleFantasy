@@ -1,0 +1,64 @@
+{
+  "repo": {
+    "timestamp": 1781432715034
+  },
+  "packages": {
+    "com.tristinbaker.idlefantasy": {
+      "metadata": {
+        "lastUpdated": 1781432697716
+      },
+      "versions": {
+        "1156785870b00a7eadd6f6054c33af643f84cbc22a3f9c8008ef507026ac288c": {
+          "added": 1781432697716,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_75.apk",
+            "sha256": "1156785870b00a7eadd6f6054c33af643f84cbc22a3f9c8008ef507026ac288c",
+            "size": 4995815
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.8.13",
+            "versionCode": 75,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fix: Workers (Apprentice, Journeyman, Master) could queue more Firemaking logs than their craft limit; UI now also caps the quantity selector to the worker's limit\n• New: Max Combat (level 113) achievement added as the true combat cap; level 99 achievement renamed to Champion\n• Fix: Combat style and spell selection not remembered between dungeons; weapon slot and spell choices are now persisted and pre-selected when reopening the dungeon dialog\n• Fix: Ranged combat damage too low; bows now pro"
+          }
+        }
+      }
+    }
+  }
+}
