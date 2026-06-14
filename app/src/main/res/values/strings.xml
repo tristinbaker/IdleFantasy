@@ -1056,17 +1056,17 @@
     <string name="farming_fertilizer_yield">+%1$d%% yield</string>
     <string name="farming_fertilized">Fertilized</string>
     <!-- Crop rotation soil state badges -->
-    <string name="farming_soil_fresh">🌿 Fresh soil +10% yield</string>
-    <string name="farming_soil_depleted">⚠️ Depleted soil −10% yield</string>
-    <string name="farming_soil_tip_rotate">Rotate crops for a yield bonus!</string>
+    <string name="farming_soil_fresh" translatable="false">🌿 Fresh soil +10% yield</string>
+    <string name="farming_soil_depleted" translatable="false">⚠️ Depleted soil −10% yield</string>
+    <string name="farming_soil_tip_rotate" translatable="false">Rotate crops for a yield bonus!</string>
     <!-- Soil health meter (empty patch icons) -->
-    <string name="farming_soil_health_depleted">Depleted</string>
-    <string name="farming_soil_health_fresh">Restored</string>
+    <string name="farming_soil_health_depleted" translatable="false">Depleted</string>
+    <string name="farming_soil_health_fresh" translatable="false">Restored</string>
     <!-- Warning shown on empty patch when soil is depleted -->
-    <string name="farming_soil_depleted_hint">Plant a cover crop to restore soil</string>
+    <string name="farming_soil_depleted_hint" translatable="false">Plant a cover crop to restore soil</string>
     <!-- Cover crop PlantSheet labels. %1$d = hours, %2$d = restore XP -->
-    <string name="farming_cover_crop_info">%1$d h  •  +%2$d restore XP</string>
-    <string name="farming_cover_crop_badge">Cover Crop — resets soil, no yield</string>
+    <string name="farming_cover_crop_info" translatable="false">%1$d h  •  +%2$d restore XP</string>
+    <string name="farming_cover_crop_badge" translatable="false">Cover Crop — resets soil, no yield</string>
     <string name="catalyst_optional">Ash catalyst (optional)</string>
     <string name="catalyst_enhanced_output">Produces enhanced potion</string>
     <string name="catalyst_rune_bonus">%1$d runes per essence</string>
