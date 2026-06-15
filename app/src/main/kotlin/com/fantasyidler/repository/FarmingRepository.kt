@@ -119,17 +119,19 @@ class FarmingRepository @Inject constructor(
             itemsGained = items,
         )
         
+        // Remove fertilizer entry BEFORE recording weekly progress so we don't
+        // overwrite the freshly-saved quest progress with the stale `flags` snapshot.
+        if (ashKey != null) {
+            playerRepo.updateFlags(flags.copy(
+                farmingFertilizer = flags.farmingFertilizer - patchNumber.toString()
+            ))
+        }
+
         playerRepo.recordWeeklyProgress("farming", "any", 1)
 
         val farmingPet = gameData.pets.values.firstOrNull { it.boostedSkill == Skills.FARMING }
         if (farmingPet != null && Random.nextDouble() < 1.0 / 1000.0) {
             playerRepo.addPetIfNew(farmingPet.id, farmingPet.boostPercent)
-        }
-
-        if (ashKey != null) {
-            playerRepo.updateFlags(flags.copy(
-                farmingFertilizer = flags.farmingFertilizer - patchNumber.toString()
-            ))
         }
 
         // 1-in-100 chance per patch harvest to drop the magic bean, once ever
