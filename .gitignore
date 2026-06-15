@@ -3,6 +3,8 @@
 /local.properties
 /.idea
 .DS_Store
+.vscode
+.kilocode
 /build
 app/build
 /captures
