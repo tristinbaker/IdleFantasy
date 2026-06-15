@@ -1184,4 +1184,74 @@
     <string name="armory_filter_armor">Pantser</string>
     <string name="armory_filter_accessories">Accessoires</string>
     <string name="armory_filter_tools">Gereedschap</string>
+
+    <!-- ===== Combat arrows ===== -->
+    <string name="combat_arrow_auto">Automatisch (beste beschikbare)</string>
+    <string name="combat_label_arrow">Pijl</string>
+
+    <!-- ===== Guild ===== -->
+    <string name="guild_quest_gate_blocked">Voltooi quests om je rang te verhogen</string>
+    <string name="guild_quest_required">Quest vereist om te vorderen</string>
+
+    <!-- ===== Home screen ===== -->
+    <string name="home_xp_boost_active">2× XP-boost actief — nog %1$s</string>
+
+    <!-- ===== Inn ===== -->
+    <string name="inn_buy_qty">Hoeveelheid</string>
+    <string name="inn_buy_total">Totaal: %1$s</string>
+    <string name="inn_slot1_header">Lange Arbeider</string>
+    <string name="inn_slot2_header">Geschoolde Arbeider</string>
+
+    <!-- ===== Slayer items ===== -->
+    <string name="item_abyssal_whip_name">Abyssale Zweep</string>
+    <string name="item_abyssal_whip_desc">Een zweep gesmeed uit abyssale energie. Uitstekend voor krachttraining.</string>
+    <string name="item_slayer_helm_name">Slayer Helm</string>
+    <string name="item_slayer_helm_desc">Een stevige helm gedragen door veteraan-slayers.</string>
+    <string name="item_slayer_platebody_name">Slayer Platenromp</string>
+    <string name="item_slayer_platebody_desc">Zwaar pantser gegraveerd met slayer-runen.</string>
+    <string name="item_slayer_platelegs_name">Slayer Beenplaten</string>
+    <string name="item_slayer_platelegs_desc">Beschermende beenplaten gemaakt voor lange kerker-tochten.</string>
+
+    <!-- ===== Profile ===== -->
+    <string name="profile_view_combat_gear">Gevechtsuitrusting Bekijken</string>
+
+    <!-- ===== Settings changelog ===== -->
+    <string name="settings_changelog_title">Wat is er nieuw</string>
+    <string name="settings_changelog_desc">Bekijk de laatste wijzigingen</string>
+    <string name="settings_changelog_btn">Bekijken</string>
+
+    <!-- ===== Slayer ===== -->
+    <string name="skill_slayer_name">Slayer</string>
+    <string name="skill_slayer_desc">Ontvang taken van de Slayer Meester in de Stad.</string>
+    <string name="slayer_title">Slayer Meester</string>
+    <string name="slayer_card_desc">Taken en beloningen voor slayers</string>
+    <string name="slayer_desc">Voltooi taken voor Slayer XP en punten. Besteed punten in de winkel voor exclusieve uitrusting.</string>
+    <string name="slayer_active_task">Actieve Taak</string>
+    <string name="slayer_no_task">Geen actieve taak. Tik op Nieuwe Taak Ophalen.</string>
+    <string name="slayer_get_task">Nieuwe Taak Ophalen</string>
+    <string name="slayer_skip_task">Overslaan (30 pts)</string>
+    <string name="slayer_reroll_free">Hergooi (gratis)</string>
+    <string name="slayer_kills_remaining">%1$d / %2$d kills</string>
+    <string name="slayer_task_complete">Taak voltooid! Bezoek de Slayer Meester voor een nieuwe.</string>
+    <string name="slayer_task_stuck">Deze vijand is alleen te vinden in een Expeditie-kerker die je nog niet hebt ontdekt. Hergooi gratis.</string>
+    <string name="slayer_no_eligible_tasks">Geen beschikbare taken op jouw Slayer-niveau.</string>
+    <string name="slayer_level_label">Niveau %1$d</string>
+    <string name="slayer_xp_label">%1$s XP</string>
+    <string name="slayer_xp_per_kill">%1$d XP/kill</string>
+    <string name="slayer_found_in">Gevonden in: %1$s</string>
+    <string name="slayer_requires">Vereist: %1$s</string>
+    <string name="slayer_points">%1$d pts</string>
+    <string name="slayer_points_on_complete">+%1$d pts bij voltooiing</string>
+    <string name="slayer_shop_title">Slayer Winkel</string>
+    <string name="slayer_shop_cost">%1$d pts</string>
+    <string name="slayer_not_enough_points">Niet genoeg Slayer-punten.</string>
+    <string name="slayer_owned">In bezit</string>
+    <string name="slayer_already_owned">Al in bezit.</string>
+    <string name="slayer_purchased">Toegevoegd aan inventaris.</string>
+    <string name="slayer_lamp_small">XP Lamp (Klein)</string>
+    <string name="slayer_lamp_small_desc">+10.000 XP aan elke vaardigheid</string>
+    <string name="slayer_lamp_large">XP Lamp (Groot)</string>
+    <string name="slayer_lamp_large_desc">+50.000 XP aan elke vaardigheid</string>
+    <string name="slayer_lamp_pick_skill">Kies een vaardigheid</string>
+    <string name="slayer_lamp_purchased">XP toegevoegd aan %1$s!</string>
 </resources>

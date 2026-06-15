@@ -276,15 +276,15 @@
     <!-- ===== QuestsScreen ===== -->
     <string name="label_claim_reward">Réclamer une récompense</string>
     <string name="label_daily">Quotidien</string>
-    <string name="label_weekly">Weekly</string>
+    <string name="label_weekly">Hebdomadaire</string>
     <string name="label_timed">Temporaire</string>
     <string name="label_daily_quests">Quêtes quotidiennes</string>
     <string name="label_daily_reset">Se réinitialise à 6 heures</string>
-    <string name="label_weekly_reset">Resets Monday at 6am</string>
-    <string name="weekly_bonus_title">Weekly Bonus!</string>
-    <string name="weekly_bonus_claim">Claim Weekly Bonus</string>
-    <string name="label_daily_info">Each daily quest rewards coins. Every quest also has a 1 in 100 chance to drop a piece of Dwarven gear.</string>
-    <string name="label_weekly_info">Each weekly challenge rewards coins based on its level requirement. Complete all 5 to earn a bonus: 100,000 coins, or a 1 in 26 chance at a piece of Divine gear.</string>
+    <string name="label_weekly_reset">Se réinitialise le lundi à 6h</string>
+    <string name="weekly_bonus_title">Bonus hebdomadaire !</string>
+    <string name="weekly_bonus_claim">Réclamer le bonus hebdomadaire</string>
+    <string name="label_daily_info">Chaque quête quotidienne rapporte des pièces. Chaque quête a également 1 chance sur 100 de faire tomber un équipement nanique.</string>
+    <string name="label_weekly_info">Chaque défi hebdomadaire rapporte des pièces selon son niveau requis. Complétez les 5 pour gagner un bonus : 100 000 pièces, ou 1 chance sur 26 d\'obtenir un équipement divin.</string>
     <string name="label_daily_reward">2 000 pièces (1/100 : équipement nanique)</string>
     <string name="msg_daily_claimed_coins">Quête quotidienne terminée ! +2 000 pièces.</string>
     <string name="msg_daily_claimed_dwarven">Quête quotidienne terminée ! Vous avez trouvé %1$s !</string>
@@ -956,7 +956,7 @@
     <string name="shop_cat_logs_and_wood">Bûches &amp; Bois</string>
     <string name="shop_cat_seeds_and_farming">Graines &amp; Agriculture</string>
     <string name="shop_cat_merchants_guild">Guilde des Marchands</string>
-    <string name="shop_cat_equipment">Equipment</string>
+    <string name="shop_cat_equipment">Équipement</string>
     <string name="shop_cat_special">Spécial</string>
     <string name="shop_cat_weapons">Armes</string>
     <string name="shop_cat_armor">Armure</string>
@@ -983,7 +983,7 @@
     <string name="crafting_cat_tool">Outil</string>
     <string name="crafting_cat_weapon">Arme</string>
     <string name="crafting_cat_armour">Armure</string>
-    <string name="crafting_cat_equipment">Equipment</string>
+    <string name="crafting_cat_equipment">Équipement</string>
     <string name="crafting_cat_food">Nourriture</string>
     <string name="crafting_cat_ammunition">Munitions</string>
     <string name="crafting_cat_jewellery">Bijoux</string>
@@ -1139,7 +1139,7 @@
     <!-- ===== Carnival ===== -->
     <string name="carnival_title">Carnaval</string>
     <string name="carnival_desc">Jeux, prix et festivités!</string>
-    <string name="carnival_ticket_balance">Tickets: %1$d</string>
+    <string name="carnival_ticket_balance">Tickets : %1$d</string>
     <string name="carnival_idle_tab">Jeux en file</string>
     <string name="carnival_active_tab">Jeux actifs</string>
     <string name="carnival_shop_tab">Boutique des prix</string>
@@ -1186,7 +1186,7 @@
     <string name="carnival_hammer_miss">Coup manqué!</string>
     <string name="carnival_sequence_correct">Séquence correcte! +%1$d tickets</string>
     <string name="carnival_sequence_wrong">Mauvais ordre! Réessayez.</string>
-    <string name="carnival_appraisal_correct">Correct! +%1$d tickets</string>
+    <string name="carnival_appraisal_correct">Exact ! +%1$d tickets</string>
     <string name="carnival_appraisal_wrong">Faux! L\'objet le plus précieux était %1$s.</string>
     <string name="carnival_redeemed">Échangé: %1$s!</string>
     <string name="carnival_not_enough_tickets">Pas assez de tickets.</string>

@@ -320,6 +320,7 @@ class GameDataRepository @Inject constructor(
             addAll(bones.keys)
             add("coins")
             add("rune_essence")
+            add("carnival_ticket")
             addAll(runes.keys)
             // Quest collect targets should not be auto-sold
             quests.values.filter { it.type == "collect" }.forEach { add(it.target) }

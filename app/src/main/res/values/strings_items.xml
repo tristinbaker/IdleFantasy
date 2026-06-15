@@ -635,6 +635,8 @@
     <string name="boss_demon_lord_desc" translatable="false">An ancient demon from the abyss, master of dark magic.</string>
     <string name="boss_king_black_dragon_desc" translatable="false">The legendary three-headed dragon, feared across the realm.</string>
     <string name="boss_kraken_desc" translatable="false">The terror of the deep seas, a colossal sea monster.</string>
+    <string name="boss_void_sovereign_name" translatable="false">The Void Sovereign</string>
+    <string name="boss_void_sovereign_desc" translatable="false">The primordial entity behind the void rifts. Ancient beyond reckoning, it regards mortal challengers with contempt.</string>
     <string name="item_abyssal_rod_name" translatable="false">Abyssal Rod</string>
     <string name="item_adamantite_arrow_tip_name" translatable="false">Adamantite Arrow Tips</string>
     <string name="item_adamantite_boots_name" translatable="false">Adamantite Boots</string>

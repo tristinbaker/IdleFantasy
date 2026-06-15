@@ -100,12 +100,19 @@ class CarnivalViewModel @Inject constructor(
                 .filter { (inventory[it.key] ?: 0) > 0 }
                 .map { it.key }
                 .toSet()
+            val now = System.currentTimeMillis()
+            fun resolveState(state: ActiveGameState, cooldownAt: Long): ActiveGameState =
+                if (cooldownAt > now) ActiveGameState.OnCooldown(cooldownAt) else state
             extra.copy(
-                isLoading      = false,
-                ticketBalance  = inventory["carnival_ticket"] ?: 0,
-                skillLevels    = levels,
-                queueSize      = flags.sessionQueue.size,
-                ownedPrizeKeys = ownedPrizeKeys,
+                isLoading           = false,
+                ticketBalance       = inventory["carnival_ticket"] ?: 0,
+                skillLevels         = levels,
+                queueSize           = flags.sessionQueue.size,
+                ownedPrizeKeys      = ownedPrizeKeys,
+                ringTossState       = resolveState(extra.ringTossState, flags.carnivalRingTossCooldownAt),
+                hammerStrikeState   = resolveState(extra.hammerStrikeState, flags.carnivalHammerStrikeCooldownAt),
+                potionSequenceState = resolveState(extra.potionSequenceState, flags.carnivalPotionSequenceCooldownAt),
+                itemAppraisalState  = resolveState(extra.itemAppraisalState, flags.carnivalItemAppraisalCooldownAt),
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), CarnivalUiState())
@@ -151,6 +158,7 @@ class CarnivalViewModel @Inject constructor(
         viewModelScope.launch {
             if (won) carnivalRepo.awardTickets(2)
             val resumesAt = System.currentTimeMillis() + 10 * 60_000L
+            playerRepo.updateFlags(playerRepo.getFlags().copy(carnivalRingTossCooldownAt = resumesAt))
             _extra.update {
                 it.copy(
                     ringTossState   = ActiveGameState.OnCooldown(resumesAt),
@@ -180,6 +188,7 @@ class CarnivalViewModel @Inject constructor(
         viewModelScope.launch {
             if (tickets > 0) carnivalRepo.awardTickets(tickets)
             val resumesAt = System.currentTimeMillis() + 10 * 60_000L
+            playerRepo.updateFlags(playerRepo.getFlags().copy(carnivalHammerStrikeCooldownAt = resumesAt))
             _extra.update {
                 it.copy(
                     hammerStrikeState = ActiveGameState.OnCooldown(resumesAt),
@@ -221,6 +230,7 @@ class CarnivalViewModel @Inject constructor(
         if (newInput != expectedSoFar) {
             viewModelScope.launch {
                 val resumesAt = System.currentTimeMillis() + 10 * 60_000L
+                playerRepo.updateFlags(playerRepo.getFlags().copy(carnivalPotionSequenceCooldownAt = resumesAt))
                 _extra.update {
                     it.copy(
                         potionSequenceState = ActiveGameState.OnCooldown(resumesAt),
@@ -234,6 +244,7 @@ class CarnivalViewModel @Inject constructor(
             viewModelScope.launch {
                 carnivalRepo.awardTickets(2)
                 val resumesAt = System.currentTimeMillis() + 10 * 60_000L
+                playerRepo.updateFlags(playerRepo.getFlags().copy(carnivalPotionSequenceCooldownAt = resumesAt))
                 _extra.update {
                     it.copy(
                         potionSequenceState = ActiveGameState.OnCooldown(resumesAt),
@@ -267,6 +278,7 @@ class CarnivalViewModel @Inject constructor(
         viewModelScope.launch {
             if (won) carnivalRepo.awardTickets(2)
             val resumesAt = System.currentTimeMillis() + 10 * 60_000L
+            playerRepo.updateFlags(playerRepo.getFlags().copy(carnivalItemAppraisalCooldownAt = resumesAt))
             _extra.update {
                 it.copy(
                     itemAppraisalState  = ActiveGameState.OnCooldown(resumesAt),

@@ -1,3 +1,11 @@
+v1.9.1
+• Fix: Carnival active game cooldowns now persist when you leave and return to the Carnival screen
+• Fix: Carnival tickets are no longer sold by the "Sell Junk" button
+• Fix: Guild daily combat progress earned from sessions collected after the 6am reset is no longer silently lost
+• Fix: Recent activity log now shows collected sessions in newest-first order
+• Fix: Dutch (nl) translation updated with 54 missing strings for Slayer and other features
+• Fix: French (fr) translation updated: 203 missing item names (weapons, armour, spells, capes, pets, boss descriptions) now display in French instead of English
+
 v1.9.0
 • New: Carnival added to town; queue idle minigames (Archery Range, Strongman Competition, Wizard's Duel, Fishing Derby) to earn carnival tickets, or play active games (Ring Toss, Hammer Strike, Potion Sequence, Item Appraisal) directly; spend tickets in the Prize Shop for exclusive stat gear (Trickster's Amulet, Strongman's Sigil, Carnival Cape) and the Juggling Imp pet
 • New: Magic Bean, a rare farming drop -- plant it and see what happens

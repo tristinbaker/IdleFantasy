@@ -272,6 +272,11 @@ class HomeViewModel @Inject constructor(
             val sessions = sessionRepo.getAllCompletedSessions()
             if (sessions.isEmpty()) return@launch
 
+            // Refresh guild dailies before recording any session progress so that any
+            // sessions collected after the 6am cutoff are written to today's daily IDs,
+            // not yesterday's stale ones (which would be wiped on the next guild screen open).
+            guildRepo.ensureGuildDailiesRefreshed()
+
             val petIds = gameData.pets.keys
             val player = playerRepo.getOrCreatePlayer()
             val flags: PlayerFlags = json.decodeFromString(player.flags)
@@ -578,7 +583,7 @@ class HomeViewModel @Inject constructor(
             }
             val updatedFlags = playerRepo.getFlags()
             playerRepo.updateFlags(updatedFlags.copy(
-                recentSessions = (newEntries + updatedFlags.recentSessions).take(10),
+                recentSessions = (newEntries.reversed() + updatedFlags.recentSessions).take(10),
             ))
 
             // ── Build summary ─────────────────────────────────────────────

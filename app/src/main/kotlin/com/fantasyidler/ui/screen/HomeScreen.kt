@@ -824,9 +824,10 @@ private fun HomeSessionCard(
     }
     val skillEmoji = GameStrings.skillEmoji(session.skillName)
     val activityLabel = when (session.skillName) {
-        "combat" -> GameStrings.dungeonName(context, session.activityKey)
-        "boss"   -> GameStrings.bossName(context, session.activityKey)
-        else     -> GameStrings.itemName(context, session.activityKey)
+        "combat"     -> GameStrings.dungeonName(context, session.activityKey)
+        "boss"       -> GameStrings.bossName(context, session.activityKey)
+        "expedition" -> GameStrings.skillingDungeonName(context, session.activityKey, session.activityKey.toTitleCase())
+        else         -> GameStrings.itemName(context, session.activityKey)
     }.takeIf { session.activityKey.isNotEmpty() }
 
     Surface(
