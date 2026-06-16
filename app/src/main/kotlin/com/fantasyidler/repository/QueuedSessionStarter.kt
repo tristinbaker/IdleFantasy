@@ -32,6 +32,7 @@ class QueuedSessionStarter @Inject constructor(
     private val playerRepo: PlayerRepository,
     private val sessionRepo: SessionRepository,
     private val gameData: GameDataRepository,
+    private val autoCombatService: AutoCombatService,
     private val json: Json,
 ) {
     private val mutex = Mutex()
@@ -378,15 +379,23 @@ class QueuedSessionStarter @Inject constructor(
                 val boss    = gameData.bosses[bossKey] ?: return
                 val bossEquipped: Map<String, String?> = if (action.equippedSnapshot != null)
                     json.decodeFromString(action.equippedSnapshot) else equipped
-                val bossArrowKey  = action.arrowsKey ?: flags.equippedArrows
-                val bossSpellName = action.spellName ?: flags.activeSpell
-                val bossPotionBonuses = if (action.potionKey != null && (inventory[action.potionKey] ?: 0) > 0) {
-                    playerRepo.consumeItems(mapOf(action.potionKey to 1))
-                    gameData.potionEffects[action.potionKey] ?: emptyMap()
+                val setup = autoCombatService.findBestBossSetup(
+                    boss = boss,
+                    levels = levels,
+                    equipped = bossEquipped,
+                    inventory = inventory,
+                    flags = flags,
+                    prestigeMap = flags.skillPrestige,
+                    petBoostPct = combatPetBoost(player.pets),
+                    agilityLevel = agilityLevel
+                )
+                val bossArrowKey  = flags.equippedArrows
+                val bossSpellName = setup.spell?.name
+                val bossPotionBonuses = if (setup.potionKey != null && (inventory[setup.potionKey] ?: 0) > 0) {
+                    playerRepo.consumeItems(mapOf(setup.potionKey to 1))
+                    gameData.potionEffects[setup.potionKey] ?: emptyMap()
                 } else emptyMap()
-                val bossWeaponSlot = action.weaponSlot
-                    ?: EquipSlot.WEAPON_SLOTS.firstOrNull { bossEquipped[it] != null }
-                    ?: EquipSlot.WEAPON
+                val bossWeaponSlot = setup.weaponSlot
                 val bossWeapon = bossEquipped[bossWeaponSlot]?.let { gameData.equipment[it] }
                 val combatStyle = when (bossWeapon?.combatStyle) {
                     "ranged"   -> "ranged"
@@ -473,15 +482,23 @@ class QueuedSessionStarter @Inject constructor(
                 val dungeon    = gameData.dungeons[dungeonKey] ?: return
                 val combatEquipped: Map<String, String?> = if (action.equippedSnapshot != null)
                     json.decodeFromString(action.equippedSnapshot) else equipped
-                val combatArrowKey  = action.arrowsKey ?: flags.equippedArrows
-                val combatSpellName = action.spellName ?: flags.activeSpell
-                val combatPotBonuses = if (action.potionKey != null && (inventory[action.potionKey] ?: 0) > 0) {
-                    playerRepo.consumeItems(mapOf(action.potionKey to 1))
-                    gameData.potionEffects[action.potionKey] ?: emptyMap()
+                val setup = autoCombatService.findBestDungeonSetup(
+                    dungeon = dungeon,
+                    levels = levels,
+                    equipped = combatEquipped,
+                    inventory = inventory,
+                    flags = flags,
+                    prestigeMap = flags.skillPrestige,
+                    petBoostPct = combatPetBoost(player.pets),
+                    agilityLevel = agilityLevel
+                )
+                val combatArrowKey  = flags.equippedArrows
+                val combatSpellName = setup.spell?.name
+                val combatPotBonuses = if (setup.potionKey != null && (inventory[setup.potionKey] ?: 0) > 0) {
+                    playerRepo.consumeItems(mapOf(setup.potionKey to 1))
+                    gameData.potionEffects[setup.potionKey] ?: emptyMap()
                 } else emptyMap()
-                val activeWeaponSlot = action.weaponSlot
-                    ?: EquipSlot.WEAPON_SLOTS.firstOrNull { combatEquipped[it] != null }
-                    ?: EquipSlot.WEAPON
+                val activeWeaponSlot = setup.weaponSlot
                 val weaponKey  = combatEquipped[activeWeaponSlot]
                 val weapon     = weaponKey?.let { gameData.equipment[it] }
                 val combatStyle = when (weapon?.combatStyle) {

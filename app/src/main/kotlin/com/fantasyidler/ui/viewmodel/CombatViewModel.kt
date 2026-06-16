@@ -83,6 +83,7 @@ data class CombatUiState(
     val dungeonSurvivalRatings: Map<String, CombatSimulator.SurvivalRating> = emptyMap(),
     val noFoodWarningPending: Boolean = false,
     val pendingDungeonKey: String? = null,
+    val pendingBossKey: String? = null,
     val equippedFood: Map<String, Int> = emptyMap(),
     val selectedPotionKey: String? = null,
     val availablePotions: Map<String, Int> = emptyMap(),
@@ -285,363 +286,82 @@ class CombatViewModel @Inject constructor(
 
     fun startDungeonSession(dungeonKey: String, bypassFoodWarning: Boolean = false) {
         viewModelScope.launch {
-            if (sessionRepo.getActiveSession() != null) {
-                val dungeonName = gameData.dungeons[dungeonKey]?.displayName ?: dungeonKey
-                val player      = playerRepo.getOrCreatePlayer()
-                val agility     = (json.decodeFromString<Map<String, Int>>(player.skillLevels))[Skills.AGILITY] ?: 1
-                val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
-                val dungeonFlags: PlayerFlags = json.decodeFromString(player.flags)
-                val queuedWeaponSlot = _extra.value.selectedWeaponSlot
-                    ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
-                    ?: EquipSlot.WEAPON
-                val queuedSpell = _extra.value.selectedSpell
-                val enqueued = playerRepo.enqueueAction(
-                    QueuedAction(
-                        skillName           = "combat",
-                        activityKey         = dungeonKey,
-                        skillDisplayName    = dungeonName,
-                        estimatedDurationMs = SkillSimulator.sessionDurationMs(agility),
-                        equippedSnapshot    = player.equipped,
-                        arrowsKey           = _extra.value.selectedArrowKey ?: dungeonFlags.equippedArrows,
-                        spellName           = queuedSpell?.name ?: dungeonFlags.activeSpell,
-                        potionKey           = _extra.value.selectedPotionKey,
-                        weaponSlot          = queuedWeaponSlot,
-                    )
-                )
-                _extra.update {
-                    it.copy(
-                        snackbarMessage    = if (enqueued) "Added to queue: $dungeonName." else "Queue is full (3/3).",
-                        selectedDungeon    = null,
-                        selectedArrowKey   = null,
-                        selectedPotionKey  = null,
-                    )
-                }
+            _extra.update { it.copy(startingSession = true) }
+            val dungeonName = gameData.dungeons[dungeonKey]?.displayName ?: dungeonKey
+            val player      = playerRepo.getOrCreatePlayer()
+            val flags: PlayerFlags = json.decodeFromString(player.flags)
+            
+            if (flags.equippedFood.isEmpty() && !bypassFoodWarning) {
+                _extra.update { it.copy(noFoodWarningPending = true, pendingDungeonKey = dungeonKey, startingSession = false) }
                 return@launch
             }
 
-            if (!bypassFoodWarning) {
-                val p   = playerRepo.getOrCreatePlayer()
-                val f: PlayerFlags      = try { json.decodeFromString(p.flags) } catch (_: Exception) { PlayerFlags() }
-                val inv: Map<String, Int> = json.decodeFromString(p.inventory)
-                if (f.equippedFood.keys.none { (inv[it] ?: 0) > 0 }) {
-                    _extra.update { it.copy(noFoodWarningPending = true, pendingDungeonKey = dungeonKey) }
-                    return@launch
-                }
+            val agility = (json.decodeFromString<Map<String, Int>>(player.skillLevels))[Skills.AGILITY] ?: 1
+            val enqueued = playerRepo.enqueueAction(
+                QueuedAction(
+                    skillName           = "combat",
+                    activityKey         = dungeonKey,
+                    skillDisplayName    = dungeonName,
+                    estimatedDurationMs = SkillSimulator.sessionDurationMs(agility),
+                    equippedSnapshot    = player.equipped,
+                    arrowsKey           = flags.equippedArrows,
+                    spellName           = flags.activeSpell,
+                    potionKey           = flags.activePotionKey,
+                    weaponSlot          = flags.activeWeaponSlot,
+                )
+            )
+            
+            if (enqueued) {
+                queuedSessionStarter.startNextQueued()
             }
-
-            _extra.update { it.copy(startingSession = true, selectedDungeon = null) }
-            try {
-                val dungeon   = gameData.dungeons[dungeonKey] ?: error("Unknown dungeon: $dungeonKey")
-                val player    = playerRepo.getOrCreatePlayer()
-                val levels:   Map<String, Int>     = json.decodeFromString(player.skillLevels)
-                val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
-                val inventory: Map<String, Int>    = json.decodeFromString(player.inventory)
-
-                val activeWeaponSlot = _extra.value.selectedWeaponSlot
-                    ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
-                    ?: EquipSlot.WEAPON
-                val weaponKey  = equipped[activeWeaponSlot]
-                val weapon     = weaponKey?.let { gameData.equipment[it] }
-                val combatStyle = when (weapon?.combatStyle) {
-                    "ranged"   -> "ranged"
-                    "magic"    -> "magic"
-                    "strength" -> "strength"
-                    else       -> "attack"
-                }
-
-                val totalAttackBonus   = EquipSlot.ARMOR_SLOTS.sumOf { slot ->
-                    val eq = gameData.equipment[equipped[slot]] ?: return@sumOf 0
-                    eq.attackBonus + when (combatStyle) {
-                        "ranged" -> eq.rangedAttackBonus ?: 0
-                        "magic"  -> eq.magicAttackBonus  ?: 0
-                        else     -> 0
-                    }
-                } + (weapon?.attackBonus ?: 0) + when (combatStyle) {
-                    "ranged" -> weapon?.rangedAttackBonus ?: 0
-                    "magic"  -> weapon?.magicAttackBonus  ?: 0
-                    else     -> 0
-                }
-                val totalStrengthBonus = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.strengthBonus ?: 0 } + (weapon?.strengthBonus ?: 0)
-                val totalDefenseBonus  = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.defenseBonus  ?: 0 } + (weapon?.defenseBonus  ?: 0)
-                val totalRangedStrBonus = if (combatStyle == "ranged") {
-                    EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.rangedStrengthBonus ?: 0 } + (weapon?.rangedStrengthBonus ?: 0)
-                } else 0
-                val totalMagicDmgBonus = if (combatStyle == "magic") {
-                    EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.magicDamageBonus ?: 0 } + (weapon?.magicDamageBonus ?: 0)
-                } else 0
-
-                // Ranged: use player's chosen arrow if available, else fall back to best in inventory
-                val preferredArrow = _extra.value.selectedArrowKey?.takeIf { (inventory[it] ?: 0) > 0 }
-                val bestArrow = preferredArrow ?: ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
-                val arrowStrengthBonus = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
-
-                // Magic: validate spell selection and level
-                val selectedSpell = _extra.value.selectedSpell
-                if (combatStyle == "magic") {
-                    if (selectedSpell == null) {
-                        _extra.update {
-                            it.copy(snackbarMessage = "Select a spell before entering.", startingSession = false)
-                        }
-                        return@launch
-                    }
-                    val magicLevel = levels[Skills.MAGIC] ?: 1
-                    if (magicLevel < selectedSpell.magicLevelRequired) {
-                        _extra.update {
-                            it.copy(
-                                snackbarMessage = "Need Magic ${selectedSpell.magicLevelRequired} for ${selectedSpell.displayName}.",
-                                startingSession = false,
-                            )
-                        }
-                        return@launch
-                    }
-                }
-
-                // Food: use whatever equipped food items exist in inventory
-                val flags: PlayerFlags = json.decodeFromString(player.flags)
-                playerRepo.updateFlags(flags.copy(
-                    activeWeaponSlot = activeWeaponSlot,
-                    activeSpell = if (combatStyle == "magic" && selectedSpell != null) selectedSpell.name else flags.activeSpell,
-                ))
-                val equippedFoodKeys   = flags.equippedFood.keys
-                val availableFood      = inventory.filterKeys { it in equippedFoodKeys }
-                val foodHealValues     = gameData.foodHealValues
-
-                // Arrows: pass current supply to simulator; consumed at collect time from frames
-                val availableArrows = if (bestArrow != null) mapOf(bestArrow to (inventory[bestArrow] ?: 0)) else emptyMap()
-
-                // Runes: determine key and cost for simulator tracking; consumed upfront below
-                val staffCoversRune = combatStyle == "magic" && selectedSpell != null && weapon?.infiniteRunes == selectedSpell.runeType
-                val simulatorRuneKey  = if (combatStyle == "magic" && selectedSpell != null && !staffCoversRune) selectedSpell.runeType else null
-                val simulatorRuneCost = selectedSpell?.runeCost ?: 1
-
-                // Potion: consume immediately on dungeon start, pass bonuses to simulator
-                val potionKey     = _extra.value.selectedPotionKey
-                val potionBonuses = if (potionKey != null && (inventory[potionKey] ?: 0) > 0) {
-                    playerRepo.consumeItems(mapOf(potionKey to 1))
-                    gameData.potionEffects[potionKey] ?: emptyMap()
-                } else emptyMap()
-
-                val prestigeMap = flags.skillPrestige
-                val result = CombatSimulator.simulateDungeon(
-                    dungeon             = dungeon,
-                    enemies             = gameData.enemies,
-                    playerAttack        = (levels[Skills.ATTACK]    ?: 1) + (prestigeMap[Skills.ATTACK]    ?: 0) * 5,
-                    playerStrength      = (levels[Skills.STRENGTH]  ?: 1) + (prestigeMap[Skills.STRENGTH]  ?: 0) * 5,
-                    playerDefence       = (levels[Skills.DEFENSE]   ?: 1) + totalDefenseBonus + (prestigeMap[Skills.DEFENSE] ?: 0) * 5,
-                    blessingDefBonus    = ChurchRepository.defBonus(flags),
-                    playerHp            = (levels[Skills.HITPOINTS] ?: 1) + (prestigeMap[Skills.HITPOINTS] ?: 0) * 5,
-                    weaponAttackBonus   = totalAttackBonus,
-                    weaponStrengthBonus = totalStrengthBonus,
-                    combatStyle         = combatStyle,
-                    playerRanged        = (levels[Skills.RANGED]    ?: 1) + (prestigeMap[Skills.RANGED]    ?: 0) * 5,
-                    playerMagic         = (levels[Skills.MAGIC]     ?: 1) + (prestigeMap[Skills.MAGIC]     ?: 0) * 5,
-                    arrowStrengthBonus  = arrowStrengthBonus + totalRangedStrBonus,
-                    spellMaxHit         = (selectedSpell?.maxHit ?: 0) + totalMagicDmgBonus,
-                    agilityLevel        = levels[Skills.AGILITY]   ?: 1,
-                    petBoostPct         = petBoostFor(player.pets),
-                    equippedFood        = availableFood,
-                    foodHealValues      = foodHealValues,
-                    potionBonuses       = potionBonuses,
-                    availableArrows     = availableArrows,
-                    runeKey             = simulatorRuneKey,
-                    runeCostPerAttack   = simulatorRuneCost,
+            
+            _extra.update {
+                it.copy(
+                    startingSession    = false,
+                    snackbarMessage    = if (enqueued) "Starting $dungeonName..." else "Queue is full (3/3).",
+                    selectedDungeon    = null,
                 )
-
-                val totalAttacks = result.frames.size * CombatSimulator.TICKS_PER_FRAME
-
-                // Consume magic runes upfront; reclaim is applied at collect time from frame data
-                if (simulatorRuneKey != null && totalAttacks > 0) {
-                    val runesNeeded    = totalAttacks * simulatorRuneCost
-                    val runesToConsume = minOf(runesNeeded, inventory[simulatorRuneKey] ?: 0)
-                    if (runesToConsume > 0) playerRepo.consumeItems(mapOf(simulatorRuneKey to runesToConsume))
-                }
-
-                val framesJson = json.encodeToString(
-                    json.serializersModule.serializer<List<SessionFrame>>(),
-                    result.frames,
-                )
-                val deathFrameIdx = result.frames.indexOfFirst { it.died }
-                val alarmOffsetMs = if (deathFrameIdx >= 0) {
-                    val perFrameMs = result.durationMs / 60L
-                    perFrameMs * (deathFrameIdx + 1)
-                } else null
-                sessionRepo.startSession(
-                    skillName        = "combat",
-                    activityKey      = dungeonKey,
-                    frames           = framesJson,
-                    durationMs       = result.durationMs,
-                    skillDisplayName = dungeon.displayName,
-                    alarmOffsetMs    = alarmOffsetMs,
-                )
-            } catch (e: Exception) {
-                _extra.update { it.copy(snackbarMessage = "Failed to start session: ${e.message}") }
-            } finally {
-                _extra.update { it.copy(startingSession = false, selectedPotionKey = null) }
             }
         }
     }
 
-    fun startBossSession(bossKey: String) {
+    fun startBossSession(bossKey: String, bypassFoodWarning: Boolean = false) {
         viewModelScope.launch {
-            if (sessionRepo.getActiveSession() != null) {
-                val bossName     = gameData.bosses[bossKey]?.displayName ?: bossKey
-                val bossMs       = (gameData.bosses[bossKey]?.durationMinutes ?: 1) * 60_000L
-                val queuedPlayer = playerRepo.getOrCreatePlayer()
-                val queuedFlags: PlayerFlags          = json.decodeFromString(queuedPlayer.flags)
-                val queuedEquipped: Map<String, String?> = json.decodeFromString(queuedPlayer.equipped)
-                val bossWeaponSlot = _extra.value.selectedWeaponSlot
-                    ?: EquipSlot.WEAPON_SLOTS.firstOrNull { queuedEquipped[it] != null }
-                    ?: EquipSlot.WEAPON_ATK
-                val bossQueuedSpell = _extra.value.selectedSpell
-                val bossQueuedWeapon = queuedEquipped[bossWeaponSlot]?.let { gameData.equipment[it] }
-                val enqueued = playerRepo.enqueueAction(
-                    QueuedAction(
-                        skillName           = "boss",
-                        activityKey         = bossKey,
-                        skillDisplayName    = bossName,
-                        estimatedDurationMs = bossMs,
-                        equippedSnapshot    = queuedPlayer.equipped,
-                        arrowsKey           = _extra.value.selectedArrowKey ?: queuedFlags.equippedArrows,
-                        spellName           = if (bossQueuedWeapon?.combatStyle == "magic" && bossQueuedSpell != null) bossQueuedSpell.name else queuedFlags.activeSpell,
-                        potionKey           = _extra.value.selectedPotionKey,
-                        weaponSlot          = bossWeaponSlot,
-                    )
-                )
-                _extra.update {
-                    it.copy(
-                        snackbarMessage    = if (enqueued) "Added to queue: $bossName." else "Queue is full (3/3).",
-                        selectedBoss       = null,
-                        selectedArrowKey   = null,
-                        selectedPotionKey  = null,
-                    )
-                }
+            _extra.update { it.copy(startingSession = true) }
+            val boss = gameData.bosses[bossKey] ?: return@launch
+            val player = playerRepo.getOrCreatePlayer()
+            val flags: PlayerFlags = json.decodeFromString(player.flags)
+
+            if (flags.equippedFood.isEmpty() && !bypassFoodWarning) {
+                _extra.update { it.copy(noFoodWarningPending = true, pendingBossKey = bossKey, startingSession = false) }
                 return@launch
             }
-            _extra.update { it.copy(startingSession = true, selectedBoss = null) }
-            try {
-                val boss    = gameData.bosses[bossKey] ?: error("Unknown boss: $bossKey")
-                val player  = playerRepo.getOrCreatePlayer()
-                val levels: Map<String, Int>       = json.decodeFromString(player.skillLevels)
-                val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
-                val inventory: Map<String, Int>    = json.decodeFromString(player.inventory)
-                val activeWeaponSlot = _extra.value.selectedWeaponSlot
-                    ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
-                    ?: EquipSlot.WEAPON
-                val bossWeapon = equipped[activeWeaponSlot]?.let { gameData.equipment[it] }
-                val totalDefBonus = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.defenseBonus  ?: 0 } + (bossWeapon?.defenseBonus  ?: 0)
 
-                val potionKey     = _extra.value.selectedPotionKey
-                val potionBonuses = if (potionKey != null && (inventory[potionKey] ?: 0) > 0) {
-                    playerRepo.consumeItems(mapOf(potionKey to 1))
-                    gameData.potionEffects[potionKey] ?: emptyMap()
-                } else emptyMap()
-
-                val combatStyle = when (bossWeapon?.combatStyle) {
-                    "ranged"   -> "ranged"
-                    "magic"    -> "magic"
-                    "strength" -> "strength"
-                    else       -> "melee"
-                }
-                val totalAtkBonus = EquipSlot.ARMOR_SLOTS.sumOf { slot ->
-                    val eq = gameData.equipment[equipped[slot]] ?: return@sumOf 0
-                    eq.attackBonus + when (combatStyle) {
-                        "ranged" -> eq.rangedAttackBonus ?: 0
-                        "magic"  -> eq.magicAttackBonus  ?: 0
-                        else     -> 0
-                    }
-                } + (bossWeapon?.attackBonus ?: 0) + when (combatStyle) {
-                    "ranged" -> bossWeapon?.rangedAttackBonus ?: 0
-                    "magic"  -> bossWeapon?.magicAttackBonus  ?: 0
-                    else     -> 0
-                }
-                val totalStrBonus = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.strengthBonus ?: 0 } + (bossWeapon?.strengthBonus ?: 0)
-                val bossRangedStrBonus = if (combatStyle == "ranged") {
-                    EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.rangedStrengthBonus ?: 0 } + (bossWeapon?.rangedStrengthBonus ?: 0)
-                } else 0
-                val bossMagicDmgBonus = if (combatStyle == "magic") {
-                    EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.magicDamageBonus ?: 0 } + (bossWeapon?.magicDamageBonus ?: 0)
-                } else 0
-                val selectedSpell = _extra.value.selectedSpell
-                if (combatStyle == "magic" && selectedSpell == null) {
-                    _extra.update { it.copy(snackbarMessage = "Select a spell before entering.", startingSession = false) }
-                    return@launch
-                }
-                val magicLevel = levels[Skills.MAGIC] ?: 1
-                if (combatStyle == "magic" && selectedSpell != null && magicLevel < selectedSpell.magicLevelRequired) {
-                    _extra.update { it.copy(snackbarMessage = "Need Magic ${selectedSpell.magicLevelRequired} for ${selectedSpell.displayName}.", startingSession = false) }
-                    return@launch
-                }
-                val preferredArrow = _extra.value.selectedArrowKey?.takeIf { (inventory[it] ?: 0) > 0 }
-                val bestArrow = preferredArrow ?: ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
-                val arrowStrengthBonus = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
-                val availableArrows = if (bestArrow != null) mapOf(bestArrow to (inventory[bestArrow] ?: 0)) else emptyMap()
-
-                val bossStaffCoversRune = combatStyle == "magic" && selectedSpell != null && bossWeapon?.infiniteRunes == selectedSpell.runeType
-                val bossRuneKey  = if (combatStyle == "magic" && selectedSpell != null && !bossStaffCoversRune) selectedSpell.runeType else null
-                val bossRuneCost = selectedSpell?.runeCost ?: 1
-
-                val flags: PlayerFlags = try { json.decodeFromString(player.flags) } catch (_: Exception) { PlayerFlags() }
-                playerRepo.updateFlags(flags.copy(
-                    activeWeaponSlot = activeWeaponSlot,
-                    activeSpell = if (combatStyle == "magic" && selectedSpell != null) selectedSpell.name else flags.activeSpell,
-                ))
-                val equippedFoodKeys  = flags.equippedFood.keys
-                val availableFood     = inventory.filterKeys { it in equippedFoodKeys }
-
-                val prestigeMapBoss = flags.skillPrestige
-                val bossFrames = simulateBoss(
-                    boss               = boss,
-                    bossKey            = bossKey,
-                    playerAttack       = (levels[Skills.ATTACK]    ?: 1) + (potionBonuses["attack"]   ?: 0) + (prestigeMapBoss[Skills.ATTACK]    ?: 0) * 5,
-                    playerStrength     = (levels[Skills.STRENGTH]  ?: 1) + (potionBonuses["strength"] ?: 0) + (prestigeMapBoss[Skills.STRENGTH]  ?: 0) * 5,
-                    playerDefence      = (levels[Skills.DEFENSE]   ?: 1) + totalDefBonus + (potionBonuses["defense"] ?: 0) + (prestigeMapBoss[Skills.DEFENSE] ?: 0) * 5,
-                    playerHp           = (levels[Skills.HITPOINTS] ?: 1) + (prestigeMapBoss[Skills.HITPOINTS] ?: 0) * 5,
-                    weaponAttackBonus  = totalAtkBonus,
-                    weaponStrBonus     = totalStrBonus,
-                    combatStyle        = combatStyle,
-                    playerRanged       = (levels[Skills.RANGED] ?: 1) + (potionBonuses["ranged"] ?: 0) + (prestigeMapBoss[Skills.RANGED] ?: 0) * 5,
-                    playerMagic        = magicLevel + (potionBonuses["magic"] ?: 0) + (prestigeMapBoss[Skills.MAGIC] ?: 0) * 5,
-                    arrowStrengthBonus = arrowStrengthBonus + bossRangedStrBonus,
-                    spellMaxHit        = (selectedSpell?.maxHit ?: 0) + bossMagicDmgBonus,
-                    availableArrows    = availableArrows,
-                    equippedFood       = availableFood,
-                    foodHealValues     = gameData.foodHealValues,
-                    blessingDefBonus   = ChurchRepository.defBonus(flags),
-                    runeKey            = bossRuneKey,
-                    runeCostPerAttack  = bossRuneCost,
+            val agility = (json.decodeFromString<Map<String, Int>>(player.skillLevels))[Skills.AGILITY] ?: 1
+            val enqueued = playerRepo.enqueueAction(
+                QueuedAction(
+                    skillName           = "boss",
+                    activityKey         = bossKey,
+                    skillDisplayName    = boss.displayName,
+                    estimatedDurationMs = SkillSimulator.sessionDurationMs(agility) / 60L * boss.durationMinutes,
+                    equippedSnapshot    = player.equipped,
+                    arrowsKey           = flags.equippedArrows,
+                    spellName           = flags.activeSpell,
+                    potionKey           = flags.activePotionKey,
+                    weaponSlot          = flags.activeWeaponSlot,
                 )
-
-                val totalAttacks = bossFrames.size * CombatSimulator.TICKS_PER_FRAME
-                if (bossRuneKey != null && totalAttacks > 0) {
-                    val runesNeeded    = totalAttacks * bossRuneCost
-                    val runesToConsume = minOf(runesNeeded, inventory[bossRuneKey] ?: 0)
-                    if (runesToConsume > 0) playerRepo.consumeItems(mapOf(bossRuneKey to runesToConsume))
-                }
-                val framesJson = json.encodeToString(
-                    json.serializersModule.serializer<List<SessionFrame>>(),
-                    bossFrames,
+            )
+            
+            if (enqueued) {
+                queuedSessionStarter.startNextQueued()
+            }
+            
+            _extra.update {
+                it.copy(
+                    startingSession    = false,
+                    snackbarMessage    = if (enqueued) "Starting ${boss.displayName}..." else "Queue is full (3/3).",
+                    selectedBoss       = null,
                 )
-                val agilityLevel   = levels[Skills.AGILITY] ?: 1
-                val frameMs        = SkillSimulator.sessionDurationMs(agilityLevel) / 60L
-                val bossDurationMs = boss.durationMinutes * frameMs
-                sessionRepo.startSession(
-                    skillName        = "boss",
-                    activityKey      = bossKey,
-                    frames           = framesJson,
-                    durationMs       = bossDurationMs,
-                    skillDisplayName = boss.displayName,
-                    // endsAt is cosmetic (full duration, no outcome spoiler); the alarm
-                    // ends the session at the exact death tick within the final frame.
-                    alarmOffsetMs    = if (bossFrames.size < boss.durationMinutes) {
-                        val lastTicks   = bossFrames.lastOrNull()?.let { maxOf(it.playerHits.size, it.enemyHits.size) } ?: 0
-                        val lastFrameMs = if (lastTicks > 0) minOf(lastTicks * 2_400L, frameMs) else frameMs
-                        (bossFrames.size - 1).coerceAtLeast(0) * frameMs + lastFrameMs + 2_000L
-                    } else null,
-                )
-            } catch (e: Exception) {
-                _extra.update { it.copy(snackbarMessage = "Could not start boss fight: ${e.message}") }
-            } finally {
-                _extra.update { it.copy(startingSession = false, selectedPotionKey = null) }
             }
         }
     }
@@ -911,13 +631,19 @@ class CombatViewModel @Inject constructor(
     }
 
     fun confirmStartWithoutFood() {
-        val key = _extra.value.pendingDungeonKey ?: return
-        _extra.update { it.copy(noFoodWarningPending = false, pendingDungeonKey = null) }
-        startDungeonSession(key, bypassFoodWarning = true)
+        if (_extra.value.pendingDungeonKey != null) {
+            val key = _extra.value.pendingDungeonKey!!
+            _extra.update { it.copy(noFoodWarningPending = false, pendingDungeonKey = null) }
+            startDungeonSession(key, bypassFoodWarning = true)
+        } else if (_extra.value.pendingBossKey != null) {
+            val key = _extra.value.pendingBossKey!!
+            _extra.update { it.copy(noFoodWarningPending = false, pendingBossKey = null) }
+            startBossSession(key, bypassFoodWarning = true)
+        }
     }
 
     fun dismissNoFoodWarning() {
-        _extra.update { it.copy(noFoodWarningPending = false, pendingDungeonKey = null) }
+        _extra.update { it.copy(noFoodWarningPending = false, pendingDungeonKey = null, pendingBossKey = null) }
     }
 
     // ------------------------------------------------------------------

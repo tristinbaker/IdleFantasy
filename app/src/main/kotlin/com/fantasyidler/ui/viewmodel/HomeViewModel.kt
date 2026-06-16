@@ -714,26 +714,19 @@ class HomeViewModel @Inject constructor(
                 }
             }
             val isCombat = session.skillName == "combat" || session.skillName == "boss"
+            val flags = playerRepo.getFlags()
+            val player = if (isCombat) playerRepo.getOrCreatePlayer() else null
+            val equipped: Map<String, String?> = player?.equipped?.let { json.decodeFromString(it) } ?: emptyMap()
             val weaponSlot = if (isCombat) {
-                val totalXpBySkill = frames.fold(mutableMapOf<String, Long>()) { acc, f ->
-                    f.xpBySkill.forEach { (k, v) -> acc[k] = (acc[k] ?: 0L) + v }
-                    acc
-                }
-                val magicXp  = totalXpBySkill[Skills.MAGIC]   ?: 0L
-                val rangedXp = totalXpBySkill[Skills.RANGED]  ?: 0L
-                val strXp    = totalXpBySkill[Skills.STRENGTH] ?: 0L
-                val atkXp    = totalXpBySkill[Skills.ATTACK]  ?: 0L
-                when {
-                    magicXp  > atkXp && magicXp  > strXp -> EquipSlot.WEAPON_MAGIC
-                    rangedXp > atkXp && rangedXp > strXp -> EquipSlot.WEAPON_RANGED
-                    strXp    > atkXp                     -> EquipSlot.WEAPON_STR
-                    else                                 -> EquipSlot.WEAPON_ATK
+                val preferred = flags.activeWeaponSlot
+                if (preferred != null && equipped[preferred] != null) {
+                    preferred
+                } else {
+                    EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null } ?: EquipSlot.WEAPON_ATK
                 }
             } else null
-            val flags = playerRepo.getFlags()
             val xpQueueMult = (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * ChurchRepository.xpMultiplier(flags)
             val rawXpGain = frames.sumOf { it.xpGain }
-            val player = if (isCombat) playerRepo.getOrCreatePlayer() else null
             val enqueued = playerRepo.enqueueAction(QueuedAction(
                 skillName           = session.skillName,
                 activityKey         = session.activityKey,
