@@ -37,6 +37,7 @@
     <string name="btn_enter_dungeon">Dungeon betreten</string>
     <string name="btn_enter_arena">Arena betreten</string>
     <string name="btn_activate">Aktivieren</string>
+    <string name="btn_extend">Verlängern</string>
     <string name="btn_deactivate">Deaktivieren</string>
     <string name="btn_close">Schließen</string>
     <string name="btn_back">Zurück</string>

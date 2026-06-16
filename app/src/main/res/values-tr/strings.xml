@@ -36,6 +36,7 @@
     <string name="btn_enter_dungeon">Zindana Gir</string>
     <string name="btn_enter_arena">Arenaya Gir</string>
     <string name="btn_activate">Etkinleştir</string>
+    <string name="btn_extend">Uzat</string>
     <string name="btn_deactivate">Devre Dışı Bırak</string>
     <string name="btn_close">Kapat</string>
     <string name="btn_back">Geri</string>

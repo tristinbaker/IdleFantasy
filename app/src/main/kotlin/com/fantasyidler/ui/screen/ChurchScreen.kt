@@ -284,8 +284,8 @@ private fun BlessingRow(
         }
         Spacer(Modifier.width(12.dp))
         when {
-            isActive                      -> OutlinedButton(onClick = {}, enabled = false) {
-                Text(stringResource(R.string.church_active_chip))
+            isActive                      -> Button(onClick = onActivate) {
+                Text(stringResource(R.string.btn_extend))
             }
             isUnlocked && !anyBlessingActive -> Button(onClick = onActivate) {
                 Text(stringResource(R.string.church_activate))

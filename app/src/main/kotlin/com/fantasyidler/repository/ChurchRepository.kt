@@ -115,7 +115,8 @@ class ChurchRepository @Inject constructor(
 
     suspend fun activateBlessing(key: String): BlessingActivateResult {
         val flags     = playerRepo.getFlags()
-        if (activeBlessing(flags) != null) return BlessingActivateResult.AlreadyActive
+        val active    = activeBlessing(flags)
+        if (active != null && active.key != key) return BlessingActivateResult.AlreadyActive
         val blessing  = BY_KEY[key] ?: return BlessingActivateResult.AlreadyActive
         val cost      = boneCostFor(blessing)
         val inventory = playerRepo.getInventory()
@@ -138,13 +139,18 @@ class ChurchRepository @Inject constructor(
 
         val now = System.currentTimeMillis()
         val durationMs = townRepoProvider.get().blessingDurationMs(flags)
+        val newExpiresAt = if (active != null && active.key == key) {
+            flags.activeBlessingExpiresAt + durationMs
+        } else {
+            now + durationMs
+        }
         playerRepo.updateFlags(
             flags.copy(
                 activeBlessingKey       = key,
-                activeBlessingExpiresAt = now + durationMs,
+                activeBlessingExpiresAt = newExpiresAt,
             )
         )
-        buffNotifScheduler.scheduleBlessingExpiry(now + durationMs)
+        buffNotifScheduler.scheduleBlessingExpiry(newExpiresAt)
         return BlessingActivateResult.Success
     }
 }

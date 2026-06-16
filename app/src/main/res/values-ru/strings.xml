@@ -37,6 +37,7 @@
     <string name="btn_enter_dungeon">Войти в подземелье</string>
     <string name="btn_enter_arena">Войти на арену</string>
     <string name="btn_activate">Активировать</string>
+    <string name="btn_extend">Продлить</string>
     <string name="btn_deactivate">Деактивировать</string>
     <string name="btn_close">Закрыть</string>
     <string name="btn_back">Назад</string>
