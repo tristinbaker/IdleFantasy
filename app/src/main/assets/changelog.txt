@@ -1,3 +1,7 @@
+v1.9.3
+• Fix Magic Bean only appearing in the "Harvest and Plant All" crop picker; it now appears when planting a single plot too. When using "Plant All", the Magic Bean is planted in one plot and a message clarifies it can only grow in one plot at a time.
+• Fix weekly boss quests not progressing when a boss session is collected from the Home screen instead of the Combat screen.
+• Add a Bonuses tab to the Profile screen showing all active XP bonuses in one place: time-limited boosts (XP Boost, blessings), equipped skill cape, owned pets, and prestige bonuses. Only non-zero active bonuses are shown; an empty state message appears when there are none.
 v1.9.2
 • Fix Inn worker description to clarify that workers are hired for one job and dismissed after that session is collected
 • Fix weekly farming quest (Season's Harvest) showing no progress when harvesting crops with fertilizer applied

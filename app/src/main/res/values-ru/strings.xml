@@ -1238,9 +1238,14 @@
     <string name="farming_bean_climb">Взобраться</string>
     <string name="farming_bean_climbed">Вы взобрались по бобовому стеблю. Что-то ждёт вас...</string>
     <string name="farming_bean_picker_stats">\?\?\?  •  \?\?\?  •  \?\?\?</string>
+    <string name="farming_magic_bean_one_plot">Волшебные бобы можно посадить только на одну грядку</string>
 
     <!-- ===== Armory Tab ===== -->
     <string name="armory_tab">Арсенал</string>
+    <string name="tab_bonuses">Бонусы</string>
+    <string name="bonus_none">Нет активных бонусов к опыту</string>
+    <string name="bonus_all_skills">Все навыки</string>
+    <string name="bonus_section_boosts">Активные бонусы</string>
     <string name="armory_not_owned">У вас нет этого предмета.</string>
     <string name="armory_how_to_obtain">Как получить</string>
     <string name="armory_no_stats">Нет бонусов характеристик.</string>

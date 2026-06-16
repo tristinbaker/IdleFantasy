@@ -128,6 +128,7 @@ fun ProfileScreen(
         stringResource(R.string.label_notes),
         stringResource(R.string.label_bestiary),
         stringResource(R.string.armory_tab),
+        stringResource(R.string.tab_bonuses),
     )
     var selectedTab  by remember { mutableIntStateOf(0) }
     var showEditSheet by remember { mutableStateOf(false) }
@@ -231,6 +232,7 @@ fun ProfileScreen(
                         unlockedDungeons     = state.unlockedDungeons,
                     )
                     7    -> ArmoryTab(viewModel = armoryVm)
+                    8    -> BonusesTab(state, viewModel.allEquipment, viewModel.allPets)
                     else -> BestiaryTab(viewModel = bestiaryVm)
                 }
             }

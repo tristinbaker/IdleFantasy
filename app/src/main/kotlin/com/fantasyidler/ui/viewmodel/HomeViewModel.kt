@@ -352,6 +352,7 @@ class HomeViewModel @Inject constructor(
                                 loot         = loot,
                             )
                             dailyKills[session.activityKey] = (dailyKills[session.activityKey] ?: 0) + 1
+                            playerRepo.recordWeeklyProgress("boss", session.activityKey, 1)
                             guildRepo.recordGuildCombat(mapOf(session.activityKey to 1), detectCombatStyle(bossXpBySkill))
                             for ((item, qty) in loot) combinedItems[item] = (combinedItems[item] ?: 0) + qty
                             combinedCoins += coins

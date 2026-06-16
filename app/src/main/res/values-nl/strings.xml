@@ -1174,9 +1174,14 @@
     <string name="farming_bean_climb">Klimmen</string>
     <string name="farming_bean_climbed">Je hebt de bonenrank beklommen. Iets wacht je...</string>
     <string name="farming_bean_picker_stats">\?\?\?  •  \?\?\?  •  \?\?\?</string>
+    <string name="farming_magic_bean_one_plot">Magische bonen kunnen slechts op één veld worden geplant</string>
 
     <!-- ===== Armory Tab ===== -->
     <string name="armory_tab">Arsenaal</string>
+    <string name="tab_bonuses">Bonussen</string>
+    <string name="bonus_none">Geen actieve XP-bonussen</string>
+    <string name="bonus_all_skills">Alle vaardigheden</string>
+    <string name="bonus_section_boosts">Actieve bonussen</string>
     <string name="armory_not_owned">Je bezit dit item niet.</string>
     <string name="armory_how_to_obtain">Hoe te verkrijgen</string>
     <string name="armory_no_stats">Geen statbonussen.</string>

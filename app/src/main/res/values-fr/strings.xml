@@ -1206,9 +1206,14 @@
     <string name="farming_bean_climb">Grimper</string>
     <string name="farming_bean_climbed">Vous avez grimpé le haricot magique. Quelque chose vous attend...</string>
     <string name="farming_bean_picker_stats">\?\?\?  •  \?\?\?  •  \?\?\?</string>
+    <string name="farming_magic_bean_one_plot">Les haricots magiques ne peuvent être plantés que sur une parcelle</string>
 
     <!-- ===== Armory Tab ===== -->
     <string name="armory_tab">Armurerie</string>
+    <string name="tab_bonuses">Bonus</string>
+    <string name="bonus_none">Aucun bonus d\'XP actif</string>
+    <string name="bonus_all_skills">Toutes les compétences</string>
+    <string name="bonus_section_boosts">Bonus actifs</string>
     <string name="armory_not_owned">Vous ne possédez pas cet objet.</string>
     <string name="armory_how_to_obtain">Comment obtenir</string>
     <string name="armory_no_stats">Aucun bonus de statistiques.</string>

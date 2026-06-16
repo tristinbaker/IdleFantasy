@@ -171,20 +171,26 @@ class FarmingViewModel @Inject constructor(
             if (patchNumber == -1) {
                 delay(300)
                 val emptyPatches = farmingRepo.getEmptyPatches(uiState.value.patchCount)
-                var plantedCount = 0
 
-                for (patchNum in emptyPatches) {
-                    if (farmingRepo.plantCrop(patchNum, crop, ashKey)) plantedCount++ else break
-                }
-
-                val msg = if (plantedCount == 0) {
-                    if (emptyPatches.isEmpty()) context.getString(R.string.farming_no_empty_patches)
-                    else context.getString(R.string.farming_no_seeds_inventory, seedName)
+                if (crop.id == "magic_bean") {
+                    val planted = emptyPatches.firstOrNull()?.let { farmingRepo.plantCrop(it, crop, ashKey) } ?: false
+                    val msg = if (planted) context.getString(R.string.farming_magic_bean_one_plot)
+                              else context.getString(R.string.farming_no_seeds_inventory, seedName)
+                    _extra.update { it.copy(snackbarMessage = msg) }
                 } else {
-                    val base = context.getString(R.string.farming_planted, plantedCount, seedName)
-                    if (plantedCount < emptyPatches.size) "$base - ${context.getString(R.string.farming_no_seeds_inventory, seedName)}" else base
+                    var plantedCount = 0
+                    for (patchNum in emptyPatches) {
+                        if (farmingRepo.plantCrop(patchNum, crop, ashKey)) plantedCount++ else break
+                    }
+                    val msg = if (plantedCount == 0) {
+                        if (emptyPatches.isEmpty()) context.getString(R.string.farming_no_empty_patches)
+                        else context.getString(R.string.farming_no_seeds_inventory, seedName)
+                    } else {
+                        val base = context.getString(R.string.farming_planted, plantedCount, seedName)
+                        if (plantedCount < emptyPatches.size) "$base - ${context.getString(R.string.farming_no_seeds_inventory, seedName)}" else base
+                    }
+                    _extra.update { it.copy(snackbarMessage = msg) }
                 }
-                _extra.update { it.copy(snackbarMessage = msg) }
             } else {
                 if (!farmingRepo.plantCrop(patchNumber, crop, ashKey)) {
                     _extra.update { it.copy(snackbarMessage = context.getString(R.string.farming_no_seeds_inventory, seedName)) }

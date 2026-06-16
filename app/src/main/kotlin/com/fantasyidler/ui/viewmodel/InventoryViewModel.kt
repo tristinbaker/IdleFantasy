@@ -23,9 +23,11 @@ import com.fantasyidler.data.json.ThievingNpcData
 import com.fantasyidler.data.json.TradeRouteData
 import com.fantasyidler.data.json.TreeData
 import android.content.Context
+import com.fantasyidler.data.json.BlessingType
 import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.data.model.Skills
+import com.fantasyidler.repository.ChurchRepository
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.util.GameStrings
@@ -68,6 +70,11 @@ class InventoryViewModel @Inject constructor(
         val snackbarMessage: String? = null,
         val skillingDungeonNotes: Map<String, Int> = emptyMap(),
         val unlockedDungeons: List<String> = emptyList(),
+        val xpBoostExpiresAt: Long = 0L,
+        val activeBlessingKey: String = "",
+        val activeBlessingExpiresAt: Long = 0L,
+        val activeBlessingXpPct: Int = 0,
+        val skillPrestige: Map<String, Int> = emptyMap(),
     ) {
         val totalLevel: Int get() = skillLevels.values.sum()
 
@@ -130,6 +137,14 @@ class InventoryViewModel @Inject constructor(
                 characterRace         = flags.characterRace,
                 skillingDungeonNotes  = flags.skillingDungeonNotes,
                 unlockedDungeons      = flags.unlockedDungeons,
+                xpBoostExpiresAt        = flags.xpBoostExpiresAt,
+                activeBlessingKey       = flags.activeBlessingKey,
+                activeBlessingExpiresAt = flags.activeBlessingExpiresAt,
+                activeBlessingXpPct     = run {
+                    val b = ChurchRepository.activeBlessing(flags) ?: return@run 0
+                    if (b.type == BlessingType.XP) ((b.magnitude - 1f) * 100 + 0.5f).toInt() else 0
+                },
+                skillPrestige           = flags.skillPrestige,
                 isLoading   = false,
             )
         }

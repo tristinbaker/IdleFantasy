@@ -1208,4 +1208,9 @@
     <string name="boss_kraken_desc">El terror de las profundidades marinas, un colosal monstruo marino.</string>
     <string name="boss_balrog_desc">Un antiguo demonio de llamas y sombras, despertado de su letargo en las profundidades de la tierra.</string>
     <string name="boss_void_sovereign_desc">La entidad primordial detrás de las grietas del vacío. Antigua más allá de todo cálculo, mira a los retadores mortales con desprecio.</string>
+    <string name="farming_magic_bean_one_plot">Magic Beans can only be planted in one plot</string>
+    <string name="tab_bonuses">Bonuses</string>
+    <string name="bonus_none">No active XP bonuses</string>
+    <string name="bonus_all_skills">All skills</string>
+    <string name="bonus_section_boosts">Active Boosts</string>
 </resources>

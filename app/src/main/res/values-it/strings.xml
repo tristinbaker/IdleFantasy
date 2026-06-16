@@ -1237,9 +1237,14 @@
     <string name="farming_bean_climb">Salire</string>
     <string name="farming_bean_climbed">Hai scalato il fagiolo magico. Qualcosa ti aspetta...</string>
     <string name="farming_bean_picker_stats">\?\?\?  •  \?\?\?  •  \?\?\?</string>
+    <string name="farming_magic_bean_one_plot">I fagioli magici possono essere piantati solo in un appezzamento</string>
 
     <!-- ===== Armory Tab ===== -->
     <string name="armory_tab">Armeria</string>
+    <string name="tab_bonuses">Bonus</string>
+    <string name="bonus_none">Nessun bonus XP attivo</string>
+    <string name="bonus_all_skills">Tutte le abilità</string>
+    <string name="bonus_section_boosts">Bonus attivi</string>
     <string name="armory_not_owned">Non possiedi questo oggetto.</string>
     <string name="armory_how_to_obtain">Come ottenere</string>
     <string name="armory_no_stats">Nessun bonus alle statistiche.</string>
