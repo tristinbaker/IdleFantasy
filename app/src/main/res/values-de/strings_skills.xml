@@ -4,23 +4,23 @@
 
     <!-- Gathering skills -->
     <string name="skill_mining_name">Bergbau</string>
-    <string name="skill_mining_desc">Gewinnt wertvolle Erze und Edelsteine unter der Erde.</string>
+    <string name="skill_mining_desc">Fördert wertvolle Erze unter der Erde und mit etwas Glück fallen euch auch Edelsteine in die Hände.</string>
     <string name="skill_fishing_name">Angeln</string>
     <string name="skill_fishing_desc">Fangt Fische und andere Schätze aus dem Wasser.</string>
     <string name="skill_woodcutting_name">Holzfällerei</string>
     <string name="skill_woodcutting_desc">Fällt Bäume und sammelt verschiedene Holzarten.</string>
     <string name="skill_farming_name">Landwirtschaft</string>
-    <string name="skill_farming_desc">Pflanzt und erntet Pflanzen auf Euren Äckern.</string>
+    <string name="skill_farming_desc">Pflanzt und erntet auf Euren Äckern.</string>
     <string name="skill_firemaking_name">Feuer machen</string>
     <string name="skill_firemaking_desc">Verbrennt Holzscheite aus Eurem Inventar. Jedes verbrannte Holz hinterlässt Asche, die Ihr für Gebete, als Dünger oder bei der Runen- und Trankherstellung nutzen könnt.</string>
     <string name="skill_agility_name">Geschicklichkeit</string>
-    <string name="skill_agility_desc">Übt Euch in Geschicklichkeit, um die Dauer aller Aktivitäten zu verkürzen. Auf Stufe 99 verkürzt sich die Dauer um 20 Minuten (60 Min. → 40 Min.), wobei die Verkürzung mit steigender Stufe linear verläuft.</string>
+    <string name="skill_agility_desc">Übt Euch in Geschicklichkeit, um die Dauer aller Aktivitäten zu verkürzen. Auf Stufe 99 verkürzt sich die Dauer um 20 Minuten (60 Min. → 40 Min.).</string>
 
     <!-- Crafting skills -->
     <string name="skill_smithing_name">Schmieden</string>
-    <string name="skill_smithing_desc">Schmelzt Erze zu Barren und schmiedet mächtige Ausrüstung aus Metall.</string>
+    <string name="skill_smithing_desc">Schmelzt Erze und Edelmetalle zu Barren und schmiedet mächtige Ausrüstung, hilfreiche Werkzeuge und Bauteile aus Metall.</string>
     <string name="skill_cooking_name">Kochen</string>
-    <string name="skill_cooking_desc">Verarbeitet rohe Zutaten zu Speisen, die im Kampf TP wiederherstellen.</string>
+    <string name="skill_cooking_desc">Verarbeitet rohe Zutaten zu Speisen, die im Kampf Trefferpunkte wiederherstellen.</string>
     <string name="skill_fletching_name">Herstellen</string>
     <string name="skill_fletching_desc">Stellt Pfeil und Bogen, oder Baumaterial aus Holz und Metallteilen her.</string>
     <string name="skill_crafting_name">Schmuckfertigung</string>
@@ -44,7 +44,7 @@
     <string name="skill_hitpoints_name">Trefferpunkte</string>
     <string name="skill_hitpoints_desc">Eure Gesamtgesundheit. Je höher der Wert, desto länger haltet Ihr im Kampf durch.</string>
     <string name="skill_prayer_name">Gebete</string>
-    <string name="skill_prayer_desc">Vergrabt Knochen oder verstreut Asche, um Gebets-XP zu sammeln und mächtige Gebete freizuschalten.</string>
+    <string name="skill_prayer_desc">Vergrabt Knochen oder verstreut Asche, um mächtige Gebete freizuschalten.</string>
 
     <!-- ===== Skill unlock sheet labels ===== -->
     <string name="label_lv">Lv. %1$d</string>
