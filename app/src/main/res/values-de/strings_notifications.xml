@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- ===== Notification channel metadata ===== -->
-    <string name="notif_channel_sessions_name">Aktivitätsbenachrichtigungen</string>
-    <string name="notif_channel_sessions_desc">Benachrichtigungen, wenn Eure Fähigkeits-Aktivitäten abgeschlossen sind</string>
-    <string name="notif_channel_farming_name">Landwirtschaftliche Meldungen</string>
+    <string name="notif_channel_sessions_name">Aktivitätsmeldungen</string>
+    <string name="notif_channel_sessions_desc">Benachrichtigungen, wenn Eure Aktivitäten abgeschlossen sind</string>
+    <string name="notif_channel_farming_name">Landwirtschaftsmeldungen</string>
     <string name="notif_channel_farming_desc">Benachrichtigungen, wenn Eure Pflanzen erntereif sind</string>
 
     <!-- ===== Session complete ===== -->
@@ -11,16 +11,16 @@
     <!-- Translator note: %1$s = localised skill name (e.g. "Mining") -->
     <string name="notif_session_complete_body">Eure %1$s-Aktivität ist beendet. Erhaltet hier Eure Belohnungen.</string>
 
-        <!-- ===== Buff alerts ===== -->
-    <string name="notif_channel_buffs_name">Buff Alerts</string>
-    <string name="notif_channel_buffs_desc">Notifications when your active buffs expire</string>
-    <string name="notif_xp_boost_expired_title">XP Boost Expired</string>
-    <string name="notif_xp_boost_expired_body">Your 2x XP boost has run out. Visit the marketplace to reactivate.</string>
-    <string name="notif_blessing_expired_title">Blessing Expired</string>
-    <string name="notif_blessing_expired_body">Your church blessing has faded. Visit the Church to renew it.</string>
+    <!-- ===== Buff alerts ===== -->
+    <string name="notif_channel_buffs_name">Verbesserungsmeldungen</string>
+    <string name="notif_channel_buffs_desc">Benachrichtigung, wenn aktive Segen enden.</string>
+    <string name="notif_xp_boost_expired_title">EP-Hilfe endet</string>
+    <string name="notif_xp_boost_expired_body">Eure Erfahrungspunkte-Hilfe endete. Besucht den Krämer, um sie zu erneuern.</string>
+    <string name="notif_blessing_expired_title">Segen endete</string>
+    <string name="notif_blessing_expired_body">Euer kirchlicher Segen ist verblasst. Besucht das Gotteshaus, um euch erneut segnen zu lassen.</string>
 
     <!-- ===== Farming ready ===== -->
-    <string name="notif_farming_ready_title">Die Ernte ist reif!</string>
+    <string name="notif_farming_ready_title">Die Ernte steht an!</string>
     <!-- Translator note: %1$s = localised crop name (e.g. "Wheat"). Adjust grammar as needed for your language. -->
     <string name="notif_farming_ready_body">%1$s ist erntereif.</string>
     <!-- Plural variant used when multiple patches are ready -->
