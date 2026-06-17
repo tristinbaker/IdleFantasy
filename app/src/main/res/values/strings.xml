@@ -1274,6 +1274,27 @@
     <string name="armory_filter_armor">Armor</string>
     <string name="armory_filter_accessories">Accessories</string>
     <string name="armory_filter_tools">Tools</string>
+    <string name="armory_progress_bar">obtained</string>
+    <string name="armory_stat_mining">Mining Efficiency</string>
+    <string name="armory_stat_woodcutting">Woodcutting Efficiency</string>
+    <string name="armory_stat_fishing">Fishing Efficiency</string>
+    <string name="armory_stat_farming">Farming Efficiency</string>
+    <string name="armory_stat_attack">Attack Bonus</string>
+    <string name="armory_stat_strength">Strength Bonus</string>
+    <string name="armory_stat_defense">Defense Bonus</string>
+    <string name="armory_stat_ranged_atk">Ranged Attack</string>
+    <string name="armory_stat_ranged_str">Ranged Strength</string>
+    <string name="armory_stat_magic_atk">Magic Attack</string>
+    <string name="armory_stat_magic_dmg">Magic Dégat</string>
+    <string name="armory_stat_cape">XP Bonus</string>
+    <string name="armory_source_carnival">Carnival Prize Shop</string>
+    <string name="armory_source_smithing">Smithing</string>
+    <string name="armory_source_crafting">Crafting</string>
+    <string name="armory_source_fletching">Fletching</string>
+    <string name="armory_source_drop_always">Dropped by %1$s (Always)</string>
+    <string name="armory_source_drop_chance">Dropped by %1$s (%2$s)</string>
+    <string name="armory_source_drop">Dropped by %1$s</string>
+    <string name="armory_source_shop">Shop</string>
 
     <!-- Boss Descriptions -->
     <string name="boss_king_black_dragon_desc">The legendary three-headed dragon, feared across the realm.</string>

@@ -105,4 +105,5 @@
     <string name="equip_slot_pickaxe">Pickaxe</string>
     <string name="equip_slot_axe">Axe</string>
     <string name="equip_slot_fishing_rod">Fishing Rod</string>
+    <string name="equip_slot_hoe">Hoe</string>
 </resources>

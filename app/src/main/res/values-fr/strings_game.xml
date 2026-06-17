@@ -106,4 +106,5 @@
     <string name="equip_slot_pickaxe">Pioche</string>
     <string name="equip_slot_axe">Hache</string>
     <string name="equip_slot_fishing_rod">Canne à pêche</string>
+    <string name="equip_slot_hoe">Houe</string>
 </resources>

@@ -31,6 +31,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -42,6 +43,7 @@ import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.ArmoryEntry
 import com.fantasyidler.ui.viewmodel.ArmoryFilter
 import com.fantasyidler.ui.viewmodel.ArmoryViewModel
+import com.fantasyidler.util.GameStrings
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -55,7 +57,7 @@ fun ArmoryTab(viewModel: ArmoryViewModel = hiltViewModel()) {
             CollectionProgressBar(
                 obtained = state.totalOwned,
                 total    = state.totalCount,
-                label    = "obtained",
+                label    = stringResource(R.string.armory_progress_bar),
             )
         }
         Row(
@@ -110,6 +112,7 @@ fun ArmoryTab(viewModel: ArmoryViewModel = hiltViewModel()) {
 
 @Composable
 private fun ArmoryRow(entry: ArmoryEntry, onClick: () -> Unit) {
+    val context = LocalContext.current
     val textColor = if (entry.owned)
         MaterialTheme.colorScheme.onSurface
     else
@@ -119,7 +122,7 @@ private fun ArmoryRow(entry: ArmoryEntry, onClick: () -> Unit) {
     else
         MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.38f)
 
-    val statSummary = armoryStatSummary(entry.item)
+    //val statSummary = armoryStatSummary(entry.item)
 
     Row(
         modifier = Modifier
@@ -129,14 +132,16 @@ private fun ArmoryRow(entry: ArmoryEntry, onClick: () -> Unit) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Column(Modifier.weight(1f)) {
+            val name = GameStrings.itemName(context, entry.item.name)
             Text(
-                text  = entry.item.displayName,
+                text  = name,
                 style = MaterialTheme.typography.bodyMedium,
                 color = textColor,
             )
-            if (statSummary.isNotBlank()) {
+            val details = buildEquipDetail(entry.item, context, false)
+            if (details.isNotBlank()) {
                 Text(
-                    text  = statSummary,
+                    text  = details,
                     style = MaterialTheme.typography.bodySmall,
                     color = subColor,
                 )
@@ -151,6 +156,7 @@ private fun ArmoryRow(entry: ArmoryEntry, onClick: () -> Unit) {
 
 @Composable
 private fun ArmoryDetailContent(entry: ArmoryEntry) {
+    val context = LocalContext.current
     val item     = entry.item
     val dimmed   = !entry.owned
     val statRows = armoryStatRows(item)
@@ -164,8 +170,9 @@ private fun ArmoryDetailContent(entry: ArmoryEntry) {
             .padding(horizontal = 20.dp),
     ) {
         item {
+            val name = GameStrings.itemName(context, item.name)
             Text(
-                text       = item.displayName,
+                text       = name,
                 style      = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
             )
@@ -299,25 +306,27 @@ private fun armoryStatSummary(item: EquipmentData): String {
     return parts.joinToString("  •  ")
 }
 
+@Composable
 private fun armoryStatRows(item: EquipmentData): List<Pair<String, String>> {
     val rows = mutableListOf<Pair<String, String>>()
-    item.miningEfficiency?.let      { rows.add("Mining Efficiency"   to "×${"%.2f".format(it)}") }
-    item.woodcuttingEfficiency?.let { rows.add("WC Efficiency"       to "×${"%.2f".format(it)}") }
-    item.fishingEfficiency?.let     { rows.add("Fishing Efficiency"  to "×${"%.2f".format(it)}") }
-    item.farmingEfficiency?.let     { rows.add("Farming Efficiency"  to "×${"%.2f".format(1f + it)}") }
+    item.miningEfficiency?.let      { rows.add(stringResource(R.string.armory_stat_mining) to "×${"%.2f".format(it)}") }
+    item.woodcuttingEfficiency?.let { rows.add(stringResource(R.string.armory_stat_woodcutting) to "×${"%.2f".format(it)}") }
+    item.fishingEfficiency?.let     { rows.add(stringResource(R.string.armory_stat_fishing) to "×${"%.2f".format(it)}") }
+    item.farmingEfficiency?.let     { rows.add(stringResource(R.string.armory_stat_farming) to "×${"%.2f".format(1f + it)}") }
     if (rows.isEmpty()) {
-        if (item.attackBonus   != 0) rows.add("Attack Bonus"   to "+${item.attackBonus}")
-        if (item.strengthBonus != 0) rows.add("Strength Bonus" to "+${item.strengthBonus}")
-        if (item.defenseBonus  != 0) rows.add("Defense Bonus"  to "+${item.defenseBonus}")
-        if ((item.rangedAttackBonus  ?: 0) != 0) rows.add("Ranged Attack"   to "+${item.rangedAttackBonus}")
-        if ((item.rangedStrengthBonus?: 0) != 0) rows.add("Ranged Strength" to "+${item.rangedStrengthBonus}")
-        if ((item.magicAttackBonus   ?: 0) != 0) rows.add("Magic Attack"    to "+${item.magicAttackBonus}")
-        if ((item.magicDamageBonus   ?: 0) != 0) rows.add("Magic Damage"    to "+${item.magicDamageBonus}")
-        if (item.capeBonus != 0f) rows.add("XP Bonus" to "+${(item.capeBonus * 100).toInt()}%")
+        if (item.attackBonus   != 0) rows.add(stringResource(R.string.armory_stat_attack) to "+${item.attackBonus}")
+        if (item.strengthBonus != 0) rows.add(stringResource(R.string.armory_stat_strength) to "+${item.strengthBonus}")
+        if (item.defenseBonus  != 0) rows.add(stringResource(R.string.armory_stat_defense) to "+${item.defenseBonus}")
+        if ((item.rangedAttackBonus  ?: 0) != 0) rows.add(stringResource(R.string.armory_stat_ranged_atk) to "+${item.rangedAttackBonus}")
+        if ((item.rangedStrengthBonus?: 0) != 0) rows.add(stringResource(R.string.armory_stat_ranged_str) to "+${item.rangedStrengthBonus}")
+        if ((item.magicAttackBonus   ?: 0) != 0) rows.add(stringResource(R.string.armory_stat_magic_atk) to "+${item.magicAttackBonus}")
+        if ((item.magicDamageBonus   ?: 0) != 0) rows.add(stringResource(R.string.armory_stat_magic_dmg) to "+${item.magicDamageBonus}")
+        if (item.capeBonus != 0f) rows.add(stringResource(R.string.armory_stat_cape) to "+${(item.capeBonus * 100).toInt()}%")
     }
     return rows
 }
 
+@Composable
 private fun buildSlotGroups(entries: List<ArmoryEntry>): List<Pair<String, List<ArmoryEntry>>> {
     val grouped = linkedMapOf<String, MutableList<ArmoryEntry>>()
     entries.forEach { entry ->
@@ -327,20 +336,21 @@ private fun buildSlotGroups(entries: List<ArmoryEntry>): List<Pair<String, List<
     return grouped.map { it.key to it.value }
 }
 
+@Composable
 private fun slotLabel(slot: String): String = when (slot) {
-    "weapon"      -> "Weapon"
-    "head"        -> "Head"
-    "body"        -> "Body"
-    "legs"        -> "Legs"
-    "boots"       -> "Boots"
-    "shield"      -> "Shield"
-    "cape"        -> "Cape"
-    "necklace"    -> "Necklace"
-    "ring"        -> "Ring"
-    "pickaxe"     -> "Pickaxe"
-    "axe"         -> "Axe"
-    "fishing_rod" -> "Fishing Rod"
-    "hoe"         -> "Hoe"
+    "weapon"      -> stringResource(R.string.profile_weapons)
+    "head"        -> stringResource(R.string.equip_slot_head)
+    "body"        -> stringResource(R.string.equip_slot_body)
+    "legs"        -> stringResource(R.string.equip_slot_legs)
+    "boots"       -> stringResource(R.string.equip_slot_boots)
+    "shield"      -> stringResource(R.string.equip_slot_shield)
+    "cape"        -> stringResource(R.string.equip_slot_cape)
+    "necklace"    -> stringResource(R.string.equip_slot_necklace)
+    "ring"        -> stringResource(R.string.equip_slot_ring)
+    "pickaxe"     -> stringResource(R.string.equip_slot_pickaxe)
+    "axe"         -> stringResource(R.string.equip_slot_axe)
+    "fishing_rod" -> stringResource(R.string.equip_slot_fishing_rod)
+    "hoe"         -> stringResource(R.string.equip_slot_hoe)
     else          -> slot.replaceFirstChar { it.uppercase() }
 }
 

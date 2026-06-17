@@ -1,12 +1,16 @@
 package com.fantasyidler.ui.viewmodel
 
+import android.content.Context
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fantasyidler.R
 import com.fantasyidler.data.json.EquipmentData
 import com.fantasyidler.repository.CarnivalRepository
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -37,6 +41,7 @@ class ArmoryViewModel @Inject constructor(
     private val playerRepo: PlayerRepository,
     private val gameData: GameDataRepository,
     private val carnivalRepo: CarnivalRepository,
+    @ApplicationContext private val context: Context,
     private val json: Json,
 ) : ViewModel() {
 
@@ -86,36 +91,36 @@ class ArmoryViewModel @Inject constructor(
         val map = mutableMapOf<String, String>()
 
         carnivalRepo.prizes.keys.forEach { key ->
-            map[key] = "Carnival Prize Shop"
+            map[key] = context.getString(R.string.armory_source_carnival)
         }
         gameData.smithingRecipes.keys.forEach { key ->
-            if (key !in map) map[key] = "Smithing"
+            if (key !in map) map[key] = context.getString(R.string.armory_source_smithing)
         }
         gameData.craftingRecipes.keys.forEach { key ->
-            if (key !in map) map[key] = "Crafting"
+            if (key !in map) map[key] = context.getString(R.string.armory_source_crafting)
         }
         gameData.fletchingRecipes.values.forEach { recipe ->
             val key = recipe.itemName
-            if (key !in map) map[key] = "Fletching"
+            if (key !in map) map[key] = context.getString(R.string.armory_source_fletching)
         }
         gameData.enemies.forEach { (_, enemy) ->
             enemy.alwaysDrops.forEach { drop ->
-                if (drop.item !in map) map[drop.item] = "Dropped by ${enemy.displayName} (Always)"
+                if (drop.item !in map) map[drop.item] = context.getString(R.string.armory_source_drop_always, enemy.displayName)
             }
             enemy.dropTable.forEach { drop ->
-                if (drop.item !in map) map[drop.item] = "Dropped by ${enemy.displayName} (${formatChancePct(drop.chance)})"
+                if (drop.item !in map) map[drop.item] = context.getString(R.string.armory_source_drop_chance, enemy.displayName, formatChancePct(drop.chance))
             }
         }
         gameData.bosses.forEach { (_, boss) ->
             boss.rareDrops.forEach { drop ->
-                if (drop.item !in map) map[drop.item] = "Dropped by ${boss.displayName} (${formatChancePct(drop.chance)})"
+                if (drop.item !in map) map[drop.item] = context.getString(R.string.armory_source_drop_chance, boss.displayName, formatChancePct(drop.chance))
             }
             boss.commonLoot.items.keys.forEach { key ->
-                if (key !in map) map[key] = "Dropped by ${boss.displayName}"
+                if (key !in map) map[key] = context.getString(R.string.armory_source_drop, boss.displayName)
             }
         }
         gameData.marketplace.forEach { (_, category) ->
-            category.items.keys.forEach { key -> if (key !in map) map[key] = "Shop" }
+            category.items.keys.forEach { key -> if (key !in map) map[key] = context.getString(R.string.armory_source_shop) }
         }
 
         return map

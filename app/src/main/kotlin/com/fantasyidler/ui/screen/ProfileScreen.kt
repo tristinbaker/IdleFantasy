@@ -1259,12 +1259,12 @@ internal fun weaponXpLabel(combatStyle: String?, context: android.content.Contex
     else       -> null
 }
 
-internal fun buildEquipDetail(item: com.fantasyidler.data.json.EquipmentData, context: android.content.Context): String {
+internal fun buildEquipDetail(item: com.fantasyidler.data.json.EquipmentData, context: android.content.Context, showReq: Boolean = true): String {
     val parts = mutableListOf<String>()
     item.miningEfficiency?.let      { parts.add("${context.getString(R.string.profile_stat_mining)} ×${"%.2f".format(it)}") }
     item.woodcuttingEfficiency?.let { parts.add("${context.getString(R.string.profile_stat_wc)} ×${"%.2f".format(it)}") }
     item.fishingEfficiency?.let     { parts.add("${context.getString(R.string.profile_stat_fishing)} ×${"%.2f".format(it)}") }
-    item.farmingEfficiency?.let     { parts.add("${context.getString(R.string.profile_stat_farming)} ×${"%.2f".format(1f + it)}") }
+    item.farmingEfficiency?.let     { parts.add("${context.getString(R.string.profile_stat_farming)} ${context.getString(R.string.farming_fertilizer_yield, (it * 100).toInt())}") }
     if (parts.isEmpty()) {
         if (item.attackBonus   != 0) parts.add("${context.getString(R.string.profile_stat_atk)} +${item.attackBonus}")
         if (item.strengthBonus != 0) parts.add("${context.getString(R.string.profile_stat_str)} +${item.strengthBonus}")
@@ -1274,8 +1274,11 @@ internal fun buildEquipDetail(item: com.fantasyidler.data.json.EquipmentData, co
     if ((item.rangedStrengthBonus ?: 0) != 0) parts.add("${context.getString(R.string.profile_stat_ranged)} ${context.getString(R.string.profile_stat_str)} +${item.rangedStrengthBonus}")
     if ((item.magicAttackBonus    ?: 0) != 0) parts.add("${context.getString(R.string.profile_stat_magic)} ${context.getString(R.string.profile_stat_atk)} +${item.magicAttackBonus}")
     if ((item.magicDamageBonus    ?: 0) != 0) parts.add("${context.getString(R.string.profile_stat_magic)} Dmg +${item.magicDamageBonus}")
-    for ((skill, lvl) in item.requirements) {
-        parts.add("${context.getString(R.string.profile_req_lv)}$lvl ${skill.replaceFirstChar { it.uppercase() }}")
+    if (item.capeBonus != 0f) parts.add("${context.getString(R.string.armory_stat_cape)} +${(item.capeBonus * 100).toInt()}%")
+    if (showReq) {
+        for ((skill, lvl) in item.requirements) {
+            parts.add("${context.getString(R.string.profile_req_lv)} $lvl ${skill.replaceFirstChar { it.uppercase() }}")
+        }
     }
     return parts.joinToString("  •  ")
 }

@@ -1222,6 +1222,27 @@
     <string name="armory_filter_armor">Armure</string>
     <string name="armory_filter_accessories">Accessoires</string>
     <string name="armory_filter_tools">Outils</string>
+    <string name="armory_progress_bar">obtenus</string>
+    <string name="armory_stat_mining">Efficacité minage</string>
+    <string name="armory_stat_woodcutting">Efficacité bucheronage</string>
+    <string name="armory_stat_fishing">Efficacité pêche</string>
+    <string name="armory_stat_farming">Efficacité agriculture</string>
+    <string name="armory_stat_attack">Attaque Bonus</string>
+    <string name="armory_stat_strength">Force Bonus</string>
+    <string name="armory_stat_defense">Défense Bonus</string>
+    <string name="armory_stat_ranged_atk">Distance Attaque</string>
+    <string name="armory_stat_ranged_str">Distance Force</string>
+    <string name="armory_stat_magic_atk">Magique Attaque</string>
+    <string name="armory_stat_magic_dmg">Magique Dommage</string>
+    <string name="armory_stat_cape">Expérience Bonus</string>
+    <string name="armory_source_carnival">Boutique des prix du carnaval</string>
+    <string name="armory_source_smithing">Forge</string>
+    <string name="armory_source_crafting">Artisanat</string>
+    <string name="armory_source_fletching">Archerie</string>
+    <string name="armory_source_drop_always">Laché par %1$s (Toujours)</string>
+    <string name="armory_source_drop_chance">Laché par %1$s (%2$s)</string>
+    <string name="armory_source_drop">Laché par %1$s</string>
+    <string name="armory_source_shop">Magasin</string>
 
     <!-- Boss Descriptions -->
     <string name="boss_king_black_dragon_desc">Le légendaire dragon à trois têtes, craint dans tout le royaume.</string>
