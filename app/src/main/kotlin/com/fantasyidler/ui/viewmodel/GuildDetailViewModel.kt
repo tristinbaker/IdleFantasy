@@ -23,6 +23,9 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
+import android.content.Context
+import com.fantasyidler.R
+import dagger.hilt.android.qualifiers.ApplicationContext
 
 data class GuildDetailUiState(
     val isLoading: Boolean = true,
@@ -43,6 +46,7 @@ data class GuildDetailUiState(
 @HiltViewModel
 class GuildDetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
+    @ApplicationContext private val context: Context,
     private val playerRepo: PlayerRepository,
     private val guildRepo: GuildRepository,
     private val gameData: GameDataRepository,
@@ -128,7 +132,7 @@ class GuildDetailViewModel @Inject constructor(
                         rewards.items.forEach { (key, qty) -> add("${key.toTitleCase()} x$qty") }
                     }
                     val suffix = if (parts.isNotEmpty()) " (${parts.joinToString(", ")})" else ""
-                    _extra.update { it.copy(snackbarMessage = "Quest complete: $questName!$suffix") }
+                    _extra.update { it.copy(snackbarMessage = context.getString(R.string.guild_quest_complete, questName) + suffix) }
                 }
                 else -> Unit
             }
@@ -153,7 +157,7 @@ class GuildDetailViewModel @Inject constructor(
                 rewards.items.forEach { (key, qty) -> add("${key.toTitleCase()} x$qty") }
             }
             val suffix = if (parts.isNotEmpty()) " (${parts.joinToString(", ")})" else ""
-            _extra.update { it.copy(snackbarMessage = "Daily reward claimed!$suffix") }
+            _extra.update { it.copy(snackbarMessage = context.getString(R.string.guild_daily_reward_claimed) + suffix) }
         }
     }
 
@@ -162,7 +166,7 @@ class GuildDetailViewModel @Inject constructor(
             val inventory: Map<String, Int> = json.decodeFromString(playerRepo.getOrCreatePlayer().inventory)
             val consumed = guildRepo.contributeFarmingDaily(templateId, inventory)
             if (consumed > 0) {
-                _extra.update { it.copy(snackbarMessage = "Contributed $consumed items.") }
+                _extra.update { it.copy(snackbarMessage = context.getString(R.string.guild_contributed_items, consumed)) }
             }
         }
     }

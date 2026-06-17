@@ -24,6 +24,9 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
 import javax.inject.Inject
+import android.content.Context
+import com.fantasyidler.R
+import dagger.hilt.android.qualifiers.ApplicationContext
 
 data class MercantileUiState(
     val mercantileLevel: Int = 1,
@@ -39,6 +42,7 @@ data class MercantileUiState(
 
 @HiltViewModel
 class MercantileViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val playerRepo: PlayerRepository,
     private val sessionRepo: SessionRepository,
     private val gameData: GameDataRepository,
@@ -78,7 +82,7 @@ class MercantileViewModel @Inject constructor(
             val player = playerRepo.getOrCreatePlayer()
 
             if (player.coins < route.coinCost) {
-                _extra.update { it.copy(snackbarMessage = "Not enough coins (need ${route.coinCost} coins).") }
+                _extra.update { it.copy(snackbarMessage = context.getString(R.string.mercantile_not_enough_coins, route.coinCost.toString())) }
                 return@launch
             }
 
@@ -89,7 +93,7 @@ class MercantileViewModel @Inject constructor(
             if (sessionRepo.getActiveSession() != null) {
                 val spent = playerRepo.spendCoins(route.coinCost.toLong())
                 if (!spent) {
-                    _extra.update { it.copy(snackbarMessage = "Not enough coins (need ${route.coinCost} coins).") }
+                    _extra.update { it.copy(snackbarMessage = context.getString(R.string.mercantile_not_enough_coins, route.coinCost.toString())) }
                     return@launch
                 }
                 val enqueued = playerRepo.enqueueAction(
@@ -106,9 +110,9 @@ class MercantileViewModel @Inject constructor(
                 }
                 _extra.update {
                     it.copy(snackbarMessage = if (enqueued)
-                        "Added to queue: Mercantile — ${route.displayName}."
+                        context.getString(R.string.mercantile_added_to_queue, route.displayName)
                     else
-                        "Queue is full (3/3).")
+                        context.getString(R.string.snackbar_queue_full))
                 }
                 return@launch
             }
@@ -117,7 +121,7 @@ class MercantileViewModel @Inject constructor(
             try {
                 val spent = playerRepo.spendCoins(route.coinCost.toLong())
                 if (!spent) {
-                    _extra.update { it.copy(snackbarMessage = "Not enough coins (need ${route.coinCost} coins).") }
+                    _extra.update { it.copy(snackbarMessage = context.getString(R.string.mercantile_not_enough_coins, route.coinCost.toString())) }
                     return@launch
                 }
 
@@ -136,7 +140,7 @@ class MercantileViewModel @Inject constructor(
                 )
             } catch (e: Exception) {
                 playerRepo.addCoins(route.coinCost.toLong())
-                _extra.update { it.copy(snackbarMessage = "Failed to start route: ${e.message}") }
+                _extra.update { it.copy(snackbarMessage = context.getString(R.string.mercantile_route_start_failed, e.message ?: "")) }
             } finally {
                 _extra.update { it.copy(startingSession = false) }
             }

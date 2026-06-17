@@ -41,9 +41,12 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
+import com.fantasyidler.R
+import dagger.hilt.android.qualifiers.ApplicationContext
 
 @HiltViewModel
 class InventoryViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val playerRepo: PlayerRepository,
     private val gameData: GameDataRepository,
     private val json: Json,
@@ -164,7 +167,7 @@ class InventoryViewModel @Inject constructor(
                 val msg = unmetReqs.joinToString(", ") { (skill, lvl) ->
                     "${skill.replaceFirstChar { c -> c.uppercase() }} $lvl"
                 }
-                _extra.update { it.copy(snackbarMessage = "Requires $msg to equip.") }
+                _extra.update { it.copy(snackbarMessage = context.getString(R.string.inventory_requires_to_equip, msg)) }
                 return@launch
             }
             val current = playerRepo.getEquipped().toMutableMap()
@@ -204,7 +207,10 @@ class InventoryViewModel @Inject constructor(
                             EquipSlot.AXE         -> item.woodcuttingEfficiency ?: 0f
                             EquipSlot.FISHING_ROD -> item.fishingEfficiency ?: 0f
                             EquipSlot.HOE         -> item.farmingEfficiency ?: 0f
-                            else -> (item.attackBonus + item.strengthBonus + item.defenseBonus).toFloat()
+                            else -> if (slot in EquipSlot.WEAPON_SLOTS)
+                            item.attackBonus * 1.5f + item.strengthBonus * 1.0f + item.defenseBonus * 0.5f
+                        else
+                            item.defenseBonus * 2.0f + item.attackBonus * 1.0f + item.strengthBonus * 0.5f
                         }
                     }
 

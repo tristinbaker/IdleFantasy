@@ -138,7 +138,7 @@ class ExpeditionsViewModel @Inject constructor(
                     )
                 )
                 _extra.update {
-                    it.copy(snackbarMessage = if (enqueued) "Added to queue: ${dungeon.displayName}." else "Queue is full (3/3).")
+                    it.copy(snackbarMessage = if (enqueued) context.getString(R.string.snackbar_added_to_queue, dungeon.displayName) else context.getString(R.string.snackbar_queue_full))
                 }
                 return@launch
             }

@@ -1,0 +1,11 @@
+• Fix "Repeat Session" on boss sessions always repeating as Melee style regardless of equipped weapon; now reads the stored active weapon slot (or falls back to equipped weapon) for correct combat style detection.
+• Fix XP breakdown in boss and dungeon session results showing incorrect "Blessing bonus" amounts; total XP now correctly factors in both the 2x boost and active blessing multiplier.
+• Fix skill cape XP bonus percentage in the Bonuses tab displaying as negative (e.g. -90% instead of +10%); the bonus fraction is now applied correctly.
+• Restructure the Bonuses tab to show per-skill combined XP bonuses; skill cape, pet, and prestige bonuses are now grouped by skill with the total multiplier and individual sources shown per skill.
+• Extract user-facing notification and snackbar strings into localisable string resources across ViewModels and screen files, with translations in all 8 supported languages.
+• When opening a recipe in the crafting screen, a "Quest targets" row now appears showing chips for any active quests, daily quests, weekly challenges, or guild dailies that require that item; tapping a chip sets the craft quantity to exactly the remaining amount needed.
+• Fix Mercantile trade route balance: Grand Exchange was always a net loss on average at level 99 and is now profitable; all routes have doubled per-minute spread so session outcomes are genuinely variable rather than practically fixed each run.
+• Fix "Equip Best Gear" to use weighted stat scoring: weapons prioritise attack bonus (hit chance) over strength and defence, while armour and jewellery prioritise defence over offensive stats.
+• Italian translation update by community contributor Stark-Night: remaining untranslated strings now localised, improved natural wording throughout, and several minor typos corrected.
+• "Sell Junk" and "Sell Old Gear" now show a confirmation sheet listing every item that would be sold with its quantity and coin value before anything is removed from inventory.
+• The Armory now remembers every item you have ever obtained; selling or consuming an item no longer removes it from your armory collection count.

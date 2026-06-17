@@ -679,7 +679,7 @@ private fun WorkerCraftRecipeRow(
                     )
                 }
                 else -> Text(
-                    text  = "No mats",
+                    text  = stringResource(R.string.worker_no_mats),
                     style = MaterialTheme.typography.labelSmall,
                     color = dim,
                 )

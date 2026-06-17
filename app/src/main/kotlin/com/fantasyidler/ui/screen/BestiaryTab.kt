@@ -495,7 +495,7 @@ private fun BestiaryDropTable(rows: List<Triple<String, String, String?>>) {
                 .padding(horizontal = 12.dp, vertical = 5.dp),
         ) {
             Text(
-                text     = "Item",
+                text     = stringResource(R.string.bestiary_loot_item_header),
                 modifier = Modifier.weight(1f),
                 style    = MaterialTheme.typography.labelSmall,
                 color    = GoldPrimary,

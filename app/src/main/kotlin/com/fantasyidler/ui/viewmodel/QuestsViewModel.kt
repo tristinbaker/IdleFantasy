@@ -27,6 +27,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
+import android.content.Context
+import com.fantasyidler.R
+import dagger.hilt.android.qualifiers.ApplicationContext
 
 // ---------------------------------------------------------------------------
 // Data classes
@@ -62,6 +65,7 @@ data class QuestsUiState(
 
 @HiltViewModel
 class QuestsViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val questRepo: QuestRepository,
     private val gameData: GameDataRepository,
     private val playerRepo: PlayerRepository,
@@ -197,7 +201,7 @@ class QuestsViewModel @Inject constructor(
             rewards.items.forEach { (_, qty) -> add("×$qty item${if (qty != 1) "s" else ""}") }
         }
         val claimedText = if (parts.isNotEmpty()) " Claimed: ${parts.joinToString(", ")}" else ""
-        _extra.update { it.copy(snackbarMessage = "Quest complete: ${quest.name}!$claimedText") }
+        _extra.update { it.copy(snackbarMessage = context.getString(R.string.quest_complete_notification, quest.name) + claimedText) }
     }
 
     fun snackbarConsumed() = _extra.update { it.copy(snackbarMessage = null) }
@@ -222,11 +226,11 @@ class QuestsViewModel @Inject constructor(
             val message = when (reward) {
                 is DailyReward.CoinsReward -> {
                     playerRepo.addCoins(reward.amount.toLong())
-                    "Daily quest complete! +${reward.amount.toLong().formatCoins()} coins"
+                    context.getString(R.string.quest_daily_complete_coins, reward.amount.toLong().formatCoins())
                 }
                 is DailyReward.DwarvenItemReward -> {
                     playerRepo.addItem(reward.itemKey, 1)
-                    "Daily quest complete! You found dwarven gear!"
+                    context.getString(R.string.quest_daily_complete_dwarven)
                 }
             }
             _extra.update { it.copy(snackbarMessage = message) }
@@ -239,7 +243,7 @@ class QuestsViewModel @Inject constructor(
             val (newFlags, rewardCoins) = weeklyQuestRepo.claimQuest(flags, templateId)
             playerRepo.updateFlags(newFlags)
             playerRepo.addCoins(rewardCoins)
-            _extra.update { it.copy(snackbarMessage = "Weekly challenge complete! +${rewardCoins.formatCoins()} coins") }
+            _extra.update { it.copy(snackbarMessage = context.getString(R.string.quest_weekly_complete, rewardCoins.formatCoins())) }
         }
     }
 
@@ -256,11 +260,11 @@ class QuestsViewModel @Inject constructor(
             val message = when (reward) {
                 is WeeklyBonusReward.CoinsReward -> {
                     playerRepo.addCoins(reward.amount)
-                    "All weekly challenges complete! +${reward.amount.formatCoins()} coins"
+                    context.getString(R.string.quest_weekly_bonus_complete_coins, reward.amount.formatCoins())
                 }
                 is WeeklyBonusReward.DivineItemReward -> {
                     playerRepo.addItem(reward.itemKey, 1)
-                    "All weekly challenges complete! You found divine gear!"
+                    context.getString(R.string.quest_weekly_bonus_complete_divine)
                 }
             }
             _extra.update { it.copy(snackbarMessage = message) }

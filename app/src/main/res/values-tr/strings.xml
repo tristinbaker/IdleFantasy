@@ -517,6 +517,10 @@
     <string name="crafting_needed_have">%1$d (sende olan %2$d)</string>
     <!-- Translator note: %1$d = quantity in inventory -->
     <string name="crafting_in_inventory">Envanterde: ×%1$d</string>
+    <string name="crafting_quest_targets">Görev hedefleri</string>
+    <string name="quest_fill_daily">Günlük</string>
+    <string name="quest_fill_weekly">Haftalık</string>
+    <string name="quest_fill_guild">Lonca</string>
 
     <!-- ===== FarmingScreen ===== -->
     <!-- Translator note: %1$s = crop name -->
@@ -1221,6 +1225,16 @@
     <string name="bonus_none">Aktif XP bonusu yok</string>
     <string name="bonus_all_skills">Tüm beceriler</string>
     <string name="bonus_section_boosts">Aktif bonuslar</string>
+    <string name="bonus_section_skills">Skill Bonuses</string>
+    <string name="bonus_combat_stat_boost">Boosts combat stats</string>
+    <string name="snackbar_added_to_queue">Sıraya eklendi: %1$s.</string>
+    <string name="snackbar_queue_full">Sıra dolu (3/3).</string>
+    <string name="home_not_enough_coins_repeat">%1$s tekrarlamak için yeterli altın yok.</string>
+    <string name="home_not_enough_materials_repeat">%1$s tekrarlamak için yeterli malzeme yok.</string>
+    <string name="combat_start_failed">Başlatılamadı: %1$s</string>
+    <string name="combat_select_spell">Select a spell before entering.</string>
+    <string name="combat_spell_level_required">Need Magic %1$d for %2$s.</string>
+    <string name="guild_daily_reward_claimed">Daily reward claimed!</string>
     <string name="armory_not_owned">Bu eşyaya sahip değilsiniz.</string>
     <string name="armory_how_to_obtain">Nasıl edinilir</string>
     <string name="armory_no_stats">İstatistik bonusu yok.</string>
@@ -1229,6 +1243,48 @@
     <string name="armory_filter_armor">Zırh</string>
     <string name="armory_filter_accessories">Aksesuarlar</string>
     <string name="armory_filter_tools">Aletler</string>
+
+    <!-- Session / queue messages (issue #596) -->
+    <string name="skill_no_logs">Envanterde kütük yok</string>
+    <string name="skill_not_enough_rune_essence">Yeterli Rün Özü yok</string>
+    <string name="skill_not_enough_item">Yeterli %1$s yok</string>
+    <string name="skill_not_enough_materials">Yeterli malzeme yok</string>
+    <string name="skill_session_start_failed">Oturum başlatılamadı: %1$s</string>
+    <string name="skill_added_to_queue_activity">Sıraya eklendi: %1$s — %2$s.</string>
+    <string name="worker_already_busy">İşçi zaten meşgul.</string>
+    <string name="worker_not_enough_logs">Yeterli kütük yok.</string>
+    <string name="worker_not_enough_rune_essence">Yeterli Rün Özü yok.</string>
+    <string name="worker_not_enough_materials">Yeterli malzeme yok.</string>
+    <string name="shop_no_junk">Satılacak ıvır zıvır yok</string>
+    <string name="shop_sold_junk">Ivır zıvır %1$s altına satıldı</string>
+    <string name="shop_no_old_equipment">Satılacak eski ekipman yok</string>
+    <string name="shop_sold_old_equipment">Eski ekipman %1$s altına satıldı</string>
+    <string name="shop_bulk_sell_total">Toplam</string>
+    <string name="shop_bulk_sell_confirm">Hepsini sat</string>
+    <string name="shop_xp_boost_activated">2× XP bonusu %1$d saat için aktifleştirildi!</string>
+    <string name="shop_not_enough_in_inventory">Envanterde yeterli değil</string>
+    <string name="shop_bought_item">%1$d× %2$s satın alındı</string>
+    <string name="shop_sold_item">%1$d× %2$s, %3$d altına satıldı</string>
+    <string name="quest_complete_notification">Görev tamamlandı: %1$s!</string>
+    <string name="quest_complete_with_rewards">Görev tamamlandı: %1$s! Alındı: %2$s</string>
+    <string name="quest_daily_complete_coins">Günlük görev tamamlandı! +%1$s altın</string>
+    <string name="quest_daily_complete_dwarven">Günlük görev tamamlandı! Cüce ekipmanı buldunuz!</string>
+    <string name="quest_weekly_complete">Haftalık görev tamamlandı! +%1$s altın</string>
+    <string name="quest_weekly_bonus_complete_coins">Tüm haftalık görevler tamamlandı! +%1$s altın</string>
+    <string name="quest_weekly_bonus_complete_divine">Tüm haftalık görevler tamamlandı! İlahi ekipman buldunuz!</string>
+    <string name="guild_contributed_items">%1$d eşya katkıda bulunuldu.</string>
+    <string name="mercantile_not_enough_coins">Yeterli altın yok (%1$s altın gerekli).</string>
+    <string name="mercantile_route_start_failed">Rota başlatılamadı: %1$s</string>
+    <string name="mercantile_added_to_queue">Sıraya eklendi: Ticaret — %1$s.</string>
+    <string name="inventory_requires_to_equip">Ekipman için %1$s gerekli.</string>
+    <string name="home_found_pet">Bir evcil hayvan buldunuz: %1$s!</string>
+    <string name="home_congratulations_received">Tebrikler! Aldığınız: %1$s</string>
+    <string name="combat_no_food_title">Yiyecek Takılı Değil</string>
+    <string name="combat_no_food_body">Yiyecek takılı değil. Yiyecek olmadan çabuk ölebilir ve ödüllerin çoğunu kaybedebilirsiniz. Yine de başlansın mı?</string>
+    <string name="combat_start_anyway">Yine de başla</string>
+    <string name="combat_xp_consolation">XP (teselli)</string>
+    <string name="bestiary_loot_item_header">Eşya</string>
+    <string name="worker_no_mats">Mat. yok</string>
 
     <!-- Boss Descriptions -->
     <string name="boss_king_black_dragon_desc">Tüm diyarda korkulan efsanevi üç başlı ejderha.</string>

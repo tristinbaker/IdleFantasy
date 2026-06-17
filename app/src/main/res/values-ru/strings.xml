@@ -581,6 +581,10 @@
     <string name="crafting_needed_have">%1$d (есть %2$d)</string>
     <!-- Translator note: %1$d = quantity in inventory -->
     <string name="crafting_in_inventory">В инвентаре: ×%1$d</string>
+    <string name="crafting_quest_targets">Цели квеста</string>
+    <string name="quest_fill_daily">Ежедневно</string>
+    <string name="quest_fill_weekly">Еженедельно</string>
+    <string name="quest_fill_guild">Гильдия</string>
 
     <!-- ===== FarmingScreen ===== -->
     <!-- Translator note: %1$s = crop name -->
@@ -1246,6 +1250,16 @@
     <string name="bonus_none">Нет активных бонусов к опыту</string>
     <string name="bonus_all_skills">Все навыки</string>
     <string name="bonus_section_boosts">Активные бонусы</string>
+    <string name="bonus_section_skills">Skill Bonuses</string>
+    <string name="bonus_combat_stat_boost">Boosts combat stats</string>
+    <string name="snackbar_added_to_queue">Добавлено в очередь: %1$s.</string>
+    <string name="snackbar_queue_full">Очередь заполнена (3/3).</string>
+    <string name="home_not_enough_coins_repeat">Недостаточно монет для повтора %1$s.</string>
+    <string name="home_not_enough_materials_repeat">Недостаточно материалов для повтора %1$s.</string>
+    <string name="combat_start_failed">Не удалось запустить: %1$s</string>
+    <string name="combat_select_spell">Select a spell before entering.</string>
+    <string name="combat_spell_level_required">Need Magic %1$d for %2$s.</string>
+    <string name="guild_daily_reward_claimed">Daily reward claimed!</string>
     <string name="armory_not_owned">У вас нет этого предмета.</string>
     <string name="armory_how_to_obtain">Как получить</string>
     <string name="armory_no_stats">Нет бонусов характеристик.</string>
@@ -1254,6 +1268,48 @@
     <string name="armory_filter_armor">Броня</string>
     <string name="armory_filter_accessories">Аксессуары</string>
     <string name="armory_filter_tools">Инструменты</string>
+
+    <!-- Session / queue messages (issue #596) -->
+    <string name="skill_no_logs">Нет брёвен в инвентаре</string>
+    <string name="skill_not_enough_rune_essence">Недостаточно Сущности рун</string>
+    <string name="skill_not_enough_item">Недостаточно %1$s</string>
+    <string name="skill_not_enough_materials">Недостаточно материалов</string>
+    <string name="skill_session_start_failed">Не удалось запустить сеанс: %1$s</string>
+    <string name="skill_added_to_queue_activity">Добавлено в очередь: %1$s — %2$s.</string>
+    <string name="worker_already_busy">Рабочий уже занят.</string>
+    <string name="worker_not_enough_logs">Недостаточно брёвен.</string>
+    <string name="worker_not_enough_rune_essence">Недостаточно Сущности рун.</string>
+    <string name="worker_not_enough_materials">Недостаточно материалов.</string>
+    <string name="shop_no_junk">Нет хлама для продажи</string>
+    <string name="shop_sold_junk">Хлам продан за %1$s монет</string>
+    <string name="shop_no_old_equipment">Нет устаревшего снаряжения для продажи</string>
+    <string name="shop_sold_old_equipment">Старое снаряжение продано за %1$s монет</string>
+    <string name="shop_bulk_sell_total">Итого</string>
+    <string name="shop_bulk_sell_confirm">Продать всё</string>
+    <string name="shop_xp_boost_activated">Бонус XP 2× активирован на %1$d ч!</string>
+    <string name="shop_not_enough_in_inventory">Недостаточно в инвентаре</string>
+    <string name="shop_bought_item">Куплено %1$d× %2$s</string>
+    <string name="shop_sold_item">%1$d× %2$s продано за %3$d монет</string>
+    <string name="quest_complete_notification">Задание выполнено: %1$s!</string>
+    <string name="quest_complete_with_rewards">Задание выполнено: %1$s! Получено: %2$s</string>
+    <string name="quest_daily_complete_coins">Ежедневное задание выполнено! +%1$s монет</string>
+    <string name="quest_daily_complete_dwarven">Ежедневное задание выполнено! Вы нашли гномье снаряжение!</string>
+    <string name="quest_weekly_complete">Еженедельный вызов выполнен! +%1$s монет</string>
+    <string name="quest_weekly_bonus_complete_coins">Все еженедельные вызовы выполнены! +%1$s монет</string>
+    <string name="quest_weekly_bonus_complete_divine">Все еженедельные вызовы выполнены! Вы нашли божественное снаряжение!</string>
+    <string name="guild_contributed_items">Внесено %1$d предметов.</string>
+    <string name="mercantile_not_enough_coins">Недостаточно монет (нужно %1$s монет).</string>
+    <string name="mercantile_route_start_failed">Не удалось запустить маршрут: %1$s</string>
+    <string name="mercantile_added_to_queue">Добавлено в очередь: Торговля — %1$s.</string>
+    <string name="inventory_requires_to_equip">Для экипировки требуется %1$s.</string>
+    <string name="home_found_pet">Вы нашли питомца: %1$s!</string>
+    <string name="home_congratulations_received">Поздравляем! Вы получили: %1$s</string>
+    <string name="combat_no_food_title">Еда не экипирована</string>
+    <string name="combat_no_food_body">У вас нет еды. Без еды вы можете быстро погибнуть и потерять большинство наград. Всё равно начать?</string>
+    <string name="combat_start_anyway">Начать всё равно</string>
+    <string name="combat_xp_consolation">Опыт (утешительный)</string>
+    <string name="bestiary_loot_item_header">Предмет</string>
+    <string name="worker_no_mats">Нет мат.</string>
 
     <!-- Boss Descriptions -->
     <string name="boss_king_black_dragon_desc">Легендарный трехголовый дракон, которого боятся во всем королевстве.</string>

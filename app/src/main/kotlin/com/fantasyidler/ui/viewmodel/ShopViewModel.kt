@@ -19,10 +19,31 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
+import android.content.Context
+import com.fantasyidler.R
+import com.fantasyidler.util.GameStrings
+import dagger.hilt.android.qualifiers.ApplicationContext
 
 // ---------------------------------------------------------------------------
 // Models
 // ---------------------------------------------------------------------------
+
+data class BulkSellItem(
+    val key: String,
+    val displayName: String,
+    val qty: Int,
+    val priceEach: Int,
+) {
+    val total: Long get() = priceEach.toLong() * qty
+}
+
+data class BulkSellPreview(
+    val titleRes: Int,
+    val soldMsgRes: Int,
+    val items: List<BulkSellItem>,
+) {
+    val totalCoins: Long get() = items.sumOf { it.total }
+}
 
 /** A flat, display-ready buy entry derived from MarketplaceJson. */
 data class ShopEntry(
@@ -53,6 +74,7 @@ data class ShopUiState(
     val equipped: Map<String, String?> = emptyMap(),
     val xpBoostExpiresAt: Long = 0L,
     val transaction: ShopTransaction? = null,
+    val pendingBulkSell: BulkSellPreview? = null,
     val snackbarMessage: String? = null,
     val isLoading: Boolean = true,
     /** Items reserved by queued actions — cannot be sold. */
@@ -68,6 +90,7 @@ data class ShopUiState(
 
 @HiltViewModel
 class ShopViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val playerRepo: PlayerRepository,
     private val gameData: GameDataRepository,
     private val json: Json,
@@ -300,23 +323,19 @@ class ShopViewModel @Inject constructor(
     // Bulk sell helpers
     // ------------------------------------------------------------------
 
-    /** Sell all items that have no gameplay use (not equipment, food, materials, etc.). */
-    fun sellJunk() {
+    fun previewSellJunk() {
         viewModelScope.launch {
             val inventory = uiState.value.inventory
             val useful    = gameData.usefulItemKeys
             val junk      = inventory.filterKeys { it != "coins" && it !in useful }
             if (junk.isEmpty()) {
-                _extra.update { it.copy(snackbarMessage = "No junk to sell") }
+                _extra.update { it.copy(snackbarMessage = context.getString(R.string.shop_no_junk)) }
                 return@launch
             }
-            var total = 0L
-            for ((key, qty) in junk) {
-                val price = sellPriceFor(key)
-                playerRepo.sellItem(key, qty, price)
-                total += price.toLong() * qty
-            }
-            _extra.update { it.copy(snackbarMessage = "Sold junk for ${total.toCoinsString()} coins") }
+            val items = junk.map { (key, qty) ->
+                BulkSellItem(key, GameStrings.itemName(context, key), qty, sellPriceFor(key))
+            }.sortedBy { it.displayName }
+            _extra.update { it.copy(pendingBulkSell = BulkSellPreview(R.string.shop_sell_junk, R.string.shop_sold_junk, items)) }
         }
     }
 
@@ -324,7 +343,7 @@ class ShopViewModel @Inject constructor(
      * Sell equipment in inventory that is strictly weaker than what's currently
      * equipped in the same slot. Weapons are excluded per user request.
      */
-    fun sellOldEquipment() {
+    fun previewSellOldEquipment() {
         viewModelScope.launch {
             val state     = uiState.value
             val equipped  = state.equipped
@@ -362,18 +381,30 @@ class ShopViewModel @Inject constructor(
             }
 
             if (toSell.isEmpty()) {
-                _extra.update { it.copy(snackbarMessage = "No old equipment to sell") }
+                _extra.update { it.copy(snackbarMessage = context.getString(R.string.shop_no_old_equipment)) }
                 return@launch
             }
-            var total = 0L
-            for ((key, qty) in toSell) {
-                val price = sellPriceFor(key)
-                playerRepo.sellItem(key, qty, price)
-                total += price.toLong() * qty
-            }
-            _extra.update { it.copy(snackbarMessage = "Sold old equipment for ${total.toCoinsString()} coins") }
+            val items = toSell.map { (key, qty) ->
+                BulkSellItem(key, GameStrings.itemName(context, key), qty, sellPriceFor(key))
+            }.sortedBy { it.displayName }
+            _extra.update { it.copy(pendingBulkSell = BulkSellPreview(R.string.shop_sell_old_gear, R.string.shop_sold_old_equipment, items)) }
         }
     }
+
+    fun confirmBulkSell() {
+        val preview = _extra.value.pendingBulkSell ?: return
+        viewModelScope.launch {
+            for (item in preview.items) {
+                playerRepo.sellItem(item.key, item.qty, item.priceEach)
+            }
+            _extra.update { it.copy(
+                pendingBulkSell = null,
+                snackbarMessage = context.getString(preview.soldMsgRes, preview.totalCoins.toCoinsString()),
+            )}
+        }
+    }
+
+    fun dismissBulkSell() = _extra.update { it.copy(pendingBulkSell = null) }
 
     // ------------------------------------------------------------------
     // Transactions
@@ -443,8 +474,8 @@ class ShopViewModel @Inject constructor(
                 _extra.update {
                     it.copy(
                         transaction     = null,
-                        snackbarMessage = if (activated) "2× XP boost activated for ${t.qty * 48}h!"
-                                          else           "Not enough coins",
+                        snackbarMessage = if (activated) context.getString(R.string.shop_xp_boost_activated, t.qty * 48)
+                                          else           context.getString(R.string.error_not_enough_coins),
                     )
                 }
                 return@launch
@@ -459,10 +490,10 @@ class ShopViewModel @Inject constructor(
                 it.copy(
                     transaction = null,
                     snackbarMessage = if (success) {
-                        if (t.isBuy) "Bought ${t.qty}× ${t.displayName}"
-                        else         "Sold ${t.qty}× ${t.displayName} for ${t.priceEach * t.qty} coins"
+                        if (t.isBuy) context.getString(R.string.shop_bought_item, t.qty, t.displayName)
+                        else         context.getString(R.string.shop_sold_item, t.qty, t.displayName, t.priceEach * t.qty)
                     } else {
-                        if (t.isBuy) "Not enough coins" else "Not enough in inventory"
+                        if (t.isBuy) context.getString(R.string.error_not_enough_coins) else context.getString(R.string.shop_not_enough_in_inventory)
                     },
                 )
             }

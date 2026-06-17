@@ -2120,6 +2120,7 @@ private fun CraftQuantityContent(
         }
         Spacer(Modifier.height(8.dp))
         QtyQuickButtons(qty, max) { onSetQuantity(it) }
+        QuestFillRow(state.questFills, qty, max, onSetQuantity)
         Spacer(Modifier.height(8.dp))
         Text(
             text       = projectedXpLabel(state.skillXp[recipe.skillName] ?: 0L, totalXp.toLong()),

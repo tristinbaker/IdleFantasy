@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fantasyidler.R
 import com.fantasyidler.data.json.EquipmentData
+import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.repository.CarnivalRepository
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
@@ -16,6 +17,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
 
@@ -45,6 +47,10 @@ class ArmoryViewModel @Inject constructor(
     private val json: Json,
 ) : ViewModel() {
 
+    init {
+        viewModelScope.launch { playerRepo.migrateSeenItems() }
+    }
+
     private val _filter = MutableStateFlow(ArmoryFilter.ALL)
 
     private val sourceMap: Map<String, String> by lazy { buildSourceMap() }
@@ -58,12 +64,13 @@ class ArmoryViewModel @Inject constructor(
         val inventory: Map<String, Int> = json.decodeFromString(player.inventory)
         val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
         val equippedValues = equipped.values.filterNotNull().toSet()
+        val flags: PlayerFlags = json.decodeFromString(player.flags)
 
         val allEntries = gameData.equipment.map { (key, item) ->
             ArmoryEntry(
                 key    = key,
                 item   = item,
-                owned  = (inventory[key] ?: 0) > 0 || key in equippedValues,
+                owned  = (inventory[key] ?: 0) > 0 || key in equippedValues || key in flags.seenItemKeys,
                 source = sourceMap[key] ?: item.description.takeIf { it.isNotBlank() } ?: "Unknown source",
             )
         }.sortedWith(compareBy({ slotSortOrder(it.item.slot) }, { it.item.displayName }))

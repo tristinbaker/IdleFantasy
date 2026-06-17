@@ -559,9 +559,16 @@ Builds:
     gradle:
       - yes
 
+  - versionName: '1.9.4'
+    versionCode: 80
+    commit: ae27e952c110b21adb05da1a6e9fe09d24c57c0b
+    subdir: app
+    gradle:
+      - yes
+
 AllowedAPKSigningKeys: 99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
-CurrentVersion: 1.9.3
-CurrentVersionCode: 79
+CurrentVersion: 1.9.4
+CurrentVersionCode: 80

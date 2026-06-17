@@ -9,10 +9,13 @@ import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.SessionFrame
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.data.json.HerbloreRecipe
+import com.fantasyidler.data.model.QuestProgress
+import com.fantasyidler.repository.DailyQuestRepository
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.QuestRepository
 import com.fantasyidler.repository.SessionRepository
+import com.fantasyidler.repository.WeeklyQuestRepository
 import com.fantasyidler.simulator.SkillSimulator
 import com.fantasyidler.simulator.XpTable
 import kotlinx.serialization.serializer
@@ -26,6 +29,15 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
+import android.content.Context
+import com.fantasyidler.R
+import dagger.hilt.android.qualifiers.ApplicationContext
+
+// ---------------------------------------------------------------------------
+// Quest fill suggestion (shown in CraftSheet when quests match the recipe)
+// ---------------------------------------------------------------------------
+
+data class QuestFillSuggestion(val label: String, val qty: Int)
 
 // ---------------------------------------------------------------------------
 // Unified recipe model (normalises all 4 recipe types for display + crafting)
@@ -89,6 +101,7 @@ data class CraftingUiState(
     val herbloreAshKey: String? = null,
     val snackbarMessage: String? = null,
     val isLoading: Boolean = true,
+    val questFills: List<QuestFillSuggestion> = emptyList(),
 ) {
     /** Returns how many times [recipe] can be crafted given [effectiveInventory]. */
     fun maxCraftable(recipe: CraftableRecipe): Int {
@@ -116,10 +129,13 @@ data class CraftingUiState(
 
 @HiltViewModel
 class CraftingViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val playerRepo: PlayerRepository,
     private val sessionRepo: SessionRepository,
     private val gameData: GameDataRepository,
     private val questRepo: QuestRepository,
+    private val dailyQuestRepo: DailyQuestRepository,
+    private val weeklyQuestRepo: WeeklyQuestRepository,
     private val json: Json,
 ) : ViewModel() {
 
@@ -133,13 +149,15 @@ class CraftingViewModel @Inject constructor(
         playerRepo.playerFlow,
         sessionRepo.activeSessionFlow,
         _extra,
-    ) { player, _, extra ->
+        questRepo.observeProgress(),
+    ) { player, _, extra, questProgress ->
         if (player == null) {
             extra
         } else {
             val levels: Map<String, Int> = json.decodeFromString(player.skillLevels)
             val xp: Map<String, Long> = json.decodeFromString(player.skillXp)
             val inventory: Map<String, Int> = json.decodeFromString(player.inventory)
+            val flags: PlayerFlags = json.decodeFromString(player.flags)
             extra.copy(
                 smithingLevel      = levels[Skills.SMITHING]      ?: 1,
                 cookingLevel       = levels[Skills.COOKING]       ?: 1,
@@ -152,6 +170,7 @@ class CraftingViewModel @Inject constructor(
                 inventory          = inventory,
                 effectiveInventory = computeEffectiveInventory(inventory),
                 isLoading          = false,
+                questFills         = computeQuestFills(extra.selectedRecipe, questProgress, flags),
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), CraftingUiState())
@@ -340,7 +359,7 @@ class CraftingViewModel @Inject constructor(
                 if (enqueued) playerRepo.consumeItems(recipe.materials.mapValues { it.value * qty })
                 _extra.update {
                     it.copy(
-                        snackbarMessage = if (enqueued) "Added to queue: ${recipe.displayName}." else "Queue is full (3/3).",
+                        snackbarMessage = if (enqueued) context.getString(R.string.snackbar_added_to_queue, recipe.displayName) else context.getString(R.string.snackbar_queue_full),
                         selectedRecipe  = null,
                     )
                 }
@@ -352,7 +371,7 @@ class CraftingViewModel @Inject constructor(
             val player = playerRepo.getOrCreatePlayer()
             val freshInv: Map<String, Int> = json.decodeFromString(player.inventory)
             if (!recipe.materials.all { (item, needed) -> (freshInv[item] ?: 0) >= needed * qty }) {
-                _extra.update { it.copy(snackbarMessage = "Not enough materials") }
+                _extra.update { it.copy(snackbarMessage = context.getString(R.string.skill_not_enough_materials)) }
                 return@launch
             }
             val xpMap: Map<String, Long> = json.decodeFromString(player.skillXp)
@@ -408,4 +427,99 @@ class CraftingViewModel @Inject constructor(
         // so the actual inventory is already the ground truth.
         return inventory
     }
+
+    private fun computeQuestFills(
+        recipe: CraftableRecipe?,
+        questProgress: List<QuestProgress>,
+        flags: PlayerFlags,
+    ): List<QuestFillSuggestion> {
+        if (recipe == null) return emptyList()
+        val fills = mutableListOf<QuestFillSuggestion>()
+        val progressById = questProgress.associateBy { it.questId }
+
+        // Regular quests
+        for ((id, quest) in gameData.quests) {
+            if (quest.type != "craft" && quest.type != "craft_any") continue
+            val prog = progressById[id]
+            if (prog?.completed == true) continue
+            val progress = prog?.progress ?: 0
+            val matches = when (quest.type) {
+                "craft"     -> quest.target == recipe.outputKey
+                "craft_any" -> quest.skill  == recipe.skillName
+                else        -> false
+            }
+            if (matches) {
+                val remaining = quest.amount - progress
+                if (remaining > 0)
+                    fills += QuestFillSuggestion(quest.name, ceilDiv(remaining, recipe.outputQty))
+            }
+        }
+
+        // Guild progression quests (guild_quests.json, tracked in same quest_progress table)
+        for ((id, quest) in gameData.guildQuests) {
+            if (quest.type != "craft" && quest.type != "craft_any") continue
+            val prog = progressById[id]
+            if (prog?.completed == true) continue
+            val progress = prog?.progress ?: 0
+            val matches = when (quest.type) {
+                "craft"     -> quest.target == recipe.outputKey
+                "craft_any" -> quest.guild  == recipe.skillName
+                else        -> false
+            }
+            if (matches) {
+                val remaining = quest.amount - progress
+                if (remaining > 0)
+                    fills += QuestFillSuggestion(quest.name, ceilDiv(remaining, recipe.outputQty))
+            }
+        }
+
+        // Daily quests
+        for (daily in dailyQuestRepo.getActiveDailyQuests(flags)) {
+            if (daily.claimed) continue
+            val remaining = daily.template.amount - daily.progress
+            if (remaining <= 0) continue
+            val matches = when (daily.template.type) {
+                "craft"     -> daily.template.target == recipe.outputKey
+                "craft_any" -> daily.template.skill  == recipe.skillName
+                else        -> false
+            }
+            if (matches)
+                fills += QuestFillSuggestion(context.getString(R.string.quest_fill_daily), ceilDiv(remaining, recipe.outputQty))
+        }
+
+        // Weekly quests
+        for (weekly in weeklyQuestRepo.getActiveWeeklyQuests(flags)) {
+            if (weekly.claimed) continue
+            val remaining = weekly.template.amount - weekly.progress
+            if (remaining <= 0) continue
+            val matches = when (weekly.template.type) {
+                "craft"     -> weekly.template.target == recipe.outputKey
+                "craft_any" -> weekly.template.skill  == recipe.skillName
+                else        -> false
+            }
+            if (matches)
+                fills += QuestFillSuggestion(context.getString(R.string.quest_fill_weekly), ceilDiv(remaining, recipe.outputQty))
+        }
+
+        // Guild daily quests
+        val guildPool = gameData.guildDailyPool.associateBy { it.id }
+        val activeGuildIds = flags.guildDailyIds.filter { it !in flags.guildDailyClaimed }
+        for (id in activeGuildIds) {
+            val template = guildPool[id] ?: continue
+            val progress = flags.guildDailyProgress[id] ?: 0
+            val remaining = template.amount - progress
+            if (remaining <= 0) continue
+            val matches = when (template.type) {
+                "craft"     -> template.target == recipe.outputKey
+                "craft_any" -> template.guild  == recipe.skillName
+                else        -> false
+            }
+            if (matches)
+                fills += QuestFillSuggestion(context.getString(R.string.quest_fill_guild), ceilDiv(remaining, recipe.outputQty))
+        }
+
+        return fills.sortedBy { it.qty }
+    }
+
+    private fun ceilDiv(a: Int, b: Int) = if (b <= 0) a else (a + b - 1) / b
 }

@@ -4,6 +4,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,6 +23,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.Button
+import androidx.compose.material3.SuggestionChip
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -64,6 +67,7 @@ import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.CraftableRecipe
 import com.fantasyidler.ui.viewmodel.CraftingUiState
 import com.fantasyidler.ui.viewmodel.CraftingViewModel
+import com.fantasyidler.ui.viewmodel.QuestFillSuggestion
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatXp
 
@@ -420,6 +424,7 @@ private fun CraftSheet(
         }
         Spacer(Modifier.height(8.dp))
         QtyQuickButtons(qty, max) { onSetQuantity(it) }
+        QuestFillRow(state.questFills, qty, max, onSetQuantity)
         Spacer(Modifier.height(8.dp))
 
         Text(
@@ -446,6 +451,36 @@ private fun CraftSheet(
             Button(onClick = onCraft, modifier = Modifier.weight(1f)) {
                 Text(stringResource(R.string.btn_craft))
             }
+        }
+    }
+}
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+internal fun QuestFillRow(
+    fills: List<QuestFillSuggestion>,
+    qty: Int,
+    max: Int,
+    onSet: (Int) -> Unit,
+) {
+    if (fills.isEmpty()) return
+    Spacer(Modifier.height(8.dp))
+    Text(
+        text  = stringResource(R.string.crafting_quest_targets),
+        style = MaterialTheme.typography.labelMedium,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+    )
+    Spacer(Modifier.height(4.dp))
+    FlowRow(
+        horizontalArrangement = Arrangement.spacedBy(6.dp),
+        verticalArrangement   = Arrangement.spacedBy(4.dp),
+    ) {
+        fills.forEach { fill ->
+            SuggestionChip(
+                onClick = { onSet(fill.qty.coerceIn(1, max.coerceAtLeast(1))) },
+                label   = { Text("${fill.qty} (${fill.label})") },
+                enabled = fill.qty <= max && qty != fill.qty,
+            )
         }
     }
 }

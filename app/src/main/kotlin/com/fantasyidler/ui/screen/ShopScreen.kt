@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -64,6 +65,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.R
 import com.fantasyidler.ui.theme.GoldPrimary
+import com.fantasyidler.ui.viewmodel.BulkSellPreview
 import com.fantasyidler.ui.viewmodel.ShopEntry
 import com.fantasyidler.ui.viewmodel.ShopTransaction
 import com.fantasyidler.ui.viewmodel.ShopViewModel
@@ -179,8 +181,8 @@ fun ShopScreen(
                         priceFor           = viewModel::sellPriceFor,
                         categoryFor        = viewModel::sellCategoryFor,
                         onSell             = { key -> viewModel.openSell(key, GameStrings.itemName(context, key)) },
-                        onSellJunk         = viewModel::sellJunk,
-                        onSellOldEquipment = viewModel::sellOldEquipment,
+                        onSellJunk         = viewModel::previewSellJunk,
+                        onSellOldEquipment = viewModel::previewSellOldEquipment,
                     )
                 }
             }
@@ -202,6 +204,21 @@ fun ShopScreen(
                 onSetQty    = viewModel::setTransactionQty,
                 onConfirm   = viewModel::confirmTransaction,
                 onDismiss   = viewModel::dismissTransaction,
+            )
+        }
+    }
+
+    state.pendingBulkSell?.let { preview ->
+        val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+        ModalBottomSheet(
+            onDismissRequest = viewModel::dismissBulkSell,
+            sheetState       = sheetState,
+            dragHandle       = { BottomSheetDefaults.DragHandle() },
+        ) {
+            BulkSellSheet(
+                preview   = preview,
+                onConfirm = viewModel::confirmBulkSell,
+                onDismiss = viewModel::dismissBulkSell,
             )
         }
     }
@@ -537,6 +554,92 @@ private fun TransactionSheet(
 // ---------------------------------------------------------------------------
 // Section header (buy list categories)
 // ---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
+// Bulk sell confirmation sheet
+// ---------------------------------------------------------------------------
+
+@Composable
+private fun BulkSellSheet(
+    preview: BulkSellPreview,
+    onConfirm: () -> Unit,
+    onDismiss: () -> Unit,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp)
+            .padding(bottom = 24.dp),
+    ) {
+        Text(
+            text     = stringResource(preview.titleRes),
+            style    = MaterialTheme.typography.titleLarge,
+            modifier = Modifier.padding(bottom = 12.dp),
+        )
+        LazyColumn(
+            modifier = Modifier.heightIn(max = 320.dp),
+        ) {
+            items(preview.items, key = { it.key }) { item ->
+                Row(
+                    modifier              = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 8.dp),
+                    verticalAlignment     = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    Text(
+                        text     = item.displayName,
+                        style    = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.weight(1f),
+                    )
+                    Text(
+                        text  = "×${item.qty}",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(horizontal = 12.dp),
+                    )
+                    Text(
+                        text       = item.total.formatCoins(),
+                        style      = MaterialTheme.typography.bodyMedium,
+                        fontWeight = FontWeight.SemiBold,
+                        color      = GoldPrimary,
+                    )
+                }
+                HorizontalDivider()
+            }
+        }
+        HorizontalDivider(thickness = 2.dp, modifier = Modifier.padding(vertical = 8.dp))
+        Row(
+            modifier              = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 12.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment     = Alignment.CenterVertically,
+        ) {
+            Text(
+                text  = stringResource(R.string.shop_bulk_sell_total),
+                style = MaterialTheme.typography.titleMedium,
+            )
+            Text(
+                text       = preview.totalCoins.formatCoins(),
+                style      = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold,
+                color      = GoldPrimary,
+            )
+        }
+        Row(
+            modifier              = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            OutlinedButton(onClick = onDismiss, modifier = Modifier.weight(1f)) {
+                Text(stringResource(R.string.btn_cancel))
+            }
+            Button(onClick = onConfirm, modifier = Modifier.weight(1f)) {
+                Text(stringResource(R.string.shop_bulk_sell_confirm))
+            }
+        }
+    }
+}
 
 @Composable
 private fun ShopSectionHeader(title: String) {

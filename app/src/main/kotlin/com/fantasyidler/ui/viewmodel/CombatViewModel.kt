@@ -1,7 +1,9 @@
 package com.fantasyidler.ui.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fantasyidler.R
 import com.fantasyidler.data.json.BossData
 import com.fantasyidler.data.json.DungeonData
 import com.fantasyidler.data.json.EnemyData
@@ -25,6 +27,7 @@ import com.fantasyidler.repository.SlayerRepository
 import com.fantasyidler.simulator.CombatSimulator
 import com.fantasyidler.simulator.SkillSimulator
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -97,6 +100,7 @@ data class CombatUiState(
 
 @HiltViewModel
 class CombatViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val playerRepo: PlayerRepository,
     private val sessionRepo: SessionRepository,
     private val gameData: GameDataRepository,
@@ -310,7 +314,7 @@ class CombatViewModel @Inject constructor(
                 )
                 _extra.update {
                     it.copy(
-                        snackbarMessage    = if (enqueued) "Added to queue: $dungeonName." else "Queue is full (3/3).",
+                        snackbarMessage    = if (enqueued) context.getString(R.string.snackbar_added_to_queue, dungeonName) else context.getString(R.string.snackbar_queue_full),
                         selectedDungeon    = null,
                         selectedArrowKey   = null,
                         selectedPotionKey  = null,
@@ -380,7 +384,7 @@ class CombatViewModel @Inject constructor(
                 if (combatStyle == "magic") {
                     if (selectedSpell == null) {
                         _extra.update {
-                            it.copy(snackbarMessage = "Select a spell before entering.", startingSession = false)
+                            it.copy(snackbarMessage = context.getString(R.string.combat_select_spell), startingSession = false)
                         }
                         return@launch
                     }
@@ -388,7 +392,7 @@ class CombatViewModel @Inject constructor(
                     if (magicLevel < selectedSpell.magicLevelRequired) {
                         _extra.update {
                             it.copy(
-                                snackbarMessage = "Need Magic ${selectedSpell.magicLevelRequired} for ${selectedSpell.displayName}.",
+                                snackbarMessage = context.getString(R.string.combat_spell_level_required, selectedSpell.magicLevelRequired, selectedSpell.displayName),
                                 startingSession = false,
                             )
                         }
@@ -474,7 +478,7 @@ class CombatViewModel @Inject constructor(
                     alarmOffsetMs    = alarmOffsetMs,
                 )
             } catch (e: Exception) {
-                _extra.update { it.copy(snackbarMessage = "Failed to start session: ${e.message}") }
+                _extra.update { it.copy(snackbarMessage = context.getString(R.string.skill_session_start_failed, e.message ?: "")) }
             } finally {
                 _extra.update { it.copy(startingSession = false, selectedPotionKey = null) }
             }
@@ -509,7 +513,7 @@ class CombatViewModel @Inject constructor(
                 )
                 _extra.update {
                     it.copy(
-                        snackbarMessage    = if (enqueued) "Added to queue: $bossName." else "Queue is full (3/3).",
+                        snackbarMessage    = if (enqueued) context.getString(R.string.snackbar_added_to_queue, bossName) else context.getString(R.string.snackbar_queue_full),
                         selectedBoss       = null,
                         selectedArrowKey   = null,
                         selectedPotionKey  = null,
@@ -639,7 +643,7 @@ class CombatViewModel @Inject constructor(
                     } else null,
                 )
             } catch (e: Exception) {
-                _extra.update { it.copy(snackbarMessage = "Could not start boss fight: ${e.message}") }
+                _extra.update { it.copy(snackbarMessage = context.getString(R.string.combat_start_failed, e.message ?: "")) }
             } finally {
                 _extra.update { it.copy(startingSession = false, selectedPotionKey = null) }
             }
@@ -714,10 +718,11 @@ class CombatViewModel @Inject constructor(
             playerRepo.recordWeeklyProgress("boss", session.activityKey, 1)
             guildRepo.recordGuildCombat(mapOf(session.activityKey to 1), detectCombatStyle(last.xpBySkill))
         }
-        val xpDisplayBySkill = last.xpBySkill.mapValues { (_, xp) -> xp * boostMult }
-        val xpBlessingBonusBySkill = xpDisplayBySkill
-            .mapValues { (_, xp) -> (xp.toDouble() * (blessingXpMult - 1)).toLong() }
-            .filter { (_, bonus) -> bonus > 0 }
+        val xpDisplayBySkill = last.xpBySkill.mapValues { (_, xp) -> (xp * boostMult * blessingXpMult).toLong() }
+        val xpBlessingBonusBySkill = last.xpBySkill.mapValues { (_, xp) ->
+            val boosted = xp * boostMult
+            ((boosted.toDouble() * blessingXpMult).toLong() - boosted).coerceAtLeast(0L)
+        }.filter { (_, bonus) -> bonus > 0 }
         val coinBlessingBonus = (coinsGained.toDouble() * (blessingCoinMult - 1)).toLong()
         val itemsDisplay = last.items.toMutableMap().also { it.remove("coins") }
         sessionRepo.deleteSession(session.sessionId)
@@ -821,10 +826,11 @@ class CombatViewModel @Inject constructor(
             }
             playerRepo.incrementDungeonRun(session.activityKey)
         }
-        val xpDisplayBySkill = totalXpPerSkill.mapValues { (_, xp) -> xp * boostMult }
-        val xpBlessingBonusBySkill = xpDisplayBySkill
-            .mapValues { (_, xp) -> (xp.toDouble() * (blessingXpMult - 1)).toLong() }
-            .filter { (_, bonus) -> bonus > 0 }
+        val xpDisplayBySkill = totalXpPerSkill.mapValues { (_, xp) -> (xp * boostMult * blessingXpMult).toLong() }
+        val xpBlessingBonusBySkill = totalXpPerSkill.mapValues { (_, xp) ->
+            val boosted = xp * boostMult
+            ((boosted.toDouble() * blessingXpMult).toLong() - boosted).coerceAtLeast(0L)
+        }.filter { (_, bonus) -> bonus > 0 }
         val coinBlessingBonus = (coinsGained.toDouble() * (blessingCoinMult - 1)).toLong()
         sessionRepo.deleteSession(session.sessionId)
         val dungeonRecentFlags = playerRepo.getFlags()
@@ -927,7 +933,7 @@ class CombatViewModel @Inject constructor(
     private fun buildCapeMessage(capes: List<String>): String? {
         if (capes.isEmpty()) return null
         val names = capes.joinToString(", ") { gameData.itemDisplayName(it) }
-        return "Congratulations! You received: $names"
+        return context.getString(R.string.home_congratulations_received, names)
     }
 
     // ------------------------------------------------------------------

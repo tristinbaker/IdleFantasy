@@ -32,6 +32,18 @@ import com.fantasyidler.util.formatDurationMs
 import com.fantasyidler.util.stringByName
 import com.fantasyidler.util.toTitleCase
 
+private val COMBAT_CAPE_SKILLS = setOf(
+    "attack", "strength", "defense", "ranged", "magic", "hp",
+    "warriors", "archers", "mages",
+)
+
+private data class SkillBonusEntry(
+    val skillKey: String,
+    val skillName: String,
+    val combinedPct: Int,
+    val sources: List<Pair<String, Int>>,
+)
+
 @Composable
 internal fun BonusesTab(
     state: InventoryViewModel.UiState,
@@ -41,11 +53,45 @@ internal fun BonusesTab(
     val context = LocalContext.current
     val now     = System.currentTimeMillis()
 
-    val boostActive     = state.xpBoostExpiresAt > now
-    val blessingActive  = state.activeBlessingXpPct > 0 && state.activeBlessingExpiresAt > now
-    val cape            = state.equipped[EquipSlot.CAPE]?.let { allEquipment[it] }?.takeIf { it.capeBonus > 0f }
-    val bonusPets       = allPets.values.filter { it.id in state.ownedPetIds && it.boostPercent > 0 }.sortedBy { it.boostedSkill }
-    val prestigeEntries = state.skillPrestige.entries.filter { it.value > 0 }.sortedBy { it.key }
+    val boostActive    = state.xpBoostExpiresAt > now
+    val blessingActive = state.activeBlessingXpPct > 0 && state.activeBlessingExpiresAt > now
+    val cape           = state.equipped[EquipSlot.CAPE]?.let { allEquipment[it] }?.takeIf { it.capeBonus > 0f }
+    val bonusPets      = allPets.values.filter { it.id in state.ownedPetIds && it.boostPercent > 0 }
+    val prestigeEntries = state.skillPrestige.entries.filter { it.value > 0 }
+
+    val isGatheringCape = cape != null && (cape.capeSkill ?: "") !in COMBAT_CAPE_SKILLS
+    val isCombatCape    = cape != null && !isGatheringCape
+
+    val allPetBoostPct     = bonusPets.filter { it.boostedSkill == "all" }.sumOf { it.boostPercent }
+    val specificBonusPets  = bonusPets.filter { it.boostedSkill != "all" && it.boostedSkill.isNotEmpty() }
+
+    val specificSkillKeys = buildSet<String> {
+        if (isGatheringCape) cape?.capeSkill?.let { add(it) }
+        specificBonusPets.forEach { add(it.boostedSkill) }
+        prestigeEntries.forEach { add(it.key) }
+    }
+
+    val skillEntries: List<SkillBonusEntry> = specificSkillKeys.sorted().map { skillKey ->
+        val capePct        = if (isGatheringCape && cape?.capeSkill == skillKey) (cape.capeBonus * 100 + 0.5f).toInt() else 0
+        val specificPetPct = specificBonusPets.filter { it.boostedSkill == skillKey }.sumOf { it.boostPercent }
+        val totalPetPct    = specificPetPct + allPetBoostPct
+        val prestigePct    = (state.skillPrestige[skillKey] ?: 0) * 10
+
+        val sources = buildList {
+            if (capePct > 0)      add(cape!!.displayName to capePct)
+            if (totalPetPct > 0)  add(context.getString(R.string.label_pets) to totalPetPct)
+            if (prestigePct > 0)  add(context.getString(R.string.prestige) to prestigePct)
+        }
+        SkillBonusEntry(
+            skillKey    = skillKey,
+            skillName   = GameStrings.skillName(context, skillKey),
+            combinedPct = capePct + totalPetPct + prestigePct,
+            sources     = sources,
+        )
+    }
+
+    // "all" pets with no skill-specific rows: surface them in the Boosts section
+    val showAllPetsInBoosts = allPetBoostPct > 0 && specificSkillKeys.isEmpty()
 
     if (!boostActive && !blessingActive && cape == null && bonusPets.isEmpty() && prestigeEntries.isEmpty()) {
         Box(
@@ -62,7 +108,7 @@ internal fun BonusesTab(
     }
 
     LazyColumn(modifier = Modifier.fillMaxSize()) {
-        if (boostActive || blessingActive) {
+        if (boostActive || blessingActive || showAllPetsInBoosts) {
             item { SlotSectionHeader(stringResource(R.string.bonus_section_boosts)) }
             if (boostActive) {
                 item {
@@ -88,35 +134,39 @@ internal fun BonusesTab(
                     )
                 }
             }
-        }
-
-        if (cape != null) {
-            item { SlotSectionHeader(GameStrings.slotName(context, EquipSlot.CAPE)) }
-            item {
-                val pct   = ((cape.capeBonus - 1f) * 100 + 0.5f).toInt()
-                val skill = GameStrings.skillName(context, cape.capeSkill ?: "")
-                BonusRow(name = cape.displayName, pct = "+$pct%", scope = skill)
+            if (showAllPetsInBoosts) {
+                items(bonusPets.filter { it.boostedSkill == "all" }, key = { it.id }) { pet ->
+                    BonusRow(
+                        name  = pet.displayName,
+                        pct   = "+${pet.boostPercent}%",
+                        scope = stringResource(R.string.bonus_all_skills),
+                    )
+                }
             }
         }
 
-        if (bonusPets.isNotEmpty()) {
-            item { SlotSectionHeader(stringResource(R.string.label_pets)) }
-            items(bonusPets, key = { it.id }) { pet ->
+        if (isCombatCape) {
+            item { SlotSectionHeader(GameStrings.slotName(context, EquipSlot.CAPE)) }
+            item {
+                val pct = (cape!!.capeBonus * 100 + 0.5f).toInt()
                 BonusRow(
-                    name  = pet.displayName,
-                    pct   = stringResource(R.string.format_xp_boost_percent, pet.boostPercent),
-                    scope = GameStrings.skillName(context, pet.boostedSkill),
+                    name   = cape.displayName,
+                    pct    = "+$pct%",
+                    scope  = GameStrings.skillName(context, cape.capeSkill ?: ""),
+                    detail = stringResource(R.string.bonus_combat_stat_boost),
                 )
             }
         }
 
-        if (prestigeEntries.isNotEmpty()) {
-            item { SlotSectionHeader(stringResource(R.string.prestige)) }
-            items(prestigeEntries.toList(), key = { it.key }) { (skill, level) ->
+        if (skillEntries.isNotEmpty()) {
+            item { SlotSectionHeader(stringResource(R.string.bonus_section_skills)) }
+            items(skillEntries, key = { it.skillKey }) { entry ->
+                val detail = entry.sources.joinToString(" • ") { (label, pct) -> "$label +$pct%" }
                 BonusRow(
-                    name  = GameStrings.skillName(context, skill),
-                    pct   = "+${level * 10}%",
-                    scope = stringResource(R.string.prestige),
+                    name   = entry.skillName,
+                    pct    = "+${entry.combinedPct}%",
+                    scope  = "",
+                    detail = detail.ifEmpty { null },
                 )
             }
         }

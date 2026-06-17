@@ -27,6 +27,9 @@ private fun capeKeyForSkill(skill: String): String? = when (skill) {
     else             -> "${skill}_cape"
 }
 
+private fun PlayerFlags.plusSeen(keys: Collection<String>): PlayerFlags =
+    if (keys.isEmpty()) this else copy(seenItemKeys = seenItemKeys + keys)
+
 @Singleton
 class PlayerRepository @Inject constructor(
     private val playerDao: PlayerDao,
@@ -138,6 +141,7 @@ class PlayerRepository @Inject constructor(
                 skillLevels = json.encode<Map<String, Int>>(levels),
                 skillXp     = json.encode<Map<String, Long>>(xpMap),
                 inventory   = json.encode<Map<String, Int>>(inventory),
+                flags       = json.encode<PlayerFlags>(flags.plusSeen(scaledItems.keys + awardedCapes)),
             )
         )
         return awardedCapes
@@ -242,7 +246,11 @@ class PlayerRepository @Inject constructor(
         val player = getOrCreatePlayer()
         val inventory: MutableMap<String, Int> = json.decodeFromString(player.inventory)
         inventory[key] = (inventory[key] ?: 0) + qty
-        playerDao.upsert(player.copy(inventory = json.encode<Map<String, Int>>(inventory)))
+        val flags: PlayerFlags = json.decodeFromString(player.flags)
+        playerDao.upsert(player.copy(
+            inventory = json.encode<Map<String, Int>>(inventory),
+            flags     = json.encode<PlayerFlags>(flags.plusSeen(listOf(key))),
+        ))
     }
 
     /** Returns false if the player has insufficient coins. */
@@ -388,10 +396,12 @@ class PlayerRepository @Inject constructor(
         if (player.coins < total) return false
         val inventory: MutableMap<String, Int> = json.decodeFromString(player.inventory)
         inventory[itemKey] = (inventory[itemKey] ?: 0) + qty
+        val flags: PlayerFlags = json.decodeFromString(player.flags)
         playerDao.upsert(
             player.copy(
                 coins     = player.coins - total,
                 inventory = json.encode<Map<String, Int>>(inventory),
+                flags     = json.encode<PlayerFlags>(flags.plusSeen(listOf(itemKey))),
             )
         )
         return true
@@ -469,6 +479,7 @@ class PlayerRepository @Inject constructor(
                 skillXp     = json.encode<Map<String, Long>>(xpMap),
                 inventory   = json.encode<Map<String, Int>>(inventory),
                 coins       = player.coins + (coinsGained * coinBlessingMult).toLong(),
+                flags       = json.encode<PlayerFlags>(flags.plusSeen(scaledItems.keys + awardedCapes)),
             )
         )
         return awardedCapes
@@ -788,7 +799,11 @@ class PlayerRepository @Inject constructor(
         val player = getOrCreatePlayer()
         val inventory: MutableMap<String, Int> = json.decodeFromString(player.inventory)
         inventory[itemKey] = (inventory[itemKey] ?: 0) + qty
-        playerDao.upsert(player.copy(inventory = json.encode<Map<String, Int>>(inventory)))
+        val flags: PlayerFlags = json.decodeFromString(player.flags)
+        playerDao.upsert(player.copy(
+            inventory = json.encode<Map<String, Int>>(inventory),
+            flags     = json.encode<PlayerFlags>(flags.plusSeen(listOf(itemKey))),
+        ))
     }
 
     /** Adds multiple items to inventory in a single DB write. */
@@ -797,9 +812,27 @@ class PlayerRepository @Inject constructor(
         val player = getOrCreatePlayer()
         val inventory: MutableMap<String, Int> = json.decodeFromString(player.inventory)
         for ((key, qty) in items) inventory[key] = (inventory[key] ?: 0) + qty
-        playerDao.upsert(player.copy(inventory = json.encode<Map<String, Int>>(inventory)))
+        val flags: PlayerFlags = json.decodeFromString(player.flags)
+        playerDao.upsert(player.copy(
+            inventory = json.encode<Map<String, Int>>(inventory),
+            flags     = json.encode<PlayerFlags>(flags.plusSeen(items.keys)),
+        ))
     }
 
+
+    /** One-time migration: seeds seenItemKeys from current inventory + equipped for existing players. */
+    suspend fun migrateSeenItems() {
+        val player = getOrCreatePlayer()
+        val flags: PlayerFlags = json.decodeFromString(player.flags)
+        if (flags.seenItemKeys.isNotEmpty()) return
+        val inventory: Map<String, Int> = json.decodeFromString(player.inventory)
+        val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
+        val allCurrentKeys = inventory.keys + equipped.values.filterNotNull()
+        if (allCurrentKeys.isEmpty()) return
+        playerDao.upsert(player.copy(
+            flags = json.encode<PlayerFlags>(flags.copy(seenItemKeys = allCurrentKeys.toSet()))
+        ))
+    }
 
     // ------------------------------------------------------------------
     // Helpers

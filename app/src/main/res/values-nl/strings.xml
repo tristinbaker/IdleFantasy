@@ -569,6 +569,10 @@
     <string name="crafting_needed_have">%1$d (je hebt %2$d)</string>
     <!-- Translator note: %1$d = quantity in inventory -->
     <string name="crafting_in_inventory">In inventaris: ×%1$d</string>
+    <string name="crafting_quest_targets">Questdoelen</string>
+    <string name="quest_fill_daily">Dagelijks</string>
+    <string name="quest_fill_weekly">Wekelijks</string>
+    <string name="quest_fill_guild">Gilde</string>
 
     <!-- ===== FarmingScreen ===== -->
     <!-- Translator note: %1$s = crop name -->
@@ -1182,6 +1186,16 @@
     <string name="bonus_none">Geen actieve XP-bonussen</string>
     <string name="bonus_all_skills">Alle vaardigheden</string>
     <string name="bonus_section_boosts">Actieve bonussen</string>
+    <string name="bonus_section_skills">Skill Bonuses</string>
+    <string name="bonus_combat_stat_boost">Boosts combat stats</string>
+    <string name="snackbar_added_to_queue">Toegevoegd aan wachtrij: %1$s.</string>
+    <string name="snackbar_queue_full">Wachtrij is vol (3/3).</string>
+    <string name="home_not_enough_coins_repeat">Niet genoeg munten om %1$s te herhalen.</string>
+    <string name="home_not_enough_materials_repeat">Niet genoeg materialen om %1$s te herhalen.</string>
+    <string name="combat_start_failed">Kon niet starten: %1$s</string>
+    <string name="combat_select_spell">Select a spell before entering.</string>
+    <string name="combat_spell_level_required">Need Magic %1$d for %2$s.</string>
+    <string name="guild_daily_reward_claimed">Daily reward claimed!</string>
     <string name="armory_not_owned">Je bezit dit item niet.</string>
     <string name="armory_how_to_obtain">Hoe te verkrijgen</string>
     <string name="armory_no_stats">Geen statbonussen.</string>
@@ -1260,6 +1274,48 @@
     <string name="slayer_lamp_large_desc">+50.000 XP aan elke vaardigheid</string>
     <string name="slayer_lamp_pick_skill">Kies een vaardigheid</string>
     <string name="slayer_lamp_purchased">XP toegevoegd aan %1$s!</string>
+
+    <!-- Session / queue messages (issue #596) -->
+    <string name="skill_no_logs">Geen stammen in inventaris</string>
+    <string name="skill_not_enough_rune_essence">Niet genoeg Runenessence</string>
+    <string name="skill_not_enough_item">Niet genoeg %1$s</string>
+    <string name="skill_not_enough_materials">Niet genoeg materialen</string>
+    <string name="skill_session_start_failed">Sessie starten mislukt: %1$s</string>
+    <string name="skill_added_to_queue_activity">Toegevoegd aan wachtrij: %1$s — %2$s.</string>
+    <string name="worker_already_busy">De arbeider is al bezig.</string>
+    <string name="worker_not_enough_logs">Niet genoeg stammen.</string>
+    <string name="worker_not_enough_rune_essence">Niet genoeg Runenessence.</string>
+    <string name="worker_not_enough_materials">Niet genoeg materialen.</string>
+    <string name="shop_no_junk">Geen rommel te verkopen</string>
+    <string name="shop_sold_junk">Rommel verkocht voor %1$s munten</string>
+    <string name="shop_no_old_equipment">Geen oud uitrusting te verkopen</string>
+    <string name="shop_sold_old_equipment">Oud uitrusting verkocht voor %1$s munten</string>
+    <string name="shop_bulk_sell_total">Totaal</string>
+    <string name="shop_bulk_sell_confirm">Alles verkopen</string>
+    <string name="shop_xp_boost_activated">2× XP boost geactiveerd voor %1$d uur!</string>
+    <string name="shop_not_enough_in_inventory">Niet genoeg in inventaris</string>
+    <string name="shop_bought_item">%1$d× %2$s gekocht</string>
+    <string name="shop_sold_item">%1$d× %2$s verkocht voor %3$d munten</string>
+    <string name="quest_complete_notification">Quest voltooid: %1$s!</string>
+    <string name="quest_complete_with_rewards">Quest voltooid: %1$s! Geclaimd: %2$s</string>
+    <string name="quest_daily_complete_coins">Dagelijkse quest voltooid! +%1$s munten</string>
+    <string name="quest_daily_complete_dwarven">Dagelijkse quest voltooid! Je hebt dwerguitrusting gevonden!</string>
+    <string name="quest_weekly_complete">Wekelijkse uitdaging voltooid! +%1$s munten</string>
+    <string name="quest_weekly_bonus_complete_coins">Alle wekelijkse uitdagingen voltooid! +%1$s munten</string>
+    <string name="quest_weekly_bonus_complete_divine">Alle wekelijkse uitdagingen voltooid! Je hebt goddelijke uitrusting gevonden!</string>
+    <string name="guild_contributed_items">%1$d items bijgedragen.</string>
+    <string name="mercantile_not_enough_coins">Niet genoeg munten (nodig %1$s munten).</string>
+    <string name="mercantile_route_start_failed">Route starten mislukt: %1$s</string>
+    <string name="mercantile_added_to_queue">Toegevoegd aan wachtrij: Handelsvaardig — %1$s.</string>
+    <string name="inventory_requires_to_equip">Vereist %1$s om uit te rusten.</string>
+    <string name="home_found_pet">Je hebt een huisdier gevonden: %1$s!</string>
+    <string name="home_congratulations_received">Gefeliciteerd! Je hebt ontvangen: %1$s</string>
+    <string name="combat_no_food_title">Geen voedsel uitgerust</string>
+    <string name="combat_no_food_body">Je hebt geen voedsel uitgerust. Zonder voedsel kun je snel sterven en de meeste beloningen verliezen. Toch starten?</string>
+    <string name="combat_start_anyway">Toch starten</string>
+    <string name="combat_xp_consolation">XP (troostprijs)</string>
+    <string name="bestiary_loot_item_header">Voorwerp</string>
+    <string name="worker_no_mats">Geen mat.</string>
 
     <!-- Boss Descriptions -->
     <string name="boss_king_black_dragon_desc">De legendarische driekoppige draak, gevreesd in het hele rijk.</string>

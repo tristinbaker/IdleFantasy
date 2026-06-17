@@ -38,6 +38,9 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
 import javax.inject.Inject
+import android.content.Context
+import com.fantasyidler.R
+import dagger.hilt.android.qualifiers.ApplicationContext
 
 // ---------------------------------------------------------------------------
 // UI State
@@ -108,6 +111,7 @@ sealed class SheetState {
 
 @HiltViewModel
 class SkillsViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val playerRepo: PlayerRepository,
     private val sessionRepo: SessionRepository,
     private val gameData: GameDataRepository,
@@ -319,7 +323,7 @@ class SkillsViewModel @Inject constructor(
             val inv: Map<String, Int> = json.decodeFromString(player.inventory)
             val available = inv[logKey] ?: 0
             if (available <= 0) {
-                _uiState.update { it.copy(snackbarMessage = "No logs in inventory") }
+                _uiState.update { it.copy(snackbarMessage = context.getString(R.string.skill_no_logs)) }
                 return@launch
             }
             val actualQty = qty.coerceIn(1, available)
@@ -343,7 +347,7 @@ class SkillsViewModel @Inject constructor(
                 if (enqueued) playerRepo.consumeItems(mapOf(logKey to actualQty))
                 _uiState.update {
                     it.copy(
-                        snackbarMessage = if (enqueued) "Added to queue: Firemaking." else "Queue is full (3/3).",
+                        snackbarMessage = if (enqueued) context.getString(R.string.slayer_queue_added, "Firemaking") else context.getString(R.string.slayer_queue_full),
                     )
                 }
                 return@launch
@@ -355,7 +359,7 @@ class SkillsViewModel @Inject constructor(
                 playerRepo.enqueueAction(action)
                 queuedSessionStarter.startNextQueued()
             } catch (e: Exception) {
-                _uiState.update { it.copy(snackbarMessage = "Failed to start session: ${e.message}") }
+                _uiState.update { it.copy(snackbarMessage = context.getString(R.string.skill_session_start_failed, e.message ?: "")) }
             } finally {
                 _uiState.update { it.copy(startingSession = false) }
             }
@@ -369,7 +373,7 @@ class SkillsViewModel @Inject constructor(
             val inv: Map<String, Int> = json.decodeFromString(player.inventory)
             val availableEssence = inv["rune_essence"] ?: 0
             if (availableEssence < runeData.essenceCost * qty) {
-                _uiState.update { it.copy(snackbarMessage = "Not enough Rune Essence") }
+                _uiState.update { it.copy(snackbarMessage = context.getString(R.string.skill_not_enough_rune_essence)) }
                 return@launch
             }
 
@@ -403,7 +407,7 @@ class SkillsViewModel @Inject constructor(
                 }
                 _uiState.update {
                     it.copy(
-                        snackbarMessage = if (enqueued) "Added to queue: Runecrafting — $actDisplay." else "Queue is full (3/3).",
+                        snackbarMessage = if (enqueued) context.getString(R.string.skill_added_to_queue_activity, "Runecrafting", actDisplay) else context.getString(R.string.slayer_queue_full),
                     )
                 }
                 return@launch
@@ -466,7 +470,7 @@ class SkillsViewModel @Inject constructor(
                     skillDisplayName = "Runecrafting",
                 )
             } catch (e: Exception) {
-                _uiState.update { it.copy(snackbarMessage = "Failed to start session: ${e.message}") }
+                _uiState.update { it.copy(snackbarMessage = context.getString(R.string.skill_session_start_failed, e.message ?: "")) }
             } finally {
                 _uiState.update { it.copy(startingSession = false) }
             }
@@ -480,7 +484,7 @@ class SkillsViewModel @Inject constructor(
             val inv: Map<String, Int> = json.decodeFromString(player.inventory)
             val available = inv[boneKey] ?: 0
             if (available < qty) {
-                _uiState.update { it.copy(snackbarMessage = "Not enough ${bone.displayName}") }
+                _uiState.update { it.copy(snackbarMessage = context.getString(R.string.skill_not_enough_item, bone.displayName)) }
                 return@launch
             }
 
@@ -502,7 +506,7 @@ class SkillsViewModel @Inject constructor(
                 if (enqueued) playerRepo.consumeItems(mapOf(boneKey to qty))
                 _uiState.update {
                     it.copy(
-                        snackbarMessage = if (enqueued) "Added to queue: Prayer — ${bone.displayName}." else "Queue is full (3/3).",
+                        snackbarMessage = if (enqueued) context.getString(R.string.skill_added_to_queue_activity, "Prayer", bone.displayName) else context.getString(R.string.slayer_queue_full),
                     )
                 }
                 return@launch
@@ -546,7 +550,7 @@ class SkillsViewModel @Inject constructor(
                     skillDisplayName = "Prayer",
                 )
             } catch (e: Exception) {
-                _uiState.update { it.copy(snackbarMessage = "Failed to start session: ${e.message}") }
+                _uiState.update { it.copy(snackbarMessage = context.getString(R.string.skill_session_start_failed, e.message ?: "")) }
             } finally {
                 _uiState.update { it.copy(startingSession = false) }
             }
@@ -593,9 +597,9 @@ class SkillsViewModel @Inject constructor(
                 _uiState.update {
                     it.copy(
                         snackbarMessage = if (enqueued)
-                            "Added to queue: Thieving — ${npc.displayName}."
+                            context.getString(R.string.skill_added_to_queue_activity, "Thieving", npc.displayName)
                         else
-                            "Queue is full (3/3).",
+                            context.getString(R.string.slayer_queue_full),
                     )
                 }
                 return@launch
@@ -627,7 +631,7 @@ class SkillsViewModel @Inject constructor(
                     skillDisplayName = "Thieving",
                 )
             } catch (e: Exception) {
-                _uiState.update { it.copy(snackbarMessage = "Failed to start session: ${e.message}") }
+                _uiState.update { it.copy(snackbarMessage = context.getString(R.string.skill_session_start_failed, e.message ?: "")) }
             } finally {
                 _uiState.update { it.copy(startingSession = false) }
             }
@@ -678,10 +682,14 @@ class SkillsViewModel @Inject constructor(
                 )
                 _uiState.update {
                     it.copy(
-                        snackbarMessage = if (enqueued)
-                            "Added to queue: $displayName${if (activityKey.isNotEmpty()) " — $actDisplay" else ""}."
-                        else
-                            "Queue is full (3/3).",
+                        snackbarMessage = if (enqueued) {
+                            if (activityKey.isNotEmpty())
+                                context.getString(R.string.skill_added_to_queue_activity, displayName, actDisplay)
+                            else
+                                context.getString(R.string.slayer_queue_added, displayName)
+                        } else {
+                            context.getString(R.string.slayer_queue_full)
+                        },
                     )
                 }
                 return@launch
@@ -702,7 +710,7 @@ class SkillsViewModel @Inject constructor(
                 )
             } catch (e: Exception) {
                 _uiState.update {
-                    it.copy(snackbarMessage = "Failed to start session: ${e.message}")
+                    it.copy(snackbarMessage = context.getString(R.string.skill_session_start_failed, e.message ?: ""))
                 }
             } finally {
                 _uiState.update { it.copy(startingSession = false) }
@@ -792,7 +800,7 @@ class SkillsViewModel @Inject constructor(
             for ((petId, _) in petDrops) {
                 val petData = gameData.pets[petId] ?: continue
                 val added = playerRepo.addPetIfNew(petId, petData.boostPercent)
-                if (added) petMessage = "You found a pet: ${petData.displayName}!"
+                if (added) petMessage = context.getString(R.string.home_found_pet, petData.displayName)
             }
 
             sessionRepo.deleteSession(session.sessionId)
