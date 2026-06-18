@@ -1,0 +1,64 @@
+{
+  "repo": {
+    "timestamp": 1781811354908
+  },
+  "packages": {
+    "com.tristinbaker.idlefantasy": {
+      "metadata": {
+        "lastUpdated": 1781811335962
+      },
+      "versions": {
+        "28765a3cf625a9144ffcf9611ab98f1e927815ea5abdc94bb6e80922fe0326b1": {
+          "added": 1781811335962,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_83.apk",
+            "sha256": "28765a3cf625a9144ffcf9611ab98f1e927815ea5abdc94bb6e80922fe0326b1",
+            "size": 5191402
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.9.7",
+            "versionCode": 83,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fix red dot badge on Quests nav button not appearing when a Daily or Weekly Quest becomes ready to claim\n• Fix XP bonus multiplier being incorrectly applied to all combat skills when a prayer cape is equipped - the prayer cape bonus now applies only where it belongs (bone altar prayer sessions)\n• Bonuses tab now shows a Combined XP row (e.g. 2.86×) when both an XP Boost and a Church blessing are active, and separates per-skill XP bonuses from yield bonuses so it is clear what each bonus affect"
+          }
+        }
+      }
+    }
+  }
+}
