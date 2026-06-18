@@ -486,6 +486,7 @@ object CombatSimulator {
             items        = items,
             xpBySkill    = xpBySkill,
             killsByEnemy = if (won) mapOf(bossKey to 1) else emptyMap(),
+            combatStyle  = combatStyle,
         )
 
         return frames

@@ -149,11 +149,29 @@ class CombatViewModel @Inject constructor(
             val equippedWeapons = EquipSlot.WEAPON_SLOTS
                 .mapNotNull { slot -> equipped[slot]?.let { key -> gameData.equipment[key]?.let { slot to it } } }
                 .toMap()
-            val armorAtk = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.attackBonus  ?: 0 }
-            val armorStr = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.strengthBonus ?: 0 }
+            val displayStyle = equippedWeapon?.combatStyle ?: "melee"
+            val armorAtk = EquipSlot.ARMOR_SLOTS.sumOf { slot ->
+                val eq = gameData.equipment[equipped[slot]] ?: return@sumOf 0
+                eq.attackBonus + when (displayStyle) {
+                    "ranged" -> eq.rangedAttackBonus ?: 0
+                    "magic"  -> eq.magicAttackBonus  ?: 0
+                    else     -> 0
+                }
+            }
+            val armorStr = when (displayStyle) {
+                "ranged" -> EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.rangedStrengthBonus ?: 0 }
+                else     -> EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.strengthBonus ?: 0 }
+            }
             val armorDef = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.defenseBonus  ?: 0 }
-            val totalAtk = armorAtk + (equippedWeapon?.attackBonus  ?: 0)
-            val totalStr = armorStr + (equippedWeapon?.strengthBonus ?: 0)
+            val totalAtk = armorAtk + (equippedWeapon?.attackBonus ?: 0) + when (displayStyle) {
+                "ranged" -> equippedWeapon?.rangedAttackBonus ?: 0
+                "magic"  -> equippedWeapon?.magicAttackBonus  ?: 0
+                else     -> 0
+            }
+            val totalStr = armorStr + when (displayStyle) {
+                "ranged" -> equippedWeapon?.rangedStrengthBonus ?: 0
+                else     -> equippedWeapon?.strengthBonus ?: 0
+            }
             val totalDef = armorDef + (equippedWeapon?.defenseBonus  ?: 0)
             val defenceLevel  = levels[Skills.DEFENSE]   ?: 1
             val hpLevel       = levels[Skills.HITPOINTS] ?: 1
@@ -716,7 +734,7 @@ class CombatViewModel @Inject constructor(
             )
             playerRepo.recordDailyKills(mapOf(session.activityKey to 1))
             playerRepo.recordWeeklyProgress("boss", session.activityKey, 1)
-            guildRepo.recordGuildCombat(mapOf(session.activityKey to 1), detectCombatStyle(last.xpBySkill))
+            guildRepo.recordGuildCombat(mapOf(session.activityKey to 1), last.combatStyle.ifEmpty { "melee" })
         }
         val xpDisplayBySkill = last.xpBySkill.mapValues { (_, xp) -> (xp * boostMult * blessingXpMult).toLong() }
         val xpBlessingBonusBySkill = last.xpBySkill.mapValues { (_, xp) ->
@@ -787,14 +805,12 @@ class CombatViewModel @Inject constructor(
         }
         val dungeon = gameData.dungeons[session.activityKey]
 
-        // Accumulate Slayer XP for kills that match the active task (skipped on death)
-        if (!playerDied) {
-            var slayerXp = 0L
-            for ((enemy, kills) in allKillsByEnemy) {
-                slayerXp += slayerRepo.recordKills(enemy, kills)
-            }
-            if (slayerXp > 0L) totalXpPerSkill[Skills.SLAYER] = (totalXpPerSkill[Skills.SLAYER] ?: 0L) + slayerXp
+        // Accumulate Slayer XP for kills that match the active task
+        var slayerXp = 0L
+        for ((enemy, kills) in allKillsByEnemy) {
+            slayerXp += slayerRepo.recordKills(enemy, kills)
         }
+        if (slayerXp > 0L) totalXpPerSkill[Skills.SLAYER] = (totalXpPerSkill[Skills.SLAYER] ?: 0L) + slayerXp
 
         val dungeonFlags      = playerRepo.getFlags()
         val blessingXpMult    = ChurchRepository.xpMultiplier(dungeonFlags)

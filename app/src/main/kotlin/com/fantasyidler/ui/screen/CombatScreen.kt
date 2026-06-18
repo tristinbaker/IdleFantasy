@@ -34,6 +34,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
@@ -161,7 +162,7 @@ fun CombatScreen(
             val pagerState = rememberPagerState(initialPage = if (startOnGear) 2 else 0, pageCount = { 4 })
             val scope = rememberCoroutineScope()
             Column(Modifier.padding(padding).fillMaxSize()) {
-                TabRow(selectedTabIndex = pagerState.currentPage) {
+                ScrollableTabRow(selectedTabIndex = pagerState.currentPage, edgePadding = 0.dp) {
                     Tab(
                         selected = pagerState.currentPage == 0,
                         onClick  = { scope.launch { pagerState.animateScrollToPage(0) } },

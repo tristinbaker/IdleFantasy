@@ -336,6 +336,7 @@ private fun SellList(
 ) {
     val grouped = remember(inventory) {
         inventory.entries
+            .filter { it.key != "coins" }
             .groupBy { categoryFor(it.key) }
             .entries
             .sortedBy { SELL_CATEGORY_ORDER.indexOf(it.key).let { i -> if (i < 0) Int.MAX_VALUE else i } }

@@ -355,7 +355,7 @@ class HomeViewModel @Inject constructor(
                             )
                             dailyKills[session.activityKey] = (dailyKills[session.activityKey] ?: 0) + 1
                             playerRepo.recordWeeklyProgress("boss", session.activityKey, 1)
-                            guildRepo.recordGuildCombat(mapOf(session.activityKey to 1), detectCombatStyle(bossXpBySkill))
+                            guildRepo.recordGuildCombat(mapOf(session.activityKey to 1), frames.lastOrNull()?.combatStyle?.ifEmpty { "melee" } ?: "melee")
                             for ((item, qty) in loot) combinedItems[item] = (combinedItems[item] ?: 0) + qty
                             combinedCoins += coins
                         }
@@ -386,11 +386,9 @@ class HomeViewModel @Inject constructor(
                         val coins = (its.remove("coins")?.toLong() ?: 0L).let { if (died) maxOf(0L, (it * 0.1).toLong()) else it }
                         val pets  = its.filterKeys { it in petIds }
                         val loot  = its.filterKeys { it !in petIds }
-                        if (!died) {
-                            var slayerXp = 0L
-                            for ((enemy, k) in kills) slayerXp += slayerRepo.recordKills(enemy, k)
-                            if (slayerXp > 0L) xpPerSkill[Skills.SLAYER] = (xpPerSkill[Skills.SLAYER] ?: 0L) + slayerXp
-                        }
+                        var slayerXp = 0L
+                        for ((enemy, k) in kills) slayerXp += slayerRepo.recordKills(enemy, k)
+                        if (slayerXp > 0L) xpPerSkill[Skills.SLAYER] = (xpPerSkill[Skills.SLAYER] ?: 0L) + slayerXp
                         awardedCapes += playerRepo.applyMultiSkillResults(xpPerSkill, loot, coins)
                         for ((id, _) in pets) {
                             val pd = gameData.pets[id] ?: continue

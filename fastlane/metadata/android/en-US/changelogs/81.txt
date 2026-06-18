@@ -1,1 +1,6 @@
 • Replaced the collapsible Town menu on the home screen with an always-visible grid: four equal-width buttons (Shop, Inn, Guild Hall, Church) on the top row, three centre-aligned buttons (Builder, Slayer, Carnival) on the bottom row.
+• Fix boss fights always counting as magic combat for guild quests — combat style is now tracked correctly so attack/strength bosses credit Warriors Guild and magic bosses credit Mages Guild
+• Fix Combat screen tab text misalignment when the Combat Log tab appears during an active session
+• Fix ranged and magic weapons showing incorrect (melee) attack and strength bonuses in the combat stats display
+• Fix kills made before dying in a dungeon now counting toward your active Slayer Master task
+• Fix inventory "Coins" appearing as a sellable item in the Shop

@@ -47,4 +47,6 @@ data class SessionFrame(
     @SerialName("player_hits") val playerHits: List<Int> = emptyList(),
     /** Combat only — enemy's damage dealt each tick (0 = miss), in tick order. */
     @SerialName("enemy_hits") val enemyHits: List<Int> = emptyList(),
+    /** Boss only — combat style used during this session ("melee"|"strength"|"ranged"|"magic"). Empty for non-boss frames. */
+    @SerialName("combat_style") val combatStyle: String = "",
 )
