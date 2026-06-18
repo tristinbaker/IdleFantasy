@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 import traceback
 from dataclasses import dataclass
 from logging import log
@@ -45,6 +46,11 @@ def add_static_pages():
     # Add pages in both the directory and hierarchy
     pages = [
         ("home", PageInfo("Home", "Home.md", gen_home)),
+        ["Contributing", False, [
+            ("getting_started_game", PageInfo("Getting Started - Game Contributions", "getting_started_game.md", gen_getting_started_game)),
+            ("getting_started_wiki", PageInfo("Getting Started - Wiki Contributions", "getting_started_wiki.md", gen_getting_started_wiki)),
+            ("wiki_page_types", PageInfo("Types of Wiki Pages", "wiki_page_types.md", gen_wiki_page_types)),
+        ]],
         ["Skills", False, [
             ("skills", PageInfo("Skills", "Skills.md", gen_skills)),
             ["Gathering", False, [
@@ -126,7 +132,7 @@ def add_boss_pages():
         for boss_id in bosses.keys()
     }
     PAGE_DIRECTORY.update(boss_pages)
-    # Todo: Remove once Page Hierarchies are collapsible
+    # Todo: Include once Page Hierarchies are collapsible
     # PAGE_HIERARCHY.merge([
     #     ["Combat", True, [
     #         ["Bosses", [boss_id for boss_id in boss_pages.keys()]],
@@ -146,7 +152,7 @@ def add_enemy_pages():
         for enemy_id in enemies.keys()
     }
     PAGE_DIRECTORY.update(enemy_pages)
-    # Todo: Remove once Page Hierarchies are collapsible
+    # Todo: Include once Page Hierarchies are collapsible
     # PAGE_HIERARCHY.merge([
     #     ["Combat", True, [
     #         ["Enemies", [enemy_id for enemy_id in enemy_pages.keys()]],
@@ -168,7 +174,7 @@ def add_dungeon_pages():
         for dungeon in dungeons
     }
     PAGE_DIRECTORY.update(dungeon_pages)
-    # Todo: Remove once Page Hierarchies are collapsible
+    # Todo: Include once Page Hierarchies are collapsible
     # PAGE_HIERARCHY.merge([
     #     ["Combat", True, [
     #         ["Dungeons", [dungeon["name"] for dungeon in dungeons]],
@@ -368,6 +374,52 @@ def item_link(key: str) -> str:
     return title(key)
 
 
+def gen_table_of_contents(page_content: str, max_level: int = 4, min_level: int = 2, exclude: list[str] | None = None) -> str:
+    """Build a nested Markdown table of contents from ATX headings up to ``max_level``.
+
+    :param page_content: Markdown source to scan for headings.
+    :param max_level: Maximum heading depth to include (exclusive) (``1`` = ``#``, ``2`` = ``##``, etc.).
+    :param min_level: Minimum heading depth to include (inclusive).
+    :param exclude: Heading labels to omit (plain text, after inline Markdown is stripped).
+    :return: Nested bullet list of anchor links, or an empty string if no headings match.
+    """
+    headings: list[tuple[int, str]] = []
+    in_code_block = False
+    excluded = set(exclude) if exclude else set()
+
+    for line in page_content.splitlines():
+        if line.strip().startswith("```"):
+            in_code_block = not in_code_block
+            continue
+        if in_code_block:
+            continue
+        # Match with heading
+        match = re.compile(r"^(#{1,6})\s+(.+)$").match(line)
+        if not match or not min_level <= len(match.group(1)) < max_level:
+            continue
+        headings.append((len(match.group(1)), match.group(2).strip()))
+
+    if not headings:
+        return ""
+
+    base_level = min(level for level, _ in headings)
+    lines: list[str] = []
+    for level, text in headings:
+        # Remove any link text
+        label = re.sub(r"\[([^]]+)]\([^)]+\)", r"\1", text)
+        # Remove formatting characters
+        label = re.sub(r"[*_`]", "", label).strip()
+        # Remove non-alphanumeric/space characters
+        anchor = re.sub(r"[^\w\s-]", "", label.lower())
+        # Convert all spaces to hyphens
+        anchor = re.sub(r"\s+", "-", anchor).strip("-")
+        # Append table of contents item
+        if label not in excluded:
+            lines.append(f"{'    ' * (level - base_level)}- [{label}](#{anchor})")
+
+    return "\n".join(lines)
+
+
 # ---------------------------------------------------------------------------
 # Page Creation
 # ---------------------------------------------------------------------------
@@ -391,6 +443,26 @@ def gen_home() -> str:
 
 def gen_sidebar() -> str:
     return _gen_page_listing(PAGE_HIERARCHY)
+
+
+def gen_getting_started_game() -> str:
+    page = get_template("contributing/getting_started_game").format(
+        wiki_contribution_link=link("getting_started_wiki", "Contributing to the wiki")
+    )
+    return page.format(table_of_contents=f"## Table of contents\n\n{gen_table_of_contents(page)}")
+
+
+def gen_getting_started_wiki() -> str:
+    page = get_template("contributing/getting_started_wiki").format(
+        page_types_link=link("wiki_page_types"),
+        game_contribution_link=link("getting_started_game", "how to contribute to the game")
+    )
+    return page.format(table_of_contents=f"## Table of contents\n\n{gen_table_of_contents(page)}")
+
+
+def gen_wiki_page_types() -> str:
+    page = get_template("contributing/wiki_page_types")
+    return page.format(table_of_contents=f"## Table of contents\n\n{gen_table_of_contents(page)}")
 
 
 def gen_skills() -> str:
