@@ -1,15 +1,66 @@
 {
   "repo": {
-    "timestamp": 1781693456459
+    "timestamp": 1781744253203
   },
   "packages": {
     "com.tristinbaker.idlefantasy": {
       "metadata": {
-        "lastUpdated": 1781693439059
+        "added": 1781744235667,
+        "lastUpdated": 1781744235667
       },
       "versions": {
+        "7df2d85d94254bd3e6c109a3f0a7897d9cf8a71f40d482acbed9154423876c29": {
+          "added": 1781744235667,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_81.apk",
+            "sha256": "7df2d85d94254bd3e6c109a3f0a7897d9cf8a71f40d482acbed9154423876c29",
+            "size": 5170122
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.9.5",
+            "versionCode": 81,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Replaced the collapsible Town menu on the home screen with an always-visible grid: four equal-width buttons (Shop, Inn, Guild Hall, Church) on the top row, three centre-aligned buttons (Builder, Slayer, Carnival) on the bottom row.\n• Fix boss fights always counting as magic combat for guild quests — combat style is now tracked correctly so attack/strength bosses credit Warriors Guild and magic bosses credit Mages Guild\n• Fix Combat screen tab text misalignment when the Combat Log tab appears d"
+          }
+        },
         "0580bf71e40c34732c2f0a8ec9d1a63f40a6965e58cbc804e6c011ab9f6df0e2": {
-          "added": 1781693439059,
+          "added": 1781744235667,
           "file": {
             "name": "/com.tristinbaker.idlefantasy_80.apk",
             "sha256": "0580bf71e40c34732c2f0a8ec9d1a63f40a6965e58cbc804e6c011ab9f6df0e2",
@@ -59,7 +110,7 @@
           }
         },
         "2671d452ad7f93725016a2fb4390e65e262acff73cf0086cf9f5ddbcbdfda041": {
-          "added": 1781606103817,
+          "added": 1781744235667,
           "file": {
             "name": "/com.tristinbaker.idlefantasy_79.apk",
             "sha256": "2671d452ad7f93725016a2fb4390e65e262acff73cf0086cf9f5ddbcbdfda041",
@@ -109,7 +160,7 @@
           }
         },
         "f7e30abc9f427f8f4c0054c4abcf6c4e621b23d5a3723e892484699acad66472": {
-          "added": 1781552579293,
+          "added": 1781744235667,
           "file": {
             "name": "/com.tristinbaker.idlefantasy_78.apk",
             "sha256": "f7e30abc9f427f8f4c0054c4abcf6c4e621b23d5a3723e892484699acad66472",
@@ -159,7 +210,7 @@
           }
         },
         "47e4948985acd8913d218694d8c9238ea7d4791fcfe51bdf1051f45c75d309cf": {
-          "added": 1781518959069,
+          "added": 1781744235667,
           "file": {
             "name": "/com.tristinbaker.idlefantasy_77.apk",
             "sha256": "47e4948985acd8913d218694d8c9238ea7d4791fcfe51bdf1051f45c75d309cf",
@@ -209,7 +260,7 @@
           }
         },
         "8989ca609c869cdc78aa8dd633087aa27090b5f731465577008bf21eb810e5ca": {
-          "added": 1781443561384,
+          "added": 1781744235667,
           "file": {
             "name": "/com.tristinbaker.idlefantasy_76.apk",
             "sha256": "8989ca609c869cdc78aa8dd633087aa27090b5f731465577008bf21eb810e5ca",
@@ -257,6 +308,186 @@
           "whatsNew": {
             "en-US": "• New: Carnival added to town; queue idle minigames (Archery Range, Strongman Competition, Wizard's Duel, Fishing Derby) to earn carnival tickets, or play active games (Ring Toss, Hammer Strike, Potion Sequence, Item Appraisal) directly; spend tickets in the Prize Shop for exclusive stat gear (Trickster's Amulet, Strongman's Sigil, Carnival Cape) and the Juggling Imp pet\n• New: Magic Bean, a rare farming drop -- plant it and see what happens\n• Fix: Ranged weapons now correctly contribute their a"
           }
+        },
+        "1156785870b00a7eadd6f6054c33af643f84cbc22a3f9c8008ef507026ac288c": {
+          "added": 1781744235667
+        },
+        "87160cfd6f41a75a6ef5b85a7e79b939b0c67c85132c93789b0feb73d489ee74": {
+          "added": 1781744235667
+        },
+        "f10b68bdbf169d0fe4fd53cf30555d98795a72259d7841b9c05943fc03ec50a6": {
+          "added": 1781744235667
+        },
+        "b33f77ce5e1fdc4af32d5b8c106e5a5937dca39d5ff6e7b4b3e21f5c4ed46ba7": {
+          "added": 1781744235667
+        },
+        "396cdbd95406ef2c16968a5e083014a307b0b558717b41d4860e7409db4979d3": {
+          "added": 1781744235667
+        },
+        "2be5f9248f7e613f5d208ac51a985a5d7932afb093d3d8d586f54474bb60a8bc": {
+          "added": 1781744235667
+        },
+        "d96a37ab5ad92a98f6f8b8b0b94385ef1b8cdf2aca65ac5ea042b18fb1887655": {
+          "added": 1781744235667
+        },
+        "d5e361e5a9f2611d858954b9214c769eb8047fd0232b4c7fd3e045175170656f": {
+          "added": 1781744235667
+        },
+        "e98567ab6a3d39ea5a3ece14c964c85124515780518f17cdba64d038b1530313": {
+          "added": 1781744235667
+        },
+        "edf5302f50916bf4d66cfceda8054aebb56b9ede1fae87c086a05f9e1af28b11": {
+          "added": 1781744235667
+        },
+        "effa8b0b11c681c57db6adcd49d229d4d4524597ec1264fc238527981d7f773b": {
+          "added": 1781744235667
+        },
+        "0798d9ee4eb903fb7c3d443c3466f84d9e96984dbbdc797e4f0d0f9b18531a26": {
+          "added": 1781744235667
+        },
+        "eac62f688cad30fac33c3a60b3da965b836d8d1e2dd3dbc723dff375ab0a3274": {
+          "added": 1781744235667
+        },
+        "98c3b367dd91c8597f7aff42953567e9506d4afddd54845106c18f21309cb698": {
+          "added": 1781744235667
+        },
+        "1a50dfbd55577d4303950ee97ba6909b1d367fc3dad54fdac86ac5ad400c1bff": {
+          "added": 1781744235667
+        },
+        "00e45ac00067ab7e4fddf603784e6a507f0a7fe184eb4825b8c7371b2a4e5b3b": {
+          "added": 1781744235667
+        },
+        "ed8aaa15ef2203d9266808029d087bc880c60503ba3c569592dab30a0e13b8d6": {
+          "added": 1781744235667
+        },
+        "142bb68b357b73cff6ff4e832d9b8fae1248140424d503d5134f7112927e6cc4": {
+          "added": 1781744235667
+        },
+        "53879c8954ffb468d6c4cb211d4c63060cdc0f4a9d7e7acd269d43c6217726f2": {
+          "added": 1781744235667
+        },
+        "63d68576e40e5a330331946c55adf6ae31d578d4b87ed6fc85e65a455edc491a": {
+          "added": 1781744235667
+        },
+        "a65cfb1e1b69d7b6a366ab8df3bc4876a8632af52a2eeb2ea335b44f4c255e61": {
+          "added": 1781744235667
+        },
+        "26238e7be01d65904050cf12da99df4117aec448c7c31f80ce6a8fe31f3c99e7": {
+          "added": 1781744235667
+        },
+        "efd3795c550003cee0e1358a17123dfddbf33900f2b55b955c4c3767f219f21f": {
+          "added": 1781744235667
+        },
+        "da4e6b7cae44f8d05f6d156c769e49465482596efb876a713ebf1840ce4b0bdb": {
+          "added": 1781744235667
+        },
+        "11847595f129c32adc3782c955f09470b31edb1a2ce10710958e51deca247776": {
+          "added": 1781744235667
+        },
+        "be489af45757e45b1675035ca87ad7c8d733ec687eafc82423345b0c85a353aa": {
+          "added": 1781744235667
+        },
+        "fb5bdf4186f6f254cf95fc2fb92197f363c1e695ab921142006ee77fd260ca7f": {
+          "added": 1781744235667
+        },
+        "5f36614c74d8df58f81a965e93fb52969e63995897d8af9e1ae16d257f4ae1a8": {
+          "added": 1781744235667
+        },
+        "7711997453ad7352bebcd1c398d724a7d9982f3ba6317a93f6308666b0aef656": {
+          "added": 1781744235667
+        },
+        "b065c84a792b8de8c21661512aec838449afad2a939a19c2ea18350011cf199c": {
+          "added": 1781744235667
+        },
+        "9dbeafa51e603d472cffb64253e472645bfdf1eb9f6f540228a998a270ec6c57": {
+          "added": 1781744235667
+        },
+        "f9c59af5f8dfbe8ec0e6097e7efd129368121597326cc66d9ec40056948199f4": {
+          "added": 1781744235667
+        },
+        "e46a8c21e83e134407e489cf16c9162d36285f7cefc5a78e93e11b9f0441111b": {
+          "added": 1781744235667
+        },
+        "899daa66c08417e1b30fed52f90adab3eac47972d462f0ed109abfe9fc8ca0b9": {
+          "added": 1781744235667
+        },
+        "30ad0d8670c1fac93838b35b6755346d9111f8ee704e367f6a1a3ab99d00f619": {
+          "added": 1781744235667
+        },
+        "1eec0d15cc022a9c92a15d4aa78122818ddf954a2cdaa47cbfec1544c0008f1a": {
+          "added": 1781744235667
+        },
+        "b93843002c9e9ead9e365b8a8a38047b14bd83f06d04327fa4ba7cedcdb7e01a": {
+          "added": 1781744235667
+        },
+        "e32d5fce3287d2edb2001bb2a43ed9dd8a32b9ef734847370702c27b2ebdf029": {
+          "added": 1781744235667
+        },
+        "b4ac9bb058740f0164619f180f2c96ae83bf4ab734855591efc25d8a016a9752": {
+          "added": 1781744235667
+        },
+        "5bd45caf68a0b430541d376c612ab922361421f1f31e2d31f520587c7f2f5e85": {
+          "added": 1781744235667
+        },
+        "3d97938042864824d6d5cae6f5b3a101ca45f65db57b2370e0c50e4f57024f36": {
+          "added": 1781744235667
+        },
+        "ed5527c07f0fbefe8fc6b57fce066c885384c228c6b3d48e548aed1857610261": {
+          "added": 1781744235667
+        },
+        "fa182cfa91fd3ebd68ff4e8134950495a5bc62d292ec1327e845dcbcd3fa78e8": {
+          "added": 1781744235667
+        },
+        "d6646e901dfcbb1d556335be786f135e72bd176ac081a8d3a89de874f9c077e6": {
+          "added": 1781744235667
+        },
+        "cae992dbe365bc3f0fcec8d36b53107f19a4a5f04897b3491d6c08c57ac8b82e": {
+          "added": 1781744235667
+        },
+        "afafe584a75467cfd9b804f144a47bce200ae7d08a30f8f51163d4eac7cd12bb": {
+          "added": 1781744235667
+        },
+        "22f5c95771a2f968af65e3064c144c5053bd032feabbf7bd996a582fe4f94024": {
+          "added": 1781744235667
+        },
+        "bc13b49ad692605603ae2b427528257fd8c64baa063e79272e1becd305fbc0b0": {
+          "added": 1781744235667
+        },
+        "df3b0c9eb11b23d1482215cd7c1b871ed129f54154659d0a2d5eab29697a6da3": {
+          "added": 1781744235667
+        },
+        "dc87bfccd0837e1d3c61901d80429d13165172285348ecd61b612679845478db": {
+          "added": 1781744235667
+        },
+        "5628b2d41f23131c68c501a67346b20e1c3ee2cbc30b0e29f7d89f901874afd2": {
+          "added": 1781744235667
+        },
+        "e756c3de587b00c116c67e3e1d58c22084cd304c6d9aed1647fbb7f9ded7b161": {
+          "added": 1781744235667
+        },
+        "59828c102a44d5c20b0cdb629b8b266d8148315b0f82a15439fafed3165eb80c": {
+          "added": 1781744235667
+        },
+        "ec52e862dd93046b9d84cffe0ea50a3e9feaf1132bed212aacd3563c1fa9ada8": {
+          "added": 1781744235667
+        },
+        "02ef2b2926d3b202cbc22c9e737f7fa263641b9121583086de0b59385ff2105d": {
+          "added": 1781744235667
+        },
+        "21f462f06258b34f78573a791d2b19502977021a46e85509b6deb4aa39c54e11": {
+          "added": 1781744235667
+        },
+        "8d17756d4b1f7d843fefd430aaf2115a8d6ef969df766a9f92c64c402e0bfef5": {
+          "added": 1781744235667
+        },
+        "0d1fdfb67e053735268f3bda5ae1896002b88886c37adedc9c57980582cade2d": {
+          "added": 1781744235667
+        },
+        "e3701f978b2309bb441c973c5ddd5ad56b85eaec9355b272ab3015c7dc80ad81": {
+          "added": 1781744235667
+        },
+        "06675e942c4a8c6d71cc35b0296f182a6ebfcd436fd42c11a49b4375834db305": {
+          "added": 1781744235667
         }
       }
     }
