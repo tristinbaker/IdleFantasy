@@ -68,7 +68,8 @@ def _add_row_ids(html: str) -> str:
 
 
 def _md_to_html(text: str) -> str:
-    html = md_lib.markdown(text, extensions=["tables", "toc"])
+    # Todo: Improve fenced code blocks, maybe SuperFenced extension?
+    html = md_lib.markdown(text, extensions=["tables", "toc", "fenced_code"])
     html = _fix_page_links(html)
     return _add_row_ids(html)
 
@@ -79,7 +80,7 @@ def _md_to_html(text: str) -> str:
 
 def _build_nav(active_page_id: str | None, items: PageHierarchy | None = None) -> str:
     # Todo: Allow page hierarchies to be collapsible
-    # Todo: Also make any existing HTML links active - eg. For the combat footer
+    # Todo: Also make any existing HTML links active, not just md links, - eg. For the combat footer
     if items is None:
         items = PAGE_HIERARCHY
     lines = ["<ul>"]
