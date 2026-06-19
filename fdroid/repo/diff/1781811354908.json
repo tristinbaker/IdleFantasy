@@ -1,0 +1,64 @@
+{
+  "repo": {
+    "timestamp": 1781866427324
+  },
+  "packages": {
+    "com.tristinbaker.idlefantasy": {
+      "metadata": {
+        "lastUpdated": 1781866406692
+      },
+      "versions": {
+        "a4b2c8e71d0f1e10bcce0d57854ceb79d0a9b836729174bda9ea0f9dfb39598a": {
+          "added": 1781866406692,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_84.apk",
+            "sha256": "a4b2c8e71d0f1e10bcce0d57854ceb79d0a9b836729174bda9ea0f9dfb39598a",
+            "size": 5210730
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.9.8",
+            "versionCode": 84,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Workers can now be assigned Construction and Thieving tasks (previously showed Coming Soon or did nothing)\n• Agility moved to the Support Skills section in the Skills tab, consistent with the Profile and Guild Hall screens\n• Automatic backup now includes active sessions (same as manual Export) and no longer writes corrupted files when overwriting an existing backup\n• Release APK is now named IdleFantasy-v[version].apk so downloaded copies are easier to identify and archive\n• Fix toast for addi"
+          }
+        }
+      }
+    }
+  }
+}
