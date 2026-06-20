@@ -8,7 +8,7 @@
     "--pretty"
   ],
   "disabled": [],
-  "endTimestamp": 1781911989725,
+  "endTimestamp": 1781948682779,
   "failedBuilds": {
     "com.tristinbaker.idlefantasy": [
       1,
@@ -33,14 +33,14 @@
   "noPackages": [],
   "noUpdateCheck": [],
   "stages": {
-    "delete_disabled_builds": 1781911968233,
-    "index.make repo": 1781911987566,
-    "prepare_apps repo": 1781911987537,
-    "process_apks": 1781911968234,
-    "read_added_date_from_all_apks": 1781911987537,
-    "remove_apks": 1781911987528,
-    "scan_repo_files": 1781911987528
+    "delete_disabled_builds": 1781948661146,
+    "index.make repo": 1781948681120,
+    "prepare_apps repo": 1781948681103,
+    "process_apks": 1781948661146,
+    "read_added_date_from_all_apks": 1781948681103,
+    "remove_apks": 1781948681101,
+    "scan_repo_files": 1781948681094
   },
-  "startTimestamp": 1781929968000,
+  "startTimestamp": 1781966661000,
   "subcommand": "update"
 }

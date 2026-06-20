@@ -1,6 +1,6 @@
 {
   "repo": {
-    "timestamp": 1781911987566,
+    "timestamp": 1781948681120,
     "version": 30000,
     "name": "Idle Fantasy",
     "icon": "icon.png",
@@ -20,15 +20,15 @@
       "categories": [
         "Games"
       ],
-      "suggestedVersionName": "1.9.9",
-      "suggestedVersionCode": "85",
+      "suggestedVersionName": "1.9.10",
+      "suggestedVersionCode": "86",
       "issueTracker": "https://github.com/tristinbaker/IdleFantasy/issues",
       "liberapay": "tristinbaker_",
       "license": "GPL-3.0-only",
       "sourceCode": "https://github.com/tristinbaker/IdleFantasy",
       "added": 1781744235667,
       "packageName": "com.tristinbaker.idlefantasy",
-      "lastUpdated": 1781911968232,
+      "lastUpdated": 1781948661146,
       "localized": {
         "en-US": {
           "description": "Idle Fantasy is a free and open source offline idle RPG inspired by classic MMORPGs. Train skills, fight in dungeons, craft gear, and complete quests. No internet connection, account, or ads required.\n\n<b>Features</b>\n\n\u2022 <b>14 trainable skills</b>: Mining, Fishing, Woodcutting, Firemaking, Agility, Runecrafting, Smithing, Cooking, Fletching, Crafting, Prayer, Attack, Strength, Defence, Ranged, Magic, Hitpoints\n\n\u2022 <b>Session-based training</b>: Start a session and close the app. Come back up to an hour later to collect your loot and XP. Agility reduces session time.\n\n\u2022 <b>12 dungeons</b>: Fight solo bosses and enemies to earn combat XP, coins, and rare drops. Equip weapons and armour to deal more damage.\n\n\u2022 <b>Crafting system</b>: Smelt bars, cook fish, fletch bows and arrows, craft jewellery. Consume gathered materials and earn XP and items.\n\n\u2022 <b>Prayer</b>: Bury bones collected from combat to earn Prayer XP.\n\n\u2022 <b>Equipment system</b>: Equip weapons, armour, tools, and jewellery to boost stats and skill efficiency.\n\n\u2022 <b>Quest system</b>: 100+ quests spanning all skills. Earn XP rewards on completion.\n\n\u2022 <b>Pet system</b>: Rare pets can drop while training skills. Each pet provides a permanent XP boost to their linked skill.\n\n\u2022 <b>Achievements</b>: Track milestones across levelling, combat, quests, and collections.\n\n\u2022 <b>NPC Shop</b>: Buy supplies and sell your gathered resources for coins.\n\n\u2022 <b>No ads. No accounts. No internet required.</b> Your save data stays on your device.\n\nIdle Fantasy is free software released under the GPL-3.0 licence. Source code is available on the project repository.\n\n<b>Get updates faster</b>\n\nAdd the official Idle Fantasy repository to F-Droid to receive updates as soon as they are released, instead of waiting for the main F-Droid index to catch up.\n\n1. Open F-Droid and go to Settings \u2192 Repositories\n2. Tap + and paste: https://idlefantasy.tristinbaker.xyz/fdroid/repo\n3. Search for Idle Fantasy, open the app page, and under Repositories set Idle Fantasy as the preferred source.\n",
@@ -53,13 +53,59 @@
             "9.png"
           ],
           "summary": "Idle RPG: train skills, fight dungeons, craft gear. No ads, no accounts.",
-          "whatsNew": "\u2022 Fix pet XP bonuses and prestige bonuses not applying to boss session rewards; both are now correctly applied when collecting a completed boss fight\n\u2022 Fix prestige XP bonus not applying to dungeon session rewards when collecting from either the Home or Combat screen\n\u2022 Fix \"combat\" pets (Dragon Whelp, Void Wisp) not counting toward the XP bonus applied during dungeon sessions; multiple combat pets now stack correctly\n\u2022 Fix worker cooking/crafting sheet showing English item names instead of the d"
+          "whatsNew": "\u2022 Fix food overhealing display for prestiged Hitpoints players (simulator max HP now matches the HP bar)\n\u2022 Dungeons and boss fights now cap food consumption at 200 items per session (best-healing food used first); the difficulty indicator now runs the actual combat simulation for each dungeon (accounting for your attack and kill speed) instead of a defence-only estimate, so ratings reflect real survivability\n\u2022 Fix queue XP estimate from Skills tab not including pet bonuses, causing it to show le"
         }
       }
     }
   ],
   "packages": {
     "com.tristinbaker.idlefantasy": [
+      {
+        "added": 1781948661146,
+        "apkName": "com.tristinbaker.idlefantasy_86.apk",
+        "hash": "2d51c13133a9dd079169f2e4943d27ae392cfc2b61d812824821eed056542bde",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 5228062,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.USE_EXACT_ALARM",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 86,
+        "versionName": "1.9.10"
+      },
       {
         "added": 1781911968232,
         "apkName": "com.tristinbaker.idlefantasy_85.apk",
