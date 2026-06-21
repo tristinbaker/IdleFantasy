@@ -188,8 +188,8 @@ object CombatSimulator {
                         val qty  = foodSupply[foodKey] ?: 0
                         if (qty <= 0) continue
                         val heal = foodHealValues[foodKey] ?: continue
-                        if (currentHp + heal <= maxHp) {
-                            currentHp          += heal
+                        if (currentHp + heal <= maxHp || currentHp <= enemyMaxHit || currentHp <= maxHp * 0.5) {
+                            currentHp           = minOf(maxHp, currentHp + heal)
                             foodSupply[foodKey] = qty - 1
                             frameFood[foodKey]  = (frameFood[foodKey] ?: 0) + 1
                             totalFoodEaten++
@@ -410,8 +410,8 @@ object CombatSimulator {
                         val qty  = foodSupply[foodKey] ?: 0
                         if (qty <= 0) continue
                         val heal = foodHealValues[foodKey] ?: continue
-                        if (currentHp + heal <= maxHp) {
-                            currentHp           += heal
+                        if (currentHp + heal <= maxHp || currentHp <= bossMax || currentHp <= maxHp * 0.5) {
+                            currentHp           = minOf(maxHp, currentHp + heal)
                             foodSupply[foodKey]  = qty - 1
                             frameFood[foodKey]   = (frameFood[foodKey] ?: 0) + 1
                             totalFoodEaten++
