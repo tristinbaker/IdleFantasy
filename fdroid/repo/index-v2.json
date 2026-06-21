@@ -14,7 +14,7 @@
       }
     },
     "address": "https://idlefantasy.tristinbaker.xyz/fdroid/repo",
-    "timestamp": 1781948681120,
+    "timestamp": 1782037601379,
     "categories": {
       "Games": {
         "name": {
@@ -31,7 +31,7 @@
           "Games"
         ],
         "issueTracker": "https://github.com/tristinbaker/IdleFantasy/issues",
-        "lastUpdated": 1781948661146,
+        "lastUpdated": 1782037581339,
         "license": "GPL-3.0-only",
         "sourceCode": "https://github.com/tristinbaker/IdleFantasy",
         "screenshots": {
@@ -140,6 +140,56 @@
         "preferredSigner": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
       },
       "versions": {
+        "75b88792d2018ed2d1d7f477c3b3b571de6b303fd4aadaada3c2a0bfdd1f733f": {
+          "added": 1782037581339,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_87.apk",
+            "sha256": "75b88792d2018ed2d1d7f477c3b3b571de6b303fd4aadaada3c2a0bfdd1f733f",
+            "size": 5230598
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.9.11",
+            "versionCode": 87,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fix agility prestige not reducing session time when starting a new session directly from the Skills screen\n• Fix worker efficiency multiplier incorrectly scaling crafting output (bars, planks, etc.) — efficiency now only applies to gathering\n• Fix bronze pickaxe disappearing from the Armory after selling; starting tools are always marked as found\n• Fix Hide Completed toggle resetting when leaving and returning to a Guild Hall screen\n• Fix gathering tool multipliers rounding incorrectly; iron p"
+          }
+        },
         "2d51c13133a9dd079169f2e4943d27ae392cfc2b61d812824821eed056542bde": {
           "added": 1781948661146,
           "file": {

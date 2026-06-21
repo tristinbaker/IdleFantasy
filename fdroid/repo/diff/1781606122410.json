@@ -1,17 +1,67 @@
 {
   "repo": {
-    "timestamp": 1781948681120
+    "timestamp": 1782037601379
   },
   "packages": {
     "com.tristinbaker.idlefantasy": {
       "metadata": {
         "added": 1781744235667,
-        "lastUpdated": 1781948661146,
+        "lastUpdated": 1782037581339,
         "description": {
           "en-US": "Idle Fantasy is a free and open source offline idle RPG inspired by classic MMORPGs. Train skills, fight in dungeons, craft gear, and complete quests. No internet connection, account, or ads required.\n\n<b>Features</b>\n\n• <b>14 trainable skills</b>: Mining, Fishing, Woodcutting, Firemaking, Agility, Runecrafting, Smithing, Cooking, Fletching, Crafting, Prayer, Attack, Strength, Defence, Ranged, Magic, Hitpoints\n\n• <b>Session-based training</b>: Start a session and close the app. Come back up to an hour later to collect your loot and XP. Agility reduces session time.\n\n• <b>12 dungeons</b>: Fight solo bosses and enemies to earn combat XP, coins, and rare drops. Equip weapons and armour to deal more damage.\n\n• <b>Crafting system</b>: Smelt bars, cook fish, fletch bows and arrows, craft jewellery. Consume gathered materials and earn XP and items.\n\n• <b>Prayer</b>: Bury bones collected from combat to earn Prayer XP.\n\n• <b>Equipment system</b>: Equip weapons, armour, tools, and jewellery to boost stats and skill efficiency.\n\n• <b>Quest system</b>: 100+ quests spanning all skills. Earn XP rewards on completion.\n\n• <b>Pet system</b>: Rare pets can drop while training skills. Each pet provides a permanent XP boost to their linked skill.\n\n• <b>Achievements</b>: Track milestones across levelling, combat, quests, and collections.\n\n• <b>NPC Shop</b>: Buy supplies and sell your gathered resources for coins.\n\n• <b>No ads. No accounts. No internet required.</b> Your save data stays on your device.\n\nIdle Fantasy is free software released under the GPL-3.0 licence. Source code is available on the project repository.\n\n<b>Get updates faster</b>\n\nAdd the official Idle Fantasy repository to F-Droid to receive updates as soon as they are released, instead of waiting for the main F-Droid index to catch up.\n\n1. Open F-Droid and go to Settings → Repositories\n2. Tap + and paste: https://idlefantasy.tristinbaker.xyz/fdroid/repo\n3. Search for Idle Fantasy, open the app page, and under Repositories set Idle Fantasy as the preferred source.\n"
         }
       },
       "versions": {
+        "75b88792d2018ed2d1d7f477c3b3b571de6b303fd4aadaada3c2a0bfdd1f733f": {
+          "added": 1782037581339,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_87.apk",
+            "sha256": "75b88792d2018ed2d1d7f477c3b3b571de6b303fd4aadaada3c2a0bfdd1f733f",
+            "size": 5230598
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.9.11",
+            "versionCode": 87,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fix agility prestige not reducing session time when starting a new session directly from the Skills screen\n• Fix worker efficiency multiplier incorrectly scaling crafting output (bars, planks, etc.) — efficiency now only applies to gathering\n• Fix bronze pickaxe disappearing from the Armory after selling; starting tools are always marked as found\n• Fix Hide Completed toggle resetting when leaving and returning to a Guild Hall screen\n• Fix gathering tool multipliers rounding incorrectly; iron p"
+          }
+        },
         "2d51c13133a9dd079169f2e4943d27ae392cfc2b61d812824821eed056542bde": {
           "added": 1781948661146,
           "file": {
