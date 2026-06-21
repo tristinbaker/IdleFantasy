@@ -841,6 +841,8 @@
     <string name="church_bones_available">Je hebt %1$d botten (alle soorten)</string>
     <string name="church_not_enough_bones">Niet genoeg botten (je hebt %1$d nodig)</string>
     <string name="church_already_active">Er is al een zegen actief</string>
+    <string name="church_confirm_deactivate_title">Zegen deactiveren?</string>
+    <string name="church_confirm_deactivate_body">Weet je zeker dat je je actieve zegen wilt deactiveren? Je krijgt je botten niet terug.</string>
 
     <!-- Blessing names -->
     <string name="blessing_blessed_focus_name">Gezegende Focus</string>

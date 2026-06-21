@@ -111,6 +111,24 @@ fun ChurchScreen(
         }
     }
 
+    if (state.showDeactivateConfirm) {
+        AlertDialog(
+            onDismissRequest = viewModel::dismissDeactivate,
+            title = { Text(stringResource(R.string.church_confirm_deactivate_title), fontWeight = FontWeight.Bold) },
+            text = { Text(stringResource(R.string.church_confirm_deactivate_body)) },
+            confirmButton = {
+                Button(onClick = viewModel::confirmDeactivate) {
+                    Text(stringResource(R.string.btn_deactivate))
+                }
+            },
+            dismissButton = {
+                OutlinedButton(onClick = viewModel::dismissDeactivate) {
+                    Text(stringResource(R.string.btn_cancel))
+                }
+            },
+        )
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -141,9 +159,10 @@ fun ChurchScreen(
             item {
                 if (anyBlessingActive) {
                     ActiveBlessingBanner(
-                        blessing    = state.activeBlessing!!,
-                        remainingMs = state.activeBlessingRemainingMs,
-                        churchTier  = state.churchTier,
+                        blessing     = state.activeBlessing!!,
+                        remainingMs  = state.activeBlessingRemainingMs,
+                        churchTier   = state.churchTier,
+                        onDeactivate = viewModel::deactivateBlessing,
                     )
                 } else {
                     Text(
@@ -191,7 +210,12 @@ fun ChurchScreen(
 }
 
 @Composable
-private fun ActiveBlessingBanner(blessing: BlessingData, remainingMs: Long, churchTier: Int) {
+private fun ActiveBlessingBanner(
+    blessing: BlessingData,
+    remainingMs: Long,
+    churchTier: Int,
+    onDeactivate: () -> Unit,
+) {
     val context   = LocalContext.current
     val nameResId = context.resources.getIdentifier(
         "blessing_${blessing.key}_name", "string", context.packageName,
@@ -199,34 +223,41 @@ private fun ActiveBlessingBanner(blessing: BlessingData, remainingMs: Long, chur
     val name = if (nameResId != 0) stringResource(nameResId) else blessing.key
     val effectText = blessingEffectText(blessing, churchTier)
 
-    Column(
+    Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically,
     ) {
-        Text(
-            text       = stringResource(R.string.church_active_label),
-            style      = MaterialTheme.typography.labelSmall,
-            color      = MaterialTheme.colorScheme.onSurfaceVariant,
-        )
-        Spacer(Modifier.height(2.dp))
-        Text(
-            text       = name,
-            style      = MaterialTheme.typography.titleMedium,
-            fontWeight = FontWeight.Bold,
-            color      = GoldPrimary,
-        )
-        Text(
-            text  = effectText,
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-        )
-        Spacer(Modifier.height(4.dp))
-        Text(
-            text  = stringResource(R.string.church_expires_in, remainingMs.formatDurationMs()),
-            style = MaterialTheme.typography.labelSmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-        )
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text       = stringResource(R.string.church_active_label),
+                style      = MaterialTheme.typography.labelSmall,
+                color      = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Spacer(Modifier.height(2.dp))
+            Text(
+                text       = name,
+                style      = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold,
+                color      = GoldPrimary,
+            )
+            Text(
+                text  = effectText,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Spacer(Modifier.height(4.dp))
+            Text(
+                text  = stringResource(R.string.church_expires_in, remainingMs.formatDurationMs()),
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+        Spacer(Modifier.width(12.dp))
+        OutlinedButton(onClick = onDeactivate) {
+            Text(stringResource(R.string.btn_deactivate))
+        }
     }
 }
 

@@ -832,6 +832,8 @@
     <string name="church_bones_available">Vous avez %1$d os (tous types)</string>
     <string name="church_not_enough_bones">Os insuffisants (besoin de %1$d)</string>
     <string name="church_already_active">Une bénédiction est déjà active</string>
+    <string name="church_confirm_deactivate_title">Désactiver la bénédiction ?</string>
+    <string name="church_confirm_deactivate_body">Es-tu sûr de vouloir désactiver ta bénédiction active ? Tu ne récupéreras pas tes os.</string>
     <string name="blessing_blessed_focus_name">Concentration bénie</string>
     <string name="blessing_stone_skin_name">Peau de Pierre</string>
     <string name="blessing_blessed_focus_ii_name">Concentration Bénie II</string>

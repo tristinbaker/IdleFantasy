@@ -792,6 +792,8 @@
     <string name="church_bones_available">You have %1$d bones (all types)</string>
     <string name="church_not_enough_bones">Not enough bones (need %1$d)</string>
     <string name="church_already_active">A blessing is already active</string>
+    <string name="church_confirm_deactivate_title">¿Desactivar bendición?</string>
+    <string name="church_confirm_deactivate_body">¿Estás seguro de que quieres desactivar tu bendición activa? No recuperarás tus huesos.</string>
     <string name="blessing_blessed_focus_name">Blessed Focus</string>
     <string name="blessing_stone_skin_name">Stone Skin</string>
     <string name="blessing_blessed_focus_ii_name">Blessed Focus II</string>

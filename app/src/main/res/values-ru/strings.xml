@@ -857,6 +857,8 @@
     <string name="church_bones_available">У вас %1$d костей (все виды)</string>
     <string name="church_not_enough_bones">Недостаточно костей (нужно %1$d)</string>
     <string name="church_already_active">Благословение уже активно</string>
+    <string name="church_confirm_deactivate_title">Деактивировать благословение?</string>
+    <string name="church_confirm_deactivate_body">Вы уверены, что хотите деактивировать активное благословение? Вы не получите кости обратно.</string>
 
     <!-- Blessing names -->
     <string name="blessing_blessed_focus_name">Благословенный фокус</string>

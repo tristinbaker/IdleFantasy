@@ -153,4 +153,15 @@ class ChurchRepository @Inject constructor(
         buffNotifScheduler.scheduleBlessingExpiry(newExpiresAt)
         return BlessingActivateResult.Success
     }
+
+    suspend fun deactivateBlessing() {
+        val flags = playerRepo.getFlags()
+        playerRepo.updateFlags(
+            flags.copy(
+                activeBlessingKey       = "",
+                activeBlessingExpiresAt = 0L,
+            )
+        )
+        buffNotifScheduler.cancelBlessingExpiry()
+    }
 }

@@ -800,6 +800,8 @@
     <string name="church_bones_available">Ihr habt %1$d Knochen (alle Arten)</string>
     <string name="church_not_enough_bones">Nicht genug Knochen (benötigt %1$d)</string>
     <string name="church_already_active">Ihr seid bereits gesegnet</string>
+    <string name="church_confirm_deactivate_title">Segen deaktivieren?</string>
+    <string name="church_confirm_deactivate_body">Bist du sicher, dass du deinen aktiven Segen deaktivieren möchtest? Du erhältst deine Knochen nicht zurück.</string>
 
     <!-- Blessing names -->
     <string name="blessing_blessed_focus_name">Segen der Konzentration</string>

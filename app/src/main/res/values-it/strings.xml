@@ -857,6 +857,8 @@
     <string name="church_bones_available">Hai %1$d ossa (tutti i tipi)</string>
     <string name="church_not_enough_bones">Non hai abbastanza ossa (ne servono %1$d)</string>
     <string name="church_already_active">Una benedizione è già attiva</string>
+    <string name="church_confirm_deactivate_title">Disattivare la benedizione?</string>
+    <string name="church_confirm_deactivate_body">Sei sicuro di voler disattivare la benedizione attiva? Non riavrai indietro le tue ossa.</string>
 
     <!-- Blessing names -->
     <string name="blessing_blessed_focus_name">Concentrazione</string>

@@ -32,6 +32,7 @@ data class ChurchUiState(
     val activeBlessingRemainingMs: Long = 0L,
     val totalBoneEquivalent: Int = 0,
     val pendingBlessingKey: String? = null,
+    val showDeactivateConfirm: Boolean = false,
     val snackbarMessage: String? = null,
 )
 
@@ -88,6 +89,21 @@ class ChurchViewModel @Inject constructor(
     }
 
     fun dismissConfirm() = _extra.update { it.copy(pendingBlessingKey = null) }
+
+    fun deactivateBlessing() {
+        _extra.update { it.copy(showDeactivateConfirm = true) }
+    }
+
+    fun confirmDeactivate() {
+        _extra.update { it.copy(showDeactivateConfirm = false) }
+        viewModelScope.launch {
+            churchRepo.deactivateBlessing()
+        }
+    }
+
+    fun dismissDeactivate() {
+        _extra.update { it.copy(showDeactivateConfirm = false) }
+    }
 
     fun snackbarConsumed() = _extra.update { it.copy(snackbarMessage = null) }
 }
