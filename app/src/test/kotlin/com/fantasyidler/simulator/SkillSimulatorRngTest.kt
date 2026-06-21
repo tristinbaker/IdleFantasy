@@ -50,6 +50,25 @@ class SkillSimulatorRngTest {
     }
 
     @Test
+    fun `mining with fractional tool efficiency accumulates items correctly`() {
+        val res = SkillSimulator.simulateMining(
+            "iron_ore", ore(10), emptyMap(), startXp = 0,
+            toolEfficiency = 1.25f, random = Random(42)
+        )
+        // Over 60 frames, efficiency 1.25 should yield exactly 75 ores.
+        val totalOres = res.frames.sumOf { it.items["iron_ore"] ?: 0 }
+        assertEquals(75, totalOres)
+
+        // The pattern of item counts should alternatingly yield 1, 1, 1, 2.
+        val quantities = res.frames.map { it.items["iron_ore"] ?: 0 }
+        // Verify we only have 1s and 2s
+        assertTrue(quantities.all { it in 1..2 })
+        // Check the pattern for the first 8 frames: 1, 1, 1, 2, 1, 1, 1, 2
+        assertEquals(listOf(1, 1, 1, 2, 1, 1, 1, 2), quantities.take(8))
+    }
+
+
+    @Test
     fun `gem drop chance of 1 always drops and 0 never drops regardless of seed`() {
         val always = GemData("Diamond", "", dropRate = 1.0, rarity = "rare")
         val never = GemData("Diamond", "", dropRate = 0.0, rarity = "rare")

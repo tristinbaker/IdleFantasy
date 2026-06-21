@@ -21,6 +21,15 @@ class SkillSimulatorPureTest {
     }
 
     @Test
+    fun `estimateGatheringQty estimates correct quantity with efficiency`() {
+        assertEquals(60, SkillSimulator.estimateGatheringQty(1.0f))
+        assertEquals(75, SkillSimulator.estimateGatheringQty(1.25f))
+        assertEquals(90, SkillSimulator.estimateGatheringQty(1.5f))
+        assertEquals(60, SkillSimulator.estimateGatheringQty(0.5f))
+    }
+
+
+    @Test
     fun `estimateAgilityXp grows with level then caps at the 0_95 success rate`() {
         // At the minimum level the success rate is the base 0.80.
         assertEquals(960L, SkillSimulator.estimateAgilityXp(10, 1, 1))
