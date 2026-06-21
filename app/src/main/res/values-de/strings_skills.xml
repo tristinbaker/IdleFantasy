@@ -4,31 +4,31 @@
 
     <!-- Gathering skills -->
     <string name="skill_mining_name">Bergbau</string>
-    <string name="skill_mining_desc">Gewinnet wertvolle Erze und Edelsteine aus der Erde.</string>
+    <string name="skill_mining_desc">Fördert wertvolle Erze unter der Erde und mit etwas Glück fallen euch dabei Edelsteine in die Hände.</string>
     <string name="skill_fishing_name">Angeln</string>
     <string name="skill_fishing_desc">Fangt Fische und andere Schätze aus dem Wasser.</string>
-    <string name="skill_woodcutting_name">Holzbearbeitung</string>
+    <string name="skill_woodcutting_name">Holzfällerei</string>
     <string name="skill_woodcutting_desc">Fällt Bäume und sammelt verschiedene Holzarten.</string>
     <string name="skill_farming_name">Landwirtschaft</string>
-    <string name="skill_farming_desc">Pflanzt und erntet Pflanzen auf Euren Äckern.</string>
+    <string name="skill_farming_desc">Pflanzt und erntet auf Euren Äckern.</string>
     <string name="skill_firemaking_name">Feuer machen</string>
-    <string name="skill_firemaking_desc">Verbrennt Holzscheite aus Eurem Inventar, Xp für Feuermachen zu erhalten. Jedes verbrannte Holz hinterlässt außerdem Asche, die Ihr in der Gebets-Fertigkeit verstreuen könnt, um zusätzliche Gebets-XP zu erhalten.</string>
+    <string name="skill_firemaking_desc">Verbrennt Holzscheite aus Eurem Inventar. Jedes verbrannte Holz hinterlässt Asche, die Ihr für Gebete, als Dünger oder bei der Runen- und Trankherstellung nutzen könnt.</string>
     <string name="skill_agility_name">Geschicklichkeit</string>
-    <string name="skill_agility_desc">Übt Euch in Geschicklichkeit, um die Dauer von Aktivitäten aller Fertigkeiten zu verkürzen. Auf Stufe 99 verkürzt sich die Dauer um 20 Minuten (60 Min. → 40 Min.), wobei die Verkürzung mit steigender Stufe linear verläuft.</string>
+    <string name="skill_agility_desc">Übt Euch in Geschicklichkeit, um die Dauer aller Aktivitäten zu verkürzen. Auf Stufe 99 verkürzt sich die Dauer um 20 Minuten (60 Min. → 40 Min.).</string>
 
     <!-- Crafting skills -->
     <string name="skill_smithing_name">Schmieden</string>
-    <string name="skill_smithing_desc">Schmelzt Erze zu Barren und schmiedet mächtige Ausrüstung aus Metall.</string>
+    <string name="skill_smithing_desc">Schmelzt Erze und Edelmetalle zu Barren und schmiedet mächtige Ausrüstung, hilfreiche Werkzeuge und Bauteile aus Metall.</string>
     <string name="skill_cooking_name">Kochen</string>
-    <string name="skill_cooking_desc">Verarbeitet rohe Zutaten zu Speisen, die im Kampf LP wiederherstellen.</string>
+    <string name="skill_cooking_desc">Verarbeitet rohe Zutaten zu Speisen, die im Kampf Lebenspunkte wiederherstellen.</string>
     <string name="skill_fletching_name">Herstellen</string>
-    <string name="skill_fletching_desc">Stellt Pfeil und Bogen aus Holz und Metallteilen her.</string>
-    <string name="skill_crafting_name">Fertigen</string>
+    <string name="skill_fletching_desc">Stellt Pfeil und Bogen, oder Baumaterial aus Holz und Metallteilen her.</string>
+    <string name="skill_crafting_name">Schmuckfertigung</string>
     <string name="skill_crafting_desc">Fertigt Schmuck und andere handgefertigte Gegenstände aus edlen Materialien an.</string>
     <string name="skill_runecrafting_name">Runenherstellung</string>
     <string name="skill_runecrafting_desc">Stellt magische Runen aus Runenessenz her, die Ihr beim Zaubern verwenden könnt.</string>
     <string name="skill_herblore_name">Kräuterkunde</string>
-    <string name="skill_herblore_desc">Braut Tränke aus gesammelten Kräutern und Reagenzien aus Dungeons, um Eure Kampfwerte zu verbessern.</string>
+    <string name="skill_herblore_desc">Braut Tränke aus gesammelten Kräutern und Reagenzien aus Verliesen, um Eure Kampfwerte zu verbessern.</string>
 
     <!-- Combat skills -->
     <string name="skill_attack_name">Angriff</string>
@@ -41,17 +41,17 @@
     <string name="skill_ranged_desc">Bekämpft Eure Gegner aus sicherer Entfernung mit Pfeil und Bogen.</string>
     <string name="skill_magic_name">Magie</string>
     <string name="skill_magic_desc">Nutzt Runen, um mächtige Zaubersprüche zu wirken. Mit steigender Stufe schaltet Ihr stärkere Zaubersprüche frei.</string>
-    <string name="skill_hitpoints_name">Trefferpunkte</string>
+    <string name="skill_hitpoints_name">Lebenspunkte</string>
     <string name="skill_hitpoints_desc">Eure Gesamtgesundheit. Je höher der Wert, desto länger haltet Ihr im Kampf durch.</string>
     <string name="skill_prayer_name">Gebete</string>
-    <string name="skill_prayer_desc">Vergrabt Knochen, um Gebets-XP zu sammeln und mächtige Kampfgebete freizuschalten.</string>
+    <string name="skill_prayer_desc">Vergrabt Knochen oder verstreut Asche, um mächtige Gebete freizuschalten.</string>
 
     <!-- ===== Skill unlock sheet labels ===== -->
     <string name="label_lv">Lv. %1$d</string>
     <string name="skills_agility_course_detail">Lv. %1$d  •  %2$d XP/Runde</string>
-    <string name="label_hp_passive">Passiv — erhöht maximale TP</string>
-    <string name="label_hp_scales">Max. TP steigt jedes Level</string>
-    <string name="label_hp_max">Max. TP: %1$d</string>
+    <string name="label_hp_passive">Passiv — erhöht maximale LP</string>
+    <string name="label_hp_scales">Max. LP steigt jedes Level</string>
+    <string name="label_hp_max">Max. LP: %1$d</string>
     <string name="label_xp_per_bone">%1$s (%2$d XP/Knochen)</string>
     <string name="label_xp_per_kill">%1$s (%2$d XP/Abschuss)</string>
 
@@ -83,11 +83,11 @@
     <string name="agility_mythic_course_name">Mythischer Kurs</string>
     <string name="agility_mythic_course_desc">Ein legendärer Kurs, der den Gesetzen der Physik trotzt.</string>
     <string name="agility_divine_course_name">Göttlicher Kurs</string>
-    <string name="agility_divine_course_desc">Ein göttlicher Parcours, gesegnet von den Göttern der Geschicklichkeit.</string>
+    <string name="agility_divine_course_desc">Ein göttlicher Parcours, gesegnet von den Göttern.</string>
     <string name="agility_transcendent_course_name">Überirdischer Kurs</string>
-    <string name="agility_transcendent_course_desc">Die ultimative Prüfung der Geschicklichkeit, die die Grenzen des Menschenmöglichen überschreitet.</string>
+    <string name="agility_transcendent_course_desc">Die ultimative Prüfung der Geschicklichkeit, die die Grenzen des Möglichen überschreitet.</string>
     <!-- ===== Session skill type labels ===== -->
     <string name="skill_expedition_name">Expedition</string>
-    <string name="skill_boss_name">Boss</string>
+    <string name="skill_boss_name">Endgegner</string>
     <string name="skill_mercantile_name">Handel</string>
 </resources>
