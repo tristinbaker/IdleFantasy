@@ -1,13 +1,63 @@
 {
   "repo": {
-    "timestamp": 1782088176479
+    "timestamp": 1782170030344
   },
   "packages": {
     "com.tristinbaker.idlefantasy": {
       "metadata": {
-        "lastUpdated": 1782088156707
+        "lastUpdated": 1782170008773
       },
       "versions": {
+        "23d61152f628fb924b81416da68018194b5df3e1517388fb68f0c08ab0047f77": {
+          "added": 1782170008773,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_89.apk",
+            "sha256": "23d61152f628fb924b81416da68018194b5df3e1517388fb68f0c08ab0047f77",
+            "size": 5314306
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.9.13",
+            "versionCode": 89,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Slayer: Foretell queue now shows a \"+ Queue\" button on each row so you can manually queue that dungeon at any time\n• Carnival: Fairgrounds building upgrades now boost idle session ticket chance (+5%/+10%/+15% per tier)\n• Carnival: Difficulty setting for each minigame is now remembered across sessions\n• Carnival: Potion Sequence now uses 6 colours for both the sequence length and the button palette (Normal: remember 6, Hard: remember 8)\n• Guild dailies: Fletchers Guild no longer assigns arrow-c"
+          }
+        },
         "c33b8fe1badaceab2feffcaae3c3d47c4cb6c50355d33f6c1f7c65ebfda16863": {
           "added": 1782088156707,
           "file": {
