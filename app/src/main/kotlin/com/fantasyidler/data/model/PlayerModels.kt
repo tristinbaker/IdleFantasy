@@ -90,6 +90,8 @@ data class PlayerFlags(
     @SerialName("active_slayer_task") val activeSlayerTask: SlayerTask? = null,
     /** Accumulated Slayer points, spent in the Slayer Master shop. */
     @SerialName("slayer_points") val slayerPoints: Int = 0,
+    /** Up to 3 pre-assigned future Slayer tasks paid for with bones; first is assigned after the active task finishes. */
+    @SerialName("foretelled_tasks") val foretelledTasks: List<SlayerTask> = emptyList(),
     /** Last 10 completed sessions, newest first. */
     @SerialName("recent_sessions") val recentSessions: List<RecentSession> = emptyList(),
     /** Whether to show the recent activity log FAB on the home screen. */
@@ -115,6 +117,13 @@ data class PlayerFlags(
     @SerialName("carnival_hammer_strike_cooldown_at") val carnivalHammerStrikeCooldownAt: Long = 0L,
     @SerialName("carnival_potion_sequence_cooldown_at") val carnivalPotionSequenceCooldownAt: Long = 0L,
     @SerialName("carnival_item_appraisal_cooldown_at") val carnivalItemAppraisalCooldownAt: Long = 0L,
+    @SerialName("carnival_shell_game_cooldown_at") val carnivalShellGameCooldownAt: Long = 0L,
+    @SerialName("carnival_higher_lower_cooldown_at") val carnivalHigherLowerCooldownAt: Long = 0L,
+    /** Per-game carnival difficulty: game key ("ring_toss" etc.) → "normal" or "hard". */
+    @SerialName("carnival_difficulties") val carnivalDifficulties: Map<String, String> = emptyMap(),
+    /** Dungeon to queue for the active Slayer task when a queue slot next opens; null = nothing pending. */
+    @SerialName("pending_slayer_dungeon_key") val pendingSlayerDungeonKey: String? = null,
+    @SerialName("pending_slayer_dungeon_name") val pendingSlayerDungeonName: String? = null,
     /** All equipment item keys ever obtained; used by the Armory to show items even after they are sold. */
     @SerialName("seen_item_keys") val seenItemKeys: Set<String> = emptySet(),
     /** Last run stats per dungeon key (food consumed, kills, survived). */

@@ -1,8 +1,5 @@
 package com.fantasyidler.ui.screen
 
-import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -35,6 +32,9 @@ import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SegmentedButton
+import androidx.compose.material3.SegmentedButtonDefaults
+import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
@@ -65,10 +65,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.R
 import com.fantasyidler.data.json.CarnivalPrize
 import com.fantasyidler.data.model.Skills
-import com.fantasyidler.simulator.CarnivalSimulator
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.ActiveGameState
+import com.fantasyidler.ui.viewmodel.AppraisalQuad
 import com.fantasyidler.ui.viewmodel.CarnivalViewModel
+import com.fantasyidler.ui.viewmodel.Difficulty
 import com.fantasyidler.util.GameStrings
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -79,9 +80,11 @@ private val POTION_COLORS = listOf(
     Color(0xFF2196F3), // blue
     Color(0xFFF44336), // red
     Color(0xFF9C27B0), // purple
+    Color(0xFFFF9800), // orange (hard mode)
+    Color(0xFF00BCD4), // cyan   (hard mode)
 )
 
-private val POTION_NAMES = listOf("Green", "Blue", "Red", "Purple")
+private val POTION_NAMES = listOf("Green", "Blue", "Red", "Purple", "Orange", "Cyan")
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -218,8 +221,6 @@ private fun IdleGamesTab(
         )
         IDLE_GAMES.forEach { game ->
             val skillLevel  = skillLevels[game.skillKey] ?: 1
-            val minTickets  = (60 * (0.15 + (1 - 1) * (0.20 / 98.0))).toInt()
-            val maxTickets  = (60 * (0.15 + (99 - 1) * (0.20 / 98.0))).toInt()
             val myTickets   = (60 * (0.15 + (skillLevel - 1) * (0.20 / 98.0))).toInt()
             Surface(
                 shape    = RoundedCornerShape(12.dp),
@@ -285,10 +286,26 @@ private fun ActiveGamesTab(
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-        RingTossCard(state.ringTossState, viewModel)
-        HammerStrikeCard(state.hammerStrikeState, viewModel)
-        PotionSequenceCard(state.potionSequenceState, viewModel)
-        ItemAppraisalCard(state.itemAppraisalState, state.currentAppraisalPair, viewModel)
+        RingTossCard(state.ringTossState, state.ringTossDifficulty, viewModel)
+        HammerStrikeCard(state.hammerStrikeState, state.hammerStrikeDifficulty, viewModel)
+        PotionSequenceCard(state.potionSequenceState, state.potionSequenceDifficulty, viewModel)
+        ItemAppraisalCard(
+            gameState  = state.itemAppraisalState,
+            difficulty = state.itemAppraisalDifficulty,
+            quad       = state.currentAppraisalQuad,
+            pair       = state.currentAppraisalPair,
+            viewModel  = viewModel,
+        )
+        if (state.carnivalGameCount >= 5) {
+            ShellGameCard(state.shellGameState, state.shellGameDifficulty, viewModel)
+        } else {
+            LockedGameCard(R.string.carnival_shell_game, R.string.carnival_shell_locked)
+        }
+        if (state.carnivalGameCount >= 6) {
+            HigherOrLowerCard(state.higherLowerState, state.higherLowerDifficulty, viewModel)
+        } else {
+            LockedGameCard(R.string.carnival_higher_lower, R.string.carnival_higher_lower_locked)
+        }
     }
 }
 
@@ -308,6 +325,53 @@ private fun GameCard(
             Text(stringResource(descRes), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             HorizontalDivider()
             content()
+        }
+    }
+}
+
+@Composable
+private fun LockedGameCard(titleRes: Int, reasonRes: Int) {
+    Surface(
+        shape    = RoundedCornerShape(12.dp),
+        color    = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            Text(stringResource(titleRes), style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(stringResource(reasonRes), style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant)
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun DifficultySelector(
+    difficulty: Difficulty,
+    onDifficultyChange: (Difficulty) -> Unit,
+) {
+    Row(
+        modifier              = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment     = Alignment.CenterVertically,
+    ) {
+        Text(
+            text  = stringResource(R.string.carnival_difficulty_label),
+            style = MaterialTheme.typography.labelMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        SingleChoiceSegmentedButtonRow(modifier = Modifier.width(200.dp)) {
+            SegmentedButton(
+                selected = difficulty == Difficulty.NORMAL,
+                onClick  = { onDifficultyChange(Difficulty.NORMAL) },
+                shape    = SegmentedButtonDefaults.itemShape(index = 0, count = 2),
+            ) { Text(stringResource(R.string.carnival_difficulty_normal)) }
+            SegmentedButton(
+                selected = difficulty == Difficulty.HARD,
+                onClick  = { onDifficultyChange(Difficulty.HARD) },
+                shape    = SegmentedButtonDefaults.itemShape(index = 1, count = 2),
+            ) { Text(stringResource(R.string.carnival_difficulty_hard)) }
         }
     }
 }
@@ -334,11 +398,18 @@ private fun CooldownRow(gameKey: String, resumesAtMs: Long, viewModel: CarnivalV
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun RingTossCard(gameState: ActiveGameState, viewModel: CarnivalViewModel) {
+private fun RingTossCard(gameState: ActiveGameState, difficulty: Difficulty, viewModel: CarnivalViewModel) {
     GameCard(R.string.carnival_ring_toss, R.string.carnival_active_ring_desc) {
         when (gameState) {
             is ActiveGameState.Ready -> {
+                DifficultySelector(difficulty, viewModel::setRingTossDifficulty)
+                val hint = if (difficulty == Difficulty.HARD)
+                    stringResource(R.string.carnival_ring_hard_hint)
+                else
+                    stringResource(R.string.carnival_ring_target_hint)
+                Text(hint, style = MaterialTheme.typography.bodySmall, color = GoldPrimary)
                 Button(onClick = viewModel::startRingToss, modifier = Modifier.fillMaxWidth()) {
                     Text(stringResource(R.string.carnival_play))
                 }
@@ -356,12 +427,11 @@ private fun RingTossCard(gameState: ActiveGameState, viewModel: CarnivalViewMode
                 }
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Box(modifier = Modifier.fillMaxWidth().height(24.dp)) {
-                        // Target zone highlight
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth(0.55f - 0.45f)
                                 .align(Alignment.CenterStart)
-                                .padding(start = (0.45f * 1f * 1f).dp) // approximate
+                                .padding(start = (0.45f * 1f * 1f).dp)
                                 .height(24.dp)
                                 .background(GoldPrimary.copy(alpha = 0.3f), RoundedCornerShape(4.dp))
                         )
@@ -371,32 +441,13 @@ private fun RingTossCard(gameState: ActiveGameState, viewModel: CarnivalViewMode
                             color            = MaterialTheme.colorScheme.primary,
                             trackColor       = MaterialTheme.colorScheme.surfaceVariant,
                         )
-                        // Target zone overlay
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(24.dp),
-                        ) {
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxWidth(0.10f)
-                                    .align(Alignment.CenterStart)
-                                    .padding(start = (0f).dp)
-                                    .height(24.dp)
-                                    .background(Color.Transparent)
-                            )
-                        }
                     }
-                    // Show target zone as a separate indicator
-                    Row(
-                        modifier              = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Center,
-                    ) {
-                        Text(
-                            text  = stringResource(R.string.carnival_ring_target_hint),
-                            style = MaterialTheme.typography.bodySmall,
-                            color = GoldPrimary,
-                        )
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+                        val hint = if (difficulty == Difficulty.HARD)
+                            stringResource(R.string.carnival_ring_hard_hint)
+                        else
+                            stringResource(R.string.carnival_ring_target_hint)
+                        Text(hint, style = MaterialTheme.typography.bodySmall, color = GoldPrimary)
                     }
                     Button(
                         onClick  = { viewModel.submitRingToss(position) },
@@ -412,11 +463,13 @@ private fun RingTossCard(gameState: ActiveGameState, viewModel: CarnivalViewMode
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun HammerStrikeCard(gameState: ActiveGameState, viewModel: CarnivalViewModel) {
+private fun HammerStrikeCard(gameState: ActiveGameState, difficulty: Difficulty, viewModel: CarnivalViewModel) {
     GameCard(R.string.carnival_hammer_strike, R.string.carnival_active_hammer_desc) {
         when (gameState) {
             is ActiveGameState.Ready -> {
+                DifficultySelector(difficulty, viewModel::setHammerStrikeDifficulty)
                 Button(onClick = viewModel::startHammerStrike, modifier = Modifier.fillMaxWidth()) {
                     Text(stringResource(R.string.carnival_play))
                 }
@@ -432,6 +485,8 @@ private fun HammerStrikeCard(gameState: ActiveGameState, viewModel: CarnivalView
                         if (power <= 0f) { power = 0f; rising = true }
                     }
                 }
+                val perfectThreshold = if (difficulty == Difficulty.HARD) 0.87f else 0.80f
+                val goodThreshold    = if (difficulty == Difficulty.HARD) 0.60f else 0.50f
                 Column(
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -445,16 +500,13 @@ private fun HammerStrikeCard(gameState: ActiveGameState, viewModel: CarnivalView
                         progress   = { power },
                         modifier   = Modifier.fillMaxWidth().height(28.dp).clip(RoundedCornerShape(4.dp)),
                         color      = when {
-                            power >= 0.80f -> Color(0xFFF44336)
-                            power >= 0.50f -> GoldPrimary
-                            else           -> MaterialTheme.colorScheme.primary
+                            power >= perfectThreshold -> Color(0xFFF44336)
+                            power >= goodThreshold    -> GoldPrimary
+                            else                      -> MaterialTheme.colorScheme.primary
                         },
                         trackColor = MaterialTheme.colorScheme.surfaceVariant,
                     )
-                    Row(
-                        modifier              = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceEvenly,
-                    ) {
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
                         Text(stringResource(R.string.carnival_hammer_miss_zone), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                         Text(stringResource(R.string.carnival_hammer_good_zone), style = MaterialTheme.typography.bodySmall, color = GoldPrimary)
                         Text(stringResource(R.string.carnival_hammer_perfect_zone), style = MaterialTheme.typography.bodySmall, color = Color(0xFFF44336))
@@ -473,11 +525,13 @@ private fun HammerStrikeCard(gameState: ActiveGameState, viewModel: CarnivalView
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun PotionSequenceCard(gameState: ActiveGameState, viewModel: CarnivalViewModel) {
+private fun PotionSequenceCard(gameState: ActiveGameState, difficulty: Difficulty, viewModel: CarnivalViewModel) {
     GameCard(R.string.carnival_potion_sequence, R.string.carnival_active_sequence_desc) {
         when (gameState) {
             is ActiveGameState.Ready -> {
+                DifficultySelector(difficulty, viewModel::setPotionSequenceDifficulty)
                 Button(onClick = viewModel::startPotionSequence, modifier = Modifier.fillMaxWidth()) {
                     Text(stringResource(R.string.carnival_play))
                 }
@@ -520,6 +574,7 @@ private fun PotionSequenceCard(gameState: ActiveGameState, viewModel: CarnivalVi
             }
             is ActiveGameState.SequenceInput -> {
                 val inputCount = gameState.userInput.size
+                val colorCount = 6
                 Column(
                     modifier            = Modifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -530,30 +585,17 @@ private fun PotionSequenceCard(gameState: ActiveGameState, viewModel: CarnivalVi
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = FontWeight.SemiBold,
                     )
+                    // First row: first 3 colors
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        POTION_COLORS.forEachIndexed { colorIdx, color ->
-                            Box(
-                                modifier = Modifier
-                                    .size(56.dp)
-                                    .clip(CircleShape)
-                                    .background(color)
-                                    .border(2.dp, MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f), CircleShape),
-                                contentAlignment = Alignment.Center,
-                            ) {
-                                Surface(
-                                    onClick = { viewModel.submitPotionInput(colorIdx) },
-                                    color = Color.Transparent,
-                                    modifier = Modifier.fillMaxSize(),
-                                ) {
-                                    Box(contentAlignment = Alignment.Center) {
-                                        Text(
-                                            text  = POTION_NAMES[colorIdx].first().toString(),
-                                            style = MaterialTheme.typography.bodyLarge,
-                                            fontWeight = FontWeight.Bold,
-                                            color = Color.White,
-                                        )
-                                    }
-                                }
+                        (0 until minOf(3, colorCount)).forEach { colorIdx ->
+                            PotionButton(colorIdx) { viewModel.submitPotionInput(colorIdx) }
+                        }
+                    }
+                    // Second row: remaining colors (4, 5, 6 for hard)
+                    if (colorCount > 3) {
+                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            (3 until colorCount).forEach { colorIdx ->
+                                PotionButton(colorIdx) { viewModel.submitPotionInput(colorIdx) }
                             }
                         }
                     }
@@ -566,20 +608,51 @@ private fun PotionSequenceCard(gameState: ActiveGameState, viewModel: CarnivalVi
 }
 
 @Composable
+private fun PotionButton(colorIdx: Int, onClick: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .size(56.dp)
+            .clip(CircleShape)
+            .background(POTION_COLORS[colorIdx])
+            .border(2.dp, MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f), CircleShape),
+        contentAlignment = Alignment.Center,
+    ) {
+        Surface(
+            onClick = onClick,
+            color   = Color.Transparent,
+            modifier = Modifier.fillMaxSize(),
+        ) {
+            Box(contentAlignment = Alignment.Center) {
+                Text(
+                    text  = POTION_NAMES[colorIdx].first().toString(),
+                    style = MaterialTheme.typography.bodyLarge,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                )
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
 private fun ItemAppraisalCard(
     gameState: ActiveGameState,
+    difficulty: Difficulty,
+    quad: AppraisalQuad?,
     pair: com.fantasyidler.ui.viewmodel.AppraisalPair?,
     viewModel: CarnivalViewModel,
 ) {
     GameCard(R.string.carnival_item_appraisal, R.string.carnival_active_appraisal_desc) {
         when (gameState) {
             is ActiveGameState.Ready -> {
+                DifficultySelector(difficulty, viewModel::setItemAppraisalDifficulty)
                 Button(onClick = viewModel::startItemAppraisal, modifier = Modifier.fillMaxWidth()) {
                     Text(stringResource(R.string.carnival_play))
                 }
             }
             is ActiveGameState.AppraisalPlaying -> {
-                if (pair != null) {
+                if (difficulty == Difficulty.HARD && quad != null) {
                     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         Text(
                             text       = stringResource(R.string.carnival_appraisal_which),
@@ -588,20 +661,37 @@ private fun ItemAppraisalCard(
                             textAlign  = TextAlign.Center,
                             modifier   = Modifier.fillMaxWidth(),
                         )
-                        Row(
-                            modifier              = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        ) {
-                            OutlinedButton(
-                                onClick  = { viewModel.submitAppraisalAnswer(true) },
-                                modifier = Modifier.weight(1f),
-                            ) {
+                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            OutlinedButton(onClick = { viewModel.submitAppraisalAnswer(0) }, modifier = Modifier.weight(1f)) {
+                                Text(quad.items[0], textAlign = TextAlign.Center)
+                            }
+                            OutlinedButton(onClick = { viewModel.submitAppraisalAnswer(1) }, modifier = Modifier.weight(1f)) {
+                                Text(quad.items[1], textAlign = TextAlign.Center)
+                            }
+                        }
+                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            OutlinedButton(onClick = { viewModel.submitAppraisalAnswer(2) }, modifier = Modifier.weight(1f)) {
+                                Text(quad.items[2], textAlign = TextAlign.Center)
+                            }
+                            OutlinedButton(onClick = { viewModel.submitAppraisalAnswer(3) }, modifier = Modifier.weight(1f)) {
+                                Text(quad.items[3], textAlign = TextAlign.Center)
+                            }
+                        }
+                    }
+                } else if (pair != null) {
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Text(
+                            text       = stringResource(R.string.carnival_appraisal_which),
+                            style      = MaterialTheme.typography.bodyMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            textAlign  = TextAlign.Center,
+                            modifier   = Modifier.fillMaxWidth(),
+                        )
+                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            OutlinedButton(onClick = { viewModel.submitAppraisalAnswer(0) }, modifier = Modifier.weight(1f)) {
                                 Text(pair.itemA, textAlign = TextAlign.Center)
                             }
-                            OutlinedButton(
-                                onClick  = { viewModel.submitAppraisalAnswer(false) },
-                                modifier = Modifier.weight(1f),
-                            ) {
+                            OutlinedButton(onClick = { viewModel.submitAppraisalAnswer(1) }, modifier = Modifier.weight(1f)) {
                                 Text(pair.itemB, textAlign = TextAlign.Center)
                             }
                         }
@@ -609,6 +699,143 @@ private fun ItemAppraisalCard(
                 }
             }
             is ActiveGameState.OnCooldown -> CooldownRow("item_appraisal", gameState.resumesAtMs, viewModel)
+            else -> {}
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun ShellGameCard(gameState: ActiveGameState, difficulty: Difficulty, viewModel: CarnivalViewModel) {
+    GameCard(R.string.carnival_shell_game, R.string.carnival_active_shell_desc) {
+        when (gameState) {
+            is ActiveGameState.Ready -> {
+                DifficultySelector(difficulty, viewModel::setShellGameDifficulty)
+                Button(onClick = viewModel::startShellGame, modifier = Modifier.fillMaxWidth()) {
+                    Text(stringResource(R.string.carnival_play))
+                }
+            }
+            is ActiveGameState.ShellGameShowing -> {
+                val cupCount = gameState.cupCount
+                val gemPos   = gameState.gemPos
+                LaunchedEffect(Unit) {
+                    delay(2_000L)
+                    viewModel.advanceShellGame()
+                }
+                Column(
+                    modifier            = Modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    Text(
+                        text  = stringResource(R.string.carnival_shell_showing, gemPos + 1),
+                        style = MaterialTheme.typography.bodyMedium,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        (0 until cupCount).forEach { i ->
+                            Surface(
+                                shape  = RoundedCornerShape(8.dp),
+                                color  = if (i == gemPos) GoldPrimary else MaterialTheme.colorScheme.surface,
+                                modifier = Modifier.size(56.dp),
+                            ) {
+                                Box(contentAlignment = Alignment.Center) {
+                                    Text(
+                                        text  = if (i == gemPos) "💎" else "🥤",
+                                        style = MaterialTheme.typography.bodyLarge,
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            is ActiveGameState.ShellGamePicking -> {
+                val cupCount = gameState.cupCount
+                Column(
+                    modifier            = Modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    Text(
+                        text  = stringResource(R.string.carnival_shell_pick),
+                        style = MaterialTheme.typography.bodyMedium,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        (0 until cupCount).forEach { i ->
+                            OutlinedButton(
+                                onClick  = { viewModel.submitShellGuess(i) },
+                                modifier = Modifier.size(56.dp).padding(0.dp),
+                            ) {
+                                Text(
+                                    text  = "${i + 1}",
+                                    style = MaterialTheme.typography.bodyLarge,
+                                    fontWeight = FontWeight.Bold,
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+            is ActiveGameState.OnCooldown -> CooldownRow("shell_game", gameState.resumesAtMs, viewModel)
+            else -> {}
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun HigherOrLowerCard(gameState: ActiveGameState, difficulty: Difficulty, viewModel: CarnivalViewModel) {
+    GameCard(R.string.carnival_higher_lower, R.string.carnival_active_higher_desc) {
+        when (gameState) {
+            is ActiveGameState.Ready -> {
+                DifficultySelector(difficulty, viewModel::setHigherLowerDifficulty)
+                Button(onClick = viewModel::startHigherOrLower, modifier = Modifier.fillMaxWidth()) {
+                    Text(stringResource(R.string.carnival_play))
+                }
+            }
+            is ActiveGameState.HigherOrLowerPlaying -> {
+                val totalRounds = gameState.numbers.size - 1
+                val current = gameState.numbers[gameState.currentIdx]
+                Column(
+                    modifier            = Modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    Text(
+                        text  = stringResource(R.string.carnival_higher_lower_score, gameState.correctCount, gameState.currentIdx),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                    Text(
+                        text       = stringResource(R.string.carnival_higher_lower_current, current),
+                        style      = MaterialTheme.typography.headlineMedium,
+                        fontWeight = FontWeight.Bold,
+                        color      = GoldPrimary,
+                    )
+                    Text(
+                        text  = stringResource(R.string.carnival_higher_lower_round, gameState.currentIdx + 1, totalRounds),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Button(
+                            onClick  = { viewModel.submitHigherOrLower(true) },
+                            modifier = Modifier.weight(1f),
+                        ) {
+                            Text(stringResource(R.string.carnival_higher_lower_btn_higher))
+                        }
+                        OutlinedButton(
+                            onClick  = { viewModel.submitHigherOrLower(false) },
+                            modifier = Modifier.weight(1f),
+                        ) {
+                            Text(stringResource(R.string.carnival_higher_lower_btn_lower))
+                        }
+                    }
+                }
+            }
+            is ActiveGameState.OnCooldown -> CooldownRow("higher_lower", gameState.resumesAtMs, viewModel)
             else -> {}
         }
     }

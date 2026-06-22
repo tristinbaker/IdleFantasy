@@ -936,6 +936,15 @@
     <string name="slayer_add_dungeon_to_queue">Ajouter le Donjon à la File</string>
     <string name="slayer_queue_added">Ajouté à la file : %1$s.</string>
     <string name="slayer_queue_full">La file est pleine (3/3).</string>
+    <string name="slayer_foretell_title">Foretell Future Tasks</string>
+    <string name="slayer_foretell_desc">Pre-assign upcoming Slayer tasks by paying bones. They are assigned automatically when your current task is completed.</string>
+    <string name="slayer_foretell_queue_empty">No tasks queued.</string>
+    <string name="slayer_foretell_queue_btn">+ Queue</string>
+    <string name="slayer_foretell_queue_full">Foretell queue is full (3/3).</string>
+    <string name="slayer_foretell_not_enough_bones">Not enough bones (cost: %1$d bones).</string>
+    <string name="slayer_foretell_success">Task foretold: %1$s!</string>
+    <string name="slayer_foretell_btn">Foretell Next Task (%1$d bones)</string>
+    <string name="slayer_foretell_slot">Slot %1$d: %2$s</string>
     <string name="item_slayer_helm_name">Casque Tueur</string>
     <string name="item_slayer_helm_desc">Un casque robuste porté par les tueurs expérimentés.</string>
     <string name="item_abyssal_whip_name">Fouet Abyssal</string>
@@ -1101,6 +1110,11 @@
     <string name="town_guild_no_bonus">Améliorez pour réduire les exigences de quête</string>
     <string name="town_church_active_bonus">Les bénédictions durent %1$dh (défaut : 24h)</string>
     <string name="town_church_no_bonus">Améliorez pour prolonger la durée des bénédictions</string>
+    <string name="town_building_fairgrounds_name">Fairgrounds</string>
+    <string name="town_fairgrounds_no_bonus">4 active minigames available, 10-minute cooldowns</string>
+    <string name="town_fairgrounds_t1_bonus">Unlocks Pick-a-Cup, cooldowns reduced to 7.5 minutes, +5% idle ticket chance</string>
+    <string name="town_fairgrounds_t2_bonus">Unlocks Higher or Lower, +10% idle ticket chance</string>
+    <string name="town_fairgrounds_t3_bonus">Cooldowns reduced to 5 minutes, +15% idle ticket chance</string>
     <string name="achievement_town_first_upgrade_name">Première Rénovation</string>
     <string name="achievement_town_first_upgrade_desc">Améliorez n\'importe quel bâtiment de ville pour la première fois</string>
     <string name="achievement_town_all_tier1_name">Améliorateur de Ville</string>
@@ -1206,6 +1220,26 @@
     <string name="carnival_redeemed">Échangé: %1$s!</string>
     <string name="carnival_not_enough_tickets">Pas assez de tickets.</string>
     <string name="carnival_lamp_redeemed">+%1$d XP en %2$s!</string>
+    <string name="carnival_shell_game">Pick-a-Cup</string>
+    <string name="carnival_active_shell_desc">Watch which cup hides the gem, then pick it after the shuffle!</string>
+    <string name="carnival_shell_showing">Watch carefully — gem is under cup %1$d</string>
+    <string name="carnival_shell_pick">Which cup is it under?</string>
+    <string name="carnival_shell_won">Correct! +%1$d tickets</string>
+    <string name="carnival_shell_missed">Wrong! The gem was under cup %1$d.</string>
+    <string name="carnival_shell_locked">Upgrade the Fairgrounds to Tier 1 to unlock</string>
+    <string name="carnival_higher_lower">Higher or Lower</string>
+    <string name="carnival_active_higher_desc">Guess whether the next number will be higher or lower than the current one.</string>
+    <string name="carnival_higher_lower_current">%1$d</string>
+    <string name="carnival_higher_lower_score">%1$d correct (%2$d played)</string>
+    <string name="carnival_higher_lower_round">Round %1$d of %2$d</string>
+    <string name="carnival_higher_lower_btn_higher">Higher</string>
+    <string name="carnival_higher_lower_btn_lower">Lower</string>
+    <string name="carnival_higher_lower_result">%1$d/%2$d correct — +%3$d tickets</string>
+    <string name="carnival_higher_lower_locked">Upgrade the Fairgrounds to Tier 2 to unlock</string>
+    <string name="carnival_difficulty_label">Difficulty</string>
+    <string name="carnival_difficulty_normal">Normal</string>
+    <string name="carnival_difficulty_hard">Hard</string>
+    <string name="carnival_ring_hard_hint">Hard: 52%%–57%% target, 7 tickets</string>
 
     <!-- ===== Magic Bean / Farming ===== -->
     <string name="farming_bean_note_1">Une minuscule pousse a percé le sol.</string>

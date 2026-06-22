@@ -34,8 +34,10 @@ object CarnivalSimulator {
         relevantSkillLevel: Int,
         petBoostPct: Int,
         agilityLevel: Int,
+        fairgroundsTier: Int = 0,
     ): SkillSimulator.Result {
-        val chance = ticketChance(relevantSkillLevel)
+        val tierBonus = fairgroundsTier.coerceIn(0, 3) * 0.05
+        val chance = ticketChance(relevantSkillLevel) + tierBonus
         val baseXpFrame = xpPerFrame(activityKey)
         val skillKey = relevantSkill(activityKey)
 

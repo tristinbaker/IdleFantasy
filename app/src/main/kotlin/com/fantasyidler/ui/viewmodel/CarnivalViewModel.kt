@@ -12,6 +12,7 @@ import com.fantasyidler.repository.CarnivalRepository
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.QueuedSessionStarter
+import com.fantasyidler.repository.TownRepository
 import com.fantasyidler.simulator.SkillSimulator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -26,16 +27,23 @@ import kotlinx.serialization.json.Json
 import javax.inject.Inject
 import kotlin.random.Random
 
+enum class Difficulty { NORMAL, HARD }
+
 sealed class ActiveGameState {
     object Ready : ActiveGameState()
     object TimingActive : ActiveGameState()
     data class SequenceShowing(val sequence: List<Int>, val currentIndex: Int) : ActiveGameState()
     data class SequenceInput(val sequence: List<Int>, val userInput: List<Int>) : ActiveGameState()
-    data class AppraisalPlaying(val pairIndex: Int) : ActiveGameState()
+    data class AppraisalPlaying(val quadIndex: Int) : ActiveGameState()
     data class OnCooldown(val resumesAtMs: Long) : ActiveGameState()
+    data class ShellGameShowing(val cupCount: Int, val gemPos: Int) : ActiveGameState()
+    data class ShellGamePicking(val cupCount: Int, val gemPos: Int) : ActiveGameState()
+    data class HigherOrLowerPlaying(val numbers: List<Int>, val currentIdx: Int, val correctCount: Int) : ActiveGameState()
 }
 
 data class AppraisalPair(val itemA: String, val itemB: String, val correctIsA: Boolean)
+
+data class AppraisalQuad(val items: List<String>, val correctIdx: Int)
 
 data class CarnivalUiState(
     val isLoading: Boolean = true,
@@ -50,8 +58,19 @@ data class CarnivalUiState(
     val hammerStrikeState: ActiveGameState = ActiveGameState.Ready,
     val potionSequenceState: ActiveGameState = ActiveGameState.Ready,
     val itemAppraisalState: ActiveGameState = ActiveGameState.Ready,
+    val shellGameState: ActiveGameState = ActiveGameState.Ready,
+    val higherLowerState: ActiveGameState = ActiveGameState.Ready,
     val currentAppraisalPair: AppraisalPair? = null,
+    val currentAppraisalQuad: AppraisalQuad? = null,
     val pendingLampPrizeKey: String? = null,
+    val ringTossDifficulty: Difficulty = Difficulty.NORMAL,
+    val hammerStrikeDifficulty: Difficulty = Difficulty.NORMAL,
+    val potionSequenceDifficulty: Difficulty = Difficulty.NORMAL,
+    val itemAppraisalDifficulty: Difficulty = Difficulty.NORMAL,
+    val shellGameDifficulty: Difficulty = Difficulty.NORMAL,
+    val higherLowerDifficulty: Difficulty = Difficulty.NORMAL,
+    val carnivalGameCount: Int = 4,
+    val carnivalCooldownMs: Long = 10L * 60_000L,
 )
 
 @HiltViewModel
@@ -59,6 +78,7 @@ class CarnivalViewModel @Inject constructor(
     private val playerRepo: PlayerRepository,
     private val carnivalRepo: CarnivalRepository,
     val gameData: GameDataRepository,
+    private val townRepo: TownRepository,
     private val queuedSessionStarter: QueuedSessionStarter,
     @ApplicationContext private val context: Context,
     private val json: Json,
@@ -85,7 +105,38 @@ class CarnivalViewModel @Inject constructor(
         AppraisalPair("Sapphire", "Diamond", false),
     )
 
+    // Hard mode: 4-item quads — correctIdx = index of the most valuable item
+    private val APPRAISAL_QUADS = listOf(
+        AppraisalQuad(listOf("Dragon Sword", "Rune Sword", "Adamant Sword", "Iron Sword"), 0),
+        AppraisalQuad(listOf("Magic Log", "Yew Log", "Maple Log", "Oak Log"), 0),
+        AppraisalQuad(listOf("Raw Shark", "Raw Lobster", "Raw Trout", "Raw Herring"), 0),
+        AppraisalQuad(listOf("Diamond", "Ruby", "Sapphire", "Opal"), 0),
+        AppraisalQuad(listOf("Runite Ore", "Adamantite Ore", "Mithril Ore", "Iron Ore"), 0),
+        AppraisalQuad(listOf("Dragon Bone", "Giant Bones", "Big Bones", "Bones"), 0),
+        AppraisalQuad(listOf("Rune Bar", "Adamant Bar", "Steel Bar", "Bronze Bar"), 0),
+        AppraisalQuad(listOf("Yew Log", "Maple Log", "Willow Log", "Oak Log"), 0),
+        AppraisalQuad(listOf("Gold Bar", "Steel Bar", "Iron Bar", "Bronze Bar"), 0),
+        AppraisalQuad(listOf("Rune Sword", "Adamant Sword", "Mithril Sword", "Iron Sword"), 0),
+    )
+
     private val _extra = MutableStateFlow(CarnivalUiState())
+
+    init {
+        viewModelScope.launch {
+            val diffs = playerRepo.getFlags().carnivalDifficulties
+            if (diffs.isNotEmpty()) {
+                fun diff(key: String) = diffs[key]?.uppercase()?.let { runCatching { Difficulty.valueOf(it) }.getOrNull() }
+                _extra.update { s -> s.copy(
+                    ringTossDifficulty       = diff("ring_toss")       ?: s.ringTossDifficulty,
+                    hammerStrikeDifficulty   = diff("hammer_strike")   ?: s.hammerStrikeDifficulty,
+                    potionSequenceDifficulty = diff("potion_sequence") ?: s.potionSequenceDifficulty,
+                    itemAppraisalDifficulty  = diff("item_appraisal")  ?: s.itemAppraisalDifficulty,
+                    shellGameDifficulty      = diff("shell_game")      ?: s.shellGameDifficulty,
+                    higherLowerDifficulty    = diff("higher_lower")    ?: s.higherLowerDifficulty,
+                ) }
+            }
+        }
+    }
 
     val uiState: StateFlow<CarnivalUiState> = combine(
         playerRepo.playerFlow,
@@ -116,6 +167,10 @@ class CarnivalViewModel @Inject constructor(
                 hammerStrikeState   = resolveState(extra.hammerStrikeState, flags.carnivalHammerStrikeCooldownAt),
                 potionSequenceState = resolveState(extra.potionSequenceState, flags.carnivalPotionSequenceCooldownAt),
                 itemAppraisalState  = resolveState(extra.itemAppraisalState, flags.carnivalItemAppraisalCooldownAt),
+                shellGameState      = resolveState(extra.shellGameState, flags.carnivalShellGameCooldownAt),
+                higherLowerState    = resolveState(extra.higherLowerState, flags.carnivalHigherLowerCooldownAt),
+                carnivalGameCount   = townRepo.carnivalGameCount(flags),
+                carnivalCooldownMs  = townRepo.carnivalCooldownMs(flags),
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), CarnivalUiState())
@@ -129,6 +184,22 @@ class CarnivalViewModel @Inject constructor(
     }
 
     fun snackbarConsumed() = _extra.update { it.copy(snackbarMessage = null) }
+
+    // ── Difficulty selectors ───────────────────────────────────────────────────
+
+    private fun persistDifficulty(key: String, d: Difficulty) {
+        viewModelScope.launch {
+            val flags = playerRepo.getFlags()
+            playerRepo.updateFlags(flags.copy(carnivalDifficulties = flags.carnivalDifficulties + (key to d.name.lowercase())))
+        }
+    }
+
+    fun setRingTossDifficulty(d: Difficulty)       { _extra.update { it.copy(ringTossDifficulty = d) };       persistDifficulty("ring_toss", d) }
+    fun setHammerStrikeDifficulty(d: Difficulty)   { _extra.update { it.copy(hammerStrikeDifficulty = d) };   persistDifficulty("hammer_strike", d) }
+    fun setPotionSequenceDifficulty(d: Difficulty) { _extra.update { it.copy(potionSequenceDifficulty = d) }; persistDifficulty("potion_sequence", d) }
+    fun setItemAppraisalDifficulty(d: Difficulty)  { _extra.update { it.copy(itemAppraisalDifficulty = d) };  persistDifficulty("item_appraisal", d) }
+    fun setShellGameDifficulty(d: Difficulty)      { _extra.update { it.copy(shellGameDifficulty = d) };      persistDifficulty("shell_game", d) }
+    fun setHigherLowerDifficulty(d: Difficulty)    { _extra.update { it.copy(higherLowerDifficulty = d) };    persistDifficulty("higher_lower", d) }
 
     // ── Idle game queueing ─────────────────────────────────────────────────────
 
@@ -163,16 +234,19 @@ class CarnivalViewModel @Inject constructor(
 
     fun submitRingToss(position: Float) {
         if (_extra.value.ringTossState !is ActiveGameState.TimingActive) return
-        val won = position in 0.45f..0.55f
+        val diff = _extra.value.ringTossDifficulty
+        val won = if (diff == Difficulty.HARD) position in 0.52f..0.57f else position in 0.45f..0.55f
+        val tickets = if (won) (if (diff == Difficulty.HARD) 7 else 2) else 0
         viewModelScope.launch {
-            if (won) carnivalRepo.awardTickets(2)
-            val resumesAt = System.currentTimeMillis() + 10 * 60_000L
+            if (tickets > 0) carnivalRepo.awardTickets(tickets)
+            val cooldownMs = uiState.value.carnivalCooldownMs
+            val resumesAt = System.currentTimeMillis() + cooldownMs
             playerRepo.updateFlags(playerRepo.getFlags().copy(carnivalRingTossCooldownAt = resumesAt))
             _extra.update {
                 it.copy(
                     ringTossState   = ActiveGameState.OnCooldown(resumesAt),
                     snackbarMessage = if (won)
-                        context.getString(R.string.carnival_ring_won, 2)
+                        context.getString(R.string.carnival_ring_won, tickets)
                     else
                         context.getString(R.string.carnival_ring_missed),
                 )
@@ -189,22 +263,32 @@ class CarnivalViewModel @Inject constructor(
 
     fun submitHammerStrike(position: Float) {
         if (_extra.value.hammerStrikeState !is ActiveGameState.TimingActive) return
-        val tickets = when {
-            position >= 0.80f -> 2
-            position >= 0.50f -> 1
-            else              -> 0
+        val diff = _extra.value.hammerStrikeDifficulty
+        val tickets = if (diff == Difficulty.HARD) {
+            when {
+                position >= 0.87f -> 8
+                position >= 0.60f -> 6
+                else              -> 0
+            }
+        } else {
+            when {
+                position >= 0.80f -> 2
+                position >= 0.50f -> 1
+                else              -> 0
+            }
         }
         viewModelScope.launch {
             if (tickets > 0) carnivalRepo.awardTickets(tickets)
-            val resumesAt = System.currentTimeMillis() + 10 * 60_000L
+            val cooldownMs = uiState.value.carnivalCooldownMs
+            val resumesAt = System.currentTimeMillis() + cooldownMs
             playerRepo.updateFlags(playerRepo.getFlags().copy(carnivalHammerStrikeCooldownAt = resumesAt))
             _extra.update {
                 it.copy(
                     hammerStrikeState = ActiveGameState.OnCooldown(resumesAt),
-                    snackbarMessage   = when (tickets) {
-                        2    -> context.getString(R.string.carnival_hammer_perfect, 2)
-                        1    -> context.getString(R.string.carnival_hammer_good, 1)
-                        else -> context.getString(R.string.carnival_hammer_miss)
+                    snackbarMessage   = when {
+                        tickets >= 6 -> context.getString(R.string.carnival_hammer_perfect, tickets)
+                        tickets > 0  -> context.getString(R.string.carnival_hammer_good, tickets)
+                        else         -> context.getString(R.string.carnival_hammer_miss)
                     },
                 )
             }
@@ -215,7 +299,10 @@ class CarnivalViewModel @Inject constructor(
 
     fun startPotionSequence() {
         if (_extra.value.potionSequenceState !is ActiveGameState.Ready) return
-        val seq = List(3) { Random.nextInt(4) }
+        val diff = _extra.value.potionSequenceDifficulty
+        val colorCount = 6
+        val seqLength  = if (diff == Difficulty.HARD) 8 else 6
+        val seq = List(seqLength) { Random.nextInt(colorCount) }
         _extra.update { it.copy(potionSequenceState = ActiveGameState.SequenceShowing(seq, 0)) }
     }
 
@@ -238,7 +325,8 @@ class CarnivalViewModel @Inject constructor(
         val expectedSoFar = state.sequence.take(newInput.size)
         if (newInput != expectedSoFar) {
             viewModelScope.launch {
-                val resumesAt = System.currentTimeMillis() + 10 * 60_000L
+                val cooldownMs = uiState.value.carnivalCooldownMs
+                val resumesAt = System.currentTimeMillis() + cooldownMs
                 playerRepo.updateFlags(playerRepo.getFlags().copy(carnivalPotionSequenceCooldownAt = resumesAt))
                 _extra.update {
                     it.copy(
@@ -250,14 +338,17 @@ class CarnivalViewModel @Inject constructor(
             return
         }
         if (newInput.size == state.sequence.size) {
+            val diff = _extra.value.potionSequenceDifficulty
+            val tickets = if (diff == Difficulty.HARD) 7 else 2
             viewModelScope.launch {
-                carnivalRepo.awardTickets(2)
-                val resumesAt = System.currentTimeMillis() + 10 * 60_000L
+                carnivalRepo.awardTickets(tickets)
+                val cooldownMs = uiState.value.carnivalCooldownMs
+                val resumesAt = System.currentTimeMillis() + cooldownMs
                 playerRepo.updateFlags(playerRepo.getFlags().copy(carnivalPotionSequenceCooldownAt = resumesAt))
                 _extra.update {
                     it.copy(
                         potionSequenceState = ActiveGameState.OnCooldown(resumesAt),
-                        snackbarMessage     = context.getString(R.string.carnival_sequence_correct, 2),
+                        snackbarMessage     = context.getString(R.string.carnival_sequence_correct, tickets),
                     )
                 }
             }
@@ -270,33 +361,154 @@ class CarnivalViewModel @Inject constructor(
 
     fun startItemAppraisal() {
         if (_extra.value.itemAppraisalState !is ActiveGameState.Ready) return
-        val pairIndex = Random.nextInt(APPRAISAL_PAIRS.size)
-        _extra.update {
-            it.copy(
-                itemAppraisalState  = ActiveGameState.AppraisalPlaying(pairIndex),
-                currentAppraisalPair = APPRAISAL_PAIRS[pairIndex],
-            )
+        val diff = _extra.value.itemAppraisalDifficulty
+        if (diff == Difficulty.HARD) {
+            val idx = Random.nextInt(APPRAISAL_QUADS.size)
+            _extra.update {
+                it.copy(
+                    itemAppraisalState   = ActiveGameState.AppraisalPlaying(idx),
+                    currentAppraisalQuad = APPRAISAL_QUADS[idx],
+                    currentAppraisalPair = null,
+                )
+            }
+        } else {
+            val idx = Random.nextInt(APPRAISAL_PAIRS.size)
+            _extra.update {
+                it.copy(
+                    itemAppraisalState   = ActiveGameState.AppraisalPlaying(idx),
+                    currentAppraisalPair = APPRAISAL_PAIRS[idx],
+                    currentAppraisalQuad = null,
+                )
+            }
         }
     }
 
-    fun submitAppraisalAnswer(chooseA: Boolean) {
+    fun submitAppraisalAnswer(chosenIdx: Int) {
         val state = _extra.value.itemAppraisalState
-        val pair  = _extra.value.currentAppraisalPair
-        if (state !is ActiveGameState.AppraisalPlaying || pair == null) return
-        val won = (chooseA == pair.correctIsA)
+        if (state !is ActiveGameState.AppraisalPlaying) return
+        val diff = _extra.value.itemAppraisalDifficulty
+        val won: Boolean
+        val correctName: String
+        if (diff == Difficulty.HARD) {
+            val quad = _extra.value.currentAppraisalQuad ?: return
+            won = chosenIdx == quad.correctIdx
+            correctName = quad.items[quad.correctIdx]
+        } else {
+            val pair = _extra.value.currentAppraisalPair ?: return
+            won = (chosenIdx == 0) == pair.correctIsA
+            correctName = if (pair.correctIsA) pair.itemA else pair.itemB
+        }
+        val tickets = if (won) (if (diff == Difficulty.HARD) 7 else 2) else 0
         viewModelScope.launch {
-            if (won) carnivalRepo.awardTickets(2)
-            val resumesAt = System.currentTimeMillis() + 10 * 60_000L
+            if (tickets > 0) carnivalRepo.awardTickets(tickets)
+            val cooldownMs = uiState.value.carnivalCooldownMs
+            val resumesAt = System.currentTimeMillis() + cooldownMs
             playerRepo.updateFlags(playerRepo.getFlags().copy(carnivalItemAppraisalCooldownAt = resumesAt))
             _extra.update {
                 it.copy(
                     itemAppraisalState  = ActiveGameState.OnCooldown(resumesAt),
                     snackbarMessage     = if (won)
-                        context.getString(R.string.carnival_appraisal_correct, 2)
+                        context.getString(R.string.carnival_appraisal_correct, tickets)
                     else
-                        context.getString(R.string.carnival_appraisal_wrong,
-                            if (pair.correctIsA) pair.itemA else pair.itemB),
+                        context.getString(R.string.carnival_appraisal_wrong, correctName),
                 )
+            }
+        }
+    }
+
+    // ── Active game: Pick-a-Cup (shell game) ───────────────────────────────────
+
+    fun startShellGame() {
+        if (_extra.value.shellGameState !is ActiveGameState.Ready) return
+        val diff = _extra.value.shellGameDifficulty
+        val cupCount = if (diff == Difficulty.HARD) 4 else 3
+        val gemPos   = Random.nextInt(cupCount)
+        _extra.update { it.copy(shellGameState = ActiveGameState.ShellGameShowing(cupCount, gemPos)) }
+    }
+
+    fun advanceShellGame() {
+        val s = _extra.value.shellGameState
+        if (s !is ActiveGameState.ShellGameShowing) return
+        _extra.update { it.copy(shellGameState = ActiveGameState.ShellGamePicking(s.cupCount, s.gemPos)) }
+    }
+
+    fun submitShellGuess(pickedPos: Int) {
+        val s = _extra.value.shellGameState
+        if (s !is ActiveGameState.ShellGamePicking) return
+        val diff = _extra.value.shellGameDifficulty
+        val won = pickedPos == s.gemPos
+        val tickets = if (won) (if (diff == Difficulty.HARD) 7 else 4) else 0
+        viewModelScope.launch {
+            if (tickets > 0) carnivalRepo.awardTickets(tickets)
+            val cooldownMs = uiState.value.carnivalCooldownMs
+            val resumesAt = System.currentTimeMillis() + cooldownMs
+            playerRepo.updateFlags(playerRepo.getFlags().copy(carnivalShellGameCooldownAt = resumesAt))
+            _extra.update {
+                it.copy(
+                    shellGameState  = ActiveGameState.OnCooldown(resumesAt),
+                    snackbarMessage = if (won)
+                        context.getString(R.string.carnival_shell_won, tickets)
+                    else
+                        context.getString(R.string.carnival_shell_missed, s.gemPos + 1),
+                )
+            }
+        }
+    }
+
+    // ── Active game: Higher or Lower ───────────────────────────────────────────
+
+    fun startHigherOrLower() {
+        if (_extra.value.higherLowerState !is ActiveGameState.Ready) return
+        val diff = _extra.value.higherLowerDifficulty
+        val totalRounds = if (diff == Difficulty.HARD) 7 else 5
+        val numbers = List(totalRounds + 1) { Random.nextInt(1, 11) }
+        _extra.update { it.copy(higherLowerState = ActiveGameState.HigherOrLowerPlaying(numbers, 0, 0)) }
+    }
+
+    fun submitHigherOrLower(guessHigher: Boolean) {
+        val state = _extra.value.higherLowerState
+        if (state !is ActiveGameState.HigherOrLowerPlaying) return
+        val diff = _extra.value.higherLowerDifficulty
+        val current = state.numbers[state.currentIdx]
+        val next    = state.numbers[state.currentIdx + 1]
+        val correct = when {
+            next > current -> guessHigher
+            next < current -> !guessHigher
+            else           -> false // tie = wrong
+        }
+        val newCorrect = state.correctCount + if (correct) 1 else 0
+        val newIdx     = state.currentIdx + 1
+        val totalRounds = state.numbers.size - 1
+        if (newIdx >= totalRounds) {
+            val tickets = if (diff == Difficulty.HARD) {
+                when {
+                    newCorrect >= 6 -> 8
+                    newCorrect >= 5 -> 4
+                    newCorrect >= 4 -> 1
+                    else            -> 0
+                }
+            } else {
+                when {
+                    newCorrect >= 4 -> 5
+                    newCorrect >= 3 -> 2
+                    else            -> 0
+                }
+            }
+            viewModelScope.launch {
+                if (tickets > 0) carnivalRepo.awardTickets(tickets)
+                val cooldownMs = uiState.value.carnivalCooldownMs
+                val resumesAt = System.currentTimeMillis() + cooldownMs
+                playerRepo.updateFlags(playerRepo.getFlags().copy(carnivalHigherLowerCooldownAt = resumesAt))
+                _extra.update {
+                    it.copy(
+                        higherLowerState = ActiveGameState.OnCooldown(resumesAt),
+                        snackbarMessage  = context.getString(R.string.carnival_higher_lower_result, newCorrect, totalRounds, tickets),
+                    )
+                }
+            }
+        } else {
+            _extra.update {
+                it.copy(higherLowerState = ActiveGameState.HigherOrLowerPlaying(state.numbers, newIdx, newCorrect))
             }
         }
     }
@@ -321,6 +533,14 @@ class CarnivalViewModel @Inject constructor(
                 "item_appraisal" -> {
                     val gs = s.itemAppraisalState
                     if (gs is ActiveGameState.OnCooldown && now >= gs.resumesAtMs) s.copy(itemAppraisalState = ActiveGameState.Ready) else s
+                }
+                "shell_game" -> {
+                    val gs = s.shellGameState
+                    if (gs is ActiveGameState.OnCooldown && now >= gs.resumesAtMs) s.copy(shellGameState = ActiveGameState.Ready) else s
+                }
+                "higher_lower" -> {
+                    val gs = s.higherLowerState
+                    if (gs is ActiveGameState.OnCooldown && now >= gs.resumesAtMs) s.copy(higherLowerState = ActiveGameState.Ready) else s
                 }
                 else -> s
             }

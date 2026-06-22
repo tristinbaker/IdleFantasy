@@ -10,6 +10,7 @@ import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.data.model.SlayerTask
 import com.fantasyidler.simulator.SkillSimulator
+import com.fantasyidler.repository.ForetelResult
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.QueuedSessionStarter
@@ -57,6 +58,10 @@ data class SlayerUiState(
     val slayerEquippedWeapons: Map<String, EquipmentData> = emptyMap(),
     /** The weapon slot selected in the slayer weapon picker sheet. */
     val slayerSelectedWeaponSlot: String? = null,
+    /** Up to 3 pre-assigned future tasks. */
+    val foretelledTasks: List<SlayerTask> = emptyList(),
+    /** Bone cost (units) for the next foretell slot. */
+    val nextForetelCostUnits: Int = 10,
 )
 
 @HiltViewModel
@@ -107,6 +112,7 @@ class SlayerViewModel @Inject constructor(
             val equippedWeapons = EquipSlot.WEAPON_SLOTS
                 .mapNotNull { slot -> equipped[slot]?.let { key -> gameData.equipment[key]?.let { slot to it } } }
                 .toMap()
+            val nextForetelCost = when (flags.foretelledTasks.size) { 0 -> 10; 1 -> 25; else -> 50 }
             extra.copy(
                 isLoading             = false,
                 slayerLevel           = levels[Skills.SLAYER] ?: 1,
@@ -121,6 +127,8 @@ class SlayerViewModel @Inject constructor(
                 inventory             = inventory,
                 skillLevels           = levels,
                 slayerEquippedWeapons = equippedWeapons,
+                foretelledTasks       = flags.foretelledTasks,
+                nextForetelCostUnits  = nextForetelCost,
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), SlayerUiState())
@@ -257,6 +265,40 @@ class SlayerViewModel @Inject constructor(
                     snackbarMessage = if (enqueued) context.getString(R.string.slayer_queue_added, dungeonName)
                                       else context.getString(R.string.slayer_queue_full)
                 )
+            }
+        }
+    }
+
+    fun queueForetelledTaskDungeon(task: SlayerTask) {
+        viewModelScope.launch {
+            val state = uiState.value
+            val dungeonKey = gameData.dungeons.entries
+                .filter { (k, d) ->
+                    d.enemySpawns.any { it.enemy == task.enemyKey } &&
+                    (k !in gameData.expeditionLockedDungeons || k in state.unlockedDungeons)
+                }
+                .maxByOrNull { (k, _) -> playerRepo.getFlags().dungeonRuns[k] ?: 0 }
+                ?.key ?: return@launch
+            if (state.slayerEquippedWeapons.size > 1) {
+                _extra.update { it.copy(pendingSlayerDungeonKey = dungeonKey, slayerSelectedWeaponSlot = null) }
+            } else {
+                doQueueTaskDungeon(dungeonKey, weaponSlot = null)
+            }
+        }
+    }
+
+    fun foretelTask() {
+        viewModelScope.launch {
+            val state = uiState.value
+            when (val result = slayerRepo.foretelTask(state.slayerLevel, state.unlockedDungeons)) {
+                is ForetelResult.Success ->
+                    _extra.update { it.copy(snackbarMessage = context.getString(R.string.slayer_foretell_success, result.task.displayName)) }
+                ForetelResult.QueueFull ->
+                    _extra.update { it.copy(snackbarMessage = context.getString(R.string.slayer_foretell_queue_full)) }
+                ForetelResult.NoEligibleTasks ->
+                    _extra.update { it.copy(snackbarMessage = context.getString(R.string.slayer_no_eligible_tasks)) }
+                is ForetelResult.NotEnoughBones ->
+                    _extra.update { it.copy(snackbarMessage = context.getString(R.string.slayer_foretell_not_enough_bones, result.costUnits)) }
             }
         }
     }

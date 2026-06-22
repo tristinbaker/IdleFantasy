@@ -232,6 +232,24 @@ fun SlayerScreen(
 
             HorizontalDivider()
 
+            // ── Foretell ──────────────────────────────────────────────────
+            Text(
+                text  = stringResource(R.string.slayer_foretell_title),
+                style = MaterialTheme.typography.titleSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+
+            ForetellSection(
+                foretelledTasks      = state.foretelledTasks,
+                nextCostUnits        = state.nextForetelCostUnits,
+                inventory            = state.inventory,
+                queueSize            = state.queueSize,
+                onForetell           = viewModel::foretelTask,
+                onQueueTask          = viewModel::queueForetelledTaskDungeon,
+            )
+
+            HorizontalDivider()
+
             // ── Slayer Shop ───────────────────────────────────────────────
             Text(
                 text  = stringResource(R.string.slayer_shop_title),
@@ -388,6 +406,82 @@ private fun TaskCard(task: SlayerTask, dungeons: List<String>) {
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f),
             )
+        }
+    }
+}
+
+@Composable
+private fun ForetellSection(
+    foretelledTasks: List<SlayerTask>,
+    nextCostUnits: Int,
+    inventory: Map<String, Int>,
+    queueSize: Int,
+    onForetell: () -> Unit,
+    onQueueTask: (SlayerTask) -> Unit,
+) {
+    val context = LocalContext.current
+    val totalBones = (inventory["bones"] ?: 0) +
+        (inventory["big_bones"] ?: 0) * 2 +
+        (inventory["giant_bones"] ?: 0) * 4 +
+        (inventory["dragon_bone"] ?: 0) * 8
+    Surface(
+        shape    = RoundedCornerShape(12.dp),
+        color    = MaterialTheme.colorScheme.surfaceVariant,
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Text(
+                text  = stringResource(R.string.slayer_foretell_desc),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            if (foretelledTasks.isEmpty()) {
+                Text(
+                    text  = stringResource(R.string.slayer_foretell_queue_empty),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            } else {
+                foretelledTasks.forEachIndexed { i, task ->
+                    Row(
+                        modifier             = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment    = Alignment.CenterVertically,
+                    ) {
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(
+                                text  = stringResource(R.string.slayer_foretell_slot, i + 1, GameStrings.enemyName(context, task.enemyKey)),
+                                style = MaterialTheme.typography.bodySmall,
+                            )
+                            Text(
+                                text  = stringResource(R.string.slayer_kills_remaining, task.killsCompleted, task.targetKills),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
+                        TextButton(
+                            onClick  = { onQueueTask(task) },
+                            enabled  = queueSize < 3,
+                        ) {
+                            Text(stringResource(R.string.slayer_foretell_queue_btn))
+                        }
+                    }
+                }
+            }
+            if (foretelledTasks.size < 3) {
+                Button(
+                    onClick  = onForetell,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Text(stringResource(R.string.slayer_foretell_btn, nextCostUnits))
+                }
+            } else {
+                Text(
+                    text  = stringResource(R.string.slayer_foretell_queue_full),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
         }
     }
 }

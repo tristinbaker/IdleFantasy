@@ -37,6 +37,21 @@ class TownRepository @Inject constructor(
         return 1.0f - tier * 0.10f
     }
 
+    /** Number of active carnival minigames (4 base + 1 at fairgrounds T1 + 1 at T2). */
+    fun carnivalGameCount(flags: PlayerFlags): Int {
+        val tier = flags.townBuildingTiers["fairgrounds"] ?: 0
+        return 4 + minOf(tier, 2)
+    }
+
+    /** Carnival active game cooldown in ms (10 min base; T1→7.5 min; T3→5 min). */
+    fun carnivalCooldownMs(flags: PlayerFlags): Long {
+        return when (flags.townBuildingTiers["fairgrounds"] ?: 0) {
+            1, 2 -> (7.5 * 60_000).toLong()
+            3    -> 5L * 60_000L
+            else -> 10L * 60_000L
+        }
+    }
+
     /** Blessing duration in ms based on Church tier. Tier 0 = 24h, 1 = 30h, 2 = 36h, 3 = 48h. */
     fun blessingDurationMs(flags: PlayerFlags): Long {
         val hoursMs = 3_600_000L

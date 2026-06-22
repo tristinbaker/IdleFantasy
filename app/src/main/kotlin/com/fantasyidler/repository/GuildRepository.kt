@@ -381,8 +381,10 @@ class GuildRepository @Inject constructor(
         }
         val rng = Random(today.toLong())
         val selectedIds = mutableListOf<String>()
-        val farmingLevel  = skillLevels["farming"]  ?: 1
-        val thievingLevel = skillLevels["thieving"] ?: 1
+        val farmingLevel   = skillLevels["farming"]   ?: 1
+        val thievingLevel  = skillLevels["thieving"]  ?: 1
+        val fletchingLevel = skillLevels["fletching"] ?: 1
+        val smithingLevel  = skillLevels["smithing"]  ?: 1
 
         for (guild in ALL_GUILDS) {
             val guildRep = flags.guildReputation[guild] ?: 0L
@@ -400,6 +402,15 @@ class GuildRepository @Inject constructor(
                         template.guild == "thieving" && template.type == "pickpocket" -> {
                             val npcLevel = gameData.thievingNpcs[template.target]?.levelRequired ?: 1
                             thievingLevel >= npcLevel
+                        }
+                        template.guild == "fletching" && template.type == "craft" -> {
+                            val recipeLevel = gameData.fletchingRecipes[template.target]?.levelRequired ?: 1
+                            if (fletchingLevel < recipeLevel) return@filter false
+                            if (template.target.endsWith("_arrow")) {
+                                val tipsKey   = template.target + "_tip"
+                                val tipsLevel = gameData.smithingRecipes[tipsKey]?.levelRequired ?: 1
+                                smithingLevel >= tipsLevel
+                            } else true
                         }
                         else -> true
                     }

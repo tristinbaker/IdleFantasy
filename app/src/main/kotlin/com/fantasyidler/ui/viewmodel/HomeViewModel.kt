@@ -551,6 +551,11 @@ class HomeViewModel @Inject constructor(
                         val totalXp = frames.sumOf { it.xpGain.toLong() }
                         val its     = mutableMapOf<String, Int>()
                         for (frame in frames) for ((item, qty) in frame.items) its[item] = (its[item] ?: 0) + qty
+                        val coinsFromItems = (its.remove("coins") ?: 0).toLong()
+                        if (coinsFromItems > 0) {
+                            playerRepo.addCoins(coinsFromItems)
+                            combinedCoins += coinsFromItems
+                        }
                         val pets       = its.filterKeys { it in petIds }
                         val rawRegular = its.filterKeys { it !in petIds }
                         val prestige   = skillPrestige[session.skillName] ?: 0
@@ -981,6 +986,11 @@ class HomeViewModel @Inject constructor(
                         val totalXp = (baseXp * innXpMult).toLong()
                         val its     = mutableMapOf<String, Int>()
                         for (frame in frames) for ((item, qty) in frame.items) its[item] = (its[item] ?: 0) + qty
+                        val coinsFromItems = (its.remove("coins") ?: 0).toLong()
+                        if (coinsFromItems > 0) {
+                            playerRepo.addCoins(coinsFromItems)
+                            combinedCoins += coinsFromItems
+                        }
                         val pets    = its.filterKeys { it in petIds }
                         val regular = its.filterKeys { it !in petIds }
                         awardedCapes += playerRepo.applySessionResults(session.skillName, totalXp, regular, mult)

@@ -559,6 +559,7 @@ class QueuedSessionStarter @Inject constructor(
                     relevantSkillLevel = relevantSkillLevel,
                     petBoostPct        = gatheringPetBoost(player.pets, CarnivalSimulator.relevantSkill(action.activityKey)),
                     agilityLevel       = agilityLevel,
+                    fairgroundsTier    = flags.townBuildingTiers["fairgrounds"] ?: 0,
                 )
                 startSession(action, result, offline, backdateMs)
             }

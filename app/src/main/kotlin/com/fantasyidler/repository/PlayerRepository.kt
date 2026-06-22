@@ -4,6 +4,7 @@ import com.fantasyidler.data.db.dao.FarmingPatchDao
 import com.fantasyidler.data.db.dao.PlayerDao
 import com.fantasyidler.data.db.dao.QuestProgressDao
 import com.fantasyidler.data.model.*
+import com.fantasyidler.simulator.SkillSimulator
 import com.fantasyidler.simulator.XpTable
 import kotlin.math.roundToInt
 import kotlinx.coroutines.flow.Flow
@@ -274,6 +275,31 @@ class PlayerRepository @Inject constructor(
         if (flags.sessionQueue.size >= 3) return false
         updateFlags(flags.copy(sessionQueue = flags.sessionQueue + action))
         return true
+    }
+
+    /** Creates and enqueues a combat (dungeon) session for a Slayer task's auto-advance. Returns false if queue is full. */
+    suspend fun enqueueCombatSession(dungeonKey: String, dungeonDisplayName: String): Boolean {
+        val flags = getFlags()
+        if (flags.sessionQueue.size >= 3) return false
+        val player = getOrCreatePlayer()
+        val levels: Map<String, Int> = json.decodeFromString(player.skillLevels)
+        val agility = levels[Skills.AGILITY] ?: 1
+        val agilityPrestige = flags.skillPrestige[Skills.AGILITY] ?: 0
+        val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
+        val weaponSlot = flags.activeWeaponSlot
+            ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
+            ?: EquipSlot.WEAPON_ATK
+        return enqueueAction(QueuedAction(
+            skillName           = "combat",
+            activityKey         = dungeonKey,
+            skillDisplayName    = dungeonDisplayName,
+            estimatedDurationMs = SkillSimulator.sessionDurationMs(agility, agilityPrestige),
+            equippedSnapshot    = player.equipped,
+            arrowsKey           = flags.equippedArrows,
+            spellName           = flags.activeSpell,
+            potionKey           = flags.activePotionKey,
+            weaponSlot          = weaponSlot,
+        ))
     }
 
     /** Removes and returns the first item in the queue, or null if empty. */

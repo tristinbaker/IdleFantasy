@@ -50,10 +50,11 @@ fun BuildingUpgradeCard(
     ) {
         Column(Modifier.padding(16.dp)) {
             val titleRes = when (buildingKey) {
-                "inn"        -> R.string.town_building_inn_name
-                "guild_hall" -> R.string.town_building_guild_hall_name
-                "church"     -> R.string.town_building_church_name
-                else         -> R.string.town_upgrade_section_title
+                "inn"          -> R.string.town_building_inn_name
+                "guild_hall"   -> R.string.town_building_guild_hall_name
+                "church"       -> R.string.town_building_church_name
+                "fairgrounds"  -> R.string.town_building_fairgrounds_name
+                else           -> R.string.town_upgrade_section_title
             }
             Text(
                 text       = stringResource(titleRes),
@@ -156,5 +157,11 @@ fun buildingBonusText(buildingKey: String, tier: Int): String = when (buildingKe
                     val hours = when (tier) { 1 -> 30; 2 -> 36; else -> 48 }
                     stringResource(R.string.town_church_active_bonus, hours)
                 }
+    "fairgrounds" -> when (tier) {
+        0    -> stringResource(R.string.town_fairgrounds_no_bonus)
+        1    -> stringResource(R.string.town_fairgrounds_t1_bonus)
+        2    -> stringResource(R.string.town_fairgrounds_t2_bonus)
+        else -> stringResource(R.string.town_fairgrounds_t3_bonus)
+    }
     else -> ""
 }
