@@ -1,16 +1,66 @@
 {
   "repo": {
-    "timestamp": 1782037601379
+    "timestamp": 1782088176479
   },
   "packages": {
     "com.tristinbaker.idlefantasy": {
       "metadata": {
-        "lastUpdated": 1782037581339,
+        "lastUpdated": 1782088156707,
         "description": {
           "en-US": "Idle Fantasy is a free and open source offline idle RPG inspired by classic MMORPGs. Train skills, fight in dungeons, craft gear, and complete quests. No internet connection, account, or ads required.\n\n<b>Features</b>\n\n• <b>14 trainable skills</b>: Mining, Fishing, Woodcutting, Firemaking, Agility, Runecrafting, Smithing, Cooking, Fletching, Crafting, Prayer, Attack, Strength, Defence, Ranged, Magic, Hitpoints\n\n• <b>Session-based training</b>: Start a session and close the app. Come back up to an hour later to collect your loot and XP. Agility reduces session time.\n\n• <b>12 dungeons</b>: Fight solo bosses and enemies to earn combat XP, coins, and rare drops. Equip weapons and armour to deal more damage.\n\n• <b>Crafting system</b>: Smelt bars, cook fish, fletch bows and arrows, craft jewellery. Consume gathered materials and earn XP and items.\n\n• <b>Prayer</b>: Bury bones collected from combat to earn Prayer XP.\n\n• <b>Equipment system</b>: Equip weapons, armour, tools, and jewellery to boost stats and skill efficiency.\n\n• <b>Quest system</b>: 100+ quests spanning all skills. Earn XP rewards on completion.\n\n• <b>Pet system</b>: Rare pets can drop while training skills. Each pet provides a permanent XP boost to their linked skill.\n\n• <b>Achievements</b>: Track milestones across levelling, combat, quests, and collections.\n\n• <b>NPC Shop</b>: Buy supplies and sell your gathered resources for coins.\n\n• <b>No ads. No accounts. No internet required.</b> Your save data stays on your device.\n\nIdle Fantasy is free software released under the GPL-3.0 licence. Source code is available on the project repository.\n\n<b>Get updates faster</b>\n\nAdd the official Idle Fantasy repository to F-Droid to receive updates as soon as they are released, instead of waiting for the main F-Droid index to catch up.\n\n1. Open F-Droid and go to Settings → Repositories\n2. Tap + and paste: https://idlefantasy.tristinbaker.xyz/fdroid/repo\n3. Search for Idle Fantasy, open the app page, and under Repositories set Idle Fantasy as the preferred source.\n"
         }
       },
       "versions": {
+        "c33b8fe1badaceab2feffcaae3c3d47c4cb6c50355d33f6c1f7c65ebfda16863": {
+          "added": 1782088156707,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_88.apk",
+            "sha256": "c33b8fe1badaceab2feffcaae3c3d47c4cb6c50355d33f6c1f7c65ebfda16863",
+            "size": 5230894
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.9.12",
+            "versionCode": 88,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fix clearing a magic bean farming patch consuming the seed permanently; the seed is now returned and can be replanted\n• Fix bones quantity field in the prayer session sheet being too narrow to display large numbers"
+          }
+        },
         "75b88792d2018ed2d1d7f477c3b3b571de6b303fd4aadaada3c2a0bfdd1f733f": {
           "added": 1782037581339,
           "file": {

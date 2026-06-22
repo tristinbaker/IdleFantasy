@@ -1,0 +1,2 @@
+• Fix clearing a magic bean farming patch consuming the seed permanently; the seed is now returned and can be replanted
+• Fix bones quantity field in the prayer session sheet being too narrow to display large numbers

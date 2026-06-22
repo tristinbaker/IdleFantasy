@@ -1,0 +1,64 @@
+{
+  "repo": {
+    "timestamp": 1782088176479
+  },
+  "packages": {
+    "com.tristinbaker.idlefantasy": {
+      "metadata": {
+        "lastUpdated": 1782088156707
+      },
+      "versions": {
+        "c33b8fe1badaceab2feffcaae3c3d47c4cb6c50355d33f6c1f7c65ebfda16863": {
+          "added": 1782088156707,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_88.apk",
+            "sha256": "c33b8fe1badaceab2feffcaae3c3d47c4cb6c50355d33f6c1f7c65ebfda16863",
+            "size": 5230894
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.9.12",
+            "versionCode": 88,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fix clearing a magic bean farming patch consuming the seed permanently; the seed is now returned and can be replanted\n• Fix bones quantity field in the prayer session sheet being too narrow to display large numbers"
+          }
+        }
+      }
+    }
+  }
+}
