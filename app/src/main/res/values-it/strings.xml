@@ -78,7 +78,7 @@
     <string name="label_session_complete">Sessione Completata!</string>
     <string name="label_training">Addestramento</string>
     <string name="label_gathering_skills">Raccolta</string>
-    <string name="label_crafting_skills">Abilità artigianali</string>
+    <string name="label_crafting_skills">Mestieri</string>
     <string name="label_choose_activity">Scegli Attività</string>
     <string name="label_coming_soon">In arrivo</string>
     <string name="label_time_remaining">Tempo rimanente</string>
@@ -109,9 +109,9 @@
     <string name="inventory_cat_other">Altro</string>
     <string name="inventory_cat_raw_food">Cibo Crudo</string>
     <string name="inventory_cat_ammunition">Munizioni</string>
-    <string name="inventory_cat_ores">Minerali &amp; Gemme</string>
+    <string name="inventory_cat_ores">Minerali e Gemme</string>
     <string name="inventory_cat_construction">Costruzione</string>
-    <string name="inventory_cat_seeds">Semi &amp; Raccolti</string>
+    <string name="inventory_cat_seeds">Semi e Piante</string>
     <string name="inventory_cat_filter_all">Tutto</string>
     <string name="label_combat_style">Stile di Combattimento</string>
     <string name="label_active_spell">Incantesimo in Uso</string>
@@ -148,7 +148,7 @@
     <string name="label_ranged_style">A Distanza</string>
     <string name="label_magic_style">Magia</string>
     <string name="label_gathering">Raccolta</string>
-    <string name="label_crafting">Oreficeria</string>
+    <string name="label_crafting">Mestieri</string>
     <string name="label_jewellery">Gioielli</string>
     <string name="label_combat">Combattimento</string>
     <string name="label_recipe">Ricetta</string>
@@ -434,8 +434,10 @@
     <string name="combat_solo_bosses">Boss Assoluti</string>
     <!-- Translator note: %1$d = number of completed dungeon runs -->
     <string name="combat_dungeon_runs">%1$d iter</string>
+    <!-- Translator note: %1$d = kills, %2$d = food consumed -->
     <string name="combat_last_run">Ultimo: %1$d uccisioni, %2$d cibo</string>
-    <string name="combat_last_run_died">Ultimo: morto (%1$d uccisioni)</string>
+    <!-- Translator note: %1$d = kills -->
+    <string name="combat_last_run_died">Ultimo: sconfitta (%1$d uccisioni)</string>
     <string name="combat_atk">ATT</string>
     <string name="combat_str">FRZ</string>
     <string name="combat_def">DIF</string>
@@ -857,8 +859,8 @@
     <string name="church_bones_available">Hai %1$d ossa (tutti i tipi)</string>
     <string name="church_not_enough_bones">Non hai abbastanza ossa (ne servono %1$d)</string>
     <string name="church_already_active">Una benedizione è già attiva</string>
-    <string name="church_confirm_deactivate_title">Disattivare la benedizione?</string>
-    <string name="church_confirm_deactivate_body">Sei sicuro di voler disattivare la benedizione attiva? Non riavrai indietro le tue ossa.</string>
+    <string name="church_confirm_deactivate_title">Interrompere la benedizione?</string>
+    <string name="church_confirm_deactivate_body">Sei sicuro di voler interrompere la benedizione attiva? Le ossa non verranno restituite.</string>
 
     <!-- Blessing names -->
     <string name="blessing_blessed_focus_name">Concentrazione</string>
@@ -1280,18 +1282,6 @@
     <string name="bonus_none">Nessun bonus XP attivo</string>
     <string name="bonus_all_skills">Tutte le abilità</string>
     <string name="bonus_section_boosts">Bonus attivi</string>
-    <string name="bonus_section_skills">Skill Bonuses</string>
-    <string name="bonus_combat_stat_boost">Boosts combat stats</string>
-    <string name="bonus_combined_xp">XP combinato</string>
-    <string name="bonus_yield">resa</string>
-    <string name="snackbar_added_to_queue">Aggiunto alla coda: %1$s.</string>
-    <string name="snackbar_queue_full">La coda è piena (3/3).</string>
-    <string name="home_not_enough_coins_repeat">Monete insufficienti per ripetere %1$s.</string>
-    <string name="home_not_enough_materials_repeat">Materiali insufficienti per ripetere %1$s.</string>
-    <string name="combat_start_failed">Impossibile avviare: %1$s</string>
-    <string name="combat_select_spell">Select a spell before entering.</string>
-    <string name="combat_spell_level_required">Need Magic %1$d for %2$s.</string>
-    <string name="guild_daily_reward_claimed">Daily reward claimed!</string>
     <string name="armory_not_owned">Non possiedi questo oggetto.</string>
     <string name="armory_how_to_obtain">Come ottenere</string>
     <string name="armory_no_stats">Nessun bonus alle statistiche.</string>
@@ -1314,24 +1304,24 @@
     <string name="armory_stat_magic_dmg">Danno magico</string>
     <string name="armory_stat_cape">Bonus XP</string>
     <string name="armory_stat_cape_yield">Bonus rendimento</string>
-    <string name="armory_source_carnival">Negozio premi carnevale</string>
-    <string name="armory_source_smithing">Forgiatura</string>
-    <string name="armory_source_crafting">Artigianato</string>
-    <string name="armory_source_fletching">Frecciatura</string>
-    <string name="armory_source_drop_always">Lasciato da %1$s (Sempre)</string>
-    <string name="armory_source_drop_chance">Lasciato da %1$s (%2$s)</string>
-    <string name="armory_source_drop">Lasciato da %1$s</string>
+    <string name="armory_source_carnival">Negozio premi fiera</string>
+    <string name="armory_source_smithing">Forgia</string>
+    <string name="armory_source_crafting">Oreficeria</string>
+    <string name="armory_source_fletching">Frecciaio</string>
+    <string name="armory_source_drop_always">Bottino da %1$s (Sempre)</string>
+    <string name="armory_source_drop_chance">Bottino da %1$s (%2$s)</string>
+    <string name="armory_source_drop">Bottino da %1$s</string>
     <string name="armory_source_shop">Negozio</string>
 
     <!-- Session / queue messages (issue #596) -->
     <string name="skill_no_logs">Nessun tronco nell\'inventario</string>
     <string name="skill_not_enough_rune_essence">Essenza di Rune insufficiente</string>
-    <string name="skill_not_enough_item">Non abbastanza %1$s</string>
+    <string name="skill_not_enough_item">%1$s insufficiente</string>
     <string name="skill_not_enough_materials">Materiali insufficienti</string>
     <string name="skill_session_start_failed">Impossibile avviare la sessione: %1$s</string>
     <string name="skill_added_to_queue_activity">Aggiunto alla coda: %1$s — %2$s.</string>
     <string name="worker_already_busy">Il lavoratore è già occupato.</string>
-    <string name="worker_not_enough_logs">Non abbastanza tronchi.</string>
+    <string name="worker_not_enough_logs">Tronchi insufficienti.</string>
     <string name="worker_not_enough_rune_essence">Essenza di Rune insufficiente.</string>
     <string name="worker_not_enough_materials">Materiali insufficienti.</string>
     <string name="shop_no_junk">Nessun oggetto da vendere</string>
@@ -1344,27 +1334,39 @@
     <string name="shop_not_enough_in_inventory">Non abbastanza nell\'inventario</string>
     <string name="shop_bought_item">Acquistato %1$d× %2$s</string>
     <string name="shop_sold_item">%1$d× %2$s venduto per %3$d monete</string>
-    <string name="quest_complete_notification">Quest completata: %1$s!</string>
-    <string name="quest_complete_with_rewards">Quest completata: %1$s! Ottenuto: %2$s</string>
-    <string name="quest_daily_complete_coins">Quest giornaliera completata! +%1$s monete</string>
-    <string name="quest_daily_complete_dwarven">Quest giornaliera completata! Hai trovato equipaggiamento nanico!</string>
+    <string name="quest_complete_notification">Missione completata: %1$s!</string>
+    <string name="quest_complete_with_rewards">Missione completata: %1$s! Ottenuto: %2$s</string>
+    <string name="quest_daily_complete_coins">Missione giornaliera completata! +%1$s monete</string>
+    <string name="quest_daily_complete_dwarven">Missione giornaliera completata! Hai trovato equipaggiamento nanico!</string>
     <string name="quest_weekly_complete">Sfida settimanale completata! +%1$s monete</string>
     <string name="quest_weekly_bonus_complete_coins">Tutte le sfide settimanali completate! +%1$s monete</string>
     <string name="quest_weekly_bonus_complete_divine">Tutte le sfide settimanali completate! Hai trovato equipaggiamento divino!</string>
-    <string name="guild_contributed_items">Contribuiti %1$d oggetti.</string>
+    <string name="guild_contributed_items">Hai contribuito %1$d oggetti.</string>
     <string name="mercantile_not_enough_coins">Monete insufficienti (servono %1$s monete).</string>
-    <string name="mercantile_route_start_failed">Impossibile avviare il percorso: %1$s</string>
+    <string name="mercantile_route_start_failed">Impossibile avviare la tratta: %1$s</string>
     <string name="mercantile_added_to_queue">Aggiunto alla coda: Commercio — %1$s.</string>
     <string name="inventory_requires_to_equip">Richiede %1$s per equipaggiare.</string>
-    <string name="home_found_pet">Hai trovato un animale: %1$s!</string>
-    <string name="pet_found_title">Nuovo animale!</string>
+    <string name="home_found_pet">Hai trovato un animaletto: %1$s!</string>
+    <string name="pet_found_title">Nuovo animaletto!</string>
     <string name="home_congratulations_received">Congratulazioni! Hai ricevuto: %1$s</string>
-    <string name="combat_no_food_title">Nessun cibo equipaggiato</string>
-    <string name="combat_no_food_body">Non hai cibo equipaggiato. Senza cibo potresti morire rapidamente e perdere la maggior parte delle ricompense. Iniziare comunque?</string>
-    <string name="combat_start_anyway">Inizia comunque</string>
+    <string name="home_not_enough_coins_repeat">Monete insufficienti per ripetere %1$s.</string>
+    <string name="home_not_enough_materials_repeat">Materiali insufficienti per ripetere %1$s.</string>
+    <string name="combat_no_food_title">Non hai cibo con te</string>
+    <string name="combat_no_food_body">Non hai cibo con te. Senza cibo potresti soccombere e perdere la maggior parte delle ricompense. Proseguire comunque?</string>
+    <string name="combat_start_anyway">Prosegui</string>
     <string name="combat_xp_consolation">XP (consolazione)</string>
     <string name="bestiary_loot_item_header">Oggetto</string>
     <string name="worker_no_mats">Nessun mat.</string>
+    <string name="bonus_section_skills">Bonus da Abilità</string>
+    <string name="bonus_combat_stat_boost">Potenzia statistiche combattimento</string>
+    <string name="bonus_combined_xp">XP combinata</string>
+    <string name="bonus_yield">resa</string>
+    <string name="snackbar_added_to_queue">Aggiunto alla coda: %1$s.</string>
+    <string name="snackbar_queue_full">La coda è piena (3/3).</string>
+    <string name="combat_start_failed">Impossibile avviare: %1$s</string>
+    <string name="combat_select_spell">Seleziona una magia prima di proseguire.</string>
+    <string name="combat_spell_level_required">Magia %1$d necessaria per %2$s.</string>
+    <string name="guild_daily_reward_claimed">Ottenuta ricompensa giornaliera!</string>
 
     <!-- Boss Descriptions -->
     <string name="boss_king_black_dragon_desc">Il leggendario drago a tre teste, temuto in tutto il regno.</string>
