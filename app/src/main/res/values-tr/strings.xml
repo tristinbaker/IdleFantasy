@@ -664,6 +664,7 @@
     <string name="settings_lang_turkish">Türkçe</string>
     <string name="settings_lang_italiano">Italiano</string>
     <string name="settings_lang_russian">Русский</string>
+    <string name="settings_lang_indonesian">Endonezce</string>
     <string name="profile_weapons">Weapons</string>
     <string-array name="worker_names">
         <item>Aldric</item>

@@ -1,0 +1,7 @@
+• Slayer: Foretell queue now shows a "+ Queue" button on each row so you can manually queue that dungeon at any time
+• Carnival: Fairgrounds building upgrades now boost idle session ticket chance (+5%/+10%/+15% per tier)
+• Carnival: Difficulty setting for each minigame is now remembered across sessions
+• Carnival: Potion Sequence now uses 6 colours for both the sequence length and the button palette (Normal: remember 6, Hard: remember 8)
+• Guild dailies: Fletchers Guild no longer assigns arrow-crafting tasks that require a higher Fletching or Smithing level than the player has
+• Thieving: Coins earned during a thieving session now correctly go to your coin balance instead of sitting in inventory
+• App icon: Monochrome/themed launcher mode now shows the correct shield-and-swords shape instead of a solid blob

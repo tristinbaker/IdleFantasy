@@ -549,23 +549,26 @@ private fun PotionSequenceCard(gameState: ActiveGameState, difficulty: Difficult
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     Text(stringResource(R.string.carnival_sequence_watch), style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold)
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        seq.forEachIndexed { i, colorIdx ->
-                            Box(
-                                modifier = Modifier
-                                    .size(48.dp)
-                                    .clip(CircleShape)
-                                    .background(if (i == current) POTION_COLORS[colorIdx] else POTION_COLORS[colorIdx].copy(alpha = 0.3f))
-                                    .border(if (i == current) 2.dp else 0.dp, MaterialTheme.colorScheme.onSurface, CircleShape),
-                                contentAlignment = Alignment.Center,
-                            ) {
-                                if (i == current) {
-                                    Text(
-                                        text  = POTION_NAMES[colorIdx].first().toString(),
-                                        style = MaterialTheme.typography.bodyLarge,
-                                        fontWeight = FontWeight.Bold,
-                                        color = Color.White,
-                                    )
+                    seq.chunked(6).forEachIndexed { rowIdx, chunk ->
+                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            chunk.forEachIndexed { localIdx, colorIdx ->
+                                val i = rowIdx * 6 + localIdx
+                                Box(
+                                    modifier = Modifier
+                                        .size(48.dp)
+                                        .clip(CircleShape)
+                                        .background(if (i == current) POTION_COLORS[colorIdx] else POTION_COLORS[colorIdx].copy(alpha = 0.3f))
+                                        .border(if (i == current) 2.dp else 0.dp, MaterialTheme.colorScheme.onSurface, CircleShape),
+                                    contentAlignment = Alignment.Center,
+                                ) {
+                                    if (i == current) {
+                                        Text(
+                                            text  = POTION_NAMES[colorIdx].first().toString(),
+                                            style = MaterialTheme.typography.bodyLarge,
+                                            fontWeight = FontWeight.Bold,
+                                            color = Color.White,
+                                        )
+                                    }
                                 }
                             }
                         }
@@ -591,7 +594,7 @@ private fun PotionSequenceCard(gameState: ActiveGameState, difficulty: Difficult
                             PotionButton(colorIdx) { viewModel.submitPotionInput(colorIdx) }
                         }
                     }
-                    // Second row: remaining colors (4, 5, 6 for hard)
+                    // Second row: remaining colors
                     if (colorCount > 3) {
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             (3 until colorCount).forEach { colorIdx ->

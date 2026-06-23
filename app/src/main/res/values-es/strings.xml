@@ -642,6 +642,7 @@
     <string name="settings_lang_turkish">Türkçe</string>
     <string name="settings_lang_italiano">Italiano</string>
     <string name="settings_lang_russian">Русский</string>
+    <string name="settings_lang_indonesian">Indonesio</string>
     <string name="home_queue_ends_in">Queue ends in %1$s</string>
     <string name="queue_item_qty">×%1$d</string>
     <string name="queue_item_qty_with_output">×%1$d → %2$d objetos</string>

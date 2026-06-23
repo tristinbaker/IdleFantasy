@@ -274,7 +274,7 @@
     <string name="settings_font_large">Besar</string>
     <string name="settings_font_huge">Sangat besar</string>
     <string name="settings_language_desc">Mengganti bahasa tampilan aplikasi</string>
-    <string name="settings_lang_english">Bahasa Indonesia</string>
+    <string name="settings_lang_english">Bahasa Inggris</string>
     <string name="settings_lang_deutsch">Jerman</string>
     <string name="settings_lang_français">Perancis</string>
     <string name="settings_lang_dutch">Belanda</string>
@@ -283,6 +283,7 @@
     <string name="settings_lang_turkish">Turki</string>
     <string name="settings_lang_italiano">Italia</string>
     <string name="settings_lang_russian">Rusia</string>
+    <string name="settings_lang_indonesian">Bahasa Indonesia</string>
     <string name="settings_lang_system">Sistem</string>
     <string name="settings_save_data">Simpan Data</string>
     <string name="settings_export">Ekspor Simpan</string>

@@ -980,6 +980,7 @@
     <string name="guild_combat_magic">magic</string>
     <string name="settings_recent_activity_desc">Show Recent Activity button in the home screen header</string>
     <string name="settings_lang_russian">Русский</string>
+    <string name="settings_lang_indonesian">Indonesio</string>
     <string name="combat_log_kill">☠ %1$s defeated</string>
     <string name="combat_log_player_hit">→ You hit %1$s: %2$d dmg</string>
     <string name="combat_log_player_miss">→ You missed %1$s</string>

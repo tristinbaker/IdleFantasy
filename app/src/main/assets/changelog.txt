@@ -1,3 +1,7 @@
+v1.9.14
+• Hard mode potion sequence now uses 8 colours (Yellow and Pink added) so all 8 colour buttons are visible
+• Indonesian (Bahasa Indonesia) now appears as a selectable language option in Settings
+
 v1.9.13
 • Slayer: Foretell queue now shows a "+ Queue" button on each row so you can manually queue that dungeon at any time
 • Carnival: Fairgrounds building upgrades now boost idle session ticket chance (+5%/+10%/+15% per tier)

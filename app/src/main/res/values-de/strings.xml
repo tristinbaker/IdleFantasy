@@ -363,6 +363,7 @@
     <string name="settings_lang_turkish">Türkçe</string>
     <string name="settings_lang_italiano">Italiano</string>
     <string name="settings_lang_russian">Русский</string>
+    <string name="settings_lang_indonesian">Indonesisch</string>
     <string name="settings_lang_system">System</string>
     <string name="settings_save_data">Daten speichern</string>
     <string name="settings_export">Daten exportieren</string>

@@ -1,0 +1,2 @@
+• Hard mode potion sequence now uses 8 colours (Yellow and Pink added) so all 8 colour buttons are visible
+• Indonesian (Bahasa Indonesia) now appears as a selectable language option in Settings
