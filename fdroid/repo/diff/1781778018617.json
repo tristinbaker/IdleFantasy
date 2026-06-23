@@ -1,13 +1,63 @@
 {
   "repo": {
-    "timestamp": 1782170030344
+    "timestamp": 1782208670167
   },
   "packages": {
     "com.tristinbaker.idlefantasy": {
       "metadata": {
-        "lastUpdated": 1782170008773
+        "lastUpdated": 1782208647617
       },
       "versions": {
+        "5f93eb35749a7bcf063c16fb2c3d43515a7668a46fd1bd32bad8ecb3621105fa": {
+          "added": 1782208647617,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_90.apk",
+            "sha256": "5f93eb35749a7bcf063c16fb2c3d43515a7668a46fd1bd32bad8ecb3621105fa",
+            "size": 5315062
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.9.14",
+            "versionCode": 90,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Hard mode potion sequence now uses 8 colours (Yellow and Pink added) so all 8 colour buttons are visible\n• Indonesian (Bahasa Indonesia) now appears as a selectable language option in Settings\n"
+          }
+        },
         "23d61152f628fb924b81416da68018194b5df3e1517388fb68f0c08ab0047f77": {
           "added": 1782170008773,
           "file": {
