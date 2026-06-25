@@ -1,0 +1,64 @@
+{
+  "repo": {
+    "timestamp": 1782381688049
+  },
+  "packages": {
+    "com.tristinbaker.idlefantasy": {
+      "metadata": {
+        "lastUpdated": 1782381665789
+      },
+      "versions": {
+        "694997b40b6b70c4a5001c9e376ba58e89e7f5d2593b0a96f484d68f6af5612a": {
+          "added": 1782381665789,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_91.apk",
+            "sha256": "694997b40b6b70c4a5001c9e376ba58e89e7f5d2593b0a96f484d68f6af5612a",
+            "size": 5315474
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.9.15",
+            "versionCode": 91,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fix guild daily quest progress resetting mid-day when a new guild was unlocked; other guilds' progress is now preserved\n• Fix slayer weapon picker showing Attack pre-selected regardless of last-used weapon slot\n• Increase dark wizard spawn weight in Undead Crypt so slayer tasks complete more reliably\n• Fix enhanced potions being included in Sell Junk\n• Fix fish cooking quests appearing as crafting suggestions on non-fish cooking screens\n• Fix guild quest crafting suggestions showing locked que"
+          }
+        }
+      }
+    }
+  }
+}
