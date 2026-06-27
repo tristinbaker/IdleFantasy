@@ -421,7 +421,9 @@ class QueuedSessionStarter @Inject constructor(
                 val preferredArrow = bossArrowKey?.takeIf { (inventory[it] ?: 0) > 0 }
                 val bestArrow = preferredArrow ?: ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
                 val arrowBonus = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
-                val availableArrows = if (bestArrow != null) mapOf(bestArrow to (inventory[bestArrow] ?: 0)) else emptyMap()
+                val availableArrows = ARROW_TIERS
+                    .filter { (inventory[it] ?: 0) > 0 }
+                    .associateWith { inventory[it]!! }
                 val pmBoss = flags.skillPrestige
                 val bossFrames = CombatSimulator.simulateBoss(
                     boss               = boss,
@@ -504,7 +506,9 @@ class QueuedSessionStarter @Inject constructor(
                 val preferredArrow = combatArrowKey?.takeIf { (inventory[it] ?: 0) > 0 }
                 val bestArrow = preferredArrow ?: ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
                 val arrowBonus = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
-                val availableArrows = if (bestArrow != null) mapOf(bestArrow to (inventory[bestArrow] ?: 0)) else emptyMap()
+                val availableArrows = ARROW_TIERS
+                    .filter { (inventory[it] ?: 0) > 0 }
+                    .associateWith { inventory[it]!! }
                 val equippedFoodKeys  = flags.equippedFood.keys
                 val prevFoodConsumed  = pendingFoodConsumed()
                 val availableFood     = inventory.filterKeys { it in equippedFoodKeys }
@@ -571,7 +575,9 @@ class QueuedSessionStarter @Inject constructor(
                 val totalMagicDmgBonus = if (combatStyle == "magic") EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.magicDamageBonus ?: 0 } + (weapon?.magicDamageBonus ?: 0) else 0
                 val bestArrow       = ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
                 val arrowBonus      = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
-                val availableArrows = if (bestArrow != null) mapOf(bestArrow to (inventory[bestArrow] ?: 0)) else emptyMap()
+                val availableArrows = ARROW_TIERS
+                    .filter { (inventory[it] ?: 0) > 0 }
+                    .associateWith { inventory[it]!! }
                 val spell           = gameData.spells[flags.activeSpell]
                 val equippedFoodKeys = flags.equippedFood.keys
                 val prevFoodConsumed = pendingFoodConsumed()

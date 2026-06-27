@@ -65,8 +65,14 @@ object CombatSimulator {
             .map { it.key }
         var totalFoodEaten = 0
 
-        val arrowKey   = availableArrows.keys.firstOrNull()
-        var arrowsLeft = if (arrowKey != null) availableArrows[arrowKey] ?: 0 else Int.MAX_VALUE
+        // Build an ordered deque of (arrowKey, remaining) so the simulator falls back
+        // to the next tier automatically when the current type is exhausted.
+        // An empty deque means no arrows were provided (non-ranged or empty inventory).
+        val arrowSupply: ArrayDeque<Pair<String, Int>> = if (availableArrows.isEmpty()) {
+            ArrayDeque()
+        } else {
+            ArrayDeque(availableArrows.entries.map { (k, v) -> k to v })
+        }
 
         var runningTotal = 0L
         var carryoverEnemyKey: String? = null
@@ -79,7 +85,7 @@ object CombatSimulator {
             val frameXpBySkill = mutableMapOf<String, Long>()
             var frameXp        = 0L
             val frameFood      = mutableMapOf<String, Int>()
-            var frameArrowsUsed = 0
+            val frameArrowsUsedByType = mutableMapOf<String, Int>()
             var frameRunesUsed  = 0
 
             val enemyKey = carryoverEnemyKey ?: spawnPool[rnd.nextInt(spawnPool.size)]
@@ -138,14 +144,25 @@ object CombatSimulator {
             val frameEnemyHits  = mutableListOf<Int>()
 
             repeat(TICKS_PER_FRAME) {
-                // Player attacks (ranged is capped by arrow supply)
+                // Player attacks — for ranged, consume arrows in tier order (best first);
+                // fall back to the next available type when the current stack runs out.
                 val pDmg = when {
-                    combatStyle == "ranged" && arrowsLeft > 0 -> {
-                        arrowsLeft--
-                        frameArrowsUsed++
-                        if (rnd.nextDouble() < playerHitChance) rnd.nextInt(0, playerMaxHit + 1) else 0
+                    combatStyle == "ranged" -> {
+                        // Advance past any exhausted arrow types.
+                        while (arrowSupply.isNotEmpty() && arrowSupply.first().second <= 0)
+                            arrowSupply.removeFirst()
+
+                        if (arrowSupply.isNotEmpty()) {
+                            val (currentArrowKey, currentQty) = arrowSupply.first()
+                            arrowSupply[0] = currentArrowKey to (currentQty - 1)
+                            frameArrowsUsedByType[currentArrowKey] =
+                                (frameArrowsUsedByType[currentArrowKey] ?: 0) + 1
+                            if (rnd.nextDouble() < playerHitChance) rnd.nextInt(0, playerMaxHit + 1) else 0
+                        } else {
+                            // Completely out of all arrow types — player cannot attack.
+                            0
+                        }
                     }
-                    combatStyle == "ranged" -> 0
                     combatStyle == "magic" -> {
                         if (runeKey != null) frameRunesUsed++
                         if (rnd.nextDouble() < playerHitChance) rnd.nextInt(0, playerMaxHit + 1) else 0
@@ -225,7 +242,7 @@ object CombatSimulator {
                     killsByEnemy = if (kills > 0) mapOf(enemyKey to kills) else emptyMap(),
                     died           = diedThisMinute,
                     foodConsumed   = frameFood,
-                    arrowsConsumed = if (arrowKey != null && frameArrowsUsed > 0) mapOf(arrowKey to frameArrowsUsed) else emptyMap(),
+                    arrowsConsumed = frameArrowsUsedByType,
                     runesConsumed  = if (runeKey != null && frameRunesUsed > 0) mapOf(runeKey to frameRunesUsed * runeCostPerAttack) else emptyMap(),
                     enemyKey       = enemyKey,
                     hpAfter      = currentHp.coerceAtLeast(0),
@@ -328,8 +345,12 @@ object CombatSimulator {
                               else boss.defensiveStats.attackDefense
             }
         }
-        val arrowKey   = availableArrows.keys.firstOrNull()
-        var arrowsLeft = if (arrowKey != null) availableArrows[arrowKey] ?: 0 else Int.MAX_VALUE
+        // Build an ordered deque of (arrowKey, remaining) for tier-by-tier fallback.
+        val arrowSupply: ArrayDeque<Pair<String, Int>> = if (availableArrows.isEmpty()) {
+            ArrayDeque()
+        } else {
+            ArrayDeque(availableArrows.entries.map { (k, v) -> k to v })
+        }
         val playerHitChance = when {
             effAtk > bossDefence -> 1.0 - bossDefence / (2.0 * effAtk.coerceAtLeast(1))
             else                 -> effAtk / (2.0 * bossDefence.coerceAtLeast(1))
@@ -364,17 +385,25 @@ object CombatSimulator {
             val pHits          = mutableListOf<Int>()
             val eHits          = mutableListOf<Int>()
             val frameFood      = mutableMapOf<String, Int>()
-            var frameArrowsUsed = 0
+            val frameArrowsUsedByType = mutableMapOf<String, Int>()
             var frameRunesUsed  = 0
 
             for (tick in 0 until TICKS_PER_FRAME) {
                 val pDmg = when {
-                    combatStyle == "ranged" && arrowsLeft > 0 -> {
-                        arrowsLeft--
-                        frameArrowsUsed++
-                        if (rnd.nextDouble() < playerHitChance) rnd.nextInt(0, playerMax + 1) else 0
+                    combatStyle == "ranged" -> {
+                        while (arrowSupply.isNotEmpty() && arrowSupply.first().second <= 0)
+                            arrowSupply.removeFirst()
+
+                        if (arrowSupply.isNotEmpty()) {
+                            val (currentArrowKey, currentQty) = arrowSupply.first()
+                            arrowSupply[0] = currentArrowKey to (currentQty - 1)
+                            frameArrowsUsedByType[currentArrowKey] =
+                                (frameArrowsUsedByType[currentArrowKey] ?: 0) + 1
+                            if (rnd.nextDouble() < playerHitChance) rnd.nextInt(0, playerMax + 1) else 0
+                        } else {
+                            0
+                        }
                     }
-                    combatStyle == "ranged" -> 0
                     combatStyle == "magic" -> {
                         if (runeKey != null) frameRunesUsed++
                         if (rnd.nextDouble() < playerHitChance) rnd.nextInt(0, playerMax + 1) else 0
@@ -392,7 +421,7 @@ object CombatSimulator {
                         kills = 1, enemyKey = bossKey,
                         playerHits = pHits, enemyHits = eHits, hpAfter = currentHp,
                         foodConsumed  = frameFood,
-                        arrowsConsumed = if (arrowKey != null && frameArrowsUsed > 0) mapOf(arrowKey to frameArrowsUsed) else emptyMap(),
+                        arrowsConsumed = frameArrowsUsedByType,
                         runesConsumed  = if (runeKey != null && frameRunesUsed > 0) mapOf(runeKey to frameRunesUsed * runeCostPerAttack) else emptyMap(),
                     ))
                     break@outer
@@ -428,7 +457,7 @@ object CombatSimulator {
                         kills = 0, enemyKey = bossKey,
                         playerHits = pHits, enemyHits = eHits, hpAfter = 0,
                         foodConsumed  = frameFood,
-                        arrowsConsumed = if (arrowKey != null && frameArrowsUsed > 0) mapOf(arrowKey to frameArrowsUsed) else emptyMap(),
+                        arrowsConsumed = frameArrowsUsedByType,
                         runesConsumed  = if (runeKey != null && frameRunesUsed > 0) mapOf(runeKey to frameRunesUsed * runeCostPerAttack) else emptyMap(),
                     ))
                     break@outer
@@ -442,7 +471,7 @@ object CombatSimulator {
                     kills = 0, enemyKey = bossKey,
                     playerHits = pHits, enemyHits = eHits, hpAfter = currentHp,
                     foodConsumed  = frameFood,
-                    arrowsConsumed = if (arrowKey != null && frameArrowsUsed > 0) mapOf(arrowKey to frameArrowsUsed) else emptyMap(),
+                    arrowsConsumed = frameArrowsUsedByType,
                     runesConsumed  = if (runeKey != null && frameRunesUsed > 0) mapOf(runeKey to frameRunesUsed * runeCostPerAttack) else emptyMap(),
                 ))
             }

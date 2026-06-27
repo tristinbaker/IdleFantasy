@@ -238,7 +238,10 @@ class TowerViewModel @Inject constructor(
                 val enemies    = scaledEnemies()
                 val foodHeal   = gameData.foodHealValues
                 val availableFood   = inventory.filterKeys { it in flags.equippedFood.keys }
-                val availableArrows = if (bestArrow != null) mapOf(bestArrow to (inventory[bestArrow] ?: 0)) else emptyMap()
+                val availableArrows = ARROW_TIERS
+                    .filter { (inventory[it] ?: 0) > 0 }
+                    .associateWith { inventory[it]!! }
+
 
                 val staffCoversRune = combatStyle == "magic" && selectedSpell != null &&
                     (weapon?.infiniteRunes == "all" || weapon?.infiniteRunes == selectedSpell.runeType)

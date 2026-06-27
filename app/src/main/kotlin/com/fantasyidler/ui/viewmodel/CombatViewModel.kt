@@ -445,8 +445,11 @@ class CombatViewModel @Inject constructor(
                 val availableFood      = inventory.filterKeys { it in equippedFoodKeys }
                 val foodHealValues     = gameData.foodHealValues
 
-                // Arrows: pass current supply to simulator; consumed at collect time from frames
-                val availableArrows = if (bestArrow != null) mapOf(bestArrow to (inventory[bestArrow] ?: 0)) else emptyMap()
+                // Arrows: pass all available tiers (best-first) so the simulator can fall
+                // back automatically when a higher-tier type runs out.
+                val availableArrows = ARROW_TIERS
+                    .filter { (inventory[it] ?: 0) > 0 }
+                    .associateWith { inventory[it]!! }
 
                 // Runes: determine key and cost for simulator tracking; consumed upfront below
                 val staffCoversRune = combatStyle == "magic" && selectedSpell != null && (weapon?.infiniteRunes == "all" || weapon?.infiniteRunes == selectedSpell.runeType)
@@ -614,7 +617,9 @@ class CombatViewModel @Inject constructor(
                 val preferredArrow = _extra.value.selectedArrowKey?.takeIf { (inventory[it] ?: 0) > 0 }
                 val bestArrow = preferredArrow ?: ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
                 val arrowStrengthBonus = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
-                val availableArrows = if (bestArrow != null) mapOf(bestArrow to (inventory[bestArrow] ?: 0)) else emptyMap()
+                val availableArrows = ARROW_TIERS
+                    .filter { (inventory[it] ?: 0) > 0 }
+                    .associateWith { inventory[it]!! }
 
                 val bossStaffCoversRune = combatStyle == "magic" && selectedSpell != null && (bossWeapon?.infiniteRunes == "all" || bossWeapon?.infiniteRunes == selectedSpell.runeType)
                 val bossRuneKey  = if (combatStyle == "magic" && selectedSpell != null && !bossStaffCoversRune) selectedSpell.runeType else null
@@ -1055,7 +1060,9 @@ class CombatViewModel @Inject constructor(
 
         val bestArrow      = ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
         val arrowStrBonus  = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
-        val availableArrows = if (bestArrow != null) mapOf(bestArrow to (inventory[bestArrow] ?: 0)) else emptyMap()
+        val availableArrows = ARROW_TIERS
+            .filter { (inventory[it] ?: 0) > 0 }
+            .associateWith { inventory[it]!! }
 
         val activeSpell = flags.activeSpell?.let { gameData.spells[it] }
         val spellMaxHit = if (combatStyle == "magic") activeSpell?.maxHit ?: 0 else 0
