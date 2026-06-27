@@ -18,13 +18,22 @@ import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.fantasyidler.notification.SessionNotificationManager
+import com.fantasyidler.repository.BackupScheduler
+import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.ui.navigation.AppNavigation
 import com.fantasyidler.ui.theme.FantasyIdlerTheme
 import com.fantasyidler.ui.viewmodel.SettingsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    @Inject lateinit var playerRepository: PlayerRepository
+    @Inject lateinit var backupScheduler: BackupScheduler
 
     private val notificationPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -35,6 +44,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestNotificationPermissionIfNeeded()
+        // One-time migration: re-register the backup alarm on first launch after update.
+        // Previously setInexactRepeating was used with an unsupported weekly interval which
+        // caused the alarm to fire once then silently stop. Players who had weekly backup
+        // configured would never get another backup until a reboot or settings change.
+        // Calling schedule() here is safe: it calls cancel() first and is a no-op if
+        // backupFrequency is empty. This heals existing users without any manual action.
+        if (savedInstanceState == null) {
+            CoroutineScope(Dispatchers.IO).launch {
+                val flags = playerRepository.getFlags()
+                if (flags.backupFrequency.isNotEmpty()) {
+                    backupScheduler.schedule(flags.backupFrequency)
+                }
+            }
+        }
         if (savedInstanceState == null) {
             pendingNavigateTo.value = intent?.getStringExtra(SessionNotificationManager.EXTRA_NAVIGATE_TO)
         }

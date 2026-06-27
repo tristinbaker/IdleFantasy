@@ -18,10 +18,11 @@ class BackupAlarmReceiver : BroadcastReceiver() {
     @Inject lateinit var backupScheduler: BackupScheduler
 
     override fun onReceive(context: Context, intent: Intent) {
+        val frequency = intent.getStringExtra(BackupScheduler.EXTRA_FREQUENCY) ?: ""
         val pending = goAsync()
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                backupScheduler.performBackup(playerRepo)
+                backupScheduler.performBackup(playerRepo, frequency)
             } finally {
                 pending.finish()
             }

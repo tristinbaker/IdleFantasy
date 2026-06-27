@@ -122,9 +122,14 @@ class SettingsViewModel @Inject constructor(
             }
             context.contentResolver.takePersistableUriPermission(Uri.parse(uriString), permFlags)
             playerRepo.updateFlags(flags.copy(backupFolderUri = uriString))
+            // Reschedule using the frequency already stored in flags. The folder URI
+            // is now saved, so the next performBackup will find it correctly.
+            // (Previously this used the stale pre-save flags object, same result here
+            //  since only the URI changed, but being explicit avoids future confusion.)
             if (flags.backupFrequency.isNotEmpty()) backupScheduler.schedule(flags.backupFrequency)
         }
     }
+
 
     fun setBackupFrequency(frequency: String) {
         viewModelScope.launch {

@@ -13,6 +13,7 @@ import java.util.Calendar
 import javax.inject.Inject
 import javax.inject.Singleton
 
+
 @Singleton
 class BackupScheduler @Inject constructor(
     @ApplicationContext private val context: Context,
@@ -23,24 +24,54 @@ class BackupScheduler @Inject constructor(
     fun schedule(frequency: String) {
         cancel()
         if (frequency.isEmpty()) return
-        val pi = buildPendingIntent(PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE) ?: return
-        val intervalMs = when (frequency) {
-            "hourly" -> AlarmManager.INTERVAL_HOUR
-            "daily"  -> AlarmManager.INTERVAL_DAY
-            "weekly" -> 7L * AlarmManager.INTERVAL_DAY
-            else     -> return
-        }
-        val firstFire = if (frequency == "hourly") System.currentTimeMillis() + AlarmManager.INTERVAL_HOUR
-                        else nextFiveAm()
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, firstFire, intervalMs, pi)
+        // Build the PendingIntent with the frequency baked into the Intent extras so
+        // BackupAlarmReceiver can reschedule the next occurrence after each firing.
+        val intent = Intent(context, BackupAlarmReceiver::class.java)
+            .putExtra(EXTRA_FREQUENCY, frequency)
+        val pi = PendingIntent.getBroadcast(
+            context, REQUEST_CODE, intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+        val firstFire = if (frequency == "hourly") System.currentTimeMillis() + intervalMs(frequency)
+                        else nextFiveAm(frequency)
+        // setInexactRepeating only honours Android's own built-in interval constants
+        // (INTERVAL_HOUR, INTERVAL_DAY, etc.). Passing 7*INTERVAL_DAY is silently
+        // ignored and the alarm fires once then stops. Use setExactAndAllowWhileIdle
+        // instead and reschedule manually inside performBackup after each firing.
+        alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, firstFire, pi)
+    }
+
+    /** Reschedule the next alarm occurrence after a successful backup firing. */
+    fun reschedule(frequency: String) {
+        if (frequency.isEmpty()) return
+        val intent = Intent(context, BackupAlarmReceiver::class.java)
+            .putExtra(EXTRA_FREQUENCY, frequency)
+        val pi = PendingIntent.getBroadcast(
+            context, REQUEST_CODE, intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+        val nextFire = System.currentTimeMillis() + intervalMs(frequency)
+        alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, nextFire, pi)
+    }
+
+    private fun intervalMs(frequency: String): Long = when (frequency) {
+        "hourly" -> AlarmManager.INTERVAL_HOUR
+        "daily"  -> AlarmManager.INTERVAL_DAY
+        "weekly" -> 7L * AlarmManager.INTERVAL_DAY
+        else     -> AlarmManager.INTERVAL_DAY
     }
 
     fun cancel() {
-        buildPendingIntent(PendingIntent.FLAG_NO_CREATE or PendingIntent.FLAG_IMMUTABLE)
-            ?.let { alarmManager.cancel(it) }
+        // FLAG_NO_CREATE returns null if no matching alarm is registered, so the
+        // cancel() call is safely skipped when there is nothing to cancel.
+        val intent = Intent(context, BackupAlarmReceiver::class.java)
+        PendingIntent.getBroadcast(
+            context, REQUEST_CODE, intent,
+            PendingIntent.FLAG_NO_CREATE or PendingIntent.FLAG_IMMUTABLE
+        )?.let { alarmManager.cancel(it) }
     }
 
-    suspend fun performBackup(playerRepo: PlayerRepository): Boolean {
+    suspend fun performBackup(playerRepo: PlayerRepository, frequency: String = ""): Boolean {
         val flags = playerRepo.getFlags()
         if (flags.backupFolderUri.isEmpty()) return false
         return try {
@@ -81,22 +112,34 @@ class BackupScheduler @Inject constructor(
             val docUri  = DocumentsContract.buildDocumentUriUsingTree(treeUri, treeDocId)
             val fileUri = DocumentsContract.createDocument(cr, docUri, "application/json", "fantasyidler_auto")
             fileUri?.let { cr.openOutputStream(it, "w")?.use { s -> s.write(jsonBytes) } }
+
+            // Schedule the next occurrence. setExactAndAllowWhileIdle is one-shot so
+            // each firing must manually reschedule the next alarm.
+            val effectiveFreq = frequency.ifEmpty { flags.backupFrequency }
+            if (effectiveFreq.isNotEmpty()) reschedule(effectiveFreq)
+
             true
         } catch (_: Exception) { false }
     }
 
-    private fun nextFiveAm(): Long = Calendar.getInstance().apply {
+    /**
+     * Returns the next 5am for daily/weekly (tomorrow if 5am today has already passed),
+     * or for weekly, the next Sunday 5am.
+     */
+    private fun nextFiveAm(frequency: String): Long = Calendar.getInstance().apply {
         set(Calendar.HOUR_OF_DAY, 5)
         set(Calendar.MINUTE, 0)
         set(Calendar.SECOND, 0)
         set(Calendar.MILLISECOND, 0)
         if (timeInMillis <= System.currentTimeMillis()) add(Calendar.DAY_OF_YEAR, 1)
+        // For weekly, advance to the next Sunday
+        if (frequency == "weekly") {
+            while (get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY) add(Calendar.DAY_OF_YEAR, 1)
+        }
     }.timeInMillis
-
-    private fun buildPendingIntent(flags: Int): PendingIntent? =
-        PendingIntent.getBroadcast(context, REQUEST_CODE, Intent(context, BackupAlarmReceiver::class.java), flags)
 
     companion object {
         private const val REQUEST_CODE = 9001
+        const val EXTRA_FREQUENCY = "backup_frequency"
     }
 }
