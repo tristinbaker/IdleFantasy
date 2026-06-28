@@ -1736,7 +1736,13 @@ private fun DungeonInfoSheet(
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                             )
                             val infinite = equippedWeapon?.infiniteRunes == "all" || equippedWeapon?.infiniteRunes == spell.runeType
-                            if (!infinite) {
+                            if (infinite) {
+                                Text(
+                                    text  = stringResource(R.string.combat_infinite_runes, GameStrings.itemName(context, spell.runeType)),
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                )
+                            } else {
                                 val held = inventory[spell.runeType] ?: 0
                                 Text(
                                     text  = stringResource(R.string.combat_you_have_runes, held, GameStrings.itemName(context, spell.runeType)),
@@ -2082,7 +2088,13 @@ private fun BossInfoSheet(
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                             )
                             val infinite = equippedWeapon?.infiniteRunes == "all" || equippedWeapon?.infiniteRunes == spell.runeType
-                            if (!infinite) {
+                            if (infinite) {
+                                Text(
+                                    text  = stringResource(R.string.combat_infinite_runes, GameStrings.itemName(context, spell.runeType)),
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                )
+                            } else {
                                 val held = inventory[spell.runeType] ?: 0
                                 Text(
                                     text  = stringResource(R.string.combat_you_have_runes, held, GameStrings.itemName(context, spell.runeType)),

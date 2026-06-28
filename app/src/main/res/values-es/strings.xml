@@ -383,6 +383,7 @@
     <string name="combat_only_castable">Only Castable</string>
     <string name="combat_max_hit">max hit</string>
     <string name="combat_you_have_runes">(tienes %1$d %2$s)</string>
+    <string name="combat_infinite_runes">(infinito %1$s)</string>
     <string name="combat_no_potion">Sin poción</string>
     <string name="combat_req_level">Nivel de combate requerido</string>
     <string name="combat_duration">Duracion</string>
@@ -1171,6 +1172,10 @@
     <string name="enemy_abyssal_lord_name">Señor Abisal</string>
     <string name="enemy_eternal_sentinel_name">Centinela Eterno</string>
     <string name="enemy_void_archon_name">Arconte del Vacío</string>
+    <string name="enemy_frost_wyvern_name">Guiverno de Escarcha</string>
+    <string name="enemy_abyssal_guardian_name">Guardián Abisal</string>
+    <string name="enemy_shadow_thief_name">Ladrón de Sombras</string>
+    <string name="enemy_elder_lich_name">Lich Anciano</string>
 
     <string name="item_void_reaver_name">Desgarrador del Vacío</string>
     <string name="item_void_reaver_desc">Una hoja forjada de energía del vacío cristalizada. Su filo atraviesa la armadura como si fuera tela.</string>

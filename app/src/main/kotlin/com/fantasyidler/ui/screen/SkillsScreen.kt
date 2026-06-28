@@ -106,6 +106,7 @@ import com.fantasyidler.util.formatDurationMs
 import com.fantasyidler.util.formatXp
 import com.fantasyidler.util.toCountdown
 import java.util.Locale
+import com.fantasyidler.ui.viewmodel.QuestFillSuggestion
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -260,6 +261,7 @@ fun SkillsScreen(
                     sessionDurationMs = state.sessionDurationMs,
                     onStart           = { logKey, qty -> viewModel.startFiremakingSession(logKey, qty) },
                     context           = context,
+                    questFills        = sheet.questFills,
                 )
                 is SheetState.Runecrafting -> RunecraftingSheet(
                     sheet             = sheet,
@@ -270,6 +272,7 @@ fun SkillsScreen(
                     sessionDurationMs = state.sessionDurationMs,
                     onStart           = { runeKey, qty, ashKey -> viewModel.startRunecraftingSession(runeKey, qty, ashKey) },
                     currentXp         = state.skillXp[Skills.RUNECRAFTING] ?: 0L,
+                    questFills        = sheet.questFills,
                 )
                 is SheetState.Prayer -> PrayerSheet(
                     availableBones        = sheet.availableBones,
@@ -1117,6 +1120,7 @@ internal fun FiremakingSheet(
     onStart: (logKey: String, qty: Int) -> Unit,
     context: android.content.Context,
     craftLimit: Int = Int.MAX_VALUE,
+    questFills: Map<String, List<QuestFillSuggestion>> = emptyMap(),
 ) {
     var selectedKey by remember { mutableStateOf<String?>(null) }
     val selectedLog = selectedKey?.let { availableLogs[it] }
@@ -1210,7 +1214,7 @@ internal fun FiremakingSheet(
                     },
                     keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = androidx.compose.ui.text.input.KeyboardType.Number),
                     singleLine    = true,
-                    modifier      = Modifier.width(80.dp),
+                    modifier      = Modifier.width(130.dp),
                     textStyle     = MaterialTheme.typography.bodyLarge.copy(textAlign = androidx.compose.ui.text.style.TextAlign.Center),
                 )
                 androidx.compose.material3.IconButton(onClick = { if (qty < maxQty) { qty++; textValue = qty.toString() } }, enabled = qty < maxQty) {
@@ -1218,6 +1222,7 @@ internal fun FiremakingSheet(
                 }
             }
             QtyQuickButtons(qty, maxQty) { qty = it; textValue = it.toString() }
+            QuestFillRow(questFills[key] ?: emptyList(), qty, maxQty) { qty = it; textValue = it.toString() }
             Spacer(Modifier.height(8.dp))
             Text(
                 text       = projectedXpLabel(currentXp, totalXp.toLong()),
@@ -1456,6 +1461,7 @@ internal fun RunecraftingSheet(
     onStart: (String, Int, String?) -> Unit,
     currentXp: Long = 0L,
     tierMaxQty: Int = Int.MAX_VALUE,
+    questFills: Map<String, List<QuestFillSuggestion>> = emptyMap(),
 ) {
     val context = LocalContext.current
     var selectedKey by remember { mutableStateOf<String?>(null) }
@@ -1596,7 +1602,7 @@ internal fun RunecraftingSheet(
                         textAlign  = TextAlign.Center,
                     ),
                     singleLine = true,
-                    modifier   = Modifier.width(90.dp),
+                    modifier   = Modifier.width(130.dp),
                 )
 
                 IconButton(
@@ -1606,6 +1612,7 @@ internal fun RunecraftingSheet(
             }
             Spacer(Modifier.height(8.dp))
             QtyQuickButtons(qty, maxQty) { v -> qty = v; textValue = v.toString() }
+            QuestFillRow(questFills[selectedKey ?: ""] ?: emptyList(), qty, maxQty) { v -> qty = v; textValue = v.toString() }
             Spacer(Modifier.height(8.dp))
 
             Text(
@@ -2129,7 +2136,7 @@ private fun CraftQuantityContent(
                     textAlign  = TextAlign.Center,
                 ),
                 singleLine = true,
-                modifier   = Modifier.width(90.dp),
+                modifier   = Modifier.width(130.dp),
             )
             IconButton(onClick = { onSetQuantity(qty + 1) }, enabled = qty < max) {
                 Icon(Icons.Filled.Add, contentDescription = "Increase")

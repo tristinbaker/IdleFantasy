@@ -479,6 +479,7 @@
     <string name="combat_only_castable">Только доступные</string>
     <string name="combat_max_hit">макс. удар</string>
     <string name="combat_you_have_runes">(у вас %1$d %2$s)</string>
+    <string name="combat_infinite_runes">(бесконечно %1$s)</string>
     <string name="combat_no_potion">Без зелья</string>
     <string name="combat_req_level">Требуемый боевой уровень</string>
     <string name="combat_duration">Длительность</string>
@@ -1201,6 +1202,10 @@
     <string name="enemy_abyssal_lord_name">Повелитель Бездны</string>
     <string name="enemy_eternal_sentinel_name">Вечный Страж</string>
     <string name="enemy_void_archon_name">Архонт Пустоты</string>
+    <string name="enemy_frost_wyvern_name">Морозный Виверн</string>
+    <string name="enemy_abyssal_guardian_name">Страж Бездны</string>
+    <string name="enemy_shadow_thief_name">Теневой Вор</string>
+    <string name="enemy_elder_lich_name">Старший Лич</string>
 
     <string name="item_void_reaver_name">Опустошитель Пустоты</string>
     <string name="item_void_reaver_desc">Клинок, выкованный из кристаллизованной энергии пустоты. Его лезвие прорезает броню, словно ткань.</string>

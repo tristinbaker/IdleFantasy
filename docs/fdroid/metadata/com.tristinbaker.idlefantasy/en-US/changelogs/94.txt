@@ -1,0 +1,8 @@
+• Fix: guild daily quests sometimes missing when opening the Guild Hall or collecting a farming harvest (race condition + skill level check bug)
+• Fix: item names in Sell Junk and Sell Old Equipment sheets now correctly use your chosen app language
+• Fix: carnival game result messages (ring toss, hammer strike, etc.) now correctly use your chosen app language
+• Fix: ranged combat now falls back to cheaper arrow tiers when your best arrows run out mid-session rather than attacking with nothing
+• Infinite Tower: added weapon type selection before starting a floor, matching the dungeon start screen
+• Infinite Tower: live combat log now displays during an active floor session, showing hits, misses, kills, XP, and drops
+• Fix: queueing a tower floor now captures the correct next floor at queue time, preventing repeated runs on the same floor
+• Infinite Tower: milestone item rewards significantly rebalanced to be best-in-slot tier, worthy of their floor requirements

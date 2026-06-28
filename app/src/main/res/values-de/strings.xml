@@ -453,6 +453,7 @@
     <string name="combat_only_castable">Nur zauberbare</string>
     <string name="combat_max_hit">maximaler Treffer</string>
     <string name="combat_you_have_runes">(du hast %1$d %2$s)</string>
+    <string name="combat_infinite_runes">(unendlich %1$s)</string>
     <string name="combat_no_potion">Kein Zaubertrank</string>
     <string name="combat_req_level">Erforderliches Kampflevel</string>
     <string name="combat_duration">Dauer</string>
@@ -1145,6 +1146,10 @@
     <string name="enemy_abyssal_lord_name">Abyssherrscher</string>
     <string name="enemy_eternal_sentinel_name">Ewiger Wächter</string>
     <string name="enemy_void_archon_name">Leerenarchon</string>
+    <string name="enemy_frost_wyvern_name">Frostwyvern</string>
+    <string name="enemy_abyssal_guardian_name">Abysswächter</string>
+    <string name="enemy_shadow_thief_name">Schattendieb</string>
+    <string name="enemy_elder_lich_name">Alter Lich</string>
 
     <string name="item_void_reaver_name">Leeren-Spalter</string>
     <string name="item_void_reaver_desc">Eine aus kristallisierter Leerenenergie geschmiedete Klinge. Ihre Schneide durchdringt Rüstungen wie Stoff.</string>

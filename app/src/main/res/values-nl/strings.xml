@@ -455,6 +455,7 @@
     <string name="combat_only_castable">Alleen bruikbare spreuken</string>
     <string name="combat_max_hit">maximale hit</string>
     <string name="combat_you_have_runes">(je hebt %1$d %2$s)</string>
+    <string name="combat_infinite_runes">(oneindig %1$s)</string>
     <string name="combat_no_potion">Geen drank</string>
     <string name="combat_req_level">Vereist gevechtslevel</string>
     <string name="combat_duration">Duur</string>
@@ -1137,6 +1138,10 @@
     <string name="enemy_abyssal_lord_name">Afgrondsheer</string>
     <string name="enemy_eternal_sentinel_name">Eeuwige Schildwacht</string>
     <string name="enemy_void_archon_name">Leegte-archon</string>
+    <string name="enemy_frost_wyvern_name">Vorstwijvern</string>
+    <string name="enemy_abyssal_guardian_name">Afgrondswachter</string>
+    <string name="enemy_shadow_thief_name">Schaduwdief</string>
+    <string name="enemy_elder_lich_name">Oude Lich</string>
 
     <string name="item_void_reaver_name">Leegte-vernietiger</string>
     <string name="item_void_reaver_desc">Een kling gesmeed uit gekristalliseerde leegte-energie. De snede snijdt door pantsers als stof.</string>

@@ -1364,4 +1364,9 @@
     <string name="tower_entry_card_desc">Endless floors. How far can you climb?</string>
     <string name="tower_collect_prompt">Collect your tower run</string>
     <string name="tower_home_collect_hint">Open the Tower screen to collect this run</string>
+    <string name="combat_infinite_runes">(infinite %1$s)</string>
+    <string name="enemy_frost_wyvern_name">Frost Wyvern</string>
+    <string name="enemy_abyssal_guardian_name">Abyssal Guardian</string>
+    <string name="enemy_shadow_thief_name">Shadow Thief</string>
+    <string name="enemy_elder_lich_name">Elder Lich</string>
 </resources>

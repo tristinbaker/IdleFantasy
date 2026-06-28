@@ -1,7 +1,7 @@
 {
   "name": "abyssal_throne",
   "display_name": "Abyssal Throne",
-  "description": "The deepest point in the known world — a vast cavern where void lords have held dominion since before recorded history. Few have entered. Fewer have returned.",
+  "description": "The deepest point in the known world \u2014 a vast cavern where void lords have held dominion since before recorded history. Few have entered. Fewer have returned.",
   "recommended_level": 92,
   "encounter_rate": 0.55,
   "enemy_spawns": [
@@ -16,6 +16,14 @@
     {
       "enemy": "void_archon",
       "weight": 4
+    },
+    {
+      "enemy": "abyssal_guardian",
+      "weight": 2
+    },
+    {
+      "enemy": "elder_lich",
+      "weight": 1
     }
   ]
 }

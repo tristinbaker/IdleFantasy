@@ -419,6 +419,7 @@
     <string name="combat_only_castable">Seulement lançables</string>
     <string name="combat_max_hit">dégâts max</string>
     <string name="combat_you_have_runes">(vous avez %1$d %2$s)</string>
+    <string name="combat_infinite_runes">(infini %1$s)</string>
     <string name="combat_no_potion">Pas de potion</string>
     <string name="combat_req_level">Niveau de combat requis</string>
     <string name="combat_duration">Durée</string>
@@ -1169,6 +1170,10 @@
     <string name="enemy_abyssal_lord_name">Seigneur Abyssal</string>
     <string name="enemy_eternal_sentinel_name">Sentinelle Éternelle</string>
     <string name="enemy_void_archon_name">Archonte du Vide</string>
+    <string name="enemy_frost_wyvern_name">Wyverne de Givre</string>
+    <string name="enemy_abyssal_guardian_name">Gardien Abyssal</string>
+    <string name="enemy_shadow_thief_name">Voleur des Ombres</string>
+    <string name="enemy_elder_lich_name">Liche Ancienne</string>
 
     <string name="item_void_reaver_name">Ravageur du Vide</string>
     <string name="item_void_reaver_desc">Une lame forgée d\'énergie du vide cristallisée. Son tranchant traverse l\'armure comme du tissu.</string>

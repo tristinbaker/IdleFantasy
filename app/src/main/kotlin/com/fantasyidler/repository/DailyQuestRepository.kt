@@ -55,6 +55,16 @@ class DailyQuestRepository @Inject constructor(
 
     private val combatSkills = listOf("attack", "strength", "defense", "ranged", "magic", "hitpoints")
 
+    // Fletching arrows requires smithing to craft the arrowheads first.
+    private val craftDependencies: Map<String, List<Pair<String, Int>>> = mapOf(
+        "bronze_arrow"     to listOf("smithing" to 1),
+        "iron_arrow"       to listOf("smithing" to 20),
+        "steel_arrow"      to listOf("smithing" to 35),
+        "mithril_arrow"    to listOf("smithing" to 55),
+        "adamantite_arrow" to listOf("smithing" to 75),
+        "runite_arrow"     to listOf("smithing" to 90),
+    )
+
     /** Pick 3 distinct quest IDs from the pool using a date-seeded RNG (same quests all day).
      *  Filters to quests the player can actually do based on their skill levels. */
     fun selectThreeQuests(skillLevels: Map<String, Int>): List<String> {
@@ -69,7 +79,9 @@ class DailyQuestRepository @Inject constructor(
             } else {
                 skillLevels[quest.skill] ?: 1
             }
-            playerLevel >= quest.levelRequired
+            if (playerLevel < quest.levelRequired) return@filter false
+            val deps = craftDependencies[quest.target]
+            deps == null || deps.all { (skill, minLevel) -> (skillLevels[skill] ?: 1) >= minLevel }
         }.shuffled(rng).take(3).toMutableList()
         if (eligible.size < 3) {
             val remaining = pool.sortedBy { it.levelRequired }

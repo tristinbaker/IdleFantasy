@@ -778,6 +778,12 @@
         "chance": 0.08,
         "quantity_min": 1,
         "quantity_max": 1
+      },
+      {
+        "item": "dragon_boots",
+        "chance": 0.04,
+        "quantity_min": 1,
+        "quantity_max": 1
       }
     ],
     "always_drops": [
@@ -2842,6 +2848,218 @@
         "chance": 0.2,
         "quantity_min": 10,
         "quantity_max": 25
+      }
+    ]
+  },
+  "frost_wyvern": {
+    "name": "frost_wyvern",
+    "display_name": "Frost Wyvern",
+    "hp": 280,
+    "combat_stats": {
+      "attack_level": 40,
+      "strength_level": 36,
+      "defense_level": 42,
+      "attack_bonus": 110,
+      "strength_bonus": 90
+    },
+    "defensive_stats": {
+      "attack_defense": 90,
+      "strength_defense": 85,
+      "ranged_defense": 65,
+      "magic_defense": 45
+    },
+    "xp_drops": {
+      "combat": 1900
+    },
+    "always_drops": [
+      {
+        "item": "big_bones",
+        "quantity": 1
+      }
+    ],
+    "drop_table": [
+      {
+        "item": "coins",
+        "chance": 0.9,
+        "quantity_min": 400,
+        "quantity_max": 1000
+      },
+      {
+        "item": "runite_ore",
+        "chance": 0.3,
+        "quantity_min": 2,
+        "quantity_max": 5
+      },
+      {
+        "item": "blood_rune",
+        "chance": 0.4,
+        "quantity_min": 3,
+        "quantity_max": 8
+      },
+      {
+        "item": "diamond",
+        "chance": 0.02,
+        "quantity_min": 1,
+        "quantity_max": 1
+      }
+    ]
+  },
+  "abyssal_guardian": {
+    "name": "abyssal_guardian",
+    "display_name": "Abyssal Guardian",
+    "hp": 300,
+    "combat_stats": {
+      "attack_level": 40,
+      "strength_level": 44,
+      "defense_level": 38,
+      "attack_bonus": 115,
+      "strength_bonus": 120
+    },
+    "defensive_stats": {
+      "attack_defense": 95,
+      "strength_defense": 90,
+      "ranged_defense": 75,
+      "magic_defense": 85
+    },
+    "xp_drops": {
+      "combat": 2200
+    },
+    "always_drops": [
+      {
+        "item": "dragon_bone",
+        "quantity": 1
+      }
+    ],
+    "drop_table": [
+      {
+        "item": "coins",
+        "chance": 0.9,
+        "quantity_min": 600,
+        "quantity_max": 1500
+      },
+      {
+        "item": "blood_rune",
+        "chance": 0.5,
+        "quantity_min": 5,
+        "quantity_max": 10
+      },
+      {
+        "item": "death_rune",
+        "chance": 0.4,
+        "quantity_min": 3,
+        "quantity_max": 6
+      },
+      {
+        "item": "diamond",
+        "chance": 0.02,
+        "quantity_min": 1,
+        "quantity_max": 1
+      }
+    ]
+  },
+  "shadow_thief": {
+    "name": "shadow_thief",
+    "display_name": "Shadow Thief",
+    "hp": 260,
+    "combat_stats": {
+      "attack_level": 44,
+      "strength_level": 46,
+      "defense_level": 32,
+      "attack_bonus": 120,
+      "strength_bonus": 115
+    },
+    "defensive_stats": {
+      "attack_defense": 85,
+      "strength_defense": 80,
+      "ranged_defense": 90,
+      "magic_defense": 75
+    },
+    "xp_drops": {
+      "combat": 2400
+    },
+    "always_drops": [
+      {
+        "item": "big_bones",
+        "quantity": 1
+      }
+    ],
+    "drop_table": [
+      {
+        "item": "coins",
+        "chance": 0.9,
+        "quantity_min": 700,
+        "quantity_max": 1800
+      },
+      {
+        "item": "death_rune",
+        "chance": 0.45,
+        "quantity_min": 4,
+        "quantity_max": 8
+      },
+      {
+        "item": "ruby",
+        "chance": 0.08,
+        "quantity_min": 1,
+        "quantity_max": 2
+      },
+      {
+        "item": "diamond",
+        "chance": 0.03,
+        "quantity_min": 1,
+        "quantity_max": 1
+      }
+    ]
+  },
+  "elder_lich": {
+    "name": "elder_lich",
+    "display_name": "Elder Lich",
+    "hp": 380,
+    "combat_stats": {
+      "attack_level": 48,
+      "strength_level": 44,
+      "defense_level": 50,
+      "attack_bonus": 130,
+      "strength_bonus": 110
+    },
+    "defensive_stats": {
+      "attack_defense": 110,
+      "strength_defense": 100,
+      "ranged_defense": 85,
+      "magic_defense": 120
+    },
+    "xp_drops": {
+      "combat": 3200
+    },
+    "always_drops": [
+      {
+        "item": "dragon_bone",
+        "quantity": 1
+      }
+    ],
+    "drop_table": [
+      {
+        "item": "coins",
+        "chance": 0.85,
+        "quantity_min": 800,
+        "quantity_max": 2500
+      },
+      {
+        "item": "blood_rune",
+        "chance": 0.55,
+        "quantity_min": 8,
+        "quantity_max": 15
+      },
+      {
+        "item": "death_rune",
+        "chance": 0.5,
+        "quantity_min": 5,
+        "quantity_max": 12
+      },
+      {
+        "item": "diamond",
+        "chance": 0.04,
+        "quantity_min": 1,
+        "quantity_max": 1
       }
     ]
   }

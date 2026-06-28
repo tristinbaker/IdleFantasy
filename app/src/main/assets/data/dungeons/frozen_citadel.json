@@ -16,6 +16,10 @@
     {
       "enemy": "glacial_mage",
       "weight": 3
+    },
+    {
+      "enemy": "frost_wyvern",
+      "weight": 2
     }
   ]
 }

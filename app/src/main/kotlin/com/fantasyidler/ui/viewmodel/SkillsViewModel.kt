@@ -21,7 +21,9 @@ import com.fantasyidler.repository.FarmingRepository
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.GuildRepository
 import com.fantasyidler.repository.PlayerRepository
+import com.fantasyidler.repository.DailyQuestRepository
 import com.fantasyidler.repository.QuestRepository
+import com.fantasyidler.repository.WeeklyQuestRepository
 import com.fantasyidler.repository.QueuedSessionStarter
 import com.fantasyidler.repository.SessionRepository
 import com.fantasyidler.simulator.SkillSimulator
@@ -32,6 +34,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -88,10 +91,11 @@ sealed class SheetState {
     data class Fishing(val fish: Map<String, FishData>) : SheetState()
     data class Agility(val courses: Map<String, AgilityCourseData>) : SheetState()
     /** availableLogs = logs the player currently has in inventory */
-    data class Firemaking(val availableLogs: Map<String, LogData>) : SheetState()
+    data class Firemaking(val availableLogs: Map<String, LogData>, val questFills: Map<String, List<QuestFillSuggestion>> = emptyMap()) : SheetState()
     data class Runecrafting(
         val availableRunes: Map<String, RuneData>,
         val essenceQty: Int,
+        val questFills: Map<String, List<QuestFillSuggestion>> = emptyMap(),
     ) : SheetState()
     /** Bones the player currently has in inventory, with their counts. */
     data class Prayer(
@@ -121,6 +125,8 @@ class SkillsViewModel @Inject constructor(
     private val guildRepo: GuildRepository,
     private val farmingRepo: FarmingRepository,
     private val queuedSessionStarter: QueuedSessionStarter,
+    private val dailyQuestRepo: DailyQuestRepository,
+    private val weeklyQuestRepo: WeeklyQuestRepository,
     private val json: Json,
 ) : ViewModel() {
 
@@ -197,12 +203,22 @@ class SkillsViewModel @Inject constructor(
             Skills.FIREMAKING -> {
                 // Only show logs the player has in inventory
                 viewModelScope.launch {
-                    val inv: Map<String, Int> = kotlinx.serialization.json.Json
-                        .decodeFromString(playerRepo.getOrCreatePlayer().inventory)
+                    val player = playerRepo.getOrCreatePlayer()
+                    val inv: Map<String, Int> = json.decodeFromString(player.inventory)
+                    val flags = try { json.decodeFromString<PlayerFlags>(player.flags) } catch (_: Exception) { PlayerFlags() }
+                    val questProgress = questRepo.observeProgress().first().associateBy { it.questId }
                     val availableLogs = gameData.logs.filter { (key, log) ->
                         inv.containsKey(key) && log.levelRequired <= fmLevel
                     }
-                    _uiState.update { it.copy(sheetSkill = SheetState.Firemaking(availableLogs)) }
+                    val logToAsh = mapOf(
+                        "log" to "ashes", "oak_log" to "oak_ashes", "willow_log" to "willow_ashes",
+                        "maple_log" to "maple_ashes", "yew_log" to "yew_ashes",
+                        "magic_log" to "magic_ashes", "redwood_log" to "redwood_ashes",
+                    )
+                    val questFills = availableLogs.keys.associateWith { logKey ->
+                        computeItemFills(logToAsh[logKey] ?: "ashes", questProgress, flags)
+                    }
+                    _uiState.update { it.copy(sheetSkill = SheetState.Firemaking(availableLogs, questFills)) }
                 }
                 return
             }
@@ -217,7 +233,11 @@ class SkillsViewModel @Inject constructor(
                     val essenceQty = ((inv["rune_essence"] ?: 0) - reservedEssence).coerceAtLeast(0)
                     val rcLevel = state.skillLevels[Skills.RUNECRAFTING] ?: 1
                     val available = gameData.runes.filter { (_, rune) -> rune.levelRequired <= rcLevel }
-                    _uiState.update { it.copy(sheetSkill = SheetState.Runecrafting(available, essenceQty)) }
+                    val questProgress2 = questRepo.observeProgress().first().associateBy { it.questId }
+                    val questFills = available.keys.associateWith { runeKey ->
+                        computeItemFills(runeKey, questProgress2, flags)
+                    }
+                    _uiState.update { it.copy(sheetSkill = SheetState.Runecrafting(available, essenceQty, questFills)) }
                 }
                 return
             }
@@ -1007,6 +1027,44 @@ class SkillsViewModel @Inject constructor(
         "magic_ashes"   -> 6
         "redwood_ashes" -> 7
         else            -> 0
+    }
+
+    private fun computeItemFills(
+        itemKey: String,
+        questProgress: Map<String, com.fantasyidler.data.model.QuestProgress>,
+        flags: PlayerFlags,
+    ): List<QuestFillSuggestion> {
+        val fills = mutableListOf<QuestFillSuggestion>()
+
+        for ((id, quest) in gameData.quests) {
+            if (quest.type != "craft") continue
+            if (quest.target != itemKey) continue
+            val prog = questProgress[id]
+            if (prog?.completed == true) continue
+            val remaining = quest.amount - (prog?.progress ?: 0)
+            if (remaining <= 0) continue
+            val prereqDone = quest.requiresPrevious == null ||
+                    questProgress[quest.requiresPrevious]?.completed == true
+            if (prereqDone) fills += QuestFillSuggestion(quest.name, remaining)
+        }
+
+        for (daily in dailyQuestRepo.getActiveDailyQuests(flags)) {
+            if (daily.claimed) continue
+            if (daily.template.type != "craft") continue
+            if (daily.template.target != itemKey) continue
+            val remaining = daily.template.amount - daily.progress
+            if (remaining > 0) fills += QuestFillSuggestion(context.getString(R.string.quest_fill_daily), remaining)
+        }
+
+        for (weekly in weeklyQuestRepo.getActiveWeeklyQuests(flags)) {
+            if (weekly.claimed) continue
+            if (weekly.template.type != "craft") continue
+            if (weekly.template.target != itemKey) continue
+            val remaining = weekly.template.amount - weekly.progress
+            if (remaining > 0) fills += QuestFillSuggestion(context.getString(R.string.quest_fill_weekly), remaining)
+        }
+
+        return fills.sortedBy { it.qty }
     }
 
     private fun petBoostFor(petsJson: String, skillKey: String): Int {

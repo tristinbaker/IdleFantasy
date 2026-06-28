@@ -467,6 +467,7 @@
     <string name="combat_only_castable">Only Castable</string>
     <string name="combat_max_hit">max hit</string>
     <string name="combat_you_have_runes">(you have %1$d %2$s)</string>
+    <string name="combat_infinite_runes">(infinite %1$s)</string>
     <string name="combat_no_potion">No Potion</string>
     <string name="combat_req_level">Required combat level</string>
     <string name="combat_duration">Duration</string>
@@ -1222,6 +1223,10 @@
     <string name="enemy_abyssal_lord_name">Abyssal Lord</string>
     <string name="enemy_eternal_sentinel_name">Eternal Sentinel</string>
     <string name="enemy_void_archon_name">Void Archon</string>
+    <string name="enemy_frost_wyvern_name">Frost Wyvern</string>
+    <string name="enemy_abyssal_guardian_name">Abyssal Guardian</string>
+    <string name="enemy_shadow_thief_name">Shadow Thief</string>
+    <string name="enemy_elder_lich_name">Elder Lich</string>
 
     <!-- Void Sovereign boss drops -->
     <string name="item_void_reaver_name">Void Reaver</string>

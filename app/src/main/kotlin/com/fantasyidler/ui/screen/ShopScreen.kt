@@ -497,7 +497,7 @@ private fun TransactionSheet(
                         textAlign  = TextAlign.Center,
                     ),
                     singleLine = true,
-                    modifier   = Modifier.width(90.dp),
+                    modifier   = Modifier.width(130.dp),
                 )
                 IconButton(onClick = onPlus, enabled = qty < transaction.maxQty) {
                     Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.crafting_increase))

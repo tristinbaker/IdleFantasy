@@ -397,6 +397,7 @@
     <string name="combat_only_castable">Sadece Kullanılabilir</string>
     <string name="combat_max_hit">Maksimum vuruş</string>
     <string name="combat_you_have_runes">(%1$d %2$s var)</string>
+    <string name="combat_infinite_runes">(sonsuz %1$s)</string>
     <string name="combat_no_potion">İksir Yok</string>
     <string name="combat_req_level">Gereken savaş seviyesi</string>
     <string name="combat_duration">Süre</string>
@@ -1176,6 +1177,10 @@
     <string name="enemy_abyssal_lord_name">Uçurum Lordu</string>
     <string name="enemy_eternal_sentinel_name">Ebedi Nöbetçi</string>
     <string name="enemy_void_archon_name">Boşluk Arkontu</string>
+    <string name="enemy_frost_wyvern_name">Don Ejderi</string>
+    <string name="enemy_abyssal_guardian_name">Uçurum Muhafızı</string>
+    <string name="enemy_shadow_thief_name">Gölge Hırsızı</string>
+    <string name="enemy_elder_lich_name">Yaşlı Lich</string>
 
     <string name="item_void_reaver_name">Boşluk Tahrip Edici</string>
     <string name="item_void_reaver_desc">Kristalleşmiş boşluk enerjisinden dövülmüş bir kılıç. Keskin kenarı zırhı kumaş gibi keser.</string>

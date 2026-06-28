@@ -1,3 +1,11 @@
+v1.10.3
+• Fix: quantity input fields in the shop, crafting, firemaking, runecrafting, and skill recipe sheets are now wide enough to show 5-digit numbers without clipping
+• Fix: when a staff provides infinite runes for a spell, the spell selector now shows "(infinite Blood Rune)" instead of showing nothing
+• Fix: weekly arrow-fletching quests (mithril, runite) no longer appear if your Smithing level is too low to craft the required arrowheads
+• New: four high-level Slayer enemies now exist in the world: Frost Wyvern (Frozen Citadel), Abyssal Guardian (Abyssal Throne), Shadow Thief (Guild of Shadows), Elder Lich (Abyssal Throne)
+• New: Dragon Boots can now drop from Green Dragons in the Dragon Lair (4% chance)
+• New: Firemaking and Runecrafting quantity pickers now show quest fill shortcuts, just like Smithing and Cooking
+
 v1.10.2
 • Fix: guild daily quests sometimes missing when opening the Guild Hall or collecting a farming harvest (race condition + skill level check bug)
 • Fix: item names in Sell Junk and Sell Old Equipment sheets now correctly use your chosen app language

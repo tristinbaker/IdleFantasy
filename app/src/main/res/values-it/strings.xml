@@ -467,6 +467,7 @@
     <string name="combat_only_castable">Solo invocabili</string>
     <string name="combat_max_hit">danni massimi</string>
     <string name="combat_you_have_runes">(hai %1$d %2$s)</string>
+    <string name="combat_infinite_runes">(infinito %1$s)</string>
     <string name="combat_no_potion">Nessuna pozione</string>
     <string name="combat_req_level">Livello di combattimento richiesto</string>
     <string name="combat_duration">Durata</string>
@@ -1222,6 +1223,10 @@
     <string name="enemy_abyssal_lord_name">Signore Abissale</string>
     <string name="enemy_eternal_sentinel_name">Sentinella Eterna</string>
     <string name="enemy_void_archon_name">Arconte del Vuoto</string>
+    <string name="enemy_frost_wyvern_name">Viverna di Gelo</string>
+    <string name="enemy_abyssal_guardian_name">Guardiano Abissale</string>
+    <string name="enemy_shadow_thief_name">Ladro dell\'Ombra</string>
+    <string name="enemy_elder_lich_name">Lich Anziano</string>
 
     <!-- Void Sovereign boss drops -->
     <string name="item_void_reaver_name">Devastatore del Vuoto</string>

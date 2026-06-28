@@ -55,6 +55,15 @@ class WeeklyQuestRepository @Inject constructor(
 
     private val combatSkills = listOf("attack", "strength", "defense", "ranged", "magic", "hitpoints")
 
+    private val craftDependencies: Map<String, List<Pair<String, Int>>> = mapOf(
+        "bronze_arrow"     to listOf("smithing" to 1),
+        "iron_arrow"       to listOf("smithing" to 20),
+        "steel_arrow"      to listOf("smithing" to 35),
+        "mithril_arrow"    to listOf("smithing" to 55),
+        "adamantite_arrow" to listOf("smithing" to 75),
+        "runite_arrow"     to listOf("smithing" to 90),
+    )
+
     /** Pick 5 distinct quest IDs from the pool using a date-seeded RNG (same quests all week). */
     fun selectFiveQuests(skillLevels: Map<String, Int>): List<String> {
         // Seed based on the most recent Monday 6am
@@ -78,7 +87,9 @@ class WeeklyQuestRepository @Inject constructor(
             } else {
                 skillLevels[quest.skill] ?: 1
             }
-            playerLevel >= quest.levelRequired
+            if (playerLevel < quest.levelRequired) return@filter false
+            val deps = craftDependencies[quest.target]
+            deps == null || deps.all { (skill, minLevel) -> (skillLevels[skill] ?: 1) >= minLevel }
         }.shuffled(rng).take(5).toMutableList()
         if (eligible.size < 5) {
             val remaining = pool.sortedBy { it.levelRequired }
