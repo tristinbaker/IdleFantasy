@@ -664,9 +664,16 @@ Builds:
     gradle:
       - yes
 
+  - versionName: '1.10.3'
+    versionCode: 95
+    commit: bf57fb15c1b52f33ad094bfc49685288bdad77de
+    subdir: app
+    gradle:
+      - yes
+
 AllowedAPKSigningKeys: 99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
-CurrentVersion: 1.10.2
-CurrentVersionCode: 94
+CurrentVersion: 1.10.3
+CurrentVersionCode: 95
