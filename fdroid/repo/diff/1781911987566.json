@@ -1,13 +1,63 @@
 {
   "repo": {
-    "timestamp": 1782558734126
+    "timestamp": 1782642537830
   },
   "packages": {
     "com.tristinbaker.idlefantasy": {
       "metadata": {
-        "lastUpdated": 1782558711156
+        "lastUpdated": 1782642513667
       },
       "versions": {
+        "52a75f99b543e5322090dd0cbb6856a8241dc69466cec0556213e95a796bd176": {
+          "added": 1782642513667,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_95.apk",
+            "sha256": "52a75f99b543e5322090dd0cbb6856a8241dc69466cec0556213e95a796bd176",
+            "size": 5369114
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.10.3",
+            "versionCode": 95,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fix: quantity input fields in the shop, crafting, firemaking, runecrafting, and skill recipe sheets are now wide enough to show 5-digit numbers without clipping\n• Fix: when a staff provides infinite runes for a spell, the spell selector now shows \"(infinite Blood Rune)\" instead of showing nothing\n• Fix: weekly arrow-fletching quests (mithril, runite) no longer appear if your Smithing level is too low to craft the required arrowheads\n• New: four high-level Slayer enemies now exist in the world:"
+          }
+        },
         "f624a9770b5e7e44bbdfe140e10b9eb6b158e3f3b084a989df46953e55241f0b": {
           "added": 1782558711156,
           "file": {
