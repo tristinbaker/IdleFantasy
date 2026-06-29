@@ -1,13 +1,63 @@
 {
   "repo": {
-    "timestamp": 1782642537830
+    "timestamp": 1782726630362
   },
   "packages": {
     "com.tristinbaker.idlefantasy": {
       "metadata": {
-        "lastUpdated": 1782642513667
+        "lastUpdated": 1782726605755
       },
       "versions": {
+        "2ca33eee1064c6b00438226a309816d6cb6b385fdfd1735c4b680030ea7f50aa": {
+          "added": 1782726605755,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_96.apk",
+            "sha256": "2ca33eee1064c6b00438226a309816d6cb6b385fdfd1735c4b680030ea7f50aa",
+            "size": 5369218
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.10.4",
+            "versionCode": 96,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fix Repeat Action for Construction sessions not carrying the item quantity\n• Fix Repeat Action quantity calculation using only the first frame instead of the full session total\n• Fix arrow fallback in queued combat sessions: when one arrow tier runs out the next tier is now used correctly\n• Fix Fletching \"Plank\" filter chip: tapping Plank now shows all plank types instead of only the basic Plank\n"
+          }
+        },
         "52a75f99b543e5322090dd0cbb6856a8241dc69466cec0556213e95a796bd176": {
           "added": 1782642513667,
           "file": {
