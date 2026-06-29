@@ -1,0 +1,64 @@
+{
+  "repo": {
+    "timestamp": 1782770456295
+  },
+  "packages": {
+    "com.tristinbaker.idlefantasy": {
+      "metadata": {
+        "lastUpdated": 1782770431127
+      },
+      "versions": {
+        "309fd695d7bdce00263bfe4bc1ce6f32dc562aa96a972ef0ce1d280d6bf8abe7": {
+          "added": 1782770431127,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_97.apk",
+            "sha256": "309fd695d7bdce00263bfe4bc1ce6f32dc562aa96a972ef0ce1d280d6bf8abe7",
+            "size": 5392922
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.10.5",
+            "versionCode": 97,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fix: Forge Demons in the Ancient Forge now count toward demon kill quests\n• Fix: Enemy kills in the Infinite Tower now count toward quests (kill quests, guild quests, slayer tasks)\n• Fix: Tower now correctly uses your selected weapon style — previously it could start with the style from a previous floor if you hadn't re-tapped the selector\n• Carnival: Pick-a-Cup is now a skill game — watch the cups swap and track the gem (community contribution)\n• Carnival: Higher or Lower now shows you the la"
+          }
+        }
+      }
+    }
+  }
+}
