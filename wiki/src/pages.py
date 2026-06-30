@@ -1295,11 +1295,22 @@ def gen_buildings() -> str:
         (55,   500_000, {"willow_plank": 500, "stone_block": 600, "steel_nail": 1500},     "Blessing 36h"),
         (80, 2_000_000, {"yew_plank": 800, "stone_block": 1000, "mithril_nail": 3000},     "Blessing 48h"),
     ]
+    fairgrounds_tiers = [
+        (35,   150_000, {"oak_plank": 250, "willow_plank": 100, "steel_nail": 600},         "Pick-a-Cup, 7.5 min cooldown, +5% idle tickets"),
+        (55,   600_000, {"willow_plank": 600, "maple_plank": 200, "steel_nail": 1500},      "Higher or Lower, +10% idle tickets"),
+        (75, 1_500_000, {"maple_plank": 800, "yew_plank": 400, "mithril_nail": 2500},       "5 min cooldown, +15% idle tickets"),
+    ]
+    garden_tiers = [
+        (30,    80_000, {"plank": 100, "oak_plank": 200, "iron_nail": 400},                  "+1 extra farm plot"),
+        (55,   400_000, {"oak_plank": 400, "willow_plank": 200, "steel_nail": 1000},         "+2 extra farm plots"),
+    ]
 
     return get_template("town/buildings").format(
         inn_table=building_table(inn_tiers, "Bonus", []),
         guild_hall_table=building_table(guild_hall_tiers, "Bonus", []),
         church_table=building_table(church_tiers, "Bonus", []),
+        fairgrounds_table=building_table(fairgrounds_tiers, "Bonus", []),
+        garden_table=building_table(garden_tiers, "Bonus", []),
     )
 
 
