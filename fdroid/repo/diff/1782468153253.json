@@ -1,13 +1,63 @@
 {
   "repo": {
-    "timestamp": 1782770456295
+    "timestamp": 1782815845399
   },
   "packages": {
     "com.tristinbaker.idlefantasy": {
       "metadata": {
-        "lastUpdated": 1782770431127
+        "lastUpdated": 1782815819465
       },
       "versions": {
+        "8e7eb2d942be2245d22d8784f8052c660e982f63d40bd761e9ae70d48efd23d8": {
+          "added": 1782815819465,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_98.apk",
+            "sha256": "8e7eb2d942be2245d22d8784f8052c660e982f63d40bd761e9ae70d48efd23d8",
+            "size": 5393014
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.10.6",
+            "versionCode": 98,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fixed boss kills (King Black Dragon, Demon Lord) not counting toward dragon/demon daily and weekly quests\n• Fixed being unable to buy more than 1 of a cheap item when holding billions of coins\n"
+          }
+        },
         "309fd695d7bdce00263bfe4bc1ce6f32dc562aa96a972ef0ce1d280d6bf8abe7": {
           "added": 1782770431127,
           "file": {
