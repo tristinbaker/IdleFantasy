@@ -14,7 +14,7 @@
       }
     },
     "address": "https://idlefantasy.tristinbaker.xyz/fdroid/repo",
-    "timestamp": 1782815845399,
+    "timestamp": 1782861759374,
     "categories": {
       "Games": {
         "name": {
@@ -31,7 +31,7 @@
           "Games"
         ],
         "issueTracker": "https://github.com/tristinbaker/IdleFantasy/issues",
-        "lastUpdated": 1782815819465,
+        "lastUpdated": 1782861734305,
         "license": "GPL-3.0-only",
         "sourceCode": "https://github.com/tristinbaker/IdleFantasy",
         "screenshots": {
@@ -140,6 +140,56 @@
         "preferredSigner": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
       },
       "versions": {
+        "bc62aefb6a9360a74067d16e10186e68530ded33031ea940a4b4e71938cf7f53": {
+          "added": 1782861734305,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_99.apk",
+            "sha256": "bc62aefb6a9360a74067d16e10186e68530ded33031ea940a4b4e71938cf7f53",
+            "size": 5393526
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.10.7",
+            "versionCode": 99,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fix: Mercantile Cape (level 99 reward) can now be equipped and is no longer sold as junk\n• Fix: Farming produce (pumpkin, strawberry, tomato, watermelon, etc.) no longer appears in Sell Junk\n• Fix: Tower kills now count toward weekly quests, daily quests, slayer tasks, and guild progress\n• Update: Inn description now clarifies that worker sessions do not count toward your quests\n"
+          }
+        },
         "8e7eb2d942be2245d22d8784f8052c660e982f63d40bd761e9ae70d48efd23d8": {
           "added": 1782815819465,
           "file": {
