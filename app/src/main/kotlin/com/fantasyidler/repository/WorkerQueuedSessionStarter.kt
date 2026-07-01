@@ -37,19 +37,20 @@ class WorkerQueuedSessionStarter @Inject constructor(
     private val mutex = Mutex()
 
     suspend fun startNextQueued(slot: Int = 1): Boolean {
-        mutex.withLock {
-            val current = sessionRepo.getActiveWorkerSession(slot)
-            if (current != null && !current.completed) return false
-            val next = playerRepo.dequeueNextWorkerAction(slot) ?: return false
-            return try {
-                startQueuedAction(slot, next)
-                true
-            } catch (_: Exception) {
-                playerRepo.requeueWorkerActionAtFront(slot, next)
-                false
+        return playerRepo.playerMutex.withLock {
+            mutex.withLock {
+                val current = sessionRepo.getActiveWorkerSession(slot)
+                if (current != null && !current.completed) return@withLock false
+                val next = playerRepo.dequeueNextWorkerAction(slot) ?: return@withLock false
+                try {
+                    startQueuedAction(slot, next)
+                    true
+                } catch (_: Exception) {
+                    playerRepo.requeueWorkerActionAtFront(slot, next)
+                    false
+                }
             }
         }
-        return false
     }
 
     private suspend fun startQueuedAction(slot: Int, action: QueuedAction) {

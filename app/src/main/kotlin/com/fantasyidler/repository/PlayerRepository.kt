@@ -10,6 +10,7 @@ import kotlin.math.roundToInt
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
 import javax.inject.Inject
@@ -41,6 +42,8 @@ class PlayerRepository @Inject constructor(
     private val weeklyQuestRepo: WeeklyQuestRepository,
     private val buffNotifScheduler: BuffNotificationScheduler,
 ) {
+    val playerMutex = kotlinx.coroutines.sync.Mutex()
+
     /**
      * Emits the raw [Player] entity whenever the DB row changes.
      * Creates the default player on first access so observers never stall on null.
@@ -104,7 +107,7 @@ class PlayerRepository @Inject constructor(
         xpGained: Long,
         itemsGained: Map<String, Int>,
         efficiencyMultiplier: Float = 1.0f,
-    ): List<String> {
+    ): List<String> = playerMutex.withLock {
         val player    = getOrCreatePlayer()
         val flags: PlayerFlags = json.decodeFromString(player.flags)
         val boostActive = flags.xpBoostExpiresAt > System.currentTimeMillis()

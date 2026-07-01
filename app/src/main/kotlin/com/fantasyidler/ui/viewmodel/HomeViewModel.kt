@@ -776,7 +776,6 @@ class HomeViewModel @Inject constructor(
                 snackbarMessage = capeMessage,
                 petFoundName    = petFoundName,
             ) }
-            queuedSessionStarter.startNextQueued()
         }
     }
 

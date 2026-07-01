@@ -47,19 +47,20 @@ class QueuedSessionStarter @Inject constructor(
         // Mutex covers the full dequeue + session-start so concurrent callers (alarm
         // receiver, recoverActiveSession, collectSession) can't both pass the "no running
         // session" check and dequeue separate actions before either inserts a DB row.
-        mutex.withLock {
-            val current = sessionRepo.getActiveSession()
-            if (current != null && !current.completed) return false
-            val next = playerRepo.dequeueNextAction() ?: return false
-            return try {
-                startQueuedAction(next, backdateMs = backdateMs)
-                true
-            } catch (_: Exception) {
-                playerRepo.requeueActionAtFront(next)
-                false
+        return playerRepo.playerMutex.withLock {
+            mutex.withLock {
+                val current = sessionRepo.getActiveSession()
+                if (current != null && !current.completed) return@withLock false
+                val next = playerRepo.dequeueNextAction() ?: return@withLock false
+                try {
+                    startQueuedAction(next, backdateMs = backdateMs)
+                    true
+                } catch (_: Exception) {
+                    playerRepo.requeueActionAtFront(next)
+                    false
+                }
             }
         }
-        return false
     }
 
     /**
