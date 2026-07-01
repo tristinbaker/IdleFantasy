@@ -1,13 +1,63 @@
 {
   "repo": {
-    "timestamp": 1782861759374
+    "timestamp": 1782915558928
   },
   "packages": {
     "com.tristinbaker.idlefantasy": {
       "metadata": {
-        "lastUpdated": 1782861734305
+        "lastUpdated": 1782915533367
       },
       "versions": {
+        "be6b366329e1b8f8584a88d51614f995fc41e931a445524d183e2a67594136a0": {
+          "added": 1782915533367,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_100.apk",
+            "sha256": "be6b366329e1b8f8584a88d51614f995fc41e931a445524d183e2a67594136a0",
+            "size": 5397702
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.10.8",
+            "versionCode": 100,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Guild gather quests now show the correct action verb (Mine, Catch, Chop, Harvest) instead of \"Collect\"\n• Added Farming Guild gather quest verb (Harvest)\n• Carnival ring toss hints now correctly display percentage symbols instead of %%\n• Juggling Imp from the Carnival shop now correctly goes to your pet list instead of your inventory\n• Pet bonuses from multiple pets now stack correctly — the full combined boost is applied everywhere\n• Worker ranged sessions now correctly use all available arrow"
+          }
+        },
         "bc62aefb6a9360a74067d16e10186e68530ded33031ea940a4b4e71938cf7f53": {
           "added": 1782861734305,
           "file": {
