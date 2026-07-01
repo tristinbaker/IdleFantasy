@@ -423,6 +423,6 @@
     <string name="quest_obj_dungeon_magic_only">Schließt %1$s nur mit Magie ab</string>
     <string name="quest_obj_dungeon_no_food">Schließt %1$s ohne Nahrung ab</string>
     <string name="quest_obj_collect">Sammelt %1$d %2$s im Kampf</string>
-    <string name="quest_obj_slayer_task">Schließt %1$d Slayer-Aufgaben ab</string>
+    <string name="quest_obj_slayer_task">Schließt %1$d Trophäensammler-Aufgaben ab</string>
 
 </resources>
