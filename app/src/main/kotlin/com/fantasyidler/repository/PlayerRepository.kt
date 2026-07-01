@@ -280,7 +280,7 @@ class PlayerRepository @Inject constructor(
 
     suspend fun updateFlags(flags: PlayerFlags) = playerMutex.withLock { updateFlagsUnlocked(flags) }
 
-    private suspend fun updateFlagsUnlocked(flags: PlayerFlags) {
+    internal suspend fun updateFlagsUnlocked(flags: PlayerFlags) {
         val player = getOrCreatePlayer()
         playerDao.upsert(player.copy(flags = json.encode<PlayerFlags>(flags)))
     }
