@@ -8,6 +8,7 @@ import com.fantasyidler.repository.BuffNotificationScheduler
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.QueuedSessionStarter
 import com.fantasyidler.repository.SessionRepository
+import com.fantasyidler.repository.WorkerQueuedSessionStarter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -19,6 +20,7 @@ class BootReceiver : BroadcastReceiver() {
 
     @Inject lateinit var sessionRepository: SessionRepository
     @Inject lateinit var queuedSessionStarter: QueuedSessionStarter
+    @Inject lateinit var workerStarter: WorkerQueuedSessionStarter
     @Inject lateinit var playerRepository: PlayerRepository
     @Inject lateinit var backupScheduler: BackupScheduler
     @Inject lateinit var buffNotifScheduler: BuffNotificationScheduler
@@ -29,6 +31,8 @@ class BootReceiver : BroadcastReceiver() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 sessionRepository.recoverActiveSession(queuedSessionStarter)
+                sessionRepository.recoverActiveWorkerSession(1, workerStarter)
+                sessionRepository.recoverActiveWorkerSession(2, workerStarter)
                 val flags = playerRepository.getFlags()
                 if (flags.backupFrequency.isNotEmpty()) backupScheduler.schedule(flags.backupFrequency)
                 buffNotifScheduler.scheduleXpBoostExpiry(flags.xpBoostExpiresAt)

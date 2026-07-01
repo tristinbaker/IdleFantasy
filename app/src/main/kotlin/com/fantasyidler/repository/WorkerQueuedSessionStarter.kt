@@ -41,12 +41,12 @@ class WorkerQueuedSessionStarter @Inject constructor(
             mutex.withLock {
                 val current = sessionRepo.getActiveWorkerSession(slot)
                 if (current != null && !current.completed) return@withLock false
-                val next = playerRepo.dequeueNextWorkerAction(slot) ?: return@withLock false
+                val next = playerRepo.dequeueNextWorkerActionUnlocked(slot) ?: return@withLock false
                 try {
                     startQueuedAction(slot, next)
                     true
                 } catch (_: Exception) {
-                    playerRepo.requeueWorkerActionAtFront(slot, next)
+                    playerRepo.requeueWorkerActionAtFrontUnlocked(slot, next)
                     false
                 }
             }
@@ -205,7 +205,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                 val qty         = action.qty.takeIf { it > 0 } ?: return
                 val catalystKey = action.catalystKey
                 val outputKey   = if (catalystKey != null) "enhanced_${action.activityKey}" else action.activityKey
-                if (catalystKey != null) playerRepo.consumeItems(mapOf(catalystKey to qty))
+                if (catalystKey != null) playerRepo.consumeItemsUnlocked(mapOf(catalystKey to qty))
                 val frames = buildCraftFrames(xpMap[Skills.HERBLORE] ?: 0L, qty, r.xpPerItem, r.outputQuantity, outputKey)
                 startSession(slot, action, frames, durationMs, efficiencyMultiplier)
             }

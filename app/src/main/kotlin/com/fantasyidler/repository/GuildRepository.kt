@@ -12,6 +12,7 @@ import javax.inject.Provider
 import javax.inject.Singleton
 import kotlin.random.Random
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.sync.withLock
 
 data class GuildQuestWithProgress(
     val quest: GuildQuestData,
@@ -120,8 +121,8 @@ class GuildRepository @Inject constructor(
     // -------------------------------------------------------------------------
 
     /** Called when a gathering or firemaking session is collected. */
-    suspend fun recordGuildGathering(skillName: String, items: Map<String, Int>) {
-        var flags = ensureGuildDailiesRefreshed()
+    suspend fun recordGuildGathering(skillName: String, items: Map<String, Int>) = playerRepo.playerMutex.withLock {
+        var flags = ensureGuildDailiesRefreshedUnlocked()
         val completedIds = loadCompletedQuestIds()
         val currentLevel = guildLevel(skillName, flags.guildReputation[skillName] ?: 0L, completedIds)
         for ((questId, quest) in gameData.guildQuests) {
@@ -131,12 +132,12 @@ class GuildRepository @Inject constructor(
             if (count > 0) addQuestProgress(questId, count)
         }
         flags = applyDailyGathering(flags, skillName, items)
-        playerRepo.updateFlags(flags)
+        playerRepo.updateFlagsUnlocked(flags)
     }
 
     /** Called when a crafting session is collected (smithing, cooking, fletching, crafting, runecrafting, herblore). */
-    suspend fun recordGuildCrafting(skillName: String, items: Map<String, Int>) {
-        var flags = ensureGuildDailiesRefreshed()
+    suspend fun recordGuildCrafting(skillName: String, items: Map<String, Int>) = playerRepo.playerMutex.withLock {
+        var flags = ensureGuildDailiesRefreshedUnlocked()
         val completedIds = loadCompletedQuestIds()
         val currentLevel = guildLevel(skillName, flags.guildReputation[skillName] ?: 0L, completedIds)
         for ((questId, quest) in gameData.guildQuests) {
@@ -146,14 +147,14 @@ class GuildRepository @Inject constructor(
             if (count > 0) addQuestProgress(questId, count)
         }
         flags = applyDailyCrafting(flags, skillName, items)
-        playerRepo.updateFlags(flags)
+        playerRepo.updateFlagsUnlocked(flags)
     }
 
     /** Called when a combat session is collected. */
-    suspend fun recordGuildCombat(killsByEnemy: Map<String, Int>, combatStyle: String) {
+    suspend fun recordGuildCombat(killsByEnemy: Map<String, Int>, combatStyle: String) = playerRepo.playerMutex.withLock {
         val guild = combatStyleToGuild(combatStyle)
         val totalKills = killsByEnemy.values.sum()
-        var flags = ensureGuildDailiesRefreshed()
+        var flags = ensureGuildDailiesRefreshedUnlocked()
         if (totalKills > 0) {
             val completedIds = loadCompletedQuestIds()
             val currentLevel = guildLevel(guild, flags.guildReputation[guild] ?: 0L, completedIds)
@@ -164,12 +165,12 @@ class GuildRepository @Inject constructor(
             }
         }
         flags = applyDailyCombat(flags, guild, totalKills)
-        playerRepo.updateFlags(flags)
+        playerRepo.updateFlagsUnlocked(flags)
     }
 
     /** Called when a prayer session is collected. */
-    suspend fun recordGuildPrayer(totalBuried: Int) {
-        var flags = ensureGuildDailiesRefreshed()
+    suspend fun recordGuildPrayer(totalBuried: Int) = playerRepo.playerMutex.withLock {
+        var flags = ensureGuildDailiesRefreshedUnlocked()
         if (totalBuried > 0) {
             val completedIds = loadCompletedQuestIds()
             val currentLevel = guildLevel("prayer", flags.guildReputation["prayer"] ?: 0L, completedIds)
@@ -180,7 +181,7 @@ class GuildRepository @Inject constructor(
             }
         }
         flags = applyDailyPrayer(flags, totalBuried)
-        playerRepo.updateFlags(flags)
+        playerRepo.updateFlagsUnlocked(flags)
     }
 
     /**
@@ -188,7 +189,7 @@ class GuildRepository @Inject constructor(
      * Returns the number of items actually consumed (0 if daily is already complete/claimed or
      * the player has none of the target item).
      */
-    suspend fun contributeFarmingDaily(templateId: String, inventory: Map<String, Int>): Int {
+    suspend fun contributeFarmingDaily(templateId: String, inventory: Map<String, Int>): Int = playerRepo.playerMutex.withLock {
         val flags = playerRepo.getFlags()
         val pool  = gameData.guildDailyPool.associateBy { it.id }
         val t     = pool[templateId] ?: return 0
@@ -203,13 +204,13 @@ class GuildRepository @Inject constructor(
         playerRepo.consumeItems(mapOf(t.target to toConsume))
         val newProgress = flags.guildDailyProgress.toMutableMap()
         newProgress[templateId] = current + toConsume
-        playerRepo.updateFlags(flags.copy(guildDailyProgress = newProgress))
+        playerRepo.updateFlagsUnlocked(flags.copy(guildDailyProgress = newProgress))
         return toConsume
     }
 
     /** Called when a mercantile trade route session is collected. */
-    suspend fun recordGuildTrade(coinsEarned: Long = 0L) {
-        var flags = ensureGuildDailiesRefreshed()
+    suspend fun recordGuildTrade(coinsEarned: Long = 0L) = playerRepo.playerMutex.withLock {
+        var flags = ensureGuildDailiesRefreshedUnlocked()
         val completedIds = loadCompletedQuestIds()
         val currentLevel = guildLevel("mercantile", flags.guildReputation["mercantile"] ?: 0L, completedIds)
         for ((questId, quest) in gameData.guildQuests) {
@@ -219,13 +220,13 @@ class GuildRepository @Inject constructor(
         }
         flags = applyDailyTrade(flags)
         flags = applyDailyEarnCoins(flags, coinsEarned)
-        playerRepo.updateFlags(flags)
+        playerRepo.updateFlagsUnlocked(flags)
     }
 
     /** Called when a thieving session is collected. Tracks pickpocket count per NPC. */
-    suspend fun recordGuildThieving(npcKey: String, successCount: Int) {
+    suspend fun recordGuildThieving(npcKey: String, successCount: Int) = playerRepo.playerMutex.withLock {
         if (successCount <= 0) return
-        var flags = ensureGuildDailiesRefreshed()
+        var flags = ensureGuildDailiesRefreshedUnlocked()
         val completedIds = loadCompletedQuestIds()
         val currentLevel = guildLevel("thieving", flags.guildReputation["thieving"] ?: 0L, completedIds)
         for ((questId, quest) in gameData.guildQuests) {
@@ -235,12 +236,12 @@ class GuildRepository @Inject constructor(
             addQuestProgress(questId, successCount)
         }
         flags = applyDailyThieving(flags, npcKey, successCount)
-        playerRepo.updateFlags(flags)
+        playerRepo.updateFlagsUnlocked(flags)
     }
 
     /** Called when an agility session is collected (counts completed sessions, not items). */
-    suspend fun recordGuildSessions() {
-        var flags = ensureGuildDailiesRefreshed()
+    suspend fun recordGuildSessions() = playerRepo.playerMutex.withLock {
+        var flags = ensureGuildDailiesRefreshedUnlocked()
         val completedIds = loadCompletedQuestIds()
         val currentLevel = guildLevel("agility", flags.guildReputation["agility"] ?: 0L, completedIds)
         for ((questId, quest) in gameData.guildQuests) {
@@ -249,14 +250,14 @@ class GuildRepository @Inject constructor(
             addQuestProgress(questId, 1)
         }
         flags = applyDailySessions(flags)
-        playerRepo.updateFlags(flags)
+        playerRepo.updateFlagsUnlocked(flags)
     }
 
     // -------------------------------------------------------------------------
     // Claim progression quest reward
     // -------------------------------------------------------------------------
 
-    suspend fun claimGuildQuestReward(questId: String): GuildQuestClaimResult {
+    suspend fun claimGuildQuestReward(questId: String): GuildQuestClaimResult = playerRepo.playerMutex.withLock {
         val quest = gameData.guildQuests[questId] ?: return GuildQuestClaimResult.NotReady
         val row = questProgressDao.getQuestProgress(questId) ?: return GuildQuestClaimResult.NotReady
         if (row.completed) return GuildQuestClaimResult.AlreadyClaimed
@@ -289,7 +290,7 @@ class GuildRepository @Inject constructor(
             )
         }
 
-        playerRepo.updateFlags(newFlags)
+        playerRepo.updateFlagsUnlocked(newFlags)
         return GuildQuestClaimResult.Success(quest.rewards)
     }
 
@@ -328,7 +329,7 @@ class GuildRepository @Inject constructor(
     }
 
     /** Returns updated flags with guild daily reward claimed and reputation incremented (capped at tier boundary if gate quests incomplete). Returns null if not claimable. */
-    suspend fun claimGuildDaily(flags: PlayerFlags, templateId: String): Pair<PlayerFlags, GuildQuestRewards>? {
+    suspend fun claimGuildDaily(flags: PlayerFlags, templateId: String): Pair<PlayerFlags, GuildQuestRewards>? = playerRepo.playerMutex.withLock {
         val pool = gameData.guildDailyPool.associateBy { it.id }
         val template = pool[templateId] ?: return null
         val progress = flags.guildDailyProgress[templateId] ?: 0
@@ -428,12 +429,14 @@ class GuildRepository @Inject constructor(
     }
 
     /** Refreshes guild dailies if needed, then retroactively resets any quest progress that pre-accumulated above the current tier. */
-    suspend fun ensureGuildDailiesRefreshed(): PlayerFlags {
+    suspend fun ensureGuildDailiesRefreshed(): PlayerFlags = playerRepo.playerMutex.withLock { ensureGuildDailiesRefreshedUnlocked() }
+
+    internal suspend fun ensureGuildDailiesRefreshedUnlocked(): PlayerFlags {
         var flags = getRefreshedGuildDailyFlags()
         val completedIds = loadCompletedQuestIds()
         val retroFlags = retroactivelyResetQuestProgress(flags, completedIds)
         if (retroFlags !== flags) {
-            playerRepo.updateFlags(retroFlags)
+            playerRepo.updateFlagsUnlocked(retroFlags)
             flags = retroFlags
         }
         return flags
@@ -453,12 +456,12 @@ class GuildRepository @Inject constructor(
         return when {
             shouldRefreshGuildDailies(flags.guildDailyGeneratedAt) -> {
                 val refreshed = buildRefreshedGuildDailyFlags(flags, completedQuestIds, skillLevels)
-                playerRepo.updateFlags(refreshed)
+                playerRepo.updateFlagsUnlocked(refreshed)
                 refreshed
             }
             hasNewlyUnlockedGuild(flags, completedQuestIds) -> {
                 val patched = patchMissingGuildDailies(flags, completedQuestIds, skillLevels)
-                playerRepo.updateFlags(patched)
+                playerRepo.updateFlagsUnlocked(patched)
                 patched
             }
             else -> flags
