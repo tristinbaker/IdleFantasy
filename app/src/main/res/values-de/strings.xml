@@ -292,15 +292,15 @@
     <!-- ===== QuestsScreen ===== -->
     <string name="label_claim_reward">Prämie einlösen</string>
     <string name="label_daily">Täglich</string>
-    <string name="label_weekly">Weekly</string>
-    <string name="label_timed">Zeitlich</string>
+    <string name="label_weekly">Wöchentlich</string>
+    <string name="label_timed">Regelmäßig</string>
     <string name="label_daily_quests">Tagesaufgaben</string>
     <string name="label_daily_reset">Wird um 06:00 Uhr zurückgesetzt</string>
-    <string name="label_weekly_reset">Resets Monday at 6am</string>
-    <string name="weekly_bonus_title">Weekly Bonus!</string>
-    <string name="weekly_bonus_claim">Claim Weekly Bonus</string>
-    <string name="label_daily_info">Each daily quest rewards coins. Every quest also has a 1 in 100 chance to drop a piece of Dwarven gear.</string>
-    <string name="label_weekly_info">Each weekly challenge rewards coins based on its level requirement. Complete all 5 to earn a bonus: 100,000 coins, or a 1 in 26 chance at a piece of Divine gear.</string>
+    <string name="label_weekly_reset">Wird montags um 06:00 Uhr zurückgesetzt</string>
+    <string name="weekly_bonus_title">Wöchentlicher Bonus!</string>
+    <string name="weekly_bonus_claim">Fordere wöchentlichen Bonus ein</string>
+    <string name="label_daily_info">Jede tägliche Aufgabe wird mit Münzen entlohnt. Außerdem gibt es dabei immer eine Chance von 1% ein Teil der Zwergenausrüstung zu erhalten.</string>
+    <string name="label_weekly_info">Jede wöchentliche Herausforderung wird mit Münzen entsprechend der Schwierigkeit entlohnt. Wenn Ihr alle 5 Herausforderungen meistert, erhaltet eine Sonderzulage: 100.000 Münzen oder mit einer Chance von 1 zu 26 ein Teil der göttlichen Ausrüstung.</string>
     <string name="label_daily_reward">2.000 Münzen (1/100: Zwergenausrüstung)</string>
     <string name="msg_daily_claimed_coins">Tagesaufgabe abgeschlossen! +2.000 Münzen.</string>
     <string name="msg_daily_claimed_dwarven">Tagesaufgabe abgeschlossen! Ihr habt %1$s gefunden!</string>
@@ -1000,7 +1000,7 @@
     <string name="crafting_tier_mithril">Mithril</string>
     <string name="crafting_tier_oak">Eiche</string>
     <string name="crafting_tier_platinum">Platin</string>
-    <string name="crafting_tier_runite">Runite</string>
+    <string name="crafting_tier_runite">Runit</string>
     <string name="crafting_tier_shortbow">Kurzbogen</string>
     <string name="crafting_tier_silver">Silber</string>
     <string name="crafting_tier_staff">Stab</string>
@@ -1022,10 +1022,10 @@
     <string name="bone_altar_title">Knochenaltar</string>
     <string name="bone_altar_open">Altar nutzen</string>
     <string name="bone_altar_select_prompt">Knochen zum Vergraben auswählen</string>
-    <string name="bone_altar_tap">Zum Vergraben Tippen</string>
+    <string name="bone_altar_tap">Zum Vergraben tippen</string>
     <string name="bone_altar_change_bone">Ändern</string>
     <string name="bone_altar_combo_count">Combo ×%d</string>
-    <string name="bone_altar_bonus_active">+50% EP-Bonus!</string>
+    <string name="bone_altar_bonus_active">+50%% EP-Bonus!</string>
     <string name="bone_altar_session_xp">+%s EP diese Sitzung</string>
     <string name="bone_altar_buried_count">%d vergraben</string>
     <string name="bone_altar_no_bones">Keine Knochen im Inventar</string>
