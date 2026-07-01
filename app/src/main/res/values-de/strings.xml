@@ -299,7 +299,7 @@
     <string name="label_weekly_reset">Wird montags um 06:00 Uhr zurückgesetzt</string>
     <string name="weekly_bonus_title">Wöchentlicher Bonus!</string>
     <string name="weekly_bonus_claim">Fordere wöchentlichen Bonus ein</string>
-    <string name="label_daily_info">Jede tägliche Aufgabe wird mit Münzen entlohnt. Außerdem gibt es dabei immer eine Chance von 1% ein Teil der Zwergenausrüstung zu erhalten.</string>
+    <string name="label_daily_info">Jede tägliche Aufgabe wird mit Münzen entlohnt. Außerdem gibt es dabei immer eine Chance von 1%% ein Teil der Zwergenausrüstung zu erhalten.</string>
     <string name="label_weekly_info">Jede wöchentliche Herausforderung wird mit Münzen entsprechend der Schwierigkeit entlohnt. Wenn Ihr alle 5 Herausforderungen meistert, erhaltet eine Sonderzulage: 100.000 Münzen oder mit einer Chance von 1 zu 26 ein Teil der göttlichen Ausrüstung.</string>
     <string name="label_daily_reward">2.000 Münzen (1/100: Zwergenausrüstung)</string>
     <string name="msg_daily_claimed_coins">Tagesaufgabe abgeschlossen! +2.000 Münzen.</string>
@@ -460,7 +460,7 @@
     <string name="combat_duration_min">%1$d min</string>
     <string name="combat_xp_on_victory">EP bei Sieg</string>
     <string name="combat_you_died">Ihr seid gestorben!</string>
-    <string name="combat_died_reward">Ihr habt 10 % der Belohnung erhalten.</string>
+    <string name="combat_died_reward">Ihr habt 10%% der Belohnung erhalten.</string>
     <string name="combat_gear_bonus">+%1$d Ausrüstung</string>
 
     <!-- ===== translate — ProfileScreen ===== -->
@@ -938,10 +938,10 @@
     <string name="settings_lang_dutch">Nederlands</string>
 
     <string name="prestige">Prestige</string>
-    <string name="prestige_max">Max Prestige</string>
+    <string name="prestige_max">Max. Prestige</string>
     <string name="prestige_confirm_title">Prestige %s?</string>
     <string name="prestige_confirm_message_xp">Euer %1$s-Level wird auf 1 zurückgesetzt, Ihr werdet allerdings dauerhaft +%2$d%% EP-Bonus für diese Fähigkeit erhalten.</string>
-    <string name="prestige_confirm_message_stat">Euer %1$s-Level wird auf 1 zurückgesetzt, Ihr werdet allerdings einen dauerhaften Bonus von +%2$d.</string>
+    <string name="prestige_confirm_message_stat">Euer %1$s-Level wird auf 1 zurückgesetzt, Ihr werdet allerdings einen dauerhaften Bonus von +%2$d%% EP-Bonus für diese Fähigkeit erhalten.</string>
     <string name="achievement_prestige_first_name">Erster Neustart</string>
     <string name="achievement_prestige_first_desc">Erhöht das Prestige einer beliebigen Fähigkeit zum ersten Mal</string>
     <string name="achievement_prestige_any_3_name">Gemeistert</string>
@@ -1091,9 +1091,9 @@
     <string name="town_church_no_bonus">Upgraden für längere Segnungsdauer</string>
     <string name="town_building_fairgrounds_name">Jahrmarkt</string>
     <string name="town_fairgrounds_no_bonus">4 Spielstände verfügbar, Ihr könnt alle 10 Minuten spielen</string>
-    <string name="town_fairgrounds_t1_bonus">Eröffnet den Hüttchenspieler-Stand, ein Besuch ist alle 7,5 Minuten möglich, +5% Los-Chance</string>
-    <string name="town_fairgrounds_t2_bonus">Eröffnet den Drüber-und-Drunter-Stand, +10% Los-Chance</string>
-    <string name="town_fairgrounds_t3_bonus">Ein Besuch ist alle 5 Minuten möglich, +15% Los-Chance</string>
+    <string name="town_fairgrounds_t1_bonus">Eröffnet den Hüttchenspieler-Stand, ein Besuch ist alle 7,5 Minuten möglich, +5%% Los-Chance</string>
+    <string name="town_fairgrounds_t2_bonus">Eröffnet den Drüber-und-Drunter-Stand, +10%% Los-Chance</string>
+    <string name="town_fairgrounds_t3_bonus">Ein Besuch ist alle 5 Minuten möglich, +15%% Los-Chance</string>
     <string name="town_building_garden_name">Garten</string>
     <string name="town_garden_no_bonus">Kein Extra-Acker bisher</string>
     <string name="town_garden_t1_bonus">+1 Extra-Acker</string>
