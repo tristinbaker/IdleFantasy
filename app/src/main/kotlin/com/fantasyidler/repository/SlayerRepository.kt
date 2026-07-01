@@ -20,18 +20,30 @@ class SlayerRepository @Inject constructor(
 ) {
 
     /** Pick and assign a random eligible task for the given Slayer level. Returns false if no eligible tasks exist. */
-    suspend fun assignTask(slayerLevel: Int, unlockedDungeons: Set<String> = emptySet()): Boolean {
-        val flags = playerRepo.getFlags()
+    suspend fun startForetelledTask(task: SlayerTask): Boolean = playerRepo.withLock {
+        val flags = playerRepo.getFlagsUnlocked()
+        if (flags.activeSlayerTask != null) return@withLock false
+        val newForetelled = flags.foretelledTasks.filterNot { it.enemyKey == task.enemyKey }
+        if (newForetelled.size == flags.foretelledTasks.size) return@withLock false
+        playerRepo.updateFlagsUnlocked(flags.copy(
+            activeSlayerTask = task,
+            foretelledTasks  = newForetelled,
+        ))
+        true
+    }
+
+    suspend fun assignTask(slayerLevel: Int, unlockedDungeons: Set<String> = emptySet()): Boolean = playerRepo.withLock {
+        val flags = playerRepo.getFlagsUnlocked()
         // Pop the first foretelled task if any exist
         if (flags.foretelledTasks.isNotEmpty()) {
             val next = flags.foretelledTasks.first()
-            playerRepo.updateFlags(
+            playerRepo.updateFlagsUnlocked(
                 flags.copy(
                     activeSlayerTask = next,
                     foretelledTasks  = flags.foretelledTasks.drop(1),
                 )
             )
-            return true
+            return@withLock true
         }
 
         val eligible = gameData.slayerTasks.filter { (enemyKey, cfg) ->
@@ -79,34 +91,16 @@ class SlayerRepository @Inject constructor(
     private val BONE_XP = mapOf("dragon_bone" to 80, "giant_bones" to 40, "big_bones" to 20, "bones" to 10)
     private val BONE_TYPES_ORDERED = listOf("bones", "big_bones", "giant_bones", "dragon_bone")
     private val BASE_BONE_XP = 10
+    private val SLAYER_SKIP_COST = 30
 
-    private fun totalBoneXp(inventory: Map<String, Int>): Int =
-        BONE_XP.entries.sumOf { (key, xp) -> (inventory[key] ?: 0) * xp }
+    private fun getEligibleEnemies() = gameData.slayerTasks
 
-    /**
-     * Pre-assign the next future task by paying bones. Returns false if the queue is full (3),
-     * no eligible tasks exist, or the player has insufficient bones. Cost escalates per slot.
-     */
-    suspend fun foretelTask(slayerLevel: Int, unlockedDungeons: Set<String> = emptySet()): ForetelResult {
-        val flags = playerRepo.getFlags()
-        if (flags.foretelledTasks.size >= 3) return ForetelResult.QueueFull
+    suspend fun foretellTask(costXp: Int): ForetelResult = playerRepo.withLock {
+        val player = playerRepo.getOrCreatePlayer()
+        val inventory: Map<String, Int> = kotlinx.serialization.json.Json.decodeFromString(player.inventory)
+        val eligible = getEligibleEnemies()
+        if (eligible.isEmpty()) return@withLock ForetelResult.NoEligibleEnemies
 
-        val eligible = gameData.slayerTasks.filter { (enemyKey, cfg) ->
-            if (cfg.slayerLevel > slayerLevel) return@filter false
-            val dungeonKeys = gameData.dungeons.values
-                .filter { d -> d.enemySpawns.any { it.enemy == enemyKey } }
-                .map { it.name }
-            if (dungeonKeys.isEmpty()) return@filter true
-            dungeonKeys.any { it !in gameData.expeditionLockedDungeons || it in unlockedDungeons }
-        }
-        if (eligible.isEmpty()) return ForetelResult.NoEligibleTasks
-
-        val costUnits = foretelCostUnits(flags.foretelledTasks.size)
-        val costXp = costUnits * BASE_BONE_XP
-        val inventory = playerRepo.getInventory()
-        if (totalBoneXp(inventory) < costXp) return ForetelResult.NotEnoughBones(costUnits)
-
-        // Consume bones greedily cheapest-first
         val toConsume = mutableMapOf<String, Int>()
         var remaining = costXp
         for (boneKey in BONE_TYPES_ORDERED) {
@@ -119,12 +113,17 @@ class SlayerRepository @Inject constructor(
             toConsume[boneKey] = consume
             remaining -= consume * xp
         }
-        playerRepo.consumeItems(toConsume)
+        
+        if (remaining > 0) {
+            return@withLock ForetelResult.NotEnoughBones(remaining)
+        }
+
+        playerRepo.consumeItemsUnlocked(toConsume)
 
         val (enemyKey, cfg) = eligible.entries.random()
         val displayName = gameData.enemies[enemyKey]?.displayName
             ?: enemyKey.split('_').joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
-        val targetKills = Random.nextInt(cfg.minKills, cfg.maxKills + 1)
+        val targetKills = kotlin.random.Random.nextInt(cfg.minKills, cfg.maxKills + 1)
         val taskPoints  = maxOf(3, cfg.slayerLevel / 5)
         val task = SlayerTask(
             enemyKey       = enemyKey,
@@ -135,13 +134,13 @@ class SlayerRepository @Inject constructor(
             taskPoints     = taskPoints,
         )
 
-        val latestFlags = playerRepo.getFlags()
+        val latestFlags = playerRepo.getFlagsUnlocked()
         if (latestFlags.activeSlayerTask == null) {
-            playerRepo.updateFlags(latestFlags.copy(activeSlayerTask = task))
+            playerRepo.updateFlagsUnlocked(latestFlags.copy(activeSlayerTask = task))
         } else {
-            playerRepo.updateFlags(latestFlags.copy(foretelledTasks = latestFlags.foretelledTasks + task))
+            playerRepo.updateFlagsUnlocked(latestFlags.copy(foretelledTasks = latestFlags.foretelledTasks + task))
         }
-        return ForetelResult.Success(task)
+        ForetelResult.Success(task)
     }
 
     /**
@@ -188,37 +187,47 @@ class SlayerRepository @Inject constructor(
      * Returns false if the player doesn't have enough points or there are no eligible tasks.
      */
     suspend fun skipTask(slayerLevel: Int, unlockedDungeons: Set<String> = emptySet()): Boolean {
-        val flags = playerRepo.getFlags()
-        if (flags.slayerPoints < 30) return false
-        playerRepo.updateFlags(flags.copy(slayerPoints = flags.slayerPoints - 30, activeSlayerTask = null))
-        return assignTask(slayerLevel, unlockedDungeons)
+        val skipped = playerRepo.withLock {
+            val flags = playerRepo.getFlagsUnlocked()
+            val task = flags.activeSlayerTask ?: return@withLock false
+            if (flags.slayerPoints < SLAYER_SKIP_COST) return@withLock false
+            playerRepo.updateFlagsUnlocked(flags.copy(
+                slayerPoints     = flags.slayerPoints - SLAYER_SKIP_COST,
+                activeSlayerTask = null,
+            ))
+            true
+        }
+        if (skipped) {
+            return assignTask(slayerLevel, unlockedDungeons)
+        }
+        return false
     }
 
     /**
      * Deduct [cost] Slayer points and add [itemKey] to the player's inventory.
      * Returns false if insufficient points.
      */
-    suspend fun spendPointsForItem(itemKey: String, cost: Int): Boolean {
-        val flags = playerRepo.getFlags()
-        if (flags.slayerPoints < cost) return false
-        playerRepo.updateFlags(flags.copy(slayerPoints = flags.slayerPoints - cost))
-        playerRepo.addItem(itemKey, 1)
-        return true
+    suspend fun spendPointsForItem(itemKey: String, cost: Int): Boolean = playerRepo.withLock {
+        val flags = playerRepo.getFlagsUnlocked()
+        if (flags.slayerPoints < cost) return@withLock false
+        playerRepo.updateFlagsUnlocked(flags.copy(slayerPoints = flags.slayerPoints - cost))
+        playerRepo.addItemUnlocked(itemKey, 1)
+        true
     }
 
     /**
      * Deduct [cost] Slayer points and add [xpAmount] XP to [skillKey].
      * Returns false if insufficient points.
      */
-    suspend fun spendPointsForXp(skillKey: String, xpAmount: Long, cost: Int): Boolean {
-        val flags = playerRepo.getFlags()
-        if (flags.slayerPoints < cost) return false
-        playerRepo.updateFlags(flags.copy(slayerPoints = flags.slayerPoints - cost))
-        playerRepo.applyMultiSkillResults(
+    suspend fun spendPointsForXp(skillKey: String, xpAmount: Long, cost: Int): Boolean = playerRepo.withLock {
+        val flags = playerRepo.getFlagsUnlocked()
+        if (flags.slayerPoints < cost) return@withLock false
+        playerRepo.updateFlagsUnlocked(flags.copy(slayerPoints = flags.slayerPoints - cost))
+        playerRepo.applyMultiSkillResultsUnlocked(
             mapOf(skillKey to xpAmount),
             emptyMap(),
             0L,
         )
-        return true
+        true
     }
 }

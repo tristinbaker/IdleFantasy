@@ -113,14 +113,15 @@ class ChurchRepository @Inject constructor(
     fun blessingsForLevel(prayerLevel: Int): List<BlessingData> =
         ALL_BLESSINGS.filter { it.prayerLevelRequired <= prayerLevel }
 
-    suspend fun activateBlessing(key: String): BlessingActivateResult {
-        val flags     = playerRepo.getFlags()
+    suspend fun activateBlessing(key: String): BlessingActivateResult = playerRepo.withLock {
+        val flags     = playerRepo.getFlagsUnlocked()
         val active    = activeBlessing(flags)
-        if (active != null && active.key != key) return BlessingActivateResult.AlreadyActive
-        val blessing  = BY_KEY[key] ?: return BlessingActivateResult.AlreadyActive
+        if (active != null && active.key != key) return@withLock BlessingActivateResult.AlreadyActive
+        val blessing  = BY_KEY[key] ?: return@withLock BlessingActivateResult.AlreadyActive
         val cost      = boneCostFor(blessing)
-        val inventory = playerRepo.getInventory()
-        if (totalBoneXp(inventory) < cost * BASE_BONE_XP) return BlessingActivateResult.NotEnoughBones(cost)
+        val player    = playerRepo.getOrCreatePlayer()
+        val inventory: Map<String, Int> = kotlinx.serialization.json.Json.decodeFromString(player.inventory)
+        if (totalBoneXp(inventory) < cost * BASE_BONE_XP) return@withLock BlessingActivateResult.NotEnoughBones(cost)
 
         // Consume bone types greedily from most to least valuable
         val toConsume = mutableMapOf<String, Int>()
@@ -135,7 +136,7 @@ class ChurchRepository @Inject constructor(
             toConsume[boneKey] = consume
             remainingXp -= consume * xp
         }
-        playerRepo.consumeItems(toConsume)
+        playerRepo.consumeItemsUnlocked(toConsume)
 
         val now = System.currentTimeMillis()
         val durationMs = townRepoProvider.get().blessingDurationMs(flags)
@@ -144,24 +145,23 @@ class ChurchRepository @Inject constructor(
         } else {
             now + durationMs
         }
-        playerRepo.updateFlags(
+        playerRepo.updateFlagsUnlocked(
             flags.copy(
                 activeBlessingKey       = key,
                 activeBlessingExpiresAt = newExpiresAt,
             )
         )
         buffNotifScheduler.scheduleBlessingExpiry(newExpiresAt)
-        return BlessingActivateResult.Success
+        BlessingActivateResult.Success
     }
 
     suspend fun deactivateBlessing() {
-        val flags = playerRepo.getFlags()
-        playerRepo.updateFlags(
+        playerRepo.updateFlagsAtomically { flags ->
             flags.copy(
                 activeBlessingKey       = "",
                 activeBlessingExpiresAt = 0L,
             )
-        )
+        }
         buffNotifScheduler.cancelBlessingExpiry()
     }
 }

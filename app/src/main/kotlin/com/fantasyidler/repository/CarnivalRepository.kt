@@ -21,20 +21,27 @@ class CarnivalRepository @Inject constructor(
         playerRepo.getInventory()["carnival_ticket"] ?: 0
 
     /** Deduct [ticketCost] tickets and add [itemKey] to inventory. Returns false if insufficient tickets. */
-    suspend fun redeemForItem(itemKey: String, ticketCost: Int): Boolean =
-        playerRepo.consumeItems(mapOf("carnival_ticket" to ticketCost)).also { success ->
-            if (success) playerRepo.addItem(itemKey, 1)
-        }
+    suspend fun redeemForItem(itemKey: String, ticketCost: Int): Boolean = playerRepo.withLock {
+        val inventory = playerRepo.getInventoryUnlocked()
+        if ((inventory["carnival_ticket"] ?: 0) < ticketCost) return@withLock false
+        playerRepo.consumeItemsUnlocked(mapOf("carnival_ticket" to ticketCost))
+        playerRepo.addItemUnlocked(itemKey, 1)
+        true
+    }
 
     /** Deduct [ticketCost] tickets and grant [xpAmount] XP in [skillKey]. Returns false if insufficient tickets. */
-    suspend fun redeemForXp(skillKey: String, xpAmount: Long, ticketCost: Int): Boolean =
-        playerRepo.consumeItems(mapOf("carnival_ticket" to ticketCost)).also { success ->
-            if (success) playerRepo.applyMultiSkillResults(
-                mapOf(skillKey to xpAmount),
-                emptyMap(),
-                0L,
-            )
-        }
+    suspend fun redeemForXp(skillKey: String, xpAmount: Long, ticketCost: Int): Boolean = playerRepo.withLock {
+        val inventory = playerRepo.getInventoryUnlocked()
+        if ((inventory["carnival_ticket"] ?: 0) < ticketCost) return@withLock false
+        playerRepo.consumeItemsUnlocked(mapOf("carnival_ticket" to ticketCost))
+        playerRepo.applyMultiSkillResultsUnlocked(
+            mapOf(skillKey to xpAmount),
+            emptyMap(),
+            0L,
+        )
+        true
+    }
+
 
     /** Award tickets directly (used by active minigames). */
     suspend fun awardTickets(count: Int) {
