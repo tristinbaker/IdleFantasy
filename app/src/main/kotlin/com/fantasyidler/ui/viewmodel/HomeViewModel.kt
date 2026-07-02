@@ -549,33 +549,44 @@ class HomeViewModel @Inject constructor(
                         }
                         combinedXpBySkill[skillName] = (combinedXpBySkill[skillName] ?: 0L) + totalXp
                         for ((item, qty) in regular) combinedItems[item] = (combinedItems[item] ?: 0) + qty
-                        val currentFlags = playerRepo.getFlags()
-                        val pityCount    = currentFlags.expeditionPityRuns[session.activityKey] ?: 0
-                        val notesFound   = if (rawNotesFound == 0 && pityCount >= 9) 1 else rawNotesFound
-                        val newPityCount = if (notesFound > 0) 0 else pityCount + 1
-                        val newPityRuns  = currentFlags.expeditionPityRuns.toMutableMap().apply {
-                            if (newPityCount == 0) remove(session.activityKey) else put(session.activityKey, newPityCount)
-                        }
-                        if (notesFound > 0 && dungeonData != null) {
-                            val oldCount = currentFlags.skillingDungeonNotes[session.activityKey] ?: 0
-                            val newCount = minOf(oldCount + notesFound, dungeonData.noteThreshold)
-                            val newNotes = currentFlags.skillingDungeonNotes.toMutableMap()
-                            newNotes[session.activityKey] = newCount
-                            val newUnlocked = currentFlags.unlockedDungeons.toMutableList()
-                            val unlockMsg: String?
-                            if (newCount >= dungeonData.noteThreshold && !currentFlags.unlockedDungeons.contains(dungeonData.unlockDungeon)) {
-                                newUnlocked += dungeonData.unlockDungeon
-                                unlockMsg = dungeonData.unlockMessage
-                            } else {
-                                unlockMsg = null
+                        var localUnlockMsg: String? = null
+                        var localNotesFound = 0
+                        var localOldCount = 0
+                        var localNewCount = 0
+
+                        playerRepo.updateFlagsAtomically { currentFlags ->
+                            val pityCount    = currentFlags.expeditionPityRuns[session.activityKey] ?: 0
+                            val notesFound   = if (rawNotesFound == 0 && pityCount >= 9) 1 else rawNotesFound
+                            localNotesFound = notesFound
+                            val newPityCount = if (notesFound > 0) 0 else pityCount + 1
+                            val newPityRuns  = currentFlags.expeditionPityRuns.toMutableMap().apply {
+                                if (newPityCount == 0) remove(session.activityKey) else put(session.activityKey, newPityCount)
                             }
-                            playerRepo.updateFlags(currentFlags.copy(
-                                skillingDungeonNotes = newNotes,
-                                unlockedDungeons = newUnlocked,
-                                expeditionPityRuns = newPityRuns,
-                            ))
-                            val revealed = dungeonData.noteTexts.take(newCount.coerceAtMost(dungeonData.noteTexts.size))
-                            val newlyRevealedTexts = revealed.drop(oldCount.coerceAtMost(revealed.size))
+                            if (notesFound > 0 && dungeonData != null) {
+                                val oldCount = currentFlags.skillingDungeonNotes[session.activityKey] ?: 0
+                                localOldCount = oldCount
+                                val newCount = minOf(oldCount + notesFound, dungeonData.noteThreshold)
+                                localNewCount = newCount
+                                val newNotes = currentFlags.skillingDungeonNotes.toMutableMap()
+                                newNotes[session.activityKey] = newCount
+                                val newUnlocked = currentFlags.unlockedDungeons.toMutableList()
+                                if (newCount >= dungeonData.noteThreshold && !currentFlags.unlockedDungeons.contains(dungeonData.unlockDungeon)) {
+                                    newUnlocked += dungeonData.unlockDungeon
+                                    localUnlockMsg = dungeonData.unlockMessage
+                                }
+                                currentFlags.copy(
+                                    skillingDungeonNotes = newNotes,
+                                    unlockedDungeons = newUnlocked,
+                                    expeditionPityRuns = newPityRuns,
+                                )
+                            } else {
+                                currentFlags.copy(expeditionPityRuns = newPityRuns)
+                            }
+                        }
+
+                        if (localNotesFound > 0 && dungeonData != null) {
+                            val revealed = dungeonData.noteTexts.take(localNewCount.coerceAtMost(dungeonData.noteTexts.size))
+                            val newlyRevealedTexts = revealed.drop(localOldCount.coerceAtMost(revealed.size))
                             val noteLabels = newlyRevealedTexts.map { it }
                             val expDisplayXp  = ((totalXp * xpMult).toDouble() * blessingXpMult).toLong()
                             val expXpBonus    = (expDisplayXp - totalXp * xpMult).coerceAtLeast(0L)
@@ -586,12 +597,9 @@ class HomeViewModel @Inject constructor(
                                 itemLines      = regular.entries.sortedByDescending { it.value }
                                     .map { (key, qty) -> Pair(gameData.itemDisplayName(key), "×$qty") },
                                 noteLines      = noteLabels,
-                                unlockMessage  = unlockMsg,
+                                unlockMessage  = localUnlockMsg,
                                 boostWasActive = boostActive,
                             )
-                        } else {
-                            // No note this run — persist the incremented pity counter.
-                            playerRepo.updateFlags(currentFlags.copy(expeditionPityRuns = newPityRuns))
                         }
                     }
                     Skills.MERCANTILE -> {

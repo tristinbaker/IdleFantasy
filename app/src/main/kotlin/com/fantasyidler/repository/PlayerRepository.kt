@@ -84,10 +84,16 @@ class PlayerRepository @Inject constructor(
     suspend fun getInventory(): Map<String, Int> =
         json.decodeFromString(getOrCreatePlayer().inventory)
 
+    internal suspend fun getInventoryUnlocked(): Map<String, Int> =
+        json.decodeFromString(getOrCreatePlayer().inventory)
+
     suspend fun getEquipped(): Map<String, String?> =
         json.decodeFromString(getOrCreatePlayer().equipped)
 
     suspend fun getFlags(): PlayerFlags =
+        json.decodeFromString(getOrCreatePlayer().flags)
+
+    internal suspend fun getFlagsUnlocked(): PlayerFlags =
         json.decodeFromString(getOrCreatePlayer().flags)
 
     suspend fun getOwnedPets(): List<OwnedPet> =
@@ -270,15 +276,24 @@ class PlayerRepository @Inject constructor(
     }
 
     /** Returns false if the player has insufficient coins. */
-    suspend fun spendCoins(amount: Long): Boolean = playerMutex.withLock {
+    suspend fun spendCoins(amount: Long): Boolean = playerMutex.withLock { spendCoinsUnlocked(amount) }
+
+    internal suspend fun spendCoinsUnlocked(amount: Long): Boolean {
         require(amount >= 0) { "Cannot spend negative coins" }
         val player = getOrCreatePlayer()
-        if (player.coins < amount) return@withLock false
+        if (player.coins < amount) return false
         playerDao.upsert(player.copy(coins = player.coins - amount))
-        true
+        return true
     }
 
     suspend fun updateFlags(flags: PlayerFlags) = playerMutex.withLock { updateFlagsUnlocked(flags) }
+
+    suspend fun updateFlagsAtomically(block: (PlayerFlags) -> PlayerFlags) = playerMutex.withLock {
+        val current = getFlagsUnlocked()
+        updateFlagsUnlocked(block(current))
+    }
+
+    suspend fun <T> withLock(block: suspend () -> T): T = playerMutex.withLock { block() }
 
     internal suspend fun updateFlagsUnlocked(flags: PlayerFlags) {
         val player = getOrCreatePlayer()
@@ -497,6 +512,16 @@ class PlayerRepository @Inject constructor(
         coinsGained: Long = 0L,
         efficiencyMultiplier: Float = 1.0f,
         perSkillPetBoostPct: Map<String, Int> = emptyMap(),
+    ): List<String> = playerMutex.withLock {
+        applyMultiSkillResultsUnlocked(xpPerSkill, itemsGained, coinsGained, efficiencyMultiplier, perSkillPetBoostPct)
+    }
+
+    internal suspend fun applyMultiSkillResultsUnlocked(
+        xpPerSkill: Map<String, Long>,
+        itemsGained: Map<String, Int>,
+        coinsGained: Long = 0L,
+        efficiencyMultiplier: Float = 1.0f,
+        perSkillPetBoostPct: Map<String, Int> = emptyMap(),
     ): List<String> {
         val player    = getOrCreatePlayer()
         val flags: PlayerFlags = json.decodeFromString(player.flags)
@@ -682,7 +707,11 @@ class PlayerRepository @Inject constructor(
      * Adds [petId] to the player's pet list if not already owned.
      * Returns true if the pet was newly added, false if already owned.
      */
-    suspend fun addPetIfNew(petId: String, boostPercent: Int = 0): Boolean {
+    suspend fun addPetIfNew(petId: String, boostPercent: Int = 0): Boolean = playerMutex.withLock {
+        addPetIfNewUnlocked(petId, boostPercent)
+    }
+
+    internal suspend fun addPetIfNewUnlocked(petId: String, boostPercent: Int = 0): Boolean {
         val player = getOrCreatePlayer()
         val pets: MutableList<OwnedPet> = json.decodeFromString(player.pets)
         if (pets.any { it.id == petId }) return false
@@ -920,11 +949,13 @@ class PlayerRepository @Inject constructor(
     }
 
     /** Adds [qty] of [itemKey] to inventory. */
-    suspend fun addItem(itemKey: String, qty: Int) = playerMutex.withLock {
-        require(qty >= 0) { "Cannot add negative quantity" }
+    suspend fun addItem(itemKey: String, amount: Int = 1) = playerMutex.withLock { addItemUnlocked(itemKey, amount) }
+
+    internal suspend fun addItemUnlocked(itemKey: String, amount: Int = 1) {
+        if (amount <= 0) return
         val player = getOrCreatePlayer()
         val inventory: MutableMap<String, Int> = json.decodeFromString(player.inventory)
-        inventory[itemKey] = ((inventory[itemKey] ?: 0).toLong() + qty).coerceAtMost(Int.MAX_VALUE.toLong()).toInt()
+        inventory[itemKey] = ((inventory[itemKey] ?: 0).toLong() + amount).coerceAtMost(Int.MAX_VALUE.toLong()).toInt()
         val flags: PlayerFlags = json.decodeFromString(player.flags)
         playerDao.upsert(player.copy(
             inventory = json.encode<Map<String, Int>>(inventory),
