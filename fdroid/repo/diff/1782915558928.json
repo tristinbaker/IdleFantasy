@@ -1,0 +1,64 @@
+{
+  "repo": {
+    "timestamp": 1782988034793
+  },
+  "packages": {
+    "com.tristinbaker.idlefantasy": {
+      "metadata": {
+        "lastUpdated": 1782988010699
+      },
+      "versions": {
+        "480b80bc848ed88f1a14706cebe6f3f5ebe860abcbd50333ae8ae40e1274df68": {
+          "added": 1782988010699,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_101.apk",
+            "sha256": "480b80bc848ed88f1a14706cebe6f3f5ebe860abcbd50333ae8ae40e1274df68",
+            "size": 5398002
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.10.9",
+            "versionCode": 101,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fixed Higher or Lower minigame giving wrong answer on tied numbers (now regenerates until the next number differs)\n• Fixed Ancient Forest Ruins not unlocking after completing the Whispering Grove expedition (race condition in flag update now resolved atomically)\n• Fixed Bestiary qty column wrapping mid-number for large ranges like ×100–200 or coin ranges (column widened, single-line enforced)\n• Fixed Agility prestige not reducing session duration for combat dungeons, boss fights, Infinite Towe"
+          }
+        }
+      }
+    }
+  }
+}
