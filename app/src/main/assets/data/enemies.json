@@ -3063,5 +3063,140 @@
         "quantity_max": 1
       }
     ]
+  },
+  "sun_wisp": {
+    "name": "sun_wisp",
+    "display_name": "Sun Wisp",
+    "hp": 55,
+    "combat_stats": {
+      "attack_level": 20,
+      "strength_level": 18,
+      "defense_level": 14,
+      "attack_bonus": 34,
+      "strength_bonus": 30
+    },
+    "defensive_stats": {
+      "attack_defense": 20,
+      "strength_defense": 20,
+      "ranged_defense": 15,
+      "magic_defense": 40
+    },
+    "xp_drops": {
+      "combat": 380
+    },
+    "drop_table": [
+      {
+        "item": "coins",
+        "chance": 0.85,
+        "quantity_min": 60,
+        "quantity_max": 150
+      },
+      {
+        "item": "fire_rune",
+        "chance": 0.4,
+        "quantity_min": 5,
+        "quantity_max": 15
+      },
+      {
+        "item": "coal",
+        "chance": 0.3,
+        "quantity_min": 3,
+        "quantity_max": 8
+      }
+    ]
+  },
+  "ember_hound": {
+    "name": "ember_hound",
+    "display_name": "Ember Hound",
+    "hp": 90,
+    "combat_stats": {
+      "attack_level": 26,
+      "strength_level": 24,
+      "defense_level": 20,
+      "attack_bonus": 46,
+      "strength_bonus": 44
+    },
+    "defensive_stats": {
+      "attack_defense": 40,
+      "strength_defense": 38,
+      "ranged_defense": 30,
+      "magic_defense": 55
+    },
+    "xp_drops": {
+      "combat": 560
+    },
+    "drop_table": [
+      {
+        "item": "coins",
+        "chance": 0.85,
+        "quantity_min": 120,
+        "quantity_max": 280
+      },
+      {
+        "item": "fire_rune",
+        "chance": 0.5,
+        "quantity_min": 10,
+        "quantity_max": 25
+      },
+      {
+        "item": "adamantite_ore",
+        "chance": 0.3,
+        "quantity_min": 2,
+        "quantity_max": 6
+      }
+    ]
+  },
+  "cinder_colossus": {
+    "name": "cinder_colossus",
+    "display_name": "Cinder Colossus",
+    "hp": 300,
+    "combat_stats": {
+      "attack_level": 45,
+      "strength_level": 48,
+      "defense_level": 40,
+      "attack_bonus": 90,
+      "strength_bonus": 95
+    },
+    "defensive_stats": {
+      "attack_defense": 90,
+      "strength_defense": 85,
+      "ranged_defense": 60,
+      "magic_defense": 100
+    },
+    "xp_drops": {
+      "combat": 2200
+    },
+    "always_drops": [
+      {
+        "item": "dragon_bone",
+        "quantity": 1
+      }
+    ],
+    "drop_table": [
+      {
+        "item": "coins",
+        "chance": 0.9,
+        "quantity_min": 500,
+        "quantity_max": 1200
+      },
+      {
+        "item": "fire_rune",
+        "chance": 0.6,
+        "quantity_min": 20,
+        "quantity_max": 40
+      },
+      {
+        "item": "adamantite_ore",
+        "chance": 0.5,
+        "quantity_min": 10,
+        "quantity_max": 20
+      },
+      {
+        "item": "runite_ore",
+        "chance": 0.15,
+        "quantity_min": 1,
+        "quantity_max": 3
+      }
+    ]
   }
 }

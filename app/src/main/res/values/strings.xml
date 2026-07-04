@@ -1456,4 +1456,24 @@
     <string name="tower_entry_card_desc">Endless floors. How far can you climb?</string>
     <string name="tower_collect_prompt">Collect your tower run</string>
     <string name="tower_home_collect_hint">Open the Tower screen to collect this run</string>
+
+    <!-- ===== Seasonal Events ===== -->
+    <string name="seasonal_event_title">Seasonal Event</string>
+    <string name="seasonal_event_none">No event running right now. Check back later!</string>
+    <string name="seasonal_event_token_progress">%1$d / %2$d tokens</string>
+    <string name="seasonal_bounty_board_title">Bounty Board</string>
+    <string name="seasonal_expedition_title">Expedition</string>
+    <string name="seasonal_boss_title">Raid Boss</string>
+    <string name="seasonal_go_to_combat">Go to Combat</string>
+    <string name="seasonal_minigame_hint">Land %1$d of %2$d embers before they fade out!</string>
+    <string name="seasonal_minigame_round">Round %1$d / %2$d — Hits: %3$d</string>
+    <string name="seasonal_minigame_success">Perfect timing! +1 token.</string>
+    <string name="seasonal_minigame_failure">Missed the mark. Try again after the cooldown.</string>
+    <string name="seasonal_tap">Tap!</string>
+    <string name="seasonal_claim">Claim</string>
+    <string name="seasonal_claimed">Claimed</string>
+    <string name="seasonal_go">Go</string>
+    <string name="label_banners">Banners</string>
+    <string name="profile_banners_empty">No banners earned yet. Complete a Seasonal Event to earn one!</string>
+    <string name="profile_banners_earned_on">Earned %s</string>
 </resources>

@@ -1378,4 +1378,24 @@
     <string name="tower_entry_card_desc">Endlose Etagen. Wie weit könnt Ihr ihn erklimmen?</string>
     <string name="tower_collect_prompt">Sammelt die Beute Eures Turmbesuchs ein</string>
     <string name="tower_home_collect_hint">Betretet den Turm um Eure Beute einzusammeln</string>
+
+    <!-- ===== Seasonal Events ===== -->
+    <string name="seasonal_event_title">Saisonales Event</string>
+    <string name="seasonal_event_none">Derzeit läuft kein Event. Schau später wieder vorbei!</string>
+    <string name="seasonal_event_token_progress">%1$d / %2$d Token</string>
+    <string name="seasonal_bounty_board_title">Aufgabenbrett</string>
+    <string name="seasonal_expedition_title">Expedition</string>
+    <string name="seasonal_boss_title">Raid-Boss</string>
+    <string name="seasonal_go_to_combat">Zum Kampf</string>
+    <string name="seasonal_minigame_hint">Triff %1$d von %2$d Glutfunken, bevor sie verschwinden!</string>
+    <string name="seasonal_minigame_round">Runde %1$d / %2$d — Treffer: %3$d</string>
+    <string name="seasonal_minigame_success">Perfektes Timing! +1 Token.</string>
+    <string name="seasonal_minigame_failure">Verpasst. Versuch es nach der Abklingzeit erneut.</string>
+    <string name="seasonal_tap">Tippen!</string>
+    <string name="seasonal_claim">Einlösen</string>
+    <string name="seasonal_claimed">Eingelöst</string>
+    <string name="seasonal_go">Los</string>
+    <string name="label_banners">Banner</string>
+    <string name="profile_banners_empty">Noch keine Banner verdient. Schließe ein saisonales Event ab, um eines zu erhalten!</string>
+    <string name="profile_banners_earned_on">Erhalten am %s</string>
 </resources>

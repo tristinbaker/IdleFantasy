@@ -350,5 +350,59 @@
       "chance": 0.003,
       "comment": "1/333 per kill"
     }
+  },
+  "sol_invictus": {
+    "id": "sol_invictus",
+    "display_name": "Sol Invictus, the Sundered Flame",
+    "emoji": "☀️",
+    "description": "A shard of the sun itself, torn loose from the Sunspire ruin. Only the boldest warriors dare approach.",
+    "combat_level_required": 65,
+    "duration_minutes": 50,
+    "hp": 2200,
+    "combat_stats": {
+      "attack_level": 60,
+      "strength_level": 55,
+      "defense_level": 60,
+      "attack_bonus": 45,
+      "strength_bonus": 75
+    },
+    "defensive_stats": {
+      "attack_defense": 75,
+      "strength_defense": 75,
+      "ranged_defense": 45,
+      "magic_defense": 100
+    },
+    "xp_rewards": {
+      "attack": 1400,
+      "strength": 1400,
+      "defense": 1400,
+      "hitpoints": 1100,
+      "magic": 700,
+      "ranged": 700
+    },
+    "common_loot": {
+      "coins_min": 15000,
+      "coins_max": 30000,
+      "items": {
+        "fire_rune": {"min": 100, "max": 200},
+        "adamantite_ore": {"min": 40, "max": 80},
+        "runite_ore": {"min": 10, "max": 20}
+      }
+    },
+    "rare_drops": [
+      {
+        "item": "runite_bar",
+        "chance": 0.02,
+        "comment": "1/50"
+      }
+    ],
+    "pet": {
+      "id": "solstice_sprite",
+      "display_name": "Solstice Sprite",
+      "emoji": "🔥",
+      "chance": 0.01,
+      "comment": "1/100 per kill"
+    },
+    "event_key": "sunspire_solstice_2026"
   }
 }

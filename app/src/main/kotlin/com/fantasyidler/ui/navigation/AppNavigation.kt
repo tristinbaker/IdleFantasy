@@ -49,6 +49,7 @@ import com.fantasyidler.ui.screen.InnScreen
 import com.fantasyidler.ui.screen.OnboardingScreen
 import com.fantasyidler.ui.screen.ProfileScreen
 import com.fantasyidler.ui.screen.QuestsScreen
+import com.fantasyidler.ui.screen.SeasonalEventScreen
 import com.fantasyidler.ui.screen.SettingsScreen
 import com.fantasyidler.ui.screen.ShopScreen
 import com.fantasyidler.ui.screen.SkillsScreen
@@ -92,7 +93,7 @@ fun AppNavigation(
     val currentDestination = backStackEntry?.destination
 
     val tabSubScreens: Map<String, Set<String>> = mapOf(
-        "home"   to setOf("shop", "settings", "inn", Screen.WorkerSkills.route, "guild_hall", "guild_detail/{guild}", "church", "slayer", "carnival"),
+        "home"   to setOf("shop", "settings", "inn", Screen.WorkerSkills.route, "guild_hall", "guild_detail/{guild}", "church", "slayer", "carnival", Screen.SeasonalEvent.route),
         "skills" to setOf("farming", "mercantile", Screen.Slayer.route, Screen.BoneAltar.route),
     )
 
@@ -191,11 +192,24 @@ fun AppNavigation(
                     onNavigateToSlayer       = { navController.navigate(Screen.Slayer.route) },
                     onNavigateToBuilder      = { navController.navigate(Screen.Builder.route) },
                     onNavigateToCarnival     = { navController.navigate(Screen.Carnival.route) },
+                    onNavigateToSeasonalEvent = { navController.navigate(Screen.SeasonalEvent.route) },
                 )
             }
             composable(Screen.Quests.route)   { QuestsScreen() }
             composable(Screen.Profile.route)  { ProfileScreen(onNavigateToCombat = { navController.navigate(Screen.Combat.gearRoute) }) }
             composable(Screen.Combat.gearRoute) { CombatScreen(startOnGear = true) }
+            composable(
+                route     = Screen.Combat.presetDungeonRoute,
+                arguments = listOf(navArgument("dungeonKey") { type = NavType.StringType }),
+            ) { entry ->
+                CombatScreen(initialDungeonKey = entry.arguments?.getString("dungeonKey"))
+            }
+            composable(
+                route     = Screen.Combat.presetBossRoute,
+                arguments = listOf(navArgument("bossKey") { type = NavType.StringType }),
+            ) { entry ->
+                CombatScreen(initialBossKey = entry.arguments?.getString("bossKey"))
+            }
             composable(Screen.Settings.route) { entry ->
                 SettingsScreen(
                     onBack           = { if (navController.currentBackStackEntry == entry) navController.popBackStack() },
@@ -263,6 +277,14 @@ fun AppNavigation(
             composable(Screen.Tower.route) { entry ->
                 TowerScreen(
                     onBack = { if (navController.currentBackStackEntry == entry) navController.popBackStack() },
+                )
+            }
+            composable(Screen.SeasonalEvent.route) { entry ->
+                SeasonalEventScreen(
+                    onBack               = { if (navController.currentBackStackEntry == entry) navController.popBackStack() },
+                    onNavigateToExpedition = { key -> navController.navigate(Screen.Combat.presetDungeonRoute(key)) },
+                    onNavigateToBoss       = { key -> navController.navigate(Screen.Combat.presetBossRoute(key)) },
+                    onNavigateToSkills     = { navController.navigate(Screen.Skills.route) },
                 )
             }
         }

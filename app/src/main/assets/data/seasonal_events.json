@@ -1,0 +1,54 @@
+{
+  "sunspire_solstice_2026": {
+    "id": "sunspire_solstice_2026",
+    "display_name": "Sunspire Solstice",
+    "start_ms": 1780272000000,
+    "end_ms": 1788220800000,
+    "token_goal": 100,
+    "pillars": ["bounty", "expedition", "boss", "minigame"],
+    "bounty_tasks": [
+      {
+        "id": "sunspire_firewood",
+        "type": "gather",
+        "target": "oak_log",
+        "amount": 20,
+        "display_name": "Bring firewood for the bonfire",
+        "hint": "Chop Oak Logs — Woodcutting"
+      },
+      {
+        "id": "sunspire_draughts",
+        "type": "craft",
+        "target": "strength_potion",
+        "amount": 5,
+        "display_name": "Brew Strength Potions",
+        "hint": "Herblore"
+      },
+      {
+        "id": "sunspire_wisps",
+        "type": "kill",
+        "target": "sun_wisp",
+        "amount": 15,
+        "display_name": "Drive off Sun Wisps",
+        "hint": "Only found in The Sunspire Expedition"
+      }
+    ],
+    "expedition_dungeon_key": "sunspire",
+    "boss_key": "sol_invictus",
+    "minigame": {
+      "id": "bonfire_rhythm",
+      "display_name": "Bonfire Rhythm",
+      "rounds": 8,
+      "hole_count": 6,
+      "hits_required": 5,
+      "visible_ms": 850,
+      "cooldown_ms": 3600000
+    },
+    "reward_tiers": [
+      {
+        "tokens": 100,
+        "description": "Sunspire Solstice 2026 banner"
+      }
+    ],
+    "banner_text": "Participated in the Sunspire Solstice 2026"
+  }
+}

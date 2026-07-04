@@ -1434,4 +1434,24 @@
     <string name="tower_entry_card_desc">Endless floors. How far can you climb?</string>
     <string name="tower_collect_prompt">Collect your tower run</string>
     <string name="tower_home_collect_hint">Open the Tower screen to collect this run</string>
+
+    <!-- ===== Seasonal Events ===== -->
+    <string name="seasonal_event_title">Сезонное событие</string>
+    <string name="seasonal_event_none">Сейчас нет активных событий. Заходите позже!</string>
+    <string name="seasonal_event_token_progress">%1$d / %2$d жетонов</string>
+    <string name="seasonal_bounty_board_title">Доска заданий</string>
+    <string name="seasonal_expedition_title">Экспедиция</string>
+    <string name="seasonal_boss_title">Рейдовый босс</string>
+    <string name="seasonal_go_to_combat">В бой</string>
+    <string name="seasonal_minigame_hint">Попадите по %1$d из %2$d угольков, пока они не погасли!</string>
+    <string name="seasonal_minigame_round">Раунд %1$d / %2$d — Попаданий: %3$d</string>
+    <string name="seasonal_minigame_success">Идеальный момент! +1 жетон.</string>
+    <string name="seasonal_minigame_failure">Промах. Попробуйте снова после перезарядки.</string>
+    <string name="seasonal_tap">Нажать!</string>
+    <string name="seasonal_claim">Забрать</string>
+    <string name="seasonal_claimed">Получено</string>
+    <string name="seasonal_go">Перейти</string>
+    <string name="label_banners">Знамёна</string>
+    <string name="profile_banners_empty">Пока нет ни одного знамени. Завершите сезонное событие, чтобы получить его!</string>
+    <string name="profile_banners_earned_on">Получено %s</string>
 </resources>

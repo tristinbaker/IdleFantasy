@@ -42,6 +42,10 @@ sealed class Screen(
         selectedIcon = Icons.Filled.Shield,
     ) {
         const val gearRoute = "combat/gear"
+        const val presetDungeonRoute = "combat/preset_dungeon/{dungeonKey}"
+        fun presetDungeonRoute(key: String) = "combat/preset_dungeon/$key"
+        const val presetBossRoute = "combat/preset_boss/{bossKey}"
+        fun presetBossRoute(key: String) = "combat/preset_boss/$key"
     }
     object Home : Screen(
         route        = "home",
@@ -155,6 +159,12 @@ sealed class Screen(
     object Tower : Screen(
         route    = "tower",
         labelRes = R.string.tower_title,
+        icon     = Icons.Filled.Star,
+    )
+
+    object SeasonalEvent : Screen(
+        route    = "seasonal_event",
+        labelRes = R.string.seasonal_event_title,
         icon     = Icons.Filled.Star,
     )
 

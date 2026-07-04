@@ -19,6 +19,8 @@ data class BossData(
     @SerialName("rare_drops") val rareDrops: List<BossRareDrop>,
     val pet: BossPet? = null,
     val tags: List<String> = emptyList(),
+    /** Seasonal Events: non-null if this boss should only appear while the matching event is active. */
+    @SerialName("event_key") val eventKey: String? = null,
 )
 
 @Serializable

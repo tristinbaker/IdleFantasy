@@ -208,5 +208,15 @@
     "effect_type": "xp_boost",
     "boosted_skill": "combat",
     "boost_percent": 5
+  },
+  "solstice_sprite": {
+    "id": "solstice_sprite",
+    "display_name": "Solstice Sprite",
+    "emoji": "🔥",
+    "description": "A tiny ember spirit from the Sunspire Solstice event that boosts your combat prowess.",
+    "source": "Sol Invictus raid (Sunspire Solstice event)",
+    "effect_type": "xp_boost",
+    "boosted_skill": "combat",
+    "boost_percent": 5
   }
 }

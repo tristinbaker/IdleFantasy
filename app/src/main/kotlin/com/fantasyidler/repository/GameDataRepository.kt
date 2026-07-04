@@ -138,6 +138,12 @@ class GameDataRepository @Inject constructor(
         asset("data/guild_daily_quests.json")
     }
 
+    // ------------------------------------------------------------------ seasonal events
+
+    val seasonalEvents: Map<String, com.fantasyidler.data.json.SeasonalEventData> by lazy {
+        asset("data/seasonal_events.json")
+    }
+
     // ------------------------------------------------------------------ skills
 
     /** All skill JSON files in assets/data/skills/, keyed by skill name. */

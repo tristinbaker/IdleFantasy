@@ -130,6 +130,7 @@ fun ProfileScreen(
         stringResource(R.string.label_bestiary),
         stringResource(R.string.armory_tab),
         stringResource(R.string.tab_bonuses),
+        stringResource(R.string.label_banners),
     )
     var selectedTab  by remember { mutableIntStateOf(0) }
     var showEditSheet by remember { mutableStateOf(false) }
@@ -234,6 +235,7 @@ fun ProfileScreen(
                     )
                     7    -> ArmoryTab(viewModel = armoryVm)
                     8    -> BonusesTab(state, viewModel.allEquipment, viewModel.allPets)
+                    9    -> BannersTab(state.seasonalBanners)
                     else -> BestiaryTab(viewModel = bestiaryVm)
                 }
             }
@@ -866,6 +868,39 @@ private fun InventoryRow(name: String, qty: Int) {
 // ---------------------------------------------------------------------------
 // Achievements tab
 // ---------------------------------------------------------------------------
+
+@Composable
+private fun BannersTab(banners: List<com.fantasyidler.data.model.SeasonalBannerEarned>) {
+    if (banners.isEmpty()) {
+        Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Text(
+                text  = stringResource(R.string.profile_banners_empty),
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+        return
+    }
+    val dateFormat = remember { java.text.SimpleDateFormat("MMM d, yyyy", java.util.Locale.getDefault()) }
+    LazyColumn(modifier = Modifier.fillMaxSize()) {
+        items(banners.sortedByDescending { it.completedAtMs }, key = { it.eventId }) { banner ->
+            Surface(
+                color    = MaterialTheme.colorScheme.surfaceVariant,
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp),
+            ) {
+                Column(Modifier.padding(12.dp)) {
+                    Text(banner.displayText, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Bold)
+                    Text(
+                        text  = stringResource(R.string.profile_banners_earned_on, dateFormat.format(java.util.Date(banner.completedAtMs))),
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            }
+        }
+        item { Spacer(Modifier.height(16.dp)) }
+    }
+}
 
 @Composable
 private fun AchievementsTab(

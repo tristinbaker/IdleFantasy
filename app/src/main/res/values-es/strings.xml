@@ -1404,4 +1404,24 @@
     <string name="tower_entry_card_desc">Endless floors. How far can you climb?</string>
     <string name="tower_collect_prompt">Collect your tower run</string>
     <string name="tower_home_collect_hint">Open the Tower screen to collect this run</string>
+
+    <!-- ===== Seasonal Events ===== -->
+    <string name="seasonal_event_title">Evento de Temporada</string>
+    <string name="seasonal_event_none">No hay ningún evento activo ahora. ¡Vuelve más tarde!</string>
+    <string name="seasonal_event_token_progress">%1$d / %2$d fichas</string>
+    <string name="seasonal_bounty_board_title">Tablón de Recompensas</string>
+    <string name="seasonal_expedition_title">Expedición</string>
+    <string name="seasonal_boss_title">Jefe de Incursión</string>
+    <string name="seasonal_go_to_combat">Ir a Combate</string>
+    <string name="seasonal_minigame_hint">¡Acierta %1$d de %2$d brasas antes de que se apaguen!</string>
+    <string name="seasonal_minigame_round">Ronda %1$d / %2$d — Aciertos: %3$d</string>
+    <string name="seasonal_minigame_success">¡Momento perfecto! +1 ficha.</string>
+    <string name="seasonal_minigame_failure">Fallaste. Inténtalo de nuevo tras el enfriamiento.</string>
+    <string name="seasonal_tap">¡Toca!</string>
+    <string name="seasonal_claim">Reclamar</string>
+    <string name="seasonal_claimed">Reclamado</string>
+    <string name="seasonal_go">Ir</string>
+    <string name="label_banners">Estandartes</string>
+    <string name="profile_banners_empty">Todavía no has conseguido ningún estandarte. ¡Completa un Evento de Temporada para conseguir uno!</string>
+    <string name="profile_banners_earned_on">Conseguido el %s</string>
 </resources>

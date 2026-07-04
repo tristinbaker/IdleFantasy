@@ -19,6 +19,8 @@ data class DungeonData(
     @SerialName("safe_zone") val safeZone: Boolean = false,
     /** Hint shown in the dungeon list when lore-locked; overrides the generic expedition hint string. */
     @SerialName("lore_hint") val loreHint: String? = null,
+    /** Seasonal Events: non-null if this dungeon should only appear while the matching event is active. */
+    @SerialName("event_key") val eventKey: String? = null,
 )
 
 @Serializable

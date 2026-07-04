@@ -103,6 +103,8 @@ fun CombatScreen(
     viewModel:          CombatViewModel    = hiltViewModel(),
     inventoryVm:        InventoryViewModel = hiltViewModel(),
     startOnGear:        Boolean            = false,
+    initialDungeonKey:  String?            = null,
+    initialBossKey:     String?            = null,
     onNavigateToTower:  () -> Unit         = {},
 ) {
     val state            by viewModel.uiState.collectAsState()
@@ -111,6 +113,11 @@ fun CombatScreen(
     val snackbarHostState = remember { SnackbarHostState() }
     val visibleDungeons   = remember(state.unlockedDungeons) {
         viewModel.dungeonList.filter { !it.loreUnlockOnly || it.name in state.unlockedDungeons }
+    }
+
+    LaunchedEffect(initialDungeonKey, initialBossKey) {
+        initialDungeonKey?.let { key -> viewModel.dungeonList.firstOrNull { it.name == key }?.let(viewModel::selectDungeon) }
+        initialBossKey?.let { key -> viewModel.bossList.firstOrNull { it.id == key }?.let(viewModel::selectBoss) }
     }
 
     LaunchedEffect(state.snackbarMessage) {

@@ -1,0 +1,22 @@
+{
+  "name": "sunspire",
+  "display_name": "The Sunspire",
+  "description": "A sun-tower ruin cracked open by the solstice, spilling heat spirits into the region. Part of the Sunspire Solstice event.",
+  "recommended_level": 40,
+  "encounter_rate": 0.38,
+  "enemy_spawns": [
+    {
+      "enemy": "sun_wisp",
+      "weight": 8
+    },
+    {
+      "enemy": "ember_hound",
+      "weight": 5
+    },
+    {
+      "enemy": "cinder_colossus",
+      "weight": 1
+    }
+  ],
+  "event_key": "sunspire_solstice_2026"
+}

@@ -1402,4 +1402,24 @@
     <string name="tower_entry_card_desc">Endless floors. How far can you climb?</string>
     <string name="tower_collect_prompt">Collect your tower run</string>
     <string name="tower_home_collect_hint">Open the Tower screen to collect this run</string>
+
+    <!-- ===== Seasonal Events ===== -->
+    <string name="seasonal_event_title">Évènement saisonnier</string>
+    <string name="seasonal_event_none">Aucun évènement en cours. Revenez plus tard !</string>
+    <string name="seasonal_event_token_progress">%1$d / %2$d jetons</string>
+    <string name="seasonal_bounty_board_title">Tableau des primes</string>
+    <string name="seasonal_expedition_title">Expédition</string>
+    <string name="seasonal_boss_title">Boss de raid</string>
+    <string name="seasonal_go_to_combat">Aller au combat</string>
+    <string name="seasonal_minigame_hint">Touchez %1$d braises sur %2$d avant qu\'elles ne s\'éteignent !</string>
+    <string name="seasonal_minigame_round">Manche %1$d / %2$d — Réussites : %3$d</string>
+    <string name="seasonal_minigame_success">Timing parfait ! +1 jeton.</string>
+    <string name="seasonal_minigame_failure">Manqué. Réessayez après le temps de recharge.</string>
+    <string name="seasonal_tap">Appuyez !</string>
+    <string name="seasonal_claim">Réclamer</string>
+    <string name="seasonal_claimed">Réclamé</string>
+    <string name="seasonal_go">Aller</string>
+    <string name="label_banners">Bannières</string>
+    <string name="profile_banners_empty">Aucune bannière obtenue pour le moment. Terminez un évènement saisonnier pour en obtenir une !</string>
+    <string name="profile_banners_earned_on">Obtenue le %s</string>
 </resources>

@@ -1440,4 +1440,24 @@
     <string name="tower_entry_card_desc">Endless floors. How far can you climb?</string>
     <string name="tower_collect_prompt">Collect your tower run</string>
     <string name="tower_home_collect_hint">Open the Tower screen to collect this run</string>
+
+    <!-- ===== Seasonal Events ===== -->
+    <string name="seasonal_event_title">Seizoensevenement</string>
+    <string name="seasonal_event_none">Er is momenteel geen evenement actief. Kom later terug!</string>
+    <string name="seasonal_event_token_progress">%1$d / %2$d tokens</string>
+    <string name="seasonal_bounty_board_title">Beloningsbord</string>
+    <string name="seasonal_expedition_title">Expeditie</string>
+    <string name="seasonal_boss_title">Raidboss</string>
+    <string name="seasonal_go_to_combat">Naar Gevecht</string>
+    <string name="seasonal_minigame_hint">Raak %1$d van de %2$d sintels voordat ze doven!</string>
+    <string name="seasonal_minigame_round">Ronde %1$d / %2$d — Raak: %3$d</string>
+    <string name="seasonal_minigame_success">Perfecte timing! +1 token.</string>
+    <string name="seasonal_minigame_failure">Misgetikt. Probeer opnieuw na de afkoeltijd.</string>
+    <string name="seasonal_tap">Tik!</string>
+    <string name="seasonal_claim">Claim</string>
+    <string name="seasonal_claimed">Geclaimd</string>
+    <string name="seasonal_go">Ga</string>
+    <string name="label_banners">Banieren</string>
+    <string name="profile_banners_empty">Nog geen banieren verdiend. Voltooi een Seizoensevenement om er een te verdienen!</string>
+    <string name="profile_banners_earned_on">Verdiend op %s</string>
 </resources>

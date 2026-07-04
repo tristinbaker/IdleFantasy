@@ -26,6 +26,7 @@ import android.content.Context
 import com.fantasyidler.data.json.BlessingType
 import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.PlayerFlags
+import com.fantasyidler.data.model.SeasonalBannerEarned
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.repository.ChurchRepository
 import com.fantasyidler.repository.GameDataRepository
@@ -78,6 +79,7 @@ class InventoryViewModel @Inject constructor(
         val activeBlessingExpiresAt: Long = 0L,
         val activeBlessingXpPct: Int = 0,
         val skillPrestige: Map<String, Int> = emptyMap(),
+        val seasonalBanners: List<SeasonalBannerEarned> = emptyList(),
     ) {
         val totalLevel: Int get() = skillLevels.values.sum()
 
@@ -148,6 +150,7 @@ class InventoryViewModel @Inject constructor(
                     if (b.type == BlessingType.XP) ((b.magnitude - 1f) * 100 + 0.5f).toInt() else 0
                 },
                 skillPrestige           = flags.skillPrestige,
+                seasonalBanners         = flags.seasonalBannersEarned,
                 isLoading   = false,
             )
         }

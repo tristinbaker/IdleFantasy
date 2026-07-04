@@ -140,6 +140,26 @@ data class PlayerFlags(
     @SerialName("tower_hp_bonus") val towerHpBonus: Int = 0,
     /** Infinite Tower: cumulative coin drop bonus % from milestones. */
     @SerialName("tower_coin_bonus_pct") val towerCoinBonusPct: Int = 0,
+    /** Seasonal Events: tokens earned so far per event id, toward that event's token_goal. */
+    @SerialName("seasonal_tokens_by_event") val seasonalTokensByEvent: Map<String, Int> = emptyMap(),
+    /** Seasonal Events: progress map taskId -> count accumulated since the last daily reset. */
+    @SerialName("seasonal_bounty_progress") val seasonalBountyProgress: Map<String, Int> = emptyMap(),
+    /** Seasonal Events: task IDs whose Bounty Board reward has already been claimed since the last daily reset. */
+    @SerialName("seasonal_bounty_claimed") val seasonalBountyClaimed: List<String> = emptyList(),
+    /** Seasonal Events: epoch ms when the Bounty Board tasks last reset (6am rollover, mirrors guild dailies). */
+    @SerialName("seasonal_bounty_generated_at") val seasonalBountyGeneratedAt: Long = 0L,
+    /** Seasonal Events: epoch ms when the minigame cooldown expires; 0 = not on cooldown. */
+    @SerialName("seasonal_minigame_cooldown_at") val seasonalMinigameCooldownAt: Long = 0L,
+    /** Seasonal Events: permanent record of every event completed, kept even after the event's data is removed. */
+    @SerialName("seasonal_banners_earned") val seasonalBannersEarned: List<SeasonalBannerEarned> = emptyList(),
+)
+
+/** A permanent snapshot of a completed Seasonal Event, shown in the Profile Banners tab. */
+@Serializable
+data class SeasonalBannerEarned(
+    @SerialName("event_id")       val eventId: String,
+    @SerialName("display_text")   val displayText: String,
+    @SerialName("completed_at_ms") val completedAtMs: Long,
 )
 
 /** Stats saved after each dungeon run; keyed by dungeon name in PlayerFlags. */
