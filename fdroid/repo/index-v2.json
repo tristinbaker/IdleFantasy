@@ -14,7 +14,7 @@
       }
     },
     "address": "https://idlefantasy.tristinbaker.xyz/fdroid/repo",
-    "timestamp": 1783082000884,
+    "timestamp": 1783160913634,
     "categories": {
       "Games": {
         "name": {
@@ -31,7 +31,7 @@
           "Games"
         ],
         "issueTracker": "https://github.com/tristinbaker/IdleFantasy/issues",
-        "lastUpdated": 1783081975329,
+        "lastUpdated": 1783160888192,
         "license": "GPL-3.0-only",
         "sourceCode": "https://github.com/tristinbaker/IdleFantasy",
         "screenshots": {
@@ -140,6 +140,56 @@
         "preferredSigner": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
       },
       "versions": {
+        "7e3f759fd8daf5f0c0b3a173efd105ea8b06276b2ff5d215440c30056e53219e": {
+          "added": 1783160888192,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_103.apk",
+            "sha256": "7e3f759fd8daf5f0c0b3a173efd105ea8b06276b2ff5d215440c30056e53219e",
+            "size": 5415110
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.10.11",
+            "versionCode": 103,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fix: Removed impossible Spectral Knight slayer task (no such monster exists)\n• Fix: Carnival prize shop no longer lets Juggling Imp be re-bought after owning it\n• Fix: Herblore cape no longer misclassified under Materials in the shop; added missing Herblore, Thieving, Construction, and Slayer 99 skill capes\n• New: Added a contribute-from-inventory button to regular farming guild quests\n• Fix: Farming guild daily donations no longer advance progress if the item consumption fails\n• Balance: Reba"
+          }
+        },
         "9d505b6b694b19ba8716e601d26d6f4a818a9d4b931a366478e1601abb311e84": {
           "added": 1783081975329,
           "file": {
