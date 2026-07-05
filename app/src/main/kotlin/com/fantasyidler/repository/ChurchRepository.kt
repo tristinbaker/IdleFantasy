@@ -20,8 +20,6 @@ class ChurchRepository @Inject constructor(
     private val buffNotifScheduler: BuffNotificationScheduler,
 ) {
     companion object {
-        const val BLESSING_DURATION_MS = 24L * 3_600_000L
-
         val ALL_BLESSINGS: List<BlessingData> = listOf(
             BlessingData("blessed_focus",      1,  BlessingType.XP,      1.05f),
             BlessingData("stone_skin",         1,  BlessingType.DEFENSE, 2f),

@@ -1103,7 +1103,7 @@
     <string name="town_building_inn_name">Inn</string>
     <string name="town_building_guild_hall_name">Guild Hall</string>
     <string name="town_building_church_name">Church</string>
-    <string name="town_building_current_tier">Kademe %1$d / 3</string>
+    <string name="town_building_current_tier">Kademe %1$d / %2$d</string>
     <string name="town_building_maxed_label">Tamamen Geliştirildi</string>
     <string name="town_upgrade_next_label">Sonraki Yükseltme</string>
     <string name="town_upgrade_constr_req">İnşaat Sv. %1$d gerekli</string>
@@ -1230,7 +1230,7 @@
     <string name="carnival_active_appraisal_desc">Hangi eşya açık pazarda daha değerlidir?</string>
     <string name="carnival_appraisal_which">Hangisi daha değerli?</string>
     <string name="carnival_play">Oyna</string>
-    <string name="carnival_cooldown">%1$ds %2$dd içinde hazır</string>
+    <string name="carnival_cooldown">%1$ddk %2$dsn içinde hazır</string>
     <string name="carnival_ticket_cost">%1$d bilet</string>
     <string name="carnival_redeem">Kullan</string>
     <string name="carnival_queue_added">Sıraya eklendi: %1$s.</string>

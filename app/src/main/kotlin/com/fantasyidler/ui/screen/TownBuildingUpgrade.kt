@@ -73,7 +73,7 @@ fun BuildingUpgradeCard(
             val tierText = if (isMaxed)
                 stringResource(R.string.town_building_maxed_label)
             else
-                stringResource(R.string.town_building_current_tier, currentTier)
+                stringResource(R.string.town_building_current_tier, currentTier, buildingDef.tiers.size)
             Text(
                 text       = tierText,
                 style      = MaterialTheme.typography.bodyMedium,

@@ -1127,7 +1127,7 @@
     <string name="town_building_guild_hall_name">Guild Hall</string>
     <string name="town_building_church_name">Church</string>
     <string name="town_upgrade_section_title">Городское Здание</string>
-    <string name="town_building_current_tier">Уровень %1$d / 3</string>
+    <string name="town_building_current_tier">Уровень %1$d / %2$d</string>
     <string name="town_building_maxed_label">Полностью Улучшено</string>
     <string name="town_upgrade_next_label">Следующее Улучшение</string>
     <string name="town_upgrade_constr_req">Строительство Ур. %1$d требуется</string>
@@ -1255,7 +1255,7 @@
     <string name="carnival_active_appraisal_desc">Какой предмет стоит дороже на открытом рынке?</string>
     <string name="carnival_appraisal_which">Что дороже?</string>
     <string name="carnival_play">Играть</string>
-    <string name="carnival_cooldown">Готово через %1$dч %2$dм</string>
+    <string name="carnival_cooldown">Готово через %1$dм %2$dс</string>
     <string name="carnival_ticket_cost">%1$d билетов</string>
     <string name="carnival_redeem">Обменять</string>
     <string name="carnival_queue_added">Добавлено в очередь: %1$s.</string>

@@ -103,16 +103,16 @@ class AchievementsViewModel @Inject constructor(
         )
 
         val townTiers = flags.townBuildingTiers
-        val allBuildingKeys = listOf("inn", "guild_hall", "church", "fairgrounds")
+        val allBuildingKeys = gameData.townBuildings.keys
         groups["Town"] = listOf(
             ach("town_first_upgrade", R.string.achievement_town_first_upgrade_name, R.string.achievement_town_first_upgrade_desc, "🏗️",
                 allBuildingKeys.any { (townTiers[it] ?: 0) >= 1 }),
             ach("town_all_tier1", R.string.achievement_town_all_tier1_name, R.string.achievement_town_all_tier1_desc, "🏘️",
                 allBuildingKeys.all { (townTiers[it] ?: 0) >= 1 }),
             ach("town_one_maxed", R.string.achievement_town_one_maxed_name, R.string.achievement_town_one_maxed_desc, "🏰",
-                allBuildingKeys.any { (townTiers[it] ?: 0) >= 3 }),
+                allBuildingKeys.any { (townTiers[it] ?: 0) >= (gameData.townBuildings[it]?.tiers?.size ?: 0) }),
             ach("town_all_maxed", R.string.achievement_town_all_maxed_name, R.string.achievement_town_all_maxed_desc, "👑",
-                allBuildingKeys.all { (townTiers[it] ?: 0) >= 3 }),
+                allBuildingKeys.all { (townTiers[it] ?: 0) >= (gameData.townBuildings[it]?.tiers?.size ?: 0) }),
         )
 
         groups["Tower"] = listOf(

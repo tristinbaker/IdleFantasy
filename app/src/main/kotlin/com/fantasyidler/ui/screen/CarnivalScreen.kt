@@ -1,9 +1,6 @@
 package com.fantasyidler.ui.screen
 
-import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -78,7 +75,6 @@ import com.fantasyidler.ui.viewmodel.CarnivalViewModel
 import com.fantasyidler.ui.viewmodel.Difficulty
 import com.fantasyidler.util.GameStrings
 import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.tween
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import kotlinx.coroutines.coroutineScope
@@ -396,16 +392,14 @@ private fun CooldownRow(gameKey: String, resumesAtMs: Long, viewModel: CarnivalV
         while (remainingMs > 0) {
             delay(1_000L)
             remainingMs = resumesAtMs - System.currentTimeMillis()
-            if (remainingMs <= 0) {
-                viewModel.clearCooldownIfExpired(gameKey)
-            }
         }
+        viewModel.clearCooldownIfExpired(gameKey)
     }
-    val totalMinutes = (remainingMs / 60_000L).coerceAtLeast(0L)
-    val hours   = totalMinutes / 60L
-    val minutes = totalMinutes % 60L
+    val totalSeconds = (remainingMs / 1_000L).coerceAtLeast(0L)
+    val minutes   = totalSeconds / 60L
+    val seconds = totalSeconds % 60L
     Text(
-        text  = stringResource(R.string.carnival_cooldown, hours, minutes),
+        text  = stringResource(R.string.carnival_cooldown, minutes, seconds),
         style = MaterialTheme.typography.bodyMedium,
         color = MaterialTheme.colorScheme.onSurfaceVariant,
     )

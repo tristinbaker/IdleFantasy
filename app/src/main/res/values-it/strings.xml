@@ -1142,7 +1142,7 @@
     <string name="town_building_inn_name">Locanda</string>
     <string name="town_building_guild_hall_name">Sala della Gilda</string>
     <string name="town_building_church_name">Chiesa</string>
-    <string name="town_building_current_tier">Livello %1$d / 3</string>
+    <string name="town_building_current_tier">Livello %1$d / %2$d</string>
     <string name="town_building_maxed_label">Migliorato Completamente</string>
     <string name="town_upgrade_next_label">Prossima Miglioria</string>
     <string name="town_upgrade_constr_req">Richiesta Costruzione Lv. %1$d</string>
@@ -1277,7 +1277,7 @@
     <string name="carnival_active_appraisal_desc">Sarai in grado di valutare correttamente questi oggetti?</string>
     <string name="carnival_appraisal_which">Quale vale di più?</string>
     <string name="carnival_play">Gioca</string>
-    <string name="carnival_cooldown">Pronto in %1$dh %2$dm</string>
+    <string name="carnival_cooldown">Pronto in %1$dm %2$ds</string>
     <string name="carnival_ticket_cost">%1$d biglietti</string>
     <string name="carnival_redeem">Riscatta</string>
     <string name="carnival_queue_added">Aggiunto alla coda: %1$s.</string>

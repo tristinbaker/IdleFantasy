@@ -893,7 +893,7 @@
     <string name="town_building_inn_name">Penginapan</string>
     <string name="town_building_guild_hall_name">Balai Serikat</string>
     <string name="town_building_church_name">Gereja</string>
-    <string name="town_building_current_tier">Tingkat %1$d / 3</string>
+    <string name="town_building_current_tier">Tingkat %1$d / %2$d</string>
     <string name="town_building_maxed_label">Sepenuhnya Diupgrade</string>
     <string name="town_upgrade_next_label">Peningkatan Berikutnya</string>
     <string name="town_upgrade_constr_req">Konstruksi Lv. %1$d diperlukan</string>
@@ -1008,7 +1008,7 @@
     <string name="carnival_active_appraisal_desc">item mana yang lebih berharga di pasar terbuka?</string>
     <string name="carnival_appraisal_which">Mana yang lebih berharga?</string>
     <string name="carnival_play">Main</string>
-    <string name="carnival_cooldown">Siap dalam %1$dh %2$dm</string>
+    <string name="carnival_cooldown">Siap dalam %1$dm %2$ds</string>
     <string name="carnival_ticket_cost">tiket %1$d</string>
     <string name="carnival_redeem">Penukaran</string>
     <string name="carnival_queue_added">Ditambahkan ke antrian: %1$s.</string>

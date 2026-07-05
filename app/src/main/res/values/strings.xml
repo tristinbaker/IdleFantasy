@@ -1142,7 +1142,7 @@
     <string name="town_building_inn_name">Inn</string>
     <string name="town_building_guild_hall_name">Guild Hall</string>
     <string name="town_building_church_name">Church</string>
-    <string name="town_building_current_tier">Tier %1$d / 3</string>
+    <string name="town_building_current_tier">Tier %1$d / %2$d</string>
     <string name="town_building_maxed_label">Fully Upgraded</string>
     <string name="town_upgrade_next_label">Next Upgrade</string>
     <string name="town_upgrade_constr_req">Construction Lv. %1$d required</string>
@@ -1282,7 +1282,7 @@
     <string name="carnival_active_appraisal_desc">Which item is worth more in the open market?</string>
     <string name="carnival_appraisal_which">Which is worth more?</string>
     <string name="carnival_play">Play</string>
-    <string name="carnival_cooldown">Ready in %1$dh %2$dm</string>
+    <string name="carnival_cooldown">Ready in %1$dm %2$ds</string>
     <string name="carnival_ticket_cost">%1$d tickets</string>
     <string name="carnival_redeem">Redeem</string>
     <string name="carnival_queue_added">Added to queue: %1$s.</string>
