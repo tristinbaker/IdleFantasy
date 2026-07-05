@@ -1,0 +1,4 @@
+• Fix: Mercantile Cape (level 99 reward) can now be equipped and is no longer sold as junk
+• Fix: Farming produce (pumpkin, strawberry, tomato, watermelon, etc.) no longer appears in Sell Junk
+• Fix: Tower kills now count toward weekly quests, daily quests, slayer tasks, and guild progress
+• Update: Inn description now clarifies that worker sessions do not count toward your quests

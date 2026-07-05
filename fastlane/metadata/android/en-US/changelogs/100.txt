@@ -1,0 +1,8 @@
+• Guild gather quests now show the correct action verb (Mine, Catch, Chop, Harvest) instead of "Collect"
+• Added Farming Guild gather quest verb (Harvest)
+• Carnival ring toss hints now correctly display percentage symbols instead of %%
+• Juggling Imp from the Carnival shop now correctly goes to your pet list instead of your inventory
+• Pet bonuses from multiple pets now stack correctly — the full combined boost is applied everywhere
+• Worker ranged sessions now correctly use all available arrow tiers, not just the best one
+• Repeat Action on boss/dungeon sessions now correctly applies your active potion
+• Boss session summaries now show arrows, runes, and food consumed in the collection report

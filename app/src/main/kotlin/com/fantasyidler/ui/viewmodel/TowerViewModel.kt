@@ -17,10 +17,12 @@ import com.fantasyidler.data.model.Skills
 import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.repository.ChurchRepository
 import com.fantasyidler.repository.GameDataRepository
+import com.fantasyidler.repository.GuildRepository
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.QueuedSessionStarter
 import com.fantasyidler.repository.QuestRepository
 import com.fantasyidler.repository.SessionRepository
+import com.fantasyidler.repository.SlayerRepository
 import com.fantasyidler.simulator.CombatSimulator
 import com.fantasyidler.simulator.SkillSimulator
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -34,10 +36,13 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
 import javax.inject.Inject
+import kotlin.math.roundToInt
 
 data class TowerUiState(
     val isLoading: Boolean = true,
     val currentFloor: Int = 0,
+    val nextFloorToQueue: Int = 1,
+    val enemyStrengthPct: Int = 0,
     val bestFloor: Int = 0,
     val towerSession: SkillSession? = null,
     val claimableMilestones: List<Int> = emptyList(),
@@ -61,6 +66,8 @@ class TowerViewModel @Inject constructor(
     private val gameData: GameDataRepository,
     private val queuedSessionStarter: QueuedSessionStarter,
     private val questRepo: QuestRepository,
+    private val slayerRepo: SlayerRepository,
+    private val guildRepo: GuildRepository,
     private val json: Json,
 ) : ViewModel() {
 
@@ -137,9 +144,22 @@ class TowerViewModel @Inject constructor(
             val claimable = MILESTONES.map { it.floor }.filter { floor ->
                 floor <= flags.towerBestFloor && floor !in flags.towerMilestonesClaimed
             }
+            val lastQueuedFloor = flags.sessionQueue
+                .lastOrNull { it.skillName == "tower" }
+                ?.activityKey?.removePrefix("tower_floor_")?.toIntOrNull()
+            val runningFloor = lastQueuedFloor
+                ?: towerSession?.activityKey?.removePrefix("tower_floor_")?.toIntOrNull()
+                ?: flags.towerCurrentFloor
+            val enemyStrengthPct = if (flags.towerCurrentFloor > 0) {
+                val baseline = tierPower(gameData.enemies, 1)
+                val current  = tierPower(scaledEnemies(flags.towerCurrentFloor), flags.towerCurrentFloor)
+                if (baseline > 0) (((current / baseline) - 1.0) * 100).roundToInt() else 0
+            } else 0
             extra.copy(
                 isLoading           = false,
                 currentFloor        = flags.towerCurrentFloor,
+                nextFloorToQueue    = runningFloor + 1,
+                enemyStrengthPct    = enemyStrengthPct,
                 bestFloor           = flags.towerBestFloor,
                 towerSession        = towerSession,
                 claimableMilestones = claimable,
@@ -163,7 +183,42 @@ class TowerViewModel @Inject constructor(
         enemySpawns      = tierFor(floor),
     )
 
-    private fun scaledEnemies(): Map<String, EnemyData> = gameData.enemies
+    /**
+     * Floors 1-100 use the fixed tier stats from FLOOR_TIERS as-is. Beyond floor 100, the
+     * (fixed) 101+ tier's enemies keep scaling smoothly up to floor 250: hp grows toward
+     * ~10x (landing near void_sovereign, the game's current hardest raid boss) while
+     * attack/defense only grow up to +30%, so higher floors take longer to clear rather
+     * than becoming more lethal.
+     */
+    private fun scaledEnemies(floor: Int): Map<String, EnemyData> {
+        if (floor <= 100) return gameData.enemies
+        val t = (floor.coerceIn(101, 250) - 100) / 150f
+        val hpMult = 1f + t * 9f
+        val statMult = 1f + t * 0.3f
+        val relevantKeys = tierFor(floor).map { it.enemy }.toSet()
+        return gameData.enemies.mapValues { (key, enemy) ->
+            if (key !in relevantKeys) return@mapValues enemy
+            enemy.copy(
+                hp = (enemy.hp * hpMult).toInt().coerceAtLeast(1),
+                combatStats = enemy.combatStats.copy(
+                    attackBonus   = (enemy.combatStats.attackBonus   * statMult).toInt(),
+                    strengthBonus = (enemy.combatStats.strengthBonus * statMult).toInt(),
+                ),
+                defensiveStats = enemy.defensiveStats.copy(
+                    attackDefense   = (enemy.defensiveStats.attackDefense   * statMult).toInt(),
+                    strengthDefense = (enemy.defensiveStats.strengthDefense * statMult).toInt(),
+                    rangedDefense   = (enemy.defensiveStats.rangedDefense   * statMult).toInt(),
+                    magicDefense    = (enemy.defensiveStats.magicDefense    * statMult).toInt(),
+                ),
+            )
+        }
+    }
+
+    /** Effective power heuristic used to compute the "Enemy strength" display, relative to floor 1. */
+    private fun tierPower(enemies: Map<String, EnemyData>, floor: Int): Double =
+        tierFor(floor).mapNotNull { spawn -> enemies[spawn.enemy] }.sumOf { e ->
+            e.hp.toDouble() * (e.combatStats.attackBonus + e.combatStats.strengthBonus).coerceAtLeast(1)
+        }
 
     private fun petBoostFor(petsJson: String): Int {
         val pets = try { json.decodeFromString<List<OwnedPet>>(petsJson) } catch (_: Exception) { return 0 }
@@ -180,7 +235,11 @@ class TowerViewModel @Inject constructor(
                 val agility = (json.decodeFromString<Map<String, Int>>(player.skillLevels))[Skills.AGILITY] ?: 1
                 val flags: PlayerFlags = try { json.decodeFromString(player.flags) } catch (_: Exception) { PlayerFlags() }
                 val activeSession = sessionRepo.getActiveSession()
-                val runningFloor = activeSession?.activityKey?.removePrefix("tower_floor_")?.toIntOrNull()
+                val lastQueuedFloor = flags.sessionQueue
+                    .lastOrNull { it.skillName == "tower" }
+                    ?.activityKey?.removePrefix("tower_floor_")?.toIntOrNull()
+                val runningFloor = lastQueuedFloor
+                    ?: activeSession?.activityKey?.removePrefix("tower_floor_")?.toIntOrNull()
                     ?: flags.towerCurrentFloor
                 val nextFloor = runningFloor + 1
                 val enqueued = playerRepo.enqueueAction(
@@ -188,7 +247,7 @@ class TowerViewModel @Inject constructor(
                         skillName           = "tower",
                         activityKey         = "tower_floor_$nextFloor",
                         skillDisplayName    = "Infinite Tower: Floor $nextFloor",
-                        estimatedDurationMs = SkillSimulator.sessionDurationMs(agility),
+                        estimatedDurationMs = SkillSimulator.sessionDurationMs(agility, flags.skillPrestige[Skills.AGILITY] ?: 0),
                     )
                 )
                 if (enqueued) queuedSessionStarter.startNextQueued()
@@ -254,7 +313,7 @@ class TowerViewModel @Inject constructor(
                 val towerHpBonus = flags.towerHpBonus
 
                 val dungeon    = buildFloorDungeon(floor)
-                val enemies    = scaledEnemies()
+                val enemies    = scaledEnemies(floor)
                 val foodHeal   = gameData.foodHealValues
                 val availableFood   = inventory.filterKeys { it in flags.equippedFood.keys }
                 val availableArrows = ARROW_TIERS.filter { (inventory[it] ?: 0) > 0 }.associate { it to (inventory[it] ?: 0) }
@@ -280,6 +339,7 @@ class TowerViewModel @Inject constructor(
                     arrowStrengthBonus  = arrowStrBonus + totalRangedStrBonus,
                     spellMaxHit         = (selectedSpell?.maxHit ?: 0) + totalMagicDmgBonus,
                     agilityLevel        = levels[Skills.AGILITY] ?: 1,
+                    agilityPrestige     = prestigeMap[Skills.AGILITY] ?: 0,
                     petBoostPct         = petBoostFor(player.pets),
                     equippedFood        = availableFood,
                     foodHealValues      = foodHeal,
@@ -370,22 +430,26 @@ class TowerViewModel @Inject constructor(
             val xpForRepo = totalXpPerSkill.mapValues { (_, xp) -> (xp * towerXpMult).toLong() }
             coinsGained   = (coinsGained * towerCoinMult).toLong()
 
-            playerRepo.applyMultiSkillResults(xpForRepo, allItems, coinsGained)
-            if (allFoodConsumed.isNotEmpty()) playerRepo.consumeItems(allFoodConsumed)
-
-            val floor = session.activityKey.removePrefix("tower_floor_").toIntOrNull() ?: 1
-
-            if (allKillsByEnemy.isNotEmpty()) {
+            if (!playerDied && allKillsByEnemy.isNotEmpty()) {
+                var slayerXp = 0L
+                for ((enemy, k) in allKillsByEnemy) slayerXp += slayerRepo.recordKills(enemy, k)
+                if (slayerXp > 0L) totalXpPerSkill[Skills.SLAYER] = (totalXpPerSkill[Skills.SLAYER] ?: 0L) + slayerXp
                 val combatStyle = detectCombatStyle(totalXpPerSkill)
-                val foodConsumedTotal = allFoodConsumed.values.sum()
                 questRepo.recordCombat(
                     dungeonKey        = session.activityKey,
                     killsByEnemy      = allKillsByEnemy,
                     loot              = allItems,
                     combatStyle       = combatStyle,
-                    foodConsumedTotal = foodConsumedTotal,
+                    foodConsumedTotal = allFoodConsumed.values.sum(),
                 )
+                playerRepo.recordDailyKills(allKillsByEnemy)
+                guildRepo.recordGuildCombat(allKillsByEnemy, combatStyle)
             }
+
+            playerRepo.applyMultiSkillResults(xpForRepo, allItems, coinsGained)
+            if (allFoodConsumed.isNotEmpty()) playerRepo.consumeItems(allFoodConsumed)
+
+            val floor = session.activityKey.removePrefix("tower_floor_").toIntOrNull() ?: 1
 
             val updatedFlags = playerRepo.getFlags()
             if (playerDied) {

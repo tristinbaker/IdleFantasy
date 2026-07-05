@@ -19,3 +19,4 @@ out
 .venv
 keystore.p12
 scripts/release_apk.sh
+*.md.backup

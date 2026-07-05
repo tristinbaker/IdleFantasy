@@ -675,7 +675,7 @@
         <item>Yara</item>
     </string-array>
     <string name="inn_title">Таверна</string>
-    <string name="inn_desc">Наймите работника для тренировки навыков или купите еду из ежедневного меню.</string>
+    <string name="inn_desc">Наймите работника для тренировки навыков или купите еду из ежедневного меню. Работники не засчитываются в ваших заданиях.</string>
     <string name="inn_worker_already_hired">Работник уже нанят.</string>
     <string name="inn_not_enough_coins">Недостаточно монет.</string>
     <string name="inn_hire">Нанять</string>
@@ -792,7 +792,7 @@
     <string name="guild_locked_hint">Требуется уровень гильдии %1$d</string>
     <string name="guild_no_dailies">Завершайте квесты гильдии, чтобы зарабатывать репутацию и открывать ежедневные поручения.</string>
     <string name="guild_contribute_inventory">Передать из инвентаря (%1$d доступно)</string>
-    <string name="guild_quest_desc_gather">Собрать %1$d %2$s для %3$s.</string>
+    <string name="guild_quest_desc_gather">%1$s %2$d %3$s для %4$s.</string>
     <string name="guild_quest_desc_craft">Скрафтить %1$d %2$s для %3$s.</string>
     <string name="guild_quest_desc_kill">Победить %1$d врагов в ближнем бою (%2$s).</string>
     <string name="guild_quest_desc_prayer">Захоронить %1$d костей для %2$s.</string>
@@ -1238,7 +1238,7 @@
     <string name="carnival_queue">В очередь</string>
     <string name="carnival_ring_toss">Набрасывание колец</string>
     <string name="carnival_active_ring_desc">Бросайте кольцо, когда указатель достигает золотой целевой зоны.</string>
-    <string name="carnival_ring_target_hint">Целитесь в центр (45%%–55%%)</string>
+    <string name="carnival_ring_target_hint">Целитесь в центр (45%–55%)</string>
     <string name="carnival_throw">Бросить!</string>
     <string name="carnival_hammer_strike">Удар молотом</string>
     <string name="carnival_active_hammer_desc">Ударьте, когда измеритель мощности достигает своего пика.</string>
@@ -1275,7 +1275,7 @@
     <string name="carnival_shell_game">Pick-a-Cup</string>
     <string name="carnival_active_shell_desc">Watch which cup hides the gem, then pick it after the shuffle!</string>
     <string name="carnival_shell_showing">Watch carefully — gem is under cup %1$d</string>
-    <string name="carnival_shell_watch">Watch closely...</string>
+    <string name="carnival_shell_watch">Watch closely…</string>
     <string name="carnival_shell_pick">Which cup is it under?</string>
     <string name="carnival_shell_won">Correct! +%1$d tickets</string>
     <string name="carnival_shell_missed">Wrong! The gem was under cup %1$d.</string>
@@ -1294,20 +1294,20 @@
     <string name="carnival_difficulty_label">Difficulty</string>
     <string name="carnival_difficulty_normal">Normal</string>
     <string name="carnival_difficulty_hard">Hard</string>
-    <string name="carnival_ring_hard_hint">Hard: 52%%–57%% target, 7 tickets</string>
+    <string name="carnival_ring_hard_hint">Hard: 52%–57% target, 7 tickets</string>
 
     <!-- ===== Magic Bean / Farming ===== -->
     <string name="farming_bean_note_1">Маленький росток пробился сквозь землю.</string>
     <string name="farming_bean_note_2">Стебель растёт с неестественной скоростью.</string>
     <string name="farming_bean_note_3">Листья огромны — таких вы никогда не видели.</string>
-    <string name="farming_bean_note_4">Облака начали собираться вокруг верхней части стебля...</string>
+    <string name="farming_bean_note_4">Облака начали собираться вокруг верхней части стебля…</string>
     <string name="farming_bean_note_5">Странные звуки доносятся откуда-то сверху.</string>
     <string name="farming_bean_note_6">Далёкий гул. Что-то шевелится на высоте.</string>
     <string name="farming_bean_note_7">Бобовый стебель содрогается. Что-то ждёт на вершине.</string>
     <string name="farming_bean_note_8">Почти там. Воздух становится разреженным. Вершина почти видна.</string>
     <string name="farming_bean_ready">Бобовый стебель уходит за облака. Готовы взобраться?</string>
     <string name="farming_bean_climb">Взобраться</string>
-    <string name="farming_bean_climbed">Вы взобрались по бобовому стеблю. Что-то ждёт вас...</string>
+    <string name="farming_bean_climbed">Вы взобрались по бобовому стеблю. Что-то ждёт вас…</string>
     <string name="farming_bean_picker_stats">\?\?\?  •  \?\?\?  •  \?\?\?</string>
     <string name="farming_magic_bean_one_plot">Волшебные бобы можно посадить только на одну грядку</string>
 

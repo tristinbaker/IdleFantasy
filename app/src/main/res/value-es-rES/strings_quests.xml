@@ -407,6 +407,7 @@
     <string name="daily_verb_runecrafting">Craft</string>
     <string name="daily_verb_prayer">Bury</string>
     <string name="daily_verb_construction">Construir</string>
+    <string name="daily_verb_farming">Cosechar</string>
     <string name="quest_obj_gather">%1$s %2$d %3$s</string>
     <string name="quest_obj_craft">%1$s %2$d %3$s</string>
     <string name="quest_obj_prayer">Bury %1$d bones of any type</string>

@@ -43,24 +43,32 @@ class FarmingRepository @Inject constructor(
 
     /** Consume seed (and optional fertilizer ash) from inventory and plant the crop. Returns false if seed is missing. */
     suspend fun plantCrop(patchNumber: Int, crop: CropData, ashKey: String? = null): Boolean {
-        val consumed = playerRepo.consumeItems(mapOf(crop.seedName to 1))
-        if (!consumed) return false
+        val success = playerRepo.withLock {
+            val player = playerRepo.getOrCreatePlayer()
+            val inventory: Map<String, Int> = kotlinx.serialization.json.Json.decodeFromString(player.inventory)
+            if ((inventory[crop.seedName] ?: 0) < 1) return@withLock false
+            if (ashKey != null && (inventory[ashKey] ?: 0) < 1) return@withLock false
+            
+            val toConsume = mutableMapOf(crop.seedName to 1)
+            if (ashKey != null) toConsume[ashKey] = 1
+            playerRepo.consumeItemsUnlocked(toConsume)
 
-        if (ashKey != null) {
-            playerRepo.consumeItems(mapOf(ashKey to 1))
-            val flags = playerRepo.getFlags()
-            playerRepo.updateFlags(flags.copy(
-                farmingFertilizer = flags.farmingFertilizer + (patchNumber.toString() to ashKey)
-            ))
+            if (ashKey != null) {
+                val flags = playerRepo.getFlagsUnlocked()
+                playerRepo.updateFlagsUnlocked(flags.copy(
+                    farmingFertilizer = flags.farmingFertilizer + (patchNumber.toString() to ashKey)
+                ))
+            }
+            if (crop.id == "magic_bean") {
+                val f = playerRepo.getFlagsUnlocked()
+                if (!f.magicBeanPlanted) playerRepo.updateFlagsUnlocked(f.copy(magicBeanPlanted = true))
+            }
+            true
         }
+        if (!success) return false
 
         val plantedAt = System.currentTimeMillis()
         patchDao.upsert(FarmingPatch(patchNumber = patchNumber, cropType = crop.id, plantedAt = plantedAt))
-
-        if (crop.id == "magic_bean") {
-            val f = playerRepo.getFlags()
-            if (!f.magicBeanPlanted) playerRepo.updateFlags(f.copy(magicBeanPlanted = true))
-        }
 
         if (crop.plantingXp > 0) {
             playerRepo.applySessionResults(
@@ -76,12 +84,13 @@ class FarmingRepository @Inject constructor(
 
     /** Called when the player taps "Climb" on a ready magic bean patch. Unlocks the Cloud Kingdom dungeon. */
     suspend fun climbBeanstalk(patchNumber: Int) {
-        val flags = playerRepo.getFlags()
-        if (!flags.unlockedDungeons.contains("cloud_kingdom")) {
-            playerRepo.updateFlags(flags.copy(
-                unlockedDungeons  = flags.unlockedDungeons + "cloud_kingdom",
-                magicBeanPlanted  = true,
-            ))
+        playerRepo.updateFlagsAtomically { flags ->
+            if (!flags.unlockedDungeons.contains("cloud_kingdom")) {
+                flags.copy(
+                    unlockedDungeons  = flags.unlockedDungeons + "cloud_kingdom",
+                    magicBeanPlanted  = true,
+                )
+            } else flags
         }
         cancelAlarm(patchNumber)
         patchDao.clear(patchNumber)
@@ -104,7 +113,7 @@ class FarmingRepository @Inject constructor(
         val ashKey = flags.farmingFertilizer[patchNumber.toString()]
         val ashMult = ashYieldMultiplier(ashKey)
 
-        var yield = Random.nextInt(crop.yieldMin, crop.yieldMax + 1)
+        var yield = kotlin.random.Random.nextInt(crop.yieldMin, crop.yieldMax + 1)
         yield = (yield * (1f + hoeBonus) * ashMult).roundToInt()
         if (capedDouble) yield *= 2
 
@@ -122,22 +131,23 @@ class FarmingRepository @Inject constructor(
         playerRepo.recordWeeklyProgress("farming", "any", 1)
 
         val farmingPet = gameData.pets.values.firstOrNull { it.boostedSkill == Skills.FARMING }
-        if (farmingPet != null && Random.nextDouble() < 1.0 / 1000.0) {
+        if (farmingPet != null && kotlin.random.Random.nextDouble() < 1.0 / 1000.0) {
             playerRepo.addPetIfNew(farmingPet.id, farmingPet.boostPercent)
         }
 
-        if (ashKey != null) {
-            val latestFlags = playerRepo.getFlags()
-            playerRepo.updateFlags(latestFlags.copy(
-                farmingFertilizer = latestFlags.farmingFertilizer - patchNumber.toString()
-            ))
-        }
-
-        // 1-in-100 chance per patch harvest to drop the magic bean, once ever
-        val freshFlags = playerRepo.getFlags()
-        val inv = playerRepo.getInventory()
-        if (!freshFlags.magicBeanPlanted && (inv["magic_bean"] ?: 0) == 0 && Random.nextInt(100) == 0) {
-            playerRepo.addItem("magic_bean", 1)
+        playerRepo.withLock {
+            val latestFlags = playerRepo.getFlagsUnlocked()
+            var newFlags = latestFlags
+            if (ashKey != null) {
+                newFlags = newFlags.copy(farmingFertilizer = newFlags.farmingFertilizer - patchNumber.toString())
+            }
+            
+            val inv = playerRepo.getInventoryUnlocked()
+            if (!newFlags.magicBeanPlanted && (inv["magic_bean"] ?: 0) == 0 && kotlin.random.Random.nextInt(100) == 0) {
+                playerRepo.addItemUnlocked("magic_bean", 1)
+            }
+            
+            if (newFlags != latestFlags) playerRepo.updateFlagsUnlocked(newFlags)
         }
 
         cancelAlarm(patchNumber)
@@ -163,9 +173,11 @@ class FarmingRepository @Inject constructor(
         val plantingXp = patch?.cropType?.let { gameData.crops[it]?.plantingXp?.toLong() } ?: 0L
         if (plantingXp > 0) playerRepo.deductSkillXp(Skills.FARMING, plantingXp)
         if (patch?.cropType == "magic_bean") {
-            playerRepo.addItem("magic_bean", 1)
-            val flags = playerRepo.getFlags()
-            playerRepo.updateFlags(flags.copy(magicBeanPlanted = false))
+            playerRepo.withLock {
+                playerRepo.addItemUnlocked("magic_bean", 1)
+                val flags = playerRepo.getFlagsUnlocked()
+                playerRepo.updateFlagsUnlocked(flags.copy(magicBeanPlanted = false))
+            }
         }
         cancelAlarm(patchNumber)
         patchDao.clear(patchNumber)

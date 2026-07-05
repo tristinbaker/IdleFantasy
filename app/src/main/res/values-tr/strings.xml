@@ -696,7 +696,7 @@
         <item>Yara</item>
     </string-array>
     <string name="inn_title">Inn</string>
-    <string name="inn_desc">Hire a worker to train skills for you, or buy food from the daily menu.</string>
+    <string name="inn_desc">Hire a worker to train skills for you, or buy food from the daily menu. Workers do not count toward your quests.</string>
     <string name="inn_worker_already_hired">A worker is already hired.</string>
     <string name="inn_not_enough_coins">Not enough coins.</string>
     <string name="inn_hire">Hire</string>
@@ -746,7 +746,7 @@
     <string name="guild_locked_hint">Requires Guild Level %1$d</string>
     <string name="guild_no_dailies">Günlük isteklerin kilidini açmak ve itibar kazanmak için lonca görevlerini tamamlayın.</string>
     <string name="guild_contribute_inventory">Envanterden katkıda bulun (%1$d mevcut)</string>
-    <string name="guild_quest_desc_gather">%3$s için %1$d %2$s toplayın.</string>
+    <string name="guild_quest_desc_gather">%4$s için %2$d %3$s %1$s.</string>
     <string name="guild_quest_desc_craft">%3$s için %1$d %2$s üretin.</string>
     <string name="guild_quest_desc_kill">%2$s dövüşünde %1$d düşmanı yenin.</string>
     <string name="guild_quest_desc_prayer">%2$s için %1$d kemik gömün.</string>
@@ -1213,7 +1213,7 @@
     <string name="carnival_queue">Sıraya Ekle</string>
     <string name="carnival_ring_toss">Halka Fırlatma</string>
     <string name="carnival_active_ring_desc">Gösterge altın hedef bölgesine ulaştığında fırlatın.</string>
-    <string name="carnival_ring_target_hint">Merkezi hedefleyin (45%%–55%%)</string>
+    <string name="carnival_ring_target_hint">Merkezi hedefleyin (45%–55%)</string>
     <string name="carnival_throw">Fırlat!</string>
     <string name="carnival_hammer_strike">Çekiç Darbesi</string>
     <string name="carnival_active_hammer_desc">Güç göstergesi en yüksek seviyedeyken vurun.</string>
@@ -1250,7 +1250,7 @@
     <string name="carnival_shell_game">Pick-a-Cup</string>
     <string name="carnival_active_shell_desc">Watch which cup hides the gem, then pick it after the shuffle!</string>
     <string name="carnival_shell_showing">Watch carefully — gem is under cup %1$d</string>
-    <string name="carnival_shell_watch">Watch closely...</string>
+    <string name="carnival_shell_watch">Watch closely…</string>
     <string name="carnival_shell_pick">Which cup is it under?</string>
     <string name="carnival_shell_won">Correct! +%1$d tickets</string>
     <string name="carnival_shell_missed">Wrong! The gem was under cup %1$d.</string>
@@ -1269,20 +1269,20 @@
     <string name="carnival_difficulty_label">Difficulty</string>
     <string name="carnival_difficulty_normal">Normal</string>
     <string name="carnival_difficulty_hard">Hard</string>
-    <string name="carnival_ring_hard_hint">Hard: 52%%–57%% target, 7 tickets</string>
+    <string name="carnival_ring_hard_hint">Hard: 52%–57% target, 7 tickets</string>
 
     <!-- ===== Magic Bean / Farming ===== -->
     <string name="farming_bean_note_1">Küçük bir filiz toprağı deldi.</string>
     <string name="farming_bean_note_2">Sap doğaüstü bir hızla büyüyor.</string>
     <string name="farming_bean_note_3">Yapraklar devasa — daha önce hiç böyle bir şey görmediniz.</string>
-    <string name="farming_bean_note_4">Bulutlar üst sapın etrafında toplanmaya başladı...</string>
+    <string name="farming_bean_note_4">Bulutlar üst sapın etrafında toplanmaya başladı…</string>
     <string name="farming_bean_note_5">Yukarıdan garip sesler geliyor.</string>
     <string name="farming_bean_note_6">Uzak bir gümbürtü. Yükseklerde bir şeyler kıpırdıyor.</string>
     <string name="farming_bean_note_7">Fasulye sapı sarsılıyor. Zirvede bir şeyler bekliyor.</string>
     <string name="farming_bean_note_8">Neredeyse orada. Hava seyreleşiyor. Zirveyi neredeyse görebilirsiniz.</string>
     <string name="farming_bean_ready">Fasulye sapı bulutların ötesine uzanıyor. Tırmanmaya hazır mısınız?</string>
     <string name="farming_bean_climb">Tırman</string>
-    <string name="farming_bean_climbed">Fasulye sapına tırmandınız. Bir şeyler sizi bekliyor...</string>
+    <string name="farming_bean_climbed">Fasulye sapına tırmandınız. Bir şeyler sizi bekliyor…</string>
     <string name="farming_bean_picker_stats">\?\?\?  •  \?\?\?  •  \?\?\?</string>
     <string name="farming_magic_bean_one_plot">Sihirli fasulyeler yalnızca bir tarlaya ekilebilir</string>
 

@@ -1,0 +1,12 @@
+• Fix: Removed impossible Spectral Knight slayer task (no such monster exists)
+• Fix: Carnival prize shop no longer lets Juggling Imp be re-bought after owning it
+• Fix: Herblore cape no longer misclassified under Materials in the shop; added missing Herblore, Thieving, Construction, and Slayer 99 skill capes
+• New: Added a contribute-from-inventory button to regular farming guild quests
+• Fix: Farming guild daily donations no longer advance progress if the item consumption fails
+• Balance: Rebalanced guild daily request amounts so completing one takes roughly similar effort across every guild
+• Fix: Firemaking, Runecrafting, and Prayer now show guild quest progress chips like other skills
+• Fix: Infinite Tower's floor button now updates correctly when queuing multiple attempts
+• Fix: Infinite Tower enemies now keep getting tougher past floor 100 instead of freezing, and the strength indicator reflects real enemy stats
+• Fix: Infinite Tower queue can no longer be exploited to skip floors by cancelling and requeuing
+• Fix: Firemaking and Runecrafting quest chips no longer sit flush against the screen edge
+• Fix: Merchant's Quarter (and other trade routes) can now actually pay out amounts near their advertised range instead of always landing near the average

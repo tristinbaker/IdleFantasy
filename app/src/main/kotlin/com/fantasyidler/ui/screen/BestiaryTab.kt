@@ -47,7 +47,7 @@ import com.fantasyidler.ui.viewmodel.BestiaryEntry
 import com.fantasyidler.ui.viewmodel.BestiarySort
 import com.fantasyidler.ui.viewmodel.BestiaryViewModel
 import com.fantasyidler.util.GameStrings
-import com.fantasyidler.util.formatCoins
+import com.fantasyidler.util.formatCoinsBrief
 import kotlin.math.roundToInt
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -395,7 +395,7 @@ private fun BossDetailContent(
             Spacer(Modifier.height(4.dp))
             val coinRow = Triple(
                 stringResource(R.string.label_coins),
-                "${boss.commonLoot.coinsMin.toLong().formatCoins()}–${boss.commonLoot.coinsMax.toLong().formatCoins()}",
+                "${boss.commonLoot.coinsMin.toLong().formatCoinsBrief()}–${boss.commonLoot.coinsMax.toLong().formatCoinsBrief()}",
                 null as String?,
             )
             val itemRows = boss.commonLoot.items.map { (itemKey, range) ->
@@ -502,7 +502,7 @@ private fun BestiaryDropTable(rows: List<Triple<String, String, String?>>) {
             )
             Text(
                 text      = "Qty",
-                modifier  = Modifier.width(52.dp),
+                modifier  = Modifier.width(80.dp),
                 style     = MaterialTheme.typography.labelSmall,
                 color     = GoldPrimary,
                 textAlign = TextAlign.End,
@@ -537,10 +537,12 @@ private fun BestiaryDropTable(rows: List<Triple<String, String, String?>>) {
                 )
                 Text(
                     text      = qty,
-                    modifier  = Modifier.width(52.dp),
+                    modifier  = Modifier.width(80.dp),
                     style     = MaterialTheme.typography.bodySmall,
                     color     = MaterialTheme.colorScheme.onSurfaceVariant,
                     textAlign = TextAlign.End,
+                    maxLines  = 1,
+                    softWrap  = false,
                 )
                 if (hasChance) {
                     Text(

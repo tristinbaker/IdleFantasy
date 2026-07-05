@@ -290,15 +290,6 @@ private fun RecipeRow(
 // Craft quantity sheet
 // ---------------------------------------------------------------------------
 
-private fun projectedXpLabel(currentXp: Long, xpGain: Long): String {
-    val currentLevel   = XpTable.levelForXp(currentXp)
-    val projectedLevel = XpTable.levelForXp(currentXp + xpGain)
-    return if (projectedLevel > currentLevel)
-        "+${xpGain.formatXp()} XP → Level $projectedLevel"
-    else
-        "+${xpGain.formatXp()} XP"
-}
-
 @Composable
 private fun CraftSheet(
     recipe: CraftableRecipe,
@@ -424,7 +415,7 @@ private fun CraftSheet(
         }
         Spacer(Modifier.height(8.dp))
         QtyQuickButtons(qty, max) { onSetQuantity(it) }
-        QuestFillRow(state.questFills, qty, max, onSetQuantity)
+        QuestFillRow(state.questFills, qty, max, onSet = onSetQuantity)
         Spacer(Modifier.height(8.dp))
 
         Text(
@@ -461,26 +452,29 @@ internal fun QuestFillRow(
     fills: List<QuestFillSuggestion>,
     qty: Int,
     max: Int,
+    modifier: Modifier = Modifier,
     onSet: (Int) -> Unit,
 ) {
     if (fills.isEmpty()) return
-    Spacer(Modifier.height(8.dp))
-    Text(
-        text  = stringResource(R.string.crafting_quest_targets),
-        style = MaterialTheme.typography.labelMedium,
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
-    )
-    Spacer(Modifier.height(4.dp))
-    FlowRow(
-        horizontalArrangement = Arrangement.spacedBy(6.dp),
-        verticalArrangement   = Arrangement.spacedBy(4.dp),
-    ) {
-        fills.forEach { fill ->
-            SuggestionChip(
-                onClick = { onSet(fill.qty.coerceIn(1, max.coerceAtLeast(1))) },
-                label   = { Text("${fill.qty} (${fill.label})") },
-                enabled = fill.qty <= max && qty != fill.qty,
-            )
+    Column(modifier = modifier) {
+        Spacer(Modifier.height(8.dp))
+        Text(
+            text  = stringResource(R.string.crafting_quest_targets),
+            style = MaterialTheme.typography.labelMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        Spacer(Modifier.height(4.dp))
+        FlowRow(
+            horizontalArrangement = Arrangement.spacedBy(6.dp),
+            verticalArrangement   = Arrangement.spacedBy(4.dp),
+        ) {
+            fills.forEach { fill ->
+                SuggestionChip(
+                    onClick = { onSet(fill.qty.coerceIn(1, max.coerceAtLeast(1))) },
+                    label   = { Text("${fill.qty} (${fill.label})") },
+                    enabled = fill.qty <= max && qty != fill.qty,
+                )
+            }
         }
     }
 }

@@ -345,7 +345,7 @@
     <string name="combat_def">DEF</string>
     <string name="combat_heals_hp">menyembuhkan %1$d HP</string>
     <string name="combat_defeated_so_far">telah dikalahkan sejauh ini.</string>
-    <string name="combat_fighting">Bertarung...</string>
+    <string name="combat_fighting">Bertarung…</string>
     <string name="combat_log_you_hit">Anda mengenai</string>
     <string name="combat_log_hit_you">mengenai anda</string>
     <string name="combat_log_dmg">dmg</string>
@@ -483,7 +483,7 @@
     <string name="onboarding_welcome_desc">Sebuah RPG santai yang terinspirasi oleh MMORPG klasik. Latih Keahlian, lawan dungeon, dan buat perlengkapan. Sepenuhnya offline, tanpa akun, tanpa iklan.</string>
     <string name="qty_max">Maksimum</string>
     <string name="inn_title">Penginapan</string>
-    <string name="inn_desc">Pekerjakan seorang pekerja untuk melatih keahlian Anda, atau beli makanan dari menu harian.</string>
+    <string name="inn_desc">Pekerjakan seorang pekerja untuk melatih keahlian Anda, atau beli makanan dari menu harian. Pekerja tidak dihitung dalam misi Anda.</string>
     <string name="inn_worker_already_hired">Pekerja sudah dipekerjakan.</string>
     <string name="inn_not_enough_coins">Uang koin tidak cukup.</string>
     <string name="inn_hire">Rekrut</string>
@@ -588,7 +588,7 @@
     <string name="guild_locked_hint">Membutuhkan Level Serikat %1$d</string>
     <string name="guild_no_dailies">Selesaikan Tugas Serikat untuk mendapatkan reputasi dan membuka permintaan harian.</string>
     <string name="guild_contribute_inventory">Kontribusi di inventaris (%1$d tersedia)</string>
-    <string name="guild_quest_desc_gather">Kumpulkan %1$d %2$s untuk %3$s.</string>
+    <string name="guild_quest_desc_gather">%1$s %2$d %3$s untuk %4$s.</string>
     <string name="guild_quest_desc_craft">Buat %1$d %2$s untuk %3$s.</string>
     <string name="guild_quest_desc_kill">Kalahkan %1$d musuh menggunakan %2$s pertempuran.</string>
     <string name="guild_quest_desc_prayer">Kubur tulang %1$d untuk %2$s.</string>
@@ -991,7 +991,7 @@
     <string name="carnival_queue">Antrian Sesi</string>
     <string name="carnival_ring_toss">Lempar Cincin</string>
     <string name="carnival_active_ring_desc">Atur waktu lemparan Anda saat indikator mengenai zona target emas.</string>
-    <string name="carnival_ring_target_hint">Aim for the centre (45%%–55%%)</string>
+    <string name="carnival_ring_target_hint">Aim for the centre (45%–55%)</string>
     <string name="carnival_throw">Lemparr!</string>
     <string name="carnival_hammer_strike">Pukulan Palu</string>
     <string name="carnival_active_hammer_desc">Serang saat indikator daya berada di puncaknya untuk mendapatkan skor maksimal.</string>
@@ -1028,7 +1028,7 @@
     <string name="carnival_shell_game">Pick-a-Cup</string>
     <string name="carnival_active_shell_desc">Watch which cup hides the gem, then pick it after the shuffle!</string>
     <string name="carnival_shell_showing">Watch carefully — gem is under cup %1$d</string>
-    <string name="carnival_shell_watch">Watch closely...</string>
+    <string name="carnival_shell_watch">Watch closely…</string>
     <string name="carnival_shell_pick">Which cup is it under?</string>
     <string name="carnival_shell_won">Benar! +%1$d tiket</string>
     <string name="carnival_shell_missed">Wrong! The gem was under cup %1$d.</string>
@@ -1047,18 +1047,18 @@
     <string name="carnival_difficulty_label">Kesulitan</string>
     <string name="carnival_difficulty_normal">Normal</string>
     <string name="carnival_difficulty_hard">Hard</string>
-    <string name="carnival_ring_hard_hint">Hard: 52%%–57%% target, 7 tickets</string>
+    <string name="carnival_ring_hard_hint">Hard: 52%–57% target, 7 tickets</string>
     <string name="farming_bean_note_1">Sebuah tunas kecil telah muncul dari tanah.</string>
     <string name="farming_bean_note_2">Batang tanaman itu tumbuh dengan kecepatan yang tidak wajar.</string>
     <string name="farming_bean_note_3">Daun-daunnya sangat besar — tidak seperti apa pun yang pernah Anda lihat sebelumnya.</string>
-    <string name="farming_bean_note_4">Awan mulai berkumpul di sekitar batang bagian atas...</string>
+    <string name="farming_bean_note_4">Awan mulai berkumpul di sekitar batang bagian atas…</string>
     <string name="farming_bean_note_5">Suara-suara aneh terdengar dari suatu tempat yang jauh di atas.</string>
     <string name="farming_bean_note_6">Gemuruh dari kejauhan. Sesuatu bergerak di ketinggian.</string>
     <string name="farming_bean_note_7">Pohon kacang raksasa itu bergetar. Sesuatu menanti di puncaknya.</string>
     <string name="farming_bean_note_8">Hampir sampai. Udara semakin menipis. Puncaknya hampir terlihat.</string>
     <string name="farming_bean_ready">Pohon kacang raksasa itu menjulang hingga melampaui awan. Siap mendaki?</string>
     <string name="farming_bean_climb">Mendaki</string>
-    <string name="farming_bean_climbed">Kau telah mendaki pohon kacang raksasa. Sesuatu menanti...</string>
+    <string name="farming_bean_climbed">Kau telah mendaki pohon kacang raksasa. Sesuatu menanti…</string>
     <string name="farming_bean_picker_stats">\?\?\?  •  \?\?\?  •  \?\?\?</string>
     <string name="farming_magic_bean_one_plot">Kacang Ajaib hanya dapat ditanam di satu petak saja.</string>
     <string name="armory_tab">Persenjataan</string>
@@ -1203,4 +1203,5 @@
     <plurals name="plural_collect_sessions">
         <item quantity="other">Kumpulkan Hadiah %1$d Sesi</item>
     </plurals>
+    <string name="daily_verb_farming">Panen</string>
 </resources>

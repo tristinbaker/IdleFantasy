@@ -968,7 +968,7 @@
     <string name="label_recent_activity">Recent Activity</string>
     <string name="label_no_sessions_yet">No sessions completed yet.</string>
     <string name="guild_contribute_inventory">Contribute from inventory (%1$d available)</string>
-    <string name="guild_quest_desc_gather">Collect %1$d %2$s for the %3$s.</string>
+    <string name="guild_quest_desc_gather">%1$s %2$d %3$s for the %4$s.</string>
     <string name="guild_quest_desc_craft">Craft %1$d %2$s for the %3$s.</string>
     <string name="guild_quest_desc_kill">Defeat %1$d enemies using %2$s combat.</string>
     <string name="guild_quest_desc_prayer">Bury %1$d bones for the %2$s.</string>
@@ -1161,7 +1161,7 @@
     <string name="carnival_queue">Queue Session</string>
     <string name="carnival_ring_toss">Ring Toss</string>
     <string name="carnival_active_ring_desc">Time your throw when the indicator hits the golden target zone.</string>
-    <string name="carnival_ring_target_hint">Aim for the centre (45%%–55%%)</string>
+    <string name="carnival_ring_target_hint">Aim for the centre (45%–55%)</string>
     <string name="carnival_throw">Throw!</string>
     <string name="carnival_hammer_strike">Hammer Strike</string>
     <string name="carnival_active_hammer_desc">Strike when the power meter is at its peak for maximum score.</string>
@@ -1348,7 +1348,7 @@
     <string name="carnival_difficulty_label">Difficulty</string>
     <string name="carnival_difficulty_normal">Normal</string>
     <string name="carnival_difficulty_hard">Hard</string>
-    <string name="carnival_ring_hard_hint">Hard: 52%%–57%% target, 7 tickets</string>
+    <string name="carnival_ring_hard_hint">Hard: 52%–57% target, 7 tickets</string>
     <string name="tower_title">Infinite Tower</string>
     <string name="tower_floor_label">Floor %d</string>
     <string name="tower_best_floor">Best: Floor %d</string>

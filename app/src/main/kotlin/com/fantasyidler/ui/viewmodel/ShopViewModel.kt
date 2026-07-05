@@ -521,9 +521,9 @@ class ShopViewModel @Inject constructor(
         }
         if (itemKey in gameData.foodHealValues) return "Food"
         return when {
-            "ore"     in itemKey || "bar"     in itemKey ||
-            "gem"     in itemKey || "log"     in itemKey ||
-            "bone"    in itemKey || "essence" in itemKey ||
+            itemKey.endsWith("_ore") || itemKey == "ore" || itemKey.endsWith("_bar") || itemKey == "bar" ||
+            itemKey.endsWith("_gem") || itemKey == "gem" || itemKey.endsWith("_log") || itemKey == "log" ||
+            itemKey.endsWith("_bone") || itemKey == "bone" || "essence" in itemKey ||
             "arrow"   in itemKey ||
             "raw_"    in itemKey || "cooked"  in itemKey -> "Materials"
             else                              -> "Misc"

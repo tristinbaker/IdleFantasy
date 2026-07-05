@@ -334,8 +334,9 @@ class GameDataRepository @Inject constructor(
             quests.values.filter { it.type == "collect" }.forEach { add(it.target) }
             // Herblore: protect both ingredients (including junk secondaries), potions, and enhanced variants
             herbloreRecipes.forEach { (key, r) -> add(key); add("enhanced_$key"); addAll(r.materials.keys) }
-            // Farming: protect seeds so they aren't sold as junk
+            // Farming: protect seeds and harvested produce (used in farming-guild daily requests)
             addAll(crops.values.map { it.seedName })
+            addAll(crops.values.map { it.id })
             // Marketplace items not in equipment.json
             addAll(marketplace.values.flatMap { it.items.keys })
         }

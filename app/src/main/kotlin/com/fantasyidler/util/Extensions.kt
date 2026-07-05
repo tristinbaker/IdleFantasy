@@ -14,6 +14,13 @@ fun Long.formatCoins(): String = when {
     else               -> toString()
 }
 
+/** Abbreviated coin format for compact UI (e.g. 50000 → "50k"). */
+fun Long.formatCoinsBrief(): String = when {
+    this >= 1_000_000L -> "%.1fM".format(this / 1_000_000.0)
+    this >= 1_000L     -> "${this / 1000}k"
+    else               -> toString()
+}
+
 /**
  * Convert an epoch-ms "ends_at" timestamp to a human-readable countdown string.
  * e.g. "42m 10s" or "Complete"

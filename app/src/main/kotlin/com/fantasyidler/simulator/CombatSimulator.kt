@@ -34,6 +34,7 @@ object CombatSimulator {
         arrowStrengthBonus: Int = 0,
         spellMaxHit: Int = 0,
         agilityLevel: Int = 1,
+        agilityPrestige: Int = 0,
         petBoostPct: Int = 0,
         equippedFood: Map<String, Int> = emptyMap(),
         foodHealValues: Map<String, Int> = emptyMap(),
@@ -53,7 +54,7 @@ object CombatSimulator {
 
         val spawnPool = dungeon.enemySpawns.flatMap { spawn ->
             List(spawn.weight) { spawn.enemy }
-        }.ifEmpty { return SkillSimulator.Result(emptyList(), SkillSimulator.sessionDurationMs(agilityLevel)) }
+        }.ifEmpty { return SkillSimulator.Result(emptyList(), SkillSimulator.sessionDurationMs(agilityLevel, agilityPrestige)) }
 
         val maxHp = playerHp * 10
         var currentHp = maxHp
@@ -259,7 +260,7 @@ object CombatSimulator {
             }
         }
 
-        val fullDurationMs = SkillSimulator.sessionDurationMs(agilityLevel)
+        val fullDurationMs = SkillSimulator.sessionDurationMs(agilityLevel, agilityPrestige)
         return SkillSimulator.Result(frames, fullDurationMs)
     }
 

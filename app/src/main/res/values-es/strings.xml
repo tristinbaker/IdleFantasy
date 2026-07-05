@@ -691,7 +691,7 @@
         <item>Yara</item>
     </string-array>
     <string name="inn_title">Inn</string>
-    <string name="inn_desc">Hire a worker to train skills for you, or buy food from the daily menu.</string>
+    <string name="inn_desc">Hire a worker to train skills for you, or buy food from the daily menu. Workers do not count toward your quests.</string>
     <string name="inn_worker_already_hired">A worker is already hired.</string>
     <string name="inn_not_enough_coins">Not enough coins.</string>
     <string name="inn_hire">Hire</string>
@@ -741,7 +741,7 @@
     <string name="guild_locked_hint">Requires Guild Level %1$d</string>
     <string name="guild_no_dailies">Completa misiones de gremio para ganar reputación y desbloquear solicitudes diarias.</string>
     <string name="guild_contribute_inventory">Contribuir desde el inventario (%1$d disponible)</string>
-    <string name="guild_quest_desc_gather">Recolecta %1$d %2$s para el %3$s.</string>
+    <string name="guild_quest_desc_gather">%1$s %2$d %3$s para el %4$s.</string>
     <string name="guild_quest_desc_craft">Fabrica %1$d %2$s para el %3$s.</string>
     <string name="guild_quest_desc_kill">Derrota %1$d enemigos usando combate %2$s.</string>
     <string name="guild_quest_desc_prayer">Entierra %1$d huesos para el %2$s.</string>
@@ -1208,7 +1208,7 @@
     <string name="carnival_queue">Poner en cola</string>
     <string name="carnival_ring_toss">Lanzamiento de aros</string>
     <string name="carnival_active_ring_desc">Lanza cuando el indicador llegue a la zona dorada.</string>
-    <string name="carnival_ring_target_hint">Apunta al centro (45%%–55%%)</string>
+    <string name="carnival_ring_target_hint">Apunta al centro (45%–55%)</string>
     <string name="carnival_throw">¡Lanzar!</string>
     <string name="carnival_hammer_strike">Golpe de martillo</string>
     <string name="carnival_active_hammer_desc">Golpea cuando el medidor de fuerza esté en su punto máximo.</string>
@@ -1245,7 +1245,7 @@
     <string name="carnival_shell_game">Pick-a-Cup</string>
     <string name="carnival_active_shell_desc">Watch which cup hides the gem, then pick it after the shuffle!</string>
     <string name="carnival_shell_showing">Watch carefully — gem is under cup %1$d</string>
-    <string name="carnival_shell_watch">Watch closely...</string>
+    <string name="carnival_shell_watch">Watch closely…</string>
     <string name="carnival_shell_pick">Which cup is it under?</string>
     <string name="carnival_shell_won">Correct! +%1$d tickets</string>
     <string name="carnival_shell_missed">Wrong! The gem was under cup %1$d.</string>
@@ -1264,20 +1264,20 @@
     <string name="carnival_difficulty_label">Difficulty</string>
     <string name="carnival_difficulty_normal">Normal</string>
     <string name="carnival_difficulty_hard">Hard</string>
-    <string name="carnival_ring_hard_hint">Hard: 52%%–57%% target, 7 tickets</string>
+    <string name="carnival_ring_hard_hint">Hard: 52%–57% target, 7 tickets</string>
 
     <!-- ===== Magic Bean / Farming ===== -->
     <string name="farming_bean_note_1">Un pequeño brote ha empujado a través de la tierra.</string>
     <string name="farming_bean_note_2">El tallo crece a un ritmo sobrenatural.</string>
     <string name="farming_bean_note_3">Las hojas son enormes — como nada que hayas visto antes.</string>
-    <string name="farming_bean_note_4">Las nubes han comenzado a reunirse alrededor del tallo superior...</string>
+    <string name="farming_bean_note_4">Las nubes han comenzado a reunirse alrededor del tallo superior…</string>
     <string name="farming_bean_note_5">Sonidos extraños se filtran desde algún lugar muy arriba.</string>
     <string name="farming_bean_note_6">Retumbo distante. Algo se agita en las alturas.</string>
     <string name="farming_bean_note_7">La planta de frijol tiembla. Algo aguarda en la cima.</string>
     <string name="farming_bean_note_8">Casi ahí. El aire se enrarece. Casi puedes ver la cima.</string>
     <string name="farming_bean_ready">La planta llega más allá de las nubes. ¿Listo para trepar?</string>
     <string name="farming_bean_climb">Trepar</string>
-    <string name="farming_bean_climbed">Has trepado la planta de frijol. Algo te aguarda...</string>
+    <string name="farming_bean_climbed">Has trepado la planta de frijol. Algo te aguarda…</string>
     <string name="farming_bean_picker_stats">\?\?\?  •  \?\?\?  •  \?\?\?</string>
     <string name="farming_magic_bean_one_plot">Los frijoles mágicos solo pueden plantarse en un único campo</string>
 

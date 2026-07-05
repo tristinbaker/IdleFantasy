@@ -1,0 +1,5 @@
+• Fixed Higher or Lower minigame giving wrong answer on tied numbers (now regenerates until the next number differs)
+• Fixed Ancient Forest Ruins not unlocking after completing the Whispering Grove expedition (race condition in flag update now resolved atomically)
+• Fixed Bestiary qty column wrapping mid-number for large ranges like ×100–200 or coin ranges (column widened, single-line enforced)
+• Fixed Agility prestige not reducing session duration for combat dungeons, boss fights, Infinite Tower, expeditions, Slayer tasks, Carnival games, and Mercantile routes
+• Wrapped multi-step inventory/flag transactions in Carnival, Church, Farming, Slayer, and Town repositories with atomic mutex locks to prevent item or coin loss under concurrent writes

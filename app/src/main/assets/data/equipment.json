@@ -2517,6 +2517,58 @@
     "requirements": {},
     "cape_bonus": 0.1
   },
+  "herblore_cape": {
+    "name": "herblore_cape",
+    "display_name": "Herblore Cape",
+    "slot": "cape",
+    "combat_style": null,
+    "description": "Awarded for reaching level 99 Herblore. Grants 10% more potions per session.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "herblore",
+    "requirements": {},
+    "cape_bonus": 0.1
+  },
+  "thieving_cape": {
+    "name": "thieving_cape",
+    "display_name": "Thieving Cape",
+    "slot": "cape",
+    "combat_style": null,
+    "description": "Awarded for reaching level 99 Thieving. Grants 10% more successful pickpockets per session.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "thieving",
+    "requirements": {},
+    "cape_bonus": 0.1
+  },
+  "construction_cape": {
+    "name": "construction_cape",
+    "display_name": "Construction Cape",
+    "slot": "cape",
+    "combat_style": null,
+    "description": "Awarded for reaching level 99 Construction. Grants 10% more items per session.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "construction",
+    "requirements": {},
+    "cape_bonus": 0.1
+  },
+  "slayer_cape": {
+    "name": "slayer_cape",
+    "display_name": "Slayer Cape",
+    "slot": "cape",
+    "combat_style": null,
+    "description": "Awarded for reaching level 99 Slayer. Grants 10% more Slayer points.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "slayer",
+    "requirements": {},
+    "cape_bonus": 0.1
+  },
   "bronze_boots": {
     "name": "bronze_boots",
     "display_name": "Bronze Boots",
@@ -2961,6 +3013,18 @@
     "defense_bonus": 5,
     "cape_skill": "prayer",
     "cape_bonus": 0.05,
+    "requirements": {}
+  },
+  "mercantile_cape": {
+    "name": "mercantile_cape",
+    "display_name": "Mercantile Cape",
+    "slot": "cape",
+    "description": "Awarded for reaching level 99 Mercantile. Grants 10% better shop prices and trade returns.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "cape_skill": "mercantile",
+    "cape_bonus": 0.1,
     "requirements": {}
   },
   "mercantile_guild_cape": {

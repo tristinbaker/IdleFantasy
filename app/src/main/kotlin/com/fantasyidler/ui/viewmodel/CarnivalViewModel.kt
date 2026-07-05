@@ -150,9 +150,11 @@ class CarnivalViewModel @Inject constructor(
             val inventory: Map<String, Int> = json.decodeFromString(player.inventory)
             val flags: PlayerFlags = json.decodeFromString(player.flags)
             val levels: Map<String, Int> = json.decodeFromString(player.skillLevels)
+            val pets: List<com.fantasyidler.data.model.OwnedPet> = try { json.decodeFromString(player.pets) } catch (_: Exception) { emptyList() }
+            val ownedPetIds = pets.map { it.id }.toSet()
             val ownedPrizeKeys = prizes
                 .filter { it.type == "equipment" || it.type == "pet" }
-                .filter { (inventory[it.key] ?: 0) > 0 }
+                .filter { (inventory[it.key] ?: 0) > 0 || it.key in ownedPetIds }
                 .map { it.key }
                 .toSet()
             val now = System.currentTimeMillis()
@@ -210,12 +212,13 @@ class CarnivalViewModel @Inject constructor(
         viewModelScope.launch {
             val player = playerRepo.getOrCreatePlayer()
             val agility = (json.decodeFromString<Map<String, Int>>(player.skillLevels))[Skills.AGILITY] ?: 1
+            val carnivalFlags: PlayerFlags = json.decodeFromString(player.flags)
             val enqueued = playerRepo.enqueueAction(
                 QueuedAction(
                     skillName           = "carnival",
                     activityKey         = activityKey,
                     skillDisplayName    = displayName,
-                    estimatedDurationMs = SkillSimulator.sessionDurationMs(agility),
+                    estimatedDurationMs = SkillSimulator.sessionDurationMs(agility, carnivalFlags.skillPrestige[Skills.AGILITY] ?: 0),
                 )
             )
             if (enqueued) queuedSessionStarter.startNextQueued()
@@ -480,7 +483,14 @@ class CarnivalViewModel @Inject constructor(
         if (_extra.value.higherLowerState !is ActiveGameState.Ready) return
         val diff = _extra.value.higherLowerDifficulty
         val totalRounds = if (diff == Difficulty.HARD) 7 else 5
-        val numbers = List(totalRounds + 1) { Random.nextInt(1, 11) }
+        val numbers = buildList {
+            add(Random.nextInt(1, 11))
+            repeat(totalRounds) {
+                var n: Int
+                do { n = Random.nextInt(1, 11) } while (n == last())
+                add(n)
+            }
+        }
         _extra.update { it.copy(higherLowerState = ActiveGameState.HigherOrLowerPlaying(numbers, 0, 0)) }
     }
 

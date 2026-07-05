@@ -1,0 +1,2 @@
+• Fixed boss kills (King Black Dragon, Demon Lord) not counting toward dragon/demon daily and weekly quests
+• Fixed being unable to buy more than 1 of a cheap item when holding billions of coins

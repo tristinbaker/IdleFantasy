@@ -28,6 +28,10 @@ object MercantileSimulator {
         val xpRange   = rangeForLevel(XpTable.levelForXp(startXp),   route.xpRanges.mapValues { XpRange(it.value.min, it.value.max) })
         val coinRange = rangeForCoin(XpTable.levelForXp(startXp), route.coinRanges)
 
+        val totalCoins = random.nextInt(coinRange.min * 60, coinRange.max * 60 + 1)
+        val baseShare = totalCoins / 60
+        val remainder = totalCoins % 60
+
         for (minute in 1..60) {
             val xpBefore   = currentXp
             val levelBefore = XpTable.levelForXp(currentXp)
@@ -35,7 +39,7 @@ object MercantileSimulator {
             currentXp += xpGain
             val levelAfter = XpTable.levelForXp(currentXp)
 
-            val coinReturn = random.nextInt(coinRange.min, coinRange.max + 1)
+            val coinReturn = baseShare + if (minute <= remainder) 1 else 0
             val items = mutableMapOf("_coins" to coinReturn)
             if (petDropKey != null && petDropChance > 0.0 && random.nextDouble() < petDropChance) {
                 items[petDropKey] = 1

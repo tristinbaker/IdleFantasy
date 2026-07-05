@@ -131,12 +131,6 @@
     "slayer_level": 92,
     "xp_per_kill": 300
   },
-  "spectral_knight": {
-    "min_kills": 5,
-    "max_kills": 12,
-    "slayer_level": 95,
-    "xp_per_kill": 350
-  },
   "elder_lich": {
     "min_kills": 3,
     "max_kills": 8,

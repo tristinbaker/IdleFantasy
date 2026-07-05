@@ -409,6 +409,7 @@
     <string name="daily_verb_runecrafting">Rün Yap</string>
     <string name="daily_verb_prayer">Göm</string>
     <string name="daily_verb_construction">İnşa et</string>
+    <string name="daily_verb_farming">Hasat et</string>
 
     <!-- Quest objective format strings -->
     <string name="quest_obj_gather">%1$s %2$d %3$s</string>

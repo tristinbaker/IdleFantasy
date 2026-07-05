@@ -10,6 +10,7 @@ import kotlin.math.roundToInt
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
 import javax.inject.Inject
@@ -41,6 +42,8 @@ class PlayerRepository @Inject constructor(
     private val weeklyQuestRepo: WeeklyQuestRepository,
     private val buffNotifScheduler: BuffNotificationScheduler,
 ) {
+    val playerMutex = kotlinx.coroutines.sync.Mutex()
+
     /**
      * Emits the raw [Player] entity whenever the DB row changes.
      * Creates the default player on first access so observers never stall on null.
@@ -81,10 +84,16 @@ class PlayerRepository @Inject constructor(
     suspend fun getInventory(): Map<String, Int> =
         json.decodeFromString(getOrCreatePlayer().inventory)
 
+    internal suspend fun getInventoryUnlocked(): Map<String, Int> =
+        json.decodeFromString(getOrCreatePlayer().inventory)
+
     suspend fun getEquipped(): Map<String, String?> =
         json.decodeFromString(getOrCreatePlayer().equipped)
 
     suspend fun getFlags(): PlayerFlags =
+        json.decodeFromString(getOrCreatePlayer().flags)
+
+    internal suspend fun getFlagsUnlocked(): PlayerFlags =
         json.decodeFromString(getOrCreatePlayer().flags)
 
     suspend fun getOwnedPets(): List<OwnedPet> =
@@ -104,7 +113,7 @@ class PlayerRepository @Inject constructor(
         xpGained: Long,
         itemsGained: Map<String, Int>,
         efficiencyMultiplier: Float = 1.0f,
-    ): List<String> {
+    ): List<String> = playerMutex.withLock {
         val player    = getOrCreatePlayer()
         val flags: PlayerFlags = json.decodeFromString(player.flags)
         val boostActive = flags.xpBoostExpiresAt > System.currentTimeMillis()
@@ -204,11 +213,14 @@ class PlayerRepository @Inject constructor(
      * Remove items from the player's inventory.
      * Returns false (and makes no change) if any item is in insufficient quantity.
      */
-    suspend fun consumeItems(items: Map<String, Int>): Boolean {
+    suspend fun consumeItems(items: Map<String, Int>): Boolean = playerMutex.withLock { consumeItemsUnlocked(items) }
+
+    internal suspend fun consumeItemsUnlocked(items: Map<String, Int>): Boolean {
         val player = getOrCreatePlayer()
         val inventory: MutableMap<String, Int> = json.decodeFromString(player.inventory)
 
         for ((item, qty) in items) {
+            require(qty >= 0) { "Cannot consume negative quantity" }
             if ((inventory[item] ?: 0) < qty) return false
         }
         for ((item, qty) in items) {
@@ -219,13 +231,19 @@ class PlayerRepository @Inject constructor(
         return true
     }
 
-    suspend fun addCoins(amount: Long) {
+    suspend fun addCoins(amount: Long) = playerMutex.withLock { addCoinsUnlocked(amount) }
+
+    private suspend fun addCoinsUnlocked(amount: Long) {
+        require(amount >= 0) { "Cannot add negative coins" }
         val player = getOrCreatePlayer()
-        playerDao.upsert(player.copy(coins = player.coins + amount))
+        val newCoins = (player.coins + amount).coerceAtMost(Long.MAX_VALUE)
+        playerDao.upsert(player.copy(coins = newCoins))
     }
 
     /** Awards capes for any skill already at 99 that doesn't have one yet (retroactive fix). */
-    suspend fun awardMissingCapes() {
+    suspend fun awardMissingCapes() = playerMutex.withLock { awardMissingCapesUnlocked() }
+
+    private suspend fun awardMissingCapesUnlocked() {
         val player    = getOrCreatePlayer()
         val levels:    MutableMap<String, Int> = json.decodeFromString(player.skillLevels)
         val inventory: MutableMap<String, Int> = json.decodeFromString(player.inventory)
@@ -243,10 +261,13 @@ class PlayerRepository @Inject constructor(
     }
 
     /** Adds qty of item to the player's inventory at no coin cost (prize/drop grant). */
-    suspend fun grantItem(key: String, qty: Int = 1) {
+    suspend fun grantItem(key: String, qty: Int = 1) = playerMutex.withLock { grantItemUnlocked(key, qty) }
+
+    private suspend fun grantItemUnlocked(key: String, qty: Int = 1) {
+        require(qty >= 0) { "Cannot grant negative quantity" }
         val player = getOrCreatePlayer()
         val inventory: MutableMap<String, Int> = json.decodeFromString(player.inventory)
-        inventory[key] = (inventory[key] ?: 0) + qty
+        inventory[key] = ((inventory[key] ?: 0).toLong() + qty).coerceAtMost(Int.MAX_VALUE.toLong()).toInt()
         val flags: PlayerFlags = json.decodeFromString(player.flags)
         playerDao.upsert(player.copy(
             inventory = json.encode<Map<String, Int>>(inventory),
@@ -255,14 +276,26 @@ class PlayerRepository @Inject constructor(
     }
 
     /** Returns false if the player has insufficient coins. */
-    suspend fun spendCoins(amount: Long): Boolean {
+    suspend fun spendCoins(amount: Long): Boolean = playerMutex.withLock { spendCoinsUnlocked(amount) }
+
+    internal suspend fun spendCoinsUnlocked(amount: Long): Boolean {
+        require(amount >= 0) { "Cannot spend negative coins" }
         val player = getOrCreatePlayer()
         if (player.coins < amount) return false
         playerDao.upsert(player.copy(coins = player.coins - amount))
         return true
     }
 
-    suspend fun updateFlags(flags: PlayerFlags) {
+    suspend fun updateFlags(flags: PlayerFlags) = playerMutex.withLock { updateFlagsUnlocked(flags) }
+
+    suspend fun updateFlagsAtomically(block: (PlayerFlags) -> PlayerFlags) = playerMutex.withLock {
+        val current = getFlagsUnlocked()
+        updateFlagsUnlocked(block(current))
+    }
+
+    suspend fun <T> withLock(block: suspend () -> T): T = playerMutex.withLock { block() }
+
+    internal suspend fun updateFlagsUnlocked(flags: PlayerFlags) {
         val player = getOrCreatePlayer()
         playerDao.upsert(player.copy(flags = json.encode<PlayerFlags>(flags)))
     }
@@ -270,17 +303,19 @@ class PlayerRepository @Inject constructor(
     suspend fun getQueue(): List<QueuedAction> = getFlags().sessionQueue
 
     /** Appends an action to the queue. Returns false (no change) if the queue is already full (3 items). */
-    suspend fun enqueueAction(action: QueuedAction): Boolean {
+    suspend fun enqueueAction(action: QueuedAction): Boolean = playerMutex.withLock { enqueueActionUnlocked(action) }
+
+    private suspend fun enqueueActionUnlocked(action: QueuedAction): Boolean {
         val flags = getFlags()
         if (flags.sessionQueue.size >= 3) return false
-        updateFlags(flags.copy(sessionQueue = flags.sessionQueue + action))
+        updateFlagsUnlocked(flags.copy(sessionQueue = flags.sessionQueue + action))
         return true
     }
 
     /** Creates and enqueues a combat (dungeon) session for a Slayer task's auto-advance. Returns false if queue is full. */
-    suspend fun enqueueCombatSession(dungeonKey: String, dungeonDisplayName: String): Boolean {
+    suspend fun enqueueCombatSession(dungeonKey: String, dungeonDisplayName: String): Boolean = playerMutex.withLock {
         val flags = getFlags()
-        if (flags.sessionQueue.size >= 3) return false
+        if (flags.sessionQueue.size >= 3) return@withLock false
         val player = getOrCreatePlayer()
         val levels: Map<String, Int> = json.decodeFromString(player.skillLevels)
         val agility = levels[Skills.AGILITY] ?: 1
@@ -289,7 +324,7 @@ class PlayerRepository @Inject constructor(
         val weaponSlot = flags.activeWeaponSlot
             ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
             ?: EquipSlot.WEAPON_ATK
-        return enqueueAction(QueuedAction(
+        enqueueActionUnlocked(QueuedAction(
             skillName           = "combat",
             activityKey         = dungeonKey,
             skillDisplayName    = dungeonDisplayName,
@@ -303,17 +338,21 @@ class PlayerRepository @Inject constructor(
     }
 
     /** Removes and returns the first item in the queue, or null if empty. */
-    suspend fun dequeueNextAction(): QueuedAction? {
+    suspend fun dequeueNextAction(): QueuedAction? = playerMutex.withLock { dequeueNextActionUnlocked() }
+
+    internal suspend fun dequeueNextActionUnlocked(): QueuedAction? {
         val flags = getFlags()
         val queue = flags.sessionQueue
         if (queue.isEmpty()) return null
-        updateFlags(flags.copy(sessionQueue = queue.drop(1)))
+        updateFlagsUnlocked(flags.copy(sessionQueue = queue.drop(1)))
         return queue.first()
     }
 
-    suspend fun requeueActionAtFront(action: QueuedAction) {
+    suspend fun requeueActionAtFront(action: QueuedAction) = playerMutex.withLock { requeueActionAtFrontUnlocked(action) }
+
+    internal suspend fun requeueActionAtFrontUnlocked(action: QueuedAction) {
         val flags = getFlags()
-        updateFlags(flags.copy(sessionQueue = listOf(action) + flags.sessionQueue))
+        updateFlagsUnlocked(flags.copy(sessionQueue = listOf(action) + flags.sessionQueue))
     }
 
     private fun PlayerFlags.workerForSlot(slot: Int) = if (slot == 2) hiredWorker2 else hiredWorker
@@ -321,33 +360,39 @@ class PlayerRepository @Inject constructor(
         if (slot == 2) copy(hiredWorker2 = w) else copy(hiredWorker = w)
 
     /** Appends an action to the given worker slot's queue. Returns false if full (1 item) or no worker hired. */
-    suspend fun enqueueWorkerAction(slot: Int, action: QueuedAction): Boolean {
+    suspend fun enqueueWorkerAction(slot: Int, action: QueuedAction): Boolean = playerMutex.withLock { enqueueWorkerActionUnlocked(slot, action) }
+
+    internal suspend fun enqueueWorkerActionUnlocked(slot: Int, action: QueuedAction): Boolean {
         val flags = getFlags()
         val worker = flags.workerForSlot(slot) ?: return false
         if (worker.sessionQueue.size >= 1) return false
-        updateFlags(flags.withWorkerForSlot(slot, worker.copy(sessionQueue = worker.sessionQueue + action)))
+        updateFlagsUnlocked(flags.withWorkerForSlot(slot, worker.copy(sessionQueue = worker.sessionQueue + action)))
         return true
     }
 
     /** Removes and returns the first item in the given slot's queue, or null if empty/no worker. */
-    suspend fun dequeueNextWorkerAction(slot: Int): QueuedAction? {
+    suspend fun dequeueNextWorkerAction(slot: Int): QueuedAction? = playerMutex.withLock { dequeueNextWorkerActionUnlocked(slot) }
+
+    internal suspend fun dequeueNextWorkerActionUnlocked(slot: Int): QueuedAction? {
         val flags = getFlags()
         val worker = flags.workerForSlot(slot) ?: return null
         val queue = worker.sessionQueue
         if (queue.isEmpty()) return null
-        updateFlags(flags.withWorkerForSlot(slot, worker.copy(sessionQueue = queue.drop(1))))
+        updateFlagsUnlocked(flags.withWorkerForSlot(slot, worker.copy(sessionQueue = queue.drop(1))))
         return queue.first()
     }
 
-    suspend fun requeueWorkerActionAtFront(slot: Int, action: QueuedAction) {
+    suspend fun requeueWorkerActionAtFront(slot: Int, action: QueuedAction) = playerMutex.withLock { requeueWorkerActionAtFrontUnlocked(slot, action) }
+
+    internal suspend fun requeueWorkerActionAtFrontUnlocked(slot: Int, action: QueuedAction) {
         val flags = getFlags()
         val worker = flags.workerForSlot(slot) ?: return
-        updateFlags(flags.withWorkerForSlot(slot, worker.copy(sessionQueue = listOf(action) + worker.sessionQueue)))
+        updateFlagsUnlocked(flags.withWorkerForSlot(slot, worker.copy(sessionQueue = listOf(action) + worker.sessionQueue)))
     }
 
-    suspend fun clearHiredWorker(slot: Int) {
+    suspend fun clearHiredWorker(slot: Int) = playerMutex.withLock {
         val flags = getFlags()
-        updateFlags(flags.withWorkerForSlot(slot, null))
+        updateFlagsUnlocked(flags.withWorkerForSlot(slot, null))
     }
 
     /** Removes and returns the queued item at [index], or null if out of range. */
@@ -356,8 +401,26 @@ class PlayerRepository @Inject constructor(
         val queue = flags.sessionQueue
         if (index < 0 || index >= queue.size) return null
         val removed = queue[index]
-        updateFlags(flags.copy(sessionQueue = queue.toMutableList().apply { removeAt(index) }))
+        val newQueue = queue.toMutableList().apply { removeAt(index) }
+        updateFlags(flags.copy(sessionQueue = renumberTowerQueue(newQueue, flags.towerCurrentFloor)))
         return removed
+    }
+
+    /**
+     * Keeps queued Infinite Tower floors contiguous after a cancellation, so a player can't
+     * skip floors by cancelling low entries while a higher one survives in the queue.
+     */
+    private fun renumberTowerQueue(queue: List<QueuedAction>, currentFloor: Int): List<QueuedAction> {
+        var nextFloor = currentFloor + 1
+        return queue.map { action ->
+            if (action.skillName != "tower") return@map action
+            val renumbered = action.copy(
+                activityKey      = "tower_floor_$nextFloor",
+                skillDisplayName = "Infinite Tower: Floor $nextFloor",
+            )
+            nextFloor++
+            renumbered
+        }
     }
 
     suspend fun evictQueueForSkill(skillName: String): List<QueuedAction> {
@@ -462,6 +525,16 @@ class PlayerRepository @Inject constructor(
      * Returns the keys of any skill capes awarded (level 99 reached for the first time).
      */
     suspend fun applyMultiSkillResults(
+        xpPerSkill: Map<String, Long>,
+        itemsGained: Map<String, Int>,
+        coinsGained: Long = 0L,
+        efficiencyMultiplier: Float = 1.0f,
+        perSkillPetBoostPct: Map<String, Int> = emptyMap(),
+    ): List<String> = playerMutex.withLock {
+        applyMultiSkillResultsUnlocked(xpPerSkill, itemsGained, coinsGained, efficiencyMultiplier, perSkillPetBoostPct)
+    }
+
+    internal suspend fun applyMultiSkillResultsUnlocked(
         xpPerSkill: Map<String, Long>,
         itemsGained: Map<String, Int>,
         coinsGained: Long = 0L,
@@ -652,7 +725,11 @@ class PlayerRepository @Inject constructor(
      * Adds [petId] to the player's pet list if not already owned.
      * Returns true if the pet was newly added, false if already owned.
      */
-    suspend fun addPetIfNew(petId: String, boostPercent: Int = 0): Boolean {
+    suspend fun addPetIfNew(petId: String, boostPercent: Int = 0): Boolean = playerMutex.withLock {
+        addPetIfNewUnlocked(petId, boostPercent)
+    }
+
+    internal suspend fun addPetIfNewUnlocked(petId: String, boostPercent: Int = 0): Boolean {
         val player = getOrCreatePlayer()
         val pets: MutableList<OwnedPet> = json.decodeFromString(player.pets)
         if (pets.any { it.id == petId }) return false
@@ -890,10 +967,13 @@ class PlayerRepository @Inject constructor(
     }
 
     /** Adds [qty] of [itemKey] to inventory. */
-    suspend fun addItem(itemKey: String, qty: Int) {
+    suspend fun addItem(itemKey: String, amount: Int = 1) = playerMutex.withLock { addItemUnlocked(itemKey, amount) }
+
+    internal suspend fun addItemUnlocked(itemKey: String, amount: Int = 1) {
+        if (amount <= 0) return
         val player = getOrCreatePlayer()
         val inventory: MutableMap<String, Int> = json.decodeFromString(player.inventory)
-        inventory[itemKey] = (inventory[itemKey] ?: 0) + qty
+        inventory[itemKey] = ((inventory[itemKey] ?: 0).toLong() + amount).coerceAtMost(Int.MAX_VALUE.toLong()).toInt()
         val flags: PlayerFlags = json.decodeFromString(player.flags)
         playerDao.upsert(player.copy(
             inventory = json.encode<Map<String, Int>>(inventory),
@@ -902,11 +982,14 @@ class PlayerRepository @Inject constructor(
     }
 
     /** Adds multiple items to inventory in a single DB write. */
-    suspend fun addItems(items: Map<String, Int>) {
-        if (items.isEmpty()) return
+    suspend fun addItems(items: Map<String, Int>) = playerMutex.withLock {
+        if (items.isEmpty()) return@withLock
         val player = getOrCreatePlayer()
         val inventory: MutableMap<String, Int> = json.decodeFromString(player.inventory)
-        for ((key, qty) in items) inventory[key] = (inventory[key] ?: 0) + qty
+        for ((key, qty) in items) {
+            require(qty >= 0) { "Cannot add negative quantity" }
+            inventory[key] = ((inventory[key] ?: 0).toLong() + qty).coerceAtMost(Int.MAX_VALUE.toLong()).toInt()
+        }
         val flags: PlayerFlags = json.decodeFromString(player.flags)
         playerDao.upsert(player.copy(
             inventory = json.encode<Map<String, Int>>(inventory),

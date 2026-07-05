@@ -338,7 +338,7 @@ class CombatViewModel @Inject constructor(
                         skillName           = "combat",
                         activityKey         = dungeonKey,
                         skillDisplayName    = dungeonName,
-                        estimatedDurationMs = SkillSimulator.sessionDurationMs(agility),
+                        estimatedDurationMs = SkillSimulator.sessionDurationMs(agility, dungeonFlags.skillPrestige[Skills.AGILITY] ?: 0),
                         equippedSnapshot    = player.equipped,
                         arrowsKey           = _extra.value.selectedArrowKey ?: dungeonFlags.equippedArrows,
                         spellName           = queuedSpell?.name ?: dungeonFlags.activeSpell,
@@ -477,6 +477,7 @@ class CombatViewModel @Inject constructor(
                     arrowStrengthBonus  = arrowStrengthBonus + totalRangedStrBonus,
                     spellMaxHit         = (selectedSpell?.maxHit ?: 0) + totalMagicDmgBonus,
                     agilityLevel        = levels[Skills.AGILITY]   ?: 1,
+                    agilityPrestige     = prestigeMap[Skills.AGILITY] ?: 0,
                     petBoostPct         = petBoostFor(player.pets),
                     equippedFood        = availableFood,
                     foodHealValues      = foodHealValues,
@@ -662,7 +663,7 @@ class CombatViewModel @Inject constructor(
                     bossFrames,
                 )
                 val agilityLevel   = levels[Skills.AGILITY] ?: 1
-                val frameMs        = SkillSimulator.sessionDurationMs(agilityLevel) / 60L
+                val frameMs        = SkillSimulator.sessionDurationMs(agilityLevel, flags.skillPrestige[Skills.AGILITY] ?: 0) / 60L
                 val bossDurationMs = boss.durationMinutes * frameMs
                 sessionRepo.startSession(
                     skillName        = "boss",
@@ -1133,6 +1134,7 @@ class CombatViewModel @Inject constructor(
                 arrowStrengthBonus  = arrowStrBonus,
                 spellMaxHit         = spellMaxHit,
                 agilityLevel        = agility,
+                agilityPrestige     = prestigeMap[Skills.AGILITY] ?: 0,
                 equippedFood        = foodQtys,
                 foodHealValues      = gameData.foodHealValues,
                 availableArrows     = availableArrows,

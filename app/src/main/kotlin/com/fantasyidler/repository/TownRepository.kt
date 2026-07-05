@@ -114,42 +114,45 @@ class TownRepository @Inject constructor(
         }
         return duration
     }
-    
+
     // -------------------------------------------------------------------------
     // Upgrade action
     // -------------------------------------------------------------------------
 
-    suspend fun upgradeBuilding(buildingKey: String): UpgradeBuildingResult {
-        val building = gameData.townBuildings[buildingKey] ?: return UpgradeBuildingResult.UnknownBuilding
+    suspend fun upgradeBuilding(buildingKey: String): UpgradeBuildingResult = playerRepo.withLock {
+        val building = gameData.townBuildings[buildingKey]
+            ?: return@withLock UpgradeBuildingResult.UnknownBuilding
 
-        val flags = playerRepo.getFlags()
+        val flags = playerRepo.getFlagsUnlocked()
         val currentTier = flags.townBuildingTiers[buildingKey] ?: 0
 
-        if (currentTier >= building.tiers.size) return UpgradeBuildingResult.AlreadyMaxed
+        if (currentTier >= building.tiers.size) return@withLock UpgradeBuildingResult.AlreadyMaxed
 
         val tierDef = building.tiers[currentTier]
-        val skillLevels: Map<String, Int> = playerRepo.getSkillLevels()
+        val player = playerRepo.getOrCreatePlayer()
+        val skillLevels: Map<String, Int> = kotlinx.serialization.json.Json.decodeFromString(player.skillLevels)
         val constructionLevel = skillLevels["construction"] ?: 1
 
         if (constructionLevel < tierDef.constructionLevelRequired) {
-            return UpgradeBuildingResult.InsufficientLevel
+            return@withLock UpgradeBuildingResult.InsufficientLevel
         }
 
-        val player = playerRepo.getOrCreatePlayer()
-        if (player.coins < tierDef.coinCost) return UpgradeBuildingResult.InsufficientCoins
+        if (player.coins < tierDef.coinCost) return@withLock UpgradeBuildingResult.InsufficientCoins
 
-        if (!playerRepo.consumeItems(tierDef.materials)) {
-            return UpgradeBuildingResult.InsufficientMaterials
+        val inventory: Map<String, Int> = kotlinx.serialization.json.Json.decodeFromString(player.inventory)
+        for ((item, qty) in tierDef.materials) {
+            if ((inventory[item] ?: 0) < qty) return@withLock UpgradeBuildingResult.InsufficientMaterials
         }
 
-        playerRepo.spendCoins(tierDef.coinCost)
+        playerRepo.consumeItemsUnlocked(tierDef.materials)
+        playerRepo.spendCoinsUnlocked(tierDef.coinCost)
 
         val newTiers = flags.townBuildingTiers.toMutableMap()
         newTiers[buildingKey] = currentTier + 1
-        playerRepo.updateFlags(flags.copy(townBuildingTiers = newTiers))
+        playerRepo.updateFlagsUnlocked(flags.copy(townBuildingTiers = newTiers))
 
         questRepo.recordBuildingUpgraded(buildingKey)
 
-        return UpgradeBuildingResult.Success
+        UpgradeBuildingResult.Success
     }
 }

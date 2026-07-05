@@ -37,6 +37,7 @@ data class BoneAltarUiState(
     val prayerCapeMult: Float = 1f,
     val churchMult: Float = 1f,
     val prestigeMult: Float = 1f,
+    val petBoostPct: Int = 0,
     val selectedBoneKey: String? = null,
     val combo: Int = 0,
     val lastTapMs: Long = 0L,
@@ -80,6 +81,7 @@ class BoneAltarViewModel @Inject constructor(
         val churchMult     = ChurchRepository.xpMultiplier(flags)
         val prestige       = flags.skillPrestige[Skills.PRAYER] ?: 0
         val prestigeMult   = if (prestige > 0) (1.0 + prestige * 0.10).toFloat() else 1f
+        val petBoostPct    = petBoostFor(player.pets, Skills.PRAYER)
 
         val selectedKey = extra.selectedBoneKey?.takeIf { (inventory[it] ?: 0) > 0 }
 
@@ -93,6 +95,7 @@ class BoneAltarViewModel @Inject constructor(
             prayerCapeMult  = prayerCapeMult,
             churchMult      = churchMult,
             prestigeMult    = prestigeMult,
+            petBoostPct     = petBoostPct,
             selectedBoneKey = selectedKey,
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), BoneAltarUiState())
@@ -113,8 +116,9 @@ class BoneAltarViewModel @Inject constructor(
         _extra.update { it.copy(combo = newCombo, lastTapMs = now) }
 
         val boostMult   = if (state.boostActive) 2.0f else 1.0f
+        val petMult     = 1.0f + state.petBoostPct / 100.0f
         val effectiveXp = (bone.xpPerBone * comboMult * boostMult *
-            state.churchMult * state.prayerCapeMult * state.prestigeMult)
+            state.churchMult * state.prayerCapeMult * state.prestigeMult * petMult)
             .toLong().coerceAtLeast(1L)
 
         viewModelScope.launch {
@@ -138,6 +142,18 @@ class BoneAltarViewModel @Inject constructor(
     }
 
     fun snackbarConsumed() = _extra.update { it.copy(snackbarMessage = null) }
+
+    private fun petBoostFor(petsJson: String, skillKey: String): Int {
+        val pets = try {
+            json.decodeFromString<List<com.fantasyidler.data.model.OwnedPet>>(petsJson)
+        } catch (_: Exception) {
+            return 0
+        }
+        return pets.sumOf { pet ->
+            val pd = gameData.pets[pet.id]
+            if (pd != null && (pd.boostedSkill == skillKey || pd.boostedSkill == "all")) pd.boostPercent else 0
+        }
+    }
 
     companion object {
         const val COMBO_RESET_MS  = 3_000L

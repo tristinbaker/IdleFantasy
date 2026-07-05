@@ -71,8 +71,12 @@ private fun localizedQuestDesc(type: String, target: String, amount: Int, guild:
         "mages"    -> stringResource(R.string.guild_combat_magic)
         else       -> guild
     }
+    val gatherVerb = run {
+        val id = context.resources.getIdentifier("daily_verb_$guild", "string", context.packageName)
+        if (id != 0) context.getString(id) else context.getString(R.string.daily_verb_mining)
+    }
     return when (type) {
-        "gather"     -> stringResource(R.string.guild_quest_desc_gather, amount, itemName, guildName)
+        "gather"     -> context.getString(R.string.guild_quest_desc_gather, gatherVerb, amount, itemName, guildName)
         "craft"      -> stringResource(R.string.guild_quest_desc_craft, amount, itemName, guildName)
         "kill"       -> stringResource(R.string.guild_quest_desc_kill, amount, combatStyle)
         "prayer"     -> stringResource(R.string.guild_quest_desc_prayer, amount, guildName)
@@ -181,8 +185,10 @@ fun GuildDetailScreen(
                     0 -> GuildQuestsTab(
                         quests        = state.quests,
                         guildLevel    = state.guildLevel,
+                        inventory     = state.inventory,
                         hideCompleted = state.hideCompleted,
                         onClaim       = { viewModel.claimGuildQuest(it) },
+                        onContribute  = { viewModel.contributeFarmingQuest(it) },
                     )
                     else -> GuildDailiesTab(
                         dailies       = state.dailies,
@@ -258,8 +264,10 @@ private fun GuildRepHeader(
 private fun GuildQuestsTab(
     quests: List<GuildQuestWithProgress>,
     guildLevel: Int,
+    inventory: Map<String, Int>,
     hideCompleted: Boolean = false,
     onClaim: (String) -> Unit,
+    onContribute: (String) -> Unit,
 ) {
     val visibleQuests = if (hideCompleted) quests.filter { !it.completed } else quests
     LazyColumn(Modifier.fillMaxSize()) {
@@ -279,9 +287,12 @@ private fun GuildQuestsTab(
         } else {
             items(visibleQuests, key = { it.quest.id }) { qwp ->
                 GuildQuestRow(
-                    qwp        = qwp,
-                    guildLevel = guildLevel,
-                    onClaim    = { onClaim(qwp.quest.id) },
+                    qwp          = qwp,
+                    guildLevel   = guildLevel,
+                    inventoryQty = if (qwp.quest.guild == "farming" && qwp.quest.type == "gather")
+                        inventory[qwp.quest.target] ?: 0 else 0,
+                    onClaim      = { onClaim(qwp.quest.id) },
+                    onContribute = { onContribute(qwp.quest.id) },
                 )
                 HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
             }
@@ -294,7 +305,9 @@ private fun GuildQuestsTab(
 private fun GuildQuestRow(
     qwp: GuildQuestWithProgress,
     guildLevel: Int,
+    inventoryQty: Int = 0,
     onClaim: () -> Unit,
+    onContribute: () -> Unit = {},
 ) {
     val locked   = guildLevel < qwp.quest.guildLevelRequired
     val dimColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
@@ -372,6 +385,11 @@ private fun GuildQuestRow(
                 Spacer(Modifier.height(8.dp))
                 Button(onClick = onClaim, modifier = Modifier.fillMaxWidth()) {
                     Text(stringResource(R.string.label_claim_reward))
+                }
+            } else if (inventoryQty > 0) {
+                Spacer(Modifier.height(8.dp))
+                OutlinedButton(onClick = onContribute, modifier = Modifier.fillMaxWidth()) {
+                    Text(stringResource(R.string.guild_contribute_inventory, inventoryQty))
                 }
             }
         }

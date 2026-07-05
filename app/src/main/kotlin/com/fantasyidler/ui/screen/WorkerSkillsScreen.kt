@@ -591,15 +591,6 @@ private fun WorkerCraftSkillSheet(
     }
 }
 
-private fun projectedXpLabel(currentXp: Long, xpGain: Long): String {
-    val currentLevel   = XpTable.levelForXp(currentXp)
-    val projectedLevel = XpTable.levelForXp(currentXp + xpGain)
-    return if (projectedLevel > currentLevel)
-        "+${xpGain.formatXp()} XP → Level $projectedLevel"
-    else
-        "+${xpGain.formatXp()} XP"
-}
-
 private fun workerMeetsLevel(state: WorkerSkillsUiState, recipe: CraftableRecipe): Boolean =
     (state.skillLevels[recipe.skillName] ?: 1) >= recipe.levelRequired
 

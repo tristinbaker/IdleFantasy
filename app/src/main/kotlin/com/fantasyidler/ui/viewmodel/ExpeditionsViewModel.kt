@@ -127,6 +127,8 @@ class ExpeditionsViewModel @Inject constructor(
             val player = playerRepo.getOrCreatePlayer()
             val levels: Map<String, Int> = json.decodeFromString(player.skillLevels)
             val agilityLevel = levels[Skills.AGILITY] ?: 1
+            val flags: PlayerFlags = json.decodeFromString(player.flags)
+            val agilityPrestige = flags.skillPrestige[Skills.AGILITY] ?: 0
 
             if (sessionRepo.getActiveSession()?.completed == false) {
                 val enqueued = playerRepo.enqueueAction(
@@ -134,7 +136,7 @@ class ExpeditionsViewModel @Inject constructor(
                         skillName           = "expedition",
                         activityKey         = key,
                         skillDisplayName    = dungeon.displayName,
-                        estimatedDurationMs = SkillSimulator.sessionDurationMs(agilityLevel),
+                        estimatedDurationMs = SkillSimulator.sessionDurationMs(agilityLevel, agilityPrestige),
                     )
                 )
                 _extra.update {
@@ -152,11 +154,12 @@ class ExpeditionsViewModel @Inject constructor(
             }
             val xpMap: Map<String, Long> = json.decodeFromString(player.skillXp)
             val result = SkillingDungeonSimulator.simulate(
-                dungeonKey     = key,
-                dungeon        = dungeon,
-                startXp        = xpMap[dungeon.skill] ?: 0L,
-                agilityLevel   = agilityLevel,
-                toolEfficiency = toolEfficiency,
+                dungeonKey      = key,
+                dungeon         = dungeon,
+                startXp         = xpMap[dungeon.skill] ?: 0L,
+                agilityLevel    = agilityLevel,
+                agilityPrestige = agilityPrestige,
+                toolEfficiency  = toolEfficiency,
             )
             sessionRepo.startSession(
                 skillName        = "expedition",

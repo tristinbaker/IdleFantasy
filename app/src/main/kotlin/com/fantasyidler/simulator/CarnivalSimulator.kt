@@ -34,6 +34,7 @@ object CarnivalSimulator {
         relevantSkillLevel: Int,
         petBoostPct: Int,
         agilityLevel: Int,
+        agilityPrestige: Int = 0,
         fairgroundsTier: Int = 0,
     ): SkillSimulator.Result {
         val tierBonus = fairgroundsTier.coerceIn(0, 3) * 0.05
@@ -60,7 +61,7 @@ object CarnivalSimulator {
 
         return SkillSimulator.Result(
             frames     = frames,
-            durationMs = SkillSimulator.sessionDurationMs(agilityLevel),
+            durationMs = SkillSimulator.sessionDurationMs(agilityLevel, agilityPrestige),
         )
     }
 }

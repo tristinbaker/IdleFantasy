@@ -1,3 +1,45 @@
+v1.10.11
+• Fix: Removed impossible Spectral Knight slayer task (no such monster exists)
+• Fix: Carnival prize shop no longer lets Juggling Imp be re-bought after owning it
+• Fix: Herblore cape no longer misclassified under Materials in the shop; added missing Herblore, Thieving, Construction, and Slayer 99 skill capes
+• New: Added a contribute-from-inventory button to regular farming guild quests
+• Fix: Farming guild daily donations no longer advance progress if the item consumption fails
+• Balance: Rebalanced guild daily request amounts so completing one takes roughly similar effort across every guild
+• Fix: Firemaking, Runecrafting, and Prayer now show guild quest progress chips like other skills
+• Fix: Infinite Tower's floor button now updates correctly when queuing multiple attempts
+• Fix: Infinite Tower enemies now keep getting tougher past floor 100 instead of freezing, and the strength indicator reflects real enemy stats
+• Fix: Infinite Tower queue can no longer be exploited to skip floors by cancelling and requeuing
+• Fix: Firemaking and Runecrafting quest chips no longer sit flush against the screen edge
+• Fix: Merchant's Quarter (and other trade routes) can now actually pay out amounts near their advertised range instead of always landing near the average
+
+v1.10.10
+• Fixed Prayer XP from burying bones not including pet bonuses (e.g. Juggling Imp's all-skill boost)
+• Fixed queueing multiple Infinite Tower floors repeating the same floor instead of advancing (each queue tap now uses the last queued floor, not the currently running one)
+• Fixed Agility Prestige not reducing Crafting session duration (Smithing, Cooking, Fletching, Crafting, Herblore, Construction)
+
+v1.10.9
+• Fixed Higher or Lower minigame giving wrong answer on tied numbers (now regenerates until the next number differs)
+• Fixed Ancient Forest Ruins not unlocking after completing the Whispering Grove expedition (race condition in flag update now resolved atomically)
+• Fixed Bestiary qty column wrapping mid-number for large ranges like ×100–200 or coin ranges (column widened, single-line enforced)
+• Fixed Agility prestige not reducing session duration for combat dungeons, boss fights, Infinite Tower, expeditions, Slayer tasks, Carnival games, and Mercantile routes
+• Wrapped multi-step inventory/flag transactions in Carnival, Church, Farming, Slayer, and Town repositories with atomic mutex locks to prevent item or coin loss under concurrent writes
+
+v1.10.8
+• Guild gather quests now show the correct action verb (Mine, Catch, Chop, Harvest) instead of "Collect"
+• Added Farming Guild gather quest verb (Harvest)
+• Carnival ring toss hints now correctly display percentage symbols instead of %%
+• Juggling Imp from the Carnival shop now correctly goes to your pet list instead of your inventory
+• Pet bonuses from multiple pets now stack correctly — the full combined boost is applied everywhere
+• Worker ranged sessions now correctly use all available arrow tiers, not just the best one
+• Repeat Action on boss/dungeon sessions now correctly applies your active potion
+• Boss session summaries now show arrows, runes, and food consumed in the collection report
+
+v1.10.7
+• Fix: Mercantile Cape (level 99 reward) can now be equipped and is no longer sold as junk
+• Fix: Farming produce (pumpkin, strawberry, tomato, watermelon, etc.) no longer appears in Sell Junk
+• Fix: Tower kills now count toward weekly quests, daily quests, slayer tasks, and guild progress
+• Update: Inn description now clarifies that worker sessions do not count toward your quests
+
 v1.10.6
 • Fixed boss kills (King Black Dragon, Demon Lord) not counting toward dragon/demon daily and weekly quests
 • Fixed being unable to buy more than 1 of a cheap item when holding billions of coins

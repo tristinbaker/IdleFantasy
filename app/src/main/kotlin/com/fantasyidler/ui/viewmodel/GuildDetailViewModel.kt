@@ -173,6 +173,16 @@ class GuildDetailViewModel @Inject constructor(
         }
     }
 
+    fun contributeFarmingQuest(questId: String) {
+        viewModelScope.launch {
+            val inventory: Map<String, Int> = json.decodeFromString(playerRepo.getOrCreatePlayer().inventory)
+            val consumed = guildRepo.contributeFarmingQuest(questId, inventory)
+            if (consumed > 0) {
+                _extra.update { it.copy(snackbarMessage = context.getString(R.string.guild_contributed_items, consumed)) }
+            }
+        }
+    }
+
     fun snackbarConsumed() = _extra.update { it.copy(snackbarMessage = null) }
 
     fun toggleHideCompleted() {

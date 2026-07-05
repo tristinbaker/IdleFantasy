@@ -663,7 +663,7 @@
         <item>Yara</item>
     </string-array>
     <string name="inn_title">Herberg</string>
-    <string name="inn_desc">Huur een werknemer om vaardigheden voor je te trainen, of koop voedsel van het dagelijkse menu.</string>
+    <string name="inn_desc">Huur een werknemer om vaardigheden voor je te trainen, of koop voedsel van het dagelijkse menu. Werknemers tellen niet mee voor je quests.</string>
     <string name="inn_worker_already_hired">Er is al een werknemer ingehuurd.</string>
     <string name="inn_not_enough_coins">Niet genoeg Ducaten.</string>
     <string name="inn_hire">Huur</string>
@@ -776,7 +776,7 @@
     <string name="guild_locked_hint">Vereist Gilde Level %1$d</string>
     <string name="guild_no_dailies">Voltooi gildequests om reputatie te verdienen en dagelijkse Quests te ontgrendelen.</string>
     <string name="guild_contribute_inventory">Bijdragen vanuit inventaris (%1$d beschikbaar)</string>
-    <string name="guild_quest_desc_gather">Verzamel %1$d %2$s voor het %3$s.</string>
+    <string name="guild_quest_desc_gather">%1$s %2$d %3$s voor het %4$s.</string>
     <string name="guild_quest_desc_craft">Maak %1$d %2$s voor het %3$s.</string>
     <string name="guild_quest_desc_kill">Versla %1$d vijanden met %2$s gevecht.</string>
     <string name="guild_quest_desc_prayer">Begraaf %1$d botten voor het %2$s.</string>
@@ -1174,7 +1174,7 @@
     <string name="carnival_queue">Sessie in wachtrij</string>
     <string name="carnival_ring_toss">Ringwerpen</string>
     <string name="carnival_active_ring_desc">Gooi wanneer de indicator de gouden doelzone bereikt.</string>
-    <string name="carnival_ring_target_hint">Mik op het midden (45%%–55%%)</string>
+    <string name="carnival_ring_target_hint">Mik op het midden (45%–55%)</string>
     <string name="carnival_throw">Gooi!</string>
     <string name="carnival_hammer_strike">Hamerstoot</string>
     <string name="carnival_active_hammer_desc">Sla toe wanneer de krachtmeter op zijn hoogtepunt is.</string>
@@ -1211,7 +1211,7 @@
     <string name="carnival_shell_game">Pick-a-Cup</string>
     <string name="carnival_active_shell_desc">Watch which cup hides the gem, then pick it after the shuffle!</string>
     <string name="carnival_shell_showing">Watch carefully — gem is under cup %1$d</string>
-    <string name="carnival_shell_watch">Watch closely...</string>
+    <string name="carnival_shell_watch">Watch closely…</string>
     <string name="carnival_shell_pick">Which cup is it under?</string>
     <string name="carnival_shell_won">Correct! +%1$d tickets</string>
     <string name="carnival_shell_missed">Wrong! The gem was under cup %1$d.</string>
@@ -1230,20 +1230,20 @@
     <string name="carnival_difficulty_label">Difficulty</string>
     <string name="carnival_difficulty_normal">Normal</string>
     <string name="carnival_difficulty_hard">Hard</string>
-    <string name="carnival_ring_hard_hint">Hard: 52%%–57%% target, 7 tickets</string>
+    <string name="carnival_ring_hard_hint">Hard: 52%–57% target, 7 tickets</string>
 
     <!-- ===== Magic Bean / Farming ===== -->
     <string name="farming_bean_note_1">Een klein spruitje heeft door de grond geduwd.</string>
     <string name="farming_bean_note_2">De stengel groeit op een bovennatuurlijke manier.</string>
     <string name="farming_bean_note_3">De bladeren zijn enorm — zoals je nog nooit hebt gezien.</string>
-    <string name="farming_bean_note_4">Wolken zijn begonnen zich rond de bovenste stengel te verzamelen...</string>
+    <string name="farming_bean_note_4">Wolken zijn begonnen zich rond de bovenste stengel te verzamelen…</string>
     <string name="farming_bean_note_5">Vreemde geluiden driften neer van ergens ver boven.</string>
     <string name="farming_bean_note_6">Ver gerommel. Iets roert in de hoogten.</string>
     <string name="farming_bean_note_7">De bonenrank trilt. Iets wacht aan de top.</string>
     <string name="farming_bean_note_8">Bijna daar. De lucht wordt dunner. Je kunt de top bijna zien.</string>
     <string name="farming_bean_ready">De bonenrank reikt tot voorbij de wolken. Klaar om te klimmen?</string>
     <string name="farming_bean_climb">Klimmen</string>
-    <string name="farming_bean_climbed">Je hebt de bonenrank beklommen. Iets wacht je...</string>
+    <string name="farming_bean_climbed">Je hebt de bonenrank beklommen. Iets wacht je…</string>
     <string name="farming_bean_picker_stats">\?\?\?  •  \?\?\?  •  \?\?\?</string>
     <string name="farming_magic_bean_one_plot">Magische bonen kunnen slechts op één veld worden geplant</string>
 

@@ -32,6 +32,14 @@ Better equipment means faster gathering and surviving tougher dungeons. Craft yo
 
 Explore **20 dungeons** from the starter Farm all the way to late-game Fortress Ruins and beyond. Each dungeon has its own enemy roster, difficulty rating, and potential drops. Before you go in, the game tells you how your current gear stacks up. Choose from Melee, Ranged, or Magic; each style levels its own combat skills.
 
+## Infinite Tower
+
+Climb an endless combat gauntlet, one floor at a time. Enemies grow tougher the higher you go, and every 10 floors unlocks a milestone reward, from unique gear to permanent XP and coin bonuses.
+
+## Expeditions
+
+Explore non-combat skilling dungeons to uncover lore notes. Finding enough notes in an area unlocks new combat dungeons to challenge.
+
 ## Quests
 
 Over **170 quests** span all skills. Daily quests reset every morning for a quick goal to aim at. Long-term quests track cumulative progress over many sessions. Completing quests earns XP, coins, and item rewards.
@@ -39,6 +47,10 @@ Over **170 quests** span all skills. Daily quests reset every morning for a quic
 ## Guild System
 
 **17 guilds** cover every skill and combat style (Warriors, Archers, and Mages guilds for combat). Each guild has up to 10 rank levels. Advance by completing progression quests and earning reputation through daily requests. Higher ranks unlock harder dailies and better cross-skill rewards, letting specialists access resources from skills they don't personally train.
+
+## Builder's Workshop
+
+Spend Construction materials to upgrade the Inn, Guild Hall, and Church, unlocking better worker slots, guild perks, and stronger blessings.
 
 ## Church
 
@@ -51,6 +63,10 @@ Visit the **Slayer Master** in town to receive a task: kill a set number of a sp
 ## Pets and the Inn
 
 Rare enemies drop **collectible pets** that grant permanent passive XP bonuses. The **Inn** lets you hire workers who can queue up sessions on your behalf, and buy food in bulk to keep your fighter alive longer in tougher dungeons.
+
+## Carnival
+
+Visit the traveling Carnival to play idle minigames, the Archery Range, Strongman Competition, Wizard's Duel, and Fishing Derby, that convert your skill levels into tickets over time, plus active minigames like Ring Toss. Spend tickets in the Carnival Shop on exclusive equipment, pets, and XP lamps.
 
 ## Getting the app
 

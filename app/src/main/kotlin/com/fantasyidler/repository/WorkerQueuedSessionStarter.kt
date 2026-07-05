@@ -37,19 +37,20 @@ class WorkerQueuedSessionStarter @Inject constructor(
     private val mutex = Mutex()
 
     suspend fun startNextQueued(slot: Int = 1): Boolean {
-        mutex.withLock {
-            val current = sessionRepo.getActiveWorkerSession(slot)
-            if (current != null && !current.completed) return false
-            val next = playerRepo.dequeueNextWorkerAction(slot) ?: return false
-            return try {
-                startQueuedAction(slot, next)
-                true
-            } catch (_: Exception) {
-                playerRepo.requeueWorkerActionAtFront(slot, next)
-                false
+        return playerRepo.playerMutex.withLock {
+            mutex.withLock {
+                val current = sessionRepo.getActiveWorkerSession(slot)
+                if (current != null && !current.completed) return@withLock false
+                val next = playerRepo.dequeueNextWorkerActionUnlocked(slot) ?: return@withLock false
+                try {
+                    startQueuedAction(slot, next)
+                    true
+                } catch (_: Exception) {
+                    playerRepo.requeueWorkerActionAtFrontUnlocked(slot, next)
+                    false
+                }
             }
         }
-        return false
     }
 
     private suspend fun startQueuedAction(slot: Int, action: QueuedAction) {
@@ -204,7 +205,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                 val qty         = action.qty.takeIf { it > 0 } ?: return
                 val catalystKey = action.catalystKey
                 val outputKey   = if (catalystKey != null) "enhanced_${action.activityKey}" else action.activityKey
-                if (catalystKey != null) playerRepo.consumeItems(mapOf(catalystKey to qty))
+                if (catalystKey != null) playerRepo.consumeItemsUnlocked(mapOf(catalystKey to qty))
                 val frames = buildCraftFrames(xpMap[Skills.HERBLORE] ?: 0L, qty, r.xpPerItem, r.outputQuantity, outputKey)
                 startSession(slot, action, frames, durationMs, efficiencyMultiplier)
             }
@@ -251,7 +252,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                 val preferredArrow = flags.equippedArrows?.takeIf { (inventory[it] ?: 0) > 0 }
                 val bestArrow = preferredArrow ?: ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
                 val arrowBonus = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
-                val availableArrows = if (bestArrow != null) mapOf(bestArrow to (inventory[bestArrow] ?: 0)) else emptyMap()
+                val availableArrows = ARROW_TIERS.filter { (inventory[it] ?: 0) > 0 }.associateWith { inventory[it] ?: 0 }
                 val bossFrames = CombatSimulator.simulateBoss(
                     boss               = boss,
                     bossKey            = bossKey,
@@ -300,7 +301,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                 val preferredArrow = flags.equippedArrows?.takeIf { (inventory[it] ?: 0) > 0 }
                 val bestArrow = preferredArrow ?: ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
                 val arrowBonus = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
-                val availableArrows = if (bestArrow != null) mapOf(bestArrow to (inventory[bestArrow] ?: 0)) else emptyMap()
+                val availableArrows = ARROW_TIERS.filter { (inventory[it] ?: 0) > 0 }.associateWith { inventory[it] ?: 0 }
                 val result = CombatSimulator.simulateDungeon(
                     dungeon             = dungeon,
                     enemies             = gameData.enemies,
@@ -317,6 +318,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                     arrowStrengthBonus  = arrowBonus,
                     spellMaxHit         = (spell?.maxHit ?: 0) + totalMagicDmgBonus,
                     agilityLevel        = agilityLevel,
+                    agilityPrestige     = flags.skillPrestige[Skills.AGILITY] ?: 0,
                     petBoostPct         = 0,
                     equippedFood        = availableFood,
                     foodHealValues      = gameData.foodHealValues,

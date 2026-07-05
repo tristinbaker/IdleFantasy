@@ -52,7 +52,6 @@ import com.fantasyidler.ui.viewmodel.TowerMilestone
 import com.fantasyidler.ui.viewmodel.TowerViewModel
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.util.GameStrings
-import kotlin.math.roundToInt
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -99,6 +98,8 @@ fun TowerScreen(
             item {
                 TowerHeaderCard(
                     currentFloor         = state.currentFloor,
+                    nextFloorToQueue     = state.nextFloorToQueue,
+                    enemyStrengthPct     = state.enemyStrengthPct,
                     bestFloor            = state.bestFloor,
                     hasSession           = state.towerSession != null,
                     sessionDone          = state.towerSession?.completed == true,
@@ -137,6 +138,8 @@ fun TowerScreen(
 @Composable
 private fun TowerHeaderCard(
     currentFloor:         Int,
+    nextFloorToQueue:     Int,
+    enemyStrengthPct:     Int,
     bestFloor:            Int,
     hasSession:           Boolean,
     sessionDone:          Boolean,
@@ -174,12 +177,10 @@ private fun TowerHeaderCard(
                         )
                     }
                 }
-                val mult = 1.0 + currentFloor * 0.025
-                val pct  = ((mult - 1.0) * 100).roundToInt()
                 if (currentFloor > 0) {
                     SuggestionChip(
                         onClick = {},
-                        label   = { Text(stringResource(R.string.tower_enemy_strength, "+$pct")) },
+                        label   = { Text(stringResource(R.string.tower_enemy_strength, "+$enemyStrengthPct")) },
                     )
                 }
             }
@@ -244,7 +245,7 @@ private fun TowerHeaderCard(
                     enabled  = !startingSession,
                     modifier = Modifier.fillMaxWidth(),
                 ) {
-                    Text(stringResource(R.string.tower_start_btn, currentFloor + 1))
+                    Text(stringResource(R.string.tower_start_btn, nextFloorToQueue))
                 }
             }
         }

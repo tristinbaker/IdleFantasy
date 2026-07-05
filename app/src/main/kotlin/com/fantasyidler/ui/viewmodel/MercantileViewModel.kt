@@ -89,6 +89,7 @@ class MercantileViewModel @Inject constructor(
             val levels: Map<String, Int>  = json.decodeFromString(player.skillLevels)
             val xp:     Map<String, Long> = json.decodeFromString(player.skillXp)
             val agilityLevel = levels[Skills.AGILITY] ?: 1
+            val mercFlags: PlayerFlags = json.decodeFromString(player.flags)
 
             if (sessionRepo.getActiveSession() != null) {
                 val spent = playerRepo.spendCoins(route.coinCost.toLong())
@@ -101,7 +102,7 @@ class MercantileViewModel @Inject constructor(
                         skillName           = Skills.MERCANTILE,
                         activityKey         = routeId,
                         skillDisplayName    = "Mercantile",
-                        estimatedDurationMs = SkillSimulator.sessionDurationMs(agilityLevel),
+                        estimatedDurationMs = SkillSimulator.sessionDurationMs(agilityLevel, mercFlags.skillPrestige[Skills.AGILITY] ?: 0),
                         coinRefund          = route.coinCost.toLong(),
                     )
                 )
