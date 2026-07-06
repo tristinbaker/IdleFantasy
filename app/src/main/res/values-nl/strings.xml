@@ -1085,6 +1085,11 @@
     <string name="town_fairgrounds_t2_bonus">Unlocks Higher or Lower, +10% idle ticket chance</string>
     <string name="town_fairgrounds_t3_bonus">Cooldowns reduced to 5 minutes, +15% idle ticket chance</string>
     <string name="town_building_garden_name">Garden</string>
+    <plurals name="town_garden_bonus">
+        <item quantity="zero">Nog geen extra akkers</item>
+        <item quantity="one">+%1$d extra akker</item>
+        <item quantity="other">+%1$d extra akkers</item>
+    </plurals>
     <string name="achievement_town_first_upgrade_name">Eerste Renovatie</string>
     <string name="achievement_town_first_upgrade_desc">Verbeter een stadsgebouw voor de eerste keer</string>
     <string name="achievement_town_all_tier1_name">Stadsverbeteraar</string>

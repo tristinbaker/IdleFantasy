@@ -916,6 +916,11 @@
     <string name="town_fairgrounds_t2_bonus">Unlocks Higher or Lower</string>
     <string name="town_fairgrounds_t3_bonus">Cooldowns reduced to 5 minutes</string>
     <string name="town_building_garden_name">Garden</string>
+    <plurals name="town_garden_bonus">
+        <item quantity="zero">Belum ada plot pertanian tambahan</item>
+        <item quantity="one">+%1$d plot pertanian tambahan</item>
+        <item quantity="other">+%1$d plot pertanian tambahan</item>
+    </plurals>
     <string name="achievement_town_first_upgrade_name">Renovasi Pertama</string>
     <string name="achievement_town_first_upgrade_desc">Tingkatkan bangunan kota mana pun untuk pertama kalinya.</string>
     <string name="achievement_town_all_tier1_name">Pengembang Kota</string>

@@ -146,7 +146,7 @@
           "steel_nail": 1500
         },
         "bonuses": {
-          "extra_carnival_games": 1,
+          "extra_carnival_games": 2,
           "carnival_cooldown_mult": 0.75,
           "idle_ticket_bonus_chance": 0.1
         }

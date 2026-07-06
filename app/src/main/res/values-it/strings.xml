@@ -1165,6 +1165,11 @@
     <string name="town_fairgrounds_t2_bonus">Unlocks Higher or Lower, +10% idle ticket chance</string>
     <string name="town_fairgrounds_t3_bonus">Cooldowns reduced to 5 minutes, +15% idle ticket chance</string>
     <string name="town_building_garden_name">Garden</string>
+    <plurals name="town_garden_bonus">
+        <item quantity="zero">Ancora nessun appezzamento agricolo extra</item>
+        <item quantity="one">+%1$d appezzamento agricolo extra</item>
+        <item quantity="other">+%1$d appezzamenti agricoli extra</item>
+    </plurals>
 
     <!-- Town achievements -->
     <string name="achievement_town_first_upgrade_name">Ristrutturazione</string>
