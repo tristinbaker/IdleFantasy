@@ -1371,6 +1371,7 @@
     <string name="tower_floor_cleared">Etage %d gesäubert!</string>
     <string name="tower_new_best">Neuer Höchstwert: Etage %d!</string>
     <string name="tower_death_reset">Ihr seid auf Etage %d gestorben. Ihr kehrt zurück zur untersten Etage.</string>
+    <string name="tower_not_enough_runes">Nicht genug %1$s für die maximale Anzahl an Angriffen.</string>
     <string name="tower_milestone_claim">Einfordern</string>
     <string name="tower_milestone_claimed">Eingefordert</string>
     <string name="tower_enemies_this_floor">Gegner</string>

@@ -1402,6 +1402,7 @@
     <string name="tower_floor_cleared">Floor %d cleared!</string>
     <string name="tower_new_best">New best: Floor %d!</string>
     <string name="tower_death_reset">You fell on floor %d. Resetting to floor 1.</string>
+    <string name="tower_not_enough_runes">Maksimum saldırı sayısı için yeterli %1$s yok.</string>
     <string name="tower_milestone_claim">Claim</string>
     <string name="tower_milestone_claimed">Claimed</string>
     <string name="tower_enemies_this_floor">Enemies</string>

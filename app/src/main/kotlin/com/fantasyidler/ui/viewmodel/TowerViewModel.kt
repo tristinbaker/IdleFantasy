@@ -22,9 +22,9 @@ import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.QueuedSessionStarter
 import com.fantasyidler.repository.QuestRepository
 import com.fantasyidler.repository.SessionRepository
-import com.fantasyidler.repository.SlayerRepository
 import com.fantasyidler.simulator.CombatSimulator
 import com.fantasyidler.simulator.SkillSimulator
+import com.fantasyidler.util.GameStrings
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -66,7 +66,6 @@ class TowerViewModel @Inject constructor(
     private val gameData: GameDataRepository,
     private val queuedSessionStarter: QueuedSessionStarter,
     private val questRepo: QuestRepository,
-    private val slayerRepo: SlayerRepository,
     private val guildRepo: GuildRepository,
     private val json: Json,
 ) : ViewModel() {
@@ -323,9 +322,12 @@ class TowerViewModel @Inject constructor(
                 val runeKey  = if (combatStyle == "magic" && selectedSpell != null && !staffCoversRune) selectedSpell.runeType else null
                 val runeCost = selectedSpell?.runeCost ?: 1
 
-                val neededRunes = 60 * 30 * runeCost // 60 frames * 30 ticks/frame
+                val neededRunes = 60 * CombatSimulator.TICKS_PER_FRAME * runeCost
                 if (runeKey != null && (inventory[runeKey] ?: 0) < neededRunes) {
-                    _extra.update { it.copy(snackbarMessage = "Not enough $runeKey for max potential attacks.", startingSession = false) }
+                    _extra.update { it.copy(
+                        snackbarMessage = context.getString(R.string.tower_not_enough_runes, GameStrings.itemName(context, runeKey)),
+                        startingSession = false,
+                    ) }
                     return@launch
                 }
 
@@ -419,9 +421,6 @@ class TowerViewModel @Inject constructor(
             }
 
             if (!playerDied && allKillsByEnemy.isNotEmpty()) {
-                var slayerXp = 0L
-                for ((enemy, k) in allKillsByEnemy) slayerXp += slayerRepo.recordKills(enemy, k)
-                if (slayerXp > 0L) totalXpPerSkill[Skills.SLAYER] = (totalXpPerSkill[Skills.SLAYER] ?: 0L) + slayerXp
                 val combatStyle = detectCombatStyle(totalXpPerSkill)
                 questRepo.recordCombat(
                     dungeonKey        = session.activityKey,

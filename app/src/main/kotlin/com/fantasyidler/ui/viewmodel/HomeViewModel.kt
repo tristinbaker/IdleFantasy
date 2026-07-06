@@ -351,9 +351,6 @@ class HomeViewModel @Inject constructor(
                         }
                         
                         if (!playerDied && towerKills.isNotEmpty()) {
-                            var slayerXp = 0L
-                            for ((enemy, k) in towerKills) slayerXp += slayerRepo.recordKills(enemy, k)
-                            if (slayerXp > 0L) towerXpPerSkill[Skills.SLAYER] = (towerXpPerSkill[Skills.SLAYER] ?: 0L) + slayerXp
                             val style = detectCombatStyle(towerXpPerSkill)
                             questRepo.recordCombat(
                                 dungeonKey        = session.activityKey,

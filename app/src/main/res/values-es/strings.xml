@@ -1397,6 +1397,7 @@
     <string name="tower_floor_cleared">Floor %d cleared!</string>
     <string name="tower_new_best">New best: Floor %d!</string>
     <string name="tower_death_reset">You fell on floor %d. Resetting to floor 1.</string>
+    <string name="tower_not_enough_runes">No hay suficientes %1$s para el número máximo de ataques posibles.</string>
     <string name="tower_milestone_claim">Claim</string>
     <string name="tower_milestone_claimed">Claimed</string>
     <string name="tower_enemies_this_floor">Enemies</string>
