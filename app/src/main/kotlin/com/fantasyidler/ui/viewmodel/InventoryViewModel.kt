@@ -81,6 +81,14 @@ class InventoryViewModel @Inject constructor(
     ) {
         val totalLevel: Int get() = skillLevels.values.sum()
 
+        /** Effective skill level for gear equip checks.
+         *  If the skill has been prestiged (prestige > 0), treats it as level 99
+         *  (max), since prestiging proves mastery of that skill. */
+        fun effectiveSkillLevel(skill: String): Int {
+            if (skillPrestige[skill] ?: 0 > 0) return 99
+            return skillLevels[skill] ?: 1
+        }
+
         /** Items in inventory that can go into [pickingSlot]. */
         fun candidatesFor(slot: String, allEquipment: Map<String, EquipmentData>): List<EquipmentData> {
             val style = EquipSlot.combatStyleForSlot(slot)
@@ -160,10 +168,10 @@ class InventoryViewModel @Inject constructor(
 
     fun equip(itemKey: String, slot: String) {
         viewModelScope.launch {
-            val itemData     = gameData.equipment[itemKey]
+            val itemData = gameData.equipment[itemKey]
             val requirements = itemData?.requirements ?: emptyMap()
-            val skillLevels  = uiState.value.skillLevels
-            val unmetReqs = requirements.entries.filter { (skill, lvl) -> (skillLevels[skill] ?: 1) < lvl }
+            val state = uiState.value
+            val unmetReqs = requirements.entries.filter { (skill, lvl) -> state.effectiveSkillLevel(skill) < lvl }
             if (unmetReqs.isNotEmpty()) {
                 val msg = unmetReqs.joinToString(", ") { (skill, lvl) ->
                     "${skill.replaceFirstChar { c -> c.uppercase() }} $lvl"
@@ -211,7 +219,7 @@ class InventoryViewModel @Inject constructor(
                         if (style != null) item.slot == EquipSlot.WEAPON && item.combatStyle == style
                         else item.slot == slot
                     }
-                    .filter { item -> item.requirements.all { (skill, lvl) -> (skillLevels[skill] ?: 1) >= lvl } }
+                    .filter { item -> item.requirements.all { (skill, lvl) -> state.effectiveSkillLevel(skill) >= lvl } }
                     .maxByOrNull { item ->
                         when (slot) {
                             EquipSlot.PICKAXE     -> item.miningEfficiency ?: 0f
@@ -228,7 +236,7 @@ class InventoryViewModel @Inject constructor(
                 val currentItemKey = newEquipped[slot]
                 val currentItemValid = currentItemKey == null || run {
                     val it = equipment[currentItemKey]
-                    it != null && it.requirements.all { (skill, lvl) -> (skillLevels[skill] ?: 1) >= lvl }
+                    it != null && it.requirements.all { (skill, lvl) -> state.effectiveSkillLevel(skill) >= lvl }
                 }
                 when {
                     best != null -> newEquipped[slot] = best.name
