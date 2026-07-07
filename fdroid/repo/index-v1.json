@@ -1,6 +1,6 @@
 {
   "repo": {
-    "timestamp": 1783420708620,
+    "timestamp": 1783438971286,
     "version": 30000,
     "name": "Idle Fantasy",
     "icon": "icon.png",
@@ -20,15 +20,15 @@
       "categories": [
         "Games"
       ],
-      "suggestedVersionName": "1.10.13",
-      "suggestedVersionCode": "105",
+      "suggestedVersionName": "1.11.0",
+      "suggestedVersionCode": "106",
       "issueTracker": "https://github.com/tristinbaker/IdleFantasy/issues",
       "liberapay": "tristinbaker_",
       "license": "GPL-3.0-only",
       "sourceCode": "https://github.com/tristinbaker/IdleFantasy",
       "added": 1781744235667,
       "packageName": "com.tristinbaker.idlefantasy",
-      "lastUpdated": 1783420680062,
+      "lastUpdated": 1783438944752,
       "localized": {
         "en-US": {
           "description": "Idle Fantasy is a free and open source offline idle RPG inspired by classic MMORPGs. Train skills, fight in dungeons, craft gear, and complete quests. No internet connection, account, or ads required.\n\n<b>Features</b>\n\n\u2022 <b>14 trainable skills</b>: Mining, Fishing, Woodcutting, Firemaking, Agility, Runecrafting, Smithing, Cooking, Fletching, Crafting, Prayer, Attack, Strength, Defence, Ranged, Magic, Hitpoints\n\n\u2022 <b>Session-based training</b>: Start a session and close the app. Come back up to an hour later to collect your loot and XP. Agility reduces session time.\n\n\u2022 <b>12 dungeons</b>: Fight solo bosses and enemies to earn combat XP, coins, and rare drops. Equip weapons and armour to deal more damage.\n\n\u2022 <b>Crafting system</b>: Smelt bars, cook fish, fletch bows and arrows, craft jewellery. Consume gathered materials and earn XP and items.\n\n\u2022 <b>Prayer</b>: Bury bones collected from combat to earn Prayer XP.\n\n\u2022 <b>Equipment system</b>: Equip weapons, armour, tools, and jewellery to boost stats and skill efficiency.\n\n\u2022 <b>Quest system</b>: 100+ quests spanning all skills. Earn XP rewards on completion.\n\n\u2022 <b>Pet system</b>: Rare pets can drop while training skills. Each pet provides a permanent XP boost to their linked skill.\n\n\u2022 <b>Achievements</b>: Track milestones across levelling, combat, quests, and collections.\n\n\u2022 <b>NPC Shop</b>: Buy supplies and sell your gathered resources for coins.\n\n\u2022 <b>No ads. No accounts. No internet required.</b> Your save data stays on your device.\n\nIdle Fantasy is free software released under the GPL-3.0 licence. Source code is available on the project repository.\n\n<b>Get updates faster</b>\n\nAdd the official Idle Fantasy repository to F-Droid to receive updates as soon as they are released, instead of waiting for the main F-Droid index to catch up.\n\n1. Open F-Droid and go to Settings \u2192 Repositories\n2. Tap + and paste: https://idlefantasy.tristinbaker.xyz/fdroid/repo\n3. Search for Idle Fantasy, open the app page, and under Repositories set Idle Fantasy as the preferred source.\n",
@@ -53,7 +53,7 @@
             "9.png"
           ],
           "summary": "Idle RPG: train skills, fight dungeons, craft gear. No ads, no accounts.",
-          "whatsNew": "\u2022 Fix: Magic weapons no longer land attacks once you run out of the rune your spell needs, and no longer generate free runes out of thin air when you fight without any\n\u2022 Fix: Repeating an Infinite Tower floor while other floors are queued ahead no longer adds a duplicate floor label to the queue\n\u2022 Fix: Prestiging a skill now immediately swaps out any equipped gear you no longer meet the level requirement for, instead of leaving it stuck equipped until you tap Equip Best Gear\n"
+          "whatsNew": "\u2022 New: Seasonal Events added \u2014 real-calendar-dated events with a Bounty Board, Expedition, Raid Boss, and reflex minigame, all feeding one token currency toward a permanent Profile banner; launches with Season 1, \"Sunspire Solstice\" (Jun-Aug 2026)\n\u2022 New: Bounty Board tasks now rotate \u2014 completing one starts a 1-hour countdown before a different task from a wider pool takes its place; tapping \"Go\" on a bounty opens the relevant activity picker right on the event screen instead of navigating away,"
         }
       }
     }
@@ -61,9 +61,9 @@
   "packages": {
     "com.tristinbaker.idlefantasy": [
       {
-        "added": 1783420680062,
-        "apkName": "com.tristinbaker.idlefantasy_105.apk",
-        "hash": "08286f5dfc68f9f72427461c2bc0213bdbdd84ea8c7fff0421f66d90b0385ef0",
+        "added": 1783438944752,
+        "apkName": "com.tristinbaker.idlefantasy_106.apk",
+        "hash": "656a320009c0176d7c817b1f0bdba4516c5673c8c5fe2d06d7cc47e14c69b64d",
         "hashType": "sha256",
         "minSdkVersion": 26,
         "nativecode": [
@@ -75,7 +75,7 @@
         "packageName": "com.tristinbaker.idlefantasy",
         "sig": "e83cc5b410f2aca2b487e5af7883d581",
         "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
-        "size": 5417286,
+        "size": 5517528,
         "targetSdkVersion": 35,
         "uses-permission": [
           [
@@ -103,8 +103,8 @@
             null
           ]
         ],
-        "versionCode": 105,
-        "versionName": "1.10.13"
+        "versionCode": 106,
+        "versionName": "1.11.0"
       },
       {
         "added": 1783349969929,

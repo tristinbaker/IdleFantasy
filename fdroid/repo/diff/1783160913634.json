@@ -1,19 +1,19 @@
 {
   "repo": {
-    "timestamp": 1783420708620
+    "timestamp": 1783438971286
   },
   "packages": {
     "com.tristinbaker.idlefantasy": {
       "metadata": {
-        "lastUpdated": 1783420680062
+        "lastUpdated": 1783438944752
       },
       "versions": {
-        "08286f5dfc68f9f72427461c2bc0213bdbdd84ea8c7fff0421f66d90b0385ef0": {
-          "added": 1783420680062,
+        "656a320009c0176d7c817b1f0bdba4516c5673c8c5fe2d06d7cc47e14c69b64d": {
+          "added": 1783438944752,
           "file": {
-            "name": "/com.tristinbaker.idlefantasy_105.apk",
-            "sha256": "08286f5dfc68f9f72427461c2bc0213bdbdd84ea8c7fff0421f66d90b0385ef0",
-            "size": 5417286
+            "name": "/com.tristinbaker.idlefantasy_106.apk",
+            "sha256": "656a320009c0176d7c817b1f0bdba4516c5673c8c5fe2d06d7cc47e14c69b64d",
+            "size": 5517528
           },
           "manifest": {
             "nativecode": [
@@ -22,8 +22,8 @@
               "x86",
               "x86_64"
             ],
-            "versionName": "1.10.13",
-            "versionCode": 105,
+            "versionName": "1.11.0",
+            "versionCode": 106,
             "usesSdk": {
               "minSdkVersion": 26,
               "targetSdkVersion": 35
@@ -55,7 +55,7 @@
             ]
           },
           "whatsNew": {
-            "en-US": "• Fix: Magic weapons no longer land attacks once you run out of the rune your spell needs, and no longer generate free runes out of thin air when you fight without any\n• Fix: Repeating an Infinite Tower floor while other floors are queued ahead no longer adds a duplicate floor label to the queue\n• Fix: Prestiging a skill now immediately swaps out any equipped gear you no longer meet the level requirement for, instead of leaving it stuck equipped until you tap Equip Best Gear\n"
+            "en-US": "• New: Seasonal Events added — real-calendar-dated events with a Bounty Board, Expedition, Raid Boss, and reflex minigame, all feeding one token currency toward a permanent Profile banner; launches with Season 1, \"Sunspire Solstice\" (Jun-Aug 2026)\n• New: Bounty Board tasks now rotate — completing one starts a 1-hour countdown before a different task from a wider pool takes its place; tapping \"Go\" on a bounty opens the relevant activity picker right on the event screen instead of navigating away,"
           }
         },
         "7c504c1080607dcae28ddd0ee5d8922fad2c8d4da0115e3d7510e016fb3c7c41": {
