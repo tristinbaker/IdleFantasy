@@ -1,13 +1,63 @@
 {
   "repo": {
-    "timestamp": 1783349997191
+    "timestamp": 1783420708620
   },
   "packages": {
     "com.tristinbaker.idlefantasy": {
       "metadata": {
-        "lastUpdated": 1783349969929
+        "lastUpdated": 1783420680062
       },
       "versions": {
+        "08286f5dfc68f9f72427461c2bc0213bdbdd84ea8c7fff0421f66d90b0385ef0": {
+          "added": 1783420680062,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_105.apk",
+            "sha256": "08286f5dfc68f9f72427461c2bc0213bdbdd84ea8c7fff0421f66d90b0385ef0",
+            "size": 5417286
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.10.13",
+            "versionCode": 105,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fix: Magic weapons no longer land attacks once you run out of the rune your spell needs, and no longer generate free runes out of thin air when you fight without any\n• Fix: Repeating an Infinite Tower floor while other floors are queued ahead no longer adds a duplicate floor label to the queue\n• Fix: Prestiging a skill now immediately swaps out any equipped gear you no longer meet the level requirement for, instead of leaving it stuck equipped until you tap Equip Best Gear\n"
+          }
+        },
         "7c504c1080607dcae28ddd0ee5d8922fad2c8d4da0115e3d7510e016fb3c7c41": {
           "added": 1783349969929,
           "file": {
