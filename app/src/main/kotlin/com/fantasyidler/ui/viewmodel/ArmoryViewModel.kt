@@ -150,7 +150,7 @@ class ArmoryViewModel @Inject constructor(
     companion object {
         val ARMOR_SLOTS     = setOf("head", "body", "legs", "boots", "shield")
         val ACCESSORY_SLOTS = setOf("ring", "necklace", "cape")
-        val TOOL_SLOTS      = setOf("pickaxe", "axe", "fishing_rod", "hoe")
+        val TOOL_SLOTS      = setOf("pickaxe", "axe", "fishing_rod", "hoe", "hammer", "tinderbox", "grappling_hook", "frying_pan")
 
         fun formatChancePct(chance: Double): String {
             if (chance >= 1.0) return "Always"

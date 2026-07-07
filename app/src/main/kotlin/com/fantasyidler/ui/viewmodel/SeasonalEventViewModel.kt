@@ -44,7 +44,7 @@ class SeasonalEventViewModel @Inject constructor(
     private val _extra = MutableStateFlow(SeasonalEventUiState())
 
     init {
-        viewModelScope.launch { seasonalEventRepo.ensureBountyRefreshed() }
+        viewModelScope.launch { seasonalEventRepo.ensureBountySlotsRefreshed() }
     }
 
     val uiState: StateFlow<SeasonalEventUiState> = combine(
@@ -68,6 +68,11 @@ class SeasonalEventViewModel @Inject constructor(
 
     fun claimBountyTask(taskId: String) {
         viewModelScope.launch { seasonalEventRepo.claimBountyTask(taskId) }
+    }
+
+    /** Called by the Bounty Board's per-slot countdown once it reaches zero, so the new task appears live. */
+    fun refreshBountySlots() {
+        viewModelScope.launch { seasonalEventRepo.ensureBountySlotsRefreshed() }
     }
 
     /** [won] is whether the player landed enough hits during the whack-a-mole rounds. */

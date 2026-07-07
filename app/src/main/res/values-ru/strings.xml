@@ -41,6 +41,7 @@
     <string name="btn_deactivate">Деактивировать</string>
     <string name="btn_close">Закрыть</string>
     <string name="btn_back">Назад</string>
+    <string name="btn_save">Сохранить</string>
 
     <!-- ===== Common labels ===== -->
     <string name="label_level">Уровень</string>
@@ -290,6 +291,8 @@
     <string name="settings_profile_layout_tabs">Вкладки</string>
     <string name="settings_recent_activity">Журнал последней активности</string>
     <string name="settings_recent_activity_desc">Показывать кнопку «Последняя активность» на главном экране</string>
+    <string name="settings_journal_button">Кнопка журнала</string>
+    <string name="settings_journal_button_desc">Показывать плавающую кнопку журнала на главном экране для заметок</string>
     <string name="label_no_sessions_yet">Сессий ещё не завершено.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -430,7 +433,7 @@
     <string name="home_welcome">С возвращением, %1$s!</string>
     <string name="home_adventurer">Авантюрист</string>
     <!-- Translator note: %1$d = queue size (always 3 max) -->
-    <string name="home_up_next">Следующая (%1$d/3)</string>
+    <string name="home_up_next">Следующая (%1$d/%2$d)</string>
     <!-- Translator note: %1$s = formatted duration string (e.g. "2h 15m") -->
     <string name="home_queue_ends_in">Очередь завершится через %1$s</string>
     <string name="queue_item_qty">×%1$d</string>
@@ -964,7 +967,7 @@
     <string name="slayer_requires">Требуется: %1$s</string>
     <string name="slayer_add_dungeon_to_queue">Добавить подземелье в очередь</string>
     <string name="slayer_queue_added">Добавлено в очередь: %1$s.</string>
-    <string name="slayer_queue_full">Очередь заполнена (3/3).</string>
+    <string name="slayer_queue_full">Очередь заполнена.</string>
     <string name="slayer_foretell_title">Foretell Future Tasks</string>
     <string name="slayer_foretell_desc">Pre-assign upcoming Slayer tasks by paying bones. They are assigned automatically when your current task is completed.</string>
     <string name="slayer_foretell_queue_empty">No tasks queued.</string>
@@ -1157,15 +1160,23 @@
         <item quantity="many">+%1$d дополнительных грядок</item>
         <item quantity="other">+%1$d дополнительных грядок</item>
     </plurals>
+    <string name="town_building_queue_master_name">Мастер Очередей</string>
+    <plurals name="town_queue_master_bonus">
+        <item quantity="zero">Пока нет дополнительных слотов очереди</item>
+        <item quantity="one">+%1$d дополнительный слот очереди</item>
+        <item quantity="few">+%1$d дополнительных слота очереди</item>
+        <item quantity="many">+%1$d дополнительных слотов очереди</item>
+        <item quantity="other">+%1$d дополнительных слотов очереди</item>
+    </plurals>
     <string name="achievement_town_first_upgrade_name">Первая Реновация</string>
     <string name="achievement_town_first_upgrade_desc">Улучшите любое здание города впервые</string>
     <string name="achievement_town_all_tier1_name">Улучшатель Города</string>
-    <string name="achievement_town_all_tier1_desc">Улучшите все пять зданий минимум до 1-го уровня</string>
+    <string name="achievement_town_all_tier1_desc">Улучшите все шесть зданий минимум до 1-го уровня</string>
     <string name="skill_mining_qty_estimate">~%1$d руды/сессия</string>
     <string name="achievement_town_one_maxed_name">Мастер Строитель</string>
     <string name="achievement_town_one_maxed_desc">Улучшите любое здание до максимального уровня</string>
     <string name="achievement_town_all_maxed_name">Легендарный Город</string>
-    <string name="achievement_town_all_maxed_desc">Улучшите все пять зданий до максимального уровня</string>
+    <string name="achievement_town_all_maxed_desc">Улучшите все шесть зданий до максимального уровня</string>
     <string name="achievement_tower_first_floor_name">First Step</string>
     <string name="achievement_tower_first_floor_desc">Clear your first Infinite Tower floor</string>
     <string name="achievement_tower_floor_10_name">Tower Initiate</string>
@@ -1266,7 +1277,7 @@
     <string name="carnival_ticket_cost">%1$d билетов</string>
     <string name="carnival_redeem">Обменять</string>
     <string name="carnival_queue_added">Добавлено в очередь: %1$s.</string>
-    <string name="carnival_queue_full">Очередь заполнена (3/3).</string>
+    <string name="carnival_queue_full">Очередь заполнена.</string>
     <string name="carnival_ring_won">В яблочко! +%1$d билетов</string>
     <string name="carnival_ring_missed">Мимо цели!</string>
     <string name="carnival_hammer_perfect">Идеальный удар! +%1$d билетов</string>
@@ -1329,7 +1340,7 @@
     <string name="bonus_combined_xp">Суммарный XP</string>
     <string name="bonus_yield">выход</string>
     <string name="snackbar_added_to_queue">Добавлено в очередь: %1$s.</string>
-    <string name="snackbar_queue_full">Очередь заполнена (3/3).</string>
+    <string name="snackbar_queue_full">Очередь заполнена.</string>
     <string name="home_not_enough_coins_repeat">Недостаточно монет для повтора %1$s.</string>
     <string name="home_not_enough_materials_repeat">Недостаточно материалов для повтора %1$s.</string>
     <string name="combat_start_failed">Не удалось запустить: %1$s</string>
@@ -1444,6 +1455,7 @@
     <string name="seasonal_event_title">Сезонное событие</string>
     <string name="seasonal_event_none">Сейчас нет активных событий. Заходите позже!</string>
     <string name="seasonal_event_token_progress">%1$d / %2$d жетонов</string>
+    <string name="seasonal_event_complete">Завершено!</string>
     <string name="seasonal_bounty_board_title">Доска заданий</string>
     <string name="seasonal_expedition_title">Экспедиция</string>
     <string name="seasonal_boss_title">Рейдовый босс</string>
@@ -1454,9 +1466,13 @@
     <string name="seasonal_minigame_failure">Промах. Попробуйте снова после перезарядки.</string>
     <string name="seasonal_tap">Нажать!</string>
     <string name="seasonal_claim">Забрать</string>
-    <string name="seasonal_claimed">Получено</string>
+    <string name="seasonal_bounty_cooldown">Новое задание через %1$dм %2$dс</string>
     <string name="seasonal_go">Перейти</string>
     <string name="label_banners">Знамёна</string>
+    <string name="label_journal">Журнал</string>
+    <string name="journal_hint">Запишите напоминания на следующий раз — что поставить в очередь, к чему вы стремитесь.</string>
+    <string name="journal_placeholder">Напишите заметку...</string>
     <string name="profile_banners_empty">Пока нет ни одного знамени. Завершите сезонное событие, чтобы получить его!</string>
     <string name="profile_banners_earned_on">Получено %s</string>
+    <string name="profile_banners_unobtained">(Не получено)</string>
 </resources>

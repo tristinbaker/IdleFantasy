@@ -195,5 +195,46 @@
         }
       }
     ]
+  },
+  "queue_master": {
+    "key": "queue_master",
+    "tiers": [
+      {
+        "construction_level_required": 40,
+        "coin_cost": 200000,
+        "materials": {
+          "oak_plank": 300,
+          "willow_plank": 100,
+          "steel_nail": 800
+        },
+        "bonuses": {
+          "queue_slots": 1
+        }
+      },
+      {
+        "construction_level_required": 65,
+        "coin_cost": 800000,
+        "materials": {
+          "willow_plank": 500,
+          "maple_plank": 300,
+          "mithril_nail": 2000
+        },
+        "bonuses": {
+          "queue_slots": 2
+        }
+      },
+      {
+        "construction_level_required": 90,
+        "coin_cost": 3000000,
+        "materials": {
+          "maple_plank": 1000,
+          "yew_plank": 600,
+          "mithril_nail": 4000
+        },
+        "bonuses": {
+          "queue_slots": 3
+        }
+      }
+    ]
   }
 }

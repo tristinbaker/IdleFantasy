@@ -38,6 +38,7 @@ data class MercantileUiState(
     val snackbarMessage: String? = null,
     val anySessionActive: Boolean = false,
     val queueSize: Int = 0,
+    val maxQueueSize: Int = 3,
 )
 
 @HiltViewModel
@@ -72,6 +73,7 @@ class MercantileViewModel @Inject constructor(
                 tradeRoutes      = routes,
                 anySessionActive = session != null,
                 queueSize        = flags.sessionQueue.size,
+                maxQueueSize     = playerRepo.maxQueueSize(flags),
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), MercantileUiState())

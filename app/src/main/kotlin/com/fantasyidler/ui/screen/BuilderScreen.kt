@@ -120,6 +120,19 @@ fun BuilderScreen(
                     inventory         = state.inventory,
                     onUpgrade         = { viewModel.upgrade("garden") },
                 )
+            }
+            item {
+                Spacer(Modifier.height(16.dp))
+                BuildingUpgradeCard(
+                    buildingKey       = "queue_master",
+                    currentTier       = state.queueMasterTier,
+                    buildingDef       = viewModel.gameData.townBuildings["queue_master"],
+                    townRepository    = viewModel.townRepo,
+                    constructionLevel = state.constructionLevel,
+                    coins             = state.coins,
+                    inventory         = state.inventory,
+                    onUpgrade         = { viewModel.upgrade("queue_master") },
+                )
                 Spacer(Modifier.height(16.dp))
             }
         }

@@ -40,6 +40,7 @@
     <string name="btn_deactivate">Désactiver</string>
     <string name="btn_close">Fermer</string>
     <string name="btn_back">Retour</string>
+    <string name="btn_save">Enregistrer</string>
 
     <!-- ===== Common labels ===== -->
     <string name="label_level">Niveau</string>
@@ -261,6 +262,8 @@
     <string name="settings_profile_layout_tabs">Onglets</string>
     <string name="settings_recent_activity">Journal d’activité récente</string>
     <string name="settings_recent_activity_desc">Afficher le bouton Activité Récente dans l’en-tête de l’écran d’accueil</string>
+    <string name="settings_journal_button">Bouton Journal</string>
+    <string name="settings_journal_button_desc">Afficher un bouton flottant Journal sur l\'écran d\'accueil pour noter des notes</string>
     <string name="label_no_sessions_yet">Aucune session terminée pour l’instant.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -373,7 +376,7 @@
     <string name="home_welcome">Bon retour, %1$s !</string>
     <string name="home_adventurer">Aventurier</string>
     <!-- Translator note: %1$d = queue size (always 3 max) -->
-    <string name="home_up_next">À venir (%1$d/3)</string>
+    <string name="home_up_next">À venir (%1$d/%2$d)</string>
     <!-- Translator note: %1$s = formatted duration string (e.g. "2h 15m") -->
     <string name="home_queue_ends_in">La file d’attente se termine dans %1$s</string>
     <string name="queue_item_qty">×%1$d</string>
@@ -938,7 +941,7 @@
     <string name="slayer_requires">Nécessite : %1$s</string>
     <string name="slayer_add_dungeon_to_queue">Ajouter le Donjon à la File</string>
     <string name="slayer_queue_added">Ajouté à la file : %1$s.</string>
-    <string name="slayer_queue_full">La file est pleine (3/3).</string>
+    <string name="slayer_queue_full">La file est pleine.</string>
     <string name="slayer_foretell_title">Foretell Future Tasks</string>
     <string name="slayer_foretell_desc">Pre-assign upcoming Slayer tasks by paying bones. They are assigned automatically when your current task is completed.</string>
     <string name="slayer_foretell_queue_empty">No tasks queued.</string>
@@ -1124,14 +1127,20 @@
         <item quantity="one">+%1$d parcelle de ferme supplémentaire</item>
         <item quantity="other">+%1$d parcelles de ferme supplémentaires</item>
     </plurals>
+    <string name="town_building_queue_master_name">Maître des Files</string>
+    <plurals name="town_queue_master_bonus">
+        <item quantity="zero">Pas encore d\'emplacement de file supplémentaire</item>
+        <item quantity="one">+%1$d emplacement de file supplémentaire</item>
+        <item quantity="other">+%1$d emplacements de file supplémentaires</item>
+    </plurals>
     <string name="achievement_town_first_upgrade_name">Première Rénovation</string>
     <string name="achievement_town_first_upgrade_desc">Améliorez n\'importe quel bâtiment de ville pour la première fois</string>
     <string name="achievement_town_all_tier1_name">Améliorateur de Ville</string>
-    <string name="achievement_town_all_tier1_desc">Améliorez les cinq bâtiments de ville au moins au Niveau 1</string>
+    <string name="achievement_town_all_tier1_desc">Améliorez les six bâtiments de ville au moins au Niveau 1</string>
     <string name="achievement_town_one_maxed_name">Maître Bâtisseur</string>
     <string name="achievement_town_one_maxed_desc">Améliorez n\'importe quel bâtiment au niveau maximum</string>
     <string name="achievement_town_all_maxed_name">Ville Légendaire</string>
-    <string name="achievement_town_all_maxed_desc">Améliorez les cinq bâtiments de ville au niveau maximum</string>
+    <string name="achievement_town_all_maxed_desc">Améliorez les six bâtiments de ville au niveau maximum</string>
     <string name="achievement_tower_first_floor_name">First Step</string>
     <string name="achievement_tower_first_floor_desc">Clear your first Infinite Tower floor</string>
     <string name="achievement_tower_floor_10_name">Tower Initiate</string>
@@ -1232,7 +1241,7 @@
     <string name="carnival_ticket_cost">%1$d tickets</string>
     <string name="carnival_redeem">Échanger</string>
     <string name="carnival_queue_added">Ajouté à la file: %1$s.</string>
-    <string name="carnival_queue_full">La file est pleine (3/3).</string>
+    <string name="carnival_queue_full">La file est pleine.</string>
     <string name="carnival_ring_won">Dans le mille! +%1$d tickets</string>
     <string name="carnival_ring_missed">Cible manquée!</string>
     <string name="carnival_hammer_perfect">Coup parfait! +%1$d tickets</string>
@@ -1295,7 +1304,7 @@
     <string name="bonus_combined_xp">XP combiné</string>
     <string name="bonus_yield">rendement</string>
     <string name="snackbar_added_to_queue">Ajouté à la file: %1$s.</string>
-    <string name="snackbar_queue_full">La file est pleine (3/3).</string>
+    <string name="snackbar_queue_full">La file est pleine.</string>
     <string name="home_not_enough_coins_repeat">Pas assez de pièces pour répéter %1$s.</string>
     <string name="home_not_enough_materials_repeat">Pas assez de matériaux pour répéter %1$s.</string>
     <string name="combat_start_failed">Impossible de démarrer: %1$s</string>
@@ -1410,6 +1419,7 @@
     <string name="seasonal_event_title">Évènement saisonnier</string>
     <string name="seasonal_event_none">Aucun évènement en cours. Revenez plus tard !</string>
     <string name="seasonal_event_token_progress">%1$d / %2$d jetons</string>
+    <string name="seasonal_event_complete">Terminé !</string>
     <string name="seasonal_bounty_board_title">Tableau des primes</string>
     <string name="seasonal_expedition_title">Expédition</string>
     <string name="seasonal_boss_title">Boss de raid</string>
@@ -1420,9 +1430,13 @@
     <string name="seasonal_minigame_failure">Manqué. Réessayez après le temps de recharge.</string>
     <string name="seasonal_tap">Appuyez !</string>
     <string name="seasonal_claim">Réclamer</string>
-    <string name="seasonal_claimed">Réclamé</string>
+    <string name="seasonal_bounty_cooldown">Nouvelle prime dans %1$dm %2$ds</string>
     <string name="seasonal_go">Aller</string>
     <string name="label_banners">Bannières</string>
+    <string name="label_journal">Journal</string>
+    <string name="journal_hint">Notez des rappels pour la prochaine fois : quoi mettre en file, vers quoi vous progressez.</string>
+    <string name="journal_placeholder">Écrivez une note...</string>
     <string name="profile_banners_empty">Aucune bannière obtenue pour le moment. Terminez un évènement saisonnier pour en obtenir une !</string>
     <string name="profile_banners_earned_on">Obtenue le %s</string>
+    <string name="profile_banners_unobtained">(Non obtenue)</string>
 </resources>

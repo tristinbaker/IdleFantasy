@@ -20,7 +20,7 @@
     "growth_time_hours": 3,
     "farming_level_required": 5,
     "planting_xp": 12,
-    "harvest_xp": 60,
+    "harvest_xp": 75,
     "yield_min": 3,
     "yield_max": 5,
     "seed_cost": 25
@@ -33,7 +33,7 @@
     "growth_time_hours": 4,
     "farming_level_required": 10,
     "planting_xp": 15,
-    "harvest_xp": 75,
+    "harvest_xp": 90,
     "yield_min": 3,
     "yield_max": 6,
     "seed_cost": 30
@@ -85,8 +85,8 @@
     "growth_time_hours": 9,
     "farming_level_required": 30,
     "planting_xp": 40,
-    "harvest_xp": 200,
-    "yield_min": 2,
+    "harvest_xp": 300,
+    "yield_min": 3,
     "yield_max": 4,
     "seed_cost": 100
   },
@@ -98,8 +98,8 @@
     "growth_time_hours": 10,
     "farming_level_required": 35,
     "planting_xp": 50,
-    "harvest_xp": 250,
-    "yield_min": 2,
+    "harvest_xp": 350,
+    "yield_min": 3,
     "yield_max": 4,
     "seed_cost": 125
   },
@@ -112,8 +112,8 @@
     "farming_level_required": 40,
     "planting_xp": 75,
     "harvest_xp": 375,
-    "yield_min": 6,
-    "yield_max": 10,
+    "yield_min": 5,
+    "yield_max": 8,
     "seed_cost": 200
   },
   "magic_herb": {
@@ -124,7 +124,7 @@
     "growth_time_hours": 13,
     "farming_level_required": 50,
     "planting_xp": 100,
-    "harvest_xp": 500,
+    "harvest_xp": 650,
     "yield_min": 3,
     "yield_max": 6,
     "seed_cost": 300
@@ -137,7 +137,7 @@
     "growth_time_hours": 14,
     "farming_level_required": 55,
     "planting_xp": 125,
-    "harvest_xp": 650,
+    "harvest_xp": 780,
     "yield_min": 3,
     "yield_max": 5,
     "seed_cost": 500
@@ -163,9 +163,9 @@
     "growth_time_hours": 19,
     "farming_level_required": 75,
     "planting_xp": 185,
-    "harvest_xp": 1100,
+    "harvest_xp": 1200,
     "yield_min": 3,
-    "yield_max": 5,
+    "yield_max": 6,
     "seed_cost": 1000
   },
   "celestial_bloom": {
@@ -176,8 +176,8 @@
     "growth_time_hours": 21,
     "farming_level_required": 85,
     "planting_xp": 225,
-    "harvest_xp": 1400,
-    "yield_min": 2,
+    "harvest_xp": 1700,
+    "yield_min": 3,
     "yield_max": 4,
     "seed_cost": 1500
   },
@@ -189,8 +189,8 @@
     "growth_time_hours": 23,
     "farming_level_required": 95,
     "planting_xp": 265,
-    "harvest_xp": 1750,
-    "yield_min": 2,
+    "harvest_xp": 1900,
+    "yield_min": 3,
     "yield_max": 4,
     "seed_cost": 2500
   },

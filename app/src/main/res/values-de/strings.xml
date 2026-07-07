@@ -41,6 +41,7 @@
     <string name="btn_deactivate">Deaktivieren</string>
     <string name="btn_close">Schließen</string>
     <string name="btn_back">Zurück</string>
+    <string name="btn_save">Speichern</string>
 
     <!-- ===== Common labels ===== -->
     <string name="label_level">Level</string>
@@ -276,6 +277,8 @@
     <string name="settings_profile_layout_tabs">Tabs</string>
     <string name="settings_recent_activity">Protokoll der letzten Aktivitäten</string>
     <string name="settings_recent_activity_desc">Schaltfläche „Letzte Aktivität" in der Kopfzeile der Startseite anzeigen</string>
+    <string name="settings_journal_button">Journal-Schaltfläche</string>
+    <string name="settings_journal_button_desc">Zeigt eine schwebende Journal-Schaltfläche auf der Startseite zum Notieren</string>
     <string name="label_no_sessions_yet">Noch keine Aktivitäten abgeschlossen.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -410,7 +413,7 @@
     <string name="home_got_it">Verstanden</string>
     <string name="home_welcome">Willkommen zurück, %1$s!</string>
     <string name="home_adventurer">Abenteurer</string>
-    <string name="home_up_next">Als Nächstes (%1$d/3)</string>
+    <string name="home_up_next">Als Nächstes (%1$d/%2$d)</string>
     <string name="home_queue_ends_in">Alles erledigt in %1$s</string>
     <string name="queue_item_qty">×%1$d</string>
     <string name="queue_item_qty_with_output">×%1$d → %2$d Gegenstände</string>
@@ -914,7 +917,7 @@
     <string name="slayer_requires">Erfordert: %1$s</string>
     <string name="slayer_add_dungeon_to_queue">Dungeon zur Warteschlange hinzufügen</string>
     <string name="slayer_queue_added">Zur Warteschlange hinzugefügt: %1$s.</string>
-    <string name="slayer_queue_full">Warteschlange ist voll (3/3).</string>
+    <string name="slayer_queue_full">Warteschlange ist voll.</string>
     <string name="slayer_foretell_title">Zukünftige Aufträge vorhersagen</string>
     <string name="slayer_foretell_desc">Reiht kommende Aufträge in diese Warteschlange ein indem Ihr Knochen zahlt. Sie werden automatisch zu Eurem aktuellen Auftrag wenn der jetzige erfüllt wurde.</string>
     <string name="slayer_foretell_queue_empty">Keine Aufträge vorhergesagt.</string>
@@ -1100,14 +1103,20 @@
         <item quantity="one">+%1$d Extra-Acker</item>
         <item quantity="other">+%1$d Extra-Acker</item>
     </plurals>
+    <string name="town_building_queue_master_name">Warteschlangenmeister</string>
+    <plurals name="town_queue_master_bonus">
+        <item quantity="zero">Noch keine Extra-Warteschlangenplätze</item>
+        <item quantity="one">+%1$d Extra-Warteschlangenplatz</item>
+        <item quantity="other">+%1$d Extra-Warteschlangenplätze</item>
+    </plurals>
     <string name="achievement_town_first_upgrade_name">Erste Renovierung</string>
     <string name="achievement_town_first_upgrade_desc">Baue ein Stadtgebäude zum ersten Mal aus</string>
     <string name="achievement_town_all_tier1_name">Stadtverbesserer</string>
-    <string name="achievement_town_all_tier1_desc">Baue alle fünf Stadtgebäude auf mindestens Stufe 1 aus</string>
+    <string name="achievement_town_all_tier1_desc">Baue alle sechs Stadtgebäude auf mindestens Stufe 1 aus</string>
     <string name="achievement_town_one_maxed_name">Meisterbaumeister</string>
     <string name="achievement_town_one_maxed_desc">Baue ein Stadtgebäude auf die maximale Stufe aus</string>
     <string name="achievement_town_all_maxed_name">Stadt der Legenden</string>
-    <string name="achievement_town_all_maxed_desc">Baue alle fünf Stadtgebäude auf die maximale Stufe aus</string>
+    <string name="achievement_town_all_maxed_desc">Baue alle sechs Stadtgebäude auf die maximale Stufe aus</string>
     <string name="achievement_tower_first_floor_name">First Step</string>
     <string name="achievement_tower_first_floor_desc">Clear your first Infinite Tower floor</string>
     <string name="achievement_tower_floor_10_name">Tower Initiate</string>
@@ -1208,7 +1217,7 @@
     <string name="carnival_ticket_cost">%1$d Lose</string>
     <string name="carnival_redeem">Einlösen</string>
     <string name="carnival_queue_added">Zur Warteschlange hinzugefügt: %1$s.</string>
-    <string name="carnival_queue_full">Warteschlange ist voll (3/3).</string>
+    <string name="carnival_queue_full">Warteschlange ist voll.</string>
     <string name="carnival_ring_won">Volltreffer! +%1$d Lose</string>
     <string name="carnival_ring_missed">Ziel verfehlt!</string>
     <string name="carnival_hammer_perfect">Perfekter Schlag! +%1$d Lose</string>
@@ -1271,7 +1280,7 @@
     <string name="bonus_combined_xp">EP gesamt</string>
     <string name="bonus_yield">Ausbeute</string>
     <string name="snackbar_added_to_queue">Zur Warteschlange hinzugefügt: %1$s.</string>
-    <string name="snackbar_queue_full">Warteschlange ist voll (3/3).</string>
+    <string name="snackbar_queue_full">Warteschlange ist voll.</string>
     <string name="home_not_enough_coins_repeat">Nicht genug Münzen, um %1$s zu wiederholen.</string>
     <string name="home_not_enough_materials_repeat">Nicht genug Material, um %1$s zu wiederholen.</string>
     <string name="combat_start_failed">Konnte nicht gestartet werden: %1$s</string>
@@ -1386,6 +1395,7 @@
     <string name="seasonal_event_title">Saisonales Event</string>
     <string name="seasonal_event_none">Derzeit läuft kein Event. Schau später wieder vorbei!</string>
     <string name="seasonal_event_token_progress">%1$d / %2$d Token</string>
+    <string name="seasonal_event_complete">Abgeschlossen!</string>
     <string name="seasonal_bounty_board_title">Aufgabenbrett</string>
     <string name="seasonal_expedition_title">Expedition</string>
     <string name="seasonal_boss_title">Raid-Boss</string>
@@ -1396,9 +1406,13 @@
     <string name="seasonal_minigame_failure">Verpasst. Versuch es nach der Abklingzeit erneut.</string>
     <string name="seasonal_tap">Tippen!</string>
     <string name="seasonal_claim">Einlösen</string>
-    <string name="seasonal_claimed">Eingelöst</string>
+    <string name="seasonal_bounty_cooldown">Neue Aufgabe in %1$dm %2$ds</string>
     <string name="seasonal_go">Los</string>
     <string name="label_banners">Banner</string>
+    <string name="label_journal">Journal</string>
+    <string name="journal_hint">Notiere Erinnerungen für später — was du als Nächstes einreihen willst oder worauf du hinarbeitest.</string>
+    <string name="journal_placeholder">Schreibe eine Notiz...</string>
     <string name="profile_banners_empty">Noch keine Banner verdient. Schließe ein saisonales Event ab, um eines zu erhalten!</string>
     <string name="profile_banners_earned_on">Erhalten am %s</string>
+    <string name="profile_banners_unobtained">(Nicht erhalten)</string>
 </resources>

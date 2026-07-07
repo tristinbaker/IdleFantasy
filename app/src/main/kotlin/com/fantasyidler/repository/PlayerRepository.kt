@@ -303,12 +303,22 @@ class PlayerRepository @Inject constructor(
 
     suspend fun getQueue(): List<QueuedAction> = getFlags().sessionQueue
 
-    /** Appends an action to the queue. Returns false (no change) if the queue is already full (3 items). */
+    /** Base queue size (3) plus any Queue Master town building bonus. */
+    fun maxQueueSize(flags: PlayerFlags): Int {
+        var extraSlots = 0
+        flags.townBuildingTiers.forEach { (buildingName, tier) ->
+            val bonuses = gameData.townBuildings[buildingName]?.tiers?.getOrNull(tier - 1)?.bonuses
+            extraSlots += bonuses?.get("queue_slots")?.toInt() ?: 0
+        }
+        return 3 + extraSlots
+    }
+
+    /** Appends an action to the queue. Returns false (no change) if the queue is already full. */
     suspend fun enqueueAction(action: QueuedAction): Boolean = playerMutex.withLock { enqueueActionUnlocked(action) }
 
     private suspend fun enqueueActionUnlocked(action: QueuedAction): Boolean {
         val flags = getFlags()
-        if (flags.sessionQueue.size >= 3) return false
+        if (flags.sessionQueue.size >= maxQueueSize(flags)) return false
         updateFlagsUnlocked(flags.copy(sessionQueue = flags.sessionQueue + action))
         return true
     }
@@ -316,7 +326,7 @@ class PlayerRepository @Inject constructor(
     /** Creates and enqueues a combat (dungeon) session for a Slayer task's auto-advance. Returns false if queue is full. */
     suspend fun enqueueCombatSession(dungeonKey: String, dungeonDisplayName: String): Boolean = playerMutex.withLock {
         val flags = getFlags()
-        if (flags.sessionQueue.size >= 3) return@withLock false
+        if (flags.sessionQueue.size >= maxQueueSize(flags)) return@withLock false
         val player = getOrCreatePlayer()
         val levels: Map<String, Int> = json.decodeFromString(player.skillLevels)
         val agility = levels[Skills.AGILITY] ?: 1

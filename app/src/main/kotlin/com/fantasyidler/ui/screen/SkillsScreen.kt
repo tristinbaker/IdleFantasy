@@ -197,6 +197,40 @@ fun SkillsScreen(
     }
 
     // Activity selection bottom sheet
+    SkillActivitySheet(
+        viewModel             = viewModel,
+        craftingViewModel     = craftingViewModel,
+        onNavigateToBoneAltar = onNavigateToBoneAltar,
+    )
+
+    state.petFoundName?.let { petName ->
+        AlertDialog(
+            onDismissRequest = viewModel::petDialogConsumed,
+            title = { Text(stringResource(R.string.pet_found_title)) },
+            text  = { Text(stringResource(R.string.home_found_pet, petName)) },
+            confirmButton = {
+                TextButton(onClick = viewModel::petDialogConsumed) {
+                    Text(stringResource(R.string.btn_close))
+                }
+            },
+        )
+    }
+}
+
+/**
+ * Renders the active [SkillsUiState.sheetSkill] as a modal bottom sheet, if any.
+ * Shared between [SkillsScreen] and [SeasonalEventScreen] so a Bounty Board "Go" tap
+ * can open the same activity picker inline, without navigating to a different screen.
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun SkillActivitySheet(
+    viewModel: SkillsViewModel,
+    craftingViewModel: CraftingViewModel,
+    onNavigateToBoneAltar: () -> Unit = {},
+) {
+    val state by viewModel.uiState.collectAsState()
+    val context = LocalContext.current
     state.sheetSkill?.let { sheet ->
         val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
         ModalBottomSheet(
@@ -212,7 +246,7 @@ fun SkillsScreen(
                     ores              = sheet.ores,
                     isStarting        = state.startingSession,
                     hasActiveSession  = state.anySessionActive,
-                    isQueueFull       = state.queueSize >= 3,
+                    isQueueFull       = state.queueSize >= state.maxQueueSize,
                     sessionDurationMs = state.sessionDurationMs,
                     currentXp         = state.skillXp[Skills.MINING] ?: 0L,
                     efficiency        = state.miningEfficiency,
@@ -223,7 +257,7 @@ fun SkillsScreen(
                     trees             = sheet.trees,
                     isStarting        = state.startingSession,
                     hasActiveSession  = state.anySessionActive,
-                    isQueueFull       = state.queueSize >= 3,
+                    isQueueFull       = state.queueSize >= state.maxQueueSize,
                     sessionDurationMs = state.sessionDurationMs,
                     currentXp         = state.skillXp[Skills.WOODCUTTING] ?: 0L,
                     efficiency        = state.woodcuttingEfficiency,
@@ -234,7 +268,7 @@ fun SkillsScreen(
                     fish              = sheet.fish,
                     isStarting        = state.startingSession,
                     hasActiveSession  = state.anySessionActive,
-                    isQueueFull       = state.queueSize >= 3,
+                    isQueueFull       = state.queueSize >= state.maxQueueSize,
                     sessionDurationMs = state.sessionDurationMs,
                     currentXp         = state.skillXp[Skills.FISHING] ?: 0L,
                     efficiency        = state.fishingEfficiency,
@@ -245,7 +279,7 @@ fun SkillsScreen(
                     courses           = sheet.courses,
                     isStarting        = state.startingSession,
                     hasActiveSession  = state.anySessionActive,
-                    isQueueFull       = state.queueSize >= 3,
+                    isQueueFull       = state.queueSize >= state.maxQueueSize,
                     sessionDurationMs = state.sessionDurationMs,
                     currentXp         = state.skillXp[Skills.AGILITY] ?: 0L,
                     xpBonusMult       = state.xpBonusMult,
@@ -257,7 +291,7 @@ fun SkillsScreen(
                     currentXp         = state.skillXp[Skills.FIREMAKING] ?: 0L,
                     isStarting        = state.startingSession,
                     hasActiveSession  = state.anySessionActive,
-                    isQueueFull       = state.queueSize >= 3,
+                    isQueueFull       = state.queueSize >= state.maxQueueSize,
                     sessionDurationMs = state.sessionDurationMs,
                     onStart           = { logKey, qty -> viewModel.startFiremakingSession(logKey, qty) },
                     context           = context,
@@ -268,7 +302,7 @@ fun SkillsScreen(
                     inventory         = state.inventory,
                     isStarting        = state.startingSession,
                     hasActiveSession  = state.anySessionActive,
-                    isQueueFull       = state.queueSize >= 3,
+                    isQueueFull       = state.queueSize >= state.maxQueueSize,
                     sessionDurationMs = state.sessionDurationMs,
                     onStart           = { runeKey, qty, ashKey -> viewModel.startRunecraftingSession(runeKey, qty, ashKey) },
                     currentXp         = state.skillXp[Skills.RUNECRAFTING] ?: 0L,
@@ -281,7 +315,7 @@ fun SkillsScreen(
                     currentXp             = state.skillXp[Skills.PRAYER] ?: 0L,
                     isStarting            = state.startingSession,
                     hasActiveSession      = state.anySessionActive,
-                    isQueueFull           = state.queueSize >= 3,
+                    isQueueFull           = state.queueSize >= state.maxQueueSize,
                     sessionDurationMs     = state.sessionDurationMs,
                     onStart               = viewModel::startPrayerSession,
                     onNavigateToBoneAltar = {
@@ -297,7 +331,7 @@ fun SkillsScreen(
                         craftState        = craftState,
                         craftingViewModel = craftingViewModel,
                         hasActiveSession  = state.anySessionActive,
-                        isQueueFull       = state.queueSize >= 3,
+                        isQueueFull       = state.queueSize >= state.maxQueueSize,
                         sessionDurationMs = state.sessionDurationMs,
                         context           = context,
                         onDismiss         = {
@@ -312,7 +346,7 @@ fun SkillsScreen(
                     currentXp         = state.skillXp[com.fantasyidler.data.model.Skills.THIEVING] ?: 0L,
                     isStarting        = state.startingSession,
                     hasActiveSession  = state.anySessionActive,
-                    isQueueFull       = state.queueSize >= 3,
+                    isQueueFull       = state.queueSize >= state.maxQueueSize,
                     sessionDurationMs = state.sessionDurationMs,
                     context           = context,
                     onSelect          = { npcKey -> viewModel.startThievingSession(npcKey) },
@@ -322,19 +356,6 @@ fun SkillsScreen(
                 SheetState.ComingSoon -> ComingSoonSheet()
             }
         }
-    }
-
-    state.petFoundName?.let { petName ->
-        AlertDialog(
-            onDismissRequest = viewModel::petDialogConsumed,
-            title = { Text(stringResource(R.string.pet_found_title)) },
-            text  = { Text(stringResource(R.string.home_found_pet, petName)) },
-            confirmButton = {
-                TextButton(onClick = viewModel::petDialogConsumed) {
-                    Text(stringResource(R.string.btn_close))
-                }
-            },
-        )
     }
 }
 
@@ -395,29 +416,37 @@ private fun SkillsTabContent(
 
         item { SectionHeader(stringResource(R.string.label_crafting_skills)) }
         items(Skills.CRAFTING_SKILLS) { key ->
+            val craftEfficiency = when (key) {
+                Skills.SMITHING   -> state.smithingEfficiency
+                Skills.FIREMAKING -> state.firemakingEfficiency
+                Skills.COOKING    -> state.cookingEfficiency
+                else              -> 1.0f
+            }
             SkillRow(
-                skillKey      = key,
-                level         = state.skillLevels[key] ?: 1,
-                xp            = state.skillXp[key] ?: 0L,
-                isActive      = state.activeSession?.skillName == key && state.activeSession?.completed == false,
-                onClick       = { viewModel.onSkillTapped(key) },
-                petBoostPct   = state.petBoostBySkill[key] ?: 0,
-                prestigeLevel = state.skillPrestige[key] ?: 0,
-                onPrestige    = { viewModel.prestigeSkill(key) },
+                skillKey       = key,
+                level          = state.skillLevels[key] ?: 1,
+                xp             = state.skillXp[key] ?: 0L,
+                isActive       = state.activeSession?.skillName == key && state.activeSession?.completed == false,
+                onClick        = { viewModel.onSkillTapped(key) },
+                toolEfficiency = craftEfficiency,
+                petBoostPct    = state.petBoostBySkill[key] ?: 0,
+                prestigeLevel  = state.skillPrestige[key] ?: 0,
+                onPrestige     = { viewModel.prestigeSkill(key) },
             )
         }
 
         item { SectionHeader(stringResource(R.string.label_support_skills)) }
         items(Skills.SUPPORT + listOf(Skills.AGILITY)) { key ->
             SkillRow(
-                skillKey      = key,
-                level         = state.skillLevels[key] ?: 1,
-                xp            = state.skillXp[key] ?: 0L,
-                isActive      = state.activeSession?.skillName == key && state.activeSession?.completed == false,
-                onClick       = { viewModel.onSkillTapped(key) },
-                petBoostPct   = state.petBoostBySkill[key] ?: 0,
-                prestigeLevel = state.skillPrestige[key] ?: 0,
-                onPrestige    = { viewModel.prestigeSkill(key) },
+                skillKey       = key,
+                level          = state.skillLevels[key] ?: 1,
+                xp             = state.skillXp[key] ?: 0L,
+                isActive       = state.activeSession?.skillName == key && state.activeSession?.completed == false,
+                onClick        = { viewModel.onSkillTapped(key) },
+                toolEfficiency = if (key == Skills.AGILITY) state.agilityEfficiency else 1.0f,
+                petBoostPct    = state.petBoostBySkill[key] ?: 0,
+                prestigeLevel  = state.skillPrestige[key] ?: 0,
+                onPrestige     = { viewModel.prestigeSkill(key) },
             )
         }
 

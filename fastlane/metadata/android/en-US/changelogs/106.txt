@@ -1,0 +1,10 @@
+• New: Seasonal Events added — real-calendar-dated events with a Bounty Board, Expedition, Raid Boss, and reflex minigame, all feeding one token currency toward a permanent Profile banner; launches with Season 1, "Sunspire Solstice" (Jun-Aug 2026)
+• New: Bounty Board tasks now rotate — completing one starts a 1-hour countdown before a different task from a wider pool takes its place; tapping "Go" on a bounty opens the relevant activity picker right on the event screen instead of navigating away, and craft-type bounties show a fill chip (like daily/guild quests) to queue the exact remaining amount
+• New: Profile Banners tab now shows every seasonal banner, earned or not — banners you haven't earned yet appear greyed out and labeled "(Unobtained)"; the active event's banner icon also shows on its Home screen card
+• Tweak: Farming crop XP and yields rebalanced per community feedback so newer crops keep pace with earlier ones for XP/hour — Onion, Cabbage, Pumpkin, Watermelon, Magic Herb, Dragon Fruit, Spirit Herb, Celestial Bloom, and Starfruit all increased; Strawberry's yield trimmed since it was a clear outlier
+• Fix: bow and staff gear bonuses were being dropped from ranged/magic damage in almost every real combat session (anything after your very first fight), so damage barely improved no matter which bow or arrows you used — gear now correctly boosts ranged and magic damage again
+• New: Journal added — a floating button on the Home screen for jotting down free-text notes/reminders, like what to queue next or what you're grinding toward; can be hidden in Settings
+• New: Queue Master town building — each tier adds +1 action queue slot (up to +3 at max tier), on top of the base 3
+• New: four new gathering/skilling tools — Hammer (Smithing), Tinderbox (Firemaking), Grappling Hook (Agility), and Frying Pan (Cooking), each with 6 tiers from bronze to runite, giving the same kind of speed/XP bonus as pickaxes and axes
+• Tweak: town achievement text now reflects six town buildings instead of five
+• Fix: Manta Ray and Sea Turtle now unlock in the same order in Fishing as they do in Cooking (Sea Turtle at 80, Manta Ray at 85)

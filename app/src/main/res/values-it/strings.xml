@@ -41,6 +41,7 @@
     <string name="btn_deactivate">Disattiva</string>
     <string name="btn_close">Chiudi</string>
     <string name="btn_back">Indietro</string>
+    <string name="btn_save">Salva</string>
 
     <!-- ===== Common labels ===== -->
     <string name="label_level">Livello</string>
@@ -276,6 +277,8 @@
     <string name="settings_profile_layout_tabs">Schede</string>
     <string name="settings_recent_activity">Registro delle ultime attività</string>
     <string name="settings_recent_activity_desc">Mostra il pulsante Ultime Attività nell\'intestazione della schermata principale</string>
+    <string name="settings_journal_button">Pulsante Diario</string>
+    <string name="settings_journal_button_desc">Mostra un pulsante flottante Diario nella schermata principale per annotare note</string>
     <string name="label_no_sessions_yet">Nessuna sessione completata.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -417,7 +420,7 @@
     <string name="home_welcome">Bentornato, %1$s!</string>
     <string name="home_adventurer">Avventuriero</string>
     <!-- Translator note: %1$d = queue size (always 3 max) -->
-    <string name="home_up_next">Prossime (%1$d/3)</string>
+    <string name="home_up_next">Prossime (%1$d/%2$d)</string>
     <!-- Translator note: %1$s = formatted duration string (e.g. "2h 15m") -->
     <string name="home_queue_ends_in">La coda termina tra %1$s</string>
     <!-- Translator note: %1$d = item quantity (e.g. ×40) -->
@@ -966,7 +969,7 @@
     <string name="slayer_requires">Necessita di: %1$s</string>
     <string name="slayer_add_dungeon_to_queue">Aggiungi Dungeon alla Coda</string>
     <string name="slayer_queue_added">Aggiunto alla coda: %1$s.</string>
-    <string name="slayer_queue_full">La coda è piena (3/3).</string>
+    <string name="slayer_queue_full">La coda è piena.</string>
     <string name="slayer_foretell_title">Foretell Future Tasks</string>
     <string name="slayer_foretell_desc">Pre-assign upcoming Slayer tasks by paying bones. They are assigned automatically when your current task is completed.</string>
     <string name="slayer_foretell_queue_empty">No tasks queued.</string>
@@ -1170,16 +1173,22 @@
         <item quantity="one">+%1$d appezzamento agricolo extra</item>
         <item quantity="other">+%1$d appezzamenti agricoli extra</item>
     </plurals>
+    <string name="town_building_queue_master_name">Maestro delle Code</string>
+    <plurals name="town_queue_master_bonus">
+        <item quantity="zero">Ancora nessuno slot di coda extra</item>
+        <item quantity="one">+%1$d slot di coda extra</item>
+        <item quantity="other">+%1$d slot di coda extra</item>
+    </plurals>
 
     <!-- Town achievements -->
     <string name="achievement_town_first_upgrade_name">Ristrutturazione</string>
     <string name="achievement_town_first_upgrade_desc">Potenzia qualsiasi edificio della città per la prima volta</string>
     <string name="achievement_town_all_tier1_name">Genio Civile</string>
-    <string name="achievement_town_all_tier1_desc">Potenzia tutti e cinque gli edifici almeno una volta</string>
+    <string name="achievement_town_all_tier1_desc">Potenzia tutti e sei gli edifici almeno una volta</string>
     <string name="achievement_town_one_maxed_name">Mastro Costruttore</string>
     <string name="achievement_town_one_maxed_desc">Potenzia qualsiasi edificio al livello massimo</string>
     <string name="achievement_town_all_maxed_name">El Dorado</string>
-    <string name="achievement_town_all_maxed_desc">Potenzia tutti e cinque gli edifici al livello massimo</string>
+    <string name="achievement_town_all_maxed_desc">Potenzia tutti e sei gli edifici al livello massimo</string>
     <string name="achievement_tower_first_floor_name">First Step</string>
     <string name="achievement_tower_first_floor_desc">Clear your first Infinite Tower floor</string>
     <string name="achievement_tower_floor_10_name">Tower Initiate</string>
@@ -1286,7 +1295,7 @@
     <string name="carnival_ticket_cost">%1$d biglietti</string>
     <string name="carnival_redeem">Riscatta</string>
     <string name="carnival_queue_added">Aggiunto alla coda: %1$s.</string>
-    <string name="carnival_queue_full">La coda è piena (3/3).</string>
+    <string name="carnival_queue_full">La coda è piena.</string>
     <string name="carnival_ring_won">Centro! +%1$d biglietti</string>
     <string name="carnival_ring_missed">Obiettivo mancato!</string>
     <string name="carnival_hammer_perfect">Colpo perfetto! +%1$d biglietti</string>
@@ -1429,7 +1438,7 @@
     <string name="bonus_combined_xp">XP combinata</string>
     <string name="bonus_yield">resa</string>
     <string name="snackbar_added_to_queue">Aggiunto alla coda: %1$s.</string>
-    <string name="snackbar_queue_full">La coda è piena (3/3).</string>
+    <string name="snackbar_queue_full">La coda è piena.</string>
     <string name="combat_start_failed">Impossibile avviare: %1$s</string>
     <string name="combat_select_spell">Seleziona una magia prima di proseguire.</string>
     <string name="combat_spell_level_required">Magia %1$d necessaria per %2$s.</string>
@@ -1464,6 +1473,7 @@
     <string name="seasonal_event_title">Evento Stagionale</string>
     <string name="seasonal_event_none">Nessun evento in corso al momento. Torna più tardi!</string>
     <string name="seasonal_event_token_progress">%1$d / %2$d gettoni</string>
+    <string name="seasonal_event_complete">Completato!</string>
     <string name="seasonal_bounty_board_title">Bacheca Missioni</string>
     <string name="seasonal_expedition_title">Spedizione</string>
     <string name="seasonal_boss_title">Boss dell\'Incursione</string>
@@ -1474,9 +1484,13 @@
     <string name="seasonal_minigame_failure">Mancato. Riprova dopo il raffreddamento.</string>
     <string name="seasonal_tap">Tocca!</string>
     <string name="seasonal_claim">Riscatta</string>
-    <string name="seasonal_claimed">Riscattato</string>
+    <string name="seasonal_bounty_cooldown">Nuova missione in %1$dm %2$ds</string>
     <string name="seasonal_go">Vai</string>
     <string name="label_banners">Stendardi</string>
+    <string name="label_journal">Diario</string>
+    <string name="journal_hint">Annota promemoria per la prossima volta: cosa metter in coda, a cosa stai lavorando.</string>
+    <string name="journal_placeholder">Scrivi una nota...</string>
     <string name="profile_banners_empty">Nessuno stendardo ottenuto finora. Completa un Evento Stagionale per ottenerne uno!</string>
     <string name="profile_banners_earned_on">Ottenuto il %s</string>
+    <string name="profile_banners_unobtained">(Non ottenuto)</string>
 </resources>

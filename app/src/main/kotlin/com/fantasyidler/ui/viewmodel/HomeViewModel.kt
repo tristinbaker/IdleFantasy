@@ -47,6 +47,7 @@ data class SeasonalEventSummary(
     val displayName: String,
     val tokens: Int,
     val goal: Int,
+    val bannerIcon: String? = null,
 )
 
 private val COMBAT_CAPE_SKILLS = setOf(
@@ -114,6 +115,7 @@ data class HomeUiState(
     val characterSetupDone: Boolean = false,
     val characterName: String = "",
     val sessionQueue: List<QueuedAction> = emptyList(),
+    val maxQueueSize: Int = 3,
     val showWhatsNew: Boolean = false,
     /** Epoch ms when the last queued task will finish; 0 if queue is empty. */
     val queueEndsAt: Long = 0L,
@@ -131,6 +133,9 @@ data class HomeUiState(
     val xpBoostRemainingMs: Long = 0L,
     val recentSessions: List<com.fantasyidler.data.model.RecentSession> = emptyList(),
     val showRecentActivityLog: Boolean = true,
+    val showJournalButton: Boolean = true,
+    val playerNotes: String = "",
+    val journalSheetOpen: Boolean = false,
     /** Total claimable guild quests + dailies across all guilds. Drives the badge on the town menu button. */
     val guildClaimableCount: Int = 0,
     /** The currently active Seasonal Event, or null if no event is running right now. */
@@ -255,6 +260,7 @@ class HomeViewModel @Inject constructor(
                     displayName = event.displayName,
                     tokens      = flags.seasonalTokensByEvent[event.id] ?: 0,
                     goal        = event.tokenGoal,
+                    bannerIcon  = event.bannerIcon,
                 )
             }
             extra.copy(
@@ -267,6 +273,7 @@ class HomeViewModel @Inject constructor(
                 characterSetupDone  = flags.characterSetupDone,
                 characterName       = flags.characterName,
                 sessionQueue        = flags.sessionQueue,
+                maxQueueSize        = townRepo.maxQueueSize(flags),
                 showWhatsNew        = flags.lastSeenVersionCode < BuildConfig.VERSION_CODE,
                 queueEndsAt         = queueEndsAt,
                 workerSession        = workerSession,
@@ -282,6 +289,8 @@ class HomeViewModel @Inject constructor(
                 xpBoostRemainingMs         = (flags.xpBoostExpiresAt - System.currentTimeMillis()).coerceAtLeast(0L),
                 recentSessions             = flags.recentSessions,
                 showRecentActivityLog      = flags.showRecentActivityLog,
+                showJournalButton          = flags.showJournalButton,
+                playerNotes                = flags.playerNotes,
                 guildClaimableCount        = guildClaimableCount,
                 activeSeasonalEvent        = activeSeasonalEvent,
                 activeSessionXpGain        = activeSessionXpGain,
@@ -1255,6 +1264,15 @@ class HomeViewModel @Inject constructor(
     fun summaryConsumed() = _extra.update { it.copy(sessionSummary = null) }
     fun snackbarConsumed() = _extra.update { it.copy(snackbarMessage = null) }
     fun petDialogConsumed() = _extra.update { it.copy(petFoundName = null) }
+
+    fun openJournal() = _extra.update { it.copy(journalSheetOpen = true) }
+    fun dismissJournal() = _extra.update { it.copy(journalSheetOpen = false) }
+
+    fun updateNotes(text: String) {
+        viewModelScope.launch {
+            playerRepo.updateFlags(playerRepo.getFlags().copy(playerNotes = text))
+        }
+    }
 
     fun dismissWhatsNew() {
         viewModelScope.launch {

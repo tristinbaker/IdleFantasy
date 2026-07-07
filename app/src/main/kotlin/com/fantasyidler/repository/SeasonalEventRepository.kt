@@ -4,7 +4,6 @@ import com.fantasyidler.data.json.SeasonalBountyTaskData
 import com.fantasyidler.data.json.SeasonalEventData
 import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.data.model.SeasonalBannerEarned
-import java.util.Calendar
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.sync.withLock
@@ -12,7 +11,8 @@ import kotlinx.coroutines.sync.withLock
 data class SeasonalBountyTaskWithProgress(
     val task: SeasonalBountyTaskData,
     val progress: Int,
-    val claimed: Boolean,
+    /** Non-null while this slot is waiting for a new task to rotate in after a claim. */
+    val cooldownUntilMs: Long?,
 )
 
 sealed class SeasonalMinigameResult {
@@ -32,43 +32,72 @@ class SeasonalEventRepository @Inject constructor(
     fun activeEvent(): SeasonalEventData? =
         gameData.seasonalEvents.values.firstOrNull { it.isActiveAt(System.currentTimeMillis()) }
 
-    fun bountyTasksWithProgress(event: SeasonalEventData, flags: PlayerFlags): List<SeasonalBountyTaskWithProgress> =
-        event.bountyTasks.map { task ->
+    fun bountyTasksWithProgress(event: SeasonalEventData, flags: PlayerFlags): List<SeasonalBountyTaskWithProgress> {
+        val byId = event.bountyTasks.associateBy { it.id }
+        return flags.seasonalBountySlots.mapIndexedNotNull { index, taskId ->
+            val task = byId[taskId] ?: return@mapIndexedNotNull null
             SeasonalBountyTaskWithProgress(
-                task     = task,
-                progress = flags.seasonalBountyProgress[task.id] ?: 0,
-                claimed  = task.id in flags.seasonalBountyClaimed,
+                task            = task,
+                progress        = flags.seasonalBountyProgress[taskId] ?: 0,
+                cooldownUntilMs = flags.seasonalBountySlotCooldownUntil[index.toString()],
             )
         }
-
-    // -------------------------------------------------------------------------
-    // Bounty Board — mirrors GuildRepository's daily-reset shape
-    // -------------------------------------------------------------------------
-
-    suspend fun ensureBountyRefreshed() = playerRepo.playerMutex.withLock { ensureBountyRefreshedUnlocked() }
-
-    private suspend fun ensureBountyRefreshedUnlocked(): PlayerFlags {
-        val flags = playerRepo.getFlags()
-        if (!shouldRefreshBounty(flags.seasonalBountyGeneratedAt)) return flags
-        val refreshed = flags.copy(
-            seasonalBountyProgress    = emptyMap(),
-            seasonalBountyClaimed     = emptyList(),
-            seasonalBountyGeneratedAt = System.currentTimeMillis(),
-        )
-        playerRepo.updateFlagsUnlocked(refreshed)
-        return refreshed
     }
 
-    private fun shouldRefreshBounty(generatedAt: Long): Boolean {
-        if (generatedAt == 0L) return true
+    // -------------------------------------------------------------------------
+    // Bounty Board — 3 slots (one per task type), each independently rotating to
+    // a new same-type task [SeasonalEventData.bountyRotationMs] after it's claimed.
+    // -------------------------------------------------------------------------
+
+    suspend fun ensureBountySlotsRefreshed() = playerRepo.playerMutex.withLock { ensureBountySlotsRefreshedUnlocked() }
+
+    private suspend fun ensureBountySlotsRefreshedUnlocked(): PlayerFlags {
+        val flags = playerRepo.getFlags()
+        val event = activeEvent() ?: return flags
+        val byType = event.bountyTasks.groupBy { it.type }
+        val validIds = event.bountyTasks.map { it.id }.toSet()
+
+        val slotsValid = flags.seasonalBountyEventId == event.id &&
+            flags.seasonalBountySlots.size == byType.size &&
+            flags.seasonalBountySlots.all { it in validIds }
+
+        if (!slotsValid) {
+            val freshSlots = byType.values.mapNotNull { it.randomOrNull()?.id }
+            val reseeded = flags.copy(
+                seasonalBountyEventId           = event.id,
+                seasonalBountySlots             = freshSlots,
+                seasonalBountyProgress          = emptyMap(),
+                seasonalBountySlotCooldownUntil = emptyMap(),
+            )
+            playerRepo.updateFlagsUnlocked(reseeded)
+            return reseeded
+        }
+
         val now = System.currentTimeMillis()
-        val cal = Calendar.getInstance().apply { timeInMillis = generatedAt }
-        cal.set(Calendar.HOUR_OF_DAY, 6)
-        cal.set(Calendar.MINUTE, 0)
-        cal.set(Calendar.SECOND, 0)
-        cal.set(Calendar.MILLISECOND, 0)
-        if (cal.timeInMillis <= generatedAt) cal.add(Calendar.DAY_OF_YEAR, 1)
-        return now >= cal.timeInMillis
+        val slots = flags.seasonalBountySlots.toMutableList()
+        var progress = flags.seasonalBountyProgress
+        var cooldowns = flags.seasonalBountySlotCooldownUntil
+        var changed = false
+
+        for ((index, taskId) in flags.seasonalBountySlots.withIndex()) {
+            val cooldownUntil = cooldowns[index.toString()] ?: continue
+            if (now < cooldownUntil) continue
+            val currentTask = event.bountyTasks.first { it.id == taskId }
+            val nextTask = byType[currentTask.type].orEmpty().filter { it.id != taskId }.randomOrNull() ?: currentTask
+            slots[index] = nextTask.id
+            progress = progress - taskId
+            cooldowns = cooldowns - index.toString()
+            changed = true
+        }
+
+        if (!changed) return flags
+        val rotated = flags.copy(
+            seasonalBountySlots             = slots,
+            seasonalBountyProgress          = progress,
+            seasonalBountySlotCooldownUntil = cooldowns,
+        )
+        playerRepo.updateFlagsUnlocked(rotated)
+        return rotated
     }
 
     /** Called when a gathering session is collected. */
@@ -83,12 +112,13 @@ class SeasonalEventRepository @Inject constructor(
     private suspend fun recordBountyProgress(type: String, counts: Map<String, Int>) = playerRepo.playerMutex.withLock {
         val event = activeEvent() ?: return@withLock
         if ("bounty" !in event.pillars) return@withLock
-        val flags = ensureBountyRefreshedUnlocked()
+        val flags = ensureBountySlotsRefreshedUnlocked()
+        val activeTaskIds = flags.seasonalBountySlots.toSet()
         val updated = flags.seasonalBountyProgress.toMutableMap()
         var changed = false
         for (task in event.bountyTasks) {
             if (task.type != type) continue
-            if (task.id in flags.seasonalBountyClaimed) continue
+            if (task.id !in activeTaskIds) continue
             val count = counts[task.target] ?: continue
             if (count <= 0) continue
             val cur = updated[task.id] ?: 0
@@ -99,16 +129,20 @@ class SeasonalEventRepository @Inject constructor(
         if (changed) playerRepo.updateFlagsUnlocked(flags.copy(seasonalBountyProgress = updated))
     }
 
-    /** Claims a completed Bounty Board task, awarding one token. Returns false if not yet completable. */
+    /** Claims a completed Bounty Board task, awarding one token and starting that slot's rotation cooldown. */
     suspend fun claimBountyTask(taskId: String): Boolean = playerRepo.playerMutex.withLock {
         val event = activeEvent() ?: return@withLock false
         if ("bounty" !in event.pillars) return@withLock false
         val task = event.bountyTasks.firstOrNull { it.id == taskId } ?: return@withLock false
-        val flags = ensureBountyRefreshedUnlocked()
-        if (taskId in flags.seasonalBountyClaimed) return@withLock false
+        val flags = ensureBountySlotsRefreshedUnlocked()
+        val slotIndex = flags.seasonalBountySlots.indexOf(taskId)
+        if (slotIndex < 0 || flags.seasonalBountySlotCooldownUntil.containsKey(slotIndex.toString())) return@withLock false
         val progress = flags.seasonalBountyProgress[taskId] ?: 0
         if (progress < task.amount) return@withLock false
-        val claimedFlags = flags.copy(seasonalBountyClaimed = flags.seasonalBountyClaimed + taskId)
+        val claimedFlags = flags.copy(
+            seasonalBountySlotCooldownUntil = flags.seasonalBountySlotCooldownUntil +
+                (slotIndex.toString() to (System.currentTimeMillis() + event.bountyRotationMs)),
+        )
         playerRepo.updateFlagsUnlocked(awardTokenUnlocked(claimedFlags, event))
         true
     }
@@ -166,6 +200,7 @@ class SeasonalEventRepository @Inject constructor(
                     eventId       = event.id,
                     displayText   = event.bannerText,
                     completedAtMs = System.currentTimeMillis(),
+                    bannerIcon    = event.bannerIcon,
                 )
             )
         }

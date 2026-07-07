@@ -1138,7 +1138,7 @@ class CombatViewModel @Inject constructor(
                 combatStyle         = combatStyle,
                 playerRanged        = rng,
                 playerMagic         = mgc,
-                arrowStrengthBonus  = arrowStrBonus,
+                arrowStrengthBonus  = arrowStrBonus + (if (combatStyle == "ranged") totalStr else 0),
                 spellMaxHit         = spellMaxHit,
                 agilityLevel        = agility,
                 agilityPrestige     = prestigeMap[Skills.AGILITY] ?: 0,

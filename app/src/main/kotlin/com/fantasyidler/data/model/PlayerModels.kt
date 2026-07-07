@@ -96,6 +96,8 @@ data class PlayerFlags(
     @SerialName("recent_sessions") val recentSessions: List<RecentSession> = emptyList(),
     /** Whether to show the recent activity log FAB on the home screen. */
     @SerialName("show_recent_activity_log") val showRecentActivityLog: Boolean = true,
+    /** Whether to show the Journal floating action button on the home screen. */
+    @SerialName("show_journal_button") val showJournalButton: Boolean = true,
     /** Profile screen layout: "rail" (sidebar) or "tabs" (horizontal tab bar). */
     @SerialName("profile_layout") val profileLayout: String = "rail",
     /** Prestige level per skill: skill key → 0–3. */
@@ -142,16 +144,20 @@ data class PlayerFlags(
     @SerialName("tower_coin_bonus_pct") val towerCoinBonusPct: Int = 0,
     /** Seasonal Events: tokens earned so far per event id, toward that event's token_goal. */
     @SerialName("seasonal_tokens_by_event") val seasonalTokensByEvent: Map<String, Int> = emptyMap(),
-    /** Seasonal Events: progress map taskId -> count accumulated since the last daily reset. */
+    /** Seasonal Events: progress map taskId -> count accumulated since that slot last rotated. */
     @SerialName("seasonal_bounty_progress") val seasonalBountyProgress: Map<String, Int> = emptyMap(),
-    /** Seasonal Events: task IDs whose Bounty Board reward has already been claimed since the last daily reset. */
-    @SerialName("seasonal_bounty_claimed") val seasonalBountyClaimed: List<String> = emptyList(),
-    /** Seasonal Events: epoch ms when the Bounty Board tasks last reset (6am rollover, mirrors guild dailies). */
-    @SerialName("seasonal_bounty_generated_at") val seasonalBountyGeneratedAt: Long = 0L,
+    /** Seasonal Events: id of the event the current Bounty Board slots were seeded for; reseeded when this changes. */
+    @SerialName("seasonal_bounty_event_id") val seasonalBountyEventId: String? = null,
+    /** Seasonal Events: the 3 currently active Bounty Board task IDs, index-stable. */
+    @SerialName("seasonal_bounty_slots") val seasonalBountySlots: List<String> = emptyList(),
+    /** Seasonal Events: slot index (as String) -> epoch ms when a claimed slot rotates in a new task. */
+    @SerialName("seasonal_bounty_slot_cooldown") val seasonalBountySlotCooldownUntil: Map<String, Long> = emptyMap(),
     /** Seasonal Events: epoch ms when the minigame cooldown expires; 0 = not on cooldown. */
     @SerialName("seasonal_minigame_cooldown_at") val seasonalMinigameCooldownAt: Long = 0L,
     /** Seasonal Events: permanent record of every event completed, kept even after the event's data is removed. */
     @SerialName("seasonal_banners_earned") val seasonalBannersEarned: List<SeasonalBannerEarned> = emptyList(),
+    /** Free-text notes the player jots down for themselves (e.g. what to queue next). */
+    @SerialName("player_notes") val playerNotes: String = "",
 )
 
 /** A permanent snapshot of a completed Seasonal Event, shown in the Profile Banners tab. */
@@ -160,6 +166,8 @@ data class SeasonalBannerEarned(
     @SerialName("event_id")       val eventId: String,
     @SerialName("display_text")   val displayText: String,
     @SerialName("completed_at_ms") val completedAtMs: Long,
+    /** Drawable resource name captured at completion time, so the banner still renders after the event's data is removed. */
+    @SerialName("banner_icon")    val bannerIcon: String? = null,
 )
 
 /** Stats saved after each dungeon run; keyed by dungeon name in PlayerFlags. */
@@ -374,10 +382,16 @@ object EquipSlot {
     const val FISHING_ROD = "fishing_rod"
     const val HOE         = "hoe"
 
+    // Crafting/skilling tools
+    const val HAMMER         = "hammer"
+    const val TINDERBOX      = "tinderbox"
+    const val GRAPPLING_HOOK = "grappling_hook"
+    const val FRYING_PAN     = "frying_pan"
+
     val WEAPON_SLOTS = listOf(WEAPON_ATK, WEAPON_STR, WEAPON_RANGED, WEAPON_MAGIC)
     val ARMOR_SLOTS  = listOf(HEAD, BODY, LEGS, BOOTS, CAPE, RING, NECKLACE, SHIELD)
     val COMBAT_SLOTS = WEAPON_SLOTS + ARMOR_SLOTS
-    val TOOL_SLOTS   = listOf(PICKAXE, AXE, FISHING_ROD, HOE)
+    val TOOL_SLOTS   = listOf(PICKAXE, AXE, FISHING_ROD, HOE, HAMMER, TINDERBOX, GRAPPLING_HOOK, FRYING_PAN)
     val ALL          = COMBAT_SLOTS + TOOL_SLOTS
 
     /** Returns the combat style string that belongs in a given weapon slot, or null for non-weapon slots. */

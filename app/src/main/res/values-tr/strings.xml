@@ -40,6 +40,7 @@
     <string name="btn_deactivate">Devre Dışı Bırak</string>
     <string name="btn_close">Kapat</string>
     <string name="btn_back">Geri</string>
+    <string name="btn_save">Kaydet</string>
 
     <!-- ===== Common labels ===== -->
     <string name="label_level">Seviye</string>
@@ -260,6 +261,8 @@
     <string name="settings_profile_layout_tabs">Sekmeler</string>
     <string name="settings_recent_activity">Son Aktivite Günlüğü</string>
     <string name="settings_recent_activity_desc">Ana ekran başlığında Son Aktivite düğmesini göster</string>
+    <string name="settings_journal_button">Günlük Düğmesi</string>
+    <string name="settings_journal_button_desc">Not almak için ana ekranda yüzen bir Günlük düğmesi göster</string>
     <string name="label_no_sessions_yet">Henüz tamamlanan oturum yok.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -352,7 +355,7 @@
     <string name="home_welcome">Tekrar hoş geldin, %1$s!</string>
     <string name="home_adventurer">Maceracı</string>
     <!-- Translator note: %1$d = queue size (always 3 max) -->
-    <string name="home_up_next">Sıradaki (%1$d/3)</string>
+    <string name="home_up_next">Sıradaki (%1$d/%2$d)</string>
     <!-- Translator note: %1$s = formatted duration string (e.g. "2h 15m") -->
     <string name="home_queue_ends_in">Kuyruk %1$s içinde bitiyor</string>
     <string name="queue_item_qty">×%1$d</string>
@@ -931,7 +934,7 @@
     <string name="slayer_requires">Requires: %1$s</string>
     <string name="slayer_add_dungeon_to_queue">Zindanı Kuyruğa Ekle</string>
     <string name="slayer_queue_added">Kuyruğa eklendi: %1$s.</string>
-    <string name="slayer_queue_full">Kuyruk dolu (3/3).</string>
+    <string name="slayer_queue_full">Kuyruk dolu.</string>
     <string name="slayer_foretell_title">Foretell Future Tasks</string>
     <string name="slayer_foretell_desc">Pre-assign upcoming Slayer tasks by paying bones. They are assigned automatically when your current task is completed.</string>
     <string name="slayer_foretell_queue_empty">No tasks queued.</string>
@@ -1131,14 +1134,20 @@
         <item quantity="one">+%1$d ekstra çiftlik parseli</item>
         <item quantity="other">+%1$d ekstra çiftlik parseli</item>
     </plurals>
+    <string name="town_building_queue_master_name">Kuyruk Ustası</string>
+    <plurals name="town_queue_master_bonus">
+        <item quantity="zero">Henüz ekstra sıra yuvası yok</item>
+        <item quantity="one">+%1$d ekstra sıra yuvası</item>
+        <item quantity="other">+%1$d ekstra sıra yuvası</item>
+    </plurals>
     <string name="achievement_town_first_upgrade_name">İlk Tadilat</string>
     <string name="achievement_town_first_upgrade_desc">Herhangi bir kasaba binasını ilk kez yükselt</string>
     <string name="achievement_town_all_tier1_name">Kasaba Geliştirici</string>
-    <string name="achievement_town_all_tier1_desc">Beş kasaba binasını en az 1. Kademeye yükselt</string>
+    <string name="achievement_town_all_tier1_desc">Altı kasaba binasını en az 1. Kademeye yükselt</string>
     <string name="achievement_town_one_maxed_name">Usta İnşaatçı</string>
     <string name="achievement_town_one_maxed_desc">Herhangi bir binayı maksimum kademeye yükselt</string>
     <string name="achievement_town_all_maxed_name">Efsanevi Kasaba</string>
-    <string name="achievement_town_all_maxed_desc">Beş kasaba binasını maksimum kademeye yükselt</string>
+    <string name="achievement_town_all_maxed_desc">Altı kasaba binasını maksimum kademeye yükselt</string>
     <string name="achievement_tower_first_floor_name">First Step</string>
     <string name="achievement_tower_first_floor_desc">Clear your first Infinite Tower floor</string>
     <string name="achievement_tower_floor_10_name">Tower Initiate</string>
@@ -1239,7 +1248,7 @@
     <string name="carnival_ticket_cost">%1$d bilet</string>
     <string name="carnival_redeem">Kullan</string>
     <string name="carnival_queue_added">Sıraya eklendi: %1$s.</string>
-    <string name="carnival_queue_full">Sıra dolu (3/3).</string>
+    <string name="carnival_queue_full">Sıra dolu.</string>
     <string name="carnival_ring_won">On ikiden! +%1$d bilet</string>
     <string name="carnival_ring_missed">Hedef ıskalandı!</string>
     <string name="carnival_hammer_perfect">Mükemmel darbe! +%1$d bilet</string>
@@ -1302,7 +1311,7 @@
     <string name="bonus_combined_xp">Birleşik XP</string>
     <string name="bonus_yield">verim</string>
     <string name="snackbar_added_to_queue">Sıraya eklendi: %1$s.</string>
-    <string name="snackbar_queue_full">Sıra dolu (3/3).</string>
+    <string name="snackbar_queue_full">Sıra dolu.</string>
     <string name="home_not_enough_coins_repeat">%1$s tekrarlamak için yeterli altın yok.</string>
     <string name="home_not_enough_materials_repeat">%1$s tekrarlamak için yeterli malzeme yok.</string>
     <string name="combat_start_failed">Başlatılamadı: %1$s</string>
@@ -1417,6 +1426,7 @@
     <string name="seasonal_event_title">Sezonluk Etkinlik</string>
     <string name="seasonal_event_none">Şu anda aktif bir etkinlik yok. Daha sonra tekrar kontrol edin!</string>
     <string name="seasonal_event_token_progress">%1$d / %2$d jeton</string>
+    <string name="seasonal_event_complete">Tamamlandı!</string>
     <string name="seasonal_bounty_board_title">Görev Panosu</string>
     <string name="seasonal_expedition_title">Sefer</string>
     <string name="seasonal_boss_title">Baskın Patronu</string>
@@ -1427,9 +1437,13 @@
     <string name="seasonal_minigame_failure">Iskaladın. Bekleme süresinden sonra tekrar dene.</string>
     <string name="seasonal_tap">Dokun!</string>
     <string name="seasonal_claim">Talep Et</string>
-    <string name="seasonal_claimed">Talep Edildi</string>
+    <string name="seasonal_bounty_cooldown">%1$ddk %2$dsn içinde yeni görev</string>
     <string name="seasonal_go">Git</string>
     <string name="label_banners">Sancaklar</string>
+    <string name="label_journal">Günlük</string>
+    <string name="journal_hint">Bir dahaki sefere için hatırlatmalar not edin — sıraya ne ekleyeceğinizi, neye çalıştığınızı.</string>
+    <string name="journal_placeholder">Bir not yazın...</string>
     <string name="profile_banners_empty">Henüz sancak kazanılmadı. Bir Sezonluk Etkinliği tamamlayarak bir sancak kazanın!</string>
     <string name="profile_banners_earned_on">%s tarihinde kazanıldı</string>
+    <string name="profile_banners_unobtained">(Kazanılmadı)</string>
 </resources>

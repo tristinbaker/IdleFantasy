@@ -10,6 +10,7 @@ import com.fantasyidler.simulator.CombatSimulator
 import com.fantasyidler.simulator.SkillSimulator
 import com.fantasyidler.simulator.ThievingSimulator
 import com.fantasyidler.simulator.XpTable
+import com.fantasyidler.util.toolEfficiency
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.json.Json
@@ -80,7 +81,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                     startXp        = xpMap[Skills.MINING] ?: 0L,
                     agilityLevel   = agilityLevel,
                     petBoostPct    = 0,
-                    toolEfficiency = toolEfficiency(equipped[EquipSlot.PICKAXE], EquipSlot.PICKAXE, oreData.levelRequired),
+                    toolEfficiency = gameData.toolEfficiency(equipped[EquipSlot.PICKAXE], EquipSlot.PICKAXE, oreData.levelRequired),
                     petDropKey     = null,
                     petDropChance  = 0.0,
                 )
@@ -94,7 +95,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                     startXp        = xpMap[Skills.WOODCUTTING] ?: 0L,
                     agilityLevel   = agilityLevel,
                     petBoostPct    = 0,
-                    toolEfficiency = toolEfficiency(equipped[EquipSlot.AXE], EquipSlot.AXE, treeData.levelRequired),
+                    toolEfficiency = gameData.toolEfficiency(equipped[EquipSlot.AXE], EquipSlot.AXE, treeData.levelRequired),
                     petDropKey     = null,
                     petDropChance  = 0.0,
                 )
@@ -109,7 +110,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                     startXp        = xpMap[Skills.FISHING] ?: 0L,
                     agilityLevel   = agilityLevel,
                     petBoostPct    = 0,
-                    rodEfficiency  = toolEfficiency(equipped[EquipSlot.FISHING_ROD], EquipSlot.FISHING_ROD, fishData.levelRequired),
+                    rodEfficiency  = gameData.toolEfficiency(equipped[EquipSlot.FISHING_ROD], EquipSlot.FISHING_ROD, fishData.levelRequired),
                     petDropKey     = null,
                     petDropChance  = 0.0,
                 )
@@ -119,10 +120,11 @@ class WorkerQueuedSessionStarter @Inject constructor(
                 val courseKey  = action.activityKey
                 val courseData = gameData.agilityCourses[courseKey] ?: return
                 val result     = SkillSimulator.simulateAgility(
-                    courseData   = courseData,
-                    startXp      = xpMap[Skills.AGILITY] ?: 0L,
-                    agilityLevel = agilityLevel,
-                    petBoostPct  = 0,
+                    courseData     = courseData,
+                    startXp        = xpMap[Skills.AGILITY] ?: 0L,
+                    agilityLevel   = agilityLevel,
+                    petBoostPct    = 0,
+                    toolEfficiency = gameData.toolEfficiency(equipped[EquipSlot.GRAPPLING_HOOK], EquipSlot.GRAPPLING_HOOK, courseData.levelRequired),
                 )
                 startSession(slot, action, result.frames, durationMs, efficiencyMultiplier)
             }
@@ -131,7 +133,8 @@ class WorkerQueuedSessionStarter @Inject constructor(
                 val qty     = action.qty.takeIf { it > 0 } ?: return
                 val logData = gameData.logs[logKey] ?: return
                 val ashKey  = ashForLog(logKey)
-                val frames  = buildCraftFrames(xpMap[Skills.FIREMAKING] ?: 0L, qty, logData.xpPerLog.toDouble(), 1, ashKey)
+                val frames  = buildCraftFrames(xpMap[Skills.FIREMAKING] ?: 0L, qty, logData.xpPerLog.toDouble(), 1, ashKey,
+                    efficiency = gameData.toolEfficiency(equipped[EquipSlot.TINDERBOX], EquipSlot.TINDERBOX, logData.levelRequired))
                 startSession(slot, action, frames, durationMs, efficiencyMultiplier)
             }
             Skills.RUNECRAFTING -> {
@@ -179,13 +182,15 @@ class WorkerQueuedSessionStarter @Inject constructor(
             Skills.SMITHING -> {
                 val r   = gameData.smithingRecipes[action.activityKey] ?: return
                 val qty = action.qty.takeIf { it > 0 } ?: return
-                val frames = buildCraftFrames(xpMap[Skills.SMITHING] ?: 0L, qty, r.xpPerItem, r.outputQuantity, action.activityKey)
+                val frames = buildCraftFrames(xpMap[Skills.SMITHING] ?: 0L, qty, r.xpPerItem, r.outputQuantity, action.activityKey,
+                    efficiency = gameData.toolEfficiency(equipped[EquipSlot.HAMMER], EquipSlot.HAMMER, r.levelRequired))
                 startSession(slot, action, frames, durationMs, efficiencyMultiplier)
             }
             Skills.COOKING -> {
                 val r: CookingRecipe = gameData.cookingRecipes[action.activityKey] ?: return
                 val qty = action.qty.takeIf { it > 0 } ?: return
-                val frames = buildCraftFrames(xpMap[Skills.COOKING] ?: 0L, qty, r.xpPerItem, 1, r.cookedItem)
+                val frames = buildCraftFrames(xpMap[Skills.COOKING] ?: 0L, qty, r.xpPerItem, 1, r.cookedItem,
+                    efficiency = gameData.toolEfficiency(equipped[EquipSlot.FRYING_PAN], EquipSlot.FRYING_PAN, r.levelRequired))
                 startSession(slot, action, frames, durationMs, efficiencyMultiplier)
             }
             Skills.FLETCHING -> {
@@ -360,33 +365,9 @@ class WorkerQueuedSessionStarter @Inject constructor(
         else          -> "ashes"
     }
 
-    private val TOOL_TIERS = listOf(1, 15, 30, 55, 70, 85)
 
-    private fun tierIndex(level: Int): Int = TOOL_TIERS.indexOfLast { it <= level }.coerceAtLeast(0)
-
-    private fun toolEfficiency(itemKey: String?, slot: String, resourceLevelRequired: Int = 0): Float {
-        if (itemKey == null) return 1.0f
-        val eq   = gameData.equipment[itemKey] ?: return 1.0f
-        val base = when (slot) {
-            EquipSlot.PICKAXE     -> eq.miningEfficiency      ?: 1.0f
-            EquipSlot.AXE         -> eq.woodcuttingEfficiency ?: 1.0f
-            EquipSlot.FISHING_ROD -> eq.fishingEfficiency     ?: 1.0f
-            else                  -> 1.0f
-        }
-        if (resourceLevelRequired <= 0) return base
-        val skillKey = when (slot) {
-            EquipSlot.PICKAXE     -> Skills.MINING
-            EquipSlot.AXE         -> Skills.WOODCUTTING
-            EquipSlot.FISHING_ROD -> Skills.FISHING
-            else                  -> return base
-        }
-        val toolReqLevel = eq.requirements[skillKey] ?: 1
-        val tierDiff     = tierIndex(toolReqLevel) - tierIndex(resourceLevelRequired)
-        return if (tierDiff > 0) base * (1.0f + 0.25f * tierDiff) else base
-    }
-
-    private fun buildCraftFrames(startXp: Long, qty: Int, xpPerItem: Double, outputQty: Int, outputKey: String): List<SessionFrame> {
-        val totalXpGain = (xpPerItem * qty).toInt()
+    private fun buildCraftFrames(startXp: Long, qty: Int, xpPerItem: Double, outputQty: Int, outputKey: String, efficiency: Float = 1.0f): List<SessionFrame> {
+        val totalXpGain = (xpPerItem * qty * efficiency).toInt()
         val xpAfter     = startXp + totalXpGain
         return listOf(SessionFrame(
             minute      = 1,

@@ -37,6 +37,7 @@
     <string name="btn_deactivate">Menonaktifkan</string>
     <string name="btn_close">Tutup</string>
     <string name="btn_back">Kembali</string>
+    <string name="btn_save">Simpan</string>
     <string name="label_level">Level</string>
     <string name="label_xp">XP</string>
     <string name="label_coins">Koin</string>
@@ -210,6 +211,8 @@
     <string name="settings_profile_layout_tabs">Tab</string>
     <string name="settings_recent_activity">Catatan Aktivitas</string>
     <string name="settings_recent_activity_desc">Tampilkan tombol Aktivitas Terbaru di header layar beranda</string>
+    <string name="settings_journal_button">Tombol Jurnal</string>
+    <string name="settings_journal_button_desc">Tampilkan tombol Jurnal melayang di layar beranda untuk menulis catatan</string>
     <string name="label_no_sessions_yet">Belum ada sesi yang selesai.</string>
     <string name="label_dungeons_tab">Dungeon</string>
     <string name="btn_fight">Bertarung!</string>
@@ -330,7 +333,7 @@
     <string name="home_got_it">Mengerti</string>
     <string name="home_welcome">Selamat datang kembali, %1$s!</string>
     <string name="home_adventurer">Petualang</string>
-    <string name="home_up_next">Berikutnya (%1$d/3)</string>
+    <string name="home_up_next">Berikutnya (%1$d/%2$d)</string>
     <string name="home_queue_ends_in">Antrian berakhir %1$s</string>
     <string name="queue_item_qty">×%1$d</string>
     <string name="queue_item_qty_with_output">×%1$d → %2$d item</string>
@@ -748,7 +751,7 @@
     <string name="slayer_requires">Membutuhkan: %1$s</string>
     <string name="slayer_add_dungeon_to_queue">Tambah Dungeon ke Antrian</string>
     <string name="slayer_queue_added">Ditambahkan ke antrian: %1$s.</string>
-    <string name="slayer_queue_full">Antrian penuh (3/3).</string>
+    <string name="slayer_queue_full">Antrian penuh.</string>
     <string name="slayer_foretell_title">Foretell Future Tasks</string>
     <string name="slayer_foretell_desc">Pre-assign upcoming Slayer tasks by paying bones. They are assigned automatically when your current task is completed.</string>
     <string name="slayer_foretell_queue_empty">No tasks queued.</string>
@@ -921,14 +924,20 @@
         <item quantity="one">+%1$d plot pertanian tambahan</item>
         <item quantity="other">+%1$d plot pertanian tambahan</item>
     </plurals>
+    <string name="town_building_queue_master_name">Ahli Antrian</string>
+    <plurals name="town_queue_master_bonus">
+        <item quantity="zero">Belum ada slot antrian tambahan</item>
+        <item quantity="one">+%1$d slot antrian tambahan</item>
+        <item quantity="other">+%1$d slot antrian tambahan</item>
+    </plurals>
     <string name="achievement_town_first_upgrade_name">Renovasi Pertama</string>
     <string name="achievement_town_first_upgrade_desc">Tingkatkan bangunan kota mana pun untuk pertama kalinya.</string>
     <string name="achievement_town_all_tier1_name">Pengembang Kota</string>
-    <string name="achievement_town_all_tier1_desc">Tingkatkan kelima bangunan kota setidaknya ke Tingkat 1.</string>
+    <string name="achievement_town_all_tier1_desc">Tingkatkan keenam bangunan kota setidaknya ke Tingkat 1.</string>
     <string name="achievement_town_one_maxed_name">Ahli Bangunan</string>
     <string name="achievement_town_one_maxed_desc">Tingkatkan bangunan kota mana pun ke tingkat maksimum.</string>
     <string name="achievement_town_all_maxed_name">Kota Legenda</string>
-    <string name="achievement_town_all_maxed_desc">Tingkatkan kelima bangunan kota ke tingkat maksimum.</string>
+    <string name="achievement_town_all_maxed_desc">Tingkatkan keenam bangunan kota ke tingkat maksimum.</string>
     <string name="achievement_tower_first_floor_name">First Step</string>
     <string name="achievement_tower_first_floor_desc">Clear your first Infinite Tower floor</string>
     <string name="achievement_tower_floor_10_name">Tower Initiate</string>
@@ -1017,7 +1026,7 @@
     <string name="carnival_ticket_cost">tiket %1$d</string>
     <string name="carnival_redeem">Penukaran</string>
     <string name="carnival_queue_added">Ditambahkan ke antrian: %1$s.</string>
-    <string name="carnival_queue_full">Antrian penuh (3/3).</string>
+    <string name="carnival_queue_full">Antrian penuh.</string>
     <string name="carnival_ring_won">Tepat Sasaran! +%1$d tiket</string>
     <string name="carnival_ring_missed">Target Meleset!</string>
     <string name="carnival_hammer_perfect">Sempurnaaa! +%1$d tiket</string>
@@ -1154,7 +1163,7 @@
     <string name="bonus_combined_xp">Combined XP</string>
     <string name="bonus_yield">yield</string>
     <string name="snackbar_added_to_queue">Ditambahkan ke antrian: %1$s.</string>
-    <string name="snackbar_queue_full">Antrian penuh (3/3).</string>
+    <string name="snackbar_queue_full">Antrian penuh.</string>
     <string name="combat_start_failed">Tak dapat memulai: %1$s</string>
     <string name="combat_select_spell">Pilih mantra sebelum masuk.</string>
     <string name="combat_spell_level_required">Butuh Magic %1$d untuk %2$s.</string>
@@ -1215,6 +1224,7 @@
     <string name="seasonal_event_title">Acara Musiman</string>
     <string name="seasonal_event_none">Tidak ada acara yang berjalan sekarang. Cek lagi nanti!</string>
     <string name="seasonal_event_token_progress">%1$d / %2$d token</string>
+    <string name="seasonal_event_complete">Selesai!</string>
     <string name="seasonal_bounty_board_title">Papan Buruan</string>
     <string name="seasonal_expedition_title">Ekspedisi</string>
     <string name="seasonal_boss_title">Bos Raid</string>
@@ -1225,9 +1235,13 @@
     <string name="seasonal_minigame_failure">Meleset. Coba lagi setelah cooldown.</string>
     <string name="seasonal_tap">Ketuk!</string>
     <string name="seasonal_claim">Klaim</string>
-    <string name="seasonal_claimed">Diklaim</string>
+    <string name="seasonal_bounty_cooldown">Buruan baru dalam %1$dm %2$ds</string>
     <string name="seasonal_go">Pergi</string>
     <string name="label_banners">Spanduk</string>
+    <string name="label_journal">Jurnal</string>
+    <string name="journal_hint">Catat pengingat untuk lain kali — apa yang perlu diantrekan, apa yang sedang kamu kerjakan.</string>
+    <string name="journal_placeholder">Tulis catatan...</string>
     <string name="profile_banners_empty">Belum ada spanduk yang didapat. Selesaikan Acara Musiman untuk mendapatkannya!</string>
     <string name="profile_banners_earned_on">Didapat %s</string>
+    <string name="profile_banners_unobtained">(Belum didapat)</string>
 </resources>

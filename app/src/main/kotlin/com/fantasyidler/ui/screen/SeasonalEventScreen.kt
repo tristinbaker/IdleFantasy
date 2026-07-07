@@ -53,17 +53,20 @@ import com.fantasyidler.R
 import com.fantasyidler.data.json.SeasonalMinigameConfig
 import com.fantasyidler.repository.SeasonalBountyTaskWithProgress
 import com.fantasyidler.ui.theme.GoldPrimary
+import com.fantasyidler.ui.viewmodel.CraftingViewModel
 import com.fantasyidler.ui.viewmodel.SeasonalEventViewModel
+import com.fantasyidler.ui.viewmodel.SkillsViewModel
 import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SeasonalEventScreen(
     viewModel: SeasonalEventViewModel = hiltViewModel(),
+    skillsViewModel: SkillsViewModel = hiltViewModel(),
+    craftingViewModel: CraftingViewModel = hiltViewModel(),
     onBack: () -> Unit = {},
     onNavigateToExpedition: (String) -> Unit = {},
     onNavigateToBoss: (String) -> Unit = {},
-    onNavigateToSkills: () -> Unit = {},
 ) {
     val state by viewModel.uiState.collectAsState()
     val snackbarHostState = remember { SnackbarHostState() }
@@ -126,12 +129,13 @@ fun SeasonalEventScreen(
                 SectionCard(title = stringResource(R.string.seasonal_bounty_board_title)) {
                     state.bountyTasks.forEachIndexed { index, taskProgress ->
                         BountyTaskRow(
-                            taskProgress = taskProgress,
-                            onClaim      = { viewModel.claimBountyTask(taskProgress.task.id) },
-                            onGo         = {
+                            taskProgress       = taskProgress,
+                            onClaim            = { viewModel.claimBountyTask(taskProgress.task.id) },
+                            onGo               = {
                                 if (taskProgress.task.type == "kill") event.expeditionDungeonKey?.let(onNavigateToExpedition)
-                                else onNavigateToSkills()
+                                else taskProgress.task.skill?.let(skillsViewModel::onSkillTapped)
                             },
+                            onCooldownExpired  = viewModel::refreshBountySlots,
                         )
                         if (index != state.bountyTasks.lastIndex) HorizontalDivider()
                     }
@@ -174,6 +178,11 @@ fun SeasonalEventScreen(
             }
         }
     }
+
+    SkillActivitySheet(
+        viewModel         = skillsViewModel,
+        craftingViewModel = craftingViewModel,
+    )
 }
 
 @Composable
@@ -192,6 +201,7 @@ private fun BountyTaskRow(
     taskProgress: SeasonalBountyTaskWithProgress,
     onClaim: () -> Unit,
     onGo: () -> Unit,
+    onCooldownExpired: () -> Unit,
 ) {
     val task = taskProgress.task
     Row(
@@ -212,16 +222,33 @@ private fun BountyTaskRow(
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         }
+        val cooldownUntilMs = taskProgress.cooldownUntilMs
         when {
-            taskProgress.claimed -> Text(
-                text  = stringResource(R.string.seasonal_claimed),
-                style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
+            cooldownUntilMs != null -> BountyCooldownRow(cooldownUntilMs, onCooldownExpired)
             taskProgress.progress >= task.amount -> Button(onClick = onClaim) { Text(stringResource(R.string.seasonal_claim)) }
             else -> TextButton(onClick = onGo) { Text(stringResource(R.string.seasonal_go)) }
         }
     }
+}
+
+@Composable
+private fun BountyCooldownRow(resumesAtMs: Long, onExpired: () -> Unit) {
+    var remainingMs by remember { mutableLongStateOf(resumesAtMs - System.currentTimeMillis()) }
+    LaunchedEffect(resumesAtMs) {
+        while (remainingMs > 0) {
+            delay(1_000L)
+            remainingMs = resumesAtMs - System.currentTimeMillis()
+        }
+        onExpired()
+    }
+    val totalSeconds = (remainingMs / 1_000L).coerceAtLeast(0L)
+    val minutes = totalSeconds / 60L
+    val seconds = totalSeconds % 60L
+    Text(
+        text  = stringResource(R.string.seasonal_bounty_cooldown, minutes, seconds),
+        style = MaterialTheme.typography.labelMedium,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+    )
 }
 
 @Composable
@@ -233,11 +260,11 @@ private fun MinigameCooldownRow(resumesAtMs: Long) {
             remainingMs = resumesAtMs - System.currentTimeMillis()
         }
     }
-    val totalMinutes = (remainingMs / 60_000L).coerceAtLeast(0L)
-    val hours   = totalMinutes / 60L
-    val minutes = totalMinutes % 60L
+    val totalSeconds = (remainingMs / 1_000L).coerceAtLeast(0L)
+    val minutes = totalSeconds / 60L
+    val seconds = totalSeconds % 60L
     Text(
-        text  = stringResource(R.string.carnival_cooldown, hours, minutes),
+        text  = stringResource(R.string.carnival_cooldown, minutes, seconds),
         style = MaterialTheme.typography.bodyMedium,
         color = MaterialTheme.colorScheme.onSurfaceVariant,
     )

@@ -102,7 +102,7 @@ fun MercantileScreen(
                     playerCoins   = state.coins,
                     isStarting    = state.startingSession,
                     sessionActive = state.anySessionActive,
-                    queueFull     = state.queueSize >= 3,
+                    queueFull     = state.queueSize >= state.maxQueueSize,
                     onStart       = { viewModel.startTradeRoute(route.id) },
                 )
                 HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
@@ -157,7 +157,7 @@ fun MercantileSheetContent(
                     playerCoins   = state.coins,
                     isStarting    = state.startingSession,
                     sessionActive = state.anySessionActive,
-                    queueFull     = state.queueSize >= 3,
+                    queueFull     = state.queueSize >= state.maxQueueSize,
                     onStart       = { viewModel.startTradeRoute(route.id) },
                 )
                 HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))

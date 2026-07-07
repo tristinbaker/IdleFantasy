@@ -167,7 +167,7 @@ fun SlayerScreen(
                 if (state.taskDungeons.isNotEmpty() && !state.taskIsStuck) {
                     OutlinedButton(
                         onClick  = viewModel::queueTaskDungeon,
-                        enabled  = state.queueSize < 3,
+                        enabled  = state.queueSize < state.maxQueueSize,
                         modifier = Modifier.fillMaxWidth(),
                     ) {
                         Text(stringResource(R.string.slayer_add_dungeon_to_queue))
@@ -244,6 +244,7 @@ fun SlayerScreen(
                 nextCostUnits        = state.nextForetelCostUnits,
                 inventory            = state.inventory,
                 queueSize            = state.queueSize,
+                maxQueueSize         = state.maxQueueSize,
                 onForetell           = viewModel::foretelTask,
                 onQueueTask          = viewModel::queueForetelledTaskDungeon,
             )
@@ -416,6 +417,7 @@ private fun ForetellSection(
     nextCostUnits: Int,
     inventory: Map<String, Int>,
     queueSize: Int,
+    maxQueueSize: Int,
     onForetell: () -> Unit,
     onQueueTask: (SlayerTask) -> Unit,
 ) {
@@ -461,7 +463,7 @@ private fun ForetellSection(
                         }
                         TextButton(
                             onClick  = { onQueueTask(task) },
-                            enabled  = queueSize < 3,
+                            enabled  = queueSize < maxQueueSize,
                         ) {
                             Text(stringResource(R.string.slayer_foretell_queue_btn))
                         }

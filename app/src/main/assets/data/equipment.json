@@ -1415,6 +1415,342 @@
       "mining": 85
     }
   },
+  "bronze_hammer": {
+    "name": "bronze_hammer",
+    "display_name": "Bronze Hammer",
+    "slot": "hammer",
+    "combat_style": null,
+    "description": "A bronze hammer for smithing.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "smithing_efficiency": 1.0,
+    "requirements": {
+      "smithing": 1
+    }
+  },
+  "iron_hammer": {
+    "name": "iron_hammer",
+    "display_name": "Iron Hammer",
+    "slot": "hammer",
+    "combat_style": null,
+    "description": "An iron hammer for smithing.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "smithing_efficiency": 1.25,
+    "requirements": {
+      "smithing": 15
+    }
+  },
+  "steel_hammer": {
+    "name": "steel_hammer",
+    "display_name": "Steel Hammer",
+    "slot": "hammer",
+    "combat_style": null,
+    "description": "A steel hammer for smithing.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "smithing_efficiency": 1.5,
+    "requirements": {
+      "smithing": 30
+    }
+  },
+  "mithril_hammer": {
+    "name": "mithril_hammer",
+    "display_name": "Mithril Hammer",
+    "slot": "hammer",
+    "combat_style": null,
+    "description": "A mithril hammer for smithing.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "smithing_efficiency": 1.75,
+    "requirements": {
+      "smithing": 55
+    }
+  },
+  "adamantite_hammer": {
+    "name": "adamantite_hammer",
+    "display_name": "Adamantite Hammer",
+    "slot": "hammer",
+    "combat_style": null,
+    "description": "An adamantite hammer for smithing.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "smithing_efficiency": 2.0,
+    "requirements": {
+      "smithing": 70
+    }
+  },
+  "runite_hammer": {
+    "name": "runite_hammer",
+    "display_name": "Runite Hammer",
+    "slot": "hammer",
+    "combat_style": null,
+    "description": "A runite hammer for smithing.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "smithing_efficiency": 2.25,
+    "requirements": {
+      "smithing": 85
+    }
+  },
+  "bronze_tinderbox": {
+    "name": "bronze_tinderbox",
+    "display_name": "Bronze Tinderbox",
+    "slot": "tinderbox",
+    "combat_style": null,
+    "description": "A bronze tinderbox for firemaking.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "firemaking_efficiency": 1.0,
+    "requirements": {
+      "firemaking": 1
+    }
+  },
+  "iron_tinderbox": {
+    "name": "iron_tinderbox",
+    "display_name": "Iron Tinderbox",
+    "slot": "tinderbox",
+    "combat_style": null,
+    "description": "An iron tinderbox for firemaking.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "firemaking_efficiency": 1.25,
+    "requirements": {
+      "firemaking": 15
+    }
+  },
+  "steel_tinderbox": {
+    "name": "steel_tinderbox",
+    "display_name": "Steel Tinderbox",
+    "slot": "tinderbox",
+    "combat_style": null,
+    "description": "A steel tinderbox for firemaking.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "firemaking_efficiency": 1.5,
+    "requirements": {
+      "firemaking": 30
+    }
+  },
+  "mithril_tinderbox": {
+    "name": "mithril_tinderbox",
+    "display_name": "Mithril Tinderbox",
+    "slot": "tinderbox",
+    "combat_style": null,
+    "description": "A mithril tinderbox for firemaking.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "firemaking_efficiency": 1.75,
+    "requirements": {
+      "firemaking": 55
+    }
+  },
+  "adamantite_tinderbox": {
+    "name": "adamantite_tinderbox",
+    "display_name": "Adamantite Tinderbox",
+    "slot": "tinderbox",
+    "combat_style": null,
+    "description": "An adamantite tinderbox for firemaking.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "firemaking_efficiency": 2.0,
+    "requirements": {
+      "firemaking": 70
+    }
+  },
+  "runite_tinderbox": {
+    "name": "runite_tinderbox",
+    "display_name": "Runite Tinderbox",
+    "slot": "tinderbox",
+    "combat_style": null,
+    "description": "A runite tinderbox for firemaking.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "firemaking_efficiency": 2.25,
+    "requirements": {
+      "firemaking": 85
+    }
+  },
+  "bronze_grappling_hook": {
+    "name": "bronze_grappling_hook",
+    "display_name": "Bronze Grappling Hook",
+    "slot": "grappling_hook",
+    "combat_style": null,
+    "description": "A bronze grappling hook for agility.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "agility_efficiency": 1.0,
+    "requirements": {
+      "agility": 1
+    }
+  },
+  "iron_grappling_hook": {
+    "name": "iron_grappling_hook",
+    "display_name": "Iron Grappling Hook",
+    "slot": "grappling_hook",
+    "combat_style": null,
+    "description": "An iron grappling hook for agility.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "agility_efficiency": 1.25,
+    "requirements": {
+      "agility": 15
+    }
+  },
+  "steel_grappling_hook": {
+    "name": "steel_grappling_hook",
+    "display_name": "Steel Grappling Hook",
+    "slot": "grappling_hook",
+    "combat_style": null,
+    "description": "A steel grappling hook for agility.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "agility_efficiency": 1.5,
+    "requirements": {
+      "agility": 30
+    }
+  },
+  "mithril_grappling_hook": {
+    "name": "mithril_grappling_hook",
+    "display_name": "Mithril Grappling Hook",
+    "slot": "grappling_hook",
+    "combat_style": null,
+    "description": "A mithril grappling hook for agility.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "agility_efficiency": 1.75,
+    "requirements": {
+      "agility": 55
+    }
+  },
+  "adamantite_grappling_hook": {
+    "name": "adamantite_grappling_hook",
+    "display_name": "Adamantite Grappling Hook",
+    "slot": "grappling_hook",
+    "combat_style": null,
+    "description": "An adamantite grappling hook for agility.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "agility_efficiency": 2.0,
+    "requirements": {
+      "agility": 70
+    }
+  },
+  "runite_grappling_hook": {
+    "name": "runite_grappling_hook",
+    "display_name": "Runite Grappling Hook",
+    "slot": "grappling_hook",
+    "combat_style": null,
+    "description": "A runite grappling hook for agility.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "agility_efficiency": 2.25,
+    "requirements": {
+      "agility": 85
+    }
+  },
+  "bronze_frying_pan": {
+    "name": "bronze_frying_pan",
+    "display_name": "Bronze Frying Pan",
+    "slot": "frying_pan",
+    "combat_style": null,
+    "description": "A bronze frying pan for cooking.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "cooking_efficiency": 1.0,
+    "requirements": {
+      "cooking": 1
+    }
+  },
+  "iron_frying_pan": {
+    "name": "iron_frying_pan",
+    "display_name": "Iron Frying Pan",
+    "slot": "frying_pan",
+    "combat_style": null,
+    "description": "An iron frying pan for cooking.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "cooking_efficiency": 1.25,
+    "requirements": {
+      "cooking": 15
+    }
+  },
+  "steel_frying_pan": {
+    "name": "steel_frying_pan",
+    "display_name": "Steel Frying Pan",
+    "slot": "frying_pan",
+    "combat_style": null,
+    "description": "A steel frying pan for cooking.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "cooking_efficiency": 1.5,
+    "requirements": {
+      "cooking": 30
+    }
+  },
+  "mithril_frying_pan": {
+    "name": "mithril_frying_pan",
+    "display_name": "Mithril Frying Pan",
+    "slot": "frying_pan",
+    "combat_style": null,
+    "description": "A mithril frying pan for cooking.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "cooking_efficiency": 1.75,
+    "requirements": {
+      "cooking": 55
+    }
+  },
+  "adamantite_frying_pan": {
+    "name": "adamantite_frying_pan",
+    "display_name": "Adamantite Frying Pan",
+    "slot": "frying_pan",
+    "combat_style": null,
+    "description": "An adamantite frying pan for cooking.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "cooking_efficiency": 2.0,
+    "requirements": {
+      "cooking": 70
+    }
+  },
+  "runite_frying_pan": {
+    "name": "runite_frying_pan",
+    "display_name": "Runite Frying Pan",
+    "slot": "frying_pan",
+    "combat_style": null,
+    "description": "A runite frying pan for cooking.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 0,
+    "cooking_efficiency": 2.25,
+    "requirements": {
+      "cooking": 85
+    }
+  },
   "bronze_axe": {
     "name": "bronze_axe",
     "display_name": "Bronze Axe",

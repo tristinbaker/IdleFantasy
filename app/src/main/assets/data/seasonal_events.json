@@ -13,7 +13,26 @@
         "target": "oak_log",
         "amount": 20,
         "display_name": "Bring firewood for the bonfire",
-        "hint": "Chop Oak Logs — Woodcutting"
+        "hint": "Chop Oak Logs — Woodcutting",
+        "skill": "woodcutting"
+      },
+      {
+        "id": "sunspire_kindling",
+        "type": "gather",
+        "target": "willow_log",
+        "amount": 25,
+        "display_name": "Gather kindling for the bonfire",
+        "hint": "Chop Willow Logs — Woodcutting",
+        "skill": "woodcutting"
+      },
+      {
+        "id": "sunspire_sunore",
+        "type": "gather",
+        "target": "gold_ore",
+        "amount": 15,
+        "display_name": "Mine gold to gild the sun-tower",
+        "hint": "Mine Gold Ore — Mining",
+        "skill": "mining"
       },
       {
         "id": "sunspire_draughts",
@@ -21,7 +40,26 @@
         "target": "strength_potion",
         "amount": 5,
         "display_name": "Brew Strength Potions",
-        "hint": "Herblore"
+        "hint": "Herblore",
+        "skill": "herblore"
+      },
+      {
+        "id": "sunspire_embers_brew",
+        "type": "craft",
+        "target": "attack_potion",
+        "amount": 5,
+        "display_name": "Brew Attack Potions for the solstice watch",
+        "hint": "Herblore",
+        "skill": "herblore"
+      },
+      {
+        "id": "sunspire_sunfire_arrows",
+        "type": "craft",
+        "target": "mithril_arrow",
+        "amount": 50,
+        "display_name": "Fletch arrows to hold back the wisps",
+        "hint": "Fletching",
+        "skill": "fletching"
       },
       {
         "id": "sunspire_wisps",
@@ -30,17 +68,34 @@
         "amount": 15,
         "display_name": "Drive off Sun Wisps",
         "hint": "Only found in The Sunspire Expedition"
+      },
+      {
+        "id": "sunspire_hounds",
+        "type": "kill",
+        "target": "ember_hound",
+        "amount": 10,
+        "display_name": "Drive off Ember Hounds",
+        "hint": "Only found in The Sunspire Expedition"
+      },
+      {
+        "id": "sunspire_colossus",
+        "type": "kill",
+        "target": "cinder_colossus",
+        "amount": 3,
+        "display_name": "Topple Cinder Colossi",
+        "hint": "Only found in The Sunspire Expedition — rare"
       }
     ],
+    "bounty_rotation_ms": 3600000,
     "expedition_dungeon_key": "sunspire",
     "boss_key": "sol_invictus",
     "minigame": {
       "id": "bonfire_rhythm",
       "display_name": "Bonfire Rhythm",
       "rounds": 8,
-      "hole_count": 6,
-      "hits_required": 5,
-      "visible_ms": 850,
+      "hole_count": 9,
+      "hits_required": 7,
+      "visible_ms": 500,
       "cooldown_ms": 3600000
     },
     "reward_tiers": [
@@ -49,6 +104,7 @@
         "description": "Sunspire Solstice 2026 banner"
       }
     ],
-    "banner_text": "Participated in the Sunspire Solstice 2026"
+    "banner_text": "Participated in the Sunspire Solstice 2026",
+    "banner_icon": "banner_summer"
   }
 }

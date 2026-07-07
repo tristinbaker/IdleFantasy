@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -41,6 +42,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -244,6 +246,7 @@ internal fun HomeSessionCard(
 @Composable
 internal fun QueueCard(
     queue: List<QueuedAction>,
+    maxQueueSize: Int,
     queueEndsAt: Long,
     context: android.content.Context,
     skillXp: Map<String, Long>,
@@ -259,7 +262,7 @@ internal fun QueueCard(
     ) {
         Column(Modifier.padding(16.dp)) {
             Text(
-                text  = stringResource(R.string.home_up_next, queue.size),
+                text  = stringResource(R.string.home_up_next, queue.size, maxQueueSize),
                 style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
@@ -690,6 +693,47 @@ internal fun RecentSessionsSheet(
         Spacer(Modifier.height(16.dp))
         OutlinedButton(onClick = onDismiss, modifier = Modifier.fillMaxWidth()) {
             Text(stringResource(R.string.btn_cancel))
+        }
+    }
+}
+
+@Composable
+internal fun JournalSheet(
+    notes: String,
+    onSave: (String) -> Unit,
+) {
+    var text by remember(notes) { mutableStateOf(notes) }
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 24.dp)
+            .padding(bottom = 40.dp),
+    ) {
+        Text(
+            text       = stringResource(R.string.label_journal),
+            style      = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+        )
+        Spacer(Modifier.height(4.dp))
+        Text(
+            text  = stringResource(R.string.journal_hint),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        Spacer(Modifier.height(12.dp))
+        OutlinedTextField(
+            value         = text,
+            onValueChange = { text = it },
+            modifier      = Modifier.fillMaxWidth().heightIn(min = 160.dp),
+            placeholder   = { Text(stringResource(R.string.journal_placeholder)) },
+        )
+        Spacer(Modifier.height(12.dp))
+        Button(
+            onClick  = { onSave(text) },
+            enabled  = text != notes,
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            Text(stringResource(R.string.btn_save))
         }
     }
 }

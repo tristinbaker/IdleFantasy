@@ -183,7 +183,7 @@ fun CarnivalScreen(
                 modifier = Modifier.fillMaxSize(),
             ) { page ->
                 when (page) {
-                    0 -> IdleGamesTab(state.skillLevels, state.tierBonus, state.queueSize, viewModel)
+                    0 -> IdleGamesTab(state.skillLevels, state.tierBonus, state.queueSize, state.maxQueueSize, viewModel)
                     1 -> ActiveGamesTab(state, viewModel)
                     2 -> PrizeShopTab(state, viewModel)
                 }
@@ -213,6 +213,7 @@ private fun IdleGamesTab(
     skillLevels: Map<String, Int>,
     tierBonus: Float,
     queueSize: Int,
+    maxQueueSize: Int,
     viewModel: CarnivalViewModel,
 ) {
     val context = LocalContext.current
@@ -270,7 +271,7 @@ private fun IdleGamesTab(
                     Spacer(Modifier.height(8.dp))
                     Button(
                         onClick  = { viewModel.queueIdleGame(game.activityKey, context.getString(game.titleRes)) },
-                        enabled  = queueSize < 3,
+                        enabled  = queueSize < maxQueueSize,
                         modifier = Modifier.fillMaxWidth(),
                     ) {
                         Text(stringResource(R.string.carnival_queue))

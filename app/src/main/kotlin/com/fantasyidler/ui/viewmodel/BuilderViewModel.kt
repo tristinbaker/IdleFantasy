@@ -32,6 +32,7 @@ data class BuilderUiState(
     val churchTier: Int = 0,
     val fairgroundsTier: Int = 0,
     val gardenTier: Int = 0,
+    val queueMasterTier: Int = 0,
     val snackbarMessage: String? = null,
 )
 
@@ -64,6 +65,7 @@ class BuilderViewModel @Inject constructor(
             churchTier        = flags.townBuildingTiers["church"] ?: 0,
             fairgroundsTier   = flags.townBuildingTiers["fairgrounds"] ?: 0,
             gardenTier        = flags.townBuildingTiers["garden"] ?: 0,
+            queueMasterTier   = flags.townBuildingTiers["queue_master"] ?: 0,
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), BuilderUiState())
 
@@ -74,6 +76,7 @@ class BuilderViewModel @Inject constructor(
                 "guild_hall"   -> uiState.value.guildHallTier
                 "fairgrounds"  -> uiState.value.fairgroundsTier
                 "garden"       -> uiState.value.gardenTier
+                "queue_master" -> uiState.value.queueMasterTier
                 else           -> uiState.value.churchTier
             }
             val def = gameData.townBuildings[buildingKey]

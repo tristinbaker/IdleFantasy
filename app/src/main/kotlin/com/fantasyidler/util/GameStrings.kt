@@ -164,6 +164,17 @@ fun Context.stringByName(name: String): String? {
 }
 
 // ---------------------------------------------------------------------------
+// Resolves a drawable resource by name at runtime (e.g. seasonal banner icons,
+// whose resource name is stored as a plain string in JSON/save data).
+// Returns null rather than throwing if the identifier does not exist.
+// ---------------------------------------------------------------------------
+
+fun Context.drawableByName(name: String): Int? {
+    val id = resources.getIdentifier(name, "drawable", packageName)
+    return if (id != 0) id else null
+}
+
+// ---------------------------------------------------------------------------
 // Shared title-case fallback
 // ---------------------------------------------------------------------------
 

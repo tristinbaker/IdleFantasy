@@ -13,11 +13,15 @@ data class SeasonalEventData(
     /** Subset of "bounty" | "expedition" | "boss" | "minigame". */
     val pillars: List<String>,
     @SerialName("bounty_tasks") val bountyTasks: List<SeasonalBountyTaskData> = emptyList(),
+    /** How long a Bounty Board slot waits after a claim before a new task rotates in. */
+    @SerialName("bounty_rotation_ms") val bountyRotationMs: Long = 3_600_000L,
     @SerialName("expedition_dungeon_key") val expeditionDungeonKey: String? = null,
     @SerialName("boss_key") val bossKey: String? = null,
     val minigame: SeasonalMinigameConfig? = null,
     @SerialName("reward_tiers") val rewardTiers: List<SeasonalRewardTierData> = emptyList(),
     @SerialName("banner_text") val bannerText: String,
+    /** Drawable resource name (e.g. "banner_summer") shown for this event on the Home card and Profile Banners tab. */
+    @SerialName("banner_icon") val bannerIcon: String? = null,
 ) {
     fun isActiveAt(nowMs: Long): Boolean = nowMs in startMs..endMs
 }
@@ -32,6 +36,8 @@ data class SeasonalBountyTaskData(
     @SerialName("display_name") val displayName: String,
     /** Short "where to do this" hint shown under the task, e.g. "Woodcutting" or "The Sunspire Expedition". */
     val hint: String,
+    /** Skills constant this task is done in (e.g. "woodcutting", "herblore"); null for "kill" tasks, which route via the expedition dungeon instead. */
+    val skill: String? = null,
 )
 
 /**

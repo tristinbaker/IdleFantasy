@@ -130,6 +130,21 @@ class TownRepository @Inject constructor(
         return duration
     }
 
+    /** Extra action queue slots bonus. */
+    fun extraQueueSlots(building: String, tier: Int): Int {
+        val bonuses = gameData.townBuildings[building]?.tiers?.getOrNull(tier - 1)?.bonuses ?: return 0
+        return bonuses["queue_slots"]?.toInt() ?: 0
+    }
+
+    /** Max action queue size (3 base + Queue Master tier). */
+    fun maxQueueSize(flags: PlayerFlags): Int {
+        var extraSlots = 0
+        flags.townBuildingTiers.forEach { buildingName, tier ->
+            extraSlots += extraQueueSlots(buildingName, tier)
+        }
+        return 3 + extraSlots
+    }
+
     // -------------------------------------------------------------------------
     // Upgrade action
     // -------------------------------------------------------------------------

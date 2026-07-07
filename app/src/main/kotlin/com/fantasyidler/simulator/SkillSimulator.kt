@@ -311,6 +311,8 @@ object SkillSimulator {
      * up to ~95% as the player's level overtakes the course requirement.
      *
      * Failed laps grant no XP and are tracked via [SessionFrame.success].
+     *
+     * @param toolEfficiency  grappling hook multiplier: 1.0 = base, 1.5 = +50% laps/min
      */
     fun simulateAgility(
         courseData: AgilityCourseData,
@@ -318,6 +320,7 @@ object SkillSimulator {
         agilityLevel: Int = 1,
         agilityPrestige: Int = 0,
         petBoostPct: Int = 0,
+        toolEfficiency: Float = 1.0f,
         petDropKey: String? = null,
         petDropChance: Double = 0.0,
         random: Random = Random.Default,
@@ -327,12 +330,13 @@ object SkillSimulator {
 
         val successRate = (0.80 + (agilityLevel - courseData.levelRequired) * 0.02)
             .coerceAtMost(0.95)
+        val lapsPerMinute = (LAPS_PER_MINUTE * toolEfficiency).roundToInt().coerceAtLeast(1)
 
         for (minute in 1..60) {
             val xpBefore    = currentXp
             val levelBefore = XpTable.levelForXp(currentXp)
 
-            val successfulLaps = (0 until LAPS_PER_MINUTE).count { random.nextDouble() < successRate }
+            val successfulLaps = (0 until lapsPerMinute).count { random.nextDouble() < successRate }
             val baseXp = successfulLaps * courseData.xpPerSuccess
             val xpGain = applyPetBoost(baseXp, petBoostPct)
 

@@ -41,6 +41,7 @@
     <string name="btn_deactivate">Deactiveren</string>
     <string name="btn_close">Sluiten</string>
     <string name="btn_back">Terug</string>
+    <string name="btn_save">Opslaan</string>
 
     <!-- ===== Common labels ===== -->
     <string name="label_level">Level</string>
@@ -276,6 +277,8 @@
     <string name="settings_profile_layout_tabs">Tabbladen</string>
     <string name="settings_recent_activity">Logboek recente activiteit</string>
     <string name="settings_recent_activity_desc">Knop Recente activiteit weergeven in de koptekst van het startscherm</string>
+    <string name="settings_journal_button">Dagboek-knop</string>
+    <string name="settings_journal_button_desc">Toon een zwevende Dagboek-knop op het startscherm om notities te maken</string>
     <string name="label_no_sessions_yet">Nog geen sessies voltooid.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -410,7 +413,7 @@
     <string name="home_welcome">Welkom terug, %1$s!</string>
     <string name="home_adventurer">Avonturier</string>
     <!-- Translator note: %1$d = queue size (always 3 max) -->
-    <string name="home_up_next">Volgende (%1$d/3)</string>
+    <string name="home_up_next">Volgende (%1$d/%2$d)</string>
     <!-- Translator note: %1$s = formatted duration string (e.g. "2h 15m") -->
     <string name="home_queue_ends_in">Wachtrij eindigt over %1$s</string>
     <string name="queue_item_qty">×%1$d</string>
@@ -1010,7 +1013,7 @@
     <string name="bone_altar_cape_awarded">Gebedscape verdiend!</string>
     <string name="slayer_add_dungeon_to_queue">Kerker aan wachtrij toevoegen</string>
     <string name="slayer_queue_added">Toegevoegd aan wachtrij: %1$s.</string>
-    <string name="slayer_queue_full">Wachtrij is vol (3/3).</string>
+    <string name="slayer_queue_full">Wachtrij is vol.</string>
     <string name="slayer_foretell_title">Foretell Future Tasks</string>
     <string name="slayer_foretell_desc">Pre-assign upcoming Slayer tasks by paying bones. They are assigned automatically when your current task is completed.</string>
     <string name="slayer_foretell_queue_empty">No tasks queued.</string>
@@ -1090,14 +1093,20 @@
         <item quantity="one">+%1$d extra akker</item>
         <item quantity="other">+%1$d extra akkers</item>
     </plurals>
+    <string name="town_building_queue_master_name">Wachtrijmeester</string>
+    <plurals name="town_queue_master_bonus">
+        <item quantity="zero">Nog geen extra wachtrijplekken</item>
+        <item quantity="one">+%1$d extra wachtrijplek</item>
+        <item quantity="other">+%1$d extra wachtrijplekken</item>
+    </plurals>
     <string name="achievement_town_first_upgrade_name">Eerste Renovatie</string>
     <string name="achievement_town_first_upgrade_desc">Verbeter een stadsgebouw voor de eerste keer</string>
     <string name="achievement_town_all_tier1_name">Stadsverbeteraar</string>
-    <string name="achievement_town_all_tier1_desc">Verbeter alle vijf stadsgebouwen naar minimaal Rang 1</string>
+    <string name="achievement_town_all_tier1_desc">Verbeter alle zes stadsgebouwen naar minimaal Rang 1</string>
     <string name="achievement_town_one_maxed_name">Meesterbouwer</string>
     <string name="achievement_town_one_maxed_desc">Verbeter een stadsgebouw naar het maximum</string>
     <string name="achievement_town_all_maxed_name">Legendarische Stad</string>
-    <string name="achievement_town_all_maxed_desc">Verbeter alle vijf stadsgebouwen naar het maximum</string>
+    <string name="achievement_town_all_maxed_desc">Verbeter alle zes stadsgebouwen naar het maximum</string>
     <string name="achievement_tower_first_floor_name">First Step</string>
     <string name="achievement_tower_first_floor_desc">Clear your first Infinite Tower floor</string>
     <string name="achievement_tower_floor_10_name">Tower Initiate</string>
@@ -1200,7 +1209,7 @@
     <string name="carnival_ticket_cost">%1$d loten</string>
     <string name="carnival_redeem">Inwisselen</string>
     <string name="carnival_queue_added">Toegevoegd aan wachtrij: %1$s.</string>
-    <string name="carnival_queue_full">Wachtrij is vol (3/3).</string>
+    <string name="carnival_queue_full">Wachtrij is vol.</string>
     <string name="carnival_ring_won">Raak! +%1$d loten</string>
     <string name="carnival_ring_missed">Doel gemist!</string>
     <string name="carnival_hammer_perfect">Perfecte slag! +%1$d loten</string>
@@ -1263,7 +1272,7 @@
     <string name="bonus_combined_xp">Gecombineerde XP</string>
     <string name="bonus_yield">opbrengst</string>
     <string name="snackbar_added_to_queue">Toegevoegd aan wachtrij: %1$s.</string>
-    <string name="snackbar_queue_full">Wachtrij is vol (3/3).</string>
+    <string name="snackbar_queue_full">Wachtrij is vol.</string>
     <string name="home_not_enough_coins_repeat">Niet genoeg munten om %1$s te herhalen.</string>
     <string name="home_not_enough_materials_repeat">Niet genoeg materialen om %1$s te herhalen.</string>
     <string name="combat_start_failed">Kon niet starten: %1$s</string>
@@ -1448,6 +1457,7 @@
     <string name="seasonal_event_title">Seizoensevenement</string>
     <string name="seasonal_event_none">Er is momenteel geen evenement actief. Kom later terug!</string>
     <string name="seasonal_event_token_progress">%1$d / %2$d tokens</string>
+    <string name="seasonal_event_complete">Voltooid!</string>
     <string name="seasonal_bounty_board_title">Beloningsbord</string>
     <string name="seasonal_expedition_title">Expeditie</string>
     <string name="seasonal_boss_title">Raidboss</string>
@@ -1458,9 +1468,13 @@
     <string name="seasonal_minigame_failure">Misgetikt. Probeer opnieuw na de afkoeltijd.</string>
     <string name="seasonal_tap">Tik!</string>
     <string name="seasonal_claim">Claim</string>
-    <string name="seasonal_claimed">Geclaimd</string>
+    <string name="seasonal_bounty_cooldown">Nieuwe beloning in %1$dm %2$ds</string>
     <string name="seasonal_go">Ga</string>
     <string name="label_banners">Banieren</string>
+    <string name="label_journal">Dagboek</string>
+    <string name="journal_hint">Noteer herinneringen voor de volgende keer — wat je in de wachtrij wilt zetten, waar je naartoe werkt.</string>
+    <string name="journal_placeholder">Schrijf een notitie...</string>
     <string name="profile_banners_empty">Nog geen banieren verdiend. Voltooi een Seizoensevenement om er een te verdienen!</string>
     <string name="profile_banners_earned_on">Verdiend op %s</string>
+    <string name="profile_banners_unobtained">(Niet verdiend)</string>
 </resources>

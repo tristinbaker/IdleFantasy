@@ -480,7 +480,9 @@ class ShopViewModel @Inject constructor(
         if (equip != null) {
             return when (equip.slot) {
                 EquipSlot.WEAPON                                      -> "Weapons"
-                EquipSlot.PICKAXE, EquipSlot.AXE, EquipSlot.FISHING_ROD, EquipSlot.HOE -> "Tools"
+                EquipSlot.PICKAXE, EquipSlot.AXE, EquipSlot.FISHING_ROD, EquipSlot.HOE,
+                EquipSlot.HAMMER, EquipSlot.TINDERBOX, EquipSlot.GRAPPLING_HOOK,
+                EquipSlot.FRYING_PAN                                                   -> "Tools"
                 else                                                  -> "Armor"
             }
         }
@@ -503,7 +505,10 @@ class ShopViewModel @Inject constructor(
     companion object {
         const val XP_BOOST_KEY = "xp_boost_48h"
 
-        private val TOOL_SLOTS = setOf(EquipSlot.PICKAXE, EquipSlot.AXE, EquipSlot.FISHING_ROD, EquipSlot.HOE)
+        private val TOOL_SLOTS = setOf(
+            EquipSlot.PICKAXE, EquipSlot.AXE, EquipSlot.FISHING_ROD, EquipSlot.HOE,
+            EquipSlot.HAMMER, EquipSlot.TINDERBOX, EquipSlot.GRAPPLING_HOOK, EquipSlot.FRYING_PAN,
+        )
 
         /**
          * Pure logic for computing which old equipment items to suggest selling.

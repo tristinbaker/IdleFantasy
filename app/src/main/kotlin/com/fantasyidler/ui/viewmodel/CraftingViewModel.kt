@@ -15,10 +15,12 @@ import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.GuildRepository
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.QuestRepository
+import com.fantasyidler.repository.SeasonalEventRepository
 import com.fantasyidler.repository.SessionRepository
 import com.fantasyidler.repository.WeeklyQuestRepository
 import com.fantasyidler.simulator.SkillSimulator
 import com.fantasyidler.simulator.XpTable
+import com.fantasyidler.util.toolEfficiency
 import kotlinx.serialization.serializer
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -138,6 +140,7 @@ class CraftingViewModel @Inject constructor(
     private val dailyQuestRepo: DailyQuestRepository,
     private val weeklyQuestRepo: WeeklyQuestRepository,
     private val guildRepo: GuildRepository,
+    private val seasonalEventRepo: SeasonalEventRepository,
     private val json: Json,
 ) : ViewModel() {
 
@@ -334,6 +337,13 @@ class CraftingViewModel @Inject constructor(
     fun setQuantity(qty: Int, max: Int) =
         _extra.update { it.copy(craftQuantity = qty.coerceIn(1, max.coerceAtLeast(1))) }
 
+    private fun craftToolEfficiency(recipe: CraftableRecipe, equipped: Map<String, String?>): Float =
+        when (recipe.skillName) {
+            Skills.SMITHING -> gameData.toolEfficiency(equipped[EquipSlot.HAMMER], EquipSlot.HAMMER, recipe.levelRequired)
+            Skills.COOKING  -> gameData.toolEfficiency(equipped[EquipSlot.FRYING_PAN], EquipSlot.FRYING_PAN, recipe.levelRequired)
+            else            -> 1.0f
+        }
+
     fun craft() {
         val state  = uiState.value          // combined state — has inventory
         val recipe = state.selectedRecipe ?: return
@@ -349,13 +359,14 @@ class CraftingViewModel @Inject constructor(
                 val perItemMs = SkillSimulator.sessionDurationMs(agility, craftFlags.skillPrestige[Skills.AGILITY] ?: 0) / 60
                 val totalOutput = qty * recipe.outputQty
                 val xpQueueMult = (if (craftFlags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * ChurchRepository.xpMultiplier(craftFlags)
+                val toolEff = craftToolEfficiency(recipe, json.decodeFromString(playerRepo.getOrCreatePlayer().equipped))
                 val action = QueuedAction(
                     skillName           = recipe.skillName,
                     activityKey         = recipe.key,
                     skillDisplayName    = recipe.skillName.replaceFirstChar { it.uppercase() },
                     qty                 = qty,
                     outputQty           = if (totalOutput != qty) totalOutput else 0,
-                    estimatedXpGain     = (qty * recipe.xpPerItem * xpQueueMult).toLong(),
+                    estimatedXpGain     = (qty * recipe.xpPerItem * xpQueueMult * toolEff).toLong(),
                     estimatedDurationMs = qty.toLong() * perItemMs,
                     catalystKey         = ashKey,
                 )
@@ -379,9 +390,11 @@ class CraftingViewModel @Inject constructor(
                 return@launch
             }
             val xpMap: Map<String, Long> = json.decodeFromString(player.skillXp)
+            val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
             val startXp     = xpMap[recipe.skillName] ?: 0L
             val levelBefore = XpTable.levelForXp(startXp)
-            val totalXpGain = (qty * recipe.xpPerItem).toInt()
+            val efficiency = craftToolEfficiency(recipe, equipped)
+            val totalXpGain = (qty * recipe.xpPerItem * efficiency).toInt()
             val xpAfter     = startXp + totalXpGain
             val levelAfter  = XpTable.levelForXp(xpAfter)
             val outputKey = if (ashKey != null && recipe.skillName == Skills.HERBLORE)
@@ -528,6 +541,18 @@ class CraftingViewModel @Inject constructor(
             }
             if (matches)
                 fills += QuestFillSuggestion(context.getString(R.string.quest_fill_guild), ceilDiv(remaining, recipe.outputQty))
+        }
+
+        // Seasonal Event Bounty Board
+        seasonalEventRepo.activeEvent()?.let { event ->
+            for (taskProgress in seasonalEventRepo.bountyTasksWithProgress(event, flags)) {
+                if (taskProgress.cooldownUntilMs != null) continue
+                val task = taskProgress.task
+                if (task.type != "craft" || task.target != recipe.outputKey) continue
+                val remaining = task.amount - taskProgress.progress
+                if (remaining > 0)
+                    fills += QuestFillSuggestion(event.displayName, ceilDiv(remaining, recipe.outputQty))
+            }
         }
 
         return fills.sortedBy { it.qty }

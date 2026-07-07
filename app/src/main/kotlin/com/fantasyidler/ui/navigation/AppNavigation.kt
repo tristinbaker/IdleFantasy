@@ -284,7 +284,6 @@ fun AppNavigation(
                     onBack               = { if (navController.currentBackStackEntry == entry) navController.popBackStack() },
                     onNavigateToExpedition = { key -> navController.navigate(Screen.Combat.presetDungeonRoute(key)) },
                     onNavigateToBoss       = { key -> navController.navigate(Screen.Combat.presetBossRoute(key)) },
-                    onNavigateToSkills     = { navController.navigate(Screen.Skills.route) },
                 )
             }
         }

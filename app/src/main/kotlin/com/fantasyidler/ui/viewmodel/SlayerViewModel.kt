@@ -44,8 +44,9 @@ data class SlayerUiState(
     val taskDungeonKeys: List<String> = emptyList(),
     /** True when the active task's enemy only exists in expedition dungeons the player hasn't unlocked. */
     val taskIsStuck: Boolean = false,
-    /** Current player session queue size (max 3). */
+    /** Current player session queue size. */
     val queueSize: Int = 0,
+    val maxQueueSize: Int = 3,
     val unlockedDungeons: Set<String> = emptySet(),
     val inventory: Map<String, Int> = emptyMap(),
     val skillLevels: Map<String, Int> = emptyMap(),
@@ -124,6 +125,7 @@ class SlayerViewModel @Inject constructor(
                 taskDungeonKeys       = taskDungeonKeys,
                 taskIsStuck           = taskIsStuck,
                 queueSize             = flags.sessionQueue.size,
+                maxQueueSize          = playerRepo.maxQueueSize(flags),
                 unlockedDungeons      = unlockedDungeons,
                 inventory             = inventory,
                 skillLevels           = levels,

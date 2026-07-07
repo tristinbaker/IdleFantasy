@@ -1291,6 +1291,270 @@
     "xp_per_item": 60,
     "time_per_item": 60
   },
+  "bronze_hammer": {
+    "type": "tool",
+    "display_name": "Bronze Hammer",
+    "level_required": 1,
+    "materials": {
+      "bronze_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 10,
+    "time_per_item": 60
+  },
+  "iron_hammer": {
+    "type": "tool",
+    "display_name": "Iron Hammer",
+    "level_required": 15,
+    "materials": {
+      "iron_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 20,
+    "time_per_item": 60
+  },
+  "steel_hammer": {
+    "type": "tool",
+    "display_name": "Steel Hammer",
+    "level_required": 30,
+    "materials": {
+      "steel_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 30,
+    "time_per_item": 60
+  },
+  "mithril_hammer": {
+    "type": "tool",
+    "display_name": "Mithril Hammer",
+    "level_required": 55,
+    "materials": {
+      "mithril_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 40,
+    "time_per_item": 60
+  },
+  "adamantite_hammer": {
+    "type": "tool",
+    "display_name": "Adamantite Hammer",
+    "level_required": 70,
+    "materials": {
+      "adamantite_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 50,
+    "time_per_item": 60
+  },
+  "runite_hammer": {
+    "type": "tool",
+    "display_name": "Runite Hammer",
+    "level_required": 85,
+    "materials": {
+      "runite_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 60,
+    "time_per_item": 60
+  },
+  "bronze_tinderbox": {
+    "type": "tool",
+    "display_name": "Bronze Tinderbox",
+    "level_required": 1,
+    "materials": {
+      "bronze_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 10,
+    "time_per_item": 60
+  },
+  "iron_tinderbox": {
+    "type": "tool",
+    "display_name": "Iron Tinderbox",
+    "level_required": 15,
+    "materials": {
+      "iron_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 20,
+    "time_per_item": 60
+  },
+  "steel_tinderbox": {
+    "type": "tool",
+    "display_name": "Steel Tinderbox",
+    "level_required": 30,
+    "materials": {
+      "steel_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 30,
+    "time_per_item": 60
+  },
+  "mithril_tinderbox": {
+    "type": "tool",
+    "display_name": "Mithril Tinderbox",
+    "level_required": 55,
+    "materials": {
+      "mithril_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 40,
+    "time_per_item": 60
+  },
+  "adamantite_tinderbox": {
+    "type": "tool",
+    "display_name": "Adamantite Tinderbox",
+    "level_required": 70,
+    "materials": {
+      "adamantite_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 50,
+    "time_per_item": 60
+  },
+  "runite_tinderbox": {
+    "type": "tool",
+    "display_name": "Runite Tinderbox",
+    "level_required": 85,
+    "materials": {
+      "runite_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 60,
+    "time_per_item": 60
+  },
+  "bronze_grappling_hook": {
+    "type": "tool",
+    "display_name": "Bronze Grappling Hook",
+    "level_required": 1,
+    "materials": {
+      "bronze_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 10,
+    "time_per_item": 60
+  },
+  "iron_grappling_hook": {
+    "type": "tool",
+    "display_name": "Iron Grappling Hook",
+    "level_required": 15,
+    "materials": {
+      "iron_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 20,
+    "time_per_item": 60
+  },
+  "steel_grappling_hook": {
+    "type": "tool",
+    "display_name": "Steel Grappling Hook",
+    "level_required": 30,
+    "materials": {
+      "steel_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 30,
+    "time_per_item": 60
+  },
+  "mithril_grappling_hook": {
+    "type": "tool",
+    "display_name": "Mithril Grappling Hook",
+    "level_required": 55,
+    "materials": {
+      "mithril_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 40,
+    "time_per_item": 60
+  },
+  "adamantite_grappling_hook": {
+    "type": "tool",
+    "display_name": "Adamantite Grappling Hook",
+    "level_required": 70,
+    "materials": {
+      "adamantite_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 50,
+    "time_per_item": 60
+  },
+  "runite_grappling_hook": {
+    "type": "tool",
+    "display_name": "Runite Grappling Hook",
+    "level_required": 85,
+    "materials": {
+      "runite_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 60,
+    "time_per_item": 60
+  },
+  "bronze_frying_pan": {
+    "type": "tool",
+    "display_name": "Bronze Frying Pan",
+    "level_required": 1,
+    "materials": {
+      "bronze_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 10,
+    "time_per_item": 60
+  },
+  "iron_frying_pan": {
+    "type": "tool",
+    "display_name": "Iron Frying Pan",
+    "level_required": 15,
+    "materials": {
+      "iron_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 20,
+    "time_per_item": 60
+  },
+  "steel_frying_pan": {
+    "type": "tool",
+    "display_name": "Steel Frying Pan",
+    "level_required": 30,
+    "materials": {
+      "steel_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 30,
+    "time_per_item": 60
+  },
+  "mithril_frying_pan": {
+    "type": "tool",
+    "display_name": "Mithril Frying Pan",
+    "level_required": 55,
+    "materials": {
+      "mithril_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 40,
+    "time_per_item": 60
+  },
+  "adamantite_frying_pan": {
+    "type": "tool",
+    "display_name": "Adamantite Frying Pan",
+    "level_required": 70,
+    "materials": {
+      "adamantite_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 50,
+    "time_per_item": 60
+  },
+  "runite_frying_pan": {
+    "type": "tool",
+    "display_name": "Runite Frying Pan",
+    "level_required": 85,
+    "materials": {
+      "runite_bar": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 60,
+    "time_per_item": 60
+  },
   "bronze_axe": {
     "type": "tool",
     "display_name": "Bronze Axe",

@@ -20,6 +20,7 @@ import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.SessionRepository
 import com.fantasyidler.repository.WorkerQueuedSessionStarter
 import com.fantasyidler.simulator.SkillSimulator
+import com.fantasyidler.util.toolEfficiency
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -116,9 +117,9 @@ class WorkerSkillsViewModel @Inject constructor(
                 workerQueue2          = flags.hiredWorker2?.sessionQueue ?: emptyList(),
                 hiredWorker           = flags.hiredWorker,
                 hiredWorker2          = flags.hiredWorker2,
-                miningEfficiency      = toolEfficiency(equipped[EquipSlot.PICKAXE],     EquipSlot.PICKAXE),
-                woodcuttingEfficiency = toolEfficiency(equipped[EquipSlot.AXE],         EquipSlot.AXE),
-                fishingEfficiency     = toolEfficiency(equipped[EquipSlot.FISHING_ROD], EquipSlot.FISHING_ROD),
+                miningEfficiency      = gameData.toolEfficiency(equipped[EquipSlot.PICKAXE],     EquipSlot.PICKAXE),
+                woodcuttingEfficiency = gameData.toolEfficiency(equipped[EquipSlot.AXE],         EquipSlot.AXE),
+                fishingEfficiency     = gameData.toolEfficiency(equipped[EquipSlot.FISHING_ROD], EquipSlot.FISHING_ROD),
                 sessionDurationMs     = currentWorker?.tier?.craftingSessionMs ?: agilityMs,
                 gatheringDurationMs   = tierDurationMs,
                 maxCraftQty           = currentWorker?.tier?.maxCraftQty ?: Int.MAX_VALUE,
@@ -552,17 +553,4 @@ class WorkerSkillsViewModel @Inject constructor(
     // Helpers
     // ------------------------------------------------------------------
 
-    private val TOOL_TIERS = listOf(1, 15, 30, 55, 70, 85)
-    private fun tierIndex(level: Int) = TOOL_TIERS.indexOfLast { it <= level }.coerceAtLeast(0)
-
-    private fun toolEfficiency(itemKey: String?, slot: String): Float {
-        if (itemKey == null) return 1.0f
-        val eq = gameData.equipment[itemKey] ?: return 1.0f
-        return when (slot) {
-            EquipSlot.PICKAXE     -> eq.miningEfficiency      ?: 1.0f
-            EquipSlot.AXE         -> eq.woodcuttingEfficiency ?: 1.0f
-            EquipSlot.FISHING_ROD -> eq.fishingEfficiency     ?: 1.0f
-            else                  -> 1.0f
-        }
-    }
 }

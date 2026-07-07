@@ -78,6 +78,7 @@ fun SettingsScreen(
     val themePreference        by viewModel.themePreference.collectAsState()
     val fontScale              by viewModel.fontScale.collectAsState()
     val showRecentActivityLog  by viewModel.showRecentActivityLog.collectAsState()
+    val showJournalButton      by viewModel.showJournalButton.collectAsState()
     val profileLayout          by viewModel.profileLayout.collectAsState()
     val backupFolderUri  by viewModel.backupFolderUri.collectAsState()
     val backupFrequency  by viewModel.backupFrequency.collectAsState()
@@ -322,6 +323,16 @@ fun SettingsScreen(
                     Switch(
                         checked         = showRecentActivityLog,
                         onCheckedChange = { viewModel.setShowRecentActivityLog(it) },
+                    )
+                }
+            )
+            SettingsRow(
+                title    = stringResource(R.string.settings_journal_button),
+                subtitle = stringResource(R.string.settings_journal_button_desc),
+                trailing = {
+                    Switch(
+                        checked         = showJournalButton,
+                        onCheckedChange = { viewModel.setShowJournalButton(it) },
                     )
                 }
             )

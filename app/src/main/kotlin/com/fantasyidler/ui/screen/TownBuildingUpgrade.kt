@@ -60,6 +60,7 @@ fun BuildingUpgradeCard(
                 "church"       -> R.string.town_building_church_name
                 "fairgrounds"  -> R.string.town_building_fairgrounds_name
                 "garden"       -> R.string.town_building_garden_name
+                "queue_master" -> R.string.town_building_queue_master_name
                 else           -> R.string.town_upgrade_section_title
             }
             Text(
@@ -171,6 +172,10 @@ fun buildingBonusText(buildingKey: String, tier: Int, townRepo: TownRepository):
     "garden" -> {
         val extraPlots = townRepo.extraFarmPlots("garden", tier)
         pluralStringResource(R.plurals.town_garden_bonus, extraPlots, extraPlots)
+    }
+    "queue_master" -> {
+        val extraSlots = townRepo.extraQueueSlots("queue_master", tier)
+        pluralStringResource(R.plurals.town_queue_master_bonus, extraSlots, extraSlots)
     }
     else -> ""
 }

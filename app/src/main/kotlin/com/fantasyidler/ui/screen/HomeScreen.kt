@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.screen
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,6 +18,7 @@ import androidx.compose.material.icons.filled.Group
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.EditNote
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.Shield
@@ -28,6 +30,7 @@ import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.rememberModalBottomSheetState
 import com.fantasyidler.data.model.RecentSession
+import com.fantasyidler.util.drawableByName
 import com.fantasyidler.util.toTitleCase
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -62,6 +65,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -463,6 +467,23 @@ fun HomeScreen(
         }
     }
 
+    if (state.journalSheetOpen) {
+        val journalSheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+        ModalBottomSheet(
+            onDismissRequest = viewModel::dismissJournal,
+            sheetState       = journalSheetState,
+            dragHandle       = { BottomSheetDefaults.DragHandle() },
+        ) {
+            JournalSheet(
+                notes  = state.playerNotes,
+                onSave = { text ->
+                    viewModel.updateNotes(text)
+                    viewModel.dismissJournal()
+                },
+            )
+        }
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -480,6 +501,13 @@ fun HomeScreen(
             )
         },
         snackbarHost = { SnackbarHost(snackbarHostState) },
+        floatingActionButton = {
+            if (!state.isLoading && state.showJournalButton) {
+                FloatingActionButton(onClick = viewModel::openJournal) {
+                    Icon(Icons.Filled.EditNote, contentDescription = stringResource(R.string.label_journal))
+                }
+            }
+        },
     ) { padding ->
         if (state.isLoading) {
             Column(
@@ -624,33 +652,51 @@ fun HomeScreen(
 
             // ── Seasonal Event row ────────────────────────────────────────
             state.activeSeasonalEvent?.let { event ->
+                val eventComplete = event.tokens >= event.goal
                 Surface(
                     shape    = RoundedCornerShape(16.dp),
                     color    = MaterialTheme.colorScheme.surfaceVariant,
-                    modifier = Modifier.fillMaxWidth().clickable { onNavigateToSeasonalEvent() },
+                    modifier = if (eventComplete) Modifier.fillMaxWidth()
+                               else Modifier.fillMaxWidth().clickable { onNavigateToSeasonalEvent() },
                 ) {
-                    Column(Modifier.padding(12.dp)) {
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically,
-                        ) {
-                            Text(
-                                text       = event.displayName,
-                                style      = MaterialTheme.typography.titleSmall,
-                                fontWeight = FontWeight.Bold,
+                    Row(
+                        modifier = Modifier.padding(12.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        val bannerId = event.bannerIcon?.let { LocalContext.current.drawableByName(it) }
+                        if (bannerId != null) {
+                            Image(
+                                painter            = painterResource(bannerId),
+                                contentDescription = null,
+                                modifier           = Modifier.height(40.dp),
                             )
-                            Text(
-                                text  = stringResource(R.string.seasonal_event_token_progress, event.tokens, event.goal),
-                                style = MaterialTheme.typography.labelSmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            Spacer(Modifier.width(12.dp))
+                        }
+                        Column(Modifier.weight(1f)) {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically,
+                            ) {
+                                Text(
+                                    text       = event.displayName,
+                                    style      = MaterialTheme.typography.titleSmall,
+                                    fontWeight = FontWeight.Bold,
+                                )
+                                Text(
+                                    text  = if (eventComplete) stringResource(R.string.seasonal_event_complete)
+                                            else stringResource(R.string.seasonal_event_token_progress, event.tokens, event.goal),
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = if (eventComplete) GoldPrimary else MaterialTheme.colorScheme.onSurfaceVariant,
+                                    fontWeight = if (eventComplete) FontWeight.Bold else FontWeight.Normal,
+                                )
+                            }
+                            Spacer(Modifier.height(6.dp))
+                            LinearProgressIndicator(
+                                progress = { (event.tokens.toFloat() / event.goal).coerceIn(0f, 1f) },
+                                modifier = Modifier.fillMaxWidth().height(6.dp).clip(RoundedCornerShape(3.dp)),
                             )
                         }
-                        Spacer(Modifier.height(6.dp))
-                        LinearProgressIndicator(
-                            progress = { (event.tokens.toFloat() / event.goal).coerceIn(0f, 1f) },
-                            modifier = Modifier.fillMaxWidth().height(6.dp).clip(RoundedCornerShape(3.dp)),
-                        )
                     }
                 }
             }
@@ -712,6 +758,7 @@ fun HomeScreen(
             if (state.sessionQueue.isNotEmpty()) {
                 QueueCard(
                     queue               = state.sessionQueue,
+                    maxQueueSize        = state.maxQueueSize,
                     queueEndsAt         = state.queueEndsAt,
                     context             = context,
                     skillXp             = state.skillXp,
