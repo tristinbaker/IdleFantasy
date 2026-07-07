@@ -1,0 +1,3 @@
+• Fix: Magic weapons no longer land attacks once you run out of the rune your spell needs, and no longer generate free runes out of thin air when you fight without any
+• Fix: Repeating an Infinite Tower floor while other floors are queued ahead no longer adds a duplicate floor label to the queue
+• Fix: Prestiging a skill now immediately swaps out any equipped gear you no longer meet the level requirement for, instead of leaving it stuck equipped until you tap Equip Best Gear

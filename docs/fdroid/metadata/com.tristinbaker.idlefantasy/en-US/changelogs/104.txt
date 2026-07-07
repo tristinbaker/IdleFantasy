@@ -1,0 +1,9 @@
+• Fix: Infinite Tower's next floor button no longer locks up while a floor is already running, so floors can be queued back to back
+• Fix: Infinite Tower queue labels no longer show the wrong floor number after cancelling or losing a queued floor
+• Fix: Infinite Tower no longer awards Slayer XP from its enemies
+• Fix: Infinite Tower's rune check before starting a floor no longer overestimates how many runes you need
+• Fix: Skill capes are no longer suggested for sale by Sell Old Gear
+• Fix: Importing a save no longer shows a false "Invalid File" error, and workers no longer lose their in-progress or ready-to-collect job after a restore
+• Fix: Carnival active games no longer get stuck showing "Ready in 0h 0m"; the Play button now appears immediately when the cooldown ends
+• Fix: Carnival ticket estimates and cooldown times now correctly reflect Fairgrounds upgrades
+• Fix: Garden's tier progress and achievements now display correctly since it has fewer upgrade tiers than other town buildings

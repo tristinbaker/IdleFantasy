@@ -1,0 +1,64 @@
+{
+  "repo": {
+    "timestamp": 1783349997191
+  },
+  "packages": {
+    "com.tristinbaker.idlefantasy": {
+      "metadata": {
+        "lastUpdated": 1783349969929
+      },
+      "versions": {
+        "7c504c1080607dcae28ddd0ee5d8922fad2c8d4da0115e3d7510e016fb3c7c41": {
+          "added": 1783349969929,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_104.apk",
+            "sha256": "7c504c1080607dcae28ddd0ee5d8922fad2c8d4da0115e3d7510e016fb3c7c41",
+            "size": 5417146
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.10.12",
+            "versionCode": 104,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fix: Infinite Tower's next floor button no longer locks up while a floor is already running, so floors can be queued back to back\n• Fix: Infinite Tower queue labels no longer show the wrong floor number after cancelling or losing a queued floor\n• Fix: Infinite Tower no longer awards Slayer XP from its enemies\n• Fix: Infinite Tower's rune check before starting a floor no longer overestimates how many runes you need\n• Fix: Skill capes are no longer suggested for sale by Sell Old Gear\n• Fix: Impo"
+          }
+        }
+      }
+    }
+  }
+}

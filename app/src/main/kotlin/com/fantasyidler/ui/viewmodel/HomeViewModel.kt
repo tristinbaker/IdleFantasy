@@ -823,10 +823,22 @@ class HomeViewModel @Inject constructor(
             val frames = json.decodeFromString<List<SessionFrame>>(session.frames)
             val qty = if (session.skillName in craftingSkills)
                 frames.sumOf { it.kills } else 0
+            val flags = playerRepo.getFlags()
+            val nextTowerFloor = if (session.skillName == "tower") {
+                val lastQueuedFloor = flags.sessionQueue
+                    .lastOrNull { it.skillName == "tower" }
+                    ?.activityKey?.removePrefix("tower_floor_")?.toIntOrNull()
+                val runningFloor = lastQueuedFloor
+                    ?: session.activityKey.removePrefix("tower_floor_").toIntOrNull()
+                    ?: flags.towerCurrentFloor
+                runningFloor + 1
+            } else null
+            val activityKeyForRepeat = if (nextTowerFloor != null) "tower_floor_$nextTowerFloor" else session.activityKey
             val displayName = when (session.skillName) {
                 "combat"     -> gameData.dungeons[session.activityKey]?.displayName ?: session.activityKey
                 "boss"       -> gameData.bosses[session.activityKey]?.displayName ?: session.activityKey
                 "expedition" -> gameData.skillingDungeons[session.activityKey]?.displayName ?: session.activityKey
+                "tower"      -> "Infinite Tower: Floor $nextTowerFloor"
                 else         -> session.skillName.toTitleCase()
             }
             val coinCostForRepeat = if (session.skillName == Skills.MERCANTILE) {
@@ -849,7 +861,6 @@ class HomeViewModel @Inject constructor(
                 }
             }
             val isCombat = session.skillName == "combat" || session.skillName == "boss"
-            val flags = playerRepo.getFlags()
             val player = if (isCombat) playerRepo.getOrCreatePlayer() else null
             val weaponSlot = if (isCombat) {
                 val equipped: Map<String, String?> = player?.equipped?.let { json.decodeFromString(it) } ?: emptyMap()
@@ -861,7 +872,7 @@ class HomeViewModel @Inject constructor(
             val rawXpGain = frames.sumOf { it.xpGain }
             val enqueued = playerRepo.enqueueAction(QueuedAction(
                 skillName           = session.skillName,
-                activityKey         = session.activityKey,
+                activityKey         = activityKeyForRepeat,
                 skillDisplayName    = displayName,
                 qty                 = qty,
                 estimatedDurationMs = session.endsAt - session.startedAt,
@@ -874,6 +885,7 @@ class HomeViewModel @Inject constructor(
                 potionKey           = flags.activePotionKey,
                 coinRefund          = coinCostForRepeat,
             ))
+            if (enqueued && nextTowerFloor != null) reconcileTowerQueue()
             if (!enqueued) {
                 if (coinCostForRepeat > 0) playerRepo.addCoins(coinCostForRepeat)
                 if (materials != null) playerRepo.addItems(materials)

@@ -485,16 +485,8 @@ class CombatViewModel @Inject constructor(
                     availableArrows     = availableArrows,
                     runeKey             = simulatorRuneKey,
                     runeCostPerAttack   = simulatorRuneCost,
+                    availableRunes      = if (simulatorRuneKey != null) inventory[simulatorRuneKey] ?: 0 else Int.MAX_VALUE,
                 )
-
-                val totalAttacks = result.frames.size * CombatSimulator.TICKS_PER_FRAME
-
-                // Consume magic runes upfront; reclaim is applied at collect time from frame data
-                if (simulatorRuneKey != null && totalAttacks > 0) {
-                    val runesNeeded    = totalAttacks * simulatorRuneCost
-                    val runesToConsume = minOf(runesNeeded, inventory[simulatorRuneKey] ?: 0)
-                    if (runesToConsume > 0) playerRepo.consumeItems(mapOf(simulatorRuneKey to runesToConsume))
-                }
 
                 val framesJson = json.encodeToString(
                     json.serializersModule.serializer<List<SessionFrame>>(),
@@ -650,14 +642,9 @@ class CombatViewModel @Inject constructor(
                     blessingDefBonus   = ChurchRepository.defBonus(flags),
                     runeKey            = bossRuneKey,
                     runeCostPerAttack  = bossRuneCost,
+                    availableRunes     = if (bossRuneKey != null) inventory[bossRuneKey] ?: 0 else Int.MAX_VALUE,
                 )
 
-                val totalAttacks = bossFrames.size * CombatSimulator.TICKS_PER_FRAME
-                if (bossRuneKey != null && totalAttacks > 0) {
-                    val runesNeeded    = totalAttacks * bossRuneCost
-                    val runesToConsume = minOf(runesNeeded, inventory[bossRuneKey] ?: 0)
-                    if (runesToConsume > 0) playerRepo.consumeItems(mapOf(bossRuneKey to runesToConsume))
-                }
                 val framesJson = json.encodeToString(
                     json.serializersModule.serializer<List<SessionFrame>>(),
                     bossFrames,
@@ -753,6 +740,7 @@ class CombatViewModel @Inject constructor(
         val capes = playerRepo.applyMultiSkillResults(last.xpBySkill, loot, coinsGained, perSkillPetBoostPct = perSkillPetBoostPct)
         if (allFoodConsumed.isNotEmpty())   playerRepo.consumeItems(allFoodConsumed)
         if (allArrowsConsumed.isNotEmpty()) playerRepo.consumeItems(allArrowsConsumed)
+        if (allRunesConsumed.isNotEmpty())  playerRepo.consumeItems(allRunesConsumed)
         if (arrowsReclaimed.isNotEmpty())   playerRepo.addItems(arrowsReclaimed)
         if (runesReclaimed.isNotEmpty())    playerRepo.addItems(runesReclaimed)
         var petFoundName: String? = null
@@ -866,6 +854,7 @@ class CombatViewModel @Inject constructor(
         val capes = playerRepo.applyMultiSkillResults(totalXpPerSkill, allItems, coinsGained)
         if (allFoodConsumed.isNotEmpty())   playerRepo.consumeItems(allFoodConsumed)
         if (allArrowsConsumed.isNotEmpty()) playerRepo.consumeItems(allArrowsConsumed)
+        if (allRunesConsumed.isNotEmpty())  playerRepo.consumeItems(allRunesConsumed)
         if (arrowsReclaimed.isNotEmpty())   playerRepo.addItems(arrowsReclaimed)
         if (runesReclaimed.isNotEmpty())    playerRepo.addItems(runesReclaimed)
         if (!playerDied) {
@@ -936,13 +925,15 @@ class CombatViewModel @Inject constructor(
         val frames: List<SessionFrame> = json.decodeFromString(session.frames)
         val playerDied = frames.any { it.died }
 
-        val totalXpPerSkill = mutableMapOf<String, Long>()
-        val allItems        = mutableMapOf<String, Int>()
-        val allFoodConsumed = mutableMapOf<String, Int>()
+        val totalXpPerSkill  = mutableMapOf<String, Long>()
+        val allItems         = mutableMapOf<String, Int>()
+        val allFoodConsumed  = mutableMapOf<String, Int>()
+        val allRunesConsumed = mutableMapOf<String, Int>()
         for (frame in frames) {
-            for ((skill, xp) in frame.xpBySkill)    totalXpPerSkill[skill] = (totalXpPerSkill[skill] ?: 0L) + xp
-            for ((item,  qty) in frame.items)        allItems[item]         = (allItems[item] ?: 0) + qty
-            for ((food,  qty) in frame.foodConsumed) allFoodConsumed[food]  = (allFoodConsumed[food] ?: 0) + qty
+            for ((skill, xp) in frame.xpBySkill)     totalXpPerSkill[skill]  = (totalXpPerSkill[skill] ?: 0L) + xp
+            for ((item,  qty) in frame.items)         allItems[item]          = (allItems[item] ?: 0) + qty
+            for ((food,  qty) in frame.foodConsumed)  allFoodConsumed[food]   = (allFoodConsumed[food] ?: 0) + qty
+            for ((rune,  qty) in frame.runesConsumed) allRunesConsumed[rune]  = (allRunesConsumed[rune] ?: 0) + qty
         }
         if (playerDied) {
             totalXpPerSkill.replaceAll { _, xp -> maxOf(1L, (xp * 0.1).toLong()) }
@@ -951,14 +942,18 @@ class CombatViewModel @Inject constructor(
         }
         var coinsGained = allItems.remove("coins")?.toLong() ?: 0L
 
-        val flags         = playerRepo.getFlags()
-        val towerXpMult   = 1.0 + flags.towerXpBonusPct / 100.0
-        val towerCoinMult = 1.0 + flags.towerCoinBonusPct / 100.0
-        val xpForRepo     = totalXpPerSkill.mapValues { (_, xp) -> (xp * towerXpMult).toLong() }
-        coinsGained       = (coinsGained * towerCoinMult).toLong()
+        val flags          = playerRepo.getFlags()
+        val towerXpMult    = 1.0 + flags.towerXpBonusPct / 100.0
+        val towerCoinMult  = 1.0 + flags.towerCoinBonusPct / 100.0
+        val xpForRepo      = totalXpPerSkill.mapValues { (_, xp) -> (xp * towerXpMult).toLong() }
+        coinsGained        = (coinsGained * towerCoinMult).toLong()
+        val magicLevel     = playerRepo.getSkillLevels()[Skills.MAGIC] ?: 1
+        val runesReclaimed = allRunesConsumed.mapValues { (_, qty) -> (qty * reclaimChance(magicLevel)).toInt() }.filterValues { it > 0 }
 
         playerRepo.applyMultiSkillResults(xpForRepo, allItems, coinsGained)
-        if (allFoodConsumed.isNotEmpty()) playerRepo.consumeItems(allFoodConsumed)
+        if (allFoodConsumed.isNotEmpty())  playerRepo.consumeItems(allFoodConsumed)
+        if (allRunesConsumed.isNotEmpty()) playerRepo.consumeItems(allRunesConsumed)
+        if (runesReclaimed.isNotEmpty())   playerRepo.addItems(runesReclaimed)
 
         val floor        = session.activityKey.removePrefix("tower_floor_").toIntOrNull() ?: 1
         val updatedFlags = playerRepo.getFlags()
@@ -1173,6 +1168,7 @@ class CombatViewModel @Inject constructor(
         blessingDefBonus: Int = 0,
         runeKey: String? = null,
         runeCostPerAttack: Int = 1,
+        availableRunes: Int = Int.MAX_VALUE,
     ): List<SessionFrame> = CombatSimulator.simulateBoss(
         boss               = boss,
         bossKey            = bossKey,
@@ -1193,6 +1189,7 @@ class CombatViewModel @Inject constructor(
         blessingDefBonus   = blessingDefBonus,
         runeKey            = runeKey,
         runeCostPerAttack  = runeCostPerAttack,
+        availableRunes     = availableRunes,
     )
 
     // ------------------------------------------------------------------

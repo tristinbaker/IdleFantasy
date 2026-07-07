@@ -42,6 +42,7 @@ object CombatSimulator {
         availableArrows: Map<String, Int> = emptyMap(),
         runeKey: String? = null,
         runeCostPerAttack: Int = 1,
+        availableRunes: Int = Int.MAX_VALUE,
         random: Random = Random.Default,
     ): SkillSimulator.Result {
         val effAttack   = playerAttack   + (potionBonuses["attack"]   ?: 0)
@@ -69,6 +70,7 @@ object CombatSimulator {
         val arrowTiers   = availableArrows.entries.map { it.key to it.value }.toMutableList()
         var arrowTierIdx = 0
         var arrowsLeft   = arrowTiers.getOrNull(0)?.second ?: if (combatStyle == "ranged") 0 else Int.MAX_VALUE
+        var runesLeft    = availableRunes
 
         var runningTotal = 0L
         var carryoverEnemyKey: String? = null
@@ -155,8 +157,11 @@ object CombatSimulator {
                         } else 0
                     }
                     combatStyle == "magic" -> {
-                        if (runeKey != null) frameRunesUsed++
-                        if (rnd.nextDouble() < playerHitChance) rnd.nextInt(0, playerMaxHit + 1) else 0
+                        val canCast = runeKey == null || runesLeft >= runeCostPerAttack
+                        if (canCast) {
+                            if (runeKey != null) { runesLeft -= runeCostPerAttack; frameRunesUsed++ }
+                            if (rnd.nextDouble() < playerHitChance) rnd.nextInt(0, playerMaxHit + 1) else 0
+                        } else 0
                     }
                     else -> if (rnd.nextDouble() < playerHitChance) rnd.nextInt(0, playerMaxHit + 1) else 0
                 }
@@ -311,6 +316,7 @@ object CombatSimulator {
         blessingDefBonus: Int = 0,
         runeKey: String? = null,
         runeCostPerAttack: Int = 1,
+        availableRunes: Int = Int.MAX_VALUE,
         random: Random = Random.Default,
     ): List<SessionFrame> {
         val playerMax: Int
@@ -339,6 +345,7 @@ object CombatSimulator {
         val arrowTiers   = availableArrows.entries.map { it.key to it.value }.toMutableList()
         var arrowTierIdx = 0
         var arrowsLeft   = arrowTiers.getOrNull(0)?.second ?: if (combatStyle == "ranged") 0 else Int.MAX_VALUE
+        var runesLeft    = availableRunes
         val playerHitChance = when {
             effAtk > bossDefence -> 1.0 - bossDefence / (2.0 * effAtk.coerceAtLeast(1))
             else                 -> effAtk / (2.0 * bossDefence.coerceAtLeast(1))
@@ -391,8 +398,11 @@ object CombatSimulator {
                         } else 0
                     }
                     combatStyle == "magic" -> {
-                        if (runeKey != null) frameRunesUsed++
-                        if (rnd.nextDouble() < playerHitChance) rnd.nextInt(0, playerMax + 1) else 0
+                        val canCast = runeKey == null || runesLeft >= runeCostPerAttack
+                        if (canCast) {
+                            if (runeKey != null) { runesLeft -= runeCostPerAttack; frameRunesUsed++ }
+                            if (rnd.nextDouble() < playerHitChance) rnd.nextInt(0, playerMax + 1) else 0
+                        } else 0
                     }
                     else -> if (rnd.nextDouble() < playerHitChance) rnd.nextInt(0, playerMax + 1) else 0
                 }

@@ -522,6 +522,9 @@ class QueuedSessionStarter @Inject constructor(
                 val totalStrBonus = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[combatEquipped[it]]?.strengthBonus ?: 0 } + (weapon?.strengthBonus ?: 0)
                 val totalDefBonus = EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[combatEquipped[it]]?.defenseBonus  ?: 0 } + (weapon?.defenseBonus  ?: 0)
                 val totalMagicDmgBonus = if (combatStyle == "magic") EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[combatEquipped[it]]?.magicDamageBonus ?: 0 } + (weapon?.magicDamageBonus ?: 0) else 0
+                val staffCoversRune = combatStyle == "magic" && spell != null && (weapon?.infiniteRunes == "all" || weapon?.infiniteRunes == spell.runeType)
+                val queueRuneKey  = if (combatStyle == "magic" && spell != null && !staffCoversRune) spell.runeType else null
+                val queueRuneCost = spell?.runeCost ?: 1
                 val pm = flags.skillPrestige
                 val result = CombatSimulator.simulateDungeon(
                     dungeon             = dungeon,
@@ -544,13 +547,10 @@ class QueuedSessionStarter @Inject constructor(
                     equippedFood        = availableFood,
                     foodHealValues      = gameData.foodHealValues,
                     availableArrows     = availableArrows,
+                    runeKey             = queueRuneKey,
+                    runeCostPerAttack   = queueRuneCost,
+                    availableRunes      = if (queueRuneKey != null) inventory[queueRuneKey] ?: 0 else Int.MAX_VALUE,
                 )
-                val totalKills = result.frames.sumOf { it.kills }
-                if (combatStyle == "magic" && spell != null && totalKills > 0) {
-                    val staffCoversRune = weapon?.infiniteRunes == "all" || weapon?.infiniteRunes == spell.runeType
-                    if (!staffCoversRune)
-                        playerRepo.consumeItemsUnlocked(mapOf(spell.runeType to totalKills * spell.runeCost))
-                }
                 startSession(action, result, offline, backdateMs)
             }
             "tower" -> {
@@ -586,6 +586,9 @@ class QueuedSessionStarter @Inject constructor(
                 val availableFood    = inventory.filterKeys { it in equippedFoodKeys }
                     .mapValues { (k, v) -> (v - (prevFoodConsumed[k] ?: 0)).coerceAtLeast(0) }
                     .filterValues { it > 0 }
+                val staffCoversRune = combatStyle == "magic" && spell != null && (weapon?.infiniteRunes == "all" || weapon?.infiniteRunes == spell.runeType)
+                val towerRuneKey  = if (combatStyle == "magic" && spell != null && !staffCoversRune) spell.runeType else null
+                val towerRuneCost = spell?.runeCost ?: 1
                 val pm = flags.skillPrestige
                 val result = CombatSimulator.simulateDungeon(
                     dungeon             = dungeon,
@@ -608,13 +611,10 @@ class QueuedSessionStarter @Inject constructor(
                     equippedFood        = availableFood,
                     foodHealValues      = gameData.foodHealValues,
                     availableArrows     = availableArrows,
+                    runeKey             = towerRuneKey,
+                    runeCostPerAttack   = towerRuneCost,
+                    availableRunes      = if (towerRuneKey != null) inventory[towerRuneKey] ?: 0 else Int.MAX_VALUE,
                 )
-                val totalKills = result.frames.sumOf { it.kills }
-                if (combatStyle == "magic" && spell != null && totalKills > 0) {
-                    val staffCoversRune = weapon?.infiniteRunes == "all" || weapon?.infiniteRunes == spell.runeType
-                    if (!staffCoversRune)
-                        playerRepo.consumeItemsUnlocked(mapOf(spell.runeType to totalKills * spell.runeCost))
-                }
                 sessionRepo.startSession(
                     skillName         = "tower",
                     activityKey       = "tower_floor_$floor",

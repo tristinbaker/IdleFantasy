@@ -41,6 +41,7 @@ class PlayerRepository @Inject constructor(
     private val dailyQuestRepo: DailyQuestRepository,
     private val weeklyQuestRepo: WeeklyQuestRepository,
     private val buffNotifScheduler: BuffNotificationScheduler,
+    private val gameData: GameDataRepository,
 ) {
     val playerMutex = kotlinx.coroutines.sync.Mutex()
 
@@ -615,29 +616,81 @@ class PlayerRepository @Inject constructor(
         return true
     }
 
+    /** Bronze/starter fallback item granted to a slot if prestige invalidates its gear and nothing else in inventory qualifies. */
+    private val prestigeStarterGearForSlot = mapOf(
+        EquipSlot.WEAPON_ATK    to "bronze_sword",
+        EquipSlot.WEAPON_STR    to "bronze_scimitar",
+        EquipSlot.WEAPON_RANGED to "wooden_bow",
+        EquipSlot.WEAPON_MAGIC  to "basic_staff",
+        EquipSlot.HEAD          to "bronze_full_helmet",
+        EquipSlot.BODY          to "bronze_platebody",
+        EquipSlot.LEGS          to "bronze_platelegs",
+        EquipSlot.SHIELD        to "bronze_kiteshield",
+        EquipSlot.BOOTS         to "bronze_boots",
+        EquipSlot.PICKAXE       to "bronze_pickaxe",
+        EquipSlot.AXE           to "bronze_axe",
+        EquipSlot.FISHING_ROD   to "bronze_fishing_rod",
+        EquipSlot.HOE           to "bronze_hoe",
+    )
+
     /**
      * Resets [skillName] back to level 1 and increments its prestige count (max 3).
      * Guard: skill must be level 99 and prestige count must be < 3.
+     *
+     * Also re-validates every equipped slot against the new (lower) levels: gear that no
+     * longer meets its requirements is swapped for the best valid item in inventory, or a
+     * bronze/starter fallback, or unequipped if neither is available.
      */
-    suspend fun prestigeSkill(skillName: String) {
+    suspend fun prestigeSkill(skillName: String) = playerMutex.withLock {
         val player = getOrCreatePlayer()
         val levels: MutableMap<String, Int>  = json.decodeFromString(player.skillLevels)
         val xpMap:  MutableMap<String, Long> = json.decodeFromString(player.skillXp)
         val flags: PlayerFlags               = json.decodeFromString(player.flags)
 
         val currentPrestige = flags.skillPrestige[skillName] ?: 0
-        if ((levels[skillName] ?: 1) < 99 || currentPrestige >= 3) return
+        if ((levels[skillName] ?: 1) < 99 || currentPrestige >= 3) return@withLock
 
         levels[skillName] = 1
         xpMap[skillName]  = 0L
         val newPrestige = flags.skillPrestige.toMutableMap()
         newPrestige[skillName] = currentPrestige + 1
 
+        val inventory: MutableMap<String, Int> = json.decodeFromString(player.inventory)
+        val equipped: MutableMap<String, String?> = json.decodeFromString(player.equipped)
+        val allEquip = gameData.equipment
+
+        for (slot in EquipSlot.ALL) {
+            val currentKey = equipped[slot]
+            val currentValid = currentKey == null ||
+                (allEquip[currentKey]?.requirements?.all { (skill, lvl) -> (levels[skill] ?: 1) >= lvl } == true)
+            if (currentValid) continue
+
+            val style = EquipSlot.combatStyleForSlot(slot)
+            val bestFromInv = inventory.keys
+                .mapNotNull { k -> allEquip[k]?.let { eq -> k to eq } }
+                .filter { (_, eq) -> if (style != null) eq.slot == "weapon" && eq.combatStyle == style else eq.slot == slot }
+                .filter { (_, eq) -> eq.requirements.all { (skill, lvl) -> (levels[skill] ?: 1) >= lvl } }
+                .maxByOrNull { (_, eq) -> eq.attackBonus + eq.strengthBonus + eq.defenseBonus }
+                ?.first
+
+            val starterKey = prestigeStarterGearForSlot[slot]
+            when {
+                bestFromInv != null -> equipped[slot] = bestFromInv
+                starterKey != null && allEquip[starterKey] != null -> {
+                    inventory[starterKey] = (inventory[starterKey] ?: 0) + 1
+                    equipped[slot] = starterKey
+                }
+                else -> equipped[slot] = null
+            }
+        }
+
         playerDao.upsert(
             player.copy(
                 skillLevels = json.encode<Map<String, Int>>(levels),
                 skillXp     = json.encode<Map<String, Long>>(xpMap),
                 flags       = json.encode<PlayerFlags>(flags.copy(skillPrestige = newPrestige)),
+                inventory   = json.encode<Map<String, Int>>(inventory),
+                equipped    = json.encode<Map<String, String?>>(equipped),
             )
         )
     }

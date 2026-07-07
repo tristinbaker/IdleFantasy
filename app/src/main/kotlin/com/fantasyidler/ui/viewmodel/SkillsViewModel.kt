@@ -920,7 +920,6 @@ class SkillsViewModel @Inject constructor(
                     ?.let { playerRepo.addItems(it) }
             }
             playerRepo.prestigeSkill(skillName)
-            grantStarterGearAfterPrestige(skillName)
             if (abandonedSession != null) queuedSessionStarter.startNextQueued()
         }
     }
@@ -928,55 +927,6 @@ class SkillsViewModel @Inject constructor(
     // ------------------------------------------------------------------
     // Helpers
     // ------------------------------------------------------------------
-
-    private suspend fun grantStarterGearAfterPrestige(prestigedSkill: String) {
-        val levels   = playerRepo.getSkillLevels()
-        val equipped = playerRepo.getEquipped().toMutableMap()
-        val allEquip = gameData.equipment
-
-        val starterForSlot = mapOf(
-            EquipSlot.WEAPON_ATK    to "bronze_sword",
-            EquipSlot.WEAPON_STR    to "bronze_scimitar",
-            EquipSlot.WEAPON_RANGED to "wooden_bow",
-            EquipSlot.WEAPON_MAGIC  to "basic_staff",
-            EquipSlot.HEAD          to "bronze_full_helmet",
-            EquipSlot.BODY          to "bronze_platebody",
-            EquipSlot.LEGS          to "bronze_platelegs",
-            EquipSlot.SHIELD        to "bronze_kiteshield",
-            EquipSlot.BOOTS         to "bronze_boots",
-        )
-
-        val toGrant = mutableMapOf<String, Int>()
-        for ((slot, starterKey) in starterForSlot) {
-            val currentKey = equipped[slot]
-            val currentValid = currentKey != null &&
-                (allEquip[currentKey]?.requirements?.all { (skill, lvl) -> (levels[skill] ?: 1) >= lvl } == true)
-            if (currentValid) continue
-
-            val style = EquipSlot.combatStyleForSlot(slot)
-            val inventory = playerRepo.getOrCreatePlayer().let {
-                json.decodeFromString<Map<String, Int>>(it.inventory)
-            }
-            val bestFromInv = inventory.keys
-                .mapNotNull { k -> allEquip[k]?.let { eq -> k to eq } }
-                .filter { (_, eq) ->
-                    if (style != null) eq.slot == "weapon" && eq.combatStyle == style else eq.slot == slot
-                }
-                .filter { (_, eq) -> eq.requirements.all { (skill, lvl) -> (levels[skill] ?: 1) >= lvl } }
-                .maxByOrNull { (_, eq) -> eq.attackBonus + eq.strengthBonus + eq.defenseBonus }
-                ?.first
-
-            if (bestFromInv != null) {
-                equipped[slot] = bestFromInv
-            } else if (allEquip[starterKey] != null) {
-                toGrant[starterKey] = (toGrant[starterKey] ?: 0) + 1
-                equipped[slot] = starterKey
-            }
-        }
-
-        if (toGrant.isNotEmpty()) playerRepo.addItems(toGrant)
-        playerRepo.updateEquipped(equipped)
-    }
 
     /** Sums qty already committed to the queue for each activityKey under [skillName]. */
     private fun reservedQty(queue: List<QueuedAction>, skillName: String): Map<String, Int> =
