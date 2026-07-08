@@ -70,6 +70,12 @@ class SeasonalEventViewModel @Inject constructor(
         viewModelScope.launch { seasonalEventRepo.claimBountyTask(taskId) }
     }
 
+    fun debugStopMinigameCooldown() {
+        viewModelScope.launch {
+            playerRepo.updateFlags(playerRepo.getFlags().copy(seasonalMinigameCooldownAt = 0L))
+        }
+    }
+
     /** Called by the Bounty Board's per-slot countdown once it reaches zero, so the new task appears live. */
     fun refreshBountySlots() {
         viewModelScope.launch { seasonalEventRepo.ensureBountySlotsRefreshed() }

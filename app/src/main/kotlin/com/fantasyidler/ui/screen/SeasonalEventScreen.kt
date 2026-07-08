@@ -49,6 +49,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.fantasyidler.BuildConfig
 import com.fantasyidler.R
 import com.fantasyidler.data.json.SeasonalMinigameConfig
 import com.fantasyidler.repository.SeasonalBountyTaskWithProgress
@@ -167,7 +168,10 @@ fun SeasonalEventScreen(
                 SectionCard(title = minigame.displayName) {
                     val now = System.currentTimeMillis()
                     if (state.minigameCooldownAt > now) {
-                        MinigameCooldownRow(state.minigameCooldownAt)
+                        MinigameCooldownRow(
+                            resumesAtMs   = state.minigameCooldownAt,
+                            onDebugFinish = viewModel::debugStopMinigameCooldown
+                        )
                     } else {
                         BonfireRhythmGame(
                             config   = minigame,
@@ -252,7 +256,7 @@ private fun BountyCooldownRow(resumesAtMs: Long, onExpired: () -> Unit) {
 }
 
 @Composable
-private fun MinigameCooldownRow(resumesAtMs: Long) {
+private fun MinigameCooldownRow(resumesAtMs: Long, onDebugFinish: () -> Unit) {
     var remainingMs by remember { mutableLongStateOf(resumesAtMs - System.currentTimeMillis()) }
     LaunchedEffect(resumesAtMs) {
         while (remainingMs > 0) {
@@ -268,6 +272,11 @@ private fun MinigameCooldownRow(resumesAtMs: Long) {
         style = MaterialTheme.typography.bodyMedium,
         color = MaterialTheme.colorScheme.onSurfaceVariant,
     )
+    if (BuildConfig.DEBUG) {
+        TextButton(onClick = onDebugFinish) {
+            Text("[Debug] Finish Now")
+        }
+    }
 }
 
 /**
