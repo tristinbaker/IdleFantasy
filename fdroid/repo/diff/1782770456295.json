@@ -1,13 +1,63 @@
 {
   "repo": {
-    "timestamp": 1783438971286
+    "timestamp": 1783510383261
   },
   "packages": {
     "com.tristinbaker.idlefantasy": {
       "metadata": {
-        "lastUpdated": 1783438944752
+        "lastUpdated": 1783510354756
       },
       "versions": {
+        "2a3fa2bb9f56a2f9bbb978c48795444a3b899b3564bff76642d03cde3bd4a051": {
+          "added": 1783510354756,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_107.apk",
+            "sha256": "2a3fa2bb9f56a2f9bbb978c48795444a3b899b3564bff76642d03cde3bd4a051",
+            "size": 5573860
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.11.1",
+            "versionCode": 107,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fix: Infinite Tower could land you on the wrong floor after queuing several floors and letting them finish while the app was closed, since offline catch-up could mis-order which completed floor counted as current and some floors could be skipped entirely; collection now correctly drains every backlogged floor in order\n• Fix: Equip Best Gear could equip a lower-tier gathering/crafting tool (like a bronze hammer) over a higher-tier one you owned (like an iron hammer), since the four newest tool "
+          }
+        },
         "656a320009c0176d7c817b1f0bdba4516c5673c8c5fe2d06d7cc47e14c69b64d": {
           "added": 1783438944752,
           "file": {
