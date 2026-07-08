@@ -906,7 +906,7 @@
     <string name="skill_slayer_name">Tueur</string>
     <string name="skill_slayer_desc">Recevez des missions du Maître Tueur en Ville.</string>
         <string name="builder_title">Atelier</string>
-    <string name="builder_card_desc">Améliorez l\'Auberge, le Guildhall et l\'Église</string>
+    <string name="builder_card_desc">Améliorez l\'Auberge, l'hôtel de ville et l\'Église</string>
     <string name="slayer_title">Maître Tueur</string>
     <string name="slayer_card_desc">Missions et récompenses pour les tueurs</string>
     <string name="slayer_desc">Complétez des missions pour gagner des XP et des points de Tueur. Dépensez vos points dans la boutique pour du matériel exclusif.</string>
