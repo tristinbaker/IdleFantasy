@@ -1319,7 +1319,7 @@
     <string name="armory_filter_accessories">Accessoires</string>
     <string name="armory_filter_tools">Outils</string>
     <string name="armory_sort_default">Par défaut</string>
-    <string name="armory_sort_attack">Attacque</string>
+    <string name="armory_sort_attack">Attaque</string>
     <string name="armory_sort_strength">Force</string>
     <string name="armory_sort_defense">Défense</string>
     <string name="armory_sort_requirement">Requis</string>
@@ -1397,22 +1397,22 @@
     <string name="boss_void_sovereign_desc">L\'entité primordiale derrière les failles du vide. Ancienne au-delà de toute mesure, elle considère les challengers mortels avec mépris.</string>
 
     <!-- ===== Infinite Tower ===== -->
-    <string name="tower_title">Tour de l'infinité</string>
+    <string name="tower_title">Tour de l\'infinité</string>
     <string name="tower_floor_label">étage %d</string>
     <string name="tower_best_floor">Meilleur : Étage %d</string>
-    <string name="tower_start_btn">Tenter l'étage %d</string>
+    <string name="tower_start_btn">Tenter l\'étage %d</string>
     <string name="tower_milestones">étapes:</string>
     <string name="tower_floor_cleared">Étage %d nettoyé !</string>
     <string name="tower_new_best">Nouveau record: étage %d!</string>
-    <string name="tower_death_reset">Tu es tombé à l'étage %d. Retour à l'étage 1.</string>
+    <string name="tower_death_reset">Tu es tombé à l\'étage %d. Retour à l\'étage 1.</string>
     <string name="tower_not_enough_runes">Pas assez de %1$s pour le nombre maximal d\'attaques possible.</string>
     <string name="tower_milestone_claim">Réclamer</string>
     <string name="tower_milestone_claimed">Réclamé</string>
     <string name="tower_enemies_this_floor">Ennemis</string>
     <string name="tower_enemy_strength">Puissance ennemie : %s%%</string>
-    <string name="tower_entry_card_desc">Des étages sans fin. Jusqu'où peux-tu grimper?</string>
-    <string name="tower_collect_prompt">Enregistrez votre parcours dans Tour de l'infinité</string>
-    <string name="tower_home_collect_hint">Ouvre l'écran « Tour » pour enregistrer cette partie</string>
+    <string name="tower_entry_card_desc">Des étages sans fin. Jusqu\'où peux-tu grimper?</string>
+    <string name="tower_collect_prompt">Enregistrez votre parcours dans Tour de l\'infinité</string>
+    <string name="tower_home_collect_hint">Ouvre l\'écran « Tour » pour enregistrer cette partie</string>
 
     <!-- ===== Seasonal Events ===== -->
     <string name="seasonal_event_title">Évènement saisonnier</string>
