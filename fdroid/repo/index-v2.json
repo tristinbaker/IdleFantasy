@@ -14,7 +14,7 @@
       }
     },
     "address": "https://idlefantasy.tristinbaker.xyz/fdroid/repo",
-    "timestamp": 1783510383261,
+    "timestamp": 1783598957389,
     "categories": {
       "Games": {
         "name": {
@@ -31,7 +31,7 @@
           "Games"
         ],
         "issueTracker": "https://github.com/tristinbaker/IdleFantasy/issues",
-        "lastUpdated": 1783510354756,
+        "lastUpdated": 1783598929665,
         "license": "GPL-3.0-only",
         "sourceCode": "https://github.com/tristinbaker/IdleFantasy",
         "screenshots": {
@@ -140,6 +140,56 @@
         "preferredSigner": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
       },
       "versions": {
+        "fd8fe131882cec07a210f98f1da340286a179c086dcfd56b56550172687025b3": {
+          "added": 1783598929665,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_108.apk",
+            "sha256": "fd8fe131882cec07a210f98f1da340286a179c086dcfd56b56550172687025b3",
+            "size": 5655772
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.11.2",
+            "versionCode": 108,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• New: added Brazilian Portuguese as a selectable language\n• Fix: the seasonal bounty to \"Fletch arrows to hold back the wisps\" didn't say which arrow type it needed, now clarifies it requires Mithril arrows\n• Updated Italian translation for v1.11.1 strings\n• Updated French translation for improved clarity\n• Fix: the Church blessing confirmation showed a \"bones available\" number that looked inflated because it was a weighted total (bigger bones count for more) rather than a plain item count; now"
+          }
+        },
         "2a3fa2bb9f56a2f9bbb978c48795444a3b899b3564bff76642d03cde3bd4a051": {
           "added": 1783510354756,
           "file": {
