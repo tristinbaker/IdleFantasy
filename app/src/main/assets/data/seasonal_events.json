@@ -57,7 +57,7 @@
         "type": "craft",
         "target": "mithril_arrow",
         "amount": 50,
-        "display_name": "Fletch arrows to hold back the wisps",
+        "display_name": "Fletch Mithril arrows to hold back the wisps",
         "hint": "Fletching",
         "skill": "fletching"
       },
