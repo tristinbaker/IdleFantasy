@@ -942,11 +942,11 @@
     <string name="slayer_queue_added">Ajouté à la file : %1$s.</string>
     <string name="slayer_queue_full">La file est pleine.</string>
     <string name="slayer_foretell_title">Anticiper les tâches futures</string>
-    <string name="slayer_foretell_desc">Attribuez à l'avance les prochaines tâches de Tueur en payant des os. Elles sont attribuées automatiquement lorsque votre tâche actuelle est terminée.</string>
+    <string name="slayer_foretell_desc">Attribuez à l\'avance les prochaines tâches de Tueur en payant des os. Elles sont attribuées automatiquement lorsque votre tâche actuelle est terminée.</string>
     <string name="slayer_foretell_queue_empty">Aucune tâche en attente.</string>
-    <string name="slayer_foretell_queue_btn">+ file d'attente</string>
-    <string name="slayer_foretell_queue_full">La file d'attente de prévision est pleine (3/3).</string>
-    <string name="slayer_foretell_not_enough_bones">Pas assez d'os (coût : %1$d os).</string>
+    <string name="slayer_foretell_queue_btn">+ file d\'attente</string>
+    <string name="slayer_foretell_queue_full">La file d\'attente de prévision est pleine (3/3).</string>
+    <string name="slayer_foretell_not_enough_bones">Pas assez d\'os (coût : %1$d os).</string>
     <string name="slayer_foretell_success">Tâche annoncée : %1$s !</string>
     <string name="slayer_foretell_btn">Prédire la prochaine tâche (%1$d os)</string>
     <string name="slayer_foretell_slot">Emplacement %1$d : %2$s</string>
@@ -1262,7 +1262,7 @@
     <string name="carnival_shell_missed">Faux ! La gemme était sous le gobelet %1$d.</string>
     <string name="carnival_shell_locked">Améliorez la kermesse au niveau 1 pour débloquer</string>
     <string name="carnival_higher_lower">Plus haut ou plus bas</string>
-    <string name="carnival_active_higher_desc">Devine si le prochain nombre sera plus grand ou plus petit que l'actuel.</string>
+    <string name="carnival_active_higher_desc">Devine si le prochain nombre sera plus grand ou plus petit que l\'actuel.</string>
     <string name="carnival_higher_lower_current">%1$d</string>
     <string name="carnival_higher_lower_score">%1$d correct (%2$d played)</string>
     <string name="carnival_higher_lower_round">Manche %1$d sur %2$d</string>
@@ -1307,7 +1307,7 @@
     <string name="home_not_enough_coins_repeat">Pas assez de pièces pour répéter %1$s.</string>
     <string name="home_not_enough_materials_repeat">Pas assez de matériaux pour répéter %1$s.</string>
     <string name="combat_start_failed">Impossible de démarrer: %1$s</string>
-    <string name="combat_select_spell">Choisis un sort avant d'entrer.</string>
+    <string name="combat_select_spell">Choisis un sort avant d\'entrer.</string>
     <string name="combat_spell_level_required">Besoin de %1$d magie pour %2$s.</string>
     <string name="guild_daily_reward_claimed">Récompense quotidienne récupérée !</string>
     <string name="armory_not_owned">Vous ne possédez pas cet objet.</string>
