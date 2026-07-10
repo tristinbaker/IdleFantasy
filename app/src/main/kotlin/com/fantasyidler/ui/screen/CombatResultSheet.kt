@@ -226,18 +226,23 @@ internal fun CombatResultSheet(
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
             for ((item, qty) in result.itemsGained) {
+                val isRare = item in result.rareItems
                 Row(
                     modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                 ) {
+                    val displayName = GameStrings.itemName(context, item)
                     Text(
-                        text  = GameStrings.itemName(context, item),
+                        text  = if (isRare) "🌟 $displayName" else displayName,
                         style = MaterialTheme.typography.bodyMedium,
+                        fontWeight = if (isRare) FontWeight.Bold else FontWeight.Normal,
+                        color = if (isRare) GoldPrimary else MaterialTheme.colorScheme.onSurface,
                     )
                     Text(
                         text  = "×$qty",
                         style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        color = if (isRare) GoldPrimary else MaterialTheme.colorScheme.onSurfaceVariant,
+                        fontWeight = if (isRare) FontWeight.Bold else FontWeight.Normal,
                     )
                 }
             }
