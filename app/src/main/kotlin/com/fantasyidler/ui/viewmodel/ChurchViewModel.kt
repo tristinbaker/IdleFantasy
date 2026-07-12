@@ -87,6 +87,8 @@ class ChurchViewModel @Inject constructor(
                     _extra.update { it.copy(snackbarMessage = context.getString(R.string.church_already_active)) }
                 is BlessingActivateResult.NotEnoughBones ->
                     _extra.update { it.copy(snackbarMessage = context.getString(R.string.church_not_enough_bones, result.needed)) }
+                is BlessingActivateResult.LevelTooLow ->
+                    _extra.update { it.copy(snackbarMessage = context.getString(R.string.church_locked_level, result.requiredLevel)) }
             }
         }
     }

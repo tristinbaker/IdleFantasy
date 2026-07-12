@@ -317,7 +317,7 @@ private fun BlessingRow(
         }
         Spacer(Modifier.width(12.dp))
         when {
-            isActive                      -> Button(onClick = onActivate) {
+            isActive && isUnlocked        -> Button(onClick = onActivate) {
                 Text(stringResource(R.string.btn_extend))
             }
             isUnlocked && !anyBlessingActive -> Button(onClick = onActivate) {

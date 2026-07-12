@@ -3,6 +3,7 @@ package com.fantasyidler.repository
 import com.fantasyidler.data.json.BlessingData
 import com.fantasyidler.data.json.BlessingType
 import com.fantasyidler.data.model.PlayerFlags
+import com.fantasyidler.data.model.Skills
 import javax.inject.Inject
 import javax.inject.Singleton
 import javax.inject.Provider
@@ -11,6 +12,7 @@ sealed class BlessingActivateResult {
     object Success : BlessingActivateResult()
     object AlreadyActive : BlessingActivateResult()
     data class NotEnoughBones(val needed: Int) : BlessingActivateResult()
+    data class LevelTooLow(val requiredLevel: Int) : BlessingActivateResult()
 }
 
 @Singleton
@@ -120,8 +122,13 @@ class ChurchRepository @Inject constructor(
         val active    = activeBlessing(flags)
         if (active != null && active.key != key) return@withLock BlessingActivateResult.AlreadyActive
         val blessing  = BY_KEY[key] ?: return@withLock BlessingActivateResult.AlreadyActive
-        val cost      = boneCostFor(blessing)
         val player    = playerRepo.getOrCreatePlayer()
+        val levels: Map<String, Int> = kotlinx.serialization.json.Json.decodeFromString(player.skillLevels)
+        val prayerLevel = levels[Skills.PRAYER] ?: 1
+        if (prayerLevel < blessing.prayerLevelRequired) {
+            return@withLock BlessingActivateResult.LevelTooLow(blessing.prayerLevelRequired)
+        }
+        val cost      = boneCostFor(blessing)
         val inventory: Map<String, Int> = kotlinx.serialization.json.Json.decodeFromString(player.inventory)
         if (totalBoneXp(inventory) < cost * BASE_BONE_XP) return@withLock BlessingActivateResult.NotEnoughBones(cost)
 
