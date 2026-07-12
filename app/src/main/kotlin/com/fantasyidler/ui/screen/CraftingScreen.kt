@@ -68,6 +68,8 @@ import com.fantasyidler.ui.viewmodel.CraftableRecipe
 import com.fantasyidler.ui.viewmodel.CraftingUiState
 import com.fantasyidler.ui.viewmodel.CraftingViewModel
 import com.fantasyidler.ui.viewmodel.QuestFillSuggestion
+import com.fantasyidler.ui.viewmodel.QuestCategory
+import androidx.compose.ui.draw.alpha
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatXp
 
@@ -222,6 +224,21 @@ private fun RecipeRow(
                         style    = MaterialTheme.typography.bodySmall,
                         color    = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
+                }
+                val questIndicators = state.recipeQuests[recipe.outputKey] ?: emptyList()
+                if (questIndicators.isNotEmpty()) {
+                    val categories = questIndicators.groupBy { it.category }
+                    val sortedCategories = categories.entries.sortedBy { it.key }
+                    sortedCategories.forEach { (category, indicators) ->
+                        val emoji = if (category == QuestCategory.DAILY) "⏰" else "📜"
+                        val isCompletable = indicators.any { it.isCompletable }
+                        val alpha = if (isCompletable) 1.0f else 0.38f
+                        Text(
+                            text     = " $emoji",
+                            style    = MaterialTheme.typography.bodyMedium,
+                            modifier = Modifier.alpha(alpha),
+                        )
+                    }
                 }
             }
             // Materials row

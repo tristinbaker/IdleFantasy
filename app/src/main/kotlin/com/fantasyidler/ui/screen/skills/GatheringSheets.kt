@@ -108,6 +108,9 @@ import com.fantasyidler.util.formatXp
 import com.fantasyidler.util.toCountdown
 import java.util.Locale
 import com.fantasyidler.ui.viewmodel.QuestFillSuggestion
+import com.fantasyidler.ui.viewmodel.QuestCategory
+import com.fantasyidler.ui.viewmodel.QuestIndicator
+import androidx.compose.ui.draw.alpha
 
 
 @Composable
@@ -120,6 +123,7 @@ internal fun MiningSheet(
     currentXp: Long = 0L,
     efficiency: Float = 1f,
     xpBonusMult: Float = 1f,
+    activeQuests: Map<String, List<QuestIndicator>> = emptyMap(),
     onSelect: (String) -> Unit,
 ) {
     val context = LocalContext.current
@@ -163,6 +167,7 @@ internal fun MiningSheet(
                         isStarting       = isStarting,
                         hasActiveSession = hasActiveSession,
                         isQueueFull      = isQueueFull,
+                        questIndicators  = activeQuests[key] ?: emptyList(),
                         onClick          = { selectedKey = key },
                     )
                 }
@@ -192,6 +197,7 @@ internal fun WoodcuttingSheet(
     currentXp: Long = 0L,
     efficiency: Float = 1f,
     xpBonusMult: Float = 1f,
+    activeQuests: Map<String, List<QuestIndicator>> = emptyMap(),
     onSelect: (String) -> Unit,
 ) {
     val context = LocalContext.current
@@ -229,6 +235,7 @@ internal fun WoodcuttingSheet(
                         isStarting       = isStarting,
                         hasActiveSession = hasActiveSession,
                         isQueueFull      = isQueueFull,
+                        questIndicators  = activeQuests[tree.logName] ?: emptyList(),
                         onClick          = { selectedKey = key },
                     )
                 }
@@ -258,6 +265,7 @@ internal fun FishingSheet(
     currentXp: Long = 0L,
     efficiency: Float = 1f,
     xpBonusMult: Float = 1f,
+    activeQuests: Map<String, List<QuestIndicator>> = emptyMap(),
     onSelect: (String) -> Unit,
 ) {
     val context = LocalContext.current
@@ -295,6 +303,7 @@ internal fun FishingSheet(
                         isStarting       = isStarting,
                         hasActiveSession = hasActiveSession,
                         isQueueFull      = isQueueFull,
+                        questIndicators  = activeQuests[key] ?: emptyList(),
                         onClick          = { selectedKey = key },
                     )
                 }
@@ -348,6 +357,7 @@ internal fun ActivityRow(
     isStarting: Boolean,
     hasActiveSession: Boolean,
     isQueueFull: Boolean,
+    questIndicators: List<QuestIndicator> = emptyList(),
     onClick: () -> Unit,
 ) {
     val queueBlocked = hasActiveSession && isQueueFull
@@ -360,7 +370,23 @@ internal fun ActivityRow(
         verticalAlignment     = Alignment.CenterVertically,
     ) {
         Column(modifier = Modifier.weight(1f)) {
-            Text(name, style = MaterialTheme.typography.bodyLarge)
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(name, style = MaterialTheme.typography.bodyLarge)
+                if (questIndicators.isNotEmpty()) {
+                    val categories = questIndicators.groupBy { it.category }
+                    val sortedCategories = categories.entries.sortedBy { it.key }
+                    sortedCategories.forEach { (category, indicators) ->
+                        val emoji = if (category == QuestCategory.DAILY) "⏰" else "📜"
+                        val isCompletable = indicators.any { it.isCompletable }
+                        val alpha = if (isCompletable) 1.0f else 0.38f
+                        Text(
+                            text     = " $emoji",
+                            style    = MaterialTheme.typography.bodyMedium,
+                            modifier = Modifier.alpha(alpha),
+                        )
+                    }
+                }
+            }
             Text(
                 text  = detail,
                 style = MaterialTheme.typography.bodySmall,

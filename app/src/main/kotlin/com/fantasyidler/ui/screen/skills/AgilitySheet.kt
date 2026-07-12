@@ -108,6 +108,7 @@ import com.fantasyidler.util.formatXp
 import com.fantasyidler.util.toCountdown
 import java.util.Locale
 import com.fantasyidler.ui.viewmodel.QuestFillSuggestion
+import com.fantasyidler.ui.viewmodel.QuestIndicator
 
 
 @Composable
@@ -119,6 +120,7 @@ internal fun AgilitySheet(
     sessionDurationMs: Long,
     currentXp: Long = 0L,
     xpBonusMult: Float = 1f,
+    activeQuests: Map<String, List<QuestIndicator>> = emptyMap(),
     onSelect: (String) -> Unit,
 ) {
     val context = LocalContext.current
@@ -157,6 +159,7 @@ internal fun AgilitySheet(
                         isStarting       = isStarting,
                         hasActiveSession = hasActiveSession,
                         isQueueFull      = isQueueFull,
+                        questIndicators  = activeQuests[key] ?: emptyList(),
                         onClick          = { selectedKey = key },
                     )
                 }

@@ -108,6 +108,9 @@ import com.fantasyidler.util.formatXp
 import com.fantasyidler.util.toCountdown
 import java.util.Locale
 import com.fantasyidler.ui.viewmodel.QuestFillSuggestion
+import com.fantasyidler.ui.viewmodel.QuestCategory
+import com.fantasyidler.ui.viewmodel.QuestIndicator
+import androidx.compose.ui.draw.alpha
 
 
 @Composable
@@ -122,6 +125,7 @@ internal fun RunecraftingSheet(
     currentXp: Long = 0L,
     tierMaxQty: Int = Int.MAX_VALUE,
     questFills: Map<String, List<QuestFillSuggestion>> = emptyMap(),
+    activeQuests: Map<String, List<QuestIndicator>> = emptyMap(),
 ) {
     val context = LocalContext.current
     var selectedKey by remember { mutableStateOf<String?>(null) }
@@ -187,7 +191,24 @@ internal fun RunecraftingSheet(
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Column(Modifier.weight(1f)) {
-                            Text(GameStrings.itemName(context, key), style = MaterialTheme.typography.bodyLarge)
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Text(GameStrings.itemName(context, key), style = MaterialTheme.typography.bodyLarge)
+                                val questIndicators = activeQuests[key] ?: emptyList()
+                                if (questIndicators.isNotEmpty()) {
+                                    val categories = questIndicators.groupBy { it.category }
+                                    val sortedCategories = categories.entries.sortedBy { it.key }
+                                    sortedCategories.forEach { (category, indicators) ->
+                                        val emoji = if (category == QuestCategory.DAILY) "⏰" else "📜"
+                                        val isCompletable = indicators.any { it.isCompletable }
+                                        val alpha = if (isCompletable) 1.0f else 0.38f
+                                        Text(
+                                            text     = " $emoji",
+                                            style    = MaterialTheme.typography.bodyMedium,
+                                            modifier = Modifier.alpha(alpha),
+                                        )
+                                    }
+                                }
+                            }
                             Text(
                                 text  = stringResource(R.string.skills_rune_desc, rune.xpPerRune.toInt(), rune.levelRequired),
                                 style = MaterialTheme.typography.bodySmall,

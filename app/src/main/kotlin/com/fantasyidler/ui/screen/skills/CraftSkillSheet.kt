@@ -108,6 +108,8 @@ import com.fantasyidler.util.formatXp
 import com.fantasyidler.util.toCountdown
 import java.util.Locale
 import com.fantasyidler.ui.viewmodel.QuestFillSuggestion
+import com.fantasyidler.ui.viewmodel.QuestCategory
+import androidx.compose.ui.draw.alpha
 
 
 @Composable
@@ -285,12 +287,29 @@ private fun CraftRecipeRow(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Column(Modifier.weight(1f)) {
-            Text(
-                text       = GameStrings.itemName(context, recipe.outputKey),
-                style      = MaterialTheme.typography.bodyLarge,
-                fontWeight = FontWeight.Medium,
-                color      = if (enabled) MaterialTheme.colorScheme.onSurface else dim,
-            )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text       = GameStrings.itemName(context, recipe.outputKey),
+                    style      = MaterialTheme.typography.bodyLarge,
+                    fontWeight = FontWeight.Medium,
+                    color      = if (enabled) MaterialTheme.colorScheme.onSurface else dim,
+                )
+                val questIndicators = craftState.recipeQuests[recipe.outputKey] ?: emptyList()
+                if (questIndicators.isNotEmpty()) {
+                    val categories = questIndicators.groupBy { it.category }
+                    val sortedCategories = categories.entries.sortedBy { it.key }
+                    sortedCategories.forEach { (category, indicators) ->
+                        val emoji = if (category == QuestCategory.DAILY) "⏰" else "📜"
+                        val isCompletable = indicators.any { it.isCompletable }
+                        val alpha = if (isCompletable) 1.0f else 0.38f
+                        Text(
+                            text     = " $emoji",
+                            style    = MaterialTheme.typography.bodyMedium,
+                            modifier = Modifier.alpha(alpha),
+                        )
+                    }
+                }
+            }
             if (recipe.outputQty > 1) {
                 Text(
                     text  = context.getString(R.string.crafting_per_craft, recipe.outputQty),

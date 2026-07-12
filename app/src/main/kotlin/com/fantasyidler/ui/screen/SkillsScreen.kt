@@ -251,6 +251,7 @@ fun SkillActivitySheet(
                     currentXp         = state.skillXp[Skills.MINING] ?: 0L,
                     efficiency        = state.miningEfficiency,
                     xpBonusMult       = state.xpBonusMult,
+                    activeQuests      = state.activeQuests,
                     onSelect          = { oreKey -> viewModel.startMiningSession(oreKey) },
                 )
                 is SheetState.Woodcutting -> WoodcuttingSheet(
@@ -262,6 +263,7 @@ fun SkillActivitySheet(
                     currentXp         = state.skillXp[Skills.WOODCUTTING] ?: 0L,
                     efficiency        = state.woodcuttingEfficiency,
                     xpBonusMult       = state.xpBonusMult,
+                    activeQuests      = state.activeQuests,
                     onSelect          = { treeKey -> viewModel.startWoodcuttingSession(treeKey) },
                 )
                 is SheetState.Fishing -> FishingSheet(
@@ -273,6 +275,7 @@ fun SkillActivitySheet(
                     currentXp         = state.skillXp[Skills.FISHING] ?: 0L,
                     efficiency        = state.fishingEfficiency,
                     xpBonusMult       = state.xpBonusMult,
+                    activeQuests      = state.activeQuests,
                     onSelect          = { fishKey -> viewModel.startFishingSession(fishKey) },
                 )
                 is SheetState.Agility -> AgilitySheet(
@@ -283,6 +286,7 @@ fun SkillActivitySheet(
                     sessionDurationMs = state.sessionDurationMs,
                     currentXp         = state.skillXp[Skills.AGILITY] ?: 0L,
                     xpBonusMult       = state.xpBonusMult,
+                    activeQuests      = state.activeQuests,
                     onSelect          = { courseKey -> viewModel.startAgilitySession(courseKey) },
                 )
                 is SheetState.Firemaking -> FiremakingSheet(
@@ -296,6 +300,7 @@ fun SkillActivitySheet(
                     onStart           = { logKey, qty -> viewModel.startFiremakingSession(logKey, qty) },
                     context           = context,
                     questFills        = sheet.questFills,
+                    activeQuests      = state.activeQuests,
                 )
                 is SheetState.Runecrafting -> RunecraftingSheet(
                     sheet             = sheet,
@@ -307,6 +312,7 @@ fun SkillActivitySheet(
                     onStart           = { runeKey, qty, ashKey -> viewModel.startRunecraftingSession(runeKey, qty, ashKey) },
                     currentXp         = state.skillXp[Skills.RUNECRAFTING] ?: 0L,
                     questFills        = sheet.questFills,
+                    activeQuests      = state.activeQuests,
                 )
                 is SheetState.Prayer -> PrayerSheet(
                     availableBones        = sheet.availableBones,
@@ -323,6 +329,7 @@ fun SkillActivitySheet(
                         onNavigateToBoneAltar()
                     },
                     questFills            = sheet.questFills,
+                    activeQuests          = state.activeQuests,
                 )
                 is SheetState.Crafting -> {
                     val craftState by craftingViewModel.uiState.collectAsState()
@@ -349,6 +356,7 @@ fun SkillActivitySheet(
                     isQueueFull       = state.queueSize >= state.maxQueueSize,
                     sessionDurationMs = state.sessionDurationMs,
                     context           = context,
+                    activeQuests      = state.activeQuests,
                     onSelect          = { npcKey -> viewModel.startThievingSession(npcKey) },
                 )
                 SheetState.Mercantile -> MercantileSheetContent(onDismiss = viewModel::dismissSheet)
