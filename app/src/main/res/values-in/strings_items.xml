@@ -1,0 +1,834 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Ores ===== -->
+    <string name="item_copper_ore_name">Bijih Tembaga</string>
+    <string name="item_copper_ore_desc">Bijih biasa. Gabungkan dengan bijih timah untuk melebur batangan perunggu.</string>
+    <string name="item_tin_ore_name">Bijih Timah</string>
+    <string name="item_tin_ore_desc">Bijih biasa. Gabungkan dengan bijih tembaga untuk melebur batangan perunggu.</string>
+    <string name="item_iron_ore_name">Bijih Besi</string>
+    <string name="item_iron_ore_desc">Bijih serbaguna yang digunakan untuk melebur batangan besi dan baja.</string>
+    <string name="item_coal_name">Batu Bara</string>
+    <string name="item_coal_desc">Digunakan sebagai bahan bakar saat melebur baja dan batangan tingkat lebih tinggi.</string>
+    <string name="item_silver_ore_name">Bijih Perak</string>
+    <string name="item_silver_ore_desc">Bijih berharga yang digunakan untuk membuat batangan perak dan perhiasan.</string>
+    <string name="item_gold_ore_name">Bijih Emas</string>
+    <string name="item_gold_ore_desc">Bijih berharga yang digunakan untuk membuat batangan emas dan perhiasan.</string>
+    <string name="item_mithril_ore_name">Bijih Mithril</string>
+    <string name="item_mithril_ore_desc">Bijih langka dengan sifat magis.</string>
+    <string name="item_adamantite_ore_name">Bijih Adamantit</string>
+    <string name="item_adamantite_ore_desc">Bijih yang sangat keras dan sangat langka.</string>
+    <string name="item_runite_ore_name">Bijih Runit</string>
+    <string name="item_runite_ore_desc">Bijih tertambang paling langka, digunakan untuk peralatan terkuat.</string>
+    <string name="item_rune_essence_name">Esensi Rune</string>
+    <string name="item_rune_essence_desc">Batu magis mentah yang digunakan untuk membuat semua jenis rune.</string>
+
+    <!-- ===== Metal bars ===== -->
+    <string name="item_bronze_bar_name">Batangan Perunggu</string>
+    <string name="item_bronze_bar_desc">Dilebur dari bijih tembaga dan bijih timah. Batangan logam paling dasar.</string>
+    <string name="item_iron_bar_name">Batangan Besi</string>
+    <string name="item_iron_bar_desc">Batangan besi yang kokoh, digunakan untuk membuat peralatan besi.</string>
+    <string name="item_silver_bar_name">Batangan Perak</string>
+    <string name="item_silver_bar_desc">Batangan perak murni yang digunakan untuk membuat perhiasan.</string>
+    <string name="item_steel_bar_name">Batangan Baja</string>
+    <string name="item_steel_bar_desc">Lebih kuat dari besi. Digunakan untuk membuat peralatan baja.</string>
+    <string name="item_gold_bar_name">Batangan Emas</string>
+    <string name="item_gold_bar_desc">Batangan emas murni yang digunakan untuk membuat perhiasan dan peralatan emas.</string>
+    <string name="item_mithril_bar_name">Batangan Mithril</string>
+    <string name="item_mithril_bar_desc">Batangan logam magis yang ringan.</string>
+    <string name="item_adamantite_bar_name">Batangan Adamantit</string>
+    <string name="item_adamantite_bar_desc">Batangan logam yang luar biasa keras.</string>
+    <string name="item_platinum_bar_name">Batangan Platina</string>
+    <string name="item_platinum_bar_desc">Batangan platina langka dan berkilau untuk perhiasan kelas atas.</string>
+    <string name="item_runite_bar_name">Batangan Runit</string>
+    <string name="item_runite_bar_desc">Batangan logam lebur terkuat yang ada.</string>
+
+    <!-- ===== Gems ===== -->
+    <string name="item_sapphire_name">Safir</string>
+    <string name="item_sapphire_desc">Batu permata biru yang digunakan dalam pembuatan perhiasan.</string>
+    <string name="item_emerald_name">Zamrud</string>
+    <string name="item_emerald_desc">Batu permata hijau dengan tingkat kelangkaan sedang.</string>
+    <string name="item_ruby_name">Rubi</string>
+    <string name="item_ruby_desc">Batu permata merah. Langka dan berharga.</string>
+    <string name="item_diamond_name">Berlian</string>
+    <string name="item_diamond_desc">Batu permata paling langka dan paling berharga.</string>
+
+    <!-- ===== Logs ===== -->
+    <string name="item_log_name">Kayu Gelondongan</string>
+    <string name="item_log_desc">Kayu gelondongan dasar dari pohon biasa. Digunakan dalam Membuat Api dan Pembuatan Panah.</string>
+    <string name="item_oak_log_name">Kayu Ek</string>
+    <string name="item_oak_log_desc">Kayu gelondongan dari pohon ek.</string>
+    <string name="item_willow_log_name">Kayu Dedalu</string>
+    <string name="item_willow_log_desc">Kayu gelondongan ringan dari pohon dedalu.</string>
+    <string name="item_maple_log_name">Kayu Mapel</string>
+    <string name="item_maple_log_desc">Kayu gelondongan padat dari pohon mapel.</string>
+    <string name="item_yew_log_name">Kayu Yew</string>
+    <string name="item_yew_log_desc">Kayu gelondongan dari pohon yew purba.</string>
+    <string name="item_magic_log_name">Kayu Ajaib</string>
+    <string name="item_magic_log_desc">Kayu gelondongan yang diberi kekuatan dari pohon ajaib langka.</string>
+    <string name="item_redwood_log_name">Kayu Sekuoia</string>
+    <string name="item_redwood_log_desc">Kayu gelondongan raksasa dari pohon sekuoia tertinggi.</string>
+
+    <!-- ===== Raw fish ===== -->
+    <string name="item_raw_shrimp_name">Udang Mentah</string>
+    <string name="item_raw_shrimp_desc">Udang mentah. Masak sebelum dimakan.</string>
+    <string name="item_raw_sardine_name">Sarden Mentah</string>
+    <string name="item_raw_sardine_desc">Sarden mentah. Masak sebelum dimakan.</string>
+    <string name="item_raw_herring_name">Haring Mentah</string>
+    <string name="item_raw_herring_desc">Haring mentah. Masak sebelum dimakan.</string>
+    <string name="item_raw_mackerel_name">Makerel Mentah</string>
+    <string name="item_raw_mackerel_desc">Makerel mentah. Masak sebelum dimakan.</string>
+    <string name="item_raw_trout_name">Trout Mentah</string>
+    <string name="item_raw_trout_desc">Trout mentah. Masak sebelum dimakan.</string>
+    <string name="item_raw_salmon_name">Salmon Mentah</string>
+    <string name="item_raw_salmon_desc">Salmon mentah. Masak sebelum dimakan.</string>
+    <string name="item_raw_tuna_name">Tuna Mentah</string>
+    <string name="item_raw_tuna_desc">Tuna mentah. Masak sebelum dimakan.</string>
+    <string name="item_raw_lobster_name">Lobster Mentah</string>
+    <string name="item_raw_lobster_desc">Lobster mentah. Masak sebelum dimakan.</string>
+    <string name="item_raw_swordfish_name">Ikan Todak Mentah</string>
+    <string name="item_raw_swordfish_desc">Ikan todak mentah. Masak sebelum dimakan.</string>
+    <string name="item_raw_monkfish_name">Monkfish Mentah</string>
+    <string name="item_raw_monkfish_desc">Monkfish mentah. Masak sebelum dimakan.</string>
+    <string name="item_raw_shark_name">Hiu Mentah</string>
+    <string name="item_raw_shark_desc">Hiu mentah. Masak sebelum dimakan.</string>
+    <string name="item_raw_sea_turtle_name">Penyu Laut Mentah</string>
+    <string name="item_raw_sea_turtle_desc">Penyu laut mentah. Masak sebelum dimakan.</string>
+    <string name="item_raw_manta_ray_name">Pari Manta Mentah</string>
+    <string name="item_raw_manta_ray_desc">Pari manta mentah. Masak sebelum dimakan.</string>
+
+    <!-- ===== Cooked fish ===== -->
+    <string name="item_shrimp_name">Udang</string>
+    <string name="item_shrimp_desc">Udang matang. Memulihkan sedikit HP.</string>
+    <string name="item_sardine_name">Sarden</string>
+    <string name="item_sardine_desc">Sarden matang. Memulihkan HP saat dimakan.</string>
+    <string name="item_herring_name">Haring</string>
+    <string name="item_herring_desc">Haring matang. Memulihkan HP saat dimakan.</string>
+    <string name="item_mackerel_name">Makerel</string>
+    <string name="item_mackerel_desc">Makerel matang. Memulihkan HP saat dimakan.</string>
+    <string name="item_trout_name">Trout</string>
+    <string name="item_trout_desc">Trout matang. Memulihkan HP saat dimakan.</string>
+    <string name="item_salmon_name">Salmon</string>
+    <string name="item_salmon_desc">Salmon matang. Memulihkan HP saat dimakan.</string>
+    <string name="item_tuna_name">Tuna</string>
+    <string name="item_tuna_desc">Tuna matang. Memulihkan HP saat dimakan.</string>
+    <string name="item_lobster_name">Lobster</string>
+    <string name="item_lobster_desc">Lobster matang. Memulihkan HP dalam jumlah cukup banyak.</string>
+    <string name="item_swordfish_name">Ikan Todak</string>
+    <string name="item_swordfish_desc">Ikan todak matang. Memulihkan HP dalam jumlah besar.</string>
+    <string name="item_monkfish_name">Monkfish</string>
+    <string name="item_monkfish_desc">Monkfish matang. Memulihkan HP dalam jumlah lumayan besar.</string>
+    <string name="item_shark_name">Hiu</string>
+    <string name="item_shark_desc">Hiu matang. Memulihkan HP dalam jumlah besar.</string>
+    <string name="item_sea_turtle_name">Penyu Laut</string>
+    <string name="item_sea_turtle_desc">Penyu laut matang. Memulihkan HP dalam jumlah sangat besar.</string>
+    <string name="item_manta_ray_name">Pari Manta</string>
+    <string name="item_manta_ray_desc">Pari manta matang. Salah satu makanan terbaik yang tersedia.</string>
+
+    <!-- ===== Raw meat ===== -->
+    <string name="item_raw_rat_meat_name">Daging Tikus Mentah</string>
+    <string name="item_raw_rat_meat_desc">Daging tikus mentah. Masak sebelum dimakan.</string>
+    <string name="item_raw_chicken_name">Ayam Mentah</string>
+    <string name="item_raw_chicken_desc">Ayam mentah. Masak sebelum dimakan.</string>
+    <string name="item_raw_mutton_name">Daging Domba Mentah</string>
+    <string name="item_raw_mutton_desc">Daging domba mentah. Masak sebelum dimakan.</string>
+    <string name="item_raw_beef_name">Daging Sapi Mentah</string>
+    <string name="item_raw_beef_desc">Daging sapi mentah. Masak sebelum dimakan.</string>
+    <string name="item_raw_meat_name">Daging Mentah</string>
+    <string name="item_raw_meat_desc">Daging mentah tak dikenal. Masak sebelum dimakan.</string>
+
+    <!-- ===== Cooked meat ===== -->
+    <string name="item_cooked_rat_meat_name">Daging Tikus</string>
+    <string name="item_cooked_rat_meat_desc">Daging tikus matang. Nyaris tak layak makan, tapi memulihkan sedikit HP.</string>
+    <string name="item_cooked_chicken_name">Ayam Panggang</string>
+    <string name="item_cooked_chicken_desc">Ayam panggang. Memulihkan HP saat dimakan.</string>
+    <string name="item_cooked_mutton_name">Daging Domba Panggang</string>
+    <string name="item_cooked_mutton_desc">Daging domba panggang. Memulihkan HP saat dimakan.</string>
+    <string name="item_cooked_beef_name">Daging Sapi Panggang</string>
+    <string name="item_cooked_beef_desc">Daging sapi panggang. Memulihkan HP saat dimakan.</string>
+
+    <!-- ===== Melee weapons — bronze ===== -->
+    <string name="item_bronze_sword_name">Pedang Perunggu</string>
+    <string name="item_bronze_sword_desc">Pedang perunggu dasar bermata satu tangan.</string>
+    <string name="item_bronze_scimitar_name">Scimitar Perunggu</string>
+    <string name="item_bronze_scimitar_desc">Pedang perunggu melengkung satu tangan dengan bonus kekuatan yang baik.</string>
+    <string name="item_bronze_2h_sword_name">Pedang Dua Tangan Perunggu</string>
+    <string name="item_bronze_2h_sword_desc">Pedang perunggu dua tangan. Kerusakan besar, kecepatan lambat.</string>
+    <string name="item_bronze_warhammer_name">Palu Perang Perunggu</string>
+    <string name="item_bronze_warhammer_desc">Palu perunggu berat yang digunakan dengan satu tangan.</string>
+    <string name="item_bronze_battleaxe_name">Kapak Perang Perunggu</string>
+    <string name="item_bronze_battleaxe_desc">Kapak perunggu satu tangan yang menakutkan.</string>
+    <string name="item_bronze_dagger_name">Belati Perunggu</string>
+    <string name="item_bronze_dagger_desc">Belati perunggu yang cepat dan ringan.</string>
+
+    <!-- Melee weapons — iron -->
+    <string name="item_iron_sword_name">Pedang Besi</string>
+    <string name="item_iron_sword_desc">Pedang besi satu tangan.</string>
+    <string name="item_iron_scimitar_name">Scimitar Besi</string>
+    <string name="item_iron_scimitar_desc">Pedang besi melengkung satu tangan dengan bonus kekuatan yang baik.</string>
+    <string name="item_iron_2h_sword_name">Pedang Dua Tangan Besi</string>
+    <string name="item_iron_2h_sword_desc">Pedang besi dua tangan.</string>
+    <string name="item_iron_warhammer_name">Palu Perang Besi</string>
+    <string name="item_iron_warhammer_desc">Palu besi berat yang digunakan dengan satu tangan.</string>
+    <string name="item_iron_battleaxe_name">Kapak Perang Besi</string>
+    <string name="item_iron_battleaxe_desc">Kapak besi satu tangan yang menakutkan.</string>
+    <string name="item_iron_dagger_name">Belati Besi</string>
+    <string name="item_iron_dagger_desc">Belati besi yang cepat dan ringan.</string>
+
+    <!-- Melee weapons — steel -->
+    <string name="item_steel_sword_name">Pedang Baja</string>
+    <string name="item_steel_sword_desc">Pedang baja satu tangan.</string>
+    <string name="item_steel_scimitar_name">Scimitar Baja</string>
+    <string name="item_steel_scimitar_desc">Pedang baja melengkung satu tangan dengan bonus kekuatan yang baik.</string>
+    <string name="item_steel_2h_sword_name">Pedang Dua Tangan Baja</string>
+    <string name="item_steel_2h_sword_desc">Pedang baja dua tangan.</string>
+    <string name="item_steel_warhammer_name">Palu Perang Baja</string>
+    <string name="item_steel_warhammer_desc">Palu baja berat yang digunakan dengan satu tangan.</string>
+    <string name="item_steel_battleaxe_name">Kapak Perang Baja</string>
+    <string name="item_steel_battleaxe_desc">Kapak baja satu tangan yang menakutkan.</string>
+
+    <!-- Melee weapons — mithril -->
+    <string name="item_mithril_sword_name">Pedang Mithril</string>
+    <string name="item_mithril_sword_desc">Pedang magis satu tangan yang ringan.</string>
+    <string name="item_mithril_scimitar_name">Scimitar Mithril</string>
+    <string name="item_mithril_scimitar_desc">Pedang mithril melengkung yang tajam secara supernatural.</string>
+    <string name="item_mithril_2h_sword_name">Pedang Dua Tangan Mithril</string>
+    <string name="item_mithril_2h_sword_desc">Pedang mithril dua tangan.</string>
+    <string name="item_mithril_warhammer_name">Palu Perang Mithril</string>
+    <string name="item_mithril_warhammer_desc">Palu perang magis yang ringan.</string>
+    <string name="item_mithril_battleaxe_name">Kapak Perang Mithril</string>
+    <string name="item_mithril_battleaxe_desc">Kapak perang mithril dengan kualitas luar biasa.</string>
+
+    <!-- Melee weapons — adamantite -->
+    <string name="item_adamantite_sword_name">Pedang Adamantit</string>
+    <string name="item_adamantite_sword_desc">Pedang satu tangan yang luar biasa keras.</string>
+    <string name="item_adamantite_scimitar_name">Scimitar Adamantit</string>
+    <string name="item_adamantite_scimitar_desc">Pedang melengkung yang sangat keras dengan bonus kekuatan luar biasa.</string>
+    <string name="item_adamantite_2h_sword_name">Pedang Dua Tangan Adamantit</string>
+    <string name="item_adamantite_2h_sword_desc">Pedang dua tangan yang ditempa dari adamantit.</string>
+    <string name="item_adamantite_warhammer_name">Palu Perang Adamantit</string>
+    <string name="item_adamantite_warhammer_desc">Palu perang yang luar biasa berat dan keras.</string>
+    <string name="item_adamantite_battleaxe_name">Kapak Perang Adamantit</string>
+    <string name="item_adamantite_battleaxe_desc">Kapak perang adamantit yang mematikan.</string>
+
+    <!-- Melee weapons — runite -->
+    <string name="item_runite_sword_name">Pedang Runit</string>
+    <string name="item_runite_sword_desc">Pedang satu tangan terbaik yang tersedia.</string>
+    <string name="item_runite_scimitar_name">Scimitar Runit</string>
+    <string name="item_runite_scimitar_desc">Scimitar terbaik yang tersedia, dengan bonus kekuatan luar biasa.</string>
+    <string name="item_runite_2h_sword_name">Pedang Dua Tangan Runit</string>
+    <string name="item_runite_2h_sword_desc">Pedang dua tangan terbaik yang tersedia.</string>
+    <string name="item_runite_warhammer_name">Palu Perang Runit</string>
+    <string name="item_runite_warhammer_desc">Palu perang terbaik yang tersedia.</string>
+    <string name="item_runite_battleaxe_name">Kapak Perang Runit</string>
+    <string name="item_runite_battleaxe_desc">Kapak perang terbaik yang tersedia.</string>
+
+    <!-- ===== Ranged weapons ===== -->
+    <string name="item_wooden_bow_name">Busur Kayu</string>
+    <string name="item_wooden_bow_desc">Busur kayu sederhana. Bagus untuk melatih Jarak Jauh.</string>
+    <string name="item_oak_bow_name">Busur Ek</string>
+    <string name="item_oak_bow_desc">Busur andal yang dibuat dari kayu ek.</string>
+
+    <!-- ===== Magic weapons ===== -->
+    <string name="item_basic_staff_name">Tongkat Dasar</string>
+    <string name="item_basic_staff_desc">Tongkat sihir sederhana untuk penyihir pemula.</string>
+    <string name="item_apprentice_staff_name">Tongkat Murid</string>
+    <string name="item_apprentice_staff_desc">Tongkat yang lebih baik untuk penyihir yang sedang berkembang.</string>
+    <string name="item_staff_of_air_name">Tongkat Udara</string>
+    <string name="item_staff_of_air_desc">Tongkat elemental yang diberi kekuatan udara.</string>
+    <string name="item_staff_of_water_name">Tongkat Air</string>
+    <string name="item_staff_of_water_desc">Tongkat elemental yang diberi kekuatan air.</string>
+    <string name="item_staff_of_earth_name">Tongkat Tanah</string>
+    <string name="item_staff_of_earth_desc">Tongkat elemental yang diberi kekuatan tanah.</string>
+    <string name="item_staff_of_fire_name">Tongkat Api</string>
+    <string name="item_staff_of_fire_desc">Tongkat elemental yang diberi kekuatan api.</string>
+    <string name="item_staff_of_mind_name">Tongkat Pikiran</string>
+    <string name="item_staff_of_mind_desc">Tongkat yang diberi energi psikis.</string>
+    <string name="item_staff_of_chaos_name">Tongkat Kekacauan</string>
+    <string name="item_staff_of_chaos_desc">Tongkat kacau yang berdenyut dengan energi magis liar.</string>
+    <string name="item_staff_of_death_name">Tongkat Kematian</string>
+    <string name="item_staff_of_death_desc">Tongkat gelap yang diselimuti kekuatan kematian.</string>
+    <string name="item_staff_of_blood_name">Tongkat Darah</string>
+    <string name="item_staff_of_blood_desc">Tongkat kuat yang ditenagai oleh sihir darah.</string>
+
+    <!-- ===== Armour — bronze ===== -->
+    <string name="item_bronze_helmet_name">Helm Perunggu</string>
+    <string name="item_bronze_helmet_desc">Pelindung kepala perunggu dasar.</string>
+    <string name="item_bronze_platebody_name">Baju Zirah Perunggu</string>
+    <string name="item_bronze_platebody_desc">Baju zirah perunggu dasar.</string>
+    <string name="item_bronze_platelegs_name">Celana Zirah Perunggu</string>
+    <string name="item_bronze_platelegs_desc">Pelindung kaki perunggu dasar.</string>
+    <string name="item_bronze_shield_name">Perisai Perunggu</string>
+    <string name="item_bronze_shield_desc">Perisai perunggu dasar.</string>
+
+    <!-- Armour — iron -->
+    <string name="item_iron_helmet_name">Helm Besi</string>
+    <string name="item_iron_helmet_desc">Pelindung kepala besi.</string>
+    <string name="item_iron_platebody_name">Baju Zirah Besi</string>
+    <string name="item_iron_platebody_desc">Baju zirah besi.</string>
+    <string name="item_iron_platelegs_name">Celana Zirah Besi</string>
+    <string name="item_iron_platelegs_desc">Pelindung kaki besi.</string>
+    <string name="item_iron_shield_name">Perisai Besi</string>
+    <string name="item_iron_shield_desc">Perisai besi.</string>
+
+    <!-- Armour — steel -->
+    <string name="item_steel_helmet_name">Helm Baja</string>
+    <string name="item_steel_helmet_desc">Pelindung kepala baja yang kokoh.</string>
+    <string name="item_steel_platebody_name">Baju Zirah Baja</string>
+    <string name="item_steel_platebody_desc">Baju zirah baja yang kokoh.</string>
+    <string name="item_steel_platelegs_name">Celana Zirah Baja</string>
+    <string name="item_steel_platelegs_desc">Pelindung kaki baja yang kokoh.</string>
+    <string name="item_steel_shield_name">Perisai Baja</string>
+    <string name="item_steel_shield_desc">Perisai baja yang kokoh.</string>
+
+    <!-- Armour — mithril -->
+    <string name="item_mithril_helmet_name">Helm Mithril</string>
+    <string name="item_mithril_helmet_desc">Pelindung kepala magis yang ringan.</string>
+    <string name="item_mithril_platebody_name">Baju Zirah Mithril</string>
+    <string name="item_mithril_platebody_desc">Baju zirah magis yang ringan.</string>
+    <string name="item_mithril_platelegs_name">Celana Zirah Mithril</string>
+    <string name="item_mithril_platelegs_desc">Pelindung kaki magis yang ringan.</string>
+    <string name="item_mithril_shield_name">Perisai Mithril</string>
+    <string name="item_mithril_shield_desc">Perisai magis yang ringan.</string>
+
+    <!-- Armour — adamantite -->
+    <string name="item_adamantite_helmet_name">Helm Adamantit</string>
+    <string name="item_adamantite_helmet_desc">Pelindung kepala yang sangat keras.</string>
+    <string name="item_adamantite_platebody_name">Baju Zirah Adamantit</string>
+    <string name="item_adamantite_platebody_desc">Baju zirah yang sangat keras.</string>
+    <string name="item_adamantite_platelegs_name">Celana Zirah Adamantit</string>
+    <string name="item_adamantite_platelegs_desc">Pelindung kaki yang sangat keras.</string>
+    <string name="item_adamantite_shield_name">Perisai Adamantit</string>
+    <string name="item_adamantite_shield_desc">Perisai yang sangat keras.</string>
+
+    <!-- Armour — runite -->
+    <string name="item_runite_helmet_name">Helm Runit</string>
+    <string name="item_runite_helmet_desc">Pelindung kepala terbaik yang tersedia.</string>
+    <string name="item_runite_platebody_name">Baju Zirah Runit</string>
+    <string name="item_runite_platebody_desc">Baju zirah terbaik yang tersedia.</string>
+    <string name="item_runite_platelegs_name">Celana Zirah Runit</string>
+    <string name="item_runite_platelegs_desc">Pelindung kaki terbaik yang tersedia.</string>
+    <string name="item_runite_shield_name">Perisai Runit</string>
+    <string name="item_runite_shield_desc">Perisai terbaik yang tersedia.</string>
+
+    <!-- ===== Tools — pickaxes ===== -->
+    <string name="item_bronze_pickaxe_name">Beliung Perunggu</string>
+    <string name="item_bronze_pickaxe_desc">Beliung dasar untuk Pertambangan.</string>
+    <string name="item_iron_pickaxe_name">Beliung Besi</string>
+    <string name="item_iron_pickaxe_desc">Beliung andal untuk Pertambangan.</string>
+    <string name="item_steel_pickaxe_name">Beliung Baja</string>
+    <string name="item_steel_pickaxe_desc">Beliung kokoh untuk Pertambangan.</string>
+    <string name="item_mithril_pickaxe_name">Beliung Mithril</string>
+    <string name="item_mithril_pickaxe_desc">Beliung magis yang ringan untuk Pertambangan.</string>
+    <string name="item_adamantite_pickaxe_name">Beliung Adamantit</string>
+    <string name="item_adamantite_pickaxe_desc">Beliung yang sangat keras untuk Pertambangan.</string>
+    <string name="item_runite_pickaxe_name">Beliung Runit</string>
+    <string name="item_runite_pickaxe_desc">Beliung terbaik yang tersedia untuk Pertambangan.</string>
+
+    <!-- Tools — axes -->
+    <string name="item_bronze_axe_name">Kapak Perunggu</string>
+    <string name="item_bronze_axe_desc">Kapak dasar untuk Menebang Kayu.</string>
+    <string name="item_iron_axe_name">Kapak Besi</string>
+    <string name="item_iron_axe_desc">Kapak andal untuk Menebang Kayu.</string>
+    <string name="item_steel_axe_name">Kapak Baja</string>
+    <string name="item_steel_axe_desc">Kapak kokoh untuk Menebang Kayu.</string>
+    <string name="item_mithril_axe_name">Kapak Mithril</string>
+    <string name="item_mithril_axe_desc">Kapak magis yang ringan untuk Menebang Kayu.</string>
+    <string name="item_adamantite_axe_name">Kapak Adamantit</string>
+    <string name="item_adamantite_axe_desc">Kapak yang sangat keras untuk Menebang Kayu.</string>
+    <string name="item_runite_axe_name">Kapak Runit</string>
+    <string name="item_runite_axe_desc">Kapak terbaik yang tersedia untuk Menebang Kayu.</string>
+
+    <!-- Tools — fishing rods -->
+    <string name="item_bronze_fishing_rod_name">Joran Pancing Perunggu</string>
+    <string name="item_bronze_fishing_rod_desc">Joran pancing dasar.</string>
+    <string name="item_iron_fishing_rod_name">Joran Pancing Besi</string>
+    <string name="item_iron_fishing_rod_desc">Joran pancing andal.</string>
+    <string name="item_steel_fishing_rod_name">Joran Pancing Baja</string>
+    <string name="item_steel_fishing_rod_desc">Joran pancing kokoh.</string>
+    <string name="item_mithril_fishing_rod_name">Joran Pancing Mithril</string>
+    <string name="item_mithril_fishing_rod_desc">Joran pancing magis yang ringan.</string>
+    <string name="item_adamantite_fishing_rod_name">Joran Pancing Adamantit</string>
+    <string name="item_adamantite_fishing_rod_desc">Joran pancing yang sangat tahan lama.</string>
+    <string name="item_runite_fishing_rod_name">Joran Pancing Runit</string>
+    <string name="item_runite_fishing_rod_desc">Joran pancing terbaik yang tersedia.</string>
+
+    <!-- ===== Arrows ===== -->
+    <string name="item_bronze_arrow_name">Anak Panah Perunggu</string>
+    <string name="item_bronze_arrow_desc">Anak panah dasar untuk pertarungan jarak jauh.</string>
+    <string name="item_iron_arrow_name">Anak Panah Besi</string>
+    <string name="item_iron_arrow_desc">Anak panah besi untuk pertarungan jarak jauh.</string>
+    <string name="item_steel_arrow_name">Anak Panah Baja</string>
+    <string name="item_steel_arrow_desc">Anak panah baja untuk pertarungan jarak jauh.</string>
+    <string name="item_mithril_arrow_name">Anak Panah Mithril</string>
+    <string name="item_mithril_arrow_desc">Anak panah mithril untuk pertarungan jarak jauh.</string>
+    <string name="item_adamantite_arrow_name">Anak Panah Adamantit</string>
+    <string name="item_adamantite_arrow_desc">Anak panah adamantit untuk pertarungan jarak jauh.</string>
+    <string name="item_runite_arrow_name">Anak Panah Runit</string>
+    <string name="item_runite_arrow_desc">Anak panah terbaik yang tersedia.</string>
+
+    <!-- Arrow components -->
+    <string name="item_arrow_shaft_name">Batang Anak Panah</string>
+    <string name="item_arrow_shaft_desc">Batang kayu yang digunakan untuk membuat anak panah.</string>
+    <string name="item_bronze_arrow_tips_name">Mata Panah Perunggu</string>
+    <string name="item_bronze_arrow_tips_desc">Mata panah perunggu untuk membuat anak panah perunggu.</string>
+    <string name="item_iron_arrow_tips_name">Mata Panah Besi</string>
+    <string name="item_iron_arrow_tips_desc">Mata panah besi untuk membuat anak panah besi.</string>
+    <string name="item_steel_arrow_tips_name">Mata Panah Baja</string>
+    <string name="item_steel_arrow_tips_desc">Mata panah baja untuk membuat anak panah baja.</string>
+    <string name="item_mithril_arrow_tips_name">Mata Panah Mithril</string>
+    <string name="item_mithril_arrow_tips_desc">Mata panah mithril untuk membuat anak panah mithril.</string>
+    <string name="item_adamantite_arrow_tips_name">Mata Panah Adamantit</string>
+    <string name="item_adamantite_arrow_tips_desc">Mata panah adamantit untuk membuat anak panah adamantit.</string>
+    <string name="item_runite_arrow_tips_name">Mata Panah Runit</string>
+    <string name="item_runite_arrow_tips_desc">Mata panah runit untuk membuat anak panah runit.</string>
+
+    <!-- ===== Jewellery — plain ===== -->
+    <string name="item_silver_ring_name">Cincin Perak</string>
+    <string name="item_silver_ring_desc">Cincin perak polos.</string>
+    <string name="item_silver_necklace_name">Kalung Perak</string>
+    <string name="item_silver_necklace_desc">Kalung perak polos.</string>
+    <string name="item_gold_ring_name">Cincin Emas</string>
+    <string name="item_gold_ring_desc">Cincin emas polos.</string>
+    <string name="item_gold_necklace_name">Kalung Emas</string>
+    <string name="item_gold_necklace_desc">Kalung emas polos.</string>
+    <string name="item_platinum_ring_name">Cincin Platina</string>
+    <string name="item_platinum_ring_desc">Cincin platina polos.</string>
+    <string name="item_platinum_necklace_name">Kalung Platina</string>
+    <string name="item_platinum_necklace_desc">Kalung platina polos.</string>
+
+    <!-- Jewellery — sapphire -->
+    <string name="item_silver_sapphire_ring_name">Cincin Perak Safir</string>
+    <string name="item_silver_sapphire_ring_desc">Cincin perak yang dihiasi safir.</string>
+    <string name="item_silver_sapphire_necklace_name">Kalung Perak Safir</string>
+    <string name="item_silver_sapphire_necklace_desc">Kalung perak yang dihiasi safir.</string>
+    <string name="item_gold_sapphire_ring_name">Cincin Emas Safir</string>
+    <string name="item_gold_sapphire_ring_desc">Cincin emas yang dihiasi safir.</string>
+    <string name="item_gold_sapphire_necklace_name">Kalung Emas Safir</string>
+    <string name="item_gold_sapphire_necklace_desc">Kalung emas yang dihiasi safir.</string>
+    <string name="item_platinum_sapphire_ring_name">Cincin Platina Safir</string>
+    <string name="item_platinum_sapphire_ring_desc">Cincin platina yang dihiasi safir.</string>
+    <string name="item_platinum_sapphire_necklace_name">Kalung Platina Safir</string>
+    <string name="item_platinum_sapphire_necklace_desc">Kalung platina yang dihiasi safir.</string>
+
+    <!-- Jewellery — emerald -->
+    <string name="item_gold_emerald_ring_name">Cincin Emas Zamrud</string>
+    <string name="item_gold_emerald_ring_desc">Cincin emas yang dihiasi zamrud.</string>
+    <string name="item_gold_emerald_necklace_name">Kalung Emas Zamrud</string>
+    <string name="item_gold_emerald_necklace_desc">Kalung emas yang dihiasi zamrud.</string>
+    <string name="item_platinum_emerald_ring_name">Cincin Platina Zamrud</string>
+    <string name="item_platinum_emerald_ring_desc">Cincin platina yang dihiasi zamrud.</string>
+    <string name="item_platinum_emerald_necklace_name">Kalung Platina Zamrud</string>
+    <string name="item_platinum_emerald_necklace_desc">Kalung platina yang dihiasi zamrud.</string>
+
+    <!-- Jewellery — ruby -->
+    <string name="item_gold_ruby_ring_name">Cincin Emas Rubi</string>
+    <string name="item_gold_ruby_ring_desc">Cincin emas yang dihiasi rubi.</string>
+    <string name="item_gold_ruby_necklace_name">Kalung Emas Rubi</string>
+    <string name="item_gold_ruby_necklace_desc">Kalung emas yang dihiasi rubi.</string>
+    <string name="item_platinum_ruby_ring_name">Cincin Platina Rubi</string>
+    <string name="item_platinum_ruby_ring_desc">Cincin platina yang dihiasi rubi.</string>
+    <string name="item_platinum_ruby_necklace_name">Kalung Platina Rubi</string>
+    <string name="item_platinum_ruby_necklace_desc">Kalung platina yang dihiasi rubi.</string>
+
+    <!-- Jewellery — diamond -->
+    <string name="item_gold_diamond_ring_name">Cincin Emas Berlian</string>
+    <string name="item_gold_diamond_ring_desc">Cincin emas yang dihiasi berlian.</string>
+    <string name="item_gold_diamond_necklace_name">Kalung Emas Berlian</string>
+    <string name="item_gold_diamond_necklace_desc">Kalung emas yang dihiasi berlian.</string>
+    <string name="item_platinum_diamond_ring_name">Cincin Platina Berlian</string>
+    <string name="item_platinum_diamond_ring_desc">Cincin platina yang dihiasi berlian.</string>
+    <string name="item_platinum_diamond_necklace_name">Kalung Platina Berlian</string>
+    <string name="item_platinum_diamond_necklace_desc">Kalung platina yang dihiasi berlian.</string>
+
+    <!-- ===== Miscellaneous drops ===== -->
+    <string name="item_ashes_name">Abu</string>
+    <string name="item_ashes_desc">Sisa bakaran dari kayu gelondongan biasa. Taburkan pada skill Doa untuk XP Doa tambahan.</string>
+    <string name="item_oak_ashes_name">Abu Ek</string>
+    <string name="item_oak_ashes_desc">Sisa bakaran dari kayu ek. Taburkan untuk XP Doa lebih banyak daripada abu biasa.</string>
+    <string name="item_willow_ashes_name">Abu Dedalu</string>
+    <string name="item_willow_ashes_desc">Sisa bakaran dari kayu dedalu. Taburkan untuk XP Doa.</string>
+    <string name="item_maple_ashes_name">Abu Mapel</string>
+    <string name="item_maple_ashes_desc">Sisa bakaran dari kayu mapel. Taburkan untuk XP Doa.</string>
+    <string name="item_yew_ashes_name">Abu Yew</string>
+    <string name="item_yew_ashes_desc">Sisa bakaran dari kayu yew. Taburkan untuk XP Doa yang signifikan.</string>
+    <string name="item_magic_ashes_name">Abu Ajaib</string>
+    <string name="item_magic_ashes_desc">Sisa bakaran dari kayu ajaib. Taburkan untuk XP Doa yang besar.</string>
+    <string name="item_redwood_ashes_name">Abu Sekuoia</string>
+    <string name="item_redwood_ashes_desc">Sisa bakaran dari kayu sekuoia. Taburkan untuk XP Doa terbanyak dari semua jenis abu.</string>
+    <string name="item_bones_name">Tulang</string>
+    <string name="item_bones_desc">Tulang dari makhluk kecil. Kubur untuk mendapatkan XP Doa.</string>
+    <string name="item_big_bones_name">Tulang Besar</string>
+    <string name="item_big_bones_desc">Tulang yang lebih besar. Memberikan lebih banyak XP Doa saat dikubur.</string>
+    <string name="item_giant_bones_name">Tulang Raksasa</string>
+    <string name="item_giant_bones_desc">Tulang raksasa dari musuh yang kuat. Memberikan XP Doa yang signifikan.</string>
+    <string name="item_dragon_bone_name">Tulang Naga</string>
+    <string name="item_dragon_bone_desc">Tulang naga purba. Memberikan XP Doa terbanyak saat dikubur.</string>
+    <string name="item_dragon_scale_name">Sisik Naga</string>
+    <string name="item_dragon_scale_desc">Sisik keras dari naga hijau. Langka dan berharga.</string>
+    <string name="item_coins_name">Koin</string>
+    <string name="item_coins_desc">Mata uang kerajaan ini. Belanjakan di toko.</string>
+    <string name="item_goblin_mail_name">Baju Zirah Goblin</string>
+    <string name="item_goblin_mail_desc">Baju zirah usang yang dijatuhkan goblin. Laku dijual dengan harga bagus.</string>
+    <string name="item_imp_hide_name">Kulit Iblis Kecil</string>
+    <string name="item_imp_hide_desc">Kulit kasar dari iblis kecil.</string>
+    <string name="item_spider_silk_name">Sutra Laba-laba</string>
+    <string name="item_spider_silk_desc">Sutra halus yang dipintal laba-laba raksasa. Berharga bagi pengrajin.</string>
+    <string name="item_spider_fang_name">Taring Laba-laba</string>
+    <string name="item_spider_fang_desc">Taring beracun dari laba-laba raksasa.</string>
+    <string name="item_cowhide_name">Kulit Sapi</string>
+    <string name="item_cowhide_desc">Kulit kasar dari sapi. Digunakan dalam pembuatan barang kulit.</string>
+    <string name="item_wool_name">Wol</string>
+    <string name="item_wool_desc">Wol lembut dari domba.</string>
+    <string name="item_feather_name">Bulu</string>
+    <string name="item_feather_desc">Bulu yang digunakan untuk membuat anak panah.</string>
+    <string name="item_rotten_flesh_name">Daging Busuk</string>
+    <string name="item_rotten_flesh_desc">Daging membusuk dari makhluk mayat hidup. Baunya sangat busuk.</string>
+    <string name="item_lockpick_name">Pembuka Kunci</string>
+    <string name="item_lockpick_desc">Alat pembuka kunci yang dijatuhkan oleh penjahat.</string>
+    <string name="item_magic_bean_name">Kacang Ajaib</string>
+    <string name="item_magic_bean_desc">Kacang ajaib dengan sifat misterius.</string>
+    <string name="item_hellhound_fang_name">Taring Anjing Neraka</string>
+    <string name="item_hellhound_fang_desc">Taring hangus dari anjing neraka.</string>
+    <string name="item_demon_horn_name">Tanduk Iblis</string>
+    <string name="item_demon_horn_desc">Tanduk bergerigi yang dirobek dari iblis kecil.</string>
+    <string name="item_troll_bone_name">Tulang Troll</string>
+    <string name="item_troll_bone_desc">Tulang besar dan berbonggol dari troll gunung.</string>
+
+    <!-- ===== Runes ===== -->
+    <string name="item_air_rune_name">Rune Udara</string>
+    <string name="item_air_rune_desc">Rune yang diberi kekuatan udara. Digunakan dalam mantra udara.</string>
+    <string name="item_water_rune_name">Rune Air</string>
+    <string name="item_water_rune_desc">Rune yang diberi kekuatan air.</string>
+    <string name="item_earth_rune_name">Rune Tanah</string>
+    <string name="item_earth_rune_desc">Rune yang diberi kekuatan tanah.</string>
+    <string name="item_fire_rune_name">Rune Api</string>
+    <string name="item_fire_rune_desc">Rune yang diberi kekuatan api.</string>
+    <string name="item_mind_rune_name">Rune Pikiran</string>
+    <string name="item_mind_rune_desc">Rune yang menyalurkan energi psikis.</string>
+    <string name="item_chaos_rune_name">Rune Kekacauan</string>
+    <string name="item_chaos_rune_desc">Rune sihir kacau yang liar.</string>
+    <string name="item_death_rune_name">Rune Kematian</string>
+    <string name="item_death_rune_desc">Rune yang dipenuhi kekuatan kematian.</string>
+    <string name="item_blood_rune_name">Rune Darah</string>
+    <string name="item_blood_rune_desc">Rune langka yang ditenagai oleh sihir darah.</string>
+
+    <!-- ===== Crops ===== -->
+    <string name="crop_potato_name">Kentang</string>
+    <string name="crop_onion_name">Bawang</string>
+    <string name="crop_cabbage_name">Kubis</string>
+    <string name="crop_carrot_name">Wortel</string>
+    <string name="crop_tomato_name">Tomat</string>
+    <string name="crop_corn_name">Jagung</string>
+    <string name="crop_pumpkin_name">Labu</string>
+    <string name="crop_watermelon_name">Semangka</string>
+    <string name="crop_strawberry_name">Stroberi</string>
+    <string name="crop_magic_herb_name">Herba Ajaib</string>
+    <string name="crop_dragon_fruit_name">Buah Naga</string>
+    <string name="crop_golden_wheat_name">Gandum Emas</string>
+    <string name="crop_spirit_herb_name">Herba Roh</string>
+    <string name="crop_celestial_bloom_name">Bunga Langit</string>
+    <string name="crop_starfruit_name">Belimbing</string>
+    <string name="crop_void_lotus_name">Teratai Hampa</string>
+
+    <!-- ===== Spells ===== -->
+    <string name="spell_wind_strike_name">Serangan Angin</string>
+    <string name="spell_wind_bolt_name">Panah Angin</string>
+    <string name="spell_wind_blast_name">Ledakan Angin</string>
+    <string name="spell_wind_wave_name">Gelombang Angin</string>
+    <string name="spell_water_strike_name">Serangan Air</string>
+    <string name="spell_water_bolt_name">Panah Air</string>
+    <string name="spell_water_blast_name">Ledakan Air</string>
+    <string name="spell_water_wave_name">Gelombang Air</string>
+    <string name="spell_earth_strike_name">Serangan Tanah</string>
+    <string name="spell_earth_bolt_name">Panah Tanah</string>
+    <string name="spell_earth_blast_name">Ledakan Tanah</string>
+    <string name="spell_earth_wave_name">Gelombang Tanah</string>
+    <string name="spell_fire_strike_name">Serangan Api</string>
+    <string name="spell_fire_bolt_name">Panah Api</string>
+    <string name="spell_fire_blast_name">Ledakan Api</string>
+    <string name="spell_fire_wave_name">Gelombang Api</string>
+    <string name="spell_mind_strike_name">Serangan Pikiran</string>
+    <string name="spell_mind_bolt_name">Panah Pikiran</string>
+    <string name="spell_mind_blast_name">Ledakan Pikiran</string>
+    <string name="spell_mind_wave_name">Gelombang Pikiran</string>
+    <string name="spell_chaos_strike_name">Serangan Kekacauan</string>
+    <string name="spell_chaos_bolt_name">Panah Kekacauan</string>
+    <string name="spell_chaos_blast_name">Ledakan Kekacauan</string>
+    <string name="spell_chaos_wave_name">Gelombang Kekacauan</string>
+    <string name="spell_death_strike_name">Serangan Kematian</string>
+    <string name="spell_death_bolt_name">Panah Kematian</string>
+    <string name="spell_death_blast_name">Ledakan Kematian</string>
+    <string name="spell_death_wave_name">Gelombang Kematian</string>
+    <string name="spell_blood_strike_name">Serangan Darah</string>
+    <string name="spell_blood_bolt_name">Panah Darah</string>
+    <string name="spell_blood_blast_name">Ledakan Darah</string>
+    <string name="spell_blood_wave_name">Gelombang Darah</string>
+
+    <!-- ===== Hoes ===== -->
+    <string name="item_bronze_hoe_name">Cangkul Perunggu</string>
+    <string name="item_iron_hoe_name">Cangkul Besi</string>
+    <string name="item_steel_hoe_name">Cangkul Baja</string>
+    <string name="item_mithril_hoe_name">Cangkul Mithril</string>
+    <string name="item_adamantite_hoe_name">Cangkul Adamantit</string>
+    <string name="item_runite_hoe_name">Cangkul Runit</string>
+
+    <!-- Herblore potions -->
+    <string name="item_attack_brew_name">Bir Serangan</string>
+    <string name="item_defense_brew_name">Bir Pertahanan</string>
+    <string name="item_attack_potion_name">Ramuan Serangan</string>
+    <string name="item_defense_potion_name">Ramuan Pertahanan</string>
+    <string name="item_onion_brew_name">Bir Bawang</string>
+    <string name="item_carrot_brew_name">Bir Wortel</string>
+    <string name="item_strength_brew_name">Bir Kekuatan</string>
+    <string name="item_strength_potion_name">Ramuan Kekuatan</string>
+    <string name="item_ranging_potion_name">Ramuan Jarak Jauh</string>
+    <string name="item_magic_potion_name">Ramuan Sihir</string>
+    <string name="item_super_strength_potion_name">Ramuan Super Kekuatan</string>
+    <string name="item_super_attack_potion_name">Ramuan Super Serangan</string>
+    <string name="item_super_defense_potion_name">Ramuan Super Pertahanan</string>
+    <string name="item_super_ranging_potion_name">Ramuan Super Jarak Jauh</string>
+    <string name="item_super_magic_potion_name">Ramuan Super Sihir</string>
+    <string name="item_overload_potion_name">Ramuan Beban Berlebih</string>
+
+    <!-- Enhanced potions -->
+    <string name="item_enhanced_attack_brew_name">Bir Serangan yang Ditingkatkan</string>
+    <string name="item_enhanced_defense_brew_name">Bir Pertahanan yang Ditingkatkan</string>
+    <string name="item_enhanced_attack_potion_name">Ramuan Serangan yang Ditingkatkan</string>
+    <string name="item_enhanced_defense_potion_name">Ramuan Pertahanan yang Ditingkatkan</string>
+    <string name="item_enhanced_onion_brew_name">Bir Bawang yang Ditingkatkan</string>
+    <string name="item_enhanced_carrot_brew_name">Bir Wortel yang Ditingkatkan</string>
+    <string name="item_enhanced_strength_brew_name">Bir Kekuatan yang Ditingkatkan</string>
+    <string name="item_enhanced_strength_potion_name">Ramuan Kekuatan yang Ditingkatkan</string>
+    <string name="item_enhanced_ranging_potion_name">Ramuan Jarak Jauh yang Ditingkatkan</string>
+    <string name="item_enhanced_magic_potion_name">Ramuan Sihir yang Ditingkatkan</string>
+    <string name="item_enhanced_super_strength_potion_name">Ramuan Super Kekuatan yang Ditingkatkan</string>
+    <string name="item_enhanced_super_attack_potion_name">Ramuan Super Serangan yang Ditingkatkan</string>
+    <string name="item_enhanced_super_defense_potion_name">Ramuan Super Pertahanan yang Ditingkatkan</string>
+    <string name="item_enhanced_super_ranging_potion_name">Ramuan Super Jarak Jauh yang Ditingkatkan</string>
+    <string name="item_enhanced_super_magic_potion_name">Ramuan Super Sihir yang Ditingkatkan</string>
+    <string name="item_enhanced_overload_potion_name">Ramuan Beban Berlebih yang Ditingkatkan</string>
+
+    <string name="item_any_fish_name">ikan (jenis apa pun)</string>
+
+
+    <!-- ===== Seed names ===== -->
+    <string name="item_potato_seed_name">Benih Kentang</string>
+    <string name="item_onion_seed_name">Benih Bawang</string>
+    <string name="item_cabbage_seed_name">Benih Kubis</string>
+    <string name="item_carrot_seed_name">Benih Wortel</string>
+    <string name="item_tomato_seed_name">Benih Tomat</string>
+    <string name="item_corn_seed_name">Benih Jagung</string>
+    <string name="item_pumpkin_seed_name">Benih Labu</string>
+    <string name="item_watermelon_seed_name">Benih Semangka</string>
+    <string name="item_strawberry_seed_name">Benih Stroberi</string>
+    <string name="item_magic_herb_seed_name">Benih Herba Ajaib</string>
+    <string name="item_dragon_fruit_seed_name">Benih Buah Naga</string>
+    <string name="item_golden_wheat_seed_name">Benih Gandum Emas</string>
+    <string name="item_spirit_seed_name">Benih Herba Roh</string>
+    <string name="item_celestial_bloom_seed_name">Benih Bunga Langit</string>
+    <string name="item_starfruit_seed_name">Benih Belimbing</string>
+    <string name="item_void_lotus_seed_name">Benih Teratai Hampa</string>
+
+
+    <!-- Additional item/boss/food names (English placeholders) -->
+    <string name="boss_void_sovereign_name">Penguasa Hampa</string>
+    <string name="item_abyssal_rod_name">Joran Abisal</string>
+    <string name="item_adamantite_arrow_tip_name">Mata Panah Adamantit</string>
+    <string name="item_adamantite_boots_name">Sepatu Bot Adamantit</string>
+    <string name="item_adamantite_chainbody_name">Baju Rantai Adamantit</string>
+    <string name="item_adamantite_dagger_name">Belati Adamantit</string>
+    <string name="item_adamantite_full_helmet_name">Helm Penuh Adamantit</string>
+    <string name="item_adamantite_kiteshield_name">Perisai Layang Adamantit</string>
+    <string name="item_adamantite_longsword_name">Pedang Panjang Adamantit</string>
+    <string name="item_adamantite_med_helmet_name">Helm Sedang Adamantit</string>
+    <string name="item_adamantite_plateskirt_name">Rok Zirah Adamantit</string>
+    <string name="item_adamantite_square_shield_name">Perisai Persegi Adamantit</string>
+    <string name="item_agility_cape_name">Jubah Ketangkasan</string>
+    <string name="item_agility_guild_cape_name">Jubah Guild Ketangkasan</string>
+    <string name="item_amulet_of_fury_name">Azimat Amarah</string>
+    <string name="item_amulet_of_strength_name">Azimat Kekuatan</string>
+    <string name="item_amulet_of_the_kraken_name">Azimat Kraken</string>
+    <string name="item_arcane_staff_name">Tongkat Arkana</string>
+    <string name="item_archers_guild_cape_name">Jubah Guild Pemanah</string>
+    <string name="item_archers_ring_name">Cincin Pemanah</string>
+    <string name="item_attack_cape_name">Jubah Serangan</string>
+    <string name="item_baby_kraken_name">Kraken Kecil</string>
+    <string name="item_balrog_name">Balrog, Api Purba Udûn</string>
+    <string name="item_balrog_whip_name">Cambuk Balrog</string>
+    <string name="item_balrog_wings_name">Sayap Balrog</string>
+    <string name="item_beef_name">Daging Sapi Panggang</string>
+    <string name="item_berserker_ring_name">Cincin Berserker</string>
+    <string name="item_blessed_fishing_rod_name">Joran Pancing yang Diberkati</string>
+    <string name="item_blood_blast_name">Ledakan Darah</string>
+    <string name="item_blood_bolt_name">Panah Darah</string>
+    <string name="item_blood_strike_name">Serangan Darah</string>
+    <string name="item_blood_wave_name">Gelombang Darah</string>
+    <string name="item_bronze_arrow_tip_name">Mata Panah Perunggu</string>
+    <string name="item_bronze_boots_name">Sepatu Bot Perunggu</string>
+    <string name="item_bronze_chainbody_name">Baju Rantai Perunggu</string>
+    <string name="item_bronze_full_helmet_name">Helm Penuh Perunggu</string>
+    <string name="item_bronze_kiteshield_name">Perisai Layang Perunggu</string>
+    <string name="item_bronze_longsword_name">Pedang Panjang Perunggu</string>
+    <string name="item_bronze_med_helmet_name">Helm Sedang Perunggu</string>
+    <string name="item_bronze_plateskirt_name">Rok Zirah Perunggu</string>
+    <string name="item_bronze_square_shield_name">Perisai Persegi Perunggu</string>
+    <string name="item_chaos_blast_name">Ledakan Kekacauan</string>
+    <string name="item_chaos_bolt_name">Panah Kekacauan</string>
+    <string name="item_chaos_strike_name">Serangan Kekacauan</string>
+    <string name="item_chaos_wave_name">Gelombang Kekacauan</string>
+    <string name="item_chicken_name">Ayam Panggang</string>
+    <string name="item_cooking_cape_name">Jubah Memasak</string>
+    <string name="item_cooking_guild_cape_name">Jubah Guild Memasak</string>
+    <string name="item_crafting_cape_name">Jubah Kerajinan</string>
+    <string name="item_crafting_guild_cape_name">Jubah Guild Kerajinan</string>
+    <string name="item_death_blast_name">Ledakan Kematian</string>
+    <string name="item_death_bolt_name">Panah Kematian</string>
+    <string name="item_death_strike_name">Serangan Kematian</string>
+    <string name="item_death_wave_name">Gelombang Kematian</string>
+    <string name="item_deep_iron_pickaxe_name">Beliung Besi Dalam</string>
+    <string name="item_defense_cape_name">Jubah Pertahanan</string>
+    <string name="item_demon_lord_name">Raja Iblis</string>
+    <string name="item_dragon_amulet_name">Azimat Naga</string>
+    <string name="item_dragon_boots_name">Sepatu Bot Naga</string>
+    <string name="item_dragon_longsword_name">Pedang Panjang Naga</string>
+    <string name="item_dragon_scimitar_name">Scimitar Naga</string>
+    <string name="item_dragon_whelp_name">Anak Naga</string>
+    <string name="item_dwarven_axe_name">Kapak Kurcaci</string>
+    <string name="item_dwarven_boots_name">Sepatu Bot Kurcaci</string>
+    <string name="item_dwarven_fishing_rod_name">Joran Pancing Kurcaci</string>
+    <string name="item_dwarven_helm_name">Helm Kurcaci</string>
+    <string name="item_dwarven_hoe_name">Cangkul Kurcaci</string>
+    <string name="item_dwarven_pickaxe_name">Beliung Kurcaci</string>
+    <string name="item_dwarven_platebody_name">Baju Zirah Kurcaci</string>
+    <string name="item_dwarven_platelegs_name">Celana Zirah Kurcaci</string>
+    <string name="item_dwarven_scimitar_name">Scimitar Kurcaci</string>
+    <string name="item_dwarven_shield_name">Perisai Kurcaci</string>
+    <string name="item_dwarven_sword_name">Pedang Kurcaci</string>
+    <string name="item_dwarven_warhammer_name">Palu Perang Kurcaci</string>
+    <string name="item_earth_blast_name">Ledakan Tanah</string>
+    <string name="item_earth_bolt_name">Panah Tanah</string>
+    <string name="item_earth_strike_name">Serangan Tanah</string>
+    <string name="item_earth_wave_name">Gelombang Tanah</string>
+    <string name="item_ent_name">Ent</string>
+    <string name="item_farming_cape_name">Jubah Bertani</string>
+    <string name="item_farming_guild_cape_name">Jubah Guild Bertani</string>
+    <string name="item_fire_blast_name">Ledakan Api</string>
+    <string name="item_fire_bolt_name">Panah Api</string>
+    <string name="item_fire_strike_name">Serangan Api</string>
+    <string name="item_fire_wave_name">Gelombang Api</string>
+    <string name="item_firemaking_cape_name">Jubah Membuat Api</string>
+    <string name="item_firemaking_guild_cape_name">Jubah Guild Membuat Api</string>
+    <string name="item_fishing_cape_name">Jubah Memancing</string>
+    <string name="item_fishing_guild_cape_name">Jubah Guild Memancing</string>
+    <string name="item_flame_heart_amulet_name">Azimat Hati Api</string>
+    <string name="item_fletching_cape_name">Jubah Pembuatan Panah</string>
+    <string name="item_fletching_guild_cape_name">Jubah Guild Pembuatan Panah</string>
+    <string name="item_forge_pickaxe_name">Beliung Tempaan</string>
+    <string name="item_hellfire_staff_name">Tongkat Api Neraka</string>
+    <string name="item_herblore_guild_cape_name">Jubah Guild Ramuan</string>
+    <string name="item_hp_cape_name">Jubah HP</string>
+    <string name="item_imp_pet_name">Peliharaan Iblis Kecil</string>
+    <string name="item_iron_arrow_tip_name">Mata Panah Besi</string>
+    <string name="item_iron_boots_name">Sepatu Bot Besi</string>
+    <string name="item_iron_chainbody_name">Baju Rantai Besi</string>
+    <string name="item_iron_full_helmet_name">Helm Penuh Besi</string>
+    <string name="item_iron_kiteshield_name">Perisai Layang Besi</string>
+    <string name="item_iron_longsword_name">Pedang Panjang Besi</string>
+    <string name="item_iron_med_helmet_name">Helm Sedang Besi</string>
+    <string name="item_iron_plateskirt_name">Rok Zirah Besi</string>
+    <string name="item_iron_square_shield_name">Perisai Persegi Besi</string>
+    <string name="item_ironwood_axe_name">Kapak Kayu Besi</string>
+    <string name="item_king_black_dragon_name">Raja Naga Hitam</string>
+    <string name="item_kraken_name">Kraken</string>
+    <string name="item_kraken_tentacle_name">Tentakel Kraken</string>
+    <string name="item_mages_guild_cape_name">Jubah Guild Penyihir</string>
+    <string name="item_magic_cape_name">Jubah Sihir</string>
+    <string name="item_magic_longbow_name">Busur Panjang Ajaib</string>
+    <string name="item_magic_shortbow_name">Busur Pendek Ajaib</string>
+    <string name="item_maple_shortbow_name">Busur Pendek Mapel</string>
+    <string name="item_mercantile_guild_cape_name">Jubah Guild Pedagang</string>
+    <string name="item_mind_blast_name">Ledakan Pikiran</string>
+    <string name="item_mind_bolt_name">Panah Pikiran</string>
+    <string name="item_mind_strike_name">Serangan Pikiran</string>
+    <string name="item_mind_wave_name">Gelombang Pikiran</string>
+    <string name="item_mining_cape_name">Jubah Pertambangan</string>
+    <string name="item_mining_guild_cape_name">Jubah Guild Pertambangan</string>
+    <string name="item_mithril_arrow_tip_name">Mata Panah Mithril</string>
+    <string name="item_mithril_boots_name">Sepatu Bot Mithril</string>
+    <string name="item_mithril_chainbody_name">Baju Rantai Mithril</string>
+    <string name="item_mithril_dagger_name">Belati Mithril</string>
+    <string name="item_mithril_full_helmet_name">Helm Penuh Mithril</string>
+    <string name="item_mithril_kiteshield_name">Perisai Layang Mithril</string>
+    <string name="item_mithril_longsword_name">Pedang Panjang Mithril</string>
+    <string name="item_mithril_med_helmet_name">Helm Sedang Mithril</string>
+    <string name="item_mithril_plateskirt_name">Rok Zirah Mithril</string>
+    <string name="item_mithril_square_shield_name">Perisai Persegi Mithril</string>
+    <string name="item_mutton_name">Daging Domba Panggang</string>
+    <string name="item_necklace_of_anguish_name">Kalung Penderitaan</string>
+    <string name="item_oak_shortbow_name">Busur Pendek Ek</string>
+    <string name="item_platinum_ore_name">Bijih Platina</string>
+    <string name="item_prayer_cape_name">Jubah Doa</string>
+    <string name="item_prayer_guild_cape_name">Jubah Guild Doa</string>
+    <string name="item_ranged_cape_name">Jubah Jarak Jauh</string>
+    <string name="item_rat_meat_name">Daging Tikus Panggang</string>
+    <string name="item_ring_of_dragons_might_name">Cincin Kekuatan Naga</string>
+    <string name="item_ring_of_flame_name">Cincin Api</string>
+    <string name="item_ring_of_recoil_name">Cincin Pentalan</string>
+    <string name="item_ring_of_suffering_name">Cincin Penderitaan</string>
+    <string name="item_ring_of_the_seas_name">Cincin Lautan</string>
+    <string name="item_ring_of_wealth_name">Cincin Kekayaan</string>
+    <string name="item_rock_golem_name">Golem Batu</string>
+    <string name="item_runecrafting_cape_name">Jubah Pembuatan Rune</string>
+    <string name="item_runecrafting_guild_cape_name">Jubah Guild Pembuatan Rune</string>
+    <string name="item_runite_arrow_tip_name">Mata Panah Runit</string>
+    <string name="item_runite_boots_name">Sepatu Bot Runit</string>
+    <string name="item_runite_chainbody_name">Baju Rantai Runit</string>
+    <string name="item_runite_dagger_name">Belati Runit</string>
+    <string name="item_runite_full_helmet_name">Helm Penuh Runit</string>
+    <string name="item_runite_kiteshield_name">Perisai Layang Runit</string>
+    <string name="item_runite_longsword_name">Pedang Panjang Runit</string>
+    <string name="item_runite_med_helmet_name">Helm Sedang Runit</string>
+    <string name="item_runite_plateskirt_name">Rok Zirah Runit</string>
+    <string name="item_runite_square_shield_name">Perisai Persegi Runit</string>
+    <string name="item_sanctum_axe_name">Kapak Sanktum</string>
+    <string name="item_seers_ring_name">Cincin Peramal</string>
+    <string name="item_shadow_dagger_name">Belati Bayangan</string>
+    <string name="item_shortbow_name">Busur Pendek</string>
+    <string name="item_silver_diamond_necklace_name">Kalung Perak Berlian</string>
+    <string name="item_silver_diamond_ring_name">Cincin Perak Berlian</string>
+    <string name="item_silver_emerald_necklace_name">Kalung Perak Zamrud</string>
+    <string name="item_silver_emerald_ring_name">Cincin Perak Zamrud</string>
+    <string name="item_silver_ruby_necklace_name">Kalung Perak Rubi</string>
+    <string name="item_silver_ruby_ring_name">Cincin Perak Rubi</string>
+    <string name="item_smithing_cape_name">Jubah Penempaan</string>
+    <string name="item_smithing_guild_cape_name">Jubah Guild Penempaan</string>
+    <string name="item_steel_arrow_tip_name">Mata Panah Baja</string>
+    <string name="item_steel_boots_name">Sepatu Bot Baja</string>
+    <string name="item_steel_chainbody_name">Baju Rantai Baja</string>
+    <string name="item_steel_dagger_name">Belati Baja</string>
+    <string name="item_steel_full_helmet_name">Helm Penuh Baja</string>
+    <string name="item_steel_kiteshield_name">Perisai Layang Baja</string>
+    <string name="item_steel_longsword_name">Pedang Panjang Baja</string>
+    <string name="item_steel_med_helmet_name">Helm Sedang Baja</string>
+    <string name="item_steel_plateskirt_name">Rok Zirah Baja</string>
+    <string name="item_steel_square_shield_name">Perisai Persegi Baja</string>
+    <string name="item_strength_cape_name">Jubah Kekuatan</string>
+    <string name="item_tangleroot_name">Akar Kusut</string>
+    <string name="item_tiny_templar_name">Templar Kecil</string>
+    <string name="item_tormented_necklace_name">Kalung Tersiksa</string>
+    <string name="item_trident_of_the_seas_name">Trisula Lautan</string>
+    <string name="item_warriors_guild_cape_name">Jubah Guild Pejuang</string>
+    <string name="item_water_blast_name">Ledakan Air</string>
+    <string name="item_water_bolt_name">Panah Air</string>
+    <string name="item_water_strike_name">Serangan Air</string>
+    <string name="item_water_wave_name">Gelombang Air</string>
+    <string name="item_willow_shortbow_name">Busur Pendek Dedalu</string>
+    <string name="item_wind_blast_name">Ledakan Angin</string>
+    <string name="item_wind_bolt_name">Panah Angin</string>
+    <string name="item_wind_strike_name">Serangan Angin</string>
+    <string name="item_wind_wave_name">Gelombang Angin</string>
+    <string name="item_woodcutting_cape_name">Jubah Menebang Kayu</string>
+    <string name="item_woodcutting_guild_cape_name">Jubah Guild Menebang Kayu</string>
+    <string name="item_yew_longbow_name">Busur Panjang Yew</string>
+    <string name="item_yew_shortbow_name">Busur Pendek Yew</string>
+</resources>

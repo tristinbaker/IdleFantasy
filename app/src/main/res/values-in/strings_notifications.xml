@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Notification channel metadata ===== -->
+    <string name="notif_channel_sessions_name">Notifikasi Sesi</string>
+    <string name="notif_channel_sessions_desc">Notifikasi saat sesi keahlianmu selesai</string>
+    <string name="notif_channel_farming_name">Notifikasi Pertanian</string>
+    <string name="notif_channel_farming_desc">Notifikasi saat tanamanmu siap dipanen</string>
+
+    <!-- ===== Session complete ===== -->
+    <string name="notif_session_complete_title">Sesi Selesai!</string>
+    <!-- Translator note: %1$s = localised skill name (e.g. "Mining") -->
+    <string name="notif_session_complete_body">Sesi %1$s kamu telah selesai. Ketuk untuk mengambil hadiahmu.</string>
+
+    <!-- ===== Buff alerts ===== -->
+    <string name="notif_channel_buffs_name">Notifikasi Peningkatan</string>
+    <string name="notif_channel_buffs_desc">Notifikasi saat peningkatan aktifmu habis</string>
+    <string name="notif_xp_boost_expired_title">Peningkatan XP Habis</string>
+    <string name="notif_xp_boost_expired_body">Peningkatan XP 2x kamu telah habis. Kunjungi toko untuk mengaktifkannya kembali.</string>
+    <string name="notif_blessing_expired_title">Berkat Habis</string>
+    <string name="notif_blessing_expired_body">Berkat gereja kamu telah memudar. Kunjungi Gereja untuk memperbaruinya.</string>
+
+    <!-- ===== Farming ready ===== -->
+    <string name="notif_farming_ready_title">Panen Siap!</string>
+    <!-- Translator note: %1$s = localised crop name (e.g. "Wheat"). Adjust grammar as needed for your language. -->
+    <string name="notif_farming_ready_body">%1$s kamu sudah siap dipanen.</string>
+    <!-- Plural variant used when multiple patches are ready -->
+    <!-- Translator note: %1$d = number of patches ready -->
+    <string name="notif_farming_ready_body_multi">%1$d lahan siap dipanen.</string>
+</resources>

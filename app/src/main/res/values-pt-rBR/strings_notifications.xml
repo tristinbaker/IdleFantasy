@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Notification channel metadata ===== -->
+    <string name="notif_channel_sessions_name">Alertas de Sessão</string>
+    <string name="notif_channel_sessions_desc">Notificações quando suas sessões de habilidade forem concluídas</string>
+    <string name="notif_channel_farming_name">Alertas de Cultivo</string>
+    <string name="notif_channel_farming_desc">Notificações quando suas plantações estiverem prontas para a colheita</string>
+
+    <!-- ===== Session complete ===== -->
+    <string name="notif_session_complete_title">Sessão Concluída!</string>
+    <!-- Translator note: %1$s = localised skill name (e.g. "Mining") -->
+    <string name="notif_session_complete_body">Sua sessão de %1$s terminou. Toque para coletar suas recompensas.</string>
+
+    <!-- ===== Buff alerts ===== -->
+    <string name="notif_channel_buffs_name">Alertas de Bônus</string>
+    <string name="notif_channel_buffs_desc">Notificações quando seus bônus ativos expirarem</string>
+    <string name="notif_xp_boost_expired_title">Bônus de XP Expirado</string>
+    <string name="notif_xp_boost_expired_body">Seu bônus de XP em dobro acabou. Visite a loja para reativá-lo.</string>
+    <string name="notif_blessing_expired_title">Bênção Expirada</string>
+    <string name="notif_blessing_expired_body">Sua bênção da igreja se dissipou. Visite a Igreja para renová-la.</string>
+
+    <!-- ===== Farming ready ===== -->
+    <string name="notif_farming_ready_title">Colheita Pronta!</string>
+    <!-- Translator note: %1$s = localised crop name (e.g. "Wheat"). Adjust grammar as needed for your language. -->
+    <string name="notif_farming_ready_body">Você já pode colher %1$s.</string>
+    <!-- Plural variant used when multiple patches are ready -->
+    <!-- Translator note: %1$d = number of patches ready -->
+    <string name="notif_farming_ready_body_multi">%1$d canteiros estão prontos para a colheita.</string>
+</resources>

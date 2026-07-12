@@ -1220,7 +1220,6 @@
     <plurals name="plural_collect_sessions">
         <item quantity="other">Kumpulkan Hadiah %1$d Sesi</item>
     </plurals>
-    <string name="daily_verb_farming">Panen</string>
 
     <!-- ===== Seasonal Events ===== -->
     <string name="seasonal_event_title">Acara Musiman</string>

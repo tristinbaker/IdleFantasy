@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Enemy names ===== -->
+    <string name="enemy_giant_rat_name">Rato Gigante</string>
+    <string name="enemy_goblin_name">Goblin</string>
+    <string name="enemy_skeleton_name">Esqueleto</string>
+    <string name="enemy_zombie_name">Zumbi</string>
+    <string name="enemy_bandit_name">Bandido</string>
+    <string name="enemy_guard_name">Guarda</string>
+    <string name="enemy_dark_wizard_name">Mago das Trevas</string>
+    <string name="enemy_orc_warrior_name">Guerreiro Orc</string>
+    <string name="enemy_spider_name">Aranha Gigante</string>
+    <string name="enemy_wild_dog_name">Cão Selvagem</string>
+    <string name="enemy_rogue_name">Ladino</string>
+    <string name="enemy_knight_name">Cavaleiro</string>
+    <string name="enemy_hellhound_name">Cão do Inferno</string>
+    <string name="enemy_troll_name">Troll da Montanha</string>
+    <string name="enemy_demon_name">Demônio Menor</string>
+    <string name="enemy_dragon_name">Dragão Verde</string>
+    <string name="enemy_imp_name">Diabrete</string>
+    <string name="enemy_chicken_name">Galinha</string>
+    <string name="enemy_sheep_name">Ovelha</string>
+    <string name="enemy_cow_name">Vaca</string>
+
+    <!-- ===== Dungeon names and descriptions ===== -->
+    <string name="dungeon_imp_cavern_name">Caverna dos Diabretes</string>
+    <string name="dungeon_imp_cavern_desc">Uma caverna rasa cheia de diabretes travessos. Perfeita para iniciantes completos!</string>
+    <string name="dungeon_goblin_cave_name">Caverna dos Goblins</string>
+    <string name="dungeon_goblin_cave_desc">Uma caverna escura infestada de goblins e ratos gigantes. Um bom lugar para novos aventureiros treinarem.</string>
+    <string name="dungeon_spider_den_name">Covil das Aranhas</string>
+    <string name="dungeon_spider_den_desc">Uma caverna cheia de teias, repleta de aranhas venenosas. Traga antídoto!</string>
+    <string name="dungeon_bandit_camp_name">Acampamento de Bandidos</string>
+    <string name="dungeon_bandit_camp_desc">Um esconderijo de ladrões e ladinos na natureza selvagem. Cuide bem da sua bolsa de moedas!</string>
+    <string name="dungeon_undead_crypt_name">Cripta dos Mortos-Vivos</string>
+    <string name="dungeon_undead_crypt_desc">Um antigo cemitério onde os mortos se recusam a descansar. Cuidado com a magia sombria!</string>
+    <string name="dungeon_fortress_ruins_name">Ruínas da Fortaleza</string>
+    <string name="dungeon_fortress_ruins_desc">Os destroços de um antigo castelo, agora guardados por cavaleiros e soldados.</string>
+    <string name="dungeon_orc_stronghold_name">Fortaleza Orc</string>
+    <string name="dungeon_orc_stronghold_desc">Um assentamento orc fortificado nas profundezas das montanhas. Somente os corajosos ousam entrar.</string>
+    <string name="dungeon_volcanic_depths_name">Profundezas Vulcânicas</string>
+    <string name="dungeon_volcanic_depths_desc">Uma caverna escaldante habitada por cães do inferno e demônios menores. O calor é insuportável!</string>
+    <string name="dungeon_dragon_lair_name">Covil do Dragão</string>
+    <string name="dungeon_dragon_lair_desc">O lendário lar dos dragões verdes. Somente guerreiros mestres sobrevivem a este desafio.</string>
+    <string name="dungeon_farm_name">Fazenda</string>
+    <string name="dungeon_farm_desc">Uma fazenda tranquila com animais. Ótima para iniciantes que buscam coletar comida!</string>
+    <string name="dungeon_infernal_stronghold_name">Fortaleza Infernal</string>
+    <string name="dungeon_infernal_stronghold_desc">Uma fortaleza de fogo e enxofre, governada por demônios e cães do inferno. Só o calor já é capaz de matar os despreparados.</string>
+    <string name="dungeon_ancient_temple_name">Templo Antigo</string>
+    <string name="dungeon_ancient_temple_desc">Um templo antigo guardado pelas criaturas mais poderosas do reino. Somente os guerreiros mais fortes ousam entrar.</string>
+
+    <!-- ===== Solo boss names (raid bosses retargeted for solo play) ===== -->
+    <string name="boss_king_black_dragon_name">Rei Dragão Negro</string>
+    <string name="boss_demon_lord_name">Senhor dos Demônios</string>
+    <string name="boss_kraken_name">Kraken</string>
+    <string name="boss_balrog_name">Balrog</string>
+
+    <!-- ===== Pet names and descriptions ===== -->
+    <string name="pet_dragon_whelp_name">Filhote de Dragão</string>
+    <string name="pet_dragon_whelp_desc">Um dragão jovem que aumenta seu XP de combate.</string>
+    <string name="pet_imp_pet_name">Diabrete de Estimação</string>
+    <string name="pet_imp_pet_desc">Um diabrete travesso que melhora seu treinamento de Oração.</string>
+    <string name="pet_baby_kraken_name">Kraken Bebê</string>
+    <string name="pet_baby_kraken_desc">Um kraken minúsculo que melhora seu XP de Culinária.</string>
+    <string name="pet_rock_golem_name">Golem de Pedra</string>
+    <string name="pet_rock_golem_desc">Uma formação rochosa viva que melhora seu XP de Mineração.</string>
+    <string name="pet_ent_name">Ent</string>
+    <string name="pet_ent_desc">Um antigo espírito arbóreo que aumenta seu XP de Corte de Lenha.</string>
+    <string name="pet_tiny_templar_name">Pequeno Templário</string>
+    <string name="pet_tiny_templar_desc">Um pequeno peixe companheiro que aumenta seu XP de Pesca.</string>
+    <string name="pet_tangleroot_name">Raiz Emaranhada</string>
+    <string name="pet_tangleroot_desc">Uma criatura vegetal mágica que melhora seu XP de Agricultura.</string>
+
+    <!-- Missing dungeons -->
+    <string name="dungeon_collapsed_mine_name">Mina Desmoronada</string>
+    <string name="dungeon_collapsed_mine_desc">Uma vasta caverna sob as minas de cobre. Trolls das cavernas e golens de pedra assombram os escombros, enquanto aranhas gigantes tecem teias pelos poços desmoronados.</string>
+    <string name="dungeon_shadow_den_name">Covil das Sombras</string>
+    <string name="dungeon_shadow_den_desc">Uma rede de câmaras subterrâneas usada pela guilda de ladrões da região. Ladinos, assassinos e criaturas sombrias espreitam em cada canto.</string>
+    <string name="dungeon_abyssal_ruins_name">Ruínas Abissais</string>
+    <string name="dungeon_abyssal_ruins_desc">Ruínas antigas que existem simultaneamente acima e abaixo do plano mortal. Estranhas criaturas abissais surgem e desaparecem da realidade.</string>
+    <string name="dungeon_ancient_forest_ruins_name">Ruínas da Floresta Antiga</string>
+    <string name="dungeon_ancient_forest_ruins_desc">Ruínas de pedra engolidas pela floresta primitiva, agora assombradas por criaturas selvagens e espíritos vingativos de druidas.</string>
+    <string name="dungeon_ancient_forge_name">Forja Antiga</string>
+    <string name="dungeon_ancient_forge_desc">Uma vasta forja anã que arde sem parar há séculos. Elementais de fogo e guardiões da forja protegem seus segredos.</string>
+    <string name="dungeon_arcane_ruins_name">Ruínas Arcanas</string>
+    <string name="dungeon_arcane_ruins_desc">As câmaras subterrâneas ainda funcionais da torre destruída de um mago. Constructos mágicos e guardiões encantados ainda patrulham seus corredores.</string>
+    <string name="dungeon_corrupted_sanctum_name">Santuário Corrompido</string>
+    <string name="dungeon_corrupted_sanctum_desc">Um santuário encharcado de sombras no coração do dossel corrompido. Sacerdotes sombrios e bestas corrompidas guardam um mal ancestral.</string>
+    <string name="dungeon_drowned_temple_name">Templo Afogado</string>
+    <string name="dungeon_drowned_temple_desc">Um templo submerso sob a gruta marinha, seus corredores cheios de água e criaturas marinhas que fizeram dele o seu lar.</string>
+</resources>

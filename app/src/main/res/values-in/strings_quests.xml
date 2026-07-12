@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Quest names and objectives ===== -->
+    <!-- Translator note: quest names are short titles; objectives are action sentences. -->
+
+    <!-- Mining -->
+    <string name="quest_mining_1_name">Pertambangan I</string>
+    <string name="quest_mining_1_objective">Tambang 500 Bijih Tembaga</string>
+    <string name="quest_mining_2_name">Pertambangan II</string>
+    <string name="quest_mining_2_objective">Tambang 750 Bijih Besi</string>
+    <string name="quest_mining_3_name">Pertambangan III</string>
+    <string name="quest_mining_3_objective">Tambang 1100 Batu Bara</string>
+    <string name="quest_mining_4_name">Pertambangan IV</string>
+    <string name="quest_mining_4_objective">Tambang 1650 Bijih Mithril</string>
+    <string name="quest_mining_5_name">Pertambangan V</string>
+    <string name="quest_mining_5_objective">Tambang 2450 Bijih Adamantite</string>
+    <string name="quest_mining_6_name">Pertambangan VI</string>
+    <string name="quest_mining_6_objective">Tambang 3650 Bijih Runite</string>
+
+    <!-- Woodcutting -->
+    <string name="quest_woodcutting_1_name">Penebangan Kayu I</string>
+    <string name="quest_woodcutting_1_objective">Tebang 500 Kayu Gelondongan</string>
+    <string name="quest_woodcutting_2_name">Penebangan Kayu II</string>
+    <string name="quest_woodcutting_2_objective">Tebang 750 Kayu Ek</string>
+    <string name="quest_woodcutting_3_name">Penebangan Kayu III</string>
+    <string name="quest_woodcutting_3_objective">Tebang 1100 Kayu Willow</string>
+    <string name="quest_woodcutting_4_name">Penebangan Kayu IV</string>
+    <string name="quest_woodcutting_4_objective">Tebang 1650 Kayu Maple</string>
+    <string name="quest_woodcutting_5_name">Penebangan Kayu V</string>
+    <string name="quest_woodcutting_5_objective">Tebang 2450 Kayu Yew</string>
+    <string name="quest_woodcutting_6_name">Penebangan Kayu VI</string>
+    <string name="quest_woodcutting_6_objective">Tebang 3650 Kayu Ajaib</string>
+
+    <!-- Fishing -->
+    <string name="quest_fishing_1_name">Memancing I</string>
+    <string name="quest_fishing_1_objective">Tangkap 500 ikan</string>
+    <string name="quest_fishing_2_name">Memancing II</string>
+    <string name="quest_fishing_2_objective">Tangkap 750 ikan</string>
+    <string name="quest_fishing_3_name">Memancing III</string>
+    <string name="quest_fishing_3_objective">Tangkap 1100 ikan</string>
+    <string name="quest_fishing_4_name">Memancing IV</string>
+    <string name="quest_fishing_4_objective">Tangkap 1650 ikan</string>
+    <string name="quest_fishing_5_name">Memancing V</string>
+    <string name="quest_fishing_5_objective">Tangkap 2450 ikan</string>
+    <string name="quest_fishing_6_name">Memancing VI</string>
+    <string name="quest_fishing_6_objective">Tangkap 3650 ikan</string>
+
+    <!-- Smithing -->
+    <string name="quest_smithing_1_name">Penempaan I</string>
+    <string name="quest_smithing_1_objective">Lebur 500 Batangan Perunggu</string>
+    <string name="quest_smithing_2_name">Penempaan II</string>
+    <string name="quest_smithing_2_objective">Lebur 750 Batangan Besi</string>
+    <string name="quest_smithing_3_name">Penempaan III</string>
+    <string name="quest_smithing_3_objective">Lebur 1100 Batangan Baja</string>
+    <string name="quest_smithing_4_name">Penempaan IV</string>
+    <string name="quest_smithing_4_objective">Lebur 1650 Batangan Mithril</string>
+    <string name="quest_smithing_5_name">Penempaan V</string>
+    <string name="quest_smithing_5_objective">Lebur 2450 Batangan Adamantite</string>
+    <string name="quest_smithing_6_name">Penempaan VI</string>
+    <string name="quest_smithing_6_objective">Lebur 3650 Batangan Runite</string>
+
+    <!-- Cooking - Fish -->
+    <string name="quest_cooking_fish_1_name">Memasak — Ikan I</string>
+    <string name="quest_cooking_fish_1_objective">Masak 500 ikan</string>
+    <string name="quest_cooking_fish_2_name">Memasak — Ikan II</string>
+    <string name="quest_cooking_fish_2_objective">Masak 750 ikan</string>
+    <string name="quest_cooking_fish_3_name">Memasak — Ikan III</string>
+    <string name="quest_cooking_fish_3_objective">Masak 1100 ikan</string>
+    <string name="quest_cooking_fish_4_name">Memasak — Ikan IV</string>
+    <string name="quest_cooking_fish_4_objective">Masak 1650 ikan</string>
+    <string name="quest_cooking_fish_5_name">Memasak — Ikan V</string>
+    <string name="quest_cooking_fish_5_objective">Masak 2450 ikan</string>
+    <string name="quest_cooking_fish_6_name">Memasak — Ikan VI</string>
+    <string name="quest_cooking_fish_6_objective">Masak 3650 ikan</string>
+
+    <!-- Cooking - Beef -->
+    <string name="quest_cooking_beef_1_name">Memasak — Daging Sapi I</string>
+    <string name="quest_cooking_beef_1_objective">Masak 100 Daging Sapi</string>
+    <string name="quest_cooking_beef_2_name">Memasak — Daging Sapi II</string>
+    <string name="quest_cooking_beef_2_objective">Masak 250 Daging Sapi</string>
+    <string name="quest_cooking_beef_3_name">Memasak — Daging Sapi III</string>
+    <string name="quest_cooking_beef_3_objective">Masak 500 Daging Sapi</string>
+
+    <!-- Cooking - Chicken -->
+    <string name="quest_cooking_chicken_1_name">Memasak — Ayam I</string>
+    <string name="quest_cooking_chicken_1_objective">Masak 100 Ayam</string>
+    <string name="quest_cooking_chicken_2_name">Memasak — Ayam II</string>
+    <string name="quest_cooking_chicken_2_objective">Masak 250 Ayam</string>
+    <string name="quest_cooking_chicken_3_name">Memasak — Ayam III</string>
+    <string name="quest_cooking_chicken_3_objective">Masak 500 Ayam</string>
+
+    <!-- Cooking - Mutton -->
+    <string name="quest_cooking_mutton_1_name">Memasak — Kambing I</string>
+    <string name="quest_cooking_mutton_1_objective">Masak 100 Daging Kambing</string>
+    <string name="quest_cooking_mutton_2_name">Memasak — Kambing II</string>
+    <string name="quest_cooking_mutton_2_objective">Masak 250 Daging Kambing</string>
+    <string name="quest_cooking_mutton_3_name">Memasak — Kambing III</string>
+    <string name="quest_cooking_mutton_3_objective">Masak 500 Daging Kambing</string>
+
+    <!-- Fletching -->
+    <string name="quest_fletching_1_name">Perakitan Panah I</string>
+    <string name="quest_fletching_1_objective">Rakit 500 Anak Panah Perunggu</string>
+    <string name="quest_fletching_2_name">Perakitan Panah II</string>
+    <string name="quest_fletching_2_objective">Rakit 750 Anak Panah Besi</string>
+    <string name="quest_fletching_3_name">Perakitan Panah III</string>
+    <string name="quest_fletching_3_objective">Rakit 1100 Anak Panah Baja</string>
+    <string name="quest_fletching_4_name">Perakitan Panah IV</string>
+    <string name="quest_fletching_4_objective">Rakit 1650 Anak Panah Mithril</string>
+    <string name="quest_fletching_5_name">Perakitan Panah V</string>
+    <string name="quest_fletching_5_objective">Rakit 2450 Anak Panah Adamantite</string>
+    <string name="quest_fletching_6_name">Perakitan Panah VI</string>
+    <string name="quest_fletching_6_objective">Rakit 3650 Anak Panah Runite</string>
+
+    <!-- Prayer -->
+    <string name="quest_prayer_1_name">Doa I</string>
+    <string name="quest_prayer_1_objective">Kubur 500 tulang</string>
+    <string name="quest_prayer_2_name">Doa II</string>
+    <string name="quest_prayer_2_objective">Kubur 750 tulang</string>
+    <string name="quest_prayer_3_name">Doa III</string>
+    <string name="quest_prayer_3_objective">Kubur 1100 tulang</string>
+    <string name="quest_prayer_4_name">Doa IV</string>
+    <string name="quest_prayer_4_objective">Kubur 1650 tulang</string>
+    <string name="quest_prayer_5_name">Doa V</string>
+    <string name="quest_prayer_5_objective">Kubur 2450 tulang</string>
+    <string name="quest_prayer_6_name">Doa VI</string>
+    <string name="quest_prayer_6_objective">Kubur 3650 tulang</string>
+
+    <!-- Slayer -->
+    <string name="quest_combat_kills_1_name">Pemburu Monster I</string>
+    <string name="quest_combat_kills_1_objective">Kalahkan 100 musuh</string>
+    <string name="quest_combat_kills_2_name">Pemburu Monster II</string>
+    <string name="quest_combat_kills_2_objective">Kalahkan 150 musuh</string>
+    <string name="quest_combat_kills_3_name">Pemburu Monster III</string>
+    <string name="quest_combat_kills_3_objective">Kalahkan 200 musuh</string>
+    <string name="quest_combat_kills_4_name">Pemburu Monster IV</string>
+    <string name="quest_combat_kills_4_objective">Kalahkan 300 musuh</string>
+    <string name="quest_combat_kills_5_name">Pemburu Monster V</string>
+    <string name="quest_combat_kills_5_objective">Kalahkan 450 musuh</string>
+    <string name="quest_combat_kills_6_name">Pemburu Monster VI</string>
+    <string name="quest_combat_kills_6_objective">Kalahkan 650 musuh</string>
+
+    <!-- Dungeon exploration -->
+    <string name="quest_dungeon_farm_1_name">Penjelajah Dungeon I</string>
+    <string name="quest_dungeon_farm_1_objective">Selesaikan Dungeon Ladang sebanyak 5 kali</string>
+    <string name="quest_dungeon_goblin_1_name">Penjelajah Dungeon II</string>
+    <string name="quest_dungeon_goblin_1_objective">Selesaikan Gua Goblin sebanyak 5 kali</string>
+    <string name="quest_dungeon_spider_1_name">Penjelajah Dungeon III</string>
+    <string name="quest_dungeon_spider_1_objective">Selesaikan Sarang Laba-laba sebanyak 5 kali</string>
+    <string name="quest_dungeon_bandit_1_name">Penjelajah Dungeon IV</string>
+    <string name="quest_dungeon_bandit_1_objective">Selesaikan Perkemahan Bandit sebanyak 5 kali</string>
+    <string name="quest_dungeon_undead_1_name">Penjelajah Dungeon V</string>
+    <string name="quest_dungeon_undead_1_objective">Selesaikan Kripta Mayat Hidup sebanyak 5 kali</string>
+    <string name="quest_dungeon_fortress_1_name">Penjelajah Dungeon VI</string>
+    <string name="quest_dungeon_fortress_1_objective">Selesaikan Reruntuhan Benteng sebanyak 5 kali</string>
+    <string name="quest_dungeon_orc_1_name">Penguasa Dungeon I</string>
+    <string name="quest_dungeon_orc_1_objective">Selesaikan Benteng Orc sebanyak 5 kali</string>
+    <string name="quest_dungeon_volcanic_1_name">Penguasa Dungeon II</string>
+    <string name="quest_dungeon_volcanic_1_objective">Selesaikan Kedalaman Vulkanik sebanyak 5 kali</string>
+    <string name="quest_dungeon_dragon_1_name">Penguasa Dungeon III</string>
+    <string name="quest_dungeon_dragon_1_objective">Selesaikan Sarang Naga sebanyak 5 kali</string>
+
+    <!-- Crafting -->
+    <string name="quest_crafting_1_name">Kerajinan I</string>
+    <string name="quest_crafting_1_objective">Buat 100 Cincin Perak</string>
+    <string name="quest_crafting_2_name">Kerajinan II</string>
+    <string name="quest_crafting_2_objective">Buat 250 Cincin Emas</string>
+    <string name="quest_crafting_3_name">Kerajinan III</string>
+    <string name="quest_crafting_3_objective">Buat 500 Cincin Platinum</string>
+    <string name="quest_crafting_4_name">Kerajinan IV</string>
+    <string name="quest_crafting_4_objective">Buat 750 Cincin Perak Safir</string>
+    <string name="quest_crafting_5_name">Kerajinan V</string>
+    <string name="quest_crafting_5_objective">Buat 1000 Cincin Emas Safir</string>
+    <string name="quest_crafting_6_name">Kerajinan VI</string>
+    <string name="quest_crafting_6_objective">Buat 1500 Cincin Platinum Berlian</string>
+
+    <!-- Monster slayer chains -->
+    <string name="quest_goblin_slayer_1_name">Pembasmi Goblin I</string>
+    <string name="quest_goblin_slayer_1_objective">Kalahkan 50 Goblin</string>
+    <string name="quest_goblin_slayer_2_name">Pembasmi Goblin II</string>
+    <string name="quest_goblin_slayer_2_objective">Kalahkan 100 Goblin</string>
+    <string name="quest_spider_slayer_1_name">Pembasmi Laba-laba I</string>
+    <string name="quest_spider_slayer_1_objective">Kalahkan 40 Laba-laba Raksasa</string>
+    <string name="quest_spider_slayer_2_name">Pembasmi Laba-laba II</string>
+    <string name="quest_spider_slayer_2_objective">Kalahkan 80 Laba-laba Raksasa</string>
+    <string name="quest_skeleton_slayer_1_name">Pembasmi Kerangka I</string>
+    <string name="quest_skeleton_slayer_1_objective">Kalahkan 35 Kerangka</string>
+    <string name="quest_skeleton_slayer_2_name">Pembasmi Kerangka II</string>
+    <string name="quest_skeleton_slayer_2_objective">Kalahkan 70 Kerangka</string>
+    <string name="quest_bandit_hunter_1_name">Pemburu Bandit I</string>
+    <string name="quest_bandit_hunter_1_objective">Kalahkan 30 Bandit</string>
+    <string name="quest_bandit_hunter_2_name">Pemburu Bandit II</string>
+    <string name="quest_bandit_hunter_2_objective">Kalahkan 60 Bandit</string>
+    <string name="quest_orc_slayer_1_name">Pembasmi Orc I</string>
+    <string name="quest_orc_slayer_1_objective">Kalahkan 25 Prajurit Orc</string>
+    <string name="quest_orc_slayer_2_name">Pembasmi Orc II</string>
+    <string name="quest_orc_slayer_2_objective">Kalahkan 50 Prajurit Orc</string>
+    <string name="quest_demon_slayer_1_name">Pembasmi Iblis I</string>
+    <string name="quest_demon_slayer_1_objective">Kalahkan Raja Iblis</string>
+    <string name="quest_demon_slayer_2_name">Pembasmi Iblis II</string>
+    <string name="quest_demon_slayer_2_objective">Kalahkan Raja Iblis sebanyak 5 kali</string>
+    <string name="quest_demon_slayer_3_name">Pembasmi Iblis III</string>
+    <string name="quest_demon_slayer_3_objective">Kalahkan Raja Iblis sebanyak 25 kali</string>
+    <string name="quest_dragon_slayer_1_name">Pembasmi Naga I</string>
+    <string name="quest_dragon_slayer_1_objective">Kalahkan 10 Naga Hijau</string>
+    <string name="quest_dragon_slayer_2_name">Pembasmi Naga II</string>
+    <string name="quest_dragon_slayer_2_objective">Kalahkan 25 Naga Hijau</string>
+
+    <!-- Combat style challenges -->
+    <string name="quest_melee_warrior_1_name">Pejuang Melee I</string>
+    <string name="quest_melee_warrior_1_objective">Selesaikan Gua Goblin hanya dengan pertarungan jarak dekat</string>
+    <string name="quest_melee_warrior_2_name">Pejuang Melee II</string>
+    <string name="quest_melee_warrior_2_objective">Selesaikan Perkemahan Bandit hanya dengan pertarungan jarak dekat</string>
+    <string name="quest_melee_warrior_3_name">Pejuang Melee III</string>
+    <string name="quest_melee_warrior_3_objective">Selesaikan Reruntuhan Benteng hanya dengan pertarungan jarak dekat</string>
+    <string name="quest_ranger_elite_1_name">Pemanah Elite I</string>
+    <string name="quest_ranger_elite_1_objective">Selesaikan Gua Goblin hanya dengan pertarungan jarak jauh</string>
+    <string name="quest_ranger_elite_2_name">Pemanah Elite II</string>
+    <string name="quest_ranger_elite_2_objective">Selesaikan Perkemahan Bandit hanya dengan pertarungan jarak jauh</string>
+    <string name="quest_ranger_elite_3_name">Pemanah Elite III</string>
+    <string name="quest_ranger_elite_3_objective">Selesaikan Reruntuhan Benteng hanya dengan pertarungan jarak jauh</string>
+    <string name="quest_mage_master_1_name">Ahli Sihir I</string>
+    <string name="quest_mage_master_1_objective">Selesaikan Gua Goblin hanya dengan sihir</string>
+    <string name="quest_mage_master_2_name">Ahli Sihir II</string>
+    <string name="quest_mage_master_2_objective">Selesaikan Perkemahan Bandit hanya dengan sihir</string>
+    <string name="quest_mage_master_3_name">Ahli Sihir III</string>
+    <string name="quest_mage_master_3_objective">Selesaikan Reruntuhan Benteng hanya dengan sihir</string>
+
+    <!-- Iron Stomach (no food) challenges -->
+    <string name="quest_iron_stomach_1_name">Perut Baja I</string>
+    <string name="quest_iron_stomach_1_objective">Selesaikan Sarang Laba-laba tanpa menggunakan makanan</string>
+    <string name="quest_iron_stomach_2_name">Perut Baja II</string>
+    <string name="quest_iron_stomach_2_objective">Selesaikan Kripta Mayat Hidup tanpa menggunakan makanan</string>
+    <string name="quest_iron_stomach_3_name">Perut Baja III</string>
+    <string name="quest_iron_stomach_3_objective">Selesaikan Benteng Orc tanpa menggunakan makanan</string>
+    <string name="quest_iron_stomach_4_name">Perut Baja IV</string>
+    <string name="quest_iron_stomach_4_objective">Selesaikan Sarang Naga tanpa menggunakan makanan</string>
+
+    <!-- Treasure Hunter -->
+    <string name="quest_treasure_hunter_1_name">Pemburu Harta Karun I</string>
+    <string name="quest_treasure_hunter_1_objective">Kumpulkan 20 Sutra Laba-laba dari pertarungan</string>
+    <string name="quest_treasure_hunter_2_name">Pemburu Harta Karun II</string>
+    <string name="quest_treasure_hunter_2_objective">Kumpulkan 10 Baju Zirah Goblin dari pertarungan</string>
+    <string name="quest_treasure_hunter_3_name">Pemburu Harta Karun III</string>
+    <string name="quest_treasure_hunter_3_objective">Kumpulkan 5 Tanduk Iblis dari pertarungan</string>
+    <string name="quest_treasure_hunter_4_name">Pemburu Harta Karun IV</string>
+    <string name="quest_treasure_hunter_4_objective">Kumpulkan 3 Sisik Naga dari pertarungan</string>
+
+    <!-- Firemaking -->
+    <string name="quest_firemaking_1_name">Pembuatan Api I</string>
+    <string name="quest_firemaking_1_objective">Bakar 500 Kayu Gelondongan</string>
+    <string name="quest_firemaking_2_name">Pembuatan Api II</string>
+    <string name="quest_firemaking_2_objective">Bakar 750 Kayu Ek</string>
+    <string name="quest_firemaking_3_name">Pembuatan Api III</string>
+    <string name="quest_firemaking_3_objective">Bakar 1100 Kayu Willow</string>
+    <string name="quest_firemaking_4_name">Pembuatan Api IV</string>
+    <string name="quest_firemaking_4_objective">Bakar 1650 Kayu Maple</string>
+    <string name="quest_firemaking_5_name">Pembuatan Api V</string>
+    <string name="quest_firemaking_5_objective">Bakar 2450 Kayu Yew</string>
+    <string name="quest_firemaking_6_name">Pembuatan Api VI</string>
+    <string name="quest_firemaking_6_objective">Bakar 3650 Kayu Ajaib</string>
+
+    <!-- Runecrafting -->
+    <string name="quest_runecrafting_1_name">Pembuatan Rune I</string>
+    <string name="quest_runecrafting_1_objective">Buat 500 Rune Udara</string>
+    <string name="quest_runecrafting_2_name">Pembuatan Rune II</string>
+    <string name="quest_runecrafting_2_objective">Buat 750 Rune Air</string>
+    <string name="quest_runecrafting_3_name">Pembuatan Rune III</string>
+    <string name="quest_runecrafting_3_objective">Buat 1100 Rune Tanah</string>
+    <string name="quest_runecrafting_4_name">Pembuatan Rune IV</string>
+    <string name="quest_runecrafting_4_objective">Buat 1650 Rune Api</string>
+    <string name="quest_runecrafting_5_name">Pembuatan Rune V</string>
+    <string name="quest_runecrafting_5_objective">Buat 2450 Rune Pikiran</string>
+    <string name="quest_runecrafting_6_name">Pembuatan Rune VI</string>
+    <string name="quest_runecrafting_6_objective">Buat 3650 Rune Kekacauan</string>
+
+    <!-- Herblore -->
+    <string name="quest_herblore_1_name">Ramuan I</string>
+    <string name="quest_herblore_1_objective">Seduh 100 Ramuan Serangan</string>
+    <string name="quest_herblore_2_name">Ramuan II</string>
+    <string name="quest_herblore_2_objective">Racik 250 Ramuan Pertahanan</string>
+    <string name="quest_herblore_3_name">Ramuan III</string>
+    <string name="quest_herblore_3_objective">Racik 500 Ramuan Kekuatan</string>
+    <string name="quest_herblore_4_name">Ramuan IV</string>
+    <string name="quest_herblore_4_objective">Racik 750 Ramuan Jarak Jauh</string>
+    <string name="quest_herblore_5_name">Ramuan V</string>
+    <string name="quest_herblore_5_objective">Racik 1000 Ramuan Sihir</string>
+    <string name="quest_herblore_6_name">Ramuan VI</string>
+    <string name="quest_herblore_6_objective">Racik 1500 Ramuan Kekuatan Super</string>
+
+    <!-- Slayer extended -->
+    <string name="quest_combat_kills_7_name">Pemburu Monster VII</string>
+    <string name="quest_combat_kills_7_objective">Kalahkan 1000 musuh</string>
+    <string name="quest_combat_kills_8_name">Pemburu Monster VIII</string>
+    <string name="quest_combat_kills_8_objective">Kalahkan 1500 musuh</string>
+    <string name="quest_combat_kills_9_name">Pemburu Monster IX</string>
+    <string name="quest_combat_kills_9_objective">Kalahkan 2250 musuh</string>
+    <string name="quest_combat_kills_10_name">Pemburu Monster X</string>
+    <string name="quest_combat_kills_10_objective">Kalahkan 3400 musuh</string>
+    <string name="quest_combat_kills_11_name">Pemburu Monster XI</string>
+    <string name="quest_combat_kills_11_objective">Kalahkan 5100 musuh</string>
+    <string name="quest_combat_kills_12_name">Pemburu Monster XII</string>
+    <string name="quest_combat_kills_12_objective">Kalahkan 7650 musuh</string>
+
+    <!-- New monster slayer chains -->
+    <string name="quest_zombie_slayer_1_name">Pembasmi Zombi I</string>
+    <string name="quest_zombie_slayer_1_objective">Kalahkan 35 Zombi</string>
+    <string name="quest_zombie_slayer_2_name">Pembasmi Zombi II</string>
+    <string name="quest_zombie_slayer_2_objective">Kalahkan 70 Zombi</string>
+    <string name="quest_hellhound_slayer_1_name">Pembasmi Anjing Neraka I</string>
+    <string name="quest_hellhound_slayer_1_objective">Kalahkan 25 Anjing Neraka</string>
+    <string name="quest_hellhound_slayer_2_name">Pembasmi Anjing Neraka II</string>
+    <string name="quest_hellhound_slayer_2_objective">Kalahkan 50 Anjing Neraka</string>
+    <string name="quest_troll_slayer_1_name">Pembasmi Troll I</string>
+    <string name="quest_troll_slayer_1_objective">Kalahkan 20 Troll Gunung</string>
+    <string name="quest_troll_slayer_2_name">Pembasmi Troll II</string>
+    <string name="quest_troll_slayer_2_objective">Kalahkan 40 Troll Gunung</string>
+    <string name="quest_fire_giant_slayer_1_name">Pembasmi Raksasa Api I</string>
+    <string name="quest_fire_giant_slayer_1_objective">Kalahkan 15 Raksasa Api</string>
+    <string name="quest_fire_giant_slayer_2_name">Pembasmi Raksasa Api II</string>
+    <string name="quest_fire_giant_slayer_2_objective">Kalahkan 30 Raksasa Api</string>
+    <string name="quest_ancient_guardian_slayer_1_name">Pembasmi Penjaga Kuno I</string>
+    <string name="quest_ancient_guardian_slayer_1_objective">Kalahkan 10 Penjaga Kuno</string>
+    <string name="quest_ancient_guardian_slayer_2_name">Pembasmi Penjaga Kuno II</string>
+    <string name="quest_ancient_guardian_slayer_2_objective">Kalahkan 20 Penjaga Kuno</string>
+    <string name="quest_lich_slayer_1_name">Pembasmi Lich I</string>
+    <string name="quest_lich_slayer_1_objective">Kalahkan 10 Lich</string>
+    <string name="quest_lich_slayer_2_name">Pembasmi Lich II</string>
+    <string name="quest_lich_slayer_2_objective">Kalahkan 20 Lich</string>
+
+    <!-- Dungeon exploration extended -->
+    <string name="quest_dungeon_imp_1_name">Penjelajah Dungeon VII</string>
+    <string name="quest_dungeon_imp_1_objective">Selesaikan Gua Iblis Kecil sebanyak 5 kali</string>
+    <string name="quest_dungeon_infernal_1_name">Penguasa Dungeon IV</string>
+    <string name="quest_dungeon_infernal_1_objective">Selesaikan Benteng Neraka sebanyak 5 kali</string>
+    <string name="quest_dungeon_ancient_1_name">Penguasa Dungeon V</string>
+    <string name="quest_dungeon_ancient_1_objective">Selesaikan Kuil Kuno sebanyak 5 kali</string>
+
+    <!-- Boss extended -->
+    <string name="quest_kbd_slayer_1_objective">Kalahkan Raja Naga Hitam</string>
+    <string name="quest_kbd_slayer_2_objective">Kalahkan Raja Naga Hitam sebanyak 5 kali</string>
+    <string name="quest_kbd_slayer_3_objective">Kalahkan Raja Naga Hitam sebanyak 25 kali</string>
+    <string name="quest_kbd_slayer_4_name">Pembasmi Raja Naga Hitam IV</string>
+    <string name="quest_kbd_slayer_4_objective">Kalahkan Raja Naga Hitam sebanyak 50 kali</string>
+    <string name="quest_demon_slayer_4_name">Pembasmi Iblis IV</string>
+    <string name="quest_demon_slayer_4_objective">Kalahkan Raja Iblis sebanyak 50 kali</string>
+    <string name="quest_kraken_killer_1_name">Pembunuh Kraken I</string>
+    <string name="quest_kraken_killer_1_objective">Kalahkan Kraken</string>
+    <string name="quest_kraken_killer_2_name">Pembunuh Kraken II</string>
+    <string name="quest_kraken_killer_2_objective">Kalahkan Kraken sebanyak 5 kali</string>
+    <string name="quest_kraken_killer_3_name">Pembunuh Kraken III</string>
+    <string name="quest_kraken_killer_3_objective">Kalahkan Kraken sebanyak 25 kali</string>
+    <string name="quest_kraken_killer_4_name">Pembunuh Kraken IV</string>
+    <string name="quest_kraken_killer_4_objective">Kalahkan Kraken sebanyak 50 kali</string>
+    <string name="quest_balrog_bane_1_name">Momok Balrog I</string>
+    <string name="quest_balrog_bane_1_objective">Kalahkan Balrog</string>
+    <string name="quest_balrog_bane_2_name">Momok Balrog II</string>
+    <string name="quest_balrog_bane_2_objective">Kalahkan Balrog sebanyak 5 kali</string>
+    <string name="quest_balrog_bane_3_name">Momok Balrog III</string>
+    <string name="quest_balrog_bane_3_objective">Kalahkan Balrog sebanyak 25 kali</string>
+    <string name="quest_balrog_bane_4_name">Momok Balrog IV</string>
+    <string name="quest_balrog_bane_4_objective">Kalahkan Balrog sebanyak 50 kali</string>
+
+    <!-- Combat style challenges extended -->
+    <string name="quest_melee_warrior_4_name">Pejuang Melee IV</string>
+    <string name="quest_melee_warrior_4_objective">Selesaikan Benteng Orc hanya dengan pertarungan jarak dekat</string>
+    <string name="quest_melee_warrior_5_name">Pejuang Melee V</string>
+    <string name="quest_melee_warrior_5_objective">Selesaikan Sarang Naga hanya dengan pertarungan jarak dekat</string>
+    <string name="quest_ranger_elite_4_name">Pemanah Elite IV</string>
+    <string name="quest_ranger_elite_4_objective">Selesaikan Benteng Orc hanya dengan pertarungan jarak jauh</string>
+    <string name="quest_ranger_elite_5_name">Pemanah Elite V</string>
+    <string name="quest_ranger_elite_5_objective">Selesaikan Sarang Naga hanya dengan pertarungan jarak jauh</string>
+    <string name="quest_mage_master_4_name">Ahli Sihir IV</string>
+    <string name="quest_mage_master_4_objective">Selesaikan Benteng Orc hanya dengan sihir</string>
+    <string name="quest_mage_master_5_name">Ahli Sihir V</string>
+    <string name="quest_mage_master_5_objective">Selesaikan Sarang Naga hanya dengan sihir</string>
+
+    <!-- Iron Stomach extended -->
+    <string name="quest_iron_stomach_5_name">Perut Baja V</string>
+    <string name="quest_iron_stomach_5_objective">Selesaikan Benteng Neraka tanpa menggunakan makanan</string>
+    <string name="quest_iron_stomach_6_name">Perut Baja VI</string>
+    <string name="quest_iron_stomach_6_objective">Selesaikan Kuil Kuno tanpa menggunakan makanan</string>
+
+    <!-- Treasure Hunter extended -->
+    <string name="quest_treasure_hunter_5_name">Pemburu Harta Karun V</string>
+    <string name="quest_treasure_hunter_5_objective">Kumpulkan 10 Taring Anjing Neraka dari pertarungan</string>
+    <string name="quest_treasure_hunter_6_name">Pemburu Harta Karun VI</string>
+    <string name="quest_treasure_hunter_6_objective">Kumpulkan 15 Tulang Troll dari pertarungan</string>
+
+    <!-- Daily quest verbs -->
+    <string name="daily_verb_mining">Tambang</string>
+    <string name="daily_verb_fishing">Tangkap</string>
+    <string name="daily_verb_woodcutting">Tebang</string>
+    <string name="daily_verb_smithing">Tempa</string>
+    <string name="daily_verb_cooking">Masak</string>
+    <string name="daily_verb_combat">Kalahkan</string>
+
+    <!-- Daily quest names -->
+    <string name="quest_daily_mine_iron_name">Penambang Besi</string>
+    <string name="quest_daily_mine_coal_name">Pengangkut Batu Bara</string>
+    <string name="quest_daily_mine_mithril_name">Pencari Mithril</string>
+    <string name="quest_daily_mine_runite_name">Perburuan Runite</string>
+    <string name="quest_daily_fish_salmon_name">Perburuan Salmon</string>
+    <string name="quest_daily_fish_lobster_name">Tangkapan Lobster</string>
+    <string name="quest_daily_fish_swordfish_name">Pemburu Ikan Todak</string>
+    <string name="quest_daily_fish_shark_name">Penakluk Hiu</string>
+    <string name="quest_daily_wc_oak_name">Penebang Ek</string>
+    <string name="quest_daily_wc_willow_name">Pekerja Willow</string>
+    <string name="quest_daily_wc_yew_name">Penebang Yew</string>
+    <string name="quest_daily_wc_magic_name">Penebang Kayu Ajaib</string>
+    <string name="quest_daily_smith_iron_name">Penempa Besi</string>
+    <string name="quest_daily_smith_mithril_name">Penempa Mithril</string>
+    <string name="quest_daily_smith_adamantite_name">Pengrajin Adamantite</string>
+    <string name="quest_daily_smith_runite_name">Pelebur Runite</string>
+    <string name="quest_daily_cook_trout_name">Koki Trout</string>
+    <string name="quest_daily_cook_salmon_name">Pemanggang Salmon</string>
+    <string name="quest_daily_cook_lobster_name">Juru Masak Lobster</string>
+    <string name="quest_daily_cook_swordfish_name">Juru Masak Ikan Todak</string>
+    <string name="quest_daily_kill_goblin_name">Pembasmi Goblin</string>
+    <string name="quest_daily_kill_bandit_name">Penumpas Bandit</string>
+    <string name="quest_daily_kill_demon_name">Pemburu Iblis</string>
+    <string name="quest_daily_kill_dragon_name">Pembasmi Naga</string>
+
+    <!-- Quest objective verb strings for craft skills -->
+    <string name="daily_verb_crafting">Buat</string>
+    <string name="daily_verb_firemaking">Bakar</string>
+    <string name="daily_verb_fletching">Rakit</string>
+    <string name="daily_verb_herblore">Seduh</string>
+    <string name="daily_verb_runecrafting">Buat</string>
+    <string name="daily_verb_prayer">Kubur</string>
+    <string name="daily_verb_construction">Bangun</string>
+    <string name="daily_verb_farming">Panen</string>
+
+    <!-- Quest objective format strings -->
+    <string name="quest_obj_gather">%1$s %2$d %3$s</string>
+    <string name="quest_obj_craft">%1$s %2$d %3$s</string>
+    <string name="quest_obj_prayer">Kubur %1$d tulang apa saja</string>
+    <string name="quest_obj_kill">Kalahkan %1$d musuh</string>
+    <string name="quest_obj_kill_enemy">Kalahkan %1$d %2$s</string>
+    <string name="quest_obj_dungeon">Selesaikan %1$s sebanyak %2$d kali</string>
+    <string name="quest_obj_dungeon_once">Selesaikan %1$s</string>
+    <string name="quest_obj_boss">Kalahkan %1$s sebanyak %2$d kali</string>
+    <string name="quest_obj_boss_once">Kalahkan %1$s</string>
+    <string name="quest_obj_dungeon_melee_only">Selesaikan %1$s hanya dengan pertarungan jarak dekat</string>
+    <string name="quest_obj_dungeon_ranged_only">Selesaikan %1$s hanya dengan pertarungan jarak jauh</string>
+    <string name="quest_obj_dungeon_magic_only">Selesaikan %1$s hanya dengan sihir</string>
+    <string name="quest_obj_dungeon_no_food">Selesaikan %1$s tanpa menggunakan makanan apa pun</string>
+    <string name="quest_obj_collect">Kumpulkan %1$d %2$s dari pertarungan</string>
+    <string name="quest_obj_slayer_task">Selesaikan %1$d tugas Pemburu</string>
+
+</resources>

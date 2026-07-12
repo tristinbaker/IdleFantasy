@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Skill names and descriptions ===== -->
+
+    <!-- Gathering skills -->
+    <string name="skill_mining_name">Pertambangan</string>
+    <string name="skill_mining_desc">Menggali bijih dan permata berharga dari dalam tanah.</string>
+    <string name="skill_fishing_name">Memancing</string>
+    <string name="skill_fishing_desc">Tangkap ikan dan harta karun air dari perairan.</string>
+    <string name="skill_woodcutting_name">Menebang Kayu</string>
+    <string name="skill_woodcutting_desc">Tebang pohon dan kumpulkan berbagai jenis kayu.</string>
+    <string name="skill_farming_name">Bercocok Tanam</string>
+    <string name="skill_farming_desc">Tanam dan panen hasil pertanian dari petak lahanmu.</string>
+    <string name="skill_firemaking_name">Membuat Api</string>
+    <string name="skill_firemaking_desc">Bakar kayu dari inventarismu untuk mendapatkan XP Membuat Api. Setiap kayu yang dibakar juga menghasilkan abu, yang bisa ditaburkan pada skill Doa untuk XP Doa tambahan.</string>
+    <string name="skill_agility_name">Ketangkasan</string>
+    <string name="skill_agility_desc">Latih Ketangkasan untuk mengurangi waktu sesi di semua skill. Level 99 memangkas 20 menit dari satu jam (60 menit → 40 menit), dengan pengurangan linear yang halus seiring naik level.</string>
+
+    <!-- Crafting skills -->
+    <string name="skill_smithing_name">Pandai Besi</string>
+    <string name="skill_smithing_desc">Lebur bijih menjadi batangan logam dan tempa perlengkapan logam yang kuat.</string>
+    <string name="skill_cooking_name">Memasak</string>
+    <string name="skill_cooking_desc">Masak bahan mentah menjadi makanan yang memulihkan HP saat bertarung.</string>
+    <string name="skill_fletching_name">Pembuatan Panah</string>
+    <string name="skill_fletching_desc">Buat busur dan anak panah dari kayu dan komponen logam.</string>
+    <string name="skill_crafting_name">Kerajinan</string>
+    <string name="skill_crafting_desc">Buat perhiasan dan barang kerajinan lainnya dari bahan-bahan berharga.</string>
+    <string name="skill_runecrafting_name">Pembuatan Rune</string>
+    <string name="skill_runecrafting_desc">Buat rune magis dari esensi rune untuk digunakan dalam merapal mantra.</string>
+    <string name="skill_herblore_name">Ramuan</string>
+    <string name="skill_herblore_desc">Racik ramuan dari herba hasil bercocok tanam dan bahan dungeon untuk meningkatkan statistik bertarungmu.</string>
+
+    <!-- Combat skills -->
+    <string name="skill_attack_name">Serangan</string>
+    <string name="skill_attack_desc">Meningkatkan akurasi jarak dekatmu, memperbesar peluang untuk mengenai musuh.</string>
+    <string name="skill_strength_name">Kekuatan</string>
+    <string name="skill_strength_desc">Meningkatkan kerusakan maksimum jarak dekat per pukulan.</string>
+    <string name="skill_defense_name">Pertahanan</string>
+    <string name="skill_defense_desc">Mengurangi kerusakan yang kamu terima dari serangan musuh.</string>
+    <string name="skill_ranged_name">Jarak Jauh</string>
+    <string name="skill_ranged_desc">Serang musuh dari jarak aman menggunakan busur dan anak panah.</string>
+    <string name="skill_magic_name">Sihir</string>
+    <string name="skill_magic_desc">Rapal mantra kuat menggunakan rune. Level lebih tinggi membuka mantra yang lebih kuat.</string>
+    <string name="skill_hitpoints_name">Poin Nyawa</string>
+    <string name="skill_hitpoints_desc">Total kesehatanmu. Level lebih tinggi membuatmu bertahan lebih lama dalam pertarungan.</string>
+    <string name="skill_prayer_name">Doa</string>
+    <string name="skill_prayer_desc">Kubur tulang hasil pertarungan untuk mendapatkan XP Doa. Level lebih tinggi meningkatkan level bertarungmu.</string>
+
+    <!-- ===== Skill unlock sheet labels ===== -->
+    <string name="label_lv">Lv %1$d</string>
+    <string name="skills_agility_course_detail">Lv. %1$d  •  %2$d XP/putaran</string>
+    <string name="label_hp_passive">Pasif — meningkatkan HP maksimum</string>
+    <string name="label_hp_scales">HP maksimum meningkat setiap level</string>
+    <string name="label_hp_max">HP Maksimum: %1$d</string>
+    <string name="label_xp_per_bone">%1$s (%2$d XP/tulang)</string>
+    <string name="label_xp_per_kill">%1$s (%2$d XP/bunuh)</string>
+
+    <!-- ===== Agility course names and descriptions ===== -->
+    <string name="agility_beginner_course_name">Jalur Pemula</string>
+    <string name="agility_beginner_course_desc">Jalur rintangan sederhana untuk mereka yang baru memulai latihan ketangkasan.</string>
+    <string name="agility_novice_course_name">Jalur Novis</string>
+    <string name="agility_novice_course_desc">Jalur yang sedikit lebih menantang dengan rintangan dasar.</string>
+    <string name="agility_apprentice_course_name">Jalur Magang</string>
+    <string name="agility_apprentice_course_desc">Jalur tingkat menengah yang membutuhkan sedikit keterampilan untuk dilalui.</string>
+    <string name="agility_intermediate_course_name">Jalur Menengah</string>
+    <string name="agility_intermediate_course_desc">Jalur dengan tingkat kesulitan sedang dan rintangan yang rumit.</string>
+    <string name="agility_advanced_course_name">Jalur Lanjutan</string>
+    <string name="agility_advanced_course_desc">Jalur menantang yang menguji kehebatan ketangkasanmu.</string>
+    <string name="agility_expert_course_name">Jalur Ahli</string>
+    <string name="agility_expert_course_desc">Jalur tingkat ahli dengan rintangan berbahaya.</string>
+    <string name="agility_elite_course_name">Jalur Elite</string>
+    <string name="agility_elite_course_desc">Hanya yang paling tangkas yang dapat menaklukkan jalur elite ini.</string>
+    <string name="agility_master_course_name">Jalur Master</string>
+    <string name="agility_master_course_desc">Jalur tingkat master dengan rintangan ekstrem.</string>
+    <string name="agility_veteran_course_name">Jalur Veteran</string>
+    <string name="agility_veteran_course_desc">Arena latihan veteran dengan tantangan yang tak kenal ampun.</string>
+    <string name="agility_champion_course_name">Jalur Juara</string>
+    <string name="agility_champion_course_desc">Jalur tingkat juara yang mendorongmu hingga batas kemampuan.</string>
+    <string name="agility_heroic_course_name">Jalur Heroik</string>
+    <string name="agility_heroic_course_desc">Jalur heroik yang hanya berani dijalani oleh yang terbaik.</string>
+    <string name="agility_legendary_course_name">Jalur Legendaris</string>
+    <string name="agility_legendary_course_desc">Jalur legendaris yang dibicarakan berbisik-bisik di antara para ahli ketangkasan.</string>
+    <string name="agility_mythic_course_name">Jalur Mitos</string>
+    <string name="agility_mythic_course_desc">Jalur mitos yang menentang hukum fisika.</string>
+    <string name="agility_divine_course_name">Jalur Ilahi</string>
+    <string name="agility_divine_course_desc">Jalur ilahi yang diberkati oleh dewa-dewa ketangkasan.</string>
+    <string name="agility_transcendent_course_name">Jalur Transenden</string>
+    <string name="agility_transcendent_course_desc">Ujian ketangkasan tertinggi, melampaui batas-batas manusia.</string>
+
+    <!-- ===== Session skill type labels ===== -->
+    <string name="skill_expedition_name">Ekspedisi</string>
+    <string name="skill_boss_name">Bos</string>
+    <string name="skill_mercantile_name">Perdagangan</string>
+</resources>

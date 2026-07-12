@@ -1,0 +1,834 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Ores ===== -->
+    <string name="item_copper_ore_name">Minério de Cobre</string>
+    <string name="item_copper_ore_desc">Minério comum. Combine com minério de estanho para fundir barras de bronze.</string>
+    <string name="item_tin_ore_name">Minério de Estanho</string>
+    <string name="item_tin_ore_desc">Minério comum. Combine com minério de cobre para fundir barras de bronze.</string>
+    <string name="item_iron_ore_name">Minério de Ferro</string>
+    <string name="item_iron_ore_desc">Minério versátil usado para fundir barras de ferro e aço.</string>
+    <string name="item_coal_name">Carvão</string>
+    <string name="item_coal_desc">Usado como combustível ao fundir aço e barras de nível superior.</string>
+    <string name="item_silver_ore_name">Minério de Prata</string>
+    <string name="item_silver_ore_desc">Minério precioso usado para fabricar barras de prata e joias.</string>
+    <string name="item_gold_ore_name">Minério de Ouro</string>
+    <string name="item_gold_ore_desc">Minério precioso usado para fabricar barras de ouro e joias.</string>
+    <string name="item_mithril_ore_name">Minério de Mithril</string>
+    <string name="item_mithril_ore_desc">Um minério raro com propriedades mágicas.</string>
+    <string name="item_adamantite_ore_name">Minério de Adamantita</string>
+    <string name="item_adamantite_ore_desc">Minério extremamente duro e muito raro.</string>
+    <string name="item_runite_ore_name">Minério de Runita</string>
+    <string name="item_runite_ore_desc">O minério minerável mais raro, usado nos equipamentos mais fortes.</string>
+    <string name="item_rune_essence_name">Essência Rúnica</string>
+    <string name="item_rune_essence_desc">Pedra mágica bruta usada para criar todos os tipos de runas.</string>
+
+    <!-- ===== Metal bars ===== -->
+    <string name="item_bronze_bar_name">Barra de Bronze</string>
+    <string name="item_bronze_bar_desc">Fundida a partir de minério de cobre e minério de estanho. A barra de metal mais básica.</string>
+    <string name="item_iron_bar_name">Barra de Ferro</string>
+    <string name="item_iron_bar_desc">Uma barra de ferro resistente usada para fabricar equipamentos de ferro.</string>
+    <string name="item_silver_bar_name">Barra de Prata</string>
+    <string name="item_silver_bar_desc">Barra de prata refinada usada na fabricação de joias.</string>
+    <string name="item_steel_bar_name">Barra de Aço</string>
+    <string name="item_steel_bar_desc">Mais resistente que o ferro. Usada para fabricar equipamentos de aço.</string>
+    <string name="item_gold_bar_name">Barra de Ouro</string>
+    <string name="item_gold_bar_desc">Barra de ouro refinada usada na fabricação de joias e equipamentos de ouro.</string>
+    <string name="item_mithril_bar_name">Barra de Mithril</string>
+    <string name="item_mithril_bar_desc">Uma barra de metal mágica e leve.</string>
+    <string name="item_adamantite_bar_name">Barra de Adamantita</string>
+    <string name="item_adamantite_bar_desc">Uma barra de metal extraordinariamente dura.</string>
+    <string name="item_platinum_bar_name">Barra de Platina</string>
+    <string name="item_platinum_bar_desc">Uma barra de platina rara e brilhante para joias de alto nível.</string>
+    <string name="item_runite_bar_name">Barra de Runita</string>
+    <string name="item_runite_bar_desc">A barra de metal fundível mais forte que existe.</string>
+
+    <!-- ===== Gems ===== -->
+    <string name="item_sapphire_name">Safira</string>
+    <string name="item_sapphire_desc">Uma pedra preciosa azul usada na fabricação de joias.</string>
+    <string name="item_emerald_name">Esmeralda</string>
+    <string name="item_emerald_desc">Uma pedra preciosa verde de raridade moderada.</string>
+    <string name="item_ruby_name">Rubi</string>
+    <string name="item_ruby_desc">Uma pedra preciosa vermelha. Rara e valiosa.</string>
+    <string name="item_diamond_name">Diamante</string>
+    <string name="item_diamond_desc">A pedra preciosa mais rara e valiosa.</string>
+
+    <!-- ===== Logs ===== -->
+    <string name="item_log_name">Toras</string>
+    <string name="item_log_desc">Toras básicas de árvores comuns. Usadas em Fazer Fogueiras e Arcaria.</string>
+    <string name="item_oak_log_name">Toras de Carvalho</string>
+    <string name="item_oak_log_desc">Toras de árvores de carvalho.</string>
+    <string name="item_willow_log_name">Toras de Salgueiro</string>
+    <string name="item_willow_log_desc">Toras leves de árvores de salgueiro.</string>
+    <string name="item_maple_log_name">Toras de Bordo</string>
+    <string name="item_maple_log_desc">Toras densas de árvores de bordo.</string>
+    <string name="item_yew_log_name">Toras de Teixo</string>
+    <string name="item_yew_log_desc">Toras de teixos ancestrais.</string>
+    <string name="item_magic_log_name">Toras Mágicas</string>
+    <string name="item_magic_log_desc">Toras imbuídas de raras árvores mágicas.</string>
+    <string name="item_redwood_log_name">Toras de Sequoia</string>
+    <string name="item_redwood_log_desc">Toras enormes das mais altas sequoias.</string>
+
+    <!-- ===== Raw fish ===== -->
+    <string name="item_raw_shrimp_name">Camarão Cru</string>
+    <string name="item_raw_shrimp_desc">Camarão cru. Cozinhe antes de comer.</string>
+    <string name="item_raw_sardine_name">Sardinha Crua</string>
+    <string name="item_raw_sardine_desc">Sardinha crua. Cozinhe antes de comer.</string>
+    <string name="item_raw_herring_name">Arenque Cru</string>
+    <string name="item_raw_herring_desc">Arenque cru. Cozinhe antes de comer.</string>
+    <string name="item_raw_mackerel_name">Cavala Crua</string>
+    <string name="item_raw_mackerel_desc">Cavala crua. Cozinhe antes de comer.</string>
+    <string name="item_raw_trout_name">Truta Crua</string>
+    <string name="item_raw_trout_desc">Truta crua. Cozinhe antes de comer.</string>
+    <string name="item_raw_salmon_name">Salmão Cru</string>
+    <string name="item_raw_salmon_desc">Salmão cru. Cozinhe antes de comer.</string>
+    <string name="item_raw_tuna_name">Atum Cru</string>
+    <string name="item_raw_tuna_desc">Atum cru. Cozinhe antes de comer.</string>
+    <string name="item_raw_lobster_name">Lagosta Crua</string>
+    <string name="item_raw_lobster_desc">Lagosta crua. Cozinhe antes de comer.</string>
+    <string name="item_raw_swordfish_name">Peixe-Espada Cru</string>
+    <string name="item_raw_swordfish_desc">Peixe-espada cru. Cozinhe antes de comer.</string>
+    <string name="item_raw_monkfish_name">Tamboril Cru</string>
+    <string name="item_raw_monkfish_desc">Tamboril cru. Cozinhe antes de comer.</string>
+    <string name="item_raw_shark_name">Tubarão Cru</string>
+    <string name="item_raw_shark_desc">Tubarão cru. Cozinhe antes de comer.</string>
+    <string name="item_raw_sea_turtle_name">Tartaruga Marinha Crua</string>
+    <string name="item_raw_sea_turtle_desc">Tartaruga marinha crua. Cozinhe antes de comer.</string>
+    <string name="item_raw_manta_ray_name">Arraia-Manta Crua</string>
+    <string name="item_raw_manta_ray_desc">Arraia-manta crua. Cozinhe antes de comer.</string>
+
+    <!-- ===== Cooked fish ===== -->
+    <string name="item_shrimp_name">Camarão</string>
+    <string name="item_shrimp_desc">Camarão cozido. Restaura uma pequena quantidade de HP.</string>
+    <string name="item_sardine_name">Sardinha</string>
+    <string name="item_sardine_desc">Sardinha cozida. Restaura HP quando consumida.</string>
+    <string name="item_herring_name">Arenque</string>
+    <string name="item_herring_desc">Arenque cozido. Restaura HP quando consumido.</string>
+    <string name="item_mackerel_name">Cavala</string>
+    <string name="item_mackerel_desc">Cavala cozida. Restaura HP quando consumida.</string>
+    <string name="item_trout_name">Truta</string>
+    <string name="item_trout_desc">Truta cozida. Restaura HP quando consumida.</string>
+    <string name="item_salmon_name">Salmão</string>
+    <string name="item_salmon_desc">Salmão cozido. Restaura HP quando consumido.</string>
+    <string name="item_tuna_name">Atum</string>
+    <string name="item_tuna_desc">Atum cozido. Restaura HP quando consumido.</string>
+    <string name="item_lobster_name">Lagosta</string>
+    <string name="item_lobster_desc">Lagosta cozida. Restaura uma boa quantidade de HP.</string>
+    <string name="item_swordfish_name">Peixe-Espada</string>
+    <string name="item_swordfish_desc">Peixe-espada cozido. Restaura uma quantidade significativa de HP.</string>
+    <string name="item_monkfish_name">Tamboril</string>
+    <string name="item_monkfish_desc">Tamboril cozido. Restaura uma boa quantidade de HP.</string>
+    <string name="item_shark_name">Tubarão</string>
+    <string name="item_shark_desc">Tubarão cozido. Restaura uma grande quantidade de HP.</string>
+    <string name="item_sea_turtle_name">Tartaruga Marinha</string>
+    <string name="item_sea_turtle_desc">Tartaruga marinha cozida. Restaura uma quantidade enorme de HP.</string>
+    <string name="item_manta_ray_name">Arraia-Manta</string>
+    <string name="item_manta_ray_desc">Arraia-manta cozida. Uma das melhores comidas disponíveis.</string>
+
+    <!-- ===== Raw meat ===== -->
+    <string name="item_raw_rat_meat_name">Carne de Rato Crua</string>
+    <string name="item_raw_rat_meat_desc">Carne de rato crua. Cozinhe antes de comer.</string>
+    <string name="item_raw_chicken_name">Frango Cru</string>
+    <string name="item_raw_chicken_desc">Frango cru. Cozinhe antes de comer.</string>
+    <string name="item_raw_mutton_name">Carneiro Cru</string>
+    <string name="item_raw_mutton_desc">Carneiro cru. Cozinhe antes de comer.</string>
+    <string name="item_raw_beef_name">Carne Bovina Crua</string>
+    <string name="item_raw_beef_desc">Carne bovina crua. Cozinhe antes de comer.</string>
+    <string name="item_raw_meat_name">Carne Crua</string>
+    <string name="item_raw_meat_desc">Carne crua não identificada. Cozinhe antes de comer.</string>
+
+    <!-- ===== Cooked meat ===== -->
+    <string name="item_cooked_rat_meat_name">Carne de Rato</string>
+    <string name="item_cooked_rat_meat_desc">Carne de rato cozida. Mal dá para comer, mas restaura uma pequena quantidade de HP.</string>
+    <string name="item_cooked_chicken_name">Frango Cozido</string>
+    <string name="item_cooked_chicken_desc">Frango cozido. Restaura HP quando consumido.</string>
+    <string name="item_cooked_mutton_name">Carneiro Cozido</string>
+    <string name="item_cooked_mutton_desc">Carneiro cozido. Restaura HP quando consumido.</string>
+    <string name="item_cooked_beef_name">Carne Bovina Cozida</string>
+    <string name="item_cooked_beef_desc">Carne bovina cozida. Restaura HP quando consumida.</string>
+
+    <!-- ===== Melee weapons — bronze ===== -->
+    <string name="item_bronze_sword_name">Espada de Bronze</string>
+    <string name="item_bronze_sword_desc">Uma lâmina básica de bronze para uma mão.</string>
+    <string name="item_bronze_scimitar_name">Cimitarra de Bronze</string>
+    <string name="item_bronze_scimitar_desc">Uma lâmina curva de bronze para uma mão com bom bônus de força.</string>
+    <string name="item_bronze_2h_sword_name">Espada de Duas Mãos de Bronze</string>
+    <string name="item_bronze_2h_sword_desc">Uma espada de bronze de duas mãos. Alto dano, velocidade lenta.</string>
+    <string name="item_bronze_warhammer_name">Martelo de Guerra de Bronze</string>
+    <string name="item_bronze_warhammer_desc">Um martelo de bronze pesado para uma mão.</string>
+    <string name="item_bronze_battleaxe_name">Machado de Batalha de Bronze</string>
+    <string name="item_bronze_battleaxe_desc">Um temível machado de bronze para uma mão.</string>
+    <string name="item_bronze_dagger_name">Adaga de Bronze</string>
+    <string name="item_bronze_dagger_desc">Uma adaga de bronze rápida e leve.</string>
+
+    <!-- Melee weapons — iron -->
+    <string name="item_iron_sword_name">Espada de Ferro</string>
+    <string name="item_iron_sword_desc">Uma lâmina de ferro para uma mão.</string>
+    <string name="item_iron_scimitar_name">Cimitarra de Ferro</string>
+    <string name="item_iron_scimitar_desc">Uma lâmina curva de ferro para uma mão com bom bônus de força.</string>
+    <string name="item_iron_2h_sword_name">Espada de Duas Mãos de Ferro</string>
+    <string name="item_iron_2h_sword_desc">Uma espada de ferro de duas mãos.</string>
+    <string name="item_iron_warhammer_name">Martelo de Guerra de Ferro</string>
+    <string name="item_iron_warhammer_desc">Um martelo de ferro pesado para uma mão.</string>
+    <string name="item_iron_battleaxe_name">Machado de Batalha de Ferro</string>
+    <string name="item_iron_battleaxe_desc">Um temível machado de ferro para uma mão.</string>
+    <string name="item_iron_dagger_name">Adaga de Ferro</string>
+    <string name="item_iron_dagger_desc">Uma adaga de ferro rápida e leve.</string>
+
+    <!-- Melee weapons — steel -->
+    <string name="item_steel_sword_name">Espada de Aço</string>
+    <string name="item_steel_sword_desc">Uma lâmina de aço para uma mão.</string>
+    <string name="item_steel_scimitar_name">Cimitarra de Aço</string>
+    <string name="item_steel_scimitar_desc">Uma lâmina curva de aço para uma mão com bom bônus de força.</string>
+    <string name="item_steel_2h_sword_name">Espada de Duas Mãos de Aço</string>
+    <string name="item_steel_2h_sword_desc">Uma espada de aço de duas mãos.</string>
+    <string name="item_steel_warhammer_name">Martelo de Guerra de Aço</string>
+    <string name="item_steel_warhammer_desc">Um martelo de aço pesado para uma mão.</string>
+    <string name="item_steel_battleaxe_name">Machado de Batalha de Aço</string>
+    <string name="item_steel_battleaxe_desc">Um temível machado de aço para uma mão.</string>
+
+    <!-- Melee weapons — mithril -->
+    <string name="item_mithril_sword_name">Espada de Mithril</string>
+    <string name="item_mithril_sword_desc">Uma espada mágica leve para uma mão.</string>
+    <string name="item_mithril_scimitar_name">Cimitarra de Mithril</string>
+    <string name="item_mithril_scimitar_desc">Uma lâmina curva de mithril, sobrenaturalmente afiada.</string>
+    <string name="item_mithril_2h_sword_name">Espada de Duas Mãos de Mithril</string>
+    <string name="item_mithril_2h_sword_desc">Uma espada de mithril de duas mãos.</string>
+    <string name="item_mithril_warhammer_name">Martelo de Guerra de Mithril</string>
+    <string name="item_mithril_warhammer_desc">Um martelo de guerra mágico e leve.</string>
+    <string name="item_mithril_battleaxe_name">Machado de Batalha de Mithril</string>
+    <string name="item_mithril_battleaxe_desc">Um machado de batalha de mithril de qualidade excepcional.</string>
+
+    <!-- Melee weapons — adamantite -->
+    <string name="item_adamantite_sword_name">Espada de Adamantita</string>
+    <string name="item_adamantite_sword_desc">Uma espada de uma mão extraordinariamente dura.</string>
+    <string name="item_adamantite_scimitar_name">Cimitarra de Adamantita</string>
+    <string name="item_adamantite_scimitar_desc">Uma lâmina curva incrivelmente dura com excelente bônus de força.</string>
+    <string name="item_adamantite_2h_sword_name">Espada de Duas Mãos de Adamantita</string>
+    <string name="item_adamantite_2h_sword_desc">Uma espada de duas mãos forjada em adamantita.</string>
+    <string name="item_adamantite_warhammer_name">Martelo de Guerra de Adamantita</string>
+    <string name="item_adamantite_warhammer_desc">Um martelo de guerra extraordinariamente pesado e duro.</string>
+    <string name="item_adamantite_battleaxe_name">Machado de Batalha de Adamantita</string>
+    <string name="item_adamantite_battleaxe_desc">Um devastador machado de batalha de adamantita.</string>
+
+    <!-- Melee weapons — runite -->
+    <string name="item_runite_sword_name">Espada de Runita</string>
+    <string name="item_runite_sword_desc">A melhor espada de uma mão disponível.</string>
+    <string name="item_runite_scimitar_name">Cimitarra de Runita</string>
+    <string name="item_runite_scimitar_desc">A melhor cimitarra disponível, com bônus de força excepcional.</string>
+    <string name="item_runite_2h_sword_name">Espada de Duas Mãos de Runita</string>
+    <string name="item_runite_2h_sword_desc">A melhor espada de duas mãos disponível.</string>
+    <string name="item_runite_warhammer_name">Martelo de Guerra de Runita</string>
+    <string name="item_runite_warhammer_desc">O melhor martelo de guerra disponível.</string>
+    <string name="item_runite_battleaxe_name">Machado de Batalha de Runita</string>
+    <string name="item_runite_battleaxe_desc">O melhor machado de batalha disponível.</string>
+
+    <!-- ===== Ranged weapons ===== -->
+    <string name="item_wooden_bow_name">Arco de Madeira</string>
+    <string name="item_wooden_bow_desc">Um arco de madeira simples. Ótimo para treinar Distância.</string>
+    <string name="item_oak_bow_name">Arco de Carvalho</string>
+    <string name="item_oak_bow_desc">Um arco confiável feito de madeira de carvalho.</string>
+
+    <!-- ===== Magic weapons ===== -->
+    <string name="item_basic_staff_name">Cajado Básico</string>
+    <string name="item_basic_staff_desc">Um cajado mágico simples para magos aprendizes.</string>
+    <string name="item_apprentice_staff_name">Cajado de Aprendiz</string>
+    <string name="item_apprentice_staff_desc">Um cajado aprimorado para magos em desenvolvimento.</string>
+    <string name="item_staff_of_air_name">Cajado do Ar</string>
+    <string name="item_staff_of_air_desc">Um cajado elemental imbuído com o poder do ar.</string>
+    <string name="item_staff_of_water_name">Cajado da Água</string>
+    <string name="item_staff_of_water_desc">Um cajado elemental imbuído com o poder da água.</string>
+    <string name="item_staff_of_earth_name">Cajado da Terra</string>
+    <string name="item_staff_of_earth_desc">Um cajado elemental imbuído com o poder da terra.</string>
+    <string name="item_staff_of_fire_name">Cajado do Fogo</string>
+    <string name="item_staff_of_fire_desc">Um cajado elemental imbuído com o poder do fogo.</string>
+    <string name="item_staff_of_mind_name">Cajado da Mente</string>
+    <string name="item_staff_of_mind_desc">Um cajado imbuído de energia psíquica.</string>
+    <string name="item_staff_of_chaos_name">Cajado do Caos</string>
+    <string name="item_staff_of_chaos_desc">Um cajado caótico pulsando com energia mágica selvagem.</string>
+    <string name="item_staff_of_death_name">Cajado da Morte</string>
+    <string name="item_staff_of_death_desc">Um cajado sombrio envolto no poder da morte.</string>
+    <string name="item_staff_of_blood_name">Cajado do Sangue</string>
+    <string name="item_staff_of_blood_desc">Um cajado poderoso alimentado por magia de sangue.</string>
+
+    <!-- ===== Armour — bronze ===== -->
+    <string name="item_bronze_helmet_name">Elmo de Bronze</string>
+    <string name="item_bronze_helmet_desc">Proteção básica de bronze para a cabeça.</string>
+    <string name="item_bronze_platebody_name">Peitoral de Bronze</string>
+    <string name="item_bronze_platebody_desc">Armadura básica de bronze para o corpo.</string>
+    <string name="item_bronze_platelegs_name">Perneiras de Bronze</string>
+    <string name="item_bronze_platelegs_desc">Proteção básica de bronze para as pernas.</string>
+    <string name="item_bronze_shield_name">Escudo de Bronze</string>
+    <string name="item_bronze_shield_desc">Um escudo básico de bronze.</string>
+
+    <!-- Armour — iron -->
+    <string name="item_iron_helmet_name">Elmo de Ferro</string>
+    <string name="item_iron_helmet_desc">Proteção de ferro para a cabeça.</string>
+    <string name="item_iron_platebody_name">Peitoral de Ferro</string>
+    <string name="item_iron_platebody_desc">Armadura de ferro para o corpo.</string>
+    <string name="item_iron_platelegs_name">Perneiras de Ferro</string>
+    <string name="item_iron_platelegs_desc">Proteção de ferro para as pernas.</string>
+    <string name="item_iron_shield_name">Escudo de Ferro</string>
+    <string name="item_iron_shield_desc">Um escudo de ferro.</string>
+
+    <!-- Armour — steel -->
+    <string name="item_steel_helmet_name">Elmo de Aço</string>
+    <string name="item_steel_helmet_desc">Proteção resistente de aço para a cabeça.</string>
+    <string name="item_steel_platebody_name">Peitoral de Aço</string>
+    <string name="item_steel_platebody_desc">Armadura resistente de aço para o corpo.</string>
+    <string name="item_steel_platelegs_name">Perneiras de Aço</string>
+    <string name="item_steel_platelegs_desc">Proteção resistente de aço para as pernas.</string>
+    <string name="item_steel_shield_name">Escudo de Aço</string>
+    <string name="item_steel_shield_desc">Um escudo resistente de aço.</string>
+
+    <!-- Armour — mithril -->
+    <string name="item_mithril_helmet_name">Elmo de Mithril</string>
+    <string name="item_mithril_helmet_desc">Proteção mágica e leve para a cabeça.</string>
+    <string name="item_mithril_platebody_name">Peitoral de Mithril</string>
+    <string name="item_mithril_platebody_desc">Armadura mágica e leve para o corpo.</string>
+    <string name="item_mithril_platelegs_name">Perneiras de Mithril</string>
+    <string name="item_mithril_platelegs_desc">Proteção mágica e leve para as pernas.</string>
+    <string name="item_mithril_shield_name">Escudo de Mithril</string>
+    <string name="item_mithril_shield_desc">Um escudo mágico e leve.</string>
+
+    <!-- Armour — adamantite -->
+    <string name="item_adamantite_helmet_name">Elmo de Adamantita</string>
+    <string name="item_adamantite_helmet_desc">Proteção extremamente dura para a cabeça.</string>
+    <string name="item_adamantite_platebody_name">Peitoral de Adamantita</string>
+    <string name="item_adamantite_platebody_desc">Armadura extremamente dura para o corpo.</string>
+    <string name="item_adamantite_platelegs_name">Perneiras de Adamantita</string>
+    <string name="item_adamantite_platelegs_desc">Proteção extremamente dura para as pernas.</string>
+    <string name="item_adamantite_shield_name">Escudo de Adamantita</string>
+    <string name="item_adamantite_shield_desc">Um escudo extremamente duro.</string>
+
+    <!-- Armour — runite -->
+    <string name="item_runite_helmet_name">Elmo de Runita</string>
+    <string name="item_runite_helmet_desc">A melhor proteção de cabeça disponível.</string>
+    <string name="item_runite_platebody_name">Peitoral de Runita</string>
+    <string name="item_runite_platebody_desc">A melhor armadura de corpo disponível.</string>
+    <string name="item_runite_platelegs_name">Perneiras de Runita</string>
+    <string name="item_runite_platelegs_desc">A melhor proteção de pernas disponível.</string>
+    <string name="item_runite_shield_name">Escudo de Runita</string>
+    <string name="item_runite_shield_desc">O melhor escudo disponível.</string>
+
+    <!-- ===== Tools — pickaxes ===== -->
+    <string name="item_bronze_pickaxe_name">Picareta de Bronze</string>
+    <string name="item_bronze_pickaxe_desc">Uma picareta básica para Mineração.</string>
+    <string name="item_iron_pickaxe_name">Picareta de Ferro</string>
+    <string name="item_iron_pickaxe_desc">Uma picareta confiável para Mineração.</string>
+    <string name="item_steel_pickaxe_name">Picareta de Aço</string>
+    <string name="item_steel_pickaxe_desc">Uma picareta resistente para Mineração.</string>
+    <string name="item_mithril_pickaxe_name">Picareta de Mithril</string>
+    <string name="item_mithril_pickaxe_desc">Uma picareta mágica e leve para Mineração.</string>
+    <string name="item_adamantite_pickaxe_name">Picareta de Adamantita</string>
+    <string name="item_adamantite_pickaxe_desc">Uma picareta extremamente dura para Mineração.</string>
+    <string name="item_runite_pickaxe_name">Picareta de Runita</string>
+    <string name="item_runite_pickaxe_desc">A melhor picareta disponível para Mineração.</string>
+
+    <!-- Tools — axes -->
+    <string name="item_bronze_axe_name">Machado de Bronze</string>
+    <string name="item_bronze_axe_desc">Um machado básico para Lenhagem.</string>
+    <string name="item_iron_axe_name">Machado de Ferro</string>
+    <string name="item_iron_axe_desc">Um machado confiável para Lenhagem.</string>
+    <string name="item_steel_axe_name">Machado de Aço</string>
+    <string name="item_steel_axe_desc">Um machado resistente para Lenhagem.</string>
+    <string name="item_mithril_axe_name">Machado de Mithril</string>
+    <string name="item_mithril_axe_desc">Um machado mágico e leve para Lenhagem.</string>
+    <string name="item_adamantite_axe_name">Machado de Adamantita</string>
+    <string name="item_adamantite_axe_desc">Um machado extremamente duro para Lenhagem.</string>
+    <string name="item_runite_axe_name">Machado de Runita</string>
+    <string name="item_runite_axe_desc">O melhor machado disponível para Lenhagem.</string>
+
+    <!-- Tools — fishing rods -->
+    <string name="item_bronze_fishing_rod_name">Vara de Pesca de Bronze</string>
+    <string name="item_bronze_fishing_rod_desc">Uma vara de pesca básica.</string>
+    <string name="item_iron_fishing_rod_name">Vara de Pesca de Ferro</string>
+    <string name="item_iron_fishing_rod_desc">Uma vara de pesca confiável.</string>
+    <string name="item_steel_fishing_rod_name">Vara de Pesca de Aço</string>
+    <string name="item_steel_fishing_rod_desc">Uma vara de pesca resistente.</string>
+    <string name="item_mithril_fishing_rod_name">Vara de Pesca de Mithril</string>
+    <string name="item_mithril_fishing_rod_desc">Uma vara de pesca mágica e leve.</string>
+    <string name="item_adamantite_fishing_rod_name">Vara de Pesca de Adamantita</string>
+    <string name="item_adamantite_fishing_rod_desc">Uma vara de pesca extremamente duradoura.</string>
+    <string name="item_runite_fishing_rod_name">Vara de Pesca de Runita</string>
+    <string name="item_runite_fishing_rod_desc">A melhor vara de pesca disponível.</string>
+
+    <!-- ===== Arrows ===== -->
+    <string name="item_bronze_arrow_name">Flechas de Bronze</string>
+    <string name="item_bronze_arrow_desc">Flechas básicas para combate à distância.</string>
+    <string name="item_iron_arrow_name">Flechas de Ferro</string>
+    <string name="item_iron_arrow_desc">Flechas de ferro para combate à distância.</string>
+    <string name="item_steel_arrow_name">Flechas de Aço</string>
+    <string name="item_steel_arrow_desc">Flechas de aço para combate à distância.</string>
+    <string name="item_mithril_arrow_name">Flechas de Mithril</string>
+    <string name="item_mithril_arrow_desc">Flechas de mithril para combate à distância.</string>
+    <string name="item_adamantite_arrow_name">Flechas de Adamantita</string>
+    <string name="item_adamantite_arrow_desc">Flechas de adamantita para combate à distância.</string>
+    <string name="item_runite_arrow_name">Flechas de Runita</string>
+    <string name="item_runite_arrow_desc">As melhores flechas disponíveis.</string>
+
+    <!-- Arrow components -->
+    <string name="item_arrow_shaft_name">Hastes de Flecha</string>
+    <string name="item_arrow_shaft_desc">Hastes de madeira usadas para fabricar flechas.</string>
+    <string name="item_bronze_arrow_tips_name">Pontas de Flecha de Bronze</string>
+    <string name="item_bronze_arrow_tips_desc">Pontas de bronze para fabricar flechas de bronze.</string>
+    <string name="item_iron_arrow_tips_name">Pontas de Flecha de Ferro</string>
+    <string name="item_iron_arrow_tips_desc">Pontas de ferro para fabricar flechas de ferro.</string>
+    <string name="item_steel_arrow_tips_name">Pontas de Flecha de Aço</string>
+    <string name="item_steel_arrow_tips_desc">Pontas de aço para fabricar flechas de aço.</string>
+    <string name="item_mithril_arrow_tips_name">Pontas de Flecha de Mithril</string>
+    <string name="item_mithril_arrow_tips_desc">Pontas de mithril para fabricar flechas de mithril.</string>
+    <string name="item_adamantite_arrow_tips_name">Pontas de Flecha de Adamantita</string>
+    <string name="item_adamantite_arrow_tips_desc">Pontas de adamantita para fabricar flechas de adamantita.</string>
+    <string name="item_runite_arrow_tips_name">Pontas de Flecha de Runita</string>
+    <string name="item_runite_arrow_tips_desc">Pontas de runita para fabricar flechas de runita.</string>
+
+    <!-- ===== Jewellery — plain ===== -->
+    <string name="item_silver_ring_name">Anel de Prata</string>
+    <string name="item_silver_ring_desc">Um anel de prata simples.</string>
+    <string name="item_silver_necklace_name">Colar de Prata</string>
+    <string name="item_silver_necklace_desc">Um colar de prata simples.</string>
+    <string name="item_gold_ring_name">Anel de Ouro</string>
+    <string name="item_gold_ring_desc">Um anel de ouro simples.</string>
+    <string name="item_gold_necklace_name">Colar de Ouro</string>
+    <string name="item_gold_necklace_desc">Um colar de ouro simples.</string>
+    <string name="item_platinum_ring_name">Anel de Platina</string>
+    <string name="item_platinum_ring_desc">Um anel de platina simples.</string>
+    <string name="item_platinum_necklace_name">Colar de Platina</string>
+    <string name="item_platinum_necklace_desc">Um colar de platina simples.</string>
+
+    <!-- Jewellery — sapphire -->
+    <string name="item_silver_sapphire_ring_name">Anel de Prata com Safira</string>
+    <string name="item_silver_sapphire_ring_desc">Um anel de prata cravejado com uma safira.</string>
+    <string name="item_silver_sapphire_necklace_name">Colar de Prata com Safira</string>
+    <string name="item_silver_sapphire_necklace_desc">Um colar de prata cravejado com uma safira.</string>
+    <string name="item_gold_sapphire_ring_name">Anel de Ouro com Safira</string>
+    <string name="item_gold_sapphire_ring_desc">Um anel de ouro cravejado com uma safira.</string>
+    <string name="item_gold_sapphire_necklace_name">Colar de Ouro com Safira</string>
+    <string name="item_gold_sapphire_necklace_desc">Um colar de ouro cravejado com uma safira.</string>
+    <string name="item_platinum_sapphire_ring_name">Anel de Platina com Safira</string>
+    <string name="item_platinum_sapphire_ring_desc">Um anel de platina cravejado com uma safira.</string>
+    <string name="item_platinum_sapphire_necklace_name">Colar de Platina com Safira</string>
+    <string name="item_platinum_sapphire_necklace_desc">Um colar de platina cravejado com uma safira.</string>
+
+    <!-- Jewellery — emerald -->
+    <string name="item_gold_emerald_ring_name">Anel de Ouro com Esmeralda</string>
+    <string name="item_gold_emerald_ring_desc">Um anel de ouro cravejado com uma esmeralda.</string>
+    <string name="item_gold_emerald_necklace_name">Colar de Ouro com Esmeralda</string>
+    <string name="item_gold_emerald_necklace_desc">Um colar de ouro cravejado com uma esmeralda.</string>
+    <string name="item_platinum_emerald_ring_name">Anel de Platina com Esmeralda</string>
+    <string name="item_platinum_emerald_ring_desc">Um anel de platina cravejado com uma esmeralda.</string>
+    <string name="item_platinum_emerald_necklace_name">Colar de Platina com Esmeralda</string>
+    <string name="item_platinum_emerald_necklace_desc">Um colar de platina cravejado com uma esmeralda.</string>
+
+    <!-- Jewellery — ruby -->
+    <string name="item_gold_ruby_ring_name">Anel de Ouro com Rubi</string>
+    <string name="item_gold_ruby_ring_desc">Um anel de ouro cravejado com um rubi.</string>
+    <string name="item_gold_ruby_necklace_name">Colar de Ouro com Rubi</string>
+    <string name="item_gold_ruby_necklace_desc">Um colar de ouro cravejado com um rubi.</string>
+    <string name="item_platinum_ruby_ring_name">Anel de Platina com Rubi</string>
+    <string name="item_platinum_ruby_ring_desc">Um anel de platina cravejado com um rubi.</string>
+    <string name="item_platinum_ruby_necklace_name">Colar de Platina com Rubi</string>
+    <string name="item_platinum_ruby_necklace_desc">Um colar de platina cravejado com um rubi.</string>
+
+    <!-- Jewellery — diamond -->
+    <string name="item_gold_diamond_ring_name">Anel de Ouro com Diamante</string>
+    <string name="item_gold_diamond_ring_desc">Um anel de ouro cravejado com um diamante.</string>
+    <string name="item_gold_diamond_necklace_name">Colar de Ouro com Diamante</string>
+    <string name="item_gold_diamond_necklace_desc">Um colar de ouro cravejado com um diamante.</string>
+    <string name="item_platinum_diamond_ring_name">Anel de Platina com Diamante</string>
+    <string name="item_platinum_diamond_ring_desc">Um anel de platina cravejado com um diamante.</string>
+    <string name="item_platinum_diamond_necklace_name">Colar de Platina com Diamante</string>
+    <string name="item_platinum_diamond_necklace_desc">Um colar de platina cravejado com um diamante.</string>
+
+    <!-- ===== Miscellaneous drops ===== -->
+    <string name="item_ashes_name">Cinzas</string>
+    <string name="item_ashes_desc">Restos queimados de toras comuns. Espalhe na habilidade de Oração para XP extra de Oração.</string>
+    <string name="item_oak_ashes_name">Cinzas de Carvalho</string>
+    <string name="item_oak_ashes_desc">Restos queimados de toras de carvalho. Espalhe para mais XP de Oração do que as cinzas comuns.</string>
+    <string name="item_willow_ashes_name">Cinzas de Salgueiro</string>
+    <string name="item_willow_ashes_desc">Restos queimados de toras de salgueiro. Espalhe para XP de Oração.</string>
+    <string name="item_maple_ashes_name">Cinzas de Bordo</string>
+    <string name="item_maple_ashes_desc">Restos queimados de toras de bordo. Espalhe para XP de Oração.</string>
+    <string name="item_yew_ashes_name">Cinzas de Teixo</string>
+    <string name="item_yew_ashes_desc">Restos queimados de toras de teixo. Espalhe para XP de Oração significativo.</string>
+    <string name="item_magic_ashes_name">Cinzas Mágicas</string>
+    <string name="item_magic_ashes_desc">Restos queimados de toras mágicas. Espalhe para XP de Oração substancial.</string>
+    <string name="item_redwood_ashes_name">Cinzas de Sequoia</string>
+    <string name="item_redwood_ashes_desc">Restos queimados de toras de sequoia. Espalhe para a maior quantidade de XP de Oração entre todas as cinzas.</string>
+    <string name="item_bones_name">Ossos</string>
+    <string name="item_bones_desc">Ossos de uma criatura pequena. Enterre para XP de Oração.</string>
+    <string name="item_big_bones_name">Ossos Grandes</string>
+    <string name="item_big_bones_desc">Ossos maiores. Concedem mais XP de Oração quando enterrados.</string>
+    <string name="item_giant_bones_name">Ossos Gigantes</string>
+    <string name="item_giant_bones_desc">Ossos enormes de inimigos poderosos. Concedem XP de Oração significativo.</string>
+    <string name="item_dragon_bone_name">Osso de Dragão</string>
+    <string name="item_dragon_bone_desc">Ossos ancestrais de dragão. Concedem a maior quantidade de XP de Oração quando enterrados.</string>
+    <string name="item_dragon_scale_name">Escama de Dragão</string>
+    <string name="item_dragon_scale_desc">Uma escama resistente de um dragão verde. Rara e valiosa.</string>
+    <string name="item_coins_name">Moedas</string>
+    <string name="item_coins_desc">A moeda do reino. Gaste na loja.</string>
+    <string name="item_goblin_mail_name">Cota de Goblin</string>
+    <string name="item_goblin_mail_desc">Armadura desgastada largada por goblins. Vende bem.</string>
+    <string name="item_imp_hide_name">Pele de Diabrete</string>
+    <string name="item_imp_hide_desc">Pele coriácea de um diabrete.</string>
+    <string name="item_spider_silk_name">Seda de Aranha</string>
+    <string name="item_spider_silk_desc">Seda fina fiada por aranhas gigantes. Valiosa para artesãos.</string>
+    <string name="item_spider_fang_name">Presa de Aranha</string>
+    <string name="item_spider_fang_desc">Uma presa venenosa de uma aranha gigante.</string>
+    <string name="item_cowhide_name">Couro de Vaca</string>
+    <string name="item_cowhide_desc">Couro áspero de vaca. Usado na fabricação de itens de couro.</string>
+    <string name="item_wool_name">Lã</string>
+    <string name="item_wool_desc">Lã macia de uma ovelha.</string>
+    <string name="item_feather_name">Pena</string>
+    <string name="item_feather_desc">Uma pena usada na fabricação de flechas.</string>
+    <string name="item_rotten_flesh_name">Carne Podre</string>
+    <string name="item_rotten_flesh_desc">Carne em decomposição de uma criatura morta-viva. Cheira terrivelmente mal.</string>
+    <string name="item_lockpick_name">Gazua</string>
+    <string name="item_lockpick_desc">Uma gazua largada por bandidos.</string>
+    <string name="item_magic_bean_name">Feijão Mágico</string>
+    <string name="item_magic_bean_desc">Um feijão mágico com propriedades misteriosas.</string>
+    <string name="item_hellhound_fang_name">Presa de Cão Infernal</string>
+    <string name="item_hellhound_fang_desc">Uma presa chamuscada de um cão infernal.</string>
+    <string name="item_demon_horn_name">Chifre de Demônio</string>
+    <string name="item_demon_horn_desc">Um chifre denteado arrancado de um demônio menor.</string>
+    <string name="item_troll_bone_name">Osso de Troll</string>
+    <string name="item_troll_bone_desc">Um osso enorme e retorcido de um troll da montanha.</string>
+
+    <!-- ===== Runes ===== -->
+    <string name="item_air_rune_name">Runa do Ar</string>
+    <string name="item_air_rune_desc">Uma runa imbuída com o poder do ar. Usada em feitiços de ar.</string>
+    <string name="item_water_rune_name">Runa da Água</string>
+    <string name="item_water_rune_desc">Uma runa imbuída com o poder da água.</string>
+    <string name="item_earth_rune_name">Runa da Terra</string>
+    <string name="item_earth_rune_desc">Uma runa imbuída com o poder da terra.</string>
+    <string name="item_fire_rune_name">Runa do Fogo</string>
+    <string name="item_fire_rune_desc">Uma runa imbuída com o poder do fogo.</string>
+    <string name="item_mind_rune_name">Runa da Mente</string>
+    <string name="item_mind_rune_desc">Uma runa que canaliza energia psíquica.</string>
+    <string name="item_chaos_rune_name">Runa do Caos</string>
+    <string name="item_chaos_rune_desc">Uma runa de magia selvagem e caótica.</string>
+    <string name="item_death_rune_name">Runa da Morte</string>
+    <string name="item_death_rune_desc">Uma runa infundida com o poder da morte.</string>
+    <string name="item_blood_rune_name">Runa do Sangue</string>
+    <string name="item_blood_rune_desc">Uma runa rara alimentada por magia de sangue.</string>
+
+    <!-- ===== Crops ===== -->
+    <string name="crop_potato_name">Batata</string>
+    <string name="crop_onion_name">Cebola</string>
+    <string name="crop_cabbage_name">Repolho</string>
+    <string name="crop_carrot_name">Cenoura</string>
+    <string name="crop_tomato_name">Tomate</string>
+    <string name="crop_corn_name">Milho</string>
+    <string name="crop_pumpkin_name">Abóbora</string>
+    <string name="crop_watermelon_name">Melancia</string>
+    <string name="crop_strawberry_name">Morango</string>
+    <string name="crop_magic_herb_name">Erva Mágica</string>
+    <string name="crop_dragon_fruit_name">Fruta do Dragão</string>
+    <string name="crop_golden_wheat_name">Trigo Dourado</string>
+    <string name="crop_spirit_herb_name">Erva Espiritual</string>
+    <string name="crop_celestial_bloom_name">Flor Celestial</string>
+    <string name="crop_starfruit_name">Carambola</string>
+    <string name="crop_void_lotus_name">Lótus do Vazio</string>
+
+    <!-- ===== Spells ===== -->
+    <string name="spell_wind_strike_name">Toque de Vento</string>
+    <string name="spell_wind_bolt_name">Rajada de Vento</string>
+    <string name="spell_wind_blast_name">Explosão de Vento</string>
+    <string name="spell_wind_wave_name">Onda de Vento</string>
+    <string name="spell_water_strike_name">Toque de Água</string>
+    <string name="spell_water_bolt_name">Rajada de Água</string>
+    <string name="spell_water_blast_name">Explosão de Água</string>
+    <string name="spell_water_wave_name">Onda de Água</string>
+    <string name="spell_earth_strike_name">Toque de Terra</string>
+    <string name="spell_earth_bolt_name">Rajada de Terra</string>
+    <string name="spell_earth_blast_name">Explosão de Terra</string>
+    <string name="spell_earth_wave_name">Onda de Terra</string>
+    <string name="spell_fire_strike_name">Toque de Fogo</string>
+    <string name="spell_fire_bolt_name">Rajada de Fogo</string>
+    <string name="spell_fire_blast_name">Explosão de Fogo</string>
+    <string name="spell_fire_wave_name">Onda de Fogo</string>
+    <string name="spell_mind_strike_name">Toque Mental</string>
+    <string name="spell_mind_bolt_name">Rajada Mental</string>
+    <string name="spell_mind_blast_name">Explosão Mental</string>
+    <string name="spell_mind_wave_name">Onda Mental</string>
+    <string name="spell_chaos_strike_name">Toque do Caos</string>
+    <string name="spell_chaos_bolt_name">Rajada do Caos</string>
+    <string name="spell_chaos_blast_name">Explosão do Caos</string>
+    <string name="spell_chaos_wave_name">Onda do Caos</string>
+    <string name="spell_death_strike_name">Toque da Morte</string>
+    <string name="spell_death_bolt_name">Rajada da Morte</string>
+    <string name="spell_death_blast_name">Explosão da Morte</string>
+    <string name="spell_death_wave_name">Onda da Morte</string>
+    <string name="spell_blood_strike_name">Toque de Sangue</string>
+    <string name="spell_blood_bolt_name">Rajada de Sangue</string>
+    <string name="spell_blood_blast_name">Explosão de Sangue</string>
+    <string name="spell_blood_wave_name">Onda de Sangue</string>
+
+    <!-- ===== Hoes ===== -->
+    <string name="item_bronze_hoe_name">Enxada de Bronze</string>
+    <string name="item_iron_hoe_name">Enxada de Ferro</string>
+    <string name="item_steel_hoe_name">Enxada de Aço</string>
+    <string name="item_mithril_hoe_name">Enxada de Mithril</string>
+    <string name="item_adamantite_hoe_name">Enxada de Adamantita</string>
+    <string name="item_runite_hoe_name">Enxada de Runita</string>
+
+    <!-- Herblore potions -->
+    <string name="item_attack_brew_name">Cerveja de Ataque</string>
+    <string name="item_defense_brew_name">Cerveja de Defesa</string>
+    <string name="item_attack_potion_name">Poção de Ataque</string>
+    <string name="item_defense_potion_name">Poção de Defesa</string>
+    <string name="item_onion_brew_name">Cerveja de Cebola</string>
+    <string name="item_carrot_brew_name">Cerveja de Cenoura</string>
+    <string name="item_strength_brew_name">Cerveja de Força</string>
+    <string name="item_strength_potion_name">Poção de Força</string>
+    <string name="item_ranging_potion_name">Poção de Distância</string>
+    <string name="item_magic_potion_name">Poção de Magia</string>
+    <string name="item_super_strength_potion_name">Super Poção de Força</string>
+    <string name="item_super_attack_potion_name">Super Poção de Ataque</string>
+    <string name="item_super_defense_potion_name">Super Poção de Defesa</string>
+    <string name="item_super_ranging_potion_name">Super Poção de Distância</string>
+    <string name="item_super_magic_potion_name">Super Poção de Magia</string>
+    <string name="item_overload_potion_name">Poção de Sobrecarga</string>
+
+    <!-- Enhanced potions -->
+    <string name="item_enhanced_attack_brew_name">Cerveja de Ataque Aprimorada</string>
+    <string name="item_enhanced_defense_brew_name">Cerveja de Defesa Aprimorada</string>
+    <string name="item_enhanced_attack_potion_name">Poção de Ataque Aprimorada</string>
+    <string name="item_enhanced_defense_potion_name">Poção de Defesa Aprimorada</string>
+    <string name="item_enhanced_onion_brew_name">Cerveja de Cebola Aprimorada</string>
+    <string name="item_enhanced_carrot_brew_name">Cerveja de Cenoura Aprimorada</string>
+    <string name="item_enhanced_strength_brew_name">Cerveja de Força Aprimorada</string>
+    <string name="item_enhanced_strength_potion_name">Poção de Força Aprimorada</string>
+    <string name="item_enhanced_ranging_potion_name">Poção de Distância Aprimorada</string>
+    <string name="item_enhanced_magic_potion_name">Poção de Magia Aprimorada</string>
+    <string name="item_enhanced_super_strength_potion_name">Super Poção de Força Aprimorada</string>
+    <string name="item_enhanced_super_attack_potion_name">Super Poção de Ataque Aprimorada</string>
+    <string name="item_enhanced_super_defense_potion_name">Super Poção de Defesa Aprimorada</string>
+    <string name="item_enhanced_super_ranging_potion_name">Super Poção de Distância Aprimorada</string>
+    <string name="item_enhanced_super_magic_potion_name">Super Poção de Magia Aprimorada</string>
+    <string name="item_enhanced_overload_potion_name">Poção de Sobrecarga Aprimorada</string>
+
+    <string name="item_any_fish_name">peixe (qualquer tipo)</string>
+
+
+    <!-- ===== Seed names ===== -->
+    <string name="item_potato_seed_name">Semente de Batata</string>
+    <string name="item_onion_seed_name">Semente de Cebola</string>
+    <string name="item_cabbage_seed_name">Semente de Repolho</string>
+    <string name="item_carrot_seed_name">Semente de Cenoura</string>
+    <string name="item_tomato_seed_name">Semente de Tomate</string>
+    <string name="item_corn_seed_name">Semente de Milho</string>
+    <string name="item_pumpkin_seed_name">Semente de Abóbora</string>
+    <string name="item_watermelon_seed_name">Semente de Melancia</string>
+    <string name="item_strawberry_seed_name">Semente de Morango</string>
+    <string name="item_magic_herb_seed_name">Semente de Erva Mágica</string>
+    <string name="item_dragon_fruit_seed_name">Semente de Fruta do Dragão</string>
+    <string name="item_golden_wheat_seed_name">Semente de Trigo Dourado</string>
+    <string name="item_spirit_seed_name">Semente de Erva Espiritual</string>
+    <string name="item_celestial_bloom_seed_name">Semente de Flor Celestial</string>
+    <string name="item_starfruit_seed_name">Semente de Carambola</string>
+    <string name="item_void_lotus_seed_name">Semente de Lótus do Vazio</string>
+
+
+    <!-- Additional item/boss/food names (English placeholders) -->
+    <string name="boss_void_sovereign_name">O Soberano do Vazio</string>
+    <string name="item_abyssal_rod_name">Vara Abissal</string>
+    <string name="item_adamantite_arrow_tip_name">Pontas de Flecha de Adamantita</string>
+    <string name="item_adamantite_boots_name">Botas de Adamantita</string>
+    <string name="item_adamantite_chainbody_name">Cota de Malha de Adamantita</string>
+    <string name="item_adamantite_dagger_name">Adaga de Adamantita</string>
+    <string name="item_adamantite_full_helmet_name">Elmo Completo de Adamantita</string>
+    <string name="item_adamantite_kiteshield_name">Escudo Longo de Adamantita</string>
+    <string name="item_adamantite_longsword_name">Espada Longa de Adamantita</string>
+    <string name="item_adamantite_med_helmet_name">Meio Elmo de Adamantita</string>
+    <string name="item_adamantite_plateskirt_name">Saia de Placas de Adamantita</string>
+    <string name="item_adamantite_square_shield_name">Escudo Quadrado de Adamantita</string>
+    <string name="item_agility_cape_name">Capa de Agilidade</string>
+    <string name="item_agility_guild_cape_name">Capa da Guilda de Agilidade</string>
+    <string name="item_amulet_of_fury_name">Amuleto da Fúria</string>
+    <string name="item_amulet_of_strength_name">Amuleto de Força</string>
+    <string name="item_amulet_of_the_kraken_name">Amuleto do Kraken</string>
+    <string name="item_arcane_staff_name">Cajado Arcano</string>
+    <string name="item_archers_guild_cape_name">Capa da Guilda dos Arqueiros</string>
+    <string name="item_archers_ring_name">Anel dos Arqueiros</string>
+    <string name="item_attack_cape_name">Capa de Ataque</string>
+    <string name="item_baby_kraken_name">Kraken Bebê</string>
+    <string name="item_balrog_name">Balrog, Chama Ancestral de Udûn</string>
+    <string name="item_balrog_whip_name">Chicote do Balrog</string>
+    <string name="item_balrog_wings_name">Asas do Balrog</string>
+    <string name="item_beef_name">Carne Bovina Cozida</string>
+    <string name="item_berserker_ring_name">Anel do Berserker</string>
+    <string name="item_blessed_fishing_rod_name">Vara de Pesca Abençoada</string>
+    <string name="item_blood_blast_name">Explosão de Sangue</string>
+    <string name="item_blood_bolt_name">Rajada de Sangue</string>
+    <string name="item_blood_strike_name">Toque de Sangue</string>
+    <string name="item_blood_wave_name">Onda de Sangue</string>
+    <string name="item_bronze_arrow_tip_name">Pontas de Flecha de Bronze</string>
+    <string name="item_bronze_boots_name">Botas de Bronze</string>
+    <string name="item_bronze_chainbody_name">Cota de Malha de Bronze</string>
+    <string name="item_bronze_full_helmet_name">Elmo Completo de Bronze</string>
+    <string name="item_bronze_kiteshield_name">Escudo Longo de Bronze</string>
+    <string name="item_bronze_longsword_name">Espada Longa de Bronze</string>
+    <string name="item_bronze_med_helmet_name">Meio Elmo de Bronze</string>
+    <string name="item_bronze_plateskirt_name">Saia de Placas de Bronze</string>
+    <string name="item_bronze_square_shield_name">Escudo Quadrado de Bronze</string>
+    <string name="item_chaos_blast_name">Explosão do Caos</string>
+    <string name="item_chaos_bolt_name">Rajada do Caos</string>
+    <string name="item_chaos_strike_name">Toque do Caos</string>
+    <string name="item_chaos_wave_name">Onda do Caos</string>
+    <string name="item_chicken_name">Frango Cozido</string>
+    <string name="item_cooking_cape_name">Capa de Culinária</string>
+    <string name="item_cooking_guild_cape_name">Capa da Guilda de Culinária</string>
+    <string name="item_crafting_cape_name">Capa de Artesanato</string>
+    <string name="item_crafting_guild_cape_name">Capa da Guilda de Artesanato</string>
+    <string name="item_death_blast_name">Explosão da Morte</string>
+    <string name="item_death_bolt_name">Rajada da Morte</string>
+    <string name="item_death_strike_name">Toque da Morte</string>
+    <string name="item_death_wave_name">Onda da Morte</string>
+    <string name="item_deep_iron_pickaxe_name">Picareta de Ferro Profundo</string>
+    <string name="item_defense_cape_name">Capa de Defesa</string>
+    <string name="item_demon_lord_name">Senhor Demônio</string>
+    <string name="item_dragon_amulet_name">Amuleto de Dragão</string>
+    <string name="item_dragon_boots_name">Botas de Dragão</string>
+    <string name="item_dragon_longsword_name">Espada Longa de Dragão</string>
+    <string name="item_dragon_scimitar_name">Cimitarra de Dragão</string>
+    <string name="item_dragon_whelp_name">Filhote de Dragão</string>
+    <string name="item_dwarven_axe_name">Machado Anão</string>
+    <string name="item_dwarven_boots_name">Botas Anãs</string>
+    <string name="item_dwarven_fishing_rod_name">Vara de Pesca Anã</string>
+    <string name="item_dwarven_helm_name">Elmo Anão</string>
+    <string name="item_dwarven_hoe_name">Enxada Anã</string>
+    <string name="item_dwarven_pickaxe_name">Picareta Anã</string>
+    <string name="item_dwarven_platebody_name">Peitoral Anão</string>
+    <string name="item_dwarven_platelegs_name">Perneiras Anãs</string>
+    <string name="item_dwarven_scimitar_name">Cimitarra Anã</string>
+    <string name="item_dwarven_shield_name">Escudo Anão</string>
+    <string name="item_dwarven_sword_name">Espada Anã</string>
+    <string name="item_dwarven_warhammer_name">Martelo de Guerra Anão</string>
+    <string name="item_earth_blast_name">Explosão de Terra</string>
+    <string name="item_earth_bolt_name">Rajada de Terra</string>
+    <string name="item_earth_strike_name">Toque de Terra</string>
+    <string name="item_earth_wave_name">Onda de Terra</string>
+    <string name="item_ent_name">Ent</string>
+    <string name="item_farming_cape_name">Capa de Agricultura</string>
+    <string name="item_farming_guild_cape_name">Capa da Guilda de Agricultura</string>
+    <string name="item_fire_blast_name">Explosão de Fogo</string>
+    <string name="item_fire_bolt_name">Rajada de Fogo</string>
+    <string name="item_fire_strike_name">Toque de Fogo</string>
+    <string name="item_fire_wave_name">Onda de Fogo</string>
+    <string name="item_firemaking_cape_name">Capa de Fazer Fogueiras</string>
+    <string name="item_firemaking_guild_cape_name">Capa da Guilda de Fazer Fogueiras</string>
+    <string name="item_fishing_cape_name">Capa de Pesca</string>
+    <string name="item_fishing_guild_cape_name">Capa da Guilda de Pesca</string>
+    <string name="item_flame_heart_amulet_name">Amuleto Coração de Chamas</string>
+    <string name="item_fletching_cape_name">Capa de Arcaria</string>
+    <string name="item_fletching_guild_cape_name">Capa da Guilda de Arcaria</string>
+    <string name="item_forge_pickaxe_name">Picareta da Forja</string>
+    <string name="item_hellfire_staff_name">Cajado do Fogo Infernal</string>
+    <string name="item_herblore_guild_cape_name">Capa da Guilda de Herbologia</string>
+    <string name="item_hp_cape_name">Capa de HP</string>
+    <string name="item_imp_pet_name">Diabrete de Estimação</string>
+    <string name="item_iron_arrow_tip_name">Pontas de Flecha de Ferro</string>
+    <string name="item_iron_boots_name">Botas de Ferro</string>
+    <string name="item_iron_chainbody_name">Cota de Malha de Ferro</string>
+    <string name="item_iron_full_helmet_name">Elmo Completo de Ferro</string>
+    <string name="item_iron_kiteshield_name">Escudo Longo de Ferro</string>
+    <string name="item_iron_longsword_name">Espada Longa de Ferro</string>
+    <string name="item_iron_med_helmet_name">Meio Elmo de Ferro</string>
+    <string name="item_iron_plateskirt_name">Saia de Placas de Ferro</string>
+    <string name="item_iron_square_shield_name">Escudo Quadrado de Ferro</string>
+    <string name="item_ironwood_axe_name">Machado de Pau-Ferro</string>
+    <string name="item_king_black_dragon_name">Rei Dragão Negro</string>
+    <string name="item_kraken_name">Kraken</string>
+    <string name="item_kraken_tentacle_name">Tentáculo de Kraken</string>
+    <string name="item_mages_guild_cape_name">Capa da Guilda dos Magos</string>
+    <string name="item_magic_cape_name">Capa de Magia</string>
+    <string name="item_magic_longbow_name">Arco Longo Mágico</string>
+    <string name="item_magic_shortbow_name">Arco Curto Mágico</string>
+    <string name="item_maple_shortbow_name">Arco Curto de Bordo</string>
+    <string name="item_mercantile_guild_cape_name">Capa da Guilda Mercantil</string>
+    <string name="item_mind_blast_name">Explosão Mental</string>
+    <string name="item_mind_bolt_name">Rajada Mental</string>
+    <string name="item_mind_strike_name">Toque Mental</string>
+    <string name="item_mind_wave_name">Onda Mental</string>
+    <string name="item_mining_cape_name">Capa de Mineração</string>
+    <string name="item_mining_guild_cape_name">Capa da Guilda de Mineração</string>
+    <string name="item_mithril_arrow_tip_name">Pontas de Flecha de Mithril</string>
+    <string name="item_mithril_boots_name">Botas de Mithril</string>
+    <string name="item_mithril_chainbody_name">Cota de Malha de Mithril</string>
+    <string name="item_mithril_dagger_name">Adaga de Mithril</string>
+    <string name="item_mithril_full_helmet_name">Elmo Completo de Mithril</string>
+    <string name="item_mithril_kiteshield_name">Escudo Longo de Mithril</string>
+    <string name="item_mithril_longsword_name">Espada Longa de Mithril</string>
+    <string name="item_mithril_med_helmet_name">Meio Elmo de Mithril</string>
+    <string name="item_mithril_plateskirt_name">Saia de Placas de Mithril</string>
+    <string name="item_mithril_square_shield_name">Escudo Quadrado de Mithril</string>
+    <string name="item_mutton_name">Carneiro Cozido</string>
+    <string name="item_necklace_of_anguish_name">Colar da Angústia</string>
+    <string name="item_oak_shortbow_name">Arco Curto de Carvalho</string>
+    <string name="item_platinum_ore_name">Minério de Platina</string>
+    <string name="item_prayer_cape_name">Capa de Oração</string>
+    <string name="item_prayer_guild_cape_name">Capa da Guilda de Oração</string>
+    <string name="item_ranged_cape_name">Capa de Distância</string>
+    <string name="item_rat_meat_name">Carne de Rato Cozida</string>
+    <string name="item_ring_of_dragons_might_name">Anel do Poder dos Dragões</string>
+    <string name="item_ring_of_flame_name">Anel de Chamas</string>
+    <string name="item_ring_of_recoil_name">Anel de Recuo</string>
+    <string name="item_ring_of_suffering_name">Anel do Sofrimento</string>
+    <string name="item_ring_of_the_seas_name">Anel dos Mares</string>
+    <string name="item_ring_of_wealth_name">Anel da Riqueza</string>
+    <string name="item_rock_golem_name">Golem de Pedra</string>
+    <string name="item_runecrafting_cape_name">Capa de Runecraft</string>
+    <string name="item_runecrafting_guild_cape_name">Capa da Guilda de Runecraft</string>
+    <string name="item_runite_arrow_tip_name">Pontas de Flecha de Runita</string>
+    <string name="item_runite_boots_name">Botas de Runita</string>
+    <string name="item_runite_chainbody_name">Cota de Malha de Runita</string>
+    <string name="item_runite_dagger_name">Adaga de Runita</string>
+    <string name="item_runite_full_helmet_name">Elmo Completo de Runita</string>
+    <string name="item_runite_kiteshield_name">Escudo Longo de Runita</string>
+    <string name="item_runite_longsword_name">Espada Longa de Runita</string>
+    <string name="item_runite_med_helmet_name">Meio Elmo de Runita</string>
+    <string name="item_runite_plateskirt_name">Saia de Placas de Runita</string>
+    <string name="item_runite_square_shield_name">Escudo Quadrado de Runita</string>
+    <string name="item_sanctum_axe_name">Machado do Santuário</string>
+    <string name="item_seers_ring_name">Anel dos Videntes</string>
+    <string name="item_shadow_dagger_name">Adaga das Sombras</string>
+    <string name="item_shortbow_name">Arco Curto</string>
+    <string name="item_silver_diamond_necklace_name">Colar de Prata com Diamante</string>
+    <string name="item_silver_diamond_ring_name">Anel de Prata com Diamante</string>
+    <string name="item_silver_emerald_necklace_name">Colar de Prata com Esmeralda</string>
+    <string name="item_silver_emerald_ring_name">Anel de Prata com Esmeralda</string>
+    <string name="item_silver_ruby_necklace_name">Colar de Prata com Rubi</string>
+    <string name="item_silver_ruby_ring_name">Anel de Prata com Rubi</string>
+    <string name="item_smithing_cape_name">Capa de Ferraria</string>
+    <string name="item_smithing_guild_cape_name">Capa da Guilda de Ferraria</string>
+    <string name="item_steel_arrow_tip_name">Pontas de Flecha de Aço</string>
+    <string name="item_steel_boots_name">Botas de Aço</string>
+    <string name="item_steel_chainbody_name">Cota de Malha de Aço</string>
+    <string name="item_steel_dagger_name">Adaga de Aço</string>
+    <string name="item_steel_full_helmet_name">Elmo Completo de Aço</string>
+    <string name="item_steel_kiteshield_name">Escudo Longo de Aço</string>
+    <string name="item_steel_longsword_name">Espada Longa de Aço</string>
+    <string name="item_steel_med_helmet_name">Meio Elmo de Aço</string>
+    <string name="item_steel_plateskirt_name">Saia de Placas de Aço</string>
+    <string name="item_steel_square_shield_name">Escudo Quadrado de Aço</string>
+    <string name="item_strength_cape_name">Capa de Força</string>
+    <string name="item_tangleroot_name">Raiz Emaranhada</string>
+    <string name="item_tiny_templar_name">Pequeno Templário</string>
+    <string name="item_tormented_necklace_name">Colar Atormentado</string>
+    <string name="item_trident_of_the_seas_name">Tridente dos Mares</string>
+    <string name="item_warriors_guild_cape_name">Capa da Guilda dos Guerreiros</string>
+    <string name="item_water_blast_name">Explosão de Água</string>
+    <string name="item_water_bolt_name">Rajada de Água</string>
+    <string name="item_water_strike_name">Toque de Água</string>
+    <string name="item_water_wave_name">Onda de Água</string>
+    <string name="item_willow_shortbow_name">Arco Curto de Salgueiro</string>
+    <string name="item_wind_blast_name">Explosão de Vento</string>
+    <string name="item_wind_bolt_name">Rajada de Vento</string>
+    <string name="item_wind_strike_name">Toque de Vento</string>
+    <string name="item_wind_wave_name">Onda de Vento</string>
+    <string name="item_woodcutting_cape_name">Capa de Lenhagem</string>
+    <string name="item_woodcutting_guild_cape_name">Capa da Guilda de Lenhagem</string>
+    <string name="item_yew_longbow_name">Arco Longo de Teixo</string>
+    <string name="item_yew_shortbow_name">Arco Curto de Teixo</string>
+</resources>

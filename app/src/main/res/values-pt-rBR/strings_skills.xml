@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Skill names and descriptions ===== -->
+
+    <!-- Gathering skills -->
+    <string name="skill_mining_name">Mineração</string>
+    <string name="skill_mining_desc">Extraia minérios e gemas valiosas da terra.</string>
+    <string name="skill_fishing_name">Pesca</string>
+    <string name="skill_fishing_desc">Pesque peixes e tesouros aquáticos das águas.</string>
+    <string name="skill_woodcutting_name">Lenhagem</string>
+    <string name="skill_woodcutting_desc">Corte árvores e colete diversos tipos de madeira.</string>
+    <string name="skill_farming_name">Agricultura</string>
+    <string name="skill_farming_desc">Plante e colha lavouras em seus canteiros.</string>
+    <string name="skill_firemaking_name">Fazer Fogueiras</string>
+    <string name="skill_firemaking_desc">Queime toras do seu inventário para ganhar XP de Fazer Fogueiras. Cada tora queimada também produz cinzas, que podem ser espalhadas na habilidade de Oração para XP extra de Oração.</string>
+    <string name="skill_agility_name">Agilidade</string>
+    <string name="skill_agility_desc">Treine Agilidade para reduzir o tempo de sessão em todas as habilidades. O nível 99 reduz 20 minutos da hora (60 min → 40 min), com uma redução linear suave conforme você sobe de nível.</string>
+
+    <!-- Crafting skills -->
+    <string name="skill_smithing_name">Ferraria</string>
+    <string name="skill_smithing_desc">Funda minérios em barras e forje equipamentos metálicos poderosos.</string>
+    <string name="skill_cooking_name">Culinária</string>
+    <string name="skill_cooking_desc">Cozinhe ingredientes crus para criar comida que restaura HP em combate.</string>
+    <string name="skill_fletching_name">Arcaria</string>
+    <string name="skill_fletching_desc">Fabrique arcos e flechas a partir de toras e componentes metálicos.</string>
+    <string name="skill_crafting_name">Artesanato</string>
+    <string name="skill_crafting_desc">Crie joias e outros itens artesanais a partir de materiais preciosos.</string>
+    <string name="skill_runecrafting_name">Runecraft</string>
+    <string name="skill_runecrafting_desc">Crie runas mágicas a partir da essência de runas para uso em feitiços.</string>
+    <string name="skill_herblore_name">Herbologia</string>
+    <string name="skill_herblore_desc">Prepare poções com ervas cultivadas e reagentes de masmorra para aumentar seus atributos de combate.</string>
+
+    <!-- Combat skills -->
+    <string name="skill_attack_name">Ataque</string>
+    <string name="skill_attack_desc">Melhora sua precisão corpo a corpo, aumentando sua chance de acertar.</string>
+    <string name="skill_strength_name">Força</string>
+    <string name="skill_strength_desc">Aumenta o dano corpo a corpo máximo por golpe.</string>
+    <string name="skill_defense_name">Defesa</string>
+    <string name="skill_defense_desc">Reduz o dano que você recebe dos ataques inimigos.</string>
+    <string name="skill_ranged_name">Distância</string>
+    <string name="skill_ranged_desc">Ataque inimigos a uma distância segura usando arco e flechas.</string>
+    <string name="skill_magic_name">Magia</string>
+    <string name="skill_magic_desc">Lance feitiços poderosos usando runas. Níveis mais altos desbloqueiam feitiços mais fortes.</string>
+    <string name="skill_hitpoints_name">Pontos de Vida</string>
+    <string name="skill_hitpoints_desc">Sua saúde total. Níveis mais altos permitem que você sobreviva por mais tempo em combate.</string>
+    <string name="skill_prayer_name">Oração</string>
+    <string name="skill_prayer_desc">Enterre ossos obtidos em combate para ganhar XP de Oração. Níveis mais altos aumentam seu nível de combate.</string>
+
+    <!-- ===== Skill unlock sheet labels ===== -->
+    <string name="label_lv">Nv %1$d</string>
+    <string name="skills_agility_course_detail">Nv. %1$d  •  %2$d XP/volta</string>
+    <string name="label_hp_passive">Passivo — aumenta o HP máximo</string>
+    <string name="label_hp_scales">O HP máximo aumenta a cada nível</string>
+    <string name="label_hp_max">HP Máximo: %1$d</string>
+    <string name="label_xp_per_bone">%1$s (%2$d XP/osso)</string>
+    <string name="label_xp_per_kill">%1$s (%2$d XP/abate)</string>
+
+    <!-- ===== Agility course names and descriptions ===== -->
+    <string name="agility_beginner_course_name">Percurso Iniciante</string>
+    <string name="agility_beginner_course_desc">Um percurso simples de obstáculos para quem está começando o treinamento de agilidade.</string>
+    <string name="agility_novice_course_name">Percurso Novato</string>
+    <string name="agility_novice_course_desc">Um percurso um pouco mais desafiador com obstáculos básicos.</string>
+    <string name="agility_apprentice_course_name">Percurso Aprendiz</string>
+    <string name="agility_apprentice_course_desc">Um percurso intermediário que exige alguma habilidade para ser concluído.</string>
+    <string name="agility_intermediate_course_name">Percurso Intermediário</string>
+    <string name="agility_intermediate_course_desc">Um percurso moderadamente difícil com obstáculos complicados.</string>
+    <string name="agility_advanced_course_name">Percurso Avançado</string>
+    <string name="agility_advanced_course_desc">Um percurso desafiador que testa sua destreza em agilidade.</string>
+    <string name="agility_expert_course_name">Percurso Especialista</string>
+    <string name="agility_expert_course_desc">Um percurso de nível especialista com obstáculos perigosos.</string>
+    <string name="agility_elite_course_name">Percurso de Elite</string>
+    <string name="agility_elite_course_desc">Somente os mais ágeis conseguem dominar este percurso de elite.</string>
+    <string name="agility_master_course_name">Percurso Mestre</string>
+    <string name="agility_master_course_desc">Um percurso de nível mestre com obstáculos extremos.</string>
+    <string name="agility_veteran_course_name">Percurso Veterano</string>
+    <string name="agility_veteran_course_desc">Um campo de treinamento de veteranos com desafios implacáveis.</string>
+    <string name="agility_champion_course_name">Percurso Campeão</string>
+    <string name="agility_champion_course_desc">Um percurso de nível campeão que te leva ao seu limite.</string>
+    <string name="agility_heroic_course_name">Percurso Heroico</string>
+    <string name="agility_heroic_course_desc">Um percurso heroico onde apenas os melhores ousam pisar.</string>
+    <string name="agility_legendary_course_name">Percurso Lendário</string>
+    <string name="agility_legendary_course_desc">Um percurso lendário, comentado em sussurros entre a elite da agilidade.</string>
+    <string name="agility_mythic_course_name">Percurso Mítico</string>
+    <string name="agility_mythic_course_desc">Um percurso mítico que desafia as leis da física.</string>
+    <string name="agility_divine_course_name">Percurso Divino</string>
+    <string name="agility_divine_course_desc">Um percurso divino abençoado pelos deuses da agilidade.</string>
+    <string name="agility_transcendent_course_name">Percurso Transcendente</string>
+    <string name="agility_transcendent_course_desc">O teste definitivo de agilidade, transcendendo os limites mortais.</string>
+
+    <!-- ===== Session skill type labels ===== -->
+    <string name="skill_expedition_name">Expedição</string>
+    <string name="skill_boss_name">Chefão</string>
+    <string name="skill_mercantile_name">Mercantil</string>
+</resources>

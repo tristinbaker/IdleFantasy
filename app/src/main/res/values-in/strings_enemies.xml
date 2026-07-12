@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Enemy names ===== -->
+    <string name="enemy_giant_rat_name">Tikus Raksasa</string>
+    <string name="enemy_goblin_name">Goblin</string>
+    <string name="enemy_skeleton_name">Tengkorak</string>
+    <string name="enemy_zombie_name">Zombi</string>
+    <string name="enemy_bandit_name">Bandit</string>
+    <string name="enemy_guard_name">Penjaga</string>
+    <string name="enemy_dark_wizard_name">Penyihir Kegelapan</string>
+    <string name="enemy_orc_warrior_name">Prajurit Orc</string>
+    <string name="enemy_spider_name">Laba-laba Raksasa</string>
+    <string name="enemy_wild_dog_name">Anjing Liar</string>
+    <string name="enemy_rogue_name">Berandal</string>
+    <string name="enemy_knight_name">Ksatria</string>
+    <string name="enemy_hellhound_name">Anjing Neraka</string>
+    <string name="enemy_troll_name">Troll Gunung</string>
+    <string name="enemy_demon_name">Iblis Kecil</string>
+    <string name="enemy_dragon_name">Naga Hijau</string>
+    <string name="enemy_imp_name">Setan Kerdil</string>
+    <string name="enemy_chicken_name">Ayam</string>
+    <string name="enemy_sheep_name">Domba</string>
+    <string name="enemy_cow_name">Sapi</string>
+
+    <!-- ===== Dungeon names and descriptions ===== -->
+    <string name="dungeon_imp_cavern_name">Gua Setan Kerdil</string>
+    <string name="dungeon_imp_cavern_desc">Gua dangkal yang dipenuhi setan kerdil usil. Cocok untuk pemula sejati!</string>
+    <string name="dungeon_goblin_cave_name">Gua Goblin</string>
+    <string name="dungeon_goblin_cave_desc">Gua gelap yang dipenuhi goblin dan tikus raksasa. Tempat yang bagus bagi para petualang baru untuk berlatih.</string>
+    <string name="dungeon_spider_den_name">Sarang Laba-laba</string>
+    <string name="dungeon_spider_den_desc">Gua yang dipenuhi jaring laba-laba beracun. Bawalah penawar racun!</string>
+    <string name="dungeon_bandit_camp_name">Kamp Bandit</string>
+    <string name="dungeon_bandit_camp_desc">Persembunyian para pencuri dan berandal di alam liar. Jaga baik-baik kantong koinmu!</string>
+    <string name="dungeon_undead_crypt_name">Makam Mayat Hidup</string>
+    <string name="dungeon_undead_crypt_desc">Tempat pemakaman kuno di mana para mayat menolak untuk beristirahat. Waspadalah terhadap sihir kegelapan!</string>
+    <string name="dungeon_fortress_ruins_name">Reruntuhan Benteng</string>
+    <string name="dungeon_fortress_ruins_desc">Puing-puing kastil kuno yang runtuh, kini dijaga oleh para ksatria dan prajurit.</string>
+    <string name="dungeon_orc_stronghold_name">Benteng Orc</string>
+    <string name="dungeon_orc_stronghold_desc">Permukiman orc yang dibentengi jauh di pegunungan. Hanya para pemberani yang berani memasukinya.</string>
+    <string name="dungeon_volcanic_depths_name">Kedalaman Vulkanik</string>
+    <string name="dungeon_volcanic_depths_desc">Gua yang membara, dihuni oleh anjing neraka dan iblis kecil. Panasnya tak tertahankan!</string>
+    <string name="dungeon_dragon_lair_name">Sarang Naga</string>
+    <string name="dungeon_dragon_lair_desc">Rumah legendaris para naga hijau. Hanya pejuang ulung yang mampu bertahan dari tantangan ini.</string>
+    <string name="dungeon_farm_name">Peternakan</string>
+    <string name="dungeon_farm_desc">Peternakan yang damai dengan hewan ternak. Cocok bagi pemula yang ingin mengumpulkan makanan!</string>
+    <string name="dungeon_infernal_stronghold_name">Benteng Neraka</string>
+    <string name="dungeon_infernal_stronghold_desc">Benteng api dan belerang, dikuasai oleh iblis dan anjing neraka. Panasnya saja sudah cukup untuk membunuh mereka yang tak siap.</string>
+    <string name="dungeon_ancient_temple_name">Kuil Kuno</string>
+    <string name="dungeon_ancient_temple_desc">Kuil kuno yang dijaga oleh makhluk-makhluk terkuat di seluruh negeri. Hanya pejuang terkuat yang berani memasukinya.</string>
+
+    <!-- ===== Solo boss names (raid bosses retargeted for solo play) ===== -->
+    <string name="boss_king_black_dragon_name">Raja Naga Hitam</string>
+    <string name="boss_demon_lord_name">Penguasa Iblis</string>
+    <string name="boss_kraken_name">Kraken</string>
+    <string name="boss_balrog_name">Balrog</string>
+
+    <!-- ===== Pet names and descriptions ===== -->
+    <string name="pet_dragon_whelp_name">Anak Naga</string>
+    <string name="pet_dragon_whelp_desc">Naga muda yang meningkatkan XP pertarunganmu.</string>
+    <string name="pet_imp_pet_name">Peliharaan Setan Kerdil</string>
+    <string name="pet_imp_pet_desc">Setan kerdil usil yang meningkatkan latihan Doamu.</string>
+    <string name="pet_baby_kraken_name">Anak Kraken</string>
+    <string name="pet_baby_kraken_desc">Kraken kecil yang meningkatkan XP Memasakmu.</string>
+    <string name="pet_rock_golem_name">Golem Batu</string>
+    <string name="pet_rock_golem_desc">Formasi batu hidup yang meningkatkan XP Pertambanganmu.</string>
+    <string name="pet_ent_name">Ent</string>
+    <string name="pet_ent_desc">Roh pohon kuno yang meningkatkan XP Menebangmu.</string>
+    <string name="pet_tiny_templar_name">Templar Kecil</string>
+    <string name="pet_tiny_templar_desc">Sahabat ikan kecil yang meningkatkan XP Memancingmu.</string>
+    <string name="pet_tangleroot_name">Akar Kusut</string>
+    <string name="pet_tangleroot_desc">Makhluk tumbuhan ajaib yang meningkatkan XP Bertanimu.</string>
+
+    <!-- Missing dungeons -->
+    <string name="dungeon_collapsed_mine_name">Tambang Runtuh</string>
+    <string name="dungeon_collapsed_mine_desc">Gua luas di bawah tambang tembaga. Troll gua dan golem batu menghantui reruntuhannya, sementara laba-laba raksasa menenun jaring di poros-poros yang runtuh.</string>
+    <string name="dungeon_shadow_den_name">Sarang Bayangan</string>
+    <string name="dungeon_shadow_den_desc">Jaringan ruang bawah tanah yang digunakan oleh serikat pencuri di wilayah ini. Berandal, pembunuh bayaran, dan makhluk bayangan mengintai di setiap sudut.</string>
+    <string name="dungeon_abyssal_ruins_name">Reruntuhan Jurang</string>
+    <string name="dungeon_abyssal_ruins_desc">Reruntuhan kuno yang ada secara bersamaan di atas dan di bawah alam fana. Makhluk-makhluk jurang yang aneh muncul dan menghilang dari kenyataan.</string>
+    <string name="dungeon_ancient_forest_ruins_name">Reruntuhan Hutan Kuno</string>
+    <string name="dungeon_ancient_forest_ruins_desc">Reruntuhan batu yang ditelan hutan purba, kini dihantui oleh makhluk liar dan arwah pendendam para druid.</string>
+    <string name="dungeon_ancient_forge_name">Tungku Kuno</string>
+    <string name="dungeon_ancient_forge_desc">Tungku kurcaci yang luas dan telah membara selama berabad-abad tanpa henti. Elemental api dan penjaga tungku melindungi rahasianya.</string>
+    <string name="dungeon_arcane_ruins_name">Reruntuhan Arkana</string>
+    <string name="dungeon_arcane_ruins_desc">Ruang bawah tanah yang masih berfungsi dari menara penyihir yang telah hancur. Konstruksi magis dan penjaga tersihir masih berpatroli di lorong-lorongnya.</string>
+    <string name="dungeon_corrupted_sanctum_name">Tempat Suci Terkorupsi</string>
+    <string name="dungeon_corrupted_sanctum_desc">Tempat suci yang diselimuti bayangan di jantung kanopi yang terkorupsi. Pendeta kegelapan dan makhluk buas yang terkorupsi menjaga kejahatan kuno.</string>
+    <string name="dungeon_drowned_temple_name">Kuil Tenggelam</string>
+    <string name="dungeon_drowned_temple_desc">Kuil yang tenggelam di bawah gua laut, lorong-lorongnya dipenuhi air dan makhluk laut yang telah menjadikannya rumah.</string>
+</resources>
