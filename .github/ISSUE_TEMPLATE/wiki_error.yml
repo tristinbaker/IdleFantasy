@@ -1,0 +1,63 @@
+name: Wiki Error
+description: Something in the wiki is incorrect/needs expanding
+labels: ["wiki"]
+body:
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues and this hasn't been reported
+          required: true
+        - label: This relates to the latest version of the game
+          required: true
+        - label: _(Optional)_ I would like to fix this myself (Thanks! See [how to get started](https://idlefantasy.tristinbaker.xyz/getting_started_wiki.html)
+          required: false
+
+  - type: input
+    id: version
+    attributes:
+      label: App Version
+      placeholder: "e.g. 1.1.5 (shown in Settings → About)"
+    validations:
+      required: true
+
+  - type: input
+    id: page_url
+    attributes:
+      label: Page URL
+      description: Which page is having issues? Leave as N/A for missing pages. If there are multiple affected pages, list each of them here or in the description
+      placeholder: "https://idlefantasy.tristinbaker.xyz/..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem_description
+    attributes:
+      label: What's incorrect?
+      description: A clear description of the error.
+      placeholder: "e.g. The mining page is missing some of the ores present in the game"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Text
+      description: What should the wiki page have said?
+    validations:
+      required: true
+
+  - type: textarea
+    id: affected_mechanic
+    attributes:
+      label: Which part of the game does this relate to?
+      description: Which screen, system, or game mechanic relates to this error?
+      placeholder: "e.g. This relates to the Summer Solstice event"
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Anything else?
+      description: Screenshots of the game or information about your game state could be helpful
+
