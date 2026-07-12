@@ -601,16 +601,23 @@ internal fun SummarySection(title: String) {
 }
 
 @Composable
-internal fun SummaryRow(label: String, value: String) {
+internal fun SummaryRow(
+    label: String,
+    value: String,
+    labelColor: androidx.compose.ui.graphics.Color = MaterialTheme.colorScheme.onSurface,
+    valueColor: androidx.compose.ui.graphics.Color = MaterialTheme.colorScheme.onSurfaceVariant,
+    fontWeight: FontWeight = FontWeight.Normal,
+) {
     Row(
         modifier              = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
-        Text(label, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.weight(1f))
+        Text(label, style = MaterialTheme.typography.bodyMedium, color = labelColor, fontWeight = fontWeight, modifier = Modifier.weight(1f))
         Text(
             text       = value,
             style      = MaterialTheme.typography.bodyMedium,
-            fontWeight = FontWeight.SemiBold,
+            fontWeight = if (fontWeight == FontWeight.Bold) FontWeight.Bold else FontWeight.SemiBold,
+            color      = valueColor,
         )
     }
 }

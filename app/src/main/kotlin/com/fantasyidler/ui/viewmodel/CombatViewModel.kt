@@ -65,6 +65,7 @@ data class CombatSessionResult(
     val xpBlessingBonusBySkill: Map<String, Long> = emptyMap(),
     val coinBlessingBonus: Long = 0L,
     val boostWasActive: Boolean = false,
+    val rareItems: Set<String> = emptySet(),
 )
 
 data class CombatUiState(
@@ -807,6 +808,9 @@ class CombatViewModel @Inject constructor(
         }.filter { (_, bonus) -> bonus > 0 }
         val coinBlessingBonus = (coinsGained.toDouble() * (blessingCoinMult - 1)).toLong()
         val itemsDisplay = last.items.toMutableMap().also { it.remove("coins") }
+        val bossRareKeys = boss?.rareDrops?.map { it.item }?.toSet() ?: emptySet()
+        val bossPetKey = boss?.pet?.id
+        val rareItems = itemsDisplay.keys.filter { it in bossRareKeys || it == bossPetKey }.toSet()
         sessionRepo.deleteSession(session.sessionId)
         val bossRecentFlags = playerRepo.getFlags()
         playerRepo.updateFlags(bossRecentFlags.copy(
@@ -832,6 +836,7 @@ class CombatViewModel @Inject constructor(
                     xpBlessingBonusBySkill = xpBlessingBonusBySkill,
                     coinBlessingBonus      = coinBlessingBonus,
                     boostWasActive         = boostActive,
+                    rareItems              = rareItems,
                 ),
                 snackbarMessage = buildCapeMessage(capes),
                 petFoundName    = petFoundName,
@@ -928,6 +933,16 @@ class CombatViewModel @Inject constructor(
             ((boosted.toDouble() * blessingXpMult).toLong() - boosted).coerceAtLeast(0L)
         }.filter { (_, bonus) -> bonus > 0 }
         val coinBlessingBonus = (coinsGained.toDouble() * (blessingCoinMult - 1)).toLong()
+        val dungeonRareKeys = mutableSetOf<String>()
+        dungeon?.rareDrops?.forEach { dungeonRareKeys.add(it.item) }
+        dungeon?.enemySpawns?.forEach { spawn ->
+            gameData.enemies[spawn.enemy]?.dropTable?.forEach { entry ->
+                if (entry.chance <= 0.005) {
+                    dungeonRareKeys.add(entry.item)
+                }
+            }
+        }
+        val rareItems = allItems.keys.filter { it in dungeonRareKeys }.toSet()
         sessionRepo.deleteSession(session.sessionId)
         val dungeonRecentFlags = playerRepo.getFlags()
         val runStats = DungeonRunStats(
@@ -961,6 +976,7 @@ class CombatViewModel @Inject constructor(
                     xpBlessingBonusBySkill = xpBlessingBonusBySkill,
                     coinBlessingBonus      = coinBlessingBonus,
                     boostWasActive         = boostActive,
+                    rareItems              = rareItems,
                 ),
                 snackbarMessage = buildCapeMessage(capes),
             )

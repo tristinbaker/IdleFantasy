@@ -228,7 +228,16 @@ fun HomeScreen(
                     if (summary.itemLines.isNotEmpty()) {
                         Spacer(Modifier.height(4.dp))
                         SummarySection(stringResource(R.string.home_loot))
-                        summary.itemLines.forEach { (item, qty) -> SummaryRow(item, qty) }
+                        summary.itemLines.forEach { (item, qty) ->
+                            val isRare = item in summary.rareItems
+                            SummaryRow(
+                                label = if (isRare) "🌟 $item" else item,
+                                value = qty,
+                                labelColor = if (isRare) GoldPrimary else MaterialTheme.colorScheme.onSurface,
+                                valueColor = if (isRare) GoldPrimary else MaterialTheme.colorScheme.onSurfaceVariant,
+                                fontWeight = if (isRare) FontWeight.Bold else FontWeight.Normal,
+                            )
+                        }
                     }
                     if (summary.coinsGained > 0) {
                         SummaryRow(stringResource(R.string.label_coins), "+${summary.coinsGained.formatCoins()}")
@@ -375,7 +384,16 @@ fun HomeScreen(
                     if (summary.itemLines.isNotEmpty()) {
                         Spacer(Modifier.height(4.dp))
                         SummarySection(stringResource(R.string.home_loot))
-                        summary.itemLines.forEach { (item, qty) -> SummaryRow(item, qty) }
+                        summary.itemLines.forEach { (item, qty) ->
+                            val isRare = item in summary.rareItems
+                            SummaryRow(
+                                label = if (isRare) "🌟 $item" else item,
+                                value = qty,
+                                labelColor = if (isRare) GoldPrimary else MaterialTheme.colorScheme.onSurface,
+                                valueColor = if (isRare) GoldPrimary else MaterialTheme.colorScheme.onSurfaceVariant,
+                                fontWeight = if (isRare) FontWeight.Bold else FontWeight.Normal,
+                            )
+                        }
                     }
                     if (summary.coinsGained > 0) {
                         SummaryRow(stringResource(R.string.label_coins), "+${summary.coinsGained.formatCoins()}")

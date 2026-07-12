@@ -100,6 +100,7 @@ data class SessionSummary(
     val noteLines: List<String> = emptyList(),
     /** Expedition: set when this collect triggered a new combat dungeon unlock. */
     val unlockMessage: String? = null,
+    val rareItems: Set<String> = emptySet(),
 )
 
 data class HomeUiState(
@@ -743,6 +744,32 @@ class HomeViewModel @Inject constructor(
             for (session in sessions) sessionRepo.deleteSession(session.sessionId)
             if (dailyKills.isNotEmpty()) playerRepo.recordDailyKills(dailyKills)
 
+            val rareItemsDisplayNames = mutableSetOf<String>()
+            for (session in sessions) {
+                if (session.skillName == "boss") {
+                    val boss = gameData.bosses[session.activityKey]
+                    val bossRareKeys = boss?.rareDrops?.map { it.item }?.toSet() ?: emptySet()
+                    val bossPetKey = boss?.pet?.id
+                    val combinedBossRareKeys = bossRareKeys + listOfNotNull(bossPetKey)
+                    combinedBossRareKeys.forEach { key ->
+                        rareItemsDisplayNames.add(gameData.itemDisplayName(key))
+                    }
+                }
+                if (session.skillName == "combat") {
+                    val dungeon = gameData.dungeons[session.activityKey]
+                    dungeon?.rareDrops?.forEach {
+                        rareItemsDisplayNames.add(gameData.itemDisplayName(it.item))
+                    }
+                    dungeon?.enemySpawns?.forEach { spawn ->
+                        gameData.enemies[spawn.enemy]?.dropTable?.forEach { entry ->
+                            if (entry.chance <= 0.005) {
+                                rareItemsDisplayNames.add(gameData.itemDisplayName(entry.item))
+                            }
+                        }
+                    }
+                }
+            }
+
             // ── Recent sessions log ───────────────────────────────────────
             val newEntries = sessions.map { s ->
                 val activityDisplay = when (s.skillName) {
@@ -836,6 +863,7 @@ class HomeViewModel @Inject constructor(
                 coinBlessingBonus = coinBlessingBonus,
                 noteLines        = expeditionNoteLines,
                 unlockMessage    = expeditionUnlockMessage,
+                rareItems        = rareItemsDisplayNames,
             )
 
             val capeMessage = if (awardedCapes.isNotEmpty()) {
