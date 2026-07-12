@@ -410,9 +410,9 @@
       }
     ]
   },
-  "wild_dog": {
-    "name": "wild_dog",
-    "display_name": "Wild Dog",
+  "wild_monkey": {
+    "name": "wild_monkey",
+    "display_name": "Wild Monkey",
     "hp": 18,
     "combat_stats": {
       "attack_level": 3,
