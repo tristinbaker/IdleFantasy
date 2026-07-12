@@ -106,4 +106,8 @@
     <string name="equip_slot_axe">Bijl</string>
     <string name="equip_slot_fishing_rod">Hengel</string>
     <string name="equip_slot_hoe">Schoffel</string>
+    <string name="equip_slot_frying_pan">Koekenpan</string>
+    <string name="equip_slot_grappling_hook">Grijphaak</string>
+    <string name="equip_slot_hammer">Hamer</string>
+    <string name="equip_slot_tinderbox">Tondeldoos</string>
 </resources>

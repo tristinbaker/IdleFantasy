@@ -106,4 +106,8 @@
     <string name="equip_slot_axe">Hacha</string>
     <string name="equip_slot_fishing_rod">Caña de pescar</string>
     <string name="equip_slot_hoe">Hoe</string>
+    <string name="equip_slot_frying_pan">Sartén</string>
+    <string name="equip_slot_grappling_hook">Garfio de escalada</string>
+    <string name="equip_slot_hammer">Martillo</string>
+    <string name="equip_slot_tinderbox">Yesquero</string>
 </resources>

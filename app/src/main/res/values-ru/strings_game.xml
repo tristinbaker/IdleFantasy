@@ -106,4 +106,8 @@
     <string name="equip_slot_axe">Топор</string>
     <string name="equip_slot_fishing_rod">Удочка</string>
     <string name="equip_slot_hoe">Мотыга</string>
+    <string name="equip_slot_frying_pan">Сковорода</string>
+    <string name="equip_slot_grappling_hook">Крюк-кошка</string>
+    <string name="equip_slot_hammer">Молот</string>
+    <string name="equip_slot_tinderbox">Огниво</string>
 </resources>

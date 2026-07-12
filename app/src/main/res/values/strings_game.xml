@@ -106,4 +106,8 @@
     <string name="equip_slot_axe">Axe</string>
     <string name="equip_slot_fishing_rod">Fishing Rod</string>
     <string name="equip_slot_hoe">Hoe</string>
+    <string name="equip_slot_frying_pan">Frying Pan</string>
+    <string name="equip_slot_grappling_hook">Grappling Hook</string>
+    <string name="equip_slot_hammer">Hammer</string>
+    <string name="equip_slot_tinderbox">Tinderbox</string>
 </resources>

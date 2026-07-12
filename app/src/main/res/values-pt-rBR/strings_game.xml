@@ -106,4 +106,8 @@
     <string name="equip_slot_axe">Machado</string>
     <string name="equip_slot_fishing_rod">Vara de Pesca</string>
     <string name="equip_slot_hoe">Enxada</string>
+    <string name="equip_slot_frying_pan">Frigideira</string>
+    <string name="equip_slot_grappling_hook">Gancho de escalada</string>
+    <string name="equip_slot_hammer">Martelo</string>
+    <string name="equip_slot_tinderbox">Caixa de isca</string>
 </resources>

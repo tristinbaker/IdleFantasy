@@ -106,4 +106,8 @@
     <string name="equip_slot_axe">Siekiera</string>
     <string name="equip_slot_fishing_rod">Wędka</string>
     <string name="equip_slot_hoe">Motyka</string>
+    <string name="equip_slot_frying_pan">Patelnia</string>
+    <string name="equip_slot_grappling_hook">Hak wspinaczkowy</string>
+    <string name="equip_slot_hammer">Młot</string>
+    <string name="equip_slot_tinderbox">Krzesiwo</string>
 </resources>

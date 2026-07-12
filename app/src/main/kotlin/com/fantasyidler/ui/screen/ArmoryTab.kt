@@ -379,6 +379,10 @@ private fun slotLabel(slot: String): String = when (slot) {
     "axe"         -> stringResource(R.string.equip_slot_axe)
     "fishing_rod" -> stringResource(R.string.equip_slot_fishing_rod)
     "hoe"         -> stringResource(R.string.equip_slot_hoe)
+    "frying_pan"  -> stringResource(R.string.equip_slot_frying_pan)
+    "grappling_hook" -> stringResource(R.string.equip_slot_grappling_hook)
+    "hammer"      -> stringResource(R.string.equip_slot_hammer)
+    "tinderbox"   -> stringResource(R.string.equip_slot_tinderbox)
     else          -> slot.replaceFirstChar { it.uppercase() }
 }
 

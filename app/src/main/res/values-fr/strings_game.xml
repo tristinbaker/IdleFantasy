@@ -107,4 +107,8 @@
     <string name="equip_slot_axe">Hache</string>
     <string name="equip_slot_fishing_rod">Canne à pêche</string>
     <string name="equip_slot_hoe">Houe</string>
+    <string name="equip_slot_frying_pan">Poêle à frire</string>
+    <string name="equip_slot_grappling_hook">Grappin</string>
+    <string name="equip_slot_hammer">Marteau</string>
+    <string name="equip_slot_tinderbox">Briquet à amadou</string>
 </resources>
