@@ -606,10 +606,12 @@ def gen_agility() -> str:
         mins = session_minutes(level)
         duration_rows.append([level, f"{mins} min"])
 
+    tool_rows = _tool_table("grappling_hook", "agility_efficiency")
     return get_template("skills/gathering/agility").format(
         session_duration_table=table(["Agility Level", "Session Duration"], duration_rows),
         course_count=len(courses),
-        course_table=table(['Course', 'Level Required', 'XP / Lap', 'XP / Min (est.)', 'XP / Session (est.)'], course_rows)
+        course_table=table(['Course', 'Level Required', 'XP / Lap', 'XP / Min (est.)', 'XP / Session (est.)'], course_rows),
+        grappling_hook_table=tool_rows,
     )
 
 
@@ -637,6 +639,13 @@ def gen_smithing() -> str:
         if rows:
             sections.append(f"## {group_name}\n\n{table(['Item','Level','Materials','XP / Item'], rows)}")
 
+    sections.append(
+        "## Hammers\n\n"
+        "Equip a hammer to multiply how many items you can smith per session. "
+        "Higher-tier hammers require a higher Smithing level.\n\n"
+        f"{_tool_table('hammer', 'smithing_efficiency')}"
+    )
+
     return get_template("skills/crafting/smithing").format(sections="\n\n".join(sections))
 
 
@@ -648,8 +657,10 @@ def gen_cooking() -> str:
          for r in recipes.values()],
         key=lambda r: r[1]
     )
+    tool_rows = _tool_table("frying_pan", "cooking_efficiency")
     return get_template("skills/crafting/cooking").format(
-        food_table=table(['Food','Level','Raw Ingredient','XP / Item','HP Healed'], rows)
+        food_table=table(['Food','Level','Raw Ingredient','XP / Item','HP Healed'], rows),
+        frying_pan_table=tool_rows,
     )
 
 
@@ -684,7 +695,11 @@ def gen_firemaking() -> str:
          for l in logs.values()],
         key=lambda r: r[1]
     )
-    return get_template("skills/crafting/firemaking").format(item_table=table(['Log','Level Required','XP / Log Burned'], rows))
+    tool_rows = _tool_table("tinderbox", "firemaking_efficiency")
+    return get_template("skills/crafting/firemaking").format(
+        item_table=table(['Log','Level Required','XP / Log Burned'], rows),
+        tinderbox_table=tool_rows,
+    )
 
 
 def gen_runecrafting() -> str:

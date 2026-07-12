@@ -278,6 +278,8 @@
     <string name="settings_recent_activity_desc">Mostrar o botão Atividade Recente no cabeçalho da tela inicial</string>
     <string name="settings_journal_button">Botão de Diário</string>
     <string name="settings_journal_button_desc">Mostrar um botão flutuante de Diário na tela inicial para anotar suas notas</string>
+    <string name="settings_seasonal_events">Eventos Sazonais</string>
+    <string name="settings_seasonal_events_desc">Mostrar o banner do Evento Sazonal ativo na tela inicial</string>
     <string name="label_no_sessions_yet">Nenhuma sessão concluída ainda.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -1565,6 +1567,8 @@
     <string name="settings_art_credits">Créditos de Arte</string>
     <string name="settings_credit_banners_title">Bandeiras Sazonais</string>
     <string name="settings_credit_banners_subtitle">Arte por Wenrexa</string>
+    <string name="settings_credit_skill_icons_title">Ícones de Habilidades</string>
+    <string name="settings_credit_skill_icons_subtitle">Shikashi\'s Fantasy Icons Pack</string>
     <string name="title_seasonal_champion_of">Campeão de %1$s</string>
     <string name="title_seasonal_requirement">Complete o Evento Sazonal de %1$s</string>
     <string name="home_welcome_greeting">Bem-vindo de volta,</string>

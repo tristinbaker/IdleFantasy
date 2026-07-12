@@ -141,6 +141,7 @@ data class HomeUiState(
     val recentSessions: List<com.fantasyidler.data.model.RecentSession> = emptyList(),
     val showRecentActivityLog: Boolean = true,
     val showJournalButton: Boolean = true,
+    val showSeasonalEvents: Boolean = true,
     val playerNotes: String = "",
     val journalSheetOpen: Boolean = false,
     /** Total claimable guild quests + dailies across all guilds. Drives the badge on the town menu button. */
@@ -301,6 +302,7 @@ class HomeViewModel @Inject constructor(
                 recentSessions             = flags.recentSessions,
                 showRecentActivityLog      = flags.showRecentActivityLog,
                 showJournalButton          = flags.showJournalButton,
+                showSeasonalEvents         = flags.showSeasonalEvents,
                 playerNotes                = flags.playerNotes,
                 guildClaimableCount        = guildClaimableCount,
                 activeSeasonalEvent        = activeSeasonalEvent,

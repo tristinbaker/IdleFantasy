@@ -3,6 +3,7 @@ package com.fantasyidler.util
 import android.content.Context
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatDelegate
+import com.fantasyidler.R
 
 /**
  * Central resolver for game-content display strings.
@@ -153,6 +154,35 @@ object GameStrings {
         "combat"       -> "⚔️"
         "carnival"     -> "🎪"
         else           -> "🎮"
+    }
+
+    /** Drawable icon for a skill, from Shikashi's Fantasy Icons Pack. Null if the skill (or non-skill key like "boss"/"carnival") has no icon; fall back to [skillEmoji]. */
+    fun skillIconRes(key: String): Int? = when (key) {
+        "mining"       -> R.drawable.skill_mining
+        "fishing"      -> R.drawable.skill_fishing
+        "woodcutting"  -> R.drawable.skill_woodcutting
+        "farming"      -> R.drawable.skill_farming
+        "firemaking"   -> R.drawable.skill_firemaking
+        "agility"      -> R.drawable.skill_agility
+        "smithing"     -> R.drawable.skill_smithing
+        "cooking"      -> R.drawable.skill_cooking
+        "fletching"    -> R.drawable.skill_fletching
+        "crafting"     -> R.drawable.skill_crafting
+        "runecrafting" -> R.drawable.skill_runecrafting
+        "attack"       -> R.drawable.skill_attack
+        "strength"     -> R.drawable.skill_strength
+        "defense"      -> R.drawable.skill_defense
+        "ranged"       -> R.drawable.skill_ranged
+        "magic"        -> R.drawable.skill_magic
+        "hitpoints"    -> R.drawable.skill_hitpoints
+        "prayer"       -> R.drawable.skill_prayer
+        "mercantile"   -> R.drawable.skill_mercantile
+        "slayer"       -> R.drawable.skill_slayer
+        "herblore"     -> R.drawable.skill_herblore
+        "construction" -> R.drawable.skill_construction
+        "thieving"     -> R.drawable.skill_thieving
+        "combat"       -> R.drawable.skill_combat
+        else           -> null
     }
 }
 

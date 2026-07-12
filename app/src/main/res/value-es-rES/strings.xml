@@ -1492,4 +1492,8 @@
     <string name="armory_stat_attack_speed">Attack Speed</string>
     <string name="skill_session_voided_prestige">Your %1$s level no longer meets this session\'s requirement (likely from prestiging) — its rewards were voided and any materials used were refunded.</string>
     <string name="combat_session_voided_prestige">Your combat level no longer meets this encounter\'s requirement (likely from prestiging) — its rewards were voided.</string>
+    <string name="settings_seasonal_events">Seasonal Events</string>
+    <string name="settings_seasonal_events_desc">Show the active Seasonal Event banner on the home screen</string>
+    <string name="settings_credit_skill_icons_title">Skill Icons</string>
+    <string name="settings_credit_skill_icons_subtitle">Shikashi\'s Fantasy Icons Pack</string>
 </resources>

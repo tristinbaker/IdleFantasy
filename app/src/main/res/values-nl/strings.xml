@@ -279,6 +279,8 @@
     <string name="settings_recent_activity_desc">Knop Recente activiteit weergeven in de koptekst van het startscherm</string>
     <string name="settings_journal_button">Dagboek-knop</string>
     <string name="settings_journal_button_desc">Toon een zwevende Dagboek-knop op het startscherm om notities te maken</string>
+    <string name="settings_seasonal_events">Seizoensevenementen</string>
+    <string name="settings_seasonal_events_desc">Toon de banner van het actieve seizoensevenement op het startscherm</string>
     <string name="label_no_sessions_yet">Nog geen sessies voltooid.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -1554,6 +1556,8 @@
     <string name="settings_art_credits">Kunstcredits</string>
     <string name="settings_credit_banners_title">Seizoensbanieren</string>
     <string name="settings_credit_banners_subtitle">Kunst door Wenrexa</string>
+    <string name="settings_credit_skill_icons_title">Vaardigheidsiconen</string>
+    <string name="settings_credit_skill_icons_subtitle">Shikashi\'s Fantasy Icons Pack</string>
     <string name="title_seasonal_champion_of">Kampioen van %1$s</string>
     <string name="title_seasonal_requirement">Voltooi het Seizoensevenement %1$s</string>
     <string name="home_welcome_greeting">Welkom terug,</string>

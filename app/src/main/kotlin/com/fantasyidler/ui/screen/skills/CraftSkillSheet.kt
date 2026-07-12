@@ -502,9 +502,10 @@ private fun CraftQuantityContent(
             color      = GoldPrimary,
             fontWeight = FontWeight.SemiBold,
         )
-        if (sessionDurationMs > 0) {
+        val perItemMs = state.craftPerItemMs.takeIf { it > 0 } ?: (sessionDurationMs / 60)
+        if (perItemMs > 0) {
             Text(
-                text     = "~${(qty.toLong() * (sessionDurationMs / 60)).formatDurationMs()}",
+                text     = "~${(qty.toLong() * perItemMs).formatDurationMs()}",
                 style    = MaterialTheme.typography.bodySmall,
                 color    = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.align(Alignment.CenterHorizontally),

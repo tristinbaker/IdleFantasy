@@ -116,6 +116,8 @@ data class CraftingUiState(
     val isLoading: Boolean = true,
     val questFills: List<QuestFillSuggestion> = emptyList(),
     val recipeQuests: Map<String, List<QuestIndicator>> = emptyMap(),
+    /** Actual per-item craft duration for [selectedRecipe], tool efficiency applied. 0 if nothing selected. */
+    val craftPerItemMs: Long = 0L,
 ) {
     /** Returns how many times [recipe] can be crafted given [effectiveInventory]. */
     fun maxCraftable(recipe: CraftableRecipe): Int {
@@ -173,8 +175,15 @@ class CraftingViewModel @Inject constructor(
             val levels: Map<String, Int> = json.decodeFromString(player.skillLevels)
             val xp: Map<String, Long> = json.decodeFromString(player.skillXp)
             val inventory: Map<String, Int> = json.decodeFromString(player.inventory)
+            val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
             val flags: PlayerFlags = json.decodeFromString(player.flags)
             val effInv = computeEffectiveInventory(inventory)
+            val selectedRecipe = extra.selectedRecipe
+            val perItemMs = if (selectedRecipe != null) {
+                val agility = levels[Skills.AGILITY] ?: 1
+                val eff = craftToolEfficiency(selectedRecipe, equipped)
+                (SkillSimulator.sessionDurationMs(agility, flags.skillPrestige[Skills.AGILITY] ?: 0) / 60 / eff).toLong()
+            } else 0L
             extra.copy(
                 smithingLevel      = levels[Skills.SMITHING]      ?: 1,
                 cookingLevel       = levels[Skills.COOKING]       ?: 1,
@@ -189,6 +198,7 @@ class CraftingViewModel @Inject constructor(
                 isLoading          = false,
                 questFills         = computeQuestFills(extra.selectedRecipe, questProgress, flags),
                 recipeQuests       = computeRecipeQuests(allRecipes, questProgress, flags, effInv),
+                craftPerItemMs     = perItemMs,
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), CraftingUiState())

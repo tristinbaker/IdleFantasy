@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.screen
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -62,6 +63,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -157,16 +159,34 @@ internal fun HomeSessionCard(
                         else MaterialTheme.colorScheme.onSecondaryContainer,
             )
             Spacer(Modifier.height(4.dp))
-            Text(
-                text = buildString {
-                    append("$skillEmoji $skillLabel")
-                    if (activityLabel != null) append(" — $activityLabel")
-                },
-                style      = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
-                color      = if (isDone) MaterialTheme.colorScheme.onPrimaryContainer
-                             else MaterialTheme.colorScheme.onSecondaryContainer,
-            )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                val titleColor = if (isDone) MaterialTheme.colorScheme.onPrimaryContainer
+                                 else MaterialTheme.colorScheme.onSecondaryContainer
+                val iconRes = GameStrings.skillIconRes(session.skillName)
+                if (iconRes != null) {
+                    Image(
+                        painter            = painterResource(iconRes),
+                        contentDescription = null,
+                        modifier           = Modifier.size(20.dp),
+                    )
+                    Spacer(Modifier.width(6.dp))
+                } else {
+                    Text(
+                        text  = "$skillEmoji ",
+                        style = MaterialTheme.typography.titleMedium,
+                        color = titleColor,
+                    )
+                }
+                Text(
+                    text = buildString {
+                        append(skillLabel)
+                        if (activityLabel != null) append(" — $activityLabel")
+                    },
+                    style      = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold,
+                    color      = titleColor,
+                )
+            }
 
             if (!isDone) {
                 Spacer(Modifier.height(8.dp))
@@ -320,9 +340,18 @@ internal fun QueueCard(
                             GameStrings.itemName(context, action.activityKey)
                                 .takeIf { action.activityKey.isNotEmpty() }
                     }
+                    val iconRes = GameStrings.skillIconRes(action.skillName)
+                    if (iconRes != null) {
+                        Image(
+                            painter            = painterResource(iconRes),
+                            contentDescription = null,
+                            modifier           = Modifier.size(20.dp),
+                        )
+                        Spacer(Modifier.width(6.dp))
+                    }
                     Column(Modifier.weight(1f)) {
                         Text(
-                            text  = "$emoji $prefix${if (suffix != null) " — $suffix" else ""}",
+                            text  = "${if (iconRes == null) "$emoji " else ""}$prefix${if (suffix != null) " — $suffix" else ""}",
                             style = MaterialTheme.typography.bodyMedium,
                             fontWeight = FontWeight.Medium,
                         )
@@ -506,16 +535,34 @@ internal fun WorkerSessionCard(
                     "boss"   -> GameStrings.bossName(context, session.activityKey)
                     else     -> GameStrings.itemName(context, session.activityKey)
                 }.takeIf { session.activityKey.isNotEmpty() }
-                Text(
-                    text       = buildString {
-                        append("$skillEmoji $skillLabel")
-                        if (activityLabel != null) append(" — $activityLabel")
-                    },
-                    style      = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold,
-                    color      = if (isDone) MaterialTheme.colorScheme.onPrimaryContainer
-                                 else MaterialTheme.colorScheme.onSecondaryContainer,
-                )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    val titleColor = if (isDone) MaterialTheme.colorScheme.onPrimaryContainer
+                                     else MaterialTheme.colorScheme.onSecondaryContainer
+                    val iconRes = GameStrings.skillIconRes(session.skillName)
+                    if (iconRes != null) {
+                        Image(
+                            painter            = painterResource(iconRes),
+                            contentDescription = null,
+                            modifier           = Modifier.size(20.dp),
+                        )
+                        Spacer(Modifier.width(6.dp))
+                    } else {
+                        Text(
+                            text  = "$skillEmoji ",
+                            style = MaterialTheme.typography.titleMedium,
+                            color = titleColor,
+                        )
+                    }
+                    Text(
+                        text       = buildString {
+                            append(skillLabel)
+                            if (activityLabel != null) append(" — $activityLabel")
+                        },
+                        style      = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold,
+                        color      = titleColor,
+                    )
+                }
                 if (!isDone && endsAt > 0) {
                     Spacer(Modifier.height(8.dp))
                     Text(
@@ -692,11 +739,29 @@ internal fun RecentSessionsSheet(
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.width(28.dp),
                     )
-                    Text(
-                        text     = GameStrings.skillName(context, entry.skillName),
-                        style    = MaterialTheme.typography.bodyMedium,
-                        modifier = Modifier.weight(1f),
-                    )
+                    Row(
+                        modifier          = Modifier.weight(1f),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        val iconRes = GameStrings.skillIconRes(entry.skillName)
+                        if (iconRes != null) {
+                            Image(
+                                painter            = painterResource(iconRes),
+                                contentDescription = null,
+                                modifier           = Modifier.size(18.dp),
+                            )
+                            Spacer(Modifier.width(6.dp))
+                        } else {
+                            Text(
+                                text  = "${GameStrings.skillEmoji(entry.skillName)} ",
+                                style = MaterialTheme.typography.bodyMedium,
+                            )
+                        }
+                        Text(
+                            text  = GameStrings.skillName(context, entry.skillName),
+                            style = MaterialTheme.typography.bodyMedium,
+                        )
+                    }
                     Text(
                         text  = activityDisplay,
                         style = MaterialTheme.typography.bodyMedium,

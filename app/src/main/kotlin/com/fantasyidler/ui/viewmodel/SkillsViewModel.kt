@@ -91,6 +91,8 @@ data class SkillsUiState(
     val cropsReadyCount: Int = 0,
     val xpBonusMult: Float = 1.0f,
     val sessionDurationMs: Long = 0L,
+    /** Actual per-log burn duration, tinderbox tier bonus applied. Keyed by log key. */
+    val firemakingPerLogMs: Map<String, Long> = emptyMap(),
     val skillPrestige: Map<String, Int> = emptyMap(),
     val inventory: Map<String, Int> = emptyMap(),
     val petBoostBySkill: Map<String, Int> = emptyMap(),
@@ -182,6 +184,10 @@ class SkillsViewModel @Inject constructor(
                 cookingEfficiency     = gameData.toolEfficiency(equipped[EquipSlot.FRYING_PAN],     EquipSlot.FRYING_PAN,     0),
                 xpBonusMult           = (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0f else 1.0f) * ChurchRepository.xpMultiplier(flags),
                 sessionDurationMs     = SkillSimulator.sessionDurationMs(levels[Skills.AGILITY] ?: 1, flags.skillPrestige[Skills.AGILITY] ?: 0),
+                firemakingPerLogMs    = gameData.logs.mapValues { (_, log) ->
+                    val toolEff = gameData.toolEfficiency(equipped[EquipSlot.TINDERBOX], EquipSlot.TINDERBOX, log.levelRequired)
+                    (SkillSimulator.sessionDurationMs(levels[Skills.AGILITY] ?: 1, flags.skillPrestige[Skills.AGILITY] ?: 0) / 60L / toolEff).toLong()
+                },
                 skillPrestige         = flags.skillPrestige,
                 inventory             = inv,
                 cropsReadyCount       = cropsReady,

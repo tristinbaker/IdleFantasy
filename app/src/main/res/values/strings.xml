@@ -279,6 +279,8 @@
     <string name="settings_recent_activity_desc">Show Recent Activity button in the home screen header</string>
     <string name="settings_journal_button">Journal Button</string>
     <string name="settings_journal_button_desc">Show a floating Journal button on the home screen for jotting down notes</string>
+    <string name="settings_seasonal_events">Seasonal Events</string>
+    <string name="settings_seasonal_events_desc">Show the active Seasonal Event banner on the home screen</string>
     <string name="label_no_sessions_yet">No sessions completed yet.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -1570,6 +1572,8 @@
     <string name="settings_art_credits">Art Credits</string>
     <string name="settings_credit_banners_title">Seasonal Banners</string>
     <string name="settings_credit_banners_subtitle">Art by Wenrexa</string>
+    <string name="settings_credit_skill_icons_title">Skill Icons</string>
+    <string name="settings_credit_skill_icons_subtitle">Shikashi\'s Fantasy Icons Pack</string>
     <string name="title_seasonal_champion_of">Champion of %1$s</string>
     <string name="title_seasonal_requirement">Complete the %1$s Seasonal Event</string>
     <string name="home_welcome_greeting">Welcome back,</string>

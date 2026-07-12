@@ -83,6 +83,7 @@ fun SettingsScreen(
     val fontScale              by viewModel.fontScale.collectAsState()
     val showRecentActivityLog  by viewModel.showRecentActivityLog.collectAsState()
     val showJournalButton      by viewModel.showJournalButton.collectAsState()
+    val showSeasonalEvents     by viewModel.showSeasonalEvents.collectAsState()
     val profileLayout          by viewModel.profileLayout.collectAsState()
     val backupFolderUri  by viewModel.backupFolderUri.collectAsState()
     val backupFrequency  by viewModel.backupFrequency.collectAsState()
@@ -338,6 +339,16 @@ fun SettingsScreen(
                     Switch(
                         checked         = showJournalButton,
                         onCheckedChange = { viewModel.setShowJournalButton(it) },
+                    )
+                }
+            )
+            SettingsRow(
+                title    = stringResource(R.string.settings_seasonal_events),
+                subtitle = stringResource(R.string.settings_seasonal_events_desc),
+                trailing = {
+                    Switch(
+                        checked         = showSeasonalEvents,
+                        onCheckedChange = { viewModel.setShowSeasonalEvents(it) },
                     )
                 }
             )
@@ -606,6 +617,11 @@ fun SettingsScreen(
                     stringResource(R.string.settings_credit_banners_title),
                     stringResource(R.string.settings_credit_banners_subtitle),
                     "https://wenrexa.itch.io/banners-kingdoms",
+                ),
+                Triple(
+                    stringResource(R.string.settings_credit_skill_icons_title),
+                    stringResource(R.string.settings_credit_skill_icons_subtitle),
+                    "https://shikashipx.itch.io/shikashis-fantasy-icons-pack",
                 ),
             )
             artCredits.forEach { (title, subtitle, url) ->

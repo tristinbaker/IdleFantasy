@@ -1,0 +1,14 @@
+• Rare boss and dungeon drops (and pets) now show in gold with a 🌟 on the Combat result sheet and Home collection summaries, so they stand out from common loot
+• Added quest indicators (⏰ for daily/weekly/guild dailies, 📜 for main/guild progression) next to items in every skill selection sheet, faded out when you don't have enough materials on hand to finish the quest
+• Fix: after prestiging past a blessing's Prayer level requirement, you could still extend that already-active blessing indefinitely; extending now requires the same Prayer level as activating
+• Fix: several screens applied top bar and bottom navigation padding inconsistently, wasting vertical space on some screens
+• Added a Polish translation
+• Fixed and completed the Indonesian and Brazilian Portuguese translations, which were missing enemy, item, quest, guild quest, skill, and notification strings
+• Fix: the "expedition started" banner (and the same banner on the skill task selection drawer) could get stuck and reappear later if you switched screens while it was showing, instead of dismissing like other banners
+• Fix: the Home screen's notes button could overlap the reorder/remove buttons on queued tasks; it's now a top bar icon next to Recent Activity instead of a floating button
+• Fix: the wiki pages for Firemaking, Smithing, Cooking, and Agility were missing their tool sections (Tinderboxes, Hammers, Frying Pans, and Grappling Hooks)
+• Bonfire Rhythm now shows a 3 second countdown before each attempt starts, so you have a moment to get ready
+• Added a Seasonal Events toggle in Settings, to hide the event banner on the home screen
+• Replaced skill emojis with proper icons (from Shikashi's Fantasy Icons Pack, credited in Settings) on the Skills, Combat, and Profile screens, session cards, the queue, and the Recent Activity log
+• Fix: the estimated completion time shown before queuing Smithing, Cooking, or Firemaking ignored your equipped tool (Hammer, Frying Pan, Tinderbox) entirely, so it could show several times longer than the actual session; the estimate now matches what you'll actually get
+• Renamed the Wild Dog enemy to Wild Monkey

@@ -58,6 +58,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.BuildConfig
@@ -362,6 +363,7 @@ private fun BonfireRhythmGame(
     onSubmit: (Boolean) -> Unit,
 ) {
     var isPlaying by remember { mutableStateOf(false) }
+    var countdown by remember { mutableStateOf<Int?>(null) }
     var round by remember { mutableIntStateOf(0) }
     var hits by remember { mutableIntStateOf(0) }
     var litHole by remember { mutableIntStateOf(-1) }
@@ -412,12 +414,35 @@ private fun BonfireRhythmGame(
         }
     }
     Spacer(Modifier.height(8.dp))
-    if (!isPlaying) {
+    countdown?.let { c ->
+        Text(
+            text       = "$c",
+            style      = MaterialTheme.typography.displayMedium,
+            fontWeight = FontWeight.Bold,
+            color      = GoldPrimary,
+            textAlign  = TextAlign.Center,
+            modifier   = Modifier.fillMaxWidth(),
+        )
+    }
+    if (!isPlaying && countdown == null) {
         Button(
-            onClick  = { isPlaying = true; round = 0; hits = 0 },
+            onClick  = { countdown = 3 },
             modifier = Modifier.fillMaxWidth(),
         ) {
             Text(stringResource(R.string.seasonal_tap))
+        }
+    }
+
+    LaunchedEffect(countdown) {
+        val c = countdown ?: return@LaunchedEffect
+        delay(1000L)
+        if (c > 1) {
+            countdown = c - 1
+        } else {
+            countdown = null
+            isPlaying = true
+            round = 0
+            hits = 0
         }
     }
 

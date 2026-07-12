@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Group
+import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Person
@@ -29,7 +30,6 @@ import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.filled.Assignment
 import androidx.compose.material.icons.filled.Celebration
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.rememberModalBottomSheetState
@@ -513,8 +513,13 @@ fun HomeScreen(
                 title   = { Text(stringResource(R.string.app_name)) },
                 actions = {
                     if (!state.isLoading && state.showRecentActivityLog) {
-                        TextButton(onClick = { showRecentLog = true }) {
-                            Text(stringResource(R.string.label_recent_activity))
+                        IconButton(onClick = { showRecentLog = true }) {
+                            Icon(Icons.Filled.History, contentDescription = stringResource(R.string.label_recent_activity))
+                        }
+                    }
+                    if (!state.isLoading && state.showJournalButton) {
+                        IconButton(onClick = viewModel::openJournal) {
+                            Icon(Icons.Filled.EditNote, contentDescription = stringResource(R.string.label_journal))
                         }
                     }
                     IconButton(onClick = onNavigateToSettings) {
@@ -524,13 +529,6 @@ fun HomeScreen(
             )
         },
         snackbarHost = { SnackbarHost(snackbarHostState) },
-        floatingActionButton = {
-            if (!state.isLoading && state.showJournalButton) {
-                FloatingActionButton(onClick = viewModel::openJournal) {
-                    Icon(Icons.Filled.EditNote, contentDescription = stringResource(R.string.label_journal))
-                }
-            }
-        },
     ) { padding ->
         if (state.isLoading) {
             Column(
@@ -690,7 +688,7 @@ fun HomeScreen(
             }
 
             // ── Seasonal Event row ────────────────────────────────────────
-            state.activeSeasonalEvent?.let { event ->
+            if (state.showSeasonalEvents) state.activeSeasonalEvent?.let { event ->
                 val eventComplete = event.tokens >= event.goal
                 Surface(
                     shape    = RoundedCornerShape(16.dp),

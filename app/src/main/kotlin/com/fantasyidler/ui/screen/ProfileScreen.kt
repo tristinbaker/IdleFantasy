@@ -562,10 +562,19 @@ private fun SkillGridCard(
             modifier            = Modifier.fillMaxWidth().padding(8.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Text(
-                text  = GameStrings.skillEmoji(skillKey),
-                style = MaterialTheme.typography.headlineMedium,
-            )
+            val iconRes = GameStrings.skillIconRes(skillKey)
+            if (iconRes != null) {
+                Image(
+                    painter            = painterResource(iconRes),
+                    contentDescription = null,
+                    modifier           = Modifier.size(32.dp),
+                )
+            } else {
+                Text(
+                    text  = GameStrings.skillEmoji(skillKey),
+                    style = MaterialTheme.typography.headlineMedium,
+                )
+            }
             Spacer(Modifier.height(2.dp))
             Text(
                 text     = GameStrings.skillName(context, skillKey),
@@ -595,10 +604,19 @@ private fun SkillUnlockSheet(
             .padding(bottom = 24.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(
-                text  = GameStrings.skillEmoji(skillKey),
-                style = MaterialTheme.typography.headlineMedium,
-            )
+            val iconRes = GameStrings.skillIconRes(skillKey)
+            if (iconRes != null) {
+                Image(
+                    painter            = painterResource(iconRes),
+                    contentDescription = null,
+                    modifier           = Modifier.size(32.dp),
+                )
+            } else {
+                Text(
+                    text  = GameStrings.skillEmoji(skillKey),
+                    style = MaterialTheme.typography.headlineMedium,
+                )
+            }
             Spacer(Modifier.width(8.dp))
             Column {
                 Text(

@@ -279,6 +279,8 @@
     <string name="settings_recent_activity_desc">Schaltfläche „Letzte Aktivität" in der Kopfzeile der Startseite anzeigen</string>
     <string name="settings_journal_button">Journal-Schaltfläche</string>
     <string name="settings_journal_button_desc">Zeigt eine schwebende Journal-Schaltfläche auf der Startseite zum Notieren</string>
+    <string name="settings_seasonal_events">Saisonale Events</string>
+    <string name="settings_seasonal_events_desc">Zeigt das Banner des aktiven saisonalen Events auf der Startseite</string>
     <string name="label_no_sessions_yet">Noch keine Aktivitäten abgeschlossen.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -1492,6 +1494,8 @@
     <string name="settings_art_credits">Kunst-Credits</string>
     <string name="settings_credit_banners_title">Saisonbanner</string>
     <string name="settings_credit_banners_subtitle">Kunst von Wenrexa</string>
+    <string name="settings_credit_skill_icons_title">Fertigkeitssymbole</string>
+    <string name="settings_credit_skill_icons_subtitle">Shikashi\'s Fantasy Icons Pack</string>
     <string name="title_seasonal_champion_of">Champion von %1$s</string>
     <string name="title_seasonal_requirement">Schließe das Saisonevent %1$s ab</string>
     <string name="home_welcome_greeting">Willkommen zurück,</string>

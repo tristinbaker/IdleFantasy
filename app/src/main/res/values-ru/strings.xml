@@ -293,6 +293,8 @@
     <string name="settings_recent_activity_desc">Показывать кнопку «Последняя активность» на главном экране</string>
     <string name="settings_journal_button">Кнопка журнала</string>
     <string name="settings_journal_button_desc">Показывать плавающую кнопку журнала на главном экране для заметок</string>
+    <string name="settings_seasonal_events">Сезонные события</string>
+    <string name="settings_seasonal_events_desc">Показывать баннер активного сезонного события на главном экране</string>
     <string name="label_no_sessions_yet">Сессий ещё не завершено.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -1552,6 +1554,8 @@
     <string name="settings_art_credits">Авторы графики</string>
     <string name="settings_credit_banners_title">Сезонные баннеры</string>
     <string name="settings_credit_banners_subtitle">Графика: Wenrexa</string>
+    <string name="settings_credit_skill_icons_title">Иконки навыков</string>
+    <string name="settings_credit_skill_icons_subtitle">Shikashi\'s Fantasy Icons Pack</string>
     <string name="title_seasonal_champion_of">Чемпион %1$s</string>
     <string name="title_seasonal_requirement">Завершите Сезонное событие %1$s</string>
     <string name="home_welcome_greeting">С возвращением,</string>

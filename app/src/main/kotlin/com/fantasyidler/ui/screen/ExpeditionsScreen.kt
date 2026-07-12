@@ -50,8 +50,8 @@ fun ExpeditionsScreen(
 
     LaunchedEffect(state.snackbarMessage) {
         state.snackbarMessage?.let {
-            snackbarHostState.showSnackbar(it, withDismissAction = true)
-            viewModel.clearSnackbar()
+            try { snackbarHostState.showSnackbar(it, withDismissAction = true) }
+            finally { viewModel.clearSnackbar() }
         }
     }
 

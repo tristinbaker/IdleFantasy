@@ -1,14 +1,64 @@
 {
   "repo": {
-    "timestamp": 1783598957389
+    "timestamp": 1783807899657
   },
   "packages": {
     "com.tristinbaker.idlefantasy": {
       "metadata": {
-        "lastUpdated": 1783598929665
+        "lastUpdated": 1783807873173
       },
       "versions": {
         "08286f5dfc68f9f72427461c2bc0213bdbdd84ea8c7fff0421f66d90b0385ef0": null,
+        "c9e1ab37d42c6c4d949f91b6c2681a1c808373567c047c9a52bdbb90809b85c0": {
+          "added": 1783807873173,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_109.apk",
+            "sha256": "c9e1ab37d42c6c4d949f91b6c2681a1c808373567c047c9a52bdbb90809b85c0",
+            "size": 5678588
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.11.3",
+            "versionCode": 109,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fix: starting a Mercantile trade route directly (with no other session already queued) ignored your Agility prestige bonus, giving a 40-minute session instead of the correct 30 minutes at Agility prestige 3; sessions started via the queue were always correct, and now direct starts match\n• Fix: collecting a crafting or gathering session from the Skills screen never counted toward Seasonal Event bounty tasks (e.g. \"Brew Strength Potions\"), so those bounties looked unfinishable no matter what you"
+          }
+        },
         "fd8fe131882cec07a210f98f1da340286a179c086dcfd56b56550172687025b3": {
           "added": 1783598929665,
           "file": {

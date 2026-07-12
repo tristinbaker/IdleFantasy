@@ -98,6 +98,8 @@ data class PlayerFlags(
     @SerialName("show_recent_activity_log") val showRecentActivityLog: Boolean = true,
     /** Whether to show the Journal floating action button on the home screen. */
     @SerialName("show_journal_button") val showJournalButton: Boolean = true,
+    /** Whether to show the active Seasonal Event banner/card on the home screen. */
+    @SerialName("show_seasonal_events") val showSeasonalEvents: Boolean = true,
     /** Profile screen layout: "rail" (sidebar) or "tabs" (horizontal tab bar). */
     @SerialName("profile_layout") val profileLayout: String = "rail",
     /** Prestige level per skill: skill key → 0–3. */

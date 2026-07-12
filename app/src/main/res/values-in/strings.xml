@@ -213,6 +213,8 @@
     <string name="settings_recent_activity_desc">Tampilkan tombol Aktivitas Terbaru di header layar beranda</string>
     <string name="settings_journal_button">Tombol Jurnal</string>
     <string name="settings_journal_button_desc">Tampilkan tombol Jurnal melayang di layar beranda untuk menulis catatan</string>
+    <string name="settings_seasonal_events">Acara Musiman</string>
+    <string name="settings_seasonal_events_desc">Tampilkan banner Acara Musiman yang aktif di layar beranda</string>
     <string name="label_no_sessions_yet">Belum ada sesi yang selesai.</string>
     <string name="label_dungeons_tab">Dungeon</string>
     <string name="btn_fight">Bertarung!</string>
@@ -1271,4 +1273,9 @@
     <string name="profile_banners_empty">Belum ada spanduk yang didapat. Selesaikan Acara Musiman untuk mendapatkannya!</string>
     <string name="profile_banners_earned_on">Didapat %s</string>
     <string name="profile_banners_unobtained">(Belum didapat)</string>
+    <string name="settings_art_credits">Kredit Seni</string>
+    <string name="settings_credit_banners_title">Spanduk Musiman</string>
+    <string name="settings_credit_banners_subtitle">Seni oleh Wenrexa</string>
+    <string name="settings_credit_skill_icons_title">Ikon Keahlian</string>
+    <string name="settings_credit_skill_icons_subtitle">Shikashi\'s Fantasy Icons Pack</string>
 </resources>

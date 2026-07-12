@@ -122,6 +122,7 @@ internal fun FiremakingSheet(
     hasActiveSession: Boolean,
     isQueueFull: Boolean,
     sessionDurationMs: Long,
+    perLogMs: Map<String, Long> = emptyMap(),
     onStart: (logKey: String, qty: Int) -> Unit,
     context: android.content.Context,
     craftLimit: Int = Int.MAX_VALUE,
@@ -255,9 +256,10 @@ internal fun FiremakingSheet(
                 fontWeight = FontWeight.SemiBold,
                 modifier   = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
             )
-            if (sessionDurationMs > 0) {
+            val logPerMs = perLogMs[key]?.takeIf { it > 0 } ?: (sessionDurationMs / 60)
+            if (logPerMs > 0) {
                 Text(
-                    text     = "~${(qty.toLong() * (sessionDurationMs / 60)).formatDurationMs()}",
+                    text     = "~${(qty.toLong() * logPerMs).formatDurationMs()}",
                     style    = MaterialTheme.typography.bodySmall,
                     color    = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp),

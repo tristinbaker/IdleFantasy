@@ -263,6 +263,8 @@
     <string name="settings_recent_activity_desc">Ana ekran başlığında Son Aktivite düğmesini göster</string>
     <string name="settings_journal_button">Günlük Düğmesi</string>
     <string name="settings_journal_button_desc">Not almak için ana ekranda yüzen bir Günlük düğmesi göster</string>
+    <string name="settings_seasonal_events">Mevsimsel Etkinlikler</string>
+    <string name="settings_seasonal_events_desc">Ana ekranda aktif Mevsimsel Etkinlik afişini göster</string>
     <string name="label_no_sessions_yet">Henüz tamamlanan oturum yok.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -1523,6 +1525,8 @@
     <string name="settings_art_credits">Sanat Kredileri</string>
     <string name="settings_credit_banners_title">Sezonluk Sancaklar</string>
     <string name="settings_credit_banners_subtitle">Sanat: Wenrexa</string>
+    <string name="settings_credit_skill_icons_title">Yetenek Simgeleri</string>
+    <string name="settings_credit_skill_icons_subtitle">Shikashi\'s Fantasy Icons Pack</string>
     <string name="title_seasonal_champion_of">%1$s Şampiyonu</string>
     <string name="title_seasonal_requirement">%1$s Sezonluk Etkinliğini tamamla</string>
     <string name="home_welcome_greeting">Tekrar hoş geldin,</string>

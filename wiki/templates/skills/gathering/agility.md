@@ -15,3 +15,9 @@ There are {course_count} courses. Success rate scales with how far your level ex
 {course_table}
 
 > XP estimates assume ~90% success rate. At the exact level requirement success rate is 80%; it reaches 95% when your level is 8 above the requirement.
+
+## Grappling Hooks
+
+Equip a grappling hook to multiply how many laps you complete per session. Higher-tier grappling hooks require a higher Agility level.
+
+{grappling_hook_table}

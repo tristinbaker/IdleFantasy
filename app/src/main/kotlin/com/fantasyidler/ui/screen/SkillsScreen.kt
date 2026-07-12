@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.screen
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -69,6 +70,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -302,6 +304,7 @@ fun SkillActivitySheet(
                     hasActiveSession  = state.anySessionActive,
                     isQueueFull       = state.queueSize >= state.maxQueueSize,
                     sessionDurationMs = state.sessionDurationMs,
+                    perLogMs          = state.firemakingPerLogMs,
                     onStart           = { logKey, qty -> viewModel.startFiremakingSession(logKey, qty) },
                     context           = context,
                     questFills        = sheet.questFills,
@@ -626,7 +629,7 @@ internal fun SkillRow(
                 .padding(horizontal = 16.dp, vertical = 10.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            // Emoji badge with level overlay
+            // Icon badge with level overlay
             Box(modifier = Modifier.size(44.dp)) {
                 Box(
                     modifier = Modifier
@@ -638,10 +641,19 @@ internal fun SkillRow(
                         ),
                     contentAlignment = Alignment.Center,
                 ) {
-                    Text(
-                        text  = emoji,
-                        style = MaterialTheme.typography.titleMedium,
-                    )
+                    val iconRes = GameStrings.skillIconRes(skillKey)
+                    if (iconRes != null) {
+                        Image(
+                            painter            = painterResource(iconRes),
+                            contentDescription = null,
+                            modifier           = Modifier.size(28.dp),
+                        )
+                    } else {
+                        Text(
+                            text  = emoji,
+                            style = MaterialTheme.typography.titleMedium,
+                        )
+                    }
                 }
                 Text(
                     text       = level.toString(),
