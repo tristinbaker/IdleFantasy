@@ -106,4 +106,8 @@
     <string name="equip_slot_axe">Ascia</string>
     <string name="equip_slot_fishing_rod">Canna da pesca</string>
     <string name="equip_slot_hoe">Zappa</string>
+    <string name="equip_slot_frying_pan">Padella</string>
+    <string name="equip_slot_grappling_hook">Rampino</string>
+    <string name="equip_slot_hammer">Martello</string>
+    <string name="equip_slot_tinderbox">Scatola per l\'esca</string>
 </resources>

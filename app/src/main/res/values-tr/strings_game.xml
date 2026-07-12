@@ -106,4 +106,8 @@
     <string name="equip_slot_axe">Balta</string>
     <string name="equip_slot_fishing_rod">Olta</string>
     <string name="equip_slot_hoe">Hoe</string>
+    <string name="equip_slot_frying_pan">Tava</string>
+    <string name="equip_slot_grappling_hook">Kanca</string>
+    <string name="equip_slot_hammer">Çekiç</string>
+    <string name="equip_slot_tinderbox">Çakmaktaşı</string>
 </resources>

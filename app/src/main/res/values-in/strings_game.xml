@@ -106,4 +106,8 @@
     <string name="equip_slot_axe">Kapak</string>
     <string name="equip_slot_fishing_rod">Joran Pancing</string>
     <string name="equip_slot_hoe">Cangkul</string>
+    <string name="equip_slot_frying_pan">Wajan</string>
+    <string name="equip_slot_grappling_hook">Kait bergulat</string>
+    <string name="equip_slot_hammer">Palu</string>
+    <string name="equip_slot_tinderbox">Kotak api</string>
 </resources>
