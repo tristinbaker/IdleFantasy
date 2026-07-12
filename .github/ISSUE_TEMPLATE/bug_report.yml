@@ -9,7 +9,7 @@ body:
       options:
         - label: I searched existing issues and this hasn't been reported
           required: true
-        - label: I am on the latest available version
+        - label: I am on the latest available version (see \#516)
           required: true
 
   - type: input
