@@ -569,10 +569,11 @@ private fun PotionSequenceCard(gameState: ActiveGameState, difficulty: Difficult
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     Text(stringResource(R.string.carnival_sequence_watch), style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold)
-                    seq.chunked(6).forEachIndexed { rowIdx, chunk ->
+                    val chunkSize = 4
+                    seq.chunked(chunkSize).forEachIndexed { rowIdx, chunk ->
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             chunk.forEachIndexed { localIdx, colorIdx ->
-                                val i = rowIdx * 6 + localIdx
+                                val i = rowIdx * chunkSize + localIdx
                                 Box(
                                     modifier = Modifier
                                         .size(48.dp)
