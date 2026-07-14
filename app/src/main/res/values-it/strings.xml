@@ -280,7 +280,7 @@
     <string name="settings_journal_button">Diario</string>
     <string name="settings_journal_button_desc">Mostra un pulsante Diario nella schermata principale per annotare note</string>
     <string name="settings_seasonal_events">Eventi Stagionali</string>
-    <string name="settings_seasonal_events_desc">Mostra il banner dell\'evento stagionale attivo nella schermata principale</string>
+    <string name="settings_seasonal_events_desc">Mostra lo stendardo dell\'evento stagionale in corso nella schermata principale</string>
     <string name="label_no_sessions_yet">Nessuna sessione completata.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -408,7 +408,7 @@
     <string name="home_town_title">Villaggio</string>
     <string name="home_town_desc">Visita l\'emporio, la locanda, la gilda, la chiesa, l\'officina del costruttore, il Sicario Specialista e la fiera.</string>
     <string name="guild_dailies_available">Giornaliere disponibili</string>
-    <string name="guild_do_dailies_hint">Completa missioni del giorno per avanzare al rango successivo</string>
+    <string name="guild_do_dailies_hint">Completa le missioni giornaliere per avanzare di rango</string>
     <string name="guild_quest_gate_blocked">Avanza di rango completando missioni</string>
     <string name="guild_quest_required">Missione richiesta per avanzare di rango</string>
     <string name="home_died_message">Sei morto e hai perso la maggior parte dei tuoi guadagni.</string>
@@ -641,14 +641,16 @@
     <string name="character_race_orc">Orco</string>
     <string name="character_race_halfling">Halfling</string>
     <string name="character_race_gnome">Gnomo</string>
+
+    <!-- ===== CharacterCustomizationSheet ===== -->
     <string name="appearance_title">Personalizza aspetto</string>
-    <string name="appearance_skin_tone">Tono della pelle</string>
+    <string name="appearance_skin_tone">Colore della pelle</string>
     <string name="appearance_eyes">Occhi</string>
-    <string name="appearance_hair_style">Stile capelli</string>
+    <string name="appearance_hair_style">Pettinatura</string>
     <string name="appearance_hair_color">Colore capelli</string>
     <string name="appearance_beard">Barba</string>
     <string name="appearance_beard_color">Colore barba</string>
-    <string name="appearance_save">Salva aspetto</string>
+    <string name="appearance_save">Salva</string>
 
     <!-- ===== OnboardingScreen ===== -->
     <string name="onboarding_sessions_title">Sessioni</string>
@@ -798,7 +800,7 @@
 
     <!-- Guild Hall -->
     <string name="guild_hall_title">Sala della Gilda</string>
-    <string name="guild_hall_desc">Unisciti a gilde e completa le richieste del giorno per avanzare</string>
+    <string name="guild_hall_desc">Unisciti a gilde e completa richieste ogni giorno per avanzare di rango</string>
     <string name="guild_hall_intro">Le gilde ti ricompensano per le attività che svolgeresti comunque. Completa missioni e richieste giornaliere per guadagnare materiali, monete, e XP, così che gli specializzati possano accedere a tutti i tipi di risorsa.</string>
     <string name="guild_level_label">Livello %1$d</string>
     <string name="guild_level_max">Livello 10 (Max)</string>
@@ -818,7 +820,7 @@
     <string name="guild_combat_melee">mischia</string>
     <string name="guild_combat_ranged">a distanza</string>
     <string name="guild_combat_magic">magico</string>
-    <string name="guild_rep_label">%1$d / %2$d giornaliere</string>
+    <string name="guild_rep_label">%1$d / %2$d missioni</string>
     <string name="guild_quest_complete">Missione completata: %1$s</string>
     <string name="guild_daily_complete">Ricompense ricevute!</string>
     <string name="guild_name_mining">Gilda dei Minatori</string>
@@ -872,7 +874,7 @@
     <string name="church_effect_coins">+%1$d%% monete raccolte per %2$d ore</string>
     <string name="church_cost_bones">Richiede %1$d ossa</string>
     <string name="church_confirm_title">Attivare Benedizione?</string>
-    <string name="church_bones_available">Hai %1$d ossa (tutti i tipi), pari a %2$d per le benedizioni (le ossa più grandi valgono più)</string>
+    <string name="church_bones_available">Hai %1$d ossa, pari a %2$d per le benedizioni (le ossa più grandi valgono più)</string>
     <string name="church_not_enough_bones">Non hai abbastanza ossa (ne servono %1$d)</string>
     <string name="church_already_active">Una benedizione è già attiva</string>
     <string name="church_confirm_deactivate_title">Interrompere la benedizione?</string>
@@ -1219,8 +1221,8 @@
     <string name="skilling_dungeon_thieves_den_name">Covo dei Ladri</string>
     <string name="skilling_dungeon_thieves_den_desc">Un labirinto di tunnel sotto le strade della città, usato dalla criminalità organizzata.</string>
     <string name="skilling_dungeon_shadow_vault_name">Caveau dell\'Ombra</string>
-    <string name="skilling_dungeon_shadow_vault_desc">Un caveau nascosto sotto il Santuario dei Derelitti, dove si custodiscono i beni più preziosi della gilda.</string>
-    <string name="dungeon_rogue_sanctum_name">Santuario dei Derelitti</string>
+    <string name="skilling_dungeon_shadow_vault_desc">Un caveau nascosto sotto il Santuario dei Briganti, dove si custodiscono i beni più preziosi della gilda.</string>
+    <string name="dungeon_rogue_sanctum_name">Santuario dei Briganti</string>
     <string name="dungeon_rogue_sanctum_desc">Il rifugio interno della gilda, accessibile solo ai membri più fidati.</string>
     <string name="dungeon_guild_of_shadows_name">Gilda delle Ombre</string>
     <string name="dungeon_guild_of_shadows_desc">L\'area più interna della gilda, protetta da un corpo di guardie speciale.</string>
@@ -1317,7 +1319,7 @@
     <string name="carnival_appraisal_wrong">Sbagliato! L\'oggetto più prezioso era %1$s.</string>
     <string name="carnival_redeemed">Riscattato: %1$s!</string>
     <string name="carnival_not_enough_tickets">Biglietti insufficienti.</string>
-    <string name="carnival_lamp_redeemed">+%1$s XP in %2$s!</string>
+    <string name="carnival_lamp_redeemed">+%1$s XP per %2$s!</string>
     <string name="carnival_shell_game">Scegli-Bicchiere</string>
     <string name="carnival_active_shell_desc">Osserva quale bicchiere nasconde la gemma, poi sceglilo dopo essere stato mischiato con gli altri!</string>
     <string name="carnival_shell_showing">Osserva bene — la gemma è nel bicchere %1$d</string>
@@ -1451,8 +1453,8 @@
     <string name="snackbar_added_to_queue">Aggiunto alla coda: %1$s.</string>
     <string name="snackbar_queue_full">La coda è piena.</string>
     <string name="combat_start_failed">Impossibile avviare: %1$s</string>
-    <string name="skill_session_voided_prestige">Il tuo livello di %1$s non soddisfa più il requisito di questa sessione (probabilmente per il prestigio) — le ricompense sono state annullate e i materiali usati sono stati rimborsati.</string>
-    <string name="combat_session_voided_prestige">Il tuo livello di combattimento non soddisfa più il requisito di questo scontro (probabilmente per il prestigio) — le ricompense sono state annullate.</string>
+    <string name="skill_session_voided_prestige">Il tuo livello di %1$s non soddisfa più i requisiti (forse hai onorato l\'abilità) — non otterrai ricompense ma i materiali sono stati rimborsati.</string>
+    <string name="combat_session_voided_prestige">Il tuo livello di combattimento non soddisfa più i requisiti (forse hai onorato l\'abilità) — non otterrai ricompense.</string>
     <string name="combat_select_spell">Seleziona una magia prima di proseguire.</string>
     <string name="combat_spell_level_required">Magia %1$d necessaria per %2$s.</string>
     <string name="guild_daily_reward_claimed">Ottenuta ricompensa giornaliera!</string>
@@ -1493,38 +1495,38 @@
     <string name="seasonal_go_to_combat">Vai al Combattimento</string>
     <string name="seasonal_minigame_hint">Colpisci %1$d fiammelle su %2$d prima che si spengano!</string>
     <string name="seasonal_minigame_round">Round %1$d / %2$d — Colpi: %3$d</string>
-    <string name="seasonal_minigame_mode_label">Modalità</string>
+    <string name="seasonal_minigame_mode_label">Difficoltà</string>
     <string name="seasonal_minigame_mode_normal">Normale</string>
     <string name="seasonal_minigame_mode_easy">Facile</string>
-    <string name="seasonal_minigame_mode_caption">Finestra di %1$dms, ricarica di %2$s</string>
+    <string name="seasonal_minigame_mode_caption">Tempismo di %1$dms, disponibile dopo %2$s</string>
     <string name="seasonal_minigame_success">Tempismo perfetto! +1 gettone.</string>
     <string name="seasonal_minigame_failure">Peccato. Riprova al termine del tempo di attesa.</string>
     <string name="seasonal_tap">Tocca!</string>
     <string name="seasonal_claim">Riscatta</string>
     <string name="seasonal_bounty_cooldown">Nuova missione in %1$dm %2$ds</string>
     <string name="seasonal_go">Vai</string>
-    <string name="seasonal_event_sunspire_solstice_2026_name">Sunspire Solstice</string>
-    <string name="seasonal_event_sunspire_solstice_2026_banner">Participated in the Sunspire Solstice 2026</string>
-    <string name="seasonal_minigame_bonfire_rhythm_name">Bonfire Rhythm</string>
-    <string name="seasonal_reward_sunspire_solstice_2026_100_desc">Sunspire Solstice 2026 banner</string>
-    <string name="seasonal_bounty_sunspire_firewood_name">Bring firewood for the bonfire</string>
-    <string name="seasonal_bounty_sunspire_firewood_hint">Chop Oak Logs — Woodcutting</string>
-    <string name="seasonal_bounty_sunspire_kindling_name">Gather kindling for the bonfire</string>
-    <string name="seasonal_bounty_sunspire_kindling_hint">Chop Willow Logs — Woodcutting</string>
-    <string name="seasonal_bounty_sunspire_sunore_name">Mine gold to gild the sun-tower</string>
-    <string name="seasonal_bounty_sunspire_sunore_hint">Mine Gold Ore — Mining</string>
-    <string name="seasonal_bounty_sunspire_draughts_name">Brew Strength Potions</string>
-    <string name="seasonal_bounty_sunspire_draughts_hint">Herblore</string>
-    <string name="seasonal_bounty_sunspire_embers_brew_name">Brew Attack Potions for the solstice watch</string>
-    <string name="seasonal_bounty_sunspire_embers_brew_hint">Herblore</string>
-    <string name="seasonal_bounty_sunspire_sunfire_arrows_name">Fletch Mithril arrows to hold back the wisps</string>
-    <string name="seasonal_bounty_sunspire_sunfire_arrows_hint">Fletching</string>
-    <string name="seasonal_bounty_sunspire_wisps_name">Drive off Sun Wisps</string>
-    <string name="seasonal_bounty_sunspire_wisps_hint">Only found in The Sunspire Expedition</string>
-    <string name="seasonal_bounty_sunspire_hounds_name">Drive off Ember Hounds</string>
-    <string name="seasonal_bounty_sunspire_hounds_hint">Only found in The Sunspire Expedition</string>
-    <string name="seasonal_bounty_sunspire_colossus_name">Topple Cinder Colossi</string>
-    <string name="seasonal_bounty_sunspire_colossus_hint">Only found in The Sunspire Expedition — rare</string>
+    <string name="seasonal_event_sunspire_solstice_2026_name">Pinnacolo del Solstizio</string>
+    <string name="seasonal_event_sunspire_solstice_2026_banner">Hai partecipato all\'evento Pinnacolo del Solstizio 2026</string>
+    <string name="seasonal_minigame_bonfire_rhythm_name">Ritmo Infuocato</string>
+    <string name="seasonal_reward_sunspire_solstice_2026_100_desc">Stendardo Pinnacolo del Solstizio 2026</string>
+    <string name="seasonal_bounty_sunspire_firewood_name">Raccogli legna per il falò</string>
+    <string name="seasonal_bounty_sunspire_firewood_hint">Taglia legna di quercia — Taglialegna</string>
+    <string name="seasonal_bounty_sunspire_kindling_name">Trova sterpi per il falò</string>
+    <string name="seasonal_bounty_sunspire_kindling_hint">Taglia legna di Salice — Taglialegna</string>
+    <string name="seasonal_bounty_sunspire_sunore_name">Estrai oro per indorare la torre</string>
+    <string name="seasonal_bounty_sunspire_sunore_hint">Estrai minerale d\'oro — Estrazione</string>
+    <string name="seasonal_bounty_sunspire_draughts_name">Mescola Pozioni d\'Attaccco</string>
+    <string name="seasonal_bounty_sunspire_draughts_hint">Erboristeria</string>
+    <string name="seasonal_bounty_sunspire_embers_brew_name">Mescola pozioni d\'attacco per per la ronda</string>
+    <string name="seasonal_bounty_sunspire_embers_brew_hint">Erboristeria</string>
+    <string name="seasonal_bounty_sunspire_sunfire_arrows_name">Costruisci frecce in mithril per fermare i fuochi fatui</string>
+    <string name="seasonal_bounty_sunspire_sunfire_arrows_hint">Frecciaio</string>
+    <string name="seasonal_bounty_sunspire_wisps_name">Allontana i Fuochi Fatui</string>
+    <string name="seasonal_bounty_sunspire_wisps_hint">Si trovano solo all\'interno del Pinnacolo</string>
+    <string name="seasonal_bounty_sunspire_hounds_name">Allontana i Segugi Ardenti</string>
+    <string name="seasonal_bounty_sunspire_hounds_hint">Si trovano solo all\'interno del Pinnacolo</string>
+    <string name="seasonal_bounty_sunspire_colossus_name">Abbatti i Colossi di Brace</string>
+    <string name="seasonal_bounty_sunspire_colossus_hint">Si trovano solo all\'interno del Pinnacolo, con basse probabilità</string>
     <string name="label_banners">Stendardi</string>
     <string name="label_journal">Diario</string>
     <string name="journal_hint">Annota promemoria per la prossima volta: cosa metter in coda, a cosa stai lavorando.</string>

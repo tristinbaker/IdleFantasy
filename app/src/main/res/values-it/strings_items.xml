@@ -572,28 +572,13 @@
     <string name="item_adamantite_hoe_name">Zappa d\'Adamantio</string>
     <string name="item_runite_hoe_name">Zappa di Runite</string>
 
-    <!-- ===== Grimaldelli ===== -->
+    <!-- ===== Lockpicks ===== -->
     <string name="item_bronze_lockpick_name">Grimaldello di Bronzo</string>
     <string name="item_iron_lockpick_name">Grimaldello di Ferro</string>
     <string name="item_steel_lockpick_name">Grimaldello d\'Acciaio</string>
     <string name="item_mithril_lockpick_name">Grimaldello di Mithril</string>
     <string name="item_adamantite_lockpick_name">Grimaldello d\'Adamantio</string>
     <string name="item_runite_lockpick_name">Grimaldello di Runite</string>
-    <string name="item_divine_hoe_name">Zappa Divina</string>
-    <string name="item_dwarven_hammer_name">Martello dei Nani</string>
-    <string name="item_divine_hammer_name">Martello Divino</string>
-    <string name="item_dwarven_tinderbox_name">Scatola per l\'esca dei Nani</string>
-    <string name="item_divine_tinderbox_name">Scatola per l\'esca Divina</string>
-    <string name="item_dwarven_frying_pan_name">Padella dei Nani</string>
-    <string name="item_divine_frying_pan_name">Padella Divina</string>
-    <string name="item_shadow_grappling_hook_name">Rampino delle Ombre</string>
-    <string name="item_dwarven_grappling_hook_name">Rampino dei Nani</string>
-    <string name="item_arcane_grappling_hook_name">Rampino Arcano</string>
-    <string name="item_divine_grappling_hook_name">Rampino Divino</string>
-    <string name="item_rogues_lockpick_name">Grimaldello dei Derelitti</string>
-    <string name="item_dwarven_lockpick_name">Grimaldello dei Nani</string>
-    <string name="item_shadow_lockpick_name">Grimaldello delle Ombre</string>
-    <string name="item_divine_lockpick_name">Grimaldello Divino</string>
 
     <!-- Herblore potions -->
     <string name="item_attack_brew_name">Miscela Attacco</string>
@@ -651,4 +636,20 @@
     <string name="item_celestial_bloom_seed_name">Seme di fioritura celestiale</string>
     <string name="item_starfruit_seed_name">Seme di frutto delle stelle</string>
     <string name="item_void_lotus_seed_name">Seme di loto del vuoto</string>
+
+    <string name="item_divine_hoe_name">Zappa Divina</string>
+    <string name="item_dwarven_hammer_name">Martello Nanico</string>
+    <string name="item_divine_hammer_name">Martello Divino</string>
+    <string name="item_dwarven_tinderbox_name">Acciarino Nanico</string>
+    <string name="item_divine_tinderbox_name">Acciarino Divino</string>
+    <string name="item_dwarven_frying_pan_name">Padella Nanica</string>
+    <string name="item_divine_frying_pan_name">Padella Divina</string>
+    <string name="item_shadow_grappling_hook_name">Rampino delle Ombre</string>
+    <string name="item_dwarven_grappling_hook_name">Rampino Nanico</string>
+    <string name="item_arcane_grappling_hook_name">Rampino Arcano</string>
+    <string name="item_divine_grappling_hook_name">Rampino Divino</string>
+    <string name="item_rogues_lockpick_name">Grimaldello Brigante</string>
+    <string name="item_dwarven_lockpick_name">Grimaldello Nanico</string>
+    <string name="item_shadow_lockpick_name">Grimaldello delle Ombre</string>
+    <string name="item_divine_lockpick_name">Grimaldello Divino</string>
 </resources>
