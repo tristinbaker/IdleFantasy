@@ -1,13 +1,63 @@
 {
   "repo": {
-    "timestamp": 1784027325225
+    "timestamp": 1784118670816
   },
   "packages": {
     "com.tristinbaker.idlefantasy": {
       "metadata": {
-        "lastUpdated": 1784027296044
+        "lastUpdated": 1784118642744
       },
       "versions": {
+        "6ab27314975d6ad7ac57c97877b9ff61c5c9c0b040a8a78e9269dbb2494bb8ac": {
+          "added": 1784118642744,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_113.apk",
+            "sha256": "6ab27314975d6ad7ac57c97877b9ff61c5c9c0b040a8a78e9269dbb2494bb8ac",
+            "size": 7645571
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.12.1",
+            "versionCode": 113,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Added a Character Viewer toggle in Settings, letting you hide your character sprite from the Home screen if you'd rather not see it\n• Fixed eyes, hair, and beard rendering misaligned on the option buttons in the Character Appearance creator for short races (Dwarf, Gnome, Halfling); the live preview sprite was already correct\n• Fixed Apprentice, Journeyman, and Master worker descriptions at the Inn to state they're dismissed after collecting, matching the Long Laborer and actual behavior\n• Fixe"
+          }
+        },
         "bb614cdb451071f2ac9dc0bafd7651389ac5f88382556869970f0a8d4db9ded6": {
           "added": 1784027296044,
           "file": {

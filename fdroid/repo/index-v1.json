@@ -1,6 +1,6 @@
 {
   "repo": {
-    "timestamp": 1784027325225,
+    "timestamp": 1784118670816,
     "version": 30000,
     "name": "Idle Fantasy",
     "icon": "icon.png",
@@ -20,15 +20,15 @@
       "categories": [
         "Games"
       ],
-      "suggestedVersionName": "1.12.0",
-      "suggestedVersionCode": "112",
+      "suggestedVersionName": "1.12.1",
+      "suggestedVersionCode": "113",
       "issueTracker": "https://github.com/tristinbaker/IdleFantasy/issues",
       "liberapay": "tristinbaker_",
       "license": "GPL-3.0-only",
       "sourceCode": "https://github.com/tristinbaker/IdleFantasy",
       "added": 1781744235667,
       "packageName": "com.tristinbaker.idlefantasy",
-      "lastUpdated": 1784027296044,
+      "lastUpdated": 1784118642744,
       "localized": {
         "en-US": {
           "description": "Idle Fantasy is a free and open source offline idle RPG inspired by classic MMORPGs. Train skills, fight in dungeons, craft gear, and complete quests. No internet connection, account, or ads required.\n\n<b>Features</b>\n\n\u2022 <b>14 trainable skills</b>: Mining, Fishing, Woodcutting, Firemaking, Agility, Runecrafting, Smithing, Cooking, Fletching, Crafting, Prayer, Attack, Strength, Defence, Ranged, Magic, Hitpoints\n\n\u2022 <b>Session-based training</b>: Start a session and close the app. Come back up to an hour later to collect your loot and XP. Agility reduces session time.\n\n\u2022 <b>12 dungeons</b>: Fight solo bosses and enemies to earn combat XP, coins, and rare drops. Equip weapons and armour to deal more damage.\n\n\u2022 <b>Crafting system</b>: Smelt bars, cook fish, fletch bows and arrows, craft jewellery. Consume gathered materials and earn XP and items.\n\n\u2022 <b>Prayer</b>: Bury bones collected from combat to earn Prayer XP.\n\n\u2022 <b>Equipment system</b>: Equip weapons, armour, tools, and jewellery to boost stats and skill efficiency.\n\n\u2022 <b>Quest system</b>: 100+ quests spanning all skills. Earn XP rewards on completion.\n\n\u2022 <b>Pet system</b>: Rare pets can drop while training skills. Each pet provides a permanent XP boost to their linked skill.\n\n\u2022 <b>Achievements</b>: Track milestones across levelling, combat, quests, and collections.\n\n\u2022 <b>NPC Shop</b>: Buy supplies and sell your gathered resources for coins.\n\n\u2022 <b>No ads. No accounts. No internet required.</b> Your save data stays on your device.\n\nIdle Fantasy is free software released under the GPL-3.0 licence. Source code is available on the project repository.\n\n<b>Get updates faster</b>\n\nAdd the official Idle Fantasy repository to F-Droid to receive updates as soon as they are released, instead of waiting for the main F-Droid index to catch up.\n\n1. Open F-Droid and go to Settings \u2192 Repositories\n2. Tap + and paste: https://idlefantasy.tristinbaker.xyz/fdroid/repo\n3. Search for Idle Fantasy, open the app page, and under Repositories set Idle Fantasy as the preferred source.\n",
@@ -53,13 +53,59 @@
             "9.png"
           ],
           "summary": "Idle RPG: train skills, fight dungeons, craft gear. No ads, no accounts.",
-          "whatsNew": "\u2022 Fix: the queue's estimated time on the Home screen didn't update after an Agility level up or switching tools; it now reflects your current Agility level and equipped gear\n\u2022 Reworked guild leveling: reputation is gone, and ranking up now requires completing a number of daily requests for that guild (in addition to the existing quest requirement), so progress always feels earned instead of stalling once your old reputation bar filled up\n\u2022 Rebalanced several rare tools so higher-rarity gear is n"
+          "whatsNew": "\u2022 Added a Character Viewer toggle in Settings, letting you hide your character sprite from the Home screen if you'd rather not see it\n\u2022 Fixed eyes, hair, and beard rendering misaligned on the option buttons in the Character Appearance creator for short races (Dwarf, Gnome, Halfling); the live preview sprite was already correct\n\u2022 Fixed Apprentice, Journeyman, and Master worker descriptions at the Inn to state they're dismissed after collecting, matching the Long Laborer and actual behavior\n\u2022 Fixe"
         }
       }
     }
   ],
   "packages": {
     "com.tristinbaker.idlefantasy": [
+      {
+        "added": 1784118642744,
+        "apkName": "com.tristinbaker.idlefantasy_113.apk",
+        "hash": "6ab27314975d6ad7ac57c97877b9ff61c5c9c0b040a8a78e9269dbb2494bb8ac",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 7645571,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.USE_EXACT_ALARM",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 113,
+        "versionName": "1.12.1"
+      },
       {
         "added": 1784027296044,
         "apkName": "com.tristinbaker.idlefantasy_112.apk",
