@@ -151,11 +151,7 @@ class TowerViewModel @Inject constructor(
             val runningFloor = lastQueuedFloor
                 ?: towerSession?.activityKey?.removePrefix("tower_floor_")?.toIntOrNull()
                 ?: flags.towerCurrentFloor
-            val enemyStrengthPct = if (flags.towerCurrentFloor > 0) {
-                val baseline = tierPower(gameData.enemies, 1)
-                val current  = tierPower(scaledEnemies(flags.towerCurrentFloor), flags.towerCurrentFloor)
-                if (baseline > 0) (((current / baseline) - 1.0) * 100).roundToInt() else 0
-            } else 0
+            val enemyStrengthPct = ((hpScalingMult(flags.towerCurrentFloor) - 1f) * 100).roundToInt()
             extra.copy(
                 isLoading           = false,
                 currentFloor        = flags.towerCurrentFloor,
@@ -184,6 +180,14 @@ class TowerViewModel @Inject constructor(
         enemySpawns      = tierFor(floor),
     )
 
+    /** 0 at floor <= 100 (no scaling applied yet), ramping to 1 at floor 250. */
+    private fun scalingProgress(floor: Int): Float =
+        if (floor <= 100) 0f else (floor.coerceIn(101, 250) - 100) / 150f
+
+    private fun hpScalingMult(floor: Int): Float = 1f + scalingProgress(floor) * 9f
+
+    private fun statScalingMult(floor: Int): Float = 1f + scalingProgress(floor) * 0.3f
+
     /**
      * Floors 1-100 use the fixed tier stats from FLOOR_TIERS as-is. Beyond floor 100, the
      * (fixed) 101+ tier's enemies keep scaling smoothly up to floor 250: hp grows toward
@@ -193,9 +197,8 @@ class TowerViewModel @Inject constructor(
      */
     private fun scaledEnemies(floor: Int): Map<String, EnemyData> {
         if (floor <= 100) return gameData.enemies
-        val t = (floor.coerceIn(101, 250) - 100) / 150f
-        val hpMult = 1f + t * 9f
-        val statMult = 1f + t * 0.3f
+        val hpMult = hpScalingMult(floor)
+        val statMult = statScalingMult(floor)
         val relevantKeys = tierFor(floor).map { it.enemy }.toSet()
         return gameData.enemies.mapValues { (key, enemy) ->
             if (key !in relevantKeys) return@mapValues enemy
@@ -214,12 +217,6 @@ class TowerViewModel @Inject constructor(
             )
         }
     }
-
-    /** Effective power heuristic used to compute the "Enemy strength" display, relative to floor 1. */
-    private fun tierPower(enemies: Map<String, EnemyData>, floor: Int): Double =
-        tierFor(floor).mapNotNull { spawn -> enemies[spawn.enemy] }.sumOf { e ->
-            e.hp.toDouble() * (e.combatStats.attackBonus + e.combatStats.strengthBonus).coerceAtLeast(1)
-        }
 
     private fun petBoostFor(petsJson: String): Int {
         val pets = try { json.decodeFromString<List<OwnedPet>>(petsJson) } catch (_: Exception) { return 0 }

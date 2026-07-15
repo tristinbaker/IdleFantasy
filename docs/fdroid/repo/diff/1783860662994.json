@@ -1,0 +1,64 @@
+{
+  "repo": {
+    "timestamp": 1784027325225
+  },
+  "packages": {
+    "com.tristinbaker.idlefantasy": {
+      "metadata": {
+        "lastUpdated": 1784027296044
+      },
+      "versions": {
+        "bb614cdb451071f2ac9dc0bafd7651389ac5f88382556869970f0a8d4db9ded6": {
+          "added": 1784027296044,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_112.apk",
+            "sha256": "bb614cdb451071f2ac9dc0bafd7651389ac5f88382556869970f0a8d4db9ded6",
+            "size": 7603779
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.12.0",
+            "versionCode": 112,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fix: the queue's estimated time on the Home screen didn't update after an Agility level up or switching tools; it now reflects your current Agility level and equipped gear\n• Reworked guild leveling: reputation is gone, and ranking up now requires completing a number of daily requests for that guild (in addition to the existing quest requirement), so progress always feels earned instead of stalling once your old reputation bar filled up\n• Rebalanced several rare tools so higher-rarity gear is n"
+          }
+        }
+      }
+    }
+  }
+}

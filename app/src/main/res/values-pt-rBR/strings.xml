@@ -280,6 +280,10 @@
     <string name="settings_journal_button_desc">Mostrar um botão flutuante de Diário na tela inicial para anotar suas notas</string>
     <string name="settings_seasonal_events">Eventos Sazonais</string>
     <string name="settings_seasonal_events_desc">Mostrar o banner do Evento Sazonal ativo na tela inicial</string>
+    <string name="settings_collapsible_town_grid">Grade da Cidade Recolhível</string>
+    <string name="settings_collapsible_town_grid_desc">Mostrar a seção da Cidade (Loja, Estalagem, Guilda, etc.) como um cartão recolhível na tela inicial</string>
+    <string name="settings_character_viewer">Visualizador de Personagem</string>
+    <string name="settings_character_viewer_desc">Mostrar o sprite do seu personagem na tela inicial</string>
     <string name="label_no_sessions_yet">Nenhuma sessão concluída ainda.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -700,9 +704,9 @@
     <string name="worker_journeyman">Oficial</string>
     <string name="worker_master">Mestre</string>
     <string name="inn_long_laborer_desc">Um serviço por contratação, dispensado após a coleta. 8h de coleta, eficiência de 0,5x, quantidade de criação ilimitada. Ele é lento, mas faz qualquer coisa.</string>
-    <string name="inn_apprentice_desc">8h de coleta, eficiência de 1x. Criação, oração e criação de runas limitadas a 480 itens por sessão.</string>
-    <string name="inn_journeyman_desc">6h de coleta, eficiência de 1,5x. Criação, oração e criação de runas limitadas a 540 itens por sessão.</string>
-    <string name="inn_master_desc">4h de coleta, eficiência de 2x. Criação, oração e criação de runas limitadas a 480 itens por sessão.</string>
+    <string name="inn_apprentice_desc">Um trabalho por contratação, dispensado após a coleta. 8h de coleta, eficiência de 1x. Criação, oração e criação de runas limitadas a 480 itens por sessão.</string>
+    <string name="inn_journeyman_desc">Um trabalho por contratação, dispensado após a coleta. 6h de coleta, eficiência de 1,5x. Criação, oração e criação de runas limitadas a 540 itens por sessão.</string>
+    <string name="inn_master_desc">Um trabalho por contratação, dispensado após a coleta. 4h de coleta, eficiência de 2x. Criação, oração e criação de runas limitadas a 480 itens por sessão.</string>
     <string name="inn_gathering_note">Coleta: horas de sessão x multiplicador de eficiência aplicado ao saque e XP</string>
     <string name="inn_crafting_note">Criação/oração/criação de runas: quantidade limitada por nível; o Trabalhador Avulso não tem limite</string>
     <string name="worker_skills_title">Trabalhador: %1$s</string>
@@ -992,6 +996,8 @@
     <string name="prestige_confirm_title">Dar Prestígio em %s?</string>
     <string name="prestige_confirm_message_xp">Seu nível de %1$s vai voltar para 1, mas você vai ganhar um bônus permanente de +%2$d%% de XP nessa habilidade.</string>
     <string name="prestige_confirm_message_stat">Seu nível de %1$s vai voltar para 1, mas você vai ganhar um bônus permanente de +%2$d nos seus atributos.</string>
+    <string name="prestige_confirm_message_agility">Seu nível de %1$s vai voltar para 1, mas você vai ganhar um bônus permanente de +%2$d%% de XP, e a duração da sessão vai continuar diminuindo — no nível 99 uma sessão vai levar %3$d min em vez de %4$d min.</string>
+    <string name="prestige_confirm_message_mercantile">Seu nível de %1$s vai voltar para 1, mas você vai ganhar um bônus permanente de +%2$d%% de XP, além de um bônus extra de +%2$d%% no retorno de moedas das rotas comerciais.</string>
 
     <!-- Prestige achievements -->
     <string name="achievement_prestige_first_name">Primeiro Reset</string>
@@ -1443,6 +1449,8 @@
     <string name="bonus_combat_stat_boost">Aumenta atributos de combate</string>
     <string name="bonus_combined_xp">XP Combinado</string>
     <string name="bonus_yield">rendimento</string>
+    <string name="bonus_session_shorter">%1$d min de sessões mais curtas</string>
+    <string name="bonus_coin_return">retorno de moedas</string>
     <string name="snackbar_added_to_queue">Adicionado à fila: %1$s.</string>
     <string name="snackbar_queue_full">A fila está cheia.</string>
     <string name="combat_start_failed">Não foi possível iniciar: %1$s</string>

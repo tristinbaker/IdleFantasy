@@ -167,6 +167,12 @@ class FarmingRepository @Inject constructor(
         }
     }
 
+    /** Wipes every patch (used by Reset Progression) and cancels any pending grow-alarms. */
+    suspend fun resetAllPatches() {
+        patchDao.getAllPatches().forEach { cancelAlarm(it.patchNumber) }
+        patchDao.clearAll()
+    }
+
     /** Remove the crop without reward, and claw back the planting XP. */
     suspend fun clearPatch(patchNumber: Int) {
         val patch = patchDao.getPatch(patchNumber)

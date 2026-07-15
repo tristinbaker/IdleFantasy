@@ -295,6 +295,10 @@
     <string name="settings_journal_button_desc">Показывать плавающую кнопку журнала на главном экране для заметок</string>
     <string name="settings_seasonal_events">Сезонные события</string>
     <string name="settings_seasonal_events_desc">Показывать баннер активного сезонного события на главном экране</string>
+    <string name="settings_collapsible_town_grid">Сворачиваемая сетка города</string>
+    <string name="settings_collapsible_town_grid_desc">Показывать раздел Города (Магазин, Таверна, Гильдия и т.д.) в виде сворачиваемой карточки на главном экране</string>
+    <string name="settings_character_viewer">Просмотр персонажа</string>
+    <string name="settings_character_viewer_desc">Показывать спрайт вашего персонажа на главном экране</string>
     <string name="label_no_sessions_yet">Сессий ещё не завершено.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -700,9 +704,9 @@
     <string name="worker_journeyman">Умелец</string>
     <string name="worker_master">Мастер</string>
     <string name="inn_long_laborer_desc">Одна работа за найм, увольняется после сбора. 8ч добыча, ×0,5 эффективность, без ограничений на крафт. Он медленный, но сделает что угодно.</string>
-    <string name="inn_apprentice_desc">8ч добыча, ×1 эффективность. Крафт, молитва и руническое ремесло — лимит 480 предметов за сессию.</string>
-    <string name="inn_journeyman_desc">6ч добыча, ×1.5 эффективность. Крафт, молитва и руническое ремесло — лимит 540 предметов за сессию.</string>
-    <string name="inn_master_desc">4ч добыча, ×2 эффективность. Крафт, молитва и руническое ремесло — лимит 480 предметов за сессию.</string>
+    <string name="inn_apprentice_desc">Одна работа за найм, увольняется после сбора. 8ч добыча, ×1 эффективность. Крафт, молитва и руническое ремесло — лимит 480 предметов за сессию.</string>
+    <string name="inn_journeyman_desc">Одна работа за найм, увольняется после сбора. 6ч добыча, ×1.5 эффективность. Крафт, молитва и руническое ремесло — лимит 540 предметов за сессию.</string>
+    <string name="inn_master_desc">Одна работа за найм, увольняется после сбора. 4ч добыча, ×2 эффективность. Крафт, молитва и руническое ремесло — лимит 480 предметов за сессию.</string>
     <string name="inn_gathering_note">Добыча: часы сессии × множитель эффективности применяется к луту и опыту</string>
     <string name="inn_crafting_note">Крафт/молитва/руническое ремесло: количество ограничено по уровню; у Долгого чернорабочего нет лимита</string>
     <string name="worker_skills_title">Работник: %1$s</string>
@@ -994,6 +998,8 @@
     <string name="prestige_confirm_title">Престиж %s?</string>
     <string name="prestige_confirm_message_xp">Ваш уровень %1$s сбросится до 1, но вы получите постоянный бонус +%2$d%% опыта для этого навыка.</string>
     <string name="prestige_confirm_message_stat">Ваш уровень %1$s сбросится до 1, но вы получите постоянный бонус +%2$d к характеристикам.</string>
+    <string name="prestige_confirm_message_agility">Ваш уровень %1$s сбросится до 1, но вы получите постоянный бонус +%2$d%% к опыту, а длительность сессии продолжит сокращаться — на 99 уровне сессия будет занимать %3$d мин вместо %4$d мин.</string>
+    <string name="prestige_confirm_message_mercantile">Ваш уровень %1$s сбросится до 1, но вы получите постоянный бонус +%2$d%% к опыту, а также дополнительные +%2$d%% возврата монет с торговых путей.</string>
 
     <!-- Prestige achievements -->
     <string name="achievement_prestige_first_name">Первый сброс</string>
@@ -1349,6 +1355,8 @@
     <string name="bonus_combat_stat_boost">Boosts combat stats</string>
     <string name="bonus_combined_xp">Суммарный XP</string>
     <string name="bonus_yield">выход</string>
+    <string name="bonus_session_shorter">На %1$d мин короче сессии</string>
+    <string name="bonus_coin_return">возврат монет</string>
     <string name="snackbar_added_to_queue">Добавлено в очередь: %1$s.</string>
     <string name="snackbar_queue_full">Очередь заполнена.</string>
     <string name="home_not_enough_coins_repeat">Недостаточно монет для повтора %1$s.</string>

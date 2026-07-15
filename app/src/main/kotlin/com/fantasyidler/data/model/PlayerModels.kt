@@ -116,6 +116,12 @@ data class PlayerFlags(
     @SerialName("show_journal_button") val showJournalButton: Boolean = true,
     /** Whether to show the active Seasonal Event banner/card on the home screen. */
     @SerialName("show_seasonal_events") val showSeasonalEvents: Boolean = true,
+    /** Whether to show the character sprite viewer on the home screen. */
+    @SerialName("show_character_viewer") val showCharacterViewer: Boolean = true,
+    /** Whether the Town grid (Shop, Inn, Guild, etc.) on the home screen is shown as a collapsible card. */
+    @SerialName("collapsible_town_grid") val collapsibleTownGrid: Boolean = true,
+    /** Persisted expand/collapse state of the Town grid card, when collapsibleTownGrid is on. */
+    @SerialName("town_grid_expanded") val townGridExpanded: Boolean = true,
     /** Profile screen layout: "rail" (sidebar) or "tabs" (horizontal tab bar). */
     @SerialName("profile_layout") val profileLayout: String = "rail",
     /** Prestige level per skill: skill key → 0–3. */

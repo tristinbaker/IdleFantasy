@@ -96,7 +96,6 @@ import androidx.compose.ui.text.style.TextAlign
 import com.fantasyidler.ui.viewmodel.CraftableRecipe
 import com.fantasyidler.ui.viewmodel.CraftingUiState
 import com.fantasyidler.ui.viewmodel.CraftingViewModel
-import com.fantasyidler.ui.viewmodel.SessionResult
 import com.fantasyidler.ui.viewmodel.SheetState
 import com.fantasyidler.ui.viewmodel.levelDisplay
 import com.fantasyidler.ui.viewmodel.SkillsUiState
@@ -187,21 +186,6 @@ fun SkillsScreen(
         }
     }
 
-    // Session result bottom sheet
-    state.sessionResult?.let { result ->
-        val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
-        ModalBottomSheet(
-            onDismissRequest = viewModel::resultConsumed,
-            sheetState       = sheetState,
-            dragHandle       = { BottomSheetDefaults.DragHandle() },
-        ) {
-            SessionResultSheet(
-                result    = result,
-                context   = context,
-                onDismiss = viewModel::resultConsumed,
-            )
-        }
-    }
 
     // Activity selection bottom sheet
     SkillActivitySheet(
@@ -400,7 +384,6 @@ private fun SkillsTabContent(
                     }.takeIf { session.activityKey.isNotEmpty() },
                     endsAt        = session.endsAt,
                     completed     = session.completed,
-                    onCollect     = viewModel::collectSession,
                     onAbandon     = viewModel::abandonSession,
                     onDebugFinish = viewModel::debugFinishSession,
                 )
@@ -414,6 +397,7 @@ private fun SkillsTabContent(
                 Skills.WOODCUTTING -> state.woodcuttingEfficiency
                 Skills.FISHING     -> state.fishingEfficiency
                 Skills.FARMING     -> state.farmingEfficiency
+                Skills.THIEVING    -> state.thievingEfficiency
                 else               -> 1.0f
             }
             SkillRow(
@@ -492,10 +476,10 @@ private fun ActiveSessionBanner(
     activityLabel: String?,
     endsAt: Long,
     completed: Boolean,
-    onCollect: () -> Unit,
     onAbandon: () -> Unit,
     onDebugFinish: () -> Unit = {},
 ) {
+    val context = LocalContext.current
     // Tick every second so the countdown stays live.
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
     var showAbandonConfirm by remember { mutableStateOf(false) }
@@ -536,7 +520,7 @@ private fun ActiveSessionBanner(
             Spacer(Modifier.height(8.dp))
             if (!completed) {
                 Text(
-                    text  = remember(now) { endsAt.toCountdown() },
+                    text  = remember(now) { endsAt.toCountdown(context) },
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onPrimaryContainer,
                 )
@@ -570,9 +554,11 @@ private fun ActiveSessionBanner(
                     }
                 }
             } else {
-                Button(onClick = onCollect, modifier = Modifier.fillMaxWidth()) {
-                    Text(stringResource(R.string.btn_collect_results))
-                }
+                Text(
+                    text  = stringResource(R.string.worker_manage_from_home),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onPrimaryContainer,
+                )
             }
         }
     }
@@ -603,10 +589,19 @@ internal fun SkillRow(
 
     if (showPrestigeConfirm) {
         val nextPrestige = prestigeLevel + 1
+        val message = when (skillKey) {
+            Skills.AGILITY -> {
+                val currentMinutes = (SkillSimulator.sessionDurationMs(99, prestigeLevel) / 60_000L).toInt()
+                val nextMinutes    = (SkillSimulator.sessionDurationMs(99, nextPrestige) / 60_000L).toInt()
+                stringResource(R.string.prestige_confirm_message_agility, name, nextPrestige * 10, nextMinutes, currentMinutes)
+            }
+            Skills.MERCANTILE -> stringResource(R.string.prestige_confirm_message_mercantile, name, nextPrestige * 10)
+            else -> stringResource(R.string.prestige_confirm_message_xp, name, nextPrestige * 10)
+        }
         AlertDialog(
             onDismissRequest = { showPrestigeConfirm = false },
             title = { Text(stringResource(R.string.prestige_confirm_title, name)) },
-            text  = { Text(stringResource(R.string.prestige_confirm_message_xp, name, nextPrestige * 10)) },
+            text  = { Text(message) },
             confirmButton = {
                 TextButton(onClick = {
                     showPrestigeConfirm = false
@@ -785,92 +780,6 @@ private fun SectionHeader(title: String) {
     }
 }
 
-
-@Composable
-private fun SessionResultSheet(
-    result: SessionResult,
-    context: android.content.Context,
-    onDismiss: () -> Unit,
-) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 24.dp)
-            .padding(bottom = 40.dp),
-    ) {
-        Text(
-            text     = stringResource(R.string.label_session_results),
-            style    = MaterialTheme.typography.titleLarge,
-            fontWeight = FontWeight.Bold,
-        )
-        Text(
-            text  = GameStrings.skillName(context, result.skillName),
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-        )
-        Spacer(Modifier.height(20.dp))
-
-        // XP gained
-        ResultRow(
-            label = stringResource(R.string.label_xp_gained),
-            value = "+${result.xpGained.formatXp()} XP",
-            valueColor = GoldPrimary,
-        )
-
-        // Level ups
-        if (result.levelUps.isNotEmpty()) {
-            Spacer(Modifier.height(12.dp))
-            Text(
-                text  = stringResource(R.string.label_level_ups),
-                style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-            result.levelUps.forEach { lvl ->
-                Text(
-                    text  = "  " + stringResource(R.string.skills_level_reached, lvl),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = GoldPrimary,
-                    fontWeight = FontWeight.SemiBold,
-                )
-            }
-        }
-
-        // Items collected
-        if (result.itemsGained.isNotEmpty()) {
-            Spacer(Modifier.height(12.dp))
-            Text(
-                text  = stringResource(R.string.label_items_collected),
-                style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-            result.itemsGained.entries
-                .sortedByDescending { it.value }
-                .forEach { (key, qty) ->
-                    ResultRow(
-                        label      = GameStrings.itemName(context, key),
-                        value      = "×$qty",
-                        valueColor = MaterialTheme.colorScheme.onSurface,
-                    )
-                }
-        }
-
-        Spacer(Modifier.height(24.dp))
-        Button(onClick = onDismiss, modifier = Modifier.fillMaxWidth()) {
-            Text(stringResource(R.string.btn_close))
-        }
-    }
-}
-
-@Composable
-private fun ResultRow(label: String, value: String, valueColor: androidx.compose.ui.graphics.Color) {
-    Row(
-        modifier              = Modifier.fillMaxWidth().padding(vertical = 3.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-    ) {
-        Text(label, style = MaterialTheme.typography.bodyMedium)
-        Text(value, style = MaterialTheme.typography.bodyMedium, color = valueColor, fontWeight = FontWeight.SemiBold)
-    }
-}
 
 // ---------------------------------------------------------------------------
 // Crafting skill sheet (Smithing / Cooking / Fletching / Jewelry)

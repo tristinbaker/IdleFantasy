@@ -295,6 +295,10 @@
     <string name="settings_journal_button_desc">Pokaż pływający przycisk Dziennika na ekranie głównym do zapisywania notatek</string>
     <string name="settings_seasonal_events">Wydarzenia Sezonowe</string>
     <string name="settings_seasonal_events_desc">Pokaż baner aktywnego wydarzenia sezonowego na ekranie głównym</string>
+    <string name="settings_collapsible_town_grid">Zwijalna Siatka Miasta</string>
+    <string name="settings_collapsible_town_grid_desc">Pokaż sekcję Miasto (Sklep, Gospoda, Gildia itd.) jako zwijaną kartę na ekranie głównym</string>
+    <string name="settings_character_viewer">Podgląd Postaci</string>
+    <string name="settings_character_viewer_desc">Pokaż grafikę swojej postaci na ekranie głównym</string>
     <string name="label_no_sessions_yet">Nie ukończono jeszcze żadnej sesji.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -718,9 +722,9 @@
     <string name="worker_journeyman">Czeladnik</string>
     <string name="worker_master">Mistrz</string>
     <string name="inn_long_laborer_desc">Jedno zlecenie na wynajęcie, zwalniany po odbiorze. 8 godz. zbieractwa, wydajność 0,5x, nielimitowana ilość wytwarzania. Jest powolny, ale zrobi wszystko.</string>
-    <string name="inn_apprentice_desc">8 godz. zbieractwa, wydajność 1x. Wytwarzanie, modlitwa i tworzenie run ograniczone do 480 przedmiotów na sesję.</string>
-    <string name="inn_journeyman_desc">6 godz. zbieractwa, wydajność 1,5x. Wytwarzanie, modlitwa i tworzenie run ograniczone do 540 przedmiotów na sesję.</string>
-    <string name="inn_master_desc">4 godz. zbieractwa, wydajność 2x. Wytwarzanie, modlitwa i tworzenie run ograniczone do 480 przedmiotów na sesję.</string>
+    <string name="inn_apprentice_desc">Jedno zlecenie na zatrudnienie, zwolniony po odebraniu. 8 godz. zbieractwa, wydajność 1x. Wytwarzanie, modlitwa i tworzenie run ograniczone do 480 przedmiotów na sesję.</string>
+    <string name="inn_journeyman_desc">Jedno zlecenie na zatrudnienie, zwolniony po odebraniu. 6 godz. zbieractwa, wydajność 1,5x. Wytwarzanie, modlitwa i tworzenie run ograniczone do 540 przedmiotów na sesję.</string>
+    <string name="inn_master_desc">Jedno zlecenie na zatrudnienie, zwolniony po odebraniu. 4 godz. zbieractwa, wydajność 2x. Wytwarzanie, modlitwa i tworzenie run ograniczone do 480 przedmiotów na sesję.</string>
     <string name="inn_gathering_note">Zbieractwo: godziny sesji × mnożnik wydajności zastosowany do łupów i XP</string>
     <string name="inn_crafting_note">Wytwarzanie/modlitwa/tworzenie run: ilość ograniczona wg poziomu; Wytrwały robotnik nie ma limitu</string>
     <string name="worker_skills_title">Pracownik: %1$s</string>
@@ -1012,6 +1016,8 @@
     <string name="prestige_confirm_title">Prestiż %s?</string>
     <string name="prestige_confirm_message_xp">Twój poziom %1$s zresetuje się do 1, ale zdobędziesz stały bonus +%2$d%% XP dla tej umiejętności.</string>
     <string name="prestige_confirm_message_stat">Twój poziom %1$s zresetuje się do 1, ale zdobędziesz stały bonus +%2$d do swoich statystyk.</string>
+    <string name="prestige_confirm_message_agility">Twój poziom %1$s zresetuje się do 1, ale zdobędziesz stały bonus +%2$d%% do doświadczenia, a czas trwania sesji będzie się dalej skracał — na poziomie 99 sesja będzie trwać %3$d min zamiast %4$d min.</string>
+    <string name="prestige_confirm_message_mercantile">Twój poziom %1$s zresetuje się do 1, ale zdobędziesz stały bonus +%2$d%% do doświadczenia, a dodatkowo +%2$d%% zwrotu monet z szlaków handlowych.</string>
 
     <!-- Osiągnięcia prestiżu -->
     <string name="achievement_prestige_first_name">Pierwszy reset</string>
@@ -1468,6 +1474,8 @@
     <string name="bonus_combat_stat_boost">Wzmacnia statystyki bojowe</string>
     <string name="bonus_combined_xp">Łączne XP</string>
     <string name="bonus_yield">wydajność</string>
+    <string name="bonus_session_shorter">%1$d min krótsze sesje</string>
+    <string name="bonus_coin_return">zwrot monet</string>
     <string name="snackbar_added_to_queue">Dodano do kolejki: %1$s.</string>
     <string name="snackbar_queue_full">Kolejka jest pełna.</string>
     <string name="combat_start_failed">Nie udało się rozpocząć: %1$s</string>

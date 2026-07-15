@@ -422,7 +422,7 @@ private fun WorkerActiveSessionBanner(
             if (!isDone) {
                 Spacer(Modifier.height(4.dp))
                 Text(
-                    text  = remember(now) { endsAt.toCountdown() },
+                    text  = remember(now) { endsAt.toCountdown(context) },
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSecondaryContainer,
                 )

@@ -281,6 +281,10 @@
     <string name="settings_journal_button_desc">Toon een zwevende Dagboek-knop op het startscherm om notities te maken</string>
     <string name="settings_seasonal_events">Seizoensevenementen</string>
     <string name="settings_seasonal_events_desc">Toon de banner van het actieve seizoensevenement op het startscherm</string>
+    <string name="settings_collapsible_town_grid">Inklapbaar Stadsraster</string>
+    <string name="settings_collapsible_town_grid_desc">Toon de Stad-sectie (Winkel, Herberg, Gilde, enz.) als een inklapbare kaart op het startscherm</string>
+    <string name="settings_character_viewer">Personage-weergave</string>
+    <string name="settings_character_viewer_desc">Toon je personage-sprite op het startscherm</string>
     <string name="label_no_sessions_yet">Nog geen sessies voltooid.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -688,9 +692,9 @@
     <string name="worker_journeyman">Vakman</string>
     <string name="worker_master">Meester</string>
     <string name="inn_long_laborer_desc">Één klus per inhuur, ontslagen na het ophalen. 8u verzamelen, 0,5x efficiëntie, onbeperkte ambachtshoeveelheid. Hij is traag, maar hij doet alles.</string>
-    <string name="inn_apprentice_desc">8u verzamelen, 1x efficiëntie. Juwelier, Gebed en Runen maken beperkt tot 480 items per sessie.</string>
-    <string name="inn_journeyman_desc">6u verzamelen, 1,5x efficiëntie. Juwelier, Gebed en Runen maken beperkt tot 540 items per sessie.</string>
-    <string name="inn_master_desc">4u verzamelen, 2x efficiëntie. Juwelier, Gebed en Runen maken beperkt tot 480 items per sessie.</string>
+    <string name="inn_apprentice_desc">Eén klus per aanwerving, ontslagen na het verzamelen. 8u verzamelen, 1x efficiëntie. Juwelier, Gebed en Runen maken beperkt tot 480 items per sessie.</string>
+    <string name="inn_journeyman_desc">Eén klus per aanwerving, ontslagen na het verzamelen. 6u verzamelen, 1,5x efficiëntie. Juwelier, Gebed en Runen maken beperkt tot 540 items per sessie.</string>
+    <string name="inn_master_desc">Eén klus per aanwerving, ontslagen na het verzamelen. 4u verzamelen, 2x efficiëntie. Juwelier, Gebed en Runen maken beperkt tot 480 items per sessie.</string>
     <string name="inn_gathering_note">Verzamelen: sessie-uren x efficiëntiemultiplicator toegepast op buit en XP</string>
     <string name="inn_crafting_note">Juwelier/Gebed/Runen maken: hoeveelheid beperkt per level; Langdurige werknemer heeft geen limiet</string>
     <string name="worker_skills_title">Werknemer: %1$s</string>
@@ -929,6 +933,8 @@
     <string name="prestige_confirm_title">Prestige %s?</string>
     <string name="prestige_confirm_message_xp">Your %1$s level will reset to 1, but you\'ll earn a permanent +%2$d%% XP bonus for this skill.</string>
     <string name="prestige_confirm_message_stat">Your %1$s level will reset to 1, but you\'ll earn a permanent +%2$d bonus to your stats.</string>
+    <string name="prestige_confirm_message_agility">Je %1$s-niveau wordt gereset naar 1, maar je krijgt een permanente +%2$d%% XP-bonus, en je sessieduur blijft korter worden — op niveau 99 duurt een sessie %3$d min in plaats van %4$d min.</string>
+    <string name="prestige_confirm_message_mercantile">Je %1$s-niveau wordt gereset naar 1, maar je krijgt een permanente +%2$d%% XP-bonus, plus een extra +%2$d%% muntteruggave van handelsroutes.</string>
     <string name="achievement_prestige_first_name">First Reset</string>
     <string name="achievement_prestige_first_desc">Prestige any skill for the first time</string>
     <string name="achievement_prestige_any_3_name">Mastered</string>
@@ -1281,6 +1287,8 @@
     <string name="bonus_combat_stat_boost">Boosts combat stats</string>
     <string name="bonus_combined_xp">Gecombineerde XP</string>
     <string name="bonus_yield">opbrengst</string>
+    <string name="bonus_session_shorter">%1$d min kortere sessies</string>
+    <string name="bonus_coin_return">muntteruggave</string>
     <string name="snackbar_added_to_queue">Toegevoegd aan wachtrij: %1$s.</string>
     <string name="snackbar_queue_full">Wachtrij is vol.</string>
     <string name="home_not_enough_coins_repeat">Niet genoeg munten om %1$s te herhalen.</string>

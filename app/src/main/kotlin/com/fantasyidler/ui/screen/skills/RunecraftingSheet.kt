@@ -91,7 +91,6 @@ import androidx.compose.ui.text.style.TextAlign
 import com.fantasyidler.ui.viewmodel.CraftableRecipe
 import com.fantasyidler.ui.viewmodel.CraftingUiState
 import com.fantasyidler.ui.viewmodel.CraftingViewModel
-import com.fantasyidler.ui.viewmodel.SessionResult
 import com.fantasyidler.ui.viewmodel.SheetState
 import com.fantasyidler.ui.viewmodel.levelDisplay
 import com.fantasyidler.ui.viewmodel.SkillsUiState
@@ -354,7 +353,7 @@ internal fun RunecraftingSheet(
 
             Button(
                 onClick  = { onStart(selectedKey!!, qty, selectedAshKey) },
-                enabled  = !isStarting && qty > 0 && maxQty > 0 && !(hasActiveSession && isQueueFull),
+                enabled  = !isStarting && qty > 0 && maxQty > 0,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp),

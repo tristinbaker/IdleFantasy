@@ -266,6 +266,10 @@
     <string name="settings_journal_button_desc">Afficher un bouton flottant Journal sur l\'écran d\'accueil pour noter des notes</string>
     <string name="settings_seasonal_events">Événements Saisonniers</string>
     <string name="settings_seasonal_events_desc">Afficher la bannière de l\'événement saisonnier actif sur l\'écran d\'accueil</string>
+    <string name="settings_collapsible_town_grid">Grille de Ville Repliable</string>
+    <string name="settings_collapsible_town_grid_desc">Afficher la section Ville (Boutique, Auberge, Guilde, etc.) sous forme de carte repliable sur l\'écran d\'accueil</string>
+    <string name="settings_character_viewer">Aperçu du Personnage</string>
+    <string name="settings_character_viewer_desc">Afficher le sprite de votre personnage sur l\'écran d\'accueil</string>
     <string name="label_no_sessions_yet">Aucune session terminée pour l’instant.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -726,9 +730,9 @@
     <string name="worker_journeyman">Compagnon</string>
     <string name="worker_master">Maître</string>
     <string name="inn_long_laborer_desc">Un emploi par embauche, renvoyé après la collecte. 8h de collecte, efficacité 0,5x, quantité d’artisanat illimitée. Il est lent, mais il fait tout.</string>
-    <string name="inn_apprentice_desc">8h de collecte, efficacité 1x. artisanat, prière et fabrication de runes plafonnés à 480 objets par session.</string>
-    <string name="inn_journeyman_desc">6h de collecte, efficacité 1.5x. artisanat, prière et fabrication de runes plafonnés à 540 objets par session.</string>
-    <string name="inn_master_desc">4h de collecte, efficacité 2x. artisanat, prière et fabrication de runes plafonnés à 480 objets par session.</string>
+    <string name="inn_apprentice_desc">Un travail par embauche, renvoyé après la collecte. 8h de collecte, efficacité 1x. artisanat, prière et fabrication de runes plafonnés à 480 objets par session.</string>
+    <string name="inn_journeyman_desc">Un travail par embauche, renvoyé après la collecte. 6h de collecte, efficacité 1.5x. artisanat, prière et fabrication de runes plafonnés à 540 objets par session.</string>
+    <string name="inn_master_desc">Un travail par embauche, renvoyé après la collecte. 4h de collecte, efficacité 2x. artisanat, prière et fabrication de runes plafonnés à 480 objets par session.</string>
     <string name="inn_gathering_note">Collecte : heures de session x multiplicateur d’efficacité appliqué au butin et à l’XP</string>
     <string name="inn_crafting_note">artisanat, prière, fabrication de runes : quantité plafonnée par niveau ; Ouvrier Long sans limite</string>
     <string name="worker_skills_title">Ouvrier : %1$s</string>
@@ -984,6 +988,8 @@
     <string name="prestige_confirm_title">Prestige %s?</string>
     <string name="prestige_confirm_message_xp">Votre niveau %1$s sera réinitialisé à 1, mais vous gagnerez un bonus permanent de +%2$d%% XP pour cette compétence.</string>
     <string name="prestige_confirm_message_stat">Votre niveau %1$s sera réinitialisé à 1, mais vous gagnerez un bonus permanent de +%2$d à vos statistiques.</string>
+    <string name="prestige_confirm_message_agility">Votre niveau %1$s sera réinitialisé à 1, mais vous gagnerez un bonus permanent de +%2$d%% d\'XP, et la durée de vos sessions continuera de diminuer — au niveau 99, une session prendra %3$d min au lieu de %4$d min.</string>
+    <string name="prestige_confirm_message_mercantile">Votre niveau %1$s sera réinitialisé à 1, mais vous gagnerez un bonus permanent de +%2$d%% d\'XP, plus un bonus supplémentaire de +%2$d%% sur les gains de pièces des routes commerciales.</string>
     <string name="achievement_prestige_first_name">Première réinitialisation</string>
     <string name="achievement_prestige_first_desc">Atteignez le niveau Prestige pour la première fois avec n’importe quelle compétence</string>
     <string name="achievement_prestige_any_3_name">Maîtrisé</string>
@@ -1313,6 +1319,8 @@
     <string name="bonus_combat_stat_boost">Améliore les stats de combat</string>
     <string name="bonus_combined_xp">XP combiné</string>
     <string name="bonus_yield">rendement</string>
+    <string name="bonus_session_shorter">%1$d min de sessions en moins</string>
+    <string name="bonus_coin_return">retour de pièces</string>
     <string name="snackbar_added_to_queue">Ajouté à la file: %1$s.</string>
     <string name="snackbar_queue_full">La file est pleine.</string>
     <string name="home_not_enough_coins_repeat">Pas assez de pièces pour répéter %1$s.</string>
@@ -1457,11 +1465,11 @@
     <string name="seasonal_bounty_sunspire_firewood_hint">Couper des bûches de chêne — Coupe de bois</string>
     <string name="seasonal_bounty_sunspire_kindling_name">Ramassez du petit bois pour le feu de joie</string>
     <string name="seasonal_bounty_sunspire_kindling_hint">Couper des bûches de saule — Coupe de bois</string>
-    <string name="seasonal_bounty_sunspire_sunore_name">Extraire de l'or pour dorer la tour du soleil</string>
-    <string name="seasonal_bounty_sunspire_sunore_hint">Minerai d'or — Exploitation minière</string>
+    <string name="seasonal_bounty_sunspire_sunore_name">Extraire de l\'or pour dorer la tour du soleil</string>
+    <string name="seasonal_bounty_sunspire_sunore_hint">Minerai d\'or — Exploitation minière</string>
     <string name="seasonal_bounty_sunspire_draughts_name">Brasser des bières de force</string>
     <string name="seasonal_bounty_sunspire_draughts_hint">Herboristerie</string>
-    <string name="seasonal_bounty_sunspire_embers_brew_name">Brasser des potions d'attaque pour la veille du solstice</string>
+    <string name="seasonal_bounty_sunspire_embers_brew_name">Brasser des potions d\'attaque pour la veille du solstice</string>
     <string name="seasonal_bounty_sunspire_embers_brew_hint">Herboristerie</string>
     <string name="seasonal_bounty_sunspire_sunfire_arrows_name">Des flèches en mithril pour repousser les feux follets</string>
     <string name="seasonal_bounty_sunspire_sunfire_arrows_hint">Plumage de flèche</string>

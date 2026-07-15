@@ -124,6 +124,7 @@ data class HomeUiState(
     val characterEyeStyle: Int = 1,
     val characterBeardStyle: Int = 0,
     val characterBeardColor: String = "a",
+    val showCharacterViewer: Boolean = true,
     val equippedTitle: String? = null,
     /** Resolved, localized title name (e.g. "Master Smith"), or null if none equipped. */
     val titleName: String? = null,
@@ -150,6 +151,8 @@ data class HomeUiState(
     val showRecentActivityLog: Boolean = true,
     val showJournalButton: Boolean = true,
     val showSeasonalEvents: Boolean = true,
+    val collapsibleTownGrid: Boolean = true,
+    val townGridExpanded: Boolean = true,
     val playerNotes: String = "",
     val journalSheetOpen: Boolean = false,
     /** Total claimable guild quests + dailies across all guilds. Drives the badge on the town menu button. */
@@ -303,6 +306,7 @@ class HomeViewModel @Inject constructor(
                 characterEyeStyle   = flags.characterEyeStyle,
                 characterBeardStyle = flags.characterBeardStyle,
                 characterBeardColor = flags.characterBeardColor,
+                showCharacterViewer = flags.showCharacterViewer,
                 equippedTitle       = flags.equippedTitle,
                 titleName           = titleRepo.displayName(context, flags.equippedTitle, flags),
                 sessionQueue        = flags.sessionQueue,
@@ -325,6 +329,8 @@ class HomeViewModel @Inject constructor(
                 showRecentActivityLog      = flags.showRecentActivityLog,
                 showJournalButton          = flags.showJournalButton,
                 showSeasonalEvents         = flags.showSeasonalEvents,
+                collapsibleTownGrid        = flags.collapsibleTownGrid,
+                townGridExpanded           = flags.townGridExpanded,
                 playerNotes                = flags.playerNotes,
                 guildClaimableCount        = guildClaimableCount,
                 activeSeasonalEvent        = activeSeasonalEvent,
@@ -689,7 +695,7 @@ class HomeViewModel @Inject constructor(
                         val coinReturnBoosted = (coinReturn * blessingCoinMult * mercantileCapeMult * mercantilePrestigeMult).toLong()
                         awardedCapes += playerRepo.applySessionResults(Skills.MERCANTILE, totalXp, emptyMap())
                         playerRepo.addCoins(coinReturnBoosted)
-                        guildRepo.recordGuildTrade(coinReturnBoosted)
+                        guildRepo.recordGuildTrade(session.activityKey, coinReturnBoosted)
                         playerRepo.recordWeeklyProgress("mercantile", session.activityKey, frames.size)
                         combinedXpBySkill[Skills.MERCANTILE] = (combinedXpBySkill[Skills.MERCANTILE] ?: 0L) + totalXp
                         combinedCoins += coinReturnBoosted
@@ -720,7 +726,7 @@ class HomeViewModel @Inject constructor(
                                 seasonalEventRepo.recordGathering(regular)
                                 when (session.skillName) {
                                     Skills.AGILITY      -> {
-                                        guildRepo.recordGuildSessions()
+                                        guildRepo.recordGuildSessions(session.activityKey)
                                         playerRepo.recordWeeklyProgress("agility", session.activityKey, frames.size)
                                     }
                                     Skills.RUNECRAFTING -> guildRepo.recordGuildCrafting(session.skillName, regular)
@@ -1351,6 +1357,13 @@ class HomeViewModel @Inject constructor(
     fun dismissWhatsNew() {
         viewModelScope.launch {
             playerRepo.markWhatsNewSeen(BuildConfig.VERSION_CODE)
+        }
+    }
+
+    fun toggleTownGridExpanded() {
+        viewModelScope.launch {
+            val flags = playerRepo.getFlags()
+            playerRepo.updateFlags(flags.copy(townGridExpanded = !flags.townGridExpanded))
         }
     }
 

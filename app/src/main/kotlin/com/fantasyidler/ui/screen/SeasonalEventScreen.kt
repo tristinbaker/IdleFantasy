@@ -426,7 +426,7 @@ private fun BonfireRhythmGame(
     }
     if (!isPlaying && countdown == null) {
         Button(
-            onClick  = { countdown = 3 },
+            onClick  = { haptic.performHapticFeedback(HapticFeedbackType.LongPress); countdown = 3 },
             modifier = Modifier.fillMaxWidth(),
         ) {
             Text(stringResource(R.string.seasonal_tap))

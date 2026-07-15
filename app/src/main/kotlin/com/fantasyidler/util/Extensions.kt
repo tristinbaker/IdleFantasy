@@ -32,22 +32,27 @@ fun Long.formatCoinsBrief(): String = when {
     else               -> toString()
 }
 
+/** Formats an epoch-ms timestamp as a clock time, respecting the device's 12/24-hour preference. */
+fun Long.toClockTime(context: android.content.Context): String =
+    android.text.format.DateFormat.getTimeFormat(context).format(java.util.Date(this))
+
 /**
- * Convert an epoch-ms "ends_at" timestamp to a human-readable countdown string.
- * e.g. "42m 10s" or "Complete"
+ * Convert an epoch-ms "ends_at" timestamp to a human-readable countdown string with the
+ * completion clock time, e.g. "42m 10s (1:45 PM)" or "Complete"
  */
-fun Long.toCountdown(): String {
+fun Long.toCountdown(context: android.content.Context): String {
     val remaining = this - System.currentTimeMillis()
     if (remaining <= 0) return "Complete"
     val totalSeconds = remaining / 1_000
     val hours   = totalSeconds / 3600
     val minutes = (totalSeconds % 3600) / 60
     val seconds = totalSeconds % 60
-    return when {
+    val duration = when {
         hours > 0   -> "${hours}h ${minutes}m ${seconds}s"
         minutes > 0 -> "${minutes}m ${seconds}s"
         else        -> "${seconds}s"
     }
+    return "$duration (${toClockTime(context)})"
 }
 
 /**

@@ -215,6 +215,10 @@
     <string name="settings_journal_button_desc">Tampilkan tombol Jurnal melayang di layar beranda untuk menulis catatan</string>
     <string name="settings_seasonal_events">Acara Musiman</string>
     <string name="settings_seasonal_events_desc">Tampilkan banner Acara Musiman yang aktif di layar beranda</string>
+    <string name="settings_collapsible_town_grid">Grid Kota yang Dapat Dilipat</string>
+    <string name="settings_collapsible_town_grid_desc">Tampilkan bagian Kota (Toko, Penginapan, Guild, dll.) sebagai kartu yang bisa dilipat di layar beranda</string>
+    <string name="settings_character_viewer">Penampil Karakter</string>
+    <string name="settings_character_viewer_desc">Tampilkan sprite karakter Anda di layar beranda</string>
     <string name="label_no_sessions_yet">Belum ada sesi yang selesai.</string>
     <string name="label_dungeons_tab">Dungeon</string>
     <string name="btn_fight">Bertarung!</string>
@@ -507,9 +511,9 @@
     <string name="worker_journeyman">Pekerja harian</string>
     <string name="worker_master">Ahli</string>
     <string name="inn_long_laborer_desc">Satu pekerjaan per perekrutan, dihentikan setelah pengumpulan. Pengumpulan 8 jam, efisiensi 0,5x, jumlah pembuatan tak terbatas. Dia lambat, tapi dia akan melakukan apa saja.</string>
-    <string name="inn_apprentice_desc">Perolehan 8 jam, efisiensi 1x. Pembuatan, doa, dan pembuatan rune dibatasi hingga 480 item per sesi.</string>
-    <string name="inn_journeyman_desc">Perolehan selama 6 jam, efisiensi 1,25x. Pembuatan barang, doa, dan runecrafting dibatasi hingga 360 item per sesi.</string>
-    <string name="inn_master_desc">Perolehan selama 4 jam, efisiensi 2x. Pembuatan barang, doa, dan pembuatan rune dibatasi hingga 240 item per sesi.</string>
+    <string name="inn_apprentice_desc">Satu pekerjaan per perekrutan, diberhentikan setelah dikumpulkan. Perolehan 8 jam, efisiensi 1x. Pembuatan, doa, dan pembuatan rune dibatasi hingga 480 item per sesi.</string>
+    <string name="inn_journeyman_desc">Satu pekerjaan per perekrutan, diberhentikan setelah dikumpulkan. Perolehan selama 6 jam, efisiensi 1,25x. Pembuatan barang, doa, dan runecrafting dibatasi hingga 360 item per sesi.</string>
+    <string name="inn_master_desc">Satu pekerjaan per perekrutan, diberhentikan setelah dikumpulkan. Perolehan selama 4 jam, efisiensi 2x. Pembuatan barang, doa, dan pembuatan rune dibatasi hingga 240 item per sesi.</string>
     <string name="inn_gathering_note">Perolehan: jam sesi x pengali efisiensi yang diterapkan pada jarahan dan XP</string>
     <string name="inn_crafting_note">Kerajinan/doa/pembuatan rune: jumlah dibatasi per tingkatan; Pekerja Panjang tidak memiliki batasan.</string>
     <string name="worker_skills_title">Pekerja: %1$s</string>
@@ -774,6 +778,8 @@
     <string name="prestige_confirm_title">Prestise %s?</string>
     <string name="prestige_confirm_message_xp">Your %1$s level will reset to 1, but you\'ll earn a permanent +%2$d%% XP bonus for this skill.</string>
     <string name="prestige_confirm_message_stat">Level %1$s Anda akan direset ke 1, tetapi Anda akan mendapatkan bonus +%2$d permanen untuk statistik Anda.</string>
+    <string name="prestige_confirm_message_agility">Level %1$s Anda akan direset ke 1, tetapi Anda akan mendapatkan bonus XP permanen +%2$d%%, dan durasi sesi akan terus berkurang — pada level 99 sebuah sesi akan memakan waktu %3$d menit, bukan %4$d menit.</string>
+    <string name="prestige_confirm_message_mercantile">Level %1$s Anda akan direset ke 1, tetapi Anda akan mendapatkan bonus XP permanen +%2$d%%, ditambah bonus tambahan +%2$d%% pengembalian koin dari rute perdagangan.</string>
     <string name="achievement_prestige_first_name">Pertama Kali</string>
     <string name="achievement_prestige_first_desc">Raih prestise untuk keahlian apa pun untuk pertama kalinya.</string>
     <string name="achievement_prestige_any_3_name">Sang Master</string>
@@ -1172,6 +1178,8 @@
     <string name="bonus_combat_stat_boost">Meningkatkan stat tempur</string>
     <string name="bonus_combined_xp">Combined XP</string>
     <string name="bonus_yield">yield</string>
+    <string name="bonus_session_shorter">%1$d menit sesi lebih singkat</string>
+    <string name="bonus_coin_return">pengembalian koin</string>
     <string name="snackbar_added_to_queue">Ditambahkan ke antrian: %1$s.</string>
     <string name="snackbar_queue_full">Antrian penuh.</string>
     <string name="combat_start_failed">Tak dapat memulai: %1$s</string>

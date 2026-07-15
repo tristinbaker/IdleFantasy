@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.screen
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -83,13 +84,9 @@ import com.fantasyidler.data.model.HiredWorker
 import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.WorkerTier
-import com.fantasyidler.data.json.BlessingType
-import com.fantasyidler.repository.ChurchRepository
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.HomeViewModel
 import com.fantasyidler.ui.viewmodel.SessionSummary
-import com.fantasyidler.ui.viewmodel.combatLevelFrom
-import com.fantasyidler.ui.viewmodel.totalLevelFrom
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatCoins
 import com.fantasyidler.util.formatXp
@@ -574,133 +571,78 @@ fun HomeScreen(
                         )
                     }
                 }
-                CharacterSprite(
-                    race       = state.characterRace.ifBlank { "human" },
-                    skinTone   = state.characterSkinTone,
-                    hairStyle  = state.characterHairStyle,
-                    hairColor  = state.characterHairColor,
-                    eyeStyle   = state.characterEyeStyle,
-                    beardStyle = state.characterBeardStyle,
-                    beardColor = state.characterBeardColor,
-                    modifier   = Modifier.height(100.dp).aspectRatio(64f / 36f),
-                )
-            }
-
-            // ── Stats card ──────────────────────────────────────────────
-            Surface(
-                shape  = RoundedCornerShape(16.dp),
-                color  = MaterialTheme.colorScheme.surfaceVariant,
-                modifier = Modifier.fillMaxWidth(),
-            ) {
-                Column(Modifier.padding(16.dp)) {
-                    Text(
-                        text  = stringResource(R.string.label_player_stats),
-                        style = MaterialTheme.typography.labelMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                if (state.showCharacterViewer) {
+                    CharacterSprite(
+                        race       = state.characterRace.ifBlank { "human" },
+                        skinTone   = state.characterSkinTone,
+                        hairStyle  = state.characterHairStyle,
+                        hairColor  = state.characterHairColor,
+                        eyeStyle   = state.characterEyeStyle,
+                        beardStyle = state.characterBeardStyle,
+                        beardColor = state.characterBeardColor,
+                        modifier   = Modifier.height(100.dp).aspectRatio(64f / 36f),
                     )
-                    Spacer(Modifier.height(8.dp))
-
-                    Row(
-                        modifier              = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                    ) {
-                        StatItem(
-                            label = stringResource(R.string.label_combat_level),
-                            value = combatLevelFrom(state.skillLevels).toString(),
-                        )
-                        StatItem(
-                            label = stringResource(R.string.label_total_level),
-                            value = totalLevelFrom(state.skillLevels).toString(),
-                        )
-                        StatItem(
-                            label = stringResource(R.string.label_coins),
-                            value = state.coins.formatCoins(),
-                            valueColor = GoldPrimary,
-                        )
-                    }
-
-                    val blessingActive = state.activeBlessingKey.isNotEmpty() && state.activeBlessingRemainingMs > 0
-                    if (blessingActive) {
-                        val context = LocalContext.current
-                        val nameResId = context.resources.getIdentifier(
-                            "blessing_${state.activeBlessingKey}_name", "string", context.packageName,
-                        )
-                        val blessingName = if (nameResId != 0) stringResource(nameResId) else state.activeBlessingKey
-                        val blessingData = ChurchRepository.ALL_BLESSINGS.firstOrNull { it.key == state.activeBlessingKey }
-                        val boostDesc = blessingData?.let { b ->
-                            when (b.type) {
-                                BlessingType.XP      -> "${b.magnitude}x XP"
-                                BlessingType.DEFENSE -> "+${b.magnitude.toInt()} DEF"
-                                BlessingType.COINS   -> "+${(b.magnitude * 100).toInt()}% coins"
-                            }
-                        }
-                        val timeLeft = state.activeBlessingRemainingMs.formatDurationMs()
-                        val blessingText = if (boostDesc != null) "$blessingName ($boostDesc) - $timeLeft"
-                                          else "$blessingName - $timeLeft"
-                        Spacer(Modifier.height(8.dp))
-                        HorizontalDivider()
-                        Spacer(Modifier.height(8.dp))
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(
-                                imageVector        = Icons.Filled.Star,
-                                contentDescription = null,
-                                tint               = GoldPrimary,
-                                modifier           = Modifier.size(14.dp),
-                            )
-                            Spacer(Modifier.width(4.dp))
-                            Text(
-                                text  = blessingText,
-                                style = MaterialTheme.typography.labelSmall,
-                                color = GoldPrimary,
-                            )
-                        }
-                    }
-
-                    if (state.xpBoostRemainingMs > 0) {
-                        Spacer(Modifier.height(8.dp))
-                        HorizontalDivider()
-                        Spacer(Modifier.height(8.dp))
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(
-                                imageVector        = Icons.Filled.Star,
-                                contentDescription = null,
-                                tint               = MaterialTheme.colorScheme.tertiary,
-                                modifier           = Modifier.size(14.dp),
-                            )
-                            Spacer(Modifier.width(4.dp))
-                            Text(
-                                text  = stringResource(R.string.home_xp_boost_active, state.xpBoostRemainingMs.formatDurationMs()),
-                                style = MaterialTheme.typography.labelSmall,
-                                color = MaterialTheme.colorScheme.tertiary,
-                            )
-                        }
-                    }
                 }
             }
 
             // ── Town grid ───────────────────────────────────────────────
             val churchTint = if (state.activeBlessingKey.isNotEmpty() && state.activeBlessingRemainingMs > 0)
                 GoldPrimary else MaterialTheme.colorScheme.onSurfaceVariant
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Row(
-                    modifier              = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
-                    TownGridCard(Icons.Filled.ShoppingCart, stringResource(R.string.label_shop),       onClick = onNavigateToShop,      modifier = Modifier.weight(1f))
-                    TownGridCard(Icons.Filled.Person,        stringResource(R.string.inn_title),        onClick = onNavigateToInn,       modifier = Modifier.weight(1f))
-                    TownGridCard(Icons.Filled.Group,         stringResource(R.string.guild_hall_title), onClick = onNavigateToGuildHall, modifier = Modifier.weight(1f), badgeCount = state.guildClaimableCount)
-                    TownGridCard(Icons.Filled.Star,          stringResource(R.string.church_title),     onClick = onNavigateToChurch,    modifier = Modifier.weight(1f), iconTint = churchTint)
+            val townGridRows: @Composable () -> Unit = {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Row(
+                        modifier              = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        TownGridCard(Icons.Filled.ShoppingCart, stringResource(R.string.label_shop),       onClick = onNavigateToShop,      modifier = Modifier.weight(1f))
+                        TownGridCard(Icons.Filled.Person,        stringResource(R.string.inn_title),        onClick = onNavigateToInn,       modifier = Modifier.weight(1f))
+                        TownGridCard(Icons.Filled.Group,         stringResource(R.string.guild_hall_title), onClick = onNavigateToGuildHall, modifier = Modifier.weight(1f), badgeCount = state.guildClaimableCount)
+                        TownGridCard(Icons.Filled.Star,          stringResource(R.string.church_title),     onClick = onNavigateToChurch,    modifier = Modifier.weight(1f), iconTint = churchTint)
+                    }
+                    Row(
+                        modifier              = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        Spacer(Modifier.weight(0.5f))
+                        TownGridCard(Icons.Filled.Assignment,  stringResource(R.string.builder_title),  onClick = onNavigateToBuilder,  modifier = Modifier.weight(1f))
+                        TownGridCard(Icons.Filled.Shield,      stringResource(R.string.slayer_title),   onClick = onNavigateToSlayer,   modifier = Modifier.weight(1f))
+                        TownGridCard(Icons.Filled.Celebration, stringResource(R.string.carnival_title), onClick = onNavigateToCarnival, modifier = Modifier.weight(1f))
+                        Spacer(Modifier.weight(0.5f))
+                    }
                 }
-                Row(
-                    modifier              = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+            }
+            if (state.collapsibleTownGrid) {
+                Surface(
+                    shape    = RoundedCornerShape(16.dp),
+                    color    = MaterialTheme.colorScheme.surfaceVariant,
+                    modifier = Modifier.fillMaxWidth(),
                 ) {
-                    Spacer(Modifier.weight(0.5f))
-                    TownGridCard(Icons.Filled.Assignment,  stringResource(R.string.builder_title),  onClick = onNavigateToBuilder,  modifier = Modifier.weight(1f))
-                    TownGridCard(Icons.Filled.Shield,      stringResource(R.string.slayer_title),   onClick = onNavigateToSlayer,   modifier = Modifier.weight(1f))
-                    TownGridCard(Icons.Filled.Celebration, stringResource(R.string.carnival_title), onClick = onNavigateToCarnival, modifier = Modifier.weight(1f))
-                    Spacer(Modifier.weight(0.5f))
+                    Column(Modifier.padding(12.dp)) {
+                        Row(
+                            modifier              = Modifier
+                                .fillMaxWidth()
+                                .clickable { viewModel.toggleTownGridExpanded() },
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment     = Alignment.CenterVertically,
+                        ) {
+                            Text(
+                                text  = stringResource(R.string.home_town_title),
+                                style = MaterialTheme.typography.labelMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                            Icon(
+                                imageVector        = if (state.townGridExpanded) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,
+                                contentDescription = null,
+                                tint               = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
+                        AnimatedVisibility(visible = state.townGridExpanded) {
+                            Column(Modifier.padding(top = 12.dp)) { townGridRows() }
+                        }
+                    }
                 }
+            } else {
+                townGridRows()
             }
 
             // ── Seasonal Event row ────────────────────────────────────────

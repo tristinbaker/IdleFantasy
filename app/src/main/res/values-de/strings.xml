@@ -281,6 +281,10 @@
     <string name="settings_journal_button_desc">Zeigt eine schwebende Journal-Schaltfläche auf der Startseite zum Notieren</string>
     <string name="settings_seasonal_events">Saisonale Events</string>
     <string name="settings_seasonal_events_desc">Zeigt das Banner des aktiven saisonalen Events auf der Startseite</string>
+    <string name="settings_collapsible_town_grid">Einklappbares Stadtraster</string>
+    <string name="settings_collapsible_town_grid_desc">Zeigt den Stadtbereich (Laden, Herberge, Gilde usw.) als einklappbare Karte auf der Startseite</string>
+    <string name="settings_character_viewer">Charakteranzeige</string>
+    <string name="settings_character_viewer_desc">Zeigt deine Charakterfigur auf der Startseite</string>
     <string name="label_no_sessions_yet">Noch keine Aktivitäten abgeschlossen.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -649,9 +653,9 @@
     <string name="worker_journeyman">Geselle</string>
     <string name="worker_master">Meister</string>
     <string name="inn_long_laborer_desc">Ein Auftrag pro Einstellung, nach Einsammeln entlassen. 8h Sammeln, 0,5-fache Effizienz, unbegrenzte Handwerksmenge. Er ist langsam, aber er macht alles.</string>
-    <string name="inn_apprentice_desc">8h Sammeln, 1-fache Effizienz. Herstellung, Gebet und Runenherstellung ist auf 480 Gegenstände pro Aktivität begrenzt.</string>
-    <string name="inn_journeyman_desc">6h Sammeln, 1.5-fache Effizienz. Herstellung, Gebet und Runenherstellung ist auf 540 Gegenstände pro Aktivität begrenzt.</string>
-    <string name="inn_master_desc">4h Sammeln, 2-fache Effizienz. Herstellung, Gebet und Runenherstellung ist auf 480 Gegenstände pro Aktivität begrenzt.</string>
+    <string name="inn_apprentice_desc">Ein Auftrag pro Anstellung, wird nach dem Einsammeln entlassen. 8h Sammeln, 1-fache Effizienz. Herstellung, Gebet und Runenherstellung ist auf 480 Gegenstände pro Aktivität begrenzt.</string>
+    <string name="inn_journeyman_desc">Ein Auftrag pro Anstellung, wird nach dem Einsammeln entlassen. 6h Sammeln, 1.5-fache Effizienz. Herstellung, Gebet und Runenherstellung ist auf 540 Gegenstände pro Aktivität begrenzt.</string>
+    <string name="inn_master_desc">Ein Auftrag pro Anstellung, wird nach dem Einsammeln entlassen. 4h Sammeln, 2-fache Effizienz. Herstellung, Gebet und Runenherstellung ist auf 480 Gegenstände pro Aktivität begrenzt.</string>
     <string name="inn_gathering_note">Sammeln: Aktivitätszeit in Stunden x Effizienz wird auf Beute und EP angewendet</string>
     <string name="inn_crafting_note">Herstellen/Gebet/Runenherstellung: Die Menge ist pro Rang begrenzt. Der Erfahrene Arbeiter hat keine Begrenzung</string>
     <string name="worker_skills_title">Arbeiter: %1$s</string>
@@ -955,6 +959,8 @@
     <string name="prestige_confirm_title">Prestige %s?</string>
     <string name="prestige_confirm_message_xp">Euer %1$s-Level wird auf 1 zurückgesetzt, Ihr werdet allerdings dauerhaft +%2$d%% EP-Bonus für diese Fähigkeit erhalten.</string>
     <string name="prestige_confirm_message_stat">Euer %1$s-Level wird auf 1 zurückgesetzt, Ihr werdet allerdings einen dauerhaften Bonus von +%2$d%% EP-Bonus für diese Fähigkeit erhalten.</string>
+    <string name="prestige_confirm_message_agility">Euer %1$s-Level wird auf 1 zurückgesetzt, Ihr werdet allerdings einen dauerhaften Bonus von +%2$d%% EP erhalten, und Eure Sitzungsdauer wird weiter sinken — auf Level 99 dauert eine Sitzung dann %3$d Min. statt %4$d Min.</string>
+    <string name="prestige_confirm_message_mercantile">Euer %1$s-Level wird auf 1 zurückgesetzt, Ihr werdet allerdings einen dauerhaften Bonus von +%2$d%% EP erhalten, plus zusätzlich +%2$d%% mehr Münzrückgabe von Handelsrouten.</string>
     <string name="achievement_prestige_first_name">Erster Neustart</string>
     <string name="achievement_prestige_first_desc">Erhöht das Prestige einer beliebigen Fähigkeit zum ersten Mal</string>
     <string name="achievement_prestige_any_3_name">Gemeistert</string>
@@ -1289,6 +1295,8 @@
     <string name="bonus_combat_stat_boost">Verstärkt Kampffähigkeiten</string>
     <string name="bonus_combined_xp">EP gesamt</string>
     <string name="bonus_yield">Ausbeute</string>
+    <string name="bonus_session_shorter">%1$d Min. kürzere Sitzungen</string>
+    <string name="bonus_coin_return">Münzrückgabe</string>
     <string name="snackbar_added_to_queue">Zur Warteschlange hinzugefügt: %1$s.</string>
     <string name="snackbar_queue_full">Warteschlange ist voll.</string>
     <string name="home_not_enough_coins_repeat">Nicht genug Münzen, um %1$s zu wiederholen.</string>
@@ -1487,4 +1495,26 @@
     <string name="home_welcome_greeting">Willkommen zurück,</string>
     <string name="home_welcome_name">%1$s!</string>
     <string name="home_welcome_title">Der %1$s!</string>
+    <string name="seasonal_event_sunspire_solstice_2026_name">Sunspire Solstice</string>
+    <string name="seasonal_event_sunspire_solstice_2026_banner">Participated in the Sunspire Solstice 2026</string>
+    <string name="seasonal_minigame_bonfire_rhythm_name">Bonfire Rhythm</string>
+    <string name="seasonal_reward_sunspire_solstice_2026_100_desc">Sunspire Solstice 2026 banner</string>
+    <string name="seasonal_bounty_sunspire_firewood_name">Bring firewood for the bonfire</string>
+    <string name="seasonal_bounty_sunspire_firewood_hint">Chop Oak Logs — Woodcutting</string>
+    <string name="seasonal_bounty_sunspire_kindling_name">Gather kindling for the bonfire</string>
+    <string name="seasonal_bounty_sunspire_kindling_hint">Chop Willow Logs — Woodcutting</string>
+    <string name="seasonal_bounty_sunspire_sunore_name">Mine gold to gild the sun-tower</string>
+    <string name="seasonal_bounty_sunspire_sunore_hint">Mine Gold Ore — Mining</string>
+    <string name="seasonal_bounty_sunspire_draughts_name">Brew Strength Potions</string>
+    <string name="seasonal_bounty_sunspire_draughts_hint">Herblore</string>
+    <string name="seasonal_bounty_sunspire_embers_brew_name">Brew Attack Potions for the solstice watch</string>
+    <string name="seasonal_bounty_sunspire_embers_brew_hint">Herblore</string>
+    <string name="seasonal_bounty_sunspire_sunfire_arrows_name">Fletch Mithril arrows to hold back the wisps</string>
+    <string name="seasonal_bounty_sunspire_sunfire_arrows_hint">Fletching</string>
+    <string name="seasonal_bounty_sunspire_wisps_name">Drive off Sun Wisps</string>
+    <string name="seasonal_bounty_sunspire_wisps_hint">Only found in The Sunspire Expedition</string>
+    <string name="seasonal_bounty_sunspire_hounds_name">Drive off Ember Hounds</string>
+    <string name="seasonal_bounty_sunspire_hounds_hint">Only found in The Sunspire Expedition</string>
+    <string name="seasonal_bounty_sunspire_colossus_name">Topple Cinder Colossi</string>
+    <string name="seasonal_bounty_sunspire_colossus_hint">Only found in The Sunspire Expedition — rare</string>
 </resources>

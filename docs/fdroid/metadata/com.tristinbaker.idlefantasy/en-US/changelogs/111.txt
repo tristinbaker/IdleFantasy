@@ -1,0 +1,5 @@
+• Added the missing Expeditions icon, replacing its emoji to match the rest of the skill icon set
+• Fix: the touch ripple on the seasonal event banner and some Profile/Home cards spilled outside their rounded corners; it's now clipped to match
+• Added Armory slot labels and translations for the Hammer, Frying Pan, Grappling Hook, and Tinderbox tool slots, which previously had none
+• Fix: notifications only cleared when you tapped them directly, not when you opened the app; opening the app now clears them, and new notifications are suppressed while the app is open
+• Fix: the Journal's Save button could get pushed off-screen (or behind the keyboard) once you'd written enough lines, with no way to scroll to it; the Journal is now scrollable

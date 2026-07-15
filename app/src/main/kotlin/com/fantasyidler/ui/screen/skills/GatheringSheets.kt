@@ -91,7 +91,6 @@ import androidx.compose.ui.text.style.TextAlign
 import com.fantasyidler.ui.viewmodel.CraftableRecipe
 import com.fantasyidler.ui.viewmodel.CraftingUiState
 import com.fantasyidler.ui.viewmodel.CraftingViewModel
-import com.fantasyidler.ui.viewmodel.SessionResult
 import com.fantasyidler.ui.viewmodel.SheetState
 import com.fantasyidler.ui.viewmodel.levelDisplay
 import com.fantasyidler.ui.viewmodel.SkillsUiState
@@ -360,11 +359,10 @@ internal fun ActivityRow(
     questIndicators: List<QuestIndicator> = emptyList(),
     onClick: () -> Unit,
 ) {
-    val queueBlocked = hasActiveSession && isQueueFull
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable(enabled = !isStarting && !queueBlocked, onClick = onClick)
+            .clickable(enabled = !isStarting, onClick = onClick)
             .padding(horizontal = 16.dp, vertical = 12.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment     = Alignment.CenterVertically,
@@ -406,7 +404,7 @@ internal fun ActivityRow(
             Text(
                 text  = if (hasActiveSession) stringResource(R.string.skills_add_to_queue) else stringResource(R.string.btn_start_session),
                 style = MaterialTheme.typography.labelMedium,
-                color = if (queueBlocked) MaterialTheme.colorScheme.onSurfaceVariant else GoldPrimary,
+                color = GoldPrimary,
             )
         }
     }
@@ -423,7 +421,6 @@ internal fun ActivityDetailDialog(
     onConfirm: () -> Unit,
     onDismiss: () -> Unit,
 ) {
-    val queueBlocked = hasActiveSession && isQueueFull
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text(name) },
@@ -439,7 +436,6 @@ internal fun ActivityDetailDialog(
         confirmButton = {
             Button(
                 onClick = { onConfirm(); onDismiss() },
-                enabled = !queueBlocked,
             ) {
                 Text(if (hasActiveSession) stringResource(R.string.skills_add_queue_short) else stringResource(R.string.btn_start_session))
             }

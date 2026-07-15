@@ -650,10 +650,13 @@ private fun WeeklyQuestCard(
     quest: WeeklyQuestWithProgress,
     onClaim: () -> Unit,
 ) {
+    val context    = LocalContext.current
     val isComplete = quest.progress >= quest.template.amount
     val isClaimed  = quest.claimed
-    val name      = quest.template.displayName
-    val objective = quest.template.description
+    val name      = GameStrings.questName(context, quest.template.id, quest.template.displayName)
+    val objective = GameStrings.questDesc(context, quest.template.id)
+        .takeIf { it.isNotBlank() }
+        ?: quest.template.description
 
     Column(
         Modifier

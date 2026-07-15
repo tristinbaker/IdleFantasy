@@ -98,8 +98,8 @@ class GuildRepository @Inject constructor(
 
         /** Guild dailies required this tier (resets to 0 each tier since counts are keyed by "guild:tier"), alongside that tier's step quest. */
         val DAILIES_REQUIRED_PER_TIER = intArrayOf(
-            4, 6, 8, 10, 14,
-            18, 24, 30, 40, 50,
+            2, 3, 4, 5, 7,
+            9, 12, 15, 20, 25,
         )
 
         val ALL_GUILDS = listOf(
@@ -273,16 +273,17 @@ class GuildRepository @Inject constructor(
     }
 
     /** Called when a mercantile trade route session is collected. */
-    suspend fun recordGuildTrade(coinsEarned: Long = 0L) = playerRepo.playerMutex.withLock {
+    suspend fun recordGuildTrade(routeKey: String, coinsEarned: Long = 0L) = playerRepo.playerMutex.withLock {
         var flags = ensureGuildDailiesRefreshedUnlocked()
         val completedIds = loadCompletedQuestIds()
         val currentLevel = guildLevel("mercantile", flags.guildDailyTierCounts, completedIds)
         for ((questId, quest) in gameData.guildQuests) {
             if (quest.guild != "mercantile" || quest.type != "trade") continue
             if (quest.guildLevelRequired > currentLevel) continue
+            if (quest.target != routeKey) continue
             addQuestProgress(questId, 1)
         }
-        flags = applyDailyTrade(flags)
+        flags = applyDailyTrade(flags, routeKey)
         flags = applyDailyEarnCoins(flags, coinsEarned)
         playerRepo.updateFlagsUnlocked(flags)
     }
@@ -304,16 +305,17 @@ class GuildRepository @Inject constructor(
     }
 
     /** Called when an agility session is collected (counts completed sessions, not items). */
-    suspend fun recordGuildSessions() = playerRepo.playerMutex.withLock {
+    suspend fun recordGuildSessions(courseKey: String) = playerRepo.playerMutex.withLock {
         var flags = ensureGuildDailiesRefreshedUnlocked()
         val completedIds = loadCompletedQuestIds()
         val currentLevel = guildLevel("agility", flags.guildDailyTierCounts, completedIds)
         for ((questId, quest) in gameData.guildQuests) {
             if (quest.guild != "agility" || quest.type != "sessions") continue
             if (quest.guildLevelRequired > currentLevel) continue
+            if (quest.target != courseKey) continue
             addQuestProgress(questId, 1)
         }
-        flags = applyDailySessions(flags)
+        flags = applyDailySessions(flags, courseKey)
         playerRepo.updateFlagsUnlocked(flags)
     }
 
@@ -443,7 +445,7 @@ class GuildRepository @Inject constructor(
         return cal.timeInMillis
     }
 
-    /** Selects up to 2 daily templates per guild for today, filtered by current guild level.
+    /** Selects up to 4 daily templates per guild for today, filtered by current guild level.
      *  Uses a date-seeded RNG so the same dailies are shown all day. */
     fun buildRefreshedGuildDailyFlags(flags: PlayerFlags, completedQuestIds: Set<String>, skillLevels: Map<String, Int> = emptyMap()): PlayerFlags {
         val today = Calendar.getInstance().let {
@@ -485,7 +487,7 @@ class GuildRepository @Inject constructor(
                     }
                 }
                 .shuffled(rng)
-            selectedIds.addAll(eligible.take(2).map { it.id })
+            selectedIds.addAll(eligible.take(4).map { it.id })
         }
 
         return flags.copy(
@@ -590,7 +592,7 @@ class GuildRepository @Inject constructor(
                     }
                 }
                 .shuffled(rng)
-            newIds.addAll(eligible.take(2).map { it.id })
+            newIds.addAll(eligible.take(4).map { it.id })
         }
         return if (newIds.isEmpty()) flags else flags.copy(guildDailyIds = flags.guildDailyIds + newIds)
     }
@@ -701,7 +703,7 @@ class GuildRepository @Inject constructor(
         return if (changed) flags.copy(guildDailyProgress = updated) else flags
     }
 
-    private fun applyDailyTrade(flags: PlayerFlags): PlayerFlags {
+    private fun applyDailyTrade(flags: PlayerFlags, routeKey: String): PlayerFlags {
         val unclaimed = flags.guildDailyIds.filter { it !in flags.guildDailyClaimed }
         if (unclaimed.isEmpty()) return flags
         val pool = gameData.guildDailyPool.associateBy { it.id }
@@ -709,7 +711,7 @@ class GuildRepository @Inject constructor(
         var changed = false
         for (id in unclaimed) {
             val t = pool[id] ?: continue
-            if (t.guild != "mercantile" || t.type != "trade") continue
+            if (t.guild != "mercantile" || t.type != "trade" || t.target != routeKey) continue
             val cur = updated[id] ?: 0
             if (cur >= t.amount) continue
             updated[id] = minOf(cur + 1, t.amount)
@@ -736,7 +738,7 @@ class GuildRepository @Inject constructor(
         return if (changed) flags.copy(guildDailyProgress = updated) else flags
     }
 
-    private fun applyDailySessions(flags: PlayerFlags): PlayerFlags {
+    private fun applyDailySessions(flags: PlayerFlags, courseKey: String): PlayerFlags {
         val unclaimed = flags.guildDailyIds.filter { it !in flags.guildDailyClaimed }
         if (unclaimed.isEmpty()) return flags
         val pool = gameData.guildDailyPool.associateBy { it.id }
@@ -744,7 +746,7 @@ class GuildRepository @Inject constructor(
         var changed = false
         for (id in unclaimed) {
             val t = pool[id] ?: continue
-            if (t.guild != "agility" || t.type != "sessions") continue
+            if (t.guild != "agility" || t.type != "sessions" || t.target != courseKey) continue
             val cur = updated[id] ?: 0
             if (cur >= t.amount) continue
             updated[id] = minOf(cur + 1, t.amount)

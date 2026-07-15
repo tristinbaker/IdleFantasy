@@ -281,6 +281,10 @@
     <string name="settings_journal_button_desc">Mostra un pulsante Diario nella schermata principale per annotare note</string>
     <string name="settings_seasonal_events">Eventi Stagionali</string>
     <string name="settings_seasonal_events_desc">Mostra lo stendardo dell\'evento stagionale in corso nella schermata principale</string>
+    <string name="settings_collapsible_town_grid">Griglia Città Comprimibile</string>
+    <string name="settings_collapsible_town_grid_desc">Mostra la sezione Città (Negozio, Locanda, Gilda, ecc.) come una scheda comprimibile nella schermata principale</string>
+    <string name="settings_character_viewer">Visualizzatore Personaggio</string>
+    <string name="settings_character_viewer_desc">Mostra lo sprite del tuo personaggio nella schermata principale</string>
     <string name="label_no_sessions_yet">Nessuna sessione completata.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -704,9 +708,9 @@
     <string name="worker_journeyman">Artigiano</string>
     <string name="worker_master">Maestro</string>
     <string name="inn_long_laborer_desc">Un lavoro per assunzione, congedato dopo la raccolta. 8 ore di raccolta, efficienza 0,5x, nessun altro limite. Non è veloce, ma fa di tutto.</string>
-    <string name="inn_apprentice_desc">8 ore di lavoro, 1x efficienza. Oreficeria, preghiera e incisione di rune limitati a 480 oggetti per sessione.</string>
-    <string name="inn_journeyman_desc">6 ore di lavoro, 1.5x efficienza. Oreficeria, preghiera e incisione di rune limitati a 540 oggetti per sessione.</string>
-    <string name="inn_master_desc">4 ore di lavoro, 2x efficienza. Oreficeria, preghiera e incisione di rune limitati a 480 oggetti per sessione.</string>
+    <string name="inn_apprentice_desc">Un lavoro per assunzione, congedato dopo la raccolta. 8 ore di lavoro, 1x efficienza. Oreficeria, preghiera e incisione di rune limitati a 480 oggetti per sessione.</string>
+    <string name="inn_journeyman_desc">Un lavoro per assunzione, congedato dopo la raccolta. 6 ore di lavoro, 1.5x efficienza. Oreficeria, preghiera e incisione di rune limitati a 540 oggetti per sessione.</string>
+    <string name="inn_master_desc">Un lavoro per assunzione, congedato dopo la raccolta. 4 ore di lavoro, 2x efficienza. Oreficeria, preghiera e incisione di rune limitati a 480 oggetti per sessione.</string>
     <string name="inn_gathering_note">Lavoro: ore sessione x moltiplicatore di efficienza applicati a bottino e XP</string>
     <string name="inn_crafting_note">Oreficeria/preghiera/incisione di rune: quantità limitata per livello di qualità; i manovali non hanno un limite</string>
     <string name="worker_skills_title">Lavoratore: %1$s</string>
@@ -998,6 +1002,8 @@
     <string name="prestige_confirm_title">Onora %s?</string>
     <string name="prestige_confirm_message_xp">Il livello di %1$s tornerà a 1, ma otterrai un bonus permanente di +%2$d%% XP per questa abilità.</string>
     <string name="prestige_confirm_message_stat">Il livello di %1$s tornerà a 1, ma otterrai un bonus permanente di +%2$d alle statistiche.</string>
+    <string name="prestige_confirm_message_agility">Il livello di %1$s tornerà a 1, ma otterrai un bonus XP permanente del +%2$d%%, e la durata delle sessioni continuerà a diminuire — al livello 99 una sessione durerà %3$d min invece di %4$d min.</string>
+    <string name="prestige_confirm_message_mercantile">Il livello di %1$s tornerà a 1, ma otterrai un bonus XP permanente del +%2$d%%, oltre a un ulteriore +%2$d%% di ritorno in monete dalle rotte commerciali.</string>
     
     <!-- Prestige achievements -->
     <string name="achievement_prestige_first_name">Primo Reset</string>
@@ -1450,6 +1456,8 @@
     <string name="bonus_combat_stat_boost">Potenzia statistiche combattimento</string>
     <string name="bonus_combined_xp">XP combinata</string>
     <string name="bonus_yield">resa</string>
+    <string name="bonus_session_shorter">%1$d min di sessioni più brevi</string>
+    <string name="bonus_coin_return">ritorno in monete</string>
     <string name="snackbar_added_to_queue">Aggiunto alla coda: %1$s.</string>
     <string name="snackbar_queue_full">La coda è piena.</string>
     <string name="combat_start_failed">Impossibile avviare: %1$s</string>

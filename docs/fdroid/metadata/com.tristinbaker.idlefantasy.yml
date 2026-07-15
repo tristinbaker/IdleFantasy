@@ -776,9 +776,16 @@ Builds:
     gradle:
       - yes
 
+  - versionName: '1.12.0'
+    versionCode: 112
+    commit: 40b1f440f22ebb1ba94f699ba1740072c97ee11b
+    subdir: app
+    gradle:
+      - yes
+
 AllowedAPKSigningKeys: 99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
-CurrentVersion: 1.11.4
-CurrentVersionCode: 110
+CurrentVersion: 1.12.0
+CurrentVersionCode: 112

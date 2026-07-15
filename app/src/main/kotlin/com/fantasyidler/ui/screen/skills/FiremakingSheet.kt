@@ -91,7 +91,6 @@ import androidx.compose.ui.text.style.TextAlign
 import com.fantasyidler.ui.viewmodel.CraftableRecipe
 import com.fantasyidler.ui.viewmodel.CraftingUiState
 import com.fantasyidler.ui.viewmodel.CraftingViewModel
-import com.fantasyidler.ui.viewmodel.SessionResult
 import com.fantasyidler.ui.viewmodel.SheetState
 import com.fantasyidler.ui.viewmodel.levelDisplay
 import com.fantasyidler.ui.viewmodel.SkillsUiState
@@ -265,10 +264,9 @@ internal fun FiremakingSheet(
                     modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
                 )
             }
-            val enabled = !isStarting && !(!hasActiveSession && false) && (hasActiveSession || !isQueueFull.not()) && maxQty > 0
             Button(
                 onClick  = { onStart(key, qty) },
-                enabled  = !isStarting && maxQty > 0 && (!hasActiveSession || !isQueueFull),
+                enabled  = !isStarting && maxQty > 0,
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
             ) { Text(stringResource(R.string.firemaking_burn)) }
         }

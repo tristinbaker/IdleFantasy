@@ -83,7 +83,6 @@ import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.theme.SuccessGreen
-import com.fantasyidler.ui.viewmodel.CombatSessionResult
 import com.fantasyidler.ui.viewmodel.CombatViewModel
 import com.fantasyidler.ui.viewmodel.InventoryViewModel
 import com.fantasyidler.ui.viewmodel.combatLevelFrom
@@ -134,7 +133,6 @@ internal fun CombatSessionBanner(
     defenseBonus: Int,
     equippedFood: Map<String, Int>,
     foodHealValues: Map<String, Int>,
-    onCollect: () -> Unit,
     onAbandon: () -> Unit,
     onDebugFinish: () -> Unit,
 ) {
@@ -244,7 +242,7 @@ internal fun CombatSessionBanner(
 
         if (!isDone) {
             Text(
-                text       = remember(now) { endsAt.toCountdown() },
+                text       = remember(now) { endsAt.toCountdown(context) },
                 style      = MaterialTheme.typography.displaySmall,
                 fontWeight = FontWeight.Bold,
                 color      = MaterialTheme.colorScheme.primary,
@@ -565,12 +563,11 @@ internal fun CombatSessionBanner(
         }
 
         if (isDone) {
-            Button(
-                onClick  = onCollect,
-                modifier = Modifier.fillMaxWidth(),
-            ) {
-                Text(stringResource(R.string.btn_collect_results))
-            }
+            Text(
+                text  = stringResource(R.string.worker_manage_from_home),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSecondaryContainer,
+            )
             Spacer(Modifier.height(8.dp))
         }
 

@@ -1504,4 +1504,12 @@
     <string name="appearance_beard">Beard</string>
     <string name="appearance_beard_color">Beard Colour</string>
     <string name="appearance_save">Save Appearance</string>
+    <string name="settings_collapsible_town_grid">Collapsible Town Grid</string>
+    <string name="settings_collapsible_town_grid_desc">Show the Town section (Shop, Inn, Guild, etc.) as a card you can collapse on the home screen</string>
+    <string name="settings_character_viewer">Character Viewer</string>
+    <string name="settings_character_viewer_desc">Show your character sprite on the home screen</string>
+    <string name="prestige_confirm_message_agility">Your %1$s level will reset to 1, but you\'ll earn a permanent +%2$d%% XP bonus, and your session length will keep shrinking — by level 99 a session will take %3$d min instead of %4$d min.</string>
+    <string name="prestige_confirm_message_mercantile">Your %1$s level will reset to 1, but you\'ll earn a permanent +%2$d%% XP bonus, plus an extra +%2$d%% coin return from trade routes.</string>
+    <string name="bonus_session_shorter">%1$d min shorter sessions</string>
+    <string name="bonus_coin_return">coin return</string>
 </resources>

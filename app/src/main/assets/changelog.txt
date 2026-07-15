@@ -1,3 +1,27 @@
+v1.12.1
+• Added a Character Viewer toggle in Settings, letting you hide your character sprite from the Home screen if you'd rather not see it
+• Fixed eyes, hair, and beard rendering misaligned on the option buttons in the Character Appearance creator for short races (Dwarf, Gnome, Halfling); the live preview sprite was already correct
+• Fixed Apprentice, Journeyman, and Master worker descriptions at the Inn to state they're dismissed after collecting, matching the Long Laborer and actual behavior
+• Fixed the Lockpick's tool bonus not showing on the Thieving row in the Skills tab
+• Fixed Weekly quests never being translated into other languages
+• Fixed the Infinite Tower's "Enemy strength" percentage showing a huge, stuck value instead of a smoothly increasing one
+• Added haptic feedback to the Bonfire Rhythm minigame's start button, matching the rest of the minigame
+• Fixed farming plots surviving a Reset Progression instead of being cleared along with everything else
+• Fixed the weapon selector highlighting your melee weapon instead of your actual active weapon (e.g. Magic) when starting a combat task
+• Collecting a finished session now only happens from the Home screen; the Skills and Combat screens no longer have their own separate (and occasionally buggy) Collect button
+• Fixed Firemaking quests and dailies never showing their quest indicator in the session selection menu
+• Fixed the Skills tab feeling slow and laggy, especially when opening a skill or task, by moving quest indicator calculations off the main thread
+• Skill session buttons no longer go dead silent when your queue is full; they now show the same "queue full" message as Dungeons and other activities
+• Prestiging Agility or Mercantile now tells you what you're actually getting: Agility shows the real session-time reduction at level 99, and Mercantile shows its extra coin-return bonus, instead of a generic XP-only message
+• Fixed the Profile Bonuses tab labeling combat skill prestige as an XP bonus when it's actually a flat stat bonus; also added missing rows for Agility's session-time reduction and Mercantile's coin-return bonus
+• Agility and Mercantile guild quests (both the one-time guild quests and recurring dailies) now require a specific course or trade route, matching every other guild, instead of accepting any session or trade
+• Rebalanced guild leveling: the number of daily requests needed per tier is roughly halved, and up to 4 guild dailies are now offered per guild per day (up from 2), cutting time-to-max roughly in half while restoring meaningful daily choice
+• Combat now always eats your best-tier equipped food first and only drops to a weaker tier once it runs out, instead of favoring weaker food to avoid overhealing
+• Raised the per-session food cap in dungeons and boss fights from 200 to 300 items
+• Session and queue countdowns now also show the clock time they'll finish at (e.g. "2h 30m 0s (1:00 PM)"), respecting your device's 12/24-hour setting
+• Removed the stats card from the Home screen (Combat Level and Coins are still visible on Combat and Profile; Total Level is still on Profile)
+• The Home screen's Town section (Shop, Inn, Guild, Church, Builder, Slayer, Carnival) is now a collapsible card by default, remembering whether you left it expanded or collapsed; added a "Collapsible Town Grid" toggle in Settings to turn this off and show it as a plain grid instead
+
 v1.12.0
 • Fix: the queue's estimated time on the Home screen didn't update after an Agility level up or switching tools; it now reflects your current Agility level and equipped gear
 • Reworked guild leveling: reputation is gone, and ranking up now requires completing a number of daily requests for that guild (in addition to the existing quest requirement), so progress always feels earned instead of stalling once your old reputation bar filled up

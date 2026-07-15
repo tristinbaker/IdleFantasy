@@ -89,7 +89,6 @@ import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.theme.SuccessGreen
-import com.fantasyidler.ui.viewmodel.CombatSessionResult
 import com.fantasyidler.ui.viewmodel.CombatViewModel
 import com.fantasyidler.ui.viewmodel.InventoryViewModel
 import com.fantasyidler.ui.viewmodel.combatLevelFrom
@@ -214,7 +213,6 @@ fun CombatScreen(
                             defenseBonus   = state.totalDefenseBonus,
                             equippedFood   = state.equippedFood,
                             foodHealValues = viewModel.foodHealValues,
-                            onCollect      = viewModel::collectSession,
                             onAbandon      = viewModel::abandonSession,
                             onDebugFinish  = viewModel::debugFinishSession,
                         )
@@ -405,20 +403,6 @@ fun CombatScreen(
         }
     }
 
-    // Combat result sheet
-    state.combatResult?.let { result ->
-        val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
-        ModalBottomSheet(
-            onDismissRequest = viewModel::resultConsumed,
-            sheetState       = sheetState,
-            dragHandle       = { BottomSheetDefaults.DragHandle() },
-        ) {
-            CombatResultSheet(
-                result    = result,
-                onDismiss = viewModel::resultConsumed,
-            )
-        }
-    }
 
     // No-food warning dialog
     if (state.noFoodWarningPending) {

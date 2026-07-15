@@ -205,22 +205,19 @@ object CombatSimulator {
                 frameEnemyHits += eDmg
                 currentHp      -= eDmg
 
-                // Eat food immediately if a full-heal fits (no waste), up to 50 items total
+                // Always eat the best-tier food still in stock first; only fall back to a
+                // weaker tier once the best one runs out, up to 200 items total.
                 var ate = true
-                while (ate && totalFoodEaten < 200) {
+                while (ate && totalFoodEaten < 300) {
                     ate = false
-                    for (foodKey in foodOrder) {
-                        val qty  = foodSupply[foodKey] ?: 0
-                        if (qty <= 0) continue
-                        val heal = foodHealValues[foodKey] ?: continue
-                        if (currentHp + heal <= maxHp || currentHp <= enemyMaxHit || currentHp <= maxHp * 0.5) {
-                            currentHp           = minOf(maxHp, currentHp + heal)
-                            foodSupply[foodKey] = qty - 1
-                            frameFood[foodKey]  = (frameFood[foodKey] ?: 0) + 1
-                            totalFoodEaten++
-                            ate = true
-                            break
-                        }
+                    val foodKey = foodOrder.firstOrNull { (foodSupply[it] ?: 0) > 0 } ?: break
+                    val heal = foodHealValues[foodKey] ?: break
+                    if (currentHp + heal <= maxHp || currentHp <= enemyMaxHit || currentHp <= maxHp * 0.5) {
+                        currentHp            = minOf(maxHp, currentHp + heal)
+                        foodSupply[foodKey]  = (foodSupply[foodKey] ?: 0) - 1
+                        frameFood[foodKey]   = (frameFood[foodKey] ?: 0) + 1
+                        totalFoodEaten++
+                        ate = true
                     }
                 }
             }
@@ -449,22 +446,19 @@ object CombatSimulator {
                 currentHp = (currentHp - bDmg).coerceAtLeast(0)
                 eHits.add(bDmg)
 
-                // Eat food after taking damage if a full heal fits (same logic as dungeons), up to 50 items total
+                // Always eat the best-tier food still in stock first; only fall back to a
+                // weaker tier once the best one runs out, up to 200 items total.
                 var ate = true
-                while (ate && totalFoodEaten < 200) {
+                while (ate && totalFoodEaten < 300) {
                     ate = false
-                    for (foodKey in foodOrder) {
-                        val qty  = foodSupply[foodKey] ?: 0
-                        if (qty <= 0) continue
-                        val heal = foodHealValues[foodKey] ?: continue
-                        if (currentHp + heal <= maxHp || currentHp <= bossMax || currentHp <= maxHp * 0.5) {
-                            currentHp           = minOf(maxHp, currentHp + heal)
-                            foodSupply[foodKey]  = qty - 1
-                            frameFood[foodKey]   = (frameFood[foodKey] ?: 0) + 1
-                            totalFoodEaten++
-                            ate = true
-                            break
-                        }
+                    val foodKey = foodOrder.firstOrNull { (foodSupply[it] ?: 0) > 0 } ?: break
+                    val heal = foodHealValues[foodKey] ?: break
+                    if (currentHp + heal <= maxHp || currentHp <= bossMax || currentHp <= maxHp * 0.5) {
+                        currentHp            = minOf(maxHp, currentHp + heal)
+                        foodSupply[foodKey]  = (foodSupply[foodKey] ?: 0) - 1
+                        frameFood[foodKey]   = (frameFood[foodKey] ?: 0) + 1
+                        totalFoodEaten++
+                        ate = true
                     }
                 }
 

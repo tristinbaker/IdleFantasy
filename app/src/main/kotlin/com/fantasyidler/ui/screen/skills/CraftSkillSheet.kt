@@ -91,7 +91,6 @@ import androidx.compose.ui.text.style.TextAlign
 import com.fantasyidler.ui.viewmodel.CraftableRecipe
 import com.fantasyidler.ui.viewmodel.CraftingUiState
 import com.fantasyidler.ui.viewmodel.CraftingViewModel
-import com.fantasyidler.ui.viewmodel.SessionResult
 import com.fantasyidler.ui.viewmodel.SheetState
 import com.fantasyidler.ui.viewmodel.levelDisplay
 import com.fantasyidler.ui.viewmodel.SkillsUiState
@@ -548,7 +547,6 @@ private fun CraftQuantityContent(
         Spacer(Modifier.height(20.dp))
         Button(
             onClick  = onCraft,
-            enabled  = !(hasActiveSession && isQueueFull),
             modifier = Modifier.fillMaxWidth(),
         ) {
             Text(if (hasActiveSession) stringResource(R.string.skills_add_to_queue) else stringResource(R.string.btn_craft))

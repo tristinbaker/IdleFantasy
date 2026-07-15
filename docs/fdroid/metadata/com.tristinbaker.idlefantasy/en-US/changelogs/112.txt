@@ -1,0 +1,6 @@
+• Fix: the queue's estimated time on the Home screen didn't update after an Agility level up or switching tools; it now reflects your current Agility level and equipped gear
+• Reworked guild leveling: reputation is gone, and ranking up now requires completing a number of daily requests for that guild (in addition to the existing quest requirement), so progress always feels earned instead of stalling once your old reputation bar filled up
+• Rebalanced several rare tools so higher-rarity gear is never weaker than an easier-to-get tier (Divine Pickaxe/Axe, and the Fishing rod line)
+• Added Divine Hoe, Dwarven/Divine Hammer, Dwarven/Divine Tinderbox, Dwarven/Divine Frying Pan, and Shadow/Dwarven/Arcane/Divine Grappling Hooks, filling out rare-tool gaps across Farming, Smithing, Firemaking, Cooking, and Agility
+• Added a new Lockpick tool line for Thieving (Bronze through Runite, craftable via Smithing, plus Rogue's, Dwarven, Shadow, and Divine variants) that boosts pickpocket success chance
+• Added a Character Appearance creator (race, skin tone, eyes, hair, and beard) with a live sprite preview, plus a matching idle character shown next to your name on the Home screen

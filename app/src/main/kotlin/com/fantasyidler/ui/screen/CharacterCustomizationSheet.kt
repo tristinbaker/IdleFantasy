@@ -144,8 +144,10 @@ private fun SpriteThumbnail(
             .clickable(onClick = onClick),
     ) {
         androidx.compose.foundation.Canvas(modifier = Modifier.fillMaxSize()) {
+            // Hair/beard art is generic across races (unlike the body), so its crop
+            // window never needs the race-specific yOff shift.
             bodyBmp?.let    { blitSprite(it, yOff = yOff) }
-            featureBmp?.let { blitSprite(it, yOff = yOff) }
+            featureBmp?.let { blitSprite(it) }
         }
     }
 }
@@ -174,8 +176,10 @@ private fun EyeThumbnail(
             .clickable(onClick = onClick),
     ) {
         androidx.compose.foundation.Canvas(modifier = Modifier.fillMaxSize()) {
+            // Eye art is generic across races (unlike the body), so its crop window
+            // never needs the race-specific yOff shift.
             bodyBmp?.let { blitSprite(it, yOff = yOff) }
-            eyesBmp?.let { blitSprite(it, yOff = yOff) }
+            eyesBmp?.let { blitSprite(it) }
         }
     }
 }

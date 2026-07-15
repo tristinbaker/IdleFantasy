@@ -6,8 +6,10 @@ Workers are hired NPCs who run skill sessions independently while you play. You 
 
 There are two worker slots:
 
-- **Slot 1** is reserved for the **Long Laborer**, a low-cost generalist who works slowly but never needs replacing.
+- **Slot 1** is reserved for the **Long Laborer**, a low-cost generalist who works slowly but does anything.
 - **Slot 2** accepts a **Skilled Worker** (Apprentice, Journeyman, or Master). Each day a new pool of workers is available to hire; you choose the tier.
+
+Every hire is one job per hire: the worker is dismissed as soon as you collect their session, in both slots. Hire a new worker to keep that slot working.
 
 Each worker has a daily name that changes at 6 AM. Firing and rehiring on the same day gives you a new random name from the same pool.
 

@@ -25,6 +25,8 @@ import com.fantasyidler.R
 import com.fantasyidler.data.json.EquipmentData
 import com.fantasyidler.data.json.PetData
 import com.fantasyidler.data.model.EquipSlot
+import com.fantasyidler.data.model.Skills
+import com.fantasyidler.simulator.SkillSimulator
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.InventoryViewModel
 import com.fantasyidler.util.GameStrings
@@ -37,11 +39,16 @@ private val COMBAT_CAPE_SKILLS = setOf(
     "warriors", "archers", "mages",
 )
 
+private val COMBAT_STAT_SKILLS = setOf(
+    Skills.ATTACK, Skills.STRENGTH, Skills.DEFENSE, Skills.RANGED, Skills.MAGIC, Skills.HITPOINTS,
+)
+
 private data class SkillBonusEntry(
     val skillKey: String,
     val skillName: String,
     val xpPct: Int,
     val yieldPct: Int,
+    val statBonus: Int,
     val xpSources: List<Pair<String, Int>>,
     val yieldSource: String?,
 )
@@ -78,7 +85,10 @@ internal fun BonusesTab(
         val capePct        = if (isGatheringCape && cape?.capeSkill == skillKey) (cape.capeBonus * (capePrestige + 1) * 100 + 0.5f).toInt() else 0
         val specificPetPct = specificBonusPets.filter { it.boostedSkill == skillKey }.sumOf { it.boostPercent }
         val totalPetPct    = specificPetPct + allPetBoostPct
-        val prestigePct    = (state.skillPrestige[skillKey] ?: 0) * 10
+        val prestigeLevel  = state.skillPrestige[skillKey] ?: 0
+        val isCombatStat   = skillKey in COMBAT_STAT_SKILLS
+        val prestigePct    = if (isCombatStat) 0 else prestigeLevel * 10
+        val statBonus      = if (isCombatStat) prestigeLevel * 5 else 0
 
         val xpSources = buildList {
             if (totalPetPct > 0)  add(context.getString(R.string.label_pets) to totalPetPct)
@@ -89,10 +99,14 @@ internal fun BonusesTab(
             skillName   = GameStrings.skillName(context, skillKey),
             xpPct       = totalPetPct + prestigePct,
             yieldPct    = capePct,
+            statBonus   = statBonus,
             xpSources   = xpSources,
             yieldSource = if (capePct > 0) cape!!.displayName else null,
         )
     }
+
+    val agilityPrestige    = state.skillPrestige[Skills.AGILITY] ?: 0
+    val mercantilePrestige = state.skillPrestige[Skills.MERCANTILE] ?: 0
 
     // "all" pets with no skill-specific rows: surface them in the Boosts section
     val showAllPetsInBoosts = allPetBoostPct > 0 && specificSkillKeys.isEmpty()
@@ -177,7 +191,7 @@ internal fun BonusesTab(
             }
         }
 
-        if (skillEntries.isNotEmpty()) {
+        if (skillEntries.isNotEmpty() || agilityPrestige > 0 || mercantilePrestige > 0) {
             item { SlotSectionHeader(stringResource(R.string.bonus_section_skills)) }
             items(skillEntries, key = { it.skillKey }) { entry ->
                 if (entry.xpPct > 0) {
@@ -195,6 +209,37 @@ internal fun BonusesTab(
                         pct    = "+${entry.yieldPct}% ${stringResource(R.string.bonus_yield)}",
                         scope  = "",
                         detail = entry.yieldSource,
+                    )
+                }
+                if (entry.statBonus > 0) {
+                    BonusRow(
+                        name   = entry.skillName,
+                        pct    = "+${entry.statBonus}",
+                        scope  = "",
+                        detail = stringResource(R.string.bonus_combat_stat_boost),
+                    )
+                }
+            }
+            if (agilityPrestige > 0) {
+                item {
+                    val agilityLevel = state.skillLevels[Skills.AGILITY] ?: 1
+                    val savedMinutes = ((SkillSimulator.sessionDurationMs(agilityLevel, 0) -
+                        SkillSimulator.sessionDurationMs(agilityLevel, agilityPrestige)) / 60_000L).toInt()
+                    if (savedMinutes > 0) {
+                        BonusRow(
+                            name  = GameStrings.skillName(context, Skills.AGILITY),
+                            pct   = stringResource(R.string.bonus_session_shorter, savedMinutes),
+                            scope = stringResource(R.string.bonus_all_skills),
+                        )
+                    }
+                }
+            }
+            if (mercantilePrestige > 0) {
+                item {
+                    BonusRow(
+                        name  = GameStrings.skillName(context, Skills.MERCANTILE),
+                        pct   = "+${mercantilePrestige * 10}% ${stringResource(R.string.bonus_coin_return)}",
+                        scope = "",
                     )
                 }
             }

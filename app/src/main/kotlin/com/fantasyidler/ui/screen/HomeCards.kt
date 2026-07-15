@@ -89,6 +89,7 @@ import com.fantasyidler.util.formatCoins
 import com.fantasyidler.util.formatXp
 import com.fantasyidler.simulator.XpTable
 import com.fantasyidler.util.formatDurationMs
+import com.fantasyidler.util.toClockTime
 import com.fantasyidler.util.toCountdown
 import androidx.compose.ui.text.style.TextOverflow
 import kotlinx.coroutines.delay
@@ -192,7 +193,7 @@ internal fun HomeSessionCard(
             if (!isDone) {
                 Spacer(Modifier.height(8.dp))
                 Text(
-                    text  = remember(now) { endsAt.toCountdown() },
+                    text  = remember(now) { endsAt.toCountdown(context) },
                     style = MaterialTheme.typography.headlineSmall,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onSecondaryContainer,
@@ -437,7 +438,7 @@ internal fun QueueCard(
                 )
                 val remaining = (queueEndsAt - System.currentTimeMillis()).coerceAtLeast(0L)
                 Text(
-                    text  = stringResource(R.string.home_queue_ends_in, remaining.formatDurationMs()),
+                    text  = "${stringResource(R.string.home_queue_ends_in, remaining.formatDurationMs())} (${queueEndsAt.toClockTime(context)})",
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
@@ -567,7 +568,7 @@ internal fun WorkerSessionCard(
                 if (!isDone && endsAt > 0) {
                     Spacer(Modifier.height(8.dp))
                     Text(
-                        text       = remember(now) { endsAt.toCountdown() },
+                        text       = remember(now) { endsAt.toCountdown(context) },
                         style      = MaterialTheme.typography.headlineSmall,
                         fontWeight = FontWeight.Bold,
                         color      = MaterialTheme.colorScheme.onSecondaryContainer,
@@ -666,27 +667,6 @@ internal fun SummaryRow(
             style      = MaterialTheme.typography.bodyMedium,
             fontWeight = if (fontWeight == FontWeight.Bold) FontWeight.Bold else FontWeight.SemiBold,
             color      = valueColor,
-        )
-    }
-}
-
-@Composable
-internal fun StatItem(
-    label: String,
-    value: String,
-    valueColor: androidx.compose.ui.graphics.Color = MaterialTheme.colorScheme.onSurface,
-) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(
-            text  = value,
-            style = MaterialTheme.typography.titleLarge,
-            fontWeight = FontWeight.Bold,
-            color = valueColor,
-        )
-        Text(
-            text  = label,
-            style = MaterialTheme.typography.labelSmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
     }
 }
