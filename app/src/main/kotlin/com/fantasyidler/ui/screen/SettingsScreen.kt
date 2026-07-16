@@ -86,6 +86,7 @@ fun SettingsScreen(
     val showSeasonalEvents     by viewModel.showSeasonalEvents.collectAsState()
     val collapsibleTownGrid    by viewModel.collapsibleTownGrid.collectAsState()
     val showCharacterViewer    by viewModel.showCharacterViewer.collectAsState()
+    val showStatsCard          by viewModel.showStatsCard.collectAsState()
     val profileLayout          by viewModel.profileLayout.collectAsState()
     val backupFolderUri  by viewModel.backupFolderUri.collectAsState()
     val backupFrequency  by viewModel.backupFrequency.collectAsState()
@@ -371,6 +372,16 @@ fun SettingsScreen(
                     Switch(
                         checked         = showCharacterViewer,
                         onCheckedChange = { viewModel.setShowCharacterViewer(it) },
+                    )
+                }
+            )
+            SettingsRow(
+                title    = stringResource(R.string.settings_show_stats_card),
+                subtitle = stringResource(R.string.settings_show_stats_card_desc),
+                trailing = {
+                    Switch(
+                        checked         = showStatsCard,
+                        onCheckedChange = { viewModel.setShowStatsCard(it) },
                     )
                 }
             )

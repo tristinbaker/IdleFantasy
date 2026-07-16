@@ -84,6 +84,10 @@ import com.fantasyidler.data.model.HiredWorker
 import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.WorkerTier
+import com.fantasyidler.data.json.BlessingType
+import com.fantasyidler.repository.ChurchRepository
+import com.fantasyidler.ui.viewmodel.combatLevelFrom
+import com.fantasyidler.ui.viewmodel.totalLevelFrom
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.HomeViewModel
 import com.fantasyidler.ui.viewmodel.SessionSummary
@@ -585,6 +589,101 @@ fun HomeScreen(
                 }
             }
 
+            if (state.showStatsCard) {
+                Spacer(Modifier.height(8.dp))
+                // ── Stats card ──────────────────────────────────────────────
+                Surface(
+                    shape  = RoundedCornerShape(16.dp),
+                    color  = MaterialTheme.colorScheme.surfaceVariant,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Column(Modifier.padding(16.dp)) {
+                        Text(
+                            text  = stringResource(R.string.label_player_stats),
+                            style = MaterialTheme.typography.labelMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                        Spacer(Modifier.height(8.dp))
+
+                        Row(
+                            modifier              = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                        ) {
+                            StatItem(
+                                label = stringResource(R.string.label_combat_level),
+                                value = combatLevelFrom(state.skillLevels).toString(),
+                            )
+                            StatItem(
+                                label = stringResource(R.string.label_total_level),
+                                value = totalLevelFrom(state.skillLevels).toString(),
+                            )
+                            StatItem(
+                                label = stringResource(R.string.label_coins),
+                                value = state.coins.formatCoins(),
+                                valueColor = GoldPrimary,
+                            )
+                        }
+
+                        val blessingActive = state.activeBlessingKey.isNotEmpty() && state.activeBlessingRemainingMs > 0
+                        if (blessingActive) {
+                            val context = LocalContext.current
+                            val nameResId = context.resources.getIdentifier(
+                                "blessing_${state.activeBlessingKey}_name", "string", context.packageName,
+                            )
+                            val blessingName = if (nameResId != 0) stringResource(nameResId) else state.activeBlessingKey
+                            val blessingData = ChurchRepository.ALL_BLESSINGS.firstOrNull { it.key == state.activeBlessingKey }
+                            val boostDesc = blessingData?.let { b ->
+                                when (b.type) {
+                                    BlessingType.XP      -> "${b.magnitude}x XP"
+                                    BlessingType.DEFENSE -> "+${b.magnitude.toInt()} DEF"
+                                    BlessingType.COINS   -> "+${(b.magnitude * 100).toInt()}% coins"
+                                }
+                            }
+                            val timeLeft = state.activeBlessingRemainingMs.formatDurationMs()
+                            val blessingText = if (boostDesc != null) "$blessingName ($boostDesc) - $timeLeft"
+                                              else "$blessingName - $timeLeft"
+                            Spacer(Modifier.height(8.dp))
+                            HorizontalDivider()
+                            Spacer(Modifier.height(8.dp))
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Icon(
+                                    imageVector        = Icons.Filled.Star,
+                                    contentDescription = null,
+                                    tint               = GoldPrimary,
+                                    modifier           = Modifier.size(14.dp),
+                                )
+                                Spacer(Modifier.width(4.dp))
+                                Text(
+                                    text  = blessingText,
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = GoldPrimary,
+                                )
+                            }
+                        }
+
+                        if (state.xpBoostRemainingMs > 0) {
+                            Spacer(Modifier.height(8.dp))
+                            HorizontalDivider()
+                            Spacer(Modifier.height(8.dp))
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Icon(
+                                    imageVector        = Icons.Filled.Star,
+                                    contentDescription = null,
+                                    tint               = MaterialTheme.colorScheme.tertiary,
+                                    modifier           = Modifier.size(14.dp),
+                                )
+                                Spacer(Modifier.width(4.dp))
+                                Text(
+                                    text  = stringResource(R.string.home_xp_boost_active, state.xpBoostRemainingMs.formatDurationMs()),
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = MaterialTheme.colorScheme.tertiary,
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+
             // ── Town grid ───────────────────────────────────────────────
             val churchTint = if (state.activeBlessingKey.isNotEmpty() && state.activeBlessingRemainingMs > 0)
                 GoldPrimary else MaterialTheme.colorScheme.onSurfaceVariant
@@ -854,3 +953,25 @@ private fun TownGridCard(
         }
     }
 }
+
+@Composable
+private fun StatItem(
+    label: String,
+    value: String,
+    valueColor: androidx.compose.ui.graphics.Color = MaterialTheme.colorScheme.onSurface,
+) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(
+            text  = value,
+            style = MaterialTheme.typography.titleLarge,
+            fontWeight = FontWeight.Bold,
+            color = valueColor,
+        )
+        Text(
+            text  = label,
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+    }
+}
+

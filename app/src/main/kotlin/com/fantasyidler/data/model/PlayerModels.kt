@@ -118,6 +118,8 @@ data class PlayerFlags(
     @SerialName("show_seasonal_events") val showSeasonalEvents: Boolean = true,
     /** Whether to show the character sprite viewer on the home screen. */
     @SerialName("show_character_viewer") val showCharacterViewer: Boolean = true,
+    /** Whether to show the player stats card (combat level, total level, coins) on the home screen. */
+    @SerialName("show_stats_card") val showStatsCard: Boolean = true,
     /** Whether the Town grid (Shop, Inn, Guild, etc.) on the home screen is shown as a collapsible card. */
     @SerialName("collapsible_town_grid") val collapsibleTownGrid: Boolean = true,
     /** Persisted expand/collapse state of the Town grid card, when collapsibleTownGrid is on. */

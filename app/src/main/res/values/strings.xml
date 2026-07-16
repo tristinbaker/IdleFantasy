@@ -285,6 +285,8 @@
     <string name="settings_collapsible_town_grid_desc">Show the Town section (Shop, Inn, Guild, etc.) as a card you can collapse on the home screen</string>
     <string name="settings_character_viewer">Character Viewer</string>
     <string name="settings_character_viewer_desc">Show your character sprite on the home screen</string>
+    <string name="settings_show_stats_card">Stats Card</string>
+    <string name="settings_show_stats_card_desc">Show the player stats card (Combat Level, Total Level, Coins) on the home screen</string>
     <string name="label_no_sessions_yet">No sessions completed yet.</string>
 
     <!-- ===== CombatScreen ===== -->

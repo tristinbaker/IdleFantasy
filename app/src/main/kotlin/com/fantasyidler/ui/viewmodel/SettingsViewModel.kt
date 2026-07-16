@@ -112,6 +112,14 @@ class SettingsViewModel @Inject constructor(
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), true)
 
+    val showStatsCard: StateFlow<Boolean> = playerRepo.playerFlow
+        .map { player ->
+            if (player == null) return@map true
+            try { json.decodeFromString<PlayerFlags>(player.flags).showStatsCard }
+            catch (_: Exception) { true }
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), true)
+
     val profileLayout: StateFlow<String> = playerRepo.playerFlow
         .map { player ->
             if (player == null) return@map "rail"
@@ -159,6 +167,13 @@ class SettingsViewModel @Inject constructor(
         viewModelScope.launch {
             val flags = playerRepo.getFlags()
             playerRepo.updateFlags(flags.copy(showCharacterViewer = enabled))
+        }
+    }
+
+    fun setShowStatsCard(enabled: Boolean) {
+        viewModelScope.launch {
+            val flags = playerRepo.getFlags()
+            playerRepo.updateFlags(flags.copy(showStatsCard = enabled))
         }
     }
 

@@ -125,6 +125,7 @@ data class HomeUiState(
     val characterBeardStyle: Int = 0,
     val characterBeardColor: String = "a",
     val showCharacterViewer: Boolean = true,
+    val showStatsCard: Boolean = true,
     val equippedTitle: String? = null,
     /** Resolved, localized title name (e.g. "Master Smith"), or null if none equipped. */
     val titleName: String? = null,
@@ -307,6 +308,7 @@ class HomeViewModel @Inject constructor(
                 characterBeardStyle = flags.characterBeardStyle,
                 characterBeardColor = flags.characterBeardColor,
                 showCharacterViewer = flags.showCharacterViewer,
+                showStatsCard       = flags.showStatsCard,
                 equippedTitle       = flags.equippedTitle,
                 titleName           = titleRepo.displayName(context, flags.equippedTitle, flags),
                 sessionQueue        = flags.sessionQueue,
