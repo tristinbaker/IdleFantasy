@@ -98,17 +98,17 @@
     <string name="quest_cooking_mutton_3_objective">Приготовьте 500 баранины</string>
 
     <!-- Fletching -->
-    <string name="quest_fletching_1_name">Флетчинг I</string>
+    <string name="quest_fletching_1_name">Лучное дело I</string>
     <string name="quest_fletching_1_objective">Создайте 500 бронзовых стрел</string>
-    <string name="quest_fletching_2_name">Флетчинг II</string>
+    <string name="quest_fletching_2_name">Лучное дело II</string>
     <string name="quest_fletching_2_objective">Создайте 750 железных стрел</string>
-    <string name="quest_fletching_3_name">Флетчинг III</string>
+    <string name="quest_fletching_3_name">Лучное дело III</string>
     <string name="quest_fletching_3_objective">Создайте 1100 стальных стрел</string>
-    <string name="quest_fletching_4_name">Флетчинг IV</string>
+    <string name="quest_fletching_4_name">Лучное дело IV</string>
     <string name="quest_fletching_4_objective">Создайте 1650 мифриловых стрел</string>
-    <string name="quest_fletching_5_name">Флетчинг V</string>
+    <string name="quest_fletching_5_name">Лучное дело V</string>
     <string name="quest_fletching_5_objective">Создайте 2450 адамантитовых стрел</string>
-    <string name="quest_fletching_6_name">Флетчинг VI</string>
+    <string name="quest_fletching_6_name">Лучное дело VI</string>
     <string name="quest_fletching_6_objective">Создайте 3650 рунитовых стрел</string>
 
     <!-- Prayer -->

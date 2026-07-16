@@ -1594,4 +1594,18 @@
     <string name="home_welcome_greeting">С возвращением,</string>
     <string name="home_welcome_name">%1$s!</string>
     <string name="home_welcome_title">%1$s!</string>
+    <!-- ===== translatable="false" + synced from values/ ===== -->
+    <string name="settings_wiki_url" translatable="false">idlefantasy.tristinbaker.xyz</string>
+    <string-array name="profile_pet_happy_messages">
+        <item>%1$s радуется!</item>
+        <item>%1$s виляет хвостом!</item>
+        <item>%1$s ласково трётся о вас.</item>
+        <item>%1$s радостно чирикает!</item>
+        <item>%1$s танцует от радости!</item>
+        <item>%1$s широко улыбается вам.</item>
+        <item>%1$s хочет ещё ласки!</item>
+        <item>%1$s в полном восторге!</item>
+        <item>%1$s любит внимание!</item>
+        <item>%1$s обещает и дальше усердно работать на вас.</item>
+    </string-array>
 </resources>
