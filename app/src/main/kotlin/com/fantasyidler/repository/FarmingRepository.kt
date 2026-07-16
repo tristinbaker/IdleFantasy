@@ -4,6 +4,8 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import androidx.room.withTransaction
+import com.fantasyidler.data.db.AppDatabase
 import com.fantasyidler.data.db.dao.FarmingPatchDao
 import com.fantasyidler.data.json.CropData
 import com.fantasyidler.data.model.EquipSlot
@@ -21,6 +23,7 @@ import kotlin.random.Random
 @Singleton
 class FarmingRepository @Inject constructor(
     @ApplicationContext private val context: Context,
+    private val appDatabase: AppDatabase,
     private val patchDao: FarmingPatchDao,
     private val playerRepo: PlayerRepository,
     private val gameData: GameDataRepository,
@@ -94,6 +97,13 @@ class FarmingRepository @Inject constructor(
         }
         cancelAlarm(patchNumber)
         patchDao.clear(patchNumber)
+    }
+
+    /** Harvests every patch in one DB transaction, so a multi-plot harvest commits once instead of once per plot. */
+    suspend fun harvestPatches(patchNumbers: List<Int>) {
+        appDatabase.withTransaction {
+            patchNumbers.forEach { harvestPatch(it) }
+        }
     }
 
     /** Roll harvest yield, award items + XP, clear the patch. */

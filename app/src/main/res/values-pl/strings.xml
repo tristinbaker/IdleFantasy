@@ -289,16 +289,22 @@
     <string name="settings_profile_layout_desc">Wybierz między boczną szyną a górnymi zakładkami</string>
     <string name="settings_profile_layout_rail">Szyna</string>
     <string name="settings_profile_layout_tabs">Zakładki</string>
+    <string name="settings_home_screen">Ekran Główny</string>
+    <string name="settings_home_screen_desc">Wybierz, co wyświetla się na ekranie głównym</string>
     <string name="settings_recent_activity">Dziennik ostatniej aktywności</string>
     <string name="settings_recent_activity_desc">Pokaż przycisk Ostatnia aktywność w nagłówku ekranu głównego</string>
     <string name="settings_journal_button">Przycisk dziennika</string>
-    <string name="settings_journal_button_desc">Pokaż pływający przycisk Dziennika na ekranie głównym do zapisywania notatek</string>
+    <string name="settings_journal_button_desc">Pokaż przycisk Dziennika na górnym pasku ekranu głównego do zapisywania notatek</string>
     <string name="settings_seasonal_events">Wydarzenia Sezonowe</string>
     <string name="settings_seasonal_events_desc">Pokaż baner aktywnego wydarzenia sezonowego na ekranie głównym</string>
     <string name="settings_collapsible_town_grid">Zwijalna Siatka Miasta</string>
     <string name="settings_collapsible_town_grid_desc">Pokaż sekcję Miasto (Sklep, Gospoda, Gildia itd.) jako zwijaną kartę na ekranie głównym</string>
     <string name="settings_character_viewer">Podgląd Postaci</string>
     <string name="settings_character_viewer_desc">Pokaż grafikę swojej postaci na ekranie głównym</string>
+    <string name="settings_stats_bar">Pasek Statystyk</string>
+    <string name="settings_stats_bar_desc">Pokaż Poziom Bojowy, Poziom Całkowity i Monety na ekranie głównym</string>
+    <string name="settings_session_end_time">Czas Zakończenia Sesji</string>
+    <string name="settings_session_end_time_desc">Pokaż przewidywaną godzinę zakończenia przy odliczaniu sesji i kolejki</string>
     <string name="label_no_sessions_yet">Nie ukończono jeszcze żadnej sesji.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -542,6 +548,11 @@
     <string name="profile_stat_wc">Drwal.</string>
     <string name="profile_stat_fishing">Wędkarstwo</string>
     <string name="profile_stat_farming">Rolnictwo</string>
+    <string name="profile_stat_smithing">Kowalstwo</string>
+    <string name="profile_stat_firemaking">Rozpalanie ognia</string>
+    <string name="profile_stat_agility">Zwinność</string>
+    <string name="profile_stat_cooking">Kucharstwo</string>
+    <string name="profile_stat_thieving">Kradzież</string>
     <string name="profile_stat_def">Obr</string>
     <string name="profile_req_lv">Wym. poz.</string>
 
@@ -731,6 +742,7 @@
     <string name="worker_session_active">Sesja pracownika aktywna</string>
     <string name="worker_session_complete">Sesja pracownika ukończona</string>
     <string name="worker_manage_from_home">Odbierz z ekranu głównego</string>
+    <string name="worker_session_assigned">Przydzielono: %1$s %2$s</string>
     <string name="worker_card_title">Pracownik</string>
     <string name="worker_idle">Pracownik jest bezczynny — kolejne sesje rozpoczynają się automatycznie</string>
     <string name="worker_collect_btn">Odbierz sesję pracownika</string>
@@ -832,7 +844,7 @@
     <string name="guild_quest_desc_kill">Pokonaj %1$d wrogów, używając walki %2$s.</string>
     <string name="guild_quest_desc_prayer">Zakop %1$d kości dla %2$s.</string>
     <string name="guild_quest_desc_sessions">Ukończ %1$d sesji %2$s dla %3$s.</string>
-    <string name="guild_quest_desc_trade">Ukończ %1$d szlaków handlowych dla %2$s.</string>
+    <string name="guild_quest_desc_trade">Ukończ %1$d szlaków handlowych %2$s dla %3$s.</string>
     <string name="guild_quest_desc_earn_coins">Zarób %1$s monet przez szlaki handlowe dla %2$s.</string>
     <string name="guild_quest_desc_pickpocket">Okradnij %2$s %1$d razy dla %3$s.</string>
     <string name="guild_combat_melee">wręcz</string>
@@ -1407,6 +1419,11 @@
     <string name="armory_stat_woodcutting">Wydajność drwalstwa</string>
     <string name="armory_stat_fishing">Wydajność wędkarstwa</string>
     <string name="armory_stat_farming">Wydajność rolnictwa</string>
+    <string name="armory_stat_smithing">Wydajność kowalstwa</string>
+    <string name="armory_stat_firemaking">Wydajność rozpalania ognia</string>
+    <string name="armory_stat_agility">Wydajność zwinności</string>
+    <string name="armory_stat_cooking">Wydajność kucharstwa</string>
+    <string name="armory_stat_thieving">Wydajność kradzieży</string>
     <string name="armory_stat_attack">Bonus ataku</string>
     <string name="armory_stat_strength">Bonus siły</string>
     <string name="armory_stat_defense">Bonus obrony</string>

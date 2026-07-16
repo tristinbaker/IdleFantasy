@@ -117,6 +117,7 @@ internal fun HomeSessionCard(
     context: android.content.Context,
     skillXp: Map<String, Long>,
     sessionXpGain: Long,
+    showEndTime: Boolean = true,
     onRepeat: () -> Unit,
     onAbandon: () -> Unit,
     onDebugFinish: () -> Unit,
@@ -193,7 +194,7 @@ internal fun HomeSessionCard(
             if (!isDone) {
                 Spacer(Modifier.height(8.dp))
                 Text(
-                    text  = remember(now) { endsAt.toCountdown(context) },
+                    text  = remember(now, showEndTime) { endsAt.toCountdown(context, showEndTime) },
                     style = MaterialTheme.typography.headlineSmall,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onSecondaryContainer,
@@ -275,6 +276,7 @@ internal fun QueueCard(
     activeSessionSkill: String,
     activeSessionXpGain: Long,
     towerCurrentFloor: Int,
+    showEndTime: Boolean = true,
     onRemove: (Int) -> Unit,
     onMove: (Int, Int) -> Unit,
 ) {
@@ -437,8 +439,13 @@ internal fun QueueCard(
                     color    = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f),
                 )
                 val remaining = (queueEndsAt - System.currentTimeMillis()).coerceAtLeast(0L)
+                val queueEndsText = if (showEndTime) {
+                    "${stringResource(R.string.home_queue_ends_in, remaining.formatDurationMs())} (${queueEndsAt.toClockTime(context)})"
+                } else {
+                    stringResource(R.string.home_queue_ends_in, remaining.formatDurationMs())
+                }
                 Text(
-                    text  = "${stringResource(R.string.home_queue_ends_in, remaining.formatDurationMs())} (${queueEndsAt.toClockTime(context)})",
+                    text  = queueEndsText,
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
@@ -456,6 +463,8 @@ internal fun WorkerSessionCard(
     context: android.content.Context,
     skillXp: Map<String, Long>,
     sessionXpGain: Long,
+    showEndTime: Boolean = true,
+    assignedItems: Map<String, Int> = emptyMap(),
     onCollect: () -> Unit,
     onDismiss: () -> Unit,
     onDebugFinish: () -> Unit,
@@ -568,7 +577,7 @@ internal fun WorkerSessionCard(
                 if (!isDone && endsAt > 0) {
                     Spacer(Modifier.height(8.dp))
                     Text(
-                        text       = remember(now) { endsAt.toCountdown(context) },
+                        text       = remember(now, showEndTime) { endsAt.toCountdown(context, showEndTime) },
                         style      = MaterialTheme.typography.headlineSmall,
                         fontWeight = FontWeight.Bold,
                         color      = MaterialTheme.colorScheme.onSecondaryContainer,
@@ -593,6 +602,17 @@ internal fun WorkerSessionCard(
                         Spacer(Modifier.height(2.dp))
                         Text(
                             text  = xpLineText,
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.7f),
+                        )
+                    }
+                    if (assignedItems.isNotEmpty()) {
+                        val assignedTemplate = stringResource(R.string.worker_session_assigned)
+                        Spacer(Modifier.height(2.dp))
+                        Text(
+                            text  = assignedItems.entries.joinToString("  ") { (key, qty) ->
+                                assignedTemplate.format("%,d".format(qty), GameStrings.itemName(context, key))
+                            },
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.7f),
                         )
@@ -666,6 +686,29 @@ internal fun SummaryRow(
             text       = value,
             style      = MaterialTheme.typography.bodyMedium,
             fontWeight = if (fontWeight == FontWeight.Bold) FontWeight.Bold else FontWeight.SemiBold,
+            color      = valueColor,
+        )
+    }
+}
+
+/** Compact single-line label+value pair, e.g. for a thin horizontal stats bar. */
+@Composable
+internal fun StatInline(
+    label: String,
+    value: String,
+    valueColor: androidx.compose.ui.graphics.Color = MaterialTheme.colorScheme.onSurface,
+) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Text(
+            text  = label,
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        Spacer(Modifier.width(4.dp))
+        Text(
+            text       = value,
+            style      = MaterialTheme.typography.bodyMedium,
+            fontWeight = FontWeight.Bold,
             color      = valueColor,
         )
     }

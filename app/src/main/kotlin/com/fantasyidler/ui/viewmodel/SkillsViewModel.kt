@@ -90,6 +90,7 @@ data class SkillsUiState(
     val inventory: Map<String, Int> = emptyMap(),
     val petBoostBySkill: Map<String, Int> = emptyMap(),
     val activeQuests: Map<String, List<QuestIndicator>> = emptyMap(),
+    val showSessionEndTime: Boolean = true,
 )
 
 sealed class SheetState {
@@ -189,6 +190,7 @@ class SkillsViewModel @Inject constructor(
                     .associateWith { key -> petBoostFor(player.pets, key) }
                     .filterValues { it > 0 },
                 activeQuests          = computeActiveQuests(questProgress, flags, inv),
+                showSessionEndTime    = flags.showSessionEndTime,
             )
         }
     }.flowOn(Dispatchers.Default)

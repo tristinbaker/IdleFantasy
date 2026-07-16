@@ -71,7 +71,9 @@ sealed class Screen(
         labelRes     = R.string.settings_title,
         icon         = Icons.Outlined.Settings,
         selectedIcon = Icons.Filled.Settings,
-    )
+    ) {
+        const val homeScreenRoute = "settings/home_screen"
+    }
 
     object Shop : Screen(
         route    = "shop",

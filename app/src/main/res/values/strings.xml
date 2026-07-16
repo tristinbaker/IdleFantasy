@@ -275,16 +275,22 @@
     <string name="settings_profile_layout_desc">Choose between a sidebar rail or top tabs</string>
     <string name="settings_profile_layout_rail">Rail</string>
     <string name="settings_profile_layout_tabs">Tabs</string>
+    <string name="settings_home_screen">Home Screen</string>
+    <string name="settings_home_screen_desc">Choose what appears on the home screen</string>
     <string name="settings_recent_activity">Recent Activity Log</string>
     <string name="settings_recent_activity_desc">Show Recent Activity button in the home screen header</string>
     <string name="settings_journal_button">Journal Button</string>
-    <string name="settings_journal_button_desc">Show a floating Journal button on the home screen for jotting down notes</string>
+    <string name="settings_journal_button_desc">Show a Journal button in the home screen\'s top bar for jotting down notes</string>
     <string name="settings_seasonal_events">Seasonal Events</string>
     <string name="settings_seasonal_events_desc">Show the active Seasonal Event banner on the home screen</string>
     <string name="settings_collapsible_town_grid">Collapsible Town Grid</string>
     <string name="settings_collapsible_town_grid_desc">Show the Town section (Shop, Inn, Guild, etc.) as a card you can collapse on the home screen</string>
     <string name="settings_character_viewer">Character Viewer</string>
     <string name="settings_character_viewer_desc">Show your character sprite on the home screen</string>
+    <string name="settings_stats_bar">Stats Bar</string>
+    <string name="settings_stats_bar_desc">Show Combat Level, Total Level, and Coins on the home screen</string>
+    <string name="settings_session_end_time">Session End Time</string>
+    <string name="settings_session_end_time_desc">Show the predicted completion clock time next to session and queue countdowns</string>
     <string name="label_no_sessions_yet">No sessions completed yet.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -526,6 +532,11 @@
     <string name="profile_stat_wc">WC</string>
     <string name="profile_stat_fishing">Fishing</string>
     <string name="profile_stat_farming">Farming</string>
+    <string name="profile_stat_smithing">Smithing</string>
+    <string name="profile_stat_firemaking">Firemaking</string>
+    <string name="profile_stat_agility">Agility</string>
+    <string name="profile_stat_cooking">Cooking</string>
+    <string name="profile_stat_thieving">Thieving</string>
     <string name="profile_stat_def">Def</string>
     <string name="profile_req_lv">Req lv.</string>
 
@@ -717,6 +728,7 @@
     <string name="worker_session_active">Worker Session Active</string>
     <string name="worker_session_complete">Worker Session Complete</string>
     <string name="worker_manage_from_home">Collect from the Home screen</string>
+    <string name="worker_session_assigned">Assigned: %1$s %2$s</string>
     <string name="worker_card_title">Worker</string>
     <string name="worker_idle">Worker is idle — queued sessions start automatically</string>
     <string name="worker_collect_btn">Collect Worker Session</string>
@@ -818,7 +830,7 @@
     <string name="guild_quest_desc_kill">Defeat %1$d enemies using %2$s combat.</string>
     <string name="guild_quest_desc_prayer">Bury %1$d bones for the %2$s.</string>
     <string name="guild_quest_desc_sessions">Complete %1$d %2$s sessions for the %3$s.</string>
-    <string name="guild_quest_desc_trade">Complete %1$d trade routes for the %2$s.</string>
+    <string name="guild_quest_desc_trade">Complete %1$d %2$s trades for the %3$s.</string>
     <string name="guild_quest_desc_earn_coins">Earn %1$s coins via trade routes for the %2$s.</string>
     <string name="guild_quest_desc_pickpocket">Pickpocket the %2$s %1$d times for the %3$s.</string>
     <string name="guild_combat_melee">melee</string>
@@ -1389,6 +1401,11 @@
     <string name="armory_stat_woodcutting">Woodcutting Efficiency</string>
     <string name="armory_stat_fishing">Fishing Efficiency</string>
     <string name="armory_stat_farming">Farming Efficiency</string>
+    <string name="armory_stat_smithing">Smithing Efficiency</string>
+    <string name="armory_stat_firemaking">Firemaking Efficiency</string>
+    <string name="armory_stat_agility">Agility Efficiency</string>
+    <string name="armory_stat_cooking">Cooking Efficiency</string>
+    <string name="armory_stat_thieving">Thieving Efficiency</string>
     <string name="armory_stat_attack">Attack Bonus</string>
     <string name="armory_stat_strength">Strength Bonus</string>
     <string name="armory_stat_defense">Defense Bonus</string>

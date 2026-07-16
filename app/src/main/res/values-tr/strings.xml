@@ -259,16 +259,22 @@
     <string name="settings_profile_layout_desc">Kenar cubugu veya ust sekmeler</string>
     <string name="settings_profile_layout_rail">Cubuk</string>
     <string name="settings_profile_layout_tabs">Sekmeler</string>
+    <string name="settings_home_screen">Ana Ekran</string>
+    <string name="settings_home_screen_desc">Ana ekranda neyin görüneceğini seç</string>
     <string name="settings_recent_activity">Son Aktivite Günlüğü</string>
     <string name="settings_recent_activity_desc">Ana ekran başlığında Son Aktivite düğmesini göster</string>
     <string name="settings_journal_button">Günlük Düğmesi</string>
-    <string name="settings_journal_button_desc">Not almak için ana ekranda yüzen bir Günlük düğmesi göster</string>
+    <string name="settings_journal_button_desc">Not almak için ana ekranın üst çubuğunda bir Günlük düğmesi göster</string>
     <string name="settings_seasonal_events">Mevsimsel Etkinlikler</string>
     <string name="settings_seasonal_events_desc">Ana ekranda aktif Mevsimsel Etkinlik afişini göster</string>
     <string name="settings_collapsible_town_grid">Daraltılabilir Şehir Izgarası</string>
     <string name="settings_collapsible_town_grid_desc">Şehir bölümünü (Dükkan, Han, Lonca vb.) ana ekranda daraltılabilir bir kart olarak göster</string>
     <string name="settings_character_viewer">Karakter Görüntüleyici</string>
     <string name="settings_character_viewer_desc">Ana ekranda karakter sprite\'ınızı göster</string>
+    <string name="settings_stats_bar">İstatistik Çubuğu</string>
+    <string name="settings_stats_bar_desc">Ana ekranda Savaş Seviyesi, Toplam Seviye ve Altınları göster</string>
+    <string name="settings_session_end_time">Oturum Bitiş Zamanı</string>
+    <string name="settings_session_end_time_desc">Oturum ve sıra geri sayımlarının yanında tahmini tamamlanma saatini göster</string>
     <string name="label_no_sessions_yet">Henüz tamamlanan oturum yok.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -453,6 +459,11 @@
     <string name="profile_stat_wc">Odunculuk</string>
     <string name="profile_stat_fishing">Balıkçılık</string>
     <string name="profile_stat_farming">Çiftçilik</string>
+    <string name="profile_stat_smithing">Demircilik</string>
+    <string name="profile_stat_firemaking">Ateş Yakma</string>
+    <string name="profile_stat_agility">Çeviklik</string>
+    <string name="profile_stat_cooking">Yemek Pişirme</string>
+    <string name="profile_stat_thieving">Hırsızlık</string>
     <string name="profile_stat_def">Sav</string>
     <string name="profile_req_lv">Gereken Lv.</string>
 
@@ -734,6 +745,7 @@
     <string name="worker_session_active">Worker Session Active</string>
     <string name="worker_session_complete">Worker Session Complete</string>
     <string name="worker_manage_from_home">Collect from the Home screen</string>
+    <string name="worker_session_assigned">Atanan: %1$s %2$s</string>
     <string name="worker_card_title">Worker</string>
     <string name="worker_idle">Worker is idle — queued sessions start automatically</string>
     <string name="worker_collect_btn">Collect Worker Session</string>
@@ -768,7 +780,7 @@
     <string name="guild_quest_desc_kill">%2$s dövüşünde %1$d düşmanı yenin.</string>
     <string name="guild_quest_desc_prayer">%2$s için %1$d kemik gömün.</string>
     <string name="guild_quest_desc_sessions">%3$s için %1$d %2$s oturumu tamamlayın.</string>
-    <string name="guild_quest_desc_trade">%2$s için %1$d ticaret rotası tamamlayın.</string>
+    <string name="guild_quest_desc_trade">%3$s için %1$d %2$s ticaret rotası tamamlayın.</string>
     <string name="guild_quest_desc_earn_coins">%2$s için ticaret rotaları aracılığıyla %1$s altın kazanın.</string>
     <string name="guild_quest_desc_pickpocket">%3$s için %2$s\'ı %1$d kez yankesicilik yapın.</string>
     <string name="guild_combat_melee">yakın</string>
@@ -1356,6 +1368,11 @@
     <string name="armory_stat_woodcutting">Odunculuk verimliliği</string>
     <string name="armory_stat_fishing">Balıkçılık verimliliği</string>
     <string name="armory_stat_farming">Çiftçilik verimliliği</string>
+    <string name="armory_stat_smithing">Demircilik verimliliği</string>
+    <string name="armory_stat_firemaking">Ateş yakma verimliliği</string>
+    <string name="armory_stat_agility">Çeviklik verimliliği</string>
+    <string name="armory_stat_cooking">Yemek pişirme verimliliği</string>
+    <string name="armory_stat_thieving">Hırsızlık verimliliği</string>
     <string name="armory_stat_attack">Saldırı bonusu</string>
     <string name="armory_stat_strength">Güç bonusu</string>
     <string name="armory_stat_defense">Savunma bonusu</string>

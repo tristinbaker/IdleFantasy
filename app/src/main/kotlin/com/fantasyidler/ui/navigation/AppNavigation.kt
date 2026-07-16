@@ -54,6 +54,7 @@ import com.fantasyidler.ui.screen.OnboardingScreen
 import com.fantasyidler.ui.screen.ProfileScreen
 import com.fantasyidler.ui.screen.QuestsScreen
 import com.fantasyidler.ui.screen.SeasonalEventScreen
+import com.fantasyidler.ui.screen.HomeScreenSettingsScreen
 import com.fantasyidler.ui.screen.SettingsScreen
 import com.fantasyidler.ui.screen.ShopScreen
 import com.fantasyidler.ui.screen.SkillsScreen
@@ -219,8 +220,14 @@ fun AppNavigation(
             }
             composable(Screen.Settings.route) { entry ->
                 SettingsScreen(
-                    onBack           = { if (navController.currentBackStackEntry == entry) navController.popBackStack() },
-                    onReopenTutorial = { onboardingVm.reopen() },
+                    onBack                         = { if (navController.currentBackStackEntry == entry) navController.popBackStack() },
+                    onReopenTutorial               = { onboardingVm.reopen() },
+                    onNavigateToHomeScreenSettings = { navController.navigate(Screen.Settings.homeScreenRoute) },
+                )
+            }
+            composable(Screen.Settings.homeScreenRoute) { entry ->
+                HomeScreenSettingsScreen(
+                    onBack = { if (navController.currentBackStackEntry == entry) navController.popBackStack() },
                 )
             }
             composable(Screen.Shop.route) { entry ->

@@ -1512,4 +1512,21 @@
     <string name="prestige_confirm_message_mercantile">Your %1$s level will reset to 1, but you\'ll earn a permanent +%2$d%% XP bonus, plus an extra +%2$d%% coin return from trade routes.</string>
     <string name="bonus_session_shorter">%1$d min shorter sessions</string>
     <string name="bonus_coin_return">coin return</string>
+    <string name="settings_home_screen">Home Screen</string>
+    <string name="settings_home_screen_desc">Choose what appears on the home screen</string>
+    <string name="settings_stats_bar">Stats Bar</string>
+    <string name="settings_stats_bar_desc">Show Combat Level, Total Level, and Coins on the home screen</string>
+    <string name="settings_session_end_time">Session End Time</string>
+    <string name="settings_session_end_time_desc">Show the predicted completion clock time next to session and queue countdowns</string>
+    <string name="profile_stat_smithing">Smithing</string>
+    <string name="profile_stat_firemaking">Firemaking</string>
+    <string name="profile_stat_agility">Agility</string>
+    <string name="profile_stat_cooking">Cooking</string>
+    <string name="profile_stat_thieving">Thieving</string>
+    <string name="worker_session_assigned">Assigned: %1$s %2$s</string>
+    <string name="armory_stat_smithing">Smithing Efficiency</string>
+    <string name="armory_stat_firemaking">Firemaking Efficiency</string>
+    <string name="armory_stat_agility">Agility Efficiency</string>
+    <string name="armory_stat_cooking">Cooking Efficiency</string>
+    <string name="armory_stat_thieving">Thieving Efficiency</string>
 </resources>

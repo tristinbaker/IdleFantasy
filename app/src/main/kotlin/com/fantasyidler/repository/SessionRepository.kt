@@ -65,19 +65,21 @@ class SessionRepository @Inject constructor(
         backdateMs: Long = 0L,
         catalystKey: String? = null,
         catalystQty: Int = 0,
+        levelAtStart: Int = 0,
     ): SkillSession {
         val now = System.currentTimeMillis()
         val startedAt = now - backdateMs
         val session = SkillSession(
-            sessionId   = UUID.randomUUID().toString(),
-            skillName   = skillName,
-            startedAt   = startedAt,
-            endsAt      = startedAt + durationMs,
-            frames      = frames,
-            activityKey = activityKey,
-            completed   = insertAsCompleted,
-            catalystKey = catalystKey,
-            catalystQty = catalystQty,
+            sessionId    = UUID.randomUUID().toString(),
+            skillName    = skillName,
+            startedAt    = startedAt,
+            endsAt       = startedAt + durationMs,
+            frames       = frames,
+            activityKey  = activityKey,
+            completed    = insertAsCompleted,
+            catalystKey  = catalystKey,
+            catalystQty  = catalystQty,
+            levelAtStart = levelAtStart,
         )
         sessionDao.insert(session)
         if (!insertAsCompleted) {
@@ -95,6 +97,7 @@ class SessionRepository @Inject constructor(
         durationMs: Long,
         skillDisplayName: String,
         efficiencyMultiplier: Float,
+        levelAtStart: Int = 0,
     ): SkillSession {
         val now = System.currentTimeMillis()
         val session = SkillSession(
@@ -107,6 +110,7 @@ class SessionRepository @Inject constructor(
             isWorkerSession      = true,
             efficiencyMultiplier = efficiencyMultiplier,
             workerSlot           = workerSlot,
+            levelAtStart         = levelAtStart,
         )
         sessionDao.insert(session)
         scheduleAlarm(session.sessionId, session.endsAt, skillDisplayName)
@@ -158,6 +162,11 @@ class SessionRepository @Inject constructor(
                 }
                 try { starter.startNextQueued(backdateMs = catchUpMs.coerceAtLeast(0L)) } catch (_: Exception) {}
             }
+        } else if (session != null && session.completed) {
+            // The session already finished but the next queued item never started (e.g. a
+            // transient failure right after markCompleted above). Keep retrying every tick
+            // instead of leaving the queue stuck until the app is force-closed and reopened.
+            try { starter.startNextQueued() } catch (_: Exception) {}
         }
         if (workerStarter != null) {
             for (slot in 1..2) {

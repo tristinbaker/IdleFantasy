@@ -225,17 +225,10 @@ internal fun EquipSlotRow(
                     overflow   = TextOverflow.Ellipsis,
                 )
                 if (equipment != null) {
-                    val parts = buildList {
-                        if (equipment.attackBonus        != 0) add("+${equipment.attackBonus} ${context.getString(R.string.profile_stat_atk)}")
-                        if (equipment.strengthBonus      != 0) add("+${equipment.strengthBonus} ${context.getString(R.string.profile_stat_str)}")
-                        if (equipment.defenseBonus       != 0) add("+${equipment.defenseBonus} ${context.getString(R.string.profile_stat_def)}")
-                        (equipment.rangedAttackBonus ?: 0).takeIf { it != 0 }?.let { add("+$it ${context.getString(R.string.profile_stat_ranged)}") }
-                        (equipment.magicAttackBonus  ?: 0).takeIf { it != 0 }?.let { add("+$it ${context.getString(R.string.profile_stat_magic)}") }
-                        equipment.attackSpeed?.let { add("${"%.1f".format(it)}s ${context.getString(R.string.armory_stat_attack_speed)}") }
-                    }
-                    if (parts.isNotEmpty()) {
+                    val detail = buildEquipDetail(equipment, context, showReq = false)
+                    if (detail.isNotEmpty()) {
                         Text(
-                            text  = parts.joinToString("  "),
+                            text  = detail,
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                         )
@@ -367,6 +360,11 @@ internal fun buildEquipDetail(item: com.fantasyidler.data.json.EquipmentData, co
     item.woodcuttingEfficiency?.let { parts.add("${context.getString(R.string.profile_stat_wc)} ×${"%.2f".format(it)}") }
     item.fishingEfficiency?.let     { parts.add("${context.getString(R.string.profile_stat_fishing)} ×${"%.2f".format(it)}") }
     item.farmingEfficiency?.let     { parts.add("${context.getString(R.string.profile_stat_farming)} ${context.getString(R.string.farming_fertilizer_yield, (it * 100).toInt())}") }
+    item.smithingEfficiency?.let    { parts.add("${context.getString(R.string.profile_stat_smithing)} ×${"%.2f".format(it)}") }
+    item.firemakingEfficiency?.let  { parts.add("${context.getString(R.string.profile_stat_firemaking)} ×${"%.2f".format(it)}") }
+    item.agilityEfficiency?.let     { parts.add("${context.getString(R.string.profile_stat_agility)} ×${"%.2f".format(it)}") }
+    item.cookingEfficiency?.let     { parts.add("${context.getString(R.string.profile_stat_cooking)} ×${"%.2f".format(it)}") }
+    item.thievingEfficiency?.let    { parts.add("${context.getString(R.string.profile_stat_thieving)} ×${"%.2f".format(it)}") }
     if (parts.isEmpty()) {
         if (item.attackBonus   != 0) parts.add("${context.getString(R.string.profile_stat_atk)} +${item.attackBonus}")
         if (item.strengthBonus != 0) parts.add("${context.getString(R.string.profile_stat_str)} +${item.strengthBonus}")

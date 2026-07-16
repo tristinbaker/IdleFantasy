@@ -30,6 +30,7 @@ import com.fantasyidler.simulator.SkillSimulator
 import kotlin.math.roundToInt
 import com.fantasyidler.util.craftDurationEfficiency
 import com.fantasyidler.util.formatXp
+import com.fantasyidler.util.singleBatchItems
 import com.fantasyidler.util.toTitleCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -125,6 +126,8 @@ data class HomeUiState(
     val characterBeardStyle: Int = 0,
     val characterBeardColor: String = "a",
     val showCharacterViewer: Boolean = true,
+    val showStatsBar: Boolean = true,
+    val showSessionEndTime: Boolean = true,
     val equippedTitle: String? = null,
     /** Resolved, localized title name (e.g. "Master Smith"), or null if none equipped. */
     val titleName: String? = null,
@@ -165,6 +168,10 @@ data class HomeUiState(
     val workerSessionXpGain: Long = 0L,
     /** Total XP the second worker's active session will grant. */
     val workerSession2XpGain: Long = 0L,
+    /** Total items assigned to the first worker's active batch job (crafting-style sessions only). */
+    val workerSessionAssignedItems: Map<String, Int> = emptyMap(),
+    /** Total items assigned to the second worker's active batch job (crafting-style sessions only). */
+    val workerSession2AssignedItems: Map<String, Int> = emptyMap(),
 )
 
 @HiltViewModel
@@ -240,7 +247,7 @@ class HomeViewModel @Inject constructor(
             val agilityPrestige = flags.skillPrestige[Skills.AGILITY] ?: 0
             val sessionMs       = SkillSimulator.sessionDurationMs(agilityLevel, agilityPrestige)
             val perItemMs    = sessionMs / 60
-            val queueStart   = session?.endsAt ?: System.currentTimeMillis()
+            val queueStart   = session?.takeIf { !it.completed }?.endsAt ?: System.currentTimeMillis()
             // Recomputed live from current agility/gear rather than the frozen value stored at
             // queue time, so the countdown reacts to level-ups and tool swaps (issues #938, #940).
             // Boss fights alone use a fixed wall-clock duration unrelated to agility or gear.
@@ -307,6 +314,8 @@ class HomeViewModel @Inject constructor(
                 characterBeardStyle = flags.characterBeardStyle,
                 characterBeardColor = flags.characterBeardColor,
                 showCharacterViewer = flags.showCharacterViewer,
+                showStatsBar        = flags.showStatsBar,
+                showSessionEndTime  = flags.showSessionEndTime,
                 equippedTitle       = flags.equippedTitle,
                 titleName           = titleRepo.displayName(context, flags.equippedTitle, flags),
                 sessionQueue        = flags.sessionQueue,
@@ -337,6 +346,8 @@ class HomeViewModel @Inject constructor(
                 activeSessionXpGain        = activeSessionXpGain,
                 workerSessionXpGain        = workerSessionXpGain,
                 workerSession2XpGain       = workerSession2XpGain,
+                workerSessionAssignedItems  = workerSession?.singleBatchItems(json) ?: emptyMap(),
+                workerSession2AssignedItems = workerSession2?.singleBatchItems(json) ?: emptyMap(),
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), HomeUiState())
@@ -1449,59 +1460,24 @@ fun playerSessionMaterials(
 private fun reclaimChance(level: Int): Double = 0.25 + (level - 1) / 98.0 * 0.50
 
 /**
- * Minimum skill level required to start [activityKey] for [skillName], or null if this
- * activity type has no per-skill level gate (e.g. Prayer bone burning — always allowed).
- */
-fun requiredLevelForActivity(skillName: String, activityKey: String, gameData: GameDataRepository): Int? =
-    when (skillName) {
-        Skills.MINING       -> gameData.ores[activityKey]?.levelRequired
-        Skills.WOODCUTTING  -> gameData.trees[activityKey]?.levelRequired
-        Skills.FISHING      -> gameData.fish[activityKey]?.levelRequired
-        Skills.AGILITY      -> gameData.agilityCourses[activityKey]?.levelRequired
-        Skills.THIEVING     -> gameData.thievingNpcs[activityKey]?.levelRequired
-        Skills.FIREMAKING   -> gameData.logs[activityKey]?.levelRequired
-        Skills.RUNECRAFTING -> gameData.runes[activityKey]?.levelRequired
-        Skills.SMITHING     -> gameData.smithingRecipes[activityKey]?.levelRequired
-        Skills.COOKING      -> gameData.cookingRecipes[activityKey]?.levelRequired
-        Skills.FLETCHING    -> gameData.fletchingRecipes[activityKey]?.levelRequired
-        Skills.CRAFTING     -> gameData.craftingRecipes[activityKey]?.levelRequired
-        Skills.HERBLORE     -> gameData.herbloreRecipes[activityKey]?.levelRequired
-        Skills.CONSTRUCTION -> gameData.constructionRecipes[activityKey]?.levelRequired
-        Skills.MERCANTILE   -> gameData.tradeRoutes.firstOrNull { it.id == activityKey }?.levelRequired
-        else                -> null
-    }
-
-/**
- * True if [session]'s own skill still meets the activity's level requirement, given
- * [currentLevels] (read fresh at collect time). False means the skill's level dropped below
- * what it had when this session's rewards were pre-simulated — almost certainly via a
- * prestige — and the session must be voided instead of paid out.
+ * True if [session]'s relevant level (combat level for boss/combat/tower, the specific
+ * skill's level otherwise) hasn't dropped below what it was when the session started
+ * ([SkillSession.levelAtStart]). False means it dropped mid-session — almost certainly via
+ * a prestige — and the session must be voided instead of paid out. This is a regression
+ * check, not a difficulty/unlock gate: a session that was legitimately allowed to start
+ * (e.g. an under-levelled Tower floor pushed via gear) always stays eligible on its own.
  */
 fun isSkillSessionStillEligible(
     session: SkillSession,
     currentLevels: Map<String, Int>,
     gameData: GameDataRepository,
-): Boolean = when (session.skillName) {
-    "boss" -> {
-        val required = gameData.bosses[session.activityKey]?.combatLevelRequired
-        required == null || combatLevelFrom(currentLevels) >= required
+): Boolean {
+    val currentLevel = when (session.skillName) {
+        "boss", "combat", "tower" -> combatLevelFrom(currentLevels)
+        "expedition" -> gameData.skillingDungeons[session.activityKey]?.skill?.let { currentLevels[it] } ?: 1
+        else -> currentLevels[session.skillName] ?: 1
     }
-    "combat" -> {
-        val required = gameData.dungeons[session.activityKey]?.recommendedLevel
-        required == null || combatLevelFrom(currentLevels) >= required
-    }
-    "tower" -> {
-        val floor = session.activityKey.removePrefix("tower_floor_").toIntOrNull()
-        floor == null || combatLevelFrom(currentLevels) >= (floor * 2).coerceAtMost(200)
-    }
-    "expedition" -> {
-        val dungeonData = gameData.skillingDungeons[session.activityKey]
-        dungeonData == null || (currentLevels[dungeonData.skill] ?: 1) >= dungeonData.levelRequired
-    }
-    else -> {
-        val required = requiredLevelForActivity(session.skillName, session.activityKey, gameData)
-        required == null || (currentLevels[session.skillName] ?: 1) >= required
-    }
+    return currentLevel >= session.levelAtStart
 }
 
 /** Refunds whatever [session] consumed up front at start time (materials/catalyst/trade coin cost). */

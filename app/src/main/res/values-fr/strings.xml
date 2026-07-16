@@ -260,16 +260,22 @@
     <string name="settings_profile_layout_desc">Barre latérale ou onglets en haut</string>
     <string name="settings_profile_layout_rail">Barre</string>
     <string name="settings_profile_layout_tabs">Onglets</string>
+    <string name="settings_home_screen">Écran d\'Accueil</string>
+    <string name="settings_home_screen_desc">Choisir ce qui apparaît sur l\'écran d\'accueil</string>
     <string name="settings_recent_activity">Journal d’activité récente</string>
     <string name="settings_recent_activity_desc">Afficher le bouton Activité Récente dans l’en-tête de l’écran d’accueil</string>
     <string name="settings_journal_button">Bouton Journal</string>
-    <string name="settings_journal_button_desc">Afficher un bouton flottant Journal sur l\'écran d\'accueil pour noter des notes</string>
+    <string name="settings_journal_button_desc">Afficher un bouton Journal dans la barre supérieure de l\'écran d\'accueil pour noter des notes</string>
     <string name="settings_seasonal_events">Événements Saisonniers</string>
     <string name="settings_seasonal_events_desc">Afficher la bannière de l\'événement saisonnier actif sur l\'écran d\'accueil</string>
     <string name="settings_collapsible_town_grid">Grille de Ville Repliable</string>
     <string name="settings_collapsible_town_grid_desc">Afficher la section Ville (Boutique, Auberge, Guilde, etc.) sous forme de carte repliable sur l\'écran d\'accueil</string>
     <string name="settings_character_viewer">Aperçu du Personnage</string>
     <string name="settings_character_viewer_desc">Afficher le sprite de votre personnage sur l\'écran d\'accueil</string>
+    <string name="settings_stats_bar">Barre de Statistiques</string>
+    <string name="settings_stats_bar_desc">Afficher le Niveau de Combat, le Niveau Total et les Pièces sur l\'écran d\'accueil</string>
+    <string name="settings_session_end_time">Heure de Fin de Session</string>
+    <string name="settings_session_end_time_desc">Afficher l\'heure d\'achèvement prévue à côté des comptes à rebours de session et de file d\'attente</string>
     <string name="label_no_sessions_yet">Aucune session terminée pour l’instant.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -476,6 +482,11 @@
     <string name="profile_stat_wc">Tâches</string>
     <string name="profile_stat_fishing">Pêche</string>
     <string name="profile_stat_farming">Agriculture</string>
+    <string name="profile_stat_smithing">Forge</string>
+    <string name="profile_stat_firemaking">Allumage de feu</string>
+    <string name="profile_stat_agility">Agilité</string>
+    <string name="profile_stat_cooking">Cuisine</string>
+    <string name="profile_stat_thieving">Vol</string>
     <string name="profile_stat_def">Défense</string>
     <string name="profile_req_lv">Niv. requis</string>
 
@@ -739,6 +750,7 @@
     <string name="worker_session_active">Session de travail en cours</string>
     <string name="worker_session_complete">Session terminée</string>
     <string name="worker_manage_from_home">Collecter depuis l’écran d’accueil</string>
+    <string name="worker_session_assigned">Attribué : %1$s %2$s</string>
     <string name="worker_card_title">Ouvrier</string>
     <string name="worker_idle">Ouvrier au repos — les sessions en file d’attente démarrent automatiquement</string>
     <string name="worker_collect_btn">Collecter la session de l’ouvrier</string>
@@ -775,7 +787,7 @@
     <string name="guild_quest_desc_kill">Éliminez %1$d ennemis en combat %2$s.</string>
     <string name="guild_quest_desc_prayer">Enterrez %1$d os pour la %2$s.</string>
     <string name="guild_quest_desc_sessions">Terminez %1$d sessions d’%2$s pour la %3$s.</string>
-    <string name="guild_quest_desc_trade">Effectuez %1$d route(s) commerciale(s) pour la %2$s.</string>
+    <string name="guild_quest_desc_trade">Effectuez %1$d route(s) commerciale(s) %2$s pour la %3$s.</string>
     <string name="guild_quest_desc_earn_coins">Gagnez %1$s pièces via les routes commerciales pour la %2$s.</string>
     <string name="guild_quest_desc_pickpocket">Dérobez le %2$s %1$d fois pour le %3$s.</string>
     <string name="guild_combat_melee">mêlée</string>
@@ -1349,6 +1361,11 @@
     <string name="armory_stat_woodcutting">Efficacité bucheronage</string>
     <string name="armory_stat_fishing">Efficacité pêche</string>
     <string name="armory_stat_farming">Efficacité agriculture</string>
+    <string name="armory_stat_smithing">Efficacité forge</string>
+    <string name="armory_stat_firemaking">Efficacité allumage de feu</string>
+    <string name="armory_stat_agility">Efficacité agilité</string>
+    <string name="armory_stat_cooking">Efficacité cuisine</string>
+    <string name="armory_stat_thieving">Efficacité vol</string>
     <string name="armory_stat_attack">Attaque Bonus</string>
     <string name="armory_stat_strength">Force Bonus</string>
     <string name="armory_stat_defense">Défense Bonus</string>

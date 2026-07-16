@@ -85,7 +85,7 @@ private fun localizedQuestDesc(type: String, target: String, amount: Int, guild:
         "kill"       -> stringResource(R.string.guild_quest_desc_kill, amount, combatStyle)
         "prayer"     -> stringResource(R.string.guild_quest_desc_prayer, amount, guildName)
         "sessions"   -> stringResource(R.string.guild_quest_desc_sessions, amount, GameStrings.skillName(context, target), guildName)
-        "trade"      -> stringResource(R.string.guild_quest_desc_trade, amount, guildName)
+        "trade"      -> stringResource(R.string.guild_quest_desc_trade, amount, GameStrings.tradeRouteName(context, target), guildName)
         "earn_coins"  -> stringResource(R.string.guild_quest_desc_earn_coins, amount.toLong().formatCoins(), guildName)
         "pickpocket"  -> stringResource(R.string.guild_quest_desc_pickpocket, amount, GameStrings.thievingNpcName(context, target), guildName)
         else          -> ""

@@ -7,6 +7,7 @@ import android.provider.DocumentsContract
 import android.provider.Settings
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,6 +20,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -73,6 +75,7 @@ import kotlinx.coroutines.launch
 fun SettingsScreen(
     onBack: () -> Unit,
     onReopenTutorial: () -> Unit = {},
+    onNavigateToHomeScreenSettings: () -> Unit = {},
     viewModel: SettingsViewModel = hiltViewModel(),
 ) {
     val context = LocalContext.current
@@ -81,11 +84,6 @@ fun SettingsScreen(
 
     val themePreference        by viewModel.themePreference.collectAsState()
     val fontScale              by viewModel.fontScale.collectAsState()
-    val showRecentActivityLog  by viewModel.showRecentActivityLog.collectAsState()
-    val showJournalButton      by viewModel.showJournalButton.collectAsState()
-    val showSeasonalEvents     by viewModel.showSeasonalEvents.collectAsState()
-    val collapsibleTownGrid    by viewModel.collapsibleTownGrid.collectAsState()
-    val showCharacterViewer    by viewModel.showCharacterViewer.collectAsState()
     val profileLayout          by viewModel.profileLayout.collectAsState()
     val backupFolderUri  by viewModel.backupFolderUri.collectAsState()
     val backupFrequency  by viewModel.backupFrequency.collectAsState()
@@ -325,54 +323,9 @@ fun SettingsScreen(
             )
 
             SettingsRow(
-                title    = stringResource(R.string.settings_recent_activity),
-                subtitle = stringResource(R.string.settings_recent_activity_desc),
-                trailing = {
-                    Switch(
-                        checked         = showRecentActivityLog,
-                        onCheckedChange = { viewModel.setShowRecentActivityLog(it) },
-                    )
-                }
-            )
-            SettingsRow(
-                title    = stringResource(R.string.settings_journal_button),
-                subtitle = stringResource(R.string.settings_journal_button_desc),
-                trailing = {
-                    Switch(
-                        checked         = showJournalButton,
-                        onCheckedChange = { viewModel.setShowJournalButton(it) },
-                    )
-                }
-            )
-            SettingsRow(
-                title    = stringResource(R.string.settings_seasonal_events),
-                subtitle = stringResource(R.string.settings_seasonal_events_desc),
-                trailing = {
-                    Switch(
-                        checked         = showSeasonalEvents,
-                        onCheckedChange = { viewModel.setShowSeasonalEvents(it) },
-                    )
-                }
-            )
-            SettingsRow(
-                title    = stringResource(R.string.settings_collapsible_town_grid),
-                subtitle = stringResource(R.string.settings_collapsible_town_grid_desc),
-                trailing = {
-                    Switch(
-                        checked         = collapsibleTownGrid,
-                        onCheckedChange = { viewModel.setCollapsibleTownGrid(it) },
-                    )
-                }
-            )
-            SettingsRow(
-                title    = stringResource(R.string.settings_character_viewer),
-                subtitle = stringResource(R.string.settings_character_viewer_desc),
-                trailing = {
-                    Switch(
-                        checked         = showCharacterViewer,
-                        onCheckedChange = { viewModel.setShowCharacterViewer(it) },
-                    )
-                }
+                title    = stringResource(R.string.settings_home_screen),
+                subtitle = stringResource(R.string.settings_home_screen_desc),
+                onClick  = onNavigateToHomeScreenSettings,
             )
             SettingsRow(
                 title    = stringResource(R.string.settings_profile_layout),
@@ -751,13 +704,16 @@ private fun SectionHeader(title: String) {
 }
 
 @Composable
-private fun SettingsRow(
+internal fun SettingsRow(
     title: String,
     subtitle: String? = null,
+    onClick: (() -> Unit)? = null,
     trailing: @Composable (() -> Unit)? = null
 ) {
     Row(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .let { if (onClick != null) it.clickable(onClick = onClick) else it },
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
@@ -781,6 +737,12 @@ private fun SettingsRow(
         }
         if (trailing != null) {
             trailing()
+        } else if (onClick != null) {
+            Icon(
+                imageVector        = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                contentDescription = null,
+                tint               = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
         }
     }
 }

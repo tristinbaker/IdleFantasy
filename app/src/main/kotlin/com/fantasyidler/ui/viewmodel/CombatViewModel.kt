@@ -84,6 +84,8 @@ data class CombatUiState(
     val unlockedDungeons: List<String> = emptyList(),
     val skillPrestige: Map<String, Int> = emptyMap(),
     val towerBestFloor: Int = 0,
+    val showSessionEndTime: Boolean = true,
+    val bossKillCounts: Map<String, Int> = emptyMap(),
 )
 
 // ---------------------------------------------------------------------------
@@ -210,6 +212,8 @@ class CombatViewModel @Inject constructor(
                 selectedArrowKey        = if (extra.selectedArrowKey == null) flags.equippedArrows else extra.selectedArrowKey,
                 skillPrestige           = flags.skillPrestige,
                 towerBestFloor          = flags.towerBestFloor,
+                showSessionEndTime      = flags.showSessionEndTime,
+                bossKillCounts          = flags.enemyKills,
                 selectedSpell           = if (extra.selectedSpell == null) flags.activeSpell?.let { gameData.spells[it] } else extra.selectedSpell,
                 selectedPotionKey       = if (extra.selectedPotionKey == null) flags.activePotionKey?.takeIf { (inventory[it] ?: 0) > 0 } else extra.selectedPotionKey,
             )

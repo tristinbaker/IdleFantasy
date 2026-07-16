@@ -118,12 +118,16 @@ data class PlayerFlags(
     @SerialName("show_seasonal_events") val showSeasonalEvents: Boolean = true,
     /** Whether to show the character sprite viewer on the home screen. */
     @SerialName("show_character_viewer") val showCharacterViewer: Boolean = true,
+    /** Whether to show the stats bar (Combat Level, Total Level, Coins) on the home screen. */
+    @SerialName("show_stats_bar") val showStatsBar: Boolean = true,
     /** Whether the Town grid (Shop, Inn, Guild, etc.) on the home screen is shown as a collapsible card. */
     @SerialName("collapsible_town_grid") val collapsibleTownGrid: Boolean = true,
     /** Persisted expand/collapse state of the Town grid card, when collapsibleTownGrid is on. */
     @SerialName("town_grid_expanded") val townGridExpanded: Boolean = true,
     /** Profile screen layout: "rail" (sidebar) or "tabs" (horizontal tab bar). */
     @SerialName("profile_layout") val profileLayout: String = "rail",
+    /** Whether session/queue countdowns append the predicted wall-clock completion time. */
+    @SerialName("show_session_end_time") val showSessionEndTime: Boolean = true,
     /** Prestige level per skill: skill key → 0–3. */
     @SerialName("skill_prestige") val skillPrestige: Map<String, Int> = emptyMap(),
     /** Ash fertilizer per farming patch: patchNumber.toString() → ash item key. */

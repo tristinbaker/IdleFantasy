@@ -384,6 +384,7 @@ private fun SkillsTabContent(
                     }.takeIf { session.activityKey.isNotEmpty() },
                     endsAt        = session.endsAt,
                     completed     = session.completed,
+                    showEndTime   = state.showSessionEndTime,
                     onAbandon     = viewModel::abandonSession,
                     onDebugFinish = viewModel::debugFinishSession,
                 )
@@ -476,6 +477,7 @@ private fun ActiveSessionBanner(
     activityLabel: String?,
     endsAt: Long,
     completed: Boolean,
+    showEndTime: Boolean = true,
     onAbandon: () -> Unit,
     onDebugFinish: () -> Unit = {},
 ) {
@@ -520,7 +522,7 @@ private fun ActiveSessionBanner(
             Spacer(Modifier.height(8.dp))
             if (!completed) {
                 Text(
-                    text  = remember(now) { endsAt.toCountdown(context) },
+                    text  = remember(now, showEndTime) { endsAt.toCountdown(context, showEndTime) },
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onPrimaryContainer,
                 )

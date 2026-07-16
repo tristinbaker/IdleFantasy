@@ -16,12 +16,14 @@ import com.fantasyidler.repository.TownRepository
 import com.fantasyidler.simulator.XpTable
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -123,7 +125,8 @@ class FarmingViewModel @Inject constructor(
             magicBeanPlanted = flags.magicBeanPlanted,
             now              = now,
         )
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), FarmingUiState())
+    }.flowOn(Dispatchers.Default)
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), FarmingUiState())
 
     // ------------------------------------------------------------------
 
@@ -140,7 +143,7 @@ class FarmingViewModel @Inject constructor(
                 val invBefore = json.decodeFromString<Map<String, Int>>(playerBefore.inventory)
                 val xpBefore = json.decodeFromString<Map<String, Long>>(playerBefore.skillXp)[Skills.FARMING] ?: 0L
 
-                finishedPatches.forEach { farmingRepo.harvestPatch(it.patchNumber) }
+                farmingRepo.harvestPatches(finishedPatches.map { it.patchNumber })
 
                 val playerAfter = playerRepo.getOrCreatePlayer()
                 val invAfter = json.decodeFromString<Map<String, Int>>(playerAfter.inventory)

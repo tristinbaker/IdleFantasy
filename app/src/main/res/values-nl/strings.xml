@@ -275,16 +275,22 @@
     <string name="settings_profile_layout_desc">Zijbalk of bovenste tabbladen</string>
     <string name="settings_profile_layout_rail">Balk</string>
     <string name="settings_profile_layout_tabs">Tabbladen</string>
+    <string name="settings_home_screen">Startscherm</string>
+    <string name="settings_home_screen_desc">Kies wat er op het startscherm wordt weergegeven</string>
     <string name="settings_recent_activity">Logboek recente activiteit</string>
     <string name="settings_recent_activity_desc">Knop Recente activiteit weergeven in de koptekst van het startscherm</string>
     <string name="settings_journal_button">Dagboek-knop</string>
-    <string name="settings_journal_button_desc">Toon een zwevende Dagboek-knop op het startscherm om notities te maken</string>
+    <string name="settings_journal_button_desc">Toon een Dagboek-knop in de bovenste balk van het startscherm om notities te maken</string>
     <string name="settings_seasonal_events">Seizoensevenementen</string>
     <string name="settings_seasonal_events_desc">Toon de banner van het actieve seizoensevenement op het startscherm</string>
     <string name="settings_collapsible_town_grid">Inklapbaar Stadsraster</string>
     <string name="settings_collapsible_town_grid_desc">Toon de Stad-sectie (Winkel, Herberg, Gilde, enz.) als een inklapbare kaart op het startscherm</string>
     <string name="settings_character_viewer">Personage-weergave</string>
     <string name="settings_character_viewer_desc">Toon je personage-sprite op het startscherm</string>
+    <string name="settings_stats_bar">Statistiekenbalk</string>
+    <string name="settings_stats_bar_desc">Toon Gevechtsniveau, Totaalniveau en Munten op het startscherm</string>
+    <string name="settings_session_end_time">Sessie-eindtijd</string>
+    <string name="settings_session_end_time_desc">Toon de verwachte voltooiingstijd naast sessie- en wachtrij-aftelling</string>
     <string name="label_no_sessions_yet">Nog geen sessies voltooid.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -513,6 +519,11 @@
     <string name="profile_stat_wc">Houtbewerking</string>
     <string name="profile_stat_fishing">Vissen</string>
     <string name="profile_stat_farming">Landbouw</string>
+    <string name="profile_stat_smithing">Smeden</string>
+    <string name="profile_stat_firemaking">Vuur maken</string>
+    <string name="profile_stat_agility">Behendigheid</string>
+    <string name="profile_stat_cooking">Koken</string>
+    <string name="profile_stat_thieving">Stelen</string>
     <string name="profile_stat_def">Def</string>
     <string name="profile_req_lv">Lvl nodig</string>
 
@@ -701,6 +712,7 @@
     <string name="worker_session_active">Werknemersessie actief</string>
     <string name="worker_session_complete">Werknemersessie voltooid</string>
     <string name="worker_manage_from_home">Verzamel vanaf het startscherm</string>
+    <string name="worker_session_assigned">Toegewezen: %1$s %2$s</string>
     <string name="worker_card_title">Werknemer</string>
     <string name="worker_idle">Werknemer is inactief — geplande sessies starten automatisch</string>
     <string name="worker_collect_btn">Verzamel werknemersessie</string>
@@ -798,7 +810,7 @@
     <string name="guild_quest_desc_kill">Versla %1$d vijanden met %2$s gevecht.</string>
     <string name="guild_quest_desc_prayer">Begraaf %1$d botten voor het %2$s.</string>
     <string name="guild_quest_desc_sessions">Voltooi %1$d %2$s sessies voor het %3$s.</string>
-    <string name="guild_quest_desc_trade">Voltooi %1$d handelsroute(s) voor het %2$s.</string>
+    <string name="guild_quest_desc_trade">Voltooi %1$d %2$s-handelsroute(s) voor het %3$s.</string>
     <string name="guild_quest_desc_earn_coins">Verdien %1$s munten via handelsroutes voor het %2$s.</string>
     <string name="guild_quest_desc_pickpocket">Steek de %2$s %1$d keer zakken voor het %3$s.</string>
     <string name="guild_combat_melee">nabij</string>
@@ -1317,6 +1329,11 @@
     <string name="armory_stat_woodcutting">Houthak-efficiëntie</string>
     <string name="armory_stat_fishing">Visserij-efficiëntie</string>
     <string name="armory_stat_farming">Landbouw-efficiëntie</string>
+    <string name="armory_stat_smithing">Smeden-efficiëntie</string>
+    <string name="armory_stat_firemaking">Vuur maken-efficiëntie</string>
+    <string name="armory_stat_agility">Behendigheid-efficiëntie</string>
+    <string name="armory_stat_cooking">Koken-efficiëntie</string>
+    <string name="armory_stat_thieving">Stelen-efficiëntie</string>
     <string name="armory_stat_attack">Aanvalsbonus</string>
     <string name="armory_stat_strength">Krachtbonus</string>
     <string name="armory_stat_defense">Verdedigingsbonus</string>

@@ -62,4 +62,12 @@ data class SkillSession(
 
     @ColumnInfo(name = "catalyst_qty", defaultValue = "0")
     val catalystQty: Int = 0,
+
+    /**
+     * The player's combat level (for boss/combat/tower) or the relevant skill's level
+     * (otherwise) at the moment this session started. Compared against the current level
+     * at collect time to detect a mid-session prestige reset — not a difficulty/unlock gate.
+     */
+    @ColumnInfo(name = "level_at_start", defaultValue = "0")
+    val levelAtStart: Int = 0,
 )

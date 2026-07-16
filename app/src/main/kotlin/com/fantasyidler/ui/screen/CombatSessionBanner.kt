@@ -133,6 +133,7 @@ internal fun CombatSessionBanner(
     defenseBonus: Int,
     equippedFood: Map<String, Int>,
     foodHealValues: Map<String, Int>,
+    showEndTime: Boolean = true,
     onAbandon: () -> Unit,
     onDebugFinish: () -> Unit,
 ) {
@@ -242,7 +243,7 @@ internal fun CombatSessionBanner(
 
         if (!isDone) {
             Text(
-                text       = remember(now) { endsAt.toCountdown(context) },
+                text       = remember(now, showEndTime) { endsAt.toCountdown(context, showEndTime) },
                 style      = MaterialTheme.typography.displaySmall,
                 fontWeight = FontWeight.Bold,
                 color      = MaterialTheme.colorScheme.primary,

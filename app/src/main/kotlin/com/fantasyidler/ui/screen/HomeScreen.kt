@@ -84,9 +84,13 @@ import com.fantasyidler.data.model.HiredWorker
 import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.WorkerTier
+import com.fantasyidler.data.json.BlessingType
+import com.fantasyidler.repository.ChurchRepository
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.HomeViewModel
 import com.fantasyidler.ui.viewmodel.SessionSummary
+import com.fantasyidler.ui.viewmodel.combatLevelFrom
+import com.fantasyidler.ui.viewmodel.totalLevelFrom
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatCoins
 import com.fantasyidler.util.formatXp
@@ -585,6 +589,89 @@ fun HomeScreen(
                 }
             }
 
+            // ── Stats bar ───────────────────────────────────────────────
+            if (state.showStatsBar) {
+                val blessingActive = state.activeBlessingKey.isNotEmpty() && state.activeBlessingRemainingMs > 0
+                val boostActive = state.xpBoostRemainingMs > 0
+                Surface(
+                    shape    = RoundedCornerShape(16.dp),
+                    color    = MaterialTheme.colorScheme.surfaceVariant,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Column(Modifier.padding(horizontal = 16.dp, vertical = 10.dp)) {
+                        Row(
+                            modifier              = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment     = Alignment.CenterVertically,
+                        ) {
+                            StatInline(
+                                label = stringResource(R.string.label_combat_level),
+                                value = combatLevelFrom(state.skillLevels).toString(),
+                            )
+                            StatInline(
+                                label = stringResource(R.string.label_total_level),
+                                value = totalLevelFrom(state.skillLevels).toString(),
+                            )
+                            StatInline(
+                                label      = stringResource(R.string.label_coins),
+                                value      = state.coins.formatCoins(),
+                                valueColor = GoldPrimary,
+                            )
+                        }
+                        if (blessingActive) {
+                            val context = LocalContext.current
+                            val nameResId = context.resources.getIdentifier(
+                                "blessing_${state.activeBlessingKey}_name", "string", context.packageName,
+                            )
+                            val blessingName = if (nameResId != 0) stringResource(nameResId) else state.activeBlessingKey
+                            val blessingData = ChurchRepository.ALL_BLESSINGS.firstOrNull { it.key == state.activeBlessingKey }
+                            val boostDesc = blessingData?.let { b ->
+                                when (b.type) {
+                                    BlessingType.XP      -> "${b.magnitude}x XP"
+                                    BlessingType.DEFENSE -> "+${b.magnitude.toInt()} DEF"
+                                    BlessingType.COINS   -> "+${(b.magnitude * 100).toInt()}% coins"
+                                }
+                            }
+                            val timeLeft = state.activeBlessingRemainingMs.formatDurationMs()
+                            val blessingText = if (boostDesc != null) "$blessingName ($boostDesc) - $timeLeft"
+                                              else "$blessingName - $timeLeft"
+                            Spacer(Modifier.height(4.dp))
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Icon(
+                                    imageVector        = Icons.Filled.Star,
+                                    contentDescription = null,
+                                    tint               = GoldPrimary,
+                                    modifier           = Modifier.size(12.dp),
+                                )
+                                Spacer(Modifier.width(4.dp))
+                                Text(
+                                    text  = blessingText,
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = GoldPrimary,
+                                )
+                            }
+                        }
+                        if (boostActive) {
+                            Spacer(Modifier.height(4.dp))
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Icon(
+                                    imageVector        = Icons.Filled.Star,
+                                    contentDescription = null,
+                                    tint               = MaterialTheme.colorScheme.tertiary,
+                                    modifier           = Modifier.size(12.dp),
+                                )
+                                Spacer(Modifier.width(4.dp))
+                                Text(
+                                    text  = stringResource(R.string.home_xp_boost_active, state.xpBoostRemainingMs.formatDurationMs()),
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = MaterialTheme.colorScheme.tertiary,
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+
             // ── Town grid ───────────────────────────────────────────────
             val churchTint = if (state.activeBlessingKey.isNotEmpty() && state.activeBlessingRemainingMs > 0)
                 GoldPrimary else MaterialTheme.colorScheme.onSurfaceVariant
@@ -712,6 +799,7 @@ fun HomeScreen(
                     context        = context,
                     skillXp        = state.skillXp,
                     sessionXpGain  = state.activeSessionXpGain,
+                    showEndTime    = state.showSessionEndTime,
                     onRepeat       = viewModel::repeatActiveSession,
                     onAbandon      = viewModel::abandonSession,
                     onDebugFinish  = viewModel::debugFinishSession,
@@ -761,6 +849,7 @@ fun HomeScreen(
                     activeSessionSkill  = state.activeSession?.skillName ?: "",
                     activeSessionXpGain = state.activeSessionXpGain,
                     towerCurrentFloor   = state.towerCurrentFloor,
+                    showEndTime         = state.showSessionEndTime,
                     onRemove            = viewModel::removeFromQueue,
                     onMove              = viewModel::moveQueueItem,
                 )
@@ -785,6 +874,8 @@ fun HomeScreen(
                     context                  = context,
                     skillXp                  = state.skillXp,
                     sessionXpGain            = state.workerSessionXpGain,
+                    showEndTime              = state.showSessionEndTime,
+                    assignedItems            = state.workerSessionAssignedItems,
                     onCollect                = viewModel::collectWorkerSession,
                     onDismiss                = { viewModel.dismissWorker(1) },
                     onDebugFinish            = { viewModel.debugFinishWorkerSession(1) },
@@ -809,6 +900,8 @@ fun HomeScreen(
                     context                  = context,
                     skillXp                  = state.skillXp,
                     sessionXpGain            = state.workerSession2XpGain,
+                    showEndTime              = state.showSessionEndTime,
+                    assignedItems            = state.workerSession2AssignedItems,
                     onCollect                = viewModel::collectWorkerSession,
                     onDismiss                = { viewModel.dismissWorker(2) },
                     onDebugFinish            = { viewModel.debugFinishWorkerSession(2) },

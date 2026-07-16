@@ -275,16 +275,22 @@
     <string name="settings_profile_layout_desc">Seitenleiste oder obere Tabs</string>
     <string name="settings_profile_layout_rail">Leiste</string>
     <string name="settings_profile_layout_tabs">Tabs</string>
+    <string name="settings_home_screen">Startbildschirm</string>
+    <string name="settings_home_screen_desc">Wähle aus, was auf dem Startbildschirm angezeigt wird</string>
     <string name="settings_recent_activity">Protokoll der letzten Aktivitäten</string>
     <string name="settings_recent_activity_desc">Schaltfläche „Letzte Aktivität" in der Kopfzeile der Startseite anzeigen</string>
     <string name="settings_journal_button">Journal-Schaltfläche</string>
-    <string name="settings_journal_button_desc">Zeigt eine schwebende Journal-Schaltfläche auf der Startseite zum Notieren</string>
+    <string name="settings_journal_button_desc">Zeigt eine Journal-Schaltfläche in der oberen Leiste der Startseite zum Notieren an</string>
     <string name="settings_seasonal_events">Saisonale Events</string>
     <string name="settings_seasonal_events_desc">Zeigt das Banner des aktiven saisonalen Events auf der Startseite</string>
     <string name="settings_collapsible_town_grid">Einklappbares Stadtraster</string>
     <string name="settings_collapsible_town_grid_desc">Zeigt den Stadtbereich (Laden, Herberge, Gilde usw.) als einklappbare Karte auf der Startseite</string>
     <string name="settings_character_viewer">Charakteranzeige</string>
     <string name="settings_character_viewer_desc">Zeigt deine Charakterfigur auf der Startseite</string>
+    <string name="settings_stats_bar">Statistikleiste</string>
+    <string name="settings_stats_bar_desc">Zeigt Kampflevel, Gesamtlevel und Münzen auf der Startseite</string>
+    <string name="settings_session_end_time">Sitzungsendzeit</string>
+    <string name="settings_session_end_time_desc">Zeigt die voraussichtliche Uhrzeit des Abschlusses neben Sitzungs- und Warteschlangen-Countdowns</string>
     <string name="label_no_sessions_yet">Noch keine Aktivitäten abgeschlossen.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -508,6 +514,11 @@
     <string name="profile_stat_wc">Holzfällen</string>
     <string name="profile_stat_fishing">Angeln</string>
     <string name="profile_stat_farming">Landwirtschaft</string>
+    <string name="profile_stat_smithing">Schmieden</string>
+    <string name="profile_stat_firemaking">Feuermachen</string>
+    <string name="profile_stat_agility">Beweglichkeit</string>
+    <string name="profile_stat_cooking">Kochen</string>
+    <string name="profile_stat_thieving">Diebstahl</string>
     <string name="profile_stat_def">VER</string>
     <string name="profile_req_lv">Benötigt Level </string>
 
@@ -662,6 +673,7 @@
     <string name="worker_session_active">Arbeiter führt Aktivität aus</string>
     <string name="worker_session_complete">Arbeiter hat Aktivität abgeschlossen</string>
     <string name="worker_manage_from_home">Vom Startbildschirm einsammeln</string>
+    <string name="worker_session_assigned">Zugewiesen: %1$s %2$s</string>
     <string name="worker_card_title">Arbeiter</string>
     <string name="worker_idle">Arbeiter hat nichts zu tun — eingereihte Aktivitäten beginnen automatisch</string>
     <string name="worker_collect_btn">Verdienste des Arbeiters einsammeln</string>
@@ -757,7 +769,7 @@
     <string name="guild_quest_desc_kill">Besiegt %1$d Feinde im %2$s-Kampf.</string>
     <string name="guild_quest_desc_prayer">Vergrabt %1$d Knochen für die %2$s.</string>
     <string name="guild_quest_desc_sessions">Schließt %1$d %2$s-Aktivitäten für die %3$s ab.</string>
-    <string name="guild_quest_desc_trade">Schließt %1$d Handelsroute(n) für die %2$s ab.</string>
+    <string name="guild_quest_desc_trade">Schließt %1$d %2$s-Handelsrouten für die %3$s ab.</string>
     <string name="guild_quest_desc_earn_coins">Verdient %1$s Münzen über Handelsrouten für die %2$s.</string>
     <string name="guild_quest_desc_pickpocket">Bestehlt den %2$s %1$d Mal für die %3$s.</string>
     <string name="guild_combat_melee">Nahkampf</string>
@@ -1325,6 +1337,11 @@
     <string name="armory_stat_woodcutting">Holzfällerei-Effizienz</string>
     <string name="armory_stat_fishing">Angel-Effizienz</string>
     <string name="armory_stat_farming">Landwirtschafts-Effizienz</string>
+    <string name="armory_stat_smithing">Schmiede-Effizienz</string>
+    <string name="armory_stat_firemaking">Feuermachen-Effizienz</string>
+    <string name="armory_stat_agility">Beweglichkeits-Effizienz</string>
+    <string name="armory_stat_cooking">Koch-Effizienz</string>
+    <string name="armory_stat_thieving">Diebstahl-Effizienz</string>
     <string name="armory_stat_attack">Angriffsbonus</string>
     <string name="armory_stat_strength">Stärkebonus</string>
     <string name="armory_stat_defense">Verteidigungsbonus</string>

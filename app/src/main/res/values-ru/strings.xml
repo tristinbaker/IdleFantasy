@@ -289,16 +289,22 @@
     <string name="settings_profile_layout_desc">Боковая панель или верхние вкладки</string>
     <string name="settings_profile_layout_rail">Панель</string>
     <string name="settings_profile_layout_tabs">Вкладки</string>
+    <string name="settings_home_screen">Главный экран</string>
+    <string name="settings_home_screen_desc">Выберите, что отображается на главном экране</string>
     <string name="settings_recent_activity">Журнал последней активности</string>
     <string name="settings_recent_activity_desc">Показывать кнопку «Последняя активность» на главном экране</string>
     <string name="settings_journal_button">Кнопка журнала</string>
-    <string name="settings_journal_button_desc">Показывать плавающую кнопку журнала на главном экране для заметок</string>
+    <string name="settings_journal_button_desc">Показывать кнопку журнала в верхней панели главного экрана для заметок</string>
     <string name="settings_seasonal_events">Сезонные события</string>
     <string name="settings_seasonal_events_desc">Показывать баннер активного сезонного события на главном экране</string>
     <string name="settings_collapsible_town_grid">Сворачиваемая сетка города</string>
     <string name="settings_collapsible_town_grid_desc">Показывать раздел Города (Магазин, Таверна, Гильдия и т.д.) в виде сворачиваемой карточки на главном экране</string>
     <string name="settings_character_viewer">Просмотр персонажа</string>
     <string name="settings_character_viewer_desc">Показывать спрайт вашего персонажа на главном экране</string>
+    <string name="settings_stats_bar">Панель статистики</string>
+    <string name="settings_stats_bar_desc">Показывать боевой уровень, общий уровень и монеты на главном экране</string>
+    <string name="settings_session_end_time">Время завершения сессии</string>
+    <string name="settings_session_end_time_desc">Показывать предполагаемое время завершения рядом с таймерами сессии и очереди</string>
     <string name="label_no_sessions_yet">Сессий ещё не завершено.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -526,6 +532,11 @@
     <string name="profile_stat_wc">Рубка</string>
     <string name="profile_stat_fishing">Рыбалка</string>
     <string name="profile_stat_farming">Фермерство</string>
+    <string name="profile_stat_smithing">Кузнечное дело</string>
+    <string name="profile_stat_firemaking">Разведение костров</string>
+    <string name="profile_stat_agility">Ловкость</string>
+    <string name="profile_stat_cooking">Кулинария</string>
+    <string name="profile_stat_thieving">Воровство</string>
     <string name="profile_stat_def">Защ</string>
     <string name="profile_req_lv">Треб. ур.</string>
 
@@ -713,6 +724,7 @@
     <string name="worker_session_active">Сессия работника активна</string>
     <string name="worker_session_complete">Сессия работника завершена</string>
     <string name="worker_manage_from_home">Заберите на главном экране</string>
+    <string name="worker_session_assigned">Назначено: %1$s %2$s</string>
     <string name="worker_card_title">Работник</string>
     <string name="worker_idle">Работник свободен — сессии в очереди начнутся автоматически</string>
     <string name="worker_collect_btn">Забрать сессию работника</string>
@@ -814,7 +826,7 @@
     <string name="guild_quest_desc_kill">Победить %1$d врагов в ближнем бою (%2$s).</string>
     <string name="guild_quest_desc_prayer">Захоронить %1$d костей для %2$s.</string>
     <string name="guild_quest_desc_sessions">Завершить %1$d сессий %2$s для %3$s.</string>
-    <string name="guild_quest_desc_trade">Завершить %1$d торговых маршрутов для %2$s.</string>
+    <string name="guild_quest_desc_trade">Завершить %1$d торговых маршрутов %2$s для %3$s.</string>
     <string name="guild_quest_desc_earn_coins">Заработать %1$s монет через торговые маршруты для %2$s.</string>
     <string name="guild_quest_desc_pickpocket">Обкрадите %2$s %1$d раз для %3$s.</string>
     <string name="guild_combat_melee">ближний бой</string>
@@ -1385,6 +1397,11 @@
     <string name="armory_stat_woodcutting">Эффективность лесозаготовки</string>
     <string name="armory_stat_fishing">Эффективность рыбалки</string>
     <string name="armory_stat_farming">Эффективность фермерства</string>
+    <string name="armory_stat_smithing">Эффективность кузнечного дела</string>
+    <string name="armory_stat_firemaking">Эффективность разведения костров</string>
+    <string name="armory_stat_agility">Эффективность ловкости</string>
+    <string name="armory_stat_cooking">Эффективность кулинарии</string>
+    <string name="armory_stat_thieving">Эффективность воровства</string>
     <string name="armory_stat_attack">Бонус атаки</string>
     <string name="armory_stat_strength">Бонус силы</string>
     <string name="armory_stat_defense">Бонус защиты</string>

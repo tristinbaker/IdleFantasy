@@ -192,7 +192,11 @@ fun WorkerSkillsScreen(
             // Active worker session banner
             state.currentSession?.let { session ->
                 item {
-                    WorkerActiveSessionBanner(session = session)
+                    WorkerActiveSessionBanner(
+                        session       = session,
+                        showEndTime   = state.showSessionEndTime,
+                        assignedItems = state.currentSessionAssignedItems,
+                    )
                 }
             }
 
@@ -375,6 +379,8 @@ fun WorkerSkillsScreen(
 @Composable
 private fun WorkerActiveSessionBanner(
     session: com.fantasyidler.data.model.SkillSession,
+    showEndTime: Boolean = true,
+    assignedItems: Map<String, Int> = emptyMap(),
 ) {
     val context = LocalContext.current
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
@@ -422,9 +428,21 @@ private fun WorkerActiveSessionBanner(
             if (!isDone) {
                 Spacer(Modifier.height(4.dp))
                 Text(
-                    text  = remember(now) { endsAt.toCountdown(context) },
+                    text  = remember(now, showEndTime) { endsAt.toCountdown(context, showEndTime) },
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSecondaryContainer,
+                )
+            }
+            if (assignedItems.isNotEmpty()) {
+                val assignedTemplate = stringResource(R.string.worker_session_assigned)
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text  = assignedItems.entries.joinToString("  ") { (key, qty) ->
+                        assignedTemplate.format("%,d".format(qty), GameStrings.itemName(context, key))
+                    },
+                    style = MaterialTheme.typography.bodySmall,
+                    color = if (isDone) MaterialTheme.colorScheme.onPrimaryContainer
+                            else MaterialTheme.colorScheme.onSecondaryContainer,
                 )
             }
             Spacer(Modifier.height(4.dp))

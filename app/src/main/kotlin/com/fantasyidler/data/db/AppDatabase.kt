@@ -28,6 +28,12 @@ val MIGRATION_3_4 = object : Migration(3, 4) {
     }
 }
 
+val MIGRATION_4_5 = object : Migration(4, 5) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL("ALTER TABLE skill_sessions ADD COLUMN level_at_start INTEGER NOT NULL DEFAULT 0")
+    }
+}
+
 @Database(
     entities = [
         Player::class,
@@ -37,7 +43,7 @@ val MIGRATION_3_4 = object : Migration(3, 4) {
         GlobalState::class,
         ArenaRecord::class,
     ],
-    version = 4,
+    version = 5,
     exportSchema = true,
 )
 abstract class AppDatabase : RoomDatabase() {

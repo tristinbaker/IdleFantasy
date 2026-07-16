@@ -10,6 +10,7 @@ import com.fantasyidler.simulator.CombatSimulator
 import com.fantasyidler.simulator.SkillSimulator
 import com.fantasyidler.simulator.ThievingSimulator
 import com.fantasyidler.simulator.XpTable
+import com.fantasyidler.ui.viewmodel.combatLevelFrom
 import com.fantasyidler.util.toolEfficiency
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -64,6 +65,10 @@ class WorkerQueuedSessionStarter @Inject constructor(
         val worker = (if (slot == 2) flags.hiredWorker2 else flags.hiredWorker) ?: return
         val tier = worker.tier
         val agilityLevel = levels[Skills.AGILITY] ?: 1
+        val levelAtStart = when (action.skillName) {
+            "boss", "combat" -> combatLevelFrom(levels)
+            else -> levels[action.skillName] ?: 1
+        }
 
         val isGathering = action.skillName in GATHERING_SKILLS
         val efficiencyMultiplier = if (isGathering) tier.combinedGatheringMultiplier else 1.0f
@@ -85,7 +90,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                     petDropKey     = null,
                     petDropChance  = 0.0,
                 )
-                startSession(slot, action, result.frames, durationMs, efficiencyMultiplier)
+                startSession(slot, action, result.frames, durationMs, efficiencyMultiplier, levelAtStart)
             }
             Skills.WOODCUTTING -> {
                 val treeKey  = action.activityKey
@@ -99,7 +104,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                     petDropKey     = null,
                     petDropChance  = 0.0,
                 )
-                startSession(slot, action, result.frames, durationMs, efficiencyMultiplier)
+                startSession(slot, action, result.frames, durationMs, efficiencyMultiplier, levelAtStart)
             }
             Skills.FISHING -> {
                 val fishKey  = action.activityKey
@@ -114,7 +119,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                     petDropKey     = null,
                     petDropChance  = 0.0,
                 )
-                startSession(slot, action, result.frames, durationMs, efficiencyMultiplier)
+                startSession(slot, action, result.frames, durationMs, efficiencyMultiplier, levelAtStart)
             }
             Skills.AGILITY -> {
                 val courseKey  = action.activityKey
@@ -126,7 +131,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                     petBoostPct    = 0,
                     toolEfficiency = gameData.toolEfficiency(equipped[EquipSlot.GRAPPLING_HOOK], EquipSlot.GRAPPLING_HOOK, courseData.levelRequired),
                 )
-                startSession(slot, action, result.frames, durationMs, efficiencyMultiplier)
+                startSession(slot, action, result.frames, durationMs, efficiencyMultiplier, levelAtStart)
             }
             Skills.FIREMAKING -> {
                 val logKey  = action.activityKey
@@ -135,7 +140,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                 val ashKey  = ashForLog(logKey)
                 val frames  = buildCraftFrames(xpMap[Skills.FIREMAKING] ?: 0L, qty, logData.xpPerLog.toDouble(), 1, ashKey,
                     efficiency = gameData.toolEfficiency(equipped[EquipSlot.TINDERBOX], EquipSlot.TINDERBOX, logData.levelRequired))
-                startSession(slot, action, frames, durationMs, efficiencyMultiplier)
+                startSession(slot, action, frames, durationMs, efficiencyMultiplier, levelAtStart)
             }
             Skills.RUNECRAFTING -> {
                 val runeKey  = action.activityKey
@@ -159,7 +164,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                     leveledUp   = XpTable.levelForXp(xpAfter) > level,
                     kills       = qty,
                 ))
-                startSession(slot, action, frames, durationMs, efficiencyMultiplier)
+                startSession(slot, action, frames, durationMs, efficiencyMultiplier, levelAtStart)
             }
             Skills.PRAYER -> {
                 val boneKey     = action.activityKey
@@ -178,33 +183,33 @@ class WorkerQueuedSessionStarter @Inject constructor(
                     leveledUp   = XpTable.levelForXp(xpAfter) > XpTable.levelForXp(startXp),
                     kills       = qty,
                 ))
-                startSession(slot, action, frames, durationMs, efficiencyMultiplier)
+                startSession(slot, action, frames, durationMs, efficiencyMultiplier, levelAtStart)
             }
             Skills.SMITHING -> {
                 val r   = gameData.smithingRecipes[action.activityKey] ?: return
                 val qty = action.qty.takeIf { it > 0 } ?: return
                 val frames = buildCraftFrames(xpMap[Skills.SMITHING] ?: 0L, qty, r.xpPerItem, r.outputQuantity, action.activityKey,
                     efficiency = gameData.toolEfficiency(equipped[EquipSlot.HAMMER], EquipSlot.HAMMER, r.levelRequired))
-                startSession(slot, action, frames, durationMs, efficiencyMultiplier)
+                startSession(slot, action, frames, durationMs, efficiencyMultiplier, levelAtStart)
             }
             Skills.COOKING -> {
                 val r: CookingRecipe = gameData.cookingRecipes[action.activityKey] ?: return
                 val qty = action.qty.takeIf { it > 0 } ?: return
                 val frames = buildCraftFrames(xpMap[Skills.COOKING] ?: 0L, qty, r.xpPerItem, 1, r.cookedItem,
                     efficiency = gameData.toolEfficiency(equipped[EquipSlot.FRYING_PAN], EquipSlot.FRYING_PAN, r.levelRequired))
-                startSession(slot, action, frames, durationMs, efficiencyMultiplier)
+                startSession(slot, action, frames, durationMs, efficiencyMultiplier, levelAtStart)
             }
             Skills.FLETCHING -> {
                 val r   = gameData.fletchingRecipes[action.activityKey] ?: return
                 val qty = action.qty.takeIf { it > 0 } ?: return
                 val frames = buildCraftFrames(xpMap[Skills.FLETCHING] ?: 0L, qty, r.xpPerItem, r.outputQuantity, r.itemName)
-                startSession(slot, action, frames, durationMs, efficiencyMultiplier)
+                startSession(slot, action, frames, durationMs, efficiencyMultiplier, levelAtStart)
             }
             Skills.CRAFTING -> {
                 val r   = gameData.craftingRecipes[action.activityKey] ?: return
                 val qty = action.qty.takeIf { it > 0 } ?: return
                 val frames = buildCraftFrames(xpMap[Skills.CRAFTING] ?: 0L, qty, r.xpPerItem, r.outputQuantity, action.activityKey)
-                startSession(slot, action, frames, durationMs, efficiencyMultiplier)
+                startSession(slot, action, frames, durationMs, efficiencyMultiplier, levelAtStart)
             }
             Skills.HERBLORE -> {
                 val r           = gameData.herbloreRecipes[action.activityKey] ?: return
@@ -213,13 +218,13 @@ class WorkerQueuedSessionStarter @Inject constructor(
                 val outputKey   = if (catalystKey != null) "enhanced_${action.activityKey}" else action.activityKey
                 if (catalystKey != null) playerRepo.consumeItemsUnlocked(mapOf(catalystKey to qty))
                 val frames = buildCraftFrames(xpMap[Skills.HERBLORE] ?: 0L, qty, r.xpPerItem, r.outputQuantity, outputKey)
-                startSession(slot, action, frames, durationMs, efficiencyMultiplier)
+                startSession(slot, action, frames, durationMs, efficiencyMultiplier, levelAtStart)
             }
             Skills.CONSTRUCTION -> {
                 val r   = gameData.constructionRecipes[action.activityKey] ?: return
                 val qty = action.qty.takeIf { it > 0 } ?: return
                 val frames = buildCraftFrames(xpMap[Skills.CONSTRUCTION] ?: 0L, qty, r.xpPerItem, r.outputQuantity, action.activityKey)
-                startSession(slot, action, frames, durationMs, efficiencyMultiplier)
+                startSession(slot, action, frames, durationMs, efficiencyMultiplier, levelAtStart)
             }
             Skills.THIEVING -> {
                 val npcKey  = action.activityKey
@@ -232,7 +237,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                     agilityLevel   = agilityLevel,
                     toolEfficiency = gameData.toolEfficiency(equipped[EquipSlot.LOCKPICK], EquipSlot.LOCKPICK, npc.levelRequired),
                 )
-                startSession(slot, action, result.frames, durationMs, efficiencyMultiplier)
+                startSession(slot, action, result.frames, durationMs, efficiencyMultiplier, levelAtStart)
             }
             "boss" -> {
                 val bossKey = action.activityKey
@@ -283,7 +288,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                     blessingDefBonus   = ChurchRepository.defBonus(flags),
                     attackSpeedSec     = bossWeapon?.attackSpeed ?: CombatSimulator.BASE_ATTACK_SPEED_SEC,
                 )
-                startSession(slot, action, bossFrames, durationMs, efficiencyMultiplier)
+                startSession(slot, action, bossFrames, durationMs, efficiencyMultiplier, levelAtStart)
             }
             "combat" -> {
                 val dungeonKey = action.activityKey
@@ -339,7 +344,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                     availableArrows     = availableArrows,
                     attackSpeedSec      = weapon?.attackSpeed ?: CombatSimulator.BASE_ATTACK_SPEED_SEC,
                 )
-                startSession(slot, action, result.frames, durationMs, efficiencyMultiplier)
+                startSession(slot, action, result.frames, durationMs, efficiencyMultiplier, levelAtStart)
             }
         }
     }
@@ -350,6 +355,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
         frames: List<SessionFrame>,
         durationMs: Long,
         efficiencyMultiplier: Float,
+        levelAtStart: Int = 0,
     ) {
         sessionRepo.startWorkerSession(
             workerSlot           = slot,
@@ -359,6 +365,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
             durationMs           = durationMs,
             skillDisplayName     = action.skillDisplayName,
             efficiencyMultiplier = efficiencyMultiplier,
+            levelAtStart         = levelAtStart,
         )
     }
 

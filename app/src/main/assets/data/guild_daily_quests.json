@@ -3276,8 +3276,8 @@
   {
     "id": "herblore_daily_4d",
     "guild": "herblore",
-    "guild_level_min": 4,
-    "guild_level_max": 6,
+    "guild_level_min": 7,
+    "guild_level_max": 8,
     "name": "Super Ranging",
     "type": "craft",
     "target": "super_ranging_potion",
@@ -3296,8 +3296,8 @@
   {
     "id": "herblore_daily_4e",
     "guild": "herblore",
-    "guild_level_min": 4,
-    "guild_level_max": 6,
+    "guild_level_min": 7,
+    "guild_level_max": 8,
     "name": "Super Magic",
     "type": "craft",
     "target": "super_magic_potion",
@@ -3316,7 +3316,7 @@
   {
     "id": "herblore_daily_7a",
     "guild": "herblore",
-    "guild_level_min": 7,
+    "guild_level_min": 9,
     "guild_level_max": 10,
     "name": "Overload Batch",
     "type": "craft",
@@ -3337,7 +3337,7 @@
   {
     "id": "herblore_daily_7b",
     "guild": "herblore",
-    "guild_level_min": 7,
+    "guild_level_min": 9,
     "guild_level_max": 10,
     "name": "Overload Reserve",
     "type": "craft",
@@ -3358,7 +3358,7 @@
   {
     "id": "herblore_daily_7c",
     "guild": "herblore",
-    "guild_level_min": 7,
+    "guild_level_min": 9,
     "guild_level_max": 10,
     "name": "Grand Stockpile",
     "type": "craft",

@@ -457,6 +457,7 @@ class GuildRepository @Inject constructor(
         val thievingLevel  = skillLevels["thieving"]  ?: 1
         val fletchingLevel = skillLevels["fletching"] ?: 1
         val smithingLevel  = skillLevels["smithing"]  ?: 1
+        val herbloreLevel  = skillLevels["herblore"]  ?: 1
 
         for (guild in ALL_GUILDS) {
             if (!isGuildUnlocked(guild, completedQuestIds)) continue
@@ -482,6 +483,10 @@ class GuildRepository @Inject constructor(
                                 val tipsLevel = gameData.smithingRecipes[tipsKey]?.levelRequired ?: 1
                                 smithingLevel >= tipsLevel
                             } else true
+                        }
+                        template.guild == "herblore" && template.type == "craft" -> {
+                            val recipeLevel = gameData.herbloreRecipes[template.target]?.levelRequired ?: 1
+                            herbloreLevel >= recipeLevel
                         }
                         else -> true
                     }
@@ -562,6 +567,7 @@ class GuildRepository @Inject constructor(
         val thievingLevel  = skillLevels["thieving"]  ?: 1
         val fletchingLevel = skillLevels["fletching"] ?: 1
         val smithingLevel  = skillLevels["smithing"]  ?: 1
+        val herbloreLevel  = skillLevels["herblore"]  ?: 1
         val newIds = mutableListOf<String>()
         for (guild in ALL_GUILDS) {
             if (guild in guildsWithDailies) continue
@@ -587,6 +593,10 @@ class GuildRepository @Inject constructor(
                                 val tipsLevel = gameData.smithingRecipes[tipsKey]?.levelRequired ?: 1
                                 smithingLevel >= tipsLevel
                             } else true
+                        }
+                        template.guild == "herblore" && template.type == "craft" -> {
+                            val recipeLevel = gameData.herbloreRecipes[template.target]?.levelRequired ?: 1
+                            herbloreLevel >= recipeLevel
                         }
                         else -> true
                     }

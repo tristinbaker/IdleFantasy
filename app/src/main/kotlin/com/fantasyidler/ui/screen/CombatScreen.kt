@@ -213,6 +213,7 @@ fun CombatScreen(
                             defenseBonus   = state.totalDefenseBonus,
                             equippedFood   = state.equippedFood,
                             foodHealValues = viewModel.foodHealValues,
+                            showEndTime    = state.showSessionEndTime,
                             onAbandon      = viewModel::abandonSession,
                             onDebugFinish  = viewModel::debugFinishSession,
                         )
@@ -225,6 +226,7 @@ fun CombatScreen(
                             dungeonLastRunStats = state.dungeonLastRunStats,
                             unlockedDungeons    = state.unlockedDungeons,
                             towerBestFloor      = state.towerBestFloor,
+                            bossKillCounts      = state.bossKillCounts,
                             onDungeon           = viewModel::selectDungeon,
                             onBoss              = viewModel::selectBoss,
                             onTower             = onNavigateToTower,
@@ -287,6 +289,7 @@ fun CombatScreen(
                             dungeonLastRunStats = state.dungeonLastRunStats,
                             unlockedDungeons    = state.unlockedDungeons,
                             towerBestFloor      = state.towerBestFloor,
+                            bossKillCounts      = state.bossKillCounts,
                             onDungeon           = viewModel::selectDungeon,
                             onBoss              = viewModel::selectBoss,
                             onTower             = onNavigateToTower,
@@ -438,6 +441,7 @@ private fun CombatSelectionList(
     dungeonLastRunStats: Map<String, com.fantasyidler.data.model.DungeonRunStats> = emptyMap(),
     unlockedDungeons: List<String> = emptyList(),
     towerBestFloor: Int = 0,
+    bossKillCounts: Map<String, Int> = emptyMap(),
     modifier: Modifier = Modifier,
     onDungeon: (DungeonData) -> Unit,
     onBoss: (BossData) -> Unit,
@@ -470,6 +474,7 @@ private fun CombatSelectionList(
             BossRow(
                 boss     = boss,
                 unlocked = combatLvl >= boss.combatLevelRequired,
+                runCount = bossKillCounts[boss.id] ?: 0,
                 onTap    = { onBoss(boss) },
             )
         }
@@ -785,6 +790,7 @@ private fun CombatSectionHeader(title: String) {
 private fun BossRow(
     boss: BossData,
     unlocked: Boolean,
+    runCount: Int = 0,
     onTap: () -> Unit,
 ) {
     val context  = LocalContext.current
@@ -821,6 +827,13 @@ private fun BossRow(
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
+            if (runCount > 0) {
+                Text(
+                    text  = stringResource(R.string.combat_dungeon_runs, runCount),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = if (unlocked) MaterialTheme.colorScheme.onSurfaceVariant else dimColor,
+                )
+            }
         }
         Spacer(Modifier.width(12.dp))
         Text(

@@ -20,6 +20,7 @@ import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.SessionRepository
 import com.fantasyidler.repository.WorkerQueuedSessionStarter
 import com.fantasyidler.simulator.SkillSimulator
+import com.fantasyidler.util.singleBatchItems
 import com.fantasyidler.util.toolEfficiency
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -61,10 +62,15 @@ data class WorkerSkillsUiState(
     val selectedRecipe: CraftableRecipe? = null,
     val craftQuantity: Int = 1,
     val herbloreAshKey: String? = null,
+    val showSessionEndTime: Boolean = true,
+    /** Total items this session is assigned to produce (from its single pre-simulated batch frame), keyed by item. */
+    val sessionAssignedItems: Map<String, Int> = emptyMap(),
+    val sessionAssignedItems2: Map<String, Int> = emptyMap(),
 ) {
     val currentSession: SkillSession? get() = if (selectedSlot == 2) activeSession2 else activeSession
     val currentWorker: HiredWorker? get() = if (selectedSlot == 2) hiredWorker2 else hiredWorker
     val currentQueue: List<QueuedAction> get() = if (selectedSlot == 2) workerQueue2 else workerQueue
+    val currentSessionAssignedItems: Map<String, Int> get() = if (selectedSlot == 2) sessionAssignedItems2 else sessionAssignedItems
     val workerQueueFull: Boolean get() = currentSession != null && !currentSession!!.completed
 
     fun maxCraftable(recipe: CraftableRecipe): Int {
@@ -124,6 +130,9 @@ class WorkerSkillsViewModel @Inject constructor(
                 gatheringDurationMs   = tierDurationMs,
                 maxCraftQty           = currentWorker?.tier?.maxCraftQty ?: Int.MAX_VALUE,
                 inventory             = inv,
+                showSessionEndTime    = flags.showSessionEndTime,
+                sessionAssignedItems  = sessionAssignedItems(workerData.s1),
+                sessionAssignedItems2 = sessionAssignedItems(workerData.s2),
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), WorkerSkillsUiState())
@@ -131,6 +140,9 @@ class WorkerSkillsViewModel @Inject constructor(
     fun setSelectedSlot(slot: Int) {
         _uiState.update { it.copy(selectedSlot = slot) }
     }
+
+    private fun sessionAssignedItems(session: SkillSession?): Map<String, Int> =
+        session?.singleBatchItems(json) ?: emptyMap()
 
     // ------------------------------------------------------------------
     // Recipe lists (mirrors CraftingViewModel, lazy)

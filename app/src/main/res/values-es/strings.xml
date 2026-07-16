@@ -258,16 +258,22 @@
     <string name="settings_profile_layout_desc">Elige entre barra lateral o pestanas superiores</string>
     <string name="settings_profile_layout_rail">Barra</string>
     <string name="settings_profile_layout_tabs">Pestanas</string>
+    <string name="settings_home_screen">Pantalla de Inicio</string>
+    <string name="settings_home_screen_desc">Elige qué se muestra en la pantalla de inicio</string>
     <string name="settings_recent_activity">Registro de actividad reciente</string>
     <string name="settings_recent_activity_desc">Mostrar el botón de Actividad Reciente en el encabezado de la pantalla de inicio</string>
     <string name="settings_journal_button">Botón de Diario</string>
-    <string name="settings_journal_button_desc">Muestra un botón flotante de Diario en la pantalla de inicio para anotar notas</string>
+    <string name="settings_journal_button_desc">Muestra un botón de Diario en la barra superior de la pantalla de inicio para anotar notas</string>
     <string name="settings_seasonal_events">Eventos de Temporada</string>
     <string name="settings_seasonal_events_desc">Muestra el banner del Evento de Temporada activo en la pantalla de inicio</string>
     <string name="settings_collapsible_town_grid">Cuadrícula de Ciudad Colapsable</string>
     <string name="settings_collapsible_town_grid_desc">Muestra la sección de la Ciudad (Tienda, Posada, Gremio, etc.) como una tarjeta que puedes colapsar en la pantalla de inicio</string>
     <string name="settings_character_viewer">Visor de Personaje</string>
     <string name="settings_character_viewer_desc">Muestra el sprite de tu personaje en la pantalla de inicio</string>
+    <string name="settings_stats_bar">Barra de Estadísticas</string>
+    <string name="settings_stats_bar_desc">Muestra el Nivel de Combate, el Nivel Total y las Monedas en la pantalla de inicio</string>
+    <string name="settings_session_end_time">Hora de Finalización</string>
+    <string name="settings_session_end_time_desc">Muestra la hora estimada de finalización junto a los contadores de sesión y cola</string>
     <string name="label_no_sessions_yet">Aún no se han completado sesiones.</string>
 
     <!-- ===== CombatScreen ===== -->
@@ -439,6 +445,11 @@
     <string name="profile_stat_wc">WC</string>
     <string name="profile_stat_fishing">Pesca</string>
     <string name="profile_stat_farming">Agricultura</string>
+    <string name="profile_stat_smithing">Herrería</string>
+    <string name="profile_stat_firemaking">Hacer fuego</string>
+    <string name="profile_stat_agility">Agilidad</string>
+    <string name="profile_stat_cooking">Cocina</string>
+    <string name="profile_stat_thieving">Robo</string>
     <string name="profile_stat_def">Def</string>
     <string name="profile_req_lv">Req lv.</string>
 
@@ -729,6 +740,7 @@
     <string name="worker_session_active">Worker Session Active</string>
     <string name="worker_session_complete">Worker Session Complete</string>
     <string name="worker_manage_from_home">Collect from the Home screen</string>
+    <string name="worker_session_assigned">Asignado: %1$s %2$s</string>
     <string name="worker_card_title">Worker</string>
     <string name="worker_idle">Worker is idle — queued sessions start automatically</string>
     <string name="worker_collect_btn">Collect Worker Session</string>
@@ -763,7 +775,7 @@
     <string name="guild_quest_desc_kill">Derrota %1$d enemigos usando combate %2$s.</string>
     <string name="guild_quest_desc_prayer">Entierra %1$d huesos para el %2$s.</string>
     <string name="guild_quest_desc_sessions">Completa %1$d sesiones de %2$s para el %3$s.</string>
-    <string name="guild_quest_desc_trade">Completa %1$d rutas comerciales para el %2$s.</string>
+    <string name="guild_quest_desc_trade">Completa %1$d rutas de %2$s para el %3$s.</string>
     <string name="guild_quest_desc_earn_coins">Gana %1$s monedas a través de rutas comerciales para el %2$s.</string>
     <string name="guild_quest_desc_pickpocket">Roba al %2$s %1$d veces para el %3$s.</string>
     <string name="guild_combat_melee">cuerpo a cuerpo</string>
@@ -1351,6 +1363,11 @@
     <string name="armory_stat_woodcutting">Eficiencia leña</string>
     <string name="armory_stat_fishing">Eficiencia pesca</string>
     <string name="armory_stat_farming">Eficiencia agricultura</string>
+    <string name="armory_stat_smithing">Eficiencia herrería</string>
+    <string name="armory_stat_firemaking">Eficiencia hacer fuego</string>
+    <string name="armory_stat_agility">Eficiencia agilidad</string>
+    <string name="armory_stat_cooking">Eficiencia cocina</string>
+    <string name="armory_stat_thieving">Eficiencia robo</string>
     <string name="armory_stat_attack">Bono ataque</string>
     <string name="armory_stat_strength">Bono fuerza</string>
     <string name="armory_stat_defense">Bono defensa</string>

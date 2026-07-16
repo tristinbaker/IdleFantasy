@@ -1,5 +1,9 @@
 package com.fantasyidler.util
 
+import com.fantasyidler.data.model.SessionFrame
+import com.fantasyidler.data.model.SkillSession
+import kotlinx.serialization.json.Json
+
 /** Format a raw XP long as a readable string (e.g. 1,234,567 → "1.2M"). */
 fun Long.formatXp(): String = when {
     this >= 1_000_000L -> "%.1fM".format(this / 1_000_000.0)
@@ -37,10 +41,10 @@ fun Long.toClockTime(context: android.content.Context): String =
     android.text.format.DateFormat.getTimeFormat(context).format(java.util.Date(this))
 
 /**
- * Convert an epoch-ms "ends_at" timestamp to a human-readable countdown string with the
- * completion clock time, e.g. "42m 10s (1:45 PM)" or "Complete"
+ * Convert an epoch-ms "ends_at" timestamp to a human-readable countdown string, optionally
+ * with the completion clock time, e.g. "42m 10s (1:45 PM)" or "42m 10s" or "Complete"
  */
-fun Long.toCountdown(context: android.content.Context): String {
+fun Long.toCountdown(context: android.content.Context, showEndTime: Boolean = true): String {
     val remaining = this - System.currentTimeMillis()
     if (remaining <= 0) return "Complete"
     val totalSeconds = remaining / 1_000
@@ -52,7 +56,7 @@ fun Long.toCountdown(context: android.content.Context): String {
         minutes > 0 -> "${minutes}m ${seconds}s"
         else        -> "${seconds}s"
     }
-    return "$duration (${toClockTime(context)})"
+    return if (showEndTime) "$duration (${toClockTime(context)})" else duration
 }
 
 /**
@@ -83,6 +87,27 @@ fun Long.formatDurationMs(): String {
         minutes > 0              -> "${minutes}m"
         else                     -> "${totalSeconds}s"
     }
+}
+
+/**
+ * Crafting-type sessions (mainly hired-worker batch jobs) are pre-simulated as a single frame
+ * that already holds the whole job's assigned total, however long the job runs. Gathering/combat
+ * sessions use many real per-minute frames instead, so this only returns something for that
+ * single-frame batch case. Most of these batch types record the total in [SessionFrame.items]
+ * (e.g. bars, potions, runes); Prayer's only records a bone-burial count in [SessionFrame.kills],
+ * so that's used as a fallback, keyed by this session's own activity (the bone type).
+ */
+fun SkillSession.singleBatchItems(json: Json): Map<String, Int> = try {
+    val decodedFrames: List<SessionFrame> = json.decodeFromString(frames)
+    val frame = decodedFrames.singleOrNull()
+    when {
+        frame == null            -> emptyMap()
+        frame.items.isNotEmpty() -> frame.items
+        frame.kills > 0          -> mapOf(activityKey to frame.kills)
+        else                      -> emptyMap()
+    }
+} catch (_: Exception) {
+    emptyMap()
 }
 
 /** Clamp an Int to the valid skill level range [1, 99]. */

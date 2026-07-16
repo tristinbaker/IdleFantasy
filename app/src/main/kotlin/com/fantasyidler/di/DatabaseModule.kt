@@ -6,6 +6,7 @@ import com.fantasyidler.data.db.AppDatabase
 import com.fantasyidler.data.db.MIGRATION_1_2
 import com.fantasyidler.data.db.MIGRATION_2_3
 import com.fantasyidler.data.db.MIGRATION_3_4
+import com.fantasyidler.data.db.MIGRATION_4_5
 import com.fantasyidler.data.db.dao.*
 import dagger.Module
 import dagger.Provides
@@ -22,7 +23,7 @@ object DatabaseModule {
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): AppDatabase =
         Room.databaseBuilder(context, AppDatabase::class.java, "fantasy_idler.db")
-            .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
+            .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
             .build()
 
     @Provides fun providePlayerDao(db: AppDatabase): PlayerDao = db.playerDao()
