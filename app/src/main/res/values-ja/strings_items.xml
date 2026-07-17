@@ -37,8 +37,8 @@
     <string name="item_mithril_bar_desc">軽量で魔力を秘めた金属インゴット。</string>
     <string name="item_adamantite_bar_name">アダマンタイトのインゴット</string>
     <string name="item_adamantite_bar_desc">並外れて硬い金属インゴット。</string>
-    <string name="item_platinum_bar_name">白金のインゴット</string>
-    <string name="item_platinum_bar_desc">高ランクの宝飾品に使用される、希少で光沢のある白金のインゴット。</string>
+    <string name="item_platinum_bar_name">プラチナのインゴット</string>
+    <string name="item_platinum_bar_desc">高ランクの宝飾品に使用される、希少で光沢のあるプラチナのインゴット。</string>
     <string name="item_runite_bar_name">ルナイトのインゴット</string>
     <string name="item_runite_bar_desc">製錬可能な最強の金属インゴット。</string>
 
@@ -57,8 +57,8 @@
     <string name="item_log_desc">普通の木から採れた基本的な原木。火起こしや矢作りに使用される。</string>
     <string name="item_oak_log_name">オークの原木</string>
     <string name="item_oak_log_desc">オークの木から採れた原木。</string>
-    <string name="item_willow_log_name">ウィローの原木</string>
-    <string name="item_willow_log_desc">ウィローの木から採れた軽量な原木。</string>
+    <string name="item_willow_log_name">ヤナギの原木</string>
+    <string name="item_willow_log_desc">ヤナギの木から採れた軽量な原木。</string>
     <string name="item_maple_log_name">メープルの原木</string>
     <string name="item_maple_log_desc">メープルの木から採れた密度の高い原木。</string>
     <string name="item_yew_log_name">イチイの原木</string>
@@ -391,10 +391,10 @@
     <string name="item_gold_ring_desc">シンプルな金の指輪。</string>
     <string name="item_gold_necklace_name">金のネックレス</string>
     <string name="item_gold_necklace_desc">シンプルな金のネックレス。</string>
-    <string name="item_platinum_ring_name">白金の指輪</string>
-    <string name="item_platinum_ring_desc">シンプルな白金の指輪。</string>
-    <string name="item_platinum_necklace_name">白金のネックレス</string>
-    <string name="item_platinum_necklace_desc">シンプルな白金のネックレス。</string>
+    <string name="item_platinum_ring_name">プラチナの指輪</string>
+    <string name="item_platinum_ring_desc">シンプルなプラチナの指輪。</string>
+    <string name="item_platinum_necklace_name">プラチナのネックレス</string>
+    <string name="item_platinum_necklace_desc">シンプルなプラチナのネックレス。</string>
 
     <!-- Jewellery — sapphire -->
     <string name="item_silver_sapphire_ring_name">銀のサファイアの指輪</string>
@@ -405,48 +405,48 @@
     <string name="item_gold_sapphire_ring_desc">サファイアがはめ込まれた金の指輪。</string>
     <string name="item_gold_sapphire_necklace_name">金のサファイアのネックレス</string>
     <string name="item_gold_sapphire_necklace_desc">サファイアがはめ込まれた金のネックレス。</string>
-    <string name="item_platinum_sapphire_ring_name">白金のサファイアの指輪</string>
-    <string name="item_platinum_sapphire_ring_desc">サファイアがはめ込まれた白金の指輪。</string>
-    <string name="item_platinum_sapphire_necklace_name">白金のサファイアのネックレス</string>
-    <string name="item_platinum_sapphire_necklace_desc">サファイアがはめ込まれた白金のネックレス。</string>
+    <string name="item_platinum_sapphire_ring_name">プラチナのサファイアの指輪</string>
+    <string name="item_platinum_sapphire_ring_desc">サファイアがはめ込まれたプラチナの指輪。</string>
+    <string name="item_platinum_sapphire_necklace_name">プラチナのサファイアのネックレス</string>
+    <string name="item_platinum_sapphire_necklace_desc">サファイアがはめ込まれたプラチナのネックレス。</string>
 
     <!-- Jewellery — emerald -->
     <string name="item_gold_emerald_ring_name">金のエメラルドの指輪</string>
     <string name="item_gold_emerald_ring_desc">エメラルドがはめ込まれた金の指輪。</string>
     <string name="item_gold_emerald_necklace_name">金のエメラルドのネックレス</string>
     <string name="item_gold_emerald_necklace_desc">エメラルドがはめ込まれた金のネックレス。</string>
-    <string name="item_platinum_emerald_ring_name">白金のエメラルドの指輪</string>
-    <string name="item_platinum_emerald_ring_desc">エメラルドがはめ込まれた白金の指輪。</string>
-    <string name="item_platinum_emerald_necklace_name">白金のエメラルドのネックレス</string>
-    <string name="item_platinum_emerald_necklace_desc">エメラルドがはめ込まれた白金のネックレス。</string>
+    <string name="item_platinum_emerald_ring_name">プラチナのエメラルドの指輪</string>
+    <string name="item_platinum_emerald_ring_desc">エメラルドがはめ込まれたプラチナの指輪。</string>
+    <string name="item_platinum_emerald_necklace_name">プラチナのエメラルドのネックレス</string>
+    <string name="item_platinum_emerald_necklace_desc">エメラルドがはめ込まれたプラチナのネックレス。</string>
 
     <!-- Jewellery — ruby -->
     <string name="item_gold_ruby_ring_name">金のルビーの指輪</string>
     <string name="item_gold_ruby_ring_desc">ルビーがはめ込まれた金の指輪。</string>
     <string name="item_gold_ruby_necklace_name">金のルビーのネックレス</string>
     <string name="item_gold_ruby_necklace_desc">ルビーがはめ込まれた金のネックレス。</string>
-    <string name="item_platinum_ruby_ring_name">白金のルビーの指輪</string>
-    <string name="item_platinum_ruby_ring_desc">ルビーがはめ込まれた白金の指輪。</string>
-    <string name="item_platinum_ruby_necklace_name">白金のルビーのネックレス</string>
-    <string name="item_platinum_ruby_necklace_desc">ルビーがはめ込まれた白金のネックレス。</string>
+    <string name="item_platinum_ruby_ring_name">プラチナのルビーの指輪</string>
+    <string name="item_platinum_ruby_ring_desc">ルビーがはめ込まれたプラチナの指輪。</string>
+    <string name="item_platinum_ruby_necklace_name">プラチナのルビーのネックレス</string>
+    <string name="item_platinum_ruby_necklace_desc">ルビーがはめ込まれたプラチナのネックレス。</string>
 
     <!-- Jewellery — diamond -->
     <string name="item_gold_diamond_ring_name">金のダイヤモンドの指輪</string>
     <string name="item_gold_diamond_ring_desc">ダイヤモンドがはめ込まれた金の指輪。</string>
     <string name="item_gold_diamond_necklace_name">金のダイヤモンドのネックレス</string>
     <string name="item_gold_diamond_necklace_desc">ダイヤモンドがはめ込まれた金のネックレス。</string>
-    <string name="item_platinum_diamond_ring_name">白金のダイヤモンドの指輪</string>
-    <string name="item_platinum_diamond_ring_desc">ダイヤモンドがはめ込まれた白金の指輪。</string>
-    <string name="item_platinum_diamond_necklace_name">白金のダイヤモンドのネックレス</string>
-    <string name="item_platinum_diamond_necklace_desc">ダイヤモンドがはめ込まれた白金のネックレス。</string>
+    <string name="item_platinum_diamond_ring_name">プラチナのダイヤモンドの指輪</string>
+    <string name="item_platinum_diamond_ring_desc">ダイヤモンドがはめ込まれたプラチナの指輪。</string>
+    <string name="item_platinum_diamond_necklace_name">プラチナのダイヤモンドのネックレス</string>
+    <string name="item_platinum_diamond_necklace_desc">ダイヤモンドがはめ込まれたプラチナのネックレス。</string>
 
     <!-- ===== Miscellaneous drops ===== -->
     <string name="item_ashes_name">灰</string>
     <string name="item_ashes_desc">普通の原木が燃えた残りかす。祈りスキルで撒くとボーナス祈り経験値（XP）を獲得できる。</string>
     <string name="item_oak_ashes_name">オークの灰</string>
     <string name="item_oak_ashes_desc">オークの原木が燃えた残りかす。撒くと普通の灰よりも多くの祈り経験値（XP）を獲得できる。</string>
-    <string name="item_willow_ashes_name">ウィローの灰</string>
-    <string name="item_willow_ashes_desc">ウィローの原木が燃えた残りかす。撒くと祈り経験値（XP）を獲得できる。</string>
+    <string name="item_willow_ashes_name">ヤナギの灰</string>
+    <string name="item_willow_ashes_desc">ヤナギの原木が燃えた残りかす。撒くと祈り経験値（XP）を獲得できる。</string>
     <string name="item_maple_ashes_name">メープルの灰</string>
     <string name="item_maple_ashes_desc">メープルの原木が燃えた残りかす。撒くと祈り経験値（XP）を獲得できる。</string>
     <string name="item_yew_ashes_name">イチイの灰</string>
@@ -786,7 +786,7 @@
     <string name="item_mutton_name" translatable="false">マトン肉</string>
     <string name="item_necklace_of_anguish_name" translatable="false">苦悶のネックレス</string>
     <string name="item_oak_shortbow_name" translatable="false">オークのショートボウ</string>
-    <string name="item_platinum_ore_name" translatable="false">白金の鉱石</string>
+    <string name="item_platinum_ore_name" translatable="false">プラチナの鉱石</string>
     <string name="item_prayer_cape_name" translatable="false">祈りのマント</string>
     <string name="item_prayer_guild_cape_name" translatable="false">祈りギルドのマント</string>
     <string name="item_ranged_cape_name" translatable="false">遠距離のマント</string>
@@ -845,7 +845,7 @@
     <string name="item_water_bolt_name" translatable="false">ウォーターボルト</string>
     <string name="item_water_strike_name" translatable="false">ウォーターストライク</string>
     <string name="item_water_wave_name" translatable="false">ウォーターウェーブ</string>
-    <string name="item_willow_shortbow_name" translatable="false">ウィローのショートボウ</string>
+    <string name="item_willow_shortbow_name" translatable="false">ヤナギのショートボウ</string>
     <string name="item_wind_blast_name" translatable="false">ウィンドブラスト</string>
     <string name="item_wind_bolt_name" translatable="false">ウィンドボルト</string>
     <string name="item_wind_strike_name" translatable="false">ウィンドストライク</string>

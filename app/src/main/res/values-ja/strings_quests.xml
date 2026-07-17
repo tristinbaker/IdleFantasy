@@ -23,7 +23,7 @@
     <string name="quest_woodcutting_2_name">伐採 II</string>
     <string name="quest_woodcutting_2_objective">オークの原木を750本伐採する</string>
     <string name="quest_woodcutting_3_name">伐採 III</string>
-    <string name="quest_woodcutting_3_objective">ウィローの原木を1100本伐採する</string>
+    <string name="quest_woodcutting_3_objective">ヤナギの原木を1100本伐採する</string>
     <string name="quest_woodcutting_4_name">伐採 IV</string>
     <string name="quest_woodcutting_4_objective">メープルの原木を1650本伐採する</string>
     <string name="quest_woodcutting_5_name">伐採 V</string>
@@ -165,13 +165,13 @@
     <string name="quest_crafting_2_name">製作 II</string>
     <string name="quest_crafting_2_objective">金の指輪を250個製作する</string>
     <string name="quest_crafting_3_name">製作 III</string>
-    <string name="quest_crafting_3_objective">白金の指輪を500個製作する</string>
+    <string name="quest_crafting_3_objective">プラチナの指輪を500個製作する</string>
     <string name="quest_crafting_4_name">製作 IV</string>
     <string name="quest_crafting_4_objective">銀のサファイアの指輪を750個製作する</string>
     <string name="quest_crafting_5_name">製作 V</string>
     <string name="quest_crafting_5_objective">金のサファイアの指輪を1000個製作する</string>
     <string name="quest_crafting_6_name">製作 VI</string>
-    <string name="quest_crafting_6_objective">白金のダイヤモンドの指輪を1500個製作する</string>
+    <string name="quest_crafting_6_objective">プラチナのダイヤモンドの指輪を1500個製作する</string>
 
     <!-- Monster slayer chains -->
     <string name="quest_goblin_slayer_1_name">ゴブリンスレイヤー I</string>
@@ -251,7 +251,7 @@
     <string name="quest_firemaking_2_name">火起こし II</string>
     <string name="quest_firemaking_2_objective">オークの原木を750本燃やす</string>
     <string name="quest_firemaking_3_name">火起こし III</string>
-    <string name="quest_firemaking_3_objective">ウィローの原木を1100本燃やす</string>
+    <string name="quest_firemaking_3_objective">ヤナギの原木を1100本燃やす</string>
     <string name="quest_firemaking_4_name">火起こし IV</string>
     <string name="quest_firemaking_4_objective">メープルの原木を1650本燃やす</string>
     <string name="quest_firemaking_5_name">火起こし V</string>
@@ -404,7 +404,7 @@
     <string name="quest_daily_fish_swordfish_name">メカジキハンター</string>
     <string name="quest_daily_fish_shark_name">サメ使い</string>
     <string name="quest_daily_wc_oak_name">オークの木こり</string>
-    <string name="quest_daily_wc_willow_name">ウィローの細工師</string>
+    <string name="quest_daily_wc_willow_name">ヤナギの細工師</string>
     <string name="quest_daily_wc_yew_name">イチイの木こり</string>
     <string name="quest_daily_wc_magic_name">魔法の木こり</string>
     <string name="quest_daily_smith_iron_name">鉄の鍛冶職人</string>
