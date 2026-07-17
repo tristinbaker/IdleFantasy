@@ -45,7 +45,7 @@
 
     <!-- ===== Common labels ===== -->
     <string name="label_level">Level</string>
-    <string name="label_xp">XP</string>
+    <string name="label_xp" translatable="false">XP</string>
     <string name="label_coins">Coins</string>
     <string name="label_hp">HP</string>
     <string name="label_attack">Attack</string>
