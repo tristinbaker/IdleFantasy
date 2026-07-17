@@ -58,7 +58,7 @@
     <string name="label_equipment">Équipement</string>
     <string name="label_pets">Animaux de compagnie</string>
     <string name="label_achievements">Réalisations</string>
-    <string name="label_locations">Locations</string>
+    <string name="label_locations">Endroits</string>
     <string name="label_bestiary">Bestiaire</string>
     <string name="label_enemies">Ennemis</string>
     <string name="label_bosses">Boss</string>
@@ -90,7 +90,7 @@
     <string name="label_rewards">Récompenses</string>
     <string name="label_your_level">Votre niveau</string>
     <string name="label_xp_to_next">XP pour passer au niveau supérieur</string>
-    <string name="label_total_xp">Total XP</string>
+    <string name="label_total_xp">XP total</string>
     <string name="label_quantity">Quantité</string>
     <string name="label_price">Prix</string>
     <string name="label_available">Disponible</string>
@@ -501,7 +501,7 @@
     <string name="skills_level_req_xp">Niv. %1$d  •  %2$s XP/ressource</string>
     <!-- Note : %1$s = multiplicateur formaté (ex : "1.15") -->
     <string name="skills_tool_bonus">Outil à ×%1$s de bonus</string>
-    <string name="skills_pet_bonus">+%1$d%% XP (pet)</string>
+    <string name="skills_pet_bonus">+%1$d%% XP (animal)</string>
     <!-- Note : %1$d = niveau de pêche -->
     <string name="skills_fishing_desc">Niv. %1$d  •  Pêche adaptée au niveau</string>
     <!-- Note : %1$d = niveau de prière -->
@@ -601,7 +601,7 @@
     <string name="character_race_human">Humain</string>
     <string name="character_race_elf">Elfe</string>
     <string name="character_race_dwarf">Nain</string>
-    <string name="character_race_orc">Orc</string>
+    <string name="character_race_orc">Orque</string>
     <string name="character_race_halfling">Halfelin</string>
     <string name="character_race_gnome">Gnome</string>
     <string name="appearance_title">Personnaliser l\'apparence</string>
@@ -922,7 +922,7 @@
     <string name="guild_name_thieving">Guilde des Voleurs</string>
     <string name="guild_name_mercantile">Guilde des Marchands</string>
     <string name="skill_mercantile">Marchandage</string>
-    <string name="label_support_skills">Support</string>
+    <string name="label_support_skills">Soutien</string>
     <string name="mercantile_routes_label">Routes Commerciales</string>
     <string name="mercantile_level_label">Niveau %1$d Marchandage</string>
     <string name="mercantile_xp_label">XP : %1$s</string>
@@ -1289,7 +1289,7 @@
     <string name="carnival_shell_showing">Regarde bien — la pierre précieuse est sous le gobelet %1$d</string>
     <string name="carnival_shell_watch">Regarde bien…</string>
     <string name="carnival_shell_pick">Sous quel gobelet est-il ?</string>
-    <string name="carnival_shell_won">Correct! +%1$d tickets</string>
+    <string name="carnival_shell_won">Correct ! +%1$d tickets</string>
     <string name="carnival_shell_missed">Faux ! La gemme était sous le gobelet %1$d.</string>
     <string name="carnival_shell_locked">Améliorez la kermesse au niveau 1 pour débloquer</string>
     <string name="carnival_higher_lower">Plus haut ou plus bas</string>
@@ -1555,7 +1555,7 @@
     <string name="settings_credit_banners_title">Bannières saisonnières</string>
     <string name="settings_credit_banners_subtitle">Illustrations de Wenrexa</string>
     <string name="settings_credit_skill_icons_title">Icônes de Compétences</string>
-    <string name="settings_credit_skill_icons_subtitle">Shikashi\'s Fantasy Icons Pack</string>
+    <string name="settings_credit_skill_icons_subtitle">«Fantasy Icons Pack» de Shikashi</string>
     <string name="title_seasonal_champion_of">Champion de %1$s</string>
     <string name="title_seasonal_requirement">Terminez l\'Événement Saisonnier %1$s</string>
     <string name="home_welcome_greeting">Bon retour,</string>
