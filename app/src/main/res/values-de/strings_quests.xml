@@ -195,9 +195,9 @@
     <string name="quest_orc_slayer_2_name">Ork-Jäger II</string>
     <string name="quest_orc_slayer_2_objective">Besiegt 50 Ork-Krieger</string>
     <string name="quest_demon_slayer_1_name">Dämonen-Jäger I</string>
-    <string name="quest_demon_slayer_1_objective">Besiegt 20 Kleine Dämonen</string>
+    <string name="quest_demon_slayer_1_objective">Besiegt den Dämonenkönig</string>
     <string name="quest_demon_slayer_2_name">Dämonen-Jäger II</string>
-    <string name="quest_demon_slayer_2_objective">Besiegt 40 Kleine Dämonen</string>
+    <string name="quest_demon_slayer_2_objective">Besiegt den Dämonenkönig 5 Mal</string>
     <string name="quest_demon_slayer_3_name">Dämonen-Jäger III</string>
     <string name="quest_demon_slayer_3_objective">Besiegt den Dämonenkönig 25 Mal</string>
     <string name="quest_dragon_slayer_1_name">Drachen-Jäger I</string>
