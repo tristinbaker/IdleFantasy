@@ -1,6 +1,6 @@
 # Getting started - Wiki contributions
 
-Great! You want to know how you can contribute to the wiki and make it better over time. While this wiki functions a little differently from most you may have worked on in the past, if you have a little bit of programming knowledge you'll find it easy to work with, and even if you don't have programming knowledge there's still some ways you can help out.
+Great! You want to know how you can contribute to the wiki and make it better over time. While this wiki functions a little differently from most you may have worked on in the past, if you have a little bit of programming knowledge you'll find it easy to work with, and even if you don't have programming knowledge there are still some ways you can help out.
 
 If you want to make changes to the game itself, check out {game_contribution_link}.
 
@@ -12,13 +12,15 @@ Unlike most wikis which have a collection of pages that require constant mainten
 
 It uses Markdown to define templates with Python being responsible for the compilation and generation of dynamic content.
 
+Some content still requires manual maintenance such as strategy guides and some text content however a number of changes in the game is reflected in the wiki.
+
 ## Core terminology
 
-To best understand how you can work with things (and also understand the jargon in the docs), it's helpful to go over a few core terminology:
+To best understand how you can work with the wiki codebase (and also understand the jargon in the docs), it's helpful to go over some core terminology:
 
 ### Page Directory
 
-The page directory is responsible for holding information about all the pages used within the wiki. It gets populated with information about all pages before the actual generation of any content and allows you to refer to other pages when defining page content through the use of a page ID (Eg. For links).
+The page directory is responsible for holding information about all the pages used within the wiki. It gets populated with information about all pages before the actual generation of any content and allows you to refer to other pages when defining page content through the use of a page ID (e.g. for links).
 
 Pages are added to the page directory in `pages.py` under the `Page Listings` section.
 
@@ -40,13 +42,13 @@ Templates provide the base formatting for pages within the wiki. Whenever they r
 
 ### Static/Dynamically-generated pages
 
-Whenever we refer to static vs dynamically-generated pages this refers not to the content within pages but how the pages are defined. If pages are "hardcoded" in the `add_static_pages` function, these are static, whereas generated pages, will produce an unknown amount of pages like with each individual boss page.
+Whenever we refer to static vs dynamically-generated pages this refers not to the content within pages but how the pages are defined. If pages are "hardcoded" in the `add_static_pages` function, these are static, whereas generated pages will produce an unknown amount of pages like with each individual boss page.
 
 For more information, see {page_types_link}.
 
 ## Building/Compiling the Wiki
 
-To build the wiki, you'll need to set up an appropriate Python environment which you can use to run the wiki compilation. For information about setting up virtual environments, see [this tutorial](https://www.geeksforgeeks.org/python/create-virtual-environment-using-venv-python/) (make sure to call it .venv to have it be git ignored).
+To build the wiki, you'll need to set up an appropriate Python environment which you can use to run the wiki compilation. For information about setting up virtual environments, see [this tutorial](https://www.geeksforgeeks.org/python/create-virtual-environment-using-venv-python/) (make sure to call it .venv to have it be gitignored).
 
 From there, you can run the following command to see what you can do (from the project folder):
 
@@ -63,14 +65,14 @@ python -m src -h
 
 The following code files are used as follows in the wiki:
 
-- `__main__.py` - The main entry point to the wiki program responsible for parsing arguments and top-level management
-- `page_hierarchy.py` - A simple file defining the page hierarchy structure
-- `pages.py` - The primary code responsible for generating all the Markdown pages. This also contains a number of helper functions which you should use where relevant such as `link()`, etc
-- `site.py` - The code responsible for generating the Idle Wiki website based upon the generated Markdown files
+- `__main__.py` - The main entry point to the wiki program responsible for parsing arguments and top-level management.
+- `page_hierarchy.py` - A simple file defining the page hierarchy structure.
+- `pages.py` - The primary code responsible for generating all the Markdown pages. This also contains a number of helper functions which you should use where relevant such as `link()`, etc.
+- `site.py` - The code responsible for generating the Idle Fantasy wiki website based upon the generated Markdown files.
 
 ## Contributing process
 
-For small contributions (eg. Fixing small mistakes, etc), you can simply fork the repository, make the relevant change and then create a pull request.
+For small contributions (e.g. fixing small mistakes, etc), you can simply fork the repository, make the relevant change and then create a pull request.
 
 If you notice larger issues/inaccuracies that might take some time to fix, you should create an issue beforehand and mention that you're planning on making the changes. This makes sure that there aren't multiple people working on the same issue (without knowing) and also means that the issue can be referenced/tracked.
 
