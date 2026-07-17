@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Fantaisíocht Fánach</string>
+    <string name="nav_skills">Scileanna</string>
+    <string name="nav_combat">Troid</string>
+    <string name="nav_home">Baile</string>
+    <string name="nav_quests">Tascanna</string>
+    <string name="nav_profile">Próifíl</string>
+    <string name="btn_start">Tosaigh</string>
+    <string name="btn_start_session">Tosaigh Seisiún</string>
+    <string name="btn_abandon_session">Tréig seisiún</string>
+</resources>
