@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Idle Fantasy</string>
+    <string name="app_name" translatable="false">Idle Fantasy</string>
 
     <!-- ===== Bottom navigation ===== -->
     <string name="nav_skills">Skills</string>
-    <string name="nav_combat">Combat</string>
+    <string name="nav_combat" translatable="false">Combat</string>
     <string name="nav_home">Home</string>
     <string name="nav_crafting">Crafting</string>
     <string name="nav_quests">Quests</string>
@@ -45,7 +45,7 @@
 
     <!-- ===== Common labels ===== -->
     <string name="label_level">Level</string>
-    <string name="label_xp">XP</string>
+    <string name="label_xp" translatable="false">XP</string>
     <string name="label_coins">Coins</string>
     <string name="label_hp">HP</string>
     <string name="label_attack">Attack</string>
@@ -100,30 +100,30 @@
     <string name="label_ready_to_harvest">Ready to harvest</string>
     <string name="label_empty">Empty</string>
     <string name="inventory_sort_quantity">Quantity</string>
-    <string name="inventory_sort_az">A-Z</string>
+    <string name="inventory_sort_az" translatable="false">A-Z</string>
     <string name="inventory_cat_weapons">Weapons</string>
     <string name="inventory_cat_armour">Armour</string>
     <string name="inventory_cat_tools">Tools</string>
     <string name="inventory_cat_food">Food</string>
-    <string name="inventory_cat_potions">Potions</string>
+    <string name="inventory_cat_potions" translatable="false">Potions</string>
     <string name="inventory_cat_materials">Materials</string>
     <string name="inventory_cat_other">Other</string>
     <string name="inventory_cat_raw_food">Raw Food</string>
     <string name="inventory_cat_ammunition">Ammunition</string>
     <string name="inventory_cat_ores">Ores &amp; Gems</string>
-    <string name="inventory_cat_construction">Construction</string>
+    <string name="inventory_cat_construction" translatable="false">Construction</string>
     <string name="inventory_cat_seeds">Seeds &amp; Crops</string>
     <string name="inventory_cat_filter_all">All</string>
     <string name="label_combat_style">Combat Style</string>
     <string name="label_active_spell">Active Spell</string>
     <string name="label_drops">Drops</string>
-    <string name="label_boss">Boss</string>
+    <string name="label_boss" translatable="false">Boss</string>
     <string name="label_dungeon">Dungeon</string>
     <string name="label_difficulty">Difficulty</string>
     <string name="label_completed">Completed</string>
     <string name="label_in_progress">In Progress</string>
     <string name="label_available_quests">Available</string>
-    <string name="label_stats">Stats</string>
+    <string name="label_stats" translatable="false">Stats</string>
     <string name="label_skills">Skills</string>
     <string name="label_shop">Shop</string>
     <string name="label_sell_items">Sell Items</string>
@@ -142,7 +142,7 @@
     <string name="label_runes_consumed">Runes Consumed</string>
     <string name="label_runes_reclaimed">Runes Reclaimed</string>
     <string name="label_arrows">Arrows</string>
-    <string name="label_runes">Runes</string>
+    <string name="label_runes" translatable="false">Runes</string>
     <string name="label_spell">Spell</string>
     <string name="label_none">None</string>
     <string name="label_melee">Melee</string>
@@ -151,7 +151,7 @@
     <string name="label_gathering">Gathering</string>
     <string name="label_crafting">Crafting</string>
     <string name="label_jewellery">Jewelry</string>
-    <string name="label_combat">Combat</string>
+    <string name="label_combat" translatable="false">Combat</string>
     <string name="label_recipe">Recipe</string>
     <string name="label_recipes">Recipes</string>
     <string name="label_ingredients">Ingredients</string>
@@ -162,7 +162,7 @@
     <string name="label_personal_best">Personal Best</string>
     <string name="label_daily_dig">Daily Dig</string>
     <string name="label_dig_depth">Hole Depth</string>
-    <string name="label_version">Version</string>
+    <string name="label_version" translatable="false">Version</string>
     <string name="label_open_source">Open Source</string>
 
     <!-- ===== Format strings — all use positional args for Weblate ===== -->
@@ -195,7 +195,7 @@
     <!-- Translator note: %1$d = minutes remaining -->
     <string name="format_minutes_remaining">%1$d min remaining</string>
     <!-- Translator note: %1$s = version string (e.g. "0.1.0") -->
-    <string name="format_version">Version %1$s</string>
+    <string name="format_version" translatable="false">Version %1$s</string>
 
     <!-- ===== Plurals ===== -->
     <plurals name="plural_level_ups">
@@ -327,8 +327,8 @@
     <string name="onboarding_next">Next</string>
 
     <!-- ===== Settings ===== -->
-    <string name="settings_notifications_header">Notifications</string>
-    <string name="settings_performance_header">Performance</string>
+    <string name="settings_notifications_header" translatable="false">Notifications</string>
+    <string name="settings_performance_header" translatable="false">Performance</string>
     <string name="settings_general_header">General</string>
     <string name="settings_tutorial_title">Tutorial</string>
     <string name="settings_tutorial_desc">Show the introduction again</string>
@@ -374,7 +374,7 @@
     <string name="settings_language_desc">Override the app display language</string>
     <string name="settings_lang_english">English</string>
     <string name="settings_lang_deutsch">Deutsch</string>
-    <string name="settings_lang_français">Français</string>
+    <string name="settings_lang_français" translatable="false">Français</string>
     <string name="settings_lang_dutch">Nederlands</string>
     <string name="settings_lang_español">Español</string>
     <string name="settings_lang_español_españa">Español (España)</string>
@@ -395,7 +395,7 @@
     <string name="settings_source_code">Source Code</string>
     <string name="settings_source_url" translatable="false">github.com/tristinbaker/IdleFantasy</string>
     <string name="settings_source_open">Open</string>
-    <string name="settings_wiki">Wiki</string>
+    <string name="settings_wiki" translatable="false">Wiki</string>
     <string name="settings_wiki_url" translatable="false">idlefantasy.tristinbaker.xyz</string>
     <string name="settings_exported_ok">Save exported</string>
     <string name="settings_imported_ok">Save imported successfully</string>
@@ -490,7 +490,7 @@
     <string name="combat_req_level">Required combat level</string>
     <string name="combat_duration">Duration</string>
     <!-- Translator note: %1$d = minutes -->
-    <string name="combat_duration_min">%1$d min</string>
+    <string name="combat_duration_min" translatable="false">%1$d min</string>
     <string name="combat_xp_on_victory">XP on victory</string>
     <string name="combat_you_died">You Died!</string>
     <string name="combat_died_reward" formatted="false">You received 10% of the rewards.</string>
@@ -652,13 +652,13 @@
     <string name="character_gender_female">Female</string>
     <string name="character_gender_other">Other</string>
     <string name="character_gender_custom_hint">Describe your gender</string>
-    <string name="character_race">Race</string>
+    <string name="character_race" translatable="false">Race</string>
     <string name="character_race_human">Human</string>
     <string name="character_race_elf">Elf</string>
     <string name="character_race_dwarf">Dwarf</string>
     <string name="character_race_orc">Orc</string>
     <string name="character_race_halfling">Halfling</string>
-    <string name="character_race_gnome">Gnome</string>
+    <string name="character_race_gnome" translatable="false">Gnome</string>
 
     <!-- ===== CharacterCustomizationSheet ===== -->
     <string name="appearance_title">Customise Appearance</string>
@@ -671,7 +671,7 @@
     <string name="appearance_save">Save Appearance</string>
 
     <!-- ===== OnboardingScreen ===== -->
-    <string name="onboarding_sessions_title">Sessions</string>
+    <string name="onboarding_sessions_title" translatable="false">Sessions</string>
     <string name="onboarding_sessions_desc">Tap any skill and start a training session. Sessions run in the background, even with the app closed. Come back to collect your loot and XP.</string>
     <string name="onboarding_progress_title">Work Your Way Up</string>
     <string name="onboarding_progress_desc">Mine ore to smelt bars, then forge better weapons and armour. Equip stronger gear to tackle harder dungeons and bosses. Better tools speed up gathering, and higher-tier equipment unlocks content that weaker gear can\'t survive.</string>
@@ -680,7 +680,7 @@
     <string name="onboarding_welcome_desc">An idle RPG inspired by classic MMORPGs. Train skills, fight dungeons, and craft gear. All offline, no accounts, no ads.</string>
 
     <!-- Quantity picker quick buttons -->
-    <string name="qty_max">Max</string>
+    <string name="qty_max" translatable="false">Max</string>
 
     <!-- ===== Inn / Worker ===== -->
     <string-array name="worker_names">
@@ -750,9 +750,9 @@
 
     <!-- ===== Achievements ===== -->
     <string name="achievement_group_levelling">Levelling</string>
-    <string name="achievement_group_combat">Combat</string>
+    <string name="achievement_group_combat" translatable="false">Combat</string>
     <string name="achievement_group_quests">Quests</string>
-    <string name="achievement_group_collection">Collection</string>
+    <string name="achievement_group_collection" translatable="false">Collection</string>
 
     <string name="achievement_total_50_name">Adventurer</string>
     <string name="achievement_total_50_desc">Reach total level 50</string>
@@ -766,7 +766,7 @@
     <string name="achievement_total_750_desc">Reach total level 750</string>
     <string name="achievement_total_1000_name">Legend</string>
     <string name="achievement_total_1000_desc">Reach total level 1000</string>
-    <string name="achievement_total_1500_name">Champion</string>
+    <string name="achievement_total_1500_name" translatable="false">Champion</string>
     <string name="achievement_total_1500_desc">Reach total level 1500</string>
     <string name="achievement_skill_99_name">First Mastery</string>
     <string name="achievement_skill_99_desc">Max any skill to level 99</string>
@@ -777,11 +777,11 @@
     <string name="achievement_combat_10_desc">Reach combat level 10</string>
     <string name="achievement_combat_30_name">Warrior</string>
     <string name="achievement_combat_30_desc">Reach combat level 30</string>
-    <string name="achievement_combat_50_name">Champion</string>
+    <string name="achievement_combat_50_name" translatable="false">Champion</string>
     <string name="achievement_combat_50_desc">Reach combat level 50</string>
     <string name="achievement_combat_75_name">Elite</string>
     <string name="achievement_combat_75_desc">Reach combat level 75</string>
-    <string name="achievement_combat_99_name">Champion</string>
+    <string name="achievement_combat_99_name" translatable="false">Champion</string>
     <string name="achievement_combat_99_desc">Reach combat level 99</string>
     <string name="achievement_combat_113_name">Max Combat</string>
     <string name="achievement_combat_113_desc">Reach the maximum combat level of 113</string>
@@ -908,19 +908,19 @@
     <string name="blessing_stone_skin_iii_name">Stone Skin III</string>
     <string name="blessing_tithe_blessing_name">Tithe Blessing</string>
     <string name="blessing_stone_skin_iv_name">Stone Skin IV</string>
-    <string name="blessing_fortune_i_name">Fortune I</string>
+    <string name="blessing_fortune_i_name" translatable="false">Fortune I</string>
     <string name="blessing_tithe_blessing_ii_name">Tithe Blessing II</string>
     <string name="blessing_iron_ward_name">Iron Ward</string>
-    <string name="blessing_fortune_ii_name">Fortune II</string>
+    <string name="blessing_fortune_ii_name" translatable="false">Fortune II</string>
     <string name="blessing_tithe_blessing_iii_name">Tithe Blessing III</string>
     <string name="blessing_iron_ward_ii_name">Iron Ward II</string>
-    <string name="blessing_fortune_iii_name">Fortune III</string>
+    <string name="blessing_fortune_iii_name" translatable="false">Fortune III</string>
     <string name="blessing_divine_focus_name">Divine Focus</string>
     <string name="blessing_diamond_skin_name">Diamond Skin</string>
-    <string name="blessing_fortune_iv_name">Fortune IV</string>
+    <string name="blessing_fortune_iv_name" translatable="false">Fortune IV</string>
     <string name="blessing_divine_focus_ii_name">Divine Focus II</string>
     <string name="blessing_diamond_skin_ii_name">Diamond Skin II</string>
-    <string name="blessing_fortune_v_name">Fortune V</string>
+    <string name="blessing_fortune_v_name" translatable="false">Fortune V</string>
     <string name="blessing_divine_grace_name">Divine Grace</string>
     <string name="blessing_holy_shield_name">Holy Shield</string>
     <string name="blessing_abundance_name">Abundance</string>
@@ -960,7 +960,7 @@
     <string name="expedition_lock_level">Requires %1$s level %2$d</string>
     <string name="expedition_lock_notes">Find all notes in %1$s to unlock</string>
     <string name="expedition_lock_prerequisite">Complete a prerequisite to unlock</string>
-    <string name="label_notes">Notes</string>
+    <string name="label_notes" translatable="false">Notes</string>
 
     <!-- Slayer -->
     <string name="skill_slayer_name">Slayer</string>
@@ -972,7 +972,7 @@
     <string name="slayer_desc">Complete tasks to earn Slayer XP and points. Spend points in the shop for exclusive gear.</string>
     <string name="slayer_level_label">Level %1$d</string>
     <string name="slayer_xp_label">%1$s XP</string>
-    <string name="slayer_points">%1$d pts</string>
+    <string name="slayer_points" translatable="false">%1$d pts</string>
     <string name="slayer_active_task">Active Task</string>
     <string name="slayer_kills_remaining">%1$d / %2$d kills</string>
     <string name="slayer_get_task">Get New Task</string>
@@ -985,7 +985,7 @@
     <string name="slayer_xp_per_kill">%1$d XP/kill</string>
     <string name="slayer_points_on_complete">+%1$d pts on completion</string>
     <string name="slayer_shop_title">Slayer Shop</string>
-    <string name="slayer_shop_cost">%1$d pts</string>
+    <string name="slayer_shop_cost" translatable="false">%1$d pts</string>
     <string name="slayer_not_enough_points">Not enough Slayer points.</string>
     <string name="slayer_already_owned">Already owned.</string>
     <string name="slayer_purchased">Added to inventory.</string>
@@ -1012,9 +1012,9 @@
     <string name="slayer_foretell_slot">Slot %1$d: %2$s</string>
 
     <!-- Prestige system -->
-    <string name="prestige">Prestige</string>
+    <string name="prestige" translatable="false">Prestige</string>
     <string name="prestige_max">Max Prestige</string>
-    <string name="prestige_confirm_title">Prestige %s?</string>
+    <string name="prestige_confirm_title" translatable="false">Prestige %s?</string>
     <string name="prestige_confirm_message_xp">Your %1$s level will reset to 1, but you\'ll earn a permanent +%2$d%% XP bonus for this skill.</string>
     <string name="prestige_confirm_message_stat">Your %1$s level will reset to 1, but you\'ll earn a permanent +%2$d bonus to your stats.</string>
     <string name="prestige_confirm_message_agility">Your %1$s level will reset to 1, but you\'ll earn a permanent +%2$d%% XP bonus, and your session length will keep shrinking — by level 99 a session will take %3$d min instead of %4$d min.</string>
@@ -1080,20 +1080,20 @@
     <string name="crafting_cat_food">Food</string>
     <string name="crafting_cat_ammunition">Ammunition</string>
     <string name="crafting_cat_jewellery">Jewellery</string>
-    <string name="crafting_cat_potion">Potion</string>
+    <string name="crafting_cat_potion" translatable="false">Potion</string>
 
     <!-- Crafting tier filter chips -->
-    <string name="crafting_tier_adamantite">Adamantite</string>
+    <string name="crafting_tier_adamantite" translatable="false">Adamantite</string>
     <string name="crafting_tier_arrow">Arrow</string>
-    <string name="crafting_tier_bronze">Bronze</string>
+    <string name="crafting_tier_bronze" translatable="false">Bronze</string>
     <string name="crafting_tier_gold">Gold</string>
     <string name="crafting_tier_iron">Iron</string>
     <string name="crafting_tier_magic">Magic</string>
     <string name="crafting_tier_maple">Maple</string>
-    <string name="crafting_tier_mithril">Mithril</string>
+    <string name="crafting_tier_mithril" translatable="false">Mithril</string>
     <string name="crafting_tier_oak">Oak</string>
     <string name="crafting_tier_platinum">Platinum</string>
-    <string name="crafting_tier_runite">Runite</string>
+    <string name="crafting_tier_runite" translatable="false">Runite</string>
     <string name="crafting_tier_shortbow">Shortbow</string>
     <string name="crafting_tier_silver">Silver</string>
     <string name="crafting_tier_staff">Staff</string>
@@ -1128,7 +1128,7 @@
     <string name="catalyst_none">No catalyst</string>
 
     <!-- Construction skill -->
-    <string name="skill_construction_name">Construction</string>
+    <string name="skill_construction_name" translatable="false">Construction</string>
     <string name="skill_construction_desc">Build furniture using planks and nails to gain XP. Higher Construction levels let you upgrade the town\'s buildings for permanent bonuses.</string>
 
     <!-- Thieving skill -->
@@ -1141,8 +1141,8 @@
     <string name="thieving_npc_peasant_name">Peasant</string>
     <string name="thieving_npc_merchant_name">Merchant</string>
     <string name="thieving_npc_guardsman_name">Guardsman</string>
-    <string name="thieving_npc_artisan_name">Artisan</string>
-    <string name="thieving_npc_noble_name">Noble</string>
+    <string name="thieving_npc_artisan_name" translatable="false">Artisan</string>
+    <string name="thieving_npc_noble_name" translatable="false">Noble</string>
     <string name="thieving_npc_city_guard_name">City Guard</string>
     <string name="thieving_npc_royal_guard_name">Royal Guard</string>
     <string name="thieving_npc_knight_name">Knight</string>
@@ -1247,7 +1247,7 @@
     <string name="dungeon_rogue_sanctum_desc">The guild\'s inner refuge, accessible only to proven members.</string>
     <string name="dungeon_guild_of_shadows_name">Guild of Shadows</string>
     <string name="dungeon_guild_of_shadows_desc">The innermost sanctum of the thieves\' guild, guarded by its most elite enforcers.</string>
-    <string name="enemy_assassin_name">Assassin</string>
+    <string name="enemy_assassin_name" translatable="false">Assassin</string>
     <string name="enemy_shadow_assassin_name">Shadow Assassin</string>
     <string name="enemy_vault_guardian_name">Vault Guardian</string>
     <string name="enemy_guild_master_name">Guild Master</string>
@@ -1359,9 +1359,9 @@
     <string name="carnival_higher_lower_result">%1$d/%2$d correct — +%3$d tickets</string>
     <string name="carnival_higher_lower_locked">Upgrade the Fairgrounds to Tier 2 to unlock</string>
     <string name="carnival_higher_lower_last_card">Last card: %1$d</string>
-    <string name="carnival_higher_lower_continue">Continue</string>
+    <string name="carnival_higher_lower_continue" translatable="false">Continue</string>
     <string name="carnival_difficulty_label">Difficulty</string>
-    <string name="carnival_difficulty_normal">Normal</string>
+    <string name="carnival_difficulty_normal" translatable="false">Normal</string>
     <string name="carnival_difficulty_hard">Hard</string>
     <string name="carnival_ring_hard_hint">Hard: 52%–57% target, 7 tickets</string>
 
@@ -1444,7 +1444,7 @@
     <string name="shop_sold_junk">Sold junk for %1$s coins</string>
     <string name="shop_no_old_equipment">No old equipment to sell</string>
     <string name="shop_sold_old_equipment">Sold old equipment for %1$s coins</string>
-    <string name="shop_bulk_sell_total">Total</string>
+    <string name="shop_bulk_sell_total" translatable="false">Total</string>
     <string name="shop_bulk_sell_confirm">Sell All</string>
     <string name="shop_xp_boost_activated">2× XP boost activated for %1$dh!</string>
     <string name="shop_not_enough_in_inventory">Not enough in inventory</string>
@@ -1524,8 +1524,8 @@
     <string name="seasonal_go_to_combat">Go to Combat</string>
     <string name="seasonal_minigame_hint">Land %1$d of %2$d embers before they fade out!</string>
     <string name="seasonal_minigame_round">Round %1$d / %2$d — Hits: %3$d</string>
-    <string name="seasonal_minigame_mode_label">Mode</string>
-    <string name="seasonal_minigame_mode_normal">Normal</string>
+    <string name="seasonal_minigame_mode_label" translatable="false">Mode</string>
+    <string name="seasonal_minigame_mode_normal" translatable="false">Normal</string>
     <string name="seasonal_minigame_mode_easy">Easy</string>
     <string name="seasonal_minigame_mode_caption">%1$dms window, %2$s cooldown</string>
     <string name="seasonal_minigame_success">Perfect timing! +1 token.</string>
@@ -1557,7 +1557,7 @@
     <string name="seasonal_bounty_sunspire_colossus_name">Topple Cinder Colossi</string>
     <string name="seasonal_bounty_sunspire_colossus_hint">Only found in The Sunspire Expedition — rare</string>
     <string name="label_banners">Banners</string>
-    <string name="label_journal">Journal</string>
+    <string name="label_journal" translatable="false">Journal</string>
     <string name="journal_hint">Jot down reminders for next time — what to queue, what you\'re grinding toward.</string>
     <string name="journal_placeholder">Write a note...</string>
     <string name="profile_banners_empty">No banners earned yet. Complete a Seasonal Event to earn one!</string>
