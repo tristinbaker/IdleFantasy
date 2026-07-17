@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Quest names and objectives ===== -->
+    <!-- Translator note: quest names are short titles; objectives are action sentences. -->
+
+    <!-- Mining -->
+    <string name="quest_mining_1_name">採掘 I</string>
+    <string name="quest_mining_1_objective">銅鉱石を500個採掘する</string>
+    <string name="quest_mining_2_name">採掘 II</string>
+    <string name="quest_mining_2_objective">鉄鉱石を750個採掘する</string>
+    <string name="quest_mining_3_name">採掘 III</string>
+    <string name="quest_mining_3_objective">石炭を1100個採掘する</string>
+    <string name="quest_mining_4_name">採掘 IV</string>
+    <string name="quest_mining_4_objective">ミスリル鉱石を1650個採掘する</string>
+    <string name="quest_mining_5_name">採掘 V</string>
+    <string name="quest_mining_5_objective">アダマンタイト鉱石を2450個採掘する</string>
+    <string name="quest_mining_6_name">採掘 VI</string>
+    <string name="quest_mining_6_objective">ルナイト鉱石を3650個採掘する</string>
+
+    <!-- Woodcutting -->
+    <string name="quest_woodcutting_1_name">伐採 I</string>
+    <string name="quest_woodcutting_1_objective">原木を500本伐採する</string>
+    <string name="quest_woodcutting_2_name">伐採 II</string>
+    <string name="quest_woodcutting_2_objective">オークの原木を750本伐採する</string>
+    <string name="quest_woodcutting_3_name">伐採 III</string>
+    <string name="quest_woodcutting_3_objective">ウィローの原木を1100本伐採する</string>
+    <string name="quest_woodcutting_4_name">伐採 IV</string>
+    <string name="quest_woodcutting_4_objective">メープルの原木を1650本伐採する</string>
+    <string name="quest_woodcutting_5_name">伐採 V</string>
+    <string name="quest_woodcutting_5_objective">イチイの原木を2450本伐採する</string>
+    <string name="quest_woodcutting_6_name">伐採 VI</string>
+    <string name="quest_woodcutting_6_objective">魔法の原木を3650本伐採する</string>
+
+    <!-- Fishing -->
+    <string name="quest_fishing_1_name">釣り I</string>
+    <string name="quest_fishing_1_objective">魚を500匹釣る</string>
+    <string name="quest_fishing_2_name">釣り II</string>
+    <string name="quest_fishing_2_objective">魚を750匹釣る</string>
+    <string name="quest_fishing_3_name">釣り III</string>
+    <string name="quest_fishing_3_objective">魚を1100匹釣る</string>
+    <string name="quest_fishing_4_name">釣り IV</string>
+    <string name="quest_fishing_4_objective">魚を1650匹釣る</string>
+    <string name="quest_fishing_5_name">釣り V</string>
+    <string name="quest_fishing_5_objective">魚を2450匹釣る</string>
+    <string name="quest_fishing_6_name">釣り VI</string>
+    <string name="quest_fishing_6_objective">魚を3650匹釣る</string>
+
+    <!-- Smithing -->
+    <string name="quest_smithing_1_name">製錬 I</string>
+    <string name="quest_smithing_1_objective">ブロンズインゴットを500個製錬する</string>
+    <string name="quest_smithing_2_name">製錬 II</string>
+    <string name="quest_smithing_2_objective">鉄のインゴットを750個製錬する</string>
+    <string name="quest_smithing_3_name">製錬 III</string>
+    <string name="quest_smithing_3_objective">鋼鉄のインゴットを1100個製錬する</string>
+    <string name="quest_smithing_4_name">製錬 IV</string>
+    <string name="quest_smithing_4_objective">ミスリルのインゴットを1650個製錬する</string>
+    <string name="quest_smithing_5_name">製錬 V</string>
+    <string name="quest_smithing_5_objective">アダマンタイトのインゴットを2450個製錬する</string>
+    <string name="quest_smithing_6_name">製錬 VI</string>
+    <string name="quest_smithing_6_objective">ルナイトのインゴットを3650個製錬する</string>
+
+    <!-- Cooking - Fish -->
+    <string name="quest_cooking_fish_1_name">調理 — 魚 I</string>
+    <string name="quest_cooking_fish_1_objective">魚を500匹調理する</string>
+    <string name="quest_cooking_fish_2_name">調理 — 魚 II</string>
+    <string name="quest_cooking_fish_2_objective">魚を750匹調理する</string>
+    <string name="quest_cooking_fish_3_name">調理 — 魚 III</string>
+    <string name="quest_cooking_fish_3_objective">魚を1100匹調理する</string>
+    <string name="quest_cooking_fish_4_name">調理 — 魚 IV</string>
+    <string name="quest_cooking_fish_4_objective">魚を1650匹調理する</string>
+    <string name="quest_cooking_fish_5_name">調理 — 魚 V</string>
+    <string name="quest_cooking_fish_5_objective">魚を2450匹調理する</string>
+    <string name="quest_cooking_fish_6_name">調理 — 魚 VI</string>
+    <string name="quest_cooking_fish_6_objective">魚を3650匹調理する</string>
+
+    <!-- Cooking - Beef -->
+    <string name="quest_cooking_beef_1_name">調理 — 牛肉 I</string>
+    <string name="quest_cooking_beef_1_objective">牛肉を100個調理する</string>
+    <string name="quest_cooking_beef_2_name">調理 — 牛肉 II</string>
+    <string name="quest_cooking_beef_2_objective">牛肉を250個調理する</string>
+    <string name="quest_cooking_beef_3_name">調理 — 牛肉 III</string>
+    <string name="quest_cooking_beef_3_objective">牛肉を500個調理する</string>
+
+    <!-- Cooking - Chicken -->
+    <string name="quest_cooking_chicken_1_name">調理 — 鶏肉 I</string>
+    <string name="quest_cooking_chicken_1_objective">鶏肉を100個調理する</string>
+    <string name="quest_cooking_chicken_2_name">調理 — 鶏肉 II</string>
+    <string name="quest_cooking_chicken_2_objective">鶏肉を250個調理する</string>
+    <string name="quest_cooking_chicken_3_name">調理 — 鶏肉 III</string>
+    <string name="quest_cooking_chicken_3_objective">鶏肉を500個調理する</string>
+
+    <!-- Cooking - Mutton -->
+    <string name="quest_cooking_mutton_1_name">調理 — マトン肉 I</string>
+    <string name="quest_cooking_mutton_1_objective">マトン肉を100個調理する</string>
+    <string name="quest_cooking_mutton_2_name">調理 — マトン肉 II</string>
+    <string name="quest_cooking_mutton_2_objective">マトン肉を250個調理する</string>
+    <string name="quest_cooking_mutton_3_name">調理 — マトン肉 III</string>
+    <string name="quest_cooking_mutton_3_objective">マトン肉を500個調理する</string>
+
+    <!-- Fletching -->
+    <string name="quest_fletching_1_name">矢作り I</string>
+    <string name="quest_fletching_1_objective">ブロンズの矢を500本作製する</string>
+    <string name="quest_fletching_2_name">矢作り II</string>
+    <string name="quest_fletching_2_objective">鉄の矢を750本作製する</string>
+    <string name="quest_fletching_3_name">矢作り III</string>
+    <string name="quest_fletching_3_objective">鋼鉄の矢を1100本作製する</string>
+    <string name="quest_fletching_4_name">矢作り IV</string>
+    <string name="quest_fletching_4_objective">ミスリルの矢を1650本作製する</string>
+    <string name="quest_fletching_5_name">矢作り V</string>
+    <string name="quest_fletching_5_objective">アダマンタイトの矢を2450本作製する</string>
+    <string name="quest_fletching_6_name">矢作り VI</string>
+    <string name="quest_fletching_6_objective">ルナイトの矢を3650本作製する</string>
+
+    <!-- Prayer -->
+    <string name="quest_prayer_1_name">祈り I</string>
+    <string name="quest_prayer_1_objective">骨を500個埋める</string>
+    <string name="quest_prayer_2_name">祈り II</string>
+    <string name="quest_prayer_2_objective">骨を750個埋める</string>
+    <string name="quest_prayer_3_name">祈り III</string>
+    <string name="quest_prayer_3_objective">骨を1100個埋める</string>
+    <string name="quest_prayer_4_name">祈り IV</string>
+    <string name="quest_prayer_4_objective">骨を1650個埋める</string>
+    <string name="quest_prayer_5_name">祈り V</string>
+    <string name="quest_prayer_5_objective">骨を2450個埋める</string>
+    <string name="quest_prayer_6_name">祈り VI</string>
+    <string name="quest_prayer_6_objective">骨を3650個埋める</string>
+
+    <!-- Slayer -->
+    <string name="quest_combat_kills_1_name">モンスターハンター I</string>
+    <string name="quest_combat_kills_1_objective">敵を100体倒す</string>
+    <string name="quest_combat_kills_2_name">モンスターハンター II</string>
+    <string name="quest_combat_kills_2_objective">敵を150体倒す</string>
+    <string name="quest_combat_kills_3_name">モンスターハンター III</string>
+    <string name="quest_combat_kills_3_objective">敵を200体倒す</string>
+    <string name="quest_combat_kills_4_name">モンスターハンター IV</string>
+    <string name="quest_combat_kills_4_objective">敵を300体倒す</string>
+    <string name="quest_combat_kills_5_name">モンスターハンター V</string>
+    <string name="quest_combat_kills_5_objective">敵を450体倒す</string>
+    <string name="quest_combat_kills_6_name">モンスターハンター VI</string>
+    <string name="quest_combat_kills_6_objective">敵を650体倒す</string>
+
+    <!-- Dungeon exploration -->
+    <string name="quest_dungeon_farm_1_name">ダンジョン冒険者 I</string>
+    <string name="quest_dungeon_farm_1_objective">農場ダンジョンを5回クリアする</string>
+    <string name="quest_dungeon_goblin_1_name">ダンジョン冒険者 II</string>
+    <string name="quest_dungeon_goblin_1_objective">ゴブリンの洞窟を5回クリアする</string>
+    <string name="quest_dungeon_spider_1_name">ダンジョン冒険者 III</string>
+    <string name="quest_dungeon_spider_1_objective">クモの巣を5回クリアする</string>
+    <string name="quest_dungeon_bandit_1_name">ダンジョン冒険者 IV</string>
+    <string name="quest_dungeon_bandit_1_objective">バンディットのキャンプを5回クリアする</string>
+    <string name="quest_dungeon_undead_1_name">ダンジョン冒険者 V</string>
+    <string name="quest_dungeon_undead_1_objective">アンデッドの墓所を5回クリアする</string>
+    <string name="quest_dungeon_fortress_1_name">ダンジョン冒険者 VI</string>
+    <string name="quest_dungeon_fortress_1_objective">要塞の遺跡を5回クリアする</string>
+    <string name="quest_dungeon_orc_1_name">ダンジョンマスター I</string>
+    <string name="quest_dungeon_orc_1_objective">オークの要塞を5回クリアする</string>
+    <string name="quest_dungeon_volcanic_1_name">ダンジョンマスター II</string>
+    <string name="quest_dungeon_volcanic_1_objective">火山地帯の深部を5回クリアする</string>
+    <string name="quest_dungeon_dragon_1_name">ダンジョンマスター III</string>
+    <string name="quest_dungeon_dragon_1_objective">竜の巣を5回クリアする</string>
+
+    <!-- Crafting -->
+    <string name="quest_crafting_1_name">製作 I</string>
+    <string name="quest_crafting_1_objective">銀の指輪を100個製作する</string>
+    <string name="quest_crafting_2_name">製作 II</string>
+    <string name="quest_crafting_2_objective">金の指輪を250個製作する</string>
+    <string name="quest_crafting_3_name">製作 III</string>
+    <string name="quest_crafting_3_objective">白金の指輪を500個製作する</string>
+    <string name="quest_crafting_4_name">製作 IV</string>
+    <string name="quest_crafting_4_objective">銀のサファイアの指輪を750個製作する</string>
+    <string name="quest_crafting_5_name">製作 V</string>
+    <string name="quest_crafting_5_objective">金のサファイアの指輪を1000個製作する</string>
+    <string name="quest_crafting_6_name">製作 VI</string>
+    <string name="quest_crafting_6_objective">白金のダイヤモンドの指輪を1500個製作する</string>
+
+    <!-- Monster slayer chains -->
+    <string name="quest_goblin_slayer_1_name">ゴブリンスレイヤー I</string>
+    <string name="quest_goblin_slayer_1_objective">ゴブリンを50体倒す</string>
+    <string name="quest_goblin_slayer_2_name">ゴブリンスレイヤー II</string>
+    <string name="quest_goblin_slayer_2_objective">ゴブリンを100体倒す</string>
+    <string name="quest_spider_slayer_1_name">蜘蛛スレイヤー I</string>
+    <string name="quest_spider_slayer_1_objective">大蜘蛛を40体倒す</string>
+    <string name="quest_spider_slayer_2_name">蜘蛛スレイヤー II</string>
+    <string name="quest_spider_slayer_2_objective">大蜘蛛を80体倒す</string>
+    <string name="quest_skeleton_slayer_1_name">スケルトンスレイヤー I</string>
+    <string name="quest_skeleton_slayer_1_objective">スケルトンを35体倒す</string>
+    <string name="quest_skeleton_slayer_2_name">スケルトンスレイヤー II</string>
+    <string name="quest_skeleton_slayer_2_objective">スケルトンを70体倒す</string>
+    <string name="quest_bandit_hunter_1_name">バンディットハンター I</string>
+    <string name="quest_bandit_hunter_1_objective">バンディットを30体倒す</string>
+    <string name="quest_bandit_hunter_2_name">バンディットハンター II</string>
+    <string name="quest_bandit_hunter_2_objective">バンディットを60体倒す</string>
+    <string name="quest_orc_slayer_1_name">オークスレイヤー I</string>
+    <string name="quest_orc_slayer_1_objective">オークの戦士を25体倒す</string>
+    <string name="quest_orc_slayer_2_name">オークスレイヤー II</string>
+    <string name="quest_orc_slayer_2_objective">オークの戦士を50体倒す</string>
+    <string name="quest_demon_slayer_1_name">デーモンスレイヤー I</string>
+    <string name="quest_demon_slayer_1_objective">魔王を倒す</string>
+    <string name="quest_demon_slayer_2_name">デーモンスレイヤー II</string>
+    <string name="quest_demon_slayer_2_objective">魔王を5回倒す</string>
+    <string name="quest_demon_slayer_3_name">デーモンスレイヤー III</string>
+    <string name="quest_demon_slayer_3_objective">魔王を25回倒す</string>
+    <string name="quest_dragon_slayer_1_name">ドラゴンスレイヤー I</string>
+    <string name="quest_dragon_slayer_1_objective">グリーンドラゴンを10体倒す</string>
+    <string name="quest_dragon_slayer_2_name">ドラゴンスレイヤー II</string>
+    <string name="quest_dragon_slayer_2_objective">グリーンドラゴンを25体倒す</string>
+
+    <!-- Combat style challenges -->
+    <string name="quest_melee_warrior_1_name">近接戦士 I</string>
+    <string name="quest_melee_warrior_1_objective">近接攻撃のみでゴブリンの洞窟をクリアする</string>
+    <string name="quest_melee_warrior_2_name">近接戦士 II</string>
+    <string name="quest_melee_warrior_2_objective">近接攻撃のみでバンディットのキャンプをクリアする</string>
+    <string name="quest_melee_warrior_3_name">近接戦士 III</string>
+    <string name="quest_melee_warrior_3_objective">近接攻撃のみで要塞の遺跡をクリアする</string>
+    <string name="quest_ranger_elite_1_name">エリートレンジャー I</string>
+    <string name="quest_ranger_elite_1_objective">遠距離攻撃のみでゴブリンの洞窟をクリアする</string>
+    <string name="quest_ranger_elite_2_name">エリートレンジャー II</string>
+    <string name="quest_ranger_elite_2_objective">遠距離攻撃のみでバンディットのキャンプをクリアする</string>
+    <string name="quest_ranger_elite_3_name">エリートレンジャー III</string>
+    <string name="quest_ranger_elite_3_objective">遠距離攻撃のみで要塞の遺跡をクリアする</string>
+    <string name="quest_mage_master_1_name">魔術マスター I</string>
+    <string name="quest_mage_master_1_objective">魔法攻撃のみでゴブリンの洞窟をクリアする</string>
+    <string name="quest_mage_master_2_name">魔術マスター II</string>
+    <string name="quest_mage_master_2_objective">魔法攻撃のみでバンディットのキャンプをクリアする</string>
+    <string name="quest_mage_master_3_name">魔術マスター III</string>
+    <string name="quest_mage_master_3_objective">魔法攻撃のみで要塞の遺跡をクリアする</string>
+
+    <!-- Iron Stomach (no food) challenges -->
+    <string name="quest_iron_stomach_1_name">鉄の胃袋 I</string>
+    <string name="quest_iron_stomach_1_objective">食べ物を使用せずにクモの巣をクリアする</string>
+    <string name="quest_iron_stomach_2_name">鉄の胃袋 II</string>
+    <string name="quest_iron_stomach_2_objective">食べ物を使用せずにアンデッドの墓所をクリアする</string>
+    <string name="quest_iron_stomach_3_name">鉄の胃袋 III</string>
+    <string name="quest_iron_stomach_3_objective">食べ物を使用せずにオークの要塞をクリアする</string>
+    <string name="quest_iron_stomach_4_name">鉄の胃袋 IV</string>
+    <string name="quest_iron_stomach_4_objective">食べ物を使用せずに竜の巣をクリアする</string>
+
+    <!-- Treasure Hunter -->
+    <string name="quest_treasure_hunter_1_name">トレジャーハンター I</string>
+    <string name="quest_treasure_hunter_1_objective">戦闘でクモの糸を20個集める</string>
+    <string name="quest_treasure_hunter_2_name">トレジャーハンター II</string>
+    <string name="quest_treasure_hunter_2_objective">戦闘でゴブリンの鎧を10個集める</string>
+    <string name="quest_treasure_hunter_3_name">トレジャーハンター III</string>
+    <string name="quest_treasure_hunter_3_objective">戦闘で悪魔の角を5個集める</string>
+    <string name="quest_treasure_hunter_4_name">トレジャーハンター IV</string>
+    <string name="quest_treasure_hunter_4_objective">戦闘でドラゴンの鱗を3個集める</string>
+
+    <!-- Firemaking -->
+    <string name="quest_firemaking_1_name">火起こし I</string>
+    <string name="quest_firemaking_1_objective">原木を500本燃やす</string>
+    <string name="quest_firemaking_2_name">火起こし II</string>
+    <string name="quest_firemaking_2_objective">オークの原木を750本燃やす</string>
+    <string name="quest_firemaking_3_name">火起こし III</string>
+    <string name="quest_firemaking_3_objective">ウィローの原木を1100本燃やす</string>
+    <string name="quest_firemaking_4_name">火起こし IV</string>
+    <string name="quest_firemaking_4_objective">メープルの原木を1650本燃やす</string>
+    <string name="quest_firemaking_5_name">火起こし V</string>
+    <string name="quest_firemaking_5_objective">イチイの原木を2450本燃やす</string>
+    <string name="quest_firemaking_6_name">火起こし VI</string>
+    <string name="quest_firemaking_6_objective">魔法の原木を3650本燃やす</string>
+
+    <!-- Runecrafting -->
+    <string name="quest_runecrafting_1_name">ルーン作成 I</string>
+    <string name="quest_runecrafting_1_objective">風のルーンを500個製作する</string>
+    <string name="quest_runecrafting_2_name">ルーン作成 II</string>
+    <string name="quest_runecrafting_2_objective">水のルーンを750個製作する</string>
+    <string name="quest_runecrafting_3_name">ルーン作成 III</string>
+    <string name="quest_runecrafting_3_objective">地のルーンを1100個製作する</string>
+    <string name="quest_runecrafting_4_name">ルーン作成 IV</string>
+    <string name="quest_runecrafting_4_objective">火のルーンを1650個製作する</string>
+    <string name="quest_runecrafting_5_name">ルーン作成 V</string>
+    <string name="quest_runecrafting_5_objective">マインドのルーンを2450個製作する</string>
+    <string name="quest_runecrafting_6_name">ルーン作成 VI</string>
+    <string name="quest_runecrafting_6_objective">混沌のルーンを3650個製作する</string>
+
+    <!-- Herblore -->
+    <string name="quest_herblore_1_name">調薬 I</string>
+    <string name="quest_herblore_1_objective">攻撃薬を100個調合する</string>
+    <string name="quest_herblore_2_name">調薬 II</string>
+    <string name="quest_herblore_2_objective">防御ポーションを250個調合する</string>
+    <string name="quest_herblore_3_name">調薬 III</string>
+    <string name="quest_herblore_3_objective">筋力ポーションを500個調合する</string>
+    <string name="quest_herblore_4_name">調薬 IV</string>
+    <string name="quest_herblore_4_objective">遠距離ポーションを750個調合する</string>
+    <string name="quest_herblore_5_name">調薬 V</string>
+    <string name="quest_herblore_5_objective">魔法ポーションを1000個調合する</string>
+    <string name="quest_herblore_6_name">調薬 VI</string>
+    <string name="quest_herblore_6_objective">スーパー筋力ポーションを1500個調合する</string>
+
+    <!-- Slayer extended -->
+    <string name="quest_combat_kills_7_name">モンスターハンター VII</string>
+    <string name="quest_combat_kills_7_objective">敵を1000体倒す</string>
+    <string name="quest_combat_kills_8_name">モンスターハンター VIII</string>
+    <string name="quest_combat_kills_8_objective">敵を1500体倒す</string>
+    <string name="quest_combat_kills_9_name">モンスターハンター IX</string>
+    <string name="quest_combat_kills_9_objective">敵を2250体倒す</string>
+    <string name="quest_combat_kills_10_name">モンスターハンター X</string>
+    <string name="quest_combat_kills_10_objective">敵を3400体倒す</string>
+    <string name="quest_combat_kills_11_name">モンスターハンター XI</string>
+    <string name="quest_combat_kills_11_objective">敵を5100体倒す</string>
+    <string name="quest_combat_kills_12_name">モンスターハンター XII</string>
+    <string name="quest_combat_kills_12_objective">敵を7650体倒す</string>
+
+    <!-- New monster slayer chains -->
+    <string name="quest_zombie_slayer_1_name">ゾンビスレイヤー I</string>
+    <string name="quest_zombie_slayer_1_objective">ゾンビを35体倒す</string>
+    <string name="quest_zombie_slayer_2_name">ゾンビスレイヤー II</string>
+    <string name="quest_zombie_slayer_2_objective">ゾンビを70体倒す</string>
+    <string name="quest_hellhound_slayer_1_name">ヘルハウンドスレイヤー I</string>
+    <string name="quest_hellhound_slayer_1_objective">ヘルハウンドを25体倒す</string>
+    <string name="quest_hellhound_slayer_2_name">ヘルハウンドスレイヤー II</string>
+    <string name="quest_hellhound_slayer_2_objective">ヘルハウンドを50体倒す</string>
+    <string name="quest_troll_slayer_1_name">トロールスレイヤー I</string>
+    <string name="quest_troll_slayer_1_objective">マウンテントロールを20体倒す</string>
+    <string name="quest_troll_slayer_2_name">トロールスレイヤー II</string>
+    <string name="quest_troll_slayer_2_objective">マウンテントロールを40体倒す</string>
+    <string name="quest_fire_giant_slayer_1_name">ファイアジャイアントスレイヤー I</string>
+    <string name="quest_fire_giant_slayer_1_objective">ファイアジャイアントを15体倒す</string>
+    <string name="quest_fire_giant_slayer_2_name">ファイアジャイアントスレイヤー II</string>
+    <string name="quest_fire_giant_slayer_2_objective">ファイアジャイアントを30体倒す</string>
+    <string name="quest_ancient_guardian_slayer_1_name">古代の守護者スレイヤー I</string>
+    <string name="quest_ancient_guardian_slayer_1_objective">古代の守護者を10体倒す</string>
+    <string name="quest_ancient_guardian_slayer_2_name">古代の守護者スレイヤー II</string>
+    <string name="quest_ancient_guardian_slayer_2_objective">古代の守護者を20体倒す</string>
+    <string name="quest_lich_slayer_1_name">リッチスレイヤー I</string>
+    <string name="quest_lich_slayer_1_objective">リッチを10体倒す</string>
+    <string name="quest_lich_slayer_2_name">リッチスレイヤー II</string>
+    <string name="quest_lich_slayer_2_objective">リッチを20体倒す</string>
+
+    <!-- Dungeon exploration extended -->
+    <string name="quest_dungeon_imp_1_name">ダンジョン冒険者 VII</string>
+    <string name="quest_dungeon_imp_1_objective">インプの洞窟を5回クリアする</string>
+    <string name="quest_dungeon_infernal_1_name">ダンジョンマスター IV</string>
+    <string name="quest_dungeon_infernal_1_objective">地獄の要塞を5回クリアする</string>
+    <string name="quest_dungeon_ancient_1_name">ダンジョンマスター V</string>
+    <string name="quest_dungeon_ancient_1_objective">古代の神殿を5回クリアする</string>
+
+    <!-- Boss extended -->
+    <string name="quest_kbd_slayer_1_objective">キングブラックドラゴンを倒す</string>
+    <string name="quest_kbd_slayer_2_objective">キングブラックドラゴンを5回倒す</string>
+    <string name="quest_kbd_slayer_3_objective">キングブラックドラゴンを25回倒す</string>
+    <string name="quest_kbd_slayer_4_name">キングブラックドラゴンスレイヤー IV</string>
+    <string name="quest_kbd_slayer_4_objective">キングブラックドラゴンを50回倒す</string>
+    <string name="quest_demon_slayer_4_name">デーモンスレイヤー IV</string>
+    <string name="quest_demon_slayer_4_objective">魔王を50回倒す</string>
+    <string name="quest_kraken_killer_1_name">クラーケンキラー I</string>
+    <string name="quest_kraken_killer_1_objective">クラーケンを倒す</string>
+    <string name="quest_kraken_killer_2_name">クラーケンキラー II</string>
+    <string name="quest_kraken_killer_2_objective">クラーケンを5回倒す</string>
+    <string name="quest_kraken_killer_3_name">クラーケンキラー III</string>
+    <string name="quest_kraken_killer_3_objective">クラーケンを25回倒す</string>
+    <string name="quest_kraken_killer_4_name">クラーケンキラー IV</string>
+    <string name="quest_kraken_killer_4_objective">クラーケンを50回倒す</string>
+    <string name="quest_balrog_bane_1_name">バルログスレイヤー I</string>
+    <string name="quest_balrog_bane_1_objective">バルログを倒す</string>
+    <string name="quest_balrog_bane_2_name">バルログスレイヤー II</string>
+    <string name="quest_balrog_bane_2_objective">バルログを5回倒す</string>
+    <string name="quest_balrog_bane_3_name">バルログスレイヤー III</string>
+    <string name="quest_balrog_bane_3_objective">バルログを25回倒す</string>
+    <string name="quest_balrog_bane_4_name">バルログスレイヤー IV</string>
+    <string name="quest_balrog_bane_4_objective">バルログを50回倒す</string>
+
+    <!-- Combat style challenges extended -->
+    <string name="quest_melee_warrior_4_name">近接戦士 IV</string>
+    <string name="quest_melee_warrior_4_objective">近接攻撃のみでオークの要塞をクリアする</string>
+    <string name="quest_melee_warrior_5_name">近接戦士 V</string>
+    <string name="quest_melee_warrior_5_objective">近接攻撃のみで竜の巣をクリアする</string>
+    <string name="quest_ranger_elite_4_name">エリートレンジャー IV</string>
+    <string name="quest_ranger_elite_4_objective">遠距離攻撃のみでオークの要塞をクリアする</string>
+    <string name="quest_ranger_elite_5_name">エリートレンジャー V</string>
+    <string name="quest_ranger_elite_5_objective">遠距離攻撃のみで竜の巣をクリアする</string>
+    <string name="quest_mage_master_4_name">魔術マスター IV</string>
+    <string name="quest_mage_master_4_objective">魔法攻撃のみでオークの要塞をクリアする</string>
+    <string name="quest_mage_master_5_name">魔術マスター V</string>
+    <string name="quest_mage_master_5_objective">魔法攻撃のみで竜の巣をクリアする</string>
+
+    <!-- Iron Stomach extended -->
+    <string name="quest_iron_stomach_5_name">鉄の胃袋 V</string>
+    <string name="quest_iron_stomach_5_objective">食べ物を使用せずに地獄の要塞をクリアする</string>
+    <string name="quest_iron_stomach_6_name">鉄の胃袋 VI</string>
+    <string name="quest_iron_stomach_6_objective">食べ物を使用せずに古代の神殿をクリアする</string>
+
+    <!-- Treasure Hunter extended -->
+    <string name="quest_treasure_hunter_5_name">トレジャーハンター V</string>
+    <string name="quest_treasure_hunter_5_objective">戦闘でヘルハウンドの牙を10個集める</string>
+    <string name="quest_treasure_hunter_6_name">トレジャーハンター VI</string>
+    <string name="quest_treasure_hunter_6_objective">戦闘でトロールの骨を15個集める</string>
+
+    <!-- Daily quest verbs -->
+    <string name="daily_verb_mining">採掘する</string>
+    <string name="daily_verb_fishing">釣る</string>
+    <string name="daily_verb_woodcutting">伐採する</string>
+    <string name="daily_verb_smithing">製錬する</string>
+    <string name="daily_verb_cooking">調理する</string>
+    <string name="daily_verb_combat">倒す</string>
+
+    <!-- Daily quest names -->
+    <string name="quest_daily_mine_iron_name">鉄の採掘者</string>
+    <string name="quest_daily_mine_coal_name">石炭の運搬人</string>
+    <string name="quest_daily_mine_mithril_name">ミスリル探鉱者</string>
+    <string name="quest_daily_mine_runite_name">ルナイトラッシュ</string>
+    <string name="quest_daily_fish_salmon_name">サーモンラン</string>
+    <string name="quest_daily_fish_lobster_name">ロブスター大漁</string>
+    <string name="quest_daily_fish_swordfish_name">メカジキハンター</string>
+    <string name="quest_daily_fish_shark_name">サメ使い</string>
+    <string name="quest_daily_wc_oak_name">オークの木こり</string>
+    <string name="quest_daily_wc_willow_name">ウィローの細工師</string>
+    <string name="quest_daily_wc_yew_name">イチイの木こり</string>
+    <string name="quest_daily_wc_magic_name">魔法の木こり</string>
+    <string name="quest_daily_smith_iron_name">鉄の鍛冶職人</string>
+    <string name="quest_daily_smith_mithril_name">ミスリル鍛造職人</string>
+    <string name="quest_daily_smith_adamantite_name">アダマンタイトの職人</string>
+    <string name="quest_daily_smith_runite_name">ルナイト製錬職人</string>
+    <string name="quest_daily_cook_trout_name">マスのシェフ</string>
+    <string name="quest_daily_cook_salmon_name">サケのグリル職人</string>
+    <string name="quest_daily_cook_lobster_name">ロブスターの料理人</string>
+    <string name="quest_daily_cook_swordfish_name">メカジキの料理人</string>
+    <string name="quest_daily_kill_goblin_name">ゴブリンスレイヤー</string>
+    <string name="quest_daily_kill_bandit_name">バンディットバスター</string>
+    <string name="quest_daily_kill_demon_name">デビルハンター</string>
+    <string name="quest_daily_kill_dragon_name">ドラゴンスレイヤー</string>
+
+    <!-- Quest objective verb strings for craft skills -->
+    <string name="daily_verb_crafting">製作する</string>
+    <string name="daily_verb_firemaking">燃やす</string>
+    <string name="daily_verb_fletching">作製する</string>
+    <string name="daily_verb_herblore">調合する</string>
+    <string name="daily_verb_runecrafting">製作する</string>
+    <string name="daily_verb_prayer">埋める</string>
+    <string name="daily_verb_construction">建設する</string>
+    <string name="daily_verb_farming">収穫する</string>
+
+    <!-- Quest objective format strings -->
+    <string name="quest_obj_gather">%3$sを%2$d個%1$s</string>
+    <string name="quest_obj_craft">%3$sを%2$d個%1$s</string>
+    <string name="quest_obj_prayer">任意の骨を%1$d個埋める</string>
+    <string name="quest_obj_kill">敵を%1$d体倒す</string>
+    <string name="quest_obj_kill_enemy">%2$sを%1$d体倒す</string>
+    <string name="quest_obj_dungeon">%1$sを%2$d回クリアする</string>
+    <string name="quest_obj_dungeon_once">%1$sをクリアする</string>
+    <string name="quest_obj_boss">%1$sを%2$d回倒す</string>
+    <string name="quest_obj_boss_once">%1$sを倒す</string>
+    <string name="quest_obj_dungeon_melee_only">近接攻撃のみで%1$sをクリアする</string>
+    <string name="quest_obj_dungeon_ranged_only">遠距離攻撃のみで%1$sをクリアする</string>
+    <string name="quest_obj_dungeon_magic_only">魔法攻撃のみで%1$sをクリアする</string>
+    <string name="quest_obj_dungeon_no_food">食べ物を使用せずに%1$sをクリアする</string>
+    <string name="quest_obj_collect">戦闘で%2$sを%1$d個集める</string>
+    <string name="quest_obj_slayer_task">スレイヤータスクを%1$d回完了する</string>
+
+</resources>

@@ -383,6 +383,7 @@
     <string name="settings_lang_russian">Русский</string>
     <string name="settings_lang_indonesian">Bahasa Indonesia</string>
     <string name="settings_lang_portugues_brasil">Português (Brasil)</string>
+    <string name="settings_lang_japanese">Japanese</string>
     <string name="settings_lang_system">System</string>
     <string name="settings_save_data">Save Data</string>
     <string name="settings_export">Export Save</string>

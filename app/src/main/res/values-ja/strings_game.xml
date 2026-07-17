@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Level-up messages ===== -->
+    <!-- Translator note: %1$d = new level number, %2$s = skill display name -->
+    <string name="game_level_up">レベルアップ！%1$sのレベルが %2$d に上がりました！</string>
+    <!-- Translator note: %1$s = skill display name, %2$d = new level number -->
+    <string name="game_level_up_short">%1$s → %2$d</string>
+    <string name="game_max_level">最大レベルに到達しました！</string>
+
+    <!-- ===== Session result summaries ===== -->
+    <string name="game_session_results_title">セッション結果</string>
+    <!-- Translator note: %1$s = skill display name -->
+    <string name="game_session_summary_header">%1$sの活動を完了しました</string>
+    <!-- Translator note: %1$s = formatted XP amount (e.g. "1,234") -->
+    <string name="game_session_xp_total">獲得経験値: +%1$s XP</string>
+    <string name="game_session_no_items">回収したアイテムはありません</string>
+    <string name="game_session_no_level_ups">このセッションでのレベルアップはありません</string>
+    <!-- Translator note: %1$d = number of level ups -->
+    <string name="game_session_level_up_count">レベルが %1$d 上がりました！</string>
+
+    <!-- ===== Combat messages ===== -->
+    <!-- Translator note: %1$s = player or enemy name, %2$d = damage amount -->
+    <string name="game_combat_hit">%1$sの攻撃、%2$dのダメージ！</string>
+    <string name="game_combat_miss">%1$sの攻撃は外れた！</string>
+    <!-- Translator note: %1$s = enemy display name -->
+    <string name="game_combat_enemy_defeated">%1$sを倒した！</string>
+    <!-- Translator note: %1$d = HP restored -->
+    <string name="game_combat_food_eaten">料理を食べた — HPが %1$d 回復。</string>
+    <string name="game_combat_player_died">力尽きました。</string>
+    <string name="game_dungeon_cleared">ダンジョンクリア！</string>
+    <!-- Translator note: %1$s = dungeon display name -->
+    <string name="game_dungeon_summary">%1$s クリア。</string>
+
+    <!-- ===== Farming messages ===== -->
+    <!-- Translator note: %1$s = crop display name -->
+    <string name="game_farming_planted">%1$sを植えました。</string>
+    <!-- Translator note: %1$s = crop display name, %2$d = yield quantity -->
+    <string name="game_farming_harvested">%1$sを %2$d 個収穫しました。</string>
+    <string name="game_farming_all_harvested">収穫可能な畑からすべて収穫しました。</string>
+    <string name="game_farming_patch_cleared">畑をクリアしました。</string>
+    <string name="game_farming_not_ready">この作物はまだ収穫できません。</string>
+    <!-- Translator note: %1$s = crop display name, %2$s = time remaining -->
+    <string name="game_farming_ready_in">%1$sは %2$s 後に収穫可能になります。</string>
+
+    <!-- ===== Crafting messages ===== -->
+    <!-- Translator note: %1$d = quantity crafted, %2$s = item display name -->
+    <string name="game_crafted">%2$sを %1$d 個作成しました。</string>
+    <!-- Translator note: %1$s = item display name -->
+    <string name="game_missing_ingredient">不足している素材: %1$s</string>
+
+    <!-- ===== Shop messages ===== -->
+    <!-- Translator note: %1$d = quantity, %2$s = item display name, %3$d = total cost -->
+    <string name="game_shop_purchased">%2$sを %1$d 個、%3$d コインで購入しました。</string>
+    <!-- Translator note: %1$d = quantity, %2$s = item display name, %3$d = coins received -->
+    <string name="game_shop_sold">%2$sを %1$d 個売却し、%3$d コイン獲得しました。</string>
+
+    <!-- ===== Prayer / burying ===== -->
+    <!-- Translator note: %1$s = bone display name, %2$s = formatted XP gained -->
+    <string name="game_bones_buried">%1$sを埋葬した — 祈り経験値 +%2$s XP。</string>
+
+    <!-- ===== Quest messages ===== -->
+    <!-- Translator note: %1$s = quest display name -->
+    <string name="game_quest_started">クエスト開始: %1$s</string>
+    <string name="game_quest_completed">クエスト完了: %1$s</string>
+    <string name="game_quest_abandoned">クエストを放棄しました。</string>
+    <!-- Translator note: %1$d = current progress, %2$d = target amount -->
+    <string name="game_quest_progress">進行状況: %1$d / %2$d</string>
+
+    <!-- ===== XP gain messages (shown in session frame log) ===== -->
+    <!-- Translator note: %1$s = formatted XP gained this minute -->
+    <string name="game_xp_gained">+%1$s XP</string>
+    <!-- Translator note: %1$s = item display name, %2$d = quantity -->
+    <string name="game_item_received">%1$s +%2$d</string>
+
+    <!-- ===== Arena messages ===== -->
+    <!-- Translator note: %1$s = opponent display name -->
+    <string name="game_arena_challenged">%1$sに挑戦された！</string>
+    <string name="game_arena_victory">勝利！</string>
+    <string name="game_arena_defeat">敗北。</string>
+    <!-- Translator note: %1$d = coins won -->
+    <string name="game_arena_coins_won">%1$d コインを獲得しました。</string>
+
+    <!-- ===== Easter egg / dig ===== -->
+    <string name="game_dig_you_dig">地中を掘り進めた…</string>
+    <string name="game_dig_nothing">土以外には何も見つからなかった。</string>
+    <!-- Translator note: %1$s = item display name -->
+    <string name="game_dig_found">%1$sを見つけた！</string>
+    <!-- Translator note: %1$d = current hole depth in metres -->
+    <string name="game_dig_depth">穴の深さは %1$d メートルです。</string>
+    <string name="game_dig_cooldown">今日はすでに掘り終えています。明日また来てください。</string>
+
+    <!-- ===== Equipment slot names ===== -->
+    <string name="equip_slot_weapon_atk">武器 (攻撃)</string>
+    <string name="equip_slot_weapon_str">武器 (筋力)</string>
+    <string name="equip_slot_weapon_ranged">武器 (遠距離)</string>
+    <string name="equip_slot_weapon_magic">武器 (魔法)</string>
+    <string name="equip_slot_head">頭</string>
+    <string name="equip_slot_body">胴</string>
+    <string name="equip_slot_legs">脚</string>
+    <string name="equip_slot_boots">足</string>
+    <string name="equip_slot_cape">マント</string>
+    <string name="equip_slot_ring">指輪</string>
+    <string name="equip_slot_necklace">ネックレス</string>
+    <string name="equip_slot_shield">盾</string>
+    <string name="equip_slot_pickaxe">ツルハシ</string>
+    <string name="equip_slot_axe">斧</string>
+    <string name="equip_slot_fishing_rod">釣り竿</string>
+    <string name="equip_slot_hoe">クワ</string>
+    <string name="equip_slot_frying_pan">フライパン</string>
+    <string name="equip_slot_grappling_hook">グラップリングフック</string>
+    <string name="equip_slot_hammer">ハンマー</string>
+    <string name="equip_slot_tinderbox">火打ち石</string>
+    <string name="equip_slot_lockpick">ロックピック</string>
+</resources>

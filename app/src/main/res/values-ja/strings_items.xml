@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Ores ===== -->
+    <string name="item_copper_ore_name">銅の鉱石</string>
+    <string name="item_copper_ore_desc">一般的な鉱石。スズ鉱石と組み合わせてブロンズインゴットを製錬する。</string>
+    <string name="item_tin_ore_name">スズの鉱石</string>
+    <string name="item_tin_ore_desc">一般的な鉱石。銅鉱石と組み合わせてブロンズインゴットを製錬する。</string>
+    <string name="item_iron_ore_name">鉄の鉱石</string>
+    <string name="item_iron_ore_desc">鉄および鋼鉄のインゴットを製錬するために使用される多用途の鉱石。</string>
+    <string name="item_coal_name">石炭</string>
+    <string name="item_coal_desc">鋼鉄以上の高ランクのインゴットを製錬する際の燃料として使用される。</string>
+    <string name="item_silver_ore_name">銀の鉱石</string>
+    <string name="item_silver_ore_desc">銀のインゴットや宝飾品を製作するために使用される貴重な鉱石。</string>
+    <string name="item_gold_ore_name">金の鉱石</string>
+    <string name="item_gold_ore_desc">金のインゴットや宝飾品を製作するために使用される貴重な鉱石。</string>
+    <string name="item_mithril_ore_name">ミスリルの鉱石</string>
+    <string name="item_mithril_ore_desc">魔力を宿した希少な鉱石。</string>
+    <string name="item_adamantite_ore_name">アダマンタイトの鉱石</string>
+    <string name="item_adamantite_ore_desc">極めて硬く、非常に希少な鉱石。</string>
+    <string name="item_runite_ore_name">ルナイトの鉱石</string>
+    <string name="item_runite_ore_desc">採掘可能な最も希少な鉱石。最強の装備を作るために使用される。</string>
+    <string name="item_rune_essence_name">ルーンのエッセンス</string>
+    <string name="item_rune_essence_desc">あらゆる種類のルーンを製作するために使用される、魔力を秘めた原石。</string>
+
+    <!-- ===== Metal bars ===== -->
+    <string name="item_bronze_bar_name">ブロンズのインゴット</string>
+    <string name="item_bronze_bar_desc">銅鉱石とスズ鉱石から製錬された。 最も基本的な金属インゴット。</string>
+    <string name="item_iron_bar_name">鉄のインゴット</string>
+    <string name="item_iron_bar_desc">鉄装備の製作に使用される頑丈な鉄のインゴット。</string>
+    <string name="item_silver_bar_name">銀のインゴット</string>
+    <string name="item_silver_bar_desc">宝飾品の製作に使用される精製された銀のインゴット。</string>
+    <string name="item_steel_bar_name">鋼鉄のインゴット</string>
+    <string name="item_steel_bar_desc">鉄より強力。鋼鉄装備の製作に使用される。</string>
+    <string name="item_gold_bar_name">金のインゴット</string>
+    <string name="item_gold_bar_desc">宝飾品や金装備の製作に使用される精製された金のインゴット。</string>
+    <string name="item_mithril_bar_name">ミスリルのインゴット</string>
+    <string name="item_mithril_bar_desc">軽量で魔力を秘めた金属インゴット。</string>
+    <string name="item_adamantite_bar_name">アダマンタイトのインゴット</string>
+    <string name="item_adamantite_bar_desc">並外れて硬い金属インゴット。</string>
+    <string name="item_platinum_bar_name">白金のインゴット</string>
+    <string name="item_platinum_bar_desc">高ランクの宝飾品に使用される、希少で光沢のある白金のインゴット。</string>
+    <string name="item_runite_bar_name">ルナイトのインゴット</string>
+    <string name="item_runite_bar_desc">製錬可能な最強の金属インゴット。</string>
+
+    <!-- ===== Gems ===== -->
+    <string name="item_sapphire_name">サファイア</string>
+    <string name="item_sapphire_desc">宝飾品の製作に使用される青い宝石。</string>
+    <string name="item_emerald_name">エメラルド</string>
+    <string name="item_emerald_desc">中程度の希少性を持つ緑色の宝石。</string>
+    <string name="item_ruby_name">ルビー</string>
+    <string name="item_ruby_desc">赤色の宝石。希少で価値が高い。</string>
+    <string name="item_diamond_name">ダイヤモンド</string>
+    <string name="item_diamond_desc">最も希少で最も価値の高い宝石。</string>
+
+    <!-- ===== Logs ===== -->
+    <string name="item_log_name">原木</string>
+    <string name="item_log_desc">普通の木から採れた基本的な原木。火起こしや矢作りに使用される。</string>
+    <string name="item_oak_log_name">オークの原木</string>
+    <string name="item_oak_log_desc">オークの木から採れた原木。</string>
+    <string name="item_willow_log_name">ウィローの原木</string>
+    <string name="item_willow_log_desc">ウィローの木から採れた軽量な原木。</string>
+    <string name="item_maple_log_name">メープルの原木</string>
+    <string name="item_maple_log_desc">メープルの木から採れた密度の高い原木。</string>
+    <string name="item_yew_log_name">イチイの原木</string>
+    <string name="item_yew_log_desc">古代のイチイの木から採れた原木。</string>
+    <string name="item_magic_log_name">魔法の原木</string>
+    <string name="item_magic_log_desc">希少な魔法の木から採れた、魔力を宿した原木。</string>
+    <string name="item_redwood_log_name">レッドウッドの原木</string>
+    <string name="item_redwood_log_desc">最も背の高いレッドウッドの木から採れた巨大な原木。</string>
+
+    <!-- ===== Raw fish ===== -->
+    <string name="item_raw_shrimp_name">生のエビ</string>
+    <string name="item_raw_shrimp_desc">生のエビ。食べる前に調理しよう。</string>
+    <string name="item_raw_sardine_name">生のイワシ</string>
+    <string name="item_raw_sardine_desc">生のイワシ。食べる前に調理しよう。</string>
+    <string name="item_raw_herring_name">生のニシン</string>
+    <string name="item_raw_herring_desc">生のニシン。食べる前に調理しよう。</string>
+    <string name="item_raw_mackerel_name">生のサバ</string>
+    <string name="item_raw_mackerel_desc">生のサバ。食べる前に調理しよう。</string>
+    <string name="item_raw_trout_name">生のマス</string>
+    <string name="item_raw_trout_desc">生のマス。食べる前に調理しよう。</string>
+    <string name="item_raw_salmon_name">生のサケ</string>
+    <string name="item_raw_salmon_desc">生のサケ。食べる前に調理しよう。</string>
+    <string name="item_raw_tuna_name">生のマグロ</string>
+    <string name="item_raw_tuna_desc">生のマグロ。食べる前に調理しよう。</string>
+    <string name="item_raw_lobster_name">生のロブスター</string>
+    <string name="item_raw_lobster_desc">生のロブスター。食べる前に調理しよう。</string>
+    <string name="item_raw_swordfish_name">生のメカジキ</string>
+    <string name="item_raw_swordfish_desc">生のメカジキ。食べる前に調理しよう。</string>
+    <string name="item_raw_monkfish_name">生のアンコウ</string>
+    <string name="item_raw_monkfish_desc">生のアンコウ。食べる前に調理しよう。</string>
+    <string name="item_raw_shark_name">生のサメ</string>
+    <string name="item_raw_shark_desc">生のサメ。食べる前に調理しよう。</string>
+    <string name="item_raw_sea_turtle_name">生のウミガメ</string>
+    <string name="item_raw_sea_turtle_desc">生のウミガメ。食べる前に調理しよう。</string>
+    <string name="item_raw_manta_ray_name">生のマンタ</string>
+    <string name="item_raw_manta_ray_desc">生のマンタ。食べる前に調理しよう。</string>
+
+    <!-- ===== Cooked fish ===== -->
+    <string name="item_shrimp_name">エビ</string>
+    <string name="item_shrimp_desc">焼きエビ。HPを少し回復する。</string>
+    <string name="item_sardine_name">イワシ</string>
+    <string name="item_sardine_desc">焼きイワシ。食べるとHPを回復する。</string>
+    <string name="item_herring_name">ニシン</string>
+    <string name="item_herring_desc">焼きニシン。食べるとHPを回復する。</string>
+    <string name="item_mackerel_name">サバ</string>
+    <string name="item_mackerel_desc">焼きサバ。食べるとHPを回復する。</string>
+    <string name="item_trout_name">マス</string>
+    <string name="item_trout_desc">焼きマス。食べるとHPを回復する。</string>
+    <string name="item_salmon_name">サケ</string>
+    <string name="item_salmon_desc">焼きサケ。食べるとHPを回復する。</string>
+    <string name="item_tuna_name">マグロ</string>
+    <string name="item_tuna_desc">焼きマグロ。食べるとHPを回復する。</string>
+    <string name="item_lobster_name">ロブスター</string>
+    <string name="item_lobster_desc">焼きロブスター。HPをかなり回復する。</string>
+    <string name="item_swordfish_name">メカジキ</string>
+    <string name="item_swordfish_desc">焼きメカジキ。HPを大幅に回復する。</string>
+    <string name="item_monkfish_name">アンコウ</string>
+    <string name="item_monkfish_desc">焼きアンコウ。HPをそこそこ回復する。</string>
+    <string name="item_shark_name">サメ</string>
+    <string name="item_shark_desc">焼きサメ。HPを大量に回復する。</string>
+    <string name="item_sea_turtle_name">ウミガメ</string>
+    <string name="item_sea_turtle_desc">焼きウミガメ。HPを非常に大量に回復する。</string>
+    <string name="item_manta_ray_name">マンタ</string>
+    <string name="item_manta_ray_desc">焼きマンタ。入手可能な中で最高の食べ物の一つ。</string>
+
+    <!-- ===== Raw meat ===== -->
+    <string name="item_raw_rat_meat_name">生のネズミ肉</string>
+    <string name="item_raw_rat_meat_desc">生のネズミ肉。食べる前に調理しよう。</string>
+    <string name="item_raw_chicken_name">生の鶏肉</string>
+    <string name="item_raw_chicken_desc">生の鶏肉。食べる前に調理しよう。</string>
+    <string name="item_raw_mutton_name">生のマトン肉</string>
+    <string name="item_raw_mutton_desc">生のマトン肉。食べる前に調理しよう。</string>
+    <string name="item_raw_beef_name">生の牛肉</string>
+    <string name="item_raw_beef_desc">生の牛肉。食べる前に調理しよう。</string>
+    <string name="item_raw_meat_name">生の肉</string>
+    <string name="item_raw_meat_desc">正体不明の生の肉。食べる前に調理しよう。</string>
+
+    <!-- ===== Cooked meat ===== -->
+    <string name="item_cooked_rat_meat_name">ネズミ肉</string>
+    <string name="item_cooked_rat_meat_desc">焼きネズミ肉。ほとんど食べられないが、HPをごくわずかに回復する。</string>
+    <string name="item_cooked_chicken_name">焼きチキン</string>
+    <string name="item_cooked_chicken_desc">焼きチキン。食べるとHPを回復する。</string>
+    <string name="item_cooked_mutton_name">焼きマトン</string>
+    <string name="item_cooked_mutton_desc">焼きマトン。食べるとHPを回復する。</string>
+    <string name="item_cooked_beef_name">焼き牛肉</string>
+    <string name="item_cooked_beef_desc">焼き牛肉。食べるとHPを回復する。</string>
+
+    <!-- ===== Melee weapons — bronze ===== -->
+    <string name="item_bronze_sword_name">ブロンズの片手剣</string>
+    <string name="item_bronze_sword_desc">基本的なブロンズ製の片手剣。</string>
+    <string name="item_bronze_scimitar_name">ブロンズのシミター</string>
+    <string name="item_bronze_scimitar_desc">筋力ボーナスが付いた、ブロンズ製の湾曲した片手剣。</string>
+    <string name="item_bronze_2h_sword_name">ブロンズの両手剣</string>
+    <string name="item_bronze_2h_sword_desc">ブロンズ製の両手剣。高いダメージを与えるが速度は遅い。</string>
+    <string name="item_bronze_warhammer_name">ブロンズのウォーハンマー</string>
+    <string name="item_bronze_warhammer_desc">重厚なブロンズ製の片手ハンマー。</string>
+    <string name="item_bronze_battleaxe_name">ブロンズのバトルアックス</string>
+    <string name="item_bronze_battleaxe_desc">恐るべきブロンズ製の片手斧。</string>
+    <string name="item_bronze_dagger_name">ブロンズのダガー</string>
+    <string name="item_bronze_dagger_desc">素早く軽量なブロンズ製のダガー。</string>
+
+    <!-- Melee weapons — iron -->
+    <string name="item_iron_sword_name">鉄の片手剣</string>
+    <string name="item_iron_sword_desc">鉄製の片手剣。</string>
+    <string name="item_iron_scimitar_name">鉄のシミター</string>
+    <string name="item_iron_scimitar_desc">筋力ボーナスが付いた、鉄製の湾曲した片手剣。</string>
+    <string name="item_iron_2h_sword_name">鉄の両手剣</string>
+    <string name="item_iron_2h_sword_desc">鉄製の両手剣。</string>
+    <string name="item_iron_warhammer_name">鉄のウォーハンマー</string>
+    <string name="item_iron_warhammer_desc">重厚な鉄製の片手ハンマー。</string>
+    <string name="item_iron_battleaxe_name">鉄のバトルアックス</string>
+    <string name="item_iron_battleaxe_desc">恐るべき鉄製の片手斧。</string>
+    <string name="item_iron_dagger_name">鉄のダガー</string>
+    <string name="item_iron_dagger_desc">素早く軽量な鉄製のダガー。</string>
+
+    <!-- Melee weapons — steel -->
+    <string name="item_steel_sword_name">鋼鉄の片手剣</string>
+    <string name="item_steel_sword_desc">鋼鉄製の片手剣。</string>
+    <string name="item_steel_scimitar_name">鋼鉄のシミター</string>
+    <string name="item_steel_scimitar_desc">筋力ボーナスが付いた、鋼鉄製の湾曲した片手剣。</string>
+    <string name="item_steel_2h_sword_name">鋼鉄の両手剣</string>
+    <string name="item_steel_2h_sword_desc">鋼鉄製の両手剣。</string>
+    <string name="item_steel_warhammer_name">鋼鉄のウォーハンマー</string>
+    <string name="item_steel_warhammer_desc">重厚な鋼鉄製の片手ハンマー。</string>
+    <string name="item_steel_battleaxe_name">鋼鉄のバトルアックス</string>
+    <string name="item_steel_battleaxe_desc">恐るべき鋼鉄製の片手斧。</string>
+
+    <!-- Melee weapons — mithril -->
+    <string name="item_mithril_sword_name">ミスリルの片手剣</string>
+    <string name="item_mithril_sword_desc">軽量で魔力を秘めた片手剣。</string>
+    <string name="item_mithril_scimitar_name">ミスリルのシミター</string>
+    <string name="item_mithril_scimitar_desc">超自然的な鋭さを持つ、ミスリル製の湾曲した剣。</string>
+    <string name="item_mithril_2h_sword_name">ミスリルの両手剣</string>
+    <string name="item_mithril_2h_sword_desc">ミスリル製の両手剣。</string>
+    <string name="item_mithril_warhammer_name">ミスリルのウォーハンマー</string>
+    <string name="item_mithril_warhammer_desc">軽量で魔力を秘めたウォーハンマー。</string>
+    <string name="item_mithril_battleaxe_name">ミスリルのバトルアックス</string>
+    <string name="item_mithril_battleaxe_desc">格別の品質を持つミスリル製のバトルアックス。</string>
+
+    <!-- Melee weapons — adamantite -->
+    <string name="item_adamantite_sword_name">アダマンタイトの片手剣</string>
+    <string name="item_adamantite_sword_desc">並外れて硬い片手剣。</string>
+    <string name="item_adamantite_scimitar_name">アダマンタイトのシミター</string>
+    <string name="item_adamantite_scimitar_desc">優れた筋力ボーナスが付いた、極めて硬い湾曲した剣。</string>
+    <string name="item_adamantite_2h_sword_name">アダマンタイトの両手剣</string>
+    <string name="item_adamantite_2h_sword_desc">アダマンタイトから鍛造された両手剣。</string>
+    <string name="item_adamantite_warhammer_name">アダマンタイトのウォーハンマー</string>
+    <string name="item_adamantite_warhammer_desc">並外れて重く硬いウォーハンマー。</string>
+    <string name="item_adamantite_battleaxe_name">アダマンタイトのバトルアックス</string>
+    <string name="item_adamantite_battleaxe_desc">壊滅的な破壊力を持つアダマンタイト製のバトルアックス。</string>
+
+    <!-- Melee weapons — runite -->
+    <string name="item_runite_sword_name">ルナイトの片手剣</string>
+    <string name="item_runite_sword_desc">最高峰の片手剣。</string>
+    <string name="item_runite_scimitar_name">ルナイトのシミター</string>
+    <string name="item_runite_scimitar_desc">格別の筋力ボーナスが付いた、最高峰のシミター。</string>
+    <string name="item_runite_2h_sword_name">ルナイトの両手剣</string>
+    <string name="item_runite_2h_sword_desc">最高峰の両手剣。</string>
+    <string name="item_runite_warhammer_name">ルナイトのウォーハンマー</string>
+    <string name="item_runite_warhammer_desc">最高峰のウォーハンマー。</string>
+    <string name="item_runite_battleaxe_name">ルナイトのバトルアックス</string>
+    <string name="item_runite_battleaxe_desc">最高峰のバトルアックス。</string>
+
+    <!-- ===== Ranged weapons ===== -->
+    <string name="item_wooden_bow_name">木製の弓</string>
+    <string name="item_wooden_bow_desc">シンプルな木製の弓。遠距離の訓練に適している。</string>
+    <string name="item_oak_bow_name">オークの弓</string>
+    <string name="item_oak_bow_desc">オークの木から作られた信頼性の高い弓。</string>
+
+    <!-- ===== Magic weapons ===== -->
+    <string name="item_basic_staff_name">初心者のスタッフ</string>
+    <string name="item_basic_staff_desc">見習い魔術師用のシンプルな魔法のスタッフ。</string>
+    <string name="item_apprentice_staff_name">見習い魔術師のスタッフ</string>
+    <string name="item_apprentice_staff_desc">成長途中の魔術師用に改良されたスタッフ。</string>
+    <string name="item_staff_of_air_name">風のスタッフ</string>
+    <string name="item_staff_of_air_desc">風の魔力が吹き込まれた属性スタッフ。</string>
+    <string name="item_staff_of_water_name">水のスタッフ</string>
+    <string name="item_staff_of_water_desc">水の魔力が吹き込まれた属性スタッフ。</string>
+    <string name="item_staff_of_earth_name">地のスタッフ</string>
+    <string name="item_staff_of_earth_desc">地の魔力が吹き込まれた属性スタッフ。</string>
+    <string name="item_staff_of_fire_name">火のスタッフ</string>
+    <string name="item_staff_of_fire_desc">火の魔力が吹き込まれた属性スタッフ。</string>
+    <string name="item_staff_of_mind_name">精神のスタッフ</string>
+    <string name="item_staff_of_mind_desc">精神エネルギーが吹き込まれたスタッフ。</string>
+    <string name="item_staff_of_chaos_name">混沌のスタッフ</string>
+    <string name="item_staff_of_chaos_desc">荒々しい魔力が脈動する混沌のスタッフ。</string>
+    <string name="item_staff_of_death_name">死のスタッフ</string>
+    <string name="item_staff_of_death_desc">死の魔力に包まれた闇のスタッフ。</string>
+    <string name="item_staff_of_blood_name">血のスタッフ</string>
+    <string name="item_staff_of_blood_desc">血の魔法によって強化された強力なスタッフ。</string>
+
+    <!-- ===== Armour — bronze ===== -->
+    <string name="item_bronze_helmet_name">ブロンズの兜</string>
+    <string name="item_bronze_helmet_desc">基本的なブロンズ製の頭用防具。</string>
+    <string name="item_bronze_platebody_name">ブロンズのプレートボディ</string>
+    <string name="item_bronze_platebody_desc">基本的なブロンズ製の胴用防具。</string>
+    <string name="item_bronze_platelegs_name">ブロンズのプレートレッグ</string>
+    <string name="item_bronze_platelegs_desc">基本的なブロンズ製の脚用防具。</string>
+    <string name="item_bronze_shield_name">ブロンズのシールド</string>
+    <string name="item_bronze_shield_desc">基本的なブロンズ製の盾。</string>
+
+    <!-- Armour — iron -->
+    <string name="item_iron_helmet_name">鉄の兜</string>
+    <string name="item_iron_helmet_desc">鉄製の頭用防具。</string>
+    <string name="item_iron_platebody_name">鉄のプレートボディ</string>
+    <string name="item_iron_platebody_desc">鉄製の胴用防具。</string>
+    <string name="item_iron_platelegs_name">鉄のプレートレッグ</string>
+    <string name="item_iron_platelegs_desc">鉄製の脚用防具。</string>
+    <string name="item_iron_shield_name">鉄のシールド</string>
+    <string name="item_iron_shield_desc">鉄製の盾。</string>
+
+    <!-- Armour — steel -->
+    <string name="item_steel_helmet_name">鋼鉄の兜</string>
+    <string name="item_steel_helmet_desc">頑丈な鋼鉄製の頭用防具。</string>
+    <string name="item_steel_platebody_name">鋼鉄のプレートボディ</string>
+    <string name="item_steel_platebody_desc">頑丈な鋼鉄製の胴用防具。</string>
+    <string name="item_steel_platelegs_name">鋼鉄のプレートレッグ</string>
+    <string name="item_steel_platelegs_desc">頑丈な鋼鉄製の脚用防具。</string>
+    <string name="item_steel_shield_name">鋼鉄のシールド</string>
+    <string name="item_steel_shield_desc">頑丈な鋼鉄製の盾。</string>
+
+    <!-- Armour — mithril -->
+    <string name="item_mithril_helmet_name">ミスリルの兜</string>
+    <string name="item_mithril_helmet_desc">軽量で魔力を秘めた頭用防具。</string>
+    <string name="item_mithril_platebody_name">ミスリルのプレートボディ</string>
+    <string name="item_mithril_platebody_desc">軽量で魔力を秘めた胴用防具。</string>
+    <string name="item_mithril_platelegs_name">ミスリルのプレートレッグ</string>
+    <string name="item_mithril_platelegs_desc">軽量で魔力を秘めた脚用防具。</string>
+    <string name="item_mithril_shield_name">ミスリルのシールド</string>
+    <string name="item_mithril_shield_desc">軽量で魔力を秘めた盾。</string>
+
+    <!-- Armour — adamantite -->
+    <string name="item_adamantite_helmet_name">アダマンタイトの兜</string>
+    <string name="item_adamantite_helmet_desc">極めて硬い頭用防具。</string>
+    <string name="item_adamantite_platebody_name">アダマンタイトのプレートボディ</string>
+    <string name="item_adamantite_platebody_desc">極めて硬い胴用防具。</string>
+    <string name="item_adamantite_platelegs_name">アダマンタイトのプレートレッグ</string>
+    <string name="item_adamantite_platelegs_desc">極めて硬い脚用防具。</string>
+    <string name="item_adamantite_shield_name">アダマンタイトのシールド</string>
+    <string name="item_adamantite_shield_desc">極めて硬い盾。</string>
+
+    <!-- Armour — runite -->
+    <string name="item_runite_helmet_name">ルナイトの兜</string>
+    <string name="item_runite_helmet_desc">最高峰の頭用防具。</string>
+    <string name="item_runite_platebody_name">ルナイトのプレートボディ</string>
+    <string name="item_runite_platebody_desc">最高峰の胴用防具。</string>
+    <string name="item_runite_platelegs_name">ルナイトのプレートレッグ</string>
+    <string name="item_runite_platelegs_desc">最高峰の脚用防具。</string>
+    <string name="item_runite_shield_name">ルナイトのシールド</string>
+    <string name="item_runite_shield_desc">最高峰の盾。</string>
+
+    <!-- ===== Tools — pickaxes ===== -->
+    <string name="item_bronze_pickaxe_name">ブロンズのツルハシ</string>
+    <string name="item_bronze_pickaxe_desc">採掘用の基本的なツルハシ。</string>
+    <string name="item_iron_pickaxe_name">鉄のツルハシ</string>
+    <string name="item_iron_pickaxe_desc">採掘用の信頼性の高いツルハシ。</string>
+    <string name="item_steel_pickaxe_name">鋼鉄のツルハシ</string>
+    <string name="item_steel_pickaxe_desc">採掘用の頑丈なツルハシ。</string>
+    <string name="item_mithril_pickaxe_name">ミスリルのツルハシ</string>
+    <string name="item_mithril_pickaxe_desc">採掘用の軽量で魔力を秘めたツルハシ。</string>
+    <string name="item_adamantite_pickaxe_name">アダマンタイトのツルハシ</string>
+    <string name="item_adamantite_pickaxe_desc">採掘用の極めて硬いツルハシ。</string>
+    <string name="item_runite_pickaxe_name">ルナイトのツルハシ</string>
+    <string name="item_runite_pickaxe_desc">採掘用の最高峰のツルハシ。</string>
+
+    <!-- Tools — axes -->
+    <string name="item_bronze_axe_name">ブロンズの斧</string>
+    <string name="item_bronze_axe_desc">伐採用の基本的な斧。</string>
+    <string name="item_iron_axe_name">鉄の斧</string>
+    <string name="item_iron_axe_desc">伐採用の信頼性の高い斧。</string>
+    <string name="item_steel_axe_name">鋼鉄の斧</string>
+    <string name="item_steel_axe_desc">伐採用の頑丈な斧。</string>
+    <string name="item_mithril_axe_name">ミスリルの斧</string>
+    <string name="item_mithril_axe_desc">伐採用の軽量で魔力を秘めた斧。</string>
+    <string name="item_adamantite_axe_name">アダマンタイトの斧</string>
+    <string name="item_adamantite_axe_desc">伐採用の極めて硬い斧。</string>
+    <string name="item_runite_axe_name">ルナイトの斧</string>
+    <string name="item_runite_axe_desc">伐採用の最高峰の斧。</string>
+
+    <!-- Tools — fishing rods -->
+    <string name="item_bronze_fishing_rod_name">ブロンズの釣り竿</string>
+    <string name="item_bronze_fishing_rod_desc">基本的な釣り竿。</string>
+    <string name="item_iron_fishing_rod_name">鉄の釣り竿</string>
+    <string name="item_iron_fishing_rod_desc">信頼性の高い釣り竿。</string>
+    <string name="item_steel_fishing_rod_name">鋼鉄の釣り竿</string>
+    <string name="item_steel_fishing_rod_desc">頑丈な釣り竿。</string>
+    <string name="item_mithril_fishing_rod_name">ミスリルの釣り竿</string>
+    <string name="item_mithril_fishing_rod_desc">軽量で魔力を秘めた釣り竿。</string>
+    <string name="item_adamantite_fishing_rod_name">アダマンタイトの釣り竿</string>
+    <string name="item_adamantite_fishing_rod_desc">極めて耐久性の高い釣り竿。</string>
+    <string name="item_runite_fishing_rod_name">ルナイトの釣り竿</string>
+    <string name="item_runite_fishing_rod_desc">最高峰の釣り竿。</string>
+
+    <!-- ===== Arrows ===== -->
+    <string name="item_bronze_arrow_name">ブロンズの矢</string>
+    <string name="item_bronze_arrow_desc">遠距離戦闘用の基本的な矢。</string>
+    <string name="item_iron_arrow_name">鉄の矢</string>
+    <string name="item_iron_arrow_desc">遠距離戦闘用の鉄製の矢。</string>
+    <string name="item_steel_arrow_name">鋼鉄の矢</string>
+    <string name="item_steel_arrow_desc">遠距離戦闘用の鋼鉄製の矢。</string>
+    <string name="item_mithril_arrow_name">ミスリルの矢</string>
+    <string name="item_mithril_arrow_desc">遠距離戦闘用のミスリル製の矢。</string>
+    <string name="item_adamantite_arrow_name">アダマンタイトの矢</string>
+    <string name="item_adamantite_arrow_desc">遠距離戦闘用のアダマンタイト製の矢。</string>
+    <string name="item_runite_arrow_name">ルナイトの矢</string>
+    <string name="item_runite_arrow_desc">最高峰の矢。</string>
+
+    <!-- Arrow components -->
+    <string name="item_arrow_shaft_name">矢の木軸</string>
+    <string name="item_arrow_shaft_desc">矢を製作するために使用される木製の軸。</string>
+    <string name="item_bronze_arrow_tips_name">ブロンズの矢尻</string>
+    <string name="item_bronze_arrow_tips_desc">ブロンズ ブロンズの矢を製作するための矢尻。</string>
+    <string name="item_iron_arrow_tips_name">鉄の矢尻</string>
+    <string name="item_iron_arrow_tips_desc">鉄 鉄の矢を製作するための矢尻。</string>
+    <string name="item_steel_arrow_tips_name">鋼鉄の矢尻</string>
+    <string name="item_steel_arrow_tips_desc">鋼鉄 鋼鉄の矢を製作するための矢尻。</string>
+    <string name="item_mithril_arrow_tips_name">ミスリルの矢尻</string>
+    <string name="item_mithril_arrow_tips_desc">ミスリル ミスリルの矢を製作するための矢尻。</string>
+    <string name="item_adamantite_arrow_tips_name">アダマンタイトの矢尻</string>
+    <string name="item_adamantite_arrow_tips_desc">アダマンタイト アダマンタイトの矢を製作するための矢尻。</string>
+    <string name="item_runite_arrow_tips_name">ルナイトの矢尻</string>
+    <string name="item_runite_arrow_tips_desc">ルナイト ルナイトの矢を製作するための矢尻。</string>
+
+    <!-- ===== Jewellery — plain ===== -->
+    <string name="item_silver_ring_name">銀の指輪</string>
+    <string name="item_silver_ring_desc">シンプルな銀の指輪。</string>
+    <string name="item_silver_necklace_name">銀のネックレス</string>
+    <string name="item_silver_necklace_desc">シンプルな銀のネックレス。</string>
+    <string name="item_gold_ring_name">金の指輪</string>
+    <string name="item_gold_ring_desc">シンプルな金の指輪。</string>
+    <string name="item_gold_necklace_name">金のネックレス</string>
+    <string name="item_gold_necklace_desc">シンプルな金のネックレス。</string>
+    <string name="item_platinum_ring_name">白金の指輪</string>
+    <string name="item_platinum_ring_desc">シンプルな白金の指輪。</string>
+    <string name="item_platinum_necklace_name">白金のネックレス</string>
+    <string name="item_platinum_necklace_desc">シンプルな白金のネックレス。</string>
+
+    <!-- Jewellery — sapphire -->
+    <string name="item_silver_sapphire_ring_name">銀のサファイアの指輪</string>
+    <string name="item_silver_sapphire_ring_desc">サファイアがはめ込まれた銀の指輪。</string>
+    <string name="item_silver_sapphire_necklace_name">銀のサファイアのネックレス</string>
+    <string name="item_silver_sapphire_necklace_desc">サファイアがはめ込まれた銀のネックレス。</string>
+    <string name="item_gold_sapphire_ring_name">金のサファイアの指輪</string>
+    <string name="item_gold_sapphire_ring_desc">サファイアがはめ込まれた金の指輪。</string>
+    <string name="item_gold_sapphire_necklace_name">金のサファイアのネックレス</string>
+    <string name="item_gold_sapphire_necklace_desc">サファイアがはめ込まれた金のネックレス。</string>
+    <string name="item_platinum_sapphire_ring_name">白金のサファイアの指輪</string>
+    <string name="item_platinum_sapphire_ring_desc">サファイアがはめ込まれた白金の指輪。</string>
+    <string name="item_platinum_sapphire_necklace_name">白金のサファイアのネックレス</string>
+    <string name="item_platinum_sapphire_necklace_desc">サファイアがはめ込まれた白金のネックレス。</string>
+
+    <!-- Jewellery — emerald -->
+    <string name="item_gold_emerald_ring_name">金のエメラルドの指輪</string>
+    <string name="item_gold_emerald_ring_desc">エメラルドがはめ込まれた金の指輪。</string>
+    <string name="item_gold_emerald_necklace_name">金のエメラルドのネックレス</string>
+    <string name="item_gold_emerald_necklace_desc">エメラルドがはめ込まれた金のネックレス。</string>
+    <string name="item_platinum_emerald_ring_name">白金のエメラルドの指輪</string>
+    <string name="item_platinum_emerald_ring_desc">エメラルドがはめ込まれた白金の指輪。</string>
+    <string name="item_platinum_emerald_necklace_name">白金のエメラルドのネックレス</string>
+    <string name="item_platinum_emerald_necklace_desc">エメラルドがはめ込まれた白金のネックレス。</string>
+
+    <!-- Jewellery — ruby -->
+    <string name="item_gold_ruby_ring_name">金のルビーの指輪</string>
+    <string name="item_gold_ruby_ring_desc">ルビーがはめ込まれた金の指輪。</string>
+    <string name="item_gold_ruby_necklace_name">金のルビーのネックレス</string>
+    <string name="item_gold_ruby_necklace_desc">ルビーがはめ込まれた金のネックレス。</string>
+    <string name="item_platinum_ruby_ring_name">白金のルビーの指輪</string>
+    <string name="item_platinum_ruby_ring_desc">ルビーがはめ込まれた白金の指輪。</string>
+    <string name="item_platinum_ruby_necklace_name">白金のルビーのネックレス</string>
+    <string name="item_platinum_ruby_necklace_desc">ルビーがはめ込まれた白金のネックレス。</string>
+
+    <!-- Jewellery — diamond -->
+    <string name="item_gold_diamond_ring_name">金のダイヤモンドの指輪</string>
+    <string name="item_gold_diamond_ring_desc">ダイヤモンドがはめ込まれた金の指輪。</string>
+    <string name="item_gold_diamond_necklace_name">金のダイヤモンドのネックレス</string>
+    <string name="item_gold_diamond_necklace_desc">ダイヤモンドがはめ込まれた金のネックレス。</string>
+    <string name="item_platinum_diamond_ring_name">白金のダイヤモンドの指輪</string>
+    <string name="item_platinum_diamond_ring_desc">ダイヤモンドがはめ込まれた白金の指輪。</string>
+    <string name="item_platinum_diamond_necklace_name">白金のダイヤモンドのネックレス</string>
+    <string name="item_platinum_diamond_necklace_desc">ダイヤモンドがはめ込まれた白金のネックレス。</string>
+
+    <!-- ===== Miscellaneous drops ===== -->
+    <string name="item_ashes_name">灰</string>
+    <string name="item_ashes_desc">普通の原木が燃えた残りかす。祈りスキルで撒くとボーナス祈り経験値（XP）を獲得できる。</string>
+    <string name="item_oak_ashes_name">オークの灰</string>
+    <string name="item_oak_ashes_desc">オークの原木が燃えた残りかす。撒くと普通の灰よりも多くの祈り経験値（XP）を獲得できる。</string>
+    <string name="item_willow_ashes_name">ウィローの灰</string>
+    <string name="item_willow_ashes_desc">ウィローの原木が燃えた残りかす。撒くと祈り経験値（XP）を獲得できる。</string>
+    <string name="item_maple_ashes_name">メープルの灰</string>
+    <string name="item_maple_ashes_desc">メープルの原木が燃えた残りかす。撒くと祈り経験値（XP）を獲得できる。</string>
+    <string name="item_yew_ashes_name">イチイの灰</string>
+    <string name="item_yew_ashes_desc">イチイの原木が燃えた残りかす。撒くとかなりの祈り経験値（XP）を獲得できる。</string>
+    <string name="item_magic_ashes_name">魔法の灰</string>
+    <string name="item_magic_ashes_desc">魔法の原木が燃えた残りかす。撒くと大量の祈り経験値（XP）を獲得できる。</string>
+    <string name="item_redwood_ashes_name">レッドウッドの灰</string>
+    <string name="item_redwood_ashes_desc">レッドウッドの原木が燃えた残りかす。撒くとすべての灰の中で最も多くの祈り経験値（XP）を獲得できる。</string>
+    <string name="item_bones_name">骨</string>
+    <string name="item_bones_desc">小さな生物の骨。埋めると祈り経験値（XP）を獲得できる。</string>
+    <string name="item_big_bones_name">大きな骨</string>
+    <string name="item_big_bones_desc">大きめの骨。埋めるとより多くの祈り経験値（XP）を獲得できる。</string>
+    <string name="item_giant_bones_name">巨人の骨</string>
+    <string name="item_giant_bones_desc">強力な敵から採れた巨大な骨。埋めるとかなりの祈り経験値（XP）を獲得できる。</string>
+    <string name="item_dragon_bone_name">ドラゴンの骨</string>
+    <string name="item_dragon_bone_desc">古代の竜の骨。埋めると最も多くの祈り経験値（XP）を獲得できる。</string>
+    <string name="item_dragon_scale_name">ドラゴンの鱗</string>
+    <string name="item_dragon_scale_desc">緑竜から採れた頑丈な鱗。希少で価値が高い。</string>
+    <string name="item_coins_name">コイン</string>
+    <string name="item_coins_desc">この王国の通貨。ショップで使用できる。</string>
+    <string name="item_goblin_mail_name">ゴブリンの鎧</string>
+    <string name="item_goblin_mail_desc">ゴブリンが落とした使い古された鎧。高く売れる。</string>
+    <string name="item_imp_hide_name">インプの皮</string>
+    <string name="item_imp_hide_desc">インプから剥ぎ取った頑丈な皮。</string>
+    <string name="item_spider_silk_name">クモの糸</string>
+    <string name="item_spider_silk_desc">大蜘蛛が紡いだ上質な絹。職人たちに非常に珍重される。</string>
+    <string name="item_spider_fang_name">クモの毒牙</string>
+    <string name="item_spider_fang_desc">大蜘蛛の毒牙。</string>
+    <string name="item_cowhide_name">牛皮</string>
+    <string name="item_cowhide_desc">牛から採れた粗い皮。革工芸で使用される。</string>
+    <string name="item_wool_name">ウール</string>
+    <string name="item_wool_desc">羊から採れた柔らかい羊毛。</string>
+    <string name="item_feather_name">羽毛</string>
+    <string name="item_feather_desc">矢作りの羽として使用される羽毛。</string>
+    <string name="item_rotten_flesh_name">腐肉</string>
+    <string name="item_rotten_flesh_desc">アンデッドが落とした腐肉。恐ろしく臭う。</string>
+    <string name="item_lockpick_name">ロックピック</string>
+    <string name="item_lockpick_desc">ローグが落としたロックピック。</string>
+    <string name="item_magic_bean_name">魔法の豆</string>
+    <string name="item_magic_bean_desc">神秘的な効果を秘めた魔法の豆。</string>
+    <string name="item_hellhound_fang_name">ヘルハウンドの牙</string>
+    <string name="item_hellhound_fang_desc">ヘルハウンドの焦げた牙。</string>
+    <string name="item_demon_horn_name">悪魔の角</string>
+    <string name="item_demon_horn_desc">レッサーデモンから引きちぎった鋭い角。</string>
+    <string name="item_troll_bone_name">トロールの骨</string>
+    <string name="item_troll_bone_desc">マウンテントロールの巨大な節くれ立った骨。</string>
+
+    <!-- ===== Runes ===== -->
+    <string name="item_air_rune_name">風のルーン</string>
+    <string name="item_air_rune_desc">風の魔力が吹き込まれたルーン。風の呪文で使用される。</string>
+    <string name="item_water_rune_name">水のルーン</string>
+    <string name="item_water_rune_desc">水の魔力が吹き込まれたルーン。</string>
+    <string name="item_earth_rune_name">地のルーン</string>
+    <string name="item_earth_rune_desc">地の魔力が吹き込まれたルーン。</string>
+    <string name="item_fire_rune_name">火のルーン</string>
+    <string name="item_fire_rune_desc">火の魔力が吹き込まれたルーン。</string>
+    <string name="item_mind_rune_name">精神のルーン</string>
+    <string name="item_mind_rune_desc">精神エネルギーをチャネリングするルーン。</string>
+    <string name="item_chaos_rune_name">混沌のルーン</string>
+    <string name="item_chaos_rune_desc">荒々しい混沌の魔力を秘めたルーン。</string>
+    <string name="item_death_rune_name">死のルーン</string>
+    <string name="item_death_rune_desc">死の魔力が注ぎ込まれたルーン。</string>
+    <string name="item_blood_rune_name">血のルーン</string>
+    <string name="item_blood_rune_desc">血の魔法によって起動する希少なルーン。</string>
+
+    <!-- ===== Crops ===== -->
+    <string name="crop_potato_name">ジャガイモ</string>
+    <string name="crop_onion_name">タマネギ</string>
+    <string name="crop_cabbage_name">キャベツ</string>
+    <string name="crop_carrot_name">ニンジン</string>
+    <string name="crop_tomato_name">トマト</string>
+    <string name="crop_corn_name">トウモロコシ</string>
+    <string name="crop_pumpkin_name">カボチャ</string>
+    <string name="crop_watermelon_name">スイカ</string>
+    <string name="crop_strawberry_name">イチゴ</string>
+    <string name="crop_magic_herb_name">魔法のハーブ</string>
+    <string name="crop_dragon_fruit_name">ドラゴンフルーツ</string>
+    <string name="crop_golden_wheat_name">黄金の小麦</string>
+    <string name="crop_spirit_herb_name">スピリット</string>
+    <string name="crop_celestial_bloom_name">セレスティアルブルーム</string>
+    <string name="crop_starfruit_name">スターフルーツ</string>
+    <string name="crop_void_lotus_name">ヴォイドロータス</string>
+
+    <!-- ===== Spells ===== -->
+    <string name="spell_wind_strike_name">ウィンドストライク</string>
+    <string name="spell_wind_bolt_name">ウィンドボルト</string>
+    <string name="spell_wind_blast_name">ウィンドブラスト</string>
+    <string name="spell_wind_wave_name">ウィンドウェーブ</string>
+    <string name="spell_water_strike_name">ウォーターストライク</string>
+    <string name="spell_water_bolt_name">ウォーターボルト</string>
+    <string name="spell_water_blast_name">ウォーターブラスト</string>
+    <string name="spell_water_wave_name">ウォーターウェーブ</string>
+    <string name="spell_earth_strike_name">アースストライク</string>
+    <string name="spell_earth_bolt_name">アースボルト</string>
+    <string name="spell_earth_blast_name">アースブラスト</string>
+    <string name="spell_earth_wave_name">アースウェーブ</string>
+    <string name="spell_fire_strike_name">ファイアストライク</string>
+    <string name="spell_fire_bolt_name">ファイアボルト</string>
+    <string name="spell_fire_blast_name">ファイアブラスト</string>
+    <string name="spell_fire_wave_name">ファイアウェーブ</string>
+    <string name="spell_mind_strike_name">マインドストライク</string>
+    <string name="spell_mind_bolt_name">マインドボルト</string>
+    <string name="spell_mind_blast_name">マインドブラスト</string>
+    <string name="spell_mind_wave_name">マインドウェーブ</string>
+    <string name="spell_chaos_strike_name">カオスストライク</string>
+    <string name="spell_chaos_bolt_name">カオスボルト</string>
+    <string name="spell_chaos_blast_name">カオスブラスト</string>
+    <string name="spell_chaos_wave_name">カオスウェーブ</string>
+    <string name="spell_death_strike_name">デスストライク</string>
+    <string name="spell_death_bolt_name">デスボルト</string>
+    <string name="spell_death_blast_name">デスブラスト</string>
+    <string name="spell_death_wave_name">デスウェーブ</string>
+    <string name="spell_blood_strike_name">ブラッドストライク</string>
+    <string name="spell_blood_bolt_name">ブラッドボルト</string>
+    <string name="spell_blood_blast_name">ブラッドブラスト</string>
+    <string name="spell_blood_wave_name">ブラッドウェーブ</string>
+
+    <!-- ===== Hoes ===== -->
+    <string name="item_bronze_hoe_name">ブロンズのクワ</string>
+    <string name="item_iron_hoe_name">鉄のクワ</string>
+    <string name="item_steel_hoe_name">鋼鉄のクワ</string>
+    <string name="item_mithril_hoe_name">ミスリルのクワ</string>
+    <string name="item_adamantite_hoe_name">アダマンタイトのクワ</string>
+    <string name="item_runite_hoe_name">ルナイトのクワ</string>
+
+    <!-- ===== Lockpicks ===== -->
+    <string name="item_bronze_lockpick_name">ブロンズのロックピック</string>
+    <string name="item_iron_lockpick_name">鉄のロックピック</string>
+    <string name="item_steel_lockpick_name">鋼鉄のロックピック</string>
+    <string name="item_mithril_lockpick_name">ミスリルのロックピック</string>
+    <string name="item_adamantite_lockpick_name">アダマンタイトのロックピック</string>
+    <string name="item_runite_lockpick_name">ルナイトのロックピック</string>
+
+    <!-- Herblore potions -->
+    <string name="item_attack_brew_name">攻撃の薬</string>
+    <string name="item_defense_brew_name">防御の薬</string>
+    <string name="item_attack_potion_name">攻撃ポーション</string>
+    <string name="item_defense_potion_name">防御ポーション</string>
+    <string name="item_onion_brew_name">タマネギの薬</string>
+    <string name="item_carrot_brew_name">ニンジンの薬</string>
+    <string name="item_strength_brew_name">筋力の薬</string>
+    <string name="item_strength_potion_name">筋力ポーション</string>
+    <string name="item_ranging_potion_name">遠距離ポーション</string>
+    <string name="item_magic_potion_name">魔法ポーション</string>
+    <string name="item_super_strength_potion_name">超筋力ポーション</string>
+    <string name="item_super_attack_potion_name">超攻撃ポーション</string>
+    <string name="item_super_defense_potion_name">超防御ポーション</string>
+    <string name="item_super_ranging_potion_name">超遠距離ポーション</string>
+    <string name="item_super_magic_potion_name">超魔法ポーション</string>
+    <string name="item_overload_potion_name">オーバーロードポーション</string>
+
+    <!-- Enhanced potions -->
+    <string name="item_enhanced_attack_brew_name">攻撃の薬</string>
+    <string name="item_enhanced_defense_brew_name">防御の薬</string>
+    <string name="item_enhanced_attack_potion_name">攻撃ポーション</string>
+    <string name="item_enhanced_defense_potion_name">防御ポーション</string>
+    <string name="item_enhanced_onion_brew_name">タマネギの薬</string>
+    <string name="item_enhanced_carrot_brew_name">ニンジンの薬</string>
+    <string name="item_enhanced_strength_brew_name">筋力の薬</string>
+    <string name="item_enhanced_strength_potion_name">筋力ポーション</string>
+    <string name="item_enhanced_ranging_potion_name">遠距離ポーション</string>
+    <string name="item_enhanced_magic_potion_name">魔法ポーション</string>
+    <string name="item_enhanced_super_strength_potion_name">超筋力ポーション</string>
+    <string name="item_enhanced_super_attack_potion_name">超攻撃ポーション</string>
+    <string name="item_enhanced_super_defense_potion_name">超防御ポーション</string>
+    <string name="item_enhanced_super_ranging_potion_name">超遠距離ポーション</string>
+    <string name="item_enhanced_super_magic_potion_name">超魔法ポーション</string>
+    <string name="item_enhanced_overload_potion_name">強化オーバーロードポーション</string>
+
+    <string name="item_any_fish_name">魚（全種類）</string>
+
+
+    <!-- ===== Seed names ===== -->
+    <string name="item_potato_seed_name">ジャガイモの種</string>
+    <string name="item_onion_seed_name">タマネギの種</string>
+    <string name="item_cabbage_seed_name">キャベツの種</string>
+    <string name="item_carrot_seed_name">ニンジンの種</string>
+    <string name="item_tomato_seed_name">トマトの種</string>
+    <string name="item_corn_seed_name">トウモロコシの種</string>
+    <string name="item_pumpkin_seed_name">カボチャの種</string>
+    <string name="item_watermelon_seed_name">スイカの種</string>
+    <string name="item_strawberry_seed_name">イチゴの種</string>
+    <string name="item_magic_herb_seed_name">魔法のハーブの種</string>
+    <string name="item_dragon_fruit_seed_name">ドラゴンフルーツの種</string>
+    <string name="item_golden_wheat_seed_name">黄金の小麦の種</string>
+    <string name="item_spirit_seed_name">スピリットの種</string>
+    <string name="item_celestial_bloom_seed_name">セレスティアルブルームの種</string>
+    <string name="item_starfruit_seed_name">スターフルーツの種</string>
+    <string name="item_void_lotus_seed_name">ヴォイドロータスの種</string>
+
+
+    <!-- Additional item/boss/food names (English placeholders) -->
+    <string name="boss_void_sovereign_name" translatable="false">ヴォイド・ソブリン</string>
+    <string name="item_abyssal_rod_name" translatable="false">アビスロッド</string>
+    <string name="item_adamantite_arrow_tip_name" translatable="false">アダマンタイトの矢尻</string>
+    <string name="item_adamantite_boots_name" translatable="false">アダマンタイトのブーツ</string>
+    <string name="item_adamantite_chainbody_name" translatable="false">アダマンタイトのチェインメイル</string>
+    <string name="item_adamantite_dagger_name" translatable="false">アダマンタイトのダガー</string>
+    <string name="item_adamantite_full_helmet_name" translatable="false">アダマンタイトのフルヘルム</string>
+    <string name="item_adamantite_kiteshield_name" translatable="false">アダマンタイトのカイトシールド</string>
+    <string name="item_adamantite_longsword_name" translatable="false">アダマンタイトのロングソード</string>
+    <string name="item_adamantite_med_helmet_name" translatable="false">アダマンタイトのハーフヘルム</string>
+    <string name="item_adamantite_plateskirt_name" translatable="false">アダマンタイトのプレートスカート</string>
+    <string name="item_adamantite_square_shield_name" translatable="false">アダマンタイトのスクエアシールド</string>
+    <string name="item_agility_cape_name" translatable="false">アジリティのマント</string>
+    <string name="item_agility_guild_cape_name" translatable="false">アジリティギルドのマント</string>
+    <string name="item_amulet_of_fury_name" translatable="false">怒りのアミュレット</string>
+    <string name="item_amulet_of_strength_name" translatable="false">力のアミュレット</string>
+    <string name="item_amulet_of_the_kraken_name" translatable="false">クラーケンのアミュレット</string>
+    <string name="item_arcane_grappling_hook_name">秘術のグラップリングフック</string>
+    <string name="item_arcane_staff_name" translatable="false">秘術のスタッフ</string>
+    <string name="item_archers_guild_cape_name" translatable="false">弓手ギルドのマント</string>
+    <string name="item_archers_ring_name" translatable="false">アーチャーリング</string>
+    <string name="item_attack_cape_name" translatable="false">攻撃のマント</string>
+    <string name="item_baby_kraken_name" translatable="false">クラーケンの幼獣</string>
+    <string name="item_balrog_name" translatable="false">ウドゥンの古き炎、バルログ</string>
+    <string name="item_balrog_whip_name" translatable="false">バルログの鞭</string>
+    <string name="item_balrog_wings_name" translatable="false">バルログの翼</string>
+    <string name="item_beef_name" translatable="false">牛肉</string>
+    <string name="item_berserker_ring_name" translatable="false">バーサーカーリング</string>
+    <string name="item_blessed_fishing_rod_name" translatable="false">祝福された釣り竿</string>
+    <string name="item_blood_blast_name" translatable="false">ブラッドブラスト</string>
+    <string name="item_blood_bolt_name" translatable="false">ブラッドボルト</string>
+    <string name="item_blood_strike_name" translatable="false">ブラッドストライク</string>
+    <string name="item_blood_wave_name" translatable="false">ブラッドウェーブ</string>
+    <string name="item_bronze_arrow_tip_name" translatable="false">ブロンズの矢尻</string>
+    <string name="item_bronze_boots_name" translatable="false">ブロンズのブーツ</string>
+    <string name="item_bronze_chainbody_name" translatable="false">ブロンズのチェインメイル</string>
+    <string name="item_bronze_full_helmet_name" translatable="false">ブロンズのフルヘルム</string>
+    <string name="item_bronze_kiteshield_name" translatable="false">ブロンズのカイトシールド</string>
+    <string name="item_bronze_longsword_name" translatable="false">ブロンズのロングソード</string>
+    <string name="item_bronze_med_helmet_name" translatable="false">ブロンズのハーフヘルム</string>
+    <string name="item_bronze_plateskirt_name" translatable="false">ブロンズのプレートスカート</string>
+    <string name="item_bronze_square_shield_name" translatable="false">ブロンズのスクエアシールド</string>
+    <string name="item_chaos_blast_name" translatable="false">カオスブラスト</string>
+    <string name="item_chaos_bolt_name" translatable="false">カオスボルト</string>
+    <string name="item_chaos_strike_name" translatable="false">カオスストライク</string>
+    <string name="item_chaos_wave_name" translatable="false">カオスウェーブ</string>
+    <string name="item_chicken_name" translatable="false">鶏肉</string>
+    <string name="item_cooking_cape_name" translatable="false">料理のマント</string>
+    <string name="item_cooking_guild_cape_name" translatable="false">料理ギルドのマント</string>
+    <string name="item_crafting_cape_name" translatable="false">工芸のマント</string>
+    <string name="item_crafting_guild_cape_name" translatable="false">工芸ギルドのマント</string>
+    <string name="item_death_blast_name" translatable="false">デスブラスト</string>
+    <string name="item_death_bolt_name" translatable="false">デスボルト</string>
+    <string name="item_death_strike_name" translatable="false">デスストライク</string>
+    <string name="item_death_wave_name" translatable="false">デスウェーブ</string>
+    <string name="item_deep_iron_pickaxe_name" translatable="false">深部鉄のツルハシ</string>
+    <string name="item_defense_cape_name" translatable="false">防御のマント</string>
+    <string name="item_demon_lord_name" translatable="false">魔王</string>
+    <string name="item_divine_frying_pan_name">神聖なフライパン</string>
+    <string name="item_divine_grappling_hook_name">神聖なグラップリングフック</string>
+    <string name="item_divine_hammer_name">神聖なハンマー</string>
+    <string name="item_divine_hoe_name">神聖なクワ</string>
+    <string name="item_divine_lockpick_name">神聖なロックピック</string>
+    <string name="item_divine_tinderbox_name">神聖な火打ち石</string>
+    <string name="item_dragon_amulet_name" translatable="false">ドラゴンのアミュレット</string>
+    <string name="item_dragon_boots_name" translatable="false">ドラゴンのブーツ</string>
+    <string name="item_dragon_longsword_name" translatable="false">ドラゴンロングソード</string>
+    <string name="item_dragon_scimitar_name" translatable="false">ドラゴンシミター</string>
+    <string name="item_dragon_whelp_name" translatable="false">ドラゴンの幼獣</string>
+    <string name="item_dwarven_axe_name" translatable="false">ドワーフの斧</string>
+    <string name="item_dwarven_boots_name" translatable="false">ドワーフのブーツ</string>
+    <string name="item_dwarven_fishing_rod_name" translatable="false">ドワーフの釣り竿</string>
+    <string name="item_dwarven_frying_pan_name">ドワーフのフライパン</string>
+    <string name="item_dwarven_grappling_hook_name">ドワーフのグラップリングフック</string>
+    <string name="item_dwarven_hammer_name">ドワーフのハンマー</string>
+    <string name="item_dwarven_helm_name" translatable="false">ドワーフの兜</string>
+    <string name="item_dwarven_hoe_name" translatable="false">ドワーフのクワ</string>
+    <string name="item_dwarven_lockpick_name">ドワーフのロックピック</string>
+    <string name="item_dwarven_pickaxe_name" translatable="false">ドワーフのツルハシ</string>
+    <string name="item_dwarven_platebody_name" translatable="false">ドワーフのプレートボディ</string>
+    <string name="item_dwarven_platelegs_name" translatable="false">ドワーフのプレートレッグ</string>
+    <string name="item_dwarven_scimitar_name" translatable="false">ドワーフのシミター</string>
+    <string name="item_dwarven_shield_name" translatable="false">ドワーフのシールド</string>
+    <string name="item_dwarven_sword_name" translatable="false">ドワーフのソード</string>
+    <string name="item_dwarven_tinderbox_name">ドワーフの火打ち石</string>
+    <string name="item_dwarven_warhammer_name" translatable="false">ドワーフのウォーハンマー</string>
+    <string name="item_earth_blast_name" translatable="false">アースブラスト</string>
+    <string name="item_earth_bolt_name" translatable="false">アースボルト</string>
+    <string name="item_earth_strike_name" translatable="false">アースストライク</string>
+    <string name="item_earth_wave_name" translatable="false">アースウェーブ</string>
+    <string name="item_ent_name" translatable="false">エント</string>
+    <string name="item_farming_cape_name" translatable="false">農業のマント</string>
+    <string name="item_farming_guild_cape_name" translatable="false">農業ギルドのマント</string>
+    <string name="item_fire_blast_name" translatable="false">ファイアブラスト</string>
+    <string name="item_fire_bolt_name" translatable="false">ファイアボルト</string>
+    <string name="item_fire_strike_name" translatable="false">ファイアストライク</string>
+    <string name="item_fire_wave_name" translatable="false">ファイアウェーブ</string>
+    <string name="item_firemaking_cape_name" translatable="false">火起こしのマント</string>
+    <string name="item_firemaking_guild_cape_name" translatable="false">火起こしギルドのマント</string>
+    <string name="item_fishing_cape_name" translatable="false">釣りのマント</string>
+    <string name="item_fishing_guild_cape_name" translatable="false">釣りギルドのマント</string>
+    <string name="item_flame_heart_amulet_name" translatable="false">フレイムハートアミュレット</string>
+    <string name="item_fletching_cape_name" translatable="false">矢作りのマント</string>
+    <string name="item_fletching_guild_cape_name" translatable="false">矢作りギルドのマント</string>
+    <string name="item_forge_pickaxe_name" translatable="false">炉のツルハシ</string>
+    <string name="item_hellfire_staff_name" translatable="false">地獄業火のスタッフ</string>
+    <string name="item_herblore_guild_cape_name" translatable="false">調薬ギルドのマント</string>
+    <string name="item_hp_cape_name" translatable="false">体力のマント</string>
+    <string name="item_imp_pet_name" translatable="false">インプのペット</string>
+    <string name="item_iron_arrow_tip_name" translatable="false">鉄の矢尻</string>
+    <string name="item_iron_boots_name" translatable="false">鉄のブーツ</string>
+    <string name="item_iron_chainbody_name" translatable="false">鉄のチェインメイル</string>
+    <string name="item_iron_full_helmet_name" translatable="false">鉄のフルヘルム</string>
+    <string name="item_iron_kiteshield_name" translatable="false">鉄のカイトシールド</string>
+    <string name="item_iron_longsword_name" translatable="false">鉄のロングソード</string>
+    <string name="item_iron_med_helmet_name" translatable="false">鉄のハーフヘルム</string>
+    <string name="item_iron_plateskirt_name" translatable="false">鉄のプレートスカート</string>
+    <string name="item_iron_square_shield_name" translatable="false">鉄のスクエアシールド</string>
+    <string name="item_ironwood_axe_name" translatable="false">アイアンウッドの斧</string>
+    <string name="item_king_black_dragon_name" translatable="false">キングブラックドラゴン</string>
+    <string name="item_kraken_name" translatable="false">クラーケン</string>
+    <string name="item_kraken_tentacle_name" translatable="false">クラーケンの触手</string>
+    <string name="item_mages_guild_cape_name" translatable="false">魔術師ギルドのマント</string>
+    <string name="item_magic_cape_name" translatable="false">魔法のマント</string>
+    <string name="item_magic_longbow_name" translatable="false">魔法のロングボウ</string>
+    <string name="item_magic_shortbow_name" translatable="false">魔法のショートボウ</string>
+    <string name="item_maple_shortbow_name" translatable="false">メープルのショートボウ</string>
+    <string name="item_mercantile_guild_cape_name" translatable="false">商業ギルドのマント</string>
+    <string name="item_mind_blast_name" translatable="false">マインドブラスト</string>
+    <string name="item_mind_bolt_name" translatable="false">マインドボルト</string>
+    <string name="item_mind_strike_name" translatable="false">マインドストライク</string>
+    <string name="item_mind_wave_name" translatable="false">マインドウェーブ</string>
+    <string name="item_mining_cape_name" translatable="false">採掘のマント</string>
+    <string name="item_mining_guild_cape_name" translatable="false">採掘ギルドのマント</string>
+    <string name="item_mithril_arrow_tip_name" translatable="false">ミスリルの矢尻</string>
+    <string name="item_mithril_boots_name" translatable="false">ミスリルのブーツ</string>
+    <string name="item_mithril_chainbody_name" translatable="false">ミスリルのチェインメイル</string>
+    <string name="item_mithril_dagger_name" translatable="false">ミスリルのダガー</string>
+    <string name="item_mithril_full_helmet_name" translatable="false">ミスリルのフルヘルム</string>
+    <string name="item_mithril_kiteshield_name" translatable="false">ミスリルのカイトシールド</string>
+    <string name="item_mithril_longsword_name" translatable="false">ミスリルのロングソード</string>
+    <string name="item_mithril_med_helmet_name" translatable="false">ミスリルのハーフヘルム</string>
+    <string name="item_mithril_plateskirt_name" translatable="false">ミスリルのプレートスカート</string>
+    <string name="item_mithril_square_shield_name" translatable="false">ミスリルのスクエアシールド</string>
+    <string name="item_mutton_name" translatable="false">マトン肉</string>
+    <string name="item_necklace_of_anguish_name" translatable="false">苦悶のネックレス</string>
+    <string name="item_oak_shortbow_name" translatable="false">オークのショートボウ</string>
+    <string name="item_platinum_ore_name" translatable="false">白金の鉱石</string>
+    <string name="item_prayer_cape_name" translatable="false">祈りのマント</string>
+    <string name="item_prayer_guild_cape_name" translatable="false">祈りギルドのマント</string>
+    <string name="item_ranged_cape_name" translatable="false">遠距離のマント</string>
+    <string name="item_rat_meat_name" translatable="false">ネズミ肉</string>
+    <string name="item_ring_of_dragons_might_name" translatable="false">竜の力の指輪</string>
+    <string name="item_ring_of_flame_name" translatable="false">炎の指輪</string>
+    <string name="item_ring_of_recoil_name" translatable="false">反動の指輪</string>
+    <string name="item_ring_of_suffering_name" translatable="false">苦難の指輪</string>
+    <string name="item_ring_of_the_seas_name" translatable="false">海の指輪</string>
+    <string name="item_ring_of_wealth_name" translatable="false">富の指輪</string>
+    <string name="item_rock_golem_name" translatable="false">ロックゴーレム</string>
+    <string name="item_rogues_lockpick_name">ローグのロックピック</string>
+    <string name="item_runecrafting_cape_name" translatable="false">ルーン作成のマント</string>
+    <string name="item_runecrafting_guild_cape_name" translatable="false">ルーン作成ギルドのマント</string>
+    <string name="item_runite_arrow_tip_name" translatable="false">ルナイトの矢尻</string>
+    <string name="item_runite_boots_name" translatable="false">ルナイトのブーツ</string>
+    <string name="item_runite_chainbody_name" translatable="false">ルナイトのチェインメイル</string>
+    <string name="item_runite_dagger_name" translatable="false">ルナイトのダガー</string>
+    <string name="item_runite_full_helmet_name" translatable="false">ルナイトのフルヘルム</string>
+    <string name="item_runite_kiteshield_name" translatable="false">ルナイトのカイトシールド</string>
+    <string name="item_runite_longsword_name" translatable="false">ルナイトのロングソード</string>
+    <string name="item_runite_med_helmet_name" translatable="false">ルナイトのハーフヘルム</string>
+    <string name="item_runite_plateskirt_name" translatable="false">ルナイトのプレートスカート</string>
+    <string name="item_runite_square_shield_name" translatable="false">ルナイトのスクエアシールド</string>
+    <string name="item_sanctum_axe_name" translatable="false">聖所の斧</string>
+    <string name="item_seers_ring_name" translatable="false">シーアの指輪</string>
+    <string name="item_shadow_dagger_name" translatable="false">シャドウダガー</string>
+    <string name="item_shadow_grappling_hook_name">シャドウグラップリングフック</string>
+    <string name="item_shadow_lockpick_name">シャドウロックピック</string>
+    <string name="item_shortbow_name" translatable="false">ショートボウ</string>
+    <string name="item_silver_diamond_necklace_name" translatable="false">銀のダイヤモンドのネックレス</string>
+    <string name="item_silver_diamond_ring_name" translatable="false">銀のダイヤモンドの指輪</string>
+    <string name="item_silver_emerald_necklace_name" translatable="false">銀のエメラルドのネックレス</string>
+    <string name="item_silver_emerald_ring_name" translatable="false">銀のエメラルドの指輪</string>
+    <string name="item_silver_ruby_necklace_name" translatable="false">銀のルビーのネックレス</string>
+    <string name="item_silver_ruby_ring_name" translatable="false">銀のルビーの指輪</string>
+    <string name="item_smithing_cape_name" translatable="false">鍛冶のマント</string>
+    <string name="item_smithing_guild_cape_name" translatable="false">鍛冶ギルドのマント</string>
+    <string name="item_steel_arrow_tip_name" translatable="false">鋼鉄の矢尻</string>
+    <string name="item_steel_boots_name" translatable="false">鋼鉄のブーツ</string>
+    <string name="item_steel_chainbody_name" translatable="false">鋼鉄のチェインメイル</string>
+    <string name="item_steel_dagger_name" translatable="false">鋼鉄のダガー</string>
+    <string name="item_steel_full_helmet_name" translatable="false">鋼鉄のフルヘルム</string>
+    <string name="item_steel_kiteshield_name" translatable="false">鋼鉄のカイトシールド</string>
+    <string name="item_steel_longsword_name" translatable="false">鋼鉄のロングソード</string>
+    <string name="item_steel_med_helmet_name" translatable="false">鋼鉄のハーフヘルム</string>
+    <string name="item_steel_plateskirt_name" translatable="false">鋼鉄のプレートスカート</string>
+    <string name="item_steel_square_shield_name" translatable="false">鋼鉄のスクエアシールド</string>
+    <string name="item_strength_cape_name" translatable="false">筋力のマント</string>
+    <string name="item_tangleroot_name" translatable="false">タングルルート</string>
+    <string name="item_tiny_templar_name" translatable="false">ちびテンプル騎士</string>
+    <string name="item_tormented_necklace_name" translatable="false">苦悩のネックレス</string>
+    <string name="item_trident_of_the_seas_name" translatable="false">海の三叉槍</string>
+    <string name="item_warriors_guild_cape_name" translatable="false">戦士ギルドのマント</string>
+    <string name="item_water_blast_name" translatable="false">ウォーターブラスト</string>
+    <string name="item_water_bolt_name" translatable="false">ウォーターボルト</string>
+    <string name="item_water_strike_name" translatable="false">ウォーターストライク</string>
+    <string name="item_water_wave_name" translatable="false">ウォーターウェーブ</string>
+    <string name="item_willow_shortbow_name" translatable="false">ウィローのショートボウ</string>
+    <string name="item_wind_blast_name" translatable="false">ウィンドブラスト</string>
+    <string name="item_wind_bolt_name" translatable="false">ウィンドボルト</string>
+    <string name="item_wind_strike_name" translatable="false">ウィンドストライク</string>
+    <string name="item_wind_wave_name" translatable="false">ウィンドウェーブ</string>
+    <string name="item_woodcutting_cape_name" translatable="false">伐採のマント</string>
+    <string name="item_woodcutting_guild_cape_name" translatable="false">伐採ギルドのマント</string>
+    <string name="item_yew_longbow_name" translatable="false">イチイのロングボウ</string>
+    <string name="item_yew_shortbow_name" translatable="false">イチイのショートボウ</string>
+</resources>

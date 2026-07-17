@@ -1,0 +1,1618 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Idle Fantasy</string>
+
+    <!-- ===== Bottom navigation ===== -->
+    <string name="nav_skills">スキル</string>
+    <string name="nav_combat">戦闘</string>
+    <string name="nav_home">ホーム</string>
+    <string name="nav_crafting">クラフト</string>
+    <string name="nav_quests">クエスト</string>
+    <string name="nav_profile">プロフィール</string>
+
+    <!-- ===== Common buttons ===== -->
+    <string name="btn_start">開始</string>
+    <string name="btn_start_session">セッション開始</string>
+    <string name="btn_abandon_session">セッション放棄</string>
+    <string name="btn_collect_results">結果を回収</string>
+    <string name="btn_cancel">キャンセル</string>
+    <string name="btn_craft">作成</string>
+    <string name="btn_confirm">確認</string>
+    <string name="btn_abandon">放棄</string>
+    <string name="btn_repeat_action">アクションを繰り返す</string>
+    <string name="btn_collect">報酬を受け取る</string>
+    <string name="btn_equip">装備する</string>
+    <string name="btn_unequip">外す</string>
+    <string name="btn_buy">購入</string>
+    <string name="btn_sell">売却</string>
+    <string name="btn_plant">植える</string>
+    <string name="btn_harvest">収穫</string>
+    <string name="btn_harvest_all">すべて収穫</string>
+    <string name="btn_clear">クリア</string>
+    <string name="btn_clear_all">すべてクリア</string>
+    <string name="btn_inspect">調査</string>
+    <string name="btn_view_drops">ドロップを見る</string>
+    <string name="btn_start_quest">クエスト開始</string>
+    <string name="btn_abandon_quest">クエスト放棄</string>
+    <string name="btn_enter_dungeon">ダンジョンに入る</string>
+    <string name="btn_enter_arena">アリーナに入る</string>
+    <string name="btn_activate">有効化</string>
+    <string name="btn_extend">延長</string>
+    <string name="btn_deactivate">無効化</string>
+    <string name="btn_close">閉じる</string>
+    <string name="btn_back">戻る</string>
+    <string name="btn_save">保存</string>
+
+    <!-- ===== Common labels ===== -->
+    <string name="label_level">レベル</string>
+    <string name="label_xp">経験値</string>
+    <string name="label_coins">コイン</string>
+    <string name="label_hp">HP</string>
+    <string name="label_attack">攻撃</string>
+    <string name="label_strength">筋力</string>
+    <string name="label_defense">防御</string>
+    <string name="label_ranged">遠距離</string>
+    <string name="label_magic">魔法</string>
+    <string name="label_prayer">祈り</string>
+    <string name="label_hitpoints">HP</string>
+    <string name="label_inventory">インベントリ</string>
+    <string name="label_equipment">装備</string>
+    <string name="label_pets">ペット</string>
+    <string name="label_achievements">実績</string>
+    <string name="label_locations">ロケーション</string>
+    <string name="label_bestiary">モンスター図鑑</string>
+    <string name="label_enemies">敵</string>
+    <string name="label_bosses">ボス</string>
+    <string name="label_by_location">エリア別</string>
+    <string name="bestiary_not_encountered">未遭遇</string>
+    <string name="bestiary_always_drops">確定ドロップ</string>
+    <string name="bestiary_rare_drops">レアドロップ</string>
+    <string name="bestiary_common_loot">通常ドロップ</string>
+    <string name="bestiary_pet_drop">ペットドロップ</string>
+    <string name="bestiary_atk_def">攻撃防御</string>
+    <string name="bestiary_str_def">筋力防御</string>
+    <string name="bestiary_rng_def">遠距離防御</string>
+    <string name="bestiary_mag_def">魔法防御</string>
+    <string name="label_session_in_progress">セッション進行中</string>
+    <string name="label_session_active">アクティブセッション</string>
+    <string name="label_no_active_session">アクティブなセッションはありません</string>
+    <string name="label_session_complete">セッション完了！</string>
+    <string name="label_training">訓練中</string>
+    <string name="label_gathering_skills">採集スキル</string>
+    <string name="label_crafting_skills">生産スキル</string>
+    <string name="label_choose_activity">アクティビティを選択</string>
+    <string name="label_coming_soon">近日公開</string>
+    <string name="label_time_remaining">残り時間</string>
+    <string name="label_session_results">セッション結果</string>
+    <string name="label_xp_gained">獲得経験値</string>
+    <string name="label_items_collected">回収したアイテム</string>
+    <string name="label_level_ups">レベルアップ</string>
+    <string name="label_requirements">必要条件</string>
+    <string name="label_rewards">報酬</string>
+    <string name="label_your_level">現在のレベル</string>
+    <string name="label_xp_to_next">次のレベルまで</string>
+    <string name="label_total_xp">累計経験値</string>
+    <string name="label_quantity">数量</string>
+    <string name="label_price">価格</string>
+    <string name="label_available">利用可能</string>
+    <string name="label_patch">畑</string>
+    <string name="label_growth_time">成長時間</string>
+    <string name="label_ready_to_harvest">収穫可能</string>
+    <string name="label_empty">空</string>
+    <string name="inventory_sort_quantity">数量</string>
+    <string name="inventory_sort_az">名前順</string>
+    <string name="inventory_cat_weapons">武器</string>
+    <string name="inventory_cat_armour">防具</string>
+    <string name="inventory_cat_tools">道具</string>
+    <string name="inventory_cat_food">料理</string>
+    <string name="inventory_cat_potions">ポーション</string>
+    <string name="inventory_cat_materials">素材</string>
+    <string name="inventory_cat_other">その他</string>
+    <string name="inventory_cat_raw_food">生食材</string>
+    <string name="inventory_cat_ammunition">弾薬</string>
+    <string name="inventory_cat_ores">鉱石・宝石</string>
+    <string name="inventory_cat_construction">建築</string>
+    <string name="inventory_cat_seeds">種・作物</string>
+    <string name="inventory_cat_filter_all">すべて</string>
+    <string name="label_combat_style">戦闘スタイル</string>
+    <string name="label_active_spell">アクティブスペル</string>
+    <string name="label_drops">ドロップ</string>
+    <string name="label_boss">ボス</string>
+    <string name="label_dungeon">ダンジョン</string>
+    <string name="label_difficulty">難易度</string>
+    <string name="label_completed">完了</string>
+    <string name="label_in_progress">進行中</string>
+    <string name="label_available_quests">受注可能</string>
+    <string name="label_stats">ステータス</string>
+    <string name="label_skills">スキル</string>
+    <string name="label_shop">ショップ</string>
+    <string name="label_sell_items">アイテム売却</string>
+    <string name="label_total_level">トータルレベル</string>
+    <string name="label_wins">勝利数</string>
+    <string name="label_losses">敗北数</string>
+    <string name="label_active">アクティブ</string>
+    <string name="label_inactive">非アクティブ</string>
+    <string name="label_boost">ブースト</string>
+    <string name="label_xp_boost">経験値ブースト</string>
+    <string name="label_weapon">武器</string>
+    <string name="label_armour">防具</string>
+    <string name="label_food">料理</string>
+    <string name="label_arrows_consumed">消費した矢</string>
+    <string name="label_arrows_reclaimed">回収した矢</string>
+    <string name="label_runes_consumed">消費したルーン</string>
+    <string name="label_runes_reclaimed">回収したルーン</string>
+    <string name="label_arrows">矢</string>
+    <string name="label_runes">ルーン</string>
+    <string name="label_spell">スペル</string>
+    <string name="label_none">なし</string>
+    <string name="label_melee">近接</string>
+    <string name="label_ranged_style">遠距離</string>
+    <string name="label_magic_style">魔法</string>
+    <string name="label_gathering">採集</string>
+    <string name="label_crafting">生産</string>
+    <string name="label_jewellery">宝飾品</string>
+    <string name="label_combat">戦闘</string>
+    <string name="label_recipe">レシピ</string>
+    <string name="label_recipes">レシピ一覧</string>
+    <string name="label_ingredients">材料</string>
+    <string name="label_output">成果物</string>
+    <string name="label_xp_per_action">アクションごとの経験値</string>
+    <string name="label_unlocked_at">アンロックレベル</string>
+    <string name="label_kills">討伐数</string>
+    <string name="label_personal_best">自己ベスト</string>
+    <string name="label_daily_dig">デイリー採掘</string>
+    <string name="label_dig_depth">穴の深さ</string>
+    <string name="label_version">バージョン</string>
+    <string name="label_open_source">オープンソース</string>
+
+    <!-- ===== Format strings — all use positional args for Weblate ===== -->
+    <!-- Translator note: %1$d = level number, %2$s = formatted XP string -->
+    <string name="format_level_xp">レベル %1$d — %2$s XP</string>
+    <!-- Translator note: %1$s = formatted XP amount, %2$d = target level number -->
+    <string name="format_xp_to_next">レベル %2$d まであと %1$s XP</string>
+    <!-- Translator note: %1$s = time string (e.g. "42m 10s") -->
+    <string name="format_time_remaining">残り時間: %1$s</string>
+    <!-- Translator note: %1$s = relative time (e.g. "5m ago") -->
+    <string name="format_started_ago">%1$s前に開始</string>
+    <!-- Translator note: %1$s = item display name, %2$d = quantity -->
+    <string name="format_item_quantity">%1$s ×%2$d</string>
+    <!-- Translator note: %1$d = coin amount -->
+    <string name="format_price_coins">%1$d コイン</string>
+    <!-- Translator note: %1$d = required level, %2$s = skill display name -->
+    <string name="format_level_requirement">必要スキル: %2$s レベル %1$d</string>
+    <!-- Translator note: %1$s = formatted XP amount -->
+    <string name="format_xp_per_action">1アクションあたり %1$s XP</string>
+    <!-- Translator note: %1$d = patch number -->
+    <string name="format_patch_number">畑 %1$d</string>
+    <!-- Translator note: %1$d = wins, %2$d = losses -->
+    <string name="format_arena_record">%1$d 勝 / %2$d 敗</string>
+    <!-- Translator note: %1$s = skill display name, %2$d = level number -->
+    <string name="format_skill_level">%1$s: レベル %2$d</string>
+    <!-- Translator note: %1$d = boost percentage -->
+    <string name="format_xp_boost_percent">+%1$d%% 経験値</string>
+    <!-- Translator note: %1$s = item/resource name, %2$d = quantity drop amount -->
+    <string name="format_drop_chance">%1$s: %2$d</string>
+    <!-- Translator note: %1$d = minutes remaining -->
+    <string name="format_minutes_remaining">残り %1$d 分</string>
+    <!-- Translator note: %1$s = version string (e.g. "0.1.0") -->
+    <string name="format_version">バージョン %1$s</string>
+
+    <!-- ===== Plurals ===== -->
+    <plurals name="plural_level_ups">
+        <item quantity="one">%1$d レベルアップ</item>
+        <item quantity="other">%1$d レベルアップ</item>
+    </plurals>
+    <plurals name="plural_items">
+        <item quantity="one">%1$d 個のアイテム</item>
+        <item quantity="other">%1$d 個のアイテム</item>
+    </plurals>
+    <plurals name="plural_minutes">
+        <item quantity="one">%1$d 分</item>
+        <item quantity="other">%1$d 分</item>
+    </plurals>
+    <plurals name="plural_hours">
+        <item quantity="one">%1$d 時間</item>
+        <item quantity="other">%1$d 時間</item>
+    </plurals>
+    <plurals name="plural_patches">
+        <item quantity="one">%1$d 個の畑</item>
+        <item quantity="other">%1$d 個の畑</item>
+    </plurals>
+    <plurals name="plural_kills">
+        <item quantity="one">%1$d 討伐</item>
+        <item quantity="other">%1$d 討伐</item>
+    </plurals>
+    <plurals name="plural_quests_completed">
+        <item quantity="one">%1$d 個のクエスト完了</item>
+        <item quantity="other">%1$d 個のクエスト完了</item>
+    </plurals>
+
+    <!-- ===== Error messages ===== -->
+    <string name="error_no_player">プレイヤーデータをロードできませんでした。アプリを再起動してください。</string>
+    <string name="error_session_already_active">すでにアクティブなセッションがあります。完了または放棄してからやり直してください。</string>
+    <string name="error_not_enough_coins">コインが足りません。</string>
+    <!-- Translator note: %1$s = item display name -->
+    <string name="error_not_enough_items">%1$s が足りません。</string>
+    <!-- Translator note: %1$s = skill display name -->
+    <string name="error_level_too_low">%1$s のレベルが低すぎます。</string>
+    <!-- Translator note: %1$s = item display name -->
+    <string name="error_inventory_required">これを行うには %1$s が必要です。</string>
+    <string name="error_patch_occupied">この畑にはすでに種が植えられています。</string>
+    <string name="error_patch_empty">この畑は空です。</string>
+    <string name="error_crop_not_ready">この作物はまだ収穫できません。</string>
+    <string name="error_quest_active">すでにアクティブなクエストがあります。</string>
+    <string name="error_quest_requirements_not_met">このクエストの必要条件を満てしていません。</string>
+    <string name="error_dungeon_level_too_low">このダンジョンに入るには戦闘レベルが低すぎます。</string>
+    <string name="error_unknown">エラーが発生しました。もう一度お試しください。</string>
+
+    <!-- ===== Session dialogs ===== -->
+    <string name="session_abandon_title">セッションを放棄しますか？</string>
+    <string name="session_abandon_body">このセッションの進行状況はすべて失われます。</string>
+
+    <!-- ===== Onboarding ===== -->
+    <string name="onboarding_welcome_title">Idle Fantasyへようこそ</string>
+    <string name="onboarding_welcome_body">スキルセッションを開始して、キャラクターの成長を見守りましょう。セッションはアプリを閉じている間も1時間動作します。</string>
+    <string name="onboarding_first_session_hint">いずれかのスキルをタップして開始します。</string>
+
+    <!-- ===== Settings ===== -->
+    <string name="settings_title">設定</string>
+    <string name="settings_notifications">セッション通知</string>
+    <string name="settings_notifications_desc">セッション完了時にアラートを表示する</string>
+    <string name="settings_battery_optimization">バッテリーの最適化</string>
+    <string name="settings_battery_optimization_desc">適時にセッション通知を受け取るために、Idle Fantasyのバッテリー最適化を無効にします</string>
+    <string name="settings_battery_optimization_btn">設定を変更</string>
+    <string name="settings_language">言語</string>
+    <string name="settings_about">アプリについて</string>
+    <string name="settings_open_source_licenses">オープンソースライセンス</string>
+
+    <!-- ===== HomeScreen ===== -->
+    <string name="label_player_stats">ステータス</string>
+    <string name="label_combat_level">戦闘レベル</string>
+    <string name="label_shop_desc">装備の購入や戦利品の売却</string>
+    <string name="label_no_session_hint">「スキル」または「戦闘」から訓練を開始してください。</string>
+    <string name="label_recent_activity">最近の活動</string>
+    <string name="settings_profile_layout">プロフィールレイアウト</string>
+    <string name="settings_profile_layout_desc">サイドバー型か上部タブ型かを選択</string>
+    <string name="settings_profile_layout_rail">サイドバー</string>
+    <string name="settings_profile_layout_tabs">タブ</string>
+    <string name="settings_home_screen">ホーム画面</string>
+    <string name="settings_home_screen_desc">ホーム画面に表示する内容を選択</string>
+    <string name="settings_recent_activity">最近の活動ログ</string>
+    <string name="settings_recent_activity_desc">ホーム画面のヘッダーに「最近の活動」ボタンを表示する</string>
+    <string name="settings_journal_button">日記ボタン</string>
+    <string name="settings_journal_button_desc">ノートを書き留めるための「日記」ボタンをホーム画面の上部バーに表示する</string>
+    <string name="settings_seasonal_events">季節イベント</string>
+    <string name="settings_seasonal_events_desc">アクティブな季節イベントのバナーをホーム画面に表示する</string>
+    <string name="settings_collapsible_town_grid">折りたたみ可能な街グリッド</string>
+    <string name="settings_collapsible_town_grid_desc">街セクション（ショップ、宿屋、ギルド等）をホーム画面で折りたたみ可能なカードとして表示する</string>
+    <string name="settings_character_viewer">キャラクタービューア</string>
+    <string name="settings_character_viewer_desc">ホーム画面にキャラクタースプライトを表示する</string>
+    <string name="settings_stats_bar">ステータスバー</string>
+    <string name="settings_stats_bar_desc">戦闘レベル、トータルレベル、コイン数をホーム画面に表示する</string>
+    <string name="settings_session_end_time">セッション終了時刻</string>
+    <string name="settings_session_end_time_desc">セッションおよびキューのカウントダウンの横に予測完了時刻を表示する</string>
+    <string name="label_no_sessions_yet">完了したセッションはまだありません。</string>
+
+    <!-- ===== CombatScreen ===== -->
+    <string name="label_dungeons_tab">ダンジョン</string>
+    <string name="btn_fight">戦う！</string>
+
+    <!-- ===== SkillsScreen ===== -->
+    <string name="btn_back_arrow">← 戻る</string>
+    <string name="btn_start_burying">埋葬を開始</string>
+    <string name="btn_start_crafting">生産を開始</string>
+    <string name="btn_select">選択</string>
+    <string name="label_special">スペシャル</string>
+
+    <!-- ===== QuestsScreen ===== -->
+    <string name="label_claim_reward">報酬を受け取る</string>
+    <string name="label_daily">デイリー</string>
+    <string name="label_weekly">ウィークリー</string>
+    <string name="label_timed">期間限定</string>
+    <string name="label_daily_quests">デイリークエスト</string>
+    <string name="label_daily_reset">午前6:00にリセット</string>
+    <string name="label_weekly_reset">月曜日の午前6:00にリセット</string>
+    <string name="weekly_bonus_title">ウィークリーボーナス！</string>
+    <string name="weekly_bonus_claim">ウィークリーボーナスを受け取る</string>
+    <string name="label_daily_info">デイリークエストをクリアするとコインを獲得できます。また、各クエストには 1/100 の確率で「ドワーフ装備」がドロップするチャンスがあります。</string>
+    <string name="label_weekly_info">ウィークリーチャレンジをクリアすると、必要レベルに応じたコインを獲得できます。5つすべてクリアすると、ボーナスとして100,000コイン、または 1/26 の確率で「ディバイン装備」を獲得できます。</string>
+    <string name="label_daily_reward">2,000コイン（1/100：ドワーフ装備）</string>
+    <string name="msg_daily_claimed_coins">デイリークエスト完了！ +2,000コイン。</string>
+    <string name="msg_daily_claimed_dwarven">デイリークエスト完了！ %1$s を見つけました！</string>
+    <string name="label_hide_completed">完了済みを非表示</string>
+
+    <!-- ===== OnboardingScreen ===== -->
+    <string name="onboarding_lets_go">出発！</string>
+    <string name="onboarding_skip">スキップ</string>
+    <string name="onboarding_next">次へ</string>
+
+    <!-- ===== Settings ===== -->
+    <string name="settings_notifications_header">通知</string>
+    <string name="settings_performance_header">パフォーマンス</string>
+    <string name="settings_general_header">一般</string>
+    <string name="settings_tutorial_title">チュートリアル</string>
+    <string name="settings_tutorial_desc">イントロダクションをもう一度表示する</string>
+    <string name="settings_reopen">再表示</string>
+    <string name="settings_changelog_title">アップデート内容</string>
+    <string name="settings_changelog_desc">最新のアップデートによる変更点を確認する</string>
+    <string name="settings_changelog_btn">確認</string>
+    <string name="settings_foss_desc">Idle Fantasyはフリーかつオープンソースのソフトウェアです。</string>
+    <string name="settings_reset_title">進行状況のリセット</string>
+    <string name="settings_reset_desc">すべてのスキル、アイテム、クエスト、およびコインを消去する</string>
+    <string name="settings_reset_btn">リセット</string>
+    <string name="reset_confirm1_title">すべての進行状況をリセットしますか？</string>
+    <string name="reset_confirm1_body">これにより、すべてのスキルの経験値、所持アイテム、コイン、およびクエストの進行状況が消去されます。この操作は取り消せません。</string>
+    <string name="reset_confirm2_title">本当によろしいですか？</string>
+    <string name="reset_confirm2_body">すべてが失われ、最初からのスタートとなります。</string>
+    <string name="reset_confirm2_btn">はい、すべてリセットします</string>
+
+    <!-- ===== Battery prompt dialog ===== -->
+    <string name="battery_prompt_title">セッションの継続実行</string>
+    <string name="battery_prompt_body">最適なプレイ体験のために、Idle Fantasyのバックグラウンド実行を許可し、セッション完了通知が遅れずに届くようにしてください。</string>
+    <string name="battery_prompt_open_settings">設定を開く</string>
+    <string name="battery_prompt_dismiss">今はしない</string>
+
+    <!-- ===== Easter egg ===== -->
+    <string name="dig_action">掘る</string>
+    <string name="dig_result">さらに地中深くを掘り進めた…</string>
+    <!-- Translator note: %1$d = total hole depth in metres -->
+    <string name="dig_depth_format">穴の深さは %1$d メートルです。</string>
+
+    <!-- ===== Settings — appearance / language / save data ===== -->
+    <string name="settings_appearance">外観</string>
+    <string name="settings_theme">テーマ</string>
+    <string name="settings_theme_desc">お好みのカラー設定を選択</string>
+    <string name="settings_theme_dark">ダーク</string>
+    <string name="settings_theme_light">ライト</string>
+    <string name="settings_theme_system">システムデフォルト</string>
+    <string name="settings_font_size">フォントサイズ</string>
+    <string name="settings_font_tiny">極小</string>
+    <string name="settings_font_small">小</string>
+    <string name="settings_font_normal">標準</string>
+    <string name="settings_font_large">大</string>
+    <string name="settings_font_huge">極大</string>
+    <string name="settings_language_desc">アプリの表示言語を上書き</string>
+    <string name="settings_lang_english">English</string>
+    <string name="settings_lang_deutsch">Deutsch</string>
+    <string name="settings_lang_français">Français</string>
+    <string name="settings_lang_dutch">Nederlands</string>
+    <string name="settings_lang_español">Español</string>
+    <string name="settings_lang_español_españa">Español (España)</string>
+    <string name="settings_lang_turkish">Türkçe</string>
+    <string name="settings_lang_italiano">Italiano</string>
+    <string name="settings_lang_russian">Русский</string>
+    <string name="settings_lang_indonesian">Bahasa Indonesia</string>
+    <string name="settings_lang_portugues_brasil">Português (Brasil)</string>
+    <string name="settings_lang_japanese">日本語</string>
+    <string name="settings_lang_system">システムデフォルト</string>
+    <string name="settings_save_data">セーブデータ</string>
+    <string name="settings_export">セーブデータ書き出し</string>
+    <string name="settings_export_desc">進行状況をファイルに保存する</string>
+    <string name="settings_export_btn">書き出し</string>
+    <string name="settings_import">セーブデータ読み込み</string>
+    <string name="settings_import_desc">ファイルから進行状況を復元する</string>
+    <string name="settings_import_btn">読み込み</string>
+    <string name="settings_source_code">ソースコード</string>
+    <string name="settings_source_url" translatable="false">github.com/tristinbaker/IdleFantasy</string>
+    <string name="settings_source_open">開く</string>
+    <string name="settings_wiki">Wiki</string>
+    <string name="settings_wiki_url" translatable="false">idlefantasy.tristinbaker.xyz</string>
+    <string name="settings_exported_ok">セーブデータを書き出しました</string>
+    <string name="settings_imported_ok">セーブデータの読み込みに成功しました</string>
+    <string name="settings_imported_fail">読み込みに失敗しました — 無効なファイルです</string>
+    <string name="settings_backup_title">自動バックアップ</string>
+    <string name="settings_backup_folder">バックアップ先フォルダ</string>
+    <string name="settings_backup_no_folder">フォルダが選択されていません</string>
+    <string name="settings_backup_choose">選択</string>
+    <string name="settings_backup_frequency">頻度</string>
+    <string name="settings_backup_off">オフ</string>
+    <string name="settings_backup_hourly">1時間ごと</string>
+    <string name="settings_backup_daily">毎日</string>
+    <string name="settings_backup_weekly">毎週</string>
+    <string name="settings_backup_at_5am">午前5:00</string>
+    <string name="settings_backup_now">今すぐバックアップ</string>
+    <string name="settings_backup_success">バックアップが保存されました。</string>
+    <string name="settings_backup_failed">バックアップに失敗しました。</string>
+    <string name="settings_backup_folder_set">バックアップ先フォルダを設定しました。</string>
+
+    <!-- ===== HomeScreen ===== -->
+    <string name="home_town_title">街</string>
+    <string name="home_town_desc">ショップ、宿屋、ギルド、教会、建築屋の作業場、スレイヤーマスター、カーニバルを訪れます</string>
+    <string name="guild_dailies_available">デイリー依頼があります</string>
+    <string name="guild_do_dailies_hint">次のランクに進むためにデイリー依頼をクリアしましょう</string>
+    <string name="guild_quest_gate_blocked">ランクを上げるためにクエストを完了してください</string>
+    <string name="guild_quest_required">昇格にはクエストが必要です</string>
+    <string name="home_died_message">あなたは死亡し、獲得したものの大部分を失いました。</string>
+    <string name="home_xp_boost_was_active">2倍経験値ブーストが有効でした</string>
+    <string name="home_xp_boost_active">2倍経験値ブースト有効中 — 残り %1$s</string>
+    <string name="home_loot">戦利品</string>
+    <string name="home_food_consumed">消費した料理</string>
+    <string name="home_bones_buried">埋葬した骨</string>
+    <string name="home_whats_new">新機能</string>
+    <string name="home_got_it">了解</string>
+    <!-- Translator note: %1$s = player name or "Adventurer" -->
+    <string name="home_adventurer">冒険者</string>
+    <!-- Translator note: %1$d = current queue size, %2$d = max queue size (base 3, +1 per Queue Master tier) -->
+    <string name="home_up_next">次のキュー (%1$d/%2$d)</string>
+    <!-- Translator note: %1$s = formatted duration string (e.g. "2h 15m") -->
+    <string name="home_queue_ends_in">キュー終了まで %1$s</string>
+    <!-- Translator note: %1$d = item quantity (e.g. ×40) -->
+    <string name="queue_item_qty">×%1$d</string>
+    <string name="queue_item_qty_with_output">×%1$d → %2$d個のアイテム</string>
+    <!-- Translator note: %1$d = number of sessions to collect -->
+    <plurals name="plural_collect_sessions">
+        <item quantity="one">%1$d回分のセッション報酬を回収</item>
+        <item quantity="other">%1$d回分のセッション報酬を回収</item>
+    </plurals>
+
+    <!-- ===== CombatScreen ===== -->
+    <string name="combat_level_label">戦闘Lv</string>
+    <string name="combat_log_label">戦闘ログ</string>
+    <string name="combat_solo_bosses">ソロボス</string>
+    <!-- Translator note: %1$d = number of completed dungeon runs -->
+    <string name="combat_dungeon_runs">%1$d回挑戦</string>
+    <!-- Translator note: %1$d = kills, %2$d = food consumed -->
+    <string name="combat_last_run">前回: 討伐数 %1$d、料理消費 %2$d</string>
+    <!-- Translator note: %1$d = kills -->
+    <string name="combat_last_run_died">前回: 死亡 (討伐数 %1$d)</string>
+    <string name="combat_atk">攻撃</string>
+    <string name="combat_str">筋力</string>
+    <string name="combat_def">防御</string>
+    <!-- Translator note: %1$d = HP healed -->
+    <string name="combat_heals_hp">HPを %1$d 回復</string>
+    <string name="combat_defeated_so_far">これまでに討伐しました。</string>
+    <string name="combat_fighting">戦闘中…</string>
+    <string name="combat_log_you_hit">あなたの攻撃:</string>
+    <string name="combat_log_hit_you">の攻撃を受けました:</string>
+    <string name="combat_log_dmg">ダメージ</string>
+    <string name="combat_log_missed">ミス</string>
+    <string name="combat_log_you_missed">あなたの攻撃はミスしました</string>
+    <string name="combat_log_kill">☠ %1$s を討伐</string>
+    <string name="combat_log_player_hit">→ %1$s に %2$d ダメージ与えました</string>
+    <string name="combat_log_player_miss">→ %1$s への攻撃はミスしました</string>
+    <string name="combat_log_enemy_hit">← %1$s から %2$d ダメージ受けました</string>
+    <string name="combat_log_enemy_miss">← %1$s の攻撃はミスしました</string>
+    <string name="combat_rec_level">推奨戦闘レベル</string>
+    <string name="combat_your_level">現在の戦闘レベル</string>
+    <string name="combat_no_strength_bonus">なし (筋力ボーナスなし)</string>
+    <string name="combat_best_arrow">最良の矢</string>
+    <string name="combat_arrow_auto">自動 (使用可能な最良の矢)</string>
+    <string name="combat_label_arrow">矢</string>
+    <string name="combat_enemies">敵</string>
+    <string name="combat_no_spells">あなたの魔法レベルでは使用できるスペルがありません。</string>
+    <string name="combat_only_castable">詠唱可能のみ</string>
+    <string name="combat_max_hit">最大ダメージ</string>
+    <string name="combat_you_have_runes">(所持数: %2$s ×%1$d)</string>
+    <string name="combat_infinite_runes">(無限 %1$s)</string>
+    <string name="combat_no_potion">ポーションなし</string>
+    <string name="combat_req_level">必要戦闘レベル</string>
+    <string name="combat_duration">所要時間</string>
+    <!-- Translator note: %1$d = minutes -->
+    <string name="combat_duration_min">%1$d 分</string>
+    <string name="combat_xp_on_victory">勝利時の獲得経験値</string>
+    <string name="combat_you_died">死亡しました！</string>
+    <string name="combat_died_reward" formatted="false">You received 10% of the rewards.</string>
+    <!-- Translator note: %1$d = gear bonus value -->
+    <string name="combat_gear_bonus">装備ボーナス: +%1$d</string>
+
+    <!-- ===== ProfileScreen ===== -->
+    <string name="profile_unnamed">名無しの冒険者</string>
+    <string name="profile_no_pets">ペットはいません</string>
+    <string name="profile_pet_collected">所持</string>
+    <string name="profile_pet_not_found">未発見</string>
+    <string-array name="profile_pet_happy_messages">
+        <item>%1$s は嬉しそうだ！</item>
+        <item>%1$s は尻尾を振っている！</item>
+        <item>%1$s はあなたに親しげに寄り添ってきた。</item>
+        <item>%1$s は嬉しそうに鳴いた！</item>
+        <item>%1$s は嬉しそうに小さく踊った！</item>
+        <item>%1$s は満面の笑みを浮かべている。</item>
+        <item>%1$s はもっと撫でてほしそうだ！</item>
+        <item>%1$s は大喜びしている！</item>
+        <item>%1$s は遊んでもらえて大満足だ！</item>
+        <item>%1$s はこれからもあなたの力になると約束した。</item>
+    </string-array>
+    <string name="profile_equip_best">最良の装備を装着</string>
+    <string name="profile_equip_best_tools">最良の道具を装着</string>
+    <string name="profile_weapons">武器</string>
+    <string name="profile_combat_gear">戦闘装備</string>
+    <string name="profile_view_combat_gear">戦闘装備を表示</string>
+    <string name="profile_gathering_tools">採集道具</string>
+    <string name="profile_food_dungeon">料理 (ダンジョン)</string>
+    <string name="profile_no_food">インベントリに調理済みの料理がありません</string>
+    <!-- Translator note: %1$d = quantity, %2$d = heal value -->
+    <string name="profile_food_desc">×%1$d  •  HPを %2$d 回復</string>
+    <!-- Translator note: %1$s = slot display name (e.g. "Weapon") -->
+    <string name="profile_choose_slot">%1$s を選択</string>
+    <string name="profile_no_items">インベントリに対象のアイテムがありません</string>
+    <string name="profile_stat_atk">攻撃</string>
+    <string name="profile_stat_str">筋力</string>
+    <string name="profile_stat_ranged">遠距離</string>
+    <string name="profile_stat_magic">魔法</string>
+    <string name="profile_stat_mining">採掘</string>
+    <string name="profile_stat_wc">伐採</string>
+    <string name="profile_stat_fishing">釣り</string>
+    <string name="profile_stat_farming">農業</string>
+    <string name="profile_stat_smithing">鍛冶</string>
+    <string name="profile_stat_firemaking">火起こし</string>
+    <string name="profile_stat_agility">アジリティ</string>
+    <string name="profile_stat_cooking">調理</string>
+    <string name="profile_stat_thieving">スリ</string>
+    <string name="profile_stat_def">防御</string>
+    <string name="profile_req_lv">必要Lv.</string>
+
+    <!-- ===== SkillsScreen ===== -->
+    <!-- Translator note: %1$d = session duration in minutes -->
+    <string name="skills_session_duration">セッション: %1$d分</string>
+    <!-- Translator note: %1$d = estimated number of ores mined in one session -->
+    <string name="skill_mining_qty_estimate">セッションあたり約 %1$d 個の鉱石</string>
+    <string name="skills_only_craftable">作成可能のみ</string>
+    <string name="skills_filter_all">すべて</string>
+    <string name="skills_add_to_queue">セッションキューに追加</string>
+    <string name="skills_add_queue_short">キューに追加</string>
+    <!-- Translator note: %1$d = level required, %2$s = XP per action -->
+    <string name="skills_level_req_xp">Lv. %1$d  •  %2$s XP/鉱石</string>
+    <!-- Translator note: %1$s = formatted multiplier (e.g. "1.15") -->
+    <string name="skills_tool_bonus">道具ボーナス ×%1$s</string>
+    <string name="skills_pet_bonus">+%1$d%% 経験値 (ペット)</string>
+    <!-- Translator note: %1$d = fishing level -->
+    <string name="skills_fishing_desc">レベル %1$d  •  レベルに応じた獲物</string>
+    <!-- Translator note: %1$d = prayer level -->
+    <string name="skills_prayer_desc">レベル %1$d  •  骨を埋葬するか灰を撒いて祈り経験値を獲得</string>
+    <string name="skills_no_bones">インベントリに骨や灰がありません</string>
+    <!-- Translator note: %1$d = XP per bone, %2$d = quantity in inventory -->
+    <string name="skills_bone_qty">各 %1$d XP  •  所持数: %2$d</string>
+    <!-- Translator note: %1$d = XP per bone, %2$d = quantity available -->
+    <string name="skills_bone_selected">各 %1$d XP  •  使用可能: %2$d</string>
+    <!-- Translator note: %1$d = total XP -->
+    <string name="skills_xp_total">累計 +%1$d XP</string>
+    <string name="skills_no_essence">インベントリにルーンのエッセンスがありません — まずは採掘してください</string>
+    <string name="skills_no_runes">アンロック済みのルーンがまだありません</string>
+    <!-- Translator note: %1$d = essence quantity -->
+    <string name="skills_essence_qty">ルーンのエッセンス所持数: %1$d</string>
+    <!-- Translator note: %1$d = XP per rune, %2$d = level required -->
+    <string name="skills_rune_desc">%1$d XP/ルーン  •  Lv. %2$d</string>
+    <!-- Translator note: %1$d = XP per rune, %2$d = essence available -->
+    <string name="skills_rune_selected">%1$d XP/ルーン  •  使用可能エッセンス: %2$d</string>
+    <!-- Translator note: %1$d = level reached -->
+    <string name="skills_level_reached">レベル %1$d に到達！</string>
+    <string name="skills_no_logs">インベントリに原木がありません</string>
+    <!-- Translator note: %1$d = level required, %2$s = XP per log -->
+    <string name="skills_log_desc">Lv. %1$d  •  %2$s XP/原木</string>
+    <!-- Translator note: %1$d = level required, %2$s = XP per catch -->
+    <string name="skills_fish_desc">Lv. %1$d  •  %2$s XP/釣果</string>
+    <!-- Translator note: %1$d = required level, %2$s = skill name, %3$d = player level, %4$s = skill name again -->
+    <string name="skills_req_with_have">必要条件: %2$s レベル %1$d (現在: %4$s レベル %3$d)</string>
+
+    <!-- ===== ShopScreen ===== -->
+    <string name="shop_active">アクティブ</string>
+    <string name="shop_sell_junk">ジャンクを売却</string>
+    <string name="shop_sell_old_gear">古い装備を売却</string>
+    <string name="shop_equipped_label">(装備中)</string>
+    <!-- Translator note: %1$d = quantity -->
+    <string name="shop_qty_in_inv">インベントリ所持数: ×%1$d</string>
+    <!-- Translator note: %1$s = formatted coin amount -->
+    <string name="shop_price_each">各 %1$s コイン</string>
+    <!-- Translator note: %1$s = item name -->
+    <string name="shop_buy_prefix">購入: %1$s</string>
+    <string name="shop_sell_prefix">売却: %1$s</string>
+    <!-- Translator note: %1$s = formatted coin amount -->
+    <string name="shop_price_each_long">各 %1$s コイン</string>
+    <string name="shop_total_cost">合計コスト</string>
+    <string name="shop_youll_receive">獲得コイン</string>
+    <!-- Translator note: %1$s = formatted coin amount -->
+    <string name="shop_total_amount">%1$s コイン</string>
+
+    <!-- ===== CraftingScreen ===== -->
+    <string name="crafting_no_mats">素材なし</string>
+    <!-- Translator note: %1$d = total quantity, %2$s = item name -->
+    <string name="crafting_produces">= %2$s ×%1$d</string>
+    <string name="crafting_effects">効果</string>
+    <!-- Translator note: %1$d = total XP -->
+    <string name="crafting_xp_total">合計 +%1$d XP</string>
+    <string name="crafting_decrease">減らす</string>
+    <string name="crafting_increase">増やす</string>
+    <!-- Translator note: %1$d = needed, %2$d = have -->
+    <string name="crafting_needed_have">%1$d個必要 (所持数: %2$d)</string>
+    <!-- Translator note: %1$d = quantity in inventory -->
+    <string name="crafting_in_inventory">インベントリ所持数: ×%1$d</string>
+    <string name="crafting_quest_targets">クエスト対象</string>
+    <string name="quest_fill_daily">デイリー</string>
+    <string name="quest_fill_weekly">ウィークリー</string>
+    <string name="quest_fill_guild">ギルド</string>
+
+    <!-- ===== FarmingScreen ===== -->
+    <!-- Translator note: %1$s = crop name -->
+    <string name="farming_harvested">%1$s を収穫しました</string>
+    <!-- Translator note: %1$d = farming level -->
+    <string name="farming_title">農業 — レベル %1$d</string>
+    <!-- Translator note: %1$d = patch count -->
+    <string name="farming_patches">アンロック済みの畑: %1$d</string>
+    <string name="farming_clear_patch">畑をクリア</string>
+    <string name="farming_clear_desc">報酬なしで作物を撤去しますか？</string>
+    <string name="farming_harvest_and_plant">すべて収穫して植える</string>
+    <string name="farming_no_crops_ready">収穫可能な作物はまだありません</string>
+    <string name="farming_no_empty_patches">空いている畑はありません</string>
+    <!-- Translator note: %1$s = seed name -->
+    <string name="farming_no_seeds_inventory">インベントリの %1$s が不足しています</string>
+    <!-- Translator note: %1$d = count, %2$s = seed name -->
+    <string name="farming_planted">%2$s を %1$d個植えました</string>
+
+    <!-- ===== QuestsScreen ===== -->
+    <string name="quests_none_in_category">このカテゴリーのクエストはありません。</string>
+
+    <!-- ===== CharacterSetupSheet ===== -->
+    <string name="character_create_title">キャラクターの作成</string>
+    <string name="character_edit_title">キャラクターの編集</string>
+    <string name="character_name_label">キャラクター名</string>
+    <string name="character_gender">性別</string>
+    <string name="character_gender_male">男性</string>
+    <string name="character_gender_female">女性</string>
+    <string name="character_gender_other">その他</string>
+    <string name="character_gender_custom_hint">性別の説明を入力してください</string>
+    <string name="character_race">種族</string>
+    <string name="character_race_human">人間</string>
+    <string name="character_race_elf">エルフ</string>
+    <string name="character_race_dwarf">ドワーフ</string>
+    <string name="character_race_orc">オーク</string>
+    <string name="character_race_halfling">ハーフリング</string>
+    <string name="character_race_gnome">ノーム</string>
+
+    <!-- ===== CharacterCustomizationSheet ===== -->
+    <string name="appearance_title">外観のカスタマイズ</string>
+    <string name="appearance_skin_tone">肌のトーン</string>
+    <string name="appearance_eyes">目</string>
+    <string name="appearance_hair_style">髪型</string>
+    <string name="appearance_hair_color">髪の色</string>
+    <string name="appearance_beard">ひげ</string>
+    <string name="appearance_beard_color">ひげの色</string>
+    <string name="appearance_save">外観を保存</string>
+
+    <!-- ===== OnboardingScreen ===== -->
+    <string name="onboarding_sessions_title">セッション</string>
+    <string name="onboarding_sessions_desc">いずれかのスキルをタップして訓練セッションを開始します。セッションはアプリを閉じている間もバックグラウンドで動作します。後で戻って戦利品や経験値を回収しましょう。</string>
+    <string name="onboarding_progress_title">着実なステップアップ</string>
+    <string name="onboarding_progress_desc">鉱石を採掘してインゴットに精錬し、より良い武器や防具を鍛造しましょう。強力な装備を身につけて、より難易度の高いダンジョンやボスに挑戦します。道具の質を上げれば採集速度が向上し、高ティアの装備があれば低ランクの装備では生き残れないコンテンツに挑戦できます。</string>
+    <string name="onboarding_quests_title">クエストとペット</string>
+    <string name="onboarding_quests_desc">クエストを完了して経験値報酬を獲得しましょう。スキル訓練中に稀にドロップするペットは、永続的な経験値ブーストをもたらします。</string>
+    <string name="onboarding_welcome_desc">クラシックなMMORPGにインスパイアされた放置系RPG。スキルの訓練、ダンジョンでの戦闘、装備のクラフト。すべてオフラインでプレイ可能、アカウント不要、広告なし。</string>
+
+    <!-- Quantity picker quick buttons -->
+    <string name="qty_max">最大</string>
+
+    <!-- ===== Inn / Worker ===== -->
+    <string-array name="worker_names">
+        <item>アルドリック</item>
+        <item>ブレンナ</item>
+        <item>コールダー</item>
+        <item>ドウィン</item>
+        <item>エララ</item>
+        <item>フィン</item>
+        <item>グウェナ</item>
+        <item>ハドウィン</item>
+        <item>アイラ</item>
+        <item>ヨルヴィック</item>
+        <item>キラ</item>
+        <item>レオフィン</item>
+        <item>マレン</item>
+        <item>ネッサ</item>
+        <item>オスウィン</item>
+        <item>ペトラ</item>
+        <item>クイル</item>
+        <item>ロウェナ</item>
+        <item>スヴェン</item>
+        <item>ティルダ</item>
+        <item>ウリック</item>
+        <item>ヴェダ</item>
+        <item>レン</item>
+        <item>ザンダー</item>
+        <item>ヤラ</item>
+    </string-array>
+    <string name="inn_title">宿屋</string>
+    <string name="inn_desc">労働者を雇って代わりにスキルを訓練させたり、日替わりメニューから食べ物を購入したりできます。労働者はプレイヤーのクエスト進行度にはカウントされません。</string>
+    <string name="inn_worker_already_hired">労働者はすでに雇われています。</string>
+    <string name="inn_not_enough_coins">コインが足りません。</string>
+    <string name="inn_hire">雇う</string>
+    <string name="inn_worker_active">労働者を雇用し、訓練中です</string>
+    <string name="inn_hire_cost">%1$s コイン</string>
+    <string name="worker_long_laborer">雑用係</string>
+    <string name="worker_apprentice">見習い</string>
+    <string name="worker_journeyman">一人前</string>
+    <string name="worker_master">達人</string>
+    <string name="inn_long_laborer_desc">1契約につき1回の仕事、回収後に解雇。8時間の採集、効率0.5倍、クラフト数量無制限。動作は遅いですが、何でもこなします。</string>
+    <string name="inn_apprentice_desc">1契約につき1回の仕事、回収後に解雇。8時間の採集、効率1.0倍。クラフト、祈り、ルーン作成は1セッションあたり480個までに制限。</string>
+    <string name="inn_journeyman_desc">1契約につき1回の仕事、回収後に解雇. 6時間の採集、効率1.5倍。クラフト、祈り、ルーン作成は1セッションあたり540個までに制限。</string>
+    <string name="inn_master_desc">1契約につき1回の仕事、回収後に解雇。4時間の採集、効率2.0倍。クラフト、祈り、ルーン作成は1セッションあたり480個までに制限。</string>
+    <string name="inn_gathering_note">採集: セッション時間 × 効率倍率が獲得アイテムと経験値に適用されます</string>
+    <string name="inn_crafting_note">生産/祈り/ルーン作成: 各ランクごとに上限あり。雑用係には制限がありません</string>
+    <string name="worker_skills_title">労働者: %1$s</string>
+    <string name="worker_session_active">労働者セッション進行中</string>
+    <string name="worker_session_complete">労働者セッション完了</string>
+    <string name="worker_manage_from_home">ホーム画面から報酬を回収</string>
+    <string name="worker_session_assigned">割り当て: %1$s %2$s</string>
+    <string name="worker_card_title">労働者</string>
+    <string name="worker_idle">労働者は待機中です。キューに追加されたセッションは自動的に開始されます</string>
+    <string name="worker_collect_btn">労働者のセッション成果を回収</string>
+    <string name="worker_dismiss_btn">労働者を解雇</string>
+    <string name="worker_dismiss_confirm_title">労働者を解雇しますか？</string>
+    <string name="worker_dismiss_confirm_body">アクティブなセッションとキューはキャンセルされます。雇用費とキュー内の材料は返却されます。</string>
+    <string name="inn_daily_menu">日替わりメニュー</string>
+    <string name="inn_laborers_header">労働者</string>
+    <string name="inn_slot1_header">雑用係</string>
+    <string name="inn_slot2_header">熟練の労働者</string>
+
+    <!-- ===== Combat difficulty ratings ===== -->
+    <string name="combat_difficulty_likely">勝算あり</string>
+    <string name="combat_difficulty_risky">現在の構成では危険</string>
+    <string name="combat_difficulty_unlikely">敗北の可能性大</string>
+
+    <!-- ===== Achievements ===== -->
+    <string name="achievement_group_levelling">レベル上げ</string>
+    <string name="achievement_group_combat">戦闘</string>
+    <string name="achievement_group_quests">クエスト</string>
+    <string name="achievement_group_collection">収集</string>
+
+    <string name="achievement_total_50_name">駆け出し冒険者</string>
+    <string name="achievement_total_50_desc">トータルレベル50に到達</string>
+    <string name="achievement_total_100_name">一人前</string>
+    <string name="achievement_total_100_desc">トータルレベル100に到達</string>
+    <string name="achievement_total_250_name">熟練の旅人</string>
+    <string name="achievement_total_250_desc">トータルレベル250に到達</string>
+    <string name="achievement_total_500_name">ベテラン</string>
+    <string name="achievement_total_500_desc">トータルレベル500に到達</string>
+    <string name="achievement_total_750_name">マスター</string>
+    <string name="achievement_total_750_desc">トータルレベル750に到達</string>
+    <string name="achievement_total_1000_name">レジェンド</string>
+    <string name="achievement_total_1000_desc">トータルレベル1000に到達</string>
+    <string name="achievement_total_1500_name">チャンピオン</string>
+    <string name="achievement_total_1500_desc">トータルレベル1500に到達</string>
+    <string name="achievement_skill_99_name">初のマスター</string>
+    <string name="achievement_skill_99_desc">いずれかのスキルを最大レベル99にする</string>
+    <string name="achievement_all_99_name">コンプリーター</string>
+    <string name="achievement_all_99_desc">すべてのスキルを最大レベル99にする</string>
+
+    <string name="achievement_combat_10_name">ファイター</string>
+    <string name="achievement_combat_10_desc">戦闘レベル10に到達</string>
+    <string name="achievement_combat_30_name">ウォリアー</string>
+    <string name="achievement_combat_30_desc">戦闘レベル30に到達</string>
+    <string name="achievement_combat_50_name">チャンピオン</string>
+    <string name="achievement_combat_50_desc">戦闘レベル50に到達</string>
+    <string name="achievement_combat_75_name">エリート</string>
+    <string name="achievement_combat_75_desc">戦闘レベル75に到達</string>
+    <string name="achievement_combat_99_name">闘神</string>
+    <string name="achievement_combat_99_desc">戦闘レベル99に到達</string>
+    <string name="achievement_combat_113_name">最大戦闘レベル</string>
+    <string name="achievement_combat_113_desc">最大戦闘レベル113に到達</string>
+
+    <string name="achievement_quest_1_name">クエスター</string>
+    <string name="achievement_quest_1_desc">クエストを1個完了する</string>
+    <string name="achievement_quest_5_name">精勤者</string>
+    <string name="achievement_quest_5_desc">クエストを5個完了する</string>
+    <string name="achievement_quest_25_name">クエストハンター</string>
+    <string name="achievement_quest_25_desc">クエストを25個完了する</string>
+    <string name="achievement_quest_50_name">クエストマスター</string>
+    <string name="achievement_quest_50_desc">クエストを50個完了する</string>
+    <string name="achievement_quest_all_name">クエストの覇者</string>
+    <string name="achievement_quest_all_desc">すべてのクエストを完了する</string>
+
+    <string name="achievement_pet_first_name">動物の友</string>
+    <string name="achievement_pet_first_desc">最初のペットを獲得する</string>
+    <string name="achievement_pet_all_name">動物園</string>
+    <string name="achievement_pet_all_desc">すべてのペットを獲得する</string>
+
+    <!-- ===== Quest display names (override toTitleCase fallback) ===== -->
+    <string name="quest_kbd_slayer_1_name">キングブラックドラゴンスレイヤー I</string>
+    <string name="quest_kbd_slayer_2_name">キングブラックドラゴンスレイヤー II</string>
+    <string name="quest_kbd_slayer_3_name">キングブラックドラゴンスレイヤー III</string>
+    <string name="inn_daily_resets">毎日午前6:00に更新</string>
+    <string name="inn_food_heal">HP +%1$d</string>
+    <string name="inn_food_purchased">料理を購入しました。</string>
+    <string name="inn_buy_qty">数量</string>
+    <string name="inn_buy_total">合計: %1$s</string>
+    <string name="inn_card_desc">労働者の雇用と料理の調達</string>
+    <string name="worker_no_active_session">労働者は待機中 — キューにあるセッションはありません</string>
+    <string name="worker_add_sessions">セッションを追加</string>
+    <string name="inn_worker_tier">%1$s 労働者</string>
+    <string name="worker_skills_title_nav">労働者のスキル</string>
+
+    <!-- Guild Hall -->
+    <string name="guild_hall_title">ギルドホール</string>
+    <string name="guild_hall_desc">ギルドに加入し、デイリー依頼を完了してランクを上げましょう</string>
+    <string name="guild_hall_intro">ギルドは、あなたがすでに行っている活動に対して報酬を与えてくれます。クエストやデイリー依頼をこなして、他スキルで使える素材やコイン、経験値を獲得しましょう。これにより、特定のスキルに特化したプレイヤーでも、訓練していないスキルから資源を得ることができます。</string>
+    <string name="guild_level_label">ギルドレベル %1$d</string>
+    <string name="guild_level_max">ギルドレベル 10 (最大)</string>
+    <string name="guild_tab_quests">クエスト</string>
+    <string name="guild_tab_dailies">デイリー依頼</string>
+    <string name="guild_daily_resets_in">毎日午前6:00にリセット</string>
+    <string name="guild_locked_hint">ギルドレベル %1$d が必要</string>
+    <string name="guild_no_dailies">デイリー依頼を解放するには、ギルドクエストを完了してください。</string>
+    <string name="guild_contribute_inventory">インベントリから納品（所持数: %1$d）</string>
+    <string name="guild_quest_desc_gather">%4$sのために%3$sを%2$d個%1$sする。</string>
+    <string name="guild_quest_desc_kill">%2$s戦闘を使用して敵を%1$d体倒す。</string>
+    <string name="guild_quest_desc_prayer">%2$sのために骨を%1$d個埋葬する。</string>
+    <string name="guild_quest_desc_sessions">%3$sのために%2$sセッションを%1$d回完了する。</string>
+    <string name="guild_quest_desc_trade">%3$sのために%2$sの取引を%1$d回完了する。</string>
+    <string name="guild_quest_desc_earn_coins">%2$sのために交易路を通じて%1$sコインを獲得する。</string>
+    <string name="guild_quest_desc_pickpocket">%3$sのために%2$sから%1$d回スリを行う。</string>
+    <string name="guild_combat_melee">近接</string>
+    <string name="guild_combat_ranged">遠距離</string>
+    <string name="guild_combat_magic">魔法</string>
+    <string name="guild_rep_label">デイリー依頼 %1$d / %2$d</string>
+    <string name="guild_quest_complete">クエスト完了: %1$s！</string>
+    <string name="guild_daily_complete">デイリー報酬を受け取りました！</string>
+    <string name="guild_name_mining">採掘ギルド</string>
+    <string name="guild_name_fishing">漁師ギルド</string>
+    <string name="guild_name_woodcutting">木こりギルド</string>
+    <string name="guild_name_farming">農業ギルド</string>
+    <string name="guild_name_firemaking">火起こしギルド</string>
+    <string name="guild_name_agility">アジリティギルド</string>
+    <string name="guild_name_smithing">鍛冶ギルド</string>
+    <string name="guild_name_cooking">料理人ギルド</string>
+    <string name="guild_name_fletching">矢作りギルド</string>
+    <string name="guild_name_crafting">クラフトギルド</string>
+    <string name="guild_name_runecrafting">ルーン作成ギルド</string>
+    <string name="guild_name_herblore">調薬ギルド</string>
+    <string name="guild_name_warriors">戦士ギルド</string>
+    <string name="guild_name_archers">射手ギルド</string>
+    <string name="guild_name_mages">魔術師ギルド</string>
+    <string name="guild_name_prayer">祈りギルド</string>
+    <string name="guild_name_thieving">盗賊ギルド</string>
+    <string name="guild_name_mercantile">商人ギルド</string>
+
+    <!-- Mercantile skill -->
+    <string name="skill_mercantile">商業</string>
+    <string name="label_support_skills">サポートスキル</string>
+    <string name="mercantile_routes_label">交易路</string>
+    <string name="mercantile_level_label">レベル %1$d 商業</string>
+    <string name="mercantile_xp_label">経験値: %1$s</string>
+    <string name="mercantile_coins_label">コイン: %1$s</string>
+    <string name="mercantile_cost_label">コスト: %1$s</string>
+    <string name="mercantile_return_range">収益: %1$s – %2$s</string>
+    <string name="mercantile_dispatch_label">派遣</string>
+    <string name="mercantile_queue_label">キューに追加</string>
+
+    <!-- Church -->
+    <string name="church_title">教会</string>
+    <string name="church_desc">経験値、防御、コイン増加の祝福</string>
+    <string name="church_no_active_blessing">有効な祝福はありません。教会を訪れて祈りを捧げましょう。</string>
+    <string name="church_active_label">有効な祝福</string>
+    <string name="church_expires_in">残り時間: %1$s</string>
+    <string name="church_blessing_active_fmt">%1$s • 残り %2$s</string>
+    <string name="church_section_xp">経験値の祝福</string>
+    <string name="church_section_defense">防御の祝福</string>
+    <string name="church_section_coins">コインの祝福</string>
+    <string name="church_locked_level">祈りレベル %1$d が必要</string>
+    <string name="church_active_chip">有効中</string>
+    <string name="church_activate">有効化</string>
+    <string name="church_blessing_bonus">祝福ボーナス: +%1$s</string>
+    <string name="church_blessing_suffix">祝福より</string>
+    <string name="church_effect_xp">%2$d 時間の間、経験値 ×%1$.2f</string>
+    <string name="church_effect_def">%2$d 時間の間、防御 +%1$d</string>
+    <string name="church_effect_coins">%2$d 時間の間、コインのドロップ率 +%1$d%%</string>
+    <string name="church_cost_bones">コスト: 骨 %1$d 個</string>
+    <string name="church_confirm_title">祝福を有効化しますか？</string>
+    <string name="church_bones_available">所持している骨: %1$d 個 — 祝福価値: %2$d (大きな骨ほど効果が高くなります)</string>
+    <string name="church_not_enough_bones">骨が足りません (必要数: %1$d)</string>
+    <string name="church_already_active">すでに祝福が有効になっています</string>
+    <string name="church_confirm_deactivate_title">祝福を無効化しますか？</string>
+    <string name="church_confirm_deactivate_body">本当に現在有効な祝福を無効化しますか？消費した骨は戻りません。</string>
+
+    <!-- Blessing names -->
+    <string name="blessing_blessed_focus_name">聖なる集中</string>
+    <string name="blessing_stone_skin_name">ストーンスキン</string>
+    <string name="blessing_blessed_focus_ii_name">聖なる集中 II</string>
+    <string name="blessing_stone_skin_ii_name">ストーンスキン II</string>
+    <string name="blessing_blessed_focus_iii_name">聖なる集中 III</string>
+    <string name="blessing_stone_skin_iii_name">ストーンスキン III</string>
+    <string name="blessing_tithe_blessing_name">十分の一の祝福</string>
+    <string name="blessing_stone_skin_iv_name">ストーンスキン IV</string>
+    <string name="blessing_fortune_i_name">幸運 I</string>
+    <string name="blessing_tithe_blessing_ii_name">十分の一の祝福 II</string>
+    <string name="blessing_iron_ward_name">アイアンウォード</string>
+    <string name="blessing_fortune_ii_name">幸運 II</string>
+    <string name="blessing_tithe_blessing_iii_name">十分の一の祝福 III</string>
+    <string name="blessing_iron_ward_ii_name">アイアンウォード II</string>
+    <string name="blessing_fortune_iii_name">幸運 III</string>
+    <string name="blessing_divine_focus_name">神の集中</string>
+    <string name="blessing_diamond_skin_name">ダイヤモンドスキン</string>
+    <string name="blessing_fortune_iv_name">幸運 IV</string>
+    <string name="blessing_divine_focus_ii_name">神の集中 II</string>
+    <string name="blessing_diamond_skin_ii_name">ダイヤモンドスキン II</string>
+    <string name="blessing_fortune_v_name">幸運 V</string>
+    <string name="blessing_divine_grace_name">神の恩寵</string>
+    <string name="blessing_holy_shield_name">ホーリーシールド</string>
+    <string name="blessing_abundance_name">豊穣</string>
+    <string name="blessing_divine_grace_ii_name">神の恩寵 II</string>
+    <string name="blessing_holy_shield_ii_name">ホーリーシールド II</string>
+    <string name="blessing_abundance_ii_name">豊穣 II</string>
+    <string name="blessing_sacred_grace_name">聖なる恩寵</string>
+    <string name="blessing_aegis_name">イージス</string>
+    <string name="blessing_abundance_iii_name">豊穣 III</string>
+
+    <!-- Skilling dungeon names and descriptions -->
+    <string name="skilling_dungeon_copper_caverns_name">銅の洞窟</string>
+    <string name="skilling_dungeon_copper_caverns_desc">麓の地下にある、長い間放置された鉱山。その銅の鉱脈は今も暗闇の中で輝いています。</string>
+    <string name="skilling_dungeon_dwarven_depths_name">ドワーフの深部</string>
+    <string name="skilling_dungeon_dwarven_depths_desc">古代ドワーフの発掘現場の最深部。製作者たちの遺骨の陰に、希少金属の豊かな鉱脈が隠されています。</string>
+    <string name="skilling_dungeon_whispering_grove_name">ささやきの森</string>
+    <string name="skilling_dungeon_whispering_grove_desc">何千年も荒らされることなく木々が成長し続けている原生林。枝の間から何かが語りかけています。</string>
+    <string name="skilling_dungeon_corrupted_canopy_name">堕落した梢</string>
+    <string name="skilling_dungeon_corrupted_canopy_desc">日光の代わりに影が支配する森。木々は黒い樹液を流し、空気は古い魔法の味がします。</string>
+    <string name="skilling_dungeon_sunken_grotto_name">沈んだ洞窟</string>
+    <string name="skilling_dungeon_sunken_grotto_desc">何世紀にもわたる潮流によって削られた海の洞窟。水面から奇妙な石柱がそびえ立っています。</string>
+    <string name="skilling_dungeon_abyssal_lagoon_name">深淵のラグーン</string>
+    <string name="skilling_dungeon_abyssal_lagoon_desc">底が見えない静かな黒いラグーン。ここの魚はかすかに光り、捕獲されてから数分で溶けてしまいます。</string>
+    <string name="skilling_dungeon_crumbling_watchtower_name">崩れかけた監視塔</string>
+    <string name="skilling_dungeon_crumbling_watchtower_desc">麓の端に佇む老朽化した石造りの塔。かつて中に保管されていたものを、今も何かが守っています。</string>
+    <string name="skilling_dungeon_shattered_spire_name">砕かれた尖塔</string>
+    <string name="skilling_dungeon_shattered_spire_desc">瓦礫と化した魔法使いの塔の残骸。空気は今も残留魔法でパチパチと音を立てています。</string>
+
+    <!-- Expeditions -->
+    <string name="nav_expeditions">遠征</string>
+    <string name="expeditions_title">遠征</string>
+    <string name="expedition_explore_button">探索</string>
+    <string name="expedition_dungeon_unlocked">戦闘ダンジョンがアンロックされました！</string>
+    <string name="expedition_discover_hint">遠征で発見する</string>
+    <string name="expedition_loading">ロード中…</string>
+    <string name="expedition_lore_notes">%1$d / %2$d 個の伝承メモ</string>
+    <string name="expedition_lock_level">%1$s レベル %2$d が必要</string>
+    <string name="expedition_lock_notes">アンロックするには %1$s ですべてのメモを見つけてください</string>
+    <string name="expedition_lock_prerequisite">アンロックするには前提条件を完了してください</string>
+    <string name="label_notes">伝承メモ</string>
+
+    <!-- Slayer -->
+    <string name="skill_slayer_name">スレイヤー</string>
+    <string name="skill_slayer_desc">街のスレイヤーマスターから任務を受け取ります。</string>
+    <string name="builder_title">建築屋の作業場</string>
+    <string name="builder_card_desc">宿屋、ギルドホール、教会のアップグレード</string>
+    <string name="slayer_title">スレイヤーマスター</string>
+    <string name="slayer_card_desc">スレイヤー用の任務と報酬</string>
+    <string name="slayer_desc">任務を完了してスレイヤー経験値とポイントを獲得しましょう。ポイントはショップで専用装備と交換できます。</string>
+    <string name="slayer_level_label">レベル %1$d</string>
+    <string name="slayer_xp_label">%1$s XP</string>
+    <string name="slayer_points">%1$d Pt</string>
+    <string name="slayer_active_task">現在の任務</string>
+    <string name="slayer_kills_remaining">残り討伐数: %1$d / %2$d</string>
+    <string name="slayer_get_task">新しい任務を受ける</string>
+    <string name="slayer_skip_task">スキップ (30 Pt)</string>
+    <string name="slayer_no_task">アクティブな任務はありません。「新しい任務を受ける」をタップしてください。</string>
+    <string name="slayer_task_stuck">未発見の遠征ダンジョンに出現する敵です。無料で再抽選できます。</string>
+    <string name="slayer_reroll_free">再抽選 (無料)</string>
+    <string name="slayer_no_eligible_tasks">現在のスレイヤーレベルで受注可能な任務はありません。</string>
+    <string name="slayer_task_complete">任務完了！スレイヤーマスターの元を訪れて新しい任務を受けましょう。</string>
+    <string name="slayer_xp_per_kill">%1$d XP/討伐</string>
+    <string name="slayer_points_on_complete">完了時に +%1$d Pt</string>
+    <string name="slayer_shop_title">スレイヤーショップ</string>
+    <string name="slayer_shop_cost">%1$d Pt</string>
+    <string name="slayer_not_enough_points">スレイヤーポイントが足りません。</string>
+    <string name="slayer_already_owned">すでに所有しています。</string>
+    <string name="slayer_purchased">インベントリに追加されました。</string>
+    <string name="slayer_owned">所有済み</string>
+    <string name="slayer_lamp_purchased">%2$s に +%1$s XPが付与されました！</string>
+    <string name="slayer_lamp_pick_skill">スキルを選択してください</string>
+    <string name="slayer_lamp_small">経験値ランプ (小)</string>
+    <string name="slayer_lamp_large">経験値ランプ (大)</string>
+    <string name="slayer_lamp_small_desc">任意のスキルに +10,000 XP</string>
+    <string name="slayer_lamp_large_desc">任意のスキルに +50,000 XP</string>
+    <string name="slayer_found_in">出現場所: %1$s</string>
+    <string name="slayer_requires">必要条件: %1$s</string>
+    <string name="slayer_add_dungeon_to_queue">ダンジョンをキューに追加</string>
+    <string name="slayer_queue_added">キューに追加: %1$s</string>
+    <string name="slayer_queue_full">キューが満杯です。</string>
+    <string name="slayer_foretell_title">任務の予言</string>
+    <string name="slayer_foretell_desc">骨を捧げることで、次回のスレイヤー任務を予約できます。現在の任務が完了すると自動的に割り当てられます。</string>
+    <string name="slayer_foretell_queue_empty">予約された任務はありません。</string>
+    <string name="slayer_foretell_queue_btn">+ 予約</string>
+    <string name="slayer_foretell_queue_full">予言キューが満杯です (3/3)。</string>
+    <string name="slayer_foretell_not_enough_bones">骨が足りません (必要数: %1$d 個)。</string>
+    <string name="slayer_foretell_success">任務を予言しました: %1$s！</string>
+    <string name="slayer_foretell_btn">次の任務を予言 (%1$d 個の骨)</string>
+    <string name="slayer_foretell_slot">スロット %1$d: %2$s</string>
+
+    <!-- Prestige system -->
+    <string name="prestige">名声</string>
+    <string name="prestige_max">最大名声</string>
+    <string name="prestige_confirm_title">%s の名声を獲得しますか？</string>
+    <string name="prestige_confirm_message_xp">%1$s のレベルは 1 にリセットされますが、このスキルの獲得経験値に永続的な +%2$d%% ボーナスが得られます。</string>
+    <string name="prestige_confirm_message_stat">%1$s のレベルは 1 にリセットされますが、ステータスに永続的な +%2$d ボーナスが得られます。</string>
+    <string name="prestige_confirm_message_agility">%1$s のレベルは 1 にリセットされますが、永続的な +%2$d%% 経験値ボーナスが得られ、セッション時間が短縮され続けます。レベル99時には、1セッションの長さが %4$d 分から %3$d 分に短縮されます。</string>
+    <string name="prestige_confirm_message_mercantile">%1$s のレベルは 1 にリセットされますが、永続的な +%2$d%% 経験値ボーナスが得られ、さらに交易路からのコイン獲得量が +%2$d%% 増加します。</string>
+
+    <!-- Prestige achievements -->
+    <string name="achievement_prestige_first_name">最初のやり直し</string>
+    <string name="achievement_prestige_first_desc">初めていずれかのスキルで名声機能を実行する</string>
+    <string name="achievement_prestige_any_3_name">極めし者</string>
+    <string name="achievement_prestige_any_3_desc">いずれかのスキルで名声ランク3に到達する</string>
+    <string name="achievement_prestige_all_1_name">新たな出発</string>
+    <string name="achievement_prestige_all_1_desc">すべてのスキルで少なくとも1回名声機能を実行する</string>
+    <string name="achievement_prestige_all_3_name">真の名声</string>
+    <string name="achievement_prestige_all_3_desc">すべてのスキルで名声ランク3に到達する</string>
+
+    <!-- Slayer gear item names/descs (used by Shop + Slayer screen) -->
+    <string name="item_slayer_helm_name">スレイヤーヘルム</string>
+    <string name="item_slayer_helm_desc">ベテランスレイヤーが愛用する頑丈な兜。</string>
+    <string name="item_abyssal_whip_name">アビサルウィップ</string>
+    <string name="item_abyssal_whip_desc">深淵のエネルギーから鍛造された鞭。筋力の訓練に最適です。</string>
+    <string name="item_slayer_platebody_name">スレイヤープレートボディ</string>
+    <string name="item_slayer_platebody_desc">スレイヤーのルーンが刻まれた重厚な鎧。</string>
+    <string name="item_slayer_platelegs_name">スレイヤープレートレッグ</string>
+    <string name="item_slayer_platelegs_desc">長期のダンジョン探索用に作られた防護用の脚甲。</string>
+
+
+    <!-- Shop categories -->
+    <string name="shop_cat_ores_and_materials">鉱石・素材</string>
+    <string name="shop_cat_logs_and_wood">原木・木材</string>
+    <string name="shop_cat_seeds_and_farming">種・農業</string>
+    <string name="shop_cat_merchants_guild">商人ギルド</string>
+    <string name="shop_cat_equipment">装備</string>
+    <string name="shop_cat_special">スペシャル</string>
+    <string name="shop_cat_weapons">武器</string>
+    <string name="shop_cat_armor">防具</string>
+    <string name="shop_cat_tools">道具</string>
+    <string name="shop_cat_food">料理</string>
+    <string name="shop_cat_materials">素材</string>
+    <string name="shop_cat_misc">その他</string>
+
+    <string name="crafting_per_craft">作成ごとに ×%1$d</string>
+
+    <!-- Skills screen localisation -->
+    <string name="farming_ready_in">収穫まで %1$s</string>
+    <string name="trade_route_local_market_name">地元の市場</string>
+    <string name="trade_route_river_trading_post_name">川沿いの交易所</string>
+    <string name="trade_route_eastern_caravan_name">東方キャラバン</string>
+    <string name="trade_route_grand_exchange_name">グランドエクスチェンジ</string>
+    <string name="trade_route_merchants_quarter_name">商人地区</string>
+    <string name="trade_route_northern_ports_name">北方の港</string>
+    <string name="trade_route_local_market_desc">地元の市場で一般的な品物を取引します。利益は控えめですが安定しています。</string>
+    <string name="trade_route_river_trading_post_desc">川沿いの交易路で商品を動かします。利益は予測困難ですが、多くの場合価値があります。</string>
+    <string name="trade_route_eastern_caravan_desc">東に向かう商人キャラバンに参加します。長い旅路ですが、取引が成立したときの見返りは大きいです。</string>
+    <string name="trade_route_grand_exchange_desc">富が生まれ、そして失われる伝説の取引所「グランドエクスチェンジ」で取引を行います。</string>
+    <string name="trade_route_merchants_quarter_desc">一流の商人地区で希少な商品を取引します。</string>
+    <string name="trade_route_northern_ports_desc">北方の港湾都市へ貴重な貨物を運びます。ハイリスク・ハイリターンです。</string>
+    <string name="crafting_cat_bar">インゴット</string>
+    <string name="crafting_cat_component">部品</string>
+    <string name="crafting_cat_tool">道具</string>
+    <string name="crafting_cat_weapon">武器</string>
+    <string name="crafting_cat_armour">防具</string>
+    <string name="crafting_cat_equipment">装備</string>
+    <string name="crafting_cat_food">料理</string>
+    <string name="crafting_cat_ammunition">弾薬</string>
+    <string name="crafting_cat_jewellery">宝飾品</string>
+    <string name="crafting_cat_potion">ポーション</string>
+
+    <!-- Crafting tier filter chips -->
+    <string name="crafting_tier_adamantite">アダマンタイト</string>
+    <string name="crafting_tier_arrow">矢</string>
+    <string name="crafting_tier_bronze">ブロンズ</string>
+    <string name="crafting_tier_gold">ゴールド</string>
+    <string name="crafting_tier_iron">アイアン</string>
+    <string name="crafting_tier_magic">マジック</string>
+    <string name="crafting_tier_maple">メイプル</string>
+    <string name="crafting_tier_mithril">ミスリル</string>
+    <string name="crafting_tier_oak">オーク</string>
+    <string name="crafting_tier_platinum">プラチナ</string>
+    <string name="crafting_tier_runite">ルーナイト</string>
+    <string name="crafting_tier_shortbow">ショートボウ</string>
+    <string name="crafting_tier_silver">シルバー</string>
+    <string name="crafting_tier_staff">スタッフ</string>
+    <string name="crafting_tier_steel">スチール</string>
+    <string name="crafting_tier_willow">ウィロー</string>
+    <string name="crafting_tier_yew">ユー</string>
+
+    <!-- Bone Altar -->
+    <string name="bone_altar_title">骨の祭壇</string>
+    <string name="bone_altar_open">祭壇を使用</string>
+    <string name="bone_altar_select_prompt">祭壇で埋葬する骨を選択してください</string>
+    <string name="bone_altar_tap">タップして埋葬</string>
+    <string name="bone_altar_change_bone">変更</string>
+    <string name="bone_altar_combo_count">コンボ ×%d</string>
+    <string name="bone_altar_bonus_active" formatted="false">+50% XP bonus!</string>
+    <string name="bone_altar_session_xp">このセッション: +%s XP</string>
+    <string name="bone_altar_buried_count">%d 個埋葬済み</string>
+    <string name="bone_altar_no_bones">インベントリに骨がありません</string>
+    <string name="bone_altar_cape_awarded">祈りのマントを獲得しました！</string>
+
+    <!-- Firemaking rework + ash catalyst + fertilizer -->
+    <string name="firemaking_logs_in_inventory">個所持</string>
+    <string name="firemaking_burns_to">燃やすと %1$s を生成</string>
+    <string name="firemaking_burn">燃やす</string>
+    <string name="farming_fertilizer">肥料</string>
+    <string name="farming_fertilizer_optional">肥料を追加 (任意)</string>
+    <string name="farming_fertilizer_yield">収穫量 +%1$d%%</string>
+    <string name="farming_fertilized">肥料追加済み</string>
+    <string name="catalyst_optional">灰の触媒 (任意)</string>
+    <string name="catalyst_enhanced_output">強化ポーションを生産</string>
+    <string name="catalyst_rune_bonus">エッセンスごとに %1$d 個のルーン</string>
+    <string name="catalyst_none">触媒なし</string>
+
+    <!-- Construction skill -->
+    <string name="skill_construction_name">建築</string>
+    <string name="skill_construction_desc">木板と釘を使って家具を製作し、経験値を獲得します。建築レベルが上がると、街の建物をアップグレードして永続的なボーナスを得られます。</string>
+
+    <!-- Thieving skill -->
+    <string name="skill_thieving_name">スリ</string>
+    <string name="skill_thieving_desc">NPCからスリを行います。成功率はあなたのレベルと対象の強さに依存します。失敗すると気絶します。高ランクの対象からは、希少なアイテムや大量のコインを盗み出せます。</string>
+    <string name="thieving_npc_detail">Lv. %1$d • %2$d XP • 成功率 %3$d%%</string>
+    <string name="thieving_npc_coins">成功ごとに %1$d – %2$d コイン</string>
+
+    <!-- Thieving NPC names -->
+    <string name="thieving_npc_peasant_name">小作農</string>
+    <string name="thieving_npc_merchant_name">商人</string>
+    <string name="thieving_npc_guardsman_name">衛兵</string>
+    <string name="thieving_npc_artisan_name">職人</string>
+    <string name="thieving_npc_noble_name">貴族</string>
+    <string name="thieving_npc_city_guard_name">都市警備兵</string>
+    <string name="thieving_npc_royal_guard_name">近衛兵</string>
+    <string name="thieving_npc_knight_name">騎士</string>
+    <string name="thieving_npc_bishop_name">司教</string>
+    <string name="thieving_npc_high_priest_name">大司祭</string>
+
+    <!-- Construction item names (planks, nails, stone) -->
+    <string name="item_plank_name">木板</string>
+    <string name="item_oak_plank_name">オークの木板</string>
+    <string name="item_willow_plank_name">ウィローの木板</string>
+    <string name="item_maple_plank_name">メイプルの木板</string>
+    <string name="item_yew_plank_name">ユーの木板</string>
+    <string name="item_magic_plank_name">マジックの木板</string>
+    <string name="item_iron_nail_name">鉄の釘</string>
+    <string name="item_steel_nail_name">スチールの釘</string>
+    <string name="item_mithril_nail_name">ミスリルの釘</string>
+    <string name="item_stone_name">石材</string>
+    <string name="item_carved_stone_name">彫刻された石材</string>
+    <string name="item_stone_block_name">石のブロック</string>
+
+    <!-- Construction furniture names -->
+    <string name="item_wooden_rack_name">木製の棚</string>
+    <string name="item_wooden_shelf_name">木製のシェルフ</string>
+    <string name="item_oak_table_name">オークのテーブル</string>
+    <string name="item_oak_bookshelf_name">オークの本棚</string>
+    <string name="item_willow_cabinet_name">ウィローのキャビネット</string>
+    <string name="item_maple_dresser_name">メイプルのタンス</string>
+    <string name="item_yew_wardrobe_name">ユーのクローゼット</string>
+    <string name="item_magic_throne_name">魔法の玉座</string>
+
+    <!-- Town building upgrade UI -->
+    <string name="town_upgrade_section_title">街の建築物</string>
+    <string name="town_building_inn_name">宿屋</string>
+    <string name="town_building_guild_hall_name">ギルドホール</string>
+    <string name="town_building_church_name">教会</string>
+    <string name="town_building_current_tier">ティア %1$d / %2$d</string>
+    <string name="town_building_maxed_label">アップグレード最大</string>
+    <string name="town_upgrade_next_label">次のアップグレード</string>
+    <string name="town_upgrade_constr_req">必要条件: 建築レベル %1$d</string>
+    <string name="town_upgrade_cost">コスト: %1$s コイン</string>
+    <string name="town_upgrade_materials_header">必要素材:</string>
+    <string name="town_upgrade_btn">アップグレード</string>
+    <string name="town_upgrade_success">建物をアップグレードしました！</string>
+    <string name="town_upgrade_fail_level">建築レベル %1$d が必要です</string>
+    <string name="town_upgrade_fail_coins">コインが足りません</string>
+    <string name="town_upgrade_fail_mats">必要素材が不足しています</string>
+    <string name="town_inn_active_bonus">セッションごとの労働者経験値 +%1$d%%</string>
+    <string name="town_inn_no_bonus">労働者に経験値ボーナスを付与するにはアップグレードしてください</string>
+    <string name="town_guild_active_bonus">ギルドクエストの必要数 -%1$d%%</string>
+    <string name="town_guild_no_bonus">必要数を減らすにはアップグレードしてください</string>
+    <string name="town_church_active_bonus">祝福の持続時間: %1$d時間 (デフォルト: 24時間)</string>
+    <string name="town_church_no_bonus">祝福の持続時間を延ばすにはアップグレードしてください</string>
+    <string name="town_building_fairgrounds_name">カーニバル広場</string>
+    <string name="town_fairgrounds_no_bonus">4つのミニゲームがプレイ可能、クールダウン10分</string>
+    <string name="town_fairgrounds_t1_bonus">「Pick-a-Cup」をアンロック、クールダウンが7.5分に短縮、チケットのドロップ確率 +5%</string>
+    <string name="town_fairgrounds_t2_bonus">「Higher or Lower」をアンロック、チケットのドロップ確率 +10%</string>
+    <string name="town_fairgrounds_t3_bonus">クールダウンが5分に短縮、チケットのドロップ確率 +15%</string>
+    <string name="town_building_garden_name">庭園</string>
+    <plurals name="town_garden_bonus">
+        <item quantity="zero">追加の畑はまだありません</item>
+        <item quantity="one">追加の畑: +%1$d 個</item>
+        <item quantity="other">追加の畑: +%1$d 個</item>
+    </plurals>
+    <string name="town_building_queue_master_name">キューマスター</string>
+    <plurals name="town_queue_master_bonus">
+        <item quantity="zero">追加のキュー枠はまだありません</item>
+        <item quantity="one">追加のキュー枠: +%1$d 個</item>
+        <item quantity="other">追加のキュー枠: +%1$d 個</item>
+    </plurals>
+
+    <!-- Town achievements -->
+    <string name="achievement_town_first_upgrade_name">最初の改築</string>
+    <string name="achievement_town_first_upgrade_desc">初めて街の建物をアップグレードする</string>
+    <string name="achievement_town_all_tier1_name">街の発展者</string>
+    <string name="achievement_town_all_tier1_desc">街の6つの建物をすべてティア1以上にする</string>
+    <string name="achievement_town_one_maxed_name">マスタービルダー</string>
+    <string name="achievement_town_one_maxed_desc">いずれか1つの建物を最大ティアまでアップグレードする</string>
+    <string name="achievement_town_all_maxed_name">伝説の街</string>
+    <string name="achievement_town_all_maxed_desc">街の6つの建物をすべて最大ティアまでアップグレードする</string>
+    <string name="achievement_tower_first_floor_name">第一歩</string>
+    <string name="achievement_tower_first_floor_desc">無限の塔の最初の階層をクリアする</string>
+    <string name="achievement_tower_floor_10_name">塔の初心者</string>
+    <string name="achievement_tower_floor_10_desc">無限の塔の10階に到達する</string>
+    <string name="achievement_tower_floor_50_name">より高く</string>
+    <string name="achievement_tower_floor_50_desc">無限の塔の50階に到達する</string>
+    <string name="achievement_tower_floor_100_name">百階の到達者</string>
+    <string name="achievement_tower_floor_100_desc">無限の塔の100階に到達する</string>
+    <string name="achievement_tower_floor_250_name">虚空の覇者</string>
+    <string name="achievement_tower_floor_250_desc">無限の塔の250階に到達する</string>
+    <string name="achievement_tower_all_milestones_name">塔のレジェンド</string>
+    <string name="achievement_tower_all_milestones_desc">塔のすべてのマイルストーン (25個) を回収する</string>
+
+
+
+
+    <!-- Thieving expedition and dungeon strings -->
+    <string name="skilling_dungeon_thieves_den_name">盗賊の根城</string>
+    <string name="skilling_dungeon_thieves_den_desc">街の通りの下に広がる迷路のようなトンネル。組織化された盗賊団によって使用されています。</string>
+    <string name="skilling_dungeon_shadow_vault_name">シャドウボルト</string>
+    <string name="skilling_dungeon_shadow_vault_desc">「ローグサンクタム」の地下にある隠された保管庫。ギルドの最も価値ある盗品が保管されています。</string>
+    <string name="dungeon_rogue_sanctum_name">ローグサンクタム</string>
+    <string name="dungeon_rogue_sanctum_desc">実力を証明したメンバーのみが立ち入りを許される、盗賊ギルドの隠れ家。</string>
+    <string name="dungeon_guild_of_shadows_name">シャドウギルド</string>
+    <string name="dungeon_guild_of_shadows_desc">盗賊ギルドの最深部。精鋭の護衛たちによって守られています。</string>
+    <string name="enemy_assassin_name">アサシン</string>
+    <string name="enemy_shadow_assassin_name">シャドウアサシン</string>
+    <string name="enemy_vault_guardian_name">ボルトガーディアン</string>
+    <string name="enemy_guild_master_name">ギルドマスター</string>
+    <string name="item_shadow_signet_name">シャドウシグネット</string>
+    <string name="item_shadow_signet_desc">シャドウギルドの紋章が刻まれた指輪。ギルドで最も危険な工作員のみが着用を許されました。</string>
+
+    <!-- High-level dungeon names and descriptions -->
+    <string name="dungeon_void_rift_name">ヴォイドリフト</string>
+    <string name="dungeon_void_rift_desc">現実世界の裂け目。ここからヴォイドの怪物たちが人間界へと流れ込んでいます。</string>
+    <string name="dungeon_frozen_citadel_name">凍てついた砦</string>
+    <string name="dungeon_frozen_citadel_desc">氷河に閉ざされた古代の要塞。その守護者たちは永遠の監視のなかで凍りついています。</string>
+    <string name="dungeon_abyssal_throne_name">アビサルスローン</string>
+    <string name="dungeon_abyssal_throne_desc">既知の世界の最深部。天地創造の黎明期よりヴォイドロードたちによって支配されています。</string>
+
+    <!-- High-level enemy names -->
+    <string name="enemy_void_stalker_name">ヴォイドストーカー</string>
+    <string name="enemy_rift_guardian_name">リフトガーディアン</string>
+    <string name="enemy_chaos_elemental_name">カオスエレメンタル</string>
+    <string name="enemy_frost_giant_name">フロストジャイアント</string>
+    <string name="enemy_ice_golem_name">アイスゴーレム</string>
+    <string name="enemy_glacial_mage_name">氷河の魔術師</string>
+    <string name="enemy_abyssal_lord_name">アビサルロード</string>
+    <string name="enemy_eternal_sentinel_name">エターナルセンチネル</string>
+    <string name="enemy_void_archon_name">ヴォイドアーコン</string>
+    <string name="enemy_frost_wyvern_name">フロストワイバーン</string>
+    <string name="enemy_abyssal_guardian_name">アビサルガーディアン</string>
+    <string name="enemy_shadow_thief_name">シャドウシーフ</string>
+    <string name="enemy_elder_lich_name">エルダーリッチ</string>
+
+    <!-- Void Sovereign boss drops -->
+    <string name="item_void_reaver_name">ヴォイドリーヴァー</string>
+    <string name="item_void_reaver_desc">結晶化したヴォイドエネルギーから鍛造された刃。その刃は、まるで布のように鎧を切り裂きます。</string>
+    <string name="item_sovereign_crown_name">ソヴリンクラウン</string>
+    <string name="item_sovereign_crown_desc">暗黒の威光を放つヴォイドソヴリンの王冠。比類なき防御力を提供します。</string>
+    <string name="item_amulet_of_the_void_name">アミュレットオブヴォイド</string>
+    <string name="item_amulet_of_the_void_desc">純粋なヴォイドエッセンスのペンダント。着用者のすべての戦闘ステータスを向上させます。</string>
+
+
+    <!-- ===== Carnival ===== -->
+    <string name="carnival_title">カーニバル</string>
+    <string name="carnival_desc">ゲーム、賞品、そしてお祭り騒ぎ！</string>
+    <string name="carnival_ticket_balance">チケット所持数: %1$d</string>
+    <string name="carnival_idle_tab">放置ゲーム</string>
+    <string name="carnival_active_tab">アクティブゲーム</string>
+    <string name="carnival_shop_tab">景品交換所</string>
+    <string name="carnival_idle_hint">セッションをキューに入れてチケットを獲得しましょう。関連スキルのレベルが高いほど、1セッションあたりの獲得チケットが増えます。</string>
+    <string name="carnival_archery_range">射的場</string>
+    <string name="carnival_idle_desc_archery">動く標的を撃ちます。遠距離スキルのレベルに応じてチケット獲得量が増加します。</string>
+    <string name="carnival_strongman_competition">ストロングマンコンテスト</string>
+    <string name="carnival_idle_desc_strongman">石を持ち上げ、ハンマーを振ります。筋力スキルのレベルに応じてチケット獲得量が増加します。</string>
+    <string name="carnival_wizards_duel">魔法使いの決闘</string>
+    <string name="carnival_idle_desc_wizard">ライバルの魔術師に対して幻影魔法を唱えます。魔法スキルのレベルに応じてチケット獲得量が増加します。</string>
+    <string name="carnival_fishing_derby">フィッシングダービー</string>
+    <string name="carnival_idle_desc_fishing">カーニバルの池で大物を釣り上げます。釣りスキルのレベルに応じてチケット獲得量が増加します。</string>
+    <string name="carnival_skill_level">%1$s Lv.%2$d</string>
+    <string name="carnival_ticket_yield">セッションあたり約 %1$d チケット</string>
+    <string name="carnival_queue">セッションをキューに追加</string>
+    <string name="carnival_ring_toss">輪投げ</string>
+    <string name="carnival_active_ring_desc">インジケーターがゴールデンターゲットゾーンに入った瞬間に輪を投げましょう。</string>
+    <string name="carnival_ring_target_hint">中央を狙う (45%–55%)</string>
+    <string name="carnival_throw">投げる！</string>
+    <string name="carnival_hammer_strike">ハンマー叩き</string>
+    <string name="carnival_active_hammer_desc">パワーメーターが最大になった瞬間に叩いて最高スコアを目指しましょう。</string>
+    <string name="carnival_power_label">パワーメーター</string>
+    <string name="carnival_hammer_miss_zone">ミス</string>
+    <string name="carnival_hammer_good_zone">Good</string>
+    <string name="carnival_hammer_perfect_zone">Perfect!</string>
+    <string name="carnival_strike">叩く！</string>
+    <string name="carnival_potion_sequence">ポーションシーケンス</string>
+    <string name="carnival_active_sequence_desc">ポーションの色の順序を記憶し、同じ順序でタップしてください。</string>
+    <string name="carnival_sequence_watch">シーケンスを記憶中…</string>
+    <string name="carnival_sequence_input">%1$d / %2$d 番目の色をタップ</string>
+    <string name="carnival_item_appraisal">アイテム鑑定</string>
+    <string name="carnival_active_appraisal_desc">オープン市場で価値が高いのはどちらのアイテムですか？</string>
+    <string name="carnival_appraisal_which">どちらが高価値？</string>
+    <string name="carnival_play">遊ぶ</string>
+    <string name="carnival_cooldown">残り時間: %1$d分 %2$d秒</string>
+    <string name="carnival_ticket_cost">%1$d チケット</string>
+    <string name="carnival_redeem">交換</string>
+    <string name="carnival_queue_added">キューに追加: %1$s</string>
+    <string name="carnival_queue_full">キューが満杯です。</string>
+    <string name="carnival_ring_won">真ん中命中！ +%1$d チケット</string>
+    <string name="carnival_ring_missed">的を外しました！</string>
+    <string name="carnival_hammer_perfect">会心の一撃！ +%1$d チケット</string>
+    <string name="carnival_hammer_good">ナイスショット！ +%1$d チケット</string>
+    <string name="carnival_hammer_miss">スイングミス！</string>
+    <string name="carnival_sequence_correct">順序正解！ +%1$d チケット</string>
+    <string name="carnival_sequence_wrong">順序が違います！もう一度挑戦してください。</string>
+    <string name="carnival_appraisal_correct">正解！ +%1$d チケット</string>
+    <string name="carnival_appraisal_wrong">不正解！より価値が高いのは %1$s でした。</string>
+    <string name="carnival_redeemed">交換完了: %1$s！</string>
+    <string name="carnival_not_enough_tickets">チケットが足りません。</string>
+    <string name="carnival_lamp_redeemed">%2$s に +%1$s XPが付与されました！</string>
+    <string name="carnival_shell_game">Pick-a-Cup</string>
+    <string name="carnival_active_shell_desc">宝石がどのカップに入ったかを見極め、シャッフル後に当てましょう！</string>
+    <string name="carnival_shell_showing">よく見てください — 宝石はカップ %1$d の下にあります</string>
+    <string name="carnival_shell_watch">シャッフル中…</string>
+    <string name="carnival_shell_pick">宝石はどのカップの下？</string>
+    <string name="carnival_shell_won">正解！ +%1$d チケット</string>
+    <string name="carnival_shell_missed">不正解！宝石はカップ %1$d の下にありました。</string>
+    <string name="carnival_shell_locked">アンロックするにはカーニバル広場をティア1にアップグレードしてください</string>
+    <string name="carnival_higher_lower">Higher or Lower</string>
+    <string name="carnival_active_higher_desc">次の数字が現在の数字より大きいか小さいかを予想してください。</string>
+    <string name="carnival_higher_lower_current">%1$d</string>
+    <string name="carnival_higher_lower_score">正解数: %1$d (%2$d回中)</string>
+    <string name="carnival_higher_lower_round">ラウンド %1$d / %2$d</string>
+    <string name="carnival_higher_lower_btn_higher">大きい</string>
+    <string name="carnival_higher_lower_btn_lower">小さい</string>
+    <string name="carnival_higher_lower_result">結果: %1$d/%2$d 正解 — +%3$d チケット</string>
+    <string name="carnival_higher_lower_locked">アンロックするにはカーニバル広場をティア2にアップグレードしてください</string>
+    <string name="carnival_higher_lower_last_card">前のカード: %1$d</string>
+    <string name="carnival_higher_lower_continue">続ける</string>
+    <string name="carnival_difficulty_label">難易度</string>
+    <string name="carnival_difficulty_normal">ノーマル</string>
+    <string name="carnival_difficulty_hard">ハード</string>
+    <string name="carnival_ring_hard_hint">ハード: ターゲット 52%–57%、獲得 7チケット</string>
+
+    <!-- ===== Magic Bean / Farming ===== -->
+    <string name="farming_bean_note_1">小さな芽が土を突き抜けて顔を出しました。</string>
+    <string name="farming_bean_note_2">茎が不自然なほどのスピードで成長しています。</string>
+    <string name="farming_bean_note_3">これまでに見たこともないような巨大な葉が広がっています。</string>
+    <string name="farming_bean_note_4">茎の上部に雲が集まり始めました…</string>
+    <string name="farming_bean_note_5">はるか上空から奇妙な音が漂ってきます。</string>
+    <string name="farming_bean_note_6">遠くで轟音が響く。はるか高みで何かが動いています。</string>
+    <string name="farming_bean_note_7">豆の木が震えている。最上部で何かが待ち受けています。</string>
+    <string name="farming_bean_note_8">もう少しです。空気が薄くなってきました。最上部がうっすらと見えてきました。</string>
+    <string name="farming_bean_ready">豆の木は雲の彼方まで達しました。登る準備はできていますか？</string>
+    <string name="farming_bean_climb">登る</string>
+    <string name="farming_bean_climbed">豆の木を登りきりました。そこには何かが待ち受けています…</string>
+    <string name="farming_bean_picker_stats">\?\?\?  •  \?\?\?  •  \?\?\?</string>
+    <string name="farming_magic_bean_one_plot">魔法の豆は1つの区画にしか植えられません</string>
+
+    <!-- ===== Armory Tab ===== -->
+    <string name="armory_tab">武器庫</string>
+    <string name="tab_bonuses">ボーナス</string>
+    <string name="bonus_none">アクティブな経験値ボーナスはありません</string>
+    <string name="bonus_all_skills">すべてのスキル</string>
+    <string name="bonus_section_boosts">アクティブなブースト</string>
+    <string name="armory_not_owned">このアイテムを所有していません。</string>
+    <string name="armory_how_to_obtain">入手方法</string>
+    <string name="armory_no_stats">ステータスボーナスはありません。</string>
+    <string name="armory_filter_all">すべて</string>
+    <string name="armory_filter_weapons">武器</string>
+    <string name="armory_filter_armor">防具</string>
+    <string name="armory_filter_accessories">アクセサリー</string>
+    <string name="armory_filter_tools">道具</string>
+    <string name="armory_sort_default">デフォルト</string>
+    <string name="armory_sort_attack">攻撃</string>
+    <string name="armory_sort_strength">筋力</string>
+    <string name="armory_sort_defense">防御</string>
+    <string name="armory_sort_requirement">装備条件</string>
+    <string name="armory_progress_bar">獲得済み</string>
+    <string name="armory_stat_mining">採掘効率</string>
+    <string name="armory_stat_woodcutting">伐採効率</string>
+    <string name="armory_stat_fishing">釣り効率</string>
+    <string name="armory_stat_farming">農業効率</string>
+    <string name="armory_stat_smithing">鍛冶効率</string>
+    <string name="armory_stat_firemaking">火起こし効率</string>
+    <string name="armory_stat_agility">アジリティ効率</string>
+    <string name="armory_stat_cooking">調理効率</string>
+    <string name="armory_stat_thieving">スリ効率</string>
+    <string name="armory_stat_attack">物理攻撃ボーナス</string>
+    <string name="armory_stat_strength">物理攻撃力ボーナス</string>
+    <string name="armory_stat_defense">物理防御ボーナス</string>
+    <string name="armory_stat_ranged_atk">遠距離攻撃</string>
+    <string name="armory_stat_ranged_str">遠距離攻撃力</string>
+    <string name="armory_stat_magic_atk">魔法攻撃</string>
+    <string name="armory_stat_magic_dmg">魔法ダメージ</string>
+    <string name="armory_stat_attack_speed">攻撃速度</string>
+    <string name="armory_stat_cape">経験値ボーナス</string>
+    <string name="armory_stat_cape_yield">収穫量ボーナス</string>
+    <string name="armory_source_carnival">カーニバル景品交換所</string>
+    <string name="armory_source_smithing">鍛冶</string>
+    <string name="armory_source_crafting">クラフト</string>
+    <string name="armory_source_fletching">矢作り</string>
+    <string name="armory_source_drop_always">%1$s からドロップ (確定)</string>
+    <string name="armory_source_drop_chance">%1$s からドロップ (%2$s)</string>
+    <string name="armory_source_drop">%1$s からドロップ</string>
+    <string name="armory_source_shop">ショップ</string>
+
+    <!-- Session / queue messages (issue #596) -->
+    <string name="skill_no_logs">インベントリに原木がありません</string>
+    <string name="skill_not_enough_rune_essence">ルーンのエッセンスが足りません</string>
+    <string name="skill_not_enough_item">%1$s が足りません</string>
+    <string name="skill_not_enough_materials">素材が足りません</string>
+    <string name="skill_session_start_failed">セッションの開始に失敗しました: %1$s</string>
+    <string name="skill_added_to_queue_activity">キューに追加: %1$s — %2$s</string>
+    <string name="worker_already_busy">労働者はすでに作業中です。</string>
+    <string name="worker_not_enough_logs">原木が足りません。</string>
+    <string name="worker_not_enough_rune_essence">ルーンのエッセンスが足りません。</string>
+    <string name="worker_not_enough_materials">素材が足りません。</string>
+    <string name="shop_no_junk">売却できるジャンクはありません</string>
+    <string name="shop_sold_junk">ジャンクを売却し、%1$s コイン獲得しました</string>
+    <string name="shop_no_old_equipment">売却できる古い装備はありません</string>
+    <string name="shop_sold_old_equipment">古い装備を売却し、%1$s コイン獲得しました</string>
+    <string name="shop_bulk_sell_total">合計</string>
+    <string name="shop_bulk_sell_confirm">すべて売却</string>
+    <string name="shop_xp_boost_activated">%1$d時間の間、2倍経験値ブーストが有効になりました！</string>
+    <string name="shop_not_enough_in_inventory">インベントリの所持数が不足しています</string>
+    <string name="shop_bought_item">%2$s を %1$d個購入しました</string>
+    <string name="shop_sold_item">%2$s を %1$d個売却し、%3$d コイン獲得しました</string>
+    <string name="quest_complete_notification">クエスト完了: %1$s！</string>
+    <string name="quest_complete_with_rewards">クエスト完了: %1$s！ 獲得: %2$s</string>
+    <string name="quest_daily_complete_coins">デイリークエスト完了！ +%1$s コイン</string>
+    <string name="quest_daily_complete_dwarven">デイリークエスト完了！ドワーフ装備を見つけました！</string>
+    <string name="quest_weekly_complete">ウィークリーチャレンジ完了！ +%1$s コイン</string>
+    <string name="quest_weekly_bonus_complete_coins">すべてのウィークリーチャレンジ完了！ +%1$s コイン</string>
+    <string name="quest_weekly_bonus_complete_divine">すべてのウィークリーチャレンジ完了！ディバイン装備を見つけました！</string>
+    <string name="guild_contributed_items">%1$d 個のアイテムを納品しました。</string>
+    <string name="mercantile_not_enough_coins">コインが足りません (必要数: %1$s コイン)。</string>
+    <string name="mercantile_route_start_failed">交易路の開始に失敗しました: %1$s</string>
+    <string name="mercantile_added_to_queue">キューに追加: 商業 — %1$s</string>
+    <string name="inventory_requires_to_equip">装備条件: %1$s</string>
+    <string name="home_found_pet">ペットを発見しました: %1$s！</string>
+    <string name="pet_found_title">新しいペット！</string>
+    <string name="home_congratulations_received">おめでとうございます！ %1$s を獲得しました</string>
+    <string name="home_not_enough_coins_repeat">%1$s を繰り返すためのコインが足りません。</string>
+    <string name="home_not_enough_materials_repeat">%1$s を繰り返すための素材が足りません。</string>
+    <string name="combat_no_food_title">料理が装備されていません</string>
+    <string name="combat_no_food_body">料理が装備されていません。料理がないとすぐに死亡し、獲得した報酬の大部分を失う可能性があります。このまま開始しますか？</string>
+    <string name="combat_start_anyway">このまま開始する</string>
+    <string name="combat_xp_consolation">経験値 (敗北報酬)</string>
+    <string name="bestiary_loot_item_header">アイテム</string>
+    <string name="worker_no_mats">素材なし</string>
+    <string name="bonus_section_skills">スキルボーナス</string>
+    <string name="bonus_combat_stat_boost">戦闘ステータス向上</string>
+    <string name="bonus_combined_xp">経験値合算</string>
+    <string name="bonus_yield">収穫量</string>
+    <string name="bonus_session_shorter">セッション時間を %1$d 分短縮</string>
+    <string name="bonus_coin_return">コイン獲得</string>
+    <string name="snackbar_added_to_queue">キューに追加: %1$s</string>
+    <string name="snackbar_queue_full">キューが満杯です。</string>
+    <string name="combat_start_failed">開始できませんでした: %1$s</string>
+    <string name="skill_session_voided_prestige">%1$s レベルがセッションの必要条件を満たさなくなったため (名声獲得によるものと思われます)、獲得報酬は無効化され、使用した材料は返却されました。</string>
+    <string name="combat_session_voided_prestige">戦闘レベルが遭遇条件を満たさなくなったため (名声獲得によるものと思われます)、獲得報酬は無効化されました。</string>
+    <string name="combat_select_spell">開始する前にスペルを選択してください。</string>
+    <string name="combat_spell_level_required">%2$s には魔法レベル %1$d が必要です。</string>
+    <string name="guild_daily_reward_claimed">デイリー報酬を回収しました！</string>
+
+    <!-- Boss Descriptions -->
+    <string name="boss_king_black_dragon_desc">世界中で恐れられている、伝説の三つ頭のドラゴン。</string>
+    <string name="boss_demon_lord_desc">深淵から現れた古代の悪魔。暗黒魔法の使い手。</string>
+    <string name="boss_kraken_desc">深海の恐怖。巨大な海の怪物。</string>
+    <string name="boss_balrog_desc">地中深くの眠りから目覚めた、炎と影をまとう古代の悪魔。</string>
+    <string name="boss_void_sovereign_desc">ヴォイドリフトの背後に存在する始原の存在。計り知れない歳月を生きており、挑んでくる凡百の冒険者を軽蔑しています。</string>
+
+    <!-- ===== Infinite Tower ===== -->
+    <string name="tower_title">無限の塔</string>
+    <string name="tower_floor_label">%d 階</string>
+    <string name="tower_best_floor">最高到達: %d 階</string>
+    <string name="tower_start_btn">%d 階に挑戦</string>
+    <string name="tower_milestones">マイルストーン</string>
+    <string name="tower_floor_cleared">%d 階をクリア！</string>
+    <string name="tower_new_best">自己ベスト更新: %d 階！</string>
+    <string name="tower_death_reset">%d 階で倒れました。1階にリセットされます。</string>
+    <string name="tower_not_enough_runes">%1$s が不足しているため、最大数での攻撃が行えません。</string>
+    <string name="tower_milestone_claim">回収</string>
+    <string name="tower_milestone_claimed">回収済み</string>
+    <string name="tower_enemies_this_floor">出現する敵</string>
+    <string name="tower_enemy_strength">敵の強さ: %s%%</string>
+    <string name="tower_entry_card_desc">無限に続く階層。あなたはどこまで登れますか？</string>
+    <string name="tower_collect_prompt">塔の挑戦報酬を回収</string>
+    <string name="tower_home_collect_hint">塔の画面を開いて、この報酬を回収してください</string>
+
+    <!-- ===== Seasonal Events ===== -->
+    <string name="seasonal_event_title">季節イベント</string>
+    <string name="seasonal_event_none">現在開催中のイベントはありません。後ほどご確認ください！</string>
+    <string name="seasonal_event_token_progress">トークン: %1$d / %2$d</string>
+    <string name="seasonal_event_complete">完了！</string>
+    <string name="seasonal_bounty_board_title">バウンティボード</string>
+    <string name="seasonal_expedition_title">遠征</string>
+    <string name="seasonal_boss_title">レイドボス</string>
+    <string name="seasonal_go_to_combat">戦闘画面へ</string>
+    <string name="seasonal_minigame_hint">消える前に %1$d / %2$d 個の消えかけの炭火をタップしてください！</string>
+    <string name="seasonal_minigame_round">ラウンド %1$d / %2$d — ヒット数: %3$d</string>
+    <string name="seasonal_minigame_mode_label">モード</string>
+    <string name="seasonal_minigame_mode_normal">ノーマル</string>
+    <string name="seasonal_minigame_mode_easy">イージー</string>
+    <string name="seasonal_minigame_mode_caption">判定時間 %1$dms、クールダウン %2$s</string>
+    <string name="seasonal_minigame_success">パーフェクト！ トークン +1</string>
+    <string name="seasonal_minigame_failure">タイミングを外しました。クールダウン終了後に再挑戦してください。</string>
+    <string name="seasonal_tap">タップ！</string>
+    <string name="seasonal_claim">受け取る</string>
+    <string name="seasonal_bounty_cooldown">新しい手配書まで: %1$d分 %2$d秒</string>
+    <string name="seasonal_go">挑戦</string>
+    <string name="seasonal_event_sunspire_solstice_2026_name">サンスパイアの至点</string>
+    <string name="seasonal_event_sunspire_solstice_2026_banner">サンスパイアの至点 2026 に参加</string>
+    <string name="seasonal_minigame_bonfire_rhythm_name">篝火のリズム</string>
+    <string name="seasonal_reward_sunspire_solstice_2026_100_desc">サンスパイアの至点 2026 バナー</string>
+    <string name="seasonal_bounty_sunspire_firewood_name">篝火用の薪を調達する</string>
+    <string name="seasonal_bounty_sunspire_firewood_hint">オークの原木を伐採 — 伐採スキル</string>
+    <string name="seasonal_bounty_sunspire_kindling_name">篝火用の付け木を調達する</string>
+    <string name="seasonal_bounty_sunspire_kindling_hint">ウィローの原木を伐採 — 伐採スキル</string>
+    <string name="seasonal_bounty_sunspire_sunore_name">太陽の尖塔を装飾する金を採掘する</string>
+    <string name="seasonal_bounty_sunspire_sunore_hint">金の鉱石を採掘 — 採掘スキル</string>
+    <string name="seasonal_bounty_sunspire_draughts_name">筋力ポーションを調合する</string>
+    <string name="seasonal_bounty_sunspire_draughts_hint">調薬スキル</string>
+    <string name="seasonal_bounty_sunspire_embers_brew_name">至点の見張りのために攻撃ポーションを調合する</string>
+    <string name="seasonal_bounty_sunspire_embers_brew_hint">調薬スキル</string>
+    <string name="seasonal_bounty_sunspire_sunfire_arrows_name">鬼火を抑え込むためのミスリルの矢を作成する</string>
+    <string name="seasonal_bounty_sunspire_sunfire_arrows_hint">矢作りスキル</string>
+    <string name="seasonal_bounty_sunspire_wisps_name">サンの鬼火を追い払う</string>
+    <string name="seasonal_bounty_sunspire_wisps_hint">サンスパイア遠征でのみ出現</string>
+    <string name="seasonal_bounty_sunspire_hounds_name">エンバーハウンドを追い払う</string>
+    <string name="seasonal_bounty_sunspire_hounds_hint">サンスパイア遠征でのみ出現</string>
+    <string name="seasonal_bounty_sunspire_colossus_name">シンダーコロッサスを討伐する</string>
+    <string name="seasonal_bounty_sunspire_colossus_hint">サンスパイア遠征でのみ稀に出現</string>
+    <string name="label_banners">バナー</string>
+    <string name="label_journal">日記</string>
+    <string name="journal_hint">次回の予定、次にキューに入れるもの、現在の目標などをメモしておきましょう。</string>
+    <string name="journal_placeholder">メモを入力してください...</string>
+    <string name="profile_banners_empty">獲得したバナーはありません。季節イベントを完了して獲得しましょう！</string>
+    <string name="profile_banners_earned_on">獲得日: %s</string>
+    <string name="profile_banners_unobtained">(未獲得)</string>
+    <string name="character_title_label">称号</string>
+    <string name="character_title_none">称号なし</string>
+    <string name="character_name_with_title">%2$sの%1$s</string>
+    <string name="title_master_smith_name">マスタースミス</string>
+    <string name="title_master_smith_requirement">すべての鍛冶クエストを完了する</string>
+    <string name="title_head_chef_name">総料理長</string>
+    <string name="title_head_chef_requirement">すべての料理クエストを完了する</string>
+    <string name="title_master_miner_name">マスターマイナー</string>
+    <string name="title_master_miner_requirement">すべての採掘クエストを完了する</string>
+    <string name="title_master_angler_name">マスターアングラー</string>
+    <string name="title_master_angler_requirement">すべての釣りクエストを完了する</string>
+    <string name="title_master_woodcutter_name">マスターウッドカッター</string>
+    <string name="title_master_woodcutter_requirement">すべての伐採クエストを完了する</string>
+    <string name="title_master_fletcher_name">マスターフレッチャー</string>
+    <string name="title_master_fletcher_requirement">すべての矢作りクエストを完了する</string>
+    <string name="title_master_artisan_name">マスターアルティザン</string>
+    <string name="title_master_artisan_requirement">すべてのクラフトクエストを完了する</string>
+    <string name="title_runemaster_name">ルーンマスター</string>
+    <string name="title_runemaster_requirement">すべてのルーン作成クエストを完了する</string>
+    <string name="title_master_herbalist_name">マスターハーバリスト</string>
+    <string name="title_master_herbalist_requirement">すべての調薬クエストを完了する</string>
+    <string name="title_master_builder_name">マスタービルダー</string>
+    <string name="title_master_builder_requirement">すべての建築クエストを完了する</string>
+    <string name="title_devout_name">敬虔なる者</string>
+    <string name="title_devout_requirement">すべての祈りクエストを完了する</string>
+    <string name="title_master_thief_name">マスターシーフ</string>
+    <string name="title_master_thief_requirement">すべてのスリクエストを完了する</string>
+    <string name="title_flamekeeper_name">炎の守り手</string>
+    <string name="title_flamekeeper_requirement">すべての火起こしクエストを完了する</string>
+    <string name="title_slayer_name">スレイヤー</string>
+    <string name="title_slayer_requirement">すべてのスレイヤークエストを完了する</string>
+    <string name="title_godslayer_name">ゴッドスレイヤー</string>
+    <string name="title_godslayer_requirement">すべてのレイドボスを少なくとも1回討伐する</string>
+    <string name="title_warlord_name">ウォーロード</string>
+    <string name="title_warlord_requirement">戦士ギルドで最大レベルに到達する</string>
+    <string name="title_marksman_name">マークスマン</string>
+    <string name="title_marksman_requirement">射手ギルドで最大レベルに到達する</string>
+    <string name="title_archmage_name">アークメイジ</string>
+    <string name="title_archmage_requirement">魔術師ギルドで最大レベルに到達する</string>
+    <string name="title_merchant_prince_name">マーチャントプリンス</string>
+    <string name="title_merchant_prince_requirement">商業ギルドで最大レベルに到達する</string>
+    <string name="title_pathfinder_name">パスファインダー</string>
+    <string name="title_pathfinder_requirement">アジリティギルドで最大レベルに到達する</string>
+    <string name="title_master_farmer_name">マスターファーマー</string>
+    <string name="title_master_farmer_requirement">農業ギルドで最大レベルに到達する</string>
+    <string name="settings_art_credits">アートクレジット</string>
+    <string name="settings_credit_banners_title">季節限定バナー</string>
+    <string name="settings_credit_banners_subtitle">Art by Wenrexa</string>
+    <string name="settings_credit_skill_icons_title">スキルアイコン</string>
+    <string name="settings_credit_skill_icons_subtitle">Shikashi\'s Fantasy Icons Pack</string>
+    <string name="title_seasonal_champion_of">%1$sの覇者</string>
+    <string name="title_seasonal_requirement">%1$s 季節イベントを完了する</string>
+    <string name="home_welcome_greeting">おかえりなさい、</string>
+    <string name="home_welcome_name">%1$s！</string>
+    <string name="home_welcome_title">%1$s！</string>
+</resources>
