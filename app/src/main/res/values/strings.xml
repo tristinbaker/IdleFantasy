@@ -91,7 +91,7 @@
     <string name="label_rewards">Rewards</string>
     <string name="label_your_level">Your Level</string>
     <string name="label_xp_to_next">XP to next level</string>
-    <string name="label_total_xp">Total XP</string>
+    <string name="label_total_xp" translatable="false">Total XP</string>
     <string name="label_quantity">Quantity</string>
     <string name="label_price">Price</string>
     <string name="label_available">Available</string>
@@ -100,7 +100,7 @@
     <string name="label_ready_to_harvest">Ready to harvest</string>
     <string name="label_empty">Empty</string>
     <string name="inventory_sort_quantity">Quantity</string>
-    <string name="inventory_sort_az">A-Z</string>
+    <string name="inventory_sort_az" translatable="false">A-Z</string>
     <string name="inventory_cat_weapons">Weapons</string>
     <string name="inventory_cat_armour">Armour</string>
     <string name="inventory_cat_tools">Tools</string>
