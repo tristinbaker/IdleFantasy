@@ -70,7 +70,6 @@
     <string name="pet_tangleroot_name">Tangleroot</string>
     <string name="pet_tangleroot_desc">A magical plant creature that enhances your Farming XP.</string>
 
-    <!-- Missing dungeons -->
     <string name="dungeon_collapsed_mine_name">Collapsed Mine</string>
     <string name="dungeon_collapsed_mine_desc">A vast cavern beneath the copper mines. Cave trolls and rock golems haunt the rubble, and giant spiders spin webs across the collapsed shafts.</string>
     <string name="dungeon_shadow_den_name">Shadow Den</string>
