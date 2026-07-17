@@ -114,12 +114,12 @@
     <string name="label_total_level">Total Level</string>
     <string name="label_wins">Victorias</string>
     <string name="label_losses">Losses</string>
-    <string name="label_active">Active</string>
-    <string name="label_inactive">Inactive</string>
-    <string name="label_boost">Boost</string>
-    <string name="label_xp_boost">XP Boost</string>
-    <string name="label_weapon">Weapon</string>
-    <string name="label_armour">Armour</string>
+    <string name="label_active">Activo</string>
+    <string name="label_inactive">Inactivo</string>
+    <string name="label_boost">Impulso</string>
+    <string name="label_xp_boost">XP Impulso</string>
+    <string name="label_weapon">Arma</string>
+    <string name="label_armour">Coraza, Armadura</string>
     <string name="label_food">Comida</string>
     <string name="label_arrows_consumed">Flechas consumidas</string>
     <string name="label_arrows_reclaimed">Flechas recuperadas</string>
@@ -133,21 +133,21 @@
     <string name="label_ranged_style">Arquería</string>
     <string name="label_magic_style">Magia</string>
     <string name="label_gathering">Reunión</string>
-    <string name="label_crafting">Crafting</string>
-    <string name="label_jewellery">Jewelry</string>
-    <string name="label_combat">Combat</string>
+    <string name="label_crafting">Artesanía</string>
+    <string name="label_jewellery">Joyería</string>
+    <string name="label_combat">Combate</string>
     <string name="label_recipe">Receta</string>
     <string name="label_recipes">Recetas</string>
     <string name="label_ingredients">Ingredientes</string>
     <string name="label_output">Output</string>
     <string name="label_xp_per_action">XP por acción</string>
     <string name="label_unlocked_at">Desbloqueado en el nivel</string>
-    <string name="label_kills">Kills</string>
-    <string name="label_personal_best">Personal Best</string>
+    <string name="label_kills">Muertos</string>
+    <string name="label_personal_best">Mejor marca personal</string>
     <string name="label_daily_dig">Excavación diaria</string>
     <string name="label_dig_depth">Profundidad del agujero</string>
-    <string name="label_version">Version</string>
-    <string name="label_open_source">Open Source</string>
+    <string name="label_version">Versión</string>
+    <string name="label_open_source">Código abierto</string>
 
     <!-- ===== Format strings — all use positional args for Weblate ===== -->
     <!-- Translator note: %1$d = level number, %2$s = formatted XP string -->
