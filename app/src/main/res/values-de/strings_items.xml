@@ -695,7 +695,6 @@
     <string name="item_amulet_of_fury_name" translatable="false">Amulet Of Fury</string>
     <string name="item_amulet_of_strength_name" translatable="false">Amulet Of Strength</string>
     <string name="item_amulet_of_the_kraken_name" translatable="false">Amulet Of The Kraken</string>
-    <string name="item_arcane_grappling_hook_name">Arcane Grappling Hook</string>
     <string name="item_arcane_staff_name" translatable="false">Arcane Staff</string>
     <string name="item_archers_guild_cape_name" translatable="false">Archers Guild Cape</string>
     <string name="item_archers_ring_name" translatable="false">Archers Ring</string>
@@ -822,7 +821,6 @@
     <string name="item_ring_of_the_seas_name" translatable="false">Ring Of The Seas</string>
     <string name="item_ring_of_wealth_name" translatable="false">Ring Of Wealth</string>
     <string name="item_rock_golem_name" translatable="false">Rock Golem</string>
-    <string name="item_rogues_lockpick_name">Rogue\'s Lockpick</string>
     <string name="item_runecrafting_cape_name" translatable="false">Runecrafting Cape</string>
     <string name="item_runecrafting_guild_cape_name" translatable="false">Runecrafting Guild Cape</string>
     <string name="item_runite_boots_name" translatable="false">Runite Boots</string>
@@ -835,8 +833,6 @@
     <string name="item_runite_square_shield_name" translatable="false">Runite Square Shield</string>
     <string name="item_sanctum_axe_name" translatable="false">Sanctum Axe</string>
     <string name="item_seers_ring_name" translatable="false">Seers Ring</string>
-    <string name="item_shadow_grappling_hook_name">Shadow Grappling Hook</string>
-    <string name="item_shadow_lockpick_name">Shadow Lockpick</string>
     <string name="item_shortbow_name" translatable="false">Shortbow</string>
     <string name="item_silver_diamond_necklace_name" translatable="false">Silver Diamond Necklace</string>
     <string name="item_silver_diamond_ring_name" translatable="false">Silver Diamond Ring</string>

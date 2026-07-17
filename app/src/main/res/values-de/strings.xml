@@ -1337,8 +1337,8 @@
     <string name="home_not_enough_coins_repeat">Nicht genug Münzen, um %1$s zu wiederholen.</string>
     <string name="home_not_enough_materials_repeat">Nicht genug Material, um %1$s zu wiederholen.</string>
     <string name="combat_start_failed">Konnte nicht gestartet werden: %1$s</string>
-    <string name="skill_session_voided_prestige">Euer %1$s-Level erfüllt die Anforderung dieser Sitzung nicht mehr (wahrscheinlich durch Prestige) — die Belohnungen wurden storniert und verwendete Materialien wurden zurückerstattet.</string>
-    <string name="combat_session_voided_prestige">Euer Kampflevel erfüllt die Anforderung dieser Begegnung nicht mehr (wahrscheinlich durch Prestige) — die Belohnungen wurden storniert.</string>
+    <string name="skill_session_voided_prestige">Euer %1$s-Level erfüllt die Anforderung dieser Sitzung nicht mehr (wahrscheinlich durch Prestige) — die Belohnungen wurden verworfen und verwendete Materialien wurden zurückerstattet.</string>
+    <string name="combat_session_voided_prestige">Euer Kampflevel erfüllt die Anforderung dieser Begegnung nicht mehr (wahrscheinlich durch Prestige) — die Belohnungen wurden verworfen.</string>
     <string name="combat_select_spell">Wählt einen Zauber vor Betreten.</string>
     <string name="combat_spell_level_required">Benötigt Magie %1$d für %2$s.</string>
     <string name="guild_daily_reward_claimed">Tägliche Belohnung eingefordert!</string>
