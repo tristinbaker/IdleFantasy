@@ -68,8 +68,8 @@ def _add_row_ids(html: str) -> str:
 
 
 def _md_to_html(text: str) -> str:
-    # Todo: Improve fenced code blocks, maybe SuperFenced extension?
-    html = md_lib.markdown(text, extensions=["tables", "toc", "fenced_code"])
+    # Todo: Improve fenced code blocks by improving the style.css, etc
+    html = md_lib.markdown(text, extensions=["tables", "toc", "fenced_code", "markdown_katex_rs"])
     html = _fix_page_links(html)
     return _add_row_ids(html)
 

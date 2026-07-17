@@ -152,8 +152,8 @@ object CombatSimulator {
 
             repeat(ticksPerFrame) {
                 // Player attacks (ranged is capped by arrow supply)
-                val pDmg = when {
-                    combatStyle == "ranged" -> {
+                val pDmg = when (combatStyle) {
+                    "ranged" -> {
                         while (arrowsLeft == 0 && arrowTierIdx + 1 < arrowTiers.size) {
                             arrowTierIdx++
                             arrowsLeft = arrowTiers[arrowTierIdx].second
@@ -166,7 +166,7 @@ object CombatSimulator {
                             if (rnd.nextDouble() < playerHitChance) rnd.nextInt(0, playerMaxHit + 1) else 0
                         } else 0
                     }
-                    combatStyle == "magic" -> {
+                    "magic" -> {
                         val canCast = runeKey == null || runesLeft >= runeCostPerAttack
                         if (canCast) {
                             if (runeKey != null) { runesLeft -= runeCostPerAttack; frameRunesUsed++ }
@@ -209,7 +209,7 @@ object CombatSimulator {
                 currentHp      -= eDmg
 
                 // Always eat the best-tier food still in stock first; only fall back to a
-                // weaker tier once the best one runs out, up to 200 items total.
+                // weaker tier once the best one runs out, up to 300 items total.
                 var ate = true
                 while (ate && totalFoodEaten < 300) {
                     ate = false
@@ -409,8 +409,8 @@ object CombatSimulator {
             var frameRunesUsed = 0
 
             for (tick in 0 until ticksPerFrame) {
-                val pDmg = when {
-                    combatStyle == "ranged" -> {
+                val pDmg = when (combatStyle) {
+                    "ranged" -> {
                         while (arrowsLeft == 0 && arrowTierIdx + 1 < arrowTiers.size) {
                             arrowTierIdx++
                             arrowsLeft = arrowTiers[arrowTierIdx].second
@@ -423,7 +423,7 @@ object CombatSimulator {
                             if (rnd.nextDouble() < playerHitChance) rnd.nextInt(0, playerMax + 1) else 0
                         } else 0
                     }
-                    combatStyle == "magic" -> {
+                    "magic" -> {
                         val canCast = runeKey == null || runesLeft >= runeCostPerAttack
                         if (canCast) {
                             if (runeKey != null) { runesLeft -= runeCostPerAttack; frameRunesUsed++ }
@@ -460,7 +460,7 @@ object CombatSimulator {
                 eHits.add(bDmg)
 
                 // Always eat the best-tier food still in stock first; only fall back to a
-                // weaker tier once the best one runs out, up to 200 items total.
+                // weaker tier once the best one runs out, up to 300 items total.
                 var ate = true
                 while (ate && totalFoodEaten < 300) {
                     ate = false

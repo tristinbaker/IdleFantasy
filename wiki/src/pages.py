@@ -83,6 +83,7 @@ def add_static_pages():
             ("equipment", PageInfo("Equipment", "Equipment.md", gen_equipment)),
         ]],
         ["Combat", False, [
+            ("combat", PageInfo("Combat", "Combat.md", gen_combat_page)),
             ("bosses", PageInfo("Bosses", "Bosses.md", gen_bosses)),
             ("dungeons", PageInfo("Dungeons", "Dungeons.md", gen_dungeons)),
             ("enemies", PageInfo("Enemies", "Enemies.md", gen_enemies)),
@@ -408,24 +409,26 @@ def gen_table_of_contents(page_content: str, max_level: int = 4, min_level: int 
     return "\n".join(lines)
 
 
-def gen_getting_started_game() -> str:
-    page = get_template("contributing/getting_started_game").format(
-        wiki_contribution_link=link("getting_started_wiki", "Contributing to the wiki")
-    )
-    return page.format(table_of_contents=f"## Table of contents\n\n{gen_table_of_contents(page)}")
+def make_latex_safe(content: str, escape_levels: int = 1) -> str:
+    """Escape braces inside inline LaTeX (``$...$``) so ``str.format`` leaves them intact.
 
+    Expressions such as ``$\\dfrac{a}{b}$`` contain braces that ``str.format`` would
+    otherwise treat as replacement fields. Braces are doubled once per escape level
+    (level 1 → ``{{`` / ``}}``, level 2 → ``{{{{`` / ``}}}}``, and so on).
 
-def gen_getting_started_wiki() -> str:
-    page = get_template("contributing/getting_started_wiki").format(
-        page_types_link=link("wiki_page_types"),
-        game_contribution_link=link("getting_started_game", "how to contribute to the game")
-    )
-    return page.format(table_of_contents=f"## Table of contents\n\n{gen_table_of_contents(page)}")
+    :param content: Text that may contain inline LaTeX maths.
+    :param escape_levels: Number of ``.format`` passes the content will go through.
+    :return: Content with LaTeX braces escaped for the given format depth.
+    """
+    open_brace = "{" * (2 ** escape_levels)
+    close_brace = "}" * (2 ** escape_levels)
 
+    def _escape_math(match: re.Match[str]) -> str:
+        body = match.group(1).replace("{", open_brace).replace("}", close_brace)
+        return f"${body}$"
 
-def gen_wiki_page_types() -> str:
-    page = get_template("contributing/wiki_page_types")
-    return page.format(table_of_contents=f"## Table of contents\n\n{gen_table_of_contents(page)}")
+    return re.sub(r"\$([^$]+)\$", _escape_math, content)
+
 
 
 # ---------------------------------------------------------------------------
@@ -451,6 +454,26 @@ def gen_home() -> str:
 
 def gen_sidebar() -> str:
     return _gen_page_listing(PAGE_HIERARCHY)
+
+
+def gen_getting_started_game() -> str:
+    page = get_template("contributing/getting_started_game").format(
+        wiki_contribution_link=link("getting_started_wiki", "Contributing to the wiki")
+    )
+    return page.format(table_of_contents=f"## Table of contents\n\n{gen_table_of_contents(page)}")
+
+
+def gen_getting_started_wiki() -> str:
+    page = get_template("contributing/getting_started_wiki").format(
+        page_types_link=link("wiki_page_types"),
+        game_contribution_link=link("getting_started_game", "how to contribute to the game")
+    )
+    return page.format(table_of_contents=f"## Table of contents\n\n{gen_table_of_contents(page)}")
+
+
+def gen_wiki_page_types() -> str:
+    page = get_template("contributing/wiki_page_types")
+    return page.format(table_of_contents=f"## Table of contents\n\n{gen_table_of_contents(page)}")
 
 
 def gen_skills() -> str:
@@ -1273,8 +1296,7 @@ def gen_guilds() -> str:
                 reward_parts.append(f"{r['xp']:,} XP")
             if r.get("reputation"):
                 reward_parts.append(f"{r['reputation']:,} rep")
-            for item, qty in r.get("items", {}).items():
-                reward_parts.append(f"{qty}x {title(item)}")
+            reward_parts.append(fmt_materials(r.get("items", {})))
             rows.append([
                 q["name"],
                 q["guild_level_required"],
@@ -1433,6 +1455,16 @@ def gen_titles() -> str:
         guild_table=guild_table,
         other_table=other_table,
     )
+
+
+def gen_combat_page() -> str:
+    page = make_latex_safe(get_template("combat/combat"), 2).format(
+        bosses_link=link("bosses"),
+        dungeons_link=link("dungeons"),
+        wiki_contribution_link=link("getting_started_wiki", "Contributing to the wiki"),
+        combat_footer=gen_combat_footer()
+    )
+    return page.format(table_of_contents=f"## Table of contents\n\n{gen_table_of_contents(page)}")
 
 
 def gen_boss(boss: dict) -> str:

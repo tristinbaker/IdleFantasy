@@ -1,6 +1,6 @@
 ## Before submitting
 
-- [ ] I've tested any changes with appropriate tests (eg. Unit tests, validation scripts)
+- [ ] I've tested any changes with the appropriate tests (eg. Unit tests, validation scripts)
 - [ ] I've pulled and merged the latest changes from the repository
 
 ## Summary
