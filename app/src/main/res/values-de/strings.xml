@@ -31,10 +31,10 @@
     <string name="btn_clear">Löschen</string>
     <string name="btn_clear_all">Alles löschen</string>
     <string name="btn_inspect">Überprüfen</string>
-    <string name="btn_view_drops">Drops anzeigen</string>
+    <string name="btn_view_drops">Funde anzeigen</string>
     <string name="btn_start_quest">Mission starten</string>
     <string name="btn_abandon_quest">Mission abbrechen</string>
-    <string name="btn_enter_dungeon">Dungeon betreten</string>
+    <string name="btn_enter_dungeon">Verlies betreten</string>
     <string name="btn_enter_arena">Arena betreten</string>
     <string name="btn_activate">Aktivieren</string>
     <string name="btn_extend">Verlängern</string>
@@ -118,7 +118,7 @@
     <string name="label_active_spell">Aktiver Zauber</string>
     <string name="label_drops">Beute</string>
     <string name="label_boss">Endgegner</string>
-    <string name="label_dungeon">Dungeon</string>
+    <string name="label_dungeon">Verlies</string>
     <string name="label_difficulty">Schwierigkeitsgrad</string>
     <string name="label_completed">Abgeschlossen</string>
     <string name="label_in_progress">In Arbeit</string>
@@ -281,8 +281,8 @@
     <string name="settings_recent_activity_desc">Schaltfläche „Letzte Aktivität" in der Kopfzeile der Startseite anzeigen</string>
     <string name="settings_journal_button">Journal-Schaltfläche</string>
     <string name="settings_journal_button_desc">Zeigt eine Journal-Schaltfläche in der oberen Leiste der Startseite zum Notieren an</string>
-    <string name="settings_seasonal_events">Saisonale Events</string>
-    <string name="settings_seasonal_events_desc">Zeigt das Banner des aktiven saisonalen Events auf der Startseite</string>
+    <string name="settings_seasonal_events">Saisonale Ereignisse</string>
+    <string name="settings_seasonal_events_desc">Zeigt das Banner des aktiven saisonalen Ereignis auf der Startseite</string>
     <string name="settings_collapsible_town_grid">Einklappbares Stadtraster</string>
     <string name="settings_collapsible_town_grid_desc">Zeigt den Stadtbereich (Laden, Herberge, Gilde usw.) als einklappbare Karte auf der Startseite</string>
     <string name="settings_character_viewer">Charakteranzeige</string>
@@ -319,6 +319,7 @@
     <string name="label_daily_reward">2.000 Münzen (1/100: Zwergenausrüstung)</string>
     <string name="msg_daily_claimed_coins">Tagesaufgabe abgeschlossen! +2.000 Münzen.</string>
     <string name="msg_daily_claimed_dwarven">Tagesaufgabe abgeschlossen! Ihr habt %1$s gefunden!</string>
+    <string name="label_hide_completed">Verstecke abgeschlossenes</string>
 
     <!-- ===== OnboardingScreen ===== -->
     <string name="onboarding_lets_go">Los geht\'s!</string>
@@ -375,6 +376,8 @@
     <string name="settings_lang_deutsch">Deutsch</string>
     <string name="settings_lang_français">Français</string>
     <string name="settings_lang_español">Español</string>
+    <string name="settings_lang_español_españa">Español (España)</string>
+	<string name="settings_lang_dutch">Nederlands</string>
     <string name="settings_lang_turkish">Türkçe</string>
     <string name="settings_lang_italiano">Italiano</string>
     <string name="settings_lang_russian">Русский</string>
@@ -411,7 +414,7 @@
 
     <!-- ===== translate — HomeScreen ===== -->
     <string name="home_town_title">Stadt</string>
-    <string name="home_town_desc">Besuche den Laden, die Herberge, die Gilde, die Kirche, die Bauwerkstatt, den Slayer-Meister und den Jahrmarkt</string>
+    <string name="home_town_desc">Besuche den Laden, die Herberge, die Gilde, die Kirche, die Bauwerkstatt, den Trophäensammler und den Jahrmarkt</string>
     <string name="guild_dailies_available">Tagesaufgaben verfügbar</string>
     <string name="guild_do_dailies_hint">Erledigt Tagesaufgaben, um in den nächsten Rang aufzusteigen</string>
     <string name="guild_quest_gate_blocked">Schließt Missionen ab, um im Rang aufzusteigen</string>
@@ -424,9 +427,13 @@
     <string name="home_bones_buried">Begrabene Knochen</string>
     <string name="home_whats_new">Was gibt\'s Neues?</string>
     <string name="home_got_it">Verstanden</string>
+	    <!-- Translator note: %1$s = player name or "Adventurer" -->
     <string name="home_adventurer">Abenteurer</string>
+	    <!-- Translator note: %1$s = formatted duration string (e.g. "2h 15m") -->
     <string name="home_up_next">Als Nächstes (%1$d/%2$d)</string>
+	    <!-- Translator note: %1$s = formatted duration string (e.g. "2h 15m") -->
     <string name="home_queue_ends_in">Alles erledigt in %1$s</string>
+	    <!-- Translator note: %1$d = item quantity (e.g. ×40) -->
     <string name="queue_item_qty">×%1$d</string>
     <string name="queue_item_qty_with_output">×%1$d → %2$d Gegenstände</string>
     <plurals name="plural_collect_sessions">
@@ -476,6 +483,7 @@
     <string name="combat_xp_on_victory">EP bei Sieg</string>
     <string name="combat_you_died">Ihr seid gestorben!</string>
     <string name="combat_died_reward" formatted="false">Ihr habt 10% der Belohnung erhalten.</string>
+	    <!-- Translator note: %1$d = gear bonus value -->
     <string name="combat_gear_bonus">+%1$d Ausrüstung</string>
 
     <!-- ===== translate — ProfileScreen ===== -->
@@ -523,31 +531,47 @@
     <string name="profile_req_lv">Benötigt Level </string>
 
     <!-- ===== translate — SkillsScreen ===== -->
+	<!-- Translator note: %1$d = session duration in minutes -->
     <string name="skills_session_duration">Dauer: %1$dm</string>
+	<!-- Translator note: %1$d = estimated number of ores mined in one session -->
     <string name="skill_mining_qty_estimate">~%1$d Erze/Sitzung</string>
     <string name="skills_only_craftable">Nur herstellbare</string>
     <string name="skills_filter_all">Alle</string>
     <string name="skills_add_to_queue">Aktivität einreihen</string>
     <string name="skills_add_queue_short">Zur Warteschlange hinzufügen</string>
+	<!-- Translator note: %1$d = level required, %2$s = XP per action -->
     <string name="skills_level_req_xp">Lv. %1$d  •  %2$s EP/Erz</string>
+	<!-- Translator note: %1$s = formatted multiplier (e.g. "1.15") -->
     <string name="skills_tool_bonus">×%1$s Werkzeugbonus</string>
-    <string name="skills_pet_bonus">+%1$d%% EP (Haustier)</string>
+    <string name="skills_pet_bonus">+%1$d%% EP (Haustier)</string>	
+	<!-- Translator note: %1$d = fishing level -->
     <string name="skills_fishing_desc">Level %1$d  •  Dem Level entsprechende Beute</string>
+    <!-- Translator note: %1$d = level required, %2$s = XP per catch -->
     <string name="skills_fish_desc">Lv. %1$d  •  %2$s EP/Fang</string>
+    <!-- Translator note: %1$d = prayer level -->
     <string name="skills_prayer_desc">Level %1$d  •  Knochen begraben oder Asche verstreuen für Gebets-EP</string>
     <string name="skills_no_bones">Keine Knochen oder Asche im Inventar</string>
+    <!-- Translator note: %1$d = XP per bone, %2$d = quantity in inventory -->
     <string name="skills_bone_qty">%1$d EP je  •  %2$d im Inventar</string>
+    <!-- Translator note: %1$d = XP per bone, %2$d = quantity available -->
     <string name="skills_bone_selected">%1$d EP je  •  %2$d verfügbar</string>
+    <!-- Translator note: %1$d = total XP -->
     <string name="skills_xp_total">+%1$d EP gesamt</string>
     <string name="skills_no_essence">Keine Runenessenz im Inventar – Ihr müsst erst neue schürfen</string>
     <string name="skills_no_runes">Es sind noch keine Runentypen freigeschaltet</string>
+    <!-- Translator note: %1$d = essence quantity -->
     <string name="skills_essence_qty">%1$d Runenessenz im Inventar</string>
+    <!-- Translator note: %1$d = XP per rune, %2$d = level required -->
     <string name="skills_rune_desc">%1$d EP/Rune  •  Lv. %2$d</string>
+    <!-- Translator note: %1$d = XP per rune, %2$d = essence available -->
     <string name="skills_rune_selected">%1$d EP/Rune  •  %2$d Essenz verfügbar</string>
+    <!-- Translator note: %1$d = level reached -->
     <string name="skills_level_reached">Level %1$d erreicht!</string>
     <string name="skills_no_logs">Keine Holzscheite im Inventar</string>
+    <!-- Translator note: %1$d = level required, %2$s = XP per log -->
     <string name="skills_log_desc">Lv. %1$d  •  %2$s EP/Holz</string>
-    <string name="skills_req_with_have">Benötigt %1$d %2$s (Ihr habt %3$d %4$s)</string>
+	<!-- Translator note: %1$d = required level, %2$s = skill name, %3$d = player level, %4$s = skill name again -->
+	<string name="skills_req_with_have">Benötigt %1$d %2$s (Ihr habt %3$d %4$s)</string>
 
     <!-- ===== ShopScreen ===== -->
     <string name="shop_active">AKTIV</string>
@@ -583,6 +607,11 @@
     <string name="farming_patches">%1$d Äcker freigeschaltet</string>
     <string name="farming_clear_patch">Acker pflügen</string>
     <string name="farming_clear_desc">Wollt Ihr diese Saat wirklich vernichten?</string>
+    <string name="farming_harvest_and_plant">Alles ernten und aussähen</string>
+    <string name="farming_no_crops_ready">Nichts zu ernten</string>
+    <string name="farming_no_empty_patches">Kein freier Acker verfügbar</string>
+    <string name="farming_no_seeds_inventory">Nicht genug %1$s im Inventar</string>
+    <string name="farming_planted">%1$d %2$s ausgesäht</string>
 
     <!-- ===== QuestsScreen ===== -->
     <string name="quests_none_in_category">Keine Missionen in dieser Kategorie.</string>
@@ -897,35 +926,28 @@
     <string name="expedition_lock_notes">Findet alle Aufzeichnungen in %1$s</string>
     <string name="expedition_lock_prerequisite">Erfüllt erst die Voraussetzung zum Freischalten</string>
     <string name="label_notes">Aufzeichnungen</string>
-    <string name="label_hide_completed">Abgeschlossene ausblenden</string>
-    <string name="settings_lang_español_españa">Español (España)</string>
-    <string name="farming_harvest_and_plant">Alles ernten und aussähen</string>
-    <string name="farming_no_crops_ready">Nichts zu ernten</string>
-    <string name="farming_no_empty_patches">Kein freier Acker verfügbar</string>
-    <string name="farming_no_seeds_inventory">Nicht genug %1$s im Inventar</string>
-    <string name="farming_planted">%1$d %2$s ausgesät</string>
 
     <!-- Slayer -->
     <string name="skill_slayer_name">Trophäenjagd</string>
-    <string name="skill_slayer_desc">Erhaltet in der Stadt Aufgaben vom Trophäensammler.</string>
+    <string name="skill_slayer_desc">Erhaltet in der Stadt Aufträge vom Trophäensammler.</string>
         <string name="builder_title">Werkstatt des Bauers</string>
     <string name="builder_card_desc">Gasthaus, Gildenhaus und Kirche ausbauen</string>
-    <string name="slayer_title">Trophäensammler</string>
-    <string name="slayer_card_desc">Aufgaben und Belohnungen für Trophäenjagd</string>
-    <string name="slayer_desc">Beendet Aufgaben, um Trophäenjagd-EP und Punkte zu verdienen. Kauft euch dafür exklusive Ausrüstung im Kontor des Trophäenjägers.</string>
+    <string name="slayer_title">Trophäenjagd</string>
+    <string name="slayer_card_desc">Aufträge und Belohnungen für Trophäenjagd</string>
+    <string name="slayer_desc">Beendet Aufträge, um Trophäenjagd-EP und Punkte zu verdienen. Erhaltet dafür exklusive Ausrüstung im Kontor des Trophäensammlers.</string>
     <string name="slayer_level_label">Level %1$d</string>
     <string name="slayer_xp_label">%1$s EP</string>
     <string name="slayer_points">%1$d Pkt.</string>
-    <string name="slayer_active_task">Aktive Aufgaben</string>
-    <string name="slayer_kills_remaining">%1$d / %2$d erlegen</string>
-    <string name="slayer_get_task">Neue Aufgabe abholen</string>
+    <string name="slayer_active_task">Aktive Aufträge</string>
+    <string name="slayer_kills_remaining">%1$d / %2$d erlegt</string>
+    <string name="slayer_get_task">Neuen Auftrag abholen</string>
     <string name="slayer_skip_task">Überspringen (30 Pkt.)</string>
-    <string name="slayer_no_task">Keine aktiven Aufgaben. Erhaltet hier neue Aufgaben.</string>
+    <string name="slayer_no_task">Keine aktiven Aufträge. Erhaltet hier neue Aufträge.</string>
     <string name="slayer_task_stuck">Dieser Gegner kann nur auf einer Entdeckungsreise in einem Dungeon angetroffen werden, den Ihr noch nicht erkundet habt. Würfelt erneut ohne zu zahlen.</string>
     <string name="slayer_reroll_free">Würfelt erneut (kostenlos)</string>
-    <string name="slayer_no_eligible_tasks">Euer derzeitiges Trophäenjagd-Level berechtigt Euch zu keinen weiteren Aufgaben.</string>
-    <string name="slayer_task_complete">Aufgabe abgeschlossen! Besucht den Trophäensammler, um eine neue Aufgabe zu erhalten.</string>
-    <string name="slayer_xp_per_kill">%1$d EP/Kill</string>
+    <string name="slayer_no_eligible_tasks">Euer derzeitiges Trophäenjagd-Level berechtigt Euch zu keinen weiteren Aufträgen.</string>
+    <string name="slayer_task_complete">Auftrag abgeschlossen! Besucht den Trophäensammler, um eine neuen Auftrag zu erhalten.</string>
+    <string name="slayer_xp_per_kill">%1$d EP/Monster</string>
     <string name="slayer_points_on_complete">+%1$d Pkt. bei Abschluss</string>
     <string name="slayer_shop_title">Kontor des Trophäensammler</string>
     <string name="slayer_shop_cost">%1$d Pkt.</string>
@@ -959,12 +981,11 @@
     <string name="item_slayer_helm_desc">Ein robuster Helm, wie Ihn erfahrene Trophäenjäger tragen.</string>
     <string name="item_abyssal_whip_name">Peitsche des Abgrunds</string>
     <string name="item_abyssal_whip_desc">Eine Peitsche, die aus der Kraft des Abgrunds geschmiedet wurde. Hervorragend für Krafttraining geeignet.</string>
-    <string name="item_slayer_platebody_name">Plattenpanzer des Trophäenjägers</string>
+    <string name="item_slayer_platebody_name">Plattenpanzer des Trophäensammlers</string>
     <string name="item_slayer_platebody_desc">Schwere Rüstung, in die Runen durch den Trophäensammler eingeätzt wurden.</string>
     <string name="item_slayer_platelegs_name">Beinschienen des Trophäenjägers</string>
     <string name="item_slayer_platelegs_desc">Beinschutz, der extra für lange Besuche im Dungeon hergestellt wurde.</string>
 
-    <string name="settings_lang_dutch">Nederlands</string>
 
     <string name="prestige">Prestige</string>
     <string name="prestige_max">Max. Prestige</string>
@@ -978,7 +999,7 @@
     <string name="achievement_prestige_any_3_name">Gemeistert</string>
     <string name="achievement_prestige_any_3_desc">Erreicht Prestige 3 für eine beliebigen Fähigkeit</string>
     <string name="achievement_prestige_all_1_name">Tabula Rasa</string>
-    <string name="achievement_prestige_all_1_desc">Erhöht das Prestige aller Fähigkeiten mindestens Einmal</string>
+    <string name="achievement_prestige_all_1_desc">Erhöht das Prestige aller Fähigkeiten mindestens einmal</string>
     <string name="achievement_prestige_all_3_name">Wahres Prestige</string>
     <string name="achievement_prestige_all_3_desc">Erreicht Prestige 3 für alle Fähigkeiten</string>
 
@@ -1145,18 +1166,18 @@
     <string name="achievement_town_one_maxed_desc">Baue ein Stadtgebäude auf die maximale Stufe aus</string>
     <string name="achievement_town_all_maxed_name">Stadt der Legenden</string>
     <string name="achievement_town_all_maxed_desc">Baue alle sechs Stadtgebäude auf die maximale Stufe aus</string>
-    <string name="achievement_tower_first_floor_name">First Step</string>
-    <string name="achievement_tower_first_floor_desc">Clear your first Infinite Tower floor</string>
-    <string name="achievement_tower_floor_10_name">Tower Initiate</string>
-    <string name="achievement_tower_floor_10_desc">Reach floor 10 in the Infinite Tower</string>
-    <string name="achievement_tower_floor_50_name">Climbing Higher</string>
-    <string name="achievement_tower_floor_50_desc">Reach floor 50 in the Infinite Tower</string>
-    <string name="achievement_tower_floor_100_name">Century Climber</string>
-    <string name="achievement_tower_floor_100_desc">Reach floor 100 in the Infinite Tower</string>
-    <string name="achievement_tower_floor_250_name">Void Conqueror</string>
-    <string name="achievement_tower_floor_250_desc">Reach floor 250 in the Infinite Tower</string>
-    <string name="achievement_tower_all_milestones_name">Tower Legend</string>
-    <string name="achievement_tower_all_milestones_desc">Claim all 25 tower milestones</string>
+    <string name="achievement_tower_first_floor_name">Erster Schritt</string>
+    <string name="achievement_tower_first_floor_desc">Säubere die erste Etage des Unendlichen Turms</string>
+    <string name="achievement_tower_floor_10_name">Turmneuling</string>
+    <string name="achievement_tower_floor_10_desc">Erreiche die 10. Etage des Unendlichen Turms</string>
+    <string name="achievement_tower_floor_50_name">Treppensteigen</string>
+    <string name="achievement_tower_floor_50_desc">Erreiche die 50. Etage des Unendlichen Turms</string>
+    <string name="achievement_tower_floor_100_name">Jahrhundert-Treppensteiger</string>
+    <string name="achievement_tower_floor_100_desc">Erreiche die 100. Etage des Unendlichen Turms</string>
+    <string name="achievement_tower_floor_250_name">Eroberer der Leere</string>
+    <string name="achievement_tower_floor_250_desc">Erreiche die 250. Etages des Unendlichen Turms</string>
+    <string name="achievement_tower_all_milestones_name">Turm-Legende</string>
+    <string name="achievement_tower_all_milestones_desc">Sammle alle 25 Turmmeilensteine</string>
 
 
 
@@ -1238,7 +1259,7 @@
     <string name="carnival_sequence_watch">Beobachtet die Sequenz…</string>
     <string name="carnival_sequence_input">Tippt Farbe %1$d von %2$d</string>
     <string name="carnival_item_appraisal">Gegenstand-Bewertung</string>
-    <string name="carnival_active_appraisal_desc">Welcher Gegenstand ist auf dem freien Markt mehr wert?</string>
+    <string name="carnival_active_appraisal_desc">Welcher Gegenstand ist auf dem Markt mehr wert?</string>
     <string name="carnival_appraisal_which">Was ist mehr wert?</string>
     <string name="carnival_play">Spielen</string>
     <string name="carnival_cooldown">Bereit in %1$dm %2$ds</string>
@@ -1260,7 +1281,7 @@
     <string name="carnival_lamp_redeemed">+%1$s EP in %2$s!</string>
     <string name="carnival_shell_game">Hüttchenspiel</string>
     <string name="carnival_active_shell_desc">Beobachtet genau unter welchem Becher sich der Edelstein befindet!</string>
-    <string name="carnival_shell_showing">Beobachtet genau — Edelstein befindet sich unter Becher %1$d</string>
+    <string name="carnival_shell_showing">Edelstein befindet sich unter Becher %1$d</string>
     <string name="carnival_shell_watch">Schaut genau hin…</string>
     <string name="carnival_shell_pick">Unter welchem Becher befindet er sich?</string>
     <string name="carnival_shell_won">Richtig! +%1$d Lose</string>
@@ -1430,13 +1451,13 @@
     <string name="tower_home_collect_hint">Betretet den Turm um Eure Beute einzusammeln</string>
 
     <!-- ===== Seasonal Events ===== -->
-    <string name="seasonal_event_title">Saisonales Event</string>
-    <string name="seasonal_event_none">Derzeit läuft kein Event. Schau später wieder vorbei!</string>
+    <string name="seasonal_event_title">Saisonales Ereignis</string>
+    <string name="seasonal_event_none">Derzeit läuft kein Ereignis. Schau später wieder vorbei!</string>
     <string name="seasonal_event_token_progress">%1$d / %2$d Token</string>
     <string name="seasonal_event_complete">Abgeschlossen!</string>
     <string name="seasonal_bounty_board_title">Aufgabenbrett</string>
-    <string name="seasonal_expedition_title">Expedition</string>
-    <string name="seasonal_boss_title">Raid-Boss</string>
+    <string name="seasonal_expedition_title">Verlies</string>
+    <string name="seasonal_boss_title">Endgegner</string>
     <string name="seasonal_go_to_combat">Zum Kampf</string>
     <string name="seasonal_minigame_hint">Triff %1$d von %2$d Glutfunken, bevor sie verschwinden!</string>
     <string name="seasonal_minigame_round">Runde %1$d / %2$d — Treffer: %3$d</string>
@@ -1454,7 +1475,7 @@
     <string name="label_journal">Journal</string>
     <string name="journal_hint">Notiere Erinnerungen für später — was du als Nächstes einreihen willst oder worauf du hinarbeitest.</string>
     <string name="journal_placeholder">Schreibe eine Notiz...</string>
-    <string name="profile_banners_empty">Noch keine Banner verdient. Schließe ein saisonales Event ab, um eines zu erhalten!</string>
+    <string name="profile_banners_empty">Noch keine Banner verdient. Schließe ein saisonales Ereignis ab, um eines zu erhalten!</string>
     <string name="profile_banners_earned_on">Erhalten am %s</string>
     <string name="profile_banners_unobtained">(Nicht erhalten)</string>
     <string name="character_title_label">Titel</string>
@@ -1486,10 +1507,10 @@
     <string name="title_master_thief_requirement">Alle Diebstahl-Quests abschließen</string>
     <string name="title_flamekeeper_name">Flammenwächter</string>
     <string name="title_flamekeeper_requirement">Alle Feuermach-Quests abschließen</string>
-    <string name="title_slayer_name">Schlächter</string>
-    <string name="title_slayer_requirement">Alle Jäger-Quests abschließen</string>
+    <string name="title_slayer_name">Trophäensammler</string>
+    <string name="title_slayer_requirement">Alle Trophäenjagd-Quests abschließen</string>
     <string name="title_godslayer_name">Götterbezwinger</string>
-    <string name="title_godslayer_requirement">Jeden Raid-Boss mindestens einmal besiegen</string>
+    <string name="title_godslayer_requirement">Jeden Endgegner mindestens einmal besiegen</string>
     <string name="title_warlord_name">Kriegsherr</string>
     <string name="title_warlord_requirement">Höchststufe der Kriegergilde erreichen</string>
     <string name="title_marksman_name">Scharfschütze</string>
@@ -1508,7 +1529,7 @@
     <string name="settings_credit_skill_icons_title">Fertigkeitssymbole</string>
     <string name="settings_credit_skill_icons_subtitle">Shikashi\'s Fantasy Icons Pack</string>
     <string name="title_seasonal_champion_of">Champion von %1$s</string>
-    <string name="title_seasonal_requirement">Schließe das Saisonevent %1$s ab</string>
+    <string name="title_seasonal_requirement">Schließe das Saisonereignis %1$s ab</string>
     <string name="home_welcome_greeting">Willkommen zurück,</string>
     <string name="home_welcome_name">%1$s!</string>
     <string name="home_welcome_title">Der %1$s!</string>
@@ -1529,9 +1550,9 @@
     <string name="seasonal_bounty_sunspire_sunfire_arrows_name">Fletch Mithril arrows to hold back the wisps</string>
     <string name="seasonal_bounty_sunspire_sunfire_arrows_hint">Fletching</string>
     <string name="seasonal_bounty_sunspire_wisps_name">Drive off Sun Wisps</string>
-    <string name="seasonal_bounty_sunspire_wisps_hint">Only found in The Sunspire Expedition</string>
+    <string name="seasonal_bounty_sunspire_wisps_hint">Only found in the Sunspire dungeon</string>
     <string name="seasonal_bounty_sunspire_hounds_name">Drive off Ember Hounds</string>
-    <string name="seasonal_bounty_sunspire_hounds_hint">Only found in The Sunspire Expedition</string>
+    <string name="seasonal_bounty_sunspire_hounds_hint">Only found in The Sunspire dungeon</string>
     <string name="seasonal_bounty_sunspire_colossus_name">Topple Cinder Colossi</string>
-    <string name="seasonal_bounty_sunspire_colossus_hint">Only found in The Sunspire Expedition — rare</string>
+    <string name="seasonal_bounty_sunspire_colossus_hint">Only found in The Sunspire dungeon — rare</string>
 </resources>

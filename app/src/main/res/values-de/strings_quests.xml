@@ -10,7 +10,7 @@
     <string name="quest_mining_2_objective">Baut 750 Eisenerze ab</string>
     <string name="quest_mining_3_name">Bergbau III</string>
     <string name="quest_mining_3_objective">Baut 1100 Kohlenerze ab</string>
-    <string name="quest_mining_4_name">MBergbau IV</string>
+    <string name="quest_mining_4_name">Bergbau IV</string>
     <string name="quest_mining_4_objective">Baut 1650 Mithrilerze ab</string>
     <string name="quest_mining_5_name">Bergbau V</string>
     <string name="quest_mining_5_objective">Baut 2450 Adamantiterze ab</string>
@@ -60,18 +60,18 @@
     <string name="quest_smithing_6_objective">Schmelzt 3650 Runitbarren</string>
 
     <!-- Cooking - Fish -->
-    <string name="quest_cooking_fish_1_name">Kochen – Fisch I</string>
-    <string name="quest_cooking_fish_1_objective">Kocht 500 Fische</string>
-    <string name="quest_cooking_fish_2_name">Kochen - Fisch II</string>
-    <string name="quest_cooking_fish_2_objective">Kocht 750 Fische</string>
-    <string name="quest_cooking_fish_3_name">Kochen - Fisch III</string>
-    <string name="quest_cooking_fish_3_objective">Kocht 1100 Fische</string>
-    <string name="quest_cooking_fish_4_name">Kochen - Fisch IV</string>
-    <string name="quest_cooking_fish_4_objective">Kocht 1650 Fische</string>
-    <string name="quest_cooking_fish_5_name">Kochen - Fisch V</string>
-    <string name="quest_cooking_fish_5_objective">Kocht 2450 Fische</string>
-    <string name="quest_cooking_fish_6_name">Kochen - Fisch VI</string>
-    <string name="quest_cooking_fish_6_objective">Kocht 3650 Fische</string>
+    <string name="quest_cooking_fish_1_name">Braten – Fisch I</string>
+    <string name="quest_cooking_fish_1_objective">Bratet 500 Fische</string>
+    <string name="quest_cooking_fish_2_name">Braten - Fisch II</string>
+    <string name="quest_cooking_fish_2_objective">Bratet 750 Fische</string>
+    <string name="quest_cooking_fish_3_name">Braten - Fisch III</string>
+    <string name="quest_cooking_fish_3_objective">Bratet 1100 Fische</string>
+    <string name="quest_cooking_fish_4_name">Braten - Fisch IV</string>
+    <string name="quest_cooking_fish_4_objective">Bratet 1650 Fische</string>
+    <string name="quest_cooking_fish_5_name">Braten - Fisch V</string>
+    <string name="quest_cooking_fish_5_objective">Bratet 2450 Fische</string>
+    <string name="quest_cooking_fish_6_name">Braten - Fisch VI</string>
+    <string name="quest_cooking_fish_6_objective">Bratet 3650 Fische</string>
 
     <!-- Cooking - Beef -->
     <string name="quest_cooking_beef_1_name">Kochen - Rindfleisch I</string>
@@ -98,32 +98,32 @@
     <string name="quest_cooking_mutton_3_objective">Kocht 500 Lammfleisch</string>
 
     <!-- Fletching -->
-    <string name="quest_fletching_1_name">Herstellung I</string>
+    <string name="quest_fletching_1_name">Pfeilherstellung I</string>
     <string name="quest_fletching_1_objective">Stellt 500 Bronzepfeile her</string>
-    <string name="quest_fletching_2_name">Herstellung II</string>
+    <string name="quest_fletching_2_name">Pfeilherstellung II</string>
     <string name="quest_fletching_2_objective">Stellt 750 Eisenpfeile her</string>
-    <string name="quest_fletching_3_name">Herstellung III</string>
+    <string name="quest_fletching_3_name">Pfeilherstellung III</string>
     <string name="quest_fletching_3_objective">Stellt 1100 Stahlpfeile her</string>
-    <string name="quest_fletching_4_name">Herstellung IV</string>
+    <string name="quest_fletching_4_name">Pfeilherstellung IV</string>
     <string name="quest_fletching_4_objective">Stellt 1650 Mithrilpfeile her</string>
-    <string name="quest_fletching_5_name">Herstellung V</string>
+    <string name="quest_fletching_5_name">Pfeilherstellung V</string>
     <string name="quest_fletching_5_objective">Stellt 2450 Adamantitpfeile her</string>
-    <string name="quest_fletching_6_name">Herstellung VI</string>
+    <string name="quest_fletching_6_name">Pfeilherstellung VI</string>
     <string name="quest_fletching_6_objective">Stellt 3650 Runitenpfeile her</string>
 
     <!-- Prayer -->
     <string name="quest_prayer_1_name">Gebete I</string>
-    <string name="quest_prayer_1_objective">Begrabt 500 Knochen</string>
+    <string name="quest_prayer_1_objective">Vergrabt 500 Knochen</string>
     <string name="quest_prayer_2_name">Gebete II</string>
-    <string name="quest_prayer_2_objective">Begrabt 750 Knochen</string>
+    <string name="quest_prayer_2_objective">Vergrabt 750 Knochen</string>
     <string name="quest_prayer_3_name">Gebete III</string>
-    <string name="quest_prayer_3_objective">Begrabt 1100 Knochen</string>
+    <string name="quest_prayer_3_objective">Vergrabt 1100 Knochen</string>
     <string name="quest_prayer_4_name">Gebete IV</string>
-    <string name="quest_prayer_4_objective">Begrabt 1650 Knochen</string>
+    <string name="quest_prayer_4_objective">Vergrabt 1650 Knochen</string>
     <string name="quest_prayer_5_name">Gebete V</string>
-    <string name="quest_prayer_5_objective">Begrabt 2450 Knochen</string>
+    <string name="quest_prayer_5_objective">Vergrabt 2450 Knochen</string>
     <string name="quest_prayer_6_name">Gebete VI</string>
-    <string name="quest_prayer_6_objective">Begrabt 3650 Knochen</string>
+    <string name="quest_prayer_6_objective">Vergrabt 3650 Knochen</string>
 
     <!-- Slayer -->
     <string name="quest_combat_kills_1_name">Bluträcher I</string>
@@ -140,37 +140,37 @@
     <string name="quest_combat_kills_6_objective">Besiegt 650 Gegner</string>
 
     <!-- Dungeon exploration -->
-    <string name="quest_dungeon_farm_1_name">Dungeon-Erforscher I</string>
-    <string name="quest_dungeon_farm_1_objective">Schließt den Farm-Dungeon fünfmal ab</string>
-    <string name="quest_dungeon_goblin_1_name">Dungeon-Erforscher II</string>
+    <string name="quest_dungeon_farm_1_name">Verlies-Erforscher I</string>
+    <string name="quest_dungeon_farm_1_objective">Schließt den Bauernhof fünfmal ab</string>
+    <string name="quest_dungeon_goblin_1_name">Verlies-Erforscher II</string>
     <string name="quest_dungeon_goblin_1_objective">Schließt die Koboldhöhle fünfmal ab</string>
-    <string name="quest_dungeon_spider_1_name">Dungeon-Erforscher III</string>
+    <string name="quest_dungeon_spider_1_name">Verlies-Erforscher III</string>
     <string name="quest_dungeon_spider_1_objective">Schließt die Spinnenhöhle fünfmal ab</string>
-    <string name="quest_dungeon_bandit_1_name">Dungeon-Erforscher IV</string>
+    <string name="quest_dungeon_bandit_1_name">Verlies-Erforscher IV</string>
     <string name="quest_dungeon_bandit_1_objective">Schließt das Räuberlager fünfmal ab</string>
-    <string name="quest_dungeon_undead_1_name">Dungeon-Erforscher V</string>
+    <string name="quest_dungeon_undead_1_name">Verließ-Erforscher V</string>
     <string name="quest_dungeon_undead_1_objective">Schließt die Gruft der Untoten fünfmal ab</string>
-    <string name="quest_dungeon_fortress_1_name">Dungeon-Erforscher VI</string>
+    <string name="quest_dungeon_fortress_1_name">Verließ-Erforscher VI</string>
     <string name="quest_dungeon_fortress_1_objective">Schließt die Festungsruinen fünfmal ab</string>
     <string name="quest_dungeon_orc_1_name">Dungeon-Meister I</string>
     <string name="quest_dungeon_orc_1_objective">Schließt die Orkfestung fünfmal ab</string>
     <string name="quest_dungeon_volcanic_1_name">Dungeon-Meister II</string>
     <string name="quest_dungeon_volcanic_1_objective">Schließt die vulkanischen Tiefen fünfmal ab</string>
     <string name="quest_dungeon_dragon_1_name">Dungeon-Meister III</string>
-    <string name="quest_dungeon_dragon_1_objective">Schließt die Drachenhöhle fünfmal ab</string>
+    <string name="quest_dungeon_dragon_1_objective">Schließt den Drachenhort fünfmal ab</string>
 
     <!-- Crafting -->
-    <string name="quest_crafting_1_name">Fertigen I</string>
+    <string name="quest_crafting_1_name">Kunstfertig I</string>
     <string name="quest_crafting_1_objective">Fertigt 100 Silberringe an</string>
-    <string name="quest_crafting_2_name">Fertigen II</string>
+    <string name="quest_crafting_2_name">Kunstfertig II</string>
     <string name="quest_crafting_2_objective">Fertigt 250 Goldringe an</string>
-    <string name="quest_crafting_3_name">Fertigen III</string>
+    <string name="quest_crafting_3_name">Kunstfertig III</string>
     <string name="quest_crafting_3_objective">Fertigt 500 Platinringe an</string>
-    <string name="quest_crafting_4_name">Fertigen IV</string>
+    <string name="quest_crafting_4_name">Kunstfertig IV</string>
     <string name="quest_crafting_4_objective">Fertigt 750 Silber-Saphirringe an</string>
-    <string name="quest_crafting_5_name">Fertigen V</string>
+    <string name="quest_crafting_5_name">Kunstfertig V</string>
     <string name="quest_crafting_5_objective">Fertigt 1000 Gold-Saphirringe an</string>
-    <string name="quest_crafting_6_name">Fertigen VI</string>
+    <string name="quest_crafting_6_name">Kunstfertig VI</string>
     <string name="quest_crafting_6_objective">Fertigt 1500 Platin-Diamantringe an</string>
 
     <!-- Monster slayer chains -->
@@ -191,9 +191,9 @@
     <string name="quest_bandit_hunter_2_name">Räuber-Jäger II</string>
     <string name="quest_bandit_hunter_2_objective">Besiegt 60 Räuber</string>
     <string name="quest_orc_slayer_1_name">Ork-Jäger I</string>
-    <string name="quest_orc_slayer_1_objective">Besiegt 25 Ork-Krieger</string>
+    <string name="quest_orc_slayer_1_objective">Besiegt 25 Orkkrieger</string>
     <string name="quest_orc_slayer_2_name">Ork-Jäger II</string>
-    <string name="quest_orc_slayer_2_objective">Besiegt 50 Ork-Krieger</string>
+    <string name="quest_orc_slayer_2_objective">Besiegt 50 Orkkrieger</string>
     <string name="quest_demon_slayer_1_name">Dämonen-Jäger I</string>
     <string name="quest_demon_slayer_1_objective">Besiegt den Dämonenkönig</string>
     <string name="quest_demon_slayer_2_name">Dämonen-Jäger II</string>
@@ -201,9 +201,9 @@
     <string name="quest_demon_slayer_3_name">Dämonen-Jäger III</string>
     <string name="quest_demon_slayer_3_objective">Besiegt den Dämonenkönig 25 Mal</string>
     <string name="quest_dragon_slayer_1_name">Drachen-Jäger I</string>
-    <string name="quest_dragon_slayer_1_objective">Besiegt 10 Grüne Drachen</string>
+    <string name="quest_dragon_slayer_1_objective">Besiegt 10 Drachen</string>
     <string name="quest_dragon_slayer_2_name">Drachen-Jäger II</string>
-    <string name="quest_dragon_slayer_2_objective">Besiegt 25 Grüne Drachen</string>
+    <string name="quest_dragon_slayer_2_objective">Besiegt 25 Drachen</string>
 
     <!-- Combat style challenges -->
     <string name="quest_melee_warrior_1_name">Nahkämpfer I</string>
@@ -376,8 +376,8 @@
 
     <string name="quest_daily_mine_iron_name">Eisenbergmann</string>
     <string name="quest_daily_mine_coal_name">Kohleträger</string>
-    <string name="quest_daily_mine_mithril_name">Mithril-Prospektor</string>
-    <string name="quest_daily_mine_runite_name">Runite-Ansturm</string>
+    <string name="quest_daily_mine_mithril_name">Mithrilsucher</string>
+    <string name="quest_daily_mine_runite_name">Runit-Ansturm</string>
     <string name="quest_daily_fish_salmon_name">Lachslauf</string>
     <string name="quest_daily_fish_lobster_name">Hummerfang</string>
     <string name="quest_daily_fish_swordfish_name">Schwertfischjäger</string>
@@ -389,7 +389,7 @@
     <string name="quest_daily_smith_iron_name">Eisenschmied</string>
     <string name="quest_daily_smith_mithril_name">Mithril-Schmied</string>
     <string name="quest_daily_smith_adamantite_name">Adamantit-Handwerker</string>
-    <string name="quest_daily_smith_runite_name">Runite-Schmelzer</string>
+    <string name="quest_daily_smith_runite_name">Runit-Schmelzer</string>
     <string name="quest_daily_cook_trout_name">Forellenkoch</string>
     <string name="quest_daily_cook_salmon_name">Lachsgrill</string>
     <string name="quest_daily_cook_lobster_name">Hummerkoch</string>
@@ -424,6 +424,6 @@
     <string name="quest_obj_dungeon_magic_only">Schließt %1$s nur mit Magie ab</string>
     <string name="quest_obj_dungeon_no_food">Schließt %1$s ohne Nahrung ab</string>
     <string name="quest_obj_collect">Sammelt %1$d %2$s im Kampf</string>
-    <string name="quest_obj_slayer_task">Schließt %1$d Trophäensammler-Aufgaben ab</string>
+    <string name="quest_obj_slayer_task">Schließt %1$d Trophäensammler-Aufträge ab</string>
 
 </resources>
