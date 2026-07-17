@@ -21,7 +21,7 @@
     <string name="skill_smithing_desc">Плавьте руду в слитки и куйте мощное металлическое снаряжение.</string>
     <string name="skill_cooking_name">Кулинария</string>
     <string name="skill_cooking_desc">Готовьте сырые ингредиенты в пищу, восстанавливающую HP в бою.</string>
-    <string name="skill_fletching_name">Флетчинг</string>
+    <string name="skill_fletching_name">Лучное дело</string>
     <string name="skill_fletching_desc">Создавайте луки и стрелы из брёвен и металлических компонентов.</string>
     <string name="skill_crafting_name">Ремесло</string>
     <string name="skill_crafting_desc">Создавайте украшения и другие ремесленные изделия из драгоценных материалов.</string>

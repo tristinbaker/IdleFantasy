@@ -112,6 +112,15 @@ fun TowerScreen(
                     equippedWeapons      = state.equippedWeapons,
                     selectedWeaponSlot   = state.selectedWeaponSlot,
                     onWeaponSlotSelected = viewModel::selectWeaponSlot,
+                    selectedArrowKey     = state.selectedArrowKey,
+                    availableArrows      = state.availableArrows,
+                    onArrowSelected      = viewModel::selectArrow,
+                    selectedSpell        = state.selectedSpell,
+                    availableSpells      = state.availableSpells,
+                    onSpellSelected      = viewModel::selectSpell,
+                    selectedPotionKey    = state.selectedPotionKey,
+                    availablePotions     = state.availablePotions,
+                    onPotionSelected     = viewModel::selectPotion,
                     onStart              = viewModel::startFloor,
                     onCollect            = viewModel::collectFloor,
                 )
@@ -152,10 +161,22 @@ private fun TowerHeaderCard(
     equippedWeapons:      Map<String, EquipmentData>,
     selectedWeaponSlot:   String?,
     onWeaponSlotSelected: (String) -> Unit,
+    selectedArrowKey:     String?,
+    availableArrows:      List<String>,
+    onArrowSelected:      (String?) -> Unit,
+    selectedSpell:        com.fantasyidler.data.json.SpellData?,
+    availableSpells:      List<com.fantasyidler.data.json.SpellData>,
+    onSpellSelected:      (com.fantasyidler.data.json.SpellData?) -> Unit,
+    selectedPotionKey:    String?,
+    availablePotions:     Map<String, Int>,
+    onPotionSelected:     (String?) -> Unit,
     onStart:              () -> Unit,
     onCollect:            () -> Unit,
 ) {
     val context = LocalContext.current
+    val effectiveWeaponSlot = selectedWeaponSlot
+        ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equippedWeapons.containsKey(it) }
+    val combatStyle = equippedWeapons[effectiveWeaponSlot]?.combatStyle
     Card(
         modifier  = Modifier
             .fillMaxWidth()
@@ -204,10 +225,8 @@ private fun TowerHeaderCard(
                     verticalArrangement   = Arrangement.spacedBy(4.dp),
                 ) {
                     equippedWeapons.forEach { (slot, weaponData) ->
-                        val effectiveSelected = selectedWeaponSlot
-                            ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equippedWeapons.containsKey(it) }
                         FilterChip(
-                            selected = slot == effectiveSelected,
+                            selected = slot == effectiveWeaponSlot,
                             onClick  = { onWeaponSlotSelected(slot) },
                             label    = {
                                 Column {
@@ -223,6 +242,91 @@ private fun TowerHeaderCard(
                                         )
                                     }
                                 }
+                            },
+                        )
+                    }
+                }
+            }
+
+            // Arrow picker — ranged combat style only, no active session
+            if (!hasSession && combatStyle == "ranged" && availableArrows.isNotEmpty()) {
+                Spacer(Modifier.height(12.dp))
+                Text(
+                    text  = stringResource(R.string.combat_label_arrow),
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                Spacer(Modifier.height(4.dp))
+                FlowRow(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalArrangement   = Arrangement.spacedBy(4.dp),
+                ) {
+                    val effectiveArrow = selectedArrowKey ?: availableArrows.firstOrNull()
+                    availableArrows.forEach { key ->
+                        FilterChip(
+                            selected = key == effectiveArrow,
+                            onClick  = { onArrowSelected(key) },
+                            label    = { Text(GameStrings.itemName(context, key), style = MaterialTheme.typography.bodySmall) },
+                        )
+                    }
+                }
+            }
+
+            // Spell picker — magic combat style only, no active session
+            if (!hasSession && combatStyle == "magic") {
+                Spacer(Modifier.height(12.dp))
+                Text(
+                    text  = stringResource(R.string.label_active_spell),
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                Spacer(Modifier.height(4.dp))
+                if (availableSpells.isEmpty()) {
+                    Text(
+                        text  = stringResource(R.string.combat_no_spells),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                } else {
+                    FlowRow(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalArrangement   = Arrangement.spacedBy(4.dp),
+                    ) {
+                        val effectiveSpell = selectedSpell ?: availableSpells.firstOrNull()
+                        availableSpells.forEach { spell ->
+                            FilterChip(
+                                selected = spell.name == effectiveSpell?.name,
+                                onClick  = { onSpellSelected(spell) },
+                                label    = { Text(GameStrings.spellName(context, spell.name), style = MaterialTheme.typography.bodySmall) },
+                            )
+                        }
+                    }
+                }
+            }
+
+            // Potion picker — always available, no active session
+            if (!hasSession && availablePotions.isNotEmpty()) {
+                Spacer(Modifier.height(12.dp))
+                Text(
+                    text  = "Potion",
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                Spacer(Modifier.height(4.dp))
+                FlowRow(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalArrangement   = Arrangement.spacedBy(4.dp),
+                ) {
+                    val potionOptions = listOf(null) + availablePotions.keys.toList()
+                    potionOptions.forEach { key ->
+                        FilterChip(
+                            selected = key == selectedPotionKey,
+                            onClick  = { onPotionSelected(key) },
+                            label    = {
+                                Text(
+                                    text  = if (key == null) stringResource(R.string.combat_no_potion) else GameStrings.itemName(context, key),
+                                    style = MaterialTheme.typography.bodySmall,
+                                )
                             },
                         )
                     }

@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.screen
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -42,8 +43,6 @@ import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -124,20 +123,21 @@ fun SkillsScreen(
 ) {
     val state by viewModel.uiState.collectAsState()
     val craftSnackState by craftingViewModel.uiState.collectAsState()
-    val snackbarHostState = remember { SnackbarHostState() }
     val context = LocalContext.current
 
+    // Toasts render above any window, including an open ModalBottomSheet — a Snackbar
+    // hosted by this Scaffold would be invisible behind the activity picker sheet.
     LaunchedEffect(state.snackbarMessage) {
         state.snackbarMessage?.let { msg ->
-            try { snackbarHostState.showSnackbar(msg) }
-            finally { viewModel.snackbarConsumed() }
+            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
+            viewModel.snackbarConsumed()
         }
     }
 
     LaunchedEffect(craftSnackState.snackbarMessage) {
         craftSnackState.snackbarMessage?.let { msg ->
-            try { snackbarHostState.showSnackbar(msg) }
-            finally { craftingViewModel.snackbarConsumed() }
+            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
+            craftingViewModel.snackbarConsumed()
         }
     }
 
@@ -146,7 +146,6 @@ fun SkillsScreen(
         topBar = {
             TopAppBar(title = { Text(stringResource(R.string.nav_skills)) })
         },
-        snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { padding ->
         if (state.isLoading) {
             Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {

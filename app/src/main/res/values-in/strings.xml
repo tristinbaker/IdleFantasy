@@ -333,6 +333,9 @@
     <string name="home_town_title">Kota</string>
     <string name="home_town_desc">Kunjungi toko, Penginapan, Serikat, Toko Bangunan, Penumpasan, dan Karnaval</string>
     <string name="guild_dailies_available">Tersedia harian</string>
+    <string name="guild_not_unlocked">Belum terbuka</string>
+    <string name="guild_dailies_done_today">Harian selesai hari ini</string>
+    <string name="guild_dailies_remaining_today">%1$d tersisa hari ini</string>
     <string name="guild_do_dailies_hint">Lakukan tugas harian untuk naik ke tingkat berikutnya</string>
     <string name="guild_quest_gate_blocked">Selesaikan Tugas untuk meningkatkan peringkatmu.</string>
     <string name="guild_quest_required">Quest diperlukan untuk melanjutkan</string>
@@ -363,7 +366,6 @@
     <string name="combat_fighting">Bertarung…</string>
     <string name="combat_log_you_hit">Anda mengenai</string>
     <string name="combat_log_hit_you">mengenai anda</string>
-    <string name="combat_log_dmg">dmg</string>
     <string name="combat_log_missed">meleset</string>
     <string name="combat_log_you_missed">Anda meleset</string>
     <string name="combat_log_kill">☠ %1$s dikalahkan</string>
@@ -1140,6 +1142,7 @@
     <string name="armory_stat_attack_speed">Kecepatan Serangan</string>
     <string name="armory_stat_cape">XP Bonus</string>
     <string name="armory_stat_cape_yield">Yield Bonus</string>
+    <string name="armory_stat_cape_boost">Bonus Peningkatan</string>
     <string name="armory_source_carnival">Carnival Prize Shop</string>
     <string name="armory_source_smithing">Pandai besi</string>
     <string name="armory_source_crafting">Perhiasan</string>

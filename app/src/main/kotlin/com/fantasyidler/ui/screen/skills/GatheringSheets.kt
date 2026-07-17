@@ -166,7 +166,7 @@ internal fun MiningSheet(
                         isStarting       = isStarting,
                         hasActiveSession = hasActiveSession,
                         isQueueFull      = isQueueFull,
-                        questIndicators  = activeQuests[key] ?: emptyList(),
+                        questIndicators  = activeQuests["${Skills.MINING}:$key"] ?: emptyList(),
                         onClick          = { selectedKey = key },
                     )
                 }
@@ -234,7 +234,7 @@ internal fun WoodcuttingSheet(
                         isStarting       = isStarting,
                         hasActiveSession = hasActiveSession,
                         isQueueFull      = isQueueFull,
-                        questIndicators  = activeQuests[tree.logName] ?: emptyList(),
+                        questIndicators  = activeQuests["${Skills.WOODCUTTING}:${tree.logName}"] ?: emptyList(),
                         onClick          = { selectedKey = key },
                     )
                 }
@@ -302,7 +302,7 @@ internal fun FishingSheet(
                         isStarting       = isStarting,
                         hasActiveSession = hasActiveSession,
                         isQueueFull      = isQueueFull,
-                        questIndicators  = activeQuests[key] ?: emptyList(),
+                        questIndicators  = activeQuests["${Skills.FISHING}:$key"] ?: emptyList(),
                         onClick          = { selectedKey = key },
                     )
                 }

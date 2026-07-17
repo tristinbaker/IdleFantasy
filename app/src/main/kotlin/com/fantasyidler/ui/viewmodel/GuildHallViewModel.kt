@@ -24,6 +24,9 @@ data class GuildSummary(
     val claimableDailyCount: Int,
     val hasDailiesAvailable: Boolean,
     val questGateBlocked: Boolean,
+    val guildUnlocked: Boolean,
+    val dailiesTodayTotal: Int,
+    val dailiesTodayRemaining: Int,
 )
 
 data class GuildHallUiState(
@@ -84,6 +87,9 @@ class GuildHallViewModel @Inject constructor(
                 claimableDailyCount      = claimableDailies,
                 hasDailiesAvailable      = hasDailiesAvailable,
                 questGateBlocked         = questGateBlocked,
+                guildUnlocked            = guildUnlocked,
+                dailiesTodayTotal        = dailies.size,
+                dailiesTodayRemaining    = dailies.count { !it.claimed },
             )
         }
 

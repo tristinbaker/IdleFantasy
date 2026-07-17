@@ -269,8 +269,9 @@ class InventoryViewModel @Inject constructor(
         equipment: Map<String, EquipmentData>,
     ): EquipmentData? {
         val style = EquipSlot.combatStyleForSlot(slot)
-        return inventory.keys
-            .mapNotNull { equipment[it] }
+        return inventory.entries
+            .filter { (_, qty) -> qty > 0 }
+            .mapNotNull { (key, _) -> equipment[key] }
             .filter { item ->
                 if (style != null) item.slot == EquipSlot.WEAPON && item.combatStyle == style
                 else item.slot == slot

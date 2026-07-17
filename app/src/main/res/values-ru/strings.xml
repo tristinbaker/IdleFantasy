@@ -431,6 +431,9 @@
     <string name="home_town_title">Город</string>
     <string name="home_town_desc">Посетите магазин, таверну, гильдию, церковь, мастерскую строителя, мастера охотника и ярмарку</string>
     <string name="guild_dailies_available">Ежедневные доступны</string>
+    <string name="guild_not_unlocked">Ещё не открыто</string>
+    <string name="guild_dailies_done_today">Ежедневные задания выполнены</string>
+    <string name="guild_dailies_remaining_today">Осталось %1$d сегодня</string>
     <string name="guild_do_dailies_hint">Выполняйте ежедневные квесты, чтобы перейти на следующий ранг</string>
     <string name="guild_quest_gate_blocked">Завершите квесты для повышения ранга</string>
     <string name="guild_quest_required">Квест необходим для повышения</string>
@@ -475,7 +478,6 @@
     <string name="combat_fighting">Сражение…</string>
     <string name="combat_log_you_hit">Вы попали</string>
     <string name="combat_log_hit_you">попал по вам</string>
-    <string name="combat_log_dmg">урон</string>
     <string name="combat_log_missed">промах</string>
     <string name="combat_log_you_missed">Вы промахнулись</string>
     <string name="combat_log_kill">☠ %1$s повержен</string>
@@ -1412,6 +1414,7 @@
     <string name="armory_stat_attack_speed">Скорость атаки</string>
     <string name="armory_stat_cape">Бонус опыта</string>
     <string name="armory_stat_cape_yield">Бонус урожайности</string>
+    <string name="armory_stat_cape_boost">Бонус усиления</string>
     <string name="armory_source_carnival">Магазин призов карнавала</string>
     <string name="armory_source_smithing">Кузнечное дело</string>
     <string name="armory_source_crafting">Ремесло</string>
@@ -1594,4 +1597,18 @@
     <string name="home_welcome_greeting">С возвращением,</string>
     <string name="home_welcome_name">%1$s!</string>
     <string name="home_welcome_title">%1$s!</string>
+    <!-- ===== translatable="false" + synced from values/ ===== -->
+    <string name="settings_wiki_url" translatable="false">idlefantasy.tristinbaker.xyz</string>
+    <string-array name="profile_pet_happy_messages">
+        <item>%1$s радуется!</item>
+        <item>%1$s виляет хвостом!</item>
+        <item>%1$s ласково трётся о вас.</item>
+        <item>%1$s радостно чирикает!</item>
+        <item>%1$s танцует от радости!</item>
+        <item>%1$s широко улыбается вам.</item>
+        <item>%1$s хочет ещё ласки!</item>
+        <item>%1$s в полном восторге!</item>
+        <item>%1$s любит внимание!</item>
+        <item>%1$s обещает и дальше усердно работать на вас.</item>
+    </string-array>
 </resources>

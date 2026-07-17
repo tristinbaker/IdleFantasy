@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Skill names and descriptions ===== -->
+
+    <!-- Gathering skills -->
+    <string name="skill_mining_name">採掘</string>
+    <string name="skill_mining_desc">地中から価値ある鉱石や宝石を採掘する。</string>
+    <string name="skill_fishing_name">釣り</string>
+    <string name="skill_fishing_desc">水域から魚や水生のお宝を釣り上げる。</string>
+    <string name="skill_woodcutting_name">伐採</string>
+    <string name="skill_woodcutting_desc">木を切り倒し、様々な種類の原木を集める。</string>
+    <string name="skill_farming_name">農業</string>
+    <string name="skill_farming_desc">畑で作物を植えて収穫する。</string>
+    <string name="skill_firemaking_name">火起こし</string>
+    <string name="skill_firemaking_desc">所持品から原木を燃やして火起こし経験値（XP）を獲得する。原木を燃やすと灰も生成され、その灰を祈りスキルで撒くことでボーナス祈り経験値（XP）を獲得できる。</string>
+    <string name="skill_agility_name">アジリティ</string>
+    <string name="skill_agility_desc">アジリティを鍛えることで、すべてのスキル作業時間を短縮する。レベル99では1時間あたり20分短縮され（60分➔40分）、レベルアップに伴って線形に短縮されていく。</string>
+
+    <!-- Crafting skills -->
+    <string name="skill_smithing_name">製錬</string>
+    <string name="skill_smithing_desc">鉱石をインゴットに製錬し、強力な金属装備を鍛造する。</string>
+    <string name="skill_cooking_name">調理</string>
+    <string name="skill_cooking_desc">生の食材を調理して、戦闘中にHPを回復できる食べ物にする。</string>
+    <string name="skill_fletching_name">矢作り</string>
+    <string name="skill_fletching_desc">原木や金属パーツから弓と矢を作製する。</string>
+    <string name="skill_crafting_name">製作</string>
+    <string name="skill_crafting_desc">貴重な素材から宝飾品やその他の工芸品を製作する。</string>
+    <string name="skill_runecrafting_name">ルーン作成</string>
+    <string name="skill_runecrafting_desc">呪文の詠唱に使用する魔法のルーンを、ルーンエッセンスから作成する。</string>
+    <string name="skill_herblore_name">調薬</string>
+    <string name="skill_herblore_desc">農業で得たハーブやダンジョンの試薬からポーションを調合し、戦闘ステータスを上昇させる。</string>
+
+    <!-- Combat skills -->
+    <string name="skill_attack_name">攻撃</string>
+    <string name="skill_attack_desc">近接攻撃の命中精度が向上し、攻撃の命中率が上昇する。</string>
+    <string name="skill_strength_name">筋力</string>
+    <string name="skill_strength_desc">近接攻撃で与える最大ダメージを増加させる。</string>
+    <string name="skill_defense_name">防御</string>
+    <string name="skill_defense_desc">敵の攻撃から受けるダメージを減少させる。</string>
+    <string name="skill_ranged_name">遠距離</string>
+    <string name="skill_ranged_desc">弓と矢を使用し、安全な距離から敵を攻撃する。</string>
+    <string name="skill_magic_name">魔法</string>
+    <string name="skill_magic_desc">ルーンを使用して強力な呪文を唱える。レベルが上がるとより強力な呪文が解放される。</string>
+    <string name="skill_hitpoints_name">HP</string>
+    <string name="skill_hitpoints_desc">プレイヤーの総体力。レベルが上がると戦闘でより長く生き残れるようになる。</string>
+    <string name="skill_prayer_name">祈り</string>
+    <string name="skill_prayer_desc">戦闘でドロップした骨を埋めて祈り経験値（XP）を獲得する。レベルが上がると戦闘レベルが上昇する。</string>
+
+    <!-- ===== Skill unlock sheet labels ===== -->
+    <string name="label_lv">Lv %1$d</string>
+    <string name="skills_agility_course_detail">Lv. %1$d  •  %2$d XP/周</string>
+    <string name="label_hp_passive">パッシブ — 最大HPを増加</string>
+    <string name="label_hp_scales">レベルごとに最大HPが増加</string>
+    <string name="label_hp_max">最大HP: %1$d</string>
+    <string name="label_xp_per_bone">%1$s (骨1個につき%2$d XP)</string>
+    <string name="label_xp_per_kill">%1$s (討伐1体につき%2$d XP)</string>
+
+    <!-- ===== Agility course names and descriptions ===== -->
+    <string name="agility_beginner_course_name">初心者コース</string>
+    <string name="agility_beginner_course_desc">アジリティの訓練を始めたばかりのプレイヤー向けにデザインされたシンプルな障害物コース。</string>
+    <string name="agility_novice_course_name">駆け出しコース</string>
+    <string name="agility_novice_course_desc">基本的な障害物がある、少し難易度の高いコース。</string>
+    <string name="agility_apprentice_course_name">見習いコース</string>
+    <string name="agility_apprentice_course_desc">進むのに一定の技術が必要となる中級者向けコース。</string>
+    <string name="agility_intermediate_course_name">中級者コース</string>
+    <string name="agility_intermediate_course_desc">トリッキーな障害物が配置された、中程度の難易度のコース。</string>
+    <string name="agility_advanced_course_name">上級者コース</string>
+    <string name="agility_advanced_course_desc">アジリティの実力が試される挑戦的なコース。</string>
+    <string name="agility_expert_course_name">エキスパートコース</string>
+    <string name="agility_expert_course_desc">危険な障害物がある、エキスパートレベルのコース。</string>
+    <string name="agility_elite_course_name">エリートコース</string>
+    <string name="agility_elite_course_desc">最高のアジリティを備えた者だけが、このエリートコースをマスターできる。</string>
+    <string name="agility_master_course_name">マスターコース</string>
+    <string name="agility_master_course_desc">過酷な障害物が配置された、マスター階級のコース。</string>
+    <string name="agility_veteran_course_name">ベテランコース</string>
+    <string name="agility_veteran_course_desc">過酷な試練が待ち受ける、ベテラン用の訓練場。</string>
+    <string name="agility_champion_course_name">チャンピオンコース</string>
+    <string name="agility_champion_course_desc">プレイヤーを限界まで追い詰める、チャンピオン級のコース。</string>
+    <string name="agility_heroic_course_name">ヒーローコース</string>
+    <string name="agility_heroic_course_desc">一流の者だけが足を踏み入れることを許される、英雄的なコース。</string>
+    <string name="agility_legendary_course_name">伝説のコース</string>
+    <string name="agility_legendary_course_desc">アジリティのエリートたちの間で囁かれる伝説のコース。</string>
+    <string name="agility_mythic_course_name">神話のコース</string>
+    <string name="agility_mythic_course_desc">物理法則を無視した神話的なコース。</string>
+    <string name="agility_divine_course_name">神聖なコース</string>
+    <string name="agility_divine_course_desc">アジリティの神々に祝福された神聖なコース。</string>
+    <string name="agility_transcendent_course_name">超越のコース</string>
+    <string name="agility_transcendent_course_desc">凡人の限界を超越した、アジリティの究極の試練。</string>
+
+    <!-- ===== Session skill type labels ===== -->
+    <string name="skill_expedition_name">遠征</string>
+    <string name="skill_boss_name">ボス</string>
+    <string name="skill_mercantile_name">商業</string>
+</resources>

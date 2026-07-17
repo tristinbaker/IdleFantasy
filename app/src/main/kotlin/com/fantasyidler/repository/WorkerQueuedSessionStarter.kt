@@ -262,8 +262,6 @@ class WorkerQueuedSessionStarter @Inject constructor(
                 val availableFood    = inventory.filterKeys { it in equippedFoodKeys }
                 val spell = gameData.spells[flags.activeSpell]
                 val preferredArrow = flags.equippedArrows?.takeIf { (inventory[it] ?: 0) > 0 }
-                val bestArrow = preferredArrow ?: ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
-                val arrowBonus = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
                 val orderedWorkerBossArrowKeys = if (preferredArrow != null)
                     listOf(preferredArrow) + ARROW_TIERS.reversed().filter { it != preferredArrow && (inventory[it] ?: 0) > 0 }
                     else ARROW_TIERS.filter { (inventory[it] ?: 0) > 0 }
@@ -280,7 +278,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                     combatStyle        = combatStyle,
                     playerRanged       = levels[Skills.RANGED] ?: 1,
                     playerMagic        = levels[Skills.MAGIC]  ?: 1,
-                    arrowStrengthBonus = arrowBonus,
+                    arrowStrengthBonuses = ARROW_STRENGTH_BONUS,
                     spellMaxHit        = (spell?.maxHit ?: 0) + totalMagicDmgBonus,
                     availableArrows    = availableArrows,
                     equippedFood       = availableFood,
@@ -315,8 +313,6 @@ class WorkerQueuedSessionStarter @Inject constructor(
                 val availableFood    = inventory.filterKeys { it in equippedFoodKeys }
                 val spell = gameData.spells[flags.activeSpell]
                 val preferredArrow = flags.equippedArrows?.takeIf { (inventory[it] ?: 0) > 0 }
-                val bestArrow = preferredArrow ?: ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
-                val arrowBonus = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
                 val orderedWorkerCombatArrowKeys = if (preferredArrow != null)
                     listOf(preferredArrow) + ARROW_TIERS.reversed().filter { it != preferredArrow && (inventory[it] ?: 0) > 0 }
                     else ARROW_TIERS.filter { (inventory[it] ?: 0) > 0 }
@@ -334,7 +330,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                     combatStyle         = combatStyle,
                     playerRanged        = levels[Skills.RANGED]    ?: 1,
                     playerMagic         = levels[Skills.MAGIC]     ?: 1,
-                    arrowStrengthBonus  = arrowBonus,
+                    arrowStrengthBonuses = ARROW_STRENGTH_BONUS,
                     spellMaxHit         = (spell?.maxHit ?: 0) + totalMagicDmgBonus,
                     agilityLevel        = agilityLevel,
                     agilityPrestige     = flags.skillPrestige[Skills.AGILITY] ?: 0,
@@ -416,11 +412,11 @@ class WorkerQueuedSessionStarter @Inject constructor(
     )
 
     private val ARROW_STRENGTH_BONUS = mapOf(
-        "bronze_arrow"     to 0,
-        "iron_arrow"       to 2,
-        "steel_arrow"      to 4,
-        "mithril_arrow"    to 6,
-        "adamantite_arrow" to 8,
-        "runite_arrow"     to 10,
+        "bronze_arrow"     to 7,
+        "iron_arrow"       to 10,
+        "steel_arrow"      to 16,
+        "mithril_arrow"    to 22,
+        "adamantite_arrow" to 31,
+        "runite_arrow"     to 49,
     )
 }

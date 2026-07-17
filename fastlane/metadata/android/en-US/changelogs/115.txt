@@ -1,0 +1,14 @@
+• Fixed the activity picker closing after starting or queueing a session; it now stays open so you can queue multiple activities in a row
+• Sped up planting multiple farming patches at once, matching the earlier harvest speed fix
+• Hardened "Equip Best Tools" to ignore any tool with zero quantity in inventory
+• Fixed "Added to queue"/"Queue is full" messages being hidden behind the still-open activity picker on Skills
+• Fixed the Armory mislabeling the Agility Cape's bonus as a Yield Bonus (it's actually an XP Bonus); Prayer Cape now shows a distinct Boost Bonus label
+• Fixed Firemaking's activity picker not returning to the log list after queueing a burn, matching other crafting skills
+• Fixed the Home screen's queue countdown ignoring Tinderbox efficiency for queued Firemaking sessions
+• Fixed Firemaking guild quest/daily indicators incorrectly showing up on the Prayer activity picker (both use "ashes" as an item key)
+• Fixed guild dailies handing out requests you can't currently fulfill after prestiging a skill (e.g. Smithing Guild still assigning Platinum/Runite bars right after your Smithing level resets)
+• Fixed ranged combat damage getting stuck at the first arrow tier fired instead of updating per arrow as your quiver runs through different tiers
+• Increased arrow strength bonuses to match the ranged damage shown when fletching them (e.g. Runite Arrows now correctly hit as hard in combat as advertised when crafted)
+• Fixed enhanced potions showing the same name as their regular version in English, Polish, and Russian, making them impossible to tell apart in the Shop and Inventory
+• Added arrow, spell, and potion selection to the Infinite Tower, matching Dungeons and Bosses
+• Added a per-guild daily status indicator to the Guild Hall list: a lock icon if not yet unlocked, a checkmark once today's dailies are done, or a count of how many are left

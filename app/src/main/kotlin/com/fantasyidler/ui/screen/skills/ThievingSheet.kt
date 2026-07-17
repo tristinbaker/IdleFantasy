@@ -164,7 +164,7 @@ internal fun ThievingSheet(
                         isStarting       = isStarting,
                         hasActiveSession = hasActiveSession,
                         isQueueFull      = isQueueFull,
-                        questIndicators  = activeQuests[npc.key] ?: emptyList(),
+                        questIndicators  = activeQuests["${Skills.THIEVING}:${npc.key}"] ?: emptyList(),
                         onClick          = { selectedKey = npc.key },
                     )
                 }

@@ -106,6 +106,17 @@ class FarmingRepository @Inject constructor(
         }
     }
 
+    /** Plants across patches in one DB transaction, so bulk planting commits once instead of once per plot. Stops at the first patch that fails to plant (e.g. out of seeds). */
+    suspend fun plantCrops(patchNumbers: List<Int>, crop: CropData, ashKey: String? = null): Int {
+        var plantedCount = 0
+        appDatabase.withTransaction {
+            for (patchNumber in patchNumbers) {
+                if (plantCrop(patchNumber, crop, ashKey)) plantedCount++ else return@withTransaction
+            }
+        }
+        return plantedCount
+    }
+
     /** Roll harvest yield, award items + XP, clear the patch. */
     suspend fun harvestPatch(patchNumber: Int) {
         val patch  = patchDao.getPatch(patchNumber) ?: return

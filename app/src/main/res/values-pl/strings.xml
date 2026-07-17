@@ -432,6 +432,9 @@
     <string name="home_town_title">Miasto</string>
     <string name="home_town_desc">Odwiedź sklep, gospodę, gildię, kościół, warsztat budowniczego, mistrza łowców i karnawał</string>
     <string name="guild_dailies_available">Dostępne dzienne zadania</string>
+    <string name="guild_not_unlocked">Jeszcze niedostępne</string>
+    <string name="guild_dailies_done_today">Dzienne zadania ukończone</string>
+    <string name="guild_dailies_remaining_today">Pozostało %1$d dzisiaj</string>
     <string name="guild_do_dailies_hint">Wykonuj dzienne zadania, aby awansować na kolejny stopień</string>
     <string name="guild_quest_gate_blocked">Ukończ zadania, aby awansować w randze</string>
     <string name="guild_quest_required">Zadanie wymagane do awansu</string>
@@ -479,7 +482,6 @@
     <string name="combat_fighting">Walka…</string>
     <string name="combat_log_you_hit">Trafiłeś</string>
     <string name="combat_log_hit_you">trafił cię</string>
-    <string name="combat_log_dmg">obr.</string>
     <string name="combat_log_missed">chybił</string>
     <string name="combat_log_you_missed">Chybiłeś</string>
     <string name="combat_log_kill">☠ %1$s pokonany</string>
@@ -1434,6 +1436,7 @@
     <string name="armory_stat_attack_speed">Szybkość ataku</string>
     <string name="armory_stat_cape">Bonus XP</string>
     <string name="armory_stat_cape_yield">Bonus wydajności</string>
+    <string name="armory_stat_cape_boost">Bonus wzmocnienia</string>
     <string name="armory_source_carnival">Sklep z nagrodami Karnawału</string>
     <string name="armory_source_smithing">Kowalstwo</string>
     <string name="armory_source_crafting">Wytwarzanie</string>

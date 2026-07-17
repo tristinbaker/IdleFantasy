@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Enemy names ===== -->
+    <string name="enemy_giant_rat_name">巨大ネズミ</string>
+    <string name="enemy_goblin_name">ゴブリン</string>
+    <string name="enemy_skeleton_name">スケルトン</string>
+    <string name="enemy_zombie_name">ゾンビ</string>
+    <string name="enemy_bandit_name">山賊</string>
+    <string name="enemy_guard_name">衛兵</string>
+    <string name="enemy_dark_wizard_name">ダークウィザード</string>
+    <string name="enemy_orc_warrior_name">オークウォリアー</string>
+    <string name="enemy_spider_name">巨大グモ</string>
+    <string name="enemy_wild_monkey_name">野生のサル</string>
+    <string name="enemy_rogue_name">ならず者</string>
+    <string name="enemy_knight_name">騎士</string>
+    <string name="enemy_hellhound_name">ヘルハウンド</string>
+    <string name="enemy_troll_name">マウンテントロール</string>
+    <string name="enemy_demon_name">レッサーデーモン</string>
+    <string name="enemy_dragon_name">グリーンドラゴン</string>
+    <string name="enemy_imp_name">インプ</string>
+    <string name="enemy_chicken_name">ニワトリ</string>
+    <string name="enemy_sheep_name">ヒツジ</string>
+    <string name="enemy_cow_name">ウシ</string>
+
+    <!-- ===== Dungeon names and descriptions ===== -->
+    <string name="dungeon_imp_cavern_name">インプの洞窟</string>
+    <string name="dungeon_imp_cavern_desc">いたずら好きなインプでいっぱいの浅い洞窟。初心者に最適です！</string>
+    <string name="dungeon_goblin_cave_name">ゴブリンの洞窟</string>
+    <string name="dungeon_goblin_cave_desc">ゴブリンと巨大ネズミがはびこる暗い洞窟。駆け出しの冒険者が訓練するのに適した場所です。</string>
+    <string name="dungeon_spider_den_name">クモの巣窟</string>
+    <string name="dungeon_spider_den_desc">毒グモが這い回る、蜘蛛の巣に覆われた洞窟。解毒薬を持参してください！</string>
+    <string name="dungeon_bandit_camp_name">山賊のキャンプ</string>
+    <string name="dungeon_bandit_camp_desc">荒野にある泥棒やならず者たちの隠れ家。財布を盗まれないよう気をつけましょう！</string>
+    <string name="dungeon_undead_crypt_name">不死者の地下墓地</string>
+    <string name="dungeon_undead_crypt_desc">死者が眠ることを拒む古代の埋葬地。闇の魔法に注意してください！</string>
+    <string name="dungeon_fortress_ruins_name">要塞の廃墟</string>
+    <string name="dungeon_fortress_ruins_desc">古代の城の崩れかけた遺跡。現在は騎士や兵士たちによって守られています。</string>
+    <string name="dungeon_orc_stronghold_name">オークの砦</string>
+    <string name="dungeon_orc_stronghold_desc">山の奥深くにある要塞化されたオークの集落。勇敢な者だけが立ち入ることを許されます。</string>
+    <string name="dungeon_volcanic_depths_name">火山深部</string>
+    <string name="dungeon_volcanic_depths_desc">ヘルハウンドやレッサーデーモンが生息する、焼けつくような洞窟。耐えがたいほどの暑さです！</string>
+    <string name="dungeon_dragon_lair_name">竜の巣</string>
+    <string name="dungeon_dragon_lair_desc">グリーンドラゴンの伝説的な住処。熟練の戦士だけがこの試練を生き延びることができます。</string>
+    <string name="dungeon_farm_name">農場</string>
+    <string name="dungeon_farm_desc">家畜のいる平和な農場。食料を集めたい初心者に最適です！</string>
+    <string name="dungeon_infernal_stronghold_name">地獄の要塞</string>
+    <string name="dungeon_infernal_stronghold_desc">デーモンとヘルハウンドが支配する、炎と硫黄の要塞。十分な準備がない者は、その暑さだけで命を落とすでしょう。</string>
+    <string name="dungeon_ancient_temple_name">古代の神殿</string>
+    <string name="dungeon_ancient_temple_desc">この世で最も強力なクリーチャーたちによって守られている古代の神殿。最強の戦士だけが立ち入る勇気を持ちます。</string>
+
+    <!-- ===== Solo boss names (raid bosses retargeted for solo play) ===== -->
+    <string name="boss_king_black_dragon_name">キングブラックドラゴン</string>
+    <string name="boss_demon_lord_name">魔王</string>
+    <string name="boss_kraken_name">クラーケン</string>
+    <string name="boss_balrog_name">バルログ</string>
+
+    <!-- ===== Pet names and descriptions ===== -->
+    <string name="pet_dragon_whelp_name">ドラゴンの幼獣</string>
+    <string name="pet_dragon_whelp_desc">戦闘経験値を増加させるドラゴンの子ども。</string>
+    <string name="pet_imp_pet_name">インプのペット</string>
+    <string name="pet_imp_pet_desc">祈りスキルの訓練効率を高めるいたずら好きなインプ。</string>
+    <string name="pet_baby_kraken_name">ベビークラーケン</string>
+    <string name="pet_baby_kraken_desc">調理経験値を増加させる小さなクラーケン。</string>
+    <string name="pet_rock_golem_name">ロックゴーレム</string>
+    <string name="pet_rock_golem_desc">採掘経験値を増加させる生きた岩石。</string>
+    <string name="pet_ent_name">エント</string>
+    <string name="pet_ent_desc">伐採経験値を増加させる古代の樹木の精霊。</string>
+    <string name="pet_tiny_templar_name">タイニーテンプラー</string>
+    <string name="pet_tiny_templar_desc">釣り経験値を増加させる小さな魚の相棒。</string>
+    <string name="pet_tangleroot_name">タングルルート</string>
+    <string name="pet_tangleroot_desc">農業経験値を増加させる魔法の植物クリーチャー。</string>
+
+    <!-- Missing dungeons -->
+    <string name="dungeon_collapsed_mine_name">崩落した鉱山</string>
+    <string name="dungeon_collapsed_mine_desc">銅鉱山の地下に広がる巨大な空洞。がれきには洞窟トロールやロックゴーレムが巣食い、崩落したシャフトには巨大グモが巣を張っています。</string>
+    <string name="dungeon_shadow_den_name">影の巣窟</string>
+    <string name="dungeon_shadow_den_desc">地域のシーフギルドによって使用されている地下室のネットワーク。ならず者、暗殺者、そして影の怪物がいたる所に潜んでいます。</string>
+    <string name="dungeon_abyssal_ruins_name">深淵の遺跡</string>
+    <string name="dungeon_abyssal_ruins_desc">人間界の上と下の両方に同時に存在する古代の遺跡。奇妙な深淵のクリーチャーが現実世界に出没します。</string>
+    <string name="dungeon_ancient_forest_ruins_name">古代の森の遺跡</string>
+    <string name="dungeon_ancient_forest_ruins_desc">原始の森に飲み込まれた石造りの遺跡。現在は野生のクリーチャーやドルイドの復讐心に満ちた精霊が巣食っています。</string>
+    <string name="dungeon_ancient_forge_name">古代の鍛冶場</string>
+    <string name="dungeon_ancient_forge_desc">何世紀にもわたって絶えることなく燃え続けている巨大なドワーフの鍛冶場。炎のエレメンタルと鍛冶場の守護者がその秘密を守っています。</string>
+    <string name="dungeon_arcane_ruins_name">アルケインの遺跡</string>
+    <string name="dungeon_arcane_ruins_desc">破壊された魔術師の塔の機能的な地下室。魔法のゴーレムやエンチャントされた守護者が今も通路を巡回しています。</string>
+    <string name="dungeon_corrupted_sanctum_name">堕落した聖域</string>
+    <string name="dungeon_corrupted_sanctum_desc">堕落した樹冠の中心にある、影に包まれた聖域。闇の司祭と堕落した獣が古代の邪悪を守っています。</string>
+    <string name="dungeon_drowned_temple_name">水没した神殿</string>
+    <string name="dungeon_drowned_temple_desc">海の洞窟の下にある沈没した神殿。その広間は水で満たされ、そこを住処とする海の生物で溢れています。</string>
+</resources>

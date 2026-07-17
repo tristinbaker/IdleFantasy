@@ -14,11 +14,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Badge
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -36,6 +39,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -216,9 +220,36 @@ private fun GuildCard(
             }
         }
 
+        DailyStatusIndicator(summary = summary)
+
         if (claimable > 0) {
             Badge { Text("$claimable") }
         }
+    }
+}
+
+/** Shows whether this guild's dailies are locked, all done, or still have some left today. */
+@Composable
+private fun DailyStatusIndicator(summary: GuildSummary) {
+    val dimColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
+    when {
+        !summary.guildUnlocked -> Icon(
+            imageVector        = Icons.Filled.Lock,
+            contentDescription = stringResource(R.string.guild_not_unlocked),
+            tint               = dimColor,
+            modifier           = Modifier.height(20.dp).width(20.dp),
+        )
+        summary.dailiesTodayTotal > 0 && summary.dailiesTodayRemaining == 0 -> Icon(
+            imageVector        = Icons.Filled.CheckCircle,
+            contentDescription = stringResource(R.string.guild_dailies_done_today),
+            tint               = Color(0xFF4CAF50),
+            modifier           = Modifier.height(20.dp).width(20.dp),
+        )
+        summary.dailiesTodayTotal > 0 -> Text(
+            text  = stringResource(R.string.guild_dailies_remaining_today, summary.dailiesTodayRemaining),
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
     }
 }
 

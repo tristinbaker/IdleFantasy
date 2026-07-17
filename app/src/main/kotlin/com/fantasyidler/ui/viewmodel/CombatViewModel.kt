@@ -406,8 +406,6 @@ class CombatViewModel @Inject constructor(
 
                 // Ranged: use player's chosen arrow if available, else fall back to best in inventory
                 val preferredArrow = _extra.value.selectedArrowKey?.takeIf { (inventory[it] ?: 0) > 0 }
-                val bestArrow = preferredArrow ?: ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
-                val arrowStrengthBonus = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
 
                 // Magic: validate spell selection and level
                 val selectedSpell = _extra.value.selectedSpell
@@ -472,7 +470,7 @@ class CombatViewModel @Inject constructor(
                     combatStyle         = combatStyle,
                     playerRanged        = (levels[Skills.RANGED]    ?: 1) + (prestigeMap[Skills.RANGED]    ?: 0) * 5,
                     playerMagic         = (levels[Skills.MAGIC]     ?: 1) + (prestigeMap[Skills.MAGIC]     ?: 0) * 5,
-                    arrowStrengthBonus  = arrowStrengthBonus + totalRangedStrBonus,
+                    rangedGearStrengthBonus = totalRangedStrBonus,
                     spellMaxHit         = (selectedSpell?.maxHit ?: 0) + totalMagicDmgBonus,
                     agilityLevel        = levels[Skills.AGILITY]   ?: 1,
                     agilityPrestige     = prestigeMap[Skills.AGILITY] ?: 0,
@@ -481,6 +479,7 @@ class CombatViewModel @Inject constructor(
                     foodHealValues      = foodHealValues,
                     potionBonuses       = potionBonuses,
                     availableArrows     = availableArrows,
+                    arrowStrengthBonuses = ARROW_STRENGTH_BONUS,
                     runeKey             = simulatorRuneKey,
                     runeCostPerAttack   = simulatorRuneCost,
                     availableRunes      = if (simulatorRuneKey != null) inventory[simulatorRuneKey] ?: 0 else Int.MAX_VALUE,
@@ -604,8 +603,6 @@ class CombatViewModel @Inject constructor(
                     return@launch
                 }
                 val preferredArrow = _extra.value.selectedArrowKey?.takeIf { (inventory[it] ?: 0) > 0 }
-                val bestArrow = preferredArrow ?: ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
-                val arrowStrengthBonus = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
                 val orderedArrowKeys = if (preferredArrow != null)
                     listOf(preferredArrow) + ARROW_TIERS.reversed().filter { it != preferredArrow && (inventory[it] ?: 0) > 0 }
                     else ARROW_TIERS.filter { (inventory[it] ?: 0) > 0 }
@@ -636,9 +633,10 @@ class CombatViewModel @Inject constructor(
                     combatStyle        = combatStyle,
                     playerRanged       = (levels[Skills.RANGED] ?: 1) + (potionBonuses["ranged"] ?: 0) + (prestigeMapBoss[Skills.RANGED] ?: 0) * 5,
                     playerMagic        = magicLevel + (potionBonuses["magic"] ?: 0) + (prestigeMapBoss[Skills.MAGIC] ?: 0) * 5,
-                    arrowStrengthBonus = arrowStrengthBonus + bossRangedStrBonus,
+                    rangedGearStrengthBonus = bossRangedStrBonus,
                     spellMaxHit        = (selectedSpell?.maxHit ?: 0) + bossMagicDmgBonus,
                     availableArrows    = availableArrows,
+                    arrowStrengthBonuses = ARROW_STRENGTH_BONUS,
                     equippedFood       = availableFood,
                     foodHealValues     = gameData.foodHealValues,
                     blessingDefBonus   = ChurchRepository.defBonus(flags),
@@ -804,8 +802,6 @@ class CombatViewModel @Inject constructor(
         }
         val totalDef = armorDef + (weapon?.defenseBonus ?: 0)
 
-        val bestArrow      = ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
-        val arrowStrBonus  = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
         val availableArrows = ARROW_TIERS.filter { (inventory[it] ?: 0) > 0 }.associate { it to (inventory[it] ?: 0) }
 
         val activeSpell = flags.activeSpell?.let { gameData.spells[it] }
@@ -835,13 +831,14 @@ class CombatViewModel @Inject constructor(
                 combatStyle         = combatStyle,
                 playerRanged        = rng,
                 playerMagic         = mgc,
-                arrowStrengthBonus  = arrowStrBonus + (if (combatStyle == "ranged") totalStr else 0),
+                rangedGearStrengthBonus = if (combatStyle == "ranged") totalStr else 0,
                 spellMaxHit         = spellMaxHit,
                 agilityLevel        = agility,
                 agilityPrestige     = prestigeMap[Skills.AGILITY] ?: 0,
                 equippedFood        = foodQtys,
                 foodHealValues      = gameData.foodHealValues,
                 availableArrows     = availableArrows,
+                arrowStrengthBonuses = ARROW_STRENGTH_BONUS,
                 attackSpeedSec      = weapon?.attackSpeed ?: CombatSimulator.BASE_ATTACK_SPEED_SEC,
                 random              = Random(42),
             )
@@ -870,9 +867,10 @@ class CombatViewModel @Inject constructor(
         combatStyle: String = "melee",
         playerRanged: Int = 1,
         playerMagic: Int = 1,
-        arrowStrengthBonus: Int = 0,
+        rangedGearStrengthBonus: Int = 0,
         spellMaxHit: Int = 0,
         availableArrows: Map<String, Int> = emptyMap(),
+        arrowStrengthBonuses: Map<String, Int> = emptyMap(),
         equippedFood: Map<String, Int> = emptyMap(),
         foodHealValues: Map<String, Int> = emptyMap(),
         blessingDefBonus: Int = 0,
@@ -892,9 +890,10 @@ class CombatViewModel @Inject constructor(
         combatStyle        = combatStyle,
         playerRanged       = playerRanged,
         playerMagic        = playerMagic,
-        arrowStrengthBonus = arrowStrengthBonus,
+        rangedGearStrengthBonus = rangedGearStrengthBonus,
         spellMaxHit        = spellMaxHit,
         availableArrows    = availableArrows,
+        arrowStrengthBonuses = arrowStrengthBonuses,
         equippedFood       = equippedFood,
         foodHealValues     = foodHealValues,
         blessingDefBonus   = blessingDefBonus,
@@ -916,12 +915,12 @@ class CombatViewModel @Inject constructor(
 
     /** Strength bonus each arrow tier contributes to the max-hit formula. */
     private val ARROW_STRENGTH_BONUS = mapOf(
-        "bronze_arrow"     to 0,
-        "iron_arrow"       to 2,
-        "steel_arrow"      to 4,
-        "mithril_arrow"    to 6,
-        "adamantite_arrow" to 8,
-        "runite_arrow"     to 10,
+        "bronze_arrow"     to 7,
+        "iron_arrow"       to 10,
+        "steel_arrow"      to 16,
+        "mithril_arrow"    to 22,
+        "adamantite_arrow" to 31,
+        "runite_arrow"     to 49,
     )
 
     /** Returns the combined XP boost % from all "combat" and "all" pets the player owns. */

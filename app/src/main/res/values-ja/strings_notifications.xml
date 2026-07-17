@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Notification channel metadata ===== -->
+    <string name="notif_channel_sessions_name">作業完了アラート</string>
+    <string name="notif_channel_sessions_desc">スキル作業が完了した際のアラート通知</string>
+    <string name="notif_channel_farming_name">農業アラート</string>
+    <string name="notif_channel_farming_desc">作物の収穫準備が整った際のアラート通知</string>
+
+    <!-- ===== Session complete ===== -->
+    <string name="notif_session_complete_title">作業完了！</string>
+    <!-- Translator note: %1$s = localised skill name (e.g. "Mining") -->
+    <string name="notif_session_complete_body">%1$sの作業が終了しました。タップして報酬を受け取りましょう。</string>
+
+    <!-- ===== Buff alerts ===== -->
+    <string name="notif_channel_buffs_name">バフアラート</string>
+    <string name="notif_channel_buffs_desc">アクティブなバフ効果が切れた際のアラート通知</string>
+    <string name="notif_xp_boost_expired_title">経験値ブースト終了</string>
+    <string name="notif_xp_boost_expired_body">経験値2倍ブーストの効果が切れました。マーケットを訪れて再有効化しましょう。</string>
+    <string name="notif_blessing_expired_title">祝福の終了</string>
+    <string name="notif_blessing_expired_body">教会の祝福効果が消失しました。教会を訪れて更新しましょう。</string>
+
+    <!-- ===== Farming ready ===== -->
+    <string name="notif_farming_ready_title">収穫の準備完了！</string>
+    <!-- Translator note: %1$s = localised crop name (e.g. "Wheat"). Adjust grammar as needed for your language. -->
+    <string name="notif_farming_ready_body">%1$sの収穫準備が整いました。</string>
+    <!-- Plural variant used when multiple patches are ready -->
+    <!-- Translator note: %1$d = number of patches ready -->
+    <string name="notif_farming_ready_body_multi">%1$d個の畑の収穫準備が整いました。</string>
+</resources>

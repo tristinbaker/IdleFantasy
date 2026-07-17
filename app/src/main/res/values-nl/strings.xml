@@ -414,6 +414,9 @@
     <string name="home_town_title">Dorp</string>
     <string name="home_town_desc">Bezoek de winkel, herberg, gilde, kerk, bouwersatelier, de slagersmeester en de kermis</string>
     <string name="guild_dailies_available">Dagelijkse opdrachten beschikbaar</string>
+    <string name="guild_not_unlocked">Nog niet ontgrendeld</string>
+    <string name="guild_dailies_done_today">Dagelijkse opdrachten voltooid</string>
+    <string name="guild_dailies_remaining_today">%1$d over vandaag</string>
     <string name="guild_do_dailies_hint">Doe dagelijkse opdrachten om naar de volgende rang te gaan</string>
     <string name="home_died_message">Je bent dood en hebt het grootste deel van je voortgang verloren.</string>
     <string name="home_xp_boost_was_active">2× XP Boost was actief</string>
@@ -453,7 +456,6 @@
     <string name="combat_fighting">Vechtend…</string>
     <string name="combat_log_you_hit">Je raakt</string>
     <string name="combat_log_hit_you">raakt jou</string>
-    <string name="combat_log_dmg">schade</string>
     <string name="combat_log_missed">miste</string>
     <string name="combat_log_you_missed">Je miste</string>
     <string name="combat_log_kill">☠ %1$s verslagen</string>
@@ -1344,6 +1346,7 @@
     <string name="armory_stat_attack_speed">Aanvalssnelheid</string>
     <string name="armory_stat_cape">XP-bonus</string>
     <string name="armory_stat_cape_yield">Opbrengstbonus</string>
+    <string name="armory_stat_cape_boost">Boost-bonus</string>
     <string name="armory_source_carnival">Carnavalsprijswinkel</string>
     <string name="armory_source_smithing">Smeden</string>
     <string name="armory_source_crafting">Ambacht</string>

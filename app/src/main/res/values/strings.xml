@@ -383,6 +383,7 @@
     <string name="settings_lang_russian">Русский</string>
     <string name="settings_lang_indonesian">Bahasa Indonesia</string>
     <string name="settings_lang_portugues_brasil">Português (Brasil)</string>
+    <string name="settings_lang_japanese">日本語</string>
     <string name="settings_lang_system">System</string>
     <string name="settings_save_data">Save Data</string>
     <string name="settings_export">Export Save</string>
@@ -418,6 +419,9 @@
     <string name="home_town_title">Town</string>
     <string name="home_town_desc">Visit the shop, inn, guild, church, builder\'s workshop, slayer master, and carnival</string>
     <string name="guild_dailies_available">Dailies available</string>
+    <string name="guild_not_unlocked">Not yet unlocked</string>
+    <string name="guild_dailies_done_today">Dailies done today</string>
+    <string name="guild_dailies_remaining_today">%1$d left today</string>
     <string name="guild_do_dailies_hint">Do dailies to advance to the next rank</string>
     <string name="guild_quest_gate_blocked">Complete quests to advance your rank</string>
     <string name="guild_quest_required">Quest required to advance</string>
@@ -463,7 +467,6 @@
     <string name="combat_fighting">Fighting…</string>
     <string name="combat_log_you_hit">You hit</string>
     <string name="combat_log_hit_you">hit you</string>
-    <string name="combat_log_dmg">dmg</string>
     <string name="combat_log_missed">missed</string>
     <string name="combat_log_you_missed">You missed</string>
     <string name="combat_log_kill">☠ %1$s defeated</string>
@@ -1416,6 +1419,7 @@
     <string name="armory_stat_attack_speed">Attack Speed</string>
     <string name="armory_stat_cape">XP Bonus</string>
     <string name="armory_stat_cape_yield">Yield Bonus</string>
+    <string name="armory_stat_cape_boost">Boost Bonus</string>
     <string name="armory_source_carnival">Carnival Prize Shop</string>
     <string name="armory_source_smithing">Smithing</string>
     <string name="armory_source_crafting">Crafting</string>

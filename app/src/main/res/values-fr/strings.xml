@@ -417,7 +417,6 @@
     <string name="combat_fighting">Combat en cours…</string>
     <string name="combat_log_you_hit">Vous infligez</string>
     <string name="combat_log_hit_you">vous inflige</string>
-    <string name="combat_log_dmg">dégâts</string>
     <string name="combat_log_missed">a raté</string>
     <string name="combat_log_you_missed">Vous avez raté</string>
     <string name="combat_log_kill">☠ %1$s vaincu</string>
@@ -914,6 +913,9 @@
     <string name="home_town_title">Ville</string>
     <string name="home_town_desc">Visitez la boutique, l\'auberge, la guilde, l\'église, l\'atelier du constructeur, le maître chasseur et le carnaval</string>
     <string name="guild_dailies_available">Quêtes quotidiennes disponibles</string>
+    <string name="guild_not_unlocked">Pas encore débloqué</string>
+    <string name="guild_dailies_done_today">Quêtes quotidiennes terminées</string>
+    <string name="guild_dailies_remaining_today">%1$d restantes aujourd\'hui</string>
     <string name="guild_do_dailies_hint">Faites des quêtes quotidiennes pour progresser au rang suivant</string>
     <string name="guild_quest_gate_blocked">Accomplir des quêtes pour monter en grade</string>
     <string name="guild_quest_required">Quête nécessaire pour progresser</string>
@@ -1376,6 +1378,7 @@
     <string name="armory_stat_attack_speed">Vitesse d\'attaque</string>
     <string name="armory_stat_cape">Expérience Bonus</string>
     <string name="armory_stat_cape_yield">Bonus de rendement</string>
+    <string name="armory_stat_cape_boost">Bonus de renforcement</string>
     <string name="armory_source_carnival">Boutique des prix du carnaval</string>
     <string name="armory_source_smithing">Forge</string>
     <string name="armory_source_crafting">Artisanat</string>
@@ -1558,4 +1561,5 @@
     <string name="home_welcome_greeting">Bon retour,</string>
     <string name="home_welcome_name">%1$s !</string>
     <string name="home_welcome_title">Le %1$s !</string>
+    <string name="settings_lang_japanese">日本語</string>
 </resources>

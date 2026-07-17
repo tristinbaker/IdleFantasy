@@ -192,7 +192,7 @@ internal fun RunecraftingSheet(
                         Column(Modifier.weight(1f)) {
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 Text(GameStrings.itemName(context, key), style = MaterialTheme.typography.bodyLarge)
-                                val questIndicators = activeQuests[key] ?: emptyList()
+                                val questIndicators = activeQuests["${Skills.RUNECRAFTING}:$key"] ?: emptyList()
                                 if (questIndicators.isNotEmpty()) {
                                     val categories = questIndicators.groupBy { it.category }
                                     val sortedCategories = categories.entries.sortedBy { it.key }
