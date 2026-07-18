@@ -58,7 +58,6 @@ def add_static_pages():
                 ("fishing", PageInfo("Fishing", "Fishing.md", gen_fishing)),
                 ("woodcutting", PageInfo("Woodcutting", "Woodcutting.md", gen_woodcutting)),
                 ("farming", PageInfo("Farming", "Farming.md", gen_farming)),
-                ("agility", PageInfo("Agility", "Agility.md", gen_agility)),
                 ("thieving", PageInfo("Thieving", "Thieving.md", gen_thieving))
             ]],
             ["Crafting", False, [
@@ -74,6 +73,7 @@ def add_static_pages():
             ["Support", False, [
                 ("prayer", PageInfo("Prayer", "Prayer.md", gen_prayer)),
                 ("mercantile", PageInfo("Mercantile", "Mercantile.md", gen_mercantile)),
+                ("agility", PageInfo("Agility", "Agility.md", gen_agility)),
             ]],
             ["Combat", False, [
                 ("slayer", PageInfo("Slayer", "Slayer.md", gen_slayer)),
@@ -607,7 +607,7 @@ def gen_agility() -> str:
         duration_rows.append([level, f"{mins} min"])
 
     tool_rows = _tool_table("grappling_hook", "agility_efficiency")
-    return get_template("skills/gathering/agility").format(
+    return get_template("skills/support/agility").format(
         session_duration_table=table(["Agility Level", "Session Duration"], duration_rows),
         course_count=len(courses),
         course_table=table(['Course', 'Level Required', 'XP / Lap', 'XP / Min (est.)', 'XP / Session (est.)'], course_rows),
@@ -1252,9 +1252,9 @@ def gen_guilds() -> str:
 
     # One section per guild, ordered to match ALL_GUILDS
     guild_order = [
-        "mining", "fishing", "woodcutting", "farming", "firemaking", "agility",
+        "mining", "fishing", "woodcutting", "farming", "firemaking",
         "smithing", "cooking", "fletching", "crafting", "runecrafting", "herblore",
-        "warriors", "archers", "mages", "prayer", "mercantile",
+        "warriors", "archers", "mages", "prayer", "mercantile", "agility"
     ]
     guild_section_tpl = get_template("town/guild_section")
     sections = []
