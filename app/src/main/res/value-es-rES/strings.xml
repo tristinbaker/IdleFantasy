@@ -360,7 +360,6 @@
     <string name="combat_fighting">Luchando…</string>
     <string name="combat_log_you_hit">Has golpeado</string>
     <string name="combat_log_hit_you">te golpea</string>
-    <string name="combat_log_dmg">daño</string>
     <string name="combat_log_missed">fallo</string>
     <string name="combat_log_you_missed">Has fallado</string>
     <string name="combat_rec_level">Nivel de combate recomendado</string>
@@ -1529,4 +1528,9 @@
     <string name="armory_stat_agility">Agility Efficiency</string>
     <string name="armory_stat_cooking">Cooking Efficiency</string>
     <string name="armory_stat_thieving">Thieving Efficiency</string>
+    <string name="settings_lang_japanese">日本語</string>
+    <string name="guild_not_unlocked">Not yet unlocked</string>
+    <string name="guild_dailies_done_today">Dailies done today</string>
+    <string name="guild_dailies_remaining_today">%1$d left today</string>
+    <string name="armory_stat_cape_boost">Boost Bonus</string>
 </resources>

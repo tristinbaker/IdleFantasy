@@ -171,7 +171,7 @@ internal fun FiremakingSheet(
                             Column(Modifier.weight(1f)) {
                                 Row(verticalAlignment = Alignment.CenterVertically) {
                                     Text(GameStrings.itemName(context, key), style = MaterialTheme.typography.bodyLarge)
-                                    val questIndicators = activeQuests[ashKey] ?: emptyList()
+                                    val questIndicators = activeQuests["${Skills.FIREMAKING}:$ashKey"] ?: emptyList()
                                     if (questIndicators.isNotEmpty()) {
                                         val categories = questIndicators.groupBy { it.category }
                                         val sortedCategories = categories.entries.sortedBy { it.key }
@@ -265,7 +265,7 @@ internal fun FiremakingSheet(
                 )
             }
             Button(
-                onClick  = { onStart(key, qty) },
+                onClick  = { onStart(key, qty); selectedKey = null },
                 enabled  = !isStarting && maxQty > 0,
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
             ) { Text(stringResource(R.string.firemaking_burn)) }

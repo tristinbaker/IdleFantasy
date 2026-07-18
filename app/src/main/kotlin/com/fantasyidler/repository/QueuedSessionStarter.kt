@@ -469,8 +469,6 @@ class QueuedSessionStarter @Inject constructor(
                     .filterValues { it > 0 }
                 val spell = gameData.spells[bossSpellName]
                 val preferredArrow = bossArrowKey?.takeIf { (inventory[it] ?: 0) > 0 }
-                val bestArrow = preferredArrow ?: ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
-                val arrowBonus = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
                 val orderedBossArrowKeys = if (preferredArrow != null)
                     listOf(preferredArrow) + ARROW_TIERS.reversed().filter { it != preferredArrow && (inventory[it] ?: 0) > 0 }
                     else ARROW_TIERS.filter { (inventory[it] ?: 0) > 0 }
@@ -488,9 +486,10 @@ class QueuedSessionStarter @Inject constructor(
                     combatStyle        = combatStyle,
                     playerRanged       = ((levels[Skills.RANGED] ?: 1) * combatCapeMult).toInt() + (pmBoss[Skills.RANGED] ?: 0) * 5 + (bossPotionBonuses["ranged"] ?: 0),
                     playerMagic        = ((levels[Skills.MAGIC]  ?: 1) * combatCapeMult).toInt() + (pmBoss[Skills.MAGIC]  ?: 0) * 5 + (bossPotionBonuses["magic"]  ?: 0),
-                    arrowStrengthBonus = arrowBonus + totalRangedStrBonus,
+                    rangedGearStrengthBonus = totalRangedStrBonus,
                     spellMaxHit        = (spell?.maxHit ?: 0) + totalMagicDmgBonus,
                     availableArrows    = availableArrows,
+                    arrowStrengthBonuses = ARROW_STRENGTH_BONUS,
                     equippedFood       = availableFood,
                     foodHealValues     = gameData.foodHealValues,
                     blessingDefBonus   = (ChurchRepository.defBonus(flags) * prayerCapeMult).toInt(),
@@ -559,8 +558,6 @@ class QueuedSessionStarter @Inject constructor(
                     else       -> "attack"
                 }
                 val preferredArrow = combatArrowKey?.takeIf { (inventory[it] ?: 0) > 0 }
-                val bestArrow = preferredArrow ?: ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
-                val arrowBonus = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
                 val orderedCombatArrowKeys = if (preferredArrow != null)
                     listOf(preferredArrow) + ARROW_TIERS.reversed().filter { it != preferredArrow && (inventory[it] ?: 0) > 0 }
                     else ARROW_TIERS.filter { (inventory[it] ?: 0) > 0 }
@@ -598,7 +595,7 @@ class QueuedSessionStarter @Inject constructor(
                     combatStyle         = combatStyle,
                     playerRanged        = ((levels[Skills.RANGED] ?: 1) * combatCapeMult).toInt() + (pm[Skills.RANGED] ?: 0) * 5 + (combatPotBonuses["ranged"] ?: 0),
                     playerMagic         = ((levels[Skills.MAGIC]  ?: 1) * combatCapeMult).toInt() + (pm[Skills.MAGIC]  ?: 0) * 5 + (combatPotBonuses["magic"]  ?: 0),
-                    arrowStrengthBonus  = arrowBonus + totalRangedStrBonus,
+                    rangedGearStrengthBonus = totalRangedStrBonus,
                     spellMaxHit         = (spell?.maxHit ?: 0) + totalMagicDmgBonus,
                     agilityLevel        = agilityLevel,
                     agilityPrestige     = pm[Skills.AGILITY] ?: 0,
@@ -606,6 +603,7 @@ class QueuedSessionStarter @Inject constructor(
                     equippedFood        = availableFood,
                     foodHealValues      = gameData.foodHealValues,
                     availableArrows     = availableArrows,
+                    arrowStrengthBonuses = ARROW_STRENGTH_BONUS,
                     runeKey             = queueRuneKey,
                     runeCostPerAttack   = queueRuneCost,
                     availableRunes      = if (queueRuneKey != null) inventory[queueRuneKey] ?: 0 else Int.MAX_VALUE,
@@ -649,8 +647,6 @@ class QueuedSessionStarter @Inject constructor(
                     EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.rangedStrengthBonus ?: 0 } + (weapon?.rangedStrengthBonus ?: 0)
                 } else 0
                 val preferredArrow  = flags.equippedArrows?.takeIf { (inventory[it] ?: 0) > 0 }
-                val bestArrow       = preferredArrow ?: ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
-                val arrowBonus      = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
                 val orderedTowerArrowKeys = if (preferredArrow != null)
                     listOf(preferredArrow) + ARROW_TIERS.reversed().filter { it != preferredArrow && (inventory[it] ?: 0) > 0 }
                     else ARROW_TIERS.filter { (inventory[it] ?: 0) > 0 }
@@ -678,7 +674,7 @@ class QueuedSessionStarter @Inject constructor(
                     combatStyle         = combatStyle,
                     playerRanged        = ((levels[Skills.RANGED] ?: 1) * combatCapeMult).toInt() + (pm[Skills.RANGED] ?: 0) * 5,
                     playerMagic         = ((levels[Skills.MAGIC]  ?: 1) * combatCapeMult).toInt() + (pm[Skills.MAGIC]  ?: 0) * 5,
-                    arrowStrengthBonus  = arrowBonus + totalRangedStrBonus,
+                    rangedGearStrengthBonus = totalRangedStrBonus,
                     spellMaxHit         = (spell?.maxHit ?: 0) + totalMagicDmgBonus,
                     agilityLevel        = agilityLevel,
                     agilityPrestige     = pm[Skills.AGILITY] ?: 0,
@@ -686,6 +682,7 @@ class QueuedSessionStarter @Inject constructor(
                     equippedFood        = availableFood,
                     foodHealValues      = gameData.foodHealValues,
                     availableArrows     = availableArrows,
+                    arrowStrengthBonuses = ARROW_STRENGTH_BONUS,
                     runeKey             = towerRuneKey,
                     runeCostPerAttack   = towerRuneCost,
                     availableRunes      = if (towerRuneKey != null) inventory[towerRuneKey] ?: 0 else Int.MAX_VALUE,
@@ -892,11 +889,11 @@ class QueuedSessionStarter @Inject constructor(
     )
 
     private val ARROW_STRENGTH_BONUS = mapOf(
-        "bronze_arrow"     to 0,
-        "iron_arrow"       to 2,
-        "steel_arrow"      to 4,
-        "mithril_arrow"    to 6,
-        "adamantite_arrow" to 8,
-        "runite_arrow"     to 10,
+        "bronze_arrow"     to 7,
+        "iron_arrow"       to 10,
+        "steel_arrow"      to 16,
+        "mithril_arrow"    to 22,
+        "adamantite_arrow" to 31,
+        "runite_arrow"     to 49,
     )
 }

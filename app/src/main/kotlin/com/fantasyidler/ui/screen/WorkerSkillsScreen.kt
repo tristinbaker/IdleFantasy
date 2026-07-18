@@ -670,7 +670,7 @@ private fun WorkerCraftRecipeRow(
                 if (recipe.outputStrengthBonus > 0) add("+${recipe.outputStrengthBonus} Str")
                 if (recipe.outputDefenseBonus  > 0) add("+${recipe.outputDefenseBonus} Def")
                 if (recipe.outputHealingValue  > 0) add("Heals ${recipe.outputHealingValue} HP")
-                if (recipe.outputDamage        > 0) add("+${recipe.outputDamage} dmg")
+                if (recipe.outputDamage        > 0) add("+${recipe.outputDamage} Ranged Str")
             }
             if (statParts.isNotEmpty()) {
                 Text(

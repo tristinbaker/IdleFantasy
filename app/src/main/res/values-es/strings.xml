@@ -380,7 +380,6 @@
     <string name="combat_fighting">Luchando…</string>
     <string name="combat_log_you_hit">Has golpeado</string>
     <string name="combat_log_hit_you">te golpea</string>
-    <string name="combat_log_dmg">daño</string>
     <string name="combat_log_missed">fallo</string>
     <string name="combat_log_you_missed">Has fallado</string>
     <string name="combat_log_kill">☠ %1$s derrotado</string>
@@ -903,6 +902,9 @@
     <string name="home_town_title">Town</string>
     <string name="home_town_desc">Visita la tienda, la posada, el gremio, la iglesia, el taller del constructor, el maestro cazador y el carnaval</string>
     <string name="guild_dailies_available">Dailies available</string>
+    <string name="guild_not_unlocked">Aún no desbloqueado</string>
+    <string name="guild_dailies_done_today">Diarias completadas hoy</string>
+    <string name="guild_dailies_remaining_today">%1$d restantes hoy</string>
     <string name="guild_do_dailies_hint">Completa misiones diarias para avanzar al siguiente rango</string>
     <string name="guild_name_thieving">Gremio de Ladrones</string>
     <string name="guild_name_mercantile">Merchants Guild</string>
@@ -1378,6 +1380,7 @@
     <string name="armory_stat_attack_speed">Velocidad de ataque</string>
     <string name="armory_stat_cape">Bono XP</string>
     <string name="armory_stat_cape_yield">Bono de rendimiento</string>
+    <string name="armory_stat_cape_boost">Bono de refuerzo</string>
     <string name="armory_source_carnival">Tienda de premios del carnaval</string>
     <string name="armory_source_smithing">Herrería</string>
     <string name="armory_source_crafting">Artesanía</string>
@@ -1560,4 +1563,5 @@
     <string name="home_welcome_greeting">Bienvenido de nuevo,</string>
     <string name="home_welcome_name">¡%1$s!</string>
     <string name="home_welcome_title">El %1$s!</string>
+    <string name="settings_lang_japanese">日本語</string>
 </resources>

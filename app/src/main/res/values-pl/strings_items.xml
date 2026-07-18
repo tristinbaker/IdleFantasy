@@ -614,22 +614,22 @@
     <string name="item_overload_potion_name">Mikstura Przeciążenia</string>
 
     <!-- Ulepszone mikstury -->
-    <string name="item_enhanced_attack_brew_name">Wywar Ataku</string>
-    <string name="item_enhanced_defense_brew_name">Wywar Obrony</string>
-    <string name="item_enhanced_attack_potion_name">Mikstura Ataku</string>
-    <string name="item_enhanced_defense_potion_name">Mikstura Obrony</string>
-    <string name="item_enhanced_onion_brew_name">Wywar z Cebuli</string>
-    <string name="item_enhanced_carrot_brew_name">Wywar z Marchewki</string>
-    <string name="item_enhanced_strength_brew_name">Wywar Siły</string>
-    <string name="item_enhanced_strength_potion_name">Mikstura Siły</string>
-    <string name="item_enhanced_ranging_potion_name">Mikstura Walki Dystansowej</string>
-    <string name="item_enhanced_magic_potion_name">Mikstura Magii</string>
-    <string name="item_enhanced_super_strength_potion_name">Super Mikstura Siły</string>
-    <string name="item_enhanced_super_attack_potion_name">Super Mikstura Ataku</string>
-    <string name="item_enhanced_super_defense_potion_name">Super Mikstura Obrony</string>
-    <string name="item_enhanced_super_ranging_potion_name">Super Mikstura Walki Dystansowej</string>
-    <string name="item_enhanced_super_magic_potion_name">Super Mikstura Magii</string>
-    <string name="item_enhanced_overload_potion_name">Mikstura Przeciążenia</string>
+    <string name="item_enhanced_attack_brew_name">Wzmocniony Wywar Ataku</string>
+    <string name="item_enhanced_defense_brew_name">Wzmocniony Wywar Obrony</string>
+    <string name="item_enhanced_attack_potion_name">Wzmocniona Mikstura Ataku</string>
+    <string name="item_enhanced_defense_potion_name">Wzmocniona Mikstura Obrony</string>
+    <string name="item_enhanced_onion_brew_name">Wzmocniony Wywar z Cebuli</string>
+    <string name="item_enhanced_carrot_brew_name">Wzmocniony Wywar z Marchewki</string>
+    <string name="item_enhanced_strength_brew_name">Wzmocniony Wywar Siły</string>
+    <string name="item_enhanced_strength_potion_name">Wzmocniona Mikstura Siły</string>
+    <string name="item_enhanced_ranging_potion_name">Wzmocniona Mikstura Walki Dystansowej</string>
+    <string name="item_enhanced_magic_potion_name">Wzmocniona Mikstura Magii</string>
+    <string name="item_enhanced_super_strength_potion_name">Wzmocniona Super Mikstura Siły</string>
+    <string name="item_enhanced_super_attack_potion_name">Wzmocniona Super Mikstura Ataku</string>
+    <string name="item_enhanced_super_defense_potion_name">Wzmocniona Super Mikstura Obrony</string>
+    <string name="item_enhanced_super_ranging_potion_name">Wzmocniona Super Mikstura Walki Dystansowej</string>
+    <string name="item_enhanced_super_magic_potion_name">Wzmocniona Super Mikstura Magii</string>
+    <string name="item_enhanced_overload_potion_name">Wzmocniona Mikstura Przeciążenia</string>
 
     <string name="item_any_fish_name">ryba (dowolny rodzaj)</string>
 

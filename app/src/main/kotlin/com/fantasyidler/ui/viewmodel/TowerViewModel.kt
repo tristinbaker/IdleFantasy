@@ -8,6 +8,7 @@ import com.fantasyidler.data.json.DungeonData
 import com.fantasyidler.data.json.EnemyData
 import com.fantasyidler.data.json.EnemySpawn
 import com.fantasyidler.data.json.EquipmentData
+import com.fantasyidler.data.json.SpellData
 import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.OwnedPet
 import com.fantasyidler.data.model.SkillSession
@@ -52,6 +53,12 @@ data class TowerUiState(
     val startingSession: Boolean = false,
     val selectedWeaponSlot: String? = null,
     val equippedWeapons: Map<String, EquipmentData> = emptyMap(),
+    val selectedArrowKey: String? = null,
+    val availableArrows: List<String> = emptyList(),
+    val selectedSpell: SpellData? = null,
+    val availableSpells: List<SpellData> = emptyList(),
+    val selectedPotionKey: String? = null,
+    val availablePotions: Map<String, Int> = emptyMap(),
 )
 
 data class TowerMilestone(
@@ -78,12 +85,12 @@ class TowerViewModel @Inject constructor(
             "steel_arrow", "iron_arrow", "bronze_arrow",
         )
         private val ARROW_STRENGTH_BONUS = mapOf(
-            "bronze_arrow"     to 0,
-            "iron_arrow"       to 2,
-            "steel_arrow"      to 4,
-            "mithril_arrow"    to 6,
-            "adamantite_arrow" to 8,
-            "runite_arrow"     to 10,
+            "bronze_arrow"     to 7,
+            "iron_arrow"       to 10,
+            "steel_arrow"      to 16,
+            "mithril_arrow"    to 22,
+            "adamantite_arrow" to 31,
+            "runite_arrow"     to 49,
         )
 
         private val FLOOR_TIERS: List<Pair<IntRange, List<EnemySpawn>>> = listOf(
@@ -137,6 +144,8 @@ class TowerViewModel @Inject constructor(
         } else {
             val flags: PlayerFlags = try { json.decodeFromString(player.flags) } catch (_: Exception) { PlayerFlags() }
             val equipped: Map<String, String?> = try { json.decodeFromString(player.equipped) } catch (_: Exception) { emptyMap() }
+            val levels: Map<String, Int> = try { json.decodeFromString(player.skillLevels) } catch (_: Exception) { emptyMap() }
+            val inventory: Map<String, Int> = try { json.decodeFromString(player.inventory) } catch (_: Exception) { emptyMap() }
             val equippedWeapons = EquipSlot.WEAPON_SLOTS.mapNotNull { slot ->
                 val key = equipped[slot] ?: return@mapNotNull null
                 val data = gameData.equipment[key] ?: return@mapNotNull null
@@ -152,6 +161,7 @@ class TowerViewModel @Inject constructor(
                 ?: towerSession?.activityKey?.removePrefix("tower_floor_")?.toIntOrNull()
                 ?: flags.towerCurrentFloor
             val enemyStrengthPct = ((hpScalingMult(flags.towerCurrentFloor) - 1f) * 100).roundToInt()
+            val magicLevel = levels[Skills.MAGIC] ?: 1
             extra.copy(
                 isLoading           = false,
                 currentFloor        = flags.towerCurrentFloor,
@@ -163,6 +173,12 @@ class TowerViewModel @Inject constructor(
                 claimedMilestones   = flags.towerMilestonesClaimed,
                 equippedWeapons     = equippedWeapons,
                 selectedWeaponSlot  = extra.selectedWeaponSlot ?: flags.activeWeaponSlot,
+                selectedArrowKey    = extra.selectedArrowKey ?: flags.equippedArrows,
+                availableArrows     = ARROW_TIERS.filter { (inventory[it] ?: 0) > 0 },
+                selectedSpell       = extra.selectedSpell ?: flags.activeSpell?.let { gameData.spells[it] },
+                availableSpells     = gameData.spells.values.filter { it.magicLevelRequired <= magicLevel }.sortedBy { it.magicLevelRequired },
+                selectedPotionKey   = extra.selectedPotionKey ?: flags.activePotionKey?.takeIf { (inventory[it] ?: 0) > 0 },
+                availablePotions    = inventory.filterKeys { it in gameData.potionEffects },
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), TowerUiState())
@@ -303,10 +319,14 @@ class TowerViewModel @Inject constructor(
                     EquipSlot.ARMOR_SLOTS.sumOf { gameData.equipment[equipped[it]]?.magicDamageBonus ?: 0 } + (weapon?.magicDamageBonus ?: 0)
                 } else 0
 
-                val selectedSpell = flags.activeSpell?.let { gameData.spells[it] }
-                val preferredArrow  = flags.equippedArrows?.takeIf { (inventory[it] ?: 0) > 0 }
-                val bestArrow       = preferredArrow ?: ARROW_TIERS.firstOrNull { (inventory[it] ?: 0) > 0 }
-                val arrowStrBonus   = bestArrow?.let { ARROW_STRENGTH_BONUS[it] } ?: 0
+                val selectedSpell = _extra.value.selectedSpell ?: flags.activeSpell?.let { gameData.spells[it] }
+                val preferredArrow  = (_extra.value.selectedArrowKey ?: flags.equippedArrows)?.takeIf { (inventory[it] ?: 0) > 0 }
+
+                val potionKey     = _extra.value.selectedPotionKey
+                val potionBonuses = if (potionKey != null && (inventory[potionKey] ?: 0) > 0) {
+                    playerRepo.consumeItems(mapOf(potionKey to 1))
+                    gameData.potionEffects[potionKey] ?: emptyMap()
+                } else emptyMap()
 
                 val prestigeMap  = flags.skillPrestige
                 val towerHpBonus = flags.towerHpBonus
@@ -348,15 +368,16 @@ class TowerViewModel @Inject constructor(
                     combatStyle         = combatStyle,
                     playerRanged        = (levels[Skills.RANGED] ?: 1) + (prestigeMap[Skills.RANGED] ?: 0) * 5,
                     playerMagic         = (levels[Skills.MAGIC]  ?: 1) + (prestigeMap[Skills.MAGIC]  ?: 0) * 5,
-                    arrowStrengthBonus  = arrowStrBonus + totalRangedStrBonus,
+                    rangedGearStrengthBonus = totalRangedStrBonus,
                     spellMaxHit         = (selectedSpell?.maxHit ?: 0) + totalMagicDmgBonus,
                     agilityLevel        = levels[Skills.AGILITY] ?: 1,
                     agilityPrestige     = prestigeMap[Skills.AGILITY] ?: 0,
                     petBoostPct         = petBoostFor(player.pets),
                     equippedFood        = availableFood,
                     foodHealValues      = foodHeal,
-                    potionBonuses       = emptyMap(),
+                    potionBonuses       = potionBonuses,
                     availableArrows     = availableArrows,
+                    arrowStrengthBonuses = ARROW_STRENGTH_BONUS,
                     runeKey             = runeKey,
                     runeCostPerAttack   = runeCost,
                     attackSpeedSec      = weaponAttackSpeed,
@@ -384,7 +405,7 @@ class TowerViewModel @Inject constructor(
             } catch (e: Exception) {
                 _extra.update { it.copy(snackbarMessage = context.getString(R.string.skill_session_start_failed, e.message ?: "")) }
             } finally {
-                _extra.update { it.copy(startingSession = false) }
+                _extra.update { it.copy(startingSession = false, selectedPotionKey = null) }
             }
         }
     }
@@ -395,6 +416,33 @@ class TowerViewModel @Inject constructor(
             val player = playerRepo.getOrCreatePlayer()
             val flags: PlayerFlags = try { json.decodeFromString(player.flags) } catch (_: Exception) { PlayerFlags() }
             playerRepo.updateFlags(flags.copy(activeWeaponSlot = slot))
+        }
+    }
+
+    fun selectArrow(key: String?) {
+        _extra.update { it.copy(selectedArrowKey = key) }
+        viewModelScope.launch {
+            val player = playerRepo.getOrCreatePlayer()
+            val flags: PlayerFlags = try { json.decodeFromString(player.flags) } catch (_: Exception) { PlayerFlags() }
+            playerRepo.updateFlags(flags.copy(equippedArrows = key))
+        }
+    }
+
+    fun selectSpell(spell: SpellData?) {
+        _extra.update { it.copy(selectedSpell = spell) }
+        viewModelScope.launch {
+            val player = playerRepo.getOrCreatePlayer()
+            val flags: PlayerFlags = try { json.decodeFromString(player.flags) } catch (_: Exception) { PlayerFlags() }
+            playerRepo.updateFlags(flags.copy(activeSpell = spell?.name))
+        }
+    }
+
+    fun selectPotion(key: String?) {
+        _extra.update { it.copy(selectedPotionKey = key) }
+        viewModelScope.launch {
+            val player = playerRepo.getOrCreatePlayer()
+            val flags: PlayerFlags = try { json.decodeFromString(player.flags) } catch (_: Exception) { PlayerFlags() }
+            playerRepo.updateFlags(flags.copy(activePotionKey = key))
         }
     }
 

@@ -49,8 +49,9 @@ fun GameDataRepository.toolEfficiency(itemKey: String?, slot: String, resourceLe
 
 /**
  * Tool efficiency multiplier that shortens a crafting session's duration, keyed by
- * [skillName]/[activityKey] rather than a full recipe object. Only smithing (hammer) and
- * cooking (frying pan) affect duration; other crafting skills return 1.0.
+ * [skillName]/[activityKey] rather than a full recipe object. Only smithing (hammer),
+ * cooking (frying pan), and firemaking (tinderbox) affect duration; other crafting
+ * skills return 1.0.
  */
 fun GameDataRepository.craftDurationEfficiency(skillName: String, activityKey: String, equipped: Map<String, String?>): Float =
     when (skillName) {
@@ -59,6 +60,9 @@ fun GameDataRepository.craftDurationEfficiency(skillName: String, activityKey: S
         } ?: 1.0f
         Skills.COOKING -> cookingRecipes[activityKey]?.levelRequired?.let {
             toolEfficiency(equipped[EquipSlot.FRYING_PAN], EquipSlot.FRYING_PAN, it)
+        } ?: 1.0f
+        Skills.FIREMAKING -> logs[activityKey]?.levelRequired?.let {
+            toolEfficiency(equipped[EquipSlot.TINDERBOX], EquipSlot.TINDERBOX, it)
         } ?: 1.0f
         else -> 1.0f
     }

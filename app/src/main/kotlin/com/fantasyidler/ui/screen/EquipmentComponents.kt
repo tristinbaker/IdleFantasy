@@ -376,7 +376,11 @@ internal fun buildEquipDetail(item: com.fantasyidler.data.json.EquipmentData, co
     if ((item.magicDamageBonus    ?: 0) != 0) parts.add("${context.getString(R.string.profile_stat_magic)} Dmg +${item.magicDamageBonus}")
     item.attackSpeed?.let { parts.add("${context.getString(R.string.armory_stat_attack_speed)} ${"%.1f".format(it)}s") }
     if (item.capeBonus != 0f) {
-        val capeLabelRes = if (item.capeSkill in COMBAT_CAPE_SKILLS) R.string.armory_stat_cape else R.string.armory_stat_cape_yield
+        val capeLabelRes = when {
+            item.capeSkill in COMBAT_CAPE_SKILLS || item.capeSkill == "agility" -> R.string.armory_stat_cape
+            item.capeSkill == "prayer" -> R.string.armory_stat_cape_boost
+            else -> R.string.armory_stat_cape_yield
+        }
         parts.add("${context.getString(capeLabelRes)} +${(item.capeBonus * 100).toInt()}%")
     }
     if (showReq) {

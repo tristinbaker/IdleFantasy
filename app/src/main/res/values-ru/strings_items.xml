@@ -614,22 +614,22 @@
     <string name="item_overload_potion_name">Зелье перегрузки</string>
 
     <!-- Enhanced potions -->
-    <string name="item_enhanced_attack_brew_name">Отвар атаки</string>
-    <string name="item_enhanced_defense_brew_name">Отвар защиты</string>
-    <string name="item_enhanced_attack_potion_name">Зелье атаки</string>
-    <string name="item_enhanced_defense_potion_name">Зелье защиты</string>
-    <string name="item_enhanced_onion_brew_name">Луковый отвар</string>
-    <string name="item_enhanced_carrot_brew_name">Морковный отвар</string>
-    <string name="item_enhanced_strength_brew_name">Отвар силы</string>
-    <string name="item_enhanced_strength_potion_name">Зелье силы</string>
-    <string name="item_enhanced_ranging_potion_name">Зелье стрельбы</string>
-    <string name="item_enhanced_magic_potion_name">Зелье магии</string>
-    <string name="item_enhanced_super_strength_potion_name">Супер-зелье силы</string>
-    <string name="item_enhanced_super_attack_potion_name">Супер-зелье атаки</string>
-    <string name="item_enhanced_super_defense_potion_name">Супер-зелье защиты</string>
-    <string name="item_enhanced_super_ranging_potion_name">Супер-зелье стрельбы</string>
-    <string name="item_enhanced_super_magic_potion_name">Супер-зелье магии</string>
-    <string name="item_enhanced_overload_potion_name">Зелье перегрузки</string>
+    <string name="item_enhanced_attack_brew_name">Усиленный отвар атаки</string>
+    <string name="item_enhanced_defense_brew_name">Усиленный отвар защиты</string>
+    <string name="item_enhanced_attack_potion_name">Усиленное зелье атаки</string>
+    <string name="item_enhanced_defense_potion_name">Усиленное зелье защиты</string>
+    <string name="item_enhanced_onion_brew_name">Усиленный луковый отвар</string>
+    <string name="item_enhanced_carrot_brew_name">Усиленный морковный отвар</string>
+    <string name="item_enhanced_strength_brew_name">Усиленный отвар силы</string>
+    <string name="item_enhanced_strength_potion_name">Усиленное зелье силы</string>
+    <string name="item_enhanced_ranging_potion_name">Усиленное зелье стрельбы</string>
+    <string name="item_enhanced_magic_potion_name">Усиленное зелье магии</string>
+    <string name="item_enhanced_super_strength_potion_name">Усиленное супер-зелье силы</string>
+    <string name="item_enhanced_super_attack_potion_name">Усиленное супер-зелье атаки</string>
+    <string name="item_enhanced_super_defense_potion_name">Усиленное супер-зелье защиты</string>
+    <string name="item_enhanced_super_ranging_potion_name">Усиленное супер-зелье стрельбы</string>
+    <string name="item_enhanced_super_magic_potion_name">Усиленное супер-зелье магии</string>
+    <string name="item_enhanced_overload_potion_name">Усиленное зелье перегрузки</string>
 
     <string name="item_any_fish_name">рыба (любого вида)</string>
 

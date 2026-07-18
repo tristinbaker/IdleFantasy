@@ -336,7 +336,7 @@ private fun CraftRecipeRow(
                 if (recipe.outputStrengthBonus > 0) add("+${recipe.outputStrengthBonus} ${context.getString(R.string.profile_stat_str)}")
                 if (recipe.outputDefenseBonus  > 0) add("+${recipe.outputDefenseBonus} ${context.getString(R.string.profile_stat_def)}")
                 if (recipe.outputHealingValue  > 0) add(context.getString(R.string.combat_heals_hp, recipe.outputHealingValue))
-                if (recipe.outputDamage        > 0) add("+${recipe.outputDamage} ${context.getString(R.string.combat_log_dmg)}")
+                if (recipe.outputDamage        > 0) add("+${recipe.outputDamage} ${context.getString(R.string.armory_stat_ranged_str)}")
             }
             if (statParts.isNotEmpty()) {
                 Text(

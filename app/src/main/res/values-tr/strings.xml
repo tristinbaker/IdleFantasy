@@ -394,7 +394,6 @@
     <string name="combat_fighting">Savaşıyor…</string>
     <string name="combat_log_you_hit">Vurdun</string>
     <string name="combat_log_hit_you">sana vurdu</string>
-    <string name="combat_log_dmg">hasar</string>
     <string name="combat_log_missed">kaçırdı</string>
     <string name="combat_log_you_missed">Iskaladın</string>
     <string name="combat_log_kill">☠ %1$s yenildi</string>
@@ -908,6 +907,9 @@
     <string name="home_town_title">Town</string>
     <string name="home_town_desc">Dükkanı, hanı, loncayı, kiliseyi, usta atölyesini, avcı ustasını ve panayırı ziyaret edin</string>
     <string name="guild_dailies_available">Dailies available</string>
+    <string name="guild_not_unlocked">Henüz açılmadı</string>
+    <string name="guild_dailies_done_today">Bugünkü günlükler tamamlandı</string>
+    <string name="guild_dailies_remaining_today">Bugün %1$d kaldı</string>
     <string name="guild_do_dailies_hint">Bir sonraki rütbeye ilerlemek için günlük görevleri tamamlayın</string>
     <string name="guild_name_thieving">Hirsizlar Loncasi</string>
     <string name="guild_name_mercantile">Merchants Guild</string>
@@ -1383,6 +1385,7 @@
     <string name="armory_stat_attack_speed">Saldırı hızı</string>
     <string name="armory_stat_cape">XP bonusu</string>
     <string name="armory_stat_cape_yield">Verim Bonusu</string>
+    <string name="armory_stat_cape_boost">Güçlendirme Bonusu</string>
     <string name="armory_source_carnival">Karnaval ödül mağazası</string>
     <string name="armory_source_smithing">Demircilik</string>
     <string name="armory_source_crafting">El sanatları</string>
@@ -1565,4 +1568,5 @@
     <string name="home_welcome_greeting">Tekrar hoş geldin,</string>
     <string name="home_welcome_name">%1$s!</string>
     <string name="home_welcome_title">%1$s!</string>
+    <string name="settings_lang_japanese">日本語</string>
 </resources>

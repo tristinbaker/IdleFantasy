@@ -14,7 +14,7 @@
       }
     },
     "address": "https://idlefantasy.tristinbaker.xyz/fdroid/repo",
-    "timestamp": 1784118670816,
+    "timestamp": 1784201000874,
     "categories": {
       "Games": {
         "name": {
@@ -31,7 +31,7 @@
           "Games"
         ],
         "issueTracker": "https://github.com/tristinbaker/IdleFantasy/issues",
-        "lastUpdated": 1784118642744,
+        "lastUpdated": 1784200969163,
         "license": "GPL-3.0-only",
         "sourceCode": "https://github.com/tristinbaker/IdleFantasy",
         "screenshots": {
@@ -140,6 +140,56 @@
         "preferredSigner": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
       },
       "versions": {
+        "c424f62cdc10d7b639f75689e3feb7e9b2231f3c980af755b704b05bf77f9cf5": {
+          "added": 1784200969163,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_114.apk",
+            "sha256": "c424f62cdc10d7b639f75689e3feb7e9b2231f3c980af755b704b05bf77f9cf5",
+            "size": 7678307
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.12.2",
+            "versionCode": 114,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Re-added the Home screen stats bar (Combat Level, Total Level, Coins), redesigned as a single thin row instead of the previous stacked card, with compact Church blessing and 2x XP boost remaining-time indicators shown underneath when active\n• Added a \"Stats Bar\" toggle in Settings to hide the Home screen stats bar entirely\n• Fix: collecting a completed Dungeon, Boss, or Infinite Tower session could silently pay out zero XP and loot and, for Tower floors, fail to advance to the next floor; this"
+          }
+        },
         "6ab27314975d6ad7ac57c97877b9ff61c5c9c0b040a8a78e9269dbb2494bb8ac": {
           "added": 1784118642744,
           "file": {

@@ -416,7 +416,7 @@ class SkillsViewModel @Inject constructor(
             }
 
             playerRepo.consumeItems(mapOf(logKey to actualQty))
-            _uiState.update { it.copy(startingSession = true, sheetSkill = null) }
+            _uiState.update { it.copy(startingSession = true) }
             try {
                 playerRepo.enqueueAction(action)
                 queuedSessionStarter.startNextQueued()
@@ -477,7 +477,7 @@ class SkillsViewModel @Inject constructor(
                 return@launch
             }
 
-            _uiState.update { it.copy(startingSession = true, sheetSkill = null) }
+            _uiState.update { it.copy(startingSession = true) }
             try {
                 val xpMap:   Map<String, Long> = json.decodeFromString(player.skillXp)
                 val levels:  Map<String, Int>  = json.decodeFromString(player.skillLevels)
@@ -580,7 +580,7 @@ class SkillsViewModel @Inject constructor(
                 return@launch
             }
 
-            _uiState.update { it.copy(startingSession = true, sheetSkill = null) }
+            _uiState.update { it.copy(startingSession = true) }
             try {
                 val xpMap:   Map<String, Long> = json.decodeFromString(player.skillXp)
                 val levels:  Map<String, Int>  = json.decodeFromString(player.skillLevels)
@@ -683,7 +683,6 @@ class SkillsViewModel @Inject constructor(
                 if (enqueued) queuedSessionStarter.startNextQueued()
                 _uiState.update {
                     it.copy(
-                        sheetSkill = null,
                         snackbarMessage = if (enqueued)
                             context.getString(R.string.skill_added_to_queue_activity, "Thieving", npc.displayName)
                         else
@@ -692,7 +691,7 @@ class SkillsViewModel @Inject constructor(
                 }
                 return@launch
             }
-            _uiState.update { it.copy(startingSession = true, sheetSkill = null) }
+            _uiState.update { it.copy(startingSession = true) }
             try {
                 val player = playerRepo.getOrCreatePlayer()
                 val levels: Map<String, Int> = json.decodeFromString(player.skillLevels)
@@ -779,7 +778,6 @@ class SkillsViewModel @Inject constructor(
                 if (enqueued) queuedSessionStarter.startNextQueued()
                 _uiState.update {
                     it.copy(
-                        sheetSkill = null,
                         snackbarMessage = if (enqueued) {
                             if (activityKey.isNotEmpty())
                                 context.getString(R.string.skill_added_to_queue_activity, displayName, actDisplay)
@@ -792,7 +790,7 @@ class SkillsViewModel @Inject constructor(
                 }
                 return@launch
             }
-            _uiState.update { it.copy(startingSession = true, sheetSkill = null) }
+            _uiState.update { it.copy(startingSession = true) }
             try {
                 val result = simulate()
                 val framesJson = json.encodeToString(
@@ -1065,7 +1063,10 @@ class SkillsViewModel @Inject constructor(
                 }
                 else -> true
             }
-            result.getOrPut(key) { mutableListOf() }.add(QuestIndicator(category, isCompletable))
+            // Prefixed by skill: some item keys (e.g. "ashes") are shared between skills
+            // (Firemaking byproduct vs. Prayer buriable), and would otherwise leak
+            // indicators across their sheets (issue #1014).
+            result.getOrPut("$skill:$key") { mutableListOf() }.add(QuestIndicator(category, isCompletable))
         }
 
         fun checkAndAdd(questType: String, questSkill: String, questTarget: String, questAmount: Int, questProgressVal: Int, category: QuestCategory) {

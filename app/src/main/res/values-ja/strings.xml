@@ -464,7 +464,6 @@
     <string name="combat_fighting">戦闘中…</string>
     <string name="combat_log_you_hit">あなたの攻撃:</string>
     <string name="combat_log_hit_you">の攻撃を受けました:</string>
-    <string name="combat_log_dmg">ダメージ</string>
     <string name="combat_log_missed">ミス</string>
     <string name="combat_log_you_missed">あなたの攻撃はミスしました</string>
     <string name="combat_log_kill">☠ %1$s を討伐</string>

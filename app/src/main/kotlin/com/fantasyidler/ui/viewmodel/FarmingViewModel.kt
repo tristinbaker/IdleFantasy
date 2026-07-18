@@ -183,10 +183,7 @@ class FarmingViewModel @Inject constructor(
                               else context.getString(R.string.farming_no_seeds_inventory, seedName)
                     _extra.update { it.copy(snackbarMessage = msg) }
                 } else {
-                    var plantedCount = 0
-                    for (patchNum in emptyPatches) {
-                        if (farmingRepo.plantCrop(patchNum, crop, ashKey)) plantedCount++ else break
-                    }
+                    val plantedCount = farmingRepo.plantCrops(emptyPatches, crop, ashKey)
                     val msg = if (plantedCount == 0) {
                         if (emptyPatches.isEmpty()) context.getString(R.string.farming_no_empty_patches)
                         else context.getString(R.string.farming_no_seeds_inventory, seedName)

@@ -90,7 +90,7 @@
     <string name="label_rewards">Récompenses</string>
     <string name="label_your_level">Votre niveau</string>
     <string name="label_xp_to_next">XP pour passer au niveau supérieur</string>
-    <string name="label_total_xp">Total XP</string>
+    <string name="label_total_xp">XP totale</string>
     <string name="label_quantity">Quantité</string>
     <string name="label_price">Prix</string>
     <string name="label_available">Disponible</string>
@@ -417,7 +417,6 @@
     <string name="combat_fighting">Combat en cours…</string>
     <string name="combat_log_you_hit">Vous infligez</string>
     <string name="combat_log_hit_you">vous inflige</string>
-    <string name="combat_log_dmg">dégâts</string>
     <string name="combat_log_missed">a raté</string>
     <string name="combat_log_you_missed">Vous avez raté</string>
     <string name="combat_log_kill">☠ %1$s vaincu</string>
@@ -914,6 +913,9 @@
     <string name="home_town_title">Ville</string>
     <string name="home_town_desc">Visitez la boutique, l\'auberge, les guildes, l\'église, l\'atelier, le mentor et la kermesse</string>
     <string name="guild_dailies_available">Quêtes quotidiennes disponibles</string>
+    <string name="guild_not_unlocked">Pas encore débloqué</string>
+    <string name="guild_dailies_done_today">Quêtes quotidiennes terminées</string>
+    <string name="guild_dailies_remaining_today">%1$d restantes aujourd\'hui</string>
     <string name="guild_do_dailies_hint">Faites des quêtes quotidiennes pour progresser au rang suivant</string>
     <string name="guild_quest_gate_blocked">Accomplir des quêtes pour monter en grade</string>
     <string name="guild_quest_required">Quête nécessaire pour progresser</string>
@@ -1376,7 +1378,8 @@
     <string name="armory_stat_attack_speed">Vitesse d\'Attaque</string>
     <string name="armory_stat_cape">Bonus d\'Expérience</string>
     <string name="armory_stat_cape_yield">Bonus de rendement</string>
-    <string name="armory_source_carnival">Boutique des prix de la kermesse</string>
+    <string name="armory_stat_cape_boost">Bonus de renforcement</string>
+    <string name="armory_source_carnival">Boutique des prix du carnaval</string>
     <string name="armory_source_smithing">Forge</string>
     <string name="armory_source_crafting">Artisanat</string>
     <string name="armory_source_fletching">Art du bois</string>
@@ -1400,7 +1403,7 @@
     <string name="shop_sold_junk">Objets inutiles vendus pour %1$s pièces</string>
     <string name="shop_no_old_equipment">Pas d\'équipement obsolète à vendre</string>
     <string name="shop_sold_old_equipment">Équipement obsolète vendu pour %1$s pièces</string>
-    <string name="shop_bulk_sell_total">Total</string>
+    <string name="shop_bulk_sell_total">Totale</string>
     <string name="shop_bulk_sell_confirm">Tout vendre</string>
     <string name="shop_xp_boost_activated">Bonus XP 2× activé pour %1$dh!</string>
     <string name="shop_not_enough_in_inventory">Pas assez dans l\'inventaire</string>
@@ -1558,4 +1561,5 @@
     <string name="home_welcome_greeting">Bon retour,</string>
     <string name="home_welcome_name">%1$s !</string>
     <string name="home_welcome_title">Le %1$s !</string>
+    <string name="settings_lang_japanese">日本語</string>
 </resources>

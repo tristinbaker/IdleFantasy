@@ -380,6 +380,60 @@ class GuildRepository @Inject constructor(
     private fun isGuildUnlocked(guild: String, completedQuestIds: Set<String>): Boolean =
         gameData.guildQuests.values.any { it.guild == guild && it.id in completedQuestIds }
 
+    /**
+     * Whether the player's current skill level can actually work toward this daily — not just
+     * whether the guild's rank (from completed quests) allows it. Guild rank never resets on
+     * skill prestige, so without this a high-rank guild could keep assigning dailies the player
+     * can no longer perform right after resetting that skill's level (issue #1015).
+     */
+    private fun isTemplateReachable(template: GuildDailyTemplate, skillLevels: Map<String, Int>): Boolean {
+        fun level(skill: String) = skillLevels[skill] ?: 1
+        return when {
+            template.guild == "farming" && template.type == "gather" ->
+                level("farming") >= (gameData.crops[template.target]?.levelRequired ?: 1)
+            template.guild == "thieving" && template.type == "pickpocket" ->
+                level("thieving") >= (gameData.thievingNpcs[template.target]?.levelRequired ?: 1)
+            template.guild == "fletching" && template.type == "craft" -> {
+                val recipeLevel = gameData.fletchingRecipes[template.target]?.levelRequired ?: 1
+                if (level("fletching") < recipeLevel) return false
+                if (template.target.endsWith("_arrow")) {
+                    val tipsLevel = gameData.smithingRecipes[template.target + "_tip"]?.levelRequired ?: 1
+                    level("smithing") >= tipsLevel
+                } else true
+            }
+            template.guild == "herblore" && template.type == "craft" ->
+                level("herblore") >= (gameData.herbloreRecipes[template.target]?.levelRequired ?: 1)
+            template.guild == "smithing" && template.type == "craft" ->
+                level("smithing") >= (gameData.smithingRecipes[template.target]?.levelRequired ?: 1)
+            template.guild == "cooking" && template.type == "craft" ->
+                level("cooking") >= (gameData.cookingRecipes[template.target]?.levelRequired ?: 1)
+            template.guild == "crafting" && template.type == "craft" ->
+                level("crafting") >= (gameData.craftingRecipes[template.target]?.levelRequired ?: 1)
+            template.guild == "runecrafting" && template.type == "craft" ->
+                level("runecrafting") >= (gameData.runes[template.target]?.levelRequired ?: 1)
+            template.guild == "mining" && template.type == "gather" ->
+                level("mining") >= (gameData.ores[template.target]?.levelRequired ?: 1)
+            template.guild == "fishing" && template.type == "gather" ->
+                level("fishing") >= (gameData.fish[template.target]?.levelRequired ?: 1)
+            template.guild == "woodcutting" && template.type == "gather" -> {
+                val treeLevel = gameData.trees.values.firstOrNull { it.logName == template.target }?.levelRequired ?: 1
+                level("woodcutting") >= treeLevel
+            }
+            template.guild == "firemaking" && template.type == "craft" -> {
+                val ashToLog = mapOf(
+                    "ashes" to "log", "oak_ashes" to "oak_log", "willow_ashes" to "willow_log",
+                    "maple_ashes" to "maple_log", "yew_ashes" to "yew_log",
+                    "magic_ashes" to "magic_log", "redwood_ashes" to "redwood_log",
+                )
+                val logKey = ashToLog[template.target] ?: template.target
+                level("firemaking") >= (gameData.logs[logKey]?.levelRequired ?: 1)
+            }
+            template.guild == "agility" && template.type == "sessions" ->
+                level("agility") >= (gameData.agilityCourses[template.target]?.levelRequired ?: 1)
+            else -> true
+        }
+    }
+
     // -------------------------------------------------------------------------
     // Guild daily data
     // -------------------------------------------------------------------------
@@ -453,11 +507,6 @@ class GuildRepository @Inject constructor(
         }
         val rng = Random(today.toLong())
         val selectedIds = mutableListOf<String>()
-        val farmingLevel   = skillLevels["farming"]   ?: 1
-        val thievingLevel  = skillLevels["thieving"]  ?: 1
-        val fletchingLevel = skillLevels["fletching"] ?: 1
-        val smithingLevel  = skillLevels["smithing"]  ?: 1
-        val herbloreLevel  = skillLevels["herblore"]  ?: 1
 
         for (guild in ALL_GUILDS) {
             if (!isGuildUnlocked(guild, completedQuestIds)) continue
@@ -465,32 +514,7 @@ class GuildRepository @Inject constructor(
             val effectiveLevel = maxOf(level, 1)
             val eligible = gameData.guildDailyPool
                 .filter { it.guild == guild && effectiveLevel >= it.guildLevelMin && effectiveLevel <= it.guildLevelMax }
-                .filter { template ->
-                    when {
-                        template.guild == "farming" && template.type == "gather" -> {
-                            val cropLevel = gameData.crops[template.target]?.levelRequired ?: 1
-                            farmingLevel >= cropLevel
-                        }
-                        template.guild == "thieving" && template.type == "pickpocket" -> {
-                            val npcLevel = gameData.thievingNpcs[template.target]?.levelRequired ?: 1
-                            thievingLevel >= npcLevel
-                        }
-                        template.guild == "fletching" && template.type == "craft" -> {
-                            val recipeLevel = gameData.fletchingRecipes[template.target]?.levelRequired ?: 1
-                            if (fletchingLevel < recipeLevel) return@filter false
-                            if (template.target.endsWith("_arrow")) {
-                                val tipsKey   = template.target + "_tip"
-                                val tipsLevel = gameData.smithingRecipes[tipsKey]?.levelRequired ?: 1
-                                smithingLevel >= tipsLevel
-                            } else true
-                        }
-                        template.guild == "herblore" && template.type == "craft" -> {
-                            val recipeLevel = gameData.herbloreRecipes[template.target]?.levelRequired ?: 1
-                            herbloreLevel >= recipeLevel
-                        }
-                        else -> true
-                    }
-                }
+                .filter { isTemplateReachable(it, skillLevels) }
                 .shuffled(rng)
             selectedIds.addAll(eligible.take(4).map { it.id })
         }
@@ -563,11 +587,6 @@ class GuildRepository @Inject constructor(
         val rng = Random(today.toLong())
         val pool = gameData.guildDailyPool.associateBy { it.id }
         val guildsWithDailies = flags.guildDailyIds.mapNotNull { pool[it]?.guild }.toSet()
-        val farmingLevel   = skillLevels["farming"]   ?: 1
-        val thievingLevel  = skillLevels["thieving"]  ?: 1
-        val fletchingLevel = skillLevels["fletching"] ?: 1
-        val smithingLevel  = skillLevels["smithing"]  ?: 1
-        val herbloreLevel  = skillLevels["herblore"]  ?: 1
         val newIds = mutableListOf<String>()
         for (guild in ALL_GUILDS) {
             if (guild in guildsWithDailies) continue
@@ -575,32 +594,7 @@ class GuildRepository @Inject constructor(
             val effectiveLevel = maxOf(guildLevel(guild, flags.guildDailyTierCounts, completedQuestIds), 1)
             val eligible = gameData.guildDailyPool
                 .filter { it.guild == guild && effectiveLevel >= it.guildLevelMin && effectiveLevel <= it.guildLevelMax }
-                .filter { template ->
-                    when {
-                        template.guild == "farming" && template.type == "gather" -> {
-                            val cropLevel = gameData.crops[template.target]?.levelRequired ?: 1
-                            farmingLevel >= cropLevel
-                        }
-                        template.guild == "thieving" && template.type == "pickpocket" -> {
-                            val npcLevel = gameData.thievingNpcs[template.target]?.levelRequired ?: 1
-                            thievingLevel >= npcLevel
-                        }
-                        template.guild == "fletching" && template.type == "craft" -> {
-                            val recipeLevel = gameData.fletchingRecipes[template.target]?.levelRequired ?: 1
-                            if (fletchingLevel < recipeLevel) return@filter false
-                            if (template.target.endsWith("_arrow")) {
-                                val tipsKey   = template.target + "_tip"
-                                val tipsLevel = gameData.smithingRecipes[tipsKey]?.levelRequired ?: 1
-                                smithingLevel >= tipsLevel
-                            } else true
-                        }
-                        template.guild == "herblore" && template.type == "craft" -> {
-                            val recipeLevel = gameData.herbloreRecipes[template.target]?.levelRequired ?: 1
-                            herbloreLevel >= recipeLevel
-                        }
-                        else -> true
-                    }
-                }
+                .filter { isTemplateReachable(it, skillLevels) }
                 .shuffled(rng)
             newIds.addAll(eligible.take(4).map { it.id })
         }

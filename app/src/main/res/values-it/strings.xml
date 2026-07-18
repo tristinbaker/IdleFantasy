@@ -418,6 +418,9 @@
     <string name="home_town_title">Villaggio</string>
     <string name="home_town_desc">Visita l\'emporio, la locanda, la gilda, la chiesa, l\'officina del costruttore, il Sicario Specialista e la fiera.</string>
     <string name="guild_dailies_available">Giornaliere disponibili</string>
+    <string name="guild_not_unlocked">Non ancora sbloccato</string>
+    <string name="guild_dailies_done_today">Giornaliere completate oggi</string>
+    <string name="guild_dailies_remaining_today">%1$d rimaste oggi</string>
     <string name="guild_do_dailies_hint">Completa le missioni giornaliere per avanzare di rango</string>
     <string name="guild_quest_gate_blocked">Avanza di rango completando missioni</string>
     <string name="guild_quest_required">Missione richiesta per avanzare di rango</string>
@@ -463,7 +466,6 @@
     <string name="combat_fighting">In Battaglia…</string>
     <string name="combat_log_you_hit">Hai colpito</string>
     <string name="combat_log_hit_you">ti ha colpito</string>
-    <string name="combat_log_dmg">danno</string>
     <string name="combat_log_missed">manca il bersaglio</string>
     <string name="combat_log_you_missed">Hai mancato</string>
     <string name="combat_log_kill">☠ %1$s sconfitto</string>
@@ -1416,6 +1418,7 @@
     <string name="armory_stat_attack_speed">Velocità di attacco</string>
     <string name="armory_stat_cape">Bonus XP</string>
     <string name="armory_stat_cape_yield">Bonus rendimento</string>
+    <string name="armory_stat_cape_boost">Bonus potenziamento</string>
     <string name="armory_source_carnival">Negozio premi fiera</string>
     <string name="armory_source_smithing">Forgia</string>
     <string name="armory_source_crafting">Oreficeria</string>

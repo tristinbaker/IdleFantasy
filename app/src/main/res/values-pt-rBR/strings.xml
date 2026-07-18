@@ -417,6 +417,9 @@
     <string name="home_town_title">Cidade</string>
     <string name="home_town_desc">Visite a loja, a hospedaria, a guilda, a igreja, a oficina do construtor, o mestre caçador e o carnaval</string>
     <string name="guild_dailies_available">Diárias disponíveis</string>
+    <string name="guild_not_unlocked">Ainda não desbloqueado</string>
+    <string name="guild_dailies_done_today">Diárias concluídas hoje</string>
+    <string name="guild_dailies_remaining_today">%1$d restantes hoje</string>
     <string name="guild_do_dailies_hint">Faça as diárias para avançar para o próximo nível</string>
     <string name="guild_quest_gate_blocked">Complete missões para avançar seu ranking</string>
     <string name="guild_quest_required">Missão necessária para avançar</string>
@@ -462,7 +465,6 @@
     <string name="combat_fighting">Lutando…</string>
     <string name="combat_log_you_hit">Você acertou</string>
     <string name="combat_log_hit_you">acertou você</string>
-    <string name="combat_log_dmg">dano</string>
     <string name="combat_log_missed">errou</string>
     <string name="combat_log_you_missed">Você errou</string>
     <string name="combat_log_kill">☠ %1$s derrotado</string>
@@ -1409,6 +1411,7 @@
     <string name="armory_stat_attack_speed">Velocidade de Ataque</string>
     <string name="armory_stat_cape">Bônus de XP</string>
     <string name="armory_stat_cape_yield">Bônus de Rendimento</string>
+    <string name="armory_stat_cape_boost">Bônus de Reforço</string>
     <string name="armory_source_carnival">Loja de Prêmios do Carnaval</string>
     <string name="armory_source_smithing">Ferraria</string>
     <string name="armory_source_crafting">Artesanato</string>

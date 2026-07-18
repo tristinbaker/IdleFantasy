@@ -158,7 +158,7 @@ internal fun AgilitySheet(
                         isStarting       = isStarting,
                         hasActiveSession = hasActiveSession,
                         isQueueFull      = isQueueFull,
-                        questIndicators  = activeQuests[key] ?: emptyList(),
+                        questIndicators  = activeQuests["${Skills.AGILITY}:$key"] ?: emptyList(),
                         onClick          = { selectedKey = key },
                     )
                 }

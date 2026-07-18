@@ -34,7 +34,7 @@ object CombatSimulator {
         combatStyle: String = "melee",
         playerRanged: Int = 1,
         playerMagic: Int = 1,
-        arrowStrengthBonus: Int = 0,
+        rangedGearStrengthBonus: Int = 0,
         spellMaxHit: Int = 0,
         agilityLevel: Int = 1,
         agilityPrestige: Int = 0,
@@ -43,6 +43,7 @@ object CombatSimulator {
         foodHealValues: Map<String, Int> = emptyMap(),
         potionBonuses: Map<String, Int> = emptyMap(),
         availableArrows: Map<String, Int> = emptyMap(),
+        arrowStrengthBonuses: Map<String, Int> = emptyMap(),
         runeKey: String? = null,
         runeCostPerAttack: Int = 1,
         availableRunes: Int = Int.MAX_VALUE,
@@ -98,14 +99,15 @@ object CombatSimulator {
             val enemy    = enemies[enemyKey] ?: continue
 
             // --- Player combat stats for this enemy ---
-            val playerMaxHit: Int
+            // Ranged max hit is recomputed per shot below (not here), since it depends on
+            // whichever arrow tier is actually being fired that tick (issue #1018).
+            var playerMaxHit: Int
             val playerEffAtk: Int
             val enemyDefStat: Int
 
             when (combatStyle) {
                 "ranged" -> {
-                    val effStr   = effRanged + arrowStrengthBonus
-                    playerMaxHit = max(1, 1 + effStr * (arrowStrengthBonus + 64) / 640)
+                    playerMaxHit = rangedMaxHit(effRanged, rangedGearStrengthBonus, 0)
                     playerEffAtk = effRanged + weaponAttackBonus
                     enemyDefStat = enemy.defensiveStats.rangedDefense
                 }
@@ -160,6 +162,7 @@ object CombatSimulator {
                             val key = arrowTiers[arrowTierIdx].first
                             arrowsLeft--
                             frameArrows[key] = (frameArrows[key] ?: 0) + 1
+                            playerMaxHit = rangedMaxHit(effRanged, rangedGearStrengthBonus, arrowStrengthBonuses[key] ?: 0)
                             if (rnd.nextDouble() < playerHitChance) rnd.nextInt(0, playerMaxHit + 1) else 0
                         } else 0
                     }
@@ -282,6 +285,13 @@ object CombatSimulator {
     // Private helpers
     // ------------------------------------------------------------------
 
+    /** Ranged max hit for the arrow currently being fired — [arrowStrengthBonus] varies per shot, [gearStrengthBonus] doesn't. */
+    private fun rangedMaxHit(effRanged: Int, gearStrengthBonus: Int, arrowStrengthBonus: Int): Int {
+        val strBonus = gearStrengthBonus + arrowStrengthBonus
+        val effStr   = effRanged + strBonus
+        return max(1, 1 + effStr * (strBonus + 64) / 640)
+    }
+
     private fun distributeXp(totalXp: Long, style: String): Map<String, Long> {
         val hp   = (totalXp * 0.15).toLong()
         val def  = (totalXp * 0.15).toLong()
@@ -317,9 +327,10 @@ object CombatSimulator {
         combatStyle: String = "melee",
         playerRanged: Int = 1,
         playerMagic: Int = 1,
-        arrowStrengthBonus: Int = 0,
+        rangedGearStrengthBonus: Int = 0,
         spellMaxHit: Int = 0,
         availableArrows: Map<String, Int> = emptyMap(),
+        arrowStrengthBonuses: Map<String, Int> = emptyMap(),
         equippedFood: Map<String, Int> = emptyMap(),
         foodHealValues: Map<String, Int> = emptyMap(),
         blessingDefBonus: Int = 0,
@@ -331,13 +342,14 @@ object CombatSimulator {
     ): List<SessionFrame> {
         val speed = attackSpeedSec.coerceIn(1.2, BASE_ATTACK_SPEED_SEC)
         val ticksPerFrame = playerTicksPerFrame(speed)
-        val playerMax: Int
+        // Ranged max hit is recomputed per shot below (not here), since it depends on
+        // whichever arrow tier is actually being fired that tick (issue #1018).
+        var playerMax: Int
         val effAtk: Int
         val bossDefence: Int
         when (combatStyle) {
             "ranged" -> {
-                val effStr = playerRanged + arrowStrengthBonus
-                playerMax  = max(1, 1 + effStr * (arrowStrengthBonus + 64) / 640)
+                playerMax  = rangedMaxHit(playerRanged, rangedGearStrengthBonus, 0)
                 effAtk     = playerRanged + weaponAttackBonus
                 bossDefence = boss.defensiveStats.rangedDefense
             }
@@ -407,6 +419,7 @@ object CombatSimulator {
                             val key = arrowTiers[arrowTierIdx].first
                             arrowsLeft--
                             frameArrows[key] = (frameArrows[key] ?: 0) + 1
+                            playerMax = rangedMaxHit(playerRanged, rangedGearStrengthBonus, arrowStrengthBonuses[key] ?: 0)
                             if (rnd.nextDouble() < playerHitChance) rnd.nextInt(0, playerMax + 1) else 0
                         } else 0
                     }

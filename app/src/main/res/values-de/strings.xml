@@ -416,6 +416,9 @@
     <string name="home_town_title">Stadt</string>
     <string name="home_town_desc">Besuche den Laden, die Herberge, die Gilde, die Kirche, die Bauwerkstatt, den Trophäensammler und den Jahrmarkt</string>
     <string name="guild_dailies_available">Tagesaufgaben verfügbar</string>
+    <string name="guild_not_unlocked">Noch nicht freigeschaltet</string>
+    <string name="guild_dailies_done_today">Tagesaufgaben heute erledigt</string>
+    <string name="guild_dailies_remaining_today">%1$d heute übrig</string>
     <string name="guild_do_dailies_hint">Erledigt Tagesaufgaben, um in den nächsten Rang aufzusteigen</string>
     <string name="guild_quest_gate_blocked">Schließt Missionen ab, um im Rang aufzusteigen</string>
     <string name="guild_quest_required">Mission benötigt, um voranzukommen</string>
@@ -456,7 +459,6 @@
     <string name="combat_fighting">Kämpfen…</string>
     <string name="combat_log_you_hit">Ihr habt getroffen</string>
     <string name="combat_log_hit_you">traf Euch</string>
-    <string name="combat_log_dmg">SCH</string>
     <string name="combat_log_missed">daneben</string>
     <string name="combat_log_you_missed">Daneben</string>
     <string name="combat_log_kill">☠ %1$s besiegt</string>
@@ -1373,6 +1375,7 @@
     <string name="armory_stat_attack_speed">Angriffsgeschwindigkeit</string>
     <string name="armory_stat_cape">EP-Bonus</string>
     <string name="armory_stat_cape_yield">Ertragsbonus</string>
+    <string name="armory_stat_cape_boost">Verstärkungsbonus</string>
     <string name="armory_source_carnival">Karnevals-Preisladen</string>
     <string name="armory_source_smithing">Schmieden</string>
     <string name="armory_source_crafting">Handwerk</string>
@@ -1555,4 +1558,5 @@
     <string name="seasonal_bounty_sunspire_hounds_hint">Only found in The Sunspire dungeon</string>
     <string name="seasonal_bounty_sunspire_colossus_name">Topple Cinder Colossi</string>
     <string name="seasonal_bounty_sunspire_colossus_hint">Only found in The Sunspire dungeon — rare</string>
+    <string name="settings_lang_japanese">日本語</string>
 </resources>
