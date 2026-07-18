@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Idle Fantaisie</string>
+    <string name="app_name">Idle Fantasy</string>
 
     <!-- ===== Bottom navigation ===== -->
     <string name="nav_skills">Compétences</string>
@@ -58,7 +58,7 @@
     <string name="label_equipment">Équipement</string>
     <string name="label_pets">Animaux de compagnie</string>
     <string name="label_achievements">Réalisations</string>
-    <string name="label_locations">Lieux</string>
+    <string name="label_locations">Endroits</string>
     <string name="label_bestiary">Bestiaire</string>
     <string name="label_enemies">Ennemis</string>
     <string name="label_bosses">Boss</string>
