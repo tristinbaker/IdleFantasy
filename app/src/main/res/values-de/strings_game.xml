@@ -12,7 +12,7 @@
     <!-- Translator note: %1$s = skill display name -->
     <string name="game_session_summary_header">%1$s Aktivität beendet</string>
     <!-- Translator note: %1$s = formatted XP amount (e.g. "1,234") -->
-    <string name="game_session_xp_total">+%1$s XP verdient</string>
+    <string name="game_session_xp_total">+%1$s EP verdient</string>
     <string name="game_session_no_items">Keine Gegenstände gesammelt</string>
     <string name="game_session_no_level_ups">Während dieser Aktivität gab es keine Levelaufstiege</string>
     <!-- Translator note: %1$d = number of level ups -->
@@ -27,7 +27,7 @@
     <!-- Translator note: %1$d = HP restored -->
     <string name="game_combat_food_eaten">Gegessen — %1$d LP wiederhergestellt.</string>
     <string name="game_combat_player_died">Ihr seid gestorben!</string>
-    <string name="game_dungeon_cleared">Dungeon abgeschlossen!</string>
+    <string name="game_dungeon_cleared">Verlies abgeschlossen!</string>
     <!-- Translator note: %1$s = dungeon display name -->
     <string name="game_dungeon_summary">%1$s vollständig.</string>
 
@@ -56,7 +56,7 @@
 
     <!-- ===== Prayer / burying ===== -->
     <!-- Translator note: %1$s = bone display name, %2$s = formatted XP gained -->
-    <string name="game_bones_buried">%1$s vergraben — +%2$s Gebets-XP.</string>
+    <string name="game_bones_buried">%1$s vergraben — +%2$s Gebets-EP.</string>
 
     <!-- ===== Quest messages ===== -->
     <!-- Translator note: %1$s = quest display name -->
@@ -68,7 +68,7 @@
 
     <!-- ===== XP gain messages (shown in session frame log) ===== -->
     <!-- Translator note: %1$s = formatted XP gained this minute -->
-    <string name="game_xp_gained">+%1$s XP</string>
+    <string name="game_xp_gained">+%1$s EP</string>
     <!-- Translator note: %1$s = item display name, %2$d = quantity -->
     <string name="game_item_received">+%2$d %1$s</string>
 
@@ -105,7 +105,7 @@
     <string name="equip_slot_pickaxe">Spitzhacke</string>
     <string name="equip_slot_axe">Axt</string>
     <string name="equip_slot_fishing_rod">Angelrute</string>
-    <string name="equip_slot_hoe">Hoe</string>
+    <string name="equip_slot_hoe">Hacke</string>
     <string name="equip_slot_frying_pan">Bratpfanne</string>
     <string name="equip_slot_grappling_hook">Greifhaken</string>
     <string name="equip_slot_hammer">Hammer</string>
