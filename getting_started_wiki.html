@@ -44,7 +44,6 @@
 <li><a href="Fishing.html">Fishing</a></li>
 <li><a href="Woodcutting.html">Woodcutting</a></li>
 <li><a href="Farming.html">Farming</a></li>
-<li><a href="Agility.html">Agility</a></li>
 <li><a href="Thieving.html">Thieving</a></li>
 </ul></li>
 <li class="nav-section"><span class="nav-label">Crafting</span><ul>
@@ -60,6 +59,7 @@
 <li class="nav-section"><span class="nav-label">Support</span><ul>
 <li><a href="Prayer.html">Prayer</a></li>
 <li><a href="Mercantile.html">Mercantile</a></li>
+<li><a href="Agility.html">Agility</a></li>
 </ul></li>
 <li class="nav-section"><span class="nav-label">Combat</span><ul>
 <li><a href="Slayer.html">Slayer</a></li>
@@ -69,6 +69,7 @@
 <li><a href="Equipment.html">Equipment</a></li>
 </ul></li>
 <li class="nav-section"><span class="nav-label">Combat</span><ul>
+<li><a href="Combat.html">Combat</a></li>
 <li><a href="Bosses.html">Bosses</a></li>
 <li><a href="Dungeons.html">Dungeons</a></li>
 <li><a href="Enemies.html">Enemies</a></li>
@@ -91,7 +92,7 @@
 
     <main class="content">
       <h1 id="getting-started-wiki-contributions">Getting started - Wiki contributions</h1>
-<p>Great! You want to know how you can contribute to the wiki and make it better over time. While this wiki functions a little differently from most you may have worked on in the past, if you have a little bit of programming knowledge you'll find it easy to work with, and even if you don't have programming knowledge there's still some ways you can help out.</p>
+<p>Great! You want to know how you can contribute to the wiki and make it better over time. While this wiki functions a little differently from most you may have worked on in the past, if you have a little bit of programming knowledge you'll find it easy to work with, and even if you don't have programming knowledge there are still some ways you can help out.</p>
 <p>If you want to make changes to the game itself, check out <a href="getting_started_game.html#how_to_contribute_to_the_game">how to contribute to the game</a>.</p>
 <h2 id="table-of-contents">Table of contents</h2>
 <ul>
@@ -112,10 +113,11 @@
 <h2 id="how-the-wiki-works">How the wiki works</h2>
 <p>Unlike most wikis which have a collection of pages that require constant maintenance from the community whenever a game is updated, Idle Fantasy relies on a dynamically generated wiki which uses actual game data to generate the individual pages.</p>
 <p>It uses Markdown to define templates with Python being responsible for the compilation and generation of dynamic content.</p>
+<p>Some content still requires manual maintenance such as strategy guides and some text content however a number of changes in the game is reflected in the wiki.</p>
 <h2 id="core-terminology">Core terminology</h2>
-<p>To best understand how you can work with things (and also understand the jargon in the docs), it's helpful to go over a few core terminology:</p>
+<p>To best understand how you can work with the wiki codebase (and also understand the jargon in the docs), it's helpful to go over some core terminology:</p>
 <h3 id="page-directory">Page Directory</h3>
-<p>The page directory is responsible for holding information about all the pages used within the wiki. It gets populated with information about all pages before the actual generation of any content and allows you to refer to other pages when defining page content through the use of a page ID (Eg. For links).</p>
+<p>The page directory is responsible for holding information about all the pages used within the wiki. It gets populated with information about all pages before the actual generation of any content and allows you to refer to other pages when defining page content through the use of a page ID (e.g. for links).</p>
 <p>Pages are added to the page directory in <code>pages.py</code> under the <code>Page Listings</code> section.</p>
 <h3 id="page-hierarchy">Page Hierarchy</h3>
 <p>The page hierarchy is responsible primarily for controlling the navigation used within the sidebar but also on the home page. It lets you have precise control over how the navigation shows including the ordering of items. When adding pages to the page hierarchy, you can do so by "merging" it with a list using the <code>PageHierarchy.merge()</code> method. You can see examples of this in the generated pages.</p>
@@ -126,10 +128,10 @@
 <h3 id="templates">Templates</h3>
 <p>Templates provide the base formatting for pages within the wiki. Whenever they refer to game content, they'll usually have a field defined like <code>{field}</code> that is then filled in using the <code>string.format()</code> method in Python. These are filled in by the generator functions described previously.</p>
 <h3 id="staticdynamically-generated-pages">Static/Dynamically-generated pages</h3>
-<p>Whenever we refer to static vs dynamically-generated pages this refers not to the content within pages but how the pages are defined. If pages are "hardcoded" in the <code>add_static_pages</code> function, these are static, whereas generated pages, will produce an unknown amount of pages like with each individual boss page.</p>
+<p>Whenever we refer to static vs dynamically-generated pages this refers not to the content within pages but how the pages are defined. If pages are "hardcoded" in the <code>add_static_pages</code> function, these are static, whereas generated pages will produce an unknown amount of pages like with each individual boss page.</p>
 <p>For more information, see <a href="wiki_page_types.html">Types of Wiki Pages</a>.</p>
 <h2 id="buildingcompiling-the-wiki">Building/Compiling the Wiki</h2>
-<p>To build the wiki, you'll need to set up an appropriate Python environment which you can use to run the wiki compilation. For information about setting up virtual environments, see <a href="https://www.geeksforgeeks.org/python/create-virtual-environment-using-venv-python/">this tutorial</a> (make sure to call it .venv to have it be git ignored).</p>
+<p>To build the wiki, you'll need to set up an appropriate Python environment which you can use to run the wiki compilation. For information about setting up virtual environments, see <a href="https://www.geeksforgeeks.org/python/create-virtual-environment-using-venv-python/">this tutorial</a> (make sure to call it .venv to have it be gitignored).</p>
 <p>From there, you can run the following command to see what you can do (from the project folder):</p>
 <pre><code class="language-bash"># Activate the virtual environment
 .venv/Scripts/activate
@@ -141,13 +143,13 @@ python -m src -h
 <h2 id="wiki-code-structure">Wiki code structure</h2>
 <p>The following code files are used as follows in the wiki:</p>
 <ul>
-<li><code>__main__.py</code> - The main entry point to the wiki program responsible for parsing arguments and top-level management</li>
-<li><code>page_hierarchy.py</code> - A simple file defining the page hierarchy structure</li>
-<li><code>pages.py</code> - The primary code responsible for generating all the Markdown pages. This also contains a number of helper functions which you should use where relevant such as <code>link()</code>, etc</li>
-<li><code>site.py</code> - The code responsible for generating the Idle Wiki website based upon the generated Markdown files</li>
+<li><code>__main__.py</code> - The main entry point to the wiki program responsible for parsing arguments and top-level management.</li>
+<li><code>page_hierarchy.py</code> - A simple file defining the page hierarchy structure.</li>
+<li><code>pages.py</code> - The primary code responsible for generating all the Markdown pages. This also contains a number of helper functions which you should use where relevant such as <code>link()</code>, etc.</li>
+<li><code>site.py</code> - The code responsible for generating the Idle Fantasy wiki website based upon the generated Markdown files.</li>
 </ul>
 <h2 id="contributing-process">Contributing process</h2>
-<p>For small contributions (eg. Fixing small mistakes, etc), you can simply fork the repository, make the relevant change and then create a pull request.</p>
+<p>For small contributions (e.g. fixing small mistakes, etc), you can simply fork the repository, make the relevant change and then create a pull request.</p>
 <p>If you notice larger issues/inaccuracies that might take some time to fix, you should create an issue beforehand and mention that you're planning on making the changes. This makes sure that there aren't multiple people working on the same issue (without knowing) and also means that the issue can be referenced/tracked.</p>
 <p>If you want to make a number of new pages or significant changes (especially dynamically-generated ones) in order to improve the wiki, then you should open a discussion to give the opportunity for community involvement.</p>
 <p>Additionally, you might notice a number of #Todo items in the wiki code. These are also great places to look for things that need doing that we maybe just haven't got around to sorting out yet.</p>

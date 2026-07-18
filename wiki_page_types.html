@@ -44,7 +44,6 @@
 <li><a href="Fishing.html">Fishing</a></li>
 <li><a href="Woodcutting.html">Woodcutting</a></li>
 <li><a href="Farming.html">Farming</a></li>
-<li><a href="Agility.html">Agility</a></li>
 <li><a href="Thieving.html">Thieving</a></li>
 </ul></li>
 <li class="nav-section"><span class="nav-label">Crafting</span><ul>
@@ -60,6 +59,7 @@
 <li class="nav-section"><span class="nav-label">Support</span><ul>
 <li><a href="Prayer.html">Prayer</a></li>
 <li><a href="Mercantile.html">Mercantile</a></li>
+<li><a href="Agility.html">Agility</a></li>
 </ul></li>
 <li class="nav-section"><span class="nav-label">Combat</span><ul>
 <li><a href="Slayer.html">Slayer</a></li>
@@ -69,6 +69,7 @@
 <li><a href="Equipment.html">Equipment</a></li>
 </ul></li>
 <li class="nav-section"><span class="nav-label">Combat</span><ul>
+<li><a href="Combat.html">Combat</a></li>
 <li><a href="Bosses.html">Bosses</a></li>
 <li><a href="Dungeons.html">Dungeons</a></li>
 <li><a href="Enemies.html">Enemies</a></li>
@@ -91,7 +92,7 @@
 
     <main class="content">
       <h1 id="wiki-page-types">Wiki Page Types</h1>
-<p>In the wiki, there's two main types of pages - static wiki pages and dynamic wiki pages, each with their own use cases.</p>
+<p>In the wiki, there are two main types of pages - static wiki pages and dynamic wiki pages, each with their own use cases.</p>
 <h2 id="table-of-contents">Table of contents</h2>
 <ul>
 <li><a href="#static-wiki-pages">Static wiki pages</a><ul>
@@ -106,60 +107,38 @@
 </li>
 </ul>
 <h2 id="static-wiki-pages">Static wiki pages</h2>
-<p>Static wiki pages, despite the name, may still have content that is dynamically generated. The key feature however, is
-that these pages are defined individually in the code and often contain their own independent templates.</p>
-<p>This page for example, is a static page as the number of pages does not change depending on the content. These differ
-from dynamic pages which are explained in <a href="#dynamically-generated-wiki-pages">dynamically-generated wiki pages</a>.</p>
-<p>Generally, you should choose static pages for any game content for which the number of pages would not change depending
-on the addition of new content (Eg. <code>Ashes</code> could be a static page, but the page for each specific ash type should be
-dynamically generated).</p>
+<p>Static wiki pages, despite the name, may still have content that is dynamically generated. The key feature, however, is that these pages are defined individually in the code and often contain their own independent templates.</p>
+<p>This page, for example, is a static page as the number of pages do not change depending on the content. These differ from dynamic pages which are explained in <a href="#dynamically-generated-wiki-pages">dynamically-generated wiki pages</a>.</p>
+<p>Generally, you should choose static pages for any game content for which the number of pages would not change depending on the addition of new content (e.g. <code>Ashes</code> could be a static page, but the page for each specific ash type should be dynamically generated).</p>
 <h3 id="how-static-pages-are-organised-in-the-codebase">How static pages are organised in the codebase</h3>
-<p>Static pages like all pages typically feature a generator functions and get added to the page directory and hierarchy in
-the dedicated <code>add_static_pages()</code> function in <code>pages.py</code>. Most static pages should be both in the page hierarchy and
-the directory, however some, like the sidebar, are only in the page directory.</p>
+<p>Static pages, like all pages, typically feature a generator function and get added to the page directory and hierarchy in the dedicated <code>add_static_pages()</code> function in <code>pages.py</code>. Most static pages should be both in the page hierarchy and the directory, however some, like the sidebar, are only in the page directory.</p>
 <h3 id="updating-adding-static-pages">Updating &amp; adding static pages</h3>
-<p>If you wish to update an existing static page, this is usually pretty simple. Generally, I'd recommend exploring the
-<code>add_static_pages()</code> function to find the relevant page and then navigate to the generator function to see how it is
-generated, along with the associated template. Here, you can make edits as necessary</p>
-<p>If you wish to add a new static page, you'll need to define your own generator function in <code>pages.py</code>,
-create a template file (if necessary), and then define the page in the directory and/or hierarchy in <code>add_static_pages()</code></p>
+<p>If you wish to update an existing static page, this is usually pretty simple. Generally, I'd recommend exploring the <code>add_static_pages()</code> function to find the relevant page and then navigate to the generator function to see how it is generated, along with the associated template. Here, you can make edits as necessary.</p>
+<p>If you wish to add a new static page, you'll need to define your own generator function in <code>pages.py</code>, create a template file (if necessary), and then define the page in the directory and/or hierarchy in <code>add_static_pages()</code>.</p>
 <p>As a guide, you can follow the below checklist when adding new static pages:
-1. Define a suitable Markdown template
-2. Define a generator function
-3. Add the page to the directory/hierarchy in <code>add_static_pages()</code>
-4. Test it to make sure it shows up correctly</p>
+1. Define a suitable Markdown template.
+2. Define a generator function.
+3. Add the page to the directory/hierarchy in <code>add_static_pages()</code>.
+4. Test it to make sure it shows up correctly.</p>
 <h2 id="dynamically-generated-wiki-pages">Dynamically-generated wiki pages</h2>
-<p>Unlike static pages, dynamically-generated wiki pages are typically defined and added to the page directory at wiki runtime.
-They typically use one template to generate a number of pages with related, but different content.</p>
-<p>For example, the individual boss pages (eg. King Black Dragon, Demon Lord) are a good example of dynamically-generated pages as while there is a common template,
-the number of pages differs depending on how many bosses are in the game at any one time.</p>
+<p>Unlike static pages, dynamically-generated wiki pages are typically defined and added to the page directory at wiki runtime. They typically use one template to generate a number of pages with related, but different content.</p>
+<p>For example, the individual boss pages (e.g. King Black Dragon, Demon Lord) are a good example of dynamically-generated pages as while there is a common template, the number of pages differs depending on how many bosses are in the game at any one time.</p>
 <h3 id="how-dynamic-pages-are-organised-in-the-codebase">How dynamic pages are organised in the codebase</h3>
-<p>Dynamically-generated pages have a few differences compared to static pages being primarily that all generated pages
-relating to a certain topic will usually share both a template and a parameterised generator function.</p>
-<p>Unlike static pages, there is no specific defined function where dynamically-generated pages are defined in the directory
-and hierarchy as they will use their own function that adds them to the hierarchy.</p>
-<p>Using the boss pages as an example, you'll notice that the template <code>boss.md</code> uses a common, highly parameterised template
-that all boss pages use. The function <code>gen_boss</code> generates content for each individual boss page. Notice how it has a <code>boss</code>
-parameter which uses the dictionary passed in to generate the page. Finally, the <code>add_boss_pages()</code> function which defines
-all the pages and adds them to the directory (and potentially hierarchy) - this function is called at the bottom of <code>pages.py</code>
-in order to actually add them to the directory/hierarchy.</p>
+<p>Dynamically-generated pages have a few differences compared to static pages, primarily being that all generated pages relating to a certain topic will usually share both a template and a parameterised generator function.</p>
+<p>Unlike static pages, there is no specific defined function where dynamically-generated pages are defined in the directory and hierarchy as they will use their own function that adds them to the hierarchy.</p>
+<p>Using the boss pages as an example, you'll notice that the template <code>boss.md</code> uses a common, highly parameterised template that all boss pages use. The function <code>gen_boss</code> generates content for each individual boss page. Notice how it has a <code>boss</code> parameter which uses the dictionary passed in to generate the page. Finally, the <code>add_boss_pages()</code> function defines all the pages and adds them to the directory (and potentially hierarchy) - this function is called at the bottom of <code>pages.py</code> in order to actually add them to the directory/hierarchy.</p>
 <h3 id="adding-new-dynamically-generated-pages">Adding new dynamically-generated pages</h3>
-<p>If you're developing dynamically-generated pages, generally I'd recommend to first create an appropriate template file
-(Eg. <code>boss.md</code>). Then you can define a generator function which generates the content itself (Eg. <code>gen_boss</code>) and finally create the appropriate function to define these pages and add them to the
-directory/hierarchy (Eg. <code>add_boss_pages()</code>). Make sure to add a call to this final function at the bottom of <code>pages.py</code>.</p>
+<p>If you're developing dynamically-generated pages, generally I'd recommend to first create an appropriate template file (e.g. <code>boss.md</code>). Then you can define a generator function which generates the content itself (e.g. <code>gen_boss</code>) and finally create the appropriate function to define these pages and add them to the directory/hierarchy (e.g. <code>add_boss_pages()</code>). Make sure to add a call to this final function at the bottom of <code>pages.py</code>.</p>
 <p>When adding these pages to the hierarchy, using a collapsible hierarchy ensures it doesn't result in a messy navigation bar.</p>
-<p>Additionally, if the page is a dedicated page for an item, etc, you should keep the same name as used in the json files
-for the page ID so that they can be easily referenced by other pages.</p>
+<p>Additionally, if the page is a dedicated page for an item, etc, you should keep the same name as used in the json files for the page ID so that they can be easily referenced by other pages.</p>
 <p>As a guide, you can use the following checklist when adding new dynamically-generated pages:
-1. Define a suitable shared Markdown template
-2. Define a parameterised generator function which has any relevant data passed in (loading can still be done in the function but it could be more performant to delegate to the caller)
-3. Create a function that defines these pages and adds them to the directory/hierarchy
-4. Add a statement to call the function at the bottom of <code>pages.py</code>
-5. Test and ensure all the pages come up properly</p>
+1. Define a suitable shared Markdown template.
+2. Define a parameterised generator function which has any relevant data passed in (loading can still be done in the function but it could be more performant to delegate to the caller).
+3. Create a function that defines these pages and adds them to the directory/hierarchy.
+4. Add a statement to call the function at the bottom of <code>pages.py</code>.
+5. Test and ensure all the pages come up properly.</p>
 <h4 id="tip-footer-tables">Tip: Footer tables</h4>
-<p>If you have a specific section of the game which has a lot of dynamically generated links (eg. Combat which encompasses
-bosses, enemies, &amp; dungeons), it's often worthwhile to create a set of footer links which you can see an example of with
-<code>gen_combat_footer()</code> - Note this generator function does not have a dedicated page as it is a component of other pages.</p>
+<p>If you have a specific section of the game which has a lot of dynamically generated links (e.g. Combat which encompasses bosses, enemies, &amp; dungeons), it's often worthwhile to create a set of footer links which you can see an example of with <code>gen_combat_footer()</code> - Note this generator function does not have a dedicated page as it is a component of other pages.</p>
     </main>
   </div>
 
