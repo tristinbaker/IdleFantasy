@@ -58,7 +58,7 @@
     <string name="label_equipment">Équipement</string>
     <string name="label_pets">Animaux de compagnie</string>
     <string name="label_achievements">Réalisations</string>
-    <string name="label_locations">Locations</string>
+    <string name="label_locations">Endroits</string>
     <string name="label_bestiary">Bestiaire</string>
     <string name="label_enemies">Ennemis</string>
     <string name="label_bosses">Boss</string>
@@ -90,7 +90,7 @@
     <string name="label_rewards">Récompenses</string>
     <string name="label_your_level">Votre niveau</string>
     <string name="label_xp_to_next">XP pour passer au niveau supérieur</string>
-    <string name="label_total_xp">Total XP</string>
+    <string name="label_total_xp">XP totale</string>
     <string name="label_quantity">Quantité</string>
     <string name="label_price">Prix</string>
     <string name="label_available">Disponible</string>
@@ -1403,7 +1403,7 @@
     <string name="shop_sold_junk">Objets inutiles vendus pour %1$s pièces</string>
     <string name="shop_no_old_equipment">Pas d\'équipement obsolète à vendre</string>
     <string name="shop_sold_old_equipment">Équipement obsolète vendu pour %1$s pièces</string>
-    <string name="shop_bulk_sell_total">Total</string>
+    <string name="shop_bulk_sell_total">Totale</string>
     <string name="shop_bulk_sell_confirm">Tout vendre</string>
     <string name="shop_xp_boost_activated">Bonus XP 2× activé pour %1$dh!</string>
     <string name="shop_not_enough_in_inventory">Pas assez dans l\'inventaire</string>
