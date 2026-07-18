@@ -863,7 +863,7 @@
 
     <!-- Mercantile skill -->
     <string name="skill_mercantile">Mercantile</string>
-    <string name="label_support_skills">Support</string>
+    <string name="label_support_skills" translatable="false">Support</string>
     <string name="mercantile_routes_label">Trade Routes</string>
     <string name="mercantile_level_label">Level %1$d Mercantile</string>
     <string name="mercantile_xp_label">XP: %1$s</string>

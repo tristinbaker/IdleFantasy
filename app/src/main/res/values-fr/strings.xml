@@ -1403,7 +1403,7 @@
     <string name="shop_sold_junk">Objets inutiles vendus pour %1$s pièces</string>
     <string name="shop_no_old_equipment">Pas d\'équipement obsolète à vendre</string>
     <string name="shop_sold_old_equipment">Équipement obsolète vendu pour %1$s pièces</string>
-    <string name="shop_bulk_sell_total">Total</string>
+    <string name="shop_bulk_sell_total">Totale</string>
     <string name="shop_bulk_sell_confirm">Tout vendre</string>
     <string name="shop_xp_boost_activated">Bonus XP 2× activé pour %1$dh!</string>
     <string name="shop_not_enough_in_inventory">Pas assez dans l\'inventaire</string>
