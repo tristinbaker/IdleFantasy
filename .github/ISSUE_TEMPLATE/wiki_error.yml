@@ -11,7 +11,7 @@ body:
           required: true
         - label: This relates to the latest version of the game
           required: true
-        - label: _(Optional)_ I would like to fix this myself (Thanks! See [how to get started](https://idlefantasy.tristinbaker.xyz/getting_started_wiki.html)
+        - label: _(Optional)_ I would like to fix this myself (Thanks! See [how to get started](https://idlefantasy.tristinbaker.xyz/getting_started_wiki.html))
           required: false
 
   - type: input
