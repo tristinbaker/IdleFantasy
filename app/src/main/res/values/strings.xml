@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Idle Fantasy</string>
+    <string name="app_name" translatable="false">Idle Fantasy</string>
 
     <!-- ===== Bottom navigation ===== -->
     <string name="nav_skills">Skills</string>
