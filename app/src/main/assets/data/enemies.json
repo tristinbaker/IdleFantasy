@@ -725,6 +725,7 @@
   "dragon": {
     "name": "dragon",
     "display_name": "Green Dragon",
+    "tags": ["green_dragon"],
     "hp": 150,
     "combat_stats": {
       "attack_level": 28,

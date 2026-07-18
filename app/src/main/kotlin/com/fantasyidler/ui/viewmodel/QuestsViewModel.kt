@@ -169,6 +169,12 @@ class QuestsViewModel @Inject constructor(
         }
     }
 
+    fun debugResetQuest(questId: String) {
+        viewModelScope.launch {
+            questRepo.resetQuestAndDependents(questId)
+        }
+    }
+
     private suspend fun applyClaimSuccess(questId: String, rewards: QuestRewards) {
         val quest = gameData.quests[questId] ?: return
 
