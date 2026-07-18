@@ -384,17 +384,11 @@
 
     <!-- todo not clear, wether ...tips ... is used, see #1032, ...tip... is used in skills - smithing -->
     <string name="item_bronze_arrow_tip_name">Pfeilspitzen aus Bronze</string>
-    <string name="item_bronze_arrow_tip_desc">Bronzespitzen zum Bestücken von Pfeilen.</string>
     <string name="item_iron_arrow_tip_name">Eisenpfeilspitzen</string>
-    <string name="item_iron_arrow_tip_desc">Eisenspitzen zum Bestücken von Pfeilen.</string>
     <string name="item_steel_arrow_tip_name">Stahlpfeilspitzen</string>
-    <string name="item_steel_arrow_tip_desc">Stahlspitzen zum Bestücken von Pfeilen.</string>
     <string name="item_mithril_arrow_tip_name">Mithrilpfeilspitzen</string>
-    <string name="item_mithril_arrow_tip_desc">Mithrilspitzen zum Bestücken von Pfeilen</string>
     <string name="item_adamantite_arrow_tip_name">Adamantitpfeilspitzen</string>
-    <string name="item_adamantite_arrow_tip_desc">Adamantitspitzen zum Bestücken von Pfeilen</string>
     <string name="item_runite_arrow_tip_name">Runitpfeilspitzen</string>
-    <string name="item_runite_arrow_tip_desc">Runitspitzen zum Bestücken von Pfeilen</string>
 
     <!-- ===== Jewellery — plain ===== -->
     <string name="item_silver_ring_name">Silberring</string>
@@ -669,16 +663,11 @@
     <!-- translated, not ordered ex English placeholders -->
     <string name="item_adamantite_boots_name">Adamantitstiefel</string>
     <string name="item_adamantite_chainbody_name">Adamantitkettenpanzer</string>
-    <string name="item_adamantite_dagger_name">Adamantit-Ddolch</string>
-    <string name="item_adamantite_dagger_desc">Ein schneller und leichter Dolch aus Adamantit.</string>
+    <string name="item_adamantite_dagger_name">Adamantit-Dolch</string>
     <string name="item_mithril_dagger_name">Mithril-Dolch</string>
-    <string name="item_mithril_dagger_desc">Ein schneller und leichter Dolch aus Mithril.</string>
     <string name="item_runite_dagger_name">Runitdolch</string>
-    <string name="item_runite_dagger_desc">Ein schneller und leichter Dolch aus Runit.</string>
     <string name="item_shadow_dagger_name">Dolch der Schatten</string>
-    <string name="item_shadow_dagger_desc">Ein Dolch, der Euch mit der Dunkelheit verschmelzen lässt.</string>
     <string name="item_steel_dagger_name">Stahldolch</string>
-    <string name="item_steel_dagger_desc">Ein schneller und leichter Dolch aus rostfreiem Stahl.</string>
 
 
     <!-- Additional item/boss/food names (English placeholders) -->
