@@ -119,7 +119,7 @@
     <string name="label_boost">Impulso</string>
     <string name="label_xp_boost">XP Impulso</string>
     <string name="label_weapon">Arma</string>
-    <string name="label_armour">Coraza, Armadura</string>
+    <string name="label_armour">Armadura</string>
     <string name="label_food">Comida</string>
     <string name="label_arrows_consumed">Flechas consumidas</string>
     <string name="label_arrows_reclaimed">Flechas recuperadas</string>
@@ -142,7 +142,7 @@
     <string name="label_output">Output</string>
     <string name="label_xp_per_action">XP por acción</string>
     <string name="label_unlocked_at">Desbloqueado en el nivel</string>
-    <string name="label_kills">Muertos</string>
+    <string name="label_kills">Muertes</string>
     <string name="label_personal_best">Mejor marca personal</string>
     <string name="label_daily_dig">Excavación diaria</string>
     <string name="label_dig_depth">Profundidad del agujero</string>
