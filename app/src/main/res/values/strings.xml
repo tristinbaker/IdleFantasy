@@ -372,18 +372,18 @@
     <string name="settings_font_large">Large</string>
     <string name="settings_font_huge">Huge</string>
     <string name="settings_language_desc">Override the app display language</string>
-    <string name="settings_lang_english">English</string>
-    <string name="settings_lang_deutsch">Deutsch</string>
+    <string name="settings_lang_english" translatable="false">English</string>
+    <string name="settings_lang_deutsch" translatable="false">Deutsch</string>
     <string name="settings_lang_français" translatable="false">Français</string>
-    <string name="settings_lang_dutch">Nederlands</string>
-    <string name="settings_lang_español">Español</string>
-    <string name="settings_lang_español_españa">Español (España)</string>
-    <string name="settings_lang_turkish">Türkçe</string>
-    <string name="settings_lang_italiano">Italiano</string>
-    <string name="settings_lang_russian">Русский</string>
-    <string name="settings_lang_indonesian">Bahasa Indonesia</string>
-    <string name="settings_lang_portugues_brasil">Português (Brasil)</string>
-    <string name="settings_lang_japanese">日本語</string>
+    <string name="settings_lang_dutch" translatable="false">Nederlands</string>
+    <string name="settings_lang_español" translatable="false">Español</string>
+    <string name="settings_lang_español_españa" translatable="false">Español (España)</string>
+    <string name="settings_lang_turkish" translatable="false">Türkçe</string>
+    <string name="settings_lang_italiano" translatable="false">Italiano</string>
+    <string name="settings_lang_russian" translatable="false">Русский</string>
+    <string name="settings_lang_indonesian" translatable="false">Bahasa Indonesia</string>
+    <string name="settings_lang_portugues_brasil" translatable="false">Português (Brasil)</string>
+    <string name="settings_lang_japanese" translatable="false">日本語</string>
     <string name="settings_lang_system">System</string>
     <string name="settings_save_data">Save Data</string>
     <string name="settings_export">Export Save</string>
@@ -440,7 +440,7 @@
     <!-- Translator note: %1$s = formatted duration string (e.g. "2h 15m") -->
     <string name="home_queue_ends_in">Queue ends in %1$s</string>
     <!-- Translator note: %1$d = item quantity (e.g. ×40) -->
-    <string name="queue_item_qty">×%1$d</string>
+    <string name="queue_item_qty" translatable="false">×%1$d</string>
     <string name="queue_item_qty_with_output">×%1$d → %2$d items</string>
     <!-- Translator note: %1$d = number of sessions to collect -->
     <plurals name="plural_collect_sessions">
