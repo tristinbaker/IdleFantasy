@@ -50,15 +50,17 @@ For more information, see {page_types_link}.
 
 To build the wiki, you'll need to set up an appropriate Python environment which you can use to run the wiki compilation. For information about setting up virtual environments, see [this tutorial](https://www.geeksforgeeks.org/python/create-virtual-environment-using-venv-python/) (make sure to call it .venv to have it be gitignored).
 
+Then, make sure you've installed all packages shown in `wiki/requirements.txt`
+
 From there, you can run the following command to see what you can do (from the project folder):
 
 ```bash
-# Activate the virtual environment
+# Activate the virtual environment (Only run in Windows terminal)
 .venv/Scripts/activate
-# Change directory to wiki directory
-cd wiki
+# Activate the virtual environment (Only run in bash terminal)
+source .venv/Scripts/activate
 # See help information for program
-python -m src -h
+python -m wiki.src -h
 ```
 
 ## Wiki code structure
