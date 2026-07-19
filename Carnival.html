@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fishing — Idle Fantasy Wiki</title>
+  <title>Carnival — Idle Fantasy Wiki</title>
   <link rel="stylesheet" href="assets/style.css?v=3">
   <script data-goatcounter="https://idlefantasy.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
@@ -41,7 +41,7 @@
 <li><a href="Skills.html">Skills</a></li>
 <li class="nav-section"><span class="nav-label">Gathering</span><ul>
 <li><a href="Mining.html">Mining</a></li>
-<li><a href="Fishing.html" class="active">Fishing</a></li>
+<li><a href="Fishing.html">Fishing</a></li>
 <li><a href="Woodcutting.html">Woodcutting</a></li>
 <li><a href="Farming.html">Farming</a></li>
 <li><a href="Thieving.html">Thieving</a></li>
@@ -80,7 +80,7 @@
 <li><a href="Workers.html">Workers</a></li>
 <li><a href="Guilds.html">Guilds</a></li>
 <li><a href="Buildings.html">Buildings</a></li>
-<li><a href="Carnival.html">Carnival</a></li>
+<li><a href="Carnival.html" class="active">Carnival</a></li>
 </ul></li>
 <li class="nav-section"><span class="nav-label">Miscellaneous</span><ul>
 <li><a href="Expeditions.html">Expeditions</a></li>
@@ -93,200 +93,124 @@
     </nav>
 
     <main class="content">
-      <h1 id="fishing">Fishing</h1>
-<p>Fish from the waters. XP and drops scale with your Fishing level.</p>
+      <h1 id="carnival">Carnival</h1>
+<p>The Carnival is a Town minigame hub where you earn Carnival Tickets and spend them on prizes.</p>
+<h2 id="earning-tickets">Earning tickets</h2>
+<p><strong>Idle minigames</strong> run like a skill session — queue one and check back later. Each minute has a chance to earn a ticket, starting at 15% at level 1 and scaling up to 35% at level 99 in the matching skill. Upgrading the Fairgrounds building further increases this chance.</p>
 <table>
 <thead>
 <tr>
-<th>Level Tier</th>
-<th>Min XP / Min</th>
-<th>Max XP / Min</th>
-<th>Avg XP / Session</th>
+<th>Minigame</th>
+<th>Skill Trained</th>
 </tr>
 </thead>
 <tbody>
-<tr id="level_1">
-<td>Level 1+</td>
-<td>4</td>
-<td>8</td>
-<td>360</td>
+<tr id="archery_range">
+<td>Archery Range</td>
+<td>Ranged</td>
 </tr>
-<tr id="level_5">
-<td>Level 5+</td>
-<td>7</td>
-<td>13</td>
-<td>600</td>
+<tr id="strongman_competition">
+<td>Strongman Competition</td>
+<td>Strength</td>
 </tr>
-<tr id="level_10">
-<td>Level 10+</td>
-<td>10</td>
-<td>18</td>
-<td>840</td>
+<tr id="wizards_duel">
+<td>Wizard's Duel</td>
+<td>Magic</td>
 </tr>
-<tr id="level_15">
-<td>Level 15+</td>
-<td>15</td>
-<td>25</td>
-<td>1,200</td>
-</tr>
-<tr id="level_20">
-<td>Level 20+</td>
-<td>22</td>
-<td>35</td>
-<td>1,710</td>
-</tr>
-<tr id="level_25">
-<td>Level 25+</td>
-<td>30</td>
-<td>45</td>
-<td>2,250</td>
-</tr>
-<tr id="level_30">
-<td>Level 30+</td>
-<td>40</td>
-<td>58</td>
-<td>2,940</td>
-</tr>
-<tr id="level_35">
-<td>Level 35+</td>
-<td>52</td>
-<td>75</td>
-<td>3,810</td>
-</tr>
-<tr id="level_40">
-<td>Level 40+</td>
-<td>65</td>
-<td>95</td>
-<td>4,800</td>
-</tr>
-<tr id="level_45">
-<td>Level 45+</td>
-<td>80</td>
-<td>115</td>
-<td>5,850</td>
-</tr>
-<tr id="level_50">
-<td>Level 50+</td>
-<td>95</td>
-<td>140</td>
-<td>7,050</td>
-</tr>
-<tr id="level_55">
-<td>Level 55+</td>
-<td>115</td>
-<td>165</td>
-<td>8,400</td>
-</tr>
-<tr id="level_60">
-<td>Level 60+</td>
-<td>135</td>
-<td>195</td>
-<td>9,900</td>
-</tr>
-<tr id="level_65">
-<td>Level 65+</td>
-<td>160</td>
-<td>230</td>
-<td>11,700</td>
-</tr>
-<tr id="level_70">
-<td>Level 70+</td>
-<td>190</td>
-<td>270</td>
-<td>13,800</td>
-</tr>
-<tr id="level_75">
-<td>Level 75+</td>
-<td>220</td>
-<td>315</td>
-<td>16,050</td>
-</tr>
-<tr id="level_80">
-<td>Level 80+</td>
-<td>260</td>
-<td>370</td>
-<td>18,900</td>
-</tr>
-<tr id="level_85">
-<td>Level 85+</td>
-<td>300</td>
-<td>430</td>
-<td>21,900</td>
-</tr>
-<tr id="level_90">
-<td>Level 90+</td>
-<td>350</td>
-<td>495</td>
-<td>25,350</td>
-</tr>
-<tr id="level_95">
-<td>Level 95+</td>
-<td>400</td>
-<td>570</td>
-<td>29,100</td>
+<tr id="fishing_derby">
+<td>Fishing Derby</td>
+<td>Fishing</td>
 </tr>
 </tbody>
 </table>
-<h2 id="fishing-rods">Fishing Rods</h2>
-<p>Equip a fishing rod to multiply how many fish you catch per session. Higher-tier rods require a higher Fishing level.</p>
+<p><strong>Active minigames</strong> are played directly and reward more tickets on Hard difficulty. Each has its own 10-minute cooldown between attempts, so you can rotate between all of them back-to-back.</p>
 <table>
 <thead>
 <tr>
-<th>Tool</th>
-<th>Level Required</th>
-<th>Efficiency</th>
+<th>Minigame</th>
+<th>How to play</th>
+<th>Normal</th>
+<th>Hard</th>
 </tr>
 </thead>
 <tbody>
-<tr id="bronze_fishing_rod">
-<td>Bronze Fishing Rod</td>
-<td>1</td>
-<td>1.00×</td>
+<tr id="ring_toss">
+<td>Ring Toss</td>
+<td>Time your throw into the target zone</td>
+<td>2</td>
+<td>7</td>
 </tr>
-<tr id="iron_fishing_rod">
-<td>Iron Fishing Rod</td>
-<td>15</td>
-<td>1.25×</td>
+<tr id="hammer_strike">
+<td>Hammer Strike</td>
+<td>Time your swing for a strong hit</td>
+<td>1–2</td>
+<td>6–8</td>
 </tr>
-<tr id="steel_fishing_rod">
-<td>Steel Fishing Rod</td>
-<td>30</td>
-<td>1.50×</td>
+<tr id="potion_sequence">
+<td>Potion Sequence</td>
+<td>Repeat a growing memory sequence of potion colors</td>
+<td>2</td>
+<td>7</td>
 </tr>
-<tr id="blessed_fishing_rod">
-<td>Blessed Fishing Rod</td>
-<td>40</td>
-<td>2.50×</td>
+<tr id="item_appraisal">
+<td>Item Appraisal</td>
+<td>Pick the more valuable item</td>
+<td>2</td>
+<td>7</td>
 </tr>
-<tr id="mithril_fishing_rod">
-<td>Mithril Fishing Rod</td>
-<td>45</td>
-<td>1.75×</td>
+<tr id="pick_a_cup_fairgrounds_tier_1">
+<td>Pick-a-Cup (<a href="Buildings.html#fairgrounds">Fairgrounds</a> tier 1+)</td>
+<td>Track which cup hides the gem through a shuffle</td>
+<td>4</td>
+<td>7</td>
 </tr>
-<tr id="adamantite_fishing_rod">
-<td>Adamantite Fishing Rod</td>
-<td>60</td>
-<td>2.00×</td>
+<tr id="higher_or_lower_fairgrounds_tier_2">
+<td>Higher or Lower (<a href="Buildings.html#fairgrounds">Fairgrounds</a> tier 2+)</td>
+<td>Guess higher or lower over several rounds — more correct in a row pays more</td>
+<td>up to 5</td>
+<td>up to 8</td>
 </tr>
-<tr id="dwarven_fishing_rod">
-<td>Dwarven Fishing Rod</td>
-<td>60</td>
-<td>2.75×</td>
+</tbody>
+</table>
+<h2 id="prize-shop">Prize Shop</h2>
+<table>
+<thead>
+<tr>
+<th>Prize</th>
+<th>Ticket Cost</th>
+<th>Effect</th>
 </tr>
-<tr id="abyssal_rod">
-<td>Abyssal Rod</td>
-<td>70</td>
-<td>3.25×</td>
+</thead>
+<tbody>
+<tr id="small_xp_lamp">
+<td>Small XP Lamp</td>
+<td>200</td>
+<td>Grants 10,000 XP to a chosen skill.</td>
 </tr>
-<tr id="runite_fishing_rod">
-<td>Runite Fishing Rod</td>
-<td>75</td>
-<td>2.25×</td>
+<tr id="large_xp_lamp">
+<td>Large XP Lamp</td>
+<td>800</td>
+<td>Grants 50,000 XP to a chosen skill.</td>
 </tr>
-<tr id="divine_fishing_rod">
-<td>Divine Fishing Rod</td>
-<td>85</td>
-<td>3.50×</td>
+<tr id="tricksters_amulet">
+<td>Trickster's Amulet</td>
+<td>1,000</td>
+<td>A lucky charm worn by carnival performers. Grants a small combat edge.</td>
+</tr>
+<tr id="strongmans_sigil">
+<td>Strongman's Sigil</td>
+<td>1,600</td>
+<td>A heavy iron ring etched with the mark of the strongman champion. Boosts Strength.</td>
+</tr>
+<tr id="carnival_cape">
+<td>Carnival Cape</td>
+<td>2,000</td>
+<td>A vibrant cape worn by carnival champions. Grants 5% more tickets from Carnival sessions.</td>
+</tr>
+<tr id="juggling_imp">
+<td>Juggling Imp</td>
+<td>4,000</td>
+<td>A mischievous imp that juggles your worries away. Boosts all skill XP by 3%.</td>
 </tr>
 </tbody>
 </table>

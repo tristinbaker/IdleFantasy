@@ -80,71 +80,72 @@
 <li><a href="Workers.html">Workers</a></li>
 <li><a href="Guilds.html" class="active">Guilds</a></li>
 <li><a href="Buildings.html">Buildings</a></li>
+<li><a href="Carnival.html">Carnival</a></li>
 </ul></li>
 <li class="nav-section"><span class="nav-label">Miscellaneous</span><ul>
 <li><a href="Expeditions.html">Expeditions</a></li>
 <li><a href="Pets.html">Pets</a></li>
 <li><a href="Quests.html">Quests</a></li>
 <li><a href="Titles.html">Titles</a></li>
+<li><a href="SeasonalEvents.html">Seasonal Events</a></li>
 </ul></li>
 </ul>
     </nav>
 
     <main class="content">
       <h1 id="guilds">Guilds</h1>
-<p>Guilds reward you for completing skill-based quests. Each guild has 10 quest tiers unlocked as you earn <strong>Reputation</strong> from completing quests. Reaching the reputation threshold for each level unlocks the next tier of quests automatically.</p>
-<h2 id="reputation-levels">Reputation Levels</h2>
+<p>Guilds reward you for completing skill-based quests. Each guild has 10 levels. Advancing to the next level requires two things at your current level: completing that level's quest below, <strong>and</strong> completing enough of that guild's daily quests.</p>
+<h2 id="dailies-required-per-level">Dailies Required Per Level</h2>
 <table>
 <thead>
 <tr>
 <th>Guild Level</th>
-<th>Reputation Required</th>
+<th>Dailies Required</th>
 </tr>
 </thead>
 <tbody>
+<tr id="0">
+<td>0</td>
+<td>2</td>
+</tr>
 <tr id="1">
 <td>1</td>
-<td>500</td>
+<td>3</td>
 </tr>
 <tr id="2">
 <td>2</td>
-<td>1,500</td>
+<td>4</td>
 </tr>
 <tr id="3">
 <td>3</td>
-<td>4,000</td>
+<td>5</td>
 </tr>
 <tr id="4">
 <td>4</td>
-<td>9,000</td>
+<td>7</td>
 </tr>
 <tr id="5">
 <td>5</td>
-<td>20,000</td>
+<td>9</td>
 </tr>
 <tr id="6">
 <td>6</td>
-<td>40,000</td>
+<td>12</td>
 </tr>
 <tr id="7">
 <td>7</td>
-<td>75,000</td>
+<td>15</td>
 </tr>
 <tr id="8">
 <td>8</td>
-<td>140,000</td>
+<td>20</td>
 </tr>
 <tr id="9">
 <td>9</td>
-<td>250,000</td>
-</tr>
-<tr id="10">
-<td>10</td>
-<td>450,000</td>
+<td>25</td>
 </tr>
 </tbody>
 </table>
-<p>Each tier unlocks one quest for that guild. You must complete the current tier's quest before the next one becomes available. Quests are reset when you advance a guild level.</p>
 <h2 id="guild-hall-bonus">Guild Hall Bonus</h2>
 <p>Upgrading the <strong>Guild Hall</strong> building reduces quest requirements. See the <a href="Buildings.html">Buildings</a> page for upgrade costs.</p>
 <table>
@@ -174,9 +175,9 @@
 </tbody>
 </table>
 <h2 id="daily-guild-quests">Daily Guild Quests</h2>
-<p>Each guild also offers a rotating daily quest. These refresh at 6 AM and award bonus reputation on top of the standard reward.</p>
+<p>Each guild also offers a rotating daily quest, refreshed at 6 AM, that counts toward the dailies requirement for your current guild level.</p>
 <hr />
-<h2 id="mining">Mining</h2>
+<h2 id="mining-guild">Mining Guild</h2>
 <table>
 <thead>
 <tr>
@@ -193,74 +194,74 @@
 <td>0</td>
 <td>Copper Ore</td>
 <td>300</td>
-<td>1,000 coins, 3,000 XP, 250 rep, 50× <a href="Fishing.html#raw_trout">Raw Trout</a>, 30× <a href="Woodcutting.html#log">Log</a></td>
+<td>1,000 coins, 3,000 XP, 50× <a href="Fishing.html#raw_trout">Raw Trout</a>, 30× <a href="Woodcutting.html#log">Log</a></td>
 </tr>
 <tr id="iron_quota">
 <td>Iron Quota</td>
 <td>1</td>
 <td>Iron Ore</td>
 <td>700</td>
-<td>2,500 coins, 6,000 XP, 500 rep, 80× <a href="Fishing.html#raw_salmon">Raw Salmon</a>, 40× <a href="Woodcutting.html#oak_log">Oak Log</a></td>
+<td>2,500 coins, 6,000 XP, 80× <a href="Fishing.html#raw_salmon">Raw Salmon</a>, 40× <a href="Woodcutting.html#oak_log">Oak Log</a></td>
 </tr>
 <tr id="coal_haul">
 <td>Coal Haul</td>
 <td>2</td>
 <td>Coal</td>
 <td>1,200</td>
-<td>5,000 coins, 12,000 XP, 1,250 rep, 100× <a href="Fishing.html#raw_tuna">Raw Tuna</a>, 50× <a href="Woodcutting.html#willow_log">Willow Log</a></td>
+<td>5,000 coins, 12,000 XP, 100× <a href="Fishing.html#raw_tuna">Raw Tuna</a>, 50× <a href="Woodcutting.html#willow_log">Willow Log</a></td>
 </tr>
 <tr id="silver_delivery">
 <td>Silver Delivery</td>
 <td>3</td>
 <td>Silver Ore</td>
 <td>600</td>
-<td>8,000 coins, 20,000 XP, 2,500 rep, 50× <a href="Smithing.html#iron_bar">Iron Bar</a>, 2× Ruby</td>
+<td>8,000 coins, 20,000 XP, 50× <a href="Smithing.html#iron_bar">Iron Bar</a>, 2× Ruby</td>
 </tr>
 <tr id="gold_standard">
 <td>Gold Standard</td>
 <td>4</td>
 <td>Gold Ore</td>
 <td>1,000</td>
-<td>25,000 coins, 55,000 XP, 10,000 rep, 40× <a href="Smithing.html#steel_bar">Steel Bar</a>, 60× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a></td>
+<td>25,000 coins, 55,000 XP, 40× <a href="Smithing.html#steel_bar">Steel Bar</a>, 60× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a></td>
 </tr>
 <tr id="mithril_mandate">
 <td>Mithril Mandate</td>
 <td>5</td>
 <td>Mithril Ore</td>
 <td>1,500</td>
-<td>15,000 coins, 35,000 XP, 5,500 rep, 80× <a href="Fishing.html#raw_lobster">Raw Lobster</a>, 50× <a href="Woodcutting.html#maple_log">Maple Log</a></td>
+<td>15,000 coins, 35,000 XP, 80× <a href="Fishing.html#raw_lobster">Raw Lobster</a>, 50× <a href="Woodcutting.html#maple_log">Maple Log</a></td>
 </tr>
 <tr id="adamantite_order">
 <td>Adamantite Order</td>
 <td>6</td>
 <td>Adamantite Ore</td>
 <td>2,500</td>
-<td>40,000 coins, 90,000 XP, 17,500 rep, 40× <a href="Smithing.html#mithril_bar">Mithril Bar</a>, 80× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a>, 30× <a href="Woodcutting.html#yew_log">Yew Log</a></td>
+<td>40,000 coins, 90,000 XP, 40× <a href="Smithing.html#mithril_bar">Mithril Bar</a>, 80× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a>, 30× <a href="Woodcutting.html#yew_log">Yew Log</a></td>
 </tr>
 <tr id="platinum_haul">
 <td>Platinum Haul</td>
 <td>7</td>
 <td>Platinum Ore</td>
 <td>2,000</td>
-<td>60,000 coins, 140,000 XP, 32,500 rep, 30× <a href="Smithing.html#adamantite_bar">Adamantite Bar</a>, 60× <a href="Fishing.html#raw_shark">Raw Shark</a>, 20× <a href="Woodcutting.html#magic_log">Magic Log</a></td>
+<td>60,000 coins, 140,000 XP, 30× <a href="Smithing.html#adamantite_bar">Adamantite Bar</a>, 60× <a href="Fishing.html#raw_shark">Raw Shark</a>, 20× <a href="Woodcutting.html#magic_log">Magic Log</a></td>
 </tr>
 <tr id="runite_reserve">
 <td>Runite Reserve</td>
 <td>8</td>
 <td>Runite Ore</td>
 <td>3,500</td>
-<td>80,000 coins, 200,000 XP, 55,000 rep, 20× <a href="Smithing.html#runite_bar">Runite Bar</a>, 40× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a>, 15× <a href="Woodcutting.html#redwood_log">Redwood Log</a></td>
+<td>80,000 coins, 200,000 XP, 20× <a href="Smithing.html#runite_bar">Runite Bar</a>, 40× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a>, 15× <a href="Woodcutting.html#redwood_log">Redwood Log</a></td>
 </tr>
 <tr id="master_miner">
 <td>Master Miner</td>
 <td>9</td>
 <td>Platinum Ore</td>
 <td>5,000</td>
-<td>100,000 coins, 350,000 XP, 100,000 rep, 40× <a href="Smithing.html#runite_bar">Runite Bar</a>, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 3× Diamond, 1× <a href="Equipment.html#mining_guild_cape">Mining Guild Cape</a></td>
+<td>100,000 coins, 350,000 XP, 40× <a href="Smithing.html#runite_bar">Runite Bar</a>, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 3× Diamond, 1× <a href="Equipment.html#mining_guild_cape">Mining Guild Cape</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="fishing">Fishing</h2>
+<h2 id="fishing-guild">Fishing Guild</h2>
 <table>
 <thead>
 <tr>
@@ -277,74 +278,74 @@
 <td>0</td>
 <td>Raw Shrimp</td>
 <td>300</td>
-<td>1,000 coins, 3,000 XP, 250 rep, 60× <a href="Mining.html#copper_ore">Copper Ore</a>, 40× <a href="Woodcutting.html#log">Log</a></td>
+<td>1,000 coins, 3,000 XP, 60× <a href="Mining.html#copper_ore">Copper Ore</a>, 40× <a href="Woodcutting.html#log">Log</a></td>
 </tr>
 <tr id="trout_run">
 <td>Trout Run</td>
 <td>1</td>
 <td>Raw Trout</td>
 <td>600</td>
-<td>2,500 coins, 6,000 XP, 500 rep, 80× <a href="Mining.html#iron_ore">Iron Ore</a>, 30× <a href="Woodcutting.html#oak_log">Oak Log</a></td>
+<td>2,500 coins, 6,000 XP, 80× <a href="Mining.html#iron_ore">Iron Ore</a>, 30× <a href="Woodcutting.html#oak_log">Oak Log</a></td>
 </tr>
 <tr id="salmon_haul">
 <td>Salmon Haul</td>
 <td>2</td>
 <td>Raw Salmon</td>
 <td>1,000</td>
-<td>5,000 coins, 12,000 XP, 1,250 rep, 100× <a href="Mining.html#coal">Coal</a>, 40× <a href="Woodcutting.html#willow_log">Willow Log</a></td>
+<td>5,000 coins, 12,000 XP, 100× <a href="Mining.html#coal">Coal</a>, 40× <a href="Woodcutting.html#willow_log">Willow Log</a></td>
 </tr>
 <tr id="tuna_delivery">
 <td>Tuna Delivery</td>
 <td>3</td>
 <td>Raw Tuna</td>
 <td>800</td>
-<td>8,000 coins, 20,000 XP, 2,500 rep, 60× <a href="Mining.html#silver_ore">Silver Ore</a>, 2× Emerald</td>
+<td>8,000 coins, 20,000 XP, 60× <a href="Mining.html#silver_ore">Silver Ore</a>, 2× Emerald</td>
 </tr>
 <tr id="lobster_catch">
 <td>Lobster Catch</td>
 <td>4</td>
 <td>Raw Lobster</td>
 <td>1,500</td>
-<td>15,000 coins, 35,000 XP, 5,500 rep, 80× <a href="Mining.html#mithril_ore">Mithril Ore</a>, 40× <a href="Woodcutting.html#maple_log">Maple Log</a></td>
+<td>15,000 coins, 35,000 XP, 80× <a href="Mining.html#mithril_ore">Mithril Ore</a>, 40× <a href="Woodcutting.html#maple_log">Maple Log</a></td>
 </tr>
 <tr id="swordfish_quota">
 <td>Swordfish Quota</td>
 <td>5</td>
 <td>Raw Swordfish</td>
 <td>1,200</td>
-<td>25,000 coins, 55,000 XP, 10,000 rep, 50× <a href="Mining.html#gold_ore">Gold Ore</a>, 5× Sapphire</td>
+<td>25,000 coins, 55,000 XP, 50× <a href="Mining.html#gold_ore">Gold Ore</a>, 5× Sapphire</td>
 </tr>
 <tr id="monkfish_order">
 <td>Monkfish Order</td>
 <td>6</td>
 <td>Raw Monkfish</td>
 <td>2,000</td>
-<td>40,000 coins, 90,000 XP, 17,500 rep, 60× <a href="Mining.html#adamantite_ore">Adamantite Ore</a>, 30× <a href="Woodcutting.html#yew_log">Yew Log</a></td>
+<td>40,000 coins, 90,000 XP, 60× <a href="Mining.html#adamantite_ore">Adamantite Ore</a>, 30× <a href="Woodcutting.html#yew_log">Yew Log</a></td>
 </tr>
 <tr id="shark_hunt">
 <td>Shark Hunt</td>
 <td>7</td>
 <td>Raw Shark</td>
 <td>2,000</td>
-<td>60,000 coins, 140,000 XP, 32,500 rep, 50× <a href="Mining.html#platinum_ore">Platinum Ore</a>, 20× <a href="Woodcutting.html#magic_log">Magic Log</a>, 3× Ruby</td>
+<td>60,000 coins, 140,000 XP, 50× <a href="Mining.html#platinum_ore">Platinum Ore</a>, 20× <a href="Woodcutting.html#magic_log">Magic Log</a>, 3× Ruby</td>
 </tr>
 <tr id="manta_ray_reserve">
 <td>Manta Ray Reserve</td>
 <td>8</td>
 <td>Raw Manta Ray</td>
 <td>3,000</td>
-<td>80,000 coins, 200,000 XP, 55,000 rep, 40× <a href="Mining.html#runite_ore">Runite Ore</a>, 15× <a href="Woodcutting.html#redwood_log">Redwood Log</a>, 2× Diamond</td>
+<td>80,000 coins, 200,000 XP, 40× <a href="Mining.html#runite_ore">Runite Ore</a>, 15× <a href="Woodcutting.html#redwood_log">Redwood Log</a>, 2× Diamond</td>
 </tr>
 <tr id="master_fisher">
 <td>Master Fisher</td>
 <td>9</td>
 <td>Raw Sea Turtle</td>
 <td>1,500</td>
-<td>100,000 coins, 350,000 XP, 100,000 rep, 60× <a href="Mining.html#runite_ore">Runite Ore</a>, 4× Diamond, 25× <a href="Woodcutting.html#redwood_log">Redwood Log</a>, 1× <a href="Equipment.html#fishing_guild_cape">Fishing Guild Cape</a></td>
+<td>100,000 coins, 350,000 XP, 60× <a href="Mining.html#runite_ore">Runite Ore</a>, 4× Diamond, 25× <a href="Woodcutting.html#redwood_log">Redwood Log</a>, 1× <a href="Equipment.html#fishing_guild_cape">Fishing Guild Cape</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="woodcutting">Woodcutting</h2>
+<h2 id="woodcutting-guild">Woodcutting Guild</h2>
 <table>
 <thead>
 <tr>
@@ -361,74 +362,74 @@
 <td>0</td>
 <td>Log</td>
 <td>400</td>
-<td>1,000 coins, 3,000 XP, 250 rep, 50× <a href="Fishing.html#raw_trout">Raw Trout</a>, 40× <a href="Mining.html#copper_ore">Copper Ore</a></td>
+<td>1,000 coins, 3,000 XP, 50× <a href="Fishing.html#raw_trout">Raw Trout</a>, 40× <a href="Mining.html#copper_ore">Copper Ore</a></td>
 </tr>
 <tr id="oak_delivery">
 <td>Oak Delivery</td>
 <td>1</td>
 <td>Oak Log</td>
 <td>700</td>
-<td>2,500 coins, 6,000 XP, 500 rep, 60× <a href="Fishing.html#raw_salmon">Raw Salmon</a>, 50× <a href="Mining.html#iron_ore">Iron Ore</a></td>
+<td>2,500 coins, 6,000 XP, 60× <a href="Fishing.html#raw_salmon">Raw Salmon</a>, 50× <a href="Mining.html#iron_ore">Iron Ore</a></td>
 </tr>
 <tr id="willow_run">
 <td>Willow Run</td>
 <td>2</td>
 <td>Willow Log</td>
 <td>1,200</td>
-<td>5,000 coins, 12,000 XP, 1,250 rep, 80× <a href="Fishing.html#raw_tuna">Raw Tuna</a>, 80× <a href="Mining.html#coal">Coal</a></td>
+<td>5,000 coins, 12,000 XP, 80× <a href="Fishing.html#raw_tuna">Raw Tuna</a>, 80× <a href="Mining.html#coal">Coal</a></td>
 </tr>
 <tr id="maple_order">
 <td>Maple Order</td>
 <td>3</td>
 <td>Maple Log</td>
 <td>1,500</td>
-<td>8,000 coins, 20,000 XP, 2,500 rep, 60× <a href="Fishing.html#raw_lobster">Raw Lobster</a>, 50× <a href="Mining.html#mithril_ore">Mithril Ore</a></td>
+<td>8,000 coins, 20,000 XP, 60× <a href="Fishing.html#raw_lobster">Raw Lobster</a>, 50× <a href="Mining.html#mithril_ore">Mithril Ore</a></td>
 </tr>
 <tr id="yew_haul">
 <td>Yew Haul</td>
 <td>4</td>
 <td>Yew Log</td>
 <td>1,000</td>
-<td>15,000 coins, 35,000 XP, 5,500 rep, 60× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a>, 40× <a href="Mining.html#gold_ore">Gold Ore</a></td>
+<td>15,000 coins, 35,000 XP, 60× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a>, 40× <a href="Mining.html#gold_ore">Gold Ore</a></td>
 </tr>
 <tr id="magic_timber">
 <td>Magic Timber</td>
 <td>5</td>
 <td>Magic Log</td>
 <td>700</td>
-<td>25,000 coins, 55,000 XP, 10,000 rep, 60× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a>, 40× <a href="Mining.html#adamantite_ore">Adamantite Ore</a></td>
+<td>25,000 coins, 55,000 XP, 60× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a>, 40× <a href="Mining.html#adamantite_ore">Adamantite Ore</a></td>
 </tr>
 <tr id="redwood_stockpile">
 <td>Redwood Stockpile</td>
 <td>6</td>
 <td>Redwood Log</td>
 <td>1,200</td>
-<td>40,000 coins, 90,000 XP, 17,500 rep, 50× <a href="Fishing.html#raw_shark">Raw Shark</a>, 30× <a href="Mining.html#platinum_ore">Platinum Ore</a></td>
+<td>40,000 coins, 90,000 XP, 50× <a href="Fishing.html#raw_shark">Raw Shark</a>, 30× <a href="Mining.html#platinum_ore">Platinum Ore</a></td>
 </tr>
 <tr id="ancient_timber">
 <td>Ancient Timber</td>
 <td>7</td>
 <td>Magic Log</td>
 <td>2,500</td>
-<td>60,000 coins, 140,000 XP, 32,500 rep, 40× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a>, 30× <a href="Mining.html#runite_ore">Runite Ore</a></td>
+<td>60,000 coins, 140,000 XP, 40× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a>, 30× <a href="Mining.html#runite_ore">Runite Ore</a></td>
 </tr>
 <tr id="redwood_legacy">
 <td>Redwood Legacy</td>
 <td>8</td>
 <td>Redwood Log</td>
 <td>3,500</td>
-<td>80,000 coins, 200,000 XP, 55,000 rep, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 2× Diamond</td>
+<td>80,000 coins, 200,000 XP, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 2× Diamond</td>
 </tr>
 <tr id="master_woodcutter">
 <td>Master Woodcutter</td>
 <td>9</td>
 <td>Redwood Log</td>
 <td>5,000</td>
-<td>100,000 coins, 350,000 XP, 100,000 rep, 50× <a href="Mining.html#runite_ore">Runite Ore</a>, 4× Diamond, 30× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 1× <a href="Equipment.html#woodcutting_guild_cape">Woodcutting Guild Cape</a></td>
+<td>100,000 coins, 350,000 XP, 50× <a href="Mining.html#runite_ore">Runite Ore</a>, 4× Diamond, 30× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 1× <a href="Equipment.html#woodcutting_guild_cape">Woodcutting Guild Cape</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="farming">Farming</h2>
+<h2 id="farming-guild">Farming Guild</h2>
 <table>
 <thead>
 <tr>
@@ -445,74 +446,74 @@
 <td>0</td>
 <td>Potato</td>
 <td>60</td>
-<td>1,000 coins, 3,000 XP, 250 rep, 60× <a href="Fishing.html#raw_trout">Raw Trout</a>, 50× <a href="Mining.html#copper_ore">Copper Ore</a></td>
+<td>1,000 coins, 3,000 XP, 60× <a href="Fishing.html#raw_trout">Raw Trout</a>, 50× <a href="Mining.html#copper_ore">Copper Ore</a></td>
 </tr>
 <tr id="carrot_delivery">
 <td>Carrot Delivery</td>
 <td>1</td>
 <td>Carrot</td>
 <td>80</td>
-<td>2,500 coins, 6,000 XP, 500 rep, 60× <a href="Fishing.html#raw_salmon">Raw Salmon</a>, 60× <a href="Mining.html#iron_ore">Iron Ore</a></td>
+<td>2,500 coins, 6,000 XP, 60× <a href="Fishing.html#raw_salmon">Raw Salmon</a>, 60× <a href="Mining.html#iron_ore">Iron Ore</a></td>
 </tr>
 <tr id="corn_stockpile">
 <td>Corn Stockpile</td>
 <td>2</td>
 <td>Corn</td>
 <td>100</td>
-<td>5,000 coins, 12,000 XP, 1,250 rep, 80× <a href="Fishing.html#raw_tuna">Raw Tuna</a>, 80× <a href="Mining.html#coal">Coal</a>, 40× <a href="Woodcutting.html#oak_log">Oak Log</a></td>
+<td>5,000 coins, 12,000 XP, 80× <a href="Fishing.html#raw_tuna">Raw Tuna</a>, 80× <a href="Mining.html#coal">Coal</a>, 40× <a href="Woodcutting.html#oak_log">Oak Log</a></td>
 </tr>
 <tr id="pumpkin_patch">
 <td>Pumpkin Patch</td>
 <td>3</td>
 <td>Pumpkin</td>
 <td>40</td>
-<td>8,000 coins, 20,000 XP, 2,500 rep, 60× <a href="Fishing.html#raw_lobster">Raw Lobster</a>, 60× <a href="Mining.html#mithril_ore">Mithril Ore</a></td>
+<td>8,000 coins, 20,000 XP, 60× <a href="Fishing.html#raw_lobster">Raw Lobster</a>, 60× <a href="Mining.html#mithril_ore">Mithril Ore</a></td>
 </tr>
 <tr id="strawberry_season">
 <td>Strawberry Season</td>
 <td>4</td>
 <td>Strawberry</td>
 <td>60</td>
-<td>15,000 coins, 35,000 XP, 5,500 rep, 60× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a>, 40× <a href="Mining.html#adamantite_ore">Adamantite Ore</a></td>
+<td>15,000 coins, 35,000 XP, 60× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a>, 40× <a href="Mining.html#adamantite_ore">Adamantite Ore</a></td>
 </tr>
 <tr id="magic_herbs">
 <td>Magic Herbs</td>
 <td>5</td>
 <td>Magic Herb</td>
 <td>35</td>
-<td>25,000 coins, 55,000 XP, 10,000 rep, 60× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a>, 30× <a href="Woodcutting.html#yew_log">Yew Log</a></td>
+<td>25,000 coins, 55,000 XP, 60× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a>, 30× <a href="Woodcutting.html#yew_log">Yew Log</a></td>
 </tr>
 <tr id="dragon_fruit_yield">
 <td>Dragon Fruit Yield</td>
 <td>6</td>
 <td>Dragon Fruit</td>
 <td>30</td>
-<td>40,000 coins, 90,000 XP, 17,500 rep, 50× <a href="Fishing.html#raw_shark">Raw Shark</a>, 20× <a href="Woodcutting.html#magic_log">Magic Log</a></td>
+<td>40,000 coins, 90,000 XP, 50× <a href="Fishing.html#raw_shark">Raw Shark</a>, 20× <a href="Woodcutting.html#magic_log">Magic Log</a></td>
 </tr>
 <tr id="golden_wheat">
 <td>Golden Wheat</td>
 <td>7</td>
 <td>Golden Wheat</td>
 <td>50</td>
-<td>60,000 coins, 140,000 XP, 32,500 rep, 40× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a>, 30× <a href="Mining.html#runite_ore">Runite Ore</a>, 15× <a href="Woodcutting.html#redwood_log">Redwood Log</a></td>
+<td>60,000 coins, 140,000 XP, 40× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a>, 30× <a href="Mining.html#runite_ore">Runite Ore</a>, 15× <a href="Woodcutting.html#redwood_log">Redwood Log</a></td>
 </tr>
 <tr id="spirit_herbs">
 <td>Spirit Herbs</td>
 <td>8</td>
 <td>Spirit Herb</td>
 <td>30</td>
-<td>80,000 coins, 200,000 XP, 55,000 rep, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 2× Diamond, 40× <a href="Mining.html#runite_ore">Runite Ore</a></td>
+<td>80,000 coins, 200,000 XP, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 2× Diamond, 40× <a href="Mining.html#runite_ore">Runite Ore</a></td>
 </tr>
 <tr id="master_farmer">
 <td>Master Farmer</td>
 <td>9</td>
 <td>Void Lotus</td>
 <td>15</td>
-<td>100,000 coins, 350,000 XP, 100,000 rep, 50× <a href="Mining.html#runite_ore">Runite Ore</a>, 25× <a href="Woodcutting.html#redwood_log">Redwood Log</a>, 4× Diamond, 1× <a href="Equipment.html#farming_guild_cape">Farming Guild Cape</a></td>
+<td>100,000 coins, 350,000 XP, 50× <a href="Mining.html#runite_ore">Runite Ore</a>, 25× <a href="Woodcutting.html#redwood_log">Redwood Log</a>, 4× Diamond, 1× <a href="Equipment.html#farming_guild_cape">Farming Guild Cape</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="firemaking">Firemaking</h2>
+<h2 id="firemakers-guild">Firemakers Guild</h2>
 <table>
 <thead>
 <tr>
@@ -529,74 +530,74 @@
 <td>0</td>
 <td>Ashes</td>
 <td>400</td>
-<td>1,000 coins, 3,000 XP, 250 rep, 80× <a href="Woodcutting.html#log">Log</a>, 40× <a href="Fishing.html#raw_trout">Raw Trout</a></td>
+<td>1,000 coins, 3,000 XP, 80× <a href="Woodcutting.html#log">Log</a>, 40× <a href="Fishing.html#raw_trout">Raw Trout</a></td>
 </tr>
 <tr id="oak_pyre">
 <td>Oak Pyre</td>
 <td>1</td>
 <td>Oak Ashes</td>
 <td>700</td>
-<td>2,500 coins, 6,000 XP, 500 rep, 100× <a href="Woodcutting.html#oak_log">Oak Log</a>, 40× <a href="Fishing.html#raw_salmon">Raw Salmon</a></td>
+<td>2,500 coins, 6,000 XP, 100× <a href="Woodcutting.html#oak_log">Oak Log</a>, 40× <a href="Fishing.html#raw_salmon">Raw Salmon</a></td>
 </tr>
 <tr id="willow_ember">
 <td>Willow Ember</td>
 <td>2</td>
 <td>Willow Ashes</td>
 <td>1,200</td>
-<td>5,000 coins, 12,000 XP, 1,250 rep, 120× <a href="Woodcutting.html#willow_log">Willow Log</a>, 60× <a href="Fishing.html#raw_tuna">Raw Tuna</a></td>
+<td>5,000 coins, 12,000 XP, 120× <a href="Woodcutting.html#willow_log">Willow Log</a>, 60× <a href="Fishing.html#raw_tuna">Raw Tuna</a></td>
 </tr>
 <tr id="maple_blaze">
 <td>Maple Blaze</td>
 <td>3</td>
 <td>Maple Ashes</td>
 <td>1,800</td>
-<td>8,000 coins, 20,000 XP, 2,500 rep, 100× <a href="Woodcutting.html#maple_log">Maple Log</a>, 50× <a href="Fishing.html#raw_lobster">Raw Lobster</a></td>
+<td>8,000 coins, 20,000 XP, 100× <a href="Woodcutting.html#maple_log">Maple Log</a>, 50× <a href="Fishing.html#raw_lobster">Raw Lobster</a></td>
 </tr>
 <tr id="yew_inferno">
 <td>Yew Inferno</td>
 <td>4</td>
 <td>Yew Ashes</td>
 <td>1,200</td>
-<td>15,000 coins, 35,000 XP, 5,500 rep, 80× <a href="Woodcutting.html#yew_log">Yew Log</a>, 50× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a></td>
+<td>15,000 coins, 35,000 XP, 80× <a href="Woodcutting.html#yew_log">Yew Log</a>, 50× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a></td>
 </tr>
 <tr id="magic_pyre">
 <td>Magic Pyre</td>
 <td>5</td>
 <td>Magic Ashes</td>
 <td>800</td>
-<td>25,000 coins, 55,000 XP, 10,000 rep, 60× <a href="Woodcutting.html#magic_log">Magic Log</a>, 50× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a></td>
+<td>25,000 coins, 55,000 XP, 60× <a href="Woodcutting.html#magic_log">Magic Log</a>, 50× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a></td>
 </tr>
 <tr id="redwood_bonfire">
 <td>Redwood Bonfire</td>
 <td>6</td>
 <td>Redwood Ashes</td>
 <td>600</td>
-<td>40,000 coins, 90,000 XP, 17,500 rep, 60× <a href="Woodcutting.html#redwood_log">Redwood Log</a>, 40× <a href="Fishing.html#raw_shark">Raw Shark</a></td>
+<td>40,000 coins, 90,000 XP, 60× <a href="Woodcutting.html#redwood_log">Redwood Log</a>, 40× <a href="Fishing.html#raw_shark">Raw Shark</a></td>
 </tr>
 <tr id="ancient_flame">
 <td>Ancient Flame</td>
 <td>7</td>
 <td>Magic Ashes</td>
 <td>2,000</td>
-<td>60,000 coins, 140,000 XP, 32,500 rep, 30× <a href="Mining.html#runite_ore">Runite Ore</a>, 30× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a></td>
+<td>60,000 coins, 140,000 XP, 30× <a href="Mining.html#runite_ore">Runite Ore</a>, 30× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a></td>
 </tr>
 <tr id="redwood_legacy">
 <td>Redwood Legacy</td>
 <td>8</td>
 <td>Redwood Ashes</td>
 <td>3,000</td>
-<td>80,000 coins, 200,000 XP, 55,000 rep, 3× Diamond, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a></td>
+<td>80,000 coins, 200,000 XP, 3× Diamond, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a></td>
 </tr>
 <tr id="master_firemaker">
 <td>Master Firemaker</td>
 <td>9</td>
 <td>Redwood Ashes</td>
 <td>5,000</td>
-<td>100,000 coins, 350,000 XP, 100,000 rep, 150× <a href="Woodcutting.html#redwood_log">Redwood Log</a>, 5× Diamond, 40× <a href="Mining.html#runite_ore">Runite Ore</a>, 1× <a href="Equipment.html#firemaking_guild_cape">Firemaking Guild Cape</a></td>
+<td>100,000 coins, 350,000 XP, 150× <a href="Woodcutting.html#redwood_log">Redwood Log</a>, 5× Diamond, 40× <a href="Mining.html#runite_ore">Runite Ore</a>, 1× <a href="Equipment.html#firemaking_guild_cape">Firemaking Guild Cape</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="smithing">Smithing</h2>
+<h2 id="smithing-guild">Smithing Guild</h2>
 <table>
 <thead>
 <tr>
@@ -613,74 +614,74 @@
 <td>0</td>
 <td>Bronze Bar</td>
 <td>200</td>
-<td>1,000 coins, 3,000 XP, 250 rep, 100× <a href="Mining.html#copper_ore">Copper Ore</a>, 100× <a href="Mining.html#tin_ore">Tin Ore</a></td>
+<td>1,000 coins, 3,000 XP, 100× <a href="Mining.html#copper_ore">Copper Ore</a>, 100× <a href="Mining.html#tin_ore">Tin Ore</a></td>
 </tr>
 <tr id="iron_works">
 <td>Iron Works</td>
 <td>1</td>
 <td>Iron Bar</td>
 <td>400</td>
-<td>2,500 coins, 6,000 XP, 500 rep, 250× <a href="Mining.html#iron_ore">Iron Ore</a>, 100× <a href="Mining.html#coal">Coal</a></td>
+<td>2,500 coins, 6,000 XP, 250× <a href="Mining.html#iron_ore">Iron Ore</a>, 100× <a href="Mining.html#coal">Coal</a></td>
 </tr>
 <tr id="steel_production">
 <td>Steel Production</td>
 <td>2</td>
 <td>Steel Bar</td>
 <td>600</td>
-<td>5,000 coins, 12,000 XP, 1,250 rep, 300× <a href="Mining.html#iron_ore">Iron Ore</a>, 200× <a href="Mining.html#coal">Coal</a></td>
+<td>5,000 coins, 12,000 XP, 300× <a href="Mining.html#iron_ore">Iron Ore</a>, 200× <a href="Mining.html#coal">Coal</a></td>
 </tr>
 <tr id="mithril_foundry">
 <td>Mithril Foundry</td>
 <td>3</td>
 <td>Mithril Bar</td>
 <td>400</td>
-<td>8,000 coins, 20,000 XP, 2,500 rep, 200× <a href="Mining.html#mithril_ore">Mithril Ore</a>, 300× <a href="Mining.html#coal">Coal</a></td>
+<td>8,000 coins, 20,000 XP, 200× <a href="Mining.html#mithril_ore">Mithril Ore</a>, 300× <a href="Mining.html#coal">Coal</a></td>
 </tr>
 <tr id="adamantite_forge">
 <td>Adamantite Forge</td>
 <td>4</td>
 <td>Adamantite Bar</td>
 <td>300</td>
-<td>15,000 coins, 35,000 XP, 5,500 rep, 180× <a href="Mining.html#adamantite_ore">Adamantite Ore</a>, 400× <a href="Mining.html#coal">Coal</a></td>
+<td>15,000 coins, 35,000 XP, 180× <a href="Mining.html#adamantite_ore">Adamantite Ore</a>, 400× <a href="Mining.html#coal">Coal</a></td>
 </tr>
 <tr id="platinum_smelter">
 <td>Platinum Smelter</td>
 <td>5</td>
 <td>Platinum Bar</td>
 <td>200</td>
-<td>25,000 coins, 55,000 XP, 10,000 rep, 150× <a href="Mining.html#platinum_ore">Platinum Ore</a>, 400× <a href="Mining.html#coal">Coal</a></td>
+<td>25,000 coins, 55,000 XP, 150× <a href="Mining.html#platinum_ore">Platinum Ore</a>, 400× <a href="Mining.html#coal">Coal</a></td>
 </tr>
 <tr id="runite_smelter">
 <td>Runite Smelter</td>
 <td>6</td>
 <td>Runite Bar</td>
 <td>150</td>
-<td>40,000 coins, 90,000 XP, 17,500 rep, 120× <a href="Mining.html#runite_ore">Runite Ore</a>, 400× <a href="Mining.html#coal">Coal</a></td>
+<td>40,000 coins, 90,000 XP, 120× <a href="Mining.html#runite_ore">Runite Ore</a>, 400× <a href="Mining.html#coal">Coal</a></td>
 </tr>
 <tr id="weapons_cache">
 <td>Weapons Cache</td>
 <td>7</td>
 <td>Mithril Bar</td>
 <td>700</td>
-<td>60,000 coins, 140,000 XP, 32,500 rep, 400× <a href="Mining.html#mithril_ore">Mithril Ore</a>, 600× <a href="Mining.html#coal">Coal</a>, 30× <a href="Fishing.html#raw_shark">Raw Shark</a></td>
+<td>60,000 coins, 140,000 XP, 400× <a href="Mining.html#mithril_ore">Mithril Ore</a>, 600× <a href="Mining.html#coal">Coal</a>, 30× <a href="Fishing.html#raw_shark">Raw Shark</a></td>
 </tr>
 <tr id="armour_vault">
 <td>Armour Vault</td>
 <td>8</td>
 <td>Adamantite Bar</td>
 <td>500</td>
-<td>80,000 coins, 200,000 XP, 55,000 rep, 400× <a href="Mining.html#adamantite_ore">Adamantite Ore</a>, 50× <a href="Mining.html#runite_ore">Runite Ore</a>, 3× Diamond</td>
+<td>80,000 coins, 200,000 XP, 400× <a href="Mining.html#adamantite_ore">Adamantite Ore</a>, 50× <a href="Mining.html#runite_ore">Runite Ore</a>, 3× Diamond</td>
 </tr>
 <tr id="master_smith">
 <td>Master Smith</td>
 <td>9</td>
 <td>Runite Bar</td>
 <td>350</td>
-<td>100,000 coins, 350,000 XP, 100,000 rep, 250× <a href="Mining.html#runite_ore">Runite Ore</a>, 5× Diamond, 30× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a>, 1× <a href="Equipment.html#smithing_guild_cape">Smithing Guild Cape</a></td>
+<td>100,000 coins, 350,000 XP, 250× <a href="Mining.html#runite_ore">Runite Ore</a>, 5× Diamond, 30× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a>, 1× <a href="Equipment.html#smithing_guild_cape">Smithing Guild Cape</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="cooking">Cooking</h2>
+<h2 id="cooks-guild">Cooks Guild</h2>
 <table>
 <thead>
 <tr>
@@ -697,74 +698,74 @@
 <td>0</td>
 <td>Cooked Chicken</td>
 <td>300</td>
-<td>1,000 coins, 3,000 XP, 250 rep, 350× Raw Chicken, 40× <a href="Mining.html#copper_ore">Copper Ore</a></td>
+<td>1,000 coins, 3,000 XP, 350× Raw Chicken, 40× <a href="Mining.html#copper_ore">Copper Ore</a></td>
 </tr>
 <tr id="trout_feast">
 <td>Trout Feast</td>
 <td>1</td>
 <td>Trout</td>
 <td>600</td>
-<td>2,500 coins, 6,000 XP, 500 rep, 350× <a href="Fishing.html#raw_trout">Raw Trout</a>, 50× <a href="Mining.html#iron_ore">Iron Ore</a></td>
+<td>2,500 coins, 6,000 XP, 350× <a href="Fishing.html#raw_trout">Raw Trout</a>, 50× <a href="Mining.html#iron_ore">Iron Ore</a></td>
 </tr>
 <tr id="beef_order">
 <td>Beef Order</td>
 <td>2</td>
 <td>Cooked Beef</td>
 <td>800</td>
-<td>5,000 coins, 12,000 XP, 1,250 rep, 900× Raw Beef, 60× <a href="Mining.html#coal">Coal</a></td>
+<td>5,000 coins, 12,000 XP, 900× Raw Beef, 60× <a href="Mining.html#coal">Coal</a></td>
 </tr>
 <tr id="lobster_spread">
 <td>Lobster Spread</td>
 <td>3</td>
 <td>Lobster</td>
 <td>1,000</td>
-<td>8,000 coins, 20,000 XP, 2,500 rep, 300× <a href="Fishing.html#raw_lobster">Raw Lobster</a>, 40× <a href="Mining.html#mithril_ore">Mithril Ore</a></td>
+<td>8,000 coins, 20,000 XP, 300× <a href="Fishing.html#raw_lobster">Raw Lobster</a>, 40× <a href="Mining.html#mithril_ore">Mithril Ore</a></td>
 </tr>
 <tr id="swordfish_gala">
 <td>Swordfish Gala</td>
 <td>4</td>
 <td>Swordfish</td>
 <td>800</td>
-<td>15,000 coins, 35,000 XP, 5,500 rep, 250× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a>, 30× <a href="Mining.html#adamantite_ore">Adamantite Ore</a></td>
+<td>15,000 coins, 35,000 XP, 250× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a>, 30× <a href="Mining.html#adamantite_ore">Adamantite Ore</a></td>
 </tr>
 <tr id="monkfish_mastery">
 <td>Monkfish Mastery</td>
 <td>5</td>
 <td>Monkfish</td>
 <td>1,500</td>
-<td>25,000 coins, 55,000 XP, 10,000 rep, 250× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a>, 40× <a href="Mining.html#gold_ore">Gold Ore</a></td>
+<td>25,000 coins, 55,000 XP, 250× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a>, 40× <a href="Mining.html#gold_ore">Gold Ore</a></td>
 </tr>
 <tr id="shark_special">
 <td>Shark Special</td>
 <td>6</td>
 <td>Shark</td>
 <td>1,000</td>
-<td>40,000 coins, 90,000 XP, 17,500 rep, 200× <a href="Fishing.html#raw_shark">Raw Shark</a>, 25× <a href="Mining.html#platinum_ore">Platinum Ore</a></td>
+<td>40,000 coins, 90,000 XP, 200× <a href="Fishing.html#raw_shark">Raw Shark</a>, 25× <a href="Mining.html#platinum_ore">Platinum Ore</a></td>
 </tr>
 <tr id="mutton_marathon">
 <td>Mutton Marathon</td>
 <td>7</td>
 <td>Cooked Mutton</td>
 <td>2,500</td>
-<td>60,000 coins, 140,000 XP, 32,500 rep, 2800× Raw Mutton, 25× <a href="Mining.html#runite_ore">Runite Ore</a></td>
+<td>60,000 coins, 140,000 XP, 2800× Raw Mutton, 25× <a href="Mining.html#runite_ore">Runite Ore</a></td>
 </tr>
 <tr id="sea_turtle_feast">
 <td>Sea Turtle Feast</td>
 <td>8</td>
 <td>Sea Turtle</td>
 <td>2,000</td>
-<td>80,000 coins, 200,000 XP, 55,000 rep, 100× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 2× Diamond</td>
+<td>80,000 coins, 200,000 XP, 100× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 2× Diamond</td>
 </tr>
 <tr id="master_chef">
 <td>Master Chef</td>
 <td>9</td>
 <td>Sea Turtle</td>
 <td>1,000</td>
-<td>100,000 coins, 350,000 XP, 100,000 rep, 250× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 5× Diamond, 40× <a href="Mining.html#runite_ore">Runite Ore</a>, 1× <a href="Equipment.html#cooking_guild_cape">Cooking Guild Cape</a></td>
+<td>100,000 coins, 350,000 XP, 250× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 5× Diamond, 40× <a href="Mining.html#runite_ore">Runite Ore</a>, 1× <a href="Equipment.html#cooking_guild_cape">Cooking Guild Cape</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="fletching">Fletching</h2>
+<h2 id="fletchers-guild">Fletchers Guild</h2>
 <table>
 <thead>
 <tr>
@@ -781,74 +782,74 @@
 <td>0</td>
 <td>Arrow Shaft</td>
 <td>500</td>
-<td>1,000 coins, 3,000 XP, 250 rep, 100× <a href="Woodcutting.html#log">Log</a>, 40× <a href="Mining.html#copper_ore">Copper Ore</a></td>
+<td>1,000 coins, 3,000 XP, 100× <a href="Woodcutting.html#log">Log</a>, 40× <a href="Mining.html#copper_ore">Copper Ore</a></td>
 </tr>
 <tr id="bronze_arrows">
 <td>Bronze Arrows</td>
 <td>1</td>
 <td>Bronze Arrow</td>
 <td>800</td>
-<td>2,500 coins, 6,000 XP, 500 rep, 120× <a href="Woodcutting.html#log">Log</a>, 60× <a href="Mining.html#iron_ore">Iron Ore</a></td>
+<td>2,500 coins, 6,000 XP, 120× <a href="Woodcutting.html#log">Log</a>, 60× <a href="Mining.html#iron_ore">Iron Ore</a></td>
 </tr>
 <tr id="iron_flight">
 <td>Iron Flight</td>
 <td>2</td>
 <td>Iron Arrow</td>
 <td>1,200</td>
-<td>5,000 coins, 12,000 XP, 1,250 rep, 100× <a href="Woodcutting.html#oak_log">Oak Log</a>, 80× <a href="Mining.html#coal">Coal</a></td>
+<td>5,000 coins, 12,000 XP, 100× <a href="Woodcutting.html#oak_log">Oak Log</a>, 80× <a href="Mining.html#coal">Coal</a></td>
 </tr>
 <tr id="steel_volley">
 <td>Steel Volley</td>
 <td>3</td>
 <td>Steel Arrow</td>
 <td>1,500</td>
-<td>8,000 coins, 20,000 XP, 2,500 rep, 100× <a href="Woodcutting.html#willow_log">Willow Log</a>, 50× <a href="Mining.html#mithril_ore">Mithril Ore</a></td>
+<td>8,000 coins, 20,000 XP, 100× <a href="Woodcutting.html#willow_log">Willow Log</a>, 50× <a href="Mining.html#mithril_ore">Mithril Ore</a></td>
 </tr>
 <tr id="mithril_rain">
 <td>Mithril Rain</td>
 <td>4</td>
 <td>Mithril Arrow</td>
 <td>2,000</td>
-<td>15,000 coins, 35,000 XP, 5,500 rep, 80× <a href="Woodcutting.html#maple_log">Maple Log</a>, 40× <a href="Mining.html#adamantite_ore">Adamantite Ore</a></td>
+<td>15,000 coins, 35,000 XP, 80× <a href="Woodcutting.html#maple_log">Maple Log</a>, 40× <a href="Mining.html#adamantite_ore">Adamantite Ore</a></td>
 </tr>
 <tr id="adamantite_arsenal">
 <td>Adamantite Arsenal</td>
 <td>5</td>
 <td>Adamantite Arrow</td>
 <td>2,500</td>
-<td>25,000 coins, 55,000 XP, 10,000 rep, 60× <a href="Woodcutting.html#yew_log">Yew Log</a>, 30× <a href="Mining.html#platinum_ore">Platinum Ore</a></td>
+<td>25,000 coins, 55,000 XP, 60× <a href="Woodcutting.html#yew_log">Yew Log</a>, 30× <a href="Mining.html#platinum_ore">Platinum Ore</a></td>
 </tr>
 <tr id="runite_quiver">
 <td>Runite Quiver</td>
 <td>6</td>
 <td>Runite Arrow</td>
 <td>3,000</td>
-<td>40,000 coins, 90,000 XP, 17,500 rep, 50× <a href="Woodcutting.html#magic_log">Magic Log</a>, 30× <a href="Mining.html#runite_ore">Runite Ore</a></td>
+<td>40,000 coins, 90,000 XP, 50× <a href="Woodcutting.html#magic_log">Magic Log</a>, 30× <a href="Mining.html#runite_ore">Runite Ore</a></td>
 </tr>
 <tr id="yew_longbows">
 <td>Yew Longbows</td>
 <td>7</td>
 <td>Yew Longbow</td>
 <td>150</td>
-<td>60,000 coins, 140,000 XP, 32,500 rep, 120× <a href="Woodcutting.html#yew_log">Yew Log</a>, 30× <a href="Fishing.html#raw_shark">Raw Shark</a></td>
+<td>60,000 coins, 140,000 XP, 120× <a href="Woodcutting.html#yew_log">Yew Log</a>, 30× <a href="Fishing.html#raw_shark">Raw Shark</a></td>
 </tr>
 <tr id="magic_longbows">
 <td>Magic Longbows</td>
 <td>8</td>
 <td>Magic Longbow</td>
 <td>120</td>
-<td>80,000 coins, 200,000 XP, 55,000 rep, 100× <a href="Woodcutting.html#magic_log">Magic Log</a>, 2× Diamond</td>
+<td>80,000 coins, 200,000 XP, 100× <a href="Woodcutting.html#magic_log">Magic Log</a>, 2× Diamond</td>
 </tr>
 <tr id="master_fletcher">
 <td>Master Fletcher</td>
 <td>9</td>
 <td>Runite Arrow</td>
 <td>5,000</td>
-<td>100,000 coins, 350,000 XP, 100,000 rep, 50× <a href="Mining.html#runite_ore">Runite Ore</a>, 80× <a href="Woodcutting.html#magic_log">Magic Log</a>, 4× Diamond, 1× <a href="Equipment.html#fletching_guild_cape">Fletching Guild Cape</a></td>
+<td>100,000 coins, 350,000 XP, 50× <a href="Mining.html#runite_ore">Runite Ore</a>, 80× <a href="Woodcutting.html#magic_log">Magic Log</a>, 4× Diamond, 1× <a href="Equipment.html#fletching_guild_cape">Fletching Guild Cape</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="crafting">Crafting</h2>
+<h2 id="crafting-guild">Crafting Guild</h2>
 <table>
 <thead>
 <tr>
@@ -865,74 +866,74 @@
 <td>0</td>
 <td>Silver Ring</td>
 <td>150</td>
-<td>1,000 coins, 3,000 XP, 250 rep, 120× <a href="Mining.html#silver_ore">Silver Ore</a>, 40× <a href="Fishing.html#raw_trout">Raw Trout</a></td>
+<td>1,000 coins, 3,000 XP, 120× <a href="Mining.html#silver_ore">Silver Ore</a>, 40× <a href="Fishing.html#raw_trout">Raw Trout</a></td>
 </tr>
 <tr id="gold_trinkets">
 <td>Gold Trinkets</td>
 <td>1</td>
 <td>Gold Ring</td>
 <td>200</td>
-<td>2,500 coins, 6,000 XP, 500 rep, 120× <a href="Mining.html#gold_ore">Gold Ore</a>, 50× <a href="Fishing.html#raw_salmon">Raw Salmon</a></td>
+<td>2,500 coins, 6,000 XP, 120× <a href="Mining.html#gold_ore">Gold Ore</a>, 50× <a href="Fishing.html#raw_salmon">Raw Salmon</a></td>
 </tr>
 <tr id="sapphire_set">
 <td>Sapphire Set</td>
 <td>2</td>
 <td>Gold Sapphire Ring</td>
 <td>150</td>
-<td>5,000 coins, 12,000 XP, 1,250 rep, 100× <a href="Mining.html#gold_ore">Gold Ore</a>, 100× Sapphire, 60× <a href="Fishing.html#raw_tuna">Raw Tuna</a></td>
+<td>5,000 coins, 12,000 XP, 100× <a href="Mining.html#gold_ore">Gold Ore</a>, 100× Sapphire, 60× <a href="Fishing.html#raw_tuna">Raw Tuna</a></td>
 </tr>
 <tr id="emerald_collection">
 <td>Emerald Collection</td>
 <td>3</td>
 <td>Gold Emerald Ring</td>
 <td>150</td>
-<td>8,000 coins, 20,000 XP, 2,500 rep, 100× <a href="Mining.html#gold_ore">Gold Ore</a>, 100× Emerald, 40× <a href="Fishing.html#raw_lobster">Raw Lobster</a></td>
+<td>8,000 coins, 20,000 XP, 100× <a href="Mining.html#gold_ore">Gold Ore</a>, 100× Emerald, 40× <a href="Fishing.html#raw_lobster">Raw Lobster</a></td>
 </tr>
 <tr id="ruby_rings">
 <td>Ruby Rings</td>
 <td>4</td>
 <td>Gold Ruby Ring</td>
 <td>120</td>
-<td>15,000 coins, 35,000 XP, 5,500 rep, 100× <a href="Mining.html#gold_ore">Gold Ore</a>, 100× Ruby, 40× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a></td>
+<td>15,000 coins, 35,000 XP, 100× <a href="Mining.html#gold_ore">Gold Ore</a>, 100× Ruby, 40× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a></td>
 </tr>
 <tr id="diamond_crafting">
 <td>Diamond Crafting</td>
 <td>5</td>
 <td>Gold Diamond Ring</td>
 <td>100</td>
-<td>25,000 coins, 55,000 XP, 10,000 rep, 80× <a href="Mining.html#gold_ore">Gold Ore</a>, 80× Diamond, 40× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a></td>
+<td>25,000 coins, 55,000 XP, 80× <a href="Mining.html#gold_ore">Gold Ore</a>, 80× Diamond, 40× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a></td>
 </tr>
 <tr id="platinum_jewels">
 <td>Platinum Jewels</td>
 <td>6</td>
 <td>Platinum Ring</td>
 <td>200</td>
-<td>40,000 coins, 90,000 XP, 17,500 rep, 120× <a href="Mining.html#platinum_ore">Platinum Ore</a>, 40× <a href="Fishing.html#raw_shark">Raw Shark</a></td>
+<td>40,000 coins, 90,000 XP, 120× <a href="Mining.html#platinum_ore">Platinum Ore</a>, 40× <a href="Fishing.html#raw_shark">Raw Shark</a></td>
 </tr>
 <tr id="platinum_necklaces">
 <td>Platinum Necklaces</td>
 <td>7</td>
 <td>Platinum Necklace</td>
 <td>300</td>
-<td>60,000 coins, 140,000 XP, 32,500 rep, 150× <a href="Mining.html#platinum_ore">Platinum Ore</a>, 30× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a></td>
+<td>60,000 coins, 140,000 XP, 150× <a href="Mining.html#platinum_ore">Platinum Ore</a>, 30× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a></td>
 </tr>
 <tr id="gem_hoard">
 <td>Gem Hoard</td>
 <td>8</td>
 <td>Platinum Diamond Ring</td>
 <td>200</td>
-<td>80,000 coins, 200,000 XP, 55,000 rep, 100× <a href="Mining.html#platinum_ore">Platinum Ore</a>, 100× Diamond, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a></td>
+<td>80,000 coins, 200,000 XP, 100× <a href="Mining.html#platinum_ore">Platinum Ore</a>, 100× Diamond, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a></td>
 </tr>
 <tr id="master_crafter">
 <td>Master Crafter</td>
 <td>9</td>
 <td>Platinum Diamond Necklace</td>
 <td>400</td>
-<td>100,000 coins, 350,000 XP, 100,000 rep, 150× Diamond, 40× <a href="Mining.html#runite_ore">Runite Ore</a>, 30× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 1× <a href="Equipment.html#crafting_guild_cape">Crafting Guild Cape</a></td>
+<td>100,000 coins, 350,000 XP, 150× Diamond, 40× <a href="Mining.html#runite_ore">Runite Ore</a>, 30× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 1× <a href="Equipment.html#crafting_guild_cape">Crafting Guild Cape</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="runecrafting">Runecrafting</h2>
+<h2 id="runecrafters-guild">Runecrafters Guild</h2>
 <table>
 <thead>
 <tr>
@@ -949,74 +950,74 @@
 <td>0</td>
 <td>Air Rune</td>
 <td>800</td>
-<td>1,000 coins, 3,000 XP, 250 rep, 600× <a href="Mining.html#rune_essence">Rune Essence</a>, 40× <a href="Fishing.html#raw_trout">Raw Trout</a></td>
+<td>1,000 coins, 3,000 XP, 600× <a href="Mining.html#rune_essence">Rune Essence</a>, 40× <a href="Fishing.html#raw_trout">Raw Trout</a></td>
 </tr>
 <tr id="earth_batch">
 <td>Earth Batch</td>
 <td>1</td>
 <td>Earth Rune</td>
 <td>1,500</td>
-<td>2,500 coins, 6,000 XP, 500 rep, 600× <a href="Mining.html#rune_essence">Rune Essence</a>, 40× <a href="Fishing.html#raw_salmon">Raw Salmon</a></td>
+<td>2,500 coins, 6,000 XP, 600× <a href="Mining.html#rune_essence">Rune Essence</a>, 40× <a href="Fishing.html#raw_salmon">Raw Salmon</a></td>
 </tr>
 <tr id="fire_stockpile">
 <td>Fire Stockpile</td>
 <td>2</td>
 <td>Fire Rune</td>
 <td>2,500</td>
-<td>5,000 coins, 12,000 XP, 1,250 rep, 700× <a href="Mining.html#rune_essence">Rune Essence</a>, 60× <a href="Fishing.html#raw_tuna">Raw Tuna</a></td>
+<td>5,000 coins, 12,000 XP, 700× <a href="Mining.html#rune_essence">Rune Essence</a>, 60× <a href="Fishing.html#raw_tuna">Raw Tuna</a></td>
 </tr>
 <tr id="mind_craft">
 <td>Mind Craft</td>
 <td>3</td>
 <td>Mind Rune</td>
 <td>2,000</td>
-<td>8,000 coins, 20,000 XP, 2,500 rep, 700× <a href="Mining.html#rune_essence">Rune Essence</a>, 50× <a href="Fishing.html#raw_lobster">Raw Lobster</a></td>
+<td>8,000 coins, 20,000 XP, 700× <a href="Mining.html#rune_essence">Rune Essence</a>, 50× <a href="Fishing.html#raw_lobster">Raw Lobster</a></td>
 </tr>
 <tr id="chaos_order">
 <td>Chaos Order</td>
 <td>4</td>
 <td>Chaos Rune</td>
 <td>3,000</td>
-<td>15,000 coins, 35,000 XP, 5,500 rep, 600× <a href="Mining.html#rune_essence">Rune Essence</a>, 50× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a></td>
+<td>15,000 coins, 35,000 XP, 600× <a href="Mining.html#rune_essence">Rune Essence</a>, 50× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a></td>
 </tr>
 <tr id="death_batch">
 <td>Death Batch</td>
 <td>5</td>
 <td>Death Rune</td>
 <td>2,500</td>
-<td>25,000 coins, 55,000 XP, 10,000 rep, 600× <a href="Mining.html#rune_essence">Rune Essence</a>, 50× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a></td>
+<td>25,000 coins, 55,000 XP, 600× <a href="Mining.html#rune_essence">Rune Essence</a>, 50× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a></td>
 </tr>
 <tr id="blood_reserve">
 <td>Blood Reserve</td>
 <td>6</td>
 <td>Blood Rune</td>
 <td>2,000</td>
-<td>40,000 coins, 90,000 XP, 17,500 rep, 600× <a href="Mining.html#rune_essence">Rune Essence</a>, 40× <a href="Fishing.html#raw_shark">Raw Shark</a></td>
+<td>40,000 coins, 90,000 XP, 600× <a href="Mining.html#rune_essence">Rune Essence</a>, 40× <a href="Fishing.html#raw_shark">Raw Shark</a></td>
 </tr>
 <tr id="rune_vault">
 <td>Rune Vault</td>
 <td>7</td>
 <td>Blood Rune</td>
 <td>5,000</td>
-<td>60,000 coins, 140,000 XP, 32,500 rep, 1200× <a href="Mining.html#rune_essence">Rune Essence</a>, 30× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a></td>
+<td>60,000 coins, 140,000 XP, 1200× <a href="Mining.html#rune_essence">Rune Essence</a>, 30× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a></td>
 </tr>
 <tr id="arcane_stockpile">
 <td>Arcane Stockpile</td>
 <td>8</td>
 <td>Blood Rune</td>
 <td>8,000</td>
-<td>80,000 coins, 200,000 XP, 55,000 rep, 2400× <a href="Mining.html#rune_essence">Rune Essence</a>, 2× Diamond, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a></td>
+<td>80,000 coins, 200,000 XP, 2400× <a href="Mining.html#rune_essence">Rune Essence</a>, 2× Diamond, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a></td>
 </tr>
 <tr id="master_runecraftsman">
 <td>Master Runecraftsman</td>
 <td>9</td>
 <td>Blood Rune</td>
 <td>12,000</td>
-<td>100,000 coins, 350,000 XP, 100,000 rep, 5000× <a href="Mining.html#rune_essence">Rune Essence</a>, 5× Diamond, 40× <a href="Mining.html#runite_ore">Runite Ore</a>, 1× <a href="Equipment.html#runecrafting_guild_cape">Runecrafting Guild Cape</a></td>
+<td>100,000 coins, 350,000 XP, 5000× <a href="Mining.html#rune_essence">Rune Essence</a>, 5× Diamond, 40× <a href="Mining.html#runite_ore">Runite Ore</a>, 1× <a href="Equipment.html#runecrafting_guild_cape">Runecrafting Guild Cape</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="herblore">Herblore</h2>
+<h2 id="herblorists-guild">Herblorists Guild</h2>
 <table>
 <thead>
 <tr>
@@ -1033,74 +1034,74 @@
 <td>0</td>
 <td>Attack Brew</td>
 <td>80</td>
-<td>1,000 coins, 3,000 XP, 250 rep, 120× <a href="Farming.html#potato">Potato</a>, 40× <a href="Fishing.html#raw_trout">Raw Trout</a></td>
+<td>1,000 coins, 3,000 XP, 120× <a href="Farming.html#potato">Potato</a>, 40× <a href="Fishing.html#raw_trout">Raw Trout</a></td>
 </tr>
 <tr id="attack_potions">
 <td>Attack Potions</td>
 <td>1</td>
 <td>Attack Potion</td>
 <td>120</td>
-<td>2,500 coins, 6,000 XP, 500 rep, 60× <a href="Farming.html#potato">Potato</a>, 50× <a href="Fishing.html#raw_salmon">Raw Salmon</a>, 50× <a href="Mining.html#iron_ore">Iron Ore</a></td>
+<td>2,500 coins, 6,000 XP, 60× <a href="Farming.html#potato">Potato</a>, 50× <a href="Fishing.html#raw_salmon">Raw Salmon</a>, 50× <a href="Mining.html#iron_ore">Iron Ore</a></td>
 </tr>
 <tr id="strength_potions">
 <td>Strength Potions</td>
 <td>2</td>
 <td>Strength Potion</td>
 <td>180</td>
-<td>5,000 coins, 12,000 XP, 1,250 rep, 60× <a href="Farming.html#carrot">Carrot</a>, 60× <a href="Fishing.html#raw_tuna">Raw Tuna</a>, 60× <a href="Mining.html#coal">Coal</a></td>
+<td>5,000 coins, 12,000 XP, 60× <a href="Farming.html#carrot">Carrot</a>, 60× <a href="Fishing.html#raw_tuna">Raw Tuna</a>, 60× <a href="Mining.html#coal">Coal</a></td>
 </tr>
 <tr id="ranging_potions">
 <td>Ranging Potions</td>
 <td>3</td>
 <td>Ranging Potion</td>
 <td>250</td>
-<td>8,000 coins, 20,000 XP, 2,500 rep, 50× <a href="Fishing.html#raw_lobster">Raw Lobster</a>, 40× <a href="Mining.html#mithril_ore">Mithril Ore</a></td>
+<td>8,000 coins, 20,000 XP, 50× <a href="Fishing.html#raw_lobster">Raw Lobster</a>, 40× <a href="Mining.html#mithril_ore">Mithril Ore</a></td>
 </tr>
 <tr id="magic_potions">
 <td>Magic Potions</td>
 <td>4</td>
 <td>Magic Potion</td>
 <td>250</td>
-<td>15,000 coins, 35,000 XP, 5,500 rep, 50× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a>, 30× <a href="Mining.html#adamantite_ore">Adamantite Ore</a></td>
+<td>15,000 coins, 35,000 XP, 50× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a>, 30× <a href="Mining.html#adamantite_ore">Adamantite Ore</a></td>
 </tr>
 <tr id="super_brews">
 <td>Super Brews</td>
 <td>5</td>
 <td>Super Strength Potion</td>
 <td>300</td>
-<td>25,000 coins, 55,000 XP, 10,000 rep, 50× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a>, 40× <a href="Mining.html#gold_ore">Gold Ore</a></td>
+<td>25,000 coins, 55,000 XP, 50× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a>, 40× <a href="Mining.html#gold_ore">Gold Ore</a></td>
 </tr>
 <tr id="super_ranging">
 <td>Super Ranging</td>
 <td>6</td>
 <td>Super Ranging Potion</td>
 <td>300</td>
-<td>40,000 coins, 90,000 XP, 17,500 rep, 40× <a href="Fishing.html#raw_shark">Raw Shark</a>, 25× <a href="Mining.html#platinum_ore">Platinum Ore</a></td>
+<td>40,000 coins, 90,000 XP, 40× <a href="Fishing.html#raw_shark">Raw Shark</a>, 25× <a href="Mining.html#platinum_ore">Platinum Ore</a></td>
 </tr>
 <tr id="super_magic">
 <td>Super Magic</td>
 <td>7</td>
 <td>Super Magic Potion</td>
 <td>350</td>
-<td>60,000 coins, 140,000 XP, 32,500 rep, 30× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a>, 25× <a href="Mining.html#runite_ore">Runite Ore</a></td>
+<td>60,000 coins, 140,000 XP, 30× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a>, 25× <a href="Mining.html#runite_ore">Runite Ore</a></td>
 </tr>
 <tr id="overload_stockpile">
 <td>Overload Stockpile</td>
 <td>8</td>
 <td>Overload Potion</td>
 <td>200</td>
-<td>80,000 coins, 200,000 XP, 55,000 rep, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 2× Diamond, 30× <a href="Mining.html#runite_ore">Runite Ore</a></td>
+<td>80,000 coins, 200,000 XP, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 2× Diamond, 30× <a href="Mining.html#runite_ore">Runite Ore</a></td>
 </tr>
 <tr id="master_herbalist">
 <td>Master Herbalist</td>
 <td>9</td>
 <td>Overload Potion</td>
 <td>500</td>
-<td>100,000 coins, 350,000 XP, 100,000 rep, 5× Diamond, 50× <a href="Mining.html#runite_ore">Runite Ore</a>, 30× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 1× <a href="Equipment.html#herblore_guild_cape">Herblore Guild Cape</a></td>
+<td>100,000 coins, 350,000 XP, 5× Diamond, 50× <a href="Mining.html#runite_ore">Runite Ore</a>, 30× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 1× <a href="Equipment.html#herblore_guild_cape">Herblore Guild Cape</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="warriors">Warriors</h2>
+<h2 id="warriors-guild">Warriors Guild</h2>
 <table>
 <thead>
 <tr>
@@ -1117,74 +1118,74 @@
 <td>0</td>
 <td>Any</td>
 <td>200</td>
-<td>1,000 coins, 3,000 XP, 250 rep, 60× <a href="Mining.html#copper_ore">Copper Ore</a>, 50× <a href="Fishing.html#raw_trout">Raw Trout</a>, 40× <a href="Woodcutting.html#log">Log</a></td>
+<td>1,000 coins, 3,000 XP, 60× <a href="Mining.html#copper_ore">Copper Ore</a>, 50× <a href="Fishing.html#raw_trout">Raw Trout</a>, 40× <a href="Woodcutting.html#log">Log</a></td>
 </tr>
 <tr id="skirmisher">
 <td>Skirmisher</td>
 <td>1</td>
 <td>Any</td>
 <td>500</td>
-<td>2,500 coins, 6,000 XP, 500 rep, 80× <a href="Mining.html#iron_ore">Iron Ore</a>, 60× <a href="Fishing.html#raw_salmon">Raw Salmon</a>, 30× <a href="Woodcutting.html#oak_log">Oak Log</a></td>
+<td>2,500 coins, 6,000 XP, 80× <a href="Mining.html#iron_ore">Iron Ore</a>, 60× <a href="Fishing.html#raw_salmon">Raw Salmon</a>, 30× <a href="Woodcutting.html#oak_log">Oak Log</a></td>
 </tr>
 <tr id="battle_hardened">
 <td>Battle-Hardened</td>
 <td>2</td>
 <td>Any</td>
 <td>1,000</td>
-<td>5,000 coins, 12,000 XP, 1,250 rep, 100× <a href="Mining.html#coal">Coal</a>, 80× <a href="Fishing.html#raw_tuna">Raw Tuna</a>, 40× <a href="Woodcutting.html#willow_log">Willow Log</a></td>
+<td>5,000 coins, 12,000 XP, 100× <a href="Mining.html#coal">Coal</a>, 80× <a href="Fishing.html#raw_tuna">Raw Tuna</a>, 40× <a href="Woodcutting.html#willow_log">Willow Log</a></td>
 </tr>
 <tr id="veteran_soldier">
 <td>Veteran Soldier</td>
 <td>3</td>
 <td>Any</td>
 <td>2,000</td>
-<td>8,000 coins, 20,000 XP, 2,500 rep, 60× <a href="Mining.html#mithril_ore">Mithril Ore</a>, 60× <a href="Fishing.html#raw_lobster">Raw Lobster</a>, 40× <a href="Woodcutting.html#maple_log">Maple Log</a></td>
+<td>8,000 coins, 20,000 XP, 60× <a href="Mining.html#mithril_ore">Mithril Ore</a>, 60× <a href="Fishing.html#raw_lobster">Raw Lobster</a>, 40× <a href="Woodcutting.html#maple_log">Maple Log</a></td>
 </tr>
 <tr id="elite_warrior">
 <td>Elite Warrior</td>
 <td>4</td>
 <td>Any</td>
 <td>4,000</td>
-<td>15,000 coins, 35,000 XP, 5,500 rep, 50× <a href="Mining.html#adamantite_ore">Adamantite Ore</a>, 60× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a>, 25× <a href="Woodcutting.html#yew_log">Yew Log</a></td>
+<td>15,000 coins, 35,000 XP, 50× <a href="Mining.html#adamantite_ore">Adamantite Ore</a>, 60× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a>, 25× <a href="Woodcutting.html#yew_log">Yew Log</a></td>
 </tr>
 <tr id="battlefield_legend">
 <td>Battlefield Legend</td>
 <td>5</td>
 <td>Any</td>
 <td>7,000</td>
-<td>25,000 coins, 55,000 XP, 10,000 rep, 50× <a href="Mining.html#gold_ore">Gold Ore</a>, 60× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a>, 20× <a href="Woodcutting.html#magic_log">Magic Log</a></td>
+<td>25,000 coins, 55,000 XP, 50× <a href="Mining.html#gold_ore">Gold Ore</a>, 60× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a>, 20× <a href="Woodcutting.html#magic_log">Magic Log</a></td>
 </tr>
 <tr id="champion">
 <td>Champion</td>
 <td>6</td>
 <td>Any</td>
 <td>12,000</td>
-<td>40,000 coins, 90,000 XP, 17,500 rep, 40× <a href="Mining.html#platinum_ore">Platinum Ore</a>, 50× <a href="Fishing.html#raw_shark">Raw Shark</a>, 15× <a href="Woodcutting.html#redwood_log">Redwood Log</a></td>
+<td>40,000 coins, 90,000 XP, 40× <a href="Mining.html#platinum_ore">Platinum Ore</a>, 50× <a href="Fishing.html#raw_shark">Raw Shark</a>, 15× <a href="Woodcutting.html#redwood_log">Redwood Log</a></td>
 </tr>
 <tr id="warlord">
 <td>Warlord</td>
 <td>7</td>
 <td>Any</td>
 <td>18,000</td>
-<td>60,000 coins, 140,000 XP, 32,500 rep, 35× <a href="Mining.html#runite_ore">Runite Ore</a>, 40× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a>, 5× Emerald</td>
+<td>60,000 coins, 140,000 XP, 35× <a href="Mining.html#runite_ore">Runite Ore</a>, 40× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a>, 5× Emerald</td>
 </tr>
 <tr id="conqueror">
 <td>Conqueror</td>
 <td>8</td>
 <td>Any</td>
 <td>25,000</td>
-<td>80,000 coins, 200,000 XP, 55,000 rep, 50× <a href="Mining.html#runite_ore">Runite Ore</a>, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 5× Ruby</td>
+<td>80,000 coins, 200,000 XP, 50× <a href="Mining.html#runite_ore">Runite Ore</a>, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 5× Ruby</td>
 </tr>
 <tr id="master_warrior">
 <td>Master Warrior</td>
 <td>9</td>
 <td>Any</td>
 <td>35,000</td>
-<td>100,000 coins, 350,000 XP, 100,000 rep, 80× <a href="Mining.html#runite_ore">Runite Ore</a>, 5× Diamond, 30× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 1× <a href="Equipment.html#warriors_guild_cape">Warriors Guild Cape</a></td>
+<td>100,000 coins, 350,000 XP, 80× <a href="Mining.html#runite_ore">Runite Ore</a>, 5× Diamond, 30× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 1× <a href="Equipment.html#warriors_guild_cape">Warriors Guild Cape</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="archers">Archers</h2>
+<h2 id="archers-guild">Archers Guild</h2>
 <table>
 <thead>
 <tr>
@@ -1201,74 +1202,74 @@
 <td>0</td>
 <td>Any</td>
 <td>200</td>
-<td>1,000 coins, 3,000 XP, 250 rep, 80× <a href="Woodcutting.html#log">Log</a>, 50× <a href="Fishing.html#raw_trout">Raw Trout</a>, 40× <a href="Mining.html#copper_ore">Copper Ore</a></td>
+<td>1,000 coins, 3,000 XP, 80× <a href="Woodcutting.html#log">Log</a>, 50× <a href="Fishing.html#raw_trout">Raw Trout</a>, 40× <a href="Mining.html#copper_ore">Copper Ore</a></td>
 </tr>
 <tr id="keen_eye">
 <td>Keen Eye</td>
 <td>1</td>
 <td>Any</td>
 <td>500</td>
-<td>2,500 coins, 6,000 XP, 500 rep, 60× <a href="Woodcutting.html#oak_log">Oak Log</a>, 60× <a href="Fishing.html#raw_salmon">Raw Salmon</a>, 50× <a href="Mining.html#iron_ore">Iron Ore</a></td>
+<td>2,500 coins, 6,000 XP, 60× <a href="Woodcutting.html#oak_log">Oak Log</a>, 60× <a href="Fishing.html#raw_salmon">Raw Salmon</a>, 50× <a href="Mining.html#iron_ore">Iron Ore</a></td>
 </tr>
 <tr id="marksman">
 <td>Marksman</td>
 <td>2</td>
 <td>Any</td>
 <td>1,000</td>
-<td>5,000 coins, 12,000 XP, 1,250 rep, 80× <a href="Woodcutting.html#willow_log">Willow Log</a>, 80× <a href="Fishing.html#raw_tuna">Raw Tuna</a>, 80× <a href="Mining.html#coal">Coal</a></td>
+<td>5,000 coins, 12,000 XP, 80× <a href="Woodcutting.html#willow_log">Willow Log</a>, 80× <a href="Fishing.html#raw_tuna">Raw Tuna</a>, 80× <a href="Mining.html#coal">Coal</a></td>
 </tr>
 <tr id="sharpshooter">
 <td>Sharpshooter</td>
 <td>3</td>
 <td>Any</td>
 <td>2,000</td>
-<td>8,000 coins, 20,000 XP, 2,500 rep, 60× <a href="Woodcutting.html#maple_log">Maple Log</a>, 60× <a href="Fishing.html#raw_lobster">Raw Lobster</a>, 40× <a href="Mining.html#mithril_ore">Mithril Ore</a></td>
+<td>8,000 coins, 20,000 XP, 60× <a href="Woodcutting.html#maple_log">Maple Log</a>, 60× <a href="Fishing.html#raw_lobster">Raw Lobster</a>, 40× <a href="Mining.html#mithril_ore">Mithril Ore</a></td>
 </tr>
 <tr id="eagle_eye">
 <td>Eagle Eye</td>
 <td>4</td>
 <td>Any</td>
 <td>4,000</td>
-<td>15,000 coins, 35,000 XP, 5,500 rep, 50× <a href="Woodcutting.html#yew_log">Yew Log</a>, 60× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a>, 30× <a href="Mining.html#adamantite_ore">Adamantite Ore</a></td>
+<td>15,000 coins, 35,000 XP, 50× <a href="Woodcutting.html#yew_log">Yew Log</a>, 60× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a>, 30× <a href="Mining.html#adamantite_ore">Adamantite Ore</a></td>
 </tr>
 <tr id="deadshot">
 <td>Deadshot</td>
 <td>5</td>
 <td>Any</td>
 <td>7,000</td>
-<td>25,000 coins, 55,000 XP, 10,000 rep, 35× <a href="Woodcutting.html#magic_log">Magic Log</a>, 60× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a>, 25× <a href="Mining.html#platinum_ore">Platinum Ore</a></td>
+<td>25,000 coins, 55,000 XP, 35× <a href="Woodcutting.html#magic_log">Magic Log</a>, 60× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a>, 25× <a href="Mining.html#platinum_ore">Platinum Ore</a></td>
 </tr>
 <tr id="sniper">
 <td>Sniper</td>
 <td>6</td>
 <td>Any</td>
 <td>12,000</td>
-<td>40,000 coins, 90,000 XP, 17,500 rep, 25× <a href="Woodcutting.html#redwood_log">Redwood Log</a>, 50× <a href="Fishing.html#raw_shark">Raw Shark</a>, 10× Sapphire</td>
+<td>40,000 coins, 90,000 XP, 25× <a href="Woodcutting.html#redwood_log">Redwood Log</a>, 50× <a href="Fishing.html#raw_shark">Raw Shark</a>, 10× Sapphire</td>
 </tr>
 <tr id="hawkeye">
 <td>Hawkeye</td>
 <td>7</td>
 <td>Any</td>
 <td>18,000</td>
-<td>60,000 coins, 140,000 XP, 32,500 rep, 35× <a href="Mining.html#runite_ore">Runite Ore</a>, 40× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a>, 5× Emerald</td>
+<td>60,000 coins, 140,000 XP, 35× <a href="Mining.html#runite_ore">Runite Ore</a>, 40× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a>, 5× Emerald</td>
 </tr>
 <tr id="phantom">
 <td>Phantom</td>
 <td>8</td>
 <td>Any</td>
 <td>25,000</td>
-<td>80,000 coins, 200,000 XP, 55,000 rep, 50× <a href="Mining.html#runite_ore">Runite Ore</a>, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 5× Ruby</td>
+<td>80,000 coins, 200,000 XP, 50× <a href="Mining.html#runite_ore">Runite Ore</a>, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 5× Ruby</td>
 </tr>
 <tr id="master_archer">
 <td>Master Archer</td>
 <td>9</td>
 <td>Any</td>
 <td>35,000</td>
-<td>100,000 coins, 350,000 XP, 100,000 rep, 60× <a href="Woodcutting.html#magic_log">Magic Log</a>, 5× Diamond, 30× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 1× <a href="Equipment.html#archers_guild_cape">Archers Guild Cape</a></td>
+<td>100,000 coins, 350,000 XP, 60× <a href="Woodcutting.html#magic_log">Magic Log</a>, 5× Diamond, 30× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 1× <a href="Equipment.html#archers_guild_cape">Archers Guild Cape</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="mages">Mages</h2>
+<h2 id="mages-guild">Mages Guild</h2>
 <table>
 <thead>
 <tr>
@@ -1285,74 +1286,74 @@
 <td>0</td>
 <td>Any</td>
 <td>200</td>
-<td>1,000 coins, 3,000 XP, 250 rep, 100× <a href="Runecrafting.html#air_rune">Air Rune</a>, 50× <a href="Fishing.html#raw_trout">Raw Trout</a>, 40× <a href="Mining.html#copper_ore">Copper Ore</a></td>
+<td>1,000 coins, 3,000 XP, 100× <a href="Runecrafting.html#air_rune">Air Rune</a>, 50× <a href="Fishing.html#raw_trout">Raw Trout</a>, 40× <a href="Mining.html#copper_ore">Copper Ore</a></td>
 </tr>
 <tr id="arcane_student">
 <td>Arcane Student</td>
 <td>1</td>
 <td>Any</td>
 <td>500</td>
-<td>2,500 coins, 6,000 XP, 500 rep, 150× <a href="Runecrafting.html#earth_rune">Earth Rune</a>, 60× <a href="Fishing.html#raw_salmon">Raw Salmon</a>, 40× <a href="Mining.html#iron_ore">Iron Ore</a></td>
+<td>2,500 coins, 6,000 XP, 150× <a href="Runecrafting.html#earth_rune">Earth Rune</a>, 60× <a href="Fishing.html#raw_salmon">Raw Salmon</a>, 40× <a href="Mining.html#iron_ore">Iron Ore</a></td>
 </tr>
 <tr id="journeyman_mage">
 <td>Journeyman Mage</td>
 <td>2</td>
 <td>Any</td>
 <td>1,000</td>
-<td>5,000 coins, 12,000 XP, 1,250 rep, 200× <a href="Runecrafting.html#fire_rune">Fire Rune</a>, 80× <a href="Fishing.html#raw_tuna">Raw Tuna</a>, 60× <a href="Mining.html#coal">Coal</a></td>
+<td>5,000 coins, 12,000 XP, 200× <a href="Runecrafting.html#fire_rune">Fire Rune</a>, 80× <a href="Fishing.html#raw_tuna">Raw Tuna</a>, 60× <a href="Mining.html#coal">Coal</a></td>
 </tr>
 <tr id="chaos_wielder">
 <td>Chaos Wielder</td>
 <td>3</td>
 <td>Any</td>
 <td>2,000</td>
-<td>8,000 coins, 20,000 XP, 2,500 rep, 200× <a href="Runecrafting.html#chaos_rune">Chaos Rune</a>, 60× <a href="Fishing.html#raw_lobster">Raw Lobster</a>, 40× <a href="Mining.html#mithril_ore">Mithril Ore</a></td>
+<td>8,000 coins, 20,000 XP, 200× <a href="Runecrafting.html#chaos_rune">Chaos Rune</a>, 60× <a href="Fishing.html#raw_lobster">Raw Lobster</a>, 40× <a href="Mining.html#mithril_ore">Mithril Ore</a></td>
 </tr>
 <tr id="sorcerer">
 <td>Sorcerer</td>
 <td>4</td>
 <td>Any</td>
 <td>4,000</td>
-<td>15,000 coins, 35,000 XP, 5,500 rep, 200× <a href="Runecrafting.html#death_rune">Death Rune</a>, 60× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a>, 30× <a href="Mining.html#gold_ore">Gold Ore</a></td>
+<td>15,000 coins, 35,000 XP, 200× <a href="Runecrafting.html#death_rune">Death Rune</a>, 60× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a>, 30× <a href="Mining.html#gold_ore">Gold Ore</a></td>
 </tr>
 <tr id="warlock">
 <td>Warlock</td>
 <td>5</td>
 <td>Any</td>
 <td>7,000</td>
-<td>25,000 coins, 55,000 XP, 10,000 rep, 200× <a href="Runecrafting.html#blood_rune">Blood Rune</a>, 60× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a>, 30× <a href="Mining.html#adamantite_ore">Adamantite Ore</a></td>
+<td>25,000 coins, 55,000 XP, 200× <a href="Runecrafting.html#blood_rune">Blood Rune</a>, 60× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a>, 30× <a href="Mining.html#adamantite_ore">Adamantite Ore</a></td>
 </tr>
 <tr id="archmage">
 <td>Archmage</td>
 <td>6</td>
 <td>Any</td>
 <td>12,000</td>
-<td>40,000 coins, 90,000 XP, 17,500 rep, 400× <a href="Runecrafting.html#blood_rune">Blood Rune</a>, 50× <a href="Fishing.html#raw_shark">Raw Shark</a>, 25× <a href="Mining.html#platinum_ore">Platinum Ore</a></td>
+<td>40,000 coins, 90,000 XP, 400× <a href="Runecrafting.html#blood_rune">Blood Rune</a>, 50× <a href="Fishing.html#raw_shark">Raw Shark</a>, 25× <a href="Mining.html#platinum_ore">Platinum Ore</a></td>
 </tr>
 <tr id="lich">
 <td>Lich</td>
 <td>7</td>
 <td>Any</td>
 <td>18,000</td>
-<td>60,000 coins, 140,000 XP, 32,500 rep, 600× <a href="Runecrafting.html#blood_rune">Blood Rune</a>, 40× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a>, 25× <a href="Mining.html#runite_ore">Runite Ore</a></td>
+<td>60,000 coins, 140,000 XP, 600× <a href="Runecrafting.html#blood_rune">Blood Rune</a>, 40× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a>, 25× <a href="Mining.html#runite_ore">Runite Ore</a></td>
 </tr>
 <tr id="spellweaver">
 <td>Spellweaver</td>
 <td>8</td>
 <td>Any</td>
 <td>25,000</td>
-<td>80,000 coins, 200,000 XP, 55,000 rep, 1000× <a href="Runecrafting.html#blood_rune">Blood Rune</a>, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 2× Diamond</td>
+<td>80,000 coins, 200,000 XP, 1000× <a href="Runecrafting.html#blood_rune">Blood Rune</a>, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 2× Diamond</td>
 </tr>
 <tr id="grand_magus">
 <td>Grand Magus</td>
 <td>9</td>
 <td>Any</td>
 <td>35,000</td>
-<td>100,000 coins, 350,000 XP, 100,000 rep, 2000× <a href="Runecrafting.html#blood_rune">Blood Rune</a>, 5× Diamond, 30× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 1× <a href="Equipment.html#mages_guild_cape">Mages Guild Cape</a></td>
+<td>100,000 coins, 350,000 XP, 2000× <a href="Runecrafting.html#blood_rune">Blood Rune</a>, 5× Diamond, 30× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 1× <a href="Equipment.html#mages_guild_cape">Mages Guild Cape</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="prayer">Prayer</h2>
+<h2 id="prayer-guild">Prayer Guild</h2>
 <table>
 <thead>
 <tr>
@@ -1369,74 +1370,158 @@
 <td>0</td>
 <td>Any</td>
 <td>200</td>
-<td>1,000 coins, 3,000 XP, 250 rep, 60× <a href="Fishing.html#raw_trout">Raw Trout</a>, 50× <a href="Mining.html#copper_ore">Copper Ore</a>, 40× <a href="Woodcutting.html#log">Log</a></td>
+<td>1,000 coins, 3,000 XP, 60× <a href="Fishing.html#raw_trout">Raw Trout</a>, 50× <a href="Mining.html#copper_ore">Copper Ore</a>, 40× <a href="Woodcutting.html#log">Log</a></td>
 </tr>
 <tr id="devoted">
 <td>Devoted</td>
 <td>1</td>
 <td>Any</td>
 <td>400</td>
-<td>2,500 coins, 6,000 XP, 500 rep, 60× <a href="Fishing.html#raw_salmon">Raw Salmon</a>, 60× <a href="Mining.html#iron_ore">Iron Ore</a>, 30× <a href="Woodcutting.html#oak_log">Oak Log</a></td>
+<td>2,500 coins, 6,000 XP, 60× <a href="Fishing.html#raw_salmon">Raw Salmon</a>, 60× <a href="Mining.html#iron_ore">Iron Ore</a>, 30× <a href="Woodcutting.html#oak_log">Oak Log</a></td>
 </tr>
 <tr id="pious">
 <td>Pious</td>
 <td>2</td>
 <td>Any</td>
 <td>800</td>
-<td>5,000 coins, 12,000 XP, 1,250 rep, 80× <a href="Fishing.html#raw_tuna">Raw Tuna</a>, 80× <a href="Mining.html#coal">Coal</a>, 40× <a href="Woodcutting.html#willow_log">Willow Log</a></td>
+<td>5,000 coins, 12,000 XP, 80× <a href="Fishing.html#raw_tuna">Raw Tuna</a>, 80× <a href="Mining.html#coal">Coal</a>, 40× <a href="Woodcutting.html#willow_log">Willow Log</a></td>
 </tr>
 <tr id="righteous">
 <td>Righteous</td>
 <td>3</td>
 <td>Any</td>
 <td>1,500</td>
-<td>8,000 coins, 20,000 XP, 2,500 rep, 60× <a href="Fishing.html#raw_lobster">Raw Lobster</a>, 50× <a href="Mining.html#mithril_ore">Mithril Ore</a>, 30× <a href="Woodcutting.html#maple_log">Maple Log</a></td>
+<td>8,000 coins, 20,000 XP, 60× <a href="Fishing.html#raw_lobster">Raw Lobster</a>, 50× <a href="Mining.html#mithril_ore">Mithril Ore</a>, 30× <a href="Woodcutting.html#maple_log">Maple Log</a></td>
 </tr>
 <tr id="holy">
 <td>Holy</td>
 <td>4</td>
 <td>Any</td>
 <td>3,000</td>
-<td>15,000 coins, 35,000 XP, 5,500 rep, 60× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a>, 40× <a href="Mining.html#adamantite_ore">Adamantite Ore</a>, 25× <a href="Woodcutting.html#yew_log">Yew Log</a></td>
+<td>15,000 coins, 35,000 XP, 60× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a>, 40× <a href="Mining.html#adamantite_ore">Adamantite Ore</a>, 25× <a href="Woodcutting.html#yew_log">Yew Log</a></td>
 </tr>
 <tr id="sacred">
 <td>Sacred</td>
 <td>5</td>
 <td>Any</td>
 <td>5,000</td>
-<td>25,000 coins, 55,000 XP, 10,000 rep, 60× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a>, 40× <a href="Mining.html#gold_ore">Gold Ore</a>, 20× <a href="Woodcutting.html#magic_log">Magic Log</a></td>
+<td>25,000 coins, 55,000 XP, 60× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a>, 40× <a href="Mining.html#gold_ore">Gold Ore</a>, 20× <a href="Woodcutting.html#magic_log">Magic Log</a></td>
 </tr>
 <tr id="blessed">
 <td>Blessed</td>
 <td>6</td>
 <td>Any</td>
 <td>8,000</td>
-<td>40,000 coins, 90,000 XP, 17,500 rep, 50× <a href="Fishing.html#raw_shark">Raw Shark</a>, 30× <a href="Mining.html#platinum_ore">Platinum Ore</a>, 15× <a href="Woodcutting.html#redwood_log">Redwood Log</a></td>
+<td>40,000 coins, 90,000 XP, 50× <a href="Fishing.html#raw_shark">Raw Shark</a>, 30× <a href="Mining.html#platinum_ore">Platinum Ore</a>, 15× <a href="Woodcutting.html#redwood_log">Redwood Log</a></td>
 </tr>
 <tr id="divine">
 <td>Divine</td>
 <td>7</td>
 <td>Any</td>
 <td>12,000</td>
-<td>60,000 coins, 140,000 XP, 32,500 rep, 40× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a>, 30× <a href="Mining.html#runite_ore">Runite Ore</a>, 5× Emerald</td>
+<td>60,000 coins, 140,000 XP, 40× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a>, 30× <a href="Mining.html#runite_ore">Runite Ore</a>, 5× Emerald</td>
 </tr>
 <tr id="transcendent">
 <td>Transcendent</td>
 <td>8</td>
 <td>Any</td>
 <td>18,000</td>
-<td>80,000 coins, 200,000 XP, 55,000 rep, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 2× Diamond, 40× <a href="Mining.html#runite_ore">Runite Ore</a></td>
+<td>80,000 coins, 200,000 XP, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 2× Diamond, 40× <a href="Mining.html#runite_ore">Runite Ore</a></td>
 </tr>
 <tr id="high_priest">
 <td>High Priest</td>
 <td>9</td>
 <td>Any</td>
 <td>25,000</td>
-<td>100,000 coins, 350,000 XP, 100,000 rep, 5× Diamond, 60× <a href="Mining.html#runite_ore">Runite Ore</a>, 30× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 1× <a href="Equipment.html#prayer_guild_cape">Prayer Guild Cape</a></td>
+<td>100,000 coins, 350,000 XP, 5× Diamond, 60× <a href="Mining.html#runite_ore">Runite Ore</a>, 30× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 1× <a href="Equipment.html#prayer_guild_cape">Prayer Guild Cape</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="mercantile">Mercantile</h2>
+<h2 id="thieves-guild">Thieves Guild</h2>
+<table>
+<thead>
+<tr>
+<th>Quest</th>
+<th>Guild Level</th>
+<th>Target</th>
+<th>Amount</th>
+<th>Rewards</th>
+</tr>
+</thead>
+<tbody>
+<tr id="street_rat">
+<td>Street Rat</td>
+<td>0</td>
+<td>Peasant</td>
+<td>50</td>
+<td>1,000 coins, 3,000 XP, 20× <a href="Runecrafting.html#air_rune">Air Rune</a>, 10× Bread</td>
+</tr>
+<tr id="market_pilferer">
+<td>Market Pilferer</td>
+<td>1</td>
+<td>Merchant</td>
+<td>100</td>
+<td>2,500 coins, 6,000 XP, 30× <a href="Runecrafting.html#mind_rune">Mind Rune</a>, 30× <a href="Runecrafting.html#water_rune">Water Rune</a></td>
+</tr>
+<tr id="law_dodger">
+<td>Law Dodger</td>
+<td>2</td>
+<td>Guardsman</td>
+<td>150</td>
+<td>5,000 coins, 12,000 XP, 20× <a href="Runecrafting.html#chaos_rune">Chaos Rune</a>, 40× <a href="Fletching.html#iron_arrow">Iron Arrow</a></td>
+</tr>
+<tr id="skilled_fingers">
+<td>Skilled Fingers</td>
+<td>3</td>
+<td>Artisan</td>
+<td>200</td>
+<td>8,000 coins, 20,000 XP, 3× Sapphire, 20× Leather</td>
+</tr>
+<tr id="high_society">
+<td>High Society</td>
+<td>4</td>
+<td>Noble</td>
+<td>200</td>
+<td>15,000 coins, 35,000 XP, 30× <a href="Runecrafting.html#death_rune">Death Rune</a>, 2× Ruby</td>
+</tr>
+<tr id="city_shadow">
+<td>City Shadow</td>
+<td>5</td>
+<td>City Guard</td>
+<td>200</td>
+<td>25,000 coins, 55,000 XP, 20× <a href="Runecrafting.html#blood_rune">Blood Rune</a>, 2× <a href="Equipment.html#gold_necklace">Gold Necklace</a></td>
+</tr>
+<tr id="armed_and_nimble">
+<td>Armed and Nimble</td>
+<td>6</td>
+<td>Royal Guard</td>
+<td>300</td>
+<td>40,000 coins, 90,000 XP, 40× <a href="Runecrafting.html#blood_rune">Blood Rune</a>, 1× Diamond</td>
+</tr>
+<tr id="knights_folly">
+<td>Knights Folly</td>
+<td>7</td>
+<td>Knight</td>
+<td>250</td>
+<td>60,000 coins, 140,000 XP, 3× Diamond, 60× <a href="Runecrafting.html#blood_rune">Blood Rune</a></td>
+</tr>
+<tr id="sacred_pockets">
+<td>Sacred Pockets</td>
+<td>8</td>
+<td>Bishop</td>
+<td>200</td>
+<td>80,000 coins, 200,000 XP, 5× Diamond, 80× <a href="Runecrafting.html#blood_rune">Blood Rune</a></td>
+</tr>
+<tr id="master_thief">
+<td>Master Thief</td>
+<td>9</td>
+<td>High Priest</td>
+<td>350</td>
+<td>100,000 coins, 350,000 XP, 10× Diamond, 100× <a href="Runecrafting.html#blood_rune">Blood Rune</a>, 1× <a href="Equipment.html#thieving_guild_cape">Thieving Guild Cape</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="merchants-guild">Merchants Guild</h2>
 <table>
 <thead>
 <tr>
@@ -1453,74 +1538,74 @@
 <td>0</td>
 <td>Local Market</td>
 <td>1</td>
-<td>3,000 coins, 5,000 XP, 250 rep,</td>
+<td>3,000 coins, 5,000 XP,</td>
 </tr>
 <tr id="budding_merchant">
 <td>Budding Merchant</td>
 <td>1</td>
 <td>River Trading Post</td>
 <td>5</td>
-<td>10,000 coins, 15,000 XP, 500 rep,</td>
+<td>10,000 coins, 15,000 XP,</td>
 </tr>
 <tr id="river_trader">
 <td>River Trader</td>
 <td>2</td>
 <td>River Trading Post</td>
 <td>10</td>
-<td>25,000 coins, 40,000 XP, 1,250 rep,</td>
+<td>25,000 coins, 40,000 XP,</td>
 </tr>
 <tr id="caravan_master">
 <td>Caravan Master</td>
 <td>3</td>
 <td>Eastern Caravan</td>
 <td>20</td>
-<td>60,000 coins, 90,000 XP, 2,500 rep,</td>
+<td>60,000 coins, 90,000 XP,</td>
 </tr>
 <tr id="port_authority">
 <td>Port Authority</td>
 <td>4</td>
 <td>Eastern Caravan</td>
 <td>40</td>
-<td>150,000 coins, 200,000 XP, 5,500 rep,</td>
+<td>150,000 coins, 200,000 XP,</td>
 </tr>
 <tr id="merchant_prince">
 <td>Merchant Prince</td>
 <td>5</td>
 <td>Northern Ports</td>
 <td>75</td>
-<td>400,000 coins, 500,000 XP, 10,000 rep,</td>
+<td>400,000 coins, 500,000 XP,</td>
 </tr>
 <tr id="trade_baron">
 <td>Trade Baron</td>
 <td>6</td>
 <td>Northern Ports</td>
 <td>120</td>
-<td>800,000 coins, 1,000,000 XP, 17,500 rep,</td>
+<td>800,000 coins, 1,000,000 XP,</td>
 </tr>
 <tr id="grand_merchant">
 <td>Grand Merchant</td>
 <td>7</td>
 <td>Merchants Quarter</td>
 <td>200</td>
-<td>2,000,000 coins, 2,500,000 XP, 32,500 rep,</td>
+<td>2,000,000 coins, 2,500,000 XP,</td>
 </tr>
 <tr id="legendary_trader">
 <td>Legendary Trader</td>
 <td>8</td>
 <td>Merchants Quarter</td>
 <td>350</td>
-<td>5,000,000 coins, 6,000,000 XP, 55,000 rep,</td>
+<td>5,000,000 coins, 6,000,000 XP,</td>
 </tr>
 <tr id="exchange_master">
 <td>Exchange Master</td>
 <td>9</td>
 <td>Grand Exchange</td>
 <td>500</td>
-<td>10,000,000 coins, 12,000,000 XP, 100,000 rep, 1× <a href="Equipment.html#mercantile_guild_cape">Mercantile Guild Cape</a></td>
+<td>10,000,000 coins, 12,000,000 XP, 1× <a href="Equipment.html#mercantile_guild_cape">Mercantile Guild Cape</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="agility">Agility</h2>
+<h2 id="agility-guild">Agility Guild</h2>
 <table>
 <thead>
 <tr>
@@ -1537,70 +1622,70 @@
 <td>0</td>
 <td>Beginner Course</td>
 <td>3</td>
-<td>1,000 coins, 3,000 XP, 250 rep, 60× <a href="Fishing.html#raw_trout">Raw Trout</a>, 50× <a href="Mining.html#copper_ore">Copper Ore</a></td>
+<td>1,000 coins, 3,000 XP, 60× <a href="Fishing.html#raw_trout">Raw Trout</a>, 50× <a href="Mining.html#copper_ore">Copper Ore</a></td>
 </tr>
 <tr id="dedicated_runner">
 <td>Dedicated Runner</td>
 <td>1</td>
 <td>Novice Course</td>
 <td>6</td>
-<td>2,500 coins, 6,000 XP, 500 rep, 60× <a href="Fishing.html#raw_salmon">Raw Salmon</a>, 60× <a href="Mining.html#iron_ore">Iron Ore</a></td>
+<td>2,500 coins, 6,000 XP, 60× <a href="Fishing.html#raw_salmon">Raw Salmon</a>, 60× <a href="Mining.html#iron_ore">Iron Ore</a></td>
 </tr>
 <tr id="endurance_run">
 <td>Endurance Run</td>
 <td>2</td>
 <td>Apprentice Course</td>
 <td>12</td>
-<td>5,000 coins, 12,000 XP, 1,250 rep, 80× <a href="Fishing.html#raw_tuna">Raw Tuna</a>, 80× <a href="Mining.html#coal">Coal</a>, 40× <a href="Woodcutting.html#oak_log">Oak Log</a></td>
+<td>5,000 coins, 12,000 XP, 80× <a href="Fishing.html#raw_tuna">Raw Tuna</a>, 80× <a href="Mining.html#coal">Coal</a>, 40× <a href="Woodcutting.html#oak_log">Oak Log</a></td>
 </tr>
 <tr id="obstacle_expert">
 <td>Obstacle Expert</td>
 <td>3</td>
 <td>Intermediate Course</td>
 <td>20</td>
-<td>8,000 coins, 20,000 XP, 2,500 rep, 60× <a href="Fishing.html#raw_lobster">Raw Lobster</a>, 50× <a href="Mining.html#mithril_ore">Mithril Ore</a></td>
+<td>8,000 coins, 20,000 XP, 60× <a href="Fishing.html#raw_lobster">Raw Lobster</a>, 50× <a href="Mining.html#mithril_ore">Mithril Ore</a></td>
 </tr>
 <tr id="swift_feet">
 <td>Swift Feet</td>
 <td>4</td>
 <td>Advanced Course</td>
 <td>35</td>
-<td>15,000 coins, 35,000 XP, 5,500 rep, 60× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a>, 40× <a href="Mining.html#adamantite_ore">Adamantite Ore</a></td>
+<td>15,000 coins, 35,000 XP, 60× <a href="Fishing.html#raw_swordfish">Raw Swordfish</a>, 40× <a href="Mining.html#adamantite_ore">Adamantite Ore</a></td>
 </tr>
 <tr id="course_master">
 <td>Course Master</td>
 <td>5</td>
 <td>Expert Course</td>
 <td>55</td>
-<td>25,000 coins, 55,000 XP, 10,000 rep, 60× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a>, 30× <a href="Woodcutting.html#yew_log">Yew Log</a>, 30× <a href="Mining.html#gold_ore">Gold Ore</a></td>
+<td>25,000 coins, 55,000 XP, 60× <a href="Fishing.html#raw_monkfish">Raw Monkfish</a>, 30× <a href="Woodcutting.html#yew_log">Yew Log</a>, 30× <a href="Mining.html#gold_ore">Gold Ore</a></td>
 </tr>
 <tr id="elite_runner">
 <td>Elite Runner</td>
 <td>6</td>
 <td>Elite Course</td>
 <td>80</td>
-<td>40,000 coins, 90,000 XP, 17,500 rep, 50× <a href="Fishing.html#raw_shark">Raw Shark</a>, 30× <a href="Mining.html#platinum_ore">Platinum Ore</a>, 20× <a href="Woodcutting.html#magic_log">Magic Log</a></td>
+<td>40,000 coins, 90,000 XP, 50× <a href="Fishing.html#raw_shark">Raw Shark</a>, 30× <a href="Mining.html#platinum_ore">Platinum Ore</a>, 20× <a href="Woodcutting.html#magic_log">Magic Log</a></td>
 </tr>
 <tr id="relentless">
 <td>Relentless</td>
 <td>7</td>
 <td>Master Course</td>
 <td>120</td>
-<td>60,000 coins, 140,000 XP, 32,500 rep, 40× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a>, 30× <a href="Mining.html#runite_ore">Runite Ore</a></td>
+<td>60,000 coins, 140,000 XP, 40× <a href="Fishing.html#raw_manta_ray">Raw Manta Ray</a>, 30× <a href="Mining.html#runite_ore">Runite Ore</a></td>
 </tr>
 <tr id="indomitable">
 <td>Indomitable</td>
 <td>8</td>
 <td>Veteran Course</td>
 <td>170</td>
-<td>80,000 coins, 200,000 XP, 55,000 rep, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 2× Diamond, 20× <a href="Woodcutting.html#redwood_log">Redwood Log</a></td>
+<td>80,000 coins, 200,000 XP, 20× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 2× Diamond, 20× <a href="Woodcutting.html#redwood_log">Redwood Log</a></td>
 </tr>
 <tr id="master_of_movement">
 <td>Master of Movement</td>
 <td>9</td>
 <td>Champion Course</td>
 <td>250</td>
-<td>100,000 coins, 350,000 XP, 100,000 rep, 5× Diamond, 50× <a href="Mining.html#runite_ore">Runite Ore</a>, 30× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 1× <a href="Equipment.html#agility_guild_cape">Agility Guild Cape</a></td>
+<td>100,000 coins, 350,000 XP, 5× Diamond, 50× <a href="Mining.html#runite_ore">Runite Ore</a>, 30× <a href="Fishing.html#raw_sea_turtle">Raw Sea Turtle</a>, 1× <a href="Equipment.html#agility_guild_cape">Agility Guild Cape</a></td>
 </tr>
 </tbody>
 </table>
