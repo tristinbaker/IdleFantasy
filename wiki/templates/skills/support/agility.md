@@ -1,4 +1,4 @@
-# Agility
+# {icon} Agility
 
 Agility reduces session time across **all skills**. Higher levels mean faster sessions everywhere.
 

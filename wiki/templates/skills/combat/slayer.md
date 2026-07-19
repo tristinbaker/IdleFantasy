@@ -1,4 +1,4 @@
-# Slayer
+# {icon} Slayer
 
 Visit the **Slayer Master** in Town to receive a task. Complete it by killing the assigned enemy in any dungeon that contains them. Each kill awards Slayer XP and counts toward your task total.
 

@@ -8,7 +8,7 @@ from jinja2 import Environment, FileSystemLoader
 
 from wiki.src import WIKI_ROOT
 from wiki.src.page_hierarchy import PageHierarchy
-from wiki.src.pages import get_pages, PAGE_DIRECTORY, PAGE_HIERARCHY
+from wiki.src.pages import get_pages, PAGE_DIRECTORY, PAGE_HIERARCHY, get_image_directory
 
 HTML_TEMPLATES = WIKI_ROOT / "html_templates"
 
@@ -31,7 +31,7 @@ def _slugify(text: str) -> str:
     return re.sub(r'[^a-z0-9]+', '_', text.lower()).strip('_')
 
 
-def _fix_page_links(html: str) -> str:
+def _fix_page_links(html: str, active_page_id: str | None) -> str:
     """Add .html extension (and item row fragment) to relative wiki page hrefs.
 
     pages.py emits [text](PageStem) Markdown links and html_link() anchors.
@@ -39,17 +39,19 @@ def _fix_page_links(html: str) -> str:
     need to turn PageStem into PageStem.html (or PageStem.html#slug for item cross-links).
     """
     def fix(m: re.Match) -> str:
-        href, text = m.group(1), m.group(2)
+        start, href, end, text = m.group(1), m.group(2), m.group(3), m.group(4)
         if href not in _PAGE_BY_URL:
             return m.group(0)
         is_page_link = _PAGE_BY_URL[href] == text
+        css = ' class="active"' if (active_page_id and active_page_id in PAGE_DIRECTORY
+                                    and href == PAGE_DIRECTORY[active_page_id].url[:-3]) else ""
         if is_page_link:
-            return f'<a href="{href}.html">{text}</a>'
+            return f'<a{start}href="{href}.html"{end}{css}>{text}</a>'
         slug = _slugify(text)
-        return f'<a href="{href}.html#{slug}">{text}</a>'
+        return f'<a{start}href="{href}.html#{slug}"{end}{css}>{text}</a>'
 
     # Match <a href="Stem">display text</a> -- display may include emoji/spaces
-    return re.sub(r'<a href="([^"#]+)">([^<]+)</a>', fix, html)
+    return re.sub(r'<a([^>]*)href=[\'"]([^\'"#]+)[\'"]([^>]*)>([^<]+)</a>', fix, html)
 
 
 def _add_row_ids(html: str) -> str:
@@ -67,10 +69,18 @@ def _add_row_ids(html: str) -> str:
     return re.sub(r'<tr>(.*?)</tr>', process_tr, html, flags=re.DOTALL)
 
 
-def _md_to_html(text: str) -> str:
+def _fix_image_links(text: str):
+    def fix(m: re.Match) -> str:
+        return f"<img{m.group(1)}src='assets/images/{m.group(2)}'{m.group(3)}>"
+
+    return re.sub(r"<img([^>]*)src=['\"]([^'\"]*)['\"]([^>]*)>", fix, text)
+
+
+def _md_to_html(text: str, active_page_id: str | None) -> str:
     # Todo: Improve fenced code blocks by improving the style.css, etc
     html = md_lib.markdown(text, extensions=["tables", "toc", "fenced_code", "markdown_katex_rs"])
-    html = _fix_page_links(html)
+    html = _fix_image_links(html)
+    html = _fix_page_links(html, active_page_id)
     return _add_row_ids(html)
 
 
@@ -80,7 +90,6 @@ def _md_to_html(text: str) -> str:
 
 def _build_nav(active_page_id: str | None, items: PageHierarchy | None = None) -> str:
     # Todo: Allow page hierarchies to be collapsible
-    # Todo: Also make any existing HTML links active - eg. For the combat footer
     if items is None:
         items = PAGE_HIERARCHY
     lines = ["<ul>"]
@@ -111,6 +120,7 @@ def get_html_pages() -> dict[str, str]:
     base = env.get_template("base.html")
 
     md_pages = get_pages()
+    image_directory = get_image_directory()
     html_pages: dict[str, str] = {}
 
     for md_filename, md_content in md_pages.items():
@@ -124,13 +134,14 @@ def get_html_pages() -> dict[str, str]:
         )
         page_title = PAGE_DIRECTORY[page_id].title if page_id else "Wiki"
 
-        content_html = _md_to_html(md_content)
+        content_html = _md_to_html(md_content, page_id)
         nav_html = _build_nav(page_id)
 
         html_pages[html_filename] = base.render(
             page_title=page_title,
             content=content_html,
             nav=nav_html,
+            icon=image_directory.get(PAGE_DIRECTORY[page_id].icon, "default_icon.png")
         )
 
     # index.html as alias for Home

@@ -1,4 +1,4 @@
-# Fishing
+# {icon} Fishing
 
 Fish from the waters. XP and drops scale with your Fishing level.
 

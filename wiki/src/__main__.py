@@ -16,7 +16,8 @@ import tempfile
 from pathlib import Path
 
 from wiki.src import REPO_ROOT, WIKI_ROOT
-from wiki.src.pages import get_pages, check_wiki_validity
+from wiki.src.pages import get_pages, check_wiki_validity, get_image_directory
+from wiki.src.site import get_html_pages
 
 WIKI_REPO  = "git@github.com:tristinbaker/IdleFantasy.wiki.git"
 WIKI_DIR   = REPO_ROOT / "out" / "IdleFantasy-wiki"
@@ -77,8 +78,9 @@ def run_update():
 
 
 def run_write_html(out: Path):
-    from wiki.src.site import get_html_pages
+    images = get_image_directory()
     pages = get_html_pages()
+    # Remove existing output directory
     if out.exists():
         shutil.rmtree(out)
     out.mkdir(parents=True)
@@ -87,11 +89,15 @@ def run_write_html(out: Path):
     # Write all pages
     for filename, content in pages.items():
         (out / filename).write_text(content, encoding="utf-8")
+    # Copy across images
+    for path, image in images.items():
+        shutil.copyfile(path, out / "assets" / "images" / image)
     print(f"Generated {len(pages)} files → {out}")
 
 
 def run_write(out: Path, page_list: str | list[str]):
     # Create page content
+    image_directory = get_image_directory()
     pages = get_pages()
     # Reset output directory
     if out.exists():
@@ -102,6 +108,9 @@ def run_write(out: Path, page_list: str | list[str]):
         write_pages(out, pages)
     else:
         write_pages(out, {k: v for k, v in pages.items() if k in page_list})
+    # Copy all images to folder
+    for path, image in image_directory.items():
+        shutil.copyfile(path, out / image)
 
 
 def parse_args():

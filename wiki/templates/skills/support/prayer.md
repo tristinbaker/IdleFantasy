@@ -1,4 +1,4 @@
-# Prayer
+# {icon} Prayer
 
 Bury bones to earn Prayer XP. Higher-tier bones give more XP. Ashes from Firemaking can also be scattered.
 

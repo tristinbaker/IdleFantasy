@@ -1,4 +1,4 @@
-# Farming
+# {icon} Farming
 
 Plant seeds in up to **5 patches** and return after the growth time to harvest.
 

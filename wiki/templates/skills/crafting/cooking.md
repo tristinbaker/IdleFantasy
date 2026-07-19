@@ -1,4 +1,4 @@
-# Cooking
+# {icon} Cooking
 
 Cook raw ingredients into food that restores HP in combat.
 

@@ -1,4 +1,4 @@
-# Herblore
+# {icon} Herblore
 
 Brew potions from farming crops and dungeon reagents. Potions give flat combat stat boosts and can be selected before entering a dungeon or boss fight.
 

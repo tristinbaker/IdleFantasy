@@ -1,4 +1,4 @@
-# Woodcutting
+# {icon} Woodcutting
 
 Chop trees to gather logs used in Fletching and Firemaking.
 

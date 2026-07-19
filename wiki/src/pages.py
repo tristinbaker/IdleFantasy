@@ -15,7 +15,7 @@ from logging import log
 from pathlib import Path
 from typing import Callable
 
-from wiki.src import ASSETS, TEMPLATES
+from wiki.src import ASSETS, TEMPLATES, RESOURCES, REPO_ROOT
 from wiki.src.page_hierarchy import PageHierarchy
 
 
@@ -28,6 +28,7 @@ class PageInfo:
     title: str
     url: str
     generate: Callable[[], str] | NotImplemented
+    icon: Path | None = None
 
 
 PAGE_DIRECTORY: dict[str, PageInfo] = {}
@@ -54,29 +55,29 @@ def add_static_pages():
         ["Skills", False, [
             ("skills", PageInfo("Skills", "Skills.md", gen_skills)),
             ["Gathering", False, [
-                ("mining", PageInfo("Mining", "Mining.md", gen_mining)),
-                ("fishing", PageInfo("Fishing", "Fishing.md", gen_fishing)),
-                ("woodcutting", PageInfo("Woodcutting", "Woodcutting.md", gen_woodcutting)),
-                ("farming", PageInfo("Farming", "Farming.md", gen_farming)),
-                ("thieving", PageInfo("Thieving", "Thieving.md", gen_thieving))
+                ("mining", PageInfo("Mining", "Mining.md", gen_mining, skill_icon("mining"))),
+                ("fishing", PageInfo("Fishing", "Fishing.md", gen_fishing, skill_icon("fishing"))),
+                ("woodcutting", PageInfo("Woodcutting", "Woodcutting.md", gen_woodcutting, skill_icon("woodcutting"))),
+                ("farming", PageInfo("Farming", "Farming.md", gen_farming, skill_icon("farming"))),
+                ("thieving", PageInfo("Thieving", "Thieving.md", gen_thieving, skill_icon("thieving")))
             ]],
             ["Crafting", False, [
-                ("smithing", PageInfo("Smithing", "Smithing.md", gen_smithing)),
-                ("cooking", PageInfo("Cooking", "Cooking.md", gen_cooking)),
-                ("fletching", PageInfo("Fletching", "Fletching.md", gen_fletching)),
-                ("crafting", PageInfo("Crafting", "Crafting.md", gen_crafting)),
-                ("firemaking", PageInfo("Firemaking", "Firemaking.md", gen_firemaking)),
-                ("runecrafting", PageInfo("Runecrafting", "Runecrafting.md", gen_runecrafting)),
-                ("herblore", PageInfo("Herblore", "Herblore.md", gen_herblore)),
-                ("construction", PageInfo("Construction", "Construction.md", gen_construction))
+                ("smithing", PageInfo("Smithing", "Smithing.md", gen_smithing, skill_icon("smithing"))),
+                ("cooking", PageInfo("Cooking", "Cooking.md", gen_cooking, skill_icon("cooking"))),
+                ("fletching", PageInfo("Fletching", "Fletching.md", gen_fletching, skill_icon("fletching"))),
+                ("crafting", PageInfo("Crafting", "Crafting.md", gen_crafting, skill_icon("crafting"))),
+                ("firemaking", PageInfo("Firemaking", "Firemaking.md", gen_firemaking, skill_icon("firemaking"))),
+                ("runecrafting", PageInfo("Runecrafting", "Runecrafting.md", gen_runecrafting, skill_icon("runecrafting"))),
+                ("herblore", PageInfo("Herblore", "Herblore.md", gen_herblore, skill_icon("herblore"))),
+                ("construction", PageInfo("Construction", "Construction.md", gen_construction, skill_icon("construction")))
             ]],
             ["Support", False, [
-                ("prayer", PageInfo("Prayer", "Prayer.md", gen_prayer)),
-                ("mercantile", PageInfo("Mercantile", "Mercantile.md", gen_mercantile)),
-                ("agility", PageInfo("Agility", "Agility.md", gen_agility)),
+                ("prayer", PageInfo("Prayer", "Prayer.md", gen_prayer, skill_icon("prayer"))),
+                ("mercantile", PageInfo("Mercantile", "Mercantile.md", gen_mercantile, skill_icon("mercantile"))),
+                ("agility", PageInfo("Agility", "Agility.md", gen_agility, skill_icon("agility"))),
             ]],
             ["Combat", False, [
-                ("slayer", PageInfo("Slayer", "Slayer.md", gen_slayer)),
+                ("slayer", PageInfo("Slayer", "Slayer.md", gen_slayer, skill_icon("slayer"))),
             ]],
         ]],
         ["Inventory", False, [
@@ -219,8 +220,48 @@ def add_trade_route_pages():
 # Main functions
 # ---------------------------------------------------------------------------
 
+
 def get_pages() -> dict[str, str]:
-    return {info.url: info.generate() for info in PAGE_DIRECTORY.values()}
+    def _convert_md_image_links(i_directory: dict[Path, str], m: re.Match) -> str:
+        alt_text, href = m.group(1), m.group(2)
+        return f"![{alt_text}]({i_directory[REPO_ROOT / href]})"
+
+    def _convert_html_image_links(i_directory: dict[Path, str], m: re.Match) -> str:
+        start, href, end = m.group(1), m.group(2), m.group(3)
+        return f"<img{start}src='{i_directory[REPO_ROOT / href]}'{end}>"
+
+    image_dir = get_image_directory()
+    pages = {}
+    for info in PAGE_DIRECTORY.values():
+        content = info.generate()
+        content = re.sub(r'!\[([^]]*)]\(([^)]*)\)', lambda x: _convert_md_image_links(image_dir, x), content)
+        content = re.sub(r"<img([^>]*)src=['\"]([^'\"]*)['\"]([^>]*)>", lambda x: _convert_html_image_links(image_dir, x), content)
+        pages[info.url] = content
+    return pages
+
+
+def get_image_directory() -> dict[Path, str]:
+    image_id = 0
+    image_directory: dict[Path, str] = {}
+    # Add page favicons
+    for icon in [v.icon for v in PAGE_DIRECTORY.values() if v.icon is not None]:
+        if icon not in image_directory:
+            image_directory[icon] = f"image_{image_id}{icon.suffix}"
+            image_id += 1
+    # Add images in pages
+    def _add_image_paths(start_img_id: int, raw_image_paths: list[str]) -> int:
+        for image_path in raw_image_paths:
+            relative_path = Path(REPO_ROOT / image_path)
+            if relative_path not in image_directory:
+                image_directory[relative_path] = f"image_{start_img_id}{icon.suffix}"
+                start_img_id += 1
+        return start_img_id
+
+    for page_content in [p.generate() for p in PAGE_DIRECTORY.values()]:
+        image_paths = re.findall(r'!\[[^]]*]\(([^)]*)\)', page_content)
+        image_paths += re.findall(r"<img[^>]*src=['\"]([^'\"]*)['\"][^>]*>", page_content)
+        image_id = _add_image_paths(image_id, image_paths)
+    return image_directory
 
 
 def check_wiki_validity():
@@ -246,6 +287,11 @@ def check_wiki_validity():
     for page_id, page_info in PAGE_DIRECTORY.items():
         if page_id not in pages_in_hierarchy and not page_info.url.startswith("_"):
             print(f"Warning: Page '{page_id}' is listed in the directory but not present in the hierarchy")
+    # Check image icons exist
+    print("Checking images...")
+    for icon in get_image_directory().keys():
+        if not icon.is_file():
+            print(f"Critical: Image '{icon}' is used in the pages but does not exist")
 
     # Ensure all pages can generate content
     print("Checking page content...")
@@ -317,6 +363,19 @@ def html_link(page_id: str, display_name: str | None = None) -> str:
     page = PAGE_DIRECTORY[page_id]
     name = page.title if display_name is None else display_name
     return f'<a href="{page.url.removesuffix(".md")}">{name}</a>'
+
+
+def html_image_link(image: Path, alt_tag: str | None = None, classes: str | None = None) -> str:
+    return (f"<img src='{image.relative_to(REPO_ROOT).as_posix()}' alt='{image.name if alt_tag is None else alt_tag}'"
+            f"{f" class='{classes}'" if classes else ""}>")
+
+
+def image_link(image: Path, alt_tag: str | None = None) -> str:
+    return f"![{image.name if alt_tag is None else alt_tag}]({image.relative_to(REPO_ROOT).as_posix()})"
+
+
+def skill_icon(skill: str) -> Path:
+    return RESOURCES / "drawable" / f"skill_{skill.lower()}.png"
 
 
 def _tool_table(slot: str, efficiency_key: str) -> str:
@@ -519,8 +578,10 @@ def gen_skills() -> str:
         ("Prayer", "combat", "Bury bones to unlock combat prayers."),
         ("Slayer", "combat", "Receive tasks from the Slayer Master to kill specific enemies for bonus XP and points."),
     ]
-    rows = [[link(skill.lower()) if skill.lower() in PAGE_DIRECTORY else skill, cat, desc] for skill, cat, desc
-            in skill_list]
+    rows = [
+        [f"{html_image_link(skill_icon(skill), "", "text")} {link(skill.lower()) if skill.lower() in PAGE_DIRECTORY else skill}", cat, desc]
+        for skill, cat, desc in skill_list
+    ]
 
     prestige_rows = [
         ["Attack",    "+5 Attack per prestige level (up to +15 at prestige 3)"],
@@ -549,6 +610,7 @@ def gen_mining() -> str:
     )
     tool_rows = _tool_table("pickaxe", "mining_efficiency")
     return get_template("skills/gathering/mining").format(
+        icon=html_image_link(skill_icon("mining"), "", "text"),
         ore_table=table(['Ore','Level Required','XP / Ore'], rows),
         pickaxe_table=tool_rows
     )
@@ -566,6 +628,7 @@ def gen_fishing() -> str:
     )
     tool_rows = _tool_table("fishing_rod", "fishing_efficiency")
     return get_template("skills/gathering/fishing").format(
+        icon=html_image_link(skill_icon("fishing"), "", "text"),
         fish_table=table(['Level Tier','Min XP / Min','Max XP / Min','Avg XP / Session'], rows),
         rod_table=tool_rows
     )
@@ -581,6 +644,7 @@ def gen_woodcutting() -> str:
     )
     tool_rows = _tool_table("axe", "woodcutting_efficiency")
     return get_template("skills/gathering/woodcutting").format(
+        icon=html_image_link(skill_icon("woodcutting"), "", "text"),
         tree_table=table(['Tree','Level Required','XP / Log','Log'], rows),
         axe_table=tool_rows
     )
@@ -615,6 +679,7 @@ def gen_farming() -> str:
         "Plant it in any empty patch when you are ready. Do not expect a quick answer."
     )
     return get_template("skills/gathering/farming").format(
+        icon=html_image_link(skill_icon("farming"), "", "text"),
         seed_table=table(['Crop','Level','Seed','Seed Cost','Growth Time','Planting XP','Harvest XP','Yield'], rows),
         hoe_table=table(['Hoe','Level Required','Yield Bonus'], hoe_rows),
         magic_bean_section=magic_bean_note,
@@ -647,6 +712,7 @@ def gen_agility() -> str:
 
     tool_rows = _tool_table("grappling_hook", "agility_efficiency")
     return get_template("skills/support/agility").format(
+        icon=html_image_link(skill_icon("agility"), "", "text"),
         session_duration_table=table(["Agility Level", "Session Duration"], duration_rows),
         course_count=len(courses),
         course_table=table(['Course', 'Level Required', 'XP / Lap', 'XP / Min (est.)', 'XP / Session (est.)'], course_rows),
@@ -685,7 +751,10 @@ def gen_smithing() -> str:
         f"{_tool_table('hammer', 'smithing_efficiency')}"
     )
 
-    return get_template("skills/crafting/smithing").format(sections="\n\n".join(sections))
+    return get_template("skills/crafting/smithing").format(
+        icon=html_image_link(skill_icon("smithing"), "", "text"),
+        sections="\n\n".join(sections),
+    )
 
 
 def gen_cooking() -> str:
@@ -698,6 +767,7 @@ def gen_cooking() -> str:
     )
     tool_rows = _tool_table("frying_pan", "cooking_efficiency")
     return get_template("skills/crafting/cooking").format(
+        icon=html_image_link(skill_icon("cooking"), "", "text"),
         food_table=table(['Food','Level','Raw Ingredient','XP / Item','HP Healed'], rows),
         frying_pan_table=tool_rows,
     )
@@ -711,7 +781,10 @@ def gen_fletching() -> str:
          for r in recipes.values()],
         key=lambda r: r[1]
     )
-    return get_template("skills/crafting/fletching").format(item_table=table(['Item','Level','Materials','XP / Item'], rows))
+    return get_template("skills/crafting/fletching").format(
+        icon=html_image_link(skill_icon("fletching"), "", "text"),
+        item_table=table(['Item','Level','Materials','XP / Item'], rows),
+    )
 
 
 def gen_crafting() -> str:
@@ -722,7 +795,10 @@ def gen_crafting() -> str:
          for r in recipes.values()],
         key=lambda r: r[1]
     )
-    return get_template("skills/crafting/crafting").format(item_table=table(['Item','Level','Materials','XP / Item'], rows))
+    return get_template("skills/crafting/crafting").format(
+        icon=html_image_link(skill_icon("crafting"), "", "text"),
+        item_table=table(['Item','Level','Materials','XP / Item'], rows),
+    )
 
 
 def gen_firemaking() -> str:
@@ -736,6 +812,7 @@ def gen_firemaking() -> str:
     )
     tool_rows = _tool_table("tinderbox", "firemaking_efficiency")
     return get_template("skills/crafting/firemaking").format(
+        icon=html_image_link(skill_icon("firemaking"), "", "text"),
         item_table=table(['Log','Level Required','XP / Log Burned'], rows),
         tinderbox_table=tool_rows,
     )
@@ -756,7 +833,8 @@ def gen_runecrafting() -> str:
         key=lambda r: r[1]
     )
     return get_template("skills/crafting/runecrafting").format(
-        runes_table=table(['Rune','Level Required','Essence / Rune','XP / Rune','Output Multiplier'], rows)
+        icon=html_image_link(skill_icon("runecrafting"), "", "text"),
+        runes_table=table(['Rune','Level Required','Essence / Rune','XP / Rune','Output Multiplier'], rows),
     )
 
 
@@ -773,7 +851,10 @@ def gen_herblore() -> str:
         ] for r in recipes.values()],
         key=lambda r: r[1]
     )
-    return get_template("skills/crafting/herblore").format(potion_table=table(['Potion','Level','Ingredients','Effect','XP'], rows))
+    return get_template("skills/crafting/herblore").format(
+        icon=html_image_link(skill_icon("herblore"), "", "text"),
+        potion_table=table(['Potion','Level','Ingredients','Effect','XP'], rows),
+    )
 
 
 def gen_construction() -> str:
@@ -787,7 +868,8 @@ def gen_construction() -> str:
         key=lambda r: r[1],
     )
     return get_template("skills/crafting/construction").format(
-        item_table=table(["Item", "Level", "Materials", "XP / Item"], rows)
+        icon=html_image_link(skill_icon("construction"), "", "text"),
+        item_table=table(["Item", "Level", "Materials", "XP / Item"], rows),
     )
 
 
@@ -810,7 +892,8 @@ def gen_thieving() -> str:
             ", ".join(loot_parts),
         ])
     return get_template("skills/gathering/thieving").format(
-        npc_table=table(["NPC", "Level", "XP / Steal", "Coins", "Possible Loot"], rows)
+        icon=html_image_link(skill_icon("thieving"), "", "text"),
+        npc_table=table(["NPC", "Level", "XP / Steal", "Coins", "Possible Loot"], rows),
     )
 
 
@@ -823,7 +906,10 @@ def gen_prayer() -> str:
          for b in bones.values()],
         key=lambda r: r[1]
     )
-    return get_template("skills/support/prayer").format(prayer_table=table(['Bone / Ash','XP Each'], rows))
+    return get_template("skills/support/prayer").format(
+        icon=html_image_link(skill_icon("prayer"), "", "text"),
+        prayer_table=table(['Bone / Ash','XP Each'], rows),
+    )
 
 
 def _trade_route_rows(ranges: list[tuple[int, dict]]):
@@ -895,6 +981,7 @@ def gen_mercantile() -> str:
         guild_shop_rows.append([item_link(item_id), f"{item["price"]:,}", item["mercantile_level_required"], description])
 
     return get_template("skills/support/mercantile").format(
+        icon=html_image_link(skill_icon("mercantile"), "", "text"),
         route_table=table(['Route', 'Level', 'Cost', 'XP / Min (range)', 'Coin Return (range)'], route_rows),
         shop_bonus_table=table(["Mercantile level", "Buy discount", "Sell bonus"], shop_bonus_rows),
         guild_shop_table=table(["Item", "Price", "Minimum Mercantile Level", "Description"], guild_shop_rows),
@@ -967,7 +1054,8 @@ def gen_slayer() -> str:
         key=lambda r: r[1],
     )
     return get_template("skills/combat/slayer").format(
-        task_table=table(['Enemy', 'Slayer Level', 'Kill Range', 'XP / Kill'], rows)
+        icon=html_image_link(skill_icon("slayer"), "", "text"),
+        task_table=table(['Enemy', 'Slayer Level', 'Kill Range', 'XP / Kill'], rows),
     )
 
 
@@ -1035,7 +1123,7 @@ def gen_combat_footer() -> str:
             html_link(enemy_id)
             for enemy_id, _ in sorted(enemies.items(), key=lambda x: x[1]["hp"])
         ),
-        miscellaneous_links=", ".join([html_link("spells"), html_link("slayer")]),
+        miscellaneous_links=", ".join([html_link("combat"), html_link("spells"), html_link("slayer")]),
     )
 
 

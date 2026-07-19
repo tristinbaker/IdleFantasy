@@ -1,4 +1,4 @@
-# Mercantile
+# {icon} Mercantile
 
 The Mercantile skill allows you to buy unique items from the merchants guild shop only available to skilled merchants, as well as a buy discount and sell bonus on all items in the shop.
 

@@ -1,4 +1,4 @@
-# Mining
+# {icon} Mining
 
 Mine ores from the earth. Gems have a small chance to drop alongside any ore.
 
