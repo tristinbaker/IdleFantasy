@@ -1,6 +1,6 @@
 # Mercantile
 
-The Mercantile skill covers two activities: **Trade Routes** and **Expeditions**.
+The Mercantile skill allows you to buy unique items from the merchants guild shop only available to skilled merchants, as well as a buy discount and sell bonus on all items in the shop.
 
 ## Trade Routes
 
@@ -8,16 +8,20 @@ Dispatch a merchant caravan along a trade route. Each route costs coins upfront 
 
 {route_table}
 
-> Coin returns shown are per-minute ranges across all level tiers for that route.
+> Coin and XP returns shown are per-minute ranges across all level tiers for that route. See each individual route's page in order to see the specific ranges at which you receive certain coin/xp amounts
 
-## Expeditions
+## Shop bonuses
 
-Explore skilling dungeons to uncover lore notes and unlock hidden combat dungeons. You need your gathering skill (Mining, Woodcutting, Fishing, or Agility) to meet the level requirement, not Mercantile level.
+As your mercantile level increases, you'll receive decreased prices and can also sell items for more as described in the table below.
 
-{expedition_table}
+{shop_bonus_table}
 
-Collect enough **lore notes** (found at a random chance each minute) to reach the note threshold and permanently unlock the associated combat dungeon.
+Equipping a mercantile cape can improve these bonuses further although you can't achieve a buying discount beyond -50%.
+
+> Items sell prices are capped to be at least 1 coin less than what you can buy them for (including discounts)
 
 ## Merchants Guild Shop
 
 The Merchants Guild (accessible from the Shop) sells exclusive items for players who have reached the required Mercantile level.
+
+{guild_shop_table}

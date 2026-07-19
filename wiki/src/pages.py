@@ -198,6 +198,22 @@ def add_expedition_pages():
     }
     PAGE_DIRECTORY.update(expedition_pages)
 
+
+def add_trade_route_pages():
+    trade_routes = sorted(
+        [load(f, False) for f in (ASSETS / "trade_routes").glob("*.json")],
+        key=lambda tr: (tr["level_required"])
+    )
+    trade_route_pages = {
+        tr["id"]: PageInfo(
+            tr["display_name"],
+            f"{tr['id']}.md",
+            lambda entry=tr: gen_trade_route(entry)
+        )
+        for tr in trade_routes
+    }
+    PAGE_DIRECTORY.update(trade_route_pages)
+
 # ---------------------------------------------------------------------------
 # Main functions
 # ---------------------------------------------------------------------------
@@ -787,6 +803,36 @@ def gen_prayer() -> str:
     return get_template("skills/support/prayer").format(prayer_table=table(['Bone / Ash','XP Each'], rows))
 
 
+def _trade_route_rows(ranges: list[tuple[int, dict]]):
+    rows = []
+    for i, (start_level, tr_range) in enumerate(ranges):
+        mercantile_level = f"{start_level}-{ranges[i + 1][0]}" if i < len(ranges) - 1 else f">{start_level}"
+        average_return = int((tr_range["max"] + tr_range["min"]) / 2)
+        rows.append([mercantile_level, f"{tr_range["min"]}-{tr_range["max"]}", str(average_return)])
+    return rows
+
+
+def gen_trade_route(trade_route: dict) -> str:
+    # Get XP and coin ranges
+    xp_ranges = sorted(
+        [(int(a), b) for a, b in trade_route["xp_ranges"].items()],
+        key=lambda x: x[0]
+    )
+    coin_ranges = sorted(
+        [(int(a), b) for a, b in trade_route["coin_ranges"].items()],
+        key=lambda x: x[0]
+    )
+
+    return get_template("skills/support/trade_route").format(
+        title=trade_route["display_name"],
+        min_level=trade_route["level_required"],
+        cost=trade_route["coin_cost"],
+        description=trade_route["description"],
+        xp_ranges_table=table(["Mercantile Level", "XP range", "Average xp"], _trade_route_rows(xp_ranges)),
+        coin_ranges_table=table(["Mercantile Level", "Coin range", "Average coins"], _trade_route_rows(coin_ranges)),
+    )
+
+
 def gen_mercantile() -> str:
     # Trade routes
     route_rows = []
@@ -800,7 +846,7 @@ def gen_mercantile() -> str:
             low_c   = list(r["coin_ranges"].values())[0]
             high_c  = list(r["coin_ranges"].values())[-1]
             route_rows.append([
-                r["display_name"],
+                link(r["id"]),
                 r["level_required"],
                 f"{r['coin_cost']:,}",
                 f"{low_xp['min']}–{high_xp['max']}",
@@ -808,25 +854,27 @@ def gen_mercantile() -> str:
             ])
     route_rows.sort(key=lambda x: x[1])
 
-    # Skilling expeditions
-    exp_rows = []
-    for f in sorted((ASSETS / "skilling_dungeons").glob("*.json")):
-        d = load(f, False)
-        assert isinstance(d, dict)
-        xp_vals = list(d["xp_ranges"].values())
-        xp_str  = f"{xp_vals[0]['min']}–{xp_vals[-1]['max']}"
-        exp_rows.append([
-            d["display_name"],
-            title(d["skill"]),
-            d["level_required"],
-            xp_str,
-            title(d.get("unlock_dungeon", "—")),
-        ])
-    exp_rows.sort(key=lambda x: (x[1], x[2]))
+    # Shop bonus table
+    # Todo: Refactor game code to read from JSON files rather than be hardcoded here
+    shop_bonus_data = [(0, 0), (20, 0.05), (40, 0.1), (60, 0.15), (80, 0.2), (99, 0.25)]
+    shop_bonus_rows = []
+    for i, (level, bonus) in enumerate(shop_bonus_data):
+        mercantile_level = f"{level}-{shop_bonus_data[i + 1][0]}" if i < len(shop_bonus_data) - 1 else f"{level}"
+        shop_bonus_rows.append([mercantile_level, f"-{round(bonus * 100)}%", f"+{round(bonus * 100)}%"])
+
+    # Guild shop
+    merchants_guild_items = load("marketplace.json")["merchants_guild"]["items"]
+    guild_shop_rows = []
+    for item_id, item in sorted(merchants_guild_items.items(), key=lambda x: x[1]["mercantile_level_required"]):
+        description: str = item["description"]
+        # Remove the description explaining the mercantile level
+        description = description[:description.find(". Requires Mercantile")]
+        guild_shop_rows.append([item_link(item_id), f"{item["price"]:,}", item["mercantile_level_required"], description])
 
     return get_template("skills/support/mercantile").format(
         route_table=table(['Route', 'Level', 'Cost', 'XP / Min (range)', 'Coin Return (range)'], route_rows),
-        expedition_table=table(['Expedition', 'Skill', 'Level Required', 'XP / Min (range)', 'Unlocks Dungeon'], exp_rows)
+        shop_bonus_table=table(["Mercantile level", "Buy discount", "Sell bonus"], shop_bonus_rows),
+        guild_shop_table=table(["Item", "Price", "Minimum Mercantile Level", "Description"], guild_shop_rows),
     )
 
 
@@ -1504,3 +1552,4 @@ add_boss_pages()
 add_enemy_pages()
 add_dungeon_pages()
 add_expedition_pages()
+add_trade_route_pages()
