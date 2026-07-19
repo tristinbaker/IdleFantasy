@@ -1,13 +1,63 @@
 {
   "repo": {
-    "timestamp": 1784305101693
+    "timestamp": 1784504732117
   },
   "packages": {
     "com.tristinbaker.idlefantasy": {
       "metadata": {
-        "lastUpdated": 1784305072765
+        "lastUpdated": 1784504697570
       },
       "versions": {
+        "1541e1376dbe566c9ef78cc7a6c135ae87b702d723adf2ca30604fd3ed0e2a94": {
+          "added": 1784504697570,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_116.apk",
+            "sha256": "1541e1376dbe566c9ef78cc7a6c135ae87b702d723adf2ca30604fd3ed0e2a94",
+            "size": 7887371
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.12.4",
+            "versionCode": 116,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fixed Firemakers Guild quests describing burning logs as \"burning ashes\" instead of naming the actual wood being burned\n• Boss fights on the Home screen now show that boss's own icon instead of a generic gamepad icon; the Infinite Tower now shows a dedicated tower icon too\n• Fixed the Guild Hall's \"quests left today\" text squeezing other elements (like the level badge) into an unreadable narrow column in non-English languages; it now sits on its own line\n• Cleaned up leftover duplicate/unused "
+          }
+        },
         "8d10c7c2f62a21cf2a2ce31dfd3cbe787c8dfb29457e15dd5c49c65a853a1db0": {
           "added": 1784305072765,
           "file": {
