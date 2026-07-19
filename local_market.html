@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mercantile — Idle Fantasy Wiki</title>
+  <title>Local Market — Idle Fantasy Wiki</title>
   <link rel="stylesheet" href="assets/style.css?v=3">
   <script data-goatcounter="https://idlefantasy.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
@@ -58,7 +58,7 @@
 </ul></li>
 <li class="nav-section"><span class="nav-label">Support</span><ul>
 <li><a href="Prayer.html">Prayer</a></li>
-<li><a href="Mercantile.html" class="active">Mercantile</a></li>
+<li><a href="Mercantile.html">Mercantile</a></li>
 <li><a href="Agility.html">Agility</a></li>
 </ul></li>
 <li class="nav-section"><span class="nav-label">Combat</span><ul>
@@ -91,204 +91,75 @@
     </nav>
 
     <main class="content">
-      <h1 id="mercantile">Mercantile</h1>
-<p>The Mercantile skill allows you to buy unique items from the merchants guild shop only available to skilled merchants, as well as a buy discount and sell bonus on all items in the shop.</p>
-<h2 id="trade-routes">Trade Routes</h2>
-<p>Dispatch a merchant caravan along a trade route. Each route costs coins upfront and returns coins and XP. Returns are variable — higher-level routes are more profitable.</p>
+      <h1 id="local-market">Local Market</h1>
 <table>
 <thead>
 <tr>
-<th>Route</th>
-<th>Level</th>
-<th>Cost</th>
-<th>XP / Min (range)</th>
-<th>Coin Return (range)</th>
+<th>Minimum level</th>
+<th>Coin cost</th>
 </tr>
 </thead>
 <tbody>
-<tr id="local_market">
-<td><a href="local_market.html">Local Market</a></td>
+<tr id="1">
 <td>1</td>
-<td>2,000</td>
-<td>15–40</td>
-<td>10–78</td>
-</tr>
-<tr id="river_trading_post">
-<td><a href="river_trading_post.html">River Trading Post</a></td>
-<td>20</td>
-<td>10,000</td>
-<td>50–110</td>
-<td>75–300</td>
-</tr>
-<tr id="eastern_caravan">
-<td><a href="eastern_caravan.html">Eastern Caravan</a></td>
-<td>40</td>
-<td>40,000</td>
-<td>140–280</td>
-<td>295–1,150</td>
-</tr>
-<tr id="northern_ports">
-<td><a href="northern_ports.html">Northern Ports</a></td>
-<td>60</td>
-<td>150,000</td>
-<td>300–625</td>
-<td>950–4,600</td>
-</tr>
-<tr id="merchants_quarter">
-<td><a href="merchants_quarter.html">Merchant's Quarter</a></td>
-<td>80</td>
-<td>500,000</td>
-<td>750–1450</td>
-<td>3,700–15,100</td>
-</tr>
-<tr id="grand_exchange">
-<td><a href="grand_exchange.html">Grand Exchange</a></td>
-<td>99</td>
-<td>2,000,000</td>
-<td>2000–2750</td>
-<td>15,000–65,000</td>
+<td>2000</td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p>Coin and XP returns shown are per-minute ranges across all level tiers for that route. See each individual route's page in order to see the specific ranges at which you receive certain coin/xp amounts</p>
-</blockquote>
-<h2 id="shop-bonuses">Shop bonuses</h2>
-<p>As your mercantile level increases, you'll receive decreased prices and can also sell items for more as described in the table below.</p>
+<p>Trade common goods at the local market. Returns are modest but variable.</p>
+<h2 id="xp-ranges">XP ranges</h2>
+<p>The XP you receive doing the Local Market trading route depends on your mercantile level as shown in the table below.</p>
 <table>
 <thead>
 <tr>
-<th>Mercantile level</th>
-<th>Buy discount</th>
-<th>Sell bonus</th>
+<th>Mercantile Level</th>
+<th>XP range</th>
+<th>Average xp</th>
 </tr>
 </thead>
 <tbody>
-<tr id="0_20">
-<td>0-20</td>
-<td>-0%</td>
-<td>+0%</td>
+<tr id="1_10">
+<td>1-10</td>
+<td>15-25</td>
+<td>20</td>
 </tr>
-<tr id="20_40">
-<td>20-40</td>
-<td>-5%</td>
-<td>+5%</td>
+<tr id="10_20">
+<td>10-20</td>
+<td>20-35</td>
+<td>27</td>
 </tr>
-<tr id="40_60">
-<td>40-60</td>
-<td>-10%</td>
-<td>+10%</td>
-</tr>
-<tr id="60_80">
-<td>60-80</td>
-<td>-15%</td>
-<td>+15%</td>
-</tr>
-<tr id="80_99">
-<td>80-99</td>
-<td>-20%</td>
-<td>+20%</td>
-</tr>
-<tr id="99">
-<td>99</td>
-<td>-25%</td>
-<td>+25%</td>
+<tr id="gt_20">
+<td>&gt;20</td>
+<td>25-40</td>
+<td>32</td>
 </tr>
 </tbody>
 </table>
-<p>Equipping a mercantile cape can improve these bonuses further although you can't achieve a buying discount beyond -50%.</p>
-<blockquote>
-<p>Items sell prices are capped to be at least 1 coin less than what you can buy them for (including discounts)</p>
-</blockquote>
-<h2 id="merchants-guild-shop">Merchants Guild Shop</h2>
-<p>The Merchants Guild (accessible from the Shop) sells exclusive items for players who have reached the required Mercantile level.</p>
+<h2 id="coin-returns">Coin returns</h2>
+<p>Like XP, the coins you receive depends on your mercantile level and are shown in the ranges below</p>
 <table>
 <thead>
 <tr>
-<th>Item</th>
-<th>Price</th>
-<th>Minimum Mercantile Level</th>
-<th>Description</th>
+<th>Mercantile Level</th>
+<th>Coin range</th>
+<th>Average coins</th>
 </tr>
 </thead>
 <tbody>
-<tr id="spirit_herb">
-<td><a href="Farming.html#spirit_herb">Spirit Herb</a></td>
-<td>5,000</td>
-<td>20</td>
-<td>A rare herb used in high-level herblore</td>
+<tr id="1_10">
+<td>1-10</td>
+<td>10-66</td>
+<td>38</td>
 </tr>
-<tr id="ring_of_recoil">
-<td><a href="Equipment.html#ring_of_recoil">Ring Of Recoil</a></td>
-<td>25,000</td>
-<td>20</td>
-<td>Returns a portion of damage taken to attackers</td>
+<tr id="10_20">
+<td>10-20</td>
+<td>13-73</td>
+<td>43</td>
 </tr>
-<tr id="amulet_of_strength">
-<td><a href="Equipment.html#amulet_of_strength">Amulet Of Strength</a></td>
-<td>15,000</td>
-<td>20</td>
-<td>Increases melee strength bonus</td>
-</tr>
-<tr id="celestial_bloom">
-<td><a href="Farming.html#celestial_bloom">Celestial Bloom</a></td>
-<td>12,000</td>
-<td>40</td>
-<td>An ethereal flower used in master potions</td>
-</tr>
-<tr id="ring_of_wealth">
-<td><a href="Equipment.html#ring_of_wealth">Ring Of Wealth</a></td>
-<td>50,000</td>
-<td>40</td>
-<td>Increases coin drops slightly</td>
-</tr>
-<tr id="void_lotus">
-<td><a href="Farming.html#void_lotus">Void Lotus</a></td>
-<td>30,000</td>
-<td>60</td>
-<td>A mysterious lotus used in the rarest concoctions</td>
-</tr>
-<tr id="berserker_ring">
-<td><a href="Equipment.html#berserker_ring">Berserker Ring</a></td>
-<td>200,000</td>
-<td>60</td>
-<td>Increases melee strength</td>
-</tr>
-<tr id="archers_ring">
-<td><a href="Equipment.html#archers_ring">Archers Ring</a></td>
-<td>200,000</td>
-<td>60</td>
-<td>Increases ranged accuracy</td>
-</tr>
-<tr id="seers_ring">
-<td><a href="Equipment.html#seers_ring">Seers Ring</a></td>
-<td>200,000</td>
-<td>60</td>
-<td>Increases magic accuracy</td>
-</tr>
-<tr id="ring_of_suffering">
-<td><a href="Equipment.html#ring_of_suffering">Ring Of Suffering</a></td>
-<td>500,000</td>
-<td>80</td>
-<td>A powerful ring that grants significant defense</td>
-</tr>
-<tr id="amulet_of_fury">
-<td><a href="Equipment.html#amulet_of_fury">Amulet Of Fury</a></td>
-<td>800,000</td>
-<td>80</td>
-<td>A powerful amulet granting bonuses to all combat styles</td>
-</tr>
-<tr id="necklace_of_anguish">
-<td><a href="Equipment.html#necklace_of_anguish">Necklace Of Anguish</a></td>
-<td>3,000,000</td>
-<td>99</td>
-<td>Provides exceptional ranged attack bonuses</td>
-</tr>
-<tr id="tormented_necklace">
-<td><a href="Equipment.html#tormented_necklace">Tormented Necklace</a></td>
-<td>3,000,000</td>
-<td>99</td>
-<td>Provides exceptional magic bonuses</td>
+<tr id="gt_20">
+<td>&gt;20</td>
+<td>14-78</td>
+<td>46</td>
 </tr>
 </tbody>
 </table>

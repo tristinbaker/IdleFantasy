@@ -132,13 +132,14 @@
 <p>For more information, see <a href="wiki_page_types.html">Types of Wiki Pages</a>.</p>
 <h2 id="buildingcompiling-the-wiki">Building/Compiling the Wiki</h2>
 <p>To build the wiki, you'll need to set up an appropriate Python environment which you can use to run the wiki compilation. For information about setting up virtual environments, see <a href="https://www.geeksforgeeks.org/python/create-virtual-environment-using-venv-python/">this tutorial</a> (make sure to call it .venv to have it be gitignored).</p>
+<p>Then, make sure you've installed all packages shown in <code>wiki/requirements.txt</code></p>
 <p>From there, you can run the following command to see what you can do (from the project folder):</p>
-<pre><code class="language-bash"># Activate the virtual environment
+<pre><code class="language-bash"># Activate the virtual environment (Only run in Windows terminal)
 .venv/Scripts/activate
-# Change directory to wiki directory
-cd wiki
+# Activate the virtual environment (Only run in bash terminal)
+source .venv/Scripts/activate
 # See help information for program
-python -m src -h
+python -m wiki.src -h
 </code></pre>
 <h2 id="wiki-code-structure">Wiki code structure</h2>
 <p>The following code files are used as follows in the wiki:</p>
