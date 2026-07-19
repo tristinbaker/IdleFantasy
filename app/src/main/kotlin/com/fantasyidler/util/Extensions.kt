@@ -40,6 +40,16 @@ fun Long.formatCoinsBrief(): String = when {
 fun Long.toClockTime(context: android.content.Context): String =
     android.text.format.DateFormat.getTimeFormat(context).format(java.util.Date(this))
 
+/** Formats the game's fixed 6 AM local daily reset time as a clock string, respecting the device's 12/24-hour preference. */
+fun dailyResetClockTime(context: android.content.Context): String {
+    val cal = java.util.Calendar.getInstance().apply {
+        set(java.util.Calendar.HOUR_OF_DAY, 6)
+        set(java.util.Calendar.MINUTE, 0)
+        set(java.util.Calendar.SECOND, 0)
+    }
+    return cal.timeInMillis.toClockTime(context)
+}
+
 /**
  * Convert an epoch-ms "ends_at" timestamp to a human-readable countdown string, optionally
  * with the completion clock time, e.g. "42m 10s (1:45 PM)" or "42m 10s" or "Complete"

@@ -14,8 +14,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -37,14 +35,8 @@ fun BuilderScreen(
     viewModel: BuilderViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
-    val snackbarHostState = remember { SnackbarHostState() }
 
-    LaunchedEffect(state.snackbarMessage) {
-        state.snackbarMessage?.let {
-            snackbarHostState.showSnackbar(it, withDismissAction = true)
-            viewModel.snackbarConsumed()
-        }
-    }
+    ToastMessageEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
     Scaffold(
         contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top),
@@ -58,7 +50,6 @@ fun BuilderScreen(
                 },
             )
         },
-        snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { padding ->
         LazyColumn(contentPadding = padding, modifier = Modifier.padding(horizontal = 16.dp)) {
             item {

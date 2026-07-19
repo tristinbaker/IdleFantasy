@@ -153,6 +153,7 @@ object GameStrings {
         "thieving"     -> "🥷"
         "combat"       -> "⚔️"
         "carnival"     -> "🎪"
+        "tower"        -> "🗼"
         else           -> "🎮"
     }
 

@@ -1,3 +1,22 @@
+v1.12.4
+• Fixed Firemakers Guild quests describing burning logs as "burning ashes" instead of naming the actual wood being burned
+• Boss fights on the Home screen now show that boss's own icon instead of a generic gamepad icon; the Infinite Tower now shows a dedicated tower icon too
+• Fixed the Guild Hall's "quests left today" text squeezing other elements (like the level badge) into an unreadable narrow column in non-English languages; it now sits on its own line
+• Cleaned up leftover duplicate/unused arrow-tip item keys that were confusing translators
+• Made the selected tab on Combat, Skills, and Quests screens more resilient to resetting to the wrong tab after rotating your phone
+• Fixed the queue getting stuck and rearranging itself instead of running your tasks when multiple Infinite Tower floors were queued back to back while you were away
+• Fixed Carnival games showing a bogus XP and level-up preview on the active session card, even though Carnival doesn't grant skill XP
+• Fixed the Bone Altar combo bonus staying shown as active after leaving and coming back, even though the combo had long since expired
+• Fixed "added to queue" and similar confirmation messages getting stuck and reappearing later if you navigated away while they were showing, across Mercantile, Quests, and most other drawers and screens
+• Daily and weekly quest reset times, and the Inn and Guild Hall's daily refresh times, now respect your phone's 12/24-hour clock setting instead of always showing 12-hour time
+• Fixed equipped tool names on the Profile > Gear tab showing in English regardless of your selected language
+• Fixed the Divine Hoe having lower farming efficiency than the Runite Hoe, which made "Equip Best Gear" never pick it
+• Fixed some Guild Halls occasionally offering fewer than 4 daily quests by adding more quest variety and a safety net that fills in extra options when needed
+• Fixed skill capes (Attack, Strength, Defense, Ranged, Magic, HP) and the Warriors/Archers/Mages Guild capes not actually granting their described bonus XP in combat, and corrected their misleading descriptions to say what they really do
+• The Combat > Skills screen now also shows your permanent prestige stat bonus next to each skill, not just its gear bonus
+• Fixed queued dungeon/boss fights sometimes using your default weapon instead of the one actually selected, most noticeable after Android killed the app in the background; queued fights now also show an estimated XP preview like Repeat Action already did
+• Fixed dungeon risk ratings (safe/risky/deadly) not updating when you applied or removed a Church blessing, so a Defense blessing now actually lowers the shown risk like it should
+
 v1.12.3
 • Fixed the activity picker closing after starting or queueing a session; it now stays open so you can queue multiple activities in a row
 • Sped up planting multiple farming patches at once, matching the earlier harvest speed fix

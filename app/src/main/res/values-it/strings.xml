@@ -310,8 +310,8 @@
     <string name="label_weekly">Settimanali</string>
     <string name="label_timed">A Tempo</string>
     <string name="label_daily_quests">Missioni Del Giorno</string>
-    <string name="label_daily_reset">Nuove missioni alle 06:00</string>
-    <string name="label_weekly_reset">Nuove missioni ogni Lunedì alle 06:00</string>
+    <string name="label_daily_reset">Nuove missioni alle %1$s</string>
+    <string name="label_weekly_reset">Nuove missioni ogni Lunedì alle %1$s</string>
     <string name="weekly_bonus_title">Bonus Settimanale!</string>
     <string name="weekly_bonus_claim">Ricevi Bonus Settimanale</string>
     <string name="label_daily_info">Ogni missione giornaliera ha una ricompensa in monete. Inoltre, puoi ottenere oggetti Nanici con 1/100 di probabilità.</string>
@@ -383,6 +383,8 @@
     <string name="settings_lang_russian">Русский</string>
     <string name="settings_lang_indonesian">Bahasa Indonesia</string>
     <string name="settings_lang_portugues_brasil">Português (Brasil)</string>
+    <string name="settings_lang_irish">Gaeilge</string>
+    <string name="settings_lang_czech">Čeština</string>
     <string name="settings_lang_system">Sistema</string>
     <string name="settings_save_data">Salva</string>
     <string name="settings_export">Esporta Salvataggio</string>
@@ -495,6 +497,8 @@
     <string name="combat_died_reward" formatted="false">Hai ricevuto il 10% delle ricompense.</string>
     <!-- Translator note: %1$d = gear bonus value -->
     <string name="combat_gear_bonus">+%1$d da armamenti</string>
+    <!-- Translator note: %1$d = permanent prestige stat bonus value -->
+    <string name="combat_prestige_bonus">+%1$d da onore</string>
 
     <!-- ===== ProfileScreen ===== -->
     <string name="profile_unnamed">Avventuriero Anonimo</string>
@@ -805,7 +809,7 @@
     <string name="quest_kbd_slayer_1_name">Sgozzatore di Draghi Neri Regali I</string>
     <string name="quest_kbd_slayer_2_name">Sgozzatore di Draghi Neri Regali II</string>
     <string name="quest_kbd_slayer_3_name">Sgozzatore di Draghi Neri Regali III</string>
-    <string name="inn_daily_resets">Si aggiorna quotidianamente alle 06:00</string>
+    <string name="inn_daily_resets">Si aggiorna quotidianamente alle %1$s</string>
     <string name="inn_food_heal">+%1$d HP</string>
     <string name="inn_food_purchased">Cibo acquistato.</string>
     <string name="inn_buy_qty">Quantità</string>
@@ -824,7 +828,7 @@
     <string name="guild_level_max">Livello 10 (Max)</string>
     <string name="guild_tab_quests">Missioni</string>
     <string name="guild_tab_dailies">Richieste del Giorno</string>
-    <string name="guild_daily_resets_in">Si aggiornano quotidianamente alle 06:00</string>
+    <string name="guild_daily_resets_in">Si aggiornano quotidianamente alle %1$s</string>
     <string name="guild_locked_hint">Richiede Livello Gilda %1$d</string>
     <string name="guild_no_dailies">Completa missioni della gilda per sbloccare le richieste del giorno.</string>
     <string name="guild_contribute_inventory">Contribuisci con i tuoi oggetti (%1$d disponibile)</string>

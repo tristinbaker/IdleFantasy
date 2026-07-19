@@ -104,6 +104,10 @@ class BoneAltarViewModel @Inject constructor(
         _extra.update { it.copy(selectedBoneKey = boneKey, combo = 0, lastTapMs = 0L) }
     }
 
+    fun resetCombo() {
+        _extra.update { it.copy(combo = 0, lastTapMs = 0L) }
+    }
+
     fun tapBone() {
         val state   = uiState.value
         val boneKey = state.selectedBoneKey ?: return

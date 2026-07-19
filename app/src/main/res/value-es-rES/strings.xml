@@ -1533,4 +1533,5 @@
     <string name="guild_dailies_done_today">Dailies done today</string>
     <string name="guild_dailies_remaining_today">%1$d left today</string>
     <string name="armory_stat_cape_boost">Boost Bonus</string>
+    <string name="combat_prestige_bonus">+%1$d prestige</string>
 </resources>

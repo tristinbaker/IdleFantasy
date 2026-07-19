@@ -196,12 +196,12 @@
   ],
   "arrow_components": [
     "arrow_shaft",
-    "bronze_arrow_tips",
-    "iron_arrow_tips",
-    "steel_arrow_tips",
-    "mithril_arrow_tips",
-    "adamantite_arrow_tips",
-    "runite_arrow_tips"
+    "bronze_arrow_tip",
+    "iron_arrow_tip",
+    "steel_arrow_tip",
+    "mithril_arrow_tip",
+    "adamantite_arrow_tip",
+    "runite_arrow_tip"
   ],
   "drops": [
     "bones",

@@ -324,8 +324,8 @@
     <string name="label_weekly">Tygodniowe</string>
     <string name="label_timed">Czasowe</string>
     <string name="label_daily_quests">Zadania dzienne</string>
-    <string name="label_daily_reset">Odnawia się o 6:00</string>
-    <string name="label_weekly_reset">Odnawia się w poniedziałek o 6:00</string>
+    <string name="label_daily_reset">Odnawia się o %1$s</string>
+    <string name="label_weekly_reset">Odnawia się w poniedziałek o %1$s</string>
     <string name="weekly_bonus_title">Tygodniowy bonus!</string>
     <string name="weekly_bonus_claim">Odbierz tygodniowy bonus</string>
     <string name="label_daily_info">Każde zadanie dzienne nagradza monetami. Każde zadanie ma też szansę 1 na 100 na zrzucenie elementu krasnoludzkiego wyposażenia.</string>
@@ -397,6 +397,8 @@
     <string name="settings_lang_russian">Русский</string>
     <string name="settings_lang_indonesian">Bahasa Indonesia</string>
     <string name="settings_lang_portugues_brasil">Português (Brasil)</string>
+    <string name="settings_lang_irish">Gaeilge</string>
+    <string name="settings_lang_czech">Čeština</string>
     <string name="settings_lang_system">Systemowy</string>
     <string name="settings_save_data">Dane zapisu</string>
     <string name="settings_export">Eksportuj zapis</string>
@@ -511,6 +513,8 @@
     <string name="combat_died_reward" formatted="false">Otrzymałeś 10% nagród.</string>
     <!-- Translator note: %1$d = gear bonus value -->
     <string name="combat_gear_bonus">+%1$d wyposażenie</string>
+    <!-- Translator note: %1$d = permanent prestige stat bonus value -->
+    <string name="combat_prestige_bonus">+%1$d prestiżu</string>
 
     <!-- ===== ProfileScreen ===== -->
     <string name="profile_unnamed">Bezimienny poszukiwacz przygód</string>
@@ -819,7 +823,7 @@
     <string name="quest_kbd_slayer_1_name">Pogromca Czarnego Smoka Króla I</string>
     <string name="quest_kbd_slayer_2_name">Pogromca Czarnego Smoka Króla II</string>
     <string name="quest_kbd_slayer_3_name">Pogromca Czarnego Smoka Króla III</string>
-    <string name="inn_daily_resets">Odnawia się codziennie o 6:00</string>
+    <string name="inn_daily_resets">Odnawia się codziennie o %1$s</string>
     <string name="inn_food_heal">+%1$d HP</string>
     <string name="inn_food_purchased">Zakupiono jedzenie.</string>
     <string name="inn_buy_qty">Ilość</string>
@@ -838,7 +842,7 @@
     <string name="guild_level_max">Poziom 10 (Maks.)</string>
     <string name="guild_tab_quests">Zadania</string>
     <string name="guild_tab_dailies">Codzienne prośby</string>
-    <string name="guild_daily_resets_in">Odnawia się codziennie o 6:00</string>
+    <string name="guild_daily_resets_in">Odnawia się codziennie o %1$s</string>
     <string name="guild_locked_hint">Wymaga poziomu gildii %1$d</string>
     <string name="guild_no_dailies">Ukończ zadania gildii, by odblokować codzienne prośby.</string>
     <string name="guild_contribute_inventory">Wnieś z ekwipunku (dostępnych: %1$d)</string>

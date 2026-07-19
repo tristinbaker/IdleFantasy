@@ -41,8 +41,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -84,15 +82,9 @@ fun FarmingScreen(
     viewModel: FarmingViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
-    val snackbarHostState = remember { SnackbarHostState() }
     val context = LocalContext.current
 
-    LaunchedEffect(state.snackbarMessage) {
-        state.snackbarMessage?.let {
-            snackbarHostState.showSnackbar(it, withDismissAction = true)
-            viewModel.snackbarConsumed()
-        }
-    }
+    ToastMessageEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
     Scaffold(
         contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top),
@@ -108,7 +100,6 @@ fun FarmingScreen(
                 },
             )
         },
-        snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { padding ->
         if (state.isLoading) {
             Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
@@ -217,15 +208,9 @@ fun FarmingSheetContent(
     viewModel: FarmingViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
-    val snackbarHostState = remember { SnackbarHostState() }
     val context = LocalContext.current
 
-    LaunchedEffect(state.snackbarMessage) {
-        state.snackbarMessage?.let {
-            snackbarHostState.showSnackbar(it, withDismissAction = true)
-            viewModel.snackbarConsumed()
-        }
-    }
+    ToastMessageEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
     Box(Modifier.fillMaxWidth().fillMaxHeight(0.85f)) {
         if (state.isLoading) {
@@ -258,10 +243,6 @@ fun FarmingSheetContent(
             }
             item { Spacer(Modifier.height(24.dp)) }
         }
-        SnackbarHost(
-            hostState = snackbarHostState,
-            modifier  = Modifier.align(Alignment.BottomCenter),
-        )
     }
 
     state.plantingPatchNumber?.let { patchNum ->

@@ -53,6 +53,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import kotlinx.coroutines.launch
 import androidx.compose.ui.Alignment
@@ -174,7 +175,12 @@ fun CombatScreen(
 
         val combatSession = state.combatSession
         if (combatSession != null) {
-            val pagerState = rememberPagerState(initialPage = if (startOnGear) 2 else 0, pageCount = { 4 })
+            var savedPage by rememberSaveable { mutableIntStateOf(if (startOnGear) 2 else 0) }
+            val pagerState = rememberPagerState(initialPage = savedPage, pageCount = { 4 })
+            LaunchedEffect(Unit) {
+                if (pagerState.currentPage != savedPage) pagerState.scrollToPage(savedPage)
+            }
+            LaunchedEffect(pagerState.currentPage) { savedPage = pagerState.currentPage }
             val scope = rememberCoroutineScope()
             Column(Modifier.padding(padding).fillMaxSize()) {
                 ScrollableTabRow(selectedTabIndex = pagerState.currentPage, edgePadding = 0.dp) {
@@ -258,7 +264,12 @@ fun CombatScreen(
                 }
             }
         } else {
-            val pagerState = rememberPagerState(initialPage = if (startOnGear) 1 else 0, pageCount = { 3 })
+            var savedPage by rememberSaveable { mutableIntStateOf(if (startOnGear) 1 else 0) }
+            val pagerState = rememberPagerState(initialPage = savedPage, pageCount = { 3 })
+            LaunchedEffect(Unit) {
+                if (pagerState.currentPage != savedPage) pagerState.scrollToPage(savedPage)
+            }
+            LaunchedEffect(pagerState.currentPage) { savedPage = pagerState.currentPage }
             val scope = rememberCoroutineScope()
             Column(Modifier.padding(padding).fillMaxSize()) {
                 TabRow(selectedTabIndex = pagerState.currentPage) {
@@ -716,6 +727,14 @@ private fun CombatSkillRow(
                             text  = stringResource(R.string.combat_gear_bonus, gearBonus),
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.primary,
+                        )
+                    }
+                    if (skillKey != Skills.PRAYER && prestigeLevel > 0) {
+                        Spacer(Modifier.width(6.dp))
+                        Text(
+                            text  = stringResource(R.string.combat_prestige_bonus, prestigeLevel * 5),
+                            style = MaterialTheme.typography.labelSmall,
+                            color = GoldPrimary,
                         )
                     }
                 }

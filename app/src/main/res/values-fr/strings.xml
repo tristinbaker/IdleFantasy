@@ -295,8 +295,8 @@
     <string name="label_weekly">Hebdomadaire</string>
     <string name="label_timed">Temporaire</string>
     <string name="label_daily_quests">Quêtes quotidiennes</string>
-    <string name="label_daily_reset">Se réinitialise à 6 heures</string>
-    <string name="label_weekly_reset">Se réinitialise le lundi à 6h</string>
+    <string name="label_daily_reset">Se réinitialise à %1$s</string>
+    <string name="label_weekly_reset">Se réinitialise le lundi à %1$s</string>
     <string name="weekly_bonus_title">Bonus hebdomadaire !</string>
     <string name="weekly_bonus_claim">Réclamer le bonus hebdomadaire</string>
     <string name="label_daily_info">Chaque quête quotidienne rapporte des pièces. Chaque quête a également 1 chance sur 100 de faire tomber un équipement nanique.</string>
@@ -360,6 +360,8 @@
     <string name="settings_lang_russian">Russe</string>
     <string name="settings_lang_indonesian">Indonésien</string>
     <string name="settings_lang_portugues_brasil">Portugais (Brésil)</string>
+    <string name="settings_lang_irish">Irlandais</string>
+    <string name="settings_lang_czech">Tchèque</string>
     <string name="settings_lang_system">Système</string>
     <string name="settings_save_data">Sauvegarder les données</string>
     <string name="settings_export">Exporter la sauvegarde</string>
@@ -444,6 +446,8 @@
     <string name="combat_died_reward">Vous avez reçu 10% des récompenses.</string>
     <!-- Translator note: %1$d = gear bonus value -->
     <string name="combat_gear_bonus">+%1$d équipement</string>
+    <!-- Translator note: %1$d = permanent prestige stat bonus value -->
+    <string name="combat_prestige_bonus">+%1$d prestige</string>
 
     <!-- Écran de profil -->
     <string name="profile_unnamed">Aventurier sans nom</string>
@@ -761,7 +765,7 @@
     <string name="quest_kbd_slayer_1_name">Chasseur du Roi Dragon Noir I</string>
     <string name="quest_kbd_slayer_2_name">Chasseur du Roi Dragon Noir II</string>
     <string name="quest_kbd_slayer_3_name">Chasseur du Roi Dragon Noir III</string>
-    <string name="inn_daily_resets">Réinitialisé chaque jour à 6h</string>
+    <string name="inn_daily_resets">Réinitialisé chaque jour à %1$s</string>
     <string name="inn_food_heal">+%1$d PV</string>
     <string name="inn_food_purchased">Nourriture achetée.</string>
     <string name="inn_buy_qty">Quantité</string>
@@ -778,7 +782,7 @@
     <string name="guild_level_max">Niveau 10 (Max)</string>
     <string name="guild_tab_quests">Quêtes</string>
     <string name="guild_tab_dailies">Demandes quotidiennes</string>
-    <string name="guild_daily_resets_in">Réinitialisé chaque jour à 6h</string>
+    <string name="guild_daily_resets_in">Réinitialisé chaque jour à %1$s</string>
     <string name="guild_locked_hint">Nécessite le niveau de guilde %1$d</string>
     <string name="guild_no_dailies">Terminez des quêtes de guilde pour débloquer les demandes quotidiennes.</string>
     <string name="guild_contribute_inventory">Contribuer depuis l’inventaire (%1$d disponible)</string>

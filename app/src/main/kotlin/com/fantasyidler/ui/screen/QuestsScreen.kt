@@ -23,8 +23,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.ScrollableTabRow
@@ -41,6 +39,7 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import kotlinx.coroutines.launch
 import androidx.compose.ui.Alignment
@@ -67,6 +66,7 @@ import com.fantasyidler.repository.WeeklyQuestWithProgress
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatCoins
 import com.fantasyidler.util.formatXp
+import com.fantasyidler.util.toClockTime
 
 private val TAB_GROUPS = listOf("Timed", "Gathering", "Crafting", "Combat", "Special")
 
@@ -88,14 +88,8 @@ fun QuestsScreen(
     viewModel: QuestsViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
-    val snackbarHostState = remember { SnackbarHostState() }
 
-    LaunchedEffect(state.snackbarMessage) {
-        state.snackbarMessage?.let {
-            snackbarHostState.showSnackbar(it, withDismissAction = true)
-            viewModel.snackbarConsumed()
-        }
-    }
+    ToastMessageEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
     Scaffold(
         contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top),
@@ -122,7 +116,6 @@ fun QuestsScreen(
                 },
             )
         },
-        snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { padding ->
         if (state.isLoading) {
             Box(
@@ -136,7 +129,12 @@ fun QuestsScreen(
             return@Scaffold
         }
 
-        val pagerState = rememberPagerState(pageCount = { TAB_GROUPS.size })
+        var savedPage by rememberSaveable { mutableIntStateOf(0) }
+        val pagerState = rememberPagerState(initialPage = savedPage, pageCount = { TAB_GROUPS.size })
+        LaunchedEffect(Unit) {
+            if (pagerState.currentPage != savedPage) pagerState.scrollToPage(savedPage)
+        }
+        LaunchedEffect(pagerState.currentPage) { savedPage = pagerState.currentPage }
         val scope = rememberCoroutineScope()
 
         Column(
@@ -284,6 +282,7 @@ private fun DailyQuestsContent(
     onClaimQuest: (String) -> Unit,
 ) {
     val visibleQuests = if (hideCompleted) quests.filter { !it.claimed } else quests
+    val context = LocalContext.current
     LazyColumn(Modifier.fillMaxSize()) {
         item {
             Text(
@@ -317,7 +316,7 @@ private fun DailyQuestsContent(
         }
         item {
             Text(
-                text     = stringResource(R.string.label_daily_reset),
+                text     = stringResource(R.string.label_daily_reset, nextReset.toClockTime(context)),
                 style    = MaterialTheme.typography.labelSmall,
                 color    = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier
@@ -343,6 +342,7 @@ private fun WeeklyQuestsContent(
 ) {
     val visibleQuests = if (hideCompleted) quests.filter { !it.claimed } else quests
     val allQuestsClaimed = quests.isNotEmpty() && quests.all { it.claimed }
+    val context = LocalContext.current
 
     LazyColumn(Modifier.fillMaxSize()) {
         item {
@@ -392,7 +392,7 @@ private fun WeeklyQuestsContent(
         }
         item {
             Text(
-                text     = stringResource(R.string.label_weekly_reset),
+                text     = stringResource(R.string.label_weekly_reset, nextReset.toClockTime(context)),
                 style    = MaterialTheme.typography.labelSmall,
                 color    = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier

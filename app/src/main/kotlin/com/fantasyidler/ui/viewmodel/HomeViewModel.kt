@@ -58,6 +58,27 @@ private val COMBAT_CAPE_SKILLS = setOf(
     "warriors", "archers", "mages",
 )
 
+/** Which combat XP stat(s) each combat/guild cape's percentage bonus applies to. */
+private val CAPE_SKILL_TO_COMBAT_STATS: Map<String, Set<String>> = mapOf(
+    "attack"   to setOf(Skills.ATTACK),
+    "strength" to setOf(Skills.STRENGTH),
+    "defense"  to setOf(Skills.DEFENSE),
+    "ranged"   to setOf(Skills.RANGED),
+    "magic"    to setOf(Skills.MAGIC),
+    "hp"       to setOf(Skills.HITPOINTS),
+    "warriors" to setOf(Skills.ATTACK, Skills.STRENGTH, Skills.DEFENSE),
+    "archers"  to setOf(Skills.RANGED),
+    "mages"    to setOf(Skills.MAGIC),
+)
+
+private fun applyCombatCapeBonus(xpPerSkill: MutableMap<String, Long>, capeSkill: String?, capeBonus: Float) {
+    if (capeSkill == null || capeBonus <= 0f) return
+    val boostedStats = CAPE_SKILL_TO_COMBAT_STATS[capeSkill] ?: return
+    for (stat in boostedStats) {
+        xpPerSkill[stat]?.let { xpPerSkill[stat] = (it * (1.0 + capeBonus)).toLong() }
+    }
+}
+
 // ---------------------------------------------------------------------------
 // Session summary shown in the collect dialog
 // ---------------------------------------------------------------------------
@@ -265,7 +286,7 @@ class HomeViewModel @Inject constructor(
             val innXpMult = townRepo.workerXpMultiplier(flags)
             val playerXpBoostMult = (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * ChurchRepository.xpMultiplier(flags)
             val sessionXpGain: (SkillSession?) -> Long = { s ->
-                if (s == null || s.skillName in listOf("combat", "boss", "expedition", "farming", "tower")) 0L
+                if (s == null || s.skillName in listOf("combat", "boss", "expedition", "farming", "tower", "carnival")) 0L
                 else try {
                     val base = json.decodeFromString<List<SessionFrame>>(s.frames).sumOf { it.xpGain.toLong() }
                     if (s.isWorkerSession) (base * s.efficiencyMultiplier * innXpMult).toLong()
@@ -503,6 +524,7 @@ class HomeViewModel @Inject constructor(
                             f.runesConsumed.forEach  { (k, v) -> allRunesConsumed[k]  = (allRunesConsumed[k] ?: 0) + v }
                             f.xpBySkill.forEach      { (k, v) -> bossXpBySkill[k]     = (bossXpBySkill[k] ?: 0L) + v }
                         }
+                        applyCombatCapeBonus(bossXpBySkill, capeSkill, capeBonus)
                         val bossSkillLvls    = playerRepo.getSkillLevels()
                         val bossArrowsRec    = allArrowsConsumed.mapValues { (_, qty) -> (qty * reclaimChance(bossSkillLvls[Skills.RANGED] ?: 1)).toInt() }.filterValues { it > 0 }
                         val bossRunesRec     = allRunesConsumed.mapValues  { (_, qty) -> (qty * reclaimChance(bossSkillLvls[Skills.MAGIC]  ?: 1)).toInt() }.filterValues { it > 0 }
@@ -573,6 +595,7 @@ class HomeViewModel @Inject constructor(
                             for ((a, q) in frame.arrowsConsumed)       arrows[a]         = (arrows[a] ?: 0) + q
                             for ((r, q) in frame.runesConsumed)        runes[r]          = (runes[r] ?: 0) + q
                         }
+                        applyCombatCapeBonus(xpPerSkill, capeSkill, capeBonus)
                         if (died) {
                             xpPerSkill.replaceAll { _, xp -> maxOf(1L, (xp * 0.1).toLong()) }
                             its.replaceAll { _, qty -> maxOf(0, (qty * 0.1).toInt()) }
@@ -928,6 +951,8 @@ class HomeViewModel @Inject constructor(
             }
         }
     }
+
+    fun bossEmoji(activityKey: String): String? = gameData.bosses[activityKey]?.emoji
 
     fun repeatActiveSession() {
         viewModelScope.launch {

@@ -178,59 +178,67 @@ private fun GuildCard(
 ) {
     val claimable = summary.claimableQuestCount + summary.claimableDailyCount
 
-    Row(
-        modifier          = Modifier
+    Column(
+        modifier = Modifier
             .fillMaxWidth()
             .clickable(onClick = onClick)
             .padding(horizontal = 16.dp, vertical = 12.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        Column(modifier = Modifier.weight(1f)) {
-            Row(
-                verticalAlignment      = Alignment.CenterVertically,
-                horizontalArrangement  = Arrangement.spacedBy(8.dp),
-            ) {
-                Text(
-                    text       = guildDisplayName(summary.guildKey),
-                    style      = MaterialTheme.typography.bodyLarge,
-                    fontWeight = FontWeight.SemiBold,
-                )
-                LevelBadge(level = summary.level)
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Row(
+                    verticalAlignment      = Alignment.CenterVertically,
+                    horizontalArrangement  = Arrangement.spacedBy(8.dp),
+                ) {
+                    Text(
+                        text       = guildDisplayName(summary.guildKey),
+                        style      = MaterialTheme.typography.bodyLarge,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                    LevelBadge(level = summary.level)
+                }
+                if (summary.questGateBlocked) {
+                    Text(
+                        text  = stringResource(R.string.guild_quest_required),
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.error,
+                    )
+                } else if (summary.hasDailiesAvailable) {
+                    Text(
+                        text  = stringResource(R.string.guild_dailies_available),
+                        style = MaterialTheme.typography.labelSmall,
+                        color = GoldPrimary,
+                    )
+                }
+                if (summary.level < 10) {
+                    Spacer(Modifier.height(6.dp))
+                    LinearProgressIndicator(
+                        progress = { (summary.dailiesCompletedThisTier.toFloat() / summary.dailiesRequiredThisTier.toFloat()).coerceIn(0f, 1f) },
+                        modifier = Modifier.fillMaxWidth(),
+                        color    = GoldPrimary,
+                    )
+                    Spacer(Modifier.height(2.dp))
+                    Text(
+                        text  = stringResource(R.string.guild_rep_label, summary.dailiesCompletedThisTier, summary.dailiesRequiredThisTier),
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
             }
-            if (summary.questGateBlocked) {
-                Text(
-                    text  = stringResource(R.string.guild_quest_required),
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.error,
-                )
-            } else if (summary.hasDailiesAvailable) {
-                Text(
-                    text  = stringResource(R.string.guild_dailies_available),
-                    style = MaterialTheme.typography.labelSmall,
-                    color = GoldPrimary,
-                )
-            }
-            if (summary.level < 10) {
-                Spacer(Modifier.height(6.dp))
-                LinearProgressIndicator(
-                    progress = { (summary.dailiesCompletedThisTier.toFloat() / summary.dailiesRequiredThisTier.toFloat()).coerceIn(0f, 1f) },
-                    modifier = Modifier.fillMaxWidth(),
-                    color    = GoldPrimary,
-                )
-                Spacer(Modifier.height(2.dp))
-                Text(
-                    text  = stringResource(R.string.guild_rep_label, summary.dailiesCompletedThisTier, summary.dailiesRequiredThisTier),
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
+
+            if (claimable > 0) {
+                Badge { Text("$claimable") }
             }
         }
 
-        DailyStatusIndicator(summary = summary)
-
-        if (claimable > 0) {
-            Badge { Text("$claimable") }
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(top = 4.dp),
+            horizontalArrangement = Arrangement.End,
+        ) {
+            DailyStatusIndicator(summary = summary)
         }
     }
 }

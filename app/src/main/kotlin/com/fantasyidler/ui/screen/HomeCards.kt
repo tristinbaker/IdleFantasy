@@ -118,6 +118,7 @@ internal fun HomeSessionCard(
     skillXp: Map<String, Long>,
     sessionXpGain: Long,
     showEndTime: Boolean = true,
+    bossEmoji: String? = null,
     onRepeat: () -> Unit,
     onAbandon: () -> Unit,
     onDebugFinish: () -> Unit,
@@ -139,7 +140,7 @@ internal fun HomeSessionCard(
         "combat" -> context.getString(R.string.label_combat)
         else     -> GameStrings.skillName(context, session.skillName)
     }
-    val skillEmoji = GameStrings.skillEmoji(session.skillName)
+    val skillEmoji = bossEmoji ?: GameStrings.skillEmoji(session.skillName)
     val activityLabel = when (session.skillName) {
         "combat"     -> GameStrings.dungeonName(context, session.activityKey)
         "boss"       -> GameStrings.bossName(context, session.activityKey)

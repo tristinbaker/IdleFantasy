@@ -800,6 +800,7 @@ fun HomeScreen(
                     skillXp        = state.skillXp,
                     sessionXpGain  = state.activeSessionXpGain,
                     showEndTime    = state.showSessionEndTime,
+                    bossEmoji      = if (session.skillName == "boss") viewModel.bossEmoji(session.activityKey) else null,
                     onRepeat       = viewModel::repeatActiveSession,
                     onAbandon      = viewModel::abandonSession,
                     onDebugFinish  = viewModel::debugFinishSession,

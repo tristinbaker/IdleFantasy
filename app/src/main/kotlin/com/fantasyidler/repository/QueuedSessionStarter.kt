@@ -106,7 +106,10 @@ class QueuedSessionStarter @Inject constructor(
 
     /**
      * Pops the next queued action and inserts it as an already-completed session,
-     * provided its estimated duration fits within [remainingMs].
+     * provided its estimated duration fits within [remainingMs]. A Tower floor blocked
+     * on pending collection is skipped and stashed rather than parked at the front,
+     * matching [startNextQueued]'s handling, so it can't stall every other queued item
+     * behind it during offline catch-up (issue #1037).
      *
      * Returns the estimated duration of the inserted session, or 0L if:
      * - the queue is empty
@@ -117,27 +120,37 @@ class QueuedSessionStarter @Inject constructor(
      */
     suspend fun insertNextQueuedAsOffline(remainingMs: Long): Long {
         mutex.withLock {
-            val next = playerRepo.dequeueNextActionUnlocked() ?: return 0L
             val player = playerRepo.getOrCreatePlayer()
             val levels: Map<String, Int> = json.decodeFromString(player.skillLevels)
             val flags: PlayerFlags       = json.decodeFromString(player.flags)
             val agilityLevel    = levels[Skills.AGILITY] ?: 1
             val agilityPrestige = flags.skillPrestige[Skills.AGILITY] ?: 0
-            val duration = estimateDuration(next, agilityLevel, agilityPrestige)
-            if (duration > remainingMs) {
-                playerRepo.requeueActionAtFrontUnlocked(next)
-                return 0L
+            val skippedTowerActions = mutableListOf<QueuedAction>()
+            var maxAttempts = playerRepo.getFlags().sessionQueue.size
+            while (maxAttempts-- >= 0) {
+                val next = playerRepo.dequeueNextActionUnlocked() ?: break
+                val duration = estimateDuration(next, agilityLevel, agilityPrestige)
+                if (duration > remainingMs) {
+                    playerRepo.requeueActionAtFrontUnlocked(next)
+                    for (skipped in skippedTowerActions.asReversed()) playerRepo.requeueActionAtFrontUnlocked(skipped)
+                    return 0L
+                }
+                try {
+                    // backdateMs = remainingMs so each fast-forwarded session in the same
+                    // catch-up burst gets a distinct startedAt (now - remainingMs), staying
+                    // strictly ordered by queue position instead of all colliding on "now".
+                    startQueuedAction(next, offline = true, backdateMs = remainingMs)
+                    for (skipped in skippedTowerActions.asReversed()) playerRepo.requeueActionAtFrontUnlocked(skipped)
+                    return duration
+                } catch (_: TowerPendingCollectionException) {
+                    skippedTowerActions += next
+                } catch (_: Exception) {
+                    playerRepo.requeueActionAtFrontUnlocked(next)
+                    for (skipped in skippedTowerActions.asReversed()) playerRepo.requeueActionAtFrontUnlocked(skipped)
+                    return 0L
+                }
             }
-            return try {
-                // backdateMs = remainingMs so each fast-forwarded session in the same
-                // catch-up burst gets a distinct startedAt (now - remainingMs), staying
-                // strictly ordered by queue position instead of all colliding on "now".
-                startQueuedAction(next, offline = true, backdateMs = remainingMs)
-                duration
-            } catch (_: Exception) {
-                playerRepo.requeueActionAtFrontUnlocked(next)
-                0L
-            }
+            for (skipped in skippedTowerActions.asReversed()) playerRepo.requeueActionAtFrontUnlocked(skipped)
         }
         return 0L
     }

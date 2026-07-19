@@ -213,8 +213,7 @@ internal fun EquipSlotRow(
             modifier = Modifier.width(100.dp),
         )
         if (itemKey != null) {
-            val baseName = itemKey.replace('_', ' ').split(' ')
-                .joinToString(" ") { it.replaceFirstChar(Char::uppercase) }
+            val baseName = GameStrings.itemName(context, itemKey)
             val displayName = if (xpLabel != null) "$baseName ($xpLabel)" else baseName
             Column(Modifier.weight(1f)) {
                 Text(

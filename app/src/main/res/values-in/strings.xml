@@ -238,8 +238,8 @@
     <string name="label_weekly">Mingguan</string>
     <string name="label_timed">Waktu</string>
     <string name="label_daily_quests">Tugas Harian</string>
-    <string name="label_daily_reset">Direset pada pukul 6:00 pagi</string>
-    <string name="label_weekly_reset">Reset Dihari Senin jam 6 Pagi</string>
+    <string name="label_daily_reset">Direset pada pukul %1$s</string>
+    <string name="label_weekly_reset">Reset Dihari Senin jam %1$s</string>
     <string name="weekly_bonus_title">Bonus Mingguan!</string>
     <string name="weekly_bonus_claim">Klaim Bonus Mingguan</string>
     <string name="label_daily_info">Setiap misi harian memberikan hadiah berupa koin. Setiap misi juga memiliki peluang 1 banding 100 untuk mendapatkan item perlengkapan Dwarf.</string>
@@ -300,6 +300,8 @@
     <string name="settings_lang_russian">Rusia</string>
     <string name="settings_lang_indonesian">Bahasa Indonesia</string>
     <string name="settings_lang_portugues_brasil">Portugis (Brasil)</string>
+    <string name="settings_lang_irish">Gaeilge</string>
+    <string name="settings_lang_czech">Čeština</string>
     <string name="settings_lang_system">Sistem</string>
     <string name="settings_save_data">Simpan Data</string>
     <string name="settings_export">Ekspor Simpan</string>
@@ -392,6 +394,7 @@
     <string name="combat_you_died">Kamu meninggal!</string>
     <string name="combat_died_reward">Anda menerima 10% dari hadiah.</string>
     <string name="combat_gear_bonus">+%1$d perlengkapan</string>
+    <string name="combat_prestige_bonus">+%1$d prestise</string>
     <string name="profile_unnamed">Petualang Tanpa Nama</string>
     <string name="profile_no_pets">Peliharaan Tidak Tersedia</string>
     <string name="profile_pet_collected">Dikumpulkan</string>
@@ -598,7 +601,7 @@
     <string name="quest_kbd_slayer_1_name">Penumpas Dzalmus I</string>
     <string name="quest_kbd_slayer_2_name">Penumpas Dzalmus II</string>
     <string name="quest_kbd_slayer_3_name">Penumpas Dzalmus III</string>
-    <string name="inn_daily_resets">Diperbarui setiap hari pukul 6 pagi</string>
+    <string name="inn_daily_resets">Diperbarui setiap hari pukul %1$s</string>
     <string name="inn_food_heal">+%1$d HP</string>
     <string name="inn_food_purchased">Makanan yang dibeli.</string>
     <string name="inn_buy_qty">Kuantitas</string>
@@ -615,7 +618,7 @@
     <string name="guild_level_max">Level 10 (Max)</string>
     <string name="guild_tab_quests">Tugas</string>
     <string name="guild_tab_dailies">Permintaan Harian</string>
-    <string name="guild_daily_resets_in">Direset setiap hari pukul 6 pagi</string>
+    <string name="guild_daily_resets_in">Direset setiap hari pukul %1$s</string>
     <string name="guild_locked_hint">Membutuhkan Level Serikat %1$d</string>
     <string name="guild_no_dailies">Selesaikan Tugas Serikat untuk membuka permintaan harian.</string>
     <string name="guild_contribute_inventory">Kontribusi di inventaris (%1$d tersedia)</string>

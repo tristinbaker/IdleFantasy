@@ -25,8 +25,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -59,14 +57,8 @@ fun MercantileScreen(
     viewModel: MercantileViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
-    val snackbarHostState = remember { SnackbarHostState() }
 
-    LaunchedEffect(state.snackbarMessage) {
-        state.snackbarMessage?.let {
-            snackbarHostState.showSnackbar(it, withDismissAction = true)
-            viewModel.snackbarConsumed()
-        }
-    }
+    ToastMessageEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
     Scaffold(
         contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top),
@@ -80,7 +72,6 @@ fun MercantileScreen(
                 },
             )
         },
-        snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { padding ->
         if (state.isLoading) {
             Box(Modifier.fillMaxSize().padding(padding), contentAlignment = Alignment.Center) {
@@ -128,14 +119,8 @@ fun MercantileSheetContent(
     viewModel: MercantileViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
-    val snackbarHostState = remember { SnackbarHostState() }
 
-    LaunchedEffect(state.snackbarMessage) {
-        state.snackbarMessage?.let {
-            snackbarHostState.showSnackbar(it, withDismissAction = true)
-            viewModel.snackbarConsumed()
-        }
-    }
+    ToastMessageEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
     if (state.isLoading) {
         Box(
@@ -169,10 +154,6 @@ fun MercantileSheetContent(
             }
             item { Spacer(Modifier.height(32.dp)) }
         }
-        SnackbarHost(
-            hostState = snackbarHostState,
-            modifier  = Modifier.align(Alignment.BottomCenter),
-        )
     }
 }
 

@@ -310,8 +310,8 @@
     <string name="label_weekly">Wöchentlich</string>
     <string name="label_timed">Regelmäßig</string>
     <string name="label_daily_quests">Tagesaufgaben</string>
-    <string name="label_daily_reset">Wird um 06:00 Uhr zurückgesetzt</string>
-    <string name="label_weekly_reset">Wird montags um 06:00 Uhr zurückgesetzt</string>
+    <string name="label_daily_reset">Wird um %1$s zurückgesetzt</string>
+    <string name="label_weekly_reset">Wird montags um %1$s zurückgesetzt</string>
     <string name="weekly_bonus_title">Wöchentlicher Bonus!</string>
     <string name="weekly_bonus_claim">Fordere wöchentlichen Bonus ein</string>
     <string name="label_daily_info">Jede tägliche Aufgabe wird mit Münzen entlohnt. Außerdem gibt es dabei immer eine Chance von 1%% ein Teil der Zwergenausrüstung zu erhalten.</string>
@@ -383,6 +383,8 @@
     <string name="settings_lang_russian">Русский</string>
     <string name="settings_lang_indonesian">Indonesisch</string>
     <string name="settings_lang_portugues_brasil">Português (Brasil)</string>
+    <string name="settings_lang_irish">Gaeilge</string>
+    <string name="settings_lang_czech">Čeština</string>
     <string name="settings_lang_system">System</string>
     <string name="settings_save_data">Daten speichern</string>
     <string name="settings_export">Daten exportieren</string>
@@ -487,6 +489,8 @@
     <string name="combat_died_reward" formatted="false">Ihr habt 10% der Belohnung erhalten.</string>
         <!-- Translator note: %1$d = gear bonus value -->
     <string name="combat_gear_bonus">+%1$d Ausrüstung</string>
+    <!-- Translator note: %1$d = permanent prestige stat bonus value -->
+    <string name="combat_prestige_bonus">+%1$d Prestige</string>
 
     <!-- ===== translate — ProfileScreen ===== -->
     <string name="profile_unnamed">Unbenannter Abenteurer</string>
@@ -718,7 +722,7 @@
     <string name="quest_kbd_slayer_1_name">Schlächter des Königs der Schwarzdrachen I</string>
     <string name="quest_kbd_slayer_2_name">Schlächter des Königs der Schwarzdrachen II</string>
     <string name="quest_kbd_slayer_3_name">Schlächter des Königs der Schwarzdrachen III</string>
-    <string name="inn_daily_resets">Wird jeden Morgen um 06:00 Uhr erneuert</string>
+    <string name="inn_daily_resets">Wird jeden Morgen um %1$s erneuert</string>
     <string name="inn_food_heal">+%1$d LP</string>
     <string name="inn_food_purchased">Speisen erworben.</string>
     <string name="inn_buy_qty">Menge</string>
@@ -792,7 +796,7 @@
     <string name="guild_level_max">Level 10 (Max)</string>
     <string name="guild_tab_quests">Missionen</string>
     <string name="guild_tab_dailies">Tagesaufgaben</string>
-    <string name="guild_daily_resets_in">Wird um 06:00 Uhr zurückgesetzt</string>
+    <string name="guild_daily_resets_in">Wird um %1$s zurückgesetzt</string>
     <string name="guild_locked_hint">Erfordert Gildenlevel %1$d</string>
     <string name="guild_no_dailies">Schließt Gildenmissionen ab, um Tagesaufgaben freizuschalten. (Oder Ihr habt eure Tagesaufgaben schon erfüllt.)</string>
     <string name="guild_contribute_inventory">Aus Inventar beisteuern (%1$d verfügbar)</string>

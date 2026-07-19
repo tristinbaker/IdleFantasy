@@ -13,7 +13,6 @@ import javax.inject.Singleton
 import kotlin.random.Random
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.sync.withLock
-import kotlin.random.nextInt
 import kotlin.random.nextLong
 
 data class GuildQuestWithProgress(
@@ -502,24 +501,44 @@ class GuildRepository @Inject constructor(
     }
 
     /** Selects up to 4 daily templates per guild for today, filtered by current guild level.
-     *  Uses a date-seeded RNG so the same dailies are shown all day. */
+     *  Uses a date-seeded RNG so the same dailies are shown all day.
+     *
+     *  If the strict guild-level bracket doesn't yield 4 (e.g. a thin bracket, or a skill level
+     *  that outpaces guild rank), the search widens in stages so players still get a full 4
+     *  whenever the guild has that many templates at all (issue #1076).
+     */
     fun buildRefreshedGuildDailyFlags(flags: PlayerFlags, completedQuestIds: Set<String>, skillLevels: Map<String, Int> = emptyMap(), randomSeed: Boolean = false): PlayerFlags {
         val today = Calendar.getInstance().let {
             it.get(Calendar.YEAR) * 10000 + it.get(Calendar.MONTH) * 100 + it.get(Calendar.DAY_OF_MONTH)
         }
         val rng = if (randomSeed) Random(Random.nextLong()) else Random(today.toLong())
-   
+
         val selectedIds = mutableListOf<String>()
 
         for (guild in ALL_GUILDS) {
             if (!isGuildUnlocked(guild, completedQuestIds)) continue
             val level = guildLevel(guild, flags.guildDailyTierCounts, completedQuestIds)
             val effectiveLevel = maxOf(level, 1)
-            val eligible = gameData.guildDailyPool
-                .filter { it.guild == guild && effectiveLevel >= it.guildLevelMin && effectiveLevel <= it.guildLevelMax }
-                .filter { isTemplateReachable(it, skillLevels) }
-                .shuffled(rng)
-            selectedIds.addAll(eligible.take(4).map { it.id })
+            val guildPool = gameData.guildDailyPool.filter { it.guild == guild }
+
+            val inBracket = guildPool.filter { effectiveLevel >= it.guildLevelMin && effectiveLevel <= it.guildLevelMax }
+            val reachableInBracket = inBracket.filter { isTemplateReachable(it, skillLevels) }
+            val reachableAnyBracket = guildPool.filter { isTemplateReachable(it, skillLevels) }
+
+            val chosen = mutableListOf<GuildDailyTemplate>()
+            val chosenIds = mutableSetOf<String>()
+            for (candidates in listOf(reachableInBracket, reachableAnyBracket, guildPool)) {
+                if (chosen.size >= 4) break
+                candidates.shuffled(rng)
+                    .filter { it.id !in chosenIds }
+                    .forEach {
+                        if (chosen.size < 4) {
+                            chosen.add(it)
+                            chosenIds.add(it.id)
+                        }
+                    }
+            }
+            selectedIds.addAll(chosen.map { it.id })
         }
 
         return flags.copy(

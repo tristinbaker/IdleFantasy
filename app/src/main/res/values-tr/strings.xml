@@ -340,6 +340,8 @@
     <string name="settings_lang_deutsch">Deutsch</string>
     <string name="settings_lang_français">Français</string>
     <string name="settings_lang_español">Español</string>
+    <string name="settings_lang_irish">Gaeilge</string>
+    <string name="settings_lang_czech">Čeština</string>
     <string name="settings_lang_system">Sistem</string>
     <string name="settings_save_data">Verileri Kaydet</string>
     <string name="settings_export">Kayıt Dosyasını Dışa Aktar</string>
@@ -421,6 +423,8 @@
     <string name="combat_died_reward">Ödüllerin %10\'unu aldın.</string>
     <!-- Translator note: %1$d = gear bonus value -->
     <string name="combat_gear_bonus">+%1$d eşya</string>
+    <!-- Translator note: %1$d = permanent prestige stat bonus value -->
+    <string name="combat_prestige_bonus">+%1$d prestij</string>
 
     <!-- ===== ProfileScreen ===== -->
     <string name="profile_unnamed">İsimsiz Maceracı</string>
@@ -677,8 +681,8 @@
     <string name="label_weekly">Weekly</string>
     <string name="label_timed">Süreli</string>
     <string name="label_daily_quests">Daily Quests</string>
-    <string name="label_daily_reset">Resets at 6:00 AM</string>
-    <string name="label_weekly_reset">Resets Monday at 6am</string>
+    <string name="label_daily_reset">Resets at %1$s</string>
+    <string name="label_weekly_reset">Resets Monday at %1$s</string>
     <string name="weekly_bonus_title">Weekly Bonus!</string>
     <string name="weekly_bonus_claim">Claim Weekly Bonus</string>
     <string name="label_daily_info">Each daily quest rewards coins. Every quest also has a 1 in 100 chance to drop a piece of Dwarven gear.</string>
@@ -756,7 +760,7 @@
     <string name="quest_kbd_slayer_1_name">King Black Dragon Slayer I</string>
     <string name="quest_kbd_slayer_2_name">King Black Dragon Slayer II</string>
     <string name="quest_kbd_slayer_3_name">King Black Dragon Slayer III</string>
-    <string name="inn_daily_resets">Refreshes daily at 6am</string>
+    <string name="inn_daily_resets">Refreshes daily at %1$s</string>
     <string name="inn_food_heal">+%1$d HP</string>
     <string name="inn_food_purchased">Food purchased.</string>
     <string name="inn_card_desc">Workers and daily food</string>
@@ -771,7 +775,7 @@
     <string name="guild_level_max">Level 10 (Max)</string>
     <string name="guild_tab_quests">Quests</string>
     <string name="guild_tab_dailies">Daily Requests</string>
-    <string name="guild_daily_resets_in">Resets daily at 6am</string>
+    <string name="guild_daily_resets_in">Resets daily at %1$s</string>
     <string name="guild_locked_hint">Requires Guild Level %1$d</string>
     <string name="guild_no_dailies">Günlük isteklerin kilidini açmak için lonca görevlerini tamamlayın.</string>
     <string name="guild_contribute_inventory">Envanterden katkıda bulun (%1$d mevcut)</string>

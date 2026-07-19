@@ -29,8 +29,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -57,6 +55,7 @@ import com.fantasyidler.ui.viewmodel.DailyFoodItem
 import com.fantasyidler.ui.viewmodel.InnViewModel
 import androidx.compose.ui.platform.LocalContext
 import com.fantasyidler.util.GameStrings
+import com.fantasyidler.util.dailyResetClockTime
 import com.fantasyidler.util.formatCoins
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -67,7 +66,6 @@ fun InnScreen(
     viewModel: InnViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
-    val snackbarHostState = remember { SnackbarHostState() }
     var buyDialogFood by remember { mutableStateOf<DailyFoodItem?>(null) }
 
     LaunchedEffect(state.navigateToWorkerSkillsSlot) {
@@ -78,12 +76,7 @@ fun InnScreen(
         }
     }
 
-    LaunchedEffect(state.snackbarMessage) {
-        state.snackbarMessage?.let {
-            snackbarHostState.showSnackbar(it, withDismissAction = true)
-            viewModel.snackbarConsumed()
-        }
-    }
+    ToastMessageEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
     Scaffold(
         contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top),
@@ -97,7 +90,6 @@ fun InnScreen(
                 },
             )
         },
-        snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { padding ->
         if (state.isLoading) {
             Column(
@@ -269,7 +261,7 @@ private fun DailyMenuSection(
                     fontWeight = FontWeight.Bold,
                 )
                 Text(
-                    text  = stringResource(R.string.inn_daily_resets),
+                    text  = stringResource(R.string.inn_daily_resets, dailyResetClockTime(LocalContext.current)),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )

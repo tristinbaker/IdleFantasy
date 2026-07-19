@@ -1598,6 +1598,27 @@
     }
   },
   {
+    "id": "agility_daily_1d",
+    "guild": "agility",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Circuit Reserve",
+    "type": "sessions",
+    "target": "apprentice_course",
+    "amount": 4,
+    "description": "Complete 4 Apprentice Course agility sessions for the Agility Guild.",
+    "rewards": {
+      "coins": 5500,
+      "xp": 15000,
+      "xp_skill": "agility",
+      "items": {
+        "raw_tuna": 35,
+        "coal": 45
+      },
+      "reputation": 1900
+    }
+  },
+  {
     "id": "agility_daily_4a",
     "guild": "agility",
     "guild_level_min": 4,
@@ -1661,6 +1682,27 @@
     }
   },
   {
+    "id": "agility_daily_4d",
+    "guild": "agility",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Endurance Reserve",
+    "type": "sessions",
+    "target": "advanced_course",
+    "amount": 3,
+    "description": "Complete 3 Advanced Course agility sessions for the Agility Guild.",
+    "rewards": {
+      "coins": 10000,
+      "xp": 25000,
+      "xp_skill": "agility",
+      "items": {
+        "raw_swordfish": 35,
+        "adamantite_ore": 25
+      },
+      "reputation": 5000
+    }
+  },
+  {
     "id": "agility_daily_7a",
     "guild": "agility",
     "guild_level_min": 7,
@@ -1721,6 +1763,27 @@
         "diamond": 2
       },
       "reputation": 28000
+    }
+  },
+  {
+    "id": "agility_daily_7d",
+    "guild": "agility",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Grandmaster Circuit",
+    "type": "sessions",
+    "target": "master_course",
+    "amount": 2,
+    "description": "Complete 2 Master Course agility sessions for the Agility Guild.",
+    "rewards": {
+      "coins": 25000,
+      "xp": 75000,
+      "xp_skill": "agility",
+      "items": {
+        "raw_manta_ray": 25,
+        "runite_ore": 20
+      },
+      "reputation": 18000
     }
   },
   {
@@ -2850,6 +2913,27 @@
     }
   },
   {
+    "id": "crafting_daily_7d",
+    "guild": "crafting",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Diamond Vault",
+    "type": "craft",
+    "target": "platinum_diamond_necklace",
+    "amount": 30,
+    "description": "Craft 30 platinum diamond necklaces for the guild vault.",
+    "rewards": {
+      "coins": 22000,
+      "xp": 65000,
+      "xp_skill": "crafting",
+      "items": {
+        "platinum_ore": 40,
+        "diamond": 40
+      },
+      "reputation": 17000
+    }
+  },
+  {
     "id": "runecrafting_daily_1a",
     "guild": "runecrafting",
     "guild_level_min": 1,
@@ -3111,6 +3195,26 @@
     }
   },
   {
+    "id": "runecrafting_daily_7d",
+    "guild": "runecrafting",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Blood Reserve Batch",
+    "type": "craft",
+    "target": "blood_rune",
+    "amount": 300,
+    "description": "Craft 300 blood runes for the guild vault.",
+    "rewards": {
+      "coins": 24000,
+      "xp": 70000,
+      "xp_skill": "runecrafting",
+      "items": {
+        "rune_essence": 900
+      },
+      "reputation": 18000
+    }
+  },
+  {
     "id": "herblore_daily_1a",
     "guild": "herblore",
     "guild_level_min": 1,
@@ -3274,6 +3378,27 @@
     }
   },
   {
+    "id": "herblore_daily_4f",
+    "guild": "herblore",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Defence Potions",
+    "type": "craft",
+    "target": "defense_potion",
+    "amount": 30,
+    "description": "Brew 30 defence potions for the Herblore Guild.",
+    "rewards": {
+      "coins": 9000,
+      "xp": 22000,
+      "xp_skill": "herblore",
+      "items": {
+        "raw_lobster": 28,
+        "mithril_ore": 22
+      },
+      "reputation": 4500
+    }
+  },
+  {
     "id": "herblore_daily_4d",
     "guild": "herblore",
     "guild_level_min": 7,
@@ -3311,6 +3436,46 @@
         "adamantite_ore": 25
       },
       "reputation": 6500
+    }
+  },
+  {
+    "id": "herblore_daily_4g",
+    "guild": "herblore",
+    "guild_level_min": 7,
+    "guild_level_max": 8,
+    "name": "Super Attack Batch",
+    "type": "craft",
+    "target": "super_attack_potion",
+    "amount": 30,
+    "description": "Brew 30 super attack potions for the Herblore Guild.",
+    "rewards": {
+      "coins": 12000,
+      "xp": 29000,
+      "xp_skill": "herblore",
+      "items": {
+        "raw_shark": 22
+      },
+      "reputation": 5800
+    }
+  },
+  {
+    "id": "herblore_daily_4h",
+    "guild": "herblore",
+    "guild_level_min": 7,
+    "guild_level_max": 8,
+    "name": "Super Defence Batch",
+    "type": "craft",
+    "target": "super_defense_potion",
+    "amount": 30,
+    "description": "Brew 30 super defence potions for the Herblore Guild.",
+    "rewards": {
+      "coins": 12500,
+      "xp": 31000,
+      "xp_skill": "herblore",
+      "items": {
+        "adamantite_ore": 28
+      },
+      "reputation": 6200
     }
   },
   {
@@ -3374,6 +3539,27 @@
         "raw_sea_turtle": 15
       },
       "reputation": 26000
+    }
+  },
+  {
+    "id": "herblore_daily_7d",
+    "guild": "herblore",
+    "guild_level_min": 9,
+    "guild_level_max": 10,
+    "name": "Overload Vault",
+    "type": "craft",
+    "target": "overload_potion",
+    "amount": 33,
+    "description": "Brew 20 overload potions for the guild vault.",
+    "rewards": {
+      "coins": 24000,
+      "xp": 70000,
+      "xp_skill": "herblore",
+      "items": {
+        "raw_manta_ray": 22,
+        "runite_ore": 22
+      },
+      "reputation": 17000
     }
   },
   {
@@ -3524,6 +3710,27 @@
     }
   },
   {
+    "id": "warriors_daily_4d",
+    "guild": "warriors",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Blooded Ranks",
+    "type": "kill",
+    "target": "any",
+    "amount": 300,
+    "description": "Defeat 300 enemies in melee combat for the Warriors Guild.",
+    "rewards": {
+      "coins": 10000,
+      "xp": 25000,
+      "xp_skill": "strength",
+      "items": {
+        "adamantite_ore": 25,
+        "raw_swordfish": 25
+      },
+      "reputation": 5000
+    }
+  },
+  {
     "id": "warriors_daily_7a",
     "guild": "warriors",
     "guild_level_min": 7,
@@ -3584,6 +3791,27 @@
         "raw_sea_turtle": 15
       },
       "reputation": 28000
+    }
+  },
+  {
+    "id": "warriors_daily_7d",
+    "guild": "warriors",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Legion's End",
+    "type": "kill",
+    "target": "any",
+    "amount": 700,
+    "description": "Defeat 700 enemies in melee combat for the Warriors Guild.",
+    "rewards": {
+      "coins": 24000,
+      "xp": 70000,
+      "xp_skill": "defense",
+      "items": {
+        "runite_ore": 20,
+        "raw_manta_ray": 20
+      },
+      "reputation": 18000
     }
   },
   {
@@ -3734,6 +3962,27 @@
     }
   },
   {
+    "id": "archers_daily_4d",
+    "guild": "archers",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Volley Command",
+    "type": "kill",
+    "target": "any",
+    "amount": 300,
+    "description": "Defeat 300 enemies using ranged combat for the Archers Guild.",
+    "rewards": {
+      "coins": 10000,
+      "xp": 25000,
+      "xp_skill": "ranged",
+      "items": {
+        "maple_log": 30,
+        "raw_swordfish": 25
+      },
+      "reputation": 5000
+    }
+  },
+  {
     "id": "archers_daily_7a",
     "guild": "archers",
     "guild_level_min": 7,
@@ -3794,6 +4043,27 @@
         "magic_log": 40
       },
       "reputation": 28000
+    }
+  },
+  {
+    "id": "archers_daily_7d",
+    "guild": "archers",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Phantom Barrage",
+    "type": "kill",
+    "target": "any",
+    "amount": 700,
+    "description": "Defeat 700 enemies using ranged combat for the Archers Guild.",
+    "rewards": {
+      "coins": 24000,
+      "xp": 70000,
+      "xp_skill": "ranged",
+      "items": {
+        "redwood_log": 20,
+        "raw_manta_ray": 20
+      },
+      "reputation": 18000
     }
   },
   {
@@ -3944,6 +4214,27 @@
     }
   },
   {
+    "id": "mages_daily_4d",
+    "guild": "mages",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Warlock Duty",
+    "type": "kill",
+    "target": "any",
+    "amount": 300,
+    "description": "Defeat 300 enemies using magic for the Mages Guild.",
+    "rewards": {
+      "coins": 10000,
+      "xp": 25000,
+      "xp_skill": "magic",
+      "items": {
+        "death_rune": 100,
+        "raw_swordfish": 25
+      },
+      "reputation": 5000
+    }
+  },
+  {
     "id": "mages_daily_7a",
     "guild": "mages",
     "guild_level_min": 7,
@@ -4004,6 +4295,27 @@
         "diamond": 3
       },
       "reputation": 28000
+    }
+  },
+  {
+    "id": "mages_daily_7d",
+    "guild": "mages",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Spellweaver Duty",
+    "type": "kill",
+    "target": "any",
+    "amount": 700,
+    "description": "Defeat 700 enemies using magic for the Mages Guild.",
+    "rewards": {
+      "coins": 24000,
+      "xp": 70000,
+      "xp_skill": "magic",
+      "items": {
+        "blood_rune": 400,
+        "raw_manta_ray": 20
+      },
+      "reputation": 18000
     }
   },
   {
@@ -4154,6 +4466,27 @@
     }
   },
   {
+    "id": "prayer_daily_4d",
+    "guild": "prayer",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Devout Rites",
+    "type": "prayer",
+    "target": "any",
+    "amount": 300,
+    "description": "Bury 300 bones of any type for the Prayer Guild.",
+    "rewards": {
+      "coins": 10000,
+      "xp": 25000,
+      "xp_skill": "prayer",
+      "items": {
+        "adamantite_ore": 25,
+        "raw_swordfish": 25
+      },
+      "reputation": 5000
+    }
+  },
+  {
     "id": "prayer_daily_7a",
     "guild": "prayer",
     "guild_level_min": 7,
@@ -4214,6 +4547,27 @@
         "raw_sea_turtle": 15
       },
       "reputation": 28000
+    }
+  },
+  {
+    "id": "prayer_daily_7d",
+    "guild": "prayer",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Exalted Rites",
+    "type": "prayer",
+    "target": "any",
+    "amount": 350,
+    "description": "Bury 700 bones of any type for the Prayer Guild.",
+    "rewards": {
+      "coins": 24000,
+      "xp": 70000,
+      "xp_skill": "prayer",
+      "items": {
+        "runite_ore": 20,
+        "raw_manta_ray": 20
+      },
+      "reputation": 18000
     }
   },
   {
@@ -4550,6 +4904,27 @@
     }
   },
   {
+    "id": "thieving_daily_1d",
+    "guild": "thieving",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Merchant Round",
+    "type": "pickpocket",
+    "target": "merchant",
+    "amount": 45,
+    "description": "Pickpocket the merchant 45 times for the Thieves Guild.",
+    "rewards": {
+      "coins": 4500,
+      "xp": 11000,
+      "xp_skill": "thieving",
+      "items": {
+        "water_rune": 25,
+        "mind_rune": 20
+      },
+      "reputation": 1900
+    }
+  },
+  {
     "id": "thieving_daily_2a",
     "guild": "thieving",
     "guild_level_min": 2,
@@ -4739,6 +5114,27 @@
     }
   },
   {
+    "id": "thieving_daily_4d",
+    "guild": "thieving",
+    "guild_level_min": 6,
+    "guild_level_max": 8,
+    "name": "Royal Escort Purse",
+    "type": "pickpocket",
+    "target": "royal_guard",
+    "amount": 90,
+    "description": "Pickpocket the royal guard 90 times for the Thieves Guild.",
+    "rewards": {
+      "coins": 48000,
+      "xp": 118000,
+      "xp_skill": "thieving",
+      "items": {
+        "blood_rune": 40,
+        "diamond": 2
+      },
+      "reputation": 21000
+    }
+  },
+  {
     "id": "thieving_daily_5a",
     "guild": "thieving",
     "guild_level_min": 8,
@@ -4799,6 +5195,27 @@
         "diamond": 8
       },
       "reputation": 55000
+    }
+  },
+  {
+    "id": "thieving_daily_5d",
+    "guild": "thieving",
+    "guild_level_min": 8,
+    "guild_level_max": 10,
+    "name": "Cathedral Fingers",
+    "type": "pickpocket",
+    "target": "bishop",
+    "amount": 140,
+    "description": "Pickpocket the bishop 140 times for the Thieves Guild.",
+    "rewards": {
+      "coins": 100000,
+      "xp": 245000,
+      "xp_skill": "thieving",
+      "items": {
+        "blood_rune": 110,
+        "diamond": 5
+      },
+      "reputation": 48000
     }
   }
 ]

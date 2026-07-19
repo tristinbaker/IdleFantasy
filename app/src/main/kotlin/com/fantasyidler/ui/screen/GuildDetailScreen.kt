@@ -31,8 +31,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
@@ -62,13 +60,15 @@ import com.fantasyidler.repository.GuildQuestWithProgress
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.GuildDetailViewModel
 import com.fantasyidler.util.GameStrings
+import com.fantasyidler.util.dailyResetClockTime
 import com.fantasyidler.util.formatCoins
 
 @Composable
 private fun localizedQuestDesc(type: String, target: String, amount: Int, guild: String): String {
     val context = LocalContext.current
     val guildName = guildDisplayName(guild)
-    val itemName  = if (target.isNotEmpty() && target != "any") GameStrings.itemName(context, target) else ""
+    val displayTarget = if (guild == "firemaking" && target.endsWith("ashes")) target.replace("ashes", "log") else target
+    val itemName  = if (target.isNotEmpty() && target != "any") GameStrings.itemName(context, displayTarget) else ""
     val combatStyle = when (guild) {
         "warriors" -> stringResource(R.string.guild_combat_melee)
         "archers"  -> stringResource(R.string.guild_combat_ranged)
@@ -99,14 +99,8 @@ fun GuildDetailScreen(
     viewModel: GuildDetailViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
-    val snackbarHostState = remember { SnackbarHostState() }
 
-    LaunchedEffect(state.snackbarMessage) {
-        state.snackbarMessage?.let {
-            snackbarHostState.showSnackbar(it, withDismissAction = true)
-            viewModel.snackbarConsumed()
-        }
-    }
+    ToastMessageEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
     val guildName = guildDisplayName(state.guildKey)
 
@@ -140,7 +134,6 @@ fun GuildDetailScreen(
                 },
             )
         },
-        snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { padding ->
         if (state.isLoading) {
             Box(
@@ -439,7 +432,7 @@ private fun GuildDailiesTab(
         }
         item {
             Text(
-                text     = stringResource(R.string.guild_daily_resets_in),
+                text     = stringResource(R.string.guild_daily_resets_in, dailyResetClockTime(LocalContext.current)),
                 style    = MaterialTheme.typography.labelSmall,
                 color    = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier

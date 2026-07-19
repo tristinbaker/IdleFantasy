@@ -56,10 +56,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import kotlinx.coroutines.launch
 import androidx.compose.ui.text.input.ImeAction
@@ -154,7 +156,12 @@ fun SkillsScreen(
             return@Scaffold
         }
 
-        val pagerState = rememberPagerState(pageCount = { 2 })
+        var savedPage by rememberSaveable { mutableIntStateOf(0) }
+        val pagerState = rememberPagerState(initialPage = savedPage, pageCount = { 2 })
+        LaunchedEffect(Unit) {
+            if (pagerState.currentPage != savedPage) pagerState.scrollToPage(savedPage)
+        }
+        LaunchedEffect(pagerState.currentPage) { savedPage = pagerState.currentPage }
         val scope = rememberCoroutineScope()
         Column(modifier = Modifier.fillMaxSize().padding(padding)) {
             TabRow(selectedTabIndex = pagerState.currentPage) {

@@ -11,6 +11,7 @@ import logging
 import re
 import traceback
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from logging import log
 from pathlib import Path
 from typing import Callable
@@ -94,12 +95,14 @@ def add_static_pages():
             ("workers", PageInfo("Workers", "Workers.md", gen_workers)),
             ("guilds", PageInfo("Guilds", "Guilds.md", gen_guilds)),
             ("buildings", PageInfo("Buildings", "Buildings.md", gen_buildings)),
+            ("carnival", PageInfo("Carnival", "Carnival.md", gen_carnival)),
         ]],
         ["Miscellaneous", False, [
             ("expeditions", PageInfo("Expeditions", "Expeditions.md", gen_expeditions)),
             ("pets", PageInfo("Pets", "Pets.md", gen_pets)),
             ("quests", PageInfo("Quests", "Quests.md", gen_quests)),
             ("titles", PageInfo("Titles", "Titles.md", gen_titles)),
+            ("seasonal_events", PageInfo("Seasonal Events", "SeasonalEvents.md", gen_seasonal_events)),
         ]],
     ]
 
@@ -1307,10 +1310,10 @@ def gen_guilds() -> str:
     guild_quests = load("guild_quests.json")
     assert isinstance(guild_quests, dict)
 
-    # Reputation thresholds (mirrored from GuildRepository.REP_THRESHOLDS)
-    rep_thresholds = [500, 1_500, 4_000, 9_000, 20_000, 40_000, 75_000, 140_000, 250_000, 450_000]
-    rep_rows = [[lvl, f"{rep_thresholds[lvl - 1]:,}"] for lvl in range(1, 11)]
-    rep_table = table(["Guild Level", "Reputation Required"], rep_rows)
+    # Dailies required per tier (mirrored from GuildRepository.DAILIES_REQUIRED_PER_TIER)
+    dailies_required = [2, 3, 4, 5, 7, 9, 12, 15, 20, 25]
+    dailies_rows = [[lvl, count] for lvl, count in enumerate(dailies_required)]
+    dailies_table = table(["Guild Level", "Dailies Required"], dailies_rows)
 
     # Guild Hall reduction table (tier 0-3)
     reduction_rows = [
@@ -1321,11 +1324,21 @@ def gen_guilds() -> str:
     ]
     reduction_table = table(["Guild Hall Tier", "Quest Requirement"], reduction_rows)
 
+    # Display names mirrored from GuildHallScreen.guildDisplayName()
+    guild_display_names = {
+        "mining": "Mining Guild", "fishing": "Fishing Guild", "woodcutting": "Woodcutting Guild",
+        "farming": "Farming Guild", "firemaking": "Firemakers Guild", "agility": "Agility Guild",
+        "smithing": "Smithing Guild", "cooking": "Cooks Guild", "fletching": "Fletchers Guild",
+        "crafting": "Crafting Guild", "runecrafting": "Runecrafters Guild", "herblore": "Herblorists Guild",
+        "warriors": "Warriors Guild", "archers": "Archers Guild", "mages": "Mages Guild",
+        "prayer": "Prayer Guild", "thieving": "Thieves Guild", "mercantile": "Merchants Guild",
+    }
+
     # One section per guild, ordered to match ALL_GUILDS
     guild_order = [
         "mining", "fishing", "woodcutting", "farming", "firemaking",
         "smithing", "cooking", "fletching", "crafting", "runecrafting", "herblore",
-        "warriors", "archers", "mages", "prayer", "mercantile", "agility"
+        "warriors", "archers", "mages", "prayer", "thieving", "mercantile", "agility"
     ]
     guild_section_tpl = get_template("town/guild_section")
     sections = []
@@ -1342,8 +1355,6 @@ def gen_guilds() -> str:
                 reward_parts.append(f"{r['coins']:,} coins")
             if r.get("xp"):
                 reward_parts.append(f"{r['xp']:,} XP")
-            if r.get("reputation"):
-                reward_parts.append(f"{r['reputation']:,} rep")
             reward_parts.append(fmt_materials(r.get("items", {})))
             rows.append([
                 q["name"],
@@ -1354,12 +1365,12 @@ def gen_guilds() -> str:
             ])
         quest_table = table(["Quest", "Guild Level", "Target", "Amount", "Rewards"], rows)
         sections.append(guild_section_tpl.format(
-            guild_name=title(guild),
+            guild_name=guild_display_names.get(guild, title(guild)),
             quest_table=quest_table,
         ))
 
     return get_template("town/guilds").format(
-        rep_table=rep_table,
+        dailies_table=dailies_table,
         reduction_table=reduction_table,
         guild_sections="\n\n".join(sections),
     )
@@ -1428,6 +1439,65 @@ def gen_buildings() -> str:
         construction_link=link("construction"),
         buildings_tables="\n\n---\n\n".join(sections)
     )
+
+
+def gen_carnival() -> str:
+    prizes = load("carnival_prizes.json")
+    assert isinstance(prizes, dict)
+    prize_rows = [
+        [prize["display_name"], f"{prize['ticket_cost']:,}", prize["description"]]
+        for prize in sorted(prizes.values(), key=lambda p: p["ticket_cost"])
+    ]
+
+    # Idle chance formula and active-game rewards mirrored from CarnivalSimulator /
+    # CarnivalViewModel; only 4 active minigames are available at Fairgrounds tier 0
+    # (Pick-a-Cup and Higher or Lower unlock at tiers 1 and 2 — see the Buildings page).
+    idle_rows = [
+        ["Archery Range", "Ranged"],
+        ["Strongman Competition", "Strength"],
+        ["Wizard's Duel", "Magic"],
+        ["Fishing Derby", "Fishing"],
+    ]
+    active_rows = [
+        ["Ring Toss", "Time your throw into the target zone", "2", "7"],
+        ["Hammer Strike", "Time your swing for a strong hit", "1–2", "6–8"],
+        ["Potion Sequence", "Repeat a growing memory sequence of potion colors", "2", "7"],
+        ["Item Appraisal", "Pick the more valuable item", "2", "7"],
+        [f"Pick-a-Cup ({link("buildings", "Fairgrounds")} tier 1+)", "Track which cup hides the gem through a shuffle", "4", "7"],
+        [f"Higher or Lower ({link("buildings", "Fairgrounds")} tier 2+)", "Guess higher or lower over several rounds — more correct in a row pays more", "up to 5", "up to 8"],
+    ]
+
+    return get_template("town/carnival").format(
+        idle_table=table(["Minigame", "Skill Trained"], idle_rows),
+        active_table=table(["Minigame", "How to play", "Normal", "Hard"], active_rows),
+        prize_table=table(["Prize", "Ticket Cost", "Effect"], prize_rows),
+    )
+
+
+def _fmt_event_date(ms: int, is_end: bool = False) -> str:
+    # end_ms is the exclusive start of the day after the event ends, so step back
+    # 1ms to display the actual last day (e.g. Sept 1 00:00 -> "August 31, 2026").
+    dt = datetime.fromtimestamp((ms - 1 if is_end else ms) / 1000, tz=timezone.utc)
+    return f"{dt.strftime("%B")} {dt.day}, {dt.year}"
+
+
+def gen_seasonal_events() -> str:
+    events = load("seasonal_events.json")
+    assert isinstance(events, dict)
+    sections = []
+    for event in events.values():
+        reward_rows = [
+            [f"{tier['tokens']:,}", tier["description"]]
+            for tier in event["reward_tiers"]
+        ]
+        sections.append(get_template("miscellaneous/seasonal_event_section").format(
+            display_name=event["display_name"],
+            start_date=_fmt_event_date(event["start_ms"]),
+            end_date=_fmt_event_date(event["end_ms"], is_end=True),
+            reward_table=table(["Tokens Needed", "Reward"], reward_rows),
+        ))
+
+    return get_template("miscellaneous/seasonal_events").format(event_sections="\n\n---\n\n".join(sections))
 
 
 def _quest_rewards(rewards: dict) -> str:

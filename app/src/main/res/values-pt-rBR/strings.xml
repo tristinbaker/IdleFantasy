@@ -309,8 +309,8 @@
     <string name="label_weekly">Semanal</string>
     <string name="label_timed">Cronometrada</string>
     <string name="label_daily_quests">Missões Diárias</string>
-    <string name="label_daily_reset">Reinicia às 6:00</string>
-    <string name="label_weekly_reset">Reinicia segunda-feira às 6h</string>
+    <string name="label_daily_reset">Reinicia às %1$s</string>
+    <string name="label_weekly_reset">Reinicia segunda-feira às %1$s</string>
     <string name="weekly_bonus_title">Bônus Semanal!</string>
     <string name="weekly_bonus_claim">Resgatar Bônus Semanal</string>
     <string name="label_daily_info">Cada missão diária recompensa com moedas. Toda missão também tem 1 chance em 100 de dropar uma peça de equipamento Anão.</string>
@@ -382,6 +382,8 @@
     <string name="settings_lang_russian">Русский</string>
     <string name="settings_lang_indonesian">Bahasa Indonesia</string>
     <string name="settings_lang_portugues_brasil">Português (Brasil)</string>
+    <string name="settings_lang_irish">Gaeilge</string>
+    <string name="settings_lang_czech">Čeština</string>
     <string name="settings_lang_system">Sistema</string>
     <string name="settings_save_data">Dados Salvos</string>
     <string name="settings_export">Exportar Salvamento</string>
@@ -494,6 +496,8 @@
     <string name="combat_died_reward" formatted="false">Você recebeu 10% das recompensas.</string>
     <!-- Translator note: %1$d = gear bonus value -->
     <string name="combat_gear_bonus">+%1$d equipamento</string>
+    <!-- Translator note: %1$d = permanent prestige stat bonus value -->
+    <string name="combat_prestige_bonus">+%1$d prestígio</string>
     <!-- ===== ProfileScreen ===== -->
     <string name="profile_unnamed">Aventureiro Sem Nome</string>
     <string name="profile_no_pets">Nenhum mascote disponível</string>
@@ -800,7 +804,7 @@
     <string name="quest_kbd_slayer_1_name">Extermínio do Rei Dragão Negro I</string>
     <string name="quest_kbd_slayer_2_name">Extermínio do Rei Dragão Negro II</string>
     <string name="quest_kbd_slayer_3_name">Extermínio do Rei Dragão Negro III</string>
-    <string name="inn_daily_resets">Renova diariamente às 6h</string>
+    <string name="inn_daily_resets">Renova diariamente às %1$s</string>
     <string name="inn_food_heal">+%1$d HP</string>
     <string name="inn_food_purchased">Comida comprada.</string>
     <string name="inn_buy_qty">Quantidade</string>
@@ -819,7 +823,7 @@
     <string name="guild_level_max">Nível 10 (Máx)</string>
     <string name="guild_tab_quests">Missões</string>
     <string name="guild_tab_dailies">Pedidos Diários</string>
-    <string name="guild_daily_resets_in">Reinicia diariamente às 6h</string>
+    <string name="guild_daily_resets_in">Reinicia diariamente às %1$s</string>
     <string name="guild_locked_hint">Requer Nível de Guilda %1$d</string>
     <string name="guild_no_dailies">Complete missões da guilda para desbloquear pedidos diários.</string>
     <string name="guild_contribute_inventory">Contribuir do inventário (%1$d disponível)</string>

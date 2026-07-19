@@ -310,8 +310,8 @@
     <string name="label_weekly">ウィークリー</string>
     <string name="label_timed">期間限定</string>
     <string name="label_daily_quests">デイリークエスト</string>
-    <string name="label_daily_reset">午前6:00にリセット</string>
-    <string name="label_weekly_reset">月曜日の午前6:00にリセット</string>
+    <string name="label_daily_reset">%1$sにリセット</string>
+    <string name="label_weekly_reset">月曜日の%1$sにリセット</string>
     <string name="weekly_bonus_title">ウィークリーボーナス！</string>
     <string name="weekly_bonus_claim">ウィークリーボーナスを受け取る</string>
     <string name="label_daily_info">デイリークエストをクリアするとコインを獲得できます。また、各クエストには 1/100 の確率で「ドワーフ装備」がドロップするチャンスがあります。</string>
@@ -384,6 +384,8 @@
     <string name="settings_lang_indonesian">Bahasa Indonesia</string>
     <string name="settings_lang_portugues_brasil">Português (Brasil)</string>
     <string name="settings_lang_japanese">日本語</string>
+    <string name="settings_lang_irish">Gaeilge</string>
+    <string name="settings_lang_czech">Čeština</string>
     <string name="settings_lang_system">システムデフォルト</string>
     <string name="settings_save_data">セーブデータ</string>
     <string name="settings_export">セーブデータ書き出し</string>
@@ -493,6 +495,8 @@
     <string name="combat_died_reward" formatted="false">You received 10% of the rewards.</string>
     <!-- Translator note: %1$d = gear bonus value -->
     <string name="combat_gear_bonus">装備ボーナス: +%1$d</string>
+    <!-- Translator note: %1$d = permanent prestige stat bonus value -->
+    <string name="combat_prestige_bonus">名声ボーナス: +%1$d</string>
 
     <!-- ===== ProfileScreen ===== -->
     <string name="profile_unnamed">名無しの冒険者</string>
@@ -803,7 +807,7 @@
     <string name="quest_kbd_slayer_1_name">キングブラックドラゴンスレイヤー I</string>
     <string name="quest_kbd_slayer_2_name">キングブラックドラゴンスレイヤー II</string>
     <string name="quest_kbd_slayer_3_name">キングブラックドラゴンスレイヤー III</string>
-    <string name="inn_daily_resets">毎日午前6:00に更新</string>
+    <string name="inn_daily_resets">毎日%1$sに更新</string>
     <string name="inn_food_heal">HP +%1$d</string>
     <string name="inn_food_purchased">料理を購入しました。</string>
     <string name="inn_buy_qty">数量</string>
@@ -822,7 +826,7 @@
     <string name="guild_level_max">ギルドレベル 10 (最大)</string>
     <string name="guild_tab_quests">クエスト</string>
     <string name="guild_tab_dailies">デイリー依頼</string>
-    <string name="guild_daily_resets_in">毎日午前6:00にリセット</string>
+    <string name="guild_daily_resets_in">毎日%1$sにリセット</string>
     <string name="guild_locked_hint">ギルドレベル %1$d が必要</string>
     <string name="guild_no_dailies">デイリー依頼を解放するには、ギルドクエストを完了してください。</string>
     <string name="guild_contribute_inventory">インベントリから納品（所持数: %1$d）</string>

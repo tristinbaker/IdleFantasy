@@ -7,4 +7,6 @@
     <string name="nav_quests">Úkoly</string>
     <string name="nav_profile">Profil</string>
     <string name="home_welcome_greeting">Vítej zpět,</string>
+    <string name="settings_lang_irish">Gaeilge</string>
+    <string name="settings_lang_czech">Čeština</string>
 </resources>

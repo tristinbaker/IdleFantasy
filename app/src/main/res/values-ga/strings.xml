@@ -126,4 +126,6 @@
     <string name="bestiary_always_drops">Duaiseanna Gach Uair</string>
     <string name="bestiary_rare_drops">Duaiseanna Annamh</string>
     <string name="bestiary_pet_drop">Duais Peata</string>
+    <string name="settings_lang_irish">Gaeilge</string>
+    <string name="settings_lang_czech">Čeština</string>
 </resources>

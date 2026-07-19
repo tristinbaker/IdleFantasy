@@ -51,8 +51,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -131,13 +129,7 @@ fun ProfileScreen(
     val achState      by achievementsVm.uiState.collectAsState()
     val profileLayout by settingsVm.profileLayout.collectAsState()
     val context   = LocalContext.current
-    val snackbarHostState = remember { SnackbarHostState() }
-    LaunchedEffect(state.snackbarMessage) {
-        state.snackbarMessage?.let {
-            snackbarHostState.showSnackbar(it, withDismissAction = true)
-            viewModel.snackbarConsumed()
-        }
-    }
+    ToastMessageEffect(state.snackbarMessage, viewModel::snackbarConsumed)
     val tabs = listOf(
         stringResource(R.string.label_skills),
         stringResource(R.string.label_inventory),
@@ -157,7 +149,6 @@ fun ProfileScreen(
     Scaffold(
         contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top),
         topBar       = { TopAppBar(title = { Text(stringResource(R.string.nav_profile)) }) },
-        snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { padding ->
         if (state.isLoading) {
             Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
