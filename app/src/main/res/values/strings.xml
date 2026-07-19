@@ -26,7 +26,7 @@
     <string name="btn_buy">Buy</string>
     <string name="btn_sell">Sell</string>
     <string name="btn_plant">Plant</string>
-    <string name="btn_harvest">Harvest</string>
+    <string name="btn_harvest" translatable="false">Harvest</string>
     <string name="btn_harvest_all">Harvest All</string>
     <string name="btn_clear">Clear</string>
     <string name="btn_clear_all">Clear All</string>
@@ -47,7 +47,7 @@
     <string name="label_level">Level</string>
     <string name="label_xp" translatable="false">XP</string>
     <string name="label_coins">Coins</string>
-    <string name="label_hp">HP</string>
+    <string name="label_hp" translatable="false">HP</string>
     <string name="label_attack">Attack</string>
     <string name="label_strength">Strength</string>
     <string name="label_defense">Defense</string>
