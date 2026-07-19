@@ -6,8 +6,8 @@
     <string name="nav_skills">Habilidades</string>
     <string name="nav_combat">Combate</string>
     <string name="nav_home">Inicio</string>
-    <string name="nav_crafting">Crafting</string>
-    <string name="nav_quests">Quests</string>
+    <string name="nav_crafting">Artesanía</string>
+    <string name="nav_quests">Retos</string>
     <string name="nav_profile">Perfil</string>
 
     <!-- ===== Common buttons ===== -->
@@ -56,7 +56,7 @@
     <string name="label_hitpoints">Vida</string>
     <string name="label_inventory">Inventario</string>
     <string name="label_equipment">Equipamiento</string>
-    <string name="label_pets">Pets</string>
+    <string name="label_pets">Mascotas</string>
     <string name="label_achievements">Logros</string>
     <string name="label_locations">Locations</string>
     <string name="label_bestiary">Bestiario</string>
@@ -80,9 +80,9 @@
     <string name="label_gathering_skills">Recolección</string>
     <string name="label_crafting_skills">Habilidades de Artesanía</string>
     <string name="label_choose_activity">Elegir actividad</string>
-    <string name="label_coming_soon">Coming soon</string>
+    <string name="label_coming_soon">Próximamente</string>
     <string name="label_time_remaining">Tiempo restante</string>
-    <string name="label_session_results">Session Results</string>
+    <string name="label_session_results">Resultados de la Sesión</string>
     <string name="label_xp_gained">XP obtenida</string>
     <string name="label_items_collected">Artículos recogidos</string>
     <string name="label_level_ups">Level ups</string>
@@ -100,9 +100,9 @@
     <string name="label_empty">Vacío</string>
     <string name="label_combat_style">Estilo de combate</string>
     <string name="label_active_spell">Hechizo activo</string>
-    <string name="label_drops">Drops</string>
-    <string name="label_boss">Boss</string>
-    <string name="label_dungeon">Dungeon</string>
+    <string name="label_drops">Encontrados</string>
+    <string name="label_boss">Jefe</string>
+    <string name="label_dungeon">Mazmorra</string>
     <string name="label_difficulty">Dificultad</string>
     <string name="label_completed">Completado</string>
     <string name="label_in_progress">En Progreso</string>
@@ -111,15 +111,15 @@
     <string name="label_skills">Habilidades</string>
     <string name="label_shop">Tienda</string>
     <string name="label_sell_items">Vender artículos</string>
-    <string name="label_total_level">Total Level</string>
+    <string name="label_total_level">Nivel Total</string>
     <string name="label_wins">Victorias</string>
-    <string name="label_losses">Losses</string>
-    <string name="label_active">Active</string>
-    <string name="label_inactive">Inactive</string>
-    <string name="label_boost">Boost</string>
-    <string name="label_xp_boost">XP Boost</string>
-    <string name="label_weapon">Weapon</string>
-    <string name="label_armour">Armour</string>
+    <string name="label_losses">Pérdidas</string>
+    <string name="label_active">Activo</string>
+    <string name="label_inactive">Inactivo</string>
+    <string name="label_boost">Impulso</string>
+    <string name="label_xp_boost">XP Impulso</string>
+    <string name="label_weapon">Arma</string>
+    <string name="label_armour">Armadura</string>
     <string name="label_food">Comida</string>
     <string name="label_arrows_consumed">Flechas consumidas</string>
     <string name="label_arrows_reclaimed">Flechas recuperadas</string>
@@ -133,21 +133,21 @@
     <string name="label_ranged_style">Arquería</string>
     <string name="label_magic_style">Magia</string>
     <string name="label_gathering">Reunión</string>
-    <string name="label_crafting">Crafting</string>
-    <string name="label_jewellery">Jewelry</string>
-    <string name="label_combat">Combat</string>
+    <string name="label_crafting">Artesanía</string>
+    <string name="label_jewellery">Joyería</string>
+    <string name="label_combat">Combate</string>
     <string name="label_recipe">Receta</string>
     <string name="label_recipes">Recetas</string>
     <string name="label_ingredients">Ingredientes</string>
     <string name="label_output">Output</string>
     <string name="label_xp_per_action">XP por acción</string>
     <string name="label_unlocked_at">Desbloqueado en el nivel</string>
-    <string name="label_kills">Kills</string>
-    <string name="label_personal_best">Personal Best</string>
+    <string name="label_kills">Muertes</string>
+    <string name="label_personal_best">Mejor marca personal</string>
     <string name="label_daily_dig">Excavación diaria</string>
     <string name="label_dig_depth">Profundidad del agujero</string>
-    <string name="label_version">Version</string>
-    <string name="label_open_source">Open Source</string>
+    <string name="label_version">Versión</string>
+    <string name="label_open_source">Código abierto</string>
 
     <!-- ===== Format strings — all use positional args for Weblate ===== -->
     <!-- Translator note: %1$d = level number, %2$s = formatted XP string -->
@@ -628,16 +628,16 @@
     <string name="achievement_pet_all_name">Menagerie</string>
     <string name="achievement_pet_all_desc">Collect all pets</string>
 
-    <string name="btn_repeat_action">Repeat Action</string>
-    <string name="inventory_sort_quantity">Quantity</string>
+    <string name="btn_repeat_action">Repetir</string>
+    <string name="inventory_sort_quantity">Cantidad</string>
     <string name="inventory_sort_az">A-Z</string>
-    <string name="inventory_cat_weapons">Weapons</string>
-    <string name="inventory_cat_armour">Armour</string>
-    <string name="inventory_cat_tools">Tools</string>
-    <string name="inventory_cat_food">Food</string>
-    <string name="inventory_cat_potions">Potions</string>
-    <string name="inventory_cat_materials">Materials</string>
-    <string name="inventory_cat_other">Other</string>
+    <string name="inventory_cat_weapons">Armas</string>
+    <string name="inventory_cat_armour">Armadura</string>
+    <string name="inventory_cat_tools">Herramientas</string>
+    <string name="inventory_cat_food">Comida</string>
+    <string name="inventory_cat_potions">Pociones</string>
+    <string name="inventory_cat_materials">Materiales</string>
+    <string name="inventory_cat_other">Otros</string>
     <string name="inventory_cat_raw_food">Comida Cruda</string>
     <string name="inventory_cat_ammunition">Munición</string>
     <string name="inventory_cat_ores">Minerales y Gemas</string>

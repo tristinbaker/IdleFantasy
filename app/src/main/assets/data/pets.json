@@ -194,7 +194,7 @@
     "display_name": "Juggling Imp",
     "emoji": "\ud83e\udd39",
     "description": "A mischievous imp that juggles your worries away. Boosts all skill XP by 3%.",
-    "source": "Carnival prize shop (2,000 tickets)",
+    "source": "Carnival prize shop (4,000 tickets)",
     "effect_type": "xp_boost",
     "boosted_skill": "all",
     "boost_percent": 3

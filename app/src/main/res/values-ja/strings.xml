@@ -1083,20 +1083,20 @@
     <string name="crafting_tier_adamantite">アダマンタイト</string>
     <string name="crafting_tier_arrow">矢</string>
     <string name="crafting_tier_bronze">ブロンズ</string>
-    <string name="crafting_tier_gold">ゴールド</string>
-    <string name="crafting_tier_iron">アイアン</string>
-    <string name="crafting_tier_magic">マジック</string>
-    <string name="crafting_tier_maple">メイプル</string>
+    <string name="crafting_tier_gold">金</string>
+    <string name="crafting_tier_iron">鉄</string>
+    <string name="crafting_tier_magic">魔法</string>
+    <string name="crafting_tier_maple">メープル</string>
     <string name="crafting_tier_mithril">ミスリル</string>
     <string name="crafting_tier_oak">オーク</string>
     <string name="crafting_tier_platinum">プラチナ</string>
-    <string name="crafting_tier_runite">ルーナイト</string>
+    <string name="crafting_tier_runite">ルナイト</string>
     <string name="crafting_tier_shortbow">ショートボウ</string>
-    <string name="crafting_tier_silver">シルバー</string>
+    <string name="crafting_tier_silver">銀</string>
     <string name="crafting_tier_staff">スタッフ</string>
-    <string name="crafting_tier_steel">スチール</string>
-    <string name="crafting_tier_willow">ウィロー</string>
-    <string name="crafting_tier_yew">ユー</string>
+    <string name="crafting_tier_steel">鋼鉄</string>
+    <string name="crafting_tier_willow">ヤナギ</string>
+    <string name="crafting_tier_yew">イチイ</string>
 
     <!-- Bone Altar -->
     <string name="bone_altar_title">骨の祭壇</string>
@@ -1149,12 +1149,12 @@
     <!-- Construction item names (planks, nails, stone) -->
     <string name="item_plank_name">木板</string>
     <string name="item_oak_plank_name">オークの木板</string>
-    <string name="item_willow_plank_name">ウィローの木板</string>
-    <string name="item_maple_plank_name">メイプルの木板</string>
-    <string name="item_yew_plank_name">ユーの木板</string>
-    <string name="item_magic_plank_name">マジックの木板</string>
+    <string name="item_willow_plank_name">ヤナギの木板</string>
+    <string name="item_maple_plank_name">メープルの木板</string>
+    <string name="item_yew_plank_name">イチイの木板</string>
+    <string name="item_magic_plank_name">魔法の木板</string>
     <string name="item_iron_nail_name">鉄の釘</string>
-    <string name="item_steel_nail_name">スチールの釘</string>
+    <string name="item_steel_nail_name">鋼鉄の釘</string>
     <string name="item_mithril_nail_name">ミスリルの釘</string>
     <string name="item_stone_name">石材</string>
     <string name="item_carved_stone_name">彫刻された石材</string>
@@ -1165,9 +1165,9 @@
     <string name="item_wooden_shelf_name">木製のシェルフ</string>
     <string name="item_oak_table_name">オークのテーブル</string>
     <string name="item_oak_bookshelf_name">オークの本棚</string>
-    <string name="item_willow_cabinet_name">ウィローのキャビネット</string>
-    <string name="item_maple_dresser_name">メイプルのタンス</string>
-    <string name="item_yew_wardrobe_name">ユーのクローゼット</string>
+    <string name="item_willow_cabinet_name">ヤナギのキャビネット</string>
+    <string name="item_maple_dresser_name">メープルのタンス</string>
+    <string name="item_yew_wardrobe_name">イチイのクローゼット</string>
     <string name="item_magic_throne_name">魔法の玉座</string>
 
     <!-- Town building upgrade UI -->
@@ -1537,7 +1537,7 @@
     <string name="seasonal_bounty_sunspire_firewood_name">篝火用の薪を調達する</string>
     <string name="seasonal_bounty_sunspire_firewood_hint">オークの原木を伐採 — 伐採スキル</string>
     <string name="seasonal_bounty_sunspire_kindling_name">篝火用の付け木を調達する</string>
-    <string name="seasonal_bounty_sunspire_kindling_hint">ウィローの原木を伐採 — 伐採スキル</string>
+    <string name="seasonal_bounty_sunspire_kindling_hint">ヤナギの原木を伐採 — 伐採スキル</string>
     <string name="seasonal_bounty_sunspire_sunore_name">太陽の尖塔を装飾する金を採掘する</string>
     <string name="seasonal_bounty_sunspire_sunore_hint">金の鉱石を採掘 — 採掘スキル</string>
     <string name="seasonal_bounty_sunspire_draughts_name">筋力ポーションを調合する</string>

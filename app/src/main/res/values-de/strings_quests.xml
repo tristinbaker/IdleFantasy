@@ -109,7 +109,7 @@
     <string name="quest_fletching_5_name">Pfeilherstellung V</string>
     <string name="quest_fletching_5_objective">Stellt 2450 Adamantitpfeile her</string>
     <string name="quest_fletching_6_name">Pfeilherstellung VI</string>
-    <string name="quest_fletching_6_objective">Stellt 3650 Runitenpfeile her</string>
+    <string name="quest_fletching_6_objective">Stellt 3650 Runitpfeile her</string>
 
     <!-- Prayer -->
     <string name="quest_prayer_1_name">Gebete I</string>
@@ -152,11 +152,11 @@
     <string name="quest_dungeon_undead_1_objective">Schließt die Gruft der Untoten fünfmal ab</string>
     <string name="quest_dungeon_fortress_1_name">Verlies-Erforscher VI</string>
     <string name="quest_dungeon_fortress_1_objective">Schließt die Festungsruinen fünfmal ab</string>
-    <string name="quest_dungeon_orc_1_name">Dungeon-Meister I</string>
+    <string name="quest_dungeon_orc_1_name">Verlies-Meister I</string>
     <string name="quest_dungeon_orc_1_objective">Schließt die Orkfestung fünfmal ab</string>
-    <string name="quest_dungeon_volcanic_1_name">Dungeon-Meister II</string>
+    <string name="quest_dungeon_volcanic_1_name">Verlies-Meister II</string>
     <string name="quest_dungeon_volcanic_1_objective">Schließt die vulkanischen Tiefen fünfmal ab</string>
-    <string name="quest_dungeon_dragon_1_name">Dungeon-Meister III</string>
+    <string name="quest_dungeon_dragon_1_name">Verlies-Meister III</string>
     <string name="quest_dungeon_dragon_1_objective">Schließt den Drachenhort fünfmal ab</string>
 
     <!-- Crafting -->
@@ -245,6 +245,7 @@
     <string name="quest_treasure_hunter_4_name">Schatzsucher IV</string>
     <string name="quest_treasure_hunter_4_objective">Sammelt 3 Drachenschuppen im Kampf</string>
 
+    <!-- Firemaking -->
     <string name="quest_firemaking_1_name">Anfeuern I</string>
     <string name="quest_firemaking_1_objective">Verfeuert 500 Holzscheite</string>
     <string name="quest_firemaking_2_name">Anfeuern II</string>
@@ -257,6 +258,8 @@
     <string name="quest_firemaking_5_objective">Verfeuert 2450 Eibenholzscheite</string>
     <string name="quest_firemaking_6_name">Anfeuern VI</string>
     <string name="quest_firemaking_6_objective">Verfeuert 3650 Magische Holzscheite</string>
+
+    <!-- Runecrafting -->
     <string name="quest_runecrafting_1_name">Runenherstellung I</string>
     <string name="quest_runecrafting_1_objective">Stellt 500 Windrunen her</string>
     <string name="quest_runecrafting_2_name">Runenherstellung II</string>
@@ -269,6 +272,8 @@
     <string name="quest_runecrafting_5_objective">Stellt 2450 Runen des Verstandes her</string>
     <string name="quest_runecrafting_6_name">Runenherstellung VI</string>
     <string name="quest_runecrafting_6_objective">Stellt 3650 Chaosrunen</string>
+
+    <!-- Herblore -->
     <string name="quest_herblore_1_name">Kräuterkunde I</string>
     <string name="quest_herblore_1_objective">Braut 100 Angriffs-Gebräue</string>
     <string name="quest_herblore_2_name">Kräuterkunde II</string>
@@ -281,7 +286,9 @@
     <string name="quest_herblore_5_objective">Mischt 1000 Zaubertränkes</string>
     <string name="quest_herblore_6_name">Kräuterkunde VI</string>
     <string name="quest_herblore_6_objective">Mischt 1500 Super-Zaubertränke</string>
-    <string name="quest_combat_kills_7_name">Monsterjäger VII</string>
+ 
+    <!-- Slayer extended -->
+   <string name="quest_combat_kills_7_name">Monsterjäger VII</string>
     <string name="quest_combat_kills_7_objective">Besiegt 1000 Gegner</string>
     <string name="quest_combat_kills_8_name">Monsterjäger VIII</string>
     <string name="quest_combat_kills_8_objective">Besiegt 1500 Gegner</string>
@@ -293,6 +300,8 @@
     <string name="quest_combat_kills_11_objective">Besiegt 5100 Gegner</string>
     <string name="quest_combat_kills_12_name">Monsterjäger XII</string>
     <string name="quest_combat_kills_12_objective">Besiegt 7650 Gegner</string>
+
+    <!-- New monster slayer chains -->
     <string name="quest_zombie_slayer_1_name">Zombieschlächter I</string>
     <string name="quest_zombie_slayer_1_objective">Besiegt 35 Zombies</string>
     <string name="quest_zombie_slayer_2_name">Zombieschlächter II</string>
@@ -317,12 +326,16 @@
     <string name="quest_lich_slayer_1_objective">Besiegt 10 Lich</string>
     <string name="quest_lich_slayer_2_name">Lich-Schlächter II</string>
     <string name="quest_lich_slayer_2_objective">Besiegt 20 Lich</string>
-    <string name="quest_dungeon_imp_1_name">Dungeon-Erforscher VII</string>
+
+    <!-- Dungeon exploration extended -->
+    <string name="quest_dungeon_imp_1_name">Verlies-Erforscher VII</string>
     <string name="quest_dungeon_imp_1_objective">Schließt die Wichtelhöhle 5 Mal ab</string>
-    <string name="quest_dungeon_infernal_1_name">Dungeon-Meister IV</string>
+    <string name="quest_dungeon_infernal_1_name">Verlies-Meister IV</string>
     <string name="quest_dungeon_infernal_1_objective">Schließt die Höllenfestung 5 Mal ab</string>
-    <string name="quest_dungeon_ancient_1_name">Dungeon-Meister V</string>
+    <string name="quest_dungeon_ancient_1_name">Verlies-Meister V</string>
     <string name="quest_dungeon_ancient_1_objective">Schließt den Antiken Tempel 5 Mal ab</string>
+
+    <!-- Boss extended -->
     <string name="quest_kbd_slayer_1_objective">Besiegt den König der Schwarzdrachen</string>
     <string name="quest_kbd_slayer_2_objective">Besiegt den König der Schwarzdrachen 5 Mal</string>
     <string name="quest_kbd_slayer_3_objective">Besiegt den König der Schwarzdrachen 25 Mal</string>
@@ -346,6 +359,8 @@
     <string name="quest_balrog_bane_3_objective">Besiegt den Balrog 25 Mal</string>
     <string name="quest_balrog_bane_4_name">Fluch des Balrog IV</string>
     <string name="quest_balrog_bane_4_objective">Besiegt den Balrog 50 Mal</string>
+
+    <!-- Combat style challenges extended -->
     <string name="quest_melee_warrior_4_name">Nahkämpfer IV</string>
     <string name="quest_melee_warrior_4_objective">Schließt die Orkfestung ausschließlich mit Nahkampfwaffen ab</string>
     <string name="quest_melee_warrior_5_name">Nahkämpfer V</string>
@@ -358,15 +373,20 @@
     <string name="quest_mage_master_4_objective">Schließt die Orkfestung ausschließlich mit Magie ab</string>
     <string name="quest_mage_master_5_name">Magiermeister V</string>
     <string name="quest_mage_master_5_objective">Schließt den Drachenhort ausschließlich mit Magie ab</string>
+
+    <!-- Iron Stomach extended -->
     <string name="quest_iron_stomach_5_name">Eiserner Magen V</string>
     <string name="quest_iron_stomach_5_objective">Schließt die Höllenfestung ab, ohne Nahrung zu verbrauchen</string>
     <string name="quest_iron_stomach_6_name">Eiserner Magen VI</string>
     <string name="quest_iron_stomach_6_objective">Schließt den Antiken Tempel ab, ohne Nahrung zu verbrauchen</string>
+
+    <!-- Treasure Hunter extended -->
     <string name="quest_treasure_hunter_5_name">Schatzsucher V</string>
     <string name="quest_treasure_hunter_5_objective">Erhaltet 10 Höllenhund-Reißzähne aus Kämpfen</string>
     <string name="quest_treasure_hunter_6_name">Schatzsucher VI</string>
     <string name="quest_treasure_hunter_6_objective">Erhaltet 15 Trollknochen aus Kämpfen</string>
 
+    <!-- Daily quest verbs -->
     <string name="daily_verb_mining">Schürft</string>
     <string name="daily_verb_fishing">Fangt</string>
     <string name="daily_verb_woodcutting">Fällt</string>
@@ -374,6 +394,7 @@
     <string name="daily_verb_cooking">Kocht</string>
     <string name="daily_verb_combat">Besiegt</string>
 
+    <!-- Daily quest names -->
     <string name="quest_daily_mine_iron_name">Eisenbergmann</string>
     <string name="quest_daily_mine_coal_name">Kohleträger</string>
     <string name="quest_daily_mine_mithril_name">Mithrilsucher</string>

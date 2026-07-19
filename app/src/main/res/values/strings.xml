@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Idle Fantasy</string>
+    <string name="app_name" translatable="false">Idle Fantasy</string>
 
     <!-- ===== Bottom navigation ===== -->
     <string name="nav_skills">Skills</string>
-    <string name="nav_combat">Combat</string>
+    <string name="nav_combat" translatable="false">Combat</string>
     <string name="nav_home">Home</string>
     <string name="nav_crafting">Crafting</string>
     <string name="nav_quests">Quests</string>
@@ -45,7 +45,7 @@
 
     <!-- ===== Common labels ===== -->
     <string name="label_level">Level</string>
-    <string name="label_xp">XP</string>
+    <string name="label_xp" translatable="false">XP</string>
     <string name="label_coins">Coins</string>
     <string name="label_hp">HP</string>
     <string name="label_attack">Attack</string>
@@ -91,7 +91,7 @@
     <string name="label_rewards">Rewards</string>
     <string name="label_your_level">Your Level</string>
     <string name="label_xp_to_next">XP to next level</string>
-    <string name="label_total_xp">Total XP</string>
+    <string name="label_total_xp" translatable="false">Total XP</string>
     <string name="label_quantity">Quantity</string>
     <string name="label_price">Price</string>
     <string name="label_available">Available</string>
@@ -100,7 +100,7 @@
     <string name="label_ready_to_harvest">Ready to harvest</string>
     <string name="label_empty">Empty</string>
     <string name="inventory_sort_quantity">Quantity</string>
-    <string name="inventory_sort_az">A-Z</string>
+    <string name="inventory_sort_az" translatable="false">A-Z</string>
     <string name="inventory_cat_weapons">Weapons</string>
     <string name="inventory_cat_armour">Armour</string>
     <string name="inventory_cat_tools">Tools</string>
@@ -111,7 +111,7 @@
     <string name="inventory_cat_raw_food">Raw Food</string>
     <string name="inventory_cat_ammunition">Ammunition</string>
     <string name="inventory_cat_ores">Ores &amp; Gems</string>
-    <string name="inventory_cat_construction">Construction</string>
+    <string name="inventory_cat_construction" translatable="false">Construction</string>
     <string name="inventory_cat_seeds">Seeds &amp; Crops</string>
     <string name="inventory_cat_filter_all">All</string>
     <string name="label_combat_style">Combat Style</string>
@@ -123,7 +123,7 @@
     <string name="label_completed">Completed</string>
     <string name="label_in_progress">In Progress</string>
     <string name="label_available_quests">Available</string>
-    <string name="label_stats">Stats</string>
+    <string name="label_stats" translatable="false">Stats</string>
     <string name="label_skills">Skills</string>
     <string name="label_shop">Shop</string>
     <string name="label_sell_items">Sell Items</string>
@@ -151,7 +151,7 @@
     <string name="label_gathering">Gathering</string>
     <string name="label_crafting">Crafting</string>
     <string name="label_jewellery">Jewelry</string>
-    <string name="label_combat">Combat</string>
+    <string name="label_combat" translatable="false">Combat</string>
     <string name="label_recipe">Recipe</string>
     <string name="label_recipes">Recipes</string>
     <string name="label_ingredients">Ingredients</string>
@@ -162,7 +162,7 @@
     <string name="label_personal_best">Personal Best</string>
     <string name="label_daily_dig">Daily Dig</string>
     <string name="label_dig_depth">Hole Depth</string>
-    <string name="label_version">Version</string>
+    <string name="label_version" translatable="false">Version</string>
     <string name="label_open_source">Open Source</string>
 
     <!-- ===== Format strings — all use positional args for Weblate ===== -->
@@ -327,8 +327,8 @@
     <string name="onboarding_next">Next</string>
 
     <!-- ===== Settings ===== -->
-    <string name="settings_notifications_header">Notifications</string>
-    <string name="settings_performance_header">Performance</string>
+    <string name="settings_notifications_header" translatable="false">Notifications</string>
+    <string name="settings_performance_header" translatable="false">Performance</string>
     <string name="settings_general_header">General</string>
     <string name="settings_tutorial_title">Tutorial</string>
     <string name="settings_tutorial_desc">Show the introduction again</string>
@@ -374,7 +374,7 @@
     <string name="settings_language_desc">Override the app display language</string>
     <string name="settings_lang_english">English</string>
     <string name="settings_lang_deutsch">Deutsch</string>
-    <string name="settings_lang_français">Français</string>
+    <string name="settings_lang_français" translatable="false">Français</string>
     <string name="settings_lang_dutch">Nederlands</string>
     <string name="settings_lang_español">Español</string>
     <string name="settings_lang_español_españa">Español (España)</string>
@@ -395,7 +395,7 @@
     <string name="settings_source_code">Source Code</string>
     <string name="settings_source_url" translatable="false">github.com/tristinbaker/IdleFantasy</string>
     <string name="settings_source_open">Open</string>
-    <string name="settings_wiki">Wiki</string>
+    <string name="settings_wiki" translatable="false">Wiki</string>
     <string name="settings_wiki_url" translatable="false">idlefantasy.tristinbaker.xyz</string>
     <string name="settings_exported_ok">Save exported</string>
     <string name="settings_imported_ok">Save imported successfully</string>
@@ -680,7 +680,7 @@
     <string name="onboarding_welcome_desc">An idle RPG inspired by classic MMORPGs. Train skills, fight dungeons, and craft gear. All offline, no accounts, no ads.</string>
 
     <!-- Quantity picker quick buttons -->
-    <string name="qty_max">Max</string>
+    <string name="qty_max" translatable="false">Max</string>
 
     <!-- ===== Inn / Worker ===== -->
     <string-array name="worker_names">
@@ -750,9 +750,9 @@
 
     <!-- ===== Achievements ===== -->
     <string name="achievement_group_levelling">Levelling</string>
-    <string name="achievement_group_combat">Combat</string>
+    <string name="achievement_group_combat" translatable="false">Combat</string>
     <string name="achievement_group_quests">Quests</string>
-    <string name="achievement_group_collection">Collection</string>
+    <string name="achievement_group_collection" translatable="false">Collection</string>
 
     <string name="achievement_total_50_name">Adventurer</string>
     <string name="achievement_total_50_desc">Reach total level 50</string>
@@ -766,7 +766,7 @@
     <string name="achievement_total_750_desc">Reach total level 750</string>
     <string name="achievement_total_1000_name">Legend</string>
     <string name="achievement_total_1000_desc">Reach total level 1000</string>
-    <string name="achievement_total_1500_name">Champion</string>
+    <string name="achievement_total_1500_name" translatable="false">Champion</string>
     <string name="achievement_total_1500_desc">Reach total level 1500</string>
     <string name="achievement_skill_99_name">First Mastery</string>
     <string name="achievement_skill_99_desc">Max any skill to level 99</string>
@@ -777,11 +777,11 @@
     <string name="achievement_combat_10_desc">Reach combat level 10</string>
     <string name="achievement_combat_30_name">Warrior</string>
     <string name="achievement_combat_30_desc">Reach combat level 30</string>
-    <string name="achievement_combat_50_name">Champion</string>
+    <string name="achievement_combat_50_name" translatable="false">Champion</string>
     <string name="achievement_combat_50_desc">Reach combat level 50</string>
     <string name="achievement_combat_75_name">Elite</string>
     <string name="achievement_combat_75_desc">Reach combat level 75</string>
-    <string name="achievement_combat_99_name">Champion</string>
+    <string name="achievement_combat_99_name" translatable="false">Champion</string>
     <string name="achievement_combat_99_desc">Reach combat level 99</string>
     <string name="achievement_combat_113_name">Max Combat</string>
     <string name="achievement_combat_113_desc">Reach the maximum combat level of 113</string>
@@ -863,7 +863,7 @@
 
     <!-- Mercantile skill -->
     <string name="skill_mercantile">Mercantile</string>
-    <string name="label_support_skills">Support</string>
+    <string name="label_support_skills" translatable="false">Support</string>
     <string name="mercantile_routes_label">Trade Routes</string>
     <string name="mercantile_level_label">Level %1$d Mercantile</string>
     <string name="mercantile_xp_label">XP: %1$s</string>

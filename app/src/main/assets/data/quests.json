@@ -1400,7 +1400,7 @@
     "tier": 9,
     "requires_previous": null,
     "type": "kill_enemy",
-    "target": "dragon",
+    "target": "green_dragon",
     "amount": 10,
     "description": "Defeat 10 Green Dragons",
     "rewards": {
@@ -1416,7 +1416,7 @@
     "tier": 10,
     "requires_previous": "dragon_slayer_1",
     "type": "kill_enemy",
-    "target": "dragon",
+    "target": "green_dragon",
     "amount": 25,
     "description": "Defeat 25 Green Dragons",
     "rewards": {

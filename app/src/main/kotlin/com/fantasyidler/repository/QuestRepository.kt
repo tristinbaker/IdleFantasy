@@ -239,6 +239,34 @@ class QuestRepository @Inject constructor(
     /** Adds [delta] to the stored progress for [questId], creating a row if absent. Skips already-completed quests. */
     suspend fun resetAllProgress() = questProgressDao.deleteAll()
 
+    /**
+     * Debug helper: clears progress/completion for [questId] and every quest that
+     * transitively lists it (or one of its dependents) as [QuestData.requiresPrevious].
+     * Does not claw back rewards already granted.
+     */
+    suspend fun resetQuestAndDependents(questId: String) {
+        // Return if quest is unknown
+        if (questId !in gameData.quests) return
+        // Map prerequisites -> dependents
+        val dependentsByPrereq = mutableMapOf<String, MutableList<String>>()
+        for ((id, quest) in gameData.quests) {
+            val prereq = quest.requiresPrevious ?: continue
+            dependentsByPrereq.getOrPut(prereq) { mutableListOf() }.add(id)
+        }
+        // Find all affected quests (questId and dependents)
+        val toReset = linkedSetOf<String>()
+        val queue = ArrayDeque<String>().apply { add(questId) }
+        while (queue.isNotEmpty()) {
+            val current = queue.removeFirst()
+            if (!toReset.add(current)) continue
+            dependentsByPrereq[current]?.forEach { queue.add(it) }
+        }
+        // Reset progress
+        for (id in toReset) {
+            questProgressDao.upsert(QuestProgress(questId = id))
+        }
+    }
+
     private suspend fun addProgress(questId: String, requiredAmount: Int, delta: Int, requiresPrevious: String?) {
         val current = questProgressDao.getQuestProgress(questId) ?: QuestProgress(questId)
         if (current.completed) return

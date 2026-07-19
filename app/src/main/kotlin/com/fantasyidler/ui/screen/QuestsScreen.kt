@@ -29,7 +29,9 @@ import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
+import com.fantasyidler.BuildConfig
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -200,6 +202,7 @@ fun QuestsScreen(
                                 QuestRow(
                                     questWithProgress = questWithProgress,
                                     onClaimReward     = { viewModel.claimReward(questWithProgress.quest.id) },
+                                    onDebugReset      = { viewModel.debugResetQuest(questWithProgress.quest.id) },
                                 )
                                 HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
                             }
@@ -542,6 +545,7 @@ private fun DailyQuestCard(
 private fun QuestRow(
     questWithProgress: QuestWithProgress,
     onClaimReward: () -> Unit,
+    onDebugReset: () -> Unit,
 ) {
     val context = LocalContext.current
     val quest   = questWithProgress.quest
@@ -564,7 +568,6 @@ private fun QuestRow(
             fontWeight = FontWeight.Bold,
             color      = titleColor,
         )
-
         // Description / objective
         val objective = GameStrings.questObjective(context, quest.id).takeIf { it.isNotBlank() }
             ?: buildQuestObjective(context, quest)
@@ -613,6 +616,12 @@ private fun QuestRow(
                     color = Color(0xFF4CAF50),
                     fontWeight = FontWeight.SemiBold,
                 )
+            }
+        }
+
+        if (BuildConfig.DEBUG && (questWithProgress.completed || questWithProgress.progress > 0)) {
+            TextButton(onDebugReset) {
+                Text("Reset")
             }
         }
 
