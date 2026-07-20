@@ -70,7 +70,6 @@
     <string name="pet_tangleroot_name">Radicroviglio</string>
     <string name="pet_tangleroot_desc">Una creatura magica vegetale che migliora i tuoi XP in Agricoltura.</string>
 
-    <!-- Missing dungeons -->
     <string name="dungeon_collapsed_mine_name">Miniera Crollata</string>
     <string name="dungeon_collapsed_mine_desc">Una vasta caverna sotto le miniere di rame. Troll delle caverne e golem di roccia infestano le macerie, e ragni giganti tessono ragnatele nei cunicoli crollati.</string>
     <string name="dungeon_shadow_den_name">Tana delle Ombre</string>

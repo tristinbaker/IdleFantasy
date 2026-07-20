@@ -599,7 +599,7 @@
     <string name="item_overload_potion_name">Pozione Sovraccarica</string>
 
     <!-- Enhanced potions -->
-    <string name="item_enhanced_attack_brew_name">Miscela Aattacco Potenziata</string>
+    <string name="item_enhanced_attack_brew_name">Miscela Attacco Potenziata</string>
     <string name="item_enhanced_defense_brew_name">Miscela Difesa Potenziata</string>
     <string name="item_enhanced_attack_potion_name">Pozione Attacco Potenziata</string>
     <string name="item_enhanced_defense_potion_name">Pozione Difesa Potenziata</string>
