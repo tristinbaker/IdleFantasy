@@ -64,6 +64,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.fantasyidler.BuildConfig
 import com.fantasyidler.R
 import com.fantasyidler.data.json.CropData
 import com.fantasyidler.data.model.FarmingPatch
@@ -381,7 +382,7 @@ private fun PatchCard(
 
     val isEmpty   = patch == null || patch.cropType == null
     val cropData  = patch?.cropType?.let { crops[it] }
-    val remaining = if (isEmpty) Long.MAX_VALUE else patch!!.remainingMs(crops, now)
+    val remaining = if (isEmpty) Long.MAX_VALUE else patch.remainingMs(crops, now)
     val isReady   = !isEmpty && remaining <= 0
     val isGrowing = !isEmpty && !isReady
 
@@ -418,7 +419,7 @@ private fun PatchCard(
                     val elapsed   = growthMs - remaining
                     val progress  = (elapsed.toFloat() / growthMs).coerceIn(0f, 1f)
 
-                    if (patch?.cropType == "magic_bean") {
+                    if (patch.cropType == "magic_bean") {
                         // Magic bean — show cryptic progress note, no crop name or time
                         val note = when {
                             progress < 0.12f -> stringResource(R.string.farming_bean_note_1)
@@ -441,6 +442,11 @@ private fun PatchCard(
                             modifier = Modifier.fillMaxWidth().height(6.dp).clip(RoundedCornerShape(3.dp)),
                             color    = GoldPrimary,
                         )
+                        if (BuildConfig.DEBUG) {
+                            TextButton(onClick = onClimb) {
+                                Text("[Debug] Instant Climb")
+                            }
+                        }
                     } else {
                         // Normal crop
                         Text(
@@ -468,6 +474,11 @@ private fun PatchCard(
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                         )
+                        if (BuildConfig.DEBUG) {
+                            TextButton(onClick = onHarvest) {
+                                Text("[Debug] Instant Harvest")
+                            }
+                        }
                     }
                     Spacer(Modifier.height(8.dp))
                     OutlinedButton(
@@ -480,7 +491,7 @@ private fun PatchCard(
                 }
 
                 isReady -> {
-                    if (patch?.cropType == "magic_bean") {
+                    if (patch.cropType == "magic_bean") {
                         // Magic bean ready — show Climb button
                         Text(
                             text  = stringResource(R.string.farming_bean_ready),
