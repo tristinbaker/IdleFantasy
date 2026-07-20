@@ -1376,7 +1376,7 @@
     <string name="farming_bean_note_8">Almost there. The air grows thin. You can nearly see the top.</string>
     <string name="farming_bean_ready">The beanstalk reaches beyond the clouds. Ready to climb?</string>
     <string name="farming_bean_climb">Climb</string>
-    <string name="farming_bean_climbed">You have climbed the beanstalk. Something awaits…</string>
+    <string name="farming_bean_climbed">You have climbed the beanstalk. A serpent\'s hiss catches your attention…</string>
     <string name="farming_bean_picker_stats">\?\?\?  •  \?\?\?  •  \?\?\?</string>
     <string name="farming_magic_bean_one_plot">Magic Beans can only be planted in one plot</string>
 
