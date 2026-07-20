@@ -833,8 +833,8 @@ def _trade_route_rows(ranges: list[tuple[int, dict]]):
     rows = []
     for i, (start_level, tr_range) in enumerate(ranges):
         mercantile_level = f"{start_level}-{ranges[i + 1][0]}" if i < len(ranges) - 1 else f">{start_level}"
-        average_return = int((tr_range["max"] + tr_range["min"]) / 2)
-        rows.append([mercantile_level, f"{tr_range["min"]}-{tr_range["max"]}", str(average_return)])
+        average_return = int((tr_range["max"] + tr_range["min"]) * 60 / 2)
+        rows.append([mercantile_level, f"{tr_range["min"] * 60:,}-{tr_range["max"] * 60:,}", f"{average_return:,}"])
     return rows
 
 
@@ -852,7 +852,7 @@ def gen_trade_route(trade_route: dict) -> str:
     return get_template("skills/support/trade_route").format(
         title=trade_route["display_name"],
         min_level=trade_route["level_required"],
-        cost=trade_route["coin_cost"],
+        cost=f"{trade_route["coin_cost"]:,}",
         description=trade_route["description"],
         xp_ranges_table=table(["Mercantile Level", "XP range", "Average xp"], _trade_route_rows(xp_ranges)),
         coin_ranges_table=table(["Mercantile Level", "Coin range", "Average coins"], _trade_route_rows(coin_ranges)),
