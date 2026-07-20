@@ -32,6 +32,8 @@ import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.TitleRepository
 import com.fantasyidler.util.GameStrings
+import com.fantasyidler.util.stringByName
+import com.fantasyidler.util.withAppLocale
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -429,6 +431,49 @@ class InventoryViewModel @Inject constructor(
 
     private val cropProduceKeys: Set<String> by lazy {
         gameData.crops.keys.toSet()
+    }
+
+    fun debugAddItem(itemId: String, amount: Int) {
+        viewModelScope.launch {
+            val key = itemId.trim()
+            if (key.isEmpty() || amount <= 0) return@launch
+
+            if (!isKnownItemId(key)) {
+                _extra.update { it.copy(snackbarMessage = "$key not found") }
+                return@launch
+            }
+
+            playerRepo.addItem(key, amount)
+            val name = GameStrings.itemName(context.withAppLocale(), key)
+            _extra.update { it.copy(snackbarMessage = "$amount $name added") }
+        }
+    }
+
+    fun debugRemoveItem(itemId: String, amount: Int) {
+        viewModelScope.launch {
+            val key = itemId.trim()
+            if (key.isEmpty() || amount <= 0) return@launch
+
+            if (!isKnownItemId(key)) {
+                _extra.update { it.copy(snackbarMessage = "$key not found") }
+                return@launch
+            }
+
+            if (playerRepo.sellItem(key, amount, 0)) {
+                val name = GameStrings.itemName(context.withAppLocale(), key)
+                _extra.update { it.copy(snackbarMessage = "$amount $name removed") }
+            } else {
+                val name = GameStrings.itemName(context.withAppLocale(), key)
+                _extra.update { it.copy(snackbarMessage = "Not enough $name to remove $amount items") }
+            }
+        }
+    }
+
+    private fun isKnownItemId(itemId: String): Boolean {
+        val localeCtx = context.withAppLocale()
+        return localeCtx.stringByName("item_${itemId}_name") != null ||
+            localeCtx.stringByName("crop_${itemId}_name") != null ||
+            itemId in gameData.usefulItemKeys
     }
 }
 

@@ -1,7 +1,6 @@
 package com.fantasyidler.ui.screen
 
 import android.widget.Toast
-import kotlin.math.roundToInt
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -29,7 +28,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.foundation.background
@@ -37,8 +35,6 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.material3.Button
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.ElevatedCard
@@ -69,7 +65,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
@@ -85,11 +80,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.fantasyidler.BuildConfig
 import com.fantasyidler.R
 import com.fantasyidler.data.json.SkillingDungeonData
-import com.fantasyidler.data.json.ConstructionRecipe
-import com.fantasyidler.data.json.ThievingNpcData
-import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.Achievement
 import com.fantasyidler.ui.viewmodel.AchievementsViewModel
@@ -101,12 +94,10 @@ import com.fantasyidler.ui.viewmodel.TitleCatalog
 import com.fantasyidler.util.drawableByName
 import com.fantasyidler.ui.viewmodel.InventoryViewModel
 import com.fantasyidler.ui.viewmodel.SettingsViewModel
-import com.fantasyidler.ui.viewmodel.slotDisplayName
 import com.fantasyidler.ui.viewmodel.xpProgressFraction
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatCoins
 import com.fantasyidler.util.stringByName
-import com.fantasyidler.util.toTitleCase
 
 private val SKILL_CATEGORY_GROUPS: List<Pair<Int, List<String>>> = listOf(
     R.string.label_gathering      to listOf("mining", "fishing", "woodcutting", "farming", "thieving"),
@@ -153,6 +144,7 @@ fun ProfileScreen(
     var selectedTab  by remember { mutableIntStateOf(0) }
     var showEditSheet by remember { mutableStateOf(false) }
     var showAppearanceSheet by remember { mutableStateOf(false) }
+    var showAddItemSheet by remember { mutableStateOf(false) }
 
     Scaffold(
         contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top),
@@ -245,7 +237,7 @@ fun ProfileScreen(
             val tabContent: @Composable (Int) -> Unit = { tab ->
                 when (tab) {
                     0    -> SkillsTab(state.skillLevels, state.skillXp, context, viewModel)
-                    1    -> InventoryTab(state.inventory, context, viewModel::categoryFor)
+                    1    -> InventoryTab(state.inventory, context, viewModel::categoryFor) { showAddItemSheet = true }
                     2    -> EquipmentTab(
                         equipped           = state.equipped,
                         context            = context,
@@ -358,6 +350,19 @@ fun ProfileScreen(
         )
     }
 
+    if (BuildConfig.DEBUG && showAddItemSheet) {
+        DebugModifyItemCountSheet(
+            onAddItem    = { itemId, amount ->
+                viewModel.debugAddItem(itemId, amount)
+                showAddItemSheet = false
+            },
+            onRemoveItem = { itemId, amount ->
+                viewModel.debugRemoveItem(itemId, amount)
+                showAddItemSheet = false
+            },
+            onDismiss    = { showAddItemSheet = false },
+        )
+    }
 }
 
 // ---------------------------------------------------------------------------
@@ -823,6 +828,7 @@ private fun InventoryTab(
     inventory: Map<String, Int>,
     context: android.content.Context,
     categoryFor: (String) -> InventoryCategory,
+    onDebugAddItem: () -> Unit,
 ) {
     var sortAlpha by remember { mutableStateOf(false) }
     var selectedCategory by remember { mutableStateOf<InventoryCategory?>(null) }
@@ -846,6 +852,11 @@ private fun InventoryTab(
     }
 
     Column(modifier = Modifier.fillMaxSize()) {
+        if (BuildConfig.DEBUG) {
+            TextButton(onClick = onDebugAddItem) {
+                Text("[Debug] Modify Item Count")
+            }
+        }
         Row(
             modifier              = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
