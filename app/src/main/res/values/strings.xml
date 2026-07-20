@@ -612,7 +612,7 @@
     <!-- ===== CraftingScreen ===== -->
     <string name="crafting_no_mats">No mats</string>
     <!-- Translator note: %1$d = total quantity, %2$s = item name -->
-    <string name="crafting_produces">= %1$d %2$s</string>
+    <string name="crafting_produces" translatable="false">= %1$d %2$s</string>
     <string name="crafting_effects">Effects</string>
     <!-- Translator note: %1$d = total XP -->
     <string name="crafting_xp_total">+%1$d XP total</string>
@@ -1008,7 +1008,7 @@
     <string name="slayer_foretell_title">Foretell Future Tasks</string>
     <string name="slayer_foretell_desc">Pre-assign upcoming Slayer tasks by paying bones. They are assigned automatically when your current task is completed.</string>
     <string name="slayer_foretell_queue_empty">No tasks queued.</string>
-    <string name="slayer_foretell_queue_btn">+ Queue</string>
+    <string name="slayer_foretell_queue_btn" translatable="false">+ Queue</string>
     <string name="slayer_foretell_queue_full">Foretell queue is full (3/3).</string>
     <string name="slayer_foretell_not_enough_bones">Not enough bones (cost: %1$d bones).</string>
     <string name="slayer_foretell_success">Task foretold: %1$s!</string>
@@ -1345,7 +1345,7 @@
     <string name="carnival_redeemed">Redeemed: %1$s!</string>
     <string name="carnival_not_enough_tickets">Not enough tickets.</string>
     <string name="carnival_lamp_redeemed">+%1$s XP in %2$s!</string>
-    <string name="carnival_shell_game">Pick-a-Cup</string>
+    <string name="carnival_shell_game" translatable="false">Pick-a-Cup</string>
     <string name="carnival_active_shell_desc">Watch which cup hides the gem, then pick it after the shuffle!</string>
     <string name="carnival_shell_showing">Watch carefully — gem is under cup %1$d</string>
     <string name="carnival_shell_watch">Watch closely…</string>
@@ -1353,7 +1353,7 @@
     <string name="carnival_shell_won">Correct! +%1$d tickets</string>
     <string name="carnival_shell_missed">Wrong! The gem was under cup %1$d.</string>
     <string name="carnival_shell_locked">Upgrade the Fairgrounds to Tier 1 to unlock</string>
-    <string name="carnival_higher_lower">Higher or Lower</string>
+    <string name="carnival_higher_lower" translatable="false">Higher or Lower</string>
     <string name="carnival_active_higher_desc">Guess whether the next number will be higher or lower than the current one.</string>
     <string name="carnival_higher_lower_current">%1$d</string>
     <string name="carnival_higher_lower_score">%1$d correct (%2$d played)</string>
@@ -1381,7 +1381,7 @@
     <string name="farming_bean_ready">The beanstalk reaches beyond the clouds. Ready to climb?</string>
     <string name="farming_bean_climb">Climb</string>
     <string name="farming_bean_climbed">You have climbed the beanstalk. Something awaits…</string>
-    <string name="farming_bean_picker_stats">\?\?\?  •  \?\?\?  •  \?\?\?</string>
+    <string name="farming_bean_picker_stats" translatable="false">\?\?\?  •  \?\?\?  •  \?\?\?</string>
     <string name="farming_magic_bean_one_plot">Magic Beans can only be planted in one plot</string>
 
     <!-- ===== Armory Tab ===== -->
