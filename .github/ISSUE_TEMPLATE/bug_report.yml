@@ -91,7 +91,7 @@ body:
     id: game_state
     attributes:
       label: Relevant game state
-      description: Anything about your save that might matter - character level, what you had equipped, how far into the game you are, etc.
+      description: Anything about your save that might matter - character level, what you had equipped, how far into the game you are, etc. Providing an exported game save can be very helpful for some problems
       placeholder: "e.g. Level 24, had a sword equipped, was mid-quest"
 
   - type: textarea
