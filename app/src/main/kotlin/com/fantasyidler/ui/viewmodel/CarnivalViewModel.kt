@@ -131,6 +131,10 @@ class CarnivalViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
+            val flags = playerRepo.getFlags()
+            val now = System.currentTimeMillis()
+            fun cooldownState(at: Long): ActiveGameState? =
+                if (at > now) ActiveGameState.OnCooldown(at) else null
             val diffs = playerRepo.getFlags().carnivalDifficulties
             if (diffs.isNotEmpty()) {
                 fun diff(key: String) = diffs[key]?.uppercase()?.let { runCatching { Difficulty.valueOf(it) }.getOrNull() }
@@ -141,6 +145,12 @@ class CarnivalViewModel @Inject constructor(
                     itemAppraisalDifficulty  = diff("item_appraisal")  ?: s.itemAppraisalDifficulty,
                     shellGameDifficulty      = diff("shell_game")      ?: s.shellGameDifficulty,
                     higherLowerDifficulty    = diff("higher_lower")    ?: s.higherLowerDifficulty,
+                    ringTossState            = cooldownState(flags.carnivalRingTossCooldownAt)       ?: s.ringTossState,
+                    hammerStrikeState        = cooldownState(flags.carnivalHammerStrikeCooldownAt)   ?: s.hammerStrikeState,
+                    potionSequenceState      = cooldownState(flags.carnivalPotionSequenceCooldownAt) ?: s.potionSequenceState,
+                    itemAppraisalState       = cooldownState(flags.carnivalItemAppraisalCooldownAt)  ?: s.itemAppraisalState,
+                    shellGameState           = cooldownState(flags.carnivalShellGameCooldownAt)      ?: s.shellGameState,
+                    higherLowerState         = cooldownState(flags.carnivalHigherLowerCooldownAt)    ?: s.higherLowerState,
                 ) }
             }
         }

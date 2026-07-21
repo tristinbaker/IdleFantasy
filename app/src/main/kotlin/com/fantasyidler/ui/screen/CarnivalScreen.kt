@@ -84,6 +84,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import androidx.compose.runtime.rememberCoroutineScope
 import com.fantasyidler.simulator.CarnivalSimulator
+import com.fantasyidler.ui.viewmodel.CarnivalUiState
+import kotlin.time.Duration.Companion.milliseconds
 
 private val COMBAT_CAPE_SKILLS = setOf(
     "attack", "strength", "defense", "ranged", "magic", "hp",
@@ -286,7 +288,7 @@ private fun IdleGamesTab(
 
 @Composable
 private fun ActiveGamesTab(
-    state: com.fantasyidler.ui.viewmodel.CarnivalUiState,
+    state: CarnivalUiState,
     viewModel: CarnivalViewModel,
 ) {
     Column(
@@ -391,7 +393,7 @@ private fun CooldownRow(gameKey: String, resumesAtMs: Long, viewModel: CarnivalV
     var remainingMs by remember { mutableStateOf(resumesAtMs - System.currentTimeMillis()) }
     LaunchedEffect(resumesAtMs) {
         while (remainingMs > 0) {
-            delay(1_000L)
+            delay(1_000.milliseconds)
             remainingMs = resumesAtMs - System.currentTimeMillis()
         }
         viewModel.clearCooldownIfExpired(gameKey)
