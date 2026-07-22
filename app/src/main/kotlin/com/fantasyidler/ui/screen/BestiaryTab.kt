@@ -46,6 +46,7 @@ import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.viewmodel.BestiaryEntry
 import com.fantasyidler.ui.viewmodel.BestiarySort
 import com.fantasyidler.ui.viewmodel.BestiaryViewModel
+import com.fantasyidler.ui.theme.ScaledSheetContent
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatCoinsBrief
 import kotlin.math.roundToInt
@@ -109,11 +110,13 @@ fun BestiaryTab(viewModel: BestiaryViewModel = hiltViewModel()) {
             onDismissRequest = { selectedEntry = null },
             sheetState       = sheetState,
         ) {
+            ScaledSheetContent {
             val context = LocalContext.current
             if (entry.enemy != null) {
                 EnemyDetailContent(entry = entry, enemy = entry.enemy, context = context)
             } else if (entry.boss != null) {
                 BossDetailContent(entry = entry, boss = entry.boss, context = context)
+            }
             }
         }
     }

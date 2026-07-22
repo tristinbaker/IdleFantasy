@@ -76,7 +76,7 @@ fun InnScreen(
         }
     }
 
-    ToastMessageEffect(state.snackbarMessage, viewModel::snackbarConsumed)
+    AppBannerEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
     Scaffold(
         contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top),

@@ -44,6 +44,7 @@ import com.fantasyidler.ui.viewmodel.ArmoryEntry
 import com.fantasyidler.ui.viewmodel.ArmoryFilter
 import com.fantasyidler.ui.viewmodel.ArmorySort
 import com.fantasyidler.ui.viewmodel.ArmoryViewModel
+import com.fantasyidler.ui.theme.ScaledSheetContent
 import com.fantasyidler.util.GameStrings
 
 private val COMBAT_CAPE_SKILLS = setOf(
@@ -121,7 +122,9 @@ fun ArmoryTab(viewModel: ArmoryViewModel = hiltViewModel()) {
             onDismissRequest = { selectedEntry = null },
             sheetState       = sheetState,
         ) {
+            ScaledSheetContent {
             ArmoryDetailContent(entry = entry)
+            }
         }
     }
 }

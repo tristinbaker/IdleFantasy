@@ -1,3 +1,11 @@
+v1.12.5
+• Fixed the action queue getting stuck instead of automatically starting the next queued Infinite Tower floor after collecting one
+• Added many more daily guild quest variants so most guilds no longer repeat the exact same set of dailies every day
+• Replaced the app's queue/action notifications with a new custom themed banner, fixing messages sometimes cancelling each other out instead of showing in order, no longer blocking scrolling/swiping while shown, and no longer cutting off long messages
+• Fixed skill activity sheets (Smithing, Cooking, Mining, etc.) closing accidentally when scrolling their list too far
+• Fixed the Text Size setting barely affecting text inside trays/bottom sheets while scaling the rest of the UI correctly
+• Fixed the Ring Toss target zone marker not showing (and not matching Hard mode's narrower 52%-57% window)
+
 v1.12.4
 • Fixed Firemakers Guild quests describing burning logs as "burning ashes" instead of naming the actual wood being burned
 • Boss fights on the Home screen now show that boss's own icon instead of a generic gamepad icon; the Infinite Tower now shows a dedicated tower icon too

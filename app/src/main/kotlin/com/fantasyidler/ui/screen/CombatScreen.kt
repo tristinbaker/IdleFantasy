@@ -33,8 +33,6 @@ import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
@@ -89,6 +87,7 @@ import com.fantasyidler.data.model.SessionFrame
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.ui.theme.GoldPrimary
+import com.fantasyidler.ui.theme.ScaledSheetContent
 import com.fantasyidler.ui.theme.SuccessGreen
 import com.fantasyidler.ui.viewmodel.CombatViewModel
 import com.fantasyidler.ui.viewmodel.InventoryViewModel
@@ -116,7 +115,6 @@ fun CombatScreen(
     val state            by viewModel.uiState.collectAsState()
     val invState         by inventoryVm.uiState.collectAsState()
     val context           = LocalContext.current
-    val snackbarHostState = remember { SnackbarHostState() }
     val visibleDungeons   = remember(state.unlockedDungeons) {
         viewModel.dungeonList.filter { !it.loreUnlockOnly || it.name in state.unlockedDungeons }
     }
@@ -126,12 +124,7 @@ fun CombatScreen(
         initialBossKey?.let { key -> viewModel.bossList.firstOrNull { it.id == key }?.let(viewModel::selectBoss) }
     }
 
-    LaunchedEffect(state.snackbarMessage) {
-        state.snackbarMessage?.let { msg ->
-            try { snackbarHostState.showSnackbar(msg) }
-            finally { viewModel.snackbarConsumed() }
-        }
-    }
+    AppBannerEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
     state.petFoundName?.let { petName ->
         AlertDialog(
@@ -164,7 +157,6 @@ fun CombatScreen(
                 },
             )
         },
-        snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { padding ->
         if (state.isLoading) {
             Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
@@ -342,6 +334,7 @@ fun CombatScreen(
             sheetState       = gearSheetState,
             dragHandle       = { BottomSheetDefaults.DragHandle() },
         ) {
+            ScaledSheetContent {
             EquipPickerSheet(
                 slot       = slot,
                 candidates = invState.candidatesFor(slot, inventoryVm.allEquipment),
@@ -349,6 +342,7 @@ fun CombatScreen(
                 onEquip    = { itemKey -> inventoryVm.equip(itemKey, slot) },
                 onDismiss  = inventoryVm::dismissSlotPicker,
             )
+            }
         }
     }
 
@@ -360,6 +354,7 @@ fun CombatScreen(
             sheetState       = sheetState,
             dragHandle       = { BottomSheetDefaults.DragHandle() },
         ) {
+            ScaledSheetContent {
             BossInfoSheet(
                 boss                 = boss,
                 skillLevels          = state.skillLevels,
@@ -381,6 +376,7 @@ fun CombatScreen(
                 onStart              = { viewModel.startBossSession(boss.id) },
                 onDismiss            = { viewModel.selectBoss(null) },
             )
+            }
         }
     }
 
@@ -392,6 +388,7 @@ fun CombatScreen(
             sheetState       = sheetState,
             dragHandle       = { BottomSheetDefaults.DragHandle() },
         ) {
+            ScaledSheetContent {
             DungeonInfoSheet(
                 dungeon              = dungeon,
                 skillLevels          = state.skillLevels,
@@ -414,6 +411,7 @@ fun CombatScreen(
                 onStart              = { viewModel.startDungeonSession(dungeon.name) },
                 onDismiss            = { viewModel.selectDungeon(null) },
             )
+            }
         }
     }
 

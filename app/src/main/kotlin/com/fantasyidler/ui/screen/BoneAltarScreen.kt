@@ -61,7 +61,7 @@ fun BoneAltarScreen(
         onDispose { viewModel.resetCombo() }
     }
 
-    ToastMessageEffect(state.snackbarMessage, viewModel::snackbarConsumed)
+    AppBannerEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
     Scaffold(
         contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top),

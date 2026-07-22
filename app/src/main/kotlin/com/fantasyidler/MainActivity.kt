@@ -22,6 +22,7 @@ import com.fantasyidler.repository.BackupScheduler
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.ui.navigation.AppNavigation
 import com.fantasyidler.ui.theme.FantasyIdlerTheme
+import com.fantasyidler.ui.theme.LocalAppFontScale
 import com.fantasyidler.ui.viewmodel.SettingsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -70,7 +71,8 @@ class MainActivity : AppCompatActivity() {
             val baseDensity = LocalDensity.current
             FantasyIdlerTheme(themePreference = themePreference) {
                 CompositionLocalProvider(
-                    LocalDensity provides Density(baseDensity.density, fontScale)
+                    LocalDensity provides Density(baseDensity.density, fontScale),
+                    LocalAppFontScale provides fontScale,
                 ) {
                     AppNavigation(
                         pendingNavigateTo  = pendingNavigateTo.value,

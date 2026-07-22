@@ -69,6 +69,7 @@ import com.fantasyidler.data.model.FarmingPatch
 import com.fantasyidler.repository.FarmingRepository
 import com.fantasyidler.simulator.XpTable
 import com.fantasyidler.ui.theme.GoldPrimary
+import com.fantasyidler.ui.theme.ScaledSheetContent
 import com.fantasyidler.ui.viewmodel.FarmingUiState
 import com.fantasyidler.ui.viewmodel.FarmingViewModel
 import com.fantasyidler.ui.viewmodel.remainingMs
@@ -85,7 +86,7 @@ fun FarmingScreen(
     val state by viewModel.uiState.collectAsState()
     val context = LocalContext.current
 
-    ToastMessageEffect(state.snackbarMessage, viewModel::snackbarConsumed)
+    AppBannerEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
     Scaffold(
         contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top),
@@ -155,6 +156,7 @@ fun FarmingScreen(
             sheetState       = sheetState,
             dragHandle       = { BottomSheetDefaults.DragHandle() },
         ) {
+            ScaledSheetContent {
             PlantSheet(
                 crops          = state.availableCrops,
                 inventory      = state.inventory,
@@ -162,6 +164,7 @@ fun FarmingScreen(
                 onDismiss      = viewModel::closePlantSheet,
                 initialAshKey  = state.lastFertilizerKey,
             )
+            }
         }
     }
 
@@ -211,7 +214,7 @@ fun FarmingSheetContent(
     val state by viewModel.uiState.collectAsState()
     val context = LocalContext.current
 
-    ToastMessageEffect(state.snackbarMessage, viewModel::snackbarConsumed)
+    AppBannerEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
     Box(Modifier.fillMaxWidth().fillMaxHeight(0.85f)) {
         if (state.isLoading) {
@@ -253,6 +256,7 @@ fun FarmingSheetContent(
             sheetState       = sheetState,
             dragHandle       = { BottomSheetDefaults.DragHandle() },
         ) {
+            ScaledSheetContent {
             PlantSheet(
                 crops          = state.availableCrops,
                 inventory      = state.inventory,
@@ -260,6 +264,7 @@ fun FarmingSheetContent(
                 onDismiss      = viewModel::closePlantSheet,
                 initialAshKey  = state.lastFertilizerKey,
             )
+            }
         }
     }
 

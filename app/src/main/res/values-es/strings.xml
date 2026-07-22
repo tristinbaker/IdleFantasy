@@ -1568,4 +1568,8 @@
     <string name="home_welcome_name">¡%1$s!</string>
     <string name="home_welcome_title">El %1$s!</string>
     <string name="settings_lang_japanese">日本語</string>
+    <string name="bonus_tower">Tower</string>
+    <string name="bonus_xp">+%1$d%% XP</string>
+    <string name="bonus_coin_drops">+%1$d%% coin drops</string>
+    <string name="bonus_hp">+%1$d HP</string>
 </resources>

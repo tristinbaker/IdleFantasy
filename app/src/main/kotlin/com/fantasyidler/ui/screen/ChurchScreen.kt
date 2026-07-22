@@ -59,7 +59,7 @@ fun ChurchScreen(
 ) {
     val state by viewModel.uiState.collectAsState()
 
-    ToastMessageEffect(state.snackbarMessage, viewModel::snackbarConsumed)
+    AppBannerEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
     // Confirmation dialog
     state.pendingBlessingKey?.let { key ->

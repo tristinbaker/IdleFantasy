@@ -72,6 +72,7 @@ import com.fantasyidler.ui.viewmodel.ShopEntry
 import com.fantasyidler.ui.viewmodel.ShopTransaction
 import com.fantasyidler.ui.viewmodel.ShopViewModel
 import com.fantasyidler.ui.theme.GoldPrimary
+import com.fantasyidler.ui.theme.ScaledSheetContent
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatCoins
 
@@ -103,7 +104,7 @@ fun ShopScreen(
     val state             by viewModel.uiState.collectAsState()
     val context           = LocalContext.current
 
-    ToastMessageEffect(state.snackbarMessage, viewModel::snackbarConsumed)
+    AppBannerEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
     Scaffold(
         contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top),
@@ -192,6 +193,7 @@ fun ShopScreen(
             sheetState       = sheetState,
             dragHandle       = { BottomSheetDefaults.DragHandle() },
         ) {
+            ScaledSheetContent {
             TransactionSheet(
                 transaction = t,
                 coins       = state.coins,
@@ -201,6 +203,7 @@ fun ShopScreen(
                 onConfirm   = viewModel::confirmTransaction,
                 onDismiss   = viewModel::dismissTransaction,
             )
+            }
         }
     }
 
@@ -211,11 +214,13 @@ fun ShopScreen(
             sheetState       = sheetState,
             dragHandle       = { BottomSheetDefaults.DragHandle() },
         ) {
+            ScaledSheetContent {
             BulkSellSheet(
                 preview   = preview,
                 onConfirm = viewModel::confirmBulkSell,
                 onDismiss = viewModel::dismissBulkSell,
             )
+            }
         }
     }
 }

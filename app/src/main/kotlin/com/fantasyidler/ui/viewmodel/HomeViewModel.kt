@@ -806,6 +806,8 @@ class HomeViewModel @Inject constructor(
             }
 
             for (session in sessions) sessionRepo.deleteSession(session.sessionId)
+            queuedSessionStarter.startNextQueued()
+            reconcileTowerQueue()
             if (dailyKills.isNotEmpty()) playerRepo.recordDailyKills(dailyKills)
 
             val rareItemsDisplayNames = mutableSetOf<String>()

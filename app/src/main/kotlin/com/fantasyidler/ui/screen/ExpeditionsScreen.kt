@@ -16,15 +16,11 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Snackbar
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -46,14 +42,8 @@ fun ExpeditionsScreen(
     showTitle: Boolean = true,
 ) {
     val state by viewModel.uiState.collectAsState()
-    val snackbarHostState = remember { SnackbarHostState() }
 
-    LaunchedEffect(state.snackbarMessage) {
-        state.snackbarMessage?.let {
-            try { snackbarHostState.showSnackbar(it, withDismissAction = true) }
-            finally { viewModel.clearSnackbar() }
-        }
-    }
+    AppBannerEffect(state.snackbarMessage, viewModel::clearSnackbar)
 
     Column(modifier = Modifier.fillMaxSize()) {
         if (showTitle) {
@@ -100,10 +90,6 @@ fun ExpeditionsScreen(
                 }
             }
             item { Spacer(modifier = Modifier.height(16.dp)) }
-        }
-
-        SnackbarHost(hostState = snackbarHostState) { data ->
-            Snackbar(snackbarData = data, modifier = Modifier.padding(8.dp))
         }
     }
 }

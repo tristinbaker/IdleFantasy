@@ -76,6 +76,7 @@ import com.fantasyidler.ui.viewmodel.xpProgressFraction
 import com.fantasyidler.ui.viewmodel.nextLevelThreshold
 import com.fantasyidler.ui.viewmodel.xpToNextLevel
 import com.fantasyidler.ui.viewmodel.levelDisplay
+import com.fantasyidler.ui.theme.ScaledSheetContent
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatDurationMs
 import com.fantasyidler.util.formatXp
@@ -95,7 +96,7 @@ fun WorkerSkillsScreen(
 
     LaunchedEffect(Unit) { viewModel.setSelectedSlot(initialSlot) }
 
-    ToastMessageEffect(state.snackbarMessage, viewModel::snackbarConsumed)
+    AppBannerEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
     val tierLabel = when (state.currentWorker?.tier) {
         WorkerTier.LONG_LABORER -> stringResource(R.string.worker_long_laborer)
@@ -256,6 +257,7 @@ fun WorkerSkillsScreen(
             sheetState       = sheetState,
             dragHandle       = { BottomSheetDefaults.DragHandle() },
         ) {
+            ScaledSheetContent {
             // For workers: always pass hasActiveSession=true so button says "Add to Queue",
             // and isQueueFull=state.workerQueueFull.
             val isQueueFull = state.workerQueueFull
@@ -358,6 +360,7 @@ fun WorkerSkillsScreen(
                     onSelect          = { viewModel.startThievingSession(it) },
                 )
                 SheetState.ComingSoon -> ComingSoonSheet()
+            }
             }
         }
     }

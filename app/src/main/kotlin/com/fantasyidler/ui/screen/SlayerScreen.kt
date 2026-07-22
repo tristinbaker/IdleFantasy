@@ -59,6 +59,7 @@ import com.fantasyidler.util.GameStrings
 import com.fantasyidler.ui.viewmodel.PendingLamp
 import com.fantasyidler.ui.viewmodel.SlayerViewModel
 import com.fantasyidler.ui.viewmodel.xpProgressFraction
+import com.fantasyidler.ui.theme.ScaledSheetContent
 import com.fantasyidler.util.formatXp
 
 private data class ShopItem(
@@ -87,7 +88,7 @@ fun SlayerScreen(
 ) {
     val state by viewModel.uiState.collectAsState()
 
-    ToastMessageEffect(state.snackbarMessage, viewModel::snackbarConsumed)
+    AppBannerEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
     state.pendingSlayerDungeonKey?.let { dungeonKey ->
         val context = LocalContext.current
@@ -98,6 +99,7 @@ fun SlayerScreen(
             sheetState       = sheetState,
             dragHandle       = { BottomSheetDefaults.DragHandle() },
         ) {
+            ScaledSheetContent {
             SlayerWeaponPickerSheet(
                 dungeonName      = dungeonName,
                 equippedWeapons  = state.slayerEquippedWeapons,
@@ -108,6 +110,7 @@ fun SlayerScreen(
                 onDismiss        = viewModel::dismissSlayerDungeonPicker,
                 context          = context,
             )
+            }
         }
     }
 

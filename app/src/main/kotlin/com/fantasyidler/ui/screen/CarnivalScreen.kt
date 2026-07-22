@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -111,7 +112,7 @@ fun CarnivalScreen(
 ) {
     val state by viewModel.uiState.collectAsState()
 
-    ToastMessageEffect(state.snackbarMessage, viewModel::snackbarConsumed)
+    AppBannerEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
     state.pendingLampPrizeKey?.let { prizeKey ->
         val prize = viewModel.prizesMap[prizeKey]
@@ -436,21 +437,24 @@ private fun RingTossCard(gameState: ActiveGameState, difficulty: Difficulty, vie
                         if (position <= 0f) { position = 0f; direction = 1 }
                     }
                 }
+                val targetStart = if (difficulty == Difficulty.HARD) 0.52f else 0.45f
+                val targetEnd   = if (difficulty == Difficulty.HARD) 0.57f else 0.55f
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Box(modifier = Modifier.fillMaxWidth().height(24.dp)) {
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth(0.55f - 0.45f)
-                                .align(Alignment.CenterStart)
-                                .padding(start = (0.45f * 1f * 1f).dp)
-                                .height(24.dp)
-                                .background(GoldPrimary.copy(alpha = 0.3f), RoundedCornerShape(4.dp))
-                        )
+                    BoxWithConstraints(modifier = Modifier.fillMaxWidth().height(24.dp)) {
                         LinearProgressIndicator(
                             progress         = { position },
                             modifier         = Modifier.fillMaxWidth().height(24.dp).clip(RoundedCornerShape(4.dp)),
                             color            = MaterialTheme.colorScheme.primary,
                             trackColor       = MaterialTheme.colorScheme.surfaceVariant,
+                        )
+                        // Drawn after the indicator so its opaque track doesn't hide this marker.
+                        Box(
+                            modifier = Modifier
+                                .width(maxWidth * (targetEnd - targetStart))
+                                .align(Alignment.CenterStart)
+                                .padding(start = maxWidth * targetStart)
+                                .height(24.dp)
+                                .background(GoldPrimary.copy(alpha = 0.3f), RoundedCornerShape(4.dp))
                         )
                     }
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {

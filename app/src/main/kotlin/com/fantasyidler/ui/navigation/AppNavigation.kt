@@ -39,6 +39,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.notification.SessionNotificationManager
+import com.fantasyidler.ui.screen.AppBannerHost
 import com.fantasyidler.ui.screen.BoneAltarScreen
 import com.fantasyidler.ui.screen.CarnivalScreen
 import com.fantasyidler.ui.screen.TowerScreen
@@ -302,4 +303,5 @@ fun AppNavigation(
             }
         }
     }
+    AppBannerHost()
 }

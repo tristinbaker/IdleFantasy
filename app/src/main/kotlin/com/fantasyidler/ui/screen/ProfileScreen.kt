@@ -1,6 +1,5 @@
 package com.fantasyidler.ui.screen
 
-import android.widget.Toast
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -82,6 +81,7 @@ import com.fantasyidler.BuildConfig
 import com.fantasyidler.R
 import com.fantasyidler.data.json.SkillingDungeonData
 import com.fantasyidler.ui.theme.GoldPrimary
+import com.fantasyidler.ui.theme.ScaledSheetContent
 import com.fantasyidler.ui.viewmodel.Achievement
 import com.fantasyidler.ui.viewmodel.AchievementsViewModel
 import com.fantasyidler.ui.viewmodel.ArmoryViewModel
@@ -120,7 +120,7 @@ fun ProfileScreen(
     val achState      by achievementsVm.uiState.collectAsState()
     val profileLayout by settingsVm.profileLayout.collectAsState()
     val context   = LocalContext.current
-    ToastMessageEffect(state.snackbarMessage, viewModel::snackbarConsumed)
+    AppBannerEffect(state.snackbarMessage, viewModel::snackbarConsumed)
     val tabs = listOf(
         stringResource(R.string.label_skills),
         stringResource(R.string.label_inventory),
@@ -279,6 +279,7 @@ fun ProfileScreen(
             sheetState       = sheetState,
             dragHandle       = { BottomSheetDefaults.DragHandle() },
         ) {
+            ScaledSheetContent {
             EquipPickerSheet(
                 slot      = slot,
                 candidates = state.candidatesFor(slot, viewModel.allEquipment),
@@ -286,6 +287,7 @@ fun ProfileScreen(
                 onEquip   = { itemKey -> viewModel.equip(itemKey, slot) },
                 onDismiss = viewModel::dismissSlotPicker,
             )
+            }
         }
     }
 
@@ -515,12 +517,14 @@ private fun SkillsTab(
             sheetState       = sheetState,
             dragHandle       = { BottomSheetDefaults.DragHandle() },
         ) {
+            ScaledSheetContent {
             SkillUnlockSheet(
                 skillKey   = key,
                 level      = skillLevels[key] ?: 1,
                 context    = context,
                 milestones = milestones,
             )
+            }
         }
     }
 }
@@ -1173,7 +1177,7 @@ private fun PetRow(pet: com.fantasyidler.data.json.PetData, owned: Boolean) {
             .fillMaxWidth()
             .then(if (owned) Modifier.clickable {
                 val messages = context.resources.getStringArray(R.array.profile_pet_happy_messages)
-                Toast.makeText(context, String.format(messages.random(), pet.displayName), Toast.LENGTH_SHORT).show()
+                AppBannerCenter.enqueue(String.format(messages.random(), pet.displayName))
             } else Modifier)
             .padding(horizontal = 16.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically,

@@ -102,6 +102,48 @@
     }
   },
   {
+    "id": "mining_daily_1f",
+    "guild": "mining",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Iron Delivery Reserve",
+    "type": "gather",
+    "target": "iron_ore",
+    "amount": 300,
+    "description": "Mine 300 iron ore for the Mining Guild.",
+    "rewards": {
+      "coins": 3000,
+      "xp": 7500,
+      "xp_skill": "mining",
+      "items": {
+        "raw_trout": 45,
+        "log": 30
+      },
+      "reputation": 1200
+    }
+  },
+  {
+    "id": "mining_daily_1g",
+    "guild": "mining",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Copper Quota Reserve",
+    "type": "gather",
+    "target": "copper_ore",
+    "amount": 450,
+    "description": "Mine 450 copper ore for the Mining Guild.",
+    "rewards": {
+      "coins": 2250,
+      "xp": 6000,
+      "xp_skill": "mining",
+      "items": {
+        "raw_shrimp": 75,
+        "log": 45
+      },
+      "reputation": 1050
+    }
+  },
+  {
     "id": "mining_daily_4a",
     "guild": "mining",
     "guild_level_min": 4,
@@ -201,6 +243,47 @@
         "raw_lobster": 35
       },
       "reputation": 4000
+    }
+  },
+  {
+    "id": "mining_daily_4f",
+    "guild": "mining",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Mithril Batch Reserve",
+    "type": "gather",
+    "target": "mithril_ore",
+    "amount": 380,
+    "description": "Mine 380 mithril ore for the Mining Guild.",
+    "rewards": {
+      "coins": 12000,
+      "xp": 30500,
+      "xp_skill": "mining",
+      "items": {
+        "raw_lobster": 61,
+        "maple_log": 30
+      },
+      "reputation": 6100
+    }
+  },
+  {
+    "id": "mining_daily_4g",
+    "guild": "mining",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Gold Haul Reserve",
+    "type": "gather",
+    "target": "gold_ore",
+    "amount": 300,
+    "description": "Mine 300 gold ore for the Mining Guild.",
+    "rewards": {
+      "coins": 13500,
+      "xp": 33000,
+      "xp_skill": "mining",
+      "items": {
+        "raw_swordfish": 45
+      },
+      "reputation": 6750
     }
   },
   {
@@ -307,6 +390,48 @@
     }
   },
   {
+    "id": "mining_daily_7f",
+    "guild": "mining",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Platinum Run Reserve",
+    "type": "gather",
+    "target": "platinum_ore",
+    "amount": 85,
+    "description": "Mine 85 platinum ore for the Mining Guild.",
+    "rewards": {
+      "coins": 30500,
+      "xp": 91000,
+      "xp_skill": "mining",
+      "items": {
+        "raw_shark": 61,
+        "magic_log": 23
+      },
+      "reputation": 23000
+    }
+  },
+  {
+    "id": "mining_daily_7g",
+    "guild": "mining",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Runite Quota Reserve",
+    "type": "gather",
+    "target": "runite_ore",
+    "amount": 65,
+    "description": "Mine 65 runite ore for the Mining Guild.",
+    "rewards": {
+      "coins": 38500,
+      "xp": 108000,
+      "xp_skill": "mining",
+      "items": {
+        "raw_manta_ray": 39,
+        "redwood_log": 15
+      },
+      "reputation": 28000
+    }
+  },
+  {
     "id": "fishing_daily_1a",
     "guild": "fishing",
     "guild_level_min": 1,
@@ -409,6 +534,47 @@
     }
   },
   {
+    "id": "fishing_daily_1f",
+    "guild": "fishing",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Shrimp Haul Reserve",
+    "type": "gather",
+    "target": "raw_shrimp",
+    "amount": 300,
+    "description": "Catch 300 shrimp for the Fishing Guild.",
+    "rewards": {
+      "coins": 2250,
+      "xp": 6000,
+      "xp_skill": "fishing",
+      "items": {
+        "copper_ore": 60,
+        "log": 38
+      },
+      "reputation": 1050
+    }
+  },
+  {
+    "id": "fishing_daily_1g",
+    "guild": "fishing",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Trout Run Reserve",
+    "type": "gather",
+    "target": "raw_trout",
+    "amount": 220,
+    "description": "Catch 220 trout for the Fishing Guild.",
+    "rewards": {
+      "coins": 2950,
+      "xp": 7350,
+      "xp_skill": "fishing",
+      "items": {
+        "iron_ore": 59
+      },
+      "reputation": 1150
+    }
+  },
+  {
     "id": "fishing_daily_4a",
     "guild": "fishing",
     "guild_level_min": 4,
@@ -508,6 +674,47 @@
         "adamantite_ore": 25
       },
       "reputation": 4000
+    }
+  },
+  {
+    "id": "fishing_daily_4f",
+    "guild": "fishing",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Lobster Catch Reserve",
+    "type": "gather",
+    "target": "raw_lobster",
+    "amount": 220,
+    "description": "Catch 220 lobster for the Fishing Guild.",
+    "rewards": {
+      "coins": 11500,
+      "xp": 29500,
+      "xp_skill": "fishing",
+      "items": {
+        "mithril_ore": 73,
+        "maple_log": 22
+      },
+      "reputation": 5850
+    }
+  },
+  {
+    "id": "fishing_daily_4g",
+    "guild": "fishing",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Swordfish Run Reserve",
+    "type": "gather",
+    "target": "raw_swordfish",
+    "amount": 180,
+    "description": "Catch 180 swordfish for the Fishing Guild.",
+    "rewards": {
+      "coins": 13500,
+      "xp": 33000,
+      "xp_skill": "fishing",
+      "items": {
+        "gold_ore": 52
+      },
+      "reputation": 6750
     }
   },
   {
@@ -614,6 +821,48 @@
     }
   },
   {
+    "id": "fishing_daily_7f",
+    "guild": "fishing",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Shark Hunt Reserve",
+    "type": "gather",
+    "target": "raw_shark",
+    "amount": 100,
+    "description": "Catch 100 shark for the Fishing Guild.",
+    "rewards": {
+      "coins": 29500,
+      "xp": 88000,
+      "xp_skill": "fishing",
+      "items": {
+        "platinum_ore": 44,
+        "magic_log": 18
+      },
+      "reputation": 22000
+    }
+  },
+  {
+    "id": "fishing_daily_7g",
+    "guild": "fishing",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Manta Haul Reserve",
+    "type": "gather",
+    "target": "raw_manta_ray",
+    "amount": 80,
+    "description": "Catch 80 manta ray for the Fishing Guild.",
+    "rewards": {
+      "coins": 36500,
+      "xp": 102000,
+      "xp_skill": "fishing",
+      "items": {
+        "runite_ore": 36,
+        "redwood_log": 12
+      },
+      "reputation": 26000
+    }
+  },
+  {
     "id": "woodcutting_daily_1a",
     "guild": "woodcutting",
     "guild_level_min": 1,
@@ -716,6 +965,47 @@
     }
   },
   {
+    "id": "woodcutting_daily_1f",
+    "guild": "woodcutting",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Log Supply Reserve",
+    "type": "gather",
+    "target": "log",
+    "amount": 300,
+    "description": "Chop 300 logs for the Woodcutters Guild.",
+    "rewards": {
+      "coins": 2250,
+      "xp": 6000,
+      "xp_skill": "woodcutting",
+      "items": {
+        "raw_trout": 45,
+        "copper_ore": 45
+      },
+      "reputation": 1050
+    }
+  },
+  {
+    "id": "woodcutting_daily_1g",
+    "guild": "woodcutting",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Oak Run Reserve",
+    "type": "gather",
+    "target": "oak_log",
+    "amount": 220,
+    "description": "Chop 220 oak logs for the Woodcutters Guild.",
+    "rewards": {
+      "coins": 2950,
+      "xp": 7350,
+      "xp_skill": "woodcutting",
+      "items": {
+        "iron_ore": 59
+      },
+      "reputation": 1150
+    }
+  },
+  {
     "id": "woodcutting_daily_4a",
     "guild": "woodcutting",
     "guild_level_min": 4,
@@ -814,6 +1104,47 @@
         "raw_swordfish": 30
       },
       "reputation": 4500
+    }
+  },
+  {
+    "id": "woodcutting_daily_4f",
+    "guild": "woodcutting",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Maple Batch Reserve",
+    "type": "gather",
+    "target": "maple_log",
+    "amount": 220,
+    "description": "Chop 220 maple logs for the Woodcutters Guild.",
+    "rewards": {
+      "coins": 11500,
+      "xp": 29500,
+      "xp_skill": "woodcutting",
+      "items": {
+        "raw_swordfish": 44,
+        "mithril_ore": 44
+      },
+      "reputation": 5850
+    }
+  },
+  {
+    "id": "woodcutting_daily_4g",
+    "guild": "woodcutting",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Yew Run Reserve",
+    "type": "gather",
+    "target": "yew_log",
+    "amount": 150,
+    "description": "Chop 150 yew logs for the Woodcutters Guild.",
+    "rewards": {
+      "coins": 13500,
+      "xp": 33000,
+      "xp_skill": "woodcutting",
+      "items": {
+        "raw_monkfish": 38
+      },
+      "reputation": 6750
     }
   },
   {
@@ -920,6 +1251,48 @@
     }
   },
   {
+    "id": "woodcutting_daily_7f",
+    "guild": "woodcutting",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Magic Haul Reserve",
+    "type": "gather",
+    "target": "magic_log",
+    "amount": 85,
+    "description": "Chop 85 magic logs for the Woodcutters Guild.",
+    "rewards": {
+      "coins": 30000,
+      "xp": 89500,
+      "xp_skill": "woodcutting",
+      "items": {
+        "raw_shark": 52,
+        "platinum_ore": 30
+      },
+      "reputation": 22500
+    }
+  },
+  {
+    "id": "woodcutting_daily_7g",
+    "guild": "woodcutting",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Redwood Run Reserve",
+    "type": "gather",
+    "target": "redwood_log",
+    "amount": 55,
+    "description": "Chop 55 redwood logs for the Woodcutters Guild.",
+    "rewards": {
+      "coins": 36000,
+      "xp": 101000,
+      "xp_skill": "woodcutting",
+      "items": {
+        "raw_manta_ray": 36,
+        "runite_ore": 29
+      },
+      "reputation": 26000
+    }
+  },
+  {
     "id": "farming_daily_1a",
     "guild": "farming",
     "guild_level_min": 1,
@@ -1022,6 +1395,47 @@
     }
   },
   {
+    "id": "farming_daily_1f",
+    "guild": "farming",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Potato Run Reserve",
+    "type": "gather",
+    "target": "potato",
+    "amount": 40,
+    "description": "Harvest 40 potatoes for the Farming Guild.",
+    "rewards": {
+      "coins": 2400,
+      "xp": 6400,
+      "xp_skill": "farming",
+      "items": {
+        "raw_trout": 48,
+        "copper_ore": 48
+      },
+      "reputation": 1100
+    }
+  },
+  {
+    "id": "farming_daily_1g",
+    "guild": "farming",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Onion Delivery Reserve",
+    "type": "gather",
+    "target": "onion",
+    "amount": 40,
+    "description": "Harvest 40 onions for the Farming Guild.",
+    "rewards": {
+      "coins": 3200,
+      "xp": 8000,
+      "xp_skill": "farming",
+      "items": {
+        "iron_ore": 64
+      },
+      "reputation": 1300
+    }
+  },
+  {
     "id": "farming_daily_4a",
     "guild": "farming",
     "guild_level_min": 4,
@@ -1120,6 +1534,47 @@
         "raw_swordfish": 35
       },
       "reputation": 5000
+    }
+  },
+  {
+    "id": "farming_daily_4f",
+    "guild": "farming",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Strawberry Harvest Reserve",
+    "type": "gather",
+    "target": "strawberry",
+    "amount": 30,
+    "description": "Harvest 30 strawberries for the Farming Guild.",
+    "rewards": {
+      "coins": 12000,
+      "xp": 30000,
+      "xp_skill": "farming",
+      "items": {
+        "raw_swordfish": 45,
+        "mithril_ore": 45
+      },
+      "reputation": 6000
+    }
+  },
+  {
+    "id": "farming_daily_4g",
+    "guild": "farming",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Pumpkin Delivery Reserve",
+    "type": "gather",
+    "target": "pumpkin",
+    "amount": 20,
+    "description": "Harvest 20 pumpkins for the Farming Guild.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 36500,
+      "xp_skill": "farming",
+      "items": {
+        "raw_monkfish": 42
+      },
+      "reputation": 7500
     }
   },
   {
@@ -1226,6 +1681,48 @@
     }
   },
   {
+    "id": "farming_daily_7f",
+    "guild": "farming",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Spirit Herbs Reserve",
+    "type": "gather",
+    "target": "spirit_herb",
+    "amount": 10,
+    "description": "Harvest 10 spirit herbs for the Farming Guild.",
+    "rewards": {
+      "coins": 25000,
+      "xp": 75000,
+      "xp_skill": "farming",
+      "items": {
+        "raw_shark": 44,
+        "platinum_ore": 25
+      },
+      "reputation": 19000
+    }
+  },
+  {
+    "id": "farming_daily_7g",
+    "guild": "farming",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Celestial Bloom Reserve",
+    "type": "gather",
+    "target": "celestial_bloom",
+    "amount": 10,
+    "description": "Harvest 10 celestial blooms for the Farming Guild.",
+    "rewards": {
+      "coins": 41500,
+      "xp": 117000,
+      "xp_skill": "farming",
+      "items": {
+        "raw_manta_ray": 42,
+        "runite_ore": 33
+      },
+      "reputation": 30000
+    }
+  },
+  {
     "id": "firemaking_daily_1a",
     "guild": "firemaking",
     "guild_level_min": 1,
@@ -1325,6 +1822,47 @@
         "maple_log": 60
       },
       "reputation": 1000
+    }
+  },
+  {
+    "id": "firemaking_daily_1f",
+    "guild": "firemaking",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Log Burn Reserve",
+    "type": "craft",
+    "target": "ashes",
+    "amount": 220,
+    "description": "Burn 220 logs for the Firemakers Guild.",
+    "rewards": {
+      "coins": 2200,
+      "xp": 5850,
+      "xp_skill": "firemaking",
+      "items": {
+        "log": 117,
+        "raw_trout": 37
+      },
+      "reputation": 1050
+    }
+  },
+  {
+    "id": "firemaking_daily_1g",
+    "guild": "firemaking",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Oak Pyre Reserve",
+    "type": "craft",
+    "target": "oak_ashes",
+    "amount": 220,
+    "description": "Burn 220 oak logs for the Firemakers Guild.",
+    "rewards": {
+      "coins": 2950,
+      "xp": 7350,
+      "xp_skill": "firemaking",
+      "items": {
+        "oak_log": 117
+      },
+      "reputation": 1150
     }
   },
   {
@@ -1428,6 +1966,47 @@
         "raw_monkfish": 20
       },
       "reputation": 5000
+    }
+  },
+  {
+    "id": "firemaking_daily_4f",
+    "guild": "firemaking",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Yew Inferno Reserve",
+    "type": "craft",
+    "target": "yew_ashes",
+    "amount": 180,
+    "description": "Burn 180 yew logs for the Firemakers Guild.",
+    "rewards": {
+      "coins": 12000,
+      "xp": 30000,
+      "xp_skill": "firemaking",
+      "items": {
+        "yew_log": 90,
+        "raw_lobster": 38
+      },
+      "reputation": 6000
+    }
+  },
+  {
+    "id": "firemaking_daily_4g",
+    "guild": "firemaking",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Magic Pyre Reserve",
+    "type": "craft",
+    "target": "magic_ashes",
+    "amount": 150,
+    "description": "Burn 150 magic logs for the Firemakers Guild.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 37500,
+      "xp_skill": "firemaking",
+      "items": {
+        "magic_log": 90
+      },
+      "reputation": 7500
     }
   },
   {
@@ -1535,6 +2114,47 @@
     }
   },
   {
+    "id": "firemaking_daily_7f",
+    "guild": "firemaking",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Redwood Bonfire Reserve",
+    "type": "craft",
+    "target": "redwood_ashes",
+    "amount": 30,
+    "description": "Burn 30 redwood logs for the Firemakers Guild.",
+    "rewards": {
+      "coins": 31500,
+      "xp": 94500,
+      "xp_skill": "firemaking",
+      "items": {
+        "redwood_log": 95,
+        "raw_shark": 39
+      },
+      "reputation": 23500
+    }
+  },
+  {
+    "id": "firemaking_daily_7g",
+    "guild": "firemaking",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Redwood Reserve Surplus",
+    "type": "craft",
+    "target": "redwood_ashes",
+    "amount": 50,
+    "description": "Stockpile 50 redwood ashes for the guild.",
+    "rewards": {
+      "coins": 37000,
+      "xp": 103000,
+      "xp_skill": "firemaking",
+      "items": {
+        "redwood_log": 147
+      },
+      "reputation": 26500
+    }
+  },
+  {
     "id": "agility_daily_1a",
     "guild": "agility",
     "guild_level_min": 1,
@@ -1616,6 +2236,69 @@
         "coal": 45
       },
       "reputation": 1900
+    }
+  },
+  {
+    "id": "agility_daily_1e",
+    "guild": "agility",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Morning Run Reserve",
+    "type": "sessions",
+    "target": "beginner_course",
+    "amount": 5,
+    "description": "Complete 5 Beginner Course agility sessions for the Agility Guild.",
+    "rewards": {
+      "coins": 7500,
+      "xp": 20000,
+      "xp_skill": "agility",
+      "items": {
+        "raw_trout": 150,
+        "copper_ore": 150
+      },
+      "reputation": 3500
+    }
+  },
+  {
+    "id": "agility_daily_1f",
+    "guild": "agility",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Sprint Training Reserve",
+    "type": "sessions",
+    "target": "novice_course",
+    "amount": 5,
+    "description": "Complete 5 Novice Course agility sessions for the Agility Guild.",
+    "rewards": {
+      "coins": 7500,
+      "xp": 20000,
+      "xp_skill": "agility",
+      "items": {
+        "raw_salmon": 75,
+        "iron_ore": 75
+      },
+      "reputation": 3000
+    }
+  },
+  {
+    "id": "agility_daily_1g",
+    "guild": "agility",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Obstacle Circuit Reserve",
+    "type": "sessions",
+    "target": "apprentice_course",
+    "amount": 5,
+    "description": "Complete 5 Apprentice Course agility sessions for the Agility Guild.",
+    "rewards": {
+      "coins": 7500,
+      "xp": 20000,
+      "xp_skill": "agility",
+      "items": {
+        "raw_tuna": 50,
+        "coal": 67
+      },
+      "reputation": 2650
     }
   },
   {
@@ -1703,6 +2386,69 @@
     }
   },
   {
+    "id": "agility_daily_4e",
+    "guild": "agility",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Endurance Circuit Reserve",
+    "type": "sessions",
+    "target": "advanced_course",
+    "amount": 5,
+    "description": "Complete 5 Advanced Course agility sessions for the Agility Guild.",
+    "rewards": {
+      "coins": 20000,
+      "xp": 50000,
+      "xp_skill": "agility",
+      "items": {
+        "raw_lobster": 75,
+        "mithril_ore": 75
+      },
+      "reputation": 10000
+    }
+  },
+  {
+    "id": "agility_daily_4f",
+    "guild": "agility",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Elite Sprint Reserve",
+    "type": "sessions",
+    "target": "expert_course",
+    "amount": 5,
+    "description": "Complete 5 Expert Course agility sessions for the Agility Guild.",
+    "rewards": {
+      "coins": 20000,
+      "xp": 50000,
+      "xp_skill": "agility",
+      "items": {
+        "raw_swordfish": 50,
+        "adamantite_ore": 33
+      },
+      "reputation": 10000
+    }
+  },
+  {
+    "id": "agility_daily_4g",
+    "guild": "agility",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Advanced Run Reserve",
+    "type": "sessions",
+    "target": "elite_course",
+    "amount": 5,
+    "description": "Complete 5 Elite Course agility sessions for the Agility Guild.",
+    "rewards": {
+      "coins": 19000,
+      "xp": 50000,
+      "xp_skill": "agility",
+      "items": {
+        "raw_monkfish": 38,
+        "yew_log": 19
+      },
+      "reputation": 9400
+    }
+  },
+  {
     "id": "agility_daily_7a",
     "guild": "agility",
     "guild_level_min": 7,
@@ -1784,6 +2530,69 @@
         "runite_ore": 20
       },
       "reputation": 18000
+    }
+  },
+  {
+    "id": "agility_daily_7e",
+    "guild": "agility",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Master Circuit Reserve",
+    "type": "sessions",
+    "target": "master_course",
+    "amount": 5,
+    "description": "Complete 5 Master Course agility sessions for the Agility Guild.",
+    "rewards": {
+      "coins": 100000,
+      "xp": 300000,
+      "xp_skill": "agility",
+      "items": {
+        "raw_shark": 150,
+        "platinum_ore": 100
+      },
+      "reputation": 75000
+    }
+  },
+  {
+    "id": "agility_daily_7f",
+    "guild": "agility",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Champion Run Reserve",
+    "type": "sessions",
+    "target": "veteran_course",
+    "amount": 5,
+    "description": "Complete 5 Veteran Course agility sessions for the Agility Guild.",
+    "rewards": {
+      "coins": 150000,
+      "xp": 450000,
+      "xp_skill": "agility",
+      "items": {
+        "raw_manta_ray": 100,
+        "runite_ore": 100
+      },
+      "reputation": 110000
+    }
+  },
+  {
+    "id": "agility_daily_7g",
+    "guild": "agility",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Legendary Sprint Reserve",
+    "type": "sessions",
+    "target": "champion_course",
+    "amount": 5,
+    "description": "Complete 5 Champion Course agility sessions for the Agility Guild.",
+    "rewards": {
+      "coins": 200000,
+      "xp": 600000,
+      "xp_skill": "agility",
+      "items": {
+        "raw_sea_turtle": 50,
+        "diamond": 10
+      },
+      "reputation": 140000
     }
   },
   {
@@ -1888,6 +2697,48 @@
         "coal": 200
       },
       "reputation": 1100
+    }
+  },
+  {
+    "id": "smithing_daily_1f",
+    "guild": "smithing",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Bronze Batch Reserve",
+    "type": "craft",
+    "target": "bronze_bar",
+    "amount": 120,
+    "description": "Smelt 120 bronze bars for the Smithing Guild.",
+    "rewards": {
+      "coins": 2250,
+      "xp": 6000,
+      "xp_skill": "smithing",
+      "items": {
+        "copper_ore": 150,
+        "tin_ore": 150
+      },
+      "reputation": 1050
+    }
+  },
+  {
+    "id": "smithing_daily_1g",
+    "guild": "smithing",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Iron Run Reserve",
+    "type": "craft",
+    "target": "iron_bar",
+    "amount": 140,
+    "description": "Smelt 140 iron bars for the Smithing Guild.",
+    "rewards": {
+      "coins": 3500,
+      "xp": 8750,
+      "xp_skill": "smithing",
+      "items": {
+        "iron_ore": 175,
+        "coal": 88
+      },
+      "reputation": 1400
     }
   },
   {
@@ -1996,6 +2847,48 @@
     }
   },
   {
+    "id": "smithing_daily_4f",
+    "guild": "smithing",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Mithril Batch Reserve",
+    "type": "craft",
+    "target": "mithril_bar",
+    "amount": 90,
+    "description": "Smelt 90 mithril bars for the Smithing Guild.",
+    "rewards": {
+      "coins": 12000,
+      "xp": 30000,
+      "xp_skill": "smithing",
+      "items": {
+        "mithril_ore": 120,
+        "coal": 180
+      },
+      "reputation": 6000
+    }
+  },
+  {
+    "id": "smithing_daily_4g",
+    "guild": "smithing",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Adamantite Run Reserve",
+    "type": "craft",
+    "target": "adamantite_bar",
+    "amount": 75,
+    "description": "Smelt 75 adamantite bars for the Smithing Guild.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 37500,
+      "xp_skill": "smithing",
+      "items": {
+        "adamantite_ore": 105,
+        "coal": 225
+      },
+      "reputation": 7500
+    }
+  },
+  {
     "id": "smithing_daily_7a",
     "guild": "smithing",
     "guild_level_min": 7,
@@ -2075,6 +2968,69 @@
       "items": {
         "runite_ore": 140,
         "diamond": 2
+      },
+      "reputation": 26000
+    }
+  },
+  {
+    "id": "smithing_daily_7e",
+    "guild": "smithing",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Runite Batch Reserve",
+    "type": "craft",
+    "target": "runite_bar",
+    "amount": 30,
+    "description": "Smelt 30 runite bars for the Smithing Guild.",
+    "rewards": {
+      "coins": 31500,
+      "xp": 94500,
+      "xp_skill": "smithing",
+      "items": {
+        "runite_ore": 71,
+        "coal": 237
+      },
+      "reputation": 23500
+    }
+  },
+  {
+    "id": "smithing_daily_7f",
+    "guild": "smithing",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Runite Reserve Surplus",
+    "type": "craft",
+    "target": "runite_bar",
+    "amount": 55,
+    "description": "Smelt 55 runite bars for the guild vault.",
+    "rewards": {
+      "coins": 44500,
+      "xp": 134000,
+      "xp_skill": "smithing",
+      "items": {
+        "runite_ore": 126,
+        "coal": 416
+      },
+      "reputation": 32500
+    }
+  },
+  {
+    "id": "smithing_daily_7g",
+    "guild": "smithing",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Platinum Vault Reserve",
+    "type": "craft",
+    "target": "platinum_bar",
+    "amount": 95,
+    "description": "Fill the vault with 95 platinum bars.",
+    "rewards": {
+      "coins": 33500,
+      "xp": 99500,
+      "xp_skill": "smithing",
+      "items": {
+        "platinum_ore": 199,
+        "coal": 460
       },
       "reputation": 26000
     }
@@ -2180,6 +3136,46 @@
     }
   },
   {
+    "id": "cooking_daily_1f",
+    "guild": "cooking",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Shrimp Batch Reserve",
+    "type": "craft",
+    "target": "shrimp",
+    "amount": 150,
+    "description": "Cook 150 shrimp for the Cooking Guild.",
+    "rewards": {
+      "coins": 2250,
+      "xp": 6000,
+      "xp_skill": "cooking",
+      "items": {
+        "raw_shrimp": 180
+      },
+      "reputation": 1050
+    }
+  },
+  {
+    "id": "cooking_daily_1g",
+    "guild": "cooking",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Trout Feast Reserve",
+    "type": "craft",
+    "target": "trout",
+    "amount": 150,
+    "description": "Cook 150 trout for the Cooking Guild.",
+    "rewards": {
+      "coins": 3000,
+      "xp": 7500,
+      "xp_skill": "cooking",
+      "items": {
+        "raw_trout": 180
+      },
+      "reputation": 1200
+    }
+  },
+  {
     "id": "cooking_daily_4a",
     "guild": "cooking",
     "guild_level_min": 4,
@@ -2280,6 +3276,46 @@
     }
   },
   {
+    "id": "cooking_daily_4f",
+    "guild": "cooking",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Lobster Feast Reserve",
+    "type": "craft",
+    "target": "lobster",
+    "amount": 120,
+    "description": "Cook 120 lobster for the Cooking Guild.",
+    "rewards": {
+      "coins": 12000,
+      "xp": 30000,
+      "xp_skill": "cooking",
+      "items": {
+        "raw_lobster": 150
+      },
+      "reputation": 6000
+    }
+  },
+  {
+    "id": "cooking_daily_4g",
+    "guild": "cooking",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Swordfish Run Reserve",
+    "type": "craft",
+    "target": "swordfish",
+    "amount": 90,
+    "description": "Cook 90 swordfish for the Cooking Guild.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 37500,
+      "xp_skill": "cooking",
+      "items": {
+        "raw_swordfish": 120
+      },
+      "reputation": 7500
+    }
+  },
+  {
     "id": "cooking_daily_7a",
     "guild": "cooking",
     "guild_level_min": 7,
@@ -2357,6 +3393,66 @@
         "raw_shark": 130
       },
       "reputation": 17000
+    }
+  },
+  {
+    "id": "cooking_daily_7e",
+    "guild": "cooking",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Shark Feast Reserve",
+    "type": "craft",
+    "target": "shark",
+    "amount": 65,
+    "description": "Cook 65 shark for the Cooking Guild.",
+    "rewards": {
+      "coins": 31000,
+      "xp": 93000,
+      "xp_skill": "cooking",
+      "items": {
+        "raw_shark": 101
+      },
+      "reputation": 23000
+    }
+  },
+  {
+    "id": "cooking_daily_7f",
+    "guild": "cooking",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Manta Banquet Reserve",
+    "type": "craft",
+    "target": "manta_ray",
+    "amount": 50,
+    "description": "Cook 50 manta ray for the Cooking Guild.",
+    "rewards": {
+      "coins": 38000,
+      "xp": 106000,
+      "xp_skill": "cooking",
+      "items": {
+        "raw_manta_ray": 83
+      },
+      "reputation": 27500
+    }
+  },
+  {
+    "id": "cooking_daily_7g",
+    "guild": "cooking",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Sea Turtle Feast Reserve",
+    "type": "craft",
+    "target": "sea_turtle",
+    "amount": 30,
+    "description": "Cook 30 sea turtle for the Cooking Guild.",
+    "rewards": {
+      "coins": 40000,
+      "xp": 114000,
+      "xp_skill": "cooking",
+      "items": {
+        "raw_sea_turtle": 50
+      },
+      "reputation": 28500
     }
   },
   {
@@ -2462,6 +3558,47 @@
     }
   },
   {
+    "id": "fletching_daily_1f",
+    "guild": "fletching",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Arrow Shafts Reserve",
+    "type": "craft",
+    "target": "arrow_shaft",
+    "amount": 300,
+    "description": "Fletch 300 arrow shafts for the Fletchers Guild.",
+    "rewards": {
+      "coins": 2250,
+      "xp": 6000,
+      "xp_skill": "fletching",
+      "items": {
+        "log": 120
+      },
+      "reputation": 1050
+    }
+  },
+  {
+    "id": "fletching_daily_1g",
+    "guild": "fletching",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Bronze Volley Reserve",
+    "type": "craft",
+    "target": "bronze_arrow",
+    "amount": 220,
+    "description": "Fletch 220 bronze arrows for the Fletchers Guild.",
+    "rewards": {
+      "coins": 2950,
+      "xp": 7350,
+      "xp_skill": "fletching",
+      "items": {
+        "log": 117,
+        "copper_ore": 44
+      },
+      "reputation": 1150
+    }
+  },
+  {
     "id": "fletching_daily_4a",
     "guild": "fletching",
     "guild_level_min": 4,
@@ -2563,6 +3700,47 @@
     }
   },
   {
+    "id": "fletching_daily_4f",
+    "guild": "fletching",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Mithril Volley Reserve",
+    "type": "craft",
+    "target": "mithril_arrow",
+    "amount": 220,
+    "description": "Fletch 220 mithril arrows for the Fletchers Guild.",
+    "rewards": {
+      "coins": 11500,
+      "xp": 29500,
+      "xp_skill": "fletching",
+      "items": {
+        "maple_log": 88,
+        "mithril_ore": 44
+      },
+      "reputation": 5850
+    }
+  },
+  {
+    "id": "fletching_daily_4g",
+    "guild": "fletching",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Adamantite Quiver Reserve",
+    "type": "craft",
+    "target": "adamantite_arrow",
+    "amount": 220,
+    "description": "Fletch 220 adamantite arrows for the Fletchers Guild.",
+    "rewards": {
+      "coins": 14500,
+      "xp": 36500,
+      "xp_skill": "fletching",
+      "items": {
+        "yew_log": 73
+      },
+      "reputation": 7350
+    }
+  },
+  {
     "id": "fletching_daily_7a",
     "guild": "fletching",
     "guild_level_min": 7,
@@ -2643,6 +3821,68 @@
         "diamond": 2
       },
       "reputation": 22000
+    }
+  },
+  {
+    "id": "fletching_daily_7e",
+    "guild": "fletching",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Yew Longbows Reserve",
+    "type": "craft",
+    "target": "yew_longbow",
+    "amount": 85,
+    "description": "Fletch 85 yew longbows for the Fletchers Guild.",
+    "rewards": {
+      "coins": 29500,
+      "xp": 88000,
+      "xp_skill": "fletching",
+      "items": {
+        "yew_log": 88,
+        "runite_ore": 29
+      },
+      "reputation": 22000
+    }
+  },
+  {
+    "id": "fletching_daily_7f",
+    "guild": "fletching",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Magic Longbows Reserve",
+    "type": "craft",
+    "target": "magic_longbow",
+    "amount": 65,
+    "description": "Fletch 65 magic longbows for the Fletchers Guild.",
+    "rewards": {
+      "coins": 37000,
+      "xp": 103000,
+      "xp_skill": "fletching",
+      "items": {
+        "magic_log": 74,
+        "runite_ore": 37
+      },
+      "reputation": 26500
+    }
+  },
+  {
+    "id": "fletching_daily_7g",
+    "guild": "fletching",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Runite Quiver Reserve",
+    "type": "craft",
+    "target": "runite_arrow",
+    "amount": 660,
+    "description": "Fletch 660 runite arrows for the guild vault.",
+    "rewards": {
+      "coins": 33000,
+      "xp": 98000,
+      "xp_skill": "fletching",
+      "items": {
+        "magic_log": 90
+      },
+      "reputation": 25500
     }
   },
   {
@@ -2744,6 +3984,46 @@
         "gold_ore": 60
       },
       "reputation": 1000
+    }
+  },
+  {
+    "id": "crafting_daily_1f",
+    "guild": "crafting",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Silver Rings Reserve",
+    "type": "craft",
+    "target": "silver_ring",
+    "amount": 75,
+    "description": "Craft 75 silver rings for the Crafters Guild.",
+    "rewards": {
+      "coins": 2250,
+      "xp": 6000,
+      "xp_skill": "crafting",
+      "items": {
+        "silver_ore": 90
+      },
+      "reputation": 1050
+    }
+  },
+  {
+    "id": "crafting_daily_1g",
+    "guild": "crafting",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Gold Rings Reserve",
+    "type": "craft",
+    "target": "gold_ring",
+    "amount": 75,
+    "description": "Craft 75 gold rings for the Crafters Guild.",
+    "rewards": {
+      "coins": 3000,
+      "xp": 7500,
+      "xp_skill": "crafting",
+      "items": {
+        "gold_ore": 90
+      },
+      "reputation": 1200
     }
   },
   {
@@ -2850,6 +4130,48 @@
     }
   },
   {
+    "id": "crafting_daily_4f",
+    "guild": "crafting",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Emerald Rings Reserve",
+    "type": "craft",
+    "target": "gold_emerald_ring",
+    "amount": 60,
+    "description": "Craft 60 gold emerald rings for the Crafters Guild.",
+    "rewards": {
+      "coins": 12000,
+      "xp": 30000,
+      "xp_skill": "crafting",
+      "items": {
+        "gold_ore": 75,
+        "emerald": 75
+      },
+      "reputation": 6000
+    }
+  },
+  {
+    "id": "crafting_daily_4g",
+    "guild": "crafting",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Ruby Gems Reserve",
+    "type": "craft",
+    "target": "gold_ruby_ring",
+    "amount": 60,
+    "description": "Craft 60 gold ruby rings for the Crafters Guild.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 37500,
+      "xp_skill": "crafting",
+      "items": {
+        "gold_ore": 75,
+        "ruby": 75
+      },
+      "reputation": 7500
+    }
+  },
+  {
     "id": "crafting_daily_7a",
     "guild": "crafting",
     "guild_level_min": 7,
@@ -2931,6 +4253,69 @@
         "diamond": 40
       },
       "reputation": 17000
+    }
+  },
+  {
+    "id": "crafting_daily_7e",
+    "guild": "crafting",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Platinum Diamonds Reserve",
+    "type": "craft",
+    "target": "platinum_diamond_ring",
+    "amount": 55,
+    "description": "Craft 55 platinum diamond rings for the Crafters Guild.",
+    "rewards": {
+      "coins": 30500,
+      "xp": 91500,
+      "xp_skill": "crafting",
+      "items": {
+        "platinum_ore": 76,
+        "diamond": 76
+      },
+      "reputation": 23000
+    }
+  },
+  {
+    "id": "crafting_daily_7f",
+    "guild": "crafting",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Diamond Necklaces Reserve",
+    "type": "craft",
+    "target": "platinum_diamond_necklace",
+    "amount": 55,
+    "description": "Craft 55 platinum diamond necklaces for the Crafters Guild.",
+    "rewards": {
+      "coins": 38000,
+      "xp": 107000,
+      "xp_skill": "crafting",
+      "items": {
+        "platinum_ore": 76,
+        "diamond": 76
+      },
+      "reputation": 27500
+    }
+  },
+  {
+    "id": "crafting_daily_7g",
+    "guild": "crafting",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Gem Vault Reserve",
+    "type": "craft",
+    "target": "platinum_diamond_ring",
+    "amount": 95,
+    "description": "Fill the gem vault with 95 platinum diamond rings.",
+    "rewards": {
+      "coins": 42000,
+      "xp": 121000,
+      "xp_skill": "crafting",
+      "items": {
+        "diamond": 121,
+        "platinum_ore": 121
+      },
+      "reputation": 30000
     }
   },
   {
@@ -3034,6 +4419,46 @@
     }
   },
   {
+    "id": "runecrafting_daily_1f",
+    "guild": "runecrafting",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Air Runes Reserve",
+    "type": "craft",
+    "target": "air_rune",
+    "amount": 450,
+    "description": "Craft 450 air runes for the Runecrafting Guild.",
+    "rewards": {
+      "coins": 2250,
+      "xp": 6000,
+      "xp_skill": "runecrafting",
+      "items": {
+        "rune_essence": 540
+      },
+      "reputation": 1050
+    }
+  },
+  {
+    "id": "runecrafting_daily_1g",
+    "guild": "runecrafting",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Water Runes Reserve",
+    "type": "craft",
+    "target": "water_rune",
+    "amount": 450,
+    "description": "Craft 450 water runes for the Runecrafting Guild.",
+    "rewards": {
+      "coins": 3000,
+      "xp": 7500,
+      "xp_skill": "runecrafting",
+      "items": {
+        "rune_essence": 540
+      },
+      "reputation": 1200
+    }
+  },
+  {
     "id": "runecrafting_daily_4a",
     "guild": "runecrafting",
     "guild_level_min": 4,
@@ -3134,6 +4559,46 @@
     }
   },
   {
+    "id": "runecrafting_daily_4f",
+    "guild": "runecrafting",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Chaos Batch Reserve",
+    "type": "craft",
+    "target": "chaos_rune",
+    "amount": 380,
+    "description": "Craft 380 chaos runes for the Runecrafting Guild.",
+    "rewards": {
+      "coins": 12000,
+      "xp": 30500,
+      "xp_skill": "runecrafting",
+      "items": {
+        "rune_essence": 456
+      },
+      "reputation": 6100
+    }
+  },
+  {
+    "id": "runecrafting_daily_4g",
+    "guild": "runecrafting",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Death Batch Reserve",
+    "type": "craft",
+    "target": "death_rune",
+    "amount": 380,
+    "description": "Craft 380 death runes for the Runecrafting Guild.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 38000,
+      "xp_skill": "runecrafting",
+      "items": {
+        "rune_essence": 456
+      },
+      "reputation": 7600
+    }
+  },
+  {
     "id": "runecrafting_daily_7a",
     "guild": "runecrafting",
     "guild_level_min": 7,
@@ -3212,6 +4677,67 @@
         "rune_essence": 900
       },
       "reputation": 18000
+    }
+  },
+  {
+    "id": "runecrafting_daily_7e",
+    "guild": "runecrafting",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Blood Vault Reserve",
+    "type": "craft",
+    "target": "blood_rune",
+    "amount": 390,
+    "description": "Fill the blood rune vault for the guild.",
+    "rewards": {
+      "coins": 30000,
+      "xp": 89500,
+      "xp_skill": "runecrafting",
+      "items": {
+        "rune_essence": 1076
+      },
+      "reputation": 22500
+    }
+  },
+  {
+    "id": "runecrafting_daily_7f",
+    "guild": "runecrafting",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Arcane Reserve Surplus",
+    "type": "craft",
+    "target": "blood_rune",
+    "amount": 650,
+    "description": "Stockpile 650 blood runes for the arcane vault.",
+    "rewards": {
+      "coins": 41500,
+      "xp": 119000,
+      "xp_skill": "runecrafting",
+      "items": {
+        "rune_essence": 1789
+      },
+      "reputation": 30000
+    }
+  },
+  {
+    "id": "runecrafting_daily_7g",
+    "guild": "runecrafting",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Grand Stockpile Reserve",
+    "type": "craft",
+    "target": "blood_rune",
+    "amount": 980,
+    "description": "Deliver 980 blood runes to the grand vault.",
+    "rewards": {
+      "coins": 52500,
+      "xp": 150000,
+      "xp_skill": "runecrafting",
+      "items": {
+        "rune_essence": 2701,
+        "diamond": 3
+      },
+      "reputation": 39000
     }
   },
   {
@@ -3317,6 +4843,46 @@
     }
   },
   {
+    "id": "herblore_daily_1f",
+    "guild": "herblore",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Attack Brews Reserve",
+    "type": "craft",
+    "target": "attack_brew",
+    "amount": 45,
+    "description": "Brew 45 attack brews for the Herblore Guild.",
+    "rewards": {
+      "coins": 2250,
+      "xp": 6000,
+      "xp_skill": "herblore",
+      "items": {
+        "potato": 120
+      },
+      "reputation": 1050
+    }
+  },
+  {
+    "id": "herblore_daily_1g",
+    "guild": "herblore",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Defence Brews Reserve",
+    "type": "craft",
+    "target": "defense_brew",
+    "amount": 45,
+    "description": "Brew 45 defence brews for the Herblore Guild.",
+    "rewards": {
+      "coins": 3000,
+      "xp": 7500,
+      "xp_skill": "herblore",
+      "items": {
+        "cabbage": 120
+      },
+      "reputation": 1200
+    }
+  },
+  {
     "id": "herblore_daily_4a",
     "guild": "herblore",
     "guild_level_min": 4,
@@ -3399,6 +4965,67 @@
     }
   },
   {
+    "id": "herblore_daily_4i",
+    "guild": "herblore",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Ranging Potions Reserve",
+    "type": "craft",
+    "target": "ranging_potion",
+    "amount": 45,
+    "description": "Brew 45 ranging potions for the Herblore Guild.",
+    "rewards": {
+      "coins": 12000,
+      "xp": 30000,
+      "xp_skill": "herblore",
+      "items": {
+        "raw_lobster": 45,
+        "mithril_ore": 30
+      },
+      "reputation": 6000
+    }
+  },
+  {
+    "id": "herblore_daily_4j",
+    "guild": "herblore",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Magic Potions Reserve",
+    "type": "craft",
+    "target": "magic_potion",
+    "amount": 45,
+    "description": "Brew 45 magic potions for the Herblore Guild.",
+    "rewards": {
+      "coins": 15000,
+      "xp": 37500,
+      "xp_skill": "herblore",
+      "items": {
+        "raw_swordfish": 38
+      },
+      "reputation": 7500
+    }
+  },
+  {
+    "id": "herblore_daily_4k",
+    "guild": "herblore",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Super Strength Reserve",
+    "type": "craft",
+    "target": "super_strength_potion",
+    "amount": 45,
+    "description": "Brew 45 super strength potions for the Herblore Guild.",
+    "rewards": {
+      "coins": 16500,
+      "xp": 40500,
+      "xp_skill": "herblore",
+      "items": {
+        "raw_monkfish": 38
+      },
+      "reputation": 8250
+    }
+  },
+  {
     "id": "herblore_daily_4d",
     "guild": "herblore",
     "guild_level_min": 7,
@@ -3476,6 +5103,66 @@
         "adamantite_ore": 28
       },
       "reputation": 6200
+    }
+  },
+  {
+    "id": "herblore_daily_4l",
+    "guild": "herblore",
+    "guild_level_min": 7,
+    "guild_level_max": 8,
+    "name": "Super Ranging Reserve",
+    "type": "craft",
+    "target": "super_ranging_potion",
+    "amount": 45,
+    "description": "Brew 45 super ranging potions for the Herblore Guild.",
+    "rewards": {
+      "coins": 18000,
+      "xp": 45000,
+      "xp_skill": "herblore",
+      "items": {
+        "raw_shark": 30
+      },
+      "reputation": 9000
+    }
+  },
+  {
+    "id": "herblore_daily_4m",
+    "guild": "herblore",
+    "guild_level_min": 7,
+    "guild_level_max": 8,
+    "name": "Super Magic Reserve",
+    "type": "craft",
+    "target": "super_magic_potion",
+    "amount": 45,
+    "description": "Brew 45 super magic potions for the Herblore Guild.",
+    "rewards": {
+      "coins": 19500,
+      "xp": 48000,
+      "xp_skill": "herblore",
+      "items": {
+        "adamantite_ore": 38
+      },
+      "reputation": 9750
+    }
+  },
+  {
+    "id": "herblore_daily_4n",
+    "guild": "herblore",
+    "guild_level_min": 7,
+    "guild_level_max": 8,
+    "name": "Super Attack Batch Reserve",
+    "type": "craft",
+    "target": "super_attack_potion",
+    "amount": 45,
+    "description": "Brew 45 super attack potions for the Herblore Guild.",
+    "rewards": {
+      "coins": 18000,
+      "xp": 43500,
+      "xp_skill": "herblore",
+      "items": {
+        "raw_shark": 33
+      },
+      "reputation": 8700
     }
   },
   {
@@ -3563,6 +5250,69 @@
     }
   },
   {
+    "id": "herblore_daily_7e",
+    "guild": "herblore",
+    "guild_level_min": 9,
+    "guild_level_max": 10,
+    "name": "Overload Batch Reserve",
+    "type": "craft",
+    "target": "overload_potion",
+    "amount": 40,
+    "description": "Brew 40 overload potions for the Herblore Guild.",
+    "rewards": {
+      "coins": 32000,
+      "xp": 96000,
+      "xp_skill": "herblore",
+      "items": {
+        "raw_shark": 48,
+        "platinum_ore": 32
+      },
+      "reputation": 24000
+    }
+  },
+  {
+    "id": "herblore_daily_7f",
+    "guild": "herblore",
+    "guild_level_min": 9,
+    "guild_level_max": 10,
+    "name": "Overload Reserve Surplus",
+    "type": "craft",
+    "target": "overload_potion",
+    "amount": 65,
+    "description": "Brew 65 overload potions for the guild vault.",
+    "rewards": {
+      "coins": 43500,
+      "xp": 124000,
+      "xp_skill": "herblore",
+      "items": {
+        "raw_manta_ray": 31,
+        "runite_ore": 31
+      },
+      "reputation": 31000
+    }
+  },
+  {
+    "id": "herblore_daily_7g",
+    "guild": "herblore",
+    "guild_level_min": 9,
+    "guild_level_max": 10,
+    "name": "Grand Stockpile Reserve",
+    "type": "craft",
+    "target": "overload_potion",
+    "amount": 100,
+    "description": "Brew 100 overload potions for the grand vault.",
+    "rewards": {
+      "coins": 51500,
+      "xp": 147000,
+      "xp_skill": "herblore",
+      "items": {
+        "diamond": 4,
+        "raw_sea_turtle": 22
+      },
+      "reputation": 38000
+    }
+  },
+  {
     "id": "warriors_daily_1a",
     "guild": "warriors",
     "guild_level_min": 1,
@@ -3644,6 +5394,69 @@
         "raw_tuna": 25
       },
       "reputation": 1800
+    }
+  },
+  {
+    "id": "warriors_daily_1e",
+    "guild": "warriors",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "First Skirmish II",
+    "type": "kill",
+    "target": "any",
+    "amount": 90,
+    "description": "Defeat 90 enemies in melee combat for the Warriors Guild.",
+    "rewards": {
+      "coins": 3000,
+      "xp": 7500,
+      "xp_skill": "attack",
+      "items": {
+        "copper_ore": 60,
+        "raw_trout": 45
+      },
+      "reputation": 1200
+    }
+  },
+  {
+    "id": "warriors_daily_1f",
+    "guild": "warriors",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Daily Raid II",
+    "type": "kill",
+    "target": "any",
+    "amount": 170,
+    "description": "Defeat 170 enemies in melee combat for the Warriors Guild.",
+    "rewards": {
+      "coins": 5100,
+      "xp": 12000,
+      "xp_skill": "strength",
+      "items": {
+        "iron_ore": 68,
+        "raw_salmon": 42
+      },
+      "reputation": 1850
+    }
+  },
+  {
+    "id": "warriors_daily_1g",
+    "guild": "warriors",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Warrior's Duty II",
+    "type": "kill",
+    "target": "any",
+    "amount": 220,
+    "description": "Defeat 220 enemies in melee combat for the Warriors Guild.",
+    "rewards": {
+      "coins": 6600,
+      "xp": 14500,
+      "xp_skill": "defense",
+      "items": {
+        "coal": 73,
+        "oak_log": 29
+      },
+      "reputation": 2200
     }
   },
   {
@@ -3731,6 +5544,69 @@
     }
   },
   {
+    "id": "warriors_daily_4e",
+    "guild": "warriors",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Elite Raid II",
+    "type": "kill",
+    "target": "any",
+    "amount": 340,
+    "description": "Defeat 340 enemies in melee combat for the Warriors Guild.",
+    "rewards": {
+      "coins": 13500,
+      "xp": 34000,
+      "xp_skill": "strength",
+      "items": {
+        "mithril_ore": 51,
+        "raw_lobster": 51
+      },
+      "reputation": 6800
+    }
+  },
+  {
+    "id": "warriors_daily_4f",
+    "guild": "warriors",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Veteran's Duty II",
+    "type": "kill",
+    "target": "any",
+    "amount": 520,
+    "description": "Defeat 520 enemies in melee combat for the Warriors Guild.",
+    "rewards": {
+      "coins": 18000,
+      "xp": 44500,
+      "xp_skill": "attack",
+      "items": {
+        "adamantite_ore": 30,
+        "raw_swordfish": 37
+      },
+      "reputation": 8900
+    }
+  },
+  {
+    "id": "warriors_daily_4g",
+    "guild": "warriors",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Champion's March II",
+    "type": "kill",
+    "target": "any",
+    "amount": 750,
+    "description": "Defeat 750 enemies in melee combat for the Warriors Guild.",
+    "rewards": {
+      "coins": 22500,
+      "xp": 57000,
+      "xp_skill": "defense",
+      "items": {
+        "gold_ore": 38,
+        "raw_monkfish": 38
+      },
+      "reputation": 11000
+    }
+  },
+  {
     "id": "warriors_daily_7a",
     "guild": "warriors",
     "guild_level_min": 7,
@@ -3812,6 +5688,69 @@
         "raw_manta_ray": 20
       },
       "reputation": 18000
+    }
+  },
+  {
+    "id": "warriors_daily_7e",
+    "guild": "warriors",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Warlord's Raid II",
+    "type": "kill",
+    "target": "any",
+    "amount": 750,
+    "description": "Defeat 750 enemies in melee combat for the Warriors Guild.",
+    "rewards": {
+      "coins": 30000,
+      "xp": 90000,
+      "xp_skill": "attack",
+      "items": {
+        "platinum_ore": 38,
+        "raw_shark": 45
+      },
+      "reputation": 22500
+    }
+  },
+  {
+    "id": "warriors_daily_7f",
+    "guild": "warriors",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Conqueror's March II",
+    "type": "kill",
+    "target": "any",
+    "amount": 1400,
+    "description": "Defeat 1400 enemies in melee combat for the Warriors Guild.",
+    "rewards": {
+      "coins": 49000,
+      "xp": 140000,
+      "xp_skill": "strength",
+      "items": {
+        "runite_ore": 35,
+        "raw_manta_ray": 35
+      },
+      "reputation": 35000
+    }
+  },
+  {
+    "id": "warriors_daily_7g",
+    "guild": "warriors",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Grand Battle II",
+    "type": "kill",
+    "target": "any",
+    "amount": 1800,
+    "description": "Defeat 1800 enemies in melee combat for the Warriors Guild.",
+    "rewards": {
+      "coins": 57000,
+      "xp": 165000,
+      "xp_skill": "defense",
+      "items": {
+        "diamond": 4,
+        "raw_sea_turtle": 22
+      },
+      "reputation": 42000
     }
   },
   {
@@ -3899,6 +5838,69 @@
     }
   },
   {
+    "id": "archers_daily_1e",
+    "guild": "archers",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Target Practice II",
+    "type": "kill",
+    "target": "any",
+    "amount": 90,
+    "description": "Defeat 90 enemies using ranged combat for the Archers Guild.",
+    "rewards": {
+      "coins": 3000,
+      "xp": 7500,
+      "xp_skill": "ranged",
+      "items": {
+        "log": 75,
+        "raw_trout": 45
+      },
+      "reputation": 1200
+    }
+  },
+  {
+    "id": "archers_daily_1f",
+    "guild": "archers",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Range Duty II",
+    "type": "kill",
+    "target": "any",
+    "amount": 170,
+    "description": "Defeat 170 enemies using ranged combat for the Archers Guild.",
+    "rewards": {
+      "coins": 5100,
+      "xp": 12000,
+      "xp_skill": "ranged",
+      "items": {
+        "oak_log": 68,
+        "raw_salmon": 42
+      },
+      "reputation": 1850
+    }
+  },
+  {
+    "id": "archers_daily_1g",
+    "guild": "archers",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Daily Hunt II",
+    "type": "kill",
+    "target": "any",
+    "amount": 220,
+    "description": "Defeat 220 enemies using ranged combat for the Archers Guild.",
+    "rewards": {
+      "coins": 6600,
+      "xp": 14500,
+      "xp_skill": "ranged",
+      "items": {
+        "willow_log": 44,
+        "raw_tuna": 37
+      },
+      "reputation": 2200
+    }
+  },
+  {
     "id": "archers_daily_4a",
     "guild": "archers",
     "guild_level_min": 4,
@@ -3980,6 +5982,69 @@
         "raw_swordfish": 25
       },
       "reputation": 5000
+    }
+  },
+  {
+    "id": "archers_daily_4e",
+    "guild": "archers",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Sharpshooter Raid II",
+    "type": "kill",
+    "target": "any",
+    "amount": 340,
+    "description": "Defeat 340 enemies using ranged combat for the Archers Guild.",
+    "rewards": {
+      "coins": 13500,
+      "xp": 34000,
+      "xp_skill": "ranged",
+      "items": {
+        "maple_log": 51,
+        "raw_lobster": 51
+      },
+      "reputation": 6800
+    }
+  },
+  {
+    "id": "archers_daily_4f",
+    "guild": "archers",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Eagle Eye Duty II",
+    "type": "kill",
+    "target": "any",
+    "amount": 520,
+    "description": "Defeat 520 enemies using ranged combat for the Archers Guild.",
+    "rewards": {
+      "coins": 18000,
+      "xp": 44500,
+      "xp_skill": "ranged",
+      "items": {
+        "yew_log": 37,
+        "raw_swordfish": 37
+      },
+      "reputation": 8900
+    }
+  },
+  {
+    "id": "archers_daily_4g",
+    "guild": "archers",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Phantom March II",
+    "type": "kill",
+    "target": "any",
+    "amount": 750,
+    "description": "Defeat 750 enemies using ranged combat for the Archers Guild.",
+    "rewards": {
+      "coins": 22500,
+      "xp": 57000,
+      "xp_skill": "ranged",
+      "items": {
+        "magic_log": 30,
+        "raw_monkfish": 38
+      },
+      "reputation": 11000
     }
   },
   {
@@ -4067,6 +6132,69 @@
     }
   },
   {
+    "id": "archers_daily_7e",
+    "guild": "archers",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Sniper Raid II",
+    "type": "kill",
+    "target": "any",
+    "amount": 750,
+    "description": "Defeat 750 enemies using ranged combat for the Archers Guild.",
+    "rewards": {
+      "coins": 30000,
+      "xp": 90000,
+      "xp_skill": "ranged",
+      "items": {
+        "redwood_log": 30,
+        "raw_shark": 45
+      },
+      "reputation": 22500
+    }
+  },
+  {
+    "id": "archers_daily_7f",
+    "guild": "archers",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Hawkeye March II",
+    "type": "kill",
+    "target": "any",
+    "amount": 1400,
+    "description": "Defeat 1400 enemies using ranged combat for the Archers Guild.",
+    "rewards": {
+      "coins": 49000,
+      "xp": 140000,
+      "xp_skill": "ranged",
+      "items": {
+        "runite_ore": 35,
+        "raw_manta_ray": 35
+      },
+      "reputation": 35000
+    }
+  },
+  {
+    "id": "archers_daily_7g",
+    "guild": "archers",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Grand Hunt II",
+    "type": "kill",
+    "target": "any",
+    "amount": 1800,
+    "description": "Defeat 1800 enemies using ranged combat for the Archers Guild.",
+    "rewards": {
+      "coins": 57000,
+      "xp": 165000,
+      "xp_skill": "ranged",
+      "items": {
+        "diamond": 4,
+        "magic_log": 60
+      },
+      "reputation": 42000
+    }
+  },
+  {
     "id": "mages_daily_1a",
     "guild": "mages",
     "guild_level_min": 1,
@@ -4148,6 +6276,69 @@
         "raw_tuna": 25
       },
       "reputation": 1800
+    }
+  },
+  {
+    "id": "mages_daily_1e",
+    "guild": "mages",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Spell Practice II",
+    "type": "kill",
+    "target": "any",
+    "amount": 90,
+    "description": "Defeat 90 enemies using magic for the Mages Guild.",
+    "rewards": {
+      "coins": 3000,
+      "xp": 7500,
+      "xp_skill": "magic",
+      "items": {
+        "air_rune": 120,
+        "raw_trout": 45
+      },
+      "reputation": 1200
+    }
+  },
+  {
+    "id": "mages_daily_1f",
+    "guild": "mages",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Arcane Duty II",
+    "type": "kill",
+    "target": "any",
+    "amount": 170,
+    "description": "Defeat 170 enemies using magic for the Mages Guild.",
+    "rewards": {
+      "coins": 5100,
+      "xp": 12000,
+      "xp_skill": "magic",
+      "items": {
+        "earth_rune": 170,
+        "raw_salmon": 42
+      },
+      "reputation": 1850
+    }
+  },
+  {
+    "id": "mages_daily_1g",
+    "guild": "mages",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Daily Spellwork II",
+    "type": "kill",
+    "target": "any",
+    "amount": 220,
+    "description": "Defeat 220 enemies using magic for the Mages Guild.",
+    "rewards": {
+      "coins": 6600,
+      "xp": 14500,
+      "xp_skill": "magic",
+      "items": {
+        "fire_rune": 176,
+        "coal": 59
+      },
+      "reputation": 2200
     }
   },
   {
@@ -4235,6 +6426,69 @@
     }
   },
   {
+    "id": "mages_daily_4e",
+    "guild": "mages",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Warlock Raid II",
+    "type": "kill",
+    "target": "any",
+    "amount": 340,
+    "description": "Defeat 340 enemies using magic for the Mages Guild.",
+    "rewards": {
+      "coins": 13500,
+      "xp": 34000,
+      "xp_skill": "magic",
+      "items": {
+        "death_rune": 170,
+        "raw_lobster": 42
+      },
+      "reputation": 6800
+    }
+  },
+  {
+    "id": "mages_daily_4f",
+    "guild": "mages",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Archmage Duty II",
+    "type": "kill",
+    "target": "any",
+    "amount": 520,
+    "description": "Defeat 520 enemies using magic for the Mages Guild.",
+    "rewards": {
+      "coins": 18000,
+      "xp": 44500,
+      "xp_skill": "magic",
+      "items": {
+        "blood_rune": 149,
+        "raw_swordfish": 37
+      },
+      "reputation": 8900
+    }
+  },
+  {
+    "id": "mages_daily_4g",
+    "guild": "mages",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Grand Spellwork II",
+    "type": "kill",
+    "target": "any",
+    "amount": 750,
+    "description": "Defeat 750 enemies using magic for the Mages Guild.",
+    "rewards": {
+      "coins": 22500,
+      "xp": 57000,
+      "xp_skill": "magic",
+      "items": {
+        "blood_rune": 300,
+        "raw_monkfish": 38
+      },
+      "reputation": 11000
+    }
+  },
+  {
     "id": "mages_daily_7a",
     "guild": "mages",
     "guild_level_min": 7,
@@ -4316,6 +6570,69 @@
         "raw_manta_ray": 20
       },
       "reputation": 18000
+    }
+  },
+  {
+    "id": "mages_daily_7e",
+    "guild": "mages",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Lich Raid II",
+    "type": "kill",
+    "target": "any",
+    "amount": 750,
+    "description": "Defeat 750 enemies using magic for the Mages Guild.",
+    "rewards": {
+      "coins": 30000,
+      "xp": 90000,
+      "xp_skill": "magic",
+      "items": {
+        "blood_rune": 450,
+        "raw_shark": 38
+      },
+      "reputation": 22500
+    }
+  },
+  {
+    "id": "mages_daily_7f",
+    "guild": "mages",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Grand Magus Duty II",
+    "type": "kill",
+    "target": "any",
+    "amount": 1400,
+    "description": "Defeat 1400 enemies using magic for the Mages Guild.",
+    "rewards": {
+      "coins": 49000,
+      "xp": 140000,
+      "xp_skill": "magic",
+      "items": {
+        "blood_rune": 875,
+        "raw_manta_ray": 35
+      },
+      "reputation": 35000
+    }
+  },
+  {
+    "id": "mages_daily_7g",
+    "guild": "mages",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Arcane Conquest II",
+    "type": "kill",
+    "target": "any",
+    "amount": 1800,
+    "description": "Defeat 1800 enemies using magic for the Mages Guild.",
+    "rewards": {
+      "coins": 57000,
+      "xp": 165000,
+      "xp_skill": "magic",
+      "items": {
+        "blood_rune": 1200,
+        "diamond": 4
+      },
+      "reputation": 42000
     }
   },
   {
@@ -4403,6 +6720,69 @@
     }
   },
   {
+    "id": "prayer_daily_1e",
+    "guild": "prayer",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Morning Offering II",
+    "type": "prayer",
+    "target": "any",
+    "amount": 90,
+    "description": "Bury 90 bones of any type for the Prayer Guild.",
+    "rewards": {
+      "coins": 3000,
+      "xp": 7500,
+      "xp_skill": "prayer",
+      "items": {
+        "raw_trout": 45,
+        "copper_ore": 45
+      },
+      "reputation": 1200
+    }
+  },
+  {
+    "id": "prayer_daily_1f",
+    "guild": "prayer",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Daily Rites II",
+    "type": "prayer",
+    "target": "any",
+    "amount": 170,
+    "description": "Bury 170 bones of any type for the Prayer Guild.",
+    "rewards": {
+      "coins": 5100,
+      "xp": 12000,
+      "xp_skill": "prayer",
+      "items": {
+        "raw_salmon": 42,
+        "iron_ore": 51
+      },
+      "reputation": 1850
+    }
+  },
+  {
+    "id": "prayer_daily_1g",
+    "guild": "prayer",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Sacred Offering II",
+    "type": "prayer",
+    "target": "any",
+    "amount": 220,
+    "description": "Bury 220 bones of any type for the Prayer Guild.",
+    "rewards": {
+      "coins": 6600,
+      "xp": 14500,
+      "xp_skill": "prayer",
+      "items": {
+        "raw_tuna": 37,
+        "coal": 73
+      },
+      "reputation": 2200
+    }
+  },
+  {
     "id": "prayer_daily_4a",
     "guild": "prayer",
     "guild_level_min": 4,
@@ -4487,6 +6867,69 @@
     }
   },
   {
+    "id": "prayer_daily_4e",
+    "guild": "prayer",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Holy Rites II",
+    "type": "prayer",
+    "target": "any",
+    "amount": 340,
+    "description": "Bury 340 bones of any type for the Prayer Guild.",
+    "rewards": {
+      "coins": 13500,
+      "xp": 34000,
+      "xp_skill": "prayer",
+      "items": {
+        "mithril_ore": 51,
+        "raw_lobster": 51
+      },
+      "reputation": 6800
+    }
+  },
+  {
+    "id": "prayer_daily_4f",
+    "guild": "prayer",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Sacred Rites II",
+    "type": "prayer",
+    "target": "any",
+    "amount": 520,
+    "description": "Bury 520 bones of any type for the Prayer Guild.",
+    "rewards": {
+      "coins": 18000,
+      "xp": 44500,
+      "xp_skill": "prayer",
+      "items": {
+        "adamantite_ore": 30,
+        "raw_swordfish": 37
+      },
+      "reputation": 8900
+    }
+  },
+  {
+    "id": "prayer_daily_4g",
+    "guild": "prayer",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Grand Offering II",
+    "type": "prayer",
+    "target": "any",
+    "amount": 750,
+    "description": "Bury 750 bones of any type for the Prayer Guild.",
+    "rewards": {
+      "coins": 22500,
+      "xp": 57000,
+      "xp_skill": "prayer",
+      "items": {
+        "gold_ore": 38,
+        "raw_monkfish": 38
+      },
+      "reputation": 11000
+    }
+  },
+  {
     "id": "prayer_daily_7a",
     "guild": "prayer",
     "guild_level_min": 7,
@@ -4568,6 +7011,69 @@
         "raw_manta_ray": 20
       },
       "reputation": 18000
+    }
+  },
+  {
+    "id": "prayer_daily_7e",
+    "guild": "prayer",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Divine Offering II",
+    "type": "prayer",
+    "target": "any",
+    "amount": 380,
+    "description": "Bury 380 bones of any type for the Prayer Guild.",
+    "rewards": {
+      "coins": 30500,
+      "xp": 91000,
+      "xp_skill": "prayer",
+      "items": {
+        "platinum_ore": 38,
+        "raw_shark": 46
+      },
+      "reputation": 23000
+    }
+  },
+  {
+    "id": "prayer_daily_7f",
+    "guild": "prayer",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Transcendent Rites II",
+    "type": "prayer",
+    "target": "any",
+    "amount": 690,
+    "description": "Bury 690 bones of any type for the Prayer Guild.",
+    "rewards": {
+      "coins": 48500,
+      "xp": 138000,
+      "xp_skill": "prayer",
+      "items": {
+        "runite_ore": 34,
+        "raw_manta_ray": 34
+      },
+      "reputation": 34500
+    }
+  },
+  {
+    "id": "prayer_daily_7g",
+    "guild": "prayer",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Grand Piety II",
+    "type": "prayer",
+    "target": "any",
+    "amount": 900,
+    "description": "Bury 900 bones of any type for the Prayer Guild.",
+    "rewards": {
+      "coins": 57000,
+      "xp": 165000,
+      "xp_skill": "prayer",
+      "items": {
+        "diamond": 4,
+        "raw_sea_turtle": 22
+      },
+      "reputation": 42000
     }
   },
   {
@@ -4661,6 +7167,42 @@
     }
   },
   {
+    "id": "mercantile_daily_1f",
+    "guild": "mercantile",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Quick Deal Reserve",
+    "type": "trade",
+    "target": "local_market",
+    "amount": 5,
+    "description": "Complete 5 Local Market trade routes for the Merchants Guild.",
+    "rewards": {
+      "coins": 12500,
+      "xp": 30000,
+      "xp_skill": "mercantile",
+      "items": {},
+      "reputation": 4000
+    }
+  },
+  {
+    "id": "mercantile_daily_1g",
+    "guild": "mercantile",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Market Run Reserve",
+    "type": "trade",
+    "target": "river_trading_post",
+    "amount": 5,
+    "description": "Complete 5 River Trading Post trade routes for the Merchants Guild.",
+    "rewards": {
+      "coins": 11000,
+      "xp": 27500,
+      "xp_skill": "mercantile",
+      "items": {},
+      "reputation": 3750
+    }
+  },
+  {
     "id": "mercantile_daily_4a",
     "guild": "mercantile",
     "guild_level_min": 4,
@@ -4748,6 +7290,42 @@
       "xp_skill": "mercantile",
       "items": {},
       "reputation": 9000
+    }
+  },
+  {
+    "id": "mercantile_daily_4f",
+    "guild": "mercantile",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Active Trader Reserve",
+    "type": "trade",
+    "target": "eastern_caravan",
+    "amount": 5,
+    "description": "Complete 5 Eastern Caravan trade routes for the Merchants Guild.",
+    "rewards": {
+      "coins": 30000,
+      "xp": 75000,
+      "xp_skill": "mercantile",
+      "items": {},
+      "reputation": 10000
+    }
+  },
+  {
+    "id": "mercantile_daily_4g",
+    "guild": "mercantile",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "High Volume Reserve",
+    "type": "trade",
+    "target": "northern_ports",
+    "amount": 5,
+    "description": "Complete 5 Northern Ports trade routes for the Merchants Guild.",
+    "rewards": {
+      "coins": 30000,
+      "xp": 75000,
+      "xp_skill": "mercantile",
+      "items": {},
+      "reputation": 10000
     }
   },
   {
@@ -4841,6 +7419,42 @@
     }
   },
   {
+    "id": "mercantile_daily_7f",
+    "guild": "mercantile",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Grand Trade Reserve",
+    "type": "trade",
+    "target": "merchants_quarter",
+    "amount": 5,
+    "description": "Complete 5 Merchant's Quarter trade routes for the Merchants Guild.",
+    "rewards": {
+      "coins": 250000,
+      "xp": 650000,
+      "xp_skill": "mercantile",
+      "items": {},
+      "reputation": 75000
+    }
+  },
+  {
+    "id": "mercantile_daily_7g",
+    "guild": "mercantile",
+    "guild_level_min": 7,
+    "guild_level_max": 10,
+    "name": "Elite Routes Reserve",
+    "type": "trade",
+    "target": "grand_exchange",
+    "amount": 5,
+    "description": "Complete 5 Grand Exchange trade routes for the Merchants Guild.",
+    "rewards": {
+      "coins": 350000,
+      "xp": 900000,
+      "xp_skill": "mercantile",
+      "items": {},
+      "reputation": 100000
+    }
+  },
+  {
     "id": "thieving_daily_1a",
     "guild": "thieving",
     "guild_level_min": 1,
@@ -4925,6 +7539,69 @@
     }
   },
   {
+    "id": "thieving_daily_1e",
+    "guild": "thieving",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Easy Pickings Reserve",
+    "type": "pickpocket",
+    "target": "peasant",
+    "amount": 30,
+    "description": "Pickpocket the peasant 30 times for the Thieves Guild.",
+    "rewards": {
+      "coins": 2250,
+      "xp": 6000,
+      "xp_skill": "thieving",
+      "items": {
+        "air_rune": 22,
+        "bread": 8
+      },
+      "reputation": 1050
+    }
+  },
+  {
+    "id": "thieving_daily_1f",
+    "guild": "thieving",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Market Round Reserve",
+    "type": "pickpocket",
+    "target": "merchant",
+    "amount": 50,
+    "description": "Pickpocket the merchant 50 times for the Thieves Guild.",
+    "rewards": {
+      "coins": 4150,
+      "xp": 11500,
+      "xp_skill": "thieving",
+      "items": {
+        "water_rune": 33,
+        "mind_rune": 25
+      },
+      "reputation": 1850
+    }
+  },
+  {
+    "id": "thieving_daily_1g",
+    "guild": "thieving",
+    "guild_level_min": 1,
+    "guild_level_max": 3,
+    "name": "Apprentice Thief Reserve",
+    "type": "pickpocket",
+    "target": "peasant",
+    "amount": 60,
+    "description": "Pickpocket the peasant 60 times for the Thieves Guild.",
+    "rewards": {
+      "coins": 5250,
+      "xp": 13500,
+      "xp_skill": "thieving",
+      "items": {
+        "air_rune": 38,
+        "water_rune": 30
+      },
+      "reputation": 2250
+    }
+  },
+  {
     "id": "thieving_daily_2a",
     "guild": "thieving",
     "guild_level_min": 2,
@@ -4988,6 +7665,90 @@
     }
   },
   {
+    "id": "thieving_daily_2d",
+    "guild": "thieving",
+    "guild_level_min": 2,
+    "guild_level_max": 5,
+    "name": "Guard Duty Reserve",
+    "type": "pickpocket",
+    "target": "guardsman",
+    "amount": 60,
+    "description": "Pickpocket the guardsman 60 times for the Thieves Guild.",
+    "rewards": {
+      "coins": 7500,
+      "xp": 21000,
+      "xp_skill": "thieving",
+      "items": {
+        "chaos_rune": 22,
+        "iron_arrow": 45
+      },
+      "reputation": 3750
+    }
+  },
+  {
+    "id": "thieving_daily_2e",
+    "guild": "thieving",
+    "guild_level_min": 2,
+    "guild_level_max": 5,
+    "name": "Artisan Quarter Reserve",
+    "type": "pickpocket",
+    "target": "artisan",
+    "amount": 75,
+    "description": "Pickpocket the artisan 75 times for the Thieves Guild.",
+    "rewards": {
+      "coins": 10500,
+      "xp": 27000,
+      "xp_skill": "thieving",
+      "items": {
+        "sapphire": 3,
+        "leather": 22
+      },
+      "reputation": 5250
+    }
+  },
+  {
+    "id": "thieving_daily_2f",
+    "guild": "thieving",
+    "guild_level_min": 2,
+    "guild_level_max": 5,
+    "name": "Double Round Reserve",
+    "type": "pickpocket",
+    "target": "guardsman",
+    "amount": 100,
+    "description": "Pickpocket the guardsman 100 times for the Thieves Guild.",
+    "rewards": {
+      "coins": 13000,
+      "xp": 31500,
+      "xp_skill": "thieving",
+      "items": {
+        "chaos_rune": 36,
+        "iron_arrow": 71
+      },
+      "reputation": 6450
+    }
+  },
+  {
+    "id": "thieving_daily_2g",
+    "guild": "thieving",
+    "guild_level_min": 2,
+    "guild_level_max": 5,
+    "name": "Guard Duty Surplus",
+    "type": "pickpocket",
+    "target": "guardsman",
+    "amount": 25,
+    "description": "Pickpocket the guardsman 25 times for the Thieves Guild.",
+    "rewards": {
+      "coins": 3100,
+      "xp": 8750,
+      "xp_skill": "thieving",
+      "items": {
+        "chaos_rune": 9,
+        "iron_arrow": 19
+      },
+      "reputation": 1550
+    }
+  },
+  {
     "id": "thieving_daily_3a",
     "guild": "thieving",
     "guild_level_min": 4,
@@ -5048,6 +7809,90 @@
         "ruby": 2
       },
       "reputation": 11000
+    }
+  },
+  {
+    "id": "thieving_daily_3d",
+    "guild": "thieving",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Noble Errand Reserve",
+    "type": "pickpocket",
+    "target": "noble",
+    "amount": 90,
+    "description": "Pickpocket the noble 90 times for the Thieves Guild.",
+    "rewards": {
+      "coins": 21000,
+      "xp": 52500,
+      "xp_skill": "thieving",
+      "items": {
+        "death_rune": 30,
+        "ruby": 2
+      },
+      "reputation": 10500
+    }
+  },
+  {
+    "id": "thieving_daily_3e",
+    "guild": "thieving",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "City Patrol Reserve",
+    "type": "pickpocket",
+    "target": "city_guard",
+    "amount": 90,
+    "description": "Pickpocket the city guard 90 times for the Thieves Guild.",
+    "rewards": {
+      "coins": 27000,
+      "xp": 67500,
+      "xp_skill": "thieving",
+      "items": {
+        "blood_rune": 22,
+        "death_rune": 30
+      },
+      "reputation": 13500
+    }
+  },
+  {
+    "id": "thieving_daily_3f",
+    "guild": "thieving",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Grand Haul Reserve",
+    "type": "pickpocket",
+    "target": "noble",
+    "amount": 150,
+    "description": "Pickpocket the noble 150 times for the Thieves Guild.",
+    "rewards": {
+      "coins": 33000,
+      "xp": 82500,
+      "xp_skill": "thieving",
+      "items": {
+        "death_rune": 52,
+        "ruby": 3
+      },
+      "reputation": 16500
+    }
+  },
+  {
+    "id": "thieving_daily_3g",
+    "guild": "thieving",
+    "guild_level_min": 4,
+    "guild_level_max": 6,
+    "name": "Noble Errand Surplus",
+    "type": "pickpocket",
+    "target": "noble",
+    "amount": 40,
+    "description": "Pickpocket the noble 40 times for the Thieves Guild.",
+    "rewards": {
+      "coins": 9350,
+      "xp": 23500,
+      "xp_skill": "thieving",
+      "items": {
+        "death_rune": 13,
+        "ruby": 1
+      },
+      "reputation": 4650
     }
   },
   {
@@ -5135,6 +7980,69 @@
     }
   },
   {
+    "id": "thieving_daily_4e",
+    "guild": "thieving",
+    "guild_level_min": 6,
+    "guild_level_max": 8,
+    "name": "Iron Nerve Reserve",
+    "type": "pickpocket",
+    "target": "city_guard",
+    "amount": 150,
+    "description": "Pickpocket the city guard 150 times for the Thieves Guild.",
+    "rewards": {
+      "coins": 52500,
+      "xp": 128000,
+      "xp_skill": "thieving",
+      "items": {
+        "blood_rune": 45,
+        "diamond": 2
+      },
+      "reputation": 24000
+    }
+  },
+  {
+    "id": "thieving_daily_4f",
+    "guild": "thieving",
+    "guild_level_min": 6,
+    "guild_level_max": 8,
+    "name": "Knights Haul Reserve",
+    "type": "pickpocket",
+    "target": "knight",
+    "amount": 140,
+    "description": "Pickpocket the knight 140 times for the Thieves Guild.",
+    "rewards": {
+      "coins": 79000,
+      "xp": 192000,
+      "xp_skill": "thieving",
+      "items": {
+        "blood_rune": 88,
+        "diamond": 4
+      },
+      "reputation": 35000
+    }
+  },
+  {
+    "id": "thieving_daily_4g",
+    "guild": "thieving",
+    "guild_level_min": 6,
+    "guild_level_max": 8,
+    "name": "Blade and Hand Reserve",
+    "type": "pickpocket",
+    "target": "knight",
+    "amount": 180,
+    "description": "Pickpocket the knight 180 times for the Thieves Guild.",
+    "rewards": {
+      "coins": 82500,
+      "xp": 195000,
+      "xp_skill": "thieving",
+      "items": {
+        "blood_rune": 105,
+        "diamond": 4
+      },
+      "reputation": 37500
+    }
+  },
+  {
     "id": "thieving_daily_5a",
     "guild": "thieving",
     "guild_level_min": 8,
@@ -5216,6 +8124,69 @@
         "diamond": 5
       },
       "reputation": 48000
+    }
+  },
+  {
+    "id": "thieving_daily_5e",
+    "guild": "thieving",
+    "guild_level_min": 8,
+    "guild_level_max": 10,
+    "name": "Blessed Pockets Reserve",
+    "type": "pickpocket",
+    "target": "high_priest",
+    "amount": 10,
+    "description": "Pickpocket the high priest 10 times for the Thieves Guild.",
+    "rewards": {
+      "coins": 87500,
+      "xp": 219000,
+      "xp_skill": "thieving",
+      "items": {
+        "blood_rune": 100,
+        "diamond": 5
+      },
+      "reputation": 44000
+    }
+  },
+  {
+    "id": "thieving_daily_5f",
+    "guild": "thieving",
+    "guild_level_min": 8,
+    "guild_level_max": 10,
+    "name": "Divine Heist Reserve",
+    "type": "pickpocket",
+    "target": "high_priest",
+    "amount": 20,
+    "description": "Pickpocket the high priest 20 times for the Thieves Guild.",
+    "rewards": {
+      "coins": 150000,
+      "xp": 367000,
+      "xp_skill": "thieving",
+      "items": {
+        "blood_rune": 167,
+        "diamond": 10
+      },
+      "reputation": 75000
+    }
+  },
+  {
+    "id": "thieving_daily_5g",
+    "guild": "thieving",
+    "guild_level_min": 8,
+    "guild_level_max": 10,
+    "name": "Sanctum Sweep Reserve",
+    "type": "pickpocket",
+    "target": "high_priest",
+    "amount": 25,
+    "description": "Pickpocket the high priest 25 times for the Thieves Guild.",
+    "rewards": {
+      "coins": 172000,
+      "xp": 422000,
+      "xp_skill": "thieving",
+      "items": {
+        "blood_rune": 188,
+        "diamond": 12
+      },
+      "reputation": 86000
     }
   }
 ]

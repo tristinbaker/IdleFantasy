@@ -29,6 +29,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.fantasyidler.ui.theme.ScaledSheetContent
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
@@ -46,6 +47,7 @@ fun DebugModifyItemCountSheet(
         sheetState       = sheetState,
         dragHandle       = { BottomSheetDefaults.DragHandle() },
     ) {
+        ScaledSheetContent {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -108,6 +110,7 @@ fun DebugModifyItemCountSheet(
                     Text("Add")
                 }
             }
+        }
         }
     }
 }

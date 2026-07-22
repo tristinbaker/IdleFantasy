@@ -56,6 +56,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import com.fantasyidler.R
+import com.fantasyidler.ui.theme.ScaledSheetContent
 
 // ── Face-crop region within each 64×36 sprite frame ─────────────────────────
 private const val FACE_X = 13
@@ -288,6 +289,7 @@ fun CharacterCustomizationSheet(
         sheetState       = sheetState,
         dragHandle       = { BottomSheetDefaults.DragHandle() },
     ) {
+        ScaledSheetContent {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -483,6 +485,7 @@ fun CharacterCustomizationSheet(
             }
 
             Spacer(Modifier.height(8.dp))
+        }
         }
     }
 }

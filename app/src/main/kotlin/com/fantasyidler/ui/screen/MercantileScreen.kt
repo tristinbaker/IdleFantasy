@@ -58,7 +58,7 @@ fun MercantileScreen(
 ) {
     val state by viewModel.uiState.collectAsState()
 
-    ToastMessageEffect(state.snackbarMessage, viewModel::snackbarConsumed)
+    AppBannerEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
     Scaffold(
         contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top),
@@ -120,7 +120,7 @@ fun MercantileSheetContent(
 ) {
     val state by viewModel.uiState.collectAsState()
 
-    ToastMessageEffect(state.snackbarMessage, viewModel::snackbarConsumed)
+    AppBannerEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
     if (state.isLoading) {
         Box(

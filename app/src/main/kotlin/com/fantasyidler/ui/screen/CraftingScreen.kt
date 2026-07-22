@@ -84,7 +84,7 @@ fun CraftingScreen(
     val context = LocalContext.current
     var selectedTab by remember { mutableIntStateOf(0) }
 
-    ToastMessageEffect(state.snackbarMessage, viewModel::snackbarConsumed)
+    AppBannerEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
     Scaffold(
         contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top),

@@ -1534,4 +1534,8 @@
     <string name="guild_dailies_remaining_today">%1$d left today</string>
     <string name="armory_stat_cape_boost">Boost Bonus</string>
     <string name="combat_prestige_bonus">+%1$d prestige</string>
+    <string name="bonus_tower">Tower</string>
+    <string name="bonus_xp">+%1$d%% XP</string>
+    <string name="bonus_coin_drops">+%1$d%% coin drops</string>
+    <string name="bonus_hp">+%1$d HP</string>
 </resources>

@@ -36,6 +36,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.fantasyidler.R
 import com.fantasyidler.ui.theme.GoldPrimary
+import com.fantasyidler.ui.theme.ScaledSheetContent
 
 internal val CHARACTER_GENDERS = listOf("Male", "Female", "Other")
 internal val CHARACTER_RACES   = listOf("Human", "Elf", "Dwarf", "Orc", "Halfling", "Gnome")
@@ -73,6 +74,7 @@ fun CharacterSetupSheet(
         sheetState       = sheetState,
         dragHandle       = { BottomSheetDefaults.DragHandle() },
     ) {
+        ScaledSheetContent {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -243,6 +245,7 @@ fun CharacterSetupSheet(
                     Text(stringResource(R.string.btn_confirm))
                 }
             }
+        }
         }
     }
 }
