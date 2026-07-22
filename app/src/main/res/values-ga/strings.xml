@@ -180,4 +180,46 @@
     <string name="label_jewellery">Seodra</string>
     <string name="label_recipe">Oideas</string>
     <string name="label_recipes">Oidis</string>
+    <string name="inventory_cat_construction">Foirgníocht</string>
+    <string name="label_stats">Staitistic</string>
+    <string name="label_shop">Siopa</string>
+    <string name="town_upgrade_section_title">Foirgnimh Bhaile</string>
+    <string name="town_building_inn_name">Ósta</string>
+    <string name="town_building_guild_hall_name">Gildhalla</string>
+    <string name="town_building_church_name">Eaglais</string>
+    <string name="town_building_current_tier">Céim %1$d / %2$d</string>
+    <string name="town_building_maxed_label">Lánuasghrádaithe</string>
+    <string name="town_upgrade_next_label">Céid Uasghrádú Eile</string>
+    <string name="town_upgrade_constr_req">Is gá Lv. %1$d foirgníocht</string>
+    <string name="town_upgrade_cost">Costas: %1$s boinn</string>
+    <string name="town_upgrade_materials_header">Ábhair:</string>
+    <string name="town_upgrade_btn">Uasghrádaigh</string>
+    <string name="town_upgrade_success">Foirgneamh Uasghrádaithe</string>
+    <string name="town_upgrade_fail_level">Is Gá Lv. %1$d Foirgníocht</string>
+    <string name="town_upgrade_fail_coins">Níl dotháin airgead</string>
+    <string name="town_building_fairgrounds_name">Ionad Siamsaíochta</string>
+    <string name="town_building_garden_name">Gairdín</string>
+    <string name="town_building_queue_master_name">Mháistir Na Scuaine</string>
+    <string name="achievement_town_first_upgrade_name">Céad Athnuachan</string>
+    <string name="achievement_town_first_upgrade_desc">Uasghrádaigh aon fhoirgneamh baile den chéad uair</string>
+    <string name="achievement_town_all_tier1_name">Cuir Fheabhas Ar An Mbaile</string>
+    <string name="achievement_town_all_tier1_desc">Uasghrádaigh na sé fhoirgneamh uile sa bhaile go chéim 1 ar a laghad</string>
+    <string name="achievement_town_one_maxed_desc">Uasghrádaigh aon fhoirgneamh sa bhaile go hiomlán</string>
+    <string name="achievement_town_all_maxed_desc">Uasghrádaigh na sé fhoirgneamh sa bhaile go hiomlán</string>
+    <string name="achievement_tower_first_floor_name">Céad Céim</string>
+    <string name="enemy_assassin_name">Feallmharfóir</string>
+    <string name="enemy_shadow_assassin_name">Feallmharfóir Na Scáile</string>
+    <string name="enemy_shadow_thief_name">Gadaí Na Scáile</string>
+    <string name="carnival_title">Carnabhal</string>
+    <string name="carnival_ticket_balance">Ticéid: %1$d</string>
+    <plurals name="town_garden_bonus">
+        <item quantity="zero">Níl aon ceapach breise go fóill</item>
+        <item quantity="one">+%1$d ceapacha breise</item>
+        <item quantity="other">+%1$d ceapacha breise</item>
+    </plurals>
+    <plurals name="town_queue_master_bonus">
+        <item quantity="zero">Níl aon áit scuaine breise go fóill</item>
+        <item quantity="one">+%1$d áiteanna scuaine breise</item>
+        <item quantity="other">+%1$d áiteanna scuaine breise</item>
+    </plurals>
 </resources>
