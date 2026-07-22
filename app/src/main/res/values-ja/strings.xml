@@ -1476,9 +1476,9 @@
     <string name="bonus_section_skills">スキルボーナス</string>
     <string name="bonus_combat_stat_boost">戦闘ステータス向上</string>
     <string name="bonus_combined_xp">経験値合算</string>
-    <string name="bonus_yield">収穫量</string>
+    <string name="bonus_yield">+%1$d%% 収穫量</string>
     <string name="bonus_session_shorter">セッション時間を %1$d 分短縮</string>
-    <string name="bonus_coin_return">コイン獲得</string>
+    <string name="bonus_coin_return">+%1$d%% コイン獲得</string>
     <string name="snackbar_added_to_queue">キューに追加: %1$s</string>
     <string name="snackbar_queue_full">キューが満杯です。</string>
     <string name="combat_start_failed">開始できませんでした: %1$s</string>

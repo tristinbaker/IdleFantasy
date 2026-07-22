@@ -1343,9 +1343,9 @@
     <string name="bonus_section_skills">Skill Bonuses</string>
     <string name="bonus_combat_stat_boost">Boosts combat stats</string>
     <string name="bonus_combined_xp">Birleşik XP</string>
-    <string name="bonus_yield">verim</string>
+    <string name="bonus_yield">+%1$d%% verim</string>
     <string name="bonus_session_shorter">%1$d dk daha kısa oturumlar</string>
-    <string name="bonus_coin_return">altın getirisi</string>
+    <string name="bonus_coin_return">+%1$d%% altın getirisi</string>
     <string name="snackbar_added_to_queue">Sıraya eklendi: %1$s.</string>
     <string name="snackbar_queue_full">Sıra dolu.</string>
     <string name="home_not_enough_coins_repeat">%1$s tekrarlamak için yeterli altın yok.</string>

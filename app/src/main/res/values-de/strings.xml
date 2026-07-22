@@ -1333,9 +1333,9 @@
     <string name="bonus_section_skills">Fähigkeits-Bonus</string>
     <string name="bonus_combat_stat_boost">Verstärkt Kampffähigkeiten</string>
     <string name="bonus_combined_xp">EP gesamt</string>
-    <string name="bonus_yield">Ausbeute</string>
+    <string name="bonus_yield">+%1$d%% Ausbeute</string>
     <string name="bonus_session_shorter">%1$d Min. kürzere Sitzungen</string>
-    <string name="bonus_coin_return">Münzrückgabe</string>
+    <string name="bonus_coin_return">+%1$d%% Münzrückgabe</string>
     <string name="snackbar_added_to_queue">Zur Warteschlange hinzugefügt: %1$s.</string>
     <string name="snackbar_queue_full">Warteschlange ist voll.</string>
     <string name="home_not_enough_coins_repeat">Nicht genug Münzen, um %1$s zu wiederholen.</string>

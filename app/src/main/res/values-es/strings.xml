@@ -1338,9 +1338,9 @@
     <string name="bonus_section_skills">Skill Bonuses</string>
     <string name="bonus_combat_stat_boost">Boosts combat stats</string>
     <string name="bonus_combined_xp">XP combinado</string>
-    <string name="bonus_yield">rendimiento</string>
+    <string name="bonus_yield">+%1$d%% rendimiento</string>
     <string name="bonus_session_shorter">%1$d min de sesiones más cortas</string>
-    <string name="bonus_coin_return">devolución de monedas</string>
+    <string name="bonus_coin_return">+%1$d%% devolución de monedas</string>
     <string name="snackbar_added_to_queue">Añadido a la cola: %1$s.</string>
     <string name="snackbar_queue_full">La cola está llena.</string>
     <string name="home_not_enough_coins_repeat">No hay suficientes monedas para repetir %1$s.</string>

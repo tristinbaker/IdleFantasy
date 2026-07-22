@@ -1497,9 +1497,9 @@
     <string name="bonus_section_skills">Bonusy umiejętności</string>
     <string name="bonus_combat_stat_boost">Wzmacnia statystyki bojowe</string>
     <string name="bonus_combined_xp">Łączne XP</string>
-    <string name="bonus_yield">wydajność</string>
+    <string name="bonus_yield">+%1$d%% wydajność</string>
     <string name="bonus_session_shorter">%1$d min krótsze sesje</string>
-    <string name="bonus_coin_return">zwrot monet</string>
+    <string name="bonus_coin_return">+%1$d%% zwrot monet</string>
     <string name="snackbar_added_to_queue">Dodano do kolejki: %1$s.</string>
     <string name="snackbar_queue_full">Kolejka jest pełna.</string>
     <string name="combat_start_failed">Nie udało się rozpocząć: %1$s</string>

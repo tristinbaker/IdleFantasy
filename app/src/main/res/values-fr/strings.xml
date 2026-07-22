@@ -1336,9 +1336,9 @@
     <string name="bonus_section_skills">Bonus d\'aptitudes</string>
     <string name="bonus_combat_stat_boost">Améliore les stats de combat</string>
     <string name="bonus_combined_xp">XP combiné</string>
-    <string name="bonus_yield">rendement</string>
+    <string name="bonus_yield">+%1$d%% rendement</string>
     <string name="bonus_session_shorter">%1$d min de sessions en moins</string>
-    <string name="bonus_coin_return">retour de pièces</string>
+    <string name="bonus_coin_return">+%1$d%% retour de pièces</string>
     <string name="snackbar_added_to_queue">Ajouté à la file : %1$s.</string>
     <string name="snackbar_queue_full">La file est pleine.</string>
     <string name="home_not_enough_coins_repeat">Pas assez de pièces pour répéter %1$s.</string>

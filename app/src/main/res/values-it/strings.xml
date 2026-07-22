@@ -1480,9 +1480,9 @@
     <string name="bonus_section_skills">Bonus da Abilità</string>
     <string name="bonus_combat_stat_boost">Potenzia statistiche combattimento</string>
     <string name="bonus_combined_xp">XP combinata</string>
-    <string name="bonus_yield">resa</string>
+    <string name="bonus_yield">+%1$d%% resa</string>
     <string name="bonus_session_shorter">%1$d min in meno per sessione</string>
-    <string name="bonus_coin_return">ritorno in monete</string>
+    <string name="bonus_coin_return">+%1$d%% ritorno in monete</string>
     <string name="snackbar_added_to_queue">Aggiunto alla coda: %1$s.</string>
     <string name="snackbar_queue_full">La coda è piena.</string>
     <string name="combat_start_failed">Impossibile avviare: %1$s</string>

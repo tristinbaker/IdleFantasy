@@ -1472,9 +1472,9 @@
     <string name="bonus_section_skills">Bônus de Habilidade</string>
     <string name="bonus_combat_stat_boost">Aumenta atributos de combate</string>
     <string name="bonus_combined_xp">XP Combinado</string>
-    <string name="bonus_yield">rendimento</string>
+    <string name="bonus_yield">+%1$d%% rendimento</string>
     <string name="bonus_session_shorter">%1$d min de sessões mais curtas</string>
-    <string name="bonus_coin_return">retorno de moedas</string>
+    <string name="bonus_coin_return">+%1$d%% retorno de moedas</string>
     <string name="snackbar_added_to_queue">Adicionado à fila: %1$s.</string>
     <string name="snackbar_queue_full">A fila está cheia.</string>
     <string name="combat_start_failed">Não foi possível iniciar: %1$s</string>

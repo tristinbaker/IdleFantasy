@@ -1372,9 +1372,9 @@
     <string name="bonus_section_skills">Бонусы навыков</string>
     <string name="bonus_combat_stat_boost">Boosts combat stats</string>
     <string name="bonus_combined_xp">Суммарный XP</string>
-    <string name="bonus_yield">выход</string>
+    <string name="bonus_yield">+%1$d%% выход</string>
     <string name="bonus_session_shorter">На %1$d мин короче сессии</string>
-    <string name="bonus_coin_return">возврат монет</string>
+    <string name="bonus_coin_return">+%1$d%% возврат монет</string>
     <string name="snackbar_added_to_queue">Добавлено в очередь: %1$s.</string>
     <string name="snackbar_queue_full">Очередь заполнена.</string>
     <string name="home_not_enough_coins_repeat">Недостаточно монет для повтора %1$s.</string>

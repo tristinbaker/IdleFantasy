@@ -1304,9 +1304,9 @@
     <string name="bonus_section_skills">Skill Bonuses</string>
     <string name="bonus_combat_stat_boost">Boosts combat stats</string>
     <string name="bonus_combined_xp">Gecombineerde XP</string>
-    <string name="bonus_yield">opbrengst</string>
+    <string name="bonus_yield">+%1$d%% opbrengst</string>
     <string name="bonus_session_shorter">%1$d min kortere sessies</string>
-    <string name="bonus_coin_return">muntteruggave</string>
+    <string name="bonus_coin_return">+%1$d%% muntteruggave</string>
     <string name="snackbar_added_to_queue">Toegevoegd aan wachtrij: %1$s.</string>
     <string name="snackbar_queue_full">Wachtrij is vol.</string>
     <string name="home_not_enough_coins_repeat">Niet genoeg munten om %1$s te herhalen.</string>

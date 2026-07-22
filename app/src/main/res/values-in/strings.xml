@@ -1200,9 +1200,8 @@
     <string name="bonus_section_skills">Bonus Keahlian</string>
     <string name="bonus_combat_stat_boost">Meningkatkan stat tempur</string>
     <string name="bonus_combined_xp">Combined XP</string>
-    <string name="bonus_yield">yield</string>
     <string name="bonus_session_shorter">%1$d menit sesi lebih singkat</string>
-    <string name="bonus_coin_return">pengembalian koin</string>
+    <string name="bonus_coin_return">+%1$d%% pengembalian koin</string>
     <string name="snackbar_added_to_queue">Ditambahkan ke antrian: %1$s.</string>
     <string name="snackbar_queue_full">Antrian penuh.</string>
     <string name="combat_start_failed">Tak dapat memulai: %1$s</string>

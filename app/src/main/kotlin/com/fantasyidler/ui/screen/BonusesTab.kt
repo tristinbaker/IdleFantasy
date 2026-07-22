@@ -198,7 +198,7 @@ internal fun BonusesTab(
                     val xpDetail = entry.xpSources.joinToString(" • ") { (label, pct) -> "$label +$pct%" }
                     BonusRow(
                         name   = entry.skillName,
-                        pct    = "+${entry.xpPct}% XP",
+                        pct    = stringResource(R.string.bonus_xp, entry.xpPct),
                         scope  = "",
                         detail = xpDetail.ifEmpty { null },
                     )
@@ -206,7 +206,7 @@ internal fun BonusesTab(
                 if (entry.yieldPct > 0) {
                     BonusRow(
                         name   = entry.skillName,
-                        pct    = "+${entry.yieldPct}% ${stringResource(R.string.bonus_yield)}",
+                        pct    = stringResource(R.string.bonus_yield, entry.yieldPct),
                         scope  = "",
                         detail = entry.yieldSource,
                     )
@@ -238,7 +238,7 @@ internal fun BonusesTab(
                 item {
                     BonusRow(
                         name  = GameStrings.skillName(context, Skills.MERCANTILE),
-                        pct   = "+${mercantilePrestige * 10}% ${stringResource(R.string.bonus_coin_return)}",
+                        pct   = stringResource(R.string.bonus_coin_return, mercantilePrestige * 10),
                         scope = "",
                     )
                 }
