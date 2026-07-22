@@ -1626,5 +1626,4 @@
     <string name="home_welcome_greeting">Welcome back,</string>
     <string name="home_welcome_name">%1$s!</string>
     <string name="home_welcome_title">The %1$s!</string>
-    <string name="bonus_xp">+%1$d%% XP</string>
 </resources>
