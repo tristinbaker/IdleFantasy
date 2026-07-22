@@ -1,0 +1,64 @@
+{
+  "repo": {
+    "timestamp": 1784735062376
+  },
+  "packages": {
+    "com.tristinbaker.idlefantasy": {
+      "metadata": {
+        "lastUpdated": 1784735031906
+      },
+      "versions": {
+        "a5ccc3f01fb9465c496730ecc51b743c9375cb336015e92611c6e27655034a7b": {
+          "added": 1784735031906,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_117.apk",
+            "sha256": "a5ccc3f01fb9465c496730ecc51b743c9375cb336015e92611c6e27655034a7b",
+            "size": 7900679
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.12.5",
+            "versionCode": 117,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fixed the action queue getting stuck instead of automatically starting the next queued Infinite Tower floor after collecting one\n• Added many more daily guild quest variants so most guilds no longer repeat the exact same set of dailies every day\n• Replaced the app's queue/action notifications with a new custom themed banner, fixing messages sometimes cancelling each other out instead of showing in order, no longer blocking scrolling/swiping while shown, and no longer cutting off long messages\n"
+          }
+        }
+      }
+    }
+  }
+}
