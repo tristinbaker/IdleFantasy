@@ -274,7 +274,7 @@
     <string name="settings_profile_layout">Profil-Layout</string>
     <string name="settings_profile_layout_desc">Seitenleiste oder obere Tabs</string>
     <string name="settings_profile_layout_rail">Leiste</string>
-    <string name="settings_profile_layout_tabs">Reiter<0/string>
+    <string name="settings_profile_layout_tabs">Reiter</string>
     <string name="settings_home_screen">Startbildschirm</string>
     <string name="settings_home_screen_desc">Wähle aus, was auf dem Startbildschirm angezeigt wird</string>
     <string name="settings_recent_activity">Protokoll der letzten Aktivitäten</string>
