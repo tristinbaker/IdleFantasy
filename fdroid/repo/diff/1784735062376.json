@@ -1,0 +1,64 @@
+{
+  "repo": {
+    "timestamp": 1784826796261
+  },
+  "packages": {
+    "com.tristinbaker.idlefantasy": {
+      "metadata": {
+        "lastUpdated": 1784826764435
+      },
+      "versions": {
+        "f4239415dbf14dc9343a87e76dabc61129be74f81a94584ac6a516f21f2b07a4": {
+          "added": 1784826764435,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_118.apk",
+            "sha256": "f4239415dbf14dc9343a87e76dabc61129be74f81a94584ac6a516f21f2b07a4",
+            "size": 7906447
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.12.6",
+            "versionCode": 118,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• The custom notification banner can now be dismissed early with a tap, instead of blocking buttons underneath it until it times out\n• Added a fight count picker to boss battles, so you can queue up to 100 fights against the same boss as a single queue slot, with live \"Fight 34/100\" progress shown while it runs\n• Boss fight weapon, potion, arrow, and spell selection are now dropdowns instead of long lists, with potion effects, arrow counts, and spell rune costs still shown for each option\n• Fixe"
+          }
+        }
+      }
+    }
+  }
+}
