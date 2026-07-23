@@ -491,6 +491,9 @@
     <string name="combat_duration">Duração</string>
     <!-- Translator note: %1$d = minutes -->
     <string name="combat_duration_min">%1$d min</string>
+    <string name="combat_fight_count_label">Número de lutas</string>
+    <string name="combat_fight_count_suffix">×%1$d lutas</string>
+    <string name="combat_fight_progress">Luta %1$d/%2$d</string>
     <string name="combat_xp_on_victory">XP na vitória</string>
     <string name="combat_you_died">Você Morreu!</string>
     <string name="combat_died_reward" formatted="false">Você recebeu 10% das recompensas.</string>

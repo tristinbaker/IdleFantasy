@@ -418,6 +418,9 @@
     <string name="combat_duration">Süre</string>
     <!-- Translator note: %1$d = minutes -->
     <string name="combat_duration_min">%1$d dk</string>
+    <string name="combat_fight_count_label">Dövüş Sayısı</string>
+    <string name="combat_fight_count_suffix">×%1$d dövüş</string>
+    <string name="combat_fight_progress">Dövüş %1$d/%2$d</string>
     <string name="combat_xp_on_victory">Zaferde kazanılacak XP</string>
     <string name="combat_you_died">Öldün!</string>
     <string name="combat_died_reward">Ödüllerin %10\'unu aldın.</string>

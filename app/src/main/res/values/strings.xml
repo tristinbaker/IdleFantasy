@@ -493,6 +493,11 @@
     <string name="combat_duration">Duration</string>
     <!-- Translator note: %1$d = minutes -->
     <string name="combat_duration_min">%1$d min</string>
+    <string name="combat_fight_count_label">Number of Fights</string>
+    <!-- Translator note: %1$d = number of queued repeat fights, e.g. "×100 fights" -->
+    <string name="combat_fight_count_suffix">×%1$d fights</string>
+    <!-- Translator note: %1$d = current fight number, %2$d = total fights requested, e.g. "Fight 34/100" -->
+    <string name="combat_fight_progress">Fight %1$d/%2$d</string>
     <string name="combat_xp_on_victory">XP on victory</string>
     <string name="combat_you_died">You Died!</string>
     <string name="combat_died_reward" formatted="false">You received 10% of the rewards.</string>

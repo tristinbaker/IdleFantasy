@@ -86,6 +86,12 @@ data class CombatUiState(
     val towerBestFloor: Int = 0,
     val showSessionEndTime: Boolean = true,
     val bossKillCounts: Map<String, Int> = emptyMap(),
+    /** Fight count chosen in the boss confirm sheet before starting/queueing. 1 = no repeat. */
+    val selectedBossRepeatCount: Int = 1,
+    /** 1-based index of the boss fight currently running within a multi-fight repeat request. 0 = not repeating. */
+    val activeBossRepeatIndex: Int = 0,
+    /** Total fights requested for the current boss repeat run. */
+    val activeBossRepeatTotal: Int = 0,
 )
 
 // ---------------------------------------------------------------------------
@@ -107,6 +113,10 @@ class CombatViewModel @Inject constructor(
 ) : ViewModel() {
 
     val potionEffects: Map<String, Map<String, Int>> = gameData.potionEffects
+
+    companion object {
+        const val MAX_BOSS_REPEAT_COUNT = 100
+    }
 
     private val _extra = MutableStateFlow(CombatUiState())
     private val _simulatedRatings = MutableStateFlow<Map<String, CombatSimulator.SurvivalRating>>(emptyMap())
@@ -216,6 +226,8 @@ class CombatViewModel @Inject constructor(
                 bossKillCounts          = flags.enemyKills,
                 selectedSpell           = if (extra.selectedSpell == null) flags.activeSpell?.let { gameData.spells[it] } else extra.selectedSpell,
                 selectedPotionKey       = if (extra.selectedPotionKey == null) flags.activePotionKey?.takeIf { (inventory[it] ?: 0) > 0 } else extra.selectedPotionKey,
+                activeBossRepeatIndex   = flags.activeBossRepeatIndex,
+                activeBossRepeatTotal   = flags.activeBossRepeatTotal,
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), CombatUiState())
@@ -266,7 +278,10 @@ class CombatViewModel @Inject constructor(
         _extra.update { it.copy(selectedDungeon = dungeon) }
 
     fun selectBoss(boss: BossData?) =
-        _extra.update { it.copy(selectedBoss = boss) }
+        _extra.update { it.copy(selectedBoss = boss, selectedBossRepeatCount = 1) }
+
+    fun selectBossRepeatCount(count: Int) =
+        _extra.update { it.copy(selectedBossRepeatCount = count.coerceIn(1, MAX_BOSS_REPEAT_COUNT)) }
 
     fun selectWeaponSlot(slot: String) {
         _extra.update { it.copy(selectedWeaponSlot = slot) }
@@ -528,6 +543,7 @@ class CombatViewModel @Inject constructor(
 
     fun startBossSession(bossKey: String) {
         viewModelScope.launch {
+            val repeatCount = _extra.value.selectedBossRepeatCount.coerceIn(1, MAX_BOSS_REPEAT_COUNT)
             if (sessionRepo.getActiveSession() != null) {
                 val bossName     = gameData.bosses[bossKey]?.displayName ?: bossKey
                 val bossMs       = (gameData.bosses[bossKey]?.durationMinutes ?: 1) * 60_000L
@@ -563,6 +579,7 @@ class CombatViewModel @Inject constructor(
                         spellName           = if (bossQueuedWeapon?.combatStyle == "magic" && bossQueuedSpell != null) bossQueuedSpell.name else queuedFlags.activeSpell,
                         potionKey           = bossQueuedPotionKey,
                         weaponSlot          = bossWeaponSlot,
+                        repeatCount         = repeatCount,
                     )
                 )
                 if (enqueued) queuedSessionStarter.startNextQueued()
@@ -572,11 +589,12 @@ class CombatViewModel @Inject constructor(
                         selectedBoss       = null,
                         selectedArrowKey   = null,
                         selectedPotionKey  = null,
+                        selectedBossRepeatCount = 1,
                     )
                 }
                 return@launch
             }
-            _extra.update { it.copy(startingSession = true, selectedBoss = null) }
+            _extra.update { it.copy(startingSession = true, selectedBoss = null, selectedBossRepeatCount = 1) }
             try {
                 val boss    = gameData.bosses[bossKey] ?: error("Unknown boss: $bossKey")
                 val player  = playerRepo.getOrCreatePlayer()
@@ -697,6 +715,26 @@ class CombatViewModel @Inject constructor(
                         (bossFrames.size - 1).coerceAtLeast(0) * frameMs + lastFrameMs + 2_000L
                     } else null,
                 )
+                if (repeatCount > 1) {
+                    val bossSnapshot = QueuedAction(
+                        skillName        = "boss",
+                        activityKey      = bossKey,
+                        skillDisplayName = boss.displayName,
+                        equippedSnapshot = player.equipped,
+                        arrowsKey        = _extra.value.selectedArrowKey ?: flags.equippedArrows,
+                        spellName        = if (combatStyle == "magic" && selectedSpell != null) selectedSpell.name else flags.activeSpell,
+                        potionKey        = potionKey,
+                        weaponSlot       = activeWeaponSlot,
+                        repeatCount      = repeatCount,
+                    )
+                    playerRepo.updateFlags(playerRepo.getFlags().copy(
+                        activeBossRepeatIndex    = 1,
+                        activeBossRepeatTotal    = repeatCount,
+                        activeBossRepeatSnapshot = bossSnapshot,
+                    ))
+                } else {
+                    playerRepo.clearActiveBossRepeat()
+                }
             } catch (e: Exception) {
                 _extra.update { it.copy(snackbarMessage = context.getString(R.string.combat_start_failed, e.message ?: "")) }
             } finally {
@@ -724,6 +762,7 @@ class CombatViewModel @Inject constructor(
                 }
                 if (arrowsUsed.isNotEmpty()) playerRepo.consumeItems(arrowsUsed)
                 sessionRepo.abandonSession(session.sessionId)
+                if (session.skillName == "boss") playerRepo.clearActiveBossRepeat()
                 queuedSessionStarter.startNextQueued()
             }
         }

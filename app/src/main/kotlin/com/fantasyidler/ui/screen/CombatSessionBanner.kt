@@ -134,6 +134,8 @@ internal fun CombatSessionBanner(
     equippedFood: Map<String, Int>,
     foodHealValues: Map<String, Int>,
     showEndTime: Boolean = true,
+    repeatIndex: Int = 0,
+    repeatTotal: Int = 0,
     onAbandon: () -> Unit,
     onDebugFinish: () -> Unit,
 ) {
@@ -239,6 +241,15 @@ internal fun CombatSessionBanner(
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
+        if (isBoss && repeatTotal > 1) {
+            Spacer(Modifier.height(4.dp))
+            Text(
+                text       = stringResource(R.string.combat_fight_progress, repeatIndex.coerceAtLeast(1), repeatTotal),
+                style      = MaterialTheme.typography.labelLarge,
+                fontWeight = FontWeight.SemiBold,
+                color      = GoldPrimary,
+            )
+        }
         Spacer(Modifier.height(16.dp))
 
         if (!isDone) {

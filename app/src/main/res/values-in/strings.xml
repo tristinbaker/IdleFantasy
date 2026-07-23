@@ -390,6 +390,9 @@
     <string name="combat_req_level">Level tempur yang dibutuhkan</string>
     <string name="combat_duration">Durasi</string>
     <string name="combat_duration_min">%1$d menit</string>
+    <string name="combat_fight_count_label">Jumlah Pertarungan</string>
+    <string name="combat_fight_count_suffix">×%1$d pertarungan</string>
+    <string name="combat_fight_progress">Pertarungan %1$d/%2$d</string>
     <string name="combat_xp_on_victory">XP saat menang</string>
     <string name="combat_you_died">Kamu meninggal!</string>
     <string name="combat_died_reward">Anda menerima 10% dari hadiah.</string>

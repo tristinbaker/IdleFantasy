@@ -1,3 +1,9 @@
+v1.12.6
+• The custom notification banner can now be dismissed early with a tap, instead of blocking buttons underneath it until it times out
+• Added a fight count picker to boss battles, so you can queue up to 100 fights against the same boss as a single queue slot, with live "Fight 34/100" progress shown while it runs
+• Boss fight weapon, potion, arrow, and spell selection are now dropdowns instead of long lists, with potion effects, arrow counts, and spell rune costs still shown for each option
+• Fixed the Farming patches sheet stopping partway down the screen instead of filling it, cutting off patches near the bottom
+
 v1.12.5
 • Fixed the action queue getting stuck instead of automatically starting the next queued Infinite Tower floor after collecting one
 • Added many more daily guild quest variants so most guilds no longer repeat the exact same set of dailies every day

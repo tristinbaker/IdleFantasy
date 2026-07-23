@@ -185,6 +185,10 @@ data class HomeUiState(
     val activeSeasonalEvent: SeasonalEventSummary? = null,
     /** Total XP the active session will grant (single-skill only; 0 for combat/boss/expedition). */
     val activeSessionXpGain: Long = 0L,
+    /** 1-based index of the boss fight currently running within a multi-fight repeat request. 0 = not repeating. */
+    val activeBossRepeatIndex: Int = 0,
+    /** Total fights requested for the current boss repeat run. */
+    val activeBossRepeatTotal: Int = 0,
     /** Total XP the first worker's active session will grant. */
     val workerSessionXpGain: Long = 0L,
     /** Total XP the second worker's active session will grant. */
@@ -365,6 +369,8 @@ class HomeViewModel @Inject constructor(
                 guildClaimableCount        = guildClaimableCount,
                 activeSeasonalEvent        = activeSeasonalEvent,
                 activeSessionXpGain        = activeSessionXpGain,
+                activeBossRepeatIndex      = flags.activeBossRepeatIndex,
+                activeBossRepeatTotal      = flags.activeBossRepeatTotal,
                 workerSessionXpGain        = workerSessionXpGain,
                 workerSession2XpGain       = workerSession2XpGain,
                 workerSessionAssignedItems  = workerSession?.singleBatchItems(json) ?: emptyMap(),
@@ -1053,6 +1059,7 @@ class HomeViewModel @Inject constructor(
                 playerRepo.addItem(session.catalystKey, session.catalystQty)
             }
             sessionRepo.abandonSession(session.sessionId)
+            if (session.skillName == "boss") playerRepo.clearActiveBossRepeat()
             queuedSessionStarter.startNextQueued()
             reconcileTowerQueue()
         }

@@ -7,6 +7,8 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -130,13 +132,21 @@ fun AppBannerHost() {
             exit    = slideOutVertically { -it } + fadeOut(),
             modifier = Modifier.windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top)),
         ) {
+            val interactionSource = remember { MutableInteractionSource() }
             Surface(
                 color           = MaterialTheme.colorScheme.primary,
                 contentColor    = MaterialTheme.colorScheme.onPrimary,
                 shape           = RoundedCornerShape(12.dp),
                 tonalElevation  = 8.dp,
                 shadowElevation = 8.dp,
-                modifier        = Modifier.padding(horizontal = 16.dp, vertical = 8.dp).fillMaxWidth(),
+                modifier        = Modifier
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
+                    .fillMaxWidth()
+                    .clickable(
+                        interactionSource = interactionSource,
+                        indication        = null,
+                        onClick           = { AppBannerCenter.dismissCurrent() },
+                    ),
             ) {
                 Text(
                     text     = banner.message,

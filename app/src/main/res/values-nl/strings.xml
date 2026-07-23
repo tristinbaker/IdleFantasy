@@ -480,6 +480,9 @@
     <string name="combat_duration">Duur</string>
     <!-- Translator note: %1$d = minutes -->
     <string name="combat_duration_min">%1$d min</string>
+    <string name="combat_fight_count_label">Aantal gevechten</string>
+    <string name="combat_fight_count_suffix">×%1$d gevechten</string>
+    <string name="combat_fight_progress">Gevecht %1$d/%2$d</string>
     <string name="combat_xp_on_victory">XP bij overwinning</string>
     <string name="combat_you_died">Je bent dood!</string>
     <string name="combat_died_reward">Je ontvangt 10% van de beloningen.</string>

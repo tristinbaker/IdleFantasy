@@ -58,6 +58,31 @@ class QueuedSessionStarter @Inject constructor(
             mutex.withLock {
                 val current = sessionRepo.getActiveSession()
                 if (current != null && !current.completed) return@withLock false
+                // A boss queued with a fight-count > 1 (CombatViewModel.startBossSession) isn't
+                // re-enqueued as N separate queue entries -- the progress lives in PlayerFlags
+                // (activeBossRepeatIndex/Total/Snapshot) instead, so it survives here even while
+                // the app is backgrounded (this fires from SessionAlarmReceiver too, not just
+                // collectSession). A loss stops the chain; collectSession() still applies that
+                // final fight's rewards independently once the app is reopened.
+                if (current != null && current.completed && current.skillName == "boss") {
+                    val repeatFlags = playerRepo.getFlagsUnlocked()
+                    val snapshot = repeatFlags.activeBossRepeatSnapshot
+                    if (snapshot != null && repeatFlags.activeBossRepeatIndex < repeatFlags.activeBossRepeatTotal) {
+                        val frames: List<SessionFrame> = json.decodeFromString(current.frames)
+                        val won = (frames.lastOrNull()?.kills ?: 0) > 0
+                        if (won) {
+                            try {
+                                playerRepo.updateFlagsUnlocked(repeatFlags.copy(activeBossRepeatIndex = repeatFlags.activeBossRepeatIndex + 1))
+                                startQueuedAction(snapshot, backdateMs = backdateMs)
+                                return@withLock true
+                            } catch (_: Exception) {
+                                // fall through to clear repeat state below; fight 1's own reward
+                                // is still collected normally, this only stops the chain.
+                            }
+                        }
+                    }
+                    if (snapshot != null) playerRepo.clearActiveBossRepeatUnlocked()
+                }
                 // A Tower floor blocked on pending collection is skipped and stashed rather
                 // than parked at the front — otherwise it would permanently block every other
                 // queued item behind it (issue #977). Bounded by the queue's own size so an
@@ -68,6 +93,7 @@ class QueuedSessionStarter @Inject constructor(
                     val next = playerRepo.dequeueNextActionUnlocked() ?: break
                     try {
                         startQueuedAction(next, backdateMs = backdateMs)
+                        if (next.skillName == "boss") playerRepo.stampBossRepeatStartUnlocked(next)
                         for (skipped in skippedTowerActions.asReversed()) playerRepo.requeueActionAtFrontUnlocked(skipped)
                         return@withLock true
                     } catch (_: TowerPendingCollectionException) {
@@ -140,6 +166,7 @@ class QueuedSessionStarter @Inject constructor(
                     // catch-up burst gets a distinct startedAt (now - remainingMs), staying
                     // strictly ordered by queue position instead of all colliding on "now".
                     startQueuedAction(next, offline = true, backdateMs = remainingMs)
+                    if (next.skillName == "boss") playerRepo.stampBossRepeatStartUnlocked(next)
                     for (skipped in skippedTowerActions.asReversed()) playerRepo.requeueActionAtFrontUnlocked(skipped)
                     return duration
                 } catch (_: TowerPendingCollectionException) {

@@ -504,6 +504,9 @@
     <string name="combat_duration">Длительность</string>
     <!-- Translator note: %1$d = minutes -->
     <string name="combat_duration_min">%1$d мин</string>
+    <string name="combat_fight_count_label">Количество боёв</string>
+    <string name="combat_fight_count_suffix">×%1$d боёв</string>
+    <string name="combat_fight_progress">Бой %1$d/%2$d</string>
     <string name="combat_xp_on_victory">Опыт за победу</string>
     <string name="combat_you_died">Вы погибли!</string>
     <string name="combat_died_reward">Вы получили 10% наград.</string>

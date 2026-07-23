@@ -490,6 +490,9 @@
     <string name="combat_duration">所要時間</string>
     <!-- Translator note: %1$d = minutes -->
     <string name="combat_duration_min">%1$d 分</string>
+    <string name="combat_fight_count_label">戦闘回数</string>
+    <string name="combat_fight_count_suffix">×%1$d 戦</string>
+    <string name="combat_fight_progress">戦闘 %1$d/%2$d</string>
     <string name="combat_xp_on_victory">勝利時の獲得経験値</string>
     <string name="combat_you_died">死亡しました！</string>
     <string name="combat_died_reward" formatted="false">You received 10% of the rewards.</string>

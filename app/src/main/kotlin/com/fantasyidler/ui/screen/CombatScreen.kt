@@ -212,6 +212,8 @@ fun CombatScreen(
                             equippedFood   = state.equippedFood,
                             foodHealValues = viewModel.foodHealValues,
                             showEndTime    = state.showSessionEndTime,
+                            repeatIndex    = state.activeBossRepeatIndex,
+                            repeatTotal    = state.activeBossRepeatTotal,
                             onAbandon      = viewModel::abandonSession,
                             onDebugFinish  = viewModel::debugFinishSession,
                         )
@@ -369,10 +371,12 @@ fun CombatScreen(
                 selectedPotionKey    = state.selectedPotionKey,
                 selectedArrowKey     = state.selectedArrowKey,
                 isStarting           = state.startingSession,
+                repeatCount          = state.selectedBossRepeatCount,
                 onWeaponSlotSelected = viewModel::selectWeaponSlot,
                 onSpellSelected      = viewModel::selectSpell,
                 onArrowSelected      = viewModel::selectArrow,
                 onPotionSelected     = viewModel::selectPotion,
+                onRepeatCountChanged = viewModel::selectBossRepeatCount,
                 onStart              = { viewModel.startBossSession(boss.id) },
                 onDismiss            = { viewModel.selectBoss(null) },
             )

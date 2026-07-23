@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -216,7 +215,7 @@ fun FarmingSheetContent(
 
     AppBannerEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
-    Box(Modifier.fillMaxWidth().fillMaxHeight(0.85f)) {
+    Box(Modifier.fillMaxWidth()) {
         if (state.isLoading) {
             CircularProgressIndicator(Modifier.align(Alignment.Center))
         } else LazyColumn(

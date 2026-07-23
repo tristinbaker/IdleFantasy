@@ -1,7 +1,6 @@
 package com.fantasyidler.ui.screen
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,13 +22,19 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.SnackbarHost
@@ -54,6 +59,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import kotlinx.coroutines.launch
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Remove
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -62,6 +70,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -84,6 +93,7 @@ import com.fantasyidler.data.model.Skills
 import com.fantasyidler.ui.theme.GoldPrimary
 import com.fantasyidler.ui.theme.SuccessGreen
 import com.fantasyidler.ui.viewmodel.CombatViewModel
+import com.fantasyidler.ui.viewmodel.CombatViewModel.Companion.MAX_BOSS_REPEAT_COUNT
 import com.fantasyidler.ui.viewmodel.InventoryViewModel
 import com.fantasyidler.ui.viewmodel.combatLevelFrom
 import com.fantasyidler.ui.viewmodel.slotDisplayName
@@ -101,7 +111,7 @@ import kotlinx.serialization.json.Json
 // Boss info / start sheet
 // ---------------------------------------------------------------------------
 
-@OptIn(ExperimentalLayoutApi::class)
+@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
 @Composable
 internal fun BossInfoSheet(
     boss: BossData,
@@ -117,10 +127,12 @@ internal fun BossInfoSheet(
     selectedPotionKey: String?,
     selectedArrowKey: String?,
     isStarting: Boolean,
+    repeatCount: Int,
     onWeaponSlotSelected: (String) -> Unit,
     onSpellSelected: (SpellData) -> Unit,
     onArrowSelected: (String?) -> Unit,
     onPotionSelected: (String?) -> Unit,
+    onRepeatCountChanged: (Int) -> Unit,
     onStart: () -> Unit,
     onDismiss: () -> Unit,
 ) {
@@ -200,29 +212,49 @@ internal fun BossInfoSheet(
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
             Spacer(Modifier.height(4.dp))
-            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                equippedWeapons.forEach { (slot, weaponData) ->
-                    val isSelected = slot == (selectedWeaponSlot
-                        ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equippedWeapons.containsKey(it) })
-                    FilterChip(
-                        selected = isSelected,
-                        onClick  = { onWeaponSlotSelected(slot) },
-                        label    = {
-                            Column {
-                                Text(
-                                    text  = GameStrings.itemName(context, weaponData.name),
-                                    style = MaterialTheme.typography.bodySmall,
-                                )
-                                weaponData.combatStyle?.let { style ->
+            val currentWeaponSlot = selectedWeaponSlot
+                ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equippedWeapons.containsKey(it) }
+            var weaponExpanded by remember { mutableStateOf(false) }
+            ExposedDropdownMenuBox(
+                expanded         = weaponExpanded,
+                onExpandedChange = { weaponExpanded = it },
+            ) {
+                OutlinedTextField(
+                    value         = equippedWeapons[currentWeaponSlot]?.let { GameStrings.itemName(context, it.name) } ?: "",
+                    onValueChange = {},
+                    readOnly      = true,
+                    trailingIcon  = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = weaponExpanded) },
+                    colors        = ExposedDropdownMenuDefaults.outlinedTextFieldColors(),
+                    singleLine    = true,
+                    modifier      = Modifier.menuAnchor().fillMaxWidth(),
+                )
+                ExposedDropdownMenu(
+                    expanded         = weaponExpanded,
+                    onDismissRequest = { weaponExpanded = false },
+                ) {
+                    equippedWeapons.forEach { (slot, weaponData) ->
+                        DropdownMenuItem(
+                            text = {
+                                Column {
                                     Text(
-                                        text  = style.replaceFirstChar { it.titlecase() },
-                                        style = MaterialTheme.typography.labelSmall,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        text  = GameStrings.itemName(context, weaponData.name),
+                                        style = MaterialTheme.typography.bodyMedium,
                                     )
+                                    weaponData.combatStyle?.let { style ->
+                                        Text(
+                                            text  = style.replaceFirstChar { it.titlecase() },
+                                            style = MaterialTheme.typography.labelSmall,
+                                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        )
+                                    }
                                 }
-                            }
-                        },
-                    )
+                            },
+                            onClick = {
+                                onWeaponSlotSelected(slot)
+                                weaponExpanded = false
+                            },
+                        )
+                    }
                 }
             }
         }
@@ -238,35 +270,52 @@ internal fun BossInfoSheet(
             )
             Spacer(Modifier.height(4.dp))
             val arrowOptions = listOf(null) + availableArrows
-            arrowOptions.forEach { key ->
-                val isSelected = selectedArrowKey == key
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable { onArrowSelected(key) }
-                        .padding(vertical = 5.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically,
+            var arrowExpanded by remember { mutableStateOf(false) }
+            ExposedDropdownMenuBox(
+                expanded         = arrowExpanded,
+                onExpandedChange = { arrowExpanded = it },
+            ) {
+                OutlinedTextField(
+                    value         = if (selectedArrowKey == null) stringResource(R.string.combat_arrow_auto)
+                                     else GameStrings.itemName(context, selectedArrowKey),
+                    onValueChange = {},
+                    readOnly      = true,
+                    trailingIcon  = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = arrowExpanded) },
+                    colors        = ExposedDropdownMenuDefaults.outlinedTextFieldColors(),
+                    singleLine    = true,
+                    modifier      = Modifier.menuAnchor().fillMaxWidth(),
+                )
+                ExposedDropdownMenu(
+                    expanded         = arrowExpanded,
+                    onDismissRequest = { arrowExpanded = false },
                 ) {
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text       = if (key == null) stringResource(R.string.combat_arrow_auto)
-                                         else GameStrings.itemName(context, key),
-                            style      = MaterialTheme.typography.bodyMedium,
-                            fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
-                            color      = if (isSelected) GoldPrimary else MaterialTheme.colorScheme.onSurface,
+                    arrowOptions.forEach { key ->
+                        DropdownMenuItem(
+                            text = {
+                                Row(
+                                    modifier              = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                ) {
+                                    Text(
+                                        text  = if (key == null) stringResource(R.string.combat_arrow_auto)
+                                                 else GameStrings.itemName(context, key),
+                                        style = MaterialTheme.typography.bodyMedium,
+                                    )
+                                    if (key != null) {
+                                        Spacer(Modifier.width(8.dp))
+                                        Text(
+                                            text  = "×${inventory[key]}",
+                                            style = MaterialTheme.typography.bodySmall,
+                                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        )
+                                    }
+                                }
+                            },
+                            onClick = {
+                                onArrowSelected(key)
+                                arrowExpanded = false
+                            },
                         )
-                    }
-                    if (key != null) {
-                        Text(
-                            text  = "×${inventory[key]}",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
-                    }
-                    if (isSelected) {
-                        Text("✓", style = MaterialTheme.typography.bodyMedium,
-                            color = GoldPrimary, fontWeight = FontWeight.Bold)
                     }
                 }
             }
@@ -303,48 +352,60 @@ internal fun BossInfoSheet(
                         label    = { Text(stringResource(R.string.combat_only_castable)) },
                     )
                 }
-                displaySpells.forEach { spell ->
-                    val isSelected = selectedSpell?.name == spell.name
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable { onSpellSelected(spell) }
-                            .padding(vertical = 5.dp),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically,
+                var spellExpanded by remember { mutableStateOf(false) }
+                ExposedDropdownMenuBox(
+                    expanded         = spellExpanded,
+                    onExpandedChange = { spellExpanded = it },
+                ) {
+                    OutlinedTextField(
+                        value         = selectedSpell?.let { GameStrings.spellName(context, it.name) } ?: "",
+                        onValueChange = {},
+                        readOnly      = true,
+                        trailingIcon  = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = spellExpanded) },
+                        colors        = ExposedDropdownMenuDefaults.outlinedTextFieldColors(),
+                        singleLine    = true,
+                        modifier      = Modifier.menuAnchor().fillMaxWidth(),
+                    )
+                    ExposedDropdownMenu(
+                        expanded         = spellExpanded,
+                        onDismissRequest = { spellExpanded = false },
                     ) {
-                        Column(Modifier.weight(1f)) {
-                            Text(
-                                text       = GameStrings.spellName(context, spell.name),
-                                style      = MaterialTheme.typography.bodyMedium,
-                                fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
-                                color      = if (isSelected) GoldPrimary else MaterialTheme.colorScheme.onSurface,
+                        displaySpells.forEach { spell ->
+                            DropdownMenuItem(
+                                text = {
+                                    Column {
+                                        Text(
+                                            text  = GameStrings.spellName(context, spell.name),
+                                            style = MaterialTheme.typography.bodyMedium,
+                                        )
+                                        Text(
+                                            text  = "${spell.runeCost}× ${GameStrings.itemName(context, spell.runeType)}  •  ${stringResource(R.string.combat_max_hit)} ${spell.maxHit}",
+                                            style = MaterialTheme.typography.bodySmall,
+                                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        )
+                                        val infinite = equippedWeapon?.infiniteRunes == "all" || equippedWeapon?.infiniteRunes == spell.runeType
+                                        if (infinite) {
+                                            Text(
+                                                text  = stringResource(R.string.combat_infinite_runes, GameStrings.itemName(context, spell.runeType)),
+                                                style = MaterialTheme.typography.labelSmall,
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                            )
+                                        } else {
+                                            val held = inventory[spell.runeType] ?: 0
+                                            Text(
+                                                text  = stringResource(R.string.combat_you_have_runes, held, GameStrings.itemName(context, spell.runeType)),
+                                                style = MaterialTheme.typography.labelSmall,
+                                                color = if (held >= spell.runeCost) MaterialTheme.colorScheme.onSurfaceVariant
+                                                        else MaterialTheme.colorScheme.error,
+                                            )
+                                        }
+                                    }
+                                },
+                                onClick = {
+                                    onSpellSelected(spell)
+                                    spellExpanded = false
+                                },
                             )
-                            Text(
-                                text  = "${spell.runeCost}× ${GameStrings.itemName(context, spell.runeType)}  •  ${stringResource(R.string.combat_max_hit)} ${spell.maxHit}",
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            )
-                            val infinite = equippedWeapon?.infiniteRunes == "all" || equippedWeapon?.infiniteRunes == spell.runeType
-                            if (infinite) {
-                                Text(
-                                    text  = stringResource(R.string.combat_infinite_runes, GameStrings.itemName(context, spell.runeType)),
-                                    style = MaterialTheme.typography.labelSmall,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                )
-                            } else {
-                                val held = inventory[spell.runeType] ?: 0
-                                Text(
-                                    text  = stringResource(R.string.combat_you_have_runes, held, GameStrings.itemName(context, spell.runeType)),
-                                    style = MaterialTheme.typography.labelSmall,
-                                    color = if (held >= spell.runeCost) MaterialTheme.colorScheme.onSurfaceVariant
-                                            else MaterialTheme.colorScheme.error,
-                                )
-                            }
-                        }
-                        if (isSelected) {
-                            Text("✓", style = MaterialTheme.typography.bodyMedium,
-                                color = GoldPrimary, fontWeight = FontWeight.Bold)
                         }
                     }
                 }
@@ -379,47 +440,106 @@ internal fun BossInfoSheet(
             )
             Spacer(Modifier.height(4.dp))
             val potionOptions = listOf(null) + availablePotions.keys.toList()
-            potionOptions.forEach { key ->
-                val isSelected = selectedPotionKey == key
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable { onPotionSelected(key) }
-                        .padding(vertical = 5.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically,
+            var potionExpanded by remember { mutableStateOf(false) }
+            ExposedDropdownMenuBox(
+                expanded         = potionExpanded,
+                onExpandedChange = { potionExpanded = it },
+            ) {
+                OutlinedTextField(
+                    value         = if (selectedPotionKey == null) stringResource(R.string.combat_no_potion)
+                                     else GameStrings.itemName(context, selectedPotionKey),
+                    onValueChange = {},
+                    readOnly      = true,
+                    trailingIcon  = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = potionExpanded) },
+                    colors        = ExposedDropdownMenuDefaults.outlinedTextFieldColors(),
+                    singleLine    = true,
+                    modifier      = Modifier.menuAnchor().fillMaxWidth(),
+                )
+                ExposedDropdownMenu(
+                    expanded         = potionExpanded,
+                    onDismissRequest = { potionExpanded = false },
                 ) {
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text       = if (key == null) stringResource(R.string.combat_no_potion)
-                                         else GameStrings.itemName(context, key),
-                            style      = MaterialTheme.typography.bodyMedium,
-                            fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
-                            color      = if (isSelected) GoldPrimary else MaterialTheme.colorScheme.onSurface,
+                    potionOptions.forEach { key ->
+                        DropdownMenuItem(
+                            text = {
+                                Column {
+                                    Row(
+                                        modifier              = Modifier.fillMaxWidth(),
+                                        horizontalArrangement = Arrangement.SpaceBetween,
+                                    ) {
+                                        Text(
+                                            text  = if (key == null) stringResource(R.string.combat_no_potion)
+                                                     else GameStrings.itemName(context, key),
+                                            style = MaterialTheme.typography.bodyMedium,
+                                        )
+                                        if (key != null) {
+                                            Spacer(Modifier.width(8.dp))
+                                            Text(
+                                                text  = "×${availablePotions[key]}",
+                                                style = MaterialTheme.typography.bodySmall,
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                            )
+                                        }
+                                    }
+                                    if (key != null) {
+                                        val effectStr = potionEffects[key]?.entries
+                                            ?.joinToString(", ") { (stat, bonus) -> "+$bonus ${stat.toTitleCase()}" }
+                                        if (effectStr != null) {
+                                            Text(
+                                                text  = effectStr,
+                                                style = MaterialTheme.typography.labelSmall,
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                            )
+                                        }
+                                    }
+                                }
+                            },
+                            onClick = {
+                                onPotionSelected(key)
+                                potionExpanded = false
+                            },
                         )
-                        if (key != null) {
-                            val effectStr = potionEffects[key]?.entries
-                                ?.joinToString(", ") { (stat, bonus) -> "+$bonus ${stat.toTitleCase()}" }
-                            if (effectStr != null) {
-                                Text(
-                                    text  = "($effectStr)",
-                                    style = MaterialTheme.typography.bodySmall,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                )
-                            }
-                        }
                     }
-                    if (key != null) {
-                        Text(
-                            text  = "×${availablePotions[key]}",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
-                    }
-                    if (isSelected) {
-                        Text("✓", style = MaterialTheme.typography.bodyMedium,
-                            color = GoldPrimary, fontWeight = FontWeight.Bold)
-                    }
+                }
+            }
+        }
+
+        // Fight count picker (queue this boss N times in one queue slot)
+        Spacer(Modifier.height(12.dp))
+        Text(
+            text  = stringResource(R.string.combat_fight_count_label),
+            style = MaterialTheme.typography.labelMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        Spacer(Modifier.height(4.dp))
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            IconButton(
+                onClick = { onRepeatCountChanged(repeatCount - 1) },
+                enabled = repeatCount > 1,
+            ) {
+                Icon(Icons.Filled.Remove, contentDescription = null)
+            }
+            Text(
+                text       = repeatCount.toString(),
+                style      = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold,
+                textAlign  = TextAlign.Center,
+                modifier   = Modifier.width(48.dp),
+            )
+            IconButton(
+                onClick = { onRepeatCountChanged(repeatCount + 1) },
+                enabled = repeatCount < MAX_BOSS_REPEAT_COUNT,
+            ) {
+                Icon(Icons.Filled.Add, contentDescription = null)
+            }
+            Spacer(Modifier.width(8.dp))
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                listOf(1, 5, 10, 25, MAX_BOSS_REPEAT_COUNT).forEach { n ->
+                    FilterChip(
+                        selected = repeatCount == n,
+                        onClick  = { onRepeatCountChanged(n) },
+                        label    = { Text("×$n") },
+                    )
                 }
             }
         }

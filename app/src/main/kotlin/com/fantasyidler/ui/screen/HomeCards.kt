@@ -119,6 +119,8 @@ internal fun HomeSessionCard(
     sessionXpGain: Long,
     showEndTime: Boolean = true,
     bossEmoji: String? = null,
+    repeatIndex: Int = 0,
+    repeatTotal: Int = 0,
     onRepeat: () -> Unit,
     onAbandon: () -> Unit,
     onDebugFinish: () -> Unit,
@@ -189,6 +191,16 @@ internal fun HomeSessionCard(
                     style      = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                     color      = titleColor,
+                )
+            }
+
+            if (session.skillName == "boss" && repeatTotal > 1) {
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text       = stringResource(R.string.combat_fight_progress, repeatIndex.coerceAtLeast(1), repeatTotal),
+                    style      = MaterialTheme.typography.labelMedium,
+                    fontWeight = FontWeight.SemiBold,
+                    color      = GoldPrimary,
                 )
             }
 
@@ -370,13 +382,17 @@ internal fun QueueCard(
                                 val style = action.weaponSlot
                                     ?.let { EquipSlot.combatStyleForSlot(it) }
                                     ?: "attack"
-                                when (style) {
+                                val styleLabel = when (style) {
                                     "attack"   -> stringResource(R.string.label_attack)
                                     "strength" -> stringResource(R.string.label_strength)
                                     "ranged"   -> stringResource(R.string.label_ranged)
                                     "magic"    -> stringResource(R.string.label_magic)
                                     else       -> null
                                 }
+                                if (action.skillName == "boss" && action.repeatCount > 1) {
+                                    val fightsLabel = stringResource(R.string.combat_fight_count_suffix, action.repeatCount)
+                                    if (styleLabel != null) "$styleLabel • $fightsLabel" else fightsLabel
+                                } else styleLabel
                             }
                             action.outputQty > 0 -> stringResource(R.string.queue_item_qty_with_output, action.qty, action.outputQty)
                             action.qty > 0 -> stringResource(R.string.queue_item_qty, action.qty)

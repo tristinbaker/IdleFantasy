@@ -294,6 +294,29 @@ class PlayerRepository @Inject constructor(
         updateFlagsUnlocked(block(current))
     }
 
+    /** Stops an in-progress boss repeat run (e.g. on abandon) so it doesn't leave stale "N/M" progress behind. */
+    suspend fun clearActiveBossRepeat() = playerMutex.withLock { clearActiveBossRepeatUnlocked() }
+
+    internal suspend fun clearActiveBossRepeatUnlocked() {
+        val flags = getFlagsUnlocked()
+        if (flags.activeBossRepeatTotal > 0) {
+            updateFlagsUnlocked(flags.copy(activeBossRepeatIndex = 0, activeBossRepeatTotal = 0, activeBossRepeatSnapshot = null))
+        }
+    }
+
+    /** Called after a boss [QueuedAction] is freshly dequeued and started, to (re)initialise repeat progress. */
+    internal suspend fun stampBossRepeatStartUnlocked(action: QueuedAction) {
+        if (action.repeatCount > 1) {
+            updateFlagsUnlocked(getFlagsUnlocked().copy(
+                activeBossRepeatIndex    = 1,
+                activeBossRepeatTotal    = action.repeatCount,
+                activeBossRepeatSnapshot = action,
+            ))
+        } else {
+            clearActiveBossRepeatUnlocked()
+        }
+    }
+
     suspend fun <T> withLock(block: suspend () -> T): T = playerMutex.withLock { block() }
 
     internal suspend fun updateFlagsUnlocked(flags: PlayerFlags) {

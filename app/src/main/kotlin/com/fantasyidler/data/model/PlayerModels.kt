@@ -37,6 +37,12 @@ data class PlayerFlags(
     @SerialName("character_beard_color") val characterBeardColor: String = "a",
     /** Up to 3 queued sessions to auto-start after the current one completes. */
     @SerialName("session_queue") val sessionQueue: List<QueuedAction> = emptyList(),
+    /** 1-based index of the boss fight currently running within a multi-fight repeat request. 0 = not repeating. */
+    @SerialName("active_boss_repeat_index") val activeBossRepeatIndex: Int = 0,
+    /** Total fights requested for the current boss repeat run. */
+    @SerialName("active_boss_repeat_total") val activeBossRepeatTotal: Int = 0,
+    /** Frozen loadout/action re-queued after each fight in a boss repeat run. */
+    @SerialName("active_boss_repeat_snapshot") val activeBossRepeatSnapshot: QueuedAction? = null,
     @SerialName("last_seen_version_code") val lastSeenVersionCode: Int = 0,
     /** "dark" | "light" | "system". Defaults to "dark" to preserve existing behaviour. */
     @SerialName("theme_preference") val themePreference: String = "dark",
@@ -267,6 +273,8 @@ data class QueuedAction(
     @SerialName("spell_name") val spellName: String? = null,
     /** Weapon slot key captured at queue time for combat/boss sessions. */
     @SerialName("weapon_slot") val weaponSlot: String? = null,
+    /** Total boss fights requested in one queue entry (e.g. "fight this boss 100 times"). 1 = no repeat. */
+    @SerialName("repeat_count") val repeatCount: Int = 1,
 )
 
 // ---------------------------------------------------------------------------
