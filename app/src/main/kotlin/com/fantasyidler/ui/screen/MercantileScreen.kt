@@ -49,6 +49,10 @@ import com.fantasyidler.ui.viewmodel.MercantileViewModel
 import com.fantasyidler.ui.viewmodel.xpProgressFraction
 import com.fantasyidler.util.formatCoins
 import com.fantasyidler.util.formatXp
+import androidx.compose.ui.draw.alpha
+import com.fantasyidler.data.model.Skills
+import com.fantasyidler.ui.viewmodel.QuestCategory
+import com.fantasyidler.ui.viewmodel.QuestIndicator
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -93,13 +97,15 @@ fun MercantileScreen(
                 )
             }
             items(state.tradeRoutes, key = { it.id }) { route ->
+                val questIndicators = state.activeQuests["${Skills.MERCANTILE}:${route.id}"] ?: emptyList()
                 TradeRouteRow(
-                    route         = route,
-                    playerCoins   = state.coins,
-                    isStarting    = state.startingSession,
-                    sessionActive = state.anySessionActive,
-                    queueFull     = state.queueSize >= state.maxQueueSize,
-                    onStart       = { viewModel.startTradeRoute(route.id) },
+                    route           = route,
+                    playerCoins     = state.coins,
+                    isStarting      = state.startingSession,
+                    sessionActive   = state.anySessionActive,
+                    queueFull       = state.queueSize >= state.maxQueueSize,
+                    questIndicators = questIndicators,
+                    onStart         = { viewModel.startTradeRoute(route.id) },
                 )
                 HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
             }
@@ -142,13 +148,15 @@ fun MercantileSheetContent(
                 )
             }
             items(state.tradeRoutes, key = { it.id }) { route ->
+                val questIndicators = state.activeQuests["${Skills.MERCANTILE}:${route.id}"] ?: emptyList()
                 TradeRouteRow(
-                    route         = route,
-                    playerCoins   = state.coins,
-                    isStarting    = state.startingSession,
-                    sessionActive = state.anySessionActive,
-                    queueFull     = state.queueSize >= state.maxQueueSize,
-                    onStart       = { viewModel.startTradeRoute(route.id) },
+                    route           = route,
+                    playerCoins     = state.coins,
+                    isStarting      = state.startingSession,
+                    sessionActive   = state.anySessionActive,
+                    queueFull       = state.queueSize >= state.maxQueueSize,
+                    questIndicators = questIndicators,
+                    onStart         = { viewModel.startTradeRoute(route.id) },
                 )
                 HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
             }
@@ -192,6 +200,7 @@ private fun TradeRouteRow(
     isStarting: Boolean,
     sessionActive: Boolean,
     queueFull: Boolean,
+    questIndicators: List<QuestIndicator> = emptyList(),
     onStart: () -> Unit,
 ) {
     val context = LocalContext.current
@@ -205,11 +214,27 @@ private fun TradeRouteRow(
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 12.dp),
     ) {
-        Text(
-            text       = GameStrings.tradeRouteName(context, route.id, route.displayName),
-            style      = MaterialTheme.typography.bodyLarge,
-            fontWeight = FontWeight.SemiBold,
-        )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                text       = GameStrings.tradeRouteName(context, route.id, route.displayName),
+                style      = MaterialTheme.typography.bodyLarge,
+                fontWeight = FontWeight.SemiBold,
+            )
+            if (questIndicators.isNotEmpty()) {
+                val categories = questIndicators.groupBy { it.category }
+                val sortedCategories = categories.entries.sortedBy { it.key }
+                sortedCategories.forEach { (category, indicators) ->
+                    val emoji = if (category == QuestCategory.DAILY) "⏰" else "📜"
+                    val isCompletable = indicators.any { it.isCompletable }
+                    val alpha = if (isCompletable) 1.0f else 0.38f
+                    Text(
+                        text     = " $emoji",
+                        style    = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.alpha(alpha),
+                    )
+                }
+            }
+        }
         Spacer(Modifier.height(2.dp))
         Text(
             text  = GameStrings.tradeRouteDesc(context, route.id, route.description),
