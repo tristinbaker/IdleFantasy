@@ -9,6 +9,7 @@ import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
+import com.fantasyidler.repository.resolveCapeMultiplier
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -81,6 +82,8 @@ data class ShopUiState(
     /** Items reserved by queued actions — cannot be sold. */
     val reservedItems: Map<String, Int> = emptyMap(),
     val mercantileLevel: Int = 0,
+    val townBuildingTiers: Map<String, Int> = emptyMap(),
+    val skillPrestige: Map<String, Int> = emptyMap(),
 ) {
     val xpBoostActive: Boolean get() = xpBoostExpiresAt > System.currentTimeMillis()
 }
@@ -115,6 +118,8 @@ class ShopViewModel @Inject constructor(
                 isLoading        = false,
                 reservedItems    = computeReserved(flags.sessionQueue),
                 mercantileLevel  = levels[Skills.MERCANTILE] ?: 0,
+                townBuildingTiers = flags.townBuildingTiers,
+                skillPrestige     = flags.skillPrestige,
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ShopUiState())
@@ -317,11 +322,18 @@ class ShopViewModel @Inject constructor(
         return base + mercantileCapeBonusFromState()
     }
 
-    private fun mercantileCapeBonusFromState(): Float =
-        uiState.value.equipped[EquipSlot.CAPE]
-            ?.let { gameData.equipment[it] }
-            ?.takeIf { it.capeSkill == "mercantile" }
-            ?.capeBonus ?: 0f
+    private fun mercantileCapeBonusFromState(): Float {
+        val equippedCape = uiState.value.equipped[EquipSlot.CAPE]?.let { gameData.equipment[it] }
+        val mult = resolveCapeMultiplier(
+            skillName = "mercantile",
+            equippedCape = equippedCape,
+            inventoryKeys = uiState.value.inventory.keys,
+            townBuildingTiers = uiState.value.townBuildingTiers,
+            skillPrestige = uiState.value.skillPrestige,
+            allEquipment = gameData.equipment
+        )
+        return mult - 1.0f
+    }
 
     // ------------------------------------------------------------------
     // Bulk sell helpers

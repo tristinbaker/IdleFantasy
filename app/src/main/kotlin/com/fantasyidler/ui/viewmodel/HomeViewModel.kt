@@ -26,6 +26,7 @@ import com.fantasyidler.repository.TitleRepository
 import com.fantasyidler.repository.TownRepository
 import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.repository.WorkerQueuedSessionStarter
+import com.fantasyidler.repository.resolveCapeMultiplier
 import com.fantasyidler.simulator.SkillSimulator
 import kotlin.math.roundToInt
 import com.fantasyidler.util.craftDurationEfficiency
@@ -410,9 +411,8 @@ class HomeViewModel @Inject constructor(
             val flags: PlayerFlags = json.decodeFromString(player.flags)
             val skillPrestige = flags.skillPrestige
             val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
+            val inventory: Map<String, Int>    = json.decodeFromString(player.inventory)
             val equippedCape = equipped[EquipSlot.CAPE]?.let { gameData.equipment[it] }
-            val capeSkill    = equippedCape?.capeSkill
-            val capeBonus    = equippedCape?.capeBonus ?: 0f
             val boostActive      = flags.xpBoostExpiresAt > System.currentTimeMillis()
             val xpMult           = if (boostActive) 2L else 1L
             val blessingXpMult   = ChurchRepository.xpMultiplier(flags)
@@ -538,7 +538,12 @@ class HomeViewModel @Inject constructor(
                             f.runesConsumed.forEach  { (k, v) -> allRunesConsumed[k]  = (allRunesConsumed[k] ?: 0) + v }
                             f.xpBySkill.forEach      { (k, v) -> bossXpBySkill[k]     = (bossXpBySkill[k] ?: 0L) + v }
                         }
-                        applyCombatCapeBonus(bossXpBySkill, capeSkill, capeBonus)
+                        for (skill in bossXpBySkill.keys) {
+                            val mult = resolveCapeMultiplier(skill, equippedCape, inventory.keys, flags.townBuildingTiers, skillPrestige, gameData.equipment)
+                            if (mult > 1f) {
+                                bossXpBySkill[skill] = (bossXpBySkill[skill]!! * mult.toDouble()).toLong()
+                            }
+                        }
                         val bossSkillLvls    = playerRepo.getSkillLevels()
                         val bossArrowsRec    = allArrowsConsumed.mapValues { (_, qty) -> (qty * reclaimChance(bossSkillLvls[Skills.RANGED] ?: 1)).toInt() }.filterValues { it > 0 }
                         val bossRunesRec     = allRunesConsumed.mapValues  { (_, qty) -> (qty * reclaimChance(bossSkillLvls[Skills.MAGIC]  ?: 1)).toInt() }.filterValues { it > 0 }
@@ -609,7 +614,12 @@ class HomeViewModel @Inject constructor(
                             for ((a, q) in frame.arrowsConsumed)       arrows[a]         = (arrows[a] ?: 0) + q
                             for ((r, q) in frame.runesConsumed)        runes[r]          = (runes[r] ?: 0) + q
                         }
-                        applyCombatCapeBonus(xpPerSkill, capeSkill, capeBonus)
+                        for (skill in xpPerSkill.keys) {
+                            val mult = resolveCapeMultiplier(skill, equippedCape, inventory.keys, flags.townBuildingTiers, skillPrestige, gameData.equipment)
+                            if (mult > 1f) {
+                                xpPerSkill[skill] = (xpPerSkill[skill]!! * mult.toDouble()).toLong()
+                            }
+                        }
                         if (died) {
                             xpPerSkill.replaceAll { _, xp -> maxOf(1L, (xp * 0.1).toLong()) }
                             its.replaceAll { _, qty -> maxOf(0, (qty * 0.1).toInt()) }
@@ -674,73 +684,24 @@ class HomeViewModel @Inject constructor(
                         combinedCoins += coins
                     }
                     "expedition" -> {
-                        val dungeonData = gameData.skillingDungeons[session.activityKey]
-                        val totalXp = frames.sumOf { it.xpGain.toLong() }
-                        val its     = mutableMapOf<String, Int>()
-                        for (frame in frames) for ((item, qty) in frame.items) its[item] = (its[item] ?: 0) + qty
-                        val rawNotesFound = its.entries.filter { it.key.startsWith("note_") }.sumOf { it.value }
-                        val regular    = its.filterKeys { !it.startsWith("note_") && it !in petIds }
-                        val pets       = its.filterKeys { it in petIds }
-                        val skillName  = dungeonData?.skill ?: Skills.MINING
-                        awardedCapes += playerRepo.applySessionResults(skillName, totalXp, regular)
-                        questRepo.recordGathering(skillName, regular)
-                        playerRepo.recordDailyGathering(regular)
-                        guildRepo.recordGuildGathering(skillName, regular)
-                        for ((id, _) in pets) {
-                            val pd = gameData.pets[id] ?: continue
-                            if (playerRepo.addPetIfNew(id, pd.boostPercent))
-                                petFoundName = pd.displayName
-                        }
-                        combinedXpBySkill[skillName] = (combinedXpBySkill[skillName] ?: 0L) + totalXp
-                        for ((item, qty) in regular) combinedItems[item] = (combinedItems[item] ?: 0) + qty
-                        var localUnlockMsg: String? = null
-                        var localNotesFound = 0
-                        var localOldCount = 0
-                        var localNewCount = 0
-
-                        playerRepo.updateFlagsAtomically { currentFlags ->
-                            val pityCount    = currentFlags.expeditionPityRuns[session.activityKey] ?: 0
-                            val notesFound   = if (rawNotesFound == 0 && pityCount >= 9) 1 else rawNotesFound
-                            localNotesFound = notesFound
-                            val newPityCount = if (notesFound > 0) 0 else pityCount + 1
-                            val newPityRuns  = currentFlags.expeditionPityRuns.toMutableMap().apply {
-                                if (newPityCount == 0) remove(session.activityKey) else put(session.activityKey, newPityCount)
-                            }
-                            if (notesFound > 0 && dungeonData != null) {
-                                val oldCount = currentFlags.skillingDungeonNotes[session.activityKey] ?: 0
-                                localOldCount = oldCount
-                                val newCount = minOf(oldCount + notesFound, dungeonData.noteThreshold)
-                                localNewCount = newCount
-                                val newNotes = currentFlags.skillingDungeonNotes.toMutableMap()
-                                newNotes[session.activityKey] = newCount
-                                val newUnlocked = currentFlags.unlockedDungeons.toMutableList()
-                                if (newCount >= dungeonData.noteThreshold && !currentFlags.unlockedDungeons.contains(dungeonData.unlockDungeon)) {
-                                    newUnlocked += dungeonData.unlockDungeon
-                                    localUnlockMsg = dungeonData.unlockMessage
-                                }
-                                currentFlags.copy(
-                                    skillingDungeonNotes = newNotes,
-                                    unlockedDungeons = newUnlocked,
-                                    expeditionPityRuns = newPityRuns,
-                                )
-                            } else {
-                                currentFlags.copy(expeditionPityRuns = newPityRuns)
-                            }
-                        }
-
-                        if (localNotesFound > 0 && dungeonData != null) {
-                            val revealed = dungeonData.noteTexts.take(localNewCount.coerceAtMost(dungeonData.noteTexts.size))
-                            val newlyRevealedTexts = revealed.drop(localOldCount.coerceAtMost(revealed.size))
-                            expeditionNoteLines = newlyRevealedTexts
-                            expeditionUnlockMessage = localUnlockMsg
-                        }
+                        val result = collectExpeditionSession(
+                            session = session,
+                            frames = frames,
+                            petIds = petIds,
+                            awardedCapes = awardedCapes,
+                            combinedXpBySkill = combinedXpBySkill,
+                            combinedItems = combinedItems
+                        )
+                        if (result.petFoundName != null) petFoundName = result.petFoundName
+                        expeditionNoteLines = result.noteLines
+                        expeditionUnlockMessage = result.unlockMessage
                     }
                     Skills.MERCANTILE -> {
                         val totalXp    = frames.sumOf { it.xpGain.toLong() }
                         val coinReturn = frames.sumOf { (it.items["_coins"] ?: 0).toLong() }
-                        val mercantileCapeMult    = if (capeSkill == "mercantile") 1f + capeBonus else 1f
+                        val mercantileCapeMult    = resolveCapeMultiplier(Skills.MERCANTILE, equippedCape, inventory.keys, flags.townBuildingTiers, skillPrestige, gameData.equipment)
                         val mercantilePrestigeMult = 1f + (skillPrestige[Skills.MERCANTILE] ?: 0) * 0.10f
-                        val coinReturnBoosted = (coinReturn * blessingCoinMult * mercantileCapeMult * mercantilePrestigeMult).toLong()
+                        val coinReturnBoosted = (coinReturn.toDouble() * blessingCoinMult * mercantileCapeMult * mercantilePrestigeMult).toLong()
                         awardedCapes += playerRepo.applySessionResults(Skills.MERCANTILE, totalXp, emptyMap())
                         playerRepo.addCoins(coinReturnBoosted)
                         guildRepo.recordGuildTrade(session.activityKey, coinReturnBoosted)
@@ -760,12 +721,9 @@ class HomeViewModel @Inject constructor(
                         val pets       = its.filterKeys { it in petIds }
                         val rawRegular = its.filterKeys { it !in petIds }
                         val prestige   = skillPrestige[session.skillName] ?: 0
-                        val capeMult   = if (capeSkill == session.skillName)
-                            if (capeSkill in COMBAT_CAPE_SKILLS) 1f + capeBonus
-                            else 1f + capeBonus * (prestige + 1)
-                        else 1f
-                        val effectiveXp = if (capeMult > 1f && rawRegular.isEmpty()) (totalXp * capeMult).toLong() else totalXp
-                        val regular     = if (capeMult > 1f && rawRegular.isNotEmpty()) rawRegular.mapValues { (_, qty) -> (qty * capeMult).roundToInt() } else rawRegular
+                        val capeMult   = resolveCapeMultiplier(session.skillName, equippedCape, inventory.keys, flags.townBuildingTiers, skillPrestige, gameData.equipment)
+                        val effectiveXp = if (capeMult > 1f && rawRegular.isEmpty()) (totalXp.toDouble() * capeMult).toLong() else totalXp
+                        val regular     = if (capeMult > 1f && rawRegular.isNotEmpty()) rawRegular.mapValues { (_, qty) -> (qty.toFloat() * capeMult).roundToInt() } else rawRegular
                         awardedCapes += playerRepo.applySessionResults(session.skillName, effectiveXp, regular)
                         when (session.skillName) {
                             in gatheringSkills -> {
@@ -1450,6 +1408,86 @@ class HomeViewModel @Inject constructor(
             }
             if (changed) flags.copy(sessionQueue = newQueue) else flags
         }
+    }
+
+    private data class ExpeditionResult(
+        val petFoundName: String?,
+        val noteLines: List<String>,
+        val unlockMessage: String?
+    )
+
+    private suspend fun collectExpeditionSession(
+        session: SkillSession,
+        frames: List<SessionFrame>,
+        petIds: Set<String>,
+        awardedCapes: MutableList<String>,
+        combinedXpBySkill: MutableMap<String, Long>,
+        combinedItems: MutableMap<String, Int>
+    ): ExpeditionResult {
+        val dungeonData = gameData.skillingDungeons[session.activityKey]
+        val totalXp = frames.sumOf { it.xpGain.toLong() }
+        val its     = mutableMapOf<String, Int>()
+        for (frame in frames) for ((item, qty) in frame.items) its[item] = (its[item] ?: 0) + qty
+        val rawNotesFound = its.entries.filter { it.key.startsWith("note_") }.sumOf { it.value }
+        val regular    = its.filterKeys { !it.startsWith("note_") && it !in petIds }
+        val pets       = its.filterKeys { it in petIds }
+        val skillName  = dungeonData?.skill ?: Skills.MINING
+        awardedCapes += playerRepo.applySessionResults(skillName, totalXp, regular)
+        questRepo.recordGathering(skillName, regular)
+        playerRepo.recordDailyGathering(regular)
+        guildRepo.recordGuildGathering(skillName, regular)
+        var petFoundName: String? = null
+        for ((id, _) in pets) {
+            val pd = gameData.pets[id] ?: continue
+            if (playerRepo.addPetIfNew(id, pd.boostPercent))
+                petFoundName = pd.displayName
+        }
+        combinedXpBySkill[skillName] = (combinedXpBySkill[skillName] ?: 0L) + totalXp
+        for ((item, qty) in regular) combinedItems[item] = (combinedItems[item] ?: 0) + qty
+        var localUnlockMsg: String? = null
+        var localNotesFound = 0
+        var localOldCount = 0
+        var localNewCount = 0
+
+        playerRepo.updateFlagsAtomically { currentFlags ->
+            val pityCount    = currentFlags.expeditionPityRuns[session.activityKey] ?: 0
+            val notesFound   = if (rawNotesFound == 0 && pityCount >= 9) 1 else rawNotesFound
+            localNotesFound = notesFound
+            val newPityCount = if (notesFound > 0) 0 else pityCount + 1
+            val newPityRuns  = currentFlags.expeditionPityRuns.toMutableMap().apply {
+                if (newPityCount == 0) remove(session.activityKey) else put(session.activityKey, newPityCount)
+            }
+            if (notesFound > 0 && dungeonData != null) {
+                val oldCount = currentFlags.skillingDungeonNotes[session.activityKey] ?: 0
+                localOldCount = oldCount
+                val newCount = minOf(oldCount + notesFound, dungeonData.noteThreshold)
+                localNewCount = newCount
+                val newNotes = currentFlags.skillingDungeonNotes.toMutableMap()
+                newNotes[session.activityKey] = newCount
+                val newUnlocked = currentFlags.unlockedDungeons.toMutableList()
+                if (newCount >= dungeonData.noteThreshold && !currentFlags.unlockedDungeons.contains(dungeonData.unlockDungeon)) {
+                    newUnlocked += dungeonData.unlockDungeon
+                    localUnlockMsg = dungeonData.unlockMessage
+                }
+                currentFlags.copy(
+                    skillingDungeonNotes = newNotes,
+                    unlockedDungeons = newUnlocked,
+                    expeditionPityRuns = newPityRuns,
+                )
+            } else {
+                currentFlags.copy(expeditionPityRuns = newPityRuns)
+            }
+        }
+
+        var noteLines: List<String> = emptyList()
+        var unlockMessage: String? = null
+        if (localNotesFound > 0 && dungeonData != null) {
+            val revealed = dungeonData.noteTexts.take(localNewCount.coerceAtMost(dungeonData.noteTexts.size))
+            val newlyRevealedTexts = revealed.drop(localOldCount.coerceAtMost(revealed.size))
+            noteLines = newlyRevealedTexts
+            unlockMessage = localUnlockMsg
+        }
+        return ExpeditionResult(petFoundName, noteLines, unlockMessage)
     }
 }
 

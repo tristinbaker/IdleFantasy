@@ -65,6 +65,13 @@ class WorkerQueuedSessionStarter @Inject constructor(
         val worker = (if (slot == 2) flags.hiredWorker2 else flags.hiredWorker) ?: return
         val tier = worker.tier
         val agilityLevel = levels[Skills.AGILITY] ?: 1
+        val equippedCapeData = equipped[EquipSlot.CAPE]?.let { gameData.equipment[it] }
+        val attackCapeMult   = resolveCapeMultiplier("attack", equippedCapeData, inventory.keys, flags.townBuildingTiers, flags.skillPrestige, gameData.equipment)
+        val strengthCapeMult = resolveCapeMultiplier("strength", equippedCapeData, inventory.keys, flags.townBuildingTiers, flags.skillPrestige, gameData.equipment)
+        val defenseCapeMult  = resolveCapeMultiplier("defense", equippedCapeData, inventory.keys, flags.townBuildingTiers, flags.skillPrestige, gameData.equipment)
+        val rangedCapeMult   = resolveCapeMultiplier("ranged", equippedCapeData, inventory.keys, flags.townBuildingTiers, flags.skillPrestige, gameData.equipment)
+        val magicCapeMult    = resolveCapeMultiplier("magic", equippedCapeData, inventory.keys, flags.townBuildingTiers, flags.skillPrestige, gameData.equipment)
+        val prayerCapeMult   = resolveCapeMultiplier("prayer", equippedCapeData, inventory.keys, flags.townBuildingTiers, flags.skillPrestige, gameData.equipment)
         val levelAtStart = when (action.skillName) {
             "boss", "combat" -> combatLevelFrom(levels)
             else -> levels[action.skillName] ?: 1
@@ -269,21 +276,21 @@ class WorkerQueuedSessionStarter @Inject constructor(
                 val bossFrames = CombatSimulator.simulateBoss(
                     boss               = boss,
                     bossKey            = bossKey,
-                    playerAttack       = levels[Skills.ATTACK]    ?: 1,
-                    playerStrength     = levels[Skills.STRENGTH]  ?: 1,
-                    playerDefence      = (levels[Skills.DEFENSE]  ?: 1) + totalDefBonus,
+                    playerAttack       = ((levels[Skills.ATTACK]    ?: 1) * attackCapeMult).toInt(),
+                    playerStrength     = ((levels[Skills.STRENGTH]  ?: 1) * strengthCapeMult).toInt(),
+                    playerDefence      = (((levels[Skills.DEFENSE]  ?: 1) * defenseCapeMult).toInt() + totalDefBonus),
                     playerHp           = levels[Skills.HITPOINTS] ?: 1,
                     weaponAttackBonus  = totalAtkBonus,
                     weaponStrBonus     = totalStrBonus,
                     combatStyle        = combatStyle,
-                    playerRanged       = levels[Skills.RANGED] ?: 1,
-                    playerMagic        = levels[Skills.MAGIC]  ?: 1,
+                    playerRanged       = ((levels[Skills.RANGED] ?: 1) * rangedCapeMult).toInt(),
+                    playerMagic        = ((levels[Skills.MAGIC]  ?: 1) * magicCapeMult).toInt(),
                     arrowStrengthBonuses = ARROW_STRENGTH_BONUS,
                     spellMaxHit        = (spell?.maxHit ?: 0) + totalMagicDmgBonus,
                     availableArrows    = availableArrows,
                     equippedFood       = availableFood,
                     foodHealValues     = gameData.foodHealValues,
-                    blessingDefBonus   = ChurchRepository.defBonus(flags),
+                    blessingDefBonus   = (ChurchRepository.defBonus(flags) * prayerCapeMult).toInt(),
                     attackSpeedSec     = bossWeapon?.attackSpeed ?: CombatSimulator.BASE_ATTACK_SPEED_SEC,
                 )
                 startSession(slot, action, bossFrames, durationMs, efficiencyMultiplier, levelAtStart)
@@ -320,16 +327,16 @@ class WorkerQueuedSessionStarter @Inject constructor(
                 val result = CombatSimulator.simulateDungeon(
                     dungeon             = dungeon,
                     enemies             = gameData.enemies,
-                    playerAttack        = levels[Skills.ATTACK]    ?: 1,
-                    playerStrength      = levels[Skills.STRENGTH]  ?: 1,
-                    playerDefence       = (levels[Skills.DEFENSE]  ?: 1) + totalDefBonus,
+                    playerAttack        = ((levels[Skills.ATTACK]    ?: 1) * attackCapeMult).toInt(),
+                    playerStrength      = ((levels[Skills.STRENGTH]  ?: 1) * strengthCapeMult).toInt(),
+                    playerDefence       = (((levels[Skills.DEFENSE]  ?: 1) * defenseCapeMult).toInt() + totalDefBonus),
                     playerHp            = levels[Skills.HITPOINTS] ?: 1,
-                    blessingDefBonus    = ChurchRepository.defBonus(flags),
+                    blessingDefBonus    = (ChurchRepository.defBonus(flags) * prayerCapeMult).toInt(),
                     weaponAttackBonus   = totalAtkBonus,
                     weaponStrengthBonus = totalStrBonus,
                     combatStyle         = combatStyle,
-                    playerRanged        = levels[Skills.RANGED]    ?: 1,
-                    playerMagic         = levels[Skills.MAGIC]     ?: 1,
+                    playerRanged        = ((levels[Skills.RANGED]    ?: 1) * rangedCapeMult).toInt(),
+                    playerMagic         = ((levels[Skills.MAGIC]     ?: 1) * magicCapeMult).toInt(),
                     arrowStrengthBonuses = ARROW_STRENGTH_BONUS,
                     spellMaxHit         = (spell?.maxHit ?: 0) + totalMagicDmgBonus,
                     agilityLevel        = agilityLevel,

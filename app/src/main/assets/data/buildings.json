@@ -236,5 +236,46 @@
         }
       }
     ]
+  },
+  "cape_rack": {
+    "key": "cape_rack",
+    "tiers": [
+      {
+        "construction_level_required": 50,
+        "coin_cost": 150000,
+        "materials": {
+          "oak_plank": 500,
+          "carved_stone": 200,
+          "steel_nail": 1000
+        },
+        "bonuses": {
+          "passive_cape_category": 1
+        }
+      },
+      {
+        "construction_level_required": 75,
+        "coin_cost": 600000,
+        "materials": {
+          "willow_plank": 800,
+          "stone_block": 400,
+          "steel_nail": 2000
+        },
+        "bonuses": {
+          "passive_cape_category": 2
+        }
+      },
+      {
+        "construction_level_required": 90,
+        "coin_cost": 2000000,
+        "materials": {
+          "yew_plank": 1200,
+          "stone_block": 800,
+          "mithril_nail": 3000
+        },
+        "bonuses": {
+          "passive_cape_category": 3
+        }
+      }
+    ]
   }
 }

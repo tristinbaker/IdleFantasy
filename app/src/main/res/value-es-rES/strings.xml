@@ -1545,4 +1545,9 @@
     <string name="armory_source_weekly_bonus">Rare reward for completing all Weekly Quests</string>
     <string name="armory_source_skill_cape">Reach level 99 in %1$s</string>
     <string name="home_session_voided">Session Voided — Materials Refunded</string>
+    <string name="town_building_cape_rack_name">Cape Rack</string>
+    <string name="town_cape_rack_no_bonus">Upgrade to passively apply owned skill/guild cape yield and XP bonuses</string>
+    <string name="town_cape_rack_t1_bonus">Passive bonuses from Tier 1 (Gathering) capes are active</string>
+    <string name="town_cape_rack_t2_bonus">Passive bonuses from Tier 1 &amp; 2 (Gathering, Artisan) capes are active</string>
+    <string name="town_cape_rack_t3_bonus">Passive bonuses from all owned capes (Gathering, Artisan, Combat &amp; Guild) are active</string>
 </resources>

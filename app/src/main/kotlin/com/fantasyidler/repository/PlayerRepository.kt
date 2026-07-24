@@ -3,6 +3,7 @@ package com.fantasyidler.repository
 import com.fantasyidler.data.db.dao.FarmingPatchDao
 import com.fantasyidler.data.db.dao.PlayerDao
 import com.fantasyidler.data.db.dao.QuestProgressDao
+import com.fantasyidler.data.json.EquipmentData
 import com.fantasyidler.data.model.*
 import com.fantasyidler.simulator.SkillSimulator
 import com.fantasyidler.simulator.XpTable
@@ -1156,5 +1157,80 @@ class PlayerRepository @Inject constructor(
             equipped    = json.encode<Map<String, String?>>(defaultEquipped),
             flags       = json.encode<PlayerFlags>(PlayerFlags()),
         )
+    }
+}
+
+internal fun isGuildCapeForSkill(capeSkill: String, skillName: String): Boolean {
+    return when (capeSkill) {
+        "warriors" -> skillName in setOf("attack", "strength", "defense")
+        "archers" -> skillName == "ranged"
+        "mages" -> skillName == "magic"
+        else -> false
+    }
+}
+
+internal fun resolveOwnedCapeKeysForSkill(skillName: String): List<String> {
+    return when (skillName) {
+        "attack" -> listOf("attack_cape", "warriors_guild_cape")
+        "strength" -> listOf("strength_cape", "warriors_guild_cape")
+        "defense" -> listOf("defense_cape", "warriors_guild_cape")
+        "ranged" -> listOf("ranged_cape", "archers_guild_cape")
+        "magic" -> listOf("magic_cape", "mages_guild_cape")
+        "hitpoints", "hp" -> listOf("hp_cape")
+        else -> listOf("${skillName}_cape", "${skillName}_guild_cape")
+    }
+}
+
+fun resolveCapeMultiplier(
+    skillName: String,
+    equippedCape: EquipmentData?,
+    inventoryKeys: Set<String>,
+    townBuildingTiers: Map<String, Int>,
+    skillPrestige: Map<String, Int>,
+    allEquipment: Map<String, EquipmentData>
+): Float {
+    val normSkill = if (skillName == Skills.HITPOINTS) "hp" else skillName
+    val rackTier = townBuildingTiers["cape_rack"] ?: 0
+    val isCategoryUnlocked = when {
+        normSkill in Skills.GATHERING -> rackTier >= 1
+        normSkill in Skills.CRAFTING_SKILLS -> rackTier >= 2
+        else -> rackTier >= 3
+    }
+
+    val eligibleCapeBonuses = mutableListOf<Float>()
+
+    // Check equipped cape
+    val equippedCapeSkill = equippedCape?.capeSkill
+    if (equippedCapeSkill != null) {
+        val isMatch = equippedCapeSkill == normSkill || isGuildCapeForSkill(equippedCapeSkill, normSkill)
+        if (isMatch && equippedCape.capeBonus > 0f) {
+            eligibleCapeBonuses.add(equippedCape.capeBonus)
+        }
+    }
+
+    // Check passive capes in inventory
+    if (isCategoryUnlocked) {
+        val candidateKeys = resolveOwnedCapeKeysForSkill(normSkill)
+        for (key in candidateKeys) {
+            if (inventoryKeys.contains(key)) {
+                val capeDef = allEquipment[key]
+                if (capeDef != null && capeDef.capeBonus > 0f) {
+                    eligibleCapeBonuses.add(capeDef.capeBonus)
+                }
+            }
+        }
+    }
+
+    if (eligibleCapeBonuses.isEmpty()) return 1.0f
+
+    val maxBonus = eligibleCapeBonuses.maxOrNull() ?: 0f
+    if (maxBonus <= 0f) return 1.0f
+
+    val prestigeLevel = skillPrestige[normSkill] ?: 0
+    val isCombatSkill = normSkill in setOf("attack", "strength", "defense", "ranged", "magic", "hp", "slayer")
+    return if (isCombatSkill) {
+        1.0f + maxBonus
+    } else {
+        1.0f + maxBonus * (prestigeLevel + 1)
     }
 }

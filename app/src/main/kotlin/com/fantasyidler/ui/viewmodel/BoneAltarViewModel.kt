@@ -12,6 +12,7 @@ import com.fantasyidler.repository.ChurchRepository
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.GuildRepository
 import com.fantasyidler.repository.PlayerRepository
+import com.fantasyidler.repository.resolveCapeMultiplier
 import com.fantasyidler.repository.QuestRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -77,7 +78,14 @@ class BoneAltarViewModel @Inject constructor(
 
         val boostActive    = flags.xpBoostExpiresAt > System.currentTimeMillis()
         val equippedCape   = equipped[EquipSlot.CAPE]?.let { gameData.equipment[it] }
-        val prayerCapeMult = if (equippedCape?.capeSkill == Skills.PRAYER) 1f + (equippedCape.capeBonus) else 1f
+        val prayerCapeMult = resolveCapeMultiplier(
+            skillName = Skills.PRAYER,
+            equippedCape = equippedCape,
+            inventoryKeys = inventory.keys,
+            townBuildingTiers = flags.townBuildingTiers,
+            skillPrestige = flags.skillPrestige,
+            allEquipment = gameData.equipment
+        )
         val churchMult     = ChurchRepository.xpMultiplier(flags)
         val prestige       = flags.skillPrestige[Skills.PRAYER] ?: 0
         val prestigeMult   = if (prestige > 0) (1.0 + prestige * 0.10).toFloat() else 1f

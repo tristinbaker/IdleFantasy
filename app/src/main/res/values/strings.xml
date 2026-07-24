@@ -1221,6 +1221,11 @@
         <item quantity="one">+%1$d extra queue slot</item>
         <item quantity="other">+%1$d extra queue slots</item>
     </plurals>
+    <string name="town_building_cape_rack_name">Cape Rack</string>
+    <string name="town_cape_rack_no_bonus">Upgrade to passively apply owned skill/guild cape yield and XP bonuses</string>
+    <string name="town_cape_rack_t1_bonus">Passive bonuses from Tier 1 (Gathering) capes are active</string>
+    <string name="town_cape_rack_t2_bonus">Passive bonuses from Tier 1 &amp; 2 (Gathering, Artisan) capes are active</string>
+    <string name="town_cape_rack_t3_bonus">Passive bonuses from all owned capes (Gathering, Artisan, Combat &amp; Guild) are active</string>
 
     <!-- Town achievements -->
     <string name="achievement_town_first_upgrade_name">First Renovation</string>
