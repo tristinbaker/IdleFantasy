@@ -175,7 +175,7 @@
     <!-- Translator note: %1$s = relative time (e.g. "5m ago") -->
     <string name="format_started_ago">Started %1$s ago</string>
     <!-- Translator note: %1$s = item display name, %2$d = quantity -->
-    <string name="format_item_quantity">%1$s ×%2$d</string>
+    <string name="format_item_quantity" translatable="false">%1$s ×%2$d</string>
     <!-- Translator note: %1$d = coin amount -->
     <string name="format_price_coins">%1$d coins</string>
     <!-- Translator note: %1$d = required level, %2$s = skill display name -->
@@ -191,7 +191,7 @@
     <!-- Translator note: %1$d = boost percentage -->
     <string name="format_xp_boost_percent">+%1$d%% XP</string>
     <!-- Translator note: %1$s = item/resource name, %2$d = quantity drop amount -->
-    <string name="format_drop_chance">%1$s: %2$d</string>
+    <string name="format_drop_chance" translatable="false">%1$s: %2$d</string>
     <!-- Translator note: %1$d = minutes remaining -->
     <string name="format_minutes_remaining">%1$d min remaining</string>
     <!-- Translator note: %1$s = version string (e.g. "0.1.0") -->

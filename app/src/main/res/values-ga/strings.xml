@@ -228,4 +228,63 @@
         <item quantity="many">+%1$d áiteanna scuaine breise</item>
         <item quantity="other">+%1$d áiteanna scuaine breise</item>
     </plurals>
+    <string name="label_boost">Neartaigh</string>
+    <string name="label_arrows_reclaimed">Saigheada Faighte Ar Ais</string>
+    <string name="label_runes_consumed">Clocha Rún Úsáidte</string>
+    <string name="label_runes_reclaimed">Clocha Rún Faighte Ar Ais</string>
+    <string name="label_runes">Clocha Rún</string>
+    <string name="label_melee">Troid</string>
+    <string name="label_ranged_style">Boghdóireacht</string>
+    <string name="label_combat">Comhrac</string>
+    <string name="label_ingredients">Comhábhar</string>
+    <string name="label_output">Aschur</string>
+    <string name="label_unlocked_at">Díghlasáilte Ag Leibhéal</string>
+    <string name="label_kills">Maruithe</string>
+    <string name="label_personal_best">Sáriarracht Phearsanta</string>
+    <string name="label_daily_dig">Tochailt Laethúil</string>
+    <string name="label_dig_depth">Doimhneacht Na Poill</string>
+    <string name="label_version">Leagan</string>
+    <string name="format_time_remaining">%1$s fágtha</string>
+    <string name="format_started_ago">Tosaithe %1$s ó shin</string>
+    <string name="format_price_coins">%1$d boinn</string>
+    <string name="format_level_requirement">Leibhéal %1$d %2$s ag teastáil</string>
+    <string name="format_patch_number">Paiste %1$d</string>
+    <string name="format_arena_record">%1$d buanna / %2$d díomuanna</string>
+    <string name="format_skill_level">%1$s: Leibhéal %2$d</string>
+    <string name="format_minutes_remaining">%1$d nóim fágtha</string>
+    <string name="format_version">Leagan %1$s</string>
+    <string name="error_not_enough_coins">Níl dóthain airgead.</string>
+    <string name="error_not_enough_items">Níl dóthain %1$s.</string>
+    <plurals name="plural_items">
+        <item quantity="zero">%1$d earraí</item>
+        <item quantity="one">%1$d earra</item>
+        <item quantity="two">%1$d earraí</item>
+        <item quantity="few">%1$d earraí</item>
+        <item quantity="many">%1$d earraí</item>
+        <item quantity="other">%1$d earraí</item>
+    </plurals>
+    <plurals name="plural_minutes">
+        <item quantity="zero">%1$d nóiméid</item>
+        <item quantity="one">%1$d nóiméad</item>
+        <item quantity="two">%1$d nóiméid</item>
+        <item quantity="few">%1$d nóiméid</item>
+        <item quantity="many">%1$d nóiméid</item>
+        <item quantity="other">%1$d nóiméid</item>
+    </plurals>
+    <plurals name="plural_hours">
+        <item quantity="zero">%1$d uair</item>
+        <item quantity="one">%1$d uair</item>
+        <item quantity="two">%1$d uair</item>
+        <item quantity="few">%1$d uair</item>
+        <item quantity="many">%1$d uair</item>
+        <item quantity="other">%1$d uair</item>
+    </plurals>
+    <plurals name="plural_patches">
+        <item quantity="zero">%1$d paistí</item>
+        <item quantity="one">%1$d paiste</item>
+        <item quantity="two">%1$d paistí</item>
+        <item quantity="few">%1$d paistí</item>
+        <item quantity="many">%1$d paistí</item>
+        <item quantity="other">%1$d paistí</item>
+    </plurals>
 </resources>
