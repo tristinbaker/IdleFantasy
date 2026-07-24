@@ -1637,10 +1637,10 @@
     <string name="settings_credit_banners_title">Seasonal Banners</string>
     <string name="settings_credit_banners_subtitle">Art by Wenrexa</string>
     <string name="settings_credit_skill_icons_title">Skill Icons</string>
-    <string name="settings_credit_skill_icons_subtitle">Shikashi\'s Fantasy Icons Pack</string>
+    <string name="settings_credit_skill_icons_subtitle" translatable="false">Shikashi\'s Fantasy Icons Pack</string>
     <string name="title_seasonal_champion_of">Champion of %1$s</string>
     <string name="title_seasonal_requirement">Complete the %1$s Seasonal Event</string>
     <string name="home_welcome_greeting">Welcome back,</string>
-    <string name="home_welcome_name">%1$s!</string>
+    <string name="home_welcome_name" translatable="false">%1$s!</string>
     <string name="home_welcome_title">The %1$s!</string>
 </resources>
