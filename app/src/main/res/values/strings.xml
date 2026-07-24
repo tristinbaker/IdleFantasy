@@ -594,6 +594,11 @@
     <string name="skills_fish_desc">Lv. %1$d  •  %2$s XP/catch</string>
     <!-- Translator note: %1$d = required level, %2$s = skill name, %3$d = player level, %4$s = skill name again -->
     <string name="skills_req_with_have">Requires %1$d %2$s (You have %3$d %4$s)</string>
+    <!-- Translator note: %1$d = owned quantity -->
+    <string name="crafting_owned">Owned: %1$d</string>
+    <string name="crafting_owned_detail">Owned in inventory: %1$d</string>
+    <string name="firemaking_ashes_owned">Ashes owned: %1$d</string>
+
 
     <!-- ===== ShopScreen ===== -->
     <string name="shop_active">ACTIVE</string>
@@ -1316,7 +1321,7 @@
     <string name="carnival_queue">Queue Session</string>
     <string name="carnival_ring_toss">Ring Toss</string>
     <string name="carnival_active_ring_desc">Time your throw when the indicator hits the golden target zone.</string>
-    <string name="carnival_ring_target_hint">Aim for the centre (45%–55%)</string>
+    <string name="carnival_ring_target_hint" formatted="false">Aim for the centre (45%–55%)</string>
     <string name="carnival_throw">Throw!</string>
     <string name="carnival_hammer_strike">Hammer Strike</string>
     <string name="carnival_active_hammer_desc">Strike when the power meter is at its peak for maximum score.</string>
@@ -1372,7 +1377,8 @@
     <string name="carnival_difficulty_label">Difficulty</string>
     <string name="carnival_difficulty_normal">Normal</string>
     <string name="carnival_difficulty_hard">Hard</string>
-    <string name="carnival_ring_hard_hint">Hard: 52%–57% target, 7 tickets</string>
+    <string name="carnival_ring_hard_hint" formatted="false">Hard: 52%–57% target, 7 tickets</string>
+
 
     <!-- ===== Magic Bean / Farming ===== -->
     <string name="farming_bean_note_1">A tiny sprout has pushed through the soil.</string>

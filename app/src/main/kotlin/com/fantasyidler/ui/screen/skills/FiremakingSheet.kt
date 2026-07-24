@@ -187,8 +187,9 @@ internal fun FiremakingSheet(
                                         }
                                     }
                                 }
+                                val ashOwned = inventory[ashKey] ?: 0
                                 Text(
-                                    text  = stringResource(R.string.firemaking_burns_to, ashName) + "  •  ${log.xpPerLog} XP",
+                                    text  = stringResource(R.string.firemaking_burns_to, ashName) + "  •  ${log.xpPerLog} XP  •  " + stringResource(R.string.firemaking_ashes_owned, ashOwned),
                                     style = MaterialTheme.typography.bodySmall,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                                 )
@@ -205,6 +206,13 @@ internal fun FiremakingSheet(
             }
         } else {
             val key      = selectedKey!!
+            val ashKey   = when (key) {
+                "oak_log" -> "oak_ashes"; "willow_log" -> "willow_ashes"
+                "maple_log" -> "maple_ashes"; "yew_log" -> "yew_ashes"
+                "magic_log" -> "magic_ashes"; "redwood_log" -> "redwood_ashes"
+                else -> "ashes"
+            }
+            val ashOwned = inventory[ashKey] ?: 0
             val maxQty   = (inventory[key] ?: 0).coerceAtMost(craftLimit)
             var qty      by remember(key) { androidx.compose.runtime.mutableIntStateOf(maxQty.coerceAtLeast(1)) }
             var textValue by remember(key) { mutableStateOf(maxQty.coerceAtLeast(1).toString()) }
@@ -219,12 +227,13 @@ internal fun FiremakingSheet(
                 modifier = Modifier.padding(horizontal = 16.dp),
             )
             Text(
-                text     = "${maxQty} ${stringResource(R.string.firemaking_logs_in_inventory)}",
+                text     = "${maxQty} ${stringResource(R.string.firemaking_logs_in_inventory)}  •  " + stringResource(R.string.firemaking_ashes_owned, ashOwned),
                 style    = MaterialTheme.typography.bodySmall,
                 color    = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
             )
             Spacer(Modifier.height(12.dp))
+
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
                 androidx.compose.material3.IconButton(onClick = { if (qty > 1) { qty--; textValue = qty.toString() } }, enabled = qty > 1) {
                     androidx.compose.material3.Icon(androidx.compose.material.icons.Icons.Filled.Remove, contentDescription = null)

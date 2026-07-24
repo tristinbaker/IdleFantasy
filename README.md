@@ -26,7 +26,8 @@ Train **23 skills** at your own pace:
 - **Combat** (7): Attack, Strength, Defense, Ranged, Magic, Hitpoints, Prayer
 - **Support** (2): Mercantile, Slayer
 
-Better equipment means faster gathering and surviving tougher dungeons. Craft your own gear or buy it from the Shop. The **Mercantile** skill levels through trade routes and unlocks better prices. **Slayer** tasks are assigned by the Slayer Master in town and are completed by fighting specific enemies in dungeons.
+Better equipment means faster gathering and surviving tougher dungeons. Craft your own gear or buy it from the Shop. Crafting windows display required ingredients alongside your currently owned item count (`Owned: X`). The **Mercantile** skill levels through trade routes and unlocks better prices. **Slayer** tasks are assigned by the Slayer Master in town and are completed by fighting specific enemies in dungeons.
+
 
 ## Combat and dungeons
 

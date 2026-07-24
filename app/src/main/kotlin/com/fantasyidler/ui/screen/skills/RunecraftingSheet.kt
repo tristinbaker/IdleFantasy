@@ -208,8 +208,9 @@ internal fun RunecraftingSheet(
                                     }
                                 }
                             }
+                            val runeOwned = inventory[key] ?: 0
                             Text(
-                                text  = stringResource(R.string.skills_rune_desc, rune.xpPerRune.toInt(), rune.levelRequired),
+                                text  = stringResource(R.string.skills_rune_desc, rune.xpPerRune.toInt(), rune.levelRequired) + "  •  " + stringResource(R.string.crafting_owned, runeOwned),
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                             )
@@ -240,13 +241,15 @@ internal fun RunecraftingSheet(
                 style    = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.padding(horizontal = 16.dp),
             )
+            val ownedRune = selectedKey?.let { inventory[it] } ?: 0
             Text(
-                text     = stringResource(R.string.skills_rune_selected, selectedRune.xpPerRune.toInt(), inventoryMax),
+                text     = stringResource(R.string.skills_rune_selected, selectedRune.xpPerRune.toInt(), inventoryMax) + "  •  " + stringResource(R.string.crafting_owned, ownedRune),
                 style    = MaterialTheme.typography.bodySmall,
                 color    = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
             )
             Spacer(Modifier.height(12.dp))
+
 
             Row(
                 modifier              = Modifier.fillMaxWidth(),
