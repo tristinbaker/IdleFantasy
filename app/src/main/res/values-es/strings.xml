@@ -1396,6 +1396,9 @@
     <string name="armory_source_drop_chance">Soltado por %1$s (%2$s)</string>
     <string name="armory_source_drop">Soltado por %1$s</string>
     <string name="armory_source_shop">Tienda</string>
+    <string name="armory_source_daily_bonus">Recompensa rara por completar todas las misiones diarias</string>
+    <string name="armory_source_weekly_bonus">Recompensa rara por completar todas las misiones semanales</string>
+    <string name="armory_source_skill_cape">Alcanza el nivel 99 en %1$s</string>
 
     <!-- Session / queue messages (issue #596) -->
     <string name="skill_no_logs">No hay troncos en el inventario</string>
@@ -1433,6 +1436,7 @@
     <string name="home_found_pet">¡Has encontrado una mascota: %1$s!</string>
     <string name="pet_found_title">¡Nueva mascota!</string>
     <string name="home_congratulations_received">¡Felicidades! Has recibido: %1$s</string>
+    <string name="home_session_voided">Sesión anulada — Materiales reembolsados</string>
     <string name="combat_no_food_title">Sin comida equipada</string>
     <string name="combat_no_food_body">No tienes comida equipada. Sin comida podrías morir rápidamente y perder la mayoría de tus recompensas. ¿Empezar de todas formas?</string>
     <string name="combat_start_anyway">Empezar de todas formas</string>

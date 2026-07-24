@@ -1401,6 +1401,9 @@
     <string name="armory_source_drop_chance">%1$s tarafından düşürüldü (%2$s)</string>
     <string name="armory_source_drop">%1$s tarafından düşürüldü</string>
     <string name="armory_source_shop">Mağaza</string>
+    <string name="armory_source_daily_bonus">Tüm Günlük Görevleri tamamlamak için nadir ödül</string>
+    <string name="armory_source_weekly_bonus">Tüm Haftalık Görevleri tamamlamak için nadir ödül</string>
+    <string name="armory_source_skill_cape">%1$s içinde seviye 99\'a ulaşın</string>
 
     <!-- Session / queue messages (issue #596) -->
     <string name="skill_no_logs">Envanterde kütük yok</string>
@@ -1438,6 +1441,7 @@
     <string name="home_found_pet">Bir evcil hayvan buldunuz: %1$s!</string>
     <string name="pet_found_title">Yeni evcil hayvan!</string>
     <string name="home_congratulations_received">Tebrikler! Aldığınız: %1$s</string>
+    <string name="home_session_voided">Oturum İptal Edildi — Malzemeler İade Edildi</string>
     <string name="combat_no_food_title">Yiyecek Takılı Değil</string>
     <string name="combat_no_food_body">Yiyecek takılı değil. Yiyecek olmadan çabuk ölebilir ve ödüllerin çoğunu kaybedebilirsiniz. Yine de başlansın mı?</string>
     <string name="combat_start_anyway">Yine de başla</string>

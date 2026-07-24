@@ -23,7 +23,7 @@ class DailyQuestRepository @Inject constructor(
     private val gameData: GameDataRepository,
 ) {
 
-    private val dwarvenDropPool = listOf(
+    internal val dwarvenDropPool = listOf(
         "dwarven_sword", "dwarven_scimitar", "dwarven_warhammer",
         "dwarven_pickaxe", "dwarven_axe", "dwarven_fishing_rod", "dwarven_hoe",
         "dwarven_helm", "dwarven_platebody", "dwarven_platelegs",

@@ -1394,6 +1394,9 @@
     <string name="armory_source_drop_chance">Laché par %1$s (%2$s)</string>
     <string name="armory_source_drop">Laché par %1$s</string>
     <string name="armory_source_shop">Magasin</string>
+    <string name="armory_source_daily_bonus">Récompense rare pour avoir terminé toutes les quêtes quotidiennes</string>
+    <string name="armory_source_weekly_bonus">Récompense rare pour avoir terminé toutes les quêtes hebdomadaires</string>
+    <string name="armory_source_skill_cape">Atteignez le niveau 99 en %1$s</string>
 
     <!-- Session / queue messages (issue #596) -->
     <string name="skill_no_logs">Pas de rondins dans l\'inventaire</string>
@@ -1431,6 +1434,7 @@
     <string name="home_found_pet">Vous avez trouvé un familier : %1$s !</string>
     <string name="pet_found_title">Nouveau familier!</string>
     <string name="home_congratulations_received">Félicitations ! Vous avez reçu : %1$s</string>
+    <string name="home_session_voided">Session annulée — Matériaux remboursés</string>
     <string name="combat_no_food_title">Pas de nourriture équipée</string>
     <string name="combat_no_food_body">Vous n\'avez pas de nourriture équipée. Sans nourriture, vous risquez de mourir rapidement et de perdre la plupart de vos récompenses. Commencer quand même ?</string>
     <string name="combat_start_anyway">Commencer quand même</string>

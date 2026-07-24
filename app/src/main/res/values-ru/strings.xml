@@ -1430,6 +1430,9 @@
     <string name="armory_source_drop_chance">Выпало от %1$s (%2$s)</string>
     <string name="armory_source_drop">Выпало от %1$s</string>
     <string name="armory_source_shop">Магазин</string>
+    <string name="armory_source_daily_bonus">Редкая награда за выполнение всех ежедневных заданий</string>
+    <string name="armory_source_weekly_bonus">Редкая награда за выполнение всех еженедельных заданий</string>
+    <string name="armory_source_skill_cape">Достигните 99 уровня в навыке %1$s</string>
 
     <!-- Session / queue messages (issue #596) -->
     <string name="skill_no_logs">Нет брёвен в инвентаре</string>
@@ -1467,6 +1470,7 @@
     <string name="home_found_pet">Вы нашли питомца: %1$s!</string>
     <string name="pet_found_title">Новый питомец!</string>
     <string name="home_congratulations_received">Поздравляем! Вы получили: %1$s</string>
+    <string name="home_session_voided">Сессия аннулирована — материалы возвращены</string>
     <string name="combat_no_food_title">Еда не экипирована</string>
     <string name="combat_no_food_body">У вас нет еды. Без еды вы можете быстро погибнуть и потерять большинство наград. Всё равно начать?</string>
     <string name="combat_start_anyway">Начать всё равно</string>

@@ -831,9 +831,17 @@ fun HomeScreen(
                 val n = state.pendingCollectCount
                 Button(
                     onClick  = viewModel::collectSession,
+                    enabled  = !state.isCollecting,
                     modifier = Modifier.fillMaxWidth(),
                 ) {
-                    Text(pluralStringResource(R.plurals.plural_collect_sessions, n, n))
+                    if (state.isCollecting) {
+                        CircularProgressIndicator(
+                            modifier    = Modifier.height(20.dp).width(20.dp),
+                            strokeWidth = 2.dp,
+                        )
+                    } else {
+                        Text(pluralStringResource(R.plurals.plural_collect_sessions, n, n))
+                    }
                 }
             }
 

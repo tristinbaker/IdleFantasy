@@ -1435,6 +1435,9 @@
     <string name="armory_source_drop_chance">Bottino da %1$s (%2$s)</string>
     <string name="armory_source_drop">Bottino da %1$s</string>
     <string name="armory_source_shop">Negozio</string>
+    <string name="armory_source_daily_bonus">Ricompensa rara per aver completato tutte le Missioni Giornaliere</string>
+    <string name="armory_source_weekly_bonus">Ricompensa rara per aver completato tutte le Missioni Settimanali</string>
+    <string name="armory_source_skill_cape">Raggiungi il livello 99 in %1$s</string>
 
     <!-- Session / queue messages (issue #596) -->
     <string name="skill_no_logs">Nessun tronco nell\'inventario</string>
@@ -1472,6 +1475,7 @@
     <string name="home_found_pet">Hai trovato un animaletto: %1$s!</string>
     <string name="pet_found_title">Nuovo animaletto!</string>
     <string name="home_congratulations_received">Congratulazioni! Hai ricevuto: %1$s</string>
+    <string name="home_session_voided">Sessione annullata — Materiali rimborsati</string>
     <string name="home_not_enough_coins_repeat">Monete insufficienti per ripetere %1$s.</string>
     <string name="home_not_enough_materials_repeat">Materiali insufficienti per ripetere %1$s.</string>
     <string name="combat_no_food_title">Non hai cibo con te</string>

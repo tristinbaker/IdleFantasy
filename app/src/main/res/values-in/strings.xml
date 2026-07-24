@@ -1157,6 +1157,9 @@
     <string name="armory_source_drop_chance">Dropped by %1$s (%2$s)</string>
     <string name="armory_source_drop">Dropped by %1$s</string>
     <string name="armory_source_shop">Toko</string>
+    <string name="armory_source_daily_bonus">Hadiah langka karena menyelesaikan semua Quest Harian</string>
+    <string name="armory_source_weekly_bonus">Hadiah langka karena menyelesaikan semua Quest Mingguan</string>
+    <string name="armory_source_skill_cape">Capai level 99 di %1$s</string>
     <string name="skill_no_logs">Tidak ada catatan dalam inventaris.</string>
     <string name="skill_not_enough_rune_essence">Rune Essence tidak cukup.</string>
     <string name="skill_not_enough_item">Tidak cukup %1$s</string>
@@ -1192,6 +1195,7 @@
     <string name="home_found_pet">Anda menemukan peliharaan: %1$s!</string>
     <string name="pet_found_title">New Pet!</string>
     <string name="home_congratulations_received">Selamat! Anda menerima: %1$s</string>
+    <string name="home_session_voided">Sesi Dibatalkan — Bahan Dikembalikan</string>
     <string name="home_not_enough_coins_repeat">koin tidak cukup untuk mengulangi %1$s.</string>
     <string name="home_not_enough_materials_repeat">Bahan tidak cukup untuk mengulang %1$s.</string>
     <string name="combat_no_food_title">Makanan Tak Digunakan</string>

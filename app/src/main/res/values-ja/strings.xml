@@ -1431,6 +1431,9 @@
     <string name="armory_source_drop_chance">%1$s からドロップ (%2$s)</string>
     <string name="armory_source_drop">%1$s からドロップ</string>
     <string name="armory_source_shop">ショップ</string>
+    <string name="armory_source_daily_bonus">デイリークエストを全て達成したときのレア報酬</string>
+    <string name="armory_source_weekly_bonus">ウィークリークエストを全て達成したときのレア報酬</string>
+    <string name="armory_source_skill_cape">%1$s のレベル99に到達する</string>
 
     <!-- Session / queue messages (issue #596) -->
     <string name="skill_no_logs">インベントリに原木がありません</string>
@@ -1468,6 +1471,7 @@
     <string name="home_found_pet">ペットを発見しました: %1$s！</string>
     <string name="pet_found_title">新しいペット！</string>
     <string name="home_congratulations_received">おめでとうございます！ %1$s を獲得しました</string>
+    <string name="home_session_voided">セッションが無効になりました — 素材は返還されました</string>
     <string name="home_not_enough_coins_repeat">%1$s を繰り返すためのコインが足りません。</string>
     <string name="home_not_enough_materials_repeat">%1$s を繰り返すための素材が足りません。</string>
     <string name="combat_no_food_title">料理が装備されていません</string>

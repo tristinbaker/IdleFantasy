@@ -1432,6 +1432,9 @@
     <string name="armory_source_drop_chance">Fallengelassen von %1$s (%2$s)</string>
     <string name="armory_source_drop">Fallengelassen von %1$s</string>
     <string name="armory_source_shop">Krämer</string>
+    <string name="armory_source_daily_bonus">Seltene Belohnung für den Abschluss aller täglichen Aufgaben</string>
+    <string name="armory_source_weekly_bonus">Seltene Belohnung für den Abschluss aller wöchentlichen Aufgaben</string>
+    <string name="armory_source_skill_cape">Erreiche Stufe 99 in %1$s</string>
 
     <!-- Session / queue messages (issue #596) -->
     <string name="skill_no_logs">Keine Holzscheite im Inventar</string>
@@ -1469,6 +1472,7 @@
     <string name="home_found_pet">Ihr habt ein Haustier gefunden: %1$s!</string>
     <string name="pet_found_title">Neues Haustier!</string>
     <string name="home_congratulations_received">Glückwunsch! Ihr habt erhalten: %1$s</string>
+    <string name="home_session_voided">Sitzung ungültig — Materialien erstattet</string>
     <string name="home_not_enough_coins_repeat">Nicht genug Münzen, um %1$s zu wiederholen.</string>
     <string name="home_not_enough_materials_repeat">Nicht genug Material, um %1$s zu wiederholen.</string>
     <string name="combat_no_food_title">Keine Nahrung ausgerüstet</string>

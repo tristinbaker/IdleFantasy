@@ -24,7 +24,7 @@ import javax.inject.Singleton
 private inline fun <reified T> Json.encode(value: T): String =
     encodeToString(serializersModule.serializer<T>(), value)
 
-private fun capeKeyForSkill(skill: String): String? = when (skill) {
+internal fun capeKeyForSkill(skill: String): String? = when (skill) {
     Skills.HITPOINTS -> "hp_cape"
     else             -> "${skill}_cape"
 }

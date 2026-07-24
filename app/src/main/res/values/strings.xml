@@ -1437,6 +1437,10 @@
     <string name="armory_source_drop_chance">Dropped by %1$s (%2$s)</string>
     <string name="armory_source_drop">Dropped by %1$s</string>
     <string name="armory_source_shop">Shop</string>
+    <string name="armory_source_daily_bonus">Rare reward for completing all Daily Quests</string>
+    <string name="armory_source_weekly_bonus">Rare reward for completing all Weekly Quests</string>
+    <!-- Translator note: %1$s = skill name, e.g. "Reach level 99 in Mining" -->
+    <string name="armory_source_skill_cape">Reach level 99 in %1$s</string>
 
     <!-- Session / queue messages (issue #596) -->
     <string name="skill_no_logs">No logs in inventory</string>
@@ -1474,6 +1478,8 @@
     <string name="home_found_pet">You found a pet: %1$s!</string>
     <string name="pet_found_title">New Pet!</string>
     <string name="home_congratulations_received">Congratulations! You received: %1$s</string>
+    <!-- Translator note: shown when a session's rewards were voided (e.g. a level requirement changed mid-session) and any materials it consumed were refunded -->
+    <string name="home_session_voided">Session Voided — Materials Refunded</string>
     <string name="home_not_enough_coins_repeat">Not enough coins to repeat %1$s.</string>
     <string name="home_not_enough_materials_repeat">Not enough materials to repeat %1$s.</string>
     <string name="combat_no_food_title">No Food Equipped</string>

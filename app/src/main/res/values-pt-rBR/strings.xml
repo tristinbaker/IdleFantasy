@@ -1427,6 +1427,9 @@
     <string name="armory_source_drop_chance">Derrubado por %1$s (%2$s)</string>
     <string name="armory_source_drop">Derrubado por %1$s</string>
     <string name="armory_source_shop">Loja</string>
+    <string name="armory_source_daily_bonus">Recompensa rara por completar todas as Missões Diárias</string>
+    <string name="armory_source_weekly_bonus">Recompensa rara por completar todas as Missões Semanais</string>
+    <string name="armory_source_skill_cape">Alcance o nível 99 em %1$s</string>
 
     <!-- Session / queue messages (issue #596) -->
     <string name="skill_no_logs">Nenhuma tora no inventário</string>
@@ -1464,6 +1467,7 @@
     <string name="home_found_pet">Você encontrou um mascote: %1$s!</string>
     <string name="pet_found_title">Novo Mascote!</string>
     <string name="home_congratulations_received">Parabéns! Você recebeu: %1$s</string>
+    <string name="home_session_voided">Sessão anulada — Materiais reembolsados</string>
     <string name="home_not_enough_coins_repeat">Moedas insuficientes para repetir %1$s.</string>
     <string name="home_not_enough_materials_repeat">Materiais insuficientes para repetir %1$s.</string>
     <string name="combat_no_food_title">Nenhuma Comida Equipada</string>

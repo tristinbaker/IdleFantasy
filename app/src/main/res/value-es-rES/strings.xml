@@ -1541,4 +1541,8 @@
     <string name="combat_fight_count_label">Number of Fights</string>
     <string name="combat_fight_count_suffix">×%1$d fights</string>
     <string name="combat_fight_progress">Fight %1$d/%2$d</string>
+    <string name="armory_source_daily_bonus">Rare reward for completing all Daily Quests</string>
+    <string name="armory_source_weekly_bonus">Rare reward for completing all Weekly Quests</string>
+    <string name="armory_source_skill_cape">Reach level 99 in %1$s</string>
+    <string name="home_session_voided">Session Voided — Materials Refunded</string>
 </resources>

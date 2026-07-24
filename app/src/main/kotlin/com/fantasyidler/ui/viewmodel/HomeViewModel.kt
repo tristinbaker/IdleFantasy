@@ -34,6 +34,7 @@ import com.fantasyidler.util.singleBatchItems
 import com.fantasyidler.util.toTitleCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -128,6 +129,8 @@ data class SessionSummary(
 
 data class HomeUiState(
     val isLoading: Boolean = true,
+    /** True while collectSession() is processing a batch; guards against double-collecting on repeat taps. */
+    val isCollecting: Boolean = false,
     val coins: Long = 0L,
     val skillLevels: Map<String, Int> = emptyMap(),
     val skillXp: Map<String, Long> = emptyMap(),
@@ -384,7 +387,10 @@ class HomeViewModel @Inject constructor(
     // ------------------------------------------------------------------
 
     fun collectSession() {
-        viewModelScope.launch {
+        if (_extra.value.isCollecting) return
+        _extra.update { it.copy(isCollecting = true) }
+        viewModelScope.launch(Dispatchers.Default) {
+          try {
             // If the latest session timed out but its alarm hasn't fired yet, mark it completed now.
             val latest = sessionRepo.getActiveSession()
             if (latest != null && !latest.completed && System.currentTimeMillis() >= latest.endsAt) {
@@ -427,6 +433,7 @@ class HomeViewModel @Inject constructor(
             val combinedBones     = mutableMapOf<String, Int>() // boneName → count
             var petFoundName: String? = null
             var bossWon: Boolean? = null  // set when session is a boss fight
+            val voidedSessionIds = mutableSetOf<String>()
             val awardedCapes = mutableListOf<String>()
             var expeditionNoteLines: List<String> = emptyList()
             var expeditionUnlockMessage: String? = null
@@ -439,6 +446,7 @@ class HomeViewModel @Inject constructor(
                 val frames: List<SessionFrame> = json.decodeFromString(session.frames)
                 if (!isSkillSessionStillEligible(session, currentLevelsForVoidCheck, gameData)) {
                     refundVoidedSessionMaterials(session, frames, playerRepo, gameData)
+                    voidedSessionIds += session.sessionId
                     continue
                 }
                 when (session.skillName) {
@@ -868,6 +876,7 @@ class HomeViewModel @Inject constructor(
 
             val title = when {
                 n > 1 -> "$n Sessions Complete!"
+                last.sessionId in voidedSessionIds -> context.getString(R.string.home_session_voided)
                 last.skillName == "boss" -> {
                     val bossName = gameData.bosses[last.activityKey]?.displayName ?: last.activityKey
                     if (bossWon == true) "Defeated $bossName!" else "Defeated by $bossName."
@@ -947,6 +956,9 @@ class HomeViewModel @Inject constructor(
                 snackbarMessage = capeMessage,
                 petFoundName    = petFoundName,
             ) }
+          } finally {
+            _extra.update { it.copy(isCollecting = false) }
+          }
         }
     }
 

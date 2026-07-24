@@ -751,21 +751,32 @@ class CombatViewModel @Inject constructor(
         viewModelScope.launch {
             val session = sessionRepo.getActiveSession() ?: return@launch
             if (session.skillName == "combat" || session.skillName == "boss") {
-                val frames: List<SessionFrame> = json.decodeFromString(session.frames)
-                val totalMs = (session.endsAt - session.startedAt).coerceAtLeast(1L)
-                val perFrameMs = totalMs / frames.size.coerceAtLeast(1)
-                val elapsed = System.currentTimeMillis() - session.startedAt
-                val framesElapsed = (elapsed / perFrameMs).toInt().coerceIn(0, frames.size)
-                val arrowsUsed = mutableMapOf<String, Int>()
-                for (frame in frames.take(framesElapsed)) {
-                    for ((arrow, qty) in frame.arrowsConsumed) arrowsUsed[arrow] = (arrowsUsed[arrow] ?: 0) + qty
-                }
-                if (arrowsUsed.isNotEmpty()) playerRepo.consumeItems(arrowsUsed)
-                sessionRepo.abandonSession(session.sessionId)
-                if (session.skillName == "boss") playerRepo.clearActiveBossRepeat()
+                abandonCombatSession(session)
                 queuedSessionStarter.startNextQueued()
             }
         }
+    }
+
+    /**
+     * Consumes arrows actually fired so far (frames are pre-simulated, so nothing is deducted
+     * until abandon/collect time) and deletes the session. Shared by [abandonSession] and
+     * [prestigeSkill] — prestiging a combat skill mid-fight must abandon the same way a manual
+     * abandon does, or the fight keeps running against stats that no longer match its frames
+     * (issue #1144).
+     */
+    private suspend fun abandonCombatSession(session: SkillSession) {
+        val frames: List<SessionFrame> = json.decodeFromString(session.frames)
+        val totalMs = (session.endsAt - session.startedAt).coerceAtLeast(1L)
+        val perFrameMs = totalMs / frames.size.coerceAtLeast(1)
+        val elapsed = System.currentTimeMillis() - session.startedAt
+        val framesElapsed = (elapsed / perFrameMs).toInt().coerceIn(0, frames.size)
+        val arrowsUsed = mutableMapOf<String, Int>()
+        for (frame in frames.take(framesElapsed)) {
+            for ((arrow, qty) in frame.arrowsConsumed) arrowsUsed[arrow] = (arrowsUsed[arrow] ?: 0) + qty
+        }
+        if (arrowsUsed.isNotEmpty()) playerRepo.consumeItems(arrowsUsed)
+        sessionRepo.abandonSession(session.sessionId)
+        if (session.skillName == "boss") playerRepo.clearActiveBossRepeat()
     }
 
     fun debugFinishSession() {
@@ -781,8 +792,19 @@ class CombatViewModel @Inject constructor(
     fun prestigeSkill(skillName: String) {
         viewModelScope.launch {
             val activeSession = sessionRepo.getActiveSession()
-            val abandonedSession = activeSession?.takeIf { it.skillName == skillName }
-            if (abandonedSession != null) {
+            // A combat/boss fight's frames are locked in at start using the pre-prestige stats
+            // (e.g. Hitpoints level). Prestiging resets that skill to level 1, so an active fight
+            // left running would later fail its post-completion combat-level eligibility check
+            // and get silently voided -- but still show a misleading "Defeated by X" result
+            // (issue #1144). Abandoning it here, matching a manual abandon, avoids that entirely.
+            val abandonedCombatSession = activeSession?.takeIf {
+                skillName in Skills.COMBAT && (it.skillName == "combat" || it.skillName == "boss")
+            }
+            val abandonedSession = abandonedCombatSession
+                ?: activeSession?.takeIf { it.skillName == skillName }
+            if (abandonedCombatSession != null) {
+                abandonCombatSession(abandonedCombatSession)
+            } else if (abandonedSession != null) {
                 val frames: List<SessionFrame> = json.decodeFromString(abandonedSession.frames)
                 playerSessionMaterials(abandonedSession.skillName, abandonedSession.activityKey, frames.sumOf { it.kills }, gameData)
                     ?.let { playerRepo.addItems(it) }

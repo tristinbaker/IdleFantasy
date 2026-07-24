@@ -1362,6 +1362,9 @@
     <string name="armory_source_drop_chance">Gevallen van %1$s (%2$s)</string>
     <string name="armory_source_drop">Gevallen van %1$s</string>
     <string name="armory_source_shop">Winkel</string>
+    <string name="armory_source_daily_bonus">Zeldzame beloning voor het voltooien van alle Dagelijkse Taken</string>
+    <string name="armory_source_weekly_bonus">Zeldzame beloning voor het voltooien van alle Wekelijkse Taken</string>
+    <string name="armory_source_skill_cape">Bereik niveau 99 in %1$s</string>
 
     <!-- ===== Combat arrows ===== -->
     <string name="combat_arrow_auto">Automatisch (beste beschikbare)</string>
@@ -1469,6 +1472,7 @@
     <string name="home_found_pet">Je hebt een huisdier gevonden: %1$s!</string>
     <string name="pet_found_title">Nieuw huisdier!</string>
     <string name="home_congratulations_received">Gefeliciteerd! Je hebt ontvangen: %1$s</string>
+    <string name="home_session_voided">Sessie ongeldig — materialen terugbetaald</string>
     <string name="combat_no_food_title">Geen voedsel uitgerust</string>
     <string name="combat_no_food_body">Je hebt geen voedsel uitgerust. Zonder voedsel kun je snel sterven en de meeste beloningen verliezen. Toch starten?</string>
     <string name="combat_start_anyway">Toch starten</string>

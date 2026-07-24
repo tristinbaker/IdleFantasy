@@ -149,6 +149,14 @@ class QueuedSessionStarter @Inject constructor(
             val player = playerRepo.getOrCreatePlayer()
             val levels: Map<String, Int> = json.decodeFromString(player.skillLevels)
             val flags: PlayerFlags       = json.decodeFromString(player.flags)
+            // A boss repeat run (queued as one entry, tracked via PlayerFlags rather than N
+            // separate queue entries) must resume itself through startNextQueued() before this
+            // offline catch-up is allowed to dequeue anything else -- otherwise a late alarm
+            // during a long repeat run can steal a different queued item out from under an
+            // in-progress chain, silently abandoning the rest of it (issue #1167).
+            if (flags.activeBossRepeatSnapshot != null && flags.activeBossRepeatIndex < flags.activeBossRepeatTotal) {
+                return 0L
+            }
             val agilityLevel    = levels[Skills.AGILITY] ?: 1
             val agilityPrestige = flags.skillPrestige[Skills.AGILITY] ?: 0
             val skippedTowerActions = mutableListOf<QueuedAction>()

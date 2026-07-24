@@ -7,9 +7,14 @@ import androidx.lifecycle.viewModelScope
 import com.fantasyidler.R
 import com.fantasyidler.data.json.EquipmentData
 import com.fantasyidler.data.model.PlayerFlags
+import com.fantasyidler.data.model.Skills
 import com.fantasyidler.repository.CarnivalRepository
+import com.fantasyidler.repository.DailyQuestRepository
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
+import com.fantasyidler.repository.WeeklyQuestRepository
+import com.fantasyidler.repository.capeKeyForSkill
+import com.fantasyidler.util.GameStrings
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -45,6 +50,8 @@ class ArmoryViewModel @Inject constructor(
     private val playerRepo: PlayerRepository,
     private val gameData: GameDataRepository,
     private val carnivalRepo: CarnivalRepository,
+    private val dailyQuestRepo: DailyQuestRepository,
+    private val weeklyQuestRepo: WeeklyQuestRepository,
     @ApplicationContext private val context: Context,
     private val json: Json,
 ) : ViewModel() {
@@ -124,14 +131,9 @@ class ArmoryViewModel @Inject constructor(
             val key = recipe.itemName
             if (key !in map) map[key] = context.getString(R.string.armory_source_fletching)
         }
-        gameData.enemies.forEach { (_, enemy) ->
-            enemy.alwaysDrops.forEach { drop ->
-                if (drop.item !in map) map[drop.item] = context.getString(R.string.armory_source_drop_always, enemy.displayName)
-            }
-            enemy.dropTable.forEach { drop ->
-                if (drop.item !in map) map[drop.item] = context.getString(R.string.armory_source_drop_chance, enemy.displayName, formatChancePct(drop.chance))
-            }
-        }
+        // Bosses are checked before regular enemies so an item dropped by both (e.g. Ring of
+        // Dragon's Might, dropped by both King Black Dragon and Abyssal Lord) resolves to the
+        // more notable boss source rather than whichever happened to be registered first.
         gameData.bosses.forEach { (_, boss) ->
             boss.rareDrops.forEach { drop ->
                 if (drop.item !in map) map[drop.item] = context.getString(R.string.armory_source_drop_chance, boss.displayName, formatChancePct(drop.chance))
@@ -140,8 +142,33 @@ class ArmoryViewModel @Inject constructor(
                 if (key !in map) map[key] = context.getString(R.string.armory_source_drop, boss.displayName)
             }
         }
+        gameData.dungeons.forEach { (_, dungeon) ->
+            dungeon.rareDrops.forEach { drop ->
+                if (drop.item !in map) map[drop.item] = context.getString(R.string.armory_source_drop_chance, dungeon.displayName, formatChancePct(drop.chance))
+            }
+        }
+        gameData.enemies.forEach { (_, enemy) ->
+            enemy.alwaysDrops.forEach { drop ->
+                if (drop.item !in map) map[drop.item] = context.getString(R.string.armory_source_drop_always, enemy.displayName)
+            }
+            enemy.dropTable.forEach { drop ->
+                if (drop.item !in map) map[drop.item] = context.getString(R.string.armory_source_drop_chance, enemy.displayName, formatChancePct(drop.chance))
+            }
+        }
         gameData.marketplace.forEach { (_, category) ->
             category.items.keys.forEach { key -> if (key !in map) map[key] = context.getString(R.string.armory_source_shop) }
+        }
+        dailyQuestRepo.dwarvenDropPool.forEach { key ->
+            if (key !in map) map[key] = context.getString(R.string.armory_source_daily_bonus)
+        }
+        weeklyQuestRepo.divineDropPool.forEach { key ->
+            if (key !in map) map[key] = context.getString(R.string.armory_source_weekly_bonus)
+        }
+        Skills.ALL.forEach { skill ->
+            val capeKey = capeKeyForSkill(skill) ?: return@forEach
+            if (capeKey in gameData.equipment && capeKey !in map) {
+                map[capeKey] = context.getString(R.string.armory_source_skill_cape, GameStrings.skillName(context, skill))
+            }
         }
 
         return map

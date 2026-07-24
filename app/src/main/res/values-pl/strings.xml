@@ -1452,6 +1452,9 @@
     <string name="armory_source_drop_chance">Zrzucane przez %1$s (%2$s)</string>
     <string name="armory_source_drop">Zrzucane przez %1$s</string>
     <string name="armory_source_shop">Sklep</string>
+    <string name="armory_source_daily_bonus">Rzadka nagroda za ukończenie wszystkich Zadań Dziennych</string>
+    <string name="armory_source_weekly_bonus">Rzadka nagroda za ukończenie wszystkich Zadań Tygodniowych</string>
+    <string name="armory_source_skill_cape">Osiągnij 99 poziom w %1$s</string>
 
     <!-- Komunikaty sesji / kolejki (issue #596) -->
     <string name="skill_no_logs">Brak drewna w ekwipunku</string>
@@ -1489,6 +1492,7 @@
     <string name="home_found_pet">Znalazłeś zwierzaka: %1$s!</string>
     <string name="pet_found_title">Nowy zwierzak!</string>
     <string name="home_congratulations_received">Gratulacje! Otrzymujesz: %1$s</string>
+    <string name="home_session_voided">Sesja unieważniona — surowce zwrócone</string>
     <string name="home_not_enough_coins_repeat">Za mało monet, by powtórzyć %1$s.</string>
     <string name="home_not_enough_materials_repeat">Za mało materiałów, by powtórzyć %1$s.</string>
     <string name="combat_no_food_title">Brak założonego jedzenia</string>

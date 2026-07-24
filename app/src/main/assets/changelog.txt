@@ -1,3 +1,9 @@
+v1.12.7
+• Fixed collecting a large number of piled-up sessions (e.g. after queueing many boss fights) being slow and unresponsive, and fixed tapping Collect repeatedly during that time awarding the same rewards more than once
+• Fixed the Armory's "How to obtain" info showing an item's flavor text instead of how to get it for Dwarven gear, Divine gear, skill capes, and several dungeon-exclusive items (Shadow/Arcane Grappling Hook, Rogue's Lockpick, and others)
+• Fixed prestiging a combat skill (Attack, Strength, Defense, Ranged, Magic, Hitpoints, or Prayer) during an active fight leaving that fight to run on stale stats, which could later void it and wrongly show "Defeated by" the boss/dungeon even if you were never actually beaten; prestiging now properly ends the fight and refunds it, and a voided session can no longer show a misleading defeat message
+• Fixed a long queue of repeated boss fights losing track of how many fights had run (and undercounting the total) if a second queued item was waiting behind it and a fight's completion was delayed in the background
+
 v1.12.6
 • The custom notification banner can now be dismissed early with a tap, instead of blocking buttons underneath it until it times out
 • Added a fight count picker to boss battles, so you can queue up to 100 fights against the same boss as a single queue slot, with live "Fight 34/100" progress shown while it runs
