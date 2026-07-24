@@ -652,7 +652,14 @@ private fun WorkerCraftRecipeRow(
                 style = MaterialTheme.typography.bodySmall,
                 color = if (enabled) MaterialTheme.colorScheme.onSurfaceVariant else dim,
             )
+            val ownedQty = state.inventory[recipe.outputKey] ?: 0
+            Text(
+                text  = stringResource(R.string.crafting_owned, ownedQty),
+                style = MaterialTheme.typography.labelSmall,
+                color = if (ownedQty > 0) GoldPrimary else dim,
+            )
             recipe.outputCombatStyle?.let { style ->
+
                 Text(
                     text  = "${context.getString(R.string.label_combat_style)}: ${style.replaceFirstChar { it.uppercase() }}",
                     style = MaterialTheme.typography.labelSmall,
@@ -753,7 +760,14 @@ private fun WorkerCraftQuantityContent(
             style      = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold,
         )
+        val ownedQty = state.inventory[recipe.outputKey] ?: 0
+        Text(
+            text  = stringResource(R.string.crafting_owned_detail, ownedQty),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
         Spacer(Modifier.height(12.dp))
+
 
         Text(
             text  = stringResource(R.string.label_ingredients),

@@ -1311,7 +1311,7 @@
     <string name="carnival_queue">Sitzung einreihen</string>
     <string name="carnival_ring_toss">Ringewerfen</string>
     <string name="carnival_active_ring_desc">Macht Euren Wurf, wenn der Zeiger auf die goldene Zielzone zeigt.</string>
-    <string name="carnival_ring_target_hint">Zielt auf die Mitte (45%–55%)</string>
+    <string name="carnival_ring_target_hint" formatted="false">Zielt auf die Mitte (45%–55%)</string>
     <string name="carnival_throw">Werfen!</string>
     <string name="carnival_hammer_strike">Hammerschlag</string>
     <string name="carnival_active_hammer_desc">Schlagt zu, wenn der Kraftmesser seinen Höchstwert erreicht.</string>

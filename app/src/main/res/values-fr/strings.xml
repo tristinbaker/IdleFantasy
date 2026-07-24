@@ -94,7 +94,7 @@
     <string name="label_quantity">Quantité</string>
     <string name="label_price">Prix</string>
     <string name="label_available">Disponible</string>
-    <string name="label_patch">Mise à jour</string>
+    <string name="label_patch">Parcelle</string>
     <string name="label_growth_time">Progrès</string>
     <string name="label_ready_to_harvest">Prêt à être récolté</string>
     <string name="label_empty">Vide</string>
@@ -167,7 +167,7 @@
     <!-- Translator note: %1$s = formatted XP amount -->
     <string name="format_xp_per_action">%1$s XP par action</string>
     <!-- Translator note: %1$d = patch number -->
-    <string name="format_patch_number">Mise à jour %1$d</string>
+    <string name="format_patch_number">Parcelle %1$d</string>
     <!-- Translator note: %1$d = wins, %2$d = losses -->
     <string name="format_arena_record">%1$d gagnés / %2$d perdus</string>
     <!-- Translator note: %1$s = skill display name, %2$d = level number -->
@@ -199,8 +199,8 @@
         <item quantity="other">%1$d heures</item>
     </plurals>
     <plurals name="plural_patches">
-        <item quantity="one">%1$d mise à jour</item>
-        <item quantity="other">%1$d mises à jour</item>
+        <item quantity="one">%1$d parcelle</item>
+        <item quantity="other">%1$d parcelles</item>
     </plurals>
     <plurals name="plural_kills">
         <item quantity="one">%1$d tué</item>
@@ -1575,7 +1575,7 @@
     <string name="settings_lang_japanese">日本語</string>
     <string name="bonus_coin_drops">+%1$d%% pièces obtenues</string>
     <string name="bonus_hp">+%1$d PV</string>
-    <string name="bonus_tower">Tower</string>
+    <string name="bonus_tower">Tour</string>
     <string name="bonus_xp">+%1$d%% XP</string>
     <string name="town_building_cape_rack_name">Cape Rack</string>
     <string name="town_cape_rack_no_bonus">Upgrade to passively apply owned skill/guild cape yield and XP bonuses</string>
