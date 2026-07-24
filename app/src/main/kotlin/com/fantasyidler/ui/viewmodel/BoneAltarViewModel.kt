@@ -78,12 +78,17 @@ class BoneAltarViewModel @Inject constructor(
 
         val boostActive    = flags.xpBoostExpiresAt > System.currentTimeMillis()
         val equippedCape   = equipped[EquipSlot.CAPE]?.let { gameData.equipment[it] }
+        // skillPrestige is intentionally omitted here (not flags.skillPrestige): prestige is
+        // already applied as its own separate factor below (prestigeMult), multiplied together
+        // with prayerCapeMult at collection time. Passing the real prestige map here would fold
+        // (prestige + 1) into the cape multiplier too, double-counting prestige for any player
+        // who has prestiged Prayer and owns/equips a prayer cape.
         val prayerCapeMult = resolveCapeMultiplier(
             skillName = Skills.PRAYER,
             equippedCape = equippedCape,
             inventoryKeys = inventory.keys,
             townBuildingTiers = flags.townBuildingTiers,
-            skillPrestige = flags.skillPrestige,
+            skillPrestige = emptyMap(),
             allEquipment = gameData.equipment
         )
         val churchMult     = ChurchRepository.xpMultiplier(flags)
