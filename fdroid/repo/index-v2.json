@@ -14,7 +14,7 @@
       }
     },
     "address": "https://idlefantasy.tristinbaker.xyz/fdroid/repo",
-    "timestamp": 1784826796261,
+    "timestamp": 1784898689396,
     "categories": {
       "Games": {
         "name": {
@@ -31,7 +31,7 @@
           "Games"
         ],
         "issueTracker": "https://github.com/tristinbaker/IdleFantasy/issues",
-        "lastUpdated": 1784826764435,
+        "lastUpdated": 1784898659217,
         "license": "GPL-3.0-only",
         "sourceCode": "https://github.com/tristinbaker/IdleFantasy",
         "screenshots": {
@@ -140,6 +140,56 @@
         "preferredSigner": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
       },
       "versions": {
+        "fcf5e871c81b42de71157dec782d3dc70aab0cd2a5365cda8f6ad603de3c196d": {
+          "added": 1784898659217,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_119.apk",
+            "sha256": "fcf5e871c81b42de71157dec782d3dc70aab0cd2a5365cda8f6ad603de3c196d",
+            "size": 7928255
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.12.7",
+            "versionCode": 119,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fixed collecting a large number of piled-up sessions (e.g. after queueing many boss fights) being slow and unresponsive, and fixed tapping Collect repeatedly during that time awarding the same rewards more than once\n• Fixed the Armory's \"How to obtain\" info showing an item's flavor text instead of how to get it for Dwarven gear, Divine gear, skill capes, and several dungeon-exclusive items (Shadow/Arcane Grappling Hook, Rogue's Lockpick, and others)\n• Fixed prestiging a combat skill (Attack, S"
+          }
+        },
         "f4239415dbf14dc9343a87e76dabc61129be74f81a94584ac6a516f21f2b07a4": {
           "added": 1784826764435,
           "file": {
