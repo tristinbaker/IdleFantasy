@@ -1583,12 +1583,12 @@
     <string name="bonus_hp">+%1$d PV</string>
     <string name="bonus_tower">Tour</string>
     <string name="bonus_xp">+%1$d%% XP</string>
-    <string name="town_building_cape_rack_name">Cape Rack</string>
-    <string name="town_cape_rack_no_bonus">Upgrade to passively apply owned skill/guild cape yield and XP bonuses</string>
-    <string name="town_cape_rack_t1_bonus">Passive bonuses from Tier 1 (Gathering) capes are active</string>
-    <string name="town_cape_rack_t2_bonus">Passive bonuses from Tier 1 &amp; 2 (Gathering, Artisan) capes are active</string>
-    <string name="town_cape_rack_t3_bonus">Passive bonuses from all owned capes (Gathering, Artisan, Combat &amp; Guild) are active</string>
-    <string name="crafting_owned">Owned: %1$d</string>
-    <string name="crafting_owned_detail">Owned in inventory: %1$d</string>
-    <string name="firemaking_ashes_owned">Ashes owned: %1$d</string>
+    <string name="town_building_cape_rack_name">Rangement à Capes</string>
+    <string name="town_cape_rack_no_bonus">Améliorer pour appliquer passivement les bonus d\'XP et de rendement des aptitudes/capes de guildes possédées</string>
+    <string name="town_cape_rack_t1_bonus">Les bonus passifs des capes Tier 1 (de Collecte) sont actives</string>
+    <string name="town_cape_rack_t2_bonus">Les bonus passifs des capes Tier 1 &amp; 2 (de Collecte, de Façonnage) sont actives</string>
+    <string name="town_cape_rack_t3_bonus">Les bonus passifs de toutes les capes possédées (de Collecte, de Façonnage, de Combat &amp; de Guildes) sont actives</string>
+    <string name="crafting_owned">Possédé: %1$d</string>
+    <string name="crafting_owned_detail">Présent dans l\'inventaire: %1$d</string>
+    <string name="firemaking_ashes_owned">Cendres possédées: %1$d</string>
 </resources>
