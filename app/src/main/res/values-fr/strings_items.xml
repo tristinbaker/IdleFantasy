@@ -18,7 +18,7 @@
     <string name="item_adamantite_ore_name">Minerai d’adamantite</string>
     <string name="item_adamantite_ore_desc">Un minerai extrêmement dur et très rare.</string>
     <string name="item_platinum_ore_name">Minerai de platine</string>
-    <string name="item_platinum_ore_desc">A rare platinum ore used for platinum bars.</string> <!-- untranslated -->
+    <string name="item_platinum_ore_desc">Un minerai de platine rare utilisé pour fabriquer des lingots de platine.</string>
     <string name="item_runite_ore_name">Minerai de runite</string>
     <string name="item_runite_ore_desc">Le minerai exploitable le plus rare, utilisé pour la fabrication des équipements les plus puissants.</string>
     <string name="item_rune_essence_name">Essence de runes</string>
@@ -335,8 +335,8 @@
     <string name="item_adamantite_pickaxe_desc">Une pioche extrêmement dure pour l’exploitation minière.</string>
     <string name="item_runite_pickaxe_name">Pioche en runite</string>
     <string name="item_runite_pickaxe_desc">La meilleure pioche disponible pour l’exploitation minière.</string>
-    <string name="item_divine_pickaxe_name">Divine Pickaxe</string> <!-- untranslated -->
-    <string name="item_divine_pickaxe_desc">A pickaxe touched by divine light. Stone parts before it like water.</string> <!-- untranslated -->
+    <string name="item_divine_pickaxe_name">Pioche Divine</string>
+    <string name="item_divine_pickaxe_desc">Une pioche touchée par la lumière divine. Stone parts before it like water.</string>
 
     <!-- Tools — axes -->
     <string name="item_bronze_axe_name">Hache en bronze</string>
@@ -351,7 +351,7 @@
     <string name="item_adamantite_axe_desc">Une hache extrêmement dure pour la coupe de bois.</string>
     <string name="item_runite_axe_name">Hache en runite</string>
     <string name="item_runite_axe_desc">La meilleure hache disponible pour la coupe de bois.</string>
-    <string name="item_divine_axe_name">Divine Axe</string> <!-- untranslated -->
+    <string name="item_divine_axe_name">Hache Divine</string>
     <string name="item_divine_axe_desc">An axe that fells even the oldest trees with a single blow.</string> <!-- untranslated -->
 
     <!-- Tools — fishing rods -->
@@ -367,8 +367,8 @@
     <string name="item_adamantite_fishing_rod_desc">Une canne à pêche extrêmement durable.</string>
     <string name="item_runite_fishing_rod_name">Canne à pêche en runite</string>
     <string name="item_runite_fishing_rod_desc">La meilleure canne à pêche disponible.</string>
-    <string name="item_divine_fishing_rod_name">Divine Fishing Rod</string> <!-- untranslated -->
-    <string name="item_divine_fishing_rod_desc">A rod blessed by the sea gods. Fish practically leap onto it.</string> <!-- untranslated -->
+    <string name="item_divine_fishing_rod_name">Canne à pêche Divine</string>
+    <string name="item_divine_fishing_rod_desc">Une canne à pêche bénie par les dieux de la mer. Les poissons sont pratiquement attirés vers elle.</string>
 
     <!-- ===== Arrows ===== -->
     <string name="item_bronze_arrow_name">Flèches en bronze</string>
@@ -463,17 +463,17 @@
     <string name="item_shadow_signet_desc">Une bague portant le sceau de la Guilde des Ombres. Seuls les agents les plus dangereux de la guilde en portaient une.</string>
 
     <!-- Junk items -->
-    <string name="item_bread_name">Bread</string> <!-- untranslated -->
-    <string name="item_leather_name">Leather</string> <!-- untranslated -->
-    <string name="item_flour_name">Flour</string> <!-- untranslated -->
-    <string name="item_cooked_trout_name">Cooked Trout</string> <!-- untranslated -->
+    <string name="item_bread_name">Pain</string>
+    <string name="item_leather_name">Cuir</string>
+    <string name="item_flour_name">Farine</string>
+    <string name="item_cooked_trout_name">Truite cuisinée</string>
     <string name="item_thread_name">Thread</string> <!-- untranslated -->
-    <string name="item_ruby_ring_name">Ruby Ring</string> <!-- untranslated -->
-    <string name="item_diamond_ring_name">Diamond Ring</string> <!-- untranslated -->
-    <string name="item_diamond_necklace_name">Diamond Necklace</string> <!-- untranslated -->
-    <string name="item_ancient_treasure_name">Ancient Treasure</string> <!-- untranslated -->
+    <string name="item_ruby_ring_name">Anneau orné d\'un rubis</string>
+    <string name="item_diamond_ring_name">Anneau ornée d\'un diamant</string>
+    <string name="item_diamond_necklace_name">Collier ornée d\'un diamant</string>
+    <string name="item_ancient_treasure_name">Ancien trésor</string>
     <string name="item_seaweed_name">Seaweed</string> <!-- untranslated -->
-    <string name="item_pearl_name">Pearl</string> <!-- untranslated -->
+    <string name="item_pearl_name">Perle</string>
     <string name="item_nature_rune_name">Nature Rune</string> <!-- untranslated -->
     <string name="item_herb_name">Herb</string> <!-- untranslated -->
     <string name="item_mahogany_log_name">Mahogany Log</string> <!-- untranslated -->
@@ -966,19 +966,19 @@
     <string name="item_sovereign_crown_desc">La couronne du Souverain du Vide lui-même, rayonnant de sombre majesté. Offre une protection inégalée.</string>
     <string name="item_amulet_of_the_void_name">Amulette du Vide</string>
     <string name="item_amulet_of_the_void_desc">Un pendentif de pure essence du vide. Améliore toutes les statistiques de combat du porteur.</string>
-    <string name="item_bronze_longsword_desc">A bronze longsword.</string> <!-- untranslated -->
-    <string name="item_iron_longsword_desc">A iron longsword.</string> <!-- untranslated -->
+    <string name="item_bronze_longsword_desc">Une épée longue en bronze.</string>
+    <string name="item_iron_longsword_desc">Une épée longue en fer.</string>
     <string name="item_shadow_dagger_desc">A black-bladed dagger recovered from the Shadow Den. Wickedly sharp and perfectly balanced for close work.</string> <!-- untranslated -->
-    <string name="item_steel_dagger_desc">A steel dagger.</string> <!-- untranslated -->
-    <string name="item_steel_longsword_desc">A steel longsword.</string> <!-- untranslated -->
-    <string name="item_mithril_dagger_desc">A mithril dagger.</string> <!-- untranslated -->
-    <string name="item_mithril_longsword_desc">A mithril longsword.</string> <!-- untranslated -->
-    <string name="item_adamantite_dagger_desc">A adamantite dagger.</string> <!-- untranslated -->
-    <string name="item_adamantite_longsword_desc">A adamantite longsword.</string> <!-- untranslated -->
-    <string name="item_runite_dagger_desc">A runite dagger.</string> <!-- untranslated -->
-    <string name="item_runite_longsword_desc">A runite longsword.</string> <!-- untranslated -->
+    <string name="item_steel_dagger_desc">Une dague en acier.</string>
+    <string name="item_steel_longsword_desc">Une épée longue en acier.</string>
+    <string name="item_mithril_dagger_desc">Une dague en mithril.</string>
+    <string name="item_mithril_longsword_desc">Une épée longue en mithril.</string>
+    <string name="item_adamantite_dagger_desc">Une dague en adamantite.</string>
+    <string name="item_adamantite_longsword_desc">Une épée longue en adamantite.</string>
+    <string name="item_runite_dagger_desc">Une dague en runite.</string>
+    <string name="item_runite_longsword_desc">Une épée longue en runite.</string>
     <string name="item_dragon_scimitar_desc">A razor-sharp scimitar forged from dragon metal.</string> <!-- untranslated -->
-    <string name="item_dragon_longsword_desc">A powerful longsword forged from dragon metal.</string> <!-- untranslated -->
+    <string name="item_dragon_longsword_desc">Une puissante épée longue forgée dans du métal de dragon.</string>
     <string name="item_dwarven_sword_desc">An ancient dwarven blade, forged in the depths of the earth.</string> <!-- untranslated -->
     <string name="item_dwarven_scimitar_desc">A curved dwarven blade, perfect for rapid strikes.</string> <!-- untranslated -->
     <string name="item_dwarven_warhammer_desc">A massive dwarven hammer that crushes all in its path.</string> <!-- untranslated -->
