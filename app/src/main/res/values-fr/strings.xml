@@ -1842,20 +1842,20 @@
     <string name="bestiary_stat_xp">XP</string> <!-- untranslated -->
     <string name="bestiary_stat_required_level">Required Level</string> <!-- untranslated -->
     <string name="bestiary_stat_xp_reward">XP Reward</string> <!-- untranslated -->
-    <string name="bestiary_stat_duration">Duration</string> <!-- untranslated -->
+    <string name="bestiary_stat_duration">Durée</string>
     <string name="bestiary_stat_duration_min">%1$d min</string> <!-- untranslated -->
-    <string name="bestiary_kill_count">%1$d kills</string> <!-- untranslated -->
-    <string name="bestiary_location_other">Other</string> <!-- untranslated -->
+    <string name="bestiary_kill_count">%1$d tués</string>
+    <string name="bestiary_location_other">Autre</string>
     <string name="carnival_stat_atk">ATK +%1$d</string> <!-- untranslated -->
     <string name="carnival_stat_str">STR +%1$d</string> <!-- untranslated -->
     <string name="carnival_stat_def">DEF +%1$d</string> <!-- untranslated -->
-    <string name="carnival_stat_yield">Yield</string> <!-- untranslated -->
+    <string name="carnival_stat_yield">Rendement</string>
     <string name="carnival_potion_letter_green">G</string> <!-- untranslated -->
     <string name="carnival_potion_letter_blue">B</string> <!-- untranslated -->
     <string name="carnival_potion_letter_red">R</string> <!-- untranslated -->
     <string name="carnival_potion_letter_purple">P</string> <!-- untranslated -->
     <string name="carnival_potion_letter_orange">O</string> <!-- untranslated -->
     <string name="carnival_potion_letter_cyan">C</string> <!-- untranslated -->
-    <string name="farming_crop_picker_stats">Lv. %1$d  •  %2$s  •  %3$d XP/crop</string> <!-- untranslated -->
-    <string name="farming_seeds_owned">Seeds: %1$d  •  Owned: %2$d</string> <!-- untranslated -->
+    <string name="farming_crop_picker_stats">Lv. %1$d  •  %2$s  •  %3$d XP/récolte</string>
+    <string name="farming_seeds_owned">Graines: %1$d  •  Owned: %2$d</string>
 </resources>
