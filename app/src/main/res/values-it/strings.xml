@@ -81,18 +81,18 @@
     <string name="label_no_active_session">Nessuna Sessione Attiva</string>
     <string name="label_session_complete">Sessione Completata!</string>
     <string name="home_sessions_complete_title">%1$d Sessioni Completate!</string>
-    <string name="home_boss_defeated_title">Defeated %1$s!</string> <!-- untranslated -->
+    <string name="home_boss_defeated_title">Sconfitto %1$s!</string>
     <string name="home_boss_defeated_by_title">Sconfitto da %1$s.</string>
     <string name="home_dungeon_died_title">%1$s — Sei Morto</string>
     <string name="home_dungeon_complete_title">%1$s Completato!</string>
     <string name="home_expedition_complete_title">%1$s Spedizione Completata</string>
     <string name="home_skill_session_complete_title">%1$s Sessione Completata</string>
-    <string name="home_bones_buried_row">%1$s buried</string> <!-- untranslated -->
-    <string name="worker_sessions_complete_title">Worker: %1$d Sessions Complete!</string> <!-- untranslated -->
-    <string name="worker_boss_defeated_title">Worker: Defeated %1$s!</string> <!-- untranslated -->
-    <string name="worker_dungeon_died_title">Worker: %1$s — Died</string> <!-- untranslated -->
-    <string name="worker_dungeon_complete_title">Worker: %1$s Complete!</string> <!-- untranslated -->
-    <string name="worker_skill_complete_title">Worker: %1$s Complete</string> <!-- untranslated -->
+    <string name="home_bones_buried_row">%1$s sotterrate</string>
+    <string name="worker_sessions_complete_title">Lavoratore: %1$d Sessioni Completate!</string>
+    <string name="worker_boss_defeated_title">Lavoratore: Sconfitto %1$s!</string>
+    <string name="worker_dungeon_died_title">Lavoratore: %1$s — Morto</string>
+    <string name="worker_dungeon_complete_title">Lavoratore: %1$s Completato!</string>
+    <string name="worker_skill_complete_title">Lavoratore: %1$s Completato</string>
     <string name="label_training">Addestramento</string>
     <string name="label_gathering_skills">Raccolta</string>
     <string name="label_crafting_skills">Mestieri</string>
@@ -100,12 +100,12 @@
     <string name="label_coming_soon">In arrivo</string>
     <string name="label_time_remaining">Tempo rimanente</string>
     <!-- Translator note: compact duration units; English puts the letter(s) right after the number -->
-    <string name="duration_months">%1$dmo</string> <!-- untranslated -->
-    <string name="duration_weeks">%1$dw</string> <!-- untranslated -->
-    <string name="duration_days">%1$dd</string> <!-- untranslated -->
-    <string name="duration_hours">%1$dh</string> <!-- untranslated -->
-    <string name="duration_minutes">%1$dm</string> <!-- untranslated -->
-    <string name="duration_seconds">%1$ds</string> <!-- untranslated -->
+    <string name="duration_months">%1$dmo</string>
+    <string name="duration_weeks">%1$dw</string>
+    <string name="duration_days">%1$dd</string>
+    <string name="duration_hours">%1$dh</string>
+    <string name="duration_minutes">%1$dm</string>
+    <string name="duration_seconds">%1$ds</string>
     <string name="duration_complete">Completato</string>
     <string name="label_session_results">Risultati Sessione</string>
     <string name="label_xp_gained">XP guadagnati</string>
@@ -149,7 +149,7 @@
     <string name="label_available_quests">Disponibili</string>
     <string name="label_stats">Statistiche</string>
     <string name="label_skills">Abilità</string>
-    <string name="tab_label_with_count">%1$s (%2$d)</string> <!-- untranslated -->
+    <string name="tab_label_with_count">%1$s (%2$d)</string>
     <string name="label_shop">Emporio</string>
     <string name="label_sell_items">Vendi Oggetti</string>
     <string name="label_total_level">Livello Totale</string>
@@ -303,10 +303,10 @@
     <string name="settings_profile_layout_tabs">Schede</string>
     <string name="settings_quest_dots">Indicatori missione</string>
     <string name="settings_quest_dots_desc">Mostra un indicatore quando una missione è disponibile</string>
-    <string name="settings_prestige_notifications">Prestige Notification Badges</string> <!-- untranslated -->
-    <string name="settings_prestige_notifications_desc">Show a notification badge on navigation when a skill is ready to prestige</string> <!-- untranslated -->
+    <string name="settings_prestige_notifications">Notifiche di Prestigio</string>
+    <string name="settings_prestige_notifications_desc">Mostra una notifica quando una skill è pronta ad essere prestigiata</string>
     <string name="settings_compact_numbers">Numeri Compatti</string>
-    <string name="settings_compact_numbers_desc">Abbreviate large item quantities (e.g. 2.46M instead of 2,461,940)</string> <!-- untranslated -->
+    <string name="settings_compact_numbers_desc">Abbrevia grandi quantità di item (es. 2.46M al posto di 2,461,940)</string>
     <string name="settings_home_screen">Schermata Principale</string>
     <string name="settings_home_screen_desc">Scegli cosa mostrare nella schermata principale</string>
     <string name="settings_recent_activity">Registro delle ultime attività</string>
@@ -548,8 +548,8 @@
     <string name="combat_log_player_miss">→ Hai mancato %1$s</string>
     <string name="combat_log_enemy_hit">← %1$s ti ha colpito: %2$d danno</string>
     <string name="combat_log_enemy_miss">← %1$s manca il bersaglio</string>
-    <string name="combat_log_heal">✚ You eat: +%1$d HP</string> <!-- untranslated -->
-    <string name="combat_eat_threshold_warning">Risky: at a low threshold a hard hit can drop you to 0 HP before your character eats.</string> <!-- untranslated -->
+    <string name="combat_log_heal">✚ Ottieni: +%1$d HP</string>
+    <string name="combat_eat_threshold_warning">Rischiso: con una soglia bassa un colpo pesante ti può far arrivare a 0 HP prima che il tuo personaggio mangi.</string>
     <string name="combat_rec_level">Livello di combattimento consigliato</string>
     <string name="combat_your_level">Il tuo livello di combattimento</string>
     <string name="combat_no_strength_bonus">Nessuno (nessun bonus sulla forza)</string>
@@ -687,9 +687,9 @@
     <string name="shop_keep_one_toggle">Mantieni uno di ogni oggetto</string>
     <string name="shop_search_hint">Cerca oggetti</string>
     <string name="shop_filter_all">Tutti</string>
-    <string name="shop_sell_blocked_equipped">%1$s is equipped. Unequip it first to sell.</string> <!-- untranslated -->
-    <string name="shop_sell_blocked_reserved">%1$s is reserved for a queued task.</string> <!-- untranslated -->
-    <string name="shop_sell_blocked_keep_one">Keeping your last %1$s (Keep one of each item is on).</string> <!-- untranslated -->
+    <string name="shop_sell_blocked_equipped">%1$s è equipaggiato. Disequipaggialo prima per poterlo vendere.</string>
+    <string name="shop_sell_blocked_reserved">%1$s è riservato per una missione in coda.</string>
+    <string name="shop_sell_blocked_keep_one">Mantenedo il tuo ultimo %1$s (Mantiene uno di ciascun item).</string>
     <string name="shop_sell_blocked_none">Niente da vendere.</string>
     <string name="shop_sell_old_gear">Vendi Vecchi Armamenti</string>
     <string name="shop_equipped_label">(equipaggiato)</string>
@@ -1084,7 +1084,7 @@
     <string name="expedition_lore_notes">%1$d / %2$d memorie</string>
     <string name="expedition_lock_level">Richiede livello %2$d di %1$s</string>
     <string name="expedition_lock_notes">Trova tutte le memorie in %1$s</string>
-    <string name="expedition_started">%1$s started.</string> <!-- untranslated -->
+    <string name="expedition_started">%1$s iniziata.</string>
     <string name="expedition_lock_prerequisite">Completa un prerequisito</string>
     <string name="label_notes">Memorie</string>
 
@@ -1347,9 +1347,9 @@
     <string name="carnival_title">Fiera</string>
     <string name="carnival_desc">Giochi, premi e allegria!</string>
     <string name="carnival_prize_xp_lamp_small_name">Lampada XP Piccola</string>
-    <string name="carnival_prize_xp_lamp_small_desc">Grants 10,000 XP to a chosen skill.</string> <!-- untranslated -->
+    <string name="carnival_prize_xp_lamp_small_desc">Fornisce 10,000 XP ad una skill a scelta.</string>
     <string name="carnival_prize_xp_lamp_large_name">Lampada XP Grande</string>
-    <string name="carnival_prize_xp_lamp_large_desc">Grants 50,000 XP to a chosen skill.</string> <!-- untranslated -->
+    <string name="carnival_prize_xp_lamp_large_desc">Fornisce 50,000 XP ad una skill a scelta.</string>
     <string name="carnival_ticket_balance">Biglietti: %1$d</string>
     <string name="carnival_idle_tab">Giochi passivi</string>
     <string name="carnival_active_tab">Giochi attivi</string>
@@ -1439,7 +1439,7 @@
     <string name="farming_bean_ready">Il fagiolo magico si estende oltre le nuvole. Pronto a scalare?</string>
     <string name="farming_bean_climb">Scala la pianta</string>
     <string name="farming_bean_climbed">Hai scalato il fagiolo magico. Qualcosa ti aspetta…</string>
-    <string name="farming_bean_climbed_title">Beanstalk Climbed!</string> <!-- untranslated -->
+    <string name="farming_bean_climbed_title">Pianta di Fagiolo Scalata!</string>
     <string name="farming_bean_unlock_hint">New dungeon unlocked: %1$s. Find it under Combat, in the Dungeons list.</string> <!-- untranslated -->
     <string name="farming_bean_cleared">Il fagiolo magico ritorna tra i tuoi averi.</string>
 
