@@ -76,7 +76,7 @@ class ChurchRepository @Inject constructor(
             val b = activeBlessing(flags) ?: return 1f
             return if (b.type == BlessingType.XP) {
                 val prayerCapeMult = resolveCapeMultiplier(Skills.PRAYER, equippedCape, inventoryKeys, flags.townBuildingTiers, flags.skillPrestige, allEquipment, flags.ironman)
-                1f + (b.magnitude - 1f) * prayerCapeMult
+                effectiveMagnitude(b, prayerCapeMult)
             } else 1f
         }
 
@@ -89,7 +89,7 @@ class ChurchRepository @Inject constructor(
             val b = activeBlessing(flags) ?: return 0
             return if (b.type == BlessingType.DEFENSE) {
                 val prayerCapeMult = resolveCapeMultiplier(Skills.PRAYER, equippedCape, inventoryKeys, flags.townBuildingTiers, flags.skillPrestige, allEquipment, flags.ironman)
-                (b.magnitude * prayerCapeMult).toInt()
+                effectiveMagnitude(b, prayerCapeMult).toInt()
             } else 0
         }
 
@@ -102,8 +102,15 @@ class ChurchRepository @Inject constructor(
             val b = activeBlessing(flags) ?: return 1f
             return if (b.type == BlessingType.COINS) {
                 val prayerCapeMult = resolveCapeMultiplier(Skills.PRAYER, equippedCape, inventoryKeys, flags.townBuildingTiers, flags.skillPrestige, allEquipment, flags.ironman)
-                1f + (b.magnitude * prayerCapeMult)
+                1f + effectiveMagnitude(b, prayerCapeMult)
             } else 1f
+        }
+
+        fun effectiveMagnitude(b: BlessingData, prayerCapeMult: Float): Float {
+            return when (b.type) {
+                BlessingType.XP -> (1f + (b.magnitude - 1f) * prayerCapeMult)
+                BlessingType.DEFENSE, BlessingType.COINS -> b.magnitude * prayerCapeMult
+            }
         }
 
         fun boneCostFor(blessing: BlessingData): Int = when {

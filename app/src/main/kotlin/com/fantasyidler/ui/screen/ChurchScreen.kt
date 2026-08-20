@@ -343,9 +343,10 @@ private fun BlessingRow(
 @Composable
 private fun blessingEffectText(blessing: BlessingData, blessingTimeMs: Long, prayerCapeMult: Float): String {
     val hours = blessingTimeMs / 3_600_000
+    val effectiveBlessing = ChurchRepository.effectiveMagnitude(blessing, prayerCapeMult)
     return when (blessing.type) {
-        BlessingType.XP      -> stringResource(R.string.church_effect_xp,   1f + (blessing.magnitude - 1f) * prayerCapeMult, hours)
-        BlessingType.DEFENSE -> stringResource(R.string.church_effect_def,   (blessing.magnitude * prayerCapeMult).toInt(), hours)
-        BlessingType.COINS   -> stringResource(R.string.church_effect_coins, (blessing.magnitude * prayerCapeMult * 100).toInt(), hours)
+        BlessingType.XP      -> stringResource(R.string.church_effect_xp,   effectiveBlessing, hours)
+        BlessingType.DEFENSE -> stringResource(R.string.church_effect_def,   effectiveBlessing.toInt(), hours)
+        BlessingType.COINS   -> stringResource(R.string.church_effect_coins, (effectiveBlessing * 100).toInt(), hours)
     }
 }

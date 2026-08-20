@@ -71,10 +71,11 @@ fun PlayerStatsBar(
             val blessingName = if (nameResId != 0) stringResource(nameResId) else activeBlessingKey
             val blessingData = ChurchRepository.ALL_BLESSINGS.firstOrNull { it.key == activeBlessingKey }
             val boostDesc = blessingData?.let { b ->
+                val effectiveBlessing = ChurchRepository.effectiveMagnitude(b, prayerCapeMult)
                 when (b.type) {
-                    BlessingType.XP      -> "%1.2fx XP".format(1f + (b.magnitude - 1f) * prayerCapeMult)
-                    BlessingType.DEFENSE -> "+${(b.magnitude * prayerCapeMult).toInt()} DEF"
-                    BlessingType.COINS   -> "+${(b.magnitude * prayerCapeMult * 100).toInt()}% coins"
+                    BlessingType.XP      -> "×%1$.2f XP".format(effectiveBlessing)
+                    BlessingType.DEFENSE -> "+${effectiveBlessing.toInt()} DEF"
+                    BlessingType.COINS   -> "+${(effectiveBlessing * 100).toInt()}% coins"
                 }
             }
             val timeLeft = activeBlessingRemainingMs.formatDurationMs(context)
