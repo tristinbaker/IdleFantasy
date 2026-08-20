@@ -628,6 +628,7 @@ fun HomeScreen(
                         coins                      = state.coins,
                         activeBlessingKey          = state.activeBlessingKey,
                         activeBlessingRemainingMs  = state.activeBlessingRemainingMs,
+                        prayerCapeMult             = state.prayerCapeMult,
                         xpBoostRemainingMs         = state.xpBoostRemainingMs,
                         modifier                   = Modifier.padding(horizontal = 16.dp, vertical = 10.dp),
                     )

@@ -96,7 +96,7 @@ class MercantileViewModel @Inject constructor(
             val equippedCape = equipped[EquipSlot.CAPE]?.let { gameData.equipment[it] }
             val capeMult     = resolveCapeMultiplier(Skills.MERCANTILE, equippedCape, inventory.keys, flags.townBuildingTiers, flags.skillPrestige, gameData.equipment, flags.ironman)
             val prestigeMult = if (flags.ironman) 1f else 1f + (flags.skillPrestige[Skills.MERCANTILE] ?: 0) * 0.10f
-            val blessingCoinMult = if (flags.ironman) 1.0f else ChurchRepository.coinMultiplier(flags) *
+            val blessingCoinMult = if (flags.ironman) 1.0f else ChurchRepository.coinMultiplier(flags, equippedCape, inventory.keys, gameData.equipment) *
                 PlayerRepository.gooseCoinMultiplier(json.decodeFromString<List<OwnedPet>>(player.pets)).toFloat()
             extra.copy(
                 isLoading        = false,
@@ -141,8 +141,11 @@ class MercantileViewModel @Inject constructor(
                 val matchedKey = sortedKeys.lastOrNull { it <= currentLevel } ?: sortedKeys.firstOrNull()
                 val xpRange = matchedKey?.let { route.xpRanges[it.toString()] } ?: XpRange(1, 1)
 
+                val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
+                val inventory: Map<String, Int> = json.decodeFromString(player.inventory)
+
                 val expectedRawXp = (xpRange.min + xpRange.max) * 30L
-                val xpQueueMult = if (mercFlags.ironman) 1.0 else (if (mercFlags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * ChurchRepository.xpMultiplier(mercFlags)
+                val xpQueueMult = if (mercFlags.ironman) 1.0 else (if (mercFlags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * ChurchRepository.xpMultiplier(mercFlags, equipped, inventory.keys, gameData.equipment)
                 val prestigeLevel = mercFlags.skillPrestige[Skills.MERCANTILE] ?: 0
                 val prestigeMult = 1.0 + prestigeLevel * 0.10
                 val estimatedXpGain = (expectedRawXp * xpQueueMult * prestigeMult).toLong()

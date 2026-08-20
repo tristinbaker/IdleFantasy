@@ -46,6 +46,7 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
 import com.fantasyidler.R
+import com.fantasyidler.repository.resolveCapeMultiplier
 import dagger.hilt.android.qualifiers.ApplicationContext
 
 /** One row on the Profile Banners tab — either an earned banner or a locked placeholder for a known event. */
@@ -99,6 +100,7 @@ class InventoryViewModel @Inject constructor(
         val ironman: Boolean = false,
         val activeBlessingKey: String = "",
         val activeBlessingExpiresAt: Long = 0L,
+        val prayerCapeMult: Float = 1f,
         val activeBlessingXpPct: Int = 0,
         val towerXpBonusPct: Int = 0,
         val towerCoinBonusPct: Int = 0,
@@ -160,6 +162,8 @@ class InventoryViewModel @Inject constructor(
         } else {
             val inventory: Map<String, Int> = json.decodeFromString(player.inventory)
             val pets: List<com.fantasyidler.data.model.OwnedPet> = json.decodeFromString(player.pets)
+            val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
+            val equippedCape = equipped[EquipSlot.CAPE]?.let { gameData.equipment[it] }
             val flags: PlayerFlags = json.decodeFromString(player.flags)
             extra.copy(
                 coins       = player.coins,
@@ -188,8 +192,12 @@ class InventoryViewModel @Inject constructor(
                 activeBlessingExpiresAt = flags.activeBlessingExpiresAt,
                 activeBlessingXpPct     = run {
                     val b = ChurchRepository.activeBlessing(flags) ?: return@run 0
-                    if (b.type == BlessingType.XP) ((b.magnitude - 1f) * 100 + 0.5f).toInt() else 0
+                    if (b.type == BlessingType.XP) {
+                        val churchMult = ChurchRepository.xpMultiplier(flags, equipped, inventory.keys, gameData.equipment)
+                        ((churchMult - 1f) * 100 + 0.5f).toInt()
+                    } else 0
                 },
+                prayerCapeMult = resolveCapeMultiplier(Skills.PRAYER, equippedCape, inventory.keys, flags.townBuildingTiers, flags.skillPrestige, gameData.equipment, flags.ironman),
                 towerXpBonusPct         = flags.towerXpBonusPct,
                 towerCoinBonusPct       = flags.towerCoinBonusPct,
                 towerHpBonus            = flags.towerHpBonus,

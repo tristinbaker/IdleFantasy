@@ -31,10 +31,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -48,7 +46,6 @@ import com.fantasyidler.data.json.BlessingType
 import com.fantasyidler.repository.ChurchRepository
 import com.fantasyidler.ui.viewmodel.ChurchViewModel
 import com.fantasyidler.util.formatDurationMs
-import kotlin.math.roundToInt
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -78,7 +75,7 @@ fun ChurchScreen(
                     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                         Text(text = name, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
                         Text(
-                            text = blessingEffectText(blessing, state.blessingDuration),
+                            text = blessingEffectText(blessing, state.blessingDuration, state.prayerCapeMult),
                             style = MaterialTheme.typography.bodyMedium
                         )
                         Spacer(Modifier.height(4.dp))
@@ -157,6 +154,7 @@ fun ChurchScreen(
                 if (anyBlessingActive) {
                     ActiveBlessingBanner(
                         blessing     = state.activeBlessing!!,
+                        prayerCapeMult = state.prayerCapeMult,
                         remainingMs  = state.activeBlessingRemainingMs,
                         totalMs      = state.blessingDuration,
                         onDeactivate = viewModel::deactivateBlessing,
@@ -212,6 +210,7 @@ fun ChurchScreen(
                         anyBlessingActive = anyBlessingActive,
                         boneCost          = ChurchRepository.boneCostFor(blessing),
                         blessingTimeMs    = state.blessingDuration,
+                        prayerCapeMult    = state.prayerCapeMult,
                         onActivate        = { viewModel.activateBlessing(blessing.key) },
                     )
                     HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
@@ -225,6 +224,7 @@ fun ChurchScreen(
 @Composable
 private fun ActiveBlessingBanner(
     blessing: BlessingData,
+    prayerCapeMult: Float,
     remainingMs: Long,
     totalMs: Long,
     onDeactivate: () -> Unit,
@@ -234,7 +234,7 @@ private fun ActiveBlessingBanner(
         "blessing_${blessing.key}_name", "string", context.packageName,
     )
     val name = if (nameResId != 0) stringResource(nameResId) else blessing.key
-    val effectText = blessingEffectText(blessing, totalMs)
+    val effectText = blessingEffectText(blessing, totalMs, prayerCapeMult)
 
     Row(
         modifier = Modifier
@@ -282,6 +282,7 @@ private fun BlessingRow(
     anyBlessingActive: Boolean,
     boneCost: Int,
     blessingTimeMs: Long,
+    prayerCapeMult: Float,
     onActivate: () -> Unit,
 ) {
     val context   = LocalContext.current
@@ -308,7 +309,7 @@ private fun BlessingRow(
                 color      = nameColor,
             )
             Text(
-                text  = blessingEffectText(blessing, blessingTimeMs),
+                text  = blessingEffectText(blessing, blessingTimeMs, prayerCapeMult),
                 style = MaterialTheme.typography.bodySmall,
                 color = descColor,
             )
@@ -340,11 +341,11 @@ private fun BlessingRow(
 }
 
 @Composable
-private fun blessingEffectText(blessing: BlessingData, blessingTimeMs: Long): String {
+private fun blessingEffectText(blessing: BlessingData, blessingTimeMs: Long, prayerCapeMult: Float): String {
     val hours = blessingTimeMs / 3_600_000
     return when (blessing.type) {
-        BlessingType.XP      -> stringResource(R.string.church_effect_xp,   blessing.magnitude, hours)
-        BlessingType.DEFENSE -> stringResource(R.string.church_effect_def,   blessing.magnitude.roundToInt(), hours)
-        BlessingType.COINS   -> stringResource(R.string.church_effect_coins, (blessing.magnitude * 100).roundToInt(), hours)
+        BlessingType.XP      -> stringResource(R.string.church_effect_xp,   1f + (blessing.magnitude - 1f) * prayerCapeMult, hours)
+        BlessingType.DEFENSE -> stringResource(R.string.church_effect_def,   (blessing.magnitude * prayerCapeMult).toInt(), hours)
+        BlessingType.COINS   -> stringResource(R.string.church_effect_coins, (blessing.magnitude * prayerCapeMult * 100).toInt(), hours)
     }
 }

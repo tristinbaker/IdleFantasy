@@ -37,6 +37,7 @@ fun PlayerStatsBar(
     coins: Long,
     activeBlessingKey: String,
     activeBlessingRemainingMs: Long,
+    prayerCapeMult: Float,
     xpBoostRemainingMs: Long,
     modifier: Modifier = Modifier,
 ) {
@@ -71,9 +72,9 @@ fun PlayerStatsBar(
             val blessingData = ChurchRepository.ALL_BLESSINGS.firstOrNull { it.key == activeBlessingKey }
             val boostDesc = blessingData?.let { b ->
                 when (b.type) {
-                    BlessingType.XP      -> "${b.magnitude}x XP"
-                    BlessingType.DEFENSE -> "+${b.magnitude.toInt()} DEF"
-                    BlessingType.COINS   -> "+${(b.magnitude * 100).toInt()}% coins"
+                    BlessingType.XP      -> "%1.2fx XP".format(1f + (b.magnitude - 1f) * prayerCapeMult)
+                    BlessingType.DEFENSE -> "+${(b.magnitude * prayerCapeMult).toInt()} DEF"
+                    BlessingType.COINS   -> "+${(b.magnitude * prayerCapeMult * 100).toInt()}% coins"
                 }
             }
             val timeLeft = activeBlessingRemainingMs.formatDurationMs(context)

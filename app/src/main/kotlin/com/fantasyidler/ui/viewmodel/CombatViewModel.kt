@@ -400,6 +400,7 @@ class CombatViewModel @Inject constructor(
                     dungeonKey    = dungeonKey,
                     weaponSlot    = queuedWeaponSlot,
                     equipped      = equipped,
+                    inventory     = inventory,
                     levels        = queuedLevels,
                     flags         = dungeonFlags,
                     selectedSpell = queuedSpell,
@@ -547,7 +548,7 @@ class CombatViewModel @Inject constructor(
                     playerAttack        = (levels[Skills.ATTACK]    ?: 1) + (prestigeMap[Skills.ATTACK]    ?: 0) * 5,
                     playerStrength      = (levels[Skills.STRENGTH]  ?: 1) + (prestigeMap[Skills.STRENGTH]  ?: 0) * 5,
                     playerDefence       = (levels[Skills.DEFENSE]   ?: 1) + totalDefenseBonus + (prestigeMap[Skills.DEFENSE] ?: 0) * 5,
-                    blessingDefBonus    = ChurchRepository.defBonus(flags),
+                    blessingDefBonus    = ChurchRepository.defBonus(flags, equipped, inventory.keys, gameData.equipment),
                     playerHp            = (levels[Skills.HITPOINTS] ?: 1) + (prestigeMap[Skills.HITPOINTS] ?: 0) * 5 + flags.towerHpBonus,
                     weaponAttackBonus   = totalAttackBonus,
                     weaponStrengthBonus = totalStrengthBonus,
@@ -638,6 +639,7 @@ class CombatViewModel @Inject constructor(
                     bossKey       = bossKey,
                     weaponSlot    = bossWeaponSlot,
                     equipped      = queuedEquipped,
+                    inventory     = queuedInventory,
                     levels        = bossQueuedLevels,
                     flags         = queuedFlags,
                     selectedSpell = bossQueuedSpell,
@@ -764,7 +766,7 @@ class CombatViewModel @Inject constructor(
                     arrowStrengthBonuses = ARROW_STRENGTH_BONUS,
                     equippedFood       = availableFood,
                     foodHealValues     = gameData.foodHealValues,
-                    blessingDefBonus   = ChurchRepository.defBonus(flags),
+                    blessingDefBonus   = ChurchRepository.defBonus(flags, equipped, inventory.keys, gameData.equipment),
                     runeKey            = bossRuneKey,
                     runeCostPerAttack  = bossRuneCost,
                     availableRunes     = if (bossRuneKey != null) inventory[bossRuneKey] ?: 0 else Int.MAX_VALUE,
@@ -969,6 +971,7 @@ class CombatViewModel @Inject constructor(
         val rng     = (levels[Skills.RANGED]    ?: 1) + (prestigeMap[Skills.RANGED]    ?: 0) * 5
         val mgc     = (levels[Skills.MAGIC]     ?: 1) + (prestigeMap[Skills.MAGIC]     ?: 0) * 5
         val agility = levels[Skills.AGILITY]    ?: 1
+        val blessingDefBonus = ChurchRepository.defBonus(flags, equipped, inventory.keys, gameData.equipment)
 
         return gameData.dungeons.mapValues { (_, dungeon) ->
             var survived = 0
@@ -979,7 +982,7 @@ class CombatViewModel @Inject constructor(
                     playerAttack        = atk,
                     playerStrength      = str,
                     playerDefence       = def,
-                    blessingDefBonus    = ChurchRepository.defBonus(flags),
+                    blessingDefBonus    = blessingDefBonus,
                     playerHp            = hp,
                     weaponAttackBonus   = totalAtk,
                     weaponStrengthBonus = totalStr,
@@ -1053,6 +1056,7 @@ class CombatViewModel @Inject constructor(
         dungeonKey: String,
         weaponSlot: String,
         equipped: Map<String, String?>,
+        inventory: Map<String, Int>,
         levels: Map<String, Int>,
         flags: PlayerFlags,
         selectedSpell: SpellData?,
@@ -1101,7 +1105,7 @@ class CombatViewModel @Inject constructor(
             playerAttack        = (levels[Skills.ATTACK]    ?: 1) + (prestigeMap[Skills.ATTACK]    ?: 0) * 5,
             playerStrength      = (levels[Skills.STRENGTH]  ?: 1) + (prestigeMap[Skills.STRENGTH]  ?: 0) * 5,
             playerDefence       = (levels[Skills.DEFENSE]   ?: 1) + totalDefenseBonus + (prestigeMap[Skills.DEFENSE] ?: 0) * 5,
-            blessingDefBonus    = ChurchRepository.defBonus(flags),
+            blessingDefBonus    = ChurchRepository.defBonus(flags, equipped, inventory.keys, gameData.equipment),
             playerHp            = (levels[Skills.HITPOINTS] ?: 1) + (prestigeMap[Skills.HITPOINTS] ?: 0) * 5 + flags.towerHpBonus,
             weaponAttackBonus   = totalAttackBonus,
             weaponStrengthBonus = totalStrengthBonus,
@@ -1132,6 +1136,7 @@ class CombatViewModel @Inject constructor(
         bossKey: String,
         weaponSlot: String,
         equipped: Map<String, String?>,
+        inventory: Map<String, Int>,
         levels: Map<String, Int>,
         flags: PlayerFlags,
         selectedSpell: SpellData?,
@@ -1193,7 +1198,7 @@ class CombatViewModel @Inject constructor(
             arrowStrengthBonuses = ARROW_STRENGTH_BONUS,
             equippedFood       = flags.equippedFood.keys.associateWith { Int.MAX_VALUE },
             foodHealValues     = gameData.foodHealValues,
-            blessingDefBonus   = ChurchRepository.defBonus(flags),
+            blessingDefBonus   = ChurchRepository.defBonus(flags, equipped, inventory.keys, gameData.equipment),
             runeKey            = bossRuneKey,
             runeCostPerAttack  = selectedSpell?.runeCost ?: 1,
             availableRunes     = Int.MAX_VALUE,

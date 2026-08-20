@@ -122,7 +122,9 @@ class PlayerRepository @Inject constructor(
         val flags: PlayerFlags = json.decodeFromString(player.flags)
         val boostActive = !flags.ironman && flags.xpBoostExpiresAt > System.currentTimeMillis()
         val scaledXp = if (efficiencyMultiplier == 1.0f) xpGained else (xpGained * efficiencyMultiplier).toLong()
-        val blessingMult = if (flags.ironman) 1.0f else ChurchRepository.xpMultiplier(flags)
+        val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
+        val inventory: MutableMap<String, Int> = json.decodeFromString(player.inventory)
+        val blessingMult = if (flags.ironman) 1.0f else ChurchRepository.xpMultiplier(flags, equipped, inventory.keys, gameData.equipment)
         val baseXp = ((if (boostActive) scaledXp * 2 else scaledXp) * blessingMult).toLong()
         val prestigeLevel = if (flags.ironman) 0 else flags.skillPrestige[skillName] ?: 0
         val boostedXp = if (prestigeLevel > 0) (baseXp * (1.0 + prestigeLevel * 0.10)).toLong() else baseXp
@@ -131,7 +133,6 @@ class PlayerRepository @Inject constructor(
 
         val levels: MutableMap<String, Int>  = json.decodeFromString(player.skillLevels)
         val xpMap: MutableMap<String, Long>  = json.decodeFromString(player.skillXp)
-        val inventory: MutableMap<String, Int> = json.decodeFromString(player.inventory)
 
         val oldLevel = XpTable.levelForXp(xpMap[skillName] ?: 0L)
         val newXp = (xpMap[skillName] ?: 0L) + boostedXp
@@ -726,15 +727,16 @@ class PlayerRepository @Inject constructor(
         val flags: PlayerFlags = json.decodeFromString(player.flags)
         val boostActive = !flags.ironman && flags.xpBoostExpiresAt > System.currentTimeMillis()
         val boostMult = if (boostActive) 2L else 1L
-        val xpBlessingMult = if (flags.ironman) 1.0f else ChurchRepository.xpMultiplier(flags)
-        val coinBlessingMult = if (flags.ironman) 1.0f else ChurchRepository.coinMultiplier(flags) *
+        val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
+        val inventory: MutableMap<String, Int> = json.decodeFromString(player.inventory)
+        val xpBlessingMult = if (flags.ironman) 1.0f else ChurchRepository.xpMultiplier(flags, equipped, inventory.keys, gameData.equipment)
+        val coinBlessingMult = if (flags.ironman) 1.0f else ChurchRepository.coinMultiplier(flags, equipped, inventory.keys, gameData.equipment) *
             gooseCoinMultiplier(json.decodeFromString(player.pets)).toFloat()
         val scaledItems = if (efficiencyMultiplier == 1.0f) itemsGained
             else itemsGained.mapValues { (_, v) -> (v * efficiencyMultiplier).roundToInt().coerceAtLeast(1) }
 
         val levels:    MutableMap<String, Int>  = json.decodeFromString(player.skillLevels)
         val xpMap:     MutableMap<String, Long> = json.decodeFromString(player.skillXp)
-        val inventory: MutableMap<String, Int>  = json.decodeFromString(player.inventory)
 
         val awardedCapes = mutableListOf<String>()
         for ((skill, xp) in xpPerSkill) {
@@ -787,10 +789,13 @@ class PlayerRepository @Inject constructor(
      * the real credited XP instead of the pre-multiplier flat amount.
      */
     suspend fun previewFlatXpGrant(skillName: String, baseXp: Long): FlatXpBreakdown {
-        val flags = getFlags()
+        val player = getOrCreatePlayer()
+        val flags: PlayerFlags = json.decodeFromString(player.flags)
         val boostActive = !flags.ironman && flags.xpBoostExpiresAt > System.currentTimeMillis()
         val boostMult = if (boostActive) 2L else 1L
-        val blessingMult = if (flags.ironman) 1.0f else ChurchRepository.xpMultiplier(flags)
+        val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
+        val inventory: MutableMap<String, Int> = json.decodeFromString(player.inventory)
+        val blessingMult = if (flags.ironman) 1.0f else ChurchRepository.xpMultiplier(flags, equipped, inventory.keys, gameData.equipment)
         val afterBoostBlessing = ((baseXp * boostMult) * blessingMult).toLong()
         val prestigeLevel = if (flags.ironman) 0 else flags.skillPrestige[skillName] ?: 0
         val finalXp = if (prestigeLevel > 0) (afterBoostBlessing * (1.0 + prestigeLevel * 0.10)).toLong() else afterBoostBlessing

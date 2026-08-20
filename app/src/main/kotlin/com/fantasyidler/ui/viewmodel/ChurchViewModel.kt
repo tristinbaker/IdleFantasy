@@ -7,12 +7,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fantasyidler.R
 import com.fantasyidler.data.json.BlessingData
+import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.repository.BlessingActivateResult
 import com.fantasyidler.repository.ChurchRepository
+import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.TownRepository
+import com.fantasyidler.repository.resolveCapeMultiplier
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -33,6 +36,7 @@ data class ChurchUiState(
     val unlockedBlessingKeys: Set<String> = emptySet(),
     val activeBlessing: BlessingData? = null,
     val activeBlessingRemainingMs: Long = 0L,
+    val prayerCapeMult: Float = 1f,
     val totalBoneEquivalent: Int = 0,
     val totalBoneCount: Int = 0,
     val pendingBlessingKey: String? = null,
@@ -47,6 +51,7 @@ class ChurchViewModel @Inject constructor(
     val townRepo: TownRepository,
     private val playerRepo: PlayerRepository,
     private val churchRepo: ChurchRepository,
+    private val gameData: GameDataRepository,
     private val json: Json,
     @ApplicationContext private val context: Context,
 ) : ViewModel() {
@@ -60,7 +65,10 @@ class ChurchViewModel @Inject constructor(
         if (player == null) return@combine extra.copy(isLoading = true)
         val flags: PlayerFlags          = json.decodeFromString(player.flags)
         val levels: Map<String, Int>    = json.decodeFromString(player.skillLevels)
+        val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
+        val equippedCape                   = equipped[EquipSlot.CAPE]?.let { gameData.equipment[it] }
         val inventory: Map<String, Int> = json.decodeFromString(player.inventory)
+        val prayerCapeMult              = resolveCapeMultiplier(Skills.PRAYER, equippedCape, inventory.keys, flags.townBuildingTiers, flags.skillPrestige, gameData.equipment, flags.ironman)
         val prayerLevel = levels[Skills.PRAYER] ?: 1
         val active      = ChurchRepository.activeBlessing(flags)
         val remaining   = if (active != null) (flags.activeBlessingExpiresAt - System.currentTimeMillis()).coerceAtLeast(0L) else 0L
@@ -72,6 +80,7 @@ class ChurchViewModel @Inject constructor(
             unlockedBlessingKeys      = churchRepo.blessingsForLevel(prayerLevel).map { it.key }.toSet(),
             activeBlessing            = active,
             activeBlessingRemainingMs = remaining,
+            prayerCapeMult            = prayerCapeMult,
             totalBoneEquivalent       = ChurchRepository.totalBoneEquivalent(inventory),
             totalBoneCount            = ChurchRepository.totalBoneCount(inventory),
             ironman                   = flags.ironman,

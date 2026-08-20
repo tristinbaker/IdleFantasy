@@ -178,6 +178,7 @@ data class HomeUiState(
     val workerSummary: SessionSummary? = null,
     val activeBlessingKey: String = "",
     val activeBlessingRemainingMs: Long = 0L,
+    val prayerCapeMult: Float = 1f,
     val xpBoostRemainingMs: Long = 0L,
     val ironman: Boolean = false,
     val recentSessions: List<com.fantasyidler.data.model.RecentSession> = emptyList(),
@@ -287,6 +288,9 @@ class HomeViewModel @Inject constructor(
             val flags: PlayerFlags = json.decodeFromString(player.flags)
             val levels: Map<String, Int> = json.decodeFromString(player.skillLevels)
             val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
+            val equippedCape = equipped[EquipSlot.CAPE].let { gameData.equipment[it] }
+            val inventory: Map<String, Int> = json.decodeFromString(player.inventory)
+            val prayerCapeMult = resolveCapeMultiplier(Skills.PRAYER, equippedCape, inventory.keys, flags.townBuildingTiers, flags.skillPrestige, gameData.equipment, flags.ironman)
             val agilityLevel    = levels[Skills.AGILITY] ?: 1
             val agilityPrestige = flags.skillPrestige[Skills.AGILITY] ?: 0
             val chronosMult     = townRepo.playerSessionDurationMultiplier(flags)
@@ -312,7 +316,7 @@ class HomeViewModel @Inject constructor(
                                }
             val innXpMult = townRepo.workerXpMultiplier(flags)
             val playerXpBoostMult = if (flags.ironman) 1.0
-                else (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * ChurchRepository.xpMultiplier(flags)
+                else (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * ChurchRepository.xpMultiplier(flags, equipped, inventory.keys, gameData.equipment)
             val sessionXpGain: (SkillSession?) -> Long = { s ->
                 if (s == null || s.skillName in listOf("combat", "boss", "expedition", "farming", "tower", "carnival")) 0L
                 else try {
@@ -404,6 +408,7 @@ class HomeViewModel @Inject constructor(
                 workerQueue2        = flags.hiredWorker2?.sessionQueue ?: emptyList(),
                 activeBlessingKey          = flags.activeBlessingKey,
                 activeBlessingRemainingMs  = (flags.activeBlessingExpiresAt - System.currentTimeMillis()).coerceAtLeast(0L),
+                prayerCapeMult             = prayerCapeMult,
                 xpBoostRemainingMs         = if (flags.ironman) 0L else (flags.xpBoostExpiresAt - System.currentTimeMillis()).coerceAtLeast(0L),
                 ironman                    = flags.ironman,
                 recentSessions             = flags.recentSessions,
@@ -463,8 +468,8 @@ class HomeViewModel @Inject constructor(
             val equippedCape = equipped[EquipSlot.CAPE]?.let { gameData.equipment[it] }
             val boostActive      = !flags.ironman && flags.xpBoostExpiresAt > System.currentTimeMillis()
             val xpMult           = if (boostActive) 2L else 1L
-            val blessingXpMult   = if (flags.ironman) 1.0f else ChurchRepository.xpMultiplier(flags)
-            val blessingCoinMult = if (flags.ironman) 1.0f else ChurchRepository.coinMultiplier(flags) *
+            val blessingXpMult   = if (flags.ironman) 1.0f else ChurchRepository.xpMultiplier(flags, equippedCape, inventory.keys, gameData.equipment)
+            val blessingCoinMult = if (flags.ironman) 1.0f else ChurchRepository.coinMultiplier(flags, equippedCape, inventory.keys, gameData.equipment) *
                 PlayerRepository.gooseCoinMultiplier(json.decodeFromString<List<OwnedPet>>(player.pets)).toFloat()
 
             // ── Accumulators ──────────────────────────────────────────────
@@ -776,6 +781,38 @@ class HomeViewModel @Inject constructor(
                         combinedXpBySkill[Skills.MERCANTILE] = (combinedXpBySkill[Skills.MERCANTILE] ?: 0L) + totalXp
                         combinedCoins += coinReturnPreBlessing
                     }
+                    Skills.PRAYER -> {
+                        val totalXp = if (grantXp) frames.sumOf { it.xpGain.toLong() } else 0L
+                        val its     = mutableMapOf<String, Int>()
+                        for (frame in frames) for ((item, qty) in frame.items) its[item] = (its[item] ?: 0) + qty
+                        val coinsFromItems = (its.remove("coins") ?: 0).toLong()
+                        if (coinsFromItems > 0) {
+                            playerRepo.addCoins(coinsFromItems)
+                            combinedCoins += coinsFromItems
+                        }
+                        val pets       = its.filterKeys { it in petIds }
+                        val rawRegular = its.filterKeys { it !in petIds }
+                        awardedCapes += playerRepo.applySessionResults(Skills.PRAYER,
+                            totalXp, rawRegular
+                        )
+                        val buried = frames.sumOf { it.kills }
+                        val isAshSession = gameData.bones[session.activityKey]?.isAsh == true
+                        if (!isAshSession) {
+                            questRepo.recordBuried(buried)
+                            guildRepo.recordGuildPrayer(buried)
+                            playerRepo.recordDailyPrayer(buried)
+                        }
+                        for ((id, _) in pets) {
+                            val pd = gameData.pets[id] ?: continue
+                            if (playerRepo.addPetIfNew(id, pd.boostPercent))
+                                petFoundName = GameStrings.petName(context, pd.id)
+                        }
+                        combinedXpBySkill[Skills.PRAYER] = (combinedXpBySkill[Skills.PRAYER] ?: 0L) + totalXp
+                        for ((item, qty) in rawRegular) combinedItems[item] = (combinedItems[item] ?: 0) + qty
+                        val count = frames.sumOf { it.kills }
+                        val name  = GameStrings.itemName(context, session.activityKey)
+                        combinedBones[name] = (combinedBones[name] ?: 0) + count
+                    }
                     else -> {
                         val totalXp = if (grantXp) frames.sumOf { it.xpGain.toLong() } else 0L
                         val its     = mutableMapOf<String, Int>()
@@ -817,15 +854,6 @@ class HomeViewModel @Inject constructor(
                                 questRepo.recordThieving(session.activityKey, successCount, regular.filterKeys { it != "coins" })
                                 guildRepo.recordGuildThieving(session.activityKey, successCount)
                             }
-                            Skills.PRAYER      -> {
-                                val buried = frames.sumOf { it.kills }
-                                val isAshSession = gameData.bones[session.activityKey]?.isAsh == true
-                                if (!isAshSession) {
-                                    questRepo.recordBuried(buried)
-                                    guildRepo.recordGuildPrayer(buried)
-                                    playerRepo.recordDailyPrayer(buried)
-                                }
-                            }
                             Skills.FARMING     -> guildRepo.recordGuildGathering(Skills.FARMING, regular)
                         }
                         for ((id, _) in pets) {
@@ -835,11 +863,6 @@ class HomeViewModel @Inject constructor(
                         }
                         combinedXpBySkill[session.skillName] = (combinedXpBySkill[session.skillName] ?: 0L) + totalXp
                         for ((item, qty) in regular) combinedItems[item] = (combinedItems[item] ?: 0) + qty
-                        if (session.skillName == Skills.PRAYER) {
-                            val count = frames.sumOf { it.kills }
-                            val name  = GameStrings.itemName(context, session.activityKey)
-                            combinedBones[name] = (combinedBones[name] ?: 0) + count
-                        }
                     }
                 }
             }
@@ -1054,14 +1077,15 @@ class HomeViewModel @Inject constructor(
                 }
             }
             val isCombat = session.skillName == "combat" || session.skillName == "boss"
-            val player = if (isCombat) playerRepo.getOrCreatePlayer() else null
+            val player = playerRepo.getOrCreatePlayer()
+            val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
             val weaponSlot = if (isCombat) {
-                val equipped: Map<String, String?> = player?.equipped?.let { json.decodeFromString(it) } ?: emptyMap()
                 flags.activeWeaponSlot
                     ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
                     ?: EquipSlot.WEAPON_ATK
             } else null
-            val xpQueueMult = if (flags.ironman) 1.0 else (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * ChurchRepository.xpMultiplier(flags)
+            val inventory: Map<String, Int> = json.decodeFromString(player.inventory)
+            val xpQueueMult = if (flags.ironman) 1.0 else (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * ChurchRepository.xpMultiplier(flags, equipped, inventory.keys, gameData.equipment)
             val rawXpGain = frames.sumOf { it.xpGain }
             // The original fight/run count isn't stored on the session itself, only in the
             // repeat-chain flags set when it was first started -- carry it forward so
@@ -1081,7 +1105,7 @@ class HomeViewModel @Inject constructor(
                 estimatedXpGain     = if (session.skillName in listOf("carnival", "expedition")) 0L
                                       else (rawXpGain * xpQueueMult).toLong(),
                 weaponSlot          = weaponSlot,
-                equippedSnapshot    = player?.equipped,
+                equippedSnapshot    = if (isCombat) player.equipped else null,
                 spellName           = flags.activeSpell,
                 arrowsKey           = flags.equippedArrows,
                 potionKey           = flags.activePotionKey,
@@ -1178,8 +1202,10 @@ class HomeViewModel @Inject constructor(
             val workerSkillPrestige = if (flags.ironman) emptyMap() else flags.skillPrestige
             val boostActive      = !flags.ironman && flags.xpBoostExpiresAt > System.currentTimeMillis()
             val xpMult           = if (boostActive) 2L else 1L
-            val blessingXpMult   = if (flags.ironman) 1.0f else ChurchRepository.xpMultiplier(flags)
-            val blessingCoinMult = if (flags.ironman) 1.0f else ChurchRepository.coinMultiplier(flags) *
+            val equipped: Map<String, String?> = json.decodeFromString(workerPlayer.equipped)
+            val inventory: Map<String, Int> = json.decodeFromString(workerPlayer.inventory)
+            val blessingXpMult   = if (flags.ironman) 1.0f else ChurchRepository.xpMultiplier(flags, equipped, inventory.keys, gameData.equipment)
+            val blessingCoinMult = if (flags.ironman) 1.0f else ChurchRepository.coinMultiplier(flags, equipped, inventory.keys, gameData.equipment) *
                 PlayerRepository.gooseCoinMultiplier(json.decodeFromString<List<OwnedPet>>(workerPlayer.pets)).toFloat()
             val innXpMult        = townRepo.workerXpMultiplier(flags)
             val workerOwnedPets: List<OwnedPet> = if (flags.ironman) emptyList()

@@ -2,6 +2,8 @@ package com.fantasyidler.repository
 
 import com.fantasyidler.data.json.BlessingData
 import com.fantasyidler.data.json.BlessingType
+import com.fantasyidler.data.json.EquipmentData
+import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.data.model.Skills
 import javax.inject.Inject
@@ -65,19 +67,43 @@ class ChurchRepository @Inject constructor(
             return BY_KEY[flags.activeBlessingKey]
         }
 
-        fun xpMultiplier(flags: PlayerFlags): Float {
-            val b = activeBlessing(flags) ?: return 1f
-            return if (b.type == BlessingType.XP) b.magnitude else 1f
+        fun xpMultiplier(flags: PlayerFlags, equipped: Map<String, String?>, inventoryKeys: Set<String>, allEquipment: Map<String, EquipmentData>): Float {
+            val equippedCape = equipped[EquipSlot.CAPE]?.let { allEquipment[it] }
+            return xpMultiplier(flags, equippedCape, inventoryKeys, allEquipment)
         }
 
-        fun defBonus(flags: PlayerFlags): Int {
+        fun xpMultiplier(flags: PlayerFlags, equippedCape: EquipmentData?, inventoryKeys: Set<String>, allEquipment: Map<String, EquipmentData>): Float {
+            val b = activeBlessing(flags) ?: return 1f
+            return if (b.type == BlessingType.XP) {
+                val prayerCapeMult = resolveCapeMultiplier(Skills.PRAYER, equippedCape, inventoryKeys, flags.townBuildingTiers, flags.skillPrestige, allEquipment, flags.ironman)
+                1f + (b.magnitude - 1f) * prayerCapeMult
+            } else 1f
+        }
+
+        fun defBonus(flags: PlayerFlags, equipped: Map<String, String?>, inventoryKeys: Set<String>, allEquipment: Map<String, EquipmentData>): Int {
+            val equippedCape = equipped[EquipSlot.CAPE]?.let { allEquipment[it] }
+            return defBonus(flags, equippedCape, inventoryKeys, allEquipment)
+        }
+
+        fun defBonus(flags: PlayerFlags, equippedCape: EquipmentData?, inventoryKeys: Set<String>, allEquipment: Map<String, EquipmentData>): Int {
             val b = activeBlessing(flags) ?: return 0
-            return if (b.type == BlessingType.DEFENSE) b.magnitude.toInt() else 0
+            return if (b.type == BlessingType.DEFENSE) {
+                val prayerCapeMult = resolveCapeMultiplier(Skills.PRAYER, equippedCape, inventoryKeys, flags.townBuildingTiers, flags.skillPrestige, allEquipment, flags.ironman)
+                (b.magnitude * prayerCapeMult).toInt()
+            } else 0
         }
 
-        fun coinMultiplier(flags: PlayerFlags): Float {
+        fun coinMultiplier(flags: PlayerFlags, equipped: Map<String, String?>, inventoryKeys: Set<String>, allEquipment: Map<String, EquipmentData>): Float {
+            val equippedCape = equipped[EquipSlot.CAPE]?.let { allEquipment[it] }
+            return coinMultiplier(flags, equippedCape, inventoryKeys, allEquipment)
+        }
+
+        fun coinMultiplier(flags: PlayerFlags, equippedCape: EquipmentData?, inventoryKeys: Set<String>, allEquipment: Map<String, EquipmentData>): Float {
             val b = activeBlessing(flags) ?: return 1f
-            return if (b.type == BlessingType.COINS) 1f + b.magnitude else 1f
+            return if (b.type == BlessingType.COINS) {
+                val prayerCapeMult = resolveCapeMultiplier(Skills.PRAYER, equippedCape, inventoryKeys, flags.townBuildingTiers, flags.skillPrestige, allEquipment, flags.ironman)
+                1f + (b.magnitude * prayerCapeMult)
+            } else 1f
         }
 
         fun boneCostFor(blessing: BlessingData): Int = when {

@@ -71,7 +71,6 @@ class WorkerQueuedSessionStarter @Inject constructor(
         val defenseCapeMult  = resolveCapeMultiplier("defense", equippedCapeData, inventory.keys, flags.townBuildingTiers, flags.skillPrestige, gameData.equipment, flags.ironman)
         val rangedCapeMult   = resolveCapeMultiplier("ranged", equippedCapeData, inventory.keys, flags.townBuildingTiers, flags.skillPrestige, gameData.equipment, flags.ironman)
         val magicCapeMult    = resolveCapeMultiplier("magic", equippedCapeData, inventory.keys, flags.townBuildingTiers, flags.skillPrestige, gameData.equipment, flags.ironman)
-        val prayerCapeMult   = resolveCapeMultiplier("prayer", equippedCapeData, inventory.keys, flags.townBuildingTiers, flags.skillPrestige, gameData.equipment, flags.ironman)
         val levelAtStart = when (action.skillName) {
             "boss", "combat" -> combatLevelFrom(levels)
             else -> levels[action.skillName] ?: 1
@@ -290,7 +289,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                     availableArrows    = availableArrows,
                     equippedFood       = availableFood,
                     foodHealValues     = gameData.foodHealValues,
-                    blessingDefBonus   = (ChurchRepository.defBonus(flags) * prayerCapeMult).toInt(),
+                    blessingDefBonus   = ChurchRepository.defBonus(flags, equippedCapeData, inventory.keys, gameData.equipment),
                     attackSpeedSec     = bossWeapon?.attackSpeed ?: CombatSimulator.BASE_ATTACK_SPEED_SEC,
                     eatThresholdPct    = flags.foodEatThresholdPct,
                 )
@@ -332,7 +331,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                     playerStrength      = ((levels[Skills.STRENGTH]  ?: 1) * strengthCapeMult).toInt(),
                     playerDefence       = (((levels[Skills.DEFENSE]  ?: 1) * defenseCapeMult).toInt() + totalDefBonus),
                     playerHp            = levels[Skills.HITPOINTS] ?: 1,
-                    blessingDefBonus    = (ChurchRepository.defBonus(flags) * prayerCapeMult).toInt(),
+                    blessingDefBonus    = ChurchRepository.defBonus(flags, equippedCapeData, inventory.keys, gameData.equipment),
                     weaponAttackBonus   = totalAtkBonus,
                     weaponStrengthBonus = totalStrBonus,
                     combatStyle         = combatStyle,

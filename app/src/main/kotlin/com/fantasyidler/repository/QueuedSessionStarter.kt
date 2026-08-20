@@ -289,7 +289,6 @@ class QueuedSessionStarter @Inject constructor(
         val defenseCapeMult  = resolveCapeMultiplier("defense", equippedCapeData, inventory.keys, flags.townBuildingTiers, flags.skillPrestige, gameData.equipment, flags.ironman)
         val rangedCapeMult   = resolveCapeMultiplier("ranged", equippedCapeData, inventory.keys, flags.townBuildingTiers, flags.skillPrestige, gameData.equipment, flags.ironman)
         val magicCapeMult    = resolveCapeMultiplier("magic", equippedCapeData, inventory.keys, flags.townBuildingTiers, flags.skillPrestige, gameData.equipment, flags.ironman)
-        val prayerCapeMult   = resolveCapeMultiplier("prayer", equippedCapeData, inventory.keys, flags.townBuildingTiers, flags.skillPrestige, gameData.equipment, flags.ironman)
         // Recorded on the session so collection can detect a mid-session prestige reset
         // (isSkillSessionStillEligible) instead of gating on an unrelated difficulty formula.
         val levelAtStart = when (action.skillName) {
@@ -653,7 +652,7 @@ class QueuedSessionStarter @Inject constructor(
                     arrowStrengthBonuses = ARROW_STRENGTH_BONUS,
                     equippedFood       = availableFood,
                     foodHealValues     = gameData.foodHealValues,
-                    blessingDefBonus   = (ChurchRepository.defBonus(flags) * prayerCapeMult).toInt(),
+                    blessingDefBonus   = ChurchRepository.defBonus(flags, equippedCapeData, inventory.keys, gameData.equipment),
                     attackSpeedSec     = bossWeapon?.attackSpeed ?: CombatSimulator.BASE_ATTACK_SPEED_SEC,
                     eatThresholdPct    = flags.foodEatThresholdPct,
                 )
@@ -747,7 +746,7 @@ class QueuedSessionStarter @Inject constructor(
                     playerStrength      = ((levels[Skills.STRENGTH] ?: 1) * strengthCapeMult).toInt() + (pm[Skills.STRENGTH]  ?: 0) * 5 + (combatPotBonuses["strength"] ?: 0),
                     playerDefence       = ((levels[Skills.DEFENSE]  ?: 1) * defenseCapeMult).toInt() + totalDefBonus + (pm[Skills.DEFENSE] ?: 0) * 5 + (combatPotBonuses["defense"] ?: 0),
                     playerHp            = (levels[Skills.HITPOINTS] ?: 1) + (pm[Skills.HITPOINTS] ?: 0) * 5 + flags.towerHpBonus,
-                    blessingDefBonus    = (ChurchRepository.defBonus(flags) * prayerCapeMult).toInt(),
+                    blessingDefBonus    = ChurchRepository.defBonus(flags, equippedCapeData, inventory.keys, gameData.equipment),
                     weaponAttackBonus   = totalAtkBonus,
                     weaponStrengthBonus = totalStrBonus,
                     combatStyle         = combatStyle,
@@ -832,7 +831,7 @@ class QueuedSessionStarter @Inject constructor(
                     playerStrength      = ((levels[Skills.STRENGTH] ?: 1) * strengthCapeMult).toInt() + (pm[Skills.STRENGTH]  ?: 0) * 5,
                     playerDefence       = ((levels[Skills.DEFENSE]  ?: 1) * defenseCapeMult).toInt() + totalDefBonus + (pm[Skills.DEFENSE] ?: 0) * 5,
                     playerHp            = (levels[Skills.HITPOINTS] ?: 1) + (pm[Skills.HITPOINTS] ?: 0) * 5 + flags.towerHpBonus,
-                    blessingDefBonus    = (ChurchRepository.defBonus(flags) * prayerCapeMult).toInt(),
+                    blessingDefBonus    = ChurchRepository.defBonus(flags, equippedCapeData, inventory.keys, gameData.equipment),
                     weaponAttackBonus   = totalAtkBonus,
                     weaponStrengthBonus = totalStrBonus,
                     combatStyle         = combatStyle,

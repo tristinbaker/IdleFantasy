@@ -14,7 +14,6 @@ import com.fantasyidler.repository.ChurchRepository
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.GuildRepository
 import com.fantasyidler.repository.PlayerRepository
-import com.fantasyidler.repository.resolveCapeMultiplier
 import com.fantasyidler.repository.QuestRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -39,7 +38,6 @@ data class BoneAltarUiState(
     val prayerLevel: Int = 1,
     val prayerXp: Long = 0L,
     val boostActive: Boolean = false,
-    val prayerCapeMult: Float = 1f,
     val churchMult: Float = 1f,
     val prestigeMult: Float = 1f,
     val petBoostPct: Int = 0,
@@ -94,21 +92,14 @@ class BoneAltarViewModel @Inject constructor(
 
         val boostActive    = !flags.ironman && flags.xpBoostExpiresAt > System.currentTimeMillis()
         val equippedCape   = equipped[EquipSlot.CAPE]?.let { gameData.equipment[it] }
-        // skillPrestige is intentionally omitted here (not flags.skillPrestige): prestige is
-        // already applied as its own separate factor below (prestigeMult), multiplied together
-        // with prayerCapeMult at collection time. Passing the real prestige map here would fold
-        // (prestige + 1) into the cape multiplier too, double-counting prestige for any player
-        // who has prestiged Prayer and owns/equips a prayer cape.
-        val prayerCapeMult = resolveCapeMultiplier(
-            skillName = Skills.PRAYER,
-            equippedCape = equippedCape,
-            inventoryKeys = inventory.keys,
-            townBuildingTiers = flags.townBuildingTiers,
-            skillPrestige = emptyMap(),
-            allEquipment = gameData.equipment,
-            ironman = flags.ironman,
-        )
-        val churchMult     = if (flags.ironman) 1.0f else ChurchRepository.xpMultiplier(flags)
+        // skillPrestige is intentionally counted here twice: prestige is
+        // applied as its own separate factor below (prestigeMult), multiplied together
+        // with churchMult at collection time (which can be affected by prestige).
+        // This double-counting is intended as it comes from two separate sources:
+        // the inherent prestige multiplier of the skill and the effect of the prestige on capes.
+        // This is in line with the multipliers for other skills, the only difference being that
+        // in this case both come from the prayer prestige
+        val churchMult     = if (flags.ironman) 1.0f else ChurchRepository.xpMultiplier(flags, equippedCape, inventory.keys, gameData.equipment)
         val prestige       = if (flags.ironman) 0 else flags.skillPrestige[Skills.PRAYER] ?: 0
         val prestigeMult   = if (prestige > 0) (1.0 + prestige * 0.10).toFloat() else 1f
         val petBoostPct    = if (flags.ironman) 0 else petBoostFor(player.pets, Skills.PRAYER)
@@ -122,7 +113,6 @@ class BoneAltarViewModel @Inject constructor(
             prayerLevel     = levels[Skills.PRAYER] ?: 1,
             prayerXp        = xpMap[Skills.PRAYER] ?: 0L,
             boostActive     = boostActive,
-            prayerCapeMult  = prayerCapeMult,
             churchMult      = churchMult,
             prestigeMult    = prestigeMult,
             petBoostPct     = petBoostPct,
@@ -157,7 +147,7 @@ class BoneAltarViewModel @Inject constructor(
         val boostMult   = if (state.boostActive) 2.0f else 1.0f
         val petMult     = 1.0f + state.petBoostPct / 100.0f
         val effectiveXp = (bone.xpPerBone * comboMult * boostMult *
-            state.churchMult * state.prayerCapeMult * state.prestigeMult * petMult)
+            state.churchMult * state.prestigeMult * petMult)
             .toLong().coerceAtLeast(1L)
 
         _extra.update { it.copy(
