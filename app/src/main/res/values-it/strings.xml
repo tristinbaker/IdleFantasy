@@ -1319,6 +1319,7 @@
 
     <!-- Prestige system -->
     <string name="prestige">Onore</string>
+    <string name="prestige_skill_tree">Skill Tree</string> <!-- untranslated -->
     <string name="prestige_max">Onore Massimo</string>
     <string name="prestige_confirm_title" formatted="false">Onora %s?</string>
     <string name="prestige_confirm_message_xp">Il livello di %1$s tornerà a 1, ma otterrai un bonus permanente di +%2$d%% XP per questa abilità.</string>

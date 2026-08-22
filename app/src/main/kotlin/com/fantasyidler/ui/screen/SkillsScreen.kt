@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -19,7 +18,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.only
@@ -35,8 +33,6 @@ import androidx.compose.material3.Badge
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
-import androidx.compose.material3.Button
-import androidx.compose.material3.FilterChip
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -47,7 +43,6 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.material3.ModalBottomSheetProperties
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
@@ -56,9 +51,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -67,8 +59,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import kotlinx.coroutines.launch
-import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardType
 import kotlinx.coroutines.delay
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -84,44 +74,28 @@ import androidx.lifecycle.compose.dropUnlessResumed
 import com.fantasyidler.BuildConfig
 import com.fantasyidler.R
 import com.fantasyidler.ui.viewmodel.ExpeditionsViewModel
-import com.fantasyidler.data.json.AgilityCourseData
-import com.fantasyidler.data.json.BoneData
-import com.fantasyidler.data.json.FishData
-import com.fantasyidler.data.json.LogData
-import com.fantasyidler.data.json.OreData
-import com.fantasyidler.data.json.ThievingNpcData
-import com.fantasyidler.data.json.TreeData
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.ui.theme.ScaledSheetContent
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.ui.text.style.TextAlign
-import com.fantasyidler.ui.viewmodel.CraftableRecipe
-import com.fantasyidler.ui.viewmodel.CraftingUiState
 import com.fantasyidler.ui.viewmodel.CraftingViewModel
 import com.fantasyidler.ui.viewmodel.SheetQuestSource
 import com.fantasyidler.ui.viewmodel.SheetQuestSummary
 import com.fantasyidler.ui.viewmodel.SheetState
-import com.fantasyidler.ui.viewmodel.levelDisplay
 import com.fantasyidler.ui.viewmodel.SkillsUiState
 import com.fantasyidler.ui.viewmodel.SkillsViewModel
 import com.fantasyidler.ui.viewmodel.xpProgressFraction
 import com.fantasyidler.ui.viewmodel.nextLevelThreshold
 import com.fantasyidler.ui.viewmodel.xpToNextLevel
-import com.fantasyidler.simulator.SkillSimulator
-import com.fantasyidler.simulator.XpTable
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.toTitleCase
-import com.fantasyidler.util.formatDurationMs
 import com.fantasyidler.util.formatXp
 import com.fantasyidler.util.toCountdown
 import java.util.Locale
 import com.fantasyidler.ui.viewmodel.QuestCategory
-import com.fantasyidler.ui.viewmodel.QuestFillSuggestion
 import com.fantasyidler.ui.viewmodel.QuestIndicator
 
 private val NON_COMBAT_PRESTIGE_SKILLS = Skills.GATHERING + Skills.CRAFTING_SKILLS + Skills.SUPPORT + listOf(Skills.SLAYER)
@@ -253,6 +227,7 @@ fun SkillsScreen(
         viewModel             = viewModel,
         craftingViewModel     = craftingViewModel,
         onNavigateToBoneAltar = onNavigateToBoneAltar,
+        onNavigateToPrestige  = onNavigateToPrestige,
     )
 
     state.petFoundName?.let { petName ->
@@ -280,6 +255,7 @@ fun SkillActivitySheet(
     viewModel: SkillsViewModel,
     craftingViewModel: CraftingViewModel,
     onNavigateToBoneAltar: () -> Unit = {},
+    onNavigateToPrestige: (String) -> Unit = {},
 ) {
     val state by viewModel.uiState.collectAsState()
     val context = LocalContext.current
@@ -318,18 +294,27 @@ fun SkillActivitySheet(
             // Rendered by each sheet under its skill description; only the sheets without
             // a description header (Mercantile, Farming) show it above their content.
             val dailyBanner: @Composable () -> Unit = {
-                GuildDailySheetBanner(sheet, state.sheetQuests) { daily ->
-                    val remaining = (daily.amount - daily.progress).coerceAtLeast(1)
-                    val craftGuilds = setOf(
-                        Skills.SMITHING, Skills.COOKING, Skills.FLETCHING,
-                        Skills.CRAFTING, Skills.HERBLORE, Skills.CONSTRUCTION,
-                    )
-                    if (daily.type == "craft" && daily.guild in craftGuilds) {
-                        craftingViewModel.queueCraftForDaily(daily.target, remaining)
-                    } else {
-                        viewModel.queueDailySession(daily)
-                    }
-                }
+                GuildDailySheetBanner(
+                    sheet             = sheet,
+                    guildDailies      = state.sheetQuests,
+                    onOpenPrestige    = { skill ->
+                        viewModel.dismissSheet()
+                        craftingViewModel.dismissRecipe()
+                        onNavigateToPrestige(skill)
+                    },
+                    onQueueDaily      = { daily ->
+                        val remaining = (daily.amount - daily.progress).coerceAtLeast(1)
+                        val craftGuilds = setOf(
+                            Skills.SMITHING, Skills.COOKING, Skills.FLETCHING,
+                            Skills.CRAFTING, Skills.HERBLORE, Skills.CONSTRUCTION,
+                        )
+                        if (daily.type == "craft" && daily.guild in craftGuilds) {
+                            craftingViewModel.queueCraftForDaily(daily.target, remaining)
+                        } else {
+                            viewModel.queueDailySession(daily)
+                        }
+                    },
+                )
             }
             if (sheet is SheetState.Mercantile || sheet is SheetState.Farming) {
                 ScaledSheetContent { dailyBanner() }
@@ -501,6 +486,7 @@ private fun SheetQuestSummary.canQueue(): Boolean = when {
 private fun GuildDailySheetBanner(
     sheet: SheetState,
     guildDailies: Map<String, List<SheetQuestSummary>>,
+    onOpenPrestige: (String) -> Unit,
     onQueueDaily: (SheetQuestSummary) -> Unit,
 ) {
     val skillKey = when (sheet) {
@@ -517,7 +503,7 @@ private fun GuildDailySheetBanner(
         SheetState.Farming         -> Skills.FARMING
         SheetState.ComingSoon      -> null
     } ?: return
-    val quests = guildDailies[skillKey]?.takeIf { it.isNotEmpty() } ?: return
+    val quests = guildDailies[skillKey] ?: emptyList()
     val context = LocalContext.current
     val guildMaxed = quests.any { it.source == SheetQuestSource.GUILD && it.guildMaxed }
     val anyOpen = quests.any { !it.claimed && !(it.source == SheetQuestSource.GUILD && it.guildMaxed) }
@@ -618,19 +604,28 @@ private fun GuildDailySheetBanner(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
-        TextButton(onClick = { showDialog = true }) {
-            Text(
-                text  = stringResource(R.string.nav_quests),
-                style = MaterialTheme.typography.labelMedium,
-                color = if (anyOpen) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
-            )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            TextButton(onClick = { showDialog = true }, enabled = quests.isNotEmpty()) {
+                Text(
+                    text  = stringResource(R.string.nav_quests),
+                    style = MaterialTheme.typography.labelMedium,
+                    color = if (anyOpen) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+            if (guildMaxed) {
+                Text(
+                    text     = stringResource(R.string.guild_daily_rank_maxed),
+                    style    = MaterialTheme.typography.labelSmall,
+                    color    = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(start = 8.dp),
+                )
+            }
         }
-        if (guildMaxed) {
+        TextButton(onClick = { onOpenPrestige(skillKey) }) {
             Text(
-                text     = stringResource(R.string.guild_daily_rank_maxed),
-                style    = MaterialTheme.typography.labelSmall,
-                color    = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(end = 8.dp),
+                text  = stringResource(R.string.prestige_skill_tree),
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.primary,
             )
         }
     }

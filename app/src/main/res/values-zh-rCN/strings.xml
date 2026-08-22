@@ -1319,6 +1319,7 @@
 
     <!-- Prestige system -->
     <string name="prestige">转生</string>
+    <string name="prestige_skill_tree">Skill Tree</string> <!-- untranslated -->
     <string name="prestige_max">满转生</string>
     <string name="prestige_confirm_title" formatted="false">Prestige %s?</string> <!-- untranslated -->
     <string name="prestige_confirm_message_xp">你的 %1$s 等级将重置为1级，但你将获得该技能永久 +%2$d%% 经验加成。</string>

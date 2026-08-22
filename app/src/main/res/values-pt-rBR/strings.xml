@@ -1319,6 +1319,7 @@
 
     <!-- Prestige system -->
     <string name="prestige">Prestígio</string>
+    <string name="prestige_skill_tree">Skill Tree</string> <!-- untranslated -->
     <string name="prestige_max">Prestígio Máximo</string>
     <string name="prestige_confirm_title" formatted="false">Dar Prestígio em %s?</string>
     <string name="prestige_confirm_message_xp">Seu nível de %1$s vai voltar para 1, mas você vai ganhar um bônus permanente de +%2$d%% de XP nessa habilidade.</string>

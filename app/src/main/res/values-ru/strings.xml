@@ -1335,6 +1335,7 @@
 
     <!-- Prestige system -->
     <string name="prestige">Престиж</string>
+    <string name="prestige_skill_tree">Skill Tree</string> <!-- untranslated -->
     <string name="prestige_max">Макс. престиж</string>
     <string name="prestige_confirm_title" formatted="false">Престиж %s?</string>
     <string name="prestige_confirm_message_xp">Ваш уровень %1$s сбросится до 1, но вы получите постоянный бонус +%2$d%% опыта для этого навыка.</string>

@@ -1319,6 +1319,7 @@
 
     <!-- Prestige system -->
     <string name="prestige">名声</string>
+    <string name="prestige_skill_tree">Skill Tree</string> <!-- untranslated -->
     <string name="prestige_max">最大名声</string>
     <string name="prestige_confirm_title" formatted="false">%s の名声を獲得しますか？</string>
     <string name="prestige_confirm_message_xp">%1$s のレベルは 1 にリセットされますが、このスキルの獲得経験値に永続的な +%2$d%% ボーナスが得られます。</string>

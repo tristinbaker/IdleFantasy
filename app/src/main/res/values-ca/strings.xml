@@ -1057,6 +1057,7 @@
     <string name="slayer_foretell_btn">Foretell Next Task (%1$d bones)</string> <!-- untranslated -->
     <string name="slayer_foretell_slot">Slot %1$d: %2$s</string> <!-- untranslated -->
     <string name="prestige">Prestige</string> <!-- untranslated -->
+    <string name="prestige_skill_tree">Skill Tree</string> <!-- untranslated -->
     <string name="prestige_max">Max Prestige</string> <!-- untranslated -->
     <string name="prestige_confirm_title" formatted="false">Prestige %s?</string> <!-- untranslated -->
     <string name="prestige_confirm_message_xp">Your %1$s level will reset to 1, but you\'ll earn a permanent +%2$d%% XP bonus for this skill.</string> <!-- untranslated -->
