@@ -44,14 +44,14 @@
     <string name="btn_save">Simpan</string>
 
     <!-- ===== Common labels ===== -->
-    <string name="label_level">Level</string> <!-- untranslated -->
-    <string name="label_xp">XP</string> <!-- untranslated -->
+    <string name="label_level">Level</string>
+    <string name="label_xp">XP</string>
     <string name="label_coins">Koin</string>
-    <string name="label_hp">HP</string> <!-- untranslated -->
+    <string name="label_hp">HP</string>
     <string name="label_attack">Serang</string>
     <string name="label_strength">Kekuatan</string>
     <string name="label_defense">Pertahanan</string>
-    <string name="label_ranged">Ranged</string> <!-- untranslated -->
+    <string name="label_ranged">Ranged</string>
     <string name="label_magic">Sihir</string>
     <string name="label_prayer">Doa</string>
     <string name="label_hitpoints">Darah</string>
@@ -65,30 +65,30 @@
     <string name="label_bosses">Bos</string>
     <string name="label_by_location">Dari Lokasi</string>
     <string name="bestiary_not_encountered">Belum pernah ditemui</string>
-    <string name="bestiary_qty_header">Qty</string> <!-- untranslated -->
-    <string name="bestiary_chance_header">Chance</string> <!-- untranslated -->
-    <string name="bestiary_encountered_progress">%1$d / %2$d encountered</string> <!-- untranslated -->
+    <string name="bestiary_qty_header">Qty</string>
+    <string name="bestiary_chance_header">Peluang</string>
+    <string name="bestiary_encountered_progress">%1$d / %2$d ditemui</string>
     <string name="bestiary_always_drops">Jatuhan Selalu</string>
     <string name="bestiary_rare_drops">Jatuhan Langka</string>
     <string name="bestiary_common_loot">Jarahan Biasa</string>
     <string name="bestiary_pet_drop">Jatuhan Peliharaan</string>
-    <string name="bestiary_atk_def">Atk Def</string> <!-- untranslated -->
-    <string name="bestiary_str_def">Str Def</string> <!-- untranslated -->
-    <string name="bestiary_rng_def">Rng Def</string> <!-- untranslated -->
-    <string name="bestiary_mag_def">Mag Def</string> <!-- untranslated -->
+    <string name="bestiary_atk_def">Atk Def</string>
+    <string name="bestiary_str_def">Str Def</string>
+    <string name="bestiary_rng_def">Rng Def</string>
+    <string name="bestiary_mag_def">Mag Def</string>
     <string name="label_session_in_progress">Sesi Sedang Berlangsung</string>
     <string name="label_session_active">Sesi Aktif</string>
     <string name="label_no_active_session">Tidak ada sesi aktif.</string>
     <string name="label_session_complete">Sesi Selesai!</string>
-    <string name="home_sessions_complete_title">%1$d Sessions Complete!</string> <!-- untranslated -->
-    <string name="home_boss_defeated_title">Defeated %1$s!</string> <!-- untranslated -->
-    <string name="home_boss_defeated_by_title">Defeated by %1$s.</string> <!-- untranslated -->
-    <string name="home_dungeon_died_title">%1$s — You Died</string> <!-- untranslated -->
-    <string name="home_dungeon_complete_title">%1$s Complete!</string> <!-- untranslated -->
-    <string name="home_expedition_complete_title">%1$s Expedition Complete</string> <!-- untranslated -->
-    <string name="home_skill_session_complete_title">%1$s Session Complete</string> <!-- untranslated -->
-    <string name="home_bones_buried_row">%1$s buried</string> <!-- untranslated -->
-    <string name="worker_sessions_complete_title">Worker: %1$d Sessions Complete!</string> <!-- untranslated -->
+    <string name="home_sessions_complete_title">%1$d Sesi Selesai!</string>
+    <string name="home_boss_defeated_title">%1$s Dikalahkan!</string>
+    <string name="home_boss_defeated_by_title">Dikalahkan oleh %1$s.</string>
+    <string name="home_dungeon_died_title">%1$s — Kamu Mati</string>
+    <string name="home_dungeon_complete_title">%1$s Selesai!</string>
+    <string name="home_expedition_complete_title">%1$s Ekspedisi Selesai</string>
+    <string name="home_skill_session_complete_title">%1$s Sesi Selesai</string>
+    <string name="home_bones_buried_row">%1$s terkubur</string>
+    <string name="worker_sessions_complete_title">Pekerja: %1$d Sesi Selesai!</string>
     <string name="worker_boss_defeated_title">Worker: Defeated %1$s!</string> <!-- untranslated -->
     <string name="worker_dungeon_died_title">Worker: %1$s — Died</string> <!-- untranslated -->
     <string name="worker_dungeon_complete_title">Worker: %1$s Complete!</string> <!-- untranslated -->
@@ -863,7 +863,7 @@
     <string name="combat_difficulty_unlikely">Kemungkinan besar akan meninggal</string>
 
     <!-- ===== Achievements ===== -->
-    <string name="achievement_group_levelling"></string>
+    <string name="achievement_group_levelling" />
     <string name="achievement_group_combat">Tempur</string>
     <string name="achievement_group_quests">Tugas</string>
     <string name="achievement_group_collection">Koleksi</string>
@@ -1454,7 +1454,7 @@
     <string name="town_upgrade_cost">Harga: %1$s koin</string>
     <string name="town_builder_discount">Builder\'s discount: %1$d%% off</string> <!-- untranslated -->
     <string name="town_upgrade_materials_header">Material:</string>
-    <string name="town_upgrade_btn"></string>
+    <string name="town_upgrade_btn" />
     <string name="town_upgrade_success">Gedung telah ditingkatkan!</string>
     <string name="town_upgrade_fail_level">Membutuhkan Konstruksi Lv. %1$d</string>
     <string name="town_upgrade_fail_coins">Koin tidak cukup</string>
