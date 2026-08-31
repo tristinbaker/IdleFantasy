@@ -1,6 +1,6 @@
 {
   "repo": {
-    "timestamp": 1788173394217,
+    "timestamp": 1788176367826,
     "version": 30000,
     "name": "Idle Fantasy",
     "icon": "icon.png",
@@ -20,15 +20,15 @@
       "categories": [
         "Games"
       ],
-      "suggestedVersionName": "1.14.5",
-      "suggestedVersionCode": "145000",
+      "suggestedVersionName": "1.14.6",
+      "suggestedVersionCode": "146000",
       "issueTracker": "https://github.com/tristinbaker/IdleFantasy/issues",
       "liberapay": "tristinbaker_",
       "license": "GPL-3.0-only",
       "sourceCode": "https://github.com/tristinbaker/IdleFantasy",
       "added": 1781744235667,
       "packageName": "com.tristinbaker.idlefantasy",
-      "lastUpdated": 1788173357499,
+      "lastUpdated": 1788176332411,
       "localized": {
         "en-US": {
           "description": "Idle Fantasy is a free and open source offline idle RPG inspired by classic MMORPGs. Train skills, fight in dungeons, craft gear, and complete quests. No internet connection, account, or ads required.\n\n<b>Features</b>\n\n\u2022 <b>23 trainable skills</b>: Mining, Fishing, Woodcutting, Farming, Thieving, Smithing, Cooking, Fletching, Crafting, Firemaking, Runecrafting, Herblore, Construction, Prayer, Mercantile, Agility, Slayer, Attack, Strength, Defense, Ranged, Magic, and Hitpoints\n\n\u2022 <b>Session-based training</b>: Start a session and close the app. Come back up to an hour later to collect your loot and XP. Agility reduces session time.\n\n\u2022 <b>29 dungeons</b>: Fight solo bosses and enemies to earn combat XP, coins, and rare drops. Equip weapons and armour to deal more damage.\n\n\u2022 <b>Crafting system</b>: Smelt bars, cook fish, fletch bows and arrows, craft jewellery. Consume gathered materials and earn XP and items.\n\n\u2022 <b>Prayer</b>: Bury bones collected from combat to earn Prayer XP.\n\n\u2022 <b>Equipment system</b>: Equip weapons, armour, tools, and jewellery to boost stats and skill efficiency.\n\n\u2022 <b>Quest system</b>: 189 quests spanning all skills. Earn XP rewards on completion.\n\n\u2022 <b>Pet system</b>: Rare pets can drop while training skills. Each pet provides a permanent XP boost to their linked skill.\n\n\u2022 <b>Achievements</b>: Track milestones across levelling, combat, quests, and collections.\n\n\u2022 <b>NPC Shop</b>: Buy supplies and sell your gathered resources for coins.\n\n\u2022 <b>No ads. No accounts. No internet required.</b> Your save data stays on your device.\n\n\u2022 <b>Translations</b>: Partial and full translations available for 19 languages.\n\nIdle Fantasy is free software released under the GPL-3.0 licence. Source code is available on the project repository.\n\n<b>Get updates faster</b>\n\nAdd the official Idle Fantasy repository to F-Droid to receive updates as soon as they are released, instead of waiting for the main F-Droid index to catch up.\n\n1. Open F-Droid and go to Settings \u2192 Repositories\n2. Tap + and paste: https://idlefantasy.tristinbaker.xyz/fdroid/repo\n3. Search for Idle Fantasy, open the app page, and under Repositories set Idle Fantasy as the preferred source.\n",
@@ -52,14 +52,59 @@
             "8.png",
             "9.png"
           ],
-          "summary": "Idle RPG: train skills, fight dungeons, craft gear. No ads, no accounts.",
-          "whatsNew": "Improvements\n\u2022 The combat arrow dropdown now shows each arrow's ranged strength, and the spell dropdown shows every spell with its Magic level requirement, including ones you haven't unlocked yet\n\u2022 Dangerous session actions are now red with bigger buttons to help avoid misclicks\n\u2022 Collection progress bars in the profile tabs now share one design, and Achievements gained a real progress bar\n\u2022 Active boosts now have a distinct icon per type, consistent formatting, and a larger tap area\n\u2022 Daily and"
+          "summary": "Idle RPG: train skills, fight dungeons, craft gear. No ads, no accounts."
         }
       }
     }
   ],
   "packages": {
     "com.tristinbaker.idlefantasy": [
+      {
+        "added": 1788176332411,
+        "apkName": "com.tristinbaker.idlefantasy_146000.apk",
+        "hash": "12f795ee96cf4e1bc03369dc092633d23cbb250a54e79df0d37eae084089ea00",
+        "hashType": "sha256",
+        "minSdkVersion": 26,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86",
+          "x86_64"
+        ],
+        "packageName": "com.tristinbaker.idlefantasy",
+        "sig": "e83cc5b410f2aca2b487e5af7883d581",
+        "signer": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010",
+        "size": 10239143,
+        "targetSdkVersion": 35,
+        "uses-permission": [
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.USE_EXACT_ALARM",
+            null
+          ],
+          [
+            "android.permission.SCHEDULE_EXACT_ALARM",
+            null
+          ],
+          [
+            "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 146000,
+        "versionName": "1.14.6"
+      },
       {
         "added": 1788173357499,
         "apkName": "com.tristinbaker.idlefantasy_145000.apk",
