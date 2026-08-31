@@ -1,17 +1,67 @@
 {
   "repo": {
-    "timestamp": 1787917507408
+    "timestamp": 1788173394217
   },
   "packages": {
     "com.tristinbaker.idlefantasy": {
       "metadata": {
-        "lastUpdated": 1787917473279,
+        "lastUpdated": 1788173357499,
         "description": {
           "en-US": "Idle Fantasy is a free and open source offline idle RPG inspired by classic MMORPGs. Train skills, fight in dungeons, craft gear, and complete quests. No internet connection, account, or ads required.\n\n<b>Features</b>\n\n• <b>23 trainable skills</b>: Mining, Fishing, Woodcutting, Farming, Thieving, Smithing, Cooking, Fletching, Crafting, Firemaking, Runecrafting, Herblore, Construction, Prayer, Mercantile, Agility, Slayer, Attack, Strength, Defense, Ranged, Magic, and Hitpoints\n\n• <b>Session-based training</b>: Start a session and close the app. Come back up to an hour later to collect your loot and XP. Agility reduces session time.\n\n• <b>29 dungeons</b>: Fight solo bosses and enemies to earn combat XP, coins, and rare drops. Equip weapons and armour to deal more damage.\n\n• <b>Crafting system</b>: Smelt bars, cook fish, fletch bows and arrows, craft jewellery. Consume gathered materials and earn XP and items.\n\n• <b>Prayer</b>: Bury bones collected from combat to earn Prayer XP.\n\n• <b>Equipment system</b>: Equip weapons, armour, tools, and jewellery to boost stats and skill efficiency.\n\n• <b>Quest system</b>: 189 quests spanning all skills. Earn XP rewards on completion.\n\n• <b>Pet system</b>: Rare pets can drop while training skills. Each pet provides a permanent XP boost to their linked skill.\n\n• <b>Achievements</b>: Track milestones across levelling, combat, quests, and collections.\n\n• <b>NPC Shop</b>: Buy supplies and sell your gathered resources for coins.\n\n• <b>No ads. No accounts. No internet required.</b> Your save data stays on your device.\n\n• <b>Translations</b>: Partial and full translations available for 19 languages.\n\nIdle Fantasy is free software released under the GPL-3.0 licence. Source code is available on the project repository.\n\n<b>Get updates faster</b>\n\nAdd the official Idle Fantasy repository to F-Droid to receive updates as soon as they are released, instead of waiting for the main F-Droid index to catch up.\n\n1. Open F-Droid and go to Settings → Repositories\n2. Tap + and paste: https://idlefantasy.tristinbaker.xyz/fdroid/repo\n3. Search for Idle Fantasy, open the app page, and under Repositories set Idle Fantasy as the preferred source.\n"
         }
       },
       "versions": {
         "49a31174aeeb60d67191dcef9da2010dfba2f4926ca66767538cdf4ed7585bd7": null,
+        "8b096e27f8b68e4833c20d2b12bed678ec653f05422e3e4777a6856c32e5281f": {
+          "added": 1788173357499,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_145000.apk",
+            "sha256": "8b096e27f8b68e4833c20d2b12bed678ec653f05422e3e4777a6856c32e5281f",
+            "size": 10239139
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.14.5",
+            "versionCode": 145000,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "Improvements\n• The combat arrow dropdown now shows each arrow's ranged strength, and the spell dropdown shows every spell with its Magic level requirement, including ones you haven't unlocked yet\n• Dangerous session actions are now red with bigger buttons to help avoid misclicks\n• Collection progress bars in the profile tabs now share one design, and Achievements gained a real progress bar\n• Active boosts now have a distinct icon per type, consistent formatting, and a larger tap area\n• Daily and"
+          }
+        },
         "f47705c515f08dda724c655ec88080e3002af2bcef875e0d29a8d730eb3eba1c": {
           "added": 1787917473279,
           "file": {

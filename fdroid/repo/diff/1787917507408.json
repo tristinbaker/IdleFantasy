@@ -1,0 +1,64 @@
+{
+  "repo": {
+    "timestamp": 1788173394217
+  },
+  "packages": {
+    "com.tristinbaker.idlefantasy": {
+      "metadata": {
+        "lastUpdated": 1788173357499
+      },
+      "versions": {
+        "8b096e27f8b68e4833c20d2b12bed678ec653f05422e3e4777a6856c32e5281f": {
+          "added": 1788173357499,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_145000.apk",
+            "sha256": "8b096e27f8b68e4833c20d2b12bed678ec653f05422e3e4777a6856c32e5281f",
+            "size": 10239139
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.14.5",
+            "versionCode": 145000,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "Improvements\n• The combat arrow dropdown now shows each arrow's ranged strength, and the spell dropdown shows every spell with its Magic level requirement, including ones you haven't unlocked yet\n• Dangerous session actions are now red with bigger buttons to help avoid misclicks\n• Collection progress bars in the profile tabs now share one design, and Achievements gained a real progress bar\n• Active boosts now have a distinct icon per type, consistent formatting, and a larger tap area\n• Daily and"
+          }
+        }
+      }
+    }
+  }
+}
