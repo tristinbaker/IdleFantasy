@@ -1,13 +1,63 @@
 {
   "repo": {
-    "timestamp": 1788176367826
+    "timestamp": 1788178625943
   },
   "packages": {
     "com.tristinbaker.idlefantasy": {
       "metadata": {
-        "lastUpdated": 1788176332411
+        "lastUpdated": 1788178590602
       },
       "versions": {
+        "8c02c2235dda36e94aee900bb2a22d06b0177a1356f20e46f72007666eec5b2f": {
+          "added": 1788178590602,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_146001.apk",
+            "sha256": "8c02c2235dda36e94aee900bb2a22d06b0177a1356f20e46f72007666eec5b2f",
+            "size": 10239259
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.14.6.1",
+            "versionCode": 146001,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• The What's New dialog now correctly lists the recent updates; the 1.14.6 hotfix entry was missing from it\n• Re-release of the 1.14.6 hotfix: collecting sessions and starting queued sessions froze the game indefinitely in 1.14.5; nothing was lost, and stuck sessions collect normally after updating\n"
+          }
+        },
         "12f795ee96cf4e1bc03369dc092633d23cbb250a54e79df0d37eae084089ea00": {
           "added": 1788176332411,
           "file": {
@@ -53,6 +103,9 @@
                 "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
               }
             ]
+          },
+          "whatsNew": {
+            "en-US": "• Hotfix: collecting sessions and starting queued sessions froze the game indefinitely in 1.14.5; nothing was lost, and all stuck sessions collect normally after updating\n"
           }
         },
         "8b096e27f8b68e4833c20d2b12bed678ec653f05422e3e4777a6856c32e5281f": {
