@@ -107,7 +107,7 @@
 
     <main class="content">
       <h1 id="how-to-add-your-guide-to-the-wiki">How to add your guide to the wiki</h1>
-<p>Adding your own strategy guides to the wiki can be a great way to share your knowledge of the game to develop strategies that everyone can use.</p>
+<p>Adding your own strategy guides to the wiki is a great way to share what you've learned and help other players develop strategies that everyone can use.</p>
 <h2 id="table-of-contents">Table of contents</h2>
 <ul>
 <li><a href="#writing-good-guides">Writing good guides</a><ul>
@@ -123,23 +123,27 @@
 </li>
 </ul>
 <h2 id="writing-good-guides">Writing good guides</h2>
-<p>Writing good guides can be hard and there's a lot of things that go into a good guide but there are a few key concepts that can help you write the best ones.</p>
+<p>Writing a good guide takes some effort, and there's a lot that goes into one — but a few key ideas can make a real difference.</p>
 <h3 id="research">Research</h3>
-<p>The most important thing to do is to make sure you've done your research and potentially tried a few different strategies. That doesn't mean your research has to be perfect, but the more research you do, the better the guide you write can be.</p>
-<p>If you know how to read the game code, this is also a great way to better understand how things work. LLMs like Claude code can be quite helpful here as well to read through the codebase and find how mechanics work, although you should always do a sanity check to make sure it lines up with what you expect. Additionally, sometimes less is more and if a piece of code doesn't really have a useful place in your guide, you don't always need to include it, although you can always add it in a section at the end.</p>
+<p>The most important thing is to do your research and try a few different strategies before you start writing. That doesn't mean everything has to be perfect, but the more you've tested and understood, the better your guide will be.</p>
+<p>If you know how to read the game code, that's a great way to understand how mechanics actually work. LLMs like Claude can also help you explore the codebase, though you should always sanity-check what they tell you against what you see in-game. And remember, sometimes less is more. If a code snippet doesn't really belong in the main guide, you can always tuck it into a section at the end.</p>
 <h3 id="adding-pictures-and-game-data">Adding pictures and game data</h3>
-<p>People often tire of reading long blocks of text and adding visuals or actual game data references can be a great way to break up the flow.</p>
-<p><a href="#custom-generators">Custom generators</a> allow you to incorporate game data into your guide however these are more complicated to add. If you're not comfortable working with these however, that's fine and having things like Excel tables, graphs, markdown tables, or anything else are great.</p>
+<p>People tend to tire of long blocks of text, so visuals and data references are a great way to break things up and keep readers engaged.</p>
+<p><a href="#advanced-custom-generators">Custom generators</a> let you pull live game data into your guide, but they're more involved to set up. If that's not your thing, that's fine - Excel tables, graphs, markdown tables, and screenshots all work well too.</p>
 <h3 id="getting-feedback">Getting feedback</h3>
-<p>Before you publish to the wiki, it's a good idea to get some feedback on your guide. You can do this through the GitHub discussions or there's also a dedicated thread on the game's Discord which you can use to get feedback and refine your guide before adding it. If you'd like to join, you can do so at the link <a href="https://discord.gg/vRxtXsBwQU">here</a></p>
+<p>Before you publish, it's worth getting a second opinion on your guide. You could do this by sharing it in GitHub discussions, or posting it in the dedicated strategy guide thread on the game's Discord to get some feedback and refine your work. If you'd like to join the Discord, you can do so <a href="https://discord.gg/vRxtXsBwQU">here</a>. A bit of feedback upfront can sometimes save a lot of rework later.</p>
 <h2 id="adding-guides-to-the-wiki">Adding guides to the wiki</h2>
-<p>Great, so you've figured out what you write and (hopefully) got some good feedback on the Discord or discussions which you've used to improve your guide. The next step is to add your guide to the wiki itself, starting off by creating a fork of the repo. If you're not familiar with the concept of forking repositories and creating pull requests, I'd recommend reading up about them on <a href="https://docs.github.com/en/pull-requests/get-started/pull-request-quickstart">GitHub docs</a> or finding a how-to video which can help explain things.</p>
-<p>Once you've created the fork, you have a couple options. If you want to create a typical guide which has images, and links to other pages, then you'll want to stick to the <a href="#getting-started">standard approach</a>. If you want to make your guide even better, consider incorporating real-time game data to your guide by following the <a href="#advanced-custom-generators">advanced approach</a>.</p>
+<p>So you've written your guide and (hopefully) used some feedback to polish it - nice work! The next step is adding it to the wiki itself, which starts with creating a fork of the repo. If you're not familiar with forking and pull requests, <a href="https://docs.github.com/en/pull-requests/get-started/pull-request-quickstart">GitHub's quickstart guide</a> is a good place to start, or you can find a how-to video that walks through the process.</p>
+<p>Once you've forked the repo, you'll have two options for making your wiki guide to choose from:</p>
+<ul>
+<li><strong><a href="#getting-started">Standard approach</a></strong> - for guides with images and links to other wiki pages</li>
+<li><strong><a href="#advanced-custom-generators">Advanced approach</a></strong> - for guides that incorporate live game data. These can do anything in the standard approach</li>
+</ul>
 <h3 id="getting-started">Getting started</h3>
-<p>Generally, to add a page to the wiki, there's only a few things you need to do. The first thing is to add any images that you wish to reference into <code>wiki/images/guides</code>.</p>
-<p>Then, you'll want to add a new markdown file under <code>wiki/templates/guides</code> with the actual content in your guide. There's no need to include the header with the title nor the related links at the bottom of some guides as these get automatically included in the standard template. You can see an example of this in <code>wiki/templates/guides/the_infinite_tower.md</code>.</p>
-<p>Once that's done, you should replace any images with fields like <code>{tower_bestiary}</code>. When naming your field (like <code>tower_bestiary</code>), you should remove anything after the first dot <code>E.g. tower_bestiary.myfile.png → {tower_bestiary}</code>. Additionally, for any links to other pages, you can link to them directly using normal markdown links but ideally, you should link to them using a field with their page_id which is typically defined in <a href="https://github.com/tristinbaker/IdleFantasy/blob/da2c82a048bc6f0e416d9514421eadaf958a407c/wiki/src/pages.py#L64-L126"><code>pages.py</code></a>.</p>
-<p>Finally, once you've added any visuals and replaced the images with fields, all you have to do is add your guide to <code>wiki/templates/guides/guides.yml</code>. When defining it, you need to specify the id (that's the first level) and some parameters as described below:</p>
+<p>Generally, adding a guide to the wiki only takes a few steps. First, add any images you want to use into <code>wiki/images/guides</code>.</p>
+<p>Then create a new markdown file under <code>wiki/templates/guides</code> with your guide content. You don't need to include the title header or the related links section at the bottom as the standard template handles both of those for you. For a working example, take a look at <code>wiki/templates/guides/the_infinite_tower.md</code>.</p>
+<p>Next, replace your image references with template fields like <code>{tower_bestiary}</code>. When naming a field, drop everything after the first dot in the filename — for example, <code>tower_bestiary.png</code> becomes <code>{tower_bestiary}</code>. For links to other wiki pages, you can use normal markdown links, but it's better to use a field with the page's ID. These IDs are defined in <code>pages.py</code> which most in the <a href="https://github.com/tristinbaker/IdleFantasy/blob/da2c82a048bc6f0e416d9514421eadaf958a407c/wiki/src/pages.py#L64-L126"><code>add_static_pages()</code></a> function.</p>
+<p>Finally, register your guide in <code>wiki/templates/guides/guides.yml</code>. The guide ID is the top-level key, and the parameters below fill in the rest:</p>
 <table>
 <thead>
 <tr>
@@ -151,51 +155,51 @@
 <tbody>
 <tr id="title">
 <td>title</td>
-<td>This is the title of your guide, and it shows up at the top of the page.</td>
+<td>The title shown at the top of the page.</td>
 <td>Yes</td>
 </tr>
 <tr id="author">
 <td>author</td>
-<td>This is you! If multiple people made the guide, feel free to put some other name or even multiple names here.</td>
+<td>That's you! If multiple people contributed, feel free to list more than one name.</td>
 <td>Yes</td>
 </tr>
 <tr id="last_updated">
 <td>last_updated</td>
-<td>This indicates when the guide was last updated and helps players know when the guide is most relevant, particularly as mechanics do change sometimes. The preferred format for this parameter is YYYY-MM-DD.</td>
+<td>When the guide was last updated (YYYY-MM-DD). This helps players know how current the advice is, especially as mechanics change over time.</td>
 <td>Yes</td>
 </tr>
 <tr id="images">
 <td>images</td>
-<td>This is a list of images that you use in your guide. Any image which you convert to a field must be listed here with the full filename.</td>
+<td>A list of image filenames used as template fields in your guide. Any image you convert to a field needs to be listed here with its full filename.</td>
 <td>No</td>
 </tr>
 <tr id="page_links">
 <td>page_links</td>
-<td>If you want to refer to other pages, this is the best way to link to them and is a list of page IDs. If you want to link to guides, these should be the id for the guide with the prefix of guide_. E.g. For the_infinite_tower, use guide_the_infinite_tower.</td>
+<td>Page IDs for links within the guide body. To link to another guide, prefix its ID with <code>guide_</code> — e.g. <code>guide_the_infinite_tower</code> for the Infinite Tower guide.</td>
 <td>No</td>
 </tr>
 <tr id="related_pages">
 <td>related_pages</td>
-<td>These page links are what gets listed at the bottom of a guide in the 'Related pages' section. It's highly recommended to add any page IDs of other related pages here as it can help players find related content, particularly for in-game pages.</td>
+<td>Page IDs shown in the 'Related pages' section at the bottom. It's worth adding related in-game pages here as it helps players discover content they might not have found.</td>
 <td>No</td>
 </tr>
 <tr id="custom_generator">
 <td>custom_generator</td>
-<td>This is used when creating pages which incorporate game data. If you want to use custom generators, see <a href="#advanced-custom-generators">advanced setup</a>.</td>
-<td>Invalid for standard guides</td>
+<td>Used for guides that incorporate live game data. See <a href="#advanced-custom-generators">advanced setup</a>.</td>
+<td>N/A (advanced guides only)</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p>If you want to add a table of contents to your guide, simply add {table_of_contents} at the top of your page and it'll be included</p>
+<p>Want a table of contents? Just add <code>{table_of_contents}</code> at the top of your page and it'll be generated automatically.</p>
 </blockquote>
 <h3 id="advanced-custom-generators">Advanced: Custom generators</h3>
-<p>Custom generators are a great way to improve your guide by incorporating actual game data or more advanced formats. To get started, it's highly recommended to have a look at <a href="getting_started_wiki.html#">Getting Started - Wiki Contributions</a>. While creating custom generators for guides isn't the same, they share a lot of traits with creating standard wiki pages and learning those can give you a lot of background.</p>
-<p>To use custom generators, you first need to follow the steps for <a href="#getting-started">Getting started</a> and create a guide using the standard method. The only difference is that for custom-generated pages, you can't have the <code>images</code> or <code>page_links</code> parameters and you'll need to set the <code>custom_generator</code> parameter to something unique.</p>
-<p>Once you've done this, you can create a custom generator function in the section dedicated to custom player guides in <code>pages.py</code>. For it to work correctly, you'll need to define a function which takes in the guide you created as a parameter and then returns the properly formatted guide. Finally, simply add a reference to your generator in PLAYER_GUIDE_GENERATORS and that's all there is to it. If you try running the wiki, you should be able to see it show up in the sidebar in all its glory.</p>
+<p>Custom generators are a great way to take your guide further by incorporating actual game data or more advanced formatting. Before diving in, it's worth reading <a href="getting_started_wiki.html#">Getting Started - Wiki Contributions</a>. Creating guide generators isn't quite the same as standard wiki pages, but the concepts overlap a lot and it'll give you a solid foundation.</p>
+<p>To get started, follow the steps in <a href="#getting-started">Getting started</a> to create your guide the usual way. The difference is that custom-generated guides can't use the <code>images</code> or <code>page_links</code> parameters. Instead, set <code>custom_generator</code> to a unique name of your choice.</p>
+<p>Then add your generator function in the custom player guides section of <code>pages.py</code>. It should take your guide template as a parameter and return the fully formatted content of the guide. Add a reference to it in <code>PLAYER_GUIDE_GENERATORS</code>, build the wiki, and you should see your guide appear in the sidebar.</p>
 <h4 id="using-helper-functions">Using helper functions</h4>
-<p>When using custom generators, it's important to use helper functions wherever you can. These help ensure consistency across the wiki and minimise any code bloat. You can find a number of helper functions in the helper section of <code>pages.py</code> which can help you better format your pages.</p>
-<p>Additionally for guides, whenever you wish to reference images, you should still keep them in <code>wiki/images/guides</code> but then reference them using <code>html_image</code> and ensure they have the class <code>guide-img</code>. </p>
+<p>When writing custom generators, try to use the existing helper functions wherever you can. They keep formatting consistent across the wiki and help avoid duplicating code. You'll find a number of useful helpers in the helper section of <code>pages.py</code>.</p>
+<p>For images, keep storing them in <code>wiki/images/guides</code> as usual, but reference them with <code>html_image</code> and make sure they use the <code>guide-img</code> class.</p>
     </main>
   </div>
 
