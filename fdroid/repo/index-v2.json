@@ -14,7 +14,7 @@
       }
     },
     "address": "https://idlefantasy.tristinbaker.xyz/fdroid/repo",
-    "timestamp": 1788178625943,
+    "timestamp": 1788259317175,
     "categories": {
       "Games": {
         "name": {
@@ -31,7 +31,7 @@
           "Games"
         ],
         "issueTracker": "https://github.com/tristinbaker/IdleFantasy/issues",
-        "lastUpdated": 1788178590602,
+        "lastUpdated": 1788259281138,
         "license": "GPL-3.0-only",
         "sourceCode": "https://github.com/tristinbaker/IdleFantasy",
         "screenshots": {
@@ -140,6 +140,56 @@
         "preferredSigner": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
       },
       "versions": {
+        "61e6f83b9af557468be44612a867ff1750eb55c56a3c8ed0309e803330088636": {
+          "added": 1788259281138,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_147000.apk",
+            "sha256": "61e6f83b9af557468be44612a867ff1750eb55c56a3c8ed0309e803330088636",
+            "size": 10253435
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.14.7",
+            "versionCode": 147000,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fixed overlapping text in the spell selector when translated rune names made the rune count line too long\n• Monument touch now resets at your daily reset hour instead of midnight\n• Boss coin soft cap now resets at your daily reset hour instead of midnight\n• Slayer now appears under Combat instead of Support in the Profile skills list\n• Switching characters now immediately backs up the outgoing character to its own backup file\n• Repeating an Infinite Tower session no longer shows a meaningless "
+          }
+        },
         "8c02c2235dda36e94aee900bb2a22d06b0177a1356f20e46f72007666eec5b2f": {
           "added": 1788178590602,
           "file": {
