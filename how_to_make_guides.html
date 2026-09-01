@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to add strategy guides to the wiki — Idle Fantasy Wiki</title>
+  <link rel="stylesheet" href="assets/style.css?v=5">
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.png">
+  <script data-goatcounter="https://idlefantasy.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+  <script>
+    (function() {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', stored || (prefersDark ? 'dark' : 'light'));
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Open navigation" aria-expanded="false">&#9776;</button>
+    <a class="site-title" href="index.html">
+      <span class="site-icon">&#9876;&#65039;</span>
+      Idle Fantasy Wiki
+    </a>
+    <span class="site-tagline">Community reference for all skills, combat, and crafting</span>
+    <div id="search" class="search">
+      <input id="search-input" class="search-input" type="search" placeholder="Search…"
+             autocomplete="off" spellcheck="false" aria-label="Search the wiki">
+      <ul id="search-results" class="search-results" hidden></ul>
+    </div>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
+  </header>
+
+  <div id="nav-backdrop" class="nav-backdrop"></div>
+
+  <div class="layout">
+    <nav id="sidebar" class="sidebar" aria-label="Wiki navigation">
+      <ul>
+<li><a href="Home.html">Home</a></li>
+<li class="nav-section"><span class="nav-label">Contributing</span><ul>
+<li><a href="getting_started_game.html">Getting Started - Game Contributions</a></li>
+<li><a href="getting_started_wiki.html">Getting Started - Wiki Contributions</a></li>
+<li><a href="wiki_page_types.html">Types of Wiki Pages</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Skills</span><ul>
+<li><a href="Skills.html">Skills</a></li>
+<li class="nav-section"><span class="nav-label">Gathering</span><ul>
+<li><a href="Mining.html">Mining</a></li>
+<li><a href="Fishing.html">Fishing</a></li>
+<li><a href="Woodcutting.html">Woodcutting</a></li>
+<li><a href="Farming.html">Farming</a></li>
+<li><a href="Thieving.html">Thieving</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Crafting</span><ul>
+<li><a href="Smithing.html">Smithing</a></li>
+<li><a href="Cooking.html">Cooking</a></li>
+<li><a href="Fletching.html">Fletching</a></li>
+<li><a href="Crafting.html">Crafting</a></li>
+<li><a href="Firemaking.html">Firemaking</a></li>
+<li><a href="Runecrafting.html">Runecrafting</a></li>
+<li><a href="Herblore.html">Herblore</a></li>
+<li><a href="Construction.html">Construction</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Support</span><ul>
+<li><a href="Prayer.html">Prayer</a></li>
+<li><a href="Mercantile.html">Mercantile</a></li>
+<li><a href="Agility.html">Agility</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Combat</span><ul>
+<li><a href="Slayer.html">Slayer</a></li>
+</ul></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Inventory</span><ul>
+<li><a href="Equipment.html">Equipment</a></li>
+<li><a href="Heirlooms.html">Heirlooms</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Combat</span><ul>
+<li><a href="Combat.html">Combat</a></li>
+<li><a href="Bosses.html">Bosses</a></li>
+<li><a href="Dungeons.html">Dungeons</a></li>
+<li><a href="Enemies.html">Enemies</a></li>
+<li><a href="Spells.html">Spells</a></li>
+<li><a href="Mercenaries.html">Mercenary Camp</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Town</span><ul>
+<li><a href="Shop.html">Shop</a></li>
+<li><a href="Workers.html">Workers</a></li>
+<li><a href="Guilds.html">Guilds</a></li>
+<li><a href="Buildings.html">Buildings</a></li>
+<li><a href="Carnival.html">Carnival</a></li>
+<li><a href="Housing.html">Housing</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Miscellaneous</span><ul>
+<li><a href="Expeditions.html">Expeditions</a></li>
+<li><a href="Pets.html">Pets</a></li>
+<li><a href="Quests.html">Quests</a></li>
+<li><a href="Titles.html">Titles</a></li>
+<li><a href="SeasonalEvents.html">Seasonal Events</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Guides</span><ul>
+<li><a href="how_to_make_guides.html" class="active">How to add strategy guides to the wiki</a></li>
+<li><a href="guide_the_infinite_tower.html">The Infinite Tower</a></li>
+</ul></li>
+</ul>
+    </nav>
+
+    <main class="content">
+      <h1 id="how-to-add-your-guide-to-the-wiki">How to add your guide to the wiki</h1>
+<p>Adding your own strategy guides to the wiki can be a great way to share your knowledge of the game to develop strategies that everyone can use.</p>
+<h2 id="table-of-contents">Table of contents</h2>
+<ul>
+<li><a href="#writing-good-guides">Writing good guides</a><ul>
+<li><a href="#research">Research</a></li>
+<li><a href="#adding-pictures-and-game-data">Adding pictures and game data</a></li>
+<li><a href="#getting-feedback">Getting feedback</a></li>
+</ul>
+</li>
+<li><a href="#adding-guides-to-the-wiki">Adding guides to the wiki</a><ul>
+<li><a href="#getting-started">Getting started</a></li>
+<li><a href="#advanced-custom-generators">Advanced: Custom generators</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="writing-good-guides">Writing good guides</h2>
+<p>Writing good guides can be hard and there's a lot of things that go into a good guide but there are a few key concepts that can help you write the best ones.</p>
+<h3 id="research">Research</h3>
+<p>The most important thing to do is to make sure you've done your research and potentially tried a few different strategies. That doesn't mean your research has to be perfect, but the more research you do, the better the guide you write can be.</p>
+<p>If you know how to read the game code, this is also a great way to better understand how things work. LLMs like Claude code can be quite helpful here as well to read through the codebase and find how mechanics work, although you should always do a sanity check to make sure it lines up with what you expect. Additionally, sometimes less is more and if a piece of code doesn't really have a useful place in your guide, you don't always need to include it, although you can always add it in a section at the end.</p>
+<h3 id="adding-pictures-and-game-data">Adding pictures and game data</h3>
+<p>People often tire of reading long blocks of text and adding visuals or actual game data references can be a great way to break up the flow.</p>
+<p><a href="#custom-generators">Custom generators</a> allow you to incorporate game data into your guide however these are more complicated to add. If you're not comfortable working with these however, that's fine and having things like Excel tables, graphs, markdown tables, or anything else are great.</p>
+<h3 id="getting-feedback">Getting feedback</h3>
+<p>Before you publish to the wiki, it's a good idea to get some feedback on your guide. You can do this through the GitHub discussions or there's also a dedicated thread on the game's Discord which you can use to get feedback and refine your guide before adding it. If you'd like to join, you can do so at the link <a href="https://discord.gg/vRxtXsBwQU">here</a></p>
+<h2 id="adding-guides-to-the-wiki">Adding guides to the wiki</h2>
+<p>Great, so you've figured out what you write and (hopefully) got some good feedback on the Discord or discussions which you've used to improve your guide. The next step is to add your guide to the wiki itself, starting off by creating a fork of the repo. If you're not familiar with the concept of forking repositories and creating pull requests, I'd recommend reading up about them on <a href="https://docs.github.com/en/pull-requests/get-started/pull-request-quickstart">GitHub docs</a> or finding a how-to video which can help explain things.</p>
+<p>Once you've created the fork, you have a couple options. If you want to create a typical guide which has images, and links to other pages, then you'll want to stick to the <a href="#getting-started">standard approach</a>. If you want to make your guide even better, consider incorporating real-time game data to your guide by following the <a href="#advanced-custom-generators">advanced approach</a>.</p>
+<h3 id="getting-started">Getting started</h3>
+<p>Generally, to add a page to the wiki, there's only a few things you need to do. The first thing is to add any images that you wish to reference into <code>wiki/images/guides</code>.</p>
+<p>Then, you'll want to add a new markdown file under <code>wiki/templates/guides</code> with the actual content in your guide. There's no need to include the header with the title nor the related links at the bottom of some guides as these get automatically included in the standard template. You can see an example of this in <code>wiki/templates/guides/the_infinite_tower.md</code>.</p>
+<p>Once that's done, you should replace any images with fields like <code>{tower_bestiary}</code>. When naming your field (like <code>tower_bestiary</code>), you should remove anything after the first dot <code>E.g. tower_bestiary.myfile.png → {tower_bestiary}</code>. Additionally, for any links to other pages, you can link to them directly using normal markdown links but ideally, you should link to them using a field with their page_id which is typically defined in <a href="https://github.com/tristinbaker/IdleFantasy/blob/da2c82a048bc6f0e416d9514421eadaf958a407c/wiki/src/pages.py#L64-L126"><code>pages.py</code></a>.</p>
+<p>Finally, once you've added any visuals and replaced the images with fields, all you have to do is add your guide to <code>wiki/templates/guides/guides.yml</code>. When defining it, you need to specify the id (that's the first level) and some parameters as described below:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Required?</th>
+</tr>
+</thead>
+<tbody>
+<tr id="title">
+<td>title</td>
+<td>This is the title of your guide, and it shows up at the top of the page.</td>
+<td>Yes</td>
+</tr>
+<tr id="author">
+<td>author</td>
+<td>This is you! If multiple people made the guide, feel free to put some other name or even multiple names here.</td>
+<td>Yes</td>
+</tr>
+<tr id="last_updated">
+<td>last_updated</td>
+<td>This indicates when the guide was last updated and helps players know when the guide is most relevant, particularly as mechanics do change sometimes. The preferred format for this parameter is YYYY-MM-DD.</td>
+<td>Yes</td>
+</tr>
+<tr id="images">
+<td>images</td>
+<td>This is a list of images that you use in your guide. Any image which you convert to a field must be listed here with the full filename.</td>
+<td>No</td>
+</tr>
+<tr id="page_links">
+<td>page_links</td>
+<td>If you want to refer to other pages, this is the best way to link to them and is a list of page IDs. If you want to link to guides, these should be the id for the guide with the prefix of guide_. E.g. For the_infinite_tower, use guide_the_infinite_tower.</td>
+<td>No</td>
+</tr>
+<tr id="related_pages">
+<td>related_pages</td>
+<td>These page links are what gets listed at the bottom of a guide in the 'Related pages' section. It's highly recommended to add any page IDs of other related pages here as it can help players find related content, particularly for in-game pages.</td>
+<td>No</td>
+</tr>
+<tr id="custom_generator">
+<td>custom_generator</td>
+<td>This is used when creating pages which incorporate game data. If you want to use custom generators, see <a href="#advanced-custom-generators">advanced setup</a>.</td>
+<td>Invalid for standard guides</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>If you want to add a table of contents to your guide, simply add {table_of_contents} at the top of your page and it'll be included</p>
+</blockquote>
+<h3 id="advanced-custom-generators">Advanced: Custom generators</h3>
+<p>Custom generators are a great way to improve your guide by incorporating actual game data or more advanced formats. To get started, it's highly recommended to have a look at <a href="getting_started_wiki.html#">Getting Started - Wiki Contributions</a>. While creating custom generators for guides isn't the same, they share a lot of traits with creating standard wiki pages and learning those can give you a lot of background.</p>
+<p>To use custom generators, you first need to follow the steps for <a href="#getting-started">Getting started</a> and create a guide using the standard method. The only difference is that for custom-generated pages, you can't have the <code>images</code> or <code>page_links</code> parameters and you'll need to set the <code>custom_generator</code> parameter to something unique.</p>
+<p>Once you've done this, you can create a custom generator function in the section dedicated to custom player guides in <code>pages.py</code>. For it to work correctly, you'll need to define a function which takes in the guide you created as a parameter and then returns the properly formatted guide. Finally, simply add a reference to your generator in PLAYER_GUIDE_GENERATORS and that's all there is to it. If you try running the wiki, you should be able to see it show up in the sidebar in all its glory.</p>
+<h4 id="using-helper-functions">Using helper functions</h4>
+<p>When using custom generators, it's important to use helper functions wherever you can. These help ensure consistency across the wiki and minimise any code bloat. You can find a number of helper functions in the helper section of <code>pages.py</code> which can help you better format your pages.</p>
+<p>Additionally for guides, whenever you wish to reference images, you should still keep them in <code>wiki/images/guides</code> but then reference them using <code>html_image</code> and ensure they have the class <code>guide-img</code>. </p>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <span>All data is auto-generated from game files and stays up to date with the latest release.</span>
+    <span>·</span>
+    <a href="https://github.com/tristinbaker/IdleFantasy/issues" target="_blank" rel="noopener">Report an issue</a>
+    <span>·</span>
+    <a href="https://github.com/tristinbaker/IdleFantasy" target="_blank" rel="noopener">GitHub</a>
+  </footer>
+
+  <script src="assets/search-index.js"></script>
+  <script>
+    (function() {
+      // ---- Dark mode ----
+      var themeBtn = document.getElementById('theme-toggle');
+      function updateThemeIcon() {
+        themeBtn.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+      }
+      updateThemeIcon();
+      themeBtn.addEventListener('click', function() {
+        var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateThemeIcon();
+      });
+
+      // ---- Hamburger nav ----
+      var navToggle = document.getElementById('nav-toggle');
+      var sidebar   = document.getElementById('sidebar');
+      var backdrop  = document.getElementById('nav-backdrop');
+      function openNav() {
+        sidebar.classList.add('open');
+        backdrop.classList.add('visible');
+        navToggle.setAttribute('aria-expanded', 'true');
+      }
+      function closeNav() {
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('visible');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+      navToggle.addEventListener('click', function() {
+        sidebar.classList.contains('open') ? closeNav() : openNav();
+      });
+      backdrop.addEventListener('click', closeNav);
+      sidebar.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') closeNav();
+      });
+
+      // ---- Search ----
+      var searchBox     = document.getElementById('search');
+      var searchInput   = document.getElementById('search-input');
+      var searchResults = document.getElementById('search-results');
+      var searchIndex   = window.WIKI_SEARCH_INDEX || [];
+      var MAX_RESULTS   = 10;
+      var selected      = -1;
+
+      function hideResults() {
+        searchResults.hidden = true;
+        searchResults.innerHTML = '';
+        selected = -1;
+      }
+
+      // Lower score = better match. -1 = no match.
+      function scoreEntry(entry, query) {
+        var name = entry.n.toLowerCase();
+        if (name === query) return 0;
+        if (name.lastIndexOf(query, 0) === 0) return 1;
+        if (name.indexOf(' ' + query) !== -1) return 2;
+        if (name.indexOf(query) !== -1) return 3;
+        return -1;
+      }
+
+      function updateSelection() {
+        var items = searchResults.children;
+        for (var i = 0; i < items.length; i++)
+          items[i].classList.toggle('selected', i === selected);
+        if (selected >= 0 && items[selected])
+          items[selected].scrollIntoView({ block: 'nearest' });
+      }
+
+      function runSearch() {
+        var query = searchInput.value.trim().toLowerCase();
+        if (query.length < 2) { hideResults(); return; }
+        var matches = [];
+        for (var i = 0; i < searchIndex.length; i++) {
+          var s = scoreEntry(searchIndex[i], query);
+          if (s >= 0) matches.push([s, searchIndex[i]]);
+        }
+        matches.sort(function(a, b) {
+          return (a[0] - b[0])                       // better score first
+              || ((b[1].t || 0) - (a[1].t || 0))     // pages before item rows
+              || (a[1].n.length - b[1].n.length)     // shorter names first
+              || a[1].n.localeCompare(b[1].n);
+        });
+        searchResults.innerHTML = '';
+        if (!matches.length) {
+          var empty = document.createElement('li');
+          empty.className = 'search-empty';
+          empty.textContent = 'No results';
+          searchResults.appendChild(empty);
+        }
+        for (var j = 0; j < matches.length && j < MAX_RESULTS; j++) {
+          var entry = matches[j][1];
+          var li = document.createElement('li');
+          var a  = document.createElement('a');
+          a.href = entry.u;
+          var name = document.createElement('span');
+          name.textContent = entry.n;
+          a.appendChild(name);
+          if (entry.p) {
+            var context = document.createElement('span');
+            context.className = 'search-context';
+            context.textContent = entry.p;
+            a.appendChild(context);
+          }
+          li.appendChild(a);
+          searchResults.appendChild(li);
+        }
+        selected = -1;
+        searchResults.hidden = false;
+      }
+
+      searchInput.addEventListener('input', runSearch);
+      searchInput.addEventListener('focus', function() {
+        if (searchInput.value.trim().length >= 2) runSearch();
+      });
+
+      searchInput.addEventListener('keydown', function(e) {
+        var links = searchResults.querySelectorAll('li > a');
+        if (e.key === 'ArrowDown' && links.length) {
+          e.preventDefault();
+          selected = (selected + 1) % links.length;
+          updateSelection();
+        } else if (e.key === 'ArrowUp' && links.length) {
+          e.preventDefault();
+          selected = (selected - 1 + links.length) % links.length;
+          updateSelection();
+        } else if (e.key === 'Enter' && links.length) {
+          e.preventDefault();
+          links[selected >= 0 ? selected : 0].click();
+        } else if (e.key === 'Escape') {
+          hideResults();
+          searchInput.blur();
+        }
+      });
+
+      // Navigating to a row on the current page: hash change alone won't rerun
+      // :target styling reliably in every browser, so just close the dropdown.
+      searchResults.addEventListener('click', function(e) {
+        if (e.target.closest('a')) hideResults();
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!searchBox.contains(e.target)) hideResults();
+      });
+
+      // Press "/" anywhere to focus search
+      document.addEventListener('keydown', function(e) {
+        if (e.key === '/' && document.activeElement !== searchInput &&
+            !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)) {
+          e.preventDefault();
+          searchInput.focus();
+          searchInput.select();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

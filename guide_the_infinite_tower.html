@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Infinite Tower — Idle Fantasy Wiki</title>
+  <link rel="stylesheet" href="assets/style.css?v=5">
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.png">
+  <script data-goatcounter="https://idlefantasy.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+  <script>
+    (function() {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', stored || (prefersDark ? 'dark' : 'light'));
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Open navigation" aria-expanded="false">&#9776;</button>
+    <a class="site-title" href="index.html">
+      <span class="site-icon">&#9876;&#65039;</span>
+      Idle Fantasy Wiki
+    </a>
+    <span class="site-tagline">Community reference for all skills, combat, and crafting</span>
+    <div id="search" class="search">
+      <input id="search-input" class="search-input" type="search" placeholder="Search…"
+             autocomplete="off" spellcheck="false" aria-label="Search the wiki">
+      <ul id="search-results" class="search-results" hidden></ul>
+    </div>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
+  </header>
+
+  <div id="nav-backdrop" class="nav-backdrop"></div>
+
+  <div class="layout">
+    <nav id="sidebar" class="sidebar" aria-label="Wiki navigation">
+      <ul>
+<li><a href="Home.html">Home</a></li>
+<li class="nav-section"><span class="nav-label">Contributing</span><ul>
+<li><a href="getting_started_game.html">Getting Started - Game Contributions</a></li>
+<li><a href="getting_started_wiki.html">Getting Started - Wiki Contributions</a></li>
+<li><a href="wiki_page_types.html">Types of Wiki Pages</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Skills</span><ul>
+<li><a href="Skills.html">Skills</a></li>
+<li class="nav-section"><span class="nav-label">Gathering</span><ul>
+<li><a href="Mining.html">Mining</a></li>
+<li><a href="Fishing.html">Fishing</a></li>
+<li><a href="Woodcutting.html">Woodcutting</a></li>
+<li><a href="Farming.html">Farming</a></li>
+<li><a href="Thieving.html">Thieving</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Crafting</span><ul>
+<li><a href="Smithing.html">Smithing</a></li>
+<li><a href="Cooking.html">Cooking</a></li>
+<li><a href="Fletching.html">Fletching</a></li>
+<li><a href="Crafting.html">Crafting</a></li>
+<li><a href="Firemaking.html">Firemaking</a></li>
+<li><a href="Runecrafting.html">Runecrafting</a></li>
+<li><a href="Herblore.html">Herblore</a></li>
+<li><a href="Construction.html">Construction</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Support</span><ul>
+<li><a href="Prayer.html">Prayer</a></li>
+<li><a href="Mercantile.html">Mercantile</a></li>
+<li><a href="Agility.html">Agility</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Combat</span><ul>
+<li><a href="Slayer.html">Slayer</a></li>
+</ul></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Inventory</span><ul>
+<li><a href="Equipment.html">Equipment</a></li>
+<li><a href="Heirlooms.html">Heirlooms</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Combat</span><ul>
+<li><a href="Combat.html">Combat</a></li>
+<li><a href="Bosses.html">Bosses</a></li>
+<li><a href="Dungeons.html">Dungeons</a></li>
+<li><a href="Enemies.html">Enemies</a></li>
+<li><a href="Spells.html">Spells</a></li>
+<li><a href="Mercenaries.html">Mercenary Camp</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Town</span><ul>
+<li><a href="Shop.html">Shop</a></li>
+<li><a href="Workers.html">Workers</a></li>
+<li><a href="Guilds.html">Guilds</a></li>
+<li><a href="Buildings.html">Buildings</a></li>
+<li><a href="Carnival.html">Carnival</a></li>
+<li><a href="Housing.html">Housing</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Miscellaneous</span><ul>
+<li><a href="Expeditions.html">Expeditions</a></li>
+<li><a href="Pets.html">Pets</a></li>
+<li><a href="Quests.html">Quests</a></li>
+<li><a href="Titles.html">Titles</a></li>
+<li><a href="SeasonalEvents.html">Seasonal Events</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Guides</span><ul>
+<li><a href="how_to_make_guides.html">How to add strategy guides to the wiki</a></li>
+<li><a href="guide_the_infinite_tower.html" class="active">The Infinite Tower</a></li>
+</ul></li>
+</ul>
+    </nav>
+
+    <main class="content">
+      <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+  integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
+  crossorigin="anonymous" />
+
+<style type="text/css">
+    .katex img {
+      object-fit: fill;
+      padding: unset;
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: inherit;
+    }
+</style>
+<h1 id="guide-the-infinite-tower">Guide: The Infinite Tower</h1>
+<p><em>Written by Michael v - Last updated: 2026-08-01</em></p>
+<p><strong>What's up there, and how far you can get</strong></p>
+<p>The tower is a <strong>250-floor endurance test</strong> that pays out the second-best armour set in the game. Floor bands are tagged like <code>f81-100</code> throughout.</p>
+<h2 id="table-of-contents">Table of contents</h2>
+<ul>
+<li><a href="#three-things-the-whole-guide-is-built-on">Three things the whole guide is built on</a></li>
+<li><a href="#how-a-floor-is-resolved">How a floor is resolved</a></li>
+<li><a href="#what-lives-on-each-floor">What lives on each floor</a></li>
+<li><a href="#the-defence-you-need-floor-by-floor">The Defence you need, floor by floor</a></li>
+<li><a href="#what-to-wear">What to wear</a></li>
+<li><a href="#where-the-defence-comes-from-part-1-smithing">Where the Defence comes from, part 1: Smithing</a></li>
+<li><a href="#where-the-defence-comes-from-part-2-drops-and-quests">Where the Defence comes from, part 2: drops and quests</a></li>
+<li><a href="#the-defence-level-you-need-to-wear-any-of-it">The Defence level you need to wear any of it</a></li>
+<li><a href="#every-milestone-and-what-its-worth">Every milestone, and what it's worth</a></li>
+<li><a href="#the-climb">The climb</a></li>
+<li><a href="#food-and-the-300-item-cap">Food, and the 300-item cap</a></li>
+<li><a href="#running-the-tower-as-an-ironman">Running the tower as an Ironman</a></li>
+<li><a href="#so-should-you-run-it">So should you run it?</a></li>
+</ul>
+<h2 id="three-things-the-whole-guide-is-built-on">Three things the whole guide is built on</h2>
+<ul>
+<li><strong>Kills don't matter.</strong> A floor is cleared by <em>surviving 60 minutes</em>. Damage only buys loot and XP.</li>
+<li><strong>Progress never rolls back.</strong> Death drops your <em>current</em> floor to the last 25-floor checkpoint, but your best floor, and every milestone it unlocked, is <strong>permanent</strong>.</li>
+<li><strong>Only Defence decides how high you go.</strong> Incoming damage is roughly <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mi>n</mi><mi>e</mi><mi>m</mi><mi>y</mi><mi>a</mi><mi>t</mi><mi>t</mi><mi>a</mi><mi>c</mi><mi>k</mi><mo>÷</mo><mo stretchy="false">(</mo><mn>2</mn><mo>×</mo><mi>y</mi><mi>o</mi><mi>u</mi><mi>r</mi><mi>e</mi><mi>f</mi><mi>f</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>i</mi><mi>v</mi><mi>e</mi><mi>D</mi><mi>e</mi><mi>f</mi><mi>e</mi><mi>n</mi><mi>c</mi><mi>e</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">enemy attack ÷ (2 × your effective Defence)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="vertical-align:-0.1944em;height:0.8889em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">e</span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mord mathnormal">a</span><span class="mord mathnormal">tt</span><span class="mord mathnormal">a</span><span class="mord mathnormal">c</span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">÷</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="vertical-align:-0.25em;height:1em;"></span><span class="mord mathnormal">yo</span><span class="mord mathnormal">u</span><span class="mord mathnormal">re</span><span class="mord mathnormal" style="margin-right:0.1076em;">ff</span><span class="mord mathnormal">ec</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="mord mathnormal">eDe</span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">ce</span><span class="mclose">)</span></span></span></span>. Double your Defence, halve the damage you take.</li>
+</ul>
+<p><strong>Effective Defence = your Defence level + the total Defence bonus of all eight armour slots.</strong> 90 gear Defence is worth exactly 90 Defence levels, and every number below uses it.</p>
+<blockquote>
+<p><strong>It ends at 250.</strong> Enemy scaling and the reward table both stop there.</p>
+</blockquote>
+<p>-# Note: This guide assumes addy/87 hp becasue I made it for myself and that's what I have. This guide was formatted/edited with the use of generative AI. Feel free to provide feedback and I will work to keep it accurate/updated over time.</p>
+<h2 id="how-a-floor-is-resolved">How a floor is resolved</h2>
+<p>The game simulates the whole hour up front as 60 one-minute frames. Each minute is 25 attack ticks, more with a fast weapon, though the enemy always swings on a fixed 2.4-second cadence.</p>
+<p><strong>1. The game rolls an enemy.</strong> Three types from the floor's tier, weighted.</p>
+<p><strong>2. You trade hits for the minute.</strong> Your hit chance is your attack stat plus gear versus that enemy's defence; theirs is their attack versus <em>your Defence level plus your total gear Defence bonus</em>.</p>
+<p><strong>3. You eat automatically.</strong> After each incoming hit, whenever you drop below your eat threshold (the share of max HP that triggers a meal) or below the enemy's max hit. Best tier first, hard-capped at <strong>300 items per session</strong>.</p>
+<p><strong>4. A surviving enemy carries over.</strong> It keeps its remaining HP into the next minute. If you can't kill it you fight that <em>same</em> enemy for the whole hour, so a high floor is often decided by which of three enemies you roll in minute one.</p>
+<p><strong>5. Zero HP ends the run.</strong> Otherwise the floor is cleared.</p>
+<blockquote>
+<p><strong>So:</strong> bring the tankiest kit you own and stop optimising your weapon.</p>
+</blockquote>
+<h2 id="what-lives-on-each-floor">What lives on each floor</h2>
+<p>Six fixed tiers, and the last one repeats forever.</p>
+<p><code>f1-80</code> <strong>Trash. A geared character clears these at 100%.</strong> Nothing in the first four tiers has a max hit above 19.
+-# Goblins through Shadow Assassins.</p>
+<p><code>f81-100</code> <strong>The wall. The first tier that can kill you.</strong> The Abyssal Lord arrives here: 350 HP and a <strong>51 max hit</strong>, three times anything below it.
+-# This is where an Adamantite climb stops.</p>
+<p><code>f101+</code> <strong>The final tier, and the roster never changes.</strong>
+-# Void Archon, Eternal Sentinel, Abyssal Lord.</p>
+<p><strong>How that tier scales:</strong> to floor 250, enemy <strong>HP ramps to 10×</strong> while attack and defence only reach <strong>1.3×</strong>. High floors are longer rather than deadlier, and length is the problem: the damage you absorb scales with time spent under attack.</p>
+<p>At floor 250 the Abyssal Lord holds 3,500 HP and hits 74; the Eternal Sentinel holds 4,000 and hits 63; the Void Archon holds 3,200 and only hits 37. Roll the Lord on a floor you can't out-damage and you take roughly twice the punishment of an Archon run, which is why clear rates plateau around 30–40% for under-geared players.</p>
+<p><img src='assets/images/image_34.png' alt='tower_bestiary.png' class='guide-img'></p>
+<h2 id="the-defence-you-need-floor-by-floor">The Defence you need, floor by floor</h2>
+<p>The chart is simulated clear rate <strong>per attempt</strong>, at Hitpoints 87 with 300 Manta Ray. Higher Hitpoints shifts every row left by roughly 1.7 effective Defence per HP level.</p>
+<p><strong>Why 70% is not good enough:</strong> death sends you back to the checkpoint at <code>(best floor ÷ 25) × 25</code>, so banking a new checkpoint takes <strong>25 clears in a row</strong>.</p>
+<ul>
+<li>At a <strong>70%</strong> clear rate that's a <strong>0.01%</strong> chance, or about 8,000 attempts.</li>
+<li>At <strong>90%</strong> it's 7%, or roughly 14 attempts.</li>
+<li>At <strong>97%</strong> it's 47%, or about two tries.</li>
+</ul>
+<p>So aim for <strong>95%+ per floor</strong> on the band you're trying to bank. Anything under 90% is farming your best-floor record rather than making progress. That still banks milestones.</p>
+<p><img src='assets/images/image_35.png' alt='tower_defence.png' class='guide-img'></p>
+<h2 id="what-to-wear">What to wear</h2>
+<p><code>weapon</code> <strong>Never bring a two-handed weapon.</strong> You lose the shield slot, worth 49–85 Defence.
+-# A dropped Runite scimitar is a fine tower weapon: it leaves the shield on.</p>
+<p><code>body/legs</code> <strong>Body and legs are the biggest numbers, but check what you can reach.</strong> Runite body and legs needs Defence 50 and is +44 over Adamantite; Dwarven needs Defence 60 and is +65 over Runite. Body and legs are the last pieces in any Smithing tier, and in Runite both need <strong>Smithing 99</strong>.
+-# Messages 6 and 7 have the routes that don't need 99.</p>
+<p><code>cape/ring/amulet</code> <strong>Fill the cape, ring and amulet slots.</strong> Worth up to 53 between them.</p>
+<p><strong>Ranged and magic climbers: wear the plate anyway.</strong> The tower checks Defence bonus, not style.
+-# Trading a platebody for robes to chase magic damage is a straight downgrade.</p>
+<p><strong>571 is the ceiling:</strong> Divine body/legs/boots/shield plus the Tower Helm, which at 82 stays best-in-slot even past Divine's 73.</p>
+<p><img src='assets/images/image_36.png' alt='tower_gear.png' class='guide-img'></p>
+<h2 id="where-the-defence-comes-from-part-1-smithing">Where the Defence comes from, part 1: Smithing</h2>
+<p><strong>Smithing unlock order is not upgrade order.</strong> The platebody comes last in every tier.</p>
+<p><code>smith 74-88</code> <strong>Adamantite:</strong> boots 74: 27, full helm 77: 33, kiteshield 82: 49, platelegs 86: 55, platebody 88: 66. Full Adamantite is <strong>230</strong> across the five armour slots, and every piece needs <strong>Defence 40</strong>.</p>
+<p><code>smith 89-99</code> <strong>Runite:</strong> boots 89: 37, full helm 92: 45, square shield 93: 52, chainbody 96: 60, kiteshield 97: 67, platelegs 99: 75, platebody 99: 90. Full Runite is <strong>314</strong>, and every piece needs <strong>Defence 50</strong>.</p>
+<p><strong>Two traps in that ladder:</strong> the Runite chainbody (60) is worse than an Adamantite platebody (66), and the Runite square shield (52) is only +3 over an Adamantite kiteshield (49).</p>
+<p><strong>The whole 88 to 99 Runite grind is worth +84 over full Adamantite.</strong> Only four of those eleven levels do anything: boots at 89 is +10 over Adamantite boots, full helm at 92 is +12 over the Adamantite full helm, kiteshield at 97 is +18 over the Adamantite kiteshield, and body and legs together at 99 are +44 over Adamantite body and legs.</p>
+<blockquote>
+<p><strong>Put that against the tower.</strong> The Tower Shield at floor 40 is +31 over an Adamantite kiteshield and the Tower Helm at floor 90 is +49 over an Adamantite full helm. Two milestones beat the entire Runite grind.</p>
+</blockquote>
+<h2 id="where-the-defence-comes-from-part-2-drops-and-quests">Where the Defence comes from, part 2: drops and quests</h2>
+<p>Five sources that skip the forge. Four of them beat Runite in the slot they fill.</p>
+<p><code>1/25</code> <strong>Dragon boots (55):</strong> from the Green Dragon, in Dragon's Lair (recommended level 40) or Ancient Temple (65). Needs <strong>Defence 60</strong>. +28 over Adamantite boots, +18 over Runite boots.
+-# Best boots until Tower Boots (58) at floor 150, and farmable from Combat 40.</p>
+<p><code>points shop</code> <strong>Slayer gear:</strong> no Smithing at all, and it needs only <strong>Defence 45</strong>. Platebody 350 points for 80 Defence, platelegs or plateskirt 250 for 65, helm 400 for 40; the platebody is +14 over the Adamantite platebody.
+-# Ironman-safe, since it spends Slayer points rather than coins.</p>
+<p><code>1/25 each</code> <strong>Gilded gear:</strong> from the Vault Guardian raid. Needs Combat 100, the monument built, and <strong>Defence 60</strong>. Platebody 95, kiteshield 71, full helmet 48; that platebody beats Runite's 90 and costs zero Smithing levels.
+-# Later raids are far stingier: Obsidian Colossus and Brood Empress at 1/67, the World Ender at 1/67 and 1/100.</p>
+<p><code>base 1/100</code> <strong>Dwarven gear:</strong> daily quest rewards, narrowing by two per claim without a drop (1/100, 1/98, 1/96 and so on) until it lands. Needs <strong>Defence 60</strong>. Platebody 120, platelegs 110, shield 68, helm 58, boots 50.
+-# The pool is 17 items wide including tools.</p>
+<p><code>base 1/26</code> <strong>Divine gear:</strong> weekly quest rewards, multiplied by 1.5 for every week you miss and capped at guaranteed. Needs <strong>Defence 85</strong>. Platebody 150, platelegs 138, shield 85, helm 73, boots 63.</p>
+<h2 id="the-defence-level-you-need-to-wear-any-of-it">The Defence <em>level</em> you need to wear any of it</h2>
+<ul>
+<li><strong>Defence 40:</strong> Adamantite</li>
+<li><strong>Defence 45:</strong> Slayer gear</li>
+<li><strong>Defence 50:</strong> Runite, Tower Shield</li>
+<li><strong>Defence 60:</strong> Tower Helm, Dwarven, Gilded, Dragon boots</li>
+<li><strong>Defence 70:</strong> Tower Plate, Greaves, Plateskirt and Boots, Ring of Suffering</li>
+<li><strong>Defence 85:</strong> Divine</li>
+</ul>
+<blockquote>
+<p><strong>Have Defence 70 banked before you push past floor 100.</strong> Reach floor 120 or 150 under it and the Tower Plate, greaves and boots sit in your bag unusable.</p>
+</blockquote>
+<p><strong>What the three accessory slots cost.</strong> The <strong>Defence Cape (15)</strong> is the Defence 99 skill cape. The <strong>Ring of Suffering (18)</strong> needs Defence 70. You then buy it for 500,000 coins at the Merchant's Guild with Mercantile 80, or steal it from a Knight at Thieving 80 on a 0.6% chance. The <strong>Amulet of the Void (20)</strong> needs Attack 80 and Defence 80, plus a <strong>1/500</strong> drop from the Void Sovereign at Combat 110.</p>
+<p><strong>Fill them early with:</strong> any skill cape (5), a Platinum Diamond Ring (7, needs Crafting 76) or Wraithbone Ring (8, needs Defence 40), and the <strong>Tower Amulet (10, needs Attack 50)</strong>. Around 22 rather than 53.</p>
+<blockquote>
+<p><strong>Worked example, Smithing 88 with Dragon boots:</strong> full Adamantite is 230; Dragon boots make it <strong>258</strong>. Skill cape, crafted ring and Tower Amulet put you near <strong>280</strong> before the tower gives you anything, and the Shield at floor 40 plus the Helm at floor 90 add <strong>+80 over the Adamantite pieces they replace</strong>.</p>
+</blockquote>
+<h2 id="every-milestone-and-what-its-worth">Every milestone, and what it's worth</h2>
+<p>Claimed off your best floor ever reached.</p>
+<p><strong>The five that matter:</strong>
+- <code>f40</code> <strong>Tower Shield, Defence 80:</strong> replaces an Adamantite kiteshield's 49.
+- <code>f90</code> <strong>Tower Helm, Defence 82:</strong> best-in-slot head for the entire game.
+- <code>f120</code> <strong>Tower Plate, Defence 132:</strong> the biggest single jump on the ladder, +66 over the Adamantite platebody.
+- <code>f150</code> <strong>Greaves 125, Plateskirt 125, Boots 58:</strong> completes the set, +101 over Adamantite legs and boots.
+- <code>f250</code> <strong>Void Staff:</strong> magic attack +95, magic damage +28, infinite runes for every spell.</p>
+<p><strong>Everything else, totalled:</strong> +9% tower XP, +3% tower coin drops, <strong>+150 max HP</strong>, a 5% Combat-XP pet at <code>f100</code>, the Tower Sword and Crossbow, and <strong>1.63 million coins</strong>.</p>
+<blockquote>
+<p><strong>Ironman</strong>: See <a href="#running-the-tower-as-an-ironman">below</a> for more details, you're more limited</p>
+</blockquote>
+<p><img src='assets/images/image_37.png' alt='tower_milestones.png' class='guide-img'></p>
+<h2 id="the-climb">The climb</h2>
+<p>Session counts are medians from a full simulated loop, starting in Adamantite at Combat 100 and equipping each milestone as it drops. One session runs 40–60 minutes.</p>
+<p><code>f1-80</code> <strong>Free floors. Just queue them.</strong> (<em>~80 sessions</em>) Equip the <strong>Tower Shield at floor 40</strong> the moment it drops.</p>
+<p><code>f81-100</code> <strong>The first real wall. Upgrade before you push.</strong> (<em>~75 more</em>) Pure Adamantite is a ~65% clear here. That nudges your record up, but it is nowhere near enough to bank the checkpoint at 100. Runite body and legs take you to ~360 and 84%, though both pieces need Smithing 99. A Gilded or Slayer platebody (message 7) covers most of that with no forge time. The <strong>Tower Helm at floor 90</strong> is the goal of this stage, and floor 100 banks the checkpoint that makes everything above it repeatable.</p>
+<p><code>f101-150</code> <strong>Bootstrap on tower gear.</strong> (<em>~160 more</em>) The <strong>Tower Plate at 120</strong> and the <strong>legs and boots at 150</strong> roughly double the Defence you started with. Defence 60 for Dwarven body and legs before floor 130 is worth about 30 percentage points per floor.
+-# Start claiming dailies now: the pity counter only moves when you claim.</p>
+<p><code>f151-200</code> <strong>Comfortable, if the set is complete.</strong> (<em>~125 more</em>) The full Tower set is near 522 effective Defence: ~79% at floor 175, ~68% at 200. The checkpoint at 200 is the last one that banks quickly.
+-# The <strong>Aegis blessing (35 Defence)</strong> at Prayer 99 and a <strong>Super Defence potion (8 Defence)</strong> are together worth about half a gear tier.</p>
+<p><code>f201-250</code> <strong>Max your stats or don't bother.</strong> (<em>~2,000 more</em>) 25 straight clears at floor 250 is thousands of attempts in the full Tower set at Combat 100, and only about a quarter of simulated climbs finish inside 4,000 sessions. 99 Attack/Strength/Defence/Hitpoints plus Divine armour and the Tower Helm puts you at <strong>~670 effective Defence</strong> and an <strong>87% clear at floor 250</strong>: about 30 attempts.</p>
+<h2 id="food-and-the-300-item-cap">Food, and the 300-item cap</h2>
+<p>The cap means your whole healing pool is <code>300 × heal per item</code>. Above floor 150, budget about <strong>5,500 HP per attempt</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Fish / Cook</th>
+<th>Food</th>
+<th>Heal</th>
+<th>Pool</th>
+<th>XP to Unlock</th>
+</tr>
+</thead>
+<tbody>
+<tr id="40_30">
+<td>40 / 30</td>
+<td>Tuna</td>
+<td>10</td>
+<td>3,000</td>
+<td>50,587</td>
+</tr>
+<tr id="50_40">
+<td>50 / 40</td>
+<td>Lobster</td>
+<td>12</td>
+<td>3,600</td>
+<td>138,557</td>
+</tr>
+<tr id="55_50">
+<td>55 / 50</td>
+<td>Swordfish</td>
+<td>14</td>
+<td>4,200</td>
+<td>267,969</td>
+</tr>
+<tr id="60_62">
+<td>60 / 62</td>
+<td>Monkfish</td>
+<td>16</td>
+<td>4,800</td>
+<td>607,546</td>
+</tr>
+<tr id="70_80">
+<td>70 / 80</td>
+<td>Shark</td>
+<td>20</td>
+<td>6,000</td>
+<td>2,723,695</td>
+</tr>
+<tr id="80_82">
+<td>80 / 82</td>
+<td>Sea Turtle</td>
+<td>21</td>
+<td>6,300</td>
+<td>4,407,155</td>
+</tr>
+<tr id="85_91">
+<td>85 / 91</td>
+<td>Manta Ray</td>
+<td>22</td>
+<td>6,600</td>
+<td>9,161,425</td>
+</tr>
+</tbody>
+</table>
+<p>-# XP is both skills summed from level 1. Every fish is 1 second per catch and every recipe 60 seconds per item at every tier, so higher food is not slower to farm, only slower to unlock.</p>
+<blockquote>
+<p><strong>Stop at Shark.</strong> It reaches <strong>91%</strong> of Manta Ray's pool for <strong>30%</strong> of the XP. Manta Ray is <strong>+300 pool over Sea Turtle</strong> and costs <strong>4.75M XP</strong> to get there, or 15,848 XP per point against 147 at the bottom of the ladder.</p>
+</blockquote>
+<p><strong>Nothing below Shark reaches the floor-150 budget.</strong> Shark covers 5,500 in 275 items; Monkfish would need 344 and the cap stops you at 300.</p>
+<p><strong>Cooking is the bottleneck, not Fishing.</strong> A 300-item load is 5 minutes of Fishing and <strong>5 hours of Cooking</strong>, so banking a few thousand is days of it.</p>
+<blockquote>
+<p><strong>The shortcut: buy it.</strong> The Inn sells three foods a day, with no level requirement and no stock limit. A small (heal 1–7) is 100 coins, a medium (8–14) is 250, and <strong>a large (15+) is 500</strong>. The large rotates daily between Monkfish, Shark, Sea Turtle and Manta Ray. A full 300-item load runs <strong>150,000 coins</strong>.</p>
+</blockquote>
+<p>Leave the eat threshold near <strong>50%</strong>. Push it to 90% and you waste healing against your HP cap; drop it too low and a burst kills you before the auto-eat fires.</p>
+<h2 id="running-the-tower-as-an-ironman">Running the tower as an Ironman</h2>
+<p>Every buy path is blocked; you can only sell.</p>
+<p><strong>What you lose:</strong>
+- <strong>The Inn:</strong> no bought food, so you fish and cook every item yourself. Shark is the right target for everyone, but Ironman removes the option to buy your way past the grind.
+- <strong>The floor-100 pet:</strong> pet boosts return zero for Ironman in the tower's own code, so the Stone Guardian's +5% Combat XP never applies.
+- <strong>The +9% XP and +3% coin milestones:</strong> forced to 1.0 on collection. With the pet, that is three of the six items in the "everything else" pile dead.
+- <strong>The Merchant's Guild Ring of Suffering:</strong> Thieving 80 and the 0.6% Knight steal is your only route to the ring's 18.</p>
+<p><strong>What still works:</strong> every gear and max-HP milestone in full, Smithing, and all five routes in message 7: Dragon boots, Gilded raids, Dwarven dailies, Divine weeklies and the Slayer points shop. Defence blessings are the one blessing type you keep, so the <strong>Aegis blessing's 35 Defence</strong> is still yours.</p>
+<blockquote>
+<p><strong>Ironman changes how you <em>supply</em> a climb, not how high you can get.</strong> Your ceiling is the same 571 as anyone else's.</p>
+</blockquote>
+<h2 id="so-should-you-run-it">So should you run it?</h2>
+<p>Short version: yes to 150, probably to 200, and only after you max to 250.</p>
+<p><code>f1-150</code> <strong>Yes, for the armour.</strong> The only <em>fixed</em> source of a full end-game armour set: every piece sits on a set floor, so there's no drop table to fight. Around 300 sessions gets you ~500 Defence bonus, +50 max HP and a permanent Combat-XP pet.</p>
+<p><code>f151-200</code> <strong>Yes, if you're already there.</strong> The clear rate is still comfortable in the full set, and the Tower Sword and Crossbow are upgrades worth having.</p>
+<p><code>f201-250</code> <strong>Completionist project.</strong> The Void Staff is the best magic weapon in the game, but the last two checkpoints demand maxed combat stats and Divine armour to be anything other than a lottery.</p>
+<p><code>f251+</code> <strong>Never.</strong> Same enemies, same scaling, no rewards.</p>
+<blockquote>
+<p><strong>And don't run the tower for XP.</strong> Floor 70 gives about 96 kills an hour; floor 150 gives 12.</p>
+</blockquote>
+<hr />
+<p><em>This guide has been written (generally) by Idle Fantasy player/s and may contain inaccuracies. If you have any questions or notice an error on this page, consider mentioning it on the Discord, via GitHub discussions, or by contacting the author (Michael v)</em></p>
+<blockquote>
+<p>Want to learn how you can make your own guide? Check out <a href="how_to_make_guides.html#">How to add strategy guides to the wiki</a></p>
+</blockquote>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <span>All data is auto-generated from game files and stays up to date with the latest release.</span>
+    <span>·</span>
+    <a href="https://github.com/tristinbaker/IdleFantasy/issues" target="_blank" rel="noopener">Report an issue</a>
+    <span>·</span>
+    <a href="https://github.com/tristinbaker/IdleFantasy" target="_blank" rel="noopener">GitHub</a>
+  </footer>
+
+  <script src="assets/search-index.js"></script>
+  <script>
+    (function() {
+      // ---- Dark mode ----
+      var themeBtn = document.getElementById('theme-toggle');
+      function updateThemeIcon() {
+        themeBtn.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+      }
+      updateThemeIcon();
+      themeBtn.addEventListener('click', function() {
+        var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateThemeIcon();
+      });
+
+      // ---- Hamburger nav ----
+      var navToggle = document.getElementById('nav-toggle');
+      var sidebar   = document.getElementById('sidebar');
+      var backdrop  = document.getElementById('nav-backdrop');
+      function openNav() {
+        sidebar.classList.add('open');
+        backdrop.classList.add('visible');
+        navToggle.setAttribute('aria-expanded', 'true');
+      }
+      function closeNav() {
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('visible');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+      navToggle.addEventListener('click', function() {
+        sidebar.classList.contains('open') ? closeNav() : openNav();
+      });
+      backdrop.addEventListener('click', closeNav);
+      sidebar.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') closeNav();
+      });
+
+      // ---- Search ----
+      var searchBox     = document.getElementById('search');
+      var searchInput   = document.getElementById('search-input');
+      var searchResults = document.getElementById('search-results');
+      var searchIndex   = window.WIKI_SEARCH_INDEX || [];
+      var MAX_RESULTS   = 10;
+      var selected      = -1;
+
+      function hideResults() {
+        searchResults.hidden = true;
+        searchResults.innerHTML = '';
+        selected = -1;
+      }
+
+      // Lower score = better match. -1 = no match.
+      function scoreEntry(entry, query) {
+        var name = entry.n.toLowerCase();
+        if (name === query) return 0;
+        if (name.lastIndexOf(query, 0) === 0) return 1;
+        if (name.indexOf(' ' + query) !== -1) return 2;
+        if (name.indexOf(query) !== -1) return 3;
+        return -1;
+      }
+
+      function updateSelection() {
+        var items = searchResults.children;
+        for (var i = 0; i < items.length; i++)
+          items[i].classList.toggle('selected', i === selected);
+        if (selected >= 0 && items[selected])
+          items[selected].scrollIntoView({ block: 'nearest' });
+      }
+
+      function runSearch() {
+        var query = searchInput.value.trim().toLowerCase();
+        if (query.length < 2) { hideResults(); return; }
+        var matches = [];
+        for (var i = 0; i < searchIndex.length; i++) {
+          var s = scoreEntry(searchIndex[i], query);
+          if (s >= 0) matches.push([s, searchIndex[i]]);
+        }
+        matches.sort(function(a, b) {
+          return (a[0] - b[0])                       // better score first
+              || ((b[1].t || 0) - (a[1].t || 0))     // pages before item rows
+              || (a[1].n.length - b[1].n.length)     // shorter names first
+              || a[1].n.localeCompare(b[1].n);
+        });
+        searchResults.innerHTML = '';
+        if (!matches.length) {
+          var empty = document.createElement('li');
+          empty.className = 'search-empty';
+          empty.textContent = 'No results';
+          searchResults.appendChild(empty);
+        }
+        for (var j = 0; j < matches.length && j < MAX_RESULTS; j++) {
+          var entry = matches[j][1];
+          var li = document.createElement('li');
+          var a  = document.createElement('a');
+          a.href = entry.u;
+          var name = document.createElement('span');
+          name.textContent = entry.n;
+          a.appendChild(name);
+          if (entry.p) {
+            var context = document.createElement('span');
+            context.className = 'search-context';
+            context.textContent = entry.p;
+            a.appendChild(context);
+          }
+          li.appendChild(a);
+          searchResults.appendChild(li);
+        }
+        selected = -1;
+        searchResults.hidden = false;
+      }
+
+      searchInput.addEventListener('input', runSearch);
+      searchInput.addEventListener('focus', function() {
+        if (searchInput.value.trim().length >= 2) runSearch();
+      });
+
+      searchInput.addEventListener('keydown', function(e) {
+        var links = searchResults.querySelectorAll('li > a');
+        if (e.key === 'ArrowDown' && links.length) {
+          e.preventDefault();
+          selected = (selected + 1) % links.length;
+          updateSelection();
+        } else if (e.key === 'ArrowUp' && links.length) {
+          e.preventDefault();
+          selected = (selected - 1 + links.length) % links.length;
+          updateSelection();
+        } else if (e.key === 'Enter' && links.length) {
+          e.preventDefault();
+          links[selected >= 0 ? selected : 0].click();
+        } else if (e.key === 'Escape') {
+          hideResults();
+          searchInput.blur();
+        }
+      });
+
+      // Navigating to a row on the current page: hash change alone won't rerun
+      // :target styling reliably in every browser, so just close the dropdown.
+      searchResults.addEventListener('click', function(e) {
+        if (e.target.closest('a')) hideResults();
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!searchBox.contains(e.target)) hideResults();
+      });
+
+      // Press "/" anywhere to focus search
+      document.addEventListener('keydown', function(e) {
+        if (e.key === '/' && document.activeElement !== searchInput &&
+            !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)) {
+          e.preventDefault();
+          searchInput.focus();
+          searchInput.select();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

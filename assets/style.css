@@ -344,6 +344,23 @@ hr {
   margin: 1.5rem 0;
 }
 
+.content blockquote {
+  margin: 0.8rem 0 1.25rem;
+  padding: 0.6rem 0.95rem;
+  border-left: 3px solid color-mix(in srgb, var(--gold) 70%, transparent);
+  background: color-mix(in srgb, var(--gold) 6.5%, transparent);
+}
+
+.content blockquote > :first-child { margin-top: 0; }
+.content blockquote > :last-child { margin-bottom: 0; }
+.content blockquote p { margin-bottom: 0.5rem; }
+.content blockquote p:last-child { margin-bottom: 0; }
+
+[data-theme="dark"] .content blockquote {
+  border-left-color: color-mix(in srgb, var(--gold) 50%, transparent);
+  background: color-mix(in srgb, var(--gold) 8%, transparent);
+}
+
 /* ---- Tables ---- */
 .content table {
   width: 100%;
@@ -493,4 +510,8 @@ table.summary {
   display: inline-block;
   height: 1.25em;
   vertical-align: text-bottom;
+}
+
+.guide-img {
+  max-width: 100%;
 }
