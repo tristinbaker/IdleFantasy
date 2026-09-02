@@ -57,56 +57,6 @@
           "whatsNew": {
             "en-US": "• Agility no longer asks you to prestige once there is nothing left to earn: its XP boost tiers now end alongside the Endurance upgrades\n• Seasonal bounty missions now open the dungeon their target enemy actually lives in, instead of always the event's first dungeon\n• Rapidly queueing mercantile trade routes now shows a confirmation for every tap; identical back-to-back confirmations used to be silently dropped, making the buttons feel unresponsive\n• Fixed a crash when opening Housing for player"
           }
-        },
-        "61e6f83b9af557468be44612a867ff1750eb55c56a3c8ed0309e803330088636": {
-          "added": 1788259281138,
-          "file": {
-            "name": "/com.tristinbaker.idlefantasy_147000.apk",
-            "sha256": "61e6f83b9af557468be44612a867ff1750eb55c56a3c8ed0309e803330088636",
-            "size": 10253435
-          },
-          "manifest": {
-            "nativecode": [
-              "arm64-v8a",
-              "armeabi-v7a",
-              "x86",
-              "x86_64"
-            ],
-            "versionName": "1.14.7",
-            "versionCode": 147000,
-            "usesSdk": {
-              "minSdkVersion": 26,
-              "targetSdkVersion": 35
-            },
-            "signer": {
-              "sha256": [
-                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
-              ]
-            },
-            "usesPermission": [
-              {
-                "name": "android.permission.POST_NOTIFICATIONS"
-              },
-              {
-                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
-              },
-              {
-                "name": "android.permission.WAKE_LOCK"
-              },
-              {
-                "name": "android.permission.USE_EXACT_ALARM"
-              },
-              {
-                "name": "android.permission.SCHEDULE_EXACT_ALARM"
-              },
-              {
-                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-              }
-            ]
-          },
-          "whatsNew": {
-            "en-US": "• Fixed overlapping text in the spell selector when translated rune names made the rune count line too long\n• Monument touch now resets at your daily reset hour instead of midnight\n• Boss coin soft cap now resets at your daily reset hour instead of midnight\n• Slayer now appears under Combat instead of Support in the Profile skills list\n• Switching characters now immediately backs up the outgoing character to its own backup file\n• Repeating an Infinite Tower session no longer shows a meaningless "
-          }
         }
       }
     }
