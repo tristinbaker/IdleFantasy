@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Zombie — Idle Fantasy Wiki</title>
+  <title>Quest Icons — Idle Fantasy Wiki</title>
   <link rel="stylesheet" href="assets/style.css?v=5">
   <link rel="icon" type="image/x-icon" href="assets/images/favicon.png">
   <script data-goatcounter="https://idlefantasy.goatcounter.com/count"
@@ -45,7 +45,7 @@
 </ul></li>
 <li class="nav-section"><span class="nav-label">Skills</span><ul>
 <li><a href="Skills.html">Skills</a></li>
-<li><a href="QuestIcons.html">Quest Icons</a></li>
+<li><a href="QuestIcons.html" class="active">Quest Icons</a></li>
 <li class="nav-section"><span class="nav-label">Gathering</span><ul>
 <li><a href="Mining.html">Mining</a></li>
 <li><a href="Fishing.html">Fishing</a></li>
@@ -107,142 +107,58 @@
     </nav>
 
     <main class="content">
-      <h1 id="zombie">Zombie</h1>
-<table class="summary">
-    <thead>
-        <tr>
-            <th colspan="2" style="text-align: center;">Zombie</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr id="35">
-            <th>HP</th>
-            <td>35 ♥</td>
-        </tr>
-        <tr id="120_xp">
-            <th>XP dropped</th>
-            <td>120 xp</td>
-        </tr>
-        <tr id="11">
-            <th>Eff. Attack</th>
-            <td>11 ⚔️</td>
-        </tr>
-        <tr id="6">
-            <th>Def. (Attack)</th>
-            <td>6 🛡️️</td>
-        </tr>
-        <tr id="6">
-            <th>Def. (Strength)</th>
-            <td>6 🛡️</td>
-        </tr>
-        <tr id="5">
-            <th>Def. (Ranged)</th>
-            <td>5 🛡️</td>
-        </tr>
-        <tr id="3">
-            <th>Def. (Magic)</th>
-            <td>3 🛡️</td>
-        </tr>
-    </tbody>
-</table>
-
-<h2 id="loot">Loot</h2>
-<p>The loot in the table below is collected upon defeating a Zombie.</p>
-<p>When you defeat a Zombie, the simulator first rolls to check if you meet the chance amount and then if it passes, it will randomly determine the quantity between the minimum and maximum values.</p>
+      <h1 id="quest-indicators">Quest Indicators</h1>
+<p>Quest indicators appear as small superscripted icons next to skill names showing active quest progress. They help players quickly identify which type of quests are active for each skill.</p>
+<h2 id="quest-indicator-icons">Quest Indicator Icons</h2>
+<p>Each quest category uses a distinct emoji for visual identification.</p>
 <table>
 <thead>
 <tr>
-<th>Item</th>
-<th>Chance</th>
-<th>Qty</th>
+<th>Icon</th>
+<th>Quest Category</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
-<tr id="big_bones">
-<td><a href="Prayer.html#big_bones">Big Bones</a></td>
-<td>100%</td>
-<td>1</td>
-</tr>
-<tr id="coins">
-<td>Coins</td>
-<td>55%</td>
-<td>15–40</td>
-</tr>
-<tr id="iron_scimitar">
-<td><a href="Equipment.html#iron_scimitar">Iron Scimitar</a></td>
-<td>8%</td>
-<td>1</td>
-</tr>
-<tr id="rotten_flesh">
-<td>Rotten Flesh</td>
-<td>40%</td>
-<td>1–2</td>
-</tr>
-<tr id="bronze_plateskirt">
-<td><a href="Equipment.html#bronze_plateskirt">Bronze Plateskirt</a></td>
-<td>5%</td>
-<td>1</td>
-</tr>
-<tr id="iron_plateskirt">
-<td><a href="Equipment.html#iron_plateskirt">Iron Plateskirt</a></td>
-<td>4%</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-<h2 id="dungeons">Dungeons</h2>
-<p>The Zombie can be found in the following dungeons:</p>
-<table>
-<thead>
 <tr>
-<th>Dungeon</th>
-<th>Combat Level</th>
-<th>Spawn Chance</th>
+<td>⏰</td>
+<td>Daily quests</td>
+<td>Complete daily quests for coins. Chance to receive Dwarven gear when missing pieces exist (resetting on each drop).</td>
 </tr>
-</thead>
-<tbody>
-<tr id="undead_crypt">
-<td><a href="undead_crypt.html#">Undead Crypt</a></td>
-<td>12</td>
-<td>36%</td>
+<tr>
+<td>📅</td>
+<td>Weekly quests</td>
+<td>Complete weekly quests for bonus rewards including Divine gear. Resets every Monday at the configured daily reset hour.</td>
+</tr>
+<tr>
+<td>⚒️</td>
+<td>Guild daily quests</td>
+<td>Complete guild daily quests through the Guild Hall to earn reputation and unlock new tiers.</td>
+</tr>
+<tr>
+<td>🏰</td>
+<td>Guild progression quests</td>
+<td>Progress through guild step quests to unlock new tiers and gain guild reputation.</td>
+</tr>
+<tr>
+<td>📜</td>
+<td>Main quests</td>
+<td>Progress through the main questline to unlock new mechanics, areas, and features.</td>
 </tr>
 </tbody>
 </table>
-<table class="footer-links">
-    <thead>
-        <tr>
-            <th colspan="2">Idle Fantasy Combat ⚔️</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr id="farm_imp_cavern_goblin_cave_spider_den_bandit_camp_undead_crypt_shadow_den_fortress_ruins_collapsed_mine_drowned_temple_ancient_forest_ruins_orc_stronghold_rogue_sanctum_volcanic_depths_the_sunspire_dragons_lair_the_hollowfen_infernal_stronghold_arcane_ruins_ancient_forge_abyssal_ruins_cloud_kingdom_corrupted_sanctum_guild_of_shadows_the_blightwood_ancient_temple_void_rift_frozen_citadel_abyssal_throne">
-            <th><a href="Dungeons.html#">Dungeons</a></th>
-            <td><a href="farm.html#">Farm</a>, <a href="imp_cavern.html#">Imp Cavern</a>, <a href="goblin_cave.html#">Goblin Cave</a>, <a href="spider_den.html#">Spider Den</a>, <a href="bandit_camp.html#">Bandit Camp</a>, <a href="undead_crypt.html#">Undead Crypt</a>, <a href="shadow_den.html#">Shadow Den</a>, <a href="fortress_ruins.html#">Fortress Ruins</a>, <a href="collapsed_mine.html#">Collapsed Mine</a>, <a href="drowned_temple.html#">Drowned Temple</a>, <a href="ancient_forest_ruins.html#">Ancient Forest Ruins</a>, <a href="orc_stronghold.html#">Orc Stronghold</a>, <a href="rogue_sanctum.html#">Rogue Sanctum</a>, <a href="volcanic_depths.html#">Volcanic Depths</a>, <a href="sunspire.html#">The Sunspire</a>, <a href="dragon_lair.html#">Dragon's Lair</a>, <a href="hollowfen.html#">The Hollowfen</a>, <a href="infernal_stronghold.html#">Infernal Stronghold</a>, <a href="arcane_ruins.html#">Arcane Ruins</a>, <a href="ancient_forge.html#">Ancient Forge</a>, <a href="abyssal_ruins.html#">Abyssal Ruins</a>, <a href="cloud_kingdom.html#">Cloud Kingdom</a>, <a href="corrupted_sanctum.html#">Corrupted Sanctum</a>, <a href="guild_of_shadows.html#">Guild of Shadows</a>, <a href="blightwood.html#">The Blightwood</a>, <a href="ancient_temple.html#">Ancient Temple</a>, <a href="void_rift.html#">Void Rift</a>, <a href="frozen_citadel.html#">Frozen Citadel</a>, <a href="abyssal_throne.html#">Abyssal Throne</a></td>
-        </tr>
-        <tr id="king_black_dragon_sol_invictus_the_sundered_flame_demon_lord_the_hollow_king_kraken_gothic_ember_the_vault_guardian_the_void_sovereign_obsidian_colossus_brood_empress_the_world_ender">
-            <th><a href="Bosses.html#">Bosses</a></th>
-            <td><div class="footer-image-link"><img src='assets/images/image_18.png' alt='King Black Dragon' width='20'> <a href="king_black_dragon.html#">King Black Dragon</a></div>
-<div class="footer-image-link"><img src='assets/images/image_23.png' alt='Sol Invictus, the Sundered Flame' width='20'> <a href="sol_invictus.html#">Sol Invictus, the Sundered Flame</a></div>
-<div class="footer-image-link"><img src='assets/images/image_19.png' alt='Demon Lord' width='20'> <a href="demon_lord.html#">Demon Lord</a></div>
-<div class="footer-image-link"><img src='assets/images/image_24.png' alt='The Hollow King' width='20'> <a href="the_hollow_king.html#">The Hollow King</a></div>
-<div class="footer-image-link"><img src='assets/images/image_20.png' alt='Kraken' width='20'> <a href="kraken.html#">Kraken</a></div>
-<div class="footer-image-link"><img src='assets/images/image_21.png' alt='Gothic Ember' width='20'> <a href="balrog.html#">Gothic Ember</a></div>
-<div class="footer-image-link"><img src='assets/images/image_25.png' alt='The Vault Guardian' width='20'> <a href="the_vault_guardian.html#">The Vault Guardian</a></div>
-<div class="footer-image-link"><img src='assets/images/image_22.png' alt='The Void Sovereign' width='20'> <a href="void_sovereign.html#">The Void Sovereign</a></div>
-<div class="footer-image-link">🗿 <a href="obsidian_colossus.html#">Obsidian Colossus</a></div>
-<div class="footer-image-link">👁️ <a href="brood_empress.html#">Brood Empress</a></div>
-<div class="footer-image-link">🌋 <a href="the_world_ender.html#">The World Ender</a></div></td>
-        </tr>
-        <tr id="chicken_sheep_giant_rat_imp_cow_wild_monkey_goblin_giant_spider_skeleton_zombie_mine_spider_rogue_dark_wizard_bandit_sea_spirit_cutpurse_drowned_cultist_guard_cave_troll_corrupted_druid_sun_wisp_cursed_fisherman_forest_spirit_orc_warrior_will_o_wisp_knight_vine_beast_storm_imp_assassin_hellhound_rock_golem_abyssal_leech_ember_hound_mountain_troll_dwarven_guardian_corrupted_mage_sky_serpent_forge_demon_grave_ghoul_lesser_demon_void_guardian_shadow_beast_arcane_construct_iron_golem_deep_horror_twisted_treant_lich_green_dragon_husk_horror_fire_giant_shadow_assassin_shade_stalker_guild_master_cloud_giant_vault_guardian_ancient_guardian_void_stalker_chaos_elemental_rift_guardian_glacial_mage_shadow_thief_frost_wyvern_bone_colossus_frost_giant_abyssal_guardian_cinder_colossus_void_archon_barrow_wight_ice_golem_abyssal_lord_elder_lich_eternal_sentinel_dread_dullahan">
-            <th><a href="Enemies.html#">Enemies</a></th>
-            <td><a href="chicken.html#">Chicken</a>, <a href="sheep.html#">Sheep</a>, <a href="giant_rat.html#">Giant Rat</a>, <a href="imp.html#">Imp</a>, <a href="cow.html#">Cow</a>, <a href="wild_monkey.html#">Wild Monkey</a>, <a href="goblin.html#">Goblin</a>, <a href="spider.html#">Giant Spider</a>, <a href="skeleton.html#">Skeleton</a>, <a href="zombie.html#" class="active">Zombie</a>, <a href="mine_spider.html#">Mine Spider</a>, <a href="rogue.html#">Rogue</a>, <a href="dark_wizard.html#">Dark Wizard</a>, <a href="bandit.html#">Bandit</a>, <a href="sea_spirit.html#">Sea Spirit</a>, <a href="cutpurse.html#">Cutpurse</a>, <a href="drowned_cultist.html#">Drowned Cultist</a>, <a href="guard.html#">Guard</a>, <a href="cave_troll.html#">Cave Troll</a>, <a href="corrupted_druid.html#">Corrupted Druid</a>, <a href="sun_wisp.html#">Sun Wisp</a>, <a href="cursed_fisherman.html#">Cursed Fisherman</a>, <a href="forest_spirit.html#">Forest Spirit</a>, <a href="orc_warrior.html#">Orc Warrior</a>, <a href="will_o_wisp.html#">Will-o'-Wisp</a>, <a href="knight.html#">Knight</a>, <a href="vine_beast.html#">Vine Beast</a>, <a href="storm_imp.html#">Storm Imp</a>, <a href="assassin.html#">Assassin</a>, <a href="hellhound.html#">Hellhound</a>, <a href="rock_golem.html#">Rock Golem</a>, <a href="abyssal_leech.html#">Abyssal Leech</a>, <a href="ember_hound.html#">Ember Hound</a>, <a href="troll.html#">Mountain Troll</a>, <a href="dwarven_guardian.html#">Dwarven Guardian</a>, <a href="corrupted_mage.html#">Corrupted Mage</a>, <a href="sky_serpent.html#">Sky Serpent</a>, <a href="forge_demon.html#">Forge Demon</a>, <a href="grave_ghoul.html#">Grave Ghoul</a>, <a href="demon.html#">Lesser Demon</a>, <a href="void_guardian.html#">Void Guardian</a>, <a href="shadow_beast.html#">Shadow Beast</a>, <a href="arcane_construct.html#">Arcane Construct</a>, <a href="iron_golem.html#">Iron Golem</a>, <a href="deep_horror.html#">Deep Horror</a>, <a href="twisted_treant.html#">Twisted Treant</a>, <a href="lich.html#">Lich</a>, <a href="dragon.html#">Green Dragon</a>, <a href="husk_horror.html#">Husk Horror</a>, <a href="fire_giant.html#">Fire Giant</a>, <a href="shadow_assassin.html#">Shadow Assassin</a>, <a href="shade_stalker.html#">Shade Stalker</a>, <a href="guild_master.html#">Guild Master</a>, <a href="cloud_giant.html#">Cloud Giant</a>, <a href="vault_guardian.html#">Vault Guardian</a>, <a href="ancient_guardian.html#">Ancient Guardian</a>, <a href="void_stalker.html#">Void Stalker</a>, <a href="chaos_elemental.html#">Chaos Elemental</a>, <a href="rift_guardian.html#">Rift Guardian</a>, <a href="glacial_mage.html#">Glacial Mage</a>, <a href="shadow_thief.html#">Shadow Thief</a>, <a href="frost_wyvern.html#">Frost Wyvern</a>, <a href="bone_colossus.html#">Bone Colossus</a>, <a href="frost_giant.html#">Frost Giant</a>, <a href="abyssal_guardian.html#">Abyssal Guardian</a>, <a href="cinder_colossus.html#">Cinder Colossus</a>, <a href="void_archon.html#">Void Archon</a>, <a href="barrow_wight.html#">Barrow Wight</a>, <a href="ice_golem.html#">Ice Golem</a>, <a href="abyssal_lord.html#">Abyssal Lord</a>, <a href="elder_lich.html#">Elder Lich</a>, <a href="eternal_sentinel.html#">Eternal Sentinel</a>, <a href="dread_dullahan.html#">Dread Dullahan</a></td>
-        </tr>
-        <tr id="combat_spells_slayer">
-            <th>Miscellaneous</th>
-            <td><a href="Combat.html#">Combat</a>, <a href="Spells.html#">Spells</a>, <a href="Slayer.html#">Slayer</a></td>
-        </tr>
-    </tbody>
-</table>
+<h2 id="usage-in-the-ui">Usage in the UI</h2>
+<ul>
+<li><strong>Quest indicators</strong> appear as superscripted counts next to skill names (e.g., ⏰<sup>3</sup> shows 3 active daily quests)</li>
+<li>Quest indicators are dimmed (38% opacity) when no quests of that category are completable</li>
+<li>When multiple quests of the same category target the same skill, a superscript shows the count (e.g., 📅<sup>2</sup> for 2 weekly quests)</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="Skills.html#">Skills</a> - Main skills documentation with skill icons</li>
+<li><a href="Quests.html#">Quests</a> - Main quest list</li>
+<li><a href="Guilds.html#">Guilds</a> - Guild daily and progression quests</li>
+</ul>
     </main>
   </div>
 
