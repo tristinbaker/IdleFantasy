@@ -60,56 +60,6 @@
           "whatsNew": {
             "en-US": "• Overnight queued boss runs now fast-forward at each fight's real speed instead of billing every fight its full scheduled duration, so long repeat chains actually finish while you sleep\n• Boss kills now show up in the session collection popup's Kills list\n• Kills left over after completing a slayer task now roll into the next foretold task when it targets the same enemy\n• The Armory now sorts items by their translated names instead of their English names\n• Player and mercenary HP bars, combat l"
           }
-        },
-        "8b92fe1a913d3dd3b14cff77bc1ab4ed64af198e53067673c995abb934073db8": {
-          "added": 1788346826362,
-          "file": {
-            "name": "/com.tristinbaker.idlefantasy_148000.apk",
-            "sha256": "8b92fe1a913d3dd3b14cff77bc1ab4ed64af198e53067673c995abb934073db8",
-            "size": 10281863
-          },
-          "manifest": {
-            "nativecode": [
-              "arm64-v8a",
-              "armeabi-v7a",
-              "x86",
-              "x86_64"
-            ],
-            "versionName": "1.14.8",
-            "versionCode": 148000,
-            "usesSdk": {
-              "minSdkVersion": 26,
-              "targetSdkVersion": 35
-            },
-            "signer": {
-              "sha256": [
-                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
-              ]
-            },
-            "usesPermission": [
-              {
-                "name": "android.permission.POST_NOTIFICATIONS"
-              },
-              {
-                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
-              },
-              {
-                "name": "android.permission.WAKE_LOCK"
-              },
-              {
-                "name": "android.permission.USE_EXACT_ALARM"
-              },
-              {
-                "name": "android.permission.SCHEDULE_EXACT_ALARM"
-              },
-              {
-                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-              }
-            ]
-          },
-          "whatsNew": {
-            "en-US": "• Agility no longer asks you to prestige once there is nothing left to earn: its XP boost tiers now end alongside the Endurance upgrades\n• Seasonal bounty missions now open the dungeon their target enemy actually lives in, instead of always the event's first dungeon\n• Rapidly queueing mercantile trade routes now shows a confirmation for every tap; identical back-to-back confirmations used to be silently dropped, making the buttons feel unresponsive\n• Fixed a crash when opening Housing for player"
-          }
         }
       }
     }
