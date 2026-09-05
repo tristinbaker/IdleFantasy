@@ -743,7 +743,6 @@
     <string name="quest_legend_guild_daily">Ежедневное задание гильдии</string>
     <string name="quest_legend_guild">Задание гильдии</string>
     <string name="quest_legend_quest">Задание</string>
-    <string name="quest_legend_gold_dot">Доступно временное задание.</string>
     <string name="quest_legend_notes">Тусклые значки пока нельзя выполнить (не хватает уровня или материалов). Маленькая надстрочная цифра означает, что несколько заданий этого типа требуют одного и того же.</string>
     <!-- Translator note: %1$s = quantity in inventory -->
     <string name="shop_qty_in_inv">×%1$s в инвентаре</string>

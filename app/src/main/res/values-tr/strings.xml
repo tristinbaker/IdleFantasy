@@ -725,7 +725,6 @@
     <string name="quest_legend_guild_daily">Lonca günlük görevi</string>
     <string name="quest_legend_guild">Lonca görevi</string>
     <string name="quest_legend_quest">Görev</string>
-    <string name="quest_legend_gold_dot">Timed quest is available.</string> <!-- untranslated -->
     <string name="quest_legend_notes">Soluk simgeler henüz tamamlanamaz (seviye veya malzeme eksik). Küçük üst simge sayı, aynı hedefi isteyen birden fazla görev olduğunu gösterir.</string>
     <!-- Translator note: %1$s = quantity in inventory -->
     <string name="shop_qty_in_inv">Envanterde ×%1$s adet</string>

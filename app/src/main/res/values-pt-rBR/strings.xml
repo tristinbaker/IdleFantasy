@@ -725,7 +725,6 @@
     <string name="quest_legend_guild_daily">Diária da guilda</string>
     <string name="quest_legend_guild">Missão da guilda</string>
     <string name="quest_legend_quest">Missão</string>
-    <string name="quest_legend_gold_dot">Timed quest is available.</string> <!-- untranslated -->
     <string name="quest_legend_notes">Ícones esmaecidos ainda não podem ser concluídos (falta nível ou materiais). Um pequeno número elevado indica que várias missões desse tipo pedem a mesma coisa.</string>
     <!-- Translator note: %1$s = quantity in inventory -->
     <string name="shop_qty_in_inv">×%1$s no inventário</string>

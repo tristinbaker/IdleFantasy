@@ -107,7 +107,6 @@ data class SkillsUiState(
     /** Timed (daily/weekly/guild daily) quest indicators per skill, for the overview rows. */
     val timedQuestsBySkill: Map<String, List<QuestIndicator>> = emptyMap(),
     val showSessionEndTime: Boolean = true,
-    val showQuestDots: Boolean = true,
     /** Guild dailies plus daily/weekly quests for each sheet skill, keyed by skill (guild keys match skill keys). */
     val sheetQuests: Map<String, List<SheetQuestSummary>> = emptyMap(),
     val seasonalEventEmoji: String? = null,
@@ -259,7 +258,6 @@ class SkillsViewModel @Inject constructor(
                     }
                     .filterValues { it.isNotEmpty() },
                 showSessionEndTime    = flags.showSessionEndTime,
-                showQuestDots         = flags.showQuestDots,
                 sheetQuests           = computeSheetQuests(questProgress, flags, levels, inv),
                 seasonalEventEmoji    = seasonalEmoji,
             )
@@ -1404,6 +1402,8 @@ class SkillsViewModel @Inject constructor(
                         addIndicator("coins", questSkill, category, remaining, questId)
                     }
                 }
+                "slayer_task" -> addIndicator("task", Skills.SLAYER, category, remaining, questId)
+                "slayer_kill" -> addIndicator("kill", Skills.SLAYER, category, remaining, questId)
             }
         }
 
@@ -1451,6 +1451,8 @@ class SkillsViewModel @Inject constructor(
                 "gather", "craft" -> {
                     addIndicator(task.target, skill, QuestCategory.SEASONAL, remaining, task.id, eventEmoji)
                 }
+                "slayer_task" -> addIndicator("task", Skills.SLAYER, QuestCategory.SEASONAL, remaining, task.id, eventEmoji)
+                "slayer_kill" -> addIndicator("kill", Skills.SLAYER, QuestCategory.SEASONAL, remaining, task.id, eventEmoji)
                 "turn_in" -> {
                     val isCompletable = (inventory[task.target] ?: 0) >= task.amount
                     result.getOrPut("$skill:${task.target}") { mutableListOf() }

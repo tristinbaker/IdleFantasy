@@ -717,7 +717,6 @@
     <string name="quest_legend_guild_daily">Harian guild</string>
     <string name="quest_legend_guild">Quest guild</string>
     <string name="quest_legend_quest">Quest</string> <!-- untranslated -->
-    <string name="quest_legend_gold_dot">Timed quest is available.</string> <!-- untranslated -->
     <string name="quest_legend_notes">Ikon redup belum bisa diselesaikan (level atau bahan kurang). Angka kecil di atas berarti beberapa quest jenis itu menginginkan hal yang sama.</string>
     <!-- Translator note: %1$s = quantity in inventory -->
     <string name="shop_qty_in_inv">×%1$s di inventaris</string>

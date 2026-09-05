@@ -175,8 +175,6 @@ data class PlayerFlags(
     @SerialName("profile_layout") val profileLayout: String = "rail",
     /** Whether session/queue countdowns append the predicted wall-clock completion time. */
     @SerialName("show_session_end_time") val showSessionEndTime: Boolean = true,
-    /** Gold quest dots on the Skills tab icons; some players prefer them off (discussion #1386). */
-    @SerialName("show_quest_dots") val showQuestDots: Boolean = true,
     /** Whether to abbreviate large item quantities/numbers (e.g. 2.46M vs 2,461,940). */
     @SerialName("compact_numbers") val compactNumbers: Boolean = false,
     /** Nav bar badge dots for combat/skill prestige availability. */

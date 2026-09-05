@@ -725,7 +725,6 @@
     <string name="quest_legend_guild_daily">公会每日</string>
     <string name="quest_legend_guild">公会任务</string>
     <string name="quest_legend_quest">任务</string>
-    <string name="quest_legend_gold_dot">有定时任务可接。</string>
     <string name="quest_legend_notes">灰色图标暂不可完成（缺少等级或材料）。小数字表示多个同类任务需要相同物品。</string>
     <!-- Translator note: %1$s = quantity in inventory -->
     <string name="shop_qty_in_inv">背包×%1$s</string>

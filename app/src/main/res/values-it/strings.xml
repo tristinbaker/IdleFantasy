@@ -725,7 +725,6 @@
     <string name="quest_legend_guild_daily">Giornaliera di gilda</string>
     <string name="quest_legend_guild">Missione di gilda</string>
     <string name="quest_legend_quest">Missione</string>
-    <string name="quest_legend_gold_dot">Una missione a tempo è disponibile.</string>
     <string name="quest_legend_notes">Le missioni con icone attenuate non possono ancora essere completate (livello o materiali mancanti). Un numerino in apice indica che più missioni richiedono la stessa azione.</string>
     <!-- Translator note: %1$s = quantity in inventory -->
     <string name="shop_qty_in_inv">Hai ×%1$s</string>

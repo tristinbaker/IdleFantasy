@@ -314,17 +314,6 @@ fun SettingsScreen(
                 subtitle = stringResource(R.string.settings_home_screen_desc),
                 onClick  = onNavigateToHomeScreenSettings,
             )
-            val showQuestDots by viewModel.showQuestDots.collectAsState()
-            SettingsRow(
-                title    = stringResource(R.string.settings_quest_dots),
-                subtitle = stringResource(R.string.settings_quest_dots_desc),
-                trailing = {
-                    Switch(
-                        checked         = showQuestDots,
-                        onCheckedChange = { viewModel.setShowQuestDots(it) },
-                    )
-                }
-            )
             val showPrestigeNotifications by viewModel.showPrestigeNotifications.collectAsState()
             SettingsRow(
                 title    = stringResource(R.string.settings_prestige_notifications),

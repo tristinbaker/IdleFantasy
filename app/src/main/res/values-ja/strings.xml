@@ -725,7 +725,6 @@
     <string name="quest_legend_guild_daily">ギルドデイリー</string>
     <string name="quest_legend_guild">ギルドクエスト</string>
     <string name="quest_legend_quest">クエスト</string>
-    <string name="quest_legend_gold_dot">Timed quest is available.</string> <!-- untranslated -->
     <string name="quest_legend_notes">薄いアイコンはまだ達成できません（レベルや素材が不足）。小さな上付き数字は、同じ対象を求めるクエストがその種類に複数あることを示します。</string>
     <!-- Translator note: %1$s = quantity in inventory -->
     <string name="shop_qty_in_inv">インベントリ所持数: ×%1$s</string>

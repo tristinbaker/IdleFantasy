@@ -147,10 +147,6 @@ fun SkillsScreen(
                     ).forEach { (emoji, labelRes) ->
                         Text("$emoji  ${stringResource(labelRes)}")
                     }
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text("●  ", color = MaterialTheme.colorScheme.primary)
-                        Text(stringResource(R.string.quest_legend_gold_dot))
-                    }
                     Spacer(Modifier.height(4.dp))
                     Text(
                         text  = stringResource(R.string.quest_legend_notes),
@@ -713,7 +709,6 @@ private fun SkillsTabContent(
                 prestigeLevel  = state.skillPrestige[key] ?: 0,
                 onOpenPrestige = { onNavigateToPrestige(key) },
                 cropsReady     = if (key == Skills.FARMING) state.cropsReadyCount else 0,
-                guildDailyOpen = state.showQuestDots && state.sheetQuests[key]?.any { !it.claimed && !(it.source == SheetQuestSource.GUILD && it.guildMaxed) } == true,
                 questIndicators = state.timedQuestsBySkill[key] ?: emptyList(),
             )
         }
@@ -736,7 +731,6 @@ private fun SkillsTabContent(
                 petBoostPct    = state.petBoostBySkill[key] ?: 0,
                 prestigeLevel  = state.skillPrestige[key] ?: 0,
                 onOpenPrestige = { onNavigateToPrestige(key) },
-                guildDailyOpen = state.showQuestDots && state.sheetQuests[key]?.any { !it.claimed && !(it.source == SheetQuestSource.GUILD && it.guildMaxed) } == true,
                 questIndicators = state.timedQuestsBySkill[key] ?: emptyList(),
             )
         }
@@ -753,7 +747,6 @@ private fun SkillsTabContent(
                 petBoostPct    = state.petBoostBySkill[key] ?: 0,
                 prestigeLevel  = state.skillPrestige[key] ?: 0,
                 onOpenPrestige = { onNavigateToPrestige(key) },
-                guildDailyOpen = state.showQuestDots && state.sheetQuests[key]?.any { !it.claimed && !(it.source == SheetQuestSource.GUILD && it.guildMaxed) } == true,
                 questIndicators = state.timedQuestsBySkill[key] ?: emptyList(),
             )
         }
@@ -769,7 +762,6 @@ private fun SkillsTabContent(
                 petBoostPct   = state.petBoostBySkill[Skills.SLAYER] ?: 0,
                 prestigeLevel = state.skillPrestige[Skills.SLAYER] ?: 0,
                 onOpenPrestige = { onNavigateToPrestige(Skills.SLAYER) },
-                guildDailyOpen = state.showQuestDots && state.sheetQuests[Skills.SLAYER]?.any { !it.claimed && !(it.source == SheetQuestSource.GUILD && it.guildMaxed) } == true,
                 questIndicators = state.timedQuestsBySkill[Skills.SLAYER] ?: emptyList(),
             )
         }
@@ -891,8 +883,6 @@ internal fun SkillRow(
     prestigeLevel: Int = 0,
     onOpenPrestige: (() -> Unit)? = null,
     cropsReady: Int = 0,
-    /** Shows a gold dot when this skill's guild daily is still open and worth doing (guild not maxed). */
-    guildDailyOpen: Boolean = false,
     /** Timed quest indicators (daily/weekly/guild daily) shown next to the skill name. */
     questIndicators: List<QuestIndicator> = emptyList(),
 ) {
@@ -950,12 +940,6 @@ internal fun SkillRow(
                 )
                 if (cropsReady > 0) {
                     Badge(modifier = Modifier.align(Alignment.TopEnd))
-                }
-                if (guildDailyOpen) {
-                    Badge(
-                        containerColor = MaterialTheme.colorScheme.primary,
-                        modifier       = Modifier.align(Alignment.TopStart),
-                    )
                 }
             }
 

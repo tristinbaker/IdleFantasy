@@ -725,7 +725,6 @@
     <string name="quest_legend_guild_daily">Diaria del gremio</string>
     <string name="quest_legend_guild">Misión del gremio</string>
     <string name="quest_legend_quest">Misión</string>
-    <string name="quest_legend_gold_dot">Timed quest is available.</string> <!-- untranslated -->
     <string name="quest_legend_notes">Los iconos atenuados aún no se pueden completar (falta nivel o materiales). Un pequeño número elevado indica que varias misiones de ese tipo piden lo mismo.</string>
     <!-- Translator note: %1$s = quantity in inventory -->
     <string name="shop_qty_in_inv">×%1$s en inventario</string>

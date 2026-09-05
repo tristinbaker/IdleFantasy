@@ -725,7 +725,6 @@
     <string name="quest_legend_guild_daily">Dagelijkse gildequest</string>
     <string name="quest_legend_guild">Gildequest</string>
     <string name="quest_legend_quest">Quest</string> <!-- untranslated -->
-    <string name="quest_legend_gold_dot">Timed quest is available.</string> <!-- untranslated -->
     <string name="quest_legend_notes">Gedimde pictogrammen kunnen nog niet voltooid worden (level of materialen ontbreken). Een klein verhoogd cijfer betekent dat meerdere quests van dat type hetzelfde willen.</string>
     <!-- Translator note: %1$s = quantity in inventory -->
     <string name="shop_qty_in_inv">×%1$s in inventaris</string>

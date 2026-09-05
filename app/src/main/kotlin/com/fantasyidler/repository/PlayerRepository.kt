@@ -1786,7 +1786,6 @@ class PlayerRepository @Inject constructor(
             compactNumbers            = carrySettingsFrom.compactNumbers,
             profileLayout             = carrySettingsFrom.profileLayout,
             showSessionEndTime        = carrySettingsFrom.showSessionEndTime,
-            showQuestDots             = carrySettingsFrom.showQuestDots,
             showPrestigeNotifications = carrySettingsFrom.showPrestigeNotifications,
             showRecentActivityLog     = carrySettingsFrom.showRecentActivityLog,
             showJournalButton         = carrySettingsFrom.showJournalButton,
