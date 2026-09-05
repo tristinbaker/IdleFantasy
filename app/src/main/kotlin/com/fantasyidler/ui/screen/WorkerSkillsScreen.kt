@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -71,20 +70,24 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.R
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.Skills
-import com.fantasyidler.simulator.XpTable
 import com.fantasyidler.data.model.WorkerTier
+import com.fantasyidler.ui.screen.skills.AgilitySheet
+import com.fantasyidler.ui.screen.skills.ComingSoonSheet
+import com.fantasyidler.ui.screen.skills.FiremakingSheet
+import com.fantasyidler.ui.screen.skills.FishingSheet
+import com.fantasyidler.ui.screen.skills.MiningSheet
+import com.fantasyidler.ui.screen.skills.PrayerSheet
+import com.fantasyidler.ui.screen.skills.RunecraftingSheet
+import com.fantasyidler.ui.screen.skills.ThievingSheet
+import com.fantasyidler.ui.screen.skills.WoodcuttingSheet
+import com.fantasyidler.ui.screen.skills.projectedXpLabel
 import com.fantasyidler.ui.viewmodel.CraftableRecipe
 import com.fantasyidler.ui.viewmodel.SheetState
 import com.fantasyidler.ui.viewmodel.WorkerSkillsUiState
 import com.fantasyidler.ui.viewmodel.WorkerSkillsViewModel
-import com.fantasyidler.ui.viewmodel.xpProgressFraction
-import com.fantasyidler.ui.viewmodel.nextLevelThreshold
-import com.fantasyidler.ui.viewmodel.xpToNextLevel
-import com.fantasyidler.ui.viewmodel.levelDisplay
 import com.fantasyidler.ui.theme.ScaledSheetContent
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatDurationMs
-import com.fantasyidler.util.formatXp
 import com.fantasyidler.util.toCountdown
 import kotlinx.coroutines.delay
 import java.util.Locale
@@ -288,81 +291,87 @@ fun WorkerSkillsScreen(
             val isQueueFull = state.workerQueueFull
             when (sheet) {
                 is SheetState.Mining -> MiningSheet(
-                    ores              = sheet.ores,
-                    isStarting        = false,
-                    hasActiveSession  = true,
-                    isQueueFull       = isQueueFull,
+                    ores = sheet.ores,
+                    isStarting = false,
+                    hasActiveSession = true,
+                    isQueueFull = isQueueFull,
                     sessionDurationMs = state.gatheringDurationMs,
-                    currentXp         = state.skillXp[Skills.MINING] ?: 0L,
-                    efficiency        = state.miningEfficiency,
-                    inventory         = state.inventory,
-                    onSelect          = { viewModel.startMiningSession(it) },
+                    currentXp = state.skillXp[Skills.MINING] ?: 0L,
+                    efficiency = state.miningEfficiency,
+                    inventory = state.inventory,
+                    onSelect = { viewModel.startMiningSession(it) },
                 )
                 is SheetState.Woodcutting -> WoodcuttingSheet(
-                    trees             = sheet.trees,
-                    isStarting        = false,
-                    hasActiveSession  = true,
-                    isQueueFull       = isQueueFull,
+                    trees = sheet.trees,
+                    isStarting = false,
+                    hasActiveSession = true,
+                    isQueueFull = isQueueFull,
                     sessionDurationMs = state.gatheringDurationMs,
-                    currentXp         = state.skillXp[Skills.WOODCUTTING] ?: 0L,
-                    efficiency        = state.woodcuttingEfficiency,
-                    inventory         = state.inventory,
-                    onSelect          = { viewModel.startWoodcuttingSession(it) },
+                    currentXp = state.skillXp[Skills.WOODCUTTING] ?: 0L,
+                    efficiency = state.woodcuttingEfficiency,
+                    inventory = state.inventory,
+                    onSelect = { viewModel.startWoodcuttingSession(it) },
                 )
                 is SheetState.Fishing -> FishingSheet(
-                    fish              = sheet.fish,
-                    isStarting        = false,
-                    hasActiveSession  = true,
-                    isQueueFull       = isQueueFull,
+                    fish = sheet.fish,
+                    isStarting = false,
+                    hasActiveSession = true,
+                    isQueueFull = isQueueFull,
                     sessionDurationMs = state.gatheringDurationMs,
-                    currentXp         = state.skillXp[Skills.FISHING] ?: 0L,
-                    efficiency        = state.fishingEfficiency,
-                    inventory         = state.inventory,
-                    onSelect          = { viewModel.startFishingSession(it) },
+                    currentXp = state.skillXp[Skills.FISHING] ?: 0L,
+                    efficiency = state.fishingEfficiency,
+                    inventory = state.inventory,
+                    onSelect = { viewModel.startFishingSession(it) },
                 )
                 is SheetState.Agility -> AgilitySheet(
-                    courses           = sheet.courses,
-                    isStarting        = false,
-                    hasActiveSession  = true,
-                    isQueueFull       = isQueueFull,
+                    courses = sheet.courses,
+                    isStarting = false,
+                    hasActiveSession = true,
+                    isQueueFull = isQueueFull,
                     sessionDurationMs = state.gatheringDurationMs,
-                    currentXp         = state.skillXp[Skills.AGILITY] ?: 0L,
-                    onSelect          = { viewModel.startAgilitySession(it) },
+                    currentXp = state.skillXp[Skills.AGILITY] ?: 0L,
+                    onSelect = { viewModel.startAgilitySession(it) },
                 )
                 is SheetState.Firemaking -> FiremakingSheet(
-                    availableLogs     = sheet.availableLogs,
-                    inventory         = state.inventory,
-                    currentXp         = state.skillXp[Skills.FIREMAKING] ?: 0L,
-                    isStarting        = false,
-                    hasActiveSession  = true,
-                    isQueueFull       = isQueueFull,
+                    availableLogs = sheet.availableLogs,
+                    inventory = state.inventory,
+                    currentXp = state.skillXp[Skills.FIREMAKING] ?: 0L,
+                    isStarting = false,
+                    hasActiveSession = true,
+                    isQueueFull = isQueueFull,
                     sessionDurationMs = state.sessionDurationMs,
-                    onStart           = { logKey, qty -> viewModel.startFiremakingSession(logKey, qty) },
-                    context           = context,
-                    craftLimit        = state.maxCraftQty,
+                    onStart = { logKey, qty -> viewModel.startFiremakingSession(logKey, qty) },
+                    context = context,
+                    craftLimit = state.maxCraftQty,
                 )
                 is SheetState.Runecrafting -> RunecraftingSheet(
-                    sheet             = sheet,
-                    inventory         = state.inventory,
-                    isStarting        = false,
-                    hasActiveSession  = true,
-                    isQueueFull       = isQueueFull,
+                    sheet = sheet,
+                    inventory = state.inventory,
+                    isStarting = false,
+                    hasActiveSession = true,
+                    isQueueFull = isQueueFull,
                     sessionDurationMs = state.sessionDurationMs,
-                    onStart           = { runeKey, qty, ashKey -> viewModel.startRunecraftingSession(runeKey, qty, ashKey) },
-                    currentXp         = state.skillXp[Skills.RUNECRAFTING] ?: 0L,
-                    tierMaxQty        = state.maxCraftQty,
+                    onStart = { runeKey, qty, ashKey ->
+                        viewModel.startRunecraftingSession(
+                            runeKey,
+                            qty,
+                            ashKey
+                        )
+                    },
+                    currentXp = state.skillXp[Skills.RUNECRAFTING] ?: 0L,
+                    tierMaxQty = state.maxCraftQty,
                 )
                 is SheetState.Prayer -> PrayerSheet(
-                    availableBones    = sheet.availableBones,
-                    inventory         = sheet.inventory,
-                    prayerLevel       = state.skillLevels[Skills.PRAYER] ?: 1,
-                    currentXp         = state.skillXp[Skills.PRAYER] ?: 0L,
-                    isStarting        = false,
-                    hasActiveSession  = true,
-                    isQueueFull       = isQueueFull,
+                    availableBones = sheet.availableBones,
+                    inventory = sheet.inventory,
+                    prayerLevel = state.skillLevels[Skills.PRAYER] ?: 1,
+                    currentXp = state.skillXp[Skills.PRAYER] ?: 0L,
+                    isStarting = false,
+                    hasActiveSession = true,
+                    isQueueFull = isQueueFull,
                     sessionDurationMs = state.sessionDurationMs,
-                    onStart           = viewModel::startPrayerSession,
-                    tierMaxQty        = state.maxCraftQty,
+                    onStart = viewModel::startPrayerSession,
+                    tierMaxQty = state.maxCraftQty,
                 )
                 is SheetState.Crafting -> {
                     WorkerCraftSkillSheet(
@@ -377,15 +386,15 @@ fun WorkerSkillsScreen(
                 SheetState.Mercantile -> {}
                 SheetState.Farming   -> {}
                 is SheetState.Thieving -> ThievingSheet(
-                    npcs              = sheet.npcs,
-                    thievingLevel     = state.skillLevels[Skills.THIEVING] ?: 1,
-                    currentXp         = state.skillXp[Skills.THIEVING] ?: 0L,
-                    isStarting        = false,
-                    hasActiveSession  = true,
-                    isQueueFull       = isQueueFull,
+                    npcs = sheet.npcs,
+                    thievingLevel = state.skillLevels[Skills.THIEVING] ?: 1,
+                    currentXp = state.skillXp[Skills.THIEVING] ?: 0L,
+                    isStarting = false,
+                    hasActiveSession = true,
+                    isQueueFull = isQueueFull,
                     sessionDurationMs = state.gatheringDurationMs,
-                    context           = context,
-                    onSelect          = { viewModel.startThievingSession(it) },
+                    context = context,
+                    onSelect = { viewModel.startThievingSession(it) },
                 )
                 SheetState.ComingSoon -> ComingSoonSheet()
             }

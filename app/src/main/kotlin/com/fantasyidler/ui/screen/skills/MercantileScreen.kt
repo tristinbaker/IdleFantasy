@@ -1,4 +1,4 @@
-package com.fantasyidler.ui.screen
+package com.fantasyidler.ui.screen.skills
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -34,6 +34,8 @@ import com.fantasyidler.R
 import com.fantasyidler.data.json.TradeRouteData
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.simulator.MercantilePerks
+import com.fantasyidler.ui.screen.AppBannerCenter
+import com.fantasyidler.ui.screen.AppBannerEffect
 import com.fantasyidler.ui.viewmodel.MercantileUiState
 import com.fantasyidler.ui.viewmodel.MercantileViewModel
 import com.fantasyidler.ui.viewmodel.QuestIndicator

@@ -1,4 +1,4 @@
-package com.fantasyidler.ui.screen
+package com.fantasyidler.ui.screen.skills
 
 
 import androidx.compose.foundation.clickable
@@ -52,6 +52,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.style.TextAlign
 import com.fantasyidler.ui.viewmodel.SheetState
 import com.fantasyidler.simulator.XpTable
+import com.fantasyidler.ui.screen.QtyQuickButtons
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatDurationMs
 import com.fantasyidler.ui.viewmodel.QuestFillSuggestion

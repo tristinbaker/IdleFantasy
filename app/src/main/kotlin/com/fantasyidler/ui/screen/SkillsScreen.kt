@@ -82,7 +82,18 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import com.fantasyidler.ui.screen.MercantileSheetContent
+import com.fantasyidler.ui.screen.skills.AgilitySheet
+import com.fantasyidler.ui.screen.skills.ComingSoonSheet
+import com.fantasyidler.ui.screen.skills.CraftSkillSheet
+import com.fantasyidler.ui.screen.skills.FiremakingSheet
+import com.fantasyidler.ui.screen.skills.FishingSheet
+import com.fantasyidler.ui.screen.skills.MercantileSheetContent
+import com.fantasyidler.ui.screen.skills.MiningSheet
+import com.fantasyidler.ui.screen.skills.PrayerSheet
+import com.fantasyidler.ui.screen.skills.QuestIndicatorIcons
+import com.fantasyidler.ui.screen.skills.RunecraftingSheet
+import com.fantasyidler.ui.screen.skills.ThievingSheet
+import com.fantasyidler.ui.screen.skills.WoodcuttingSheet
 import com.fantasyidler.ui.viewmodel.CraftingViewModel
 import com.fantasyidler.ui.viewmodel.SheetQuestSource
 import com.fantasyidler.ui.viewmodel.SheetQuestSummary
@@ -336,142 +347,148 @@ fun SkillActivitySheet(
             ScaledSheetContent {
                 when (sheet) {
                     is SheetState.Mining -> MiningSheet(
-                        guildDailyButton  = dailyBanner,
-                        ores              = sheet.ores,
-                        isStarting        = state.startingSession,
-                        hasActiveSession  = state.anySessionActive,
-                        isQueueFull       = state.queueSize >= state.maxQueueSize,
+                        guildDailyButton = dailyBanner,
+                        ores = sheet.ores,
+                        isStarting = state.startingSession,
+                        hasActiveSession = state.anySessionActive,
+                        isQueueFull = state.queueSize >= state.maxQueueSize,
                         sessionDurationMs = state.sessionDurationMs,
-                        currentXp         = state.skillXp[Skills.MINING] ?: 0L,
-                        efficiency        = state.miningEfficiency,
-                        petBoostPct       = state.petBoosts[Skills.MINING] ?: 0,
-                        xpBonusMult       = state.xpBonusMult,
-                        activeQuests      = state.activeQuests,
-                        inventory         = state.inventory,
-                        onSelect          = { oreKey -> viewModel.startMiningSession(oreKey) },
+                        currentXp = state.skillXp[Skills.MINING] ?: 0L,
+                        efficiency = state.miningEfficiency,
+                        petBoostPct = state.petBoosts[Skills.MINING] ?: 0,
+                        xpBonusMult = state.xpBonusMult,
+                        activeQuests = state.activeQuests,
+                        inventory = state.inventory,
+                        onSelect = { oreKey -> viewModel.startMiningSession(oreKey) },
                     )
                     is SheetState.Woodcutting -> WoodcuttingSheet(
-                        guildDailyButton  = dailyBanner,
-                        trees             = sheet.trees,
-                        isStarting        = state.startingSession,
-                        hasActiveSession  = state.anySessionActive,
-                        isQueueFull       = state.queueSize >= state.maxQueueSize,
+                        guildDailyButton = dailyBanner,
+                        trees = sheet.trees,
+                        isStarting = state.startingSession,
+                        hasActiveSession = state.anySessionActive,
+                        isQueueFull = state.queueSize >= state.maxQueueSize,
                         sessionDurationMs = state.sessionDurationMs,
-                        currentXp         = state.skillXp[Skills.WOODCUTTING] ?: 0L,
-                        efficiency        = state.woodcuttingEfficiency,
-                        petBoostPct       = state.petBoosts[Skills.WOODCUTTING] ?: 0,
-                        xpBonusMult       = state.xpBonusMult,
-                        activeQuests      = state.activeQuests,
-                        inventory         = state.inventory,
-                        onSelect          = { treeKey -> viewModel.startWoodcuttingSession(treeKey) },
+                        currentXp = state.skillXp[Skills.WOODCUTTING] ?: 0L,
+                        efficiency = state.woodcuttingEfficiency,
+                        petBoostPct = state.petBoosts[Skills.WOODCUTTING] ?: 0,
+                        xpBonusMult = state.xpBonusMult,
+                        activeQuests = state.activeQuests,
+                        inventory = state.inventory,
+                        onSelect = { treeKey -> viewModel.startWoodcuttingSession(treeKey) },
                     )
                     is SheetState.Fishing -> FishingSheet(
-                        guildDailyButton  = dailyBanner,
-                        fish              = sheet.fish,
-                        isStarting        = state.startingSession,
-                        hasActiveSession  = state.anySessionActive,
-                        isQueueFull       = state.queueSize >= state.maxQueueSize,
+                        guildDailyButton = dailyBanner,
+                        fish = sheet.fish,
+                        isStarting = state.startingSession,
+                        hasActiveSession = state.anySessionActive,
+                        isQueueFull = state.queueSize >= state.maxQueueSize,
                         sessionDurationMs = state.sessionDurationMs,
-                        currentXp         = state.skillXp[Skills.FISHING] ?: 0L,
-                        efficiency        = state.fishingEfficiency,
-                        petBoostPct       = state.petBoosts[Skills.FISHING] ?: 0,
-                        xpBonusMult       = state.xpBonusMult,
-                        activeQuests      = state.activeQuests,
-                        inventory         = state.inventory,
-                        onSelect          = { fishKey -> viewModel.startFishingSession(fishKey) },
+                        currentXp = state.skillXp[Skills.FISHING] ?: 0L,
+                        efficiency = state.fishingEfficiency,
+                        petBoostPct = state.petBoosts[Skills.FISHING] ?: 0,
+                        xpBonusMult = state.xpBonusMult,
+                        activeQuests = state.activeQuests,
+                        inventory = state.inventory,
+                        onSelect = { fishKey -> viewModel.startFishingSession(fishKey) },
                     )
                     is SheetState.Agility -> AgilitySheet(
-                        guildDailyButton  = dailyBanner,
-                        courses           = sheet.courses,
-                        isStarting        = state.startingSession,
-                        hasActiveSession  = state.anySessionActive,
-                        isQueueFull       = state.queueSize >= state.maxQueueSize,
+                        guildDailyButton = dailyBanner,
+                        courses = sheet.courses,
+                        isStarting = state.startingSession,
+                        hasActiveSession = state.anySessionActive,
+                        isQueueFull = state.queueSize >= state.maxQueueSize,
                         sessionDurationMs = state.sessionDurationMs,
-                        currentXp         = state.skillXp[Skills.AGILITY] ?: 0L,
-                        efficiency        = state.agilityEfficiency,
-                        petBoostPct       = state.petBoosts[Skills.AGILITY] ?: 0,
-                        xpBonusMult       = state.xpBonusMult,
-                        activeQuests      = state.activeQuests,
-                        onSelect          = { courseKey -> viewModel.startAgilitySession(courseKey) },
+                        currentXp = state.skillXp[Skills.AGILITY] ?: 0L,
+                        efficiency = state.agilityEfficiency,
+                        petBoostPct = state.petBoosts[Skills.AGILITY] ?: 0,
+                        xpBonusMult = state.xpBonusMult,
+                        activeQuests = state.activeQuests,
+                        onSelect = { courseKey -> viewModel.startAgilitySession(courseKey) },
                     )
                     is SheetState.Firemaking -> FiremakingSheet(
-                        guildDailyButton  = dailyBanner,
-                        backStep          = sheetBackStep,
-                        availableLogs     = sheet.availableLogs,
-                        inventory         = state.inventory,
-                        currentXp         = state.skillXp[Skills.FIREMAKING] ?: 0L,
-                        isStarting        = state.startingSession,
-                        hasActiveSession  = state.anySessionActive,
-                        isQueueFull       = state.queueSize >= state.maxQueueSize,
+                        guildDailyButton = dailyBanner,
+                        backStep = sheetBackStep,
+                        availableLogs = sheet.availableLogs,
+                        inventory = state.inventory,
+                        currentXp = state.skillXp[Skills.FIREMAKING] ?: 0L,
+                        isStarting = state.startingSession,
+                        hasActiveSession = state.anySessionActive,
+                        isQueueFull = state.queueSize >= state.maxQueueSize,
                         sessionDurationMs = state.sessionDurationMs,
-                        perLogMs          = state.firemakingPerLogMs,
-                        onStart           = { logKey, qty -> viewModel.startFiremakingSession(logKey, qty) },
-                        context           = context,
-                        questFills        = sheet.questFills,
-                        activeQuests      = state.activeQuests,
+                        perLogMs = state.firemakingPerLogMs,
+                        onStart = { logKey, qty -> viewModel.startFiremakingSession(logKey, qty) },
+                        context = context,
+                        questFills = sheet.questFills,
+                        activeQuests = state.activeQuests,
                     )
                     is SheetState.Runecrafting -> RunecraftingSheet(
-                        guildDailyButton  = dailyBanner,
-                        backStep          = sheetBackStep,
-                        sheet             = sheet,
-                        inventory         = state.inventory,
-                        isStarting        = state.startingSession,
-                        hasActiveSession  = state.anySessionActive,
-                        isQueueFull       = state.queueSize >= state.maxQueueSize,
+                        guildDailyButton = dailyBanner,
+                        backStep = sheetBackStep,
+                        sheet = sheet,
+                        inventory = state.inventory,
+                        isStarting = state.startingSession,
+                        hasActiveSession = state.anySessionActive,
+                        isQueueFull = state.queueSize >= state.maxQueueSize,
                         sessionDurationMs = state.sessionDurationMs,
-                        onStart           = { runeKey, qty, ashKey -> viewModel.startRunecraftingSession(runeKey, qty, ashKey) },
-                        currentXp         = state.skillXp[Skills.RUNECRAFTING] ?: 0L,
-                        questFills        = sheet.questFills,
-                        activeQuests      = state.activeQuests,
+                        onStart = { runeKey, qty, ashKey ->
+                            viewModel.startRunecraftingSession(
+                                runeKey,
+                                qty,
+                                ashKey
+                            )
+                        },
+                        currentXp = state.skillXp[Skills.RUNECRAFTING] ?: 0L,
+                        questFills = sheet.questFills,
+                        activeQuests = state.activeQuests,
                     )
                     is SheetState.Prayer -> PrayerSheet(
-                        guildDailyButton  = dailyBanner,
-                        backStep          = sheetBackStep,
-                        availableBones        = sheet.availableBones,
-                        inventory             = sheet.inventory,
-                        prayerLevel           = state.skillLevels[Skills.PRAYER] ?: 1,
-                        currentXp             = state.skillXp[Skills.PRAYER] ?: 0L,
-                        isStarting            = state.startingSession,
-                        hasActiveSession      = state.anySessionActive,
-                        isQueueFull           = state.queueSize >= state.maxQueueSize,
-                        sessionDurationMs     = state.sessionDurationMs,
-                        onStart               = viewModel::startPrayerSession,
+                        guildDailyButton = dailyBanner,
+                        backStep = sheetBackStep,
+                        availableBones = sheet.availableBones,
+                        inventory = sheet.inventory,
+                        prayerLevel = state.skillLevels[Skills.PRAYER] ?: 1,
+                        currentXp = state.skillXp[Skills.PRAYER] ?: 0L,
+                        isStarting = state.startingSession,
+                        hasActiveSession = state.anySessionActive,
+                        isQueueFull = state.queueSize >= state.maxQueueSize,
+                        sessionDurationMs = state.sessionDurationMs,
+                        onStart = viewModel::startPrayerSession,
                         onNavigateToBoneAltar = {
                             viewModel.dismissSheet()
                             onNavigateToBoneAltar()
                         },
-                        questFills            = sheet.questFills,
-                        activeQuests          = state.activeQuests,
+                        questFills = sheet.questFills,
+                        activeQuests = state.activeQuests,
                     )
                     is SheetState.Crafting -> {
                         val craftState by craftingViewModel.uiState.collectAsState()
                         CraftSkillSheet(
-                            guildDailyButton  = dailyBanner,
-                            backStep          = sheetBackStep,
-                            skillName         = sheet.skillName,
-                            craftState        = craftState,
+                            guildDailyButton = dailyBanner,
+                            backStep = sheetBackStep,
+                            skillName = sheet.skillName,
+                            craftState = craftState,
                             craftingViewModel = craftingViewModel,
-                            hasActiveSession  = state.anySessionActive,
+                            hasActiveSession = state.anySessionActive,
                             sessionDurationMs = state.sessionDurationMs,
-                            context           = context,
-                            onDismiss         = {
+                            context = context,
+                            onDismiss = {
                                 viewModel.dismissSheet()
                                 craftingViewModel.dismissRecipe()
                             },
                         )
                     }
                     is SheetState.Thieving -> ThievingSheet(
-                        guildDailyButton  = dailyBanner,
-                        npcs              = sheet.npcs,
-                        thievingLevel     = state.skillLevels[Skills.THIEVING] ?: 1,
-                        currentXp         = state.skillXp[Skills.THIEVING] ?: 0L,
-                        isStarting        = state.startingSession,
-                        hasActiveSession  = state.anySessionActive,
-                        isQueueFull       = state.queueSize >= state.maxQueueSize,
+                        guildDailyButton = dailyBanner,
+                        npcs = sheet.npcs,
+                        thievingLevel = state.skillLevels[Skills.THIEVING] ?: 1,
+                        currentXp = state.skillXp[Skills.THIEVING] ?: 0L,
+                        isStarting = state.startingSession,
+                        hasActiveSession = state.anySessionActive,
+                        isQueueFull = state.queueSize >= state.maxQueueSize,
                         sessionDurationMs = state.sessionDurationMs,
-                        context           = context,
-                        activeQuests      = state.activeQuests,
-                        onSelect          = { npcKey -> viewModel.startThievingSession(npcKey) },
+                        context = context,
+                        activeQuests = state.activeQuests,
+                        onSelect = { npcKey -> viewModel.startThievingSession(npcKey) },
                     )
                     SheetState.Mercantile -> MercantileSheetContent(onDismiss = viewModel::dismissSheet)
                     SheetState.Farming   -> FarmingSheetContent(onDismiss = viewModel::dismissSheet)

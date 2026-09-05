@@ -1,4 +1,4 @@
-package com.fantasyidler.ui.screen
+package com.fantasyidler.ui.screen.skills
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
