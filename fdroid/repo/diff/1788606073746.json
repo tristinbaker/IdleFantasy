@@ -57,56 +57,6 @@
           "whatsNew": {
             "en-US": "• Fixed the Armory freezing the app for a few seconds when opened and on every filter tab change\n• Made 219 guild quest names translatable that were previously stuck in English\n• Fixed the bulk sell confirmation button accepting repeat taps during a large sale, causing extra \"sold for 0 gold\" notifications\n• Fixed first taps being swallowed after scrolling to the edge of a list (skill sheets, Mercantile, Prestige, and elsewhere)\n• Fixed the guild \"Go to Skill\" shortcut re-opening its skill menu "
           }
-        },
-        "ddc4668e8f21832b087adbe3133a9c94764a6d9c4b4c7a0e067c21f72acd7196": {
-          "added": 1788606035083,
-          "file": {
-            "name": "/com.tristinbaker.idlefantasy_149001.apk",
-            "sha256": "ddc4668e8f21832b087adbe3133a9c94764a6d9c4b4c7a0e067c21f72acd7196",
-            "size": 10399999
-          },
-          "manifest": {
-            "nativecode": [
-              "arm64-v8a",
-              "armeabi-v7a",
-              "x86",
-              "x86_64"
-            ],
-            "versionName": "1.14.10",
-            "versionCode": 149001,
-            "usesSdk": {
-              "minSdkVersion": 26,
-              "targetSdkVersion": 35
-            },
-            "signer": {
-              "sha256": [
-                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
-              ]
-            },
-            "usesPermission": [
-              {
-                "name": "android.permission.POST_NOTIFICATIONS"
-              },
-              {
-                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
-              },
-              {
-                "name": "android.permission.WAKE_LOCK"
-              },
-              {
-                "name": "android.permission.USE_EXACT_ALARM"
-              },
-              {
-                "name": "android.permission.SCHEDULE_EXACT_ALARM"
-              },
-              {
-                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-              }
-            ]
-          },
-          "whatsNew": {
-            "en-US": "• The daily bounty refresh no longer replaces a Tithe you have fully stocked up for: holding the asked amount now counts as in-progress work, so the donation can't vanish overnight\n• The Combat screen's Gear tab now has its own translatable label, separate from the Profile Gear tab, so languages can translate each context correctly\n• The live combat log and kill tally now track exactly which enemy is being fought as types change mid-minute: kill counts no longer jump between enemy types or go do"
-          }
         }
       }
     }

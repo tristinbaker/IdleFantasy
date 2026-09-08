@@ -14,7 +14,7 @@
       }
     },
     "address": "https://idlefantasy.tristinbaker.xyz/fdroid/repo",
-    "timestamp": 1788606073746,
+    "timestamp": 1788868745941,
     "categories": {
       "Games": {
         "name": {
@@ -31,7 +31,7 @@
           "Games"
         ],
         "issueTracker": "https://github.com/tristinbaker/IdleFantasy/issues",
-        "lastUpdated": 1788606035083,
+        "lastUpdated": 1788868706554,
         "license": "GPL-3.0-only",
         "sourceCode": "https://github.com/tristinbaker/IdleFantasy",
         "screenshots": {
@@ -140,6 +140,56 @@
         "preferredSigner": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
       },
       "versions": {
+        "83877ff9f65d160a274254ee812a21834d042912599ef8e4ac8fda246110e935": {
+          "added": 1788868706554,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_149002.apk",
+            "sha256": "83877ff9f65d160a274254ee812a21834d042912599ef8e4ac8fda246110e935",
+            "size": 10571347
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.14.11",
+            "versionCode": 149002,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fixed the Armory freezing the app for a few seconds when opened and on every filter tab change\n• Made 219 guild quest names translatable that were previously stuck in English\n• Fixed the bulk sell confirmation button accepting repeat taps during a large sale, causing extra \"sold for 0 gold\" notifications\n• Fixed first taps being swallowed after scrolling to the edge of a list (skill sheets, Mercantile, Prestige, and elsewhere)\n• Fixed the guild \"Go to Skill\" shortcut re-opening its skill menu "
+          }
+        },
         "ddc4668e8f21832b087adbe3133a9c94764a6d9c4b4c7a0e067c21f72acd7196": {
           "added": 1788606035083,
           "file": {
