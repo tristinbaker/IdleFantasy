@@ -4,7 +4,7 @@
     <string name="enemy_giant_rat_name">Riesenratte</string>
     <string name="enemy_goblin_name">Kobold</string>
     <string name="enemy_skeleton_name">Skelett</string>
-    <string name="enemy_zombie_name">Zombie</string> <!-- untranslated -->
+    <string name="enemy_zombie_name">Zombie</string>
     <string name="enemy_bandit_name">Räuber</string>
     <string name="enemy_guard_name">Wache</string>
     <string name="enemy_dark_wizard_name">Dunkler Zauberer</string>
@@ -23,7 +23,7 @@
     <string name="enemy_cow_name">Kuh</string>
     <string name="enemy_fire_giant_name">Feuerriese</string>
     <string name="enemy_ancient_guardian_name">Uralter Wächter</string>
-    <string name="enemy_lich_name">Lich</string> <!-- untranslated -->
+    <string name="enemy_lich_name">Lich</string>
     <string name="enemy_cave_troll_name">Höhlentroll</string>
     <string name="enemy_mine_spider_name">Minenspinne</string>
     <string name="enemy_rock_golem_name">Steingolem</string>
@@ -33,14 +33,14 @@
     <string name="enemy_drowned_cultist_name">ertrunkener Kultist</string>
     <string name="enemy_sea_spirit_name">Meeresgeist</string>
     <string name="enemy_cursed_fisherman_name">Verfluchter Fischer</string>
-    <string name="enemy_abyssal_leech_name">Abyssal Leech</string> <!-- untranslated -->
-    <string name="enemy_deep_horror_name">Deep Horror</string> <!-- untranslated -->
+    <string name="enemy_abyssal_leech_name">Abyssal Leech</string>
+    <string name="enemy_deep_horror_name">Deep Horror</string>
     <string name="enemy_void_guardian_name">Leerenwächter</string>
     <string name="enemy_corrupted_druid_name">Verdorbener Druide</string>
     <string name="enemy_vine_beast_name">Rankenbestie</string>
     <string name="enemy_forest_spirit_name">Waldgeist</string>
     <string name="enemy_shadow_beast_name">Schattenbestie</string>
-    <string name="enemy_twisted_treant_name">Twisted Treant</string> <!-- untranslated -->
+    <string name="enemy_twisted_treant_name">Twisted Treant</string>
     <string name="enemy_corrupted_mage_name">Verdorbener Magier</string>
     <string name="enemy_cutpurse_name">Taschendieb</string>
     <string name="enemy_arcane_construct_name">Uraltes Konstrukt</string>
@@ -50,13 +50,13 @@
     <string name="enemy_sun_wisp_name">Sonnenfaden</string>
     <string name="enemy_ember_hound_name">Gluthund</string>
     <string name="enemy_cinder_colossus_name">Aschekoloss</string>
-    <string name="enemy_will_o_wisp_name">Will-o\'-Wisp</string> <!-- untranslated -->
-    <string name="enemy_grave_ghoul_name">Grave Ghoul</string> <!-- untranslated -->
-    <string name="enemy_husk_horror_name">Husk Horror</string> <!-- untranslated -->
-    <string name="enemy_barrow_wight_name">Barrow Wight</string> <!-- untranslated -->
+    <string name="enemy_will_o_wisp_name">Will-o\'-Wisp</string>
+    <string name="enemy_grave_ghoul_name">Grave Ghoul</string>
+    <string name="enemy_husk_horror_name">Husk Horror</string>
+    <string name="enemy_barrow_wight_name">Barrow Wight</string>
     <string name="enemy_shade_stalker_name">Schattenjäger</string>
     <string name="enemy_bone_colossus_name">Knochenkoloss</string>
-    <string name="enemy_dread_dullahan_name">Dread Dullahan</string> <!-- untranslated -->
+    <string name="enemy_dread_dullahan_name">Dread Dullahan</string>
     <string name="enemy_void_stalker_name">Leerenjäger</string>
     <string name="enemy_rift_guardian_name">Spaltwächter</string>
     <string name="enemy_chaos_elemental_name">Chaoselementar</string>
@@ -108,14 +108,14 @@
     <string name="dungeon_abyssal_throne_desc">Der tiefste Punkt der bekannten Welt, regiert von Leerenlords seit Anbeginn der Zeit.</string>
 
     <!-- ===== Event dungeon names ===== -->
-    <string name="dungeon_sunspire_name">The Sunspire</string> <!-- untranslated -->
-    <string name="dungeon_sunspire_desc">A sun-tower ruin cracked open by the solstice, spilling heat spirits into the region. Part of the Sunspire Solstice event.</string> <!-- untranslated -->
-    <string name="dungeon_hollowfen_name">The Hollowfen</string> <!-- untranslated -->
-    <string name="dungeon_hollowfen_desc">A mist-drowned marsh of sunken barrows where the harvest dead walk. Part of the Gloomharvest event.</string> <!-- untranslated -->
+    <string name="dungeon_sunspire_name">The Sunspire</string>
+    <string name="dungeon_sunspire_desc">A sun-tower ruin cracked open by the solstice, spilling heat spirits into the region. Part of the Sunspire Solstice event.</string>
+    <string name="dungeon_hollowfen_name">The Hollowfen</string>
+    <string name="dungeon_hollowfen_desc">A mist-drowned marsh of sunken barrows where the harvest dead walk. Part of the Gloomharvest event.</string>
     <string name="dungeon_cloud_kingdom_name">Wolkenkönigreich</string>
     <string name="dungeon_cloud_kingdom_desc">Ein Reich über den Wolken, erreichbar durch das Erklimmen einer legendären Bohnenranke. Riesen durchstreifen gewaltige, schwebende Inseln, Himmelsschlangen gleiten zwischen den Wolkenbänken dahin, und Sturmkobolde knistern vor unruhiger Energie. Nur wenige haben es gesehen. Noch weniger sind zurückgekehrt, um davon zu berichten.</string>
-    <string name="dungeon_blightwood_name">The Blightwood</string> <!-- untranslated -->
-    <string name="dungeon_blightwood_desc">A rotting forest deep past the Hollowfen, where the Gloomharvest\'s strongest horrors gather. Part of the Gloomharvest event.</string> <!-- untranslated -->
+    <string name="dungeon_blightwood_name">The Blightwood</string>
+    <string name="dungeon_blightwood_desc">A rotting forest deep past the Hollowfen, where the Gloomharvest\'s strongest horrors gather. Part of the Gloomharvest event.</string>
 
     <!-- ===== Raid bosses ===== -->
     <string name="boss_king_black_dragon_name">König der Schwarzdrachen</string>
@@ -124,22 +124,22 @@
     <string name="boss_demon_lord_desc">Ein uralter Dämon aus dem Abgrund, Meister der dunklen Magie.</string>
     <string name="boss_kraken_name">Krake</string>
     <string name="boss_kraken_desc">Der Schrecken der Tiefsee, ein kolossales Seeungeheuer.</string>
-    <string name="boss_balrog_name">Gothic Ember</string> <!-- untranslated -->
+    <string name="boss_balrog_name">Gothic Ember</string>
     <string name="boss_balrog_desc">Ein uralter Dämon aus Flamme und Schatten, erwacht aus seinem Schlaf tief unter der Erde.</string>
     <string name="boss_void_sovereign_name" translatable="false">Der Gebieter der Leere</string>
     <string name="boss_void_sovereign_desc">Die ursprüngliche Entität hinter den Leerenrissen. Unermesslich alt, betrachtet sie sterbliche Herausforderer mit Verachtung.</string>
-    <string name="boss_sol_invictus_name">Sol Invictus, the Sundered Flame</string> <!-- untranslated -->
-    <string name="boss_sol_invictus_desc">A shard of the sun itself, torn loose from the Sunspire ruin. Only the boldest warriors dare approach.</string> <!-- untranslated -->
+    <string name="boss_sol_invictus_name">Sol Invictus, the Sundered Flame</string>
+    <string name="boss_sol_invictus_desc">A shard of the sun itself, torn loose from the Sunspire ruin. Only the boldest warriors dare approach.</string>
     <string name="boss_the_hollow_king_name">Der hohle König</string>
     <string name="boss_the_hollow_king_desc">Der kopflose Herrscher der Düsterernte, der aus dem „Blightwood“ herausreitet, um zu ernten, was die Lebenden gesät haben.</string>
     <string name="boss_the_vault_guardian_name">Der Tresorwächter</string>
     <string name="boss_the_vault_guardian_desc">Ein Koloss aus lebendigem Gold, erweckt durch das Entzünden der Ewigen Flamme. Nur Besucher des Großen Denkmals dürfen sich ihm stellen.</string>
     <string name="boss_obsidian_colossus_name">Obsidiankoloss</string>
     <string name="boss_obsidian_colossus_desc">Ein Berg voller Zorn. Kein einzelner Held hat ihm jemals mehr als eine Narbe zugefügt. Bringt eine Gruppe mit.</string>
-    <string name="boss_brood_empress_name">Brood Empress</string> <!-- untranslated -->
-    <string name="boss_brood_empress_desc">Mother of the swarm between the stars. Her brood has ended armies; yours had better be paid well.</string> <!-- untranslated -->
-    <string name="boss_the_world_ender_name">The World Ender</string> <!-- untranslated -->
-    <string name="boss_the_world_ender_desc">When it stirs, kingdoms write their wills. Four names on the contract or none return.</string> <!-- untranslated -->
+    <string name="boss_brood_empress_name">Brood Empress</string>
+    <string name="boss_brood_empress_desc">Mother of the swarm between the stars. Her brood has ended armies; yours had better be paid well.</string>
+    <string name="boss_the_world_ender_name">The World Ender</string>
+    <string name="boss_the_world_ender_desc">When it stirs, kingdoms write their wills. Four names on the contract or none return.</string>
 
     <!-- ===== Expedition-unlocked dungeon names ===== -->
     <string name="dungeon_collapsed_mine_name">Eingestürzte Mine</string>
