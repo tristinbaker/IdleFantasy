@@ -66,8 +66,8 @@
     <string name="label_bosses">Endgegner</string>
     <string name="label_by_location">Nach Ort</string>
     <string name="bestiary_not_encountered">Noch nicht angetroffen</string>
-    <string name="bestiary_filter_all">All</string> <!-- untranslated -->
-    <string name="bestiary_filter_missing">Missing</string> <!-- untranslated -->
+    <string name="bestiary_filter_all">All</string>
+    <string name="bestiary_filter_missing">Missing</string>
     <string name="bestiary_qty_header">Menge</string>
     <string name="bestiary_chance_header">Chance</string>
     <string name="label_completion_progress">%1$d / %2$d %3$s</string>
@@ -636,10 +636,10 @@
     <string name="profile_food_dungeon">Essen (Verlies)</string>
     <string name="profile_no_food">Keine gekochten Lebensmittel im Inventar</string>
     <string name="profile_food_threshold">Beginnt zu essen bei</string>
-    <string name="profile_food_order">Eating order</string> <!-- untranslated -->
-    <string name="food_order_descending">Highest Heal Value First</string> <!-- untranslated -->
-    <string name="food_order_ascending">Lowest Heal Value First</string> <!-- untranslated -->
-    <string name="food_order_least_quantity">Least Quantity First</string> <!-- untranslated -->
+    <string name="profile_food_order">Eating order</string>
+    <string name="food_order_descending">Highest Heal Value First</string>
+    <string name="food_order_ascending">Lowest Heal Value First</string>
+    <string name="food_order_least_quantity">Least Quantity First</string>
     <string name="profile_combat_style">Kampfstil</string>
     <!-- Translator note: %1$d = quantity, %2$d = heal value -->
     <string name="profile_food_desc">×%1$d  •  heilt %2$d LP</string>
@@ -715,9 +715,9 @@
     <string name="shop_keep_one_toggle">Eins von jedem Gegenstand behalten</string>
     <string name="shop_search_hint">Gegenstand suchen</string>
     <string name="shop_filter_all">Alles</string>
-    <string name="shop_order_default">Default</string> <!-- untranslated -->
-    <string name="shop_order_highest_amount">Quantity</string> <!-- untranslated -->
-    <string name="shop_order_highest_price">Price</string> <!-- untranslated -->
+    <string name="shop_order_default">Default</string>
+    <string name="shop_order_highest_amount">Quantity</string>
+    <string name="shop_order_highest_price">Price</string>
     <string name="shop_sell_blocked_equipped">%1$s ist ausgerüstet. Vor dem Verkauf muss es abgelegt werden.</string>
     <string name="shop_sell_blocked_reserved">%1$s ist für Auftrag in Warteschlange reserviert.</string>
     <string name="shop_sell_blocked_keep_one">Den letzten %1$s behalten (Eins von jedem Gegenstand behalten ist aktiv).</string>
@@ -1182,7 +1182,7 @@
     <string name="house_error_max_rooms">Dein Haus hat die maximale Anzahl an Zimmern erreicht.</string>
     <string name="house_error_max_size">Dieser Raum kann nicht größer werden.</string>
     <string name="house_stored_count">Gelagert: %1$d</string>
-    <string name="house_level_short">Lv %1$d</string> <!-- untranslated -->
+    <string name="house_level_short">Lv %1$d</string>
     <string name="house_store_hint">Gelagerte Möbel bleiben unbeschädigt und können später wieder aufgestellt werden.</string>
     <string name="house_store_item">Einlagern</string>
     <string name="house_room_n">Raum %1$d</string>
@@ -1389,7 +1389,7 @@
     <!-- Prestige achievements -->
     <string name="achievement_prestige_first_name">Erster Neustart</string>
     <string name="achievement_prestige_first_desc">Erhöht das Prestige einer beliebigen Fähigkeit zum ersten Mal</string>
-    <string name="achievement_prestige_node_first_name">Branching Out</string> <!-- untranslated -->
+    <string name="achievement_prestige_node_first_name">Branching Out</string>
     <string name="achievement_prestige_node_first_desc">Kaufe deine erste Verbesserung in einem Prestige Baum</string>
     <string name="achievement_prestige_path_complete_name">Am Ende des Pfades</string>
     <string name="achievement_prestige_path_complete_desc">Kaufe jede Verbesserung in einem Prestige Pfad</string>
@@ -1695,7 +1695,7 @@
     <string name="armory_how_to_obtain">Wie zu erhalten</string>
     <string name="armory_no_stats">Keine Statusboni.</string>
     <string name="armory_filter_all">Alle</string>
-    <string name="armory_filter_missing">Missing</string> <!-- untranslated -->
+    <string name="armory_filter_missing">Missing</string>
     <string name="armory_filter_weapons">Waffen</string>
     <string name="armory_filter_armor">Rüstung</string>
     <string name="armory_filter_accessories">Schmuck</string>
@@ -1797,7 +1797,7 @@
     <string name="bonus_combined_xp">EP gesamt</string>
     <string name="bonus_yield">+%1$d%% Ausbeute</string>
     <string name="bonus_boost">+%1$d%% Verstärkung</string>
-    <string name="bonus_agility_prestige_detail">From prestige: %1$dm sessions at level %2$d become %3$dm</string> <!-- untranslated -->
+    <string name="bonus_agility_prestige_detail">From prestige: %1$dm sessions at level %2$d become %3$dm</string>
     <string name="bonus_coin_return">+%1$d%% Münzrückgabe</string>
     <string name="bonus_tower">Turm</string>
     <string name="bonus_builder_discount_detail" formatted="false">0.5% günstigere Gebäude-Verbesserungskosten pro Level</string>
@@ -1869,7 +1869,7 @@
 
     <!-- ===== Infinite Tower ===== -->
     <!-- Raids and mercenaries -->
-    <string name="raid_section_title">Raids</string> <!-- untranslated -->
+    <string name="raid_section_title">Raids</string>
     <string name="raid_section_desc">Gegner die kein Held alleine bezwingen kann. Heuere zuerst weitere Söldner an.</string>
     <string name="raid_party_status">Angeheuerte Söldner: %1$d/%2$d</string>
     <string name="raid_party_title">Raid-Gruppe</string>
@@ -2009,7 +2009,7 @@
     <string name="seasonal_event_gloomharvest_2026_banner">Teilgenommen an der Düsterernte 2026</string>
     <string name="seasonal_minigame_lantern_lights_name">Laternenlichter</string>
     <string name="seasonal_minigame_sequence_hint">Merkt euch die Laternen und tippt sie in der richtigen Reihenfolge an. Erreicht Runde %1$d von %2$d für einen Token!</string>
-    <string name="seasonal_minigame_sequence_success">Well remembered! +1 token.</string> <!-- untranslated -->
+    <string name="seasonal_minigame_sequence_success">Well remembered! +1 token.</string>
     <string name="seasonal_minigame_sequence_round">Runde %1$d / %2$d</string>
     <string name="seasonal_minigame_watch">Gut aufpassen!</string>
     <string name="seasonal_minigame_your_turn">Ihr seid dran!</string>
@@ -2124,7 +2124,7 @@
 
     <string name="settings_credit_characters_title">Charakter Sprites</string>
     <string name="settings_credit_characters_subtitle">Kunst von Pixylac</string>
-    <string name="settings_credit_bosses_title">Boss Sprites</string> <!-- untranslated -->
+    <string name="settings_credit_bosses_title">Boss Sprites</string>
     <string name="settings_credit_bosses_subtitle">Kunst von Meg</string>
     <string name="settings_credit_house_title">Inneneinrichtung</string>
 
@@ -2153,7 +2153,7 @@
     <string name="pet_baby_balrog_desc">Ein kleiner Dämon aus Feuer und Schatten, der deine Magie verstärkt.</string>
     <string name="pet_void_wisp_name">Leerengeist</string>
     <string name="pet_void_wisp_desc">Ein Fragment der Essenz des Leerenbotschafters, an jene gebunden, die seinen Meister besiegten. Vermehrt Kampf-Erfahrung.</string>
-    <string name="pet_graceling_sprite_name">Graceling Sprite</string> <!-- untranslated -->
+    <string name="pet_graceling_sprite_name">Graceling Sprite</string>
     <string name="pet_graceling_sprite_desc">Eine flinke, aus tausenden in Stille gelaufenen Runden geborene Fee. Leitet deine Füße mit unheimlicher Gnade.</string>
     <string name="pet_shadow_fox_name">Schattenfuchs</string>
     <string name="pet_shadow_fox_desc">Ein listiger Fuchs, aus den Schatten unzähliger Taschendiebstähle materialisiert.</string>
@@ -2161,7 +2161,7 @@
     <string name="pet_ember_moth_desc">So lange zu den Flammen hingezogen, dass sie selber eine wurde. Ihre Flügel schimmern in der verbleibenden Hitze.</string>
     <string name="pet_herb_wisp_name">Kräutergeist</string>
     <string name="pet_herb_wisp_desc">Ein aus den Dämpfen tausender gebrauter Tränke geborener Geist. Seine Anwesenheit schärft deinen Verstand.</string>
-    <string name="pet_rune_sprite_name">Rune Sprite</string> <!-- untranslated -->
+    <string name="pet_rune_sprite_name">Rune Sprite</string>
     <string name="pet_rune_sprite_desc">Ein kristallieisertes Fragment magischer Energie, das dem Runenherstellungsaltar entfliehen konnte.</string>
     <string name="pet_gem_golem_name">Edelsteingolem</string>
     <string name="pet_gem_golem_desc">Eine kleine, aus Edelsteinscherben und Polierstaub geformte Kreatur. Erhält die Schärfe deiner Werkzeuge.</string>
@@ -2171,13 +2171,13 @@
     <string name="pet_forge_imp_desc">Ein boshafter, in der Schmiede lebender Kobold. Seine hitzegehärtete Haut ist unempfindlich gegen Verbrennungen.</string>
     <string name="pet_coin_drake_name">Münzdrache</string>
     <string name="pet_coin_drake_desc">Ein Drachenküken, das mit einer Diät aus Goldmünzen aufgezogen wurde. Es hat ein unschlagbares Gespür für Profit.</string>
-    <string name="pet_timber_sprite_name">Timber Sprite</string> <!-- untranslated -->
+    <string name="pet_timber_sprite_name">Timber Sprite</string>
     <string name="pet_timber_sprite_desc">Ein Holzgeist, der aus Sägemehl und Holz erwacht ist. Er weiß genau, wo jeder Nagel hingehört.</string>
     <string name="pet_juggling_imp_name">Jonglierender Kobold</string>
     <string name="pet_juggling_imp_desc" formatted="false">A verspielter Kobold, der deine Sorgen wegjongliert. Er erhöht jedes Fähigkeiten-EP um 3%.</string>
     <string name="pet_tower_pet_name">Steinwächter</string>
     <string name="pet_tower_pet_desc">Ein uralter Steingolem, der die Geheimnisse des Turms bewacht. Erhöht Kampf-EP.</string>
-    <string name="pet_solstice_sprite_name">Solstice Sprite</string> <!-- untranslated -->
+    <string name="pet_solstice_sprite_name">Solstice Sprite</string>
     <string name="pet_solstice_sprite_desc">Ein kleiner Glutgeist aus dem Sonnenwende-Sommerturm-Event, der dein Können im Kampf verbessert.</string>
     <string name="pet_lantern_wisp_name">Laternengeist</string>
     <string name="pet_lantern_wisp_desc">Eine grinsende Kürbislaterne, die aus der Krone des Höhlenkönigs entkommen ist und dir nun auf dem Weg in die Schlacht leuchtet.</string>
@@ -2259,7 +2259,7 @@
     <!-- Translator note: %1$d = current skill level -->
     <string name="prestige_requires_99">Erreiche Level 99 um einen Prestige durchzuführen (aktuell %1$d).</string>
     <string name="prestige_maxed_cap">Maximales Prestige Level erreicht. Jeder Punkt, den man in dieser Fähigkeit erlangen kann ist deiner.</string>
-    <string name="skills_prestige_max">★×%1$d (Max)</string> <!-- untranslated -->
+    <string name="skills_prestige_max">★×%1$d (Max)</string>
     <!-- Translator note: %1$s = skill name, %2$d = points awarded -->
     <string name="prestige_confirm_message_points">Dein %1$s Level wird auf 1 zurückgesetzt und du erhältst %2$d Prestige Punkte, welche du in dem Fähigkeiten-Baum ausgeben kannst. Ausrüstung, für die du nicht mehr die Bedingungen erfüllst, wird ausgetauscht, und nicht eingeforderter %1$s Fortschritt täglicher Herausforderungen wird zurückgesetzt. Zusätzlich bekommst du 2x %1$s EP für 48 Stunden, um deinen Fortschritt zu beschleunigen.</string>
     <string name="prestige_respec">Punkte zurücksetzen</string>
@@ -2267,25 +2267,25 @@
     <string name="prestige_respec_available_in">Du kannst deine Punkte erst in %1$s zurücksetzen</string>
     <string name="prestige_respec_confirm_title">Prestige Punkte zurücksetzen?</string>
     <!-- Translator note: %1$s = skill name -->
-    <string name="prestige_respec_confirm_message">All purchased %1$s upgrades will be refunded for their full point cost. You can reset this skill\'s points again in 24 hours.</string> <!-- untranslated -->
+    <string name="prestige_respec_confirm_message">All purchased %1$s upgrades will be refunded for their full point cost. You can reset this skill\'s points again in 24 hours.</string>
     <!-- Translator note: %1$s = skill name -->
-    <string name="prestige_respec_done">%1$s prestige points refunded.</string> <!-- untranslated -->
-    <string name="prestige_respec_on_cooldown">Points were reset recently. Try again later.</string> <!-- untranslated -->
+    <string name="prestige_respec_done">%1$s prestige points refunded.</string>
+    <string name="prestige_respec_on_cooldown">Points were reset recently. Try again later.</string>
     <!-- Translator note: %1$d = node cost in points -->
     <string name="prestige_node_cost">Kosten: %1$d Punkte</string>
     <string name="prestige_node_owned">Gekauft</string>
-    <string name="prestige_path_auto_label">Earned by prestiging</string> <!-- untranslated -->
-    <string name="prestige_node_auto_earned">Earned at prestige %1$d.</string> <!-- untranslated -->
-    <string name="prestige_node_auto_pending">Unlocks automatically at prestige %1$d.</string> <!-- untranslated -->
-    <string name="prestige_button_xp_only">Prestige now for the next XP tier</string> <!-- untranslated -->
-    <string name="prestige_confirm_message_xp_only">Your %1$s level will reset to 1 and you\'ll unlock the next automatic XP tier. Equipment that no longer meets its requirements will be swapped out, and unclaimed %1$s daily quest progress resets. You\'ll also gain 2x %1$s XP for 48 hours to speed the climb back up.</string> <!-- untranslated -->
+    <string name="prestige_path_auto_label">Earned by prestiging</string>
+    <string name="prestige_node_auto_earned">Earned at prestige %1$d.</string>
+    <string name="prestige_node_auto_pending">Unlocks automatically at prestige %1$d.</string>
+    <string name="prestige_button_xp_only">Prestige now for the next XP tier</string>
+    <string name="prestige_confirm_message_xp_only">Your %1$s level will reset to 1 and you\'ll unlock the next automatic XP tier. Equipment that no longer meets its requirements will be swapped out, and unclaimed %1$s daily quest progress resets. You\'ll also gain 2x %1$s XP for 48 hours to speed the climb back up.</string>
     <!-- Translator note: %1$s = list of race names -->
     <string name="prestige_node_race_only">Nur %1$s</string>
     <!-- Translator note: %1$s = list of race names -->
     <string name="prestige_node_race_locked_desc">Nur %1$s Charaktere können diese Verbesserung erlernen.</string>
-    <string name="prestige_node_prereq_locked">Requires the previous tier in this path.</string> <!-- untranslated -->
+    <string name="prestige_node_prereq_locked">Requires the previous tier in this path.</string>
     <string name="prestige_node_hidden">Schalte zuerst das vorherige Upgrade frei.</string>
-    <string name="character_race_edit_hint">Race changes are made in the appearance editor.</string> <!-- untranslated -->
+    <string name="character_race_edit_hint">Race changes are made in the appearance editor.</string>
     <string name="prestige_node_not_enough">Nicht genug Punkte</string>
     <!-- Translator note: %1$s = node name -->
     <string name="prestige_node_purchased">%1$s gekauft!</string>
@@ -2296,37 +2296,37 @@
     <string name="prestige_effect_xp_pct">+%1$d%% EP in dieser Fähigkeiten.</string>
     <string name="prestige_effect_yield_pct">+%1$d%% Gegenstände von den Aktivitäten dieser Fähigkeit.</string>
     <!-- Translator note: %1$s = yield percent per interval (may be fractional) -->
-    <string name="prestige_effect_flow_rate">Flow-state: +%1$s%% yield per interval of continuous activity, up to +100%%.</string> <!-- untranslated -->
+    <string name="prestige_effect_flow_rate">Flow-state: +%1$s%% yield per interval of continuous activity, up to +100%%.</string>
     <!-- Translator note: %1$d = minutes removed from the flow interval -->
-    <string name="prestige_effect_flow_interval_reduction">Flow-state interval shortened by %1$d minutes.</string> <!-- untranslated -->
+    <string name="prestige_effect_flow_interval_reduction">Flow-state interval shortened by %1$d minutes.</string>
     <string name="prestige_effect_combat_stat_flat">+%1$d effektive Stufen im Kampf.</string>
     <!-- Translator note: %1$s = minutes (may be fractional) -->
     <string name="prestige_effect_session_floor_min">Aktivitäten sind auf Stufe 99 um %1$s Minuten kürzer.</string>
     <string name="prestige_effect_cape_scaling">Die Umhang-Boni für diese Fertigkeit werden mit ×%1$d multipliziert.</string>
-    <string name="prestige_effect_bonus_roll_pct">+%1$d%% gem find chance while mining.</string> <!-- untranslated -->
+    <string name="prestige_effect_bonus_roll_pct">+%1$d%% gem find chance while mining.</string>
     <string name="prestige_effect_coin_pct">+%1$d%% Münzen durch diese Fertigkeit.</string>
     <string name="prestige_effect_crop_rotation_pct">+%1$d%% Ertrag bei Anbau einer anderen Pflanze als bei der letzten Ernte.</string>
     <string name="prestige_effect_crop_rotation_always">Der Fruchtwechselbonus gilt für jede Kultur, ein Fruchtwechsel ist nicht erforderlich.</string>
     <string name="prestige_effect_tool_eff_pct">Werkzeugeffizienz +%1$d%%.</string>
     <string name="prestige_effect_per_level_bonus">+%1$s Werkzeug- oder Kampfbonus pro Stufe dieser Fertigkeit.</string>
-    <string name="prestige_effect_success_chance_pct">Pickpocket success chance +%1$d%%.</string> <!-- untranslated -->
+    <string name="prestige_effect_success_chance_pct">Pickpocket success chance +%1$d%%.</string>
     <string name="prestige_effect_reclaim_pct">+%1$d%% Chance, verbrauchte Pfeile und Runen nach dem Kampf zurückzubekommen.</string>
     <string name="prestige_effect_heal_pct">Nahrung heilt im Kampf um +%1$d%% mehr.</string>
     <string name="prestige_effect_death_keep_pct">Behalte bei einer Niederlage zusätzlich %1$d%% an EP und Beute.</string>
     <string name="prestige_effect_queue_slot">+%1$d Warteschlangenplätze.</string>
-    <string name="prestige_effect_pet_boost_pct">Pet boosts for this skill are %1$d%% stronger.</string> <!-- untranslated -->
+    <string name="prestige_effect_pet_boost_pct">Pet boosts for this skill are %1$d%% stronger.</string>
     <string name="prestige_effect_blessing_duration_pct">Kirchliche Segen halten %1$d%% länger an.</string>
     <string name="prestige_effect_blessing_cost_pct">Kirchliche Segen kosten %1$d%% weniger Knochen.</string>
-    <string name="prestige_effect_potion_bonus_flat">Combat potions grant +%1$d more to their stats.</string> <!-- untranslated -->
+    <string name="prestige_effect_potion_bonus_flat">Combat potions grant +%1$d more to their stats.</string>
     <string name="prestige_effect_input_save_pct">%1$d%% der Materialien werden erstattet.</string>
-    <string name="prestige_effect_builder_discount_pct">Town building upgrades cost %1$d%% less.</string> <!-- untranslated -->
-    <string name="prestige_effect_sell_price_pct">Shop sell prices +%1$d%%.</string> <!-- untranslated -->
+    <string name="prestige_effect_builder_discount_pct">Town building upgrades cost %1$d%% less.</string>
+    <string name="prestige_effect_sell_price_pct">Shop sell prices +%1$d%%.</string>
     <string name="prestige_effect_slayer_points_pct">Trophäenjagd-Punkte +%1$d%%.</string>
-    <string name="prestige_effect_double_hit_pct">%1$d%% chance to strike a second melee hit.</string> <!-- untranslated -->
-    <string name="prestige_effect_second_chance">Missed melee attacks are rerolled once.</string> <!-- untranslated -->
+    <string name="prestige_effect_double_hit_pct">%1$d%% chance to strike a second melee hit.</string>
+    <string name="prestige_effect_second_chance">Missed melee attacks are rerolled once.</string>
     <string name="prestige_effect_foretell_slots">+%1$d Plätze in Vorhersage-Liste vom Trophäenjäger.</string>
-    <string name="prestige_effect_slayer_multi_task">Dungeon kills also count toward matching foretold tasks.</string> <!-- untranslated -->
-    <string name="prestige_effect_unlock_recipe">Unlocks the %1$s fletching recipe.</string> <!-- untranslated -->
+    <string name="prestige_effect_slayer_multi_task">Dungeon kills also count toward matching foretold tasks.</string>
+    <string name="prestige_effect_unlock_recipe">Unlocks the %1$s fletching recipe.</string>
 
     <!-- New distinctive base path names (variety pass) -->
     <string name="prestige_path_fishing_rod">Stabile Angelrute</string>
@@ -2351,7 +2351,7 @@
     <!-- Prestige path names (generic) -->
     <string name="prestige_path_xp">EP Verstärkung</string>
     <string name="prestige_path_yield">Ertrag</string>
-    <string name="prestige_path_flow">Flow-state</string> <!-- untranslated -->
+    <string name="prestige_path_flow">Flow-state</string>
     <string name="prestige_path_endurance">Ausdauer</string>
     <string name="prestige_path_gem">Edelsteinjäger</string>
     <string name="prestige_path_rotation">Fruchtfolge</string>
@@ -2382,8 +2382,8 @@
     <string name="prestige_path_construction_race_halfling">Gemütlicher Baumeister</string>
     <string name="prestige_path_fishing_race_gnome">Schlaue Köder</string>
     <string name="prestige_path_fletching_race_gnome">Berührung des Bastlers</string>
-    <string name="prestige_path_firemaking_race_gnome">Spark Wright</string> <!-- untranslated -->
-    <string name="prestige_path_construction_race_gnome">Gadget Works</string> <!-- untranslated -->
+    <string name="prestige_path_firemaking_race_gnome">Spark Wright</string>
+    <string name="prestige_path_construction_race_gnome">Gadget Works</string>
     <string name="prestige_path_prayer_race_gnome">Gunst des Betrügers</string>
     <string name="prestige_path_hitpoints_race_orc">Dicke Haut</string>
 
@@ -2395,14 +2395,14 @@
     <string name="race_change_pay_token">Rassenwechsel-Token verwenden (%1$d)</string>
     <string name="race_change_pay_coins">10 000 000 Münzen zahlen</string>
     <string name="race_change_cannot_afford">Um die Rasse zu wechseln, benötigst du ein Rassenwechsel-Token (seltener Endgegner-Drop) oder 10 000 000 Münzen.</string>
-    <string name="race_change_ironman_locked">Ironman characters cannot change their race.</string> <!-- untranslated -->
-    <string name="race_change_cooldown_wait">You can change race again in %1$s.</string> <!-- untranslated -->
-    <string name="race_change_ironman_once">As an ironman, this is your one and only race change. Afterwards your race is locked forever.</string> <!-- untranslated -->
-    <string name="ironman_race_permanent_note">Ironman characters cannot change their race later. Choose carefully!</string> <!-- untranslated -->
+    <string name="race_change_ironman_locked">Ironman characters cannot change their race.</string>
+    <string name="race_change_cooldown_wait">You can change race again in %1$s.</string>
+    <string name="race_change_ironman_once">As an ironman, this is your one and only race change. Afterwards your race is locked forever.</string>
+    <string name="ironman_race_permanent_note">Ironman characters cannot change their race later. Choose carefully!</string>
     <!-- Translator note: %1$s = comma-separated list of skill names -->
     <string name="race_proficiency_label">Rassen-Fähigkeitsbäume: %1$s</string>
-    <string name="race_proficiency_human">Racial bonus: an exclusive XP mastery tier in every skill</string> <!-- untranslated -->
-    <string name="race_change_confirm_message">Your race grants race-locked prestige upgrades. Changing race refunds any points spent in other races\' branches, and you can only change race once every 24 hours.</string> <!-- untranslated -->
+    <string name="race_proficiency_human">Racial bonus: an exclusive XP mastery tier in every skill</string>
+    <string name="race_change_confirm_message">Your race grants race-locked prestige upgrades. Changing race refunds any points spent in other races\' branches, and you can only change race once every 24 hours.</string>
     <!-- Heirloom items (raid boss rare drops that level up with use) -->
     <string name="item_heirloom_pickaxe_name">Erbstück-Spitzhacke</string>
     <string name="item_heirloom_pickaxe_desc">Eine Familien-Spitzhacke, die seit Generationen weitergegeben wird. Sie erinnert sich an jedes Erz, das ihre Besitzer jemals abgebaut haben.</string>
@@ -2422,8 +2422,8 @@
     <string name="item_heirloom_frying_pan_desc">Eine bewährte Pfanne, die in einer Familie von Köchen von Generation zu Generation weitergegeben wurde. Mit jeder Mahlzeit gewinnt sie an Würze.</string>
     <string name="item_heirloom_lockpick_name">Erbstück-Dietrich</string>
     <string name="item_heirloom_lockpick_desc">Ein Dietrich, der schon unzählige Schlösser leise geöffnet hat. Mit jedem Auftrag wird er noch raffinierter.</string>
-    <string name="item_midas_band_name">Midas Band</string> <!-- untranslated -->
-    <string name="item_midas_band_desc">A sliver of the Vault Guardian\'s living gold. It drinks in a little of every battle its wearer survives.</string> <!-- untranslated -->
+    <string name="item_midas_band_name">Midas Band</string>
+    <string name="item_midas_band_desc">A sliver of the Vault Guardian\'s living gold. It drinks in a little of every battle its wearer survives.</string>
     <string name="item_heirloom_blade_name">Erbstück-Klinge</string>
     <string name="item_heirloom_blade_desc">Eine uralte Klinge, die mit jedem Kampf, den ihre Linie übersteht, ein wenig mehr zum Leben erwacht.</string>
     <string name="item_heirloom_greathammer_name">Erbstück-Kriegshammer</string>
