@@ -215,6 +215,8 @@
 <li><code>game_data.py</code> - A set of helper functions which retrieve data from the game such as json files and game strings</li>
 <li><code>site.py</code> - The code responsible for generating the Idle Fantasy wiki website based upon the generated Markdown files.</li>
 <li><code>page_hierarchy.py</code> - A simple file defining the page hierarchy structure.</li>
+<li><code>validation.py</code> - Holds the logic behind <code>check_wiki_validity()</code> (the <code>validity</code> command): checks that every page icon exists, every page has a working generator, and every internal page link points somewhere real.</li>
+<li><code>wiki_logs.py</code> - A small shared logger (<code>LOGGER</code>) used across the build to emit de-duplicated warnings, such as missing translation strings.</li>
 </ul>
 <h2 id="contributing-process">Contributing process</h2>
 <p>For small contributions (e.g. fixing small mistakes, etc), you can simply fork the repository, make the relevant change and then create a pull request.</p>
