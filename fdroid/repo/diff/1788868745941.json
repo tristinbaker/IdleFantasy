@@ -57,56 +57,6 @@
           "whatsNew": {
             "en-US": "• Fix: the app now removes unreadable oversized sessions written by old versions (e.g. burying thousands of bones before 1.8.6) on startup, ending the permanent crash loop on opening\n• Fix: XP previews on the Home screen queue and worker cards now update live when XP boosts, blessings, or prestige bonuses change, instead of showing the value frozen when the session was queued\n• Fix: the queue end time now includes the remaining runs of an active multi-run dungeon or boss session, instead of coun"
           }
-        },
-        "83877ff9f65d160a274254ee812a21834d042912599ef8e4ac8fda246110e935": {
-          "added": 1788868706554,
-          "file": {
-            "name": "/com.tristinbaker.idlefantasy_149002.apk",
-            "sha256": "83877ff9f65d160a274254ee812a21834d042912599ef8e4ac8fda246110e935",
-            "size": 10571347
-          },
-          "manifest": {
-            "nativecode": [
-              "arm64-v8a",
-              "armeabi-v7a",
-              "x86",
-              "x86_64"
-            ],
-            "versionName": "1.14.11",
-            "versionCode": 149002,
-            "usesSdk": {
-              "minSdkVersion": 26,
-              "targetSdkVersion": 35
-            },
-            "signer": {
-              "sha256": [
-                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
-              ]
-            },
-            "usesPermission": [
-              {
-                "name": "android.permission.POST_NOTIFICATIONS"
-              },
-              {
-                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
-              },
-              {
-                "name": "android.permission.WAKE_LOCK"
-              },
-              {
-                "name": "android.permission.USE_EXACT_ALARM"
-              },
-              {
-                "name": "android.permission.SCHEDULE_EXACT_ALARM"
-              },
-              {
-                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-              }
-            ]
-          },
-          "whatsNew": {
-            "en-US": "• Fixed the Armory freezing the app for a few seconds when opened and on every filter tab change\n• Made 219 guild quest names translatable that were previously stuck in English\n• Fixed the bulk sell confirmation button accepting repeat taps during a large sale, causing extra \"sold for 0 gold\" notifications\n• Fixed first taps being swallowed after scrolling to the edge of a list (skill sheets, Mercantile, Prestige, and elsewhere)\n• Fixed the guild \"Go to Skill\" shortcut re-opening its skill menu "
-          }
         }
       }
     }

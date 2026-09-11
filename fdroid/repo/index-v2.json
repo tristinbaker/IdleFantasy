@@ -14,7 +14,7 @@
       }
     },
     "address": "https://idlefantasy.tristinbaker.xyz/fdroid/repo",
-    "timestamp": 1788868745941,
+    "timestamp": 1789134659238,
     "categories": {
       "Games": {
         "name": {
@@ -31,7 +31,7 @@
           "Games"
         ],
         "issueTracker": "https://github.com/tristinbaker/IdleFantasy/issues",
-        "lastUpdated": 1788868706554,
+        "lastUpdated": 1789134619678,
         "license": "GPL-3.0-only",
         "sourceCode": "https://github.com/tristinbaker/IdleFantasy",
         "screenshots": {
@@ -140,6 +140,56 @@
         "preferredSigner": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
       },
       "versions": {
+        "377fc65b1e9d44b167f0aee57f192c16b37a15e3cd389b8898163b43a0525ca7": {
+          "added": 1789134619678,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_149003.apk",
+            "sha256": "377fc65b1e9d44b167f0aee57f192c16b37a15e3cd389b8898163b43a0525ca7",
+            "size": 10616187
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.14.12",
+            "versionCode": 149003,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Fix: the app now removes unreadable oversized sessions written by old versions (e.g. burying thousands of bones before 1.8.6) on startup, ending the permanent crash loop on opening\n• Fix: XP previews on the Home screen queue and worker cards now update live when XP boosts, blessings, or prestige bonuses change, instead of showing the value frozen when the session was queued\n• Fix: the queue end time now includes the remaining runs of an active multi-run dungeon or boss session, instead of coun"
+          }
+        },
         "83877ff9f65d160a274254ee812a21834d042912599ef8e4ac8fda246110e935": {
           "added": 1788868706554,
           "file": {
