@@ -94,7 +94,7 @@
     <string name="equip_slot_weapon_str">Waffe (Stärke)</string>
     <string name="equip_slot_weapon_ranged">Waffe (Fernkampf)</string>
     <string name="equip_slot_weapon_magic">Waffe (Magie)</string>
-    <string name="equip_slot_weapon">Weapons</string> <!-- untranslated -->
+    <string name="equip_slot_weapon">Weapons</string>
     <string name="equip_slot_head">Kopf</string>
     <string name="equip_slot_body">Rumpf</string>
     <string name="equip_slot_legs">Beine</string>
