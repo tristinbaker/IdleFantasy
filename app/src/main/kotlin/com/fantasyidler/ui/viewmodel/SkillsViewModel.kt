@@ -1543,3 +1543,6 @@ fun xpToNextLevel(xp: Long): Long = XpTable.xpToNextLevel(xp)
 
 /** Total XP required for the next level (absolute threshold). */
 fun nextLevelThreshold(xp: Long): Long = XpTable.nextLevelThreshold(xp)
+
+/** XP still needed to reach level 99 (the level cap), or 0 if already there. */
+fun xpToMaxLevel(xp: Long): Long = (XpTable.xpForLevel(99) - xp).coerceAtLeast(0L)

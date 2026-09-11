@@ -95,7 +95,10 @@ import com.fantasyidler.ui.theme.ScaledSheetContent
 import com.fantasyidler.ui.viewmodel.CombatViewModel
 import com.fantasyidler.ui.viewmodel.InventoryViewModel
 import com.fantasyidler.ui.viewmodel.combatLevelFrom
+import com.fantasyidler.ui.viewmodel.nextLevelThreshold
 import com.fantasyidler.ui.viewmodel.xpProgressFraction
+import com.fantasyidler.ui.viewmodel.xpToMaxLevel
+import com.fantasyidler.ui.viewmodel.xpToNextLevel
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatXp
 
@@ -975,35 +978,28 @@ private fun CombatSkillRow(
         }
         Spacer(Modifier.width(12.dp))
         Column(Modifier.weight(1f)) {
-            Row(modifier = Modifier.fillMaxWidth()) {
-                // FlowRow + weight(1f): long localised bonus labels wrap to the next line
-                // instead of being starved into a one-letter-per-line sliver that also
-                // pushed the XP value out of view (issue #1765).
-                FlowRow(
-                    modifier              = Modifier.weight(1f),
-                    horizontalArrangement = Arrangement.spacedBy(6.dp),
-                ) {
-                    Text(name, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium)
-                    if (gearBonus > 0) {
-                        Text(
-                            text     = stringResource(R.string.combat_gear_bonus, gearBonus),
-                            style    = MaterialTheme.typography.labelSmall,
-                            color    = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.align(Alignment.CenterVertically),
-                        )
-                    }
-                    if (prestigeBonus > 0) {
-                        Text(
-                            text     = stringResource(R.string.combat_prestige_bonus, prestigeBonus),
-                            style    = MaterialTheme.typography.labelSmall,
-                            color    = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.align(Alignment.CenterVertically),
-                        )
-                    }
-                }
-                Spacer(Modifier.width(8.dp))
+            Row(
+                modifier              = Modifier.fillMaxWidth(),
+                verticalAlignment     = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+            ) {
                 Text(
-                    text  = "${xp.formatXp()} ${stringResource(R.string.label_xp)}",
+                    text       = name,
+                    style      = MaterialTheme.typography.bodyLarge,
+                    fontWeight = FontWeight.Medium,
+                    modifier   = Modifier.weight(1f, fill = false),
+                )
+                Spacer(Modifier.width(8.dp))
+                val remainingToCap = xpToMaxLevel(xp)
+                val xpText = when {
+                    remainingToCap in 1 until 100_000L ->
+                        stringResource(R.string.xp_to_99, remainingToCap.formatXp())
+                    xpToNextLevel(xp) > 0L ->
+                        "${xp.formatXp()} / ${nextLevelThreshold(xp).formatXp()} XP"
+                    else -> "${xp.formatXp()} ${stringResource(R.string.label_xp)}"
+                }
+                Text(
+                    text  = xpText,
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
@@ -1020,8 +1016,29 @@ private fun CombatSkillRow(
                 color            = MaterialTheme.colorScheme.primary,
                 trackColor       = MaterialTheme.colorScheme.surfaceVariant,
             )
+            if (gearBonus > 0 || prestigeBonus > 0) {
+                Spacer(Modifier.height(6.dp))
+                FlowRow(
+                    modifier              = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(6.dp),
+                ) {
+                    if (gearBonus > 0) {
+                        Text(
+                            text  = stringResource(R.string.combat_gear_bonus, gearBonus),
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.primary,
+                        )
+                    }
+                    if (prestigeBonus > 0) {
+                        Text(
+                            text  = stringResource(R.string.combat_prestige_bonus, prestigeBonus),
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.primary,
+                        )
+                    }
+                }
+            }
             if (prestigeLevel > 0 || (onOpenPrestige != null && level >= 99)) {
-                Spacer(Modifier.height(4.dp))
                 Row(
                     modifier              = Modifier.fillMaxWidth(),
                     verticalAlignment     = Alignment.CenterVertically,
