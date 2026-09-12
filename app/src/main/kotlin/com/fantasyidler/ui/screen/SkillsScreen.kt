@@ -103,6 +103,7 @@ import com.fantasyidler.ui.viewmodel.SkillsUiState
 import com.fantasyidler.ui.viewmodel.SkillsViewModel
 import com.fantasyidler.ui.viewmodel.xpProgressFraction
 import com.fantasyidler.ui.viewmodel.nextLevelThreshold
+import com.fantasyidler.ui.viewmodel.xpToMaxLevel
 import com.fantasyidler.ui.viewmodel.xpToNextLevel
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.toTitleCase
@@ -1010,10 +1011,14 @@ internal fun SkillRow(
                             color = MaterialTheme.colorScheme.primary,
                         )
                     } else {
-                        val xpText = if (xpToNextLevel(xp) > 0L)
-                            "${xp.formatXp()} / ${nextLevelThreshold(xp).formatXp()} XP"
-                        else
-                            "${xp.formatXp()} XP"
+                        val remainingToCap = xpToMaxLevel(xp)
+                        val xpText = when {
+                            remainingToCap in 1 until 100_000L ->
+                                stringResource(R.string.xp_to_99, remainingToCap.formatXp())
+                            xpToNextLevel(xp) > 0L ->
+                                "${xp.formatXp()} / ${nextLevelThreshold(xp).formatXp()} XP"
+                            else -> "${xp.formatXp()} XP"
+                        }
                         Text(
                             text  = xpText,
                             style = MaterialTheme.typography.bodySmall,
