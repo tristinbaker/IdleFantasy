@@ -90,14 +90,12 @@ class BackupScheduler @Inject constructor(
             Log.w(TAG, "Backup reschedule failed", e)
         }
         if (flags.backupFolderUri.isEmpty()) return false
-        // Per-character file names: each save slot keeps its own backup, so switching
+        // Per-character file names: each save slot keeps its own backups, so switching
         // characters no longer overwrites another character's auto backup.
         val activeSlot = globalStateRepo.getActiveSaveSlot()
         val slotPrefix = autoBackupSlotPrefix(activeSlot)
-        val finalName  = autoBackupFileName(activeSlot, flags.characterName)
-        val tempName   = finalName + TEMP_SUFFIX
+        val backupCount = flags.backupCount.coerceAtLeast(1)
         var tempUri: Uri? = null
-        var oldDocsDeleted = false
         var failureMsg = ""
         val ok = try {
             val sessions = buildList {
@@ -112,6 +110,19 @@ class BackupScheduler @Inject constructor(
             val treeUri   = Uri.parse(flags.backupFolderUri)
             val treeDocId = DocumentsContract.getTreeDocumentId(treeUri)
             val cr        = context.contentResolver
+            val existingDocs = childDocuments(cr, treeUri, treeDocId)
+                .filter { (_, name) ->
+                    name == slotPrefix || name.startsWith("${slotPrefix}_") ||
+                        name == "$slotPrefix.json" || name == slotPrefix + TEMP_SUFFIX ||
+                        name == "$slotPrefix$TEMP_SUFFIX.json"
+                }
+            val generation = maxOf(
+                System.currentTimeMillis(),
+                (existingDocs.maxOfOrNull { backupGeneration(it.second) } ?: 0L) + 1L,
+            )
+            val baseName = autoBackupFileName(activeSlot, flags.characterName)
+            val finalName = "${baseName}_at_$generation"
+            val tempName = finalName + TEMP_SUFFIX
 
             val created = DocumentsContract.createDocument(
                 cr,
@@ -138,25 +149,29 @@ class BackupScheduler @Inject constructor(
                 throw IllegalStateException("temp document bytes differ from exported save")
             }
 
-            val currentTempId = DocumentsContract.getDocumentId(created)
-            val doomedIds = childDocuments(cr, treeUri, treeDocId)
-                .filter { (docId, name) ->
-                    docId != currentTempId && name.startsWith(slotPrefix)
-                }
-                .map { it.first }
-            oldDocsDeleted = true
-            doomedIds.forEach { docId ->
-                DocumentsContract.deleteDocument(cr, DocumentsContract.buildDocumentUriUsingTree(treeUri, docId))
-            }
-
-            DocumentsContract.renameDocument(cr, created, finalName)
+            val renamed = DocumentsContract.renameDocument(cr, created, finalName)
                 ?: throw IllegalStateException("backup provider failed to swap temp document to final name")
             tempUri = null
 
+            val renamedId = DocumentsContract.getDocumentId(renamed)
             val swappedIn = childDocuments(cr, treeUri, treeDocId)
-                .any { it.second.startsWith(finalName) && !it.second.endsWith(TEMP_SUFFIX) }
+                .any { (id, name) -> id == renamedId && (name == finalName || name == "$finalName.json") }
             if (!swappedIn) {
                 throw IllegalStateException("renamed backup document not found after swap")
+            }
+
+            // Only prune older backups after the new file is verified and finalized.
+            val retainedIds = existingDocs
+                .filterNot { it.second.removeSuffix(".json").endsWith(TEMP_SUFFIX) }
+                .sortedByDescending { backupGeneration(it.second) }
+                .take(backupCount - 1)
+                .map { it.first }
+                .toSet()
+            val doomedIds = existingDocs
+                .filterNot { it.first in retainedIds }
+                .map { it.first }
+            doomedIds.forEach { docId ->
+                DocumentsContract.deleteDocument(cr, DocumentsContract.buildDocumentUriUsingTree(treeUri, docId))
             }
 
             true
@@ -166,7 +181,7 @@ class BackupScheduler @Inject constructor(
             false
         }
 
-        if (!ok && !oldDocsDeleted) {
+        if (!ok) {
             tempUri?.let { temp ->
                 try { DocumentsContract.deleteDocument(context.contentResolver, temp) } catch (_: Exception) {}
             }
@@ -230,7 +245,11 @@ class BackupScheduler @Inject constructor(
         private fun sanitizeCharacterName(name: String): String =
             name.filter { it.isLetterOrDigit() }.take(24)
 
-        /** Slot prefix scoping backup cleanup: one backup per slot, other slots' files untouched. */
+        private fun backupGeneration(name: String): Long =
+            name.removeSuffix(".json").removeSuffix(TEMP_SUFFIX)
+                .substringAfterLast("_at_", "").toLongOrNull() ?: 0L
+
+        /** Slot prefix scoping backup cleanup, leaving other slots' files untouched. */
         internal fun autoBackupSlotPrefix(slot: Int) = "${AUTO_BASE}_$slot"
 
         /** Per-character backup name, e.g. fantasyidler_auto_2_IronDragon (name part omitted when blank). */

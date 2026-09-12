@@ -483,6 +483,7 @@
     <string name="settings_backup_no_folder">Tidak ada folder yang dipilih</string>
     <string name="settings_backup_choose">Memilih</string>
     <string name="settings_backup_frequency">Frekuensi</string>
+    <string name="settings_backup_count">Number of backups</string> <!-- untranslated -->
     <string name="settings_backup_off">Mati</string>
     <string name="settings_backup_hourly">Per jam</string>
     <string name="settings_backup_daily">Harian</string>

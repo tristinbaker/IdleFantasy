@@ -490,6 +490,7 @@
     <string name="settings_backup_no_folder">Nenhuma pasta selecionada</string>
     <string name="settings_backup_choose">Escolher</string>
     <string name="settings_backup_frequency">Frequência</string>
+    <string name="settings_backup_count">Number of backups</string> <!-- untranslated -->
     <string name="settings_backup_off">Desativado</string>
     <string name="settings_backup_hourly">A cada hora</string>
     <string name="settings_backup_daily">Diariamente</string>

@@ -490,6 +490,7 @@
     <string name="settings_backup_no_folder">No folder selected</string> <!-- untranslated -->
     <string name="settings_backup_choose">Choose</string> <!-- untranslated -->
     <string name="settings_backup_frequency">Frequency</string> <!-- untranslated -->
+    <string name="settings_backup_count">Number of backups</string> <!-- untranslated -->
     <string name="settings_backup_off">Off</string> <!-- untranslated -->
     <string name="settings_backup_hourly">Hourly</string> <!-- untranslated -->
     <string name="settings_backup_daily">Daily</string> <!-- untranslated -->

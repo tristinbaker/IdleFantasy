@@ -490,6 +490,7 @@
     <string name="settings_backup_no_folder">Nessuna cartella selezionata</string>
     <string name="settings_backup_choose">Seleziona</string>
     <string name="settings_backup_frequency">Frequenza</string>
+    <string name="settings_backup_count">Number of backups</string> <!-- untranslated -->
     <string name="settings_backup_off">Nessuno</string>
     <string name="settings_backup_hourly">Orario</string>
     <string name="settings_backup_daily">Giornaliero</string>

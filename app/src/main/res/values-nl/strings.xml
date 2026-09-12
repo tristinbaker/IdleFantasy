@@ -490,6 +490,7 @@
     <string name="settings_backup_no_folder">Geen map geselecteerd</string>
     <string name="settings_backup_choose">Kies</string>
     <string name="settings_backup_frequency">Frequentie</string>
+    <string name="settings_backup_count">Number of backups</string> <!-- untranslated -->
     <string name="settings_backup_off">Uit</string>
     <string name="settings_backup_hourly">Uurlijks</string>
     <string name="settings_backup_daily">Dagelijks</string>

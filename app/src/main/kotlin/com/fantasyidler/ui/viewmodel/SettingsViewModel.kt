@@ -106,6 +106,14 @@ class SettingsViewModel @Inject constructor(
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), "")
 
+    val backupCount: StateFlow<Int> = playerRepo.playerFlow
+        .map { player ->
+            if (player == null) return@map 1
+            try { json.decodeFromString<PlayerFlags>(player.flags).backupCount }
+            catch (_: Exception) { 1 }
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 1)
+
     val backupStatus: StateFlow<BackupStatus> = playerRepo.playerFlow
         .map { player ->
             if (player == null) return@map BackupStatus()
@@ -354,6 +362,14 @@ class SettingsViewModel @Inject constructor(
             val flags = playerRepo.getFlags()
             playerRepo.updateFlags(flags.copy(backupFrequency = frequency))
             backupScheduler.schedule(frequency)
+        }
+    }
+
+    fun setBackupCount(count: Int) {
+        viewModelScope.launch {
+            playerRepo.updateFlagsAtomically {
+                it.copy(backupCount = count.coerceAtLeast(1))
+            }
         }
     }
 

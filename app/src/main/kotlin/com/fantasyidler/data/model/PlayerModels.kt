@@ -145,6 +145,7 @@ data class PlayerFlags(
     @SerialName("backup_folder_uri") val backupFolderUri: String = "",
     /** Automatic backup frequency: ""|"hourly"|"daily"|"weekly". */
     @SerialName("backup_frequency") val backupFrequency: String = "",
+    @SerialName("backup_count") val backupCount: Int = 1,
     @SerialName("last_backup_at") val lastBackupAt: Long = 0L,
     @SerialName("last_backup_ok") val lastBackupOk: Boolean = true,
     @SerialName("last_backup_error") val lastBackupError: String = "",

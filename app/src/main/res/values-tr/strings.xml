@@ -490,6 +490,7 @@
     <string name="settings_backup_no_folder">Klasör seçilmedi</string>
     <string name="settings_backup_choose">Seç</string>
     <string name="settings_backup_frequency">Yedekleme Sıklığı</string>
+    <string name="settings_backup_count">Number of backups</string> <!-- untranslated -->
     <string name="settings_backup_off">Kapalı</string>
     <string name="settings_backup_hourly">Saatlik</string>
     <string name="settings_backup_daily">Günlük</string>

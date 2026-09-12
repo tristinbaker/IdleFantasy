@@ -506,6 +506,7 @@
     <string name="settings_backup_no_folder">Папка не выбрана</string>
     <string name="settings_backup_choose">Выбрать</string>
     <string name="settings_backup_frequency">Частота</string>
+    <string name="settings_backup_count">Number of backups</string> <!-- untranslated -->
     <string name="settings_backup_off">Выкл</string>
     <string name="settings_backup_hourly">Каждый час</string>
     <string name="settings_backup_daily">Ежедневно</string>

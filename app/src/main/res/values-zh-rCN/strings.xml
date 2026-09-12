@@ -490,6 +490,7 @@
     <string name="settings_backup_no_folder">未选择文件夹</string>
     <string name="settings_backup_choose">选择</string>
     <string name="settings_backup_frequency">频率</string>
+    <string name="settings_backup_count">Number of backups</string> <!-- untranslated -->
     <string name="settings_backup_off">关闭</string>
     <string name="settings_backup_hourly">每小时</string>
     <string name="settings_backup_daily">每天</string>

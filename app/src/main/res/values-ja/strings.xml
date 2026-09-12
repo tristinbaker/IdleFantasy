@@ -490,6 +490,7 @@
     <string name="settings_backup_no_folder">フォルダが選択されていません</string>
     <string name="settings_backup_choose">選択</string>
     <string name="settings_backup_frequency">頻度</string>
+    <string name="settings_backup_count">Number of backups</string> <!-- untranslated -->
     <string name="settings_backup_off">オフ</string>
     <string name="settings_backup_hourly">1時間ごと</string>
     <string name="settings_backup_daily">毎日</string>

@@ -502,6 +502,7 @@
     <string name="settings_backup_no_folder">Nebyla vybrána žádná složka</string>
     <string name="settings_backup_choose">Vybrat</string>
     <string name="settings_backup_frequency">Četnost</string>
+    <string name="settings_backup_count">Number of backups</string> <!-- untranslated -->
     <string name="settings_backup_off">Vypnuto</string>
     <string name="settings_backup_hourly">Každou hodinu</string>
     <string name="settings_backup_daily">Denně</string>

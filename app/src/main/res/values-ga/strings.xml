@@ -518,6 +518,7 @@
     <string name="settings_backup_no_folder">Níl Aon Fillteán Roghnaithe</string>
     <string name="settings_backup_choose">Roghnaigh</string>
     <string name="settings_backup_frequency">Minicíocht</string>
+    <string name="settings_backup_count">Number of backups</string> <!-- untranslated -->
     <string name="settings_backup_off">As</string>
     <string name="settings_backup_hourly">Gach Uair An Chloig</string>
     <string name="settings_backup_daily">Laethúil</string>
