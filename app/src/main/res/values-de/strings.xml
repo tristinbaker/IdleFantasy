@@ -66,8 +66,8 @@
     <string name="label_bosses">Endgegner</string>
     <string name="label_by_location">Nach Ort</string>
     <string name="bestiary_not_encountered">Noch nicht angetroffen</string>
-    <string name="bestiary_filter_all">All</string> <!-- untranslated -->
-    <string name="bestiary_filter_missing">Missing</string> <!-- untranslated -->
+    <string name="bestiary_filter_all">Alle</string>
+    <string name="bestiary_filter_missing">Fehlend</string>
     <string name="bestiary_qty_header">Menge</string>
     <string name="bestiary_chance_header">Chance</string>
     <string name="label_completion_progress">%1$d / %2$d %3$s</string>
@@ -716,8 +716,8 @@
     <string name="shop_search_hint">Gegenstand suchen</string>
     <string name="shop_filter_all">Alles</string>
     <string name="shop_order_default">Default</string> <!-- untranslated -->
-    <string name="shop_order_highest_amount">Quantity</string> <!-- untranslated -->
-    <string name="shop_order_highest_price">Price</string> <!-- untranslated -->
+    <string name="shop_order_highest_amount">Anzahl</string>
+    <string name="shop_order_highest_price">Preis</string>
     <string name="shop_sell_blocked_equipped">%1$s ist ausgerüstet. Vor dem Verkauf muss es abgelegt werden.</string>
     <string name="shop_sell_blocked_reserved">%1$s ist für Auftrag in Warteschlange reserviert.</string>
     <string name="shop_sell_blocked_keep_one">Den letzten %1$s behalten (Eins von jedem Gegenstand behalten ist aktiv).</string>
