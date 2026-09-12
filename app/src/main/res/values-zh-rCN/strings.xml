@@ -679,8 +679,8 @@
     <!-- Translator note: %1$d = fishing level -->
     <string name="skills_fishing_desc">等级 %1$d  •  根据等级捕获鱼类</string>
     <!-- Translator note: %1$d = prayer level -->
-    <string name="skills_prayer_desc">等级 %1$d  •  掩埋骸骨或撒播骨灰获取祈祷经验</string>
-    <string name="skills_no_bones">背包中没有骸骨或骨灰</string>
+    <string name="skills_prayer_desc">等级 %1$d  •  掩埋骸骨或撒播灰烬获取祈祷经验</string>
+    <string name="skills_no_bones">背包中没有骸骨或灰烬</string>
     <string name="skills_xp_each">每个 %1$d 经验值</string>
     <!-- Translator note: %1$d = XP per bone, %2$d = quantity available -->
     <string name="skills_bone_selected">每块 %1$d 经验  •  可用 %2$d 块</string>
@@ -706,7 +706,7 @@
     <!-- Translator note: %1$d = owned quantity -->
     <string name="crafting_owned">拥有：%1$d</string>
     <string name="crafting_owned_detail">背包中拥有：%1$d</string>
-    <string name="firemaking_ashes_owned">拥有骨灰：%1$d</string>
+    <string name="firemaking_ashes_owned">拥有灰烬：%1$d</string>
 
 
     <!-- ===== ShopScreen ===== -->
