@@ -57,7 +57,7 @@
     <string name="label_hitpoints">Zdraví</string>
     <string name="label_inventory">Inventář</string>
     <string name="label_equipment">Výbava</string>
-    <string name="label_combat_equipment">Gear</string> <!-- untranslated -->
+    <string name="label_combat_equipment">Vybavení</string>
     <string name="label_pets">Mazlíčci</string>
     <string name="label_achievements">Úspěchy</string>
     <string name="label_locations">Místa</string>
@@ -66,8 +66,8 @@
     <string name="label_bosses">Bossové</string>
     <string name="label_by_location">Podle místa</string>
     <string name="bestiary_not_encountered">Dosud nepotkán</string>
-    <string name="bestiary_filter_all">All</string> <!-- untranslated -->
-    <string name="bestiary_filter_missing">Missing</string> <!-- untranslated -->
+    <string name="bestiary_filter_all">Vše</string>
+    <string name="bestiary_filter_missing">Chybějící</string>
     <string name="bestiary_qty_header">Množství</string>
     <string name="bestiary_chance_header">Šance</string>
     <string name="label_completion_progress">%1$d / %2$d %3$s</string>
@@ -130,7 +130,7 @@
     <string name="label_ready_to_harvest">Připraveno ke sklizni</string>
     <string name="label_empty">Prazdný</string>
     <string name="inventory_sort_quantity">Počet</string>
-    <string name="inventory_sort_az">A-Z</string> <!-- untranslated -->
+    <string name="inventory_sort_az">A-Z</string>
     <string name="inventory_cat_weapons">Zbraně</string>
     <string name="inventory_cat_armour">Brnění</string>
     <string name="inventory_cat_tools">Nástoje</string>
@@ -164,7 +164,7 @@
     <string name="label_active">Aktivní</string>
     <string name="label_inactive">Neaktivní</string>
     <string name="label_boost">Posílení</string>
-    <string name="label_xp_boost">Posílení XP</string>
+    <string name="label_xp_boost">Bonus XP</string>
     <string name="label_prestige_xp_boost">Bonus XP po povýšení</string>
     <string name="label_weapon">Zbraň</string>
     <string name="label_armour">Zbroj</string>
@@ -449,7 +449,7 @@
     <string name="theme_editor_used_for">Použito pro: %1$s</string>
     <string name="theme_editor_contrast_header">Upozornění na nedostatečný kontrast</string>
     <string name="theme_editor_low_contrast">\"%1$s\" je na \"%2$s\" špatně čitelné (%3$s; vyžadováno: 4,5).</string>
-    <string name="theme_editor_add_roles">Add colour roles</string> <!-- untranslated -->
+    <string name="theme_editor_add_roles">Přidat barevné role</string>
     <string name="theme_editor_hex_label">Hex barva (AARRGGBB)</string>
     <string name="theme_editor_copy_hex">Kopírovat HEX barvu</string>
     <string name="theme_editor_paste_hex">Vložit HEX barvu</string>
@@ -490,9 +490,9 @@
     <string name="settings_source_code">Zdrojový kód</string>
 
     <string name="settings_source_open">Otevřít</string>
-    <string name="settings_wiki">Wiki</string> <!-- untranslated -->
+    <string name="settings_wiki">Wiki</string>
 
-    <string name="settings_discord">Discord</string> <!-- untranslated -->
+    <string name="settings_discord">Discord</string>
 
     <string name="settings_exported_ok">Hra uložena</string>
     <string name="settings_imported_ok">Hra úspěšně načtena</string>
@@ -519,7 +519,7 @@
     <string name="home_town_title">Město</string>
     <string name="home_town_desc">Navštiv obchod, krčmu, cech, kostel, městskou výstavbu, popravčího a karneval</string>
     <string name="guild_not_unlocked">Ještě nebylo odemčeno</string>
-    <string name="guild_dailies_done_today">Dailies done today</string> <!-- untranslated -->
+    <string name="guild_dailies_done_today">Dnešní denní úkoly splněny</string>
     <string name="guild_dailies_remaining_today">%1$d dnes zbývá</string>
     <string name="guild_do_dailies_hint">Plň denní úkoly a postoupíš do další hodnosti</string>
     <string name="guild_quest_gate_blocked">Plň úkoly a postoupíš do další hodnosti</string>
@@ -528,105 +528,108 @@
     <string name="guild_progress_dailies_only">Pro postup splň %1$d/%2$d denních zakázek.</string>
     <string name="home_died_message">Zemřel jsi a ztratil jsi většinu získaného.</string>
     <string name="home_xp_boost_was_active">Byl aktivní 2× bonus XP pro všechny dovednosti.</string>
-    <string name="home_xp_boost_active">2× All skills XP - %1$s</string> <!-- untranslated -->
-    <string name="home_prestige_xp_boost_active">2× %1$s XP - %2$s</string> <!-- untranslated -->
-    <string name="boosts_show_more">+%1$d more boosts (tap to show)</string> <!-- untranslated -->
-    <string name="boosts_show_less">Show less</string> <!-- untranslated -->
-    <string name="home_loot">Loot</string> <!-- untranslated -->
-    <string name="home_food_consumed">Food Consumed</string> <!-- untranslated -->
-    <string name="home_bones_buried">Bones buried</string> <!-- untranslated -->
-    <string name="home_whats_new">What\'s New</string> <!-- untranslated -->
-    <string name="home_got_it">Got it</string> <!-- untranslated -->
+    <string name="home_xp_boost_active">2× XP pro všechny dovednosti – %1$s</string>
+    <string name="home_prestige_xp_boost_active">2× %1$s XP - %2$s</string>
+    <string name="boosts_show_more">Další bonusy: +%1$d (klepnutím zobrazíš)</string>
+    <string name="boosts_show_less">Zobrazit méně</string>
+    <string name="home_loot">Kořist</string>
+    <string name="home_food_consumed">Snědeno</string>
+    <string name="home_bones_buried">Kosti pohřbeny</string>
+    <string name="home_whats_new">Co je nového</string>
+    <string name="home_got_it">Beru na vědomí</string>
     <!-- Translator note: %1$s = player name or "Adventurer" -->
-    <string name="home_adventurer">Adventurer</string> <!-- untranslated -->
+    <string name="home_adventurer">Dobrodruh</string>
     <!-- Translator note: %1$d = current queue size, %2$d = max queue size (base 3, +1 per Queue Master tier) -->
-    <string name="home_up_next">Up Next (%1$d/%2$d)</string> <!-- untranslated -->
+    <string name="home_up_next">Následující (%1$d/%2$d)</string>
     <!-- Translator note: %1$s = formatted duration string (e.g. "2h 15m") -->
-    <string name="home_queue_ends_in">Queue ends in %1$s</string> <!-- untranslated -->
+    <string name="home_queue_ends_in">Fronta končí za %1$s</string>
     <!-- Translator note: %1$d = item quantity (e.g. ×40) -->
 
-    <string name="queue_item_qty_with_output">×%1$d → %2$d items</string> <!-- untranslated -->
+    <string name="queue_item_qty_with_output">×%1$d → %2$d položek</string>
     <!-- Translator note: %1$d = number of sessions to collect -->
     <plurals name="plural_collect_sessions">
-        <item quantity="one">Collect %1$d Session\'s Rewards</item>
-        <item quantity="other">Collect %1$d Sessions\' Rewards</item>
-    </plurals> <!-- untranslated -->
+        <item quantity="one">Vyzvednout odměny za %1$d aktivitu</item>
+        <item quantity="other">Vyzvednout odměny za %1$d aktivit</item>
+        <item quantity="zero">Vyzvednout odměny za %1$d aktivit</item>
+        <item quantity="two">Vyzvednout odměny za %1$d aktivity</item>
+        <item quantity="few">Vyzvednout odměny za %1$d aktivity</item>
+    </plurals>
 
     <!-- ===== CombatScreen ===== -->
-    <string name="combat_level_label">Combat Lvl</string> <!-- untranslated -->
-    <string name="combat_log_label">Combat Log</string> <!-- untranslated -->
-    <string name="combat_solo_bosses">Solo Bosses</string> <!-- untranslated -->
+    <string name="combat_level_label">Bojová úroveň</string>
+    <string name="combat_log_label">Průběh boje</string>
+    <string name="combat_solo_bosses">Samostatní bossové</string>
     <!-- Translator note: %1$d = number of completed dungeon runs -->
-    <string name="combat_dungeon_runs">%1$d runs</string> <!-- untranslated -->
+    <string name="combat_dungeon_runs">%1$d opakování</string>
     <!-- Translator note: %1$d = kills, %2$d = food consumed -->
-    <string name="combat_last_run">Last: %1$d kills, %2$d food</string> <!-- untranslated -->
+    <string name="combat_last_run">Poslední: %1$d zabito, %2$d jídla</string>
     <!-- Translator note: %1$d = kills -->
-    <string name="combat_last_run_died">Last: died (%1$d kills)</string> <!-- untranslated -->
-    <string name="combat_atk">ATK</string> <!-- untranslated -->
-    <string name="combat_str">STR</string> <!-- untranslated -->
-    <string name="combat_def">DEF</string> <!-- untranslated -->
+    <string name="combat_last_run_died">Poslední: zemřel (%1$d zabití)</string>
+    <string name="combat_atk">ÚTOK</string>
+    <string name="combat_str">SÍLA</string>
+    <string name="combat_def">OBRANA</string>
     <!-- Translator note: %1$d = HP healed -->
-    <string name="combat_heals_hp">heals %1$d HP</string> <!-- untranslated -->
-    <string name="combat_defeated_so_far">defeated so far.</string> <!-- untranslated -->
-    <string name="combat_eaten_so_far">eaten so far.</string> <!-- untranslated -->
-    <string name="combat_fighting">Fighting…</string> <!-- untranslated -->
-    <string name="combat_log_you_hit">You hit</string> <!-- untranslated -->
-    <string name="combat_log_hit_you">hit you</string> <!-- untranslated -->
-    <string name="combat_log_missed">missed</string> <!-- untranslated -->
-    <string name="combat_log_you_missed">You missed</string> <!-- untranslated -->
-    <string name="combat_log_kill">☠ %1$s defeated</string> <!-- untranslated -->
-    <string name="combat_log_player_hit">→ You hit %1$s: %2$d dmg</string> <!-- untranslated -->
-    <string name="combat_log_player_double_hit">→ Double hit! You strike %1$s twice: %2$d dmg</string> <!-- untranslated -->
-    <string name="combat_log_player_miss">→ You missed %1$s</string> <!-- untranslated -->
-    <string name="combat_log_enemy_hit">← %1$s hit you: %2$d dmg</string> <!-- untranslated -->
-    <string name="combat_log_enemy_miss">← %1$s missed</string> <!-- untranslated -->
-    <string name="combat_log_ally_hit">→ Your mercenaries hit %1$s: %2$d dmg</string> <!-- untranslated -->
-    <string name="combat_log_heal">✚ You eat: +%1$d HP</string> <!-- untranslated -->
-    <string name="combat_eat_threshold_warning">Risky: at a low threshold a hard hit can drop you to 0 HP before your character eats.</string> <!-- untranslated -->
-    <string name="combat_rec_level">Recommended combat level</string> <!-- untranslated -->
-    <string name="combat_your_level">Your combat level</string> <!-- untranslated -->
-    <string name="combat_no_strength_bonus">None (no strength bonus)</string> <!-- untranslated -->
-    <string name="combat_best_arrow">Best arrow</string> <!-- untranslated -->
-    <string name="combat_arrow_auto">Auto (best available)</string> <!-- untranslated -->
-    <string name="combat_label_arrow">Arrow</string> <!-- untranslated -->
-    <string name="combat_arrow_ranged_str">+%1$d Ranged Strength</string> <!-- untranslated -->
-    <string name="combat_select_loadout">Select Loadout</string> <!-- untranslated -->
-    <string name="combat_enemies">Enemies</string> <!-- untranslated -->
-    <string name="combat_no_spells">No spells available at your magic level.</string> <!-- untranslated -->
-    <string name="combat_only_castable">Only Castable</string> <!-- untranslated -->
-    <string name="combat_max_hit">max hit</string> <!-- untranslated -->
-    <string name="combat_you_have_runes">(you have %1$d %2$s)</string> <!-- untranslated -->
-    <string name="combat_infinite_runes">(infinite %1$s)</string> <!-- untranslated -->
-    <string name="combat_spell_locked">Requires Magic level %1$d</string> <!-- untranslated -->
-    <string name="combat_spell_level_met">Magic level %1$d</string> <!-- untranslated -->
-    <string name="combat_no_potion">No Potion</string> <!-- untranslated -->
-    <string name="combat_req_level">Required combat level</string> <!-- untranslated -->
-    <string name="combat_duration">Duration</string> <!-- untranslated -->
+    <string name="combat_heals_hp">léčí %1$d životů</string>
+    <string name="combat_defeated_so_far">dosud poraženo.</string>
+    <string name="combat_eaten_so_far">dosud snědeno.</string>
+    <string name="combat_fighting">Bojuje…</string>
+    <string name="combat_log_you_hit">Zasáhl jsi</string>
+    <string name="combat_log_hit_you">tě zasáhl</string>
+    <string name="combat_log_missed">minul</string>
+    <string name="combat_log_you_missed">Minul jsi</string>
+    <string name="combat_log_kill">☠ %1$s poražen</string>
+    <string name="combat_log_player_hit">→ Zasáhl jsi %1$s: %2$d HP</string>
+    <string name="combat_log_player_double_hit">→ Dvojitý zásah! Zasáhl jsi %1$s dvakrát: %2$d HP</string>
+    <string name="combat_log_player_miss">→ Minul jsi %1$s</string>
+    <string name="combat_log_enemy_hit">← %1$s tě zasáhl: %2$d HP</string>
+    <string name="combat_log_enemy_miss">← %1$s minul</string>
+    <string name="combat_log_ally_hit">→ Tvoji žoldnéři zasáhli %1$s: %2$d HP.</string>
+    <string name="combat_log_heal">✚ Snědl jsi: +%1$d HP</string>
+    <string name="combat_eat_threshold_warning">Riziko: při nízké hranici může silný zásah snížit tvé životy na 0 dřív, než se postava nají.</string>
+    <string name="combat_rec_level">Doporučená úroveň boje</string>
+    <string name="combat_your_level">Tvá úroveň boje</string>
+    <string name="combat_no_strength_bonus">Žádný (bez bonusu k síle)</string>
+    <string name="combat_best_arrow">Nejlepší šíp</string>
+    <string name="combat_arrow_auto">Auto (nejlepší dostupné)</string>
+    <string name="combat_label_arrow">Šíp</string>
+    <string name="combat_arrow_ranged_str">+%1$d síly střelby</string>
+    <string name="combat_select_loadout">Vybrat výbavu</string>
+    <string name="combat_enemies">Nepřátelé</string>
+    <string name="combat_no_spells">Na tvé úrovni magie nejsou k dispozici žádná kouzla.</string>
+    <string name="combat_only_castable">Jen seslatelná</string>
+    <string name="combat_max_hit">maximální zásah</string>
+    <string name="combat_you_have_runes">(máš %1$d %2$s)</string>
+    <string name="combat_infinite_runes">(nekonečno %1$s)</string>
+    <string name="combat_spell_locked">Vyžaduje alespoň %1$d. úroveň magie.</string>
+    <string name="combat_spell_level_met">Úroveň magie %1$d</string>
+    <string name="combat_no_potion">Žádný lektvar</string>
+    <string name="combat_req_level">Potřebná úroveň boje</string>
+    <string name="combat_duration">Trvání</string>
     <!-- Translator note: %1$d = minutes -->
-    <string name="combat_duration_min">%1$d min</string> <!-- untranslated -->
-    <string name="combat_fight_count_label">Number of Fights</string> <!-- untranslated -->
+    <string name="combat_duration_min">%1$d min</string>
+    <string name="combat_fight_count_label">Počet soubojů</string>
     <!-- Translator note: %1$d = number of queued repeat fights, e.g. "×100 fights" -->
-    <string name="combat_fight_count_suffix">×%1$d fights</string> <!-- untranslated -->
+    <string name="combat_fight_count_suffix">×%1$d soubojů</string>
     <!-- Translator note: %1$d = current fight number, %2$d = total fights requested, e.g. "Fight 34/100" -->
-    <string name="combat_fight_progress">Fight %1$d/%2$d</string> <!-- untranslated -->
-    <string name="combat_run_count_label">Number of Runs</string> <!-- untranslated -->
+    <string name="combat_fight_progress">Souboj %1$d/%2$d</string>
+    <string name="combat_run_count_label">Počet opakování</string>
     <!-- Translator note: %1$d = number of queued repeat dungeon runs, e.g. "×24 runs" -->
-    <string name="combat_run_count_suffix">×%1$d runs</string> <!-- untranslated -->
+    <string name="combat_run_count_suffix">×%1$d opakování</string>
     <!-- Translator note: %1$d = current run number, %2$d = total runs requested, e.g. "Run 12/24" -->
-    <string name="combat_run_progress">Run %1$d/%2$d</string> <!-- untranslated -->
-    <string name="combat_xp_on_victory">XP on victory</string> <!-- untranslated -->
-    <string name="combat_you_died">You Died!</string> <!-- untranslated -->
-    <string name="combat_died_reward" formatted="false">You received 10% of the rewards.</string> <!-- untranslated -->
+    <string name="combat_run_progress">Opakování %1$d/%2$d</string>
+    <string name="combat_xp_on_victory">XP při vítězství</string>
+    <string name="combat_you_died">Zemřel jsi!</string>
+    <string name="combat_died_reward" formatted="false">Získal jsi 10% odměn.</string>
     <!-- Translator note: %1$d = gear bonus value -->
-    <string name="combat_gear_bonus">+%1$d gear</string> <!-- untranslated -->
+    <string name="combat_gear_bonus">+%1$d výbava</string>
     <!-- Translator note: %1$d = permanent prestige stat bonus value -->
-    <string name="combat_prestige_bonus">+%1$d prestige</string> <!-- untranslated -->
+    <string name="combat_prestige_bonus">+%1$d povýšení</string>
 
     <!-- ===== ProfileScreen ===== -->
-    <string name="profile_unnamed">Unnamed Adventurer</string> <!-- untranslated -->
-    <string name="profile_no_pets">No pets available</string> <!-- untranslated -->
-    <string name="profile_pet_collected">Collected</string> <!-- untranslated -->
-    <string name="profile_pet_not_found">Not Yet Found</string> <!-- untranslated -->
+    <string name="profile_unnamed">Nepojmenovaný dobrodruh</string>
+    <string name="profile_no_pets">Nejsou k dispozici žádná zvířátka</string>
+    <string name="profile_pet_collected">Sebráno</string>
+    <string name="profile_pet_not_found">Dosud nenalezeno</string>
     <string-array name="profile_pet_happy_messages">
         <item>%1$s is happy!</item>
         <item>%1$s wags its tail!</item>
@@ -639,209 +642,209 @@
         <item>%1$s loves the attention!</item>
         <item>%1$s promises to keep working hard for you.</item>
     </string-array> <!-- untranslated -->
-    <string name="profile_equip_best">Equip Best Gear</string> <!-- untranslated -->
-    <string name="profile_equip_best_tools">Equip Best Tools</string> <!-- untranslated -->
-    <string name="profile_weapons">Weapons</string> <!-- untranslated -->
-    <string name="profile_combat_gear">Combat Gear</string> <!-- untranslated -->
-    <string name="profile_view_combat_gear">View Combat Gear</string> <!-- untranslated -->
-    <string name="profile_gathering_tools">Gathering Tools</string> <!-- untranslated -->
-    <string name="profile_food_dungeon">Food (Dungeon)</string> <!-- untranslated -->
-    <string name="profile_no_food">No cooked food in inventory</string> <!-- untranslated -->
-    <string name="profile_food_threshold">Start Eating At</string> <!-- untranslated -->
-    <string name="profile_food_order">Eating order</string> <!-- untranslated -->
-    <string name="food_order_descending">Highest Heal Value First</string> <!-- untranslated -->
-    <string name="food_order_ascending">Lowest Heal Value First</string> <!-- untranslated -->
-    <string name="food_order_least_quantity">Least Quantity First</string> <!-- untranslated -->
-    <string name="profile_combat_style">Combat Style</string> <!-- untranslated -->
+    <string name="profile_equip_best">Nasadit nejlepší výbavu</string>
+    <string name="profile_equip_best_tools">Nasadit nejlepší nástroje</string>
+    <string name="profile_weapons">Zbraně</string>
+    <string name="profile_combat_gear">Bojové vybavení</string>
+    <string name="profile_view_combat_gear">Zobrazit bojové vybavení</string>
+    <string name="profile_gathering_tools">Pracovní nástroje</string>
+    <string name="profile_food_dungeon">Jídlo (podzemí)</string>
+    <string name="profile_no_food">V inventáři nemáš žádné hotové jídlo.</string>
+    <string name="profile_food_threshold">Začít jíst při</string>
+    <string name="profile_food_order">Požadí jídla</string>
+    <string name="food_order_descending">Nejvyšší hodnota léčení jako první</string>
+    <string name="food_order_ascending">Nejnižší hodnota léčení jako první</string>
+    <string name="food_order_least_quantity">Nejnižší množství jako první</string>
+    <string name="profile_combat_style">Styl boje</string>
     <!-- Translator note: %1$d = quantity, %2$d = heal value -->
-    <string name="profile_food_desc">×%1$d  •  heals %2$d HP</string> <!-- untranslated -->
+    <string name="profile_food_desc">×%1$d  •  léčí %2$d HP</string>
     <!-- Translator note: %1$s = slot display name (e.g. "Weapon") -->
-    <string name="profile_choose_slot">Choose %1$s</string> <!-- untranslated -->
-    <string name="profile_no_items">No eligible items in inventory</string> <!-- untranslated -->
-    <string name="profile_stat_atk">Atk</string> <!-- untranslated -->
-    <string name="profile_stat_str">Str</string> <!-- untranslated -->
-    <string name="profile_stat_ranged">Ranged</string> <!-- untranslated -->
-    <string name="profile_stat_magic">Magic</string> <!-- untranslated -->
-    <string name="profile_stat_mining">Mining</string> <!-- untranslated -->
+    <string name="profile_choose_slot">Vyber %1$s</string>
+    <string name="profile_no_items">V inventáři nemáš žádné použitelné předměty</string>
+    <string name="profile_stat_atk">Útok</string>
+    <string name="profile_stat_str">Obrana</string>
+    <string name="profile_stat_ranged">Střelba</string>
+    <string name="profile_stat_magic">Magie</string>
+    <string name="profile_stat_mining">Dolování</string>
     <string name="profile_stat_wc">WC</string> <!-- untranslated -->
-    <string name="profile_stat_fishing">Fishing</string> <!-- untranslated -->
-    <string name="profile_stat_farming">Farming</string> <!-- untranslated -->
-    <string name="profile_stat_smithing">Smithing</string> <!-- untranslated -->
-    <string name="profile_stat_firemaking">Firemaking</string> <!-- untranslated -->
-    <string name="profile_stat_agility">Agility</string> <!-- untranslated -->
-    <string name="profile_stat_cooking">Cooking</string> <!-- untranslated -->
-    <string name="profile_stat_thieving">Thieving</string> <!-- untranslated -->
-    <string name="profile_stat_def">Def</string> <!-- untranslated -->
-    <string name="profile_req_lv">Req lv.</string> <!-- untranslated -->
+    <string name="profile_stat_fishing">Rybaření</string>
+    <string name="profile_stat_farming">Pěstování</string>
+    <string name="profile_stat_smithing">Kovářství</string>
+    <string name="profile_stat_firemaking">Uhlířství</string>
+    <string name="profile_stat_agility">Mrštnost</string>
+    <string name="profile_stat_cooking">Vaření</string>
+    <string name="profile_stat_thieving">Zlodějna</string>
+    <string name="profile_stat_def">Obrana</string>
+    <string name="profile_req_lv">Pož. úr.</string>
 
     <!-- ===== SkillsScreen ===== -->
     <!-- Translator note: %1$d = session duration in minutes -->
-    <string name="skills_session_duration">Session: %1$dm</string> <!-- untranslated -->
+    <string name="skills_session_duration">Aktivita: %1$dm</string>
     <!-- Translator note: %1$d = estimated number of ores mined in one session -->
-    <string name="skill_mining_qty_estimate">~%1$d ores/session</string> <!-- untranslated -->
-    <string name="skills_only_craftable">Only craftable</string> <!-- untranslated -->
-    <string name="skills_filter_all">All</string> <!-- untranslated -->
-    <string name="skills_add_to_queue">Add to Session Queue</string> <!-- untranslated -->
-    <string name="skills_add_queue_short">Add to Queue</string> <!-- untranslated -->
+    <string name="skill_mining_qty_estimate">~%1$d rudy/aktivitu</string>
+    <string name="skills_only_craftable">Pouze vyrobitelné</string>
+    <string name="skills_filter_all">Vše</string>
+    <string name="skills_add_to_queue">Přidat do fronty aktivit</string>
+    <string name="skills_add_queue_short">Přidat do fronty</string>
     <!-- Translator note: %1$d = level required, %2$s = XP per action -->
-    <string name="skills_level_req_xp">Lv. %1$d  •  %2$s XP/ore</string> <!-- untranslated -->
+    <string name="skills_level_req_xp">Úr. %1$d  •  %2$s XP/ruda</string>
     <!-- Translator note: %1$s = formatted multiplier (e.g. "1.15") -->
-    <string name="skills_tool_bonus">×%1$s tool bonus</string> <!-- untranslated -->
-    <string name="skills_pet_bonus">+%1$d%% XP (pet)</string> <!-- untranslated -->
+    <string name="skills_tool_bonus">×%1$s bonus nástroje</string>
+    <string name="skills_pet_bonus">+%1$d%% XP (zvířátko)</string>
     <!-- Translator note: %1$d = fishing level -->
-    <string name="skills_fishing_desc">Level %1$d  •  Level-appropriate catches</string> <!-- untranslated -->
+    <string name="skills_fishing_desc">Úroveň %1$d • Úlovky odpovídající úrovni</string>
     <!-- Translator note: %1$d = prayer level -->
-    <string name="skills_prayer_desc">Level %1$d  •  Bury bones or scatter ashes for Prayer XP</string> <!-- untranslated -->
-    <string name="skills_no_bones">No bones or ashes in inventory</string> <!-- untranslated -->
-    <string name="skills_xp_each">%1$d XP each</string> <!-- untranslated -->
+    <string name="skills_prayer_desc">Úroveň %1$d • Pohřbívej kosti nebo rozsypávej popel pro XP zbožnosti</string>
+    <string name="skills_no_bones">V inventáři nemáš žádné kosti ani popel</string>
+    <string name="skills_xp_each">%1$d XP každá</string>
     <!-- Translator note: %1$d = XP per bone, %2$d = quantity available -->
-    <string name="skills_bone_selected">%1$d XP each  •  %2$d available</string> <!-- untranslated -->
+    <string name="skills_bone_selected">%1$d XP každá  •  %2$d dostupné</string>
     <!-- Translator note: %1$d = total XP -->
-    <string name="skills_xp_total">+%1$d XP total</string> <!-- untranslated -->
-    <string name="skills_no_essence">No Rune Essence in inventory — mine some first</string> <!-- untranslated -->
-    <string name="skills_no_runes">No rune types unlocked yet</string> <!-- untranslated -->
+    <string name="skills_xp_total">+%1$d XP celkem</string>
+    <string name="skills_no_essence">V inventáři nemáš žádnou runovou esenci — nejdřív ji vytěž</string>
+    <string name="skills_no_runes">Zatím nemáš odemčený žádný typ run</string>
     <!-- Translator note: %1$d = essence quantity -->
-    <string name="skills_essence_qty">%1$d Rune Essence in inventory</string> <!-- untranslated -->
+    <string name="skills_essence_qty">%1$d runové esence v inventáři</string>
     <!-- Translator note: %1$d = XP per rune, %2$d = level required -->
-    <string name="skills_rune_desc">%1$d XP/rune  •  Lv. %2$d</string> <!-- untranslated -->
+    <string name="skills_rune_desc">%1$d XP/runu  •  Úr. %2$d</string>
     <!-- Translator note: %1$d = XP per rune, %2$d = essence available -->
-    <string name="skills_rune_selected">%1$d XP/rune  •  %2$d essence available</string> <!-- untranslated -->
+    <string name="skills_rune_selected">%1$d XP/runa  •  %2$d esencí dostupné</string>
     <!-- Translator note: %1$d = level reached -->
-    <string name="skills_level_reached">Level %1$d reached!</string> <!-- untranslated -->
-    <string name="skills_no_logs">No logs in inventory</string> <!-- untranslated -->
+    <string name="skills_level_reached">Dosažena úroveň %1$d!</string>
+    <string name="skills_no_logs">V inventáři nemáš žádné klády</string>
     <!-- Translator note: %1$d = level required, %2$s = XP per log -->
-    <string name="skills_log_desc">Lv. %1$d  •  %2$s XP/log</string> <!-- untranslated -->
+    <string name="skills_log_desc">Úr. %1$d  •  %2$s XP/kláda</string>
     <!-- Translator note: %1$d = level required, %2$s = XP per catch -->
-    <string name="skills_fish_desc">Lv. %1$d  •  %2$s XP/catch</string> <!-- untranslated -->
+    <string name="skills_fish_desc">Úr. %1$d  •  %2$s XP/úlovek</string>
     <!-- Translator note: %1$d = required level, %2$s = skill name, %3$d = player level, %4$s = skill name again -->
-    <string name="skills_req_with_have">Requires %1$d %2$s (You have %3$d %4$s)</string> <!-- untranslated -->
+    <string name="skills_req_with_have">Vyžaduje %1$d %2$s (máš %3$d %4$s)</string>
     <!-- Translator note: %1$d = owned quantity -->
-    <string name="crafting_owned">Owned: %1$d</string> <!-- untranslated -->
-    <string name="crafting_owned_detail">Owned in inventory: %1$d</string> <!-- untranslated -->
-    <string name="firemaking_ashes_owned">Ashes owned: %1$d</string> <!-- untranslated -->
+    <string name="crafting_owned">Máš: %1$d</string>
+    <string name="crafting_owned_detail">Máš v inventáři: %1$d</string>
+    <string name="firemaking_ashes_owned">Popel v inventáři: %1$d</string>
 
 
     <!-- ===== ShopScreen ===== -->
-    <string name="shop_active">ACTIVE</string> <!-- untranslated -->
-    <string name="shop_sell_junk">Sell Junk</string> <!-- untranslated -->
-    <string name="shop_keep_one_toggle">Keep one of each item</string> <!-- untranslated -->
-    <string name="shop_search_hint">Search items</string> <!-- untranslated -->
-    <string name="shop_filter_all">All</string> <!-- untranslated -->
-    <string name="shop_order_default">Default</string> <!-- untranslated -->
-    <string name="shop_order_highest_amount">Quantity</string> <!-- untranslated -->
-    <string name="shop_order_highest_price">Price</string> <!-- untranslated -->
-    <string name="shop_sell_blocked_equipped">%1$s is equipped. Unequip it first to sell.</string> <!-- untranslated -->
-    <string name="shop_sell_blocked_reserved">%1$s is reserved for a queued task.</string> <!-- untranslated -->
-    <string name="shop_sell_blocked_keep_one">Keeping your last %1$s (Keep one of each item is on).</string> <!-- untranslated -->
-    <string name="shop_sell_blocked_none">Nothing to sell.</string> <!-- untranslated -->
-    <string name="shop_sell_old_gear">Sell Old Gear</string> <!-- untranslated -->
-    <string name="shop_equipped_label">(equipped)</string> <!-- untranslated -->
-    <string name="shop_item_locked">%1$s is locked. Long-press to unlock.</string> <!-- untranslated -->
-    <string name="shop_item_lock_on">%1$s locked</string> <!-- untranslated -->
-    <string name="shop_item_lock_off">%1$s unlocked</string> <!-- untranslated -->
-    <string name="quest_legend_title">Quest icons</string> <!-- untranslated -->
-    <string name="quest_legend_daily">Daily quest</string> <!-- untranslated -->
-    <string name="quest_legend_weekly">Weekly quest</string> <!-- untranslated -->
-    <string name="quest_legend_seasonal">Seasonal bounty</string> <!-- untranslated -->
-    <string name="quest_legend_guild_daily">Guild daily</string> <!-- untranslated -->
-    <string name="quest_legend_guild">Guild quest</string> <!-- untranslated -->
-    <string name="quest_legend_quest">Quest</string> <!-- untranslated -->
-    <string name="quest_legend_gold_dot">Timed quest is available.</string> <!-- untranslated -->
-    <string name="quest_legend_notes">Dimmed icons can\'t be completed yet (missing level or materials). A small raised number means several quests of that type want the same thing.</string> <!-- untranslated -->
+    <string name="shop_active">AKTIVNÍ</string>
+    <string name="shop_sell_junk">Prodat harampádí</string>
+    <string name="shop_keep_one_toggle">Ponechat jednu od každé věci</string>
+    <string name="shop_search_hint">Hledat věci</string>
+    <string name="shop_filter_all">Vše</string>
+    <string name="shop_order_default">Výchozí</string>
+    <string name="shop_order_highest_amount">Množství</string>
+    <string name="shop_order_highest_price">Cena</string>
+    <string name="shop_sell_blocked_equipped">Předmět %1$s je právě nasazen. Nejdřív ho sundej, abys ho mohl prodat.</string>
+    <string name="shop_sell_blocked_reserved">Předmět %1$s je vyhrazen pro úkol ve frontě.</string>
+    <string name="shop_sell_blocked_keep_one">Ponecháváš si poslední kus: %1$s. (Ponechat poslední kus je zapnuto).</string>
+    <string name="shop_sell_blocked_none">Nemáš nic k prodeji.</string>
+    <string name="shop_sell_old_gear">Prodat staré vybavení</string>
+    <string name="shop_equipped_label">(používá se)</string>
+    <string name="shop_item_locked">Předmět %1$s je uzamčen. Odemkneš ho dlouhým stiskem.</string>
+    <string name="shop_item_lock_on">%1$s uzamčen</string>
+    <string name="shop_item_lock_off">%1$s odemčen</string>
+    <string name="quest_legend_title">Ikony úkolů</string>
+    <string name="quest_legend_daily">Denní úkoly</string>
+    <string name="quest_legend_weekly">Týdenní úkoly</string>
+    <string name="quest_legend_seasonal">Sezónní odměny</string>
+    <string name="quest_legend_guild_daily">Denní cechu</string>
+    <string name="quest_legend_guild">Úkol cechu</string>
+    <string name="quest_legend_quest">Úkol</string>
+    <string name="quest_legend_gold_dot">Časově omezený úkol je k dispozici.</string>
+    <string name="quest_legend_notes">Ztmavené ikony zatím nelze dokončit (chybí požadovaná úroveň nebo materiály). Číslo v horním indexu znamená, že několik úkolů daného typu vyžaduje stejnou věc.</string>
     <!-- Translator note: %1$s = quantity in inventory -->
-    <string name="shop_qty_in_inv">×%1$s in inventory</string> <!-- untranslated -->
+    <string name="shop_qty_in_inv">×%1$s v inventáři</string>
     <!-- Translator note: %1$s = formatted coin amount -->
-    <string name="shop_price_each">%1$s coins ea.</string> <!-- untranslated -->
+    <string name="shop_price_each">à %1$s zlatých</string>
     <!-- Translator note: %1$s = item name -->
-    <string name="shop_buy_prefix">Buy: %1$s</string> <!-- untranslated -->
-    <string name="shop_sell_prefix">Sell: %1$s</string> <!-- untranslated -->
+    <string name="shop_buy_prefix">Koupit: %1$s</string>
+    <string name="shop_sell_prefix">Prodat: %1$s</string>
     <!-- Translator note: %1$s = formatted coin amount -->
-    <string name="shop_price_each_long">%1$s coins each</string> <!-- untranslated -->
-    <string name="shop_total_cost">Total cost</string> <!-- untranslated -->
-    <string name="shop_youll_receive">You\'ll receive</string> <!-- untranslated -->
+    <string name="shop_price_each_long">à %1$s zlatých</string>
+    <string name="shop_total_cost">Cena celkem</string>
+    <string name="shop_youll_receive">Obdržíš</string>
     <!-- Translator note: %1$s = formatted coin amount -->
-    <string name="shop_total_amount">%1$s coins</string> <!-- untranslated -->
+    <string name="shop_total_amount">%1$s zlatých</string>
 
     <!-- ===== CraftingScreen ===== -->
-    <string name="crafting_no_mats">No mats</string> <!-- untranslated -->
+    <string name="crafting_no_mats">Nemáš suroviny</string>
     <!-- Translator note: %1$d = total quantity, %2$s = item name -->
-    <string name="crafting_produces">= %1$d %2$s</string> <!-- untranslated -->
-    <string name="crafting_effects">Effects</string> <!-- untranslated -->
+    <string name="crafting_produces">= %1$d %2$s</string>
+    <string name="crafting_effects">Účinky</string>
     <!-- Translator note: %1$d = total XP -->
-    <string name="crafting_xp_total">+%1$d XP total</string> <!-- untranslated -->
-    <string name="crafting_decrease">Decrease</string> <!-- untranslated -->
-    <string name="crafting_increase">Increase</string> <!-- untranslated -->
+    <string name="crafting_xp_total">+%1$d XP celkem</string>
+    <string name="crafting_decrease">Snížit</string>
+    <string name="crafting_increase">Zvýšit</string>
     <!-- Translator note: %1$d = needed, %2$d = have -->
-    <string name="crafting_needed_have">%1$d (have %2$d)</string> <!-- untranslated -->
+    <string name="crafting_needed_have">%1$d (máš %2$d)</string>
     <!-- Translator note: %1$d = quantity in inventory -->
-    <string name="crafting_in_inventory">In inventory: ×%1$d</string> <!-- untranslated -->
-    <string name="crafting_quest_targets">Quest targets</string> <!-- untranslated -->
-    <string name="quest_fill_daily">Daily</string> <!-- untranslated -->
-    <string name="quest_fill_weekly">Weekly</string> <!-- untranslated -->
-    <string name="quest_fill_guild">Guild</string> <!-- untranslated -->
+    <string name="crafting_in_inventory">V inventáři: ×%1$d</string>
+    <string name="crafting_quest_targets">Cíle úkolu</string>
+    <string name="quest_fill_daily">Denní</string>
+    <string name="quest_fill_weekly">Týdenní</string>
+    <string name="quest_fill_guild">Cechovní</string>
 
     <!-- ===== FarmingScreen ===== -->
     <!-- Translator note: %1$s = crop name -->
-    <string name="farming_harvested">Harvested %1$s</string> <!-- untranslated -->
+    <string name="farming_harvested">Sklizeno %1$s</string>
     <!-- Translator note: %1$d = farming level -->
-    <string name="farming_title">Farming — Level %1$d</string> <!-- untranslated -->
+    <string name="farming_title">Pěstování — úroveň %1$d</string>
     <!-- Translator note: %1$d = patch count -->
-    <string name="farming_patches">%1$d patches unlocked</string> <!-- untranslated -->
-    <string name="farming_clear_patch">Clear Patch</string> <!-- untranslated -->
+    <string name="farming_patches">%1$d záhonů odemčeno</string>
+    <string name="farming_clear_patch">Vyčistit záhon</string>
     <!-- Translator note: %1$s = crop name -->
-    <string name="farming_clear_desc_named">Remove the %1$s without any reward?</string> <!-- untranslated -->
-    <string name="farming_clear_desc_bean">Remove the Magic Bean? It will be returned to your inventory.</string> <!-- untranslated -->
-    <string name="farming_harvest_and_plant">Harvest and Plant All</string> <!-- untranslated -->
-    <string name="farming_harvest_all_complete">All Patches Harvested!</string> <!-- untranslated -->
-    <string name="farming_no_crops_ready">No crops ready to harvest</string> <!-- untranslated -->
-    <string name="farming_no_empty_patches">No empty patches available</string> <!-- untranslated -->
+    <string name="farming_clear_desc_named">Odebrat %1$s bez jákékoliv odměny?</string>
+    <string name="farming_clear_desc_bean">Odebrat Kouzelnou fazoli? Bude vrácena do inventáře.</string>
+    <string name="farming_harvest_and_plant">Sklidit a zasadit vše</string>
+    <string name="farming_harvest_all_complete">Všechny záhony jsou sklizené!</string>
+    <string name="farming_no_crops_ready">Ještě není co sklidit</string>
+    <string name="farming_no_empty_patches">Nemáš volné záhony</string>
     <!-- Translator note: %1$s = seed name -->
-    <string name="farming_no_seeds_inventory">Not enough %1$s in inventory</string> <!-- untranslated -->
+    <string name="farming_no_seeds_inventory">V inventáři nemáš dostatek %1$s.</string>
     <!-- Translator note: %1$d = count, %2$s = seed name -->
-    <string name="farming_planted">Planted %1$d %2$s</string> <!-- untranslated -->
+    <string name="farming_planted">Zasazeno %1$d %2$s</string>
 
     <!-- ===== QuestsScreen ===== -->
-    <string name="quests_none_in_category">No quests in this category.</string> <!-- untranslated -->
+    <string name="quests_none_in_category">V této kategorii nejsou žádné úkoly.</string>
 
     <!-- ===== CharacterSetupSheet ===== -->
-    <string name="character_create_title">Create Your Character</string> <!-- untranslated -->
-    <string name="character_edit_title">Edit Character</string> <!-- untranslated -->
-    <string name="character_name_label">Character Name</string> <!-- untranslated -->
-    <string name="character_name_too_long">Only the first %1$d characters will be used.</string> <!-- untranslated -->
-    <string name="character_gender">Gender</string> <!-- untranslated -->
-    <string name="character_gender_male">Male</string> <!-- untranslated -->
-    <string name="character_gender_female">Female</string> <!-- untranslated -->
-    <string name="character_gender_other">Other</string> <!-- untranslated -->
-    <string name="character_gender_custom_hint">Describe your gender</string> <!-- untranslated -->
-    <string name="character_race">Race</string> <!-- untranslated -->
-    <string name="character_race_human">Human</string> <!-- untranslated -->
-    <string name="character_race_elf">Elf</string> <!-- untranslated -->
-    <string name="character_race_dwarf">Dwarf</string> <!-- untranslated -->
-    <string name="character_race_orc">Orc</string> <!-- untranslated -->
-    <string name="character_race_halfling">Halfling</string> <!-- untranslated -->
-    <string name="character_race_gnome">Gnome</string> <!-- untranslated -->
+    <string name="character_create_title">Vytvoř si postavu</string>
+    <string name="character_edit_title">Uprav postavu</string>
+    <string name="character_name_label">Jméno postavy</string>
+    <string name="character_name_too_long">Použito bude pouze prvních %1$d znaků.</string>
+    <string name="character_gender">Pohlaví</string>
+    <string name="character_gender_male">Muž</string>
+    <string name="character_gender_female">Žena</string>
+    <string name="character_gender_other">Jiné</string>
+    <string name="character_gender_custom_hint">Popiš svou genderovou identitu</string>
+    <string name="character_race">Rasa</string>
+    <string name="character_race_human">Člověk</string>
+    <string name="character_race_elf">Elf</string>
+    <string name="character_race_dwarf">Trpaslík</string>
+    <string name="character_race_orc">Ork</string>
+    <string name="character_race_halfling">Půlčík</string>
+    <string name="character_race_gnome">Gnóm</string>
 
     <!-- ===== CharacterCustomizationSheet ===== -->
-    <string name="appearance_title">Customise Appearance</string> <!-- untranslated -->
-    <string name="appearance_skin_tone">Skin Tone</string> <!-- untranslated -->
-    <string name="appearance_eyes">Eyes</string> <!-- untranslated -->
-    <string name="appearance_hair_style">Hair Style</string> <!-- untranslated -->
-    <string name="appearance_hair_color">Hair Colour</string> <!-- untranslated -->
-    <string name="appearance_beard">Beard</string> <!-- untranslated -->
-    <string name="appearance_beard_color">Beard Colour</string> <!-- untranslated -->
-    <string name="appearance_save">Save Appearance</string> <!-- untranslated -->
+    <string name="appearance_title">Upravit vzhled</string>
+    <string name="appearance_skin_tone">Barva kůže</string>
+    <string name="appearance_eyes">Oči</string>
+    <string name="appearance_hair_style">Účes</string>
+    <string name="appearance_hair_color">Barva vlasů</string>
+    <string name="appearance_beard">Vousy</string>
+    <string name="appearance_beard_color">Barva vousů</string>
+    <string name="appearance_save">Uložit vzhled</string>
 
     <!-- ===== OnboardingScreen ===== -->
-    <string name="onboarding_sessions_title">Sessions</string> <!-- untranslated -->
-    <string name="onboarding_sessions_desc">Tap any skill and start a training session. Sessions run in the background, even with the app closed. Come back to collect your loot and XP.</string> <!-- untranslated -->
-    <string name="onboarding_progress_title">Work Your Way Up</string> <!-- untranslated -->
-    <string name="onboarding_progress_desc">Mine ore to smelt bars, then forge better weapons and armour. Equip stronger gear to tackle harder dungeons and bosses. Better tools speed up gathering, and higher-tier equipment unlocks content that weaker gear can\'t survive.</string> <!-- untranslated -->
-    <string name="onboarding_quests_title">Quests &amp; Pets</string> <!-- untranslated -->
-    <string name="onboarding_quests_desc">Complete quests to earn XP rewards. Rare pets can drop while training skills and provide permanent XP boosts.</string> <!-- untranslated -->
-    <string name="onboarding_welcome_desc">An idle RPG inspired by classic MMORPGs. Train skills, fight dungeons, and craft gear. All offline, no accounts, no ads.</string> <!-- untranslated -->
+    <string name="onboarding_sessions_title">Aktivity</string>
+    <string name="onboarding_sessions_desc">Klepni na libovolnou dovednost a spusť trénink. Trénink probíhá na pozadí, i když je aplikace zavřená. Vrať se později pro kořist a XP.</string>
+    <string name="onboarding_progress_title">Vypracuj se</string>
+    <string name="onboarding_progress_desc">Těž rudu, tav z ní ingoty a kuj lepší zbraně a zbroj. Vybav se lepší výstrojí, abys zvládl náročnější podzemí a bossy. Lepší nástroje urychlí sběr surovin a vybavení vyšší úrovně odemkne obsah, který bys se slabší výstrojí nepřežil.</string>
+    <string name="onboarding_quests_title">Úkoly a mazlíčci</string>
+    <string name="onboarding_quests_desc">Plň úkoly a získej odměny v podobě XP. Při trénování dovedností můžeš získat vzácné mazlíčky, kteří poskytují trvalé bonusy k XP.</string>
+    <string name="onboarding_welcome_desc">Idle RPG inspirované klasickými MMORPG. Trénuj dovednosti, bojuj v podzemí a vyráběj výbavu. Vše offline, bez účtů a bez reklam.</string>
 
     <!-- Quantity picker quick buttons -->
-    <string name="qty_max">Max</string> <!-- untranslated -->
+    <string name="qty_max">Max</string>
 
     <!-- ===== Inn / Worker ===== -->
     <string-array name="worker_names">
@@ -871,51 +874,51 @@
         <item>Xander</item>
         <item>Yara</item>
     </string-array> <!-- untranslated -->
-    <string name="inn_title">Inn</string> <!-- untranslated -->
-    <string name="inn_desc">Hire a worker to train skills for you, or buy food from the daily menu. Workers do not count toward your quests.</string> <!-- untranslated -->
-    <string name="inn_worker_already_hired">A worker is already hired.</string> <!-- untranslated -->
-    <string name="inn_not_enough_coins">Not enough coins.</string> <!-- untranslated -->
-    <string name="inn_hire">Hire</string> <!-- untranslated -->
-    <string name="inn_worker_active">Worker hired and training</string> <!-- untranslated -->
-    <string name="inn_hire_cost">%1$s coins</string> <!-- untranslated -->
-    <string name="worker_long_laborer">Long Laborer</string> <!-- untranslated -->
-    <string name="worker_apprentice">Apprentice</string> <!-- untranslated -->
-    <string name="worker_journeyman">Journeyman</string> <!-- untranslated -->
-    <string name="worker_master">Master</string> <!-- untranslated -->
-    <string name="inn_long_laborer_desc">One job per hire, dismissed after collecting. 8h gathering, 0.5x efficiency, unlimited crafting qty. He\'s slow, but he\'ll do anything.</string> <!-- untranslated -->
-    <string name="inn_apprentice_desc">One job per hire, dismissed after collecting. 8h gathering, 1x efficiency. Crafting, prayer, and runecrafting capped at 480 items per session.</string> <!-- untranslated -->
-    <string name="inn_journeyman_desc">One job per hire, dismissed after collecting. 6h gathering, 1.5x efficiency. Crafting, prayer, and runecrafting capped at 540 items per session.</string> <!-- untranslated -->
-    <string name="inn_master_desc">One job per hire, dismissed after collecting. 4h gathering, 2.5x efficiency. Crafting, prayer, and runecrafting capped at 600 items per session.</string> <!-- untranslated -->
-    <string name="inn_gathering_note">Gathering: session hours x efficiency multiplier applied to loot and XP</string> <!-- untranslated -->
-    <string name="inn_crafting_note">Crafting/prayer/runecrafting: quantity capped per tier; Long Laborer has no cap</string> <!-- untranslated -->
-    <string name="worker_skills_title">Worker: %1$s</string> <!-- untranslated -->
-    <string name="worker_session_active">Worker Session Active</string> <!-- untranslated -->
-    <string name="worker_session_complete">Worker Session Complete</string> <!-- untranslated -->
-    <string name="worker_manage_from_home">Collect from the Home screen</string> <!-- untranslated -->
-    <string name="worker_session_assigned">Assigned: %1$s %2$s</string> <!-- untranslated -->
-    <string name="worker_card_title">Worker</string> <!-- untranslated -->
-    <string name="worker_idle">Worker is idle — queued sessions start automatically</string> <!-- untranslated -->
-    <string name="worker_collect_btn">Collect Worker Session</string> <!-- untranslated -->
-    <string name="worker_dismiss_btn">Dismiss Worker</string> <!-- untranslated -->
-    <string name="worker_dismiss_confirm_title">Dismiss Worker?</string> <!-- untranslated -->
-    <string name="worker_dismiss_confirm_body">The active session and queue will be cancelled. Your hire fee and any queued materials will be returned.</string> <!-- untranslated -->
-    <string name="inn_daily_menu">Daily Menu</string> <!-- untranslated -->
-    <string name="inn_laborers_header">Laborers</string> <!-- untranslated -->
-    <string name="inn_slot1_header">Long Laborer</string> <!-- untranslated -->
-    <string name="inn_slot2_header">Skilled Worker</string> <!-- untranslated -->
+    <string name="inn_title">Hostinec</string>
+    <string name="inn_desc">Najmi si pracovníka, který za tebe bude trénovat dovednosti, nebo nakup jídlo z denní nabídky. Pracovníci se nezapočítávají do plnění tvých úkolů.</string>
+    <string name="inn_worker_already_hired">Pracovník už je najatý.</string>
+    <string name="inn_not_enough_coins">Nemáš dost zlatých.</string>
+    <string name="inn_hire">Najmout</string>
+    <string name="inn_worker_active">Pracovník najat — probíhá trénink</string>
+    <string name="inn_hire_cost">%1$s zlatých</string>
+    <string name="worker_long_laborer">Dlouhodobý dělník</string>
+    <string name="worker_apprentice">Učeň</string>
+    <string name="worker_journeyman">Tovaryš</string>
+    <string name="worker_master">Mistr</string>
+    <string name="inn_long_laborer_desc">Jedna zakázka na jedno najmutí. Po dokončení je propuštěn. Obstarávání trvá 8 hodin, účinnost je 0,5× a množství výroby je neomezené. Je pomalý, ale zvládne cokoli.</string>
+    <string name="inn_apprentice_desc">Jedna zakázka na jedno najmutí; po dokončení je propuštěn. Obstarávání trvá 8 hodin, pracuje s účinností 1×. Výroba, modlitby a runová výroba jsou omezeny na 480 kusů za jednu zakázku.</string>
+    <string name="inn_journeyman_desc">Jedna zakázka na jedno najmutí; po dokončení je propuštěn. Obstarávání trvá 6 hodin, pracuje s účinností 1,5×. Výroba, modlitby a runová výroba jsou omezeny na 540 kusů za jednu zakázku.</string>
+    <string name="inn_master_desc">Jedna zakázka na jedno najmutí; po dokončení je propuštěn. Obstarávání trvá 4 hodiny, pracuje s účinností 2,5×. Výroba, modlitby a runová výroba jsou omezeny na 600 kusů za jednu zakázku.</string>
+    <string name="inn_gathering_note">Obstarávání: délka zakázky v hodinách × násobitel účinnosti ovlivňují získanou kořist a zkušenosti.</string>
+    <string name="inn_crafting_note">Výroba / modlitby / runová výroba: množství je omezeno limitem podle úrovně najatého pracovníka; Dlouhodobý dělník nemá žádný limit.</string>
+    <string name="worker_skills_title">Pracovník: %1$s</string>
+    <string name="worker_session_active">Aktivita pracovníka probíhá</string>
+    <string name="worker_session_complete">Aktivita pracovníka dokončena</string>
+    <string name="worker_manage_from_home">Vyzvednout z domovské obrazovky</string>
+    <string name="worker_session_assigned">Přiřazeno: %1$s %2$s</string>
+    <string name="worker_card_title">Pracovník</string>
+    <string name="worker_idle">Pracovník zahálí — naplánované zakázky se spustí automaticky</string>
+    <string name="worker_collect_btn">Vyzvednout výsledky pracovníkovy aktivity</string>
+    <string name="worker_dismiss_btn">Propustit pracovníka</string>
+    <string name="worker_dismiss_confirm_title">Propustit pracovníka?</string>
+    <string name="worker_dismiss_confirm_body">Probíhající aktivita i fronta budou zrušeny. Poplatek za najmutí a materiály určené pro naplánované aktivity vám budou vráceny.</string>
+    <string name="inn_daily_menu">Denní menu</string>
+    <string name="inn_laborers_header">Pracovníci</string>
+    <string name="inn_slot1_header">Dlouhodobý pracovník</string>
+    <string name="inn_slot2_header">Zkušený pracovník</string>
 
     <!-- ===== Combat difficulty ratings ===== -->
-    <string name="combat_difficulty_likely">You\'ve got this</string> <!-- untranslated -->
-    <string name="combat_difficulty_risky">Risky with current setup</string> <!-- untranslated -->
-    <string name="combat_difficulty_unlikely">Likely to die</string> <!-- untranslated -->
+    <string name="combat_difficulty_likely">To zvládneš</string>
+    <string name="combat_difficulty_risky">Nebezpečné za současného stavu</string>
+    <string name="combat_difficulty_unlikely">Pravděpodobně zemřeš</string>
 
     <!-- ===== Achievements ===== -->
-    <string name="achievement_group_levelling">Levelling</string> <!-- untranslated -->
-    <string name="achievement_group_combat">Combat</string> <!-- untranslated -->
-    <string name="achievement_group_quests">Quests</string> <!-- untranslated -->
-    <string name="achievement_group_collection">Collection</string> <!-- untranslated -->
+    <string name="achievement_group_levelling">Zvyšování úrovně</string>
+    <string name="achievement_group_combat">Souboj</string>
+    <string name="achievement_group_quests">Úkoly</string>
+    <string name="achievement_group_collection">Sbírka</string>
 
-    <string name="achievement_total_50_name">Adventurer</string> <!-- untranslated -->
+    <string name="achievement_total_50_name">Dobrodruh</string>
     <string name="achievement_total_50_desc">Reach total level 50</string> <!-- untranslated -->
     <string name="achievement_total_100_name">Journeyman</string> <!-- untranslated -->
     <string name="achievement_total_100_desc">Reach total level 100</string> <!-- untranslated -->
