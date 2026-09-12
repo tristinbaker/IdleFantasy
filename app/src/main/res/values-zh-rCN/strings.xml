@@ -66,8 +66,8 @@
     <string name="label_bosses">首领</string>
     <string name="label_by_location">按地点</string>
     <string name="bestiary_not_encountered">尚未遭遇</string>
-    <string name="bestiary_filter_all">All</string> <!-- untranslated -->
-    <string name="bestiary_filter_missing">Missing</string> <!-- untranslated -->
+    <string name="bestiary_filter_all">全部</string>
+    <string name="bestiary_filter_missing">未遭遇</string>
     <string name="bestiary_qty_header">数量</string>
     <string name="bestiary_chance_header">几率</string>
     <string name="label_completion_progress">%3$s %1$d / %2$d</string>
@@ -715,9 +715,9 @@
     <string name="shop_keep_one_toggle">每种物品保留一个</string>
     <string name="shop_search_hint">搜索物品</string>
     <string name="shop_filter_all">全部</string>
-    <string name="shop_order_default">Default</string> <!-- untranslated -->
-    <string name="shop_order_highest_amount">Quantity</string> <!-- untranslated -->
-    <string name="shop_order_highest_price">Price</string> <!-- untranslated -->
+    <string name="shop_order_default">默认</string>
+    <string name="shop_order_highest_amount">数量</string>
+    <string name="shop_order_highest_price">价格</string>
     <string name="shop_sell_blocked_equipped">%1$s 已装备，请先卸下再出售。</string>
     <string name="shop_sell_blocked_reserved">%1$s 被排队任务占用。</string>
     <string name="shop_sell_blocked_keep_one">保留最后一件 %1$s（每种保留一个已开启）。</string>
@@ -1695,7 +1695,7 @@
     <string name="armory_how_to_obtain">获取途径</string>
     <string name="armory_no_stats">无属性加成。</string>
     <string name="armory_filter_all">全部</string>
-    <string name="armory_filter_missing">Missing</string> <!-- untranslated -->
+    <string name="armory_filter_missing">未获取</string>
     <string name="armory_filter_weapons">武器</string>
     <string name="armory_filter_armor">护甲</string>
     <string name="armory_filter_accessories">饰品</string>
@@ -2259,7 +2259,7 @@
     <!-- Translator note: %1$d = current skill level -->
     <string name="prestige_requires_99">达到 99 级即可转生（当前 %1$d）。</string>
     <string name="prestige_maxed_cap">已达到最高转生等级。此技能能获得的每个点数都已是你的。</string>
-    <string name="skills_prestige_max">★×%1$d (Max)</string> <!-- untranslated -->
+    <string name="skills_prestige_max">★×%1$d（最大）</string>
     <!-- Translator note: %1$s = skill name, %2$d = points awarded -->
     <string name="prestige_confirm_message_points">你的 %1$s 等级将重置为 1，你将获得 %2$d 点转生点数，可在该技能的天赋树中消费。不再满足要求的装备将被替换，未领取的 %1$s 每日任务进度会重置。你还会获得 2 倍 %1$s 经验，持续 48 小时，以加快回升速度。</string>
     <string name="prestige_respec">重置点数</string>
