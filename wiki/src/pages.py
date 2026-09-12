@@ -2329,8 +2329,102 @@ def gen_housing() -> str:
 # Custom generators for player guides
 # ---------------------------------------------------------------------------
 
+# Note: Original html file for the tower odds simulator had all of the food and enemy data hardcoded.
+# However, when introducing html in the md file, for some reason the generation would fail.
+# I found, however, that by using a custom_generator that simply took in the md file
+# and then just returned it immediately, the generation worked fine.
+# I'm not sure what the issue was, but just leaving this here in case it's useful to someone.
+#
+# Additional note: the custom function must be put in above the PLAYER_GUIDE_GENERATORS dictionary
+# in order for the code to execute.
+#
+# One more note: If adding another guide in the wiki, it may be necessary to place it in the guides.yml
+# file above the entry for the tower odds simulator,
+# as having the custom generator seems to mess with entries below it.
+#
+# This function was written with the help of Gemma-4-E4B-it
+def gen_guide_tower_odds_sim(guide: str) -> str:
+    cooking_data = load("recipes/cooking.json") # Bring in food entries
+    enemies_data = load("enemies.json")         # Bring in enemy stats
+    food_map_placeholder = "{FOODMAP}"          # Placeholder in md file
+    enemies_placeholder  = "{ENEMIES}"          # Placeholder in md file
+
+    # -----------------------------------------------------------------
+    # OPTIMIZATION: Define and use the list of valid tower enemies,
+    # reducing website bandwidth
+    TOWER_ENEMIES = {
+        "goblin", "skeleton", "zombie",
+        "orc_warrior", "dark_wizard", "bandit",
+        "cave_troll", "shadow_beast", "demon",
+        "forge_demon", "shadow_assassin", "abyssal_leech",
+        "void_stalker", "void_guardian", "abyssal_lord",
+        "void_archon", "eternal_sentinel"
+    }
+    
+    # Create the food map in the same format as the original JS
+    food_map_data = {}
+    for food_key, attributes in cooking_data.items():
+        healing_value = attributes.get("healing_value")
+        if healing_value is not None:
+            food_map_data[food_key] = {"heal": healing_value}
+    items = []
+    for key, data in food_map_data.items():
+        items.append(f'"{key}": {{ heal: {data["heal"]} }}')
+    food_map = "{" + ", ".join(items) + "}"
+
+    # Create the enemy data in the same format as the original JS 
+    new_enemies_data = {}
+    def to_camel_case(snake_str):
+        components = snake_str.split('_')
+        return components[0] + ''.join(x.title() for x in components[1:])
+    for enemy_id, data in enemies_data.items():
+        # --- FILTERING LOGIC APPLIED HERE ---
+        if enemy_id not in TOWER_ENEMIES:
+            continue
+        combat_stats = data.get("combat_stats", {})
+        defensive_stats = data.get("defensive_stats", {})
+        transformed_entry = {
+            "hp": data.get("hp"),
+            "combat": {},
+            "defensive": {}
+        }
+        for key, value in combat_stats.items():
+            camel_key = to_camel_case(key)
+            transformed_entry["combat"][camel_key] = value
+        for key, value in defensive_stats.items():
+            camel_key = to_camel_case(key)
+            transformed_entry["defensive"][camel_key] = value
+        new_enemies_data[enemy_id] = transformed_entry
+    entry_strings = []
+    for enemy_id, entry in new_enemies_data.items():
+        combat_str_parts = [f'{k}: {v}' for k, v in entry['combat'].items()]
+        combat_str = "{" + ", ".join(combat_str_parts) + "}"
+        defensive_str_parts = [f'{k}: {v}' for k, v in entry['defensive'].items()]
+        defensive_str = "{" + ", ".join(defensive_str_parts) + "}"
+        enemy_entry_str = (
+            f'"{enemy_id}": {{ hp: {entry["hp"]}, combat: {combat_str}, defensive: {defensive_str} }}'
+        )
+        entry_strings.append(enemy_entry_str)
+    enemies_string = "{" + ", ".join(entry_strings) + "}"
+            
+    # Replace the food map placeholder with the food map
+    parts = guide.split(food_map_placeholder, 1)
+    before_placeholder  = parts[0]
+    after_placeholder   = parts[1]
+    guide = before_placeholder + food_map + after_placeholder
+    
+    # Replace the enemies data placeholder with the enemies data
+    parts = guide.split(enemies_placeholder, 1)
+    before_placeholder  = parts[0]
+    after_placeholder   = parts[1]    
+    guide = before_placeholder + enemies_string + after_placeholder
+
+    # Can simply return the updated guide string, the rest of the formatting is handled by other functions        
+    return guide
+
 # Add generators here if you want to reference game data
 PLAYER_GUIDE_GENERATORS: dict[str, Callable[[str], str]] = {
+    "guide_tower_odds_sim": gen_guide_tower_odds_sim,
     # guide_the_infinite_tower: gen_guide_the_infinite_tower(),
 }
 

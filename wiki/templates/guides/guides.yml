@@ -7,3 +7,9 @@ the_infinite_tower:
    - tower_defence.png
    - tower_gear.png
    - tower_milestones.png
+
+tower_odds_sim:
+  title: Tower Odds Simulator
+  author: adnm9
+  last_updated: 2026-09-10
+  custom_generator: guide_tower_odds_sim
