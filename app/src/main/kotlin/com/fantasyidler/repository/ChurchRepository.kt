@@ -24,65 +24,31 @@ class ChurchRepository @Inject constructor(
     private val townRepoProvider: Provider<TownRepository>,
     private val buffNotifScheduler: BuffNotificationScheduler,
     private val boostRepo: BoostRepository,
+    private val gameData: GameDataRepository,
 ) {
     /** Bone cost after the gnome Trickster's Favor prestige discount. */
     fun discountedBoneCost(blessing: BlessingData, flags: PlayerFlags): Int =
         discountedBoneCost(blessing, boostRepo.blessingCostMultiplier(flags))
 
     companion object {
-        val ALL_BLESSINGS: List<BlessingData> = listOf(
-            BlessingData("blessed_focus",      1,  BlessingType.XP,      1.05f),
-            BlessingData("stone_skin",         1,  BlessingType.DEFENSE, 2f),
-            BlessingData("blessed_focus_ii",   10, BlessingType.XP,      1.10f),
-            BlessingData("stone_skin_ii",      10, BlessingType.DEFENSE, 4f),
-            BlessingData("blessed_focus_iii",  20, BlessingType.XP,      1.15f),
-            BlessingData("stone_skin_iii",     20, BlessingType.DEFENSE, 6f),
-            BlessingData("tithe_blessing",     30, BlessingType.XP,      1.18f),
-            BlessingData("stone_skin_iv",      30, BlessingType.DEFENSE, 9f),
-            BlessingData("fortune_i",          30, BlessingType.COINS,   0.08f),
-            BlessingData("tithe_blessing_ii",  40, BlessingType.XP,      1.20f),
-            BlessingData("iron_ward",          40, BlessingType.DEFENSE, 12f),
-            BlessingData("fortune_ii",         40, BlessingType.COINS,   0.10f),
-            BlessingData("tithe_blessing_iii", 50, BlessingType.XP,      1.25f),
-            BlessingData("iron_ward_ii",       50, BlessingType.DEFENSE, 15f),
-            BlessingData("fortune_iii",        50, BlessingType.COINS,   0.13f),
-            BlessingData("divine_focus",       60, BlessingType.XP,      1.28f),
-            BlessingData("diamond_skin",       60, BlessingType.DEFENSE, 18f),
-            BlessingData("fortune_iv",         60, BlessingType.COINS,   0.15f),
-            BlessingData("divine_focus_ii",    70, BlessingType.XP,      1.32f),
-            BlessingData("diamond_skin_ii",    70, BlessingType.DEFENSE, 22f),
-            BlessingData("fortune_v",          70, BlessingType.COINS,   0.18f),
-            BlessingData("divine_grace",       80, BlessingType.XP,      1.37f),
-            BlessingData("holy_shield",        80, BlessingType.DEFENSE, 26f),
-            BlessingData("abundance",          80, BlessingType.COINS,   0.20f),
-            BlessingData("divine_grace_ii",    90, BlessingType.XP,      1.43f),
-            BlessingData("holy_shield_ii",     90, BlessingType.DEFENSE, 30f),
-            BlessingData("abundance_ii",       90, BlessingType.COINS,   0.23f),
-            BlessingData("sacred_grace",       99, BlessingType.XP,      1.50f),
-            BlessingData("aegis",              99, BlessingType.DEFENSE, 35f),
-            BlessingData("abundance_iii",      99, BlessingType.COINS,   0.25f),
-        )
-
-        private val BY_KEY = ALL_BLESSINGS.associateBy { it.key }
-
-        fun activeBlessing(flags: PlayerFlags): BlessingData? {
+        fun activeBlessing(flags: PlayerFlags, blessings: List<BlessingData>): BlessingData? {
             if (flags.activeBlessingKey.isEmpty()) return null
             if (flags.activeBlessingExpiresAt <= System.currentTimeMillis()) return null
-            return BY_KEY[flags.activeBlessingKey]
+            return blessings.firstOrNull { it.key == flags.activeBlessingKey }
         }
 
-        fun xpMultiplier(flags: PlayerFlags, prayerCapeMult: Float): Float {
-            val b = activeBlessing(flags) ?: return 1f
+        fun xpMultiplier(flags: PlayerFlags, prayerCapeMult: Float, blessings: List<BlessingData>): Float {
+            val b = activeBlessing(flags, blessings) ?: return 1f
             return if (b.type == BlessingType.XP) effectiveMagnitude(b, prayerCapeMult) else 1f
         }
 
-        fun defBonus(flags: PlayerFlags, prayerCapeMult: Float): Int {
-            val b = activeBlessing(flags) ?: return 0
+        fun defBonus(flags: PlayerFlags, prayerCapeMult: Float, blessings: List<BlessingData>): Int {
+            val b = activeBlessing(flags, blessings) ?: return 0
             return if (b.type == BlessingType.DEFENSE) effectiveMagnitude(b, prayerCapeMult).toInt() else 0
         }
 
-        fun coinMultiplier(flags: PlayerFlags, prayerCapeMult: Float): Float {
-            val b = activeBlessing(flags) ?: return 1f
+        fun coinMultiplier(flags: PlayerFlags, prayerCapeMult: Float, blessings: List<BlessingData>): Float {
+            val b = activeBlessing(flags, blessings) ?: return 1f
             return if (b.type == BlessingType.COINS) 1f + effectiveMagnitude(b, prayerCapeMult) else 1f
         }
 
@@ -137,13 +103,13 @@ class ChurchRepository @Inject constructor(
     }
 
     fun blessingsForLevel(prayerLevel: Int): List<BlessingData> =
-        ALL_BLESSINGS.filter { it.prayerLevelRequired <= prayerLevel }
+        gameData.blessings.filter { it.prayerLevelRequired <= prayerLevel }
 
     suspend fun activateBlessing(key: String): BlessingActivateResult = playerRepo.withLock {
         val flags     = playerRepo.getFlagsUnlocked()
-        val active    = activeBlessing(flags)
+        val active    = activeBlessing(flags, gameData.blessings)
         if (active != null && active.key != key) return@withLock BlessingActivateResult.AlreadyActive
-        val blessing  = BY_KEY[key] ?: return@withLock BlessingActivateResult.AlreadyActive
+        val blessing  = gameData.blessings.firstOrNull { it.key == key } ?: return@withLock BlessingActivateResult.AlreadyActive
         if (flags.ironman && blessing.type != BlessingType.DEFENSE) {
             return@withLock BlessingActivateResult.IronmanBlocked
         }

@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.fantasyidler.R
+import com.fantasyidler.data.json.BlessingData
 import com.fantasyidler.data.json.BlessingType
 import com.fantasyidler.repository.ChurchRepository
 import com.fantasyidler.ui.screen.StatInline
@@ -42,6 +43,7 @@ fun PlayerStatsBar(
     totalLevel: Int,
     coins: Long,
     activeBlessingKey: String,
+    allBlessings: List<BlessingData>,
     prayerCapeMult: Float,
     activeBlessingRemainingMs: Long,
     xpBoostRemainingMs: Long,
@@ -80,7 +82,7 @@ fun PlayerStatsBar(
                     "blessing_${activeBlessingKey}_name", "string", context.packageName,
                 )
                 val blessingName = if (nameResId != 0) stringResource(nameResId) else activeBlessingKey
-                val blessingData = ChurchRepository.ALL_BLESSINGS.firstOrNull { it.key == activeBlessingKey }
+                val blessingData = allBlessings.firstOrNull { it.key == activeBlessingKey }
                 val boostDesc = blessingData?.let { b ->
                     val eff = ChurchRepository.effectiveMagnitude(b, prayerCapeMult)
                     when (b.type) {

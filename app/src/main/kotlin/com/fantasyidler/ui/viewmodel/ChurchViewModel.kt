@@ -70,14 +70,14 @@ class ChurchViewModel @Inject constructor(
         val inventory: Map<String, Int> = json.decodeFromString(player.inventory)
         val prayerLevel = levels[Skills.PRAYER] ?: 1
         val prayerCapeMult = blessingPrayerCapeMult(player, flags, gameData)
-        val active      = ChurchRepository.activeBlessing(flags)
+        val active      = ChurchRepository.activeBlessing(flags, gameData.blessings)
         val remaining   = if (active != null) (flags.activeBlessingExpiresAt - System.currentTimeMillis()).coerceAtLeast(0L) else 0L
         extra.copy(
             isLoading                 = false,
             prayerLevel               = prayerLevel,
             blessingDuration          = (townRepo.blessingDurationMs(flags) * boostRepo.blessingDurationMultiplier(flags)).toLong(),
             blessingCostMult          = boostRepo.blessingCostMultiplier(flags),
-            allBlessings              = ChurchRepository.ALL_BLESSINGS,
+            allBlessings              = gameData.blessings,
             unlockedBlessingKeys      = churchRepo.blessingsForLevel(prayerLevel).map { it.key }.toSet(),
             activeBlessing            = active,
             activeBlessingRemainingMs = remaining,

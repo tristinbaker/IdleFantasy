@@ -615,6 +615,7 @@ fun HomeScreen(
                         totalLevel                 = totalLevelFrom(state.skillLevels),
                         coins                      = state.coins,
                         activeBlessingKey          = state.activeBlessingKey,
+                        allBlessings               = state.allBlessings,
                         prayerCapeMult             = state.prayerCapeMult,
                         activeBlessingRemainingMs  = state.activeBlessingRemainingMs,
                         xpBoostRemainingMs         = state.xpBoostRemainingMs,

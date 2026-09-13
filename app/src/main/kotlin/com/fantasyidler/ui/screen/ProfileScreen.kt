@@ -251,6 +251,7 @@ fun ProfileScreen(
                     totalLevel                = state.totalLevel,
                     coins                     = state.coins,
                     activeBlessingKey         = state.activeBlessingKey,
+                    allBlessings              = state.allBlessings,
                     prayerCapeMult            = state.prayerCapeMult,
                     activeBlessingRemainingMs = (state.activeBlessingExpiresAt - System.currentTimeMillis()).coerceAtLeast(0L),
                     xpBoostRemainingMs        = if (state.ironman) 0L else (state.xpBoostExpiresAt - System.currentTimeMillis()).coerceAtLeast(0L),

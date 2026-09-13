@@ -962,7 +962,7 @@ class PlayerRepository @Inject constructor(
         val player    = getOrCreatePlayer()
         val flags: PlayerFlags = json.decodeFromString(player.flags)
         val capeMult = prayerCapeMult(player, flags)
-        val coinBlessingMult = if (flags.ironman) 1.0f else ChurchRepository.coinMultiplier(flags, capeMult) *
+        val coinBlessingMult = if (flags.ironman) 1.0f else ChurchRepository.coinMultiplier(flags, capeMult, gameData.blessings) *
             gooseCoinMultiplier(json.decodeFromString(player.pets)).toFloat()
         val scaledItems = if (efficiencyMultiplier == 1.0f) itemsGained
             else itemsGained.mapValues { (_, v) -> (v * efficiencyMultiplier).roundToInt().coerceAtLeast(1) }
@@ -1032,7 +1032,7 @@ class PlayerRepository @Inject constructor(
         val flags: PlayerFlags = json.decodeFromString(player.flags)
         val capeMult = prayerCapeMult(player, flags)
         val boostFactor = boostRepo.xpBoostFactor(skillName, flags)
-        val blessingMult = if (flags.ironman) 1.0f else ChurchRepository.xpMultiplier(flags, capeMult)
+        val blessingMult = if (flags.ironman) 1.0f else ChurchRepository.xpMultiplier(flags, capeMult, gameData.blessings)
         val prestigeXpPct = boostRepo.prestigeXpPct(skillName, flags)
         val finalXp = (baseXp * boostRepo.xpMultiplier(skillName, flags, capeMult)).toLong()
         return FlatXpBreakdown(baseXp, finalXp, boostFactor, blessingMult, prestigeXpPct)
@@ -1196,11 +1196,11 @@ class PlayerRepository @Inject constructor(
         }
         if (skillName == Skills.PRAYER) {
             val prayerLevel = levels[Skills.PRAYER] ?: 1
-            val activeBlessing = ChurchRepository.activeBlessing(newFlags)
+            val activeBlessing = ChurchRepository.activeBlessing(newFlags, gameData.blessings)
             if (activeBlessing != null && activeBlessing.prayerLevelRequired > prayerLevel) {
                 // The bones are already paid, so the blessing downgrades (keeping its expiry)
                 // to the strongest same-type blessing the reset level allows instead of ending.
-                val fallback = ChurchRepository.ALL_BLESSINGS
+                val fallback = gameData.blessings
                     .filter { it.type == activeBlessing.type && it.prayerLevelRequired <= prayerLevel }
                     .maxByOrNull { it.prayerLevelRequired }
                 newFlags = if (fallback != null) {

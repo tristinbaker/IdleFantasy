@@ -1,6 +1,7 @@
 package com.fantasyidler.repository
 
 import android.content.Context
+import com.fantasyidler.data.json.BlessingData
 import com.fantasyidler.data.json.BoneData
 import com.fantasyidler.data.json.SlayerTaskData
 import com.fantasyidler.data.json.CropData
@@ -188,6 +189,10 @@ class GameDataRepository @Inject constructor(
 
     val runes: Map<String, RuneData> by lazy {
         asset("data/runes.json")
+    }
+
+    val blessings: List<BlessingData> by lazy {
+        asset("data/blessings.json")
     }
 
     // ------------------------------------------------------------------ equipment

@@ -96,7 +96,7 @@ internal fun estimateDungeonPreviewXp(
         playerAttack        = (levels[Skills.ATTACK]    ?: 1) + boostRepo.combatStatBonus(Skills.ATTACK, flags, levels[Skills.ATTACK] ?: 1),
         playerStrength      = (levels[Skills.STRENGTH]  ?: 1) + boostRepo.combatStatBonus(Skills.STRENGTH, flags, levels[Skills.STRENGTH] ?: 1),
         playerDefence       = (levels[Skills.DEFENSE]   ?: 1) + totalDefenseBonus + boostRepo.combatStatBonus(Skills.DEFENSE, flags, levels[Skills.DEFENSE] ?: 1),
-        blessingDefBonus    = ChurchRepository.defBonus(flags, blessingPrayerCapeMult(flags, equipped, inventory.keys, gameData)),
+        blessingDefBonus    = ChurchRepository.defBonus(flags, blessingPrayerCapeMult(flags, equipped, inventory.keys, gameData), gameData.blessings),
         playerHp            = (levels[Skills.HITPOINTS] ?: 1) + boostRepo.combatStatBonus(Skills.HITPOINTS, flags, levels[Skills.HITPOINTS] ?: 1) + flags.towerHpBonus,
         weaponAttackBonus   = totalAttackBonus,
         weaponStrengthBonus = totalStrengthBonus,

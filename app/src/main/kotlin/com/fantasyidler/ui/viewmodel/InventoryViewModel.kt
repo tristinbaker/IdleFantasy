@@ -25,6 +25,7 @@ import com.fantasyidler.data.json.TradeRouteData
 import com.fantasyidler.data.json.TreeData
 import android.content.Context
 import com.fantasyidler.BuildConfig
+import com.fantasyidler.data.json.BlessingData
 import com.fantasyidler.data.json.BlessingType
 import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.PlayerFlags
@@ -112,6 +113,7 @@ class InventoryViewModel @Inject constructor(
         val prestigeXpBoosts: Map<String, Long> = emptyMap(),
         val ironman: Boolean = false,
         val activeBlessingKey: String = "",
+        val allBlessings: List<BlessingData> = emptyList(),
         val activeBlessingExpiresAt: Long = 0L,
         val activeBlessingXpPct: Int = 0,
         val prayerCapeMult: Float = 1f,
@@ -216,9 +218,10 @@ class InventoryViewModel @Inject constructor(
                 prestigeXpBoosts        = flags.prestigeXpBoosts,
                 ironman                 = flags.ironman,
                 activeBlessingKey       = flags.activeBlessingKey,
+                allBlessings            = gameData.blessings,
                 activeBlessingExpiresAt = flags.activeBlessingExpiresAt,
                 activeBlessingXpPct     = run {
-                    val b = ChurchRepository.activeBlessing(flags) ?: return@run 0
+                    val b = ChurchRepository.activeBlessing(flags, gameData.blessings) ?: return@run 0
                     if (b.type != BlessingType.XP) return@run 0
                     val mult = blessingPrayerCapeMult(player, flags, gameData)
                     ((ChurchRepository.effectiveMagnitude(b, mult) - 1f) * 100 + 0.5f).toInt()
