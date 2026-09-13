@@ -173,6 +173,7 @@ class CraftingViewModel @Inject constructor(
     private val sessionRepo: SessionRepository,
     private val gameData: GameDataRepository,
     private val questRepo: QuestRepository,
+    private val churchRepo: ChurchRepository,
     private val dailyQuestRepo: DailyQuestRepository,
     private val weeklyQuestRepo: WeeklyQuestRepository,
     private val guildRepo: GuildRepository,
@@ -210,7 +211,7 @@ class CraftingViewModel @Inject constructor(
             } else 0L
             val xpMult = if (selectedRecipe != null) {
                 val boostMult = if (flags.ironman) 1.0
-                                else (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * ChurchRepository.xpMultiplier(flags, blessingPrayerCapeMult(player, flags, gameData), gameData.blessings)
+                                else (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * churchRepo.xpMultiplier(flags, blessingPrayerCapeMult(player, flags, gameData))
                 val petPct = petBoostFor(player.pets, selectedRecipe.skillName, flags.ironman)
                 selectedEff * boostMult * (1.0 + petPct / 100.0)
             } else 1.0
@@ -452,7 +453,7 @@ class CraftingViewModel @Inject constructor(
                 val toolEff   = craftToolEfficiency(recipe, json.decodeFromString(player.equipped), state.skillLevels, flags)
                 val perItemMs = (SkillSimulator.sessionDurationMs(agility, boostRepo.sessionFloorReductionMin(flags), townRepo.playerSessionDurationMultiplier(flags)) / 60 / toolEff).toLong()
                 val totalOutput = qty * recipe.outputQty
-                val xpQueueMult = if (flags.ironman) 1.0 else (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * ChurchRepository.xpMultiplier(flags, blessingPrayerCapeMult(player, flags, gameData), gameData.blessings)
+                val xpQueueMult = if (flags.ironman) 1.0 else (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * churchRepo.xpMultiplier(flags, blessingPrayerCapeMult(player, flags, gameData))
                 val queuePetPct = petBoostFor(player.pets, recipe.skillName, flags.ironman)
                 val action = QueuedAction(
                     skillName           = recipe.skillName,

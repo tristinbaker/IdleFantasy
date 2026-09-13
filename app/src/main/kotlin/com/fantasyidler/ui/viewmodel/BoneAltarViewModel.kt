@@ -61,6 +61,7 @@ class BoneAltarViewModel @Inject constructor(
     private val playerRepo: PlayerRepository,
     private val questRepo: QuestRepository,
     private val guildRepo: GuildRepository,
+    private val churchRepo: ChurchRepository,
     private val gameData: GameDataRepository,
     private val saveSlotRepo: SaveSlotRepository,
     private val json: Json,
@@ -131,7 +132,7 @@ class BoneAltarViewModel @Inject constructor(
             ironman = flags.ironman,
         )
         val churchMult     = if (flags.ironman) 1.0f
-                     else ChurchRepository.xpMultiplier(flags, blessingPrayerCapeMult(flags, equipped, inventory.keys, gameData), gameData.blessings)
+                     else churchRepo.xpMultiplier(flags, blessingPrayerCapeMult(flags, equipped, inventory.keys, gameData))
         val prestigeMult   = (1.0 + boostRepo.prestigeXpPct(Skills.PRAYER, flags) / 100.0).toFloat()
         val petBoostPct    = if (flags.ironman) 0 else petBoostFor(player.pets, Skills.PRAYER)
 

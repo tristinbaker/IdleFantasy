@@ -79,6 +79,7 @@ class InventoryViewModel @Inject constructor(
     private val playerRepo: PlayerRepository,
     private val gameData: GameDataRepository,
     private val titleRepo: TitleRepository,
+    private val churchRepo: ChurchRepository,
     private val json: Json,
 ) : ViewModel() {
 
@@ -221,7 +222,7 @@ class InventoryViewModel @Inject constructor(
                 allBlessings            = gameData.blessings,
                 activeBlessingExpiresAt = flags.activeBlessingExpiresAt,
                 activeBlessingXpPct     = run {
-                    val b = ChurchRepository.activeBlessing(flags, gameData.blessings) ?: return@run 0
+                    val b = churchRepo.activeBlessing(flags) ?: return@run 0
                     if (b.type != BlessingType.XP) return@run 0
                     val mult = blessingPrayerCapeMult(player, flags, gameData)
                     ((ChurchRepository.effectiveMagnitude(b, mult) - 1f) * 100 + 0.5f).toInt()

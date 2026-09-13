@@ -5,6 +5,7 @@ import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.simulator.PrestigeBoosts
 import javax.inject.Inject
+import javax.inject.Provider
 import javax.inject.Singleton
 import kotlin.math.roundToInt
 
@@ -18,6 +19,7 @@ import kotlin.math.roundToInt
 @Singleton
 class BoostRepository @Inject constructor(
     private val gameData: GameDataRepository,
+    private val churchRepoProvider: Provider<ChurchRepository>,
 ) {
     private val trees: Map<String, PrestigeSkillTreeData> get() = gameData.prestigeTrees
 
@@ -43,7 +45,7 @@ class BoostRepository @Inject constructor(
         // Prestige effects are earned, not bought, so they apply to ironmen too; the
         // purchased boost (excluded in xpBoostFactor) and church blessings stay inert.
         if (flags.ironman) return boostMult * prestigeMult
-        val blessingMult = ChurchRepository.xpMultiplier(flags, prayerCapeMult, gameData.blessings).toDouble()
+        val blessingMult = churchRepoProvider.get().xpMultiplier(flags, prayerCapeMult).toDouble()
         return boostMult * blessingMult * prestigeMult
     }
 

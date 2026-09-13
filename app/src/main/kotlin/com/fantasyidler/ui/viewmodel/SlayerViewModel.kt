@@ -28,6 +28,7 @@ import com.fantasyidler.util.withAppLocale
 import com.fantasyidler.util.xpMultiplierBreakdown
 import android.content.Context
 import com.fantasyidler.data.model.QuestProgress
+import com.fantasyidler.repository.ChurchRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -92,6 +93,7 @@ class SlayerViewModel @Inject constructor(
     private val townRepo: TownRepository,
     private val questRepo: QuestRepository,
     private val guildRepo: GuildRepository,
+    private val churchRepo: ChurchRepository,
     private val dailyQuestRepo: DailyQuestRepository,
     private val weeklyQuestRepo: WeeklyQuestRepository,
     private val json: Json,
@@ -368,6 +370,7 @@ class SlayerViewModel @Inject constructor(
                 gameData      = gameData,
                 boostRepo     = boostRepo,
                 townRepo      = townRepo,
+                churchRepo    = churchRepo,
                 json          = json,
                 dungeonKey    = dungeonKey,
                 weaponSlot    = resolvedWeaponSlot,

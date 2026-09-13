@@ -243,6 +243,7 @@ class HomeViewModel @Inject constructor(
     private val questRepo: QuestRepository,
     private val guildRepo: GuildRepository,
     private val townRepo: TownRepository,
+    private val churchRepo: ChurchRepository,
     private val queuedSessionStarter: QueuedSessionStarter,
     private val workerStarter: WorkerQueuedSessionStarter,
     private val slayerRepo: SlayerRepository,
@@ -355,7 +356,7 @@ class HomeViewModel @Inject constructor(
             val innXpMult = townRepo.workerXpMultiplier(flags)
             val capeMult = blessingPrayerCapeMult(player, flags, gameData)
             val playerXpBoostMult = if (flags.ironman) 1.0
-                else (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * ChurchRepository.xpMultiplier(flags, capeMult, gameData.blessings)
+                else (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * churchRepo.xpMultiplier(flags, capeMult)
             val sessionXpGain: (SkillSession?) -> Long = { s ->
                 if (s == null || s.skillName in listOf("combat", "boss", "expedition", "farming", "tower", "carnival")) 0L
                 else try {
@@ -556,8 +557,8 @@ class HomeViewModel @Inject constructor(
             val equippedCape = equipped[EquipSlot.CAPE]?.let { gameData.equipment[it] }
             val boostFactorFor   = { skill: String -> boostRepo.xpBoostFactor(skill, flags) }
             val blessingCapeMult = blessingPrayerCapeMult(player, flags, gameData)
-            val blessingXpMult   = if (flags.ironman) 1.0f else ChurchRepository.xpMultiplier(flags, blessingCapeMult, gameData.blessings)
-            val blessingCoinMult = if (flags.ironman) 1.0f else ChurchRepository.coinMultiplier(flags, blessingCapeMult, gameData.blessings) *
+            val blessingXpMult   = if (flags.ironman) 1.0f else churchRepo.xpMultiplier(flags, blessingCapeMult)
+            val blessingCoinMult = if (flags.ironman) 1.0f else churchRepo.coinMultiplier(flags, blessingCapeMult) *
                 PlayerRepository.gooseCoinMultiplier(json.decodeFromString<List<OwnedPet>>(player.pets)).toFloat()
 
             val ctx = CollectContext(flags, inventory, equippedCape, capeScalingBySkill, blessingCoinMult, petIds, player)
@@ -1183,7 +1184,7 @@ class HomeViewModel @Inject constructor(
                     ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
                     ?: EquipSlot.WEAPON_ATK
             } else null
-            val xpQueueMult = if (flags.ironman) 1.0 else (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * ChurchRepository.xpMultiplier(flags, blessingPrayerCapeMult(player, flags, gameData), gameData.blessings)
+            val xpQueueMult = if (flags.ironman) 1.0 else (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * churchRepo.xpMultiplier(flags, blessingPrayerCapeMult(player, flags, gameData))
             val rawXpGain = frames.sumOf { it.xpGain }
             // The original fight/run count isn't stored on the session itself, only in the
             // repeat-chain flags set when it was first started -- carry it forward so
@@ -1299,8 +1300,8 @@ class HomeViewModel @Inject constructor(
             val flags: PlayerFlags = json.decodeFromString(workerPlayer.flags)
             val boostFactorFor   = { skill: String -> boostRepo.xpBoostFactor(skill, flags) }
             val workerCapeMult   = blessingPrayerCapeMult(workerPlayer, flags, gameData)
-            val blessingXpMult   = if (flags.ironman) 1.0f else ChurchRepository.xpMultiplier(flags, workerCapeMult, gameData.blessings)
-            val blessingCoinMult = if (flags.ironman) 1.0f else ChurchRepository.coinMultiplier(flags, workerCapeMult, gameData.blessings) *
+            val blessingXpMult   = if (flags.ironman) 1.0f else churchRepo.xpMultiplier(flags, workerCapeMult)
+            val blessingCoinMult = if (flags.ironman) 1.0f else churchRepo.coinMultiplier(flags, workerCapeMult) *
                 PlayerRepository.gooseCoinMultiplier(json.decodeFromString<List<OwnedPet>>(workerPlayer.pets)).toFloat()
             val innXpMult        = townRepo.workerXpMultiplier(flags)
             val workerOwnedPets: List<OwnedPet> = if (flags.ironman) emptyList()

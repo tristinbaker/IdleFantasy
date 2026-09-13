@@ -23,35 +23,35 @@ class ChurchRepository @Inject constructor(
     private val playerRepo: PlayerRepository,
     private val townRepoProvider: Provider<TownRepository>,
     private val buffNotifScheduler: BuffNotificationScheduler,
-    private val boostRepo: BoostRepository,
+    private val boostRepoProvider: Provider<BoostRepository>,
     private val gameData: GameDataRepository,
 ) {
     /** Bone cost after the gnome Trickster's Favor prestige discount. */
     fun discountedBoneCost(blessing: BlessingData, flags: PlayerFlags): Int =
-        discountedBoneCost(blessing, boostRepo.blessingCostMultiplier(flags))
+        discountedBoneCost(blessing, boostRepoProvider.get().blessingCostMultiplier(flags))
+
+    fun activeBlessing(flags: PlayerFlags): BlessingData? {
+        if (flags.activeBlessingKey.isEmpty()) return null
+        if (flags.activeBlessingExpiresAt <= System.currentTimeMillis()) return null
+        return gameData.blessings.firstOrNull { it.key == flags.activeBlessingKey }
+    }
+
+    fun xpMultiplier(flags: PlayerFlags, prayerCapeMult: Float): Float {
+        val b = activeBlessing(flags) ?: return 1f
+        return if (b.type == BlessingType.XP) effectiveMagnitude(b, prayerCapeMult) else 1f
+    }
+
+    fun defBonus(flags: PlayerFlags, prayerCapeMult: Float): Int {
+        val b = activeBlessing(flags) ?: return 0
+        return if (b.type == BlessingType.DEFENSE) effectiveMagnitude(b, prayerCapeMult).toInt() else 0
+    }
+
+    fun coinMultiplier(flags: PlayerFlags, prayerCapeMult: Float): Float {
+        val b = activeBlessing(flags) ?: return 1f
+        return if (b.type == BlessingType.COINS) 1f + effectiveMagnitude(b, prayerCapeMult) else 1f
+    }
 
     companion object {
-        fun activeBlessing(flags: PlayerFlags, blessings: List<BlessingData>): BlessingData? {
-            if (flags.activeBlessingKey.isEmpty()) return null
-            if (flags.activeBlessingExpiresAt <= System.currentTimeMillis()) return null
-            return blessings.firstOrNull { it.key == flags.activeBlessingKey }
-        }
-
-        fun xpMultiplier(flags: PlayerFlags, prayerCapeMult: Float, blessings: List<BlessingData>): Float {
-            val b = activeBlessing(flags, blessings) ?: return 1f
-            return if (b.type == BlessingType.XP) effectiveMagnitude(b, prayerCapeMult) else 1f
-        }
-
-        fun defBonus(flags: PlayerFlags, prayerCapeMult: Float, blessings: List<BlessingData>): Int {
-            val b = activeBlessing(flags, blessings) ?: return 0
-            return if (b.type == BlessingType.DEFENSE) effectiveMagnitude(b, prayerCapeMult).toInt() else 0
-        }
-
-        fun coinMultiplier(flags: PlayerFlags, prayerCapeMult: Float, blessings: List<BlessingData>): Float {
-            val b = activeBlessing(flags, blessings) ?: return 1f
-            return if (b.type == BlessingType.COINS) 1f + effectiveMagnitude(b, prayerCapeMult) else 1f
-        }
-
         /**
          * Blessing strength with the prayer cape's multiplier folded in (issue #1491). The
          * cape scales the blessing's BONUS: for XP the magnitude is a full multiplier (1.5x),
@@ -107,7 +107,7 @@ class ChurchRepository @Inject constructor(
 
     suspend fun activateBlessing(key: String): BlessingActivateResult = playerRepo.withLock {
         val flags     = playerRepo.getFlagsUnlocked()
-        val active    = activeBlessing(flags, gameData.blessings)
+        val active    = activeBlessing(flags)
         if (active != null && active.key != key) return@withLock BlessingActivateResult.AlreadyActive
         val blessing  = gameData.blessings.firstOrNull { it.key == key } ?: return@withLock BlessingActivateResult.AlreadyActive
         if (flags.ironman && blessing.type != BlessingType.DEFENSE) {
@@ -140,7 +140,7 @@ class ChurchRepository @Inject constructor(
 
         val now = System.currentTimeMillis()
         val durationMs = (townRepoProvider.get().blessingDurationMs(flags) *
-            boostRepo.blessingDurationMultiplier(flags)).toLong()
+            boostRepoProvider.get().blessingDurationMultiplier(flags)).toLong()
         val newExpiresAt = if (active != null && active.key == key) {
             flags.activeBlessingExpiresAt + durationMs
         } else {

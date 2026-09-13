@@ -70,7 +70,7 @@ class ChurchViewModel @Inject constructor(
         val inventory: Map<String, Int> = json.decodeFromString(player.inventory)
         val prayerLevel = levels[Skills.PRAYER] ?: 1
         val prayerCapeMult = blessingPrayerCapeMult(player, flags, gameData)
-        val active      = ChurchRepository.activeBlessing(flags, gameData.blessings)
+        val active      = churchRepo.activeBlessing(flags)
         val remaining   = if (active != null) (flags.activeBlessingExpiresAt - System.currentTimeMillis()).coerceAtLeast(0L) else 0L
         extra.copy(
             isLoading                 = false,
