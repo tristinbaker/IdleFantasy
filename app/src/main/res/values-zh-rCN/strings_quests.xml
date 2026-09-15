@@ -476,7 +476,7 @@
     <string name="quest_daily_mine_coal_objective">开采300个煤炭。</string>
     <string name="quest_daily_mine_mithril_objective">开采50个秘银矿石。</string>
     <string name="quest_daily_mine_runite_objective">开采20个符文矿石。</string>
-    <string name="quest_daily_fish_salmon_objective">捕获120条鲑鱼。</string>
+    <string name="quest_daily_fish_salmon_objective">捕获120条三文鱼。</string>
     <string name="quest_daily_fish_lobster_objective">捕获60只龙虾。</string>
     <string name="quest_daily_fish_swordfish_objective">捕获30条旗鱼。</string>
     <string name="quest_daily_fish_shark_objective">捕获15条鲨鱼。</string>
@@ -489,7 +489,7 @@
     <string name="quest_daily_smith_adamantite_objective">锻造10个精金锭。</string>
     <string name="quest_daily_smith_runite_objective">锻造5个符文锭。</string>
     <string name="quest_daily_cook_trout_objective">烹饪100条鳟鱼。</string>
-    <string name="quest_daily_cook_salmon_objective">烹饪80条鲑鱼。</string>
+    <string name="quest_daily_cook_salmon_objective">烹饪80条三文鱼。</string>
     <string name="quest_daily_cook_lobster_objective">烹饪40只龙虾。</string>
     <string name="quest_daily_cook_swordfish_objective">烹饪20条旗鱼。</string>
     <string name="quest_daily_kill_goblin_objective">击败80只哥布林。</string>
