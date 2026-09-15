@@ -310,12 +310,12 @@
     <string name="quest_construction_4_objective">Build 50 Maple Dressers</string> <!-- untranslated -->
     <string name="quest_construction_5_name">Construction V</string> <!-- untranslated -->
     <string name="quest_construction_5_objective">Build 25 Magic Thrones</string> <!-- untranslated -->
-    <string name="quest_construction_upgrade_inn_name">Renovate the Inn</string> <!-- untranslated -->
-    <string name="quest_construction_upgrade_inn_objective">Upgrade the Inn at least once</string> <!-- untranslated -->
-    <string name="quest_construction_upgrade_guild_name">Expand the Guild Hall</string> <!-- untranslated -->
-    <string name="quest_construction_upgrade_guild_objective">Upgrade the Guild Hall at least once</string> <!-- untranslated -->
-    <string name="quest_construction_upgrade_church_name">Restore the Church</string> <!-- untranslated -->
-    <string name="quest_construction_upgrade_church_objective">Upgrade the Church at least once</string> <!-- untranslated -->
+    <string name="quest_construction_upgrade_inn_name">Zrenovuj krčmu</string>
+    <string name="quest_construction_upgrade_inn_objective">Aspoň jednou vylepši krčmu</string>
+    <string name="quest_construction_upgrade_guild_name">Rozšířit cechovní síň</string>
+    <string name="quest_construction_upgrade_guild_objective">Aspoň jednou vylepši cechovní síň</string>
+    <string name="quest_construction_upgrade_church_name">Oprav kostel</string>
+    <string name="quest_construction_upgrade_church_objective">Aspoň jednou vylepši kostel</string>
 
     <!-- Thieving -->
     <string name="quest_thieving_1_name">Thieving I</string> <!-- untranslated -->

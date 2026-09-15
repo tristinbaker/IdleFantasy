@@ -21,8 +21,8 @@
     <string name="btn_abandon">Opustit</string>
     <string name="btn_repeat_action">Opakovat</string>
     <string name="btn_collect">Posbírat odměny</string>
-    <string name="btn_equip">Vybavit</string>
-    <string name="btn_unequip">Odložit</string>
+    <string name="btn_equip">Nasadit</string>
+    <string name="btn_unequip">Sundat</string>
     <string name="btn_buy">Koupit</string>
     <string name="btn_sell">Prodat</string>
     <string name="btn_plant">Zasadit</string>
@@ -203,7 +203,7 @@
     <!-- Translator note: %1$s = formatted XP amount, %2$d = target level number -->
     <string name="format_xp_to_next">%1$s XP na úroveň %2$d</string>
     <!-- Translator note: %1$s = formatted XP amount remaining to reach the level cap (99) -->
-    <string name="xp_to_99">%1$s XP to 99</string> <!-- untranslated -->
+    <string name="xp_to_99">%1$s XP na 99</string>
     <!-- Translator note: %1$s = time string (e.g. "42m 10s") -->
     <string name="format_time_remaining">Zbývá %1$s</string>
     <!-- Translator note: %1$s = relative time (e.g. "5m ago") -->
@@ -340,7 +340,7 @@
     <string name="settings_seasonal_events">Sezónní akce</string>
     <string name="settings_seasonal_events_desc">Zobrazit probíhající sezónní akci na domovské obrazovce.</string>
     <string name="settings_collapsible_town_grid">Sbalitelná karta Město</string>
-    <string name="settings_collapsible_town_grid_desc">Zobrazit sekci Město (obchod, hostinec, cech apod.) jako sbalitelnou kartu na domovské obrazovce.</string>
+    <string name="settings_collapsible_town_grid_desc">Zobrazit sekci Město (obchod, krčma, cech apod.) jako sbalitelnou kartu na domovské obrazovce.</string>
     <string name="settings_character_viewer">Prohlížeč postavy</string>
     <string name="settings_character_viewer_desc">Zobrazit obrázek postavy na domovské obrazovce</string>
     <string name="settings_stats_bar">Statistiky</string>
@@ -504,7 +504,7 @@
     <string name="settings_backup_no_folder">Nebyla vybrána žádná složka</string>
     <string name="settings_backup_choose">Vybrat</string>
     <string name="settings_backup_frequency">Četnost</string>
-    <string name="settings_backup_count">Number of backups</string> <!-- untranslated -->
+    <string name="settings_backup_count">Počet záloh</string>
     <string name="settings_backup_off">Vypnuto</string>
     <string name="settings_backup_hourly">Každou hodinu</string>
     <string name="settings_backup_daily">Denně</string>
@@ -877,7 +877,7 @@
         <item>Xander</item>
         <item>Yara</item>
     </string-array> <!-- untranslated -->
-    <string name="inn_title">Hostinec</string>
+    <string name="inn_title">Krčma</string>
     <string name="inn_desc">Najmi si pracovníka, který za tebe bude trénovat dovednosti, nebo nakup jídlo z denní nabídky. Pracovníci se nezapočítávají do plnění tvých úkolů.</string>
     <string name="inn_worker_already_hired">Pracovník už je najatý.</string>
     <string name="inn_not_enough_coins">Nemáš dost zlatých.</string>
@@ -922,61 +922,61 @@
     <string name="achievement_group_collection">Sbírka</string>
 
     <string name="achievement_total_50_name">Dobrodruh</string>
-    <string name="achievement_total_50_desc">Reach total level 50</string> <!-- untranslated -->
-    <string name="achievement_total_100_name">Journeyman</string> <!-- untranslated -->
-    <string name="achievement_total_100_desc">Reach total level 100</string> <!-- untranslated -->
+    <string name="achievement_total_50_desc">Dosáhnout celkovou úroveň 50</string>
+    <string name="achievement_total_100_name">Tovaryš</string>
+    <string name="achievement_total_100_desc">Dosáhnout celkovou úroveň 100</string>
     <string name="achievement_total_250_name">Seasoned</string> <!-- untranslated -->
-    <string name="achievement_total_250_desc">Reach total level 250</string> <!-- untranslated -->
-    <string name="achievement_total_500_name">Veteran</string> <!-- untranslated -->
-    <string name="achievement_total_500_desc">Reach total level 500</string> <!-- untranslated -->
-    <string name="achievement_total_750_name">Master</string> <!-- untranslated -->
-    <string name="achievement_total_750_desc">Reach total level 750</string> <!-- untranslated -->
-    <string name="achievement_total_1000_name">Legend</string> <!-- untranslated -->
-    <string name="achievement_total_1000_desc">Reach total level 1000</string> <!-- untranslated -->
-    <string name="achievement_total_1500_name">Champion</string> <!-- untranslated -->
-    <string name="achievement_total_1500_desc">Reach total level 1500</string> <!-- untranslated -->
-    <string name="achievement_skill_99_name">First Mastery</string> <!-- untranslated -->
-    <string name="achievement_skill_99_desc">Max any skill to level 99</string> <!-- untranslated -->
-    <string name="achievement_all_99_name">Completionist</string> <!-- untranslated -->
-    <string name="achievement_all_99_desc">Max all skills to level 99</string> <!-- untranslated -->
+    <string name="achievement_total_250_desc">Dosáhnout celkovou úroveň 250</string>
+    <string name="achievement_total_500_name">Veterán</string>
+    <string name="achievement_total_500_desc">Dosáhnout celkovou úroveň 500</string>
+    <string name="achievement_total_750_name">Mistr</string>
+    <string name="achievement_total_750_desc">Dosáhnout celkovou úroveň 750</string>
+    <string name="achievement_total_1000_name">Legenda</string>
+    <string name="achievement_total_1000_desc">Dosáhnout celkovou úroveň 1000</string>
+    <string name="achievement_total_1500_name">Šampion</string>
+    <string name="achievement_total_1500_desc">Dosáhnout celkovou úroveň 1500</string>
+    <string name="achievement_skill_99_name">Mistr prvního stupně</string>
+    <string name="achievement_skill_99_desc">Zvyš jakoukoliv dovednost na úroveň 99</string>
+    <string name="achievement_all_99_name">Lovec dovedností</string>
+    <string name="achievement_all_99_desc">Zvyš všechny dovednosti na úroveň 99</string>
 
-    <string name="achievement_combat_10_name">Fighter</string> <!-- untranslated -->
-    <string name="achievement_combat_10_desc">Reach combat level 10</string> <!-- untranslated -->
-    <string name="achievement_combat_30_name">Warrior</string> <!-- untranslated -->
-    <string name="achievement_combat_30_desc">Reach combat level 30</string> <!-- untranslated -->
-    <string name="achievement_combat_50_name">Champion</string> <!-- untranslated -->
-    <string name="achievement_combat_50_desc">Reach combat level 50</string> <!-- untranslated -->
-    <string name="achievement_combat_75_name">Elite</string> <!-- untranslated -->
-    <string name="achievement_combat_75_desc">Reach combat level 75</string> <!-- untranslated -->
-    <string name="achievement_combat_99_name">Hero</string> <!-- untranslated -->
-    <string name="achievement_combat_99_desc">Reach combat level 99</string> <!-- untranslated -->
-    <string name="achievement_combat_113_name">Max Combat</string> <!-- untranslated -->
-    <string name="achievement_combat_113_desc">Reach the maximum combat level of 113</string> <!-- untranslated -->
+    <string name="achievement_combat_10_name">Bojovník</string>
+    <string name="achievement_combat_10_desc">Dosáhni úroveň boje 10</string>
+    <string name="achievement_combat_30_name">Válečník</string>
+    <string name="achievement_combat_30_desc">Dosáhni úroveň boje 30</string>
+    <string name="achievement_combat_50_name">Šampion</string>
+    <string name="achievement_combat_50_desc">Dosáhni úroveň boje 50</string>
+    <string name="achievement_combat_75_name">Elita</string>
+    <string name="achievement_combat_75_desc">Dosáhni úroveň boje 75</string>
+    <string name="achievement_combat_99_name">Hrdina</string>
+    <string name="achievement_combat_99_desc">Dosáhni úroveň boje 99</string>
+    <string name="achievement_combat_113_name">Maximální boj</string>
+    <string name="achievement_combat_113_desc">Dosáhni maximální úroveň boje 113</string>
 
-    <string name="achievement_quest_1_name">Quester</string> <!-- untranslated -->
-    <string name="achievement_quest_1_desc">Complete 1 quest</string> <!-- untranslated -->
-    <string name="achievement_quest_5_name">Dedicated</string> <!-- untranslated -->
-    <string name="achievement_quest_5_desc">Complete 5 quests</string> <!-- untranslated -->
-    <string name="achievement_quest_25_name">Quest Hound</string> <!-- untranslated -->
-    <string name="achievement_quest_25_desc">Complete 25 quests</string> <!-- untranslated -->
-    <string name="achievement_quest_50_name">Quest Master</string> <!-- untranslated -->
-    <string name="achievement_quest_50_desc">Complete 50 quests</string> <!-- untranslated -->
-    <string name="achievement_quest_all_name">Quest Champion</string> <!-- untranslated -->
-    <string name="achievement_quest_all_desc">Complete all quests</string> <!-- untranslated -->
+    <string name="achievement_quest_1_name">Dobrodruh</string>
+    <string name="achievement_quest_1_desc">Dokonči 1 úkol</string>
+    <string name="achievement_quest_5_name">Oddaný</string>
+    <string name="achievement_quest_5_desc">Dokonči 5 úkolů</string>
+    <string name="achievement_quest_25_name">Lovec úkolů</string>
+    <string name="achievement_quest_25_desc">Dokonči 25 úkolů</string>
+    <string name="achievement_quest_50_name">Mistr úkolů</string>
+    <string name="achievement_quest_50_desc">Dokonči 50 úkolů</string>
+    <string name="achievement_quest_all_name">Šampion úkolů</string>
+    <string name="achievement_quest_all_desc">Dokonči všechny úkoly</string>
 
-    <string name="achievement_pet_first_name">Animal Friend</string> <!-- untranslated -->
-    <string name="achievement_pet_first_desc">Collect your first pet</string> <!-- untranslated -->
-    <string name="achievement_pet_all_name">Menagerie</string> <!-- untranslated -->
-    <string name="achievement_pet_all_desc">Collect all pets</string> <!-- untranslated -->
+    <string name="achievement_pet_first_name">Přítel zvířat</string>
+    <string name="achievement_pet_first_desc">Najdi své první zvířátko</string>
+    <string name="achievement_pet_all_name">Krotitel</string>
+    <string name="achievement_pet_all_desc">Najdi všechna zvířátka</string>
 
     <!-- ===== Quest display names (override toTitleCase fallback) ===== -->
     <string name="quest_kbd_slayer_1_name">King Black Dragon Slayer I</string> <!-- untranslated -->
     <string name="quest_kbd_slayer_2_name">King Black Dragon Slayer II</string> <!-- untranslated -->
     <string name="quest_kbd_slayer_3_name">King Black Dragon Slayer III</string> <!-- untranslated -->
-    <string name="inn_daily_resets">Refreshes daily at %1$s</string> <!-- untranslated -->
-    <string name="inn_food_heal">+%1$d HP</string> <!-- untranslated -->
-    <string name="inn_food_purchased">Food purchased.</string> <!-- untranslated -->
-    <string name="inn_buy_qty">Quantity</string> <!-- untranslated -->
+    <string name="inn_daily_resets">Obnovuje se denně v %1$s</string>
+    <string name="inn_food_heal">+%1$d HP</string>
+    <string name="inn_food_purchased">Jídlo objednáno.</string>
+    <string name="inn_buy_qty">Množství</string>
     <string name="inn_buy_total">Total: %1$s</string> <!-- untranslated -->
     <string name="inn_card_desc">Hire workers and stock food</string> <!-- untranslated -->
     <string name="worker_no_active_session">Worker is idle — no sessions queued</string> <!-- untranslated -->
@@ -985,7 +985,7 @@
     <string name="worker_skills_title_nav">Worker Skills</string> <!-- untranslated -->
 
     <!-- Guild Hall -->
-    <string name="guild_hall_title">Guild Hall</string> <!-- untranslated -->
+    <string name="guild_hall_title">Cechovní síň</string>
     <string name="guild_hall_desc">Join guilds and complete daily requests to rank up</string> <!-- untranslated -->
     <string name="guild_hall_intro">Guilds reward you for activities you already do. Complete quests and daily requests to earn cross-skill materials, coins, and XP, so specialists can still access resources from skills they don\'t train.</string> <!-- untranslated -->
     <string name="guild_level_label">Level %1$d</string> <!-- untranslated -->
@@ -1052,11 +1052,11 @@
     <string name="mercantile_queue_label">Add to Queue</string> <!-- untranslated -->
 
     <!-- Church -->
-    <string name="church_title">Church</string> <!-- untranslated -->
+    <string name="church_title">Kostel</string>
     <string name="church_desc">Blessings for XP, defense, and coins</string> <!-- untranslated -->
-    <string name="church_no_active_blessing">No active blessing — visit the Church to pray.</string> <!-- untranslated -->
-    <string name="church_active_label">Active Blessing</string> <!-- untranslated -->
-    <string name="church_expires_in">Expires in %1$s</string> <!-- untranslated -->
+    <string name="church_no_active_blessing">Žádné aktivní požehnání — navštiv kostel pro motlitbu.</string>
+    <string name="church_active_label">Aktivní požehnání</string>
+    <string name="church_expires_in">Vyprší za %1$s</string>
     <string name="church_blessing_active_fmt">%1$s • %2$s left</string> <!-- untranslated -->
     <string name="church_section_xp">XP Blessings</string> <!-- untranslated -->
     <string name="church_section_defense">Defense Blessings</string> <!-- untranslated -->
@@ -1070,10 +1070,10 @@
     <string name="church_effect_def">+%1$d Defense for %2$d hours</string> <!-- untranslated -->
     <string name="church_effect_coins">+%1$d%% coin drops for %2$d hours</string> <!-- untranslated -->
     <string name="church_cost_bones">Costs %1$d bones</string> <!-- untranslated -->
-    <string name="church_confirm_title">Activate Blessing?</string> <!-- untranslated -->
+    <string name="church_confirm_title">Aktivovat požehnání?</string>
     <string name="church_bones_available">You have %1$d bones on hand — worth %2$d toward blessings (bigger bones count for more)</string> <!-- untranslated -->
     <string name="church_not_enough_bones">Not enough bones (need %1$d)</string> <!-- untranslated -->
-    <string name="church_already_active">A blessing is already active</string> <!-- untranslated -->
+    <string name="church_already_active">Již máš aktivní požehnání</string>
     <string name="church_confirm_deactivate_title">Deactivate Blessing?</string> <!-- untranslated -->
     <string name="church_confirm_deactivate_body">Are you sure you want to deactivate your active blessing? You will not get your bones back.</string> <!-- untranslated -->
 
@@ -1147,12 +1147,12 @@
 
     <!-- Slayer -->
     <string name="skill_slayer_name">Slayer</string> <!-- untranslated -->
-    <string name="skill_slayer_desc">Receive tasks from the Slayer Master in Town.</string> <!-- untranslated -->
-    <string name="builder_title">Builder\'s Workshop</string> <!-- untranslated -->
-    <string name="builder_card_desc">Upgrade the Inn, Guild Hall, and Church</string> <!-- untranslated -->
+    <string name="skill_slayer_desc">Ber si úkoly od Mistra popravčího ve městě</string>
+    <string name="builder_title">Městská výstavba</string>
+    <string name="builder_card_desc">Vylepši krčmu, cechovní síň a kostel</string>
 
     <!-- Player housing -->
-    <string name="house_title">My House</string> <!-- untranslated -->
+    <string name="house_title">Můj dům</string>
     <string name="house_edit">Edit</string> <!-- untranslated -->
     <string name="house_done">Done</string> <!-- untranslated -->
     <string name="house_share">Share a picture of your house</string> <!-- untranslated -->
@@ -1346,7 +1346,7 @@
     <string name="house_item_shield_kite">Kite Shield Display</string> <!-- untranslated -->
     <string name="house_item_swords_crossed">Crossed Swords</string> <!-- untranslated -->
     <string name="house_item_lamp">Wall Lantern</string> <!-- untranslated -->
-    <string name="slayer_title">Slayer Master</string> <!-- untranslated -->
+    <string name="slayer_title">Mistr popravčí</string>
     <string name="slayer_card_desc">Tasks and rewards for slayers</string> <!-- untranslated -->
     <string name="slayer_desc">Complete tasks to earn Slayer XP and points. Spend points in the shop for exclusive gear.</string> <!-- untranslated -->
     <string name="slayer_level_label">Level %1$d</string> <!-- untranslated -->
@@ -1360,7 +1360,7 @@
     <string name="slayer_task_stuck">This enemy is only found in an Expeditions dungeon you haven\'t discovered yet. Reroll for free.</string> <!-- untranslated -->
     <string name="slayer_reroll_free">Reroll (free)</string> <!-- untranslated -->
     <string name="slayer_no_eligible_tasks">No eligible tasks at your Slayer level.</string> <!-- untranslated -->
-    <string name="slayer_task_complete">Task complete! Visit the Slayer Master for a new one.</string> <!-- untranslated -->
+    <string name="slayer_task_complete">Úkol splněn! Navštiv Mistra popravčího pro další.</string>
     <string name="slayer_xp_per_kill">%1$d XP/kill</string> <!-- untranslated -->
     <string name="slayer_points_on_complete">+%1$d pts on completion</string> <!-- untranslated -->
     <string name="slayer_shop_title">Slayer Shop</string> <!-- untranslated -->
@@ -1423,7 +1423,7 @@
     <string name="shop_cat_logs_and_wood">Logs &amp; Wood</string> <!-- untranslated -->
     <string name="shop_cat_seeds_and_farming">Seeds &amp; Farming</string> <!-- untranslated -->
     <string name="shop_cat_merchants_guild">Merchant\'s Guild</string> <!-- untranslated -->
-    <string name="shop_cat_equipment">Equipment</string> <!-- untranslated -->
+    <string name="shop_cat_equipment">Vybavení</string>
     <string name="shop_cat_special">Special</string> <!-- untranslated -->
     <string name="shop_cat_weapons">Weapons</string> <!-- untranslated -->
     <string name="shop_cat_armor">Armor</string> <!-- untranslated -->
@@ -1529,9 +1529,9 @@
 
     <!-- Town building upgrade UI -->
     <string name="town_upgrade_section_title">Town Building</string> <!-- untranslated -->
-    <string name="town_building_inn_name">Inn</string> <!-- untranslated -->
-    <string name="town_building_guild_hall_name">Guild Hall</string> <!-- untranslated -->
-    <string name="town_building_church_name">Church</string> <!-- untranslated -->
+    <string name="town_building_inn_name">Krčma</string>
+    <string name="town_building_guild_hall_name">Cechovní síň</string>
+    <string name="town_building_church_name">Kostel</string>
     <string name="town_building_current_tier">Tier %1$d / %2$d</string> <!-- untranslated -->
     <string name="town_building_maxed_label">Fully Upgraded</string> <!-- untranslated -->
     <string name="town_upgrade_next_label">Next Upgrade</string> <!-- untranslated -->
@@ -1772,8 +1772,8 @@
     <string name="worker_not_enough_materials">Not enough materials.</string> <!-- untranslated -->
     <string name="shop_no_junk">No junk to sell</string> <!-- untranslated -->
     <string name="shop_sold_junk">Sold junk for %1$s coins</string> <!-- untranslated -->
-    <string name="shop_no_old_equipment">No old equipment to sell</string> <!-- untranslated -->
-    <string name="shop_sold_old_equipment">Sold old equipment for %1$s coins</string> <!-- untranslated -->
+    <string name="shop_no_old_equipment">Žádné staré vybavení k prodeji</string>
+    <string name="shop_sold_old_equipment">Staré vybavení prodáno za %1$s zlatých</string>
     <string name="shop_bulk_sell_total">Total</string> <!-- untranslated -->
     <string name="shop_bulk_sell_confirm">Sell All</string> <!-- untranslated -->
     <string name="shop_recent_bulk_sales">Recent bulk sales</string> <!-- untranslated -->
@@ -1880,8 +1880,8 @@
     <string name="boss_coin_cap_spent">This boss\'s coin drops are reduced until tomorrow</string> <!-- untranslated -->
     <string name="bestiary_coin_cap_label">After %1$d kills/day</string> <!-- untranslated -->
     <string name="session_note_boss_coin_cap">Coin drop reduced (daily cap for this boss)</string> <!-- untranslated -->
-    <string name="guild_daily_button">Guild Dailies</string> <!-- untranslated -->
-    <string name="guild_daily_banner_claimable">Guild daily complete! Claim it in the Guild Hall</string> <!-- untranslated -->
+    <string name="guild_daily_button">Denní cechovní úkoly</string>
+    <string name="guild_daily_banner_claimable">Denní cechovní úkoly splněny! Vyzvedni si odměnu v cechovní síni.</string>
     <string name="guild_daily_banner_claimed">Guild daily claimed today</string> <!-- untranslated -->
     <string name="guild_daily_rank_maxed">Guild rank maxed</string> <!-- untranslated -->
 
@@ -1897,7 +1897,7 @@
     <string name="merc_camp_title">Mercenary Camp</string> <!-- untranslated -->
     <string name="merc_camp_desc">Contracts last for 24 hours after hiring. A new pool of mercenaries arrives each day.</string> <!-- untranslated -->
     <string name="merc_hire">Hire</string> <!-- untranslated -->
-    <string name="merc_dismiss">Dismiss</string> <!-- untranslated -->
+    <string name="merc_dismiss">Propustit</string>
     <string name="merc_hired">%1$s joins your party for 24 hours.</string> <!-- untranslated -->
     <string name="merc_party_full">Your party is full.</string> <!-- untranslated -->
     <string name="merc_already_hired">%1$s is already under contract.</string> <!-- untranslated -->
