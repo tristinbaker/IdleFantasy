@@ -12,8 +12,8 @@
 
     <!-- ===== Common buttons ===== -->
     <string name="btn_start">Spustit</string>
-    <string name="btn_start_session">Spustit sezení</string>
-    <string name="btn_abandon_session">Zrušit sezení</string>
+    <string name="btn_start_session">Začít střetnutí</string>
+    <string name="btn_abandon_session">Opustit střetnutí</string>
     <string name="btn_collect_results">Posbírat výsledky</string>
     <string name="btn_cancel">Zrušit</string>
     <string name="btn_craft">Vyrobit</string>
@@ -34,7 +34,7 @@
     <string name="btn_view_drops">View Drops</string>
     <string name="btn_start_quest">Začít úkol</string>
     <string name="btn_abandon_quest">Opustit úkol</string>
-    <string name="btn_enter_dungeon">Vstoupit</string>
+    <string name="btn_enter_dungeon">Začít výpravu</string>
     <string name="btn_enter_arena">Vstoupit do arény</string>
     <string name="btn_activate">Aktivovat</string>
     <string name="btn_extend">Prodloužit</string>
@@ -46,7 +46,7 @@
     <!-- ===== Common labels ===== -->
     <string name="label_level">Úroveň</string>
     <string name="label_xp">XP</string>
-    <string name="label_coins">Mince</string>
+    <string name="label_coins">Zlaté</string>
     <string name="label_hp">HP</string>
     <string name="label_attack">Útok</string>
     <string name="label_strength">Síla</string>
@@ -67,7 +67,7 @@
     <string name="label_by_location">Podle místa</string>
     <string name="bestiary_not_encountered">Dosud nepotkán</string>
     <string name="bestiary_filter_all">Vše</string>
-    <string name="bestiary_filter_missing">Chybějící</string>
+    <string name="bestiary_filter_missing">Chybí</string>
     <string name="bestiary_qty_header">Množství</string>
     <string name="bestiary_chance_header">Šance</string>
     <string name="label_completion_progress">%1$d / %2$d %3$s</string>
@@ -81,19 +81,19 @@
     <string name="bestiary_str_def">Síl Obr</string>
     <string name="bestiary_rng_def">Dál Obr</string>
     <string name="bestiary_mag_def">Mag Obr</string>
-    <string name="label_session_in_progress">Probíhá sezení</string>
-    <string name="label_session_active">Sezení aktivní</string>
-    <string name="label_no_active_session">Žádné aktivní sezení</string>
-    <string name="label_session_complete">Sezení dokončeno!</string>
-    <string name="home_sessions_complete_title">%1$d Sezení dokončeno!</string>
+    <string name="label_session_in_progress">Probíhá střetnutí</string>
+    <string name="label_session_active">Střetnutí aktivní</string>
+    <string name="label_no_active_session">Žádné aktivní střetnutí</string>
+    <string name="label_session_complete">Střetnutí dokončeno!</string>
+    <string name="home_sessions_complete_title">%1$d střetnutí dokončeno!</string>
     <string name="home_boss_defeated_title">Porazils %1$s!</string>
     <string name="home_boss_defeated_by_title">%1$s tě porazil.</string>
     <string name="home_dungeon_died_title">%1$s — Zemřel jsi</string>
-    <string name="home_dungeon_complete_title">%1$s Dokončeno!</string>
-    <string name="home_expedition_complete_title">%1$s Expedice dokončena</string>
-    <string name="home_skill_session_complete_title">%1$s Sezení dokončeno</string>
+    <string name="home_dungeon_complete_title">%1$s dokončen!</string>
+    <string name="home_expedition_complete_title">Expedice %1$s dokončena</string>
+    <string name="home_skill_session_complete_title">%1$s střetnutí dokončeno</string>
     <string name="home_bones_buried_row">%1$s pohřbeno</string>
-    <string name="worker_sessions_complete_title">Pracovník: %1$d Sezení dokončeno!</string>
+    <string name="worker_sessions_complete_title">Pracovník: %1$d střetnutí dokončeno!</string>
     <string name="worker_boss_defeated_title">Pracovník: Porazil %1$s!</string>
     <string name="worker_dungeon_died_title">Pracovník: %1$s — Zemřel</string>
     <string name="worker_dungeon_complete_title">Pracovník: %1$s Dokončeno!</string>
@@ -113,7 +113,7 @@
     <string name="duration_minutes">%1$dm</string>
     <string name="duration_seconds">%1$ds</string>
     <string name="duration_complete">Dokončeno</string>
-    <string name="label_session_results">Výsledky sezení</string>
+    <string name="label_session_results">Výsledky střetnutí</string>
     <string name="label_xp_gained">Získané XP</string>
     <string name="label_items_collected">Získané předměty</string>
     <string name="label_level_ups">Vyšší úrovně</string>
@@ -128,12 +128,12 @@
     <string name="label_patch">Záhon</string>
     <string name="label_growth_time">Čas růstu</string>
     <string name="label_ready_to_harvest">Připraveno ke sklizni</string>
-    <string name="label_empty">Prazdný</string>
+    <string name="label_empty">Prázdný</string>
     <string name="inventory_sort_quantity">Počet</string>
     <string name="inventory_sort_az">A-Z</string>
     <string name="inventory_cat_weapons">Zbraně</string>
-    <string name="inventory_cat_armour">Brnění</string>
-    <string name="inventory_cat_tools">Nástoje</string>
+    <string name="inventory_cat_armour">Zbroj</string>
+    <string name="inventory_cat_tools">Nástroje</string>
     <string name="inventory_cat_food">Jídlo</string>
     <string name="inventory_cat_potions">Lektvary</string>
     <string name="inventory_cat_materials">Materiály</string>
@@ -148,7 +148,7 @@
     <string name="label_active_spell">Aktivní kouzlo</string>
     <string name="label_drops">Drops</string>
     <string name="label_boss">Boss</string>
-    <string name="label_dungeon">Dungeon</string>
+    <string name="label_dungeon">Výprava</string>
     <string name="label_difficulty">Obtížnost</string>
     <string name="label_completed">Hotové</string>
     <string name="label_in_progress">Probíhá</string>
@@ -190,7 +190,7 @@
     <string name="label_output">Výstup</string>
     <string name="label_xp_per_action">XP za akci</string>
     <string name="label_unlocked_at">Odemčeno na úrovni</string>
-    <string name="label_kills">Zabití</string>
+    <string name="label_kills">Oběti</string>
     <string name="label_personal_best">Osobní rekord</string>
     <string name="label_daily_dig">Denní vykopávky</string>
     <string name="label_dig_depth">Hloubka jámy</string>
@@ -211,7 +211,7 @@
     <!-- Translator note: %1$s = item display name, %2$d = quantity -->
 
     <!-- Translator note: %1$d = coin amount -->
-    <string name="format_price_coins">%1$d mincí</string>
+    <string name="format_price_coins">%1$d zlatých</string>
     <!-- Translator note: %1$d = required level, %2$s = skill display name -->
     <string name="format_level_requirement">Vyžaduje úroveň %1$d %2$s</string>
     <!-- Translator note: %1$s = formatted XP amount -->
@@ -293,7 +293,7 @@
     <string name="error_unknown">Něco se pokazilo. Zkus to prosím znovu.</string>
 
     <!-- ===== Session dialogs ===== -->
-    <string name="session_abandon_title">Opustit sezení?</string>
+    <string name="session_abandon_title">Opustit střetnutí?</string>
     <string name="session_abandon_body">Veškeré výnosy z této aktivity se ztratí.</string>
 
     <!-- ===== Onboarding ===== -->
@@ -442,7 +442,7 @@
     <string name="theme_editor_sample_title">Vzorová karta</string>
     <string name="theme_editor_sample_body">Hlavní a tlumený text na ploše</string>
     <string name="theme_editor_sample_button">Tlačítko</string>
-    <string name="theme_editor_sample_error">Chybový text</string>
+    <string name="theme_editor_sample_error">Text chyby</string>
     <string name="theme_editor_name_label">Název motivu</string>
     <string name="theme_editor_name_reserved">Tento název je vyhrazen pro oficiální motiv.</string>
     <string name="theme_editor_overwrite_hint">Uložením nahradíš \"%1$s\".</string>
@@ -522,28 +522,28 @@
     <string name="home_town_title">Město</string>
     <string name="home_town_desc">Navštiv obchod, krčmu, cech, kostel, městskou výstavbu, popravčího a karneval</string>
     <string name="guild_not_unlocked">Ještě nebylo odemčeno</string>
-    <string name="guild_dailies_done_today">Dnešní denní úkoly splněny</string>
+    <string name="guild_dailies_done_today">Dnes dokončené denní úkoly</string>
     <string name="guild_dailies_remaining_today">%1$d dnes zbývá</string>
     <string name="guild_do_dailies_hint">Plň denní úkoly a postoupíš do další hodnosti</string>
     <string name="guild_quest_gate_blocked">Plň úkoly a postoupíš do další hodnosti</string>
     <string name="guild_quest_required">K postupu je nutné splnit úkol</string>
-    <string name="guild_progress_dailies_and_quest">Pro postup splň %1$d/%2$d denních zakázek a úkolů.</string>
-    <string name="guild_progress_dailies_only">Pro postup splň %1$d/%2$d denních zakázek.</string>
+    <string name="guild_progress_dailies_and_quest">Pro postup splněno %1$d/%2$d denních zakázek a úkolů.</string>
+    <string name="guild_progress_dailies_only">Pro postup splněno %1$d/%2$d denních zakázek.</string>
     <string name="home_died_message">Zemřel jsi a ztratil jsi většinu získaného.</string>
-    <string name="home_xp_boost_was_active">Byl aktivní 2× bonus XP pro všechny dovednosti.</string>
-    <string name="home_xp_boost_active">2× XP pro všechny dovednosti – %1$s</string>
-    <string name="home_prestige_xp_boost_active">2× %1$s XP - %2$s</string>
-    <string name="boosts_show_more">Další bonusy: +%1$d (klepnutím zobrazíš)</string>
-    <string name="boosts_show_less">Zobrazit méně</string>
+    <string name="home_xp_boost_was_active">Byl aktivní 2× bonus XP pro všechny dovednosti</string>
+    <string name="home_xp_boost_active">2× XP pro všechny dovednosti - %1$s</string>
+    <string name="home_prestige_xp_boost_active">2× XP pro %1$s - %2$s</string>
+    <string name="boosts_show_more">+%1$d další bonusy (klepni pro rozbalení)</string>
+    <string name="boosts_show_less">Sbalit</string>
     <string name="home_loot">Kořist</string>
-    <string name="home_food_consumed">Snědeno</string>
-    <string name="home_bones_buried">Kosti pohřbeny</string>
+    <string name="home_food_consumed">Spotřebované jídlo</string>
+    <string name="home_bones_buried">Pohřbené kosti</string>
     <string name="home_whats_new">Co je nového</string>
-    <string name="home_got_it">Beru na vědomí</string>
+    <string name="home_got_it">Chápu</string>
     <!-- Translator note: %1$s = player name or "Adventurer" -->
     <string name="home_adventurer">Dobrodruh</string>
     <!-- Translator note: %1$d = current queue size, %2$d = max queue size (base 3, +1 per Queue Master tier) -->
-    <string name="home_up_next">Následující (%1$d/%2$d)</string>
+    <string name="home_up_next">Následuje (%1$d/%2$d)</string>
     <!-- Translator note: %1$s = formatted duration string (e.g. "2h 15m") -->
     <string name="home_queue_ends_in">Fronta končí za %1$s</string>
     <!-- Translator note: %1$d = item quantity (e.g. ×40) -->
@@ -651,7 +651,7 @@
     <string name="profile_combat_gear">Bojové vybavení</string>
     <string name="profile_view_combat_gear">Zobrazit bojové vybavení</string>
     <string name="profile_gathering_tools">Pracovní nástroje</string>
-    <string name="profile_food_dungeon">Jídlo (podzemí)</string>
+    <string name="profile_food_dungeon">Jídlo (výprava)</string>
     <string name="profile_no_food">V inventáři nemáš žádné hotové jídlo.</string>
     <string name="profile_food_threshold">Začít jíst při</string>
     <string name="profile_food_order">Požadí jídla</string>
@@ -841,8 +841,8 @@
     <string name="onboarding_sessions_title">Aktivity</string>
     <string name="onboarding_sessions_desc">Klepni na libovolnou dovednost a spusť trénink. Trénink probíhá na pozadí, i když je aplikace zavřená. Vrať se později pro kořist a XP.</string>
     <string name="onboarding_progress_title">Vypracuj se</string>
-    <string name="onboarding_progress_desc">Těž rudu, tav z ní ingoty a kuj lepší zbraně a zbroj. Vybav se lepší výstrojí, abys zvládl náročnější podzemí a bossy. Lepší nástroje urychlí sběr surovin a vybavení vyšší úrovně odemkne obsah, který bys se slabší výstrojí nepřežil.</string>
-    <string name="onboarding_quests_title">Úkoly a mazlíčci</string>
+    <string name="onboarding_progress_desc">Těž rudu, přetavuj ji na ingoty a pak z ní kuj lepší zbraně a zbroj. Vybav se silnější výstrojí, abys zvládl náročnější výpravy a bossy. Kvalitnější nástroje urychlí sběr surovin a vybavení vyšších úrovní ti zpřístupní obsah, který slabší výbava nepřežije.</string>
+    <string name="onboarding_quests_title">Úkoly &amp; zvířátka</string>
     <string name="onboarding_quests_desc">Plň úkoly a získej odměny v podobě XP. Při trénování dovedností můžeš získat vzácné mazlíčky, kteří poskytují trvalé bonusy k XP.</string>
     <string name="onboarding_welcome_desc">Idle RPG inspirované klasickými MMORPG. Trénuj dovednosti, bojuj v podzemí a vyráběj výbavu. Vše offline, bez účtů a bez reklam.</string>
 
@@ -1135,7 +1135,7 @@
     <string name="nav_expeditions">Expeditions</string> <!-- untranslated -->
     <string name="expeditions_title">Expeditions</string> <!-- untranslated -->
     <string name="expedition_explore_button">Explore</string> <!-- untranslated -->
-    <string name="expedition_dungeon_unlocked">Combat dungeon unlocked!</string> <!-- untranslated -->
+    <string name="expedition_dungeon_unlocked">Výprava na souboj odemčena!</string>
     <string name="expedition_discover_hint">Discover via Expeditions</string> <!-- untranslated -->
     <string name="expedition_loading">Loading…</string> <!-- untranslated -->
     <string name="expedition_lore_notes">%1$d / %2$d lore notes</string> <!-- untranslated -->
@@ -1381,13 +1381,13 @@
     <string name="slayer_lamp_large_desc">+50,000 XP to any skill</string> <!-- untranslated -->
     <string name="slayer_found_in">Found in: %1$s</string> <!-- untranslated -->
     <string name="slayer_requires">Requires: %1$s</string> <!-- untranslated -->
-    <string name="slayer_add_dungeon_to_queue">Add Dungeon to Queue</string> <!-- untranslated -->
-    <string name="slayer_queue_added">Added to queue: %1$s.</string> <!-- untranslated -->
+    <string name="slayer_add_dungeon_to_queue">Přidat výpravu do fronty</string>
+    <string name="slayer_queue_added">Přidáno do fronty: %1$s.</string>
     <string name="slayer_queue_full">Queue is full.</string> <!-- untranslated -->
     <string name="slayer_foretell_title">Foretell Future Tasks</string> <!-- untranslated -->
     <string name="slayer_foretell_desc">Pre-assign upcoming Slayer tasks by paying bones. They are assigned automatically when your current task is completed.</string> <!-- untranslated -->
     <string name="slayer_foretell_queue_empty">No tasks queued.</string> <!-- untranslated -->
-    <string name="slayer_foretell_queue_btn">+ Queue</string> <!-- untranslated -->
+    <string name="slayer_foretell_queue_btn">+ Fronta</string>
     <string name="slayer_foretell_queue_full">Foretell queue is full (%1$d/%1$d).</string> <!-- untranslated -->
     <string name="slayer_foretell_not_enough_bones">Not enough bones (cost: %1$d bones).</string> <!-- untranslated -->
     <string name="slayer_foretell_success">Task foretold: %1$s!</string> <!-- untranslated -->
@@ -1395,105 +1395,105 @@
     <string name="slayer_foretell_slot">Slot %1$d: %2$s</string> <!-- untranslated -->
 
     <!-- Prestige system -->
-    <string name="prestige">Prestige</string> <!-- untranslated -->
-    <string name="prestige_skill_tree">Skill Tree</string> <!-- untranslated -->
-    <string name="prestige_max">Max Prestige</string> <!-- untranslated -->
-    <string name="prestige_confirm_title" formatted="false">Prestige %s?</string> <!-- untranslated -->
-    <string name="prestige_confirm_message_xp">Your %1$s level will reset to 1, but you\'ll earn a permanent +%2$d%% XP bonus for this skill.</string> <!-- untranslated -->
-    <string name="prestige_confirm_message_stat">Your %1$s level will reset to 1, but you\'ll earn a permanent +%2$d bonus to your stats.</string> <!-- untranslated -->
-    <string name="prestige_confirm_message_agility">Your %1$s level will reset to 1, but you\'ll earn a permanent +%2$d%% XP bonus, and your session length will keep shrinking — by level 99 a session will take %3$d min instead of %4$d min.</string> <!-- untranslated -->
-    <string name="prestige_confirm_message_mercantile">Your %1$s level will reset to 1, but you\'ll earn a permanent +%2$d%% XP bonus, plus an extra +%2$d%% coin return from trade routes.</string> <!-- untranslated -->
+    <string name="prestige">Povýšení</string>
+    <string name="prestige_skill_tree">Strom dovedností</string>
+    <string name="prestige_max">Maximální povýšení</string>
+    <string name="prestige_confirm_title" formatted="false">Povýšit %s?</string>
+    <string name="prestige_confirm_message_xp">Tvoje úroveň dovednosti %1$s se obnoví na 1, ale za tuto dovednost získáš trvalý bonus +%2$d %% k XP.</string>
+    <string name="prestige_confirm_message_stat">Tvoje úroveň dovednosti %1$s se obnoví na 1, ale získáš trvalý bonus +%2$d k vlastnostem.</string>
+    <string name="prestige_confirm_message_agility">Úroveň dovednosti %1$s se ti obnoví na 1, ale získáš trvalý bonus +%2$d %% k získávaným zkušenostem. Délka aktivit se navíc bude dál zkracovat — na 99. úrovni bude aktivita trvat %3$d min. místo %4$d min.</string>
+    <string name="prestige_confirm_message_mercantile">Úroveň dovednosti %1$s se ti obnoví na 1, ale získáš trvalý bonus +%2$d %% k získávaným zkušenostem a navíc +%2$d %% k výnosu mincí z obchodních tras.</string>
 
     <!-- Prestige achievements -->
-    <string name="achievement_prestige_first_name">First Reset</string> <!-- untranslated -->
-    <string name="achievement_prestige_first_desc">Prestige any skill for the first time</string> <!-- untranslated -->
-    <string name="achievement_prestige_node_first_name">Branching Out</string> <!-- untranslated -->
-    <string name="achievement_prestige_node_first_desc">Purchase your first prestige tree upgrade</string> <!-- untranslated -->
-    <string name="achievement_prestige_path_complete_name">End of the Line</string> <!-- untranslated -->
-    <string name="achievement_prestige_path_complete_desc">Purchase every upgrade in one prestige path</string> <!-- untranslated -->
-    <string name="achievement_prestige_tree_one_name">Mastered</string> <!-- untranslated -->
-    <string name="achievement_prestige_tree_one_desc">Purchase every upgrade in one skill\'s prestige tree</string> <!-- untranslated -->
+    <string name="achievement_prestige_first_name">První obnovení</string>
+    <string name="achievement_prestige_first_desc">Poprvé povyš libovolnou dovednost</string>
+    <string name="achievement_prestige_node_first_name">Rozvětvení</string>
+    <string name="achievement_prestige_node_first_desc">Kup si první vylepšení ve stromu povýšení</string>
+    <string name="achievement_prestige_path_complete_name">Linie dokončena</string>
+    <string name="achievement_prestige_path_complete_desc">Zakup všechna vylepšení v jedné větvi povýšení</string>
+    <string name="achievement_prestige_tree_one_name">Mistrovství</string>
+    <string name="achievement_prestige_tree_one_desc">Zakup všechna vylepšení ve stromu povýšení jedné dovednosti</string>
     <string name="achievement_prestige_all_1_name">Clean Slate</string> <!-- untranslated -->
     <string name="achievement_prestige_all_1_desc">Prestige all skills at least once</string> <!-- untranslated -->
     <string name="achievement_prestige_all_3_name">True Prestige</string> <!-- untranslated -->
     <string name="achievement_prestige_all_3_desc">Reach Prestige 3 on every skill</string> <!-- untranslated -->
 
     <!-- Shop categories -->
-    <string name="shop_cat_ores_and_materials">Ores &amp; Materials</string> <!-- untranslated -->
-    <string name="shop_cat_logs_and_wood">Logs &amp; Wood</string> <!-- untranslated -->
-    <string name="shop_cat_seeds_and_farming">Seeds &amp; Farming</string> <!-- untranslated -->
-    <string name="shop_cat_merchants_guild">Merchant\'s Guild</string> <!-- untranslated -->
-    <string name="shop_cat_equipment">Equipment</string> <!-- untranslated -->
-    <string name="shop_cat_special">Special</string> <!-- untranslated -->
-    <string name="shop_cat_weapons">Weapons</string> <!-- untranslated -->
-    <string name="shop_cat_armor">Armor</string> <!-- untranslated -->
-    <string name="shop_cat_tools">Tools</string> <!-- untranslated -->
-    <string name="shop_cat_food">Food</string> <!-- untranslated -->
-    <string name="shop_cat_materials">Materials</string> <!-- untranslated -->
-    <string name="shop_cat_misc">Misc</string> <!-- untranslated -->
+    <string name="shop_cat_ores_and_materials">Rudy &amp; materiály</string>
+    <string name="shop_cat_logs_and_wood">Klády a dřevo</string>
+    <string name="shop_cat_seeds_and_farming">Semena a pěstování</string>
+    <string name="shop_cat_merchants_guild">Cech obchodníků</string>
+    <string name="shop_cat_equipment">Vybavení</string>
+    <string name="shop_cat_special">Zvlášní</string>
+    <string name="shop_cat_weapons">Zbraně</string>
+    <string name="shop_cat_armor">Zbroj</string>
+    <string name="shop_cat_tools">Nástroje</string>
+    <string name="shop_cat_food">Jídlo</string>
+    <string name="shop_cat_materials">Materiály</string>
+    <string name="shop_cat_misc">Různé</string>
 
-    <string name="crafting_per_craft">×%1$d per craft</string> <!-- untranslated -->
+    <string name="crafting_per_craft">×%1$d za výrobek</string>
 
     <!-- Skills screen localisation -->
-    <string name="farming_ready_in">Ready in %1$s</string> <!-- untranslated -->
-    <string name="trade_route_local_market_name">Local Market</string> <!-- untranslated -->
-    <string name="trade_route_river_trading_post_name">River Trading Post</string> <!-- untranslated -->
-    <string name="trade_route_eastern_caravan_name">Eastern Caravan</string> <!-- untranslated -->
-    <string name="trade_route_grand_exchange_name">Grand Exchange</string> <!-- untranslated -->
-    <string name="trade_route_merchants_quarter_name">Merchant\'s Quarter</string> <!-- untranslated -->
-    <string name="trade_route_northern_ports_name">Northern Ports</string> <!-- untranslated -->
-    <string name="trade_route_local_market_desc">Trade common goods at the local market. Returns are modest but variable.</string> <!-- untranslated -->
-    <string name="trade_route_river_trading_post_desc">Move goods along the river trade route. Profits are unpredictable but often worthwhile.</string> <!-- untranslated -->
-    <string name="trade_route_eastern_caravan_desc">Join a merchant caravan heading east. The long journey pays well when the deal goes through.</string> <!-- untranslated -->
-    <string name="trade_route_grand_exchange_desc">Trade at the legendary Grand Exchange where fortunes are made and lost.</string> <!-- untranslated -->
-    <string name="trade_route_merchants_quarter_desc">Trade rare commodities in the prestigious merchant district.</string> <!-- untranslated -->
-    <string name="trade_route_northern_ports_desc">Sail precious cargo to the northern port cities. High risk, high reward.</string> <!-- untranslated -->
-    <string name="crafting_cat_bar">Bar</string> <!-- untranslated -->
+    <string name="farming_ready_in">Hotovo za %1$s</string>
+    <string name="trade_route_local_market_name">Místní tržště</string>
+    <string name="trade_route_river_trading_post_name">Říční obchodník</string>
+    <string name="trade_route_eastern_caravan_name">Východní karavana</string>
+    <string name="trade_route_grand_exchange_name">Velká burza</string>
+    <string name="trade_route_merchants_quarter_name">Obchodní čtvrť</string>
+    <string name="trade_route_northern_ports_name">Severní přístavy</string>
+    <string name="trade_route_local_market_desc">Obchoduj s běžným zbožím na místním trhu. Výnosy jsou skromné, ale proměnlivé.</string>
+    <string name="trade_route_river_trading_post_desc">Přepravuj zboží po říční obchodní trase. Zisky jsou nepředvídatelné, ale často se vyplatí.</string>
+    <string name="trade_route_eastern_caravan_desc">Přidej se k obchodní karavaně mířící na východ. Dlouhá cesta se dobře vyplatí, pokud obchod vyjde.</string>
+    <string name="trade_route_grand_exchange_desc">Obchoduj na legendární Velké burze, kde se získávají i ztrácejí jmění.</string>
+    <string name="trade_route_merchants_quarter_desc">Obchoduj se vzácným zbožím v honosné obchodní čtvrti.</string>
+    <string name="trade_route_northern_ports_desc">Přepravuj vzácný náklad lodí do severních přístavních měst. Vysoké riziko, vysoká odměna.</string>
+    <string name="crafting_cat_bar">Ingot</string>
     <string name="crafting_cat_component">Component</string> <!-- untranslated -->
-    <string name="crafting_cat_tool">Tool</string> <!-- untranslated -->
-    <string name="crafting_cat_weapon">Weapon</string> <!-- untranslated -->
-    <string name="crafting_cat_armour">Armour</string> <!-- untranslated -->
-    <string name="crafting_cat_equipment">Equipment</string> <!-- untranslated -->
-    <string name="crafting_cat_food">Food</string> <!-- untranslated -->
-    <string name="crafting_cat_ammunition">Ammunition</string> <!-- untranslated -->
-    <string name="crafting_cat_jewellery">Jewellery</string> <!-- untranslated -->
-    <string name="crafting_cat_potion">Potion</string> <!-- untranslated -->
-    <string name="crafting_cat_arrow">Arrow</string> <!-- untranslated -->
-    <string name="crafting_cat_bow">Bow</string> <!-- untranslated -->
-    <string name="crafting_cat_plank">Plank</string> <!-- untranslated -->
-    <string name="crafting_cat_staff">Staff</string> <!-- untranslated -->
+    <string name="crafting_cat_tool">Nástroj</string>
+    <string name="crafting_cat_weapon">Zbraň</string>
+    <string name="crafting_cat_armour">Zbroj</string>
+    <string name="crafting_cat_equipment">Vybavení</string>
+    <string name="crafting_cat_food">Jídlo</string>
+    <string name="crafting_cat_ammunition">Střelivo</string>
+    <string name="crafting_cat_jewellery">Šperky</string>
+    <string name="crafting_cat_potion">Lektvar</string>
+    <string name="crafting_cat_arrow">Šíp</string>
+    <string name="crafting_cat_bow">Luk</string>
+    <string name="crafting_cat_plank">Prkno</string>
+    <string name="crafting_cat_staff">Hůl</string>
 
     <!-- Crafting tier filter chips -->
-    <string name="crafting_tier_adamantite">Adamantite</string> <!-- untranslated -->
-    <string name="crafting_tier_bronze">Bronze</string> <!-- untranslated -->
-    <string name="crafting_tier_gold">Gold</string> <!-- untranslated -->
-    <string name="crafting_tier_iron">Iron</string> <!-- untranslated -->
-    <string name="crafting_tier_magic">Magic</string> <!-- untranslated -->
-    <string name="crafting_tier_maple">Maple</string> <!-- untranslated -->
+    <string name="crafting_tier_adamantite">Adamantit</string>
+    <string name="crafting_tier_bronze">Bronz</string>
+    <string name="crafting_tier_gold">Zlato</string>
+    <string name="crafting_tier_iron">Železo</string>
+    <string name="crafting_tier_magic">Magické</string>
+    <string name="crafting_tier_maple">Javor</string>
     <string name="crafting_tier_mithril">Mithril</string> <!-- untranslated -->
-    <string name="crafting_tier_oak">Oak</string> <!-- untranslated -->
-    <string name="crafting_tier_platinum">Platinum</string> <!-- untranslated -->
-    <string name="crafting_tier_runite">Runite</string> <!-- untranslated -->
-    <string name="crafting_tier_silver">Silver</string> <!-- untranslated -->
-    <string name="crafting_tier_steel">Steel</string> <!-- untranslated -->
-    <string name="crafting_tier_willow">Willow</string> <!-- untranslated -->
-    <string name="crafting_tier_yew">Yew</string> <!-- untranslated -->
+    <string name="crafting_tier_oak">Dub</string>
+    <string name="crafting_tier_platinum">Platina</string>
+    <string name="crafting_tier_runite">Runit</string>
+    <string name="crafting_tier_silver">Stříbro</string>
+    <string name="crafting_tier_steel">Ocel</string>
+    <string name="crafting_tier_willow">Vrba</string>
+    <string name="crafting_tier_yew">Tis</string>
 
     <!-- Bone Altar -->
-    <string name="bone_altar_title">Bone Altar</string> <!-- untranslated -->
-    <string name="bone_altar_open">Use Altar</string> <!-- untranslated -->
-    <string name="bone_altar_select_prompt">Select a bone to bury at the altar</string> <!-- untranslated -->
-    <string name="bone_altar_tap">Tap to Bury</string> <!-- untranslated -->
-    <string name="bone_altar_change_bone">Change</string> <!-- untranslated -->
-    <string name="bone_altar_combo_count" formatted="false">Combo ×%d</string> <!-- untranslated -->
-    <string name="bone_altar_bonus_active" formatted="false">+50% XP bonus!</string> <!-- untranslated -->
-    <string name="bone_altar_session_xp" formatted="false">+%s XP this session</string> <!-- untranslated -->
-    <string name="bone_altar_buried_count" formatted="false">%d buried</string> <!-- untranslated -->
-    <string name="bone_altar_no_bones">No bones in inventory</string> <!-- untranslated -->
-    <string name="bone_altar_cape_awarded">Prayer cape earned!</string> <!-- untranslated -->
+    <string name="bone_altar_title">Kostní oltář</string>
+    <string name="bone_altar_open">Použít oltář</string>
+    <string name="bone_altar_select_prompt">Vyber kost pro pohřbení na oltáři</string>
+    <string name="bone_altar_tap">Klepni pro pohřbení</string>
+    <string name="bone_altar_change_bone">Změnit</string>
+    <string name="bone_altar_combo_count" formatted="false">Combo ×%d</string>
+    <string name="bone_altar_bonus_active" formatted="false">+50% XP bonus!</string>
+    <string name="bone_altar_session_xp" formatted="false">+%s XP v této seanci</string>
+    <string name="bone_altar_buried_count" formatted="false">%d pohřbeno</string>
+    <string name="bone_altar_no_bones">V inventáři nemáš žádné kosti</string>
+    <string name="bone_altar_cape_awarded">Plášť modlitby získán!</string>
 
     <!-- Firemaking rework + ash catalyst + fertilizer -->
-    <string name="firemaking_logs_in_inventory">in inventory</string> <!-- untranslated -->
+    <string name="firemaking_logs_in_inventory">v inventáři</string>
     <string name="firemaking_burns_to">Burns to %1$s</string> <!-- untranslated -->
     <string name="firemaking_burn">Burn</string> <!-- untranslated -->
     <string name="farming_fertilizer">Fertilizer</string> <!-- untranslated -->

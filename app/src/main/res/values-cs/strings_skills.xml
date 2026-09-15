@@ -3,54 +3,54 @@
     <!-- ===== Skill names and descriptions ===== -->
 
     <!-- Gathering skills -->
-    <string name="skill_mining_name">Mining</string> <!-- untranslated -->
-    <string name="skill_mining_desc">Extract valuable ores and gems from the earth.</string> <!-- untranslated -->
-    <string name="skill_fishing_name">Fishing</string> <!-- untranslated -->
-    <string name="skill_fishing_desc">Catch fish and aquatic treasures from the waters.</string> <!-- untranslated -->
-    <string name="skill_woodcutting_name">Woodcutting</string> <!-- untranslated -->
-    <string name="skill_woodcutting_desc">Chop trees and gather various types of wood.</string> <!-- untranslated -->
-    <string name="skill_farming_name">Farming</string> <!-- untranslated -->
-    <string name="skill_farming_desc">Plant and harvest crops from your farming patches.</string> <!-- untranslated -->
-    <string name="skill_firemaking_name">Firemaking</string> <!-- untranslated -->
-    <string name="skill_firemaking_desc">Burn logs from your inventory to gain Firemaking XP. Each log burned also produces ashes, which can be scattered in the Prayer skill for bonus Prayer XP.</string> <!-- untranslated -->
+    <string name="skill_mining_name">Dobývání</string>
+    <string name="skill_mining_desc">Dobývej ze země cenné rudy a drahokamy.</string>
+    <string name="skill_fishing_name">Rybaření</string>
+    <string name="skill_fishing_desc">Lov ryby a získávej z vodních hlubin cenné poklady.</string>
+    <string name="skill_woodcutting_name">Dřevorubectví</string>
+    <string name="skill_woodcutting_desc">Kácej stromy a sbírej různé druhy dřeva.</string>
+    <string name="skill_farming_name">Pěstování</string>
+    <string name="skill_farming_desc">Sázej a sklízej plodiny na svých záhoncích.</string>
+    <string name="skill_firemaking_name">Uhlířství</string>
+    <string name="skill_firemaking_desc">Spaluj polena z inventáře a získávej XP z uhlířství. Z každého spáleného polena navíc vznikne popel, který můžeš v dovednosti Zbožnost rozprášit a získat tak bonusové XP zbožnosti.</string>
     <string name="skill_agility_name">Agility</string> <!-- untranslated -->
-    <string name="skill_agility_desc">Train Agility to reduce session times across all skills. Level 99 cuts 20 minutes off the hour (60 min → 40 min), with a smooth linear reduction as you level up.</string> <!-- untranslated -->
+    <string name="skill_agility_desc">Trénuj hbitost, aby se zkrátila délka střetnutí ve všech dovednostech. Na 99. úrovni zkrátíš každou hodinu o 20 minut (60 min → 40 min); zkracování probíhá plynule a lineárně s každou dosaženou úrovní.</string>
 
     <!-- Crafting skills -->
-    <string name="skill_smithing_name">Smithing</string> <!-- untranslated -->
-    <string name="skill_smithing_desc">Smelt ores into bars and forge powerful metal equipment.</string> <!-- untranslated -->
-    <string name="skill_cooking_name">Cooking</string> <!-- untranslated -->
-    <string name="skill_cooking_desc">Cook raw ingredients into food that restores HP in combat.</string> <!-- untranslated -->
-    <string name="skill_fletching_name">Fletching</string> <!-- untranslated -->
-    <string name="skill_fletching_desc">Craft bows and arrows from logs and metal components.</string> <!-- untranslated -->
-    <string name="skill_crafting_name">Crafting</string> <!-- untranslated -->
-    <string name="skill_crafting_desc">Create jewellery and other crafted items from precious materials.</string> <!-- untranslated -->
-    <string name="skill_runecrafting_name">Runecrafting</string> <!-- untranslated -->
-    <string name="skill_runecrafting_desc">Craft magical runes from rune essence for use in spellcasting.</string> <!-- untranslated -->
+    <string name="skill_smithing_name">Kovářství</string>
+    <string name="skill_smithing_desc">Přetavuj rudy na ingoty a kuj mocné kovové vybavení.</string>
+    <string name="skill_cooking_name">Vaření</string>
+    <string name="skill_cooking_desc">Uvař ze syrových surovin jídlo, které v boji obnovuje životy.</string>
+    <string name="skill_fletching_name">Dřevařství</string>
+    <string name="skill_fletching_desc">Vyráběj z polen a kovových součástí luky a šípy.</string>
+    <string name="skill_crafting_name">Zlatnictví</string>
+    <string name="skill_crafting_desc">Vyráběj z drahých materiálů šperky a další řemeslné předměty.</string>
+    <string name="skill_runecrafting_name">Runotvorba</string>
+    <string name="skill_runecrafting_desc">Vyráběj z runové esence magické runy pro sesílání kouzel.</string>
     <string name="skill_herblore_name">Herblore</string> <!-- untranslated -->
-    <string name="skill_herblore_desc">Brew potions from farming herbs and dungeon reagents to boost your combat stats.</string> <!-- untranslated -->
+    <string name="skill_herblore_desc">Vař lektvary z bylin vypěstovaných na záhoncích a přísad získaných na výpravách, abys posílil své bojové vlastnosti.</string>
 
     <!-- Combat skills -->
-    <string name="skill_attack_name">Attack</string> <!-- untranslated -->
-    <string name="skill_attack_desc">Improves your melee accuracy, increasing your chance to hit.</string> <!-- untranslated -->
-    <string name="skill_strength_name">Strength</string> <!-- untranslated -->
-    <string name="skill_strength_desc">Increases your maximum melee damage per hit.</string> <!-- untranslated -->
-    <string name="skill_defense_name">Defense</string> <!-- untranslated -->
-    <string name="skill_defense_desc">Reduces the damage you take from enemy attacks.</string> <!-- untranslated -->
-    <string name="skill_ranged_name">Ranged</string> <!-- untranslated -->
-    <string name="skill_ranged_desc">Attack enemies from a safe distance using a bow and arrows.</string> <!-- untranslated -->
-    <string name="skill_magic_name">Magic</string> <!-- untranslated -->
-    <string name="skill_magic_desc">Cast powerful spells using runes. Higher levels unlock stronger spells.</string> <!-- untranslated -->
-    <string name="skill_hitpoints_name">Hitpoints</string> <!-- untranslated -->
-    <string name="skill_hitpoints_desc">Your total health. Higher levels let you survive longer in combat.</string> <!-- untranslated -->
-    <string name="skill_prayer_name">Prayer</string> <!-- untranslated -->
-    <string name="skill_prayer_desc">Bury bones dropped from combat to earn Prayer XP. Higher levels unlock stronger Church blessings.</string> <!-- untranslated -->
+    <string name="skill_attack_name">Útok</string>
+    <string name="skill_attack_desc">Zvyšuje přesnost útoků na blízko, a tím i šanci na zásah.</string>
+    <string name="skill_strength_name">Síla</string>
+    <string name="skill_strength_desc">Zvyšuje maximální poškození, které můžeš způsobit jedním útokem na blízko.</string>
+    <string name="skill_defense_name">Obrana</string>
+    <string name="skill_defense_desc">Snižuje poškození, které utrpíš při útocích nepřátel.</string>
+    <string name="skill_ranged_name">Střelba</string>
+    <string name="skill_ranged_desc">Útoč na nepřátele z bezpečné vzdálenosti pomocí luku a šípů.</string>
+    <string name="skill_magic_name">Kouzla</string>
+    <string name="skill_magic_desc">Sesílej mocná kouzla pomocí run. Vyšší úrovně odemknou silnější kouzla.</string>
+    <string name="skill_hitpoints_name">Životy</string>
+    <string name="skill_hitpoints_desc">Tvé celkové zdraví. Vyšší úrovně ti umožní déle přežít v boji.</string>
+    <string name="skill_prayer_name">Zbožnost</string>
+    <string name="skill_prayer_desc">Pohřbíváním kostí získaných v boji získáš XP za zbožnost. Vyšší úrovně odemknou silnější požehnání Církve.</string>
 
     <!-- ===== Skill unlock sheet labels ===== -->
-    <string name="label_lv">Lv %1$d</string> <!-- untranslated -->
-    <string name="armory_req_level">Lv. %1$d</string> <!-- untranslated -->
-    <string name="skills_projected_xp_level">+%1$s XP → Level %2$d</string> <!-- untranslated -->
-    <string name="skills_agility_course_detail">Lv. %1$d  •  %2$d XP/lap</string> <!-- untranslated -->
+    <string name="label_lv">Úr %1$d</string>
+    <string name="armory_req_level">Úr. %1$d</string>
+    <string name="skills_projected_xp_level">+%1$s XP → úroveň %2$d</string>
+    <string name="skills_agility_course_detail">Úr. %1$d  •  %2$d XP/kolo</string>
     <string name="label_hp_passive">Passive — increases max HP</string> <!-- untranslated -->
     <string name="label_hp_scales">Max HP increases each level</string> <!-- untranslated -->
     <string name="label_hp_max">Max HP: %1$d</string> <!-- untranslated -->
@@ -58,13 +58,13 @@
     <string name="label_xp_per_kill">%1$s (%2$d XP/kill)</string> <!-- untranslated -->
 
     <!-- ===== Tree names ===== -->
-    <string name="tree_tree_name">Tree</string> <!-- untranslated -->
-    <string name="tree_oak_tree_name">Oak Tree</string> <!-- untranslated -->
-    <string name="tree_willow_tree_name">Willow Tree</string> <!-- untranslated -->
-    <string name="tree_maple_tree_name">Maple Tree</string> <!-- untranslated -->
-    <string name="tree_yew_tree_name">Yew Tree</string> <!-- untranslated -->
-    <string name="tree_magic_tree_name">Magic Tree</string> <!-- untranslated -->
-    <string name="tree_redwood_tree_name">Redwood Tree</string> <!-- untranslated -->
+    <string name="tree_tree_name">Strom</string>
+    <string name="tree_oak_tree_name">Dub zimní</string>
+    <string name="tree_willow_tree_name">Vrba košatá</string>
+    <string name="tree_maple_tree_name">Javor cukrový</string>
+    <string name="tree_yew_tree_name">Tis červený</string>
+    <string name="tree_magic_tree_name">Magický strom</string>
+    <string name="tree_redwood_tree_name">Sekvoje vždyzelená</string>
 
     <!-- ===== Agility course names and descriptions ===== -->
     <string name="agility_beginner_course_name">Beginner Course</string> <!-- untranslated -->
