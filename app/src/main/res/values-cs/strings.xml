@@ -530,7 +530,6 @@
     <string name="guild_progress_dailies_and_quest">Pro postup splněno %1$d/%2$d denních zakázek a úkolů.</string>
     <string name="guild_progress_dailies_only">Pro postup splněno %1$d/%2$d denních zakázek.</string>
     <string name="home_died_message">Zemřel jsi a ztratil jsi většinu získaného.</string>
-    <string name="home_xp_boost_was_active">Byl aktivní 2× bonus XP pro všechny dovednosti</string>
     <string name="home_xp_boost_active">2× XP pro všechny dovednosti - %1$s</string>
     <string name="home_prestige_xp_boost_active">2× XP pro %1$s - %2$s</string>
     <string name="boosts_show_more">+%1$d další bonusy (klepni pro rozbalení)</string>

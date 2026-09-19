@@ -518,7 +518,6 @@
     <string name="guild_progress_dailies_and_quest">完成 %1$d/%2$d 个每日任务 &amp; 委托以晋升</string>
     <string name="guild_progress_dailies_only">完成 %1$d/%2$d 个每日任务以晋升</string>
     <string name="home_died_message">你阵亡了，失去了大部分收获。</string>
-    <string name="home_xp_boost_was_active">2 倍经验加成已生效</string>
     <string name="home_xp_boost_active">2 倍经验加成生效中 - 剩余 %1$s</string>
     <string name="home_prestige_xp_boost_active">2 倍 %1$s 经验 - %2$s</string>
     <string name="boosts_show_more">+%1$d 项额外增益 (点击查看)</string>

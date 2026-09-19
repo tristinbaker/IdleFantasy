@@ -518,7 +518,6 @@
     <string name="guild_progress_dailies_and_quest">Complete %1$d/%2$d daily requests &amp; quests to advance</string> <!-- untranslated -->
     <string name="guild_progress_dailies_only">Complete %1$d/%2$d daily requests to advance</string> <!-- untranslated -->
     <string name="home_died_message">Je bent dood en hebt het grootste deel van je voortgang verloren.</string>
-    <string name="home_xp_boost_was_active">2× Alle vaardigheden XP was actief</string>
     <string name="home_xp_boost_active">2× Alle vaardigheden XP - %1$s</string>
     <string name="home_prestige_xp_boost_active">2× %1$s XP - %2$s</string> <!-- untranslated -->
     <string name="boosts_show_more">+%1$d extra boosts (tik om weer te geven)</string>

@@ -518,7 +518,6 @@
     <string name="guild_progress_dailies_and_quest">Erledige %1$d/%2$d tägliche Aufträge und Aufgaben, um weiterzukommen</string>
     <string name="guild_progress_dailies_only">Erledige %1$d/%2$d tägliche Aufträge um weiterzukommen</string>
     <string name="home_died_message">Ihr seid verstorben und habt daher den Großteil Eurer Gewinne verloren.</string>
-    <string name="home_xp_boost_was_active">2× EP für alle Fähigkeiten war aktiv</string>
     <string name="home_xp_boost_active">2× EP alle Fähigkeiten - %1$s</string>
     <string name="home_prestige_xp_boost_active">2× EP %1$s - %2$s</string>
     <string name="boosts_show_more">+%1$d weitere Verstärkungen (zum Anzeigen antippen)</string>

@@ -122,8 +122,6 @@ data class SessionSummary(
     val runesReclaimedLines: List<Pair<String, String>> = emptyList(),
     /** Bone type display name + count per type — prayer only */
     val boneBuriedLines: List<Pair<String, String>> = emptyList(),
-    /** Whether any 2× XP boost was active during this session. */
-    val boostWasActive: Boolean = false,
     /** Per-row 2x-boost factor (1, 2, or 4: purchased and prestige boosts stack) — parallel to xpLines. */
     val xpLineBoostFactors: List<Long> = emptyList(),
     /** 2x-boost factor for the single-skill totalXpLabel case. */
@@ -725,7 +723,6 @@ class HomeViewModel @Inject constructor(
                 runesReclaimedLines  = acc.combinedRunesReclaimed.entries.sortedByDescending { it.value }
                                          .map { (key, qty) -> Pair(GameStrings.itemName(context,key), "+$qty") },
                 boneBuriedLines  = boneBuriedLines,
-                boostWasActive   = acc.combinedXpBySkill.keys.any { boostFactorFor(it) > 1L },
                 xpLineBoostFactors = if (useTotalLabel) emptyList()
                                      else sortedXpEntries.map { (skill, _) -> boostFactorFor(skill) },
                 totalXpBoostFactor = if (useTotalLabel) singleXpFactor else 1L,
@@ -1521,7 +1518,6 @@ class HomeViewModel @Inject constructor(
                 killLines      = combinedKills.entries.sortedByDescending { it.value }
                                      .map { (enemy, kills) -> Pair(enemy, "×$kills") },
                 foodConsumedLines = emptyList(),
-                boostWasActive   = combinedXpBySkill.keys.any { boostFactorFor(it) > 1L },
                 xpLineBoostFactors = if (useTotalLabel) emptyList()
                                      else sortedXpEntries.map { (skill, _) -> boostFactorFor(skill) },
                 totalXpBoostFactor = if (useTotalLabel) singleXpFactor else 1L,

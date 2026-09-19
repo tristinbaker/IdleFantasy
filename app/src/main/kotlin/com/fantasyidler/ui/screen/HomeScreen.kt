@@ -153,15 +153,6 @@ fun HomeScreen(
                         )
                         Spacer(Modifier.height(4.dp))
                     }
-                    if (summary.boostWasActive) {
-                        Text(
-                            text  = stringResource(R.string.home_xp_boost_was_active),
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.primary,
-                            fontWeight = FontWeight.Bold,
-                        )
-                        Spacer(Modifier.height(4.dp))
-                    }
                     if (summary.xpLines.isNotEmpty()) {
                         SummarySection(stringResource(R.string.label_xp_gained))
                         summary.xpLines.forEachIndexed { i, (skill, label) ->
@@ -309,15 +300,6 @@ fun HomeScreen(
                     modifier            = Modifier.verticalScroll(rememberScrollState()),
                     verticalArrangement = Arrangement.spacedBy(4.dp),
                 ) {
-                    if (summary.boostWasActive) {
-                        Text(
-                            text       = stringResource(R.string.home_xp_boost_was_active),
-                            style      = MaterialTheme.typography.labelSmall,
-                            color      = MaterialTheme.colorScheme.primary,
-                            fontWeight = FontWeight.Bold,
-                        )
-                        Spacer(Modifier.height(4.dp))
-                    }
                     if (summary.xpLines.isNotEmpty()) {
                         SummarySection(stringResource(R.string.label_xp_gained))
                         summary.xpLines.forEachIndexed { i, (skill, label) ->

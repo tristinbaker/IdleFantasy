@@ -518,7 +518,6 @@
     <string name="guild_progress_dailies_and_quest">Completa %1$d/%2$d incarichi per avanzare</string>
     <string name="guild_progress_dailies_only">Completa %1$d/%2$d giornaliere per avanzare</string>
     <string name="home_died_message">Sei morto e hai perso la maggior parte dei tuoi guadagni.</string>
-    <string name="home_xp_boost_was_active">Il potenziamento XP 2× di tutte le abilità era attivo</string>
     <string name="home_xp_boost_active">2× XP tutte le abilità - %1$s</string>
     <string name="home_prestige_xp_boost_active">2× XP %1$s - %2$s</string>
     <string name="boosts_show_more">+%1$d altri bonus (tocca per mostrare)</string>

@@ -534,7 +534,6 @@
     <string name="guild_progress_dailies_and_quest">Завершено %1$d/%2$d ежедневных поручений и заданий для продвижения</string>
     <string name="guild_progress_dailies_only">Завершено %1$d/%2$d ежедневных поручений для продвижения</string>
     <string name="home_died_message">Вы погибли и потеряли большую часть добычи.</string>
-    <string name="home_xp_boost_was_active">Усиление опыта всех навыков ×2 было активно</string>
     <string name="home_xp_boost_active">×2 опыта всех навыков - %1$s</string>
     <string name="home_prestige_xp_boost_active">×2 опыта навыка «%1$s» - %2$s</string>
     <string name="boosts_show_more">+%1$d дополнительных бонуса (нажмите, чтобы посмотреть)</string>

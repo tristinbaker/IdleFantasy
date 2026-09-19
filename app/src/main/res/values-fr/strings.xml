@@ -518,7 +518,6 @@
     <string name="guild_progress_dailies_and_quest">Compléter %1$d/%2$d requêtes quotidiennes &amp; quêtes pour avancer</string>
     <string name="guild_progress_dailies_only">Compléter %1$d/%2$d requêtes quotidiennes pour avancer</string>
     <string name="home_died_message">Vous êtes mort et avez perdu la majorité de vos gains.</string>
-    <string name="home_xp_boost_was_active">Le bonus d\'XP ×2 de toutes les aptitudes était actif</string>
     <string name="home_xp_boost_active">XP x2 pour toutes les aptitudes - %1$s</string>
     <string name="home_prestige_xp_boost_active">XP x2 pour %1$s - %2$s</string>
     <string name="boosts_show_more">+%1$d plus de bonus (appuyer pour afficher)</string>
