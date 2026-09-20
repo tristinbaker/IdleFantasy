@@ -1427,6 +1427,7 @@
     <string name="trade_route_merchants_quarter_desc">Perdagangkan komoditas langka di distrik perdagangan bergengsi.</string>
     <string name="trade_route_northern_ports_desc">Mengangkut kargo berharga ke kota-kota pelabuhan di utara. Risiko tinggi, imbalan tinggi.</string>
     <string name="crafting_cat_bar">Batang</string>
+    <string name="crafting_cat_brew">Brew</string> <!-- untranslated -->
     <string name="crafting_cat_component">Komponen</string>
     <string name="crafting_cat_tool">Alat</string>
     <string name="crafting_cat_weapon">Senjata</string>
@@ -1440,6 +1441,7 @@
     <string name="crafting_cat_bow">Busur</string>
     <string name="crafting_cat_plank">Papan</string>
     <string name="crafting_cat_staff">Tongkat</string>
+    <string name="crafting_cat_super_potion">Super Potion</string> <!-- untranslated -->
 
     <!-- Crafting tier filter chips -->
     <string name="crafting_tier_adamantite">Adamantit</string>

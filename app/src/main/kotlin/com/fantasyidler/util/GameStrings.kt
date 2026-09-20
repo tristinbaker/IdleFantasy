@@ -100,7 +100,7 @@ object GameStrings {
 
     fun craftingCategory(context: Context, raw: String): String {
         val resId = context.resources.getIdentifier(
-            "crafting_cat_${raw.lowercase()}", "string", context.packageName)
+            "crafting_cat_${raw.lowercase().replace(' ', '_')}", "string", context.packageName)
         return if (resId != 0) context.getString(resId) else raw
     }
 

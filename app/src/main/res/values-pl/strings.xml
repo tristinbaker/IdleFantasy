@@ -1451,6 +1451,7 @@
     <string name="trade_route_merchants_quarter_desc">Handluj rzadkimi towarami w prestiżowej dzielnicy kupieckiej.</string>
     <string name="trade_route_northern_ports_desc">Przewoź cenny ładunek do miast portowych na północy. Wysokie ryzyko, wysoka nagroda.</string>
     <string name="crafting_cat_bar">Sztabka</string>
+    <string name="crafting_cat_brew">Brew</string> <!-- untranslated -->
     <string name="crafting_cat_component">Komponent</string>
     <string name="crafting_cat_tool">Narzędzie</string>
     <string name="crafting_cat_weapon">Broń</string>
@@ -1464,6 +1465,7 @@
     <string name="crafting_cat_bow">Łuk</string>
     <string name="crafting_cat_plank">Deska</string>
     <string name="crafting_cat_staff">Kostur</string>
+    <string name="crafting_cat_super_potion">Super Potion</string> <!-- untranslated -->
 
     <!-- Crafting tier filter chips -->
     <string name="crafting_tier_adamantite">Adamantyt</string>

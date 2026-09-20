@@ -1435,6 +1435,7 @@
     <string name="trade_route_merchants_quarter_desc">Trade rare commodities in the prestigious merchant district.</string> <!-- untranslated -->
     <string name="trade_route_northern_ports_desc">Sail precious cargo to the northern port cities. High risk, high reward.</string> <!-- untranslated -->
     <string name="crafting_cat_bar">Bar</string> <!-- untranslated -->
+    <string name="crafting_cat_brew">Brew</string> <!-- untranslated -->
     <string name="crafting_cat_component">Component</string> <!-- untranslated -->
     <string name="crafting_cat_tool">Tool</string> <!-- untranslated -->
     <string name="crafting_cat_weapon">Weapon</string> <!-- untranslated -->
@@ -1448,6 +1449,7 @@
     <string name="crafting_cat_bow">Bow</string> <!-- untranslated -->
     <string name="crafting_cat_plank">Plank</string> <!-- untranslated -->
     <string name="crafting_cat_staff">Staff</string> <!-- untranslated -->
+    <string name="crafting_cat_super_potion">Super Potion</string> <!-- untranslated -->
 
     <!-- Crafting tier filter chips -->
     <string name="crafting_tier_adamantite">Adamantite</string> <!-- untranslated -->

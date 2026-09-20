@@ -1453,6 +1453,7 @@
     <string name="trade_route_merchants_quarter_desc">Торгуйте редкими товарами в престижном торговом квартале.</string>
     <string name="trade_route_northern_ports_desc">Доставляйте ценный груз в северные портовые города. Высокий риск, высокая награда.</string>
     <string name="crafting_cat_bar">Слиток</string>
+    <string name="crafting_cat_brew">Brew</string> <!-- untranslated -->
     <string name="crafting_cat_component">Компонент</string>
     <string name="crafting_cat_tool">Инструмент</string>
     <string name="crafting_cat_weapon">Оружие</string>
@@ -1466,6 +1467,7 @@
     <string name="crafting_cat_bow">Лук</string>
     <string name="crafting_cat_plank">Доска</string>
     <string name="crafting_cat_staff">Посох</string>
+    <string name="crafting_cat_super_potion">Super Potion</string> <!-- untranslated -->
 
     <!-- Crafting tier filter chips -->
     <string name="crafting_tier_adamantite">Адамантит</string>

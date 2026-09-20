@@ -1435,6 +1435,7 @@
     <string name="trade_route_merchants_quarter_desc">在名流汇聚的商人区交易稀有商品。</string>
     <string name="trade_route_northern_ports_desc">将珍贵货物运往北方港口城市。高风险，高回报。</string>
     <string name="crafting_cat_bar">金属锭</string>
+    <string name="crafting_cat_brew">Brew</string> <!-- untranslated -->
     <string name="crafting_cat_component">部件</string>
     <string name="crafting_cat_tool">工具</string>
     <string name="crafting_cat_weapon">武器</string>
@@ -1448,6 +1449,7 @@
     <string name="crafting_cat_bow">弓</string>
     <string name="crafting_cat_plank">木板</string>
     <string name="crafting_cat_staff">法杖</string>
+    <string name="crafting_cat_super_potion">Super Potion</string> <!-- untranslated -->
 
     <!-- Crafting tier filter chips -->
     <string name="crafting_tier_adamantite">精金</string>

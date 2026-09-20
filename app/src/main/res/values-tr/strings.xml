@@ -1435,6 +1435,7 @@
     <string name="trade_route_merchants_quarter_desc">Prestijli tüccar semtinde nadir emtia ticareti yap.</string>
     <string name="trade_route_northern_ports_desc">Kuzey liman şehirlerine değerli kargo taşı. Yüksek risk, yüksek ödül.</string>
     <string name="crafting_cat_bar">Külçe</string>
+    <string name="crafting_cat_brew">Brew</string> <!-- untranslated -->
     <string name="crafting_cat_component">Bileşen</string>
     <string name="crafting_cat_tool">Alet</string>
     <string name="crafting_cat_weapon">Silah</string>
@@ -1448,6 +1449,7 @@
     <string name="crafting_cat_bow">Yay</string>
     <string name="crafting_cat_plank">Kalas</string>
     <string name="crafting_cat_staff">Asa</string>
+    <string name="crafting_cat_super_potion">Super Potion</string> <!-- untranslated -->
 
     <!-- Crafting tier filter chips -->
     <string name="crafting_tier_adamantite">Adamantit</string>

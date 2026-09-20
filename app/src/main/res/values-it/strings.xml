@@ -1435,6 +1435,7 @@
     <string name="trade_route_merchants_quarter_desc">Scambia merci rare nel prestigioso quartiere dei mercanti.</string>
     <string name="trade_route_northern_ports_desc">Porta carichi preziosi nelle città portuali del nord. Grande rischio, grande ricompensa.</string>
     <string name="crafting_cat_bar">Lingotto</string>
+    <string name="crafting_cat_brew">Brew</string> <!-- untranslated -->
     <string name="crafting_cat_component">Componente</string>
     <string name="crafting_cat_tool">Strumento</string>
     <string name="crafting_cat_weapon">Arma</string>
@@ -1448,6 +1449,7 @@
     <string name="crafting_cat_bow">Arco</string>
     <string name="crafting_cat_plank">Asse</string>
     <string name="crafting_cat_staff">Bastone</string>
+    <string name="crafting_cat_super_potion">Super Potion</string> <!-- untranslated -->
 
     <!-- Crafting tier filter chips -->
     <string name="crafting_tier_adamantite">Adamantio</string>

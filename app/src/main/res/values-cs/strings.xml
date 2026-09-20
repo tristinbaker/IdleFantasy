@@ -1450,6 +1450,7 @@
     <string name="trade_route_merchants_quarter_desc">Obchoduj se vzácným zbožím v honosné obchodní čtvrti.</string>
     <string name="trade_route_northern_ports_desc">Přepravuj vzácný náklad lodí do severních přístavních měst. Vysoké riziko, vysoká odměna.</string>
     <string name="crafting_cat_bar">Ingot</string>
+    <string name="crafting_cat_brew">Brew</string> <!-- untranslated -->
     <string name="crafting_cat_component">Component</string> <!-- untranslated -->
     <string name="crafting_cat_tool">Nástroj</string>
     <string name="crafting_cat_weapon">Zbraň</string>
@@ -1463,6 +1464,7 @@
     <string name="crafting_cat_bow">Luk</string>
     <string name="crafting_cat_plank">Prkno</string>
     <string name="crafting_cat_staff">Hůl</string>
+    <string name="crafting_cat_super_potion">Super Potion</string> <!-- untranslated -->
 
     <!-- Crafting tier filter chips -->
     <string name="crafting_tier_adamantite">Adamantit</string>

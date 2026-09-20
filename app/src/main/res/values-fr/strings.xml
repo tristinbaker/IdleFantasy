@@ -1436,6 +1436,7 @@
     <string name="trade_route_merchants_quarter_desc">Faites le commerce de marchandises rares dans le prestigieux quartier des marchands.</string>
     <string name="trade_route_northern_ports_desc">Transportez une cargaison précieuse vers les villes portuaires du nord. Le risque est grand, mais la récompense aussi.</string>
     <string name="crafting_cat_bar">Lingot</string>
+    <string name="crafting_cat_brew">Brew</string> <!-- untranslated -->
     <string name="crafting_cat_component">Composant</string>
     <string name="crafting_cat_tool">Outil</string>
     <string name="crafting_cat_weapon">Arme</string>
@@ -1449,6 +1450,7 @@
     <string name="crafting_cat_bow">Arc</string>
     <string name="crafting_cat_plank">Planche</string>
     <string name="crafting_cat_staff">Bâton</string>
+    <string name="crafting_cat_super_potion">Super Potion</string> <!-- untranslated -->
 
     <!-- Crafting tier filter chips -->
     <string name="crafting_tier_adamantite">Adamantite</string>

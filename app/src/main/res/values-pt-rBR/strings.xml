@@ -1435,6 +1435,7 @@
     <string name="trade_route_merchants_quarter_desc">Negocie mercadorias raras no prestigiado distrito dos mercadores.</string>
     <string name="trade_route_northern_ports_desc">Navegue com cargas preciosas até as cidades portuárias do norte. Alto risco, alta recompensa.</string>
     <string name="crafting_cat_bar">Barra</string>
+    <string name="crafting_cat_brew">Brew</string> <!-- untranslated -->
     <string name="crafting_cat_component">Componente</string>
     <string name="crafting_cat_tool">Ferramenta</string>
     <string name="crafting_cat_weapon">Arma</string>
@@ -1448,6 +1449,7 @@
     <string name="crafting_cat_bow">Arco</string>
     <string name="crafting_cat_plank">Tábua</string>
     <string name="crafting_cat_staff">Cajado</string>
+    <string name="crafting_cat_super_potion">Super Potion</string> <!-- untranslated -->
 
     <!-- Crafting tier filter chips -->
     <string name="crafting_tier_adamantite">Adamantita</string>

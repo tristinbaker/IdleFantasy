@@ -1435,6 +1435,7 @@
     <string name="trade_route_merchants_quarter_desc">Verhandel zeldzame goederen in het prestigieuze koopliedenwijk.</string>
     <string name="trade_route_northern_ports_desc">Vervoer kostbare lading naar de noordelijke havensteden. Hoog risico, hoge beloning.</string>
     <string name="crafting_cat_bar">Staaf</string>
+    <string name="crafting_cat_brew">Brew</string> <!-- untranslated -->
     <string name="crafting_cat_component">Onderdeel</string>
     <string name="crafting_cat_tool">Gereedschap</string>
     <string name="crafting_cat_weapon">Wapen</string>
@@ -1448,6 +1449,7 @@
     <string name="crafting_cat_bow">Boog</string>
     <string name="crafting_cat_plank">Plank</string> <!-- untranslated -->
     <string name="crafting_cat_staff">Staf</string>
+    <string name="crafting_cat_super_potion">Super Potion</string> <!-- untranslated -->
 
     <!-- Crafting tier filter chips -->
     <string name="crafting_tier_adamantite">Adamantiet</string>
