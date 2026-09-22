@@ -57,56 +57,6 @@
           "whatsNew": {
             "en-US": "• Elder Isle sessions always credit XP to the elder pool, even if the isle flag desyncs mid-session.\n• Time zone changes no longer reset daily/weekly quests, guild dailies, or the bounty board.\n• Slayer Master view auto-refreshes when a background session completes.\n• Opening Ancient Treasures in bulk is much faster on large stacks.\n• Equip picker sorts by stat power instead of pickup order.\n• Elder Isle crafting no longer uses mainland tools, boosts, or pets, and pays XP to the elder pool.\n"
           }
-        },
-        "e259241c7db9f9f6b2eea5a628af89c4b5da423ad2c4024050c3b6f90a6903f6": {
-          "added": 1790011214626,
-          "file": {
-            "name": "/com.tristinbaker.idlefantasy_153000.apk",
-            "sha256": "e259241c7db9f9f6b2eea5a628af89c4b5da423ad2c4024050c3b6f90a6903f6",
-            "size": 10913933
-          },
-          "manifest": {
-            "nativecode": [
-              "arm64-v8a",
-              "armeabi-v7a",
-              "x86",
-              "x86_64"
-            ],
-            "versionName": "1.15.3",
-            "versionCode": 153000,
-            "usesSdk": {
-              "minSdkVersion": 26,
-              "targetSdkVersion": 35
-            },
-            "signer": {
-              "sha256": [
-                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
-              ]
-            },
-            "usesPermission": [
-              {
-                "name": "android.permission.POST_NOTIFICATIONS"
-              },
-              {
-                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
-              },
-              {
-                "name": "android.permission.WAKE_LOCK"
-              },
-              {
-                "name": "android.permission.USE_EXACT_ALARM"
-              },
-              {
-                "name": "android.permission.SCHEDULE_EXACT_ALARM"
-              },
-              {
-                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-              }
-            ]
-          },
-          "whatsNew": {
-            "en-US": "• Isle dungeon clears now correctly count toward story quest counters. Fought Beach & Cliffs but the \"First Steps\" quest stayed 0/8? Fixed — every successful isle dungeon run now increments the counter the way mainland dungeons already did.\n• Sea Serpent is now available on the Combat tab the moment the Dock is built, instead of also requiring Grand Monument tier 5 and total level 1500. The Dock (Construction 90) is a heavy enough gate on its own.\n• Isle skill sessions queued on the island no lo"
-          }
         }
       }
     }

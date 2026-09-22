@@ -1,13 +1,63 @@
 {
   "repo": {
-    "timestamp": 1790011255382
+    "timestamp": 1790073732818
   },
   "packages": {
     "com.tristinbaker.idlefantasy": {
       "metadata": {
-        "lastUpdated": 1790011214626
+        "lastUpdated": 1790073689652
       },
       "versions": {
+        "75e5d6673718dbb20077e0e8aba6a194e373637d896c9c653aa5eec742c70731": {
+          "added": 1790073689652,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_154000.apk",
+            "sha256": "75e5d6673718dbb20077e0e8aba6a194e373637d896c9c653aa5eec742c70731",
+            "size": 10917877
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "1.15.4",
+            "versionCode": 154000,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Elder Isle sessions always credit XP to the elder pool, even if the isle flag desyncs mid-session.\n• Time zone changes no longer reset daily/weekly quests, guild dailies, or the bounty board.\n• Slayer Master view auto-refreshes when a background session completes.\n• Opening Ancient Treasures in bulk is much faster on large stacks.\n• Equip picker sorts by stat power instead of pickup order.\n• Elder Isle crafting no longer uses mainland tools, boosts, or pets, and pays XP to the elder pool.\n"
+          }
+        },
         "e259241c7db9f9f6b2eea5a628af89c4b5da423ad2c4024050c3b6f90a6903f6": {
           "added": 1790011214626,
           "file": {
