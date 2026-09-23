@@ -103,14 +103,14 @@
     <string name="agility_transcendent_course_name">Percorso Trascendentale</string>
     <string name="agility_transcendent_course_desc">La prova finale dell\'agilità, trascende i limiti dei mortali.</string>
     <!-- Elder Isle agility courses (train elder Agility to shorten isle sessions to 45 min at 99) -->
-    <string name="agility_elder_coastal_run_name">Coastal Run</string> <!-- untranslated -->
-    <string name="agility_elder_coastal_run_desc">A jog along the isle\'s wave-scarred beach. Rocks shift underfoot with the tide.</string> <!-- untranslated -->
-    <string name="agility_elder_grove_traverse_name">Grove Traverse</string> <!-- untranslated -->
-    <string name="agility_elder_grove_traverse_desc">A rope-and-ledge circuit through the rune-lit canopy of the Ancient Forest.</string> <!-- untranslated -->
-    <string name="agility_elder_volcano_scramble_name">Volcano Scramble</string> <!-- untranslated -->
-    <string name="agility_elder_volcano_scramble_desc">A climb across the smoking flanks of the peak. The stone remembers being an altar.</string> <!-- untranslated -->
-    <string name="agility_elder_abyssal_ascent_name">Abyssal Ascent</string> <!-- untranslated -->
-    <string name="agility_elder_abyssal_ascent_desc">A vertical route up the pressure-cracked walls of the Abyssal Depths. Few make the top.</string> <!-- untranslated -->
+    <string name="agility_elder_coastal_run_name">Corsa sulla Costa</string>
+    <string name="agility_elder_coastal_run_desc">Un giro intorno la spiaggia dell\'isola. Le rocce si spostano con i movimenti delle maree.</string>
+    <string name="agility_elder_grove_traverse_name">Cammino Boschivo</string>
+    <string name="agility_elder_grove_traverse_desc">Percorso attraverso gli alberi dell\'Antica Foresta, preparati ad affrontare molte arrampicate!</string>
+    <string name="agility_elder_volcano_scramble_name">Arrampicata Vulcanica</string>
+    <string name="agility_elder_volcano_scramble_desc">Scala i versanti fumanti del vulcano.</string>
+    <string name="agility_elder_abyssal_ascent_name">Ascesa dall\'Abisso</string>
+    <string name="agility_elder_abyssal_ascent_desc">Un percorso verticale contro la pressione abissale.</string>
 
     <!-- ===== Session skill type labels ===== -->
     <string name="skill_expedition_name">Spedizione</string>
