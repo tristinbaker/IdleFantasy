@@ -512,8 +512,8 @@
     <string name="item_dragon_bone_desc">Ancient dragon bones. Grant the most Prayer XP when buried.</string> <!-- untranslated -->
     <string name="item_dragon_scale_name">Dragon Scale</string> <!-- untranslated -->
     <string name="item_dragon_scale_desc">A tough scale from a green dragon. Rare and valuable.</string> <!-- untranslated -->
-    <string name="item_coins_name">Coins</string> <!-- untranslated -->
-    <string name="item_coins_desc">The currency of the realm. Spend at the shop.</string> <!-- untranslated -->
+    <string name="item_coins_name">Zlaté</string>
+    <string name="item_coins_desc">Měna říše. Utraťte ji v obchodě.</string>
     <string name="item_goblin_mail_name">Goblin Mail</string> <!-- untranslated -->
     <string name="item_goblin_mail_desc">Battered armour dropped by goblins. Sells well.</string> <!-- untranslated -->
     <string name="item_imp_hide_name">Imp Hide</string> <!-- untranslated -->
