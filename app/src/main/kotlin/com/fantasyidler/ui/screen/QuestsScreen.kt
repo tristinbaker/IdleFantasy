@@ -8,8 +8,10 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material3.Switch
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -24,7 +26,6 @@ import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
-import androidx.compose.material3.TabRow
 import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -37,14 +38,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import kotlinx.coroutines.launch
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -85,6 +84,7 @@ private fun tabGroupLabel(group: String): String = when (group) {
 fun QuestsScreen(
     viewModel: QuestsViewModel = hiltViewModel(),
     isleLocationVm: com.fantasyidler.ui.viewmodel.ElderIsleLocationViewModel = hiltViewModel(),
+    onNavigateToSkill: (String) -> Unit = {},
 ) {
     val isleState by isleLocationVm.state.collectAsState()
     if (isleState.onElderIsle) {
@@ -180,6 +180,7 @@ fun QuestsScreen(
                         hideCompleted       = state.hideCompleted,
                         dropDenominator = state.dwarvenDropDenominator,
                         onClaimQuest   = { viewModel.claimDailyQuest(it) },
+                        onNavigateToSkill = onNavigateToSkill,
                     )
                 } else if (currentGroup == "Weekly") {
                     WeeklyQuestsContent(
@@ -190,6 +191,7 @@ fun QuestsScreen(
                         divineDropChance    = state.divineDropChance,
                         onClaimQuest  = { viewModel.claimWeeklyQuest(it) },
                         onClaimBonus  = { viewModel.claimWeeklyBonus() },
+                        onNavigateToSkill = onNavigateToSkill,
                     )
                 } else {
                     val quests = state.questsByGroup[currentGroup] ?: emptyList()
@@ -213,6 +215,7 @@ fun QuestsScreen(
                                     questWithProgress = questWithProgress,
                                     onClaimReward     = { viewModel.claimReward(questWithProgress.quest.id) },
                                     onDebugReset      = { viewModel.debugResetQuest(questWithProgress.quest.id) },
+                                    onNavigateToSkill = onNavigateToSkill,
                                 )
                                 HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
                             }
@@ -236,6 +239,7 @@ private fun DailyQuestsContent(
     hideCompleted: Boolean = false,
     dropDenominator: Int? = null,
     onClaimQuest: (String) -> Unit,
+    onNavigateToSkill: (String) -> Unit = {},
 ) {
     val visibleQuests = if (hideCompleted) quests.filter { !it.claimed } else quests
     val context = LocalContext.current
@@ -273,6 +277,7 @@ private fun DailyQuestsContent(
                     quest           = q,
                     dropDenominator = dropDenominator,
                     onClaim         = { onClaimQuest(q.template.id) },
+                    onNavigateToSkill = onNavigateToSkill,
                 )
                 HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
             }
@@ -303,6 +308,7 @@ private fun WeeklyQuestsContent(
     divineDropChance: Double? = null,
     onClaimQuest: (String) -> Unit,
     onClaimBonus: () -> Unit,
+    onNavigateToSkill: (String) -> Unit = {},
 ) {
     val visibleQuests = if (hideCompleted) quests.filter { !it.claimed } else quests
     val allQuestsClaimed = quests.isNotEmpty() && quests.all { it.claimed }
@@ -340,7 +346,11 @@ private fun WeeklyQuestsContent(
             }
         } else {
             items(visibleQuests, key = { it.template.id }) { q ->
-                WeeklyQuestCard(quest = q, onClaim = { onClaimQuest(q.template.id) })
+                WeeklyQuestCard(
+                    quest             = q,
+                    onClaim           = { onClaimQuest(q.template.id) },
+                    onNavigateToSkill = onNavigateToSkill,
+                )
                 HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
             }
         }
@@ -433,6 +443,7 @@ private fun DailyQuestCard(
     quest: DailyQuestWithProgress,
     dropDenominator: Int? = null,
     onClaim: () -> Unit,
+    onNavigateToSkill: (String) -> Unit = {},
 ) {
     val context    = LocalContext.current
     val isComplete = quest.progress >= quest.template.amount
@@ -447,11 +458,21 @@ private fun DailyQuestCard(
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 12.dp),
     ) {
-        Text(
-            text       = name,
-            style      = MaterialTheme.typography.bodyLarge,
-            fontWeight = FontWeight.Bold,
-        )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                text       = name,
+                style      = MaterialTheme.typography.bodyLarge,
+                fontWeight = FontWeight.Bold,
+                modifier   = Modifier.weight(1f),
+            )
+            TextButton(
+                onClick        = { onNavigateToSkill(quest.template.skill) },
+                modifier       = Modifier.heightIn(max = 24.dp),
+                contentPadding = PaddingValues(horizontal = 8.dp, vertical = 0.dp),
+            ) {
+                Text(stringResource(R.string.guild_go_to_skill))
+            }
+        }
         Spacer(Modifier.height(2.dp))
         Text(
             text  = objective,
@@ -527,6 +548,7 @@ private fun QuestRow(
     questWithProgress: QuestWithProgress,
     onClaimReward: () -> Unit,
     onDebugReset: () -> Unit,
+    onNavigateToSkill: (String) -> Unit = {},
 ) {
     val context = LocalContext.current
     val quest   = questWithProgress.quest
@@ -543,12 +565,22 @@ private fun QuestRow(
     ) {
         // Title
         val displayName = GameStrings.questName(context, quest.id, quest.name)
-        Text(
-            text       = displayName,
-            style      = MaterialTheme.typography.bodyLarge,
-            fontWeight = FontWeight.Bold,
-            color      = titleColor,
-        )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                text       = displayName,
+                style      = MaterialTheme.typography.bodyLarge,
+                fontWeight = FontWeight.Bold,
+                color      = titleColor,
+                modifier   = Modifier.weight(1f),
+            )
+            TextButton(
+                onClick        = { onNavigateToSkill(quest.skill) },
+                modifier       = Modifier.heightIn(max = 24.dp),
+                contentPadding = PaddingValues(horizontal = 8.dp, vertical = 0.dp),
+            ) {
+                Text(stringResource(R.string.guild_go_to_skill))
+            }
+        }
         // Description / objective
         val objective = GameStrings.questObjective(context, quest.id).takeIf { it.isNotBlank() }
             ?: buildQuestObjective(context, quest)
@@ -641,6 +673,7 @@ private fun QuestRow(
 private fun WeeklyQuestCard(
     quest: WeeklyQuestWithProgress,
     onClaim: () -> Unit,
+    onNavigateToSkill: (String) -> Unit = {},
 ) {
     val context    = LocalContext.current
     val isComplete = quest.progress >= quest.template.amount
@@ -655,11 +688,21 @@ private fun WeeklyQuestCard(
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 12.dp),
     ) {
-        Text(
-            text       = name,
-            style      = MaterialTheme.typography.bodyLarge,
-            fontWeight = FontWeight.Bold,
-        )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                text       = name,
+                style      = MaterialTheme.typography.bodyLarge,
+                fontWeight = FontWeight.Bold,
+                modifier   = Modifier.weight(1f),
+            )
+            TextButton(
+                onClick        = { onNavigateToSkill(quest.template.skill) },
+                modifier       = Modifier.heightIn(max = 24.dp),
+                contentPadding = PaddingValues(horizontal = 8.dp, vertical = 0.dp),
+            ) {
+                Text(stringResource(R.string.guild_go_to_skill))
+            }
+        }
         Spacer(Modifier.height(2.dp))
         Text(
             text  = objective,

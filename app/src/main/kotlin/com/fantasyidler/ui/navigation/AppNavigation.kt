@@ -135,10 +135,11 @@ fun AppNavigation(
     val currentDestination = backStackEntry?.destination
 
     val tabSubScreens: Map<String, Set<String>> = mapOf(
-        "home"   to setOf("shop", "settings", "inn", Screen.WorkerSkills.route, "guild_hall", "guild_detail/{guild}", "church", "slayer", "carnival", Screen.SeasonalEvent.route),
+        "home"   to setOf("shop", "settings", "inn", Screen.WorkerSkills.route, "guild_hall", "guild_detail/{guild}", "church", "slayer", "carnival", Screen.SeasonalEvent.route, Screen.Skills.openSkillRoute, Screen.Combat.startWithTab(CombatTabName.DUNGEONS)),
         "skills" to setOf("farming", "mercantile", Screen.Slayer.route, Screen.BoneAltar.route, Screen.PrestigeDetail.route),
         "combat" to setOf(Screen.Tower.route),
         "profile" to setOf(Screen.Combat.startWithTab(CombatTabName.GEAR), Screen.PrestigeDetail.route),
+        "quests" to setOf(Screen.Skills.openSkillRoute, Screen.Slayer.route, Screen.Combat.route),
     )
 
     Scaffold(
@@ -148,9 +149,9 @@ fun AppNavigation(
                 windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Bottom)
             ) {
                 Screen.bottomNavItems.forEach { screen ->
-                    val selected = currentDestination
-                        ?.hierarchy
-                        ?.any { it.route == screen.route } == true
+                    val onTabRoot = currentDestination?.hierarchy?.any { it.route == screen.route } == true
+                    val onSkillsDeepLink = screen is Screen.Skills && currentDestination?.route == Screen.Skills.openSkillRoute
+                    val selected = onTabRoot || onSkillsDeepLink
 
                     val isHome = screen is Screen.Home
 
@@ -261,7 +262,17 @@ fun AppNavigation(
                     onNavigateToLoreMaster       = { navController.navigate(Screen.LoreMaster.route) },
                 )
             }
-            paneComposable(Screen.Quests.route)   { QuestsScreen() }
+            paneComposable(Screen.Quests.route)   {
+                QuestsScreen(
+                    onNavigateToSkill = { skill ->
+                        when (skill) {
+                            "combat"      -> navController.navigate(Screen.Combat.route) { launchSingleTop = true }
+                            Skills.SLAYER -> navController.navigate(Screen.Slayer.route) { launchSingleTop = true }
+                            else          -> navController.navigate(Screen.Skills.routeWithSkill(skill)) { launchSingleTop = true }
+                        }
+                    },
+                )
+            }
             paneComposable(Screen.Profile.route)  {
                 ProfileScreen(
                     onNavigateToCombat   = { navController.navigate(Screen.Combat.startWithTab(CombatTabName.GEAR)) },
@@ -390,9 +401,9 @@ fun AppNavigation(
                     onBack             = { if (navController.currentBackStackEntry == entry) navController.popBackStack() },
                     onNavigateToSkill  = { skill ->
                         when (skill) {
-                            Skills.SLAYER -> navController.navigate(Screen.Slayer.route)
-                            in CombatGuilds.ALL -> navController.navigate(Screen.Combat.startWithTab(CombatTabName.DUNGEONS))
-                            else -> navController.navigate(Screen.Skills.routeWithSkill(skill))
+                            Skills.SLAYER -> navController.navigate(Screen.Slayer.route) { launchSingleTop = true }
+                            in CombatGuilds.ALL -> navController.navigate(Screen.Combat.startWithTab(CombatTabName.DUNGEONS)) { launchSingleTop = true }
+                            else -> navController.navigate(Screen.Skills.routeWithSkill(skill)) { launchSingleTop = true }
                         }
                     },
                 )
