@@ -115,6 +115,6 @@
     <!-- ===== Session skill type labels ===== -->
     <string name="skill_expedition_name">Expedition</string> <!-- untranslated -->
     <string name="skill_boss_name">Boss</string> <!-- untranslated -->
-    <string name="skill_mercantile_name">Mercantile</string> <!-- untranslated -->
-    <string name="skill_mercantile_desc">Dispatch trade caravans along routes for coins and XP. Higher levels improve shop buy and sell prices and unlock exclusive Merchants Guild goods.</string> <!-- untranslated -->
+    <string name="skill_mercantile_name">Kupectví</string>
+    <string name="skill_mercantile_desc">Vysílejte obchodní karavany po trasách a získávejte zlaté a XP. Vyšší úrovně zlepšují ceny při nákupu a prodeji v obchodě a odemykají exkluzivní zboží Kupeckého cechu.</string>
 </resources>
