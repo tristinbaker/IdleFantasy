@@ -788,11 +788,11 @@
     <string name="item_adamantite_square_shield_name">Scudo di Adamantio</string>
     <string name="item_agility_cape_name">Mantello Agile</string>
     <string name="item_agility_guild_cape_name">Mantello degli Atleti</string>
-    <string name="item_amulet_of_fury_name">Amuleto Della Furia</string>
+    <string name="item_amulet_of_fury_name">Amuleto della Furia</string>
     <string name="item_amulet_of_fury_desc">Un potente amuleto in grado di migliorare le tue doti in battaglia, qualunque sia il tuo stile. Richiede Mercantile lv. 80.</string>
-    <string name="item_amulet_of_strength_name">Amuleto Della Forza</string>
+    <string name="item_amulet_of_strength_name">Amuleto della Forza</string>
     <string name="item_amulet_of_strength_desc">In grado di aumentare la tua forza. Richiede Mercantile lv. 20.</string>
-    <string name="item_amulet_of_the_kraken_name">Amuleto Del Kraken</string>
+    <string name="item_amulet_of_the_kraken_name">Amuleto del Kraken</string>
     <string name="item_arcane_grappling_hook_name">Rampino Arcano</string>
     <string name="item_arcane_staff_name">Bastone Arcano</string>
     <string name="item_archers_guild_cape_name">Mantello degli Arcieri</string>
@@ -913,10 +913,10 @@
     <string name="item_ring_of_flame_name">Anello di Fiamma</string>
     <string name="item_ring_of_recoil_name">Anello del Riflesso</string>
     <string name="item_ring_of_recoil_desc">Riflette una parte del danno ricevuto verso l\'avversario. Richiede Mercantile lv. 20.</string>
-    <string name="item_ring_of_suffering_name">Anello Della Sofferenza</string>
+    <string name="item_ring_of_suffering_name">Anello della Sofferenza</string>
     <string name="item_ring_of_suffering_desc">Anello in grado di potenziare le tue difese. Richiede Mercantile lv. 80.</string>
     <string name="item_ring_of_the_seas_name">Anello Dei Mari</string>
-    <string name="item_ring_of_wealth_name">Anello Della Ricchezza</string>
+    <string name="item_ring_of_wealth_name">Anello della Ricchezza</string>
     <string name="item_ring_of_wealth_desc">Permette di ricevere monete in più come ricompensa. Richiede Mercantile lv. 40.</string>
     <string name="item_rock_golem_name">Golem di Roccia</string>
     <string name="item_rogues_lockpick_name">Grimaldello Brigante</string>
