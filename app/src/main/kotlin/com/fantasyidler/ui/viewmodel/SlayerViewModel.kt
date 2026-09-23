@@ -75,6 +75,8 @@ data class SlayerUiState(
     val slayerSelectedWeaponSlot: String? = null,
     /** Pre-assigned future tasks, up to [maxForetellSlots]. */
     val foretelledTasks: List<SlayerTask> = emptyList(),
+    /** Dungeon display names that contain each foretold task's enemy, parallel to [foretelledTasks]. */
+    val foretelledTaskDungeons: List<List<String>> = emptyList(),
     /** Bone cost (units) for the next foretell slot. */
     val nextForetelCostUnits: Int = 10,
     /** Foretell queue capacity: base 3, extended by Foresight prestige nodes. */
@@ -133,21 +135,23 @@ class SlayerViewModel @Inject constructor(
             val flags:     PlayerFlags       = json.decodeFromString(player.flags)
             val inventory: Map<String, Int>  = json.decodeFromString(player.inventory)
             val unlockedDungeons = flags.unlockedDungeons.toSet()
-            val taskDungeonEntries = flags.activeSlayerTask?.enemyKey?.let { key ->
-                gameData.dungeons.entries
-                    .filter { (_, d) -> d.enemySpawns.any { it.enemy == key } }
-                    .filter { (k, d) -> !d.loreUnlockOnly || k in unlockedDungeons }
-                    // Best hunting ground first: the queue shortcut takes the head of this
-                    // list, which was previously just map iteration order and could pick a
-                    // dungeon where the task enemy barely spawns (hellhound report)
-                    .sortedByDescending { (_, d) ->
-                        val total = d.enemySpawns.sumOf { it.weight }
-                        if (total == 0) 0.0
-                        else d.enemySpawns.first { it.enemy == key }.weight.toDouble() / total
-                    }
-            } ?: emptyList()
+            fun dungeonEntriesFor(key: String) = gameData.dungeons.entries
+                .filter { (_, d) -> d.enemySpawns.any { it.enemy == key } }
+                .filter { (k, d) -> !d.loreUnlockOnly || k in unlockedDungeons }
+                // Best hunting ground first: the queue shortcut takes the head of this
+                // list, which was previously just map iteration order and could pick a
+                // dungeon where the task enemy barely spawns (hellhound report)
+                .sortedByDescending { (_, d) ->
+                    val total = d.enemySpawns.sumOf { it.weight }
+                    if (total == 0) 0.0
+                    else d.enemySpawns.first { it.enemy == key }.weight.toDouble() / total
+                }
+            val taskDungeonEntries = flags.activeSlayerTask?.enemyKey?.let { dungeonEntriesFor(it) } ?: emptyList()
             val taskDungeons     = taskDungeonEntries.map { (key, _) -> GameStrings.dungeonName(context.withAppLocale(), key) }
             val taskDungeonKeys  = taskDungeonEntries.map { (k, _) -> k }
+            val foretelledTaskDungeons = flags.foretelledTasks.map { task ->
+                dungeonEntriesFor(task.enemyKey).map { (key, _) -> GameStrings.dungeonName(context.withAppLocale(), key) }
+            }
             val taskIsStuck = flags.activeSlayerTask?.enemyKey?.let { key ->
                 val dungeonKeys = gameData.dungeons.values
                     .filter { d -> d.enemySpawns.any { it.enemy == key } }
@@ -179,6 +183,7 @@ class SlayerViewModel @Inject constructor(
                 activeWeaponSlot      = flags.activeWeaponSlot,
                 slayerEquippedWeapons = equippedWeapons,
                 foretelledTasks       = flags.foretelledTasks,
+                foretelledTaskDungeons = foretelledTaskDungeons,
                 nextForetelCostUnits  = nextForetelCost,
                 maxForetellSlots      = slayerRepo.maxForetellSlots(flags),
                 slayerQuests          = computeSlayerQuests(questProgress, flags),

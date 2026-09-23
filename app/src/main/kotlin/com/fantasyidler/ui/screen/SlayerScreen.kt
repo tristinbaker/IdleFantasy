@@ -394,6 +394,7 @@ fun SlayerScreen(
 
             ForetellSection(
                 foretelledTasks      = state.foretelledTasks,
+                foretelledTaskDungeons = state.foretelledTaskDungeons,
                 nextCostUnits        = state.nextForetelCostUnits,
                 inventory            = state.inventory,
                 queueSize            = state.queueSize,
@@ -573,6 +574,7 @@ private fun TaskCard(task: SlayerTask, dungeons: List<String>) {
 @Composable
 private fun ForetellSection(
     foretelledTasks: List<SlayerTask>,
+    foretelledTaskDungeons: List<List<String>>,
     nextCostUnits: Int,
     inventory: Map<String, Int>,
     queueSize: Int,
@@ -621,6 +623,14 @@ private fun ForetellSection(
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                             )
+                            val dungeons = foretelledTaskDungeons.getOrNull(i).orEmpty()
+                            if (dungeons.isNotEmpty()) {
+                                Text(
+                                    text  = stringResource(R.string.slayer_found_in, dungeons.joinToString(", ")),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.75f),
+                                )
+                            }
                         }
                         TextButton(
                             onClick  = { onQueueTask(task) },
