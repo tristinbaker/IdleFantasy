@@ -1572,7 +1572,7 @@
     <string name="elder_isle_zone_beach">Spiagge e Scogli</string>
     <string name="elder_isle_zone_forest">Antica Foresta</string>
     <string name="elder_isle_zone_volcano">Cratere Vulcanico</string>
-    <string name="elder_isle_zone_abyss">Profondità Marine</string>
+    <string name="elder_isle_zone_abyss">Profondità Abissali</string>
     <string name="elder_isle_zone_locked">Bloccato</string>
     <string name="elder_isle_coming_soon">L\'isola non è ancora stata esplorata del tutto. Ritorna quando ci saranno progressi.</string>
     <string name="elder_isle_boss_sea_serpent">Serpe dei Mari</string>
@@ -1588,7 +1588,11 @@
     <string name="boss_masked_name">\?\?\?</string> <!-- untranslated -->
     <string name="boss_last_elder_masked_desc">Un\'antica entità aspetta nelle profondità dell\'isola. Raccogli ogni oggetto Ancestrale per affrontarla.</string>
     <string name="elder_isle_welcome_title">Approdo all\'Isola Ancestrale</string>
-    <string name="elder_isle_welcome_body">Le grosse onde si indeboliscono e la fitta nebbia si dirada, rivelando una spiaggia di pallido bianco e una giungla intagliata di rune. Una colonna di fumo si innalza da un vulcano ritenuto inattivo. Le vecchie leggende erano vere: qualcosa ancora vive su questa isola.\n\nTutte le abilità sviluppate nell\'entroterra rimarrano sulla nave: tutto ciò che si svolge sull\'isola è completamente separato dai tuoi progressi esistenti. Potrai portare nell\'entroterra oggetti Ancestrali, ma l\'isola non accetta niente che non sia creato nei suoi confini.\n\nInizia esplorando le tue abilità. Inizia ad estrarre minerali e tagliare legna per fare scorta di materiali. Controlla il tuo Registro nel Villaggio quando ci sono novità.</string>
+    <string name="elder_isle_welcome_body">Le grosse onde si indeboliscono e la fitta nebbia si dirada, rivelando una spiaggia di pallido bianco e una giungla intagliata di rune. Una colonna di fumo si innalza da un vulcano ritenuto inattivo. Le vecchie leggende erano vere: qualcosa ancora vive su questa isola.
+\n
+\nTutte le abilità sviluppate nell\'entroterra rimarrano sulla nave: tutto ciò che si svolge sull\'isola è completamente separato dai tuoi progressi esistenti. Potrai portare nell\'entroterra oggetti Ancestrali, ma l\'isola non accetta niente che non sia creato nei suoi confini.
+\n
+\nInizia esplorando le tue abilità. Inizia ad estrarre minerali e tagliare legna per fare scorta di materiali. Controlla il tuo Registro nel Villaggio quando ci sono novità.</string>
     <string name="elder_isle_welcome_cta">Sbarca</string>
     <string name="elder_isle_stub_skills">Le Abilità Ancestrali sono in fase di esplorazione. Torna più tardi.</string>
     <string name="elder_isle_stub_combat">I Dungeon Ancestrali sono in fase di esplorazione. Torna più tardi.</string>
@@ -1608,7 +1612,7 @@
     <string name="elder_isle_dungeon_beach">Spiagge e Scogli</string>
     <string name="elder_isle_dungeon_forest">Antica Foresta</string>
     <string name="elder_isle_dungeon_volcano">Cratere Vulcanico</string>
-    <string name="elder_isle_dungeon_abyss">Profondità Marine</string>
+    <string name="elder_isle_dungeon_abyss">Profondità Abissali</string>
     <string name="elder_isle_dungeon_boss">L\'Ultimo Anziano</string>
     <string name="elder_isle_tab_dungeons">Dungeon</string>
     <string name="elder_isle_tab_bosses">Boss</string>
