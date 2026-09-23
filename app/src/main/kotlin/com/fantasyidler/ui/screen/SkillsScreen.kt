@@ -1109,7 +1109,7 @@ internal fun SkillRow(
                         )
                         if (onOpenPrestige != null) {
                             Text(
-                                text     = stringResource(R.string.prestige),
+                                text     = stringResource(if (isPrestigeMaxed) R.string.prestige_skill_tree else R.string.prestige),
                                 style    = MaterialTheme.typography.labelSmall,
                                 color    = MaterialTheme.colorScheme.primary,
                                 modifier = Modifier
