@@ -164,24 +164,24 @@
     <string name="dungeon_guild_of_shadows_desc">L\'area più interna della gilda, protetta da un corpo di guardie speciale.</string>
 
     <!-- Elder Isle enemies (two per dungeon) -->
-    <string name="enemy_beach_marauder_name">Beach Marauder</string> <!-- untranslated -->
-    <string name="enemy_beach_leviathan_name">Beach Leviathan</string> <!-- untranslated -->
-    <string name="enemy_grove_stalker_name">Grove Stalker</string> <!-- untranslated -->
-    <string name="enemy_grove_dryad_name">Grove Dryad</string> <!-- untranslated -->
-    <string name="enemy_ash_beast_name">Ash Beast</string> <!-- untranslated -->
-    <string name="enemy_lava_wraith_name">Lava Wraith</string> <!-- untranslated -->
-    <string name="enemy_abyssal_horror_name">Abyssal Horror</string> <!-- untranslated -->
-    <string name="enemy_void_seraph_name">Void Seraph</string> <!-- untranslated -->
+    <string name="enemy_beach_marauder_name">Predone dei Mari</string>
+    <string name="enemy_beach_leviathan_name">Leviatano Costiero</string>
+    <string name="enemy_grove_stalker_name">Predatore degli Alberi</string>
+    <string name="enemy_grove_dryad_name">Driade Boschiva</string>
+    <string name="enemy_ash_beast_name">Bestia Cinerea</string>
+    <string name="enemy_lava_wraith_name">Spettro Lavico</string>
+    <string name="enemy_abyssal_horror_name">Orrore Abissale</string>
+    <string name="enemy_void_seraph_name">Angelo Vacuo</string>
 
     <!-- Elder Isle dungeons -->
-    <string name="dungeon_beach_and_cliffs_name">Beach &amp; Cliffs</string> <!-- untranslated -->
-    <string name="dungeon_beach_and_cliffs_desc">The isle\'s landing zone. Coastal enemies scavenge the wrecks of prior voyages. Every clear drops one Ancient Sigil.</string> <!-- untranslated -->
-    <string name="dungeon_ancient_forest_name">Ancient Forest</string> <!-- untranslated -->
-    <string name="dungeon_ancient_forest_desc">A rune-laced jungle grown over an old library. Grove stalkers and rune-touched dryads keep visitors from the ruins beneath. One Ancient Sigil per clear.</string> <!-- untranslated -->
-    <string name="dungeon_volcano_peak_name">Volcano Peak</string> <!-- untranslated -->
-    <string name="dungeon_volcano_peak_desc">The isle\'s smoking spine, once an Elder altar. Ash beasts and lava wraiths guard the sealing site. Two Ancient Sigils per clear.</string> <!-- untranslated -->
-    <string name="dungeon_abyssal_depths_name">Abyssal Depths</string> <!-- untranslated -->
-    <string name="dungeon_abyssal_depths_desc">A flooded pressure-chamber at the foot of the isle, where the Last Elder waits. Abyssal horrors and void seraphs patrol the approach. Three Ancient Sigils per clear.</string> <!-- untranslated -->
+    <string name="dungeon_beach_and_cliffs_name">Spiagge e Scogli</string>
+    <string name="dungeon_beach_and_cliffs_desc">L\'attracco della nave. Bestie e briganti rovistano tra i resti delle navi distrutte che raggiungono la costa. Otterrai un Sigillo Ancestrale al completamento.</string>
+    <string name="dungeon_ancient_forest_name">Antica Foresta</string>
+    <string name="dungeon_ancient_forest_desc">Giungla le cui piante sono ricoperte di rune, cresciute sopra un\'antica biblioteca. Le creature che vagano nella vegetazione proteggono questi luoghi da tempo immemore. Otterrai un Sigillo Ancestrale al completamento.</string>
+    <string name="dungeon_volcano_peak_name">Cratere Vulcanico</string>
+    <string name="dungeon_volcano_peak_desc">La cima più alta dell\'isola, un tempo un altare per il culto degli Anziani. Otterrai due Sigilli Ancestrali al completamento.</string>
+    <string name="dungeon_abyssal_depths_name">Profondità Abissali</string>
+    <string name="dungeon_abyssal_depths_desc">Una struttura a tenuta stagna nelle profondità dell\'isola. Creature spettrali vagano per i corridoi; l\'Ultimo Anziano attende il prossimo visitatore. Otterrai tre Sigilli Ancestrali al completamento.</string>
 
     <!-- Elder Isle raid bosses -->
     <string name="boss_sea_serpent_name">Serpe dei Mari</string>
