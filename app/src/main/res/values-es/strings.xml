@@ -48,7 +48,7 @@
     <string name="label_level">Nivel</string>
     <string name="label_xp">XP</string> <!-- untranslated -->
     <string name="label_coins">Monedas</string>
-    <string name="label_hp">HP</string> <!-- untranslated -->
+    <string name="label_hp">PS</string>
     <string name="label_attack">Ataque</string>
     <string name="label_strength">Fuerza</string>
     <string name="label_defense">Defensa</string>
@@ -58,7 +58,7 @@
     <string name="label_hitpoints">Vida</string>
     <string name="label_inventory">Inventario</string>
     <string name="label_equipment">Equipamiento</string>
-    <string name="label_combat_equipment">Gear</string> <!-- untranslated -->
+    <string name="label_combat_equipment">Equipamiento</string>
     <string name="label_pets">Mascotas</string>
     <string name="label_achievements">Logros</string>
     <string name="label_locations">Locations</string> <!-- untranslated -->
@@ -68,12 +68,12 @@
     <string name="label_by_location">Por Lugar</string>
     <string name="bestiary_not_encountered">Aún no encontrado</string>
     <string name="bestiary_filter_all">Todos</string>
-    <string name="bestiary_filter_missing">Missing</string> <!-- untranslated -->
-    <string name="bestiary_qty_header">Qty</string> <!-- untranslated -->
-    <string name="bestiary_chance_header">Chance</string> <!-- untranslated -->
+    <string name="bestiary_filter_missing">Sin descubrir</string>
+    <string name="bestiary_qty_header">Cantidad</string>
+    <string name="bestiary_chance_header">Probabilidad</string>
     <string name="label_completion_progress">%1$d / %2$d %3$s</string>
     <string name="achievements_progress_bar">obtenidos</string>
-    <string name="bestiary_progress_bar">encountered</string> <!-- untranslated -->
+    <string name="bestiary_progress_bar">Descubiertos</string>
     <string name="bestiary_always_drops">Siempre cae</string>
     <string name="bestiary_rare_drops">Objetos raros</string>
     <string name="bestiary_common_loot">Botín común</string>
@@ -86,19 +86,19 @@
     <string name="label_session_active">Sesión Activa</string>
     <string name="label_no_active_session">Sin Sesión Activa</string>
     <string name="label_session_complete">Sesión Completa!</string>
-    <string name="home_sessions_complete_title">%1$d Sessions Complete!</string> <!-- untranslated -->
-    <string name="home_boss_defeated_title">Defeated %1$s!</string> <!-- untranslated -->
-    <string name="home_boss_defeated_by_title">Defeated by %1$s.</string> <!-- untranslated -->
-    <string name="home_dungeon_died_title">%1$s — You Died</string> <!-- untranslated -->
-    <string name="home_dungeon_complete_title">%1$s Complete!</string> <!-- untranslated -->
-    <string name="home_expedition_complete_title">%1$s Expedition Complete</string> <!-- untranslated -->
-    <string name="home_skill_session_complete_title">%1$s Session Complete</string> <!-- untranslated -->
-    <string name="home_bones_buried_row">%1$s buried</string> <!-- untranslated -->
-    <string name="worker_sessions_complete_title">Worker: %1$d Sessions Complete!</string> <!-- untranslated -->
-    <string name="worker_boss_defeated_title">Worker: Defeated %1$s!</string> <!-- untranslated -->
-    <string name="worker_dungeon_died_title">Worker: %1$s — Died</string> <!-- untranslated -->
-    <string name="worker_dungeon_complete_title">Worker: %1$s Complete!</string> <!-- untranslated -->
-    <string name="worker_skill_complete_title">Worker: %1$s Complete</string> <!-- untranslated -->
+    <string name="home_sessions_complete_title">%1$d Sesiones completadas!</string>
+    <string name="home_boss_defeated_title">Derrotado %1$s!</string>
+    <string name="home_boss_defeated_by_title">Derrotado por %1$s.</string>
+    <string name="home_dungeon_died_title">%1$s — Has muerto</string>
+    <string name="home_dungeon_complete_title">%1$s Completado!</string>
+    <string name="home_expedition_complete_title">%1$s Expedición completada</string>
+    <string name="home_skill_session_complete_title">%1$s Sesión completada</string>
+    <string name="home_bones_buried_row">%1$s enterrado</string>
+    <string name="worker_sessions_complete_title">Trabajador: %1$d Sesiones completadas!</string>
+    <string name="worker_boss_defeated_title">Trabajador: Derrotado %1$s!</string>
+    <string name="worker_dungeon_died_title">Trabajador: %1$s — Muerto</string>
+    <string name="worker_dungeon_complete_title">Trabajador: %1$s Completado!</string>
+    <string name="worker_skill_complete_title">Trabajador: %1$s Completado</string>
     <string name="label_training">Entrenamiento</string>
     <string name="label_gathering_skills">Recolección</string>
     <string name="label_crafting_skills">Habilidades de Artesanía</string>
@@ -106,14 +106,14 @@
     <string name="label_coming_soon">Próximamente</string>
     <string name="label_time_remaining">Tiempo restante</string>
     <!-- Translator note: compact duration units; English puts the letter(s) right after the number -->
-    <string name="duration_years">%1$dy</string> <!-- untranslated -->
-    <string name="duration_months">%1$dmo</string> <!-- untranslated -->
-    <string name="duration_weeks">%1$dw</string> <!-- untranslated -->
+    <string name="duration_years">%1$da</string>
+    <string name="duration_months">%1$dm</string>
+    <string name="duration_weeks">%1$ds</string>
     <string name="duration_days">%1$dd</string> <!-- untranslated -->
     <string name="duration_hours">%1$dh</string> <!-- untranslated -->
-    <string name="duration_minutes">%1$dm</string> <!-- untranslated -->
-    <string name="duration_seconds">%1$ds</string> <!-- untranslated -->
-    <string name="duration_complete">Complete</string> <!-- untranslated -->
+    <string name="duration_minutes">%1$dmin</string>
+    <string name="duration_seconds">%1$dseg</string>
+    <string name="duration_complete">Completado</string>
     <string name="label_session_results">Resultados de la Sesión</string>
     <string name="label_xp_gained">XP obtenida</string>
     <string name="label_items_collected">Artículos recogidos</string>
@@ -122,7 +122,7 @@
     <string name="label_rewards">Recompensas</string>
     <string name="label_your_level">Tu nivel</string>
     <string name="label_xp_to_next">XP para el siguiente nivel</string>
-    <string name="label_total_xp">Total XP</string> <!-- untranslated -->
+    <string name="label_total_xp">Exp Total</string>
     <string name="label_quantity">Cantidad</string>
     <string name="label_price">Precio</string>
     <string name="label_available">Disponible</string>
@@ -154,7 +154,7 @@
     <string name="label_completed">Completado</string>
     <string name="label_in_progress">En Progreso</string>
     <string name="label_available_quests">Disponible</string>
-    <string name="label_stats">Stats</string> <!-- untranslated -->
+    <string name="label_stats">Estadísticas</string>
     <string name="label_skills">Habilidades</string>
     <string name="tab_label_with_count">%1$s (%2$d)</string> <!-- untranslated -->
     <string name="label_shop">Tienda</string>
@@ -188,7 +188,7 @@
     <string name="label_recipe">Receta</string>
     <string name="label_recipes">Recetas</string>
     <string name="label_ingredients">Ingredientes</string>
-    <string name="label_output">Output</string> <!-- untranslated -->
+    <string name="label_output">Salida</string>
     <string name="label_xp_per_action">XP por acción</string>
     <string name="label_unlocked_at">Desbloqueado en el nivel</string>
     <string name="label_kills">Muertes</string>
@@ -204,7 +204,7 @@
     <!-- Translator note: %1$s = formatted XP amount, %2$d = target level number -->
     <string name="format_xp_to_next">%1$s XP para nivel %2$d</string>
     <!-- Translator note: %1$s = formatted XP amount remaining to reach the level cap (99) -->
-    <string name="xp_to_99">%1$s XP to 99</string> <!-- untranslated -->
+    <string name="xp_to_99">%1$s Exp hasta 99</string>
     <!-- Translator note: %1$s = time string (e.g. "42m 10s") -->
     <string name="format_time_remaining">%1$s restante</string>
     <!-- Translator note: %1$s = relative time (e.g. "5m ago") -->
@@ -218,13 +218,13 @@
     <!-- Translator note: %1$s = formatted XP amount -->
     <string name="format_xp_per_action">%1$s XP por acción</string>
     <!-- Translator note: %1$d = patch number -->
-    <string name="format_patch_number">Patch %1$d</string> <!-- untranslated -->
+    <string name="format_patch_number">Parche %1$d</string>
     <!-- Translator note: %1$d = wins, %2$d = losses -->
     <string name="format_arena_record">%1$d victorias / %2$d losses</string>
     <!-- Translator note: %1$s = skill display name, %2$d = level number -->
-    <string name="format_skill_level">%1$s: Level %2$d</string> <!-- untranslated -->
+    <string name="format_skill_level">%1$s: Nivel %2$d</string>
     <!-- Translator note: %1$d = boost percentage -->
-    <string name="format_xp_boost_percent">+%1$d%% XP</string> <!-- untranslated -->
+    <string name="format_xp_boost_percent">+%1$d%% Exp</string>
     <string name="format_coin_boost_percent">+%1$d%% Monedas</string>
     <!-- Translator note: %1$s = item/resource name, %2$d = quantity drop amount -->
 
@@ -256,16 +256,16 @@
     </plurals>
     <plurals name="plural_kills">
         <item quantity="one">%1$d kill</item>
-        <item quantity="other">%1$d kills</item>
-    </plurals> <!-- untranslated -->
+        <item quantity="other">%1$d muertes</item>
+    </plurals>
     <plurals name="plural_quests_completed">
         <item quantity="one">%1$d Misión completada</item>
         <item quantity="other">%1$d Misiones completadas</item>
     </plurals>
 
     <!-- ===== Error messages ===== -->
-    <string name="error_no_player">Could not load player data. Please restart the app.</string> <!-- untranslated -->
-    <string name="error_session_already_active">You already have an active session. Complete or abandon it first.</string> <!-- untranslated -->
+    <string name="error_no_player">No se han podido cargar los datos del jugador. Por favor, reinicia la aplicación.</string>
+    <string name="error_session_already_active">Ya tienes una sesión activa. Complétala o abandónala primero.</string>
     <string name="error_not_enough_coins">No hay suficientes monedas.</string>
     <!-- Translator note: %1$s = item display name -->
     <string name="error_not_enough_items">No es suficiente %1$s.</string>
@@ -279,7 +279,7 @@
     <string name="error_quest_active">Ya tienes una misión activa.</string>
     <string name="error_quest_requirements_not_met">No cumples los requisitos para esta misión.</string>
     <string name="error_dungeon_level_too_low">Tu nivel de combate es demasiado bajo para esta mazmorra.</string>
-    <string name="error_unknown">Something went wrong. Please try again.</string> <!-- untranslated -->
+    <string name="error_unknown">Algo ha fallado. Por favor, inténtalo de nuevo</string>
 
     <!-- ===== Session dialogs ===== -->
     <string name="session_abandon_title">Abandonar sesión?</string>
@@ -315,7 +315,7 @@
     <string name="settings_quest_dots_desc">Muestra un punto dorado en las habilidades que tienen una misión abierta.</string>
     <string name="settings_prestige_notifications">Insignias de prestigio</string>
     <string name="settings_prestige_notifications_desc">Muestra una insignia en la navegación cuando una habilidad esté lista para el prestigio.</string>
-    <string name="label_switch_character">Switch character</string> <!-- untranslated -->
+    <string name="label_switch_character">Cambiar personaje</string>
     <string name="settings_daily_reset_time">Hora de reinicio diario</string>
     <string name="settings_daily_reset_time_desc">Hora local en la que se renuevan las misiones diarias, las diarias del gremio y las semanales. Cambiarla nunca otorga un reinicio adicional.</string>
     <string name="settings_compact_numbers">Números abreviados</string>
@@ -339,7 +339,7 @@
     <string name="label_no_sessions_yet">Aún no se han completado sesiones.</string>
 
     <!-- ===== CombatScreen ===== -->
-    <string name="label_dungeons_tab">Dungeons</string> <!-- untranslated -->
+    <string name="label_dungeons_tab">Mazmorras</string>
     <string name="btn_fight">Luchar!</string>
 
     <!-- ===== SkillsScreen ===== -->
@@ -351,21 +351,21 @@
 
     <!-- ===== QuestsScreen ===== -->
     <string name="label_claim_reward">Reclama tu recompensa</string>
-    <string name="label_daily">Daily</string> <!-- untranslated -->
-    <string name="label_weekly">Weekly</string> <!-- untranslated -->
-    <string name="label_daily_quests">Daily Quests</string> <!-- untranslated -->
-    <string name="label_daily_reset">Resets at %1$s</string> <!-- untranslated -->
-    <string name="label_weekly_reset">Resets Monday at %1$s</string> <!-- untranslated -->
-    <string name="weekly_bonus_title">Weekly Bonus!</string> <!-- untranslated -->
-    <string name="weekly_bonus_claim">Claim Weekly Bonus</string> <!-- untranslated -->
+    <string name="label_daily">Diaria</string>
+    <string name="label_weekly">Semanal</string>
+    <string name="label_daily_quests">Misiones diarias</string>
+    <string name="label_daily_reset">Reinicia a las %1$s</string>
+    <string name="label_weekly_reset">Reinicia el lunes a las %1$s</string>
+    <string name="weekly_bonus_title">Bonus semanal!</string>
+    <string name="weekly_bonus_claim">Reclamar bonus semanal</string>
     <string name="label_daily_info_pity">Each daily quest rewards coins. Every quest also has a 1 in %1$d chance to drop a piece of Dwarven gear you don\'t own yet. Each claim without a drop improves the odds; a drop resets them to 1 in 100.</string> <!-- untranslated -->
     <string name="label_daily_info_complete">Each daily quest rewards coins. You already own every piece of Dwarven gear!</string> <!-- untranslated -->
     <string name="label_weekly_info">Each weekly challenge rewards coins based on its level requirement. Complete all 5 to earn a bonus: 100,000 coins, or a %1$s chance at a piece of Divine gear.</string> <!-- untranslated -->
     <string name="label_weekly_info_complete">Each weekly challenge rewards coins based on its level requirement. Complete all 5 to earn a bonus: 100,000 coins. You already own every piece of Divine gear!</string> <!-- untranslated -->
-    <string name="label_daily_reward_pity">2,000 coins (1/%1$d: Dwarven gear)</string> <!-- untranslated -->
-    <string name="label_daily_reward_complete">2,000 coins</string> <!-- untranslated -->
-    <string name="msg_daily_claimed_coins">Daily quest complete! +2,000 coins.</string> <!-- untranslated -->
-    <string name="msg_daily_claimed_dwarven">Daily quest complete! You found %1$s!</string> <!-- untranslated -->
+    <string name="label_daily_reward_pity">2.000 monedas (1/%1$d: Equipo enano)</string>
+    <string name="label_daily_reward_complete">2.000 monedas</string>
+    <string name="msg_daily_claimed_coins">Misión diaria completada! +2.000 monedas.</string>
+    <string name="msg_daily_claimed_dwarven">Misión diaria compleda! Has encontrado %1$s!</string>
     <string name="label_hide_completed">Ocultar completadas</string>
 
     <!-- ===== OnboardingScreen ===== -->
@@ -375,7 +375,7 @@
 
     <!-- ===== Settings ===== -->
     <string name="settings_notifications_header">Notificaciones</string>
-    <string name="settings_performance_header">Performance</string> <!-- untranslated -->
+    <string name="settings_performance_header">Rendimiento</string>
     <string name="settings_general_header">General</string>
     <string name="settings_tutorial_title">Tutorial</string>
     <string name="settings_tutorial_desc">Mostrar la introducción de nuevo.</string>
@@ -410,9 +410,9 @@
     <string name="settings_theme">Tema</string>
     <string name="settings_theme_desc">Elige tu combinación de colores preferida</string>
     <string name="settings_theme_dark">Oscuro</string>
-    <string name="settings_theme_midnight">Midnight</string> <!-- untranslated -->
-    <string name="settings_theme_light">Light</string> <!-- untranslated -->
-    <string name="settings_theme_system">System</string> <!-- untranslated -->
+    <string name="settings_theme_midnight">Medianoche</string>
+    <string name="settings_theme_light">Brillo</string>
+    <string name="settings_theme_system">Sistema</string>
     <string name="settings_font_size">Tamaño de fuente</string>
     <string name="settings_font_tiny">Diminuto</string>
     <string name="settings_font_small">Pequeño</string>
@@ -523,7 +523,7 @@
     <string name="home_xp_boost_active">2× All skills XP - %1$s</string> <!-- untranslated -->
     <string name="home_prestige_xp_boost_active">2× %1$s XP - %2$s</string> <!-- untranslated -->
     <string name="boosts_show_more">+%1$d more boosts (tap to show)</string> <!-- untranslated -->
-    <string name="boosts_show_less">Show less</string> <!-- untranslated -->
+    <string name="boosts_show_less">Mostrar menos</string>
     <string name="home_loot">Botín</string>
     <string name="home_food_consumed">Alimentos consumidos</string>
     <string name="home_bones_buried">Huesos enterrados</string>
@@ -534,7 +534,7 @@
     <!-- Translator note: %1$d = current queue size, %2$d = max queue size (base 3, +1 per Queue Master tier) -->
     <string name="home_up_next">A continuación (%1$d/%2$d)</string>
     <!-- Translator note: %1$s = formatted duration string (e.g. "2h 15m") -->
-    <string name="home_queue_ends_in">Queue ends in %1$s</string> <!-- untranslated -->
+    <string name="home_queue_ends_in">La cola finaliza en %1$s</string>
     <!-- Translator note: %1$d = item quantity (e.g. ×40) -->
 
     <string name="queue_item_qty_with_output">×%1$d → %2$d objetos</string>
@@ -545,17 +545,17 @@
     </plurals>
 
     <!-- ===== CombatScreen ===== -->
-    <string name="combat_level_label">Combat Lvl</string> <!-- untranslated -->
-    <string name="combat_log_label">Combat Log</string> <!-- untranslated -->
-    <string name="combat_solo_bosses">Solo Bosses</string> <!-- untranslated -->
+    <string name="combat_level_label">Nivel de combate</string>
+    <string name="combat_log_label">Historial de combate</string>
+    <string name="combat_solo_bosses">Jefes individuales</string>
     <!-- Translator note: %1$d = number of completed dungeon runs -->
-    <string name="combat_dungeon_runs">%1$d runs</string> <!-- untranslated -->
+    <string name="combat_dungeon_runs">%1$d sesiones</string>
     <!-- Translator note: %1$d = kills, %2$d = food consumed -->
     <string name="combat_last_run">Última: %1$d kills, %2$d comida</string>
     <!-- Translator note: %1$d = kills -->
     <string name="combat_last_run_died">Última: muerto (%1$d kills)</string>
-    <string name="combat_atk">ATK</string> <!-- untranslated -->
-    <string name="combat_str">STR</string> <!-- untranslated -->
+    <string name="combat_atk">ATQ</string>
+    <string name="combat_str">FUE</string>
     <string name="combat_def">DEF</string> <!-- untranslated -->
     <!-- Translator note: %1$d = HP healed -->
     <string name="combat_heals_hp">recupera %1$d HP</string>
@@ -579,8 +579,8 @@
     <string name="combat_your_level">Tu nivel de combate</string>
     <string name="combat_no_strength_bonus">Ninguno (sin bonificación de fuerza)</string>
     <string name="combat_best_arrow">Mejor flecha</string>
-    <string name="combat_arrow_auto">Auto (best available)</string> <!-- untranslated -->
-    <string name="combat_label_arrow">Arrow</string> <!-- untranslated -->
+    <string name="combat_arrow_auto">Auto (mejor disponible)</string>
+    <string name="combat_label_arrow">Fecha</string>
     <string name="combat_arrow_ranged_str">+%1$d Ranged Strength</string> <!-- untranslated -->
     <string name="combat_select_loadout">Seleccionar equipamiento</string>
     <string name="combat_enemies">Enemigos</string>
