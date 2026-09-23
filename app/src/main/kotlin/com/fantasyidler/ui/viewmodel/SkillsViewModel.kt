@@ -224,7 +224,7 @@ class SkillsViewModel @Inject constructor(
             } else mainlandXp
             val activeQuests = if (flags.onElderIsle) emptyMap() else computeActiveQuests(questProgress, flags, inv)
             val activeEvent = seasonalEventRepo.activeEvent()
-            val seasonalEmoji = if (activeEvent != null && "bounty" in activeEvent.pillars) activeEvent.iconEmoji else null
+            val seasonalEmoji = if (flags.showSeasonalEvents && activeEvent != null && "bounty" in activeEvent.pillars) activeEvent.iconEmoji else null
             extra.copy(
                 isLoading             = false,
                 skillLevels           = levels,
@@ -1545,20 +1545,22 @@ class SkillsViewModel @Inject constructor(
         }
 
         // Seasonal Event Bounties
-        val eventEmoji = seasonalEventRepo.activeEvent()?.iconEmoji ?: QuestCategory.SEASONAL.emoji
-        for (bounty in seasonalEventRepo.getActiveBounties(flags, inventory)) {
-            val task = bounty.task
-            val remaining = task.amount - bounty.progress
-            if (remaining <= 0) continue
-            val skill = task.skill ?: continue
-            when (task.type) {
-                "gather", "craft" -> {
-                    addIndicator(task.target, skill, QuestCategory.SEASONAL, remaining, task.id, eventEmoji)
-                }
-                "turn_in" -> {
-                    val isCompletable = (inventory[task.target] ?: 0) >= task.amount
-                    result.getOrPut("$skill:${task.target}") { mutableListOf() }
-                        .add(QuestIndicator(QuestCategory.SEASONAL, isCompletable, task.id, eventEmoji))
+        if (flags.showSeasonalEvents) {
+            val eventEmoji = seasonalEventRepo.activeEvent()?.iconEmoji ?: QuestCategory.SEASONAL.emoji
+            for (bounty in seasonalEventRepo.getActiveBounties(flags, inventory)) {
+                val task = bounty.task
+                val remaining = task.amount - bounty.progress
+                if (remaining <= 0) continue
+                val skill = task.skill ?: continue
+                when (task.type) {
+                    "gather", "craft" -> {
+                        addIndicator(task.target, skill, QuestCategory.SEASONAL, remaining, task.id, eventEmoji)
+                    }
+                    "turn_in" -> {
+                        val isCompletable = (inventory[task.target] ?: 0) >= task.amount
+                        result.getOrPut("$skill:${task.target}") { mutableListOf() }
+                            .add(QuestIndicator(QuestCategory.SEASONAL, isCompletable, task.id, eventEmoji))
+                    }
                 }
             }
         }
