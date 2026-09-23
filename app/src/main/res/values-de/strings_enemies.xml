@@ -114,8 +114,8 @@
     <string name="dungeon_hollowfen_desc">A mist-drowned marsh of sunken barrows where the harvest dead walk. Part of the Gloomharvest event.</string> <!-- untranslated -->
     <string name="dungeon_cloud_kingdom_name">Wolkenkönigreich</string>
     <string name="dungeon_cloud_kingdom_desc">Ein Reich über den Wolken, erreichbar durch das Erklimmen einer legendären Bohnenranke. Riesen durchstreifen gewaltige, schwebende Inseln, Himmelsschlangen gleiten zwischen den Wolkenbänken dahin, und Sturmkobolde knistern vor unruhiger Energie. Nur wenige haben es gesehen. Noch weniger sind zurückgekehrt, um davon zu berichten.</string>
-    <string name="dungeon_blightwood_name">The Blightwood</string> <!-- untranslated -->
-    <string name="dungeon_blightwood_desc">A rotting forest deep past the Hollowfen, where the Gloomharvest\'s strongest horrors gather. Part of the Gloomharvest event.</string> <!-- untranslated -->
+    <string name="dungeon_blightwood_name">Der Verdorbene Wald</string>
+    <string name="dungeon_blightwood_desc">Ein verrotteter Forst tief hinter dem \"Hollowfen\", wo sich die stärksten Horrormonster der Düsterernte versammeln. Teil des Düsterernte Events.</string>
 
     <!-- ===== Raid bosses ===== -->
     <string name="boss_king_black_dragon_name">König der Schwarzdrachen</string>
@@ -131,7 +131,7 @@
     <string name="boss_sol_invictus_name">Sol Invictus, the Sundered Flame</string> <!-- untranslated -->
     <string name="boss_sol_invictus_desc">A shard of the sun itself, torn loose from the Sunspire ruin. Only the boldest warriors dare approach.</string> <!-- untranslated -->
     <string name="boss_the_hollow_king_name">Der hohle König</string>
-    <string name="boss_the_hollow_king_desc">Der kopflose Herrscher der Düsterernte, der aus dem „Blightwood“ herausreitet, um zu ernten, was die Lebenden gesät haben.</string>
+    <string name="boss_the_hollow_king_desc">Der kopflose Herrscher der Düsterernte, der aus dem Verdorbenen Wald herausreitet, um zu ernten, was die Lebenden gesät haben.</string>
     <string name="boss_the_vault_guardian_name">Der Tresorwächter</string>
     <string name="boss_the_vault_guardian_desc">Ein Koloss aus lebendigem Gold, erweckt durch das Entzünden der Ewigen Flamme. Nur Besucher des Großen Denkmals dürfen sich ihm stellen.</string>
     <string name="boss_obsidian_colossus_name">Obsidiankoloss</string>
