@@ -1639,25 +1639,25 @@
     <string name="item_abyssal_bar_name">Abyssal Bar</string> <!-- untranslated -->
     <string name="item_voidsteel_bar_name">Voidsteel Bar</string> <!-- untranslated -->
     <string name="item_starforged_bar_name">Starforged Bar</string> <!-- untranslated -->
-    <string name="item_coastal_pine_log_name">Coastal Pine Log</string> <!-- untranslated -->
+    <string name="item_coastal_pine_log_name">Küstenpinienstamm</string>
     <string name="item_grove_oak_log_name">Grove Oak Log</string> <!-- untranslated -->
     <string name="item_abyssal_log_name">Abyssal Log</string> <!-- untranslated -->
     <string name="item_starwood_log_name">Starwood Log</string> <!-- untranslated -->
     <string name="item_raw_tidepool_crab_name">Tidepool Crab (raw)</string> <!-- untranslated -->
     <string name="item_raw_grove_bass_name">Grove Bass (raw)</string> <!-- untranslated -->
-    <string name="item_raw_lavafin_name">Lavafin (raw)</string> <!-- untranslated -->
-    <string name="item_raw_deepwater_ray_name">Deepwater Ray (raw)</string> <!-- untranslated -->
+    <string name="item_raw_lavafin_name">Lavaflosse (roh)</string>
+    <string name="item_raw_deepwater_ray_name">Tiefseerochen (roh)</string>
     <string name="item_tidepool_crab_name">Tidepool Crab</string> <!-- untranslated -->
     <string name="item_grove_bass_name">Grove Bass</string> <!-- untranslated -->
-    <string name="item_lavafin_name">Lavafin</string> <!-- untranslated -->
-    <string name="item_deepwater_ray_name">Deepwater Ray</string> <!-- untranslated -->
+    <string name="item_lavafin_name">Lavaflosse</string>
+    <string name="item_deepwater_ray_name">Tiefseerochen</string>
     <string name="item_elder_bone_name">Älterer Knochen</string>
     <string name="item_elder_essence_name">Ältere Essenz</string>
     <string name="item_ancient_sigil_name">Ancient Sigil</string> <!-- untranslated -->
     <string name="item_sacred_wood_name">Sacred Wood</string> <!-- untranslated -->
 
     <!-- Elder Isle: gathering targets (trees) -->
-    <string name="item_coastal_pine_name">Coastal Pine</string> <!-- untranslated -->
+    <string name="item_coastal_pine_name">Küstenpinie</string>
     <string name="item_grove_oak_name">Grove Oak</string> <!-- untranslated -->
     <string name="item_abyssal_tree_name">Abyssal Tree</string> <!-- untranslated -->
     <string name="item_starwood_tree_name">Starwood Tree</string> <!-- untranslated -->
