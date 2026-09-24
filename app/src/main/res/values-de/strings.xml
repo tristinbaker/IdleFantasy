@@ -1566,7 +1566,7 @@
     <string name="town_artisans_workshop_no_bonus">Verbessere für eine Chance, sekundäre Herstellungsmaterialien einzusparen</string>
     <string name="town_artisans_workshop_active_bonus">%1$d%% Chance, sekundäre Herstellungsmaterialien einzusparen</string>
     <string name="town_building_chronos_spire_name">Chronos-Turm</string>
-    <string name="town_building_dock_name">Dock</string> <!-- untranslated -->
+    <string name="town_building_dock_name">Dock</string>
     <string name="elder_isle_title">Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_sail_title">Sail to Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_zone_beach">Beach &amp; Cliffs</string> <!-- untranslated -->
@@ -1845,7 +1845,7 @@
     <string name="armory_how_to_obtain">Wie zu erhalten</string>
     <string name="armory_no_stats">Keine Statusboni.</string>
     <string name="armory_filter_all">Alle</string>
-    <string name="armory_filter_missing">Fehlt noch</string>
+    <string name="armory_filter_missing">Fehlend</string>
     <string name="armory_filter_weapons">Waffen</string>
     <string name="armory_filter_armor">Rüstung</string>
     <string name="armory_filter_accessories">Schmuck</string>
