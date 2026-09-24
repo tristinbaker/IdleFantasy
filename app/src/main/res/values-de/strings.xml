@@ -1458,13 +1458,13 @@
     <string name="crafting_tier_maple">Ahorn</string>
     <string name="crafting_tier_mithril">Mithril</string>
     <string name="crafting_tier_oak">Eiche</string>
-    <string name="crafting_tier_plank">Plank</string> <!-- untranslated -->
+    <string name="crafting_tier_plank">Bohle</string>
     <string name="crafting_tier_platinum">Platin</string>
-    <string name="crafting_tier_redwood">Redwood</string> <!-- untranslated -->
+    <string name="crafting_tier_redwood">Rotholz</string>
     <string name="crafting_tier_runite">Runit</string>
     <string name="crafting_tier_silver">Silber</string>
     <string name="crafting_tier_steel">Stahl</string>
-    <string name="crafting_tier_stone">Stone</string> <!-- untranslated -->
+    <string name="crafting_tier_stone">Stein</string>
     <string name="crafting_tier_willow">Weide</string>
     <string name="crafting_tier_yew">Eibe</string>
 
@@ -1566,7 +1566,7 @@
     <string name="town_artisans_workshop_no_bonus">Verbessere für eine Chance, sekundäre Herstellungsmaterialien einzusparen</string>
     <string name="town_artisans_workshop_active_bonus">%1$d%% Chance, sekundäre Herstellungsmaterialien einzusparen</string>
     <string name="town_building_chronos_spire_name">Chronos-Turm</string>
-    <string name="town_building_dock_name">Dock</string> <!-- untranslated -->
+    <string name="town_building_dock_name">Dock</string>
     <string name="elder_isle_title">Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_sail_title">Sail to Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_zone_beach">Beach &amp; Cliffs</string> <!-- untranslated -->
