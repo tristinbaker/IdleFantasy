@@ -1436,7 +1436,7 @@
     <string name="trade_route_merchants_quarter_desc">Scambia merci rare nel prestigioso quartiere dei mercanti.</string>
     <string name="trade_route_northern_ports_desc">Porta carichi preziosi nelle città portuali del nord. Grande rischio, grande ricompensa.</string>
     <string name="crafting_cat_bar">Lingotto</string>
-    <string name="crafting_cat_brew">Brew</string> <!-- untranslated -->
+    <string name="crafting_cat_brew">Mescola</string>
     <string name="crafting_cat_component">Componente</string>
     <string name="crafting_cat_tool">Strumento</string>
     <string name="crafting_cat_weapon">Arma</string>
@@ -1450,7 +1450,7 @@
     <string name="crafting_cat_bow">Arco</string>
     <string name="crafting_cat_plank">Asse</string>
     <string name="crafting_cat_staff">Bastone</string>
-    <string name="crafting_cat_super_potion">Super Potion</string> <!-- untranslated -->
+    <string name="crafting_cat_super_potion">Pozione Super</string>
 
     <!-- Crafting tier filter chips -->
     <string name="crafting_tier_adamantite">Adamantio</string>
@@ -1588,7 +1588,7 @@
     <string name="elder_isle_dock_unlocked_body">Il molo si staglia verso l\'orizzonte blu, ma nessuna nave osa salpare: la Serpe dei Mari ha affondato chiunque volesse attraversare la grande distesa d\'acqua. Sconfiggila selezionandola dall\'elenco dei boss e libererai il passaggio.</string>
     <string name="elder_isle_dock_unlocked_cta">Affronta la Serpe dei Mari.</string>
     <string name="elder_isle_dock_unlocked_later">In seguito</string>
-    <string name="boss_masked_name">\?\?\?</string> <!-- untranslated -->
+    <string name="boss_masked_name">\?\?\?</string>
     <string name="boss_last_elder_masked_desc">Un\'antica entità aspetta nelle profondità dell\'isola. Raccogli ogni oggetto Ancestrale per affrontarla.</string>
     <string name="elder_isle_welcome_title">Approdo all\'Isola Ancestrale</string>
     <string name="elder_isle_welcome_body">Le grosse onde si indeboliscono e la fitta nebbia si dirada, rivelando una spiaggia di pallido bianco e una giungla intagliata di rune. Una colonna di fumo si innalza da un vulcano ritenuto inattivo. Le vecchie leggende erano vere: qualcosa ancora vive su questa isola.
@@ -1603,7 +1603,7 @@
     <string name="elder_isle_stub_profile">Queste informazioni verranno mostrate in seguito.</string>
     <string name="elder_isle_skills_title">Abilità Ancestrali</string>
     <string name="elder_isle_total_level_label">Livello Ancestrale Totale</string>
-    <string name="elder_isle_total_level_value">%1$d / %2$d</string> <!-- untranslated -->
+    <string name="elder_isle_total_level_value">%1$d / %2$d</string>
     <string name="elder_isle_skill_activities_title">%1$s attività</string>
     <string name="elder_isle_no_activities">Nessuna attività disponibile al momento.</string>
     <string name="elder_isle_start_session">Avvia sessione</string>
@@ -1625,7 +1625,7 @@
     <string name="elder_isle_shop_insufficient">Non hai abbastanza Essenza Ancestrale</string>
     <string name="elder_isle_shop_purchased">Acquistato: %1$s.</string>
     <string name="elder_isle_shop_button">Visita l\'Emporio</string>
-    <string name="elder_isle_armor_master_title">Elder Armor Master</string> <!-- untranslated -->
+    <string name="elder_isle_armor_master_title">Armeria Ancestrale</string>
     <string name="elder_isle_lore_master_title">Registro</string>
     <string name="elder_armor_missing_mats">Non hai abbastanza materiali</string>
     <string name="elder_armor_crafted">Realizzato: %1$s.</string>
@@ -2417,9 +2417,9 @@
     <string name="carnival_stat_str">FRZ +%1$d</string>
     <string name="carnival_stat_def">DIF +%1$d</string>
     <!-- Translator note: %1$s = "${skill name} ", %2$d = percentage bonus -->
-    <string name="carnival_stat_xp">%1$sXP +%2$d%%</string> <!-- untranslated -->
+    <string name="carnival_stat_xp">%1$sXP +%2$d%%</string>
     <!-- Translator note: %1$s = "${skill name} ", %2$d = percentage bonus -->
-    <string name="carnival_stat_yield">%1$sYield +%2$d%%</string> <!-- untranslated -->
+    <string name="carnival_stat_yield">Resa %1$s+%2$d%%</string>
     <string name="carnival_potion_letter_green">V</string>
     <string name="carnival_potion_letter_blue">B</string>
     <string name="carnival_potion_letter_red">R</string>
@@ -2440,7 +2440,7 @@
     <!-- Translator note: %1$d = current skill level -->
     <string name="prestige_requires_99">Raggiungi il livello 99 per onorare (al momento %1$d).</string>
     <string name="prestige_maxed_cap">Raggiunto il massimo onore. Hai ottenuto tutti i punti possibili.</string>
-    <string name="skills_prestige_max">★×%1$d (Max)</string> <!-- untranslated -->
+    <string name="skills_prestige_max">★×%1$d (Max)</string>
     <!-- Translator note: %1$s = skill name, %2$d = points awarded -->
     <string name="prestige_confirm_message_points">Il livello di %1$s tornerà a 1 e otterrai %2$d punti onore da spendere in talenti. Non potrai più usare armamenti di livello superiore, e le missioni giornaliere di %1$s saranno reimpostate. Otterrai 2x %1$s XP per 48 ore.</string>
     <string name="prestige_respec">Reimposta punti</string>
