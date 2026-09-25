@@ -91,6 +91,7 @@ import androidx.compose.foundation.layout.safeDrawing
 import com.fantasyidler.data.model.DungeonRunStats
 import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.Skills
+import com.fantasyidler.ui.components.SkillRowCard
 import com.fantasyidler.ui.theme.ScaledSheetContent
 import com.fantasyidler.ui.viewmodel.CombatViewModel
 import com.fantasyidler.ui.viewmodel.InventoryViewModel
@@ -954,15 +955,9 @@ private fun CombatSkillRow(
     val emoji    = GameStrings.skillEmoji(skillKey)
     val progress = xpProgressFraction(xp)
 
-    Column(Modifier.fillMaxWidth()) {
-        Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(onClick = onClick)
-            .padding(horizontal = 16.dp, vertical = 10.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Box(modifier = Modifier.size(44.dp)) {
+    SkillRowCard(
+        onClick = onClick,
+        icon = {
             Box(
                 modifier = Modifier
                     .size(44.dp)
@@ -997,9 +992,8 @@ private fun CombatSkillRow(
                     )
                     .padding(horizontal = 3.dp, vertical = 1.dp),
             )
-        }
-        Spacer(Modifier.width(12.dp))
-        Column(Modifier.weight(1f)) {
+        },
+        header = {
             Row(
                 modifier              = Modifier.fillMaxWidth(),
                 verticalAlignment     = Alignment.CenterVertically,
@@ -1026,20 +1020,10 @@ private fun CombatSkillRow(
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
-            Spacer(Modifier.height(4.dp))
-            LinearProgressIndicator(
-                gapSize = 0.dp,
-                drawStopIndicator = {},
-                progress = { progress },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(4.dp)
-                    .clip(RoundedCornerShape(2.dp)),
-                color            = MaterialTheme.colorScheme.primary,
-                trackColor       = MaterialTheme.colorScheme.surfaceVariant,
-            )
-            if (gearBonus > 0 || prestigeBonus > 0) {
-                Spacer(Modifier.height(6.dp))
+        },
+        progress = progress,
+        description = if (gearBonus > 0 || prestigeBonus > 0) {
+            {
                 FlowRow(
                     modifier              = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(6.dp),
@@ -1060,7 +1044,9 @@ private fun CombatSkillRow(
                     }
                 }
             }
-            if (prestigeLevel > 0 || (onOpenPrestige != null && level >= 99)) {
+        } else null,
+        action = if (prestigeLevel > 0 || (onOpenPrestige != null && level >= 99)) {
+            {
                 Row(
                     modifier              = Modifier.fillMaxWidth(),
                     verticalAlignment     = Alignment.CenterVertically,
@@ -1089,9 +1075,8 @@ private fun CombatSkillRow(
                     }
                 }
             }
-        }
-    }
-    }
+        } else null,
+    )
     HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
 }
 
