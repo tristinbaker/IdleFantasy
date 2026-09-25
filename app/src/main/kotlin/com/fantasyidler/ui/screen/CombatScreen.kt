@@ -99,6 +99,10 @@ import com.fantasyidler.ui.viewmodel.nextLevelThreshold
 import com.fantasyidler.ui.viewmodel.xpProgressFraction
 import com.fantasyidler.ui.viewmodel.xpToMaxLevel
 import com.fantasyidler.ui.viewmodel.xpToNextLevel
+import com.fantasyidler.ui.viewmodel.QuestCategory
+import com.fantasyidler.ui.viewmodel.QuestIndicator
+import com.fantasyidler.ui.screen.skills.QuestIndicatorIcons
+import com.fantasyidler.ui.screen.skills.superscriptCount
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatXp
 
@@ -249,6 +253,8 @@ fun CombatScreen(
                             dungeonRuns         = state.dungeonRuns,
                             dungeonLastRunStats = state.dungeonLastRunStats,
                             unlockedDungeons    = state.unlockedDungeons,
+                            slayerTargetEnemies = state.slayerTargetEnemies,
+                            questTargetEnemies  = state.questTargetEnemies,
                             towerBestFloor      = state.towerBestFloor,
                             bossKillCounts      = state.bossKillCounts,
                             isQueueFull         = state.isQueueFull,
@@ -348,6 +354,8 @@ fun CombatScreen(
                             dungeonRuns         = state.dungeonRuns,
                             dungeonLastRunStats = state.dungeonLastRunStats,
                             unlockedDungeons    = state.unlockedDungeons,
+                            slayerTargetEnemies = state.slayerTargetEnemies,
+                            questTargetEnemies  = state.questTargetEnemies,
                             towerBestFloor      = state.towerBestFloor,
                             bossKillCounts      = state.bossKillCounts,
                             isQueueFull         = state.isQueueFull,
@@ -553,6 +561,8 @@ private fun CombatSelectionList(
     dungeonRuns: Map<String, Int> = emptyMap(),
     dungeonLastRunStats: Map<String, DungeonRunStats> = emptyMap(),
     unlockedDungeons: List<String> = emptyList(),
+    slayerTargetEnemies: Set<String> = emptySet(),
+    questTargetEnemies: Map<String, Set<QuestCategory>> = emptyMap(),
     towerBestFloor: Int = 0,
     bossKillCounts: Map<String, Int> = emptyMap(),
     isQueueFull: Boolean = false,
@@ -588,6 +598,9 @@ private fun CombatSelectionList(
                 survivalRating = survivalRatings[dungeon.name],
                 runCount       = dungeonRuns[dungeon.name] ?: 0,
                 lastRunStats   = dungeonLastRunStats[dungeon.name],
+                slayerTargetCount = dungeon.enemySpawns.map { it.enemy }.distinct().count { it in slayerTargetEnemies },
+                questIndicators = dungeon.enemySpawns.map { it.enemy }.distinct()
+                    .flatMap { enemy -> questTargetEnemies[enemy].orEmpty().map { category -> QuestIndicator(category, unlocked, "$enemy:$category") } },
                 onTap          = { onDungeon(dungeon) },
                 loreLockedHint = if (!discovered)
                     dungeon.loreHint ?: stringResource(R.string.expedition_discover_hint) else null,
@@ -1259,6 +1272,8 @@ private fun DungeonRow(
     survivalRating: CombatSimulator.SurvivalRating? = null,
     runCount: Int = 0,
     lastRunStats: DungeonRunStats? = null,
+    slayerTargetCount: Int = 0,
+    questIndicators: List<QuestIndicator> = emptyList(),
     loreLockedHint: String? = null,
     onTap: () -> Unit,
 ) {
@@ -1273,12 +1288,32 @@ private fun DungeonRow(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Column(Modifier.weight(1f)) {
-            Text(
-                text       = GameStrings.dungeonName(context, dungeon.name),
-                style      = MaterialTheme.typography.bodyLarge,
-                fontWeight = FontWeight.Medium,
-                color      = if (unlocked) MaterialTheme.colorScheme.onSurface else dimColor,
-            )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text       = GameStrings.dungeonName(context, dungeon.name),
+                    style      = MaterialTheme.typography.bodyLarge,
+                    fontWeight = FontWeight.Medium,
+                    color      = if (unlocked) MaterialTheme.colorScheme.onSurface else dimColor,
+                )
+                if (slayerTargetCount > 0) {
+                    Image(
+                        painter            = painterResource(R.drawable.skill_slayer),
+                        contentDescription = stringResource(R.string.slayer_title),
+                        modifier           = Modifier
+                            .padding(start = 6.dp)
+                            .size(16.dp)
+                            .alpha(if (unlocked) 1f else 0.38f),
+                    )
+                    if (slayerTargetCount > 1) {
+                        Text(
+                            text  = superscriptCount(slayerTargetCount),
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = if (unlocked) MaterialTheme.colorScheme.onSurface else dimColor,
+                        )
+                    }
+                }
+                QuestIndicatorIcons(questIndicators)
+            }
             Text(
                 text     = GameStrings.dungeonDesc(context, dungeon.name).takeIf { it.isNotBlank() } ?: dungeon.description,
                 style    = MaterialTheme.typography.bodySmall,

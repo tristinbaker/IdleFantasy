@@ -9,7 +9,7 @@ import com.fantasyidler.ui.viewmodel.QuestIndicator
 
 private const val SUPERSCRIPTS = "⁰¹²³⁴⁵⁶⁷⁸⁹"
 
-private fun superscriptCount(count: Int): String =
+internal fun superscriptCount(count: Int): String =
     if (count < 2) "" else count.toString().map { SUPERSCRIPTS[it - '0'] }.joinToString("")
 
 /**

@@ -165,6 +165,14 @@ fun SkillsScreen(
                         Text("$emoji  ${stringResource(labelRes)}")
                     }
                     Row(verticalAlignment = Alignment.CenterVertically) {
+                        Image(
+                            painter            = painterResource(R.drawable.skill_slayer),
+                            contentDescription = null,
+                            modifier           = Modifier.size(20.dp),
+                        )
+                        Text("  ${stringResource(R.string.quest_legend_slayer_target)}")
+                    }
+                    Row(verticalAlignment = Alignment.CenterVertically) {
                         Text("●  ", color = MaterialTheme.colorScheme.primary)
                         Text(stringResource(R.string.quest_legend_gold_dot))
                     }

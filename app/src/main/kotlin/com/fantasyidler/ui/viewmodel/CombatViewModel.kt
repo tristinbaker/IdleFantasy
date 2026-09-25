@@ -26,6 +26,7 @@ import com.fantasyidler.data.model.Skills
 import com.fantasyidler.repository.BoostRepository
 import com.fantasyidler.repository.ChurchRepository
 import com.fantasyidler.repository.blessingPrayerCapeMult
+import com.fantasyidler.repository.DailyQuestRepository
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.GuildRepository
 import com.fantasyidler.repository.PlayerRepository
@@ -36,6 +37,7 @@ import com.fantasyidler.repository.SessionRepository
 import com.fantasyidler.repository.SaveSlotRepository
 import com.fantasyidler.repository.SlayerRepository
 import com.fantasyidler.repository.TownRepository
+import com.fantasyidler.repository.WeeklyQuestRepository
 import com.fantasyidler.simulator.HeirloomStats
 import com.fantasyidler.simulator.CombatSimulator
 import com.fantasyidler.simulator.PrestigeBoosts
@@ -97,6 +99,8 @@ data class CombatUiState(
     val dungeonRuns: Map<String, Int> = emptyMap(),
     val dungeonLastRunStats: Map<String, DungeonRunStats> = emptyMap(),
     val unlockedDungeons: List<String> = emptyList(),
+    val slayerTargetEnemies: Set<String> = emptySet(),
+    val questTargetEnemies: Map<String, Set<QuestCategory>> = emptyMap(),
     val skillPrestigeLevels: Map<String, Int> = emptyMap(),
     val combatPrestigeBonus: Map<String, Int> = emptyMap(),
     /** Combat skills at 99+ where another prestige still earns points or an XP tier. */
@@ -158,6 +162,8 @@ class CombatViewModel @Inject constructor(
     private val questRepo: QuestRepository,
     private val guildRepo: GuildRepository,
     private val slayerRepo: SlayerRepository,
+    private val dailyQuestRepo: DailyQuestRepository,
+    private val weeklyQuestRepo: WeeklyQuestRepository,
     private val seasonalEventRepo: SeasonalEventRepository,
     private val queuedSessionStarter: QueuedSessionStarter,
     private val townRepo: TownRepository,
@@ -203,6 +209,18 @@ class CombatViewModel @Inject constructor(
             "elder_helm", "elder_platebody", "elder_platelegs", "elder_boots",
             "elder_cape", "elder_shield", "elder_signet_ring", "elder_amulet",
         )
+    }
+
+    /** Enemy keys wanted by active, unclaimed daily/weekly "kill_enemy" quests (target = species, not "any"). */
+    private fun questTargetEnemies(flags: PlayerFlags): Map<String, Set<QuestCategory>> {
+        val result = mutableMapOf<String, MutableSet<QuestCategory>>()
+        dailyQuestRepo.getActiveDailyQuests(flags)
+            .filter { !it.claimed && it.template.type == "kill_enemy" && it.template.target != "any" && it.progress < it.template.amount }
+            .forEach { result.getOrPut(it.template.target) { mutableSetOf() }.add(QuestCategory.DAILY) }
+        weeklyQuestRepo.getActiveWeeklyQuests(flags)
+            .filter { !it.claimed && it.template.type == "kill_enemy" && it.template.target != "any" && it.progress < it.template.amount }
+            .forEach { result.getOrPut(it.template.target) { mutableSetOf() }.add(QuestCategory.WEEKLY) }
+        return result
     }
 
     private val _extra = MutableStateFlow(CombatUiState())
@@ -334,6 +352,9 @@ class CombatViewModel @Inject constructor(
                 dungeonRuns             = flags.dungeonRuns,
                 dungeonLastRunStats     = flags.dungeonLastRunStats,
                 unlockedDungeons        = flags.unlockedDungeons,
+                slayerTargetEnemies     = (flags.foretelledTasks.map { it.enemyKey } +
+                    listOfNotNull(flags.activeSlayerTask?.enemyKey)).toSet(),
+                questTargetEnemies      = questTargetEnemies(flags),
                 selectedArrowKey        = extra.selectedArrowKey ?: flags.equippedArrows,
                 skillPrestigeLevels     = flags.skillPrestige,
                 combatPrestigeBonus     = Skills.COMBAT.associateWithTo(mutableMapOf()) {
