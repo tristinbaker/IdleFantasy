@@ -46,7 +46,7 @@
     <string name="quest_weekly_demon_slayer_name">Cazador de Demonios</string>
     <string name="quest_weekly_demon_slayer_desc">Mata 225 demonios menores esta semana.</string>
     <string name="quest_weekly_boss_hunter_name">Cazador de Jefes</string>
-    <string name="quest_weekly_boss_hunter_desc">Defeat 10 bosses this week.</string> <!-- untranslated -->
+    <string name="quest_weekly_boss_hunter_desc">Mata 10 jefes esta semana.</string>
     <string name="quest_weekly_kbd_slayer_name">Perdición del Dragón</string>
     <string name="quest_weekly_kbd_slayer_desc">Derrota al King Black Dragon 5 veces.</string>
     <string name="quest_weekly_void_champion_name">Campeón del Vacío</string>

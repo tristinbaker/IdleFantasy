@@ -59,6 +59,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.BuildConfig
 import com.fantasyidler.R
+import com.fantasyidler.ui.components.SkillRowCard
 import com.fantasyidler.ui.viewmodel.GuildHallViewModel
 import com.fantasyidler.ui.viewmodel.GuildSummary
 import com.fantasyidler.util.GameStrings
@@ -176,15 +177,9 @@ private fun GuildCard(
     val context = LocalContext.current
     val claimable = summary.claimableQuestCount + summary.claimableDailyCount
 
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(onClick = onClick)
-            .padding(horizontal = 16.dp, vertical = 12.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(12.dp),
-    ) {
-        Box(modifier = Modifier.size(44.dp)) {
+    SkillRowCard(
+        onClick = onClick,
+        icon = {
             Box(
                 modifier = Modifier
                     .size(44.dp)
@@ -207,9 +202,8 @@ private fun GuildCard(
                     modifier = Modifier.align(Alignment.TopEnd),
                 )
             }
-        }
-
-        Column(modifier = Modifier.weight(1f)) {
+        },
+        header = {
             Row(
                 modifier              = Modifier.fillMaxWidth(),
                 verticalAlignment     = Alignment.CenterVertically,
@@ -229,24 +223,20 @@ private fun GuildCard(
                 }
                 DailyStatusIndicator(summary = summary)
             }
-            if (summary.level < 10) {
-                Spacer(Modifier.height(6.dp))
-                LinearProgressIndicator(
-                    gapSize = 0.dp,
-                    drawStopIndicator = {},
-                    progress = { (summary.dailiesCompletedThisTier.toFloat() / summary.dailiesRequiredThisTier.toFloat()).coerceIn(0f, 1f) },
-                    modifier = Modifier.fillMaxWidth(),
-                    color    = MaterialTheme.colorScheme.primary,
-                )
-                Spacer(Modifier.height(4.dp))
+        },
+        progress = if (summary.level < 10) {
+            (summary.dailiesCompletedThisTier.toFloat() / summary.dailiesRequiredThisTier.toFloat()).coerceIn(0f, 1f)
+        } else null,
+        description = if (summary.level < 10) {
+            {
                 Text(
                     text  = guildProgressCaption(summary),
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
-        }
-    }
+        } else null,
+    )
 }
 
 /** Builds the combined dailies-progress / quest-gate caption shown under a guild's rank bar. */

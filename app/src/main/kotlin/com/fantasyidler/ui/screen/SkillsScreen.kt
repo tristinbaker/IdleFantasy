@@ -78,6 +78,7 @@ import com.fantasyidler.BuildConfig
 import com.fantasyidler.R
 import com.fantasyidler.ui.viewmodel.ExpeditionsViewModel
 import com.fantasyidler.data.model.Skills
+import com.fantasyidler.ui.components.SkillRowCard
 import com.fantasyidler.ui.theme.ScaledSheetContent
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -973,168 +974,149 @@ internal fun SkillRow(
     val emoji    = GameStrings.skillEmoji(skillKey)
     val progress = xpProgressFraction(xp)
 
-    Column(Modifier.fillMaxWidth()) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .clickable(onClick = onClick)
-                .padding(horizontal = 16.dp, vertical = 10.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            // Icon badge with level overlay
-            Box(modifier = Modifier.size(44.dp)) {
-                Box(
-                    modifier = Modifier
-                        .size(44.dp)
-                        .clip(CircleShape)
-                        .background(
-                            if (isActive) MaterialTheme.colorScheme.primary
-                            else MaterialTheme.colorScheme.surfaceVariant
-                        ),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    val iconRes = GameStrings.skillIconRes(skillKey)
-                    if (iconRes != null) {
-                        Image(
-                            painter            = painterResource(iconRes),
-                            contentDescription = null,
-                            modifier           = Modifier.size(28.dp),
-                        )
-                    } else {
-                        Text(
-                            text  = emoji,
-                            style = MaterialTheme.typography.titleMedium,
-                        )
-                    }
-                }
-                Text(
-                    text       = level.toString(),
-                    style      = MaterialTheme.typography.labelSmall,
-                    fontWeight = FontWeight.Bold,
-                    color      = MaterialTheme.colorScheme.onSurface,
-                    modifier   = Modifier
-                        .align(Alignment.BottomEnd)
-                        .background(
-                            color = MaterialTheme.colorScheme.surface,
-                            shape = CircleShape,
-                        )
-                        .padding(horizontal = 3.dp, vertical = 1.dp),
-                )
-                if (cropsReady > 0) {
-                    Badge(modifier = Modifier.align(Alignment.TopEnd))
-                }
-                if (guildDailyOpen) {
-                    Badge(
-                        containerColor = MaterialTheme.colorScheme.primary,
-                        modifier       = Modifier.align(Alignment.TopStart),
+    SkillRowCard(
+        onClick = onClick,
+        icon = {
+            Box(
+                modifier = Modifier
+                    .size(44.dp)
+                    .clip(CircleShape)
+                    .background(
+                        if (isActive) MaterialTheme.colorScheme.primary
+                        else MaterialTheme.colorScheme.surfaceVariant
+                    ),
+                contentAlignment = Alignment.Center,
+            ) {
+                val iconRes = GameStrings.skillIconRes(skillKey)
+                if (iconRes != null) {
+                    Image(
+                        painter            = painterResource(iconRes),
+                        contentDescription = null,
+                        modifier           = Modifier.size(28.dp),
+                    )
+                } else {
+                    Text(
+                        text  = emoji,
+                        style = MaterialTheme.typography.titleMedium,
                     )
                 }
             }
-
-            Spacer(Modifier.width(12.dp))
-
-            Column(Modifier.weight(1f)) {
-                Row(
-                    modifier             = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier          = Modifier.weight(1f, fill = false),
-                    ) {
-                        @OptIn(ExperimentalFoundationApi::class)
-                        Text(
-                            text       = name,
-                            style      = MaterialTheme.typography.bodyLarge,
-                            fontWeight = FontWeight.Medium,
-                            maxLines   = 1,
-                            modifier   = Modifier.weight(1f, fill = false).basicMarquee(),
-                        )
-                        QuestIndicatorIcons(questIndicators)
-                    }
-                    if (isActive) {
-                        Text(
-                            text  = stringResource(R.string.label_training),
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.primary,
-                        )
-                    } else {
-                        val remainingToCap = xpToMaxLevel(xp)
-                        val xpText = when {
-                            remainingToCap in 1 until 100_000L ->
-                                stringResource(R.string.xp_to_99, remainingToCap.formatXp())
-                            xpToNextLevel(xp) > 0L ->
-                                "${xp.formatXp()} / ${nextLevelThreshold(xp).formatXp()} XP"
-                            else -> "${xp.formatXp()} XP"
-                        }
-                        Text(
-                            text  = xpText,
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
-                    }
-                }
-                Spacer(Modifier.height(4.dp))
-                LinearProgressIndicator(
-                    gapSize = 0.dp,
-                    drawStopIndicator = {},
-                    progress = { progress },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(4.dp)
-                        .clip(RoundedCornerShape(2.dp)),
-                    color    = MaterialTheme.colorScheme.primary,
+            Text(
+                text       = level.toString(),
+                style      = MaterialTheme.typography.labelSmall,
+                fontWeight = FontWeight.Bold,
+                color      = MaterialTheme.colorScheme.onSurface,
+                modifier   = Modifier
+                    .align(Alignment.BottomEnd)
+                    .background(
+                        color = MaterialTheme.colorScheme.surface,
+                        shape = CircleShape,
+                    )
+                    .padding(horizontal = 3.dp, vertical = 1.dp),
+            )
+            if (cropsReady > 0) {
+                Badge(modifier = Modifier.align(Alignment.TopEnd))
+            }
+            if (guildDailyOpen) {
+                Badge(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    modifier       = Modifier.align(Alignment.TopStart),
                 )
-                if (toolEfficiency > 1.0f || petBoostPct > 0) {
-                    Spacer(Modifier.height(6.dp))
-                    Box(Modifier.fillMaxWidth()) {
-                        if (toolEfficiency > 1.0f) {
-                            Text(
-                                text     = stringResource(R.string.skills_tool_bonus, "%.2f".format(toolEfficiency)),
-                                style    = MaterialTheme.typography.labelSmall,
-                                color    = MaterialTheme.colorScheme.primary,
-                                modifier = Modifier.align(Alignment.CenterStart),
-                            )
-                        }
-                        if (petBoostPct > 0) {
-                            Text(
-                                text     = stringResource(R.string.skills_pet_bonus, petBoostPct),
-                                style    = MaterialTheme.typography.labelSmall,
-                                color    = MaterialTheme.colorScheme.tertiary,
-                                modifier = Modifier.align(Alignment.CenterEnd),
-                            )
-                        }
-                    }
+            }
+        },
+        header = {
+            Row(
+                modifier             = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier          = Modifier.weight(1f, fill = false),
+                ) {
+                    @OptIn(ExperimentalFoundationApi::class)
+                    Text(
+                        text       = name,
+                        style      = MaterialTheme.typography.bodyLarge,
+                        fontWeight = FontWeight.Medium,
+                        maxLines   = 1,
+                        modifier   = Modifier.weight(1f, fill = false).basicMarquee(),
+                    )
+                    QuestIndicatorIcons(questIndicators)
                 }
-                if (prestigeLevel > 0 || (onOpenPrestige != null && level >= 99)) {
-                    Spacer(Modifier.height(4.dp))
-                    Row(
-                        modifier              = Modifier.fillMaxWidth(),
-                        verticalAlignment     = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                    ) {
+                if (isActive) {
+                    Text(
+                        text  = stringResource(R.string.label_training),
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.primary,
+                    )
+                } else {
+                    val remainingToCap = xpToMaxLevel(xp)
+                    val xpText = when {
+                        remainingToCap in 1 until 100_000L ->
+                            stringResource(R.string.xp_to_99, remainingToCap.formatXp())
+                        xpToNextLevel(xp) > 0L ->
+                            "${xp.formatXp()} / ${nextLevelThreshold(xp).formatXp()} XP"
+                        else -> "${xp.formatXp()} XP"
+                    }
+                    Text(
+                        text  = xpText,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            }
+        },
+        progress = progress,
+        description = if (toolEfficiency > 1.0f || petBoostPct > 0) {
+            {
+                Box(Modifier.fillMaxWidth()) {
+                    if (toolEfficiency > 1.0f) {
                         Text(
-                            text  = if (isPrestigeMaxed) stringResource(R.string.skills_prestige_max, prestigeLevel)
-                                    else "★×$prestigeLevel",
-                            style = MaterialTheme.typography.labelMedium,
-                            color = MaterialTheme.colorScheme.primary,
+                            text     = stringResource(R.string.skills_tool_bonus, "%.2f".format(toolEfficiency)),
+                            style    = MaterialTheme.typography.labelSmall,
+                            color    = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.align(Alignment.CenterStart),
                         )
-                        if (onOpenPrestige != null) {
-                            Text(
-                                text     = stringResource(if (isPrestigeMaxed) R.string.prestige_skill_tree else R.string.prestige),
-                                style    = MaterialTheme.typography.labelSmall,
-                                color    = MaterialTheme.colorScheme.primary,
-                                modifier = Modifier
-                                    .clip(RoundedCornerShape(8.dp))
-                                    .clickable(role = Role.Button) { onOpenPrestige() }
-                                    .padding(horizontal = 8.dp, vertical = 2.dp),
-                            )
-                        }
+                    }
+                    if (petBoostPct > 0) {
+                        Text(
+                            text     = stringResource(R.string.skills_pet_bonus, petBoostPct),
+                            style    = MaterialTheme.typography.labelSmall,
+                            color    = MaterialTheme.colorScheme.tertiary,
+                            modifier = Modifier.align(Alignment.CenterEnd),
+                        )
                     }
                 }
             }
-        }
-    }
+        } else null,
+        action = if (prestigeLevel > 0 || (onOpenPrestige != null && level >= 99)) {
+            {
+                Row(
+                    modifier              = Modifier.fillMaxWidth(),
+                    verticalAlignment     = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    Text(
+                        text  = if (isPrestigeMaxed) stringResource(R.string.skills_prestige_max, prestigeLevel)
+                                else "★×$prestigeLevel",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = MaterialTheme.colorScheme.primary,
+                    )
+                    if (onOpenPrestige != null) {
+                        Text(
+                            text     = stringResource(if (isPrestigeMaxed) R.string.prestige_skill_tree else R.string.prestige),
+                            style    = MaterialTheme.typography.labelSmall,
+                            color    = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(8.dp))
+                                .clickable(role = Role.Button) { onOpenPrestige() }
+                                .padding(horizontal = 8.dp, vertical = 2.dp),
+                        )
+                    }
+                }
+            }
+        } else null,
+    )
 }
 
 // ---------------------------------------------------------------------------
