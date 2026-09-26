@@ -549,11 +549,11 @@
     <string name="skilling_dungeon_corrupted_canopy_note_3">Durch die gewundenen Stämme sind Steine von Heiligtümern zu sehen. Dort lebt noch immer etwas.</string>
     <string name="skilling_dungeon_corrupted_canopy_note_4">Die Verderbnis breitet sich aus, während du arbeitest. Das Blätterdach hungert nach etwas Unbenanntem.</string>
     <string name="skilling_dungeon_corrupted_canopy_note_5">Das Blätterdach teilt sich. Das verdorbene Heiligtum erhebt sich aus dem Schattenwald – seine Tore sind offen und wartend.</string>
-    <string name="skilling_dungeon_whispering_grove_note_1">The trees here whisper in a language older than any known tongue.</string> <!-- untranslated -->
-    <string name="skilling_dungeon_whispering_grove_note_2">Stone foundations visible beneath the roots — the remains of something built long before the forest.</string> <!-- untranslated -->
-    <string name="skilling_dungeon_whispering_grove_note_3">A druid\'s warning carved in bark: \'The clearing at the grove\'s heart is not what it was. Stay away.\'</string> <!-- untranslated -->
-    <string name="skilling_dungeon_whispering_grove_note_4">Corrupted vines reach toward you as you chop. The grove resists your presence.</string> <!-- untranslated -->
-    <string name="skilling_dungeon_whispering_grove_note_5">A gap in the canopy reveals ruins at the grove\'s heart. The Ancient Forest Ruins call to be explored.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_whispering_grove_note_1">Hier flüstern die Bäume in einer Sprache älter als all bekannten Mundarten.</string>
+    <string name="skilling_dungeon_whispering_grove_note_2">Steiniger Grund sichtbar zwischen den Wurzel — die Reste von etwas, das lange vor dem Wald erbaut wurde.</string>
+    <string name="skilling_dungeon_whispering_grove_note_3">Die Warnung eines Druiden eingraviert in die Borke: \'Die Waldlichtung im Hainherzen ist nicht mehr was sie war. Bleib weg.\'</string>
+    <string name="skilling_dungeon_whispering_grove_note_4">Verdorbene Weinranken bewegen sich auf dich zu sobald du hackst. Der Hain widersteht deiner Anwesenheit.</string>
+    <string name="skilling_dungeon_whispering_grove_note_5">Eine Lücke im Kronendach enthüllt Ruinen im Hainherzen. Die uralten Waldruinen rufen zur Erforschung auf.</string>
     <string name="skilling_dungeon_thieves_den_note_1">A crumpled ledger page: names, dates, and numbers. Someone has been tracking payments to a person called the Warden.</string> <!-- untranslated -->
     <string name="skilling_dungeon_thieves_den_note_2">Scratched into the wall: \'For those who prove themselves — the Sanctum awaits. Ask no questions.\'</string> <!-- untranslated -->
     <string name="skilling_dungeon_thieves_den_note_3">A torn letter warning a member to stay away from the eastern tunnels. No reason is given.</string> <!-- untranslated -->
