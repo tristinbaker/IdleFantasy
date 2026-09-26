@@ -534,11 +534,11 @@
     <string name="skilling_dungeon_abyssal_lagoon_note_3">A torn map marks this lagoon with a single word: \'DO NOT FISH.\' No explanation is given.</string> <!-- untranslated -->
     <string name="skilling_dungeon_abyssal_lagoon_note_4">Something rises to the surface and sinks again. Massive. Ancient. Curious.</string> <!-- untranslated -->
     <string name="skilling_dungeon_abyssal_lagoon_note_5">The dark water parts. The Abyssal Ruins loom below — vast, alien, and ancient beyond reckoning.</string> <!-- untranslated -->
-    <string name="skilling_dungeon_sunken_grotto_note_1">Strange stone pillars rise from the grotto floor, carved with script no living scholar can read.</string> <!-- untranslated -->
-    <string name="skilling_dungeon_sunken_grotto_note_2">The fish scatter without warning — something large passes below.</string> <!-- untranslated -->
-    <string name="skilling_dungeon_sunken_grotto_note_3">A waterlogged journal drifts by: \'The temple they found beneath the water was not abandoned. It was waiting.\'</string> <!-- untranslated -->
-    <string name="skilling_dungeon_sunken_grotto_note_4">A submerged archway pulses with faint ancient light. The current pulls toward it.</string> <!-- untranslated -->
-    <string name="skilling_dungeon_sunken_grotto_note_5">The archway is clear. The Drowned Temple lies beyond — something old watches from within.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_sunken_grotto_note_1">Fremdartige Steinpfeiler ragen aus dem Grottenboden mit einer Schrift graviert, die kein lebender Gelehrte lesen kann.</string>
+    <string name="skilling_dungeon_sunken_grotto_note_2">Die Fische zerstieben ohne Warnung — etwas Großes kommt unten vorbei.</string>
+    <string name="skilling_dungeon_sunken_grotto_note_3">Ein durchnässtes Journal schwimmt vorbei: \'Der Tempel unter dem Wasser wurde nicht aufgegeben. Er hat gewartet.\'</string>
+    <string name="skilling_dungeon_sunken_grotto_note_4">Ein untergetauchter Torbogen pulsiert in schwachem uralten Licht. Die Strömung zieht zu ihm hin.</string>
+    <string name="skilling_dungeon_sunken_grotto_note_5">Der Torbogen ist frei. Der überflutete Tempel liegt dahinter — etwas Altes beobachtet von dort.</string>
     <string name="skilling_dungeon_dwarven_depths_note_1">Ancient rune-carved walls pulse faintly. The dwarves who built this place are long gone.</string> <!-- untranslated -->
     <string name="skilling_dungeon_dwarven_depths_note_2">A colossal forge stands at the passage end, its fires somehow still burning after centuries.</string> <!-- untranslated -->
     <string name="skilling_dungeon_dwarven_depths_note_3">Iron golems stand dormant in the alcoves. Their eyes flicker as you mine nearby.</string> <!-- untranslated -->
