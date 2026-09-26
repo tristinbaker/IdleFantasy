@@ -12,16 +12,16 @@
     <string name="nav_profile">Profil</string>
 
     <!-- ===== Common buttons ===== -->
-    <string name="btn_start">Beginnen</string>
-    <string name="btn_start_session">Aktivität beginnen</string>
-    <string name="btn_abandon_session">Aktivität aufgeben</string>
+    <string name="btn_start">Start</string>
+    <string name="btn_start_session">Aktivität starten</string>
+    <string name="btn_abandon_session">Aktivität abbrechen</string>
     <string name="btn_collect_results">Resultate sammeln</string>
     <string name="btn_cancel">Abbrechen</string>
     <string name="btn_craft">Herstellen</string>
     <string name="btn_confirm">Bestätigen</string>
-    <string name="btn_abandon">Aufgeben</string>
-    <string name="btn_repeat_action">Wiederholen</string>
-    <string name="btn_collect">Prämien sammeln</string>
+    <string name="btn_abandon">Abbrechen</string>
+    <string name="btn_repeat_action">Wiederhole Aktivität</string>
+    <string name="btn_collect">Belohnungen einsammeln</string>
     <string name="btn_equip">Ausrüsten</string>
     <string name="btn_unequip">Ablegen</string>
     <string name="btn_buy">Kaufen</string>
@@ -1436,7 +1436,7 @@
     <string name="trade_route_merchants_quarter_desc">Handelt mit seltenen Gütern im prestigeträchtigen Händlerviertel.</string>
     <string name="trade_route_northern_ports_desc">Bringt wertvolle Fracht in die nördlichen Hafenstädte. Hohes Risiko, hohe Belohnung.</string>
     <string name="crafting_cat_bar">Barren</string>
-    <string name="crafting_cat_brew">Brew</string> <!-- untranslated -->
+    <string name="crafting_cat_brew">Brauen</string>
     <string name="crafting_cat_component">Komponente</string>
     <string name="crafting_cat_tool">Werkzeug</string>
     <string name="crafting_cat_weapon">Waffe</string>
@@ -1450,7 +1450,7 @@
     <string name="crafting_cat_bow">Bogen</string>
     <string name="crafting_cat_plank">Bohle</string>
     <string name="crafting_cat_staff">Stab</string>
-    <string name="crafting_cat_super_potion">Super Potion</string> <!-- untranslated -->
+    <string name="crafting_cat_super_potion">Super-Trank</string>
 
     <!-- Crafting tier filter chips -->
     <string name="crafting_tier_adamantite">Adamantit</string>
@@ -1461,9 +1461,9 @@
     <string name="crafting_tier_maple">Ahorn</string>
     <string name="crafting_tier_mithril">Mithril</string>
     <string name="crafting_tier_oak">Eiche</string>
-    <string name="crafting_tier_plank">Plank</string> <!-- untranslated -->
+    <string name="crafting_tier_plank">Bohle</string>
     <string name="crafting_tier_platinum">Platin</string>
-    <string name="crafting_tier_redwood">Redwood</string> <!-- untranslated -->
+    <string name="crafting_tier_redwood">Mammutbaumholz</string>
     <string name="crafting_tier_runite">Runit</string>
     <string name="crafting_tier_silver">Silber</string>
     <string name="crafting_tier_steel">Stahl</string>
@@ -1576,12 +1576,12 @@
     <string name="elder_isle_zone_forest">Älterer Forst</string>
     <string name="elder_isle_zone_volcano">Vulkanspitze</string>
     <string name="elder_isle_zone_abyss">Abyssal Depths</string> <!-- untranslated -->
-    <string name="elder_isle_zone_locked">Locked</string> <!-- untranslated -->
-    <string name="elder_isle_coming_soon">Elder Isle is barely charted. Return once the isle has been built out.</string> <!-- untranslated -->
+    <string name="elder_isle_zone_locked">Gesperrt</string>
+    <string name="elder_isle_coming_soon">Demnächst verfügbar</string>
     <string name="elder_isle_boss_sea_serpent">Seeschlange</string>
     <string name="elder_isle_set_sail">Setze Segel zur Älteren Insel</string>
     <string name="elder_isle_return">Kehre zum Festland zurück</string>
-    <string name="elder_isle_sail_blocked_by_session">Finish your active session before setting sail.</string> <!-- untranslated -->
+    <string name="elder_isle_sail_blocked_by_session">Beende deine aktive Aktivität, bevor du in See stichst.</string>
     <string name="elder_isle_sail_blocked_locked">Elder Isle is not yet unlocked.</string> <!-- untranslated -->
     <string name="elder_isle_sail_blocked_serpent">The Sea Serpent guards the passage. Defeat it to reach Elder Isle.</string> <!-- untranslated -->
     <string name="elder_isle_dock_unlocked_title">The Dock stands ready</string> <!-- untranslated -->
@@ -1602,10 +1602,10 @@
     <string name="elder_isle_total_level_value">%1$d / %2$d</string>
     <string name="elder_isle_skill_activities_title">%1$s Aktivitäten</string>
     <string name="elder_isle_no_activities">No activities yet in this build.</string> <!-- untranslated -->
-    <string name="elder_isle_start_session">Start session</string> <!-- untranslated -->
-    <string name="elder_isle_session_started">Session started.</string> <!-- untranslated -->
-    <string name="elder_isle_session_start_failed">Could not start session: %1$s</string> <!-- untranslated -->
-    <string name="elder_isle_activity_level">Level %1$d required</string> <!-- untranslated -->
+    <string name="elder_isle_start_session">Aktivität starten</string>
+    <string name="elder_isle_session_started">Aktivität gestartet.</string>
+    <string name="elder_isle_session_start_failed">Aktivität kann nicht gestartet werden: %1$s</string>
+    <string name="elder_isle_activity_level">Level %1$d erforderlich</string>
     <string name="elder_isle_combat_title">Elder Dungeons</string> <!-- untranslated -->
     <string name="elder_isle_profile_title">Isle Profile</string> <!-- untranslated -->
     <string name="elder_isle_dungeon_beach">Strand &amp; Klippen</string>
@@ -1619,12 +1619,12 @@
     <string name="elder_isle_shop_buy">Kaufe</string>
     <string name="elder_isle_shop_soon">Coming later</string> <!-- untranslated -->
     <string name="elder_isle_shop_insufficient">Not enough Elder Essence.</string> <!-- untranslated -->
-    <string name="elder_isle_shop_purchased">Purchased %1$s.</string> <!-- untranslated -->
+    <string name="elder_isle_shop_purchased">%1$s gekauft.</string>
     <string name="elder_isle_shop_button">Besuche den Inselladen</string>
     <string name="elder_isle_armor_master_title">Älterer Rüstungsmeister</string>
     <string name="elder_isle_lore_master_title">Lore Master</string> <!-- untranslated -->
     <string name="elder_armor_missing_mats">Nicht genug Material.</string>
-    <string name="elder_armor_crafted">Crafted %1$s.</string> <!-- untranslated -->
+    <string name="elder_armor_crafted">%1$s hergestellt.</string>
     <string name="elder_armor_queue_full">Craft queue is full (3).</string> <!-- untranslated -->
     <string name="elder_armor_missing_stone">You don\'t own that sigil stone.</string> <!-- untranslated -->
     <string name="elder_armor_stone_embedded">Embedded %1$s in %2$s.</string> <!-- untranslated -->
