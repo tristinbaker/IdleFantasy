@@ -313,6 +313,8 @@
     <string name="settings_profile_layout_tabs">Tabs</string>
     <string name="settings_quest_dots">Quest dots on skills</string>
     <string name="settings_quest_dots_desc">Show a gold dot on skills that have an open quest</string>
+    <string name="settings_monument_touch_indicator">Monument touch indicator</string>
+    <string name="settings_monument_touch_indicator_desc">Show a dot on the Grand Monument on Home when the daily touch is available</string>
     <string name="settings_prestige_notifications">Prestige Notification Badges</string>
     <string name="settings_prestige_notifications_desc">Show a notification badge on navigation when a skill is ready to prestige</string>
     <string name="label_switch_character">Switch character</string>
@@ -1061,6 +1063,8 @@
     <string name="church_bones_available">You have %1$d bones on hand — worth %2$d toward blessings (bigger bones count for more)</string>
     <string name="church_not_enough_bones">Not enough bones (need %1$d)</string>
     <string name="church_already_active">A blessing is already active</string>
+    <string name="church_blessing_activated">Blessing activated!</string>
+    <string name="church_blessing_extended">Blessing extended!</string>
     <string name="church_confirm_deactivate_title">Deactivate Blessing?</string>
     <string name="church_confirm_deactivate_body">Are you sure you want to deactivate your active blessing? You will not get your bones back.</string>
 

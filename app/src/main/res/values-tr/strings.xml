@@ -313,6 +313,8 @@
     <string name="settings_profile_layout_tabs">Sekmeler</string>
     <string name="settings_quest_dots">Quest dots on skills</string> <!-- untranslated -->
     <string name="settings_quest_dots_desc">Show a gold dot on skills that have an open quest</string> <!-- untranslated -->
+    <string name="settings_monument_touch_indicator">Monument touch indicator</string> <!-- untranslated -->
+    <string name="settings_monument_touch_indicator_desc">Show a dot on the Grand Monument on Home when the daily touch is available</string> <!-- untranslated -->
     <string name="settings_prestige_notifications">Prestige Notification Badges</string> <!-- untranslated -->
     <string name="settings_prestige_notifications_desc">Show a notification badge on navigation when a skill is ready to prestige</string> <!-- untranslated -->
     <string name="label_switch_character">Switch character</string> <!-- untranslated -->
@@ -1061,6 +1063,8 @@
     <string name="church_bones_available">%1$d kemiğiniz var (tüm türler), kutsamalar için %2$d değerinde (büyük kemikler daha fazla sayılır)</string>
     <string name="church_not_enough_bones">Not enough bones (need %1$d)</string> <!-- untranslated -->
     <string name="church_already_active">A blessing is already active</string> <!-- untranslated -->
+    <string name="church_blessing_activated">Blessing activated!</string> <!-- untranslated -->
+    <string name="church_blessing_extended">Blessing extended!</string> <!-- untranslated -->
     <string name="church_confirm_deactivate_title">Kutsamayı Devre Dışı Bırak?</string>
     <string name="church_confirm_deactivate_body">Aktif kutsamanızı devre dışı bırakmak istediğinizden emin misiniz? Kemiklerinizi geri alamayacaksınız.</string>
 
@@ -2008,7 +2012,7 @@
     <string name="monument_not_enough_coins">Yeterli altın yok.</string>
     <string name="title_patron_of_the_realm_name">Diyarın Hamisi</string>
     <string name="title_patron_of_the_realm_requirement">Büyük Anıtı tamamla</string>
-    <string name="title_isle_champion_name">Isle Champion</string> <!-- untranslated -->
+    <string name="title_isle_champion_name">Champion of the Elder Isle</string> <!-- untranslated -->
     <string name="title_isle_champion_requirement">Defeat the Last Elder on Elder Isle</string> <!-- untranslated -->
     <string name="item_gilded_full_helmet_name">Yaldızlı Tam Miğfer</string>
     <string name="item_gilded_platebody_name">Yaldızlı Zırh</string>

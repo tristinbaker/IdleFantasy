@@ -329,6 +329,8 @@
     <string name="settings_profile_layout_tabs">Вкладки</string>
     <string name="settings_quest_dots">Точки заданий на навыке</string>
     <string name="settings_quest_dots_desc">Показывает золотую точку на навыках, для которых открыто задание</string>
+    <string name="settings_monument_touch_indicator">Monument touch indicator</string> <!-- untranslated -->
+    <string name="settings_monument_touch_indicator_desc">Show a dot on the Grand Monument on Home when the daily touch is available</string> <!-- untranslated -->
     <string name="settings_prestige_notifications">Значки с уведомлением о престиже</string>
     <string name="settings_prestige_notifications_desc">Показывать значок уведомления при навигации, когда навык готов к получению престижа.</string>
     <string name="label_switch_character">Сменить персонажа</string>
@@ -1079,6 +1081,8 @@
     <string name="church_bones_available">У вас имеется костей — %1$d, что равно %2$d для благословений (крупные кости считаются за большее количество)</string>
     <string name="church_not_enough_bones">Недостаточно костей (нужно %1$d)</string>
     <string name="church_already_active">Благословение уже активно</string>
+    <string name="church_blessing_activated">Blessing activated!</string> <!-- untranslated -->
+    <string name="church_blessing_extended">Blessing extended!</string> <!-- untranslated -->
     <string name="church_confirm_deactivate_title">Деактивировать благословение?</string>
     <string name="church_confirm_deactivate_body">Вы уверены, что хотите деактивировать активное благословение? Вы не получите кости обратно.</string>
 
@@ -2030,7 +2034,7 @@
     <string name="monument_not_enough_coins">Недостаточно монет.</string>
     <string name="title_patron_of_the_realm_name">Покровитель королевства</string>
     <string name="title_patron_of_the_realm_requirement">Завершите Великий Монумент</string>
-    <string name="title_isle_champion_name">Isle Champion</string> <!-- untranslated -->
+    <string name="title_isle_champion_name">Champion of the Elder Isle</string> <!-- untranslated -->
     <string name="title_isle_champion_requirement">Defeat the Last Elder on Elder Isle</string> <!-- untranslated -->
     <string name="item_gilded_full_helmet_name">Позолоченный шлем</string>
     <string name="item_gilded_platebody_name">Позолоченный нагрудник</string>

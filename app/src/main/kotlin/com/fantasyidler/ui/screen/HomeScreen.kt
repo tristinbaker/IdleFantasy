@@ -94,6 +94,7 @@ import com.fantasyidler.ui.viewmodel.totalLevelFrom
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.drawableByName
 import com.fantasyidler.util.formatCoins
+import com.fantasyidler.util.formatDurationMs
 import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
@@ -675,6 +676,7 @@ fun HomeScreen(
             // ── Town grid (or isle grid) ───────────────────────────────
             val churchTint = if (state.activeBlessingKey.isNotEmpty() && state.activeBlessingRemainingMs > 0)
                 MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
+            val monumentTouchDotVisible = state.showMonumentTouchIndicator && state.monumentTouchAvailable
             val townGridRows: @Composable () -> Unit = {
                 if (state.onElderIsle) {
                     // Isle-flavored grid: mirrors mainland town-grid card styling; 4 cards.
@@ -717,7 +719,7 @@ fun HomeScreen(
                             horizontalArrangement = Arrangement.spacedBy(8.dp),
                         ) {
                             TownGridCard(Icons.Filled.Celebration,    stringResource(R.string.carnival_title), onClick = onNavigateToCarnival, modifier = Modifier.weight(1f))
-                            TownGridCard(Icons.Filled.AccountBalance, stringResource(R.string.monument_title), onClick = onNavigateToMonument, modifier = Modifier.weight(1f))
+                            TownGridCard(Icons.Filled.AccountBalance, stringResource(R.string.monument_title), onClick = onNavigateToMonument, modifier = Modifier.weight(1f), showDot = monumentTouchDotVisible)
                             TownGridCard(Icons.Filled.Home,           stringResource(R.string.house_title),    onClick = onNavigateToHouse,    modifier = Modifier.weight(1f))
                         }
                         // Show the Set Sail button as soon as the Dock is built, even before
@@ -821,6 +823,15 @@ fun HomeScreen(
                                 drawStopIndicator = {},
                                 progress = { (event.tokens.toFloat() / event.goal).coerceIn(0f, 1f) },
                                 modifier = Modifier.fillMaxWidth().height(6.dp).clip(RoundedCornerShape(3.dp)),
+                            )
+                            Spacer(Modifier.height(4.dp))
+                            Text(
+                                text  = stringResource(
+                                    R.string.format_time_remaining,
+                                    (event.endMs - System.currentTimeMillis()).coerceAtLeast(0).formatDurationMs(LocalContext.current),
+                                ),
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
                             )
                         }
                     }
@@ -1365,6 +1376,7 @@ private fun TownGridCard(
     modifier: Modifier = Modifier,
     iconTint: Color = MaterialTheme.colorScheme.onSurfaceVariant,
     badgeCount: Int = 0,
+    showDot: Boolean = false,
 ) {
     ElevatedCard(
         modifier = modifier,
@@ -1376,6 +1388,10 @@ private fun TownGridCard(
         ) {
             if (badgeCount > 0) {
                 BadgedBox(badge = { Badge { Text("$badgeCount") } }) {
+                    Icon(imageVector = icon, contentDescription = null, tint = iconTint, modifier = Modifier.size(28.dp))
+                }
+            } else if (showDot) {
+                BadgedBox(badge = { Badge() }) {
                     Icon(imageVector = icon, contentDescription = null, tint = iconTint, modifier = Modifier.size(28.dp))
                 }
             } else {

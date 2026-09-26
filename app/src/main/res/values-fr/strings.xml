@@ -313,6 +313,8 @@
     <string name="settings_profile_layout_tabs">Onglets</string>
     <string name="settings_quest_dots">Point de quête sur aptitudes</string>
     <string name="settings_quest_dots_desc">Montre un point doré sur les aptitudes qui ont une quête possible</string>
+    <string name="settings_monument_touch_indicator">Monument touch indicator</string> <!-- untranslated -->
+    <string name="settings_monument_touch_indicator_desc">Show a dot on the Grand Monument on Home when the daily touch is available</string> <!-- untranslated -->
     <string name="settings_prestige_notifications">Notification de prestige</string>
     <string name="settings_prestige_notifications_desc">Montrer une notification quand une aptitude est prête à prestige.</string>
     <string name="label_switch_character">Changer de personnage</string>
@@ -1062,6 +1064,8 @@
     <string name="church_bones_available">Vous avez %1$d os (tous types), soit %2$d pour les bénédictions (les os plus gros comptent plus)</string>
     <string name="church_not_enough_bones">Os insuffisants (besoin de %1$d)</string>
     <string name="church_already_active">Une bénédiction est déjà active</string>
+    <string name="church_blessing_activated">Blessing activated!</string> <!-- untranslated -->
+    <string name="church_blessing_extended">Blessing extended!</string> <!-- untranslated -->
     <string name="church_confirm_deactivate_title">Désactiver la bénédiction ?</string>
     <string name="church_confirm_deactivate_body">Es-tu sûr de vouloir désactiver ta bénédiction active ? Tu ne récupéreras pas tes os.</string>
 
@@ -2009,7 +2013,7 @@
     <string name="monument_not_enough_coins">Pas assez de pièces.</string>
     <string name="title_patron_of_the_realm_name">Mécène du Royaume</string>
     <string name="title_patron_of_the_realm_requirement">Achevez le Grand Monument</string>
-    <string name="title_isle_champion_name">Isle Champion</string> <!-- untranslated -->
+    <string name="title_isle_champion_name">Champion of the Elder Isle</string> <!-- untranslated -->
     <string name="title_isle_champion_requirement">Defeat the Last Elder on Elder Isle</string> <!-- untranslated -->
     <string name="item_gilded_full_helmet_name">Heaume Doré</string>
     <string name="item_gilded_platebody_name">Plastron Doré</string>
