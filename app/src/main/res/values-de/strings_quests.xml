@@ -539,11 +539,11 @@
     <string name="skilling_dungeon_sunken_grotto_note_3">A waterlogged journal drifts by: \'The temple they found beneath the water was not abandoned. It was waiting.\'</string> <!-- untranslated -->
     <string name="skilling_dungeon_sunken_grotto_note_4">A submerged archway pulses with faint ancient light. The current pulls toward it.</string> <!-- untranslated -->
     <string name="skilling_dungeon_sunken_grotto_note_5">The archway is clear. The Drowned Temple lies beyond — something old watches from within.</string> <!-- untranslated -->
-    <string name="skilling_dungeon_dwarven_depths_note_1">Ancient rune-carved walls pulse faintly. The dwarves who built this place are long gone.</string> <!-- untranslated -->
-    <string name="skilling_dungeon_dwarven_depths_note_2">A colossal forge stands at the passage end, its fires somehow still burning after centuries.</string> <!-- untranslated -->
-    <string name="skilling_dungeon_dwarven_depths_note_3">Iron golems stand dormant in the alcoves. Their eyes flicker as you mine nearby.</string> <!-- untranslated -->
-    <string name="skilling_dungeon_dwarven_depths_note_4">The forge runes are a warning — something was bound here, and it grows restless.</string> <!-- untranslated -->
-    <string name="skilling_dungeon_dwarven_depths_note_5">The golems rise fully to life. The Ancient Forge awakens — its guardians await those brave enough to enter.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_dwarven_depths_note_1">Uralte runengravierte Wände pulsieren schwach. Die Zwerge, die diesen Platz erbauten sind schon lange fort.</string>
+    <string name="skilling_dungeon_dwarven_depths_note_2">Eine kolossale Esse steht an Ende der Passage. Irgendwie brennen ihre Feuer immer noch nach Jahrhunderten.</string>
+    <string name="skilling_dungeon_dwarven_depths_note_3">In den Alkoven stehen schlafende Eisengolems. Ihre Augen flackern, wenn Du in der Nähe Erze förderst.</string>
+    <string name="skilling_dungeon_dwarven_depths_note_4">Die Runen der Schmiede sind eine Warnung — Etwas wurde hier gebunden und es wird unruhig.</string>
+    <string name="skilling_dungeon_dwarven_depths_note_5">Die Golems erwachen zu vollem Leben. The Uralte Schmiede erwacht — ihre Wächter warten auf diejenigen, die mutig genug sind, sie zu betreten.</string>
     <string name="skilling_dungeon_corrupted_canopy_note_1">Die Bäume hier bluten Schatten, wo sie gefällt werden. Das Holz windet sich und widersetzt sich der Klinge.</string>
     <string name="skilling_dungeon_corrupted_canopy_note_2">Ein Schattenwesen beobachtet alles aus dem Blätterdach. Es greift nicht an – es beobachtet nur.</string>
     <string name="skilling_dungeon_corrupted_canopy_note_3">Durch die gewundenen Stämme sind Steine von Heiligtümern zu sehen. Dort lebt noch immer etwas.</string>
