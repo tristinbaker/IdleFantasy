@@ -313,6 +313,8 @@
     <string name="settings_profile_layout_tabs">タブ</string>
     <string name="settings_quest_dots">Quest dots on skills</string> <!-- untranslated -->
     <string name="settings_quest_dots_desc">Show a gold dot on skills that have an open quest</string> <!-- untranslated -->
+    <string name="settings_monument_touch_indicator">Monument touch indicator</string> <!-- untranslated -->
+    <string name="settings_monument_touch_indicator_desc">Show a dot on the Grand Monument on Home when the daily touch is available</string> <!-- untranslated -->
     <string name="settings_prestige_notifications">Prestige Notification Badges</string> <!-- untranslated -->
     <string name="settings_prestige_notifications_desc">Show a notification badge on navigation when a skill is ready to prestige</string> <!-- untranslated -->
     <string name="label_switch_character">Switch character</string> <!-- untranslated -->
@@ -1061,6 +1063,8 @@
     <string name="church_bones_available">所持している骨: %1$d 個 — 祝福価値: %2$d (大きな骨ほど効果が高くなります)</string>
     <string name="church_not_enough_bones">骨が足りません (必要数: %1$d)</string>
     <string name="church_already_active">すでに祝福が有効になっています</string>
+    <string name="church_blessing_activated">Blessing activated!</string> <!-- untranslated -->
+    <string name="church_blessing_extended">Blessing extended!</string> <!-- untranslated -->
     <string name="church_confirm_deactivate_title">祝福を無効化しますか？</string>
     <string name="church_confirm_deactivate_body">本当に現在有効な祝福を無効化しますか？消費した骨は戻りません。</string>
 
@@ -2008,7 +2012,7 @@
     <string name="monument_not_enough_coins">コインが足りません。</string>
     <string name="title_patron_of_the_realm_name">王国の後援者</string>
     <string name="title_patron_of_the_realm_requirement">大記念碑を完成させる</string>
-    <string name="title_isle_champion_name">Isle Champion</string> <!-- untranslated -->
+    <string name="title_isle_champion_name">Champion of the Elder Isle</string> <!-- untranslated -->
     <string name="title_isle_champion_requirement">Defeat the Last Elder on Elder Isle</string> <!-- untranslated -->
     <string name="item_gilded_full_helmet_name">金装飾のフルヘルム</string>
     <string name="item_gilded_platebody_name">金装飾のプレートボディ</string>

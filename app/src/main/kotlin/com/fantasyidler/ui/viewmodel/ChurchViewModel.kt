@@ -89,9 +89,13 @@ class ChurchViewModel @Inject constructor(
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ChurchUiState())
 
     fun activateBlessing(key: String) {
+        val wasActive = uiState.value.activeBlessing?.key == key
         viewModelScope.launch {
             when (val result = churchRepo.activateBlessing(key)) {
-                is BlessingActivateResult.Success -> {}
+                is BlessingActivateResult.Success -> {
+                    val msgRes = if (wasActive) R.string.church_blessing_extended else R.string.church_blessing_activated
+                    _extra.update { it.copy(snackbarMessage = context.withAppLocale().getString(msgRes)) }
+                }
                 is BlessingActivateResult.AlreadyActive ->
                     _extra.update { it.copy(snackbarMessage = context.withAppLocale().getString(R.string.church_already_active)) }
                 is BlessingActivateResult.NotEnoughBones ->

@@ -313,6 +313,8 @@
     <string name="settings_profile_layout_tabs">Pestañas</string>
     <string name="settings_quest_dots">Puntos de misión en las habilidades</string>
     <string name="settings_quest_dots_desc">Muestra un punto dorado en las habilidades que tienen una misión abierta.</string>
+    <string name="settings_monument_touch_indicator">Monument touch indicator</string> <!-- untranslated -->
+    <string name="settings_monument_touch_indicator_desc">Show a dot on the Grand Monument on Home when the daily touch is available</string> <!-- untranslated -->
     <string name="settings_prestige_notifications">Insignias de prestigio</string>
     <string name="settings_prestige_notifications_desc">Muestra una insignia en la navegación cuando una habilidad esté lista para el prestigio.</string>
     <string name="label_switch_character">Cambiar de Personaje</string>
@@ -1061,6 +1063,8 @@
     <string name="church_bones_available">Tienes %1$d huesos (de todos los tipos), equivalentes a %2$d para las bendiciones (los huesos más grandes valen más)</string>
     <string name="church_not_enough_bones">Huesos insuficientes (necesitas %1$d)</string>
     <string name="church_already_active">Ya hay una bendición activa</string>
+    <string name="church_blessing_activated">Blessing activated!</string> <!-- untranslated -->
+    <string name="church_blessing_extended">Blessing extended!</string> <!-- untranslated -->
     <string name="church_confirm_deactivate_title">¿Desactivar bendición?</string>
     <string name="church_confirm_deactivate_body">¿Estás seguro de que quieres desactivar tu bendición activa? No recuperarás tus huesos.</string>
 

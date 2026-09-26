@@ -313,6 +313,8 @@
     <string name="settings_profile_layout_tabs">标签页</string>
     <string name="settings_quest_dots">技能上的任务标记</string>
     <string name="settings_quest_dots_desc">在有可接任务的技能上显示金色圆点</string>
+    <string name="settings_monument_touch_indicator">Monument touch indicator</string> <!-- untranslated -->
+    <string name="settings_monument_touch_indicator_desc">Show a dot on the Grand Monument on Home when the daily touch is available</string> <!-- untranslated -->
     <string name="settings_prestige_notifications">转生通知徽章</string>
     <string name="settings_prestige_notifications_desc">当技能可转生时在导航栏显示通知徽章</string>
     <string name="label_switch_character">切换角色</string>
@@ -1061,6 +1063,8 @@
     <string name="church_bones_available">你手头有 %1$d 根骸骨——价值 %2$d 祝福点数（大骸骨价值更高）</string>
     <string name="church_not_enough_bones">骸骨不足（需要 %1$d 根）</string>
     <string name="church_already_active">已有激活的祝福</string>
+    <string name="church_blessing_activated">Blessing activated!</string> <!-- untranslated -->
+    <string name="church_blessing_extended">Blessing extended!</string> <!-- untranslated -->
     <string name="church_confirm_deactivate_title">取消祝福？</string>
     <string name="church_confirm_deactivate_body">确定要取消当前激活的祝福吗？骸骨不会退还。</string>
 
@@ -2008,7 +2012,7 @@
     <string name="monument_not_enough_coins">金币不足。</string>
     <string name="title_patron_of_the_realm_name">王国守护者</string>
     <string name="title_patron_of_the_realm_requirement">完成大纪念碑</string>
-    <string name="title_isle_champion_name">Isle Champion</string> <!-- untranslated -->
+    <string name="title_isle_champion_name">Champion of the Elder Isle</string> <!-- untranslated -->
     <string name="title_isle_champion_requirement">Defeat the Last Elder on Elder Isle</string> <!-- untranslated -->
     <string name="item_gilded_full_helmet_name">镀金全罩头盔</string>
     <string name="item_gilded_platebody_name">镀金板甲</string>

@@ -327,6 +327,8 @@
     <string name="settings_profile_layout_tabs">Zakładki</string>
     <string name="settings_quest_dots">Quest dots on skills</string> <!-- untranslated -->
     <string name="settings_quest_dots_desc">Pokaż złotą kropkę przy umiejętnościach, które mają otwarte zadanie</string>
+    <string name="settings_monument_touch_indicator">Monument touch indicator</string> <!-- untranslated -->
+    <string name="settings_monument_touch_indicator_desc">Show a dot on the Grand Monument on Home when the daily touch is available</string> <!-- untranslated -->
     <string name="settings_prestige_notifications">Prestige Notification Badges</string> <!-- untranslated -->
     <string name="settings_prestige_notifications_desc">Wyświetlaj odznakę powiadomienia w nawigacji, gdy umiejętność jest gotowa do uzyskania prestiżu</string>
     <string name="label_switch_character">Zmień postać</string>
@@ -1077,6 +1079,8 @@
     <string name="church_bones_available">Masz %1$d kości pod ręką — warte %2$d na poczet błogosławieństw (większe kości liczą się bardziej)</string>
     <string name="church_not_enough_bones">Za mało kości (potrzeba %1$d)</string>
     <string name="church_already_active">Błogosławieństwo jest już aktywne</string>
+    <string name="church_blessing_activated">Blessing activated!</string> <!-- untranslated -->
+    <string name="church_blessing_extended">Blessing extended!</string> <!-- untranslated -->
     <string name="church_confirm_deactivate_title">Dezaktywować błogosławieństwo?</string>
     <string name="church_confirm_deactivate_body">Czy na pewno chcesz dezaktywować aktywne błogosławieństwo? Nie odzyskasz swoich kości.</string>
 
@@ -2028,7 +2032,7 @@
     <string name="monument_not_enough_coins">Za mało monet.</string>
     <string name="title_patron_of_the_realm_name">Mecenas Królestwa</string>
     <string name="title_patron_of_the_realm_requirement">Ukończ Wielki Monument</string>
-    <string name="title_isle_champion_name">Isle Champion</string> <!-- untranslated -->
+    <string name="title_isle_champion_name">Champion of the Elder Isle</string> <!-- untranslated -->
     <string name="title_isle_champion_requirement">Defeat the Last Elder on Elder Isle</string> <!-- untranslated -->
     <string name="item_gilded_full_helmet_name">Pozłacany hełm pełny</string>
     <string name="item_gilded_platebody_name">Pozłacany napierśnik</string>

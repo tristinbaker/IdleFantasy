@@ -313,6 +313,8 @@
     <string name="settings_profile_layout_tabs">Tabbladen</string>
     <string name="settings_quest_dots">Quest dots on skills</string> <!-- untranslated -->
     <string name="settings_quest_dots_desc">Show a gold dot on skills that have an open quest</string> <!-- untranslated -->
+    <string name="settings_monument_touch_indicator">Monument touch indicator</string> <!-- untranslated -->
+    <string name="settings_monument_touch_indicator_desc">Show a dot on the Grand Monument on Home when the daily touch is available</string> <!-- untranslated -->
     <string name="settings_prestige_notifications">Prestige Notification Badges</string> <!-- untranslated -->
     <string name="settings_prestige_notifications_desc">Show a notification badge on navigation when a skill is ready to prestige</string> <!-- untranslated -->
     <string name="label_switch_character">Switch character</string> <!-- untranslated -->
@@ -1061,6 +1063,8 @@
     <string name="church_bones_available">Je hebt %1$d botten (alle soorten), gelijk aan %2$d voor zegeningen (grotere botten tellen meer)</string>
     <string name="church_not_enough_bones">Niet genoeg botten (je hebt %1$d nodig)</string>
     <string name="church_already_active">Er is al een zegen actief</string>
+    <string name="church_blessing_activated">Blessing activated!</string> <!-- untranslated -->
+    <string name="church_blessing_extended">Blessing extended!</string> <!-- untranslated -->
     <string name="church_confirm_deactivate_title">Zegen deactiveren?</string>
     <string name="church_confirm_deactivate_body">Weet je zeker dat je je actieve zegen wilt deactiveren? Je krijgt je botten niet terug.</string>
 
@@ -2008,7 +2012,7 @@
     <string name="monument_not_enough_coins">Niet genoeg munten.</string>
     <string name="title_patron_of_the_realm_name">Beschermheer van het Rijk</string>
     <string name="title_patron_of_the_realm_requirement">Voltooi het Grote Monument</string>
-    <string name="title_isle_champion_name">Isle Champion</string> <!-- untranslated -->
+    <string name="title_isle_champion_name">Champion of the Elder Isle</string> <!-- untranslated -->
     <string name="title_isle_champion_requirement">Defeat the Last Elder on Elder Isle</string> <!-- untranslated -->
     <string name="item_gilded_full_helmet_name">Vergulde helm</string>
     <string name="item_gilded_platebody_name">Verguld borstpantser</string>

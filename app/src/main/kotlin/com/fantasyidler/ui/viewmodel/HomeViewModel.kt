@@ -22,6 +22,7 @@ import com.fantasyidler.repository.BoostRepository
 import com.fantasyidler.repository.ChurchRepository
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.GuildRepository
+import com.fantasyidler.repository.MonumentRepository
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.simulator.PrestigeBoosts
 import com.fantasyidler.repository.QuestRepository
@@ -66,6 +67,7 @@ data class SeasonalEventSummary(
     val displayName: String,
     val tokens: Int,
     val goal: Int,
+    val endMs: Long,
     val bannerIcon: String? = null,
 )
 
@@ -219,6 +221,9 @@ data class HomeUiState(
     val allBlessings: List<BlessingData> = emptyList(),
     val prayerCapeMult: Float = 1f,
     val activeBlessingRemainingMs: Long = 0L,
+    /** True when the Grand Monument's once-a-day touch is unlocked and unclaimed today. */
+    val monumentTouchAvailable: Boolean = false,
+    val showMonumentTouchIndicator: Boolean = true,
     val xpBoostRemainingMs: Long = 0L,
     /** Skill → remaining ms for active post-prestige 48h boosts (earned, so shown for ironmen too). */
     val prestigeBoostsRemainingMs: Map<String, Long> = emptyMap(),
@@ -286,6 +291,7 @@ class HomeViewModel @Inject constructor(
     private val queuedSessionStarter: QueuedSessionStarter,
     private val workerStarter: WorkerQueuedSessionStarter,
     private val slayerRepo: SlayerRepository,
+    private val monumentRepo: MonumentRepository,
     private val seasonalEventRepo: SeasonalEventRepository,
     private val titleRepo: TitleRepository,
     private val saveSlotRepo: SaveSlotRepository,
@@ -456,6 +462,7 @@ class HomeViewModel @Inject constructor(
                     displayName = event.displayName,
                     tokens      = (flags.seasonalTokensByEvent[event.id] ?: 0).coerceAtMost(event.tokenGoal),
                     goal        = event.tokenGoal,
+                    endMs       = event.endMs,
                     bannerIcon  = event.bannerIcon,
                 )
             }
@@ -505,6 +512,8 @@ class HomeViewModel @Inject constructor(
                 allBlessings               = gameData.blessings,
                 prayerCapeMult             = capeMult,
                 activeBlessingRemainingMs  = (flags.activeBlessingExpiresAt - System.currentTimeMillis()).coerceAtLeast(0L),
+                monumentTouchAvailable     = flags.monumentTier >= 2 && !monumentRepo.touchedToday(flags),
+                showMonumentTouchIndicator = flags.showMonumentTouchIndicator,
                 xpBoostRemainingMs         = if (flags.ironman) 0L else (flags.xpBoostExpiresAt - System.currentTimeMillis()).coerceAtLeast(0L),
                 prestigeBoostsRemainingMs  = flags.prestigeXpBoosts
                     .mapValues { (it.value - System.currentTimeMillis()).coerceAtLeast(0L) }

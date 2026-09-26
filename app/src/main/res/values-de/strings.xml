@@ -313,6 +313,8 @@
     <string name="settings_profile_layout_tabs">Reiter</string>
     <string name="settings_quest_dots">Quest-Punkte für Fähigkeiten</string>
     <string name="settings_quest_dots_desc">Goldenen Punkt auf Fähigkeiten mit offenen Quests anzeigen.</string>
+    <string name="settings_monument_touch_indicator">Monument touch indicator</string> <!-- untranslated -->
+    <string name="settings_monument_touch_indicator_desc">Show a dot on the Grand Monument on Home when the daily touch is available</string> <!-- untranslated -->
     <string name="settings_prestige_notifications">Prestige-Benachrichtigungsabzeichen</string>
     <string name="settings_prestige_notifications_desc">Zeige eine Benachrichtigung, wenn eine Fähigkeit bereit zum Prestige ist.</string>
     <string name="label_switch_character">Charakter wechseln</string>
@@ -1061,6 +1063,8 @@
     <string name="church_bones_available">Ihr habt %1$d Knochen (alle Arten), wert %2$d für Segnungen (größere Knochen zählen mehr)</string>
     <string name="church_not_enough_bones">Nicht genug Knochen (benötigt %1$d)</string>
     <string name="church_already_active">Ihr seid bereits gesegnet</string>
+    <string name="church_blessing_activated">Blessing activated!</string> <!-- untranslated -->
+    <string name="church_blessing_extended">Blessing extended!</string> <!-- untranslated -->
     <string name="church_confirm_deactivate_title">Segen deaktivieren?</string>
     <string name="church_confirm_deactivate_body">Seid Ihr sicher, dass Ihr Euren aktiven Segen deaktivieren möchtest? Ihr erhaltet die Knochen nicht zurück.</string>
 

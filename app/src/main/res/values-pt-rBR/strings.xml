@@ -313,6 +313,8 @@
     <string name="settings_profile_layout_tabs">Abas</string>
     <string name="settings_quest_dots">Quest dots on skills</string> <!-- untranslated -->
     <string name="settings_quest_dots_desc">Show a gold dot on skills that have an open quest</string> <!-- untranslated -->
+    <string name="settings_monument_touch_indicator">Monument touch indicator</string> <!-- untranslated -->
+    <string name="settings_monument_touch_indicator_desc">Show a dot on the Grand Monument on Home when the daily touch is available</string> <!-- untranslated -->
     <string name="settings_prestige_notifications">Prestige Notification Badges</string> <!-- untranslated -->
     <string name="settings_prestige_notifications_desc">Show a notification badge on navigation when a skill is ready to prestige</string> <!-- untranslated -->
     <string name="label_switch_character">Switch character</string> <!-- untranslated -->
@@ -1061,6 +1063,8 @@
     <string name="church_bones_available">Você tem %1$d ossos (todos os tipos), equivalentes a %2$d para as bênçãos (ossos maiores valem mais)</string>
     <string name="church_not_enough_bones">Ossos insuficientes (precisa de %1$d)</string>
     <string name="church_already_active">Uma bênção já está ativa</string>
+    <string name="church_blessing_activated">Blessing activated!</string> <!-- untranslated -->
+    <string name="church_blessing_extended">Blessing extended!</string> <!-- untranslated -->
     <string name="church_confirm_deactivate_title">Desativar Bênção?</string>
     <string name="church_confirm_deactivate_body">Tem certeza de que deseja desativar sua bênção ativa? Você não receberá seus ossos de volta.</string>
 
@@ -2008,7 +2012,7 @@
     <string name="monument_not_enough_coins">Moedas insuficientes.</string>
     <string name="title_patron_of_the_realm_name">Patrono do Reino</string>
     <string name="title_patron_of_the_realm_requirement">Complete o Grande Monumento</string>
-    <string name="title_isle_champion_name">Isle Champion</string> <!-- untranslated -->
+    <string name="title_isle_champion_name">Champion of the Elder Isle</string> <!-- untranslated -->
     <string name="title_isle_champion_requirement">Defeat the Last Elder on Elder Isle</string> <!-- untranslated -->
     <string name="item_gilded_full_helmet_name">Elmo completo dourado</string>
     <string name="item_gilded_platebody_name">Peitoral dourado</string>

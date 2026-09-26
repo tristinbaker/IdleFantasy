@@ -341,6 +341,8 @@
     <string name="settings_profile_layout_tabs">Tábaí</string>
     <string name="settings_quest_dots">Quest dots on skills</string> <!-- untranslated -->
     <string name="settings_quest_dots_desc">Show a gold dot on skills that have an open quest</string> <!-- untranslated -->
+    <string name="settings_monument_touch_indicator">Monument touch indicator</string> <!-- untranslated -->
+    <string name="settings_monument_touch_indicator_desc">Show a dot on the Grand Monument on Home when the daily touch is available</string> <!-- untranslated -->
     <string name="settings_prestige_notifications">Prestige Notification Badges</string> <!-- untranslated -->
     <string name="settings_prestige_notifications_desc">Show a notification badge on navigation when a skill is ready to prestige</string> <!-- untranslated -->
     <string name="label_switch_character">Switch character</string> <!-- untranslated -->
@@ -548,7 +550,7 @@
     <string name="guild_progress_dailies_and_quest">Complete %1$d/%2$d daily requests &amp; quests to advance</string> <!-- untranslated -->
     <string name="guild_progress_dailies_only">Complete %1$d/%2$d daily requests to advance</string> <!-- untranslated -->
     <string name="home_died_message">You died and lost most of your gains.</string> <!-- untranslated -->
-    <string name="home_xp_boost_was_active">2× All skills XP was active</string> <!-- untranslated -->
+    <string name="home_xp_boost_was_active">2× XP boosts were active</string> <!-- untranslated -->
     <string name="home_xp_boost_active">2× All skills XP - %1$s</string> <!-- untranslated -->
     <string name="home_prestige_xp_boost_active">2× %1$s XP - %2$s</string> <!-- untranslated -->
     <string name="boosts_show_more">+%1$d more boosts (tap to show)</string> <!-- untranslated -->
@@ -1089,6 +1091,8 @@
     <string name="church_bones_available">You have %1$d bones on hand — worth %2$d toward blessings (bigger bones count for more)</string> <!-- untranslated -->
     <string name="church_not_enough_bones">Not enough bones (need %1$d)</string> <!-- untranslated -->
     <string name="church_already_active">A blessing is already active</string> <!-- untranslated -->
+    <string name="church_blessing_activated">Blessing activated!</string> <!-- untranslated -->
+    <string name="church_blessing_extended">Blessing extended!</string> <!-- untranslated -->
     <string name="church_confirm_deactivate_title">Deactivate Blessing?</string> <!-- untranslated -->
     <string name="church_confirm_deactivate_body">Are you sure you want to deactivate your active blessing? You will not get your bones back.</string> <!-- untranslated -->
 
@@ -2042,7 +2046,7 @@
     <string name="monument_not_enough_coins">Not enough coins.</string> <!-- untranslated -->
     <string name="title_patron_of_the_realm_name">Patron of the Realm</string> <!-- untranslated -->
     <string name="title_patron_of_the_realm_requirement">Complete the Grand Monument</string> <!-- untranslated -->
-    <string name="title_isle_champion_name">Isle Champion</string> <!-- untranslated -->
+    <string name="title_isle_champion_name">Champion of the Elder Isle</string> <!-- untranslated -->
     <string name="title_isle_champion_requirement">Defeat the Last Elder on Elder Isle</string> <!-- untranslated -->
     <string name="item_gilded_full_helmet_name">Gilded Full Helmet</string> <!-- untranslated -->
     <string name="item_gilded_platebody_name">Gilded Platebody</string> <!-- untranslated -->
