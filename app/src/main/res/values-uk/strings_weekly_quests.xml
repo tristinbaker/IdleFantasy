@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="quest_weekly_goblin_slayer_name">Винищувач гоблінів</string>
+    <string name="quest_weekly_goblin_slayer_desc">Вбити 750 гоблінів цього тижня.</string>
+    <string name="quest_weekly_skeleton_hunter_name">Ламач кісток</string>
+    <string name="quest_weekly_skeleton_hunter_desc">Вбити 450 скелетів цього тижня.</string>
+    <string name="quest_weekly_monster_hunter_name">Мисливець за монстрами</string>
+    <string name="quest_weekly_demon_slayer_name">Вбивця демонів</string>
+    <string name="quest_weekly_demon_slayer_desc">Вбити 225 демонів цього тижня.</string>
+</resources>
