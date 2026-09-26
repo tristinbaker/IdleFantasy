@@ -682,7 +682,7 @@
     <string name="item_ranging_potion_name">Reichweiten-Zaubertrank</string>
     <string name="item_magic_potion_name">Zaubertrank</string>
     <string name="item_super_strength_potion_name">Zaubertrank der Überstärke</string>
-    <string name="item_super_attack_potion_name">Zaubertrank der Spezialangriffs</string>
+    <string name="item_super_attack_potion_name">Zaubertrank des Spezialangriffs</string>
     <string name="item_super_defense_potion_name">Zaubertrank der Spezialverteidigung</string>
     <string name="item_super_ranging_potion_name">Zaubertrank der Entfernung</string>
     <string name="item_super_magic_potion_name">Super-Zaubertrank</string>
