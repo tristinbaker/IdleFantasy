@@ -1436,7 +1436,7 @@
     <string name="trade_route_merchants_quarter_desc">Handelt mit seltenen Gütern im prestigeträchtigen Händlerviertel.</string>
     <string name="trade_route_northern_ports_desc">Bringt wertvolle Fracht in die nördlichen Hafenstädte. Hohes Risiko, hohe Belohnung.</string>
     <string name="crafting_cat_bar">Barren</string>
-    <string name="crafting_cat_brew">Brew</string> <!-- untranslated -->
+    <string name="crafting_cat_brew">Braue</string>
     <string name="crafting_cat_component">Komponente</string>
     <string name="crafting_cat_tool">Werkzeug</string>
     <string name="crafting_cat_weapon">Waffe</string>
@@ -1569,7 +1569,7 @@
     <string name="town_artisans_workshop_no_bonus">Verbessere für eine Chance, sekundäre Herstellungsmaterialien einzusparen</string>
     <string name="town_artisans_workshop_active_bonus">%1$d%% Chance, sekundäre Herstellungsmaterialien einzusparen</string>
     <string name="town_building_chronos_spire_name">Chronos-Turm</string>
-    <string name="town_building_dock_name">Dock</string> <!-- untranslated -->
+    <string name="town_building_dock_name">Dock</string>
     <string name="elder_isle_title">Ältere Insel</string>
     <string name="elder_isle_sail_title">Segle zur Älteren Insel</string>
     <string name="elder_isle_zone_beach">Strand &amp; Klippen</string>
@@ -1583,10 +1583,10 @@
     <string name="elder_isle_return">Kehre zum Festland zurück</string>
     <string name="elder_isle_sail_blocked_by_session">Finish your active session before setting sail.</string> <!-- untranslated -->
     <string name="elder_isle_sail_blocked_locked">Elder Isle is not yet unlocked.</string> <!-- untranslated -->
-    <string name="elder_isle_sail_blocked_serpent">The Sea Serpent guards the passage. Defeat it to reach Elder Isle.</string> <!-- untranslated -->
-    <string name="elder_isle_dock_unlocked_title">The Dock stands ready</string> <!-- untranslated -->
-    <string name="elder_isle_dock_unlocked_body">The pier is complete and the boats are waiting, but no crew will make the crossing until the Sea Serpent that has drowned every prior voyage lies dead. Find it in the mainland Combat tab under Bosses. The passage opens the moment it falls.</string> <!-- untranslated -->
-    <string name="elder_isle_dock_unlocked_cta">Face the Sea Serpent</string> <!-- untranslated -->
+    <string name="elder_isle_sail_blocked_serpent">Die Seeschlange bewacht die Passage. Besiege sie um Elder Insel zu erreichen.</string>
+    <string name="elder_isle_dock_unlocked_title">Das Dock steht bereit</string>
+    <string name="elder_isle_dock_unlocked_body">Das Pier ist fertig und die Boote warten, aber keine Crew wird die Überfahrt machen wollen, solange die Seeschlange, die jede vorherigen Reiseversuche ertränkt hat, tot ist. Finde sie im Festland Reiter der Kampfverliese unter den Endgegnern. Die Passage öffnet sich, sobald sie gefallen ist.</string>
+    <string name="elder_isle_dock_unlocked_cta">Stelle dich der Seeschlange</string>
     <string name="elder_isle_dock_unlocked_later">Später</string>
     <string name="boss_masked_name">\?\?\?</string>
     <string name="boss_last_elder_masked_desc">Something ancient stirs at the bottom of the isle. Assemble the full Elder set to face it.</string> <!-- untranslated -->
@@ -1703,7 +1703,7 @@
     <string name="item_abyss_wisp_name">Abyss Wisp</string> <!-- untranslated -->
     <string name="item_ancient_turtle_name">Ancient Turtle</string> <!-- untranslated -->
     <string name="item_cinder_hawk_name">Cinder Hawk</string> <!-- untranslated -->
-    <string name="item_deepwater_serpent_name">Deepwater Serpent</string> <!-- untranslated -->
+    <string name="item_deepwater_serpent_name">Tiefwasserschlange</string>
     <string name="item_elder_familiar_name">Elder Familiar</string> <!-- untranslated -->
 
     <!-- Elder Isle: ore descriptions -->
@@ -1831,7 +1831,7 @@
     <string name="farming_bean_note_8">Fast da. Die Luft wird dünner. Ihr könnt die Spitze fast sehen.</string>
     <string name="farming_bean_ready">Der Bohnenstängel reicht über die Wolken hinaus. Bereit zu klettern?</string>
     <string name="farming_bean_climb">Klettern</string>
-    <string name="farming_bean_climbed">Ihr habt den Bohnenstängel erklommen. Etwas wartet…</string>
+    <string name="farming_bean_climbed">Ihr habt den Bohnenstängel erklommen. Das Zischen einer Schlange weckt eure Aufmerksamkeit...</string>
     <string name="farming_bean_climbed_title">Bohnenstange erklommen!</string>
     <string name="farming_bean_unlock_hint">Neues Verlies freigeschaltet: %1$s. Du findest es unter „Kampf“ in der Liste der Verliese.</string>
     <string name="farming_bean_cleared">Die Magische Bohne wurde in dein Inventar zurückgelegt.</string>
@@ -2354,8 +2354,8 @@
     <string name="pet_ancient_turtle_desc">A tiny turtle whose shell bears the same runes as the isle\'s seal. Older than it looks.</string> <!-- untranslated -->
     <string name="pet_cinder_hawk_name">Cinder Hawk</string> <!-- untranslated -->
     <string name="pet_cinder_hawk_desc">A bird of banked embers that circles the volcano and roosts on your shoulder between fights.</string> <!-- untranslated -->
-    <string name="pet_deepwater_serpent_name">Deepwater Serpent</string> <!-- untranslated -->
-    <string name="pet_deepwater_serpent_desc">A miniature cousin of the Sea Serpent, coiled around your wrist like a living bracelet.</string> <!-- untranslated -->
+    <string name="pet_deepwater_serpent_name">Tiefwasserschlange</string>
+    <string name="pet_deepwater_serpent_desc">Ein kleiner Vetter der Seeschlange, wickelt sich um dein Handgelenk wie ein lebendiger Armreif.</string>
     <string name="pet_elder_familiar_name">Elder Familiar</string> <!-- untranslated -->
     <string name="pet_elder_familiar_desc">The Last Elder\'s dying companion, bound now to whoever felled its master. Its eyes still remember.</string> <!-- untranslated -->
 
