@@ -383,6 +383,15 @@ fun SlayerScreen(
                 }
             }
 
+            Button(
+                onClick  = viewModel::queueAllTaskDungeons,
+                enabled  = state.queueSize < state.maxQueueSize &&
+                    ((state.taskDungeons.isNotEmpty() && !state.taskIsStuck) || state.foretelledTasks.isNotEmpty()),
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Text("Queue all")
+            }
+
             HorizontalDivider()
 
             // ── Foretell ──────────────────────────────────────────────────
