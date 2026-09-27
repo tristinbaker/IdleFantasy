@@ -363,6 +363,15 @@ fun SlayerScreen(
                 }
             }
 
+            Button(
+                onClick  = viewModel::queueAllTaskDungeons,
+                enabled  = state.queueSize < state.maxQueueSize &&
+                    state.foretelledTasks.isNotEmpty(),
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Text("Add All Dungeons to Queue")
+            }
+
             Row(
                 modifier              = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -381,15 +390,6 @@ fun SlayerScreen(
                 ) {
                     Text(stringResource(R.string.slayer_skip_task))
                 }
-            }
-
-            Button(
-                onClick  = viewModel::queueAllTaskDungeons,
-                enabled  = state.queueSize < state.maxQueueSize &&
-                    ((state.taskDungeons.isNotEmpty() && !state.taskIsStuck) || state.foretelledTasks.isNotEmpty()),
-                modifier = Modifier.fillMaxWidth(),
-            ) {
-                Text("Queue all")
             }
 
             HorizontalDivider()
