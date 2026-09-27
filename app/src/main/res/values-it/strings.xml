@@ -1370,6 +1370,7 @@
     <string name="slayer_found_in">Si trova in: %1$s</string>
     <string name="slayer_requires">Necessita di: %1$s</string>
     <string name="slayer_add_dungeon_to_queue">Aggiungi Dungeon alla Coda</string>
+    <string name="slayer_add_all_dungeons_to_queue">Add All Dungeons to Queue</string> <!-- untranslated -->
     <string name="slayer_queue_added">Aggiunto alla coda: %1$s.</string>
     <string name="slayer_queue_full">La coda è piena.</string>
     <string name="slayer_foretell_title">Divina il prossimo incarico</string>

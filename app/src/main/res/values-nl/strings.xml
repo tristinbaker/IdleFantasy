@@ -1370,6 +1370,7 @@
     <string name="slayer_found_in">Gevonden in: %1$s</string>
     <string name="slayer_requires">Vereist: %1$s</string>
     <string name="slayer_add_dungeon_to_queue">Kerker aan wachtrij toevoegen</string>
+    <string name="slayer_add_all_dungeons_to_queue">Add All Dungeons to Queue</string> <!-- untranslated -->
     <string name="slayer_queue_added">Toegevoegd aan wachtrij: %1$s.</string>
     <string name="slayer_queue_full">Wachtrij is vol.</string>
     <string name="slayer_foretell_title">Foretell Future Tasks</string> <!-- untranslated -->

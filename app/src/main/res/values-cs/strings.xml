@@ -1385,6 +1385,7 @@
     <string name="slayer_found_in">Found in: %1$s</string> <!-- untranslated -->
     <string name="slayer_requires">Requires: %1$s</string> <!-- untranslated -->
     <string name="slayer_add_dungeon_to_queue">Přidat výpravu do fronty</string>
+    <string name="slayer_add_all_dungeons_to_queue">Add All Dungeons to Queue</string> <!-- untranslated -->
     <string name="slayer_queue_added">Přidáno do fronty: %1$s.</string>
     <string name="slayer_queue_full">Queue is full.</string> <!-- untranslated -->
     <string name="slayer_foretell_title">Foretell Future Tasks</string> <!-- untranslated -->

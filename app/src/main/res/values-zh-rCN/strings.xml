@@ -1370,6 +1370,7 @@
     <string name="slayer_found_in">出没于：%1$s</string>
     <string name="slayer_requires">需要：%1$s</string>
     <string name="slayer_add_dungeon_to_queue">将副本加入队列</string>
+    <string name="slayer_add_all_dungeons_to_queue">Add All Dungeons to Queue</string> <!-- untranslated -->
     <string name="slayer_queue_added">已加入队列：%1$s。</string>
     <string name="slayer_queue_full">队列已满。</string>
     <string name="slayer_foretell_title">预知未来任务</string>

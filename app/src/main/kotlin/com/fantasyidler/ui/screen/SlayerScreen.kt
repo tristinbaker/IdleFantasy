@@ -369,7 +369,7 @@ fun SlayerScreen(
                     state.foretelledTasks.isNotEmpty(),
                 modifier = Modifier.fillMaxWidth(),
             ) {
-                Text("Add All Dungeons to Queue")
+                Text(stringResource(R.string.slayer_add_all_dungeons_to_queue))
             }
 
             Row(

@@ -1370,6 +1370,7 @@
     <string name="slayer_found_in">Se encuentra en: %1$s</string>
     <string name="slayer_requires">Requiere: %1$s</string>
     <string name="slayer_add_dungeon_to_queue">Añadir Mazmorra a la Cola</string>
+    <string name="slayer_add_all_dungeons_to_queue">Add All Dungeons to Queue</string> <!-- untranslated -->
     <string name="slayer_queue_added">Añadido a la cola: %1$s.</string>
     <string name="slayer_queue_full">Queue is full.</string> <!-- untranslated -->
     <string name="slayer_foretell_title">Predecir Tareas Futuras</string>

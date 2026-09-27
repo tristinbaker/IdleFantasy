@@ -1388,6 +1388,7 @@
     <string name="slayer_found_in">Где найти: %1$s</string>
     <string name="slayer_requires">Требуется: %1$s</string>
     <string name="slayer_add_dungeon_to_queue">Добавить подземелье в очередь</string>
+    <string name="slayer_add_all_dungeons_to_queue">Add All Dungeons to Queue</string> <!-- untranslated -->
     <string name="slayer_queue_added">Добавлено в очередь: %1$s.</string>
     <string name="slayer_queue_full">Очередь заполнена.</string>
     <string name="slayer_foretell_title">Предсказать будущую цель</string>

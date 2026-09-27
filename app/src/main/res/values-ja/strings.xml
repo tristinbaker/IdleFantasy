@@ -1370,6 +1370,7 @@
     <string name="slayer_found_in">出現場所: %1$s</string>
     <string name="slayer_requires">必要条件: %1$s</string>
     <string name="slayer_add_dungeon_to_queue">ダンジョンをキューに追加</string>
+    <string name="slayer_add_all_dungeons_to_queue">Add All Dungeons to Queue</string> <!-- untranslated -->
     <string name="slayer_queue_added">キューに追加: %1$s</string>
     <string name="slayer_queue_full">キューが満杯です。</string>
     <string name="slayer_foretell_title">任務の予言</string>

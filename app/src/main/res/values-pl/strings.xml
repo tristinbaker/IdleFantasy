@@ -1386,6 +1386,7 @@
     <string name="slayer_found_in">Znaleziono w: %1$s</string>
     <string name="slayer_requires">Wymaga: %1$s</string>
     <string name="slayer_add_dungeon_to_queue">Dodaj loch do kolejki</string>
+    <string name="slayer_add_all_dungeons_to_queue">Add All Dungeons to Queue</string> <!-- untranslated -->
     <string name="slayer_queue_added">Dodano do kolejki: %1$s.</string>
     <string name="slayer_queue_full">Kolejka jest pełna.</string>
     <string name="slayer_foretell_title">Przewiduj przyszłe zadania</string>

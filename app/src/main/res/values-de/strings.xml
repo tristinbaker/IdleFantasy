@@ -1370,6 +1370,7 @@
     <string name="slayer_found_in">Begegnet Euch in: %1$s</string>
     <string name="slayer_requires">Erfordert: %1$s</string>
     <string name="slayer_add_dungeon_to_queue">Verlies zur Warteschlange hinzufügen</string>
+    <string name="slayer_add_all_dungeons_to_queue">Add All Dungeons to Queue</string> <!-- untranslated -->
     <string name="slayer_queue_added">Zur Warteschlange hinzugefügt: %1$s.</string>
     <string name="slayer_queue_full">Warteschlange ist voll.</string>
     <string name="slayer_foretell_title">Zukünftige Aufträge vorhersagen</string>

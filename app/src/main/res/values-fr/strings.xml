@@ -1371,6 +1371,7 @@
     <string name="slayer_found_in">Trouvé dans : %1$s</string>
     <string name="slayer_requires">Nécessite : %1$s</string>
     <string name="slayer_add_dungeon_to_queue">Ajouter le donjon à la file d\'attente</string>
+    <string name="slayer_add_all_dungeons_to_queue">Add All Dungeons to Queue</string> <!-- untranslated -->
     <string name="slayer_queue_added">Ajouté à la file d\'attente : %1$s.</string>
     <string name="slayer_queue_full">La file d\'attente est pleine.</string>
     <string name="slayer_foretell_title">Anticiper les tâches futures</string>
