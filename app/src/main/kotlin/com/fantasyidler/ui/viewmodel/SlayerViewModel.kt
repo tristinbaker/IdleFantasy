@@ -417,20 +417,20 @@ class SlayerViewModel @Inject constructor(
                             EquipSlot.combatStyleForSlot(weaponSlot)?.let { style -> playerRepo.applyLoadout(style, gameData.equipment) }
                         }
                     }
+                    val player   = playerRepo.getOrCreatePlayer()
+                    val levels: Map<String, Int>       = json.decodeFromString(player.skillLevels)
+                    val agility  = levels[Skills.AGILITY] ?: 1
+                    val flags: PlayerFlags             = json.decodeFromString(player.flags)
+                    val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
+                    val inventory: Map<String, Int>    = json.decodeFromString(player.inventory)
+                    val resolvedWeaponSlot = weaponSlot
+                        ?: flags.activeWeaponSlot
+                        ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
+                        ?: EquipSlot.WEAPON_ATK
+                    val rememberedSpell  = flags.activeSpell?.let { gameData.spells[it] }
+                    val rememberedPotion = flags.activePotionKey?.takeIf { (inventory[it] ?: 0) > 0 }
                     for (dungeonKey in dungeonKeys) {
                         val dungeonName = GameStrings.dungeonName(context, dungeonKey)
-                        val player   = playerRepo.getOrCreatePlayer()
-                        val levels: Map<String, Int>       = json.decodeFromString(player.skillLevels)
-                        val agility  = levels[Skills.AGILITY] ?: 1
-                        val flags: PlayerFlags             = json.decodeFromString(player.flags)
-                        val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
-                        val inventory: Map<String, Int>    = json.decodeFromString(player.inventory)
-                        val resolvedWeaponSlot = weaponSlot
-                            ?: flags.activeWeaponSlot
-                            ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
-                            ?: EquipSlot.WEAPON_ATK
-                        val rememberedSpell  = flags.activeSpell?.let { gameData.spells[it] }
-                        val rememberedPotion = flags.activePotionKey?.takeIf { (inventory[it] ?: 0) > 0 }
                         val previewXp = estimateDungeonPreviewXp(
                             gameData      = gameData,
                             boostRepo     = boostRepo,
