@@ -71,6 +71,14 @@ internal fun queuedActionRequiredLevel(action: QueuedAction, gameData: GameDataR
 }
 
 /**
+ * Combat levels for a queued dungeon run. Isle sessions must run on isle
+ * levels, mainland sessions on mainland levels (issue #1928; boss branch
+ * already does this since v1.15.5).
+ */
+internal fun combatLevelsFor(isElder: Boolean, levels: Map<String, Int>, elderLevels: Map<String, Int>): Map<String, Int> =
+    if (isElder) levels.mapValues { elderLevels[it.key] ?: 1 } else levels
+
+/**
  * Starts the next queued session using current player state.
  * Shared between ViewModels (on collect) and [com.fantasyidler.receiver.SessionAlarmReceiver]
  * (background auto-advance).
@@ -912,19 +920,20 @@ class QueuedSessionStarter @Inject constructor(
                 val staffCoversRune = combatStyle == "magic" && spell != null && (weapon?.infiniteRunes == "all" || weapon?.infiniteRunes == spell.runeType)
                 val queueRuneKey  = if (combatStyle == "magic" && spell != null && !staffCoversRune) spell.runeType else null
                 val queueRuneCost = spell?.runeCost ?: 1
+                                val combatLevels = combatLevelsFor(isElder, levels, flags.elderSkillLevels)
                                 val result = CombatSimulator.simulateDungeon(
                     dungeon             = dungeon,
                     enemies             = gameData.enemies,
-                    playerAttack        = ((levels[Skills.ATTACK]   ?: 1) * attackCapeMult).toInt() + boostRepo.combatStatBonus(Skills.ATTACK, flags, levels[Skills.ATTACK] ?: 1) + (combatPotBonuses["attack"]   ?: 0),
-                    playerStrength      = ((levels[Skills.STRENGTH] ?: 1) * strengthCapeMult).toInt() + boostRepo.combatStatBonus(Skills.STRENGTH, flags, levels[Skills.STRENGTH] ?: 1) + (combatPotBonuses["strength"] ?: 0),
-                    playerDefence       = ((levels[Skills.DEFENSE]  ?: 1) * defenseCapeMult).toInt() + totalDefBonus + boostRepo.combatStatBonus(Skills.DEFENSE, flags, levels[Skills.DEFENSE] ?: 1) + (combatPotBonuses["defense"] ?: 0),
-                    playerHp            = (levels[Skills.HITPOINTS] ?: 1) + boostRepo.combatStatBonus(Skills.HITPOINTS, flags, levels[Skills.HITPOINTS] ?: 1) + flags.towerHpBonus,
+                    playerAttack        = ((combatLevels[Skills.ATTACK]   ?: 1) * attackCapeMult).toInt() + boostRepo.combatStatBonus(Skills.ATTACK, flags, combatLevels[Skills.ATTACK] ?: 1) + (combatPotBonuses["attack"]   ?: 0),
+                    playerStrength      = ((combatLevels[Skills.STRENGTH] ?: 1) * strengthCapeMult).toInt() + boostRepo.combatStatBonus(Skills.STRENGTH, flags, combatLevels[Skills.STRENGTH] ?: 1) + (combatPotBonuses["strength"] ?: 0),
+                    playerDefence       = ((combatLevels[Skills.DEFENSE]  ?: 1) * defenseCapeMult).toInt() + totalDefBonus + boostRepo.combatStatBonus(Skills.DEFENSE, flags, combatLevels[Skills.DEFENSE] ?: 1) + (combatPotBonuses["defense"] ?: 0),
+                    playerHp            = (combatLevels[Skills.HITPOINTS] ?: 1) + boostRepo.combatStatBonus(Skills.HITPOINTS, flags, combatLevels[Skills.HITPOINTS] ?: 1) + flags.towerHpBonus,
                     blessingDefBonus    = ChurchRepository.defBonus(flags, prayerCapeMult, gameData.blessings),
                     weaponAttackBonus   = totalAtkBonus,
                     weaponStrengthBonus = totalStrBonus,
                     combatStyle         = combatStyle,
-                    playerRanged        = ((levels[Skills.RANGED] ?: 1) * rangedCapeMult).toInt() + boostRepo.combatStatBonus(Skills.RANGED, flags, levels[Skills.RANGED] ?: 1) + (combatPotBonuses["ranged"] ?: 0),
-                    playerMagic         = ((levels[Skills.MAGIC]  ?: 1) * magicCapeMult).toInt() + boostRepo.combatStatBonus(Skills.MAGIC, flags, levels[Skills.MAGIC] ?: 1) + (combatPotBonuses["magic"]  ?: 0),
+                    playerRanged        = ((combatLevels[Skills.RANGED] ?: 1) * rangedCapeMult).toInt() + boostRepo.combatStatBonus(Skills.RANGED, flags, combatLevels[Skills.RANGED] ?: 1) + (combatPotBonuses["ranged"] ?: 0),
+                    playerMagic         = ((combatLevels[Skills.MAGIC]  ?: 1) * magicCapeMult).toInt() + boostRepo.combatStatBonus(Skills.MAGIC, flags, combatLevels[Skills.MAGIC] ?: 1) + (combatPotBonuses["magic"]  ?: 0),
                     rangedGearStrengthBonus = totalRangedStrBonus,
                     spellMaxHit         = (spell?.maxHit ?: 0) + totalMagicDmgBonus,
                     agilityLevel        = agilityLevel,
