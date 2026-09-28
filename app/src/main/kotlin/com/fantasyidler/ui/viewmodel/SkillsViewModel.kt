@@ -50,6 +50,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
+import kotlin.math.roundToInt
 import kotlin.random.Random
 import javax.inject.Inject
 import android.content.Context
@@ -1631,7 +1632,7 @@ fun nextLevelThreshold(xp: Long): Long = XpTable.nextLevelThreshold(xp)
  * rates (issue #1941). Mirrors the `xpBonusMult` guard.
  */
 internal fun blessingXpPercent(isIronman: Boolean, isIsle: Boolean, churchMult: Float): Int =
-    if (isIronman || isIsle) 0 else ((churchMult - 1) * 100).toInt()
+    if (isIronman || isIsle) 0 else ((churchMult - 1) * 100).roundToInt()
 
 /** XP still needed to reach level 99 (the level cap), or 0 if already there. */
 fun xpToMaxLevel(xp: Long): Long = (XpTable.xpForLevel(99) - xp).coerceAtLeast(0L)

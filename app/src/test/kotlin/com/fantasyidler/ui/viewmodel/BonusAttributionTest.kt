@@ -53,5 +53,7 @@ class BonusAttributionTest {
         assertEquals(0, blessingXpPercent(isIronman = false, isIsle = true, churchMult = 1.5f))
         assertEquals(0, blessingXpPercent(isIronman = true, isIsle = false, churchMult = 1.5f))
         assertEquals(50, blessingXpPercent(isIronman = false, isIsle = false, churchMult = 1.5f))
+        // Float 1.05f truncates to 4 without rounding; display must read 5%.
+        assertEquals(5, blessingXpPercent(isIronman = false, isIsle = false, churchMult = 1.05f))
     }
 }
