@@ -363,6 +363,8 @@ class SlayerViewModel @Inject constructor(
                 state.foretelledTasks.forEach { task ->
                     foretelledDungeonKey(task, state, flags)?.let { add(it) }
                 }
+            }.let { keys ->
+                if (boostRepo.slayerMultiTaskActive(flags)) keys.distinct() else keys
             }
             if (dungeonKeys.isEmpty()) return@launch
             if (state.slayerEquippedWeapons.size > 1) {
