@@ -234,3 +234,12 @@ class BoostRepository @Inject constructor(
             skill to byEffect
         }.toMap()
 }
+
+/**
+ * Prediction-time XP multiplier: ironman and Elder Isle sessions run at base
+ * rates, so estimates must not apply mainland boosts that the payout ignores
+ * (issue #1930). Mirrors the `:246`/`:973` guards; call sites pass the
+ * already-computed mainland chain and the applicable isle flag.
+ */
+internal fun predictionXpMult(isIronman: Boolean, isIsle: Boolean, mainlandMult: Double): Double =
+    if (isIronman || isIsle) 1.0 else mainlandMult
