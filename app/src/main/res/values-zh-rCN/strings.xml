@@ -1419,6 +1419,7 @@
     <string name="shop_cat_food">食物</string>
     <string name="shop_cat_materials">材料</string>
     <string name="shop_cat_misc">杂项</string>
+    <string name="shop_cat_capes">Capes</string> <!-- untranslated -->
 
     <string name="crafting_per_craft">每次制作×%1$d</string>
 

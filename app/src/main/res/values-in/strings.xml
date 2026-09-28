@@ -1411,6 +1411,7 @@
     <string name="shop_cat_food">Makanan</string>
     <string name="shop_cat_materials">Material</string>
     <string name="shop_cat_misc">Lain-lain</string>
+    <string name="shop_cat_capes">Capes</string> <!-- untranslated -->
 
     <string name="crafting_per_craft">×%1$d per kerajinan</string>
 

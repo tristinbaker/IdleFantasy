@@ -1419,6 +1419,7 @@
     <string name="shop_cat_food">Comida</string>
     <string name="shop_cat_materials">Materiales</string>
     <string name="shop_cat_misc">Varios</string>
+    <string name="shop_cat_capes">Capes</string> <!-- untranslated -->
 
     <string name="crafting_per_craft">×%1$d por fabricación</string>
 

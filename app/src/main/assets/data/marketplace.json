@@ -335,5 +335,275 @@
         "stock": "unlimited"
       }
     }
+  },
+  "buy_back_capes": {
+    "category_name": "Capes",
+    "description": "Recover milestone capes you earned but accidentally sold.",
+    "items": {
+      "agility_cape": {
+        "display_name": "Agility Cape",
+        "description": "Awarded for reaching level 99 Agility. Grants 10% more XP per session.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "attack_cape": {
+        "display_name": "Attack Cape",
+        "description": "Awarded for reaching level 99 Attack. Grants 10% bonus Attack XP.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "construction_cape": {
+        "display_name": "Construction Cape",
+        "description": "Awarded for reaching level 99 Construction. Grants 10% more items per session.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "cooking_cape": {
+        "display_name": "Cooking Cape",
+        "description": "Awarded for reaching level 99 Cooking. Grants 10% more food per session.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "crafting_cape": {
+        "display_name": "Crafting Cape",
+        "description": "Awarded for reaching level 99 Crafting. Grants 10% more items per session.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "defense_cape": {
+        "display_name": "Defense Cape",
+        "description": "Awarded for reaching level 99 Defense. Grants 10% bonus Defense XP.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "farming_cape": {
+        "display_name": "Farming Cape",
+        "description": "Awarded for reaching level 99 Farming. Grants 10% more harvest per session.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "firemaking_cape": {
+        "display_name": "Firemaking Cape",
+        "description": "Awarded for reaching level 99 Firemaking. Grants 10% more ashes per session.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "fishing_cape": {
+        "display_name": "Fishing Cape",
+        "description": "Awarded for reaching level 99 Fishing. Grants 10% more fish per session.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "fletching_cape": {
+        "display_name": "Fletching Cape",
+        "description": "Awarded for reaching level 99 Fletching. Grants 10% more arrows per session.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "herblore_cape": {
+        "display_name": "Herblore Cape",
+        "description": "Awarded for reaching level 99 Herblore. Grants 10% more potions per session.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "hp_cape": {
+        "display_name": "HP Cape",
+        "description": "Awarded for reaching level 99 HP. Grants 10% bonus Hitpoints XP.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "magic_cape": {
+        "display_name": "Magic Cape",
+        "description": "Awarded for reaching level 99 Magic. Grants 10% bonus Magic XP.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "mercantile_cape": {
+        "display_name": "Mercantile Cape",
+        "description": "Awarded for reaching level 99 Mercantile. Grants 10% better shop prices and trade returns.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "mining_cape": {
+        "display_name": "Mining Cape",
+        "description": "Awarded for reaching level 99 Mining. Grants 10% more ore per session.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "prayer_cape": {
+        "display_name": "Prayer Cape",
+        "description": "Awarded for reaching level 99 Prayer. Strengthens your active blessing by 10%.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "ranged_cape": {
+        "display_name": "Ranged Cape",
+        "description": "Awarded for reaching level 99 Ranged. Grants 10% bonus Ranged XP.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "runecrafting_cape": {
+        "display_name": "Runecrafting Cape",
+        "description": "Awarded for reaching level 99 Runecrafting. Grants 10% more runes per session.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "slayer_cape": {
+        "display_name": "Slayer Cape",
+        "description": "Awarded for reaching level 99 Slayer. Grants 10% more Slayer points.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "smithing_cape": {
+        "display_name": "Smithing Cape",
+        "description": "Awarded for reaching level 99 Smithing. Grants 10% more items per session.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "strength_cape": {
+        "display_name": "Strength Cape",
+        "description": "Awarded for reaching level 99 Strength. Grants 10% bonus Strength XP.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "thieving_cape": {
+        "display_name": "Thieving Cape",
+        "description": "Awarded for reaching level 99 Thieving. Grants 10% more successful pickpockets per session.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "woodcutting_cape": {
+        "display_name": "Woodcutting Cape",
+        "description": "Awarded for reaching level 99 Woodcutting. Grants 10% more logs per session.",
+        "price": 100000,
+        "stock": "unlimited"
+      },
+      "agility_guild_cape": {
+        "display_name": "Agility Guild Cape",
+        "description": "Awarded for reaching Agility Guild level 10. Grants 5% more XP per session.",
+        "price": 250000,
+        "stock": "unlimited"
+      },
+      "archers_guild_cape": {
+        "display_name": "Archers Guild Cape",
+        "description": "Awarded for reaching Archers Guild level 10. Grants 5% bonus Ranged XP.",
+        "price": 250000,
+        "stock": "unlimited"
+      },
+      "construction_guild_cape": {
+        "display_name": "Builders Guild Cape",
+        "description": "Awarded for reaching Builders Guild level 10. Grants 5% more furniture per session.",
+        "price": 250000,
+        "stock": "unlimited"
+      },
+      "cooking_guild_cape": {
+        "display_name": "Cooking Guild Cape",
+        "description": "Awarded for reaching Cooking Guild level 10. Grants 5% more food per session.",
+        "price": 250000,
+        "stock": "unlimited"
+      },
+      "crafting_guild_cape": {
+        "display_name": "Crafting Guild Cape",
+        "description": "Awarded for reaching Crafting Guild level 10. Grants 5% more items per session.",
+        "price": 250000,
+        "stock": "unlimited"
+      },
+      "farming_guild_cape": {
+        "display_name": "Farming Guild Cape",
+        "description": "Awarded for reaching Farming Guild level 10. Grants 5% more harvest per session.",
+        "price": 250000,
+        "stock": "unlimited"
+      },
+      "firemaking_guild_cape": {
+        "display_name": "Firemaking Guild Cape",
+        "description": "Awarded for reaching Firemaking Guild level 10. Grants 5% more ashes per session.",
+        "price": 250000,
+        "stock": "unlimited"
+      },
+      "fishing_guild_cape": {
+        "display_name": "Fishing Guild Cape",
+        "description": "Awarded for reaching Fishing Guild level 10. Grants 5% more fish per session.",
+        "price": 250000,
+        "stock": "unlimited"
+      },
+      "fletching_guild_cape": {
+        "display_name": "Fletching Guild Cape",
+        "description": "Awarded for reaching Fletching Guild level 10. Grants 5% more arrows per session.",
+        "price": 250000,
+        "stock": "unlimited"
+      },
+      "herblore_guild_cape": {
+        "display_name": "Herblore Guild Cape",
+        "description": "Awarded for reaching Herblore Guild level 10. Grants 5% more potions per session.",
+        "price": 250000,
+        "stock": "unlimited"
+      },
+      "mages_guild_cape": {
+        "display_name": "Mages Guild Cape",
+        "description": "Awarded for reaching Mages Guild level 10. Grants 5% bonus Magic XP.",
+        "price": 250000,
+        "stock": "unlimited"
+      },
+      "mercantile_guild_cape": {
+        "display_name": "Merchants Guild Cape",
+        "description": "Awarded for reaching Merchants Guild level 10. Grants 5% better shop prices and trade returns.",
+        "price": 250000,
+        "stock": "unlimited"
+      },
+      "mining_guild_cape": {
+        "display_name": "Mining Guild Cape",
+        "description": "Awarded for reaching Mining Guild level 10. Grants 5% more ore per session.",
+        "price": 250000,
+        "stock": "unlimited"
+      },
+      "prayer_guild_cape": {
+        "display_name": "Prayer Guild Cape",
+        "description": "Awarded for reaching Prayer Guild level 10. Strengthens your active blessing by 5%.",
+        "price": 250000,
+        "stock": "unlimited"
+      },
+      "runecrafting_guild_cape": {
+        "display_name": "Runecrafting Guild Cape",
+        "description": "Awarded for reaching Runecrafting Guild level 10. Grants 5% more runes per session.",
+        "price": 250000,
+        "stock": "unlimited"
+      },
+      "slayer_guild_cape": {
+        "display_name": "Slayers Guild Cape",
+        "description": "Awarded for reaching Slayers Guild level 10. Grants 5% bonus Slayer XP.",
+        "price": 250000,
+        "stock": "unlimited"
+      },
+      "smithing_guild_cape": {
+        "display_name": "Smithing Guild Cape",
+        "description": "Awarded for reaching Smithing Guild level 10. Grants 5% more items per session.",
+        "price": 250000,
+        "stock": "unlimited"
+      },
+      "thieving_guild_cape": {
+        "display_name": "Thieves Guild Cape",
+        "description": "Awarded for reaching Thieves Guild level 10. Grants 5% more successful pickpockets per session.",
+        "price": 250000,
+        "stock": "unlimited"
+      },
+      "warriors_guild_cape": {
+        "display_name": "Warriors Guild Cape",
+        "description": "Awarded for reaching Warriors Guild level 10. Grants 5% bonus Attack, Strength, and Defense XP.",
+        "price": 250000,
+        "stock": "unlimited"
+      },
+      "woodcutting_guild_cape": {
+        "display_name": "Woodcutting Guild Cape",
+        "description": "Awarded for reaching Woodcutting Guild level 10. Grants 5% more logs per session.",
+        "price": 250000,
+        "stock": "unlimited"
+      },
+      "tower_cape": {
+        "display_name": "Tower Cape",
+        "description": "A flowing cape that radiates the tower's energy.",
+        "price": 250000,
+        "stock": "unlimited"
+      }
+    }
   }
 }

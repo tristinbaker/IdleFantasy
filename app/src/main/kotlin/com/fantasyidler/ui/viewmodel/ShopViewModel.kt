@@ -104,6 +104,7 @@ data class ShopUiState(
     /** Bulk and manual sells always leave one of each item (collector safety). */
     val keepOneOfEach: Boolean = false,
     val bulkSellReceipts: List<BulkSellReceipt> = emptyList(),
+    val seenItemKeys: Set<String> = emptySet(),
 ) {
     val xpBoostActive: Boolean get() = xpBoostExpiresAt > System.currentTimeMillis()
 }
@@ -152,6 +153,7 @@ class ShopViewModel @Inject constructor(
                 compactNumbers    = flags.compactNumbers,
                 keepOneOfEach     = flags.shopKeepOneOfEach,
                 bulkSellReceipts  = flags.bulkSellReceipts,
+                seenItemKeys      = flags.seenItemKeys,
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ShopUiState())
@@ -648,6 +650,13 @@ class ShopViewModel @Inject constructor(
     // Private helpers
     // ------------------------------------------------------------------
 
+    /** Capes entries only appear once earned (ever seen) and no longer owned/equipped — everything else is always eligible. */
+    fun isBuyEntryEligible(entry: ShopEntry, state: ShopUiState): Boolean {
+        if (entry.categoryName != CAPES_CATEGORY) return true
+        val owned = (state.inventory[entry.key] ?: 0) > 0 || entry.key in state.equipped.values
+        return entry.key in state.seenItemKeys && !owned
+    }
+
     fun sellCategoryFor(itemKey: String): String {
         val equip = gameData.equipment[itemKey]
         if (equip != null) {
@@ -677,6 +686,7 @@ class ShopViewModel @Inject constructor(
 
     companion object {
         const val XP_BOOST_KEY = "xp_boost_48h"
+        const val CAPES_CATEGORY = "Capes"
         const val MAX_BULK_SELL_RECEIPTS = 5
 
         /**

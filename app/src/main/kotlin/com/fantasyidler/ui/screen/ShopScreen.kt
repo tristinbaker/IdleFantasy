@@ -101,6 +101,7 @@ private fun localizedCategory(context: Context, raw: String): String {
         "Food"             -> R.string.shop_cat_food
         "Materials"        -> R.string.shop_cat_materials
         "Misc"             -> R.string.shop_cat_misc
+        "Capes"            -> R.string.shop_cat_capes
         else               -> return raw
     }
     return context.getString(resId)
@@ -201,7 +202,9 @@ fun ShopScreen(
                         receipts           = state.bulkSellReceipts,
                     )
                     else -> BuyList(
-                        entries            = viewModel.buyEntries.filter { it.mercantileLevelRequired <= state.mercantileLevel },
+                        entries            = viewModel.buyEntries.filter {
+                            it.mercantileLevelRequired <= state.mercantileLevel && viewModel.isBuyEntryEligible(it, state)
+                        },
                         coins              = state.coins,
                         xpBoostActive      = state.xpBoostActive,
                         inventory          = state.inventory,

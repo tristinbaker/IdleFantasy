@@ -1434,6 +1434,7 @@
     <string name="shop_cat_food">Jídlo</string>
     <string name="shop_cat_materials">Materiály</string>
     <string name="shop_cat_misc">Různé</string>
+    <string name="shop_cat_capes">Capes</string> <!-- untranslated -->
 
     <string name="crafting_per_craft">×%1$d za výrobek</string>
 

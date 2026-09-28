@@ -1419,6 +1419,7 @@
     <string name="shop_cat_food">料理</string>
     <string name="shop_cat_materials">素材</string>
     <string name="shop_cat_misc">その他</string>
+    <string name="shop_cat_capes">Capes</string> <!-- untranslated -->
 
     <string name="crafting_per_craft">作成ごとに ×%1$d</string>
 

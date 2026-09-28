@@ -1447,6 +1447,7 @@
     <string name="shop_cat_food">Food</string> <!-- untranslated -->
     <string name="shop_cat_materials">Materials</string> <!-- untranslated -->
     <string name="shop_cat_misc">Misc</string> <!-- untranslated -->
+    <string name="shop_cat_capes">Capes</string> <!-- untranslated -->
 
     <string name="crafting_per_craft">×%1$d per craft</string> <!-- untranslated -->
 
