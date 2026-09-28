@@ -1054,6 +1054,8 @@
     <string name="church_active_chip">Active</string>
     <string name="church_activate">Activate</string>
     <string name="church_blessing_bonus">+%1$s from blessing</string>
+    <!-- Golden Goose pet coin share, split from the blessing line (issue #1941). Pending Weblate translation. -->
+    <string name="pet_coin_bonus">+%1$s from pet</string>
     <string name="church_blessing_suffix">from blessing</string>
     <string name="church_effect_xp">×%1$.2f XP for %2$d hours</string>
     <string name="church_effect_def">+%1$d Defense for %2$d hours</string>

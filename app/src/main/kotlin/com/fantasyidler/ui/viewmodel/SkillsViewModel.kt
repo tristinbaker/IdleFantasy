@@ -92,6 +92,8 @@ data class SkillsUiState(
     val cookingEfficiency: Float = 1.0f,
     val cropsReadyCount: Int = 0,
     val xpBonusMult: Float = 1.0f,
+    /** Active Church XP blessing percent for skill rows — 0 if none/ironman/isle. */
+    val blessingXpPct: Int = 0,
     val petBoosts: Map<String, Int> = emptyMap(),
     val sessionDurationMs: Long = 0L,
     /** Actual per-log burn duration, tinderbox tier bonus applied. Keyed by log key. */
@@ -244,6 +246,7 @@ class SkillsViewModel @Inject constructor(
                 cookingEfficiency     = if (flags.onElderIsle) 1.0f else gameData.toolEfficiency(equipped[EquipSlot.FRYING_PAN],     EquipSlot.FRYING_PAN,     0, skillLevels = levels, heirloomXp = flags.heirloomXp),
                 xpBonusMult           = if (flags.ironman || flags.onElderIsle) 1.0f
                                         else (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0f else 1.0f) * ChurchRepository.xpMultiplier(flags, blessingPrayerCapeMult(flags, equipped, inv.keys, gameData), gameData.blessings),
+                blessingXpPct         = blessingXpPercent(flags.ironman, flags.onElderIsle, ChurchRepository.xpMultiplier(flags, blessingPrayerCapeMult(flags, equipped, inv.keys, gameData), gameData.blessings)),
                 petBoosts             = listOf(Skills.MINING, Skills.WOODCUTTING, Skills.FISHING, Skills.AGILITY)
                     .associateWith { if (flags.ironman || flags.onElderIsle) 0 else petBoostFor(player.pets, it) },
                 sessionDurationMs     = if (flags.onElderIsle)
@@ -1622,6 +1625,13 @@ fun xpToNextLevel(xp: Long): Long = XpTable.xpToNextLevel(xp)
 
 /** Total XP required for the next level (absolute threshold). */
 fun nextLevelThreshold(xp: Long): Long = XpTable.nextLevelThreshold(xp)
+
+/**
+ * Blessing XP percent for skill rows: ironman and isle sessions run at base
+ * rates (issue #1941). Mirrors the `xpBonusMult` guard.
+ */
+internal fun blessingXpPercent(isIronman: Boolean, isIsle: Boolean, churchMult: Float): Int =
+    if (isIronman || isIsle) 0 else ((churchMult - 1) * 100).toInt()
 
 /** XP still needed to reach level 99 (the level cap), or 0 if already there. */
 fun xpToMaxLevel(xp: Long): Long = (XpTable.xpForLevel(99) - xp).coerceAtLeast(0L)

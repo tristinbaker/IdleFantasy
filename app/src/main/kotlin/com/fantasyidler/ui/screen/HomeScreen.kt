@@ -266,6 +266,13 @@ fun HomeScreen(
                             color = MaterialTheme.colorScheme.primary,
                         )
                     }
+                    if (summary.coinPetBonus > 0) {
+                        Text(
+                            text  = stringResource(R.string.pet_coin_bonus, summary.coinPetBonus.formatCoins()),
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.primary,
+                        )
+                    }
                     if (summary.foodConsumedLines.isNotEmpty()) {
                         Spacer(Modifier.height(4.dp))
                         SummarySection(stringResource(R.string.home_food_consumed))
@@ -418,6 +425,13 @@ fun HomeScreen(
                     if (summary.coinBlessingBonus > 0) {
                         Text(
                             text  = stringResource(R.string.church_blessing_bonus, summary.coinBlessingBonus.formatCoins()),
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.primary,
+                        )
+                    }
+                    if (summary.coinPetBonus > 0) {
+                        Text(
+                            text  = stringResource(R.string.pet_coin_bonus, summary.coinPetBonus.formatCoins()),
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.primary,
                         )
