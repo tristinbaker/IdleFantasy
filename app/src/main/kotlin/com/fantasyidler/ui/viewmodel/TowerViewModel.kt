@@ -257,6 +257,9 @@ class TowerViewModel @Inject constructor(
     fun startFloor() {
         viewModelScope.launch {
             if (sessionRepo.getActiveSession() != null) {
+                // No food warning here by design (pre-existing; JD-A-003): tower starts
+                // never warned. The sim input below reserves honestly, and a starved
+                // run simply dies and stops the climb.
                 val player  = playerRepo.getOrCreatePlayer()
                 val agility = (json.decodeFromString<Map<String, Int>>(player.skillLevels))[Skills.AGILITY] ?: 1
                 val flags: PlayerFlags = try { json.decodeFromString(player.flags) } catch (_: Exception) { PlayerFlags() }

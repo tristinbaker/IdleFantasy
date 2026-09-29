@@ -18,6 +18,13 @@ import com.fantasyidler.data.model.SkillSession
  * would penalize fights for food nobody deducts) — plus the combat-screen
  * remaining counts derive from [remaining]; the live inventory stays the source
  * for *owned* (pre-deduction) counts.
+ *
+ * Legacy residual (documented, not fixed here — JD-A-004): backlogs simulated
+ * BEFORE this fix can already exceed the owned supply. At collect,
+ * PlayerRepository.consumeItems is all-or-nothing and its Boolean is ignored by
+ * the player-collect food deductions, so such a backlog collects as kept food
+ * with an overstated receipt — player-favorable, legacy-only, and self-healing
+ * as collected sessions delete. Changing collect atomicity would redesign payouts.
  */
 object FoodReservation {
 

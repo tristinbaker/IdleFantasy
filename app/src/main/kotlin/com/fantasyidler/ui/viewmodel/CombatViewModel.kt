@@ -556,6 +556,19 @@ class CombatViewModel @Inject constructor(
                     ?: dungeonFlags.activeWeaponSlot
                     ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
                     ?: EquipSlot.WEAPON
+                // Pending-aware gate (issue #1960, JD-A-001): with any backlog present
+                // every tap lands in this enqueue branch, so the direct-path gate below
+                // can never fire. An exhausted supply shows the existing no-food
+                // warning instead of silently queueing a no-food death run.
+                if (!bypassFoodWarning && !FoodReservation.hasUsableFood(
+                        dungeonFlags.equippedFood.keys,
+                        inventory,
+                        sessionRepo.pendingFoodConsumed(),
+                    )
+                ) {
+                    _extra.update { it.copy(noFoodWarningPending = true, pendingDungeonKey = dungeonKey) }
+                    return@launch
+                }
                 // Falls back to the remembered spell/potion the same way the picker's displayed
                 // selection does (see uiState combine block) -- otherwise the picker shows a
                 // remembered choice as selected while starting silently ignores it (issue #1186).
@@ -798,6 +811,9 @@ class CombatViewModel @Inject constructor(
         viewModelScope.launch {
             val repeatCount = _extra.value.selectedBossRepeatCount.coerceIn(1, MAX_BOSS_REPEAT_COUNT)
             if (sessionRepo.getActiveSession() != null) {
+                // No food warning here by design (pre-existing; JD-A-002): boss starts
+                // never warned. The sim input below reserves honestly, and a starved
+                // run simply loses and stops the chain.
                 val bossName     = GameStrings.bossName(context, bossKey)
                 val bossMs       = (gameData.bosses[bossKey]?.durationMinutes ?: 1) * 60_000L
                 val queuedPlayer = playerRepo.getOrCreatePlayer()
