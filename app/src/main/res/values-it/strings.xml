@@ -1572,8 +1572,8 @@
     <string name="town_artisans_workshop_active_bonus">%1$d%% di recuperare materiali</string>
     <string name="town_building_chronos_spire_name">Guglia di Crono</string>
     <string name="town_building_dock_name">Porto</string>
-    <string name="town_dock_no_bonus">Upgrade to sail to new locations</string> <!-- untranslated -->
-    <string name="town_dock_t1_bonus">Unlocks sailing to the Elder Isle</string> <!-- untranslated -->
+    <string name="town_dock_no_bonus">Migliora per salpare verso nuove avventure</string>
+    <string name="town_dock_t1_bonus">Viaggia verso l\'Isola Ancestrale</string>
     <string name="elder_isle_title">Isola Ancestrale</string>
     <string name="elder_isle_sail_title">Salpa verso l\'Isola Ancestrale</string>
     <string name="elder_isle_zone_beach">Spiagge e Scogli</string>
