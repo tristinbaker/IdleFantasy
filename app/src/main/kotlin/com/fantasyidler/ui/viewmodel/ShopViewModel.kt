@@ -541,7 +541,7 @@ class ShopViewModel @Inject constructor(
                     key         = entry.key,
                     displayName = entry.displayName,
                     priceEach   = discPrice,
-                    maxQty      = if (isXpBoost) 1 else maxAffordable,
+                    maxQty      = if (isXpBoost || entry.categoryName == CAPES_CATEGORY) 1 else maxAffordable,
                     qty         = 1,
                     isBuy       = true,
                 )
