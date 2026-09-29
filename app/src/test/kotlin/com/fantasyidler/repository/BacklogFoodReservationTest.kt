@@ -191,4 +191,37 @@ class BacklogFoodReservationTest {
             offered <= 496,
         )
     }
+
+    @Test
+    fun `ten sequential queued sessions never simulate more than owned total`() = runBlocking {
+        // Closed loop, no seeded backlog: every session's REAL simulated consumption
+        // feeds the next session's reservation — the exact overnight-queue shape from
+        // the report (836 owned). Each offer must fit the remaining budget.
+        var cumulative = 0
+        repeat(10) { i ->
+            val enqueued = playerRepo.enqueueAction(
+                QueuedAction(
+                    skillName = "combat",
+                    activityKey = "beach_and_cliffs",
+                    skillDisplayName = "Beach and Cliffs",
+                ),
+            )
+            assertTrue("iteration ${i + 1}: enqueue failed", enqueued)
+            assertTrue("iteration ${i + 1}: session did not start", starter.startNextQueued())
+            val session = sessionRepo.getActiveSession()!!
+            val frames: List<SessionFrame> = json.decodeFromString(framesSerializer, session.frames)
+            val remainingBefore = 836 - cumulative
+            val offered = frames.firstOrNull()?.foodAtStart?.get("manta_ray") ?: 0
+            assertTrue(
+                "session ${i + 1}: offered $offered but only $remainingBefore of 836 remained",
+                offered <= remainingBefore,
+            )
+            cumulative += frames.sumOf { f -> f.foodConsumed["manta_ray"] ?: 0 }
+            sessionRepo.markCompleted(session.sessionId)
+        }
+        assertTrue(
+            "cumulative simulated $cumulative exceeds 836 owned (report: ~1700)",
+            cumulative <= 836,
+        )
+    }
 }
