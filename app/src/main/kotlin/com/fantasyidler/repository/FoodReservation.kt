@@ -12,9 +12,12 @@ import com.fantasyidler.data.model.SkillSession
  * otherwise sessions 2..N simulate against a phantom full supply and the summed
  * deductions exceed what the player owns (issue #1960: ~1700 used from 836).
  *
- * All "food left / food available" reads — every simulateDungeon/simulateBoss
- * caller and the combat-screen remaining counts — derive from [remaining];
- * the live inventory stays the source for *owned* (pre-deduction) counts.
+ * All "food left / food available" reads for session-creating simulations that
+ * deduct at collect — every simulateDungeon/simulateBoss caller except the worker
+ * queue (worker collect never deducts food, so reserving player backlog there
+ * would penalize fights for food nobody deducts) — plus the combat-screen
+ * remaining counts derive from [remaining]; the live inventory stays the source
+ * for *owned* (pre-deduction) counts.
  */
 object FoodReservation {
 
@@ -75,4 +78,15 @@ object FoodReservation {
         remaining(inventory, pending)
             .filterKeys { it in equippedKeys }
             .filterValues { it > 0 }
+
+    /**
+     * Pending-aware no-food gate: true when any equipped food is still spendable.
+     * Manual starts with an exhausted supply must show the existing no-food
+     * warning instead of launching a silent no-food death run (issue #1960).
+     */
+    fun hasUsableFood(
+        equippedKeys: Set<String>,
+        inventory: Map<String, Int>,
+        pending: Map<String, Int>,
+    ): Boolean = available(inventory, equippedKeys, pending).isNotEmpty()
 }

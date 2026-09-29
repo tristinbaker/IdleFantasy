@@ -225,14 +225,19 @@ class CombatViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            playerRepo.playerFlow.collect { player ->
+            // Refresh on session events too: the backlog changes without touching
+            // the player row (collect deletes sessions, completion grows pending).
+            combine(playerRepo.playerFlow, sessionRepo.activeSessionFlow) { player, _ -> player }.collect { player ->
                 if (player == null) return@collect
-                val fp = buildCombatFingerprint(player)
+                // Pending-aware (issue #1960): ratings and badge inputs must see
+                // the same remainder as real starts.
+                val pendingFood = sessionRepo.pendingFoodConsumed()
+                val fp = buildCombatFingerprint(player, pendingFood)
                 if (fp == lastSimFingerprint) return@collect
                 lastSimFingerprint = fp
                 simJob?.cancel()
                 simJob = viewModelScope.launch(Dispatchers.Default) {
-                    _simulatedRatings.value = simulateAllDungeons(player)
+                    _simulatedRatings.value = simulateAllDungeons(player, pendingFood)
                 }
             }
         }
@@ -604,7 +609,10 @@ class CombatViewModel @Inject constructor(
                 val p   = playerRepo.getOrCreatePlayer()
                 val f: PlayerFlags      = try { json.decodeFromString(p.flags) } catch (_: Exception) { PlayerFlags() }
                 val inv: Map<String, Int> = json.decodeFromString(p.inventory)
-                if (f.equippedFood.keys.none { (inv[it] ?: 0) > 0 }) {
+                // Pending-aware (issue #1960): uncollected sessions already spent
+                // food the inventory still shows; an exhausted supply warns like
+                // having no food instead of starting a silent no-food death run.
+                if (!FoodReservation.hasUsableFood(f.equippedFood.keys, inv, sessionRepo.pendingFoodConsumed())) {
                     _extra.update { it.copy(noFoodWarningPending = true, pendingDungeonKey = dungeonKey) }
                     return@launch
                 }
@@ -1094,11 +1102,13 @@ class CombatViewModel @Inject constructor(
     // Dungeon survival simulation
     // ------------------------------------------------------------------
 
-    private fun buildCombatFingerprint(player: Player): String {
+    private fun buildCombatFingerprint(player: Player, pending: Map<String, Int> = emptyMap()): String {
         val levels    = try { json.decodeFromString<Map<String, Int>>(player.skillLevels) } catch (_: Exception) { emptyMap() }
         val flags     = try { json.decodeFromString<PlayerFlags>(player.flags) } catch (_: Exception) { PlayerFlags() }
         val inventory = try { json.decodeFromString<Map<String, Int>>(player.inventory) } catch (_: Exception) { emptyMap() }
-        val foodQtys  = flags.equippedFood.keys.sorted().joinToString(",") { "$it=${inventory[it] ?: 0}" }
+        // Pending-aware remainder so badges refresh when the backlog changes.
+        val remaining = FoodReservation.remaining(flags.equippedFood.keys.associateWith { inventory[it] ?: 0 }, pending)
+        val foodQtys  = flags.equippedFood.keys.sorted().joinToString(",") { "$it=${remaining[it] ?: 0}" }
         val combatLevels = listOf(
             Skills.ATTACK, Skills.STRENGTH, Skills.DEFENSE,
             Skills.HITPOINTS, Skills.RANGED, Skills.MAGIC, Skills.AGILITY,
@@ -1106,7 +1116,7 @@ class CombatViewModel @Inject constructor(
         return "$combatLevels|${player.equipped}|${flags.equippedFood}|$foodQtys|${flags.prestigeNodes},${flags.characterRace}|${flags.activeWeaponSlot}|${flags.activeSpell}|${flags.activeBlessingKey}|${flags.activeBlessingExpiresAt}"
     }
 
-    private fun simulateAllDungeons(player: Player): Map<String, CombatSimulator.SurvivalRating> {
+    private fun simulateAllDungeons(player: Player, pending: Map<String, Int> = emptyMap()): Map<String, CombatSimulator.SurvivalRating> {
         val levels    = try { json.decodeFromString<Map<String, Int>>(player.skillLevels) } catch (_: Exception) { emptyMap() }
         val equipped  = try { json.decodeFromString<Map<String, String?>>(player.equipped) } catch (_: Exception) { emptyMap() }
         val flags     = try { json.decodeFromString<PlayerFlags>(player.flags) } catch (_: Exception) { PlayerFlags() }
@@ -1146,7 +1156,8 @@ class CombatViewModel @Inject constructor(
         val activeSpell = flags.activeSpell?.let { gameData.spells[it] }
         val spellMaxHit = if (combatStyle == "magic") activeSpell?.maxHit ?: 0 else 0
 
-        val foodQtys = flags.equippedFood.keys.associateWith { inventory[it] ?: 0 }
+        // Pending-aware estimate input (issue #1960): same source as real starts.
+        val foodQtys = FoodReservation.available(inventory, flags.equippedFood.keys, pending)
 
         val atk     = (levels[Skills.ATTACK]    ?: 1) + boostRepo.combatStatBonus(Skills.ATTACK, flags, levels[Skills.ATTACK] ?: 1)
         val str     = (levels[Skills.STRENGTH]  ?: 1) + boostRepo.combatStatBonus(Skills.STRENGTH, flags, levels[Skills.STRENGTH] ?: 1)

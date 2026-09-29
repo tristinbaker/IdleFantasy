@@ -131,6 +131,42 @@ class FoodReservationTest {
         assertEquals(mapOf("manta_ray" to 170), pending)
     }
 
+    // -- gate predicate: any spendable equipped food left? ----------------------
+
+    @Test
+    fun `hasUsableFood true while backlog leaves remainder`() {
+        assertTrue(
+            FoodReservation.hasUsableFood(
+                setOf("manta_ray"),
+                mapOf("manta_ray" to 836),
+                mapOf("manta_ray" to 340),
+            ),
+        )
+    }
+
+    @Test
+    fun `hasUsableFood false once backlog exhausted the supply`() {
+        // Gate trigger from review: owned 100, pending 100 -> warn, don't start blind.
+        assertTrue(
+            !FoodReservation.hasUsableFood(
+                setOf("manta_ray"),
+                mapOf("manta_ray" to 100),
+                mapOf("manta_ray" to 100),
+            ),
+        )
+    }
+
+    @Test
+    fun `hasUsableFood false when nothing equipped`() {
+        assertTrue(
+            !FoodReservation.hasUsableFood(
+                emptySet(),
+                mapOf("manta_ray" to 836),
+                emptyMap(),
+            ),
+        )
+    }
+
     // -- report scenario: cumulative simulated food can never exceed supply ---
 
     @Test

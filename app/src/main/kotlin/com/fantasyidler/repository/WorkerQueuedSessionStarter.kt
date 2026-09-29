@@ -287,7 +287,12 @@ class WorkerQueuedSessionStarter @Inject constructor(
                 val totalDefBonus = EquipSlot.ARMOR_SLOTS.sumOf { equipMap[equipped[it]]?.defenseBonus  ?: 0 } + (bossWeapon?.defenseBonus  ?: 0)
                 val totalMagicDmgBonus = if (combatStyle == "magic") EquipSlot.ARMOR_SLOTS.sumOf { equipMap[equipped[it]]?.magicDamageBonus ?: 0 } + (bossWeapon?.magicDamageBonus ?: 0) else 0
                 val equippedFoodKeys = flags.equippedFood.keys
-                val availableFood = FoodReservation.available(inventory, equippedFoodKeys, sessionRepo.pendingFoodConsumed())
+                // Worker sessions never deduct food at collect, so they simulate
+                // against the live supply with no backlog reservation (issue #1960
+                // follow-up review): subtracting player-pending here would penalize
+                // worker fights for food that is never deducted from anyone, while
+                // worker backlog correctly stays out of the player reservation.
+                val availableFood    = inventory.filterKeys { it in equippedFoodKeys }
                 val spell = gameData.spells[flags.activeSpell]
                 val preferredArrow = flags.equippedArrows?.takeIf { (inventory[it] ?: 0) > 0 }
                 val orderedWorkerBossArrowKeys = if (preferredArrow != null)
@@ -341,7 +346,8 @@ class WorkerQueuedSessionStarter @Inject constructor(
                 val totalDefBonus = EquipSlot.ARMOR_SLOTS.sumOf { equipMap[equipped[it]]?.defenseBonus  ?: 0 } + (weapon?.defenseBonus  ?: 0)
                 val totalMagicDmgBonus = if (combatStyle == "magic") EquipSlot.ARMOR_SLOTS.sumOf { equipMap[equipped[it]]?.magicDamageBonus ?: 0 } + (weapon?.magicDamageBonus ?: 0) else 0
                 val equippedFoodKeys = flags.equippedFood.keys
-                val availableFood = FoodReservation.available(inventory, equippedFoodKeys, sessionRepo.pendingFoodConsumed())
+                // Same free-food reasoning as the boss branch above: no reservation.
+                val availableFood    = inventory.filterKeys { it in equippedFoodKeys }
                 val spell = gameData.spells[flags.activeSpell]
                 val preferredArrow = flags.equippedArrows?.takeIf { (inventory[it] ?: 0) > 0 }
                 val orderedWorkerCombatArrowKeys = if (preferredArrow != null)
