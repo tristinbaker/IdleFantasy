@@ -21,6 +21,7 @@ import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.repository.BoostRepository
 import com.fantasyidler.repository.ChurchRepository
 import com.fantasyidler.repository.blessingPrayerCapeMult
+import com.fantasyidler.repository.FoodReservation
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.GuildRepository
 import com.fantasyidler.repository.PlayerRepository
@@ -346,7 +347,7 @@ class TowerViewModel @Inject constructor(
                 val dungeon    = buildFloorDungeon(floor)
                 val enemies    = scaledEnemies(floor)
                 val foodHeal   = boostRepo.boostedFoodHeal(flags, gameData.foodHealValues)
-                val availableFood   = inventory.filterKeys { it in flags.equippedFood.keys }
+                val availableFood = FoodReservation.available(inventory, flags.equippedFood.keys, sessionRepo.pendingFoodConsumed())
                 val orderedTowerArrowKeys = if (preferredArrow != null)
                     listOf(preferredArrow) + ARROW_TIERS.reversed().filter { it != preferredArrow && (inventory[it] ?: 0) > 0 }
                     else ARROW_TIERS.filter { (inventory[it] ?: 0) > 0 }

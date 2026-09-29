@@ -785,10 +785,8 @@ class QueuedSessionStarter @Inject constructor(
                     EquipSlot.ARMOR_SLOTS.sumOf { equipMap[bossEquipped[it]]?.rangedStrengthBonus ?: 0 } + (bossWeapon?.rangedStrengthBonus ?: 0)
                 } else 0
                 val equippedFoodKeys  = flags.equippedFood.keys
-                val prevFoodConsumed  = pendingFoodConsumed()
-                val availableFood     = inventory.filterKeys { it in equippedFoodKeys }
-                    .mapValues { (k, v) -> (v - (prevFoodConsumed[k] ?: 0)).coerceAtLeast(0) }
-                    .filterValues { it > 0 }
+                val prevFoodConsumed = sessionRepo.pendingFoodConsumed()
+                val availableFood = FoodReservation.available(inventory, equippedFoodKeys, prevFoodConsumed)
                 val spell = gameData.spells[bossSpellName]
                 val preferredArrow = bossArrowKey?.takeIf { (inventory[it] ?: 0) > 0 }
                 val orderedBossArrowKeys = if (preferredArrow != null)
@@ -894,10 +892,8 @@ class QueuedSessionStarter @Inject constructor(
                     else ARROW_TIERS.filter { (inventory[it] ?: 0) > 0 }
                 val availableArrows = orderedCombatArrowKeys.associateWith { inventory[it] ?: 0 }
                 val equippedFoodKeys  = flags.equippedFood.keys
-                val prevFoodConsumed  = pendingFoodConsumed()
-                val availableFood     = inventory.filterKeys { it in equippedFoodKeys }
-                    .mapValues { (k, v) -> (v - (prevFoodConsumed[k] ?: 0)).coerceAtLeast(0) }
-                    .filterValues { it > 0 }
+                val prevFoodConsumed = sessionRepo.pendingFoodConsumed()
+                val availableFood = FoodReservation.available(inventory, equippedFoodKeys, prevFoodConsumed)
                 val spell = gameData.spells[combatSpellName]
                 val totalAtkBonus = EquipSlot.ARMOR_SLOTS.sumOf { slot ->
                     val eq = equipMap[combatEquipped[slot]]
@@ -992,10 +988,8 @@ class QueuedSessionStarter @Inject constructor(
                 val availableArrows = orderedTowerArrowKeys.associateWith { inventory[it] ?: 0 }
                 val spell           = gameData.spells[flags.activeSpell]
                 val equippedFoodKeys = flags.equippedFood.keys
-                val prevFoodConsumed = pendingFoodConsumed()
-                val availableFood    = inventory.filterKeys { it in equippedFoodKeys }
-                    .mapValues { (k, v) -> (v - (prevFoodConsumed[k] ?: 0)).coerceAtLeast(0) }
-                    .filterValues { it > 0 }
+                val prevFoodConsumed = sessionRepo.pendingFoodConsumed()
+                val availableFood = FoodReservation.available(inventory, equippedFoodKeys, prevFoodConsumed)
                 val staffCoversRune = combatStyle == "magic" && spell != null && (weapon?.infiniteRunes == "all" || weapon?.infiniteRunes == spell.runeType)
                 val towerRuneKey  = if (combatStyle == "magic" && spell != null && !staffCoversRune) spell.runeType else null
                 val towerRuneCost = spell?.runeCost ?: 1
@@ -1099,20 +1093,6 @@ class QueuedSessionStarter @Inject constructor(
         action.consumedMaterials.takeIf { it.isNotEmpty() }?.let {
             json.encodeToString(json.serializersModule.serializer<Map<String, Int>>(), it)
         }
-
-    /**
-     * Returns the total food consumed by the most recent player session if it is
-     * completed but not yet collected (food not yet deducted from inventory).
-     * Used so the next queued combat session doesn't get the full pre-battle food supply.
-     */
-    private suspend fun pendingFoodConsumed(): Map<String, Int> {
-        val session = sessionRepo.getActiveSession() ?: return emptyMap()
-        if (!session.completed || session.skillName !in listOf("combat", "boss")) return emptyMap()
-        val frames = try { json.decodeFromString<List<SessionFrame>>(session.frames) } catch (_: Exception) { return emptyMap() }
-        val result = mutableMapOf<String, Int>()
-        for (frame in frames) frame.foodConsumed.forEach { (k, v) -> result[k] = (result[k] ?: 0) + v }
-        return result
-    }
 
     private fun gatheringPetBoost(petsJson: String, skillKey: String, ironman: Boolean = false): Int {
         if (ironman) return 0

@@ -287,7 +287,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                 val totalDefBonus = EquipSlot.ARMOR_SLOTS.sumOf { equipMap[equipped[it]]?.defenseBonus  ?: 0 } + (bossWeapon?.defenseBonus  ?: 0)
                 val totalMagicDmgBonus = if (combatStyle == "magic") EquipSlot.ARMOR_SLOTS.sumOf { equipMap[equipped[it]]?.magicDamageBonus ?: 0 } + (bossWeapon?.magicDamageBonus ?: 0) else 0
                 val equippedFoodKeys = flags.equippedFood.keys
-                val availableFood    = inventory.filterKeys { it in equippedFoodKeys }
+                val availableFood = FoodReservation.available(inventory, equippedFoodKeys, sessionRepo.pendingFoodConsumed())
                 val spell = gameData.spells[flags.activeSpell]
                 val preferredArrow = flags.equippedArrows?.takeIf { (inventory[it] ?: 0) > 0 }
                 val orderedWorkerBossArrowKeys = if (preferredArrow != null)
@@ -341,7 +341,7 @@ class WorkerQueuedSessionStarter @Inject constructor(
                 val totalDefBonus = EquipSlot.ARMOR_SLOTS.sumOf { equipMap[equipped[it]]?.defenseBonus  ?: 0 } + (weapon?.defenseBonus  ?: 0)
                 val totalMagicDmgBonus = if (combatStyle == "magic") EquipSlot.ARMOR_SLOTS.sumOf { equipMap[equipped[it]]?.magicDamageBonus ?: 0 } + (weapon?.magicDamageBonus ?: 0) else 0
                 val equippedFoodKeys = flags.equippedFood.keys
-                val availableFood    = inventory.filterKeys { it in equippedFoodKeys }
+                val availableFood = FoodReservation.available(inventory, equippedFoodKeys, sessionRepo.pendingFoodConsumed())
                 val spell = gameData.spells[flags.activeSpell]
                 val preferredArrow = flags.equippedArrows?.takeIf { (inventory[it] ?: 0) > 0 }
                 val orderedWorkerCombatArrowKeys = if (preferredArrow != null)

@@ -26,6 +26,7 @@ import com.fantasyidler.data.model.Skills
 import com.fantasyidler.repository.BoostRepository
 import com.fantasyidler.repository.ChurchRepository
 import com.fantasyidler.repository.blessingPrayerCapeMult
+import com.fantasyidler.repository.FoodReservation
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.GuildRepository
 import com.fantasyidler.repository.PlayerRepository
@@ -206,6 +207,7 @@ class CombatViewModel @Inject constructor(
     }
 
     private val _extra = MutableStateFlow(CombatUiState())
+    private val _pendingFood = MutableStateFlow<Map<String, Int>>(emptyMap())
     private val _simulatedRatings = MutableStateFlow<Map<String, CombatSimulator.SurvivalRating>>(emptyMap())
     private var simJob: Job? = null
     private var lastSimFingerprint = ""
@@ -236,12 +238,25 @@ class CombatViewModel @Inject constructor(
         }
     }
 
+    init {
+        // Uncollected sessions already spent food the inventory still shows.
+        // Refresh the reservation whenever the player or the active session
+        // changes (collect deletes sessions, completion adds to the backlog),
+        // so every "food left" read below derives from the same source.
+        viewModelScope.launch {
+            combine(playerRepo.playerFlow, sessionRepo.activeSessionFlow) { _, _ -> Unit }.collect {
+                _pendingFood.value = sessionRepo.pendingFoodConsumed()
+            }
+        }
+    }
+
     val uiState: StateFlow<CombatUiState> = combine(
         playerRepo.playerFlow,
         sessionRepo.activeSessionFlow,
         _extra,
         _simulatedRatings,
-    ) { player, session, extra, simRatings ->
+        _pendingFood,
+    ) { player, session, extra, simRatings, pendingFood ->
         val combatSession = session?.takeIf { it.skillName == "combat" || it.skillName == "boss" || it.skillName == "tower" }
         if (player == null) {
             extra.copy(combatSession = combatSession)
@@ -322,9 +337,13 @@ class CombatViewModel @Inject constructor(
                 totalStrengthBonus      = totalStr,
                 totalDefenseBonus       = totalDef,
                 dungeonSurvivalRatings  = simRatings,
-                equippedFood            = flags.equippedFood.keys
-                    .associateWith { inventory[it] ?: 0 }
-                    .filter { (_, qty) -> qty > 0 },
+                // Pending-aware remainder (issue #1960): completed-but-uncollected
+                // sessions already spent food the inventory still shows. Same single
+                // source as every simulation input (FoodReservation.remaining).
+                equippedFood            = FoodReservation.remaining(
+                    flags.equippedFood.keys.associateWith { inventory[it] ?: 0 },
+                    pendingFood,
+                ).filter { (_, qty) -> qty > 0 },
                 availablePotions        = inventory.filterKeys { it in gameData.potionEffects }
                     .filter { (_, qty) -> qty > 0 },
                 dungeonRuns             = flags.dungeonRuns,
@@ -668,7 +687,7 @@ class CombatViewModel @Inject constructor(
                     activeSpell = if (combatStyle == "magic" && selectedSpell != null) selectedSpell.name else flags.activeSpell,
                 ))
                 val equippedFoodKeys   = flags.equippedFood.keys
-                val availableFood      = inventory.filterKeys { it in equippedFoodKeys }
+                val availableFood      = FoodReservation.available(inventory, equippedFoodKeys, sessionRepo.pendingFoodConsumed())
                 val foodHealValues     = boostRepo.boostedFoodHeal(flags, gameData.foodHealValues)
 
                 // Arrows: preferred type drains first, then the simulator falls back to other owned tiers
@@ -902,7 +921,7 @@ class CombatViewModel @Inject constructor(
                     activeSpell = if (combatStyle == "magic" && selectedSpell != null) selectedSpell.name else flags.activeSpell,
                 ))
                 val equippedFoodKeys  = flags.equippedFood.keys
-                val availableFood     = inventory.filterKeys { it in equippedFoodKeys }
+                val availableFood     = FoodReservation.available(inventory, equippedFoodKeys, sessionRepo.pendingFoodConsumed())
 
                 val bossFrames = CombatSimulator.simulateBoss(
                     boss               = boss,
