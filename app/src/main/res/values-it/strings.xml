@@ -313,8 +313,8 @@
     <string name="settings_profile_layout_tabs">Schede</string>
     <string name="settings_quest_dots">Indicatori missione</string>
     <string name="settings_quest_dots_desc">Mostra un indicatore quando una missione è disponibile</string>
-    <string name="settings_monument_touch_indicator">Monument touch indicator</string> <!-- untranslated -->
-    <string name="settings_monument_touch_indicator_desc">Show a dot on the Grand Monument on Home when the daily touch is available</string> <!-- untranslated -->
+    <string name="settings_monument_touch_indicator">Indicatore Monumento</string>
+    <string name="settings_monument_touch_indicator_desc">Mostra un indicatore quando il Monumento può essere toccato.</string>
     <string name="settings_prestige_notifications">Indicatori Onore</string>
     <string name="settings_prestige_notifications_desc">Mostra un indicatore quando una abilità può essere onorata</string>
     <string name="label_switch_character">Cambia personaggio</string>
@@ -685,7 +685,7 @@
     <!-- Translator note: %1$s = formatted multiplier (e.g. "1.15") -->
     <string name="skills_tool_bonus">×%1$s bonus strumento</string>
     <string name="skills_pet_bonus">+%1$d%% XP (compagno)</string>
-    <string name="skills_blessing_bonus">+%1$d%% XP (blessing)</string> <!-- untranslated -->
+    <string name="skills_blessing_bonus">+%1$d%% XP (benedizione)</string>
     <!-- Translator note: %1$d = fishing level -->
     <string name="skills_fishing_desc">Livello %1$d  •  Pesca in base al livello</string>
     <!-- Translator note: %1$d = prayer level -->
@@ -744,7 +744,7 @@
     <string name="quest_legend_guild_daily">Giornaliera di gilda</string>
     <string name="quest_legend_guild">Missione di gilda</string>
     <string name="quest_legend_quest">Missione</string>
-    <string name="quest_legend_slayer_target">Slayer Task</string> <!-- untranslated -->
+    <string name="quest_legend_slayer_target">Incarico Sicario</string>
     <string name="quest_legend_gold_dot">Una missione a tempo è disponibile.</string>
     <string name="quest_legend_notes">Le missioni con icone attenuate non possono ancora essere completate (livello o materiali mancanti). Un numerino in apice indica che più missioni richiedono la stessa azione.</string>
     <!-- Translator note: %1$s = quantity in inventory -->
@@ -1059,7 +1059,7 @@
     <string name="church_activate">Attiva</string>
     <string name="church_blessing_bonus">+%1$s da benedizione</string>
     <!-- Golden Goose pet coin share, split from the blessing line (issue #1941). Pending Weblate translation. -->
-    <string name="pet_coin_bonus">+%1$s from pet</string> <!-- untranslated -->
+    <string name="pet_coin_bonus">+%1$s da compagno</string>
     <string name="church_blessing_suffix">da benedizione</string>
     <string name="church_effect_xp">×%1$.2f XP per %2$d ore</string>
     <string name="church_effect_def">+%1$d Difesa per %2$d ore</string>
@@ -1069,8 +1069,8 @@
     <string name="church_bones_available">Hai %1$d ossa, pari a %2$d per le benedizioni (le ossa più grandi valgono più)</string>
     <string name="church_not_enough_bones">Non hai abbastanza ossa (ne servono %1$d)</string>
     <string name="church_already_active">Una benedizione è già attiva</string>
-    <string name="church_blessing_activated">Blessing activated!</string> <!-- untranslated -->
-    <string name="church_blessing_extended">Blessing extended!</string> <!-- untranslated -->
+    <string name="church_blessing_activated">Benedizione attivata!</string>
+    <string name="church_blessing_extended">Benedizione estesa!</string>
     <string name="church_confirm_deactivate_title">Interrompere la benedizione?</string>
     <string name="church_confirm_deactivate_body">Sei sicuro di voler interrompere la benedizione attiva? Le ossa non verranno restituite.</string>
 
@@ -1379,11 +1379,11 @@
     <string name="slayer_found_in">Si trova in: %1$s</string>
     <string name="slayer_requires">Necessita di: %1$s</string>
     <string name="slayer_add_dungeon_to_queue">Aggiungi Dungeon alla Coda</string>
-    <string name="slayer_add_all_dungeons_to_queue">Add All Dungeons to Queue</string> <!-- untranslated -->
+    <string name="slayer_add_all_dungeons_to_queue">Aggiungi tutti all Coda</string>
     <string name="slayer_queue_added">Aggiunto alla coda: %1$s.</string>
     <string name="slayer_queue_full">La coda è piena.</string>
-    <string name="slayer_queue_added_many">Added %1$d dungeons to queue.</string> <!-- untranslated -->
-    <string name="slayer_queue_added_partial">Added %1$d of %2$d dungeons to queue.</string> <!-- untranslated -->
+    <string name="slayer_queue_added_many">%1$d dungeon aggiunti alla coda</string>
+    <string name="slayer_queue_added_partial">%1$d su %2$d dungeon aggiunti alla coda</string>
     <string name="slayer_foretell_title">Divina il prossimo incarico</string>
     <string name="slayer_foretell_desc">Assegna automaticamente il prossimo incarico usando ossa. Inizierà al termine del tuo incarico attuale.</string>
     <string name="slayer_foretell_queue_empty">Nessun incarico in coda.</string>
@@ -1431,7 +1431,7 @@
     <string name="shop_cat_food">Cibo</string>
     <string name="shop_cat_materials">Materiali</string>
     <string name="shop_cat_misc">Varie</string>
-    <string name="shop_cat_capes">Capes</string> <!-- untranslated -->
+    <string name="shop_cat_capes">Mantelli</string>
 
     <string name="crafting_per_craft">×%1$d per ricetta</string>
 
