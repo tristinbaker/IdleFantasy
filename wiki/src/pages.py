@@ -2411,15 +2411,15 @@ _ELDER_PIECE_ROWS = [
 ]
 
 _ISLE_DUNGEONS = [
-    ("beach_and_cliffs", 1,  ["beach_marauder", "beach_leviathan"], "1 guaranteed Ancient Sigil"),
-    ("ancient_forest",   30, ["grove_stalker", "grove_dryad"],       "1 guaranteed Ancient Sigil"),
-    ("volcano_peak",     60, ["ash_beast", "lava_wraith"],           "2 guaranteed Ancient Sigils"),
-    ("abyssal_depths",   85, ["abyssal_horror", "void_seraph"],      "3 guaranteed Ancient Sigils"),
+    ("beach_and_cliffs", 1,  ["beach_marauder", "beach_leviathan"], "40% chance of 1 Ancient Sigil"),
+    ("ancient_forest",   30, ["grove_stalker", "grove_dryad"],       "40% chance of 1 Ancient Sigil"),
+    ("volcano_peak",     60, ["ash_beast", "lava_wraith"],           "80% chance of 1 Ancient Sigil"),
+    ("abyssal_depths",   85, ["abyssal_horror", "void_seraph"],      "1 guaranteed Ancient Sigil, plus a 20% chance of a second"),
 ]
 
 _ISLE_BOSSES = [
-    ("sea_serpent", "Unlock",  "Defeat once to permanently enable Set Sail. Reachable via the Voyage quest at the Dock (Construction 90 required)."),
-    ("last_elder",  "Finale", "Locked until you own all 8 Elder pieces. First kill drops the Ancient Signet and awards Isle Champion; repeat clears drop Ancient Sigils."),
+    ("sea_serpent", "Unlock",  "Defeat once to permanently enable Set Sail. Reachable via the Voyage quest at the Dock (Construction 90 required). 1% chance of a Race Change Token."),
+    ("last_elder",  "Finale", "Locked until you own all 8 Elder pieces. Drops the Ancient Signet on every win (100%), with a 2% chance of the Elder Familiar pet. First kill awards Isle Champion. Drops no Ancient Sigils."),
 ]
 
 

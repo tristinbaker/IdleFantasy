@@ -175,13 +175,13 @@
 
     <!-- Elder Isle dungeons -->
     <string name="dungeon_beach_and_cliffs_name">Beach &amp; Cliffs</string>
-    <string name="dungeon_beach_and_cliffs_desc">The isle\'s landing zone. Coastal enemies scavenge the wrecks of prior voyages. Every clear drops one Ancient Sigil.</string>
+    <string name="dungeon_beach_and_cliffs_desc">The isle\'s landing zone. Coastal enemies scavenge the wrecks of prior voyages. Every clear has a chance to drop Ancient Sigils.</string>
     <string name="dungeon_ancient_forest_name">Ancient Forest</string>
-    <string name="dungeon_ancient_forest_desc">A rune-laced jungle grown over an old library. Grove stalkers and rune-touched dryads keep visitors from the ruins beneath. One Ancient Sigil per clear.</string>
+    <string name="dungeon_ancient_forest_desc">A rune-laced jungle grown over an old library. Grove stalkers and rune-touched dryads keep visitors from the ruins beneath. Every clear has a chance to drop Ancient Sigils.</string>
     <string name="dungeon_volcano_peak_name">Volcano Peak</string>
-    <string name="dungeon_volcano_peak_desc">The isle\'s smoking spine, once an Elder altar. Ash beasts and lava wraiths guard the sealing site. Two Ancient Sigils per clear.</string>
+    <string name="dungeon_volcano_peak_desc">The isle\'s smoking spine, once an Elder altar. Ash beasts and lava wraiths guard the sealing site. Every clear has a chance to drop Ancient Sigils.</string>
     <string name="dungeon_abyssal_depths_name">Abyssal Depths</string>
-    <string name="dungeon_abyssal_depths_desc">A flooded pressure-chamber at the foot of the isle, where the Last Elder waits. Abyssal horrors and void seraphs patrol the approach. Three Ancient Sigils per clear.</string>
+    <string name="dungeon_abyssal_depths_desc">A flooded pressure-chamber at the foot of the isle, where the Last Elder waits. Abyssal horrors and void seraphs patrol the approach. Every clear drops Ancient Sigils.</string>
 
     <!-- Elder Isle raid bosses -->
     <string name="boss_sea_serpent_name">Sea Serpent</string>
