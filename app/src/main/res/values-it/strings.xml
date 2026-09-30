@@ -471,6 +471,7 @@
 
 
 
+
     <string name="settings_lang_system">Sistema</string>
     <string name="settings_save_data">Salva</string>
     <string name="settings_export">Esporta Salvataggio</string>
@@ -593,7 +594,7 @@
     <string name="combat_spell_locked">Richiede Magia liv. %1$d</string>
     <string name="combat_spell_level_met">Magia liv. %1$d</string>
     <string name="combat_no_potion">Nessuna pozione</string>
-    <string name="label_potion">Potion</string> <!-- untranslated -->
+    <string name="label_potion">Pozione</string>
     <string name="combat_req_level">Livello di combattimento richiesto</string>
     <string name="combat_duration">Durata</string>
     <!-- Translator note: %1$d = minutes -->
@@ -1438,7 +1439,7 @@
     <string name="trade_route_merchants_quarter_desc">Scambia merci rare nel prestigioso quartiere dei mercanti.</string>
     <string name="trade_route_northern_ports_desc">Porta carichi preziosi nelle città portuali del nord. Grande rischio, grande ricompensa.</string>
     <string name="crafting_cat_bar">Lingotto</string>
-    <string name="crafting_cat_brew">Mescola</string>
+    <string name="crafting_cat_brew">Miscela</string>
     <string name="crafting_cat_component">Componente</string>
     <string name="crafting_cat_tool">Strumento</string>
     <string name="crafting_cat_weapon">Arma</string>
@@ -1572,6 +1573,8 @@
     <string name="town_artisans_workshop_active_bonus">%1$d%% di recuperare materiali</string>
     <string name="town_building_chronos_spire_name">Guglia di Crono</string>
     <string name="town_building_dock_name">Porto</string>
+    <string name="town_dock_no_bonus">Upgrade to sail to new locations</string> <!-- untranslated -->
+    <string name="town_dock_t1_bonus">Unlocks sailing to the Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_title">Isola Ancestrale</string>
     <string name="elder_isle_sail_title">Salpa verso l\'Isola Ancestrale</string>
     <string name="elder_isle_zone_beach">Spiagge e Scogli</string>

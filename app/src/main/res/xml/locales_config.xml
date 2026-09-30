@@ -20,4 +20,5 @@
     <locale android:name="he"/>
     <locale android:name="ar"/>
     <locale android:name="ca"/>
+    <locale android:name="uk"/>
 </locale-config>

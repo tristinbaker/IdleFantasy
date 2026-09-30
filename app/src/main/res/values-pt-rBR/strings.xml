@@ -471,6 +471,7 @@
 
 
 
+
     <string name="settings_lang_system">Sistema</string>
     <string name="settings_save_data">Dados Salvos</string>
     <string name="settings_export">Exportar Salvamento</string>
@@ -1572,6 +1573,8 @@
     <string name="town_artisans_workshop_active_bonus">%1$d%% chance to preserve secondary crafting materials</string> <!-- untranslated -->
     <string name="town_building_chronos_spire_name">Chronos Spire</string> <!-- untranslated -->
     <string name="town_building_dock_name">Dock</string> <!-- untranslated -->
+    <string name="town_dock_no_bonus">Upgrade to sail to new locations</string> <!-- untranslated -->
+    <string name="town_dock_t1_bonus">Unlocks sailing to the Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_title">Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_sail_title">Sail to Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_zone_beach">Beach &amp; Cliffs</string> <!-- untranslated -->

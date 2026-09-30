@@ -74,6 +74,7 @@ import com.fantasyidler.ui.viewmodel.AppraisalQuad
 import com.fantasyidler.ui.viewmodel.CarnivalViewModel
 import com.fantasyidler.ui.viewmodel.Difficulty
 import com.fantasyidler.util.GameStrings
+import com.fantasyidler.util.withAppLocale
 import androidx.compose.animation.core.Animatable
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -289,7 +290,7 @@ private fun IdleGamesTab(
                     }
                     Spacer(Modifier.height(8.dp))
                     Button(
-                        onClick  = { viewModel.queueIdleGame(game.activityKey, context.getString(game.titleRes)) },
+                        onClick  = { viewModel.queueIdleGame(game.activityKey, context.withAppLocale().getString(game.titleRes)) },
                         enabled  = queueSize < maxQueueSize,
                         modifier = Modifier.fillMaxWidth(),
                     ) {

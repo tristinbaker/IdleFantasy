@@ -471,6 +471,7 @@
 
 
 
+
     <string name="settings_lang_system">Sistema</string>
     <string name="settings_save_data">Datos guardados</string>
     <string name="settings_export">Exportar partida</string>
@@ -1572,6 +1573,8 @@
     <string name="town_artisans_workshop_active_bonus">%1$d%% de probabilidad de conservar materiales secundarios de fabricación</string>
     <string name="town_building_chronos_spire_name">Chapitel de Chronos</string>
     <string name="town_building_dock_name">Muelle</string>
+    <string name="town_dock_no_bonus">Upgrade to sail to new locations</string> <!-- untranslated -->
+    <string name="town_dock_t1_bonus">Unlocks sailing to the Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_title">Isla Elder</string>
     <string name="elder_isle_sail_title">Zarpar a la Isla Elder</string>
     <string name="elder_isle_zone_beach">Playa y Acantilados</string>

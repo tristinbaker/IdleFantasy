@@ -206,5 +206,9 @@ fun buildingBonusText(buildingKey: String, tier: Int, townRepo: TownRepository):
         0    -> stringResource(R.string.town_chronos_spire_no_bonus)
         else -> stringResource(R.string.town_chronos_spire_active_bonus, (townRepo.playerSessionSpeedReduction("chronos_spire", tier) * 100).roundToInt())
     }
+    "dock" -> when (tier) {
+        0    -> stringResource(R.string.town_dock_no_bonus)
+        else -> stringResource(R.string.town_dock_t1_bonus)
+    }
     else -> ""
 }

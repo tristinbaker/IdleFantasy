@@ -14,8 +14,9 @@ import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.calculateCentroid
 import androidx.compose.foundation.gestures.calculatePan
 import androidx.compose.foundation.gestures.calculateZoom
-import androidx.compose.foundation.gestures.detectDragGestures
+import androidx.compose.foundation.gestures.awaitTouchSlopOrCancellation
 import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.gestures.drag
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -155,6 +156,17 @@ private const val CANVAS_ROWS = GRID + TOP_MARGIN_CELLS
 // Placement grid subdivisions per cell (items snap to half cells).
 private const val SUBC = HouseRepository.SUB
 private const val TOP_MARGIN_P = TOP_MARGIN_CELLS * SUBC
+
+/**
+ * Whether a one-finger drag starting on the house canvas must be consumed by
+ * the canvas or handed to the parent vertical scroll (issue #1953).
+ *
+ * At 1x zoom a pan is a no-op (offsets clamp to zero), so Select-mode drags
+ * on empty ground only swallow page scrolls — hand them off. Everything that
+ * edits (moving a piece, painting) or pans a zoomed view stays owned.
+ */
+internal fun shouldCanvasConsumeDrag(hitPiece: Boolean, placing: Boolean, zoomed: Boolean): Boolean =
+    hitPiece || placing || zoomed
 
 private val FloorDark = Color(0xFF17120E)
 private val TrimWood = Color(0xFF7A5233)
@@ -790,42 +802,57 @@ private fun HouseCanvas(state: HouseUiState, viewModel: HouseViewModel, atlas: I
                 }
             }
             .pointerInput(mode, state.house, editing) {
-                var panning = false
-                detectDragGestures(
-                    onDragStart = { offset ->
-                        panning = false
-                        if (!editing) {
-                            // View mode: one-finger drag always pans.
-                            panning = true
-                            return@detectDragGestures
-                        }
-                        val (cx, cy) = offsetToCell(toContent(offset, size.width, size.height), size.width)
+                // One-finger gestures. No-op drags (Select mode on empty ground
+                // at 1x zoom) are NOT consumed so the parent vertical scroll
+                // keeps working in portrait edit mode (issue #1953); the tap
+                // detector below still handles taps on those gestures.
+                awaitEachGesture {
+                    val down = awaitFirstDown()
+                    var panning = false
+                    var owned = false
+                    if (!editing) {
+                        // View mode: one-finger drag always pans.
+                        panning = true
+                        owned = shouldCanvasConsumeDrag(hitPiece = false, placing = false, zoomed = viewScale > 1f)
+                    } else {
+                        val (cx, cy) = offsetToCell(toContent(down.position, size.width, size.height), size.width)
                         // Dragging an existing piece always moves it, even in place mode.
                         val hit = placementIndexAt(state, viewModel, cx, cy)
                         if (hit != null) {
                             movingIndex = hit
                             ghostCell = cx to cy
+                            owned = true
                         } else if (mode != HouseEditMode.Select) {
                             ghostCell = cx to cy
+                            owned = true
                         } else {
                             // One-finger drag on empty ground pans the view.
                             panning = true
+                            owned = shouldCanvasConsumeDrag(hitPiece = false, placing = false, zoomed = viewScale > 1f)
                         }
-                    },
-                    onDrag = { change, dragAmount ->
+                    }
+                    if (!owned) return@awaitEachGesture
+                    val slop = awaitTouchSlopOrCancellation(down.id) { change, _ -> change.consume() }
+                    if (slop == null) {
+                        ghostCell = null
+                        movingIndex = null
+                        return@awaitEachGesture
+                    }
+                    val finished = drag(down.id) { change ->
                         if (panning) {
                             val maxX = (viewScale - 1f) * size.width / 2f
                             val maxY = (viewScale - 1f) * size.height / 2f
                             viewOffset = Offset(
-                                (viewOffset.x + dragAmount.x).coerceIn(-maxX, maxX),
-                                (viewOffset.y + dragAmount.y).coerceIn(-maxY, maxY),
+                                (viewOffset.x + (change.position.x - change.previousPosition.x)).coerceIn(-maxX, maxX),
+                                (viewOffset.y + (change.position.y - change.previousPosition.y)).coerceIn(-maxY, maxY),
                             )
                         } else if (movingIndex != null || mode != HouseEditMode.Select) {
                             ghostCell = offsetToCell(
                                 toContent(change.position, size.width, size.height), size.width)
                         }
-                    },
-                    onDragEnd = {
+                        change.consume()
+                    }
+                    if (finished) {
                         val cellPos = ghostCell
                         val moving = movingIndex
                         if (cellPos != null) {
@@ -843,9 +870,11 @@ private fun HouseCanvas(state: HouseUiState, viewModel: HouseViewModel, atlas: I
                         }
                         ghostCell = null
                         movingIndex = null
-                    },
-                    onDragCancel = { ghostCell = null; movingIndex = null },
-                )
+                    } else {
+                        ghostCell = null
+                        movingIndex = null
+                    }
+                }
             }
             .pointerInput(Unit) {
                 // Two-finger transform. Consuming multi-touch changes cancels any

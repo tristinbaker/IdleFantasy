@@ -58,7 +58,7 @@
     <string name="label_hitpoints">Hitpoints</string> <!-- untranslated -->
     <string name="label_inventory">Inventorius</string>
     <string name="label_equipment">Įranga</string>
-    <string name="label_combat_equipment">Gear</string> <!-- untranslated -->
+    <string name="label_combat_equipment">Įranga</string>
     <string name="label_pets">Augintiniai</string>
     <string name="label_achievements">Pasiekimai</string>
     <string name="label_locations">Vietos</string>
@@ -67,18 +67,18 @@
     <string name="label_bosses">Bosai</string>
     <string name="label_by_location">Pagal Vieta</string>
     <string name="bestiary_not_encountered">Dar Ne Sutikes</string>
-    <string name="bestiary_filter_all">All</string> <!-- untranslated -->
-    <string name="bestiary_filter_missing">Missing</string> <!-- untranslated -->
-    <string name="bestiary_qty_header">Qty</string> <!-- untranslated -->
-    <string name="bestiary_chance_header">Chance</string> <!-- untranslated -->
+    <string name="bestiary_filter_all">Visi</string>
+    <string name="bestiary_filter_missing">Nesutikti</string>
+    <string name="bestiary_qty_header">Vnt.</string>
+    <string name="bestiary_chance_header">Šansas</string>
     <string name="label_completion_progress">%1$d / %2$d %3$s</string>
     <string name="achievements_progress_bar">obtained</string>
-    <string name="bestiary_progress_bar">encountered</string> <!-- untranslated -->
+    <string name="bestiary_progress_bar">Sutikta</string>
     <string name="bestiary_always_drops">Visada Išmetami Daiktai</string>
     <string name="bestiary_rare_drops">Retai Išmetami Daiktai</string>
     <string name="bestiary_common_loot">Dažnai išmetami Daiktai</string>
     <string name="bestiary_pet_drop">Augintinio gavimo šansai</string>
-    <string name="bestiary_atk_def">Atk Def</string> <!-- untranslated -->
+    <string name="bestiary_atk_def">Atk Def</string>
     <string name="bestiary_str_def">Str Def</string> <!-- untranslated -->
     <string name="bestiary_rng_def">Rng Def</string> <!-- untranslated -->
     <string name="bestiary_mag_def">Mag Def</string> <!-- untranslated -->
@@ -86,19 +86,19 @@
     <string name="label_session_active">Sesija dabar Aktyvi</string>
     <string name="label_no_active_session">Jokios Aktyvios Sesijos</string>
     <string name="label_session_complete">Sesija Pabaigta!</string>
-    <string name="home_sessions_complete_title">%1$d Sessions Complete!</string> <!-- untranslated -->
-    <string name="home_boss_defeated_title">Defeated %1$s!</string> <!-- untranslated -->
-    <string name="home_boss_defeated_by_title">Defeated by %1$s.</string> <!-- untranslated -->
-    <string name="home_dungeon_died_title">%1$s — You Died</string> <!-- untranslated -->
-    <string name="home_dungeon_complete_title">%1$s Complete!</string> <!-- untranslated -->
-    <string name="home_expedition_complete_title">%1$s Expedition Complete</string> <!-- untranslated -->
-    <string name="home_skill_session_complete_title">%1$s Session Complete</string> <!-- untranslated -->
-    <string name="home_bones_buried_row">%1$s buried</string> <!-- untranslated -->
-    <string name="worker_sessions_complete_title">Worker: %1$d Sessions Complete!</string> <!-- untranslated -->
-    <string name="worker_boss_defeated_title">Worker: Defeated %1$s!</string> <!-- untranslated -->
-    <string name="worker_dungeon_died_title">Worker: %1$s — Died</string> <!-- untranslated -->
-    <string name="worker_dungeon_complete_title">Worker: %1$s Complete!</string> <!-- untranslated -->
-    <string name="worker_skill_complete_title">Worker: %1$s Complete</string> <!-- untranslated -->
+    <string name="home_sessions_complete_title">%1$d Sesijos Pabaigtos!</string>
+    <string name="home_boss_defeated_title">Nugalėta %1$s!</string>
+    <string name="home_boss_defeated_by_title">Nugalėtas %1$s.</string>
+    <string name="home_dungeon_died_title">%1$s — Tu Mirei</string>
+    <string name="home_dungeon_complete_title">%1$s Pabaigta!</string>
+    <string name="home_expedition_complete_title">%1$s Ekspedicija Pabaigta</string>
+    <string name="home_skill_session_complete_title">%1$s Sesija Pabaigta</string>
+    <string name="home_bones_buried_row">%1$s užkastą</string>
+    <string name="worker_sessions_complete_title">Darbininkas: %1$d Sesijos Pabaigtos!</string>
+    <string name="worker_boss_defeated_title">Darbininkas: Nugalėta %1$s!</string>
+    <string name="worker_dungeon_died_title">Darbininkas: %1$s — Mirė</string>
+    <string name="worker_dungeon_complete_title">Darbininkas: %1$s Pabaigtas!</string>
+    <string name="worker_skill_complete_title">Darbininkas: %1$s Pabaigtas</string>
     <string name="label_training">Treniruotis</string>
     <string name="label_gathering_skills">Rinkti</string>
     <string name="label_crafting_skills">Gaminimo Įgudžiai</string>
@@ -106,14 +106,14 @@
     <string name="label_coming_soon">Greitai Pasirodys</string>
     <string name="label_time_remaining">Liko Laiko</string>
     <!-- Translator note: compact duration units; English puts the letter(s) right after the number -->
-    <string name="duration_years">%1$dy</string> <!-- untranslated -->
-    <string name="duration_months">%1$dmo</string> <!-- untranslated -->
-    <string name="duration_weeks">%1$dw</string> <!-- untranslated -->
-    <string name="duration_days">%1$dd</string> <!-- untranslated -->
-    <string name="duration_hours">%1$dh</string> <!-- untranslated -->
-    <string name="duration_minutes">%1$dm</string> <!-- untranslated -->
-    <string name="duration_seconds">%1$ds</string> <!-- untranslated -->
-    <string name="duration_complete">Complete</string> <!-- untranslated -->
+    <string name="duration_years">%1$dmet.</string>
+    <string name="duration_months">%1$dmėn.</string>
+    <string name="duration_weeks">%1$dsav.</string>
+    <string name="duration_days">%1$dd.</string>
+    <string name="duration_hours">%1$dval.</string>
+    <string name="duration_minutes">%1$dmin.</string>
+    <string name="duration_seconds">%1$dsec.</string>
+    <string name="duration_complete">Pabaigta</string>
     <string name="label_session_results">Sesijos Rezultatas</string>
     <string name="label_xp_gained">XP surinktą</string>
     <string name="label_items_collected">Daiktų Surinktą</string>
@@ -131,7 +131,7 @@
     <string name="label_ready_to_harvest">Paruošta Nuimti Derlių</string>
     <string name="label_empty">Tuščia</string>
     <string name="inventory_sort_quantity">Vienietai</string>
-    <string name="inventory_sort_az">A-Z</string> <!-- untranslated -->
+    <string name="inventory_sort_az">A-Z</string>
     <string name="inventory_cat_weapons">Ginklai</string>
     <string name="inventory_cat_armour">Šarvai</string>
     <string name="inventory_cat_tools">Įrankiai</string>
@@ -204,7 +204,7 @@
     <!-- Translator note: %1$s = formatted XP amount, %2$d = target level number -->
     <string name="format_xp_to_next">%1$s XP to Lygio %2$d</string>
     <!-- Translator note: %1$s = formatted XP amount remaining to reach the level cap (99) -->
-    <string name="xp_to_99">%1$s XP to 99</string> <!-- untranslated -->
+    <string name="xp_to_99">%1$s XP iki 99</string>
     <!-- Translator note: %1$s = time string (e.g. "42m 10s") -->
     <string name="format_time_remaining">%1$s Liko</string>
     <!-- Translator note: %1$s = relative time (e.g. "5m ago") -->
@@ -282,7 +282,7 @@
     <string name="error_unknown">Something went wrong. Please try again.</string> <!-- untranslated -->
 
     <!-- ===== Session dialogs ===== -->
-    <string name="session_abandon_title">Abandon Session?</string> <!-- untranslated -->
+    <string name="session_abandon_title">Palikti Sesija?</string>
     <string name="session_abandon_body">All progress from this session will be lost.</string> <!-- untranslated -->
 
     <!-- ===== Onboarding ===== -->
@@ -451,6 +451,7 @@
     <string name="theme_editor_saved_ok">Theme saved and applied</string> <!-- untranslated -->
     <string name="theme_editor_exported_ok">Theme exported</string> <!-- untranslated -->
     <string name="settings_language_desc">Override the app display language</string> <!-- untranslated -->
+
 
 
 
@@ -1572,6 +1573,8 @@
     <string name="town_artisans_workshop_active_bonus">%1$d%% chance to preserve secondary crafting materials</string> <!-- untranslated -->
     <string name="town_building_chronos_spire_name">Chronos Spire</string> <!-- untranslated -->
     <string name="town_building_dock_name">Dock</string> <!-- untranslated -->
+    <string name="town_dock_no_bonus">Upgrade to sail to new locations</string> <!-- untranslated -->
+    <string name="town_dock_t1_bonus">Unlocks sailing to the Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_title">Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_sail_title">Sail to Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_zone_beach">Beach &amp; Cliffs</string> <!-- untranslated -->

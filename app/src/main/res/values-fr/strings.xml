@@ -471,6 +471,7 @@
 
 
 
+
     <string name="settings_lang_system">Système</string>
     <string name="settings_save_data">Sauvegarder les données</string>
     <string name="settings_export">Exporter la sauvegarde</string>
@@ -1573,6 +1574,8 @@
     <string name="town_artisans_workshop_active_bonus">%1$d%% chance de préserver des matériaux de fabrication secondaires</string>
     <string name="town_building_chronos_spire_name">Flèche du Chrono</string>
     <string name="town_building_dock_name">Dock</string> <!-- untranslated -->
+    <string name="town_dock_no_bonus">Upgrade to sail to new locations</string> <!-- untranslated -->
+    <string name="town_dock_t1_bonus">Unlocks sailing to the Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_title">Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_sail_title">Sail to Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_zone_beach">Beach &amp; Cliffs</string> <!-- untranslated -->
