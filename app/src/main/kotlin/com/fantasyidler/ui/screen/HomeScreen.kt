@@ -64,6 +64,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -825,10 +826,19 @@ fun HomeScreen(
                                 modifier = Modifier.fillMaxWidth().height(6.dp).clip(RoundedCornerShape(3.dp)),
                             )
                             Spacer(Modifier.height(4.dp))
+                            // Ticks on each minute boundary (the smallest unit shown) so the
+                            // countdown stays current while Home is open.
+                            var eventNowMs by remember { mutableLongStateOf(System.currentTimeMillis()) }
+                            LaunchedEffect(event.endMs) {
+                                while (true) {
+                                    eventNowMs = System.currentTimeMillis()
+                                    delay(60_000L - eventNowMs % 60_000L)
+                                }
+                            }
                             Text(
                                 text  = stringResource(
                                     R.string.format_time_remaining,
-                                    (event.endMs - System.currentTimeMillis()).coerceAtLeast(0).formatDurationMs(LocalContext.current),
+                                    (event.endMs - eventNowMs).coerceAtLeast(0).formatDurationMs(LocalContext.current),
                                 ),
                                 style = MaterialTheme.typography.labelSmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
