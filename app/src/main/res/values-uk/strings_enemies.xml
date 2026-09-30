@@ -60,7 +60,7 @@
     <string name="enemy_void_stalker_name">Void Stalker</string> <!-- untranslated -->
     <string name="enemy_rift_guardian_name">Rift Guardian</string> <!-- untranslated -->
     <string name="enemy_chaos_elemental_name">Chaos Elemental</string> <!-- untranslated -->
-    <string name="enemy_frost_giant_name">Frost Giant</string> <!-- untranslated -->
+    <string name="enemy_frost_giant_name">Морозний гігант</string>
     <string name="enemy_ice_golem_name">Ice Golem</string> <!-- untranslated -->
     <string name="enemy_glacial_mage_name">Glacial Mage</string> <!-- untranslated -->
     <string name="enemy_abyssal_lord_name">Abyssal Lord</string> <!-- untranslated -->
