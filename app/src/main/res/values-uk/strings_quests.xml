@@ -32,18 +32,18 @@
     <string name="quest_woodcutting_6_objective">Cut 3650 Magic Logs</string> <!-- untranslated -->
 
     <!-- Fishing -->
-    <string name="quest_fishing_1_name">Fishing I</string> <!-- untranslated -->
-    <string name="quest_fishing_1_objective">Catch 500 fish</string> <!-- untranslated -->
-    <string name="quest_fishing_2_name">Fishing II</string> <!-- untranslated -->
-    <string name="quest_fishing_2_objective">Catch 750 fish</string> <!-- untranslated -->
-    <string name="quest_fishing_3_name">Fishing III</string> <!-- untranslated -->
-    <string name="quest_fishing_3_objective">Catch 1100 fish</string> <!-- untranslated -->
-    <string name="quest_fishing_4_name">Fishing IV</string> <!-- untranslated -->
-    <string name="quest_fishing_4_objective">Catch 1650 fish</string> <!-- untranslated -->
-    <string name="quest_fishing_5_name">Fishing V</string> <!-- untranslated -->
-    <string name="quest_fishing_5_objective">Catch 2450 fish</string> <!-- untranslated -->
-    <string name="quest_fishing_6_name">Fishing VI</string> <!-- untranslated -->
-    <string name="quest_fishing_6_objective">Catch 3650 fish</string> <!-- untranslated -->
+    <string name="quest_fishing_1_name">Рибальство I</string>
+    <string name="quest_fishing_1_objective">Зловити 500 рибин</string>
+    <string name="quest_fishing_2_name">Рибальство II</string>
+    <string name="quest_fishing_2_objective">Зловити 750 рибин</string>
+    <string name="quest_fishing_3_name">Рибальство III</string>
+    <string name="quest_fishing_3_objective">Зловити 1100 рибин</string>
+    <string name="quest_fishing_4_name">Рибальство IV</string>
+    <string name="quest_fishing_4_objective">Зловити 1650 рибин</string>
+    <string name="quest_fishing_5_name">Рибальство V</string>
+    <string name="quest_fishing_5_objective">Зловити 2450 рибин</string>
+    <string name="quest_fishing_6_name">Рибальство VI</string>
+    <string name="quest_fishing_6_objective">Зловити 3650 рибин</string>
 
     <!-- Smithing -->
     <string name="quest_smithing_1_name">Smithing I</string> <!-- untranslated -->
@@ -186,36 +186,36 @@
     <string name="quest_crafting_6_objective">Craft 1500 Platinum Diamond Rings</string> <!-- untranslated -->
 
     <!-- Monster slayer chains -->
-    <string name="quest_goblin_slayer_1_name">Goblin Slayer I</string> <!-- untranslated -->
-    <string name="quest_goblin_slayer_1_objective">Defeat 50 Goblins</string> <!-- untranslated -->
-    <string name="quest_goblin_slayer_2_name">Goblin Slayer II</string> <!-- untranslated -->
-    <string name="quest_goblin_slayer_2_objective">Defeat 100 Goblins</string> <!-- untranslated -->
-    <string name="quest_spider_slayer_1_name">Spider Slayer I</string> <!-- untranslated -->
-    <string name="quest_spider_slayer_1_objective">Defeat 40 Giant Spiders</string> <!-- untranslated -->
-    <string name="quest_spider_slayer_2_name">Spider Slayer II</string> <!-- untranslated -->
-    <string name="quest_spider_slayer_2_objective">Defeat 80 Giant Spiders</string> <!-- untranslated -->
-    <string name="quest_skeleton_slayer_1_name">Skeleton Slayer I</string> <!-- untranslated -->
-    <string name="quest_skeleton_slayer_1_objective">Defeat 35 Skeletons</string> <!-- untranslated -->
-    <string name="quest_skeleton_slayer_2_name">Skeleton Slayer II</string> <!-- untranslated -->
-    <string name="quest_skeleton_slayer_2_objective">Defeat 70 Skeletons</string> <!-- untranslated -->
-    <string name="quest_bandit_hunter_1_name">Bandit Hunter I</string> <!-- untranslated -->
-    <string name="quest_bandit_hunter_1_objective">Defeat 30 Bandits</string> <!-- untranslated -->
-    <string name="quest_bandit_hunter_2_name">Bandit Hunter II</string> <!-- untranslated -->
-    <string name="quest_bandit_hunter_2_objective">Defeat 60 Bandits</string> <!-- untranslated -->
-    <string name="quest_orc_slayer_1_name">Orc Slayer I</string> <!-- untranslated -->
-    <string name="quest_orc_slayer_1_objective">Defeat 25 Orc Warriors</string> <!-- untranslated -->
-    <string name="quest_orc_slayer_2_name">Orc Slayer II</string> <!-- untranslated -->
-    <string name="quest_orc_slayer_2_objective">Defeat 50 Orc Warriors</string> <!-- untranslated -->
-    <string name="quest_demon_slayer_1_name">Demon Slayer I</string> <!-- untranslated -->
-    <string name="quest_demon_slayer_1_objective">Defeat the Demon Lord</string> <!-- untranslated -->
-    <string name="quest_demon_slayer_2_name">Demon Slayer II</string> <!-- untranslated -->
-    <string name="quest_demon_slayer_2_objective">Defeat the Demon Lord 5 times</string> <!-- untranslated -->
-    <string name="quest_demon_slayer_3_name">Demon Slayer III</string> <!-- untranslated -->
-    <string name="quest_demon_slayer_3_objective">Defeat the Demon Lord 25 times</string> <!-- untranslated -->
-    <string name="quest_dragon_slayer_1_name">Dragon Slayer I</string> <!-- untranslated -->
-    <string name="quest_dragon_slayer_1_objective">Defeat 10 Green Dragons</string> <!-- untranslated -->
-    <string name="quest_dragon_slayer_2_name">Dragon Slayer II</string> <!-- untranslated -->
-    <string name="quest_dragon_slayer_2_objective">Defeat 25 Green Dragons</string> <!-- untranslated -->
+    <string name="quest_goblin_slayer_1_name">Вбивця Гоблінів I</string>
+    <string name="quest_goblin_slayer_1_objective">Перемогти 50 Гоблінів</string>
+    <string name="quest_goblin_slayer_2_name">Вбивця Гоблінів II</string>
+    <string name="quest_goblin_slayer_2_objective">Перемогти 100 Гоблінів</string>
+    <string name="quest_spider_slayer_1_name">Вбивця Павуків I</string>
+    <string name="quest_spider_slayer_1_objective">Перемогти 40 Гігантських Павуків</string>
+    <string name="quest_spider_slayer_2_name">Вбивця Павуків II</string>
+    <string name="quest_spider_slayer_2_objective">Перемогти 80 Гігантських Павуків</string>
+    <string name="quest_skeleton_slayer_1_name">Вбивця Скелетів I</string>
+    <string name="quest_skeleton_slayer_1_objective">Перемогти 35 Скелетів</string>
+    <string name="quest_skeleton_slayer_2_name">Вбивця Скелетів II</string>
+    <string name="quest_skeleton_slayer_2_objective">Перемогти 70 Скелетів</string>
+    <string name="quest_bandit_hunter_1_name">Мисливець За Бандитами I</string>
+    <string name="quest_bandit_hunter_1_objective">Перемогти 30 Бандитів</string>
+    <string name="quest_bandit_hunter_2_name">Мисливець За Бандитами II</string>
+    <string name="quest_bandit_hunter_2_objective">Перемогти 60 Бандитів</string>
+    <string name="quest_orc_slayer_1_name">Вбивця Орків I</string>
+    <string name="quest_orc_slayer_1_objective">Перемогти 25 Орків Воїнів</string>
+    <string name="quest_orc_slayer_2_name">Вбивця Орків II</string>
+    <string name="quest_orc_slayer_2_objective">Перемогти 50 Орків Воїнів</string>
+    <string name="quest_demon_slayer_1_name">Вбивця Демонів I</string>
+    <string name="quest_demon_slayer_1_objective">Перемогти Демон Лорда</string>
+    <string name="quest_demon_slayer_2_name">Вбивця Демонів II</string>
+    <string name="quest_demon_slayer_2_objective">Перемогти Демон Лорда 5 разів</string>
+    <string name="quest_demon_slayer_3_name">Вбивця Демонів III</string>
+    <string name="quest_demon_slayer_3_objective">Перемогти Демон Лорда 25 разів</string>
+    <string name="quest_dragon_slayer_1_name">Вбивця Драконів I</string>
+    <string name="quest_dragon_slayer_1_objective">Перемогти 10 Зелених Драконів</string>
+    <string name="quest_dragon_slayer_2_name">Вбивця Драконів II</string>
+    <string name="quest_dragon_slayer_2_objective">Перемогти 25 Зелених Драконів</string>
 
     <!-- Combat style challenges -->
     <string name="quest_melee_warrior_1_name">Melee Warrior I</string> <!-- untranslated -->
