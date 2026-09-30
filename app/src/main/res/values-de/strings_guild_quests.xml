@@ -91,7 +91,7 @@
     <string name="quest_fletching_guild_7_name">Runite Quiver</string> <!-- untranslated -->
     <string name="quest_fletching_guild_8_name">Eiben-Langbögen</string>
     <string name="quest_fletching_guild_9_name">Magische Langbögen</string>
-    <string name="quest_herblore_guild_1_name">Attack Brews</string> <!-- untranslated -->
+    <string name="quest_herblore_guild_1_name">Angriffsgebräu</string>
     <string name="quest_herblore_guild_10_name">Master Herbalist</string> <!-- untranslated -->
     <string name="quest_herblore_guild_2_name">Attack Potions</string> <!-- untranslated -->
     <string name="quest_herblore_guild_3_name">Strength Potions</string> <!-- untranslated -->
@@ -110,7 +110,7 @@
     <string name="quest_mages_guild_6_name">Warlock</string> <!-- untranslated -->
     <string name="quest_mages_guild_7_name">Archmage</string> <!-- untranslated -->
     <string name="quest_mages_guild_8_name">Lich</string> <!-- untranslated -->
-    <string name="quest_mages_guild_9_name">Spellweaver</string> <!-- untranslated -->
+    <string name="quest_mages_guild_9_name">Spruchweber</string>
     <string name="quest_mercantile_guild_1_name">Erster Handel</string>
     <string name="quest_mercantile_guild_10_name">Exchange Master</string> <!-- untranslated -->
     <string name="quest_mercantile_guild_2_name">Aufstebender Händler</string>
@@ -121,7 +121,7 @@
     <string name="quest_mercantile_guild_7_name">Handels Baron</string>
     <string name="quest_mercantile_guild_8_name">Großartiger Händler</string>
     <string name="quest_mercantile_guild_9_name">Legendärer Händler</string>
-    <string name="quest_mining_guild_1_name">Copper Run</string> <!-- untranslated -->
+    <string name="quest_mining_guild_1_name">Kupfer Lauf</string>
     <string name="quest_mining_guild_10_name">Master Miner</string> <!-- untranslated -->
     <string name="quest_mining_guild_2_name">Iron Quota</string> <!-- untranslated -->
     <string name="quest_mining_guild_3_name">Kohleträger</string>
@@ -466,12 +466,12 @@
     <string name="quest_mercantile_daily_7f_name">Grand Trade Reserve</string> <!-- untranslated -->
     <string name="quest_mercantile_daily_7g_name">Elite Routes Reserve</string> <!-- untranslated -->
     <string name="quest_mining_daily_1a_name">Eisen Lieferung</string>
-    <string name="quest_mining_daily_1b_name">Kupfer Quota</string>
+    <string name="quest_mining_daily_1b_name">Kupfer Quote</string>
     <string name="quest_mining_daily_1c_name">Coal Run</string> <!-- untranslated -->
     <string name="quest_mining_daily_1d_name">Tin Supply</string> <!-- untranslated -->
-    <string name="quest_mining_daily_1e_name">Silver Find</string> <!-- untranslated -->
-    <string name="quest_mining_daily_1f_name">Iron Delivery Reserve</string> <!-- untranslated -->
-    <string name="quest_mining_daily_1g_name">Copper Quota Reserve</string> <!-- untranslated -->
+    <string name="quest_mining_daily_1e_name">Silberfund</string>
+    <string name="quest_mining_daily_1f_name">Eisen Reservenlieferung</string>
+    <string name="quest_mining_daily_1g_name">Kupfer Reservenquote</string>
     <string name="quest_mining_daily_4a_name">Mithril Batch</string> <!-- untranslated -->
     <string name="quest_mining_daily_4b_name">Gold Haul</string> <!-- untranslated -->
     <string name="quest_mining_daily_4c_name">Adamantite Run</string> <!-- untranslated -->
