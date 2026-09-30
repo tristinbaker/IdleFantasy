@@ -314,7 +314,7 @@
     <string name="settings_quest_dots">Quest-Punkte für Fähigkeiten</string>
     <string name="settings_quest_dots_desc">Goldenen Punkt auf Fähigkeiten mit offenen Quests anzeigen.</string>
     <string name="settings_monument_touch_indicator">Monument touch indicator</string> <!-- untranslated -->
-    <string name="settings_monument_touch_indicator_desc">Show a dot on the Grand Monument on Home when the daily touch is available</string> <!-- untranslated -->
+    <string name="settings_monument_touch_indicator_desc">Zeigt einen Punkt im Home an der \"Großes Monument\" - Fläche an, wenn die tägliche Belohnung abgeholt werden kann.</string>
     <string name="settings_prestige_notifications">Prestige-Benachrichtigungsabzeichen</string>
     <string name="settings_prestige_notifications_desc">Zeige eine Benachrichtigung, wenn eine Fähigkeit bereit zum Prestige ist.</string>
     <string name="label_switch_character">Charakter wechseln</string>
@@ -1059,7 +1059,7 @@
     <string name="church_activate">Segen empfangen</string>
     <string name="church_blessing_bonus">+%1$s durch Segen</string>
     <!-- Golden Goose pet coin share, split from the blessing line (issue #1941). Pending Weblate translation. -->
-    <string name="pet_coin_bonus">+%1$s from pet</string> <!-- untranslated -->
+    <string name="pet_coin_bonus">+%1$s vom Haustier</string>
     <string name="church_blessing_suffix">durch Segen</string>
     <string name="church_effect_xp">×%1$.2f EP für %2$d Stunden</string>
     <string name="church_effect_def">+%1$d Verteidigung für %2$d Stunden</string>
@@ -1379,11 +1379,11 @@
     <string name="slayer_found_in">Begegnet Euch in: %1$s</string>
     <string name="slayer_requires">Erfordert: %1$s</string>
     <string name="slayer_add_dungeon_to_queue">Verlies zur Warteschlange hinzufügen</string>
-    <string name="slayer_add_all_dungeons_to_queue">Add All Dungeons to Queue</string> <!-- untranslated -->
+    <string name="slayer_add_all_dungeons_to_queue">Füge alle Verliese zur Warteschlange hinzu</string>
     <string name="slayer_queue_added">Zur Warteschlange hinzugefügt: %1$s.</string>
     <string name="slayer_queue_full">Warteschlange ist voll.</string>
-    <string name="slayer_queue_added_many">Added %1$d dungeons to queue.</string> <!-- untranslated -->
-    <string name="slayer_queue_added_partial">Added %1$d of %2$d dungeons to queue.</string> <!-- untranslated -->
+    <string name="slayer_queue_added_many">%1$d der Verliese wurden zur Warteschlange hinzugefügt.</string>
+    <string name="slayer_queue_added_partial">%1$d der %2$d Verliese wurden zur Warteschlange hinzugefügt.</string>
     <string name="slayer_foretell_title">Zukünftige Aufträge vorhersagen</string>
     <string name="slayer_foretell_desc">Reiht kommende Aufträge in diese Warteschlange ein indem Ihr Knochen zahlt. Sie werden automatisch zu Eurem aktuellen Auftrag wenn der jetzige erfüllt wurde.</string>
     <string name="slayer_foretell_queue_empty">Keine Aufträge vorhergesagt.</string>
@@ -1431,7 +1431,7 @@
     <string name="shop_cat_food">Nahrung</string>
     <string name="shop_cat_materials">Materialien</string>
     <string name="shop_cat_misc">Sonstiges</string>
-    <string name="shop_cat_capes">Capes</string> <!-- untranslated -->
+    <string name="shop_cat_capes">Umhänge</string>
 
     <string name="crafting_per_craft">×%1$d pro Herstellung</string>
 
