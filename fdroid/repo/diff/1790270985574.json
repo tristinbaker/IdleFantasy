@@ -60,56 +60,6 @@
           "whatsNew": {
             "en-US": "• Added Slayer and quest icons to Combat dungeons that hold a task or quest target\n• Added a button on the Slayer screen to queue dungeons for all active and foretold tasks\n• Added a Capes section to the Shop to buy back earned capes you no longer own\n• Added a confirmation when activating or extending a Church blessing\n• Added an optional dot on the Grand Monument when the daily touch is ready\n• Added a time remaining countdown to the seasonal event card on Home\n• Added a separate pet line for "
           }
-        },
-        "df60f1f69dd5a3a1d2fff1cedbcd74ee8f43705dc76cf676f7ee9a8cceaa7a33": {
-          "added": 1790270939945,
-          "file": {
-            "name": "/com.tristinbaker.idlefantasy_155000.apk",
-            "sha256": "df60f1f69dd5a3a1d2fff1cedbcd74ee8f43705dc76cf676f7ee9a8cceaa7a33",
-            "size": 10967885
-          },
-          "manifest": {
-            "nativecode": [
-              "arm64-v8a",
-              "armeabi-v7a",
-              "x86",
-              "x86_64"
-            ],
-            "versionName": "1.15.5",
-            "versionCode": 155000,
-            "usesSdk": {
-              "minSdkVersion": 26,
-              "targetSdkVersion": 35
-            },
-            "signer": {
-              "sha256": [
-                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
-              ]
-            },
-            "usesPermission": [
-              {
-                "name": "android.permission.POST_NOTIFICATIONS"
-              },
-              {
-                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
-              },
-              {
-                "name": "android.permission.WAKE_LOCK"
-              },
-              {
-                "name": "android.permission.USE_EXACT_ALARM"
-              },
-              {
-                "name": "android.permission.SCHEDULE_EXACT_ALARM"
-              },
-              {
-                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-              }
-            ]
-          },
-          "whatsNew": {
-            "en-US": "• Added \"Very Large\" text size option between Large and Huge\n• Fixed skill names wrapping character-by-character at large font sizes\n• Fixed abandoning or cancelling crafting sessions refunding more materials than were consumed when preservation bonus was active\n• Fixed Elder Isle pet drops landing in inventory as items instead of registering as pets\n• Fixed Elder Isle combat not tracking kills for the bestiary or collection summary\n• Fixed Elder Isle combat not consuming or showing food, arrows"
-          }
         }
       }
     }
