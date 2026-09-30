@@ -14,7 +14,7 @@
     <string name="skill_firemaking_name">Vuurmaken</string>
     <string name="skill_firemaking_desc">Verbrand houtblokken uit je inventaris om Vuurmaken XP te verdienen. Elk verbrand houtblok produceert ook as, die kan worden verstrooid in de Gebed vaardigheid voor bonus Gebed XP.</string>
     <string name="skill_agility_name">Behendigheid</string>
-    <string name="skill_agility_desc">Train Behendigheid om sessietijden voor alle vaardigheden te verkorten. Level 99 vermindert 20 minuten van het uur (60 min → 40 min), met een vloeiende lineaire vermindering naarmate je hogere levels bereikt.</string>
+    <string name="skill_agility_desc">Train Behendigheid om sessietijden voor alle vaardigheden te verkorten. Level 99 vermindert %1$d minuten van het uur (60 min → %2$d min), met een vloeiende lineaire vermindering naarmate je hogere levels bereikt.</string>
 
     <!-- Crafting skills -->
     <string name="skill_smithing_name">Smeden</string>

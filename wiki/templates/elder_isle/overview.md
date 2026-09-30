@@ -28,7 +28,7 @@ The first time you land, a splash explains what changes. It shows once per chara
 
 ## What to chase
 
-The isle's headline goal is the **8-piece Elder set** ({armor_link}), which is best-in-slot armor for both regions. Every piece consumes 5 **Ancient Sigils** to craft. Sigils drop rarely from every isle enemy, dungeon rare-drop table, and the Last Elder himself.
+The isle's headline goal is the **8-piece Elder set** ({armor_link}), which is best-in-slot armor for both regions. Every piece consumes 5 **Ancient Sigils** to craft. Sigils drop from the isle dungeon rare-drop tables (see {dungeons_link}). Neither raid boss drops them.
 
 Alongside the set, {sigil_link} slot into your Elder gear via the Sigil Embedder for permanent stat bonuses.
 

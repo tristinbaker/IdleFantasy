@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Notification channel metadata ===== -->
+    <string name="notif_channel_sessions_name">Session Alerts</string> <!-- untranslated -->
+    <string name="notif_channel_sessions_desc">Notifications when your skill sessions complete</string> <!-- untranslated -->
+    <string name="notif_channel_farming_name">Farming Alerts</string> <!-- untranslated -->
+    <string name="notif_channel_farming_desc">Notifications when your crops are ready to harvest</string> <!-- untranslated -->
+
+    <!-- ===== Session complete ===== -->
+    <string name="notif_session_complete_title">Session Complete!</string> <!-- untranslated -->
+    <!-- Translator note: %1$s = localised skill name (e.g. "Mining") -->
+    <string name="notif_session_complete_body">Your %1$s session has finished. Tap to collect your rewards.</string> <!-- untranslated -->
+
+    <!-- ===== Buff alerts ===== -->
+    <string name="notif_channel_buffs_name">Buff Alerts</string> <!-- untranslated -->
+    <string name="notif_channel_buffs_desc">Notifications when your active buffs expire</string> <!-- untranslated -->
+    <string name="notif_xp_boost_expired_title">XP Boost Expired</string> <!-- untranslated -->
+    <string name="notif_xp_boost_expired_body">Your 2x XP boost has run out. Visit the marketplace to reactivate.</string> <!-- untranslated -->
+    <string name="notif_blessing_expired_title">Blessing Expired</string> <!-- untranslated -->
+    <string name="notif_blessing_expired_body">Your church blessing has faded. Visit the Church to renew it.</string> <!-- untranslated -->
+
+    <!-- ===== Farming ready ===== -->
+    <string name="notif_farming_ready_title">Crops Ready!</string> <!-- untranslated -->
+    <!-- Translator note: %1$s = localised crop name (e.g. "Wheat"). Adjust grammar as needed for your language. -->
+    <string name="notif_farming_ready_body">Your %1$s is ready to harvest.</string> <!-- untranslated -->
+    <!-- Plural variant used when multiple patches are ready -->
+    <!-- Translator note: %1$d = number of patches ready -->
+    <string name="notif_farming_ready_body_multi">%1$d patches are ready to harvest.</string> <!-- untranslated -->
+</resources>

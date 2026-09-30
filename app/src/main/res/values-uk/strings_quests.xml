@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Quest names and objectives ===== -->
+    <!-- Translator note: quest names are short titles; objectives are action sentences. -->
+
+    <!-- Mining -->
+    <string name="quest_mining_1_name">Mining I</string> <!-- untranslated -->
+    <string name="quest_mining_1_objective">Mine 500 Copper Ore</string> <!-- untranslated -->
+    <string name="quest_mining_2_name">Mining II</string> <!-- untranslated -->
+    <string name="quest_mining_2_objective">Mine 750 Iron Ore</string> <!-- untranslated -->
+    <string name="quest_mining_3_name">Mining III</string> <!-- untranslated -->
+    <string name="quest_mining_3_objective">Mine 1100 Coal</string> <!-- untranslated -->
+    <string name="quest_mining_4_name">Mining IV</string> <!-- untranslated -->
+    <string name="quest_mining_4_objective">Mine 1650 Mithril Ore</string> <!-- untranslated -->
+    <string name="quest_mining_5_name">Mining V</string> <!-- untranslated -->
+    <string name="quest_mining_5_objective">Mine 2450 Adamantite Ore</string> <!-- untranslated -->
+    <string name="quest_mining_6_name">Mining VI</string> <!-- untranslated -->
+    <string name="quest_mining_6_objective">Mine 3650 Runite Ore</string> <!-- untranslated -->
+
+    <!-- Woodcutting -->
+    <string name="quest_woodcutting_1_name">Woodcutting I</string> <!-- untranslated -->
+    <string name="quest_woodcutting_1_objective">Cut 500 Logs</string> <!-- untranslated -->
+    <string name="quest_woodcutting_2_name">Woodcutting II</string> <!-- untranslated -->
+    <string name="quest_woodcutting_2_objective">Cut 750 Oak Logs</string> <!-- untranslated -->
+    <string name="quest_woodcutting_3_name">Woodcutting III</string> <!-- untranslated -->
+    <string name="quest_woodcutting_3_objective">Cut 1100 Willow Logs</string> <!-- untranslated -->
+    <string name="quest_woodcutting_4_name">Woodcutting IV</string> <!-- untranslated -->
+    <string name="quest_woodcutting_4_objective">Cut 1650 Maple Logs</string> <!-- untranslated -->
+    <string name="quest_woodcutting_5_name">Woodcutting V</string> <!-- untranslated -->
+    <string name="quest_woodcutting_5_objective">Cut 2450 Yew Logs</string> <!-- untranslated -->
+    <string name="quest_woodcutting_6_name">Woodcutting VI</string> <!-- untranslated -->
+    <string name="quest_woodcutting_6_objective">Cut 3650 Magic Logs</string> <!-- untranslated -->
+
+    <!-- Fishing -->
+    <string name="quest_fishing_1_name">Fishing I</string> <!-- untranslated -->
+    <string name="quest_fishing_1_objective">Catch 500 fish</string> <!-- untranslated -->
+    <string name="quest_fishing_2_name">Fishing II</string> <!-- untranslated -->
+    <string name="quest_fishing_2_objective">Catch 750 fish</string> <!-- untranslated -->
+    <string name="quest_fishing_3_name">Fishing III</string> <!-- untranslated -->
+    <string name="quest_fishing_3_objective">Catch 1100 fish</string> <!-- untranslated -->
+    <string name="quest_fishing_4_name">Fishing IV</string> <!-- untranslated -->
+    <string name="quest_fishing_4_objective">Catch 1650 fish</string> <!-- untranslated -->
+    <string name="quest_fishing_5_name">Fishing V</string> <!-- untranslated -->
+    <string name="quest_fishing_5_objective">Catch 2450 fish</string> <!-- untranslated -->
+    <string name="quest_fishing_6_name">Fishing VI</string> <!-- untranslated -->
+    <string name="quest_fishing_6_objective">Catch 3650 fish</string> <!-- untranslated -->
+
+    <!-- Smithing -->
+    <string name="quest_smithing_1_name">Smithing I</string> <!-- untranslated -->
+    <string name="quest_smithing_1_objective">Smelt 500 Bronze Bars</string> <!-- untranslated -->
+    <string name="quest_smithing_2_name">Smithing II</string> <!-- untranslated -->
+    <string name="quest_smithing_2_objective">Smelt 750 Iron Bars</string> <!-- untranslated -->
+    <string name="quest_smithing_3_name">Smithing III</string> <!-- untranslated -->
+    <string name="quest_smithing_3_objective">Smelt 1100 Steel Bars</string> <!-- untranslated -->
+    <string name="quest_smithing_4_name">Smithing IV</string> <!-- untranslated -->
+    <string name="quest_smithing_4_objective">Smelt 1650 Mithril Bars</string> <!-- untranslated -->
+    <string name="quest_smithing_5_name">Smithing V</string> <!-- untranslated -->
+    <string name="quest_smithing_5_objective">Smelt 2450 Adamantite Bars</string> <!-- untranslated -->
+    <string name="quest_smithing_6_name">Smithing VI</string> <!-- untranslated -->
+    <string name="quest_smithing_6_objective">Smelt 3650 Runite Bars</string> <!-- untranslated -->
+
+    <!-- Cooking - Fish -->
+    <string name="quest_cooking_fish_1_name">Cooking — Fish I</string> <!-- untranslated -->
+    <string name="quest_cooking_fish_1_objective">Cook 500 fish</string> <!-- untranslated -->
+    <string name="quest_cooking_fish_2_name">Cooking — Fish II</string> <!-- untranslated -->
+    <string name="quest_cooking_fish_2_objective">Cook 750 fish</string> <!-- untranslated -->
+    <string name="quest_cooking_fish_3_name">Cooking — Fish III</string> <!-- untranslated -->
+    <string name="quest_cooking_fish_3_objective">Cook 1100 fish</string> <!-- untranslated -->
+    <string name="quest_cooking_fish_4_name">Cooking — Fish IV</string> <!-- untranslated -->
+    <string name="quest_cooking_fish_4_objective">Cook 1650 fish</string> <!-- untranslated -->
+    <string name="quest_cooking_fish_5_name">Cooking — Fish V</string> <!-- untranslated -->
+    <string name="quest_cooking_fish_5_objective">Cook 2450 fish</string> <!-- untranslated -->
+    <string name="quest_cooking_fish_6_name">Cooking — Fish VI</string> <!-- untranslated -->
+    <string name="quest_cooking_fish_6_objective">Cook 3650 fish</string> <!-- untranslated -->
+
+    <!-- Cooking - Beef -->
+    <string name="quest_cooking_beef_1_name">Cooking — Beef I</string> <!-- untranslated -->
+    <string name="quest_cooking_beef_1_objective">Cook 100 Beef</string> <!-- untranslated -->
+    <string name="quest_cooking_beef_2_name">Cooking — Beef II</string> <!-- untranslated -->
+    <string name="quest_cooking_beef_2_objective">Cook 250 Beef</string> <!-- untranslated -->
+    <string name="quest_cooking_beef_3_name">Cooking — Beef III</string> <!-- untranslated -->
+    <string name="quest_cooking_beef_3_objective">Cook 500 Beef</string> <!-- untranslated -->
+
+    <!-- Cooking - Chicken -->
+    <string name="quest_cooking_chicken_1_name">Cooking — Chicken I</string> <!-- untranslated -->
+    <string name="quest_cooking_chicken_1_objective">Cook 100 Chicken</string> <!-- untranslated -->
+    <string name="quest_cooking_chicken_2_name">Cooking — Chicken II</string> <!-- untranslated -->
+    <string name="quest_cooking_chicken_2_objective">Cook 250 Chicken</string> <!-- untranslated -->
+    <string name="quest_cooking_chicken_3_name">Cooking — Chicken III</string> <!-- untranslated -->
+    <string name="quest_cooking_chicken_3_objective">Cook 500 Chicken</string> <!-- untranslated -->
+
+    <!-- Cooking - Mutton -->
+    <string name="quest_cooking_mutton_1_name">Cooking — Mutton I</string> <!-- untranslated -->
+    <string name="quest_cooking_mutton_1_objective">Cook 100 Mutton</string> <!-- untranslated -->
+    <string name="quest_cooking_mutton_2_name">Cooking — Mutton II</string> <!-- untranslated -->
+    <string name="quest_cooking_mutton_2_objective">Cook 250 Mutton</string> <!-- untranslated -->
+    <string name="quest_cooking_mutton_3_name">Cooking — Mutton III</string> <!-- untranslated -->
+    <string name="quest_cooking_mutton_3_objective">Cook 500 Mutton</string> <!-- untranslated -->
+
+    <!-- Fletching -->
+    <string name="quest_fletching_1_name">Fletching I</string> <!-- untranslated -->
+    <string name="quest_fletching_1_objective">Fletch 500 Bronze Arrows</string> <!-- untranslated -->
+    <string name="quest_fletching_2_name">Fletching II</string> <!-- untranslated -->
+    <string name="quest_fletching_2_objective">Fletch 750 Iron Arrows</string> <!-- untranslated -->
+    <string name="quest_fletching_3_name">Fletching III</string> <!-- untranslated -->
+    <string name="quest_fletching_3_objective">Fletch 1100 Steel Arrows</string> <!-- untranslated -->
+    <string name="quest_fletching_4_name">Fletching IV</string> <!-- untranslated -->
+    <string name="quest_fletching_4_objective">Fletch 1650 Mithril Arrows</string> <!-- untranslated -->
+    <string name="quest_fletching_5_name">Fletching V</string> <!-- untranslated -->
+    <string name="quest_fletching_5_objective">Fletch 2450 Adamantite Arrows</string> <!-- untranslated -->
+    <string name="quest_fletching_6_name">Fletching VI</string> <!-- untranslated -->
+    <string name="quest_fletching_6_objective">Fletch 3650 Runite Arrows</string> <!-- untranslated -->
+
+    <!-- Prayer -->
+    <string name="quest_prayer_1_name">Prayer I</string> <!-- untranslated -->
+    <string name="quest_prayer_1_objective">Bury 500 bones</string> <!-- untranslated -->
+    <string name="quest_prayer_2_name">Prayer II</string> <!-- untranslated -->
+    <string name="quest_prayer_2_objective">Bury 750 bones</string> <!-- untranslated -->
+    <string name="quest_prayer_3_name">Prayer III</string> <!-- untranslated -->
+    <string name="quest_prayer_3_objective">Bury 1100 bones</string> <!-- untranslated -->
+    <string name="quest_prayer_4_name">Prayer IV</string> <!-- untranslated -->
+    <string name="quest_prayer_4_objective">Bury 1650 bones</string> <!-- untranslated -->
+    <string name="quest_prayer_5_name">Prayer V</string> <!-- untranslated -->
+    <string name="quest_prayer_5_objective">Bury 2450 bones</string> <!-- untranslated -->
+    <string name="quest_prayer_6_name">Prayer VI</string> <!-- untranslated -->
+    <string name="quest_prayer_6_objective">Bury 3650 bones</string> <!-- untranslated -->
+
+    <!-- Slayer -->
+    <string name="quest_combat_kills_1_name">Monster Hunter I</string> <!-- untranslated -->
+    <string name="quest_combat_kills_1_objective">Defeat 100 enemies</string> <!-- untranslated -->
+    <string name="quest_combat_kills_2_name">Monster Hunter II</string> <!-- untranslated -->
+    <string name="quest_combat_kills_2_objective">Defeat 150 enemies</string> <!-- untranslated -->
+    <string name="quest_combat_kills_3_name">Monster Hunter III</string> <!-- untranslated -->
+    <string name="quest_combat_kills_3_objective">Defeat 200 enemies</string> <!-- untranslated -->
+    <string name="quest_combat_kills_4_name">Monster Hunter IV</string> <!-- untranslated -->
+    <string name="quest_combat_kills_4_objective">Defeat 300 enemies</string> <!-- untranslated -->
+    <string name="quest_combat_kills_5_name">Monster Hunter V</string> <!-- untranslated -->
+    <string name="quest_combat_kills_5_objective">Defeat 450 enemies</string> <!-- untranslated -->
+    <string name="quest_combat_kills_6_name">Monster Hunter VI</string> <!-- untranslated -->
+    <string name="quest_combat_kills_6_objective">Defeat 650 enemies</string> <!-- untranslated -->
+    <string name="quest_slayer_1_name">Slayer I</string> <!-- untranslated -->
+    <string name="quest_slayer_1_objective">Complete 5 Slayer tasks</string> <!-- untranslated -->
+    <string name="quest_slayer_2_name">Slayer II</string> <!-- untranslated -->
+    <string name="quest_slayer_2_objective">Complete 15 Slayer tasks</string> <!-- untranslated -->
+    <string name="quest_slayer_3_name">Slayer III</string> <!-- untranslated -->
+    <string name="quest_slayer_3_objective">Complete 40 Slayer tasks</string> <!-- untranslated -->
+    <string name="quest_slayer_4_name">Slayer IV</string> <!-- untranslated -->
+    <string name="quest_slayer_4_objective">Complete 100 Slayer tasks</string> <!-- untranslated -->
+    <string name="quest_slayer_5_name">Slayer V</string> <!-- untranslated -->
+    <string name="quest_slayer_5_objective">Complete 250 Slayer tasks</string> <!-- untranslated -->
+    <string name="quest_slayer_6_name">Slayer VI</string> <!-- untranslated -->
+    <string name="quest_slayer_6_objective">Complete 500 Slayer tasks</string> <!-- untranslated -->
+
+    <!-- Dungeon exploration -->
+    <string name="quest_dungeon_farm_1_name">Dungeon Explorer I</string> <!-- untranslated -->
+    <string name="quest_dungeon_farm_1_objective">Complete the Farm dungeon 5 times</string> <!-- untranslated -->
+    <string name="quest_dungeon_goblin_1_name">Dungeon Explorer II</string> <!-- untranslated -->
+    <string name="quest_dungeon_goblin_1_objective">Complete the Goblin Cave 5 times</string> <!-- untranslated -->
+    <string name="quest_dungeon_spider_1_name">Dungeon Explorer III</string> <!-- untranslated -->
+    <string name="quest_dungeon_spider_1_objective">Complete the Spider Den 5 times</string> <!-- untranslated -->
+    <string name="quest_dungeon_bandit_1_name">Dungeon Explorer IV</string> <!-- untranslated -->
+    <string name="quest_dungeon_bandit_1_objective">Complete the Bandit Camp 5 times</string> <!-- untranslated -->
+    <string name="quest_dungeon_undead_1_name">Dungeon Explorer V</string> <!-- untranslated -->
+    <string name="quest_dungeon_undead_1_objective">Complete the Undead Crypt 5 times</string> <!-- untranslated -->
+    <string name="quest_dungeon_fortress_1_name">Dungeon Explorer VI</string> <!-- untranslated -->
+    <string name="quest_dungeon_fortress_1_objective">Complete the Fortress Ruins 5 times</string> <!-- untranslated -->
+    <string name="quest_dungeon_orc_1_name">Dungeon Master I</string> <!-- untranslated -->
+    <string name="quest_dungeon_orc_1_objective">Complete the Orc Stronghold 5 times</string> <!-- untranslated -->
+    <string name="quest_dungeon_volcanic_1_name">Dungeon Master II</string> <!-- untranslated -->
+    <string name="quest_dungeon_volcanic_1_objective">Complete the Volcanic Depths 5 times</string> <!-- untranslated -->
+    <string name="quest_dungeon_dragon_1_name">Dungeon Master III</string> <!-- untranslated -->
+    <string name="quest_dungeon_dragon_1_objective">Complete the Dragon\'s Lair 5 times</string> <!-- untranslated -->
+
+    <!-- Crafting -->
+    <string name="quest_crafting_1_name">Crafting I</string> <!-- untranslated -->
+    <string name="quest_crafting_1_objective">Craft 100 Silver Rings</string> <!-- untranslated -->
+    <string name="quest_crafting_2_name">Crafting II</string> <!-- untranslated -->
+    <string name="quest_crafting_2_objective">Craft 250 Gold Rings</string> <!-- untranslated -->
+    <string name="quest_crafting_3_name">Crafting III</string> <!-- untranslated -->
+    <string name="quest_crafting_3_objective">Craft 500 Platinum Rings</string> <!-- untranslated -->
+    <string name="quest_crafting_4_name">Crafting IV</string> <!-- untranslated -->
+    <string name="quest_crafting_4_objective">Craft 750 Silver Sapphire Rings</string> <!-- untranslated -->
+    <string name="quest_crafting_5_name">Crafting V</string> <!-- untranslated -->
+    <string name="quest_crafting_5_objective">Craft 1000 Gold Sapphire Rings</string> <!-- untranslated -->
+    <string name="quest_crafting_6_name">Crafting VI</string> <!-- untranslated -->
+    <string name="quest_crafting_6_objective">Craft 1500 Platinum Diamond Rings</string> <!-- untranslated -->
+
+    <!-- Monster slayer chains -->
+    <string name="quest_goblin_slayer_1_name">Goblin Slayer I</string> <!-- untranslated -->
+    <string name="quest_goblin_slayer_1_objective">Defeat 50 Goblins</string> <!-- untranslated -->
+    <string name="quest_goblin_slayer_2_name">Goblin Slayer II</string> <!-- untranslated -->
+    <string name="quest_goblin_slayer_2_objective">Defeat 100 Goblins</string> <!-- untranslated -->
+    <string name="quest_spider_slayer_1_name">Spider Slayer I</string> <!-- untranslated -->
+    <string name="quest_spider_slayer_1_objective">Defeat 40 Giant Spiders</string> <!-- untranslated -->
+    <string name="quest_spider_slayer_2_name">Spider Slayer II</string> <!-- untranslated -->
+    <string name="quest_spider_slayer_2_objective">Defeat 80 Giant Spiders</string> <!-- untranslated -->
+    <string name="quest_skeleton_slayer_1_name">Skeleton Slayer I</string> <!-- untranslated -->
+    <string name="quest_skeleton_slayer_1_objective">Defeat 35 Skeletons</string> <!-- untranslated -->
+    <string name="quest_skeleton_slayer_2_name">Skeleton Slayer II</string> <!-- untranslated -->
+    <string name="quest_skeleton_slayer_2_objective">Defeat 70 Skeletons</string> <!-- untranslated -->
+    <string name="quest_bandit_hunter_1_name">Bandit Hunter I</string> <!-- untranslated -->
+    <string name="quest_bandit_hunter_1_objective">Defeat 30 Bandits</string> <!-- untranslated -->
+    <string name="quest_bandit_hunter_2_name">Bandit Hunter II</string> <!-- untranslated -->
+    <string name="quest_bandit_hunter_2_objective">Defeat 60 Bandits</string> <!-- untranslated -->
+    <string name="quest_orc_slayer_1_name">Orc Slayer I</string> <!-- untranslated -->
+    <string name="quest_orc_slayer_1_objective">Defeat 25 Orc Warriors</string> <!-- untranslated -->
+    <string name="quest_orc_slayer_2_name">Orc Slayer II</string> <!-- untranslated -->
+    <string name="quest_orc_slayer_2_objective">Defeat 50 Orc Warriors</string> <!-- untranslated -->
+    <string name="quest_demon_slayer_1_name">Demon Slayer I</string> <!-- untranslated -->
+    <string name="quest_demon_slayer_1_objective">Defeat the Demon Lord</string> <!-- untranslated -->
+    <string name="quest_demon_slayer_2_name">Demon Slayer II</string> <!-- untranslated -->
+    <string name="quest_demon_slayer_2_objective">Defeat the Demon Lord 5 times</string> <!-- untranslated -->
+    <string name="quest_demon_slayer_3_name">Demon Slayer III</string> <!-- untranslated -->
+    <string name="quest_demon_slayer_3_objective">Defeat the Demon Lord 25 times</string> <!-- untranslated -->
+    <string name="quest_dragon_slayer_1_name">Dragon Slayer I</string> <!-- untranslated -->
+    <string name="quest_dragon_slayer_1_objective">Defeat 10 Green Dragons</string> <!-- untranslated -->
+    <string name="quest_dragon_slayer_2_name">Dragon Slayer II</string> <!-- untranslated -->
+    <string name="quest_dragon_slayer_2_objective">Defeat 25 Green Dragons</string> <!-- untranslated -->
+
+    <!-- Combat style challenges -->
+    <string name="quest_melee_warrior_1_name">Melee Warrior I</string> <!-- untranslated -->
+    <string name="quest_melee_warrior_1_objective">Complete the Goblin Cave using only melee</string> <!-- untranslated -->
+    <string name="quest_melee_warrior_2_name">Melee Warrior II</string> <!-- untranslated -->
+    <string name="quest_melee_warrior_2_objective">Complete the Bandit Camp using only melee</string> <!-- untranslated -->
+    <string name="quest_melee_warrior_3_name">Melee Warrior III</string> <!-- untranslated -->
+    <string name="quest_melee_warrior_3_objective">Complete the Fortress Ruins using only melee</string> <!-- untranslated -->
+    <string name="quest_ranger_elite_1_name">Ranger Elite I</string> <!-- untranslated -->
+    <string name="quest_ranger_elite_1_objective">Complete the Goblin Cave using only ranged</string> <!-- untranslated -->
+    <string name="quest_ranger_elite_2_name">Ranger Elite II</string> <!-- untranslated -->
+    <string name="quest_ranger_elite_2_objective">Complete the Bandit Camp using only ranged</string> <!-- untranslated -->
+    <string name="quest_ranger_elite_3_name">Ranger Elite III</string> <!-- untranslated -->
+    <string name="quest_ranger_elite_3_objective">Complete the Fortress Ruins using only ranged</string> <!-- untranslated -->
+    <string name="quest_mage_master_1_name">Mage Master I</string> <!-- untranslated -->
+    <string name="quest_mage_master_1_objective">Complete the Goblin Cave using only magic</string> <!-- untranslated -->
+    <string name="quest_mage_master_2_name">Mage Master II</string> <!-- untranslated -->
+    <string name="quest_mage_master_2_objective">Complete the Bandit Camp using only magic</string> <!-- untranslated -->
+    <string name="quest_mage_master_3_name">Mage Master III</string> <!-- untranslated -->
+    <string name="quest_mage_master_3_objective">Complete the Fortress Ruins using only magic</string> <!-- untranslated -->
+
+    <!-- Iron Stomach (no food) challenges -->
+    <string name="quest_iron_stomach_1_name">Iron Stomach I</string> <!-- untranslated -->
+    <string name="quest_iron_stomach_1_objective">Complete the Spider Den without using food</string> <!-- untranslated -->
+    <string name="quest_iron_stomach_2_name">Iron Stomach II</string> <!-- untranslated -->
+    <string name="quest_iron_stomach_2_objective">Complete the Undead Crypt without using food</string> <!-- untranslated -->
+    <string name="quest_iron_stomach_3_name">Iron Stomach III</string> <!-- untranslated -->
+    <string name="quest_iron_stomach_3_objective">Complete the Orc Stronghold without using food</string> <!-- untranslated -->
+    <string name="quest_iron_stomach_4_name">Iron Stomach IV</string> <!-- untranslated -->
+    <string name="quest_iron_stomach_4_objective">Complete the Dragon\'s Lair without using food</string> <!-- untranslated -->
+
+    <!-- Treasure Hunter -->
+    <string name="quest_treasure_hunter_1_name">Treasure Hunter I</string> <!-- untranslated -->
+    <string name="quest_treasure_hunter_1_objective">Collect 20 Spider Silk from combat</string> <!-- untranslated -->
+    <string name="quest_treasure_hunter_2_name">Treasure Hunter II</string> <!-- untranslated -->
+    <string name="quest_treasure_hunter_2_objective">Collect 10 Goblin Mail from combat</string> <!-- untranslated -->
+    <string name="quest_treasure_hunter_3_name">Treasure Hunter III</string> <!-- untranslated -->
+    <string name="quest_treasure_hunter_3_objective">Collect 5 Demon Horns from combat</string> <!-- untranslated -->
+    <string name="quest_treasure_hunter_4_name">Treasure Hunter IV</string> <!-- untranslated -->
+    <string name="quest_treasure_hunter_4_objective">Collect 3 Dragon Scales from combat</string> <!-- untranslated -->
+
+    <!-- Firemaking -->
+    <string name="quest_firemaking_1_name">Firemaking I</string> <!-- untranslated -->
+    <string name="quest_firemaking_1_objective">Burn 500 Logs</string> <!-- untranslated -->
+    <string name="quest_firemaking_2_name">Firemaking II</string> <!-- untranslated -->
+    <string name="quest_firemaking_2_objective">Burn 750 Oak Logs</string> <!-- untranslated -->
+    <string name="quest_firemaking_3_name">Firemaking III</string> <!-- untranslated -->
+    <string name="quest_firemaking_3_objective">Burn 1100 Willow Logs</string> <!-- untranslated -->
+    <string name="quest_firemaking_4_name">Firemaking IV</string> <!-- untranslated -->
+    <string name="quest_firemaking_4_objective">Burn 1650 Maple Logs</string> <!-- untranslated -->
+    <string name="quest_firemaking_5_name">Firemaking V</string> <!-- untranslated -->
+    <string name="quest_firemaking_5_objective">Burn 2450 Yew Logs</string> <!-- untranslated -->
+    <string name="quest_firemaking_6_name">Firemaking VI</string> <!-- untranslated -->
+    <string name="quest_firemaking_6_objective">Burn 3650 Magic Logs</string> <!-- untranslated -->
+
+    <!-- Runecrafting -->
+    <string name="quest_runecrafting_1_name">Runecrafting I</string> <!-- untranslated -->
+    <string name="quest_runecrafting_1_objective">Craft 500 Air Runes</string> <!-- untranslated -->
+    <string name="quest_runecrafting_2_name">Runecrafting II</string> <!-- untranslated -->
+    <string name="quest_runecrafting_2_objective">Craft 750 Water Runes</string> <!-- untranslated -->
+    <string name="quest_runecrafting_3_name">Runecrafting III</string> <!-- untranslated -->
+    <string name="quest_runecrafting_3_objective">Craft 1100 Earth Runes</string> <!-- untranslated -->
+    <string name="quest_runecrafting_4_name">Runecrafting IV</string> <!-- untranslated -->
+    <string name="quest_runecrafting_4_objective">Craft 1650 Fire Runes</string> <!-- untranslated -->
+    <string name="quest_runecrafting_5_name">Runecrafting V</string> <!-- untranslated -->
+    <string name="quest_runecrafting_5_objective">Craft 2450 Mind Runes</string> <!-- untranslated -->
+    <string name="quest_runecrafting_6_name">Runecrafting VI</string> <!-- untranslated -->
+    <string name="quest_runecrafting_6_objective">Craft 3650 Chaos Runes</string> <!-- untranslated -->
+
+    <!-- Herblore -->
+    <string name="quest_herblore_1_name">Herblore I</string> <!-- untranslated -->
+    <string name="quest_herblore_1_objective">Brew 100 Attack Brews</string> <!-- untranslated -->
+    <string name="quest_herblore_2_name">Herblore II</string> <!-- untranslated -->
+    <string name="quest_herblore_2_objective">Mix 250 Defense Potions</string> <!-- untranslated -->
+    <string name="quest_herblore_3_name">Herblore III</string> <!-- untranslated -->
+    <string name="quest_herblore_3_objective">Mix 500 Strength Potions</string> <!-- untranslated -->
+    <string name="quest_herblore_4_name">Herblore IV</string> <!-- untranslated -->
+    <string name="quest_herblore_4_objective">Mix 750 Ranging Potions</string> <!-- untranslated -->
+    <string name="quest_herblore_5_name">Herblore V</string> <!-- untranslated -->
+    <string name="quest_herblore_5_objective">Mix 1000 Magic Potions</string> <!-- untranslated -->
+    <string name="quest_herblore_6_name">Herblore VI</string> <!-- untranslated -->
+    <string name="quest_herblore_6_objective">Mix 1500 Super Strength Potions</string> <!-- untranslated -->
+
+    <!-- Construction -->
+    <string name="quest_construction_1_name">Construction I</string> <!-- untranslated -->
+    <string name="quest_construction_1_objective">Build 50 Wooden Racks</string> <!-- untranslated -->
+    <string name="quest_construction_2_name">Construction II</string> <!-- untranslated -->
+    <string name="quest_construction_2_objective">Build 50 Oak Tables</string> <!-- untranslated -->
+    <string name="quest_construction_3_name">Construction III</string> <!-- untranslated -->
+    <string name="quest_construction_3_objective">Build 50 Willow Cabinets</string> <!-- untranslated -->
+    <string name="quest_construction_4_name">Construction IV</string> <!-- untranslated -->
+    <string name="quest_construction_4_objective">Build 50 Maple Dressers</string> <!-- untranslated -->
+    <string name="quest_construction_5_name">Construction V</string> <!-- untranslated -->
+    <string name="quest_construction_5_objective">Build 25 Magic Thrones</string> <!-- untranslated -->
+    <string name="quest_construction_upgrade_inn_name">Renovate the Inn</string> <!-- untranslated -->
+    <string name="quest_construction_upgrade_inn_objective">Upgrade the Inn at least once</string> <!-- untranslated -->
+    <string name="quest_construction_upgrade_guild_name">Expand the Guild Hall</string> <!-- untranslated -->
+    <string name="quest_construction_upgrade_guild_objective">Upgrade the Guild Hall at least once</string> <!-- untranslated -->
+    <string name="quest_construction_upgrade_church_name">Restore the Church</string> <!-- untranslated -->
+    <string name="quest_construction_upgrade_church_objective">Upgrade the Church at least once</string> <!-- untranslated -->
+
+    <!-- Thieving -->
+    <string name="quest_thieving_1_name">Thieving I</string> <!-- untranslated -->
+    <string name="quest_thieving_1_objective">Pickpocket 100 Peasants</string> <!-- untranslated -->
+    <string name="quest_thieving_2_name">Thieving II</string> <!-- untranslated -->
+    <string name="quest_thieving_2_objective">Pickpocket 100 Merchants</string> <!-- untranslated -->
+    <string name="quest_thieving_3_name">Thieving III</string> <!-- untranslated -->
+    <string name="quest_thieving_3_objective">Pickpocket 100 Nobles</string> <!-- untranslated -->
+    <string name="quest_thieving_4_name">Thieving IV</string> <!-- untranslated -->
+    <string name="quest_thieving_4_objective">Steal 5 Gold Necklaces</string> <!-- untranslated -->
+    <string name="quest_thieving_5_name">Thieving V</string> <!-- untranslated -->
+    <string name="quest_thieving_5_objective">Pickpocket 50 High Priests</string> <!-- untranslated -->
+
+    <!-- Slayer extended -->
+    <string name="quest_combat_kills_7_name">Monster Hunter VII</string> <!-- untranslated -->
+    <string name="quest_combat_kills_7_objective">Defeat 1000 enemies</string> <!-- untranslated -->
+    <string name="quest_combat_kills_8_name">Monster Hunter VIII</string> <!-- untranslated -->
+    <string name="quest_combat_kills_8_objective">Defeat 1500 enemies</string> <!-- untranslated -->
+    <string name="quest_combat_kills_9_name">Monster Hunter IX</string> <!-- untranslated -->
+    <string name="quest_combat_kills_9_objective">Defeat 2250 enemies</string> <!-- untranslated -->
+    <string name="quest_combat_kills_10_name">Monster Hunter X</string> <!-- untranslated -->
+    <string name="quest_combat_kills_10_objective">Defeat 3400 enemies</string> <!-- untranslated -->
+    <string name="quest_combat_kills_11_name">Monster Hunter XI</string> <!-- untranslated -->
+    <string name="quest_combat_kills_11_objective">Defeat 5100 enemies</string> <!-- untranslated -->
+    <string name="quest_combat_kills_12_name">Monster Hunter XII</string> <!-- untranslated -->
+    <string name="quest_combat_kills_12_objective">Defeat 7650 enemies</string> <!-- untranslated -->
+
+    <!-- New monster slayer chains -->
+    <string name="quest_zombie_slayer_1_name">Zombie Slayer I</string> <!-- untranslated -->
+    <string name="quest_zombie_slayer_1_objective">Defeat 35 Zombies</string> <!-- untranslated -->
+    <string name="quest_zombie_slayer_2_name">Zombie Slayer II</string> <!-- untranslated -->
+    <string name="quest_zombie_slayer_2_objective">Defeat 70 Zombies</string> <!-- untranslated -->
+    <string name="quest_hellhound_slayer_1_name">Hellhound Slayer I</string> <!-- untranslated -->
+    <string name="quest_hellhound_slayer_1_objective">Defeat 25 Hellhounds</string> <!-- untranslated -->
+    <string name="quest_hellhound_slayer_2_name">Hellhound Slayer II</string> <!-- untranslated -->
+    <string name="quest_hellhound_slayer_2_objective">Defeat 50 Hellhounds</string> <!-- untranslated -->
+    <string name="quest_troll_slayer_1_name">Troll Slayer I</string> <!-- untranslated -->
+    <string name="quest_troll_slayer_1_objective">Defeat 20 Mountain Trolls</string> <!-- untranslated -->
+    <string name="quest_troll_slayer_2_name">Troll Slayer II</string> <!-- untranslated -->
+    <string name="quest_troll_slayer_2_objective">Defeat 40 Mountain Trolls</string> <!-- untranslated -->
+    <string name="quest_fire_giant_slayer_1_name">Fire Giant Slayer I</string> <!-- untranslated -->
+    <string name="quest_fire_giant_slayer_1_objective">Defeat 15 Fire Giants</string> <!-- untranslated -->
+    <string name="quest_fire_giant_slayer_2_name">Fire Giant Slayer II</string> <!-- untranslated -->
+    <string name="quest_fire_giant_slayer_2_objective">Defeat 30 Fire Giants</string> <!-- untranslated -->
+    <string name="quest_ancient_guardian_slayer_1_name">Ancient Guardian Slayer I</string> <!-- untranslated -->
+    <string name="quest_ancient_guardian_slayer_1_objective">Defeat 10 Ancient Guardians</string> <!-- untranslated -->
+    <string name="quest_ancient_guardian_slayer_2_name">Ancient Guardian Slayer II</string> <!-- untranslated -->
+    <string name="quest_ancient_guardian_slayer_2_objective">Defeat 20 Ancient Guardians</string> <!-- untranslated -->
+    <string name="quest_lich_slayer_1_name">Lich Slayer I</string> <!-- untranslated -->
+    <string name="quest_lich_slayer_1_objective">Defeat 10 Liches</string> <!-- untranslated -->
+    <string name="quest_lich_slayer_2_name">Lich Slayer II</string> <!-- untranslated -->
+    <string name="quest_lich_slayer_2_objective">Defeat 20 Liches</string> <!-- untranslated -->
+
+    <!-- Dungeon exploration extended -->
+    <string name="quest_dungeon_imp_1_name">Dungeon Explorer VII</string> <!-- untranslated -->
+    <string name="quest_dungeon_imp_1_objective">Complete the Imp Cavern 5 times</string> <!-- untranslated -->
+    <string name="quest_dungeon_infernal_1_name">Dungeon Master IV</string> <!-- untranslated -->
+    <string name="quest_dungeon_infernal_1_objective">Complete the Infernal Stronghold 5 times</string> <!-- untranslated -->
+    <string name="quest_dungeon_ancient_1_name">Dungeon Master V</string> <!-- untranslated -->
+    <string name="quest_dungeon_ancient_1_objective">Complete the Ancient Temple 5 times</string> <!-- untranslated -->
+
+    <!-- Boss extended -->
+    <string name="quest_kbd_slayer_1_objective">Defeat the King Black Dragon</string> <!-- untranslated -->
+    <string name="quest_kbd_slayer_2_objective">Defeat the King Black Dragon 5 times</string> <!-- untranslated -->
+    <string name="quest_kbd_slayer_3_objective">Defeat the King Black Dragon 25 times</string> <!-- untranslated -->
+    <string name="quest_kbd_slayer_4_name">King Black Dragon Slayer IV</string> <!-- untranslated -->
+    <string name="quest_kbd_slayer_4_objective">Defeat the King Black Dragon 50 times</string> <!-- untranslated -->
+    <string name="quest_demon_slayer_4_name">Demon Slayer IV</string> <!-- untranslated -->
+    <string name="quest_demon_slayer_4_objective">Defeat the Demon Lord 50 times</string> <!-- untranslated -->
+    <string name="quest_kraken_killer_1_name">Kraken Killer I</string> <!-- untranslated -->
+    <string name="quest_kraken_killer_1_objective">Defeat the Kraken</string> <!-- untranslated -->
+    <string name="quest_kraken_killer_2_name">Kraken Killer II</string> <!-- untranslated -->
+    <string name="quest_kraken_killer_2_objective">Defeat the Kraken 5 times</string> <!-- untranslated -->
+    <string name="quest_kraken_killer_3_name">Kraken Killer III</string> <!-- untranslated -->
+    <string name="quest_kraken_killer_3_objective">Defeat the Kraken 25 times</string> <!-- untranslated -->
+    <string name="quest_kraken_killer_4_name">Kraken Killer IV</string> <!-- untranslated -->
+    <string name="quest_kraken_killer_4_objective">Defeat the Kraken 50 times</string> <!-- untranslated -->
+    <string name="quest_balrog_bane_1_name">Gothic Ember Bane I</string> <!-- untranslated -->
+    <string name="quest_balrog_bane_1_objective">Defeat the Gothic Ember</string> <!-- untranslated -->
+    <string name="quest_balrog_bane_2_name">Gothic Ember Bane II</string> <!-- untranslated -->
+    <string name="quest_balrog_bane_2_objective">Defeat the Gothic Ember 5 times</string> <!-- untranslated -->
+    <string name="quest_balrog_bane_3_name">Gothic Ember Bane III</string> <!-- untranslated -->
+    <string name="quest_balrog_bane_3_objective">Defeat the Gothic Ember 25 times</string> <!-- untranslated -->
+    <string name="quest_balrog_bane_4_name">Gothic Ember Bane IV</string> <!-- untranslated -->
+    <string name="quest_balrog_bane_4_objective">Defeat the Gothic Ember 50 times</string> <!-- untranslated -->
+    <string name="quest_sovereign_slayer_1_name">Sovereign Slayer I</string> <!-- untranslated -->
+    <string name="quest_sovereign_slayer_1_objective">Defeat the Void Sovereign</string> <!-- untranslated -->
+    <string name="quest_sovereign_slayer_2_name">Sovereign Slayer II</string> <!-- untranslated -->
+    <string name="quest_sovereign_slayer_2_objective">Defeat the Void Sovereign 5 times</string> <!-- untranslated -->
+    <string name="quest_sovereign_slayer_3_name">Sovereign Slayer III</string> <!-- untranslated -->
+    <string name="quest_sovereign_slayer_3_objective">Defeat the Void Sovereign 25 times</string> <!-- untranslated -->
+    <string name="quest_sovereign_slayer_4_name">Sovereign Slayer IV</string> <!-- untranslated -->
+    <string name="quest_sovereign_slayer_4_objective">Defeat the Void Sovereign 50 times</string> <!-- untranslated -->
+
+    <!-- Combat style challenges extended -->
+    <string name="quest_melee_warrior_4_name">Melee Warrior IV</string> <!-- untranslated -->
+    <string name="quest_melee_warrior_4_objective">Complete the Orc Stronghold using only melee</string> <!-- untranslated -->
+    <string name="quest_melee_warrior_5_name">Melee Warrior V</string> <!-- untranslated -->
+    <string name="quest_melee_warrior_5_objective">Complete the Dragon\'s Lair using only melee</string> <!-- untranslated -->
+    <string name="quest_ranger_elite_4_name">Ranger Elite IV</string> <!-- untranslated -->
+    <string name="quest_ranger_elite_4_objective">Complete the Orc Stronghold using only ranged</string> <!-- untranslated -->
+    <string name="quest_ranger_elite_5_name">Ranger Elite V</string> <!-- untranslated -->
+    <string name="quest_ranger_elite_5_objective">Complete the Dragon\'s Lair using only ranged</string> <!-- untranslated -->
+    <string name="quest_mage_master_4_name">Mage Master IV</string> <!-- untranslated -->
+    <string name="quest_mage_master_4_objective">Complete the Orc Stronghold using only magic</string> <!-- untranslated -->
+    <string name="quest_mage_master_5_name">Mage Master V</string> <!-- untranslated -->
+    <string name="quest_mage_master_5_objective">Complete the Dragon\'s Lair using only magic</string> <!-- untranslated -->
+
+    <!-- Iron Stomach extended -->
+    <string name="quest_iron_stomach_5_name">Iron Stomach V</string> <!-- untranslated -->
+    <string name="quest_iron_stomach_5_objective">Complete the Infernal Stronghold without using food</string> <!-- untranslated -->
+    <string name="quest_iron_stomach_6_name">Iron Stomach VI</string> <!-- untranslated -->
+    <string name="quest_iron_stomach_6_objective">Complete the Ancient Temple without using food</string> <!-- untranslated -->
+
+    <!-- Treasure Hunter extended -->
+    <string name="quest_treasure_hunter_5_name">Treasure Hunter V</string> <!-- untranslated -->
+    <string name="quest_treasure_hunter_5_objective">Collect 10 Hellhound Fangs from combat</string> <!-- untranslated -->
+    <string name="quest_treasure_hunter_6_name">Treasure Hunter VI</string> <!-- untranslated -->
+    <string name="quest_treasure_hunter_6_objective">Collect 15 Troll Bones from combat</string> <!-- untranslated -->
+
+    <!-- Daily quest verbs -->
+    <string name="daily_verb_mining">Mine</string> <!-- untranslated -->
+    <string name="daily_verb_fishing">Catch</string> <!-- untranslated -->
+    <string name="daily_verb_woodcutting">Chop</string> <!-- untranslated -->
+    <string name="daily_verb_smithing">Smith</string> <!-- untranslated -->
+    <string name="daily_verb_cooking">Cook</string> <!-- untranslated -->
+    <string name="daily_verb_combat">Defeat</string> <!-- untranslated -->
+
+    <!-- Daily quest names -->
+    <string name="quest_daily_mine_iron_name">Iron Miner</string> <!-- untranslated -->
+    <string name="quest_daily_mine_coal_name">Coal Hauler</string> <!-- untranslated -->
+    <string name="quest_daily_mine_mithril_name">Mithril Prospector</string> <!-- untranslated -->
+    <string name="quest_daily_mine_runite_name">Runite Rush</string> <!-- untranslated -->
+    <string name="quest_daily_fish_salmon_name">Salmon Run</string> <!-- untranslated -->
+    <string name="quest_daily_fish_lobster_name">Lobster Haul</string> <!-- untranslated -->
+    <string name="quest_daily_fish_swordfish_name">Swordfish Hunter</string> <!-- untranslated -->
+    <string name="quest_daily_fish_shark_name">Shark Wrangler</string> <!-- untranslated -->
+    <string name="quest_daily_wc_oak_name">Oak Chopper</string> <!-- untranslated -->
+    <string name="quest_daily_wc_willow_name">Willow Worker</string> <!-- untranslated -->
+    <string name="quest_daily_wc_yew_name">Yew Logger</string> <!-- untranslated -->
+    <string name="quest_daily_wc_magic_name">Magic Lumberjack</string> <!-- untranslated -->
+    <string name="quest_daily_smith_iron_name">Iron Smith</string> <!-- untranslated -->
+    <string name="quest_daily_smith_mithril_name">Mithril Forger</string> <!-- untranslated -->
+    <string name="quest_daily_smith_adamantite_name">Adamantite Artisan</string> <!-- untranslated -->
+    <string name="quest_daily_smith_runite_name">Runite Smelter</string> <!-- untranslated -->
+    <string name="quest_daily_cook_trout_name">Trout Chef</string> <!-- untranslated -->
+    <string name="quest_daily_cook_salmon_name">Salmon Griller</string> <!-- untranslated -->
+    <string name="quest_daily_cook_lobster_name">Lobster Cook</string> <!-- untranslated -->
+    <string name="quest_daily_cook_swordfish_name">Swordfish Cook</string> <!-- untranslated -->
+    <string name="quest_daily_kill_goblin_name">Goblin Slayer</string> <!-- untranslated -->
+    <string name="quest_daily_kill_bandit_name">Bandit Buster</string> <!-- untranslated -->
+    <string name="quest_daily_kill_demon_name">Demon Hunter</string> <!-- untranslated -->
+    <string name="quest_daily_kill_dragon_name">Dragon Slayer</string> <!-- untranslated -->
+
+    <!-- Daily quest objectives — override the generated verb+item text, whose item names
+         read wrong for cooking/fishing (issue #1383: "Cook 20 Cooked Swordfish") -->
+    <string name="quest_daily_mine_iron_objective">Mine 150 iron ore.</string> <!-- untranslated -->
+    <string name="quest_daily_mine_coal_objective">Mine 300 coal.</string> <!-- untranslated -->
+    <string name="quest_daily_mine_mithril_objective">Mine 50 mithril ore.</string> <!-- untranslated -->
+    <string name="quest_daily_mine_runite_objective">Mine 20 runite ore.</string> <!-- untranslated -->
+    <string name="quest_daily_fish_salmon_objective">Catch 120 salmon.</string> <!-- untranslated -->
+    <string name="quest_daily_fish_lobster_objective">Catch 60 lobsters.</string> <!-- untranslated -->
+    <string name="quest_daily_fish_swordfish_objective">Catch 30 swordfish.</string> <!-- untranslated -->
+    <string name="quest_daily_fish_shark_objective">Catch 15 sharks.</string> <!-- untranslated -->
+    <string name="quest_daily_wc_oak_objective">Chop 100 oak logs.</string> <!-- untranslated -->
+    <string name="quest_daily_wc_willow_objective">Chop 70 willow logs.</string> <!-- untranslated -->
+    <string name="quest_daily_wc_yew_objective">Chop 25 yew logs.</string> <!-- untranslated -->
+    <string name="quest_daily_wc_magic_objective">Chop 10 magic logs.</string> <!-- untranslated -->
+    <string name="quest_daily_smith_iron_objective">Smith 40 iron bars.</string> <!-- untranslated -->
+    <string name="quest_daily_smith_mithril_objective">Smith 15 mithril bars.</string> <!-- untranslated -->
+    <string name="quest_daily_smith_adamantite_objective">Smith 10 adamantite bars.</string> <!-- untranslated -->
+    <string name="quest_daily_smith_runite_objective">Smith 5 runite bars.</string> <!-- untranslated -->
+    <string name="quest_daily_cook_trout_objective">Cook 100 trout.</string> <!-- untranslated -->
+    <string name="quest_daily_cook_salmon_objective">Cook 80 salmon.</string> <!-- untranslated -->
+    <string name="quest_daily_cook_lobster_objective">Cook 40 lobsters.</string> <!-- untranslated -->
+    <string name="quest_daily_cook_swordfish_objective">Cook 20 swordfish.</string> <!-- untranslated -->
+    <string name="quest_daily_kill_goblin_objective">Defeat 80 goblins.</string> <!-- untranslated -->
+    <string name="quest_daily_kill_bandit_objective">Defeat 50 bandits.</string> <!-- untranslated -->
+    <string name="quest_daily_kill_demon_objective">Defeat 20 demons.</string> <!-- untranslated -->
+    <string name="quest_daily_kill_dragon_objective">Defeat 10 dragons.</string> <!-- untranslated -->
+
+    <!-- Quest objective verb strings for craft skills -->
+    <string name="daily_verb_crafting">Craft</string> <!-- untranslated -->
+    <string name="daily_verb_firemaking">Burn</string> <!-- untranslated -->
+    <string name="daily_verb_fletching">Fletch</string> <!-- untranslated -->
+    <string name="daily_verb_herblore">Brew</string> <!-- untranslated -->
+    <string name="daily_verb_runecrafting">Craft</string> <!-- untranslated -->
+    <string name="daily_verb_prayer">Bury</string> <!-- untranslated -->
+    <string name="daily_verb_construction">Build</string> <!-- untranslated -->
+    <string name="daily_verb_farming">Harvest</string> <!-- untranslated -->
+
+    <!-- Quest objective format strings -->
+    <string name="quest_obj_gather">%1$s %2$d %3$s</string> <!-- untranslated -->
+    <string name="quest_obj_craft">%1$s %2$d %3$s</string> <!-- untranslated -->
+    <string name="quest_obj_prayer">Bury %1$d bones of any type</string> <!-- untranslated -->
+    <string name="quest_obj_kill">Defeat %1$d enemies</string> <!-- untranslated -->
+    <string name="quest_obj_kill_enemy">Defeat %1$d %2$s</string> <!-- untranslated -->
+    <string name="quest_obj_dungeon">Complete the %1$s %2$d times</string> <!-- untranslated -->
+    <string name="quest_obj_dungeon_once">Complete the %1$s</string> <!-- untranslated -->
+    <string name="quest_obj_boss">Defeat the %1$s %2$d times</string> <!-- untranslated -->
+    <string name="quest_obj_boss_once">Defeat the %1$s</string> <!-- untranslated -->
+    <string name="quest_obj_dungeon_melee_only">Complete %1$s using only melee combat</string> <!-- untranslated -->
+    <string name="quest_obj_dungeon_ranged_only">Complete %1$s using only ranged combat</string> <!-- untranslated -->
+    <string name="quest_obj_dungeon_magic_only">Complete %1$s using only magic combat</string> <!-- untranslated -->
+    <string name="quest_obj_dungeon_no_food">Complete %1$s without using any food</string> <!-- untranslated -->
+    <string name="quest_obj_collect">Collect %1$d %2$s from combat</string> <!-- untranslated -->
+    <string name="quest_obj_slayer_task">Complete %1$d Slayer tasks</string> <!-- untranslated -->
+
+    <string name="skilling_dungeon_shattered_spire_note_1">Charred stone and melted glass for a hundred metres in every direction. Whatever happened here was catastrophic.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_shattered_spire_note_2">A torn page from a research journal: \'The convergence experiment exceeds all projections. We must press on.\'</string> <!-- untranslated -->
+    <string name="skilling_dungeon_shattered_spire_note_3">Arcane matrices etched into the surviving wall sections — a containment circle, poorly designed, clearly overstressed.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_shattered_spire_note_4">A passage has been blasted open downward. Constructs still move in the dark below, following old instructions.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_shattered_spire_note_5">The passage descends into intact chambers beneath the rubble. The Arcane Ruins still function, after a fashion.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_abyssal_lagoon_note_1">The water here has no bottom. Strange lights pulse from impossible depths.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_abyssal_lagoon_note_2">Fish pulled from the deep glow faintly and dissolve within minutes. What fed on them?</string> <!-- untranslated -->
+    <string name="skilling_dungeon_abyssal_lagoon_note_3">A torn map marks this lagoon with a single word: \'DO NOT FISH.\' No explanation is given.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_abyssal_lagoon_note_4">Something rises to the surface and sinks again. Massive. Ancient. Curious.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_abyssal_lagoon_note_5">The dark water parts. The Abyssal Ruins loom below — vast, alien, and ancient beyond reckoning.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_sunken_grotto_note_1">Strange stone pillars rise from the grotto floor, carved with script no living scholar can read.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_sunken_grotto_note_2">The fish scatter without warning — something large passes below.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_sunken_grotto_note_3">A waterlogged journal drifts by: \'The temple they found beneath the water was not abandoned. It was waiting.\'</string> <!-- untranslated -->
+    <string name="skilling_dungeon_sunken_grotto_note_4">A submerged archway pulses with faint ancient light. The current pulls toward it.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_sunken_grotto_note_5">The archway is clear. The Drowned Temple lies beyond — something old watches from within.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_dwarven_depths_note_1">Ancient rune-carved walls pulse faintly. The dwarves who built this place are long gone.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_dwarven_depths_note_2">A colossal forge stands at the passage end, its fires somehow still burning after centuries.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_dwarven_depths_note_3">Iron golems stand dormant in the alcoves. Their eyes flicker as you mine nearby.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_dwarven_depths_note_4">The forge runes are a warning — something was bound here, and it grows restless.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_dwarven_depths_note_5">The golems rise fully to life. The Ancient Forge awakens — its guardians await those brave enough to enter.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_corrupted_canopy_note_1">The trees here bleed shadow where cut. The wood writhes and resists the blade.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_corrupted_canopy_note_2">A shadow beast watches from the canopy. It does not attack — it only observes.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_corrupted_canopy_note_3">Old sanctum stones are visible through the twisted trunks. Something still lives there.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_corrupted_canopy_note_4">The corruption spreads as you work. The canopy hungers for something unnamed.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_corrupted_canopy_note_5">The canopy parts. The Corrupted Sanctum rises from the shadow-wood — its doors open, waiting.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_whispering_grove_note_1">The trees here whisper in a language older than any known tongue.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_whispering_grove_note_2">Stone foundations visible beneath the roots — the remains of something built long before the forest.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_whispering_grove_note_3">A druid\'s warning carved in bark: \'The clearing at the grove\'s heart is not what it was. Stay away.\'</string> <!-- untranslated -->
+    <string name="skilling_dungeon_whispering_grove_note_4">Corrupted vines reach toward you as you chop. The grove resists your presence.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_whispering_grove_note_5">A gap in the canopy reveals ruins at the grove\'s heart. The Ancient Forest Ruins call to be explored.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_thieves_den_note_1">A crumpled ledger page: names, dates, and numbers. Someone has been tracking payments to a person called the Warden.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_thieves_den_note_2">Scratched into the wall: \'For those who prove themselves — the Sanctum awaits. Ask no questions.\'</string> <!-- untranslated -->
+    <string name="skilling_dungeon_thieves_den_note_3">A torn letter warning a member to stay away from the eastern tunnels. No reason is given.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_thieves_den_note_4">A wax-sealed map fragment. The seal is unfamiliar — a shadow behind a locked door.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_thieves_den_note_5">The last passage opens into a vaulted chamber. At the far end, a reinforced door bears the same seal. The Rogue Sanctum lies beyond.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_crumbling_watchtower_note_1">Fresh rope marks on the windowsills. Someone uses this tower regularly.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_crumbling_watchtower_note_2">A hidden cache inside a cracked wall: lockpicks, a short blade, and a coded ledger.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_crumbling_watchtower_note_3">The ledger is a tally of stolen goods and split payments. The rogues operate out of somewhere beneath the hill.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_crumbling_watchtower_note_4">A trapdoor in the floor, recently oiled, its hinges silent. Worn boot prints surround it.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_crumbling_watchtower_note_5">The trapdoor opens onto a carved stairway going deep into the earth. The Shadow Den waits below.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_copper_caverns_note_1">Scratches mark the tunnel walls, too deep and wide for any pickaxe.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_copper_caverns_note_2">Old mining equipment, twisted and bent. Whatever was here left in a hurry.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_copper_caverns_note_3">A miner\'s torn note: \'We broke through to something below. The foreman sealed the lower shaft. He won\'t say why.\'</string> <!-- untranslated -->
+    <string name="skilling_dungeon_copper_caverns_note_4">Tremors from below. Dust falls from the ceiling in slow waves. Something stirs.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_copper_caverns_note_5">The sealed shaft gives way. A vast cavern opens beneath — the Collapsed Mine lies ahead.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_shadow_vault_note_1">A dossier on every major merchant in the city. Someone has been compiling this for years.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_shadow_vault_note_2">A vault door, partially ajar. Inside — crates of stolen weapons, armour, and sealed scroll cases.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_shadow_vault_note_3">One scroll case is different from the others. It bears the seal of the royal treasury. It is empty.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_shadow_vault_note_4">A private journal: \'The Guild of Shadows is not just a guild. It is a government. They have always been watching.\'</string> <!-- untranslated -->
+    <string name="skilling_dungeon_shadow_vault_note_5">The deepest vault is not locked. It is guarded. What waits inside is the Guild\'s greatest secret — and its most dangerous protectors.</string> <!-- untranslated -->
+</resources>

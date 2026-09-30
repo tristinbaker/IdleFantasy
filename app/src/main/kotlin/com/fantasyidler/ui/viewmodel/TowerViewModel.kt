@@ -21,6 +21,7 @@ import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.repository.BoostRepository
 import com.fantasyidler.repository.ChurchRepository
 import com.fantasyidler.repository.blessingPrayerCapeMult
+import com.fantasyidler.repository.FoodReservation
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.GuildRepository
 import com.fantasyidler.repository.PlayerRepository
@@ -94,6 +95,8 @@ class TowerViewModel @Inject constructor(
     private val saveSlotRepo: SaveSlotRepository,
     private val json: Json,
 ) : ViewModel() {
+
+    val potionEffects: Map<String, Map<String, Int>> = gameData.potionEffects
 
     init {
         // Transient loadout picks belong to the character that made them; without this reset
@@ -254,6 +257,9 @@ class TowerViewModel @Inject constructor(
     fun startFloor() {
         viewModelScope.launch {
             if (sessionRepo.getActiveSession() != null) {
+                // No food warning here by design (pre-existing; JD-A-003): tower starts
+                // never warned. The sim input below reserves honestly, and a starved
+                // run simply dies and stops the climb.
                 val player  = playerRepo.getOrCreatePlayer()
                 val agility = (json.decodeFromString<Map<String, Int>>(player.skillLevels))[Skills.AGILITY] ?: 1
                 val flags: PlayerFlags = try { json.decodeFromString(player.flags) } catch (_: Exception) { PlayerFlags() }
@@ -333,9 +339,10 @@ class TowerViewModel @Inject constructor(
                 val preferredArrow  = (_extra.value.selectedArrowKey ?: flags.equippedArrows)?.takeIf { (inventory[it] ?: 0) > 0 }
 
                 val potionKey     = _extra.value.selectedPotionKey
+                    ?: flags.activePotionKey?.takeIf { (inventory[it] ?: 0) > 0 }
                 val potionBonuses = if (potionKey != null && (inventory[potionKey] ?: 0) > 0) {
                     playerRepo.consumeItems(mapOf(potionKey to 1))
-                    gameData.potionEffects[potionKey] ?: emptyMap()
+                    boostRepo.boostedPotionEffects(flags, gameData.potionEffects[potionKey] ?: emptyMap())
                 } else emptyMap()
 
                 val towerHpBonus = flags.towerHpBonus
@@ -343,7 +350,7 @@ class TowerViewModel @Inject constructor(
                 val dungeon    = buildFloorDungeon(floor)
                 val enemies    = scaledEnemies(floor)
                 val foodHeal   = boostRepo.boostedFoodHeal(flags, gameData.foodHealValues)
-                val availableFood   = inventory.filterKeys { it in flags.equippedFood.keys }
+                val availableFood = FoodReservation.available(inventory, flags.equippedFood.keys, sessionRepo.pendingFoodConsumed())
                 val orderedTowerArrowKeys = if (preferredArrow != null)
                     listOf(preferredArrow) + ARROW_TIERS.reversed().filter { it != preferredArrow && (inventory[it] ?: 0) > 0 }
                     else ARROW_TIERS.filter { (inventory[it] ?: 0) > 0 }

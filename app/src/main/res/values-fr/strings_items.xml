@@ -912,12 +912,12 @@
     <string name="item_ring_of_dragons_might_name">Anneau De Puissance des Dragons</string>
     <string name="item_ring_of_flame_name">Anneau De Flammes</string>
     <string name="item_ring_of_recoil_name">Anneau De Retournement</string>
-    <string name="item_ring_of_recoil_desc">Renvoie une partie des dommages subis aux attaquants. Nécessite le niveau 20 en Commerce pour l\'acheter.</string>
+    <string name="item_ring_of_recoil_desc">Un anneau à la bande dentelée et renforcée. Nécessite le niveau 20 en Commerce pour l\'acheter.</string>
     <string name="item_ring_of_suffering_name">Anneau De Souffrance</string>
     <string name="item_ring_of_suffering_desc">Un anneau puissant offrant une défense considérable. Nécessite le niveau 80 en Commerce pour l\'acheter.</string>
     <string name="item_ring_of_the_seas_name">Anneau Des Mers</string>
     <string name="item_ring_of_wealth_name">Anneau De Richesse</string>
-    <string name="item_ring_of_wealth_desc">Augmente légèrement le nombre de pièces obtenues. Nécessite le niveau 40 en Commerce pour l\'acheter.</string>
+    <string name="item_ring_of_wealth_desc">Un anneau orné d\'une gemme violette éclatante. Nécessite le niveau 40 en Commerce pour l\'acheter.</string>
     <string name="item_rock_golem_name">Golem de Pierre</string>
     <string name="item_rogues_lockpick_name">Rossignol des Malfrats</string>
     <string name="item_runecrafting_cape_name">Cape de Gravure de Runes</string>

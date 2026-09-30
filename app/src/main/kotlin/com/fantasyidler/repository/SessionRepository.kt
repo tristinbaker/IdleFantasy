@@ -387,6 +387,29 @@ class SessionRepository @Inject constructor(
     suspend fun getOldestCompletedSession(): SkillSession? =
         sessionDao.getOldestCompletedSession()
 
+    /**
+     * Food already simulated but not yet deducted from inventory, summed over the
+     * whole completed-but-uncollected backlog (collected sessions are deleted, so
+     * the remainder is exactly what collection will still deduct). Every combat
+     * simulation input must subtract this (see [FoodReservation]); reading only
+     * the active session lets queued/offline sessions 2..N simulate against a
+     * phantom full supply (issue #1960).
+     */
+    suspend fun pendingFoodConsumed(): Map<String, Int> {
+        val sessions = try {
+            getAllCompletedSessions()
+        } catch (_: Exception) {
+            return emptyMap()
+        }
+        return FoodReservation.aggregatePending(sessions) { raw ->
+            try {
+                json.decodeFromString<List<SessionFrame>>(raw)
+            } catch (_: Exception) {
+                emptyList()
+            }
+        }
+    }
+
     // ------------------------------------------------------------------
 
     private fun alarmIntent(sessionId: String, skillDisplayName: String): PendingIntent {

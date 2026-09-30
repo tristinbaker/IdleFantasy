@@ -37,6 +37,11 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.NonCancellable
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
@@ -69,6 +74,7 @@ data class SlayerUiState(
     val snackbarMessage: String? = null,
     /** Non-null while the weapon-picker sheet is open before queuing a slayer dungeon. */
     val pendingSlayerDungeonKey: String? = null,
+    val pendingSlayerDungeonKeys: List<String> = emptyList(),
     /** Weapons currently equipped: slot key -> EquipmentData. Used by the weapon picker sheet. */
     val slayerEquippedWeapons: Map<String, EquipmentData> = emptyMap(),
     /** The weapon slot selected in the slayer weapon picker sheet. */
@@ -341,9 +347,48 @@ class SlayerViewModel @Inject constructor(
             val preselect = state.activeWeaponSlot ?: state.slayerEquippedWeapons.keys.firstOrNull()
             _extra.update { it.copy(pendingSlayerDungeonKey = dungeonKey, slayerSelectedWeaponSlot = preselect) }
         } else {
-            doQueueTaskDungeon(dungeonKey, weaponSlot = null)
+            doQueueTaskDungeons(listOf(dungeonKey), weaponSlot = null)
         }
     }
+
+    fun queueAllTaskDungeons() {
+        viewModelScope.launch {
+            val state = uiState.value
+            val flags = playerRepo.getFlags()
+            val dungeonKeys = buildList {
+                if (state.activeTask != null && !state.taskIsStuck) {
+                    (state.taskDungeonKeys.firstOrNull { it in state.unlockedDungeons }
+                        ?: state.taskDungeonKeys.firstOrNull())?.let { add(it) }
+                }
+                state.foretelledTasks.forEach { task ->
+                    foretelledDungeonKey(task, state, flags)?.let { add(it) }
+                }
+            }.let { keys ->
+                if (boostRepo.slayerMultiTaskActive(flags)) keys.distinct() else keys
+            }
+            if (dungeonKeys.isEmpty()) return@launch
+            if (state.slayerEquippedWeapons.size > 1) {
+                _extra.update {
+                    it.copy(
+                        pendingSlayerDungeonKey = dungeonKeys.first(),
+                        pendingSlayerDungeonKeys = dungeonKeys,
+                        slayerSelectedWeaponSlot = state.activeWeaponSlot ?: state.slayerEquippedWeapons.keys.firstOrNull(),
+                    )
+                }
+            } else {
+                doQueueTaskDungeons(dungeonKeys, weaponSlot = null)
+            }
+        }
+    }
+
+    private fun foretelledDungeonKey(task: SlayerTask, state: SlayerUiState, flags: PlayerFlags): String? =
+        gameData.dungeons.entries
+            .filter { (key, dungeon) ->
+                dungeon.enemySpawns.any { it.enemy == task.enemyKey } &&
+                    (key !in gameData.expeditionLockedDungeons || key in state.unlockedDungeons)
+            }
+            .maxByOrNull { (key, _) -> flags.dungeonRuns[key] ?: 0 }
+            ?.key
 
     fun selectSlayerWeapon(slot: String) =
         _extra.update { it.copy(slayerSelectedWeaponSlot = slot) }
@@ -351,74 +396,82 @@ class SlayerViewModel @Inject constructor(
     fun confirmSlayerDungeonQueue() {
         val state = _extra.value
         val dungeonKey = state.pendingSlayerDungeonKey ?: return
-        _extra.update { it.copy(pendingSlayerDungeonKey = null, slayerSelectedWeaponSlot = null) }
-        doQueueTaskDungeon(dungeonKey, state.slayerSelectedWeaponSlot)
+        dismissSlayerDungeonPicker()
+        doQueueTaskDungeons(state.pendingSlayerDungeonKeys.ifEmpty { listOf(dungeonKey) }, state.slayerSelectedWeaponSlot)
     }
 
     fun dismissSlayerDungeonPicker() =
-        _extra.update { it.copy(pendingSlayerDungeonKey = null, slayerSelectedWeaponSlot = null) }
+        _extra.update { it.copy(pendingSlayerDungeonKey = null, pendingSlayerDungeonKeys = emptyList(), slayerSelectedWeaponSlot = null) }
 
-    private fun doQueueTaskDungeon(dungeonKey: String, weaponSlot: String?) {
-        viewModelScope.launch {
-            val state = uiState.value
-            val dungeonName = GameStrings.dungeonName(context, dungeonKey)
-            // Persist an explicit picker choice app-wide like the Combat screen's
-            // selectWeaponSlot does, before reading player state so the queued
-            // snapshot/spell/preview reflect the applied loadout (issue #1617).
-            if (weaponSlot != null) {
-                val priorFlags: PlayerFlags = json.decodeFromString(playerRepo.getOrCreatePlayer().flags)
-                if (priorFlags.activeWeaponSlot != weaponSlot) {
-                    playerRepo.updateFlags(priorFlags.copy(activeWeaponSlot = weaponSlot))
-                    EquipSlot.combatStyleForSlot(weaponSlot)?.let { style -> playerRepo.applyLoadout(style, gameData.equipment) }
+    private fun doQueueTaskDungeons(dungeonKeys: List<String>, weaponSlot: String?) {
+        viewModelScope.launch(start = CoroutineStart.UNDISPATCHED) {
+            // Finish an accepted batch even if navigating back clears this ViewModel.
+            // Dungeon previews simulate combat, so keep this work off the UI thread.
+            withContext(NonCancellable + Dispatchers.Default) {
+                withTimeoutOrNull(10_000L) {
+                    // Persist an explicit picker choice app-wide like the Combat screen's
+                    // selectWeaponSlot does, before reading player state so the queued
+                    // snapshot/spell/preview reflect the applied loadout (issue #1617).
+                    if (weaponSlot != null) {
+                        val priorFlags: PlayerFlags = json.decodeFromString(playerRepo.getOrCreatePlayer().flags)
+                        if (priorFlags.activeWeaponSlot != weaponSlot) {
+                            playerRepo.updateFlags(priorFlags.copy(activeWeaponSlot = weaponSlot))
+                            EquipSlot.combatStyleForSlot(weaponSlot)?.let { style -> playerRepo.applyLoadout(style, gameData.equipment) }
+                        }
+                    }
+                    val player   = playerRepo.getOrCreatePlayer()
+                    val levels: Map<String, Int>       = json.decodeFromString(player.skillLevels)
+                    val agility  = levels[Skills.AGILITY] ?: 1
+                    val flags: PlayerFlags             = json.decodeFromString(player.flags)
+                    val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
+                    val inventory: Map<String, Int>    = json.decodeFromString(player.inventory)
+                    val resolvedWeaponSlot = weaponSlot
+                        ?: flags.activeWeaponSlot
+                        ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
+                        ?: EquipSlot.WEAPON_ATK
+                    val rememberedSpell  = flags.activeSpell?.let { gameData.spells[it] }
+                    val rememberedPotion = flags.activePotionKey?.takeIf { (inventory[it] ?: 0) > 0 }
+                    for (dungeonKey in dungeonKeys) {
+                        val dungeonName = GameStrings.dungeonName(context, dungeonKey)
+                        val previewXp = estimateDungeonPreviewXp(
+                            gameData      = gameData,
+                            boostRepo     = boostRepo,
+                            townRepo      = townRepo,
+                            json          = json,
+                            dungeonKey    = dungeonKey,
+                            weaponSlot    = resolvedWeaponSlot,
+                            equipped      = equipped,
+                            inventory     = inventory,
+                            levels        = levels,
+                            flags         = flags,
+                            selectedSpell = rememberedSpell,
+                            potionKey     = rememberedPotion,
+                            petsJson      = player.pets,
+                        )
+                        val enqueued = playerRepo.enqueueAction(
+                            QueuedAction(
+                                skillName           = "combat",
+                                activityKey         = dungeonKey,
+                                skillDisplayName    = dungeonName,
+                                estimatedDurationMs = SkillSimulator.sessionDurationMs(agility, boostRepo.sessionFloorReductionMin(flags), townRepo.playerSessionDurationMultiplier(flags)),
+                                estimatedXpGain     = previewXp,
+                                equippedSnapshot    = player.equipped,
+                                arrowsKey           = flags.equippedArrows,
+                                spellName           = flags.activeSpell,
+                                potionKey           = flags.activePotionKey,
+                                weaponSlot          = resolvedWeaponSlot,
+                            )
+                        )
+                        if (enqueued) queuedSessionStarter.startNextQueued()
+                        _extra.update {
+                            it.copy(
+                                snackbarMessage = if (enqueued) context.withAppLocale().getString(R.string.slayer_queue_added, dungeonName)
+                                                  else context.withAppLocale().getString(R.string.slayer_queue_full)
+                            )
+                        }
+                        if (!enqueued) break
+                    }
                 }
-            }
-            val player   = playerRepo.getOrCreatePlayer()
-            val levels: Map<String, Int>       = json.decodeFromString(player.skillLevels)
-            val agility  = levels[Skills.AGILITY] ?: 1
-            val flags: PlayerFlags             = json.decodeFromString(player.flags)
-            val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
-            val inventory: Map<String, Int>    = json.decodeFromString(player.inventory)
-            val resolvedWeaponSlot = weaponSlot
-                ?: flags.activeWeaponSlot
-                ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
-                ?: EquipSlot.WEAPON_ATK
-            val rememberedSpell  = flags.activeSpell?.let { gameData.spells[it] }
-            val rememberedPotion = flags.activePotionKey?.takeIf { (inventory[it] ?: 0) > 0 }
-            val previewXp = estimateDungeonPreviewXp(
-                gameData      = gameData,
-                boostRepo     = boostRepo,
-                townRepo      = townRepo,
-                json          = json,
-                dungeonKey    = dungeonKey,
-                weaponSlot    = resolvedWeaponSlot,
-                equipped      = equipped,
-                inventory     = inventory,
-                levels        = levels,
-                flags         = flags,
-                selectedSpell = rememberedSpell,
-                potionKey     = rememberedPotion,
-                petsJson      = player.pets,
-            )
-            val enqueued = playerRepo.enqueueAction(
-                QueuedAction(
-                    skillName           = "combat",
-                    activityKey         = dungeonKey,
-                    skillDisplayName    = dungeonName,
-                    estimatedDurationMs = SkillSimulator.sessionDurationMs(agility, boostRepo.sessionFloorReductionMin(flags), townRepo.playerSessionDurationMultiplier(flags)),
-                    estimatedXpGain     = previewXp,
-                    equippedSnapshot    = player.equipped,
-                    arrowsKey           = flags.equippedArrows,
-                    spellName           = flags.activeSpell,
-                    potionKey           = flags.activePotionKey,
-                    weaponSlot          = resolvedWeaponSlot,
-                )
-            )
-            if (enqueued) queuedSessionStarter.startNextQueued()
-            _extra.update {
-                it.copy(
-                    snackbarMessage = if (enqueued) context.withAppLocale().getString(R.string.slayer_queue_added, dungeonName)
-                                      else context.withAppLocale().getString(R.string.slayer_queue_full)
-                )
             }
         }
     }
@@ -426,18 +479,12 @@ class SlayerViewModel @Inject constructor(
     fun queueForetelledTaskDungeon(task: SlayerTask) {
         viewModelScope.launch {
             val state = uiState.value
-            val dungeonKey = gameData.dungeons.entries
-                .filter { (k, d) ->
-                    d.enemySpawns.any { it.enemy == task.enemyKey } &&
-                    (k !in gameData.expeditionLockedDungeons || k in state.unlockedDungeons)
-                }
-                .maxByOrNull { (k, _) -> playerRepo.getFlags().dungeonRuns[k] ?: 0 }
-                ?.key ?: return@launch
+            val dungeonKey = foretelledDungeonKey(task, state, playerRepo.getFlags()) ?: return@launch
             if (state.slayerEquippedWeapons.size > 1) {
                 val preselect = state.activeWeaponSlot ?: state.slayerEquippedWeapons.keys.firstOrNull()
                 _extra.update { it.copy(pendingSlayerDungeonKey = dungeonKey, slayerSelectedWeaponSlot = preselect) }
             } else {
-                doQueueTaskDungeon(dungeonKey, weaponSlot = null)
+                doQueueTaskDungeons(listOf(dungeonKey), weaponSlot = null)
             }
         }
     }

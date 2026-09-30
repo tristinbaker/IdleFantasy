@@ -912,12 +912,12 @@
     <string name="item_ring_of_dragons_might_name">Кольцо драконьих способностей</string>
     <string name="item_ring_of_flame_name">Кольцо пламени</string>
     <string name="item_ring_of_recoil_name">Кольцо отдачи</string>
-    <string name="item_ring_of_recoil_desc">Возвращает часть полученного урона атакующим. Для покупки требуется Торговля 20-го уровня.</string>
+    <string name="item_ring_of_recoil_desc">Кольцо с зазубренным, укреплённым ободком. Для покупки требуется Торговля 20-го уровня.</string>
     <string name="item_ring_of_suffering_name">Кольцо страданий</string>
     <string name="item_ring_of_suffering_desc">Мощное кольцо, обеспечивающее значительную защиту. Для покупки требуется Торговля 80-го уровня.</string>
     <string name="item_ring_of_the_seas_name">Кольцо морей</string>
     <string name="item_ring_of_wealth_name">Кольцо богатства</string>
-    <string name="item_ring_of_wealth_desc">Немного увеличивается количество выпадающих монет. Для покупки требуется Торговля 40-го уровня.</string>
+    <string name="item_ring_of_wealth_desc">Кольцо с блестящим фиолетовым камнем. Для покупки требуется Торговля 40-го уровня.</string>
     <string name="item_rock_golem_name">Каменный голем</string>
     <string name="item_rogues_lockpick_name">Разбойничья отмычка</string>
     <string name="item_runecrafting_cape_name">Плащ создателя рун</string>

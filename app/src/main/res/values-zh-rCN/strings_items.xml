@@ -912,12 +912,12 @@
     <string name="item_ring_of_dragons_might_name">龙力戒指</string>
     <string name="item_ring_of_flame_name">烈焰戒指</string>
     <string name="item_ring_of_recoil_name">反伤戒指</string>
-    <string name="item_ring_of_recoil_desc">将受到的部分伤害反弹给攻击者。需要商业等级20购买。</string>
+    <string name="item_ring_of_recoil_desc">一枚带有锯齿状加固戒环的戒指。需要商业等级20购买。</string>
     <string name="item_ring_of_suffering_name">苦难戒指</string>
     <string name="item_ring_of_suffering_desc">强大的戒指，提供显著防御。需要商业等级80购买。</string>
     <string name="item_ring_of_the_seas_name">海洋戒指</string>
     <string name="item_ring_of_wealth_name">财富戒指</string>
-    <string name="item_ring_of_wealth_desc">略微增加金币掉落。需要商业等级40购买。</string>
+    <string name="item_ring_of_wealth_desc">一枚镶有闪亮紫色宝石的戒指。需要商业等级40购买。</string>
     <string name="item_rock_golem_name">石魔像</string>
     <string name="item_rogues_lockpick_name">盗贼的开锁器</string>
     <string name="item_runecrafting_cape_name">符文制作披风</string>

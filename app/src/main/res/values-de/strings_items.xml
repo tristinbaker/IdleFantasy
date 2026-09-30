@@ -682,7 +682,7 @@
     <string name="item_ranging_potion_name">Reichweiten-Zaubertrank</string>
     <string name="item_magic_potion_name">Zaubertrank</string>
     <string name="item_super_strength_potion_name">Zaubertrank der Überstärke</string>
-    <string name="item_super_attack_potion_name">Zaubertrank der Spezialangriffs</string>
+    <string name="item_super_attack_potion_name">Zaubertrank des Spezialangriffs</string>
     <string name="item_super_defense_potion_name">Zaubertrank der Spezialverteidigung</string>
     <string name="item_super_ranging_potion_name">Zaubertrank der Entfernung</string>
     <string name="item_super_magic_potion_name">Super-Zaubertrank</string>
@@ -912,12 +912,12 @@
     <string name="item_ring_of_dragons_might_name">Ring der Macht des Drachen</string>
     <string name="item_ring_of_flame_name">Ring der Flamme</string>
     <string name="item_ring_of_recoil_name">Ring des Rückstoßes</string>
-    <string name="item_ring_of_recoil_desc">Wirft einen Teil des genommenen Schadens auf den Angreifer zurück. Zum Kauf ist Handel-Level 20 erforderlich.</string>
+    <string name="item_ring_of_recoil_desc">Ein Ring mit einem gezackten, verstärkten Band. Zum Kauf ist Handel-Level 20 erforderlich.</string>
     <string name="item_ring_of_suffering_name">Ring des Leidens</string>
     <string name="item_ring_of_suffering_desc">Ein starker Ring, der Verteidigung signifikant erhöht. Zum Kauf ist Handel-Level 80 erforderlich.</string>
     <string name="item_ring_of_the_seas_name">Ring der Meere</string>
     <string name="item_ring_of_wealth_name">Ring des Reichtums</string>
-    <string name="item_ring_of_wealth_desc">Erhöht die Anzahl der fallengelassenen Münzen geringfügig. Zum Kauf ist Handel-Level 40 erforderlich.</string>
+    <string name="item_ring_of_wealth_desc">Ein Ring mit einem glänzenden violetten Edelstein. Zum Kauf ist Handel-Level 40 erforderlich.</string>
     <string name="item_rock_golem_name">Steingolem</string>
     <string name="item_rogues_lockpick_name">Gaunerdietrich</string>
     <string name="item_runecrafting_cape_name">Umhang der Runenherstellung</string>

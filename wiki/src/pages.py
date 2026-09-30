@@ -1086,11 +1086,13 @@ def gen_smithing() -> str:
     assert isinstance(recipes, dict)
     equip = load("equipment.json")
     assert isinstance(equip, dict)
-    groups = {"bar": [], "weapon": [], "armour": [], "tool": [], "component": [], "other": []}
+    groups = {"bar": [], "weapon": [], "armour": [], "tool": [], "component": [], "jewelry": [], "other": []}
     for key, r in recipes.items():
         t = r.get("type", "other")
         if t == "equipment":
             g = "weapon" if equip.get(key, {}).get("slot") == "weapon" else "armour"
+        elif t == "armor":
+            g = "armour"
         else:
             g = t if t in groups else "other"
         groups[g].append([item_name(key), r["level_required"], fmt_materials(r["materials"]), fmt_amount(r["xp_per_item"])])
@@ -1099,7 +1101,7 @@ def gen_smithing() -> str:
         log(logging.WARNING, "Some smithing items were in the 'other' group which are not shown on the page")
 
     sections = []
-    order = [("armour", "Armour"), ("bar", "Bars"), ("component", "Components"), ("tool", "Tools"), ("weapon", "Weapons")]
+    order = [("armour", "Armour"), ("bar", "Bars"), ("component", "Components"), ("jewelry", "Jewellery"), ("tool", "Tools"), ("weapon", "Weapons")]
     for group_key, group_name in order:
         rows = sorted(groups[group_key], key=lambda x: x[1])
         if rows:
@@ -1978,6 +1980,8 @@ def gen_buildings() -> str:
                 return STRINGS.get_string(f"town_artisans_workshop_active_bonus", round(amount * 100))
             case "player_session_speed_reduction":
                 return STRINGS.get_string("town_chronos_spire_active_bonus", round(amount * 100))
+            case "dock_built":
+                return STRINGS.get_string(f"town_dock_t{int(amount)}_bonus")
             case _:
                 LOGGER.warn_by_id(f"building_bonus:{bonus}", f"The bonus `{bonus}` was not specially formatted on the buildings page")
                 return f"+{amount} {bonus.replace("_", " ").title()}"
@@ -2012,6 +2016,7 @@ def gen_buildings() -> str:
         "cape_rack": "Enables effects from specific capes even when not equipped.",
         "artisans_workshop": "Allows you to preserve secondary crafting materials such as ashes during crafting.",
         "chronos_spire": "Provides further reductions to the session time (excludes Inn workers).",
+        "dock": f"Unlocks the {link('sea_serpent')} boss. Defeat it to permanently open the voyage to {link('elder_isle_overview', 'Elder Isle')}.",
     }
     # Add title/description to buildings dictionary
     for building_key, data in buildings.items():
@@ -2406,15 +2411,15 @@ _ELDER_PIECE_ROWS = [
 ]
 
 _ISLE_DUNGEONS = [
-    ("beach_and_cliffs", 1,  ["beach_marauder", "beach_leviathan"], "1 guaranteed Ancient Sigil"),
-    ("ancient_forest",   30, ["grove_stalker", "grove_dryad"],       "1 guaranteed Ancient Sigil"),
-    ("volcano_peak",     60, ["ash_beast", "lava_wraith"],           "2 guaranteed Ancient Sigils"),
-    ("abyssal_depths",   85, ["abyssal_horror", "void_seraph"],      "3 guaranteed Ancient Sigils"),
+    ("beach_and_cliffs", 1,  ["beach_marauder", "beach_leviathan"], "40% chance of 1 Ancient Sigil"),
+    ("ancient_forest",   30, ["grove_stalker", "grove_dryad"],       "40% chance of 1 Ancient Sigil"),
+    ("volcano_peak",     60, ["ash_beast", "lava_wraith"],           "80% chance of 1 Ancient Sigil"),
+    ("abyssal_depths",   85, ["abyssal_horror", "void_seraph"],      "1 guaranteed Ancient Sigil, plus a 20% chance of a second"),
 ]
 
 _ISLE_BOSSES = [
-    ("sea_serpent", "Unlock",  "Defeat once to permanently enable Set Sail. Reachable via the Voyage quest at the Dock (Construction 90 required)."),
-    ("last_elder",  "Finale", "Locked until you own all 8 Elder pieces. First kill drops the Ancient Signet and awards Isle Champion; repeat clears drop Ancient Sigils."),
+    ("sea_serpent", "Unlock",  "Defeat once to permanently enable Set Sail. Reachable via the Voyage quest at the Dock (Construction 90 required). 1% chance of a Race Change Token."),
+    ("last_elder",  "Finale", "Locked until you own all 8 Elder pieces. Drops the Ancient Signet on every win (100%), with a 2% chance of the Elder Familiar pet. First kill awards Isle Champion. Drops no Ancient Sigils."),
 ]
 
 

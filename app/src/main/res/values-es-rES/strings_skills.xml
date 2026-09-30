@@ -14,7 +14,7 @@
     <string name="skill_firemaking_name">Hacer fuego</string>
     <string name="skill_firemaking_desc">Quema troncos para ganar XP de Hacer fuego. Cada tronco también produce cenizas que pueden usarse en Plegarias para obtener XP adicional.</string>
     <string name="skill_agility_name">Agilidad</string>
-    <string name="skill_agility_desc">Entrena Agilidad para reducir el tiempo de sesión en todas las habilidades. En nivel 99 reduces 20 minutos de la hora (60 → 40), con una reducción gradual a medida que subes de nivel.</string>
+    <string name="skill_agility_desc">Entrena Agilidad para reducir el tiempo de sesión en todas las habilidades. En nivel 99 reduces %1$d minutos de la hora (60 → %2$d), con una reducción gradual a medida que subes de nivel.</string>
 
     <!-- Crafting skills -->
     <string name="skill_smithing_name">Herrería</string>

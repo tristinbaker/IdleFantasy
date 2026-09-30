@@ -474,7 +474,12 @@ internal fun CombatSessionBanner(
                         val statsAtStart = frames.firstOrNull()?.statsAtStart ?: emptyMap()
                         val bonusParts = if (statsAtStart.isNotEmpty()) {
                             listOf("atk" to atkLabel, "str" to strLabel, "def" to defLabel)
-                                .mapNotNull { (key, label) -> statsAtStart[key]?.let { "$label $it" } }
+                                .mapNotNull { (key, label) ->
+                                    statsAtStart[key]?.let { value ->
+                                        val potion = statsAtStart["${key}_potion"] ?: 0
+                                        "$label ${value - potion}" + if (potion != 0) " (+$potion)" else ""
+                                    }
+                                }
                         } else buildList {
                             if (attackBonus   != 0) add("+$attackBonus $atkLabel")
                             if (strengthBonus != 0) add("+$strengthBonus $strLabel")

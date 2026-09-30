@@ -363,6 +363,15 @@ fun SlayerScreen(
                 }
             }
 
+            Button(
+                onClick  = viewModel::queueAllTaskDungeons,
+                enabled  = state.queueSize < state.maxQueueSize &&
+                    state.foretelledTasks.isNotEmpty(),
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Text(stringResource(R.string.slayer_add_all_dungeons_to_queue))
+            }
+
             Row(
                 modifier              = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -660,6 +669,12 @@ private fun ForetellSection(
     }
 }
 
+/** Builds the shop requirement line (e.g. "Difesa 40") with localized skill names (issue #1888). */
+fun formatSlayerRequirements(reqs: Map<String, Int>, nameOf: (String) -> String): String =
+    reqs.entries.joinToString(", ") { (skill, lvl) ->
+        "${nameOf(skill)} $lvl"
+    }
+
 @Composable
 private fun ShopRow(
     item: ShopItem,
@@ -668,6 +683,7 @@ private fun ShopRow(
     equipData: EquipmentData?,
     onBuy: () -> Unit,
 ) {
+    val context = LocalContext.current
     Row(
         modifier              = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -681,9 +697,9 @@ private fun ShopRow(
             )
             if (equipData != null) {
                 val statParts = buildList {
-                    if (equipData.attackBonus   > 0) add("ATK +${equipData.attackBonus}")
-                    if (equipData.strengthBonus > 0) add("STR +${equipData.strengthBonus}")
-                    if (equipData.defenseBonus  > 0) add("DEF +${equipData.defenseBonus}")
+                    if (equipData.attackBonus   > 0) add(stringResource(R.string.carnival_stat_atk, equipData.attackBonus))
+                    if (equipData.strengthBonus > 0) add(stringResource(R.string.carnival_stat_str, equipData.strengthBonus))
+                    if (equipData.defenseBonus  > 0) add(stringResource(R.string.carnival_stat_def, equipData.defenseBonus))
                 }
                 if (statParts.isNotEmpty()) {
                     Text(
@@ -694,9 +710,7 @@ private fun ShopRow(
                 }
                 val reqs = equipData.requirements
                 if (reqs.isNotEmpty()) {
-                    val reqText = reqs.entries.joinToString(", ") { (skill, lvl) ->
-                        "${skill.replaceFirstChar { it.uppercase() }} $lvl"
-                    }
+                    val reqText = formatSlayerRequirements(reqs) { GameStrings.skillName(context, it) }
                     Text(
                         text  = stringResource(R.string.slayer_requires, reqText),
                         style = MaterialTheme.typography.bodySmall,

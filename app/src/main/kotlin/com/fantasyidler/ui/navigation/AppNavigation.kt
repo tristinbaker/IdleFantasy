@@ -288,7 +288,9 @@ fun AppNavigation(
             ) { entry ->
                 BoundCombatScreen(
                     navController = navController,
-                    startingPage  = entry.arguments?.getString("tab")?.let { CombatTabName.valueOf(it) }
+                    startingPage  = entry.arguments?.let {
+                        NavType.EnumType(CombatTabName::class.java).get(it, "tab")
+                    }
                 )
             }
             paneComposable(

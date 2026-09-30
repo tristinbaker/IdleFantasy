@@ -14,7 +14,7 @@
     <string name="skill_firemaking_name">Ateş Yakma</string>
     <string name="skill_firemaking_desc">Envanterinizdeki kütükleri yakarak Ateş Yakma XP\'si kazanın. Yakılan her kütük aynı zamanda Dua yeteneğinde bonus XP için saçılabilecek küller üretir.</string>
     <string name="skill_agility_name">Çeviklik</string>
-    <string name="skill_agility_desc">Tüm yeteneklerde oturum sürelerini kısaltmak için Çeviklik eğitin. Seviye 99, bir saatten 20 dakika keser (60 dk → 40 dk), seviye atladıkça pürüzsüz doğrusal bir azalma olur.</string>
+    <string name="skill_agility_desc">Tüm yeteneklerde oturum sürelerini kısaltmak için Çeviklik eğitin. Seviye 99, bir saatten %1$d dakika keser (60 dk → %2$d dk), seviye atladıkça pürüzsüz doğrusal bir azalma olur.</string>
 
     <!-- Crafting skills -->
     <string name="skill_smithing_name">Demircilik</string>

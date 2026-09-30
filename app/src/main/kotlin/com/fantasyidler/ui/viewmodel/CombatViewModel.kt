@@ -27,6 +27,7 @@ import com.fantasyidler.repository.BoostRepository
 import com.fantasyidler.repository.ChurchRepository
 import com.fantasyidler.repository.blessingPrayerCapeMult
 import com.fantasyidler.repository.DailyQuestRepository
+import com.fantasyidler.repository.FoodReservation
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.GuildRepository
 import com.fantasyidler.repository.PlayerRepository
@@ -224,6 +225,7 @@ class CombatViewModel @Inject constructor(
     }
 
     private val _extra = MutableStateFlow(CombatUiState())
+    private val _pendingFood = MutableStateFlow<Map<String, Int>>(emptyMap())
     private val _simulatedRatings = MutableStateFlow<Map<String, CombatSimulator.SurvivalRating>>(emptyMap())
     private var simJob: Job? = null
     private var lastSimFingerprint = ""
@@ -241,15 +243,32 @@ class CombatViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            playerRepo.playerFlow.collect { player ->
+            // Refresh on session events too: the backlog changes without touching
+            // the player row (collect deletes sessions, completion grows pending).
+            combine(playerRepo.playerFlow, sessionRepo.activeSessionFlow) { player, _ -> player }.collect { player ->
                 if (player == null) return@collect
-                val fp = buildCombatFingerprint(player)
+                // Pending-aware (issue #1960): ratings and badge inputs must see
+                // the same remainder as real starts.
+                val pendingFood = sessionRepo.pendingFoodConsumed()
+                val fp = buildCombatFingerprint(player, pendingFood)
                 if (fp == lastSimFingerprint) return@collect
                 lastSimFingerprint = fp
                 simJob?.cancel()
                 simJob = viewModelScope.launch(Dispatchers.Default) {
-                    _simulatedRatings.value = simulateAllDungeons(player)
+                    _simulatedRatings.value = simulateAllDungeons(player, pendingFood)
                 }
+            }
+        }
+    }
+
+    init {
+        // Uncollected sessions already spent food the inventory still shows.
+        // Refresh the reservation whenever the player or the active session
+        // changes (collect deletes sessions, completion adds to the backlog),
+        // so every "food left" read below derives from the same source.
+        viewModelScope.launch {
+            combine(playerRepo.playerFlow, sessionRepo.activeSessionFlow) { _, _ -> Unit }.collect {
+                _pendingFood.value = sessionRepo.pendingFoodConsumed()
             }
         }
     }
@@ -259,7 +278,8 @@ class CombatViewModel @Inject constructor(
         sessionRepo.activeSessionFlow,
         _extra,
         _simulatedRatings,
-    ) { player, session, extra, simRatings ->
+        _pendingFood,
+    ) { player, session, extra, simRatings, pendingFood ->
         val combatSession = session?.takeIf { it.skillName == "combat" || it.skillName == "boss" || it.skillName == "tower" }
         if (player == null) {
             extra.copy(combatSession = combatSession)
@@ -308,12 +328,8 @@ class CombatViewModel @Inject constructor(
                 else     -> equippedWeapon?.strengthBonus ?: 0
             }
             val totalDef = armorDef + (equippedWeapon?.defenseBonus  ?: 0)
-            val potionKey = extra.selectedPotionKey ?: flags.activePotionKey
-            val potionBonuses = potionKey?.takeIf { (inventory[it] ?: 0) > 0 }
-                ?.let { boostRepo.boostedPotionEffects(flags, gameData.potionEffects[it] ?: emptyMap()) } ?: emptyMap()
             fun effectiveLevel(skill: String): Int = (levels[skill] ?: 1) +
-                boostRepo.combatStatBonus(skill, flags, levels[skill] ?: 1) +
-                (potionBonuses[skill] ?: 0)
+                boostRepo.combatStatBonus(skill, flags, levels[skill] ?: 1)
             val attackSkill = when (displayStyle) {
                 "ranged" -> Skills.RANGED
                 "magic" -> Skills.MAGIC
@@ -344,9 +360,13 @@ class CombatViewModel @Inject constructor(
                 totalStrengthBonus      = totalStr,
                 totalDefenseBonus       = totalDef,
                 dungeonSurvivalRatings  = simRatings,
-                equippedFood            = flags.equippedFood.keys
-                    .associateWith { inventory[it] ?: 0 }
-                    .filter { (_, qty) -> qty > 0 },
+                // Pending-aware remainder (issue #1960): completed-but-uncollected
+                // sessions already spent food the inventory still shows. Same single
+                // source as every simulation input (FoodReservation.remaining).
+                equippedFood            = FoodReservation.remaining(
+                    flags.equippedFood.keys.associateWith { inventory[it] ?: 0 },
+                    pendingFood,
+                ).filter { (_, qty) -> qty > 0 },
                 availablePotions        = inventory.filterKeys { it in gameData.potionEffects }
                     .filter { (_, qty) -> qty > 0 },
                 dungeonRuns             = flags.dungeonRuns,
@@ -557,6 +577,19 @@ class CombatViewModel @Inject constructor(
                     ?: dungeonFlags.activeWeaponSlot
                     ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
                     ?: EquipSlot.WEAPON
+                // Pending-aware gate (issue #1960, JD-A-001): with any backlog present
+                // every tap lands in this enqueue branch, so the direct-path gate below
+                // can never fire. An exhausted supply shows the existing no-food
+                // warning instead of silently queueing a no-food death run.
+                if (!bypassFoodWarning && !FoodReservation.hasUsableFood(
+                        dungeonFlags.equippedFood.keys,
+                        inventory,
+                        sessionRepo.pendingFoodConsumed(),
+                    )
+                ) {
+                    _extra.update { it.copy(noFoodWarningPending = true, pendingDungeonKey = dungeonKey) }
+                    return@launch
+                }
                 // Falls back to the remembered spell/potion the same way the picker's displayed
                 // selection does (see uiState combine block) -- otherwise the picker shows a
                 // remembered choice as selected while starting silently ignores it (issue #1186).
@@ -610,7 +643,10 @@ class CombatViewModel @Inject constructor(
                 val p   = playerRepo.getOrCreatePlayer()
                 val f: PlayerFlags      = try { json.decodeFromString(p.flags) } catch (_: Exception) { PlayerFlags() }
                 val inv: Map<String, Int> = json.decodeFromString(p.inventory)
-                if (f.equippedFood.keys.none { (inv[it] ?: 0) > 0 }) {
+                // Pending-aware (issue #1960): uncollected sessions already spent
+                // food the inventory still shows; an exhausted supply warns like
+                // having no food instead of starting a silent no-food death run.
+                if (!FoodReservation.hasUsableFood(f.equippedFood.keys, inv, sessionRepo.pendingFoodConsumed())) {
                     _extra.update { it.copy(noFoodWarningPending = true, pendingDungeonKey = dungeonKey) }
                     return@launch
                 }
@@ -693,7 +729,7 @@ class CombatViewModel @Inject constructor(
                     activeSpell = if (combatStyle == "magic" && selectedSpell != null) selectedSpell.name else flags.activeSpell,
                 ))
                 val equippedFoodKeys   = flags.equippedFood.keys
-                val availableFood      = inventory.filterKeys { it in equippedFoodKeys }
+                val availableFood      = FoodReservation.available(inventory, equippedFoodKeys, sessionRepo.pendingFoodConsumed())
                 val foodHealValues     = boostRepo.boostedFoodHeal(flags, gameData.foodHealValues)
 
                 // Arrows: preferred type drains first, then the simulator falls back to other owned tiers
@@ -796,6 +832,9 @@ class CombatViewModel @Inject constructor(
         viewModelScope.launch {
             val repeatCount = _extra.value.selectedBossRepeatCount.coerceIn(1, MAX_BOSS_REPEAT_COUNT)
             if (sessionRepo.getActiveSession() != null) {
+                // No food warning here by design (pre-existing; JD-A-002): boss starts
+                // never warned. The sim input below reserves honestly, and a starved
+                // run simply loses and stops the chain.
                 val bossName     = GameStrings.bossName(context, bossKey)
                 val bossMs       = (gameData.bosses[bossKey]?.durationMinutes ?: 1) * 60_000L
                 val queuedPlayer = playerRepo.getOrCreatePlayer()
@@ -927,7 +966,7 @@ class CombatViewModel @Inject constructor(
                     activeSpell = if (combatStyle == "magic" && selectedSpell != null) selectedSpell.name else flags.activeSpell,
                 ))
                 val equippedFoodKeys  = flags.equippedFood.keys
-                val availableFood     = inventory.filterKeys { it in equippedFoodKeys }
+                val availableFood     = FoodReservation.available(inventory, equippedFoodKeys, sessionRepo.pendingFoodConsumed())
 
                 val bossFrames = CombatSimulator.simulateBoss(
                     boss               = boss,
@@ -958,6 +997,9 @@ class CombatViewModel @Inject constructor(
                     secondChance        = boostRepo.secondChanceActive(flags),
                     mercenaries         = if (boss.raid) mercRepo.combatants(flags) else emptyList(),
                     blockedRareDrops    = HeirloomStats.ownedHeirloomKeys(gameData.equipment, inventory) + sessionRepo.pendingHeirloomKeys(),
+                    potionAttackBonus   = when (combatStyle) { "ranged" -> potionBonuses["ranged"] ?: 0; "magic" -> potionBonuses["magic"] ?: 0; else -> potionBonuses["attack"] ?: 0 },
+                    potionStrengthBonus = when (combatStyle) { "ranged" -> potionBonuses["ranged"] ?: 0; "magic" -> 0; else -> potionBonuses["strength"] ?: 0 },
+                    potionDefenseBonus  = potionBonuses["defense"] ?: 0,
                 )
 
                 val framesJson = json.encodeToString(
@@ -1097,11 +1139,13 @@ class CombatViewModel @Inject constructor(
     // Dungeon survival simulation
     // ------------------------------------------------------------------
 
-    private fun buildCombatFingerprint(player: Player): String {
+    private fun buildCombatFingerprint(player: Player, pending: Map<String, Int> = emptyMap()): String {
         val levels    = try { json.decodeFromString<Map<String, Int>>(player.skillLevels) } catch (_: Exception) { emptyMap() }
         val flags     = try { json.decodeFromString<PlayerFlags>(player.flags) } catch (_: Exception) { PlayerFlags() }
         val inventory = try { json.decodeFromString<Map<String, Int>>(player.inventory) } catch (_: Exception) { emptyMap() }
-        val foodQtys  = flags.equippedFood.keys.sorted().joinToString(",") { "$it=${inventory[it] ?: 0}" }
+        // Pending-aware remainder so badges refresh when the backlog changes.
+        val remaining = FoodReservation.remaining(flags.equippedFood.keys.associateWith { inventory[it] ?: 0 }, pending)
+        val foodQtys  = flags.equippedFood.keys.sorted().joinToString(",") { "$it=${remaining[it] ?: 0}" }
         val combatLevels = listOf(
             Skills.ATTACK, Skills.STRENGTH, Skills.DEFENSE,
             Skills.HITPOINTS, Skills.RANGED, Skills.MAGIC, Skills.AGILITY,
@@ -1109,7 +1153,7 @@ class CombatViewModel @Inject constructor(
         return "$combatLevels|${player.equipped}|${flags.equippedFood}|$foodQtys|${flags.prestigeNodes},${flags.characterRace}|${flags.activeWeaponSlot}|${flags.activeSpell}|${flags.activeBlessingKey}|${flags.activeBlessingExpiresAt}"
     }
 
-    private fun simulateAllDungeons(player: Player): Map<String, CombatSimulator.SurvivalRating> {
+    private fun simulateAllDungeons(player: Player, pending: Map<String, Int> = emptyMap()): Map<String, CombatSimulator.SurvivalRating> {
         val levels    = try { json.decodeFromString<Map<String, Int>>(player.skillLevels) } catch (_: Exception) { emptyMap() }
         val equipped  = try { json.decodeFromString<Map<String, String?>>(player.equipped) } catch (_: Exception) { emptyMap() }
         val flags     = try { json.decodeFromString<PlayerFlags>(player.flags) } catch (_: Exception) { PlayerFlags() }
@@ -1149,7 +1193,8 @@ class CombatViewModel @Inject constructor(
         val activeSpell = flags.activeSpell?.let { gameData.spells[it] }
         val spellMaxHit = if (combatStyle == "magic") activeSpell?.maxHit ?: 0 else 0
 
-        val foodQtys = flags.equippedFood.keys.associateWith { inventory[it] ?: 0 }
+        // Pending-aware estimate input (issue #1960): same source as real starts.
+        val foodQtys = FoodReservation.available(inventory, flags.equippedFood.keys, pending)
 
         val atk     = (levels[Skills.ATTACK]    ?: 1) + boostRepo.combatStatBonus(Skills.ATTACK, flags, levels[Skills.ATTACK] ?: 1)
         val str     = (levels[Skills.STRENGTH]  ?: 1) + boostRepo.combatStatBonus(Skills.STRENGTH, flags, levels[Skills.STRENGTH] ?: 1)

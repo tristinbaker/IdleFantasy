@@ -14,7 +14,7 @@
     <string name="skill_firemaking_name">Firemaking</string>
     <string name="skill_firemaking_desc">Burn logs from your inventory to gain Firemaking XP. Each log burned also produces ashes, which can be scattered in the Prayer skill for bonus Prayer XP.</string>
     <string name="skill_agility_name">Agility</string>
-    <string name="skill_agility_desc">Train Agility to reduce session times across all skills. Level 99 cuts 20 minutes off the hour (60 min → 40 min), with a smooth linear reduction as you level up.</string>
+    <string name="skill_agility_desc">Train Agility to reduce session times across all skills. Level 99 cuts %1$d minutes off the hour (60 min → %2$d min), with a smooth linear reduction as you level up.</string>
 
     <!-- Crafting skills -->
     <string name="skill_smithing_name">Smithing</string>

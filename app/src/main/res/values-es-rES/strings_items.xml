@@ -912,12 +912,12 @@
     <string name="item_ring_of_dragons_might_name">Anillo del Poder de los Dragones</string>
     <string name="item_ring_of_flame_name">Anillo de Llama</string>
     <string name="item_ring_of_recoil_name">Anillo de Retroceso</string>
-    <string name="item_ring_of_recoil_desc">Devuelve parte del daño recibido a los atacantes. Requiere nivel 20 de Mercantil para comprarlo.</string>
+    <string name="item_ring_of_recoil_desc">Un anillo con una banda dentada y reforzada. Requiere nivel 20 de Mercantil para comprarlo.</string>
     <string name="item_ring_of_suffering_name">Anillo de Sufrimiento</string>
     <string name="item_ring_of_suffering_desc">Un anillo poderoso que otorga una defensa considerable. Requiere nivel 80 de Mercantil para comprarlo.</string>
     <string name="item_ring_of_the_seas_name">Anillo de los Mares</string>
     <string name="item_ring_of_wealth_name">Anillo de Riqueza</string>
-    <string name="item_ring_of_wealth_desc">Aumenta levemente las monedas obtenidas. Requiere nivel 40 de Mercantil para comprarlo.</string>
+    <string name="item_ring_of_wealth_desc">Un anillo engastado con una gema púrpura reluciente. Requiere nivel 40 de Mercantil para comprarlo.</string>
     <string name="item_rock_golem_name">Gólem de Roca</string>
     <string name="item_rogues_lockpick_name">Ganzúa del Pícaro</string>
     <string name="item_runecrafting_cape_name">Capa de Creación de Runas</string>

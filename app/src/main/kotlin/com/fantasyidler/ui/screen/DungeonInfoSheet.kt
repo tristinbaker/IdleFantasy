@@ -54,7 +54,6 @@ import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.ui.viewmodel.CombatViewModel.Companion.MAX_DUNGEON_REPEAT_COUNT
 import com.fantasyidler.ui.viewmodel.combatLevelFrom
 import com.fantasyidler.util.GameStrings
-import com.fantasyidler.util.toTitleCase
 
 // ---------------------------------------------------------------------------
 // Dungeon info / start sheet
@@ -232,56 +231,13 @@ internal fun DungeonInfoSheet(
         // Potion picker
         if (availablePotions.isNotEmpty()) {
             Spacer(Modifier.height(12.dp))
-            Text(
-                text  = "Potion",
-                style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            PotionLoadoutPicker(
+                availablePotions  = availablePotions,
+                potionEffects     = potionEffects,
+                selectedPotionKey = selectedPotionKey,
+                context           = context,
+                onPotionSelected  = onPotionSelected,
             )
-            Spacer(Modifier.height(4.dp))
-            val potionOptions = listOf(null) + availablePotions.keys.toList()
-            potionOptions.forEach { key ->
-                val isSelected = selectedPotionKey == key
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable { onPotionSelected(key) }
-                        .padding(vertical = 5.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text       = if (key == null) stringResource(R.string.combat_no_potion)
-                                         else GameStrings.itemName(context, key),
-                            style      = MaterialTheme.typography.bodyMedium,
-                            fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
-                            color      = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface,
-                        )
-                        if (key != null) {
-                            val effectStr = potionEffects[key]?.entries
-                                ?.joinToString(", ") { (stat, bonus) -> "+$bonus ${stat.toTitleCase()}" }
-                            if (effectStr != null) {
-                                Text(
-                                    text  = "($effectStr)",
-                                    style = MaterialTheme.typography.bodySmall,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                )
-                            }
-                        }
-                    }
-                    if (key != null) {
-                        Text(
-                            text  = "×${availablePotions[key]}",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
-                    }
-                    if (isSelected) {
-                        Text("✓", style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold)
-                    }
-                }
-            }
         }
 
         // Run count picker (queue this dungeon N times in one queue slot)

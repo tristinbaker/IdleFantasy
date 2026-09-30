@@ -126,6 +126,7 @@ fun TowerScreen(
                     inventory            = state.inventory,
                     selectedPotionKey    = state.selectedPotionKey,
                     availablePotions     = state.availablePotions,
+                    potionEffects        = viewModel.potionEffects,
                     onPotionSelected     = viewModel::selectPotion,
                     onStart              = viewModel::startFloor,
                     onCollect            = viewModel::collectFloor,
@@ -178,6 +179,7 @@ private fun TowerHeaderCard(
     inventory:            Map<String, Int>,
     selectedPotionKey:    String?,
     availablePotions:     Map<String, Int>,
+    potionEffects:        Map<String, Map<String, Int>>,
     onPotionSelected:     (String?) -> Unit,
     onStart:              () -> Unit,
     onCollect:            () -> Unit,
@@ -288,31 +290,13 @@ private fun TowerHeaderCard(
             // Potion picker
             if (availablePotions.isNotEmpty()) {
                 Spacer(Modifier.height(12.dp))
-                Text(
-                    text  = "Potion",
-                    style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                PotionLoadoutPicker(
+                    availablePotions  = availablePotions,
+                    potionEffects     = potionEffects,
+                    selectedPotionKey = selectedPotionKey,
+                    context           = context,
+                    onPotionSelected  = onPotionSelected,
                 )
-                Spacer(Modifier.height(4.dp))
-                FlowRow(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalArrangement   = Arrangement.spacedBy(4.dp),
-                ) {
-                    val potionOptions = listOf(null) + availablePotions.keys.toList()
-                    potionOptions.forEach { key ->
-                        FilterChip(
-                            selected = key == selectedPotionKey,
-                            onClick  = { onPotionSelected(key) },
-                            label    = {
-                                Text(
-                                    text  = if (key == null) stringResource(R.string.combat_no_potion)
-                                            else "${GameStrings.itemName(context, key)} (${availablePotions[key]})",
-                                    style = MaterialTheme.typography.bodySmall,
-                                )
-                            },
-                        )
-                    }
-                }
             }
 
             Spacer(Modifier.height(12.dp))

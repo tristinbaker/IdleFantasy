@@ -61,7 +61,6 @@ import com.fantasyidler.ui.viewmodel.combatLevelFrom
 import com.fantasyidler.util.formatCoins
 import com.fantasyidler.util.formatXp
 import com.fantasyidler.util.toCountdown
-import com.fantasyidler.util.toTitleCase
 
 // ---------------------------------------------------------------------------
 // Boss info / start sheet
@@ -258,77 +257,14 @@ internal fun BossInfoSheet(
 
         // Potion picker
         if (availablePotions.isNotEmpty()) {
-            val context = LocalContext.current
             Spacer(Modifier.height(12.dp))
-            Text(
-                text  = "Potion",
-                style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            PotionLoadoutPicker(
+                availablePotions  = availablePotions,
+                potionEffects     = potionEffects,
+                selectedPotionKey = selectedPotionKey,
+                context           = context,
+                onPotionSelected  = onPotionSelected,
             )
-            Spacer(Modifier.height(4.dp))
-            val potionOptions = listOf(null) + availablePotions.keys.toList()
-            var potionExpanded by remember { mutableStateOf(false) }
-            ExposedDropdownMenuBox(
-                expanded         = potionExpanded,
-                onExpandedChange = { potionExpanded = it },
-            ) {
-                OutlinedTextField(
-                    value         = if (selectedPotionKey == null) stringResource(R.string.combat_no_potion)
-                                     else GameStrings.itemName(context, selectedPotionKey),
-                    onValueChange = {},
-                    readOnly      = true,
-                    trailingIcon  = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = potionExpanded) },
-                    colors        = ExposedDropdownMenuDefaults.outlinedTextFieldColors(),
-                    singleLine    = true,
-                    modifier      = Modifier.menuAnchor().fillMaxWidth(),
-                )
-                ExposedDropdownMenu(
-                    expanded         = potionExpanded,
-                    onDismissRequest = { potionExpanded = false },
-                ) {
-                    potionOptions.forEach { key ->
-                        DropdownMenuItem(
-                            text = {
-                                Column {
-                                    Row(
-                                        modifier              = Modifier.fillMaxWidth(),
-                                        horizontalArrangement = Arrangement.SpaceBetween,
-                                    ) {
-                                        Text(
-                                            text  = if (key == null) stringResource(R.string.combat_no_potion)
-                                                     else GameStrings.itemName(context, key),
-                                            style = MaterialTheme.typography.bodyMedium,
-                                        )
-                                        if (key != null) {
-                                            Spacer(Modifier.width(8.dp))
-                                            Text(
-                                                text  = "×${availablePotions[key]}",
-                                                style = MaterialTheme.typography.bodySmall,
-                                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                            )
-                                        }
-                                    }
-                                    if (key != null) {
-                                        val effectStr = potionEffects[key]?.entries
-                                            ?.joinToString(", ") { (stat, bonus) -> "+$bonus ${stat.toTitleCase()}" }
-                                        if (effectStr != null) {
-                                            Text(
-                                                text  = effectStr,
-                                                style = MaterialTheme.typography.labelSmall,
-                                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                            )
-                                        }
-                                    }
-                                }
-                            },
-                            onClick = {
-                                onPotionSelected(key)
-                                potionExpanded = false
-                            },
-                        )
-                    }
-                }
-            }
         }
 
         Spacer(Modifier.height(8.dp))

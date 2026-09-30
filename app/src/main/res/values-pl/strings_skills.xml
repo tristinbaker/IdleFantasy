@@ -14,7 +14,7 @@
     <string name="skill_firemaking_name">Rozniecanie Ognia</string>
     <string name="skill_firemaking_desc">Spalaj kłody z ekwipunku, aby zdobywać XP Rozniecania Ognia. Każda spalona kłoda daje też popiół, który można rozsypać w umiejętności Modlitwy dla dodatkowego XP Modlitwy.</string>
     <string name="skill_agility_name">Zwinność</string>
-    <string name="skill_agility_desc">Trenuj Zwinność, aby skrócić czas sesji we wszystkich umiejętnościach. Poziom 99 skraca godzinę o 20 minut (60 min → 40 min), z płynną liniową redukcją wraz ze wzrostem poziomu.</string>
+    <string name="skill_agility_desc">Trenuj Zwinność, aby skrócić czas sesji we wszystkich umiejętnościach. Poziom 99 skraca godzinę o %1$d minut (60 min → %2$d min), z płynną liniową redukcją wraz ze wzrostem poziomu.</string>
 
     <!-- Crafting skills -->
     <string name="skill_smithing_name">Kowalstwo</string>

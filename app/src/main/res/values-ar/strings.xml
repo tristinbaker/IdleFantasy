@@ -471,6 +471,7 @@
 
 
 
+
     <string name="settings_lang_system">System</string> <!-- untranslated -->
     <string name="settings_save_data">Save Data</string> <!-- untranslated -->
     <string name="settings_export">Export Save</string> <!-- untranslated -->
@@ -520,7 +521,7 @@
     <string name="guild_progress_dailies_and_quest">Complete %1$d/%2$d daily requests &amp; quests to advance</string> <!-- untranslated -->
     <string name="guild_progress_dailies_only">Complete %1$d/%2$d daily requests to advance</string> <!-- untranslated -->
     <string name="home_died_message">You died and lost most of your gains.</string> <!-- untranslated -->
-    <string name="home_xp_boost_was_active">2× All skills XP was active</string> <!-- untranslated -->
+    <string name="home_xp_boost_was_active">2× XP boosts were active</string> <!-- untranslated -->
     <string name="home_xp_boost_active">2× All skills XP - %1$s</string> <!-- untranslated -->
     <string name="home_prestige_xp_boost_active">2× %1$s XP - %2$s</string> <!-- untranslated -->
     <string name="boosts_show_more">+%1$d more boosts (tap to show)</string> <!-- untranslated -->
@@ -593,6 +594,7 @@
     <string name="combat_spell_locked">Requires Magic level %1$d</string> <!-- untranslated -->
     <string name="combat_spell_level_met">Magic level %1$d</string> <!-- untranslated -->
     <string name="combat_no_potion">No Potion</string> <!-- untranslated -->
+    <string name="label_potion">Potion</string> <!-- untranslated -->
     <string name="combat_req_level">Required combat level</string> <!-- untranslated -->
     <string name="combat_duration">Duration</string> <!-- untranslated -->
     <!-- Translator note: %1$d = minutes -->
@@ -1370,6 +1372,7 @@
     <string name="slayer_found_in">Found in: %1$s</string> <!-- untranslated -->
     <string name="slayer_requires">Requires: %1$s</string> <!-- untranslated -->
     <string name="slayer_add_dungeon_to_queue">Add Dungeon to Queue</string> <!-- untranslated -->
+    <string name="slayer_add_all_dungeons_to_queue">Add All Dungeons to Queue</string> <!-- untranslated -->
     <string name="slayer_queue_added">Added to queue: %1$s.</string> <!-- untranslated -->
     <string name="slayer_queue_full">Queue is full.</string> <!-- untranslated -->
     <string name="slayer_foretell_title">Foretell Future Tasks</string> <!-- untranslated -->
@@ -1571,6 +1574,8 @@
     <string name="town_artisans_workshop_active_bonus">%1$d%% chance to preserve secondary crafting materials</string> <!-- untranslated -->
     <string name="town_building_chronos_spire_name">Chronos Spire</string> <!-- untranslated -->
     <string name="town_building_dock_name">Dock</string> <!-- untranslated -->
+    <string name="town_dock_no_bonus">Upgrade to sail to new locations</string> <!-- untranslated -->
+    <string name="town_dock_t1_bonus">Unlocks sailing to the Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_title">Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_sail_title">Sail to Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_zone_beach">Beach &amp; Cliffs</string> <!-- untranslated -->
@@ -2009,7 +2014,7 @@
     <string name="monument_not_enough_coins">Not enough coins.</string> <!-- untranslated -->
     <string name="title_patron_of_the_realm_name">Patron of the Realm</string> <!-- untranslated -->
     <string name="title_patron_of_the_realm_requirement">Complete the Grand Monument</string> <!-- untranslated -->
-    <string name="title_isle_champion_name">Isle Champion</string> <!-- untranslated -->
+    <string name="title_isle_champion_name">Champion of the Elder Isle</string> <!-- untranslated -->
     <string name="title_isle_champion_requirement">Defeat the Last Elder on Elder Isle</string> <!-- untranslated -->
     <string name="item_gilded_full_helmet_name">Gilded Full Helmet</string> <!-- untranslated -->
     <string name="item_gilded_platebody_name">Gilded Platebody</string> <!-- untranslated -->

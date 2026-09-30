@@ -116,9 +116,14 @@ object GameStrings {
     fun treeName(context: Context, key: String, fallback: String = key.toTitleCase()): String =
         context.stringByName("tree_${key}_name") ?: fallback
 
+    /** Carnival idle-game name; keys map to `carnival_<key>` (no `_name` suffix, issue #1865). */
+    fun carnivalGameName(context: Context, key: String): String =
+        context.stringByName("carnival_${key}") ?: key.toTitleCase()
+
     /** Localised activity name; each skill keys its activities in a different string domain. */
     fun activityName(context: Context, skillName: String, activityKey: String): String = when (skillName) {
         "combat"      -> dungeonName(context, activityKey)
+        "carnival"    -> carnivalGameName(context, activityKey)
         "boss"        -> bossName(context, activityKey)
         "mercantile"  -> tradeRouteName(context, activityKey)
         "agility"     -> agilityCourse(context, activityKey)

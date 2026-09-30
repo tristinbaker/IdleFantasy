@@ -424,6 +424,7 @@ fun SkillActivitySheet(
                         sessionDurationMs = state.sessionDurationMs,
                         currentXp = state.skillXp[Skills.AGILITY] ?: 0L,
                         efficiency = state.agilityEfficiency,
+                        isIsle = state.onElderIsle,
                         petBoostPct = state.petBoosts[Skills.AGILITY] ?: 0,
                         xpBonusMult = state.xpBonusMult,
                         activeQuests = state.activeQuests,

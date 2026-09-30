@@ -471,6 +471,7 @@
 
 
 
+
     <string name="settings_lang_system">Système</string>
     <string name="settings_save_data">Sauvegarder les données</string>
     <string name="settings_export">Exporter la sauvegarde</string>
@@ -594,6 +595,7 @@
     <string name="combat_spell_locked">Nécessite Magie niveau %1$d</string>
     <string name="combat_spell_level_met">Magie niveau %1$d</string>
     <string name="combat_no_potion">Pas de potion</string>
+    <string name="label_potion">Potion</string> <!-- untranslated -->
     <string name="combat_req_level">Niveau de combat requis</string>
     <string name="combat_duration">Durée</string>
     <!-- Translator note: %1$d = minutes -->
@@ -1371,6 +1373,7 @@
     <string name="slayer_found_in">Trouvé dans : %1$s</string>
     <string name="slayer_requires">Nécessite : %1$s</string>
     <string name="slayer_add_dungeon_to_queue">Ajouter le donjon à la file d\'attente</string>
+    <string name="slayer_add_all_dungeons_to_queue">Add All Dungeons to Queue</string> <!-- untranslated -->
     <string name="slayer_queue_added">Ajouté à la file d\'attente : %1$s.</string>
     <string name="slayer_queue_full">La file d\'attente est pleine.</string>
     <string name="slayer_foretell_title">Anticiper les tâches futures</string>
@@ -1572,6 +1575,8 @@
     <string name="town_artisans_workshop_active_bonus">%1$d%% chance de préserver des matériaux de fabrication secondaires</string>
     <string name="town_building_chronos_spire_name">Flèche du Chrono</string>
     <string name="town_building_dock_name">Dock</string> <!-- untranslated -->
+    <string name="town_dock_no_bonus">Upgrade to sail to new locations</string> <!-- untranslated -->
+    <string name="town_dock_t1_bonus">Unlocks sailing to the Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_title">Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_sail_title">Sail to Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_zone_beach">Beach &amp; Cliffs</string> <!-- untranslated -->
@@ -2010,7 +2015,7 @@
     <string name="monument_not_enough_coins">Pas assez de pièces.</string>
     <string name="title_patron_of_the_realm_name">Mécène du Royaume</string>
     <string name="title_patron_of_the_realm_requirement">Achevez le Grand Monument</string>
-    <string name="title_isle_champion_name">Isle Champion</string> <!-- untranslated -->
+    <string name="title_isle_champion_name">Champion of the Elder Isle</string> <!-- untranslated -->
     <string name="title_isle_champion_requirement">Defeat the Last Elder on Elder Isle</string> <!-- untranslated -->
     <string name="item_gilded_full_helmet_name">Heaume Doré</string>
     <string name="item_gilded_platebody_name">Plastron Doré</string>

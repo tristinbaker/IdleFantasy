@@ -487,6 +487,7 @@
 
 
 
+
     <string name="settings_lang_system">Системный</string>
     <string name="settings_save_data">Сохранение данных</string>
     <string name="settings_export">Экспорт сохранения</string>
@@ -611,6 +612,7 @@
     <string name="combat_spell_locked">Требуется Магия уровня %1$d</string>
     <string name="combat_spell_level_met">Уровень магии %1$d</string>
     <string name="combat_no_potion">Без зелья</string>
+    <string name="label_potion">Potion</string> <!-- untranslated -->
     <string name="combat_req_level">Требуемый боевой уровень</string>
     <string name="combat_duration">Длительность</string>
     <!-- Translator note: %1$d = minutes -->
@@ -1388,6 +1390,7 @@
     <string name="slayer_found_in">Где найти: %1$s</string>
     <string name="slayer_requires">Требуется: %1$s</string>
     <string name="slayer_add_dungeon_to_queue">Добавить подземелье в очередь</string>
+    <string name="slayer_add_all_dungeons_to_queue">Add All Dungeons to Queue</string> <!-- untranslated -->
     <string name="slayer_queue_added">Добавлено в очередь: %1$s.</string>
     <string name="slayer_queue_full">Очередь заполнена.</string>
     <string name="slayer_foretell_title">Предсказать будущую цель</string>
@@ -1593,6 +1596,8 @@
     <string name="town_artisans_workshop_active_bonus">%1$d%% шанс сохранить вторичные материалы для изготовления</string>
     <string name="town_building_chronos_spire_name">Шпиль Хроноса</string>
     <string name="town_building_dock_name">Dock</string> <!-- untranslated -->
+    <string name="town_dock_no_bonus">Upgrade to sail to new locations</string> <!-- untranslated -->
+    <string name="town_dock_t1_bonus">Unlocks sailing to the Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_title">Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_sail_title">Sail to Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_zone_beach">Beach &amp; Cliffs</string> <!-- untranslated -->
@@ -2031,7 +2036,7 @@
     <string name="monument_not_enough_coins">Недостаточно монет.</string>
     <string name="title_patron_of_the_realm_name">Покровитель королевства</string>
     <string name="title_patron_of_the_realm_requirement">Завершите Великий Монумент</string>
-    <string name="title_isle_champion_name">Isle Champion</string> <!-- untranslated -->
+    <string name="title_isle_champion_name">Champion of the Elder Isle</string> <!-- untranslated -->
     <string name="title_isle_champion_requirement">Defeat the Last Elder on Elder Isle</string> <!-- untranslated -->
     <string name="item_gilded_full_helmet_name">Позолоченный шлем</string>
     <string name="item_gilded_platebody_name">Позолоченный нагрудник</string>

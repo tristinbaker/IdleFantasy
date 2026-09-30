@@ -71,6 +71,9 @@ object CombatSimulator {
                 else     -> effStrength + weaponStrengthBonus
             },
             "def" to effDefence,
+            "atk_potion" to when (combatStyle) { "ranged" -> potionBonuses["ranged"] ?: 0; "magic" -> potionBonuses["magic"] ?: 0; else -> potionBonuses["attack"] ?: 0 },
+            "str_potion" to when (combatStyle) { "ranged" -> potionBonuses["ranged"] ?: 0; "magic" -> 0; else -> potionBonuses["strength"] ?: 0 },
+            "def_potion" to (potionBonuses["defense"] ?: 0),
         )
 
         val frames = mutableListOf<SessionFrame>()
@@ -426,6 +429,9 @@ object CombatSimulator {
         mercenaries: List<MercCombatant> = emptyList(),
         /** Rare-drop item keys that must not roll (heirlooms the player already owns). */
         blockedRareDrops: Set<String> = emptySet(),
+        potionAttackBonus: Int = 0,
+        potionStrengthBonus: Int = 0,
+        potionDefenseBonus: Int = 0,
         random: Random = Random.Default,
     ): List<SessionFrame> {
         val speed = attackSpeedSec.coerceIn(1.2, BASE_ATTACK_SPEED_SEC)
@@ -480,6 +486,9 @@ object CombatSimulator {
                 else     -> playerStrength + weaponStrBonus
             },
             "def" to effPlayerDefence,
+            "atk_potion" to potionAttackBonus,
+            "str_potion" to potionStrengthBonus,
+            "def_potion" to potionDefenseBonus,
         )
         val bossHitChance = (when {
             bossEffAtk > effPlayerDefence -> 1.0 - effPlayerDefence / (2.0 * bossEffAtk.coerceAtLeast(1))

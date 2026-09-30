@@ -14,7 +14,7 @@
     <string name="skill_firemaking_name">Fazer Fogueiras</string>
     <string name="skill_firemaking_desc">Queime toras do seu inventário para ganhar XP de Fazer Fogueiras. Cada tora queimada também produz cinzas, que podem ser espalhadas na habilidade de Oração para XP extra de Oração.</string>
     <string name="skill_agility_name">Agilidade</string>
-    <string name="skill_agility_desc">Treine Agilidade para reduzir o tempo de sessão em todas as habilidades. O nível 99 reduz 20 minutos da hora (60 min → 40 min), com uma redução linear suave conforme você sobe de nível.</string>
+    <string name="skill_agility_desc">Treine Agilidade para reduzir o tempo de sessão em todas as habilidades. O nível 99 reduz %1$d minutos da hora (60 min → %2$d min), com uma redução linear suave conforme você sobe de nível.</string>
 
     <!-- Crafting skills -->
     <string name="skill_smithing_name">Ferraria</string>
