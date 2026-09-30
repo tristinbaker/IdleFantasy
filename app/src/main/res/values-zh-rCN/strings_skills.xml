@@ -14,7 +14,7 @@
     <string name="skill_firemaking_name">生火</string>
     <string name="skill_firemaking_desc">焚烧背包中的原木以获得生火经验值。焚烧每根原木还会产生灰烬，可在祈祷技能中撒播以获得额外的祈祷经验值。</string>
     <string name="skill_agility_name">敏捷</string>
-    <string name="skill_agility_desc">训练敏捷可缩短所有技能的训练时间。99级时每小时减少20分钟（60分钟→40分钟），随等级提升线性递减。</string>
+    <string name="skill_agility_desc">训练敏捷可缩短所有技能的训练时间。99级时每小时减少%1$d分钟（60分钟→%2$d分钟），随等级提升线性递减。</string>
 
     <!-- Crafting skills -->
     <string name="skill_smithing_name">锻造</string>

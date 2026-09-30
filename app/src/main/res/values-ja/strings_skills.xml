@@ -14,7 +14,7 @@
     <string name="skill_firemaking_name">火起こし</string>
     <string name="skill_firemaking_desc">所持品から原木を燃やして火起こし経験値（XP）を獲得する。原木を燃やすと灰も生成され、その灰を祈りスキルで撒くことでボーナス祈り経験値（XP）を獲得できる。</string>
     <string name="skill_agility_name">アジリティ</string>
-    <string name="skill_agility_desc">アジリティを鍛えることで、すべてのスキル作業時間を短縮する。レベル99では1時間あたり20分短縮され（60分➔40分）、レベルアップに伴って線形に短縮されていく。</string>
+    <string name="skill_agility_desc">アジリティを鍛えることで、すべてのスキル作業時間を短縮する。レベル99では1時間あたり%1$d分短縮され（60分➔%2$d分）、レベルアップに伴って線形に短縮されていく。</string>
 
     <!-- Crafting skills -->
     <string name="skill_smithing_name">製錬</string>

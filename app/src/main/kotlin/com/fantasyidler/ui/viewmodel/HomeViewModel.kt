@@ -24,6 +24,7 @@ import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.GuildRepository
 import com.fantasyidler.repository.MonumentRepository
 import com.fantasyidler.repository.PlayerRepository
+import com.fantasyidler.repository.predictionXpMult
 import com.fantasyidler.simulator.PrestigeBoosts
 import com.fantasyidler.repository.QuestRepository
 import com.fantasyidler.repository.QueuedSessionStarter
@@ -413,7 +414,8 @@ class HomeViewModel @Inject constructor(
                     val base = json.decodeFromString<List<SessionFrame>>(s.frames).sumOf { it.xpGain.toLong() }
                     // Same multiplier chain collection applies (applySessionResults), so the
                     // card matches the eventual payout and reacts to boosts live (issue #1748).
-                    val boostMult = boostRepo.xpMultiplier(s.skillName, flags, capeMult)
+                    // Isle sessions run at base rates (issue #1930).
+                    val boostMult = predictionXpMult(flags.ironman, s.isElderSession, boostRepo.xpMultiplier(s.skillName, flags, capeMult))
                     if (s.isWorkerSession) (base * s.efficiencyMultiplier * innXpMult * boostMult).toLong()
                     else (base * boostMult).toLong()
                 } catch (_: Exception) { 0L }
@@ -492,7 +494,9 @@ class HomeViewModel @Inject constructor(
                 // prestige included) so previews match the eventual payout (issues #1748, #1790).
                 // Legacy entries (mult 0) are shown as stored.
                 sessionQueue        = flags.sessionQueue.map { a ->
-                    if (a.xpBoostMultAtQueue > 0.0 && a.estimatedXpGain > 0L)
+                    // Isle entries were estimated at base rates; rescaling them with live
+                    // mainland boosts would reintroduce the phantom boost (issue #1930).
+                    if (!a.isElderSession && a.xpBoostMultAtQueue > 0.0 && a.estimatedXpGain > 0L)
                         a.copy(estimatedXpGain = (a.estimatedXpGain * (boostRepo.xpMultiplier(a.skillName, flags, capeMult) / a.xpBoostMultAtQueue)).toLong())
                     else a
                 },
@@ -1397,7 +1401,7 @@ class HomeViewModel @Inject constructor(
                     ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
                     ?: EquipSlot.WEAPON_ATK
             } else null
-            val xpQueueMult = if (flags.ironman) 1.0 else (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * ChurchRepository.xpMultiplier(flags, blessingPrayerCapeMult(player, flags, gameData), gameData.blessings)
+            val xpQueueMult = predictionXpMult(flags.ironman, session.isElderSession, (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * ChurchRepository.xpMultiplier(flags, blessingPrayerCapeMult(player, flags, gameData), gameData.blessings))
             val rawXpGain = frames.sumOf { it.xpGain }
             // The original fight/run count isn't stored on the session itself, only in the
             // repeat-chain flags set when it was first started -- carry it forward so
@@ -1411,6 +1415,7 @@ class HomeViewModel @Inject constructor(
                 skillName           = session.skillName,
                 activityKey         = activityKeyForRepeat,
                 skillDisplayName    = displayName,
+                isElderSession      = session.isElderSession,
                 qty                 = qty,
                 repeatCount         = repeatCount,
                 estimatedDurationMs = session.endsAt - session.startedAt,

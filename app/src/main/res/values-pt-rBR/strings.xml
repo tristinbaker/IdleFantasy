@@ -473,6 +473,7 @@
 
 
 
+
     <string name="settings_lang_system">Sistema</string>
     <string name="settings_save_data">Dados Salvos</string>
     <string name="settings_export">Exportar Salvamento</string>
@@ -595,6 +596,7 @@
     <string name="combat_spell_locked">Requires Magic level %1$d</string> <!-- untranslated -->
     <string name="combat_spell_level_met">Magic level %1$d</string> <!-- untranslated -->
     <string name="combat_no_potion">Sem Poção</string>
+    <string name="label_potion">Potion</string> <!-- untranslated -->
     <string name="combat_req_level">Nível de combate necessário</string>
     <string name="combat_duration">Duração</string>
     <!-- Translator note: %1$d = minutes -->
@@ -1373,6 +1375,7 @@
     <string name="slayer_found_in">Encontrado em: %1$s</string>
     <string name="slayer_requires">Requer: %1$s</string>
     <string name="slayer_add_dungeon_to_queue">Adicionar Masmorra à Fila</string>
+    <string name="slayer_add_all_dungeons_to_queue">Add All Dungeons to Queue</string> <!-- untranslated -->
     <string name="slayer_queue_added">Adicionado à fila: %1$s.</string>
     <string name="slayer_queue_full">A fila está cheia.</string>
     <string name="slayer_foretell_title">Prever Tarefas Futuras</string>
@@ -1574,6 +1577,8 @@
     <string name="town_artisans_workshop_active_bonus">%1$d%% chance to preserve secondary crafting materials</string> <!-- untranslated -->
     <string name="town_building_chronos_spire_name">Chronos Spire</string> <!-- untranslated -->
     <string name="town_building_dock_name">Dock</string> <!-- untranslated -->
+    <string name="town_dock_no_bonus">Upgrade to sail to new locations</string> <!-- untranslated -->
+    <string name="town_dock_t1_bonus">Unlocks sailing to the Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_title">Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_sail_title">Sail to Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_zone_beach">Beach &amp; Cliffs</string> <!-- untranslated -->

@@ -912,12 +912,12 @@
     <string name="item_ring_of_dragons_might_name">Ring Of Dragons Might</string>
     <string name="item_ring_of_flame_name">Ring Of Flame</string>
     <string name="item_ring_of_recoil_name">Ring Of Recoil</string>
-    <string name="item_ring_of_recoil_desc">Returns a portion of damage taken to attackers. Requires Mercantile level 20 to purchase.</string>
+    <string name="item_ring_of_recoil_desc">A ring with a jagged, reinforced band. Requires Mercantile level 20 to purchase.</string>
     <string name="item_ring_of_suffering_name">Ring Of Suffering</string>
     <string name="item_ring_of_suffering_desc">A powerful ring that grants significant defense. Requires Mercantile level 80 to purchase.</string>
     <string name="item_ring_of_the_seas_name">Ring Of The Seas</string>
     <string name="item_ring_of_wealth_name">Ring Of Wealth</string>
-    <string name="item_ring_of_wealth_desc">Increases coin drops slightly. Requires Mercantile level 40 to purchase.</string>
+    <string name="item_ring_of_wealth_desc">A ring set with a lustrous purple gem. Requires Mercantile level 40 to purchase.</string>
     <string name="item_rock_golem_name">Rock Golem</string>
     <string name="item_rogues_lockpick_name">Rogue\'s Lockpick</string>
     <string name="item_runecrafting_cape_name">Runecrafting Cape</string>

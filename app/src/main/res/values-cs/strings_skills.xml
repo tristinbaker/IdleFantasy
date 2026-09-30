@@ -14,7 +14,7 @@
     <string name="skill_firemaking_name">Uhlířství</string>
     <string name="skill_firemaking_desc">Spaluj polena z inventáře a získávej XP z uhlířství. Z každého spáleného polena navíc vznikne popel, který můžeš v dovednosti Zbožnost rozprášit a získat tak bonusové XP zbožnosti.</string>
     <string name="skill_agility_name">Agility</string> <!-- untranslated -->
-    <string name="skill_agility_desc">Trénuj hbitost, aby se zkrátila délka střetnutí ve všech dovednostech. Na 99. úrovni zkrátíš každou hodinu o 20 minut (60 min → 40 min); zkracování probíhá plynule a lineárně s každou dosaženou úrovní.</string>
+    <string name="skill_agility_desc">Trénuj hbitost, aby se zkrátila délka střetnutí ve všech dovednostech. Na 99. úrovni zkrátíš každou hodinu o %1$d minut (60 min → %2$d min); zkracování probíhá plynule a lineárně s každou dosaženou úrovní.</string>
 
     <!-- Crafting skills -->
     <string name="skill_smithing_name">Kovářství</string>

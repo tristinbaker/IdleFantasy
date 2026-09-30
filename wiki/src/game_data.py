@@ -275,8 +275,21 @@ def skill_name(skill: str) -> str:
     return _standard_string_resolution(skill, "skill_{}_name", "skill_name", "skill", "strings_skills.xml")
 
 
-def skill_desc(skill: str) -> str:
-    return _standard_string_resolution(skill, "skill_{}_desc", "skill_desc", "skill", "strings_skills.xml", "description", "")
+_SKILL_DESC_DEFAULT_ARGS: dict[str, tuple] = {
+    "agility": (20, 40),
+}
+
+
+def skill_desc(skill: str, *args) -> str:
+    key = f"skill_{skill}_desc"
+    if key not in STRINGS:
+        LOGGER.warn_by_id(
+            f"skill_desc:{skill}",
+            default_warning(skill, "skill", "strings_skills.xml", "description"),
+        )
+        return ""
+    format_args = args if args else _SKILL_DESC_DEFAULT_ARGS.get(skill, ())
+    return STRINGS.get_string(key, *format_args)
 
 
 def slot_name(slot: str) -> str:

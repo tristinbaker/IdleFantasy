@@ -4,8 +4,10 @@ import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
@@ -28,6 +30,7 @@ import com.fantasyidler.R
 import com.fantasyidler.data.json.EquipmentData
 import com.fantasyidler.data.json.SpellData
 import com.fantasyidler.util.GameStrings
+import com.fantasyidler.util.toTitleCase
 
 // ---------------------------------------------------------------------------
 // Arrow/spell pickers for the active combat style, shown inline in the Combat
@@ -258,6 +261,86 @@ internal fun FoodOrderPicker(
                     contentPadding = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
                     text = { Text(stringResource(label)) },
                     onClick = { onFoodOrderChanged(order); expanded = false },
+                )
+            }
+        }
+    }
+}
+
+/** Shared potion picker for Boss/Dungeon/Tower start sheets — a plain dropdown, no in-place preview. */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+internal fun PotionLoadoutPicker(
+    availablePotions: Map<String, Int>,
+    potionEffects: Map<String, Map<String, Int>>,
+    selectedPotionKey: String?,
+    context: Context,
+    onPotionSelected: (String?) -> Unit,
+) {
+    if (availablePotions.isEmpty()) return
+    var expanded by remember { mutableStateOf(false) }
+    Text(
+        text     = stringResource(R.string.label_potion),
+        style    = MaterialTheme.typography.labelMedium,
+        color    = MaterialTheme.colorScheme.onSurfaceVariant,
+        modifier = Modifier.padding(vertical = 4.dp),
+    )
+    val potionOptions = listOf(null) + availablePotions.keys.toList()
+    ExposedDropdownMenuBox(
+        expanded         = expanded,
+        onExpandedChange = { expanded = it },
+    ) {
+        OutlinedTextField(
+            value         = if (selectedPotionKey == null) stringResource(R.string.combat_no_potion)
+                             else GameStrings.itemName(context, selectedPotionKey),
+            onValueChange = {},
+            readOnly      = true,
+            trailingIcon  = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+            colors        = ExposedDropdownMenuDefaults.outlinedTextFieldColors(),
+            singleLine    = true,
+            modifier      = Modifier.menuAnchor().fillMaxWidth(),
+        )
+        ExposedDropdownMenu(
+            expanded         = expanded,
+            onDismissRequest = { expanded = false },
+        ) {
+            potionOptions.forEach { key ->
+                DropdownMenuItem(
+                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
+                    text = {
+                        Column {
+                            Row(
+                                modifier              = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                            ) {
+                                Text(
+                                    text  = if (key == null) stringResource(R.string.combat_no_potion)
+                                             else GameStrings.itemName(context, key),
+                                    style = MaterialTheme.typography.bodyMedium,
+                                )
+                                if (key != null) {
+                                    Spacer(Modifier.width(8.dp))
+                                    Text(
+                                        text  = "×${availablePotions[key]}",
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    )
+                                }
+                            }
+                            if (key != null) {
+                                val effectStr = potionEffects[key]?.entries
+                                    ?.joinToString(", ") { (stat, bonus) -> "+$bonus ${stat.toTitleCase()}" }
+                                if (effectStr != null) {
+                                    Text(
+                                        text  = effectStr,
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    )
+                                }
+                            }
+                        }
+                    },
+                    onClick = { onPotionSelected(key); expanded = false },
                 )
             }
         }

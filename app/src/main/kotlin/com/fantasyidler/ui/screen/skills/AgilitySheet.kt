@@ -35,6 +35,7 @@ internal fun AgilitySheet(
     petBoostPct: Int = 0,
     xpBonusMult: Float = 1f,
     activeQuests: Map<String, List<QuestIndicator>> = emptyMap(),
+    isIsle: Boolean = false,
     onSelect: (String) -> Unit,
 ) {
     val context = LocalContext.current
@@ -46,8 +47,10 @@ internal fun AgilitySheet(
             style    = MaterialTheme.typography.titleMedium,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
         )
+        val agilityCutMin = if (isIsle) 15 else 20
+        val agilityFloorMin = if (isIsle) 45 else 40
         Text(
-            text     = stringResource(R.string.skill_agility_desc),
+            text     = stringResource(R.string.skill_agility_desc, agilityCutMin, agilityFloorMin),
             style    = MaterialTheme.typography.bodySmall,
             color    = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 4.dp),

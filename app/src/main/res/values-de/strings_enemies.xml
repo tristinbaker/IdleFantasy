@@ -155,7 +155,7 @@
     <string name="dungeon_arcane_ruins_name">Arkane Ruinen</string>
     <string name="dungeon_arcane_ruins_desc">Die funktionalen unterirdischen Kammern eines zerstörten Zaubererturms. Magische Konstrukte und verzauberte Wächter patrouillieren noch immer durch die Hallen.</string>
     <string name="dungeon_corrupted_sanctum_name">Verdorbenes Heiligtum</string>
-    <string name="dungeon_corrupted_sanctum_desc">Ein schattendurchtränktes Heiligtum im Herzen des verdorbenen Waldes. Dunkle Priester und verdorbene Bestien bewachen ein altes Böses.</string>
+    <string name="dungeon_corrupted_sanctum_desc">Ein schattendurchtränktes Heiligtum im Herzen des verdorbenen Kronendaches. Dunkle Priester und verdorbene Bestien bewachen ein altes Böses.</string>
     <string name="dungeon_drowned_temple_name">Versunkener Tempel</string>
     <string name="dungeon_drowned_temple_desc">Ein versunkener Tempel unter einer Meereshöhle, dessen Hallen mit Wasser gefüllt sind und von allerlei Meereskreaturen heimgesucht werden.</string>
     <string name="dungeon_rogue_sanctum_name">Gaunersanktum</string>
@@ -184,8 +184,8 @@
     <string name="dungeon_abyssal_depths_desc">A flooded pressure-chamber at the foot of the isle, where the Last Elder waits. Abyssal horrors and void seraphs patrol the approach. Three Ancient Sigils per clear.</string> <!-- untranslated -->
 
     <!-- Elder Isle raid bosses -->
-    <string name="boss_sea_serpent_name">Sea Serpent</string> <!-- untranslated -->
-    <string name="boss_sea_serpent_desc">The voyage boss. A rune-scarred serpent that circles the isle and turns back everyone it doesn\'t drown. Defeat once to permanently enable Set Sail.</string> <!-- untranslated -->
+    <string name="boss_sea_serpent_name">Seeschlange</string>
+    <string name="boss_sea_serpent_desc">Der Seereise Endgegner. Eine Schlange übersät mit Runennarben, die die Insel umkreist und jeden zurückschickt, den sie nicht ertränkt. Besiege sie einmal um permanent die Seeschiffahrt frei zu schalten.</string>
     <string name="boss_last_elder_name">The Last Elder</string> <!-- untranslated -->
     <string name="boss_last_elder_desc">The last of the Elders, sealed at the bottom of the Abyssal Depths. Only a full Elder set can survive the fight.</string> <!-- untranslated -->
 </resources>

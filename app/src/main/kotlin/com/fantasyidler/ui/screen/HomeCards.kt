@@ -166,6 +166,7 @@ internal fun HomeSessionCard(
     val activityLabel = when (session.skillName) {
         "combat"      -> GameStrings.dungeonName(context, session.activityKey)
         "boss"        -> GameStrings.bossName(context, session.activityKey)
+        "carnival"    -> GameStrings.carnivalGameName(context, session.activityKey)
         "expedition"  -> GameStrings.skillingDungeonName(context, session.activityKey, session.activityKey.toTitleCase())
         "mercantile"  -> GameStrings.tradeRouteName(context, session.activityKey)
         "agility"     -> GameStrings.agilityCourse(context, session.activityKey)
@@ -492,6 +493,7 @@ internal fun QueueCard(
                         "agility"     -> GameStrings.skillName(context, action.skillName) to GameStrings.agilityCourse(context, action.activityKey)
                         "woodcutting" -> GameStrings.skillName(context, action.skillName) to GameStrings.treeName(context, action.activityKey)
                         "thieving"    -> GameStrings.skillName(context, action.skillName) to GameStrings.thievingNpcName(context, action.activityKey)
+                        "carnival"    -> GameStrings.skillName(context, action.skillName) to GameStrings.carnivalGameName(context, action.activityKey)
                         else         -> GameStrings.skillName(context, action.skillName) to
                             GameStrings.itemName(context, action.activityKey)
                                 .takeIf { action.activityKey.isNotEmpty() }
@@ -722,6 +724,7 @@ internal fun WorkerSessionCard(
                 val activityLabel = when (session.skillName) {
                     "combat" -> GameStrings.dungeonName(context, session.activityKey)
                     "boss"   -> GameStrings.bossName(context, session.activityKey)
+                    "carnival" -> GameStrings.carnivalGameName(context, session.activityKey)
                     else     -> GameStrings.itemName(context, session.activityKey)
                 }.takeIf { session.activityKey.isNotEmpty() }
                 Row(verticalAlignment = Alignment.CenterVertically) {

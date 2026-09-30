@@ -912,12 +912,12 @@
     <string name="item_ring_of_dragons_might_name">Anello di Potere Draconico</string>
     <string name="item_ring_of_flame_name">Anello di Fiamma</string>
     <string name="item_ring_of_recoil_name">Anello del Riflesso</string>
-    <string name="item_ring_of_recoil_desc">Riflette una parte del danno ricevuto verso l\'avversario. Richiede Mercantile lv. 20.</string>
+    <string name="item_ring_of_recoil_desc">Un anello con una fascia dentellata e rinforzata. Richiede Mercantile lv. 20.</string>
     <string name="item_ring_of_suffering_name">Anello della Sofferenza</string>
     <string name="item_ring_of_suffering_desc">Anello in grado di potenziare le tue difese. Richiede Mercantile lv. 80.</string>
     <string name="item_ring_of_the_seas_name">Anello Dei Mari</string>
     <string name="item_ring_of_wealth_name">Anello della Ricchezza</string>
-    <string name="item_ring_of_wealth_desc">Permette di ricevere monete in più come ricompensa. Richiede Mercantile lv. 40.</string>
+    <string name="item_ring_of_wealth_desc">Un anello incastonato con una gemma viola lucente. Richiede Mercantile lv. 40.</string>
     <string name="item_rock_golem_name">Golem di Roccia</string>
     <string name="item_rogues_lockpick_name">Grimaldello Brigante</string>
     <string name="item_runecrafting_cape_name">Mantello da Incisore</string>

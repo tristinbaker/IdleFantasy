@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Enemy names ===== -->
+    <string name="enemy_giant_rat_name">Giant Rat</string> <!-- untranslated -->
+    <string name="enemy_goblin_name">Goblin</string> <!-- untranslated -->
+    <string name="enemy_skeleton_name">Skeleton</string> <!-- untranslated -->
+    <string name="enemy_zombie_name">Zombie</string> <!-- untranslated -->
+    <string name="enemy_bandit_name">Bandit</string> <!-- untranslated -->
+    <string name="enemy_guard_name">Guard</string> <!-- untranslated -->
+    <string name="enemy_dark_wizard_name">Dark Wizard</string> <!-- untranslated -->
+    <string name="enemy_orc_warrior_name">Orc Warrior</string> <!-- untranslated -->
+    <string name="enemy_spider_name">Giant Spider</string> <!-- untranslated -->
+    <string name="enemy_wild_monkey_name">Wild Monkey</string> <!-- untranslated -->
+    <string name="enemy_rogue_name">Rogue</string> <!-- untranslated -->
+    <string name="enemy_knight_name">Knight</string> <!-- untranslated -->
+    <string name="enemy_hellhound_name">Hellhound</string> <!-- untranslated -->
+    <string name="enemy_troll_name">Mountain Troll</string> <!-- untranslated -->
+    <string name="enemy_demon_name">Lesser Demon</string> <!-- untranslated -->
+    <string name="enemy_dragon_name">Green Dragon</string> <!-- untranslated -->
+    <string name="enemy_imp_name">Imp</string> <!-- untranslated -->
+    <string name="enemy_chicken_name">Chicken</string> <!-- untranslated -->
+    <string name="enemy_sheep_name">Sheep</string> <!-- untranslated -->
+    <string name="enemy_cow_name">Cow</string> <!-- untranslated -->
+    <string name="enemy_fire_giant_name">Fire Giant</string> <!-- untranslated -->
+    <string name="enemy_ancient_guardian_name">Ancient Guardian</string> <!-- untranslated -->
+    <string name="enemy_lich_name">Lich</string> <!-- untranslated -->
+    <string name="enemy_cave_troll_name">Cave Troll</string> <!-- untranslated -->
+    <string name="enemy_mine_spider_name">Mine Spider</string> <!-- untranslated -->
+    <string name="enemy_rock_golem_name">Rock Golem</string> <!-- untranslated -->
+    <string name="enemy_iron_golem_name">Iron Golem</string> <!-- untranslated -->
+    <string name="enemy_forge_demon_name">Forge Demon</string> <!-- untranslated -->
+    <string name="enemy_dwarven_guardian_name">Dwarven Guardian</string> <!-- untranslated -->
+    <string name="enemy_drowned_cultist_name">Drowned Cultist</string> <!-- untranslated -->
+    <string name="enemy_sea_spirit_name">Sea Spirit</string> <!-- untranslated -->
+    <string name="enemy_cursed_fisherman_name">Cursed Fisherman</string> <!-- untranslated -->
+    <string name="enemy_abyssal_leech_name">Abyssal Leech</string> <!-- untranslated -->
+    <string name="enemy_deep_horror_name">Deep Horror</string> <!-- untranslated -->
+    <string name="enemy_void_guardian_name">Void Guardian</string> <!-- untranslated -->
+    <string name="enemy_corrupted_druid_name">Corrupted Druid</string> <!-- untranslated -->
+    <string name="enemy_vine_beast_name">Vine Beast</string> <!-- untranslated -->
+    <string name="enemy_forest_spirit_name">Forest Spirit</string> <!-- untranslated -->
+    <string name="enemy_shadow_beast_name">Shadow Beast</string> <!-- untranslated -->
+    <string name="enemy_twisted_treant_name">Twisted Treant</string> <!-- untranslated -->
+    <string name="enemy_corrupted_mage_name">Corrupted Mage</string> <!-- untranslated -->
+    <string name="enemy_cutpurse_name">Cutpurse</string> <!-- untranslated -->
+    <string name="enemy_arcane_construct_name">Arcane Construct</string> <!-- untranslated -->
+    <string name="enemy_storm_imp_name">Storm Imp</string> <!-- untranslated -->
+    <string name="enemy_sky_serpent_name">Sky Serpent</string> <!-- untranslated -->
+    <string name="enemy_cloud_giant_name">Cloud Giant</string> <!-- untranslated -->
+    <string name="enemy_sun_wisp_name">Sun Wisp</string> <!-- untranslated -->
+    <string name="enemy_ember_hound_name">Ember Hound</string> <!-- untranslated -->
+    <string name="enemy_cinder_colossus_name">Cinder Colossus</string> <!-- untranslated -->
+    <string name="enemy_will_o_wisp_name">Will-o\'-Wisp</string> <!-- untranslated -->
+    <string name="enemy_grave_ghoul_name">Grave Ghoul</string> <!-- untranslated -->
+    <string name="enemy_husk_horror_name">Husk Horror</string> <!-- untranslated -->
+    <string name="enemy_barrow_wight_name">Barrow Wight</string> <!-- untranslated -->
+    <string name="enemy_shade_stalker_name">Shade Stalker</string> <!-- untranslated -->
+    <string name="enemy_bone_colossus_name">Bone Colossus</string> <!-- untranslated -->
+    <string name="enemy_dread_dullahan_name">Dread Dullahan</string> <!-- untranslated -->
+    <string name="enemy_void_stalker_name">Void Stalker</string> <!-- untranslated -->
+    <string name="enemy_rift_guardian_name">Rift Guardian</string> <!-- untranslated -->
+    <string name="enemy_chaos_elemental_name">Chaos Elemental</string> <!-- untranslated -->
+    <string name="enemy_frost_giant_name">Frost Giant</string> <!-- untranslated -->
+    <string name="enemy_ice_golem_name">Ice Golem</string> <!-- untranslated -->
+    <string name="enemy_glacial_mage_name">Glacial Mage</string> <!-- untranslated -->
+    <string name="enemy_abyssal_lord_name">Abyssal Lord</string> <!-- untranslated -->
+    <string name="enemy_eternal_sentinel_name">Eternal Sentinel</string> <!-- untranslated -->
+    <string name="enemy_void_archon_name">Void Archon</string> <!-- untranslated -->
+    <string name="enemy_frost_wyvern_name">Frost Wyvern</string> <!-- untranslated -->
+    <string name="enemy_abyssal_guardian_name">Abyssal Guardian</string> <!-- untranslated -->
+    <string name="enemy_shadow_thief_name">Shadow Thief</string> <!-- untranslated -->
+    <string name="enemy_elder_lich_name">Elder Lich</string> <!-- untranslated -->
+    <string name="enemy_assassin_name">Assassin</string> <!-- untranslated -->
+    <string name="enemy_shadow_assassin_name">Shadow Assassin</string> <!-- untranslated -->
+    <string name="enemy_vault_guardian_name">Vault Guardian</string> <!-- untranslated -->
+    <string name="enemy_guild_master_name">Guild Master</string> <!-- untranslated -->
+
+    <!-- ===== Dungeon names and descriptions ===== -->
+    <string name="dungeon_imp_cavern_name">Imp Cavern</string> <!-- untranslated -->
+    <string name="dungeon_imp_cavern_desc">A shallow cave filled with mischievous imps. Perfect for absolute beginners!</string> <!-- untranslated -->
+    <string name="dungeon_goblin_cave_name">Goblin Cave</string> <!-- untranslated -->
+    <string name="dungeon_goblin_cave_desc">A dark cave infested with goblins and giant rats. A good place for new adventurers to train.</string> <!-- untranslated -->
+    <string name="dungeon_spider_den_name">Spider Den</string> <!-- untranslated -->
+    <string name="dungeon_spider_den_desc">A web-filled cavern crawling with venomous spiders. Bring antivenom!</string> <!-- untranslated -->
+    <string name="dungeon_bandit_camp_name">Bandit Camp</string> <!-- untranslated -->
+    <string name="dungeon_bandit_camp_desc">A hideout of thieves and rogues in the wilderness. Watch your coin purse!</string> <!-- untranslated -->
+    <string name="dungeon_undead_crypt_name">Undead Crypt</string> <!-- untranslated -->
+    <string name="dungeon_undead_crypt_desc">An ancient burial ground where the dead refuse to rest. Beware the dark magic!</string> <!-- untranslated -->
+    <string name="dungeon_fortress_ruins_name">Fortress Ruins</string> <!-- untranslated -->
+    <string name="dungeon_fortress_ruins_desc">The crumbling remains of an ancient castle, now guarded by knights and soldiers.</string> <!-- untranslated -->
+    <string name="dungeon_orc_stronghold_name">Orc Stronghold</string> <!-- untranslated -->
+    <string name="dungeon_orc_stronghold_desc">A fortified orc settlement deep in the mountains. Only the brave dare enter.</string> <!-- untranslated -->
+    <string name="dungeon_volcanic_depths_name">Volcanic Depths</string> <!-- untranslated -->
+    <string name="dungeon_volcanic_depths_desc">A scorching cavern inhabited by hellhounds and lesser demons. The heat is unbearable!</string> <!-- untranslated -->
+    <string name="dungeon_dragon_lair_name">Dragon\'s Lair</string> <!-- untranslated -->
+    <string name="dungeon_dragon_lair_desc">The legendary home of green dragons. Only master warriors survive this challenge.</string> <!-- untranslated -->
+    <string name="dungeon_farm_name">Farm</string> <!-- untranslated -->
+    <string name="dungeon_farm_desc">A peaceful farm with livestock. Great for beginners looking to gather food!</string> <!-- untranslated -->
+    <string name="dungeon_infernal_stronghold_name">Infernal Stronghold</string> <!-- untranslated -->
+    <string name="dungeon_infernal_stronghold_desc">A fortress of fire and brimstone, ruled by demons and hellhounds. The heat alone can kill the unprepared.</string> <!-- untranslated -->
+    <string name="dungeon_ancient_temple_name">Ancient Temple</string> <!-- untranslated -->
+    <string name="dungeon_ancient_temple_desc">An ancient temple guarded by the most powerful creatures in the realm. Only the strongest warriors dare enter.</string> <!-- untranslated -->
+    <string name="dungeon_void_rift_name">Void Rift</string> <!-- untranslated -->
+    <string name="dungeon_void_rift_desc">A tear in reality where void creatures spill into the mortal world.</string> <!-- untranslated -->
+    <string name="dungeon_frozen_citadel_name">Frozen Citadel</string> <!-- untranslated -->
+    <string name="dungeon_frozen_citadel_desc">An ancient fortress encased in a glacier, its defenders frozen in eternal vigil.</string> <!-- untranslated -->
+    <string name="dungeon_abyssal_throne_name">Abyssal Throne</string> <!-- untranslated -->
+    <string name="dungeon_abyssal_throne_desc">The deepest point in the known world, ruled by void lords since the dawn of time.</string> <!-- untranslated -->
+
+    <!-- ===== Event dungeon names ===== -->
+    <string name="dungeon_sunspire_name">The Sunspire</string> <!-- untranslated -->
+    <string name="dungeon_sunspire_desc">A sun-tower ruin cracked open by the solstice, spilling heat spirits into the region. Part of the Sunspire Solstice event.</string> <!-- untranslated -->
+    <string name="dungeon_hollowfen_name">The Hollowfen</string> <!-- untranslated -->
+    <string name="dungeon_hollowfen_desc">A mist-drowned marsh of sunken barrows where the harvest dead walk. Part of the Gloomharvest event.</string> <!-- untranslated -->
+    <string name="dungeon_cloud_kingdom_name">Cloud Kingdom</string> <!-- untranslated -->
+    <string name="dungeon_cloud_kingdom_desc">A realm above the clouds, reached by climbing a legendary beanstalk. Giants roam vast floating islands, sky serpents drift between the cloudbanks, and storm imps crackle with restless energy. Few have seen it. Fewer still have returned to speak of it.</string> <!-- untranslated -->
+    <string name="dungeon_blightwood_name">The Blightwood</string> <!-- untranslated -->
+    <string name="dungeon_blightwood_desc">A rotting forest deep past the Hollowfen, where the Gloomharvest\'s strongest horrors gather. Part of the Gloomharvest event.</string> <!-- untranslated -->
+
+    <!-- ===== Raid bosses ===== -->
+    <string name="boss_king_black_dragon_name">King Black Dragon</string> <!-- untranslated -->
+    <string name="boss_king_black_dragon_desc">The legendary three-headed dragon, feared across the realm.</string> <!-- untranslated -->
+    <string name="boss_demon_lord_name">Demon Lord</string> <!-- untranslated -->
+    <string name="boss_demon_lord_desc">An ancient demon from the abyss, master of dark magic.</string> <!-- untranslated -->
+    <string name="boss_kraken_name">Kraken</string> <!-- untranslated -->
+    <string name="boss_kraken_desc">The terror of the deep seas, a colossal sea monster.</string> <!-- untranslated -->
+    <string name="boss_balrog_name">Gothic Ember</string> <!-- untranslated -->
+    <string name="boss_balrog_desc">An ancient demon of flame and shadow, awakened from its slumber deep beneath the earth.</string> <!-- untranslated -->
+    <string name="boss_void_sovereign_name">The Void Sovereign</string> <!-- untranslated -->
+    <string name="boss_void_sovereign_desc">The primordial entity behind the void rifts. Ancient beyond reckoning, it regards mortal challengers with contempt.</string> <!-- untranslated -->
+    <string name="boss_sol_invictus_name">Sol Invictus, the Sundered Flame</string> <!-- untranslated -->
+    <string name="boss_sol_invictus_desc">A shard of the sun itself, torn loose from the Sunspire ruin. Only the boldest warriors dare approach.</string> <!-- untranslated -->
+    <string name="boss_the_hollow_king_name">The Hollow King</string> <!-- untranslated -->
+    <string name="boss_the_hollow_king_desc">The headless sovereign of the Gloomharvest, riding out from the Blightwood to reap what the living have sown.</string> <!-- untranslated -->
+    <string name="boss_the_vault_guardian_name">The Vault Guardian</string> <!-- untranslated -->
+    <string name="boss_the_vault_guardian_desc">A colossus of living gold, woken by the lighting of the Eternal Flame. Only patrons of the Grand Monument may face it.</string> <!-- untranslated -->
+    <string name="boss_obsidian_colossus_name">Obsidian Colossus</string> <!-- untranslated -->
+    <string name="boss_obsidian_colossus_desc">A mountain given wrath. No lone hero has ever chipped more than a scar into it. Bring a party.</string> <!-- untranslated -->
+    <string name="boss_brood_empress_name">Brood Empress</string> <!-- untranslated -->
+    <string name="boss_brood_empress_desc">Mother of the swarm between the stars. Her brood has ended armies; yours had better be paid well.</string> <!-- untranslated -->
+    <string name="boss_the_world_ender_name">The World Ender</string> <!-- untranslated -->
+    <string name="boss_the_world_ender_desc">When it stirs, kingdoms write their wills. Four names on the contract or none return.</string> <!-- untranslated -->
+
+    <!-- ===== Expedition-unlocked dungeon names ===== -->
+    <string name="dungeon_collapsed_mine_name">Collapsed Mine</string> <!-- untranslated -->
+    <string name="dungeon_collapsed_mine_desc">A vast cavern beneath the copper mines. Cave trolls and rock golems haunt the rubble, and giant spiders spin webs across the collapsed shafts.</string> <!-- untranslated -->
+    <string name="dungeon_shadow_den_name">Shadow Den</string> <!-- untranslated -->
+    <string name="dungeon_shadow_den_desc">A network of underground chambers used by the region\'s thieves guild. Rogues, assassins, and shadow creatures lurk in every corner.</string> <!-- untranslated -->
+    <string name="dungeon_abyssal_ruins_name">Abyssal Ruins</string> <!-- untranslated -->
+    <string name="dungeon_abyssal_ruins_desc">Ancient ruins that exist simultaneously above and below the mortal plane. Strange abyssal creatures phase in and out of reality.</string> <!-- untranslated -->
+    <string name="dungeon_ancient_forest_ruins_name">Ancient Forest Ruins</string> <!-- untranslated -->
+    <string name="dungeon_ancient_forest_ruins_desc">Stone ruins swallowed by the primeval forest, now haunted by feral creatures and vengeful spirits of druids.</string> <!-- untranslated -->
+    <string name="dungeon_ancient_forge_name">Ancient Forge</string> <!-- untranslated -->
+    <string name="dungeon_ancient_forge_desc">A vast dwarven forge that has burned for centuries without stopping. Fire elementals and forge guardians protect its secrets.</string> <!-- untranslated -->
+    <string name="dungeon_arcane_ruins_name">Arcane Ruins</string> <!-- untranslated -->
+    <string name="dungeon_arcane_ruins_desc">The functional underground chambers of a destroyed wizard\'s tower. Magical constructs and enchanted guardians still patrol its halls.</string> <!-- untranslated -->
+    <string name="dungeon_corrupted_sanctum_name">Corrupted Sanctum</string> <!-- untranslated -->
+    <string name="dungeon_corrupted_sanctum_desc">A shadow-drenched sanctum at the heart of the corrupted canopy. Dark priests and corrupted beasts guard an ancient evil.</string> <!-- untranslated -->
+    <string name="dungeon_drowned_temple_name">Drowned Temple</string> <!-- untranslated -->
+    <string name="dungeon_drowned_temple_desc">A sunken temple beneath the sea grotto, its halls filled with water and sea creatures that have made it their home.</string> <!-- untranslated -->
+    <string name="dungeon_rogue_sanctum_name">Rogue Sanctum</string> <!-- untranslated -->
+    <string name="dungeon_rogue_sanctum_desc">The guild\'s inner refuge, accessible only to proven members.</string> <!-- untranslated -->
+    <string name="dungeon_guild_of_shadows_name">Guild of Shadows</string> <!-- untranslated -->
+    <string name="dungeon_guild_of_shadows_desc">The innermost sanctum of the thieves\' guild, guarded by its most elite enforcers.</string> <!-- untranslated -->
+
+    <!-- Elder Isle enemies (two per dungeon) -->
+    <string name="enemy_beach_marauder_name">Beach Marauder</string> <!-- untranslated -->
+    <string name="enemy_beach_leviathan_name">Beach Leviathan</string> <!-- untranslated -->
+    <string name="enemy_grove_stalker_name">Grove Stalker</string> <!-- untranslated -->
+    <string name="enemy_grove_dryad_name">Grove Dryad</string> <!-- untranslated -->
+    <string name="enemy_ash_beast_name">Ash Beast</string> <!-- untranslated -->
+    <string name="enemy_lava_wraith_name">Lava Wraith</string> <!-- untranslated -->
+    <string name="enemy_abyssal_horror_name">Abyssal Horror</string> <!-- untranslated -->
+    <string name="enemy_void_seraph_name">Void Seraph</string> <!-- untranslated -->
+
+    <!-- Elder Isle dungeons -->
+    <string name="dungeon_beach_and_cliffs_name">Beach &amp; Cliffs</string> <!-- untranslated -->
+    <string name="dungeon_beach_and_cliffs_desc">The isle\'s landing zone. Coastal enemies scavenge the wrecks of prior voyages. Every clear drops one Ancient Sigil.</string> <!-- untranslated -->
+    <string name="dungeon_ancient_forest_name">Ancient Forest</string> <!-- untranslated -->
+    <string name="dungeon_ancient_forest_desc">A rune-laced jungle grown over an old library. Grove stalkers and rune-touched dryads keep visitors from the ruins beneath. One Ancient Sigil per clear.</string> <!-- untranslated -->
+    <string name="dungeon_volcano_peak_name">Volcano Peak</string> <!-- untranslated -->
+    <string name="dungeon_volcano_peak_desc">The isle\'s smoking spine, once an Elder altar. Ash beasts and lava wraiths guard the sealing site. Two Ancient Sigils per clear.</string> <!-- untranslated -->
+    <string name="dungeon_abyssal_depths_name">Abyssal Depths</string> <!-- untranslated -->
+    <string name="dungeon_abyssal_depths_desc">A flooded pressure-chamber at the foot of the isle, where the Last Elder waits. Abyssal horrors and void seraphs patrol the approach. Three Ancient Sigils per clear.</string> <!-- untranslated -->
+
+    <!-- Elder Isle raid bosses -->
+    <string name="boss_sea_serpent_name">Sea Serpent</string> <!-- untranslated -->
+    <string name="boss_sea_serpent_desc">The voyage boss. A rune-scarred serpent that circles the isle and turns back everyone it doesn\'t drown. Defeat once to permanently enable Set Sail.</string> <!-- untranslated -->
+    <string name="boss_last_elder_name">The Last Elder</string> <!-- untranslated -->
+    <string name="boss_last_elder_desc">The last of the Elders, sealed at the bottom of the Abyssal Depths. Only a full Elder set can survive the fight.</string> <!-- untranslated -->
+</resources>

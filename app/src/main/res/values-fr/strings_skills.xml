@@ -14,7 +14,7 @@
     <string name="skill_firemaking_name">Incinération</string>
     <string name="skill_firemaking_desc">Brûler des bûches de votre inventaire pour gagner des XP en Allumage de feu. Chaque bûche brûlée produit aussi des cendres que vous pouvez disperser dans l\'aptitude Prière pour obtenir un bonus d\'XP en Prière.</string>
     <string name="skill_agility_name">Agilité</string>
-    <string name="skill_agility_desc">Entraînez votre Agilité pour réduire le temps des sessions dans toutes les aptitudes. Le niveau 99 réduit de 20 minutes l\'heure (60 min → 40 min), avec une réduction linéaire progressive à mesure que vous montez en niveau.</string>
+    <string name="skill_agility_desc">Entraînez votre Agilité pour réduire le temps des sessions dans toutes les aptitudes. Le niveau 99 réduit de %1$d minutes l\'heure (60 min → %2$d min), avec une réduction linéaire progressive à mesure que vous montez en niveau.</string>
 
     <!-- Crafting skills -->
     <string name="skill_smithing_name">Forge</string>

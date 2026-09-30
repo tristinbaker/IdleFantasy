@@ -14,7 +14,7 @@
     <string name="skill_firemaking_name">Membuat Api</string>
     <string name="skill_firemaking_desc">Bakar kayu dari inventarismu untuk mendapatkan XP Membuat Api. Setiap kayu yang dibakar juga menghasilkan abu, yang bisa ditaburkan pada skill Doa untuk XP Doa tambahan.</string>
     <string name="skill_agility_name">Ketangkasan</string>
-    <string name="skill_agility_desc">Latih Ketangkasan untuk mengurangi waktu sesi di semua skill. Level 99 memangkas 20 menit dari satu jam (60 menit → 40 menit), dengan pengurangan linear yang halus seiring naik level.</string>
+    <string name="skill_agility_desc">Latih Ketangkasan untuk mengurangi waktu sesi di semua skill. Level 99 memangkas %1$d menit dari satu jam (60 menit → %2$d menit), dengan pengurangan linear yang halus seiring naik level.</string>
 
     <!-- Crafting skills -->
     <string name="skill_smithing_name">Pandai Besi</string>

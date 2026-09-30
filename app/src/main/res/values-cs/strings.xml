@@ -485,6 +485,7 @@
 
 
 
+
     <string name="settings_lang_system">Systémový</string>
     <string name="settings_save_data">Uložit data</string>
     <string name="settings_export">Exportovat uloženou hru</string>
@@ -610,6 +611,7 @@
     <string name="combat_spell_locked">Vyžaduje alespoň %1$d. úroveň magie.</string>
     <string name="combat_spell_level_met">Úroveň magie %1$d</string>
     <string name="combat_no_potion">Žádný lektvar</string>
+    <string name="label_potion">Potion</string> <!-- untranslated -->
     <string name="combat_req_level">Potřebná úroveň boje</string>
     <string name="combat_duration">Trvání</string>
     <!-- Translator note: %1$d = minutes -->
@@ -1388,6 +1390,7 @@
     <string name="slayer_found_in">Found in: %1$s</string> <!-- untranslated -->
     <string name="slayer_requires">Requires: %1$s</string> <!-- untranslated -->
     <string name="slayer_add_dungeon_to_queue">Přidat výpravu do fronty</string>
+    <string name="slayer_add_all_dungeons_to_queue">Add All Dungeons to Queue</string> <!-- untranslated -->
     <string name="slayer_queue_added">Přidáno do fronty: %1$s.</string>
     <string name="slayer_queue_full">Queue is full.</string> <!-- untranslated -->
     <string name="slayer_foretell_title">Foretell Future Tasks</string> <!-- untranslated -->
@@ -1589,6 +1592,8 @@
     <string name="town_artisans_workshop_active_bonus">%1$d%% chance to preserve secondary crafting materials</string> <!-- untranslated -->
     <string name="town_building_chronos_spire_name">Chronos Spire</string> <!-- untranslated -->
     <string name="town_building_dock_name">Dock</string> <!-- untranslated -->
+    <string name="town_dock_no_bonus">Upgrade to sail to new locations</string> <!-- untranslated -->
+    <string name="town_dock_t1_bonus">Unlocks sailing to the Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_title">Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_sail_title">Sail to Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_zone_beach">Beach &amp; Cliffs</string> <!-- untranslated -->

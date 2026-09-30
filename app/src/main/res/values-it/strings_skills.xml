@@ -14,7 +14,7 @@
     <string name="skill_firemaking_name">Fuochista</string>
     <string name="skill_firemaking_desc">Brucia legno dal tuo deposito. Ciascun legno produce anche cenere, utile come catalizzatore o durante la Preghiera.</string>
     <string name="skill_agility_name">Agilità</string>
-    <string name="skill_agility_desc">Addestra la tua Agilità per ridurre la durata delle sessioni di addestramento. Il livello 99 riduce di 20 minuti la durata (60 min → 40 min), con una riduzione lineare in base al livello.</string>
+    <string name="skill_agility_desc">Addestra la tua Agilità per ridurre la durata delle sessioni di addestramento. Il livello 99 riduce di %1$d minuti la durata (60 min → %2$d min), con una riduzione lineare in base al livello.</string>
 
     <!-- Crafting skills -->
     <string name="skill_smithing_name">Fabbro</string>

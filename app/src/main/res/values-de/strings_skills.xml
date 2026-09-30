@@ -14,7 +14,7 @@
     <string name="skill_firemaking_name">Feuer machen</string>
     <string name="skill_firemaking_desc">Verbrennt Holzscheite aus Eurem Inventar. Jedes verbrannte Holz hinterlässt Asche, die Ihr für Gebete, als Dünger oder bei der Runen- und Trankherstellung nutzen könnt.</string>
     <string name="skill_agility_name">Geschicklichkeit</string>
-    <string name="skill_agility_desc">Übt Euch in Geschicklichkeit, um die Dauer aller Aktivitäten zu verkürzen. Auf Stufe 99 verkürzt sich die Dauer um 20 Minuten (60 Min. → 40 Min.).</string>
+    <string name="skill_agility_desc">Übt Euch in Geschicklichkeit, um die Dauer aller Aktivitäten zu verkürzen. Auf Stufe 99 verkürzt sich die Dauer um %1$d Minuten (60 Min. → %2$d Min.).</string>
 
     <!-- Crafting skills -->
     <string name="skill_smithing_name">Schmieden</string>

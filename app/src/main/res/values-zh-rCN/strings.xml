@@ -473,6 +473,7 @@
 
 
 
+
     <string name="settings_lang_system">跟随系统</string>
     <string name="settings_save_data">存档数据</string>
     <string name="settings_export">导出存档</string>
@@ -595,6 +596,7 @@
     <string name="combat_spell_locked">需要魔法等级 %1$d</string>
     <string name="combat_spell_level_met">魔法等级 %1$d</string>
     <string name="combat_no_potion">无药水</string>
+    <string name="label_potion">Potion</string> <!-- untranslated -->
     <string name="combat_req_level">所需战斗等级</string>
     <string name="combat_duration">持续时间</string>
     <!-- Translator note: %1$d = minutes -->
@@ -1373,6 +1375,7 @@
     <string name="slayer_found_in">出没于：%1$s</string>
     <string name="slayer_requires">需要：%1$s</string>
     <string name="slayer_add_dungeon_to_queue">将副本加入队列</string>
+    <string name="slayer_add_all_dungeons_to_queue">Add All Dungeons to Queue</string> <!-- untranslated -->
     <string name="slayer_queue_added">已加入队列：%1$s。</string>
     <string name="slayer_queue_full">队列已满。</string>
     <string name="slayer_foretell_title">预知未来任务</string>
@@ -1574,6 +1577,8 @@
     <string name="town_artisans_workshop_active_bonus">%1$d%% 几率保留副材料</string>
     <string name="town_building_chronos_spire_name">时间之塔</string>
     <string name="town_building_dock_name">Dock</string> <!-- untranslated -->
+    <string name="town_dock_no_bonus">Upgrade to sail to new locations</string> <!-- untranslated -->
+    <string name="town_dock_t1_bonus">Unlocks sailing to the Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_title">Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_sail_title">Sail to Elder Isle</string> <!-- untranslated -->
     <string name="elder_isle_zone_beach">Beach &amp; Cliffs</string> <!-- untranslated -->
