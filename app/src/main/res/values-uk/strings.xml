@@ -2076,7 +2076,7 @@
     <string name="merc_vex_the_undying_name">Vex the Undying</string> <!-- untranslated -->
     <string name="merc_thane_dawnbringer_name">Thane Dawnbringer</string> <!-- untranslated -->
 
-    <string name="tower_title">Нексінченна башня</string>
+    <string name="tower_title">Безкінечна башта</string>
     <string name="tower_floor_label" formatted="false">Floor %d</string> <!-- untranslated -->
     <string name="tower_floor_desc">Infinite Tower floor %1$d</string> <!-- untranslated -->
     <string name="tower_best_floor" formatted="false">Best: Floor %d</string> <!-- untranslated -->
