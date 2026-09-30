@@ -217,7 +217,7 @@ class ArmoryViewModel @Inject constructor(
                 if (drop.item !in map) map[drop.item] = context.withAppLocale().getString(R.string.armory_source_drop_chance, GameStrings.enemyName(context, enemy.name), formatChancePct(drop.chance))
             }
         }
-        gameData.marketplace.forEach { (_, category) ->
+        gameData.marketplace.values.filter { it.categoryName != ShopViewModel.CAPES_CATEGORY }.forEach { category ->
             category.items.keys.forEach { key -> if (key !in map) map[key] = context.withAppLocale().getString(R.string.armory_source_shop) }
         }
         dailyQuestRepo.dwarvenDropPool.forEach { key ->

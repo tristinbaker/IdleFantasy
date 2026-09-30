@@ -235,7 +235,10 @@ class ShopViewModel @Inject constructor(
     // ------------------------------------------------------------------
 
     fun sellPriceFor(itemKey: String): Int {
+        // Buy-back capes are priced as a recovery fee, not market value; using that price
+        // here would let re-awarded skill capes be sold for a third of it.
         val marketPrice = gameData.marketplace.values
+            .filter { it.categoryName != CAPES_CATEGORY }
             .mapNotNull { it.items[itemKey]?.price }
             .firstOrNull()
 
