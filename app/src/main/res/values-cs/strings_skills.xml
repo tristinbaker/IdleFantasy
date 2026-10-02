@@ -3,7 +3,7 @@
     <!-- ===== Skill names and descriptions ===== -->
 
     <!-- Gathering skills -->
-    <string name="skill_mining_name">Dobývání</string>
+    <string name="skill_mining_name">Hornictví</string>
     <string name="skill_mining_desc">Dobývej ze země cenné rudy a drahokamy.</string>
     <string name="skill_fishing_name">Rybaření</string>
     <string name="skill_fishing_desc">Lov ryby a získávej z vodních hlubin cenné poklady.</string>
