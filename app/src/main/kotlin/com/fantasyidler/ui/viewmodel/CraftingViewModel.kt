@@ -251,7 +251,8 @@ class CraftingViewModel @Inject constructor(
                     val boostMult = if (flags.ironman) 1.0
                                     else (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * ChurchRepository.xpMultiplier(flags, blessingPrayerCapeMult(player, flags, gameData), gameData.blessings)
                     val petPct = petBoostFor(player.pets, selectedRecipe.skillName, flags.ironman)
-                    selectedEff * boostMult * (1.0 + petPct / 100.0)
+                    val prestigeMult = 1.0 + boostRepo.prestigeXpPct(selectedRecipe.skillName, flags) / 100.0
+                    selectedEff * boostMult * prestigeMult * (1.0 + petPct / 100.0)
                 }
             } else 1.0
             extra.copy(
