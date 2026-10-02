@@ -423,13 +423,17 @@ class HomeViewModel @Inject constructor(
             val sessionXpGain: (SkillSession?) -> Long = { s ->
                 if (s == null || s.skillName in listOf("combat", "boss", "expedition", "farming", "tower", "carnival")) 0L
                 else try {
-                    val base = json.decodeFromString<List<SessionFrame>>(s.frames).sumOf { it.xpGain.toLong() }
+                    val cardFrames = json.decodeFromString<List<SessionFrame>>(s.frames)
+                    val base = cardFrames.sumOf { it.xpGain.toLong() }
                     // Same multiplier chain collection applies (applySessionResults), so the
                     // card matches the eventual payout and reacts to boosts live (issue #1748).
                     // Isle sessions run at base rates (issue #1930).
-                    val boostMult = predictionXpMult(flags.ironman, s.isElderSession, boostRepo.xpMultiplier(s.skillName, flags, capeMult))
-                    if (s.isWorkerSession) (base * s.efficiencyMultiplier * innXpMult * boostMult).toLong()
-                    else (base * boostMult).toLong()
+                    val hasLoot = cardFrames.any { f -> f.items.keys.any { it != "coins" && it !in gameData.pets } }
+                    val capeXpMult = if (!hasLoot) resolveCapeMultiplier(s.skillName, equipped[EquipSlot.CAPE]?.let { gameData.equipment[it] }, json.decodeFromString<Map<String, Int>>(player.inventory).keys, flags.townBuildingTiers, boostRepo.capeScalingBySkill(flags), gameData.equipment, flags.ironman).toDouble() else 1.0
+                    val boostMult = predictionXpMult(flags.ironman, s.isElderSession, boostRepo.xpMultiplier(s.skillName, flags, capeMult) * sigilXpMult(flags.embeddedSigils))
+                    val effectiveBase = (base * capeXpMult).toLong()
+                    if (s.isWorkerSession) (effectiveBase * s.efficiencyMultiplier * innXpMult * boostMult).toLong()
+                    else (effectiveBase * boostMult).toLong()
                 } catch (_: Exception) { 0L }
             }
             val activeSessionXpGain   = sessionXpGain(session)
@@ -1233,9 +1237,9 @@ class HomeViewModel @Inject constructor(
      * granted amount, so every summary line fed from raw frame XP must bake it in too or the
      * dialog understates what was paid (issue #1790).
      */
-    private fun prestigeAdjustedXp(skill: String, xp: Long, flags: PlayerFlags): Long {
-        val xpPct = boostRepo.prestigeXpPct(skill, flags)
-        return if (xpPct > 0) (xp * (1.0 + xpPct / 100.0)).toLong() else xp
+    private fun prestigeAdjustedXp(skill: String, xp: Long, flags: PlayerFlags, isElder: Boolean = false): Long {
+        val prestigeMult = 1.0 + boostRepo.prestigeXpPct(skill, flags) / 100.0
+        return displayStoredXp(xp, prestigeMult, sigilXpMult(flags.embeddedSigils), isElder)
     }
 
     private suspend fun collectGenericSkillSession(session: SkillSession, frames: List<SessionFrame>, grantXp: Boolean, ctx: CollectContext, acc: CollectAcc) {
@@ -1316,7 +1320,7 @@ class HomeViewModel @Inject constructor(
             if (playerRepo.addPetIfNew(id, pd.boostPercent))
                 acc.petFoundName = GameStrings.petName(context, pd.id)
         }
-        acc.combinedXpBySkill[session.skillName] = (acc.combinedXpBySkill[session.skillName] ?: 0L) + prestigeAdjustedXp(session.skillName, totalXp, ctx.flags)
+        acc.combinedXpBySkill[session.skillName] = (acc.combinedXpBySkill[session.skillName] ?: 0L) + prestigeAdjustedXp(session.skillName, effectiveXp, ctx.flags, session.isElderSession)
         for ((item, qty) in regular) acc.combinedItems[item] = (acc.combinedItems[item] ?: 0) + qty
         if (session.skillName == Skills.PRAYER) {
             val count = frames.sumOf { it.kills }
@@ -2091,3 +2095,19 @@ fun isSkillSessionStillEligible(
     return currentLevel >= session.levelAtStart
 }
 
+/**
+ * Display-side XP parity with the payout (`PlayerRepository.applySessionResults`).
+ * The summary stores base * prestige * sigils; the render layer then applies 2x * blessing,
+ * so the shown total equals card (`sessionXpGain`) and payout mainland chains.
+ * Isle bypasses every mainland multiplier and stores raw base XP.
+ */
+internal fun sigilXpMult(embeddedSigils: Map<String, String>): Double =
+    1.0 + embeddedSigils.values.count { it == "elder_sapphire" } * 0.05
+
+internal fun displayStoredXp(
+    baseXp: Long,
+    prestigeMult: Double,
+    sigilMult: Double,
+    isElder: Boolean,
+): Long =
+    if (isElder) baseXp else (baseXp * prestigeMult * sigilMult).toLong()

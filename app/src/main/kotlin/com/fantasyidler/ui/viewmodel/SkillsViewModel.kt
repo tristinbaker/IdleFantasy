@@ -108,6 +108,8 @@ data class SkillsUiState(
     val showPrestigeNotifications: Boolean = true,
     val inventory: Map<String, Int> = emptyMap(),
     val petBoostBySkill: Map<String, Int> = emptyMap(),
+    /** Prestige XP multiplier per skill for previews (1.0 when none/isle). Mirrors payout. */
+    val prestigeXpMultBySkill: Map<String, Float> = emptyMap(),
     val activeQuests: Map<String, List<QuestIndicator>> = emptyMap(),
     /** Timed (daily/weekly/guild daily) quest indicators per skill, for the overview rows. */
     val timedQuestsBySkill: Map<String, List<QuestIndicator>> = emptyMap(),
@@ -247,7 +249,7 @@ class SkillsViewModel @Inject constructor(
                 thievingEfficiency    = if (flags.onElderIsle) 1.0f else gameData.toolEfficiency(equipped[EquipSlot.LOCKPICK],       EquipSlot.LOCKPICK,       0, skillLevels = levels, heirloomXp = flags.heirloomXp),
                 cookingEfficiency     = if (flags.onElderIsle) 1.0f else gameData.toolEfficiency(equipped[EquipSlot.FRYING_PAN],     EquipSlot.FRYING_PAN,     0, skillLevels = levels, heirloomXp = flags.heirloomXp),
                 xpBonusMult           = if (flags.ironman || flags.onElderIsle) 1.0f
-                                        else (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0f else 1.0f) * ChurchRepository.xpMultiplier(flags, blessingPrayerCapeMult(flags, equipped, inv.keys, gameData), gameData.blessings),
+                                        else (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0f else 1.0f) * ChurchRepository.xpMultiplier(flags, blessingPrayerCapeMult(flags, equipped, inv.keys, gameData), gameData.blessings) * (1.0f + flags.embeddedSigils.values.count { it == "elder_sapphire" } * 0.05f),
                 blessingXpPct         = blessingXpPercent(flags.ironman, flags.onElderIsle, ChurchRepository.xpMultiplier(flags, blessingPrayerCapeMult(flags, equipped, inv.keys, gameData), gameData.blessings)),
                 petBoosts             = listOf(Skills.MINING, Skills.WOODCUTTING, Skills.FISHING, Skills.AGILITY)
                     .associateWith { if (flags.ironman || flags.onElderIsle) 0 else petBoostFor(player.pets, it) },
@@ -272,6 +274,9 @@ class SkillsViewModel @Inject constructor(
                 petBoostBySkill       = if (flags.onElderIsle) emptyMap() else (Skills.GATHERING + Skills.CRAFTING_SKILLS + Skills.SUPPORT + listOf(Skills.AGILITY, Skills.SLAYER))
                     .associateWith { key -> if (flags.ironman) 0 else petBoostFor(player.pets, key) }
                     .filterValues { it > 0 },
+                prestigeXpMultBySkill = if (flags.onElderIsle) emptyMap() else (Skills.GATHERING + Skills.CRAFTING_SKILLS + Skills.SUPPORT + listOf(Skills.AGILITY, Skills.SLAYER))
+                    .associateWith { key -> (1.0 + boostRepo.prestigeXpPct(key, flags) / 100.0).toFloat() }
+                    .filterValues { it > 1.0f },
                 activeQuests          = activeQuests,
                 timedQuestsBySkill    = if (flags.onElderIsle) emptyMap() else activeQuests.entries
                     .groupBy({ it.key.substringBefore(':') }, { it.value })
@@ -1001,7 +1006,9 @@ class SkillsViewModel @Inject constructor(
                 else               -> 0L
             }
             val petBoostedXp = if (petBoostPct > 0) (rawXp * (1.0 + petBoostPct / 100.0)).toLong() else rawXp
-            val estimatedXpGain = (petBoostedXp * xpQueueMult).toLong()
+            val prestigeMult = if (gatherFlags.onElderIsle) 1.0 else 1.0 + boostRepo.prestigeXpPct(skillName, gatherFlags) / 100.0
+            val sigilMult = if (gatherFlags.onElderIsle) 1.0 else 1.0 + gatherFlags.embeddedSigils.values.count { it == "elder_sapphire" } * 0.05
+            val estimatedXpGain = (petBoostedXp * xpQueueMult * prestigeMult * sigilMult).toLong()
             val floorReductionMin = if (isIsle) 0.0 else boostRepo.sessionFloorReductionMin(gatherFlags)
             val chronosMult     = if (isIsle) 1.0f else townRepo.playerSessionDurationMultiplier(gatherFlags)
             var enqueuedAny = false
