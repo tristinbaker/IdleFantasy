@@ -252,8 +252,8 @@ class SkillsViewModel @Inject constructor(
                 thievingEfficiency    = if (flags.onElderIsle) 1.0f else gameData.toolEfficiency(equipped[EquipSlot.LOCKPICK],       EquipSlot.LOCKPICK,       0, skillLevels = levels, heirloomXp = flags.heirloomXp),
                 cookingEfficiency     = if (flags.onElderIsle) 1.0f else gameData.toolEfficiency(equipped[EquipSlot.FRYING_PAN],     EquipSlot.FRYING_PAN,     0, skillLevels = levels, heirloomXp = flags.heirloomXp),
                 xpBonusMult           = if (flags.ironman || flags.onElderIsle) 1.0f
-                                        else (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0f else 1.0f) * ChurchRepository.xpMultiplier(flags, capeMult, gameData.blessings),
-                xpMultBySkill         = Skills.ALL.associateWith { skill -> predictionXpMult(flags.ironman, flags.onElderIsle, boostRepo.xpMultiplier(skill, flags, capeMult)) },
+                                        else (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0f else 1.0f) * ChurchRepository.xpMultiplier(flags, capeMult, gameData.blessings) * sigilXpMult(flags.embeddedSigils).toFloat(),
+                xpMultBySkill         = Skills.ALL.associateWith { skill -> predictionXpMult(flags.ironman, flags.onElderIsle, boostRepo.xpMultiplier(skill, flags, capeMult) * sigilXpMult(flags.embeddedSigils)) },
                 blessingXpPct         = blessingXpPercent(flags.ironman, flags.onElderIsle, ChurchRepository.xpMultiplier(flags, capeMult, gameData.blessings)),
                 petBoosts             = listOf(Skills.MINING, Skills.WOODCUTTING, Skills.FISHING, Skills.AGILITY)
                     .associateWith { if (flags.ironman || flags.onElderIsle) 0 else petBoostFor(player.pets, it) },
@@ -1012,7 +1012,8 @@ class SkillsViewModel @Inject constructor(
                 else               -> 0L
             }
             val petBoostedXp = if (petBoostPct > 0) (rawXp * (1.0 + petBoostPct / 100.0)).toLong() else rawXp
-            val estimatedXpGain = (petBoostedXp * xpQueueMult * prestigeMult).toLong()
+            val sigilMult = if (isIsle) 1.0 else sigilXpMult(gatherFlags.embeddedSigils)
+            val estimatedXpGain = (petBoostedXp * xpQueueMult * prestigeMult * sigilMult).toLong()
             val floorReductionMin = if (isIsle) 0.0 else boostRepo.sessionFloorReductionMin(gatherFlags)
             val chronosMult     = if (isIsle) 1.0f else townRepo.playerSessionDurationMultiplier(gatherFlags)
             var enqueuedAny = false
