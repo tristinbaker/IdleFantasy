@@ -69,6 +69,8 @@ internal fun FiremakingSheet(
     onStart: (logKey: String, qty: Int) -> Unit,
     context: Context,
     craftLimit: Int = Int.MAX_VALUE,
+    xpBonusMult: Float = 1f,
+    petBoostPct: Int = 0,
     questFills: Map<String, List<QuestFillSuggestion>> = emptyMap(),
     activeQuests: Map<String, List<QuestIndicator>> = emptyMap(),
 ) {
@@ -178,7 +180,7 @@ internal fun FiremakingSheet(
             val maxQty   = (inventory[key] ?: 0).coerceAtMost(craftLimit)
             var qty      by remember(key) { mutableIntStateOf(maxQty.coerceAtLeast(1)) }
             var textValue by remember(key) { mutableStateOf(maxQty.coerceAtLeast(1).toString()) }
-            val totalXp = selectedLog.xpPerLog * qty
+            val totalXp = (selectedLog.xpPerLog * qty * xpBonusMult * (1 + petBoostPct / 100.0)).toLong()
             val detailScrollState = rememberScrollState()
 
             Column(

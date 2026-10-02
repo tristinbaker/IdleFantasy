@@ -73,6 +73,8 @@ internal fun PrayerSheet(
     onStart: (boneKey: String, qty: Int) -> Unit,
     onNavigateToBoneAltar: () -> Unit = {},
     tierMaxQty: Int = Int.MAX_VALUE,
+    xpBonusMult: Float = 1f,
+    petBoostPct: Int = 0,
     questFills: List<QuestFillSuggestion> = emptyList(),
     activeQuests: Map<String, List<QuestIndicator>> = emptyMap(),
 ) {
@@ -265,7 +267,7 @@ internal fun PrayerSheet(
             Spacer(Modifier.height(8.dp))
 
             Text(
-                text     = projectedXpLabel(currentXp, (qty * selectedBone.xpPerBone).toLong()),
+                text     = projectedXpLabel(currentXp, (qty * selectedBone.xpPerBone * xpBonusMult * (1 + petBoostPct / 100.0)).toLong()),
                 style    = MaterialTheme.typography.bodyMedium,
                 color    = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.SemiBold,
