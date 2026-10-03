@@ -559,11 +559,11 @@
     <string name="skilling_dungeon_thieves_den_note_3">A torn letter warning a member to stay away from the eastern tunnels. No reason is given.</string> <!-- untranslated -->
     <string name="skilling_dungeon_thieves_den_note_4">A wax-sealed map fragment. The seal is unfamiliar — a shadow behind a locked door.</string> <!-- untranslated -->
     <string name="skilling_dungeon_thieves_den_note_5">The last passage opens into a vaulted chamber. At the far end, a reinforced door bears the same seal. The Rogue Sanctum lies beyond.</string> <!-- untranslated -->
-    <string name="skilling_dungeon_crumbling_watchtower_note_1">Fresh rope marks on the windowsills. Someone uses this tower regularly.</string> <!-- untranslated -->
-    <string name="skilling_dungeon_crumbling_watchtower_note_2">A hidden cache inside a cracked wall: lockpicks, a short blade, and a coded ledger.</string> <!-- untranslated -->
-    <string name="skilling_dungeon_crumbling_watchtower_note_3">The ledger is a tally of stolen goods and split payments. The rogues operate out of somewhere beneath the hill.</string> <!-- untranslated -->
-    <string name="skilling_dungeon_crumbling_watchtower_note_4">A trapdoor in the floor, recently oiled, its hinges silent. Worn boot prints surround it.</string> <!-- untranslated -->
-    <string name="skilling_dungeon_crumbling_watchtower_note_5">The trapdoor opens onto a carved stairway going deep into the earth. The Shadow Den waits below.</string> <!-- untranslated -->
+    <string name="skilling_dungeon_crumbling_watchtower_note_1">Frische Seilspuren an den Fenstersimsen. Jemand benutzt diesen Turm regelmäßig.</string>
+    <string name="skilling_dungeon_crumbling_watchtower_note_2">Ein geheimes Versteck in einer zerbröckelter Mauer: Dietriche, eine kurze Klinge und ein kodiertes Buch.</string>
+    <string name="skilling_dungeon_crumbling_watchtower_note_3">Das Buch ist eine Liste gestohlener Güter und Teilzahlungen. Die Schurken operieren von irgendwo unter dem Hügel aus.</string>
+    <string name="skilling_dungeon_crumbling_watchtower_note_4">Eine Falltüre im Boden, frisch geölt, ihre Scharniere geräuschlos. Abdrücke abgenutzter Schuhe umringen sie.</string>
+    <string name="skilling_dungeon_crumbling_watchtower_note_5">Die Falltüre öffnet sich zu einer gemeißelten Steintreppe, die tief in die Erde führt. Die Schattenhöhle wartet unten.</string>
     <string name="skilling_dungeon_copper_caverns_note_1">Schrammen markieren die Tunnelwände, zu tief und zu breit für jede Hacke.</string>
     <string name="skilling_dungeon_copper_caverns_note_2">Altes Minenwerkzeug, verdreht und verbogen. Was immer hier in aller Eile zurückgelassen wurde.</string>
     <string name="skilling_dungeon_copper_caverns_note_3">Die zerissene Notiz eines Minenarbeiters: \'Wir sind zu etwas nach unten durchgebrochen. Der Vorarbeiter versiegelte den unteren Schacht. Er wollte nicht sagen warum.\'</string>
