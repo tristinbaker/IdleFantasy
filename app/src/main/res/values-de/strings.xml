@@ -313,8 +313,8 @@
     <string name="settings_profile_layout_tabs">Reiter</string>
     <string name="settings_quest_dots">Quest-Punkte für Fähigkeiten</string>
     <string name="settings_quest_dots_desc">Goldenen Punkt auf Fähigkeiten mit offenen Quests anzeigen.</string>
-    <string name="settings_monument_touch_indicator">Monument touch indicator</string> <!-- untranslated -->
-    <string name="settings_monument_touch_indicator_desc">Show a dot on the Grand Monument on Home when the daily touch is available</string> <!-- untranslated -->
+    <string name="settings_monument_touch_indicator">Berührungsanzeige für Monumente</string>
+    <string name="settings_monument_touch_indicator_desc">Zeige einen Punkt auf dem Großen Monument wenn die tägliche Berührung verfügbar ist.</string>
     <string name="settings_prestige_notifications">Prestige-Benachrichtigungsabzeichen</string>
     <string name="settings_prestige_notifications_desc">Zeige eine Benachrichtigung, wenn eine Fähigkeit bereit zum Prestige ist.</string>
     <string name="label_switch_character">Charakter wechseln</string>
@@ -685,7 +685,7 @@
     <!-- Translator note: %1$s = formatted multiplier (e.g. "1.15") -->
     <string name="skills_tool_bonus">×%1$s Werkzeugbonus</string>
     <string name="skills_pet_bonus">+%1$d%% EP (Haustier)</string>
-    <string name="skills_blessing_bonus">+%1$d%% XP (blessing)</string> <!-- untranslated -->
+    <string name="skills_blessing_bonus">+%1$d%% EP (Segen)</string>
     <!-- Translator note: %1$d = fishing level -->
     <string name="skills_fishing_desc">Level %1$d  •  Dem Level entsprechender Fang</string>
     <!-- Translator note: %1$d = prayer level -->
@@ -744,7 +744,7 @@
     <string name="quest_legend_guild_daily">Gilden-Tagesquest</string>
     <string name="quest_legend_guild">Gildenquest</string>
     <string name="quest_legend_quest">Aufgabe</string>
-    <string name="quest_legend_slayer_target">Slayer Task</string> <!-- untranslated -->
+    <string name="quest_legend_slayer_target">Kopfgeldjäger Aufgabe</string>
     <string name="quest_legend_gold_dot">Aufgabe mit Zeitbegrenzung ist verfügbar.</string>
     <string name="quest_legend_notes">Abgeblendete Symbole können noch nicht abgeschlossen werden (Level oder Materialien fehlen). Eine kleine hochgestellte Zahl bedeutet, dass mehrere Quests dieses Typs dasselbe Ziel haben.</string>
     <!-- Translator note: %1$s = quantity in inventory -->
@@ -1059,7 +1059,7 @@
     <string name="church_activate">Segen empfangen</string>
     <string name="church_blessing_bonus">+%1$s durch Segen</string>
     <!-- Golden Goose pet coin share, split from the blessing line (issue #1941). Pending Weblate translation. -->
-    <string name="pet_coin_bonus">+%1$s from pet</string> <!-- untranslated -->
+    <string name="pet_coin_bonus">+%1$s vom Haustier</string>
     <string name="church_blessing_suffix">durch Segen</string>
     <string name="church_effect_xp">×%1$.2f EP für %2$d Stunden</string>
     <string name="church_effect_def">+%1$d Verteidigung für %2$d Stunden</string>
@@ -1069,8 +1069,8 @@
     <string name="church_bones_available">Ihr habt %1$d Knochen (alle Arten), wert %2$d für Segnungen (größere Knochen zählen mehr)</string>
     <string name="church_not_enough_bones">Nicht genug Knochen (benötigt %1$d)</string>
     <string name="church_already_active">Ihr seid bereits gesegnet</string>
-    <string name="church_blessing_activated">Blessing activated!</string> <!-- untranslated -->
-    <string name="church_blessing_extended">Blessing extended!</string> <!-- untranslated -->
+    <string name="church_blessing_activated">Segen aktiviert!</string>
+    <string name="church_blessing_extended">Segen verlängert!</string>
     <string name="church_confirm_deactivate_title">Segen deaktivieren?</string>
     <string name="church_confirm_deactivate_body">Seid Ihr sicher, dass Ihr Euren aktiven Segen deaktivieren möchtest? Ihr erhaltet die Knochen nicht zurück.</string>
 
@@ -1379,11 +1379,11 @@
     <string name="slayer_found_in">Begegnet Euch in: %1$s</string>
     <string name="slayer_requires">Erfordert: %1$s</string>
     <string name="slayer_add_dungeon_to_queue">Verlies zur Warteschlange hinzufügen</string>
-    <string name="slayer_add_all_dungeons_to_queue">Add All Dungeons to Queue</string> <!-- untranslated -->
+    <string name="slayer_add_all_dungeons_to_queue">Alle Verliese zur Warteschlange hinzufügen</string>
     <string name="slayer_queue_added">Zur Warteschlange hinzugefügt: %1$s.</string>
     <string name="slayer_queue_full">Warteschlange ist voll.</string>
-    <string name="slayer_queue_added_many">Added %1$d dungeons to queue.</string> <!-- untranslated -->
-    <string name="slayer_queue_added_partial">Added %1$d of %2$d dungeons to queue.</string> <!-- untranslated -->
+    <string name="slayer_queue_added_many">%1$d Verliese zur Warteschlange hinzugefügt.</string>
+    <string name="slayer_queue_added_partial">%1$d von %2$d Verliesen zur Warteschlange hinzugefügt.</string>
     <string name="slayer_foretell_title">Zukünftige Aufträge vorhersagen</string>
     <string name="slayer_foretell_desc">Reiht kommende Aufträge in diese Warteschlange ein indem Ihr Knochen zahlt. Sie werden automatisch zu Eurem aktuellen Auftrag wenn der jetzige erfüllt wurde.</string>
     <string name="slayer_foretell_queue_empty">Keine Aufträge vorhergesagt.</string>
@@ -2351,7 +2351,7 @@
     <string name="pet_solstice_sprite_name">Solstice Sprite</string> <!-- untranslated -->
     <string name="pet_solstice_sprite_desc">Ein kleiner Glutgeist aus dem Sonnenwende-Sommerturm-Event, der dein Können im Kampf verbessert.</string>
     <string name="pet_lantern_wisp_name">Laternengeist</string>
-    <string name="pet_lantern_wisp_desc">Eine grinsende Kürbislaterne, die aus der Krone des Höhlenkönigs entkommen ist und dir nun auf dem Weg in die Schlacht leuchtet.</string>
+    <string name="pet_lantern_wisp_desc">Eine grinsende Kürbislaterne, die aus der Krone des hohlen Königs entkommen ist und dir nun auf dem Weg in die Schlacht leuchtet.</string>
     <string name="pet_grave_sprout_name">Grabsprosse</string>
     <string name="pet_grave_sprout_desc">Ein kleiner, hartnäckiger Sämling, der in einem Grabhügel Wurzeln geschlagen hat. Er weiß das Ein oder Andere übers Wachsen.</string>
     <string name="pet_golden_goose_name">Goldene Gans</string>
@@ -2366,8 +2366,8 @@
     <string name="pet_magma_salamander_desc">A heat-forged lizard that thrives in Volcano Peak\'s cracks. Its skin is always faintly warm.</string> <!-- untranslated -->
     <string name="pet_abyss_wisp_name">Abyss Wisp</string> <!-- untranslated -->
     <string name="pet_abyss_wisp_desc">A cold silver light that drifted up from the Abyssal Depths and refused to sink back.</string> <!-- untranslated -->
-    <string name="pet_ancient_turtle_name">Ancient Turtle</string> <!-- untranslated -->
-    <string name="pet_ancient_turtle_desc">A tiny turtle whose shell bears the same runes as the isle\'s seal. Older than it looks.</string> <!-- untranslated -->
+    <string name="pet_ancient_turtle_name">Uralte Schildkröte</string>
+    <string name="pet_ancient_turtle_desc">Eine winzige Schildkröte, deren Panzer dieselben Runen trägt wie das Siegel der Insel. Älter, als sie aussieht.</string>
     <string name="pet_cinder_hawk_name">Cinder Hawk</string> <!-- untranslated -->
     <string name="pet_cinder_hawk_desc">A bird of banked embers that circles the volcano and roosts on your shoulder between fights.</string> <!-- untranslated -->
     <string name="pet_deepwater_serpent_name">Tiefwasserschlange</string>
