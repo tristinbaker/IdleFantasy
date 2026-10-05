@@ -71,7 +71,7 @@
     <string name="bestiary_filter_missing">Відсутні</string>
     <string name="bestiary_qty_header">Qty</string> <!-- untranslated -->
     <string name="bestiary_chance_header">Шанс</string>
-    <string name="label_completion_progress">%1$d / %2$d %3$s</string> <!-- untranslated -->
+    <string name="label_completion_progress">%1$d / %2$d %3$s</string>
     <string name="achievements_progress_bar">отримано</string>
     <string name="bestiary_progress_bar">encountered</string> <!-- untranslated -->
     <string name="bestiary_always_drops">Always Drops</string> <!-- untranslated -->
@@ -106,7 +106,7 @@
     <string name="label_coming_soon">Coming soon</string> <!-- untranslated -->
     <string name="label_time_remaining">Часу залишилось</string>
     <!-- Translator note: compact duration units; English puts the letter(s) right after the number -->
-    <string name="duration_years">%1$dy</string> <!-- untranslated -->
+    <string name="duration_years">%1$dy</string>
     <string name="duration_months">%1$dmo</string> <!-- untranslated -->
     <string name="duration_weeks">%1$dw</string> <!-- untranslated -->
     <string name="duration_days">%1$dd</string> <!-- untranslated -->
