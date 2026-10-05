@@ -30,6 +30,10 @@ internal fun ThievingSheet(
     isQueueFull: Boolean,
     sessionDurationMs: Long,
     context: Context,
+    efficiency: Float = 1f,
+    petBoostPct: Int = 0,
+    xpBonusMult: Float = 1f,
+    successBonus: Double = 0.0,
     activeQuests: Map<String, List<QuestIndicator>> = emptyMap(),
     onSelect: (String) -> Unit,
 ) {
@@ -60,9 +64,10 @@ internal fun ThievingSheet(
             npcs.values
                 .sortedBy { it.levelRequired }
                 .forEach { npc ->
-                    val successChance = ((0.40 + (thievingLevel - npc.levelRequired) * 0.02)
-                        .coerceIn(0.10, 0.95) * 100).toInt()
-                    val xpGain = npc.baseXp.toLong()
+                    val chance = (0.40 + (thievingLevel - npc.levelRequired) * 0.02 * efficiency + successBonus).coerceIn(0.10, 0.98)
+                    val successChance = (chance * 100).toInt()
+                    val petBoostedXp = if (petBoostPct > 0) (npc.baseXp * (1.0 + petBoostPct / 100.0)).toInt() else npc.baseXp
+                    val xpGain = (60.0 * (chance / (2.0 - chance)) * petBoostedXp * xpBonusMult).toLong()
                     ActivityRow(
                         name             = GameStrings.thievingNpcName(context, npc.key),
                         detail           = stringResource(

@@ -174,7 +174,7 @@
     <string name="enemy_void_seraph_name">Void Seraph</string> <!-- untranslated -->
 
     <!-- Elder Isle dungeons -->
-    <string name="dungeon_beach_and_cliffs_name">Beach &amp; Cliffs</string> <!-- untranslated -->
+    <string name="dungeon_beach_and_cliffs_name">Strand &amp; Klippen</string>
     <string name="dungeon_beach_and_cliffs_desc">The isle\'s landing zone. Coastal enemies scavenge the wrecks of prior voyages. Every clear drops one Ancient Sigil.</string> <!-- untranslated -->
     <string name="dungeon_ancient_forest_name">Ancient Forest</string> <!-- untranslated -->
     <string name="dungeon_ancient_forest_desc">A rune-laced jungle grown over an old library. Grove stalkers and rune-touched dryads keep visitors from the ruins beneath. One Ancient Sigil per clear.</string> <!-- untranslated -->

@@ -73,6 +73,8 @@ internal fun RunecraftingSheet(
     onStart: (String, Int, String?) -> Unit,
     currentXp: Long = 0L,
     tierMaxQty: Int = Int.MAX_VALUE,
+    xpBonusMult: Float = 1f,
+    petBoostPct: Int = 0,
     questFills: Map<String, List<QuestFillSuggestion>> = emptyMap(),
     activeQuests: Map<String, List<QuestIndicator>> = emptyMap(),
 ) {
@@ -301,7 +303,7 @@ internal fun RunecraftingSheet(
                 Spacer(Modifier.height(8.dp))
 
                 Text(
-                    text       = projectedXpLabel(currentXp, (qty.toLong() * selectedRune.xpPerRune.toLong() * runeMultiplier)),
+                    text       = projectedXpLabel(currentXp, (qty.toLong() * selectedRune.xpPerRune.toLong() * runeMultiplier * xpBonusMult * (1 + petBoostPct / 100.0)).toLong()),
                     style      = MaterialTheme.typography.bodyMedium,
                     color      = MaterialTheme.colorScheme.primary,
                     fontWeight = FontWeight.SemiBold,

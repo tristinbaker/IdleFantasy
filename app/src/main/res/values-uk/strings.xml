@@ -904,7 +904,7 @@
     <string name="inn_slot2_header">Skilled Worker</string> <!-- untranslated -->
 
     <!-- ===== Combat difficulty ratings ===== -->
-    <string name="combat_difficulty_likely">Ти справишся</string>
+    <string name="combat_difficulty_likely">Ви справитесь</string>
     <string name="combat_difficulty_risky">Ризиковано з поточним білдом</string>
     <string name="combat_difficulty_unlikely">Ймовірна смерть</string>
 
@@ -2076,7 +2076,7 @@
     <string name="merc_vex_the_undying_name">Vex the Undying</string> <!-- untranslated -->
     <string name="merc_thane_dawnbringer_name">Thane Dawnbringer</string> <!-- untranslated -->
 
-    <string name="tower_title">Нексінченна башня</string>
+    <string name="tower_title">Безкінечна башта</string>
     <string name="tower_floor_label" formatted="false">Floor %d</string> <!-- untranslated -->
     <string name="tower_floor_desc">Infinite Tower floor %1$d</string> <!-- untranslated -->
     <string name="tower_best_floor" formatted="false">Best: Floor %d</string> <!-- untranslated -->

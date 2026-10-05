@@ -79,7 +79,7 @@
     <string name="bestiary_common_loot">Dažnai išmetami Daiktai</string>
     <string name="bestiary_pet_drop">Augintinio gavimo šansai</string>
     <string name="bestiary_atk_def">Atk Def</string>
-    <string name="bestiary_str_def">Str Def</string> <!-- untranslated -->
+    <string name="bestiary_str_def">Str Def</string>
     <string name="bestiary_rng_def">Rng Def</string> <!-- untranslated -->
     <string name="bestiary_mag_def">Mag Def</string> <!-- untranslated -->
     <string name="label_session_in_progress">Sesija Dabar Vyksta</string>
@@ -164,9 +164,9 @@
     <string name="label_losses">Pralaimejimai</string>
     <string name="label_active">Aktyvus</string>
     <string name="label_inactive">Neaktyvus</string>
-    <string name="label_boost">Boost</string> <!-- untranslated -->
+    <string name="label_boost">Bonusas</string>
     <string name="label_xp_boost">XP Padauginimas</string>
-    <string name="label_prestige_xp_boost">Prestige XP Boost</string> <!-- untranslated -->
+    <string name="label_prestige_xp_boost">Atgimimo XP Bonusas</string>
     <string name="label_weapon">Ginklas</string>
     <string name="label_armour">Šarvai</string>
     <string name="label_food">Maistas</string>
@@ -224,7 +224,7 @@
     <!-- Translator note: %1$s = skill display name, %2$d = level number -->
     <string name="format_skill_level">%1$s: Lygis %2$d</string>
     <!-- Translator note: %1$d = boost percentage -->
-    <string name="format_xp_boost_percent">+%1$d%% XP</string> <!-- untranslated -->
+    <string name="format_xp_boost_percent">+%1$d%% XP</string>
     <string name="format_coin_boost_percent">+%1$d%% monetų</string>
     <!-- Translator note: %1$s = item/resource name, %2$d = quantity drop amount -->
 
@@ -277,22 +277,22 @@
     <string name="error_patch_empty">Ši Lysvė Yra Tuščia.</string>
     <string name="error_crop_not_ready">Šis Derlius dar pilnai Neužaugo.</string>
     <string name="error_quest_active">Jus Jau Turite Aktyvią Užduotį</string>
-    <string name="error_quest_requirements_not_met">You don\'t meet the requirements for this quest.</string> <!-- untranslated -->
-    <string name="error_dungeon_level_too_low">Your combat level is too low for this dungeon.</string> <!-- untranslated -->
-    <string name="error_unknown">Something went wrong. Please try again.</string> <!-- untranslated -->
+    <string name="error_quest_requirements_not_met">"Tu Nesieki Reikalavimų Šiai Užduočiai. "</string>
+    <string name="error_dungeon_level_too_low">"Tavo Kovojimo Lygis Yra Per Žemas Šiam Požemiui. "</string>
+    <string name="error_unknown">"Kaškas Atsitiko Ne Taip. Prašau Pameginti Dar Kartą. "</string>
 
     <!-- ===== Session dialogs ===== -->
     <string name="session_abandon_title">Palikti Sesija?</string>
-    <string name="session_abandon_body">All progress from this session will be lost.</string> <!-- untranslated -->
+    <string name="session_abandon_body">"Visas Progresas Iš Šios Sesijos Bus Prarastas. "</string>
 
     <!-- ===== Onboarding ===== -->
-    <string name="onboarding_welcome_title">Welcome to Idle Fantasy</string> <!-- untranslated -->
+    <string name="onboarding_welcome_title">"Sveiki Atvykė į \"Idle Fantasy\" "</string>
     <string name="onboarding_welcome_body">Start a skill session and watch your character grow. Sessions run for one hour, even when the app is closed.</string> <!-- untranslated -->
     <string name="onboarding_first_session_hint">Tap any skill to get started.</string> <!-- untranslated -->
 
     <!-- ===== Settings ===== -->
-    <string name="settings_title">Settings</string> <!-- untranslated -->
-    <string name="settings_notifications">Session Notifications</string> <!-- untranslated -->
+    <string name="settings_title">Nustatymai</string>
+    <string name="settings_notifications">Sesijos Pranešimai</string>
     <string name="settings_notifications_desc">Show an alert when your session completes</string> <!-- untranslated -->
     <string name="settings_battery_optimization">Battery Optimization</string> <!-- untranslated -->
     <string name="settings_battery_optimization_desc">Disable battery optimization for Idle Fantasy to receive timely session alerts</string> <!-- untranslated -->

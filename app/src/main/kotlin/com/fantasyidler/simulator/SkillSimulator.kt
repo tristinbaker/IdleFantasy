@@ -204,7 +204,7 @@ object SkillSimulator {
             fishAccumulator += rodEfficiency
             val fishQty = fishAccumulator.toInt().coerceAtLeast(1)
             fishAccumulator -= fishQty
-            val items = mutableMapOf<String, Int>()
+            val items = mutableMapOf(fishKey to fishQty)
             if (fishingSkillData != null && random.nextDouble() > 0.8) {
                 val dropTable = getTierData(fishingSkillData.dropTables, levelBefore)
                 for (entry in dropTable) {
@@ -212,9 +212,6 @@ object SkillSimulator {
                         items[entry.item] = (items[entry.item] ?: 0) + 1
                     }
                 }
-                if (items.isEmpty()) items[fishKey] = fishQty
-            } else {
-                items[fishKey] = fishQty
             }
             if (petDropKey != null && petDropChance > 0.0 && random.nextDouble() < petDropChance) {
                 items[petDropKey] = 1

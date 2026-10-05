@@ -98,6 +98,40 @@ internal fun combatLevelsFor(isElder: Boolean, levels: Map<String, Int>, elderLe
     if (isElder) levels.mapValues { elderLevels[it.key] ?: 1 } else levels
 
 /**
+ * Gathering boosts for a queued mining/woodcutting/fishing session.
+ * Isle neutralises mainland boosts like the direct start (SkillsViewModel)
+ * and the queued agility branch: pet 0, tool 1.0, gem 1.0, pet drop null/0.
+ */
+internal data class QueuedGatheringBoosts(
+    val petBoostPct: Int,
+    val toolEfficiency: Float,
+    val gemChanceMult: Double,
+    val petDropKey: String?,
+    val petDropChance: Double,
+)
+
+internal fun queuedGatheringBoosts(
+    isElder: Boolean,
+    petBoostPct: Int,
+    toolEfficiency: Float,
+    gemChanceMult: Double,
+    petDropKey: String?,
+    petDropChance: Double,
+): QueuedGatheringBoosts = if (isElder) QueuedGatheringBoosts(
+    petBoostPct = 0,
+    toolEfficiency = 1.0f,
+    gemChanceMult = 1.0,
+    petDropKey = null,
+    petDropChance = 0.0,
+) else QueuedGatheringBoosts(
+    petBoostPct = petBoostPct,
+    toolEfficiency = toolEfficiency,
+    gemChanceMult = gemChanceMult,
+    petDropKey = petDropKey,
+    petDropChance = petDropChance,
+)
+
+/**
  * Starts the next queued session using current player state.
  * Shared between ViewModels (on collect) and [com.fantasyidler.receiver.SessionAlarmReceiver]
  * (background auto-advance).
@@ -464,6 +498,14 @@ class QueuedSessionStarter @Inject constructor(
             Skills.MINING -> {
                 val oreKey  = action.activityKey
                 val oreData = gameData.ores[oreKey] ?: return
+                val miningBoosts = queuedGatheringBoosts(
+                    isElder = isElder,
+                    petBoostPct = boostRepo.boostedPetPct(Skills.MINING, flags, gatheringPetBoost(player.pets, Skills.MINING, flags.ironman)),
+                    toolEfficiency = gameData.toolEfficiency(equipped[EquipSlot.PICKAXE], EquipSlot.PICKAXE, oreData.levelRequired, skillLevels = levels, heirloomXp = flags.heirloomXp) * boostRepo.toolEffMultiplier(Skills.MINING, flags, levels[Skills.MINING] ?: 1),
+                    gemChanceMult = boostRepo.bonusRollMultiplier(Skills.MINING, flags),
+                    petDropKey = petDropKey(Skills.MINING),
+                    petDropChance = petDropChance(Skills.MINING),
+                )
                 val result  = SkillSimulator.simulateMining(
                     oreKey          = oreKey,
                     oreData         = oreData,
@@ -471,27 +513,35 @@ class QueuedSessionStarter @Inject constructor(
                     startXp         = xpMap[Skills.MINING] ?: 0L,
                     agilityLevel    = agilityLevel,
                     floorReductionMin = floorReductionMin,
-                    petBoostPct     = boostRepo.boostedPetPct(Skills.MINING, flags, gatheringPetBoost(player.pets, Skills.MINING, flags.ironman)),
-                    toolEfficiency  = gameData.toolEfficiency(equipped[EquipSlot.PICKAXE], EquipSlot.PICKAXE, oreData.levelRequired, skillLevels = levels, heirloomXp = flags.heirloomXp) * boostRepo.toolEffMultiplier(Skills.MINING, flags, levels[Skills.MINING] ?: 1),
-                    petDropKey      = petDropKey(Skills.MINING),
-                    petDropChance   = petDropChance(Skills.MINING),
+                    petBoostPct     = miningBoosts.petBoostPct,
+                    toolEfficiency  = miningBoosts.toolEfficiency,
+                    petDropKey      = miningBoosts.petDropKey,
+                    petDropChance   = miningBoosts.petDropChance,
                     chronosMultiplier = chronosMult,
-                    gemChanceMult   = boostRepo.bonusRollMultiplier(Skills.MINING, flags),
+                    gemChanceMult   = miningBoosts.gemChanceMult,
                 )
                 startSession(action, result, offline, backdateMs, levelAtStart, isElderSession = isElder, isleSessionMs = effectiveSessionMs)
             }
             Skills.WOODCUTTING -> {
                 val treeKey  = action.activityKey
                 val treeData = gameData.trees[treeKey] ?: return
+                val woodcuttingBoosts = queuedGatheringBoosts(
+                    isElder = isElder,
+                    petBoostPct = boostRepo.boostedPetPct(Skills.WOODCUTTING, flags, gatheringPetBoost(player.pets, Skills.WOODCUTTING, flags.ironman)),
+                    toolEfficiency = gameData.toolEfficiency(equipped[EquipSlot.AXE], EquipSlot.AXE, treeData.levelRequired, skillLevels = levels, heirloomXp = flags.heirloomXp) * boostRepo.toolEffMultiplier(Skills.WOODCUTTING, flags, levels[Skills.WOODCUTTING] ?: 1),
+                    gemChanceMult = 1.0,
+                    petDropKey = petDropKey(Skills.WOODCUTTING),
+                    petDropChance = petDropChance(Skills.WOODCUTTING),
+                )
                 val result   = SkillSimulator.simulateWoodcutting(
                     treeData        = treeData,
                     startXp         = xpMap[Skills.WOODCUTTING] ?: 0L,
                     agilityLevel    = agilityLevel,
                     floorReductionMin = floorReductionMin,
-                    petBoostPct     = boostRepo.boostedPetPct(Skills.WOODCUTTING, flags, gatheringPetBoost(player.pets, Skills.WOODCUTTING, flags.ironman)),
-                    toolEfficiency  = gameData.toolEfficiency(equipped[EquipSlot.AXE], EquipSlot.AXE, treeData.levelRequired, skillLevels = levels, heirloomXp = flags.heirloomXp) * boostRepo.toolEffMultiplier(Skills.WOODCUTTING, flags, levels[Skills.WOODCUTTING] ?: 1),
-                    petDropKey      = petDropKey(Skills.WOODCUTTING),
-                    petDropChance   = petDropChance(Skills.WOODCUTTING),
+                    petBoostPct     = woodcuttingBoosts.petBoostPct,
+                    toolEfficiency  = woodcuttingBoosts.toolEfficiency,
+                    petDropKey      = woodcuttingBoosts.petDropKey,
+                    petDropChance   = woodcuttingBoosts.petDropChance,
                     chronosMultiplier = chronosMult,
                 )
                 startSession(action, result, offline, backdateMs, levelAtStart, isElderSession = isElder, isleSessionMs = effectiveSessionMs)
@@ -499,16 +549,24 @@ class QueuedSessionStarter @Inject constructor(
             Skills.FISHING -> {
                 val fishKey  = action.activityKey
                 val fishData = gameData.fish[fishKey] ?: return
+                val fishingBoosts = queuedGatheringBoosts(
+                    isElder = isElder,
+                    petBoostPct = boostRepo.boostedPetPct(Skills.FISHING, flags, gatheringPetBoost(player.pets, Skills.FISHING, flags.ironman)),
+                    toolEfficiency = gameData.toolEfficiency(equipped[EquipSlot.FISHING_ROD], EquipSlot.FISHING_ROD, fishData.levelRequired, skillLevels = levels, heirloomXp = flags.heirloomXp) * boostRepo.toolEffMultiplier(Skills.FISHING, flags, levels[Skills.FISHING] ?: 1),
+                    gemChanceMult = 1.0,
+                    petDropKey = petDropKey(Skills.FISHING),
+                    petDropChance = petDropChance(Skills.FISHING),
+                )
                 val result   = SkillSimulator.simulateFishing(
                     fishKey          = fishKey,
                     fishData         = fishData,
                     startXp          = xpMap[Skills.FISHING] ?: 0L,
                     agilityLevel     = agilityLevel,
                     floorReductionMin  = floorReductionMin,
-                    petBoostPct      = boostRepo.boostedPetPct(Skills.FISHING, flags, gatheringPetBoost(player.pets, Skills.FISHING, flags.ironman)),
-                    rodEfficiency    = gameData.toolEfficiency(equipped[EquipSlot.FISHING_ROD], EquipSlot.FISHING_ROD, fishData.levelRequired, skillLevels = levels, heirloomXp = flags.heirloomXp) * boostRepo.toolEffMultiplier(Skills.FISHING, flags, levels[Skills.FISHING] ?: 1),
-                    petDropKey       = petDropKey(Skills.FISHING),
-                    petDropChance    = petDropChance(Skills.FISHING),
+                    petBoostPct      = fishingBoosts.petBoostPct,
+                    rodEfficiency    = fishingBoosts.toolEfficiency,
+                    petDropKey       = fishingBoosts.petDropKey,
+                    petDropChance    = fishingBoosts.petDropChance,
                     fishingSkillData = gameData.fishingSkillData,
                     chronosMultiplier = chronosMult,
                 )
