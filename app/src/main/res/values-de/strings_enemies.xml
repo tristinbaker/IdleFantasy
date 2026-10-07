@@ -180,12 +180,12 @@
     <string name="dungeon_ancient_forest_desc">A rune-laced jungle grown over an old library. Grove stalkers and rune-touched dryads keep visitors from the ruins beneath. One Ancient Sigil per clear.</string> <!-- untranslated -->
     <string name="dungeon_volcano_peak_name">Volcano Peak</string> <!-- untranslated -->
     <string name="dungeon_volcano_peak_desc">The isle\'s smoking spine, once an Elder altar. Ash beasts and lava wraiths guard the sealing site. Two Ancient Sigils per clear.</string> <!-- untranslated -->
-    <string name="dungeon_abyssal_depths_name">Abyssal Depths</string> <!-- untranslated -->
+    <string name="dungeon_abyssal_depths_name">Abyssale Tiefen</string>
     <string name="dungeon_abyssal_depths_desc">A flooded pressure-chamber at the foot of the isle, where the Last Elder waits. Abyssal horrors and void seraphs patrol the approach. Three Ancient Sigils per clear.</string> <!-- untranslated -->
 
     <!-- Elder Isle raid bosses -->
     <string name="boss_sea_serpent_name">Seeschlange</string>
     <string name="boss_sea_serpent_desc">Der Seereise Endgegner. Eine Schlange übersät mit Runennarben, die die Insel umkreist und jeden zurückschickt, den sie nicht ertränkt. Besiege sie einmal um permanent die Seeschiffahrt frei zu schalten.</string>
-    <string name="boss_last_elder_name">The Last Elder</string> <!-- untranslated -->
+    <string name="boss_last_elder_name">Der letzte Älteste</string>
     <string name="boss_last_elder_desc">The last of the Elders, sealed at the bottom of the Abyssal Depths. Only a full Elder set can survive the fight.</string> <!-- untranslated -->
 </resources>
