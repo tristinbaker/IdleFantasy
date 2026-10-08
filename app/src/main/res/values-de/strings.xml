@@ -325,7 +325,7 @@
     <string name="settings_home_screen">Startbildschirm</string>
     <string name="settings_home_screen_desc">Wählt aus, was auf dem Startbildschirm angezeigt wird</string>
     <string name="settings_recent_activity">Protokoll der letzten Aktivitäten</string>
-    <string name="settings_recent_activity_desc">Schaltfläche „Letzte Aktivität" in der Kopfzeile der Startseite anzeigen</string>
+    <string name="settings_recent_activity_desc">Schaltfläche „Letzte Aktivität\" in der Kopfzeile der Startseite anzeigen</string>
     <string name="settings_journal_button">Journal-Schaltfläche</string>
     <string name="settings_journal_button_desc">Zeigt eine Journal-Schaltfläche in der oberen Leiste der Startseite zum Notieren an</string>
     <string name="settings_seasonal_events">Saisonale Ereignisse</string>
@@ -670,7 +670,7 @@
     <string name="profile_stat_cooking">Kochen</string>
     <string name="profile_stat_thieving">Diebstahl</string>
     <string name="profile_stat_def">VER</string>
-    <string name="profile_req_lv">Benötigt Level </string>
+    <string name="profile_req_lv">"Benötigt Level "</string>
 
     <!-- ===== SkillsScreen ===== -->
     <!-- Translator note: %1$d = session duration in minutes -->
@@ -763,7 +763,7 @@
     <string name="shop_total_amount">%1$s Münzen</string>
 
     <!-- ===== CraftingScreen ===== -->
-    <string name="crafting_no_mats">No materials</string> <!-- untranslated -->
+    <string name="crafting_no_mats">keine Materialien</string>
     <!-- Translator note: %1$d = total quantity, %2$s = item name -->
     <string name="crafting_produces">= %1$d %2$s</string>
     <string name="crafting_effects">Effekte</string>
@@ -1585,14 +1585,14 @@
     <string name="town_artisans_workshop_active_bonus">%1$d%% Chance, sekundäre Herstellungsmaterialien einzusparen</string>
     <string name="town_building_chronos_spire_name">Chronos-Turm</string>
     <string name="town_building_dock_name">Dock</string>
-    <string name="town_dock_no_bonus">Upgrade to sail to new locations</string> <!-- untranslated -->
-    <string name="town_dock_t1_bonus">Unlocks sailing to the Elder Isle</string> <!-- untranslated -->
+    <string name="town_dock_no_bonus">"\nUpgrade um zum einem neuen Ort zu gelangen"</string>
+    <string name="town_dock_t1_bonus">Ermöglicht dir zur Insel des Ältesten zu segeln</string>
     <string name="elder_isle_title">Ältere Insel</string>
     <string name="elder_isle_sail_title">Segle zur Älteren Insel</string>
     <string name="elder_isle_zone_beach">Strand &amp; Klippen</string>
     <string name="elder_isle_zone_forest">Älterer Forst</string>
     <string name="elder_isle_zone_volcano">Vulkanspitze</string>
-    <string name="elder_isle_zone_abyss">Abyssal Depths</string> <!-- untranslated -->
+    <string name="elder_isle_zone_abyss">abgrundtiefen Tiefen</string>
     <string name="elder_isle_zone_locked">Gesperrt</string>
     <string name="elder_isle_coming_soon">Demnächst verfügbar</string>
     <string name="elder_isle_boss_sea_serpent">Seeschlange</string>
@@ -1605,13 +1605,13 @@
     <string name="elder_isle_dock_unlocked_body">Das Pier ist fertig und die Boote warten, aber keine Crew wird die Überfahrt machen wollen, solange die Seeschlange, die jede vorherigen Reiseversuche ertränkt hat, tot ist. Finde sie im Festland Reiter der Kampfverliese unter den Endgegnern. Die Passage öffnet sich, sobald sie gefallen ist.</string>
     <string name="elder_isle_dock_unlocked_cta">Stelle dich der Seeschlange</string>
     <string name="elder_isle_dock_unlocked_later">Später</string>
-    <string name="boss_masked_name">\?\?\?</string>
+    <string name="boss_masked_name">\\?\\?\\?</string>
     <string name="boss_last_elder_masked_desc">Etwas uraltes schlummert in den Tiefen der Insel. Vereine die ältesten um es zu stellen.</string>
-    <string name="elder_isle_welcome_title">Landfall on Elder Isle</string> <!-- untranslated -->
-    <string name="elder_isle_welcome_body">The salt spray fades and the fog lifts. Ahead: a bone-white shore, a jungle laced with pale runes, and further in, smoke curling from a peak that shouldn\'t be smoking. The old sailors were right. Something ancient still lives here.\n\nYour mainland skills, boosts, and gear stay on the ship. Everything you level or craft on the isle grows a separate track of its own. Elder gear will carry back to the mainland; mainland power will not carry here.\n\nStart with the Skills tab. Head to Mining or Woodcutting to gather isle materials. Then check the Quests tab for your first objective, and open the Lore Master in town whenever a new fragment unlocks.</string> <!-- untranslated -->
+    <string name="elder_isle_welcome_title">Willkommen auf der Ältesten Insel</string>
+    <string name="elder_isle_welcome_body">The salt spray fades and the fog lifts. Ahead: a bone-white shore, a jungle laced with pale runes, and further in, smoke curling from a peak that shouldn\'t be smoking. The old sailors were right. Something ancient still lives here.\n\nYour mainland skills, boosts, and gear stay on the ship. Everything you level or craft on the isle grows a separate track of its own. Elder gear will carry back to the mainland; mainland power will not carry here.\n\nStart with the Skills tab. Head to Mining or Woodcutting to gather isle materials. Then check the Quests tab for your first objective, and open the Lore Master in town whenever a new fragment unlocks.</string>
     <string name="elder_isle_welcome_cta">Trete an Land</string>
-    <string name="elder_isle_stub_skills">Elder skills are being charted. Full skill tracks arrive in a later build.</string> <!-- untranslated -->
-    <string name="elder_isle_stub_combat">Elder dungeons and the Last Elder fight are being drawn up. Later build.</string> <!-- untranslated -->
+    <string name="elder_isle_stub_skills">Die Ältesten Fähigkeiten werden noch überarbeitet.\nDie finalen Fähigkeiten werden mit einer späteren Version hinzugefügt.</string>
+    <string name="elder_isle_stub_combat">Elder dungeons and the Last Elder fight are being drawn up. Later build.</string>
     <string name="elder_isle_stub_quests">Insel Aufgaben werden hier erscheinen, sobald die zugehörige Geschichte erscheint.</string>
     <string name="elder_isle_stub_profile">Insel Boni und Ausrüstungalayouts werden mit dem Fähigkeitenpfade Update erscheinen.</string>
     <string name="elder_isle_skills_title">Fähigkeiten der Ältesten</string>
@@ -1634,12 +1634,12 @@
     <string name="elder_isle_tab_bosses">Endgegner</string>
     <string name="elder_isle_shop_title">Inselladen</string>
     <string name="elder_isle_shop_buy">Kaufe</string>
-    <string name="elder_isle_shop_soon">Coming later</string> <!-- untranslated -->
+    <string name="elder_isle_shop_soon">Kommt später</string>
     <string name="elder_isle_shop_insufficient">Nicht ausreichend Essenz der Ältesten.</string>
     <string name="elder_isle_shop_purchased">%1$s gekauft.</string>
     <string name="elder_isle_shop_button">Besuche den Inselladen</string>
     <string name="elder_isle_armor_master_title">Älterer Rüstungsmeister</string>
-    <string name="elder_isle_lore_master_title">Lore Master</string> <!-- untranslated -->
+    <string name="elder_isle_lore_master_title">Meister der Sagen und Geschichten</string>
     <string name="elder_armor_missing_mats">Nicht genug Material.</string>
     <string name="elder_armor_crafted">%1$s hergestellt.</string>
     <string name="elder_armor_queue_full">Herstellungskosten Warteschlange ist voll (3).</string>
@@ -1660,15 +1660,15 @@
     <string name="item_voidsteel_bar_name">Leerenstahl Barren</string>
     <string name="item_starforged_bar_name">Barren der Sternenschmiede</string>
     <string name="item_coastal_pine_log_name">Küstenpinienstamm</string>
-    <string name="item_grove_oak_log_name">Grove Oak Log</string> <!-- untranslated -->
+    <string name="item_grove_oak_log_name">Eichenhain Holz</string>
     <string name="item_abyssal_log_name">Stamm der Tiefe</string>
     <string name="item_starwood_log_name">Sternholz Stamm</string>
-    <string name="item_raw_tidepool_crab_name">Tidepool Crab (raw)</string> <!-- untranslated -->
-    <string name="item_raw_grove_bass_name">Grove Bass (raw)</string> <!-- untranslated -->
+    <string name="item_raw_tidepool_crab_name">rohe Gezeitenkrabbe</string>
+    <string name="item_raw_grove_bass_name">Grove Bass (raw)</string>
     <string name="item_raw_lavafin_name">Lavaflosse (roh)</string>
     <string name="item_raw_deepwater_ray_name">Tiefseerochen (roh)</string>
-    <string name="item_tidepool_crab_name">Tidepool Crab</string> <!-- untranslated -->
-    <string name="item_grove_bass_name">Grove Bass</string> <!-- untranslated -->
+    <string name="item_tidepool_crab_name">Gezeitenkrabbe</string>
+    <string name="item_grove_bass_name">Grove Bass</string>
     <string name="item_lavafin_name">Lavaflosse</string>
     <string name="item_deepwater_ray_name">Tiefseerochen</string>
     <string name="item_elder_bone_name">Älterer Knochen</string>
@@ -1678,7 +1678,7 @@
 
     <!-- Elder Isle: gathering targets (trees) -->
     <string name="item_coastal_pine_name">Küstenpinie</string>
-    <string name="item_grove_oak_name">Grove Oak</string> <!-- untranslated -->
+    <string name="item_grove_oak_name">Eichenhain</string>
     <string name="item_abyssal_tree_name">Baum der Tiefe</string>
     <string name="item_starwood_tree_name">Sternholz Baum</string>
 
@@ -1687,47 +1687,47 @@
     <string name="item_coastal_platebody_name">Küstenbrustpanzer</string>
     <string name="item_coastal_platelegs_name">Küstenbeinschienen</string>
     <string name="item_coastal_boots_name">Küstenstiefel</string>
-    <string name="item_grove_helm_name">Grove Helm</string> <!-- untranslated -->
-    <string name="item_grove_platebody_name">Grove Platebody</string> <!-- untranslated -->
-    <string name="item_grove_platelegs_name">Grove Platelegs</string> <!-- untranslated -->
-    <string name="item_grove_boots_name">Grove Boots</string> <!-- untranslated -->
+    <string name="item_grove_helm_name">Holzhelm</string>
+    <string name="item_grove_platebody_name">Holzplattenrüstung</string>
+    <string name="item_grove_platelegs_name">Grove Platelegs</string>
+    <string name="item_grove_boots_name">Holzstiefel</string>
     <string name="item_volcanic_helm_name">Vulkanischer Helm</string>
     <string name="item_volcanic_platebody_name">Vulkanischer Brustpanzer</string>
     <string name="item_volcanic_platelegs_name">Vulkanische Beinschienen</string>
     <string name="item_volcanic_boots_name">Vulkanische Stiefel</string>
-    <string name="item_elder_helm_name">Elder Helm</string> <!-- untranslated -->
-    <string name="item_elder_platebody_name">Elder Platebody</string> <!-- untranslated -->
-    <string name="item_elder_platelegs_name">Elder Platelegs</string> <!-- untranslated -->
-    <string name="item_elder_boots_name">Elder Boots</string> <!-- untranslated -->
-    <string name="item_elder_cape_name">Elder Cape</string> <!-- untranslated -->
-    <string name="item_elder_shield_name">Elder Shield</string> <!-- untranslated -->
-    <string name="item_elder_signet_ring_name">Elder Signet Ring</string> <!-- untranslated -->
-    <string name="item_elder_amulet_name">Elder Amulet</string> <!-- untranslated -->
-    <string name="item_ancient_signet_name">Ancient Signet</string> <!-- untranslated -->
+    <string name="item_elder_helm_name">Ältestenhelm</string>
+    <string name="item_elder_platebody_name">Elder Platebody</string>
+    <string name="item_elder_platelegs_name">Elder Platelegs</string>
+    <string name="item_elder_boots_name">Elder Boots</string>
+    <string name="item_elder_cape_name">Elder Cape</string>
+    <string name="item_elder_shield_name">Elder Shield</string>
+    <string name="item_elder_signet_ring_name">Elder Signet Ring</string>
+    <string name="item_elder_amulet_name">Elder Amulet</string>
+    <string name="item_ancient_signet_name">Ancient Signet</string>
 
     <!-- Elder Isle: sigil stones (four wired, two shipped-but-cosmetic) -->
-    <string name="item_elder_sapphire_name">Sapphire Sigil Stone</string> <!-- untranslated -->
-    <string name="item_elder_ruby_name">Ruby Sigil Stone</string> <!-- untranslated -->
-    <string name="item_elder_emerald_name">Emerald Sigil Stone</string> <!-- untranslated -->
-    <string name="item_elder_amethyst_name">Amethyst Sigil Stone</string> <!-- untranslated -->
-    <string name="item_elder_topaz_name">Topaz Sigil Stone</string> <!-- untranslated -->
-    <string name="item_elder_diamond_name">Diamond Sigil Stone</string> <!-- untranslated -->
+    <string name="item_elder_sapphire_name">Sapphire Sigil Stone</string>
+    <string name="item_elder_ruby_name">Ruby Sigil Stone</string>
+    <string name="item_elder_emerald_name">Emerald Sigil Stone</string>
+    <string name="item_elder_amethyst_name">Amethyst Sigil Stone</string>
+    <string name="item_elder_topaz_name">Topaz Sigil Stone</string>
+    <string name="item_elder_diamond_name">Diamond Sigil Stone</string>
 
     <!-- Elder Isle: pet item entries (parallel to pet_* below; used by drop tables and inventory) -->
-    <string name="item_tidal_sprite_name">Tidal Sprite</string> <!-- untranslated -->
-    <string name="item_grove_fawn_name">Grove Fawn</string> <!-- untranslated -->
-    <string name="item_magma_salamander_name">Magma Salamander</string> <!-- untranslated -->
-    <string name="item_abyss_wisp_name">Abyss Wisp</string> <!-- untranslated -->
-    <string name="item_ancient_turtle_name">Ancient Turtle</string> <!-- untranslated -->
-    <string name="item_cinder_hawk_name">Cinder Hawk</string> <!-- untranslated -->
+    <string name="item_tidal_sprite_name">Tidal Sprite</string>
+    <string name="item_grove_fawn_name">Grove Fawn</string>
+    <string name="item_magma_salamander_name">Magma Salamander</string>
+    <string name="item_abyss_wisp_name">Abyss Wisp</string>
+    <string name="item_ancient_turtle_name">Ancient Turtle</string>
+    <string name="item_cinder_hawk_name">Cinder Hawk</string>
     <string name="item_deepwater_serpent_name">Tiefwasserschlange</string>
-    <string name="item_elder_familiar_name">Elder Familiar</string> <!-- untranslated -->
+    <string name="item_elder_familiar_name">Elder Familiar</string>
 
     <!-- Elder Isle: ore descriptions -->
-    <string name="item_mythrite_ore_desc">Silvery isle ore. Smelts into Mythrite Bars, the base metal of the Coastal armor tier.</string> <!-- untranslated -->
-    <string name="item_abyssal_ore_desc">Dark isle ore laced with pressure-cracked veins. Smelts into Abyssal Bars for Grove-tier gear.</string> <!-- untranslated -->
-    <string name="item_voidsteel_ore_desc">Isle ore that hums faintly under pressure. Smelts into Voidsteel Bars for Volcanic-tier gear.</string> <!-- untranslated -->
-    <string name="item_starforged_ore_desc">The isle\'s rarest ore, said to be shed from the seal itself. Smelts into Starforged Bars for the Elder set.</string> <!-- untranslated -->
+    <string name="item_mythrite_ore_desc">Silvery isle ore. Smelts into Mythrite Bars, the base metal of the Coastal armor tier.</string>
+    <string name="item_abyssal_ore_desc">Dark isle ore laced with pressure-cracked veins. Smelts into Abyssal Bars for Grove-tier gear.</string>
+    <string name="item_voidsteel_ore_desc">Isle ore that hums faintly under pressure. Smelts into Voidsteel Bars for Volcanic-tier gear.</string>
+    <string name="item_starforged_ore_desc">The isle\'s rarest ore, said to be shed from the seal itself. Smelts into Starforged Bars for the Elder set.</string>
     <string name="town_chronos_spire_no_bonus">Verbessere, um die Dauer der Spieler-Aktivitäten zu verringern</string>
     <string name="town_chronos_spire_active_bonus">%1$d%% Verringerung der Dauer der Spieler-Aktivitäten</string>
 
@@ -1961,7 +1961,7 @@
     <string name="combat_start_anyway">Trotzdem starten</string>
     <string name="combat_xp_consolation">EP (Trost)</string>
     <string name="bestiary_loot_item_header">Gegenstand</string>
-    <string name="worker_no_mats">No materials</string> <!-- untranslated -->
+    <string name="worker_no_mats">No materials</string>
     <string name="bonus_section_skills">Fähigkeits-Bonus</string>
     <string name="bonus_combat_stat_boost">Verstärkt Kampffähigkeiten</string>
     <string name="bonus_combined_xp">EP gesamt</string>
@@ -2026,7 +2026,7 @@
     <string name="title_patron_of_the_realm_name">Schirmherr des Reiches</string>
     <string name="title_patron_of_the_realm_requirement">Vollendet das Große Monument</string>
     <string name="title_isle_champion_name">Inselchampion</string>
-    <string name="title_isle_champion_requirement">Defeat the Last Elder on Elder Isle</string> <!-- untranslated -->
+    <string name="title_isle_champion_requirement">Defeat the Last Elder on Elder Isle</string>
     <string name="item_gilded_full_helmet_name">Vergoldeter Vollvisierhelm</string>
     <string name="item_gilded_platebody_name">Vergoldeter Plattenpanzer</string>
     <string name="item_gilded_kiteshield_name">Vergoldeter Langspitzschild</string>
@@ -2041,7 +2041,7 @@
 
     <!-- ===== Infinite Tower ===== -->
     <!-- Raids and mercenaries -->
-    <string name="raid_section_title">Raids</string> <!-- untranslated -->
+    <string name="raid_section_title">Raids</string>
     <string name="raid_section_desc">Gegner die kein Held alleine bezwingen kann. Heuere zuerst weitere Söldner an.</string>
     <string name="raid_party_status">Angeheuerte Söldner: %1$d/%2$d</string>
     <string name="raid_party_title">Raid-Gruppe</string>
@@ -2153,7 +2153,7 @@
     <string name="seasonal_bounty_sunspire_firewood_hint">Fällt Eichenstämme — Holzfällerei</string>
     <string name="seasonal_bounty_sunspire_kindling_name">Sammelt Anzündmaterial für das Lagerfeuer</string>
     <string name="seasonal_bounty_sunspire_kindling_hint">Fällt Weidenstämme — Holzfällerei</string>
-    <string name="seasonal_bounty_sunspire_sunore_name">Grabt nach Gold um den Sonnenturm zu vergolden	</string>
+    <string name="seasonal_bounty_sunspire_sunore_name">"Grabt nach Gold um den Sonnenturm zu vergolden	"</string>
     <string name="seasonal_bounty_sunspire_sunore_hint">Grabt nach Gold — Bergbau</string>
     <string name="seasonal_bounty_sunspire_draughts_name">Braut Stärke-Zaubertrank</string>
     <string name="seasonal_bounty_sunspire_draughts_hint">Kräuterkunde</string>
@@ -2296,7 +2296,7 @@
 
     <string name="settings_credit_characters_title">Charakter Sprites</string>
     <string name="settings_credit_characters_subtitle">Kunst von Pixylac</string>
-    <string name="settings_credit_bosses_title">Boss Sprites</string> <!-- untranslated -->
+    <string name="settings_credit_bosses_title">Boss Sprites</string>
     <string name="settings_credit_bosses_subtitle">Kunst von Meg</string>
     <string name="settings_credit_house_title">Inneneinrichtung</string>
 
@@ -2325,7 +2325,7 @@
     <string name="pet_baby_balrog_desc">Ein kleiner Dämon aus Feuer und Schatten, der deine Magie verstärkt.</string>
     <string name="pet_void_wisp_name">Leerengeist</string>
     <string name="pet_void_wisp_desc">Ein Fragment der Essenz des Leerenbotschafters, an jene gebunden, die seinen Meister besiegten. Vermehrt Kampf-Erfahrung.</string>
-    <string name="pet_graceling_sprite_name">Graceling Sprite</string> <!-- untranslated -->
+    <string name="pet_graceling_sprite_name">Graceling Sprite</string>
     <string name="pet_graceling_sprite_desc">Eine flinke, aus tausenden in Stille gelaufenen Runden geborene Fee. Leitet deine Füße mit unheimlicher Gnade.</string>
     <string name="pet_shadow_fox_name">Schattenfuchs</string>
     <string name="pet_shadow_fox_desc">Ein listiger Fuchs, aus den Schatten unzähliger Taschendiebstähle materialisiert.</string>
@@ -2349,7 +2349,7 @@
     <string name="pet_juggling_imp_desc" formatted="false">Ein verspielter Kobold, der deine Sorgen wegjongliert. Er erhöht jedes Fähigkeiten-EP um 3%.</string>
     <string name="pet_tower_pet_name">Steinwächter</string>
     <string name="pet_tower_pet_desc">Ein uralter Steingolem, der die Geheimnisse des Turms bewacht. Erhöht Kampf-EP.</string>
-    <string name="pet_solstice_sprite_name">Solstice Sprite</string> <!-- untranslated -->
+    <string name="pet_solstice_sprite_name">Solstice Sprite</string>
     <string name="pet_solstice_sprite_desc">Ein kleiner Glutgeist aus dem Sonnenwende-Sommerturm-Event, der dein Können im Kampf verbessert.</string>
     <string name="pet_lantern_wisp_name">Laternengeist</string>
     <string name="pet_lantern_wisp_desc">Eine grinsende Kürbislaterne, die aus der Krone des hohlen Königs entkommen ist und dir nun auf dem Weg in die Schlacht leuchtet.</string>
@@ -2359,22 +2359,22 @@
     <string name="pet_golden_goose_desc">Eine königliche Gans, die auf dem vergoldeten Monument nistet. Münzen scheinen einfach ihren Hüter zu finden.</string>
 
     <!-- Elder Isle pets: 7 dungeon drops + 1 raid-boss drop -->
-    <string name="pet_tidal_sprite_name">Tidal Sprite</string> <!-- untranslated -->
-    <string name="pet_tidal_sprite_desc">A shimmering water spirit born from the surf of Beach &amp; Cliffs. Never seems to fully dry.</string> <!-- untranslated -->
-    <string name="pet_grove_fawn_name">Grove Fawn</string> <!-- untranslated -->
-    <string name="pet_grove_fawn_desc">A young forest creature with rune-patterned fur, found among the ancient trees.</string> <!-- untranslated -->
-    <string name="pet_magma_salamander_name">Magma Salamander</string> <!-- untranslated -->
-    <string name="pet_magma_salamander_desc">A heat-forged lizard that thrives in Volcano Peak\'s cracks. Its skin is always faintly warm.</string> <!-- untranslated -->
-    <string name="pet_abyss_wisp_name">Abyss Wisp</string> <!-- untranslated -->
-    <string name="pet_abyss_wisp_desc">A cold silver light that drifted up from the Abyssal Depths and refused to sink back.</string> <!-- untranslated -->
+    <string name="pet_tidal_sprite_name">Tidal Sprite</string>
+    <string name="pet_tidal_sprite_desc">A shimmering water spirit born from the surf of Beach &amp; Cliffs. Never seems to fully dry.</string>
+    <string name="pet_grove_fawn_name">Grove Fawn</string>
+    <string name="pet_grove_fawn_desc">A young forest creature with rune-patterned fur, found among the ancient trees.</string>
+    <string name="pet_magma_salamander_name">Magma Salamander</string>
+    <string name="pet_magma_salamander_desc">A heat-forged lizard that thrives in Volcano Peak\'s cracks. Its skin is always faintly warm.</string>
+    <string name="pet_abyss_wisp_name">Abyss Wisp</string>
+    <string name="pet_abyss_wisp_desc">A cold silver light that drifted up from the Abyssal Depths and refused to sink back.</string>
     <string name="pet_ancient_turtle_name">Uralte Schildkröte</string>
     <string name="pet_ancient_turtle_desc">Eine winzige Schildkröte, deren Panzer dieselben Runen trägt wie das Siegel der Insel. Älter, als sie aussieht.</string>
-    <string name="pet_cinder_hawk_name">Cinder Hawk</string> <!-- untranslated -->
-    <string name="pet_cinder_hawk_desc">A bird of banked embers that circles the volcano and roosts on your shoulder between fights.</string> <!-- untranslated -->
+    <string name="pet_cinder_hawk_name">Cinder Hawk</string>
+    <string name="pet_cinder_hawk_desc">A bird of banked embers that circles the volcano and roosts on your shoulder between fights.</string>
     <string name="pet_deepwater_serpent_name">Tiefwasserschlange</string>
     <string name="pet_deepwater_serpent_desc">Ein kleiner Vetter der Seeschlange, wickelt sich um dein Handgelenk wie ein lebendiger Armreif.</string>
-    <string name="pet_elder_familiar_name">Elder Familiar</string> <!-- untranslated -->
-    <string name="pet_elder_familiar_desc">The Last Elder\'s dying companion, bound now to whoever felled its master. Its eyes still remember.</string> <!-- untranslated -->
+    <string name="pet_elder_familiar_name">Elder Familiar</string>
+    <string name="pet_elder_familiar_desc">The Last Elder\'s dying companion, bound now to whoever felled its master. Its eyes still remember.</string>
 
     <!-- Save slots / character manager -->
     <string name="settings_characters">Charaktere</string>
@@ -2399,7 +2399,7 @@
     <string name="save_slot_delete_body">%1$s endgültig löschen? Dies kann nicht rückgängig gemacht werden.</string>
     <string name="save_slot_delete_btn">Löschen</string>
     <string name="save_slot_switch_failed">Charakterwechsel fehlgeschlagen.</string>
-    <string name="collect_blocked_switching">Character switch in progress. Please wait and try again.</string> <!-- untranslated -->
+    <string name="collect_blocked_switching">Character switch in progress. Please wait and try again.</string>
 
     <!-- Ironman mode -->
     <string name="character_ironman_title">Ironman-Modus</string>
@@ -2490,9 +2490,9 @@
     <string name="prestige_effect_xp_pct">+%1$d%% EP in dieser Fähigkeiten.</string>
     <string name="prestige_effect_yield_pct">+%1$d%% Gegenstände von den Aktivitäten dieser Fähigkeit.</string>
     <!-- Translator note: %1$s = yield percent per interval (may be fractional) -->
-    <string name="prestige_effect_flow_rate">Flow-state: +%1$s%% yield per interval of continuous activity, up to +100%%.</string> <!-- untranslated -->
+    <string name="prestige_effect_flow_rate">Flow-state: +%1$s%% yield per interval of continuous activity, up to +100%%.</string>
     <!-- Translator note: %1$d = minutes removed from the flow interval -->
-    <string name="prestige_effect_flow_interval_reduction">Flow-state interval shortened by %1$d minutes.</string> <!-- untranslated -->
+    <string name="prestige_effect_flow_interval_reduction">Flow-state interval shortened by %1$d minutes.</string>
     <string name="prestige_effect_combat_stat_flat">+%1$d effektive Stufen im Kampf.</string>
     <!-- Translator note: %1$s = minutes (may be fractional) -->
     <string name="prestige_effect_session_floor_min">Aktivitäten sind auf Stufe 99 um %1$s Minuten kürzer.</string>
@@ -2508,18 +2508,18 @@
     <string name="prestige_effect_heal_pct">Nahrung heilt im Kampf um +%1$d%% mehr.</string>
     <string name="prestige_effect_death_keep_pct">Behalte bei einer Niederlage zusätzlich %1$d%% an EP und Beute.</string>
     <string name="prestige_effect_queue_slot">+%1$d Warteschlangenplätze.</string>
-    <string name="prestige_effect_pet_boost_pct">Pet boosts for this skill are %1$d%% stronger.</string> <!-- untranslated -->
+    <string name="prestige_effect_pet_boost_pct">Pet boosts for this skill are %1$d%% stronger.</string>
     <string name="prestige_effect_blessing_duration_pct">Kirchliche Segen halten %1$d%% länger an.</string>
     <string name="prestige_effect_blessing_cost_pct">Kirchliche Segen kosten %1$d%% weniger Knochen.</string>
-    <string name="prestige_effect_potion_bonus_flat">Combat potions grant +%1$d more to their stats.</string> <!-- untranslated -->
+    <string name="prestige_effect_potion_bonus_flat">Combat potions grant +%1$d more to their stats.</string>
     <string name="prestige_effect_input_save_pct">%1$d%% der Materialien werden erstattet.</string>
     <string name="prestige_effect_builder_discount_pct">Gebäude-Verbesserungen kosten %1$d%% weniger.</string>
     <string name="prestige_effect_sell_price_pct">Verkaufspreise beim Krämer +%1$d%%.</string>
     <string name="prestige_effect_slayer_points_pct">Trophäenjagd-Punkte +%1$d%%.</string>
-    <string name="prestige_effect_double_hit_pct">%1$d%% chance to strike a second melee hit.</string> <!-- untranslated -->
-    <string name="prestige_effect_second_chance">Missed melee attacks are rerolled once.</string> <!-- untranslated -->
+    <string name="prestige_effect_double_hit_pct">%1$d%% chance to strike a second melee hit.</string>
+    <string name="prestige_effect_second_chance">Missed melee attacks are rerolled once.</string>
     <string name="prestige_effect_foretell_slots">+%1$d Plätze in Vorhersage-Liste vom Trophäenjäger.</string>
-    <string name="prestige_effect_slayer_multi_task">Dungeon kills also count toward matching foretold tasks.</string> <!-- untranslated -->
+    <string name="prestige_effect_slayer_multi_task">Dungeon kills also count toward matching foretold tasks.</string>
     <string name="prestige_effect_unlock_recipe">Schaltet das Rezept für %1$s-Bogenbau frei.</string>
 
     <!-- New distinctive base path names (variety pass) -->
@@ -2545,7 +2545,7 @@
     <!-- Prestige path names (generic) -->
     <string name="prestige_path_xp">EP Verstärkung</string>
     <string name="prestige_path_yield">Ertrag</string>
-    <string name="prestige_path_flow">Flow-state</string> <!-- untranslated -->
+    <string name="prestige_path_flow">Flow-state</string>
     <string name="prestige_path_endurance">Ausdauer</string>
     <string name="prestige_path_gem">Edelsteinjäger</string>
     <string name="prestige_path_rotation">Fruchtfolge</string>
@@ -2576,8 +2576,8 @@
     <string name="prestige_path_construction_race_halfling">Gemütlicher Baumeister</string>
     <string name="prestige_path_fishing_race_gnome">Schlaue Köder</string>
     <string name="prestige_path_fletching_race_gnome">Berührung des Bastlers</string>
-    <string name="prestige_path_firemaking_race_gnome">Spark Wright</string> <!-- untranslated -->
-    <string name="prestige_path_construction_race_gnome">Gadget Works</string> <!-- untranslated -->
+    <string name="prestige_path_firemaking_race_gnome">Spark Wright</string>
+    <string name="prestige_path_construction_race_gnome">Gadget Works</string>
     <string name="prestige_path_prayer_race_gnome">Gunst des Betrügers</string>
     <string name="prestige_path_hitpoints_race_orc">Dicke Haut</string>
 
@@ -2589,14 +2589,14 @@
     <string name="race_change_pay_token">Rassenwechsel-Token verwenden (%1$d)</string>
     <string name="race_change_pay_coins">10 000 000 Münzen zahlen</string>
     <string name="race_change_cannot_afford">Um die Rasse zu wechseln, benötigst du ein Rassenwechsel-Token (seltener Endgegner-Drop) oder 10 000 000 Münzen.</string>
-    <string name="race_change_ironman_locked">Ironman characters cannot change their race.</string> <!-- untranslated -->
-    <string name="race_change_cooldown_wait">You can change race again in %1$s.</string> <!-- untranslated -->
-    <string name="race_change_ironman_once">As an ironman, this is your one and only race change. Afterwards your race is locked forever.</string> <!-- untranslated -->
-    <string name="ironman_race_permanent_note">Ironman characters cannot change their race later. Choose carefully!</string> <!-- untranslated -->
+    <string name="race_change_ironman_locked">Ironman characters cannot change their race.</string>
+    <string name="race_change_cooldown_wait">You can change race again in %1$s.</string>
+    <string name="race_change_ironman_once">As an ironman, this is your one and only race change. Afterwards your race is locked forever.</string>
+    <string name="ironman_race_permanent_note">Ironman characters cannot change their race later. Choose carefully!</string>
     <!-- Translator note: %1$s = comma-separated list of skill names -->
     <string name="race_proficiency_label">Rassen-Fähigkeitsbäume: %1$s</string>
     <string name="race_proficiency_human">Rassenbonus: eine exklusive EP-Meisterschaftsstufe in jeder Fertigkeit</string>
-    <string name="race_change_confirm_message">Your race grants race-locked prestige upgrades. Changing race refunds any points spent in other races\' branches, and you can only change race once every 24 hours.</string> <!-- untranslated -->
+    <string name="race_change_confirm_message">Your race grants race-locked prestige upgrades. Changing race refunds any points spent in other races\' branches, and you can only change race once every 24 hours.</string>
     <!-- Heirloom items (raid boss rare drops that level up with use) -->
     <string name="item_heirloom_pickaxe_name">Erbstück-Spitzhacke</string>
     <string name="item_heirloom_pickaxe_desc">Eine Familien-Spitzhacke, die seit Generationen weitergegeben wird. Sie erinnert sich an jedes Erz, das ihre Besitzer jemals abgebaut haben.</string>
@@ -2617,7 +2617,7 @@
     <string name="item_heirloom_lockpick_name">Erbstück-Dietrich</string>
     <string name="item_heirloom_lockpick_desc">Ein Dietrich, der schon unzählige Schlösser leise geöffnet hat. Mit jedem Auftrag wird er noch raffinierter.</string>
     <string name="item_midas_band_name">Midas Band</string>
-    <string name="item_midas_band_desc">A sliver of the Vault Guardian\'s living gold. It drinks in a little of every battle its wearer survives.</string> <!-- untranslated -->
+    <string name="item_midas_band_desc">A sliver of the Vault Guardian\'s living gold. It drinks in a little of every battle its wearer survives.</string>
     <string name="item_heirloom_blade_name">Erbstück-Klinge</string>
     <string name="item_heirloom_blade_desc">Eine uralte Klinge, die mit jedem Kampf, den ihre Linie übersteht, ein wenig mehr zum Leben erwacht.</string>
     <string name="item_heirloom_greathammer_name">Erbstück-Kriegshammer</string>
