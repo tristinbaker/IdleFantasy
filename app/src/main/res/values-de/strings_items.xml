@@ -741,37 +741,37 @@
 
     <!-- ===== Seed names ===== -->
     <string name="item_potato_seed_name">Kartoffelsamen</string>
-    <string name="item_potato_seed_desc">Pflanze, um Kartoffeln wachsen zu lassen. Wächst in 2h.\n\nBenötigt Landwirtschaft-Level 1.</string>
+    <string name="item_potato_seed_desc">Pflanze, um Kartoffeln wachsen zu lassen. Wächst in 2h.\n\nBenötigt Landwirtschaft-Level 1.</string>
     <string name="item_onion_seed_name">Zwiebelsamen</string>
-    <string name="item_onion_seed_desc">Pflanze, um Zwiebeln wachsen zu lassen. Wächst in 3h.\n\nBenötigt Landwirtschaft-Level 5.</string>
+    <string name="item_onion_seed_desc">Pflanze, um Zwiebeln wachsen zu lassen. Wächst in 3h.\n\nBenötigt Landwirtschaft-Level 5.</string>
     <string name="item_cabbage_seed_name">Kohlsamen</string>
-    <string name="item_cabbage_seed_desc">Pflanze, um Blattsalat wachsen zu lassen. Wächst in 4h.\n\nBenötigt Landwirtschaft-Level 10.</string>
+    <string name="item_cabbage_seed_desc">Pflanze, um Blattsalat wachsen zu lassen. Wächst in 4h.\n\nBenötigt Landwirtschaft-Level 10.</string>
     <string name="item_carrot_seed_name">Karottensamen</string>
-    <string name="item_carrot_seed_desc">Pflanze, um Karotten wachsen zu lassen. Wächst in 5h.\n\nBenötigt Landwirtschaft-Level 15.</string>
+    <string name="item_carrot_seed_desc">Pflanze, um Karotten wachsen zu lassen. Wächst in 5h.\n\nBenötigt Landwirtschaft-Level 15.</string>
     <string name="item_tomato_seed_name">Tomatensamen</string>
-    <string name="item_tomato_seed_desc">Pflanze, um Tomaten wachsen zu lassen. Wächst in 6h.\n\nBenötigt Landwirtschaft-Level 20.</string>
+    <string name="item_tomato_seed_desc">Pflanze, um Tomaten wachsen zu lassen. Wächst in 6h.\n\nBenötigt Landwirtschaft-Level 20.</string>
     <string name="item_corn_seed_name">Maissamen</string>
-    <string name="item_corn_seed_desc">Pflanze, um Mais wachsen zu lassen. Wächst in 7h.\n\nBenötigt Landwirtschaft-Level 25.</string>
+    <string name="item_corn_seed_desc">Pflanze, um Mais wachsen zu lassen. Wächst in 7h.\n\nBenötigt Landwirtschaft-Level 25.</string>
     <string name="item_pumpkin_seed_name">Kürbissamen</string>
-    <string name="item_pumpkin_seed_desc">Pflanze, um Kürbisse wachsen zu lassen. Wächst in 9h.\n\nBenötigt Landwirtschaft-Level 30.</string>
+    <string name="item_pumpkin_seed_desc">Pflanze, um Kürbisse wachsen zu lassen. Wächst in 9h.\n\nBenötigt Landwirtschaft-Level 30.</string>
     <string name="item_watermelon_seed_name">Wassermelonensamen</string>
-    <string name="item_watermelon_seed_desc">Pflanze, um Wassermelonen wachsen zu lassen. Wächst in 10h.\n\nBenötigt Landwirtschaft-Level 35.</string>
+    <string name="item_watermelon_seed_desc">Pflanze, um Wassermelonen wachsen zu lassen. Wächst in 10h.\n\nBenötigt Landwirtschaft-Level 35.</string>
     <string name="item_strawberry_seed_name">Erdbeersamen</string>
-    <string name="item_strawberry_seed_desc">Pflanze, um Erdbeeren wachsen zu lassen. Wächst in 11h.\n\nBenötigt Landwirtschaft-Level 40.</string>
+    <string name="item_strawberry_seed_desc">Pflanze, um Erdbeeren wachsen zu lassen. Wächst in 11h.\n\nBenötigt Landwirtschaft-Level 40.</string>
     <string name="item_magic_herb_seed_name">Zauberkrautsamen</string>
-    <string name="item_magic_herb_seed_desc">Pflanze, um magische Kräuter wachsen zu lassen. Wächst in 13h.\n\nBenötigt Landwirtschaft-Level 50.</string>
+    <string name="item_magic_herb_seed_desc">Pflanze, um magische Kräuter wachsen zu lassen. Wächst in 13h.\n\nBenötigt Landwirtschaft-Level 50.</string>
     <string name="item_dragon_fruit_seed_name">Drachenfruchtsamen</string>
-    <string name="item_dragon_fruit_seed_desc">Pflanze, um Drachenfrüchte wachsen zu lassen. Wächst in 14h.\n\nBenötigt Landwirtschaft-Level 55.</string>
+    <string name="item_dragon_fruit_seed_desc">Pflanze, um Drachenfrüchte wachsen zu lassen. Wächst in 14h.\n\nBenötigt Landwirtschaft-Level 55.</string>
     <string name="item_golden_wheat_seed_name">Goldweizensamen</string>
-    <string name="item_golden_wheat_seed_desc">Pflanze, um goldenen Weizen wachsen zu lassen. Wächst in 16h.\n\nBenötigt Landwirtschaft-Level 65.</string>
+    <string name="item_golden_wheat_seed_desc">Pflanze, um goldenen Weizen wachsen zu lassen. Wächst in 16h.\n\nBenötigt Landwirtschaft-Level 65.</string>
     <string name="item_spirit_seed_name">Heilkrautsamen</string>
-    <string name="item_spirit_seed_desc">Pflanze, um Geisterkräuter wachsen zu lassen. Wächst in 19h.\n\nBenötigt Landwirtschaft-Level 75.</string>
+    <string name="item_spirit_seed_desc">Pflanze, um Geisterkräuter wachsen zu lassen. Wächst in 19h.\n\nBenötigt Landwirtschaft-Level 75.</string>
     <string name="item_celestial_bloom_seed_name">Samen der Himmlischen Blüte</string>
-    <string name="item_celestial_bloom_seed_desc">Pflanze, um himmlische Blumen wachsen zu lassen. Wächst in 21h.\n\nBenötigt Landwirtschaft-Level 85.</string>
+    <string name="item_celestial_bloom_seed_desc">Pflanze, um himmlische Blumen wachsen zu lassen. Wächst in 21h.\n\nBenötigt Landwirtschaft-Level 85.</string>
     <string name="item_starfruit_seed_name">Sternfruchtsamen</string>
-    <string name="item_starfruit_seed_desc">Pflanze, um Sternenfrüchte wachsen zu lassen. Wächst in 23h.\n\nBenötigt Landwirtschaft-Level 95.</string>
+    <string name="item_starfruit_seed_desc">Pflanze, um Sternenfrüchte wachsen zu lassen. Wächst in 23h.\n\nBenötigt Landwirtschaft-Level 95.</string>
     <string name="item_void_lotus_seed_name">Samen des Leeren Lotus</string>
-    <string name="item_void_lotus_seed_desc">Pflanze, um Leerenlotus wachsen zu lassen. Wächst in 24h.\n\nBenötigt Landwirtschaft-Level 99.</string>
+    <string name="item_void_lotus_seed_desc">Pflanze, um Leerenlotus wachsen zu lassen. Wächst in 24h.\n\nBenötigt Landwirtschaft-Level 99.</string>
 
 
     <!-- Additional item/boss/food names (English placeholders) -->
@@ -959,7 +959,7 @@
     <string name="item_steel_plateskirt_name">Stahl-Plattenrock</string>
     <string name="item_steel_square_shield_name">Quadratischer Stahl-Schild</string>
     <string name="item_strength_cape_name">Umhang der Stärke</string>
-    <string name="item_tangleroot_name">Tangleroot</string> <!-- untranslated -->
+    <string name="item_tangleroot_name">Tangleroot</string>
     <string name="item_thieving_guild_cape_name">Umhang der Diebesgilde</string>
     <string name="item_tiny_templar_name">Kleiner Templer</string>
     <string name="item_tormented_necklace_name">Halskette der Pein</string>
@@ -1067,8 +1067,8 @@
     <string name="item_dragon_boots_desc">Ein Paar Drachenstiefel</string>
     <string name="item_tower_helm_name">Helm des Turms</string>
     <string name="item_tower_helm_desc">Ein Helm, der aus den oberen Stockwerken des Turms geschnitzt wurde.</string>
-    <string name="item_tower_body_name">Tower Plate</string> <!-- untranslated -->
-    <string name="item_tower_body_desc">Impenetrable armour from the tower\'s inner sanctum.</string> <!-- untranslated -->
+    <string name="item_tower_body_name">Tower Plate</string>
+    <string name="item_tower_body_desc">Impenetrable armour from the tower\'s inner sanctum.</string>
     <string name="item_tower_legs_name">Beinschienen des Turms</string>
     <string name="item_tower_legs_desc">Beinschienen, geschmiedet in der tiefsten Schmiede des Turms.</string>
     <string name="item_tower_plateskirt_name">Plattenrock des Turms</string>
