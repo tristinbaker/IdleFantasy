@@ -28,6 +28,7 @@ import com.fantasyidler.repository.predictionXpMult
 import com.fantasyidler.simulator.PrestigeBoosts
 import com.fantasyidler.repository.QuestRepository
 import com.fantasyidler.repository.QueuedSessionStarter
+import com.fantasyidler.repository.queuedQueueEntryDurationMs
 import com.fantasyidler.repository.SeasonalEventRepository
 import com.fantasyidler.repository.SessionRepository
 import com.fantasyidler.repository.SlayerRepository
@@ -382,21 +383,27 @@ class HomeViewModel @Inject constructor(
             val homeSkillXp: Map<String, Long> = if (flags.onElderIsle)
                 mainlandXpForState.mapValues { flags.elderSkillXp[it.key] ?: 0L } else mainlandXpForState
             val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
-            val agilityLevel    = levels[Skills.AGILITY] ?: 1
+            val mainlandAgility = mainlandLevels[Skills.AGILITY] ?: 1
+            val elderAgility = flags.elderSkillLevels[Skills.AGILITY] ?: 1
             val floorReductionMin = boostRepo.sessionFloorReductionMin(flags)
             val chronosMult     = townRepo.playerSessionDurationMultiplier(flags)
-            val sessionMs       = SkillSimulator.sessionDurationMs(agilityLevel, floorReductionMin, chronosMult)
-            val perItemMs    = sessionMs / 60
+            val mainlandSessionMs = SkillSimulator.sessionDurationMs(mainlandAgility, floorReductionMin, chronosMult)
+            // Isle wall-clock ignores mainland agility/floor/Chronos; elder Agility is the
+            // only lever. Per-entry choice below keys on the stamped isElderSession flag
+            // (like startQueuedAction), not the live isle flag (issue #2034).
+            val isleSessionMs = SkillSimulator.elderSessionDurationMs(elderAgility)
             // A repeat chain only ever has its current run in the DB; the remaining runs
             // live in the repeat flags, so price them in or the queue ETA covers just the
             // current run (issue #1750). Priced like the queued-entry sum below.
             val activeChainRemainMs = session?.takeIf { !it.completed }?.let { s ->
+                val chainBase = if (s.isElderSession) isleSessionMs else mainlandSessionMs
+                val chainPerItem = chainBase / 60
                 when {
                     s.skillName == "combat" && flags.activeDungeonRepeatSnapshot != null ->
-                        (flags.activeDungeonRepeatTotal - flags.activeDungeonRepeatIndex).coerceAtLeast(0) * sessionMs
+                        (flags.activeDungeonRepeatTotal - flags.activeDungeonRepeatIndex).coerceAtLeast(0) * chainBase
                     s.skillName == "boss" && flags.activeBossRepeatSnapshot != null ->
                         (flags.activeBossRepeatTotal - flags.activeBossRepeatIndex).coerceAtLeast(0) *
-                            (gameData.bosses[s.activityKey]?.durationMinutes?.toLong() ?: 60L) * perItemMs
+                            (gameData.bosses[s.activityKey]?.durationMinutes?.toLong() ?: 60L) * chainPerItem
                     else -> 0L
                 }
             } ?: 0L
@@ -406,17 +413,8 @@ class HomeViewModel @Inject constructor(
             // Boss fights alone use a fixed wall-clock duration unrelated to agility or gear.
             val queueEndsAt  = if (flags.sessionQueue.isEmpty()) 0L
                                else queueStart + flags.sessionQueue.sumOf {
-                                   when {
-                                       // repeatCount defaults to 1 for every non-boss/combat entry,
-                                       // so this only changes anything for repeated boss fights and
-                                       // dungeon runs (issue #1194).
-                                       it.skillName == "boss" -> it.estimatedDurationMs * it.repeatCount
-                                       it.qty > 0 -> {
-                                           val eff = gameData.craftDurationEfficiency(it.skillName, it.activityKey, equipped, skillLevels = levels, heirloomXp = flags.heirloomXp)
-                                           it.qty.toLong() * (perItemMs / eff).toLong()
-                                       }
-                                       else -> sessionMs * it.repeatCount
-                                   }
+                                   val mainlandEff = gameData.craftDurationEfficiency(it.skillName, it.activityKey, equipped, skillLevels = mainlandLevels, heirloomXp = flags.heirloomXp)
+                                   queuedQueueEntryDurationMs(it, mainlandSessionMs, isleSessionMs, mainlandEff)
                                }
             val innXpMult = townRepo.workerXpMultiplier(flags)
             val capeMult = blessingPrayerCapeMult(player, flags, gameData)

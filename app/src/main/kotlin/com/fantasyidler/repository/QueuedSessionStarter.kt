@@ -132,6 +132,29 @@ internal fun queuedGatheringBoosts(
 )
 
 /**
+ * ETA slice for one queued entry in the Home "queue ends in" total (issue #2034).
+ * Isle entries use the isle-neutral base ([SkillSimulator.elderSessionDurationMs]) with
+ * tool efficiency neutralised to 1.0, mirroring the smithing/cooking isle branches and
+ * [queuedGatheringBoosts]; mainland entries pass the live mainland base and tool
+ * efficiency through. Boss entries keep their stored wall-clock estimate.
+ * Keyed on [action.isElderSession] (stamped at enqueue), NOT the live isle flag.
+ */
+internal fun queuedQueueEntryDurationMs(
+    action: QueuedAction,
+    mainlandSessionMs: Long,
+    isleSessionMs: Long,
+    mainlandCraftEff: Float = 1.0f,
+): Long = when {
+    action.skillName == "boss" -> action.estimatedDurationMs * action.repeatCount
+    action.qty > 0 -> {
+        val base = if (action.isElderSession) isleSessionMs else mainlandSessionMs
+        val eff = if (action.isElderSession) 1.0f else mainlandCraftEff
+        action.qty.toLong() * (base / 60 / eff).toLong()
+    }
+    else -> (if (action.isElderSession) isleSessionMs else mainlandSessionMs) * action.repeatCount
+}
+
+/**
  * Starts the next queued session using current player state.
  * Shared between ViewModels (on collect) and [com.fantasyidler.receiver.SessionAlarmReceiver]
  * (background auto-advance).
