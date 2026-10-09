@@ -169,6 +169,19 @@ object ElderQuests {
     )
 
     /**
+     * Display progress for a quest row (issue #2039).
+     *
+     * Mainland quests accumulate via QuestRepository.addProgress and never regress.
+     * Isle counters read live inventory, so a validated quest would visually drop to
+     * 0/500 after selling or smelting its objective even though its id stays in
+     * elderQuestsCompleted. A validated quest therefore always displays [target];
+     * only the next open quest shows the live counter.
+     */
+    fun displayProgress(quest: Quest, snapshot: Snapshot, completed: Set<String>): Int =
+        if (quest.id in completed) quest.target
+        else quest.counter(snapshot).coerceAtMost(quest.target)
+
+    /**
      * Walks the chain in order and marks quests complete only if every prior quest is
      * already complete or completes in the same pass. Prevents late-game predicates
      * (owning the full Elder set, killing the Last Elder) from marking their quests
