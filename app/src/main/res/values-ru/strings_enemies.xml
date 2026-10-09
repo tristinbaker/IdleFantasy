@@ -148,7 +148,7 @@
     <string name="dungeon_shadow_den_desc">Сеть подземных камер, используемых гильдией воров региона. Бродяги, убийцы и теневые существа скрываются в каждом углу.</string>
     <string name="dungeon_abyssal_ruins_name">Бездонные руины</string>
     <string name="dungeon_abyssal_ruins_desc">Древние руины, существующие одновременно над и под смертной плоскостью. Странные бездонные существа то появляются, то исчезают из реальности.</string>
-    <string name="dungeon_ancient_forest_ruins_name">Руины древнего леса</string>
+    <string name="dungeon_ancient_forest_ruins_name">Древние лесные руины</string>
     <string name="dungeon_ancient_forest_ruins_desc">Каменные руины, поглощённые первобытным лесом, ныне населённые дикими существами и мстительными духами друидов.</string>
     <string name="dungeon_ancient_forge_name">Древняя кузня</string>
     <string name="dungeon_ancient_forge_desc">Обширная кузня дварфов, горящая веками без остановки. Огненные элементали и стражи кузни охраняют её секреты.</string>
@@ -164,28 +164,28 @@
     <string name="dungeon_guild_of_shadows_desc">Самое глубокое святилище гильдии воров, охраняемое её самыми опасными исполнителями.</string>
 
     <!-- Elder Isle enemies (two per dungeon) -->
-    <string name="enemy_beach_marauder_name">Beach Marauder</string> <!-- untranslated -->
-    <string name="enemy_beach_leviathan_name">Beach Leviathan</string> <!-- untranslated -->
-    <string name="enemy_grove_stalker_name">Grove Stalker</string> <!-- untranslated -->
-    <string name="enemy_grove_dryad_name">Grove Dryad</string> <!-- untranslated -->
-    <string name="enemy_ash_beast_name">Ash Beast</string> <!-- untranslated -->
-    <string name="enemy_lava_wraith_name">Lava Wraith</string> <!-- untranslated -->
-    <string name="enemy_abyssal_horror_name">Abyssal Horror</string> <!-- untranslated -->
-    <string name="enemy_void_seraph_name">Void Seraph</string> <!-- untranslated -->
+    <string name="enemy_beach_marauder_name">Пляжный мародёр</string>
+    <string name="enemy_beach_leviathan_name">Пляжный левиафан</string>
+    <string name="enemy_grove_stalker_name">Охотник рощи</string>
+    <string name="enemy_grove_dryad_name">Дриада рощи</string>
+    <string name="enemy_ash_beast_name">Пепельный зверь</string>
+    <string name="enemy_lava_wraith_name">Лавовый призрак</string>
+    <string name="enemy_abyssal_horror_name">Ужас бездны</string>
+    <string name="enemy_void_seraph_name">Серафим пустоты</string>
 
     <!-- Elder Isle dungeons -->
-    <string name="dungeon_beach_and_cliffs_name">Beach &amp; Cliffs</string> <!-- untranslated -->
+    <string name="dungeon_beach_and_cliffs_name">Пляж и утёсы</string>
     <string name="dungeon_beach_and_cliffs_desc">The isle\'s landing zone. Coastal enemies scavenge the wrecks of prior voyages. Every clear has a chance to drop Ancient Sigils.</string> <!-- untranslated -->
-    <string name="dungeon_ancient_forest_name">Ancient Forest</string> <!-- untranslated -->
+    <string name="dungeon_ancient_forest_name">Древний лес</string>
     <string name="dungeon_ancient_forest_desc">A rune-laced jungle grown over an old library. Grove stalkers and rune-touched dryads keep visitors from the ruins beneath. Every clear has a chance to drop Ancient Sigils.</string> <!-- untranslated -->
-    <string name="dungeon_volcano_peak_name">Volcano Peak</string> <!-- untranslated -->
+    <string name="dungeon_volcano_peak_name">Вулканический пик</string>
     <string name="dungeon_volcano_peak_desc">The isle\'s smoking spine, once an Elder altar. Ash beasts and lava wraiths guard the sealing site. Every clear has a chance to drop Ancient Sigils.</string> <!-- untranslated -->
-    <string name="dungeon_abyssal_depths_name">Abyssal Depths</string> <!-- untranslated -->
+    <string name="dungeon_abyssal_depths_name">Непроглядные глубины</string>
     <string name="dungeon_abyssal_depths_desc">A flooded pressure-chamber at the foot of the isle, where the Last Elder waits. Abyssal horrors and void seraphs patrol the approach. Every clear drops Ancient Sigils.</string> <!-- untranslated -->
 
     <!-- Elder Isle raid bosses -->
-    <string name="boss_sea_serpent_name">Sea Serpent</string> <!-- untranslated -->
+    <string name="boss_sea_serpent_name">Морской змей</string>
     <string name="boss_sea_serpent_desc">The voyage boss. A rune-scarred serpent that circles the isle and turns back everyone it doesn\'t drown. Defeat once to permanently enable Set Sail.</string> <!-- untranslated -->
-    <string name="boss_last_elder_name">The Last Elder</string> <!-- untranslated -->
+    <string name="boss_last_elder_name">Последний старейшина</string>
     <string name="boss_last_elder_desc">The last of the Elders, sealed at the bottom of the Abyssal Depths. Only a full Elder set can survive the fight.</string> <!-- untranslated -->
 </resources>

@@ -56,7 +56,7 @@
 
     <!-- ===== Logs ===== -->
     <string name="item_log_name">Брёвна</string>
-    <string name="item_log_desc">Обычные брёвна. Используются во Владении огнём я и Лучном деле.</string>
+    <string name="item_log_desc">Обычные брёвна. Используются в Разжигании огня и Лучном деле.</string>
     <string name="item_oak_log_name">Дубовые брёвна</string>
     <string name="item_oak_log_desc">Брёвна из дуба.</string>
     <string name="item_willow_log_name">Ивовые брёвна</string>
@@ -95,36 +95,36 @@
     <string name="item_raw_shark_desc">Сырая акула. Приготовьте перед употреблением.</string>
     <string name="item_raw_sea_turtle_name">Сырая морская черепаха</string>
     <string name="item_raw_sea_turtle_desc">Сырая морская черепаха. Приготовьте перед употреблением.</string>
-    <string name="item_raw_manta_ray_name">Сырой манта</string>
-    <string name="item_raw_manta_ray_desc">Сырой манта. Приготовьте перед употреблением.</string>
+    <string name="item_raw_manta_ray_name">Сырая манта</string>
+    <string name="item_raw_manta_ray_desc">Сырая манта. Приготовьте перед употреблением.</string>
 
     <!-- ===== Cooked fish ===== -->
     <string name="item_shrimp_name">Жареная креветка</string>
-    <string name="item_shrimp_desc">Приготовленная креветка. Восстанавливает немного HP.</string>
+    <string name="item_shrimp_desc">Приготовленная креветка. Восстанавливает немного ОЗ.</string>
     <string name="item_sardine_name">Жареная сардина</string>
-    <string name="item_sardine_desc">Приготовленная сардина. Восстанавливает HP при употреблении.</string>
+    <string name="item_sardine_desc">Приготовленная сардина. Восстанавливает ОЗ при употреблении.</string>
     <string name="item_herring_name">Жареная сельдь</string>
-    <string name="item_herring_desc">Приготовленная сельдь. Восстанавливает HP при употреблении.</string>
+    <string name="item_herring_desc">Приготовленная сельдь. Восстанавливает ОЗ при употреблении.</string>
     <string name="item_mackerel_name">Жареная скумбрия</string>
-    <string name="item_mackerel_desc">Приготовленная скумбрия. Восстанавливает HP при употреблении.</string>
+    <string name="item_mackerel_desc">Приготовленная скумбрия. Восстанавливает ОЗ при употреблении.</string>
     <string name="item_trout_name">Жареная форель</string>
-    <string name="item_trout_desc">Приготовленная форель. Восстанавливает HP при употреблении.</string>
+    <string name="item_trout_desc">Приготовленная форель. Восстанавливает ОЗ при употреблении.</string>
     <string name="item_salmon_name">Жареный лосось</string>
-    <string name="item_salmon_desc">Приготовленный лосось. Восстанавливает HP при употреблении.</string>
+    <string name="item_salmon_desc">Приготовленный лосось. Восстанавливает ОЗ при употреблении.</string>
     <string name="item_tuna_name">Жареный тунец</string>
-    <string name="item_tuna_desc">Приготовленный тунец. Восстанавливает HP при употреблении.</string>
+    <string name="item_tuna_desc">Приготовленный тунец. Восстанавливает ОЗ при употреблении.</string>
     <string name="item_lobster_name">Жареный омар</string>
-    <string name="item_lobster_desc">Приготовленный омар. Восстанавливает хорошее количество HP.</string>
+    <string name="item_lobster_desc">Приготовленный омар. Восстанавливает хорошее количество ОЗ.</string>
     <string name="item_swordfish_name">Жареная рыба-меч</string>
-    <string name="item_swordfish_desc">Приготовленная рыба-меч. Восстанавливает значительное количество HP.</string>
-    <string name="item_monkfish_name">Жареный морской черт</string>
-    <string name="item_monkfish_desc">Приготовленный морской черт. Восстанавливает солидное количество HP.</string>
+    <string name="item_swordfish_desc">Приготовленная рыба-меч. Восстанавливает значительное количество ОЗ.</string>
+    <string name="item_monkfish_name">Жареный морской чёрт</string>
+    <string name="item_monkfish_desc">Приготовленный морской черт. Восстанавливает добротное количество ОЗ.</string>
     <string name="item_shark_name">Жареная акула</string>
-    <string name="item_shark_desc">Приготовленная акула. Восстанавливает большое количество HP.</string>
+    <string name="item_shark_desc">Приготовленная акула. Восстанавливает большое количество ОЗ.</string>
     <string name="item_sea_turtle_name">Жареная морская черепаха</string>
-    <string name="item_sea_turtle_desc">Приготовленная морская черепаха. Восстанавливает очень большое количество HP.</string>
+    <string name="item_sea_turtle_desc">Приготовленная морская черепаха. Восстанавливает очень большое количество ОЗ.</string>
     <string name="item_manta_ray_name">Жареная манта</string>
-    <string name="item_manta_ray_desc">Приготовленный манта. Одна из лучших доступных блюд.</string>
+    <string name="item_manta_ray_desc">Приготовленная манта. Одно из лучших доступных блюд.</string>
 
     <!-- ===== Raw meat ===== -->
     <string name="item_raw_rat_meat_name">Сырое крысиное мясо</string>
@@ -140,19 +140,19 @@
 
     <!-- ===== Cooked meat ===== -->
     <string name="item_cooked_rat_meat_name">Жареное крысиное мясо</string>
-    <string name="item_cooked_rat_meat_desc">Приготовленное крысиное мясо. Вряд ли съедобно, но восстанавливает крошечное количество HP.</string>
+    <string name="item_cooked_rat_meat_desc">Приготовленное крысиное мясо. Вряд ли съедобно, но восстанавливает крошечное количество ОЗ.</string>
     <string name="item_cooked_chicken_name">Жареная курица</string>
-    <string name="item_cooked_chicken_desc">Приготовленная курица. Восстанавливает HP при употреблении.</string>
+    <string name="item_cooked_chicken_desc">Приготовленная курица. Восстанавливает ОЗ при употреблении.</string>
     <string name="item_cooked_mutton_name">Жареная баранина</string>
-    <string name="item_cooked_mutton_desc">Приготовленная баранина. Восстанавливает HP при употреблении.</string>
+    <string name="item_cooked_mutton_desc">Приготовленная баранина. Восстанавливает ОЗ при употреблении.</string>
     <string name="item_cooked_beef_name">Жареная говядина</string>
-    <string name="item_cooked_beef_desc">Приготовленная говядина. Восстанавливает HP при употреблении.</string>
+    <string name="item_cooked_beef_desc">Приготовленная говядина. Восстанавливает ОЗ при употреблении.</string>
 
     <!-- ===== Melee weapons — bronze ===== -->
     <string name="item_bronze_sword_name">Бронзовый меч</string>
     <string name="item_bronze_sword_desc">Базовый одноручный бронзовый клинок.</string>
     <string name="item_bronze_scimitar_name">Бронзовый ятаган</string>
-    <string name="item_bronze_scimitar_desc">Изогнутый одноручный бронзовый клинок с хорошим бонусом силы.</string>
+    <string name="item_bronze_scimitar_desc">Изогнутый одноручный бронзовый клинок с хорошим бонусом к силе.</string>
     <string name="item_bronze_2h_sword_name">Бронзовый двуручный меч</string>
     <string name="item_bronze_2h_sword_desc">Двуручный бронзовый меч. Высокий урон, медленная скорость.</string>
     <string name="item_bronze_warhammer_name">Бронзовый боевой молот</string>
@@ -166,7 +166,7 @@
     <string name="item_iron_sword_name">Железный меч</string>
     <string name="item_iron_sword_desc">Одноручный железный клинок.</string>
     <string name="item_iron_scimitar_name">Железный ятаган</string>
-    <string name="item_iron_scimitar_desc">Изогнутый одноручный железный клинок с хорошим бонусом силы.</string>
+    <string name="item_iron_scimitar_desc">Изогнутый одноручный железный клинок с хорошим бонусом к силе.</string>
     <string name="item_iron_2h_sword_name">Железный двуручный меч</string>
     <string name="item_iron_2h_sword_desc">Двуручный железный меч.</string>
     <string name="item_iron_warhammer_name">Железный боевой молот</string>
@@ -180,7 +180,7 @@
     <string name="item_steel_sword_name">Стальной меч</string>
     <string name="item_steel_sword_desc">Одноручный стальной клинок.</string>
     <string name="item_steel_scimitar_name">Стальной ятаган</string>
-    <string name="item_steel_scimitar_desc">Изогнутый одноручный стальной клинок с хорошим бонусом силы.</string>
+    <string name="item_steel_scimitar_desc">Изогнутый одноручный стальной клинок с хорошим бонусом к силе.</string>
     <string name="item_steel_2h_sword_name">Стальной двуручный меч</string>
     <string name="item_steel_2h_sword_desc">Двуручный стальной меч.</string>
     <string name="item_steel_warhammer_name">Стальной боевой молот</string>
@@ -204,7 +204,7 @@
     <string name="item_adamantite_sword_name">Адамантитовый меч</string>
     <string name="item_adamantite_sword_desc">Экстремально твёрдый одноручный меч.</string>
     <string name="item_adamantite_scimitar_name">Адамантитовый ятаган</string>
-    <string name="item_adamantite_scimitar_desc">Невероятно твёрдый изогнутый клинок с отличным бонусом силы.</string>
+    <string name="item_adamantite_scimitar_desc">Невероятно твёрдый изогнутый клинок с отличным бонусом к силе.</string>
     <string name="item_adamantite_2h_sword_name">Адамантитовый двуручный меч</string>
     <string name="item_adamantite_2h_sword_desc">Двуручный меч, выкованный из адамантита.</string>
     <string name="item_adamantite_warhammer_name">Адамантитовый боевой молот</string>
@@ -216,7 +216,7 @@
     <string name="item_runite_sword_name">Рунитовый меч</string>
     <string name="item_runite_sword_desc">Лучший доступный одноручный меч.</string>
     <string name="item_runite_scimitar_name">Рунитовый ятаган</string>
-    <string name="item_runite_scimitar_desc">Лучший доступный ятаган с исключительным бонусом силы.</string>
+    <string name="item_runite_scimitar_desc">Лучший доступный ятаган с исключительным бонусом к силе.</string>
     <string name="item_runite_2h_sword_name">Рунитовый двуручный меч</string>
     <string name="item_runite_2h_sword_desc">Лучший доступный двуручный меч.</string>
     <string name="item_runite_warhammer_name">Рунитовый боевой молот</string>
@@ -461,7 +461,7 @@
     <string name="item_platinum_diamond_necklace_desc">Платиновое ожерелье с алмазом.</string>
 
     <!-- Jewellery — other -->
-    <string name="item_shadow_signet_name">Теневая Печать</string>
+    <string name="item_shadow_signet_name">Теневое кольцо-печатка</string>
     <string name="item_shadow_signet_desc">Кольцо с печатью Гильдии Теней. Только самые опасные оперативники гильдии носили его.</string>
 
     <!-- Junk items -->
@@ -665,7 +665,7 @@
     <!-- ===== Carnival prizes ===== -->
     <string name="item_tricksters_amulet_name">Амулет обманщика</string>
     <string name="item_tricksters_amulet_desc">Талисман на удачу, который носят участники карнавала. Дает небольшое преимущество в бою.</string>
-    <string name="item_strongmans_sigil_name">Символ силача</string>
+    <string name="item_strongmans_sigil_name">Печатка силача</string>
     <string name="item_strongmans_sigil_desc">Тяжелое железное кольцо с выгравированным знаком чемпиона-силача. Повышает силу.</string>
     <string name="item_carnival_cape_name">Карнавальный плащ</string>
     <string name="item_carnival_cape_desc" formatted="false">Яркая накидка, которую носят чемпионы карнавала. Дарит на 5% больше билетов на сессии карнавала.</string>
@@ -710,68 +710,68 @@
 
     <!-- Construction item names (planks, nails, stone) -->
     <string name="item_plank_name">Доска</string>
-    <string name="item_oak_plank_name">Дубовая Доска</string>
-    <string name="item_willow_plank_name">Ивовая Доска</string>
-    <string name="item_maple_plank_name">Кленовая Доска</string>
-    <string name="item_yew_plank_name">Тисовая Доска</string>
-    <string name="item_magic_plank_name">Магическая Доска</string>
-    <string name="item_redwood_plank_name">Доска из красного дерева</string>
-    <string name="item_iron_nail_name">Железный Гвоздь</string>
-    <string name="item_steel_nail_name">Стальной Гвоздь</string>
-    <string name="item_mithril_nail_name">Гвоздь из Мифрила</string>
+    <string name="item_oak_plank_name">Дубовая доска</string>
+    <string name="item_willow_plank_name">Ивовая доска</string>
+    <string name="item_maple_plank_name">Кленовая доска</string>
+    <string name="item_yew_plank_name">Тисовая доска</string>
+    <string name="item_magic_plank_name">Магическая доска</string>
+    <string name="item_redwood_plank_name">Доска из секвойи</string>
+    <string name="item_iron_nail_name">Железный гвоздь</string>
+    <string name="item_steel_nail_name">Стальной гвоздь</string>
+    <string name="item_mithril_nail_name">Мифриловый гвоздь</string>
     <string name="item_runite_nail_name">Рунитовый гвоздь</string>
     <string name="item_stone_name">Камень</string>
     <string name="item_stone_desc">Каменный блок. Используется для строительства.</string>
-    <string name="item_carved_stone_name">Резной Камень</string>
-    <string name="item_stone_block_name">Каменный Блок</string>
+    <string name="item_carved_stone_name">Резной камень</string>
+    <string name="item_stone_block_name">Каменный блок</string>
 
     <!-- Construction furniture names -->
-    <string name="item_wooden_rack_name">Деревянная Стойка</string>
-    <string name="item_wooden_shelf_name">Деревянная Полка</string>
-    <string name="item_oak_table_name">Дубовый Стол</string>
-    <string name="item_oak_bookshelf_name">Дубовый Книжный Шкаф</string>
-    <string name="item_willow_cabinet_name">Ивовый Шкаф</string>
-    <string name="item_maple_dresser_name">Кленовый Комод</string>
-    <string name="item_yew_wardrobe_name">Тисовый Гардероб</string>
-    <string name="item_magic_throne_name">Магический Трон</string>
-    <string name="item_redwood_bench_name">Скамья из красного дерева</string>
-    <string name="item_redwood_bookcase_name">Книжный шкаф из красного дерева</string>
-    <string name="item_redwood_grand_bed_name">Большая кровать из красного дерева</string>
+    <string name="item_wooden_rack_name">Деревянная стойка</string>
+    <string name="item_wooden_shelf_name">Деревянная полка</string>
+    <string name="item_oak_table_name">Дубовый стол</string>
+    <string name="item_oak_bookshelf_name">Дубовый книжный шкаф</string>
+    <string name="item_willow_cabinet_name">Ивовый шкаф</string>
+    <string name="item_maple_dresser_name">Кленовый комод</string>
+    <string name="item_yew_wardrobe_name">Тисовый гардероб</string>
+    <string name="item_magic_throne_name">Магический трон</string>
+    <string name="item_redwood_bench_name">Скамья из секвойи</string>
+    <string name="item_redwood_bookcase_name">Книжный шкаф из секвойи</string>
+    <string name="item_redwood_grand_bed_name">Большая кровать из секвойи</string>
 
 
     <!-- ===== Seed names ===== -->
     <string name="item_potato_seed_name">Семена картофеля</string>
-    <string name="item_potato_seed_desc">Растение для выращивания картофеля. Вырастает за 2 часа.\n\nТребуется 1-й уровень земледелия.</string>
+    <string name="item_potato_seed_desc">Посадите для выращивания картофеля. Вырастает за 2 часа.\n\nТребуется 1-й уровень земледелия.</string>
     <string name="item_onion_seed_name">Семена лука</string>
-    <string name="item_onion_seed_desc">Растение для выращивания лука. Вырастает за 3 часа.\n\nТребуется 5-й уровень земледелия.</string>
+    <string name="item_onion_seed_desc">Посадите для выращивания лука. Вырастает за 3 часа.\n\nТребуется 5-й уровень земледелия.</string>
     <string name="item_cabbage_seed_name">Семена капусты</string>
-    <string name="item_cabbage_seed_desc">Растение для выращивания капусты. Вырастает за 4 часа.\n\nТребуется 10-й уровень фермерства.</string>
+    <string name="item_cabbage_seed_desc">Посадите для выращивания капусты. Вырастает за 4 часа.\n\nТребуется 10-й уровень фермерства.</string>
     <string name="item_carrot_seed_name">Семена моркови</string>
-    <string name="item_carrot_seed_desc">Растение для выращивания моркови. Вырастает за 5 часов.\n\nТребуется 15-й уровень земледелия.</string>
+    <string name="item_carrot_seed_desc">Посадите для выращивания моркови. Вырастает за 5 часов.\n\nТребуется 15-й уровень земледелия.</string>
     <string name="item_tomato_seed_name">Семена томата</string>
-    <string name="item_tomato_seed_desc">Растение для выращивания помидоров. Вырастает за 6 часов.\n\nТребуется 20-й уровень земледелия.</string>
+    <string name="item_tomato_seed_desc">Посадите для выращивания помидоров. Вырастает за 6 часов.\n\nТребуется 20-й уровень земледелия.</string>
     <string name="item_corn_seed_name">Семена кукурузы</string>
-    <string name="item_corn_seed_desc">Растение для выращивания кукурузы. Вырастает за 7 часов.\n\nТребуется 25-й уровень земледелия.</string>
+    <string name="item_corn_seed_desc">Посадите для выращивания кукурузы. Вырастает за 7 часов.\n\nТребуется 25-й уровень земледелия.</string>
     <string name="item_pumpkin_seed_name">Семена тыквы</string>
-    <string name="item_pumpkin_seed_desc">Растение для выращивания тыкв. Вырастает за 9 часов.\n\nТребуется 30-й уровень земледелия.</string>
+    <string name="item_pumpkin_seed_desc">Посадите для выращивания тыкв. Вырастает за 9 часов.\n\nТребуется 30-й уровень земледелия.</string>
     <string name="item_watermelon_seed_name">Семена арбуза</string>
-    <string name="item_watermelon_seed_desc">Растение для выращивания арбузов. Вырастает за 10 часов.\n\nТребуется 35-й уровень фермерства.</string>
+    <string name="item_watermelon_seed_desc">Посадите для выращивания арбузов. Вырастает за 10 часов.\n\nТребуется 35-й уровень фермерства.</string>
     <string name="item_strawberry_seed_name">Семена клубники</string>
-    <string name="item_strawberry_seed_desc">Растение для выращивания клубники. Вырастает за 11 часов.\n\nТребуется 40-й уровень земледелия.</string>
+    <string name="item_strawberry_seed_desc">Посадите для выращивания клубники. Вырастает за 11 часов.\n\nТребуется 40-й уровень земледелия.</string>
     <string name="item_magic_herb_seed_name">Семена магической травы</string>
-    <string name="item_magic_herb_seed_desc">Растение для выращивания волшебных трав. Вырастает за 13 часов.\n\nТребуется 50-й уровень земледелия.</string>
+    <string name="item_magic_herb_seed_desc">Посадите для выращивания волшебных трав. Вырастает за 13 часов.\n\nТребуется 50-й уровень земледелия.</string>
     <string name="item_dragon_fruit_seed_name">Семена драконьего фрукта</string>
-    <string name="item_dragon_fruit_seed_desc">Растение для выращивания драконьего фрукта. Вырастает за 14 часов.\n\nТребуется 55-й уровень фермерства.</string>
+    <string name="item_dragon_fruit_seed_desc">Посадите для выращивания драконьего фрукта. Вырастает за 14 часов.\n\nТребуется 55-й уровень фермерства.</string>
     <string name="item_golden_wheat_seed_name">Семена золотой пшеницы</string>
-    <string name="item_golden_wheat_seed_desc">Растение для выращивания золотистой пшеницы. Вырастает за 16 часов.\n\nТребуется 65-й уровень земледелия.</string>
+    <string name="item_golden_wheat_seed_desc">Посадите для выращивания золотистой пшеницы. Вырастает за 16 часов.\n\nТребуется 65-й уровень земледелия.</string>
     <string name="item_spirit_seed_name">Семена духовной травы</string>
-    <string name="item_spirit_seed_desc">Растение для выращивания духовной травы. Вырастает за 19 часов.\n\nТребуется 75-й уровень земледелия.</string>
+    <string name="item_spirit_seed_desc">Посадите для выращивания духовной травы. Вырастает за 19 часов.\n\nТребуется 75-й уровень земледелия.</string>
     <string name="item_celestial_bloom_seed_name">Семена небесного цветка</string>
-    <string name="item_celestial_bloom_seed_desc">Растение для выращивания небесных цветов. Вырастает за 21 час.\n\nТребуется 85-й уровень земледелия.</string>
+    <string name="item_celestial_bloom_seed_desc">Посадите для выращивания небесных цветов. Вырастает за 21 час.\n\nТребуется 85-й уровень земледелия.</string>
     <string name="item_starfruit_seed_name">Семена звёздного плода</string>
-    <string name="item_starfruit_seed_desc">Растение для выращивания звездчатого фрукта. Вырастает за 23 часа.\n\nТребуется 95-й уровень земледелия.</string>
+    <string name="item_starfruit_seed_desc">Посадите для выращивания звездчатого фрукта. Вырастает за 23 часа.\n\nТребуется 95-й уровень земледелия.</string>
     <string name="item_void_lotus_seed_name">Семена лотоса пустоты</string>
-    <string name="item_void_lotus_seed_desc">Растение для выращивания лотоса пустоты. Вырастает за 24 часа.\n\nТребуется 99-й уровень земледелия.</string>
+    <string name="item_void_lotus_seed_desc">Посадите для выращивания лотоса пустоты. Вырастает за 24 часа.\n\nТребуется 99-й уровень земледелия.</string>
 
 
     <!-- Additional item/boss/food names (English placeholders) -->
@@ -788,24 +788,24 @@
     <string name="item_adamantite_square_shield_name">Адамантитовый квадратный щит</string>
     <string name="item_agility_cape_name">Плащ ловкости</string>
     <string name="item_agility_guild_cape_name">Плащ гильдии ловкости</string>
-    <string name="item_amulet_of_fury_name">Амулет Ярости</string>
+    <string name="item_amulet_of_fury_name">Амулет ярости</string>
     <string name="item_amulet_of_fury_desc">Мощный амулет, дающий бонусы ко всем стилям боя. Для покупки требуется Торговля 80-го уровня.</string>
     <string name="item_amulet_of_strength_name">Амулет силы</string>
     <string name="item_amulet_of_strength_desc">Повышает силовую атаку. Для покупки требуется Торговля 20-го уровня.</string>
     <string name="item_amulet_of_the_kraken_name">Амулет Кракена</string>
-    <string name="item_arcane_grappling_hook_name">Тайный крюк-кошка</string>
-    <string name="item_arcane_staff_name">Волшебный посох</string>
+    <string name="item_arcane_grappling_hook_name">Мистическая крюк-кошка</string>
+    <string name="item_arcane_staff_name">Мистический посох</string>
     <string name="item_archers_guild_cape_name">Плащ гильдии лучников</string>
     <string name="item_archers_ring_name">Кольцо лучников</string>
     <string name="item_archers_ring_desc">Повышает точность стрельбы. Для покупки требуется Торговля 60-го уровня.</string>
     <string name="item_attack_cape_name">Плащ атаки</string>
-    <string name="item_baby_kraken_name">Малыш Кракен</string>
-    <string name="item_balrog_name">Тёмный демон, древнее пламя глубин</string>
-    <string name="item_balrog_whip_name">Пылающий хлыст Тёмного демона</string>
-    <string name="item_balrog_wings_name">Крылья Тёмного демона</string>
+    <string name="item_baby_kraken_name">Кракенчик</string>
+    <string name="item_balrog_name">Готический угль, древнее пламя глубин</string>
+    <string name="item_balrog_whip_name">Пылающий хлыст Готического угля</string>
+    <string name="item_balrog_wings_name">Крылья Готического угля</string>
     <string name="item_beef_name">Жареная говядина</string>
     <string name="item_berserker_ring_name">Кольцо берсеркера</string>
-    <string name="item_berserker_ring_desc">Повышает силовую атаку. Для покупки требуется Торговля 60-го уровня.</string>
+    <string name="item_berserker_ring_desc">Повышает силу ближнего боя. Для покупки требуется Торговля 60-го уровня.</string>
     <string name="item_blessed_fishing_rod_name">Благословенная удочка</string>
     <string name="item_bronze_arrow_tip_name">Бронзовые наконечники</string>
     <string name="item_bronze_boots_name">Бронзовые сапоги</string>
@@ -822,7 +822,7 @@
     <string name="item_cooking_guild_cape_name">Плащ гильдии поваров</string>
     <string name="item_crafting_cape_name">Плащ ремесленника</string>
     <string name="item_crafting_guild_cape_name">Плащ гильдии ремесленников</string>
-    <string name="item_deep_iron_pickaxe_name">Кирка из тёмного железа</string>
+    <string name="item_deep_iron_pickaxe_name">Кирка из железа глубин</string>
     <string name="item_defense_cape_name">Плащ защиты</string>
     <string name="item_demon_lord_name">Повелитель демонов</string>
     <string name="item_divine_frying_pan_name">Божественная сковорода</string>
@@ -835,39 +835,39 @@
     <string name="item_dragon_boots_name">Драконьи сапоги</string>
     <string name="item_dragon_longsword_name">Драконий длинный меч</string>
     <string name="item_dragon_scimitar_name">Драконий ятаган</string>
-    <string name="item_dragon_whelp_name">Драконий детёныш</string>
-    <string name="item_dwarven_axe_name">Топор дварфов</string>
-    <string name="item_dwarven_boots_name">Сапоги дварфов</string>
-    <string name="item_dwarven_fishing_rod_name">Удочка дварфов</string>
-    <string name="item_dwarven_frying_pan_name">Сковорода дварфов</string>
-    <string name="item_dwarven_grappling_hook_name">Крюк-кошка дварфов</string>
-    <string name="item_dwarven_hammer_name">Молот дварфов</string>
-    <string name="item_dwarven_helm_name">Шлем дварфов</string>
-    <string name="item_dwarven_hoe_name">Мотыга дварфов</string>
-    <string name="item_dwarven_lockpick_name">Отмычка дварфов</string>
-    <string name="item_dwarven_pickaxe_name">Кирка дварфов</string>
-    <string name="item_dwarven_platebody_name">Нагрудник дварфов</string>
-    <string name="item_dwarven_platelegs_name">Поножи дварфов</string>
-    <string name="item_dwarven_scimitar_name">Ятаган дварфов</string>
-    <string name="item_dwarven_shield_name">Щит дварфов</string>
-    <string name="item_dwarven_sword_name">Меч дварфов</string>
-    <string name="item_dwarven_tinderbox_name">Огниво дварфов</string>
-    <string name="item_dwarven_warhammer_name">Боевой молот дварфов</string>
+    <string name="item_dragon_whelp_name">Дракончик</string>
+    <string name="item_dwarven_axe_name">Дварфийский топор</string>
+    <string name="item_dwarven_boots_name">Дварфийские сапоги</string>
+    <string name="item_dwarven_fishing_rod_name">Дварфийская удочка</string>
+    <string name="item_dwarven_frying_pan_name">Дварфийская сковорода</string>
+    <string name="item_dwarven_grappling_hook_name">Дварфийский крюк-кошка</string>
+    <string name="item_dwarven_hammer_name">Дварфийский молот</string>
+    <string name="item_dwarven_helm_name">Дварфийский шлем</string>
+    <string name="item_dwarven_hoe_name">Дварфийская мотыга</string>
+    <string name="item_dwarven_lockpick_name">Дварфийская отмычка</string>
+    <string name="item_dwarven_pickaxe_name">Дварфийская кирка</string>
+    <string name="item_dwarven_platebody_name">Дварфийский нагрудник</string>
+    <string name="item_dwarven_platelegs_name">Дварфийские поножи</string>
+    <string name="item_dwarven_scimitar_name">Дварфийский ятаган</string>
+    <string name="item_dwarven_shield_name">Дварфийский щит</string>
+    <string name="item_dwarven_sword_name">Дварфийский меч</string>
+    <string name="item_dwarven_tinderbox_name">Дварфийское огниво</string>
+    <string name="item_dwarven_warhammer_name">Дварфийский боевой молот</string>
     <string name="item_ent_name">Энт</string>
     <string name="item_farming_cape_name">Плащ фермера</string>
     <string name="item_farming_guild_cape_name">Плащ гильдии фермеров</string>
-    <string name="item_firemaking_cape_name">Плащ поджигателей</string>
-    <string name="item_firemaking_guild_cape_name">Плащ гильдии поджигателей</string>
+    <string name="item_firemaking_cape_name">Плащ разжигателя огня</string>
+    <string name="item_firemaking_guild_cape_name">Плащ гильдии разжигателей огня</string>
     <string name="item_fishing_cape_name">Плащ рыбака</string>
     <string name="item_fishing_guild_cape_name">Плащ гильдии рыбаков</string>
     <string name="item_flame_heart_amulet_name">Амулет пламенное сердце</string>
     <string name="item_fletching_cape_name">Плащ лучного дела</string>
     <string name="item_fletching_guild_cape_name">Плащ гильдии лучного дела</string>
-    <string name="item_forge_pickaxe_name">Кузнечная кирка</string>
+    <string name="item_forge_pickaxe_name">Кирка кузни</string>
     <string name="item_hellfire_staff_name">Посох адского огня</string>
     <string name="item_herblore_guild_cape_name">Плащ гильдии травников</string>
     <string name="item_hp_cape_name">Плащ здоровья</string>
-    <string name="item_imp_pet_name">Бес-питомец</string>
+    <string name="item_imp_pet_name">Ручной бес</string>
     <string name="item_iron_arrow_tip_name">Железные наконечники</string>
     <string name="item_iron_boots_name">Железные сапоги</string>
     <string name="item_iron_chainbody_name">Железная кольчуга</string>
@@ -878,7 +878,7 @@
     <string name="item_iron_plateskirt_name">Железная латная юбка</string>
     <string name="item_iron_square_shield_name">Железный квадратный щит</string>
     <string name="item_ironwood_axe_name">Топор из железного дерева</string>
-    <string name="item_king_black_dragon_name">Король Черный дракон</string>
+    <string name="item_king_black_dragon_name">Чёрный дракон-король</string>
     <string name="item_kraken_name">Кракен</string>
     <string name="item_kraken_tentacle_name">Щупальце Кракена</string>
     <string name="item_mages_guild_cape_name">Плащ гильдии магов</string>
@@ -902,14 +902,14 @@
     <string name="item_mithril_plateskirt_name">Мифриловая латная юбка</string>
     <string name="item_mithril_square_shield_name">Мифриловый квадратный щит</string>
     <string name="item_mutton_name">Жареная баранина</string>
-    <string name="item_necklace_of_anguish_name">Ожерелье Страданий</string>
+    <string name="item_necklace_of_anguish_name">Ожерелье мучений</string>
     <string name="item_necklace_of_anguish_desc">Дает исключительные бонусы к дальней атаке. Для покупки требуется Торговля 99-го уровня.</string>
     <string name="item_oak_shortbow_name">Дубовый короткий лук</string>
     <string name="item_prayer_cape_name">Плащ проповедника</string>
     <string name="item_prayer_guild_cape_name">Плащ гильдии молитвы</string>
     <string name="item_ranged_cape_name">Плащ стрельбы</string>
     <string name="item_rat_meat_name">Жареная крыса</string>
-    <string name="item_ring_of_dragons_might_name">Кольцо драконьих способностей</string>
+    <string name="item_ring_of_dragons_might_name">Кольцо драконьей мощи</string>
     <string name="item_ring_of_flame_name">Кольцо пламени</string>
     <string name="item_ring_of_recoil_name">Кольцо отдачи</string>
     <string name="item_ring_of_recoil_desc">Кольцо с зазубренным, укреплённым ободком. Для покупки требуется Торговля 20-го уровня.</string>
@@ -971,11 +971,11 @@
     <string name="item_woodcutting_guild_cape_name">Плащ гильдии лесорубов</string>
     <string name="item_yew_longbow_name">Тисовый длинный лук</string>
     <string name="item_yew_shortbow_name">Тисовый короткий лук</string>
-    <string name="item_void_reaver_name">Опустошитель Пустоты</string>
+    <string name="item_void_reaver_name">Опустошитель пустоты</string>
     <string name="item_void_reaver_desc">Клинок, выкованный из кристаллизованной энергии пустоты. Его лезвие прорезает броню, словно ткань.</string>
-    <string name="item_sovereign_crown_name">Суверенная Корона</string>
+    <string name="item_sovereign_crown_name">Корона владыки</string>
     <string name="item_sovereign_crown_desc">Корона самого Владыки пустоты, излучающая мрачное величие. Обеспечивает непревзойдённую защиту.</string>
-    <string name="item_amulet_of_the_void_name">Амулет Пустоты</string>
+    <string name="item_amulet_of_the_void_name">Амулет пустоты</string>
     <string name="item_amulet_of_the_void_desc">Подвеска из чистой сущности пустоты. Усиливает все боевые характеристики носителя.</string>
     <string name="item_bronze_longsword_desc">Бронзовый длинный меч.</string>
     <string name="item_iron_longsword_desc">Железный длинный меч.</string>
@@ -995,7 +995,7 @@
     <string name="item_dwarven_warhammer_desc">Массивный боевой молот дварфов, сокрушающий всё на своем пути.</string>
     <string name="item_tower_sword_name">Меч башни</string>
     <string name="item_tower_sword_desc">Клинок, который рассекал бесчисленные этажи башни.</string>
-    <string name="item_balrog_whip_desc">Хлыст чистого пламени, отобранный у самого Тёмного демона. Горит вечным огнем.</string>
+    <string name="item_balrog_whip_desc">Хлыст чистого пламени, отобранный у самого Готического угля. Горит вечным огнем.</string>
     <string name="item_divine_sword_name">Божественный меч</string>
     <string name="item_divine_sword_desc">Клинок из чистого божественного света, которым, как говорят, владеют только избранные.</string>
     <string name="item_divine_greatblade_name">Божественный великий клинок</string>
@@ -1077,13 +1077,13 @@
     <string name="item_tower_boots_desc">Сапоги, выкованные в самой глубокой кузнице башни.</string>
     <string name="item_tower_shield_name">Щит башни</string>
     <string name="item_tower_shield_desc">Массивный щит, высеченный из камня башни.</string>
-    <string name="item_balrog_wings_desc">Могучие крылья Тёмного демона, наполненные темной силой. Непревзойденная броня.</string>
+    <string name="item_balrog_wings_desc">Могучие крылья Готического угля, наполненные тёмной силой. Непревзойдённая броня.</string>
     <string name="item_divine_helm_name">Божественный шлем</string>
-    <string name="item_divine_helm_desc">Сияющий шлем, благословленный богами. Отводит удары, которые могли бы сразить любого смертного.</string>
+    <string name="item_divine_helm_desc">Сияющий шлем, благословлённый богами. Отводит удары, которые могли бы сразить любого смертного.</string>
     <string name="item_divine_platebody_name">Божественный нагрудник</string>
     <string name="item_divine_platebody_desc">Доспехи, выкованные из небесного металла. Считается, что они почти неразрушимы.</string>
     <string name="item_divine_platelegs_name">Божественные поножи</string>
-    <string name="item_divine_platelegs_desc">Ножные доспехи божественного изготовления. Тяжелее, чем кажется, но легче, чем должно быть.</string>
+    <string name="item_divine_platelegs_desc">Ножные доспехи божественного изготовления. Тяжелее, чем кажутся, но легче, чем должны быть.</string>
     <string name="item_divine_boots_name">Божественные сапоги</string>
     <string name="item_divine_boots_desc">Сапоги божественной выделки. Не оставляют следов.</string>
     <string name="item_divine_shield_name">Божественный щит</string>
@@ -1101,9 +1101,9 @@
     <string name="item_silver_diamond_ring_desc">Серебряное кольцо с бриллиантом. Сбалансирует бой.</string>
     <string name="item_tower_ring_name">Кольцо башни</string>
     <string name="item_tower_ring_desc">Браслет, выкованный из камня бесконечной башни.</string>
-    <string name="item_ring_of_flame_desc">Выкованный в огне глубин земли. Те, кто носит его, ощущают силу Тёмного демона.</string>
+    <string name="item_ring_of_flame_desc">Выковано в огне глубин земли. Те, кто его носят, ощущают силу Готического угля.</string>
     <string name="item_ring_of_dragons_might_desc">Кольцо, наполненное драконьим огнем. Значительно увеличивает силу в ближнем бою.</string>
-    <string name="item_ring_of_the_seas_desc">Кольцо, благословленное морскими глубинами. Повышает точность  и мощность стрельбы.</string>
+    <string name="item_ring_of_the_seas_desc">Кольцо, благословлённое морскими глубинами. Повышает точность  и мощность стрельбы.</string>
     <string name="item_kraken_tentacle_desc">Кольцо из извивающихся щупалец, которое направляет тайную силу Кракена.</string>
     <string name="item_tower_cape_name">Плащ башни</string>
     <string name="item_tower_cape_desc">Развевающаяся накидка, которая излучает энергию башни.</string>
@@ -1127,8 +1127,8 @@
     <string name="item_fletching_guild_cape_desc" formatted="false">Присуждается за достижение 10-го уровня Гильдии лучников. Дает на 5% больше стрел за сессию.</string>
     <string name="item_crafting_cape_desc" formatted="false">Присуждается за достижение 99-го уровня Ремесла. Дает на 10% больше предметов за сессию.</string>
     <string name="item_crafting_guild_cape_desc" formatted="false">Присуждается за достижение 10-го уровня Гильдии ремесленников. Дает на 5% больше стрел за сессию.</string>
-    <string name="item_firemaking_cape_desc" formatted="false">Присуждается за достижение 99-го уровня Владения огнём. Дает на 10% больше пепла за сессию.</string>
-    <string name="item_firemaking_guild_cape_desc" formatted="false">Присуждается за достижение 10-го уровня Гильдии поджигателей. Дает на 5% больше пепла за сессию.</string>
+    <string name="item_firemaking_cape_desc" formatted="false">Присуждается за достижение 99-го уровня Разжигания огня. Дает на 10% больше пепла за сессию.</string>
+    <string name="item_firemaking_guild_cape_desc" formatted="false">Присуждается за достижение 10-го уровня Гильдии разжигателей огня. Дает на 5% больше пепла за сессию.</string>
     <string name="item_runecrafting_cape_desc" formatted="false">Присуждается за достижение 99-го уровня Создания рун. Дает на 10% больше рун за сессию.</string>
     <string name="item_runecrafting_guild_cape_desc" formatted="false">Присуждается за достижение 10-го уровня Гильдии создателей рун. Дает на 5% больше рун за сессию.</string>
     <string name="item_herblore_cape_name">Плащ травника</string>
@@ -1155,13 +1155,13 @@
     <string name="item_mages_guild_cape_desc" formatted="false">Присуждается за достижение 10-го уровня Гильдии магов. Дает 5% дополнительного магического опыта.</string>
     <string name="item_slayer_guild_cape_desc" formatted="false">Присуждается за достижение 10-го уровня Гильдии убийц. Дает 5% дополнительного опыта убийцы.</string>
     <string name="item_hp_cape_desc" formatted="false">Присуждается за достижение 99-го уровня Здоровья. Дает 10% дополнительных очков опыта здоровья.</string>
-    <string name="item_deep_iron_pickaxe_desc">Выкован из руды, найденной в самых глубоких штольнях Обрушившейся шахты. Наносит удары со сверхъестественной точностью.</string>
+    <string name="item_deep_iron_pickaxe_desc">Выкована из руды, найденной в самых глубоких штольнях Обрушившейся шахты. Наносит удары со сверхъестественной точностью.</string>
     <string name="item_dwarven_pickaxe_desc">Мастерски сделанная кирка дварфов. Лучший инструмент для добычи полезных ископаемых, когда-либо созданный.</string>
-    <string name="item_forge_pickaxe_desc">Закаленный в пламени самой Древней кузницы. Самая редкая и мощная кирка из существующих.</string>
-    <string name="item_ironwood_axe_desc">Вырезан из железного дерева, которое когда-то росло на остатках Древнего леса. Исключительно прочный.</string>
+    <string name="item_forge_pickaxe_desc">Закалена в пламени самой Древней кузницы. Самая редкая и мощная кирка из существующих.</string>
+    <string name="item_ironwood_axe_desc">Вырезан из железного дерева, которое когда-то росло в Древних лесных руинах. Исключительно прочный.</string>
     <string name="item_dwarven_axe_desc">Легендарный топор дварфов. С легкостью разрубает любое дерево.</string>
     <string name="item_sanctum_axe_desc">Выкован в тени Осквернённого святилища. Его лезвие с легкостью разрубает даже магические бревна.</string>
-    <string name="item_blessed_fishing_rod_desc">Изготовленный из плавучего дерева, найденного в Затопленном храме, освященный древними морскими обрядами.</string>
+    <string name="item_blessed_fishing_rod_desc">Изготовлена из плавучего дерева, найденного в Затопленном храме, освященного древними морскими обрядами.</string>
     <string name="item_dwarven_fishing_rod_desc">Удочка, изготовленная дварфами. Практически сама вытаскивает рыбу из воды.</string>
     <string name="item_abyssal_rod_desc">Сделана из соприкасающейся с пустотой нити, найденной в Бездонных руинах. Рыба практически прыгает на неё.</string>
     <string name="item_bronze_hoe_desc">Обычная бронзовая мотыга. Немного повышает урожайность.</string>
@@ -1212,16 +1212,16 @@
     <string name="item_mithril_lockpick_desc">Мифриловая отмычка для воровства.</string>
     <string name="item_adamantite_lockpick_desc">Адамантитовая отмычка для воровства.</string>
     <string name="item_runite_lockpick_desc">Рунитовая отмычка для воровства.</string>
-    <string name="item_rogues_lockpick_desc">Хорошо зарекомендовавшая себя отмычка, которой пользуются взломщики гильдии. Подходит к любому замку.</string>
+    <string name="item_rogues_lockpick_desc">Хорошо зарекомендовавшая себя отмычка, которой пользуются разбойники гильдии. Подходит к любому замку.</string>
     <string name="item_dwarven_lockpick_desc">Отмычка, выкованная дварфами. Мгновенно находит рычажки в замках.</string>
     <string name="item_shadow_lockpick_desc">Отмычка, выкованная из тени. Ни один замок не может долго противостоять ей.</string>
     <string name="item_divine_lockpick_desc">Отмычка, к которой прикоснулся божественный свет. Любой замок поддается ей.</string>
     <string name="item_wraithbone_ring_desc">Бледное кольцо, вырезанное из кости мертвецов во время Мрачной жатвы. Укрепляет руку и сердце.</string>
-    <string name="item_reaper_scythe_desc">Инструмент жатвы, принадлежащий Пустоголовому королю. Он собирает не только пшеницу.</string>
-    <string name="item_gloomweave_cape_desc">Сотканный из сумерек и дыма от фонарей на ночном рынке. Продается только во время Мрачной жатвы.</string>
-    <string name="item_gilded_full_helmet_desc">Рунитовый закрытый шлем, украшенный старинным золотом. Оставлен Стражем Хранилища.</string>
-    <string name="item_gilded_platebody_desc">Рунитовый нагрудник, украшенный старинным золотом. Оставлен Стражем Хранилища.</string>
-    <string name="item_gilded_kiteshield_desc">Рунитовый каплевидный щит, украшенный старинным золотом. Оставлен Стражем Хранилища.</string>
+    <string name="item_reaper_scythe_desc">Инструмент жатвы, принадлежащий Королю-без-головы. Он собирает не только пшеницу.</string>
+    <string name="item_gloomweave_cape_desc">Соткана из сумерек и дыма от фонарей на ночном рынке. Продается только во время Мрачной жатвы.</string>
+    <string name="item_gilded_full_helmet_desc">Рунитовый закрытый шлем, украшенный старинным золотом. Выпадает у Стража Хранилища.</string>
+    <string name="item_gilded_platebody_desc">Рунитовый нагрудник, украшенный старинным золотом. Выпадает у Стража Хранилища.</string>
+    <string name="item_gilded_kiteshield_desc">Рунитовый каплевидный щит, украшенный старинным золотом. Выпадает у Стража Хранилища.</string>
     <string name="item_wind_strike_name">Удар ветра</string>
     <string name="item_wind_strike_desc">Базовое воздушное заклинание, поражающее вашего врага.</string>
     <string name="item_wind_bolt_name">Струя ветра</string>

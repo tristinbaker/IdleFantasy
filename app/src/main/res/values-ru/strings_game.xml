@@ -2,7 +2,7 @@
 <resources>
     <!-- ===== Level-up messages ===== -->
     <!-- Translator note: %1$d = new level number, %2$s = skill display name -->
-    <string name="game_level_up">Новый уровень! %1$s теперь уровень %2$d!</string>
+    <string name="game_level_up">Новый уровень! %1$s теперь %2$d-го уровня!</string>
     <!-- Translator note: %1$s = skill display name, %2$d = new level number -->
     <string name="game_level_up_short">%1$s → %2$d</string>
     <string name="game_max_level">Достигнут максимальный уровень!</string>
@@ -12,11 +12,11 @@
     <!-- Translator note: %1$s = skill display name -->
     <string name="game_session_summary_header">Сессия %1$s завершена</string>
     <!-- Translator note: %1$s = formatted XP amount (e.g. "1,234") -->
-    <string name="game_session_xp_total">+%1$s опыта получено</string>
+    <string name="game_session_xp_total">Получено +%1$s опыта</string>
     <string name="game_session_no_items">Предметы не найдены</string>
     <string name="game_session_no_level_ups">В этой сессии нет новых уровней</string>
     <!-- Translator note: %1$d = number of level ups -->
-    <string name="game_session_level_up_count">%1$d новый уровень!</string>
+    <string name="game_session_level_up_count">Новый уровень %1$d!</string>
 
     <!-- ===== Combat messages ===== -->
     <!-- Translator note: %1$s = player or enemy name, %2$d = damage amount -->
@@ -29,14 +29,14 @@
     <string name="game_combat_player_died">Вы потерпели поражение.</string>
     <string name="game_dungeon_cleared">Подземелье пройдено!</string>
     <!-- Translator note: %1$s = dungeon display name -->
-    <string name="game_dungeon_summary">%1$s пройдено.</string>
+    <string name="game_dungeon_summary">%1$s завершено.</string>
 
     <!-- ===== Farming messages ===== -->
     <!-- Translator note: %1$s = crop display name -->
-    <string name="game_farming_planted">%1$s посажен.</string>
+    <string name="game_farming_planted">Посажено — %1$s.</string>
     <!-- Translator note: %1$s = crop display name, %2$d = yield quantity -->
     <string name="game_farming_harvested">Собрано %2$d %1$s.</string>
-    <string name="game_farming_all_harvested">Все готовые участки собраны.</string>
+    <string name="game_farming_all_harvested">Все созревшие участки собраны.</string>
     <string name="game_farming_patch_cleared">Участок очищен.</string>
     <string name="game_farming_not_ready">Этот урожай ещё не готов.</string>
     <!-- Translator note: %1$s = crop display name, %2$s = time remaining -->
@@ -50,13 +50,13 @@
 
     <!-- ===== Shop messages ===== -->
     <!-- Translator note: %1$d = quantity, %2$s = item display name, %3$d = total cost -->
-    <string name="game_shop_purchased">Куплено %1$d %2$s за %3$d монет.</string>
+    <string name="game_shop_purchased">Куплено %1$d %2$s за %3$d.</string>
     <!-- Translator note: %1$d = quantity, %2$s = item display name, %3$d = coins received -->
-    <string name="game_shop_sold">Продано %1$d %2$s за %3$d монет.</string>
+    <string name="game_shop_sold">Продано %1$d %2$s за %3$d.</string>
 
     <!-- ===== Prayer / burying ===== -->
     <!-- Translator note: %1$s = bone display name, %2$s = formatted XP gained -->
-    <string name="game_bones_buried">Кости %1$s захоронены — +%2$s опыта Молитвы.</string>
+    <string name="game_bones_buried">Кости %1$s захоронены — опыт Молитвы +%2$s.</string>
 
     <!-- ===== Quest messages ===== -->
     <!-- Translator note: %1$s = quest display name -->
@@ -68,7 +68,7 @@
 
     <!-- ===== XP gain messages (shown in session frame log) ===== -->
     <!-- Translator note: %1$s = formatted XP gained this minute -->
-    <string name="game_xp_gained">+%1$s опыта</string>
+    <string name="game_xp_gained">Опыт +%1$s</string>
     <!-- Translator note: %1$s = item display name, %2$d = quantity -->
     <string name="game_item_received">%1$s +%2$d</string>
 
@@ -86,7 +86,7 @@
     <!-- Translator note: %1$s = item display name -->
     <string name="game_dig_found">Вы откопали %1$s!</string>
     <!-- Translator note: %1$d = current hole depth in metres -->
-    <string name="game_dig_depth">Яма глубиной %1$d метров.</string>
+    <string name="game_dig_depth">Глубина ямы в метрах: %1$d.</string>
     <string name="game_dig_cooldown">Вы уже копали сегодня. Приходите завтра.</string>
 
     <!-- ===== Equipment slot names ===== -->

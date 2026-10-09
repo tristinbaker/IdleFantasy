@@ -66,8 +66,8 @@
     <string name="tree_magic_tree_name">Волшебное дерево</string>
     <string name="tree_redwood_tree_name">Красное дерево</string>
     <!-- Elder Isle woodcutting targets -->
-    <string name="tree_coastal_pine_name">Coastal Pine</string> <!-- untranslated -->
-    <string name="tree_grove_oak_name">Grove Oak</string> <!-- untranslated -->
+    <string name="tree_coastal_pine_name">Прибрежная сосна</string>
+    <string name="tree_grove_oak_name">Дуб рощи</string>
     <string name="tree_abyssal_tree_name">Abyssal Tree</string> <!-- untranslated -->
     <string name="tree_starwood_tree_name">Starwood Tree</string> <!-- untranslated -->
 
@@ -103,13 +103,13 @@
     <string name="agility_transcendent_course_name">Трансцендентный маршрут</string>
     <string name="agility_transcendent_course_desc">Высшее испытание ловкости, превосходящее смертные пределы.</string>
     <!-- Elder Isle agility courses (train elder Agility to shorten isle sessions to 45 min at 99) -->
-    <string name="agility_elder_coastal_run_name">Coastal Run</string> <!-- untranslated -->
+    <string name="agility_elder_coastal_run_name">Пробежка по побережью</string>
     <string name="agility_elder_coastal_run_desc">A jog along the isle\'s wave-scarred beach. Rocks shift underfoot with the tide.</string> <!-- untranslated -->
-    <string name="agility_elder_grove_traverse_name">Grove Traverse</string> <!-- untranslated -->
+    <string name="agility_elder_grove_traverse_name">Пересечение рощи</string>
     <string name="agility_elder_grove_traverse_desc">A rope-and-ledge circuit through the rune-lit canopy of the Ancient Forest.</string> <!-- untranslated -->
-    <string name="agility_elder_volcano_scramble_name">Volcano Scramble</string> <!-- untranslated -->
+    <string name="agility_elder_volcano_scramble_name">Карабканье на вулкан</string>
     <string name="agility_elder_volcano_scramble_desc">A climb across the smoking flanks of the peak. The stone remembers being an altar.</string> <!-- untranslated -->
-    <string name="agility_elder_abyssal_ascent_name">Abyssal Ascent</string> <!-- untranslated -->
+    <string name="agility_elder_abyssal_ascent_name">Подъём в бездну</string>
     <string name="agility_elder_abyssal_ascent_desc">A vertical route up the pressure-cracked walls of the Abyssal Depths. Few make the top.</string> <!-- untranslated -->
 
     <!-- ===== Session skill type labels ===== -->
