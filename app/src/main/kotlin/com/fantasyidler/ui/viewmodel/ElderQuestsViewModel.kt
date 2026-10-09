@@ -59,7 +59,7 @@ class ElderQuestsViewModel @Inject constructor(
             val rows = ElderQuests.CHAIN.map { q ->
                 ElderQuestRow(
                     quest    = q,
-                    progress = q.counter(snap).coerceAtMost(q.target),
+                    progress = ElderQuests.displayProgress(q, snap, completed),
                     complete = q.id in completed,
                     unlocked = q.id in unlocked,
                 )
