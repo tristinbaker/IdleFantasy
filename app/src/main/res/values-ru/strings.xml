@@ -73,7 +73,7 @@
     <string name="bestiary_chance_header">Шанс</string>
     <string name="label_completion_progress">%3$s %1$d / %2$d</string>
     <string name="achievements_progress_bar">Получено</string>
-    <string name="bestiary_progress_bar">встречено</string>
+    <string name="bestiary_progress_bar">Встречено</string>
     <string name="bestiary_always_drops">Всегда выпадает</string>
     <string name="bestiary_rare_drops">Редкая добыча</string>
     <string name="bestiary_common_loot">Обычная добыча</string>
@@ -329,8 +329,8 @@
     <string name="settings_profile_layout_tabs">Вкладки</string>
     <string name="settings_quest_dots">Точки заданий на навыке</string>
     <string name="settings_quest_dots_desc">Показывает золотую точку на навыках, для которых открыто задание</string>
-    <string name="settings_monument_touch_indicator">Monument touch indicator</string> <!-- untranslated -->
-    <string name="settings_monument_touch_indicator_desc">Show a dot on the Grand Monument on Home when the daily touch is available</string> <!-- untranslated -->
+    <string name="settings_monument_touch_indicator">Индикатор прикосновения к Монументу</string>
+    <string name="settings_monument_touch_indicator_desc">Показывать точку на Великом Монументе на домашнем экране, когда доступно дневное прикосновение</string>
     <string name="settings_prestige_notifications">Значки с уведомлением о престиже</string>
     <string name="settings_prestige_notifications_desc">Показывать значок уведомления при навигации, когда навык готов к получению престижа.</string>
     <string name="label_switch_character">Сменить персонажа</string>
@@ -339,7 +339,7 @@
     <string name="settings_compact_numbers">Компактные числа</string>
     <string name="settings_compact_numbers_desc">Сокращать большие значения (например, 2,46М вместо 2 461 940)</string>
     <string name="settings_home_screen">Главный экран</string>
-    <string name="settings_home_screen_desc">Выберите, что отображается на главном экране</string>
+    <string name="settings_home_screen_desc">Выберите что отображается на главном экране</string>
     <string name="settings_recent_activity">Журнал последней активности</string>
     <string name="settings_recent_activity_desc">Показывать кнопку «Последняя активность» на главном экране</string>
     <string name="settings_journal_button">Кнопка журнала</string>
@@ -436,7 +436,7 @@
     <string name="settings_font_small">Маленький</string>
     <string name="settings_font_normal">Обычный</string>
     <string name="settings_font_large">Большой</string>
-    <string name="settings_font_very_large">Very Large</string> <!-- untranslated -->
+    <string name="settings_font_very_large">Очень большой</string>
     <string name="settings_font_huge">Огромный</string>
     <string name="settings_import_theme">Импорт тем</string>
     <string name="settings_import_theme_desc">Импорт пользовательских тем из файла</string>
@@ -615,7 +615,7 @@
     <string name="combat_spell_locked">Требуется Магия уровня %1$d</string>
     <string name="combat_spell_level_met">Уровень магии %1$d</string>
     <string name="combat_no_potion">Без зелья</string>
-    <string name="label_potion">Potion</string> <!-- untranslated -->
+    <string name="label_potion">Зелье</string>
     <string name="combat_req_level">Требуемый боевой уровень</string>
     <string name="combat_duration">Длительность</string>
     <!-- Translator note: %1$d = minutes -->
@@ -704,11 +704,11 @@
     <!-- Translator note: %1$s = formatted multiplier (e.g. "1.15") -->
     <string name="skills_tool_bonus">Бонус инструмента ×%1$s</string>
     <string name="skills_pet_bonus">+%1$d%% опыта (питомец)</string>
-    <string name="skills_blessing_bonus">+%1$d%% XP (blessing)</string> <!-- untranslated -->
+    <string name="skills_blessing_bonus">+%1$d%% опыта (благословение)</string>
     <!-- Translator note: %1$d = fishing level -->
     <string name="skills_fishing_desc">Уровень %1$d  •  Улов по уровню</string>
     <!-- Translator note: %1$d = prayer level -->
-    <string name="skills_prayer_desc">Уровень %1$d  •  Захороните кости или рассейте пепел для опыта молитвы</string>
+    <string name="skills_prayer_desc">Уровень %1$d  •  Захороните кости или рассейте пепел для получения опыта молитвы</string>
     <string name="skills_no_bones">Нет костей или пепла в инвентаре</string>
     <string name="skills_xp_each">%1$d опыта за шт.</string>
     <!-- Translator note: %1$d = XP per bone, %2$d = quantity available -->
@@ -763,7 +763,7 @@
     <string name="quest_legend_guild_daily">Ежедневное поручение гильдии</string>
     <string name="quest_legend_guild">Задание гильдии</string>
     <string name="quest_legend_quest">Задание</string>
-    <string name="quest_legend_slayer_target">Slayer Task</string> <!-- untranslated -->
+    <string name="quest_legend_slayer_target">Задание Убийцы</string>
     <string name="quest_legend_gold_dot">Доступно временное задание.</string>
     <string name="quest_legend_notes">Задания с тусклыми значками пока нельзя выполнить (не хватает уровня или материалов). Маленькая надстрочная цифра означает, что несколько заданий этого типа требуют одного и того же.</string>
     <!-- Translator note: %1$s = quantity in inventory -->
@@ -830,7 +830,7 @@
     <string name="character_gender_male">Мужской</string>
     <string name="character_gender_female">Женский</string>
     <string name="character_gender_other">Другой</string>
-    <string name="character_gender_custom_hint">Опишите свою идентичность</string>
+    <string name="character_gender_custom_hint">Опишите свой гендер</string>
     <string name="character_race">Раса</string>
     <string name="character_race_human">Человек</string>
     <string name="character_race_elf">Эльф</string>
@@ -986,7 +986,7 @@
     <string name="quest_kbd_slayer_2_name">Убийца Короля чёрных драконов II</string>
     <string name="quest_kbd_slayer_3_name">Убийца Короля чёрных драконов III</string>
     <string name="inn_daily_resets">Обновляется ежедневно в %1$s</string>
-    <string name="inn_food_heal">+%1$d здоровья</string>
+    <string name="inn_food_heal">+%1$d ОЗ</string>
     <string name="inn_food_purchased">Еда куплена.</string>
     <string name="inn_buy_qty">Количество</string>
     <string name="inn_buy_total">Итого: %1$s</string>
@@ -1027,7 +1027,7 @@
     <string name="guild_name_fishing">Гильдия рыболовов</string>
     <string name="guild_name_woodcutting">Гильдия лесорубов</string>
     <string name="guild_name_farming">Гильдия фермеров</string>
-    <string name="guild_name_firemaking">Гильдия разжигателей</string>
+    <string name="guild_name_firemaking">Гильдия разжигателей огня</string>
     <string name="guild_name_agility">Гильдия ловкости</string>
     <string name="guild_name_smithing">Гильдия кузнецов</string>
     <string name="guild_name_cooking">Гильдия поваров</string>
@@ -1078,7 +1078,7 @@
     <string name="church_activate">Активировать</string>
     <string name="church_blessing_bonus">+%1$s от благословения</string>
     <!-- Golden Goose pet coin share, split from the blessing line (issue #1941). Pending Weblate translation. -->
-    <string name="pet_coin_bonus">+%1$s from pet</string> <!-- untranslated -->
+    <string name="pet_coin_bonus">+%1$s от питомца</string>
     <string name="church_blessing_suffix">от благословения</string>
     <string name="church_effect_xp">×%1$.2f опыта на %2$d ч.</string>
     <string name="church_effect_def">+%1$d защиты на %2$d ч.</string>
@@ -1088,8 +1088,8 @@
     <string name="church_bones_available">У вас имеется костей — %1$d, что равно %2$d для благословений (крупные кости считаются за большее количество)</string>
     <string name="church_not_enough_bones">Недостаточно костей (нужно %1$d)</string>
     <string name="church_already_active">Благословение уже активно</string>
-    <string name="church_blessing_activated">Blessing activated!</string> <!-- untranslated -->
-    <string name="church_blessing_extended">Blessing extended!</string> <!-- untranslated -->
+    <string name="church_blessing_activated">Благословение активировано!</string>
+    <string name="church_blessing_extended">Благословение продлено!</string>
     <string name="church_confirm_deactivate_title">Деактивировать благословение?</string>
     <string name="church_confirm_deactivate_body">Вы уверены, что хотите деактивировать активное благословение? Вы не получите кости обратно.</string>
 
@@ -1352,11 +1352,11 @@
     <string name="house_item_wall_art_light_sunshine_grass">Солнечный луг (светлая рамка)</string>
     <string name="house_item_wall_art_light_sunshine_ocean">Солнечные моря (светлая рамка)</string>
     <string name="house_item_wall_art_light_starry_night_grass">Звёздный луг (светлая рамка)</string>
-    <string name="house_item_wall_art_light_starry_night_ocean">Starry Seas (светлая рамка)</string>
+    <string name="house_item_wall_art_light_starry_night_ocean">Звёздные моря (светлая рамка)</string>
     <string name="house_item_wall_art_dark_sunshine_grass">Солнечный луг (тёмная рамка)</string>
     <string name="house_item_wall_art_dark_sunshine_ocean">Солнечные моря (тёмная рамка)</string>
     <string name="house_item_wall_art_dark_starry_night_grass">Звёздный луг (тёмная рамка)</string>
-    <string name="house_item_wall_art_dark_starry_night_ocean">Starry Seas (тёмная рамка)</string>
+    <string name="house_item_wall_art_dark_starry_night_ocean">Звёздные моря (тёмная рамка)</string>
     <string name="house_item_helmet_trophy">Трофей в виде шлема</string>
     <string name="house_item_shield_round">Круглый щит</string>
     <string name="house_item_shield_kite">Каплевидный щит</string>
@@ -1398,11 +1398,11 @@
     <string name="slayer_found_in">Где найти: %1$s</string>
     <string name="slayer_requires">Требуется: %1$s</string>
     <string name="slayer_add_dungeon_to_queue">Добавить подземелье в очередь</string>
-    <string name="slayer_add_all_dungeons_to_queue">Add All Dungeons to Queue</string> <!-- untranslated -->
+    <string name="slayer_add_all_dungeons_to_queue">Добавить все подземелья в очередь</string>
     <string name="slayer_queue_added">Добавлено в очередь: %1$s.</string>
     <string name="slayer_queue_full">Очередь заполнена.</string>
-    <string name="slayer_queue_added_many">Added %1$d dungeons to queue.</string> <!-- untranslated -->
-    <string name="slayer_queue_added_partial">Added %1$d of %2$d dungeons to queue.</string> <!-- untranslated -->
+    <string name="slayer_queue_added_many">Добавлено подземелий в очередь: %1$d.</string>
+    <string name="slayer_queue_added_partial">Добавлено подземелий в очередь: %1$d из %2$d.</string>
     <string name="slayer_foretell_title">Предсказать будущую цель</string>
     <string name="slayer_foretell_desc">Предварительно планируйте предстоящие задания убийцы, платя костьми. Назначение происходит автоматически после выполнения вашей текущей задачи.</string>
     <string name="slayer_foretell_queue_empty">Нет задач в очереди.</string>
@@ -1417,7 +1417,7 @@
     <string name="prestige">Престиж</string>
     <string name="prestige_skill_tree">Дерево навыков</string>
     <string name="prestige_max">Макс. престиж</string>
-    <string name="prestige_confirm_title" formatted="false">Выполнить престиж %s?</string>
+    <string name="prestige_confirm_title" formatted="false">Поднять престиж %s?</string>
     <string name="prestige_confirm_message_xp">%1$s: уровень сбросится до 1, но вы получите постоянный бонус +%2$d%% опыта для этого навыка.</string>
     <string name="prestige_confirm_message_stat">%1$s: уровень сбросится до 1, но вы получите постоянный бонус +%2$d к характеристикам.</string>
     <string name="prestige_confirm_message_agility">%1$s: уровень сбросится до 1, но вы получите постоянный бонус +%2$d%% к опыту, а длительность сессии продолжит сокращаться — на 99 уровне сессия будет занимать %3$d мин вместо %4$d мин.</string>
@@ -1450,7 +1450,7 @@
     <string name="shop_cat_food">Еда</string>
     <string name="shop_cat_materials">Материалы</string>
     <string name="shop_cat_misc">Разное</string>
-    <string name="shop_cat_capes">Capes</string> <!-- untranslated -->
+    <string name="shop_cat_capes">Плащи</string>
 
     <string name="crafting_per_craft">×%1$d за изготовление</string>
 
@@ -1469,7 +1469,7 @@
     <string name="trade_route_merchants_quarter_desc">Торгуйте редкими товарами в престижном торговом квартале.</string>
     <string name="trade_route_northern_ports_desc">Доставляйте ценный груз в северные портовые города. Высокий риск, высокая награда.</string>
     <string name="crafting_cat_bar">Слиток</string>
-    <string name="crafting_cat_brew">Brew</string> <!-- untranslated -->
+    <string name="crafting_cat_brew">Отвар</string>
     <string name="crafting_cat_component">Компонент</string>
     <string name="crafting_cat_tool">Инструмент</string>
     <string name="crafting_cat_weapon">Оружие</string>
@@ -1483,7 +1483,7 @@
     <string name="crafting_cat_bow">Лук</string>
     <string name="crafting_cat_plank">Доска</string>
     <string name="crafting_cat_staff">Посох</string>
-    <string name="crafting_cat_super_potion">Super Potion</string> <!-- untranslated -->
+    <string name="crafting_cat_super_potion">Супер-зелье</string>
 
     <!-- Crafting tier filter chips -->
     <string name="crafting_tier_adamantite">Адамантит</string>
@@ -1494,13 +1494,13 @@
     <string name="crafting_tier_maple">Клён</string>
     <string name="crafting_tier_mithril">Мифрил</string>
     <string name="crafting_tier_oak">Дуб</string>
-    <string name="crafting_tier_plank">Plank</string> <!-- untranslated -->
+    <string name="crafting_tier_plank">Доска</string>
     <string name="crafting_tier_platinum">Платина</string>
-    <string name="crafting_tier_redwood">Redwood</string> <!-- untranslated -->
+    <string name="crafting_tier_redwood">Секвойя</string>
     <string name="crafting_tier_runite">Рунит</string>
     <string name="crafting_tier_silver">Серебро</string>
     <string name="crafting_tier_steel">Сталь</string>
-    <string name="crafting_tier_stone">Stone</string> <!-- untranslated -->
+    <string name="crafting_tier_stone">Камень</string>
     <string name="crafting_tier_willow">Ива</string>
     <string name="crafting_tier_yew">Тис</string>
 
@@ -1529,7 +1529,7 @@
     <string name="catalyst_enhanced_output">Производит усиленное зелье</string>
     <string name="catalyst_rune_bonus">%1$d рун за эссенцию</string>
     <string name="catalyst_none">Без катализатора</string>
-    <string name="skills_rune_output">Produces %1$d runes</string> <!-- untranslated -->
+    <string name="skills_rune_output">Рун на выходе: %1$d</string>
 
     <!-- Construction skill -->
     <string name="skill_construction_name">Строительство</string>
@@ -1606,144 +1606,144 @@
     <string name="town_artisans_workshop_no_bonus">Улучшите, чтобы получить шанс сохранить вторичные материалы для изготовления</string>
     <string name="town_artisans_workshop_active_bonus">%1$d%% шанс сохранить вторичные материалы для изготовления</string>
     <string name="town_building_chronos_spire_name">Шпиль Хроноса</string>
-    <string name="town_building_dock_name">Dock</string> <!-- untranslated -->
-    <string name="town_dock_no_bonus">Upgrade to sail to new locations</string> <!-- untranslated -->
-    <string name="town_dock_t1_bonus">Unlocks sailing to the Elder Isle</string> <!-- untranslated -->
-    <string name="elder_isle_title">Elder Isle</string> <!-- untranslated -->
-    <string name="elder_isle_sail_title">Sail to Elder Isle</string> <!-- untranslated -->
-    <string name="elder_isle_zone_beach">Beach &amp; Cliffs</string> <!-- untranslated -->
-    <string name="elder_isle_zone_forest">Ancient Forest</string> <!-- untranslated -->
-    <string name="elder_isle_zone_volcano">Volcano Peak</string> <!-- untranslated -->
-    <string name="elder_isle_zone_abyss">Abyssal Depths</string> <!-- untranslated -->
-    <string name="elder_isle_zone_locked">Locked</string> <!-- untranslated -->
-    <string name="elder_isle_coming_soon">Elder Isle is barely charted. Return once the isle has been built out.</string> <!-- untranslated -->
-    <string name="elder_isle_boss_sea_serpent">Sea Serpent</string> <!-- untranslated -->
-    <string name="elder_isle_set_sail">Set sail for Elder Isle</string> <!-- untranslated -->
-    <string name="elder_isle_return">Return to the mainland</string> <!-- untranslated -->
-    <string name="elder_isle_sail_blocked_by_session">Finish your active session before setting sail.</string> <!-- untranslated -->
-    <string name="elder_isle_sail_blocked_locked">Elder Isle is not yet unlocked.</string> <!-- untranslated -->
-    <string name="elder_isle_sail_blocked_serpent">The Sea Serpent guards the passage. Defeat it to reach Elder Isle.</string> <!-- untranslated -->
-    <string name="elder_isle_dock_unlocked_title">The Dock stands ready</string> <!-- untranslated -->
-    <string name="elder_isle_dock_unlocked_body">The pier is complete and the boats are waiting, but no crew will make the crossing until the Sea Serpent that has drowned every prior voyage lies dead. Find it in the mainland Combat tab under Bosses. The passage opens the moment it falls.</string> <!-- untranslated -->
-    <string name="elder_isle_dock_unlocked_cta">Face the Sea Serpent</string> <!-- untranslated -->
-    <string name="elder_isle_dock_unlocked_later">Later</string> <!-- untranslated -->
-    <string name="boss_masked_name">\?\?\?</string> <!-- untranslated -->
-    <string name="boss_last_elder_masked_desc">Something ancient stirs at the bottom of the isle. Assemble the full Elder set to face it.</string> <!-- untranslated -->
-    <string name="elder_isle_welcome_title">Landfall on Elder Isle</string> <!-- untranslated -->
-    <string name="elder_isle_welcome_body">The salt spray fades and the fog lifts. Ahead: a bone-white shore, a jungle laced with pale runes, and further in, smoke curling from a peak that shouldn\'t be smoking. The old sailors were right. Something ancient still lives here.\n\nYour mainland skills, boosts, and gear stay on the ship. Everything you level or craft on the isle grows a separate track of its own. Elder gear will carry back to the mainland; mainland power will not carry here.\n\nStart with the Skills tab. Head to Mining or Woodcutting to gather isle materials. Then check the Quests tab for your first objective, and open the Lore Master in town whenever a new fragment unlocks.</string> <!-- untranslated -->
-    <string name="elder_isle_welcome_cta">Step ashore</string> <!-- untranslated -->
+    <string name="town_building_dock_name">Причал</string>
+    <string name="town_dock_no_bonus">Улучшите, чтобы отплыть в новые места</string>
+    <string name="town_dock_t1_bonus">Разблокирует отплытие на Старший остров</string>
+    <string name="elder_isle_title">Старший остров</string>
+    <string name="elder_isle_sail_title">Отплыть на Старший остров</string>
+    <string name="elder_isle_zone_beach">Пляж и утёсы</string>
+    <string name="elder_isle_zone_forest">Древний лес</string>
+    <string name="elder_isle_zone_volcano">Вулканический пик</string>
+    <string name="elder_isle_zone_abyss">Непроглядные глубины</string>
+    <string name="elder_isle_zone_locked">Заблокировано</string>
+    <string name="elder_isle_coming_soon">Старший остров практически не исследован. Возвращайтесь после того, как остров будет расширен.</string>
+    <string name="elder_isle_boss_sea_serpent">Морской змей</string>
+    <string name="elder_isle_set_sail">Отплыть на Старший остров</string>
+    <string name="elder_isle_return">Вернуться на материк</string>
+    <string name="elder_isle_sail_blocked_by_session">Завершите активные сессии перед отплытием.</string>
+    <string name="elder_isle_sail_blocked_locked">Старший остров ещё не разблокирован.</string>
+    <string name="elder_isle_sail_blocked_serpent">Морской змей сторожит проход. Сразите его, чтобы достичь Старшего острова.</string>
+    <string name="elder_isle_dock_unlocked_title">Причал готов к работе</string>
+    <string name="elder_isle_dock_unlocked_body">Пирс построен и лодки готовы, но никому не удастся проплыть, пока не будет сражён Морской змей, кто потопил всех когда-либо пытавшихся ранее. Он находится в списке боссов материка. Проход откроется в тот же миг, стоит боссу быть повергнутым.</string>
+    <string name="elder_isle_dock_unlocked_cta">Сразиться с Морским змеем</string>
+    <string name="elder_isle_dock_unlocked_later">Позже</string>
+    <string name="boss_masked_name">\?\?\?</string>
+    <string name="boss_last_elder_masked_desc">Что-то древнее трепещет в глубинах острова. Соберите полный набор Старшей экипировки перед боем.</string>
+    <string name="elder_isle_welcome_title">Приплытие на Старший остров</string>
+    <string name="elder_isle_welcome_body">Затихают солёные брызги и рассеивается туман. Впереди лежат: костяно-белый берег, джунгли, исписанные бледными рунами, а вдали виден исходящий дым с вершины, которая не должна дымиться. Старые моряки были правы. Что-то древнее до сих пор живёт здесь.\n\nВаши материковые навыки, усиления и снаряжения остаются на корабле. Всё, что вы создаёте или прокачиваете на острове, обладает своим путём развития. Старшая экипировка может быть взята обратно на материк, материковое развитие не будет здесь считаться.\n\nНачните с Навыков. Отправляйтесь на добычу руды или рубку деревьев, чтобы собрать материалы острова. Затем осмотрите Задания для своей первой цели, а также посещайте мастера легенд в городе как только откроется новый фрагмент.</string>
+    <string name="elder_isle_welcome_cta">Сойти на берег</string>
     <string name="elder_isle_stub_skills">Elder skills are being charted. Full skill tracks arrive in a later build.</string> <!-- untranslated -->
     <string name="elder_isle_stub_combat">Elder dungeons and the Last Elder fight are being drawn up. Later build.</string> <!-- untranslated -->
     <string name="elder_isle_stub_quests">Isle quests will appear here once the story chain lands.</string> <!-- untranslated -->
     <string name="elder_isle_stub_profile">Isle stats and gear layout land with the skill-tracks build.</string> <!-- untranslated -->
-    <string name="elder_isle_skills_title">Elder Skills</string> <!-- untranslated -->
-    <string name="elder_isle_total_level_label">Total Elder Level</string> <!-- untranslated -->
-    <string name="elder_isle_total_level_value">%1$d / %2$d</string> <!-- untranslated -->
+    <string name="elder_isle_skills_title">Старшие навыки</string>
+    <string name="elder_isle_total_level_label">Суммарный уровень Старшего</string>
+    <string name="elder_isle_total_level_value">%1$d / %2$d</string>
     <string name="elder_isle_skill_activities_title">%1$s activities</string> <!-- untranslated -->
     <string name="elder_isle_no_activities">No activities yet in this build.</string> <!-- untranslated -->
-    <string name="elder_isle_start_session">Start session</string> <!-- untranslated -->
-    <string name="elder_isle_session_started">Session started.</string> <!-- untranslated -->
-    <string name="elder_isle_session_start_failed">Could not start session: %1$s</string> <!-- untranslated -->
-    <string name="elder_isle_activity_level">Level %1$d required</string> <!-- untranslated -->
-    <string name="elder_isle_combat_title">Elder Dungeons</string> <!-- untranslated -->
-    <string name="elder_isle_profile_title">Isle Profile</string> <!-- untranslated -->
-    <string name="elder_isle_dungeon_beach">Beach &amp; Cliffs</string> <!-- untranslated -->
-    <string name="elder_isle_dungeon_forest">Ancient Forest</string> <!-- untranslated -->
-    <string name="elder_isle_dungeon_volcano">Volcano Peak</string> <!-- untranslated -->
-    <string name="elder_isle_dungeon_abyss">Abyssal Depths</string> <!-- untranslated -->
-    <string name="elder_isle_dungeon_boss">The Last Elder</string> <!-- untranslated -->
-    <string name="elder_isle_tab_dungeons">Dungeons</string> <!-- untranslated -->
-    <string name="elder_isle_tab_bosses">Bosses</string> <!-- untranslated -->
-    <string name="elder_isle_shop_title">Isle Shop</string> <!-- untranslated -->
-    <string name="elder_isle_shop_buy">Buy</string> <!-- untranslated -->
-    <string name="elder_isle_shop_soon">Coming later</string> <!-- untranslated -->
-    <string name="elder_isle_shop_insufficient">Not enough Elder Essence.</string> <!-- untranslated -->
-    <string name="elder_isle_shop_purchased">Purchased %1$s.</string> <!-- untranslated -->
-    <string name="elder_isle_shop_button">Visit Isle Shop</string> <!-- untranslated -->
-    <string name="elder_isle_armor_master_title">Elder Armor Master</string> <!-- untranslated -->
-    <string name="elder_isle_lore_master_title">Lore Master</string> <!-- untranslated -->
-    <string name="elder_armor_missing_mats">Not enough materials.</string> <!-- untranslated -->
-    <string name="elder_armor_crafted">Crafted %1$s.</string> <!-- untranslated -->
-    <string name="elder_armor_queue_full">Craft queue is full (3).</string> <!-- untranslated -->
-    <string name="elder_armor_missing_stone">You don\'t own that sigil stone.</string> <!-- untranslated -->
-    <string name="elder_armor_stone_embedded">Embedded %1$s in %2$s.</string> <!-- untranslated -->
-    <string name="elder_armor_sigil_embedder">Sigil Embedder</string> <!-- untranslated -->
-    <string name="elder_armor_sigil_empty">Empty socket</string> <!-- untranslated -->
-    <string name="elder_armor_sigil_change">Change</string> <!-- untranslated -->
-    <string name="elder_armor_sigil_embed">Embed</string> <!-- untranslated -->
-    <string name="elder_armor_sigil_remove">Remove</string> <!-- untranslated -->
-    <string name="elder_armor_pick_stone">Pick a sigil stone</string> <!-- untranslated -->
-    <string name="item_mythrite_ore_name">Mythrite Ore</string> <!-- untranslated -->
-    <string name="item_abyssal_ore_name">Abyssal Ore</string> <!-- untranslated -->
-    <string name="item_voidsteel_ore_name">Voidsteel Ore</string> <!-- untranslated -->
-    <string name="item_starforged_ore_name">Starforged Ore</string> <!-- untranslated -->
-    <string name="item_mythrite_bar_name">Mythrite Bar</string> <!-- untranslated -->
-    <string name="item_abyssal_bar_name">Abyssal Bar</string> <!-- untranslated -->
-    <string name="item_voidsteel_bar_name">Voidsteel Bar</string> <!-- untranslated -->
-    <string name="item_starforged_bar_name">Starforged Bar</string> <!-- untranslated -->
-    <string name="item_coastal_pine_log_name">Coastal Pine Log</string> <!-- untranslated -->
-    <string name="item_grove_oak_log_name">Grove Oak Log</string> <!-- untranslated -->
-    <string name="item_abyssal_log_name">Abyssal Log</string> <!-- untranslated -->
-    <string name="item_starwood_log_name">Starwood Log</string> <!-- untranslated -->
-    <string name="item_raw_tidepool_crab_name">Tidepool Crab (raw)</string> <!-- untranslated -->
-    <string name="item_raw_grove_bass_name">Grove Bass (raw)</string> <!-- untranslated -->
-    <string name="item_raw_lavafin_name">Lavafin (raw)</string> <!-- untranslated -->
-    <string name="item_raw_deepwater_ray_name">Deepwater Ray (raw)</string> <!-- untranslated -->
-    <string name="item_tidepool_crab_name">Tidepool Crab</string> <!-- untranslated -->
-    <string name="item_grove_bass_name">Grove Bass</string> <!-- untranslated -->
-    <string name="item_lavafin_name">Lavafin</string> <!-- untranslated -->
-    <string name="item_deepwater_ray_name">Deepwater Ray</string> <!-- untranslated -->
-    <string name="item_elder_bone_name">Elder Bone</string> <!-- untranslated -->
-    <string name="item_elder_essence_name">Elder Essence</string> <!-- untranslated -->
-    <string name="item_ancient_sigil_name">Ancient Sigil</string> <!-- untranslated -->
-    <string name="item_sacred_wood_name">Sacred Wood</string> <!-- untranslated -->
+    <string name="elder_isle_start_session">Начать сессию</string>
+    <string name="elder_isle_session_started">Сессия начата.</string>
+    <string name="elder_isle_session_start_failed">Не удалось начать сессию: %1$s</string>
+    <string name="elder_isle_activity_level">Требуется уровень: %1$d</string>
+    <string name="elder_isle_combat_title">Старшие подземелья</string>
+    <string name="elder_isle_profile_title">Профиль острова</string>
+    <string name="elder_isle_dungeon_beach">Пляж и утёсы</string>
+    <string name="elder_isle_dungeon_forest">Древний лес</string>
+    <string name="elder_isle_dungeon_volcano">Вулканический пик</string>
+    <string name="elder_isle_dungeon_abyss">Непроглядные глубины</string>
+    <string name="elder_isle_dungeon_boss">Последний старейшина</string>
+    <string name="elder_isle_tab_dungeons">Подземелья</string>
+    <string name="elder_isle_tab_bosses">Боссы</string>
+    <string name="elder_isle_shop_title">Магазин острова</string>
+    <string name="elder_isle_shop_buy">Купить</string>
+    <string name="elder_isle_shop_soon">Появится позднее</string>
+    <string name="elder_isle_shop_insufficient">Недостаточно Старшей эссенции.</string>
+    <string name="elder_isle_shop_purchased">Куплено: %1$s.</string>
+    <string name="elder_isle_shop_button">Посетить магазин острова</string>
+    <string name="elder_isle_armor_master_title">Мастер Старшей брони</string>
+    <string name="elder_isle_lore_master_title">Мастер легенд</string>
+    <string name="elder_armor_missing_mats">Недостаточно материалов.</string>
+    <string name="elder_armor_crafted">Изготовлено: %1$s.</string>
+    <string name="elder_armor_queue_full">Очередь изготовления заполнена (3).</string>
+    <string name="elder_armor_missing_stone">Вы не обладаете этим канем печати.</string>
+    <string name="elder_armor_stone_embedded">%1$s инкрустирован в %2$s.</string>
+    <string name="elder_armor_sigil_embedder">Инкрустатор печатей</string>
+    <string name="elder_armor_sigil_empty">Пустое гнездо</string>
+    <string name="elder_armor_sigil_change">Изменить</string>
+    <string name="elder_armor_sigil_embed">Инкрустировать</string>
+    <string name="elder_armor_sigil_remove">Удалить</string>
+    <string name="elder_armor_pick_stone">Выберите камень печати</string>
+    <string name="item_mythrite_ore_name">Легендаритовая руда</string>
+    <string name="item_abyssal_ore_name">Пучинная руда</string>
+    <string name="item_voidsteel_ore_name">Пустосталевая руда</string>
+    <string name="item_starforged_ore_name">Зведнокованая руда</string>
+    <string name="item_mythrite_bar_name">Слиток легендарита</string>
+    <string name="item_abyssal_bar_name">Слиток пучинита</string>
+    <string name="item_voidsteel_bar_name">Слиток пустостали</string>
+    <string name="item_starforged_bar_name">Слиток зведнокова</string>
+    <string name="item_coastal_pine_log_name">Бревно прибрежной сосны</string>
+    <string name="item_grove_oak_log_name">Бревно дуба рощи</string>
+    <string name="item_abyssal_log_name">Бревно бездны</string>
+    <string name="item_starwood_log_name">Бревно звездодрева</string>
+    <string name="item_raw_tidepool_crab_name">Приливный краб (сырой)</string>
+    <string name="item_raw_grove_bass_name">Окунь рощи (сырой)</string>
+    <string name="item_raw_lavafin_name">Лавапёр (сырой)</string>
+    <string name="item_raw_deepwater_ray_name">Глубоководный скат (сырой)</string>
+    <string name="item_tidepool_crab_name">Пориливный краб</string>
+    <string name="item_grove_bass_name">Окунь рощи</string>
+    <string name="item_lavafin_name">Лавапёр</string>
+    <string name="item_deepwater_ray_name">Глубоководный скат</string>
+    <string name="item_elder_bone_name">Старшая кость</string>
+    <string name="item_elder_essence_name">Старшая эссенция</string>
+    <string name="item_ancient_sigil_name">Древняя печать</string>
+    <string name="item_sacred_wood_name">Священное дерево</string>
 
     <!-- Elder Isle: gathering targets (trees) -->
-    <string name="item_coastal_pine_name">Coastal Pine</string> <!-- untranslated -->
-    <string name="item_grove_oak_name">Grove Oak</string> <!-- untranslated -->
-    <string name="item_abyssal_tree_name">Abyssal Tree</string> <!-- untranslated -->
-    <string name="item_starwood_tree_name">Starwood Tree</string> <!-- untranslated -->
+    <string name="item_coastal_pine_name">Прибрежная сосна</string>
+    <string name="item_grove_oak_name">Дуб рощи</string>
+    <string name="item_abyssal_tree_name">Древо бездны</string>
+    <string name="item_starwood_tree_name">Звездодрев</string>
 
     <!-- Elder Isle: crafted armor pieces (tier progression Coastal → Grove → Volcanic → Elder) -->
-    <string name="item_coastal_helm_name">Coastal Helm</string> <!-- untranslated -->
-    <string name="item_coastal_platebody_name">Coastal Platebody</string> <!-- untranslated -->
-    <string name="item_coastal_platelegs_name">Coastal Platelegs</string> <!-- untranslated -->
-    <string name="item_coastal_boots_name">Coastal Boots</string> <!-- untranslated -->
-    <string name="item_grove_helm_name">Grove Helm</string> <!-- untranslated -->
-    <string name="item_grove_platebody_name">Grove Platebody</string> <!-- untranslated -->
-    <string name="item_grove_platelegs_name">Grove Platelegs</string> <!-- untranslated -->
-    <string name="item_grove_boots_name">Grove Boots</string> <!-- untranslated -->
-    <string name="item_volcanic_helm_name">Volcanic Helm</string> <!-- untranslated -->
-    <string name="item_volcanic_platebody_name">Volcanic Platebody</string> <!-- untranslated -->
-    <string name="item_volcanic_platelegs_name">Volcanic Platelegs</string> <!-- untranslated -->
-    <string name="item_volcanic_boots_name">Volcanic Boots</string> <!-- untranslated -->
-    <string name="item_elder_helm_name">Elder Helm</string> <!-- untranslated -->
-    <string name="item_elder_platebody_name">Elder Platebody</string> <!-- untranslated -->
-    <string name="item_elder_platelegs_name">Elder Platelegs</string> <!-- untranslated -->
-    <string name="item_elder_boots_name">Elder Boots</string> <!-- untranslated -->
-    <string name="item_elder_cape_name">Elder Cape</string> <!-- untranslated -->
-    <string name="item_elder_shield_name">Elder Shield</string> <!-- untranslated -->
-    <string name="item_elder_signet_ring_name">Elder Signet Ring</string> <!-- untranslated -->
-    <string name="item_elder_amulet_name">Elder Amulet</string> <!-- untranslated -->
-    <string name="item_ancient_signet_name">Ancient Signet</string> <!-- untranslated -->
+    <string name="item_coastal_helm_name">Шлем побережья</string>
+    <string name="item_coastal_platebody_name">Нагрудник побережья</string>
+    <string name="item_coastal_platelegs_name">Поножи побережья</string>
+    <string name="item_coastal_boots_name">Сапоги побережья</string>
+    <string name="item_grove_helm_name">Шлем рощи</string>
+    <string name="item_grove_platebody_name">Нагрудник рощи</string>
+    <string name="item_grove_platelegs_name">Поножи рощи</string>
+    <string name="item_grove_boots_name">Сапоги рощи</string>
+    <string name="item_volcanic_helm_name">Шлем вулкана</string>
+    <string name="item_volcanic_platebody_name">Нагрудник вулкана</string>
+    <string name="item_volcanic_platelegs_name">Поножи вулкана</string>
+    <string name="item_volcanic_boots_name">Сапоги вулкана</string>
+    <string name="item_elder_helm_name">Старший шлем</string>
+    <string name="item_elder_platebody_name">Старший нагрудник</string>
+    <string name="item_elder_platelegs_name">Старшие поножи</string>
+    <string name="item_elder_boots_name">Старшие сапоги</string>
+    <string name="item_elder_cape_name">Старший плащ</string>
+    <string name="item_elder_shield_name">Старший щит</string>
+    <string name="item_elder_signet_ring_name">Старший перстень-печатка</string>
+    <string name="item_elder_amulet_name">Старший амулет</string>
+    <string name="item_ancient_signet_name">Древний перстень-печатка</string>
 
     <!-- Elder Isle: sigil stones (four wired, two shipped-but-cosmetic) -->
-    <string name="item_elder_sapphire_name">Sapphire Sigil Stone</string> <!-- untranslated -->
-    <string name="item_elder_ruby_name">Ruby Sigil Stone</string> <!-- untranslated -->
-    <string name="item_elder_emerald_name">Emerald Sigil Stone</string> <!-- untranslated -->
-    <string name="item_elder_amethyst_name">Amethyst Sigil Stone</string> <!-- untranslated -->
-    <string name="item_elder_topaz_name">Topaz Sigil Stone</string> <!-- untranslated -->
-    <string name="item_elder_diamond_name">Diamond Sigil Stone</string> <!-- untranslated -->
+    <string name="item_elder_sapphire_name">Сапфировый камень печати</string>
+    <string name="item_elder_ruby_name">Рубиновый камень печати</string>
+    <string name="item_elder_emerald_name">Изумрудный камень печати</string>
+    <string name="item_elder_amethyst_name">Аметистовый камень печати</string>
+    <string name="item_elder_topaz_name">Топазовый камень печати</string>
+    <string name="item_elder_diamond_name">Алмазный камень печати</string>
 
     <!-- Elder Isle: pet item entries (parallel to pet_* below; used by drop tables and inventory) -->
-    <string name="item_tidal_sprite_name">Tidal Sprite</string> <!-- untranslated -->
-    <string name="item_grove_fawn_name">Grove Fawn</string> <!-- untranslated -->
-    <string name="item_magma_salamander_name">Magma Salamander</string> <!-- untranslated -->
-    <string name="item_abyss_wisp_name">Abyss Wisp</string> <!-- untranslated -->
-    <string name="item_ancient_turtle_name">Ancient Turtle</string> <!-- untranslated -->
-    <string name="item_cinder_hawk_name">Cinder Hawk</string> <!-- untranslated -->
-    <string name="item_deepwater_serpent_name">Deepwater Serpent</string> <!-- untranslated -->
-    <string name="item_elder_familiar_name">Elder Familiar</string> <!-- untranslated -->
+    <string name="item_tidal_sprite_name">Фея прилива</string>
+    <string name="item_grove_fawn_name">Оленёнок рощи</string>
+    <string name="item_magma_salamander_name">Магмовая саламандра</string>
+    <string name="item_abyss_wisp_name">Огонёк бездны</string>
+    <string name="item_ancient_turtle_name">Древняя черепаха</string>
+    <string name="item_cinder_hawk_name">Золовой ястреб</string>
+    <string name="item_deepwater_serpent_name">Глубоководный змей</string>
+    <string name="item_elder_familiar_name">Прислужник старейшины</string>
 
     <!-- Elder Isle: ore descriptions -->
     <string name="item_mythrite_ore_desc">Silvery isle ore. Smelts into Mythrite Bars, the base metal of the Coastal armor tier.</string> <!-- untranslated -->
@@ -1818,18 +1818,18 @@
     <string name="carnival_appraisal_which">Что дороже?</string>
     <string name="carnival_play">Играть</string>
     <string name="carnival_cooldown">Доступно через %1$dм %2$dс</string>
-    <string name="carnival_ticket_cost">%1$d билетов</string>
+    <string name="carnival_ticket_cost">Билетов — %1$d</string>
     <string name="carnival_redeem">Обменять</string>
     <string name="carnival_queue_added">Добавлено в очередь: %1$s.</string>
     <string name="carnival_queue_full">Очередь заполнена.</string>
-    <string name="carnival_ring_won">В яблочко! +%1$d билетов</string>
+    <string name="carnival_ring_won">В яблочко! Билеты +%1$d</string>
     <string name="carnival_ring_missed">Мимо цели!</string>
-    <string name="carnival_hammer_perfect">Идеальный удар! +%1$d билетов</string>
-    <string name="carnival_hammer_good">Хороший удар! +%1$d билетов</string>
+    <string name="carnival_hammer_perfect">Идеальный удар! Билеты +%1$d</string>
+    <string name="carnival_hammer_good">Хороший удар! Билеты +%1$d</string>
     <string name="carnival_hammer_miss">Удар мимо!</string>
-    <string name="carnival_sequence_correct">Последовательность верна! +%1$d билетов</string>
+    <string name="carnival_sequence_correct">Последовательность верна! Билеты +%1$d</string>
     <string name="carnival_sequence_wrong">Неверный порядок! Попробуйте снова.</string>
-    <string name="carnival_appraisal_correct">Верно! +%1$d билетов</string>
+    <string name="carnival_appraisal_correct">Верно! Билеты +%1$d</string>
     <string name="carnival_appraisal_wrong">Неверно! Более ценный предмет — %1$s.</string>
     <string name="carnival_redeemed">Обменяно: %1$s!</string>
     <string name="carnival_not_enough_tickets">Недостаточно билетов.</string>
@@ -1839,7 +1839,7 @@
     <string name="carnival_shell_showing">Смотрите внимательно — драгоценный камень находится под чашкой %1$d</string>
     <string name="carnival_shell_watch">Смотрите внимательно…</string>
     <string name="carnival_shell_pick">Под какой чашкой он находится?</string>
-    <string name="carnival_shell_won">Верно! +%1$d билетов</string>
+    <string name="carnival_shell_won">Верно! Билеты +%1$d</string>
     <string name="carnival_shell_missed">Неверно! Драгоценный камень находился под чашкой %1$d.</string>
     <string name="carnival_shell_locked">Чтобы разблокировать, улучшите Ярмарочную площадь до 1-го ранга</string>
     <string name="carnival_higher_lower">Выше или ниже</string>
@@ -1849,8 +1849,8 @@
     <string name="carnival_higher_lower_round">Раунд %1$d из %2$d</string>
     <string name="carnival_higher_lower_btn_higher">Больше</string>
     <string name="carnival_higher_lower_btn_lower">Меньше</string>
-    <string name="carnival_higher_lower_result">%1$d/%2$d верно — +%3$d билетов</string>
-    <string name="carnival_higher_lower_locked">Чтобы разблокировать, уулучшите Ярмарочную площадь до 2-го ранга</string>
+    <string name="carnival_higher_lower_result">%1$d/%2$d верно — билеты +%3$d</string>
+    <string name="carnival_higher_lower_locked">Чтобы разблокировать, улучшите Ярмарочную площадь до 2-го ранга</string>
     <string name="carnival_higher_lower_last_card">Последняя карта: %1$d</string>
     <string name="carnival_higher_lower_continue">Продолжить</string>
     <string name="carnival_difficulty_label">Сложность</string>
@@ -1897,9 +1897,9 @@
     <string name="armory_sort_strength">Сила</string>
     <string name="armory_sort_defense">Защита</string>
     <string name="armory_sort_requirement">Требования</string>
-    <string name="armory_progress_bar">получено</string>
+    <string name="armory_progress_bar">Получено</string>
     <string name="armory_stat_mining">Эффективность добычи руды</string>
-    <string name="armory_stat_woodcutting">Эффективность рубка леса</string>
+    <string name="armory_stat_woodcutting">Эффективность рубки леса</string>
     <string name="armory_stat_fishing">Эффективность рыбалки</string>
     <string name="armory_stat_farming">Эффективность фермерства</string>
     <string name="armory_stat_smithing">Эффективность ковки</string>
@@ -1938,7 +1938,7 @@
     <string name="skill_not_enough_rune_essence">Недостаточно рунической эссенции</string>
     <string name="skill_not_enough_item">Недостаточно %1$s</string>
     <string name="skill_not_enough_materials">Недостаточно материалов</string>
-    <string name="skill_session_start_failed">Не удалось запустить сеанс: %1$s</string>
+    <string name="skill_session_start_failed">Не удалось запустить сессию: %1$s</string>
     <string name="skill_added_to_queue_activity">Добавлено в очередь: %1$s — %2$s.</string>
     <string name="worker_already_busy">Рабочий уже занят.</string>
     <string name="worker_not_enough_logs">Недостаточно брёвен.</string>
@@ -1952,7 +1952,7 @@
     <string name="shop_bulk_sell_confirm">Продать всё</string>
     <string name="shop_recent_bulk_sales">Последние массовые продажи</string>
     <string name="shop_recent_bulk_sales_empty">Массовых продаж пока не зафиксировано.</string>
-    <string name="shop_xp_boost_activated">Активирован 2× бонус опыта на %1$dч!</string>
+    <string name="shop_xp_boost_activated">2× бонус опыта активирован на %1$dч!</string>
     <string name="shop_xp_boost_already_active">2× бонус опыта уже активен.</string>
     <string name="shop_xp_boost_weekly_limit">Не более одного 2× бонуса опыта в неделю. Будет доступен после еженедельного сброса.</string>
     <string name="item_xp_boost_48h_desc">Удваивает весь получаемый опыт на 48 часов. Не более одной покупки в неделю.</string>
@@ -1963,8 +1963,8 @@
     <string name="quest_complete_with_rewards">Задание выполнено: %1$s! Получено: %2$s</string>
     <string name="quest_daily_complete_coins">Ежедневное задание выполнено! +%1$s монет</string>
     <string name="quest_daily_complete_dwarven">Ежедневное задание выполнено! Вы нашли дварфийское снаряжение!</string>
-    <string name="quest_weekly_complete">Еженедельное испытание выполнено! +%1$s монет</string>
-    <string name="quest_weekly_bonus_complete_coins">Все еженедельные испытания выполнены! +%1$s монет</string>
+    <string name="quest_weekly_complete">Еженедельное испытание выполнено! Монеты +%1$s</string>
+    <string name="quest_weekly_bonus_complete_coins">Все еженедельные испытания выполнены! Монеты +%1$s</string>
     <string name="quest_weekly_bonus_complete_divine">Все еженедельные испытания выполнены! Вы нашли божественное снаряжение!</string>
     <string name="guild_contributed_items">Внесено предметов: %1$d.</string>
     <string name="mercantile_not_enough_coins">Недостаточно монет (нужно %1$s).</string>
@@ -1995,7 +1995,7 @@
     <string name="bonus_builder_discount_detail" formatted="false">Скидка 0.5% на модернизацию здания за каждый уровень</string>
     <string name="bonus_xp">+%1$d%% опыта</string>
     <string name="bonus_coin_drops">+%1$d%% выпадения монет</string>
-    <string name="bonus_hp">+%1$d опыта</string>
+    <string name="bonus_hp">+%1$d ОЗ</string>
     <string name="snackbar_added_to_queue">Добавлено в очередь: %1$s.</string>
     <string name="snackbar_queue_full">Очередь заполнена.</string>
     <string name="combat_start_failed">Не удалось запустить: %1$s</string>
@@ -2004,8 +2004,8 @@
     <string name="combat_select_spell">Перед началом выберите заклинание.</string>
     <string name="combat_spell_level_required">Для %2$s нужна Магия %1$d.</string>
     <string name="guild_daily_reward_claimed">Ежедневная награда получена!</string>
-    <string name="reward_part_coins">+%1$s монет</string>
-    <string name="reward_part_coins_plain">%1$s монет</string>
+    <string name="reward_part_coins">Монеты +%1$s</string>
+    <string name="reward_part_coins_plain">Монет — %1$s</string>
     <string name="reward_part_combat_xp">+%1$s боевого опыта (распределяется по 7 навыкам)</string>
     <string name="quest_claimed_suffix">Забрано: %1$s</string>
     <plurals name="plural_reward_items">
@@ -2047,8 +2047,8 @@
     <string name="monument_not_enough_coins">Недостаточно монет.</string>
     <string name="title_patron_of_the_realm_name">Покровитель королевства</string>
     <string name="title_patron_of_the_realm_requirement">Завершите Великий Монумент</string>
-    <string name="title_isle_champion_name">Champion of the Elder Isle</string> <!-- untranslated -->
-    <string name="title_isle_champion_requirement">Defeat the Last Elder on Elder Isle</string> <!-- untranslated -->
+    <string name="title_isle_champion_name">Чемпион Старшего острова</string>
+    <string name="title_isle_champion_requirement">Сразите Последнего старейшину на Старшем острове</string>
     <string name="item_gilded_full_helmet_name">Позолоченный шлем</string>
     <string name="item_gilded_platebody_name">Позолоченный нагрудник</string>
     <string name="item_gilded_kiteshield_name">Позолоченный каплевидный щит</string>
@@ -2056,7 +2056,7 @@
     <string name="boss_coin_cap_spent">Выпадение монет с этого босса снижено до завтра</string>
     <string name="bestiary_coin_cap_label">После %1$d убийств/день</string>
     <string name="session_note_boss_coin_cap">Выпадение монет снижено (дневной лимит этого босса)</string>
-    <string name="session_note_boss_defeated_by">Defeated by %1$s ×%2$d</string> <!-- untranslated -->
+    <string name="session_note_boss_defeated_by">Побеждён %1$s ×%2$d</string>
     <string name="guild_daily_button">Ежедневные задания гильдии</string>
     <string name="guild_daily_banner_claimable">Ежедневное задание гильдии выполнено! Заберите награду в Зале гильдии</string>
     <string name="guild_daily_banner_claimed">Ежедневное задание гильдии уже получено</string>
@@ -2109,7 +2109,7 @@
     <string name="tower_floor_cleared" formatted="false">Этаж %d пройден!</string>
     <string name="tower_new_best" formatted="false">Новый рекорд: этаж %d!</string>
     <!-- Translator note: %1$d = floor died on, %2$d = floor resuming from (last checkpoint + 1) -->
-    <string name="tower_death_reset">Вы проиграли на этаже %1$d. Возвращение на этаж %2$d.</string>
+    <string name="tower_death_reset">Вы пали на этаже %1$d. Возвращение на этаж %2$d.</string>
     <string name="tower_not_enough_runes">Недостаточно %1$s для максимального количества атак.</string>
     <string name="tower_milestone_claim">Забрать</string>
     <string name="tower_milestone_claimed">Получено</string>
@@ -2149,9 +2149,9 @@
     <string name="treasure_open_message">Взломайте, чтобы получить монеты и шанс достать драгоценные камни.</string>
     <string name="treasure_open">Открыть</string>
     <string name="treasure_open_one">Открыть 1</string>
-    <string name="treasure_open_all">Открыть всё (%1$d)</string>
-    <string name="treasure_open_result">Открыто %1$d: +%2$s монет</string>
-    <string name="treasure_open_result_gems">Открыто %1$d: +%2$s монет и %3$d камней</string>
+    <string name="treasure_open_all">Открыть все (%1$d)</string>
+    <string name="treasure_open_result">Открыто %1$d: монеты +%2$s</string>
+    <string name="treasure_open_result_gems">Открыто %1$d: %3$d камней и монеты +%2$s</string>
     <string name="seasonal_expedition_token_hint">При каждом заходе предоставляется 1 жетон.</string>
     <string name="seasonal_boss_token_hint">За каждое убийство дается 1 жетон, до %1$d в день.</string>
     <string name="seasonal_minigame_hint">Попадите по %1$d из %2$d угольков, пока они не погасли!</string>
@@ -2368,7 +2368,7 @@
     <string name="pet_coin_drake_desc">Детеныш дракона, выращенный на диете из золотых монет. У него сверхъестественный нюх на прибыль.</string>
     <string name="pet_timber_sprite_name">Древесный дух</string>
     <string name="pet_timber_sprite_desc">Лесной дух, пробудившийся из опилок и досок. Он точно знает, куда должен попасть каждый гвоздь.</string>
-    <string name="pet_juggling_imp_name">Бес-жонглер</string>
+    <string name="pet_juggling_imp_name">Бес-жонглёр</string>
     <string name="pet_juggling_imp_desc" formatted="false">Озорной чертёнок, который отвлечёт вас от забот. Увеличивает количество очков опыта всех умений на 3%.</string>
     <string name="pet_tower_pet_name">Каменный страж</string>
     <string name="pet_tower_pet_desc">Древний каменный голем, который охраняет секреты башни. Повышает боевой опыт.</string>
@@ -2382,21 +2382,21 @@
     <string name="pet_golden_goose_desc">Царственный гусь, который восседает на вершине позолоченного памятника. Кажется, что монеты просто находят своего владельца.</string>
 
     <!-- Elder Isle pets: 7 dungeon drops + 1 raid-boss drop -->
-    <string name="pet_tidal_sprite_name">Tidal Sprite</string> <!-- untranslated -->
+    <string name="pet_tidal_sprite_name">Фея прилива</string>
     <string name="pet_tidal_sprite_desc">A shimmering water spirit born from the surf of Beach &amp; Cliffs. Never seems to fully dry.</string> <!-- untranslated -->
-    <string name="pet_grove_fawn_name">Grove Fawn</string> <!-- untranslated -->
+    <string name="pet_grove_fawn_name">Оленёнок рощи</string>
     <string name="pet_grove_fawn_desc">A young forest creature with rune-patterned fur, found among the ancient trees.</string> <!-- untranslated -->
-    <string name="pet_magma_salamander_name">Magma Salamander</string> <!-- untranslated -->
+    <string name="pet_magma_salamander_name">Магмовая саламандра</string>
     <string name="pet_magma_salamander_desc">A heat-forged lizard that thrives in Volcano Peak\'s cracks. Its skin is always faintly warm.</string> <!-- untranslated -->
-    <string name="pet_abyss_wisp_name">Abyss Wisp</string> <!-- untranslated -->
+    <string name="pet_abyss_wisp_name">Огонёк бездны</string>
     <string name="pet_abyss_wisp_desc">A cold silver light that drifted up from the Abyssal Depths and refused to sink back.</string> <!-- untranslated -->
-    <string name="pet_ancient_turtle_name">Ancient Turtle</string> <!-- untranslated -->
+    <string name="pet_ancient_turtle_name">Древняя черепаха</string>
     <string name="pet_ancient_turtle_desc">A tiny turtle whose shell bears the same runes as the isle\'s seal. Older than it looks.</string> <!-- untranslated -->
-    <string name="pet_cinder_hawk_name">Cinder Hawk</string> <!-- untranslated -->
+    <string name="pet_cinder_hawk_name">Золовой ястреб</string>
     <string name="pet_cinder_hawk_desc">A bird of banked embers that circles the volcano and roosts on your shoulder between fights.</string> <!-- untranslated -->
-    <string name="pet_deepwater_serpent_name">Deepwater Serpent</string> <!-- untranslated -->
+    <string name="pet_deepwater_serpent_name">Глубоководный змей</string>
     <string name="pet_deepwater_serpent_desc">A miniature cousin of the Sea Serpent, coiled around your wrist like a living bracelet.</string> <!-- untranslated -->
-    <string name="pet_elder_familiar_name">Elder Familiar</string> <!-- untranslated -->
+    <string name="pet_elder_familiar_name">Прислужник старейшины</string>
     <string name="pet_elder_familiar_desc">The Last Elder\'s dying companion, bound now to whoever felled its master. Its eyes still remember.</string> <!-- untranslated -->
 
     <!-- Save slots / character manager -->
@@ -2422,7 +2422,7 @@
     <string name="save_slot_delete_body">Навсегда удалить %1$s? Это действие нельзя отменить.</string>
     <string name="save_slot_delete_btn">Удалить</string>
     <string name="save_slot_switch_failed">Не удалось сменить персонажа.</string>
-    <string name="collect_blocked_switching">Character switch in progress. Please wait and try again.</string> <!-- untranslated -->
+    <string name="collect_blocked_switching">Идёт смена персонажа. Пожалуйста, подождите и попытайтесь снова.</string>
 
     <!-- Ironman mode -->
     <string name="character_ironman_title">Режим «Айронмэн»</string>
@@ -2453,9 +2453,9 @@
     <string name="carnival_stat_str">Сил +%1$d</string>
     <string name="carnival_stat_def">Защ +%1$d</string>
     <!-- Translator note: %1$s = "${skill name} ", %2$d = percentage bonus -->
-    <string name="carnival_stat_xp">%1$sXP +%2$d%%</string> <!-- untranslated -->
+    <string name="carnival_stat_xp">%1$sопыта +%2$d%%</string>
     <!-- Translator note: %1$s = "${skill name} ", %2$d = percentage bonus -->
-    <string name="carnival_stat_yield">%1$sYield +%2$d%%</string> <!-- untranslated -->
+    <string name="carnival_stat_yield">Выход%1$s +%2$d%%</string>
     <string name="carnival_potion_letter_green">З</string>
     <string name="carnival_potion_letter_blue">С</string>
     <string name="carnival_potion_letter_red">К</string>
@@ -2470,9 +2470,9 @@
     <!-- Translator note: %1$d = unspent prestige points -->
     <string name="prestige_points_available">"Доступные очки: %1$d "</string>
     <!-- Translator note: %1$d = lifetime points earned, %2$d = maximum points for this skill -->
-    <string name="prestige_points_lifetime">Заработано %1$d из %2$d очков</string>
+    <string name="prestige_points_lifetime">Заработано очков: %1$d из %2$d</string>
     <!-- Translator note: %1$d = points the reset would award right now -->
-    <string name="prestige_button_with_points">Поднять престиж за очки: +%1$d</string>
+    <string name="prestige_button_with_points">Получить очки поднятием престижа: +%1$d</string>
     <!-- Translator note: %1$d = current skill level -->
     <string name="prestige_requires_99">Достигните 99-го уровня для увеличения престижа (сейчас %1$d-й).</string>
     <string name="prestige_maxed_cap">Достигнут максимальный уровень престижа. Каждое очко, которое можно заработать в этом навыке, принадлежит вам.</string>
@@ -2494,7 +2494,7 @@
     <string name="prestige_path_auto_label">Заработано престижем</string>
     <string name="prestige_node_auto_earned">Заработано на престиже %1$d-го уровня.</string>
     <string name="prestige_node_auto_pending">Автоматически разблокируется на престиже ×%1$d.</string>
-    <string name="prestige_button_xp_only">Поднять престиж для следующего ранг опыта</string>
+    <string name="prestige_button_xp_only">Поднять престиж для следующего ранга опыта</string>
     <string name="prestige_confirm_message_xp_only">%1$s: ваш уровень будет сброшен до 1, и вы автоматически откроете следующий ранг опыта. Снаряжение, которое больше не соответствует предъявляемым требованиям, будет заменено, а прогресс невостребованных ежедневных заданий будет сброшен. Вы также получите 2x опыта на 48 часов, чтобы ускорить поднятие уровня.</string>
     <!-- Translator note: %1$s = list of race names -->
     <string name="prestige_node_race_only">Только для расы %1$s</string>
@@ -2543,7 +2543,7 @@
     <string name="prestige_effect_second_chance">Атаки ближнего боя повторяются ещё один раз после промаха.</string>
     <string name="prestige_effect_foretell_slots">Слотов предсказаний для заданий убийцы: +%1$d.</string>
     <string name="prestige_effect_slayer_multi_task">Убийства в подземельях также учитываются при выполнении предсказанных заданий.</string>
-    <string name="prestige_effect_unlock_recipe">Разблокирует рецепт оперения %1$s.</string>
+    <string name="prestige_effect_unlock_recipe">Разблокирует рецепт создания %1$s.</string>
 
     <!-- New distinctive base path names (variety pass) -->
     <string name="prestige_path_fishing_rod">Прочная удочка</string>
@@ -2609,7 +2609,7 @@
     <string name="item_race_change_token_name">Жетон для смены расы</string>
     <string name="item_race_change_token_desc">Редкая добыча с босса, который позволяет вам один раз сменить расу вашего персонажа.</string>
     <!-- Translator note: %1$d = number of tokens owned -->
-    <string name="race_change_pay_token">Использовать токен смены расы (%1$d)</string>
+    <string name="race_change_pay_token">Использовать жетон смены расы (%1$d)</string>
     <string name="race_change_pay_coins">Заплатите 10 000 000 монет</string>
     <string name="race_change_cannot_afford">Чтобы сменить расу, вам нужен жетон для смены расы (редкая добыча с босса) или 10 000 000 монет.</string>
     <string name="race_change_ironman_locked">Персонажи в режиме «Айронмэн» не могут изменить свою расу.</string>
