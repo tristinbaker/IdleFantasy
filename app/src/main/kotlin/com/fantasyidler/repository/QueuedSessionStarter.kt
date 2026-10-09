@@ -7,6 +7,7 @@ import com.fantasyidler.R
 import com.fantasyidler.data.json.CookingRecipe
 import com.fantasyidler.data.json.DungeonData
 import com.fantasyidler.data.json.EnemyData
+import com.fantasyidler.data.json.SpellData
 import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.OwnedPet
 import com.fantasyidler.data.model.PlayerFlags
@@ -130,6 +131,30 @@ internal fun queuedGatheringBoosts(
     petDropKey = petDropKey,
     petDropChance = petDropChance,
 )
+
+/** Rune args forwarded to [CombatSimulator.simulateBoss] for one boss fight. */
+internal data class BossRuneArgs(val runeKey: String?, val runeCostPerAttack: Int)
+
+/**
+ * Derives which rune (if any) a queued boss fight must consume (issue #2038).
+ *
+ * Mirrors the live boss path in CombatViewModel: magic with a spell drains
+ * [SpellData.runeType] at [SpellData.runeCost] per attack unless the equipped
+ * weapon covers it ([EquipmentData.infiniteRunes] `"all"` or the spell's type —
+ * e.g. Trident of the Seas covers nothing, so Bloodwave always charges).
+ * Pure and unit-testable so the queued branch can never silently drop the
+ * params again while the simulator still honours them.
+ */
+internal fun bossRuneArgs(
+    combatStyle: String,
+    spell: SpellData?,
+    weaponInfiniteRunes: String?,
+): BossRuneArgs {
+    val staffCovers = combatStyle == "magic" && spell != null &&
+        (weaponInfiniteRunes == "all" || weaponInfiniteRunes == spell.runeType)
+    val key = if (combatStyle == "magic" && spell != null && !staffCovers) spell.runeType else null
+    return BossRuneArgs(key, spell?.runeCost ?: 1)
+}
 
 /**
  * Starts the next queued session using current player state.
@@ -873,6 +898,12 @@ class QueuedSessionStarter @Inject constructor(
                 val prevFoodConsumed = sessionRepo.pendingFoodConsumed()
                 val availableFood = FoodReservation.available(inventory, equippedFoodKeys, prevFoodConsumed)
                 val spell = gameData.spells[bossSpellName]
+                // Runes drain on every chained fight exactly like the live boss path
+                // (issue #2038): without these the simulator free-casts on fights 2..N.
+                // Derived via bossRuneArgs so the forwarding is unit-pinned (same file).
+                val bossRune = bossRuneArgs(combatStyle, spell, bossWeapon?.infiniteRunes)
+                val bossRuneKey  = bossRune.runeKey
+                val bossRuneCost = bossRune.runeCostPerAttack
                 val preferredArrow = bossArrowKey?.takeIf { (inventory[it] ?: 0) > 0 }
                 val orderedBossArrowKeys = if (preferredArrow != null)
                     listOf(preferredArrow) + ARROW_TIERS.reversed().filter { it != preferredArrow && (inventory[it] ?: 0) > 0 }
@@ -899,6 +930,9 @@ class QueuedSessionStarter @Inject constructor(
                     foodHealValues     = boostRepo.boostedFoodHeal(flags, gameData.foodHealValues),
                     blessingDefBonus   = ChurchRepository.defBonus(flags, prayerCapeMult, gameData.blessings),
                     attackSpeedSec     = bossWeapon?.attackSpeed ?: CombatSimulator.BASE_ATTACK_SPEED_SEC,
+                    runeKey            = bossRuneKey,
+                    runeCostPerAttack  = bossRuneCost,
+                    availableRunes     = if (bossRuneKey != null) inventory[bossRuneKey] ?: 0 else Int.MAX_VALUE,
                     eatThresholdPct    = flags.foodEatThresholdPct,
                     foodEatOrder       = flags.foodEatOrder,
                     doubleHitChance     = boostRepo.doubleHitChance(flags),

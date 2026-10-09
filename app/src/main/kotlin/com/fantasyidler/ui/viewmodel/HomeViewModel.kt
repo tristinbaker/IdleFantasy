@@ -949,6 +949,7 @@ class HomeViewModel @Inject constructor(
             val bossRunesRec  = elderRunes.mapValues  { (_, qty) -> (qty * (reclaimChance(bossSkillLvls[Skills.MAGIC] ?: 1) + boostRepo.runeReclaimBonus(ctx.flags)).coerceAtMost(0.95)).toInt() }.filterValues { it > 0 }
             if (elderFood.isNotEmpty())     playerRepo.consumeItems(elderFood)
             if (elderArrows.isNotEmpty())   playerRepo.consumeItems(elderArrows)
+            if (elderRunes.isNotEmpty())    playerRepo.consumeItems(elderRunes)
             if (bossArrowsRec.isNotEmpty()) playerRepo.addItems(bossArrowsRec)
             if (bossRunesRec.isNotEmpty())  playerRepo.addItems(bossRunesRec)
             if (won) {
@@ -1021,6 +1022,7 @@ class HomeViewModel @Inject constructor(
         acc.awardedCapes += playerRepo.applyMultiSkillResults(bossXpBySkill, loot, coins, perSkillPetBoostPct = perSkillPetBoostPct, sessionId = session.sessionId)
         if (allFoodConsumed.isNotEmpty())   playerRepo.consumeItems(allFoodConsumed)
         if (allArrowsConsumed.isNotEmpty()) playerRepo.consumeItems(allArrowsConsumed)
+        if (allRunesConsumed.isNotEmpty())  playerRepo.consumeItems(allRunesConsumed)
         if (bossArrowsRec.isNotEmpty())     playerRepo.addItems(bossArrowsRec)
         if (bossRunesRec.isNotEmpty())      playerRepo.addItems(bossRunesRec)
         for ((f, q) in allFoodConsumed)    acc.combinedFood[f]             = (acc.combinedFood[f] ?: 0) + q
