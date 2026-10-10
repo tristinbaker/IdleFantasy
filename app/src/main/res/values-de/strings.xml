@@ -1111,7 +1111,7 @@
     <string name="skilling_dungeon_copper_caverns_name">Kupferhöhlen</string>
     <string name="skilling_dungeon_copper_caverns_desc">Eine längst verlassene Mine unter den Vorbergen. Ihre Kupferadern schimmern noch immer im Dunkeln.</string>
     <string name="skilling_dungeon_dwarven_depths_name">Zwergenuntiefen</string>
-    <string name="skilling_dungeon_dwarven_depths_desc">Die tiefste Ebene einer alten Zwergenausschachtung. Reiche Adern seltener Metalle verstecken sich hinter den Knochen ihrer Erbauer.</string>
+    <string name="skilling_dungeon_dwarven_depths_desc">Die tiefste Ebene einer uralten Zwergenausschachtung. Reiche Adern seltener Metalle verstecken sich hinter den Knochen ihrer Erbauer.</string>
     <string name="skilling_dungeon_whispering_grove_name">Flüsternder Hain</string>
     <string name="skilling_dungeon_whispering_grove_desc">Ein uralter Wald, in dem die Bäume seit Jahrtausenden ungestört gewachsen sind. Zwischen den Ästen spricht etwas.</string>
     <string name="skilling_dungeon_corrupted_canopy_name">Verdorbenes Kronendach</string>
@@ -1606,7 +1606,7 @@
     <string name="elder_isle_dock_unlocked_cta">Stelle dich der Seeschlange</string>
     <string name="elder_isle_dock_unlocked_later">Später</string>
     <string name="boss_masked_name">\?\?\?</string>
-    <string name="boss_last_elder_masked_desc">Etwas uraltes schlummert in den Tiefen der Insel. Vereine die ältesten um es zu stellen.</string>
+    <string name="boss_last_elder_masked_desc">Etwas Uraltes schlummert in den Tiefen der Insel. Sammle das volle Ältesten Set zusammen, um dich ihm zu stellen.</string>
     <string name="elder_isle_welcome_title">Landung an der Ältesteninsel</string>
     <string name="elder_isle_welcome_body">The salt spray fades and the fog lifts. Ahead: a bone-white shore, a jungle laced with pale runes, and further in, smoke curling from a peak that shouldn\'t be smoking. The old sailors were right. Something ancient still lives here.\n\nYour mainland skills, boosts, and gear stay on the ship. Everything you level or craft on the isle grows a separate track of its own. Elder gear will carry back to the mainland; mainland power will not carry here.\n\nStart with the Skills tab. Head to Mining or Woodcutting to gather isle materials. Then check the Quests tab for your first objective, and open the Lore Master in town whenever a new fragment unlocks.</string> <!-- untranslated -->
     <string name="elder_isle_welcome_cta">Trete an Land</string>
@@ -1718,7 +1718,7 @@
     <string name="item_grove_fawn_name">Grove Fawn</string> <!-- untranslated -->
     <string name="item_magma_salamander_name">Magma Salamander</string> <!-- untranslated -->
     <string name="item_abyss_wisp_name">Abyss Wisp</string> <!-- untranslated -->
-    <string name="item_ancient_turtle_name">Ancient Turtle</string> <!-- untranslated -->
+    <string name="item_ancient_turtle_name">Uralte Schildkröte</string>
     <string name="item_cinder_hawk_name">Cinder Hawk</string> <!-- untranslated -->
     <string name="item_deepwater_serpent_name">Tiefwasserschlange</string>
     <string name="item_elder_familiar_name">Ältestenhaustier</string>
