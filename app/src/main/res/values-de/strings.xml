@@ -763,7 +763,7 @@
     <string name="shop_total_amount">%1$s Münzen</string>
 
     <!-- ===== CraftingScreen ===== -->
-    <string name="crafting_no_mats">No materials</string> <!-- untranslated -->
+    <string name="crafting_no_mats">Kein Material</string>
     <!-- Translator note: %1$d = total quantity, %2$s = item name -->
     <string name="crafting_produces">= %1$d %2$s</string>
     <string name="crafting_effects">Effekte</string>
@@ -1587,16 +1587,16 @@
     <string name="town_building_dock_name">Dock</string>
     <string name="town_dock_no_bonus">Verbessert Euch, um zu neuen Landen zu segeln</string>
     <string name="town_dock_t1_bonus">Schaltet die Segelreise zur Ältesteninsel frei</string>
-    <string name="elder_isle_title">Ältere Insel</string>
-    <string name="elder_isle_sail_title">Segle zur Älteren Insel</string>
+    <string name="elder_isle_title">Ältesteninsel</string>
+    <string name="elder_isle_sail_title">Segle zur Ältesteninsel</string>
     <string name="elder_isle_zone_beach">Strand &amp; Klippen</string>
-    <string name="elder_isle_zone_forest">Älterer Forst</string>
+    <string name="elder_isle_zone_forest">Uralter Forst</string>
     <string name="elder_isle_zone_volcano">Vulkanspitze</string>
     <string name="elder_isle_zone_abyss">Abyssal Depths</string> <!-- untranslated -->
     <string name="elder_isle_zone_locked">Gesperrt</string>
     <string name="elder_isle_coming_soon">Demnächst verfügbar</string>
     <string name="elder_isle_boss_sea_serpent">Seeschlange</string>
-    <string name="elder_isle_set_sail">Setze Segel zur Älteren Insel</string>
+    <string name="elder_isle_set_sail">Setze Segel zur Ältesteninsel</string>
     <string name="elder_isle_return">Kehre zum Festland zurück</string>
     <string name="elder_isle_sail_blocked_by_session">Beende deine aktive Aktivität, bevor du in See stichst.</string>
     <string name="elder_isle_sail_blocked_locked">Die Insel der ältesten wurde noch nicht freigeschaltet.</string>
@@ -1626,7 +1626,7 @@
     <string name="elder_isle_combat_title">Verlies der Ältesten</string>
     <string name="elder_isle_profile_title">Insel Profil</string>
     <string name="elder_isle_dungeon_beach">Strand &amp; Klippen</string>
-    <string name="elder_isle_dungeon_forest">Älterer Forst</string>
+    <string name="elder_isle_dungeon_forest">Uralter Forst</string>
     <string name="elder_isle_dungeon_volcano">Vulkanspitze</string>
     <string name="elder_isle_dungeon_abyss">Tiefen des Abgrunds</string>
     <string name="elder_isle_dungeon_boss">Der letzte Älteste</string>
@@ -1638,7 +1638,7 @@
     <string name="elder_isle_shop_insufficient">Nicht ausreichend Essenz der Ältesten.</string>
     <string name="elder_isle_shop_purchased">%1$s gekauft.</string>
     <string name="elder_isle_shop_button">Besuche den Inselladen</string>
-    <string name="elder_isle_armor_master_title">Älterer Rüstungsmeister</string>
+    <string name="elder_isle_armor_master_title">Ältesten Rüstungsmeister</string>
     <string name="elder_isle_lore_master_title">Lore Master</string> <!-- untranslated -->
     <string name="elder_armor_missing_mats">Nicht genug Material.</string>
     <string name="elder_armor_crafted">%1$s hergestellt.</string>
@@ -1671,8 +1671,8 @@
     <string name="item_grove_bass_name">Grove Bass</string> <!-- untranslated -->
     <string name="item_lavafin_name">Lavaflosse</string>
     <string name="item_deepwater_ray_name">Tiefseerochen</string>
-    <string name="item_elder_bone_name">Älterer Knochen</string>
-    <string name="item_elder_essence_name">Ältere Essenz</string>
+    <string name="item_elder_bone_name">Ältesten Knochen</string>
+    <string name="item_elder_essence_name">Ältesten Essenz</string>
     <string name="item_ancient_sigil_name">Uraltes Siegel</string>
     <string name="item_sacred_wood_name">Heiliges Holz</string>
 
