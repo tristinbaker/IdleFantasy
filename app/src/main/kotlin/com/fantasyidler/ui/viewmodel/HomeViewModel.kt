@@ -137,6 +137,39 @@ internal fun splitCoinBonus(combined: Long, blessingMult: Float, petMult: Float)
     return blessing to (total - combined - blessing)
 }
 
+/**
+ * Collect-time church XP multiplier with Elder Isle gate (issue #2057).
+ * Mirrors `predictionXpMult` (#1930) and `blessingXpPercent` (#1941):
+ * isle sessions run at base rates, so church must resolve to 1.0 there.
+ * Mainland keeps the live church mult. Ironman is always base.
+ */
+internal fun collectBlessingXpMult(isIronman: Boolean, isIsle: Boolean, churchMult: Float): Float =
+    if (isIronman || isIsle) 1.0f else churchMult
+
+/**
+ * Collect dialog display math split by provenance (issue #2057).
+ * `totalXp` is the stored pre-blessing amount for one skill, `isleXp` the
+ * isle portion of it (0 for pure mainland). Mainland keeps boost+church,
+ * isle keeps boost at base church (1.0). Returns (displayValue, churchBonus).
+ * Boost itself is out of scope (#1930 already gates previews; 2x on isle
+ * display is declared separately) so it applies to both portions here.
+ */
+internal fun collectSkillDisplayXp(
+    totalXp: Long,
+    isleXp: Long,
+    boostFactor: Long,
+    churchMult: Float,
+): Pair<Long, Long> {
+    val isle = isleXp.coerceIn(0L, totalXp)
+    val mainland = totalXp - isle
+    val mainlandBase = mainland * boostFactor
+    val isleBase = isle * boostFactor
+    val mainlandDisplay = (mainlandBase.toDouble() * churchMult).toLong()
+    val display = mainlandDisplay + isleBase
+    val bonus = (mainlandDisplay - mainlandBase).coerceAtLeast(0L)
+    return display to bonus
+}
+
 data class SessionSummary(
     val title: String,
     val died: Boolean = false,
@@ -588,6 +621,9 @@ class HomeViewModel @Inject constructor(
     /** Mutable totals accumulated across one collect batch (for the summary popup). */
     private class CollectAcc {
         val combinedXpBySkill       = mutableMapOf<String, Long>()
+        // Isle portion of combinedXpBySkill per skill (issue #2057). The summary
+        // applies church only to the mainland remainder, so mixed batches stay correct.
+        val combinedIsleXpBySkill   = mutableMapOf<String, Long>()
         val combinedItems           = mutableMapOf<String, Int>()
         val combinedKills           = mutableMapOf<String, Int>()
         val combinedFood            = mutableMapOf<String, Int>()
@@ -773,27 +809,30 @@ class HomeViewModel @Inject constructor(
             val (coinBlessingBonus, coinPetBonus) = splitCoinBonus(acc.combinedCoins, blessingChurchCoinMult, petCoinMult)
             val sortedXpEntries   = acc.combinedXpBySkill.entries.sortedByDescending { it.value }
             val singleXpFactor    = acc.combinedXpBySkill.keys.firstOrNull()?.let(boostFactorFor) ?: 1L
-            val xpLineBonuses     = sortedXpEntries.map { (skill, xp) ->
-                val base = xp * boostFactorFor(skill)
-                ((base.toDouble() * blessingXpMult).toLong() - base).coerceAtLeast(0L)
+            // Issue #2057: isle XP runs at base church (1.0). Split each skill's total
+            // into mainland (church applies) + isle (base) so mixed batches stay correct.
+            // blessingXpMult itself stays ironman-gated only; the isle gate lives per skill.
+            val xpLineDisplays     = sortedXpEntries.map { (skill, xp) ->
+                val isleXp = acc.combinedIsleXpBySkill[skill] ?: 0L
+                collectSkillDisplayXp(xp, isleXp, boostFactorFor(skill), blessingXpMult)
             }
-            val singleXpBonus = run {
-                val base = singleXp * singleXpFactor
-                ((base.toDouble() * blessingXpMult).toLong() - base).coerceAtLeast(0L)
-            }
+            val xpLineBonuses     = xpLineDisplays.map { it.second }
+            val singleIsleXp = acc.combinedXpBySkill.keys.firstOrNull()?.let { acc.combinedIsleXpBySkill[it] } ?: 0L
+            val (singleDisplay, singleBonus) = collectSkillDisplayXp(singleXp, singleIsleXp, singleXpFactor, blessingXpMult)
+            val singleXpBonus = singleBonus
 
             val summary = SessionSummary(
                 title          = title,
                 died           = acc.anyDied,
                 xpLines        = if (useTotalLabel) emptyList()
-                                 else sortedXpEntries
-                                     .map { (skill, xp) -> Pair(GameStrings.skillName(context, skill), "+${((xp * boostFactorFor(skill)).toDouble() * blessingXpMult).toLong().formatXp()} XP") },
+                                 else sortedXpEntries.mapIndexed { index, (skill, _) ->
+                                     Pair(GameStrings.skillName(context, skill), "+${xpLineDisplays[index].first.formatXp()} XP")
+                                 },
                 xpLineValues   = if (useTotalLabel) emptyList()
-                                 else sortedXpEntries
-                                     .map { (skill, xp) -> ((xp * boostFactorFor(skill)).toDouble() * blessingXpMult).toLong() },
-                totalXpLabel      = if (useTotalLabel) "+${((singleXp * singleXpFactor).toDouble() * blessingXpMult).toLong().formatXp()} XP" else "",
+                                 else xpLineDisplays.map { it.first },
+                totalXpLabel      = if (useTotalLabel) "+${singleDisplay.formatXp()} XP" else "",
                 totalXpLabelBonus = if (useTotalLabel) singleXpBonus else 0L,
-                totalXpValue      = if (useTotalLabel) ((singleXp * singleXpFactor).toDouble() * blessingXpMult).toLong() else 0L,
+                totalXpValue      = if (useTotalLabel) singleDisplay else 0L,
                 itemLines      = acc.combinedItems.entries.sortedByDescending { it.value }
                                      .map { (key, qty) -> Pair(GameStrings.itemName(context,key), "×$qty") },
                 coinsGained    = displayedCoins,
@@ -955,7 +994,10 @@ class HomeViewModel @Inject constructor(
                 acc.dailyKills[session.activityKey] = (acc.dailyKills[session.activityKey] ?: 0) + 1
                 acc.combinedKills[session.activityKey] = (acc.combinedKills[session.activityKey] ?: 0) + 1
             }
-            for ((skill, xp) in elderXp) acc.combinedXpBySkill[skill] = (acc.combinedXpBySkill[skill] ?: 0L) + xp
+            for ((skill, xp) in elderXp) {
+                acc.combinedXpBySkill[skill] = (acc.combinedXpBySkill[skill] ?: 0L) + xp
+                acc.combinedIsleXpBySkill[skill] = (acc.combinedIsleXpBySkill[skill] ?: 0L) + xp
+            }
             for ((item, qty) in elderLoot) acc.combinedItems[item] = (acc.combinedItems[item] ?: 0) + qty
             for ((f, q) in elderFood)            acc.combinedFood[f]           = (acc.combinedFood[f] ?: 0) + q
             for ((a, q) in elderArrows)          acc.combinedArrows[a]         = (acc.combinedArrows[a] ?: 0) + q
@@ -1114,7 +1156,10 @@ class HomeViewModel @Inject constructor(
                     survived     = !elderDied,
                 ))
             ))
-            for ((skill, xp) in elderXpPerSkill) acc.combinedXpBySkill[skill] = (acc.combinedXpBySkill[skill] ?: 0L) + xp
+            for ((skill, xp) in elderXpPerSkill) {
+                acc.combinedXpBySkill[skill] = (acc.combinedXpBySkill[skill] ?: 0L) + xp
+                acc.combinedIsleXpBySkill[skill] = (acc.combinedIsleXpBySkill[skill] ?: 0L) + xp
+            }
             for ((item, qty) in elderLoot)       acc.combinedItems[item]      = (acc.combinedItems[item] ?: 0) + qty
             for ((e, k) in elderKills)           acc.combinedKills[e]         = (acc.combinedKills[e] ?: 0) + k
             for ((f, q) in elderFood)            acc.combinedFood[f]          = (acc.combinedFood[f] ?: 0) + q
@@ -1263,6 +1308,7 @@ class HomeViewModel @Inject constructor(
                     acc.petFoundName = GameStrings.petName(context, pd.id)
             }
             acc.combinedXpBySkill[session.skillName] = (acc.combinedXpBySkill[session.skillName] ?: 0L) + totalXp
+            acc.combinedIsleXpBySkill[session.skillName] = (acc.combinedIsleXpBySkill[session.skillName] ?: 0L) + totalXp
             for ((item, qty) in elderLoot) acc.combinedItems[item] = (acc.combinedItems[item] ?: 0) + qty
             return
         }
