@@ -542,12 +542,13 @@ class SkillsViewModel @Inject constructor(
             val logXp = logData?.xpPerLog?.toLong() ?: 0L
             val xpQueueMult = predictionXpMult(flags.ironman, flags.onElderIsle, (if (flags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * ChurchRepository.xpMultiplier(flags, blessingPrayerCapeMult(player, flags, gameData), gameData.blessings))
             val prestigeMult = if (flags.onElderIsle) 1.0 else 1.0 + boostRepo.prestigeXpPct(Skills.FIREMAKING, flags) / 100.0
+            val sigilMult = if (flags.onElderIsle) 1.0 else sigilXpMult(flags.embeddedSigils)
             val action = QueuedAction(
                 skillName           = Skills.FIREMAKING,
                 activityKey         = logKey,
                 skillDisplayName    = "Firemaking",
                 qty                 = actualQty,
-                estimatedXpGain     = (actualQty.toLong() * logXp * xpQueueMult * prestigeMult * toolEff).toLong(),
+                estimatedXpGain     = batchQueueEstimate(actualQty.toLong() * logXp * toolEff.toDouble(), xpQueueMult, prestigeMult, sigilMult),
                 estimatedDurationMs = actualQty.toLong() * perLogMs,
                 xpBoostMultAtQueue  = xpQueueMult * prestigeMult,
                 consumedMaterials   = mapOf(logKey to actualQty),
@@ -604,6 +605,7 @@ class SkillsViewModel @Inject constructor(
                 val mult       = when { rcLevel >= 75 -> 3; rcLevel >= 50 -> 2; else -> 1 } + ashBon
                 val xpQueueMult = predictionXpMult(rcFlags.ironman, rcFlags.onElderIsle, (if (rcFlags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * ChurchRepository.xpMultiplier(rcFlags, blessingPrayerCapeMult(player, rcFlags, gameData), gameData.blessings))
                 val prestigeMult = if (rcFlags.onElderIsle) 1.0 else 1.0 + boostRepo.prestigeXpPct(Skills.RUNECRAFTING, rcFlags) / 100.0
+                val sigilMult = if (rcFlags.onElderIsle) 1.0 else sigilXpMult(rcFlags.embeddedSigils)
                 val ashCost = if (catalystKey != null) (qty + 9) / 10 else 0
                 val saveChance = townRepo.secondaryMaterialSaveChance(rcFlags)
                 val consumedAshCost = if (catalystKey != null) applyQtyPreservation(ashCost, saveChance) else 0
@@ -613,7 +615,7 @@ class SkillsViewModel @Inject constructor(
                         activityKey         = runeKey,
                         skillDisplayName    = "Runecrafting",
                         qty                 = qty,
-                        estimatedXpGain     = (qty.toLong() * (runeData.xpPerRune * mult).toLong() * xpQueueMult * prestigeMult).toLong(),
+                        estimatedXpGain     = batchQueueEstimate((qty.toLong() * (runeData.xpPerRune * mult).toLong()).toDouble(), xpQueueMult, prestigeMult, sigilMult),
                         estimatedDurationMs = qty.toLong() * perItemMs,
                         xpBoostMultAtQueue  = xpQueueMult * prestigeMult,
                         catalystKey         = catalystKey,
@@ -728,13 +730,14 @@ class SkillsViewModel @Inject constructor(
                 val perBoneMs = SkillSimulator.sessionDurationMs(agility, boostRepo.sessionFloorReductionMin(prayerFlags), townRepo.playerSessionDurationMultiplier(prayerFlags)) / 60
                 val xpQueueMult = predictionXpMult(prayerFlags.ironman, prayerFlags.onElderIsle, (if (prayerFlags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * ChurchRepository.xpMultiplier(prayerFlags, blessingPrayerCapeMult(player, prayerFlags, gameData), gameData.blessings))
                 val prestigeMult = if (prayerFlags.onElderIsle) 1.0 else 1.0 + boostRepo.prestigeXpPct(Skills.PRAYER, prayerFlags) / 100.0
+                val sigilMult = if (prayerFlags.onElderIsle) 1.0 else sigilXpMult(prayerFlags.embeddedSigils)
                 val enqueued = playerRepo.enqueueAction(
                     QueuedAction(
                         skillName           = Skills.PRAYER,
                         activityKey         = boneKey,
                         skillDisplayName    = "Prayer",
                         qty                 = qty,
-                        estimatedXpGain     = (qty.toLong() * bone.xpPerBone.toLong() * xpQueueMult * prestigeMult).toLong(),
+                        estimatedXpGain     = batchQueueEstimate((qty.toLong() * bone.xpPerBone.toLong()).toDouble(), xpQueueMult, prestigeMult, sigilMult),
                         estimatedDurationMs = qty.toLong() * perBoneMs,
                         xpBoostMultAtQueue  = xpQueueMult * prestigeMult,
                         consumedMaterials   = mapOf(boneKey to qty),
@@ -843,7 +846,8 @@ class SkillsViewModel @Inject constructor(
                 val expectedXp = ThievingSimulator.expectedSessionXp(npc, thievingLevel, lockpickEff, boostRepo.thievingSuccessBonus(thievingFlags), petBoostPct)
                 val xpQueueMult = predictionXpMult(thievingFlags.ironman, thievingFlags.onElderIsle, (if (thievingFlags.xpBoostExpiresAt > System.currentTimeMillis()) 2.0 else 1.0) * ChurchRepository.xpMultiplier(thievingFlags, blessingPrayerCapeMult(player, thievingFlags, gameData), gameData.blessings))
                 val prestigeMult = 1.0 + boostRepo.prestigeXpPct(Skills.THIEVING, thievingFlags) / 100.0
-                val estimatedXpGain = (expectedXp * xpQueueMult * prestigeMult).toLong()
+                val sigilMult = if (thievingFlags.onElderIsle) 1.0 else sigilXpMult(thievingFlags.embeddedSigils)
+                val estimatedXpGain = batchQueueEstimate(expectedXp, xpQueueMult, prestigeMult, sigilMult)
 
                 val enqueued = playerRepo.enqueueAction(
                     QueuedAction(
@@ -1649,6 +1653,16 @@ fun nextLevelThreshold(xp: Long): Long = XpTable.nextLevelThreshold(xp)
  */
 internal fun blessingXpPercent(isIronman: Boolean, isIsle: Boolean, churchMult: Float): Int =
     if (isIronman || isIsle) 0 else ((churchMult - 1) * 100).roundToInt()
+
+/**
+ * Mainland queue-estimate chain for batch skills (firemaking/prayer/runecrafting/
+ * thieving, issue #2056): base * queue chain * prestige * sigils. Batch estimates
+ * must bake the same sigil mult the payout applies (`PlayerRepository` sigils
+ * xpMult), like gathering estimates already do. Isle stays at base rates: callers
+ * pass 1.0 mults under the isle guard.
+ */
+internal fun batchQueueEstimate(baseXp: Double, xpQueueMult: Double, prestigeMult: Double, sigilMult: Double): Long =
+    (baseXp * xpQueueMult * prestigeMult * sigilMult).toLong()
 
 /** XP still needed to reach level 99 (the level cap), or 0 if already there. */
 fun xpToMaxLevel(xp: Long): Long = (XpTable.xpForLevel(99) - xp).coerceAtLeast(0L)

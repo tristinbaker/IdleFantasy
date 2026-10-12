@@ -1228,7 +1228,10 @@ class PlayerRepository @Inject constructor(
         val boostFactor = boostRepo.xpBoostFactor(skillName, flags)
         val blessingMult = if (flags.ironman) 1.0f else ChurchRepository.xpMultiplier(flags, capeMult, gameData.blessings)
         val prestigeXpPct = boostRepo.prestigeXpPct(skillName, flags)
-        val finalXp = (baseXp * boostRepo.xpMultiplier(skillName, flags, capeMult)).toLong()
+        // Sigil stones apply game-wide: flat grants collect through
+        // applyMultiSkillResultsUnlocked, which folds sigils.xpMult into finalXp,
+        // so the preview must mirror it (issue #2056).
+        val finalXp = (baseXp * boostRepo.xpMultiplier(skillName, flags, capeMult) * sigilBonusesFrom(flags).xpMult).toLong()
         return FlatXpBreakdown(baseXp, finalXp, boostFactor, blessingMult, prestigeXpPct)
     }
 
