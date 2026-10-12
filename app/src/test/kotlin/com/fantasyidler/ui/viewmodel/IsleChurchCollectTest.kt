@@ -51,17 +51,20 @@ class IsleChurchCollectTest {
 
     @Test
     fun `pure mainland display keeps church bonus`() {
+        // OJO Float: 1.55f.toDouble() = 1.54999995…; 1000 * eso trunca a 1549.
+        // La fórmula vieja daba exactamente lo mismo (Fase 3: mainland intacto bit a bit).
         val (display, bonus) = collectSkillDisplayXp(totalXp = 1000L, isleXp = 0L, boostFactor = 1L, churchMult = church55)
-        assertEquals(1550L, display)
-        assertEquals(550L, bonus)
+        assertEquals(1549L, display)
+        assertEquals(549L, bonus)
     }
 
     @Test
     fun `mixed batch splits church only to mainland`() {
         // Misma skill con XP mainland + isle en un solo cobro (viaje sin cobrar).
+        // Misma salvedad Float que arriba: mainland 1000 * 1.55f trunca a 1549 (igual que la fórmula vieja).
         val (display, bonus) = collectSkillDisplayXp(totalXp = 2000L, isleXp = 1000L, boostFactor = 1L, churchMult = church55)
-        assertEquals(2550L, display)
-        assertEquals(550L, bonus)
+        assertEquals(2549L, display)
+        assertEquals(549L, bonus)
     }
 
     @Test
