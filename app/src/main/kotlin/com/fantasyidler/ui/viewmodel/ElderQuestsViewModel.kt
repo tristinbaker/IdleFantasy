@@ -81,10 +81,16 @@ class ElderQuestsViewModel @Inject constructor(
                     inventory   = inv,
                 )
                 val newly = ElderQuests.newlyCompleted(current.elderQuestsCompleted, snap)
-                if (newly.isNotEmpty()) {
-                    val titles = current.unlockedTitles + (if ("act4_face_last_elder" in newly) setOf("isle_champion") else emptySet())
+                // #2058: granting only on `newly` strands players whose quest already
+                // completed (or whose kill is recorded) while the title is missing.
+                // Qualify via completed set OR snapshot kill signal; Set add is idempotent.
+                val completedAfter = current.elderQuestsCompleted + newly
+                val qualifies = ElderQuests.qualifiesForIsleChampion(completedAfter, snap)
+                val needsRetro = qualifies && "isle_champion" !in current.unlockedTitles
+                if (newly.isNotEmpty() || needsRetro) {
+                    val titles = current.unlockedTitles + (if (qualifies) setOf("isle_champion") else emptySet())
                     playerRepo.updateFlags(current.copy(
-                        elderQuestsCompleted = current.elderQuestsCompleted + newly,
+                        elderQuestsCompleted = completedAfter,
                         unlockedTitles       = titles,
                     ))
                     val questTitle = ElderQuests.CHAIN.firstOrNull { it.id in newly }?.title
