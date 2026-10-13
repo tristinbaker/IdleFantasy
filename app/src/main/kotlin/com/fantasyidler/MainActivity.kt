@@ -53,6 +53,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestNotificationPermissionIfNeeded()
+        // Recovery runs on every onCreate, not just the cold start: a warm recreation after a
+        // mid-switch crash would leave the marker for the next cold start, where the reset
+        // branch wipes live progress. Idempotent (marker-driven) and serialized by switchMutex.
+        val switchRecovery = CoroutineScope(Dispatchers.IO).launch {
+            saveSlotRepository.recoverInterruptedSwitch()
+        }
         // One-time migration: re-register the backup alarm on first launch after update.
         // Previously setInexactRepeating was used with an unsupported weekly interval which
         // caused the alarm to fire once then silently stop. Players who had weekly backup
@@ -61,9 +67,8 @@ class MainActivity : AppCompatActivity() {
         // backupFrequency is empty. This heals existing users without any manual action.
         if (savedInstanceState == null) {
             CoroutineScope(Dispatchers.IO).launch {
-                // Recover first: a crashed switch left the active-slot pointer stale, and
-                // reading flags below would surface the wrong character (issue #1839).
-                saveSlotRepository.recoverInterruptedSwitch()
+                // Recover first so the flags read surfaces the right character (issue #1839).
+                switchRecovery.join()
                 val flags = playerRepository.getFlags()
                 if (flags.backupFrequency.isNotEmpty()) {
                     backupScheduler.schedule(flags.backupFrequency)

@@ -1739,7 +1739,7 @@ class PlayerRepository @Inject constructor(
 
     // Finds the end of the root JSON object and drops any trailing garbage.
     // Guards against files that were written twice without truncation.
-    private fun stripJsonGarbage(s: String): String {
+    internal fun stripJsonGarbage(s: String): String {
         var depth = 0
         var inString = false
         var escape = false

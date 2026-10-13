@@ -2,11 +2,14 @@ package com.fantasyidler.repository
 
 import android.content.Context
 import android.os.SystemClock
+import android.util.Log
 import com.fantasyidler.data.model.PlayerExport
 import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.data.model.SkillSessionExport
+import com.fantasyidler.data.model.Skills
 import com.fantasyidler.data.model.toExport
 import com.fantasyidler.data.model.toSkillSession
+import com.fantasyidler.simulator.XpTable
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -75,8 +78,9 @@ class SaveSlotRepository @Inject constructor(
 
     private fun slotFile(slot: Int) = File(slotsDir, "slot_$slot.json")
     private fun metaFile(slot: Int) = File(slotsDir, "slot_$slot.meta.json")
-    // Marker written before a switch begins and deleted on success. Its presence at startup
-    // means an earlier switch crashed mid-way; recovery re-imports the target slot's file.
+    // Marker written before a switch begins and deleted on success; its presence at startup means
+    // a switch crashed mid-way. Contents: a bare slot (pre-snapshot and legacy — disambiguated by
+    // identity), "ready:<slot>" or "fresh:<ironman>:<slot>" (both written after the snapshot).
     private fun pendingSwitchFile() = File(slotsDir, "pending_switch.marker")
 
     // Serializes concurrent switches and lets other code (e.g. HomeViewModel.collectSession)
@@ -206,6 +210,9 @@ class SaveSlotRepository @Inject constructor(
             switchInProgress = true
             try {
                 slotsDir.mkdirs()
+                // Phase 1: a crash from here until a phase-2 marker below leaves the outgoing
+                // character live in Room; recovery disambiguates by identity and must not import
+                // the target blindly. Bare ints match the legacy pre-fix format.
                 writeAtomic(pendingSwitchFile(), targetSlot.toString())
 
                 snapshotCurrent(current)
@@ -213,17 +220,18 @@ class SaveSlotRepository @Inject constructor(
                 val target = slotFile(targetSlot)
                 var ironmanDemoted = false
                 if (target.exists()) {
+                    // Phase 2 (existing target): the outgoing character is safely on disk, so a
+                    // crash from here on may complete by importing the target file.
+                    writeAtomic(pendingSwitchFile(), "$SNAPSHOT_READY_PREFIX$targetSlot")
                     ironmanDemoted = importFullSave(target.readText(), freezeSessionTimers = false)
                 } else {
-                    sessionRepo.deleteAllSessions()
-                    sessionRepo.deleteAllWorkerSessions()
-                    questRepo.resetAllProgress()
-                    farmingRepo.resetAllPatches()
-                    playerRepo.resetProgression(ironman = createIronman)
-                    rescheduleAlarmsFromFlags()
+                    // Phase 2 (new target): record the pending reset (with the ironman choice)
+                    // before running it; a crash mid-way must be replayed from the start.
+                    writeAtomic(pendingSwitchFile(), "$FRESH_TARGET_PREFIX${if (createIronman) 1 else 0}:$targetSlot")
+                    resetToFreshCharacter(createIronman)
                 }
                 globalStateRepo.setActiveSaveSlot(targetSlot)
-                pendingSwitchFile().delete()
+                deletePendingSwitchMarker()
                 _switchEvents.tryEmit(Unit)
                 ironmanDemoted
             } finally {
@@ -232,33 +240,107 @@ class SaveSlotRepository @Inject constructor(
         }
     }
 
+    /** Where an interrupted switch was when the process died, parsed from the marker. */
+    private enum class SwitchPhase {
+        /** Bare-slot marker (pre-snapshot, and the only format older versions wrote): the phase
+         *  is unknown, so recovery disambiguates by comparing Room with the target file. */
+        LEGACY,
+        /** [SNAPSHOT_READY_PREFIX] marker: the snapshot completed and the target file exists. */
+        READY_TO_IMPORT,
+        /** [FRESH_TARGET_PREFIX] marker: the snapshot completed and the target slot was new. */
+        FRESH_TARGET,
+    }
+
+    /** Parsed pending-switch marker. [ironman] matters only for [SwitchPhase.FRESH_TARGET]. */
+    private data class PendingSwitch(
+        val phase: SwitchPhase,
+        val targetSlot: Int,
+        val ironman: Boolean = false,
+    )
+
     /**
-     * If a previous switch crashed between overwriting Room and updating the active-slot pointer,
-     * the pending-switch marker will still be on disk. Complete that switch here so Room and the
-     * pointer end up consistent — otherwise the next snapshotCurrent would write the incoming
-     * character's data into the outgoing slot's file (issue #1839).
+     * The [SNAPSHOT_READY_PREFIX]/[FRESH_TARGET_PREFIX] markers are written only after the
+     * snapshot; bare slot numbers (legacy) need identity disambiguation. Anything else gets cleared.
+     */
+    private fun parsePendingSwitch(raw: String): PendingSwitch? {
+        val text = raw.trim()
+        if (text.startsWith(SNAPSHOT_READY_PREFIX)) {
+            val target = text.removePrefix(SNAPSHOT_READY_PREFIX).trim().toIntOrNull() ?: return null
+            return if (target in 1..MAX_SLOTS) PendingSwitch(SwitchPhase.READY_TO_IMPORT, target) else null
+        }
+        if (text.startsWith(FRESH_TARGET_PREFIX)) {
+            val parts = text.removePrefix(FRESH_TARGET_PREFIX).split(':')
+            if (parts.size != 2) return null
+            val ironman = when (parts[0].trim()) {
+                "1" -> true
+                "0" -> false
+                else -> return null
+            }
+            val target = parts[1].trim().toIntOrNull() ?: return null
+            return if (target in 1..MAX_SLOTS) PendingSwitch(SwitchPhase.FRESH_TARGET, target, ironman) else null
+        }
+        val target = text.toIntOrNull() ?: return null
+        return if (target in 1..MAX_SLOTS) PendingSwitch(SwitchPhase.LEGACY, target) else null
+    }
+
+    /**
+     * If a previous switch crashed mid-way the marker is still on disk. Recovery finishes or
+     * rolls the switch back by phase: pointer already on the target → only the marker deletion
+     * was left (re-importing would overwrite progress made since the switch);
+     * [SwitchPhase.READY_TO_IMPORT] → import the file and move the pointer (issue #1839), or
+     * reset fresh when the file is gone (ironman assumed false, the marker does not record it);
+     * [SwitchPhase.FRESH_TARGET] → replay the idempotent fresh reset and move the pointer;
+     * [SwitchPhase.LEGACY] → finish the half-done import from the file when live material
+     * matches, move the pointer only when there is no file and no live progress, else roll back
+     * to the still-live outgoing character. Returns true when a switch was completed.
      */
     suspend fun recoverInterruptedSwitch(): Boolean = withContext(Dispatchers.IO) {
         val marker = pendingSwitchFile()
         if (!marker.exists()) return@withContext false
-        val targetSlot = try { marker.readText().trim().toIntOrNull() } catch (_: Exception) { null }
-        if (targetSlot == null || targetSlot !in 1..MAX_SLOTS) {
-            marker.delete()
+        val pending = try { parsePendingSwitch(marker.readText()) } catch (_: Exception) { null }
+        if (pending == null) {
+            deletePendingSwitchMarker()
             return@withContext false
         }
+        val inFlight = pending
         switchMutex.withLock {
             switchInProgress = true
             try {
-                val target = slotFile(targetSlot)
-                if (target.exists()) importFullSave(target.readText(), freezeSessionTimers = false)
-                globalStateRepo.setActiveSaveSlot(targetSlot)
-                pendingSwitchFile().delete()
+                if (globalStateRepo.getActiveSaveSlot() == inFlight.targetSlot) {
+                    deletePendingSwitchMarker()
+                    return@withLock false
+                }
+                val target = slotFile(inFlight.targetSlot)
+                when {
+                    inFlight.phase == SwitchPhase.FRESH_TARGET -> resetToFreshCharacter(inFlight.ironman)
+                    inFlight.phase == SwitchPhase.READY_TO_IMPORT && target.exists() ->
+                        importFullSave(target.readText(), freezeSessionTimers = false)
+                    inFlight.phase == SwitchPhase.READY_TO_IMPORT ->
+                        // The file is gone (slot deleted before recovery): end up fresh. ironman
+                        // is assumed false because the ready marker does not record it.
+                        resetToFreshCharacter(ironman = false)
+                    // Legacy: matching live material means the non-atomic import had started
+                    // (the player row commits before sessions/quests/patches), so the file is
+                    // the source of truth for those sections and the import must finish.
+                    roomAlreadyHoldsTargetSlot(inFlight.targetSlot) ->
+                        importFullSave(target.readText(), freezeSessionTimers = false)
+                    // No file and no live progress: the reset already ran, so only the pointer.
+                    !target.exists() && roomHoldsNoMaterialProgress() -> Unit
+                    // Cannot prove the live material is the target's (it may not be, or the
+                    // check may not have been evaluable): roll the switch back.
+                    else -> {
+                        deletePendingSwitchMarker()
+                        return@withLock false
+                    }
+                }
+                globalStateRepo.setActiveSaveSlot(inFlight.targetSlot)
+                deletePendingSwitchMarker()
                 _switchEvents.tryEmit(Unit)
+                true
             } finally {
                 switchInProgress = false
             }
         }
-        true
     }
 
     /** Deletes an INACTIVE slot's files permanently. The active slot cannot be deleted here. */
@@ -298,6 +380,83 @@ class SaveSlotRepository @Inject constructor(
             buffNotifScheduler.scheduleBlessingExpiry(flags.activeBlessingExpiresAt)
         }
         backupScheduler.schedule(flags.backupFrequency)
+    }
+
+    /** Wipes the live character to a fresh slot's state and re-arms alarms; functionally
+     *  idempotent so recovery can replay it (it re-stamps the cosmetic characterCreatedAt). */
+    private suspend fun resetToFreshCharacter(ironman: Boolean) {
+        sessionRepo.deleteAllSessions()
+        sessionRepo.deleteAllWorkerSessions()
+        questRepo.resetAllProgress()
+        farmingRepo.resetAllPatches()
+        playerRepo.resetProgression(ironman = ironman)
+        rescheduleAlarmsFromFlags()
+    }
+
+    /**
+     * Whether the live character already is the one in [targetSlot]'s file, used to disambiguate
+     * a legacy marker: older code imported the target before moving the pointer. Compares the six
+     * material player fields, not flags: [importFullSave] runs the guild migration right after the
+     * import (`:124`) and flags also mutate at startup (migrations, buffs, hp), so flags prove
+     * nothing. skillXp/skillLevels compare as maps after folding the legacy "hp" key the way
+     * getOrCreatePlayer migrates it; the other four compare verbatim. On a match the file is the
+     * source of truth for sessions/quests/patches; identical characters match too and the file
+     * wins, same as the base. Failures return false.
+     */
+    private suspend fun roomAlreadyHoldsTargetSlot(targetSlot: Int): Boolean {
+        return try {
+            val target = slotFile(targetSlot)
+            if (!target.exists()) {
+                false
+            } else {
+                val export: PlayerExport = json.decodeFromString(playerRepo.stripJsonGarbage(target.readText()))
+                val live = playerRepo.getOrCreatePlayer()
+                val (fileXp, fileLevels) = legacyHpMerged(export.skillXp, export.skillLevels)
+                live.inventory == export.inventory &&
+                    live.equipped == export.equipped &&
+                    live.pets == export.pets &&
+                    live.coins == export.coins &&
+                    json.decodeFromString<Map<String, Long>>(live.skillXp) == fileXp &&
+                    json.decodeFromString<Map<String, Int>>(live.skillLevels) == fileLevels
+            }
+        } catch (_: Exception) {
+            false
+        }
+    }
+
+    /** The file's skill maps after the same legacy "hp" fold migrateHpKey applies live: "hp"
+     *  merges into hitpoints and that level is recomputed, so raw-hp files still match. */
+    private fun legacyHpMerged(skillXp: String, skillLevels: String): Pair<Map<String, Long>, Map<String, Int>> {
+        val xp: MutableMap<String, Long> = json.decodeFromString(skillXp)
+        val levels: MutableMap<String, Int> = json.decodeFromString(skillLevels)
+        val hpXp = xp.remove("hp")
+        if (hpXp != null) {
+            levels.remove("hp")
+            val merged = (xp[Skills.HITPOINTS] ?: 0L) + hpXp
+            xp[Skills.HITPOINTS] = merged
+            levels[Skills.HITPOINTS] = XpTable.levelForXp(merged)
+        }
+        return xp to levels
+    }
+
+    /**
+     * True when the live character holds no material progress (no coins, no skill XP): what
+     * [resetToFreshCharacter] leaves, or a brand-new character. Used for a legacy marker with no
+     * target file; the only misread is a no-progress character, where both outcomes preserve all.
+     */
+    private suspend fun roomHoldsNoMaterialProgress(): Boolean = try {
+        val live = playerRepo.getOrCreatePlayer()
+        live.coins == 0L && json.decodeFromString<Map<String, Long>>(live.skillXp).values.all { it == 0L }
+    } catch (_: Exception) {
+        false
+    }
+
+    /** Clears the pending-switch marker, warning when a present marker cannot be removed. */
+    private fun deletePendingSwitchMarker() {
+        val marker = pendingSwitchFile()
+        if (marker.exists() && !marker.delete()) {
+            Log.w(TAG, "Could not delete pending switch marker; recovery will retry next launch")
+        }
     }
 
     private fun readInactiveSlot(slot: Int): SlotInfo {
@@ -357,5 +516,13 @@ class SaveSlotRepository @Inject constructor(
 
     companion object {
         const val MAX_SLOTS = 3
+
+        /** Marker prefix for a crashed import of an existing target slot. */
+        private const val SNAPSHOT_READY_PREFIX = "ready:"
+
+        /** Marker prefix for a crashed reset of a new target slot, followed by "<ironman 0|1>:". */
+        private const val FRESH_TARGET_PREFIX = "fresh:"
+
+        private const val TAG = "SaveSlotRepository"
     }
 }
