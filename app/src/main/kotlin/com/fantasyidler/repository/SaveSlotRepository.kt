@@ -295,15 +295,19 @@ class SaveSlotRepository @Inject constructor(
      * to the still-live outgoing character. Returns true when a switch was completed.
      */
     suspend fun recoverInterruptedSwitch(): Boolean = withContext(Dispatchers.IO) {
-        val marker = pendingSwitchFile()
-        if (!marker.exists()) return@withContext false
-        val pending = try { parsePendingSwitch(marker.readText()) } catch (_: Exception) { null }
-        if (pending == null) {
-            deletePendingSwitchMarker()
-            return@withContext false
-        }
-        val inFlight = pending
+        // P2 race: the marker read + parse must sit inside the mutex with the apply, so a
+        // concurrent switchTo cannot slip between the read and the locked apply and get its
+        // completed switch reverted by stale marker data. Lock is held across one small
+        // marker-file read + string parse (bounded).
         switchMutex.withLock {
+            val marker = pendingSwitchFile()
+            if (!marker.exists()) return@withLock false
+            val pending = try { parsePendingSwitch(marker.readText()) } catch (_: Exception) { null }
+            if (pending == null) {
+                deletePendingSwitchMarker()
+                return@withLock false
+            }
+            val inFlight = pending
             switchInProgress = true
             try {
                 if (globalStateRepo.getActiveSaveSlot() == inFlight.targetSlot) {

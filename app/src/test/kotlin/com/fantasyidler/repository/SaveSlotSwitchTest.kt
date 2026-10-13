@@ -12,7 +12,12 @@ import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.data.model.QuestProgress
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.SkillSessionExport
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.junit.After
@@ -493,6 +498,47 @@ class SaveSlotSwitchTest {
 
         assertFalse(File(slotsDir(), "pending_switch.marker").exists())
         assertEquals(2, saveSlotRepo.activeSlot())
+    }
+
+    // run-by-orchestrator: P2 race — the orchestrator executes this RED on the base
+    // (outside-lock read) and GREEN on this branch (read under lock). Workers run no Gradle.
+    /**
+     * P2 race: the marker read + parse must be atomic with switchTo under switchMutex.
+     * Holds the switch mutex while a recovery is in flight, then publishes a ready marker
+     * (simulating a concurrent switch's marker window) and releases: a correct recovery reads
+     * under the lock and honours the fresh marker (completes to slot 2); a racy recovery reads
+     * outside the lock, sees the initial absent marker, and returns false leaving slot 1 live.
+     * Proves: read and apply are atomic w.r.t. the mutex. Does NOT prove: a real concurrent
+     * switchTo interleaving end-to-end, deadlock-freedom, or unchanged branch outcomes
+     * (covered by the sequential tests above/below).
+     */
+    @Test
+    fun `recovery reads marker atomically under switch mutex`() = runBlocking {
+        globalStateRepo.setActiveSaveSlot(1)
+        writeTargetSlotB(2)
+        snapshotOutgoingA(1)
+        assertFalse(File(slotsDir(), "pending_switch.marker").exists())
+
+        val mutexField = SaveSlotRepository::class.java.getDeclaredField("switchMutex")
+        mutexField.isAccessible = true
+        val mutex = mutexField.get(saveSlotRepo) as Mutex
+
+        // Hold the mutex to simulate a concurrent switchTo critical section, start recovery
+        // (it must wait for the lock), publish the marker while it waits, then release.
+        val deferred = mutex.withLock {
+            val d = async(Dispatchers.IO) { saveSlotRepo.recoverInterruptedSwitch() }
+            // A racy outside-lock read needs no lock, so this window guarantees it has
+            // observed the initial absent marker before we publish (generous: loaded CI).
+            delay(1000)
+            writeSwitchMarker("ready:2")
+            d
+        }
+        val recovered = deferred.await()
+
+        assertTrue(recovered)
+        assertEquals(2, saveSlotRepo.activeSlot())
+        assertFalse(File(slotsDir(), "pending_switch.marker").exists())
+        assertEquals(222_222L, playerRepo.getOrCreatePlayer().coins)
     }
 
     /** Happy path regression: a completed switch leaves no marker and a full outgoing snapshot. */
