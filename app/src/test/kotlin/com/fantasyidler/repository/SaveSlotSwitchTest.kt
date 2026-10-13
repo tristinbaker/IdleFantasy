@@ -1,5 +1,6 @@
 package com.fantasyidler.repository
 
+import android.app.AlarmManager
 import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
@@ -23,6 +24,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.robolectric.Shadows
 import org.robolectric.annotation.Config
 import java.io.File
 import javax.inject.Provider
@@ -509,5 +511,42 @@ class SaveSlotSwitchTest {
         assertEquals("""{"mining":42}""", outgoing.skillLevels)
         assertEquals("""{"mining":123456}""", outgoing.skillXp)
         assertTrue(File(slotsDir(), "slot_1.meta.json").exists())
+    }
+
+    // run-by-orchestrator: workers run no Gradle; the orchestrator executes this RED on the
+    // base (no alarms re-armed) and GREEN on this branch.
+    /**
+     * P1: the legacy no-file + no-material-progress completion moves the pointer but never
+     * re-arms alarms, while every other completion path funnels through
+     * rescheduleAlarmsFromFlags. Recovery must leave the buff-expiry and backup alarms behind.
+     */
+    @Test
+    fun `legacy empty completion re-arms buff and backup alarms`() = runBlocking {
+        globalStateRepo.setActiveSaveSlot(1)
+        snapshotOutgoingA(1)
+        playerRepo.resetProgression()
+        sessionRepo.deleteAllSessions()
+        val now = System.currentTimeMillis()
+        val xpBoostAt = now + 3_600_000L
+        val blessingAt = now + 7_200_000L
+        playerRepo.updateFlagsAtomically {
+            it.copy(
+                xpBoostExpiresAt = xpBoostAt,
+                activeBlessingExpiresAt = blessingAt,
+                backupFrequency = "daily",
+            )
+        }
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val shadowAm = Shadows.shadowOf(alarmManager)
+        assertEquals(0, shadowAm.scheduledAlarms.size)
+        writeSwitchMarker("3")
+
+        assertTrue(saveSlotRepo.recoverInterruptedSwitch())
+        assertEquals(3, saveSlotRepo.activeSlot())
+
+        val triggers = shadowAm.scheduledAlarms.map { it.triggerAtTime }
+        assertTrue(triggers.contains(xpBoostAt))
+        assertTrue(triggers.contains(blessingAt))
+        assertEquals(3, shadowAm.scheduledAlarms.size)
     }
 }

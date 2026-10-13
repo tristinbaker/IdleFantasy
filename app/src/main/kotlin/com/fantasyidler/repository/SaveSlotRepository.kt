@@ -325,7 +325,7 @@ class SaveSlotRepository @Inject constructor(
                     roomAlreadyHoldsTargetSlot(inFlight.targetSlot) ->
                         importFullSave(target.readText(), freezeSessionTimers = false)
                     // No file and no live progress: the reset already ran, so only the pointer.
-                    !target.exists() && roomHoldsNoMaterialProgress() -> Unit
+                    !target.exists() && roomHoldsNoMaterialProgress() -> rescheduleAlarmsFromFlags()
                     // Cannot prove the live material is the target's (it may not be, or the
                     // check may not have been evaluable): roll the switch back.
                     else -> {
