@@ -684,4 +684,151 @@ class SaveSlotSwitchTest {
         assertTrue(triggers.contains(blessingAt))
         assertEquals(3, shadowAm.scheduledAlarms.size)
     }
+
+    // ------------------------------------------------------------------
+    // P4 medio-wipeado: LEGACY bare marker + crash mid-way through the OLD reset
+    // (sessions/quests/patches wiped, player row intact, no target file) with the good
+    // snapshot still on disk.
+    // run-by-orchestrator: workers run no Gradle; the orchestrator executes the heal
+    // test RED on the base (rollback leaves the half-wiped character alive, pointer stays)
+    // and all four GREEN on this branch.
+    // ------------------------------------------------------------------
+
+    /**
+     * P4 medio-wipeado heals: Room seeded as post-mid-reset (intact player + wiped
+     * sessions/quests/patches) with a content-full active snapshot on disk. Recovery must
+     * heal from the active snapshot — restoring sessions AND quests AND patches — then move
+     * the pointer and clear the marker.
+     * Proves: heal restores every wiped section and completes normally. Does NOT prove:
+     * concurrent-switch behavior or quest/patch-only newer progress (out of scope).
+     */
+    @Test
+    fun `legacy mid-reset wipe heals from the active snapshot`() = runBlocking {
+        globalStateRepo.setActiveSaveSlot(1)
+        snapshotOutgoingA(1)
+        val snapActiveEndsAt = json.decodeFromString<PlayerExport>(
+            File(slotsDir(), "slot_1.json").readText()
+        ).sessions.single { !it.completed }.endsAt
+        // Crash mid-way through the OLD reset: sessions/quests/patches wiped, player intact.
+        sessionRepo.deleteAllSessions()
+        sessionRepo.deleteAllWorkerSessions()
+        db.questProgressDao().deleteAll()
+        db.farmingPatchDao().clearAll()
+        assertFalse(File(slotsDir(), "slot_2.json").exists())
+        writeSwitchMarker("2")
+
+        val recovered = saveSlotRepo.recoverInterruptedSwitch()
+
+        assertTrue(recovered)
+        assertEquals(2, saveSlotRepo.activeSlot())
+        assertFalse(File(slotsDir(), "pending_switch.marker").exists())
+        val healed = playerRepo.getOrCreatePlayer()
+        assertEquals(111_111L, healed.coins)
+        assertEquals("""{"mining":42}""", healed.skillLevels)
+        assertEquals("""{"mining":123456}""", healed.skillXp)
+        assertEquals("""{"iron_ore":99}""", healed.inventory)
+        assertEquals(listOf("a_completed"), sessionRepo.getAllCompletedSessions().map { it.sessionId })
+        val healedActive = sessionRepo.getActiveSession()
+        assertNotNull(healedActive)
+        assertEquals("a_active", healedActive!!.sessionId)
+        assertEquals(snapActiveEndsAt, healedActive.endsAt)
+        val quests = db.questProgressDao().getAllProgress()
+        assertEquals(1, quests.size)
+        assertEquals("sheep_shearer", quests.single().questId)
+        assertEquals(3, quests.single().progress)
+        val patches = db.farmingPatchDao().getAllPatches()
+        assertEquals(1, patches.size)
+        assertEquals("guam_seed", patches.single().cropType)
+        assertFalse(saveSlotRepo.recoverInterruptedSwitch())
+    }
+
+    /**
+     * Live-with-newer-progress rolls back: same wipe as above, but the live player row is
+     * materially different from the snapshot (coins earned/spent since). Signal 3 alone goes
+     * false, so recovery must leave Room byte-untouched, clear the marker, keep the pointer.
+     * Proves: the player-material guard pins the heal. Does NOT prove: which field diverged.
+     */
+    @Test
+    fun `legacy wipe with mismatched live player rolls back`() = runBlocking {
+        globalStateRepo.setActiveSaveSlot(1)
+        snapshotOutgoingA(1)
+        sessionRepo.deleteAllSessions()
+        sessionRepo.deleteAllWorkerSessions()
+        db.questProgressDao().deleteAll()
+        db.farmingPatchDao().clearAll()
+        db.playerDao().upsert(playerRepo.getOrCreatePlayer().copy(coins = 555_555L))
+        val liveBefore = playerRepo.getOrCreatePlayer()
+        val patchesBefore = db.farmingPatchDao().getAllPatches().size
+        writeSwitchMarker("2")
+
+        val recovered = saveSlotRepo.recoverInterruptedSwitch()
+
+        assertFalse(recovered)
+        assertEquals(1, saveSlotRepo.activeSlot())
+        assertFalse(File(slotsDir(), "pending_switch.marker").exists())
+        assertEquals(liveBefore, playerRepo.getOrCreatePlayer())
+        assertEquals(0, sessionRepo.getAllCompletedSessions().size)
+        assertTrue(db.questProgressDao().getAllProgress().isEmpty())
+        val patchesAfter = db.farmingPatchDao().getAllPatches()
+        assertEquals(patchesBefore, patchesAfter.size)
+        assertTrue(patchesAfter.all { it.cropType == null })
+        // The stale snapshot is left intact for forensics, never imported.
+        assertEquals(111_111L, json.decodeFromString<PlayerExport>(File(slotsDir(), "slot_1.json").readText()).coins)
+        assertFalse(saveSlotRepo.recoverInterruptedSwitch())
+    }
+
+    /**
+     * Missing active snapshot rolls back: wiped Room, no slot file at the origin, bare marker.
+     * Signal 2 alone goes false — recovery must not crash on the absent file, must clear the
+     * marker and keep the pointer with Room untouched.
+     * Proves: absent-snapshot safety. Does NOT prove: marker provenance.
+     */
+    @Test
+    fun `legacy wipe without an active snapshot rolls back`() = runBlocking {
+        globalStateRepo.setActiveSaveSlot(1)
+        seedCharacterA(System.currentTimeMillis())
+        sessionRepo.deleteAllSessions()
+        sessionRepo.deleteAllWorkerSessions()
+        db.questProgressDao().deleteAll()
+        db.farmingPatchDao().clearAll()
+        assertFalse(File(slotsDir(), "slot_1.json").exists())
+        val liveBefore = playerRepo.getOrCreatePlayer()
+        writeSwitchMarker("2")
+
+        val recovered = saveSlotRepo.recoverInterruptedSwitch()
+
+        assertFalse(recovered)
+        assertEquals(1, saveSlotRepo.activeSlot())
+        assertFalse(File(slotsDir(), "pending_switch.marker").exists())
+        assertEquals(liveBefore, playerRepo.getOrCreatePlayer())
+        assertFalse(saveSlotRepo.recoverInterruptedSwitch())
+    }
+
+    /**
+     * Corrupt active snapshot rolls back without throwing: the origin file exists but does not
+     * parse, so the probe reads no-match; recovery clears the marker, keeps the pointer, and
+     * leaves the live row alive (no loop is possible because the marker is gone).
+     * Proves: corrupt-snapshot safety. Does NOT prove: boot-loop handling of corrupt-ready
+     * targets (D1 territory, untouched).
+     */
+    @Test
+    fun `legacy wipe with a corrupt active snapshot rolls back without throwing`() = runBlocking {
+        globalStateRepo.setActiveSaveSlot(1)
+        snapshotOutgoingA(1)
+        sessionRepo.deleteAllSessions()
+        sessionRepo.deleteAllWorkerSessions()
+        db.questProgressDao().deleteAll()
+        db.farmingPatchDao().clearAll()
+        File(slotsDir(), "slot_1.json").writeText("{corrupt!!")
+        val liveBefore = playerRepo.getOrCreatePlayer()
+        writeSwitchMarker("2")
+
+        val recovered = saveSlotRepo.recoverInterruptedSwitch()
+
+        assertFalse(recovered)
+        assertEquals(1, saveSlotRepo.activeSlot())
+        assertFalse(File(slotsDir(), "pending_switch.marker").exists())
+        assertEquals(liveBefore, playerRepo.getOrCreatePlayer())
+        assertFalse(saveSlotRepo.recoverInterruptedSwitch())
+    }
 }

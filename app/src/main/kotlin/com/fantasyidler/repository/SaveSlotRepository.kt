@@ -292,7 +292,8 @@ class SaveSlotRepository @Inject constructor(
      * [SwitchPhase.FRESH_TARGET] → replay the idempotent fresh reset and move the pointer;
      * [SwitchPhase.LEGACY] → finish the half-done import from the file when live material
      * matches, snapshot-first (identity-guarded) then move the pointer when there is no file
-     * and no live material progress, else roll back
+     * and no live material progress, heal from the active snapshot when there is no file but
+     * live material matches it with wiped sessions (medio-wipeado), else roll back
      * to the still-live outgoing character. Returns true when a switch was completed.
      */
     suspend fun recoverInterruptedSwitch(): Boolean = withContext(Dispatchers.IO) {
@@ -338,6 +339,27 @@ class SaveSlotRepository @Inject constructor(
                         val origin = globalStateRepo.getActiveSaveSlot()
                         if (!slotFile(origin).exists() && roomHoldsNonDefaultIdentity()) snapshotCurrent(origin)
                         rescheduleAlarmsFromFlags()
+                    }
+                    // P4 medio-wipeado: LEGACY bare marker + crash mid-way through the OLD reset
+                    // (sessions/quests/patches wiped, player row intact, no target file). The
+                    // materiality rule above cannot see this state because the player row is
+                    // intact, and the good snapshot already on disk would be overwritten by the
+                    // next switchTo — heal from it instead, then complete normally. Anything
+                    // unproven falls through to the rollback below; a corrupt snapshot clears
+                    // the marker and rolls back (no loop: the marker is gone).
+                    !target.exists() -> {
+                        val origin = globalStateRepo.getActiveSaveSlot()
+                        val snapshotText = medioWipeadoSnapshotText(origin)
+                        if (snapshotText == null) {
+                            deletePendingSwitchMarker()
+                            return@withLock false
+                        }
+                        try {
+                            importFullSave(snapshotText, freezeSessionTimers = false)
+                        } catch (_: Exception) {
+                            deletePendingSwitchMarker()
+                            return@withLock false
+                        }
                     }
                     // Cannot prove the live material is the target's (it may not be, or the
                     // check may not have been evaluable): roll the switch back.
@@ -423,17 +445,54 @@ class SaveSlotRepository @Inject constructor(
                 false
             } else {
                 val export: PlayerExport = json.decodeFromString(playerRepo.stripJsonGarbage(target.readText()))
-                val live = playerRepo.getOrCreatePlayer()
-                val (fileXp, fileLevels) = legacyHpMerged(export.skillXp, export.skillLevels)
-                live.inventory == export.inventory &&
-                    live.equipped == export.equipped &&
-                    live.pets == export.pets &&
-                    live.coins == export.coins &&
-                    json.decodeFromString<Map<String, Long>>(live.skillXp) == fileXp &&
-                    json.decodeFromString<Map<String, Int>>(live.skillLevels) == fileLevels
+                livePlayerMatchesExport(export)
             }
         } catch (_: Exception) {
             false
+        }
+    }
+
+    /**
+     * The six material player fields of the live row versus a snapshot export, shared by the
+     * legacy identity guard above and the P4 medio-wipeado probe below. Throws on undecodable
+     * live state; callers treat any throw as no-match.
+     */
+    private suspend fun livePlayerMatchesExport(export: PlayerExport): Boolean {
+        val live = playerRepo.getOrCreatePlayer()
+        val (fileXp, fileLevels) = legacyHpMerged(export.skillXp, export.skillLevels)
+        return live.inventory == export.inventory &&
+            live.equipped == export.equipped &&
+            live.pets == export.pets &&
+            live.coins == export.coins &&
+            json.decodeFromString<Map<String, Long>>(live.skillXp) == fileXp &&
+            json.decodeFromString<Map<String, Int>>(live.skillLevels) == fileLevels
+    }
+
+    /**
+     * P4 medio-wipeado probe: a LEGACY bare marker plus a crash mid-way through the OLD reset
+     * leaves sessions/quests/patches wiped with the player row intact and no target file — a
+     * state the materiality rule cannot see. Returns the ACTIVE slot's snapshot text when
+     * (cheapest-first): the snapshot file exists; live player material matches it (same six
+     * fields, legacy hp fold); live sessions read empty (player and both worker slots) while
+     * the snapshot's sessions are non-empty. Null otherwise; any failure reads as no-match.
+     */
+    private suspend fun medioWipeadoSnapshotText(origin: Int): String? {
+        return try {
+            val snapshot = slotFile(origin)
+            if (!snapshot.exists()) return null
+            val text = snapshot.readText()
+            val export: PlayerExport = json.decodeFromString(playerRepo.stripJsonGarbage(text))
+            if (!livePlayerMatchesExport(export)) return null
+            if (sessionRepo.getActiveSession() != null) return null
+            if (sessionRepo.getAllCompletedSessions().isNotEmpty()) return null
+            for (slot in 1..2) {
+                if (sessionRepo.getActiveWorkerSession(slot) != null) return null
+                if (sessionRepo.getAllCompletedWorkerSessions(slot).isNotEmpty()) return null
+            }
+            if (export.sessions.isEmpty()) return null
+            text
+        } catch (_: Exception) {
+            null
         }
     }
 
