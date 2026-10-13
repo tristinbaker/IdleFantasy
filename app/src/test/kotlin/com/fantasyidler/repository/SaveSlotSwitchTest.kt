@@ -869,4 +869,66 @@ class SaveSlotSwitchTest {
         assertEquals(sessionsBefore, db.skillSessionDao().getAllSessions())
         assertFalse(saveSlotRepo.recoverInterruptedSwitch())
     }
+
+    // run-by-orchestrator: workers run no Gradle; the orchestrator executes this RED on the
+    // base (no heal — pointer moves with wiped quests/patches) and GREEN on this branch.
+    /**
+     * Session-free OR-content arm: snapshot holds zero sessions but real quest progress + a
+     * planted crop; live Room wiped to the same shape (player intact, sessions empty,
+     * quests/patches empty) under a bare marker. Recovery must heal quests AND patches from
+     * the snapshot, then complete normally.
+     * Proves: the OR-content rule heals without sessions. Does NOT prove: session-carrying
+     * heals (covered above) or concurrent-switch behavior.
+     */
+    @Test
+    fun `session-free snapshot with quest and patch content heals`() = runBlocking {
+        globalStateRepo.setActiveSaveSlot(1)
+        val base = System.currentTimeMillis()
+        // Seed player + quest + patch WITHOUT sessions (snapshotOutgoingA always seeds sessions).
+        db.playerDao().upsert(
+            playerRepo.getOrCreatePlayer().copy(
+                skillLevels = """{"mining":42}""",
+                skillXp = """{"mining":123456}""",
+                inventory = """{"iron_ore":99}""",
+                equipped = """{"head":"bronze_helm"}""",
+                pets = """[{"id":"rock_golem"}]""",
+                coins = 111_111L,
+                flags = json.encodeToString<PlayerFlags>(PlayerFlags(currentHp = 66)),
+            )
+        )
+        db.questProgressDao().upsert(QuestProgress("sheep_shearer", progress = 3))
+        db.farmingPatchDao().upsert(FarmingPatch(patchNumber = 0, cropType = "guam_seed", plantedAt = base))
+        // Snapshot collects the empty live session list.
+        writeSlotFile(1, saveSlotRepo.exportFullSave())
+        // Crash mid-way through the OLD reset, session-free shape: quests/patches wiped, player intact.
+        db.questProgressDao().deleteAll()
+        db.farmingPatchDao().clearAll()
+        assertTrue(db.questProgressDao().getAllProgress().isEmpty())
+        assertTrue(db.farmingPatchDao().getAllPatches().all { it.cropType == null })
+        assertNull(sessionRepo.getActiveSession())
+        assertTrue(sessionRepo.getAllCompletedSessions().isEmpty())
+        assertFalse(File(slotsDir(), "slot_2.json").exists())
+        writeSwitchMarker("2")
+
+        val recovered = saveSlotRepo.recoverInterruptedSwitch()
+
+        assertTrue(recovered)
+        assertEquals(2, saveSlotRepo.activeSlot())
+        assertFalse(File(slotsDir(), "pending_switch.marker").exists())
+        val healed = playerRepo.getOrCreatePlayer()
+        assertEquals(111_111L, healed.coins)
+        assertEquals("""{"mining":42}""", healed.skillLevels)
+        assertEquals("""{"mining":123456}""", healed.skillXp)
+        val quests = db.questProgressDao().getAllProgress()
+        assertEquals(1, quests.size)
+        assertEquals("sheep_shearer", quests.single().questId)
+        assertEquals(3, quests.single().progress)
+        val patches = db.farmingPatchDao().getAllPatches()
+        assertEquals(1, patches.size)
+        assertEquals("guam_seed", patches.single().cropType)
+        assertEquals(base, patches.single().plantedAt)
+        assertNull(sessionRepo.getActiveSession())
+        assertTrue(sessionRepo.getAllCompletedSessions().isEmpty())
+        assertFalse(saveSlotRepo.recoverInterruptedSwitch())
+    }
 }
