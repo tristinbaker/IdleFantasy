@@ -408,8 +408,10 @@ class SaveSlotIntegrationTest {
 
     /**
      * A-F2 CHARACTERIZATION: when both the empty branch and the heal probe fire (zero
-     * coins/XP live matching a quest/patch snapshot with wiped live sections), the empty
-     * branch wins by order so quests stay empty. Pins CURRENT ordering.
+     * coins/XP live matching a quest/patch/session snapshot with wiped live sections), the empty
+     * branch wins by order so quests stay empty (temporary detour). The origin snapshot is
+     * untouched by the empty path, so switching back reimports quests/patches/sessions
+     * (self-heal). Pins CURRENT ordering + self-heal.
      */
     @Test
     fun `A-F2 empty branch wins over heal when both fire`() = runBlocking {
@@ -423,16 +425,39 @@ class SaveSlotIntegrationTest {
         )
         db.questProgressDao().upsert(QuestProgress("sheep_shearer", progress = 3))
         db.farmingPatchDao().upsert(FarmingPatch(patchNumber = 0, cropType = "guam_seed", plantedAt = base))
+        sessionRepo.insertSession(
+            SkillSession("a_completed", skillName = "woodcutting", startedAt = base - 3_600_000L, endsAt = base - 1_800_000L, completed = true, activityKey = "oak_tree")
+        )
+        sessionRepo.insertSession(
+            SkillSession("a_active", skillName = "mining", startedAt = base, endsAt = base + 3_600_000L, completed = false, activityKey = "iron_ore")
+        )
         writeSlotFile(1, saveSlotRepo.exportFullSave())
+        val snapshotText = File(slotsDir(), "slot_1.json").readText()
+        // Simulate the medio-wipeado crash window: player row intact, live sections wiped.
+        sessionRepo.deleteAllSessions()
+        sessionRepo.deleteAllWorkerSessions()
         db.questProgressDao().deleteAll()
         db.farmingPatchDao().clearAll()
         assertNull(sessionRepo.getActiveSession())
+        assertTrue(sessionRepo.getAllCompletedSessions().isEmpty())
         writeSwitchMarker("2")
 
+        // Empty branch wins by order: detour to slot 2 with live sections still empty.
         assertTrue(saveSlotRepo.recoverInterruptedSwitch())
         assertEquals(2, saveSlotRepo.activeSlot())
         assertTrue(db.questProgressDao().getAllProgress().isEmpty())
         assertTrue(db.farmingPatchDao().getAllPatches().all { it.cropType == null })
+        // Origin snapshot untouched by the empty path — precondition for self-heal.
+        assertEquals(snapshotText, File(slotsDir(), "slot_1.json").readText())
+
+        // Switch-back self-heal: reimporting the untouched snapshot restores everything.
+        saveSlotRepo.switchTo(1)
+        assertEquals(1, saveSlotRepo.activeSlot())
+        assertEquals(3, db.questProgressDao().getAllProgress().single { it.questId == "sheep_shearer" }.progress)
+        assertEquals("guam_seed", db.farmingPatchDao().getAllPatches().single { it.patchNumber == 0 }.cropType)
+        assertEquals("a_active", sessionRepo.getActiveSession()?.sessionId)
+        assertEquals(listOf("a_completed"), sessionRepo.getAllCompletedSessions().map { it.sessionId })
+        assertFalse(File(slotsDir(), "pending_switch.marker").exists())
     }
 
     /**
