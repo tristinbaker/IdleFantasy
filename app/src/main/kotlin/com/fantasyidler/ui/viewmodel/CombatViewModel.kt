@@ -755,6 +755,14 @@ class CombatViewModel @Inject constructor(
                     boostRepo.boostedPotionEffects(flags, gameData.potionEffects[potionKey] ?: emptyMap())
                 } else emptyMap()
 
+                // Issue #2066: on the isle duration uses elder Agility only;
+                // mainland floor/Chronos are neutralized like the queued path.
+                val isElderDirect = flags.onElderIsle
+                val elderAgilityDirect = flags.elderSkillLevels[Skills.AGILITY] ?: 1
+                val mainlandAgilityDirect = mainlandLevels[Skills.AGILITY] ?: 1
+                val mainlandFloorDirect = boostRepo.sessionFloorReductionMin(flags)
+                val mainlandChronosDirect = townRepo.playerSessionDurationMultiplier(flags)
+
                 val result = CombatSimulator.simulateDungeon(
                     dungeon             = dungeon,
                     enemies             = gameData.enemies,
@@ -770,8 +778,8 @@ class CombatViewModel @Inject constructor(
                     playerMagic         = (levels[Skills.MAGIC]     ?: 1) + boostRepo.combatStatBonus(Skills.MAGIC, flags, levels[Skills.MAGIC] ?: 1),
                     rangedGearStrengthBonus = totalRangedStrBonus,
                     spellMaxHit         = (selectedSpell?.maxHit ?: 0) + totalMagicDmgBonus,
-                    agilityLevel        = levels[Skills.AGILITY]   ?: 1,
-                    floorReductionMin     = boostRepo.sessionFloorReductionMin(flags),
+                    agilityLevel        = if (isElderDirect) 1 else mainlandAgilityDirect,
+                    floorReductionMin     = if (isElderDirect) 0.0 else mainlandFloorDirect,
                     petBoostPct         = petBoostFor(player.pets, flags.ironman),
                     equippedFood        = availableFood,
                     foodHealValues      = foodHealValues,
@@ -784,7 +792,7 @@ class CombatViewModel @Inject constructor(
                     attackSpeedSec      = weapon?.attackSpeed ?: CombatSimulator.BASE_ATTACK_SPEED_SEC,
                     eatThresholdPct     = flags.foodEatThresholdPct,
                     foodEatOrder        = flags.foodEatOrder,
-                    chronosMultiplier   = townRepo.playerSessionDurationMultiplier(flags),
+                    chronosMultiplier   = if (isElderDirect) 1.0f else mainlandChronosDirect,
                     doubleHitChance     = boostRepo.doubleHitChance(flags),
                     secondChance        = boostRepo.secondChanceActive(flags),
                 )
@@ -793,12 +801,19 @@ class CombatViewModel @Inject constructor(
                     json.serializersModule.serializer<List<SessionFrame>>(),
                     result.frames,
                 )
-                val alarmOffsetMs = CombatSimulator.deathAlarmOffsetMs(result.frames, result.durationMs / 60L)
+                val effectiveDurationMs = directDungeonDurationMs(
+                    isElder = isElderDirect,
+                    elderAgility = elderAgilityDirect,
+                    mainlandAgility = mainlandAgilityDirect,
+                    floorReductionMin = mainlandFloorDirect,
+                    chronosMultiplier = mainlandChronosDirect,
+                )
+                val alarmOffsetMs = CombatSimulator.deathAlarmOffsetMs(result.frames, effectiveDurationMs / 60L)
                 sessionRepo.startSession(
                     skillName        = "combat",
                     activityKey      = dungeonKey,
                     frames           = framesJson,
-                    durationMs       = result.durationMs,
+                    durationMs       = effectiveDurationMs,
                     skillDisplayName = GameStrings.dungeonName(context, dungeonKey),
                     alarmOffsetMs    = alarmOffsetMs,
                     weaponSlot       = activeWeaponSlot,
@@ -815,6 +830,7 @@ class CombatViewModel @Inject constructor(
                         potionKey        = potionKey,
                         weaponSlot       = activeWeaponSlot,
                         repeatCount      = repeatCount,
+                        isElderSession   = flags.onElderIsle,
                     )
                     playerRepo.updateFlags(playerRepo.getFlags().copy(
                         activeDungeonRepeatIndex    = 1,
@@ -1011,8 +1027,19 @@ class CombatViewModel @Inject constructor(
                     json.serializersModule.serializer<List<SessionFrame>>(),
                     bossFrames,
                 )
-                val agilityLevel   = levels[Skills.AGILITY] ?: 1
-                val frameMs        = SkillSimulator.sessionDurationMs(agilityLevel, boostRepo.sessionFloorReductionMin(flags), townRepo.playerSessionDurationMultiplier(flags)) / 60L
+                // Issue #2066: on the isle boss frames use elder Agility only.
+                val isElderBossDirect = flags.onElderIsle
+                val elderAgilityBossDirect = flags.elderSkillLevels[Skills.AGILITY] ?: 1
+                val mainlandAgilityBossDirect = mainlandLevels[Skills.AGILITY] ?: 1
+                val mainlandFloorBossDirect = boostRepo.sessionFloorReductionMin(flags)
+                val mainlandChronosBossDirect = townRepo.playerSessionDurationMultiplier(flags)
+                val frameMs = directBossFrameMs(
+                    isElder = isElderBossDirect,
+                    elderAgility = elderAgilityBossDirect,
+                    mainlandAgility = mainlandAgilityBossDirect,
+                    floorReductionMin = mainlandFloorBossDirect,
+                    chronosMultiplier = mainlandChronosBossDirect,
+                )
                 val bossDurationMs = boss.durationMinutes * frameMs
                 sessionRepo.startSession(
                     skillName        = "boss",
@@ -1037,6 +1064,7 @@ class CombatViewModel @Inject constructor(
                         potionKey        = potionKey,
                         weaponSlot       = activeWeaponSlot,
                         repeatCount      = repeatCount,
+                        isElderSession   = flags.onElderIsle,
                     )
                     playerRepo.updateFlags(playerRepo.getFlags().copy(
                         activeBossRepeatIndex    = 1,
