@@ -288,3 +288,212 @@ class SaveSlotIntegrationTest {
         assertTrue(slotsDir().listFiles().orEmpty().none { it.name.endsWith(".tmp") })
     }
 
+    // PART2: catastrophic windows (bare-origin, mid-import workers, concurrent pair)
+    // plus warning characterizations A-F1, A-F2, B-W-1, B-W-2 and corrupt markers.
+    // Commit as batch 2.
+    /**
+     * Catastrophic: bare marker with a good origin file and live outgoing rolls back.
+     * Expected: material live fails empty branch, sessions present fail heal probe.
+     */
+    @Test
+    fun `bare marker with existing origin file rolls back`() = runBlocking {
+        globalStateRepo.setActiveSaveSlot(1)
+        snapshotOutgoingA(1)
+        assertFalse(File(slotsDir(), "slot_2.json").exists())
+        val liveBefore = playerRepo.getOrCreatePlayer()
+        writeSwitchMarker("2")
+
+        assertFalse(saveSlotRepo.recoverInterruptedSwitch())
+        assertEquals(1, saveSlotRepo.activeSlot())
+        assertFalse(File(slotsDir(), "pending_switch.marker").exists())
+        assertEquals(liveBefore, playerRepo.getOrCreatePlayer())
+        assertEquals(111_111L, json.decodeFromString<PlayerExport>(File(slotsDir(), "slot_1.json").readText()).coins)
+    }
+
+    /**
+     * Catastrophic mid-import with worker sessions: player row already target, sessions
+     * still outgoing. Recovery re-imports the file (source of truth) including workers.
+     */
+    @Test
+    fun `mid-import player commit with workers completes from file`() = runBlocking {
+        globalStateRepo.setActiveSaveSlot(1)
+        val base = System.currentTimeMillis()
+        seedCharacterB()
+        db.questProgressDao().upsert(QuestProgress("cooks_assistant", progress = 1))
+        db.farmingPatchDao().upsert(FarmingPatch(patchNumber = 1, cropType = "potato_seed", plantedAt = base))
+        sessionRepo.insertSession(
+            SkillSession("b_w_active", skillName = "fishing", startedAt = base, endsAt = base + 3_600_000L, completed = false, activityKey = "raw_shrimp", isWorkerSession = true, workerSlot = 1)
+        )
+        sessionRepo.insertSession(
+            SkillSession("b_w_done", skillName = "mining", startedAt = base - 3_600_000L, endsAt = base - 1_800_000L, completed = true, activityKey = "iron_ore", isWorkerSession = true, workerSlot = 2)
+        )
+        val targetJson = saveSlotRepo.exportFullSave()
+        writeSlotFile(2, targetJson)
+        snapshotOutgoingA(1)
+
+        val target = json.decodeFromString<PlayerExport>(targetJson)
+        db.playerDao().upsert(
+            playerRepo.getOrCreatePlayer().copy(
+                skillLevels = target.skillLevels, skillXp = target.skillXp, inventory = target.inventory,
+                equipped = target.equipped, pets = target.pets, coins = target.coins,
+            )
+        )
+        writeSwitchMarker("2")
+
+        assertTrue(saveSlotRepo.recoverInterruptedSwitch())
+        assertEquals(2, saveSlotRepo.activeSlot())
+        assertEquals(222_222L, playerRepo.getOrCreatePlayer().coins)
+        assertEquals("b_w_active", sessionRepo.getActiveWorkerSession(1)?.sessionId)
+        assertEquals(listOf("b_w_done"), sessionRepo.getAllCompletedWorkerSessions(2).map { it.sessionId })
+        assertEquals(111_111L, json.decodeFromString<PlayerExport>(File(slotsDir(), "slot_1.json").readText()).coins)
+    }
+
+    /**
+     * Catastrophic concurrent switchTo x2 end-to-end: two imports race from one origin.
+     * Mutex serializes; final live is one target, no marker, origin snapshot intact.
+     */
+    @Test
+    fun `concurrent switchTo pair serializes end-to-end`() = runBlocking {
+        globalStateRepo.setActiveSaveSlot(1)
+        writeTargetSlotB(2)
+        db.playerDao().upsert(playerRepo.getOrCreatePlayer().copy(coins = 333_333L))
+        writeSlotFile(3, saveSlotRepo.exportFullSave())
+        seedCharacterA(System.currentTimeMillis())
+
+        val d1 = async(Dispatchers.IO) { saveSlotRepo.switchTo(2) }
+        val d2 = async(Dispatchers.IO) { saveSlotRepo.switchTo(3) }
+        d1.await()
+        d2.await()
+
+        val active = saveSlotRepo.activeSlot()
+        assertTrue(active == 2 || active == 3)
+        assertFalse(File(slotsDir(), "pending_switch.marker").exists())
+        val coins = playerRepo.getOrCreatePlayer().coins
+        assertTrue(coins == 222_222L || coins == 333_333L)
+        assertTrue(File(slotsDir(), "slot_1.json").exists())
+    }
+
+    /**
+     * A-F1 CHARACTERIZATION: rich inventory/gear/pet with zero coins and zero XP reads as
+     * no-material-progress (predicate checks only coins + skillXp). Pins CURRENT behavior.
+     * Surprise flagged: inventory does not block the pointer-only path.
+     */
+    @Test
+    fun `A-F1 rich inventory with zero coins and XP reads as empty`() = runBlocking {
+        globalStateRepo.setActiveSaveSlot(1)
+        db.playerDao().upsert(
+            playerRepo.getOrCreatePlayer().copy(
+                skillLevels = """{"mining":1}""",
+                skillXp = """{"mining":0}""",
+                inventory = """{"iron_ore":99,"shrimp":50}""",
+                equipped = """{"head":"bronze_helm"}""",
+                pets = """[{"id":"rock_golem"}]""",
+                coins = 0L,
+            )
+        )
+        assertFalse(File(slotsDir(), "slot_1.json").exists())
+        writeSwitchMarker("2")
+
+        assertTrue(saveSlotRepo.recoverInterruptedSwitch())
+        assertEquals(2, saveSlotRepo.activeSlot())
+        assertFalse(File(slotsDir(), "slot_1.json").exists())
+        assertEquals("""{"iron_ore":99,"shrimp":50}""", playerRepo.getOrCreatePlayer().inventory)
+    }
+
+    /**
+     * A-F2 CHARACTERIZATION: when both the empty branch and the heal probe fire (zero
+     * coins/XP live matching a quest/patch snapshot with wiped live sections), the empty
+     * branch wins by order so quests stay empty. Pins CURRENT ordering.
+     */
+    @Test
+    fun `A-F2 empty branch wins over heal when both fire`() = runBlocking {
+        globalStateRepo.setActiveSaveSlot(1)
+        val base = System.currentTimeMillis()
+        db.playerDao().upsert(
+            playerRepo.getOrCreatePlayer().copy(
+                skillLevels = """{"mining":1}""", skillXp = """{"mining":0}""",
+                inventory = """{}""", coins = 0L,
+            )
+        )
+        db.questProgressDao().upsert(QuestProgress("sheep_shearer", progress = 3))
+        db.farmingPatchDao().upsert(FarmingPatch(patchNumber = 0, cropType = "guam_seed", plantedAt = base))
+        writeSlotFile(1, saveSlotRepo.exportFullSave())
+        db.questProgressDao().deleteAll()
+        db.farmingPatchDao().clearAll()
+        assertNull(sessionRepo.getActiveSession())
+        writeSwitchMarker("2")
+
+        assertTrue(saveSlotRepo.recoverInterruptedSwitch())
+        assertEquals(2, saveSlotRepo.activeSlot())
+        assertTrue(db.questProgressDao().getAllProgress().isEmpty())
+        assertTrue(db.farmingPatchDao().getAllPatches().all { it.cropType == null })
+    }
+
+    /**
+     * B-W-1 CHARACTERIZATION: inventory compares as raw strings, so the same map in a
+     * different key order mismatches and the legacy identity guard returns false (rollback).
+     * Pins CURRENT string compare; map-equal would complete.
+     */
+    @Test
+    fun `B-W-1 reordered inventory keys mismatch identity`() = runBlocking {
+        globalStateRepo.setActiveSaveSlot(1)
+        db.playerDao().upsert(
+            playerRepo.getOrCreatePlayer().copy(
+                skillLevels = """{"mining":7}""", skillXp = """{"mining":9000}""",
+                inventory = """{"iron_ore":99,"shrimp":5}""", coins = 222_222L,
+            )
+        )
+        writeSlotFile(2, saveSlotRepo.exportFullSave())
+        db.playerDao().upsert(playerRepo.getOrCreatePlayer().copy(inventory = """{"shrimp":5,"iron_ore":99}"""))
+        val liveInv = json.decodeFromString<Map<String, Int>>(playerRepo.getOrCreatePlayer().inventory)
+        val fileInv = json.decodeFromString<Map<String, Int>>(json.decodeFromString<PlayerExport>(File(slotsDir(), "slot_2.json").readText()).inventory)
+        assertEquals(fileInv, liveInv)
+        writeSwitchMarker("2")
+
+        assertFalse(saveSlotRepo.recoverInterruptedSwitch())
+        assertEquals(1, saveSlotRepo.activeSlot())
+        assertEquals("""{"shrimp":5,"iron_ore":99}""", playerRepo.getOrCreatePlayer().inventory)
+    }
+
+    /**
+     * B-W-2 CHARACTERIZATION: a live completed-only session blocks the heal probe (probe
+     * requires zero active and zero completed in player and both worker slots). Pins CURRENT.
+     */
+    @Test
+    fun `B-W-2 completed-only live session blocks heal`() = runBlocking {
+        globalStateRepo.setActiveSaveSlot(1)
+        snapshotOutgoingA(1)
+        sessionRepo.deleteAllSessions()
+        sessionRepo.deleteAllWorkerSessions()
+        db.questProgressDao().deleteAll()
+        db.farmingPatchDao().clearAll()
+        sessionRepo.insertSession(
+            SkillSession("only_done", skillName = "woodcutting", startedAt = 1L, endsAt = 2L, completed = true, activityKey = "oak_tree")
+        )
+        writeSwitchMarker("2")
+
+        assertFalse(saveSlotRepo.recoverInterruptedSwitch())
+        assertEquals(1, saveSlotRepo.activeSlot())
+        assertEquals(listOf("only_done"), sessionRepo.getAllCompletedSessions().map { it.sessionId })
+        assertTrue(db.questProgressDao().getAllProgress().isEmpty())
+    }
+
+    /**
+     * Corrupt markers (garbage, out-of-range, malformed fresh) clear without touching Room.
+     * Expected from parsePendingSwitch null path.
+     */
+    @Test
+    fun `corrupt markers clear without touching Room`() = runBlocking {
+        globalStateRepo.setActiveSaveSlot(1)
+        seedCharacterA(System.currentTimeMillis())
+        val liveBefore = playerRepo.getOrCreatePlayer()
+
+        for (bad in listOf("garbage!!", "ready:99", "fresh:x:2", "fresh:1", "")) {
+            writeSwitchMarker(bad)
+            assertFalse(saveSlotRepo.recoverInterruptedSwitch())
+            assertEquals(1, saveSlotRepo.activeSlot())
+            assertEquals(liveBefore, playerRepo.getOrCreatePlayer())
+            assertFalse(File(slotsDir(), "pending_switch.marker").exists())
+        }
+    }
+}
