@@ -3,6 +3,8 @@ package com.fantasyidler.repository
 import android.content.Context
 import android.os.SystemClock
 import android.util.Log
+import com.fantasyidler.data.model.EquipSlot
+import com.fantasyidler.data.model.OwnedPet
 import com.fantasyidler.data.model.PlayerExport
 import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.data.model.SkillSessionExport
@@ -520,15 +522,46 @@ class SaveSlotRepository @Inject constructor(
     }
 
     /**
-     * True when the live character holds no material progress (no coins, no skill XP): what
-     * [resetToFreshCharacter] leaves, or a brand-new character. Used for a legacy marker with no
-     * target file; the only misread is a no-progress character, where both outcomes preserve all.
+     * True when the live character holds no material progress: what [resetToFreshCharacter]
+     * leaves, or a brand-new character. Material is coins, any skill XP, any skill level off
+     * the fresh default (1), non-blank non-default inventory/equipped, or any pet. Blank raw
+     * inventory/equipped/pets and empty decoded maps (plus an empty pet list) read as empty,
+     * so truly-fresh defaults stay pointer-only. Any undecodable field reads as material
+     * (fail-closed to rollback). Used for a legacy marker with no target file.
      */
-    private suspend fun roomHoldsNoMaterialProgress(): Boolean = try {
+    private suspend fun roomHoldsNoMaterialProgress(): Boolean {
+        return try {
         val live = playerRepo.getOrCreatePlayer()
-        live.coins == 0L && json.decodeFromString<Map<String, Long>>(live.skillXp).values.all { it == 0L }
-    } catch (_: Exception) {
-        false
+        if (live.coins != 0L) return false
+        if (!json.decodeFromString<Map<String, Long>>(live.skillXp).values.all { it == 0L }) return false
+        if (json.decodeFromString<Map<String, Int>>(live.skillLevels).values.any { it != 1 }) return false
+        if (live.inventory.isNotBlank()) {
+            val inventory: Map<String, Int> = json.decodeFromString(live.inventory)
+            val fresh = mapOf(
+                "bronze_pickaxe" to 1,
+                "bronze_axe" to 1,
+                "bronze_fishing_rod" to 1,
+                "bronze_boots" to 1,
+            )
+            if (inventory.isNotEmpty() && inventory != fresh) return false
+        }
+        if (live.equipped.isNotBlank()) {
+            val equipped: Map<String, String?> = json.decodeFromString(live.equipped)
+            val freshEquipped: Map<String, String?> = EquipSlot.ALL.associateWith { null } + mapOf(
+                EquipSlot.PICKAXE to "bronze_pickaxe",
+                EquipSlot.AXE to "bronze_axe",
+                EquipSlot.FISHING_ROD to "bronze_fishing_rod",
+                EquipSlot.BOOTS to "bronze_boots",
+            )
+            if (equipped.isNotEmpty() && equipped != freshEquipped) return false
+        }
+        if (live.pets.isNotBlank()) {
+            if (json.decodeFromString<List<OwnedPet>>(live.pets).isNotEmpty()) return false
+        }
+        true
+        } catch (_: Exception) {
+            false
+        }
     }
 
     /**

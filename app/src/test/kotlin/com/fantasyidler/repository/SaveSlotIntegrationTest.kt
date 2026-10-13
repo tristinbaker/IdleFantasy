@@ -374,12 +374,13 @@ class SaveSlotIntegrationTest {
     }
 
     /**
-     * A-F1 CHARACTERIZATION: rich inventory/gear/pet with zero coins and zero XP reads as
-     * no-material-progress (predicate checks only coins + skillXp). Pins CURRENT behavior.
-     * Surprise flagged: inventory does not block the pointer-only path.
+     * A-F1 FIX (Option 2, predicate-only): rich inventory/gear/pet with zero coins and zero XP
+     * is material under the widened predicate, so a legacy marker with no target file rolls
+     * back instead of completing pointer-only: the outgoing character stays live at its slot
+     * and no snapshot file is created by recovery.
      */
     @Test
-    fun `A-F1 rich inventory with zero coins and XP reads as empty`() = runBlocking {
+    fun `A-F1 rich inventory with zero coins and XP rolls back`() = runBlocking {
         globalStateRepo.setActiveSaveSlot(1)
         db.playerDao().upsert(
             playerRepo.getOrCreatePlayer().copy(
@@ -394,10 +395,15 @@ class SaveSlotIntegrationTest {
         assertFalse(File(slotsDir(), "slot_1.json").exists())
         writeSwitchMarker("2")
 
-        assertTrue(saveSlotRepo.recoverInterruptedSwitch())
-        assertEquals(2, saveSlotRepo.activeSlot())
+        assertFalse(saveSlotRepo.recoverInterruptedSwitch())
+        assertEquals(1, saveSlotRepo.activeSlot())
+        assertFalse(File(slotsDir(), "pending_switch.marker").exists())
         assertFalse(File(slotsDir(), "slot_1.json").exists())
-        assertEquals("""{"iron_ore":99,"shrimp":50}""", playerRepo.getOrCreatePlayer().inventory)
+        val live = playerRepo.getOrCreatePlayer()
+        assertEquals("""{"iron_ore":99,"shrimp":50}""", live.inventory)
+        assertEquals("""{"head":"bronze_helm"}""", live.equipped)
+        assertEquals("""[{"id":"rock_golem"}]""", live.pets)
+        assertEquals(0L, live.coins)
     }
 
     /**
