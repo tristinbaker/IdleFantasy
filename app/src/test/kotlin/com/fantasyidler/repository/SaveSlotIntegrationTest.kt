@@ -22,6 +22,7 @@ import kotlinx.serialization.json.Json
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Assert.fail
@@ -541,6 +542,115 @@ class SaveSlotIntegrationTest {
         assertEquals(snapshotBefore, File(slotsDir(), "slot_1.json").readText())
         assertEquals(liveBefore, playerRepo.getOrCreatePlayer())
         assertTrue(db.questProgressDao().getAllProgress().isEmpty())
+    }
+
+    /**
+     * Worker-active blocks heal: otherwise heal-eligible (live player matches the snapshot,
+     * live player sessions/quests/patches wiped, contentful snapshot) but a live ACTIVE worker
+     * session present. The probe requires both worker slots empty, so recovery must roll back
+     * with the worker row field-identical, snapshot byte-identical, live row identical, no
+     * quest heal. Mirrors B-W-2 for the active-worker arm (fail-closed: healing's
+     * deleteAllWorkerSessions would wipe the live worker).
+     */
+    @Test
+    fun `worker-active live session blocks heal`() = runBlocking {
+        globalStateRepo.setActiveSaveSlot(1)
+        snapshotOutgoingA(1)
+        val snapshotBefore = File(slotsDir(), "slot_1.json").readText()
+        sessionRepo.deleteAllSessions()
+        sessionRepo.deleteAllWorkerSessions()
+        db.questProgressDao().deleteAll()
+        db.farmingPatchDao().clearAll()
+        val base = System.currentTimeMillis()
+        sessionRepo.insertSession(
+            SkillSession("w_active_block", skillName = "fishing", startedAt = base, endsAt = base + 3_600_000L, completed = false, activityKey = "raw_shrimp", isWorkerSession = true, workerSlot = 1)
+        )
+        val sessionBefore = sessionRepo.getSession("w_active_block")!!
+        val liveBefore = playerRepo.getOrCreatePlayer()
+        writeSwitchMarker("2")
+
+        assertFalse(saveSlotRepo.recoverInterruptedSwitch())
+        assertEquals(1, saveSlotRepo.activeSlot())
+        assertFalse(File(slotsDir(), "pending_switch.marker").exists())
+        assertEquals(sessionBefore, sessionRepo.getSession("w_active_block"))
+        assertEquals("w_active_block", sessionRepo.getActiveWorkerSession(1)?.sessionId)
+        assertNull(sessionRepo.getActiveSession())
+        assertTrue(sessionRepo.getAllCompletedSessions().isEmpty())
+        assertEquals(snapshotBefore, File(slotsDir(), "slot_1.json").readText())
+        assertEquals(liveBefore, playerRepo.getOrCreatePlayer())
+        assertTrue(db.questProgressDao().getAllProgress().isEmpty())
+        assertTrue(db.farmingPatchDao().getAllPatches().all { it.cropType == null })
+    }
+
+    /**
+     * Session-free worker-content heal: snapshot holds zero player sessions but real quest
+     * progress, a planted crop, AND worker sessions (active + completed); live wiped to the
+     * same shape under a bare marker. Recovery must heal quests, patches, and workers from
+     * the snapshot via the shared export/import round-trip, then complete normally.
+     * Worker-seeded variant of the session-free OR-content arm (SwitchTest pins the
+     * worker-free shape; this pins that workers ride the same path with absolute endsAt
+     * preserved for the active worker).
+     */
+    @Test
+    fun `session-free snapshot with worker content heals`() = runBlocking {
+        globalStateRepo.setActiveSaveSlot(1)
+        val base = System.currentTimeMillis()
+        db.playerDao().upsert(
+            playerRepo.getOrCreatePlayer().copy(
+                skillLevels = """{"mining":42}""",
+                skillXp = """{"mining":123456}""",
+                inventory = """{"iron_ore":99}""",
+                equipped = """{"head":"bronze_helm"}""",
+                pets = """[{"id":"rock_golem"}]""",
+                coins = 111_111L,
+                flags = json.encodeToString<PlayerFlags>(PlayerFlags(currentHp = 66)),
+            )
+        )
+        db.questProgressDao().upsert(QuestProgress("sheep_shearer", progress = 3))
+        db.farmingPatchDao().upsert(FarmingPatch(patchNumber = 0, cropType = "guam_seed", plantedAt = base))
+        sessionRepo.insertSession(
+            SkillSession("w_heal_active", skillName = "fishing", startedAt = base, endsAt = base + 3_600_000L, completed = false, activityKey = "raw_shrimp", isWorkerSession = true, workerSlot = 1)
+        )
+        sessionRepo.insertSession(
+            SkillSession("w_heal_done", skillName = "mining", startedAt = base - 3_600_000L, endsAt = base - 1_800_000L, completed = true, activityKey = "iron_ore", isWorkerSession = true, workerSlot = 2)
+        )
+        writeSlotFile(1, saveSlotRepo.exportFullSave())
+        val snapWorkerEndsAt = json.decodeFromString<PlayerExport>(File(slotsDir(), "slot_1.json").readText()).sessions.single { it.sessionId == "w_heal_active" }.endsAt
+        sessionRepo.deleteAllSessions()
+        sessionRepo.deleteAllWorkerSessions()
+        db.questProgressDao().deleteAll()
+        db.farmingPatchDao().clearAll()
+        assertNull(sessionRepo.getActiveSession())
+        assertTrue(sessionRepo.getAllCompletedSessions().isEmpty())
+        assertNull(sessionRepo.getActiveWorkerSession(1))
+        assertNull(sessionRepo.getActiveWorkerSession(2))
+        assertTrue(db.questProgressDao().getAllProgress().isEmpty())
+        assertTrue(db.farmingPatchDao().getAllPatches().all { it.cropType == null })
+        assertFalse(File(slotsDir(), "slot_2.json").exists())
+        writeSwitchMarker("2")
+
+        assertTrue(saveSlotRepo.recoverInterruptedSwitch())
+        assertEquals(2, saveSlotRepo.activeSlot())
+        assertFalse(File(slotsDir(), "pending_switch.marker").exists())
+        val healed = playerRepo.getOrCreatePlayer()
+        assertEquals(111_111L, healed.coins)
+        assertEquals("""{"mining":42}""", healed.skillLevels)
+        assertEquals("""{"mining":123456}""", healed.skillXp)
+        val quests = db.questProgressDao().getAllProgress()
+        assertEquals(1, quests.size)
+        assertEquals("sheep_shearer", quests.single().questId)
+        assertEquals(3, quests.single().progress)
+        val patches = db.farmingPatchDao().getAllPatches()
+        assertEquals(1, patches.size)
+        assertEquals("guam_seed", patches.single().cropType)
+        assertEquals(base, patches.single().plantedAt)
+        assertNull(sessionRepo.getActiveSession())
+        assertTrue(sessionRepo.getAllCompletedSessions().isEmpty())
+        assertEquals("w_heal_active", sessionRepo.getActiveWorkerSession(1)?.sessionId)
+        assertNotNull(sessionRepo.getActiveWorkerSession(1))
+        assertEquals(snapWorkerEndsAt, sessionRepo.getActiveWorkerSession(1)!!.endsAt)
+        assertEquals(listOf("w_heal_done"), sessionRepo.getAllCompletedWorkerSessions(2).map { it.sessionId })
+        assertFalse(saveSlotRepo.recoverInterruptedSwitch())
     }
 
     /**
