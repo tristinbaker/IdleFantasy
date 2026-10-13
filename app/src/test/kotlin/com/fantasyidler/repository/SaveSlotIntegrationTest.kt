@@ -9,6 +9,7 @@ import com.fantasyidler.data.model.FarmingPatch
 import com.fantasyidler.data.model.PlayerExport
 import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.data.model.QuestProgress
+import com.fantasyidler.data.model.SessionFrame
 import com.fantasyidler.data.model.SkillSession
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -490,25 +491,55 @@ class SaveSlotIntegrationTest {
     }
 
     /**
-     * B-W-2 CHARACTERIZATION: a live completed-only session blocks the heal probe (probe
-     * requires zero active and zero completed in player and both worker slots). Pins CURRENT.
+     * B-W-2 CHARACTERIZATION (pinned-accepted): a live completed-only session blocks the heal
+     * probe (probe requires zero active and zero completed in player and both worker slots).
+     * The block is CORRECT fail-closed behavior: the completed-but-uncollected session carries
+     * unclaimed rewards (frames with XP/items that collectSession pays out, then deletes), and
+     * healing would importFullSave the snapshot — whose deleteAllSessions wipes that value.
+     * Rollback touches neither Room nor the snapshot, so the rewards stay collectable. Pins:
+     * session row field-identical, frames + export payload intact, snapshot byte-identical,
+     * live player row identical, no quest heal.
      */
     @Test
     fun `B-W-2 completed-only live session blocks heal`() = runBlocking {
         globalStateRepo.setActiveSaveSlot(1)
         snapshotOutgoingA(1)
+        val snapshotBefore = File(slotsDir(), "slot_1.json").readText()
         sessionRepo.deleteAllSessions()
         sessionRepo.deleteAllWorkerSessions()
         db.questProgressDao().deleteAll()
         db.farmingPatchDao().clearAll()
-        sessionRepo.insertSession(
-            SkillSession("only_done", skillName = "woodcutting", startedAt = 1L, endsAt = 2L, completed = true, activityKey = "oak_tree")
+        val rewardFrames = json.encodeToString(
+            listOf(
+                SessionFrame(
+                    minute = 0, xpGain = 50, xpBefore = 0L, xpAfter = 50L,
+                    levelBefore = 1, levelAfter = 2,
+                    items = mapOf("oak_logs" to 3),
+                )
+            )
         )
+        sessionRepo.insertSession(
+            SkillSession("only_done", skillName = "woodcutting", startedAt = 1L, endsAt = 2L, completed = true, activityKey = "oak_tree", frames = rewardFrames)
+        )
+        val sessionBefore = sessionRepo.getSession("only_done")!!
+        val liveBefore = playerRepo.getOrCreatePlayer()
         writeSwitchMarker("2")
 
         assertFalse(saveSlotRepo.recoverInterruptedSwitch())
         assertEquals(1, saveSlotRepo.activeSlot())
+        assertFalse(File(slotsDir(), "pending_switch.marker").exists())
+        // The completed session row survives field-identical — rewards not destroyed.
+        assertEquals(sessionBefore, sessionRepo.getSession("only_done"))
         assertEquals(listOf("only_done"), sessionRepo.getAllCompletedSessions().map { it.sessionId })
+        // Its collectable value survives: frames intact and still in the collect/export
+        // pipeline (the exact payload healing's deleteAllSessions would have wiped).
+        val keptFrames: List<SessionFrame> = json.decodeFromString(sessionRepo.getSession("only_done")!!.frames)
+        assertEquals(50, keptFrames.single().xpGain)
+        assertEquals(mapOf("oak_logs" to 3), keptFrames.single().items)
+        assertEquals(rewardFrames, saveSlotRepo.collectSessionExports().single { it.sessionId == "only_done" }.frames)
+        // Rollback imported nothing: snapshot untouched, live row untouched, no quest heal.
+        assertEquals(snapshotBefore, File(slotsDir(), "slot_1.json").readText())
+        assertEquals(liveBefore, playerRepo.getOrCreatePlayer())
         assertTrue(db.questProgressDao().getAllProgress().isEmpty())
     }
 
