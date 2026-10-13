@@ -293,7 +293,7 @@ class SaveSlotRepository @Inject constructor(
      * [SwitchPhase.LEGACY] → finish the half-done import from the file when live material
      * matches, snapshot-first (identity-guarded) then move the pointer when there is no file
      * and no live material progress, heal from the active snapshot when there is no file but
-     * live material matches it with wiped sessions (medio-wipeado), else roll back
+     * live material matches it with wiped sessions and empty live quests/patches (medio-wipeado), else roll back
      * to the still-live outgoing character. Returns true when a switch was completed.
      */
     suspend fun recoverInterruptedSwitch(): Boolean = withContext(Dispatchers.IO) {
@@ -344,7 +344,9 @@ class SaveSlotRepository @Inject constructor(
                     // (sessions/quests/patches wiped, player row intact, no target file). The
                     // materiality rule above cannot see this state because the player row is
                     // intact, and the good snapshot already on disk would be overwritten by the
-                    // next switchTo — heal from it instead, then complete normally. Anything
+                    // next switchTo — heal from it instead, then complete normally. The heal
+                    // additionally requires live quests/patches empty (an idle-but-intact character
+                    // must never rewind) and snapshot content worth restoring. Anything
                     // unproven falls through to the rollback below; a corrupt snapshot clears
                     // the marker and rolls back (no loop: the marker is gone).
                     !target.exists() -> {
@@ -357,6 +359,7 @@ class SaveSlotRepository @Inject constructor(
                         try {
                             importFullSave(snapshotText, freezeSessionTimers = false)
                         } catch (_: Exception) {
+                            Log.w(TAG, "Medio-wipeado heal import failed; rolled back with the marker cleared")
                             deletePendingSwitchMarker()
                             return@withLock false
                         }
@@ -472,9 +475,11 @@ class SaveSlotRepository @Inject constructor(
      * P4 medio-wipeado probe: a LEGACY bare marker plus a crash mid-way through the OLD reset
      * leaves sessions/quests/patches wiped with the player row intact and no target file — a
      * state the materiality rule cannot see. Returns the ACTIVE slot's snapshot text when
-     * (cheapest-first): the snapshot file exists; live player material matches it (same six
-     * fields, legacy hp fold); live sessions read empty (player and both worker slots) while
-     * the snapshot's sessions are non-empty. Null otherwise; any failure reads as no-match.
+     * (cheapest-first, new checks last): the snapshot file exists; live player material matches
+     * it (same six fields, legacy hp fold); live sessions read empty (player and both worker
+     * slots); live quests/patches read empty (an idle-but-intact character must never rewind);
+     * and the snapshot carries something to restore (sessions, quest progress, or patches with
+     * non-null crops — clearAll-aware). Null otherwise; any failure reads as no-match.
      */
     private suspend fun medioWipeadoSnapshotText(origin: Int): String? {
         return try {
@@ -489,7 +494,10 @@ class SaveSlotRepository @Inject constructor(
                 if (sessionRepo.getActiveWorkerSession(slot) != null) return null
                 if (sessionRepo.getAllCompletedWorkerSessions(slot).isNotEmpty()) return null
             }
-            if (export.sessions.isEmpty()) return null
+            if (playerRepo.hasQuestOrPatchContent()) return null
+            if (export.sessions.isEmpty() && export.questProgress.isEmpty() &&
+                export.farmingPatches.none { it.cropType != null }
+            ) return null
             text
         } catch (_: Exception) {
             null

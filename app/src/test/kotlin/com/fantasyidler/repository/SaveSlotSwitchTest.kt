@@ -831,4 +831,42 @@ class SaveSlotSwitchTest {
         assertEquals(liveBefore, playerRepo.getOrCreatePlayer())
         assertFalse(saveSlotRepo.recoverInterruptedSwitch())
     }
+
+    /**
+     * Idle intact quests block the heal: live sessions empty but quests/patches INTACT and newer,
+     * player materially matching an old contentful snapshot. Healing here would rewind live
+     * progress (B-001), so recovery must roll back with quests/patches/sessions/player ALL
+     * byte-identical pre/post (pointer stays, marker cleared).
+     * Proves: the live-content guard blocks the rewind direction. Does NOT prove: detection of
+     * quest-only staleness finer than empty/non-empty.
+     */
+    @Test
+    fun `idle intact quests block the heal and stay byte-identical`() = runBlocking {
+        globalStateRepo.setActiveSaveSlot(1)
+        snapshotOutgoingA(1)
+        // Idle with newer live progress: sessions empty, quests/patches intact and newer.
+        sessionRepo.deleteAllSessions()
+        sessionRepo.deleteAllWorkerSessions()
+        db.questProgressDao().upsert(QuestProgress("cooks_assistant", progress = 1))
+        db.farmingPatchDao().upsert(
+            FarmingPatch(patchNumber = 1, cropType = "potato_seed", plantedAt = System.currentTimeMillis())
+        )
+        assertFalse(File(slotsDir(), "slot_2.json").exists())
+        val playerBefore = playerRepo.getOrCreatePlayer()
+        val questsBefore = db.questProgressDao().getAllProgress().sortedBy { it.questId }
+        val patchesBefore = db.farmingPatchDao().getAllPatches()
+        val sessionsBefore = db.skillSessionDao().getAllSessions()
+        writeSwitchMarker("2")
+
+        val recovered = saveSlotRepo.recoverInterruptedSwitch()
+
+        assertFalse(recovered)
+        assertEquals(1, saveSlotRepo.activeSlot())
+        assertFalse(File(slotsDir(), "pending_switch.marker").exists())
+        assertEquals(playerBefore, playerRepo.getOrCreatePlayer())
+        assertEquals(questsBefore, db.questProgressDao().getAllProgress().sortedBy { it.questId })
+        assertEquals(patchesBefore, db.farmingPatchDao().getAllPatches())
+        assertEquals(sessionsBefore, db.skillSessionDao().getAllSessions())
+        assertFalse(saveSlotRepo.recoverInterruptedSwitch())
+    }
 }

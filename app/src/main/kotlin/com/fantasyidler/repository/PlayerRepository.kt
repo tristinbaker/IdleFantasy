@@ -1684,6 +1684,16 @@ class PlayerRepository @Inject constructor(
         return json.encode<PlayerExport>(export.copy(sig = saveSignature(export)))
     }
 
+    /**
+     * True when the live character holds quest or farming content: any quest-progress row (rows
+     * are content under deleteAll semantics) or any patch row with a non-null crop (clearAll-aware:
+     * clearAll NULLs rows instead of deleting them, so NULL-crop rows read as empty). Lets the
+     * save-slot recovery probe tell an idle-but-intact character from a mid-reset-wiped one.
+     */
+    suspend fun hasQuestOrPatchContent(): Boolean =
+        questProgressDao.getAllProgress().isNotEmpty() ||
+            farmingPatchDao.getAllPatches().any { it.cropType != null }
+
     /** Result of [importSave]: the applied export, and whether an edited ironman save was demoted. */
     data class ImportedSave(val export: PlayerExport, val ironmanDemoted: Boolean)
 
