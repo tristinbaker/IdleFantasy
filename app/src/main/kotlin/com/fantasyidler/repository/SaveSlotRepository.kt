@@ -459,18 +459,31 @@ class SaveSlotRepository @Inject constructor(
 
     /**
      * The six material player fields of the live row versus a snapshot export, shared by the
-     * legacy identity guard above and the P4 medio-wipeado probe below. Throws on undecodable
-     * live state; callers treat any throw as no-match.
+     * legacy identity guard above and the P4 medio-wipeado probe below. All six compare
+     * decoded (skillXp/skillLevels as maps after the legacy hp fold, inventory/equipped as
+     * maps, pets as a decoded list, coins as a number) so key order/whitespace never
+     * mismatches; flags stay excluded. Any undecodable field reads as no-match.
      */
     private suspend fun livePlayerMatchesExport(export: PlayerExport): Boolean {
-        val live = playerRepo.getOrCreatePlayer()
-        val (fileXp, fileLevels) = legacyHpMerged(export.skillXp, export.skillLevels)
-        return live.inventory == export.inventory &&
-            live.equipped == export.equipped &&
-            live.pets == export.pets &&
-            live.coins == export.coins &&
-            json.decodeFromString<Map<String, Long>>(live.skillXp) == fileXp &&
-            json.decodeFromString<Map<String, Int>>(live.skillLevels) == fileLevels
+        return try {
+            val live = playerRepo.getOrCreatePlayer()
+            if (live.coins != export.coins) return false
+            val (fileXp, fileLevels) = legacyHpMerged(export.skillXp, export.skillLevels)
+            if (json.decodeFromString<Map<String, Long>>(live.skillXp) != fileXp) return false
+            if (json.decodeFromString<Map<String, Int>>(live.skillLevels) != fileLevels) return false
+            if (json.decodeFromString<Map<String, Int>>(live.inventory) !=
+                json.decodeFromString<Map<String, Int>>(export.inventory)
+            ) return false
+            if (json.decodeFromString<Map<String, String?>>(live.equipped) !=
+                json.decodeFromString<Map<String, String?>>(export.equipped)
+            ) return false
+            if (json.decodeFromString<List<OwnedPet>>(live.pets) !=
+                json.decodeFromString<List<OwnedPet>>(export.pets)
+            ) return false
+            true
+        } catch (_: Exception) {
+            false
+        }
     }
 
     /**

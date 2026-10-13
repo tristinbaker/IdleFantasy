@@ -461,12 +461,11 @@ class SaveSlotIntegrationTest {
     }
 
     /**
-     * B-W-1 CHARACTERIZATION: inventory compares as raw strings, so the same map in a
-     * different key order mismatches and the legacy identity guard returns false (rollback).
-     * Pins CURRENT string compare; map-equal would complete.
+     * B-W-1 FIX: identity decode-compares inventory, so the same map in a different key
+     * order matches and the legacy identity guard completes from the file (file wins).
      */
     @Test
-    fun `B-W-1 reordered inventory keys mismatch identity`() = runBlocking {
+    fun `B-W-1 reordered inventory keys match identity`() = runBlocking {
         globalStateRepo.setActiveSaveSlot(1)
         db.playerDao().upsert(
             playerRepo.getOrCreatePlayer().copy(
@@ -481,9 +480,13 @@ class SaveSlotIntegrationTest {
         assertEquals(fileInv, liveInv)
         writeSwitchMarker("2")
 
-        assertFalse(saveSlotRepo.recoverInterruptedSwitch())
-        assertEquals(1, saveSlotRepo.activeSlot())
-        assertEquals("""{"shrimp":5,"iron_ore":99}""", playerRepo.getOrCreatePlayer().inventory)
+        assertTrue(saveSlotRepo.recoverInterruptedSwitch())
+        assertEquals(2, saveSlotRepo.activeSlot())
+        assertFalse(File(slotsDir(), "pending_switch.marker").exists())
+        assertEquals(
+            json.decodeFromString<PlayerExport>(File(slotsDir(), "slot_2.json").readText()).inventory,
+            playerRepo.getOrCreatePlayer().inventory,
+        )
     }
 
     /**
