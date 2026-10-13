@@ -291,7 +291,8 @@ class SaveSlotRepository @Inject constructor(
      * reset fresh when the file is gone (ironman assumed false, the marker does not record it);
      * [SwitchPhase.FRESH_TARGET] → replay the idempotent fresh reset and move the pointer;
      * [SwitchPhase.LEGACY] → finish the half-done import from the file when live material
-     * matches, move the pointer only when there is no file and no live progress, else roll back
+     * matches, snapshot-first (identity-guarded) then move the pointer when there is no file
+     * and no live material progress, else roll back
      * to the still-live outgoing character. Returns true when a switch was completed.
      */
     suspend fun recoverInterruptedSwitch(): Boolean = withContext(Dispatchers.IO) {
@@ -328,8 +329,16 @@ class SaveSlotRepository @Inject constructor(
                     // the source of truth for those sections and the import must finish.
                     roomAlreadyHoldsTargetSlot(inFlight.targetSlot) ->
                         importFullSave(target.readText(), freezeSessionTimers = false)
-                    // No file and no live progress: the reset already ran, so only the pointer.
-                    !target.exists() && roomHoldsNoMaterialProgress() -> rescheduleAlarmsFromFlags()
+                    // No file and no live material: the reset already ran, so only the pointer —
+                    // unless the live character carries non-default identity (setup done and/or
+                    // a name) but was never snapshotted: preserve it at its home slot first, or
+                    // the pointer move silently rehomes it with no file describing it. Fresh
+                    // characters and existing origin files stay a pointer-only move.
+                    !target.exists() && roomHoldsNoMaterialProgress() -> {
+                        val origin = globalStateRepo.getActiveSaveSlot()
+                        if (!slotFile(origin).exists() && roomHoldsNonDefaultIdentity()) snapshotCurrent(origin)
+                        rescheduleAlarmsFromFlags()
+                    }
                     // Cannot prove the live material is the target's (it may not be, or the
                     // check may not have been evaluable): roll the switch back.
                     else -> {
@@ -451,6 +460,20 @@ class SaveSlotRepository @Inject constructor(
     private suspend fun roomHoldsNoMaterialProgress(): Boolean = try {
         val live = playerRepo.getOrCreatePlayer()
         live.coins == 0L && json.decodeFromString<Map<String, Long>>(live.skillXp).values.all { it == 0L }
+    } catch (_: Exception) {
+        false
+    }
+
+    /**
+     * True when the live flags carry non-default identity: the setup sheet ran or was dismissed
+     * ([PlayerFlags.characterSetupDone]) or a name was entered ([PlayerFlags.characterName]).
+     * Fresh characters keep the data-class defaults (setupDone=false, name=""), so they read
+     * false here and stay on the pointer-only path with no file created. Undecodable flags also
+     * read false: the snapshot fires only on positive identity evidence.
+     */
+    private suspend fun roomHoldsNonDefaultIdentity(): Boolean = try {
+        val flags = decodeFlags(playerRepo.getOrCreatePlayer().flags)
+        flags != null && (flags.characterSetupDone || flags.characterName.isNotBlank())
     } catch (_: Exception) {
         false
     }

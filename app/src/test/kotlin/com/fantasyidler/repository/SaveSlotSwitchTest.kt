@@ -500,6 +500,95 @@ class SaveSlotSwitchTest {
         assertEquals(2, saveSlotRepo.activeSlot())
     }
 
+    // run-by-orchestrator: workers run no Gradle; the orchestrator executes this RED on the
+    // base (pointer moves, no snapshot written anywhere) and GREEN on this branch.
+    /**
+     * B-002: a live character holding only non-material state (name/appearance/flags, no coins
+     * or XP) also reads as "no material progress", so the legacy no-file completion moved the
+     * pointer without snapshotting it first — the character was silently rehomed and no slot
+     * file described it. Recovery must preserve it at its current slot before moving the
+     * pointer, and must create nothing for the target slot (no duplicate-slot artifacts).
+     * Proves: preservation-at-origin plus target-slot cleanliness. Does NOT prove: quest/patch
+     * emptiness (out of scope — un-injected DAOs) or concurrent-switch behavior.
+     */
+    @Test
+    fun `legacy empty completion snapshots a non-material character before moving pointer`() = runBlocking {
+        globalStateRepo.setActiveSaveSlot(1)
+        db.playerDao().upsert(
+            playerRepo.getOrCreatePlayer().copy(
+                coins = 0L,
+                flags = json.encodeToString<PlayerFlags>(
+                    PlayerFlags(characterName = "Homed", characterRace = "elf", characterSetupDone = true),
+                ),
+            )
+        )
+        assertFalse(File(slotsDir(), "slot_1.json").exists())
+        assertFalse(File(slotsDir(), "slot_2.json").exists())
+        writeSwitchMarker("2")
+
+        val recovered = saveSlotRepo.recoverInterruptedSwitch()
+
+        assertTrue(recovered)
+        assertEquals(2, saveSlotRepo.activeSlot())
+        assertFalse(File(slotsDir(), "pending_switch.marker").exists())
+        // The live character was preserved at its home slot before the pointer moved.
+        assertTrue(File(slotsDir(), "slot_1.json").exists())
+        assertTrue(File(slotsDir(), "slot_1.meta.json").exists())
+        val preserved = json.decodeFromString<PlayerExport>(File(slotsDir(), "slot_1.json").readText())
+        assertEquals("Homed", json.decodeFromString<PlayerFlags>(preserved.flags).characterName)
+        assertEquals(0L, preserved.coins)
+        // Still live under the new pointer, not wiped; nothing created for the target slot.
+        assertEquals("Homed", json.decodeFromString<PlayerFlags>(playerRepo.getOrCreatePlayer().flags).characterName)
+        assertFalse(File(slotsDir(), "slot_2.json").exists())
+        assertFalse(File(slotsDir(), "slot_2.meta.json").exists())
+        assertFalse(saveSlotRepo.recoverInterruptedSwitch())
+    }
+
+    // run-by-orchestrator: workers run no Gradle; the orchestrator executes this RED on the
+    // current branch (it would write the origin file) and GREEN after the identity guard.
+    /**
+     * Truly-fresh character (default flags: no setup, no name) under a stray legacy marker with
+     * no origin file: recovery must stay a pointer-only move exactly as before — no origin file
+     * may be created (no phantom slot entry), while alarms are still re-armed (T1 intact).
+     * Proves: fresh defaults read false on the identity guard. Does NOT prove: marker provenance.
+     */
+    @Test
+    fun `legacy empty completion leaves a truly-fresh character fileless`() = runBlocking {
+        globalStateRepo.setActiveSaveSlot(1)
+        playerRepo.getOrCreatePlayer()
+        val now = System.currentTimeMillis()
+        val xpBoostAt = now + 3_600_000L
+        val blessingAt = now + 7_200_000L
+        playerRepo.updateFlagsAtomically {
+            it.copy(
+                xpBoostExpiresAt = xpBoostAt,
+                activeBlessingExpiresAt = blessingAt,
+                backupFrequency = "daily",
+            )
+        }
+        assertFalse(File(slotsDir(), "slot_1.json").exists())
+        assertFalse(File(slotsDir(), "slot_1.meta.json").exists())
+        writeSwitchMarker("2")
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val shadowAm = Shadows.shadowOf(alarmManager)
+        assertEquals(0, shadowAm.scheduledAlarms.size)
+
+        val recovered = saveSlotRepo.recoverInterruptedSwitch()
+
+        assertTrue(recovered)
+        assertEquals(2, saveSlotRepo.activeSlot())
+        assertFalse(File(slotsDir(), "pending_switch.marker").exists())
+        assertFalse(File(slotsDir(), "slot_1.json").exists())
+        assertFalse(File(slotsDir(), "slot_1.meta.json").exists())
+        assertFalse(File(slotsDir(), "slot_2.json").exists())
+        assertFalse(File(slotsDir(), "slot_2.meta.json").exists())
+        val triggers = shadowAm.scheduledAlarms.map { it.triggerAtTime }
+        assertTrue(triggers.contains(xpBoostAt))
+        assertTrue(triggers.contains(blessingAt))
+        assertEquals(3, shadowAm.scheduledAlarms.size)
+        assertFalse(saveSlotRepo.recoverInterruptedSwitch())
+    }
+
     // run-by-orchestrator: P2 race — the orchestrator executes this RED on the base
     // (outside-lock read) and GREEN on this branch (read under lock). Workers run no Gradle.
     /**
