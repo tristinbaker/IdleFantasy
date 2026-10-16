@@ -9,7 +9,6 @@ from __future__ import annotations
 import logging
 import re
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
 from logging import log
 from pathlib import Path
 from typing import Callable
@@ -2076,11 +2075,14 @@ def gen_carnival() -> str:
     )
 
 
-def _fmt_event_date(ms: int, is_end: bool = False) -> str:
-    # end_ms is the exclusive start of the day after the event ends, so step back
-    # 1ms to display the actual last day (e.g. Sept 1 00:00 -> "August 31, 2026").
-    dt = datetime.fromtimestamp((ms - 1 if is_end else ms) / 1000, tz=timezone.utc)
-    return f"{dt.strftime("%B")} {dt.day}, {dt.year}"
+# Events are yearly templates keyed to a meteorological season (UTC); SeasonalCalendar.kt
+# stamps out each year's run. Values: (start month day, last day of the season).
+_SEASON_WINDOWS = {
+    "spring": ("March 1", "May 31"),
+    "summer": ("June 1", "August 31"),
+    "autumn": ("September 1", "November 30"),
+    "winter": ("December 1", "the end of February"),
+}
 
 
 def gen_seasonal_events() -> str:
@@ -2092,11 +2094,14 @@ def gen_seasonal_events() -> str:
             [f"{tier['tokens']:,}", seasonal_reward_desc(event_id, tier["tokens"])]
             for tier in event["reward_tiers"]
         ]
+        start_date, end_date = _SEASON_WINDOWS[event["season"]]
         sections.append(get_template("miscellaneous/seasonal_event_section").format(
             banner=html_image(icon_path(event["banner_icon"]), "", "text"),
             display_name=seasonal_event_name(event_id),
-            start_date=_fmt_event_date(event["start_ms"]),
-            end_date=_fmt_event_date(event["end_ms"], is_end=True),
+            season=event["season"],
+            start_date=start_date,
+            end_date=end_date,
+            first_year=event.get("first_year", 2026),
             reward_table=table(["Tokens Needed", "Reward"], reward_rows),
         ))
 
