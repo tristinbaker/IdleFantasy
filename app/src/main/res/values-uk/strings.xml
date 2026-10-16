@@ -103,7 +103,7 @@
     <string name="label_gathering_skills">Gathering</string> <!-- untranslated -->
     <string name="label_crafting_skills">Crafting Skills</string> <!-- untranslated -->
     <string name="label_choose_activity">Choose Activity</string> <!-- untranslated -->
-    <string name="label_coming_soon">Coming soon</string> <!-- untranslated -->
+    <string name="label_coming_soon">Скоро</string>
     <string name="label_time_remaining">Часу залишилось</string>
     <!-- Translator note: compact duration units; English puts the letter(s) right after the number -->
     <string name="duration_years">%1$dy</string>
@@ -113,7 +113,7 @@
     <string name="duration_hours">%1$dh</string>
     <string name="duration_minutes">%1$dm</string>
     <string name="duration_seconds">%1$ds</string>
-    <string name="duration_complete">Complete</string> <!-- untranslated -->
+    <string name="duration_complete">Виконано</string>
     <string name="label_session_results">Результати Сесії</string>
     <string name="label_xp_gained">XP отримано</string>
     <string name="label_time_elapsed">Time elapsed</string> <!-- untranslated -->
@@ -184,7 +184,7 @@
     <string name="label_magic_style">Магія</string>
     <string name="label_gathering">Збиральництво</string>
     <string name="label_crafting">Crafting</string> <!-- untranslated -->
-    <string name="label_jewellery">Jewelry</string> <!-- untranslated -->
+    <string name="label_jewellery">Ювелірні вироби</string>
     <string name="label_combat">Combat</string> <!-- untranslated -->
     <string name="label_recipe">Рецепт</string>
     <string name="label_recipes">Рецепти</string>
@@ -2319,7 +2319,7 @@
     <string name="pet_rock_golem_desc">A living rock formation that enhances your mining prowess.</string> <!-- untranslated -->
     <string name="pet_ent_name">Ент</string>
     <string name="pet_ent_desc">Стародавній дух дерев, що допомагає у вирубці лісу.</string>
-    <string name="pet_tiny_templar_name">Tiny Templar</string> <!-- untranslated -->
+    <string name="pet_tiny_templar_name">Крихітний Тамплієр</string>
     <string name="pet_tiny_templar_desc">A small fish that boosts your fishing expertise.</string> <!-- untranslated -->
     <string name="pet_tangleroot_name">Tangleroot</string> <!-- untranslated -->
     <string name="pet_tangleroot_desc">A magical plant creature that enhances your farming.</string> <!-- untranslated -->
