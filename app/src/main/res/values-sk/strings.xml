@@ -149,8 +149,8 @@
     <string name="label_stats">Stats</string> <!-- untranslated -->
     <string name="label_skills">Skills</string> <!-- untranslated -->
     <string name="tab_label_with_count">%1$s (%2$d)</string> <!-- untranslated -->
-    <string name="label_shop">Shop</string> <!-- untranslated -->
-    <string name="label_sell_items">Sell Items</string> <!-- untranslated -->
+    <string name="label_shop">Obchod</string>
+    <string name="label_sell_items">Predať Veci</string>
     <string name="label_total_level">Total Level</string> <!-- untranslated -->
     <string name="label_wins">Wins</string> <!-- untranslated -->
     <string name="label_losses">Losses</string> <!-- untranslated -->
@@ -546,7 +546,7 @@
     <string name="crafting_owned_detail">Owned in inventory: %1$d</string> <!-- untranslated -->
     <string name="firemaking_ashes_owned">Ashes owned: %1$d</string> <!-- untranslated -->
     <string name="shop_active">ACTIVE</string> <!-- untranslated -->
-    <string name="shop_sell_junk">Sell Junk</string> <!-- untranslated -->
+    <string name="shop_sell_junk">Predať Odpad</string>
     <string name="shop_keep_one_toggle">Keep one of each item</string> <!-- untranslated -->
     <string name="shop_search_hint">Search items</string> <!-- untranslated -->
     <string name="shop_filter_all">All</string> <!-- untranslated -->
@@ -574,8 +574,8 @@
     <string name="quest_legend_notes">Dimmed icons can\'t be completed yet (missing level or materials). A small raised number means several quests of that type want the same thing.</string> <!-- untranslated -->
     <string name="shop_qty_in_inv">×%1$s in inventory</string> <!-- untranslated -->
     <string name="shop_price_each">%1$s coins ea.</string> <!-- untranslated -->
-    <string name="shop_buy_prefix">Buy: %1$s</string> <!-- untranslated -->
-    <string name="shop_sell_prefix">Sell: %1$s</string> <!-- untranslated -->
+    <string name="shop_buy_prefix">Kúpiť: %1$s</string>
+    <string name="shop_sell_prefix">Predať: %1$s</string>
     <string name="shop_price_each_long">%1$s coins each</string> <!-- untranslated -->
     <string name="shop_total_cost">Total cost</string> <!-- untranslated -->
     <string name="shop_youll_receive">You\'ll receive</string> <!-- untranslated -->
@@ -637,7 +637,7 @@
     <string name="onboarding_quests_desc">Complete quests to earn XP rewards. Rare pets can drop while training skills and provide permanent XP boosts.</string> <!-- untranslated -->
     <string name="onboarding_welcome_desc">An idle RPG inspired by classic MMORPGs. Train skills, fight dungeons, and craft gear. All offline, no accounts, no ads.</string> <!-- untranslated -->
     <string name="qty_max">Max</string> <!-- untranslated -->
-    <string name="inn_title">Inn</string> <!-- untranslated -->
+    <string name="inn_title">Hostinec</string>
     <string name="inn_desc">Hire a worker to train skills for you, or buy food from the daily menu. Workers do not count toward your quests.</string> <!-- untranslated -->
     <string name="inn_worker_already_hired">A worker is already hired.</string> <!-- untranslated -->
     <string name="inn_not_enough_coins">Not enough coins.</string> <!-- untranslated -->
@@ -726,7 +726,7 @@
     <string name="inn_daily_resets">Refreshes daily at %1$s</string> <!-- untranslated -->
     <string name="inn_food_heal">+%1$d HP</string> <!-- untranslated -->
     <string name="inn_food_purchased">Food purchased.</string> <!-- untranslated -->
-    <string name="inn_buy_qty">Quantity</string> <!-- untranslated -->
+    <string name="inn_buy_qty">Počet</string>
     <string name="inn_buy_total">Total: %1$s</string> <!-- untranslated -->
     <string name="inn_card_desc">Hire workers and stock food</string> <!-- untranslated -->
     <string name="worker_no_active_session">Worker is idle — no sessions queued</string> <!-- untranslated -->
@@ -796,7 +796,7 @@
     <string name="mercantile_return_range">Returns: %1$s – %2$s</string> <!-- untranslated -->
     <string name="mercantile_dispatch_label">Dispatch</string> <!-- untranslated -->
     <string name="mercantile_queue_label">Add to Queue</string> <!-- untranslated -->
-    <string name="church_title">Church</string> <!-- untranslated -->
+    <string name="church_title">Kostol</string>
     <string name="church_desc">Blessings for XP, defense, and coins</string> <!-- untranslated -->
     <string name="church_no_active_blessing">No active blessing — visit the Church to pray.</string> <!-- untranslated -->
     <string name="church_active_label">Active Blessing</string> <!-- untranslated -->
@@ -889,7 +889,7 @@
     <string name="skill_slayer_desc">Receive tasks from the Slayer Master in Town.</string> <!-- untranslated -->
     <string name="builder_title">Builder\'s Workshop</string> <!-- untranslated -->
     <string name="builder_card_desc">Upgrade the Inn, Guild Hall, and Church</string> <!-- untranslated -->
-    <string name="house_title">My House</string> <!-- untranslated -->
+    <string name="house_title">Môj Dom</string>
     <string name="house_edit">Edit</string> <!-- untranslated -->
     <string name="house_done">Done</string> <!-- untranslated -->
     <string name="house_share">Share a picture of your house</string> <!-- untranslated -->
@@ -1338,7 +1338,7 @@
     <string name="elder_isle_tab_dungeons">Dungeons</string> <!-- untranslated -->
     <string name="elder_isle_tab_bosses">Bosses</string> <!-- untranslated -->
     <string name="elder_isle_shop_title">Isle Shop</string> <!-- untranslated -->
-    <string name="elder_isle_shop_buy">Buy</string> <!-- untranslated -->
+    <string name="elder_isle_shop_buy">Kúpiť</string>
     <string name="elder_isle_shop_soon">Coming later</string> <!-- untranslated -->
     <string name="elder_isle_shop_insufficient">Not enough Elder Essence.</string> <!-- untranslated -->
     <string name="elder_isle_shop_purchased">Purchased %1$s.</string> <!-- untranslated -->
@@ -1445,7 +1445,7 @@
     <string name="achievement_tower_floor_250_desc">Reach floor 250 in the Infinite Tower</string> <!-- untranslated -->
     <string name="achievement_tower_all_milestones_name">Tower Legend</string> <!-- untranslated -->
     <string name="achievement_tower_all_milestones_desc">Claim all 25 tower milestones</string> <!-- untranslated -->
-    <string name="carnival_title">Carnival</string> <!-- untranslated -->
+    <string name="carnival_title">Karneval</string>
     <string name="carnival_desc">Games, prizes, and merriment!</string> <!-- untranslated -->
     <string name="carnival_prize_xp_lamp_small_name">Small XP Lamp</string> <!-- untranslated -->
     <string name="carnival_prize_xp_lamp_small_desc">Grants 10,000 XP to a chosen skill.</string> <!-- untranslated -->
@@ -1603,12 +1603,12 @@
     <string name="worker_not_enough_logs">Not enough logs.</string> <!-- untranslated -->
     <string name="worker_not_enough_rune_essence">Not enough Rune Essence.</string> <!-- untranslated -->
     <string name="worker_not_enough_materials">Not enough materials.</string> <!-- untranslated -->
-    <string name="shop_no_junk">No junk to sell</string> <!-- untranslated -->
+    <string name="shop_no_junk">Žiaden odpad na predaj</string>
     <string name="shop_sold_junk">Sold junk for %1$s coins</string> <!-- untranslated -->
     <string name="shop_no_old_equipment">No old equipment to sell</string> <!-- untranslated -->
     <string name="shop_sold_old_equipment">Sold old equipment for %1$s coins</string> <!-- untranslated -->
-    <string name="shop_bulk_sell_total">Total</string> <!-- untranslated -->
-    <string name="shop_bulk_sell_confirm">Sell All</string> <!-- untranslated -->
+    <string name="shop_bulk_sell_total">Spolu</string>
+    <string name="shop_bulk_sell_confirm">Predať Všetko</string>
     <string name="shop_recent_bulk_sales">Recent bulk sales</string> <!-- untranslated -->
     <string name="shop_recent_bulk_sales_empty">No bulk sales recorded yet.</string> <!-- untranslated -->
     <string name="shop_xp_boost_activated">2× XP boost activated for %1$dh!</string> <!-- untranslated -->
