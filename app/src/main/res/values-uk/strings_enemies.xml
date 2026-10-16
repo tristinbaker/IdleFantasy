@@ -80,7 +80,7 @@
     <string name="dungeon_imp_cavern_desc">A shallow cave filled with mischievous imps. Perfect for absolute beginners!</string> <!-- untranslated -->
     <string name="dungeon_goblin_cave_name">Печера Гоблінів</string>
     <string name="dungeon_goblin_cave_desc">A dark cave infested with goblins and giant rats. A good place for new adventurers to train.</string> <!-- untranslated -->
-    <string name="dungeon_spider_den_name">Spider Den</string> <!-- untranslated -->
+    <string name="dungeon_spider_den_name">Лігво Павука</string>
     <string name="dungeon_spider_den_desc">A web-filled cavern crawling with venomous spiders. Bring antivenom!</string> <!-- untranslated -->
     <string name="dungeon_bandit_camp_name">Табір Бандитів</string>
     <string name="dungeon_bandit_camp_desc">A hideout of thieves and rogues in the wilderness. Watch your coin purse!</string> <!-- untranslated -->
