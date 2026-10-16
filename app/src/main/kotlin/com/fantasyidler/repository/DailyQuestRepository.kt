@@ -10,6 +10,7 @@ import kotlin.random.Random
 sealed class DailyReward {
     data class CoinsReward(val amount: Int = 2000) : DailyReward()
     data class DwarvenItemReward(val itemKey: String) : DailyReward()
+    data class DivineItemReward(val itemKey: String) : DailyReward()
 }
 
 data class DailyQuestWithProgress(
@@ -33,9 +34,10 @@ class DailyQuestRepository @Inject constructor(
             (DWARVEN_BASE_DENOMINATOR - 2 * pityClaims.coerceAtLeast(0)).coerceAtLeast(1)
     }
 
-    /** Denominator for the quests screen, or null when every piece is owned (nothing can drop). */
-    fun dwarvenDropDenominatorForDisplay(flags: PlayerFlags, ownedItems: Set<String>): Int? {
-        if (dwarvenDropPool.all { it in ownedItems }) return null
+    /** Denominator for the quests screen, or null when every Dwarven and Divine piece is owned
+     *  (nothing can drop). Once Dwarven is complete the same roll drops Divine pieces. */
+    fun dailyDropDenominatorForDisplay(flags: PlayerFlags, ownedItems: Set<String>): Int? {
+        if (dwarvenDropPool.all { it in ownedItems } && WeeklyQuestRepository.DIVINE_DROP_POOL.all { it in ownedItems }) return null
         return dwarvenDropDenominator(flags.dwarvenPityClaims)
     }
 
@@ -202,11 +204,15 @@ class DailyQuestRepository @Inject constructor(
         check(progress >= template.amount) { "Quest not complete yet" }
         check(templateId !in flags.dailyQuestClaimed) { "Quest already claimed" }
 
-        val missingPieces = dwarvenDropPool.filter { it !in ownedItems }
+        val missingDwarven = dwarvenDropPool.filter { it !in ownedItems }
+        // Once the Dwarven set is complete the same pity roll drops Divine pieces instead.
+        val dropsDivine = missingDwarven.isEmpty()
+        val missingPieces = if (dropsDivine) WeeklyQuestRepository.DIVINE_DROP_POOL.filter { it !in ownedItems } else missingDwarven
         val dropped = missingPieces.isNotEmpty() &&
             Random.nextInt(dwarvenDropDenominator(flags.dwarvenPityClaims)) == 0
         val reward: DailyReward = if (dropped) {
-            DailyReward.DwarvenItemReward(missingPieces.random())
+            if (dropsDivine) DailyReward.DivineItemReward(missingPieces.random())
+            else DailyReward.DwarvenItemReward(missingPieces.random())
         } else {
             DailyReward.CoinsReward()
         }

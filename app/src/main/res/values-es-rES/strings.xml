@@ -362,10 +362,12 @@
     <string name="weekly_bonus_title">¡Bonus Semanal!</string>
     <string name="weekly_bonus_claim">Reclamar Bonus Semanal</string>
     <string name="label_daily_info_pity">Cada misión diaria recompensa monedas. Cada misión además tiene 1 posibilidad entre %1$d de soltar una pieza de equipo Enano que aún no tengas. Cada reclamo sin botín mejora las probabilidades; un botín las reinicia a 1 entre 100.</string>
+    <string name="label_daily_info_pity_divine">Each daily quest rewards coins. Every quest also has a 1 in %1$d chance to drop a piece of Divine gear you don\'t own yet. Each claim without a drop improves the odds; a drop resets them to 1 in 100.</string> <!-- untranslated -->
     <string name="label_daily_info_complete">Cada misión diaria recompensa monedas. ¡Ya tienes cada pieza de equipo Enano!</string>
     <string name="label_weekly_info">Cada desafío semanal recompensa monedas según su requisito de nivel. Completa los 5 para un bonus: 100.000 monedas, o una probabilidad de %1$s de una pieza de equipo Divino.</string>
     <string name="label_weekly_info_complete">Cada desafío semanal recompensa monedas según su requisito de nivel. Completa los 5 para un bonus: 100.000 monedas. ¡Ya tienes cada pieza de equipo Divino!</string>
     <string name="label_daily_reward_pity">2.000 monedas (1/%1$d: equipo Enano)</string>
+    <string name="label_daily_reward_pity_divine">2,000 coins (1/%1$d: Divine gear)</string> <!-- untranslated -->
     <string name="label_daily_reward_complete">2.000 monedas</string>
     <string name="msg_daily_claimed_coins">¡Misión diaria completa! +2.000 monedas.</string>
     <string name="msg_daily_claimed_dwarven">¡Misión diaria completa! ¡Encontraste %1$s!</string>
@@ -1942,6 +1944,7 @@
     <string name="quest_complete_with_rewards">¡Misión completada: %1$s! Obtenido: %2$s</string>
     <string name="quest_daily_complete_coins">¡Misión diaria completada! +%1$s monedas</string>
     <string name="quest_daily_complete_dwarven">¡Misión diaria completada! ¡Has encontrado equipo enano!</string>
+    <string name="quest_daily_complete_divine">Daily quest complete! You found divine gear!</string> <!-- untranslated -->
     <string name="quest_weekly_complete">¡Desafío semanal completado! +%1$s monedas</string>
     <string name="quest_weekly_bonus_complete_coins">¡Todos los desafíos semanales completados! +%1$s monedas</string>
     <string name="quest_weekly_bonus_complete_divine">¡Todos los desafíos semanales completados! ¡Has encontrado equipo divino!</string>

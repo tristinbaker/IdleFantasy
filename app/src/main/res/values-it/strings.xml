@@ -362,10 +362,12 @@
     <string name="weekly_bonus_title">Bonus Settimanale!</string>
     <string name="weekly_bonus_claim">Ricevi Bonus Settimanale</string>
     <string name="label_daily_info_pity">Ogni missione giornaliera ha una ricompensa in monete. Inoltre, è possibile ottenere un oggetto Nanico che non possiedi con probabilità 1/%1$d; riceverne uno reimposta le probabilità a 1/100.</string>
+    <string name="label_daily_info_pity_divine">Each daily quest rewards coins. Every quest also has a 1 in %1$d chance to drop a piece of Divine gear you don\'t own yet. Each claim without a drop improves the odds; a drop resets them to 1 in 100.</string> <!-- untranslated -->
     <string name="label_daily_info_complete">Ogni missione giornaliera ha una ricompensa in monete. Hai già tutti gli oggetti Nanici!</string>
     <string name="label_weekly_info">Ogni missione settimanale ha una ricompensa in monete. Completale tutte per ottenere un bonus di 100.000 monete oppure oggetti Divini con %1$s di probabilità.</string>
     <string name="label_weekly_info_complete">Ogni missione settimanale ha una ricompensa in monete. Completale tutte per ottenere un bonus di 100.000 monete. Possiedi già tutti gli oggetti Divini!</string>
     <string name="label_daily_reward_pity">2,000 monete (1/%1$d: oggetto Nanico)</string>
+    <string name="label_daily_reward_pity_divine">2,000 coins (1/%1$d: Divine gear)</string> <!-- untranslated -->
     <string name="label_daily_reward_complete">2,000 monete</string>
     <string name="msg_daily_claimed_coins">Missione completata! +2000 monete.</string>
     <string name="msg_daily_claimed_dwarven">Missione completata! Hai trovato %1$s!</string>
@@ -1942,6 +1944,7 @@
     <string name="quest_complete_with_rewards">Missione completata: %1$s! Ottenuto: %2$s</string>
     <string name="quest_daily_complete_coins">Missione giornaliera completata! +%1$s monete</string>
     <string name="quest_daily_complete_dwarven">Missione giornaliera completata! Hai trovato equipaggiamento nanico!</string>
+    <string name="quest_daily_complete_divine">Daily quest complete! You found divine gear!</string> <!-- untranslated -->
     <string name="quest_weekly_complete">Sfida settimanale completata! +%1$s monete</string>
     <string name="quest_weekly_bonus_complete_coins">Tutte le sfide settimanali completate! +%1$s monete</string>
     <string name="quest_weekly_bonus_complete_divine">Tutte le sfide settimanali completate! Hai trovato equipaggiamento divino!</string>

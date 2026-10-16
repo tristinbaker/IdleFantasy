@@ -355,10 +355,12 @@
     <string name="weekly_bonus_title">Bonus Mingguan!</string>
     <string name="weekly_bonus_claim">Klaim Bonus Mingguan</string>
     <string name="label_daily_info_pity">Each daily quest rewards coins. Every quest also has a 1 in %1$d chance to drop a piece of Dwarven gear you don\'t own yet. Each claim without a drop improves the odds; a drop resets them to 1 in 100.</string> <!-- untranslated -->
-    <string name="label_daily_info_complete">Each daily quest rewards coins. You already own every piece of Dwarven gear!</string> <!-- untranslated -->
+    <string name="label_daily_info_pity_divine">Each daily quest rewards coins. Every quest also has a 1 in %1$d chance to drop a piece of Divine gear you don\'t own yet. Each claim without a drop improves the odds; a drop resets them to 1 in 100.</string> <!-- untranslated -->
+    <string name="label_daily_info_complete">Each daily quest rewards coins. You already own every piece of Dwarven and Divine gear!</string> <!-- untranslated -->
     <string name="label_weekly_info">Tantangan mingguan berhadiah koin sesuai level. Selesaikan semua (5/5) untuk bonus: 100.000 koin, atau peluang %1$s dapat Perlengkapan Dewa.</string>
     <string name="label_weekly_info_complete">Tantangan mingguan berhadiah koin sesuai level. Selesaikan semua (5/5) untuk bonus: 100.000 koin. Kamu sudah memiliki semua Perlengkapan Dewa!</string>
     <string name="label_daily_reward_pity">2,000 coins (1/%1$d: Dwarven gear)</string> <!-- untranslated -->
+    <string name="label_daily_reward_pity_divine">2,000 coins (1/%1$d: Divine gear)</string> <!-- untranslated -->
     <string name="label_daily_reward_complete">2,000 coins</string> <!-- untranslated -->
     <string name="msg_daily_claimed_coins">Tugas harian selesai! +2.000 koin.</string>
     <string name="msg_daily_claimed_dwarven">Tugas harian selesai! Kamu menemukan %1$s!</string>
@@ -1934,6 +1936,7 @@
     <string name="quest_complete_with_rewards">Misi selesai: %1$s! Diklaim: %2$s</string>
     <string name="quest_daily_complete_coins">Misi harian selesai! +%1$s koin</string>
     <string name="quest_daily_complete_dwarven">Misi harian selesai! Kamu menemukan perlengkapan Dwarf!</string>
+    <string name="quest_daily_complete_divine">Daily quest complete! You found divine gear!</string> <!-- untranslated -->
     <string name="quest_weekly_complete">Tantangan mingguan selesai! +%1$s koin</string>
     <string name="quest_weekly_bonus_complete_coins">Semua tantangan mingguan selesai! +%1$s koin</string>
     <string name="quest_weekly_bonus_complete_divine">Semua tantangan mingguan selesai! Kamu menemukan perlengkapan dewa!</string>

@@ -362,10 +362,12 @@
     <string name="weekly_bonus_title">Wekelijkse Bonus!</string>
     <string name="weekly_bonus_claim">Claim Weekly Bonus</string> <!-- untranslated -->
     <string name="label_daily_info_pity">Each daily quest rewards coins. Every quest also has a 1 in %1$d chance to drop a piece of Dwarven gear you don\'t own yet. Each claim without a drop improves the odds; a drop resets them to 1 in 100.</string> <!-- untranslated -->
-    <string name="label_daily_info_complete">Each daily quest rewards coins. You already own every piece of Dwarven gear!</string> <!-- untranslated -->
+    <string name="label_daily_info_pity_divine">Each daily quest rewards coins. Every quest also has a 1 in %1$d chance to drop a piece of Divine gear you don\'t own yet. Each claim without a drop improves the odds; a drop resets them to 1 in 100.</string> <!-- untranslated -->
+    <string name="label_daily_info_complete">Each daily quest rewards coins. You already own every piece of Dwarven and Divine gear!</string> <!-- untranslated -->
     <string name="label_weekly_info">Each weekly challenge rewards coins based on its level requirement. Complete all 5 to earn a bonus: 100,000 coins, or a %1$s chance at a piece of Divine gear.</string> <!-- untranslated -->
     <string name="label_weekly_info_complete">Each weekly challenge rewards coins based on its level requirement. Complete all 5 to earn a bonus: 100,000 coins. You already own every piece of Divine gear!</string> <!-- untranslated -->
     <string name="label_daily_reward_pity">2,000 coins (1/%1$d: Dwarven gear)</string> <!-- untranslated -->
+    <string name="label_daily_reward_pity_divine">2,000 coins (1/%1$d: Divine gear)</string> <!-- untranslated -->
     <string name="label_daily_reward_complete">2,000 coins</string> <!-- untranslated -->
     <string name="msg_daily_claimed_coins">Dagelijkse quest voltooid! +2000 ducaten.</string>
     <string name="msg_daily_claimed_dwarven">Dagelijkse quest voltooid! Je hebt %1$s gevonden!</string>
@@ -1942,6 +1944,7 @@
     <string name="quest_complete_with_rewards">Quest voltooid: %1$s! Geclaimd: %2$s</string>
     <string name="quest_daily_complete_coins">Dagelijkse quest voltooid! +%1$s munten</string>
     <string name="quest_daily_complete_dwarven">Dagelijkse quest voltooid! Je hebt dwerguitrusting gevonden!</string>
+    <string name="quest_daily_complete_divine">Daily quest complete! You found divine gear!</string> <!-- untranslated -->
     <string name="quest_weekly_complete">Wekelijkse uitdaging voltooid! +%1$s munten</string>
     <string name="quest_weekly_bonus_complete_coins">Alle wekelijkse uitdagingen voltooid! +%1$s munten</string>
     <string name="quest_weekly_bonus_complete_divine">Alle wekelijkse uitdagingen voltooid! Je hebt goddelijke uitrusting gevonden!</string>

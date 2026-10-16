@@ -362,10 +362,12 @@
     <string name="weekly_bonus_title">ウィークリーボーナス！</string>
     <string name="weekly_bonus_claim">ウィークリーボーナスを受け取る</string>
     <string name="label_daily_info_pity">Each daily quest rewards coins. Every quest also has a 1 in %1$d chance to drop a piece of Dwarven gear you don\'t own yet. Each claim without a drop improves the odds; a drop resets them to 1 in 100.</string> <!-- untranslated -->
-    <string name="label_daily_info_complete">Each daily quest rewards coins. You already own every piece of Dwarven gear!</string> <!-- untranslated -->
+    <string name="label_daily_info_pity_divine">Each daily quest rewards coins. Every quest also has a 1 in %1$d chance to drop a piece of Divine gear you don\'t own yet. Each claim without a drop improves the odds; a drop resets them to 1 in 100.</string> <!-- untranslated -->
+    <string name="label_daily_info_complete">Each daily quest rewards coins. You already own every piece of Dwarven and Divine gear!</string> <!-- untranslated -->
     <string name="label_weekly_info">ウィークリーチャレンジをクリアすると、必要レベルに応じたコインを獲得できます。5つすべてクリアすると、ボーナスとして100,000コイン、または %1$s の確率で「ディバイン装備」を獲得できます。</string>
     <string name="label_weekly_info_complete">ウィークリーチャレンジをクリアすると、必要レベルに応じたコインを獲得できます。5つすべてクリアすると、ボーナスとして100,000コインを獲得できます。ディバイン装備はすべて入手済みです!</string>
     <string name="label_daily_reward_pity">2,000 coins (1/%1$d: Dwarven gear)</string> <!-- untranslated -->
+    <string name="label_daily_reward_pity_divine">2,000 coins (1/%1$d: Divine gear)</string> <!-- untranslated -->
     <string name="label_daily_reward_complete">2,000 coins</string> <!-- untranslated -->
     <string name="msg_daily_claimed_coins">デイリークエスト完了！ +2,000コイン。</string>
     <string name="msg_daily_claimed_dwarven">デイリークエスト完了！ %1$s を見つけました！</string>
@@ -1942,6 +1944,7 @@
     <string name="quest_complete_with_rewards">クエスト完了: %1$s！ 獲得: %2$s</string>
     <string name="quest_daily_complete_coins">デイリークエスト完了！ +%1$s コイン</string>
     <string name="quest_daily_complete_dwarven">デイリークエスト完了！ドワーフ装備を見つけました！</string>
+    <string name="quest_daily_complete_divine">Daily quest complete! You found divine gear!</string> <!-- untranslated -->
     <string name="quest_weekly_complete">ウィークリーチャレンジ完了！ +%1$s コイン</string>
     <string name="quest_weekly_bonus_complete_coins">すべてのウィークリーチャレンジ完了！ +%1$s コイン</string>
     <string name="quest_weekly_bonus_complete_divine">すべてのウィークリーチャレンジ完了！ディバイン装備を見つけました！</string>

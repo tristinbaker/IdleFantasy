@@ -185,6 +185,7 @@ fun QuestsScreen(
                         nextReset      = state.nextDailyReset,
                         hideCompleted       = state.hideCompleted,
                         dropDenominator = state.dwarvenDropDenominator,
+                        dropIsDivine    = state.dailyDropIsDivine,
                         onClaimQuest   = { viewModel.claimDailyQuest(it) },
                         onNavigateToSkill = onNavigateToSkill,
                     )
@@ -244,6 +245,7 @@ private fun DailyQuestsContent(
     nextReset: Long,
     hideCompleted: Boolean = false,
     dropDenominator: Int? = null,
+    dropIsDivine: Boolean = false,
     onClaimQuest: (String) -> Unit,
     onNavigateToSkill: (String) -> Unit = {},
 ) {
@@ -253,7 +255,7 @@ private fun DailyQuestsContent(
         item {
             Text(
                 text     = if (dropDenominator != null)
-                    stringResource(R.string.label_daily_info_pity, dropDenominator)
+                    stringResource(if (dropIsDivine) R.string.label_daily_info_pity_divine else R.string.label_daily_info_pity, dropDenominator)
                 else
                     stringResource(R.string.label_daily_info_complete),
                 style    = MaterialTheme.typography.bodySmall,
@@ -282,6 +284,7 @@ private fun DailyQuestsContent(
                 DailyQuestCard(
                     quest           = q,
                     dropDenominator = dropDenominator,
+                    dropIsDivine    = dropIsDivine,
                     onClaim         = { onClaimQuest(q.template.id) },
                     onNavigateToSkill = onNavigateToSkill,
                 )
@@ -448,6 +451,7 @@ private fun buildQuestObjective(context: Context, quest: QuestData): String {
 private fun DailyQuestCard(
     quest: DailyQuestWithProgress,
     dropDenominator: Int? = null,
+    dropIsDivine: Boolean = false,
     onClaim: () -> Unit,
     onNavigateToSkill: (String) -> Unit = {},
 ) {
@@ -528,7 +532,7 @@ private fun DailyQuestCard(
             Spacer(Modifier.height(6.dp))
             Text(
                 text  = if (dropDenominator != null)
-                    stringResource(R.string.label_daily_reward_pity, dropDenominator)
+                    stringResource(if (dropIsDivine) R.string.label_daily_reward_pity_divine else R.string.label_daily_reward_pity, dropDenominator)
                 else
                     stringResource(R.string.label_daily_reward_complete),
                 style = MaterialTheme.typography.labelSmall,

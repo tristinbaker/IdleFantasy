@@ -362,10 +362,12 @@
     <string name="weekly_bonus_title">Wöchentlicher Bonus!</string>
     <string name="weekly_bonus_claim">Fordert wöchentlichen Bonus ein</string>
     <string name="label_daily_info_pity">Jede tägliche Aufgabe wird mit Münzen entlohnt. Außerdem gibt es dabei immer eine Chance von 1 zu %1$d einen Teil der Zwergen-Ausrüstung zu erhalten welches du noch nicht besitzt. Jeder erfolgreiche Abschluss ohne Fallenlassen verbessert die Gewinnchancen; ein Fallenlassen setzt sie wieder auf 1 zu 100 zurück.</string>
+    <string name="label_daily_info_pity_divine">Each daily quest rewards coins. Every quest also has a 1 in %1$d chance to drop a piece of Divine gear you don\'t own yet. Each claim without a drop improves the odds; a drop resets them to 1 in 100.</string> <!-- untranslated -->
     <string name="label_daily_info_complete">Jede tägliche Aufgabe wird mit Münzen entlohnt. Du besitzt bereits alle Teile der Zwergen-Ausrüstung!</string>
     <string name="label_weekly_info">Jede wöchentliche Herausforderung wird mit Münzen entsprechend der Schwierigkeit entlohnt. Wenn Ihr alle 5 Herausforderungen meistert, erhaltet eine Sonderzulage: 100 000 Münzen oder mit einer Chance von %1$s ein Teil der göttlichen Ausrüstung.</string>
     <string name="label_weekly_info_complete">Jede wöchentliche Herausforderung wird mit Münzen entsprechend der Schwierigkeit entlohnt. Wenn Ihr alle 5 Herausforderungen meistert, erhaltet eine Sonderzulage: 100 000 Münzen. Ihr besitzt bereits die komplette göttliche Ausrüstung!</string>
     <string name="label_daily_reward_pity">2 000 Münzen (1/%1$d: Zwergen-Ausrüstung)</string>
+    <string name="label_daily_reward_pity_divine">2,000 coins (1/%1$d: Divine gear)</string> <!-- untranslated -->
     <string name="label_daily_reward_complete">2 000 Münzen</string>
     <string name="msg_daily_claimed_coins">Tagesaufgabe abgeschlossen! +2 000 Münzen.</string>
     <string name="msg_daily_claimed_dwarven">Tagesaufgabe abgeschlossen! Ihr habt %1$s gefunden!</string>
@@ -1942,6 +1944,7 @@
     <string name="quest_complete_with_rewards">Aufgabe abgeschlossen: %1$s! Belohnung: %2$s</string>
     <string name="quest_daily_complete_coins">Tagesaufgabe abgeschlossen! +%1$s Münzen</string>
     <string name="quest_daily_complete_dwarven">Tagesaufgabe abgeschlossen! Ihr habt Zwergen-Ausrüstung gefunden!</string>
+    <string name="quest_daily_complete_divine">Daily quest complete! You found divine gear!</string> <!-- untranslated -->
     <string name="quest_weekly_complete">Wöchentliche Herausforderung abgeschlossen! +%1$s Münzen</string>
     <string name="quest_weekly_bonus_complete_coins">Alle wöchentlichen Herausforderung abgeschlossen! +%1$s Münzen</string>
     <string name="quest_weekly_bonus_complete_divine">Alle wöchentlichen Herausforderung abgeschlossen! Ihr habt göttliche Ausrüstung gefunden!</string>

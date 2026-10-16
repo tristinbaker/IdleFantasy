@@ -362,10 +362,12 @@
     <string name="weekly_bonus_title">Thưởng hàng tuần!</string>
     <string name="weekly_bonus_claim">Nhận thưởng hàng tuần</string>
     <string name="label_daily_info_pity">Mỗi nhiệm vụ hàng ngày đều thưởng xu. Mỗi nhiệm vụ cũng có xác suất 1/%1$d rơi ra một món trang bị Người lùn mà bạn chưa sở hữu. Mỗi lần nhận thưởng mà không có vật phẩm rơi sẽ tăng tỷ lệ này; khi có vật phẩm rơi, tỷ lệ sẽ được đặt lại thành 1/100.</string>
+    <string name="label_daily_info_pity_divine">Each daily quest rewards coins. Every quest also has a 1 in %1$d chance to drop a piece of Divine gear you don\'t own yet. Each claim without a drop improves the odds; a drop resets them to 1 in 100.</string> <!-- untranslated -->
     <string name="label_daily_info_complete">Mỗi nhiệm vụ hàng ngày đều thưởng xu. Bạn đã sở hữu tất cả trang bị Người lùn!</string>
     <string name="label_weekly_info">Mỗi thử thách hàng tuần thưởng xu dựa trên yêu cầu cấp độ. Hoàn thành cả 5 để nhận phần thưởng thêm: 100.000 xu hoặc %1$s cơ hội nhận một món trang bị Thần thánh.</string>
     <string name="label_weekly_info_complete">Mỗi thử thách hàng tuần thưởng xu dựa trên yêu cầu cấp độ. Hoàn thành cả 5 để nhận phần thưởng thêm: 100.000 xu. Bạn đã sở hữu tất cả trang bị Thần thánh!</string>
     <string name="label_daily_reward_pity">2.000 xu (1/%1$d: trang bị Người lùn)</string>
+    <string name="label_daily_reward_pity_divine">2,000 coins (1/%1$d: Divine gear)</string> <!-- untranslated -->
     <string name="label_daily_reward_complete">2,000 xu</string>
     <string name="msg_daily_claimed_coins">Hoàn thành nhiệm vụ hàng ngày! +2.000 xu.</string>
     <string name="msg_daily_claimed_dwarven">Hoàn thành nhiệm vụ hàng ngày! Bạn đã tìm thấy %1$s!</string>
@@ -1942,6 +1944,7 @@
     <string name="quest_complete_with_rewards">Quest complete: %1$s! Claimed: %2$s</string> <!-- untranslated -->
     <string name="quest_daily_complete_coins">Daily quest complete! +%1$s coins</string> <!-- untranslated -->
     <string name="quest_daily_complete_dwarven">Daily quest complete! You found dwarven gear!</string> <!-- untranslated -->
+    <string name="quest_daily_complete_divine">Daily quest complete! You found divine gear!</string> <!-- untranslated -->
     <string name="quest_weekly_complete">Weekly challenge complete! +%1$s coins</string> <!-- untranslated -->
     <string name="quest_weekly_bonus_complete_coins">All weekly challenges complete! +%1$s coins</string> <!-- untranslated -->
     <string name="quest_weekly_bonus_complete_divine">All weekly challenges complete! You found divine gear!</string> <!-- untranslated -->

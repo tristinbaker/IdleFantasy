@@ -376,10 +376,12 @@
     <string name="weekly_bonus_title">Tygodniowy bonus!</string>
     <string name="weekly_bonus_claim">Odbierz tygodniowy bonus</string>
     <string name="label_daily_info_pity">Each daily quest rewards coins. Every quest also has a 1 in %1$d chance to drop a piece of Dwarven gear you don\'t own yet. Each claim without a drop improves the odds; a drop resets them to 1 in 100.</string> <!-- untranslated -->
+    <string name="label_daily_info_pity_divine">Each daily quest rewards coins. Every quest also has a 1 in %1$d chance to drop a piece of Divine gear you don\'t own yet. Each claim without a drop improves the odds; a drop resets them to 1 in 100.</string> <!-- untranslated -->
     <string name="label_daily_info_complete">Każde zadanie codzienne nagradza monetami. Posiadasz już każdy element krasnoludzkiego rynsztunku!</string>
     <string name="label_weekly_info">Każde tygodniowe wyzwanie nagradza monetami w zależności od wymaganego poziomu. Ukończ wszystkie 5, aby zdobyć bonus: 100 000 monet lub szansę %1$s na element boskiego wyposażenia.</string>
     <string name="label_weekly_info_complete">Każde tygodniowe wyzwanie nagradza monetami w zależności od wymaganego poziomu. Ukończ wszystkie 5, aby zdobyć bonus: 100 000 monet. Posiadasz już cały boski ekwipunek!</string>
     <string name="label_daily_reward_pity">2,000 coins (1/%1$d: Dwarven gear)</string> <!-- untranslated -->
+    <string name="label_daily_reward_pity_divine">2,000 coins (1/%1$d: Divine gear)</string> <!-- untranslated -->
     <string name="label_daily_reward_complete">2,000 monet</string>
     <string name="msg_daily_claimed_coins">Zadanie dzienne ukończone! +2000 monet.</string>
     <string name="msg_daily_claimed_dwarven">Zadanie dzienne ukończone! Znalazłeś %1$s!</string>
@@ -1962,6 +1964,7 @@
     <string name="quest_complete_with_rewards">Zadanie ukończone: %1$s! Odebrano: %2$s</string>
     <string name="quest_daily_complete_coins">Zadanie dzienne ukończone! +%1$s monet</string>
     <string name="quest_daily_complete_dwarven">Zadanie dzienne ukończone! Znalazłeś krasnoludzkie wyposażenie!</string>
+    <string name="quest_daily_complete_divine">Daily quest complete! You found divine gear!</string> <!-- untranslated -->
     <string name="quest_weekly_complete">Tygodniowe wyzwanie ukończone! +%1$s monet</string>
     <string name="quest_weekly_bonus_complete_coins">Wszystkie tygodniowe wyzwania ukończone! +%1$s monet</string>
     <string name="quest_weekly_bonus_complete_divine">Wszystkie tygodniowe wyzwania ukończone! Znalazłeś boskie wyposażenie!</string>

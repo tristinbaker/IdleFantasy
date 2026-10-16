@@ -23,12 +23,16 @@ class WeeklyQuestRepository @Inject constructor(
     private val gameData: GameDataRepository,
 ) {
 
-    internal val divineDropPool = listOf(
+    companion object {
+        internal val DIVINE_DROP_POOL = listOf(
         "divine_sword", "divine_greatblade",
         "divine_helm", "divine_platebody", "divine_platelegs", "divine_shield", "divine_boots",
         "divine_pickaxe", "divine_axe", "divine_fishing_rod", "divine_hoe", "divine_hammer",
         "divine_tinderbox", "divine_frying_pan", "divine_grappling_hook", "divine_lockpick",
-    )
+        )
+    }
+
+    internal val divineDropPool = DIVINE_DROP_POOL
 
     private val baseDivineDropChance = 1.0 / 26.0
 

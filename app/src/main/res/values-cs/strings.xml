@@ -374,10 +374,12 @@
     <string name="weekly_bonus_title">Týdenní bonus!</string>
     <string name="weekly_bonus_claim">Vyzvednout týdenní bonus</string>
     <string name="label_daily_info_pity">Za každý denní úkol získáš zlaté. Při každém úkolu máš také šanci 1 ku %1$d získat kus trpasličího vybavení, který ještě nemáš. Pokud při vyzvednutí odměny žádný nezískáš, šance se zvýší. Po získání vybavení se vrátí na 1 ku 100.</string>
+    <string name="label_daily_info_pity_divine">Each daily quest rewards coins. Every quest also has a 1 in %1$d chance to drop a piece of Divine gear you don\'t own yet. Each claim without a drop improves the odds; a drop resets them to 1 in 100.</string> <!-- untranslated -->
     <string name="label_daily_info_complete">Za každý denní úkol získáš zlaté. Už máš všechny kusy trpasličího vybavení!</string>
     <string name="label_weekly_info">Za každou týdenní výzvu získáš zlaté podle požadované úrovně. Dokonči všech pět a získej bonus: 100 000 zlatých, nebo šanci %1$s na kus božského vybavení.</string>
     <string name="label_weekly_info_complete">Za každou týdenní výzvu získáš zlaté podle požadované úrovně. Dokonči všech pět a získej bonus 100 000 zlatých. Všechny kusy božského vybavení už máš!</string>
     <string name="label_daily_reward_pity">2 000 zlatých (1/%1$d: trpasličí vybavení)</string>
+    <string name="label_daily_reward_pity_divine">2,000 coins (1/%1$d: Divine gear)</string> <!-- untranslated -->
     <string name="label_daily_reward_complete">2 000 zlatých</string>
     <string name="msg_daily_claimed_coins">Denní úkol splněn! +2 000 zlatých.</string>
     <string name="msg_daily_claimed_dwarven">Denní úkol splněn! Získáváš: %1$s!</string>
@@ -1961,6 +1963,7 @@
     <string name="quest_complete_with_rewards">Úkol splněn: %1$s! Získáváš: %2$s</string>
     <string name="quest_daily_complete_coins">Denní úkol splněn! +%1$s zlatých</string>
     <string name="quest_daily_complete_dwarven">Denní úkol splněn! Našel jsi trpasličí výbavu!</string>
+    <string name="quest_daily_complete_divine">Daily quest complete! You found divine gear!</string> <!-- untranslated -->
     <string name="quest_weekly_complete">Týdenní výzva splněna! +%1$s zlatých</string>
     <string name="quest_weekly_bonus_complete_coins">Všechny týdenní výzvy splněny! +%1$s zlatých</string>
     <string name="quest_weekly_bonus_complete_divine">Všechny týdenní výzvy splněny! Našel jsi božskou výbavu!</string>

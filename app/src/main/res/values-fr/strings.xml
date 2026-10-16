@@ -362,10 +362,12 @@
     <string name="weekly_bonus_title">Bonus hebdomadaire !</string>
     <string name="weekly_bonus_claim">Réclamer le bonus hebdomadaire</string>
     <string name="label_daily_info_pity">Chaque quête quotidienne donne des pièces. Chaque quête a aussi une chance sur %1$d de lâcher une pièce d\'un équipement nain que vous ne possédez pas. Chaque récompense sans objet lâché augment les chances ; un objet lâché les réinitialisent à 1 sur 100.</string>
+    <string name="label_daily_info_pity_divine">Each daily quest rewards coins. Every quest also has a 1 in %1$d chance to drop a piece of Divine gear you don\'t own yet. Each claim without a drop improves the odds; a drop resets them to 1 in 100.</string> <!-- untranslated -->
     <string name="label_daily_info_complete">Chaque quête quotidienne donne des pièces. Vous possédez déjà tout l\'équipement nain !</string>
     <string name="label_weekly_info">Chaque défi hebdomadaire rapporte des pièces selon son niveau requis. Complétez les 5 pour gagner un bonus : 100 000 pièces, ou %1$s de chance d\'obtenir un équipement divin.</string>
     <string name="label_weekly_info_complete">Chaque défi hebdomadaire rapporte des pièces selon son niveau requis. Complétez les 5 pour gagner un bonus : 100 000 pièces. Vous possédez déjà tout l\'équipement divin !</string>
     <string name="label_daily_reward_pity">2 000 pièces (1/%1$d : équipement nain)</string>
+    <string name="label_daily_reward_pity_divine">2,000 coins (1/%1$d: Divine gear)</string> <!-- untranslated -->
     <string name="label_daily_reward_complete">2 000 pièces</string>
     <string name="msg_daily_claimed_coins">Quête quotidienne terminée ! +2 000 pièces.</string>
     <string name="msg_daily_claimed_dwarven">Quête quotidienne terminée ! Vous avez trouvé %1$s !</string>
@@ -1943,6 +1945,7 @@
     <string name="quest_complete_with_rewards">Quête terminée : %1$s ! Réclamé : %2$s</string>
     <string name="quest_daily_complete_coins">Quête journalière terminée ! +%1$s pièces</string>
     <string name="quest_daily_complete_dwarven">Quête journalière terminée ! Vous avez trouvé de l\'équipement nain !</string>
+    <string name="quest_daily_complete_divine">Daily quest complete! You found divine gear!</string> <!-- untranslated -->
     <string name="quest_weekly_complete">Défi hebdomadaire terminé ! +%1$s pièces</string>
     <string name="quest_weekly_bonus_complete_coins">Tous les défis hebdomadaires terminés ! +%1$s pièces</string>
     <string name="quest_weekly_bonus_complete_divine">Tous les défis hebdomadaires terminés ! Vous avez trouvé de l\'équipement divin !</string>

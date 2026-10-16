@@ -1904,6 +1904,7 @@ class PlayerRepository @Inject constructor(
             return@withLock null
         }
         val grantedKey = (reward as? DailyReward.DwarvenItemReward)?.itemKey
+            ?: (reward as? DailyReward.DivineItemReward)?.itemKey
         if (grantedKey != null) inventory[grantedKey] = (inventory[grantedKey] ?: 0) + 1
 
         playerDao.upsert(

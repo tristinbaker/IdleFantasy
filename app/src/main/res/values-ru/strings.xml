@@ -378,10 +378,12 @@
     <string name="weekly_bonus_title">Недельный бонус!</string>
     <string name="weekly_bonus_claim">Получить недельный бонус</string>
     <string name="label_daily_info_pity">Выполнение каждого ежедневного задания даёт монеты. Кроме того, за выполнение каждого задания есть 1 из %1$d шанс получить предмет дварфийского снаряжения, которого у вас ещё нет. За выполнение задания без получения предмета шансы увеличиваются, а каждое получение предмета сбрасывает их до 1 к 100.</string>
+    <string name="label_daily_info_pity_divine">Each daily quest rewards coins. Every quest also has a 1 in %1$d chance to drop a piece of Divine gear you don\'t own yet. Each claim without a drop improves the odds; a drop resets them to 1 in 100.</string> <!-- untranslated -->
     <string name="label_daily_info_complete">За каждое ежедневное задание начисляются монеты. У вас уже есть все предметы дварфийского снаряжения!</string>
     <string name="label_weekly_info">За каждое еженедельное испытание выдаются монеты в зависимости от требуемого уровня. Выполните все 5, чтобы получить бонус: 100 000 монет или шанс %1$s получить предмет божественного снаряжения.</string>
     <string name="label_weekly_info_complete">За каждое еженедельное испытание выдаются монеты в зависимости от требуемого уровня. Выполните все 5, чтобы получить бонус: 100 000 монет. У вас уже есть все предметы божественного снаряжения!</string>
     <string name="label_daily_reward_pity">2 000 монет (1/%1$d: дварфийское снаряжение)</string>
+    <string name="label_daily_reward_pity_divine">2,000 coins (1/%1$d: Divine gear)</string> <!-- untranslated -->
     <string name="label_daily_reward_complete">2 000 монет</string>
     <string name="msg_daily_claimed_coins">Ежедневное задание выполнено! +2 000 монет.</string>
     <string name="msg_daily_claimed_dwarven">Ежедневное задание выполнено! Вы нашли %1$s!</string>
@@ -1964,6 +1966,7 @@
     <string name="quest_complete_with_rewards">Задание выполнено: %1$s! Получено: %2$s</string>
     <string name="quest_daily_complete_coins">Ежедневное задание выполнено! +%1$s монет</string>
     <string name="quest_daily_complete_dwarven">Ежедневное задание выполнено! Вы нашли дварфийское снаряжение!</string>
+    <string name="quest_daily_complete_divine">Daily quest complete! You found divine gear!</string> <!-- untranslated -->
     <string name="quest_weekly_complete">Еженедельное испытание выполнено! Монеты +%1$s</string>
     <string name="quest_weekly_bonus_complete_coins">Все еженедельные испытания выполнены! Монеты +%1$s</string>
     <string name="quest_weekly_bonus_complete_divine">Все еженедельные испытания выполнены! Вы нашли божественное снаряжение!</string>
