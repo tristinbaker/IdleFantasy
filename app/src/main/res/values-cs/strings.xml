@@ -677,7 +677,7 @@
     <string name="profile_stat_ranged">Střelba</string>
     <string name="profile_stat_magic">Magie</string>
     <string name="profile_stat_mining">Dolování</string>
-    <string name="profile_stat_wc">WC</string> <!-- untranslated -->
+    <string name="profile_stat_wc">Dřevor.</string>
     <string name="profile_stat_fishing">Rybaření</string>
     <string name="profile_stat_farming">Pěstování</string>
     <string name="profile_stat_smithing">Kovářství</string>
