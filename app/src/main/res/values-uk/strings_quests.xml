@@ -4,18 +4,18 @@
     <!-- Translator note: quest names are short titles; objectives are action sentences. -->
 
     <!-- Mining -->
-    <string name="quest_mining_1_name">Mining I</string> <!-- untranslated -->
-    <string name="quest_mining_1_objective">Mine 500 Copper Ore</string> <!-- untranslated -->
-    <string name="quest_mining_2_name">Mining II</string> <!-- untranslated -->
-    <string name="quest_mining_2_objective">Mine 750 Iron Ore</string> <!-- untranslated -->
-    <string name="quest_mining_3_name">Mining III</string> <!-- untranslated -->
-    <string name="quest_mining_3_objective">Mine 1100 Coal</string> <!-- untranslated -->
-    <string name="quest_mining_4_name">Mining IV</string> <!-- untranslated -->
-    <string name="quest_mining_4_objective">Mine 1650 Mithril Ore</string> <!-- untranslated -->
-    <string name="quest_mining_5_name">Mining V</string> <!-- untranslated -->
-    <string name="quest_mining_5_objective">Mine 2450 Adamantite Ore</string> <!-- untranslated -->
-    <string name="quest_mining_6_name">Mining VI</string> <!-- untranslated -->
-    <string name="quest_mining_6_objective">Mine 3650 Runite Ore</string> <!-- untranslated -->
+    <string name="quest_mining_1_name">Шахтарство I</string>
+    <string name="quest_mining_1_objective">Видобути 500 Мідної Руди</string>
+    <string name="quest_mining_2_name">Шахтарство II</string>
+    <string name="quest_mining_2_objective">Видобути 750 Залізної Руди</string>
+    <string name="quest_mining_3_name">Шахтарство III</string>
+    <string name="quest_mining_3_objective">Видобути 1100 Вугілля</string>
+    <string name="quest_mining_4_name">Шахтарство IV</string>
+    <string name="quest_mining_4_objective">Видобути 1650 Міфрільної Руди</string>
+    <string name="quest_mining_5_name">Шахтарство V</string>
+    <string name="quest_mining_5_objective">Видобути 2450 Адамантієвої Руди</string>
+    <string name="quest_mining_6_name">Шахтарство VI</string>
+    <string name="quest_mining_6_objective">Видобути 3650 Рунітної Руди</string>
 
     <!-- Woodcutting -->
     <string name="quest_woodcutting_1_name">Лісозаготівля I</string>
@@ -60,42 +60,42 @@
     <string name="quest_smithing_6_objective">Виплавте 3650 Рунітових Злитків</string>
 
     <!-- Cooking - Fish -->
-    <string name="quest_cooking_fish_1_name">Cooking — Fish I</string> <!-- untranslated -->
-    <string name="quest_cooking_fish_1_objective">Cook 500 fish</string> <!-- untranslated -->
-    <string name="quest_cooking_fish_2_name">Cooking — Fish II</string> <!-- untranslated -->
-    <string name="quest_cooking_fish_2_objective">Cook 750 fish</string> <!-- untranslated -->
-    <string name="quest_cooking_fish_3_name">Cooking — Fish III</string> <!-- untranslated -->
-    <string name="quest_cooking_fish_3_objective">Cook 1100 fish</string> <!-- untranslated -->
-    <string name="quest_cooking_fish_4_name">Cooking — Fish IV</string> <!-- untranslated -->
-    <string name="quest_cooking_fish_4_objective">Cook 1650 fish</string> <!-- untranslated -->
-    <string name="quest_cooking_fish_5_name">Cooking — Fish V</string> <!-- untranslated -->
-    <string name="quest_cooking_fish_5_objective">Cook 2450 fish</string> <!-- untranslated -->
-    <string name="quest_cooking_fish_6_name">Cooking — Fish VI</string> <!-- untranslated -->
-    <string name="quest_cooking_fish_6_objective">Cook 3650 fish</string> <!-- untranslated -->
+    <string name="quest_cooking_fish_1_name">Кулінарія — Риба I</string>
+    <string name="quest_cooking_fish_1_objective">Приготувати 500 рибин</string>
+    <string name="quest_cooking_fish_2_name">Кулінарія — Риба II</string>
+    <string name="quest_cooking_fish_2_objective">Приготувати 750 рибин</string>
+    <string name="quest_cooking_fish_3_name">Кулінарія — Риба III</string>
+    <string name="quest_cooking_fish_3_objective">Приготувати 1100 рибин</string>
+    <string name="quest_cooking_fish_4_name">Кулінарія — Риба IV</string>
+    <string name="quest_cooking_fish_4_objective">Приготувати 1650 рибин</string>
+    <string name="quest_cooking_fish_5_name">Кулінарія — Риба V</string>
+    <string name="quest_cooking_fish_5_objective">Приготувати 2450 рибин</string>
+    <string name="quest_cooking_fish_6_name">Кулінарія — Риба VI</string>
+    <string name="quest_cooking_fish_6_objective">Приготувати 3650 рибин</string>
 
     <!-- Cooking - Beef -->
-    <string name="quest_cooking_beef_1_name">Cooking — Beef I</string> <!-- untranslated -->
-    <string name="quest_cooking_beef_1_objective">Cook 100 Beef</string> <!-- untranslated -->
-    <string name="quest_cooking_beef_2_name">Cooking — Beef II</string> <!-- untranslated -->
-    <string name="quest_cooking_beef_2_objective">Cook 250 Beef</string> <!-- untranslated -->
-    <string name="quest_cooking_beef_3_name">Cooking — Beef III</string> <!-- untranslated -->
-    <string name="quest_cooking_beef_3_objective">Cook 500 Beef</string> <!-- untranslated -->
+    <string name="quest_cooking_beef_1_name">Кулінарія — Яловичина I</string>
+    <string name="quest_cooking_beef_1_objective">Приготувати 100 Яловичини</string>
+    <string name="quest_cooking_beef_2_name">Кулінарія — Яловичина II</string>
+    <string name="quest_cooking_beef_2_objective">Приготувати 250 Яловичини</string>
+    <string name="quest_cooking_beef_3_name">Кулінарія — Яловичина III</string>
+    <string name="quest_cooking_beef_3_objective">Приготувати 500 Яловичини</string>
 
     <!-- Cooking - Chicken -->
-    <string name="quest_cooking_chicken_1_name">Cooking — Chicken I</string> <!-- untranslated -->
-    <string name="quest_cooking_chicken_1_objective">Cook 100 Chicken</string> <!-- untranslated -->
-    <string name="quest_cooking_chicken_2_name">Cooking — Chicken II</string> <!-- untranslated -->
-    <string name="quest_cooking_chicken_2_objective">Cook 250 Chicken</string> <!-- untranslated -->
-    <string name="quest_cooking_chicken_3_name">Cooking — Chicken III</string> <!-- untranslated -->
-    <string name="quest_cooking_chicken_3_objective">Cook 500 Chicken</string> <!-- untranslated -->
+    <string name="quest_cooking_chicken_1_name">Кулінарія — Курка I</string>
+    <string name="quest_cooking_chicken_1_objective">Приготувати 100 Курок</string>
+    <string name="quest_cooking_chicken_2_name">Кулінарія — Курка II</string>
+    <string name="quest_cooking_chicken_2_objective">Приготувати 250 Курок</string>
+    <string name="quest_cooking_chicken_3_name">Кулінарія — Курка III</string>
+    <string name="quest_cooking_chicken_3_objective">Приготувати 500 Курок</string>
 
     <!-- Cooking - Mutton -->
-    <string name="quest_cooking_mutton_1_name">Cooking — Mutton I</string> <!-- untranslated -->
-    <string name="quest_cooking_mutton_1_objective">Cook 100 Mutton</string> <!-- untranslated -->
-    <string name="quest_cooking_mutton_2_name">Cooking — Mutton II</string> <!-- untranslated -->
-    <string name="quest_cooking_mutton_2_objective">Cook 250 Mutton</string> <!-- untranslated -->
-    <string name="quest_cooking_mutton_3_name">Cooking — Mutton III</string> <!-- untranslated -->
-    <string name="quest_cooking_mutton_3_objective">Cook 500 Mutton</string> <!-- untranslated -->
+    <string name="quest_cooking_mutton_1_name">Кулінарія — Баранина I</string>
+    <string name="quest_cooking_mutton_1_objective">Приготувати 100 Баранини</string>
+    <string name="quest_cooking_mutton_2_name">Кулінарія — Баранина II</string>
+    <string name="quest_cooking_mutton_2_objective">Приготувати 250 Баранини</string>
+    <string name="quest_cooking_mutton_3_name">Кулінарія — Баранина III</string>
+    <string name="quest_cooking_mutton_3_objective">Приготувати 500 Баранини</string>
 
     <!-- Fletching -->
     <string name="quest_fletching_1_name">Fletching I</string> <!-- untranslated -->
@@ -112,18 +112,18 @@
     <string name="quest_fletching_6_objective">Fletch 3650 Runite Arrows</string> <!-- untranslated -->
 
     <!-- Prayer -->
-    <string name="quest_prayer_1_name">Prayer I</string> <!-- untranslated -->
-    <string name="quest_prayer_1_objective">Bury 500 bones</string> <!-- untranslated -->
-    <string name="quest_prayer_2_name">Prayer II</string> <!-- untranslated -->
-    <string name="quest_prayer_2_objective">Bury 750 bones</string> <!-- untranslated -->
-    <string name="quest_prayer_3_name">Prayer III</string> <!-- untranslated -->
-    <string name="quest_prayer_3_objective">Bury 1100 bones</string> <!-- untranslated -->
-    <string name="quest_prayer_4_name">Prayer IV</string> <!-- untranslated -->
-    <string name="quest_prayer_4_objective">Bury 1650 bones</string> <!-- untranslated -->
-    <string name="quest_prayer_5_name">Prayer V</string> <!-- untranslated -->
-    <string name="quest_prayer_5_objective">Bury 2450 bones</string> <!-- untranslated -->
-    <string name="quest_prayer_6_name">Prayer VI</string> <!-- untranslated -->
-    <string name="quest_prayer_6_objective">Bury 3650 bones</string> <!-- untranslated -->
+    <string name="quest_prayer_1_name">Вірюучий I</string>
+    <string name="quest_prayer_1_objective">Поховати 500 кісток</string>
+    <string name="quest_prayer_2_name">Віруючий II</string>
+    <string name="quest_prayer_2_objective">Поховати 750 кісток</string>
+    <string name="quest_prayer_3_name">Віруючий III</string>
+    <string name="quest_prayer_3_objective">Поховати 1100 кісток</string>
+    <string name="quest_prayer_4_name">Віруючий IV</string>
+    <string name="quest_prayer_4_objective">Поховати 1650 кісток</string>
+    <string name="quest_prayer_5_name">Віруючий V</string>
+    <string name="quest_prayer_5_objective">Поховати 2450 кісток</string>
+    <string name="quest_prayer_6_name">Віруючий VI</string>
+    <string name="quest_prayer_6_objective">Поховати 3650 кісток</string>
 
     <!-- Slayer -->
     <string name="quest_combat_kills_1_name">Мисливець За Монстрами I</string>
@@ -138,26 +138,26 @@
     <string name="quest_combat_kills_5_objective">Перемогти 450 ворогів</string>
     <string name="quest_combat_kills_6_name">Мисливець За Монстрами VI</string>
     <string name="quest_combat_kills_6_objective">Перемогти 650 ворогів</string>
-    <string name="quest_slayer_1_name">Slayer I</string> <!-- untranslated -->
-    <string name="quest_slayer_1_objective">Complete 5 Slayer tasks</string> <!-- untranslated -->
-    <string name="quest_slayer_2_name">Slayer II</string> <!-- untranslated -->
-    <string name="quest_slayer_2_objective">Complete 15 Slayer tasks</string> <!-- untranslated -->
-    <string name="quest_slayer_3_name">Slayer III</string> <!-- untranslated -->
-    <string name="quest_slayer_3_objective">Complete 40 Slayer tasks</string> <!-- untranslated -->
-    <string name="quest_slayer_4_name">Slayer IV</string> <!-- untranslated -->
-    <string name="quest_slayer_4_objective">Complete 100 Slayer tasks</string> <!-- untranslated -->
-    <string name="quest_slayer_5_name">Slayer V</string> <!-- untranslated -->
-    <string name="quest_slayer_5_objective">Complete 250 Slayer tasks</string> <!-- untranslated -->
-    <string name="quest_slayer_6_name">Slayer VI</string> <!-- untranslated -->
-    <string name="quest_slayer_6_objective">Complete 500 Slayer tasks</string> <!-- untranslated -->
+    <string name="quest_slayer_1_name">Вбивця I</string>
+    <string name="quest_slayer_1_objective">Виконати 5 задач Вбивць</string>
+    <string name="quest_slayer_2_name">Вбивця II</string>
+    <string name="quest_slayer_2_objective">Виконати 15 задач Вбивць</string>
+    <string name="quest_slayer_3_name">Вбивця III</string>
+    <string name="quest_slayer_3_objective">Виконати 40 задач Вбивць</string>
+    <string name="quest_slayer_4_name">Вбивця IV</string>
+    <string name="quest_slayer_4_objective">Виконати 100 задач Вбивць</string>
+    <string name="quest_slayer_5_name">Вбивця V</string>
+    <string name="quest_slayer_5_objective">Виконати 250 задач Вбивць</string>
+    <string name="quest_slayer_6_name">Вбивця VI</string>
+    <string name="quest_slayer_6_objective">Виконати 500 задач Вбивць</string>
 
     <!-- Dungeon exploration -->
-    <string name="quest_dungeon_farm_1_name">Dungeon Explorer I</string> <!-- untranslated -->
-    <string name="quest_dungeon_farm_1_objective">Complete the Farm dungeon 5 times</string> <!-- untranslated -->
-    <string name="quest_dungeon_goblin_1_name">Dungeon Explorer II</string> <!-- untranslated -->
-    <string name="quest_dungeon_goblin_1_objective">Complete the Goblin Cave 5 times</string> <!-- untranslated -->
-    <string name="quest_dungeon_spider_1_name">Dungeon Explorer III</string> <!-- untranslated -->
-    <string name="quest_dungeon_spider_1_objective">Complete the Spider Den 5 times</string> <!-- untranslated -->
+    <string name="quest_dungeon_farm_1_name">Дослідник Підземель I</string>
+    <string name="quest_dungeon_farm_1_objective">Пройдіть підземелля Ферма 5 разів</string>
+    <string name="quest_dungeon_goblin_1_name">Дослідник Підземель II</string>
+    <string name="quest_dungeon_goblin_1_objective">Пройдіть підземелля Печера Гоблінів 5 разів</string>
+    <string name="quest_dungeon_spider_1_name">Дослідник Підземель III</string>
+    <string name="quest_dungeon_spider_1_objective">Пройдіть підземелля Лігво Павука 5 разів</string>
     <string name="quest_dungeon_bandit_1_name">Dungeon Explorer IV</string> <!-- untranslated -->
     <string name="quest_dungeon_bandit_1_objective">Complete the Bandit Camp 5 times</string> <!-- untranslated -->
     <string name="quest_dungeon_undead_1_name">Dungeon Explorer V</string> <!-- untranslated -->
@@ -239,7 +239,7 @@
 
     <!-- Iron Stomach (no food) challenges -->
     <string name="quest_iron_stomach_1_name">Iron Stomach I</string> <!-- untranslated -->
-    <string name="quest_iron_stomach_1_objective">Complete the Spider Den without using food</string> <!-- untranslated -->
+    <string name="quest_iron_stomach_1_objective">Пройдіть Лігво Павука без використання їжі</string>
     <string name="quest_iron_stomach_2_name">Iron Stomach II</string> <!-- untranslated -->
     <string name="quest_iron_stomach_2_objective">Complete the Undead Crypt without using food</string> <!-- untranslated -->
     <string name="quest_iron_stomach_3_name">Iron Stomach III</string> <!-- untranslated -->
@@ -439,7 +439,7 @@
     <!-- Daily quest verbs -->
     <string name="daily_verb_mining">Mine</string> <!-- untranslated -->
     <string name="daily_verb_fishing">Catch</string> <!-- untranslated -->
-    <string name="daily_verb_woodcutting">Chop</string> <!-- untranslated -->
+    <string name="daily_verb_woodcutting">Рубати</string>
     <string name="daily_verb_smithing">Smith</string> <!-- untranslated -->
     <string name="daily_verb_cooking">Cook</string> <!-- untranslated -->
     <string name="daily_verb_combat">Defeat</string> <!-- untranslated -->
