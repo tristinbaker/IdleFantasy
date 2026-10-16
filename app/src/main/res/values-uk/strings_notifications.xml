@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- ===== Notification channel metadata ===== -->
-    <string name="notif_channel_sessions_name">Session Alerts</string> <!-- untranslated -->
-    <string name="notif_channel_sessions_desc">Notifications when your skill sessions complete</string> <!-- untranslated -->
+    <string name="notif_channel_sessions_name">Сповіщення Сесії</string>
+    <string name="notif_channel_sessions_desc">Сповіщення про завершення ваших тренувань з навичок</string>
     <string name="notif_channel_farming_name">Сповіщення Фермерства</string>
     <string name="notif_channel_farming_desc">Сповіщення, коли ваші культури готові до збору врожаю</string>
 
     <!-- ===== Session complete ===== -->
     <string name="notif_session_complete_title">Сесія завершена!</string>
     <!-- Translator note: %1$s = localised skill name (e.g. "Mining") -->
-    <string name="notif_session_complete_body">Your %1$s session has finished. Tap to collect your rewards.</string> <!-- untranslated -->
+    <string name="notif_session_complete_body">Ваша %1$s сесія завершилась. Натисність, щоб зібрати нагороди.</string>
 
     <!-- ===== Buff alerts ===== -->
-    <string name="notif_channel_buffs_name">Buff Alerts</string> <!-- untranslated -->
-    <string name="notif_channel_buffs_desc">Notifications when your active buffs expire</string> <!-- untranslated -->
-    <string name="notif_xp_boost_expired_title">XP Boost Expired</string> <!-- untranslated -->
-    <string name="notif_xp_boost_expired_body">Your 2x XP boost has run out. Visit the marketplace to reactivate.</string> <!-- untranslated -->
-    <string name="notif_blessing_expired_title">Blessing Expired</string> <!-- untranslated -->
-    <string name="notif_blessing_expired_body">Your church blessing has faded. Visit the Church to renew it.</string> <!-- untranslated -->
+    <string name="notif_channel_buffs_name">Сповіщення про Бафи</string>
+    <string name="notif_channel_buffs_desc">Сповіщення про закінчення терміну дії ваших активних бафів</string>
+    <string name="notif_xp_boost_expired_title">Термін дії бусту ХР минув</string>
+    <string name="notif_xp_boost_expired_body">Ваш 2х ХР буст вичерпався. Відвідайте торговельний майданчик, щоб повторно активувати.</string>
+    <string name="notif_blessing_expired_title">Термін Благословіння завершився</string>
+    <string name="notif_blessing_expired_body">Ваше церковне благословення зблякло. Відвідайте Церкву, щоб його оновити.</string>
 
     <!-- ===== Farming ready ===== -->
-    <string name="notif_farming_ready_title">Crops Ready!</string> <!-- untranslated -->
+    <string name="notif_farming_ready_title">Посіви Готові!</string>
     <!-- Translator note: %1$s = localised crop name (e.g. "Wheat"). Adjust grammar as needed for your language. -->
-    <string name="notif_farming_ready_body">Your %1$s is ready to harvest.</string> <!-- untranslated -->
+    <string name="notif_farming_ready_body">Ваш %1$s готовий до збору врожаю.</string>
     <!-- Plural variant used when multiple patches are ready -->
     <!-- Translator note: %1$d = number of patches ready -->
-    <string name="notif_farming_ready_body_multi">%1$d patches are ready to harvest.</string> <!-- untranslated -->
+    <string name="notif_farming_ready_body_multi">%1$d ділянок готові до збору врожаю.</string>
 </resources>
