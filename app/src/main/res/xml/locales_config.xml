@@ -21,5 +21,6 @@
     <locale android:name="ar"/>
     <locale android:name="ca"/>
     <locale android:name="uk"/>
+    <locale android:name="sk"/>
     <locale android:name="vi"/>
 </locale-config>
