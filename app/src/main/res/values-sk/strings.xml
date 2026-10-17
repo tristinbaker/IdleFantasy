@@ -9,7 +9,7 @@
     <string name="nav_home">Domov</string>
     <string name="nav_crafting">Crafting</string> <!-- untranslated -->
     <string name="nav_quests">Úlohy</string>
-    <string name="nav_profile">Profile</string> <!-- untranslated -->
+    <string name="nav_profile">Profil</string>
 
     <!-- ===== Common buttons ===== -->
     <string name="btn_start">Start</string> <!-- untranslated -->
@@ -19,7 +19,7 @@
     <string name="btn_cancel">Zrušiť</string>
     <string name="btn_craft">Craft</string> <!-- untranslated -->
     <string name="btn_confirm">Potvrdiť</string>
-    <string name="btn_abandon">Abandon</string> <!-- untranslated -->
+    <string name="btn_abandon">Ukončiť</string>
     <string name="btn_repeat_action">Zopakovať Akciu</string>
     <string name="btn_collect">Collect Rewards</string> <!-- untranslated -->
     <string name="btn_equip">Nasadiť</string>
@@ -59,7 +59,7 @@
     <string name="label_inventory">Inventory</string> <!-- untranslated -->
     <string name="label_equipment">Gear</string> <!-- untranslated -->
     <string name="label_combat_equipment">Gear</string> <!-- untranslated -->
-    <string name="label_pets">Pets</string> <!-- untranslated -->
+    <string name="label_pets">Spoločníci</string>
     <string name="label_achievements">Achievements</string> <!-- untranslated -->
     <string name="label_locations">Locations</string> <!-- untranslated -->
     <string name="label_bestiary">Bestiary</string> <!-- untranslated -->
@@ -99,7 +99,7 @@
     <string name="worker_dungeon_died_title">Worker: %1$s — Died</string> <!-- untranslated -->
     <string name="worker_dungeon_complete_title">Worker: %1$s Complete!</string> <!-- untranslated -->
     <string name="worker_skill_complete_title">Worker: %1$s Complete</string> <!-- untranslated -->
-    <string name="label_training">Training</string> <!-- untranslated -->
+    <string name="label_training">Tréning</string>
     <string name="label_gathering_skills">Gathering</string> <!-- untranslated -->
     <string name="label_crafting_skills">Crafting Skills</string> <!-- untranslated -->
     <string name="label_choose_activity">Choose Activity</string> <!-- untranslated -->
@@ -120,12 +120,12 @@
     <string name="label_items_collected">Items collected</string> <!-- untranslated -->
     <string name="label_level_ups">Level ups</string> <!-- untranslated -->
     <string name="label_requirements">Requirements</string> <!-- untranslated -->
-    <string name="label_rewards">Rewards</string> <!-- untranslated -->
+    <string name="label_rewards">Odmeny</string>
     <string name="label_your_level">Your Level</string> <!-- untranslated -->
     <string name="label_xp_to_next">XP to next level</string> <!-- untranslated -->
     <string name="label_total_xp">Total XP</string> <!-- untranslated -->
     <string name="label_quantity">Quantity</string> <!-- untranslated -->
-    <string name="label_price">Price</string> <!-- untranslated -->
+    <string name="label_price">Cena</string>
     <string name="label_available">Available</string> <!-- untranslated -->
     <string name="label_patch">Patch</string> <!-- untranslated -->
     <string name="label_growth_time">Growth time</string> <!-- untranslated -->
@@ -133,25 +133,25 @@
     <string name="label_empty">Empty</string> <!-- untranslated -->
     <string name="inventory_sort_quantity">Quantity</string> <!-- untranslated -->
     <string name="inventory_sort_az">A-Z</string> <!-- untranslated -->
-    <string name="inventory_cat_weapons">Weapons</string> <!-- untranslated -->
+    <string name="inventory_cat_weapons">Zbrane</string>
     <string name="inventory_cat_armour">Armour</string> <!-- untranslated -->
     <string name="inventory_cat_tools">Tools</string> <!-- untranslated -->
-    <string name="inventory_cat_food">Food</string> <!-- untranslated -->
-    <string name="inventory_cat_potions">Potions</string> <!-- untranslated -->
-    <string name="inventory_cat_materials">Materials</string> <!-- untranslated -->
+    <string name="inventory_cat_food">Jedlo</string>
+    <string name="inventory_cat_potions">Elixíry</string>
+    <string name="inventory_cat_materials">Materiály</string>
     <string name="inventory_cat_other">Other</string> <!-- untranslated -->
-    <string name="inventory_cat_raw_food">Raw Food</string> <!-- untranslated -->
-    <string name="inventory_cat_ammunition">Ammunition</string> <!-- untranslated -->
+    <string name="inventory_cat_raw_food">Surové Jedlo</string>
+    <string name="inventory_cat_ammunition">Munícia</string>
     <string name="inventory_cat_ores">Ores &amp; Gems</string> <!-- untranslated -->
     <string name="inventory_cat_construction">Construction</string> <!-- untranslated -->
-    <string name="inventory_cat_seeds">Seeds &amp; Crops</string> <!-- untranslated -->
-    <string name="inventory_cat_filter_all">All</string> <!-- untranslated -->
+    <string name="inventory_cat_seeds">Semená &amp; Plodiny</string>
+    <string name="inventory_cat_filter_all">Všetko</string>
     <string name="label_combat_style">Combat Style</string> <!-- untranslated -->
     <string name="label_active_spell">Active Spell</string> <!-- untranslated -->
     <string name="label_drops">Drops</string> <!-- untranslated -->
     <string name="label_boss">Boss</string> <!-- untranslated -->
     <string name="label_dungeon">Dungeon</string> <!-- untranslated -->
-    <string name="label_difficulty">Difficulty</string> <!-- untranslated -->
+    <string name="label_difficulty">Obtiažnosť</string>
     <string name="label_completed">Completed</string> <!-- untranslated -->
     <string name="label_in_progress">In Progress</string> <!-- untranslated -->
     <string name="label_available_quests">Available</string> <!-- untranslated -->
@@ -161,23 +161,23 @@
     <string name="label_shop">Obchod</string>
     <string name="label_sell_items">Predať Veci</string>
     <string name="label_total_level">Total Level</string> <!-- untranslated -->
-    <string name="label_wins">Wins</string> <!-- untranslated -->
-    <string name="label_losses">Losses</string> <!-- untranslated -->
+    <string name="label_wins">Výhry</string>
+    <string name="label_losses">Prehry</string>
     <string name="label_active">Active</string> <!-- untranslated -->
     <string name="label_inactive">Inactive</string> <!-- untranslated -->
     <string name="label_boost">Boost</string> <!-- untranslated -->
     <string name="label_xp_boost">XP Boost</string> <!-- untranslated -->
     <string name="label_prestige_xp_boost">Prestige XP Boost</string> <!-- untranslated -->
-    <string name="label_weapon">Weapon</string> <!-- untranslated -->
-    <string name="label_armour">Armour</string> <!-- untranslated -->
-    <string name="label_food">Food</string> <!-- untranslated -->
+    <string name="label_weapon">Zbraň</string>
+    <string name="label_armour">Zbroj</string>
+    <string name="label_food">Jedlo</string>
     <string name="label_arrows_consumed">Arrows Consumed</string> <!-- untranslated -->
     <string name="label_arrows_reclaimed">Arrows Reclaimed</string> <!-- untranslated -->
     <string name="label_runes_consumed">Runes Consumed</string> <!-- untranslated -->
     <string name="label_runes_reclaimed">Runes Reclaimed</string> <!-- untranslated -->
-    <string name="label_arrows">Arrows</string> <!-- untranslated -->
-    <string name="label_runes">Runes</string> <!-- untranslated -->
-    <string name="label_spell">Spell</string> <!-- untranslated -->
+    <string name="label_arrows">Šípy</string>
+    <string name="label_runes">Runy</string>
+    <string name="label_spell">Kúzlo</string>
     <string name="label_none">None</string> <!-- untranslated -->
     <string name="label_melee">Melee</string> <!-- untranslated -->
     <string name="label_ranged_style">Ranged</string> <!-- untranslated -->
@@ -188,7 +188,7 @@
     <string name="label_combat">Combat</string> <!-- untranslated -->
     <string name="label_recipe">Recipe</string> <!-- untranslated -->
     <string name="label_recipes">Recipes</string> <!-- untranslated -->
-    <string name="label_ingredients">Ingredients</string> <!-- untranslated -->
+    <string name="label_ingredients">Ingrediencie</string>
     <string name="label_output">Output</string> <!-- untranslated -->
     <string name="label_xp_per_action">XP per action</string> <!-- untranslated -->
     <string name="label_unlocked_at">Unlocked at level</string> <!-- untranslated -->
@@ -196,7 +196,7 @@
     <string name="label_personal_best">Personal Best</string> <!-- untranslated -->
     <string name="label_daily_dig">Daily Dig</string> <!-- untranslated -->
     <string name="label_dig_depth">Hole Depth</string> <!-- untranslated -->
-    <string name="label_version">Version</string> <!-- untranslated -->
+    <string name="label_version">Verzia</string>
 
 
     <!-- ===== Format strings — all use positional args for Weblate ===== -->
@@ -232,7 +232,7 @@
     <!-- Translator note: %1$d = minutes remaining -->
     <string name="format_minutes_remaining">%1$d min remaining</string> <!-- untranslated -->
     <!-- Translator note: %1$s = version string (e.g. "0.1.0") -->
-    <string name="format_version">Version %1$s</string> <!-- untranslated -->
+    <string name="format_version">Verzia %1$s</string>
 
     <!-- ===== Plurals ===== -->
     <plurals name="plural_level_ups">
@@ -248,9 +248,12 @@
         <item quantity="other">%1$d minutes</item>
     </plurals> <!-- untranslated -->
     <plurals name="plural_hours">
-        <item quantity="one">%1$d hour</item>
-        <item quantity="other">%1$d hours</item>
-    </plurals> <!-- untranslated -->
+        <item quantity="one">%1$d hodina</item>
+        <item quantity="other">%1$d hodín</item>
+        <item quantity="zero">%1$d hodín</item>
+        <item quantity="two">%1$d hodiny</item>
+        <item quantity="many">%1$d hodín</item>
+    </plurals>
     <plurals name="plural_patches">
         <item quantity="one">%1$d patch</item>
         <item quantity="other">%1$d patches</item>
