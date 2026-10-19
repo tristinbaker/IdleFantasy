@@ -2439,12 +2439,12 @@
     <string name="carnival_stat_xp">%1$sXP +%2$d%%</string> <!-- untranslated -->
     <!-- Translator note: %1$s = "${skill name} ", %2$d = percentage bonus -->
     <string name="carnival_stat_yield">%1$sYield +%2$d%%</string> <!-- untranslated -->
-    <string name="carnival_potion_letter_green">G</string> <!-- untranslated -->
-    <string name="carnival_potion_letter_blue">B</string> <!-- untranslated -->
-    <string name="carnival_potion_letter_red">R</string> <!-- untranslated -->
-    <string name="carnival_potion_letter_purple">P</string> <!-- untranslated -->
-    <string name="carnival_potion_letter_orange">O</string> <!-- untranslated -->
-    <string name="carnival_potion_letter_cyan">C</string> <!-- untranslated -->
+    <string name="carnival_potion_letter_green">Z</string>
+    <string name="carnival_potion_letter_blue">M</string>
+    <string name="carnival_potion_letter_red">Č</string>
+    <string name="carnival_potion_letter_purple">F</string>
+    <string name="carnival_potion_letter_orange">O</string>
+    <string name="carnival_potion_letter_cyan">T</string>
     <string name="farming_crop_picker_stats">Lv. %1$d  •  %2$s  •  %3$d XP/crop</string> <!-- untranslated -->
     <string name="farming_seeds_owned">Seeds: %1$d  •  Owned: %2$d</string> <!-- untranslated -->
     <!-- ============ Prestige overhaul (v1.14.0) ============ -->
