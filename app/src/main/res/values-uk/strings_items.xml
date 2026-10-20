@@ -1284,15 +1284,15 @@
     <string name="item_blood_bolt_desc">A moderate blood spell that bolts your foe.</string> <!-- untranslated -->
     <string name="item_blood_blast_name">Blood Blast</string> <!-- untranslated -->
     <string name="item_blood_blast_desc">A powerful blood spell that blasts your foe.</string> <!-- untranslated -->
-    <string name="item_blood_wave_name">Blood Wave</string> <!-- untranslated -->
-    <string name="item_blood_wave_desc">A devastating blood spell that waves across your foe.</string> <!-- untranslated -->
-    <string name="item_spirit_herb_name">Spirit Herb</string> <!-- untranslated -->
-    <string name="item_spirit_herb_desc">A rare herb used in high-level herblore. Requires Mercantile level 20 to purchase.</string> <!-- untranslated -->
-    <string name="item_celestial_bloom_name">Celestial Bloom</string> <!-- untranslated -->
-    <string name="item_celestial_bloom_desc">An ethereal flower used in master potions. Requires Mercantile level 40 to purchase.</string> <!-- untranslated -->
-    <string name="item_void_lotus_name">Void Lotus</string> <!-- untranslated -->
-    <string name="item_void_lotus_desc">A mysterious lotus used in the rarest concoctions. Requires Mercantile level 60 to purchase.</string> <!-- untranslated -->
-    <string name="crop_magic_bean_name">Magic Bean</string> <!-- untranslated -->
+    <string name="item_blood_wave_name">Хвиля крові</string>
+    <string name="item_blood_wave_desc">Нищівне заклинання крові, що б\'є хвилею по вашому ворогу.</string>
+    <string name="item_spirit_herb_name">Духовна трава</string>
+    <string name="item_spirit_herb_desc">Рідкісна трава, яка використовується в Травознавстві високого рівня. Для придбання необхідний 20-й рівень Торгівлі.</string>
+    <string name="item_celestial_bloom_name">Небесний цвіт</string>
+    <string name="item_celestial_bloom_desc">Неземна квітка, що використовується у приготуванні магічних зіль. Для придбання необхідний 40-й рівень Торгівлі.</string>
+    <string name="item_void_lotus_name">Лотос пустоти</string>
+    <string name="item_void_lotus_desc">Таємничий лотос, який використовується у найрідкісніших мікстурах. Для придбання необхідний 60-й рівень Торгівлі.</string>
+    <string name="crop_magic_bean_name">Чарівна квасолина</string>
 
     <!-- Seasonal rotation gear -->
     <string name="item_sunstone_ring_desc">A ring set with a shard of solstice sunlight. Warm to the touch, even in winter.</string> <!-- untranslated -->

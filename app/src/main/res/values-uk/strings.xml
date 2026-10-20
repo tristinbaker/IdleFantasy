@@ -116,8 +116,8 @@
     <string name="duration_complete">Виконано</string>
     <string name="label_session_results">Результати Сесії</string>
     <string name="label_xp_gained">XP отримано</string>
-    <string name="label_time_elapsed">Time elapsed</string> <!-- untranslated -->
-    <string name="label_items_collected">Items collected</string> <!-- untranslated -->
+    <string name="label_time_elapsed">Витрачений час</string>
+    <string name="label_items_collected">Зібрані предмети</string>
     <string name="label_level_ups">Рівнів піднято</string>
     <string name="label_requirements">Вимоги</string>
     <string name="label_rewards">Нагороди</string>
