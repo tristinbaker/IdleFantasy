@@ -1596,7 +1596,7 @@
     <string name="elder_isle_zone_beach">Strand &amp; Klippen</string>
     <string name="elder_isle_zone_forest">Uralter Forst</string>
     <string name="elder_isle_zone_volcano">Vulkanspitze</string>
-    <string name="elder_isle_zone_abyss">Abyssal Depths</string> <!-- untranslated -->
+    <string name="elder_isle_zone_abyss">Ewige Tiefen</string>
     <string name="elder_isle_zone_locked">Gesperrt</string>
     <string name="elder_isle_coming_soon">Demnächst verfügbar</string>
     <string name="elder_isle_boss_sea_serpent">Seeschlange</string>
@@ -1612,7 +1612,7 @@
     <string name="boss_masked_name">\?\?\?</string>
     <string name="boss_last_elder_masked_desc">Etwas Uraltes schlummert in den Tiefen der Insel. Sammle das volle Ältesten Set zusammen, um dich ihm zu stellen.</string>
     <string name="elder_isle_welcome_title">Landung an der Ältesteninsel</string>
-    <string name="elder_isle_welcome_body">The salt spray fades and the fog lifts. Ahead: a bone-white shore, a jungle laced with pale runes, and further in, smoke curling from a peak that shouldn\'t be smoking. The old sailors were right. Something ancient still lives here.\n\nYour mainland skills, boosts, and gear stay on the ship. Everything you level or craft on the isle grows a separate track of its own. Elder gear will carry back to the mainland; mainland power will not carry here.\n\nStart with the Skills tab. Head to Mining or Woodcutting to gather isle materials. Then check the Quests tab for your first objective, and open the Lore Master in town whenever a new fragment unlocks.</string> <!-- untranslated -->
+    <string name="elder_isle_welcome_body">Das salzige Sprühwasser schwindet und der Nebel hebt sich. Vor uns: eine knochenweiße Küste, ein Dschungel übersät mit fahlen Runen und weiter im Lande kräuselt sich Rauch von einem Hügel, der nicht rauchen sollte. Die alten Segelleute haben Recht, etwas Uraltes lebt immer noch hier.\n\nIhre Festland Fähigkeiten, Boosts und Ausrüstungen bleiben an Bord. Alles was Ihr auf der Insel levelt oder herstellt wird separat festgehalten. Ältesten Ausrüstung wird mitgenommen zum Festland. Festland Fähigkeiten zählen hier nichts.\n\nStartet mit dem Fähigkeiten Reiter. Beginnt mit Bergbau oder Holzfällereri, um Inselmaterialien zu sammeln. Dann prüft den Aufgaben Reiter für euer erstes Ziel und öffnet den Weisheitsmeister in der Stadt wenn ihr ein neues Fragment freigeschaltet habt.</string>
     <string name="elder_isle_welcome_cta">Trete an Land</string>
     <string name="elder_isle_stub_skills">Elder skills are being charted. Full skill tracks arrive in a later build.</string> <!-- untranslated -->
     <string name="elder_isle_stub_combat">Elder dungeons and the Last Elder fight are being drawn up. Later build.</string> <!-- untranslated -->
