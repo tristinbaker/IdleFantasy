@@ -1348,7 +1348,7 @@
     <string name="house_item_shield_kite">Normannenschild</string>
     <string name="house_item_swords_crossed">Gekreuzte Schwerter</string>
     <string name="house_item_lamp">Wandlaterne</string>
-    <string name="slayer_title">Trophäenjagd</string>
+    <string name="slayer_title">Meister der Trophäenjagd</string>
     <string name="slayer_card_desc">Aufträge und Belohnungen für Trophäenjagd</string>
     <string name="slayer_desc">Beendet Aufträge, um Trophäenjagd-EP und Punkte zu verdienen. Erhaltet dafür exklusive Ausrüstung im Kontor des Trophäenjäger.</string>
     <string name="slayer_level_label">Level %1$d</string>
@@ -1365,7 +1365,7 @@
     <string name="slayer_task_complete">Auftrag abgeschlossen! Besucht den Trophäenjäger, um eine neuen Auftrag zu erhalten.</string>
     <string name="slayer_xp_per_kill">%1$d EP/Monster</string>
     <string name="slayer_points_on_complete">+%1$d Pkt. bei Abschluss</string>
-    <string name="slayer_shop_title">Kontor des Trophäenjäger</string>
+    <string name="slayer_shop_title">Kontor des Trophäenjägers</string>
     <string name="slayer_shop_cost">%1$d Pkt.</string>
     <string name="slayer_not_enough_points">Nicht genug Trophäenjagd-Punkte.</string>
     <string name="slayer_already_owned">Bereits im Besitz.</string>
