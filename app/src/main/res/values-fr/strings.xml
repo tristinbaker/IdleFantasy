@@ -1637,8 +1637,8 @@
     <string name="elder_isle_dungeon_boss">The Last Elder</string> <!-- untranslated -->
     <string name="elder_isle_tab_dungeons">Dungeons</string> <!-- untranslated -->
     <string name="elder_isle_tab_bosses">Bosses</string> <!-- untranslated -->
-    <string name="elder_isle_shop_title">Isle Shop</string> <!-- untranslated -->
-    <string name="elder_isle_shop_buy">Buy</string> <!-- untranslated -->
+    <string name="elder_isle_shop_title">Boutique de l\'Île</string>
+    <string name="elder_isle_shop_buy">Acheter</string>
     <string name="elder_isle_shop_soon">Coming later</string> <!-- untranslated -->
     <string name="elder_isle_shop_insufficient">Not enough Elder Essence.</string> <!-- untranslated -->
     <string name="elder_isle_shop_purchased">Purchased %1$s.</string> <!-- untranslated -->
