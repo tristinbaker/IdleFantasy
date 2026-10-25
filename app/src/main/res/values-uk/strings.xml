@@ -116,8 +116,8 @@
     <string name="duration_complete">Виконано</string>
     <string name="label_session_results">Результати Сесії</string>
     <string name="label_xp_gained">XP отримано</string>
-    <string name="label_time_elapsed">Time elapsed</string> <!-- untranslated -->
-    <string name="label_items_collected">Items collected</string> <!-- untranslated -->
+    <string name="label_time_elapsed">Витрачений час</string>
+    <string name="label_items_collected">Зібрані предмети</string>
     <string name="label_level_ups">Рівнів піднято</string>
     <string name="label_requirements">Вимоги</string>
     <string name="label_rewards">Нагороди</string>
@@ -142,9 +142,9 @@
     <string name="inventory_cat_other">Інше</string>
     <string name="inventory_cat_raw_food">Сира їжа</string>
     <string name="inventory_cat_ammunition">Ammunition</string> <!-- untranslated -->
-    <string name="inventory_cat_ores">Ores &amp; Gems</string> <!-- untranslated -->
-    <string name="inventory_cat_construction">Construction</string> <!-- untranslated -->
-    <string name="inventory_cat_seeds">Seeds &amp; Crops</string> <!-- untranslated -->
+    <string name="inventory_cat_ores">Руди та Дорогоцінні камені</string>
+    <string name="inventory_cat_construction">Будівництво</string>
+    <string name="inventory_cat_seeds">Насіння та Зернові культури</string>
     <string name="inventory_cat_filter_all">Все</string>
     <string name="label_combat_style">Стиль Бою</string>
     <string name="label_active_spell">Активне заклинання</string>
@@ -185,7 +185,7 @@
     <string name="label_gathering">Збиральництво</string>
     <string name="label_crafting">Crafting</string> <!-- untranslated -->
     <string name="label_jewellery">Ювелірні вироби</string>
-    <string name="label_combat">Combat</string> <!-- untranslated -->
+    <string name="label_combat">Бій</string>
     <string name="label_recipe">Рецепт</string>
     <string name="label_recipes">Рецепти</string>
     <string name="label_ingredients">Інгрідієнти</string>
@@ -193,9 +193,9 @@
     <string name="label_xp_per_action">XP за дію</string>
     <string name="label_unlocked_at">Розблокується на рівні</string>
     <string name="label_kills">Вбивств</string>
-    <string name="label_personal_best">Personal Best</string> <!-- untranslated -->
+    <string name="label_personal_best">Особистий рекорд</string>
     <string name="label_daily_dig">Daily Dig</string> <!-- untranslated -->
-    <string name="label_dig_depth">Hole Depth</string> <!-- untranslated -->
+    <string name="label_dig_depth">Глибина діри</string>
     <string name="label_version">Версія</string>
 
 
@@ -203,9 +203,9 @@
     <!-- Translator note: %1$d = level number, %2$s = formatted XP string -->
     <string name="format_level_xp">Level %1$d — %2$s XP</string> <!-- untranslated -->
     <!-- Translator note: %1$s = formatted XP amount, %2$d = target level number -->
-    <string name="format_xp_to_next">%1$s XP to level %2$d</string> <!-- untranslated -->
+    <string name="format_xp_to_next">%1$s XP до рівня %2$d</string>
     <!-- Translator note: %1$s = formatted XP amount remaining to reach the level cap (99) -->
-    <string name="xp_to_99">%1$s XP to 99</string> <!-- untranslated -->
+    <string name="xp_to_99">%1$s XP до 99</string>
     <!-- Translator note: %1$s = time string (e.g. "42m 10s") -->
     <string name="format_time_remaining">%1$s залишилось</string>
     <!-- Translator note: %1$s = relative time (e.g. "5m ago") -->
@@ -215,7 +215,7 @@
     <!-- Translator note: %1$d = coin amount -->
     <string name="format_price_coins">%1$d монет</string>
     <!-- Translator note: %1$d = required level, %2$s = skill display name -->
-    <string name="format_level_requirement">Requires level %1$d %2$s</string> <!-- untranslated -->
+    <string name="format_level_requirement">Потрібен рівень %1$d %2$s</string>
     <!-- Translator note: %1$s = formatted XP amount -->
     <string name="format_xp_per_action">%1$s XP за дію</string>
     <!-- Translator note: %1$d = patch number -->
@@ -223,7 +223,7 @@
     <!-- Translator note: %1$d = wins, %2$d = losses -->
     <string name="format_arena_record">%1$d перемог / %2$d поразок</string>
     <!-- Translator note: %1$s = skill display name, %2$d = level number -->
-    <string name="format_skill_level">%1$s: Level %2$d</string> <!-- untranslated -->
+    <string name="format_skill_level">%1$s: Рівень %2$d</string>
     <!-- Translator note: %1$d = boost percentage -->
     <string name="format_xp_boost_percent">+%1$d%% XP</string> <!-- untranslated -->
     <string name="format_coin_boost_percent">+%1$d%% Монет</string>
@@ -274,9 +274,9 @@
     <string name="error_level_too_low">Ваш %1$s рівень занизький.</string>
     <!-- Translator note: %1$s = item display name -->
     <string name="error_inventory_required">You need %1$s to do this.</string> <!-- untranslated -->
-    <string name="error_patch_occupied">This patch is already planted.</string> <!-- untranslated -->
-    <string name="error_patch_empty">This patch is empty.</string> <!-- untranslated -->
-    <string name="error_crop_not_ready">This crop is not ready yet.</string> <!-- untranslated -->
+    <string name="error_patch_occupied">Ця латка вже засаджена.</string>
+    <string name="error_patch_empty">Ця латка порожня.</string>
+    <string name="error_crop_not_ready">Ця рослина ще не дозріла.</string>
     <string name="error_quest_active">You already have an active quest.</string> <!-- untranslated -->
     <string name="error_quest_requirements_not_met">You don\'t meet the requirements for this quest.</string> <!-- untranslated -->
     <string name="error_dungeon_level_too_low">Your combat level is too low for this dungeon.</string> <!-- untranslated -->
@@ -1454,7 +1454,7 @@
     <string name="trade_route_grand_exchange_desc">Trade at the legendary Grand Exchange where fortunes are made and lost.</string> <!-- untranslated -->
     <string name="trade_route_merchants_quarter_desc">Trade rare commodities in the prestigious merchant district.</string> <!-- untranslated -->
     <string name="trade_route_northern_ports_desc">Sail precious cargo to the northern port cities. High risk, high reward.</string> <!-- untranslated -->
-    <string name="crafting_cat_bar">Злиток</string>
+    <string name="crafting_cat_bar">Зливок</string>
     <string name="crafting_cat_brew">Brew</string> <!-- untranslated -->
     <string name="crafting_cat_component">Component</string> <!-- untranslated -->
     <string name="crafting_cat_tool">Tool</string> <!-- untranslated -->

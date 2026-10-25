@@ -317,8 +317,8 @@
     <string name="item_slayer_helm_desc">Ein robuster Helm, wie Ihn erfahrene Trophäenjäger tragen.</string>
     <string name="item_abyssal_whip_name">Peitsche des Abgrunds</string>
     <string name="item_abyssal_whip_desc">Eine Peitsche, die aus der Kraft des Abgrunds geschmiedet wurde. Hervorragend für Krafttraining geeignet.</string>
-    <string name="item_slayer_platebody_name">Plattenpanzer des Trophäenjäger</string>
-    <string name="item_slayer_platebody_desc">Schwere Rüstung, in die Runen durch den Trophäenjäger eingeätzt wurden.</string>
+    <string name="item_slayer_platebody_name">Plattenpanzer des Trophäenjägers</string>
+    <string name="item_slayer_platebody_desc">Schwere Rüstung mit eingeätzten Runen des Trophäenjägers.</string>
     <string name="item_slayer_platelegs_name">Beinschienen des Trophäenjägers</string>
     <string name="item_slayer_platelegs_desc">Beinschutz, der extra für lange Besuche im Verlies hergestellt wurde.</string>
     <string name="item_slayer_plateskirt_name">Plattenrock des Trophäenjägers</string>
