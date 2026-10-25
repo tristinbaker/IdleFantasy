@@ -2,47 +2,47 @@
 <resources>
     <!-- ===== Ores ===== -->
     <string name="item_copper_ore_name">Мідна Руда</string>
-    <string name="item_copper_ore_desc">Розповсюджена руда. Поєднайте з олов\'яною рудою для виплавки бронзових злитків.</string>
+    <string name="item_copper_ore_desc">Розповсюджена руда. Поєднайте з олов\'яною рудою для виплавки бронзових зливків.</string>
     <string name="item_tin_ore_name">Олов\'яна Руда</string>
-    <string name="item_tin_ore_desc">Розповсюджена руда. Поєднайте з мідною рудою для виплавки бронзових злитків.</string>
+    <string name="item_tin_ore_desc">Розповсюджена руда. Поєднайте з мідною рудою для виплавки бронзових зливків.</string>
     <string name="item_iron_ore_name">Залізна Руда</string>
-    <string name="item_iron_ore_desc">Універсальна руда, що використовується для виплавки залізних та сталевих злитків.</string>
+    <string name="item_iron_ore_desc">Універсальна руда, що використовується для виплавки залізних та сталевих зливків.</string>
     <string name="item_coal_name">Вугілля</string>
-    <string name="item_coal_desc">Використовується як паливний компонент для виплавки сталевих та високорівневих злитків.</string>
+    <string name="item_coal_desc">Використовується як паливний компонент для виплавки сталевих та високорівневих зливків.</string>
     <string name="item_silver_ore_name">Срібна Руда</string>
-    <string name="item_silver_ore_desc">Дорогоцінна руда, що використовується для виплавки срібних злитків та ювелірних виробів.</string>
+    <string name="item_silver_ore_desc">Дорогоцінна руда, що використовується для виплавки срібних зливків та ювелірних виробів.</string>
     <string name="item_gold_ore_name">Золота Руда</string>
-    <string name="item_gold_ore_desc">Дорогоцінна руда, що використовується для виготовлення золотих злитків та коштовностей.</string>
+    <string name="item_gold_ore_desc">Дорогоцінна руда, що використовується для виготовлення золотих зливків та коштовностей.</string>
     <string name="item_mithril_ore_name">Міфрілова Руда</string>
     <string name="item_mithril_ore_desc">Рідкісна руда з магічними властивостями.</string>
     <string name="item_adamantite_ore_name">Адамантієва Руда</string>
     <string name="item_adamantite_ore_desc">Надзвичайно тверда та рідкісна руда.</string>
     <string name="item_platinum_ore_name">Плантинова Руда</string>
-    <string name="item_platinum_ore_desc">Рідкісна платина, що використовується для виплавки платинових злитків.</string>
+    <string name="item_platinum_ore_desc">Рідкісна платина, що використовується для виплавки платинових зливків.</string>
     <string name="item_runite_ore_name">Рунітна Руда</string>
     <string name="item_runite_ore_desc">Найрідкісніша руда, що можна видобути, що використовується для найміцнішого спорядження.</string>
     <string name="item_rune_essence_name">Есенція Рун</string>
     <string name="item_rune_essence_desc">Сирий магічний камінь, що використовується для виготовлення всіх типів рун.</string>
 
     <!-- ===== Metal bars ===== -->
-    <string name="item_bronze_bar_name">Бронзовий Злиток</string>
-    <string name="item_bronze_bar_desc">Виплавляється з мідної та олов\'яної руди. Найбазовіший металевий злиток.</string>
-    <string name="item_iron_bar_name">Залізний Злиток</string>
-    <string name="item_iron_bar_desc">Міцний залізний злиток, що використовується для виготовлення залізного спорядження.</string>
-    <string name="item_silver_bar_name">Срібний Злиток</string>
-    <string name="item_silver_bar_desc">Очищений срібний злиток, що використовується для виготовлення ювелірних виробів.</string>
-    <string name="item_steel_bar_name">Сталевий Злиток</string>
+    <string name="item_bronze_bar_name">Бронзовий Зливок</string>
+    <string name="item_bronze_bar_desc">Виплавляється з мідної та олов\'яної руди. Найбазовіший металевий зливок.</string>
+    <string name="item_iron_bar_name">Залізний Зливок</string>
+    <string name="item_iron_bar_desc">Міцний залізний зливок, що використовується для виготовлення залізного спорядження.</string>
+    <string name="item_silver_bar_name">Срібний Зливок</string>
+    <string name="item_silver_bar_desc">Очищений срібний зливок, що використовується для виготовлення ювелірних виробів.</string>
+    <string name="item_steel_bar_name">Сталевий Зливок</string>
     <string name="item_steel_bar_desc">Міцніше за залізо. Використовується для виготовлення сталевого спорядження.</string>
-    <string name="item_gold_bar_name">Золотий Злиток</string>
-    <string name="item_gold_bar_desc">Очищений золотий злиток, що використовується для виготовлення ювелірних виробів та золотого споряддження.</string>
-    <string name="item_mithril_bar_name">Міфріловий Злиток</string>
-    <string name="item_mithril_bar_desc">Легкий магічний металевий злиток.</string>
-    <string name="item_adamantite_bar_name">Адамантієвий Злиток</string>
-    <string name="item_adamantite_bar_desc">Надзвичайно міцний металевий злиток.</string>
-    <string name="item_platinum_bar_name">Платиновий Злиток</string>
-    <string name="item_platinum_bar_desc">Рідкісний та блискучий платиновий злиток для ювелірних виробів високого рівня.</string>
-    <string name="item_runite_bar_name">Рунітний Злиток</string>
-    <string name="item_runite_bar_desc">Найміцніший плавкий металевий злиток.</string>
+    <string name="item_gold_bar_name">Золотий Зливок</string>
+    <string name="item_gold_bar_desc">Очищений золотий зливок, що використовується для виготовлення ювелірних виробів та золотого спорядження.</string>
+    <string name="item_mithril_bar_name">Міфріловий Зливок</string>
+    <string name="item_mithril_bar_desc">Легкий магічний металевий зливок.</string>
+    <string name="item_adamantite_bar_name">Адамантієвий Зливок</string>
+    <string name="item_adamantite_bar_desc">Надзвичайно міцний металевий зливок.</string>
+    <string name="item_platinum_bar_name">Платиновий Зливок</string>
+    <string name="item_platinum_bar_desc">Рідкісний та блискучий платиновий зливок для ювелірних виробів високого рівня.</string>
+    <string name="item_runite_bar_name">Рунітний Зливок</string>
+    <string name="item_runite_bar_desc">Найміцніший плавкий металевий зливок.</string>
 
     <!-- ===== Gems ===== -->
     <string name="item_sapphire_name">Сапфір</string>
@@ -1284,15 +1284,15 @@
     <string name="item_blood_bolt_desc">A moderate blood spell that bolts your foe.</string> <!-- untranslated -->
     <string name="item_blood_blast_name">Blood Blast</string> <!-- untranslated -->
     <string name="item_blood_blast_desc">A powerful blood spell that blasts your foe.</string> <!-- untranslated -->
-    <string name="item_blood_wave_name">Blood Wave</string> <!-- untranslated -->
-    <string name="item_blood_wave_desc">A devastating blood spell that waves across your foe.</string> <!-- untranslated -->
-    <string name="item_spirit_herb_name">Spirit Herb</string> <!-- untranslated -->
-    <string name="item_spirit_herb_desc">A rare herb used in high-level herblore. Requires Mercantile level 20 to purchase.</string> <!-- untranslated -->
-    <string name="item_celestial_bloom_name">Celestial Bloom</string> <!-- untranslated -->
-    <string name="item_celestial_bloom_desc">An ethereal flower used in master potions. Requires Mercantile level 40 to purchase.</string> <!-- untranslated -->
-    <string name="item_void_lotus_name">Void Lotus</string> <!-- untranslated -->
-    <string name="item_void_lotus_desc">A mysterious lotus used in the rarest concoctions. Requires Mercantile level 60 to purchase.</string> <!-- untranslated -->
-    <string name="crop_magic_bean_name">Magic Bean</string> <!-- untranslated -->
+    <string name="item_blood_wave_name">Хвиля крові</string>
+    <string name="item_blood_wave_desc">Нищівне заклинання крові, що б\'є хвилею по вашому ворогу.</string>
+    <string name="item_spirit_herb_name">Духовна трава</string>
+    <string name="item_spirit_herb_desc">Рідкісна трава, яка використовується в Травознавстві високого рівня. Для придбання необхідний 20-й рівень Торгівлі.</string>
+    <string name="item_celestial_bloom_name">Небесний цвіт</string>
+    <string name="item_celestial_bloom_desc">Неземна квітка, що використовується у приготуванні магічних зіль. Для придбання необхідний 40-й рівень Торгівлі.</string>
+    <string name="item_void_lotus_name">Лотос пустоти</string>
+    <string name="item_void_lotus_desc">Таємничий лотос, який використовується у найрідкісніших мікстурах. Для придбання необхідний 60-й рівень Торгівлі.</string>
+    <string name="crop_magic_bean_name">Чарівна квасолина</string>
 
     <!-- Seasonal rotation gear -->
     <string name="item_sunstone_ring_desc">A ring set with a shard of solstice sunlight. Warm to the touch, even in winter.</string> <!-- untranslated -->
