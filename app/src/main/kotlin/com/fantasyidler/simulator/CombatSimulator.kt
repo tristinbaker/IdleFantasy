@@ -655,6 +655,7 @@ object CombatSimulator {
                         minute = frames.size, xpGain = 0, xpBefore = 0L, xpAfter = 0L,
                         levelBefore = 0, levelAfter = 0,
                         kills = 0, enemyKey = bossKey,
+                        died = true,
                         playerHits = pHits, doubleHitTicks = pDoubleHitTicks, enemyHits = eHits, playerHeals = pHeals, hpAfter = 0,
                         foodConsumed  = frameFood,
                         arrowsConsumed = frameArrows,
