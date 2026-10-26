@@ -1612,7 +1612,11 @@
     <string name="boss_masked_name">\?\?\?</string>
     <string name="boss_last_elder_masked_desc">Etwas Uraltes schlummert in den Tiefen der Insel. Sammle das volle Ältesten Set zusammen, um dich ihm zu stellen.</string>
     <string name="elder_isle_welcome_title">Landung an der Ältesteninsel</string>
-    <string name="elder_isle_welcome_body">Das salzige Sprühwasser schwindet und der Nebel hebt sich. Vor uns: eine knochenweiße Küste, ein Dschungel übersät mit fahlen Runen und weiter im Lande kräuselt sich Rauch von einem Hügel, der nicht rauchen sollte. Die alten Segelleute haben Recht, etwas Uraltes lebt immer noch hier.\n\nIhre Festland Fähigkeiten, Boosts und Ausrüstungen bleiben an Bord. Alles was Ihr auf der Insel levelt oder herstellt wird separat festgehalten. Ältesten Ausrüstung wird mitgenommen zum Festland. Festland Fähigkeiten zählen hier nichts.\n\nStartet mit dem Fähigkeiten Reiter. Beginnt mit Bergbau oder Holzfällereri, um Inselmaterialien zu sammeln. Dann prüft den Aufgaben Reiter für euer erstes Ziel und öffnet den Weisheitsmeister in der Stadt wenn ihr ein neues Fragment freigeschaltet habt.</string>
+    <string name="elder_isle_welcome_body">Das salzige Sprühwasser schwindet und der Nebel hebt sich. Vor uns: eine knochenweiße Küste, ein Dschungel übersät mit fahlen Runen und weiter im Lande kräuselt sich Rauch von einem Hügel, der nicht rauchen sollte. Die alten Segelleute haben Recht, etwas Uraltes lebt immer noch hier.
+\n
+\nIhre Festland Fähigkeiten, Boosts und Ausrüstungen bleiben an Bord. Alles was Ihr auf der Insel levelt oder herstellt wird separat festgehalten. Ältesten Ausrüstung wird mitgenommen zum Festland. Festland Fähigkeiten zählen hier nichts.
+\n
+\nStartet mit dem Fähigkeiten Reiter. Beginnt mit Bergbau oder Holzfällereri, um Inselmaterialien zu sammeln. Dann prüft den Aufgaben Reiter für euer erstes Ziel und öffnet den Weisheitsmeister in der Stadt wenn ihr ein neues Fragment freigeschaltet habt.</string>
     <string name="elder_isle_welcome_cta">Trete an Land</string>
     <string name="elder_isle_stub_skills">Elder skills are being charted. Full skill tracks arrive in a later build.</string> <!-- untranslated -->
     <string name="elder_isle_stub_combat">Elder dungeons and the Last Elder fight are being drawn up. Later build.</string> <!-- untranslated -->
@@ -2161,9 +2165,9 @@
     <string name="seasonal_bounty_sunspire_kindling_hint">Fällt Weidenstämme — Holzfällerei</string>
     <string name="seasonal_bounty_sunspire_sunore_name">Grabt nach Gold um den Sonnenturm zu vergolden	</string>
     <string name="seasonal_bounty_sunspire_sunore_hint">Grabt nach Gold — Bergbau</string>
-    <string name="seasonal_bounty_sunspire_draughts_name">Braut Stärke-Zaubertrank</string>
+    <string name="seasonal_bounty_sunspire_draughts_name">Braut Stärketrank</string>
     <string name="seasonal_bounty_sunspire_draughts_hint">Kräuterkunde</string>
-    <string name="seasonal_bounty_sunspire_embers_brew_name">Braut Angriffs-Zaubertrank für die Sonnenwenden-Wache</string>
+    <string name="seasonal_bounty_sunspire_embers_brew_name">Braut Angriffstrank für die Sonnenwenden-Wache</string>
     <string name="seasonal_bounty_sunspire_embers_brew_hint">Kräuterkunde</string>
     <string name="seasonal_bounty_sunspire_sunfire_arrows_name">Fertigt Mithrilpfeile um die Irrlichter abzuhalten</string>
     <string name="seasonal_bounty_sunspire_sunfire_arrows_hint">Pfeilfertigung</string>
@@ -2213,7 +2217,7 @@
     <string name="seasonal_bounty_gloom_swordfish_hint">Fangt rohe Schwertfische (Fischen)</string>
     <string name="seasonal_bounty_gloom_mithril_name">Grabt Mithril, um die Tore zu schützen</string>
     <string name="seasonal_bounty_gloom_mithril_hint">Grabt nach Mithril-Erz (Bergbau)</string>
-    <string name="seasonal_bounty_gloom_brews_name">Braut Verteidigungs-Zaubertränke für die Nachtwache</string>
+    <string name="seasonal_bounty_gloom_brews_name">Braut Verteidigungstränke für die Nachtwache</string>
     <string name="seasonal_bounty_gloom_brews_hint">Kräuterkunde</string>
     <string name="seasonal_bounty_gloom_shortbows_name">Fertigt Ahorn-Kurzbögen für die Wächter</string>
     <string name="seasonal_bounty_gloom_shortbows_hint">Pfeilfertigung</string>
@@ -2517,7 +2521,7 @@
     <string name="prestige_effect_pet_boost_pct">Pet boosts for this skill are %1$d%% stronger.</string> <!-- untranslated -->
     <string name="prestige_effect_blessing_duration_pct">Kirchliche Segen halten %1$d%% länger an.</string>
     <string name="prestige_effect_blessing_cost_pct">Kirchliche Segen kosten %1$d%% weniger Knochen.</string>
-    <string name="prestige_effect_potion_bonus_flat">Combat potions grant +%1$d more to their stats.</string> <!-- untranslated -->
+    <string name="prestige_effect_potion_bonus_flat">Kampftränke gewähren +%1$d Vorteil gegenüber ihren Werten.</string>
     <string name="prestige_effect_input_save_pct">%1$d%% der Materialien werden erstattet.</string>
     <string name="prestige_effect_builder_discount_pct">Gebäude-Verbesserungen kosten %1$d%% weniger.</string>
     <string name="prestige_effect_sell_price_pct">Verkaufspreise beim Krämer +%1$d%%.</string>
@@ -2710,7 +2714,7 @@
     <string name="seasonal_bounty_frost_steel_hint">Smithing</string> <!-- untranslated -->
     <string name="seasonal_bounty_frost_arrows_name">Fletch Adamant arrows for the wall watch</string> <!-- untranslated -->
     <string name="seasonal_bounty_frost_arrows_hint">Fletching</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_ranging_name">Brew Ranging Potions for the wall archers</string> <!-- untranslated -->
+    <string name="seasonal_bounty_frost_ranging_name">Braue Reichweitentränke für die Bogenschützen der Mauer</string>
     <string name="seasonal_bounty_frost_ranging_hint">Herblore</string> <!-- untranslated -->
     <string name="seasonal_bounty_frost_water_runes_name">Craft Water Runes to bind the ice</string> <!-- untranslated -->
     <string name="seasonal_bounty_frost_water_runes_hint">Runecrafting</string> <!-- untranslated -->
@@ -2795,6 +2799,6 @@
     <string name="pet_snowhare_desc">A snow-white hare that sniffs out the best fishing holes in the ice.</string> <!-- untranslated -->
     <string name="pet_petal_sprite_name">Petal Sprite</string> <!-- untranslated -->
     <string name="pet_petal_sprite_desc">A blossom spirit shaken loose from the Thorn Queen\'s crown. It dances ahead of you into battle.</string> <!-- untranslated -->
-    <string name="pet_bumblebee_name">Bumblebee</string> <!-- untranslated -->
-    <string name="pet_bumblebee_desc">A busy little bee that knows exactly which flowers make the best potions.</string> <!-- untranslated -->
+    <string name="pet_bumblebee_name">Hummel</string>
+    <string name="pet_bumblebee_desc">Eine fleißige kleine Biene, die genau weiß, welche Blüten für die besten Tränke benutzt werden.</string>
 </resources>
