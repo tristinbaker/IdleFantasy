@@ -2496,9 +2496,9 @@
     <string name="prestige_effect_xp_pct">该技能经验 +%1$d%%。</string>
     <string name="prestige_effect_yield_pct">该技能会话产出 +%1$d%%。</string>
     <!-- Translator note: %1$s = yield percent per interval (may be fractional) -->
-    <string name="prestige_effect_flow_rate">心流状态：持续活动每经过一个间隔，产出 +%1$s%%，最高 +100%%。</string>
+    <string name="prestige_effect_flow_rate">Flow-state: +%1$s%% items (not XP) per full interval of flow time. Flow time is the session\'s length × (1 + sessions of this skill collected right before it). Up to +100%%.</string> <!-- untranslated -->
     <!-- Translator note: %1$d = minutes removed from the flow interval -->
-    <string name="prestige_effect_flow_interval_reduction">心流状态间隔缩短 %1$d 分钟。</string>
+    <string name="prestige_effect_flow_interval_reduction">Flow-state interval (base 60 minutes) shortened by %1$d minutes, so more intervals fit into the same time.</string> <!-- untranslated -->
     <string name="prestige_effect_combat_stat_flat">战斗中有效等级 +%1$d。</string>
     <!-- Translator note: %1$s = minutes (may be fractional) -->
     <string name="prestige_effect_session_floor_min">在 99 级时会话缩短最多 %1$s 分钟。</string>

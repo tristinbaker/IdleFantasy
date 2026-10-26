@@ -2497,9 +2497,9 @@
     <string name="prestige_effect_xp_pct">+%1$d%% d\'XP dans cette aptitude.</string>
     <string name="prestige_effect_yield_pct">+%1$d%% d\'objets dans les sessions de cette aptitude.</string>
     <!-- Translator note: %1$s = yield percent per interval (may be fractional) -->
-    <string name="prestige_effect_flow_rate">État de concentration : +%1$s%% de rendement par intervalle d\'activité continue, jusqu\'à +100%%.</string>
+    <string name="prestige_effect_flow_rate">Flow-state: +%1$s%% items (not XP) per full interval of flow time. Flow time is the session\'s length × (1 + sessions of this skill collected right before it). Up to +100%%.</string> <!-- untranslated -->
     <!-- Translator note: %1$d = minutes removed from the flow interval -->
-    <string name="prestige_effect_flow_interval_reduction">L\'intervalle de l\'état de concentration réduit de %1$d minutes.</string>
+    <string name="prestige_effect_flow_interval_reduction">Flow-state interval (base 60 minutes) shortened by %1$d minutes, so more intervals fit into the same time.</string> <!-- untranslated -->
     <string name="prestige_effect_combat_stat_flat">+%1$d niveaux effectifs en combat.</string>
     <!-- Translator note: %1$s = minutes (may be fractional) -->
     <string name="prestige_effect_session_floor_min">Sessions sont jusqu\'à %1$s minutes plus courtes au niveau 99</string>

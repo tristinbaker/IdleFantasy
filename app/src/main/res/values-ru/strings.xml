@@ -2518,9 +2518,9 @@
     <string name="prestige_effect_xp_pct">+%1$d%% опыта для этого навыка.</string>
     <string name="prestige_effect_yield_pct">+%1$d%% предметов из сессий этого навыка.</string>
     <!-- Translator note: %1$s = yield percent per interval (may be fractional) -->
-    <string name="prestige_effect_flow_rate">Состояние потока: +%1$s%% добычи за период постоянной активности, с максимумом в +100%%.</string>
+    <string name="prestige_effect_flow_rate">Flow-state: +%1$s%% items (not XP) per full interval of flow time. Flow time is the session\'s length × (1 + sessions of this skill collected right before it). Up to +100%%.</string> <!-- untranslated -->
     <!-- Translator note: %1$d = minutes removed from the flow interval -->
-    <string name="prestige_effect_flow_interval_reduction">Период состояния потока уменьшен на %1$d минут</string>
+    <string name="prestige_effect_flow_interval_reduction">Flow-state interval (base 60 minutes) shortened by %1$d minutes, so more intervals fit into the same time.</string> <!-- untranslated -->
     <string name="prestige_effect_combat_stat_flat">Эффективные уровни в бою: +%1$d.</string>
     <!-- Translator note: %1$s = minutes (may be fractional) -->
     <string name="prestige_effect_session_floor_min">Сессии на %1$s минут короче на уровне 99.</string>
