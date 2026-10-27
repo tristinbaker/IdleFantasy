@@ -99,32 +99,32 @@
     <string name="item_raw_manta_ray_desc">Syrová manta. Před jídlem ji uvař.</string>
 
     <!-- ===== Cooked fish ===== -->
-    <string name="item_shrimp_name">Uvařená kreveta</string>
-    <string name="item_shrimp_desc">Uvařená kreveta. Doplní malé množství životů.</string>
-    <string name="item_sardine_name">Uvařená sardinka</string>
-    <string name="item_sardine_desc">Uvařená sardinka. Po snědení doplní životy.</string>
-    <string name="item_herring_name">Uvařený sleď</string>
-    <string name="item_herring_desc">Uvařený sleď. Po snědení doplní životy.</string>
-    <string name="item_mackerel_name">Uvařená makrela</string>
-    <string name="item_mackerel_desc">Uvařená makrela. Po snědení doplní životy.</string>
-    <string name="item_trout_name">Uvařený pstruh</string>
-    <string name="item_trout_desc">Uvařený pstruh. Po snědení doplní životy.</string>
-    <string name="item_salmon_name">Uvařený losos</string>
-    <string name="item_salmon_desc">Uvařený losos. Po snědení doplní životy.</string>
-    <string name="item_tuna_name">Uvařený tuňák</string>
-    <string name="item_tuna_desc">Uvařený tuňák. Po snědení doplní životy.</string>
-    <string name="item_lobster_name">Uvařený humr</string>
-    <string name="item_lobster_desc">Uvařený humr. Doplní hodně životů.</string>
-    <string name="item_swordfish_name">Uvařený mečoun</string>
-    <string name="item_swordfish_desc">Uvařený mečoun. Doplní značné množství životů.</string>
-    <string name="item_monkfish_name">Uvařený mořský čert</string>
-    <string name="item_monkfish_desc">Uvařený mořský čert. Doplní solidní množství životů.</string>
-    <string name="item_shark_name">Uvařený žralok</string>
-    <string name="item_shark_desc">Uvařený žralok. Doplní velké množství životů.</string>
-    <string name="item_sea_turtle_name">Uvařená mořská želva</string>
-    <string name="item_sea_turtle_desc">Uvařená mořská želva. Doplní nesmírné množství životů.</string>
-    <string name="item_manta_ray_name">Uvařená manta</string>
-    <string name="item_manta_ray_desc">Uvařená manta. Jeden z nejlepších pokrmů, jaké lze získat.</string>
+    <string name="item_shrimp_name">Vařená kreveta</string>
+    <string name="item_shrimp_desc">Vařená kreveta. Doplní malé množství životů.</string>
+    <string name="item_sardine_name">Vařená sardinka</string>
+    <string name="item_sardine_desc">Vařená sardinka. Po snědení doplní životy.</string>
+    <string name="item_herring_name">Vařený sleď</string>
+    <string name="item_herring_desc">Vařený sleď. Po snědení doplní životy.</string>
+    <string name="item_mackerel_name">Vařená makrela</string>
+    <string name="item_mackerel_desc">Vařená makrela. Po snědení doplní životy.</string>
+    <string name="item_trout_name">Vařený pstruh</string>
+    <string name="item_trout_desc">Vařený pstruh. Po snědení doplní životy.</string>
+    <string name="item_salmon_name">Vařený losos</string>
+    <string name="item_salmon_desc">Vařený losos. Po snědení doplní životy.</string>
+    <string name="item_tuna_name">Vařený tuňák</string>
+    <string name="item_tuna_desc">Vařený tuňák. Po snědení doplní životy.</string>
+    <string name="item_lobster_name">Vařený humr</string>
+    <string name="item_lobster_desc">Vařený humr. Doplní hodně životů.</string>
+    <string name="item_swordfish_name">Vařený mečoun</string>
+    <string name="item_swordfish_desc">Vařený mečoun. Doplní značné množství životů.</string>
+    <string name="item_monkfish_name">Vařený mořský čert</string>
+    <string name="item_monkfish_desc">Vařený mořský čert. Doplní solidní množství životů.</string>
+    <string name="item_shark_name">Vařený žralok</string>
+    <string name="item_shark_desc">Vařený žralok. Doplní velké množství životů.</string>
+    <string name="item_sea_turtle_name">Vařená mořská želva</string>
+    <string name="item_sea_turtle_desc">Vařená mořská želva. Doplní nesmírné množství životů.</string>
+    <string name="item_manta_ray_name">Vařená manta</string>
+    <string name="item_manta_ray_desc">Vařená manta. Jeden z nejlepších pokrmů, jaké lze získat.</string>
 
     <!-- ===== Raw meat ===== -->
     <string name="item_raw_rat_meat_name">Syrové krysí maso</string>
@@ -139,14 +139,14 @@
     <string name="item_raw_meat_desc">Neznámé syrové maso. Před jídlem je uvař.</string>
 
     <!-- ===== Cooked meat ===== -->
-    <string name="item_cooked_rat_meat_name">Uvařené krysí maso</string>
-    <string name="item_cooked_rat_meat_desc">Uvařené krysí maso. Sotva poživatelné, ale doplní nepatrné množství životů.</string>
-    <string name="item_cooked_chicken_name">Uvařené kuře</string>
-    <string name="item_cooked_chicken_desc">Uvařené kuře. Po snědení doplní životy.</string>
-    <string name="item_cooked_mutton_name">Uvařené skopové</string>
-    <string name="item_cooked_mutton_desc">Uvařené skopové maso. Po snědení doplní životy.</string>
-    <string name="item_cooked_beef_name">Uvařené hovězí</string>
-    <string name="item_cooked_beef_desc">Uvařené hovězí maso. Po snědení doplní životy.</string>
+    <string name="item_cooked_rat_meat_name">Vařené krysí maso</string>
+    <string name="item_cooked_rat_meat_desc">Vařené krysí maso. Sotva poživatelné, ale doplní nepatrné množství životů.</string>
+    <string name="item_cooked_chicken_name">Vařené kuře</string>
+    <string name="item_cooked_chicken_desc">Vařené kuře. Po snědení doplní životy.</string>
+    <string name="item_cooked_mutton_name">Vařené skopové</string>
+    <string name="item_cooked_mutton_desc">Vařené skopové maso. Po snědení doplní životy.</string>
+    <string name="item_cooked_beef_name">Vařené hovězí</string>
+    <string name="item_cooked_beef_desc">Vařené hovězí maso. Po snědení doplní životy.</string>
 
     <!-- ===== Melee weapons — bronze ===== -->
     <string name="item_bronze_sword_name">Bronzový meč</string>
@@ -468,7 +468,7 @@
     <string name="item_bread_name">Chléb</string>
     <string name="item_leather_name">Useň</string>
     <string name="item_flour_name">Mouka</string>
-    <string name="item_cooked_trout_name">Uvařený pstruh</string>
+    <string name="item_cooked_trout_name">Vařený pstruh</string>
     <string name="item_thread_name">Nit</string>
     <string name="item_ruby_ring_name">Rubínový prsten</string>
     <string name="item_diamond_ring_name">Diamantový prsten</string>
@@ -803,7 +803,7 @@
     <string name="item_balrog_name">Žár temnoty, prastarý plamen hlubin</string>
     <string name="item_balrog_whip_name">Planoucí bič Žáru temnoty</string>
     <string name="item_balrog_wings_name">Křídla Žáru temnoty</string>
-    <string name="item_beef_name">Uvařené hovězí</string>
+    <string name="item_beef_name">Vařené hovězí</string>
     <string name="item_berserker_ring_name">Zuřivcův prsten</string>
     <string name="item_berserker_ring_desc">Zvyšuje sílu v boji zblízka. K nákupu vyžaduje 60. úroveň kupectví.</string>
     <string name="item_blessed_fishing_rod_name">Požehnaný rybářský prut</string>
@@ -816,7 +816,7 @@
     <string name="item_bronze_med_helmet_name">Bronzová střední přilba</string>
     <string name="item_bronze_plateskirt_name">Bronzová plátová sukně</string>
     <string name="item_bronze_square_shield_name">Bronzový hranatý štít</string>
-    <string name="item_chicken_name">Uvařené kuře</string>
+    <string name="item_chicken_name">Vařené kuře</string>
     <string name="item_construction_guild_cape_name">Plášť Cechu stavitelů</string>
     <string name="item_cooking_cape_name">Plášť vaření</string>
     <string name="item_cooking_guild_cape_name">Plášť Kuchařského cechu</string>
@@ -888,7 +888,7 @@
     <string name="item_elven_shortbow_name">Elfí krátký luk</string>
     <string name="item_elven_longbow_name">Elfí dlouhý luk</string>
     <string name="item_maple_shortbow_name">Javorový krátký luk</string>
-    <string name="item_mercantile_guild_cape_name">Plášť Cechu obchodníků</string>
+    <string name="item_mercantile_guild_cape_name">Plášť Kupeckého cechu</string>
     <string name="item_mining_cape_name">Plášť dolování</string>
     <string name="item_mining_guild_cape_name">Plášť Hornického cechu</string>
     <string name="item_mithril_arrow_tip_name">Mithrilové hroty šípů</string>
@@ -901,14 +901,14 @@
     <string name="item_mithril_med_helmet_name">Mithrilová střední přilba</string>
     <string name="item_mithril_plateskirt_name">Mithrilová plátová sukně</string>
     <string name="item_mithril_square_shield_name">Mithrilový hranatý štít</string>
-    <string name="item_mutton_name">Uvařené skopové</string>
+    <string name="item_mutton_name">Vařené skopové</string>
     <string name="item_necklace_of_anguish_name">Náhrdelník úzkosti</string>
     <string name="item_necklace_of_anguish_desc">Poskytuje výjimečné bonusy k útoku na dálku. K nákupu vyžaduje 99. úroveň kupectví.</string>
     <string name="item_oak_shortbow_name">Dubový krátký luk</string>
     <string name="item_prayer_cape_name">Plášť modlitby</string>
     <string name="item_prayer_guild_cape_name">Plášť Cechu zbožnosti</string>
     <string name="item_ranged_cape_name">Plášť střelby</string>
-    <string name="item_rat_meat_name">Uvařené krysí maso</string>
+    <string name="item_rat_meat_name">Vařené krysí maso</string>
     <string name="item_ring_of_dragons_might_name">Prsten dračí moci</string>
     <string name="item_ring_of_flame_name">Prsten plamene</string>
     <string name="item_ring_of_recoil_name">Prsten odplaty</string>
@@ -1140,7 +1140,7 @@
     <string name="item_prayer_guild_cape_desc" formatted="false">Udělen za dosažení 10. úrovně v Cechu zbožnosti. Posílí tvé aktivní požehnání o 5 %.</string>
     <string name="item_mercantile_cape_name">Plášť kupectví</string>
     <string name="item_mercantile_cape_desc" formatted="false">Udělen za dosažení 99. úrovně v kupectví. Dává o 10 % lepší ceny v obchodech a výnosy z obchodování.</string>
-    <string name="item_mercantile_guild_cape_desc" formatted="false">Udělen za dosažení 10. úrovně v Cechu obchodníků. Dává o 5 % lepší ceny v obchodech a výnosy z obchodování.</string>
+    <string name="item_mercantile_guild_cape_desc" formatted="false">Udělen za dosažení 10. úrovně v Kupeckém cechu. Dává o 5 % lepší ceny v obchodech a výnosy z obchodování.</string>
     <string name="item_agility_cape_desc" formatted="false">Udělen za dosažení 99. úrovně v mrštnosti. Dává o 10 % více XP za aktivitu.</string>
     <string name="item_agility_guild_cape_desc" formatted="false">Udělen za dosažení 10. úrovně v Atletickém cechu. Dává o 5 % více XP za aktivitu.</string>
     <string name="item_slayer_cape_name">Plášť popravčího</string>
