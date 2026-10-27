@@ -244,25 +244,41 @@
         <item quantity="other">%1$d items</item>
     </plurals> <!-- untranslated -->
     <plurals name="plural_minutes">
-        <item quantity="one">%1$d minute</item>
-        <item quantity="other">%1$d minutes</item>
-    </plurals> <!-- untranslated -->
+        <item quantity="one">%1$d хвилина</item>
+        <item quantity="other">%1$d хвилин</item>
+        <item quantity="zero">%1$d хвилин</item>
+        <item quantity="two">%1$d хвилини</item>
+        <item quantity="few">%1$d хвилин</item>
+        <item quantity="many">%1$d хвилин</item>
+    </plurals>
     <plurals name="plural_hours">
-        <item quantity="one">%1$d hour</item>
-        <item quantity="other">%1$d hours</item>
-    </plurals> <!-- untranslated -->
+        <item quantity="one">%1$d година</item>
+        <item quantity="other">%1$d годин</item>
+        <item quantity="zero">%1$d годин</item>
+        <item quantity="two">%1$d години</item>
+        <item quantity="few">%1$d годин</item>
+        <item quantity="many">%1$d годин</item>
+    </plurals>
     <plurals name="plural_patches">
         <item quantity="one">%1$d patch</item>
         <item quantity="other">%1$d patches</item>
     </plurals> <!-- untranslated -->
     <plurals name="plural_kills">
-        <item quantity="one">%1$d kill</item>
-        <item quantity="other">%1$d kills</item>
-    </plurals> <!-- untranslated -->
+        <item quantity="one">%1$d вбивство</item>
+        <item quantity="other">%1$d вбивств</item>
+        <item quantity="zero">%1$d вбивств</item>
+        <item quantity="two">%1$d вбивства</item>
+        <item quantity="few">%1$d вбивств</item>
+        <item quantity="many">%1$d вбивств</item>
+    </plurals>
     <plurals name="plural_quests_completed">
-        <item quantity="one">%1$d quest completed</item>
-        <item quantity="other">%1$d quests completed</item>
-    </plurals> <!-- untranslated -->
+        <item quantity="one">%1$d завдання виконано</item>
+        <item quantity="other">%1$d завдань виконано</item>
+        <item quantity="zero">%1$d завдань виконано</item>
+        <item quantity="two">%1$d завдання виконано</item>
+        <item quantity="few">%1$d завдань виконано</item>
+        <item quantity="many">%1$d завдань виконано</item>
+    </plurals>
 
     <!-- ===== Error messages ===== -->
     <string name="error_no_player">Неможливо завантажити дані про гравця. Будь ласка, перезавантажте додаток.</string>
@@ -277,19 +293,19 @@
     <string name="error_patch_occupied">Ця латка вже засаджена.</string>
     <string name="error_patch_empty">Ця латка порожня.</string>
     <string name="error_crop_not_ready">Ця рослина ще не дозріла.</string>
-    <string name="error_quest_active">You already have an active quest.</string> <!-- untranslated -->
-    <string name="error_quest_requirements_not_met">You don\'t meet the requirements for this quest.</string> <!-- untranslated -->
-    <string name="error_dungeon_level_too_low">Your combat level is too low for this dungeon.</string> <!-- untranslated -->
-    <string name="error_unknown">Something went wrong. Please try again.</string> <!-- untranslated -->
+    <string name="error_quest_active">В тебе вже є активне завдання.</string>
+    <string name="error_quest_requirements_not_met">Не виконані вимоги цього завдання.</string>
+    <string name="error_dungeon_level_too_low">Твій бойовий рівень занизький для цього підземелля.</string>
+    <string name="error_unknown">Щось пішло не так. Спробуй ще раз.</string>
 
     <!-- ===== Session dialogs ===== -->
-    <string name="session_abandon_title">Abandon Session?</string> <!-- untranslated -->
+    <string name="session_abandon_title">Припинити сесію?</string>
     <string name="session_abandon_body">Весь прогрес з цією сесії буде втрачено.</string>
 
     <!-- ===== Onboarding ===== -->
     <string name="onboarding_welcome_title">Вітаємо в Idle Fantasy</string>
     <string name="onboarding_welcome_body">Start a skill session and watch your character grow. Sessions run for one hour, even when the app is closed.</string> <!-- untranslated -->
-    <string name="onboarding_first_session_hint">Tap any skill to get started.</string> <!-- untranslated -->
+    <string name="onboarding_first_session_hint">Натисни на будь-яку навичку, щоб розпочати.</string>
 
     <!-- ===== Settings ===== -->
     <string name="settings_title">Налаштування</string>
@@ -303,9 +319,9 @@
     <string name="settings_open_source_licenses">Ліцензії Вихідного Коду</string>
 
     <!-- ===== HomeScreen ===== -->
-    <string name="label_player_stats">Player Stats</string> <!-- untranslated -->
+    <string name="label_player_stats">Параметри персонажа</string>
     <string name="label_combat_level">Бойовий Рівень</string>
-    <string name="label_shop_desc">Buy equipment and sell loot</string> <!-- untranslated -->
+    <string name="label_shop_desc">Купити екіп і продати лут</string>
     <string name="label_no_session_hint">Head to Skills or Combat to start training.</string> <!-- untranslated -->
     <string name="label_recent_activity">Нещодавно Активність</string>
     <string name="settings_profile_layout">Profile Layout</string> <!-- untranslated -->
@@ -371,7 +387,7 @@
     <string name="label_daily_reward_complete">2,000 монет</string>
     <string name="msg_daily_claimed_coins">Щоденний квест завершено! +2,000 монет.</string>
     <string name="msg_daily_claimed_dwarven">Щоденний квест завершено! Ви знайшли %1$s!</string>
-    <string name="label_hide_completed">Hide completed</string> <!-- untranslated -->
+    <string name="label_hide_completed">Приховати виконані</string>
 
     <!-- ===== OnboardingScreen ===== -->
     <string name="onboarding_lets_go">Вперед!</string>
@@ -380,7 +396,7 @@
 
     <!-- ===== Settings ===== -->
     <string name="settings_notifications_header">Сповіщення</string>
-    <string name="settings_performance_header">Performance</string> <!-- untranslated -->
+    <string name="settings_performance_header">Продуктивність</string>
     <string name="settings_general_header">Загальне</string>
     <string name="settings_tutorial_title">Tutorial</string> <!-- untranslated -->
     <string name="settings_tutorial_desc">Show the introduction again</string> <!-- untranslated -->
@@ -392,10 +408,10 @@
     <string name="settings_reset_title">Скинути Прогресію</string>
     <string name="settings_reset_desc">Erase all skills, items, quests, and coins</string> <!-- untranslated -->
     <string name="settings_reset_btn">Reset</string> <!-- untranslated -->
-    <string name="reset_confirm1_title">Reset all progression?</string> <!-- untranslated -->
+    <string name="reset_confirm1_title">Видалити весь прогрес?</string>
     <string name="reset_confirm1_body">This will erase all skill XP, items, coins, and quest progress. This cannot be undone.</string> <!-- untranslated -->
     <string name="reset_confirm2_title">Ви впевнені?</string>
-    <string name="reset_confirm2_body">Everything will be lost. You will start over from scratch.</string> <!-- untranslated -->
+    <string name="reset_confirm2_body">Все буде втрачено. Ти почнеш спочатку.</string>
     <string name="reset_confirm2_btn">Так, скинути все</string>
 
     <!-- ===== Battery prompt dialog ===== -->
