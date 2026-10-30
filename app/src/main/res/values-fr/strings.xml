@@ -1216,7 +1216,7 @@
     <string name="house_dir_south">Sud</string>
     <string name="house_dir_east">Est</string>
     <string name="house_dir_west">Ouest</string>
-    <string name="house_floor_title">Étage</string>
+    <string name="house_floor_title">Plancher</string>
     <string name="house_floor_dark">Bois sombre</string>
     <string name="house_floor_brick">Brique de pierre</string>
     <string name="house_floor_brick_locked">Brique de pierre (Niv %1$d)</string>
