@@ -67,10 +67,10 @@
     <string name="label_bosses">Bazen</string>
     <string name="label_by_location">Op locatie</string>
     <string name="bestiary_not_encountered">Nog niet tegengekomen</string>
-    <string name="bestiary_filter_all">All</string> <!-- untranslated -->
-    <string name="bestiary_filter_missing">Missing</string> <!-- untranslated -->
+    <string name="bestiary_filter_all">Alles</string>
+    <string name="bestiary_filter_missing">Ontbrekend</string>
     <string name="bestiary_qty_header">Qty</string> <!-- untranslated -->
-    <string name="bestiary_chance_header">Chance</string> <!-- untranslated -->
+    <string name="bestiary_chance_header">Kans</string>
     <string name="label_completion_progress">%1$d / %2$d %3$s</string>
     <string name="achievements_progress_bar">verkregen</string>
     <string name="bestiary_progress_bar">tegengekomen</string>
@@ -87,18 +87,18 @@
     <string name="label_no_active_session">Geen actieve sessie</string>
     <string name="label_session_complete">Sessie voltooid</string>
     <string name="home_sessions_complete_title">%1$d Sessions Complete!</string> <!-- untranslated -->
-    <string name="home_boss_defeated_title">Defeated %1$s!</string> <!-- untranslated -->
-    <string name="home_boss_defeated_by_title">Defeated by %1$s.</string> <!-- untranslated -->
-    <string name="home_dungeon_died_title">%1$s — You Died</string> <!-- untranslated -->
-    <string name="home_dungeon_complete_title">%1$s Complete!</string> <!-- untranslated -->
-    <string name="home_expedition_complete_title">%1$s Expedition Complete</string> <!-- untranslated -->
-    <string name="home_skill_session_complete_title">%1$s Session Complete</string> <!-- untranslated -->
-    <string name="home_bones_buried_row">%1$s buried</string> <!-- untranslated -->
-    <string name="worker_sessions_complete_title">Worker: %1$d Sessions Complete!</string> <!-- untranslated -->
-    <string name="worker_boss_defeated_title">Worker: Defeated %1$s!</string> <!-- untranslated -->
-    <string name="worker_dungeon_died_title">Worker: %1$s — Died</string> <!-- untranslated -->
-    <string name="worker_dungeon_complete_title">Worker: %1$s Complete!</string> <!-- untranslated -->
-    <string name="worker_skill_complete_title">Worker: %1$s Complete</string> <!-- untranslated -->
+    <string name="home_boss_defeated_title">%1$s verslagen!</string>
+    <string name="home_boss_defeated_by_title">Verslagen door %1$s.</string>
+    <string name="home_dungeon_died_title">%1$s — Je Stierf</string>
+    <string name="home_dungeon_complete_title">%1$s Voltooid!</string>
+    <string name="home_expedition_complete_title">%1$s Expeditie Voltooid</string>
+    <string name="home_skill_session_complete_title">%1$s Sessie Voltooid</string>
+    <string name="home_bones_buried_row">%1$s begraven</string>
+    <string name="worker_sessions_complete_title">Werknemer: %1$d Sessie Voltooid!</string>
+    <string name="worker_boss_defeated_title">Werknemer: Versloeg %1$s!</string>
+    <string name="worker_dungeon_died_title">Werknemer: %1$s — Stierf</string>
+    <string name="worker_dungeon_complete_title">Werknemer: %1$s Voltooid!</string>
+    <string name="worker_skill_complete_title">Werknemer: %1$s Voltooid</string>
     <string name="label_training">Training</string> <!-- untranslated -->
     <string name="label_gathering_skills">Doe</string>
     <string name="label_crafting_skills">Maakvaardigheden</string>
@@ -106,17 +106,17 @@
     <string name="label_coming_soon">Binnenkort Beschikbaar</string>
     <string name="label_time_remaining">Resterende Tijd</string>
     <!-- Translator note: compact duration units; English puts the letter(s) right after the number -->
-    <string name="duration_years">%1$dy</string> <!-- untranslated -->
-    <string name="duration_months">%1$dmo</string> <!-- untranslated -->
+    <string name="duration_years">%1$dj</string>
+    <string name="duration_months">%1$dma</string>
     <string name="duration_weeks">%1$dw</string> <!-- untranslated -->
-    <string name="duration_days">%1$dd</string> <!-- untranslated -->
-    <string name="duration_hours">%1$dh</string> <!-- untranslated -->
-    <string name="duration_minutes">%1$dm</string> <!-- untranslated -->
-    <string name="duration_seconds">%1$ds</string> <!-- untranslated -->
-    <string name="duration_complete">Complete</string> <!-- untranslated -->
+    <string name="duration_days">%1$dd</string>
+    <string name="duration_hours">%1$du</string>
+    <string name="duration_minutes">%1$dm</string>
+    <string name="duration_seconds">%1$ds</string>
+    <string name="duration_complete">Voltooid</string>
     <string name="label_session_results">Sessie Resultaten</string>
     <string name="label_xp_gained">Verworven XP</string>
-    <string name="label_time_elapsed">Time elapsed</string> <!-- untranslated -->
+    <string name="label_time_elapsed">Tijd verstreken</string>
     <string name="label_items_collected">Verzamelde Items</string>
     <string name="label_level_ups">Level ups</string> <!-- untranslated -->
     <string name="label_requirements">Vereisten</string>
@@ -132,7 +132,7 @@
     <string name="label_ready_to_harvest">Klaar om te oogsten</string>
     <string name="label_empty">Leeg</string>
     <string name="inventory_sort_quantity">Hoeveelheid</string>
-    <string name="inventory_sort_az">A-Z</string> <!-- untranslated -->
+    <string name="inventory_sort_az">A-Z</string>
     <string name="inventory_cat_weapons">Wapens</string>
     <string name="inventory_cat_armour">Uitrusting</string>
     <string name="inventory_cat_tools">Gereedschap</string>
@@ -415,7 +415,7 @@
     <string name="settings_theme">Thema</string>
     <string name="settings_theme_desc">Kies je kleurenschema</string>
     <string name="settings_theme_dark">Donker</string>
-    <string name="settings_theme_midnight">Midnight</string> <!-- untranslated -->
+    <string name="settings_theme_midnight">Middernacht</string>
     <string name="settings_theme_light">Licht</string>
     <string name="settings_theme_system">Systeem</string>
     <string name="settings_font_size">Lettergrootte</string>
@@ -489,10 +489,10 @@
     <string name="settings_import_btn">Importeer</string>
     <string name="settings_source_code">Broncode</string>
 
-    <string name="settings_source_open">Open</string> <!-- untranslated -->
-    <string name="settings_wiki">Wiki</string> <!-- untranslated -->
+    <string name="settings_source_open">Open</string>
+    <string name="settings_wiki">Wiki</string>
 
-    <string name="settings_discord">Discord</string> <!-- untranslated -->
+    <string name="settings_discord">Discord</string>
 
     <string name="settings_exported_ok">Opslag geëxporteerd</string>
     <string name="settings_imported_ok">Opslag succesvol geïmporteerd</string>
@@ -511,7 +511,7 @@
     <string name="settings_backup_now">Maak nu een back-up</string>
     <string name="settings_backup_status">Last Backup</string> <!-- untranslated -->
     <string name="settings_backup_never">Never backed up</string> <!-- untranslated -->
-    <string name="settings_backup_failed_with">Failed: %1$s</string> <!-- untranslated -->
+    <string name="settings_backup_failed_with">Gefaald: %1$s</string>
     <string name="settings_backup_success">Back-up opgeslagen.</string>
     <string name="settings_backup_failed">Back-up mislukt.</string>
     <string name="settings_backup_folder_set">Back-upmap ingesteld.</string>
@@ -605,7 +605,7 @@
     <string name="combat_req_level">Vereist gevechtslevel</string>
     <string name="combat_duration">Duur</string>
     <!-- Translator note: %1$d = minutes -->
-    <string name="combat_duration_min">%1$d min</string> <!-- untranslated -->
+    <string name="combat_duration_min">%1$d min</string>
     <string name="combat_fight_count_label">Aantal gevechten</string>
     <!-- Translator note: %1$d = number of queued repeat fights, e.g. "×100 fights" -->
     <string name="combat_fight_count_suffix">×%1$d gevechten</string>
@@ -673,7 +673,7 @@
     <string name="profile_stat_agility">Behendigheid</string>
     <string name="profile_stat_cooking">Koken</string>
     <string name="profile_stat_thieving">Stelen</string>
-    <string name="profile_stat_def">Def</string> <!-- untranslated -->
+    <string name="profile_stat_def">Def</string>
     <string name="profile_req_lv">Lvl nodig</string>
 
     <!-- ===== SkillsScreen ===== -->
@@ -729,14 +729,14 @@
     <string name="shop_sell_junk">Verkoop rommel</string>
     <string name="shop_keep_one_toggle">Keep one of each item</string> <!-- untranslated -->
     <string name="shop_search_hint">Search items</string> <!-- untranslated -->
-    <string name="shop_filter_all">All</string> <!-- untranslated -->
+    <string name="shop_filter_all">Alles</string>
     <string name="shop_order_default">Default</string> <!-- untranslated -->
-    <string name="shop_order_highest_amount">Quantity</string> <!-- untranslated -->
-    <string name="shop_order_highest_price">Price</string> <!-- untranslated -->
+    <string name="shop_order_highest_amount">Hoeveelheid</string>
+    <string name="shop_order_highest_price">Prijs</string>
     <string name="shop_sell_blocked_equipped">%1$s is equipped. Unequip it first to sell.</string> <!-- untranslated -->
     <string name="shop_sell_blocked_reserved">%1$s is reserved for a queued task.</string> <!-- untranslated -->
     <string name="shop_sell_blocked_keep_one">Keeping your last %1$s (Keep one of each item is on).</string> <!-- untranslated -->
-    <string name="shop_sell_blocked_none">Nothing to sell.</string> <!-- untranslated -->
+    <string name="shop_sell_blocked_none">Niets om te verkopen.</string>
     <string name="shop_sell_old_gear">Verkoop oude uitrusting</string>
     <string name="shop_equipped_label">(gedragen)</string>
     <string name="shop_item_locked">%1$s is vergrendeld. Houd lang ingedrukt om te ontgrendelen.</string>
@@ -748,9 +748,9 @@
     <string name="quest_legend_seasonal">Seasonal bounty</string> <!-- untranslated -->
     <string name="quest_legend_guild_daily">Dagelijkse gildequest</string>
     <string name="quest_legend_guild">Gildequest</string>
-    <string name="quest_legend_quest">Quest</string> <!-- untranslated -->
+    <string name="quest_legend_quest">Queeste</string>
     <string name="quest_legend_slayer_target">Slayer Task</string> <!-- untranslated -->
-    <string name="quest_legend_gold_dot">Timed quest is available.</string> <!-- untranslated -->
+    <string name="quest_legend_gold_dot">Getimede queeste is beschikbaar.</string>
     <string name="quest_legend_notes">Gedimde pictogrammen kunnen nog niet voltooid worden (level of materialen ontbreken). Een klein verhoogd cijfer betekent dat meerdere quests van dat type hetzelfde willen.</string>
     <!-- Translator note: %1$s = quantity in inventory -->
     <string name="shop_qty_in_inv">×%1$s in inventaris</string>
@@ -793,8 +793,8 @@
     <string name="farming_patches">%1$d Percelen ontgrendeld</string>
     <string name="farming_clear_patch">Verwijder Perceel</string>
     <!-- Translator note: %1$s = crop name -->
-    <string name="farming_clear_desc_named">Remove the %1$s without any reward?</string> <!-- untranslated -->
-    <string name="farming_clear_desc_bean">Remove the Magic Bean? It will be returned to your inventory.</string> <!-- untranslated -->
+    <string name="farming_clear_desc_named">De %1$s verwijderen zonder beloning?</string>
+    <string name="farming_clear_desc_bean">De Magische Boon verwijderen? Deze keert terug in je inventaris.</string>
     <string name="farming_harvest_and_plant">Oogst en Plant Alles</string>
     <string name="farming_harvest_all_complete">Alle percelen geoogst!</string>
     <string name="farming_no_crops_ready">Geen gewassen klaar om te oogsten</string>
@@ -811,7 +811,7 @@
     <string name="character_create_title">Maak je personage</string>
     <string name="character_edit_title">Bewerk personage</string>
     <string name="character_name_label">Naam van het personage</string>
-    <string name="character_name_too_long">Only the first %1$d characters will be used.</string> <!-- untranslated -->
+    <string name="character_name_too_long">Enkel de eerste %1$d karakters zullen gebruikt worden.</string>
     <string name="character_gender">Geslacht</string>
     <string name="character_gender_male">Man</string>
     <string name="character_gender_female">Vrouw</string>
@@ -819,7 +819,7 @@
     <string name="character_gender_custom_hint">Beschrijf je gender</string>
     <string name="character_race">Ras</string>
     <string name="character_race_human">Mens</string>
-    <string name="character_race_elf">Elf</string> <!-- untranslated -->
+    <string name="character_race_elf">Elf</string>
     <string name="character_race_dwarf">Dwerg</string>
     <string name="character_race_orc">Ork</string>
     <string name="character_race_halfling">Halfling</string> <!-- untranslated -->
@@ -845,7 +845,7 @@
     <string name="onboarding_welcome_desc">Een idle RPG geïnspireerd door klassieke MMORPGs. Train vaardigheden, vecht in Dungeons en maak uitrusting. Alles offline, geen accounts, geen advertenties.</string>
 
     <!-- Quantity picker quick buttons -->
-    <string name="qty_max">Max</string> <!-- untranslated -->
+    <string name="qty_max">Max</string>
 
     <!-- ===== Inn / Worker ===== -->
     <string-array name="worker_names">
@@ -916,7 +916,7 @@
     <!-- ===== Achievements ===== -->
     <string name="achievement_group_levelling">Levelen</string>
     <string name="achievement_group_combat">Gevecht</string>
-    <string name="achievement_group_quests">Quests</string> <!-- untranslated -->
+    <string name="achievement_group_quests">Queesten</string>
     <string name="achievement_group_collection">Verzameling</string>
 
     <string name="achievement_total_50_name">Avonturier</string>
@@ -944,7 +944,7 @@
     <string name="achievement_combat_30_desc">Bereik gevechtslevel 30</string>
     <string name="achievement_combat_50_name">Kampioen</string>
     <string name="achievement_combat_50_desc">Bereik gevechtslevel 50</string>
-    <string name="achievement_combat_75_name">Elite</string> <!-- untranslated -->
+    <string name="achievement_combat_75_name">Elite</string>
     <string name="achievement_combat_75_desc">Bereik gevechtslevel 75</string>
     <string name="achievement_combat_99_name">Champion</string>
     <string name="achievement_combat_99_desc">Bereik gevechtslevel 99</string>
@@ -988,14 +988,14 @@
     <string name="guild_hall_intro">Gilden belonen je voor activiteiten die je al doet. Voltooi quests en dagelijkse verzoeken om cross-skill materialen, Ducaten en XP te verdienen, zodat specialisten nog steeds toegang hebben tot middelen van vaardigheden die ze niet trainen.</string>
     <string name="guild_level_label">Level %1$d</string> <!-- untranslated -->
     <string name="guild_level_max">Level 10 (Max)</string> <!-- untranslated -->
-    <string name="guild_tab_quests">Quests</string> <!-- untranslated -->
+    <string name="guild_tab_quests">Queesten</string>
     <string name="guild_tab_dailies">Dagelijkse Quests</string>
     <string name="guild_daily_resets_in">Vernieuwt dagelijks om %1$s</string>
     <string name="guild_locked_hint">Vereist Gilde Level %1$d</string>
     <string name="guild_no_dailies">Voltooi gildequests om dagelijkse Quests te ontgrendelen.</string>
     <string name="guild_dailies_all_done">All of today\'s daily requests are complete. Come back after the daily reset.</string> <!-- untranslated -->
     <string name="guild_contribute_inventory">Bijdragen vanuit inventaris (%1$d beschikbaar)</string>
-    <string name="guild_go_to_skill">Go to Skill</string> <!-- untranslated -->
+    <string name="guild_go_to_skill">Ga naar Vaardigheden</string>
     <string name="guild_quest_desc_gather">%1$s %2$d %3$s voor het %4$s.</string>
     <string name="guild_quest_desc_kill">Versla %1$d vijanden met %2$s gevecht.</string>
     <string name="guild_quest_desc_prayer">Begraaf %1$d botten voor het %2$s.</string>
@@ -1064,7 +1064,7 @@
     <string name="church_activate">Activeren</string>
     <string name="church_blessing_bonus">+%1$s van zegen</string>
     <!-- Golden Goose pet coin share, split from the blessing line (issue #1941). Pending Weblate translation. -->
-    <string name="pet_coin_bonus">+%1$s from pet</string> <!-- untranslated -->
+    <string name="pet_coin_bonus">+%1$s van huisdieren</string>
     <string name="church_blessing_suffix">van zegen</string>
     <string name="church_effect_xp">×%1$.2f XP voor %2$d uur</string>
     <string name="church_effect_def">+%1$d Verdediging voor %2$d uur</string>
@@ -1074,8 +1074,8 @@
     <string name="church_bones_available">Je hebt %1$d botten (alle soorten), gelijk aan %2$d voor zegeningen (grotere botten tellen meer)</string>
     <string name="church_not_enough_bones">Niet genoeg botten (je hebt %1$d nodig)</string>
     <string name="church_already_active">Er is al een zegen actief</string>
-    <string name="church_blessing_activated">Blessing activated!</string> <!-- untranslated -->
-    <string name="church_blessing_extended">Blessing extended!</string> <!-- untranslated -->
+    <string name="church_blessing_activated">Zegen geactiveerd!</string>
+    <string name="church_blessing_extended">Zegen verlengd!</string>
     <string name="church_confirm_deactivate_title">Zegen deactiveren?</string>
     <string name="church_confirm_deactivate_body">Weet je zeker dat je je actieve zegen wilt deactiveren? Je krijgt je botten niet terug.</string>
 
@@ -1143,7 +1143,7 @@
     <string name="expedition_lore_notes">%1$d / %2$d lore-notities</string>
     <string name="expedition_lock_level">Vereist %1$s-niveau %2$d</string>
     <string name="expedition_lock_notes">Vind alle notities in %1$s</string>
-    <string name="expedition_started">%1$s started.</string> <!-- untranslated -->
+    <string name="expedition_started">%1$s gestart.</string>
     <string name="expedition_lock_prerequisite">Vervul een vereiste</string>
     <string name="label_notes">Notities</string>
 
@@ -1154,44 +1154,44 @@
     <string name="builder_card_desc">Verbeter de Herberg, Gildehuis en Kerk</string>
 
     <!-- Player housing -->
-    <string name="house_title">My House</string> <!-- untranslated -->
-    <string name="house_edit">Edit</string> <!-- untranslated -->
-    <string name="house_done">Done</string> <!-- untranslated -->
-    <string name="house_share">Share a picture of your house</string> <!-- untranslated -->
-    <string name="house_rooms_owned">Rooms: %1$d</string> <!-- untranslated -->
+    <string name="house_title">Mijn Huis</string>
+    <string name="house_edit">Wijzig</string>
+    <string name="house_done">Gedaan</string>
+    <string name="house_share">Deel een afbeelding van je huis</string>
+    <string name="house_rooms_owned">Kamers: %1$d</string>
     <string name="house_construction_level">Construction level %1$d</string> <!-- untranslated -->
-    <string name="house_add_room">Add room (%1$s)</string> <!-- untranslated -->
-    <string name="house_add_room_locked">Add room (Lv %1$d)</string> <!-- untranslated -->
-    <string name="house_bill_title">Bill of Sale</string> <!-- untranslated -->
-    <string name="house_bill_cost">Build cost: %1$s</string> <!-- untranslated -->
-    <string name="house_bill_no_changes">No pending changes</string> <!-- untranslated -->
-    <string name="house_bill_changes_free">Unpurchased changes</string> <!-- untranslated -->
-    <string name="house_bill_open">Bill</string> <!-- untranslated -->
-    <string name="house_bill_new_room">New room %1$d</string> <!-- untranslated -->
+    <string name="house_add_room">Voeg ruimte toe (%1$s)</string>
+    <string name="house_add_room_locked">Voeg ruimte toe (Lv %1$d)</string>
+    <string name="house_bill_title">Verkoopovereenkomst</string>
+    <string name="house_bill_cost">Bouwkosten: %1$s</string>
+    <string name="house_bill_no_changes">Geen aanpassingen in behandeling</string>
+    <string name="house_bill_changes_free">Niet gekochte aanpassing</string>
+    <string name="house_bill_open">Rekening</string>
+    <string name="house_bill_new_room">Nieuwe ruimte %1$d</string>
     <string name="house_bill_expand_room">Expand room %1$d (+%2$d cells)</string> <!-- untranslated -->
     <string name="house_bill_shrink_credit">Shrink room %1$d credit (%2$d cells)</string> <!-- untranslated -->
-    <string name="house_bill_materials_header">Materials needed</string> <!-- untranslated -->
-    <string name="house_bill_credit_header">Credited on purchase</string> <!-- untranslated -->
+    <string name="house_bill_materials_header">Benodigde materialen</string>
+    <string name="house_bill_credit_header">Aangerekend bij aankoop</string>
     <string name="house_bill_xp_total">+%1$s Construction XP on purchase</string> <!-- untranslated -->
     <string name="house_bill_level_required">Requires Construction level %1$d</string> <!-- untranslated -->
     <string name="house_bill_coins_total">Total: %1$s coins</string> <!-- untranslated -->
     <string name="house_purchase_build">Purchase Build</string> <!-- untranslated -->
-    <string name="house_apply_changes">Apply Changes</string> <!-- untranslated -->
+    <string name="house_apply_changes">Bevestig Wijzigingen</string>
     <string name="house_purchase_success">Build purchased!</string> <!-- untranslated -->
-    <string name="house_changes_applied">Changes applied.</string> <!-- untranslated -->
-    <string name="house_discard_build">Discard</string> <!-- untranslated -->
-    <string name="house_discard_confirm_title">Discard changes?</string> <!-- untranslated -->
+    <string name="house_changes_applied">Wijzigingen toegepast.</string>
+    <string name="house_discard_build">Ongedaan maken</string>
+    <string name="house_discard_confirm_title">Wijzigingen ongedaan maken?</string>
     <string name="house_discard_confirm_message">All unpurchased changes will be lost.</string> <!-- untranslated -->
-    <string name="house_blueprints">Blueprints</string> <!-- untranslated -->
+    <string name="house_blueprints">Blauwdrukken</string>
     <string name="house_blueprint_slot_empty">Empty slot</string> <!-- untranslated -->
-    <string name="house_blueprint_save">Save</string> <!-- untranslated -->
-    <string name="house_blueprint_load">Load</string> <!-- untranslated -->
-    <string name="house_blueprint_delete">Delete</string> <!-- untranslated -->
-    <string name="house_blueprint_name_hint">Blueprint name</string> <!-- untranslated -->
-    <string name="house_blueprint_saved">Blueprint saved.</string> <!-- untranslated -->
+    <string name="house_blueprint_save">Bewaar</string>
+    <string name="house_blueprint_load">Laad</string>
+    <string name="house_blueprint_delete">Verwijder</string>
+    <string name="house_blueprint_name_hint">Blauwdruk naam</string>
+    <string name="house_blueprint_saved">Blauwdruk bewaard.</string>
     <string name="house_blueprint_loaded">Blueprint loaded into the editor.</string> <!-- untranslated -->
     <string name="house_blueprint_skipped">Blueprint loaded; %1$d pieces no longer exist and were skipped.</string> <!-- untranslated -->
-    <string name="house_blueprint_load_title">Load blueprint?</string> <!-- untranslated -->
+    <string name="house_blueprint_load_title">Blauwprint laden?</string>
     <string name="house_blueprint_load_message">Your unpurchased changes will be replaced with \"%1$s\".</string> <!-- untranslated -->
     <string name="house_mode_place_item">Placing %1$s. Drag or tap a spot in your house.</string> <!-- untranslated -->
     <string name="house_mode_place_room">Placing a new 3x3 room. It must touch an existing room.</string> <!-- untranslated -->
@@ -1199,29 +1199,29 @@
     <string name="house_error_coins">Not enough coins.</string> <!-- untranslated -->
     <string name="house_error_materials">Not enough materials.</string> <!-- untranslated -->
     <string name="house_error_spot">That spot doesn\'t work.</string> <!-- untranslated -->
-    <string name="house_error_max_rooms">Your house has reached its maximum number of rooms.</string> <!-- untranslated -->
+    <string name="house_error_max_rooms">Het maximaal aantal ruimtes van je huis is bereikt.</string>
     <string name="house_error_max_size">This room can\'t grow any larger.</string> <!-- untranslated -->
-    <string name="house_stored_count">Stored: %1$d</string> <!-- untranslated -->
+    <string name="house_stored_count">Bewaard: %1$d</string>
     <string name="house_level_short">Lv %1$d</string> <!-- untranslated -->
     <string name="house_store_hint">Stored furniture keeps its materials and can be placed again later.</string> <!-- untranslated -->
     <string name="house_store_item">Put in storage</string> <!-- untranslated -->
-    <string name="house_room_n">Room %1$d</string> <!-- untranslated -->
+    <string name="house_room_n">Ruimte %1$d</string>
     <string name="house_room_size">%1$d x %2$d cells</string> <!-- untranslated -->
-    <string name="house_expand_title">Expand</string> <!-- untranslated -->
-    <string name="house_shrink_title">Shrink</string> <!-- untranslated -->
+    <string name="house_expand_title">Vergroot</string>
+    <string name="house_shrink_title">Verklein</string>
     <string name="house_shrink_hint">Removes a row of cells from that side. Its cost is refunded and furniture there goes to storage.</string> <!-- untranslated -->
-    <string name="house_error_min_size">Rooms can\'t be smaller than 3x3.</string> <!-- untranslated -->
-    <string name="house_dir_north">North</string> <!-- untranslated -->
-    <string name="house_dir_south">South</string> <!-- untranslated -->
-    <string name="house_dir_east">East</string> <!-- untranslated -->
-    <string name="house_dir_west">West</string> <!-- untranslated -->
-    <string name="house_floor_title">Floor</string> <!-- untranslated -->
-    <string name="house_floor_dark">Dark wood</string> <!-- untranslated -->
-    <string name="house_floor_brick">Stone brick</string> <!-- untranslated -->
-    <string name="house_floor_brick_locked">Stone brick (Lv %1$d)</string> <!-- untranslated -->
-    <string name="house_cat_furniture">Furniture</string> <!-- untranslated -->
-    <string name="house_cat_walls">Walls</string> <!-- untranslated -->
-    <string name="house_cat_wealth">Wealth</string> <!-- untranslated -->
+    <string name="house_error_min_size">Ruimtes kunnen niet kleiner dan 3x3 zijn.</string>
+    <string name="house_dir_north">Noorden</string>
+    <string name="house_dir_south">Zuiden</string>
+    <string name="house_dir_east">Oosten</string>
+    <string name="house_dir_west">Westen</string>
+    <string name="house_floor_title">Vloer</string>
+    <string name="house_floor_dark">Donker hout</string>
+    <string name="house_floor_brick">Baksteen</string>
+    <string name="house_floor_brick_locked">Baksteen (Lv %1$d)</string>
+    <string name="house_cat_furniture">Meubilair</string>
+    <string name="house_cat_walls">Muren</string>
+    <string name="house_cat_wealth">Rijkdom</string>
     <string name="house_item_wall_v">Wall (Upright)</string> <!-- untranslated -->
     <string name="house_item_wall_h">Wall (Across)</string> <!-- untranslated -->
     <string name="house_cat_wall">Wall Decor</string> <!-- untranslated -->
