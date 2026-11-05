@@ -1295,13 +1295,13 @@
     <string name="crop_magic_bean_name">Haricot Magique</string>
 
     <!-- Seasonal rotation gear -->
-    <string name="item_sunstone_ring_desc">A ring set with a shard of solstice sunlight. Warm to the touch, even in winter.</string> <!-- untranslated -->
-    <string name="item_sunforged_sabre_desc">Forged in the heart of the Sunspire bonfire. Its edge never quite cools.</string> <!-- untranslated -->
-    <string name="item_sunweave_cape_desc">Woven from midsummer light at the Night Market. Only sold during the Sunspire Solstice.</string> <!-- untranslated -->
-    <string name="item_frostbound_ring_desc">A band of ice that never melts. Steadies the bow arm on the coldest nights.</string> <!-- untranslated -->
-    <string name="item_glacial_longbow_desc">Carved from glacier ice that never thaws. Awarded to the Frostfall\'s most tireless defenders.</string> <!-- untranslated -->
-    <string name="item_frostweave_cape_desc">Spun from snowdrift and starlight at the Night Market. Only sold during the Frostfall.</string> <!-- untranslated -->
-    <string name="item_seedheart_ring_desc">A living seed sealed in silver. It hums with the patience of growing things.</string> <!-- untranslated -->
-    <string name="item_bloomwood_staff_desc">A flowering branch from the Wildgrove that never wilts. Spells bloom from its tip.</string> <!-- untranslated -->
-    <string name="item_petalweave_cape_desc">Stitched from a thousand spring petals at the Night Market. Only sold during the Bloomtide.</string> <!-- untranslated -->
+    <string name="item_sunstone_ring_desc">Une bague avec un éclat de soleil de solstice. Chaleureux au toucher, même en hiver.</string>
+    <string name="item_sunforged_sabre_desc">Forgé dans le cœur du Sunspire feu de joie. Son bord ne refroidit jamais assez.</string>
+    <string name="item_sunweave_cape_desc">Vêtue de lumière du milieu de l\'été au marché nocturne. Seulement vendu pendant le Sunspire Solstice.</string>
+    <string name="item_frostbound_ring_desc">Une bande de glace qui ne fond jamais. C\'est le bras d\'archet les nuits les plus froides.</string>
+    <string name="item_glacial_longbow_desc">Sculpté de glace de glacier qui ne dégele jamais. Récompensé aux défenseurs les plus inlassables du Frostfall.</string>
+    <string name="item_frostweave_cape_desc">Pars de la dérive des neiges et de la lumière des étoiles au marché nocturne. Seulement vendu pendant la Frostfall.</string>
+    <string name="item_seedheart_ring_desc">Une graine vivante scellée en argent. Il bourdonne avec la patience des choses croissantes.</string>
+    <string name="item_bloomwood_staff_desc">Une branche fleurie du Wildgrove qui ne se fane jamais. L\'orthographe fleurit de son extrémité.</string>
+    <string name="item_petalweave_cape_desc">Étiré de mille pétales de printemps au marché nocturne. Seulement vendu pendant la Bloomtide.</string>
 </resources>

@@ -164,56 +164,56 @@
     <string name="dungeon_guild_of_shadows_desc">Le sanctuaire le plus profond de la guilde des voleurs, gardé par ses exécuteurs les plus redoutables.</string>
 
     <!-- Elder Isle enemies (two per dungeon) -->
-    <string name="enemy_beach_marauder_name">Beach Marauder</string> <!-- untranslated -->
-    <string name="enemy_beach_leviathan_name">Beach Leviathan</string> <!-- untranslated -->
-    <string name="enemy_grove_stalker_name">Grove Stalker</string> <!-- untranslated -->
-    <string name="enemy_grove_dryad_name">Grove Dryad</string> <!-- untranslated -->
-    <string name="enemy_ash_beast_name">Ash Beast</string> <!-- untranslated -->
-    <string name="enemy_lava_wraith_name">Lava Wraith</string> <!-- untranslated -->
-    <string name="enemy_abyssal_horror_name">Abyssal Horror</string> <!-- untranslated -->
-    <string name="enemy_void_seraph_name">Void Seraph</string> <!-- untranslated -->
+    <string name="enemy_beach_marauder_name">Plage Marauder</string>
+    <string name="enemy_beach_leviathan_name">Plage Léviathan</string>
+    <string name="enemy_grove_stalker_name">Poêle de groseille</string>
+    <string name="enemy_grove_dryad_name">Dryad de Grove</string>
+    <string name="enemy_ash_beast_name">Bête du frêne</string>
+    <string name="enemy_lava_wraith_name">Lava Wraith</string>
+    <string name="enemy_abyssal_horror_name">Horreur abyssal</string>
+    <string name="enemy_void_seraph_name">Séraphin-viande</string>
 
     <!-- Elder Isle dungeons -->
-    <string name="dungeon_beach_and_cliffs_name">Beach &amp; Cliffs</string> <!-- untranslated -->
-    <string name="dungeon_beach_and_cliffs_desc">The isle\'s landing zone. Coastal enemies scavenge the wrecks of prior voyages. Every clear has a chance to drop Ancient Sigils.</string> <!-- untranslated -->
-    <string name="dungeon_ancient_forest_name">Ancient Forest</string> <!-- untranslated -->
-    <string name="dungeon_ancient_forest_desc">A rune-laced jungle grown over an old library. Grove stalkers and rune-touched dryads keep visitors from the ruins beneath. Every clear has a chance to drop Ancient Sigils.</string> <!-- untranslated -->
-    <string name="dungeon_volcano_peak_name">Volcano Peak</string> <!-- untranslated -->
-    <string name="dungeon_volcano_peak_desc">The isle\'s smoking spine, once an Elder altar. Ash beasts and lava wraiths guard the sealing site. Every clear has a chance to drop Ancient Sigils.</string> <!-- untranslated -->
-    <string name="dungeon_abyssal_depths_name">Abyssal Depths</string> <!-- untranslated -->
-    <string name="dungeon_abyssal_depths_desc">A flooded pressure-chamber at the foot of the isle, where the Last Elder waits. Abyssal horrors and void seraphs patrol the approach. Every clear drops Ancient Sigils.</string> <!-- untranslated -->
+    <string name="dungeon_beach_and_cliffs_name">Plage & Cliffs</string>
+    <string name="dungeon_beach_and_cliffs_desc">La zone d\'atterrissage de l\'île. Des ennemis du littoral saccagent les épaves de voyages antérieurs. Chaque clair a une chance de laisser tomber les Sigils Anciens.</string>
+    <string name="dungeon_ancient_forest_name">Forêt ancienne</string>
+    <string name="dungeon_ancient_forest_desc">Une jungle aux runes a grandi sur une vieille bibliothèque. Les harceleurs et les sécheuses aux runes gardent les visiteurs des ruines en dessous. Chaque clair a une chance de laisser tomber les Sigils Anciens.</string>
+    <string name="dungeon_volcano_peak_name">Volcan pic</string>
+    <string name="dungeon_volcano_peak_desc">L\'île fume la colonne vertébrale, une fois un autel aîné. Les bêtes de cendre et les wraiths de lave gardent le site de chasse. Chaque clair a une chance de laisser tomber les Sigils Anciens.</string>
+    <string name="dungeon_abyssal_depths_name">Profondeurs abyssales</string>
+    <string name="dungeon_abyssal_depths_desc">Une chambre de pression inondée au pied de l\'île, où le Dernier Aîné attend. Les horreurs abyssales et les séraphins vides patrouillent l\'approche. Chaque goutte claire des Sigils Anciens.</string>
 
     <!-- Elder Isle raid bosses -->
-    <string name="boss_sea_serpent_name">Sea Serpent</string> <!-- untranslated -->
-    <string name="boss_sea_serpent_desc">The voyage boss. A rune-scarred serpent that circles the isle and turns back everyone it doesn\'t drown. Defeat once to permanently enable Set Sail.</string> <!-- untranslated -->
-    <string name="boss_last_elder_name">The Last Elder</string> <!-- untranslated -->
-    <string name="boss_last_elder_desc">The last of the Elders, sealed at the bottom of the Abyssal Depths. Only a full Elder set can survive the fight.</string> <!-- untranslated -->
+    <string name="boss_sea_serpent_name">Serpent de mer</string>
+    <string name="boss_sea_serpent_desc">Le patron du voyage. Un serpent écarlate qui tourne l\'île et fait reculer tout le monde. Défaut une fois pour activer définitivement Set Sail.</string>
+    <string name="boss_last_elder_name">Le dernier aîné</string>
+    <string name="boss_last_elder_desc">Le dernier des Aînés, scellé au fond des Profondeurs Abyssales. Seul un ensemble complet d\'aînés peut survivre au combat.</string>
 
     <!-- Frostfall and Bloomtide -->
-    <string name="enemy_frost_sprite_name">Frost Sprite</string> <!-- untranslated -->
-    <string name="enemy_snow_wolf_name">Snow Wolf</string> <!-- untranslated -->
-    <string name="enemy_ice_troll_name">Ice Troll</string> <!-- untranslated -->
-    <string name="enemy_rime_revenant_name">Rime Revenant</string> <!-- untranslated -->
-    <string name="enemy_glacier_yeti_name">Glacier Yeti</string> <!-- untranslated -->
-    <string name="enemy_rime_giant_name">Rime Giant</string> <!-- untranslated -->
-    <string name="enemy_frostbound_jarl_name">Frostbound Jarl</string> <!-- untranslated -->
-    <string name="enemy_pollen_sprite_name">Pollen Sprite</string> <!-- untranslated -->
-    <string name="enemy_bramble_boar_name">Bramble Boar</string> <!-- untranslated -->
-    <string name="enemy_briar_beast_name">Briar Beast</string> <!-- untranslated -->
-    <string name="enemy_verdant_drake_name">Verdant Drake</string> <!-- untranslated -->
-    <string name="enemy_thorn_stalker_name">Thorn Stalker</string> <!-- untranslated -->
-    <string name="enemy_blossom_treant_name">Blossom Treant</string> <!-- untranslated -->
-    <string name="enemy_bramble_titan_name">Bramble Titan</string> <!-- untranslated -->
-    <string name="dungeon_rimewaste_name">The Rimewaste</string> <!-- untranslated -->
-    <string name="dungeon_rimewaste_desc">A wind-scoured snowfield where the Frostfall\'s creatures drift down from the peaks. Part of the Frostfall event.</string> <!-- untranslated -->
-    <string name="dungeon_glacier_hollows_name">The Glacier Hollows</string> <!-- untranslated -->
-    <string name="dungeon_glacier_hollows_desc">Blue-lit caverns carved through the glacier, home to the Frostfall\'s fiercest beasts. Part of the Frostfall event.</string> <!-- untranslated -->
-    <string name="dungeon_thornmeadow_name">The Thornmeadow</string> <!-- untranslated -->
-    <string name="dungeon_thornmeadow_desc">A meadow gone wild with the spring thaw, its flowers hiding thorns and teeth. Part of the Bloomtide event.</string> <!-- untranslated -->
-    <string name="dungeon_wildgrove_name">The Wildgrove</string> <!-- untranslated -->
-    <string name="dungeon_wildgrove_desc">An ancient grove past the Thornmeadow where the Thorn Queen\'s court takes root. Part of the Bloomtide event.</string> <!-- untranslated -->
-    <string name="boss_the_rime_wyrm_name">The Rime Wyrm</string> <!-- untranslated -->
-    <string name="boss_the_rime_wyrm_desc">An ancient wyrm of living ice that wakes each Frostfall, burying the Glacier Hollows in endless winter.</string> <!-- untranslated -->
-    <string name="boss_the_thorn_queen_name">The Thorn Queen</string> <!-- untranslated -->
-    <string name="boss_the_thorn_queen_desc">The briar-crowned ruler of the Wildgrove, whose roses bloom each spring with thorns as long as swords.</string> <!-- untranslated -->
+    <string name="enemy_frost_sprite_name">Frost Sprite</string>
+    <string name="enemy_snow_wolf_name">Loup des neiges</string>
+    <string name="enemy_ice_troll_name">Troll de glace</string>
+    <string name="enemy_rime_revenant_name">Rime Revenissant</string>
+    <string name="enemy_glacier_yeti_name">Glacier Yeti</string>
+    <string name="enemy_rime_giant_name">Géant Rime</string>
+    <string name="enemy_frostbound_jarl_name">Jarl bordeaux</string>
+    <string name="enemy_pollen_sprite_name">Sprite de pollen</string>
+    <string name="enemy_bramble_boar_name">Le sanglier brumeux</string>
+    <string name="enemy_briar_beast_name">Bête Briar</string>
+    <string name="enemy_verdant_drake_name">Verdant Drake</string>
+    <string name="enemy_thorn_stalker_name">Écailler d\'épine</string>
+    <string name="enemy_blossom_treant_name">Treant de gloire</string>
+    <string name="enemy_bramble_titan_name">Titan brumeux</string>
+    <string name="dungeon_rimewaste_name">Les déchets de Rime</string>
+    <string name="dungeon_rimewaste_desc">Un champ de neige escarpé par le vent où les créatures du Frostfall descendent des sommets. Une partie de l\'événement Frostfall.</string>
+    <string name="dungeon_glacier_hollows_name">Les glaciers</string>
+    <string name="dungeon_glacier_hollows_desc">Des cavernes à lumière bleue creusées dans le glacier, abritant les bêtes les plus féroces du Frostfall. Une partie de l\'événement Frostfall.</string>
+    <string name="dungeon_thornmeadow_name">Les épines</string>
+    <string name="dungeon_thornmeadow_desc">Une prairie devenue sauvage avec le dégel printanier, ses fleurs cachent des épines et des dents. Une partie de l\'événement Bloomtide.</string>
+    <string name="dungeon_wildgrove_name">La Wildgrove</string>
+    <string name="dungeon_wildgrove_desc">Un ancien bosquet a passé le Thornmeadow où la cour de la Reine d\'épine prend racine. Une partie de l\'événement Bloomtide.</string>
+    <string name="boss_the_rime_wyrm_name">Le Wyrm de Rime</string>
+    <string name="boss_the_rime_wyrm_desc">Un ancien tourbillon de glace vivante qui réveille chaque Frostfall, ensevelissant les glaciers en hiver sans fin.</string>
+    <string name="boss_the_thorn_queen_name">La Reine des épines</string>
+    <string name="boss_the_thorn_queen_desc">Le souverain de la Wildgrove, dont les roses fleurissent chaque printemps avec des épines aussi longues que des épées.</string>
 </resources>
