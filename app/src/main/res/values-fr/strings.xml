@@ -2367,7 +2367,7 @@
 
     <!-- Elder Isle pets: 7 dungeon drops + 1 raid-boss drop -->
     <string name="pet_tidal_sprite_name">Sprite de marée</string>
-    <string name="pet_tidal_sprite_desc">Un esprit d\'eau chatoyant né du surf de Beach & Cliffs. Il ne semble jamais complètement sec.</string>
+    <string name="pet_tidal_sprite_desc">Un esprit d\'eau chatoyant né du surf de Beach &amp; Cliffs. Il ne semble jamais complètement sec.</string>
     <string name="pet_grove_fawn_name">Grove Fawn</string>
     <string name="pet_grove_fawn_desc">Une jeune créature forestière à fourrure à runes, trouvée parmi les arbres anciens.</string>
     <string name="pet_magma_salamander_name">Magma Salamandre</string>

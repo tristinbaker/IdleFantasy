@@ -174,7 +174,7 @@
     <string name="enemy_void_seraph_name">Séraphin-viande</string>
 
     <!-- Elder Isle dungeons -->
-    <string name="dungeon_beach_and_cliffs_name">Plage & Cliffs</string>
+    <string name="dungeon_beach_and_cliffs_name">Plage &amp; Falaises</string>
     <string name="dungeon_beach_and_cliffs_desc">La zone d\'atterrissage de l\'île. Des ennemis du littoral saccagent les épaves de voyages antérieurs. Chaque clair a une chance de laisser tomber les Sigils Anciens.</string>
     <string name="dungeon_ancient_forest_name">Forêt ancienne</string>
     <string name="dungeon_ancient_forest_desc">Une jungle aux runes a grandi sur une vieille bibliothèque. Les harceleurs et les sécheuses aux runes gardent les visiteurs des ruines en dessous. Chaque clair a une chance de laisser tomber les Sigils Anciens.</string>
