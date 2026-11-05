@@ -1,0 +1,53 @@
+name: Gemini Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  review:
+    runs-on: docker
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extraire le diff
+        run: |
+          git diff origin/${{ github.base_ref }}...HEAD > pr_diff.txt
+
+      - name: Interroger Gemini et commenter
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          FORGEJO_TOKEN: ${{ secrets.FORGEJO_TOKEN }}
+          PR_INDEX: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+          API_URL: ${{ github.api_url }}
+        run: |
+          python3 - << 'EOF'
+          import os, requests
+          from google import genai
+
+          client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+          
+          with open("pr_diff.txt", "r") as f:
+              diff_content = f.read()
+
+          if not diff_content.strip():
+              print("Diff vide, aucune action requise.")
+              exit(0)
+
+          prompt = f"Tu es un relecteur de code sénior. Analyse ce diff Git et liste les failles de sécurité, bugs potentiels ou optimisations nécessaires de façon concise :\n\n{diff_content}"
+          response = client.models.generate_content(
+              model="gemini-2.5-flash",
+              contents=prompt
+          )
+
+          api_url = f"{os.environ['API_URL']}/v1/repos/{os.environ['REPO']}/issues/{os.environ['PR_INDEX']}/comments"
+          headers = {
+              "Authorization": f"token {os.environ['FORGEJO_TOKEN']}",
+              "Content-Type": "application/json"
+          }
+          requests.post(api_url, headers=headers, json={"body": response.text})
+          EOF
