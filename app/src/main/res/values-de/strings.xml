@@ -1612,7 +1612,11 @@
     <string name="boss_masked_name">\?\?\?</string>
     <string name="boss_last_elder_masked_desc">Etwas Uraltes schlummert in den Tiefen der Insel. Sammle das volle Ältesten Set zusammen, um dich ihm zu stellen.</string>
     <string name="elder_isle_welcome_title">Landung an der Ältesteninsel</string>
-    <string name="elder_isle_welcome_body">Das salzige Sprühwasser schwindet und der Nebel hebt sich. Vor uns: eine knochenweiße Küste, ein Dschungel übersät mit fahlen Runen und weiter im Lande kräuselt sich Rauch von einem Hügel, der nicht rauchen sollte. Die alten Segelleute haben Recht, etwas Uraltes lebt immer noch hier.\n\nIhre Festland Fähigkeiten, Boosts und Ausrüstungen bleiben an Bord. Alles was Ihr auf der Insel levelt oder herstellt wird separat festgehalten. Ältesten Ausrüstung wird mitgenommen zum Festland. Festland Fähigkeiten zählen hier nichts.\n\nStartet mit dem Fähigkeiten Reiter. Beginnt mit Bergbau oder Holzfällereri, um Inselmaterialien zu sammeln. Dann prüft den Aufgaben Reiter für euer erstes Ziel und öffnet den Weisheitsmeister in der Stadt wenn ihr ein neues Fragment freigeschaltet habt.</string>
+    <string name="elder_isle_welcome_body">Das salzige Sprühwasser schwindet und der Nebel hebt sich. Vor uns: eine knochenweiße Küste, ein Dschungel übersät mit fahlen Runen und weiter im Lande kräuselt sich Rauch von einem Hügel, der nicht rauchen sollte. Die alten Segelleute haben Recht, etwas Uraltes lebt immer noch hier.
+\n
+\nIhre Festland Fähigkeiten, Boosts und Ausrüstungen bleiben an Bord. Alles was Ihr auf der Insel levelt oder herstellt wird separat festgehalten. Ältesten Ausrüstung wird mitgenommen zum Festland. Festland Fähigkeiten zählen hier nichts.
+\n
+\nStartet mit dem Fähigkeiten Reiter. Beginnt mit Bergbau oder Holzfällereri, um Inselmaterialien zu sammeln. Dann prüft den Aufgaben Reiter für euer erstes Ziel und öffnet den Weisheitsmeister in der Stadt wenn ihr ein neues Fragment freigeschaltet habt.</string>
     <string name="elder_isle_welcome_cta">Trete an Land</string>
     <string name="elder_isle_stub_skills">Elder skills are being charted. Full skill tracks arrive in a later build.</string> <!-- untranslated -->
     <string name="elder_isle_stub_combat">Elder dungeons and the Last Elder fight are being drawn up. Later build.</string> <!-- untranslated -->
@@ -1664,15 +1668,15 @@
     <string name="item_voidsteel_bar_name">Leerenstahl Barren</string>
     <string name="item_starforged_bar_name">Barren der Sternenschmiede</string>
     <string name="item_coastal_pine_log_name">Küstenpinienstamm</string>
-    <string name="item_grove_oak_log_name">Grove Oak Log</string> <!-- untranslated -->
+    <string name="item_grove_oak_log_name">Haineichenstamm</string>
     <string name="item_abyssal_log_name">Stamm der Tiefe</string>
     <string name="item_starwood_log_name">Sternholz Stamm</string>
     <string name="item_raw_tidepool_crab_name">Tidepool Crab (raw)</string> <!-- untranslated -->
-    <string name="item_raw_grove_bass_name">Grove Bass (raw)</string> <!-- untranslated -->
+    <string name="item_raw_grove_bass_name">Hainbarsch (roh)</string>
     <string name="item_raw_lavafin_name">Lavaflosse (roh)</string>
     <string name="item_raw_deepwater_ray_name">Tiefseerochen (roh)</string>
     <string name="item_tidepool_crab_name">Tidepool Crab</string> <!-- untranslated -->
-    <string name="item_grove_bass_name">Grove Bass</string> <!-- untranslated -->
+    <string name="item_grove_bass_name">Hainbarsch</string>
     <string name="item_lavafin_name">Lavaflosse</string>
     <string name="item_deepwater_ray_name">Tiefseerochen</string>
     <string name="item_elder_bone_name">Ältesten Knochen</string>
@@ -1682,7 +1686,7 @@
 
     <!-- Elder Isle: gathering targets (trees) -->
     <string name="item_coastal_pine_name">Küstenpinie</string>
-    <string name="item_grove_oak_name">Grove Oak</string> <!-- untranslated -->
+    <string name="item_grove_oak_name">Haineiche</string>
     <string name="item_abyssal_tree_name">Baum der Tiefe</string>
     <string name="item_starwood_tree_name">Sternholz Baum</string>
 
@@ -1691,10 +1695,10 @@
     <string name="item_coastal_platebody_name">Küstenbrustpanzer</string>
     <string name="item_coastal_platelegs_name">Küstenbeinschienen</string>
     <string name="item_coastal_boots_name">Küstenstiefel</string>
-    <string name="item_grove_helm_name">Grove Helm</string> <!-- untranslated -->
-    <string name="item_grove_platebody_name">Grove Platebody</string> <!-- untranslated -->
-    <string name="item_grove_platelegs_name">Grove Platelegs</string> <!-- untranslated -->
-    <string name="item_grove_boots_name">Grove Boots</string> <!-- untranslated -->
+    <string name="item_grove_helm_name">Hain-Helm</string>
+    <string name="item_grove_platebody_name">Hain-Plattenpanzer</string>
+    <string name="item_grove_platelegs_name">Hain-Beinschienen</string>
+    <string name="item_grove_boots_name">Hainstiefel</string>
     <string name="item_volcanic_helm_name">Vulkanischer Helm</string>
     <string name="item_volcanic_platebody_name">Vulkanischer Brustpanzer</string>
     <string name="item_volcanic_platelegs_name">Vulkanische Beinschienen</string>
@@ -1719,8 +1723,8 @@
 
     <!-- Elder Isle: pet item entries (parallel to pet_* below; used by drop tables and inventory) -->
     <string name="item_tidal_sprite_name">Tidal Sprite</string> <!-- untranslated -->
-    <string name="item_grove_fawn_name">Grove Fawn</string> <!-- untranslated -->
-    <string name="item_magma_salamander_name">Magma Salamander</string> <!-- untranslated -->
+    <string name="item_grove_fawn_name">Hainkitz</string>
+    <string name="item_magma_salamander_name">Magmasalamander</string>
     <string name="item_abyss_wisp_name">Abyss Wisp</string> <!-- untranslated -->
     <string name="item_ancient_turtle_name">Uralte Schildkröte</string>
     <string name="item_cinder_hawk_name">Cinder Hawk</string> <!-- untranslated -->
@@ -2367,9 +2371,9 @@
     <!-- Elder Isle pets: 7 dungeon drops + 1 raid-boss drop -->
     <string name="pet_tidal_sprite_name">Tidal Sprite</string> <!-- untranslated -->
     <string name="pet_tidal_sprite_desc">A shimmering water spirit born from the surf of Beach &amp; Cliffs. Never seems to fully dry.</string> <!-- untranslated -->
-    <string name="pet_grove_fawn_name">Grove Fawn</string> <!-- untranslated -->
-    <string name="pet_grove_fawn_desc">A young forest creature with rune-patterned fur, found among the ancient trees.</string> <!-- untranslated -->
-    <string name="pet_magma_salamander_name">Magma Salamander</string> <!-- untranslated -->
+    <string name="pet_grove_fawn_name">Hainrehkitz</string>
+    <string name="pet_grove_fawn_desc">Eine junge Waldkreatur mit runengemustertem Fell, gefunden zwischen den Urwaldbäumen.</string>
+    <string name="pet_magma_salamander_name">Magmasalamander</string>
     <string name="pet_magma_salamander_desc">A heat-forged lizard that thrives in Volcano Peak\'s cracks. Its skin is always faintly warm.</string> <!-- untranslated -->
     <string name="pet_abyss_wisp_name">Abyss Wisp</string> <!-- untranslated -->
     <string name="pet_abyss_wisp_desc">A cold silver light that drifted up from the Abyssal Depths and refused to sink back.</string> <!-- untranslated -->
@@ -2748,7 +2752,7 @@
     <string name="seasonal_bounty_bloom_lobsters_hint">Fish Raw Lobster (Fishing)</string> <!-- untranslated -->
     <string name="seasonal_bounty_bloom_silver_name">Mine silver for the festival bells</string> <!-- untranslated -->
     <string name="seasonal_bounty_bloom_silver_hint">Mine Silver Ore (Mining)</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_magic_brews_name">Brew Magic Potions for the grove keepers</string> <!-- untranslated -->
+    <string name="seasonal_bounty_bloom_magic_brews_name">Braue magische Tränke für die Hainwächter</string>
     <string name="seasonal_bounty_bloom_magic_brews_hint">Herblore</string> <!-- untranslated -->
     <string name="seasonal_bounty_bloom_emerald_rings_name">Craft emerald rings for the Bloomtide court</string> <!-- untranslated -->
     <string name="seasonal_bounty_bloom_emerald_rings_hint">Crafting</string> <!-- untranslated -->
@@ -2767,7 +2771,7 @@
     <string name="seasonal_bounty_bloom_beasts_name">Cut down the Briar Beasts</string> <!-- untranslated -->
     <string name="seasonal_bounty_bloom_beasts_hint">Only found in The Thornmeadow</string> <!-- untranslated -->
     <string name="seasonal_bounty_bloom_stalkers_name">Hunt Thorn Stalkers</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_stalkers_hint">Only found in The Wildgrove</string> <!-- untranslated -->
+    <string name="seasonal_bounty_bloom_stalkers_hint">kann nur im Wildhain gefunden werden</string>
     <string name="seasonal_bounty_bloom_drakes_name">Drive off the Verdant Drakes</string> <!-- untranslated -->
     <string name="seasonal_bounty_bloom_drakes_hint">Only found in The Thornmeadow (rare)</string> <!-- untranslated -->
     <string name="seasonal_bounty_bloom_tithe_strawberries_name">Zehnt: Spendet Erdbeeren</string>
