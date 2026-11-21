@@ -153,7 +153,7 @@ fun QuestsScreen(
                 .fillMaxSize()
                 .padding(padding),
         ) {
-            ScrollableTabRow(selectedTabIndex = pagerState.currentPage, edgePadding = 0.dp) {
+            ScrollableTabRow(selectedTabIndex = if (pagerState.currentPage >= tabGroups.size) {tabGroups.size - 1} else {pagerState.currentPage}, edgePadding = 0.dp) {
                 tabGroups.forEachIndexed { index, group ->
                     val claimableInGroup = if (group == "Daily") {
                         state.dailyQuests.count { it.progress >= it.template.amount && !it.claimed }
