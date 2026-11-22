@@ -67,9 +67,9 @@
     <string name="tree_redwood_tree_name">Mammutbaum</string>
     <!-- Elder Isle woodcutting targets -->
     <string name="tree_coastal_pine_name">Küstenpinie</string>
-    <string name="tree_grove_oak_name">Grove Oak</string> <!-- untranslated -->
-    <string name="tree_abyssal_tree_name">Abyssal Tree</string> <!-- untranslated -->
-    <string name="tree_starwood_tree_name">Starwood Tree</string> <!-- untranslated -->
+    <string name="tree_grove_oak_name">Grove Oak</string>
+    <string name="tree_abyssal_tree_name">Abyssal Tree</string>
+    <string name="tree_starwood_tree_name">Starwood Tree</string>
 
     <!-- ===== Agility course names and descriptions ===== -->
     <string name="agility_beginner_course_name">Einsteigerkurs</string>
@@ -103,14 +103,14 @@
     <string name="agility_transcendent_course_name">Überirdischer Kurs</string>
     <string name="agility_transcendent_course_desc">Die ultimative Prüfung der Geschicklichkeit, die die Grenzen des Möglichen überschreitet.</string>
     <!-- Elder Isle agility courses (train elder Agility to shorten isle sessions to 45 min at 99) -->
-    <string name="agility_elder_coastal_run_name">Coastal Run</string> <!-- untranslated -->
-    <string name="agility_elder_coastal_run_desc">A jog along the isle\'s wave-scarred beach. Rocks shift underfoot with the tide.</string> <!-- untranslated -->
-    <string name="agility_elder_grove_traverse_name">Grove Traverse</string> <!-- untranslated -->
-    <string name="agility_elder_grove_traverse_desc">A rope-and-ledge circuit through the rune-lit canopy of the Ancient Forest.</string> <!-- untranslated -->
-    <string name="agility_elder_volcano_scramble_name">Volcano Scramble</string> <!-- untranslated -->
-    <string name="agility_elder_volcano_scramble_desc">A climb across the smoking flanks of the peak. The stone remembers being an altar.</string> <!-- untranslated -->
-    <string name="agility_elder_abyssal_ascent_name">Abyssal Ascent</string> <!-- untranslated -->
-    <string name="agility_elder_abyssal_ascent_desc">A vertical route up the pressure-cracked walls of the Abyssal Depths. Few make the top.</string> <!-- untranslated -->
+    <string name="agility_elder_coastal_run_name">Coastal Run</string>
+    <string name="agility_elder_coastal_run_desc">A jog along the isle\'s wave-scarred beach. Rocks shift underfoot with the tide.</string>
+    <string name="agility_elder_grove_traverse_name">Grove Traverse</string>
+    <string name="agility_elder_grove_traverse_desc">A rope-and-ledge circuit through the rune-lit canopy of the Ancient Forest.</string>
+    <string name="agility_elder_volcano_scramble_name">Volcano Scramble</string>
+    <string name="agility_elder_volcano_scramble_desc">A climb across the smoking flanks of the peak. The stone remembers being an altar.</string>
+    <string name="agility_elder_abyssal_ascent_name">Abyssal Ascent</string>
+    <string name="agility_elder_abyssal_ascent_desc">A vertical route up the pressure-cracked walls of the Abyssal Depths. Few make the top.</string>
 
     <!-- ===== Session skill type labels ===== -->
     <string name="skill_expedition_name">Entdeckungsreise</string>
