@@ -326,7 +326,7 @@
     <string name="settings_home_screen">Startbildschirm</string>
     <string name="settings_home_screen_desc">Wählt aus, was auf dem Startbildschirm angezeigt wird</string>
     <string name="settings_recent_activity">Protokoll der letzten Aktivitäten</string>
-    <string name="settings_recent_activity_desc">Schaltfläche „Letzte Aktivität" in der Kopfzeile der Startseite anzeigen</string>
+    <string name="settings_recent_activity_desc">Schaltfläche „Letzte Aktivität\" in der Kopfzeile der Startseite anzeigen</string>
     <string name="settings_journal_button">Journal-Schaltfläche</string>
     <string name="settings_journal_button_desc">Zeigt eine Journal-Schaltfläche in der oberen Leiste der Startseite zum Notieren an</string>
     <string name="settings_seasonal_events">Saisonale Ereignisse</string>
@@ -362,12 +362,12 @@
     <string name="weekly_bonus_title">Wöchentlicher Bonus!</string>
     <string name="weekly_bonus_claim">Fordert wöchentlichen Bonus ein</string>
     <string name="label_daily_info_pity">Jede tägliche Aufgabe wird mit Münzen entlohnt. Außerdem gibt es dabei immer eine Chance von 1 zu %1$d einen Teil der Zwergen-Ausrüstung zu erhalten welches du noch nicht besitzt. Jeder erfolgreiche Abschluss ohne Fallenlassen verbessert die Gewinnchancen; ein Fallenlassen setzt sie wieder auf 1 zu 100 zurück.</string>
-    <string name="label_daily_info_pity_divine">Each daily quest rewards coins. Every quest also has a 1 in %1$d chance to drop a piece of Divine gear you don\'t own yet. Each claim without a drop improves the odds; a drop resets them to 1 in 100.</string> <!-- untranslated -->
+    <string name="label_daily_info_pity_divine">Each daily quest rewards coins. Every quest also has a 1 in %1$d chance to drop a piece of Divine gear you don\'t own yet. Each claim without a drop improves the odds; a drop resets them to 1 in 100.</string>
     <string name="label_daily_info_complete">Jede tägliche Aufgabe wird mit Münzen entlohnt. Du besitzt bereits alle Teile der Zwergen-Ausrüstung!</string>
     <string name="label_weekly_info">Jede wöchentliche Herausforderung wird mit Münzen entsprechend der Schwierigkeit entlohnt. Wenn Ihr alle 5 Herausforderungen meistert, erhaltet eine Sonderzulage: 100 000 Münzen oder mit einer Chance von %1$s ein Teil der göttlichen Ausrüstung.</string>
     <string name="label_weekly_info_complete">Jede wöchentliche Herausforderung wird mit Münzen entsprechend der Schwierigkeit entlohnt. Wenn Ihr alle 5 Herausforderungen meistert, erhaltet eine Sonderzulage: 100 000 Münzen. Ihr besitzt bereits die komplette göttliche Ausrüstung!</string>
     <string name="label_daily_reward_pity">2 000 Münzen (1/%1$d: Zwergen-Ausrüstung)</string>
-    <string name="label_daily_reward_pity_divine">2,000 coins (1/%1$d: Divine gear)</string> <!-- untranslated -->
+    <string name="label_daily_reward_pity_divine">2,000 coins (1/%1$d: Divine gear)</string>
     <string name="label_daily_reward_complete">2 000 Münzen</string>
     <string name="msg_daily_claimed_coins">Tagesaufgabe abgeschlossen! +2 000 Münzen.</string>
     <string name="msg_daily_claimed_dwarven">Tagesaufgabe abgeschlossen! Ihr habt %1$s gefunden!</string>
@@ -674,7 +674,7 @@
     <string name="profile_stat_cooking">Kochen</string>
     <string name="profile_stat_thieving">Diebstahl</string>
     <string name="profile_stat_def">VER</string>
-    <string name="profile_req_lv">Benötigt Level </string>
+    <string name="profile_req_lv">"Benötigt Level "</string>
 
     <!-- ===== SkillsScreen ===== -->
     <!-- Translator note: %1$d = session duration in minutes -->
@@ -1609,13 +1609,13 @@
     <string name="elder_isle_dock_unlocked_body">Das Pier ist fertig und die Boote warten, aber keine Crew wird die Überfahrt machen wollen, solange die Seeschlange, die jede vorherigen Reiseversuche ertränkt hat, tot ist. Finde sie im Festland Reiter der Kampfverliese unter den Endgegnern. Die Passage öffnet sich, sobald sie gefallen ist.</string>
     <string name="elder_isle_dock_unlocked_cta">Stelle dich der Seeschlange</string>
     <string name="elder_isle_dock_unlocked_later">Später</string>
-    <string name="boss_masked_name">\?\?\?</string>
+    <string name="boss_masked_name">\\?\\?\\?</string>
     <string name="boss_last_elder_masked_desc">Etwas Uraltes schlummert in den Tiefen der Insel. Sammle das volle Ältesten Set zusammen, um dich ihm zu stellen.</string>
     <string name="elder_isle_welcome_title">Landung an der Ältesteninsel</string>
-    <string name="elder_isle_welcome_body">Das salzige Sprühwasser schwindet und der Nebel hebt sich. Vor uns: eine knochenweiße Küste, ein Dschungel übersät mit fahlen Runen und weiter im Lande kräuselt sich Rauch von einem Hügel, der nicht rauchen sollte. Die alten Segelleute haben Recht, etwas Uraltes lebt immer noch hier.\n\nIhre Festland Fähigkeiten, Boosts und Ausrüstungen bleiben an Bord. Alles was Ihr auf der Insel levelt oder herstellt wird separat festgehalten. Ältesten Ausrüstung wird mitgenommen zum Festland. Festland Fähigkeiten zählen hier nichts.\n\nStartet mit dem Fähigkeiten Reiter. Beginnt mit Bergbau oder Holzfällereri, um Inselmaterialien zu sammeln. Dann prüft den Aufgaben Reiter für euer erstes Ziel und öffnet den Weisheitsmeister in der Stadt wenn ihr ein neues Fragment freigeschaltet habt.</string>
+    <string name="elder_isle_welcome_body">Das salzige Sprühwasser schwindet und der Nebel hebt sich. Vor uns: eine knochenweiße Küste, ein Dschungel übersät mit fahlen Runen und weiter im Lande kräuselt sich Rauch von einem Hügel, der nicht rauchen sollte. Die alten Segelleute haben Recht, etwas Uraltes lebt immer noch hier.\n\n\n\nIhre Festland Fähigkeiten, Boosts und Ausrüstungen bleiben an Bord. Alles was Ihr auf der Insel levelt oder herstellt wird separat festgehalten. Ältesten Ausrüstung wird mitgenommen zum Festland. Festland Fähigkeiten zählen hier nichts.\n\n\n\nStartet mit dem Fähigkeiten Reiter. Beginnt mit Bergbau oder Holzfällereri, um Inselmaterialien zu sammeln. Dann prüft den Aufgaben Reiter für euer erstes Ziel und öffnet den Weisheitsmeister in der Stadt wenn ihr ein neues Fragment freigeschaltet habt.</string>
     <string name="elder_isle_welcome_cta">Trete an Land</string>
-    <string name="elder_isle_stub_skills">Elder skills are being charted. Full skill tracks arrive in a later build.</string> <!-- untranslated -->
-    <string name="elder_isle_stub_combat">Elder dungeons and the Last Elder fight are being drawn up. Later build.</string> <!-- untranslated -->
+    <string name="elder_isle_stub_skills">Elder skills are being charted. Full skill tracks arrive in a later build.</string>
+    <string name="elder_isle_stub_combat">Elder dungeons and the Last Elder fight are being drawn up. Later build.</string>
     <string name="elder_isle_stub_quests">Insel Aufgaben werden hier erscheinen, sobald die zugehörige Geschichte erscheint.</string>
     <string name="elder_isle_stub_profile">Insel Boni und Ausrüstungalayouts werden mit dem Fähigkeitenpfade Update erscheinen.</string>
     <string name="elder_isle_skills_title">Fähigkeiten der Ältesten</string>
@@ -1643,7 +1643,7 @@
     <string name="elder_isle_shop_purchased">%1$s gekauft.</string>
     <string name="elder_isle_shop_button">Besuche den Inselladen</string>
     <string name="elder_isle_armor_master_title">Ältesten Rüstungsmeister</string>
-    <string name="elder_isle_lore_master_title">Lore Master</string> <!-- untranslated -->
+    <string name="elder_isle_lore_master_title">Lore Master</string>
     <string name="elder_armor_missing_mats">Nicht genug Material.</string>
     <string name="elder_armor_crafted">%1$s hergestellt.</string>
     <string name="elder_armor_queue_full">Herstellungskosten Warteschlange ist voll (3).</string>
@@ -1664,15 +1664,15 @@
     <string name="item_voidsteel_bar_name">Leerenstahl Barren</string>
     <string name="item_starforged_bar_name">Barren der Sternenschmiede</string>
     <string name="item_coastal_pine_log_name">Küstenpinienstamm</string>
-    <string name="item_grove_oak_log_name">Grove Oak Log</string> <!-- untranslated -->
+    <string name="item_grove_oak_log_name">Grove Oak Log</string>
     <string name="item_abyssal_log_name">Stamm der Tiefe</string>
     <string name="item_starwood_log_name">Sternholz Stamm</string>
-    <string name="item_raw_tidepool_crab_name">Tidepool Crab (raw)</string> <!-- untranslated -->
-    <string name="item_raw_grove_bass_name">Grove Bass (raw)</string> <!-- untranslated -->
+    <string name="item_raw_tidepool_crab_name">Tidepool Crab (raw)</string>
+    <string name="item_raw_grove_bass_name">Grove Bass (raw)</string>
     <string name="item_raw_lavafin_name">Lavaflosse (roh)</string>
     <string name="item_raw_deepwater_ray_name">Tiefseerochen (roh)</string>
-    <string name="item_tidepool_crab_name">Tidepool Crab</string> <!-- untranslated -->
-    <string name="item_grove_bass_name">Grove Bass</string> <!-- untranslated -->
+    <string name="item_tidepool_crab_name">Tidepool Crab</string>
+    <string name="item_grove_bass_name">Grove Bass</string>
     <string name="item_lavafin_name">Lavaflosse</string>
     <string name="item_deepwater_ray_name">Tiefseerochen</string>
     <string name="item_elder_bone_name">Ältesten Knochen</string>
@@ -1682,7 +1682,7 @@
 
     <!-- Elder Isle: gathering targets (trees) -->
     <string name="item_coastal_pine_name">Küstenpinie</string>
-    <string name="item_grove_oak_name">Grove Oak</string> <!-- untranslated -->
+    <string name="item_grove_oak_name">Grove Oak</string>
     <string name="item_abyssal_tree_name">Baum der Tiefe</string>
     <string name="item_starwood_tree_name">Sternholz Baum</string>
 
@@ -1691,10 +1691,10 @@
     <string name="item_coastal_platebody_name">Küstenbrustpanzer</string>
     <string name="item_coastal_platelegs_name">Küstenbeinschienen</string>
     <string name="item_coastal_boots_name">Küstenstiefel</string>
-    <string name="item_grove_helm_name">Grove Helm</string> <!-- untranslated -->
-    <string name="item_grove_platebody_name">Grove Platebody</string> <!-- untranslated -->
-    <string name="item_grove_platelegs_name">Grove Platelegs</string> <!-- untranslated -->
-    <string name="item_grove_boots_name">Grove Boots</string> <!-- untranslated -->
+    <string name="item_grove_helm_name">Grove Helm</string>
+    <string name="item_grove_platebody_name">Grove Platebody</string>
+    <string name="item_grove_platelegs_name">Grove Platelegs</string>
+    <string name="item_grove_boots_name">Grove Boots</string>
     <string name="item_volcanic_helm_name">Vulkanischer Helm</string>
     <string name="item_volcanic_platebody_name">Vulkanischer Brustpanzer</string>
     <string name="item_volcanic_platelegs_name">Vulkanische Beinschienen</string>
@@ -1718,20 +1718,20 @@
     <string name="item_elder_diamond_name">Diamantfarbener Siegelstein</string>
 
     <!-- Elder Isle: pet item entries (parallel to pet_* below; used by drop tables and inventory) -->
-    <string name="item_tidal_sprite_name">Tidal Sprite</string> <!-- untranslated -->
-    <string name="item_grove_fawn_name">Grove Fawn</string> <!-- untranslated -->
-    <string name="item_magma_salamander_name">Magma Salamander</string> <!-- untranslated -->
-    <string name="item_abyss_wisp_name">Abyss Wisp</string> <!-- untranslated -->
+    <string name="item_tidal_sprite_name">Tidal Sprite</string>
+    <string name="item_grove_fawn_name">Grove Fawn</string>
+    <string name="item_magma_salamander_name">Magma Salamander</string>
+    <string name="item_abyss_wisp_name">Abyss Wisp</string>
     <string name="item_ancient_turtle_name">Uralte Schildkröte</string>
-    <string name="item_cinder_hawk_name">Cinder Hawk</string> <!-- untranslated -->
+    <string name="item_cinder_hawk_name">Cinder Hawk</string>
     <string name="item_deepwater_serpent_name">Tiefwasserschlange</string>
     <string name="item_elder_familiar_name">Ältestenhaustier</string>
 
     <!-- Elder Isle: ore descriptions -->
-    <string name="item_mythrite_ore_desc">Silvery isle ore. Smelts into Mythrite Bars, the base metal of the Coastal armor tier.</string> <!-- untranslated -->
-    <string name="item_abyssal_ore_desc">Dark isle ore laced with pressure-cracked veins. Smelts into Abyssal Bars for Grove-tier gear.</string> <!-- untranslated -->
-    <string name="item_voidsteel_ore_desc">Isle ore that hums faintly under pressure. Smelts into Voidsteel Bars for Volcanic-tier gear.</string> <!-- untranslated -->
-    <string name="item_starforged_ore_desc">The isle\'s rarest ore, said to be shed from the seal itself. Smelts into Starforged Bars for the Elder set.</string> <!-- untranslated -->
+    <string name="item_mythrite_ore_desc">Silvery isle ore. Smelts into Mythrite Bars, the base metal of the Coastal armor tier.</string>
+    <string name="item_abyssal_ore_desc">Dark isle ore laced with pressure-cracked veins. Smelts into Abyssal Bars for Grove-tier gear.</string>
+    <string name="item_voidsteel_ore_desc">Isle ore that hums faintly under pressure. Smelts into Voidsteel Bars for Volcanic-tier gear.</string>
+    <string name="item_starforged_ore_desc">The isle\'s rarest ore, said to be shed from the seal itself. Smelts into Starforged Bars for the Elder set.</string>
     <string name="town_chronos_spire_no_bonus">Verbessere, um die Dauer der Spieler-Aktivitäten zu verringern</string>
     <string name="town_chronos_spire_active_bonus">%1$d%% Verringerung der Dauer der Spieler-Aktivitäten</string>
 
@@ -1945,7 +1945,7 @@
     <string name="quest_complete_with_rewards">Aufgabe abgeschlossen: %1$s! Belohnung: %2$s</string>
     <string name="quest_daily_complete_coins">Tagesaufgabe abgeschlossen! +%1$s Münzen</string>
     <string name="quest_daily_complete_dwarven">Tagesaufgabe abgeschlossen! Ihr habt Zwergen-Ausrüstung gefunden!</string>
-    <string name="quest_daily_complete_divine">Daily quest complete! You found divine gear!</string> <!-- untranslated -->
+    <string name="quest_daily_complete_divine">Daily quest complete! You found divine gear!</string>
     <string name="quest_weekly_complete">Wöchentliche Herausforderung abgeschlossen! +%1$s Münzen</string>
     <string name="quest_weekly_bonus_complete_coins">Alle wöchentlichen Herausforderung abgeschlossen! +%1$s Münzen</string>
     <string name="quest_weekly_bonus_complete_divine">Alle wöchentlichen Herausforderung abgeschlossen! Ihr habt göttliche Ausrüstung gefunden!</string>
@@ -1966,7 +1966,7 @@
     <string name="combat_start_anyway">Trotzdem starten</string>
     <string name="combat_xp_consolation">EP (Trost)</string>
     <string name="bestiary_loot_item_header">Gegenstand</string>
-    <string name="worker_no_mats">No materials</string> <!-- untranslated -->
+    <string name="worker_no_mats">No materials</string>
     <string name="bonus_section_skills">Fähigkeits-Bonus</string>
     <string name="bonus_combat_stat_boost">Verstärkt Kampffähigkeiten</string>
     <string name="bonus_combined_xp">EP gesamt</string>
@@ -2039,7 +2039,7 @@
     <string name="boss_coin_cap_spent">Münzbeute dieses Bosses bis morgen reduziert</string>
     <string name="bestiary_coin_cap_label">Nach %1$d Kills/Tag</string>
     <string name="session_note_boss_coin_cap">Münzbeute reduziert (Tageslimit für diesen Boss)</string>
-    <string name="session_note_boss_defeated_by">Defeated by %1$s ×%2$d</string> <!-- untranslated -->
+    <string name="session_note_boss_defeated_by">Defeated by %1$s ×%2$d</string>
     <string name="guild_daily_button">Gildenaufgaben</string>
     <string name="guild_daily_banner_claimable">Gildenaufgabe abgeschlossen! In der Gildenhalle einlösen</string>
     <string name="guild_daily_banner_claimed">Gildenaufgabe heute eingelöst</string>
@@ -2047,7 +2047,7 @@
 
     <!-- ===== Infinite Tower ===== -->
     <!-- Raids and mercenaries -->
-    <string name="raid_section_title">Raids</string> <!-- untranslated -->
+    <string name="raid_section_title">Raids</string>
     <string name="raid_section_desc">Gegner die kein Held alleine bezwingen kann. Heuere zuerst weitere Söldner an.</string>
     <string name="raid_party_status">Angeheuerte Söldner: %1$d/%2$d</string>
     <string name="raid_party_title">Raid-Gruppe</string>
@@ -2159,7 +2159,7 @@
     <string name="seasonal_bounty_sunspire_firewood_hint">Fällt Eichenstämme — Holzfällerei</string>
     <string name="seasonal_bounty_sunspire_kindling_name">Sammelt Anzündmaterial für das Lagerfeuer</string>
     <string name="seasonal_bounty_sunspire_kindling_hint">Fällt Weidenstämme — Holzfällerei</string>
-    <string name="seasonal_bounty_sunspire_sunore_name">Grabt nach Gold um den Sonnenturm zu vergolden	</string>
+    <string name="seasonal_bounty_sunspire_sunore_name">"Grabt nach Gold um den Sonnenturm zu vergolden	"</string>
     <string name="seasonal_bounty_sunspire_sunore_hint">Grabt nach Gold — Bergbau</string>
     <string name="seasonal_bounty_sunspire_draughts_name">Braut Stärke-Zaubertrank</string>
     <string name="seasonal_bounty_sunspire_draughts_hint">Kräuterkunde</string>
@@ -2302,7 +2302,7 @@
 
     <string name="settings_credit_characters_title">Charakter Sprites</string>
     <string name="settings_credit_characters_subtitle">Kunst von Pixylac</string>
-    <string name="settings_credit_bosses_title">Boss Sprites</string> <!-- untranslated -->
+    <string name="settings_credit_bosses_title">Boss Sprites</string>
     <string name="settings_credit_bosses_subtitle">Kunst von Meg</string>
     <string name="settings_credit_house_title">Inneneinrichtung</string>
 
@@ -2331,7 +2331,7 @@
     <string name="pet_baby_balrog_desc">Ein kleiner Dämon aus Feuer und Schatten, der deine Magie verstärkt.</string>
     <string name="pet_void_wisp_name">Leerengeist</string>
     <string name="pet_void_wisp_desc">Ein Fragment der Essenz des Leerenbotschafters, an jene gebunden, die seinen Meister besiegten. Vermehrt Kampf-Erfahrung.</string>
-    <string name="pet_graceling_sprite_name">Graceling Sprite</string> <!-- untranslated -->
+    <string name="pet_graceling_sprite_name">Graceling Sprite</string>
     <string name="pet_graceling_sprite_desc">Eine flinke, aus tausenden in Stille gelaufenen Runden geborene Fee. Leitet deine Füße mit unheimlicher Gnade.</string>
     <string name="pet_shadow_fox_name">Schattenfuchs</string>
     <string name="pet_shadow_fox_desc">Ein listiger Fuchs, aus den Schatten unzähliger Taschendiebstähle materialisiert.</string>
@@ -2355,7 +2355,7 @@
     <string name="pet_juggling_imp_desc" formatted="false">Ein verspielter Kobold, der deine Sorgen wegjongliert. Er erhöht jedes Fähigkeiten-EP um 3%.</string>
     <string name="pet_tower_pet_name">Steinwächter</string>
     <string name="pet_tower_pet_desc">Ein uralter Steingolem, der die Geheimnisse des Turms bewacht. Erhöht Kampf-EP.</string>
-    <string name="pet_solstice_sprite_name">Solstice Sprite</string> <!-- untranslated -->
+    <string name="pet_solstice_sprite_name">Solstice Sprite</string>
     <string name="pet_solstice_sprite_desc">Ein kleiner Glutgeist aus dem Sonnenwende-Sommerturm-Event, der dein Können im Kampf verbessert.</string>
     <string name="pet_lantern_wisp_name">Laternengeist</string>
     <string name="pet_lantern_wisp_desc">Eine grinsende Kürbislaterne, die aus der Krone des hohlen Königs entkommen ist und dir nun auf dem Weg in die Schlacht leuchtet.</string>
@@ -2365,22 +2365,22 @@
     <string name="pet_golden_goose_desc">Eine königliche Gans, die auf dem vergoldeten Monument nistet. Münzen scheinen einfach ihren Hüter zu finden.</string>
 
     <!-- Elder Isle pets: 7 dungeon drops + 1 raid-boss drop -->
-    <string name="pet_tidal_sprite_name">Tidal Sprite</string> <!-- untranslated -->
-    <string name="pet_tidal_sprite_desc">A shimmering water spirit born from the surf of Beach &amp; Cliffs. Never seems to fully dry.</string> <!-- untranslated -->
-    <string name="pet_grove_fawn_name">Grove Fawn</string> <!-- untranslated -->
-    <string name="pet_grove_fawn_desc">A young forest creature with rune-patterned fur, found among the ancient trees.</string> <!-- untranslated -->
-    <string name="pet_magma_salamander_name">Magma Salamander</string> <!-- untranslated -->
-    <string name="pet_magma_salamander_desc">A heat-forged lizard that thrives in Volcano Peak\'s cracks. Its skin is always faintly warm.</string> <!-- untranslated -->
-    <string name="pet_abyss_wisp_name">Abyss Wisp</string> <!-- untranslated -->
-    <string name="pet_abyss_wisp_desc">A cold silver light that drifted up from the Abyssal Depths and refused to sink back.</string> <!-- untranslated -->
+    <string name="pet_tidal_sprite_name">Tidal Sprite</string>
+    <string name="pet_tidal_sprite_desc">A shimmering water spirit born from the surf of Beach &amp; Cliffs. Never seems to fully dry.</string>
+    <string name="pet_grove_fawn_name">Grove Fawn</string>
+    <string name="pet_grove_fawn_desc">A young forest creature with rune-patterned fur, found among the ancient trees.</string>
+    <string name="pet_magma_salamander_name">Magma Salamander</string>
+    <string name="pet_magma_salamander_desc">A heat-forged lizard that thrives in Volcano Peak\'s cracks. Its skin is always faintly warm.</string>
+    <string name="pet_abyss_wisp_name">Abyss Wisp</string>
+    <string name="pet_abyss_wisp_desc">A cold silver light that drifted up from the Abyssal Depths and refused to sink back.</string>
     <string name="pet_ancient_turtle_name">Uralte Schildkröte</string>
     <string name="pet_ancient_turtle_desc">Eine winzige Schildkröte, deren Panzer dieselben Runen trägt wie das Siegel der Insel. Älter, als sie aussieht.</string>
-    <string name="pet_cinder_hawk_name">Cinder Hawk</string> <!-- untranslated -->
-    <string name="pet_cinder_hawk_desc">A bird of banked embers that circles the volcano and roosts on your shoulder between fights.</string> <!-- untranslated -->
+    <string name="pet_cinder_hawk_name">Cinder Hawk</string>
+    <string name="pet_cinder_hawk_desc">A bird of banked embers that circles the volcano and roosts on your shoulder between fights.</string>
     <string name="pet_deepwater_serpent_name">Tiefwasserschlange</string>
     <string name="pet_deepwater_serpent_desc">Ein kleiner Vetter der Seeschlange, wickelt sich um dein Handgelenk wie ein lebendiger Armreif.</string>
     <string name="pet_elder_familiar_name">Ältestenhaustier</string>
-    <string name="pet_elder_familiar_desc">The Last Elder\'s dying companion, bound now to whoever felled its master. Its eyes still remember.</string> <!-- untranslated -->
+    <string name="pet_elder_familiar_desc">The Last Elder\'s dying companion, bound now to whoever felled its master. Its eyes still remember.</string>
 
     <!-- Save slots / character manager -->
     <string name="settings_characters">Charaktere</string>
@@ -2496,9 +2496,9 @@
     <string name="prestige_effect_xp_pct">+%1$d%% EP in dieser Fähigkeiten.</string>
     <string name="prestige_effect_yield_pct">+%1$d%% Gegenstände von den Aktivitäten dieser Fähigkeit.</string>
     <!-- Translator note: %1$s = yield percent per interval (may be fractional) -->
-    <string name="prestige_effect_flow_rate">Flow-state: +%1$s%% yield per interval of continuous activity, up to +100%%.</string> <!-- untranslated -->
+    <string name="prestige_effect_flow_rate">Flow-state: +%1$s%% yield per interval of continuous activity, up to +100%%.</string>
     <!-- Translator note: %1$d = minutes removed from the flow interval -->
-    <string name="prestige_effect_flow_interval_reduction">Flow-state interval shortened by %1$d minutes.</string> <!-- untranslated -->
+    <string name="prestige_effect_flow_interval_reduction">Flow-state interval shortened by %1$d minutes.</string>
     <string name="prestige_effect_combat_stat_flat">+%1$d effektive Stufen im Kampf.</string>
     <!-- Translator note: %1$s = minutes (may be fractional) -->
     <string name="prestige_effect_session_floor_min">Aktivitäten sind auf Stufe 99 um %1$s Minuten kürzer.</string>
@@ -2514,18 +2514,18 @@
     <string name="prestige_effect_heal_pct">Nahrung heilt im Kampf um +%1$d%% mehr.</string>
     <string name="prestige_effect_death_keep_pct">Behalte bei einer Niederlage zusätzlich %1$d%% an EP und Beute.</string>
     <string name="prestige_effect_queue_slot">+%1$d Warteschlangenplätze.</string>
-    <string name="prestige_effect_pet_boost_pct">Pet boosts for this skill are %1$d%% stronger.</string> <!-- untranslated -->
+    <string name="prestige_effect_pet_boost_pct">Pet boosts for this skill are %1$d%% stronger.</string>
     <string name="prestige_effect_blessing_duration_pct">Kirchliche Segen halten %1$d%% länger an.</string>
     <string name="prestige_effect_blessing_cost_pct">Kirchliche Segen kosten %1$d%% weniger Knochen.</string>
-    <string name="prestige_effect_potion_bonus_flat">Combat potions grant +%1$d more to their stats.</string> <!-- untranslated -->
+    <string name="prestige_effect_potion_bonus_flat">Combat potions grant +%1$d more to their stats.</string>
     <string name="prestige_effect_input_save_pct">%1$d%% der Materialien werden erstattet.</string>
     <string name="prestige_effect_builder_discount_pct">Gebäude-Verbesserungen kosten %1$d%% weniger.</string>
     <string name="prestige_effect_sell_price_pct">Verkaufspreise beim Krämer +%1$d%%.</string>
     <string name="prestige_effect_slayer_points_pct">Trophäenjagd-Punkte +%1$d%%.</string>
-    <string name="prestige_effect_double_hit_pct">%1$d%% chance to strike a second melee hit.</string> <!-- untranslated -->
-    <string name="prestige_effect_second_chance">Missed melee attacks are rerolled once.</string> <!-- untranslated -->
+    <string name="prestige_effect_double_hit_pct">%1$d%% chance to strike a second melee hit.</string>
+    <string name="prestige_effect_second_chance">Missed melee attacks are rerolled once.</string>
     <string name="prestige_effect_foretell_slots">+%1$d Plätze in Vorhersage-Liste vom Trophäenjäger.</string>
-    <string name="prestige_effect_slayer_multi_task">Dungeon kills also count toward matching foretold tasks.</string> <!-- untranslated -->
+    <string name="prestige_effect_slayer_multi_task">Dungeon kills also count toward matching foretold tasks.</string>
     <string name="prestige_effect_unlock_recipe">Schaltet das Rezept für %1$s-Bogenbau frei.</string>
 
     <!-- New distinctive base path names (variety pass) -->
@@ -2551,7 +2551,7 @@
     <!-- Prestige path names (generic) -->
     <string name="prestige_path_xp">EP Verstärkung</string>
     <string name="prestige_path_yield">Ertrag</string>
-    <string name="prestige_path_flow">Flow-state</string> <!-- untranslated -->
+    <string name="prestige_path_flow">Flow-state</string>
     <string name="prestige_path_endurance">Ausdauer</string>
     <string name="prestige_path_gem">Edelsteinjäger</string>
     <string name="prestige_path_rotation">Fruchtfolge</string>
@@ -2582,8 +2582,8 @@
     <string name="prestige_path_construction_race_halfling">Gemütlicher Baumeister</string>
     <string name="prestige_path_fishing_race_gnome">Schlaue Köder</string>
     <string name="prestige_path_fletching_race_gnome">Berührung des Bastlers</string>
-    <string name="prestige_path_firemaking_race_gnome">Spark Wright</string> <!-- untranslated -->
-    <string name="prestige_path_construction_race_gnome">Gadget Works</string> <!-- untranslated -->
+    <string name="prestige_path_firemaking_race_gnome">Spark Wright</string>
+    <string name="prestige_path_construction_race_gnome">Gadget Works</string>
     <string name="prestige_path_prayer_race_gnome">Gunst des Betrügers</string>
     <string name="prestige_path_hitpoints_race_orc">Dicke Haut</string>
 
@@ -2595,14 +2595,14 @@
     <string name="race_change_pay_token">Rassenwechsel-Token verwenden (%1$d)</string>
     <string name="race_change_pay_coins">10 000 000 Münzen zahlen</string>
     <string name="race_change_cannot_afford">Um die Rasse zu wechseln, benötigst du ein Rassenwechsel-Token (seltener Endgegner-Drop) oder 10 000 000 Münzen.</string>
-    <string name="race_change_ironman_locked">Ironman characters cannot change their race.</string> <!-- untranslated -->
-    <string name="race_change_cooldown_wait">You can change race again in %1$s.</string> <!-- untranslated -->
-    <string name="race_change_ironman_once">As an ironman, this is your one and only race change. Afterwards your race is locked forever.</string> <!-- untranslated -->
-    <string name="ironman_race_permanent_note">Ironman characters cannot change their race later. Choose carefully!</string> <!-- untranslated -->
+    <string name="race_change_ironman_locked">Ironman-Charaktere können ihre Rasse nicht ändern.</string>
+    <string name="race_change_cooldown_wait">Du kannst deine Rasse erneut in %1$s ändern.</string>
+    <string name="race_change_ironman_once">As an ironman, this is your one and only race change. Afterwards your race is locked forever.</string>
+    <string name="ironman_race_permanent_note">Ironman-Charactere können ihre Rasse später nicht ändern. Wähle weise!</string>
     <!-- Translator note: %1$s = comma-separated list of skill names -->
     <string name="race_proficiency_label">Rassen-Fähigkeitsbäume: %1$s</string>
     <string name="race_proficiency_human">Rassenbonus: eine exklusive EP-Meisterschaftsstufe in jeder Fertigkeit</string>
-    <string name="race_change_confirm_message">Your race grants race-locked prestige upgrades. Changing race refunds any points spent in other races\' branches, and you can only change race once every 24 hours.</string> <!-- untranslated -->
+    <string name="race_change_confirm_message">Your race grants race-locked prestige upgrades. Changing race refunds any points spent in other races\' branches, and you can only change race once every 24 hours.</string>
     <!-- Heirloom items (raid boss rare drops that level up with use) -->
     <string name="item_heirloom_pickaxe_name">Erbstück-Spitzhacke</string>
     <string name="item_heirloom_pickaxe_desc">Eine Familien-Spitzhacke, die seit Generationen weitergegeben wird. Sie erinnert sich an jedes Erz, das ihre Besitzer jemals abgebaut haben.</string>
@@ -2623,7 +2623,7 @@
     <string name="item_heirloom_lockpick_name">Erbstück-Dietrich</string>
     <string name="item_heirloom_lockpick_desc">Ein Dietrich, der schon unzählige Schlösser leise geöffnet hat. Mit jedem Auftrag wird er noch raffinierter.</string>
     <string name="item_midas_band_name">Midas Band</string>
-    <string name="item_midas_band_desc">A sliver of the Vault Guardian\'s living gold. It drinks in a little of every battle its wearer survives.</string> <!-- untranslated -->
+    <string name="item_midas_band_desc">A sliver of the Vault Guardian\'s living gold. It drinks in a little of every battle its wearer survives.</string>
     <string name="item_heirloom_blade_name">Erbstück-Klinge</string>
     <string name="item_heirloom_blade_desc">Eine uralte Klinge, die mit jedem Kampf, den ihre Linie übersteht, ein wenig mehr zum Leben erwacht.</string>
     <string name="item_heirloom_greathammer_name">Erbstück-Kriegshammer</string>
@@ -2642,8 +2642,8 @@
     <string name="repeat_blocked_level">Dein Kampflevel ist zu niedrig, um %1$s zu wiederholen.</string>
 
     <!-- Seasonal rotation: Sunspire upgrade, Frostfall, Bloomtide -->
-    <string name="seasonal_event_frostfall_name">Frostfall</string> <!-- untranslated -->
-    <string name="seasonal_event_frostfall_banner">Participated in the Frostfall %1$d</string> <!-- untranslated -->
+    <string name="seasonal_event_frostfall_name">Frostfall</string>
+    <string name="seasonal_event_frostfall_banner">Participated in the Frostfall %1$d</string>
     <string name="seasonal_minigame_snowball_toss_name">Schneeballwerfen</string>
     <string name="seasonal_event_bloomtide_name">Blütenstrom</string>
     <string name="seasonal_event_bloomtide_banner">Am Blütenstrom Event teilgenommen %1$d</string>
@@ -2655,7 +2655,7 @@
     <string name="seasonal_reward_sunspire_solstice_200_desc">Geldbeutel (250,000 Münzen)</string>
     <string name="seasonal_reward_sunspire_solstice_250_desc">Sonnenvogelküken</string>
     <string name="seasonal_market_sunweave_cape_name">Sonnengewebe Umhang</string>
-    <string name="seasonal_market_bonfire_restoke_name">Restoke the Bonfire (skip minigame cooldown)</string> <!-- untranslated -->
+    <string name="seasonal_market_bonfire_restoke_name">Restoke the Bonfire (skip minigame cooldown)</string>
     <string name="seasonal_reward_frostfall_25_desc">Geldbeutel (50,000 Münzen)</string>
     <string name="seasonal_reward_frostfall_60_desc">Frostgebundener Ring</string>
     <string name="seasonal_reward_frostfall_100_desc">Freier 48h EP Boost</string>
@@ -2664,25 +2664,25 @@
     <string name="seasonal_reward_frostfall_250_desc">Schneehase</string>
     <string name="seasonal_reward_frostfall_300_desc">Raufrost Banner</string>
     <string name="seasonal_market_frostweave_cape_name">Frostgewebe Umhang</string>
-    <string name="seasonal_market_snowball_restock_name">Restock the Snowballs (skip minigame cooldown)</string> <!-- untranslated -->
+    <string name="seasonal_market_snowball_restock_name">Restock the Snowballs (skip minigame cooldown)</string>
     <string name="seasonal_reward_bloomtide_25_desc">Geldbeutel (50,000 Münzen)</string>
-    <string name="seasonal_reward_bloomtide_60_desc">Seedheart Ring</string> <!-- untranslated -->
-    <string name="seasonal_reward_bloomtide_100_desc">Free 48h XP Boost</string> <!-- untranslated -->
-    <string name="seasonal_reward_bloomtide_150_desc">Bloomwood Staff</string> <!-- untranslated -->
-    <string name="seasonal_reward_bloomtide_200_desc">Coin purse (250,000 coins)</string> <!-- untranslated -->
-    <string name="seasonal_reward_bloomtide_250_desc">Bumblebee pet</string> <!-- untranslated -->
-    <string name="seasonal_reward_bloomtide_300_desc">Bloomtide banner</string> <!-- untranslated -->
-    <string name="seasonal_market_petalweave_cape_name">Petalweave Cape</string> <!-- untranslated -->
-    <string name="seasonal_market_chime_retune_name">Retune the Chimes (skip minigame cooldown)</string> <!-- untranslated -->
-    <string name="seasonal_bounty_sunspire_tuna_name">Land tuna for the midsummer feast</string> <!-- untranslated -->
-    <string name="seasonal_bounty_sunspire_tuna_hint">Fish Raw Tuna (Fishing)</string> <!-- untranslated -->
-    <string name="seasonal_bounty_sunspire_melons_name">Grow watermelons for the midsummer feast</string> <!-- untranslated -->
-    <string name="seasonal_bounty_sunspire_melons_hint">Grow Watermelons (Farming)</string> <!-- untranslated -->
-    <string name="seasonal_bounty_sunspire_tuna_feast_name">Cook tuna for the solstice table</string> <!-- untranslated -->
+    <string name="seasonal_reward_bloomtide_60_desc">Seedheart Ring</string>
+    <string name="seasonal_reward_bloomtide_100_desc">Gratis 48h XP Boost</string>
+    <string name="seasonal_reward_bloomtide_150_desc">Bloomwood Staff</string>
+    <string name="seasonal_reward_bloomtide_200_desc">Geldbeutel (250.000 Münzen)</string>
+    <string name="seasonal_reward_bloomtide_250_desc">Bumblebee pet</string>
+    <string name="seasonal_reward_bloomtide_300_desc">Bloomtide banner</string>
+    <string name="seasonal_market_petalweave_cape_name">Petalweave Cape</string>
+    <string name="seasonal_market_chime_retune_name">Retune the Chimes (skip minigame cooldown)</string>
+    <string name="seasonal_bounty_sunspire_tuna_name">Land tuna for the midsummer feast</string>
+    <string name="seasonal_bounty_sunspire_tuna_hint">Fish Raw Tuna (Fishing)</string>
+    <string name="seasonal_bounty_sunspire_melons_name">Grow watermelons for the midsummer feast</string>
+    <string name="seasonal_bounty_sunspire_melons_hint">Grow Watermelons (Farming)</string>
+    <string name="seasonal_bounty_sunspire_tuna_feast_name">Cook tuna for the solstice table</string>
     <string name="seasonal_bounty_sunspire_tuna_feast_hint">Kochen</string>
-    <string name="seasonal_bounty_sunspire_gold_bars_name">Smelt gold for the sun-tower\'s crown</string> <!-- untranslated -->
+    <string name="seasonal_bounty_sunspire_gold_bars_name">Smelt gold for the sun-tower\'s crown</string>
     <string name="seasonal_bounty_sunspire_gold_bars_hint">Schmieden</string>
-    <string name="seasonal_bounty_sunspire_fire_runes_name">Craft Fire Runes to feed the beacon</string> <!-- untranslated -->
+    <string name="seasonal_bounty_sunspire_fire_runes_name">Craft Fire Runes to feed the beacon</string>
     <string name="seasonal_bounty_sunspire_fire_runes_hint">Runenherstellung</string>
     <string name="seasonal_bounty_sunspire_ruby_rings_name">Fertige Rubinringe für die Sonnenpriester</string>
     <string name="seasonal_bounty_sunspire_ruby_rings_hint">Handwerk</string>
@@ -2692,109 +2692,109 @@
     <string name="seasonal_bounty_sunspire_tithe_melons_hint">Wird direkt aus dem Inventar gespendet</string>
     <string name="seasonal_bounty_sunspire_tithe_tuna_name">Zehnt: Spendet gekochten Thunfisch</string>
     <string name="seasonal_bounty_sunspire_tithe_tuna_hint">Wird direkt aus dem Inventar gespendet</string>
-    <string name="seasonal_bounty_frost_willow_name">Gather willow kindling for the hearths</string> <!-- untranslated -->
+    <string name="seasonal_bounty_frost_willow_name">Gather willow kindling for the hearths</string>
     <string name="seasonal_bounty_frost_willow_hint">Fälle Weidenstämme (Holzfällerei)</string>
-    <string name="seasonal_bounty_frost_yew_name">Chop yew to keep the hearthfires burning</string> <!-- untranslated -->
+    <string name="seasonal_bounty_frost_yew_name">Chop yew to keep the hearthfires burning</string>
     <string name="seasonal_bounty_frost_yew_hint">Fälle Eibenstämme (Holzfällerei)</string>
-    <string name="seasonal_bounty_frost_coal_name">Mine coal to keep the forges warm</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_coal_hint">Mine Coal (Mining)</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_iron_name">Mine iron for sled runners</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_iron_hint">Mine Iron Ore (Mining)</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_trout_name">Fish trout through the ice</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_trout_hint">Fish Raw Trout (Fishing)</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_sharks_name">Land sharks beneath the ice floes</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_sharks_hint">Fish Raw Shark (Fishing)</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_potatoes_name">Dig up potatoes for the winter larder</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_potatoes_hint">Grow Potatoes (Farming)</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_steel_name">Smelt steel for sled runners</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_steel_hint">Smithing</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_arrows_name">Fletch Adamant arrows for the wall watch</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_arrows_hint">Fletching</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_ranging_name">Brew Ranging Potions for the wall archers</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_ranging_hint">Herblore</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_water_runes_name">Craft Water Runes to bind the ice</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_water_runes_hint">Runecrafting</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_sapphires_name">Craft sapphire rings for the frost wardens</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_sapphires_hint">Crafting</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_stew_name">Cook salmon for the long night</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_stew_hint">Cooking</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_sprites_name">Scatter the Frost Sprites</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_sprites_hint">Only found in The Rimewaste</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_wolves_name">Drive off the Snow Wolves</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_wolves_hint">Only found in The Rimewaste</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_trolls_name">Smash the Ice Trolls</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_trolls_hint">Only found in The Rimewaste</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_yetis_name">Hunt Glacier Yetis</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_yetis_hint">Only found in The Glacier Hollows</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_revenants_name">Shatter Rime Revenants</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_revenants_hint">Only found in The Rimewaste (rare)</string> <!-- untranslated -->
+    <string name="seasonal_bounty_frost_coal_name">Mine coal to keep the forges warm</string>
+    <string name="seasonal_bounty_frost_coal_hint">Kohle abbauen (Bergbau)</string>
+    <string name="seasonal_bounty_frost_iron_name">Mine iron for sled runners</string>
+    <string name="seasonal_bounty_frost_iron_hint">Eisenerz abbauen (Bergbau)</string>
+    <string name="seasonal_bounty_frost_trout_name">Fish trout through the ice</string>
+    <string name="seasonal_bounty_frost_trout_hint">Fish Raw Trout (Fishing)</string>
+    <string name="seasonal_bounty_frost_sharks_name">Land sharks beneath the ice floes</string>
+    <string name="seasonal_bounty_frost_sharks_hint">Fish Raw Shark (Fishing)</string>
+    <string name="seasonal_bounty_frost_potatoes_name">Dig up potatoes for the winter larder</string>
+    <string name="seasonal_bounty_frost_potatoes_hint">Grow Potatoes (Farming)</string>
+    <string name="seasonal_bounty_frost_steel_name">Smelt steel for sled runners</string>
+    <string name="seasonal_bounty_frost_steel_hint">Schmieden</string>
+    <string name="seasonal_bounty_frost_arrows_name">Fletch Adamant arrows for the wall watch</string>
+    <string name="seasonal_bounty_frost_arrows_hint">Fletching</string>
+    <string name="seasonal_bounty_frost_ranging_name">Brew Ranging Potions for the wall archers</string>
+    <string name="seasonal_bounty_frost_ranging_hint">Herblore</string>
+    <string name="seasonal_bounty_frost_water_runes_name">Craft Water Runes to bind the ice</string>
+    <string name="seasonal_bounty_frost_water_runes_hint">Runecrafting</string>
+    <string name="seasonal_bounty_frost_sapphires_name">Craft sapphire rings for the frost wardens</string>
+    <string name="seasonal_bounty_frost_sapphires_hint">Crafting</string>
+    <string name="seasonal_bounty_frost_stew_name">Cook salmon for the long night</string>
+    <string name="seasonal_bounty_frost_stew_hint">Kochen</string>
+    <string name="seasonal_bounty_frost_sprites_name">Scatter the Frost Sprites</string>
+    <string name="seasonal_bounty_frost_sprites_hint">Only found in The Rimewaste</string>
+    <string name="seasonal_bounty_frost_wolves_name">Drive off the Snow Wolves</string>
+    <string name="seasonal_bounty_frost_wolves_hint">Only found in The Rimewaste</string>
+    <string name="seasonal_bounty_frost_trolls_name">Smash the Ice Trolls</string>
+    <string name="seasonal_bounty_frost_trolls_hint">Only found in The Rimewaste</string>
+    <string name="seasonal_bounty_frost_yetis_name">Hunt Glacier Yetis</string>
+    <string name="seasonal_bounty_frost_yetis_hint">Only found in The Glacier Hollows</string>
+    <string name="seasonal_bounty_frost_revenants_name">Shatter Rime Revenants</string>
+    <string name="seasonal_bounty_frost_revenants_hint">Only found in The Rimewaste (rare)</string>
     <string name="seasonal_bounty_frost_tithe_coal_name">Zehnt: Spendet Kohle für die Herdstellen</string>
     <string name="seasonal_bounty_frost_tithe_coal_hint">Wird direkt aus dem Inventar gespendet</string>
     <string name="seasonal_bounty_frost_tithe_willow_name">Zehnt: Spendet Weiden-Scheite</string>
     <string name="seasonal_bounty_frost_tithe_willow_hint">Wird direkt aus dem Inventar gespendet</string>
     <string name="seasonal_bounty_frost_tithe_trout_name">Zehnt: Spendet gekochte Forelle</string>
     <string name="seasonal_bounty_frost_tithe_trout_hint">Wird direkt aus dem Inventar gespendet</string>
-    <string name="seasonal_bounty_bloom_cabbages_name">Plant cabbages for the spring market</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_cabbages_hint">Grow Cabbages (Farming)</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_strawberries_name">Grow strawberries for the Bloomtide fair</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_strawberries_hint">Grow Strawberries (Farming)</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_oaks_name">Chop oak for the maypole</string> <!-- untranslated -->
+    <string name="seasonal_bounty_bloom_cabbages_name">Plant cabbages for the spring market</string>
+    <string name="seasonal_bounty_bloom_cabbages_hint">Grow Cabbages (Farming)</string>
+    <string name="seasonal_bounty_bloom_strawberries_name">Grow strawberries for the Bloomtide fair</string>
+    <string name="seasonal_bounty_bloom_strawberries_hint">Grow Strawberries (Farming)</string>
+    <string name="seasonal_bounty_bloom_oaks_name">Chop oak for the maypole</string>
     <string name="seasonal_bounty_bloom_oaks_hint">Fälle Eichenstämme (Holzfällerei)</string>
-    <string name="seasonal_bounty_bloom_maples_name">Chop maple for the festival stalls</string> <!-- untranslated -->
+    <string name="seasonal_bounty_bloom_maples_name">Chop maple for the festival stalls</string>
     <string name="seasonal_bounty_bloom_maples_hint">Fälle Ahornstämme (Holzfällerei)</string>
-    <string name="seasonal_bounty_bloom_salmon_name">Catch salmon running upstream</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_salmon_hint">Fish Raw Salmon (Fishing)</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_lobsters_name">Trap lobsters for the spring feast</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_lobsters_hint">Fish Raw Lobster (Fishing)</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_silver_name">Mine silver for the festival bells</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_silver_hint">Mine Silver Ore (Mining)</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_magic_brews_name">Brew Magic Potions for the grove keepers</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_magic_brews_hint">Herblore</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_emerald_rings_name">Craft emerald rings for the Bloomtide court</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_emerald_rings_hint">Crafting</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_shortbows_name">Fletch Willow Shortbows for the meadow wardens</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_shortbows_hint">Fletching</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_earth_runes_name">Craft Earth Runes to wake the soil</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_earth_runes_hint">Runecrafting</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_lobster_feast_name">Cook lobster for the spring feast</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_lobster_feast_hint">Cooking</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_mithril_bars_name">Smelt mithril for the garden gates</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_mithril_bars_hint">Smithing</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_sprites_name">Shoo away the Pollen Sprites</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_sprites_hint">Only found in The Thornmeadow</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_boars_name">Drive off the Bramble Boars</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_boars_hint">Only found in The Thornmeadow</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_beasts_name">Cut down the Briar Beasts</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_beasts_hint">Only found in The Thornmeadow</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_stalkers_name">Hunt Thorn Stalkers</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_stalkers_hint">Only found in The Wildgrove</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_drakes_name">Drive off the Verdant Drakes</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_drakes_hint">Only found in The Thornmeadow (rare)</string> <!-- untranslated -->
+    <string name="seasonal_bounty_bloom_salmon_name">Catch salmon running upstream</string>
+    <string name="seasonal_bounty_bloom_salmon_hint">Fish Raw Salmon (Fishing)</string>
+    <string name="seasonal_bounty_bloom_lobsters_name">Trap lobsters for the spring feast</string>
+    <string name="seasonal_bounty_bloom_lobsters_hint">Fish Raw Lobster (Fishing)</string>
+    <string name="seasonal_bounty_bloom_silver_name">Mine silver for the festival bells</string>
+    <string name="seasonal_bounty_bloom_silver_hint">Mine Silver Ore (Mining)</string>
+    <string name="seasonal_bounty_bloom_magic_brews_name">Brew Magic Potions for the grove keepers</string>
+    <string name="seasonal_bounty_bloom_magic_brews_hint">Herblore</string>
+    <string name="seasonal_bounty_bloom_emerald_rings_name">Craft emerald rings for the Bloomtide court</string>
+    <string name="seasonal_bounty_bloom_emerald_rings_hint">Crafting</string>
+    <string name="seasonal_bounty_bloom_shortbows_name">Fletch Willow Shortbows for the meadow wardens</string>
+    <string name="seasonal_bounty_bloom_shortbows_hint">Fletching</string>
+    <string name="seasonal_bounty_bloom_earth_runes_name">Craft Earth Runes to wake the soil</string>
+    <string name="seasonal_bounty_bloom_earth_runes_hint">Runecrafting</string>
+    <string name="seasonal_bounty_bloom_lobster_feast_name">Cook lobster for the spring feast</string>
+    <string name="seasonal_bounty_bloom_lobster_feast_hint">Cooking</string>
+    <string name="seasonal_bounty_bloom_mithril_bars_name">Smelt mithril for the garden gates</string>
+    <string name="seasonal_bounty_bloom_mithril_bars_hint">Smithing</string>
+    <string name="seasonal_bounty_bloom_sprites_name">Shoo away the Pollen Sprites</string>
+    <string name="seasonal_bounty_bloom_sprites_hint">Only found in The Thornmeadow</string>
+    <string name="seasonal_bounty_bloom_boars_name">Drive off the Bramble Boars</string>
+    <string name="seasonal_bounty_bloom_boars_hint">Only found in The Thornmeadow</string>
+    <string name="seasonal_bounty_bloom_beasts_name">Cut down the Briar Beasts</string>
+    <string name="seasonal_bounty_bloom_beasts_hint">Only found in The Thornmeadow</string>
+    <string name="seasonal_bounty_bloom_stalkers_name">Hunt Thorn Stalkers</string>
+    <string name="seasonal_bounty_bloom_stalkers_hint">Only found in The Wildgrove</string>
+    <string name="seasonal_bounty_bloom_drakes_name">Drive off the Verdant Drakes</string>
+    <string name="seasonal_bounty_bloom_drakes_hint">Only found in The Thornmeadow (rare)</string>
     <string name="seasonal_bounty_bloom_tithe_strawberries_name">Zehnt: Spendet Erdbeeren</string>
     <string name="seasonal_bounty_bloom_tithe_strawberries_hint">Wird direkt aus dem Inventar gespendet</string>
     <string name="seasonal_bounty_bloom_tithe_oak_name">Zehnt: Spendet Eichen-Scheite</string>
     <string name="seasonal_bounty_bloom_tithe_oak_hint">Wird direkt aus dem Inventar gespendet</string>
     <string name="seasonal_bounty_bloom_tithe_salmon_name">Zehnt: Spendet gekochten Lachs</string>
     <string name="seasonal_bounty_bloom_tithe_salmon_hint">Wird direkt aus dem Inventar gespendet</string>
-    <string name="seasonal_minigame_snowball_toss_hint">Hit %1$d of %2$d snowmen before they duck away!</string> <!-- untranslated -->
-    <string name="seasonal_minigame_garden_chimes_hint">Watch the blossoms, then repeat the order. Reach round %1$d of %2$d to win a token!</string> <!-- untranslated -->
-    <string name="item_sunstone_ring_name">Sunstone Ring</string> <!-- untranslated -->
-    <string name="item_sunforged_sabre_name">Sunforged Sabre</string> <!-- untranslated -->
-    <string name="item_sunweave_cape_name">Sunweave Cape</string> <!-- untranslated -->
-    <string name="item_frostbound_ring_name">Frostbound Ring</string> <!-- untranslated -->
-    <string name="item_glacial_longbow_name">Glacial Longbow</string> <!-- untranslated -->
-    <string name="item_frostweave_cape_name">Frostweave Cape</string> <!-- untranslated -->
-    <string name="item_seedheart_ring_name">Seedheart Ring</string> <!-- untranslated -->
-    <string name="item_bloomwood_staff_name">Bloomwood Staff</string> <!-- untranslated -->
-    <string name="item_petalweave_cape_name">Petalweave Cape</string> <!-- untranslated -->
-    <string name="pet_sunbird_chick_name">Sunbird Chick</string> <!-- untranslated -->
-    <string name="pet_sunbird_chick_desc">A fluffy chick hatched in the embers of the solstice bonfire. It loves a good blaze.</string> <!-- untranslated -->
-    <string name="pet_frost_wyrmling_name">Frost Wyrmling</string> <!-- untranslated -->
-    <string name="pet_frost_wyrmling_desc">A hatchling of the Rime Wyrm that followed you home, frosting everything it breathes on.</string> <!-- untranslated -->
-    <string name="pet_snowhare_name">Snowhare</string> <!-- untranslated -->
-    <string name="pet_snowhare_desc">A snow-white hare that sniffs out the best fishing holes in the ice.</string> <!-- untranslated -->
-    <string name="pet_petal_sprite_name">Petal Sprite</string> <!-- untranslated -->
-    <string name="pet_petal_sprite_desc">A blossom spirit shaken loose from the Thorn Queen\'s crown. It dances ahead of you into battle.</string> <!-- untranslated -->
-    <string name="pet_bumblebee_name">Bumblebee</string> <!-- untranslated -->
-    <string name="pet_bumblebee_desc">A busy little bee that knows exactly which flowers make the best potions.</string> <!-- untranslated -->
+    <string name="seasonal_minigame_snowball_toss_hint">Hit %1$d of %2$d snowmen before they duck away!</string>
+    <string name="seasonal_minigame_garden_chimes_hint">Watch the blossoms, then repeat the order. Reach round %1$d of %2$d to win a token!</string>
+    <string name="item_sunstone_ring_name">Sunstone Ring</string>
+    <string name="item_sunforged_sabre_name">Sunforged Sabre</string>
+    <string name="item_sunweave_cape_name">Sunweave Cape</string>
+    <string name="item_frostbound_ring_name">Frostbound Ring</string>
+    <string name="item_glacial_longbow_name">Glacial Longbow</string>
+    <string name="item_frostweave_cape_name">Frostweave Cape</string>
+    <string name="item_seedheart_ring_name">Seedheart Ring</string>
+    <string name="item_bloomwood_staff_name">Bloomwood Staff</string>
+    <string name="item_petalweave_cape_name">Petalweave Cape</string>
+    <string name="pet_sunbird_chick_name">Sunbird Chick</string>
+    <string name="pet_sunbird_chick_desc">A fluffy chick hatched in the embers of the solstice bonfire. It loves a good blaze.</string>
+    <string name="pet_frost_wyrmling_name">Frost Wyrmling</string>
+    <string name="pet_frost_wyrmling_desc">A hatchling of the Rime Wyrm that followed you home, frosting everything it breathes on.</string>
+    <string name="pet_snowhare_name">Snowhare</string>
+    <string name="pet_snowhare_desc">A snow-white hare that sniffs out the best fishing holes in the ice.</string>
+    <string name="pet_petal_sprite_name">Petal Sprite</string>
+    <string name="pet_petal_sprite_desc">A blossom spirit shaken loose from the Thorn Queen\'s crown. It dances ahead of you into battle.</string>
+    <string name="pet_bumblebee_name">Bumblebee</string>
+    <string name="pet_bumblebee_desc">A busy little bee that knows exactly which flowers make the best potions.</string>
 </resources>
