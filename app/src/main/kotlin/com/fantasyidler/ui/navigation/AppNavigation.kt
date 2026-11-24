@@ -67,6 +67,7 @@ import com.fantasyidler.ui.screen.PrestigeDetailScreen
 import com.fantasyidler.ui.screen.HomeScreen
 import com.fantasyidler.ui.screen.InnScreen
 import com.fantasyidler.ui.screen.OnboardingScreen
+import com.fantasyidler.ui.screen.StoryNoteHost
 import com.fantasyidler.ui.screen.ProfileScreen
 import com.fantasyidler.ui.screen.QuestsScreen
 import com.fantasyidler.ui.screen.SeasonalEventScreen
@@ -83,6 +84,7 @@ import com.fantasyidler.ui.screen.SlayerScreen
 import com.fantasyidler.ui.screen.WorkerSkillsScreen
 import com.fantasyidler.ui.viewmodel.NavBadgeViewModel
 import com.fantasyidler.ui.viewmodel.OnboardingViewModel
+import com.fantasyidler.ui.viewmodel.StoryViewModel
 import com.fantasyidler.ui.viewmodel.SettingsViewModel
 
 @Composable
@@ -107,6 +109,7 @@ fun AppNavigation(
     }
 
     val navController = rememberNavController()
+    val storyVm: StoryViewModel = hiltViewModel()
 
     LaunchedEffect(pendingNavigateTo) {
         when (pendingNavigateTo) {
@@ -476,6 +479,9 @@ fun AppNavigation(
             }
         }
     }
+    // Main story notes pop up over whatever screen is showing (e.g. a dungeon's
+    // "upon selection" note right after tapping Start on the Combat screen).
+    StoryNoteHost(storyVm)
     AppBannerHost()
 }
 

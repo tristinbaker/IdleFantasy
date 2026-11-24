@@ -1304,4 +1304,14 @@
     <string name="item_seedheart_ring_desc">A living seed sealed in silver. It hums with the patience of growing things.</string>
     <string name="item_bloomwood_staff_desc">A flowering branch from the Wildgrove that never wilts. Spells bloom from its tip.</string>
     <string name="item_petalweave_cape_desc">Stitched from a thousand spring petals at the Night Market. Only sold during the Bloomtide.</string>
+
+    <!-- Main story keepsakes (v2.0.0) -->
+    <string name="item_keepsake_obsidian_key_name">Obsidian Key</string>
+    <string name="item_keepsake_obsidian_key_desc">An ornate key of black stone from the bandit leader’s lockbox, with an empty slot shaped for a gem.</string>
+    <string name="item_keepsake_mountain_heart_name">Essence of the Mountain</string>
+    <string name="item_keepsake_mountain_heart_desc">An impossibly heavy, ruby-like gem of elemental fire from the heart of the volcano.</string>
+    <string name="item_keepsake_dragon_molt_name">Dragon’s Molt</string>
+    <string name="item_keepsake_dragon_molt_desc">Discarded scales of the black king dragon, still heavy with primal magic.</string>
+    <string name="item_keepsake_eye_of_chaos_name">Eye of Chaos</string>
+    <string name="item_keepsake_eye_of_chaos_desc">A rough, pearl-like gem from the Realm of Chaos. It fits the Obsidian Key’s empty slot.</string>
 </resources>

@@ -122,6 +122,8 @@
     <string name="boss_king_black_dragon_desc">传说中的三头巨龙，令整个王国闻风丧胆。</string>
     <string name="boss_demon_lord_name">魔王</string>
     <string name="boss_demon_lord_desc">来自深渊的远古恶魔，黑暗魔法的大师。</string>
+    <string name="boss_kurzul_name">Kur’zul</string> <!-- untranslated -->
+    <string name="boss_kurzul_desc">The Orc necromancer who led the first Triptych expedition, waiting at the altar of Kargral’s Temple with a blade of coldflame.</string> <!-- untranslated -->
     <string name="boss_kraken_name">海妖</string>
     <string name="boss_kraken_desc">深海的恐怖，巨大的海怪。</string>
     <string name="boss_balrog_name">炎魔</string>

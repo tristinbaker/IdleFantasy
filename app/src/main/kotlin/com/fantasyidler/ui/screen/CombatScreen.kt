@@ -133,7 +133,7 @@ fun CombatScreen(
     }
     LaunchedEffect(initialDungeonKey, initialBossKey) {
         initialDungeonKey?.let { key -> viewModel.dungeonList(state.onElderIsle).firstOrNull { it.name == key }?.let(viewModel::selectDungeon) }
-        initialBossKey?.let { key -> viewModel.bossList(state.monumentComplete, state.dockBuilt, state.totalLevel, state.onElderIsle, state.hasFullElderSet).firstOrNull { it.id == key }?.let(viewModel::selectBoss) }
+        initialBossKey?.let { key -> viewModel.bossList(state.monumentComplete, state.dockBuilt, state.totalLevel, state.onElderIsle, state.hasFullElderSet, state.storyBossUnlocked).firstOrNull { it.id == key }?.let(viewModel::selectBoss) }
     }
 
     AppBannerEffect(state.snackbarMessage, viewModel::snackbarConsumed)
@@ -228,7 +228,7 @@ fun CombatScreen(
                             dungeons       = visibleDungeons,
                             // Raid bosses included: the banner resolves the boss's name,
                             // emoji, and HP panel from this list.
-                            bosses         = viewModel.bossList(state.monumentComplete, state.dockBuilt, state.totalLevel, state.onElderIsle, state.hasFullElderSet) + (if (state.onElderIsle) emptyList() else viewModel.raidBossList()),
+                            bosses         = viewModel.bossList(state.monumentComplete, state.dockBuilt, state.totalLevel, state.onElderIsle, state.hasFullElderSet, state.storyBossUnlocked) + (if (state.onElderIsle) emptyList() else viewModel.raidBossList()),
                             hiredMercs     = state.hiredMercs,
                             enemies        = viewModel.enemyMap,
                             skillLevels    = state.skillLevels,
@@ -248,7 +248,7 @@ fun CombatScreen(
                         )
                         1 -> CombatSelectionList(
                             dungeons            = visibleDungeons,
-                            bosses              = viewModel.bossList(state.monumentComplete, state.dockBuilt, state.totalLevel, state.onElderIsle, state.hasFullElderSet),
+                            bosses              = viewModel.bossList(state.monumentComplete, state.dockBuilt, state.totalLevel, state.onElderIsle, state.hasFullElderSet, state.storyBossUnlocked),
                             skillLevels         = state.skillLevels,
                             survivalRatings     = state.dungeonSurvivalRatings,
                             dungeonRuns         = state.dungeonRuns,
@@ -349,7 +349,7 @@ fun CombatScreen(
                     when (page) {
                         0 -> CombatSelectionList(
                             dungeons            = visibleDungeons,
-                            bosses              = viewModel.bossList(state.monumentComplete, state.dockBuilt, state.totalLevel, state.onElderIsle, state.hasFullElderSet),
+                            bosses              = viewModel.bossList(state.monumentComplete, state.dockBuilt, state.totalLevel, state.onElderIsle, state.hasFullElderSet, state.storyBossUnlocked),
                             skillLevels         = state.skillLevels,
                             survivalRatings     = state.dungeonSurvivalRatings,
                             dungeonRuns         = state.dungeonRuns,

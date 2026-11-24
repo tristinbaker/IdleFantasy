@@ -1165,5 +1165,72 @@
       "comment": "1/100 per kill"
     },
     "event_key": "bloomtide"
+  },
+  "kurzul": {
+    "id": "kurzul",
+    "display_name": "Kur\u2019zul",
+    "emoji": "\ud83d\udc80",
+    "description": "The Orc necromancer who led the first Triptych expedition, waiting at the altar of Kargral\u2019s Temple with a blade of coldflame.",
+    "combat_level_required": 72,
+    "duration_minutes": 60,
+    "hp": 2400,
+    "combat_stats": {
+      "attack_level": 72,
+      "strength_level": 64,
+      "defense_level": 70,
+      "attack_bonus": 84,
+      "strength_bonus": 60
+    },
+    "defensive_stats": {
+      "attack_defense": 70,
+      "strength_defense": 70,
+      "ranged_defense": 68,
+      "magic_defense": 85
+    },
+    "xp_rewards": {
+      "attack": 2100,
+      "strength": 2100,
+      "defense": 2100,
+      "hitpoints": 1600,
+      "magic": 2600,
+      "ranged": 1100,
+      "prayer": 1600
+    },
+    "common_loot": {
+      "coins_min": 22000,
+      "coins_max": 44000,
+      "items": {
+        "giant_bones": {
+          "min": 20,
+          "max": 40
+        },
+        "adamantite_ore": {
+          "min": 80,
+          "max": 150
+        },
+        "runite_ore": {
+          "min": 30,
+          "max": 60
+        }
+      }
+    },
+    "rare_drops": [
+      {
+        "item": "hellfire_staff",
+        "chance": 0.005,
+        "comment": "1/200"
+      },
+      {
+        "item": "amulet_of_fury",
+        "chance": 0.005,
+        "comment": "1/200"
+      },
+      {
+        "item": "race_change_token",
+        "chance": 0.004,
+        "comment": "1/250 race change token"
+      }
+    ],
+    "requires_story": true
   }
 }

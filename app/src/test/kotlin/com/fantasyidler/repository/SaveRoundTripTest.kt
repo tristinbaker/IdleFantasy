@@ -60,7 +60,7 @@ class SaveRoundTripTest {
             boostRepo,
             db,
         )
-        sessionRepo = SessionRepository(db.skillSessionDao(), context, json, gameData, db.playerDao(), playerRepo)
+        sessionRepo = SessionRepository(db.skillSessionDao(), context, json, gameData, db.playerDao(), playerRepo, StoryRepository(playerRepo))
         val backupScheduler = BackupScheduler(context, sessionRepo, GlobalStateRepository(db.globalStateDao()))
         val questRepo = QuestRepository(db.questProgressDao(), gameData)
         val globalStateRepo = GlobalStateRepository(db.globalStateDao())

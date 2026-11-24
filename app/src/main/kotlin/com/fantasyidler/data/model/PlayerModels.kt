@@ -343,6 +343,26 @@ data class PlayerFlags(
     /** True once the first-arrival welcome splash has been shown on Elder Isle. Stops
      *  the splash from popping every time you sail back after that first landing. */
     @SerialName("elder_isle_welcomed") val elderIsleWelcomed: Boolean = false,
+    /** Main story quest (v2.0.0, [MainStory]). Optional: nothing advances until the player begins it. */
+    @SerialName("story_started") val storyStarted: Boolean = false,
+    /** Set when a brand-new character finishes setup, so the one-time "Begin the story?" prompt shows.
+     *  Existing saves never get it; they start from the Story tab instead. */
+    @SerialName("story_prompt_pending") val storyPromptPending: Boolean = false,
+    /** Off = new notes skip the pop-up and wait unread in the Story tab. */
+    @SerialName("story_popups") val storyPopups: Boolean = true,
+    /** Index into [MainStory.CHAPTERS] of the active chapter; CHAPTERS.size once the story is finished. */
+    @SerialName("story_chapter") val storyChapter: Int = 0,
+    /** "chapterId.objectiveId" to progress, counted only while that chapter is active. */
+    @SerialName("story_counters") val storyCounters: Map<String, Int> = emptyMap(),
+    /** Every note delivered so far, in delivery order (the Story tab's reread history). */
+    @SerialName("story_delivered") val storyDelivered: List<String> = emptyList(),
+    @SerialName("story_read") val storyRead: Set<String> = emptySet(),
+    /** Delivered notes still waiting to pop up, oldest first. */
+    @SerialName("story_popup_queue") val storyPopupQueue: List<String> = emptyList(),
+    /** The island's name, if the player took Thaddius up on naming it. Blank = unnamed. */
+    @SerialName("island_name") val islandName: String = "",
+    /** The one-time "Name your island" dialog has been answered (named or skipped). */
+    @SerialName("island_name_asked") val islandNameAsked: Boolean = false,
 )
 
 /** One completed bulk sell: what was sold and what it paid. */

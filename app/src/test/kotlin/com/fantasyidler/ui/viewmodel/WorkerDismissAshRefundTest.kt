@@ -32,6 +32,7 @@ import com.fantasyidler.repository.TitleRepository
 import com.fantasyidler.repository.TownRepository
 import com.fantasyidler.repository.WeeklyQuestRepository
 import com.fantasyidler.repository.WorkerQueuedSessionStarter
+import com.fantasyidler.repository.StoryRepository
 import javax.inject.Provider
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
@@ -108,6 +109,7 @@ class WorkerDismissAshRefundTest {
             gameData,
             db.playerDao(),
             playerRepo,
+            StoryRepository(playerRepo),
         )
         val questRepo = QuestRepository(db.questProgressDao(), gameData)
         val townRepo = TownRepository(gameData, playerRepo, questRepo, boostRepo)
@@ -138,7 +140,7 @@ class WorkerDismissAshRefundTest {
         viewModel = HomeViewModel(
             boostRepo, context, playerRepo, sessionRepo, gameData, questRepo, guildRepo,
             townRepo, queuedStarter, workerStarter, slayerRepo, monumentRepo, seasonalRepo,
-            titleRepo, saveSlotRepo, json,
+            titleRepo, saveSlotRepo, StoryRepository(playerRepo), json,
         )
         runBlocking { playerRepo.getOrCreatePlayer() }
     }

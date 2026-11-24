@@ -65,7 +65,7 @@ class BacklogFoodReservationTest {
             boostRepo,
             db,
         )
-        sessionRepo = SessionRepository(db.skillSessionDao(), context, json, gameData, db.playerDao(), playerRepo)
+        sessionRepo = SessionRepository(db.skillSessionDao(), context, json, gameData, db.playerDao(), playerRepo, StoryRepository(playerRepo))
         val questRepo = QuestRepository(db.questProgressDao(), gameData)
         val townRepo = TownRepository(gameData, playerRepo, questRepo, boostRepo)
         val mercRepo = MercenaryRepository(playerRepo, gameData)

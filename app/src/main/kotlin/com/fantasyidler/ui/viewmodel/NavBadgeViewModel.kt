@@ -48,7 +48,8 @@ class NavBadgeViewModel @Inject constructor(
             .count { it.progress >= it.template.amount && !it.claimed }
         val weeklyCount = weeklyQuestRepo.getActiveWeeklyQuests(flags)
             .count { it.progress >= it.template.amount && !it.claimed }
-        regularCount + dailyCount + weeklyCount
+        val storyUnread = flags.storyDelivered.count { it !in flags.storyRead }
+        regularCount + dailyCount + weeklyCount + storyUnread
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
 
     private val skillsReadyToPrestige: StateFlow<Set<String>> = playerRepo.playerFlow

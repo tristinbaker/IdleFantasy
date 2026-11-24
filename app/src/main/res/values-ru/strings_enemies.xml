@@ -122,6 +122,8 @@
     <string name="boss_king_black_dragon_desc">Легендарный трехголовый дракон, которого боятся во всем королевстве.</string>
     <string name="boss_demon_lord_name">Повелитель демонов</string>
     <string name="boss_demon_lord_desc">Древний демон из бездны, мастер темной магии.</string>
+    <string name="boss_kurzul_name">Kur’zul</string> <!-- untranslated -->
+    <string name="boss_kurzul_desc">The Orc necromancer who led the first Triptych expedition, waiting at the altar of Kargral’s Temple with a blade of coldflame.</string> <!-- untranslated -->
     <string name="boss_kraken_name">Кракен</string>
     <string name="boss_kraken_desc">Ужас глубоких морей, колоссальный морской монстр.</string>
     <string name="boss_balrog_name">Тёмный демон</string>

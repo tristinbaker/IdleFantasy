@@ -2,6 +2,7 @@ package com.fantasyidler.repository
 
 import android.content.Context
 import com.fantasyidler.data.json.BlessingData
+import com.fantasyidler.data.model.MainStory
 import com.fantasyidler.data.json.BoneData
 import com.fantasyidler.data.json.SlayerTaskData
 import com.fantasyidler.data.json.CropData
@@ -402,6 +403,8 @@ class GameDataRepository @Inject constructor(
             addAll(marketplace.values.flatMap { it.items.keys })
             // All elder materials
             addAll(itemsJson["elder_materials"].orEmpty())
+            // Main story keepsakes are never junk
+            addAll(MainStory.KEEPSAKES)
         }
     }
 }

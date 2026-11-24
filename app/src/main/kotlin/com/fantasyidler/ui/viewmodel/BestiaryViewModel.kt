@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fantasyidler.data.json.BossData
 import com.fantasyidler.data.json.EnemyData
+import com.fantasyidler.data.model.MainStory
 import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
@@ -79,6 +80,9 @@ class BestiaryViewModel @Inject constructor(
 
         val bosses = gameData.bosses
             .filterNot { (key, _) -> hideElder && key in ELDER_BOSS_KEYS }
+            // The story boss stays hidden until the player's story reaches him.
+            .filterNot { (key, boss) -> boss.requiresStory && (kills[key] ?: 0) == 0 &&
+                !MainStory.storyBossUnlocked(flags.storyStarted, flags.storyChapter) }
             .map { (key, boss) ->
                 BestiaryEntry(
                     key         = key,

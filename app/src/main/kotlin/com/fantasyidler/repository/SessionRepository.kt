@@ -30,6 +30,7 @@ class SessionRepository @Inject constructor(
     private val gameData: GameDataRepository,
     private val playerDao: PlayerDao,
     private val playerRepo: PlayerRepository,
+    private val storyRepo: StoryRepository,
 ) {
     val activeSessionFlow: Flow<SkillSession?> = sessionDao.observeActiveSession()
     val completedCountFlow: Flow<Int> = sessionDao.observeCompletedCount()
@@ -99,6 +100,12 @@ class SessionRepository @Inject constructor(
         sessionDao.insert(session)
         if (playerMutexHeld) playerRepo.stampHeirloomMirrorTargetsUnlocked(session.sessionId, weaponSlot)
         else playerRepo.stampHeirloomMirrorTargets(session.sessionId, weaponSlot)
+        // Main story "upon selection" notes. Town workers start through startWorkerSession,
+        // so only the player's own sessions reach here; isle sessions never count.
+        if (!isElderSession) {
+            if (playerMutexHeld) storyRepo.onSessionStartedUnlocked(skillName, activityKey)
+            else storyRepo.onSessionStarted(skillName, activityKey)
+        }
         if (!insertAsCompleted) {
             val alarmAt = if (alarmOffsetMs != null) startedAt + alarmOffsetMs else session.endsAt
             scheduleAlarm(session.sessionId, alarmAt, skillDisplayName)

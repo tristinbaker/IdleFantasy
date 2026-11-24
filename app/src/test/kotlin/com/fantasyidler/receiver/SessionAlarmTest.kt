@@ -15,6 +15,7 @@ import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.SessionRepository
 import com.fantasyidler.repository.WeeklyQuestRepository
+import com.fantasyidler.repository.StoryRepository
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
 import org.junit.After
@@ -50,7 +51,7 @@ class SessionAlarmTest {
             DailyQuestRepository(gameData), WeeklyQuestRepository(gameData),
             BuffNotificationScheduler(context), gameData, BoostRepository(gameData), db,
         )
-        sessionRepo = SessionRepository(db.skillSessionDao(), context, json, gameData, db.playerDao(), playerRepo)
+        sessionRepo = SessionRepository(db.skillSessionDao(), context, json, gameData, db.playerDao(), playerRepo, StoryRepository(playerRepo))
         alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
     }
 

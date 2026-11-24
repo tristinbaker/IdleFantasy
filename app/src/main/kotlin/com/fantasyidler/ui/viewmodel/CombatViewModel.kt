@@ -16,6 +16,7 @@ import com.fantasyidler.data.json.EnemyData
 import com.fantasyidler.data.json.EquipmentData
 import com.fantasyidler.data.json.SpellData
 import com.fantasyidler.data.model.EquipSlot
+import com.fantasyidler.data.model.MainStory
 import com.fantasyidler.data.model.DungeonRunStats
 import com.fantasyidler.data.model.OwnedPet
 import com.fantasyidler.data.model.Player
@@ -132,6 +133,8 @@ data class CombatUiState(
     val monumentComplete: Boolean = false,
     /** True once the town Dock has been built (unlocks the Voyage / Elder Isle path). */
     val dockBuilt: Boolean = false,
+    /** Main story reached the Kur'zul chapter, so the story boss is listed. */
+    val storyBossUnlocked: Boolean = false,
     /** Player total level across all Skills.ALL, used to gate dock-side bosses. */
     val totalLevel: Int = 0,
     /** True when the player is currently sailed to the Elder Isle. */
@@ -402,6 +405,7 @@ class CombatViewModel @Inject constructor(
                 bossFullCoinKillsLeft   = playerRepo.bossFullCoinKillsLeft(flags, extra.selectedBoss?.id ?: ""),
                 monumentComplete        = flags.monumentTier >= 5,
                 dockBuilt               = (flags.townBuildingTiers["dock"] ?: 0) >= 1,
+                storyBossUnlocked       = MainStory.storyBossUnlocked(flags.storyStarted, flags.storyChapter),
                 totalLevel              = Skills.ALL.sumOf { levels[it] ?: 1 },
                 onElderIsle             = flags.onElderIsle,
                 hasFullElderSet         = ELDER_PIECE_KEYS.all { (inventory[it] ?: 0) >= 1 },
@@ -426,13 +430,14 @@ class CombatViewModel @Inject constructor(
     val dungeonList: List<DungeonData> get() = dungeonList(onElderIsle = false)
 
     /** Monument-gated bosses appear only once the Eternal Flame is lit, so this reads flags per call. */
-    fun bossList(monumentComplete: Boolean, dockBuilt: Boolean = false, totalLevel: Int = 0, onElderIsle: Boolean = false, hasFullElderSet: Boolean = false): List<BossData> {
+    fun bossList(monumentComplete: Boolean, dockBuilt: Boolean = false, totalLevel: Int = 0, onElderIsle: Boolean = false, hasFullElderSet: Boolean = false, storyBossUnlocked: Boolean = false): List<BossData> {
         val activeSeries = seasonalEventRepo.activeEvent()?.series
         return gameData.bosses.values
             .filter { !it.raid }
             .filter { it.eventKey == null || it.eventKey == activeSeries }
             .filter { !it.requiresMonument || monumentComplete }
             .filter { !it.requiresDock || dockBuilt }
+            .filter { !it.requiresStory || storyBossUnlocked }
             .filter { it.totalLevelRequired == 0 || totalLevel >= it.totalLevelRequired }
             .filter { (it.id in ELDER_BOSS_KEYS) == onElderIsle }
             .sortedBy { it.combatLevelRequired }

@@ -122,6 +122,8 @@
     <string name="boss_king_black_dragon_desc">世界中で恐れられている、伝説の三つ頭のドラゴン。</string>
     <string name="boss_demon_lord_name">魔王</string>
     <string name="boss_demon_lord_desc">深淵から現れた古代の悪魔。暗黒魔法の使い手。</string>
+    <string name="boss_kurzul_name">Kur’zul</string> <!-- untranslated -->
+    <string name="boss_kurzul_desc">The Orc necromancer who led the first Triptych expedition, waiting at the altar of Kargral’s Temple with a blade of coldflame.</string> <!-- untranslated -->
     <string name="boss_kraken_name">クラーケン</string>
     <string name="boss_kraken_desc">深海の恐怖。巨大な海の怪物。</string>
     <string name="boss_balrog_name">Gothic Ember</string> <!-- untranslated -->

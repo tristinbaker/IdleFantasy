@@ -61,7 +61,7 @@ class SaveSlotIntegrationTest {
             db.playerDao(), db.questProgressDao(), db.farmingPatchDao(), json,
             dailyQuestRepo, weeklyQuestRepo, buffNotifScheduler, gameData, boostRepo, db,
         )
-        sessionRepo = SessionRepository(db.skillSessionDao(), context, json, gameData, db.playerDao(), playerRepo)
+        sessionRepo = SessionRepository(db.skillSessionDao(), context, json, gameData, db.playerDao(), playerRepo, StoryRepository(playerRepo))
         val backupScheduler = BackupScheduler(context, sessionRepo, GlobalStateRepository(db.globalStateDao()))
         val questRepo = QuestRepository(db.questProgressDao(), gameData)
         globalStateRepo = GlobalStateRepository(db.globalStateDao())

@@ -327,6 +327,17 @@ fun SettingsScreen(
                     )
                 }
             )
+            val showStoryPopups by viewModel.showStoryPopups.collectAsState()
+            SettingsRow(
+                title    = stringResource(R.string.settings_story_popups),
+                subtitle = stringResource(R.string.settings_story_popups_desc),
+                trailing = {
+                    Switch(
+                        checked         = showStoryPopups,
+                        onCheckedChange = { viewModel.setShowStoryPopups(it) },
+                    )
+                }
+            )
             val showMonumentTouchIndicator by viewModel.showMonumentTouchIndicator.collectAsState()
             SettingsRow(
                 title    = stringResource(R.string.settings_monument_touch_indicator),

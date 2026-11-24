@@ -5,6 +5,7 @@ import com.fantasyidler.util.withAppLocale
 import android.content.Context
 import com.fantasyidler.R
 import com.fantasyidler.data.db.dao.QuestProgressDao
+import com.fantasyidler.data.model.MainStory
 import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.ui.viewmodel.TitleCatalog
 import javax.inject.Inject
@@ -52,13 +53,15 @@ class TitleRepository @Inject constructor(
             if (chainIds.isNotEmpty() && chainIds.all { it in completedQuestIds }) unlocked += titleId
         }
         // Only always-available bosses count: seasonal bosses vanish with their event,
-        // monument-gated bosses sit behind a 1B coin wall, and raid bosses require a paid
-        // mercenary party, so none of them can gate Godslayer.
-        val coreBosses = gameData.bosses.values.filter { it.eventKey == null && !it.requiresMonument && !it.raid }
+        // monument-gated bosses sit behind a 1B coin wall, raid bosses require a paid
+        // mercenary party, and the story boss exists only for players who began the
+        // optional main story, so none of them can gate Godslayer.
+        val coreBosses = gameData.bosses.values.filter { it.eventKey == null && !it.requiresMonument && !it.raid && !it.requiresStory }
         if (coreBosses.isNotEmpty() && coreBosses.all { (flags.enemyKills[it.id] ?: 0) > 0 }) {
             unlocked += "godslayer"
         }
         if (flags.monumentTier >= 5) unlocked += MonumentRepository.PATRON_TITLE_ID
+        unlocked += MainStory.titlesEarned(flags.storyStarted, flags.storyChapter)
         for (banner in flags.seasonalBannersEarned) unlocked += "seasonal_${banner.eventId}"
         for ((guild, titleId) in GUILD_TITLES) {
             if (guildRepo.guildLevel(guild, flags.guildDailyTierCounts, completedQuestIds) >= GuildRepository.DAILIES_REQUIRED_PER_TIER.size) {

@@ -122,6 +122,8 @@
     <string name="boss_king_black_dragon_desc">Le légendaire dragon à trois têtes, craint dans tout le royaume.</string>
     <string name="boss_demon_lord_name">Seigneur Démon</string>
     <string name="boss_demon_lord_desc">Un ancien démon des abysses, maître de la magie noire.</string>
+    <string name="boss_kurzul_name">Kur’zul</string> <!-- untranslated -->
+    <string name="boss_kurzul_desc">The Orc necromancer who led the first Triptych expedition, waiting at the altar of Kargral’s Temple with a blade of coldflame.</string> <!-- untranslated -->
     <string name="boss_kraken_name">Kraken</string>
     <string name="boss_kraken_desc">La terreur des mers profondes, un monstre marin colossal.</string>
     <string name="boss_balrog_name">Braise Gothique</string>

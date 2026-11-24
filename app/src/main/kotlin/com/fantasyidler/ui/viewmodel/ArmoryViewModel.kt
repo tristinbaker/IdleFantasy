@@ -197,6 +197,8 @@ class ArmoryViewModel @Inject constructor(
         // Dragon's Might, dropped by both King Black Dragon and Abyssal Lord) resolves to the
         // more notable boss source rather than whichever happened to be registered first.
         gameData.bosses.forEach { (_, boss) ->
+            // Never point players at the story boss as a drop source.
+            if (boss.requiresStory) return@forEach
             boss.rareDrops.forEach { drop ->
                 if (drop.item !in map) map[drop.item] = context.withAppLocale().getString(R.string.armory_source_drop_chance, GameStrings.bossName(context, boss.id), formatChancePct(drop.chance))
             }

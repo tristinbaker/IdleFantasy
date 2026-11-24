@@ -934,6 +934,8 @@ class PlayerRepository @Inject constructor(
             characterGender = gender,
             characterRace = race,
             characterSetupDone = true,
+            // A brand-new character gets the one-time "Begin the story?" prompt.
+            storyPromptPending = flags.storyPromptPending || !flags.characterSetupDone,
             ironman = nowIronman,
             // New ironman characters can never change race; the choice is final at creation.
             ironmanRaceLocked = flags.ironmanRaceLocked || (nowIronman && !flags.characterSetupDone),
@@ -1002,7 +1004,10 @@ class PlayerRepository @Inject constructor(
     suspend fun dismissCharacterSetup() = playerMutex.withLock {
         val player = getOrCreatePlayer()
         val flags: PlayerFlags = json.decodeFromString(player.flags)
-        playerDao.upsert(player.copy(flags = json.encode<PlayerFlags>(flags.copy(characterSetupDone = true))))
+        playerDao.upsert(player.copy(flags = json.encode<PlayerFlags>(flags.copy(
+            characterSetupDone = true,
+            storyPromptPending = flags.storyPromptPending || !flags.characterSetupDone,
+        ))))
     }
 
     internal suspend fun updateEquippedUnlocked(equipped: Map<String, String?>) {
@@ -1108,6 +1113,7 @@ class PlayerRepository @Inject constructor(
         val player = getOrCreatePlayer()
         val inventory: MutableMap<String, Int> = json.decodeFromString(player.inventory)
         val equipped: MutableMap<String, String?> = json.decodeFromString(player.equipped)
+        if (itemKey in MainStory.KEEPSAKES) return false
         if ((inventory[itemKey] ?: 0) < qty) return false
         if (protectEquipped) {
             val flags: PlayerFlags = json.decodeFromString(player.flags)
@@ -1145,6 +1151,7 @@ class PlayerRepository @Inject constructor(
         val sold = mutableMapOf<String, Int>()
         var coins = 0L
         for ((key, qty) in items) {
+            if (key in MainStory.KEEPSAKES) continue
             val have = inventory[key] ?: 0
             val actual = qty.coerceAtMost(have)
             if (actual <= 0) continue

@@ -43,6 +43,11 @@ fun ArtCreditsScreen(onBack: () -> Unit) {
 
     val credits = listOf(
         ArtCredit(
+            title    = stringResource(R.string.settings_credit_story_title),
+            subtitle = stringResource(R.string.settings_credit_story_subtitle),
+            url      = "https://letterboxd.com/bathtubskeleton/",
+        ),
+        ArtCredit(
             title    = stringResource(R.string.settings_credit_banners_title),
             subtitle = stringResource(R.string.settings_credit_banners_subtitle),
             url      = "https://wenrexa.itch.io/banners-kingdoms",

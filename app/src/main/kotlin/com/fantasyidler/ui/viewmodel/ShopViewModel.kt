@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.fantasyidler.data.json.MarketplaceItem
 import com.fantasyidler.data.model.BulkSellReceipt
 import com.fantasyidler.data.model.EquipSlot
+import com.fantasyidler.data.model.MainStory
 import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.Skills
@@ -560,6 +561,10 @@ class ShopViewModel @Inject constructor(
         }
         if (gameData.equipment[itemKey]?.heirloomSkill != null) {
             _extra.update { it.copy(snackbarMessage = context.withAppLocale().getString(R.string.shop_sell_blocked_heirloom, displayName)) }
+            return
+        }
+        if (itemKey in MainStory.KEEPSAKES) {
+            _extra.update { it.copy(snackbarMessage = context.withAppLocale().getString(R.string.shop_sell_blocked_keepsake, displayName)) }
             return
         }
         val have          = state.inventory[itemKey] ?: 0

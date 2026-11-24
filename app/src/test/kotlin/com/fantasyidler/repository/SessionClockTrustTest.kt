@@ -53,7 +53,7 @@ class SessionClockTrustTest {
             boostRepo,
             db,
         )
-        sessionRepo = SessionRepository(db.skillSessionDao(), context, json, gameData, db.playerDao(), playerRepo)
+        sessionRepo = SessionRepository(db.skillSessionDao(), context, json, gameData, db.playerDao(), playerRepo, StoryRepository(playerRepo))
         starter = QueuedSessionStarter(
             boostRepo,
             context,

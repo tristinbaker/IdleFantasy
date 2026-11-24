@@ -66,7 +66,7 @@ class BackupSchedulerTest {
             BoostRepository(gameData),
             db,
         )
-        sessionRepo = SessionRepository(db.skillSessionDao(), context, json, gameData, db.playerDao(), playerRepo)
+        sessionRepo = SessionRepository(db.skillSessionDao(), context, json, gameData, db.playerDao(), playerRepo, StoryRepository(playerRepo))
         scheduler = BackupScheduler(context, sessionRepo, GlobalStateRepository(db.globalStateDao()))
 
         docs = FakeDocsProvider(TEST_AUTHORITY)

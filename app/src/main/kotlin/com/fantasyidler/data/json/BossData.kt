@@ -25,6 +25,8 @@ data class BossData(
     @SerialName("requires_monument") val requiresMonument: Boolean = false,
     /** True for bosses only unlocked once the town Dock has been built (Construction 90). */
     @SerialName("requires_dock") val requiresDock: Boolean = false,
+    /** Main story boss: listed only once the player's story reaches its chapter (MainStory). */
+    @SerialName("requires_story") val requiresStory: Boolean = false,
     /** Bosses that require a minimum total level to unlock. 0 = no total-level gate. */
     @SerialName("total_level_required") val totalLevelRequired: Int = 0,
     /** Raid-tier boss: tuned to be unbeatable solo, fought with hired mercenaries. */

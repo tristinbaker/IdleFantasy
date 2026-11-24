@@ -60,13 +60,14 @@ import com.fantasyidler.data.json.QuestData
 import com.fantasyidler.repository.DailyQuestWithProgress
 import com.fantasyidler.ui.viewmodel.QuestWithProgress
 import com.fantasyidler.ui.viewmodel.QuestsViewModel
+import com.fantasyidler.ui.viewmodel.StoryViewModel
 import com.fantasyidler.repository.WeeklyQuestWithProgress
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatCoins
 import com.fantasyidler.util.formatXp
 import com.fantasyidler.util.toClockTime
 
-private val TAB_GROUPS = listOf("Daily", "Weekly", "Gathering", "Crafting", "Combat", "Special")
+private val TAB_GROUPS = listOf("Daily", "Weekly", "Story", "Gathering", "Crafting", "Combat", "Special")
 
 @Composable
 private fun tabGroupLabel(group: String): String = when (group) {
@@ -76,6 +77,7 @@ private fun tabGroupLabel(group: String): String = when (group) {
     "Special"   -> stringResource(R.string.label_special)
     "Daily"     -> stringResource(R.string.label_daily)
     "Weekly"    -> stringResource(R.string.label_weekly)
+    "Story"     -> stringResource(R.string.story_tab_label)
     else        -> group
 }
 
@@ -84,6 +86,7 @@ private fun tabGroupLabel(group: String): String = when (group) {
 fun QuestsScreen(
     viewModel: QuestsViewModel = hiltViewModel(),
     isleLocationVm: com.fantasyidler.ui.viewmodel.ElderIsleLocationViewModel = hiltViewModel(),
+    storyVm: StoryViewModel = hiltViewModel(),
     onNavigateToSkill: (String) -> Unit = {},
 ) {
     val isleState by isleLocationVm.state.collectAsState()
@@ -93,6 +96,7 @@ fun QuestsScreen(
         return
     }
     val state by viewModel.uiState.collectAsState()
+    val storyState by storyVm.state.collectAsState()
 
     AppBannerEffect(state.snackbarMessage, viewModel::snackbarConsumed)
 
@@ -135,7 +139,7 @@ fun QuestsScreen(
         }
 
         val tabGroups = if (state.hideCompleted) {
-            TAB_GROUPS.filter { it == "Daily" || it == "Weekly" || !state.questsByGroup[it].isNullOrEmpty() }
+            TAB_GROUPS.filter { it == "Daily" || it == "Weekly" || it == "Story" || !state.questsByGroup[it].isNullOrEmpty() }
         } else TAB_GROUPS
         var savedPage by rememberSaveable { mutableIntStateOf(0) }
         val pagerState = rememberPagerState(
@@ -159,6 +163,8 @@ fun QuestsScreen(
                         state.dailyQuests.count { it.progress >= it.template.amount && !it.claimed }
                     } else if (group == "Weekly") {
                         state.weeklyQuests.count { it.progress >= it.template.amount && !it.claimed }
+                    } else if (group == "Story") {
+                        storyState.unreadCount
                     } else {
                         (state.questsByGroup[group] ?: emptyList()).count { it.isClaimable }
                     }
@@ -200,6 +206,8 @@ fun QuestsScreen(
                         onClaimBonus  = { viewModel.claimWeeklyBonus() },
                         onNavigateToSkill = onNavigateToSkill,
                     )
+                } else if (currentGroup == "Story") {
+                    StoryTabContent(storyVm)
                 } else {
                     val quests = state.questsByGroup[currentGroup] ?: emptyList()
                     if (quests.isEmpty()) {
