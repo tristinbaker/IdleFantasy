@@ -376,7 +376,7 @@
     <string name="weekly_bonus_title">Tygodniowy bonus!</string>
     <string name="weekly_bonus_claim">Odbierz tygodniowy bonus</string>
     <string name="label_daily_info_pity">Każde codzienne zadanie nagradza monetami. Każdy quest ma także szansę 1 w %1$d by wydropić element Krasnoludzkiego sprzętu którego jeszcze nie masz. Każde roszczenie bez dropu zwiększa szanse; drop resetuje je do 1 na 100.</string>
-    <string name="label_daily_info_pity_divine">Każde codzienne zadanie nagradza monetami. Każde zadanie ma też szansę 1 na 1 % i 1 dolar, by zrzucić element Boskiego ekwipunku, którego jeszcze nie posiadasz. Każde roszczenie bez dropu zwiększa szanse; drop resetuje je do 1 na 100.</string>
+    <string name="label_daily_info_pity_divine">Each daily quest rewards coins. Every quest also has a 1 in %1$d chance to drop a piece of Divine gear you don\'t own yet. Each claim without a drop improves the odds; a drop resets them to 1 in 100.</string> <!-- untranslated -->
     <string name="label_daily_info_complete">Każde zadanie codzienne nagradza monetami. Posiadasz już każdy element krasnoludzkiego rynsztunku!</string>
     <string name="label_weekly_info">Każde tygodniowe wyzwanie nagradza monetami w zależności od wymaganego poziomu. Ukończ wszystkie 5, aby zdobyć bonus: 100 000 monet lub szansę %1$s na element boskiego wyposażenia.</string>
     <string name="label_weekly_info_complete">Każde tygodniowe wyzwanie nagradza monetami w zależności od wymaganego poziomu. Ukończ wszystkie 5, aby zdobyć bonus: 100 000 monet. Posiadasz już cały boski ekwipunek!</string>
