@@ -167,7 +167,7 @@
     <string name="enemy_beach_marauder_name">Beach Marauder</string> <!-- untranslated -->
     <string name="enemy_beach_leviathan_name">Beach Leviathan</string> <!-- untranslated -->
     <string name="enemy_grove_stalker_name">Grove Stalker</string> <!-- untranslated -->
-    <string name="enemy_grove_dryad_name">Grove Dryad</string> <!-- untranslated -->
+    <string name="enemy_grove_dryad_name">Haindryade</string>
     <string name="enemy_ash_beast_name">Ash Beast</string> <!-- untranslated -->
     <string name="enemy_lava_wraith_name">Lava Wraith</string> <!-- untranslated -->
     <string name="enemy_abyssal_horror_name">Abyssal Horror</string> <!-- untranslated -->
@@ -210,7 +210,7 @@
     <string name="dungeon_glacier_hollows_desc">Blue-lit caverns carved through the glacier, home to the Frostfall\'s fiercest beasts. Part of the Frostfall event.</string> <!-- untranslated -->
     <string name="dungeon_thornmeadow_name">The Thornmeadow</string> <!-- untranslated -->
     <string name="dungeon_thornmeadow_desc">A meadow gone wild with the spring thaw, its flowers hiding thorns and teeth. Part of the Bloomtide event.</string> <!-- untranslated -->
-    <string name="dungeon_wildgrove_name">The Wildgrove</string> <!-- untranslated -->
+    <string name="dungeon_wildgrove_name">Der Wildhain</string>
     <string name="dungeon_wildgrove_desc">An ancient grove past the Thornmeadow where the Thorn Queen\'s court takes root. Part of the Bloomtide event.</string> <!-- untranslated -->
     <string name="boss_the_rime_wyrm_name">The Rime Wyrm</string> <!-- untranslated -->
     <string name="boss_the_rime_wyrm_desc">An ancient wyrm of living ice that wakes each Frostfall, burying the Glacier Hollows in endless winter.</string> <!-- untranslated -->

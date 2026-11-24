@@ -67,7 +67,7 @@
     <string name="tree_redwood_tree_name">Mammutbaum</string>
     <!-- Elder Isle woodcutting targets -->
     <string name="tree_coastal_pine_name">Küstenpinie</string>
-    <string name="tree_grove_oak_name">Grove Oak</string> <!-- untranslated -->
+    <string name="tree_grove_oak_name">Haineiche</string>
     <string name="tree_abyssal_tree_name">Abyssal Tree</string> <!-- untranslated -->
     <string name="tree_starwood_tree_name">Starwood Tree</string> <!-- untranslated -->
 
