@@ -18,7 +18,7 @@
 
     <!-- Crafting skills -->
     <string name="skill_smithing_name">Ковальство</string>
-    <string name="skill_smithing_desc">Виплавляйте руду в злитки та куйте потужне металеве обладнання.</string>
+    <string name="skill_smithing_desc">Переплавляйте руду на зливки та куйте потужне металеве обладнання.</string>
     <string name="skill_cooking_name">Cooking</string> <!-- untranslated -->
     <string name="skill_cooking_desc">Cook raw ingredients into food that restores HP in combat.</string> <!-- untranslated -->
     <string name="skill_fletching_name">Fletching</string> <!-- untranslated -->

@@ -47,17 +47,17 @@
 
     <!-- Smithing -->
     <string name="quest_smithing_1_name">Ковальство I</string>
-    <string name="quest_smithing_1_objective">Виплавте 500 Бронзових Злитків</string>
+    <string name="quest_smithing_1_objective">Виплавте 500 Бронзових Зливків</string>
     <string name="quest_smithing_2_name">Ковальство II</string>
-    <string name="quest_smithing_2_objective">Виплавте 750 Залізних Злитків</string>
+    <string name="quest_smithing_2_objective">Виплавте 750 Залізних Зливків</string>
     <string name="quest_smithing_3_name">Ковальство III</string>
-    <string name="quest_smithing_3_objective">Виплавте 1100 Сталевих Злитків</string>
+    <string name="quest_smithing_3_objective">Виплавте 1100 Сталевих Зливків</string>
     <string name="quest_smithing_4_name">Ковальство IV</string>
-    <string name="quest_smithing_4_objective">Виплавте 1650 Міфрилові Злитки</string>
+    <string name="quest_smithing_4_objective">Виплавте 1650 Міфрилових Зливків</string>
     <string name="quest_smithing_5_name">Ковальство V</string>
-    <string name="quest_smithing_5_objective">Виплавте 2450 Адамантієвих Злитків</string>
+    <string name="quest_smithing_5_objective">Виплавте 2450 Адамантієвих Зливків</string>
     <string name="quest_smithing_6_name">Ковальство VI</string>
-    <string name="quest_smithing_6_objective">Виплавте 3650 Рунітових Злитків</string>
+    <string name="quest_smithing_6_objective">Виплавте 3650 Рунітових Зливків</string>
 
     <!-- Cooking - Fish -->
     <string name="quest_cooking_fish_1_name">Кулінарія — Риба I</string>

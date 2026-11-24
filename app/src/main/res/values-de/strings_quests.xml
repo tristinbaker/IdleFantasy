@@ -289,15 +289,15 @@
     <string name="quest_herblore_1_name">Kräuterkunde I</string>
     <string name="quest_herblore_1_objective">Braut 100 Angriffs-Gebräue</string>
     <string name="quest_herblore_2_name">Kräuterkunde II</string>
-    <string name="quest_herblore_2_objective">Mischt 250 Verteidigungs-Zaubertränke</string>
+    <string name="quest_herblore_2_objective">Mischt 250 Verteidigungstränke</string>
     <string name="quest_herblore_3_name">Kräuterkunde III</string>
-    <string name="quest_herblore_3_objective">Mischt 500 Stärke-Zaubertränke</string>
+    <string name="quest_herblore_3_objective">Mischt 500 Stärketränke</string>
     <string name="quest_herblore_4_name">Kräuterkunde IV</string>
-    <string name="quest_herblore_4_objective">Mischt 750 Fernkampf-Zaubertränke</string>
+    <string name="quest_herblore_4_objective">Mischt 750 Reichweitentränke</string>
     <string name="quest_herblore_5_name">Kräuterkunde V</string>
-    <string name="quest_herblore_5_objective">Mischt 1000 Zaubertränkes</string>
+    <string name="quest_herblore_5_objective">Mischt 1000 Zaubertränke</string>
     <string name="quest_herblore_6_name">Kräuterkunde VI</string>
-    <string name="quest_herblore_6_objective">Mischt 1500 Super-Zaubertränke</string>
+    <string name="quest_herblore_6_objective">Mischt 1500 Super-Stärketränke</string>
 
     <!-- Construction -->
     <string name="quest_construction_1_name">Bauwesen I</string>
