@@ -350,6 +350,8 @@ data class PlayerFlags(
     @SerialName("story_prompt_pending") val storyPromptPending: Boolean = false,
     /** Off = new notes skip the pop-up and wait unread in the Story tab. */
     @SerialName("story_popups") val storyPopups: Boolean = true,
+    /** Off = the Story tab (and its unread count) is hidden from Quests, for players who don't want the story. */
+    @SerialName("story_tab_visible") val storyTabVisible: Boolean = true,
     /** Index into [MainStory.CHAPTERS] of the active chapter; CHAPTERS.size once the story is finished. */
     @SerialName("story_chapter") val storyChapter: Int = 0,
     /** "chapterId.objectiveId" to progress, counted only while that chapter is active. */
@@ -363,6 +365,8 @@ data class PlayerFlags(
     @SerialName("island_name") val islandName: String = "",
     /** The one-time "Name your island" dialog has been answered (named or skipped). */
     @SerialName("island_name_asked") val islandNameAsked: Boolean = false,
+    /** One-time grant of guild capes to saves that hit guild level 10 before capes existed (#2157). */
+    @SerialName("guild_cape_backfill_done") val guildCapeBackfillDone: Boolean = false,
 )
 
 /** One completed bulk sell: what was sold and what it paid. */

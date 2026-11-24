@@ -84,6 +84,7 @@ class InventoryViewModel @Inject constructor(
 
     data class UiState(
         val coins: Long = 0L,
+        val compactNumbers: Boolean = false,
         /** item key → quantity, sorted by qty descending */
         val inventory: Map<String, Int> = emptyMap(),
         val skillLevels: Map<String, Int> = emptyMap(),
@@ -209,6 +210,7 @@ class InventoryViewModel @Inject constructor(
             val flags: PlayerFlags = json.decodeFromString(player.flags)
             extra.copy(
                 coins       = player.coins,
+                compactNumbers = flags.compactNumbers,
                 inventory   = inventory.entries
                     .sortedByDescending { it.value }
                     .associate { it.key to it.value },
@@ -336,7 +338,13 @@ class InventoryViewModel @Inject constructor(
             val before = playerRepo.getEquipped()
             val current = before.toMutableMap()
             current[slot] = itemKey
+            // Two-handed weapons and shields replace each other; say so, or the other
+            // slot silently reading "None" looks like a reset bug (issue #2151).
+            var handsNotice: String? = null
             if (slot in EquipSlot.WEAPON_SLOTS && itemData?.twoHanded == true) {
+                if (current[EquipSlot.SHIELD] != null) {
+                    handsNotice = context.withAppLocale().getString(R.string.equip_two_handed_removed_shield, GameStrings.itemName(context.withAppLocale(), itemKey))
+                }
                 current[EquipSlot.SHIELD] = null
             } else if (slot == EquipSlot.SHIELD) {
                 // Only the active style's weapon conflicts with the shield right now; other
@@ -345,13 +353,15 @@ class InventoryViewModel @Inject constructor(
                 val activeSlot = playerRepo.getFlags().activeWeaponSlot
                     ?: EquipSlot.WEAPON_SLOTS.firstOrNull { current[it] != null }
                     ?: EquipSlot.WEAPON_ATK
-                if (gameData.equipment[current[activeSlot]]?.twoHanded == true) {
+                val activeWeapon = current[activeSlot]
+                if (gameData.equipment[activeWeapon]?.twoHanded == true) {
+                    handsNotice = context.withAppLocale().getString(R.string.equip_shield_removed_two_handed, GameStrings.itemName(context.withAppLocale(), activeWeapon!!))
                     current[activeSlot] = null
                 }
             }
             playerRepo.updateEquipped(current)
             recordArmorLoadoutChanges(before, current)
-            _extra.update { it.copy(pickingSlot = null) }
+            _extra.update { it.copy(pickingSlot = null, snackbarMessage = handsNotice ?: it.snackbarMessage) }
         }
     }
 

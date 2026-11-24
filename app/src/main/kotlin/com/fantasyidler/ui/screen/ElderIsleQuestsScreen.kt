@@ -38,6 +38,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.ui.viewmodel.ElderIsleLocationViewModel
@@ -172,17 +173,21 @@ private fun QuestChainCard(row: ElderQuestRow) {
                     modifier = Modifier.fillMaxWidth().height(4.dp),
                 )
                 Spacer(Modifier.height(6.dp))
-                Row(verticalAlignment = Alignment.CenterVertically) {
+                Row(verticalAlignment = Alignment.Top) {
+                    // The count keeps its natural width; only the reward wraps, so large
+                    // font sizes can't squeeze "500 / 500" into a one-character column (#2125).
                     Text(
                         text = "${row.progress} / ${row.quest.target}",
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.weight(1f),
                     )
+                    Spacer(Modifier.width(12.dp))
                     Text(
                         text = "Reward: ${row.quest.reward}",
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.primary,
+                        textAlign = TextAlign.End,
+                        modifier = Modifier.weight(1f),
                     )
                 }
             } else {

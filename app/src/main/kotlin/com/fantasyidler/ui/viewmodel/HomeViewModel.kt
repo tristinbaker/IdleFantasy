@@ -271,6 +271,7 @@ data class HomeUiState(
     val ironman: Boolean = false,
     val recentSessions: List<RecentSession> = emptyList(),
     val showRecentActivityLog: Boolean = true,
+    val compactNumbers: Boolean = false,
     val showJournalButton: Boolean = true,
     /** Show the top-bar character switch button; hidden with a single character to not confuse new players. */
     val showCharacterSwitch: Boolean = false,
@@ -349,7 +350,11 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch { playerRepo.awardMissingCapes() }
         viewModelScope.launch { playerRepo.migratePetsFromInventory(gameData.pets) }
         viewModelScope.launch { playerRepo.ensureCharacterCreatedAt() }
-        viewModelScope.launch { guildRepo.migrateLegacyGuildReputation() }
+        viewModelScope.launch {
+            guildRepo.migrateLegacyGuildReputation()
+            // After the migration, so legacy guild rank counts toward the cape backfill.
+            guildRepo.backfillMissingGuildCapes()
+        }
         viewModelScope.launch { playerRepo.migrateLegacyPrestigePointsIfNeeded() }
         // A newly started seasonal event re-shows the banner once, so players who hid
         // it still learn the event exists (issue #1650 follow-up).
@@ -570,6 +575,7 @@ class HomeViewModel @Inject constructor(
                 ironman                    = flags.ironman,
                 recentSessions             = flags.recentSessions,
                 showRecentActivityLog      = flags.showRecentActivityLog,
+                compactNumbers             = flags.compactNumbers,
                 showJournalButton          = flags.showJournalButton,
                 showCharacterSwitch        = saveSlotRepo.hasMultipleCharacters(),
                 showSeasonalEvents         = flags.showSeasonalEvents,

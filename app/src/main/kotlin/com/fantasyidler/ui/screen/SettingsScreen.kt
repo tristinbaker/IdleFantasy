@@ -338,6 +338,17 @@ fun SettingsScreen(
                     )
                 }
             )
+            val showStoryTab by viewModel.showStoryTab.collectAsState()
+            SettingsRow(
+                title    = stringResource(R.string.settings_story_tab),
+                subtitle = stringResource(R.string.settings_story_tab_desc),
+                trailing = {
+                    Switch(
+                        checked         = showStoryTab,
+                        onCheckedChange = { viewModel.setShowStoryTab(it) },
+                    )
+                }
+            )
             val showMonumentTouchIndicator by viewModel.showMonumentTouchIndicator.collectAsState()
             SettingsRow(
                 title    = stringResource(R.string.settings_monument_touch_indicator),

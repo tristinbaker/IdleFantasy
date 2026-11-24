@@ -242,9 +242,15 @@ def add_player_guides():
     PAGE_HIERARCHY.merge([["Guides", True, [f"guide_{x}" for x in guide_to_generator.keys()]]])
 
 
+def load_bosses() -> dict:
+    """raid_bosses.json minus the main story boss, who stays hidden like he is in-game."""
+    bosses = load("raid_bosses.json")
+    assert isinstance(bosses, dict)
+    return {boss_id: boss for boss_id, boss in bosses.items() if not boss.get("requires_story", False)}
+
 
 def add_boss_pages():
-    bosses = load("raid_bosses.json")
+    bosses = load_bosses()
     assert isinstance(bosses, dict)
     boss_pages = {
         boss_id: PageInfo(boss_name(boss_id), f"{boss_id}.md", lambda x=bosses[boss_id]: gen_boss(x), boss_sprite(boss_id))
@@ -1495,7 +1501,7 @@ def gen_equipment() -> str:
 
 def gen_heirlooms() -> str:
     equip = load("equipment.json")
-    bosses = load("raid_bosses.json")
+    bosses = load_bosses()
     assert isinstance(equip, dict)
     assert isinstance(bosses, dict)
     heirlooms = {k: v for k, v in equip.items() if v.get("heirloom_skill")}
@@ -1569,7 +1575,7 @@ def gen_combat_footer() -> str:
         (load(f, False) for f in (ASSETS / "dungeons").glob("*.json")),
         key=lambda d: d.get("recommended_level", 0),
     )
-    bosses = load("raid_bosses.json")
+    bosses = load_bosses()
     enemies = load("enemies.json")
     assert isinstance(bosses, dict)
     assert isinstance(enemies, dict)
@@ -1591,7 +1597,7 @@ def gen_combat_footer() -> str:
 
 
 def gen_bosses() -> str:
-    bosses = load("raid_bosses.json")
+    bosses = load_bosses()
     assert isinstance(bosses, dict)
 
     def rows_for(raid: bool) -> list[list]:
@@ -1646,12 +1652,18 @@ def gen_dungeon(dungeon: dict) -> str:
     ]
     # Create loot rows
     loot_rows = _dungeon_loot_rows(dungeon, enemies)
+    # Rare drops roll on clearing the dungeon itself, not from its enemies (issue #2149)
+    rare_rows = [
+        [item_link(drop["item"]), fmt_pct(drop.get("chance", 0))]
+        for drop in dungeon.get("rare_drops", [])
+    ]
     return get_template("combat/dungeon").format(
         name=dungeon_name(dungeon["name"]),
         recommended_level=dungeon.get("recommended_level", "—"),
         description=dungeon_desc(dungeon["name"]),
         spawn_table=table(["Enemy", "Weight", "Spawn Chance"], spawn_rows) if spawn_rows else "",
         loot_table=table(["Loot", "Dropped By"], loot_rows) if loot_rows else "_No loot._",
+        rare_drops_table=table(["Item", "Chance"], rare_rows) if rare_rows else "_No rare drops._",
         combat_footer=gen_combat_footer(),
     )
 

@@ -375,6 +375,29 @@ class GuildRepository @Inject constructor(
     }
 
     /**
+     * Saves that reached guild level 10 before guild capes existed never got one, because the
+     * cape is only granted on the level-up itself (issue #2157). Hands out any missing capes
+     * once per save; the flag stops a sold cape from being re-granted later.
+     */
+    suspend fun backfillMissingGuildCapes() {
+        if (playerRepo.getFlags().guildCapeBackfillDone) return
+        val completedQuestIds = questProgressDao.getAllProgress().filter { it.completed }.map { it.questId }.toSet()
+        val guilds = gameData.guildQuests.values.map { it.guild }.toSet()
+        playerRepo.withLock {
+            val flags = playerRepo.getFlagsUnlocked()
+            if (flags.guildCapeBackfillDone) return@withLock
+            val inventory = playerRepo.getInventoryUnlocked()
+            val equipped = playerRepo.getEquipped().values
+            val missing = guilds
+                .filter { guildLevel(it, flags.guildDailyTierCounts, completedQuestIds) >= DAILIES_REQUIRED_PER_TIER.size }
+                .map { "${it}_guild_cape" }
+                .filter { it in gameData.equipment && (inventory[it] ?: 0) <= 0 && it !in equipped }
+            playerRepo.updateFlagsUnlocked(flags.copy(guildCapeBackfillDone = true))
+            if (missing.isNotEmpty()) playerRepo.addItemsUnlocked(missing.associateWith { 1 })
+        }
+    }
+
+    /**
      * Returns [rewards] with the guild's cape added when [newLevel] just reached the top
      * guild rank. The cape is awarded on reaching level 10 itself, whichever gate closes
      * last (final quest or tier dailies), not on claiming the final quest. Skipped when

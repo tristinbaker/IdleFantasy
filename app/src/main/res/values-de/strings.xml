@@ -1954,6 +1954,8 @@
     <string name="mercantile_route_start_failed">Route konnte nicht gestartet werden: %1$s</string>
     <string name="mercantile_added_to_queue">Zur Warteschlange hinzugefügt: Handelsroute — %1$s.</string>
     <string name="inventory_requires_to_equip">Zum Ausrüsten wird %1$s benötigt.</string>
+    <string name="equip_two_handed_removed_shield">%1$s needs both hands, so your shield was unequipped.</string> <!-- untranslated -->
+    <string name="equip_shield_removed_two_handed">A shield can’t be used with a two-handed weapon, so %1$s was unequipped.</string> <!-- untranslated -->
     <string name="home_found_pet">Ihr habt ein Haustier gefunden: %1$s!</string>
     <string name="pet_found_title">Neues Haustier!</string>
     <string name="home_congratulations_received">Glückwunsch! Ihr habt erhalten: %1$s</string>
@@ -2828,6 +2830,8 @@
     <string name="story_btn_read_later">Read later</string> <!-- untranslated -->
     <string name="story_page_indicator">Page %1$d of %2$d</string> <!-- untranslated -->
     <string name="settings_story_popups">Story pop-ups</string> <!-- untranslated -->
+    <string name="settings_story_tab">Story tab in Quests</string> <!-- untranslated -->
+    <string name="settings_story_tab_desc">Show the main story tab in Quests. Turn it off if you’re not interested in the story.</string> <!-- untranslated -->
     <string name="settings_story_popups_desc">Show story notes as pop-ups while you play. When off, new notes wait unread in the Story tab.</string> <!-- untranslated -->
     <string name="title_duster_name">Duster</string> <!-- untranslated -->
     <string name="title_duster_requirement">Finish Landfall in the main story</string> <!-- untranslated -->

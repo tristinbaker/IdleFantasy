@@ -1955,6 +1955,8 @@
     <string name="mercantile_route_start_failed">Impossible de démarrer la route : %1$s</string>
     <string name="mercantile_added_to_queue">Ajouté à la file : Commerce — %1$s.</string>
     <string name="inventory_requires_to_equip">Nécessite %1$s pour équiper.</string>
+    <string name="equip_two_handed_removed_shield">%1$s needs both hands, so your shield was unequipped.</string> <!-- untranslated -->
+    <string name="equip_shield_removed_two_handed">A shield can’t be used with a two-handed weapon, so %1$s was unequipped.</string> <!-- untranslated -->
     <string name="home_found_pet">Vous avez trouvé un familier : %1$s !</string>
     <string name="pet_found_title">Nouveau familier !</string>
     <string name="home_congratulations_received">Félicitations ! Vous avez reçu : %1$s</string>
@@ -2829,6 +2831,8 @@
     <string name="story_btn_read_later">Read later</string> <!-- untranslated -->
     <string name="story_page_indicator">Page %1$d of %2$d</string> <!-- untranslated -->
     <string name="settings_story_popups">Story pop-ups</string> <!-- untranslated -->
+    <string name="settings_story_tab">Story tab in Quests</string> <!-- untranslated -->
+    <string name="settings_story_tab_desc">Show the main story tab in Quests. Turn it off if you’re not interested in the story.</string> <!-- untranslated -->
     <string name="settings_story_popups_desc">Show story notes as pop-ups while you play. When off, new notes wait unread in the Story tab.</string> <!-- untranslated -->
     <string name="title_duster_name">Duster</string> <!-- untranslated -->
     <string name="title_duster_requirement">Finish Landfall in the main story</string> <!-- untranslated -->

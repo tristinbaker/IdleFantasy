@@ -137,6 +137,9 @@ fun CombatScreen(
     }
 
     AppBannerEffect(state.snackbarMessage, viewModel::snackbarConsumed)
+    // Gear-tab equips run through InventoryViewModel, so its notices (level requirement,
+    // two-handed vs shield) need surfacing here too.
+    AppBannerEffect(invState.snackbarMessage, inventoryVm::snackbarConsumed)
 
     state.petFoundName?.let { petName ->
         AlertDialog(

@@ -12,4 +12,10 @@
 
 {loot_table}
 
+## Rare drops
+
+Each clear of the dungeon has a chance to drop:
+
+{rare_drops_table}
+
 {combat_footer}

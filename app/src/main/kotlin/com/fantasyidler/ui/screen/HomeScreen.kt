@@ -696,6 +696,7 @@ fun HomeScreen(
                         totalLevel                 = if (state.onElderIsle) state.skillLevels.filterKeys { it in ElderSkills.ALL }.values.sum()
                                                      else totalLevelFrom(state.skillLevels),
                         coins                      = state.coins,
+                        compactNumbers             = state.compactNumbers,
                         activeBlessingKey          = state.activeBlessingKey,
                         allBlessings               = state.allBlessings,
                         prayerCapeMult             = state.prayerCapeMult,

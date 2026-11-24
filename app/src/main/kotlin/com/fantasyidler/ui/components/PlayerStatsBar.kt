@@ -42,6 +42,8 @@ fun PlayerStatsBar(
     combatLevel: Int,
     totalLevel: Int,
     coins: Long,
+    /** Settings > Compact Numbers: off shows the full amount instead of 8.9M (issue #2124). */
+    compactNumbers: Boolean = true,
     activeBlessingKey: String,
     allBlessings: List<BlessingData>,
     prayerCapeMult: Float,
@@ -69,7 +71,7 @@ fun PlayerStatsBar(
             )
             StatInline(
                 label      = stringResource(R.string.label_coins),
-                value      = coins.formatCoins(),
+                value      = if (compactNumbers) coins.formatCoins() else "%,d".format(coins),
                 valueColor = MaterialTheme.colorScheme.primary,
             )
         }

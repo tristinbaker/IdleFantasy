@@ -259,6 +259,7 @@ fun ProfileScreen(
                     combatLevel               = combatLevelFrom(state.skillLevels),
                     totalLevel                = state.totalLevel,
                     coins                     = state.coins,
+                    compactNumbers            = state.compactNumbers,
                     activeBlessingKey         = state.activeBlessingKey,
                     allBlessings              = state.allBlessings,
                     prayerCapeMult            = state.prayerCapeMult,

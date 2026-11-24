@@ -252,9 +252,9 @@ internal fun FiremakingSheet(
                 }
                 Button(
                     onClick  = { onStart(key, qty); selectedKey = null },
-                    enabled  = !isStarting && maxQty > 0,
+                    enabled  = !isStarting && maxQty > 0 && !isQueueFull,
                     modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
-                ) { Text(stringResource(R.string.firemaking_burn)) }
+                ) { Text(stringResource(if (isQueueFull) R.string.snackbar_queue_full else R.string.firemaking_burn)) }
             }
         }
     }

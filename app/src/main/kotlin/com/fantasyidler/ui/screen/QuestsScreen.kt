@@ -160,6 +160,7 @@ fun QuestsScreen(
         }
 
         val tabGroups = visibleQuestTabGroups(TAB_GROUPS, state.questsByGroup, state.hideCompleted)
+            .filter { it != "Story" || storyState.tabVisible }
         var savedPage by rememberSaveable { mutableIntStateOf(0) }
         val pagerState = rememberPagerState(
             initialPage = savedPage.coerceAtMost(tabGroups.lastIndex),
