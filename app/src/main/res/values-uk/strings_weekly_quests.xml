@@ -56,9 +56,9 @@
     <string name="quest_weekly_slayer_master_name">Slayer Champion</string> <!-- untranslated -->
     <string name="quest_weekly_slayer_master_desc">Complete 30 Slayer tasks this week.</string> <!-- untranslated -->
     <string name="quest_weekly_devout_name">Devoted</string> <!-- untranslated -->
-    <string name="quest_weekly_devout_desc">Bury 450 bones this week.</string> <!-- untranslated -->
+    <string name="quest_weekly_devout_desc">Закопай 450 кісток цього тижня.</string>
     <string name="quest_weekly_farmer_name">Season\'s Harvest</string> <!-- untranslated -->
-    <string name="quest_weekly_farmer_desc">Harvest 30 crops this week.</string> <!-- untranslated -->
+    <string name="quest_weekly_farmer_desc">Збери 30 врожаїв цього тижня.</string>
     <string name="quest_weekly_guild_supporter_name">Guild Contributor</string> <!-- untranslated -->
     <string name="quest_weekly_guild_supporter_desc">Complete 20 guild daily requests this week.</string> <!-- untranslated -->
 </resources>
