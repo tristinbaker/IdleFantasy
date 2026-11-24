@@ -79,6 +79,27 @@ private fun tabGroupLabel(group: String): String = when (group) {
     else        -> group
 }
 
+/**
+ * Issue #2109: tabs visible when "Hide Completed" is on. Daily/Weekly always stay
+ * (they render their own empty state); other groups only while they hold quests.
+ * Pure so the JVM suite can pin it without the Compose pager runtime.
+ */
+internal fun visibleQuestTabGroups(
+    allGroups: List<String>,
+    questsByGroup: Map<String, List<*>>,
+    hideCompleted: Boolean,
+): List<String> =
+    if (!hideCompleted) allGroups
+    else allGroups.filter { it == "Daily" || it == "Weekly" || !questsByGroup[it].isNullOrEmpty() }
+
+/**
+ * Issue #2109: coerce a possibly-stale pager page into the current tab list.
+ * When hiding completed quests shrinks the list, the old page can point past
+ * the end; clamping lands on the rightmost remaining tab instead of crashing.
+ */
+internal fun coerceQuestTabPage(currentPage: Int, tabCount: Int): Int =
+    currentPage.coerceIn(0, (tabCount - 1).coerceAtLeast(0))
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun QuestsScreen(
@@ -134,9 +155,7 @@ fun QuestsScreen(
             return@Scaffold
         }
 
-        val tabGroups = if (state.hideCompleted) {
-            TAB_GROUPS.filter { it == "Daily" || it == "Weekly" || !state.questsByGroup[it].isNullOrEmpty() }
-        } else TAB_GROUPS
+        val tabGroups = visibleQuestTabGroups(TAB_GROUPS, state.questsByGroup, state.hideCompleted)
         var savedPage by rememberSaveable { mutableIntStateOf(0) }
         val pagerState = rememberPagerState(
             initialPage = savedPage.coerceAtMost(tabGroups.lastIndex),
@@ -146,6 +165,13 @@ fun QuestsScreen(
             if (pagerState.currentPage != savedPage) pagerState.scrollToPage(savedPage)
         }
         LaunchedEffect(pagerState.currentPage) { savedPage = pagerState.currentPage }
+        // Issue #2109: hiding completed quests (or claiming the last quest of a tab
+        // with the switch on) shrinks tabGroups while the pager still points at the
+        // old page. Clamp to the rightmost remaining tab instead of crashing.
+        LaunchedEffect(tabGroups.size) {
+            val safe = coerceQuestTabPage(pagerState.currentPage, tabGroups.size)
+            if (safe != pagerState.currentPage) pagerState.scrollToPage(safe)
+        }
         val scope = rememberCoroutineScope()
 
         Column(
@@ -153,7 +179,7 @@ fun QuestsScreen(
                 .fillMaxSize()
                 .padding(padding),
         ) {
-            ScrollableTabRow(selectedTabIndex = pagerState.currentPage, edgePadding = 0.dp) {
+            ScrollableTabRow(selectedTabIndex = pagerState.currentPage.coerceAtMost(tabGroups.lastIndex), edgePadding = 0.dp) {
                 tabGroups.forEachIndexed { index, group ->
                     val claimableInGroup = if (group == "Daily") {
                         state.dailyQuests.count { it.progress >= it.template.amount && !it.claimed }
@@ -178,7 +204,10 @@ fun QuestsScreen(
             }
 
             HorizontalPager(state = pagerState, modifier = Modifier.weight(1f)) { page ->
-                val currentGroup = tabGroups[page]
+                // Issue #2109: transient frame where the pager still points past the
+                // shrunken list (the LaunchedEffect above corrects it right after).
+                // Skip the frame instead of throwing IndexOutOfBoundsException.
+                val currentGroup = tabGroups.getOrNull(page) ?: return@HorizontalPager
                 if (currentGroup == "Daily") {
                     DailyQuestsContent(
                         quests         = state.dailyQuests,
