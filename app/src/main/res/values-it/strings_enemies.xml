@@ -190,13 +190,13 @@
     <string name="boss_last_elder_desc">L\'unico sopravvissuto degli Anziani che abitavano l\'Isola Ancestrale, rinchiuso nelle profondità Abissali. Solo chi possiede tutti gli oggetti Ancestrali può affrontarlo.</string>
 
     <!-- Frostfall and Bloomtide -->
-    <string name="enemy_frost_sprite_name">Frost Sprite</string> <!-- untranslated -->
-    <string name="enemy_snow_wolf_name">Snow Wolf</string> <!-- untranslated -->
-    <string name="enemy_ice_troll_name">Ice Troll</string> <!-- untranslated -->
-    <string name="enemy_rime_revenant_name">Rime Revenant</string> <!-- untranslated -->
-    <string name="enemy_glacier_yeti_name">Glacier Yeti</string> <!-- untranslated -->
-    <string name="enemy_rime_giant_name">Rime Giant</string> <!-- untranslated -->
-    <string name="enemy_frostbound_jarl_name">Frostbound Jarl</string> <!-- untranslated -->
+    <string name="enemy_frost_sprite_name">Spirito del Gelo</string>
+    <string name="enemy_snow_wolf_name">Lupo delle Nevi</string>
+    <string name="enemy_ice_troll_name">Troll di Ghiaccio</string>
+    <string name="enemy_rime_revenant_name">Spiriti di Brina</string>
+    <string name="enemy_glacier_yeti_name">Yeti del Freddo</string>
+    <string name="enemy_rime_giant_name">Gigante di Brina</string>
+    <string name="enemy_frostbound_jarl_name">Jarl dell\'Inverno</string>
     <string name="enemy_pollen_sprite_name">Pollen Sprite</string> <!-- untranslated -->
     <string name="enemy_bramble_boar_name">Bramble Boar</string> <!-- untranslated -->
     <string name="enemy_briar_beast_name">Briar Beast</string> <!-- untranslated -->
@@ -204,16 +204,16 @@
     <string name="enemy_thorn_stalker_name">Thorn Stalker</string> <!-- untranslated -->
     <string name="enemy_blossom_treant_name">Blossom Treant</string> <!-- untranslated -->
     <string name="enemy_bramble_titan_name">Bramble Titan</string> <!-- untranslated -->
-    <string name="dungeon_rimewaste_name">The Rimewaste</string> <!-- untranslated -->
-    <string name="dungeon_rimewaste_desc">A wind-scoured snowfield where the Frostfall\'s creatures drift down from the peaks. Part of the Frostfall event.</string> <!-- untranslated -->
-    <string name="dungeon_glacier_hollows_name">The Glacier Hollows</string> <!-- untranslated -->
-    <string name="dungeon_glacier_hollows_desc">Blue-lit caverns carved through the glacier, home to the Frostfall\'s fiercest beasts. Part of the Frostfall event.</string> <!-- untranslated -->
+    <string name="dungeon_rimewaste_name">Brinatura</string>
+    <string name="dungeon_rimewaste_desc">Una landa nevosa sferzata da venti gelidi, dove creature di ghiaccio e gelo dimorano. Parte dell\'evento Avvento del Gelo.</string>
+    <string name="dungeon_glacier_hollows_name">Profondità del Ghiacciaio</string>
+    <string name="dungeon_glacier_hollows_desc">Caverne che attraversano il ghiacciaio perenne, illuminate di blu dalla luce che trapassa le acque gelate. Temibili creature ne hanno fatto la loro casa. Parte dell\'evento Avvento del Gelo</string>
     <string name="dungeon_thornmeadow_name">The Thornmeadow</string> <!-- untranslated -->
     <string name="dungeon_thornmeadow_desc">A meadow gone wild with the spring thaw, its flowers hiding thorns and teeth. Part of the Bloomtide event.</string> <!-- untranslated -->
     <string name="dungeon_wildgrove_name">The Wildgrove</string> <!-- untranslated -->
     <string name="dungeon_wildgrove_desc">An ancient grove past the Thornmeadow where the Thorn Queen\'s court takes root. Part of the Bloomtide event.</string> <!-- untranslated -->
-    <string name="boss_the_rime_wyrm_name">The Rime Wyrm</string> <!-- untranslated -->
-    <string name="boss_the_rime_wyrm_desc">An ancient wyrm of living ice that wakes each Frostfall, burying the Glacier Hollows in endless winter.</string> <!-- untranslated -->
+    <string name="boss_the_rime_wyrm_name">Dragone del Gelo</string>
+    <string name="boss_the_rime_wyrm_desc">Quando questa antica creatura si desta, le lande sprofondano in un gelido inverno. Vive nelle Profondità del Ghiacciaio.</string>
     <string name="boss_the_thorn_queen_name">The Thorn Queen</string> <!-- untranslated -->
     <string name="boss_the_thorn_queen_desc">The briar-crowned ruler of the Wildgrove, whose roses bloom each spring with thorns as long as swords.</string> <!-- untranslated -->
 </resources>

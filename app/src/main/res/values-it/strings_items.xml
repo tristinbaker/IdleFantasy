@@ -1298,9 +1298,9 @@
     <string name="item_sunstone_ring_desc">A ring set with a shard of solstice sunlight. Warm to the touch, even in winter.</string> <!-- untranslated -->
     <string name="item_sunforged_sabre_desc">Forged in the heart of the Sunspire bonfire. Its edge never quite cools.</string> <!-- untranslated -->
     <string name="item_sunweave_cape_desc">Woven from midsummer light at the Night Market. Only sold during the Sunspire Solstice.</string> <!-- untranslated -->
-    <string name="item_frostbound_ring_desc">A band of ice that never melts. Steadies the bow arm on the coldest nights.</string> <!-- untranslated -->
-    <string name="item_glacial_longbow_desc">Carved from glacier ice that never thaws. Awarded to the Frostfall\'s most tireless defenders.</string> <!-- untranslated -->
-    <string name="item_frostweave_cape_desc">Spun from snowdrift and starlight at the Night Market. Only sold during the Frostfall.</string> <!-- untranslated -->
+    <string name="item_frostbound_ring_desc">Cerchietto di ghiaccio che non si scioglie mai. Aiuta a tendere l\'arco anche durante le notti più gelide.</string>
+    <string name="item_glacial_longbow_desc">Scolpito dal ghiaccio perenne del Ghiacciaio, solo i più valorosi meritano di utilizzarlo.</string>
+    <string name="item_frostweave_cape_desc">Tessuto magicamente con neve e luce di stelle nel Mercato Notturno. Disponibile solo durante l\'Avvento del Gelo.</string>
     <string name="item_seedheart_ring_desc">A living seed sealed in silver. It hums with the patience of growing things.</string> <!-- untranslated -->
     <string name="item_bloomwood_staff_desc">A flowering branch from the Wildgrove that never wilts. Spells bloom from its tip.</string> <!-- untranslated -->
     <string name="item_petalweave_cape_desc">Stitched from a thousand spring petals at the Night Market. Only sold during the Bloomtide.</string> <!-- untranslated -->
