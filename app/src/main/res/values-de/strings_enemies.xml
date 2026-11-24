@@ -191,8 +191,8 @@
 
     <!-- Frostfall and Bloomtide -->
     <string name="enemy_frost_sprite_name">Frost Sprite</string> <!-- untranslated -->
-    <string name="enemy_snow_wolf_name">Snow Wolf</string> <!-- untranslated -->
-    <string name="enemy_ice_troll_name">Ice Troll</string> <!-- untranslated -->
+    <string name="enemy_snow_wolf_name">Schneewolf</string>
+    <string name="enemy_ice_troll_name">Eistroll</string>
     <string name="enemy_rime_revenant_name">Rime Revenant</string> <!-- untranslated -->
     <string name="enemy_glacier_yeti_name">Glacier Yeti</string> <!-- untranslated -->
     <string name="enemy_rime_giant_name">Rime Giant</string> <!-- untranslated -->
