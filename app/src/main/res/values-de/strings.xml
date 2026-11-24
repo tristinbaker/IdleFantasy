@@ -1668,15 +1668,15 @@
     <string name="item_voidsteel_bar_name">Leerenstahl Barren</string>
     <string name="item_starforged_bar_name">Barren der Sternenschmiede</string>
     <string name="item_coastal_pine_log_name">Küstenpinienstamm</string>
-    <string name="item_grove_oak_log_name">Grove Oak Log</string> <!-- untranslated -->
+    <string name="item_grove_oak_log_name">Haineichenstamm</string>
     <string name="item_abyssal_log_name">Stamm der Tiefe</string>
     <string name="item_starwood_log_name">Sternholz Stamm</string>
     <string name="item_raw_tidepool_crab_name">Tidepool Crab (raw)</string> <!-- untranslated -->
-    <string name="item_raw_grove_bass_name">Grove Bass (raw)</string> <!-- untranslated -->
+    <string name="item_raw_grove_bass_name">Hainbarsch (roh)</string>
     <string name="item_raw_lavafin_name">Lavaflosse (roh)</string>
     <string name="item_raw_deepwater_ray_name">Tiefseerochen (roh)</string>
     <string name="item_tidepool_crab_name">Tidepool Crab</string> <!-- untranslated -->
-    <string name="item_grove_bass_name">Grove Bass</string> <!-- untranslated -->
+    <string name="item_grove_bass_name">Hainbarsch</string>
     <string name="item_lavafin_name">Lavaflosse</string>
     <string name="item_deepwater_ray_name">Tiefseerochen</string>
     <string name="item_elder_bone_name">Ältesten Knochen</string>
@@ -1686,7 +1686,7 @@
 
     <!-- Elder Isle: gathering targets (trees) -->
     <string name="item_coastal_pine_name">Küstenpinie</string>
-    <string name="item_grove_oak_name">Grove Oak</string> <!-- untranslated -->
+    <string name="item_grove_oak_name">Haineiche</string>
     <string name="item_abyssal_tree_name">Baum der Tiefe</string>
     <string name="item_starwood_tree_name">Sternholz Baum</string>
 
@@ -1695,10 +1695,10 @@
     <string name="item_coastal_platebody_name">Küstenbrustpanzer</string>
     <string name="item_coastal_platelegs_name">Küstenbeinschienen</string>
     <string name="item_coastal_boots_name">Küstenstiefel</string>
-    <string name="item_grove_helm_name">Grove Helm</string> <!-- untranslated -->
-    <string name="item_grove_platebody_name">Grove Platebody</string> <!-- untranslated -->
-    <string name="item_grove_platelegs_name">Grove Platelegs</string> <!-- untranslated -->
-    <string name="item_grove_boots_name">Grove Boots</string> <!-- untranslated -->
+    <string name="item_grove_helm_name">Hain-Helm</string>
+    <string name="item_grove_platebody_name">Hain-Plattenpanzer</string>
+    <string name="item_grove_platelegs_name">Hain-Beinschienen</string>
+    <string name="item_grove_boots_name">Hainstiefel</string>
     <string name="item_volcanic_helm_name">Vulkanischer Helm</string>
     <string name="item_volcanic_platebody_name">Vulkanischer Brustpanzer</string>
     <string name="item_volcanic_platelegs_name">Vulkanische Beinschienen</string>
@@ -1723,8 +1723,8 @@
 
     <!-- Elder Isle: pet item entries (parallel to pet_* below; used by drop tables and inventory) -->
     <string name="item_tidal_sprite_name">Tidal Sprite</string> <!-- untranslated -->
-    <string name="item_grove_fawn_name">Grove Fawn</string> <!-- untranslated -->
-    <string name="item_magma_salamander_name">Magma Salamander</string> <!-- untranslated -->
+    <string name="item_grove_fawn_name">Hainkitz</string>
+    <string name="item_magma_salamander_name">Magmasalamander</string>
     <string name="item_abyss_wisp_name">Abyss Wisp</string> <!-- untranslated -->
     <string name="item_ancient_turtle_name">Uralte Schildkröte</string>
     <string name="item_cinder_hawk_name">Cinder Hawk</string> <!-- untranslated -->
@@ -2165,9 +2165,9 @@
     <string name="seasonal_bounty_sunspire_kindling_hint">Fällt Weidenstämme — Holzfällerei</string>
     <string name="seasonal_bounty_sunspire_sunore_name">Grabt nach Gold um den Sonnenturm zu vergolden	</string>
     <string name="seasonal_bounty_sunspire_sunore_hint">Grabt nach Gold — Bergbau</string>
-    <string name="seasonal_bounty_sunspire_draughts_name">Braut Stärke-Zaubertrank</string>
+    <string name="seasonal_bounty_sunspire_draughts_name">Braut Stärketrank</string>
     <string name="seasonal_bounty_sunspire_draughts_hint">Kräuterkunde</string>
-    <string name="seasonal_bounty_sunspire_embers_brew_name">Braut Angriffs-Zaubertrank für die Sonnenwenden-Wache</string>
+    <string name="seasonal_bounty_sunspire_embers_brew_name">Braut Angriffstrank für die Sonnenwenden-Wache</string>
     <string name="seasonal_bounty_sunspire_embers_brew_hint">Kräuterkunde</string>
     <string name="seasonal_bounty_sunspire_sunfire_arrows_name">Fertigt Mithrilpfeile um die Irrlichter abzuhalten</string>
     <string name="seasonal_bounty_sunspire_sunfire_arrows_hint">Pfeilfertigung</string>
@@ -2217,7 +2217,7 @@
     <string name="seasonal_bounty_gloom_swordfish_hint">Fangt rohe Schwertfische (Fischen)</string>
     <string name="seasonal_bounty_gloom_mithril_name">Grabt Mithril, um die Tore zu schützen</string>
     <string name="seasonal_bounty_gloom_mithril_hint">Grabt nach Mithril-Erz (Bergbau)</string>
-    <string name="seasonal_bounty_gloom_brews_name">Braut Verteidigungs-Zaubertränke für die Nachtwache</string>
+    <string name="seasonal_bounty_gloom_brews_name">Braut Verteidigungstränke für die Nachtwache</string>
     <string name="seasonal_bounty_gloom_brews_hint">Kräuterkunde</string>
     <string name="seasonal_bounty_gloom_shortbows_name">Fertigt Ahorn-Kurzbögen für die Wächter</string>
     <string name="seasonal_bounty_gloom_shortbows_hint">Pfeilfertigung</string>
@@ -2371,8 +2371,8 @@
     <!-- Elder Isle pets: 7 dungeon drops + 1 raid-boss drop -->
     <string name="pet_tidal_sprite_name">Tidal Sprite</string> <!-- untranslated -->
     <string name="pet_tidal_sprite_desc">A shimmering water spirit born from the surf of Beach &amp; Cliffs. Never seems to fully dry.</string> <!-- untranslated -->
-    <string name="pet_grove_fawn_name">Grove Fawn</string> <!-- untranslated -->
-    <string name="pet_grove_fawn_desc">A young forest creature with rune-patterned fur, found among the ancient trees.</string> <!-- untranslated -->
+    <string name="pet_grove_fawn_name">Hainrehkitz</string>
+    <string name="pet_grove_fawn_desc">Eine junge Waldkreatur mit runengemustertem Fell, gefunden zwischen den Urwaldbäumen.</string>
     <string name="pet_magma_salamander_name">Magmasalamander</string>
     <string name="pet_magma_salamander_desc">A heat-forged lizard that thrives in Volcano Peak\'s cracks. Its skin is always faintly warm.</string> <!-- untranslated -->
     <string name="pet_abyss_wisp_name">Abyss Wisp</string> <!-- untranslated -->
@@ -2521,7 +2521,7 @@
     <string name="prestige_effect_pet_boost_pct">Pet boosts for this skill are %1$d%% stronger.</string> <!-- untranslated -->
     <string name="prestige_effect_blessing_duration_pct">Kirchliche Segen halten %1$d%% länger an.</string>
     <string name="prestige_effect_blessing_cost_pct">Kirchliche Segen kosten %1$d%% weniger Knochen.</string>
-    <string name="prestige_effect_potion_bonus_flat">Combat potions grant +%1$d more to their stats.</string> <!-- untranslated -->
+    <string name="prestige_effect_potion_bonus_flat">Kampftränke gewähren +%1$d Vorteil gegenüber ihren Werten.</string>
     <string name="prestige_effect_input_save_pct">%1$d%% der Materialien werden erstattet.</string>
     <string name="prestige_effect_builder_discount_pct">Gebäude-Verbesserungen kosten %1$d%% weniger.</string>
     <string name="prestige_effect_sell_price_pct">Verkaufspreise beim Krämer +%1$d%%.</string>
@@ -2714,7 +2714,7 @@
     <string name="seasonal_bounty_frost_steel_hint">Schmieden</string>
     <string name="seasonal_bounty_frost_arrows_name">Fletch Adamant arrows for the wall watch</string> <!-- untranslated -->
     <string name="seasonal_bounty_frost_arrows_hint">Fletching</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_ranging_name">Brew Ranging Potions for the wall archers</string> <!-- untranslated -->
+    <string name="seasonal_bounty_frost_ranging_name">Braue Reichweitentränke für die Bogenschützen der Mauer</string>
     <string name="seasonal_bounty_frost_ranging_hint">Herblore</string> <!-- untranslated -->
     <string name="seasonal_bounty_frost_water_runes_name">Craft Water Runes to bind the ice</string> <!-- untranslated -->
     <string name="seasonal_bounty_frost_water_runes_hint">Runecrafting</string> <!-- untranslated -->
@@ -2752,7 +2752,7 @@
     <string name="seasonal_bounty_bloom_lobsters_hint">Fish Raw Lobster (Fishing)</string> <!-- untranslated -->
     <string name="seasonal_bounty_bloom_silver_name">Mine silver for the festival bells</string> <!-- untranslated -->
     <string name="seasonal_bounty_bloom_silver_hint">Mine Silver Ore (Mining)</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_magic_brews_name">Brew Magic Potions for the grove keepers</string> <!-- untranslated -->
+    <string name="seasonal_bounty_bloom_magic_brews_name">Braue magische Tränke für die Hainwächter</string>
     <string name="seasonal_bounty_bloom_magic_brews_hint">Herblore</string> <!-- untranslated -->
     <string name="seasonal_bounty_bloom_emerald_rings_name">Craft emerald rings for the Bloomtide court</string> <!-- untranslated -->
     <string name="seasonal_bounty_bloom_emerald_rings_hint">Crafting</string> <!-- untranslated -->
@@ -2771,7 +2771,7 @@
     <string name="seasonal_bounty_bloom_beasts_name">Cut down the Briar Beasts</string> <!-- untranslated -->
     <string name="seasonal_bounty_bloom_beasts_hint">Only found in The Thornmeadow</string> <!-- untranslated -->
     <string name="seasonal_bounty_bloom_stalkers_name">Hunt Thorn Stalkers</string> <!-- untranslated -->
-    <string name="seasonal_bounty_bloom_stalkers_hint">Only found in The Wildgrove</string> <!-- untranslated -->
+    <string name="seasonal_bounty_bloom_stalkers_hint">kann nur im Wildhain gefunden werden</string>
     <string name="seasonal_bounty_bloom_drakes_name">Drive off the Verdant Drakes</string> <!-- untranslated -->
     <string name="seasonal_bounty_bloom_drakes_hint">Only found in The Thornmeadow (rare)</string> <!-- untranslated -->
     <string name="seasonal_bounty_bloom_tithe_strawberries_name">Zehnt: Spendet Erdbeeren</string>
@@ -2799,6 +2799,6 @@
     <string name="pet_snowhare_desc">A snow-white hare that sniffs out the best fishing holes in the ice.</string> <!-- untranslated -->
     <string name="pet_petal_sprite_name">Petal Sprite</string> <!-- untranslated -->
     <string name="pet_petal_sprite_desc">A blossom spirit shaken loose from the Thorn Queen\'s crown. It dances ahead of you into battle.</string> <!-- untranslated -->
-    <string name="pet_bumblebee_name">Bumblebee</string> <!-- untranslated -->
-    <string name="pet_bumblebee_desc">A busy little bee that knows exactly which flowers make the best potions.</string> <!-- untranslated -->
+    <string name="pet_bumblebee_name">Hummel</string>
+    <string name="pet_bumblebee_desc">Eine fleißige kleine Biene, die genau weiß, welche Blüten für die besten Tränke benutzt werden.</string>
 </resources>
