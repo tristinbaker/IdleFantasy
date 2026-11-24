@@ -367,7 +367,7 @@
     <string name="label_weekly_info">Jede wöchentliche Herausforderung wird mit Münzen entsprechend der Schwierigkeit entlohnt. Wenn Ihr alle 5 Herausforderungen meistert, erhaltet eine Sonderzulage: 100 000 Münzen oder mit einer Chance von %1$s ein Teil der göttlichen Ausrüstung.</string>
     <string name="label_weekly_info_complete">Jede wöchentliche Herausforderung wird mit Münzen entsprechend der Schwierigkeit entlohnt. Wenn Ihr alle 5 Herausforderungen meistert, erhaltet eine Sonderzulage: 100 000 Münzen. Ihr besitzt bereits die komplette göttliche Ausrüstung!</string>
     <string name="label_daily_reward_pity">2 000 Münzen (1/%1$d: Zwergen-Ausrüstung)</string>
-    <string name="label_daily_reward_pity_divine">2,000 coins (1/%1$d: Divine gear)</string> <!-- untranslated -->
+    <string name="label_daily_reward_pity_divine">2.000 Münzen (1/%1$d: Heilige Ausrüstung)</string>
     <string name="label_daily_reward_complete">2 000 Münzen</string>
     <string name="msg_daily_claimed_coins">Tagesaufgabe abgeschlossen! +2 000 Münzen.</string>
     <string name="msg_daily_claimed_dwarven">Tagesaufgabe abgeschlossen! Ihr habt %1$s gefunden!</string>
@@ -1949,7 +1949,7 @@
     <string name="quest_complete_with_rewards">Aufgabe abgeschlossen: %1$s! Belohnung: %2$s</string>
     <string name="quest_daily_complete_coins">Tagesaufgabe abgeschlossen! +%1$s Münzen</string>
     <string name="quest_daily_complete_dwarven">Tagesaufgabe abgeschlossen! Ihr habt Zwergen-Ausrüstung gefunden!</string>
-    <string name="quest_daily_complete_divine">Daily quest complete! You found divine gear!</string> <!-- untranslated -->
+    <string name="quest_daily_complete_divine">Tägliche Quest abgeschlossen! Du hast heilige Ausrüstung gefunden!</string>
     <string name="quest_weekly_complete">Wöchentliche Herausforderung abgeschlossen! +%1$s Münzen</string>
     <string name="quest_weekly_bonus_complete_coins">Alle wöchentlichen Herausforderung abgeschlossen! +%1$s Münzen</string>
     <string name="quest_weekly_bonus_complete_divine">Alle wöchentlichen Herausforderung abgeschlossen! Ihr habt göttliche Ausrüstung gefunden!</string>
@@ -1970,7 +1970,7 @@
     <string name="combat_start_anyway">Trotzdem starten</string>
     <string name="combat_xp_consolation">EP (Trost)</string>
     <string name="bestiary_loot_item_header">Gegenstand</string>
-    <string name="worker_no_mats">No materials</string> <!-- untranslated -->
+    <string name="worker_no_mats">Keine Materialien</string>
     <string name="bonus_section_skills">Fähigkeits-Bonus</string>
     <string name="bonus_combat_stat_boost">Verstärkt Kampffähigkeiten</string>
     <string name="bonus_combined_xp">EP gesamt</string>
@@ -2043,7 +2043,7 @@
     <string name="boss_coin_cap_spent">Münzbeute dieses Bosses bis morgen reduziert</string>
     <string name="bestiary_coin_cap_label">Nach %1$d Kills/Tag</string>
     <string name="session_note_boss_coin_cap">Münzbeute reduziert (Tageslimit für diesen Boss)</string>
-    <string name="session_note_boss_defeated_by">Defeated by %1$s ×%2$d</string> <!-- untranslated -->
+    <string name="session_note_boss_defeated_by">Besiegt von %1$s ×%2$d</string>
     <string name="guild_daily_button">Gildenaufgaben</string>
     <string name="guild_daily_banner_claimable">Gildenaufgabe abgeschlossen! In der Gildenhalle einlösen</string>
     <string name="guild_daily_banner_claimed">Gildenaufgabe heute eingelöst</string>
@@ -2051,7 +2051,7 @@
 
     <!-- ===== Infinite Tower ===== -->
     <!-- Raids and mercenaries -->
-    <string name="raid_section_title">Raids</string> <!-- untranslated -->
+    <string name="raid_section_title">Raids</string>
     <string name="raid_section_desc">Gegner die kein Held alleine bezwingen kann. Heuere zuerst weitere Söldner an.</string>
     <string name="raid_party_status">Angeheuerte Söldner: %1$d/%2$d</string>
     <string name="raid_party_title">Raid-Gruppe</string>
@@ -2379,7 +2379,7 @@
     <string name="pet_abyss_wisp_desc">A cold silver light that drifted up from the Abyssal Depths and refused to sink back.</string> <!-- untranslated -->
     <string name="pet_ancient_turtle_name">Uralte Schildkröte</string>
     <string name="pet_ancient_turtle_desc">Eine winzige Schildkröte, deren Panzer dieselben Runen trägt wie das Siegel der Insel. Älter, als sie aussieht.</string>
-    <string name="pet_cinder_hawk_name">Cinder Hawk</string> <!-- untranslated -->
+    <string name="pet_cinder_hawk_name">Zunderfalke</string>
     <string name="pet_cinder_hawk_desc">A bird of banked embers that circles the volcano and roosts on your shoulder between fights.</string> <!-- untranslated -->
     <string name="pet_deepwater_serpent_name">Tiefwasserschlange</string>
     <string name="pet_deepwater_serpent_desc">Ein kleiner Vetter der Seeschlange, wickelt sich um dein Handgelenk wie ein lebendiger Armreif.</string>
@@ -2600,9 +2600,9 @@
     <string name="race_change_pay_coins">10 000 000 Münzen zahlen</string>
     <string name="race_change_cannot_afford">Um die Rasse zu wechseln, benötigst du ein Rassenwechsel-Token (seltener Endgegner-Drop) oder 10 000 000 Münzen.</string>
     <string name="race_change_ironman_locked">Ironman characters cannot change their race.</string> <!-- untranslated -->
-    <string name="race_change_cooldown_wait">You can change race again in %1$s.</string> <!-- untranslated -->
-    <string name="race_change_ironman_once">As an ironman, this is your one and only race change. Afterwards your race is locked forever.</string> <!-- untranslated -->
-    <string name="ironman_race_permanent_note">Ironman characters cannot change their race later. Choose carefully!</string> <!-- untranslated -->
+    <string name="race_change_cooldown_wait">Du kannst deine Rasse erneut in %1$s ändern.</string>
+    <string name="race_change_ironman_once">Als Ironman ist dies die einzige Änderung deiner Rasse. Anschließend ist deine Rasse für immer gesperrt.</string>
+    <string name="ironman_race_permanent_note">Ironman-Charaktere können ihre Rasse später nicht ändern. Wähle weise!</string>
     <!-- Translator note: %1$s = comma-separated list of skill names -->
     <string name="race_proficiency_label">Rassen-Fähigkeitsbäume: %1$s</string>
     <string name="race_proficiency_human">Rassenbonus: eine exklusive EP-Meisterschaftsstufe in jeder Fertigkeit</string>
@@ -2711,7 +2711,7 @@
     <string name="seasonal_bounty_frost_potatoes_name">Dig up potatoes for the winter larder</string> <!-- untranslated -->
     <string name="seasonal_bounty_frost_potatoes_hint">Grow Potatoes (Farming)</string> <!-- untranslated -->
     <string name="seasonal_bounty_frost_steel_name">Smelt steel for sled runners</string> <!-- untranslated -->
-    <string name="seasonal_bounty_frost_steel_hint">Smithing</string> <!-- untranslated -->
+    <string name="seasonal_bounty_frost_steel_hint">Schmieden</string>
     <string name="seasonal_bounty_frost_arrows_name">Fletch Adamant arrows for the wall watch</string> <!-- untranslated -->
     <string name="seasonal_bounty_frost_arrows_hint">Fletching</string> <!-- untranslated -->
     <string name="seasonal_bounty_frost_ranging_name">Braue Reichweitentränke für die Bogenschützen der Mauer</string>
