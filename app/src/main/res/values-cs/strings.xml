@@ -1041,7 +1041,7 @@
     <string name="guild_name_mages">Cech kouzelníků</string>
     <string name="guild_name_prayer">Cech zbožnosti</string>
     <string name="guild_name_thieving">Cech zlodějů</string>
-    <string name="guild_name_mercantile">Cech obchodníků</string>
+    <string name="guild_name_mercantile">Kupecký cech</string>
     <string name="guild_name_construction">Cech stavitelů</string>
     <string name="guild_name_slayer">Popravčí cech</string>
     <string name="guild_quest_desc_slayer_task">Splň %1$d úkolů Mistra popravčího pro %2$s.</string>
@@ -1442,7 +1442,7 @@
     <string name="shop_cat_ores_and_materials">Rudy &amp; materiály</string>
     <string name="shop_cat_logs_and_wood">Klády a dřevo</string>
     <string name="shop_cat_seeds_and_farming">Semena a pěstování</string>
-    <string name="shop_cat_merchants_guild">Cech obchodníků</string>
+    <string name="shop_cat_merchants_guild">Kupecký cech</string>
     <string name="shop_cat_equipment">Vybavení</string>
     <string name="shop_cat_special">Zvlášní</string>
     <string name="shop_cat_weapons">Zbraně</string>
@@ -1544,7 +1544,7 @@
 
     <!-- Thieving NPC names -->
     <string name="thieving_npc_peasant_name">Vesničan</string>
-    <string name="thieving_npc_merchant_name">Obchodník</string>
+    <string name="thieving_npc_merchant_name">Kupec</string>
     <string name="thieving_npc_guardsman_name">Stráž</string>
     <string name="thieving_npc_artisan_name">Řemeslník</string>
     <string name="thieving_npc_noble_name">Ctihodný občan</string>
@@ -1639,7 +1639,7 @@
     <string name="elder_isle_stub_profile">Ostrovní statistiky a rozvržení výbavy přibudou spolu s kompletními dovednostmi.</string>
     <string name="elder_isle_skills_title">Prastaré dovednosti</string>
     <string name="elder_isle_total_level_label">Celková úroveň prastarých dovedností</string>
-    <string name="elder_isle_total_level_value">%1$d / %2$d</string> <!-- untranslated -->
+    <string name="elder_isle_total_level_value">%1$d / %2$d</string>
     <string name="elder_isle_skill_activities_title">%1$s activities</string> <!-- untranslated -->
     <string name="elder_isle_no_activities">No activities yet in this build.</string> <!-- untranslated -->
     <string name="elder_isle_start_session">Start session</string> <!-- untranslated -->
@@ -2064,7 +2064,7 @@
     <string name="guild_daily_button">Denní cechovní úkoly</string>
     <string name="guild_daily_banner_claimable">Denní cechovní úkoly splněny! Vyzvedni si odměnu v cechovní síni.</string>
     <string name="guild_daily_banner_claimed">Odměna za denní úkol cechu dnes vyzvednuta</string>
-    <string name="guild_daily_rank_maxed">Guild rank maxed</string> <!-- untranslated -->
+    <string name="guild_daily_rank_maxed">Maximální úroveň v cechu</string>
 
     <!-- ===== Infinite Tower ===== -->
     <!-- Raids and mercenaries -->
