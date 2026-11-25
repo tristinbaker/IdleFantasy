@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.screen
 
+import com.fantasyidler.ui.theme.LocalTabSwipeEnabled
 import android.R as AndroidR
 import android.content.Context
 import androidx.compose.foundation.Image
@@ -224,7 +225,7 @@ fun CombatScreen(
                         text     = { Text(skillsTabLabel) },
                     )
                 }
-                HorizontalPager(state = pagerState, modifier = Modifier.weight(1f)) { page ->
+                HorizontalPager(state = pagerState, modifier = Modifier.weight(1f), userScrollEnabled = LocalTabSwipeEnabled.current) { page ->
                     when (page) {
                         0 -> CombatSessionBanner(
                             session        = combatSession,
@@ -348,7 +349,7 @@ fun CombatScreen(
                         text     = { Text(skillsTabLabel) },
                     )
                 }
-                HorizontalPager(state = pagerState, modifier = Modifier.weight(1f)) { page ->
+                HorizontalPager(state = pagerState, modifier = Modifier.weight(1f), userScrollEnabled = LocalTabSwipeEnabled.current) { page ->
                     when (page) {
                         0 -> CombatSelectionList(
                             dungeons            = visibleDungeons,

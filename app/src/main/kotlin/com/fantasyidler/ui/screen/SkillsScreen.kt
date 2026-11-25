@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.screen
 
+import com.fantasyidler.ui.theme.LocalTabSwipeEnabled
 import android.content.Context
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -250,7 +251,7 @@ fun SkillsScreen(
                 }
             }
             val skillsListState = rememberLazyListState()
-            HorizontalPager(state = pagerState, modifier = Modifier.weight(1f)) { page ->
+            HorizontalPager(state = pagerState, modifier = Modifier.weight(1f), userScrollEnabled = LocalTabSwipeEnabled.current) { page ->
                 if (page == 1 && !state.onElderIsle) {
                     ExpeditionsScreen(viewModel = expeditionsViewModel, showTitle = false)
                 } else {

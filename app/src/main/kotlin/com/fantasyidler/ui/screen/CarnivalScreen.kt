@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.screen
 
+import com.fantasyidler.ui.theme.LocalTabSwipeEnabled
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -198,8 +199,9 @@ fun CarnivalScreen(
             }
 
             HorizontalPager(
-                state    = pagerState,
-                modifier = Modifier.fillMaxSize(),
+                state             = pagerState,
+                modifier          = Modifier.fillMaxSize(),
+                userScrollEnabled = LocalTabSwipeEnabled.current,
             ) { page ->
                 when (page) {
                     0 -> IdleGamesTab(state.skillLevels, state.tierBonus, state.capeMultiplier, state.queueSize, state.maxQueueSize, viewModel)

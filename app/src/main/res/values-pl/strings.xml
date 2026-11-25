@@ -335,6 +335,9 @@
     <string name="label_switch_character">Zmień postać</string>
     <string name="settings_daily_reset_time">Godzina codziennego resetu</string>
     <string name="settings_daily_reset_time_desc">Czas lokalny, w którym zadania dzienne, gildii i tygodniowe są przenoszone. Zmiana tego czasu nigdy nie zapewnia dodatkowego resetu.</string>
+    <string name="recent_activity_altar">%1$s ×%2$d at the altar</string> <!-- untranslated -->
+    <string name="settings_swipe_tabs">Swipe between tabs</string> <!-- untranslated -->
+    <string name="settings_swipe_tabs_desc">Swipe left or right to change tabs. Turn this off if tabs change by accident, for example with a TV remote.</string> <!-- untranslated -->
     <string name="settings_compact_numbers">Kompaktowe Liczby</string>
     <string name="settings_compact_numbers_desc">Skróć duże ilości liczb (np. 2.46M zamiast 2,461,940)</string>
     <string name="settings_home_screen">Ekran Główny</string>

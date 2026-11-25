@@ -81,46 +81,6 @@ fun BestiaryTab(viewModel: BestiaryViewModel = hiltViewModel()) {
             )
         }
 
-        if (state.totalCount > 0) {
-            CompletionProgressBar(
-                completed = state.totalEncountered,
-                total = state.totalCount,
-                label = stringResource(R.string.bestiary_progress_bar)
-            )
-        }
-
-        Row(
-            modifier = Modifier
-                .horizontalScroll(rememberScrollState())
-                .padding(horizontal = 12.dp, vertical = 8.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            BestiaryFilter.entries.forEach { f ->
-                FilterChip(
-                    selected = state.filter == f,
-                    onClick  = { viewModel.setFilter(f) },
-                    label    = { Text(filterLabel(f)) },
-                )
-            }
-        }
-        Row(
-            modifier = Modifier
-                .horizontalScroll(rememberScrollState())
-                .padding(start = 12.dp, end = 12.dp, bottom = 4.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            FilterChip(
-                selected = state.sort == BestiarySort.ALPHABETICAL,
-                onClick  = { viewModel.setSort(BestiarySort.ALPHABETICAL) },
-                label    = { Text("A–Z") },
-            )
-            FilterChip(
-                selected = state.sort == BestiarySort.BY_LOCATION,
-                onClick  = { viewModel.setSort(BestiarySort.BY_LOCATION) },
-                label    = { Text(stringResource(R.string.label_by_location)) },
-            )
-        }
-
         val enemiesListState = rememberLazyListState()
         val bossesListState = rememberLazyListState()
         LaunchedEffect(state.filter, state.sort) {
@@ -133,6 +93,47 @@ fun BestiaryTab(viewModel: BestiaryViewModel = hiltViewModel()) {
             sort    = state.sort,
             listState = if (selectedSubTab == 0) enemiesListState else bossesListState,
             onEntryClick = { selectedEntry = it },
+            // Progress and filters scroll away with the list so it gets the whole tab (issue #2146).
+            header = {
+                if (state.totalCount > 0) {
+                    CompletionProgressBar(
+                        completed = state.totalEncountered,
+                        total = state.totalCount,
+                        label = stringResource(R.string.bestiary_progress_bar)
+                    )
+                }
+                Row(
+                    modifier = Modifier
+                        .horizontalScroll(rememberScrollState())
+                        .padding(horizontal = 12.dp, vertical = 8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    BestiaryFilter.entries.forEach { f ->
+                        FilterChip(
+                            selected = state.filter == f,
+                            onClick  = { viewModel.setFilter(f) },
+                            label    = { Text(filterLabel(f)) },
+                        )
+                    }
+                }
+                Row(
+                    modifier = Modifier
+                        .horizontalScroll(rememberScrollState())
+                        .padding(start = 12.dp, end = 12.dp, bottom = 4.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    FilterChip(
+                        selected = state.sort == BestiarySort.ALPHABETICAL,
+                        onClick  = { viewModel.setSort(BestiarySort.ALPHABETICAL) },
+                        label    = { Text("A–Z") },
+                    )
+                    FilterChip(
+                        selected = state.sort == BestiarySort.BY_LOCATION,
+                        onClick  = { viewModel.setSort(BestiarySort.BY_LOCATION) },
+                        label    = { Text(stringResource(R.string.label_by_location)) },
+                    )
+                }
+            },
         )
     }
 
@@ -169,6 +170,7 @@ private fun BestiaryList(
     sort: BestiarySort,
     listState: LazyListState = rememberLazyListState(),
     onEntryClick: (BestiaryEntry) -> Unit,
+    header: @Composable () -> Unit = {},
 ) {
     val otherLabel = stringResource(R.string.bestiary_location_other)
     val context = LocalContext.current
@@ -178,6 +180,7 @@ private fun BestiaryList(
         entries.sortedWith(compareBy(collator) { it.nameLoader(context, it.key) })
     }
     LazyColumn(state = listState, modifier = Modifier.fillMaxSize()) {
+        item(key = "bestiary_header") { Column { header() } }
         if (sort == BestiarySort.BY_LOCATION) {
             val grouped = buildLocationGroups(sortedEntries, otherLabel, collator)
             grouped.forEach { (groupName, groupEntries) ->

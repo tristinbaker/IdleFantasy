@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.screen
 
+import com.fantasyidler.ui.theme.LocalTabSwipeEnabled
 import android.content.Context
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
@@ -512,7 +513,7 @@ private fun TabsLayout(
                 )
             }
         }
-        HorizontalPager(state = pagerState, modifier = Modifier.weight(1f).fillMaxSize()) { page ->
+        HorizontalPager(state = pagerState, modifier = Modifier.weight(1f).fillMaxSize(), userScrollEnabled = LocalTabSwipeEnabled.current) { page ->
             content(page)
         }
     }
@@ -1057,92 +1058,102 @@ private fun InventoryTab(
         else allGroups.filter { (cat, _) -> cat == selectedCategory }
     }
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    // Search and filters live inside the list so they scroll away with it, leaving the
+    // whole tab for items on small screens (issue #2146).
+    LazyColumn(modifier = Modifier.fillMaxSize()) {
         if (BuildConfig.DEBUG) {
-            TextButton(onClick = onDebugAddItem) {
-                Text("[Debug] Modify Item Count")
+            item(key = "inventory_debug") {
+                TextButton(onClick = onDebugAddItem) {
+                    Text("[Debug] Modify Item Count")
+                }
             }
         }
-        OutlinedTextField(
-            value         = query,
-            onValueChange = { query = it },
-            placeholder   = { Text(stringResource(R.string.shop_search_hint)) },
-            singleLine    = true,
-            modifier      = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 4.dp),
-        )
-        Row(
-            modifier              = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            FilterChip(
-                selected = !sortAlpha,
-                onClick  = { sortAlpha = false },
-                label    = { Text(stringResource(R.string.inventory_sort_quantity), style = MaterialTheme.typography.labelSmall) },
-            )
-            FilterChip(
-                selected = sortAlpha,
-                onClick  = { sortAlpha = true },
-                label    = { Text(stringResource(R.string.inventory_sort_az), style = MaterialTheme.typography.labelSmall) },
+        item(key = "inventory_search") {
+            OutlinedTextField(
+                value         = query,
+                onValueChange = { query = it },
+                placeholder   = { Text(stringResource(R.string.shop_search_hint)) },
+                singleLine    = true,
+                modifier      = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 4.dp),
             )
         }
-        Row(
-            modifier              = Modifier
-                .horizontalScroll(rememberScrollState())
-                .padding(horizontal = 16.dp, vertical = 4.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            FilterChip(
-                selected = selectedCategory == null,
-                onClick  = { selectedCategory = null },
-                label    = { Text(stringResource(R.string.inventory_cat_filter_all), style = MaterialTheme.typography.labelSmall) },
-            )
-            allGroups.forEach { (cat, _) ->
+        item(key = "inventory_sort") {
+            Row(
+                modifier              = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
                 FilterChip(
-                    selected = selectedCategory == cat,
-                    onClick  = { selectedCategory = if (selectedCategory == cat) null else cat },
-                    label    = { Text(categoryLabel(cat), style = MaterialTheme.typography.labelSmall) },
+                    selected = !sortAlpha,
+                    onClick  = { sortAlpha = false },
+                    label    = { Text(stringResource(R.string.inventory_sort_quantity), style = MaterialTheme.typography.labelSmall) },
                 )
+                FilterChip(
+                    selected = sortAlpha,
+                    onClick  = { sortAlpha = true },
+                    label    = { Text(stringResource(R.string.inventory_sort_az), style = MaterialTheme.typography.labelSmall) },
+                )
+            }
+        }
+        item(key = "inventory_categories") {
+            Row(
+                modifier              = Modifier
+                    .horizontalScroll(rememberScrollState())
+                    .padding(horizontal = 16.dp, vertical = 4.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                FilterChip(
+                    selected = selectedCategory == null,
+                    onClick  = { selectedCategory = null },
+                    label    = { Text(stringResource(R.string.inventory_cat_filter_all), style = MaterialTheme.typography.labelSmall) },
+                )
+                allGroups.forEach { (cat, _) ->
+                    FilterChip(
+                        selected = selectedCategory == cat,
+                        onClick  = { selectedCategory = if (selectedCategory == cat) null else cat },
+                        label    = { Text(categoryLabel(cat), style = MaterialTheme.typography.labelSmall) },
+                    )
+                }
             }
         }
         if (groups.isEmpty()) {
-            Box(
-                modifier         = Modifier.fillMaxSize().padding(32.dp),
-                contentAlignment = Alignment.Center,
-            ) {
-                Text(
-                    text  = stringResource(R.string.label_empty),
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
+            item(key = "inventory_empty") {
+                Box(
+                    modifier         = Modifier.fillMaxWidth().padding(32.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(
+                        text  = stringResource(R.string.label_empty),
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
             }
         } else {
-            LazyColumn(modifier = Modifier.fillMaxSize()) {
-                for ((cat, catItems) in groups) {
-                    item(key = cat.name) {
-                        Text(
-                            text     = categoryLabel(cat),
-                            style    = MaterialTheme.typography.labelSmall,
-                            color    = MaterialTheme.colorScheme.onSurfaceVariant,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .background(MaterialTheme.colorScheme.surfaceVariant)
-                                .padding(horizontal = 16.dp, vertical = 6.dp),
-                        )
-                    }
-                    items(catItems, key = { it.key }) { entry ->
-                        InventoryRow(
-                            name    = GameStrings.itemName(context, entry.key),
-                            qty     = entry.value,
-                            onClick = if (entry.key == PlayerRepository.ANCIENT_TREASURE_KEY) {
-                                { treasureDialogQty = entry.value }
-                            } else null,
-                        )
-                    }
+            for ((cat, catItems) in groups) {
+                item(key = cat.name) {
+                    Text(
+                        text     = categoryLabel(cat),
+                        style    = MaterialTheme.typography.labelSmall,
+                        color    = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(MaterialTheme.colorScheme.surfaceVariant)
+                            .padding(horizontal = 16.dp, vertical = 6.dp),
+                    )
                 }
-                item { Spacer(Modifier.height(16.dp)) }
+                items(catItems, key = { it.key }) { entry ->
+                    InventoryRow(
+                        name    = GameStrings.itemName(context, entry.key),
+                        qty     = entry.value,
+                        onClick = if (entry.key == PlayerRepository.ANCIENT_TREASURE_KEY) {
+                            { treasureDialogQty = entry.value }
+                        } else null,
+                    )
+                }
             }
+            item { Spacer(Modifier.height(16.dp)) }
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.screen
 
+import com.fantasyidler.ui.theme.LocalTabSwipeEnabled
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.clickable
@@ -210,7 +211,7 @@ fun QuestsScreen(
                 }
             }
 
-            HorizontalPager(state = pagerState, modifier = Modifier.weight(1f)) { page ->
+            HorizontalPager(state = pagerState, modifier = Modifier.weight(1f), userScrollEnabled = LocalTabSwipeEnabled.current) { page ->
                 // Issue #2109: transient frame where the pager still points past the
                 // shrunken list (the LaunchedEffect above corrects it right after).
                 // Skip the frame instead of throwing IndexOutOfBoundsException.

@@ -932,7 +932,9 @@ internal fun RecentSessionsSheet(
             )
         } else {
             sessions.forEachIndexed { index, entry ->
-                val activityDisplay = if (entry.activityKey.isNotEmpty()) {
+                val activityDisplay = if (entry.altarCount > 0) {
+                    stringResource(R.string.recent_activity_altar, GameStrings.itemName(context, entry.activityKey), entry.altarCount)
+                } else if (entry.activityKey.isNotEmpty()) {
                     when (entry.skillName) {
                         "boss"       -> GameStrings.bossName(context, entry.activityKey)
                         "combat"     -> GameStrings.dungeonName(context, entry.activityKey)

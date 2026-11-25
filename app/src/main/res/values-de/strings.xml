@@ -321,6 +321,9 @@
     <string name="label_switch_character">Charakter wechseln</string>
     <string name="settings_daily_reset_time">Zeit zum Zurücksetzen</string>
     <string name="settings_daily_reset_time_desc">Ortszeit, zu der die täglichen, Gilden- und wöchentlichen Aufgaben zurückgesetzt werden. Eine Änderung dieser Zeit führt niemals zu einem zusätzlichen zurücksetzen.</string>
+    <string name="recent_activity_altar">%1$s ×%2$d at the altar</string> <!-- untranslated -->
+    <string name="settings_swipe_tabs">Swipe between tabs</string> <!-- untranslated -->
+    <string name="settings_swipe_tabs_desc">Swipe left or right to change tabs. Turn this off if tabs change by accident, for example with a TV remote.</string> <!-- untranslated -->
     <string name="settings_compact_numbers">Nummern abkürzen</string>
     <string name="settings_compact_numbers_desc">Große Mengenangaben abkürzen (z. B. 2,46M statt 2.461.940).</string>
     <string name="settings_home_screen">Startbildschirm</string>
@@ -1612,7 +1615,7 @@
     <string name="boss_masked_name">\?\?\?</string>
     <string name="boss_last_elder_masked_desc">Etwas Uraltes schlummert in den Tiefen der Insel. Sammle das volle Ältesten Set zusammen, um dich ihm zu stellen.</string>
     <string name="elder_isle_welcome_title">Landung an der Ältesteninsel</string>
-    <string name="elder_isle_welcome_body">Das salzige Sprühwasser schwindet und der Nebel hebt sich. Vor uns: eine knochenweiße Küste, ein Dschungel übersät mit fahlen Runen und weiter im Lande kräuselt sich Rauch von einem Hügel, der nicht rauchen sollte. Die alten Segelleute haben Recht, etwas Uraltes lebt immer noch hier.\n\n\n\nIhre Festland Fähigkeiten, Boosts und Ausrüstungen bleiben an Bord. Alles was Ihr auf der Insel levelt oder herstellt wird separat festgehalten. Ältesten Ausrüstung wird mitgenommen zum Festland. Festland Fähigkeiten zählen hier nichts.\n\n\n\nStartet mit dem Fähigkeiten Reiter. Beginnt mit Bergbau oder Holzfällereri, um Inselmaterialien zu sammeln. Dann prüft den Aufgaben Reiter für euer erstes Ziel und öffnet den Weisheitsmeister in der Stadt wenn ihr ein neues Fragment freigeschaltet habt.</string>
+    <string name="elder_isle_welcome_body">Das salzige Sprühwasser schwindet und der Nebel hebt sich. Vor uns: eine knochenweiße Küste, ein Dschungel übersät mit fahlen Runen und weiter im Lande kräuselt sich Rauch von einem Hügel, der nicht rauchen sollte. Die alten Segelleute haben Recht, etwas Uraltes lebt immer noch hier.\n\nIhre Festland Fähigkeiten, Boosts und Ausrüstungen bleiben an Bord. Alles was Ihr auf der Insel levelt oder herstellt wird separat festgehalten. Ältesten Ausrüstung wird mitgenommen zum Festland. Festland Fähigkeiten zählen hier nichts.\n\nStartet mit dem Fähigkeiten Reiter. Beginnt mit Bergbau oder Holzfällereri, um Inselmaterialien zu sammeln. Dann prüft den Aufgaben Reiter für euer erstes Ziel und öffnet den Weisheitsmeister in der Stadt wenn ihr ein neues Fragment freigeschaltet habt.</string>
     <string name="elder_isle_welcome_cta">Trete an Land</string>
     <string name="elder_isle_stub_skills">Elder skills are being charted. Full skill tracks arrive in a later build.</string> <!-- untranslated -->
     <string name="elder_isle_stub_combat">Elder dungeons and the Last Elder fight are being drawn up. Later build.</string> <!-- untranslated -->

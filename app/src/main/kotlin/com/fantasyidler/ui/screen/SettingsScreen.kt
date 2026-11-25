@@ -416,6 +416,17 @@ fun SettingsScreen(
                     },
                 )
             }
+            val swipeBetweenTabs by viewModel.swipeBetweenTabs.collectAsState()
+            SettingsRow(
+                title    = stringResource(R.string.settings_swipe_tabs),
+                subtitle = stringResource(R.string.settings_swipe_tabs_desc),
+                trailing = {
+                    Switch(
+                        checked         = swipeBetweenTabs,
+                        onCheckedChange = { viewModel.setSwipeBetweenTabs(it) },
+                    )
+                }
+            )
             val compactNumbers by viewModel.compactNumbers.collectAsState()
             SettingsRow(
                 title    = stringResource(R.string.settings_compact_numbers),

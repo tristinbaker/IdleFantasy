@@ -28,6 +28,7 @@ import com.fantasyidler.repository.SaveSlotRepository
 import com.fantasyidler.ui.navigation.AppNavigation
 import com.fantasyidler.ui.theme.FantasyIdlerTheme
 import com.fantasyidler.ui.theme.LocalAppFontScale
+import com.fantasyidler.ui.theme.LocalTabSwipeEnabled
 import com.fantasyidler.ui.viewmodel.SettingsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -85,11 +86,13 @@ class MainActivity : AppCompatActivity() {
             LaunchedEffect(systemDark) { settingsViewModel.setSystemDark(systemDark) }
             val colourScheme by settingsViewModel.colourScheme.collectAsStateWithLifecycle()
             val fontScale    by settingsViewModel.fontScale.collectAsStateWithLifecycle()
+            val swipeTabs    by settingsViewModel.swipeBetweenTabs.collectAsStateWithLifecycle()
             val baseDensity = LocalDensity.current
             FantasyIdlerTheme(colorScheme = colourScheme) {
                 CompositionLocalProvider(
                     LocalDensity provides Density(baseDensity.density, fontScale),
                     LocalAppFontScale provides fontScale,
+                    LocalTabSwipeEnabled provides swipeTabs,
                 ) {
                     AppNavigation(
                         pendingNavigateTo  = pendingNavigateTo.value,

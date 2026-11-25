@@ -321,6 +321,9 @@
     <string name="label_switch_character">切换角色</string>
     <string name="settings_daily_reset_time">每日重置时间</string>
     <string name="settings_daily_reset_time_desc">每日任务、公会每日和每周任务的本地重置时间。更改不会获得额外的重置。</string>
+    <string name="recent_activity_altar">%1$s ×%2$d at the altar</string> <!-- untranslated -->
+    <string name="settings_swipe_tabs">Swipe between tabs</string> <!-- untranslated -->
+    <string name="settings_swipe_tabs_desc">Swipe left or right to change tabs. Turn this off if tabs change by accident, for example with a TV remote.</string> <!-- untranslated -->
     <string name="settings_compact_numbers">紧凑数字</string>
     <string name="settings_compact_numbers_desc">缩写大数量物品（如2.46M代替2,461,940）</string>
     <string name="settings_home_screen">主页</string>

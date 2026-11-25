@@ -324,6 +324,9 @@
     <string name="label_switch_character">Switch character</string> <!-- untranslated -->
     <string name="settings_daily_reset_time">Daily reset time</string> <!-- untranslated -->
     <string name="settings_daily_reset_time_desc">Local time when dailies, guild dailies, and weeklies roll over. Changing it never grants an extra reset.</string> <!-- untranslated -->
+    <string name="recent_activity_altar">%1$s ×%2$d at the altar</string> <!-- untranslated -->
+    <string name="settings_swipe_tabs">Swipe between tabs</string> <!-- untranslated -->
+    <string name="settings_swipe_tabs_desc">Swipe left or right to change tabs. Turn this off if tabs change by accident, for example with a TV remote.</string> <!-- untranslated -->
     <string name="settings_compact_numbers">Compact Numbers</string> <!-- untranslated -->
     <string name="settings_compact_numbers_desc">Abbreviate large item quantities and your coin total (e.g. 2.46M instead of 2,461,940)</string> <!-- untranslated -->
     <string name="settings_home_screen">Home Screen</string> <!-- untranslated -->

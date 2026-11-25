@@ -190,6 +190,8 @@ data class PlayerFlags(
     @SerialName("show_monument_touch_indicator") val showMonumentTouchIndicator: Boolean = true,
     /** Whether to abbreviate large item quantities/numbers (e.g. 2.46M vs 2,461,940). */
     @SerialName("compact_numbers") val compactNumbers: Boolean = false,
+    /** Off = tabbed screens ignore swipes and only change tab when one is tapped (issue #2118). */
+    @SerialName("swipe_between_tabs") val swipeBetweenTabs: Boolean = true,
     /** Nav bar badge dots for combat/skill prestige availability. */
     @SerialName("show_prestige_notifications") val showPrestigeNotifications: Boolean = true,
     /** Shop: bulk and manual sells always leave one of each item for collectors. */
@@ -458,6 +460,9 @@ data class RecentSession(
     @SerialName("skill_name") val skillName: String,
     @SerialName("activity_display_name") val activityDisplayName: String,
     @SerialName("activity_key") val activityKey: String = "",
+    /** Bones or ashes offered in one altar visit; 0 = a collected session. Altar entries are
+     *  shown in Recent Activity but never count toward Flow-state streaks (issue #2111). */
+    @SerialName("altar_count") val altarCount: Int = 0,
 )
 
 /** An active Slayer task assigned by the Slayer Master. */

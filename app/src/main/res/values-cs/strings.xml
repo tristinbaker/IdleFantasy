@@ -333,6 +333,9 @@
     <string name="label_switch_character">Přepnout postavu</string>
     <string name="settings_daily_reset_time">Denní čas obnovy</string>
     <string name="settings_daily_reset_time_desc">Určuje, kdy se podle tvého místního času obnoví denní úkoly, denní úkoly cechu a týdenní úkoly. Změna nastavení nevyvolá další obnovu.</string>
+    <string name="recent_activity_altar">%1$s ×%2$d at the altar</string> <!-- untranslated -->
+    <string name="settings_swipe_tabs">Swipe between tabs</string> <!-- untranslated -->
+    <string name="settings_swipe_tabs_desc">Swipe left or right to change tabs. Turn this off if tabs change by accident, for example with a TV remote.</string> <!-- untranslated -->
     <string name="settings_compact_numbers">Úsporný zápis čísel</string>
     <string name="settings_compact_numbers_desc">Zkracovat velká množství předmětů (např. 2,46 M místo 2 461 940).</string>
     <string name="settings_home_screen">Domovská obrazovka</string>

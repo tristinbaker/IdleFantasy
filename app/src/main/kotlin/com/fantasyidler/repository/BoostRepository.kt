@@ -135,7 +135,7 @@ class BoostRepository @Inject constructor(
      * same skill in the recent activity log.
      */
     fun flowElapsedMs(flags: PlayerFlags, skill: String, sessionDurationMs: Long): Long {
-        val streak = flags.recentSessions.takeWhile { it.skillName == skill }.count()
+        val streak = flags.recentSessions.filter { it.altarCount == 0 }.takeWhile { it.skillName == skill }.count()
         return sessionDurationMs * (streak + 1)
     }
 

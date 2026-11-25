@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.viewmodel
 
+import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.withAppLocale
 
 import android.content.Context
@@ -10,6 +11,7 @@ import com.fantasyidler.data.json.BoneData
 import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.OwnedPet
 import com.fantasyidler.data.model.PlayerFlags
+import com.fantasyidler.data.model.RecentSession
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.repository.BoostRepository
 import com.fantasyidler.repository.ChurchRepository
@@ -98,6 +100,8 @@ class BoneAltarViewModel @Inject constructor(
     private var inFlightKey: String? = null
     private var inFlightCount = 0
     private var drainJob: Job? = null
+    /** Bone key to how many were actually buried this visit, for the Recent Activity entry. */
+    private val visitBuried = LinkedHashMap<String, Int>()
     private val flushScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 
     val uiState: StateFlow<BoneAltarUiState> = combine(
@@ -204,6 +208,7 @@ class BoneAltarViewModel @Inject constructor(
                 inFlightCount = taps.count
                 val isAsh  = gameData.bones[boneKey]?.isAsh == true
                 val result = playerRepo.buryBonesAtomic(boneKey, taps.count, taps.xp)
+                if (result.buried > 0) visitBuried[boneKey] = (visitBuried[boneKey] ?: 0) + result.buried
                 if (result.buried > 0 && !isAsh) {
                     questRepo.recordBuried(result.buried)
                     guildRepo.recordGuildPrayer(result.buried)
@@ -225,6 +230,25 @@ class BoneAltarViewModel @Inject constructor(
 
     override fun onCleared() {
         scheduleDrain()
+        // Log the visit once every pending burial has landed (issue #2111).
+        flushScope.launch {
+            drainJob?.join()
+            logVisit()
+        }
+    }
+
+    private suspend fun logVisit() {
+        val entries = visitBuried.filterValues { it > 0 }.map { (boneKey, count) ->
+            RecentSession(
+                skillName           = Skills.PRAYER,
+                activityDisplayName = GameStrings.itemName(context, boneKey),
+                activityKey         = boneKey,
+                altarCount          = count,
+            )
+        }
+        if (entries.isEmpty()) return
+        visitBuried.clear()
+        playerRepo.updateFlagsAtomically { f -> f.copy(recentSessions = (entries + f.recentSessions).take(10)) }
     }
 
     fun snackbarConsumed() = _extra.update { it.copy(snackbarMessage = null) }
