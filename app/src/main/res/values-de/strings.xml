@@ -1612,7 +1612,11 @@
     <string name="boss_masked_name">\?\?\?</string>
     <string name="boss_last_elder_masked_desc">Etwas Uraltes schlummert in den Tiefen der Insel. Sammle das volle Ältesten Set zusammen, um dich ihm zu stellen.</string>
     <string name="elder_isle_welcome_title">Landung an der Ältesteninsel</string>
-    <string name="elder_isle_welcome_body">Das salzige Sprühwasser schwindet und der Nebel hebt sich. Vor uns: eine knochenweiße Küste, ein Dschungel übersät mit fahlen Runen und weiter im Lande kräuselt sich Rauch von einem Hügel, der nicht rauchen sollte. Die alten Segelleute haben Recht, etwas Uraltes lebt immer noch hier.\n\nIhre Festland Fähigkeiten, Boosts und Ausrüstungen bleiben an Bord. Alles was Ihr auf der Insel levelt oder herstellt wird separat festgehalten. Ältesten Ausrüstung wird mitgenommen zum Festland. Festland Fähigkeiten zählen hier nichts.\n\nStartet mit dem Fähigkeiten Reiter. Beginnt mit Bergbau oder Holzfällereri, um Inselmaterialien zu sammeln. Dann prüft den Aufgaben Reiter für euer erstes Ziel und öffnet den Weisheitsmeister in der Stadt wenn ihr ein neues Fragment freigeschaltet habt.</string>
+    <string name="elder_isle_welcome_body">Das salzige Sprühwasser schwindet und der Nebel hebt sich. Vor uns: eine knochenweiße Küste, ein Dschungel übersät mit fahlen Runen und weiter im Lande kräuselt sich Rauch von einem Hügel, der nicht rauchen sollte. Die alten Segelleute haben Recht, etwas Uraltes lebt immer noch hier.
+\n
+\nIhre Festland Fähigkeiten, Boosts und Ausrüstungen bleiben an Bord. Alles was Ihr auf der Insel levelt oder herstellt wird separat festgehalten. Ältesten Ausrüstung wird mitgenommen zum Festland. Festland Fähigkeiten zählen hier nichts.
+\n
+\nStartet mit dem Fähigkeiten Reiter. Beginnt mit Bergbau oder Holzfällereri, um Inselmaterialien zu sammeln. Dann prüft den Aufgaben Reiter für euer erstes Ziel und öffnet den Weisheitsmeister in der Stadt wenn ihr ein neues Fragment freigeschaltet habt.</string>
     <string name="elder_isle_welcome_cta">Trete an Land</string>
     <string name="elder_isle_stub_skills">Elder skills are being charted. Full skill tracks arrive in a later build.</string> <!-- untranslated -->
     <string name="elder_isle_stub_combat">Elder dungeons and the Last Elder fight are being drawn up. Later build.</string> <!-- untranslated -->
@@ -2496,9 +2500,9 @@
     <string name="prestige_effect_xp_pct">+%1$d%% EP in dieser Fähigkeiten.</string>
     <string name="prestige_effect_yield_pct">+%1$d%% Gegenstände von den Aktivitäten dieser Fähigkeit.</string>
     <!-- Translator note: %1$s = yield percent per interval (may be fractional) -->
-    <string name="prestige_effect_flow_rate">Flow-state: +%1$s%% items (not XP) per full interval of flow time. Flow time is the session\'s length × (1 + sessions of this skill collected right before it). Up to +100%%.</string> <!-- untranslated -->
+    <string name="prestige_effect_flow_rate">Flow-state: +%1$s%% items (not XP) for every 60 minutes of flow time, up to +100%%. Flow time is the session’s length × (1 + the sessions of this skill just before it in Recent Activity).</string> <!-- untranslated -->
     <!-- Translator note: %1$d = minutes removed from the flow interval -->
-    <string name="prestige_effect_flow_interval_reduction">Flow-state interval (base 60 minutes) shortened by %1$d minutes, so more intervals fit into the same time.</string> <!-- untranslated -->
+    <string name="prestige_effect_flow_interval_reduction">Flow-state bonus steps come %1$d minutes sooner (normally every 60 minutes).</string> <!-- untranslated -->
     <string name="prestige_effect_combat_stat_flat">+%1$d effektive Stufen im Kampf.</string>
     <!-- Translator note: %1$s = minutes (may be fractional) -->
     <string name="prestige_effect_session_floor_min">Aktivitäten sind auf Stufe 99 um %1$s Minuten kürzer.</string>
