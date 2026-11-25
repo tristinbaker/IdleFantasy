@@ -1,5 +1,5 @@
 ## {banner} {display_name}
 
-**{start_date} – {end_date}**
+{seasonal_period}
 
 {reward_table}

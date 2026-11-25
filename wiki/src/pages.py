@@ -2076,11 +2076,19 @@ def gen_carnival() -> str:
     )
 
 
-def _fmt_event_date(ms: int, is_end: bool = False) -> str:
-    # end_ms is the exclusive start of the day after the event ends, so step back
-    # 1ms to display the actual last day (e.g. Sept 1 00:00 -> "August 31, 2026").
-    dt = datetime.fromtimestamp((ms - 1 if is_end else ms) / 1000, tz=timezone.utc)
-    return f"{dt.strftime("%B")} {dt.day}, {dt.year}"
+def get_event_dates(season: str) -> tuple[str, str]:
+    match season:
+        case "winter":
+            return "December 1", "February 28"
+        case "spring":
+            return "March 1", "May 31"
+        case "summer":
+            return "June 1", "August 31"
+        case "autumn":
+            return "September 1", "November 30"
+        case _:
+            LOGGER.warn_by_id("season", f"Season {season} does not exist", logging.WARNING)
+            return "", ""
 
 
 def gen_seasonal_events() -> str:
@@ -2092,11 +2100,11 @@ def gen_seasonal_events() -> str:
             [f"{tier['tokens']:,}", seasonal_reward_desc(event_id, tier["tokens"])]
             for tier in event["reward_tiers"]
         ]
+        start_month, end_month = get_event_dates(event["season"])
         sections.append(get_template("miscellaneous/seasonal_event_section").format(
             banner=html_image(icon_path(event["banner_icon"]), "", "text"),
             display_name=seasonal_event_name(event_id),
-            start_date=_fmt_event_date(event["start_ms"]),
-            end_date=_fmt_event_date(event["end_ms"], is_end=True),
+            seasonal_period=f"**{start_month} – {end_month}**" if start_month else "",
             reward_table=table(["Tokens Needed", "Reward"], reward_rows),
         ))
 
