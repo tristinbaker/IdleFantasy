@@ -416,8 +416,9 @@ private fun WorkerActiveSessionBanner(
     val context = LocalContext.current
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
     val endsAt = session.endsAt
-    LaunchedEffect(endsAt) {
-        while (System.currentTimeMillis() < endsAt) {
+    StartedEffect(endsAt) {
+        now = System.currentTimeMillis()
+        while (now < endsAt) {
             delay(1_000L)
             now = System.currentTimeMillis()
         }

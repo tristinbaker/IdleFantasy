@@ -879,8 +879,9 @@ private fun ActiveSessionBanner(
     // Tick every second so the countdown stays live.
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
     var showAbandonConfirm by remember { mutableStateOf(false) }
-    LaunchedEffect(endsAt) {
-        while (System.currentTimeMillis() < endsAt) {
+    StartedEffect(endsAt) {
+        now = System.currentTimeMillis()
+        while (now < endsAt) {
             delay(1_000L)
             now = System.currentTimeMillis()
         }

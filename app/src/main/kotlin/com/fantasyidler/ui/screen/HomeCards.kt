@@ -148,7 +148,7 @@ internal fun HomeSessionCard(
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
     var showAbandonConfirm by remember { mutableStateOf(false) }
     val endsAt = session.endsAt
-    LaunchedEffect(endsAt) {
+    StartedEffect(endsAt) {
         while (System.currentTimeMillis() < endsAt) {
             now = System.currentTimeMillis()
             delay(1_000L)
@@ -653,7 +653,7 @@ internal fun WorkerSessionCard(
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
     var showDismissConfirm by remember { mutableStateOf(false) }
     val endsAt = session?.endsAt ?: 0L
-    LaunchedEffect(endsAt) {
+    StartedEffect(endsAt) {
         if (endsAt > 0) {
             while (System.currentTimeMillis() < endsAt) {
                 now = System.currentTimeMillis()
