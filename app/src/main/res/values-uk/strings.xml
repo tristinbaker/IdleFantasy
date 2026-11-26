@@ -2820,6 +2820,8 @@
     <string name="pet_petal_sprite_desc">A blossom spirit shaken loose from the Thorn Queen\'s crown. It dances ahead of you into battle.</string> <!-- untranslated -->
     <string name="pet_bumblebee_name">Bumblebee</string> <!-- untranslated -->
     <string name="pet_bumblebee_desc">A busy little bee that knows exactly which flowers make the best potions.</string> <!-- untranslated -->
+
+    <!-- Main story quest (v2.0.0) -->
     <string name="story_tab_label">Story</string> <!-- untranslated -->
     <string name="story_begin_title">The Duster’s Tale</string> <!-- untranslated -->
     <string name="story_begin_body">Follow Thaddius Cantor, your outpost, and the mystery of the island through short notes that arrive as you play. The story is optional and never locks anything.</string> <!-- untranslated -->

@@ -1304,6 +1304,8 @@
     <string name="item_seedheart_ring_desc">A living seed sealed in silver. It hums with the patience of growing things.</string> <!-- untranslated -->
     <string name="item_bloomwood_staff_desc">A flowering branch from the Wildgrove that never wilts. Spells bloom from its tip.</string> <!-- untranslated -->
     <string name="item_petalweave_cape_desc">Stitched from a thousand spring petals at the Night Market. Only sold during the Bloomtide.</string> <!-- untranslated -->
+
+    <!-- Main story keepsakes (v2.0.0) -->
     <string name="item_keepsake_obsidian_key_name">Obsidian Key</string> <!-- untranslated -->
     <string name="item_keepsake_obsidian_key_desc">An ornate key of black stone from the bandit leader’s lockbox, with an empty slot shaped for a gem.</string> <!-- untranslated -->
     <string name="item_keepsake_mountain_heart_name">Essence of the Mountain</string> <!-- untranslated -->

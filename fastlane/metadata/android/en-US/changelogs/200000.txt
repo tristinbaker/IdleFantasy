@@ -1,0 +1,13 @@
+• Idle Fantasy now has a main story
+• Fixed a crash when hiding completed quests
+• The Burn button now shows when the queue is full
+• Isle quest progress no longer wraps one digit per line at large font sizes
+• A message now explains when a two-handed weapon and a shield replace each other
+• Guild capes are now granted to players who reached guild level 10 before capes existed
+• Compact Numbers now also applies to your coin total
+• Boss losses now count as deaths in your combat history
+• Inventory, Bestiary and Armory filters now scroll away with the list
+• New setting to turn off swiping between tabs
+• Altar visits now show in Recent Activity
+• Clearer Flow-state tooltips
+• Updated Czech, Dutch, French, German, Italian, Polish and Ukrainian translations
