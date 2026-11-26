@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Main Story — Idle Fantasy Wiki</title>
+  <link rel="stylesheet" href="assets/style.css?v=5">
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.png">
+  <script data-goatcounter="https://idlefantasy.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+  <script>
+    (function() {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', stored || (prefersDark ? 'dark' : 'light'));
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Open navigation" aria-expanded="false">&#9776;</button>
+    <a class="site-title" href="index.html">
+      <span class="site-icon">&#9876;&#65039;</span>
+      Idle Fantasy Wiki
+    </a>
+    <span class="site-tagline">Community reference for all skills, combat, and crafting</span>
+    <div id="search" class="search">
+      <input id="search-input" class="search-input" type="search" placeholder="Search…"
+             autocomplete="off" spellcheck="false" aria-label="Search the wiki">
+      <ul id="search-results" class="search-results" hidden></ul>
+    </div>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
+  </header>
+
+  <div id="nav-backdrop" class="nav-backdrop"></div>
+
+  <div class="layout">
+    <nav id="sidebar" class="sidebar" aria-label="Wiki navigation">
+      <ul>
+<li><a href="Home.html">Home</a></li>
+<li class="nav-section"><span class="nav-label">Contributing</span><ul>
+<li><a href="getting_started_game.html">Getting Started - Game Contributions</a></li>
+<li><a href="getting_started_wiki.html">Getting Started - Wiki Contributions</a></li>
+<li><a href="wiki_page_types.html">Types of Wiki Pages</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Skills</span><ul>
+<li><a href="Skills.html">Skills</a></li>
+<li><a href="QuestIcons.html">Quest Icons</a></li>
+<li class="nav-section"><span class="nav-label">Gathering</span><ul>
+<li><a href="Mining.html">Mining</a></li>
+<li><a href="Fishing.html">Fishing</a></li>
+<li><a href="Woodcutting.html">Woodcutting</a></li>
+<li><a href="Farming.html">Farming</a></li>
+<li><a href="Thieving.html">Thieving</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Crafting</span><ul>
+<li><a href="Smithing.html">Smithing</a></li>
+<li><a href="Cooking.html">Cooking</a></li>
+<li><a href="Fletching.html">Fletching</a></li>
+<li><a href="Crafting.html">Crafting</a></li>
+<li><a href="Firemaking.html">Firemaking</a></li>
+<li><a href="Runecrafting.html">Runecrafting</a></li>
+<li><a href="Herblore.html">Herblore</a></li>
+<li><a href="Construction.html">Construction</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Support</span><ul>
+<li><a href="Prayer.html">Prayer</a></li>
+<li><a href="Mercantile.html">Mercantile</a></li>
+<li><a href="Agility.html">Agility</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Combat</span><ul>
+<li><a href="Slayer.html">Slayer</a></li>
+</ul></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Inventory</span><ul>
+<li><a href="Equipment.html">Equipment</a></li>
+<li><a href="Heirlooms.html">Heirlooms</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Combat</span><ul>
+<li><a href="Combat.html">Combat</a></li>
+<li><a href="Bosses.html">Bosses</a></li>
+<li><a href="Dungeons.html">Dungeons</a></li>
+<li><a href="Enemies.html">Enemies</a></li>
+<li><a href="Spells.html">Spells</a></li>
+<li><a href="Mercenaries.html">Mercenary Camp</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Town</span><ul>
+<li><a href="Shop.html">Shop</a></li>
+<li><a href="Workers.html">Workers</a></li>
+<li><a href="Guilds.html">Guilds</a></li>
+<li><a href="Buildings.html">Buildings</a></li>
+<li><a href="Carnival.html">Carnival</a></li>
+<li><a href="Housing.html">Housing</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Elder Isle</span><ul>
+<li><a href="ElderIsleOverview.html">Overview</a></li>
+<li><a href="ElderSkills.html">Elder Skills</a></li>
+<li><a href="SigilStones.html">Sigil Stones</a></li>
+<li><a href="ElderArmor.html">Elder Armor Set</a></li>
+<li><a href="ElderStory.html">Story & Lore</a></li>
+<li><a href="ElderDungeons.html">Isle Dungeons & Bosses</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Miscellaneous</span><ul>
+<li><a href="Expeditions.html">Expeditions</a></li>
+<li><a href="Pets.html">Pets</a></li>
+<li><a href="Quests.html">Quests</a></li>
+<li><a href="MainStory.html" class="active">Main Story</a></li>
+<li><a href="Titles.html">Titles</a></li>
+<li><a href="SeasonalEvents.html">Seasonal Events</a></li>
+</ul></li>
+<li class="nav-section"><span class="nav-label">Guides</span><ul>
+<li><a href="how_to_make_guides.html">How to add strategy guides to the wiki</a></li>
+<li><a href="guide_the_infinite_tower.html">The Infinite Tower</a></li>
+</ul></li>
+</ul>
+    </nav>
+
+    <main class="content">
+      <h1 id="main-story">Main Story</h1>
+<p>Idle Fantasy has an optional main story. You play a Duster, a contractor sent by the Triptych to settle an uncharted island, guided over a sending stone by Thaddius Cantor. The story unfolds through short notes as you clear the twelve story dungeons, from the Farm to the Ancient Temple, and ends with a fight against <a href="kurzul.html#">Kur’zul</a>.</p>
+<p>The story never locks anything. Every dungeon, skill and item works the same whether you play it, skip it, or stop halfway.</p>
+<h2 id="starting-the-story">Starting the story</h2>
+<ul>
+<li><strong>New characters</strong> are asked once, right after character setup, whether to begin the story now. "Not now" leaves it for later.</li>
+<li><strong>Anyone else</strong> can start it any time from the <strong>Story</strong> tab on the <a href="Quests.html#">Quests</a> screen with <strong>Begin the story</strong>.</li>
+</ul>
+<h2 id="how-notes-work">How notes work</h2>
+<ul>
+<li>Notes pop up over whatever screen you're on: when you start a story dungeon, when you finish an objective, and when you finish a chapter. A note waits until the session summary on Home is closed.</li>
+<li>Some notes have several pages; use <strong>Next</strong> to read on. <strong>Read later</strong> keeps a note unread in the Story tab.</li>
+<li>Every note you've received can be reread from the Story tab, grouped by chapter.</li>
+<li>Early on, Thaddius suggests naming the island. A box to name it appears once after his welcome note, and you can rename it from the Story tab.</li>
+</ul>
+<p>Two settings control the story:</p>
+<ul>
+<li><strong>Story pop-ups</strong>: turn off to skip the pop-ups. New notes then wait unread in the Story tab.</li>
+<li><strong>Story tab in Quests</strong>: turn off to hide the Story tab and its unread count entirely.</li>
+</ul>
+<h2 id="chapters">Chapters</h2>
+<table>
+<thead>
+<tr>
+<th>Chapter</th>
+<th>Objective</th>
+<th>Reward</th>
+</tr>
+</thead>
+<tbody>
+<tr id="prologue_the_expedition_corps">
+<td>Prologue: The Expedition Corps</td>
+<td>None, it plays as soon as you begin</td>
+<td>None</td>
+</tr>
+<tr id="1_landfall">
+<td>1: Landfall</td>
+<td>Complete a mining, fishing or woodcutting session, cook shrimp, smelt a bronze bar, and clear the <a href="farm.html#">Farm</a> without dying</td>
+<td>1,000 coins and the Duster title</td>
+</tr>
+<tr id="2_imp_cavern">
+<td>2: Imp Cavern</td>
+<td>Clear <a href="imp_cavern.html#">Imp Cavern</a> without dying</td>
+<td>1,000 coins</td>
+</tr>
+<tr id="3_goblin_cave">
+<td>3: Goblin Cave</td>
+<td>Clear <a href="goblin_cave.html#">Goblin Cave</a> without dying</td>
+<td>2,000 coins</td>
+</tr>
+<tr id="4_spider_den">
+<td>4: Spider Den</td>
+<td>Clear <a href="spider_den.html#">Spider Den</a> without dying</td>
+<td>4,000 coins</td>
+</tr>
+<tr id="5_bandit_camp">
+<td>5: Bandit Camp</td>
+<td>Clear <a href="bandit_camp.html#">Bandit Camp</a> without dying</td>
+<td>8,000 coins and the Obsidian Key</td>
+</tr>
+<tr id="6_undead_crypt">
+<td>6: Undead Crypt</td>
+<td>Clear <a href="undead_crypt.html#">Undead Crypt</a> without dying</td>
+<td>16,000 coins</td>
+</tr>
+<tr id="7_fortress_ruins">
+<td>7: Fortress Ruins</td>
+<td>Clear <a href="fortress_ruins.html#">Fortress Ruins</a> without dying</td>
+<td>32,000 coins</td>
+</tr>
+<tr id="8_orc_stronghold">
+<td>8: Orc Stronghold</td>
+<td>Clear <a href="orc_stronghold.html#">Orc Stronghold</a> without dying</td>
+<td>50,000 coins</td>
+</tr>
+<tr id="9_volcanic_depths">
+<td>9: Volcanic Depths</td>
+<td>Clear <a href="volcanic_depths.html#">Volcanic Depths</a> without dying</td>
+<td>75,000 coins and the Essence of the Mountain</td>
+</tr>
+<tr id="10_dragons_lair">
+<td>10: Dragon's Lair</td>
+<td>Clear <a href="dragon_lair.html#">Dragon's Lair</a> without dying</td>
+<td>100,000 coins and the Dragon’s Molt</td>
+</tr>
+<tr id="11_infernal_stronghold">
+<td>11: Infernal Stronghold</td>
+<td>Clear <a href="infernal_stronghold.html#">Infernal Stronghold</a> without dying while holding the Essence of the Mountain and Dragon’s Molt</td>
+<td>150,000 coins and the Eye of Chaos</td>
+</tr>
+<tr id="12_ancient_temple">
+<td>12: Ancient Temple</td>
+<td>Clear <a href="ancient_temple.html#">Ancient Temple</a> without dying while holding the Obsidian Key and Eye of Chaos</td>
+<td>200,000 coins, and unlocks <a href="kurzul.html#">Kur’zul</a></td>
+</tr>
+<tr id="13_kurzul">
+<td>13: Kur’zul</td>
+<td>Defeat <a href="kurzul.html#">Kur’zul</a></td>
+<td>The Bane of Kur’zul title</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Objectives only count while their chapter is active.</strong> Clears from before the chapter started don't count, so the story plays out one dungeon at a time even if you've already beaten everything.</li>
+<li><strong>Dungeon clears count only if you don't die.</strong> Sessions run by town workers and anything on the Elder Isle never count.</li>
+<li><strong>Chapters complete on their own.</strong> There is no claim step; the reward and the next chapter arrive with the chapter's final note.</li>
+</ul>
+<h2 id="keepsakes">Keepsakes</h2>
+<p>Four story items are picked up along the way:</p>
+<table>
+<thead>
+<tr>
+<th>Keepsake</th>
+<th>How you get it</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr id="obsidian_key">
+<td>Obsidian Key</td>
+<td>Finishing the <a href="bandit_camp.html#">Bandit Camp</a> chapter</td>
+<td>Needed, with the Eye of Chaos, for the <a href="ancient_temple.html#">Ancient Temple</a> chapter</td>
+</tr>
+<tr id="essence_of_the_mountain">
+<td>Essence of the Mountain</td>
+<td>Finishing the <a href="volcanic_depths.html#">Volcanic Depths</a> chapter</td>
+<td>Used up in the <a href="infernal_stronghold.html#">Infernal Stronghold</a> chapter</td>
+</tr>
+<tr id="dragons_molt">
+<td>Dragon’s Molt</td>
+<td>Finishing the <a href="dragon_lair.html#">Dragon's Lair</a> chapter</td>
+<td>Used up in the <a href="infernal_stronghold.html#">Infernal Stronghold</a> chapter</td>
+</tr>
+<tr id="eye_of_chaos">
+<td>Eye of Chaos</td>
+<td>Finishing the <a href="infernal_stronghold.html#">Infernal Stronghold</a> chapter</td>
+<td>Needed, with the Obsidian Key, for the <a href="ancient_temple.html#">Ancient Temple</a> chapter</td>
+</tr>
+</tbody>
+</table>
+<p>Keepsakes can't be sold, and Sell Junk always skips them. If one goes missing while a chapter still needs it, clearing the dungeon that first gave it to you hands it back.</p>
+<h2 id="the-finale">The finale</h2>
+<p>Finishing the Ancient Temple chapter unlocks <a href="kurzul.html#">Kur’zul</a>, a boss that only appears for players whose story has reached him. Defeating him plays the ending and finishes the story. He stays available afterwards, and he never counts toward the Godslayer title.</p>
+<h2 id="titles">Titles</h2>
+<ul>
+<li><strong>Duster</strong>: finish Landfall.</li>
+<li><strong>Bane of Kur’zul</strong>: defeat Kur'zul.</li>
+</ul>
+<p>Both are listed with every other title on the <a href="Titles.html#">Titles</a> page.</p>
+<h2 id="credits">Credits</h2>
+<p>The main story was written by Josh "Bathtub Skeleton" Junnier (<a href="https://letterboxd.com/bathtubskeleton/">Letterboxd</a>). The full story text lives in the game; the wiki doesn't reproduce it.</p>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <span>All data is auto-generated from game files and stays up to date with the latest release.</span>
+    <span>·</span>
+    <a href="https://github.com/tristinbaker/IdleFantasy/issues" target="_blank" rel="noopener">Report an issue</a>
+    <span>·</span>
+    <a href="https://github.com/tristinbaker/IdleFantasy" target="_blank" rel="noopener">GitHub</a>
+  </footer>
+
+  <script src="assets/search-index.js"></script>
+  <script>
+    (function() {
+      // ---- Dark mode ----
+      var themeBtn = document.getElementById('theme-toggle');
+      function updateThemeIcon() {
+        themeBtn.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+      }
+      updateThemeIcon();
+      themeBtn.addEventListener('click', function() {
+        var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateThemeIcon();
+      });
+
+      // ---- Hamburger nav ----
+      var navToggle = document.getElementById('nav-toggle');
+      var sidebar   = document.getElementById('sidebar');
+      var backdrop  = document.getElementById('nav-backdrop');
+      function openNav() {
+        sidebar.classList.add('open');
+        backdrop.classList.add('visible');
+        navToggle.setAttribute('aria-expanded', 'true');
+      }
+      function closeNav() {
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('visible');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+      navToggle.addEventListener('click', function() {
+        sidebar.classList.contains('open') ? closeNav() : openNav();
+      });
+      backdrop.addEventListener('click', closeNav);
+      sidebar.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') closeNav();
+      });
+
+      // ---- Search ----
+      var searchBox     = document.getElementById('search');
+      var searchInput   = document.getElementById('search-input');
+      var searchResults = document.getElementById('search-results');
+      var searchIndex   = window.WIKI_SEARCH_INDEX || [];
+      var MAX_RESULTS   = 10;
+      var selected      = -1;
+
+      function hideResults() {
+        searchResults.hidden = true;
+        searchResults.innerHTML = '';
+        selected = -1;
+      }
+
+      // Lower score = better match. -1 = no match.
+      function scoreEntry(entry, query) {
+        var name = entry.n.toLowerCase();
+        if (name === query) return 0;
+        if (name.lastIndexOf(query, 0) === 0) return 1;
+        if (name.indexOf(' ' + query) !== -1) return 2;
+        if (name.indexOf(query) !== -1) return 3;
+        return -1;
+      }
+
+      function updateSelection() {
+        var items = searchResults.children;
+        for (var i = 0; i < items.length; i++)
+          items[i].classList.toggle('selected', i === selected);
+        if (selected >= 0 && items[selected])
+          items[selected].scrollIntoView({ block: 'nearest' });
+      }
+
+      function runSearch() {
+        var query = searchInput.value.trim().toLowerCase();
+        if (query.length < 2) { hideResults(); return; }
+        var matches = [];
+        for (var i = 0; i < searchIndex.length; i++) {
+          var s = scoreEntry(searchIndex[i], query);
+          if (s >= 0) matches.push([s, searchIndex[i]]);
+        }
+        matches.sort(function(a, b) {
+          return (a[0] - b[0])                       // better score first
+              || ((b[1].t || 0) - (a[1].t || 0))     // pages before item rows
+              || (a[1].n.length - b[1].n.length)     // shorter names first
+              || a[1].n.localeCompare(b[1].n);
+        });
+        searchResults.innerHTML = '';
+        if (!matches.length) {
+          var empty = document.createElement('li');
+          empty.className = 'search-empty';
+          empty.textContent = 'No results';
+          searchResults.appendChild(empty);
+        }
+        for (var j = 0; j < matches.length && j < MAX_RESULTS; j++) {
+          var entry = matches[j][1];
+          var li = document.createElement('li');
+          var a  = document.createElement('a');
+          a.href = entry.u;
+          var name = document.createElement('span');
+          name.textContent = entry.n;
+          a.appendChild(name);
+          if (entry.p) {
+            var context = document.createElement('span');
+            context.className = 'search-context';
+            context.textContent = entry.p;
+            a.appendChild(context);
+          }
+          li.appendChild(a);
+          searchResults.appendChild(li);
+        }
+        selected = -1;
+        searchResults.hidden = false;
+      }
+
+      searchInput.addEventListener('input', runSearch);
+      searchInput.addEventListener('focus', function() {
+        if (searchInput.value.trim().length >= 2) runSearch();
+      });
+
+      searchInput.addEventListener('keydown', function(e) {
+        var links = searchResults.querySelectorAll('li > a');
+        if (e.key === 'ArrowDown' && links.length) {
+          e.preventDefault();
+          selected = (selected + 1) % links.length;
+          updateSelection();
+        } else if (e.key === 'ArrowUp' && links.length) {
+          e.preventDefault();
+          selected = (selected - 1 + links.length) % links.length;
+          updateSelection();
+        } else if (e.key === 'Enter' && links.length) {
+          e.preventDefault();
+          links[selected >= 0 ? selected : 0].click();
+        } else if (e.key === 'Escape') {
+          hideResults();
+          searchInput.blur();
+        }
+      });
+
+      // Navigating to a row on the current page: hash change alone won't rerun
+      // :target styling reliably in every browser, so just close the dropdown.
+      searchResults.addEventListener('click', function(e) {
+        if (e.target.closest('a')) hideResults();
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!searchBox.contains(e.target)) hideResults();
+      });
+
+      // Press "/" anywhere to focus search
+      document.addEventListener('keydown', function(e) {
+        if (e.key === '/' && document.activeElement !== searchInput &&
+            !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)) {
+          e.preventDefault();
+          searchInput.focus();
+          searchInput.select();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
