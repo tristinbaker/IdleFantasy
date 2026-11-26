@@ -1154,9 +1154,16 @@ Builds:
     gradle:
       - yes
 
+  - versionName: '2.0.0'
+    versionCode: 200000
+    commit: a684b641c6a26ccc77b293404d90ac281f0f4da8
+    subdir: app
+    gradle:
+      - yes
+
 AllowedAPKSigningKeys: 99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
-CurrentVersion: 1.16.0
-CurrentVersionCode: 160000
+CurrentVersion: 2.0.0
+CurrentVersionCode: 200000
