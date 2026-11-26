@@ -1,23 +1,23 @@
 {
   "repo": {
-    "timestamp": 1792180409141
+    "timestamp": 1795711762822
   },
   "packages": {
     "com.tristinbaker.idlefantasy": {
       "metadata": {
-        "lastUpdated": 1792180363318,
+        "lastUpdated": 1795711714594,
         "description": {
           "en-US": "Idle Fantasy is a free and open source offline idle RPG inspired by classic MMORPGs. Train skills, fight in dungeons, craft gear, and complete quests. No internet connection, account, or ads required.\n\n<b>Features</b>\n\n• <b>23 trainable skills</b>: Mining, Fishing, Woodcutting, Farming, Thieving, Smithing, Cooking, Fletching, Crafting, Firemaking, Runecrafting, Herblore, Construction, Prayer, Mercantile, Agility, Slayer, Attack, Strength, Defense, Ranged, Magic, and Hitpoints\n\n• <b>Session-based training</b>: Start a session and close the app. Come back up to an hour later to collect your loot and XP. Agility reduces session time.\n\n• <b>37 dungeons</b>: Fight solo bosses and enemies to earn combat XP, coins, and rare drops. Equip weapons and armour to deal more damage.\n\n• <b>Crafting system</b>: Smelt bars, cook fish, fletch bows and arrows, craft jewellery. Consume gathered materials and earn XP and items.\n\n• <b>Prayer</b>: Bury bones collected from combat to earn Prayer XP.\n\n• <b>Equipment system</b>: Equip weapons, armour, tools, and jewellery to boost stats and skill efficiency.\n\n• <b>Quest system</b>: 189 quests spanning all skills. Earn XP rewards on completion.\n\n• <b>Pet system</b>: Rare pets can drop while training skills. Each pet provides a permanent XP boost to their linked skill.\n\n• <b>Achievements</b>: Track milestones across levelling, combat, quests, and collections.\n\n• <b>NPC Shop</b>: Buy supplies and sell your gathered resources for coins.\n\n• <b>No ads. No accounts. No internet required.</b> Your save data stays on your device.\n\n• <b>Translations</b>: Partial and full translations available for 23 languages.\n\nIdle Fantasy is free software released under the GPL-3.0 licence. Source code is available on the project repository.\n\n<b>Get updates faster</b>\n\nAdd the official Idle Fantasy repository to F-Droid to receive updates as soon as they are released, instead of waiting for the main F-Droid index to catch up.\n\n1. Open F-Droid and go to Settings → Repositories\n2. Tap + and paste: https://idlefantasy.tristinbaker.xyz/fdroid/repo\n3. Search for Idle Fantasy, open the app page, and under Repositories set Idle Fantasy as the preferred source.\n"
         }
       },
       "versions": {
         "50155ed79d2ab052399d5cd155f03447d354067b90cc7edf6466801265b5dd3c": null,
-        "b9b3b1c7954ccab01b79453b79b6cedf906ac9a784ff118e9a37f355c7a455fc": {
-          "added": 1792180363318,
+        "0bb2783c7ca050ad52504b0bb82e829f8cd3435df0bf65692f90845b88d3a0aa": {
+          "added": 1795711714594,
           "file": {
-            "name": "/com.tristinbaker.idlefantasy_160000.apk",
-            "sha256": "b9b3b1c7954ccab01b79453b79b6cedf906ac9a784ff118e9a37f355c7a455fc",
-            "size": 11678389
+            "name": "/com.tristinbaker.idlefantasy_200000.apk",
+            "sha256": "0bb2783c7ca050ad52504b0bb82e829f8cd3435df0bf65692f90845b88d3a0aa",
+            "size": 11915999
           },
           "manifest": {
             "nativecode": [
@@ -26,8 +26,8 @@
               "x86",
               "x86_64"
             ],
-            "versionName": "1.16.0",
-            "versionCode": 160000,
+            "versionName": "2.0.0",
+            "versionCode": 200000,
             "usesSdk": {
               "minSdkVersion": 26,
               "targetSdkVersion": 35
@@ -59,7 +59,7 @@
             ]
           },
           "whatsNew": {
-            "en-US": "• Seasonal events now rotate automatically every season, year after year\n• New winter event: Frostfall, with two expeditions, the Rime Wyrm boss, Snowball Toss and a new reward track\n• New spring event: Bloomtide, with two expeditions, the Thorn Queen boss, Garden Chimes and a new reward track\n• Sunspire Solstice now has a full 300-token reward track, more bounties and a Night Market\n• Each yearly run of an event awards its own banner\n• Daily quests now roll for Divine gear after all Dwarven gea"
+            "en-US": "• Idle Fantasy now has a main story\n• Fixed a crash when hiding completed quests\n• The Burn button now shows when the queue is full\n• Isle quest progress no longer wraps one digit per line at large font sizes\n• A message now explains when a two-handed weapon and a shield replace each other\n• Guild capes are now granted to players who reached guild level 10 before capes existed\n• Compact Numbers now also applies to your coin total\n• Boss losses now count as deaths in your combat history\n• Invento"
           }
         }
       }

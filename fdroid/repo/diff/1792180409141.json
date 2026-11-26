@@ -1,0 +1,65 @@
+{
+  "repo": {
+    "timestamp": 1795711762822
+  },
+  "packages": {
+    "com.tristinbaker.idlefantasy": {
+      "metadata": {
+        "lastUpdated": 1795711714594
+      },
+      "versions": {
+        "b9b3b1c7954ccab01b79453b79b6cedf906ac9a784ff118e9a37f355c7a455fc": null,
+        "0bb2783c7ca050ad52504b0bb82e829f8cd3435df0bf65692f90845b88d3a0aa": {
+          "added": 1795711714594,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_200000.apk",
+            "sha256": "0bb2783c7ca050ad52504b0bb82e829f8cd3435df0bf65692f90845b88d3a0aa",
+            "size": 11915999
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "2.0.0",
+            "versionCode": 200000,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Idle Fantasy now has a main story\n• Fixed a crash when hiding completed quests\n• The Burn button now shows when the queue is full\n• Isle quest progress no longer wraps one digit per line at large font sizes\n• A message now explains when a two-handed weapon and a shield replace each other\n• Guild capes are now granted to players who reached guild level 10 before capes existed\n• Compact Numbers now also applies to your coin total\n• Boss losses now count as deaths in your combat history\n• Invento"
+          }
+        }
+      }
+    }
+  }
+}

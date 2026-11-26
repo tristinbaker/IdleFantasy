@@ -14,7 +14,7 @@
       }
     },
     "address": "https://idlefantasy.tristinbaker.xyz/fdroid/repo",
-    "timestamp": 1792180409141,
+    "timestamp": 1795711762822,
     "categories": {
       "Games": {
         "name": {
@@ -31,7 +31,7 @@
           "Games"
         ],
         "issueTracker": "https://github.com/tristinbaker/IdleFantasy/issues",
-        "lastUpdated": 1792180363318,
+        "lastUpdated": 1795711714594,
         "license": "GPL-3.0-only",
         "sourceCode": "https://github.com/tristinbaker/IdleFantasy",
         "screenshots": {
@@ -140,12 +140,12 @@
         "preferredSigner": "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
       },
       "versions": {
-        "b9b3b1c7954ccab01b79453b79b6cedf906ac9a784ff118e9a37f355c7a455fc": {
-          "added": 1792180363318,
+        "0bb2783c7ca050ad52504b0bb82e829f8cd3435df0bf65692f90845b88d3a0aa": {
+          "added": 1795711714594,
           "file": {
-            "name": "/com.tristinbaker.idlefantasy_160000.apk",
-            "sha256": "b9b3b1c7954ccab01b79453b79b6cedf906ac9a784ff118e9a37f355c7a455fc",
-            "size": 11678389
+            "name": "/com.tristinbaker.idlefantasy_200000.apk",
+            "sha256": "0bb2783c7ca050ad52504b0bb82e829f8cd3435df0bf65692f90845b88d3a0aa",
+            "size": 11915999
           },
           "manifest": {
             "nativecode": [
@@ -154,8 +154,8 @@
               "x86",
               "x86_64"
             ],
-            "versionName": "1.16.0",
-            "versionCode": 160000,
+            "versionName": "2.0.0",
+            "versionCode": 200000,
             "usesSdk": {
               "minSdkVersion": 26,
               "targetSdkVersion": 35
@@ -187,7 +187,7 @@
             ]
           },
           "whatsNew": {
-            "en-US": "• Seasonal events now rotate automatically every season, year after year\n• New winter event: Frostfall, with two expeditions, the Rime Wyrm boss, Snowball Toss and a new reward track\n• New spring event: Bloomtide, with two expeditions, the Thorn Queen boss, Garden Chimes and a new reward track\n• Sunspire Solstice now has a full 300-token reward track, more bounties and a Night Market\n• Each yearly run of an event awards its own banner\n• Daily quests now roll for Divine gear after all Dwarven gea"
+            "en-US": "• Idle Fantasy now has a main story\n• Fixed a crash when hiding completed quests\n• The Burn button now shows when the queue is full\n• Isle quest progress no longer wraps one digit per line at large font sizes\n• A message now explains when a two-handed weapon and a shield replace each other\n• Guild capes are now granted to players who reached guild level 10 before capes existed\n• Compact Numbers now also applies to your coin total\n• Boss losses now count as deaths in your combat history\n• Invento"
           }
         },
         "df60f1f69dd5a3a1d2fff1cedbcd74ee8f43705dc76cf676f7ee9a8cceaa7a33": {
