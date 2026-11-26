@@ -126,6 +126,7 @@ def add_static_pages():
             ("expeditions", PageInfo("Expeditions", "Expeditions.md", gen_expeditions, skill_icon_path("expedition"))),
             ("pets", PageInfo("Pets", "Pets.md", gen_pets)),
             ("quests", PageInfo("Quests", "Quests.md", gen_quests)),
+            ("main_story", PageInfo("Main Story", "MainStory.md", gen_main_story)),
             ("titles", PageInfo("Titles", "Titles.md", gen_titles)),
             ("seasonal_events", PageInfo("Seasonal Events", "SeasonalEvents.md", gen_seasonal_events)),
         ]],
@@ -242,15 +243,8 @@ def add_player_guides():
     PAGE_HIERARCHY.merge([["Guides", True, [f"guide_{x}" for x in guide_to_generator.keys()]]])
 
 
-def load_bosses() -> dict:
-    """raid_bosses.json minus the main story boss, who stays hidden like he is in-game."""
-    bosses = load("raid_bosses.json")
-    assert isinstance(bosses, dict)
-    return {boss_id: boss for boss_id, boss in bosses.items() if not boss.get("requires_story", False)}
-
-
 def add_boss_pages():
-    bosses = load_bosses()
+    bosses = load("raid_bosses.json")
     assert isinstance(bosses, dict)
     boss_pages = {
         boss_id: PageInfo(boss_name(boss_id), f"{boss_id}.md", lambda x=bosses[boss_id]: gen_boss(x), boss_sprite(boss_id))
@@ -1501,7 +1495,7 @@ def gen_equipment() -> str:
 
 def gen_heirlooms() -> str:
     equip = load("equipment.json")
-    bosses = load_bosses()
+    bosses = load("raid_bosses.json")
     assert isinstance(equip, dict)
     assert isinstance(bosses, dict)
     heirlooms = {k: v for k, v in equip.items() if v.get("heirloom_skill")}
@@ -1575,7 +1569,7 @@ def gen_combat_footer() -> str:
         (load(f, False) for f in (ASSETS / "dungeons").glob("*.json")),
         key=lambda d: d.get("recommended_level", 0),
     )
-    bosses = load_bosses()
+    bosses = load("raid_bosses.json")
     enemies = load("enemies.json")
     assert isinstance(bosses, dict)
     assert isinstance(enemies, dict)
@@ -1597,7 +1591,7 @@ def gen_combat_footer() -> str:
 
 
 def gen_bosses() -> str:
-    bosses = load_bosses()
+    bosses = load("raid_bosses.json")
     assert isinstance(bosses, dict)
 
     def rows_for(raid: bool) -> list[list]:
@@ -1606,7 +1600,7 @@ def gen_bosses() -> str:
                 boss_icon(boss_id, boss.get("emoji", ""), 48),
                 link(boss_id),
                 boss.get("combat_level_required", "—"),
-                boss_desc(boss_id),
+                boss_desc(boss_id) + (f" Unlocked by the {link('main_story')}." if boss.get("requires_story") else ""),
             ]
             for boss_id, boss in sorted(bosses.items(), key=lambda x: x[1].get("combat_level_required", 0))
             if bool(boss.get("raid", False)) == raid
@@ -2151,6 +2145,64 @@ def gen_quests() -> str:
     return get_template("miscellaneous/quests").format(quest_sections="\n\n".join(sections))
 
 
+# Mirrored from MainStory.CHAPTERS in the app: (dungeon, coins, extra reward, required keepsakes)
+_MAIN_STORY_DUNGEON_CHAPTERS = [
+    ("imp_cavern", 1_000, None, []),
+    ("goblin_cave", 2_000, None, []),
+    ("spider_den", 4_000, None, []),
+    ("bandit_camp", 8_000, "keepsake_obsidian_key", []),
+    ("undead_crypt", 16_000, None, []),
+    ("fortress_ruins", 32_000, None, []),
+    ("orc_stronghold", 50_000, None, []),
+    ("volcanic_depths", 75_000, "keepsake_mountain_heart", []),
+    ("dragon_lair", 100_000, "keepsake_dragon_molt", []),
+    ("infernal_stronghold", 150_000, "keepsake_eye_of_chaos", ["keepsake_mountain_heart", "keepsake_dragon_molt"]),
+    ("ancient_temple", 200_000, None, ["keepsake_obsidian_key", "keepsake_eye_of_chaos"]),
+]
+
+
+def gen_main_story() -> str:
+    rows = [
+        [STRINGS.get_string("story_chapter_prologue"), "None, it plays as soon as you begin", "None"],
+        [
+            f"1: {STRINGS.get_string('story_chapter_landfall')}",
+            f"Complete a mining, fishing or woodcutting session, cook shrimp, smelt a bronze bar, and clear the {link('farm')} without dying",
+            f"1,000 coins and the {title_name('duster')} title",
+        ],
+    ]
+    for number, (dungeon_id, coins, grants, needs) in enumerate(_MAIN_STORY_DUNGEON_CHAPTERS, start=2):
+        objective = f"Clear {link(dungeon_id)} without dying"
+        if needs:
+            objective += " while holding the " + " and ".join(item_name(k) for k in needs)
+        reward = f"{coins:,} coins"
+        if grants:
+            reward += f" and the {item_name(grants)}"
+        if dungeon_id == "ancient_temple":
+            reward += f", and unlocks {link('kurzul')}"
+        rows.append([f"{number}: {dungeon_name(dungeon_id)}", objective, reward])
+    rows.append([
+        f"{len(_MAIN_STORY_DUNGEON_CHAPTERS) + 2}: {STRINGS.get_string('story_chapter_kurzul')}",
+        f"Defeat {link('kurzul')}",
+        f"The {title_name('bane_of_kurzul')} title",
+    ])
+
+    keepsake_rows = [
+        [item_name("keepsake_obsidian_key"), f"Finishing the {link('bandit_camp')} chapter", f"Needed, with the Eye of Chaos, for the {link('ancient_temple')} chapter"],
+        [item_name("keepsake_mountain_heart"), f"Finishing the {link('volcanic_depths')} chapter", f"Used up in the {link('infernal_stronghold')} chapter"],
+        [item_name("keepsake_dragon_molt"), f"Finishing the {link('dragon_lair')} chapter", f"Used up in the {link('infernal_stronghold')} chapter"],
+        [item_name("keepsake_eye_of_chaos"), f"Finishing the {link('infernal_stronghold')} chapter", f"Needed, with the Obsidian Key, for the {link('ancient_temple')} chapter"],
+    ]
+    return get_template("miscellaneous/main_story").format(
+        chapter_table=table(["Chapter", "Objective", "Reward"], rows),
+        keepsake_table=table(["Keepsake", "How you get it", "Used for"], keepsake_rows),
+        kurzul_link=link("kurzul"),
+        titles_link=link("titles"),
+        quests_link=link("quests"),
+        duster=title_name("duster"),
+        bane=title_name("bane_of_kurzul"),
+    )
+
+
 def gen_titles() -> str:
     # Skill quest-chain titles (mirrored from TitleRepository.SKILL_TITLES)
     # Todo: Move these titles such that they aren't hardcoded in the game nor here
@@ -2189,6 +2241,8 @@ def gen_titles() -> str:
     other_rows = [
         ["Godslayer", "Defeat every boss at least once"],
         ["Patron of the Realm", "Complete the Grand Monument"],
+        [title_name("duster"), f"Finish Landfall in the {link('main_story')}"],
+        [title_name("bane_of_kurzul"), f"Defeat {link('kurzul')} to finish the {link('main_story')}"],
     ]
     other_table = table(["Title", "Requirement"], other_rows)
 
@@ -2259,7 +2313,10 @@ def gen_boss(boss: dict) -> str:
         combat_level=boss.get("combat_level_required", "—"),
         hp=f"{hp:,}" if isinstance(hp, int) else hp,
         duration=boss.get("duration_minutes", "—"),
-        description=boss_desc(boss["id"]),
+        description=boss_desc(boss["id"]) + (
+            f"\n\n**Story boss:** only appears once your {link('main_story')} reaches its final chapter, and stays available after you finish it."
+            if boss.get("requires_story") else ""
+        ),
         boss_attack=combat_stats.get("attack_level", 0) + combat_stats.get("attack_bonus", 0),
         defensive_table=table(["Style", "Defence"], defensive_rows),
         boss_link=link("bosses"),
