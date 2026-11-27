@@ -1958,7 +1958,7 @@
     <string name="mercantile_added_to_queue">Zur Warteschlange hinzugefügt: Handelsroute — %1$s.</string>
     <string name="inventory_requires_to_equip">Zum Ausrüsten wird %1$s benötigt.</string>
     <string name="equip_two_handed_removed_shield">%1$s kann nur zweihändig genutzt werden, daher ist dein Schild nicht mehr ausgerüstet.</string>
-    <string name="equip_shield_removed_two_handed">Ein Schild kann nicht mit einer zweihändigen Waffe genutztwerden, daher ist %1$s nicht mehr ausgerüstet.</string>
+    <string name="equip_shield_removed_two_handed">Ein Schild kann nicht mit einer zweihändigen Waffe genutzt werden, daher ist %1$s nicht mehr ausgerüstet.</string>
     <string name="home_found_pet">Ihr habt ein Haustier gefunden: %1$s!</string>
     <string name="pet_found_title">Neues Haustier!</string>
     <string name="home_congratulations_received">Glückwunsch! Ihr habt erhalten: %1$s</string>
@@ -2784,7 +2784,7 @@
     <string name="seasonal_bounty_bloom_tithe_salmon_name">Zehnt: Spendet gekochten Lachs</string>
     <string name="seasonal_bounty_bloom_tithe_salmon_hint">Wird direkt aus dem Inventar gespendet</string>
     <string name="seasonal_minigame_snowball_toss_hint">Treffe %1$d von %2$d Schneemännern, bevor sie sich wegducken!</string>
-    <string name="seasonal_minigame_garden_chimes_hint">Beobachte die Blüten, dann wiederhile die Reihenfolge. Erreiche %1$d von %2$d um ein Los zu gewinnen!</string>
+    <string name="seasonal_minigame_garden_chimes_hint">Beobachte die Blüten, dann wiederhole die Reihenfolge. Erreiche %1$d von %2$d um ein Los zu gewinnen!</string>
     <string name="item_sunstone_ring_name">Sunstone Ring</string> <!-- untranslated -->
     <string name="item_sunforged_sabre_name">Sunforged Sabre</string> <!-- untranslated -->
     <string name="item_sunweave_cape_name">Sunweave Cape</string> <!-- untranslated -->
@@ -2822,7 +2822,7 @@
     <string name="story_complete">Die Geschichte ist abgeschlossen. Danke fürs Durchspielen.</string>
     <string name="story_obj_gather">Complete a mining, fishing, or woodcutting session</string> <!-- untranslated -->
     <string name="story_obj_cook_shrimp">Koche Shrimps</string>
-    <string name="story_obj_smelt_bronze">Schmelze einen Brozebarren</string>
+    <string name="story_obj_smelt_bronze">Schmelze einen Bronzebarren</string>
     <string name="story_obj_clear">Clear %1$s without dying</string> <!-- untranslated -->
     <string name="story_obj_requires">Benötigt %1$s in deinem Inventar</string>
     <string name="story_reward_coins">Belohnung: %1$s Münzen</string>
