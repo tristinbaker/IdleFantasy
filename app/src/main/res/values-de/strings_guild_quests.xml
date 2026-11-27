@@ -26,8 +26,8 @@
     <string name="quest_construction_guild_2_name">Shelf Life</string> <!-- untranslated -->
     <string name="quest_construction_guild_3_name">In Stein gemeißelt</string>
     <string name="quest_construction_guild_4_name">Table Service</string> <!-- untranslated -->
-    <string name="quest_construction_guild_5_name">Well Read</string> <!-- untranslated -->
-    <string name="quest_construction_guild_6_name">Block by Block</string> <!-- untranslated -->
+    <string name="quest_construction_guild_5_name">Belesen</string>
+    <string name="quest_construction_guild_6_name">Stein um Stein</string>
     <string name="quest_construction_guild_7_name">Cabinet Meeting</string> <!-- untranslated -->
     <string name="quest_construction_guild_8_name">Dressed to Impress</string> <!-- untranslated -->
     <string name="quest_construction_guild_9_name">Wardrobe Change</string> <!-- untranslated -->
@@ -66,7 +66,7 @@
     <string name="quest_firemaking_guild_2_name">Oak Pyre</string> <!-- untranslated -->
     <string name="quest_firemaking_guild_3_name">Willow Ember</string> <!-- untranslated -->
     <string name="quest_firemaking_guild_4_name">Maple Blaze</string> <!-- untranslated -->
-    <string name="quest_firemaking_guild_5_name">Yew Inferno</string> <!-- untranslated -->
+    <string name="quest_firemaking_guild_5_name">Eiben-Inferno</string>
     <string name="quest_firemaking_guild_6_name">Magic Pyre</string> <!-- untranslated -->
     <string name="quest_firemaking_guild_7_name">Mammutbaum Lagerfeuer</string>
     <string name="quest_firemaking_guild_8_name">Antike Flamme</string>
@@ -77,7 +77,7 @@
     <string name="quest_fishing_guild_3_name">Lachsfang</string>
     <string name="quest_fishing_guild_4_name">Thunfisch Lieferung</string>
     <string name="quest_fishing_guild_5_name">Hummer-Fang</string>
-    <string name="quest_fishing_guild_6_name">Swordfish Quota</string> <!-- untranslated -->
+    <string name="quest_fishing_guild_6_name">Schwertfisch-Quote</string>
     <string name="quest_fishing_guild_7_name">Seeteufel Bestellung</string>
     <string name="quest_fishing_guild_8_name">Hai Jagd</string>
     <string name="quest_fishing_guild_9_name">Mantarochen Reserve</string>
@@ -92,7 +92,7 @@
     <string name="quest_fletching_guild_8_name">Eiben-Langbögen</string>
     <string name="quest_fletching_guild_9_name">Magische Langbögen</string>
     <string name="quest_herblore_guild_1_name">Angriffsgebräu</string>
-    <string name="quest_herblore_guild_10_name">Master Herbalist</string> <!-- untranslated -->
+    <string name="quest_herblore_guild_10_name">Kräutermeister</string>
     <string name="quest_herblore_guild_2_name">Angriffstränke</string>
     <string name="quest_herblore_guild_3_name">Stärketränke</string>
     <string name="quest_herblore_guild_4_name">Reichweitentränke</string>
