@@ -65,6 +65,8 @@
     <string name="label_bestiary">Bestiary</string> <!-- untranslated -->
     <string name="label_enemies">Priešai</string>
     <string name="label_bosses">Bosai</string>
+    <string name="label_mainland">Mainland</string> <!-- untranslated -->
+    <string name="label_elder">Elder</string> <!-- untranslated -->
     <string name="label_by_location">Pagal Vieta</string>
     <string name="bestiary_not_encountered">Dar Ne Sutikes</string>
     <string name="bestiary_filter_all">Visi</string>

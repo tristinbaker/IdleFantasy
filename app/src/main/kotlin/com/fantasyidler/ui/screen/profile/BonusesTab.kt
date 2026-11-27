@@ -1,4 +1,4 @@
-package com.fantasyidler.ui.screen
+package com.fantasyidler.ui.screen.profile
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -34,6 +34,7 @@ import com.fantasyidler.simulator.PrestigeBoosts
 import com.fantasyidler.repository.resolveCapeMultiplier
 import com.fantasyidler.repository.isGuildCapeForSkill
 import com.fantasyidler.repository.resolveOwnedCapeKeysForSkill
+import com.fantasyidler.ui.screen.SlotSectionHeader
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.util.formatDurationMs
 import com.fantasyidler.util.stringByName
@@ -113,7 +114,7 @@ internal fun BonusesTab(
         mult > 1.0f
     }
 
-    val specificSkillKeys = buildSet<String> {
+    val specificSkillKeys = buildSet {
         addAll(activeCapeSkills)
         specificBonusPets.forEach { add(it.boostedSkill) }
         addAll(prestigeEffects.keys)

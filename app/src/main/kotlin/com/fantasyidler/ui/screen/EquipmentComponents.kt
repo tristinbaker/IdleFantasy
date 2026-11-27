@@ -134,6 +134,7 @@ internal fun FoodRow(
 internal fun SlotSectionHeader(title: String) {
     Column {
         HorizontalDivider()
+        Spacer(Modifier.height(4.dp))
         Text(
             text     = title.uppercase(),
             style    = MaterialTheme.typography.labelSmall,

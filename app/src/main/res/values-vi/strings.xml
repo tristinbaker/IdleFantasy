@@ -65,6 +65,8 @@
     <string name="label_bestiary">Bách khoa quái vật</string>
     <string name="label_enemies">Đối thủ</string>
     <string name="label_bosses">Boss</string>
+    <string name="label_mainland">Mainland</string> <!-- untranslated -->
+    <string name="label_elder">Elder</string> <!-- untranslated -->
     <string name="label_by_location">Theo địa điểm</string>
     <string name="bestiary_not_encountered">Chưa gặp</string>
     <string name="bestiary_filter_all">Tất cả</string>

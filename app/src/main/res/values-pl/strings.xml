@@ -65,6 +65,8 @@
     <string name="label_bestiary">Bestiariusz</string>
     <string name="label_enemies">Wrogowie</string>
     <string name="label_bosses">Bossowie</string>
+    <string name="label_mainland">Mainland</string> <!-- untranslated -->
+    <string name="label_elder">Elder</string> <!-- untranslated -->
     <string name="label_by_location">Wg lokacji</string>
     <string name="bestiary_not_encountered">Jeszcze nie napotkano</string>
     <string name="bestiary_filter_all">Wszystkie</string>

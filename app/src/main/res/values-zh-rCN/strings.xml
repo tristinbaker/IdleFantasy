@@ -65,6 +65,8 @@
     <string name="label_bestiary">怪物图鉴</string>
     <string name="label_enemies">怪物</string>
     <string name="label_bosses">首领</string>
+    <string name="label_mainland">Mainland</string> <!-- untranslated -->
+    <string name="label_elder">Elder</string> <!-- untranslated -->
     <string name="label_by_location">按地点</string>
     <string name="bestiary_not_encountered">尚未遭遇</string>
     <string name="bestiary_filter_all">全部</string>

@@ -1,4 +1,4 @@
-package com.fantasyidler.ui.screen
+package com.fantasyidler.ui.screen.profile
 
 import android.content.Context
 import androidx.compose.foundation.background
@@ -41,14 +41,15 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.R
 import com.fantasyidler.data.json.EquipmentData
-import com.fantasyidler.ui.viewmodel.ArmoryEntry
-import com.fantasyidler.ui.viewmodel.ArmoryFilter
-import com.fantasyidler.ui.viewmodel.ArmorySort
-import com.fantasyidler.ui.viewmodel.ArmoryViewModel
+import com.fantasyidler.ui.viewmodel.profile.ArmoryEntry
+import com.fantasyidler.ui.viewmodel.profile.ArmoryFilter
+import com.fantasyidler.ui.viewmodel.profile.ArmorySort
+import com.fantasyidler.ui.viewmodel.profile.ArmoryViewModel
 import com.fantasyidler.ui.theme.ScaledSheetContent
 import com.fantasyidler.simulator.HeirloomStats
 import com.fantasyidler.simulator.XpTable
 import com.fantasyidler.ui.components.CompletionProgressBar
+import com.fantasyidler.ui.screen.buildEquipDetail
 import com.fantasyidler.util.GameStrings
 
 private val COMBAT_CAPE_SKILLS = setOf(
@@ -58,7 +59,7 @@ private val COMBAT_CAPE_SKILLS = setOf(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ArmoryTab(viewModel: ArmoryViewModel = hiltViewModel()) {
+internal fun ArmoryTab(viewModel: ArmoryViewModel = hiltViewModel()) {
     val state by viewModel.uiState.collectAsState()
     var selectedEntry by remember { mutableStateOf<ArmoryEntry?>(null) }
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
@@ -77,10 +78,11 @@ fun ArmoryTab(viewModel: ArmoryViewModel = hiltViewModel()) {
                         label = stringResource(R.string.armory_progress_bar)
                     )
                 }
+                Spacer(Modifier.height(4.dp))
                 Row(
                     modifier = Modifier
                         .horizontalScroll(rememberScrollState())
-                        .padding(horizontal = 12.dp, vertical = 8.dp),
+                        .padding(horizontal = 16.dp),
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     ArmoryFilter.entries.forEach { f ->
@@ -94,7 +96,7 @@ fun ArmoryTab(viewModel: ArmoryViewModel = hiltViewModel()) {
                 Row(
                     modifier = Modifier
                         .horizontalScroll(rememberScrollState())
-                        .padding(start = 12.dp, end = 12.dp, bottom = 4.dp),
+                        .padding(horizontal = 16.dp),
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     ArmorySort.entries.forEach { s ->
@@ -105,6 +107,7 @@ fun ArmoryTab(viewModel: ArmoryViewModel = hiltViewModel()) {
                         )
                     }
                 }
+                Spacer(Modifier.height(4.dp))
             }
         }
         grouped.forEach { (groupName, entries) ->

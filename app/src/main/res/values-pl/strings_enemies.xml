@@ -128,7 +128,7 @@
     <string name="boss_kraken_desc">Postrach głębokich mórz, kolosalny morski potwór.</string>
     <string name="boss_balrog_name">Gothic Ember</string> <!-- untranslated -->
     <string name="boss_balrog_desc">Starożytny demon płomienia i cienia, przebudzony ze snu głęboko pod ziemią.</string>
-    <string name="boss_void_sovereign_name" translatable="false">The Void Sovereign</string> <!-- untranslated -->
+    <string name="boss_void_sovereign_name">The Void Sovereign</string> <!-- untranslated -->
     <string name="boss_void_sovereign_desc">Pierwotna istota stojąca za szczelinami pustki. Niewyobrażalnie stara, patrzy na śmiertelnych śmiałków z pogardą.</string>
     <string name="boss_sol_invictus_name">Sol Invictus, the Sundered Flame</string> <!-- untranslated -->
     <string name="boss_sol_invictus_desc">A shard of the sun itself, torn loose from the Sunspire ruin. Only the boldest warriors dare approach.</string> <!-- untranslated -->

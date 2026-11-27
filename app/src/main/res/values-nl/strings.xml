@@ -65,6 +65,8 @@
     <string name="label_bestiary">Bestiarium</string>
     <string name="label_enemies">Vijanden</string>
     <string name="label_bosses">Bazen</string>
+    <string name="label_mainland">Mainland</string> <!-- untranslated -->
+    <string name="label_elder">Elder</string> <!-- untranslated -->
     <string name="label_by_location">Op locatie</string>
     <string name="bestiary_not_encountered">Nog niet tegengekomen</string>
     <string name="bestiary_filter_all">Alles</string>

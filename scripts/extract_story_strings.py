@@ -5,7 +5,7 @@ Run from the repo root:
     python3 scripts/extract_story_strings.py "path/to/Idle Fantasy Story Doc.docx"
 
 Writes app/src/main/res/values/strings_story.xml (English only), one string per
-pop-up page, then run scripts/sync_locale_strings.py to refresh the locale stubs.
+pop-up page, then run scripts/normalize_locale_strings.py to refresh the locale stubs.
 
 Tracked changes in the doc are read as accepted (insertions kept, deletions dropped).
 Each page is found by its opening words rather than its paragraph position, so the

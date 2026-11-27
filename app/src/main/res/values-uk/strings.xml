@@ -65,6 +65,8 @@
     <string name="label_bestiary">Бестіарій</string>
     <string name="label_enemies">Вороги</string>
     <string name="label_bosses">Боси</string>
+    <string name="label_mainland">Mainland</string> <!-- untranslated -->
+    <string name="label_elder">Elder</string> <!-- untranslated -->
     <string name="label_by_location">За місцем розташування</string>
     <string name="bestiary_not_encountered">Ще не зустрічались</string>
     <string name="bestiary_filter_all">Всі</string>

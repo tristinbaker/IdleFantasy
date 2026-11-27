@@ -65,6 +65,8 @@
     <string name="label_bestiary">Bestiary</string>
     <string name="label_enemies">Enemies</string>
     <string name="label_bosses">Bosses</string>
+    <string name="label_mainland">Mainland</string>
+    <string name="label_elder">Elder</string>
     <string name="label_by_location">By Location</string>
     <string name="bestiary_not_encountered">Not yet encountered</string>
     <string name="bestiary_filter_all">All</string>

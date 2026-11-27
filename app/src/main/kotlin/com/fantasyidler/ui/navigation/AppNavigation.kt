@@ -68,7 +68,7 @@ import com.fantasyidler.ui.screen.HomeScreen
 import com.fantasyidler.ui.screen.InnScreen
 import com.fantasyidler.ui.screen.OnboardingScreen
 import com.fantasyidler.ui.screen.StoryNoteHost
-import com.fantasyidler.ui.screen.ProfileScreen
+import com.fantasyidler.ui.screen.profile.ProfileScreen
 import com.fantasyidler.ui.screen.QuestsScreen
 import com.fantasyidler.ui.screen.SeasonalEventScreen
 import com.fantasyidler.ui.screen.HomeScreenSettingsScreen

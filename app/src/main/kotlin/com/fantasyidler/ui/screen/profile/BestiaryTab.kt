@@ -1,4 +1,4 @@
-package com.fantasyidler.ui.screen
+package com.fantasyidler.ui.screen.profile
 
 import android.content.Context
 import androidx.compose.foundation.background
@@ -48,20 +48,21 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.fantasyidler.R
 import com.fantasyidler.data.json.BossData
 import com.fantasyidler.data.json.EnemyData
-import com.fantasyidler.ui.viewmodel.BestiaryEntry
-import com.fantasyidler.ui.viewmodel.BestiaryFilter
-import com.fantasyidler.ui.viewmodel.BestiarySort
-import com.fantasyidler.ui.viewmodel.BestiaryViewModel
+import com.fantasyidler.ui.viewmodel.profile.BestiaryEntry
+import com.fantasyidler.ui.viewmodel.profile.BestiaryFilter
+import com.fantasyidler.ui.viewmodel.profile.BestiarySort
+import com.fantasyidler.ui.viewmodel.profile.BestiaryViewModel
 import com.fantasyidler.ui.theme.ScaledSheetContent
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.ui.components.CompletionProgressBar
+import com.fantasyidler.ui.screen.BossIcon
 import com.fantasyidler.util.formatCoinsBrief
 import java.text.Collator
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BestiaryTab(viewModel: BestiaryViewModel = hiltViewModel()) {
+internal fun BestiaryTab(viewModel: BestiaryViewModel = hiltViewModel()) {
     val state by viewModel.uiState.collectAsState()
     var selectedSubTab by remember { mutableIntStateOf(0) }
     var selectedEntry by remember { mutableStateOf<BestiaryEntry?>(null) }
@@ -102,10 +103,11 @@ fun BestiaryTab(viewModel: BestiaryViewModel = hiltViewModel()) {
                         label = stringResource(R.string.bestiary_progress_bar)
                     )
                 }
+                Spacer(Modifier.height(4.dp))
                 Row(
                     modifier = Modifier
                         .horizontalScroll(rememberScrollState())
-                        .padding(horizontal = 12.dp, vertical = 8.dp),
+                        .padding(horizontal = 16.dp),
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     BestiaryFilter.entries.forEach { f ->
@@ -119,7 +121,7 @@ fun BestiaryTab(viewModel: BestiaryViewModel = hiltViewModel()) {
                 Row(
                     modifier = Modifier
                         .horizontalScroll(rememberScrollState())
-                        .padding(start = 12.dp, end = 12.dp, bottom = 4.dp),
+                        .padding(horizontal = 16.dp),
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     FilterChip(
@@ -133,6 +135,7 @@ fun BestiaryTab(viewModel: BestiaryViewModel = hiltViewModel()) {
                         label    = { Text(stringResource(R.string.label_by_location)) },
                     )
                 }
+                Spacer(Modifier.height(4.dp))
             },
         )
     }

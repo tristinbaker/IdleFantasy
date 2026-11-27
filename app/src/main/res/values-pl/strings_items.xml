@@ -17,7 +17,7 @@
     <string name="item_mithril_ore_desc">Rzadka ruda o magicznych właściwościach.</string>
     <string name="item_adamantite_ore_name">Ruda Adamantytu</string>
     <string name="item_adamantite_ore_desc">Niezwykle twarda i bardzo rzadka ruda.</string>
-    <string name="item_platinum_ore_name" translatable="false">Platinum Ore</string> <!-- untranslated -->
+    <string name="item_platinum_ore_name">Platinum Ore</string> <!-- untranslated -->
     <string name="item_platinum_ore_desc">A rare platinum ore used for platinum bars.</string> <!-- untranslated -->
     <string name="item_runite_ore_name">Ruda Runitu</string>
     <string name="item_runite_ore_desc">Najrzadsza ruda możliwa do wydobycia, używana do tworzenia najsilniejszego ekwipunku.</string>

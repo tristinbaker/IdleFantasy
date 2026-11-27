@@ -65,6 +65,8 @@
     <string name="label_bestiary">Bestiari</string>
     <string name="label_enemies">Enemics</string>
     <string name="label_bosses">Bosses</string> <!-- untranslated -->
+    <string name="label_mainland">Mainland</string> <!-- untranslated -->
+    <string name="label_elder">Elder</string> <!-- untranslated -->
     <string name="label_by_location">Per Ubicació</string>
     <string name="bestiary_not_encountered">Encara no trobat</string>
     <string name="bestiary_filter_all">All</string> <!-- untranslated -->

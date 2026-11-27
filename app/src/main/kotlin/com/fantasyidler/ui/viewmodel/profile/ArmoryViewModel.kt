@@ -1,4 +1,4 @@
-package com.fantasyidler.ui.viewmodel
+package com.fantasyidler.ui.viewmodel.profile
 
 import com.fantasyidler.util.withAppLocale
 
@@ -15,6 +15,7 @@ import com.fantasyidler.repository.GameDataRepository
 import com.fantasyidler.repository.PlayerRepository
 import com.fantasyidler.repository.WeeklyQuestRepository
 import com.fantasyidler.repository.capeKeyForSkill
+import com.fantasyidler.ui.viewmodel.ShopViewModel
 import com.fantasyidler.util.GameStrings
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -25,6 +26,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
+import java.text.Collator
 import javax.inject.Inject
 
 enum class ArmoryFilter { ALL, MISSING, WEAPONS, ARMOR, ACCESSORIES, TOOLS }
@@ -75,7 +77,7 @@ class ArmoryViewModel @Inject constructor(
     // #1710). Safe to cache: an in-app language change recreates the activity.
     private val sortedEquipment: List<Pair<String, EquipmentData>> by lazy {
         val ctx = context.withAppLocale()
-        val collator = java.text.Collator.getInstance(ctx.resources.configuration.locales[0])
+        val collator = Collator.getInstance(ctx.resources.configuration.locales[0])
         val names = gameData.equipment.keys.associateWith { GameStrings.itemName(ctx, it) }
         gameData.equipment.entries
             .sortedWith(

@@ -65,6 +65,8 @@
     <string name="label_bestiary">モンスター図鑑</string>
     <string name="label_enemies">敵</string>
     <string name="label_bosses">ボス</string>
+    <string name="label_mainland">Mainland</string> <!-- untranslated -->
+    <string name="label_elder">Elder</string> <!-- untranslated -->
     <string name="label_by_location">エリア別</string>
     <string name="bestiary_not_encountered">未遭遇</string>
     <string name="bestiary_filter_all">All</string> <!-- untranslated -->

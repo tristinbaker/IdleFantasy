@@ -65,6 +65,8 @@
     <string name="label_bestiary">موسوعة الوحوش</string>
     <string name="label_enemies">الأعداء</string>
     <string name="label_bosses">الزعماء</string>
+    <string name="label_mainland">Mainland</string> <!-- untranslated -->
+    <string name="label_elder">Elder</string> <!-- untranslated -->
     <string name="label_by_location">حسب الموقع</string>
     <string name="bestiary_not_encountered">لم يواجه بعد</string>
     <string name="bestiary_filter_all">All</string> <!-- untranslated -->

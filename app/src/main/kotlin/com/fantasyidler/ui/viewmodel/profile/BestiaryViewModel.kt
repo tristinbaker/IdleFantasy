@@ -1,4 +1,4 @@
-package com.fantasyidler.ui.viewmodel
+package com.fantasyidler.ui.viewmodel.profile
 
 import android.content.Context
 import androidx.lifecycle.ViewModel

@@ -65,6 +65,8 @@
     <string name="label_bestiary">Bestiář</string>
     <string name="label_enemies">Nepřátelé</string>
     <string name="label_bosses">Bossové</string>
+    <string name="label_mainland">Mainland</string> <!-- untranslated -->
+    <string name="label_elder">Elder</string> <!-- untranslated -->
     <string name="label_by_location">Podle místa</string>
     <string name="bestiary_not_encountered">Dosud nepotkán</string>
     <string name="bestiary_filter_all">Vše</string>

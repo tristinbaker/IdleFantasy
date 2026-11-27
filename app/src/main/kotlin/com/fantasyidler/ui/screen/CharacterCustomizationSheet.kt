@@ -228,19 +228,6 @@ private fun AppearanceSection(label: String, content: @Composable () -> Unit) {
     Spacer(Modifier.height(14.dp))
 }
 
-// ── Race display names ────────────────────────────────────────────────────────
-
-@Composable
-private fun raceName(key: String) = when (key) {
-    "human"    -> stringResource(R.string.character_race_human)
-    "elf"      -> stringResource(R.string.character_race_elf)
-    "dwarf"    -> stringResource(R.string.character_race_dwarf)
-    "halfling" -> stringResource(R.string.character_race_halfling)
-    "gnome"    -> stringResource(R.string.character_race_gnome)
-    "orc"      -> stringResource(R.string.character_race_orc)
-    else       -> key.replaceFirstChar { it.uppercase() }
-}
-
 // ── Main composable ──────────────────────────────────────────────────────────
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -262,6 +249,7 @@ fun CharacterCustomizationSheet(
     onSave:   (skin: Int, hair: Int, hairColor: String, eye: Int, beard: Int, beardColor: String, race: String, useToken: Boolean) -> Unit,
     onDismiss: () -> Unit,
 ) {
+    val context = LocalContext.current
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
 
     val originalRace = race.lowercase().ifBlank { "human" }
@@ -359,7 +347,7 @@ fun CharacterCustomizationSheet(
                                 val range = skinToneRange(r)
                                 if (skin !in range) skin = range.first
                             },
-                            label    = { Text(raceName(r)) },
+                            label    = { Text(GameStrings.raceName(context, r)) },
                         )
                     }
                 }

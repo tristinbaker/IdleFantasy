@@ -65,6 +65,8 @@
     <string name="label_bestiary">Brúdlann</string>
     <string name="label_enemies">Naimhde</string>
     <string name="label_bosses">Ceannaisí</string>
+    <string name="label_mainland">Mainland</string> <!-- untranslated -->
+    <string name="label_elder">Elder</string> <!-- untranslated -->
     <string name="label_by_location">De Réir Áit</string>
     <string name="bestiary_not_encountered">Níor Casadh Fós</string>
     <string name="bestiary_filter_all">All</string> <!-- untranslated -->

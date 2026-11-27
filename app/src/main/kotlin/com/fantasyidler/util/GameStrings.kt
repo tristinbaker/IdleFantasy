@@ -259,6 +259,9 @@ object GameStrings {
     fun themeName(context: Context, theme: String): String =
         context.stringByName("settings_theme_${theme}") ?: theme.toTitleCase()
 
+    fun genderName(context: Context, gender: String): String =
+        context.stringByName("character_gender_${gender}") ?: gender.toTitleCase()
+
     fun raceName(context: Context, race: String): String =
         context.stringByName("character_race_${race}") ?: race.toTitleCase()
 

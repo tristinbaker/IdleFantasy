@@ -4,8 +4,10 @@ For each locale file: entries appear in exactly the order of the corresponding
 English file, inheriting the English file's comments and section structure.
 Existing translations are preserved byte-for-byte (moved to the canonical file
 if they lived in the wrong one). Keys missing from a locale are inserted with
-the English text plus an ``<!-- untranslated -->`` marker. Keys no longer in
-the English file are dropped. ``translatable="false"`` entries stay base-only.
+the English text plus an ``<!-- untranslated -->`` marker. Keys already marked
+untranslated are rewritten to the current English text so stubs stay in sync
+when base strings change. Keys no longer in the English file are dropped.
+``translatable="false"`` entries stay base-only.
 
 MARK_IDENTICAL=1 additionally marks pre-existing entries whose text is
 byte-identical to English (one-time pass; translators delete false positives).
@@ -75,7 +77,7 @@ def main():
                 loc[name] = (elem.strip("\n"), had_marker)
 
         emitted = set()
-        added = kept = marked = 0
+        added = kept = refreshed = marked = 0
         for filename in STRING_FILENAMES:
             en_path = RES / "values" / filename
             if not en_path.exists():
@@ -94,10 +96,17 @@ def main():
                 emitted.add(name)
                 if name in loc:
                     elem, had_marker = loc[name]
-                    mark = had_marker or (mark_identical and inner(elem) == inner(en_elem))
-                    out.append(reindent(elem) + (" " + MARKER if mark else ""))
+                    if had_marker:
+                        # Stubs must mirror base exactly when English changes.
+                        if inner(elem) != inner(en_elem):
+                            refreshed += 1
+                        out.append(reindent(en_elem) + " " + MARKER)
+                        marked += 1
+                    else:
+                        mark = mark_identical and inner(elem) == inner(en_elem)
+                        out.append(reindent(elem) + (" " + MARKER if mark else ""))
+                        marked += mark
                     kept += 1
-                    marked += mark
                 else:
                     out.append(reindent(en_elem) + " " + MARKER)
                     added += 1
@@ -107,7 +116,7 @@ def main():
                 f.write("".join(out))
 
         stale = len(loc) - sum(1 for k in loc if k in emitted)
-        print(f"{lang_dir.name}: kept {kept}, added {added}, marked {marked}, dropped {stale} stale")
+        print(f"{lang_dir.name}: kept {kept}, added {added}, refreshed {refreshed}, marked {marked}, dropped {stale} stale")
 
 
 if __name__ == "__main__":

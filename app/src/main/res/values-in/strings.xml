@@ -65,6 +65,8 @@
     <string name="label_bestiary">Daftar Makhluk</string>
     <string name="label_enemies">Musuh</string>
     <string name="label_bosses">Bos</string>
+    <string name="label_mainland">Mainland</string> <!-- untranslated -->
+    <string name="label_elder">Elder</string> <!-- untranslated -->
     <string name="label_by_location">Dari Lokasi</string>
     <string name="bestiary_not_encountered">Belum pernah ditemui</string>
     <string name="bestiary_filter_all">All</string> <!-- untranslated -->

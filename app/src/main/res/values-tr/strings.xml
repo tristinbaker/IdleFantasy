@@ -65,6 +65,8 @@
     <string name="label_bestiary">Yaratık Rehberi</string>
     <string name="label_enemies">Düşmanlar</string>
     <string name="label_bosses">Bosslar</string>
+    <string name="label_mainland">Mainland</string> <!-- untranslated -->
+    <string name="label_elder">Elder</string> <!-- untranslated -->
     <string name="label_by_location">Konuma Göre</string>
     <string name="bestiary_not_encountered">Henüz karşılaşılmadı</string>
     <string name="bestiary_filter_all">All</string> <!-- untranslated -->

@@ -42,7 +42,7 @@ import com.fantasyidler.util.GameStrings
 import com.fantasyidler.ui.theme.ScaledSheetContent
 
 internal val CHARACTER_GENDERS = listOf("Male", "Female", "Other")
-internal val CHARACTER_RACES   = listOf("Human", "Elf", "Dwarf", "Orc", "Halfling", "Gnome")
+internal val CHARACTER_RACES   = listOf("human", "elf", "dwarf", "orc", "halfling", "gnome")
 internal const val CHARACTER_NAME_MAX_LENGTH = 256
 
 /** A title option ready to render — display strings already resolved, whether static or seasonal. */
@@ -76,6 +76,7 @@ fun CharacterSetupSheet(
     var draftRace   by remember { mutableStateOf(initialRace) }
     var draftIronman by remember { mutableStateOf(false) }
     val sheetState  = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+    val context = LocalContext.current
 
     ModalBottomSheet(
         onDismissRequest = onDismiss,
@@ -114,17 +115,12 @@ fun CharacterSetupSheet(
                 Text(stringResource(R.string.character_gender),
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant)
-                val genderLabels = mapOf(
-                    "Male"   to stringResource(R.string.character_gender_male),
-                    "Female" to stringResource(R.string.character_gender_female),
-                    "Other"  to stringResource(R.string.character_gender_other),
-                )
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     CHARACTER_GENDERS.forEach { gender ->
                         FilterChip(
                             selected = draftGender == gender,
                             onClick  = { draftGender = if (draftGender == gender) "" else gender },
-                            label    = { Text(genderLabels[gender] ?: gender) },
+                            label    = { Text(GameStrings.genderName(context, gender)) },
                         )
                     }
                 }
@@ -143,21 +139,13 @@ fun CharacterSetupSheet(
                 Text(stringResource(R.string.character_race),
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant)
-                val raceLabels = mapOf(
-                    "Human"    to stringResource(R.string.character_race_human),
-                    "Elf"      to stringResource(R.string.character_race_elf),
-                    "Dwarf"    to stringResource(R.string.character_race_dwarf),
-                    "Orc"      to stringResource(R.string.character_race_orc),
-                    "Halfling" to stringResource(R.string.character_race_halfling),
-                    "Gnome"    to stringResource(R.string.character_race_gnome),
-                )
                 if (isFirstTime) {
                     FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         CHARACTER_RACES.forEach { race ->
                             FilterChip(
                                 selected = draftRace == race,
                                 onClick  = { draftRace = if (draftRace == race) "" else race },
-                                label    = { Text(raceLabels[race] ?: race) },
+                                label    = { Text(GameStrings.raceName(context, race)) },
                             )
                         }
                     }
@@ -165,7 +153,7 @@ fun CharacterSetupSheet(
                     // Post-setup the race is reference-only here: changes cost a token or
                     // coins and go through the appearance editor's confirm flow.
                     Text(
-                        text  = raceLabels[draftRace] ?: draftRace.ifBlank { stringResource(R.string.character_race_human) },
+                        text  = GameStrings.raceName(context, draftRace).ifBlank { stringResource(R.string.character_race_human) },
                         style = MaterialTheme.typography.bodyLarge,
                     )
                 }
