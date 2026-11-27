@@ -1306,12 +1306,12 @@
     <string name="item_petalweave_cape_desc">Stitched from a thousand spring petals at the Night Market. Only sold during the Bloomtide.</string> <!-- untranslated -->
 
     <!-- Main story keepsakes (v2.0.0) -->
-    <string name="item_keepsake_obsidian_key_name">Obsidian Key</string> <!-- untranslated -->
+    <string name="item_keepsake_obsidian_key_name">Obsidianschlüssel</string>
     <string name="item_keepsake_obsidian_key_desc">An ornate key of black stone from the bandit leader’s lockbox, with an empty slot shaped for a gem.</string> <!-- untranslated -->
-    <string name="item_keepsake_mountain_heart_name">Essence of the Mountain</string> <!-- untranslated -->
+    <string name="item_keepsake_mountain_heart_name">Essenz des Bergs</string>
     <string name="item_keepsake_mountain_heart_desc">An impossibly heavy, ruby-like gem of elemental fire from the heart of the volcano.</string> <!-- untranslated -->
     <string name="item_keepsake_dragon_molt_name">Dragon’s Molt</string> <!-- untranslated -->
     <string name="item_keepsake_dragon_molt_desc">Discarded scales of the black king dragon, still heavy with primal magic.</string> <!-- untranslated -->
-    <string name="item_keepsake_eye_of_chaos_name">Eye of Chaos</string> <!-- untranslated -->
+    <string name="item_keepsake_eye_of_chaos_name">Chaosauge</string>
     <string name="item_keepsake_eye_of_chaos_desc">A rough, pearl-like gem from the Realm of Chaos. It fits the Obsidian Key’s empty slot.</string> <!-- untranslated -->
 </resources>

@@ -196,7 +196,7 @@
     <string name="enemy_snow_wolf_name">Schneewolf</string>
     <string name="enemy_ice_troll_name">Eistroll</string>
     <string name="enemy_rime_revenant_name">Rime Revenant</string> <!-- untranslated -->
-    <string name="enemy_glacier_yeti_name">Glacier Yeti</string> <!-- untranslated -->
+    <string name="enemy_glacier_yeti_name">Gletscheryeti</string>
     <string name="enemy_rime_giant_name">Rime Giant</string> <!-- untranslated -->
     <string name="enemy_frostbound_jarl_name">Frostbound Jarl</string> <!-- untranslated -->
     <string name="enemy_pollen_sprite_name">Pollen Sprite</string> <!-- untranslated -->
