@@ -122,8 +122,8 @@
     <string name="boss_king_black_dragon_desc">Легендарный трехголовый дракон, которого боятся во всем королевстве.</string>
     <string name="boss_demon_lord_name">Повелитель демонов</string>
     <string name="boss_demon_lord_desc">Древний демон из бездны, мастер темной магии.</string>
-    <string name="boss_kurzul_name">Kur’zul</string> <!-- untranslated -->
-    <string name="boss_kurzul_desc">The Orc necromancer who led the first Triptych expedition, waiting at the altar of Kargral’s Temple with a blade of coldflame.</string> <!-- untranslated -->
+    <string name="boss_kurzul_name">Кур’зул</string>
+    <string name="boss_kurzul_desc">Некромант-орк, возглавлявший первую экспедицию \"Триптиха\", ожидающий у алтаря в храме Карграла с клинком холодного пламени.</string>
     <string name="boss_kraken_name">Кракен</string>
     <string name="boss_kraken_desc">Ужас глубоких морей, колоссальный морской монстр.</string>
     <string name="boss_balrog_name">Тёмный демон</string>
@@ -192,13 +192,13 @@
     <string name="boss_last_elder_desc">Последний из Старцев, заточенный на дне Бездонных глубин. Только полный набор Старшей экипировки сможет выстоять в этом сражении.</string>
 
     <!-- Frostfall and Bloomtide -->
-    <string name="enemy_frost_sprite_name">Frost Sprite</string> <!-- untranslated -->
-    <string name="enemy_snow_wolf_name">Snow Wolf</string> <!-- untranslated -->
-    <string name="enemy_ice_troll_name">Ice Troll</string> <!-- untranslated -->
+    <string name="enemy_frost_sprite_name">Морозный эльф</string>
+    <string name="enemy_snow_wolf_name">Снежный волк</string>
+    <string name="enemy_ice_troll_name">Ледяной тролль</string>
     <string name="enemy_rime_revenant_name">Rime Revenant</string> <!-- untranslated -->
-    <string name="enemy_glacier_yeti_name">Glacier Yeti</string> <!-- untranslated -->
+    <string name="enemy_glacier_yeti_name">Ледяной Йети</string>
     <string name="enemy_rime_giant_name">Rime Giant</string> <!-- untranslated -->
-    <string name="enemy_frostbound_jarl_name">Frostbound Jarl</string> <!-- untranslated -->
+    <string name="enemy_frostbound_jarl_name">Замерзший ярл</string>
     <string name="enemy_pollen_sprite_name">Pollen Sprite</string> <!-- untranslated -->
     <string name="enemy_bramble_boar_name">Bramble Boar</string> <!-- untranslated -->
     <string name="enemy_briar_beast_name">Briar Beast</string> <!-- untranslated -->
@@ -207,9 +207,9 @@
     <string name="enemy_blossom_treant_name">Blossom Treant</string> <!-- untranslated -->
     <string name="enemy_bramble_titan_name">Bramble Titan</string> <!-- untranslated -->
     <string name="dungeon_rimewaste_name">The Rimewaste</string> <!-- untranslated -->
-    <string name="dungeon_rimewaste_desc">A wind-scoured snowfield where the Frostfall\'s creatures drift down from the peaks. Part of the Frostfall event.</string> <!-- untranslated -->
-    <string name="dungeon_glacier_hollows_name">The Glacier Hollows</string> <!-- untranslated -->
-    <string name="dungeon_glacier_hollows_desc">Blue-lit caverns carved through the glacier, home to the Frostfall\'s fiercest beasts. Part of the Frostfall event.</string> <!-- untranslated -->
+    <string name="dungeon_rimewaste_desc">Обдуваемое ветром снежное поле, куда с вершин спускаются существа Морозного падения. Часть события Морозное падение.</string>
+    <string name="dungeon_glacier_hollows_name">Ледниковые впадины</string>
+    <string name="dungeon_glacier_hollows_desc">Освещённые голубым светом пещеры, высеченные в леднике, где обитают самые свирепые чудовища Морозного падения. Часть события Морозного падения.</string>
     <string name="dungeon_thornmeadow_name">The Thornmeadow</string> <!-- untranslated -->
     <string name="dungeon_thornmeadow_desc">A meadow gone wild with the spring thaw, its flowers hiding thorns and teeth. Part of the Bloomtide event.</string> <!-- untranslated -->
     <string name="dungeon_wildgrove_name">The Wildgrove</string> <!-- untranslated -->
