@@ -7,6 +7,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.fantasyidler.data.db.AppDatabase
 import com.fantasyidler.data.model.SessionFrame
+import com.fantasyidler.repository.PetArenaRepository
 import com.fantasyidler.repository.BackupScheduler
 import com.fantasyidler.repository.BoostRepository
 import com.fantasyidler.repository.BuffNotificationScheduler
@@ -124,6 +125,7 @@ class DungeonRuneCollectTest {
             boostRepo, context, playerRepo, sessionRepo, gameData, questRepo, guildRepo,
             townRepo, queuedStarter, workerStarter, slayerRepo, monumentRepo, seasonalRepo,
             titleRepo, saveSlotRepo, StoryRepository(playerRepo), json,
+            PetArenaRepository(playerRepo, sessionRepo, gameData, json),
         )
         runBlocking { playerRepo.getOrCreatePlayer() }
     }

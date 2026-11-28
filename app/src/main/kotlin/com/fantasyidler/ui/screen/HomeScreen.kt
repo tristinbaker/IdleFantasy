@@ -1026,6 +1026,24 @@ fun HomeScreen(
                     onNavigateToWorkerSkills = { onNavigateToWorkerSkills(2) },
                 )
             }
+            // ── Pet Arena battle card ────────────────────────────────────
+            val petArena by viewModel.petArenaSession.collectAsState()
+            petArena?.let { arena ->
+                if (!arena.completed) {
+                    LaunchedEffect(arena.sessionId) {
+                        val remaining = arena.endsAt - System.currentTimeMillis()
+                        if (remaining > 0) delay(remaining)
+                        viewModel.onPetArenaExpiredLocally()
+                    }
+                }
+                PetArenaSessionCard(
+                    arena       = arena,
+                    context     = context,
+                    showEndTime = state.showSessionEndTime,
+                    onCollect   = viewModel::collectPetArena,
+                    onOpenArena = onNavigateToPetArena,
+                )
+            }
         }
     }
 }

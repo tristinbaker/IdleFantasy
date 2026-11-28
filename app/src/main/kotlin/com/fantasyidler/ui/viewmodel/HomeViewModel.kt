@@ -342,6 +342,7 @@ class HomeViewModel @Inject constructor(
     private val saveSlotRepo: SaveSlotRepository,
     private val storyRepo: StoryRepository,
     private val json: Json,
+    private val arenaRepo: PetArenaRepository,
 ) : ViewModel() {
 
     private val _extra = MutableStateFlow(HomeUiState())
@@ -389,10 +390,47 @@ class HomeViewModel @Inject constructor(
         val extra: HomeUiState,
     )
 
+    /** The running or finished Pet Arena battle, for its Home card (null = the arena slot is idle). */
+    val petArenaSession: StateFlow<PetArenaHomeUi?> = combine(
+        sessionRepo.activeWorkerSessionFlow(PetArenaRepository.PET_ARENA_SLOT),
+        playerRepo.playerFlow,
+    ) { session, player ->
+        if (session == null) return@combine null
+        val frames: List<SessionFrame> = try { json.decodeFromString(session.frames) } catch (_: Exception) { emptyList() }
+        val flags: PlayerFlags? = player?.let { p -> try { json.decodeFromString<PlayerFlags>(p.flags) } catch (_: Exception) { null } }
+        var running = 0
+        val zoneId = PetArenaRepository.zoneIdOf(session.activityKey)
+        val trainerId = PetArenaRepository.trainerIdOf(session.activityKey)
+        PetArenaHomeUi(
+            sessionId    = session.sessionId,
+            zoneId       = zoneId,
+            trainerId    = trainerId,
+            emoji        = gameData.petArena.trainers.firstOrNull { it.id == trainerId }?.emoji
+                ?: gameData.petArena.zones.firstOrNull { it.id == zoneId }?.emoji ?: "🐾",
+            startedAt    = session.startedAt,
+            endsAt       = session.endsAt,
+            completed    = session.completed,
+            winsByMinute = frames.map { running += it.kills; running },
+            teamEmoji    = flags?.petTeam.orEmpty().mapNotNull { gameData.pets[it]?.emoji },
+        )
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
+
     /** True when a Pet Arena battle has finished and waits to be collected (town card dot). */
-    val petArenaReady: StateFlow<Boolean> = sessionRepo.activeWorkerSessionFlow(PetArenaRepository.PET_ARENA_SLOT)
+    val petArenaReady: StateFlow<Boolean> = petArenaSession
         .map { it?.completed == true }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
+
+    /** The Home arena card's countdown reached zero: mark the battle finished even if its alarm was missed. */
+    fun onPetArenaExpiredLocally() {
+        viewModelScope.launch { arenaRepo.completeIfExpired() }
+    }
+
+    fun collectPetArena() {
+        viewModelScope.launch {
+            val result = arenaRepo.collect() ?: return@launch
+            _extra.update { it.copy(snackbarMessage = petArenaResultMessage(context.withAppLocale(), result)) }
+        }
+    }
 
     val uiState: StateFlow<HomeUiState> = combine(
         combine(playerRepo.playerFlow, sessionRepo.activeSessionFlow, sessionRepo.completedCountFlow) { a, b, c -> Triple(a, b, c) },

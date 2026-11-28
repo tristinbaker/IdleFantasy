@@ -11,6 +11,7 @@ import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.SessionFrame
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.data.model.WorkerTier
+import com.fantasyidler.repository.PetArenaRepository
 import com.fantasyidler.repository.BackupScheduler
 import com.fantasyidler.repository.BoostRepository
 import com.fantasyidler.repository.BuffNotificationScheduler
@@ -141,6 +142,7 @@ class WorkerDismissAshRefundTest {
             boostRepo, context, playerRepo, sessionRepo, gameData, questRepo, guildRepo,
             townRepo, queuedStarter, workerStarter, slayerRepo, monumentRepo, seasonalRepo,
             titleRepo, saveSlotRepo, StoryRepository(playerRepo), json,
+            PetArenaRepository(playerRepo, sessionRepo, gameData, json),
         )
         runBlocking { playerRepo.getOrCreatePlayer() }
     }

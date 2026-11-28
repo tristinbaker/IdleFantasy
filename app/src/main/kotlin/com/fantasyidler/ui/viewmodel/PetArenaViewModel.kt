@@ -55,6 +55,44 @@ data class ArenaPetUi(
 
 data class ArenaZoneUi(val zone: ArenaZone, val unlocked: Boolean)
 
+/** The Home screen's view of the arena slot (see HomeViewModel.petArenaSession). */
+data class PetArenaHomeUi(
+    val sessionId: String,
+    val zoneId: String?,
+    val trainerId: String?,
+    /** The zone's or trainer's emoji. */
+    val emoji: String,
+    val startedAt: Long,
+    val endsAt: Long,
+    val completed: Boolean,
+    /** Wins banked by the end of each simulated minute. */
+    val winsByMinute: List<Int>,
+    val teamEmoji: List<String>,
+)
+
+/** One collected arena session as banner text, shared by the arena screen and Home. */
+internal fun petArenaResultMessage(ctx: Context, r: PetArenaCollectResult): String {
+    val lines = mutableListOf<String>()
+    when {
+        r.trainerId != null && r.wins > 0 -> lines += r.badgeEarned
+            ?.let { ctx.getString(R.string.pet_arena_result_badge, GameStrings.arenaBadgeName(ctx, it)) }
+            ?: ctx.getString(R.string.pet_arena_result_trainer_won, GameStrings.arenaTrainerName(ctx, r.trainerId))
+        r.trainerId != null -> lines += ctx.getString(R.string.pet_arena_result_trainer_lost, GameStrings.arenaTrainerName(ctx, r.trainerId))
+        r.wiped             -> lines += ctx.getString(R.string.pet_arena_result_wiped, r.wins)
+        else                -> lines += ctx.getString(R.string.pet_arena_result_wins, r.wins)
+    }
+    for (c in r.levelChanges) {
+        val before = PetBattle.stage(c.oldLevel)
+        val after = PetBattle.stage(c.newLevel)
+        lines += if (after > before) ctx.getString(
+            R.string.pet_arena_evolved,
+            GameStrings.petStageName(ctx, c.petId, before),
+            GameStrings.petStageName(ctx, c.petId, after),
+        ) else ctx.getString(R.string.pet_arena_level_up, GameStrings.petStageName(ctx, c.petId, after), c.newLevel)
+    }
+    return lines.joinToString("\n")
+}
+
 data class ArenaTrainerUi(val trainer: ArenaTrainer, val unlocked: Boolean, val beaten: Boolean)
 
 data class ArenaActiveUi(
@@ -207,31 +245,8 @@ class PetArenaViewModel @Inject constructor(
     fun collect() {
         viewModelScope.launch {
             val result = arenaRepo.collect() ?: return@launch
-            message(resultMessage(result))
+            message(petArenaResultMessage(context.withAppLocale(), result))
         }
-    }
-
-    private fun resultMessage(r: PetArenaCollectResult): String {
-        val ctx = context.withAppLocale()
-        val lines = mutableListOf<String>()
-        when {
-            r.trainerId != null && r.wins > 0 -> lines += r.badgeEarned
-                ?.let { ctx.getString(R.string.pet_arena_result_badge, GameStrings.arenaBadgeName(ctx, it)) }
-                ?: ctx.getString(R.string.pet_arena_result_trainer_won, GameStrings.arenaTrainerName(ctx, r.trainerId))
-            r.trainerId != null -> lines += ctx.getString(R.string.pet_arena_result_trainer_lost, GameStrings.arenaTrainerName(ctx, r.trainerId))
-            r.wiped             -> lines += ctx.getString(R.string.pet_arena_result_wiped, r.wins)
-            else                -> lines += ctx.getString(R.string.pet_arena_result_wins, r.wins)
-        }
-        for (c in r.levelChanges) {
-            val before = PetBattle.stage(c.oldLevel)
-            val after = PetBattle.stage(c.newLevel)
-            lines += if (after > before) ctx.getString(
-                R.string.pet_arena_evolved,
-                GameStrings.petStageName(ctx, c.petId, before),
-                GameStrings.petStageName(ctx, c.petId, after),
-            ) else ctx.getString(R.string.pet_arena_level_up, GameStrings.petStageName(ctx, c.petId, after), c.newLevel)
-        }
-        return lines.joinToString("\n")
     }
 
     fun feed(petId: String, treatKey: String, qty: Int) {

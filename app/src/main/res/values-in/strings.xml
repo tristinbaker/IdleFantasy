@@ -1796,6 +1796,7 @@
     <string name="pet_arena_ends_in">Ends in %1$s</string> <!-- untranslated -->
     <string name="pet_arena_finished">Battle finished. Collect your rewards.</string> <!-- untranslated -->
     <string name="pet_arena_collect">Collect</string> <!-- untranslated -->
+    <string name="pet_arena_open">Open Arena</string> <!-- untranslated -->
     <string name="pet_arena_team_header">Your team: %1$d / %2$d</string> <!-- untranslated -->
     <string name="pet_arena_team_full">Your team is full (%1$d pets). Remove one first.</string> <!-- untranslated -->
     <string name="pet_arena_add_to_team">Add</string> <!-- untranslated -->

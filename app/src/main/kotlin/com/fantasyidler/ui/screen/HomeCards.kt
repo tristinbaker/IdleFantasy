@@ -34,6 +34,7 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.rememberModalBottomSheetState
+import com.fantasyidler.ui.viewmodel.PetArenaHomeUi
 import com.fantasyidler.data.model.RecentSession
 import com.fantasyidler.util.toTitleCase
 import androidx.compose.material3.Icon
@@ -846,6 +847,100 @@ internal fun WorkerSessionCard(
                         Text("[Debug] Finish Worker")
                     }
                 }
+            }
+        }
+    }
+}
+
+/** Pet Arena battle on Home, styled like [WorkerSessionCard]: countdown while running, Collect when done. */
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+internal fun PetArenaSessionCard(
+    arena: PetArenaHomeUi,
+    context: Context,
+    showEndTime: Boolean = true,
+    onCollect: () -> Unit,
+    onOpenArena: () -> Unit,
+) {
+    var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
+    LaunchedEffect(arena.endsAt) {
+        while (System.currentTimeMillis() < arena.endsAt) {
+            now = System.currentTimeMillis()
+            delay(1_000L)
+        }
+        now = System.currentTimeMillis()
+    }
+    val isDone = arena.completed || now >= arena.endsAt
+    val titleColor = if (isDone) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSecondaryContainer
+    val label = when {
+        arena.trainerId != null -> GameStrings.arenaTrainerName(context, arena.trainerId)
+        arena.zoneId != null    -> GameStrings.arenaZoneName(context, arena.zoneId)
+        else                    -> stringResource(R.string.pet_arena_title)
+    }
+    Surface(
+        shape    = RoundedCornerShape(16.dp),
+        color    = if (isDone) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.secondaryContainer,
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        Column(Modifier.padding(16.dp)) {
+            Row(
+                modifier              = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment     = Alignment.CenterVertically,
+            ) {
+                Text(
+                    text  = stringResource(R.string.pet_arena_title),
+                    style = MaterialTheme.typography.labelMedium,
+                    color = titleColor,
+                )
+                if (arena.teamEmoji.isNotEmpty()) Text(
+                    text  = arena.teamEmoji.joinToString(" "),
+                    style = MaterialTheme.typography.labelLarge,
+                )
+            }
+            Spacer(Modifier.height(4.dp))
+            Text(
+                text       = "${arena.emoji} $label",
+                style      = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold,
+                color      = titleColor,
+            )
+            val minute = ((now - arena.startedAt) / 60_000L).toInt()
+            val wins = if (isDone) arena.winsByMinute.lastOrNull() ?: 0 else arena.winsByMinute.getOrNull(minute - 1) ?: 0
+            if (!isDone) {
+                Spacer(Modifier.height(8.dp))
+                Text(
+                    text       = remember(now, showEndTime) { arena.endsAt.toCountdown(context, showEndTime) },
+                    style      = MaterialTheme.typography.headlineSmall,
+                    fontWeight = FontWeight.Bold,
+                    color      = MaterialTheme.colorScheme.onSecondaryContainer,
+                )
+            }
+            if (arena.zoneId != null) {
+                Spacer(Modifier.height(2.dp))
+                Text(
+                    text  = stringResource(R.string.pet_arena_wins_so_far, wins),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = titleColor.copy(alpha = 0.7f),
+                )
+            }
+            if (isDone) {
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text  = stringResource(R.string.pet_arena_finished),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onPrimaryContainer,
+                )
+            }
+            Spacer(Modifier.height(12.dp))
+            HorizontalDivider(color = MaterialTheme.colorScheme.outline.copy(alpha = 0.3f))
+            Spacer(Modifier.height(8.dp))
+            FlowRow(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement   = Arrangement.spacedBy(4.dp),
+            ) {
+                if (isDone) Button(onClick = onCollect) { Text(stringResource(R.string.pet_arena_collect)) }
+                OutlinedButton(onClick = onOpenArena) { Text(stringResource(R.string.pet_arena_open)) }
             }
         }
     }
