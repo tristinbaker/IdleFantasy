@@ -38,6 +38,7 @@ internal fun AchievementsTab(
     byGroup: Map<String, List<Achievement>>,
     unlockedCount: Int,
     totalCount: Int,
+    hidden: List<Achievement> = emptyList(),
 ) {
     var onlyMissing by remember { mutableStateOf(false) }
     LazyColumn(modifier = Modifier.fillMaxSize()) {
@@ -75,6 +76,7 @@ internal fun AchievementsTab(
                     "Combat" -> stringResource(R.string.achievement_group_combat)
                     "Quests" -> stringResource(R.string.achievement_group_quests)
                     "Collection" -> stringResource(R.string.achievement_group_collection)
+                    "Arena" -> stringResource(R.string.achievement_group_arena)
                     else -> group
                 }
                 SlotSectionHeader(groupLabel)
@@ -82,6 +84,34 @@ internal fun AchievementsTab(
             itemsIndexed(achievements, key = { _, it -> it.id }) { index, ach ->
                 AchievementRow(ach)
                 if (index < achievements.lastIndex) {
+                    HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+                }
+            }
+        }
+        val hiddenShown = if (onlyMissing) hidden.filter { !it.isUnlocked } else hidden
+        if (hiddenShown.isNotEmpty()) {
+            item(key = "hdr_hidden") {
+                SlotSectionHeader(stringResource(R.string.achievement_group_hidden))
+                Text(
+                    text = stringResource(
+                        R.string.achievement_hidden_count,
+                        hidden.count { it.isUnlocked },
+                        hidden.size,
+                    ),
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.padding(horizontal = 16.dp),
+                )
+                Text(
+                    text = stringResource(R.string.achievement_hidden_note),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 4.dp),
+                )
+            }
+            itemsIndexed(hiddenShown, key = { _, it -> "hidden_${it.id}" }) { index, ach ->
+                AchievementRow(ach)
+                if (index < hiddenShown.lastIndex) {
                     HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
                 }
             }

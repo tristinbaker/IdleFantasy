@@ -685,6 +685,12 @@
         "chance": 0.03,
         "quantity_min": 1,
         "quantity_max": 1
+      },
+      {
+        "item": "hellhound_hide",
+        "chance": 0.5,
+        "quantity_min": 1,
+        "quantity_max": 2
       }
     ],
     "always_drops": [
@@ -744,6 +750,12 @@
         "chance": 0.04,
         "quantity_min": 1,
         "quantity_max": 1
+      },
+      {
+        "item": "troll_hide",
+        "chance": 0.5,
+        "quantity_min": 1,
+        "quantity_max": 2
       }
     ],
     "always_drops": [
@@ -883,6 +895,12 @@
         "chance": 0.04,
         "quantity_min": 1,
         "quantity_max": 1
+      },
+      {
+        "item": "dragon_hide",
+        "chance": 0.6,
+        "quantity_min": 1,
+        "quantity_max": 2
       }
     ],
     "always_drops": [
@@ -1283,6 +1301,12 @@
         "chance": 0.25,
         "quantity_min": 1,
         "quantity_max": 3
+      },
+      {
+        "item": "troll_hide",
+        "chance": 0.5,
+        "quantity_min": 1,
+        "quantity_max": 2
       }
     ],
     "always_drops": [
@@ -2019,6 +2043,12 @@
         "chance": 0.25,
         "quantity_min": 2,
         "quantity_max": 5
+      },
+      {
+        "item": "shadow_silk",
+        "chance": 0.5,
+        "quantity_min": 1,
+        "quantity_max": 2
       }
     ],
     "always_drops": []
@@ -2975,6 +3005,12 @@
         "chance": 0.12,
         "quantity_min": 1,
         "quantity_max": 2
+      },
+      {
+        "item": "serpent_hide",
+        "chance": 0.5,
+        "quantity_min": 1,
+        "quantity_max": 2
       }
     ]
   },
@@ -3087,6 +3123,12 @@
         "chance": 0.02,
         "quantity_min": 1,
         "quantity_max": 1
+      },
+      {
+        "item": "wyvern_hide",
+        "chance": 0.5,
+        "quantity_min": 1,
+        "quantity_max": 2
       }
     ]
   },

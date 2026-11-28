@@ -182,8 +182,11 @@ class FarmingRepository @Inject constructor(
         seasonalEventRepo.recordGathering(items)
 
         val farmingPet = gameData.pets.values.firstOrNull { it.boostedSkill == Skills.FARMING }
-        if (farmingPet != null && Random.nextDouble() < 1.0 / 1000.0) {
-            playerRepo.addPetIfNew(farmingPet.id, farmingPet.boostPercent)
+        if (farmingPet != null) {
+            val petHit = Random.nextDouble() < 1.0 / 1000.0
+            if (petHit) playerRepo.addPetIfNew(farmingPet.id, farmingPet.boostPercent)
+            // Rolls even once the pet is owned, so the hidden dry streaks stay earnable.
+            playerRepo.updateFlagsAtomically { HiddenAchievements.onFarmPetRoll(it, farmingPet.id, petHit) }
         }
 
         playerRepo.withLock {

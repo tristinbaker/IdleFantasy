@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.viewmodel
 
+import com.fantasyidler.simulator.PetBattle
 import com.fantasyidler.util.withAppLocale
 
 import android.content.Context
@@ -250,7 +251,7 @@ class TowerViewModel @Inject constructor(
         val pets = try { json.decodeFromString<List<OwnedPet>>(petsJson) } catch (_: Exception) { return 0 }
         return pets.sumOf { pet ->
             val pd = gameData.pets[pet.id]
-            if (pd != null && (pd.boostedSkill == "combat" || pd.boostedSkill == "all")) pd.boostPercent else 0
+            if (pd != null && (pd.boostedSkill == "combat" || pd.boostedSkill == "all")) PetBattle.boostPercent(pd.boostPercent, pet.xp) else 0
         }
     }
 
@@ -501,6 +502,7 @@ class TowerViewModel @Inject constructor(
             val grantXp = isSkillSessionStillEligible(session, currentLevels, gameData)
 
             val playerDied = frames.any { it.died }
+            playerRepo.recordHiddenSessionStats(session, frames)
 
             val totalXpPerSkill = mutableMapOf<String, Long>()
             val allItems        = mutableMapOf<String, Int>()

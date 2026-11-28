@@ -10,6 +10,7 @@ import com.fantasyidler.notification.SessionNotificationManager
 import com.fantasyidler.util.GameStrings
 import com.fantasyidler.repository.QueuedSessionStarter
 import com.fantasyidler.repository.SessionRepository
+import com.fantasyidler.repository.PetArenaRepository
 import com.fantasyidler.repository.WorkerQueuedSessionStarter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -60,7 +61,10 @@ class SessionAlarmReceiver : BroadcastReceiver() {
         // Compute how late the alarm fired so the next session can be backdated.
         val now = System.currentTimeMillis()
         val backdateMs = maxOf(0L, now - session.endsAt)
-        if (session.isWorkerSession) {
+        if (session.workerSlot == PetArenaRepository.PET_ARENA_SLOT) {
+            // Arena battles have no queue: just tell the player their pets are done.
+            notificationManager.showSessionComplete(notifName)
+        } else if (session.isWorkerSession) {
             val slot = session.workerSlot.coerceAtLeast(1)
             val workerStarted = workerQueuedSessionStarter.startNextQueued(slot)
             if (!workerStarted) notificationManager.showSessionComplete(notifName)
@@ -84,6 +88,7 @@ class SessionAlarmReceiver : BroadcastReceiver() {
             "expedition" -> GameStrings.skillingDungeonName(lc, session.activityKey, fallback)
             "tower"      -> lc.getString(R.string.tower_title)
             "carnival"   -> lc.getString(R.string.carnival_title)
+            PetArenaRepository.SKILL_NAME -> lc.getString(R.string.pet_arena_title)
             else         -> GameStrings.skillName(lc, session.skillName)
         }
     }

@@ -253,6 +253,7 @@ class ShopViewModel @Inject constructor(
                 else -> {
                     val slotMult  = SLOT_MULTIPLIER[equipData.slot] ?: 2.0f
                     val metalBase = METAL_BASE[itemKey.substringBefore("_")]
+                        ?: LIGHT_ARMOR_BASE[itemKey.substringBefore("_")]?.takeIf { equipData.slot in LIGHT_ARMOR_SLOTS }
                     val bowBase   = BOW_BASE.entries.firstOrNull { itemKey.startsWith(it.key) }?.value
                     val jewelBase = if (equipData.slot == EquipSlot.RING || equipData.slot == EquipSlot.NECKLACE)
                         JEWEL_BASE.entries.firstOrNull { itemKey.startsWith(it.key) }?.value else null
@@ -272,6 +273,7 @@ class ShopViewModel @Inject constructor(
             val crop = gameData.crops[itemKey]
             when {
                 itemKey in CONSTRUCTION_SELL -> CONSTRUCTION_SELL.getValue(itemKey)
+                itemKey in ARMOR_MATERIAL_SELL -> ARMOR_MATERIAL_SELL.getValue(itemKey)
                 "arrow_shaft" in itemKey -> 1
                 "_arrow_tip" in itemKey -> when {
                     "runite"     in itemKey -> 8
@@ -784,6 +786,31 @@ class ShopViewModel @Inject constructor(
             "dwarven"    to 250,
             "dragon"     to 200,
             "balrog"     to 350,
+        )
+
+        /** Hide (ranged) and robe (magic) armour tiers, priced like the metal tier of the same level. */
+        private val LIGHT_ARMOR_BASE = mapOf(
+            "leather"     to 8,   "wool"       to 8,
+            "hardleather" to 20,  "apprentice" to 20,
+            "trollhide"   to 50,  "silk"       to 50,
+            "hellhound"   to 100, "mystic"     to 100,
+            "dragonhide"  to 150, "warlock"    to 150,
+            "serpentskin" to 200, "arcane"     to 200,
+            "wyvernhide"  to 250, "celestial"  to 250,
+        )
+
+        /** Only these slots use [LIGHT_ARMOR_BASE], so the Arcane Staff and Apprentice Staff keep their own price. */
+        private val LIGHT_ARMOR_SLOTS = setOf(EquipSlot.HEAD, EquipSlot.BODY, EquipSlot.LEGS, EquipSlot.BOOTS)
+
+        private val ARMOR_MATERIAL_SELL = mapOf(
+            "cloth"          to 3,
+            "silk_cloth"     to 8,
+            "troll_hide"     to 12,
+            "hellhound_hide" to 20,
+            "dragon_hide"    to 35,
+            "serpent_hide"   to 50,
+            "shadow_silk"    to 50,
+            "wyvern_hide"    to 70,
         )
 
         private val BOW_BASE = mapOf(

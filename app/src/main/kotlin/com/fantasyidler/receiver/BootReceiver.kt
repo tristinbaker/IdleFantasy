@@ -37,6 +37,7 @@ class BootReceiver : BroadcastReceiver() {
                 sessionRepository.recoverActiveSession(queuedSessionStarter)
                 sessionRepository.recoverActiveWorkerSession(1, workerStarter)
                 sessionRepository.recoverActiveWorkerSession(2, workerStarter)
+                sessionRepository.recoverPetArenaSession()
                 val flags = playerRepository.getFlags()
                 if (flags.backupFrequency.isNotEmpty()) backupScheduler.schedule(flags.backupFrequency)
                 buffNotifScheduler.scheduleXpBoostExpiry(flags.xpBoostExpiresAt)

@@ -32,6 +32,15 @@ class DailyQuestRepository @Inject constructor(
          *  piece drops, which resets the streak. Floors at 1, i.e. a guaranteed drop. */
         fun dwarvenDropDenominator(pityClaims: Int): Int =
             (DWARVEN_BASE_DENOMINATOR - 2 * pityClaims.coerceAtLeast(0)).coerceAtLeast(1)
+
+        internal val DWARVEN_DROP_POOL = listOf(
+            "dwarven_sword", "dwarven_scimitar", "dwarven_warhammer",
+            "dwarven_pickaxe", "dwarven_axe", "dwarven_fishing_rod", "dwarven_hoe",
+            "dwarven_helm", "dwarven_platebody", "dwarven_platelegs",
+            "dwarven_shield", "dwarven_boots",
+            "dwarven_hammer", "dwarven_tinderbox", "dwarven_frying_pan", "dwarven_grappling_hook",
+            "dwarven_lockpick",
+        )
     }
 
     /** Denominator for the quests screen, or null when every Dwarven and Divine piece is owned
@@ -41,14 +50,7 @@ class DailyQuestRepository @Inject constructor(
         return dwarvenDropDenominator(flags.dwarvenPityClaims)
     }
 
-    internal val dwarvenDropPool = listOf(
-        "dwarven_sword", "dwarven_scimitar", "dwarven_warhammer",
-        "dwarven_pickaxe", "dwarven_axe", "dwarven_fishing_rod", "dwarven_hoe",
-        "dwarven_helm", "dwarven_platebody", "dwarven_platelegs",
-        "dwarven_shield", "dwarven_boots",
-        "dwarven_hammer", "dwarven_tinderbox", "dwarven_frying_pan", "dwarven_grappling_hook",
-        "dwarven_lockpick",
-    )
+    internal val dwarvenDropPool = DWARVEN_DROP_POOL
 
     /** Returns epoch ms of the next daily reset ([resetHour] local time) after [fromMs]. */
     fun nextResetMs(fromMs: Long = System.currentTimeMillis(), resetHour: Int): Long {
@@ -226,6 +228,6 @@ class DailyQuestRepository @Inject constructor(
                 else                    -> flags.dwarvenPityClaims + 1
             },
         )
-        return newFlags to reward
+        return HiddenAchievements.onDailyClaim(flags, newFlags, dropped) to reward
     }
 }

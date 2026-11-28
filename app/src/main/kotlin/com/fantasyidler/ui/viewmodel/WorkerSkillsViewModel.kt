@@ -212,7 +212,7 @@ class WorkerSkillsViewModel @Inject constructor(
                 xpPerItem          = r.xpPerItem,
                 skillName          = Skills.COOKING,
                 outputHealingValue = r.healingValue,
-                category           = "Food",
+                category           = if (r.healingValue > 0) "Food" else "Pet Treat",
             )
         }.sortedBy { it.levelRequired }
     }

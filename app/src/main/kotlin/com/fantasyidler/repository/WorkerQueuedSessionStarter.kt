@@ -42,6 +42,8 @@ class WorkerQueuedSessionStarter @Inject constructor(
     private val mutex = Mutex()
 
     suspend fun startNextQueued(slot: Int = 1): Boolean {
+        // Only the two town-worker slots have queues; the Pet Arena slot must never borrow one.
+        if (slot !in 1..2) return false
         return playerRepo.playerMutex.withLock {
             mutex.withLock {
                 val current = sessionRepo.getActiveWorkerSession(slot)

@@ -75,4 +75,10 @@ data class SessionFrame(
      *  potions, blessings, prestige), set on frame 0 only (empty = not recorded; the banner
      *  falls back to gear bonuses). Potions aren't recoverable from live state (issue #1569). */
     @SerialName("stats_at_start") val statsAtStart: Map<String, Int> = emptyMap(),
+    /** Dungeon and boss only: combat gear worn when the session started (armor slots plus the
+     *  active weapon under "weapon"), set on frame 0 only. Null = not recorded (sessions
+     *  started before 2.1.0); empty = nothing equipped. Read by the hidden achievements. */
+    @SerialName("gear_at_start") val gearAtStart: Map<String, String>? = null,
+    /** Pet Arena only: pet XP earned this minute, keyed by owned pet id. */
+    @SerialName("pet_xp") val petXp: Map<String, Long> = emptyMap(),
 )

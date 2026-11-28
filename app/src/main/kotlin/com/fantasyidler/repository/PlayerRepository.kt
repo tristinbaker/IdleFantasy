@@ -10,6 +10,7 @@ import com.fantasyidler.data.json.EquipmentData
 import com.fantasyidler.data.json.PetData
 import com.fantasyidler.data.model.*
 import com.fantasyidler.simulator.HeirloomStats
+import com.fantasyidler.simulator.PetBattle
 import com.fantasyidler.simulator.PrestigeBoosts
 import com.fantasyidler.simulator.PrestigePoints
 import com.fantasyidler.simulator.SkillSimulator
@@ -502,10 +503,12 @@ class PlayerRepository @Inject constructor(
             }
         }
 
+        val flags: PlayerFlags = json.decodeFromString(player.flags)
         playerDao.upsert(player.copy(
             inventory   = json.encode<Map<String, Int>>(inventory),
             skillLevels = json.encode<Map<String, Int>>(levels),
             skillXp     = json.encode<Map<String, Long>>(xpMap),
+            flags       = json.encode<PlayerFlags>(HiddenAchievements.onBonesBuried(flags, buried)),
         ))
         return BuryBonesResult(buried, xpGained, awardedCape)
     }
@@ -1131,11 +1134,13 @@ class PlayerRepository @Inject constructor(
             equipped.entries.forEach { if (it.value == itemKey) it.setValue(null) }
         }
 
+        val flags: PlayerFlags = json.decodeFromString(player.flags)
         playerDao.upsert(
             player.copy(
                 coins     = player.coins + priceEach.toLong() * qty,
                 inventory = json.encode<Map<String, Int>>(inventory),
                 equipped  = json.encode<Map<String, String?>>(equipped),
+                flags     = json.encode<PlayerFlags>(HiddenAchievements.onItemsSold(flags, mapOf(itemKey to qty), bulk = false)),
             )
         )
         return true
@@ -1164,11 +1169,13 @@ class PlayerRepository @Inject constructor(
             coins += (pricePerItem[key] ?: 0).toLong() * actual
         }
         if (sold.isNotEmpty()) {
+            val flags: PlayerFlags = json.decodeFromString(player.flags)
             playerDao.upsert(
                 player.copy(
                     coins     = player.coins + coins,
                     inventory = json.encode<Map<String, Int>>(inventory),
                     equipped  = json.encode<Map<String, String?>>(equipped),
+                    flags     = json.encode<PlayerFlags>(HiddenAchievements.onItemsSold(flags, sold, bulk = true)),
                 )
             )
         }
@@ -1510,11 +1517,136 @@ class PlayerRepository @Inject constructor(
         if (now - (flags.prestigeLastRespecAt[skillName] ?: 0L) < PRESTIGE_RESPEC_COOLDOWN_MS) {
             return@withLock PrestigeActionResult.COOLDOWN
         }
-        playerDao.upsert(player.copy(flags = json.encode<PlayerFlags>(flags.copy(
+        playerDao.upsert(player.copy(flags = json.encode<PlayerFlags>(HiddenAchievements.onRespec(flags.copy(
             prestigeNodes        = flags.prestigeNodes - skillName,
             prestigeLastRespecAt = flags.prestigeLastRespecAt + (skillName to now),
-        ))))
+        ), now))))
         PrestigeActionResult.SUCCESS
+    }
+
+    // ------------------------------------------------------------------ Pet Arena
+
+    data class PetLevelChange(val petId: String, val oldLevel: Int, val newLevel: Int)
+
+    /** First arena visit: owned pet [petId] becomes the starter and the first team member. */
+    suspend fun choosePetArenaStarter(petId: String): Boolean = playerMutex.withLock {
+        val player = getOrCreatePlayer()
+        val flags: PlayerFlags = json.decodeFromString(player.flags)
+        val pets: List<OwnedPet> = json.decodeFromString(player.pets)
+        if (flags.petArenaStarter != null || pets.none { it.id == petId }) return@withLock false
+        playerDao.upsert(player.copy(flags = json.encode<PlayerFlags>(flags.copy(petArenaStarter = petId, petTeam = listOf(petId)))))
+        true
+    }
+
+    /** Sets the arena team: up to [PetBattle.MAX_TEAM] distinct owned pets, in fighting order. */
+    suspend fun setPetTeam(petIds: List<String>): Boolean = playerMutex.withLock {
+        val player = getOrCreatePlayer()
+        val pets: List<OwnedPet> = json.decodeFromString(player.pets)
+        val owned = pets.map { it.id }.toSet()
+        if (petIds.size > PetBattle.MAX_TEAM || petIds.distinct().size != petIds.size || !owned.containsAll(petIds)) return@withLock false
+        val flags: PlayerFlags = json.decodeFromString(player.flags)
+        playerDao.upsert(player.copy(flags = json.encode<PlayerFlags>(flags.copy(petTeam = petIds))))
+        true
+    }
+
+    /**
+     * Applies a collected arena session in one write: pet XP (capped at level 99), loot, coins,
+     * the win count and a newly earned badge. Returns the pets that levelled up.
+     */
+    suspend fun applyPetArenaResults(
+        petXp: Map<String, Long>,
+        items: Map<String, Int>,
+        coins: Long,
+        wins: Long,
+        badge: String?,
+    ): List<PetLevelChange> = playerMutex.withLock {
+        val player = getOrCreatePlayer()
+        val flags: PlayerFlags = json.decodeFromString(player.flags)
+        val pets: MutableList<OwnedPet> = json.decodeFromString(player.pets)
+        val inventory: MutableMap<String, Int> = json.decodeFromString(player.inventory)
+        val changes = mutableListOf<PetLevelChange>()
+        for (i in pets.indices) {
+            val gain = petXp[pets[i].id] ?: continue
+            val before = PetBattle.level(pets[i].xp)
+            val xp = (pets[i].xp + gain).coerceAtMost(PetBattle.MAX_XP)
+            pets[i] = pets[i].copy(xp = xp)
+            val after = PetBattle.level(xp)
+            if (after > before) changes += PetLevelChange(pets[i].id, before, after)
+        }
+        val gained = items.filterValues { it > 0 }
+        for ((key, qty) in gained) inventory[key] = (inventory[key] ?: 0) + qty
+        val newFlags = flags.copy(
+            petArenaWins = flags.petArenaWins + wins,
+            petBadges    = if (badge != null) flags.petBadges + badge else flags.petBadges,
+        ).plusSeen(gained.keys)
+        playerDao.upsert(player.copy(
+            coins     = player.coins + coins.coerceAtLeast(0L),
+            inventory = json.encode<Map<String, Int>>(inventory),
+            pets      = json.encode<List<OwnedPet>>(pets),
+            flags     = json.encode<PlayerFlags>(newFlags),
+        ))
+        changes
+    }
+
+    /** Feeds [qty] of [treatKey] to owned pet [petId] for [xpEach] pet XP apiece; null when it can't. */
+    suspend fun feedPetTreat(petId: String, treatKey: String, qty: Int, xpEach: Long): PetLevelChange? = playerMutex.withLock {
+        if (qty <= 0 || xpEach <= 0L) return@withLock null
+        val player = getOrCreatePlayer()
+        val inventory: MutableMap<String, Int> = json.decodeFromString(player.inventory)
+        val pets: MutableList<OwnedPet> = json.decodeFromString(player.pets)
+        val i = pets.indexOfFirst { it.id == petId }
+        val have = inventory[treatKey] ?: 0
+        if (i < 0 || have < qty || pets[i].xp >= PetBattle.MAX_XP) return@withLock null
+        if (have == qty) inventory.remove(treatKey) else inventory[treatKey] = have - qty
+        val before = PetBattle.level(pets[i].xp)
+        val xp = (pets[i].xp + xpEach * qty).coerceAtMost(PetBattle.MAX_XP)
+        pets[i] = pets[i].copy(xp = xp)
+        playerDao.upsert(player.copy(
+            inventory = json.encode<Map<String, Int>>(inventory),
+            pets      = json.encode<List<OwnedPet>>(pets),
+        ))
+        PetLevelChange(petId, before, PetBattle.level(xp))
+    }
+
+    /** Feeds one collected session into the hidden achievement counters (deaths, dry streaks, ...). */
+    suspend fun recordHiddenSessionStats(session: SkillSession, frames: List<SessionFrame>) {
+        val skill = session.skillName
+        val boss = if (skill == "boss") gameData.bosses[session.activityKey] else null
+        val dungeon = if (skill == "combat") gameData.dungeons[session.activityKey] else null
+        // Cooking's pet is raid-only and farming rolls per harvest, so neither rolls per minute.
+        val skillPetId = if (skill in Skills.ALL && skill != Skills.COOKING && skill != Skills.FARMING)
+            gameData.pets.values.firstOrNull { it.boostedSkill == skill }?.id else null
+        val info = HiddenAchievements.SessionInfo(
+            skillName               = skill,
+            activityKey             = session.activityKey,
+            isElder                 = session.isElderSession,
+            skillPetId              = skillPetId,
+            bossPetId               = boss?.pet?.id,
+            bossPetChance           = boss?.pet?.chance ?: 0.0,
+            dungeonRecommendedLevel = dungeon?.recommendedLevel ?: 0,
+            dungeonSafeZone         = dungeon?.safeZone ?: false,
+        )
+        updateFlagsAtomically { HiddenAchievements.onSessionCollected(it, info, frames) }
+    }
+
+    /**
+     * Ratchets [PlayerFlags.hiddenAchievements] forward with whatever [evaluate] says the current
+     * state has earned, and marks every unlock as announced. Returns the ids that still needed
+     * their banner (in display order), so each one is shown exactly once per character.
+     */
+    suspend fun syncHiddenAchievements(evaluate: (Player, PlayerFlags) -> Set<String>): List<String> = playerMutex.withLock {
+        val player = playerDao.getPlayer() ?: return@withLock emptyList()
+        val flags: PlayerFlags = json.decodeFromString(player.flags)
+        val now = System.currentTimeMillis()
+        val earned = evaluate(player, flags) - flags.hiddenAchievements.keys
+        val unlocked = flags.hiddenAchievements + earned.associateWith { now }
+        val toAnnounce = unlocked.keys - flags.hiddenAnnounced
+        if (earned.isEmpty() && toAnnounce.isEmpty()) return@withLock emptyList()
+        playerDao.upsert(player.copy(flags = json.encode<PlayerFlags>(flags.copy(
+            hiddenAchievements = unlocked,
+            hiddenAnnounced    = flags.hiddenAnnounced + toAnnounce,
+        ))))
+        HiddenAchievements.ALL.filter { it in toAnnounce }
     }
 
     /**
@@ -1561,7 +1693,8 @@ class PlayerRepository @Inject constructor(
 
         /** Coin-drop multiplier from the Golden Goose pet (Monument stage 4); applies wherever Fortune blessings do. */
         fun gooseCoinMultiplier(pets: List<OwnedPet>): Double =
-            1.0 + (pets.firstOrNull { it.id == MonumentRepository.GOLDEN_GOOSE_PET_ID }?.boostPercent ?: 0) / 100.0
+            1.0 + (pets.firstOrNull { it.id == MonumentRepository.GOLDEN_GOOSE_PET_ID }
+                ?.let { PetBattle.boostPercent(it.boostPercent, it.xp) } ?: 0) / 100.0
     }
 
     /**

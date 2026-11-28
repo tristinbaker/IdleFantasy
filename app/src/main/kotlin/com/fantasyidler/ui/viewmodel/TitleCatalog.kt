@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.viewmodel
 
+import com.fantasyidler.repository.PetArenaRepository
 import com.fantasyidler.R
 import com.fantasyidler.data.model.MainStory
 
@@ -36,5 +37,6 @@ object TitleCatalog {
         TitleDefinition("isle_champion",     R.string.title_isle_champion_name,     R.string.title_isle_champion_requirement),
         TitleDefinition(MainStory.DUSTER_TITLE, R.string.title_duster_name,         R.string.title_duster_requirement),
         TitleDefinition(MainStory.BANE_TITLE,   R.string.title_bane_of_kurzul_name, R.string.title_bane_of_kurzul_requirement),
+        TitleDefinition(PetArenaRepository.CHAMPION_TITLE, R.string.title_arena_champion_name, R.string.title_arena_champion_requirement),
     )
 }

@@ -48,10 +48,12 @@ import androidx.navigation.NavController
 import com.fantasyidler.data.model.CombatGuilds
 import com.fantasyidler.data.model.Skills
 import com.fantasyidler.notification.SessionNotificationManager
+import com.fantasyidler.ui.screen.AppBannerCenter
 import com.fantasyidler.ui.screen.AppBannerHost
 import com.fantasyidler.ui.screen.BoneAltarScreen
 import com.fantasyidler.ui.screen.HouseScreen
 import com.fantasyidler.ui.screen.CarnivalScreen
+import com.fantasyidler.ui.screen.PetArenaScreen
 import com.fantasyidler.ui.screen.TowerScreen
 import com.fantasyidler.ui.screen.ChurchScreen
 import com.fantasyidler.ui.screen.MonumentScreen
@@ -82,6 +84,7 @@ import com.fantasyidler.ui.screen.ShopScreen
 import com.fantasyidler.ui.screen.SkillsScreen
 import com.fantasyidler.ui.screen.SlayerScreen
 import com.fantasyidler.ui.screen.WorkerSkillsScreen
+import com.fantasyidler.ui.viewmodel.HiddenAchievementsViewModel
 import com.fantasyidler.ui.viewmodel.NavBadgeViewModel
 import com.fantasyidler.ui.viewmodel.OnboardingViewModel
 import com.fantasyidler.ui.viewmodel.StoryViewModel
@@ -110,6 +113,10 @@ fun AppNavigation(
 
     val navController = rememberNavController()
     val storyVm: StoryViewModel = hiltViewModel()
+    val hiddenAchievementsVm: HiddenAchievementsViewModel = hiltViewModel()
+    LaunchedEffect(hiddenAchievementsVm) {
+        hiddenAchievementsVm.unlockBanners.collect { AppBannerCenter.enqueue(it) }
+    }
 
     LaunchedEffect(pendingNavigateTo) {
         when (pendingNavigateTo) {
@@ -259,6 +266,7 @@ fun AppNavigation(
                     onNavigateToBuilder      = { navController.navigate(Screen.Builder.route) },
                     onNavigateToHouse        = { navController.navigate(Screen.House.route) },
                     onNavigateToCarnival     = { navController.navigate(Screen.Carnival.route) },
+                    onNavigateToPetArena     = { navController.navigate(Screen.PetArena.route) },
                     onNavigateToSeasonalEvent = { navController.navigate(Screen.SeasonalEvent.route) },
                     onNavigateToElderIsleShop = { navController.navigate(Screen.ElderIsleShop.route) },
                     onNavigateToElderArmorMaster = { navController.navigate(Screen.ElderArmorMaster.route) },
@@ -447,6 +455,11 @@ fun AppNavigation(
             }
             paneComposable(Screen.Carnival.route) { entry ->
                 CarnivalScreen(
+                    onBack = { if (navController.currentBackStackEntry == entry) navController.popBackStack() },
+                )
+            }
+            paneComposable(Screen.PetArena.route) { entry ->
+                PetArenaScreen(
                     onBack = { if (navController.currentBackStackEntry == entry) navController.popBackStack() },
                 )
             }

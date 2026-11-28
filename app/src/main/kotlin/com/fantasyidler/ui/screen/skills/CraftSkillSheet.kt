@@ -321,6 +321,10 @@ private fun CraftRecipeRow(
                 if (recipe.outputAttackBonus   > 0) add("+${recipe.outputAttackBonus} ${context.getString(R.string.profile_stat_atk)}")
                 if (recipe.outputStrengthBonus > 0) add("+${recipe.outputStrengthBonus} ${context.getString(R.string.profile_stat_str)}")
                 if (recipe.outputDefenseBonus  > 0) add("+${recipe.outputDefenseBonus} ${context.getString(R.string.profile_stat_def)}")
+                if (recipe.outputRangedAttackBonus   > 0) add("+${recipe.outputRangedAttackBonus} ${context.getString(R.string.armory_stat_ranged_atk)}")
+                if (recipe.outputRangedStrengthBonus > 0) add("+${recipe.outputRangedStrengthBonus} ${context.getString(R.string.armory_stat_ranged_str)}")
+                if (recipe.outputMagicAttackBonus    > 0) add("+${recipe.outputMagicAttackBonus} ${context.getString(R.string.armory_stat_magic_atk)}")
+                if (recipe.outputMagicDamageBonus    > 0) add("+${recipe.outputMagicDamageBonus} ${context.getString(R.string.armory_stat_magic_dmg)}")
                 if (recipe.outputHealingValue  > 0) add(context.getString(R.string.combat_heals_hp, recipe.outputHealingValue))
                 if (recipe.outputDamage        > 0) add("+${recipe.outputDamage} ${context.getString(R.string.armory_stat_ranged_str)}")
             }

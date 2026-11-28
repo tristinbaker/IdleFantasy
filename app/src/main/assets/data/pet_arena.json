@@ -1,0 +1,530 @@
+{
+  "creatures": {
+    "meadow_hopper": {
+      "id": "meadow_hopper",
+      "emoji": "🦗",
+      "battle_type": "ranged",
+      "base_attack": 78,
+      "base_defense": 52,
+      "base_hp": 62
+    },
+    "thornbug": {
+      "id": "thornbug",
+      "emoji": "🐞",
+      "battle_type": "melee",
+      "base_attack": 54,
+      "base_defense": 74,
+      "base_hp": 64
+    },
+    "puff_sprite": {
+      "id": "puff_sprite",
+      "emoji": "🌼",
+      "battle_type": "magic",
+      "base_attack": 64,
+      "base_defense": 64,
+      "base_hp": 64
+    },
+    "bramble_boar": {
+      "id": "bramble_boar",
+      "emoji": "🐗",
+      "battle_type": "melee",
+      "base_attack": 72,
+      "base_defense": 58,
+      "base_hp": 62
+    },
+    "quill_hog": {
+      "id": "quill_hog",
+      "emoji": "🦔",
+      "battle_type": "ranged",
+      "base_attack": 58,
+      "base_defense": 62,
+      "base_hp": 72
+    },
+    "glade_wisp": {
+      "id": "glade_wisp",
+      "emoji": "✨",
+      "battle_type": "magic",
+      "base_attack": 78,
+      "base_defense": 52,
+      "base_hp": 62
+    },
+    "crystal_crawler": {
+      "id": "crystal_crawler",
+      "emoji": "🦂",
+      "battle_type": "melee",
+      "base_attack": 54,
+      "base_defense": 74,
+      "base_hp": 64
+    },
+    "cave_screecher": {
+      "id": "cave_screecher",
+      "emoji": "🦇",
+      "battle_type": "ranged",
+      "base_attack": 78,
+      "base_defense": 52,
+      "base_hp": 62
+    },
+    "glimmer_shade": {
+      "id": "glimmer_shade",
+      "emoji": "🌫️",
+      "battle_type": "magic",
+      "base_attack": 64,
+      "base_defense": 64,
+      "base_hp": 64
+    },
+    "cinder_brute": {
+      "id": "cinder_brute",
+      "emoji": "🦏",
+      "battle_type": "melee",
+      "base_attack": 72,
+      "base_defense": 58,
+      "base_hp": 62
+    },
+    "ash_stalker": {
+      "id": "ash_stalker",
+      "emoji": "🐆",
+      "battle_type": "ranged",
+      "base_attack": 78,
+      "base_defense": 52,
+      "base_hp": 62
+    },
+    "ember_sylph": {
+      "id": "ember_sylph",
+      "emoji": "🔥",
+      "battle_type": "magic",
+      "base_attack": 58,
+      "base_defense": 62,
+      "base_hp": 72
+    },
+    "void_maw": {
+      "id": "void_maw",
+      "emoji": "🦈",
+      "battle_type": "melee",
+      "base_attack": 72,
+      "base_defense": 58,
+      "base_hp": 62
+    },
+    "rift_raptor": {
+      "id": "rift_raptor",
+      "emoji": "🦅",
+      "battle_type": "ranged",
+      "base_attack": 78,
+      "base_defense": 52,
+      "base_hp": 62
+    },
+    "abyss_seer": {
+      "id": "abyss_seer",
+      "emoji": "👁️",
+      "battle_type": "magic",
+      "base_attack": 64,
+      "base_defense": 64,
+      "base_hp": 64
+    }
+  },
+  "zones": [
+    {
+      "id": "sunny_meadow",
+      "emoji": "🌻",
+      "level_min": 1,
+      "level_max": 15,
+      "badges_required": 0,
+      "creatures": [
+        "meadow_hopper",
+        "thornbug",
+        "puff_sprite"
+      ],
+      "loot": [
+        {
+          "item": "coins",
+          "chance": 1.0,
+          "quantity_min": 5,
+          "quantity_max": 25
+        },
+        {
+          "item": "cowhide",
+          "chance": 0.25,
+          "quantity_min": 1,
+          "quantity_max": 2
+        },
+        {
+          "item": "wool",
+          "chance": 0.25,
+          "quantity_min": 1,
+          "quantity_max": 2
+        },
+        {
+          "item": "feather",
+          "chance": 0.25,
+          "quantity_min": 1,
+          "quantity_max": 4
+        },
+        {
+          "item": "bones",
+          "chance": 0.2,
+          "quantity_min": 1,
+          "quantity_max": 1
+        },
+        {
+          "item": "sapphire",
+          "chance": 0.01,
+          "quantity_min": 1,
+          "quantity_max": 1
+        }
+      ]
+    },
+    {
+      "id": "whispering_thicket",
+      "emoji": "🌲",
+      "level_min": 12,
+      "level_max": 35,
+      "badges_required": 1,
+      "creatures": [
+        "bramble_boar",
+        "quill_hog",
+        "glade_wisp"
+      ],
+      "loot": [
+        {
+          "item": "coins",
+          "chance": 1.0,
+          "quantity_min": 15,
+          "quantity_max": 60
+        },
+        {
+          "item": "leather",
+          "chance": 0.2,
+          "quantity_min": 1,
+          "quantity_max": 2
+        },
+        {
+          "item": "troll_hide",
+          "chance": 0.12,
+          "quantity_min": 1,
+          "quantity_max": 1
+        },
+        {
+          "item": "spider_silk",
+          "chance": 0.25,
+          "quantity_min": 1,
+          "quantity_max": 3
+        },
+        {
+          "item": "big_bones",
+          "chance": 0.15,
+          "quantity_min": 1,
+          "quantity_max": 1
+        },
+        {
+          "item": "emerald",
+          "chance": 0.01,
+          "quantity_min": 1,
+          "quantity_max": 1
+        },
+        {
+          "item": "magic_herb",
+          "chance": 0.04,
+          "quantity_min": 1,
+          "quantity_max": 1
+        }
+      ]
+    },
+    {
+      "id": "glimmer_caverns",
+      "emoji": "💎",
+      "level_min": 30,
+      "level_max": 55,
+      "badges_required": 3,
+      "creatures": [
+        "crystal_crawler",
+        "cave_screecher",
+        "glimmer_shade"
+      ],
+      "loot": [
+        {
+          "item": "coins",
+          "chance": 1.0,
+          "quantity_min": 40,
+          "quantity_max": 120
+        },
+        {
+          "item": "hellhound_hide",
+          "chance": 0.15,
+          "quantity_min": 1,
+          "quantity_max": 1
+        },
+        {
+          "item": "troll_hide",
+          "chance": 0.12,
+          "quantity_min": 1,
+          "quantity_max": 2
+        },
+        {
+          "item": "dragon_hide",
+          "chance": 0.05,
+          "quantity_min": 1,
+          "quantity_max": 1
+        },
+        {
+          "item": "big_bones",
+          "chance": 0.15,
+          "quantity_min": 1,
+          "quantity_max": 2
+        },
+        {
+          "item": "ruby",
+          "chance": 0.01,
+          "quantity_min": 1,
+          "quantity_max": 1
+        },
+        {
+          "item": "magic_herb",
+          "chance": 0.05,
+          "quantity_min": 1,
+          "quantity_max": 1
+        }
+      ]
+    },
+    {
+      "id": "ashen_wastes",
+      "emoji": "🌋",
+      "level_min": 50,
+      "level_max": 75,
+      "badges_required": 5,
+      "creatures": [
+        "cinder_brute",
+        "ash_stalker",
+        "ember_sylph"
+      ],
+      "loot": [
+        {
+          "item": "coins",
+          "chance": 1.0,
+          "quantity_min": 80,
+          "quantity_max": 250
+        },
+        {
+          "item": "dragon_hide",
+          "chance": 0.15,
+          "quantity_min": 1,
+          "quantity_max": 1
+        },
+        {
+          "item": "serpent_hide",
+          "chance": 0.1,
+          "quantity_min": 1,
+          "quantity_max": 1
+        },
+        {
+          "item": "shadow_silk",
+          "chance": 0.1,
+          "quantity_min": 1,
+          "quantity_max": 1
+        },
+        {
+          "item": "dragon_bone",
+          "chance": 0.1,
+          "quantity_min": 1,
+          "quantity_max": 1
+        },
+        {
+          "item": "diamond",
+          "chance": 0.008,
+          "quantity_min": 1,
+          "quantity_max": 1
+        },
+        {
+          "item": "spirit_herb",
+          "chance": 0.04,
+          "quantity_min": 1,
+          "quantity_max": 1
+        }
+      ]
+    },
+    {
+      "id": "abyssal_rift",
+      "emoji": "🌀",
+      "level_min": 72,
+      "level_max": 99,
+      "badges_required": 7,
+      "creatures": [
+        "void_maw",
+        "rift_raptor",
+        "abyss_seer"
+      ],
+      "loot": [
+        {
+          "item": "coins",
+          "chance": 1.0,
+          "quantity_min": 150,
+          "quantity_max": 400
+        },
+        {
+          "item": "wyvern_hide",
+          "chance": 0.1,
+          "quantity_min": 1,
+          "quantity_max": 1
+        },
+        {
+          "item": "serpent_hide",
+          "chance": 0.1,
+          "quantity_min": 1,
+          "quantity_max": 1
+        },
+        {
+          "item": "shadow_silk",
+          "chance": 0.1,
+          "quantity_min": 1,
+          "quantity_max": 2
+        },
+        {
+          "item": "dragon_bone",
+          "chance": 0.12,
+          "quantity_min": 1,
+          "quantity_max": 2
+        },
+        {
+          "item": "diamond",
+          "chance": 0.012,
+          "quantity_min": 1,
+          "quantity_max": 1
+        },
+        {
+          "item": "spirit_herb",
+          "chance": 0.05,
+          "quantity_min": 1,
+          "quantity_max": 1
+        }
+      ]
+    }
+  ],
+  "trainers": [
+    {
+      "id": "pip",
+      "emoji": "🧒",
+      "badge_emoji": "🌱",
+      "level": 10,
+      "team": [
+        "thornbug",
+        "meadow_hopper"
+      ],
+      "reward_coins": 2000,
+      "reward_items": {
+        "carrot_treat": 10
+      }
+    },
+    {
+      "id": "marla",
+      "emoji": "🧝",
+      "badge_emoji": "🍃",
+      "level": 20,
+      "team": [
+        "bramble_boar",
+        "glade_wisp"
+      ],
+      "reward_coins": 5000,
+      "reward_items": {
+        "leather": 20
+      }
+    },
+    {
+      "id": "brannoc",
+      "emoji": "🧔",
+      "badge_emoji": "🗿",
+      "level": 30,
+      "team": [
+        "bramble_boar",
+        "quill_hog",
+        "glade_wisp"
+      ],
+      "reward_coins": 10000,
+      "reward_items": {
+        "troll_hide": 20
+      }
+    },
+    {
+      "id": "sable",
+      "emoji": "🏹",
+      "badge_emoji": "🐺",
+      "level": 42,
+      "team": [
+        "crystal_crawler",
+        "cave_screecher",
+        "glimmer_shade"
+      ],
+      "reward_coins": 20000,
+      "reward_items": {
+        "hellhound_hide": 20,
+        "spider_silk": 30
+      }
+    },
+    {
+      "id": "ignatia",
+      "emoji": "🧙",
+      "badge_emoji": "🔥",
+      "level": 55,
+      "team": [
+        "cinder_brute",
+        "ash_stalker",
+        "ember_sylph"
+      ],
+      "reward_coins": 40000,
+      "reward_items": {
+        "dragon_hide": 25
+      }
+    },
+    {
+      "id": "corvin",
+      "emoji": "🦉",
+      "badge_emoji": "🌑",
+      "level": 68,
+      "team": [
+        "ember_sylph",
+        "cinder_brute",
+        "glimmer_shade"
+      ],
+      "reward_coins": 60000,
+      "reward_items": {
+        "shadow_silk": 25,
+        "serpent_hide": 15
+      }
+    },
+    {
+      "id": "thalassa",
+      "emoji": "🧜",
+      "badge_emoji": "🌊",
+      "level": 80,
+      "team": [
+        "void_maw",
+        "rift_raptor",
+        "abyss_seer"
+      ],
+      "reward_coins": 100000,
+      "reward_items": {
+        "wyvern_hide": 20,
+        "diamond": 3
+      }
+    },
+    {
+      "id": "orrin",
+      "emoji": "👑",
+      "badge_emoji": "👑",
+      "level": 95,
+      "team": [
+        "abyss_seer",
+        "void_maw",
+        "rift_raptor"
+      ],
+      "reward_coins": 250000,
+      "reward_items": {
+        "starfruit_treat": 10
+      }
+    }
+  ],
+  "treats": {
+    "carrot_treat": 250,
+    "pumpkin_treat": 1200,
+    "strawberry_treat": 2500,
+    "dragon_fruit_treat": 6000,
+    "starfruit_treat": 15000
+  }
+}

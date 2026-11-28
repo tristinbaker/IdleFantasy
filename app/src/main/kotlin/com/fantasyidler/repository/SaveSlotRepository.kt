@@ -147,6 +147,7 @@ class SaveSlotRepository @Inject constructor(
         sessionRepo.recoverActiveSession(queuedSessionStarter)
         sessionRepo.recoverActiveWorkerSession(1, workerStarter)
         sessionRepo.recoverActiveWorkerSession(2, workerStarter)
+        sessionRepo.recoverPetArenaSession()
         rescheduleAlarmsFromFlags()
         return ironmanDemoted
     }

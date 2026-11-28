@@ -258,6 +258,8 @@ class WeeklyQuestRepository @Inject constructor(
             WeeklyBonusReward.CoinsReward()
         }
 
-        return newFlags to reward
+        // Hidden achievement: missed until the Divine roll became a guaranteed drop.
+        val pityMaxed = !dropped && missingPieces.isNotEmpty() && currentDivineDropChance(newFlags.divinePityMisses) >= 1.0
+        return (if (pityMaxed) HiddenAchievements.unlock(newFlags, HiddenAchievements.DIVINE_DENIED) else newFlags) to reward
     }
 }

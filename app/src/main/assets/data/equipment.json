@@ -5176,5 +5176,877 @@
     "magic_attack_bonus": 4,
     "magic_damage_bonus": 2,
     "requirements": {}
+  },
+  "leather_coif": {
+    "name": "leather_coif",
+    "display_name": "Leather Coif",
+    "slot": "head",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from leather.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 4,
+    "ranged_attack_bonus": 1,
+    "ranged_strength_bonus": 0,
+    "requirements": {}
+  },
+  "leather_body": {
+    "name": "leather_body",
+    "display_name": "Leather Body",
+    "slot": "body",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from leather.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 7,
+    "ranged_attack_bonus": 1,
+    "ranged_strength_bonus": 0,
+    "requirements": {}
+  },
+  "leather_chaps": {
+    "name": "leather_chaps",
+    "display_name": "Leather Chaps",
+    "slot": "legs",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from leather.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 6,
+    "ranged_attack_bonus": 1,
+    "ranged_strength_bonus": 0,
+    "requirements": {}
+  },
+  "leather_boots": {
+    "name": "leather_boots",
+    "display_name": "Leather Boots",
+    "slot": "boots",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from leather.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 3,
+    "ranged_attack_bonus": 1,
+    "ranged_strength_bonus": 0,
+    "requirements": {}
+  },
+  "hardleather_coif": {
+    "name": "hardleather_coif",
+    "display_name": "Hard Leather Coif",
+    "slot": "head",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from hard leather.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 6,
+    "ranged_attack_bonus": 2,
+    "ranged_strength_bonus": 1,
+    "requirements": {
+      "ranged": 10,
+      "defense": 5
+    }
+  },
+  "hardleather_body": {
+    "name": "hardleather_body",
+    "display_name": "Hard Leather Body",
+    "slot": "body",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from hard leather.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 13,
+    "ranged_attack_bonus": 3,
+    "ranged_strength_bonus": 1,
+    "requirements": {
+      "ranged": 10,
+      "defense": 5
+    }
+  },
+  "hardleather_chaps": {
+    "name": "hardleather_chaps",
+    "display_name": "Hard Leather Chaps",
+    "slot": "legs",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from hard leather.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 11,
+    "ranged_attack_bonus": 2,
+    "ranged_strength_bonus": 1,
+    "requirements": {
+      "ranged": 10,
+      "defense": 5
+    }
+  },
+  "hardleather_boots": {
+    "name": "hardleather_boots",
+    "display_name": "Hard Leather Boots",
+    "slot": "boots",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from hard leather.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "ranged_attack_bonus": 1,
+    "ranged_strength_bonus": 0,
+    "requirements": {
+      "ranged": 10,
+      "defense": 5
+    }
+  },
+  "trollhide_coif": {
+    "name": "trollhide_coif",
+    "display_name": "Troll Hide Coif",
+    "slot": "head",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from troll hide.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 10,
+    "ranged_attack_bonus": 3,
+    "ranged_strength_bonus": 1,
+    "requirements": {
+      "ranged": 20,
+      "defense": 10
+    }
+  },
+  "trollhide_body": {
+    "name": "trollhide_body",
+    "display_name": "Troll Hide Body",
+    "slot": "body",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from troll hide.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 20,
+    "ranged_attack_bonus": 5,
+    "ranged_strength_bonus": 2,
+    "requirements": {
+      "ranged": 20,
+      "defense": 10
+    }
+  },
+  "trollhide_chaps": {
+    "name": "trollhide_chaps",
+    "display_name": "Troll Hide Chaps",
+    "slot": "legs",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from troll hide.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 17,
+    "ranged_attack_bonus": 4,
+    "ranged_strength_bonus": 2,
+    "requirements": {
+      "ranged": 20,
+      "defense": 10
+    }
+  },
+  "trollhide_boots": {
+    "name": "trollhide_boots",
+    "display_name": "Troll Hide Boots",
+    "slot": "boots",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from troll hide.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 8,
+    "ranged_attack_bonus": 2,
+    "ranged_strength_bonus": 1,
+    "requirements": {
+      "ranged": 20,
+      "defense": 10
+    }
+  },
+  "hellhound_coif": {
+    "name": "hellhound_coif",
+    "display_name": "Hellhound Hide Coif",
+    "slot": "head",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from hellhound hide.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 14,
+    "ranged_attack_bonus": 4,
+    "ranged_strength_bonus": 2,
+    "requirements": {
+      "ranged": 30,
+      "defense": 15
+    }
+  },
+  "hellhound_body": {
+    "name": "hellhound_body",
+    "display_name": "Hellhound Hide Body",
+    "slot": "body",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from hellhound hide.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 29,
+    "ranged_attack_bonus": 7,
+    "ranged_strength_bonus": 3,
+    "requirements": {
+      "ranged": 30,
+      "defense": 15
+    }
+  },
+  "hellhound_chaps": {
+    "name": "hellhound_chaps",
+    "display_name": "Hellhound Hide Chaps",
+    "slot": "legs",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from hellhound hide.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 25,
+    "ranged_attack_bonus": 6,
+    "ranged_strength_bonus": 2,
+    "requirements": {
+      "ranged": 30,
+      "defense": 15
+    }
+  },
+  "hellhound_boots": {
+    "name": "hellhound_boots",
+    "display_name": "Hellhound Hide Boots",
+    "slot": "boots",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from hellhound hide.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 11,
+    "ranged_attack_bonus": 3,
+    "ranged_strength_bonus": 1,
+    "requirements": {
+      "ranged": 30,
+      "defense": 15
+    }
+  },
+  "dragonhide_coif": {
+    "name": "dragonhide_coif",
+    "display_name": "Dragonhide Coif",
+    "slot": "head",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from dragonhide.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 20,
+    "ranged_attack_bonus": 5,
+    "ranged_strength_bonus": 2,
+    "requirements": {
+      "ranged": 40,
+      "defense": 20
+    }
+  },
+  "dragonhide_body": {
+    "name": "dragonhide_body",
+    "display_name": "Dragonhide Body",
+    "slot": "body",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from dragonhide.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 40,
+    "ranged_attack_bonus": 9,
+    "ranged_strength_bonus": 4,
+    "requirements": {
+      "ranged": 40,
+      "defense": 20
+    }
+  },
+  "dragonhide_chaps": {
+    "name": "dragonhide_chaps",
+    "display_name": "Dragonhide Chaps",
+    "slot": "legs",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from dragonhide.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 34,
+    "ranged_attack_bonus": 8,
+    "ranged_strength_bonus": 3,
+    "requirements": {
+      "ranged": 40,
+      "defense": 20
+    }
+  },
+  "dragonhide_boots": {
+    "name": "dragonhide_boots",
+    "display_name": "Dragonhide Boots",
+    "slot": "boots",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from dragonhide.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 15,
+    "ranged_attack_bonus": 4,
+    "ranged_strength_bonus": 2,
+    "requirements": {
+      "ranged": 40,
+      "defense": 20
+    }
+  },
+  "serpentskin_coif": {
+    "name": "serpentskin_coif",
+    "display_name": "Serpentskin Coif",
+    "slot": "head",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from serpentskin.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 27,
+    "ranged_attack_bonus": 6,
+    "ranged_strength_bonus": 3,
+    "requirements": {
+      "ranged": 50,
+      "defense": 25
+    }
+  },
+  "serpentskin_body": {
+    "name": "serpentskin_body",
+    "display_name": "Serpentskin Body",
+    "slot": "body",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from serpentskin.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 55,
+    "ranged_attack_bonus": 11,
+    "ranged_strength_bonus": 5,
+    "requirements": {
+      "ranged": 50,
+      "defense": 25
+    }
+  },
+  "serpentskin_chaps": {
+    "name": "serpentskin_chaps",
+    "display_name": "Serpentskin Chaps",
+    "slot": "legs",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from serpentskin.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 46,
+    "ranged_attack_bonus": 10,
+    "ranged_strength_bonus": 4,
+    "requirements": {
+      "ranged": 50,
+      "defense": 25
+    }
+  },
+  "serpentskin_boots": {
+    "name": "serpentskin_boots",
+    "display_name": "Serpentskin Boots",
+    "slot": "boots",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from serpentskin.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 21,
+    "ranged_attack_bonus": 5,
+    "ranged_strength_bonus": 2,
+    "requirements": {
+      "ranged": 50,
+      "defense": 25
+    }
+  },
+  "wyvernhide_coif": {
+    "name": "wyvernhide_coif",
+    "display_name": "Wyvernhide Coif",
+    "slot": "head",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from wyvernhide.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 40,
+    "ranged_attack_bonus": 9,
+    "ranged_strength_bonus": 4,
+    "requirements": {
+      "ranged": 70,
+      "defense": 35
+    }
+  },
+  "wyvernhide_body": {
+    "name": "wyvernhide_body",
+    "display_name": "Wyvernhide Body",
+    "slot": "body",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from wyvernhide.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 83,
+    "ranged_attack_bonus": 15,
+    "ranged_strength_bonus": 7,
+    "requirements": {
+      "ranged": 70,
+      "defense": 35
+    }
+  },
+  "wyvernhide_chaps": {
+    "name": "wyvernhide_chaps",
+    "display_name": "Wyvernhide Chaps",
+    "slot": "legs",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from wyvernhide.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 69,
+    "ranged_attack_bonus": 13,
+    "ranged_strength_bonus": 6,
+    "requirements": {
+      "ranged": 70,
+      "defense": 35
+    }
+  },
+  "wyvernhide_boots": {
+    "name": "wyvernhide_boots",
+    "display_name": "Wyvernhide Boots",
+    "slot": "boots",
+    "combat_style": "ranged",
+    "description": "Light ranged armour made from wyvernhide.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 31,
+    "ranged_attack_bonus": 7,
+    "ranged_strength_bonus": 3,
+    "requirements": {
+      "ranged": 70,
+      "defense": 35
+    }
+  },
+  "wool_hat": {
+    "name": "wool_hat",
+    "display_name": "Wool Hat",
+    "slot": "head",
+    "combat_style": "magic",
+    "description": "A wool robe piece woven from cloth.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 2,
+    "magic_attack_bonus": 1,
+    "magic_damage_bonus": 0,
+    "requirements": {}
+  },
+  "wool_robe_top": {
+    "name": "wool_robe_top",
+    "display_name": "Wool Robe Top",
+    "slot": "body",
+    "combat_style": "magic",
+    "description": "A wool robe piece woven from cloth.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "magic_attack_bonus": 1,
+    "magic_damage_bonus": 0,
+    "requirements": {}
+  },
+  "wool_robe_bottom": {
+    "name": "wool_robe_bottom",
+    "display_name": "Wool Robe Bottom",
+    "slot": "legs",
+    "combat_style": "magic",
+    "description": "A wool robe piece woven from cloth.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 4,
+    "magic_attack_bonus": 1,
+    "magic_damage_bonus": 0,
+    "requirements": {}
+  },
+  "wool_boots": {
+    "name": "wool_boots",
+    "display_name": "Wool Boots",
+    "slot": "boots",
+    "combat_style": "magic",
+    "description": "A wool robe piece woven from cloth.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 2,
+    "magic_attack_bonus": 1,
+    "magic_damage_bonus": 0,
+    "requirements": {}
+  },
+  "apprentice_hat": {
+    "name": "apprentice_hat",
+    "display_name": "Apprentice Hat",
+    "slot": "head",
+    "combat_style": "magic",
+    "description": "A apprentice robe piece woven from cloth and earth runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 4,
+    "magic_attack_bonus": 2,
+    "magic_damage_bonus": 0,
+    "requirements": {
+      "magic": 10,
+      "defense": 5
+    }
+  },
+  "apprentice_robe_top": {
+    "name": "apprentice_robe_top",
+    "display_name": "Apprentice Robe Top",
+    "slot": "body",
+    "combat_style": "magic",
+    "description": "A apprentice robe piece woven from cloth and earth runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 9,
+    "magic_attack_bonus": 3,
+    "magic_damage_bonus": 0,
+    "requirements": {
+      "magic": 10,
+      "defense": 5
+    }
+  },
+  "apprentice_robe_bottom": {
+    "name": "apprentice_robe_bottom",
+    "display_name": "Apprentice Robe Bottom",
+    "slot": "legs",
+    "combat_style": "magic",
+    "description": "A apprentice robe piece woven from cloth and earth runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 7,
+    "magic_attack_bonus": 2,
+    "magic_damage_bonus": 0,
+    "requirements": {
+      "magic": 10,
+      "defense": 5
+    }
+  },
+  "apprentice_boots": {
+    "name": "apprentice_boots",
+    "display_name": "Apprentice Boots",
+    "slot": "boots",
+    "combat_style": "magic",
+    "description": "A apprentice robe piece woven from cloth and earth runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 3,
+    "magic_attack_bonus": 1,
+    "magic_damage_bonus": 0,
+    "requirements": {
+      "magic": 10,
+      "defense": 5
+    }
+  },
+  "silk_hat": {
+    "name": "silk_hat",
+    "display_name": "Silk Hat",
+    "slot": "head",
+    "combat_style": "magic",
+    "description": "A silk robe piece woven from silk cloth and fire runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 7,
+    "magic_attack_bonus": 3,
+    "magic_damage_bonus": 0,
+    "requirements": {
+      "magic": 20,
+      "defense": 10
+    }
+  },
+  "silk_robe_top": {
+    "name": "silk_robe_top",
+    "display_name": "Silk Robe Top",
+    "slot": "body",
+    "combat_style": "magic",
+    "description": "A silk robe piece woven from silk cloth and fire runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 13,
+    "magic_attack_bonus": 5,
+    "magic_damage_bonus": 1,
+    "requirements": {
+      "magic": 20,
+      "defense": 10
+    }
+  },
+  "silk_robe_bottom": {
+    "name": "silk_robe_bottom",
+    "display_name": "Silk Robe Bottom",
+    "slot": "legs",
+    "combat_style": "magic",
+    "description": "A silk robe piece woven from silk cloth and fire runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 11,
+    "magic_attack_bonus": 4,
+    "magic_damage_bonus": 1,
+    "requirements": {
+      "magic": 20,
+      "defense": 10
+    }
+  },
+  "silk_boots": {
+    "name": "silk_boots",
+    "display_name": "Silk Boots",
+    "slot": "boots",
+    "combat_style": "magic",
+    "description": "A silk robe piece woven from silk cloth and fire runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 5,
+    "magic_attack_bonus": 2,
+    "magic_damage_bonus": 0,
+    "requirements": {
+      "magic": 20,
+      "defense": 10
+    }
+  },
+  "mystic_hat": {
+    "name": "mystic_hat",
+    "display_name": "Mystic Hat",
+    "slot": "head",
+    "combat_style": "magic",
+    "description": "A mystic robe piece woven from silk cloth and mind runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 10,
+    "magic_attack_bonus": 4,
+    "magic_damage_bonus": 0,
+    "requirements": {
+      "magic": 30,
+      "defense": 15
+    }
+  },
+  "mystic_robe_top": {
+    "name": "mystic_robe_top",
+    "display_name": "Mystic Robe Top",
+    "slot": "body",
+    "combat_style": "magic",
+    "description": "A mystic robe piece woven from silk cloth and mind runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 20,
+    "magic_attack_bonus": 7,
+    "magic_damage_bonus": 1,
+    "requirements": {
+      "magic": 30,
+      "defense": 15
+    }
+  },
+  "mystic_robe_bottom": {
+    "name": "mystic_robe_bottom",
+    "display_name": "Mystic Robe Bottom",
+    "slot": "legs",
+    "combat_style": "magic",
+    "description": "A mystic robe piece woven from silk cloth and mind runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 16,
+    "magic_attack_bonus": 6,
+    "magic_damage_bonus": 1,
+    "requirements": {
+      "magic": 30,
+      "defense": 15
+    }
+  },
+  "mystic_boots": {
+    "name": "mystic_boots",
+    "display_name": "Mystic Boots",
+    "slot": "boots",
+    "combat_style": "magic",
+    "description": "A mystic robe piece woven from silk cloth and mind runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 7,
+    "magic_attack_bonus": 3,
+    "magic_damage_bonus": 0,
+    "requirements": {
+      "magic": 30,
+      "defense": 15
+    }
+  },
+  "warlock_hat": {
+    "name": "warlock_hat",
+    "display_name": "Warlock Hat",
+    "slot": "head",
+    "combat_style": "magic",
+    "description": "A warlock robe piece woven from silk cloth and chaos runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 13,
+    "magic_attack_bonus": 5,
+    "magic_damage_bonus": 1,
+    "requirements": {
+      "magic": 40,
+      "defense": 20
+    }
+  },
+  "warlock_robe_top": {
+    "name": "warlock_robe_top",
+    "display_name": "Warlock Robe Top",
+    "slot": "body",
+    "combat_style": "magic",
+    "description": "A warlock robe piece woven from silk cloth and chaos runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 27,
+    "magic_attack_bonus": 9,
+    "magic_damage_bonus": 1,
+    "requirements": {
+      "magic": 40,
+      "defense": 20
+    }
+  },
+  "warlock_robe_bottom": {
+    "name": "warlock_robe_bottom",
+    "display_name": "Warlock Robe Bottom",
+    "slot": "legs",
+    "combat_style": "magic",
+    "description": "A warlock robe piece woven from silk cloth and chaos runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 22,
+    "magic_attack_bonus": 8,
+    "magic_damage_bonus": 1,
+    "requirements": {
+      "magic": 40,
+      "defense": 20
+    }
+  },
+  "warlock_boots": {
+    "name": "warlock_boots",
+    "display_name": "Warlock Boots",
+    "slot": "boots",
+    "combat_style": "magic",
+    "description": "A warlock robe piece woven from silk cloth and chaos runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 10,
+    "magic_attack_bonus": 4,
+    "magic_damage_bonus": 0,
+    "requirements": {
+      "magic": 40,
+      "defense": 20
+    }
+  },
+  "arcane_hat": {
+    "name": "arcane_hat",
+    "display_name": "Arcane Hat",
+    "slot": "head",
+    "combat_style": "magic",
+    "description": "A arcane robe piece woven from shadow silk and death runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 18,
+    "magic_attack_bonus": 6,
+    "magic_damage_bonus": 1,
+    "requirements": {
+      "magic": 50,
+      "defense": 25
+    }
+  },
+  "arcane_robe_top": {
+    "name": "arcane_robe_top",
+    "display_name": "Arcane Robe Top",
+    "slot": "body",
+    "combat_style": "magic",
+    "description": "A arcane robe piece woven from shadow silk and death runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 37,
+    "magic_attack_bonus": 11,
+    "magic_damage_bonus": 1,
+    "requirements": {
+      "magic": 50,
+      "defense": 25
+    }
+  },
+  "arcane_robe_bottom": {
+    "name": "arcane_robe_bottom",
+    "display_name": "Arcane Robe Bottom",
+    "slot": "legs",
+    "combat_style": "magic",
+    "description": "A arcane robe piece woven from shadow silk and death runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 31,
+    "magic_attack_bonus": 10,
+    "magic_damage_bonus": 1,
+    "requirements": {
+      "magic": 50,
+      "defense": 25
+    }
+  },
+  "arcane_boots": {
+    "name": "arcane_boots",
+    "display_name": "Arcane Boots",
+    "slot": "boots",
+    "combat_style": "magic",
+    "description": "A arcane robe piece woven from shadow silk and death runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 14,
+    "magic_attack_bonus": 5,
+    "magic_damage_bonus": 1,
+    "requirements": {
+      "magic": 50,
+      "defense": 25
+    }
+  },
+  "celestial_hat": {
+    "name": "celestial_hat",
+    "display_name": "Celestial Hat",
+    "slot": "head",
+    "combat_style": "magic",
+    "description": "A celestial robe piece woven from shadow silk and blood runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 27,
+    "magic_attack_bonus": 9,
+    "magic_damage_bonus": 1,
+    "requirements": {
+      "magic": 70,
+      "defense": 35
+    }
+  },
+  "celestial_robe_top": {
+    "name": "celestial_robe_top",
+    "display_name": "Celestial Robe Top",
+    "slot": "body",
+    "combat_style": "magic",
+    "description": "A celestial robe piece woven from shadow silk and blood runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 55,
+    "magic_attack_bonus": 15,
+    "magic_damage_bonus": 2,
+    "requirements": {
+      "magic": 70,
+      "defense": 35
+    }
+  },
+  "celestial_robe_bottom": {
+    "name": "celestial_robe_bottom",
+    "display_name": "Celestial Robe Bottom",
+    "slot": "legs",
+    "combat_style": "magic",
+    "description": "A celestial robe piece woven from shadow silk and blood runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 46,
+    "magic_attack_bonus": 13,
+    "magic_damage_bonus": 2,
+    "requirements": {
+      "magic": 70,
+      "defense": 35
+    }
+  },
+  "celestial_boots": {
+    "name": "celestial_boots",
+    "display_name": "Celestial Boots",
+    "slot": "boots",
+    "combat_style": "magic",
+    "description": "A celestial robe piece woven from shadow silk and blood runes.",
+    "attack_bonus": 0,
+    "strength_bonus": 0,
+    "defense_bonus": 21,
+    "magic_attack_bonus": 7,
+    "magic_damage_bonus": 1,
+    "requirements": {
+      "magic": 70,
+      "defense": 35
+    }
   }
 }

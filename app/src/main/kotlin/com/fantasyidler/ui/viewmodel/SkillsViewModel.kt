@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.viewmodel
 
+import com.fantasyidler.simulator.PetBattle
 import com.fantasyidler.util.withAppLocale
 
 import androidx.lifecycle.ViewModel
@@ -1627,7 +1628,7 @@ class SkillsViewModel @Inject constructor(
         }
         return pets.sumOf { pet ->
             val pd = gameData.pets[pet.id]
-            if (pd != null && (pd.boostedSkill == skillKey || pd.boostedSkill == "all")) pd.boostPercent else 0
+            if (pd != null && (pd.boostedSkill == skillKey || pd.boostedSkill == "all")) PetBattle.boostPercent(pd.boostPercent, pet.xp) else 0
         }
     }
 

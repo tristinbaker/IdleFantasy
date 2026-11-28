@@ -3,6 +3,7 @@ package com.fantasyidler.ui.viewmodel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fantasyidler.simulator.PetBattle
 import com.fantasyidler.R
 import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.OwnedPet
@@ -92,6 +93,10 @@ data class CraftableRecipe(
     val outputHealingValue: Int = 0,
     val outputDamage: Int = 0,
     val outputRequirements: Map<String, Int> = emptyMap(),
+    val outputRangedAttackBonus: Int = 0,
+    val outputRangedStrengthBonus: Int = 0,
+    val outputMagicAttackBonus: Int = 0,
+    val outputMagicDamageBonus: Int = 0,
     /** Broad category for filter chips (e.g. "Weapon", "Armour", "Bar", "Food"). */
     val category: String = "",
     /** Material tier for filter chips (e.g. "Bronze", "Iron", "Rune"). */
@@ -104,6 +109,14 @@ data class CraftableRecipe(
 
 private fun tierFromKey(key: String) =
     key.substringBefore('_').replaceFirstChar { it.uppercase() }
+
+/** Crafting filter category from the recipe type: jewellery, ranged or magic armour, or materials (tanning, spinning). */
+private fun craftingCategory(type: String): String = when (type) {
+    "ranged_armour" -> "Ranged Armour"
+    "magic_armour"  -> "Magic Armour"
+    "material"      -> "Material"
+    else            -> "Jewellery"
+}
 
 /** Herblore filter category, derived from the recipe key: brews, super/overload potions, or plain potions. */
 private fun herbloreCategory(key: String): String = when {
@@ -330,7 +343,8 @@ class CraftingViewModel @Inject constructor(
                 xpPerItem          = r.xpPerItem,
                 skillName          = Skills.COOKING,
                 outputHealingValue = r.healingValue,
-                category           = "Food",
+                // Pet treats heal nothing; they feed Pet Arena pets instead.
+                category           = if (r.healingValue > 0) "Food" else "Pet Treat",
             )
         }.sortedBy { it.levelRequired }
     }
@@ -388,9 +402,14 @@ class CraftingViewModel @Inject constructor(
                 outputStrengthBonus = equip?.strengthBonus  ?: 0,
                 outputDefenseBonus  = equip?.defenseBonus   ?: 0,
                 outputRequirements  = equip?.requirements   ?: emptyMap(),
+                outputRangedAttackBonus   = equip?.rangedAttackBonus   ?: 0,
+                outputRangedStrengthBonus = equip?.rangedStrengthBonus ?: 0,
+                outputMagicAttackBonus    = equip?.magicAttackBonus    ?: 0,
+                outputMagicDamageBonus    = equip?.magicDamageBonus    ?: 0,
                 outputCombatStyle   = equip?.combatStyle,
-                category            = "Jewellery",
-                tier                = tierFromKey(key),
+                category            = craftingCategory(r.type),
+                // Tanning and spinning have no material tier to filter by.
+                tier                = if (r.type == "material") "" else tierFromKey(key),
             )
         }.sortedBy { it.levelRequired }
     }
@@ -457,7 +476,7 @@ class CraftingViewModel @Inject constructor(
         }
         return pets.sumOf { pet ->
             val pd = gameData.pets[pet.id]
-            if (pd != null && (pd.boostedSkill == skillKey || pd.boostedSkill == "all")) pd.boostPercent else 0
+            if (pd != null && (pd.boostedSkill == skillKey || pd.boostedSkill == "all")) PetBattle.boostPercent(pd.boostPercent, pet.xp) else 0
         }
     }
 

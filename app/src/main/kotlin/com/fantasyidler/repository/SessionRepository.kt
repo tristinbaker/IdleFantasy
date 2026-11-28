@@ -8,6 +8,7 @@ import android.os.SystemClock
 import android.provider.Settings
 import com.fantasyidler.data.db.dao.PlayerDao
 import com.fantasyidler.data.db.dao.SkillSessionDao
+import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.PlayerFlags
 import com.fantasyidler.data.model.SessionFrame
 import com.fantasyidler.data.model.SkillSession
@@ -17,6 +18,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.Json
 import java.util.UUID
 import javax.inject.Inject
@@ -54,6 +56,29 @@ class SessionRepository @Inject constructor(
     suspend fun deleteAllWorkerSessions() = sessionDao.deleteAllWorkerSessions()
 
     /**
+     * Records the combat gear worn right now on frame 0 for the hidden achievements (Naked and
+     * Afraid, Bronze Age). Fights read gear live at start (issue #1430), so this is exactly what
+     * the simulation fought with. Leaves [frames] untouched if anything can't be read.
+     */
+    private suspend fun stampGearAtStart(frames: String, weaponSlot: String?): String {
+        return try {
+            val player = playerDao.getPlayer() ?: return frames
+            val list: List<SessionFrame> = json.decodeFromString(frames)
+            if (list.isEmpty()) return frames
+            val equipped: Map<String, String?> = json.decodeFromString(player.equipped)
+            val flags: PlayerFlags = json.decodeFromString(player.flags)
+            val slot = weaponSlot ?: flags.activeWeaponSlot ?: EquipSlot.WEAPON_SLOTS.firstOrNull { equipped[it] != null }
+            val gear = buildMap {
+                for (armorSlot in EquipSlot.ARMOR_SLOTS) equipped[armorSlot]?.let { put(armorSlot, it) }
+                slot?.let { equipped[it] }?.let { put(EquipSlot.WEAPON, it) }
+            }
+            json.encodeToString(ListSerializer(SessionFrame.serializer()), listOf(list[0].copy(gearAtStart = gear)) + list.drop(1))
+        } catch (_: Exception) {
+            frames
+        }
+    }
+
+    /**
      * Persist a new session and schedule an AlarmManager alarm for completion.
      *
      * @param skillName        canonical skill key, e.g. "mining"
@@ -86,7 +111,7 @@ class SessionRepository @Inject constructor(
             skillName    = skillName,
             startedAt    = startedAt,
             endsAt       = startedAt + durationMs,
-            frames       = frames,
+            frames       = if (skillName == "combat" || skillName == "boss") stampGearAtStart(frames, weaponSlot) else frames,
             activityKey  = activityKey,
             completed    = insertAsCompleted,
             catalystKey  = catalystKey,
@@ -357,6 +382,18 @@ class SessionRepository @Inject constructor(
             } else {
                 scheduleAlarm(session.sessionId, session.endsAt, session.skillName)
             }
+        } catch (_: Exception) {
+            if (hasTrustedClock(session)) markCompleted(session.sessionId)
+        }
+    }
+
+    /** Pet Arena slot after a reboot or slot switch: re-arm the alarm, or finish it if overdue. No queue. */
+    suspend fun recoverPetArenaSession() {
+        val session = try { getActiveWorkerSession(PetArenaRepository.PET_ARENA_SLOT) } catch (_: Exception) { null } ?: return
+        if (session.completed) return
+        try {
+            if (System.currentTimeMillis() >= session.endsAt && hasTrustedClock(session)) markCompleted(session.sessionId)
+            else scheduleAlarm(session.sessionId, session.endsAt, session.skillName)
         } catch (_: Exception) {
             if (hasTrustedClock(session)) markCompleted(session.sessionId)
         }

@@ -9,6 +9,7 @@ import androidx.compose.material.icons.automirrored.outlined.ShowChart
 import androidx.compose.material.icons.filled.AccountBalance
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Celebration
+import androidx.compose.material.icons.filled.Pets
 import androidx.compose.material.icons.filled.Explore
 import androidx.compose.material.icons.filled.Group
 import androidx.compose.material.icons.filled.Home
@@ -179,6 +180,12 @@ sealed class Screen(
         route    = "carnival",
         labelRes = R.string.carnival_title,
         icon     = Icons.Filled.Celebration,
+    )
+
+    object PetArena : Screen(
+        route    = "pet_arena",
+        labelRes = R.string.pet_arena_title,
+        icon     = Icons.Filled.Pets,
     )
 
     object Tower : Screen(

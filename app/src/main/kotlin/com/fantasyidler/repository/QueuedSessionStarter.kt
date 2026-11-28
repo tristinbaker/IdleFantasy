@@ -1,5 +1,6 @@
 package com.fantasyidler.repository
 
+import com.fantasyidler.simulator.PetBattle
 import com.fantasyidler.util.withAppLocale
 
 import android.content.Context
@@ -1234,7 +1235,7 @@ class QueuedSessionStarter @Inject constructor(
         val pets = try { json.decodeFromString<List<OwnedPet>>(petsJson) } catch (_: Exception) { return 0 }
         return pets.sumOf { pet ->
             val pd = gameData.pets[pet.id]
-            if (pd != null && (pd.boostedSkill == skillKey || pd.boostedSkill == "all")) pd.boostPercent else 0
+            if (pd != null && (pd.boostedSkill == skillKey || pd.boostedSkill == "all")) PetBattle.boostPercent(pd.boostPercent, pet.xp) else 0
         }
     }
 
@@ -1243,7 +1244,7 @@ class QueuedSessionStarter @Inject constructor(
         val pets = try { json.decodeFromString<List<OwnedPet>>(petsJson) } catch (_: Exception) { return 0 }
         return pets.sumOf { pet ->
             val pd = gameData.pets[pet.id]
-            if (pd != null && (pd.boostedSkill == "combat" || pd.boostedSkill == "all")) pd.boostPercent else 0
+            if (pd != null && (pd.boostedSkill == "combat" || pd.boostedSkill == "all")) PetBattle.boostPercent(pd.boostPercent, pet.xp) else 0
         }
     }
 

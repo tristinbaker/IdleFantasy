@@ -22,6 +22,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.fantasyidler.simulator.PetBattle
 import com.fantasyidler.R
 import com.fantasyidler.data.json.EquipmentData
 import com.fantasyidler.data.json.PetData
@@ -98,7 +99,8 @@ internal fun BonusesTab(
     val isGatheringCape = cape != null && (cape.capeSkill ?: "") !in COMBAT_CAPE_SKILLS
     val isCombatCape    = cape != null && !isGatheringCape
 
-    val allPetBoostPct     = bonusPets.filter { it.boostedSkill == "all" }.sumOf { it.boostPercent }
+    fun petPct(pet: PetData) = PetBattle.boostPercent(pet.boostPercent, state.petXp[pet.id] ?: 0L)
+    val allPetBoostPct     = bonusPets.filter { it.boostedSkill == "all" }.sumOf { petPct(it) }
     val specificBonusPets  = bonusPets.filter { it.boostedSkill != "all" && it.boostedSkill.isNotEmpty() }
 
     val activeCapeSkills = Skills.ALL.filter { skillKey ->
@@ -136,7 +138,7 @@ internal fun BonusesTab(
         val yieldPct  = if (!isXpCape) ((capeMult - 1f) * 100 + 0.5f).toInt() else 0
         val capeXpPct = if (isXpCape) ((capeMult - 1f) * 100 + 0.5f).toInt() else 0
 
-        val specificPetPct = specificBonusPets.filter { it.boostedSkill == skillKey }.sumOf { it.boostPercent }
+        val specificPetPct = specificBonusPets.filter { it.boostedSkill == skillKey }.sumOf { petPct(it) }
         val totalPetPct    = specificPetPct + allPetBoostPct
         val effects        = prestigeEffects[skillKey].orEmpty()
         val prestigePct    = (effects[PrestigeBoosts.XP_PCT] ?: 0.0).toInt()
@@ -283,7 +285,7 @@ internal fun BonusesTab(
                 items(bonusPets.filter { it.boostedSkill == "all" }, key = { it.id }) { pet ->
                     BonusRow(
                         name  = GameStrings.petName(context, pet.id),
-                        pct   = "+${pet.boostPercent}%",
+                        pct   = "+${petPct(pet)}%",
                         scope = stringResource(R.string.bonus_all_skills),
                     )
                 }

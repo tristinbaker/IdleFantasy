@@ -352,5 +352,678 @@
     "output_quantity": 1,
     "xp_per_item": 400,
     "time_per_item": 60
+  },
+  "leather_coif": {
+    "type": "ranged_armour",
+    "display_name": "Leather Coif",
+    "level_required": 3,
+    "materials": {
+      "leather": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 11.0,
+    "time_per_item": 60
+  },
+  "leather_body": {
+    "type": "ranged_armour",
+    "display_name": "Leather Body",
+    "level_required": 7,
+    "materials": {
+      "leather": 4
+    },
+    "output_quantity": 1,
+    "xp_per_item": 17.6,
+    "time_per_item": 60
+  },
+  "leather_chaps": {
+    "type": "ranged_armour",
+    "display_name": "Leather Chaps",
+    "level_required": 5,
+    "materials": {
+      "leather": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 14.3,
+    "time_per_item": 60
+  },
+  "leather_boots": {
+    "type": "ranged_armour",
+    "display_name": "Leather Boots",
+    "level_required": 1,
+    "materials": {
+      "leather": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 8.8,
+    "time_per_item": 60
+  },
+  "hardleather_coif": {
+    "type": "ranged_armour",
+    "display_name": "Hard Leather Coif",
+    "level_required": 12,
+    "materials": {
+      "leather": 4
+    },
+    "output_quantity": 1,
+    "xp_per_item": 38.0,
+    "time_per_item": 60
+  },
+  "hardleather_body": {
+    "type": "ranged_armour",
+    "display_name": "Hard Leather Body",
+    "level_required": 16,
+    "materials": {
+      "leather": 8
+    },
+    "output_quantity": 1,
+    "xp_per_item": 60.8,
+    "time_per_item": 60
+  },
+  "hardleather_chaps": {
+    "type": "ranged_armour",
+    "display_name": "Hard Leather Chaps",
+    "level_required": 14,
+    "materials": {
+      "leather": 6
+    },
+    "output_quantity": 1,
+    "xp_per_item": 49.4,
+    "time_per_item": 60
+  },
+  "hardleather_boots": {
+    "type": "ranged_armour",
+    "display_name": "Hard Leather Boots",
+    "level_required": 10,
+    "materials": {
+      "leather": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 30.4,
+    "time_per_item": 60
+  },
+  "trollhide_coif": {
+    "type": "ranged_armour",
+    "display_name": "Troll Hide Coif",
+    "level_required": 22,
+    "materials": {
+      "troll_hide": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 68.0,
+    "time_per_item": 60
+  },
+  "trollhide_body": {
+    "type": "ranged_armour",
+    "display_name": "Troll Hide Body",
+    "level_required": 26,
+    "materials": {
+      "troll_hide": 4
+    },
+    "output_quantity": 1,
+    "xp_per_item": 108.8,
+    "time_per_item": 60
+  },
+  "trollhide_chaps": {
+    "type": "ranged_armour",
+    "display_name": "Troll Hide Chaps",
+    "level_required": 24,
+    "materials": {
+      "troll_hide": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 88.4,
+    "time_per_item": 60
+  },
+  "trollhide_boots": {
+    "type": "ranged_armour",
+    "display_name": "Troll Hide Boots",
+    "level_required": 20,
+    "materials": {
+      "troll_hide": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 54.4,
+    "time_per_item": 60
+  },
+  "hellhound_coif": {
+    "type": "ranged_armour",
+    "display_name": "Hellhound Hide Coif",
+    "level_required": 32,
+    "materials": {
+      "hellhound_hide": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 98.0,
+    "time_per_item": 60
+  },
+  "hellhound_body": {
+    "type": "ranged_armour",
+    "display_name": "Hellhound Hide Body",
+    "level_required": 36,
+    "materials": {
+      "hellhound_hide": 4
+    },
+    "output_quantity": 1,
+    "xp_per_item": 156.8,
+    "time_per_item": 60
+  },
+  "hellhound_chaps": {
+    "type": "ranged_armour",
+    "display_name": "Hellhound Hide Chaps",
+    "level_required": 34,
+    "materials": {
+      "hellhound_hide": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 127.4,
+    "time_per_item": 60
+  },
+  "hellhound_boots": {
+    "type": "ranged_armour",
+    "display_name": "Hellhound Hide Boots",
+    "level_required": 30,
+    "materials": {
+      "hellhound_hide": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 78.4,
+    "time_per_item": 60
+  },
+  "dragonhide_coif": {
+    "type": "ranged_armour",
+    "display_name": "Dragonhide Coif",
+    "level_required": 42,
+    "materials": {
+      "dragon_hide": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 128.0,
+    "time_per_item": 60
+  },
+  "dragonhide_body": {
+    "type": "ranged_armour",
+    "display_name": "Dragonhide Body",
+    "level_required": 46,
+    "materials": {
+      "dragon_hide": 4
+    },
+    "output_quantity": 1,
+    "xp_per_item": 204.8,
+    "time_per_item": 60
+  },
+  "dragonhide_chaps": {
+    "type": "ranged_armour",
+    "display_name": "Dragonhide Chaps",
+    "level_required": 44,
+    "materials": {
+      "dragon_hide": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 166.4,
+    "time_per_item": 60
+  },
+  "dragonhide_boots": {
+    "type": "ranged_armour",
+    "display_name": "Dragonhide Boots",
+    "level_required": 40,
+    "materials": {
+      "dragon_hide": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 102.4,
+    "time_per_item": 60
+  },
+  "serpentskin_coif": {
+    "type": "ranged_armour",
+    "display_name": "Serpentskin Coif",
+    "level_required": 52,
+    "materials": {
+      "serpent_hide": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 158.0,
+    "time_per_item": 60
+  },
+  "serpentskin_body": {
+    "type": "ranged_armour",
+    "display_name": "Serpentskin Body",
+    "level_required": 56,
+    "materials": {
+      "serpent_hide": 4
+    },
+    "output_quantity": 1,
+    "xp_per_item": 252.8,
+    "time_per_item": 60
+  },
+  "serpentskin_chaps": {
+    "type": "ranged_armour",
+    "display_name": "Serpentskin Chaps",
+    "level_required": 54,
+    "materials": {
+      "serpent_hide": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 205.4,
+    "time_per_item": 60
+  },
+  "serpentskin_boots": {
+    "type": "ranged_armour",
+    "display_name": "Serpentskin Boots",
+    "level_required": 50,
+    "materials": {
+      "serpent_hide": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 126.4,
+    "time_per_item": 60
+  },
+  "wyvernhide_coif": {
+    "type": "ranged_armour",
+    "display_name": "Wyvernhide Coif",
+    "level_required": 72,
+    "materials": {
+      "wyvern_hide": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 218.0,
+    "time_per_item": 60
+  },
+  "wyvernhide_body": {
+    "type": "ranged_armour",
+    "display_name": "Wyvernhide Body",
+    "level_required": 76,
+    "materials": {
+      "wyvern_hide": 4
+    },
+    "output_quantity": 1,
+    "xp_per_item": 348.8,
+    "time_per_item": 60
+  },
+  "wyvernhide_chaps": {
+    "type": "ranged_armour",
+    "display_name": "Wyvernhide Chaps",
+    "level_required": 74,
+    "materials": {
+      "wyvern_hide": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 283.4,
+    "time_per_item": 60
+  },
+  "wyvernhide_boots": {
+    "type": "ranged_armour",
+    "display_name": "Wyvernhide Boots",
+    "level_required": 70,
+    "materials": {
+      "wyvern_hide": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 174.4,
+    "time_per_item": 60
+  },
+  "wool_hat": {
+    "type": "magic_armour",
+    "display_name": "Wool Hat",
+    "level_required": 3,
+    "materials": {
+      "cloth": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 11.0,
+    "time_per_item": 60
+  },
+  "wool_robe_top": {
+    "type": "magic_armour",
+    "display_name": "Wool Robe Top",
+    "level_required": 7,
+    "materials": {
+      "cloth": 4
+    },
+    "output_quantity": 1,
+    "xp_per_item": 17.6,
+    "time_per_item": 60
+  },
+  "wool_robe_bottom": {
+    "type": "magic_armour",
+    "display_name": "Wool Robe Bottom",
+    "level_required": 5,
+    "materials": {
+      "cloth": 3
+    },
+    "output_quantity": 1,
+    "xp_per_item": 14.3,
+    "time_per_item": 60
+  },
+  "wool_boots": {
+    "type": "magic_armour",
+    "display_name": "Wool Boots",
+    "level_required": 1,
+    "materials": {
+      "cloth": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 8.8,
+    "time_per_item": 60
+  },
+  "apprentice_hat": {
+    "type": "magic_armour",
+    "display_name": "Apprentice Hat",
+    "level_required": 12,
+    "materials": {
+      "cloth": 2,
+      "earth_rune": 10
+    },
+    "output_quantity": 1,
+    "xp_per_item": 38.0,
+    "time_per_item": 60
+  },
+  "apprentice_robe_top": {
+    "type": "magic_armour",
+    "display_name": "Apprentice Robe Top",
+    "level_required": 16,
+    "materials": {
+      "cloth": 4,
+      "earth_rune": 20
+    },
+    "output_quantity": 1,
+    "xp_per_item": 60.8,
+    "time_per_item": 60
+  },
+  "apprentice_robe_bottom": {
+    "type": "magic_armour",
+    "display_name": "Apprentice Robe Bottom",
+    "level_required": 14,
+    "materials": {
+      "cloth": 3,
+      "earth_rune": 15
+    },
+    "output_quantity": 1,
+    "xp_per_item": 49.4,
+    "time_per_item": 60
+  },
+  "apprentice_boots": {
+    "type": "magic_armour",
+    "display_name": "Apprentice Boots",
+    "level_required": 10,
+    "materials": {
+      "cloth": 1,
+      "earth_rune": 5
+    },
+    "output_quantity": 1,
+    "xp_per_item": 30.4,
+    "time_per_item": 60
+  },
+  "silk_hat": {
+    "type": "magic_armour",
+    "display_name": "Silk Hat",
+    "level_required": 22,
+    "materials": {
+      "silk_cloth": 2,
+      "fire_rune": 10
+    },
+    "output_quantity": 1,
+    "xp_per_item": 68.0,
+    "time_per_item": 60
+  },
+  "silk_robe_top": {
+    "type": "magic_armour",
+    "display_name": "Silk Robe Top",
+    "level_required": 26,
+    "materials": {
+      "silk_cloth": 4,
+      "fire_rune": 20
+    },
+    "output_quantity": 1,
+    "xp_per_item": 108.8,
+    "time_per_item": 60
+  },
+  "silk_robe_bottom": {
+    "type": "magic_armour",
+    "display_name": "Silk Robe Bottom",
+    "level_required": 24,
+    "materials": {
+      "silk_cloth": 3,
+      "fire_rune": 15
+    },
+    "output_quantity": 1,
+    "xp_per_item": 88.4,
+    "time_per_item": 60
+  },
+  "silk_boots": {
+    "type": "magic_armour",
+    "display_name": "Silk Boots",
+    "level_required": 20,
+    "materials": {
+      "silk_cloth": 1,
+      "fire_rune": 5
+    },
+    "output_quantity": 1,
+    "xp_per_item": 54.4,
+    "time_per_item": 60
+  },
+  "mystic_hat": {
+    "type": "magic_armour",
+    "display_name": "Mystic Hat",
+    "level_required": 32,
+    "materials": {
+      "silk_cloth": 2,
+      "mind_rune": 10
+    },
+    "output_quantity": 1,
+    "xp_per_item": 98.0,
+    "time_per_item": 60
+  },
+  "mystic_robe_top": {
+    "type": "magic_armour",
+    "display_name": "Mystic Robe Top",
+    "level_required": 36,
+    "materials": {
+      "silk_cloth": 4,
+      "mind_rune": 20
+    },
+    "output_quantity": 1,
+    "xp_per_item": 156.8,
+    "time_per_item": 60
+  },
+  "mystic_robe_bottom": {
+    "type": "magic_armour",
+    "display_name": "Mystic Robe Bottom",
+    "level_required": 34,
+    "materials": {
+      "silk_cloth": 3,
+      "mind_rune": 15
+    },
+    "output_quantity": 1,
+    "xp_per_item": 127.4,
+    "time_per_item": 60
+  },
+  "mystic_boots": {
+    "type": "magic_armour",
+    "display_name": "Mystic Boots",
+    "level_required": 30,
+    "materials": {
+      "silk_cloth": 1,
+      "mind_rune": 5
+    },
+    "output_quantity": 1,
+    "xp_per_item": 78.4,
+    "time_per_item": 60
+  },
+  "warlock_hat": {
+    "type": "magic_armour",
+    "display_name": "Warlock Hat",
+    "level_required": 42,
+    "materials": {
+      "silk_cloth": 2,
+      "chaos_rune": 10
+    },
+    "output_quantity": 1,
+    "xp_per_item": 128.0,
+    "time_per_item": 60
+  },
+  "warlock_robe_top": {
+    "type": "magic_armour",
+    "display_name": "Warlock Robe Top",
+    "level_required": 46,
+    "materials": {
+      "silk_cloth": 4,
+      "chaos_rune": 20
+    },
+    "output_quantity": 1,
+    "xp_per_item": 204.8,
+    "time_per_item": 60
+  },
+  "warlock_robe_bottom": {
+    "type": "magic_armour",
+    "display_name": "Warlock Robe Bottom",
+    "level_required": 44,
+    "materials": {
+      "silk_cloth": 3,
+      "chaos_rune": 15
+    },
+    "output_quantity": 1,
+    "xp_per_item": 166.4,
+    "time_per_item": 60
+  },
+  "warlock_boots": {
+    "type": "magic_armour",
+    "display_name": "Warlock Boots",
+    "level_required": 40,
+    "materials": {
+      "silk_cloth": 1,
+      "chaos_rune": 5
+    },
+    "output_quantity": 1,
+    "xp_per_item": 102.4,
+    "time_per_item": 60
+  },
+  "arcane_hat": {
+    "type": "magic_armour",
+    "display_name": "Arcane Hat",
+    "level_required": 52,
+    "materials": {
+      "shadow_silk": 2,
+      "death_rune": 10
+    },
+    "output_quantity": 1,
+    "xp_per_item": 158.0,
+    "time_per_item": 60
+  },
+  "arcane_robe_top": {
+    "type": "magic_armour",
+    "display_name": "Arcane Robe Top",
+    "level_required": 56,
+    "materials": {
+      "shadow_silk": 4,
+      "death_rune": 20
+    },
+    "output_quantity": 1,
+    "xp_per_item": 252.8,
+    "time_per_item": 60
+  },
+  "arcane_robe_bottom": {
+    "type": "magic_armour",
+    "display_name": "Arcane Robe Bottom",
+    "level_required": 54,
+    "materials": {
+      "shadow_silk": 3,
+      "death_rune": 15
+    },
+    "output_quantity": 1,
+    "xp_per_item": 205.4,
+    "time_per_item": 60
+  },
+  "arcane_boots": {
+    "type": "magic_armour",
+    "display_name": "Arcane Boots",
+    "level_required": 50,
+    "materials": {
+      "shadow_silk": 1,
+      "death_rune": 5
+    },
+    "output_quantity": 1,
+    "xp_per_item": 126.4,
+    "time_per_item": 60
+  },
+  "celestial_hat": {
+    "type": "magic_armour",
+    "display_name": "Celestial Hat",
+    "level_required": 72,
+    "materials": {
+      "shadow_silk": 2,
+      "blood_rune": 10
+    },
+    "output_quantity": 1,
+    "xp_per_item": 218.0,
+    "time_per_item": 60
+  },
+  "celestial_robe_top": {
+    "type": "magic_armour",
+    "display_name": "Celestial Robe Top",
+    "level_required": 76,
+    "materials": {
+      "shadow_silk": 4,
+      "blood_rune": 20
+    },
+    "output_quantity": 1,
+    "xp_per_item": 348.8,
+    "time_per_item": 60
+  },
+  "celestial_robe_bottom": {
+    "type": "magic_armour",
+    "display_name": "Celestial Robe Bottom",
+    "level_required": 74,
+    "materials": {
+      "shadow_silk": 3,
+      "blood_rune": 15
+    },
+    "output_quantity": 1,
+    "xp_per_item": 283.4,
+    "time_per_item": 60
+  },
+  "celestial_boots": {
+    "type": "magic_armour",
+    "display_name": "Celestial Boots",
+    "level_required": 70,
+    "materials": {
+      "shadow_silk": 1,
+      "blood_rune": 5
+    },
+    "output_quantity": 1,
+    "xp_per_item": 174.4,
+    "time_per_item": 60
+  },
+  "leather": {
+    "type": "material",
+    "display_name": "Tan Leather",
+    "level_required": 1,
+    "materials": {
+      "cowhide": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 2,
+    "time_per_item": 60
+  },
+  "cloth": {
+    "type": "material",
+    "display_name": "Spin Cloth",
+    "level_required": 1,
+    "materials": {
+      "wool": 1
+    },
+    "output_quantity": 1,
+    "xp_per_item": 3,
+    "time_per_item": 60
+  },
+  "silk_cloth": {
+    "type": "material",
+    "display_name": "Spin Silk Cloth",
+    "level_required": 18,
+    "materials": {
+      "spider_silk": 2
+    },
+    "output_quantity": 1,
+    "xp_per_item": 12,
+    "time_per_item": 60
   }
 }

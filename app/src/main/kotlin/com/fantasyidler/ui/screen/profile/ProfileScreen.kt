@@ -228,8 +228,8 @@ fun ProfileScreen(
                         onEquipBestTools   = viewModel::equipBestTools,
                         onNavigateToCombat = onNavigateToCombat,
                     )
-                    3    -> PetsTab(allPets = viewModel.allPets, ownedPetIds = state.ownedPetIds, elderIsleUnlocked = state.elderIsleUnlocked)
-                    4    -> AchievementsTab(achState.byGroup, achState.unlockedCount, achState.totalCount)
+                    3    -> PetsTab(allPets = viewModel.allPets, ownedPetIds = state.ownedPetIds, petXp = state.petXp, elderIsleUnlocked = state.elderIsleUnlocked)
+                    4    -> AchievementsTab(achState.byGroup, achState.unlockedCount, achState.totalCount, achState.hidden)
                     5    -> NotesTab(
                         skillingDungeons     = viewModel.allSkillingDungeons,
                         skillingDungeonNotes = state.skillingDungeonNotes,

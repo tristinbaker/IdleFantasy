@@ -26,6 +26,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Assignment
 import androidx.compose.material.icons.filled.AccountBalance
 import androidx.compose.material.icons.filled.Celebration
+import androidx.compose.material.icons.filled.Pets
 import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.EditNote
 import androidx.compose.material.icons.filled.Explore
@@ -115,6 +116,7 @@ fun HomeScreen(
     onNavigateToBuilder: () -> Unit = {},
     onNavigateToHouse: () -> Unit = {},
     onNavigateToCarnival: () -> Unit = {},
+    onNavigateToPetArena: () -> Unit = {},
     onNavigateToSeasonalEvent: () -> Unit = {},
     onNavigateToElderIsle: () -> Unit = {},
     onNavigateToElderIsleShop: () -> Unit = {},
@@ -712,6 +714,7 @@ fun HomeScreen(
             val churchTint = if (state.activeBlessingKey.isNotEmpty() && state.activeBlessingRemainingMs > 0)
                 MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
             val monumentTouchDotVisible = state.showMonumentTouchIndicator && state.monumentTouchAvailable
+            val petArenaReady by viewModel.petArenaReady.collectAsState()
             val townGridRows: @Composable () -> Unit = {
                 if (state.onElderIsle) {
                     // Isle-flavored grid: mirrors mainland town-grid card styling; 4 cards.
@@ -761,11 +764,12 @@ fun HomeScreen(
                         // the Sea Serpent falls. Pre-kill tap surfaces the "defeat the Sea
                         // Serpent" snackbar via toggleElderIsleLocation, so the requirement is
                         // discoverable from Home instead of hidden.
-                        if (state.dockBuilt) {
-                            Row(
-                                modifier              = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                            ) {
+                        Row(
+                            modifier              = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        ) {
+                            TownGridCard(Icons.Filled.Pets, stringResource(R.string.pet_arena_title), onClick = onNavigateToPetArena, modifier = Modifier.weight(1f), showDot = petArenaReady)
+                            if (state.dockBuilt) {
                                 TownGridCard(
                                     Icons.Filled.Explore,
                                     stringResource(R.string.elder_isle_set_sail),
@@ -773,6 +777,8 @@ fun HomeScreen(
                                     modifier = Modifier.weight(1f),
                                 )
                             }
+                            // Keep the three-column card width when the row isn't full.
+                            Spacer(Modifier.weight(if (state.dockBuilt) 1f else 2f))
                         }
                     }
                 }

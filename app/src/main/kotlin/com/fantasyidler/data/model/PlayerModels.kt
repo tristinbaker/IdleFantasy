@@ -369,6 +369,19 @@ data class PlayerFlags(
     @SerialName("island_name_asked") val islandNameAsked: Boolean = false,
     /** One-time grant of guild capes to saves that hit guild level 10 before capes existed (#2157). */
     @SerialName("guild_cape_backfill_done") val guildCapeBackfillDone: Boolean = false,
+    /** Hidden achievements earned: id → epoch ms. Never removed (see HiddenAchievements). */
+    @SerialName("hidden_achievements") val hiddenAchievements: Map<String, Long> = emptyMap(),
+    /** Hidden achievement ids whose unlock banner has been shown, so a slot switch or import never replays them. */
+    @SerialName("hidden_announced") val hiddenAnnounced: Set<String> = emptySet(),
+    /** Lifetime counters behind the hidden achievements (dry streaks, deaths, bones buried, ...). */
+    @SerialName("lifetime_stats") val lifetimeStats: Map<String, Long> = emptyMap(),
+    /** Pet Arena: the owned pet picked as the starter on the first visit (null = not chosen yet). */
+    @SerialName("pet_arena_starter") val petArenaStarter: String? = null,
+    /** Pet Arena team, up to 3 owned pet ids in fighting order. */
+    @SerialName("pet_team") val petTeam: List<String> = emptyList(),
+    /** Trainer ids beaten; each one is a badge. */
+    @SerialName("pet_badges") val petBadges: Set<String> = emptySet(),
+    @SerialName("pet_arena_wins") val petArenaWins: Long = 0L,
 )
 
 /** One completed bulk sell: what was sold and what it paid. */
@@ -601,6 +614,8 @@ data class HiredMercenary(
 data class OwnedPet(
     val id: String,
     @SerialName("boost_percent") val boostPercent: Int = 0,
+    /** Pet Arena XP; the pet's level comes from the skill XP table (see PetBattle). */
+    @SerialName("xp") val xp: Long = 0L,
 )
 
 /** Portable save file written by export and read by import. */

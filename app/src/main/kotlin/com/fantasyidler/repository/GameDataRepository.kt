@@ -4,6 +4,7 @@ import android.content.Context
 import com.fantasyidler.data.json.BlessingData
 import com.fantasyidler.data.model.MainStory
 import com.fantasyidler.data.json.BoneData
+import com.fantasyidler.data.json.PetArenaData
 import com.fantasyidler.data.json.SlayerTaskData
 import com.fantasyidler.data.json.CropData
 import com.fantasyidler.data.json.BossData
@@ -177,6 +178,10 @@ class GameDataRepository @Inject constructor(
         asset("data/pets.json")
     }
 
+    val petArena: PetArenaData by lazy {
+        asset("data/pet_arena.json")
+    }
+
     // ------------------------------------------------------------------ bosses
 
     val bosses: Map<String, BossData> by lazy {
@@ -341,7 +346,8 @@ class GameDataRepository @Inject constructor(
 
     /** Maps cooked-item key → HP healed per eat (from cooking recipes). */
     val foodHealValues: Map<String, Int> by lazy {
-        cookingRecipes.values.associate { it.cookedItem to it.healingValue }
+        // Pet treats are cooked but heal nothing, so they never count as food.
+        cookingRecipes.values.filter { it.healingValue > 0 }.associate { it.cookedItem to it.healingValue }
     }
 
     // ------------------------------------------------------------------ trade routes (mercantile)

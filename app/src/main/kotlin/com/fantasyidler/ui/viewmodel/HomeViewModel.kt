@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.viewmodel
 
+import com.fantasyidler.simulator.PetBattle
 import com.fantasyidler.util.withAppLocale
 
 import android.content.Context
@@ -18,6 +19,7 @@ import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.SessionFrame
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.Skills
+import com.fantasyidler.repository.PetArenaRepository
 import com.fantasyidler.repository.BoostRepository
 import com.fantasyidler.repository.ChurchRepository
 import com.fantasyidler.repository.GameDataRepository
@@ -59,6 +61,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -347,6 +350,7 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch { sessionRepo.recoverActiveSession(queuedSessionStarter) }
         viewModelScope.launch { sessionRepo.recoverActiveWorkerSession(1, workerStarter) }
         viewModelScope.launch { sessionRepo.recoverActiveWorkerSession(2, workerStarter) }
+        viewModelScope.launch { sessionRepo.recoverPetArenaSession() }
         viewModelScope.launch { playerRepo.awardMissingCapes() }
         viewModelScope.launch { playerRepo.migratePetsFromInventory(gameData.pets) }
         viewModelScope.launch { playerRepo.ensureCharacterCreatedAt() }
@@ -384,6 +388,11 @@ class HomeViewModel @Inject constructor(
         val completedCount2: Int,
         val extra: HomeUiState,
     )
+
+    /** True when a Pet Arena battle has finished and waits to be collected (town card dot). */
+    val petArenaReady: StateFlow<Boolean> = sessionRepo.activeWorkerSessionFlow(PetArenaRepository.PET_ARENA_SLOT)
+        .map { it?.completed == true }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
 
     val uiState: StateFlow<HomeUiState> = combine(
         combine(playerRepo.playerFlow, sessionRepo.activeSessionFlow, sessionRepo.completedCountFlow) { a, b, c -> Triple(a, b, c) },
@@ -718,6 +727,7 @@ class HomeViewModel @Inject constructor(
                     Skills.MERCANTILE -> collectMercantileSession(session, frames, grantXp, ctx, acc)
                     else -> collectGenericSkillSession(session, frames, grantXp, ctx, acc)
                 }
+                playerRepo.recordHiddenSessionStats(session, frames)
             }
 
             for (session in sessions) sessionRepo.deleteSession(session.sessionId)
@@ -1062,9 +1072,9 @@ class HomeViewModel @Inject constructor(
                 val pd = gameData.pets[ownedPet.id]
                 if (pd == null) 0
                 else when {
-                    pd.boostedSkill == "all" -> pd.boostPercent
-                    pd.boostedSkill == skill -> pd.boostPercent
-                    pd.boostedSkill == "combat" && skill in Skills.COMBAT -> pd.boostPercent
+                    pd.boostedSkill == "all" -> PetBattle.boostPercent(pd.boostPercent, ownedPet.xp)
+                    pd.boostedSkill == skill -> PetBattle.boostPercent(pd.boostPercent, ownedPet.xp)
+                    pd.boostedSkill == "combat" && skill in Skills.COMBAT -> PetBattle.boostPercent(pd.boostPercent, ownedPet.xp)
                     else -> 0
                 }
             }
@@ -1653,9 +1663,9 @@ class HomeViewModel @Inject constructor(
                                     val pd = gameData.pets[ownedPet.id]
                                     if (pd == null) 0
                                     else when {
-                                        pd.boostedSkill == "all" -> pd.boostPercent
-                                        pd.boostedSkill == skill -> pd.boostPercent
-                                        pd.boostedSkill == "combat" && skill in Skills.COMBAT -> pd.boostPercent
+                                        pd.boostedSkill == "all" -> PetBattle.boostPercent(pd.boostPercent, ownedPet.xp)
+                                        pd.boostedSkill == skill -> PetBattle.boostPercent(pd.boostPercent, ownedPet.xp)
+                                        pd.boostedSkill == "combat" && skill in Skills.COMBAT -> PetBattle.boostPercent(pd.boostPercent, ownedPet.xp)
                                         else -> 0
                                     }
                                 }

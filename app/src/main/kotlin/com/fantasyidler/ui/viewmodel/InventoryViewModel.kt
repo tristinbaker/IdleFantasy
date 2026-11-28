@@ -93,6 +93,8 @@ class InventoryViewModel @Inject constructor(
         val equipped: Map<String, String?> = emptyMap(),
         /** Owned pets (active, providing XP boosts). */
         val ownedPetIds: Set<String> = emptySet(),
+        /** Pet Arena XP per owned pet; boosts and evolution names follow its level. */
+        val petXp: Map<String, Long> = emptyMap(),
         /** Non-null while the equip-picker sheet is open. */
         val pickingSlot: String? = null,
         val isLoading: Boolean = true,
@@ -221,6 +223,7 @@ class InventoryViewModel @Inject constructor(
                 elderSkillXp      = flags.elderSkillXp,
                 equipped    = json.decodeFromString(player.equipped),
                 ownedPetIds = pets.map { it.id }.toSet(),
+                petXp       = pets.associate { it.id to it.xp },
                 equippedFood          = flags.equippedFood,
                 characterName         = flags.characterName,
                 characterGender       = flags.characterGender,
@@ -681,9 +684,15 @@ class InventoryViewModel @Inject constructor(
                                              return InventoryCategory.SEEDS
         if (key in gameData.logs || key in gameData.bones || key in gameData.runes ||
             key == "rune_essence" || key.endsWith("_ashes") || key == "ashes" ||
-            key.endsWith("_herb")
+            key.endsWith("_herb") || key in craftingMaterialKeys
         ) return InventoryCategory.MATERIALS
         return InventoryCategory.OTHER
+    }
+
+    /** Hides, wool, silk and cloth: Crafting inputs and the tanned or spun materials made from them. */
+    private val craftingMaterialKeys: Set<String> by lazy {
+        gameData.craftingRecipes.values.flatMap { it.materials.keys }.toSet() +
+            gameData.craftingRecipes.filterValues { it.type == "material" }.keys
     }
 
     private val constructionItemKeys: Set<String> by lazy {

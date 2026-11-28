@@ -36,6 +36,8 @@ data class AchievementsUiState(
     val byGroup: Map<String, List<Achievement>> = emptyMap(),
     val unlockedCount: Int = 0,
     val totalCount: Int = 0,
+    /** Hidden achievements: shown in their own group, never part of the counts above. */
+    val hidden: List<Achievement> = emptyList(),
 )
 
 @HiltViewModel
@@ -138,6 +140,15 @@ class AchievementsViewModel @Inject constructor(
                 allBuildingKeys.all { (townTiers[it] ?: 0) >= (gameData.townBuildings[it]?.tiers?.size ?: 0) }),
         )
 
+        val petLevels = pets.map { com.fantasyidler.simulator.PetBattle.level(it.xp) }
+        groups["Arena"] = listOf(
+            ach("arena_first_win",  R.string.achievement_arena_first_win_name,  R.string.achievement_arena_first_win_desc,  "🏟️", flags.petArenaWins >= 1),
+            ach("arena_evolution",  R.string.achievement_arena_evolution_name,  R.string.achievement_arena_evolution_desc,  "✨", petLevels.any { it >= com.fantasyidler.simulator.PetBattle.STAGE_2_LEVEL }),
+            ach("arena_pet_99",     R.string.achievement_arena_pet_99_name,     R.string.achievement_arena_pet_99_desc,     "💞", petLevels.any { it >= com.fantasyidler.simulator.PetBattle.MAX_LEVEL }),
+            ach("arena_all_badges", R.string.achievement_arena_all_badges_name, R.string.achievement_arena_all_badges_desc, "🏅",
+                gameData.petArena.trainers.isNotEmpty() && gameData.petArena.trainers.all { it.id in flags.petBadges }),
+        )
+
         groups["Tower"] = listOf(
             ach("tower_first_floor",      R.string.achievement_tower_first_floor_name,      R.string.achievement_tower_first_floor_desc,      "🗼", flags.towerBestFloor >= 1),
             ach("tower_floor_10",         R.string.achievement_tower_floor_10_name,         R.string.achievement_tower_floor_10_desc,         "🗼", flags.towerBestFloor >= 10),
@@ -147,12 +158,17 @@ class AchievementsViewModel @Inject constructor(
             ach("tower_all_milestones",   R.string.achievement_tower_all_milestones_name,   R.string.achievement_tower_all_milestones_desc,   "🌟", flags.towerMilestonesClaimed.size >= 25),
         )
 
+        val hidden = HiddenAchievementCatalog.ALL.map { def ->
+            ach(def.id, def.nameRes, def.descRes, def.emoji, def.id in flags.hiddenAchievements)
+        }
+
         val all = groups.values.flatten()
         AchievementsUiState(
             isLoading     = false,
             byGroup       = groups,
             unlockedCount = all.count { it.isUnlocked },
             totalCount    = all.size,
+            hidden        = hidden,
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), AchievementsUiState())
 

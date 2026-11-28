@@ -1,5 +1,6 @@
 package com.fantasyidler.ui.viewmodel
 
+import com.fantasyidler.simulator.PetBattle
 import com.fantasyidler.data.json.SpellData
 import com.fantasyidler.data.model.EquipSlot
 import com.fantasyidler.data.model.OwnedPet
@@ -87,7 +88,7 @@ internal fun estimateDungeonPreviewXp(
     val petBoostPct = if (flags.ironman) 0 else try {
         json.decodeFromString<List<OwnedPet>>(petsJson).sumOf { pet ->
             val pd = gameData.pets[pet.id]
-            if (pd != null && (pd.boostedSkill == "combat" || pd.boostedSkill == "all")) pd.boostPercent else 0
+            if (pd != null && (pd.boostedSkill == "combat" || pd.boostedSkill == "all")) PetBattle.boostPercent(pd.boostPercent, pet.xp) else 0
         }
     } catch (_: Exception) { 0 }
 

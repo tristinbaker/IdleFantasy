@@ -7,7 +7,12 @@
     "source": "King Black Dragon raid (1/100 per kill)",
     "effect_type": "xp_boost",
     "boosted_skill": "combat",
-    "boost_percent": 5
+    "boost_percent": 5,
+    "battle_type": "melee",
+    "rarity": "rare",
+    "base_attack": 78,
+    "base_defense": 52,
+    "base_hp": 62
   },
   "imp_pet": {
     "id": "imp_pet",
@@ -17,7 +22,12 @@
     "source": "Demon Lord raid (1/100 per kill)",
     "effect_type": "xp_boost",
     "boosted_skill": "prayer",
-    "boost_percent": 5
+    "boost_percent": 5,
+    "battle_type": "magic",
+    "rarity": "rare",
+    "base_attack": 78,
+    "base_defense": 52,
+    "base_hp": 62
   },
   "baby_kraken": {
     "id": "baby_kraken",
@@ -27,7 +37,12 @@
     "source": "Kraken raid (1/100 per kill)",
     "effect_type": "xp_boost",
     "boosted_skill": "cooking",
-    "boost_percent": 5
+    "boost_percent": 5,
+    "battle_type": "melee",
+    "rarity": "rare",
+    "base_attack": 58,
+    "base_defense": 62,
+    "base_hp": 72
   },
   "rock_golem": {
     "id": "rock_golem",
@@ -37,7 +52,12 @@
     "source": "Mining (6% chance per session)",
     "effect_type": "xp_boost",
     "boosted_skill": "mining",
-    "boost_percent": 10
+    "boost_percent": 10,
+    "battle_type": "melee",
+    "rarity": "common",
+    "base_attack": 54,
+    "base_defense": 74,
+    "base_hp": 64
   },
   "ent": {
     "id": "ent",
@@ -47,7 +67,12 @@
     "source": "Woodcutting (6% chance per session)",
     "effect_type": "xp_boost",
     "boosted_skill": "woodcutting",
-    "boost_percent": 10
+    "boost_percent": 10,
+    "battle_type": "melee",
+    "rarity": "common",
+    "base_attack": 58,
+    "base_defense": 62,
+    "base_hp": 72
   },
   "tiny_templar": {
     "id": "tiny_templar",
@@ -57,7 +82,12 @@
     "source": "Fishing (6% chance per session)",
     "effect_type": "xp_boost",
     "boosted_skill": "fishing",
-    "boost_percent": 10
+    "boost_percent": 10,
+    "battle_type": "ranged",
+    "rarity": "common",
+    "base_attack": 64,
+    "base_defense": 64,
+    "base_hp": 64
   },
   "tangleroot": {
     "id": "tangleroot",
@@ -67,7 +97,12 @@
     "source": "Farming harvest (1/1000 per harvest)",
     "effect_type": "xp_boost",
     "boosted_skill": "farming",
-    "boost_percent": 10
+    "boost_percent": 10,
+    "battle_type": "magic",
+    "rarity": "rare",
+    "base_attack": 58,
+    "base_defense": 62,
+    "base_hp": 72
   },
   "baby_balrog": {
     "id": "baby_balrog",
@@ -77,7 +112,12 @@
     "source": "Gothic Ember raid (1/200 per kill)",
     "effect_type": "xp_boost",
     "boosted_skill": "magic",
-    "boost_percent": 5
+    "boost_percent": 5,
+    "battle_type": "magic",
+    "rarity": "epic",
+    "base_attack": 78,
+    "base_defense": 52,
+    "base_hp": 62
   },
   "void_wisp": {
     "id": "void_wisp",
@@ -87,7 +127,12 @@
     "source": "Void Sovereign raid (1/333 per kill)",
     "effect_type": "xp_boost",
     "boosted_skill": "combat",
-    "boost_percent": 5
+    "boost_percent": 5,
+    "battle_type": "magic",
+    "rarity": "epic",
+    "base_attack": 64,
+    "base_defense": 64,
+    "base_hp": 64
   },
   "graceling_sprite": {
     "id": "graceling_sprite",
@@ -97,7 +142,12 @@
     "source": "Agility (6% chance per session)",
     "effect_type": "xp_boost",
     "boosted_skill": "agility",
-    "boost_percent": 10
+    "boost_percent": 10,
+    "battle_type": "ranged",
+    "rarity": "common",
+    "base_attack": 78,
+    "base_defense": 52,
+    "base_hp": 62
   },
   "shadow_fox": {
     "id": "shadow_fox",
@@ -107,7 +157,12 @@
     "source": "Thieving (6% chance per session)",
     "effect_type": "xp_boost",
     "boosted_skill": "thieving",
-    "boost_percent": 10
+    "boost_percent": 10,
+    "battle_type": "ranged",
+    "rarity": "common",
+    "base_attack": 78,
+    "base_defense": 52,
+    "base_hp": 62
   },
   "ember_moth": {
     "id": "ember_moth",
@@ -117,7 +172,12 @@
     "source": "Firemaking (6% chance per session)",
     "effect_type": "xp_boost",
     "boosted_skill": "firemaking",
-    "boost_percent": 10
+    "boost_percent": 10,
+    "battle_type": "magic",
+    "rarity": "common",
+    "base_attack": 78,
+    "base_defense": 52,
+    "base_hp": 62
   },
   "herb_wisp": {
     "id": "herb_wisp",
@@ -127,7 +187,12 @@
     "source": "Herblore (6% chance per session)",
     "effect_type": "xp_boost",
     "boosted_skill": "herblore",
-    "boost_percent": 10
+    "boost_percent": 10,
+    "battle_type": "magic",
+    "rarity": "common",
+    "base_attack": 58,
+    "base_defense": 62,
+    "base_hp": 72
   },
   "rune_sprite": {
     "id": "rune_sprite",
@@ -137,7 +202,12 @@
     "source": "Runecrafting (6% chance per session)",
     "effect_type": "xp_boost",
     "boosted_skill": "runecrafting",
-    "boost_percent": 10
+    "boost_percent": 10,
+    "battle_type": "magic",
+    "rarity": "common",
+    "base_attack": 64,
+    "base_defense": 64,
+    "base_hp": 64
   },
   "gem_golem": {
     "id": "gem_golem",
@@ -147,7 +217,12 @@
     "source": "Crafting (6% chance per session)",
     "effect_type": "xp_boost",
     "boosted_skill": "crafting",
-    "boost_percent": 10
+    "boost_percent": 10,
+    "battle_type": "melee",
+    "rarity": "common",
+    "base_attack": 54,
+    "base_defense": 74,
+    "base_hp": 64
   },
   "feather_drake": {
     "id": "feather_drake",
@@ -157,7 +232,12 @@
     "source": "Fletching (6% chance per session)",
     "effect_type": "xp_boost",
     "boosted_skill": "fletching",
-    "boost_percent": 10
+    "boost_percent": 10,
+    "battle_type": "ranged",
+    "rarity": "common",
+    "base_attack": 72,
+    "base_defense": 58,
+    "base_hp": 62
   },
   "forge_imp": {
     "id": "forge_imp",
@@ -167,7 +247,12 @@
     "source": "Smithing (6% chance per session)",
     "effect_type": "xp_boost",
     "boosted_skill": "smithing",
-    "boost_percent": 10
+    "boost_percent": 10,
+    "battle_type": "melee",
+    "rarity": "common",
+    "base_attack": 72,
+    "base_defense": 58,
+    "base_hp": 62
   },
   "coin_drake": {
     "id": "coin_drake",
@@ -177,7 +262,12 @@
     "source": "Mercantile (6% chance per session)",
     "effect_type": "xp_boost",
     "boosted_skill": "mercantile",
-    "boost_percent": 10
+    "boost_percent": 10,
+    "battle_type": "ranged",
+    "rarity": "common",
+    "base_attack": 64,
+    "base_defense": 64,
+    "base_hp": 64
   },
   "timber_sprite": {
     "id": "timber_sprite",
@@ -187,7 +277,12 @@
     "source": "Construction (6% chance per session)",
     "effect_type": "xp_boost",
     "boosted_skill": "construction",
-    "boost_percent": 10
+    "boost_percent": 10,
+    "battle_type": "melee",
+    "rarity": "common",
+    "base_attack": 58,
+    "base_defense": 62,
+    "base_hp": 72
   },
   "juggling_imp": {
     "id": "juggling_imp",
@@ -197,7 +292,12 @@
     "source": "Carnival prize shop (4,000 tickets)",
     "effect_type": "xp_boost",
     "boosted_skill": "all",
-    "boost_percent": 3
+    "boost_percent": 3,
+    "battle_type": "ranged",
+    "rarity": "uncommon",
+    "base_attack": 78,
+    "base_defense": 52,
+    "base_hp": 62
   },
   "tower_pet": {
     "id": "tower_pet",
@@ -207,7 +307,12 @@
     "source": "Infinite Tower milestone: Floor 100",
     "effect_type": "xp_boost",
     "boosted_skill": "combat",
-    "boost_percent": 5
+    "boost_percent": 5,
+    "battle_type": "melee",
+    "rarity": "uncommon",
+    "base_attack": 54,
+    "base_defense": 74,
+    "base_hp": 64
   },
   "solstice_sprite": {
     "id": "solstice_sprite",
@@ -217,7 +322,12 @@
     "source": "Sol Invictus raid (1/100 per kill during the Summer Solstice event)",
     "effect_type": "xp_boost",
     "boosted_skill": "combat",
-    "boost_percent": 5
+    "boost_percent": 5,
+    "battle_type": "magic",
+    "rarity": "rare",
+    "base_attack": 78,
+    "base_defense": 52,
+    "base_hp": 62
   },
   "lantern_wisp": {
     "id": "lantern_wisp",
@@ -227,7 +337,12 @@
     "source": "The Hollow King raid (Gloomharvest event)",
     "effect_type": "xp_boost",
     "boosted_skill": "combat",
-    "boost_percent": 5
+    "boost_percent": 5,
+    "battle_type": "magic",
+    "rarity": "rare",
+    "base_attack": 64,
+    "base_defense": 64,
+    "base_hp": 64
   },
   "grave_sprout": {
     "id": "grave_sprout",
@@ -237,7 +352,12 @@
     "source": "Gloomharvest event reward (125 tokens)",
     "effect_type": "xp_boost",
     "boosted_skill": "farming",
-    "boost_percent": 5
+    "boost_percent": 5,
+    "battle_type": "melee",
+    "rarity": "uncommon",
+    "base_attack": 58,
+    "base_defense": 62,
+    "base_hp": 72
   },
   "golden_goose": {
     "id": "golden_goose",
@@ -247,16 +367,21 @@
     "source": "Grand Monument stage 4 (Gilded)",
     "effect_type": "coin_boost",
     "boosted_skill": "coins",
-    "boost_percent": 10
+    "boost_percent": 10,
+    "battle_type": "ranged",
+    "rarity": "uncommon",
+    "base_attack": 64,
+    "base_defense": 64,
+    "base_hp": 64
   },
-  "tidal_sprite":       {"id":"tidal_sprite",       "display_name":"Tidal Sprite",       "emoji":"🌊", "description":"A shy tide-spirit that follows the isle's cooler currents.",           "source":"Beach elder-tier drop",              "effect_type":"xp_boost", "boosted_skill":"fishing",     "boost_percent":10},
-  "grove_fawn":         {"id":"grove_fawn",         "display_name":"Grove Fawn",         "emoji":"🦌", "description":"A silent fawn of the abyssal grove. Softens every axe fall.",            "source":"Ancient Forest elder-tier drop",     "effect_type":"xp_boost", "boosted_skill":"woodcutting", "boost_percent":10},
-  "magma_salamander":   {"id":"magma_salamander",   "display_name":"Magma Salamander",   "emoji":"🦎", "description":"A hot-blooded lizard that basks in Volcano Peak's vents.",              "source":"Volcano Peak elder-tier drop",       "effect_type":"xp_boost", "boosted_skill":"combat",      "boost_percent":10},
-  "abyss_wisp":         {"id":"abyss_wisp",         "display_name":"Abyss Wisp",         "emoji":"🕳️", "description":"A drifting mote from the caldera's darkest layer.",                     "source":"Abyssal Depths elder-tier drop",     "effect_type":"xp_boost", "boosted_skill":"crafting",    "boost_percent":10},
-  "ancient_turtle":     {"id":"ancient_turtle",     "display_name":"Ancient Turtle",     "emoji":"🐢", "description":"A slow, patient shell-back that has seen a hundred voyages fail.",       "source":"Beach elder-tier rare drop",         "effect_type":"xp_boost", "boosted_skill":"hitpoints",   "boost_percent":10},
-  "cinder_hawk":        {"id":"cinder_hawk",        "display_name":"Cinder Hawk",        "emoji":"🦅", "description":"A raptor whose feathers hold the volcano's heat.",                       "source":"Volcano Peak elder-tier rare drop",  "effect_type":"xp_boost", "boosted_skill":"ranged",      "boost_percent":10},
-  "deepwater_serpent":  {"id":"deepwater_serpent",  "display_name":"Deepwater Serpent",  "emoji":"🐍", "description":"A slender coil of the deepest reef. Rarely surfaces.",                  "source":"Abyssal Depths elder-tier ultra-rare drop", "effect_type":"xp_boost", "boosted_skill":"magic", "boost_percent":10},
-  "elder_familiar":     {"id":"elder_familiar",     "display_name":"Elder Familiar",     "emoji":"🕯️", "description":"A soft-glowing shape that follows the Elder's final chamber home.",       "source":"The Last Elder — legendary drop",    "effect_type":"xp_boost", "boosted_skill":"combat",      "boost_percent":15},
+  "tidal_sprite":       {"id":"tidal_sprite",       "display_name":"Tidal Sprite",       "emoji":"🌊", "description":"A shy tide-spirit that follows the isle's cooler currents.",           "source":"Beach elder-tier drop",              "effect_type":"xp_boost", "boosted_skill":"fishing",     "boost_percent":10,"battle_type":"ranged","rarity":"rare","base_attack":64,"base_defense":64,"base_hp":64},
+  "grove_fawn":         {"id":"grove_fawn",         "display_name":"Grove Fawn",         "emoji":"🦌", "description":"A silent fawn of the abyssal grove. Softens every axe fall.",            "source":"Ancient Forest elder-tier drop",     "effect_type":"xp_boost", "boosted_skill":"woodcutting", "boost_percent":10,"battle_type":"melee","rarity":"rare","base_attack":72,"base_defense":58,"base_hp":62},
+  "magma_salamander":   {"id":"magma_salamander",   "display_name":"Magma Salamander",   "emoji":"🦎", "description":"A hot-blooded lizard that basks in Volcano Peak's vents.",              "source":"Volcano Peak elder-tier drop",       "effect_type":"xp_boost", "boosted_skill":"combat",      "boost_percent":10,"battle_type":"melee","rarity":"rare","base_attack":78,"base_defense":52,"base_hp":62},
+  "abyss_wisp":         {"id":"abyss_wisp",         "display_name":"Abyss Wisp",         "emoji":"🕳️", "description":"A drifting mote from the caldera's darkest layer.",                     "source":"Abyssal Depths elder-tier drop",     "effect_type":"xp_boost", "boosted_skill":"crafting",    "boost_percent":10,"battle_type":"magic","rarity":"rare","base_attack":64,"base_defense":64,"base_hp":64},
+  "ancient_turtle":     {"id":"ancient_turtle",     "display_name":"Ancient Turtle",     "emoji":"🐢", "description":"A slow, patient shell-back that has seen a hundred voyages fail.",       "source":"Beach elder-tier rare drop",         "effect_type":"xp_boost", "boosted_skill":"hitpoints",   "boost_percent":10,"battle_type":"melee","rarity":"epic","base_attack":54,"base_defense":74,"base_hp":64},
+  "cinder_hawk":        {"id":"cinder_hawk",        "display_name":"Cinder Hawk",        "emoji":"🦅", "description":"A raptor whose feathers hold the volcano's heat.",                       "source":"Volcano Peak elder-tier rare drop",  "effect_type":"xp_boost", "boosted_skill":"ranged",      "boost_percent":10,"battle_type":"ranged","rarity":"epic","base_attack":78,"base_defense":52,"base_hp":62},
+  "deepwater_serpent":  {"id":"deepwater_serpent",  "display_name":"Deepwater Serpent",  "emoji":"🐍", "description":"A slender coil of the deepest reef. Rarely surfaces.",                  "source":"Abyssal Depths elder-tier ultra-rare drop", "effect_type":"xp_boost", "boosted_skill":"magic", "boost_percent":10,"battle_type":"magic","rarity":"legendary","base_attack":72,"base_defense":58,"base_hp":62},
+  "elder_familiar":     {"id":"elder_familiar",     "display_name":"Elder Familiar",     "emoji":"🕯️", "description":"A soft-glowing shape that follows the Elder's final chamber home.",       "source":"The Last Elder — legendary drop",    "effect_type":"xp_boost", "boosted_skill":"combat",      "boost_percent":15,"battle_type":"magic","rarity":"legendary","base_attack":64,"base_defense":64,"base_hp":64},
   "sunbird_chick": {
     "id": "sunbird_chick",
     "display_name": "Sunbird Chick",
@@ -265,7 +390,12 @@
     "source": "Sunspire Solstice event reward (250 tokens)",
     "effect_type": "xp_boost",
     "boosted_skill": "firemaking",
-    "boost_percent": 5
+    "boost_percent": 5,
+    "battle_type": "ranged",
+    "rarity": "uncommon",
+    "base_attack": 78,
+    "base_defense": 52,
+    "base_hp": 62
   },
   "frost_wyrmling": {
     "id": "frost_wyrmling",
@@ -275,7 +405,12 @@
     "source": "The Rime Wyrm raid (Frostfall event)",
     "effect_type": "xp_boost",
     "boosted_skill": "combat",
-    "boost_percent": 5
+    "boost_percent": 5,
+    "battle_type": "melee",
+    "rarity": "rare",
+    "base_attack": 78,
+    "base_defense": 52,
+    "base_hp": 62
   },
   "snowhare": {
     "id": "snowhare",
@@ -285,7 +420,12 @@
     "source": "Frostfall event reward (250 tokens)",
     "effect_type": "xp_boost",
     "boosted_skill": "fishing",
-    "boost_percent": 5
+    "boost_percent": 5,
+    "battle_type": "ranged",
+    "rarity": "uncommon",
+    "base_attack": 78,
+    "base_defense": 52,
+    "base_hp": 62
   },
   "petal_sprite": {
     "id": "petal_sprite",
@@ -295,7 +435,12 @@
     "source": "The Thorn Queen raid (Bloomtide event)",
     "effect_type": "xp_boost",
     "boosted_skill": "combat",
-    "boost_percent": 5
+    "boost_percent": 5,
+    "battle_type": "ranged",
+    "rarity": "rare",
+    "base_attack": 64,
+    "base_defense": 64,
+    "base_hp": 64
   },
   "bumblebee": {
     "id": "bumblebee",
@@ -305,6 +450,11 @@
     "source": "Bloomtide event reward (250 tokens)",
     "effect_type": "xp_boost",
     "boosted_skill": "herblore",
-    "boost_percent": 5
+    "boost_percent": 5,
+    "battle_type": "ranged",
+    "rarity": "uncommon",
+    "base_attack": 72,
+    "base_defense": 58,
+    "base_hp": 62
   }
 }

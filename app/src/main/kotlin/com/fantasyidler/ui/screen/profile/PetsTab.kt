@@ -25,6 +25,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.fantasyidler.R
 import com.fantasyidler.data.json.PetData
+import com.fantasyidler.repository.HiddenAchievements
+import com.fantasyidler.simulator.PetBattle
 import com.fantasyidler.ui.components.CompletionProgressBar
 import com.fantasyidler.ui.screen.AppBannerCenter
 import com.fantasyidler.ui.screen.SlotSectionHeader
@@ -32,15 +34,13 @@ import com.fantasyidler.util.GameStrings
 
 /** The 8 isle-only pets (7 elder dungeon drops + Last Elder's familiar). Hidden from the
  *  pet list until the isle is unlocked, so a pre-unlock save can't spoil what's coming. */
-private val ELDER_ISLE_PET_IDS = setOf(
-    "tidal_sprite", "grove_fawn", "magma_salamander", "abyss_wisp",
-    "ancient_turtle", "cinder_hawk", "deepwater_serpent", "elder_familiar",
-)
+private val ELDER_ISLE_PET_IDS = HiddenAchievements.ELDER_ISLE_PET_IDS
 
 @Composable
 internal fun PetsTab(
     allPets: Map<String, PetData>,
     ownedPetIds: Set<String>,
+    petXp: Map<String, Long> = emptyMap(),
     elderIsleUnlocked: Boolean = false,
 ) {
     val visiblePets = if (elderIsleUnlocked) allPets
@@ -72,7 +72,7 @@ internal fun PetsTab(
         if (owned.isNotEmpty()) {
             item { SlotSectionHeader(stringResource(R.string.profile_pet_collected)) }
             itemsIndexed(owned, key = { _, it -> it.id }) { index, pet ->
-                PetRow(pet = pet, owned = true)
+                PetRow(pet = pet, owned = true, xp = petXp[pet.id] ?: 0L)
                 if (index < owned.lastIndex) {
                     HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
                 }
@@ -92,7 +92,8 @@ internal fun PetsTab(
 }
 
 @Composable
-private fun PetRow(pet: PetData, owned: Boolean) {
+private fun PetRow(pet: PetData, owned: Boolean, xp: Long = 0L) {
+    val level = PetBattle.level(xp)
     val alpha = if (owned) 1f else 0.38f
     val context = LocalContext.current
     Row(
@@ -124,7 +125,11 @@ private fun PetRow(pet: PetData, owned: Boolean) {
             modifier = Modifier.weight(1f),
         ) {
             Text(
-                text = GameStrings.petName(context, pet.id),
+                text = if (owned) stringResource(
+                    R.string.pet_arena_name_level,
+                    GameStrings.petStageName(context, pet.id, PetBattle.stage(level)),
+                    level,
+                ) else GameStrings.petName(context, pet.id),
                 style = MaterialTheme.typography.bodyLarge,
                 fontWeight = FontWeight.Medium,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = alpha),
@@ -139,7 +144,7 @@ private fun PetRow(pet: PetData, owned: Boolean) {
             text = stringResource(
                 if (pet.effectType == "coin_boost") R.string.format_coin_boost_percent
                 else R.string.format_xp_boost_percent,
-                pet.boostPercent,
+                if (owned) PetBattle.boostPercent(pet.boostPercent, xp) else pet.boostPercent,
             ),
             style = MaterialTheme.typography.labelMedium,
             color = (if (owned) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant)

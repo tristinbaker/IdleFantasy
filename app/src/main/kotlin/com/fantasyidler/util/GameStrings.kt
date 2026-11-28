@@ -84,6 +84,23 @@ object GameStrings {
     fun petName(context: Context, key: String): String =
         context.stringByName("pet_${key}_name") ?: key.toTitleCase()
 
+    /** A pet's name for its Pet Arena evolution stage (1 = the base name). */
+    fun petStageName(context: Context, key: String, stage: Int): String =
+        if (stage <= 1) petName(context, key)
+        else context.stringByName("pet_${key}_stage${stage}_name") ?: petName(context, key)
+
+    fun arenaCreatureName(context: Context, key: String): String =
+        context.stringByName("arena_creature_${key}_name") ?: key.toTitleCase()
+
+    fun arenaZoneName(context: Context, key: String): String =
+        context.stringByName("arena_zone_${key}_name") ?: key.toTitleCase()
+
+    fun arenaTrainerName(context: Context, key: String): String =
+        context.stringByName("arena_trainer_${key}_name") ?: key.toTitleCase()
+
+    fun arenaBadgeName(context: Context, key: String): String =
+        context.stringByName("arena_badge_${key}_name") ?: key.toTitleCase()
+
     fun petDesc(context: Context, key: String): String =
         context.stringByName("pet_${key}_desc") ?: ""
 

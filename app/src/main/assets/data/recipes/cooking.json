@@ -187,5 +187,50 @@
     "xp_per_item": 900,
     "healing_value": 34,
     "time_per_item": 60
+  },
+  "carrot_treat": {
+    "raw_item": "carrot",
+    "cooked_item": "carrot_treat",
+    "display_name": "Carrot Treat",
+    "level_required": 5,
+    "xp_per_item": 4,
+    "healing_value": 0,
+    "time_per_item": 60
+  },
+  "pumpkin_treat": {
+    "raw_item": "pumpkin",
+    "cooked_item": "pumpkin_treat",
+    "display_name": "Pumpkin Treat",
+    "level_required": 30,
+    "xp_per_item": 15,
+    "healing_value": 0,
+    "time_per_item": 60
+  },
+  "strawberry_treat": {
+    "raw_item": "strawberry",
+    "cooked_item": "strawberry_treat",
+    "display_name": "Strawberry Treat",
+    "level_required": 45,
+    "xp_per_item": 30,
+    "healing_value": 0,
+    "time_per_item": 60
+  },
+  "dragon_fruit_treat": {
+    "raw_item": "dragon_fruit",
+    "cooked_item": "dragon_fruit_treat",
+    "display_name": "Dragon Fruit Treat",
+    "level_required": 60,
+    "xp_per_item": 55,
+    "healing_value": 0,
+    "time_per_item": 60
+  },
+  "starfruit_treat": {
+    "raw_item": "starfruit",
+    "cooked_item": "starfruit_treat",
+    "display_name": "Starfruit Treat",
+    "level_required": 80,
+    "xp_per_item": 90,
+    "healing_value": 0,
+    "time_per_item": 60
   }
 }
