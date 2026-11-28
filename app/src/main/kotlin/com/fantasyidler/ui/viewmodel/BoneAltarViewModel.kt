@@ -138,7 +138,7 @@ class BoneAltarViewModel @Inject constructor(
         val churchMult     = if (flags.ironman) 1.0f
                      else ChurchRepository.xpMultiplier(flags, blessingPrayerCapeMult(flags, equipped, inventory.keys, gameData), gameData.blessings)
         val prestigeMult   = (1.0 + boostRepo.prestigeXpPct(Skills.PRAYER, flags) / 100.0).toFloat()
-        val petBoostPct    = if (flags.ironman) 0 else petBoostFor(player.pets, Skills.PRAYER)
+        val petBoostPct    = petBoostFor(player.pets, Skills.PRAYER, flags.ironman)
 
         val selectedKey = extra.selectedBoneKey?.takeIf { (inventory[it] ?: 0) > 0 }
 
@@ -254,13 +254,13 @@ class BoneAltarViewModel @Inject constructor(
 
     fun snackbarConsumed() = _extra.update { it.copy(snackbarMessage = null) }
 
-    private fun petBoostFor(petsJson: String, skillKey: String): Int {
+    private fun petBoostFor(petsJson: String, skillKey: String, ironman: Boolean = false): Int {
         val pets = try {
             json.decodeFromString<List<OwnedPet>>(petsJson)
         } catch (_: Exception) {
             return 0
         }
-        return pets.sumOf { pet ->
+        return PetBattle.boostingPets(pets, ironman).sumOf { pet ->
             val pd = gameData.pets[pet.id]
             if (pd != null && (pd.boostedSkill == skillKey || pd.boostedSkill == "all")) PetBattle.boostPercent(pd.boostPercent, pet.xp) else 0
         }

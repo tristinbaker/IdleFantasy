@@ -63,6 +63,7 @@ class TitleRepository @Inject constructor(
         if (flags.monumentTier >= 5) unlocked += MonumentRepository.PATRON_TITLE_ID
         val trainers = gameData.petArena.trainers
         if (trainers.isNotEmpty() && trainers.all { it.id in flags.petBadges }) unlocked += PetArenaRepository.CHAMPION_TITLE
+        if (flags.petUltimateWins > 0) unlocked += PetArenaRepository.ULTIMATE_TITLE
         unlocked += MainStory.titlesEarned(flags.storyStarted, flags.storyChapter)
         for (banner in flags.seasonalBannersEarned) unlocked += "seasonal_${banner.eventId}"
         for ((guild, titleId) in GUILD_TITLES) {

@@ -382,6 +382,9 @@ data class PlayerFlags(
     /** Trainer ids beaten; each one is a badge. */
     @SerialName("pet_badges") val petBadges: Set<String> = emptySet(),
     @SerialName("pet_arena_wins") val petArenaWins: Long = 0L,
+    /** The 8-pet team for the Ultimate Challenge (separate from [petTeam]). */
+    @SerialName("pet_challenge_team") val petChallengeTeam: List<String> = emptyList(),
+    @SerialName("pet_ultimate_wins") val petUltimateWins: Int = 0,
 )
 
 /** One completed bulk sell: what was sold and what it paid. */
@@ -616,6 +619,12 @@ data class OwnedPet(
     @SerialName("boost_percent") val boostPercent: Int = 0,
     /** Pet Arena XP; the pet's level comes from the skill XP table (see PetBattle). */
     @SerialName("xp") val xp: Long = 0L,
+    /** Share of max HP left after its last battle, as of [hpAt]; pets rest back to full over time. */
+    @SerialName("hp") val hpFraction: Double = 1.0,
+    /** When [hpFraction] was recorded (0 = never fought: full). */
+    @SerialName("hp_at") val hpAt: Long = 0L,
+    /** Well Fed bonus (%) for the pet's next battle session; 0 = none. */
+    @SerialName("well_fed") val wellFed: Int = 0,
 )
 
 /** Portable save file written by export and read by import. */

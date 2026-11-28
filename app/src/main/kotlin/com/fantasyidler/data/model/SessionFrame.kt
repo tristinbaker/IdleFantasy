@@ -1,5 +1,6 @@
 package com.fantasyidler.data.model
 
+import com.fantasyidler.simulator.PetBattle
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -81,4 +82,12 @@ data class SessionFrame(
     @SerialName("gear_at_start") val gearAtStart: Map<String, String>? = null,
     /** Pet Arena only: pet XP earned this minute, keyed by owned pet id. */
     @SerialName("pet_xp") val petXp: Map<String, Long> = emptyMap(),
+    /** Pet Arena only, frame 0: the simulation seed, so the battle screen can replay the exact fight. */
+    @SerialName("pet_seed") val petSeed: Long? = null,
+    /** Pet Arena only, frame 0: the team as it fought (stats at the start). */
+    @SerialName("pet_team_start") val petTeamStart: List<PetBattle.Fighter> = emptyList(),
+    /** Pet Arena only, frame 0: each pet's HP going in (empty = full), so the replay matches. */
+    @SerialName("pet_start_hp") val petStartHp: List<Int> = emptyList(),
+    /** Pet Arena only, last frame: each pet's HP when the session ended (0 = knocked out). */
+    @SerialName("pet_hp_end") val petHpEnd: Map<String, Int> = emptyMap(),
 )

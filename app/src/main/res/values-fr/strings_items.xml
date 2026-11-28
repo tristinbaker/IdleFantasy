@@ -1314,6 +1314,7 @@
     <string name="item_keepsake_dragon_molt_desc">Discarded scales of the black king dragon, still heavy with primal magic.</string> <!-- untranslated -->
     <string name="item_keepsake_eye_of_chaos_name">Eye of Chaos</string> <!-- untranslated -->
     <string name="item_keepsake_eye_of_chaos_desc">A rough, pearl-like gem from the Realm of Chaos. It fits the Obsidian Key’s empty slot.</string> <!-- untranslated -->
+    <!-- Ranged and magic armour (2.1.0) -->
     <string name="item_troll_hide_name">Troll Hide</string> <!-- untranslated -->
     <string name="item_troll_hide_desc">Thick, warty hide from a troll. Crafted into ranged armour.</string> <!-- untranslated -->
     <string name="item_hellhound_hide_name">Hellhound Hide</string> <!-- untranslated -->
@@ -1442,14 +1443,15 @@
     <string name="item_celestial_robe_bottom_desc">A celestial robe piece woven from shadow silk and blood runes.</string> <!-- untranslated -->
     <string name="item_celestial_boots_name">Celestial Boots</string> <!-- untranslated -->
     <string name="item_celestial_boots_desc">A celestial robe piece woven from shadow silk and blood runes.</string> <!-- untranslated -->
+    <!-- Pet treats (2.1.0) -->
     <string name="item_carrot_treat_name">Carrot Treat</string> <!-- untranslated -->
-    <string name="item_carrot_treat_desc">A pet treat. Feed it to a pet at the Pet Arena for 250 pet XP.</string> <!-- untranslated -->
+    <string name="item_carrot_treat_desc" formatted="false">A cooked pet treat. Feed it to a pet at the Pet Arena to heal 15% of its HP and make it Well Fed (+3% attack and defense) for its next battle.</string> <!-- untranslated -->
     <string name="item_pumpkin_treat_name">Pumpkin Treat</string> <!-- untranslated -->
-    <string name="item_pumpkin_treat_desc">A pet treat. Feed it to a pet at the Pet Arena for 1,200 pet XP.</string> <!-- untranslated -->
+    <string name="item_pumpkin_treat_desc" formatted="false">A cooked pet treat. Feed it to a pet at the Pet Arena to heal 25% of its HP and make it Well Fed (+5% attack and defense) for its next battle.</string> <!-- untranslated -->
     <string name="item_strawberry_treat_name">Strawberry Treat</string> <!-- untranslated -->
-    <string name="item_strawberry_treat_desc">A pet treat. Feed it to a pet at the Pet Arena for 2,500 pet XP.</string> <!-- untranslated -->
+    <string name="item_strawberry_treat_desc" formatted="false">A cooked pet treat. Feed it to a pet at the Pet Arena to heal 35% of its HP and make it Well Fed (+7% attack and defense) for its next battle.</string> <!-- untranslated -->
     <string name="item_dragon_fruit_treat_name">Dragon Fruit Treat</string> <!-- untranslated -->
-    <string name="item_dragon_fruit_treat_desc">A pet treat. Feed it to a pet at the Pet Arena for 6,000 pet XP.</string> <!-- untranslated -->
+    <string name="item_dragon_fruit_treat_desc" formatted="false">A cooked pet treat. Feed it to a pet at the Pet Arena to heal 45% of its HP and make it Well Fed (+10% attack and defense) for its next battle.</string> <!-- untranslated -->
     <string name="item_starfruit_treat_name">Starfruit Treat</string> <!-- untranslated -->
-    <string name="item_starfruit_treat_desc">A pet treat. Feed it to a pet at the Pet Arena for 15,000 pet XP.</string> <!-- untranslated -->
+    <string name="item_starfruit_treat_desc" formatted="false">A cooked pet treat. Feed it to a pet at the Pet Arena to heal 60% of its HP and make it Well Fed (+15% attack and defense) for its next battle.</string> <!-- untranslated -->
 </resources>

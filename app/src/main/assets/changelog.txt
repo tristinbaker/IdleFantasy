@@ -1,3 +1,12 @@
+v2.1.0
+• Added 30 hidden achievements: extra challenges that don't count toward completion
+• Added ranged and magic armour: 7 tiers each of hide and robes, crafted with Crafting
+• Added the Pet Arena: level up your pets, evolve them, battle wild zones and earn 8 trainer badges
+• Pet boosts now grow as your pets level up, up to double at level 99
+• Added pet treats, cooked from crops: they heal your pets and make them Well Fed for their next battle
+• Pet battles play out live on a Pokemon-style battle screen, with moves, critical hits, burns and evolution scenes
+• Added the Ultimate Challenge: 8 fully trained pets against Aetherion, the First Beast, for a 1 in 100 shot at the rarest pet
+
 v2.0.0
 • Idle Fantasy now has a main story
 • Fixed a crash when hiding completed quests

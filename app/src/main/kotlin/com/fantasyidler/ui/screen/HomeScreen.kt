@@ -117,6 +117,7 @@ fun HomeScreen(
     onNavigateToHouse: () -> Unit = {},
     onNavigateToCarnival: () -> Unit = {},
     onNavigateToPetArena: () -> Unit = {},
+    onNavigateToPetBattle: () -> Unit = {},
     onNavigateToSeasonalEvent: () -> Unit = {},
     onNavigateToElderIsle: () -> Unit = {},
     onNavigateToElderIsleShop: () -> Unit = {},
@@ -129,6 +130,8 @@ fun HomeScreen(
     val context           = LocalContext.current
 
     AppBannerEffect(state.snackbarMessage, viewModel::snackbarConsumed)
+    val petArenaResult by viewModel.petArenaResult.collectAsState()
+    petArenaResult?.let { PetArenaResultDialog(it, viewModel.petEmoji, viewModel.petData, viewModel::petArenaResultConsumed) }
 
     // Story notes wait while Home has a dialog of its own up, so a dungeon's completion
     // note follows the session summary instead of stacking on top of it.
@@ -1042,6 +1045,7 @@ fun HomeScreen(
                     showEndTime = state.showSessionEndTime,
                     onCollect   = viewModel::collectPetArena,
                     onOpenArena = onNavigateToPetArena,
+                    onWatch     = onNavigateToPetBattle,
                 )
             }
         }

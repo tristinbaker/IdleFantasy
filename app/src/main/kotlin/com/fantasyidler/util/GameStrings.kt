@@ -89,6 +89,9 @@ object GameStrings {
         if (stage <= 1) petName(context, key)
         else context.stringByName("pet_${key}_stage${stage}_name") ?: petName(context, key)
 
+    fun petMoveName(context: Context, key: String): String =
+        context.stringByName("pet_move_${key}") ?: key.toTitleCase()
+
     fun arenaCreatureName(context: Context, key: String): String =
         context.stringByName("arena_creature_${key}_name") ?: key.toTitleCase()
 

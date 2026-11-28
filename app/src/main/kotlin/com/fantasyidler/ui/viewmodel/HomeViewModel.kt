@@ -19,6 +19,7 @@ import com.fantasyidler.data.model.QueuedAction
 import com.fantasyidler.data.model.SessionFrame
 import com.fantasyidler.data.model.SkillSession
 import com.fantasyidler.data.model.Skills
+import com.fantasyidler.repository.PetArenaCollectResult
 import com.fantasyidler.repository.PetArenaRepository
 import com.fantasyidler.repository.BoostRepository
 import com.fantasyidler.repository.ChurchRepository
@@ -401,11 +402,14 @@ class HomeViewModel @Inject constructor(
         var running = 0
         val zoneId = PetArenaRepository.zoneIdOf(session.activityKey)
         val trainerId = PetArenaRepository.trainerIdOf(session.activityKey)
+        val ultimateId = PetArenaRepository.ultimateIdOf(session.activityKey)
         PetArenaHomeUi(
             sessionId    = session.sessionId,
             zoneId       = zoneId,
             trainerId    = trainerId,
-            emoji        = gameData.petArena.trainers.firstOrNull { it.id == trainerId }?.emoji
+            ultimateId   = ultimateId,
+            emoji        = gameData.petArena.ultimate?.takeIf { it.id == ultimateId }?.emoji
+                ?: gameData.petArena.trainers.firstOrNull { it.id == trainerId }?.emoji
                 ?: gameData.petArena.zones.firstOrNull { it.id == zoneId }?.emoji ?: "🐾",
             startedAt    = session.startedAt,
             endsAt       = session.endsAt,
@@ -427,10 +431,15 @@ class HomeViewModel @Inject constructor(
 
     fun collectPetArena() {
         viewModelScope.launch {
-            val result = arenaRepo.collect() ?: return@launch
-            _extra.update { it.copy(snackbarMessage = petArenaResultMessage(context.withAppLocale(), result)) }
+            petArenaResult.value = arenaRepo.collect() ?: return@launch
         }
     }
+
+    /** A collected arena session waiting on its results dialog. */
+    val petArenaResult = MutableStateFlow<PetArenaCollectResult?>(null)
+    val petEmoji: Map<String, String> = gameData.pets.mapValues { it.value.emoji }
+    val petData: Map<String, com.fantasyidler.data.json.PetData> = gameData.pets
+    fun petArenaResultConsumed() { petArenaResult.value = null }
 
     val uiState: StateFlow<HomeUiState> = combine(
         combine(playerRepo.playerFlow, sessionRepo.activeSessionFlow, sessionRepo.completedCountFlow) { a, b, c -> Triple(a, b, c) },
@@ -1103,8 +1112,8 @@ class HomeViewModel @Inject constructor(
         val bossSkillLvls    = playerRepo.getSkillLevels()
         val bossArrowsRec    = allArrowsConsumed.mapValues { (_, qty) -> (qty * (reclaimChance(bossSkillLvls[Skills.RANGED] ?: 1) + boostRepo.arrowReclaimBonus(ctx.flags)).coerceAtMost(0.95)).toInt() }.filterValues { it > 0 }
         val bossRunesRec     = allRunesConsumed.mapValues  { (_, qty) -> (qty * (reclaimChance(bossSkillLvls[Skills.MAGIC] ?: 1) + boostRepo.runeReclaimBonus(ctx.flags)).coerceAtMost(0.95)).toInt() }.filterValues { it > 0 }
-        val ownedPets: List<OwnedPet> = if (ctx.flags.ironman) emptyList()
-            else try { json.decodeFromString(ctx.player.pets) } catch (_: Exception) { emptyList() }
+        val ownedPets: List<OwnedPet> = PetBattle.boostingPets(
+            try { json.decodeFromString(ctx.player.pets) } catch (_: Exception) { emptyList() }, ctx.flags.ironman)
         val perSkillPetBoostPct = bossXpBySkill.keys.associateWith { skill ->
             ownedPets.sumOf { ownedPet ->
                 val pd = gameData.pets[ownedPet.id]
@@ -1662,8 +1671,8 @@ class HomeViewModel @Inject constructor(
             val petCoinMult = if (flags.ironman) 1.0f else PlayerRepository.gooseCoinMultiplier(json.decodeFromString<List<OwnedPet>>(workerPlayer.pets)).toFloat()
             val blessingCoinMult = blessingChurchCoinMult * petCoinMult
             val innXpMult        = townRepo.workerXpMultiplier(flags)
-            val workerOwnedPets: List<OwnedPet> = if (flags.ironman) emptyList()
-                else try { json.decodeFromString(workerPlayer.pets) } catch (_: Exception) { emptyList() }
+            val workerOwnedPets: List<OwnedPet> = PetBattle.boostingPets(
+                try { json.decodeFromString(workerPlayer.pets) } catch (_: Exception) { emptyList() }, flags.ironman)
 
             val combinedXpBySkill = mutableMapOf<String, Long>()
             val combinedItems     = mutableMapOf<String, Int>()

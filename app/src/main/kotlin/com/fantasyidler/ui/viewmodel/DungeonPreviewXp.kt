@@ -85,8 +85,8 @@ internal fun estimateDungeonPreviewXp(
     val staffCoversRune  = combatStyle == "magic" && selectedSpell != null && (weapon?.infiniteRunes == "all" || weapon?.infiniteRunes == selectedSpell.runeType)
     val simulatorRuneKey = if (combatStyle == "magic" && selectedSpell != null && !staffCoversRune) selectedSpell.runeType else null
 
-    val petBoostPct = if (flags.ironman) 0 else try {
-        json.decodeFromString<List<OwnedPet>>(petsJson).sumOf { pet ->
+    val petBoostPct = try {
+        PetBattle.boostingPets(json.decodeFromString<List<OwnedPet>>(petsJson), flags.ironman).sumOf { pet ->
             val pd = gameData.pets[pet.id]
             if (pd != null && (pd.boostedSkill == "combat" || pd.boostedSkill == "all")) PetBattle.boostPercent(pd.boostPercent, pet.xp) else 0
         }

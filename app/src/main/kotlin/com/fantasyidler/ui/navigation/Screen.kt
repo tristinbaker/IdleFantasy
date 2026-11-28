@@ -188,6 +188,12 @@ sealed class Screen(
         icon     = Icons.Filled.Pets,
     )
 
+    object PetBattle : Screen(
+        route    = "pet_arena/battle",
+        labelRes = R.string.pet_arena_title,
+        icon     = Icons.Filled.Pets,
+    )
+
     object Tower : Screen(
         route    = "tower",
         labelRes = R.string.tower_title,

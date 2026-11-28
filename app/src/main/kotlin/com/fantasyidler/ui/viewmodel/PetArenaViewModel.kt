@@ -4,7 +4,11 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fantasyidler.R
+import com.fantasyidler.data.json.ArenaCreature
+import com.fantasyidler.data.json.ArenaTreat
+import com.fantasyidler.data.json.ArenaUltimate
 import com.fantasyidler.data.json.ArenaTrainer
+import com.fantasyidler.data.json.PetData
 import com.fantasyidler.data.json.ArenaZone
 import com.fantasyidler.data.model.OwnedPet
 import com.fantasyidler.data.model.PlayerFlags
@@ -51,15 +55,30 @@ data class ArenaPetUi(
     val boostedSkill: String,
     val effectType: String,
     val onTeam: Boolean,
+    /** HP share as of [hpAt]; the screen adds rest time on top (PetBattle.restedFraction). */
+    val hpFraction: Double = 1.0,
+    val hpAt: Long = 0L,
+    /** Well Fed bonus (%) waiting for the next battle; 0 = none. */
+    val wellFed: Int = 0,
+    /** On the 8-pet Ultimate Challenge team. */
+    val onChallenge: Boolean = false,
 )
 
-data class ArenaZoneUi(val zone: ArenaZone, val unlocked: Boolean)
+data class ArenaUltimateUi(
+    val ultimate: ArenaUltimate,
+    val unlocked: Boolean,
+    val wins: Int,
+    val challengeTeam: List<String>,
+)
+
+data class ArenaZoneUi(val zone: ArenaZone, val unlocked: Boolean, val creatures: List<ArenaCreature> = emptyList())
 
 /** The Home screen's view of the arena slot (see HomeViewModel.petArenaSession). */
 data class PetArenaHomeUi(
     val sessionId: String,
     val zoneId: String?,
     val trainerId: String?,
+    val ultimateId: String? = null,
     /** The zone's or trainer's emoji. */
     val emoji: String,
     val startedAt: Long,
@@ -70,34 +89,25 @@ data class PetArenaHomeUi(
     val teamEmoji: List<String>,
 )
 
-/** One collected arena session as banner text, shared by the arena screen and Home. */
-internal fun petArenaResultMessage(ctx: Context, r: PetArenaCollectResult): String {
-    val lines = mutableListOf<String>()
-    when {
-        r.trainerId != null && r.wins > 0 -> lines += r.badgeEarned
-            ?.let { ctx.getString(R.string.pet_arena_result_badge, GameStrings.arenaBadgeName(ctx, it)) }
-            ?: ctx.getString(R.string.pet_arena_result_trainer_won, GameStrings.arenaTrainerName(ctx, r.trainerId))
-        r.trainerId != null -> lines += ctx.getString(R.string.pet_arena_result_trainer_lost, GameStrings.arenaTrainerName(ctx, r.trainerId))
-        r.wiped             -> lines += ctx.getString(R.string.pet_arena_result_wiped, r.wins)
-        else                -> lines += ctx.getString(R.string.pet_arena_result_wins, r.wins)
-    }
-    for (c in r.levelChanges) {
-        val before = PetBattle.stage(c.oldLevel)
-        val after = PetBattle.stage(c.newLevel)
-        lines += if (after > before) ctx.getString(
-            R.string.pet_arena_evolved,
-            GameStrings.petStageName(ctx, c.petId, before),
-            GameStrings.petStageName(ctx, c.petId, after),
-        ) else ctx.getString(R.string.pet_arena_level_up, GameStrings.petStageName(ctx, c.petId, after), c.newLevel)
-    }
-    return lines.joinToString("\n")
+/** The headline of a collected arena session (badge, wins, or what went wrong). */
+internal fun petArenaResultTitle(ctx: Context, r: PetArenaCollectResult): String = when {
+    r.ultimate && r.wins > 0 -> ctx.getString(R.string.pet_arena_result_ultimate_won, GameStrings.arenaCreatureName(ctx, "aetherion"))
+    r.ultimate               -> ctx.getString(R.string.pet_arena_result_ultimate_lost, GameStrings.arenaCreatureName(ctx, "aetherion"))
+    r.trainerId != null && r.wins > 0 -> r.badgeEarned
+        ?.let { ctx.getString(R.string.pet_arena_result_badge, GameStrings.arenaBadgeName(ctx, it)) }
+        ?: ctx.getString(R.string.pet_arena_result_trainer_won, GameStrings.arenaTrainerName(ctx, r.trainerId))
+    r.trainerId != null -> ctx.getString(R.string.pet_arena_result_trainer_lost, GameStrings.arenaTrainerName(ctx, r.trainerId))
+    r.wiped             -> ctx.getString(R.string.pet_arena_result_wiped, r.wins)
+    else                -> ctx.getString(R.string.pet_arena_result_wins, r.wins)
 }
 
-data class ArenaTrainerUi(val trainer: ArenaTrainer, val unlocked: Boolean, val beaten: Boolean)
+
+data class ArenaTrainerUi(val trainer: ArenaTrainer, val unlocked: Boolean, val beaten: Boolean, val creatures: List<ArenaCreature> = emptyList())
 
 data class ArenaActiveUi(
     val trainerId: String?,
     val zoneId: String?,
+    val ultimateId: String? = null,
     val startedAt: Long,
     val endsAt: Long,
     val completed: Boolean,
@@ -106,7 +116,7 @@ data class ArenaActiveUi(
     val wiped: Boolean,
 )
 
-data class ArenaTreatUi(val key: String, val owned: Int, val xpEach: Long)
+data class ArenaTreatUi(val key: String, val owned: Int, val treat: ArenaTreat)
 
 data class PetArenaUiState(
     val isLoading: Boolean = true,
@@ -119,7 +129,11 @@ data class PetArenaUiState(
     val active: ArenaActiveUi? = null,
     val treats: List<ArenaTreatUi> = emptyList(),
     val snackbarMessage: String? = null,
+    /** A collected session waiting on its results dialog. */
+    val result: PetArenaCollectResult? = null,
+    val ultimate: ArenaUltimateUi? = null,
 )
+
 
 @HiltViewModel
 class PetArenaViewModel @Inject constructor(
@@ -168,6 +182,10 @@ class PetArenaViewModel @Inject constructor(
                 boostedSkill  = data.boostedSkill,
                 effectType    = data.effectType,
                 onTeam        = pet.id in team,
+                hpFraction    = pet.hpFraction,
+                hpAt          = pet.hpAt,
+                wellFed       = pet.wellFed,
+                onChallenge   = pet.id in flags.petChallengeTeam,
             )
         }.sortedWith(compareByDescending<ArenaPetUi> { it.onTeam }.thenByDescending { it.level }.thenBy { it.name })
         val arena = gameData.petArena
@@ -177,6 +195,7 @@ class PetArenaViewModel @Inject constructor(
             ArenaActiveUi(
                 trainerId    = PetArenaRepository.trainerIdOf(s.activityKey),
                 zoneId       = PetArenaRepository.zoneIdOf(s.activityKey),
+                ultimateId   = PetArenaRepository.ultimateIdOf(s.activityKey),
                 startedAt    = s.startedAt,
                 endsAt       = s.endsAt,
                 completed    = s.completed,
@@ -189,13 +208,20 @@ class PetArenaViewModel @Inject constructor(
             needsStarter = owned.isNotEmpty() && flags.petArenaStarter == null,
             pets         = pets,
             team         = team,
-            zones        = arena.zones.map { ArenaZoneUi(it, PetArenaRepository.zoneUnlocked(it, flags.petBadges)) },
+            zones        = arena.zones.map { z ->
+                ArenaZoneUi(z, PetArenaRepository.zoneUnlocked(z, flags.petBadges), z.creatures.mapNotNull { arena.creatures[it] })
+            },
             trainers     = arena.trainers.mapIndexed { i, t ->
-                ArenaTrainerUi(t, PetArenaRepository.trainerUnlocked(arena.trainers, i, flags.petBadges), t.id in flags.petBadges)
+                ArenaTrainerUi(t, PetArenaRepository.trainerUnlocked(arena.trainers, i, flags.petBadges), t.id in flags.petBadges,
+                    t.team.mapNotNull { arena.creatures[it] })
             },
             badgeCount   = arena.trainers.count { it.id in flags.petBadges },
             active       = active,
-            treats       = arena.treats.map { (key, xp) -> ArenaTreatUi(key, inventory[key] ?: 0, xp) },
+            treats       = arena.treats.map { (key, treat) -> ArenaTreatUi(key, inventory[key] ?: 0, treat) },
+            ultimate     = arena.ultimate?.let { u ->
+                ArenaUltimateUi(u, PetArenaRepository.ultimateUnlocked(arena.trainers, flags.petBadges), flags.petUltimateWins,
+                    flags.petChallengeTeam.filter { id -> owned.any { it.id == id } })
+            },
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), PetArenaUiState())
 
@@ -205,6 +231,9 @@ class PetArenaViewModel @Inject constructor(
 
     private fun message(text: String) = _extra.update { it.copy(snackbarMessage = text) }
     fun snackbarConsumed() = _extra.update { it.copy(snackbarMessage = null) }
+    fun resultConsumed() = _extra.update { it.copy(result = null) }
+    val petEmoji: Map<String, String> = gameData.pets.mapValues { it.value.emoji }
+    val petData: Map<String, PetData> = gameData.pets
     private fun str(id: Int, vararg args: Any) = context.withAppLocale().getString(id, *args)
 
     fun chooseStarter(petId: String) {
@@ -229,6 +258,7 @@ class PetArenaViewModel @Inject constructor(
     private fun startMessage(result: PetBattleStartResult) = when (result) {
         PetBattleStartResult.SUCCESS          -> null
         PetBattleStartResult.NO_TEAM          -> str(R.string.pet_arena_no_team)
+        PetBattleStartResult.NEEDS_REST       -> str(R.string.pet_arena_needs_rest)
         PetBattleStartResult.ALREADY_BATTLING -> str(R.string.pet_arena_already_battling)
         PetBattleStartResult.LOCKED,
         PetBattleStartResult.UNKNOWN          -> str(R.string.pet_arena_locked_action)
@@ -238,6 +268,30 @@ class PetArenaViewModel @Inject constructor(
         viewModelScope.launch { startMessage(arenaRepo.startZone(zoneId))?.let(::message) }
     }
 
+    fun toggleChallenge(petId: String) {
+        val ult = uiState.value.ultimate ?: return
+        val size = ult.ultimate.teamSize
+        val current = ult.challengeTeam
+        val next = when {
+            petId in current     -> current - petId
+            current.size >= size -> { message(str(R.string.pet_arena_challenge_full, size)); return }
+            else                 -> current + petId
+        }
+        viewModelScope.launch { playerRepo.setPetChallengeTeam(next, size) }
+    }
+
+    fun startUltimate() {
+        viewModelScope.launch {
+            when (arenaRepo.startUltimate()) {
+                PetBattleStartResult.SUCCESS          -> Unit
+                PetBattleStartResult.NO_TEAM          -> message(str(R.string.pet_arena_ultimate_need_team))
+                PetBattleStartResult.NEEDS_REST       -> message(str(R.string.pet_arena_ultimate_needs_rest))
+                PetBattleStartResult.ALREADY_BATTLING -> message(str(R.string.pet_arena_already_battling))
+                else                                  -> message(str(R.string.pet_arena_locked_action))
+            }
+        }
+    }
+
     fun startTrainer(trainerId: String) {
         viewModelScope.launch { startMessage(arenaRepo.startTrainer(trainerId))?.let(::message) }
     }
@@ -245,24 +299,18 @@ class PetArenaViewModel @Inject constructor(
     fun collect() {
         viewModelScope.launch {
             val result = arenaRepo.collect() ?: return@launch
-            message(petArenaResultMessage(context.withAppLocale(), result))
+            _extra.update { it.copy(result = result) }
         }
     }
 
+    /** Feeds [qty] treats; heals the pet and makes it Well Fed for its next battle. */
     fun feed(petId: String, treatKey: String, qty: Int) {
-        val xpEach = gameData.petArena.treats[treatKey] ?: return
+        val treat = gameData.petArena.treats[treatKey] ?: return
         viewModelScope.launch {
-            val change = playerRepo.feedPetTreat(petId, treatKey, qty, xpEach) ?: return@launch
+            if (!playerRepo.feedPetTreat(petId, treatKey, qty, treat)) return@launch
             val ctx = context.withAppLocale()
-            val before = PetBattle.stage(change.oldLevel)
-            val after = PetBattle.stage(change.newLevel)
-            message(
-                if (after > before) ctx.getString(
-                    R.string.pet_arena_evolved,
-                    GameStrings.petStageName(ctx, petId, before),
-                    GameStrings.petStageName(ctx, petId, after),
-                ) else ctx.getString(R.string.pet_arena_fed, qty, GameStrings.itemName(ctx, treatKey), GameStrings.petStageName(ctx, petId, after))
-            )
+            val pet = uiState.value.pets.firstOrNull { it.id == petId }
+            message(ctx.getString(R.string.pet_arena_fed, qty, GameStrings.itemName(ctx, treatKey), pet?.name ?: GameStrings.petName(ctx, petId)))
         }
     }
 }

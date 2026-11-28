@@ -147,6 +147,7 @@ class AchievementsViewModel @Inject constructor(
             ach("arena_pet_99",     R.string.achievement_arena_pet_99_name,     R.string.achievement_arena_pet_99_desc,     "💞", petLevels.any { it >= com.fantasyidler.simulator.PetBattle.MAX_LEVEL }),
             ach("arena_all_badges", R.string.achievement_arena_all_badges_name, R.string.achievement_arena_all_badges_desc, "🏅",
                 gameData.petArena.trainers.isNotEmpty() && gameData.petArena.trainers.all { it.id in flags.petBadges }),
+            ach("arena_ultimate",   R.string.achievement_arena_ultimate_name,   R.string.achievement_arena_ultimate_desc,   "🐲", flags.petUltimateWins > 0),
         )
 
         groups["Tower"] = listOf(

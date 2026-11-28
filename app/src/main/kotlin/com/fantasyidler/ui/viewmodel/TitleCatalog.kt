@@ -38,5 +38,6 @@ object TitleCatalog {
         TitleDefinition(MainStory.DUSTER_TITLE, R.string.title_duster_name,         R.string.title_duster_requirement),
         TitleDefinition(MainStory.BANE_TITLE,   R.string.title_bane_of_kurzul_name, R.string.title_bane_of_kurzul_requirement),
         TitleDefinition(PetArenaRepository.CHAMPION_TITLE, R.string.title_arena_champion_name, R.string.title_arena_champion_requirement),
+        TitleDefinition(PetArenaRepository.ULTIMATE_TITLE, R.string.title_first_beast_slayer_name, R.string.title_first_beast_slayer_requirement),
     )
 }

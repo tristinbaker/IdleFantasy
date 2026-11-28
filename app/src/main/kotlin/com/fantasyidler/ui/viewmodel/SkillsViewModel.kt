@@ -264,7 +264,7 @@ class SkillsViewModel @Inject constructor(
                 },
                 blessingXpPct         = blessingXpPercent(flags.ironman, flags.onElderIsle, ChurchRepository.xpMultiplier(flags, capeMult, gameData.blessings)),
                 petBoosts             = listOf(Skills.MINING, Skills.WOODCUTTING, Skills.FISHING, Skills.AGILITY)
-                    .associateWith { if (flags.ironman || flags.onElderIsle) 0 else petBoostFor(player.pets, it) },
+                    .associateWith { if (flags.onElderIsle) 0 else petBoostFor(player.pets, it, flags.ironman) },
                 sessionDurationMs     = if (flags.onElderIsle)
                     SkillSimulator.elderSessionDurationMs(flags.elderSkillLevels[Skills.AGILITY] ?: 1)
                     else SkillSimulator.sessionDurationMs(levels[Skills.AGILITY] ?: 1, boostRepo.sessionFloorReductionMin(flags), townRepo.playerSessionDurationMultiplier(flags)),
@@ -288,7 +288,7 @@ class SkillsViewModel @Inject constructor(
                 inventory             = inv,
                 cropsReadyCount       = cropsReady,
                 petBoostBySkill       = if (flags.onElderIsle) emptyMap() else (Skills.GATHERING + Skills.CRAFTING_SKILLS + Skills.SUPPORT + listOf(Skills.AGILITY, Skills.SLAYER))
-                    .associateWith { key -> if (flags.ironman) 0 else petBoostFor(player.pets, key) }
+                    .associateWith { key -> petBoostFor(player.pets, key, flags.ironman) }
                     .filterValues { it > 0 },
                 thievingSuccessBonus  = if (flags.onElderIsle) 0.0 else boostRepo.thievingSuccessBonus(flags),
                 activeQuests          = activeQuests,
@@ -1620,13 +1620,12 @@ class SkillsViewModel @Inject constructor(
     }
 
     private fun petBoostFor(petsJson: String, skillKey: String, ironman: Boolean = false): Int {
-        if (ironman) return 0
         val pets = try {
             json.decodeFromString<List<OwnedPet>>(petsJson)
         } catch (_: Exception) {
             return 0
         }
-        return pets.sumOf { pet ->
+        return PetBattle.boostingPets(pets, ironman).sumOf { pet ->
             val pd = gameData.pets[pet.id]
             if (pd != null && (pd.boostedSkill == skillKey || pd.boostedSkill == "all")) PetBattle.boostPercent(pd.boostPercent, pet.xp) else 0
         }

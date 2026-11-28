@@ -1231,18 +1231,16 @@ class QueuedSessionStarter @Inject constructor(
         }
 
     private fun gatheringPetBoost(petsJson: String, skillKey: String, ironman: Boolean = false): Int {
-        if (ironman) return 0
         val pets = try { json.decodeFromString<List<OwnedPet>>(petsJson) } catch (_: Exception) { return 0 }
-        return pets.sumOf { pet ->
+        return PetBattle.boostingPets(pets, ironman).sumOf { pet ->
             val pd = gameData.pets[pet.id]
             if (pd != null && (pd.boostedSkill == skillKey || pd.boostedSkill == "all")) PetBattle.boostPercent(pd.boostPercent, pet.xp) else 0
         }
     }
 
     private fun combatPetBoost(petsJson: String, ironman: Boolean = false): Int {
-        if (ironman) return 0
         val pets = try { json.decodeFromString<List<OwnedPet>>(petsJson) } catch (_: Exception) { return 0 }
-        return pets.sumOf { pet ->
+        return PetBattle.boostingPets(pets, ironman).sumOf { pet ->
             val pd = gameData.pets[pet.id]
             if (pd != null && (pd.boostedSkill == "combat" || pd.boostedSkill == "all")) PetBattle.boostPercent(pd.boostPercent, pet.xp) else 0
         }

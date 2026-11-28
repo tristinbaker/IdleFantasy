@@ -861,6 +861,7 @@ internal fun PetArenaSessionCard(
     showEndTime: Boolean = true,
     onCollect: () -> Unit,
     onOpenArena: () -> Unit,
+    onWatch: () -> Unit = {},
 ) {
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
     LaunchedEffect(arena.endsAt) {
@@ -873,6 +874,7 @@ internal fun PetArenaSessionCard(
     val isDone = arena.completed || now >= arena.endsAt
     val titleColor = if (isDone) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSecondaryContainer
     val label = when {
+        arena.ultimateId != null -> GameStrings.arenaCreatureName(context, arena.ultimateId)
         arena.trainerId != null -> GameStrings.arenaTrainerName(context, arena.trainerId)
         arena.zoneId != null    -> GameStrings.arenaZoneName(context, arena.zoneId)
         else                    -> stringResource(R.string.pet_arena_title)
@@ -940,6 +942,7 @@ internal fun PetArenaSessionCard(
                 verticalArrangement   = Arrangement.spacedBy(4.dp),
             ) {
                 if (isDone) Button(onClick = onCollect) { Text(stringResource(R.string.pet_arena_collect)) }
+                else Button(onClick = onWatch) { Text(stringResource(R.string.pet_battle_watch)) }
                 OutlinedButton(onClick = onOpenArena) { Text(stringResource(R.string.pet_arena_open)) }
             }
         }

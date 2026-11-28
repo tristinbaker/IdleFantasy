@@ -95,13 +95,78 @@ class PetBattleTest {
         assertTrue(frames.size < PetBattle.FRAMES_PER_SESSION)
     }
 
+    private fun wipePercent(zoneIndex: Int, level: Int, seeds: Int = 60): Int {
+        val zone = arena.zones[zoneIndex]
+        return (1..seeds).count { seed -> PetBattle.simulateZone(team(level), zone, arena.creatures, Random(seed)).any { it.died } } * 100 / seeds
+    }
+
     @Test
-    fun `a team in the middle of a zone's range rarely wipes`() {
-        for (zone in arena.zones) {
-            val mid = (zone.levelMin + zone.levelMax) / 2
-            val safe = (1..30).count { seed -> PetBattle.simulateZone(team(mid), zone, arena.creatures, Random(seed)).none { it.died } }
-            assertTrue("${zone.id} at level $mid survived $safe/30", safe >= 27)
+    fun `every zone carries real risk, more at the bottom of its range than the top`() {
+        for ((i, zone) in arena.zones.withIndex()) {
+            val bottom = wipePercent(i, zone.levelMin)
+            val mid = wipePercent(i, (zone.levelMin + zone.levelMax) / 2)
+            val top = wipePercent(i, zone.levelMax)
+            assertTrue("${zone.id} mid-range wipes $mid% of hours", mid in 5..40)
+            assertTrue("${zone.id} top of range wipes $top%", top <= 15)
+            assertTrue("${zone.id} bottom $bottom% should be riskier than top $top%", bottom >= top)
         }
+    }
+
+    @Test
+    fun `a fresh team takes many hours to reach level 40`() {
+        for (seedBase in listOf(1, 100)) {
+            val xp = LongArray(3)
+            var hours = 0
+            while (PetBattle.level(xp.min()) < 40 && hours < 100) {
+                val lvl = PetBattle.level(xp.min())
+                val zone = arena.zones.last { it.levelMin <= lvl }
+                val fighters = PetBattle.TYPES.mapIndexed { k, t -> PetBattle.fighter("pet_$t", t, PetBattle.level(xp[k]), 64, 64, 64, 1.0) }
+                val frames = PetBattle.simulateZone(fighters, zone, arena.creatures, Random(seedBase + hours))
+                for (k in 0..2) xp[k] += frames.sumOf { it.petXp["pet_${PetBattle.TYPES[k]}"] ?: 0L }
+                hours++
+            }
+            assertTrue("level 40 after $hours hours", hours in 10..25)
+        }
+    }
+
+    @Test
+    fun `wounds carry between wild battles and a win restores half`() {
+        val events = PetBattle.replayZone(team(30), arena.zones[2], arena.creatures, 9)
+        val starts = events.filterIsInstance<PetBattle.BattleStart>()
+        assertTrue(starts.first().teamHp == team(30).map { it.maxHp })
+        assertTrue("later battles start wounded", starts.drop(1).any { s -> s.teamHp.zip(team(30)).any { (hp, f) -> hp < f.maxHp } })
+    }
+
+    @Test
+    fun `alphas appear alone and always pay the zone's rarest drop`() {
+        val zone = arena.zones[1]
+        val prize = zone.loot.filter { it.item != "coins" }.minBy { it.chance }.item
+        var alphas = 0
+        var alphaWins = 0
+        for (seed in 1..40) {
+            val events = PetBattle.replayZone(team(30), zone, arena.creatures, seed.toLong())
+            val frames = PetBattle.simulateZone(team(30), zone, arena.creatures, Random(seed.toLong()))
+            for ((i, e) in events.withIndex()) {
+                if (e !is PetBattle.BattleStart || e.foes.none { it.alpha }) continue
+                alphas++
+                assertEquals(1, e.foes.size)
+                val end = events.drop(i + 1).firstOrNull { it is PetBattle.BattleEnd || it is PetBattle.TimeUp }
+                if (end is PetBattle.BattleEnd && end.won) {
+                    alphaWins++
+                    val minute = end.tick / PetBattle.TICKS_PER_FRAME
+                    assertTrue("alpha win pays $prize", (frames[minute].items[prize] ?: 0) >= 1)
+                }
+            }
+        }
+        assertTrue("alphas show up: $alphas", alphas > 0)
+        assertTrue("some alphas are beaten: $alphaWins", alphaWins > 0)
+    }
+
+    @Test
+    fun `a wild wipe halves the loot and coins`() {
+        val (items, coins) = PetArenaRepository.halveLoot(mapOf("cowhide" to 7, "sapphire" to 1), 101L)
+        assertEquals(mapOf("cowhide" to 3), items)
+        assertEquals(50L, coins)
     }
 
     @Test
@@ -131,10 +196,10 @@ class PetBattleTest {
 
     @Test
     fun `every pet has battle stats`() {
-        assertEquals(38, pets.size)
+        assertEquals(39, pets.size)
         for (p in pets.values) {
             assertTrue(p.id, p.battleType in PetBattle.TYPES)
-            assertTrue(p.id, p.rarity in setOf("common", "uncommon", "rare", "epic", "legendary"))
+            assertTrue(p.id, p.rarity in setOf("common", "uncommon", "rare", "epic", "legendary", "mythic"))
             assertTrue(p.id, p.baseAttack > 0 && p.baseDefense > 0 && p.baseHp > 0)
         }
     }
@@ -174,9 +239,107 @@ class PetBattleTest {
     }
 
     @Test
+    fun `pets rest from knocked out to full in two hours`() {
+        assertEquals(1.0, PetBattle.restedFraction(1.0, 0L, 123L), 0.0)
+        assertEquals(0.5, PetBattle.restedFraction(0.0, 1_000L, 1_000L + PetBattle.REST_FULL_MS / 2), 1e-9)
+        assertEquals(1.0, PetBattle.restedFraction(0.2, 1_000L, 1_000L + PetBattle.REST_FULL_MS * 3), 0.0)
+        assertEquals(PetBattle.REST_FULL_MS / 4, PetBattle.msToFullRest(0.75))
+    }
+
+    @Test
+    fun `treats heal a share of max HP and the best one sets Well Fed`() {
+        val carrot = arena.treats.getValue("carrot_treat")
+        val starfruit = arena.treats.getValue("starfruit_treat")
+        assertEquals(0.45 to carrot.wellFed, PetBattle.feed(0.3, 0, carrot, 1).let { (f, w) -> (Math.round(f * 100) / 100.0) to w })
+        assertEquals(1.0, PetBattle.feed(0.9, 0, starfruit, 1).first, 0.0)
+        assertEquals("a weaker treat never lowers Well Fed", starfruit.wellFed, PetBattle.feed(0.5, starfruit.wellFed, carrot, 1).second)
+        assertEquals(5, PetBattle.treatsToHeal(0.3, carrot))
+        assertEquals("full HP still takes one, for Well Fed", 1, PetBattle.treatsToHeal(1.0, carrot))
+        for (t in arena.treats.values) assertTrue(t.heal in 0.05..1.0 && t.wellFed > 0)
+    }
+
+    @Test
+    fun `Well Fed raises attack and defense, not HP`() {
+        val pet = pets.getValue("rock_golem")
+        val plain = PetBattle.petFighter(pet, xpAt(40))
+        val fed = PetBattle.petFighter(pet, xpAt(40), wellFed = 10)
+        assertTrue(fed.attack > plain.attack && fed.defense > plain.defense)
+        assertEquals(plain.maxHp, fed.maxHp)
+        assertEquals(10, fed.wellFed)
+    }
+
+    @Test
+    fun `wounded pets start wounded and their HP at the end is recorded`() {
+        val zone = arena.zones[1]
+        val fighters = team(25)
+        val start = fighters.map { it.maxHp / 3 }
+        val events = PetBattle.replayZone(fighters, zone, arena.creatures, 4, start)
+        assertEquals(start, events.filterIsInstance<PetBattle.BattleStart>().first().teamHp)
+        val frames = PetBattle.simulateZone(fighters, zone, arena.creatures, Random(4), start)
+        val end = frames.last().petHpEnd
+        assertEquals(fighters.map { it.id }.toSet(), end.keys)
+        if (frames.any { it.died }) assertTrue(end.values.all { it == 0 })
+        for (f in fighters) assertTrue((end[f.id] ?: -1) in 0..f.maxHp)
+        assertTrue("starting at a third of HP is riskier than starting full",
+            (1..30).count { PetBattle.simulateZone(fighters, zone, arena.creatures, Random(it), start).any { f -> f.died } } >=
+            (1..30).count { PetBattle.simulateZone(fighters, zone, arena.creatures, Random(it)).any { f -> f.died } })
+    }
+
+    // A typical late-game Ultimate team: 3 melee, 3 ranged, 2 magic, mostly common with a few rarer pets.
+    private fun ultimateTeam(level: Int, size: Int = 8): List<PetBattle.Fighter> {
+        val rarities = listOf("common", "common", "common", "common", "uncommon", "uncommon", "rare", "rare")
+        val types = listOf("melee", "ranged", "magic", "melee", "ranged", "magic", "melee", "ranged")
+        return (0 until size).map { PetBattle.fighter("u$it", types[it], level, 64, 64, 64, PetBattle.rarityMultiplier(rarities[it])) }
+    }
+
+    private fun ultimateWins(team: List<PetBattle.Fighter>, seeds: Int = 100) =
+        (1..seeds).count { PetBattle.simulateUltimate(team, arena.ultimate!!, Random(it)).last().kills == 1 }
+
+    @Test
+    fun `only 8 fully trained pets can beat the ultimate`() {
+        val full = ultimateWins(ultimateTeam(99))
+        assertTrue("8 level 99 pets win sometimes: $full/100", full in 25..75)
+        assertTrue("8 level 95 pets almost never win", ultimateWins(ultimateTeam(95)) <= 2)
+        assertEquals("7 pets never win", 0, ultimateWins(ultimateTeam(99, 7)))
+    }
+
+    @Test
+    fun `the ultimate shifts type, enrages and hits the whole team`() {
+        val u = arena.ultimate!!
+        val events = PetBattle.replayUltimate(ultimateTeam(99), u, 3)
+        assertTrue((events.first() as PetBattle.BattleStart).ultimate)
+        val shifts = events.filterIsInstance<PetBattle.PhaseShift>().map { it.type }
+        assertTrue("cycles every type: $shifts", shifts.toSet() == u.phases.toSet())
+        assertTrue(events.any { it is PetBattle.Enrage && it.tick == u.enrageTurn } || events.last().tick < u.enrageTurn)
+        val area = events.filterIsInstance<PetBattle.AreaAttack>()
+        assertTrue(area.isNotEmpty())
+        assertTrue("an area attack hits every standing pet", area.first().hits.size == 8)
+    }
+
+    @Test
+    fun `an ultimate win rolls the rare pet`() {
+        val u = arena.ultimate!!
+        assertEquals(PetBattle.AETHER_PET, u.petDrop)
+        assertEquals(0.01, u.petChance, 0.0)
+        assertTrue(u.petDrop in pets)
+        val sure = u.copy(petChance = 1.0)
+        val win = (1..30).map { PetBattle.simulateUltimate(ultimateTeam(99), sure, Random(it)) }.first { it.last().kills == 1 }
+        assertEquals(1, win.last().items[u.petDrop])
+    }
+
+    @Test
+    fun `ironmen keep only the aether hatchling's boost`() {
+        val owned = listOf(OwnedPet("rock_golem", 10), OwnedPet(PetBattle.AETHER_PET, 5))
+        assertEquals(owned, PetBattle.boostingPets(owned, ironman = false))
+        assertEquals(listOf(PetBattle.AETHER_PET), PetBattle.boostingPets(owned, ironman = true).map { it.id })
+    }
+
+    @Test
     fun `old saves load with level 1 pets and no arena progress`() {
         val pet = json.decodeFromString<OwnedPet>("""{"id":"rock_golem","boost_percent":10}""")
         assertEquals(0L, pet.xp)
+        assertEquals(1.0, pet.hpFraction, 0.0)
+        assertEquals(0, pet.wellFed)
         val flags = json.decodeFromString<PlayerFlags>("{}")
         assertEquals(null, flags.petArenaStarter)
         assertTrue(flags.petTeam.isEmpty() && flags.petBadges.isEmpty())

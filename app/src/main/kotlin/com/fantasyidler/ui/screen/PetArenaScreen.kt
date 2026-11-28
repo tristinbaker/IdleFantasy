@@ -4,6 +4,13 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.material3.Surface
+import com.fantasyidler.ui.viewmodel.ArenaUltimateUi
+import com.fantasyidler.ui.viewmodel.ArenaZoneUi
+import com.fantasyidler.ui.viewmodel.ArenaTrainerUi
+import com.fantasyidler.util.formatCoins
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -48,6 +55,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -75,10 +83,12 @@ import kotlinx.coroutines.launch
 @Composable
 fun PetArenaScreen(
     onBack: () -> Unit = {},
+    onWatch: () -> Unit = {},
     viewModel: PetArenaViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
     AppBannerEffect(state.snackbarMessage, viewModel::snackbarConsumed)
+    state.result?.let { PetArenaResultDialog(it, viewModel.petEmoji, viewModel.petData, viewModel::resultConsumed) }
 
     Scaffold(
         contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top),
@@ -105,7 +115,7 @@ fun PetArenaScreen(
                 state.isLoading       -> CircularProgressIndicator(Modifier.align(Alignment.Center))
                 state.pets.isEmpty()  -> CenteredNote(stringResource(R.string.pet_arena_locked_title), stringResource(R.string.pet_arena_locked_desc))
                 state.needsStarter    -> StarterPicker(state.pets, viewModel::chooseStarter)
-                else                  -> ArenaTabs(state, viewModel)
+                else                  -> ArenaTabs(state, viewModel, onWatch)
             }
         }
     }
@@ -143,7 +153,7 @@ private fun StarterPicker(pets: List<ArenaPetUi>, onChoose: (String) -> Unit) {
 }
 
 @Composable
-private fun ArenaTabs(state: PetArenaUiState, viewModel: PetArenaViewModel) {
+private fun ArenaTabs(state: PetArenaUiState, viewModel: PetArenaViewModel, onWatch: () -> Unit) {
     val pagerState = rememberPagerState(pageCount = { 2 })
     val scope = rememberCoroutineScope()
     Column {
@@ -155,7 +165,7 @@ private fun ArenaTabs(state: PetArenaUiState, viewModel: PetArenaViewModel) {
         }
         HorizontalPager(state = pagerState, modifier = Modifier.fillMaxSize(), userScrollEnabled = LocalTabSwipeEnabled.current) { page ->
             when (page) {
-                0    -> BattleTab(state, viewModel)
+                0    -> BattleTab(state, viewModel, onWatch)
                 else -> PetsTab(state, viewModel)
             }
         }
@@ -163,52 +173,36 @@ private fun ArenaTabs(state: PetArenaUiState, viewModel: PetArenaViewModel) {
 }
 
 @Composable
-private fun BattleTab(state: PetArenaUiState, viewModel: PetArenaViewModel) {
+private fun BattleTab(state: PetArenaUiState, viewModel: PetArenaViewModel, onWatch: () -> Unit) {
     val context = LocalContext.current
     val idle = state.active == null && state.team.isNotEmpty()
     LazyColumn(contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        state.active?.let { active -> item(key = "active") { ActiveBattleCard(active, viewModel) } }
+        state.active?.let { active -> item(key = "active") { ActiveBattleCard(active, viewModel, onWatch) } }
         if (state.team.isEmpty()) item(key = "noteam") {
             Text(stringResource(R.string.pet_arena_no_team), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.error)
         }
         item(key = "hint") {
             Text(stringResource(R.string.pet_arena_types_hint), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Spacer(Modifier.height(4.dp))
+            Text(stringResource(R.string.pet_arena_risk_note), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         item(key = "zones_hdr") { SectionTitle(stringResource(R.string.pet_arena_zones)) }
         items(state.zones, key = { "zone_${it.zone.id}" }) { z ->
-            ArenaRow(
-                emoji    = z.zone.emoji,
-                title    = GameStrings.arenaZoneName(context, z.zone.id),
-                subtitle = if (z.unlocked) stringResource(R.string.pet_arena_zone_levels, z.zone.levelMin, z.zone.levelMax)
-                           else stringResource(R.string.pet_arena_zone_badges_needed, z.zone.badgesRequired),
-            ) {
-                Button(onClick = { viewModel.startZone(z.zone.id) }, enabled = idle && z.unlocked) {
-                    Text(stringResource(R.string.pet_arena_battle))
-                }
-            }
+            ZoneCard(z, canStart = idle) { viewModel.startZone(z.zone.id) }
         }
         item(key = "trainers_hdr") { SectionTitle(stringResource(R.string.pet_arena_trainers)) }
         items(state.trainers, key = { "trainer_${it.trainer.id}" }) { t ->
-            val info = stringResource(R.string.pet_arena_trainer_info, t.trainer.level, t.trainer.team.size)
-            ArenaRow(
-                emoji    = t.trainer.emoji,
-                title    = GameStrings.arenaTrainerName(context, t.trainer.id),
-                subtitle = when {
-                    t.beaten   -> "${t.trainer.badgeEmoji} " + stringResource(R.string.pet_arena_badge_earned, GameStrings.arenaBadgeName(context, t.trainer.id))
-                    t.unlocked -> "$info\n${t.trainer.badgeEmoji} ${GameStrings.arenaBadgeName(context, t.trainer.id)}"
-                    else       -> stringResource(R.string.pet_arena_trainer_locked)
-                },
-            ) {
-                OutlinedButton(onClick = { viewModel.startTrainer(t.trainer.id) }, enabled = idle && t.unlocked) {
-                    Text(stringResource(R.string.pet_arena_challenge))
-                }
-            }
+            TrainerCard(t, canStart = idle) { viewModel.startTrainer(t.trainer.id) }
+        }
+        state.ultimate?.let { u ->
+            item(key = "ultimate_hdr") { SectionTitle(stringResource(R.string.pet_arena_ultimate)) }
+            item(key = "ultimate") { UltimateCard(u, canStart = state.active == null, onStart = viewModel::startUltimate) }
         }
     }
 }
 
 @Composable
-private fun ActiveBattleCard(active: ArenaActiveUi, viewModel: PetArenaViewModel) {
+private fun ActiveBattleCard(active: ArenaActiveUi, viewModel: PetArenaViewModel, onWatch: () -> Unit) {
     val context = LocalContext.current
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
     LaunchedEffect(active.endsAt, active.completed) {
@@ -218,7 +212,8 @@ private fun ActiveBattleCard(active: ArenaActiveUi, viewModel: PetArenaViewModel
             delay(1_000)
         }
     }
-    val opponent = active.trainerId?.let { GameStrings.arenaTrainerName(context, it) }
+    val opponent = active.ultimateId?.let { GameStrings.arenaCreatureName(context, it) }
+        ?: active.trainerId?.let { GameStrings.arenaTrainerName(context, it) }
     val place = active.zoneId?.let { GameStrings.arenaZoneName(context, it) }
     val minute = ((now - active.startedAt) / 60_000L).toInt()
     val winsSoFar = if (active.completed) active.winsByMinute.lastOrNull() ?: 0
@@ -231,11 +226,13 @@ private fun ActiveBattleCard(active: ArenaActiveUi, viewModel: PetArenaViewModel
                 style      = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold,
             )
-            if (active.trainerId == null) Text(stringResource(R.string.pet_arena_wins_so_far, winsSoFar), style = MaterialTheme.typography.bodyMedium)
+            if (active.trainerId == null && active.ultimateId == null) Text(stringResource(R.string.pet_arena_wins_so_far, winsSoFar), style = MaterialTheme.typography.bodyMedium)
             if (active.completed) {
                 Text(stringResource(R.string.pet_arena_finished), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.primary)
                 Button(onClick = viewModel::collect, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.pet_arena_collect)) }
+                OutlinedButton(onClick = onWatch, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.pet_battle_watch_end)) }
             } else {
+                Button(onClick = onWatch, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.pet_battle_watch)) }
                 val total = (active.endsAt - active.startedAt).coerceAtLeast(1L)
                 LinearProgressIndicator(
                     gapSize           = 0.dp,
@@ -249,6 +246,137 @@ private fun ActiveBattleCard(active: ArenaActiveUi, viewModel: PetArenaViewModel
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
+        }
+    }
+}
+
+/** "25%" for a per-win drop chance, with a decimal below 10%. */
+private fun chanceText(chance: Double): String =
+    if (chance >= 0.1) "${(chance * 100).toInt()}%" else String.format(java.util.Locale.getDefault(), "%.1f%%", chance * 100)
+
+@Composable
+private fun CreatureChip(emoji: String, name: String, type: String, level: Int? = null) {
+    Surface(shape = RoundedCornerShape(8.dp), color = MaterialTheme.colorScheme.surfaceVariant) {
+        Text(
+            text     = buildString {
+                append("$emoji $name")
+                if (level != null) append("  ${stringResource(R.string.pet_battle_level, level)}")
+                append("  ${typeName(type).uppercase()}")
+            },
+            style    = MaterialTheme.typography.labelSmall,
+            modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp),
+        )
+    }
+}
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun ZoneCard(z: ArenaZoneUi, canStart: Boolean, onStart: () -> Unit) {
+    val context = LocalContext.current
+    ElevatedCard(Modifier.fillMaxWidth()) {
+        Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(z.zone.emoji, style = MaterialTheme.typography.headlineSmall, modifier = Modifier.width(40.dp))
+                Column(Modifier.weight(1f)) {
+                    Text(GameStrings.arenaZoneName(context, z.zone.id), style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium)
+                    Text(
+                        text  = if (z.unlocked) stringResource(R.string.pet_arena_zone_levels, z.zone.levelMin, z.zone.levelMax)
+                                else stringResource(R.string.pet_arena_zone_badges_needed, z.zone.badgesRequired),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+                Button(onClick = onStart, enabled = canStart && z.unlocked) { Text(stringResource(R.string.pet_arena_battle)) }
+            }
+            Text(stringResource(R.string.pet_arena_zone_creatures), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary)
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                for (c in z.creatures) CreatureChip(c.emoji, GameStrings.arenaCreatureName(context, c.id), c.battleType)
+            }
+            Text(stringResource(R.string.pet_arena_zone_drops), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary)
+            val coins = z.zone.loot.firstOrNull { it.item == "coins" }
+            if (coins != null) Text(stringResource(R.string.pet_arena_zone_coins, coins.quantityMin, coins.quantityMax), style = MaterialTheme.typography.bodySmall)
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                for (drop in z.zone.loot.filter { it.item != "coins" }.sortedByDescending { it.chance }) {
+                    Surface(shape = RoundedCornerShape(8.dp), color = MaterialTheme.colorScheme.secondaryContainer) {
+                        Text(
+                            text     = "${GameStrings.itemName(context, drop.item)}  ${chanceText(drop.chance)}",
+                            style    = MaterialTheme.typography.labelSmall,
+                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp),
+                        )
+                    }
+                }
+            }
+            z.zone.loot.filter { it.item != "coins" }.minByOrNull { it.chance }?.let { prize ->
+                Text(stringResource(R.string.pet_arena_zone_alpha, GameStrings.itemName(context, prize.item)), style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.tertiary)
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun TrainerCard(t: ArenaTrainerUi, canStart: Boolean, onStart: () -> Unit) {
+    val context = LocalContext.current
+    val badge = "${t.trainer.badgeEmoji} ${GameStrings.arenaBadgeName(context, t.trainer.id)}"
+    ElevatedCard(Modifier.fillMaxWidth()) {
+        Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(t.trainer.emoji, style = MaterialTheme.typography.headlineSmall, modifier = Modifier.width(40.dp))
+                Column(Modifier.weight(1f)) {
+                    Text(GameStrings.arenaTrainerName(context, t.trainer.id), style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium)
+                    Text(
+                        text  = when {
+                            t.beaten   -> stringResource(R.string.pet_arena_badge_earned, badge)
+                            t.unlocked -> badge
+                            else       -> stringResource(R.string.pet_arena_trainer_locked)
+                        },
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+                OutlinedButton(onClick = onStart, enabled = canStart && t.unlocked) { Text(stringResource(R.string.pet_arena_challenge)) }
+            }
+            Text(stringResource(R.string.pet_arena_trainer_team), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary)
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                for (c in t.creatures) CreatureChip(c.emoji, GameStrings.arenaCreatureName(context, c.id), c.battleType, t.trainer.level)
+            }
+            val reward = buildList {
+                if (t.trainer.rewardCoins > 0) add(stringResource(R.string.pet_arena_results_coins, t.trainer.rewardCoins.formatCoins()))
+                for ((key, qty) in t.trainer.rewardItems) add("${"%,d".format(qty)} ${GameStrings.itemName(context, key)}")
+            }.joinToString(", ")
+            Text(
+                text  = if (t.beaten) stringResource(R.string.pet_arena_trainer_rematch) else stringResource(R.string.pet_arena_trainer_reward, reward),
+                style = MaterialTheme.typography.bodySmall,
+            )
+        }
+    }
+}
+
+@Composable
+private fun UltimateCard(u: ArenaUltimateUi, canStart: Boolean, onStart: () -> Unit) {
+    val context = LocalContext.current
+    ElevatedCard(Modifier.fillMaxWidth()) {
+        Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(u.ultimate.emoji, style = MaterialTheme.typography.headlineMedium, modifier = Modifier.width(48.dp))
+                Column(Modifier.weight(1f)) {
+                    Text(GameStrings.arenaCreatureName(context, u.ultimate.id), style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+                    Text(stringResource(R.string.pet_arena_ultimate_subtitle), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
+                Button(onClick = onStart, enabled = canStart && u.unlocked) { Text(stringResource(R.string.pet_arena_challenge)) }
+            }
+            if (!u.unlocked) {
+                Text(stringResource(R.string.pet_arena_ultimate_locked), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
+            }
+            Text(stringResource(R.string.pet_arena_ultimate_desc), style = MaterialTheme.typography.bodySmall)
+            Text(stringResource(R.string.pet_arena_ultimate_reward), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.tertiary)
+            Text(
+                text  = stringResource(R.string.pet_arena_ultimate_team, u.challengeTeam.size, u.ultimate.teamSize) +
+                    if (u.wins > 0) "   " + stringResource(R.string.pet_arena_ultimate_wins, u.wins) else "",
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.primary,
+            )
         }
     }
 }
@@ -276,22 +404,38 @@ private fun ArenaRow(emoji: String, title: String, subtitle: String, action: @Co
 @Composable
 private fun PetsTab(state: PetArenaUiState, viewModel: PetArenaViewModel) {
     var feeding by remember { mutableStateOf<ArenaPetUi?>(null) }
+    // Pets rest back to full over time; tick so HP bars and countdowns keep up.
+    var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
+    LaunchedEffect(Unit) { while (true) { now = System.currentTimeMillis(); delay(15_000) } }
     LazyColumn(contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         item(key = "team_hdr") {
             Text(stringResource(R.string.pet_arena_team_header, state.team.size, PetBattle.MAX_TEAM), style = MaterialTheme.typography.titleSmall)
+            state.ultimate?.takeIf { it.unlocked }?.let { u ->
+                Text(stringResource(R.string.pet_arena_ultimate_team, u.challengeTeam.size, u.ultimate.teamSize), style = MaterialTheme.typography.titleSmall)
+            }
+            Spacer(Modifier.height(4.dp))
+            Text(stringResource(R.string.pet_arena_boost_note), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Spacer(Modifier.height(4.dp))
+            Text(stringResource(R.string.pet_arena_rest_note), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         items(state.pets, key = { it.id }) { pet ->
-            PetCard(pet) {
+            PetCard(pet, viewModel.petData, now) {
                 Column(horizontalAlignment = Alignment.End, verticalArrangement = Arrangement.spacedBy(4.dp)) {
                     if (pet.onTeam) OutlinedButton(onClick = { viewModel.toggleTeam(pet.id) }) { Text(stringResource(R.string.pet_arena_remove_from_team)) }
                     else Button(onClick = { viewModel.toggleTeam(pet.id) }) { Text(stringResource(R.string.pet_arena_add_to_team)) }
-                    if (pet.level < PetBattle.MAX_LEVEL) TextButton(onClick = { feeding = pet }) { Text(stringResource(R.string.pet_arena_feed)) }
+                    if (state.ultimate?.unlocked == true) {
+                        TextButton(onClick = { viewModel.toggleChallenge(pet.id) }) {
+                            Text(stringResource(if (pet.onChallenge) R.string.pet_arena_challenge_remove else R.string.pet_arena_challenge_add))
+                        }
+                    }
+                    TextButton(onClick = { feeding = pet }) { Text(stringResource(R.string.pet_arena_feed)) }
                 }
             }
         }
     }
     feeding?.let { pet ->
-        FeedDialog(pet, state.treats, onFeed = { key, qty -> viewModel.feed(pet.id, key, qty); feeding = null }, onDismiss = { feeding = null })
+        FeedDialog(pet, PetBattle.restedFraction(pet.hpFraction, pet.hpAt, now), state.treats,
+            onFeed = { key, qty -> viewModel.feed(pet.id, key, qty); feeding = null }, onDismiss = { feeding = null })
     }
 }
 
@@ -308,11 +452,17 @@ private fun rarityName(rarity: String): String = stringResource(when (rarity) {
     "rare"      -> R.string.pet_arena_rarity_rare
     "epic"      -> R.string.pet_arena_rarity_epic
     "legendary" -> R.string.pet_arena_rarity_legendary
+    "mythic"    -> R.string.pet_arena_rarity_mythic
     else        -> R.string.pet_arena_rarity_common
 })
 
 @Composable
-private fun PetCard(pet: ArenaPetUi, action: @Composable () -> Unit) {
+private fun PetCard(
+    pet: ArenaPetUi,
+    petData: Map<String, com.fantasyidler.data.json.PetData> = emptyMap(),
+    now: Long = System.currentTimeMillis(),
+    action: @Composable () -> Unit,
+) {
     val context = LocalContext.current
     ElevatedCard(Modifier.fillMaxWidth()) {
         Row(Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
@@ -321,13 +471,43 @@ private fun PetCard(pet: ArenaPetUi, action: @Composable () -> Unit) {
                 Text(stringResource(R.string.pet_arena_name_level, pet.name, pet.level), style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium)
                 Text("${typeName(pet.type)}  ${rarityName(pet.rarity)}", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary)
                 Text(stringResource(R.string.pet_arena_stats, pet.attack, pet.defense, pet.hp), style = MaterialTheme.typography.bodySmall)
-                if (pet.boostPercent > 0) {
-                    val boost = stringResource(if (pet.effectType == "coin_boost") R.string.format_coin_boost_percent else R.string.format_xp_boost_percent, pet.boostPercent)
-                    val scope = when (pet.boostedSkill) {
-                        "all", "coins" -> if (pet.boostedSkill == "all") stringResource(R.string.bonus_all_skills) else ""
-                        else           -> GameStrings.skillName(context, pet.boostedSkill)
-                    }
-                    Text(if (scope.isEmpty()) boost else "$boost ($scope)", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                // Wounds from the last battle, resting back to full.
+                val fraction = PetBattle.restedFraction(pet.hpFraction, pet.hpAt, now)
+                val hpNow = (fraction * pet.hp).toInt()
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(stringResource(R.string.pet_battle_hp), style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
+                    Spacer(Modifier.width(6.dp))
+                    LinearProgressIndicator(
+                        gapSize           = 0.dp,
+                        drawStopIndicator = {},
+                        progress          = { fraction.toFloat() },
+                        color             = when {
+                            fraction > 0.5 -> Color(0xFF4CAF50)
+                            fraction > 0.2 -> Color(0xFFFFC107)
+                            else           -> Color(0xFFF44336)
+                        },
+                        modifier          = Modifier.weight(1f).height(6.dp).clip(RoundedCornerShape(3.dp)),
+                    )
+                    Spacer(Modifier.width(6.dp))
+                    Text("$hpNow / ${pet.hp}", style = MaterialTheme.typography.labelSmall)
+                }
+                when {
+                    hpNow <= 0     -> Text(stringResource(R.string.pet_arena_knocked_out, PetBattle.msToFullRest(fraction).formatDurationMs(context)),
+                        style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.error)
+                    fraction < 1.0 -> Text(stringResource(R.string.pet_arena_resting, PetBattle.msToFullRest(fraction).formatDurationMs(context)),
+                        style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
+                if (pet.wellFed > 0) Text(stringResource(R.string.pet_arena_well_fed, pet.wellFed), style = MaterialTheme.typography.labelSmall,
+                    color = Color(0xFF4CAF50), fontWeight = FontWeight.Bold)
+                val data = petData[pet.id]
+                if (pet.boostPercent > 0 && data != null) {
+                    val now = petBoostText(context, data, pet.boostPercent)
+                    Text(
+                        text  = if (pet.level >= PetBattle.MAX_LEVEL) now
+                                else stringResource(R.string.pet_arena_boost_growth, now, petBoostText(context, data, PetBattle.boostPercent(data.boostPercent, PetBattle.MAX_XP))),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
                 }
                 LinearProgressIndicator(
                     gapSize           = 0.dp,
@@ -348,23 +528,30 @@ private fun PetCard(pet: ArenaPetUi, action: @Composable () -> Unit) {
 }
 
 @Composable
-private fun FeedDialog(pet: ArenaPetUi, treats: List<ArenaTreatUi>, onFeed: (String, Int) -> Unit, onDismiss: () -> Unit) {
+private fun FeedDialog(pet: ArenaPetUi, fraction: Double, treats: List<ArenaTreatUi>, onFeed: (String, Int) -> Unit, onDismiss: () -> Unit) {
     val context = LocalContext.current
     val owned = treats.filter { it.owned > 0 }
     AlertDialog(
         onDismissRequest = onDismiss,
         title            = { Text(stringResource(R.string.pet_arena_feed_title, pet.name)) },
         text             = {
-            if (owned.isEmpty()) Text(stringResource(R.string.pet_arena_feed_none))
-            else Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                Text(stringResource(R.string.pet_arena_feed_hp, (fraction * 100).toInt()), style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant)
+                if (owned.isEmpty()) Text(stringResource(R.string.pet_arena_feed_none))
                 for (t in owned) {
                     Column {
-                        Text(stringResource(R.string.pet_arena_treat_line, GameStrings.itemName(context, t.key), t.owned, t.xpEach.formatXp()),
-                            style = MaterialTheme.typography.bodyMedium)
+                        Text(
+                            text  = stringResource(R.string.pet_arena_treat_line, GameStrings.itemName(context, t.key), t.owned,
+                                (t.treat.heal * 100).toInt(), t.treat.wellFed),
+                            style = MaterialTheme.typography.bodyMedium,
+                        )
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             TextButton(onClick = { onFeed(t.key, 1) }) { Text(stringResource(R.string.pet_arena_feed_one)) }
-                            if (t.owned >= 10) TextButton(onClick = { onFeed(t.key, 10) }) { Text(stringResource(R.string.pet_arena_feed_ten)) }
-                            TextButton(onClick = { onFeed(t.key, t.owned) }) { Text(stringResource(R.string.pet_arena_feed_all)) }
+                            val toFull = minOf(t.owned, PetBattle.treatsToHeal(fraction, t.treat))
+                            if (fraction < 1.0 && toFull > 1) TextButton(onClick = { onFeed(t.key, toFull) }) {
+                                Text(stringResource(R.string.pet_arena_feed_to_full, toFull))
+                            }
                         }
                     }
                 }

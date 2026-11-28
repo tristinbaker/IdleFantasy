@@ -54,6 +54,7 @@ import com.fantasyidler.ui.screen.BoneAltarScreen
 import com.fantasyidler.ui.screen.HouseScreen
 import com.fantasyidler.ui.screen.CarnivalScreen
 import com.fantasyidler.ui.screen.PetArenaScreen
+import com.fantasyidler.ui.screen.PetBattleScreen
 import com.fantasyidler.ui.screen.TowerScreen
 import com.fantasyidler.ui.screen.ChurchScreen
 import com.fantasyidler.ui.screen.MonumentScreen
@@ -267,6 +268,7 @@ fun AppNavigation(
                     onNavigateToHouse        = { navController.navigate(Screen.House.route) },
                     onNavigateToCarnival     = { navController.navigate(Screen.Carnival.route) },
                     onNavigateToPetArena     = { navController.navigate(Screen.PetArena.route) },
+                    onNavigateToPetBattle    = { navController.navigate(Screen.PetBattle.route) },
                     onNavigateToSeasonalEvent = { navController.navigate(Screen.SeasonalEvent.route) },
                     onNavigateToElderIsleShop = { navController.navigate(Screen.ElderIsleShop.route) },
                     onNavigateToElderArmorMaster = { navController.navigate(Screen.ElderArmorMaster.route) },
@@ -460,6 +462,12 @@ fun AppNavigation(
             }
             paneComposable(Screen.PetArena.route) { entry ->
                 PetArenaScreen(
+                    onBack  = { if (navController.currentBackStackEntry == entry) navController.popBackStack() },
+                    onWatch = { navController.navigate(Screen.PetBattle.route) },
+                )
+            }
+            paneComposable(Screen.PetBattle.route) { entry ->
+                PetBattleScreen(
                     onBack = { if (navController.currentBackStackEntry == entry) navController.popBackStack() },
                 )
             }

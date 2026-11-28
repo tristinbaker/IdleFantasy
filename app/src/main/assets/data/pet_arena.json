@@ -170,7 +170,8 @@
           "quantity_min": 1,
           "quantity_max": 1
         }
-      ]
+      ],
+      "strength": 0.82
     },
     {
       "id": "whispering_thicket",
@@ -226,7 +227,8 @@
           "quantity_min": 1,
           "quantity_max": 1
         }
-      ]
+      ],
+      "strength": 0.82
     },
     {
       "id": "glimmer_caverns",
@@ -282,7 +284,8 @@
           "quantity_min": 1,
           "quantity_max": 1
         }
-      ]
+      ],
+      "strength": 0.825
     },
     {
       "id": "ashen_wastes",
@@ -338,7 +341,8 @@
           "quantity_min": 1,
           "quantity_max": 1
         }
-      ]
+      ],
+      "strength": 0.835
     },
     {
       "id": "abyssal_rift",
@@ -394,7 +398,8 @@
           "quantity_min": 1,
           "quantity_max": 1
         }
-      ]
+      ],
+      "strength": 0.82
     }
   ],
   "trainers": [
@@ -521,10 +526,80 @@
     }
   ],
   "treats": {
-    "carrot_treat": 250,
-    "pumpkin_treat": 1200,
-    "strawberry_treat": 2500,
-    "dragon_fruit_treat": 6000,
-    "starfruit_treat": 15000
+    "carrot_treat": {
+      "heal": 0.15,
+      "well_fed": 3
+    },
+    "pumpkin_treat": {
+      "heal": 0.25,
+      "well_fed": 5
+    },
+    "strawberry_treat": {
+      "heal": 0.35,
+      "well_fed": 7
+    },
+    "dragon_fruit_treat": {
+      "heal": 0.45,
+      "well_fed": 10
+    },
+    "starfruit_treat": {
+      "heal": 0.6,
+      "well_fed": 15
+    }
+  },
+  "ultimate": {
+    "id": "aetherion",
+    "emoji": "🐲",
+    "level": 99,
+    "attack": 95,
+    "defense": 160,
+    "max_hp": 15300,
+    "phases": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "phase_turns": 40,
+    "attacks_per_turn": 1,
+    "area_every": 6,
+    "area_factor": 0.5,
+    "enrage_turn": 400,
+    "enrage_multiplier": 5.0,
+    "team_size": 8,
+    "pet_drop": "aether_hatchling",
+    "pet_chance": 0.01,
+    "xp_each": 20000,
+    "loot": [
+      {
+        "item": "coins",
+        "chance": 1.0,
+        "quantity_min": 50000,
+        "quantity_max": 100000
+      },
+      {
+        "item": "diamond",
+        "chance": 0.5,
+        "quantity_min": 1,
+        "quantity_max": 3
+      },
+      {
+        "item": "wyvern_hide",
+        "chance": 0.5,
+        "quantity_min": 5,
+        "quantity_max": 10
+      },
+      {
+        "item": "shadow_silk",
+        "chance": 0.5,
+        "quantity_min": 5,
+        "quantity_max": 10
+      },
+      {
+        "item": "starfruit_treat",
+        "chance": 0.5,
+        "quantity_min": 3,
+        "quantity_max": 5
+      }
+    ]
   }
 }

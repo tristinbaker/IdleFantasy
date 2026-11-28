@@ -74,7 +74,7 @@ internal fun BonusesTab(
 
     // Ironman: purchased multipliers are inert, but earned prestige effects apply,
     // so show the notice only when no prestige nodes or post-prestige boosts are active either.
-    if (state.ironman && state.prestigeEffects.isEmpty() && prestigeBoosts.isEmpty()) {
+    if (state.ironman && state.prestigeEffects.isEmpty() && prestigeBoosts.isEmpty() && PetBattle.AETHER_PET !in state.ownedPetIds) {
         Box(
             modifier         = Modifier.fillMaxSize().padding(32.dp),
             contentAlignment = Alignment.Center,
@@ -93,7 +93,8 @@ internal fun BonusesTab(
     val blessingActive = state.activeBlessingXpPct > 0 && state.activeBlessingExpiresAt > now
     val capeKey        = state.equipped[EquipSlot.CAPE]
     val cape           = capeKey?.let { allEquipment[it] }?.takeIf { it.capeBonus > 0f }
-    val bonusPets      = allPets.values.filter { it.id in state.ownedPetIds && it.boostPercent > 0 }
+    // Ironmen keep only the Aether Hatchling's boost.
+    val bonusPets      = allPets.values.filter { it.id in state.ownedPetIds && it.boostPercent > 0 && (!state.ironman || it.id == PetBattle.AETHER_PET) }
     val prestigeEffects = state.prestigeEffects
 
     val isGatheringCape = cape != null && (cape.capeSkill ?: "") !in COMBAT_CAPE_SKILLS

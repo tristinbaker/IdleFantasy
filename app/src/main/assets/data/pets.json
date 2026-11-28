@@ -456,5 +456,20 @@
     "base_attack": 72,
     "base_defense": 58,
     "base_hp": 62
+  },
+  "aether_hatchling": {
+    "id": "aether_hatchling",
+    "display_name": "Aether Hatchling",
+    "emoji": "🥚",
+    "description": "Hatched from the remains of the First Beast. Boosts all skill XP by 5%, and it is the one pet whose boost ironmen keep.",
+    "source": "Pet Arena Ultimate Challenge (1/100 per win)",
+    "effect_type": "xp_boost",
+    "boosted_skill": "all",
+    "boost_percent": 5,
+    "battle_type": "magic",
+    "rarity": "mythic",
+    "base_attack": 72,
+    "base_defense": 70,
+    "base_hp": 70
   }
 }
