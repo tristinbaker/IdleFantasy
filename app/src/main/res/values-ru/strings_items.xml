@@ -1295,25 +1295,25 @@
     <string name="crop_magic_bean_name">Волшебный боб</string>
 
     <!-- Seasonal rotation gear -->
-    <string name="item_sunstone_ring_desc">A ring set with a shard of solstice sunlight. Warm to the touch, even in winter.</string> <!-- untranslated -->
-    <string name="item_sunforged_sabre_desc">Forged in the heart of the Sunspire bonfire. Its edge never quite cools.</string> <!-- untranslated -->
-    <string name="item_sunweave_cape_desc">Woven from midsummer light at the Night Market. Only sold during the Sunspire Solstice.</string> <!-- untranslated -->
-    <string name="item_frostbound_ring_desc">A band of ice that never melts. Steadies the bow arm on the coldest nights.</string> <!-- untranslated -->
-    <string name="item_glacial_longbow_desc">Carved from glacier ice that never thaws. Awarded to the Frostfall\'s most tireless defenders.</string> <!-- untranslated -->
+    <string name="item_sunstone_ring_desc">Кольцо, в которое вставлен осколок солнечного света в день солнцестояния. Оно теплое на ощупь даже зимой.</string>
+    <string name="item_sunforged_sabre_desc">Выковано в самом сердце костра Солнечной шпиля. Его лезвие никогда до конца не остывает.</string>
+    <string name="item_sunweave_cape_desc">Создан из летнего света на Ночном рынке. Продается только во время Солнцестояния солнечного шпиля.</string>
+    <string name="item_frostbound_ring_desc">Полоса льда, которая никогда не тает. Удерживает носовую часть судна в равновесии даже в самые холодные ночи.</string>
+    <string name="item_glacial_longbow_desc">Вырезанный из ледникового льда, который никогда не тает. Вручается самым неутомимым защитникам Морозного падения.</string>
     <string name="item_frostweave_cape_desc">Spun from snowdrift and starlight at the Night Market. Only sold during the Frostfall.</string> <!-- untranslated -->
-    <string name="item_seedheart_ring_desc">A living seed sealed in silver. It hums with the patience of growing things.</string> <!-- untranslated -->
+    <string name="item_seedheart_ring_desc">Живое семя, заключённое в серебро. Оно вибрирует терпением растущего мира.</string>
     <string name="item_bloomwood_staff_desc">A flowering branch from the Wildgrove that never wilts. Spells bloom from its tip.</string> <!-- untranslated -->
     <string name="item_petalweave_cape_desc">Stitched from a thousand spring petals at the Night Market. Only sold during the Bloomtide.</string> <!-- untranslated -->
 
     <!-- Main story keepsakes (v2.0.0) -->
-    <string name="item_keepsake_obsidian_key_name">Obsidian Key</string> <!-- untranslated -->
-    <string name="item_keepsake_obsidian_key_desc">An ornate key of black stone from the bandit leader’s lockbox, with an empty slot shaped for a gem.</string> <!-- untranslated -->
-    <string name="item_keepsake_mountain_heart_name">Essence of the Mountain</string> <!-- untranslated -->
-    <string name="item_keepsake_mountain_heart_desc">An impossibly heavy, ruby-like gem of elemental fire from the heart of the volcano.</string> <!-- untranslated -->
+    <string name="item_keepsake_obsidian_key_name">Обсидиановый ключ</string>
+    <string name="item_keepsake_obsidian_key_desc">Изысканный ключ из чёрного камня из сундука главаря бандитов с пустым углублением, предназначенным для драгоценного камня.</string>
+    <string name="item_keepsake_mountain_heart_name">Сущность горы</string>
+    <string name="item_keepsake_mountain_heart_desc">Невероятно тяжёлый, похожий на рубин драгоценный камень стихии огня из самого сердца вулкана.</string>
     <string name="item_keepsake_dragon_molt_name">Dragon’s Molt</string> <!-- untranslated -->
-    <string name="item_keepsake_dragon_molt_desc">Discarded scales of the black king dragon, still heavy with primal magic.</string> <!-- untranslated -->
-    <string name="item_keepsake_eye_of_chaos_name">Eye of Chaos</string> <!-- untranslated -->
-    <string name="item_keepsake_eye_of_chaos_desc">A rough, pearl-like gem from the Realm of Chaos. It fits the Obsidian Key’s empty slot.</string> <!-- untranslated -->
+    <string name="item_keepsake_dragon_molt_desc">Сброшенные чешуйки чёрного королевского дракона, всё ещё наполненные первозданной магией.</string>
+    <string name="item_keepsake_eye_of_chaos_name">Глаз хаоса</string>
+    <string name="item_keepsake_eye_of_chaos_desc">Необработанный драгоценный камень, похожий на жемчужину, из Царства Хаоса. Он подходит к пустому гнезду Обсидианового ключа.</string>
     <!-- Ranged and magic armour (2.1.0) -->
     <string name="item_troll_hide_name">Troll Hide</string> <!-- untranslated -->
     <string name="item_troll_hide_desc">Thick, warty hide from a troll. Crafted into ranged armour.</string> <!-- untranslated -->
