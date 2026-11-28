@@ -1,0 +1,65 @@
+{
+  "repo": {
+    "timestamp": 1795892655558
+  },
+  "packages": {
+    "com.tristinbaker.idlefantasy": {
+      "metadata": {
+        "lastUpdated": 1795892606169
+      },
+      "versions": {
+        "0bb2783c7ca050ad52504b0bb82e829f8cd3435df0bf65692f90845b88d3a0aa": null,
+        "f324de95d0ea85780011e709dd187348a495d5f2d273a1881e1819a4bb564af7": {
+          "added": 1795892606169,
+          "file": {
+            "name": "/com.tristinbaker.idlefantasy_210000.apk",
+            "sha256": "f324de95d0ea85780011e709dd187348a495d5f2d273a1881e1819a4bb564af7",
+            "size": 12441319
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86",
+              "x86_64"
+            ],
+            "versionName": "2.1.0",
+            "versionCode": 210000,
+            "usesSdk": {
+              "minSdkVersion": 26,
+              "targetSdkVersion": 35
+            },
+            "signer": {
+              "sha256": [
+                "99a980a934cb0149bfbdd5f4358471ffe69302e0467bae4d8574d4feeda34010"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.POST_NOTIFICATIONS"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.USE_EXACT_ALARM"
+              },
+              {
+                "name": "android.permission.SCHEDULE_EXACT_ALARM"
+              },
+              {
+                "name": "com.tristinbaker.idlefantasy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          },
+          "whatsNew": {
+            "en-US": "• Added 30 hidden achievements: extra challenges that don't count toward completion\n• Added ranged and magic armour: 7 tiers each of hide and robes, crafted with Crafting\n• Added the Pet Arena: level up your pets, evolve them, battle wild zones and earn 8 trainer badges\n• Pet boosts now grow as your pets level up, up to double at level 99\n• Added pet treats, cooked from crops: they heal your pets and make them Well Fed for their next battle\n• Pet battles play out live on a Pokemon-style battle s"
+          }
+        }
+      }
+    }
+  }
+}
