@@ -65,8 +65,8 @@
     <string name="label_bestiary">Bestiario</string>
     <string name="label_enemies">Nemici</string>
     <string name="label_bosses">Boss</string>
-    <string name="label_mainland">Mainland</string> <!-- untranslated -->
-    <string name="label_elder">Elder</string> <!-- untranslated -->
+    <string name="label_mainland">Madreterra</string>
+    <string name="label_elder">Ancestrale</string>
     <string name="label_by_location">Per luogo</string>
     <string name="bestiary_not_encountered">Non ancora incontrato</string>
     <string name="bestiary_filter_all">Tutto</string>
@@ -323,9 +323,9 @@
     <string name="label_switch_character">Cambia personaggio</string>
     <string name="settings_daily_reset_time">Ora di ripristino giornaliero</string>
     <string name="settings_daily_reset_time_desc">Orario al quale le missioni giornaliere, settimanali e della Gilda verrano cambiate. Cambiarlo più volte non comporta ripristini aggiuntivi.</string>
-    <string name="recent_activity_altar">%1$s ×%2$d at the altar</string> <!-- untranslated -->
-    <string name="settings_swipe_tabs">Swipe between tabs</string> <!-- untranslated -->
-    <string name="settings_swipe_tabs_desc">Swipe left or right to change tabs. Turn this off if tabs change by accident, for example with a TV remote.</string> <!-- untranslated -->
+    <string name="recent_activity_altar">%1$s ×%2$d all\'altare</string>
+    <string name="settings_swipe_tabs">Scorri tra le schede</string>
+    <string name="settings_swipe_tabs_desc">Trascina lateralmente per cambiare scheda. Disattiva questa opzione se avvengono frequenti scorrimenti involontari.</string>
     <string name="settings_compact_numbers">Numeri Compatti</string>
     <string name="settings_compact_numbers_desc">Abbrevia grandi quantità (ad es. 2,46M invece che 2.461.940)</string>
     <string name="settings_home_screen">Schermata Principale</string>
@@ -1959,8 +1959,8 @@
     <string name="mercantile_route_start_failed">Impossibile avviare la tratta: %1$s</string>
     <string name="mercantile_added_to_queue">Aggiunto alla coda: Commercio — %1$s.</string>
     <string name="inventory_requires_to_equip">Richiede %1$s per equipaggiare.</string>
-    <string name="equip_two_handed_removed_shield">%1$s needs both hands, so your shield was unequipped.</string> <!-- untranslated -->
-    <string name="equip_shield_removed_two_handed">A shield can’t be used with a two-handed weapon, so %1$s was unequipped.</string> <!-- untranslated -->
+    <string name="equip_two_handed_removed_shield">%1$s richiede entrambe le mani; hai tolto lo scudo.</string>
+    <string name="equip_shield_removed_two_handed">Non puoi usare uno scudo con un\'arma a due mani; hai lasciato %1$s.</string>
     <string name="home_found_pet">Hai trovato un animaletto: %1$s!</string>
     <string name="pet_found_title">Nuovo animaletto!</string>
     <string name="home_congratulations_received">Congratulazioni! Hai ricevuto: %1$s</string>
@@ -2303,8 +2303,8 @@
     <string name="title_master_farmer_requirement">Raggiungi il livello massimo della Gilda degli Agricoltori</string>
     <string name="settings_art_credits">Accreditamenti</string>
     <string name="settings_art_credits_desc">Chi c\'è dietro la grafica del gioco</string>
-    <string name="settings_credit_story_title">Main Story</string> <!-- untranslated -->
-    <string name="settings_credit_story_subtitle">Written by Josh “Bathtub Skeleton” Junnier</string> <!-- untranslated -->
+    <string name="settings_credit_story_title">Storia Principale</string>
+    <string name="settings_credit_story_subtitle">Scritta da Josh “Bathtub Skeleton” Junnier</string>
     <string name="settings_credit_banners_title">Stendardi stagionali</string>
     <string name="settings_credit_banners_subtitle">Disegni di Wenrexa</string>
     <string name="settings_credit_skill_icons_title">Icone delle Abilità</string>
@@ -2787,16 +2787,16 @@
     <string name="seasonal_bounty_bloom_tithe_salmon_hint">Donated straight from your inventory</string> <!-- untranslated -->
     <string name="seasonal_minigame_snowball_toss_hint">Colpisci %1$d avversari su %2$d prima che si nascondino!</string>
     <string name="seasonal_minigame_garden_chimes_hint">Watch the blossoms, then repeat the order. Reach round %1$d of %2$d to win a token!</string> <!-- untranslated -->
-    <string name="item_sunstone_ring_name">Sunstone Ring</string> <!-- untranslated -->
-    <string name="item_sunforged_sabre_name">Sunforged Sabre</string> <!-- untranslated -->
-    <string name="item_sunweave_cape_name">Sunweave Cape</string> <!-- untranslated -->
+    <string name="item_sunstone_ring_name">Anello Solgemma</string>
+    <string name="item_sunforged_sabre_name">Sciabola Solare</string>
+    <string name="item_sunweave_cape_name">Mantello Solestoffa</string>
     <string name="item_frostbound_ring_name">Anello Ghiacciato</string>
     <string name="item_glacial_longbow_name">Arco del Gelo</string>
     <string name="item_frostweave_cape_name">Mantello Nevestoffa</string>
-    <string name="item_seedheart_ring_name">Seedheart Ring</string> <!-- untranslated -->
-    <string name="item_bloomwood_staff_name">Bloomwood Staff</string> <!-- untranslated -->
-    <string name="item_petalweave_cape_name">Petalweave Cape</string> <!-- untranslated -->
-    <string name="pet_sunbird_chick_name">Sunbird Chick</string> <!-- untranslated -->
+    <string name="item_seedheart_ring_name">Anello Germinato</string>
+    <string name="item_bloomwood_staff_name">Bastone Primolegno</string>
+    <string name="item_petalweave_cape_name">Mantello Tessipetalo</string>
+    <string name="pet_sunbird_chick_name">Pulcino del Sole</string>
     <string name="pet_sunbird_chick_desc">A fluffy chick hatched in the embers of the solstice bonfire. It loves a good blaze.</string> <!-- untranslated -->
     <string name="pet_frost_wyrmling_name">Draghetto dell Nevi</string>
     <string name="pet_frost_wyrmling_desc">Cucciolo del Dragone del Gelo che ti ha seguito durante il tuo ritorno. Il suo soffio rende ogni cosa di ghiaccio.</string>
@@ -2808,7 +2808,7 @@
     <string name="pet_bumblebee_desc">A busy little bee that knows exactly which flowers make the best potions.</string> <!-- untranslated -->
 
     <!-- Main story quest (v2.0.0) -->
-    <string name="story_tab_label">Story</string> <!-- untranslated -->
+    <string name="story_tab_label">Storia</string>
     <string name="story_begin_title">The Duster’s Tale</string> <!-- untranslated -->
     <string name="story_begin_body">Follow Thaddius Cantor, your outpost, and the mystery of the island through short notes that arrive as you play. The story is optional and never locks anything.</string> <!-- untranslated -->
     <string name="story_begin_button">Begin the story</string> <!-- untranslated -->
@@ -2819,7 +2819,7 @@
     <string name="story_chapter_prologue">Prologue: The Expedition Corps</string> <!-- untranslated -->
     <string name="story_chapter_landfall">Landfall</string> <!-- untranslated -->
     <string name="story_chapter_number">Chapter %1$d</string> <!-- untranslated -->
-    <string name="story_chapter_locked">\?\?\?</string> <!-- untranslated -->
+    <string name="story_chapter_locked">\?\?\?</string>
     <string name="story_progress">%1$d of %2$d chapters complete</string> <!-- untranslated -->
     <string name="story_complete">The story is complete. Thank you for playing it through.</string> <!-- untranslated -->
     <string name="story_obj_gather">Complete a mining, fishing, or woodcutting session</string> <!-- untranslated -->
@@ -2829,8 +2829,8 @@
     <string name="story_obj_requires">Needs %1$s in your inventory</string> <!-- untranslated -->
     <string name="story_reward_coins">Reward: %1$s coins</string> <!-- untranslated -->
     <string name="story_reward_coins_title">Reward: %1$s coins and the %2$s title</string> <!-- untranslated -->
-    <string name="story_notes_header">Notes</string> <!-- untranslated -->
-    <string name="story_note_new">New</string> <!-- untranslated -->
+    <string name="story_notes_header">Note</string>
+    <string name="story_note_new">Nuovo</string>
     <string name="story_speaker_thaddius">Thaddius Cantor, via sending stone</string> <!-- untranslated -->
     <string name="story_btn_next">Next</string> <!-- untranslated -->
     <string name="story_btn_close">Close</string> <!-- untranslated -->
