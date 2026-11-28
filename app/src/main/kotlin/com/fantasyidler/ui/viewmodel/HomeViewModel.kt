@@ -54,7 +54,6 @@ import com.fantasyidler.util.toTitleCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -364,15 +363,6 @@ class HomeViewModel @Inject constructor(
                 playerRepo.updateFlagsAtomically {
                     it.copy(showSeasonalEvents = true, seasonalBannerReshownEventId = event.id)
                 }
-            }
-        }
-        // AlarmManager delivery can be deferred by Doze for hours (issue 517: overnight
-        // sessions frozen until their late alarms fire). While the app is open this
-        // ticker completes overdue sessions and workers within a second.
-        viewModelScope.launch {
-            while (true) {
-                try { sessionRepo.completeOverdueSessions(queuedSessionStarter, workerStarter) } catch (_: Exception) {}
-                delay(1_000L)
             }
         }
     }

@@ -863,7 +863,7 @@ fun HomeScreen(
                             // Ticks on each minute boundary (the smallest unit shown) so the
                             // countdown stays current while Home is open.
                             var eventNowMs by remember { mutableLongStateOf(System.currentTimeMillis()) }
-                            LaunchedEffect(event.endMs) {
+                            StartedEffect(event.endMs) {
                                 while (true) {
                                     eventNowMs = System.currentTimeMillis()
                                     delay(60_000L - eventNowMs % 60_000L)

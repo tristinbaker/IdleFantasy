@@ -23,7 +23,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -160,7 +159,7 @@ internal fun CombatSessionBanner(
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
     var showAbandonConfirm by remember { mutableStateOf(false) }
     val endsAt = session.endsAt
-    LaunchedEffect(endsAt) {
+    StartedEffect(endsAt) {
         while (System.currentTimeMillis() < endsAt) {
             now = System.currentTimeMillis()
             delay(500.milliseconds)

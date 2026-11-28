@@ -50,7 +50,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -233,17 +232,6 @@ class CombatViewModel @Inject constructor(
     private val _simulatedRatings = MutableStateFlow<Map<String, CombatSimulator.SurvivalRating>>(emptyMap())
     private var simJob: Job? = null
     private var lastSimFingerprint = ""
-
-    init {
-        // AlarmManager delivery can be deferred by Doze; while the app is open this
-        // ticker ends overdue sessions on time regardless of the alarm.
-        viewModelScope.launch {
-            while (true) {
-                try { sessionRepo.completeOverdueSessions(queuedSessionStarter) } catch (_: Exception) {}
-                delay(1_000L)
-            }
-        }
-    }
 
     init {
         viewModelScope.launch {

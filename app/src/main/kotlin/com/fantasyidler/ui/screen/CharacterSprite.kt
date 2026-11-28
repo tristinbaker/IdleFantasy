@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.BitmapFactory
 import androidx.compose.foundation.Canvas
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
@@ -135,7 +134,8 @@ fun CharacterSprite(
     val actionBmp = remember(actionPath) { loadLayer(context, actionPath) }
 
     var eyeFrame by remember { mutableIntStateOf(0) }
-    LaunchedEffect(Unit) {
+    StartedEffect(Unit) {
+        eyeFrame = 0
         while (true) {
             delay(2000L + (Math.random() * 2000).toLong())
             for (f in 1 until EYE_FRAMES) { eyeFrame = f; delay(80L) }

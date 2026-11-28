@@ -18,13 +18,18 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Density
 import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.fantasyidler.notification.SessionNotificationManager
 import com.fantasyidler.repository.BackupScheduler
 import com.fantasyidler.repository.GlobalStateRepository
 import com.fantasyidler.repository.PlayerRepository
+import com.fantasyidler.repository.QueuedSessionStarter
 import com.fantasyidler.repository.SaveSlotRepository
+import com.fantasyidler.repository.SessionRepository
+import com.fantasyidler.repository.WorkerQueuedSessionStarter
 import com.fantasyidler.ui.navigation.AppNavigation
 import com.fantasyidler.ui.theme.FantasyIdlerTheme
 import com.fantasyidler.ui.theme.LocalAppFontScale
@@ -33,7 +38,10 @@ import com.fantasyidler.ui.viewmodel.SettingsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.NonCancellable
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -44,6 +52,9 @@ class MainActivity : AppCompatActivity() {
     @Inject lateinit var sessionNotificationManager: SessionNotificationManager
     @Inject lateinit var globalStateRepository: GlobalStateRepository
     @Inject lateinit var saveSlotRepository: SaveSlotRepository
+    @Inject lateinit var sessionRepository: SessionRepository
+    @Inject lateinit var queuedSessionStarter: QueuedSessionStarter
+    @Inject lateinit var workerQueuedSessionStarter: WorkerQueuedSessionStarter
 
     private val notificationPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -59,6 +70,21 @@ class MainActivity : AppCompatActivity() {
         // branch wipes live progress. Idempotent (marker-driven) and serialized by switchMutex.
         val switchRecovery = CoroutineScope(Dispatchers.IO).launch {
             saveSlotRepository.recoverInterruptedSwitch()
+        }
+        lifecycleScope.launch {
+            switchRecovery.join()
+            // Alarm delivery can be deferred by Doze. Check immediately on return, then
+            // only while visible. Let a queue handoff already in progress finish on stop.
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                while (true) {
+                    withContext(NonCancellable) {
+                        try {
+                            sessionRepository.completeOverdueSessions(queuedSessionStarter, workerQueuedSessionStarter)
+                        } catch (_: Exception) {}
+                    }
+                    delay(1_000L)
+                }
+            }
         }
         // One-time migration: re-register the backup alarm on first launch after update.
         // Previously setInexactRepeating was used with an unsupported weekly interval which
